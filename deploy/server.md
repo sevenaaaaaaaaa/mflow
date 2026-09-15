@@ -42,6 +42,6 @@ MFlow 部署**必须与既有 XMP（OpenFlow，`/var/www/openflow`）完全隔�
   - `mflow-dream.timer` → 每日 02:30（mflow-dream.service）
   - `mflow-status.timer` → 每 30 分钟刷新状态页（mflow-status.service）
 - 独立 URL：**http://172.96.253.73:8088/**（Apache 独立 Listen 8088 + vhost `/www/server/panel/vhost/apache/mflow.conf`，经宝塔 IncludeOptional 目录挂载，零改动既有配置；外部可达已验证）
-- 状态页：render-status.py 渲染 pipeline/Sentinel/fm-check 三源 → /status + /status.json
+- 工作台（2026-09-15 增）：`mflow-console.service`，console.py 直绑 0.0.0.0:8088（取代 Apache 静态页，mflow.conf 已 disabled-by-console）。密码 `MFLOW_CONSOLE_PASSWORD` 在 run/env.sh。功能：管线看板+状态机推进 / 路由决策 / 质量钩子执行 / 每日管线触发与日志 / 调度与健康 / 分发只读。发布类操作只读（铁律）。systemd 引用 env.sh 必须用 `bash -c source`（EnvironmentFile 不认 export 语法——踩过的坑）
 - 验证记录：session-init 4 门禁 PASS · pipeline smoke 39/39 · 每日管线全链路 exit 0（gsc/sentinel/harness 全 OK，feishu SKIP 同 Mac）
 - 隔离确认：80/443 仍为 XMP/OpenFlow；MFlow 仅占 8088；无共享目录/进程/日志
