@@ -228,6 +228,7 @@ th{color:var(--muted);font-weight:600}
   <button class="s-item" data-t="wfmap" onclick="setTab('wfmap')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg><span>工作流地图</span></button>
   <button class="s-item" data-t="mkt" onclick="setTab('mkt')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg><span>模板市场</span><span class="sbad mutb" id="nav-mkt">0</span></button>
   <div class="sec-title">情报与产出</div>
+  <button class="s-item" data-t="rdash" onclick="setTab('rdash')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg><span>报告仪表</span></button>
   <button class="s-item" data-t="reports" onclick="setTab('reports')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></svg><span>报告中心</span><span class="sbad mutb" id="nav-reports">0</span></button>
   <button class="s-item" data-t="kb" onclick="setTab('kb')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>知识库</span></button>
   <button class="s-item" data-t="dist" onclick="setTab('dist')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><span>分发队列</span><span class="sbad mutb" id="nav-dist">0</span></button>
@@ -236,6 +237,7 @@ th{color:var(--muted);font-weight:600}
   <button class="s-item" data-t="eng" onclick="setTab('eng')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>路由·门禁</span></button>
   <button class="s-item" data-t="sys" onclick="setTab('sys')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>调度与日志</span></button>
   <button class="s-item" data-t="set" onclick="setTab('set')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg><span>设置 · LLM · Harness</span></button>
+  <button class="s-item" data-t="iter" onclick="setTab('iter')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20a8 8 0 1 0-8-8"/><path d="M4 12H2m4-7 2 2M20 12h2m-4-7-2 2"/><circle cx="12" cy="12" r="3"/></svg><span>自我迭代仪表</span></button>
   <button class="s-item" data-t="usage" onclick="setTab('usage')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>用量与成本</span></button>
   <button class="s-item" data-t="setup" onclick="setTab('setup')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" opacity="0"/><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span>首次引导 · Setup</span><span class="sbad" id="nav-setup">?</span></button>
   <div class="sb-foot">
@@ -506,6 +508,34 @@ th{color:var(--muted);font-weight:600}
   </section>
 </main>
 
+  <!-- ============ 报告仪表 ============ -->
+  <section class="page" id="pg-rdash">
+    <div class="pg-head"><div><div class="kick">情报与产出</div><h1>报告<em class="sf">仪表</em></h1>
+      <p class="pg-sub">把 Markdown 报告渲染成结构化仪表：数值表自动变指标卡与比例条。月报 / 舆情 / 404 全适用。</p></div>
+      <div class="head-actions">
+        <select id="rd-cat" onchange="rdFill()" style="max-width:180px"></select>
+        <select id="rd-file" style="max-width:280px"></select>
+        <button class="btn primary" onclick="rdRender()">渲染仪表</button>
+        <button class="btn ghost" id="rd-raw" onclick="rdRaw()" style="display:none">原文阅读</button></div></div>
+    <div id="rd-body"><span class="mut">选择分类与报告后点「渲染仪表」</span></div>
+  </section>
+
+  <!-- ============ 自我迭代 ============ -->
+  <section class="page" id="pg-iter">
+    <div class="pg-head"><div><div class="kick">系统</div><h1>自我迭代<em class="sf">仪表</em></h1>
+      <p class="pg-sub">三条曲线看清系统健康度：质量门禁 BLOCK 率（越低越好）、Token 消耗、内容吞吐。</p></div>
+      <div class="head-actions"><button class="btn primary" onclick="genReview()">生成月度回顾报告</button></div></div>
+    <div class="stats" id="iter-stats"></div>
+    <div class="ov-grid2">
+      <div class="card"><div class="card-head"><h3>质检 BLOCK 率（近 14 日）</h3></div><div class="chart-bars" id="it-qa"></div>
+        <div class="chart-meta"><span id="it-qa-meta"></span></div></div>
+      <div class="card"><div class="card-head"><h3>Token 消耗（近 14 日）</h3></div><div class="chart-bars" id="it-tok"></div>
+        <div class="chart-meta"><span id="it-tok-meta"></span></div></div>
+    </div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>吞吐（近 14 日状态机推进）</h3></div><div class="chart-bars" id="it-thr"></div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>最近质检记录</h3></div><div style="max-height:300px;overflow:auto"><table id="it-table"></table></div></div>
+  </section>
+</main>
 <div id="tmodal" style="position:fixed;inset:0;background:oklch(0% 0 0/.45);z-index:90;display:none;align-items:center;justify-content:center" onclick="if(event.target===this)this.style.display='none'">
   <div class="card" style="width:420px;max-width:92vw">
     <div class="card-head"><h3>编辑任务</h3><button class="more" onclick="$('tmodal').style.display='none'">×</button></div>
@@ -534,7 +564,7 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
  $('pg-'+t).classList.add('on');
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
-   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt}[t]||(()=>{}))()}
+   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter}[t]||(()=>{}))()}
 function openReader(path){api('api/read?path='+encodeURIComponent(path)).then(r=>{
  $('rname').textContent=r.name;
  const toc=(r.toc||[]).filter(t=>t.level===2);
@@ -851,6 +881,61 @@ function useTpl(id){setTab('create');setTimeout(()=>{const el=[...document.query
 function importTpl(){try{const tpl=JSON.parse($('imp-json').value);api('api/templates/import',{template:tpl}).then(r=>{if(r.error)return alert(r.error);alert('已导入：'+r.id);$('imp-json').value='';loadMkt()})}catch(e){alert('JSON 解析失败')}}
 function importFile(inp){const f=inp.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{$('imp-json').value=rd.result;importTpl()};rd.readAsText(f)}
 function delTpl(id){if(!confirm('删除模板 '+id+'？'))return;api('api/templates/delete',{id}).then(()=>loadMkt())}
+
+/* ---- 报告仪表 ---- */
+function loadRdash(){if($('rd-cat').children.length)return;
+ api('api/reports').then(r=>{window.__RCATS=r;
+  $('rd-cat').innerHTML=Object.keys(r).map(c=>`<option>${c}</option>`).join('');rdFill()})}
+function rdFill(){const c=$('rd-cat').value;const files=(window.__RCATS||{})[c]||[];
+ $('rd-file').innerHTML=files.slice(0,60).map(f=>`<option value="${esc(f.path)}">${esc(f.name)}</option>`).join('')}
+function numbarTable(headers,rows){const maxv={};
+ rows.forEach(r=>headers.forEach((h,ci)=>{const v=parseFloat((r[ci]||'').replace(/,/g,''));if(!isNaN(v)&&Math.abs(v)>(maxv[ci]??0))maxv[ci]=Math.abs(v)}));
+ return `<table><tr>${headers.map(h=>`<th>${esc(h)}</th>`).join('')}</tr>`+rows.map(r=>`<tr>${headers.map((h,ci)=>{
+  const raw=(r[ci]||'');const v=parseFloat(raw.replace(/,/g,''));
+  if(isNaN(v))return `<td>${esc(raw)}</td>`;
+  const w=maxv[ci]?Math.max(4,Math.abs(v)/maxv[ci]*100):4;const neg=raw.trim().startsWith('-');
+  return `<td><div class='numwrap'><div class='numbar' style='width:${w.toFixed(0)}%;${neg?'background:var(--warn);':''}'></div><span class='tnum'>${esc(raw)}</span></div></td>`}).join('')}</tr>`).join('')+'</table>'}
+function rdRender(){const path=$('rd-file').value;if(!path)return;
+ api('api/report/structure?path='+encodeURIComponent(path)).then(d=>{
+  $('rd-raw').style.display='';
+  let html=`<div class="card"><div class="card-head"><h3 style="font-size:17px">${esc(d.title)}</h3></div>`;
+  let firstNum=true;
+  (d.sections||[]).forEach(sec=>{
+   html+=`<div class="card" style="margin-top:12px"><div class="card-head"><h3>${esc(sec.heading||'概览')}</h3></div>`;
+   (sec.blocks||[]).forEach(b=>{
+    if(b.type==='para')html+=`<p style="margin:6px 0;font-size:13.5px;line-height:1.7">${esc(b.text)}</p>`;
+    else{
+     const numeric=b.headers.some((h,ci)=>b.rows.some(r=>!isNaN(parseFloat((r[ci]||'').replace(/,/g,'')))));
+     if(numeric&&firstNum){
+      html+=`<div class="metrics" style="margin:10px 0">`+b.rows.map(r=>`<div class="card metric" style="margin:0"><div class="m-label">${esc(r[0]||'')}</div>
+        ${b.headers.slice(1).map((h,ci)=>`<div style="font-size:12px;margin-top:3px">${esc(h)} <b class="tnum" style="float:right">${esc(r[ci+1]||'')}</b></div>`).join('')}</div>`).join('')+`</div>`;
+      firstNum=false;
+      html+=`<div style="margin-top:10px">${numbarTable(b.headers,b.rows)}</div>`;
+     }else html+=`<div style="margin:10px 0;overflow:auto">${numbarTable(b.headers,b.rows)}</div>`;
+    }});
+   html+='</div>'});
+  html+='</div>';
+  $('rd-body').innerHTML=html})}
+function rdRaw(){openReader($('rd-file').value)}
+
+/* ---- 自我迭代 ---- */
+function loadIter(){Promise.all([api('api/selfreview'),api('api/qa/stats?days=14'),api('api/usage')]).then(([sv,qa,us])=>{
+ const thr14=sv.throughput.slice(-14);
+ $('iter-stats').innerHTML=`<div class="stat"><div class="n tnum">${qa.total_runs}</div><div class="t">质检执行（累计）</div></div>
+  <div class="stat"><div class="n tnum">${qa.block_rate_all}%</div><div class="t">整体 BLOCK 率</div></div>
+  <div class="stat"><div class="n tnum">${us.total_tokens.toLocaleString()}</div><div class="t">累计 tokens</div></div>
+  <div class="stat"><div class="n tnum">${sv.throughput.reduce((a,b)=>a+b.n,0)}</div><div class="t">30 日推进</div></div>`;
+ const mk=(el,arr,key,fmt)=>{const mx=Math.max(1,...arr.map(x=>x[key]||0));
+  $(el).innerHTML=arr.map(x=>`<div class="cb"><span class="vl tnum">${x[key]?fmt(x[key]):''}</span><div class="bar" style="height:${Math.max(3,(x[key]||0)/mx*100)}%"></div><span class="lb">${(x.date||'').slice(5)}</span></div>`).join('')||'<span class="mut">暂无数据</span>'};
+ mk('it-qa',qa.days,'block_rate',v=>v+'%');
+ $('it-qa-meta').innerHTML=`整体 BLOCK 率 <b class="tnum">${qa.block_rate_all}%</b>`;
+ mk('it-tok',us.by_day.slice(-14),'tokens',v=>v>999?(v/1000).toFixed(1)+'k':v);
+ $('it-tok-meta').innerHTML=`累计 <b class="tnum">${us.total_tokens.toLocaleString()}</b> tokens`;
+ mk('it-thr',thr14,'n',v=>v);
+ $('it-table').innerHTML='<tr><th>时间</th><th>来源</th><th>钩子</th><th>结果</th></tr>'+
+  qa.recent.map(r=>`<tr><td class="mut">${esc(r.ts)}</td><td>${esc(r.source)}</td><td>${esc(r.hook)}</td><td class="${r.rc===0?'ok':'bad'}">${r.rc===0?'PASS':'BLOCK'}</td></tr>`).join('')||'<tr><td colspan="4" class="mut">还没有质检记录</td></tr>'})}
+function genReview(){api('api/selfreview/generate',{}).then(r=>{if(r.error)return alert(r.error);
+ alert('回顾报告已生成：'+r.path);openReader(r.path)})}
 
 /* ---- Setup 引导 ---- */
 function loadSetup(){api('api/setup/status').then(items=>{

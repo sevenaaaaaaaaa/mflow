@@ -338,6 +338,145 @@ def report_dashboard(path):
             "title": title_m.group(1).strip()[:80] if title_m else p.name}
 
 
+QA_HISTORY = RUN_DIR / "qa-history.jsonl"
+
+
+def qa_log(source, hook, rc):
+    try:
+        QA_HISTORY.parent.mkdir(parents=True, exist_ok=True)
+        with open(QA_HISTORY, "a") as f:
+            f.write(json.dumps({"ts": datetime.now().isoformat(timespec="seconds"),
+                                "source": source, "hook": hook, "rc": rc}) + "\n")
+    except Exception:
+        pass
+
+
+def qa_stats(days=14):
+    import datetime as _dt
+    rows = []
+    if QA_HISTORY.exists():
+        for l in QA_HISTORY.read_text().strip().split("\n"):
+            try:
+                rows.append(json.loads(l))
+            except Exception:
+                continue
+    by_day = {}
+    for r in rows:
+        d = r["ts"][:10]
+        s = by_day.setdefault(d, {"total": 0, "pass": 0})
+        s["total"] += 1
+        if r["rc"] == 0:
+            s["pass"] += 1
+    out = []
+    for i in range(days - 1, -1, -1):
+        d = (_dt.date.today() - _dt.timedelta(days=i)).isoformat()
+        s = by_day.get(d, {"total": 0, "pass": 0})
+        rate = round((s["total"] - s["pass"]) / s["total"] * 100) if s["total"] else 0
+        out.append({"date": d, "total": s["total"], "pass": s["pass"], "block_rate": rate})
+    recent = rows[-30:][::-1]
+    total = len(rows)
+    blocks = sum(1 for r in rows if r["rc"] != 0)
+    return {"days": out, "total_runs": total, "block_rate_all": round(blocks / total * 100) if total else 0,
+            "recent": recent}
+
+
+def selfreview_data():
+    import datetime as _dt
+    _dt_date, _dt_td = _dt.date, _dt.timedelta
+    usage = usage_stats()
+    qa = qa_stats(30)
+    # 吞吐：全项目 events 30 天
+    from collections import Counter
+    days = Counter()
+    if PROJECTS_DIR.exists():
+        for ef in PROJECTS_DIR.glob("*/events.jsonl"):
+            for l in ef.read_text().strip().split("\n")[-5000:]:
+                try:
+                    e = json.loads(l)
+                    days[str(e.get("ts", ""))[:10]] += 1
+                except Exception:
+                    continue
+    for i in range(29, -1, -1):
+        d = (_dt_date.today() - _dt_td(days=i)).isoformat()
+        days.setdefault(d, 0)
+    thr = sorted(days.items())
+    return {"qa": qa, "usage": {"total_tokens": usage["total_tokens"], "total_calls": usage["total_calls"],
+                                "by_day": usage["by_day"]},
+            "throughput": [{"date": d, "n": n} for d, n in thr]}
+
+
+def selfreview_markdown():
+    d = selfreview_data()
+    month = datetime.now().strftime("%Y-%m")
+    lines = [f"# MFlow 自我迭代回顾 — {month}", "",
+             f"> 生成时间：{datetime.now().strftime('%Y-%m-%d %H:%M')} · 覆盖近 30 天 · 数据源：qa-history / llm-usage / pipeline events", ""]
+    lines += ["## 质量门禁", "",
+              f"- 累计执行 {d['qa']['total_runs']} 次，整体 BLOCK 率 {d['qa']['block_rate_all']}%",
+              "- 近 30 天逐日 BLOCK 率：", ""]
+    for x in d["qa"]["days"]:
+        if x["total"]:
+            lines.append(f"  - {x['date']}：{x['total']} 次检查，BLOCK 率 {x['block_rate']}%")
+    lines += ["", "## Token 消耗", "",
+              f"- 累计 {d['usage']['total_calls']} 次调用 / {d['usage']['total_tokens']} tokens"]
+    for x in d["usage"]["by_day"][-10:]:
+        lines.append(f"  - {x['date']}：{x['tokens']} tokens")
+    lines += ["", "## 吞吐（状态机推进）", ""]
+    for x in d["throughput"][-10:]:
+        if x["n"]:
+            lines.append(f"  - {x['date']}：{x['n']} 次推进")
+    lines += ["", "## 💡 洞察", "",
+              "**问题**：待人工补充（回顾报告提供数据，判断由人做）", "",
+              "**根源**：见各曲线异常点对应日期的 session log", "",
+              "**缓解**：按 modules.md 迭代提示词模板与门禁规则", ""]
+    return "\n".join(lines)
+
+
+def report_structure(path):
+    p = safe_path(path)
+    if not p:
+        return {"error": "路径不可读"}
+    raw = p.read_text(errors="ignore")
+    title_m = re.search(r"^#\s+(.+)$", raw, re.M)
+    title = title_m.group(1).strip() if title_m else p.name
+    sections = []
+    cur = {"heading": "概览", "blocks": []}
+    for chunk in re.split(r"^(##\s+.+)$", raw, flags=re.M):
+        pass
+    lines = raw.split("\n")
+    cur = {"heading": "", "blocks": []}
+    sections = []
+    i = 0
+    table_buf = []
+    def flush_table():
+        nonlocal table_buf
+        if table_buf:
+            headers = [c.strip() for c in table_buf[0].strip().strip("|").split("|")]
+            rows = [[c.strip() for c in l.strip().strip("|").split("|")] for l in table_buf[2:]]
+            sections[-1]["blocks"].append({"type": "table", "headers": headers, "rows": rows[:30]})
+            table_buf = []
+    for line in lines:
+        if line.strip().startswith("|"):
+            table_buf.append(line)
+            continue
+        if table_buf:
+            flush_table()
+        hm = re.match(r"^(#{2,3})\s+(.+)$", line)
+        if hm:
+            if cur["heading"] or cur["blocks"]:
+                sections.append(cur)
+            cur = {"heading": hm.group(2).strip(), "blocks": []}
+            continue
+        if line.strip().startswith("#"):  # H1 skip
+            continue
+        if line.strip():
+            cur["blocks"].append({"type": "para", "text": line.strip()})
+    if table_buf:
+        flush_table()
+    if cur["heading"] or cur["blocks"]:
+        sections.append(cur)
+    return {"title": title, "sections": sections[:20]}
+
+
 def trident_status():
     ing = RUN_DIR / "local-dev/Output/Data Ingestion"
     health = []
@@ -488,6 +627,7 @@ def loop_engine(loop_id, proj):
             llm_config()["profiles"]["default"]["provider"]].get("key")
         r = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/post-write-check.sh"),
                       "--file", str(draft_path), "--target-words", "15" if demo_mode else "300"], timeout=120)
+        qa_log(f"loop:{loop.get('id','')}", "post-write-check.sh", r["rc"])
         loop["last_hook_rc"] = r["rc"]
         if r["rc"] == 0:
             log(loop, "质检 PASS，推进状态机 S3-draft → S3-done → S4-qa")
@@ -1087,6 +1227,12 @@ class Handler(BaseHTTPRequestHandler):
                 return
             if parsed.path == "/api/impact":
                 return self._send(200, impact_report())
+            if parsed.path == "/api/report/structure":
+                return self._send(200, report_structure(qs.get("path", [""])[0]))
+            if parsed.path == "/api/qa/stats":
+                return self._send(200, qa_stats(int(qs.get("days", ["14"])[0])))
+            if parsed.path == "/api/selfreview":
+                return self._send(200, selfreview_data())
             if parsed.path == "/api/report/dashboard":
                 return self._send(200, report_dashboard(qs.get("path", [""])[0]))
             if parsed.path == "/api/dist/export":
@@ -1206,6 +1352,12 @@ class Handler(BaseHTTPRequestHandler):
                     "stage": d.get("stage"), "scenario": d.get("scenario"),
                     "action": d.get("action"), "profile": d.get("profile"),
                     "skills": d.get("skills"), "reason": d.get("reason")}})
+            if self.path == "/api/selfreview/generate":
+                month_dir = PROJECT / "1-2 Insight/Trident Insights/reports/monthly"
+                month_dir.mkdir(parents=True, exist_ok=True)
+                f = month_dir / f"MFlow-自我迭代回顾-{datetime.now().strftime('%Y-%m')}.md"
+                f.write_text(selfreview_markdown().replace("\\n", "\n"))
+                return self._send(200, {"ok": True, "path": rel_of(f)})
             if self.path == "/api/hook/run":
                 hook = str(body.get("hook", ""))
                 if hook not in HOOKS:
@@ -1213,8 +1365,10 @@ class Handler(BaseHTTPRequestHandler):
                 f = Path(str(body.get("file", ""))).resolve()
                 if not f.exists() or PROJECT not in f.parents:
                     return self._send(400, {"error": "file 必须在项目目录内"})
-                return self._send(200, run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks" / hook),
-                                                 "--file", str(f)], timeout=120))
+                r = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks" / hook),
+                              "--file", str(f)], timeout=120)
+                qa_log("hook", hook, r["rc"])
+                return self._send(200, r)
             if self.path == "/api/daily/run":
                 if daily_status()["running"]:
                     return self._send(409, {"error": "每日管线已在运行中"})
@@ -1276,6 +1430,7 @@ class Handler(BaseHTTPRequestHandler):
                     llm_config()["profiles"]["default"]["provider"]].get("key") else "300"
                 hook = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/post-write-check.sh"),
                                  "--file", str(path), "--target-words", twords], timeout=120)
+                qa_log("generate", "post-write-check.sh", hook["rc"])
                 return self._send(200, {"ok": True, "path": rel_of(path), "chars": len(draft),
                                         "hook_rc": hook["rc"], "hook_out": hook["out"][-2000:]})
             if self.path == "/api/loop/create":
