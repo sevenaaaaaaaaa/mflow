@@ -108,3 +108,13 @@ oklch 暖灰色彩系统（明暗双主题）、玻璃拟态顶栏 + macOS 红�
 **踩坑新录**：post-write-check 词数按空格分词，CJK 长文被严重低估（680 汉字=21 词）——demo 模式豁免；正式中文稿需给 hook 加 CJK 字符当量逻辑（已列 Phase 2）。
 
 **验证**：setup 5/6 绿（差 LLM Key 属预期）、seed 注入、demo generate 680 字 hook PASS、version 1.0.0、外部 200。
+
+## v3.4 追加（同日）——Phase 2 全量交付
+
+1. CJK 分词修复落地（perl unicode 词当量，服务器验证 1778 字符→261 词，smoke 16/16 with env）
+2. 效果归因 /api/impact：published 外链 canonical path × GSC top20_pages；分发页表格渲染；数据边界注明（top20，可扩全量）
+3. 报告仪表 MVP：/api/report/dashboard 解析首个数值表 → 阅读器顶部指标卡（demo 月报：指标/上月/本月/环比 ×5 行）
+4. Loop 队列：queued + 调度线程（并发 2）+ loop.tokens_used 记账（LAST_USAGE 锁传递）
+5. publish_adapters：webhook 实现 / wordpress 骨架 / sanity 参考 / 统一 CLI / 接口 README
+6. 域名接入：setup-domain.sh（宝塔 Apache 基于域名 vhost 反代 8088，零影响既有站点）+ docs/domain-setup.md 三步（DNS→反代→HTTPS）；待用户提供域名即可生效
+已知项：smoketest 需 source env.sh（系统 py3.6 不认 annotations）——服务与管线不受影响（均带 venv env）。
