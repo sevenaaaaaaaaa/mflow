@@ -29,11 +29,12 @@
 
 ## Phase 3 · 生态（已排期，下一轮开始）
 
-**P3.1 账号体系 · 角色 · 审批流（1-2 天）**
-- 基座已就绪：auth.json（OpenFlow bcrypt 迁移，13 用户）+ 登录名/密码 + 二级目录入口 `nownexts.com/mflow/`
-- 角色分级：admin（全部）/ editor（创作+质检+推进）/ viewer（只读）——按 auth.json role 判定
-- 卡片与 Loop 归属人过滤（"我的任务"视图）
-- 发布审批流：approved 标志升级为 admin 审批动作（页面按钮 + 审计记录）
+**P3.1 账号体系 · 角色 · 审批流（2026-09-15 ✅）**
+- ✅ 多用户 bcrypt 登录（auth.json，OpenFlow 13 用户迁移）+ 角色分级落地：admin 全部 / marketing·sales·operator 创作与质检 / viewer 只读拦截；admin-only 白名单（LLM 配置/账号管理/审批/管线触发/删除）
+- ✅ 发布审批流：dispatch 单 admin「批准发布」按钮 + approved_by/approved_at + run/approvals.log 审计
+- ✅ 账号管理：admin 在设置页查看 13 账号与角色、重置任意账号密码（审计留痕）；root CLI `deploy/reset-account.sh` 免登录重置
+- ✅ 二级目录入口 nownexts.com/mflow/ + 当前用户显示 + 卡片负责人默认当前用户
+- 📋 归属人过滤（"我的任务"视图）并入下一小批
 
 **P3.2 模板市场雏形（2-3 天）**
 - 模板包格式：{工作流定义 + 提示词模板 + 知识源清单 + 质量钩子} 单 JSON
