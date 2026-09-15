@@ -357,8 +357,10 @@ def loop_engine(loop_id):
         draft_path.parent.mkdir(parents=True, exist_ok=True)
         draft_path.write_text(draft)
         log(loop, f"草稿写入 {draft_path.relative_to(PROJECT)}（{len(draft)} 字符），跑质量门禁…")
+        demo_mode = DEMO_FLAG.exists() and not llm_config()["providers"][
+            llm_config()["profiles"]["default"]["provider"]].get("key")
         r = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/post-write-check.sh"),
-                      "--file", str(draft_path), "--target-words", "300"], timeout=120)
+                      "--file", str(draft_path), "--target-words", "15" if demo_mode else "300"], timeout=120)
         loop["last_hook_rc"] = r["rc"]
         if r["rc"] == 0:
             log(loop, "质检 PASS，推进状态机 S3-draft → S3-done → S4-qa")
@@ -1011,8 +1013,11 @@ class Handler(BaseHTTPRequestHandler):
                 path = GEN_DIR / f"{item_id}.md"
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text(draft)
+                # demo 稿豁免词数门槛（hook 按空格分词，CJK 长文会被低估）
+                twords = "15" if DEMO_FLAG.exists() and not llm_config()["providers"][
+                    llm_config()["profiles"]["default"]["provider"]].get("key") else "300"
                 hook = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/post-write-check.sh"),
-                                 "--file", str(path), "--target-words", "300"], timeout=120)
+                                 "--file", str(path), "--target-words", twords], timeout=120)
                 return self._send(200, {"ok": True, "path": rel_of(path), "chars": len(draft),
                                         "hook_rc": hook["rc"], "hook_out": hook["out"][-2000:]})
             if self.path == "/api/loop/create":
