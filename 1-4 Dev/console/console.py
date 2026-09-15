@@ -768,6 +768,24 @@ def proj_paths(pid):
             "tasks": d / "tasks.json", "loops": d / "loops.json", "gen": d / "content"}
 
 
+def auth_record(username):
+    for x in read_json(AUTH_FILE, []):
+        if x.get("username") == username:
+            return x
+    return None
+
+
+def user_projects(username, role):
+    """admin → 全部；其他用户 → auth.json projects 绑定（默认含 main）。"""
+    if role == "admin":
+        return [x["id"] for x in list_projects()]
+    rec = auth_record(username) or {}
+    bound = list(rec.get("projects") or [])
+    if DEFAULT_PROJECT not in bound:
+        bound = [DEFAULT_PROJECT] + bound  # 默认项目对所有登录用户可见
+    return [pid for pid in bound if (PROJECTS_DIR / pid).exists()]
+
+
 def list_projects():
     out = []
     if PROJECTS_DIR.exists():
@@ -853,7 +871,7 @@ def _src_dirs(src):
     return []
 
 
-def kb_tree():
+def kb_tree(extra=None):
     out = []
     for label, desc, pairs in KNOWLEDGE_SOURCES:
         n = 0
@@ -862,10 +880,16 @@ def kb_tree():
             if base.exists():
                 n += sum(1 for f in base.glob(pat) if f.is_file() and f.suffix == ".md")
         out.append({"name": label, "desc": desc, "files": n})
+    for ex in (extra or []):
+        n = 0
+        base = PROJECT / ex.get("dir", "")
+        if ex.get("dir") and base.exists():
+            n = sum(1 for f in base.glob(ex.get("glob", "**/*.md")) if f.is_file() and f.suffix == ".md")
+        out.append({"name": "[项目] " + ex.get("label", "?"), "desc": "项目专属知识源", "files": n, "extra": ex})
     return out
 
 
-def kb_list(src):
+def kb_list(src, extra=None):
     files = []
     seen = set()
     for d, pat in _src_dirs(src):
@@ -881,11 +905,22 @@ def kb_list(src):
             seen.add(rp)
             files.append({"path": rp, "name": f.name, "date": fdate(f.stat().st_mtime)})
     files.sort(key=lambda x: x["name"].lower())
+    for ex in (extra or []):
+        if ("[项目] " + ex.get("label", "")) != src:
+            continue
+        base = PROJECT / ex.get("dir", "")
+        if not base.exists():
+            continue
+        for f in base.glob(ex.get("glob", "**/*.md")):
+            if f.is_file() and f.suffix == ".md":
+                files.append({"path": rel_of(f), "name": f.name, "date": fdate(f.stat().st_mtime)})
     return files[:400]
 
 
-def kb_search(q, src=""):
+def kb_search(q, src="", extra=None):
     sources = [(l, p) for l, _d, p in KNOWLEDGE_SOURCES if not src or l == src]
+    if src.startswith("[项目] "):
+        sources = [(src, [(ex.get("dir", ""), ex.get("glob", "**/*.md")) for ex in (extra or []) if ("[项目] " + ex.get("label", "")) == src])]
     q_lower = q.lower()
     hits, scanned = [], 0
     for _label, pairs in sources:
@@ -1093,12 +1128,24 @@ class Handler(BaseHTTPRequestHandler):
                 return x.get("role", "operator")
         return "admin" if (PASSWORD and not AUTH_FILE.exists()) else "viewer"
 
+    def _visible_projects(self):
+        return user_projects(self._me(), self._role())
+
     def _proj(self):
         sess = SESSIONS.get(self._sid(), {})
         pid = sess.get("project", DEFAULT_PROJECT) if isinstance(sess, dict) else DEFAULT_PROJECT
-        pp = proj_paths(pid)
-        if not pp["dir"].exists():
+        pp = PROJECTS_DIR / pid
+        if not pp.exists():
             ensure_project(pid)
+            pid = DEFAULT_PROJECT
+            if sid := self._sid():
+                if sid in SESSIONS:
+                    SESSIONS[sid]["project"] = pid
+        if pid not in self._visible_projects():  # P4.1 多租户隔离
+            pid = (self._visible_projects() or [DEFAULT_PROJECT])[0]
+            if sid := self._sid():
+                if sid in SESSIONS:
+                    SESSIONS[sid]["project"] = pid
         return pid
 
     def _sid(self):
@@ -1113,6 +1160,9 @@ class Handler(BaseHTTPRequestHandler):
     def _tk(self): return proj_paths(self._proj())["tasks"]
     def _lp(self): return proj_paths(self._proj())["loops"]
     def _gen(self): return proj_paths(self._proj())["gen"]
+
+    def _meta(self):
+        return read_json(PROJECTS_DIR / self._proj() / "meta.json", {})
 
     def _body(self):
         try:
@@ -1140,14 +1190,14 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/reports":
                 return self._send(200, list_reports())
             if parsed.path == "/api/kb/tree":
-                return self._send(200, kb_tree())
+                return self._send(200, kb_tree(self._meta().get("kb_extra")))
             if parsed.path == "/api/kb/list":
-                return self._send(200, kb_list(qs.get("src", [""])[0]))
+                return self._send(200, kb_list(qs.get("src", [""])[0], self._meta().get("kb_extra")))
             if parsed.path == "/api/kb/search":
                 q = qs.get("q", [""])[0].strip()
                 if len(q) < 2:
                     return self._send(400, {"error": "至少 2 个字符"})
-                return self._send(200, kb_search(q, qs.get("src", [""])[0]))
+                return self._send(200, kb_search(q, qs.get("src", [""])[0], self._meta().get("kb_extra")))
             if parsed.path == "/api/read":
                 p = safe_path(qs.get("path", [""])[0])
                 if not p:
@@ -1191,7 +1241,12 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/setup/status":
                 return self._send(200, setup_status(self._proj()))
             if parsed.path == "/api/projects":
-                return self._send(200, {"projects": list_projects(), "current": self._proj()})
+                vis = self._visible_projects()
+                return self._send(200, {"projects": [p for p in list_projects() if p["id"] in vis],
+                                        "current": self._proj(), "meta": self._meta(),
+                                        "kb_extra": self._meta().get("kb_extra", [])})
+            if parsed.path == "/api/kb/extra":
+                return self._send(200, self._meta().get("kb_extra", []))
             if parsed.path == "/api/version":
                 v = VERSION_FILE.read_text().strip() if VERSION_FILE.exists() else "dev"
                 return self._send(200, {"version": v, "started": time.strftime("%Y-%m-%d")})
@@ -1225,6 +1280,34 @@ class Handler(BaseHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(raw.encode())
                 return
+            if parsed.path == "/api/digest":
+                import time as _t
+                week = _t.time() - 7 * 86400
+                new_reports, latest = 0, None
+                for cat, d, pat in REPORT_CATS:
+                    base = PROJECT / d
+                    if not base.exists():
+                        continue
+                    for f in base.glob(pat):
+                        if f.is_file() and f.stat().st_mtime >= week:
+                            new_reports += 1
+                            if latest is None or f.stat().st_mtime > latest[0]:
+                                latest = (f.stat().st_mtime, {"name": f.name, "path": rel_of(f)})
+                thr = 0
+                if PROJECTS_DIR.exists():
+                    for ef in PROJECTS_DIR.glob("*/events.jsonl"):
+                        for l in ef.read_text().strip().split("\n")[-2000:]:
+                            try:
+                                e = json.loads(l)
+                                if str(e.get("ts", ""))[:10] >= datetime.now().strftime("%Y-%m-%d") and False:
+                                    continue
+                                if str(e.get("ts", ""))[:10] >= (datetime.now() - _t.timedelta(days=7)).strftime("%Y-%m-%d"):
+                                    thr += 1
+                            except Exception:
+                                continue
+                tok = sum(x["total_tokens"] for x in usage_stats()["by_day"][-7:])
+                return self._send(200, {"new_reports": new_reports, "throughput": thr, "tokens": tok,
+                                        "latest": latest[1] if latest else None})
             if parsed.path == "/api/impact":
                 return self._send(200, impact_report())
             if parsed.path == "/api/report/structure":
@@ -1302,7 +1385,17 @@ class Handler(BaseHTTPRequestHandler):
             if self._role() != "admin":
                 return self._send(403, {"error": "需要 admin"})
             return self._send(200, [{"username": x["username"], "role": x.get("role", ""),
-                                     "name": x.get("name", "")} for x in read_json(AUTH_FILE, [])])
+                                     "name": x.get("name", ""),
+                                     "projects": x.get("projects", [])} for x in read_json(AUTH_FILE, [])])
+        if self.path == "/api/account/set-projects":
+            if self._role() != "admin":
+                return self._send(403, {"error": "需要 admin"})
+            users = read_json(AUTH_FILE, [])
+            for u in users:
+                if u["username"] == body.get("username"):
+                    u["projects"] = [str(x) for x in body.get("projects", [])][:50]
+            AUTH_FILE.write_text(json.dumps(users, ensure_ascii=False, indent=1))
+            return self._send(200, {"ok": True})
         if not self._authed():
             return self._send(401, {"error": "unauthorized"})
         if not self._authed():
@@ -1526,6 +1619,24 @@ class Handler(BaseHTTPRequestHandler):
                 if f.exists():
                     f.unlink()
                 return self._send(200, {"ok": True})
+            if self.path == "/api/projects/config":
+                meta_f = PROJECTS_DIR / self._proj() / "meta.json"
+                meta = read_json(meta_f, {})
+                if "schedule" in body:
+                    meta["schedule"] = {"daily_quota": int(body["schedule"].get("daily_quota", 0) or 0),
+                                        "auto_loop": bool(body["schedule"].get("auto_loop", False))}
+                if "kb_extra" in body:
+                    extras = []
+                    for ex in body["kb_extra"][:20]:
+                        d = str(ex.get("dir", "")).strip()
+                        dd = (PROJECT / d).resolve()
+                        if d and dd.exists() and PROJECT in dd.parents:
+                            extras.append({"label": str(ex.get("label", ""))[:60], "dir": d,
+                                           "glob": str(ex.get("glob", "**/*.md"))[:120],
+                                           "desc": str(ex.get("desc", ""))[:200]})
+                    meta["kb_extra"] = extras
+                meta_f.write_text(json.dumps(meta, ensure_ascii=False, indent=1))
+                return self._send(200, {"ok": True, "meta": meta})
             if self.path == "/api/projects/create":
                 name = str(body.get("name", "")).strip()[:60]
                 if not name:
@@ -1534,6 +1645,14 @@ class Handler(BaseHTTPRequestHandler):
                 if (PROJECTS_DIR / pid).exists():
                     return self._send(409, {"error": f"项目 id 已存在：{pid}"})
                 ensure_project(pid, name=name)
+                me = self._me()
+                rec = auth_record(me)
+                if rec and self._role() != "admin":
+                    users = read_json(AUTH_FILE, [])
+                    for u in users:
+                        if u["username"] == me:
+                            u.setdefault("projects", []).append(pid)
+                    AUTH_FILE.write_text(json.dumps(users, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True, "id": pid})
             if self.path == "/api/projects/switch":
                 pid = str(body.get("id", ""))

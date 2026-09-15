@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MFlow · 内容工作台</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <script>try{var s=JSON.parse(localStorage.getItem('mflow-console-v1')||'{}');var t=s.theme||'light';if(t==='system'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t}catch(e){}</script>
 <style>
 :root{
@@ -194,6 +195,7 @@ th{color:var(--muted);font-weight:600}
 .numwrap{position:relative;min-width:90px}
 .numbar{position:absolute;left:0;top:15%;bottom:15%;background:var(--accent-soft);border-radius:4px;z-index:0}
 .numwrap .tnum{position:relative;z-index:1;padding-left:4px}
+@media print{#chrome,#sidebar,.head-actions,.row button{display:none!important}main{margin:8px}}
 </style>
 </head>
 <body>
@@ -301,8 +303,14 @@ th{color:var(--muted);font-weight:600}
       <p class="pg-sub" id="kb-sub">10 大知识源 · 产品知识、铁律约束、故事线、方法论、策略、关键词、规范、案例——写内容前后都该查的地方。</p></div>
       <div class="head-actions"><input id="kq" placeholder="跨源搜关键词…" style="width:240px" onkeydown="if(event.key==='Enter')kbSearch('')"><button class="btn primary" onclick="kbSearch('')">搜索</button></div></div>
     <div class="cols">
-      <div class="card" style="height:fit-content"><div class="card-head"><h3>知识源</h3></div><div id="kdirs" style="display:flex;flex-direction:column;gap:6px"></div></div>
-      <div class="card"><div class="card-head"><h3 id="kres-t">浏览</h3><span class="mut" id="kdesc"></span></div><div id="kres" class="flist"></div></div>
+      <div class="card" style="height:fit-content"><div class="card-head"><h3>知识源</h3></div><div id="kdirs" style="display:flex;flex-direction:column;gap:6px"></div><span id="proj-extra-anchor" style="display:none"></span></div>
+      <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>本项目专属知识源</h3></div>
+      <div class="chips" id="k-extra"></div>
+      <div class="row" style="margin-top:8px"><input id="kx-label" placeholder="源名称" style="width:150px">
+       <input id="kx-dir" placeholder="库内目录（如 1-2 Insight/Keywords Research）" style="flex:1;min-width:200px">
+       <button class="btn ghost" onclick="addKbExtra()">挂载到本项目</button></div>
+      <div class="mut" style="margin-top:4px">目录须在项目库内存在；挂载后进知识搜索与浏览范围</div></div>
+    <div class="card"><div class="card-head"><h3 id="kres-t">浏览</h3><span class="mut" id="kdesc"></span></div><div id="kres" class="flist"></div></div>
     </div>
   </section>
 
@@ -428,6 +436,11 @@ th{color:var(--muted);font-weight:600}
   <section class="page" id="pg-set">
     <div class="pg-head"><div><div class="kick">系统</div><h1>设置 · <em class="sf">LLM · Harness</em></h1>
       <p class="pg-sub">大模型 API、Harness 规则、45 个 Skills、运行时同步。</p></div></div>
+    <div class="card"><div class="card-head"><h3>当前项目 · 调度配置</h3><span class="mut" id="cfg-name"></span></div>
+      <div class="row"><span class="mut" style="width:150px">每日内容配额（篇）</span><input id="cfg-quota" type="number" min="0" max="50" style="width:90px">
+      <label style="font-size:13px"><input id="cfg-auto" type="checkbox" style="margin-right:6px">启用自动排程（Phase 5 执行）</label>
+      <button class="btn ghost" onclick="saveProjCfg()">保存项目配置</button></div>
+      <div class="mut" style="margin-top:6px">配额与开关随项目存储（meta.schedule）；自动排程执行器在 Phase 5 落地，当前仅保存意图。</div></div>
     <div class="card"><div class="card-head"><h3>大模型 API（OpenAI 兼容）</h3>
       <button class="more" onclick="llmTest()">测试连通 →</button></div>
       <div id="llm-providers"></div>
@@ -441,7 +454,9 @@ th{color:var(--muted);font-weight:600}
       <div class="row" style="margin-top:10px"><input id="acc-u" placeholder="账号用户名" style="flex:1;min-width:140px">
       <input id="acc-p" placeholder="新密码（≥6 位）" style="flex:1;min-width:140px">
       <button class="btn primary" onclick="resetAcc()">重置该账号密码</button></div>
-      <div class="mut" style="margin-top:6px">权限矩阵：admin=全部 · marketing/sales/operator=创作与质检 · 只读角色无写权限。所有重置与审批动作记入 run/approvals.log</div></div>
+      <div class="mut" style="margin-top:6px">权限矩阵：admin=全部 · marketing/sales/operator=创作与质检 · 只读角色无写权限。所有重置与审批动作记入 run/approvals.log</div>
+      <div class="row" style="margin-top:10px"><span class="mut" style="width:110px">项目绑定</span><span class="mut" id="acc-proj-hint">点行内「分配」编辑该账号可见的项目</span></div>
+      <div id="acc-proj-rows" style="margin-top:6px"></div></div>
     <div class="ov-grid2" style="margin-top:14px">
       <div class="card"><div class="card-head"><h3>Harness 规则（全局铁律 + 工作线）</h3></div><div id="harness-rules"></div></div>
       <div class="card"><div class="card-head"><h3>Skills <span class="mut" id="skill-n"></span></h3>
@@ -514,8 +529,10 @@ th{color:var(--muted);font-weight:600}
       <p class="pg-sub">把 Markdown 报告渲染成结构化仪表：数值表自动变指标卡与比例条。月报 / 舆情 / 404 全适用。</p></div>
       <div class="head-actions">
         <select id="rd-cat" onchange="rdFill()" style="max-width:180px"></select>
-        <select id="rd-file" style="max-width:280px"></select>
+        <select id="rd-file" style="max-width:260px"></select>
+        <select id="rd-file-b" style="max-width:260px"><option value="">对比报告（可选）</option></select>
         <button class="btn primary" onclick="rdRender()">渲染仪表</button>
+        <button class="btn ghost" onclick="window.print()">🖨 打印/PDF</button>
         <button class="btn ghost" id="rd-raw" onclick="rdRaw()" style="display:none">原文阅读</button></div></div>
     <div id="rd-body"><span class="mut">选择分类与报告后点「渲染仪表」</span></div>
   </section>
@@ -608,7 +625,11 @@ function loadHome(){api('api/overview').then(o=>{
  $('home-acts').innerHTML=(lines.length?lines.map(l=>{const ok=/OK|✅/.test(l);
   return `<div class="act-item"><span class="act-ic ${ok?'ok':'wn'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><div class="act-tx"><div class="act-t">${esc(l.replace(/^(OK|FAIL|SKIP):?\s*/,''))}</div><div class="act-m">每日管线</div></div></div>`}).join(''):'<span class="mut">暂无活动</span>')+
   `<div class="act-item"><span class="act-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><div class="act-tx"><div class="act-t">下次调度：每天 08:00 管线 · 02:30 梦境 · 周一 07:00 周报</div><div class="act-m">Asia/Shanghai</div></div></div>`;
- $('home-timers').innerHTML=esc((o.timers||'').split('\n').filter(l=>/mflow/.test(l)).join('\n'))||'—';
+ try{api('api/digest').then(dg=>{
+ if(!dg)return;$('home-timers').parentElement.insertAdjacentHTML('beforebegin',
+  `<div class="card" style="margin-bottom:14px"><div class="card-head"><h3>本周速览</h3></div><div class="mut" style="font-size:13px;line-height:1.9">
+   近 7 日新增报告 <b>${dg.new_reports}</b> 份 · 状态机推进 <b>${dg.throughput}</b> 次 · tokens <b>${dg.tokens.toLocaleString()}</b>${dg.latest?` · 最新报告：<a class="more" href="#" onclick="openReader('${esc(dg.latest.path)}');return false">${esc(dg.latest.name)}</a>`:''}</div></div>`)})}catch(e){}
+$('home-timers').innerHTML=esc((o.timers||'').split('\n').filter(l=>/mflow/.test(l)).join('\n'))||'—';
  const c=o.chart7d||[];const mx=Math.max(1,...c.map(x=>x.n));
  $('chart7').innerHTML=c.map(x=>`<div class="cb"><span class="vl tnum">${x.n||''}</span><div class="bar" style="height:${Math.max(4,x.n/mx*100)}%"></div><span class="lb">${x.label}</span></div>`).join('');
  $('chart7-meta').innerHTML=`近 7 日共 <b class="tnum">${c.reduce((a,b)=>a+b.n,0)}</b> 次推进`;
@@ -663,11 +684,17 @@ function pickCat(c){RCAT=c;renderReports();const files=REPORTS[c]||[];
 
 /* ---- 知识中台 ---- */
 let KDIR='';
+function addKbExtra(){const label=$('kx-label').value.trim(),dir=$('kx-dir').value.trim();
+ if(!label||!dir)return alert('填名称和目录');
+ api('api/projects/config',{kb_extra:[{label,dir,glob:'**/*.md'}]}).then(r=>{if(r.error)return alert(r.error);
+  $('kdirs').innerHTML='';loadKb()})}
 function loadKb(){if($('kdirs').children.length)return;api('api/kb/tree').then(srcs=>{
  const total=srcs.reduce((a,b)=>a+b.files,0);$('kb-sub').textContent=`${srcs.length} 大知识源 · ${total} 份文档 —— 产品知识、铁律约束、故事线、方法论、策略、关键词、规范、案例，写内容前后都该查。`;
- $('kdirs').dataset.srcs=JSON.stringify(srcs);
- $('kdirs').innerHTML=srcs.map(d=>`<button class="chip" style="border-radius:12px;text-align:left;justify-content:space-between;display:flex" onclick="pickDir('${esc(d.name)}',this)"><span>${esc(d.name)}</span><span class="mut">${d.files}</span></button>`).join('');
- $('kdesc').textContent='点击左侧知识源浏览'})}
+ $('kdirs').dataset.srcs=JSON.stringify(srcs.filter(x=>!x.name.startsWith('[项目]')));
+ $('kdirs').innerHTML=srcs.filter(x=>!x.name.startsWith('[项目]')).map(d=>`<button class="chip" style="border-radius:12px;text-align:left;justify-content:space-between;display:flex" onclick="pickDir('${esc(d.name)}',this)"><span>${esc(d.name)}</span><span class="mut">${d.files}</span></button>`).join('');
+ $('kdesc').textContent='点击左侧知识源浏览';
+ const extras=srcs.filter(x=>x.name.startsWith('[项目]'));
+ const kx=$('k-extra');if(kx)kx.innerHTML=extras.map(x=>`<span class="chip" onclick="pickDir('${esc(x.name)}',document.getElementById('proj-extra-anchor'))">${esc(x.name)} · ${x.files}</span>`).join('')||'<span class="mut">尚无项目专属源——用下方表单挂载</span>'})}
 function pickDir(n,el){KDIR=n;document.querySelectorAll('#kdirs .chip').forEach(x=>x.classList.remove('on'));el.classList.add('on');$('kq').value='';
  api('api/kb/list?src='+encodeURIComponent(n)).then(items=>{
   const meta=(()=>{const all=JSON.parse(document.getElementById('kdirs').dataset.srcs||'[]');return all.find(x=>x.name===n)||{}})();
@@ -785,7 +812,7 @@ function flowAdv(){const id=$('fitem').value.trim();if(!id)return alert('先填�
 
 /* ---- 设置 ---- */
 let LLMCFG=null;
-function loadSet(){api('api/llm').then(c=>{LLMCFG=c;
+function loadSet(){loadProjCfg();api('api/llm').then(c=>{LLMCFG=c;
  $('llm-providers').innerHTML=Object.entries(c.providers).map(([n,p])=>`<div class="row">
    <b style="width:80px;font-size:13px">${n}</b>
    <input id="lp-base-${n}" value="${esc(p.base||'')}" placeholder="base url" style="flex:1;min-width:180px">
@@ -797,8 +824,16 @@ function loadSet(){api('api/llm').then(c=>{LLMCFG=c;
  if(!c.providers.deepseek.key)$('llm-test').textContent='（尚未配置 Key——生成功能不可用）';
  api('api/account/list').then(acc=>{
   $('acc-role').textContent=window.__ROLE==='admin'?'（当前 admin）':'（需 admin 角色可见操作）';
-  $('acc-list').innerHTML='<table><tr><th>用户名</th><th>姓名</th><th>角色</th></tr>'+acc.map(a=>
-   `<tr><td><b>${esc(a.username)}</b></td><td>${esc(a.name||'')}</td><td><span class="badge ${a.role==='admin'?'pipe':'dist'}">${esc(a.role)}</span></td></tr>`).join('')+'</table>'}).catch(e=>{})
+  $('acc-list').innerHTML='<table><tr><th>用户名</th><th>姓名</th><th>角色</th><th>项目</th></tr>'+acc.map(a=>
+   {const projs=a.projects&&a.projects.length?a.projects.join('、'):(a.role==='admin'?'全部（admin）':'main（默认）');
+    return `<tr><td><b>${esc(a.username)}</b></td><td>${esc(a.name||'')}</td><td><span class="badge ${a.role==='admin'?'pipe':'dist'}">${esc(a.role)}</span></td><td>${esc(projs)} <button class="mini" onclick="editAccProj('${esc(a.username)}')">分配</button></td></tr>`}).join('')+'</table>'}).catch(e=>{})
+ let PROJ_EDIT=null;
+ function editAccProj(u){PROJ_EDIT=u;api('api/projects').then(d=>{
+  $('acc-proj-hint').textContent='为 '+u+' 勾选可见项目（admin 自动全部可见）：';
+  $('acc-proj-rows').innerHTML=d.projects.map(p=>`<label style="margin-right:12px;font-size:12.5px"><input type="checkbox" value="${esc(p.id)}" class="accp">${esc(p.name)}</label>`).join('')+
+   `<button class="btn primary" style="padding:5px 14px;font-size:12px" onclick="saveAccProj()">保存分配</button>`})}
+ function saveAccProj(){const ids=[...document.querySelectorAll('.accp:checked')].map(x=>x.value);
+  api('api/account/set-projects',{username:PROJ_EDIT,projects:ids}).then(()=>{loadSet()})}
  api('api/harness').then(h=>{
   $('harness-rules').innerHTML='<table><tr><th>规则</th><th>行数</th><th>更新</th><th></th></tr>'+h.rules.map(r=>
    `<tr><td>${esc(r.name)}</td><td class="tnum">${r.lines}</td><td class="mut">${r.mtime}</td><td><button class="more" onclick="openReader('${esc(r.path)}')">读</button></td></tr>`).join('')+'</table>';
@@ -812,6 +847,13 @@ function llmSave(){const providers={},profiles={};
  document.querySelectorAll('[id^=lpr-prov-]').forEach(i=>{const n=i.id.replace('lpr-prov-','');(profiles[n]=profiles[n]||{}).provider=i.value});
  document.querySelectorAll('[id^=lpr-model-]').forEach(i=>{const n=i.id.replace('lpr-model-','');(profiles[n]=profiles[n]||{}).model=i.value});
  api('api/llm/save',{providers,profiles}).then(()=>{alert('已保存');loadSet()})}
+function loadProjCfg(){api('api/projects').then(d=>{
+ const m=d.meta||{};const sc=m.schedule||{};
+ if($('cfg-name'))$('cfg-name').textContent='（'+((d.projects.find(p=>p.id===d.current)||{name:d.current}).name)+'）';
+ if($('cfg-quota'))$('cfg-quota').value=sc.daily_quota||0;
+ if($('cfg-auto'))$('cfg-auto').checked=!!sc.auto_loop}).catch(()=>{})}
+function saveProjCfg(){api('api/projects/config',{schedule:{daily_quota:$('cfg-quota').value,auto_loop:$('cfg-auto').checked}})
+ .then(r=>{if(r.error)return alert(r.error);alert('项目配置已保存')})}
 function resetAcc(){const u=$('acc-u').value.trim(),p=$('acc-p').value;if(!u||p.length<6)return alert('填用户名和 ≥6 位新密码');
  if(!confirm('确认重置 '+u+' 的密码？'))return;
  api('api/account/reset',{username:u,new_password:p}).then(r=>{alert(r.error?('失败：'+r.error):'已重置，该账号可用新密码登录');$('acc-p').value=''})}
@@ -887,7 +929,8 @@ function loadRdash(){if($('rd-cat').children.length)return;
  api('api/reports').then(r=>{window.__RCATS=r;
   $('rd-cat').innerHTML=Object.keys(r).map(c=>`<option>${c}</option>`).join('');rdFill()})}
 function rdFill(){const c=$('rd-cat').value;const files=(window.__RCATS||{})[c]||[];
- $('rd-file').innerHTML=files.slice(0,60).map(f=>`<option value="${esc(f.path)}">${esc(f.name)}</option>`).join('')}
+ const opts=files.slice(0,60).map(f=>`<option value="${esc(f.path)}">${esc(f.name)}</option>`).join('');
+ $('rd-file').innerHTML=opts;$('rd-file-b').innerHTML='<option value="">对比报告（可选）</option>'+opts}
 function numbarTable(headers,rows){const maxv={};
  rows.forEach(r=>headers.forEach((h,ci)=>{const v=parseFloat((r[ci]||'').replace(/,/g,''));if(!isNaN(v)&&Math.abs(v)>(maxv[ci]??0))maxv[ci]=Math.abs(v)}));
  return `<table><tr>${headers.map(h=>`<th>${esc(h)}</th>`).join('')}</tr>`+rows.map(r=>`<tr>${headers.map((h,ci)=>{
@@ -895,7 +938,19 @@ function numbarTable(headers,rows){const maxv={};
   if(isNaN(v))return `<td>${esc(raw)}</td>`;
   const w=maxv[ci]?Math.max(4,Math.abs(v)/maxv[ci]*100):4;const neg=raw.trim().startsWith('-');
   return `<td><div class='numwrap'><div class='numbar' style='width:${w.toFixed(0)}%;${neg?'background:var(--warn);':''}'></div><span class='tnum'>${esc(raw)}</span></div></td>`}).join('')}</tr>`).join('')+'</table>'}
+let __charts=[];
+function chartToggle(btn,tblIdx){const holder=document.getElementById('chart-'+tblIdx);
+ if(holder.style.display==='none'){holder.style.display='block';return}
+ holder.style.display='block';
+ const data=window.__TBLDATA&&window.__TBLDATA[tblIdx];if(!data)return;
+ const canvas=document.createElement('canvas');holder.innerHTML='';holder.appendChild(canvas);
+ new Chart(canvas,{type:'bar',data:{labels:data.rows.map(r=>r[0]),datasets:data.headers.slice(1).map((h,i)=>({label:h,data:data.rows.map(r=>{const v=parseFloat((r[i+1]||'').replace(/,/g,''));return isNaN(v)?0:v})),backgroundColor:`hsl(${250+i*40} 70% 60% / .65)`}))},options:{responsive:true}})}
+async function rdRenderDual(){const b=$('rd-file-b').value;if(!b)return;
+ const d=await api('api/report/structure?path='+encodeURIComponent(b));
+ $('rd-body').innerHTML=`<div class="card"><div class="card-head"><h3>对比基准：${esc(d.title)}</h3><button class="more" onclick="rdRender()">← 返回单报告</button></div>
+  ${(d.sections||[]).map(sec=>`<div style="margin:10px 0"><b>${esc(sec.heading)}</b>${(sec.blocks||[]).map(bl=>bl.type==='table'?`<div style="overflow:auto;margin:6px 0">${numbarTable(bl.headers,bl.rows)}</div>`:`<p class="mut" style="font-size:12px">${esc(bl.text).slice(0,140)}</p>`).join('')}</div>`).join('')}</div>`}
 function rdRender(){const path=$('rd-file').value;if(!path)return;
+ if($('rd-file-b').value){return rdRenderDual()}__charts.forEach(c=>{try{c.destroy()}catch(e){}});__charts=[];
  api('api/report/structure?path='+encodeURIComponent(path)).then(d=>{
   $('rd-raw').style.display='';
   let html=`<div class="card"><div class="card-head"><h3 style="font-size:17px">${esc(d.title)}</h3></div>`;
@@ -911,7 +966,11 @@ function rdRender(){const path=$('rd-file').value;if(!path)return;
         ${b.headers.slice(1).map((h,ci)=>`<div style="font-size:12px;margin-top:3px">${esc(h)} <b class="tnum" style="float:right">${esc(r[ci+1]||'')}</b></div>`).join('')}</div>`).join('')+`</div>`;
       firstNum=false;
       html+=`<div style="margin-top:10px">${numbarTable(b.headers,b.rows)}</div>`;
-     }else html+=`<div style="margin:10px 0;overflow:auto">${numbarTable(b.headers,b.rows)}</div>`;
+     }else{const ti=(window.__TBLDATA=window.__TBLDATA||[]).length;
+      (window.__TBLDATA=window.__TBLDATA||[]).push({headers:b.headers,rows:b.rows});
+      html+=`<div style="margin:10px 0;overflow:auto">${numbarTable(b.headers,b.rows)}</div>
+       <button class="mini" onclick="chartToggle(this,${ti})">📈 转图表</button>
+       <div id="chart-${ti}" style="display:none;margin-top:8px"></div>`}
     }});
    html+='</div>'});
   html+='</div>';

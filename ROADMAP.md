@@ -37,7 +37,15 @@
 - ✅ 共享平台能力：用户/LLM 配置/模板/知识中台/报告中心/调度
 - 📋 项目级调度与知识源隔离（每个项目独立知识源挂载）→ Phase 4
 
-## Phase 3 · 生态（已排期，下一轮开始）
+## Phase 4 · 放大项（2026-09-15/16 ✅ 首批交付）
+
+- ✅ P4.1 多租户账号隔离：auth.json 用户绑定 projects（admin 全可见）；/api/projects 按用户过滤、switch 越权回落；create 自动绑定创建者；main 永远可见；设置页 admin 逐账号分配 UI；e2e 验证（受限用户只见绑定项目 + 无串扰）
+- ✅ P4.2a 项目级知识源：meta.kb_extra（label/dir/glob，路径安全校验）→ 知识中台合并渲染 [项目] 源 + 域内搜索；知识中台页挂载表单
+- ✅ P4.2b 项目调度配置：meta.schedule（daily_quota/auto_loop）存储 + 设置页当前项目配置卡；**自动排程执行器排 Phase 5**（当前保存意图）
+- ✅ P4.3 报告可视化 R2（表格 → Chart.js 图表切换）/ R4（打印/PDF 样式与按钮）/ R3（双报告并排对比）/ R5（总览本周速览卡：新增报告/吞吐/token）
+- ✅ P4.4 插件规范：docs/plugins.md（三类插件 + manifest + 权限模型）+ plugins/plugin_check.py 六项校验器（示例插件 PASS）+ sample-source 示例
+
+## Phase 3 · 生态（2026-09-15 ✅ 全部交付）
 
 **P3.1 账号体系 · 角色 · 审批流（2026-09-15 ✅）**
 - ✅ 多用户 bcrypt 登录（auth.json，OpenFlow 13 用户迁移）+ 角色分级落地：admin 全部 / marketing·sales·operator 创作与质检 / viewer 只读拦截；admin-only 白名单（LLM 配置/账号管理/审批/管线触发/删除）
