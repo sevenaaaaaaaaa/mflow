@@ -36,9 +36,12 @@
 - ✅ 二级目录入口 nownexts.com/mflow/ + 当前用户显示 + 卡片负责人默认当前用户
 - 📋 归属人过滤（"我的任务"视图）并入下一小批
 
-**P3.2 模板市场雏形（2-3 天）**
-- 模板包格式：{工作流定义 + 提示词模板 + 知识源清单 + 质量钩子} 单 JSON
-- 安装 / 导出 API + 模板管理页；内置 3 个行业模板（电商内容 / SaaS 增长 / 本地服务）
+**P3.2 模板市场雏形（2026-09-15 ✅）**
+- ✅ 模板包格式 v1：{id/name/version + workflow 定义 + prompt(audience/tone/structure/anti_slop_extra) + kb_sources_suggestion} 单 JSON，`templates/` 随仓库分发
+- ✅ 内置 3 个行业模板：电商内容（广告法禁例）/ SaaS 增长（ROI 承诺禁例）/ 本地服务（NAP 一致性）
+- ✅ 生成联动：创作中心选模板 → gen_prompt 应用行业 audience/tone/结构/附加禁例；Loop 记录 template_id
+- ✅ 市场页：模板卡（版本/作者/描述/工作流链）+ 查看 JSON + 导出下载 + 粘贴/文件导入（校验三要素）+ 自定义模板删除（内置保护）
+- ✅ e2e：列表 3 → 导入 4 → 删除回 3；带模板生成 hook PASS
 
 **P3.3 报告可视化 R1 完整版（2 天）**
 - 月报 / 舆情日报 / 404 三个类型化 Dashboard 独立页（R1 MVP 已验证指标卡提取）

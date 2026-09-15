@@ -1,0 +1,23 @@
+{
+  "id": "local-service",
+  "name": "本地服务内容工作流",
+  "version": "1.0",
+  "author": "MFlow built-in",
+  "description": "面向本地客户：服务页、区域页、评价整合、本地 FAQ。强调 NAP 一致性与城市+服务关键词，CTA 倾向预约/来电。",
+  "workflow": {
+    "id": "landing-scenario",
+    "name": "本地服务页面生产（模板版）",
+    "flow": ["S0 服务×区域关键词入队", "S3 生成（服务页/区域页/FAQ）", "S3 质检 + NAP 一致性检查", "S4 人工审（资质与承诺核对）", "S5 发布", "S6 到店/来电监控"],
+    "profiles": "生成 lovart-creation · 质检 lovart-quality · 发布 lovart-ops",
+    "skills": ["lovart-landing-page", "lovart-content-quality-gates"],
+    "kb": ["产品知识库", "铁律与规则"]
+  },
+  "prompt": {
+    "audience": "附近 5-15 公里内搜索即时服务的居民：关心距离、响应时间、价格透明、真实评价。",
+    "tone": "邻家专业感：说人话、给确定性（营业时间/响应时限/服务范围），不推销。",
+    "structure": "写一个本地服务页面（主题：{TOPIC}）。结构：Hero（服务 + 城市 + 一句承诺 + 电话/预约 CTA）→ 服务范围（列出可覆盖区域示例）→ 3 个服务块（做什么/多久/怎么收费框架）→ 2 条真实场景 → 资质与保障说明 → FAQ（5 条：价格区间/响应时间/覆盖区域/预约方式/取消政策）→ 底部重复 CTA。",
+    "anti_slop_extra": "本地服务附加禁例：禁止无执照/资质引用的承诺（资质号标 [待填写]）；价格只给区间框架并标 [以报价为准]；城市/区域表述必须与实际服务范围一致，不得堆砌未覆盖城市；评价引用必须真实可溯。"
+  },
+  "kb_sources_suggestion": ["产品知识库", "铁律与规则"],
+  "default_lang": "zh"
+}

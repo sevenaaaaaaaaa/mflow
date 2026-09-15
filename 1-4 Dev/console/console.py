@@ -67,6 +67,7 @@ def loop_queue_worker():
             print(f"[queue] {e}", file=sys.stderr)
 USAGE_FILE = RUN_DIR / "llm-usage.jsonl"
 DEMO_FLAG = RUN_DIR / "demo.json"
+TEMPLATES_DIR = PROJECT / "templates"
 VERSION_FILE = PROJECT / "VERSION"
 CALENDAR_ROOT = PROJECT / "1-3 GenFlow" / "Content Calendar"
 _CAL_CACHE = {"files": None, "ts": 0}
@@ -358,10 +359,46 @@ ANTI_SLOP = """硬性写作规则（违反任何一条即为废稿）：
 - 面向真实用户的具体场景，不写空泛综述"""
 
 
-def gen_prompt(ctype, lang, topic, brief, feedback=""):
+def get_template(tid):
+    if not tid:
+        return None
+    f = TEMPLATES_DIR / f"{str(tid).replace('/', '').replace('..', '')}.json"
+    if not f.exists():
+        return None
+    try:
+        return json.loads(f.read_text())
+    except Exception:
+        return None
+
+
+def list_templates():
+    out = []
+    if TEMPLATES_DIR.exists():
+        for f in sorted(TEMPLATES_DIR.glob("*.json")):
+            try:
+                d = json.loads(f.read_text())
+            except Exception:
+                continue
+            out.append({"id": d.get("id", f.stem), "name": d.get("name", f.stem),
+                        "version": d.get("version", "1.0"), "author": d.get("author", ""),
+                        "description": d.get("description", ""),
+                        "workflow": d.get("workflow"), "file": rel_of(f)})
+    return out
+
+
+def gen_prompt(ctype, lang, topic, brief, feedback="", template=None):
     lang_name = {"zh": "简体中文", "zh-TW": "繁体中文", "en": "English", "ja": "日本語", "ko": "한국어",
                  "de": "Deutsch", "fr": "Français", "pt": "Português", "ru": "Русский", "it": "Italiano"}.get(lang, lang)
-    if ctype == "blog":
+    tpl = (template or {}).get("prompt") or {}
+    audience = tpl.get("audience")
+    tone = tpl.get("tone")
+    extra = tpl.get("anti_slop_extra", "")
+    structure = tpl.get("structure", "")
+    if structure:
+        spec = f"用{lang_name}写。{structure.replace('{TOPIC}', topic)}"
+        if ctype == "blog":
+            spec += "\n全文 1200-1800 字。"
+    elif ctype == "blog":
         spec = f"""用{lang_name}写一篇 Blog 文章，主题：{topic}。
 结构：H1 标题 → 导语（3-4 句，直给读者收益）→ 4-6 个 H2 章节（每章有小节正文，含具体场景/步骤/对比）→ FAQ（3 条）→ 结尾行动建议。
 全文 1200-1800 字。可直接提及 Lovart（AI 设计工作台）作为相关工具推荐，但不通篇吹捧。"""
@@ -370,12 +407,15 @@ def gen_prompt(ctype, lang, topic, brief, feedback=""):
         spec = f"""用{lang_name}写一个 {page.upper()} 类落地页的完整文案，主题：{topic}。
 结构：Hero（大标题 + 副标题一句 + CTA 按钮文案）→ 3 个 Benefit 块（小标题 + 2-3 句说明）→ 使用场景 2 条 → FAQ（3 条）→ 底部 CTA。
  Lovart 相关功能描述基于公开常识，不编造参数。"""
+    anti = ANTI_SLOP + (f"\n{extra}" if extra else "")
+    aud = (f"\n目标读者：{audience}" if audience else "")
+    ton = (f"\n语气要求：{tone}" if tone else "")
     fb = (f"\n\n上一轮质检未通过，反馈如下，务必针对性修正：\n{feedback}") if feedback else ""
-    return f"""{spec}
+    return f"""{spec}{aud}{ton}
 
 {brief}
 
-{ANTI_SLOP}{fb}
+{anti}{fb}
 
 直接输出 Markdown 正文，不要任何解释性开场白。"""
 
@@ -417,7 +457,8 @@ def loop_engine(loop_id):
         _loop_save(loop)
         try:
             draft = llm_chat([{"role": "user", "content": gen_prompt(
-                loop["type"], loop["lang"], loop["topic"], loop["brief"], feedback)}],
+                loop["type"], loop["lang"], loop["topic"], loop["brief"], feedback,
+                template=get_template(loop.get("template_id")))}],
                 profile="lovart-creation", max_tokens=4000)
         except Exception as e:
             loop["status"] = "failed"
@@ -963,6 +1004,20 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, calendar_view(qs.get("q", [""])[0].strip(), qs.get("lang", [""])[0]))
             if parsed.path == "/api/trident":
                 return self._send(200, trident_status())
+            if parsed.path == "/api/templates":
+                return self._send(200, list_templates())
+            if parsed.path == "/api/templates/export":
+                tpl = get_template(qs.get("id", [""])[0])
+                if not tpl:
+                    return self._send(404, {"error": "模板不存在"})
+                raw = json.dumps(tpl, ensure_ascii=False, indent=2)
+                self.send_response(200)
+                self.send_header("Content-Type", "application/json; charset=utf-8")
+                self.send_header("Content-Disposition", f"attachment; filename={tpl.get('id','template')}.json")
+                self.send_header("Content-Length", str(len(raw.encode())))
+                self.end_headers()
+                self.wfile.write(raw.encode())
+                return
             if parsed.path == "/api/impact":
                 return self._send(200, impact_report())
             if parsed.path == "/api/report/dashboard":
@@ -1129,12 +1184,14 @@ class Handler(BaseHTTPRequestHandler):
                 item_id = str(body.get("item_id", "")).strip()
                 if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,78}", item_id):
                     return self._send(400, {"error": "id 不合法"})
+                tpl = get_template(str(body.get("template_id", "")))
                 try:
                     run_tool([sys.executable, str(PS_PATH), "upsert", "--id", item_id,
                               "--category", str(body.get("type", "blog"))])
                     draft = llm_chat([{"role": "user", "content": gen_prompt(
                         str(body.get("type", "blog")), str(body.get("lang", "zh")),
-                        str(body.get("topic", ""))[:300], str(body.get("brief", ""))[:800])}],
+                        str(body.get("topic", ""))[:300], str(body.get("brief", ""))[:800],
+                        template=tpl)}],
                         profile="lovart-creation")
                 except Exception as e:
                     return self._send(400, {"error": str(e)[:300]})
@@ -1156,6 +1213,7 @@ class Handler(BaseHTTPRequestHandler):
                     loops = read_json(LOOPS_FILE, [])
                     loop = {"id": secrets.token_hex(4), "item_id": item_id,
                             "goal": str(body.get("topic", ""))[:200],
+                            "template_id": str(body.get("template_id", "")),
                             "type": str(body.get("type", "blog")), "lang": str(body.get("lang", "zh")),
                             "topic": str(body.get("topic", ""))[:300], "brief": str(body.get("brief", ""))[:800],
                             "status": "queued", "round": 0, "max_rounds": 3, "tokens_used": 0,
@@ -1217,6 +1275,25 @@ class Handler(BaseHTTPRequestHandler):
                 target.write_text(json.dumps(dd, ensure_ascii=False, indent=2))
                 with open(RUN_DIR / "approvals.log", "a") as f:
                     f.write(f"{dd['approved_at']} APPROVE {did} by {self._me()}\n")
+                return self._send(200, {"ok": True})
+            if self.path == "/api/templates/import":
+                tpl = body.get("template")
+                if not isinstance(tpl, dict) or not tpl.get("id") or not tpl.get("name") or not tpl.get("prompt"):
+                    return self._send(400, {"error": "模板需包含 id / name / prompt 三要素"})
+                tpl["id"] = re.sub(r"[^a-z0-9-]", "", str(tpl["id"]).lower())[:60]
+                if not tpl["id"]:
+                    return self._send(400, {"error": "id 只能是小写字母/数字/连字符"})
+                TEMPLATES_DIR.mkdir(parents=True, exist_ok=True)
+                (TEMPLATES_DIR / f"{tpl['id']}.json").write_text(json.dumps(tpl, ensure_ascii=False, indent=2))
+                return self._send(200, {"ok": True, "id": tpl["id"]})
+            if self.path == "/api/templates/delete":
+                tid = str(body.get("id", "")).replace("/", "").replace("..", "")
+                f = TEMPLATES_DIR / f"{tid}.json"
+                builtin = {"ecommerce-content", "saas-growth", "local-service"}
+                if tid in builtin:
+                    return self._send(400, {"error": "内置模板不可删除"})
+                if f.exists():
+                    f.unlink()
                 return self._send(200, {"ok": True})
             if self.path == "/api/tasks/add":
                 title = str(body.get("title", "")).strip()[:200]

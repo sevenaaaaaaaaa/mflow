@@ -224,6 +224,7 @@ th{color:var(--muted);font-weight:600}
   <button class="s-item" data-t="loops" onclick="setTab('loops')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></svg><span>Loop · Agent 模式</span><span class="sbad mutb" id="nav-loops">0</span></button>
   <button class="s-item" data-t="flow" onclick="setTab('flow')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.5 6h9M6 8.2 10.5 16M18 8.2 13.5 16"/></svg><span>节点流水线</span></button>
   <button class="s-item" data-t="wfmap" onclick="setTab('wfmap')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg><span>工作流地图</span></button>
+  <button class="s-item" data-t="mkt" onclick="setTab('mkt')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg><span>模板市场</span><span class="sbad mutb" id="nav-mkt">0</span></button>
   <div class="sec-title">情报与产出</div>
   <button class="s-item" data-t="reports" onclick="setTab('reports')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></svg><span>报告中心</span><span class="sbad mutb" id="nav-reports">0</span></button>
   <button class="s-item" data-t="kb" onclick="setTab('kb')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>知识库</span></button>
@@ -353,13 +354,30 @@ th{color:var(--muted);font-weight:600}
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>定时器</h3></div><pre id="stimers">…</pre></div>
   </section>
 
+  <!-- ============ 模板市场 ============ -->
+  <section class="page" id="pg-mkt">
+    <div class="pg-head"><div><div class="kick">创作</div><h1>模板<em class="sf">市场</em></h1>
+      <p class="pg-sub">一个模板包 = 工作流定义 + 提示词结构 + 行业禁例 + 知识源建议。选中即应用于创作中心与 Loop。</p></div>
+      <div class="head-actions">
+        <button class="btn ghost" onclick="$('imp-box').style.display=$('imp-box').style.display==='none'?'block':'none'">⇪ 导入模板</button>
+        <button class="btn primary" onclick="loadMkt()">刷新</button></div></div>
+    <div class="card" id="imp-box" style="display:none;margin-bottom:14px">
+      <div class="card-head"><h3>粘贴模板 JSON</h3><span class="mut">必含 id / name / prompt 三要素；id 小写连字符</span></div>
+      <textarea id="imp-json" placeholder='{"id":"my-template","name":"…","prompt":{"structure":"…","anti_slop_extra":"…"}}' style="width:100%;min-height:120px;border:1px solid var(--border);border-radius:12px;padding:10px;font-family:var(--font-mono);font-size:12px;background:var(--surface-strong);color:var(--fg)"></textarea>
+      <div class="row" style="margin-top:8px"><button class="btn primary" onclick="importTpl()">导入</button>
+      <input type="file" accept=".json" onchange="importFile(this)" style="font-size:12px"></div>
+    </div>
+    <div id="mkt-list"></div>
+  </section>
+
   <!-- ============ 创作中心 ============ -->
   <section class="page" id="pg-create">
     <div class="pg-head"><div><div class="kick">创作</div><h1>创作<em class="sf">中心</em></h1>
       <p class="pg-sub">Blog 与 6 类落地页的生成入口。Loop 会自动「生成 → 质检 → 按反馈迭代」最多 3 轮；通过后草稿入 S4-qa 等人工审。</p></div></div>
     <div class="ov-grid2">
       <div class="card"><div class="card-head"><h3>新建内容</h3></div>
-        <div class="chips" id="ctypes" style="margin-bottom:10px"></div>
+        <div class="row"><span class="mut" style="width:70px">行业模板</span><div class="chips" id="ctpl"></div></div>
+        <div class="chips" id="ctypes" style="margin:10px 0"></div>
         <div class="row"><select id="clang"></select>
           <input id="ctopic" placeholder="主题（如：AI 海报生成器怎么选）" style="flex:1;min-width:200px"></div>
         <div class="row"><input id="cbrief" placeholder="补充简报：目标读者 / 必含要点（可空）" style="flex:1"></div>
@@ -514,7 +532,7 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
  $('pg-'+t).classList.add('on');
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
-   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup}[t]||(()=>{}))()}
+   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt}[t]||(()=>{}))()}
 function openReader(path){api('api/read?path='+encodeURIComponent(path)).then(r=>{
  $('rname').textContent=r.name;
  const toc=(r.toc||[]).filter(t=>t.level===2);
@@ -673,21 +691,24 @@ function runDaily(){api('api/daily/run').then(()=>{setTimeout(()=>{if(TAB==='sys
 /* ---- 创作中心 ---- */
 const GTYPES={"blog":"Blog 文章","landing-tools":"落地页·Tools","landing-features":"落地页·Features","landing-product":"落地页·Product","landing-scenario":"落地页·Scenario","landing-solution":"落地页·Solution","landing-topic":"落地页·Topic"};
 const GLANGS=[["zh","简体中文"],["en","English"],["ja","日本語"],["ko","한국어"],["de","Deutsch"],["fr","Français"],["pt","Português"],["ru","Русский"],["it","Italiano"],["zh-TW","繁體中文"]];
-let CTYPE='blog';
+let CTYPE='blog', CTPL='';
 function slugify(s){return s.toLowerCase().replace(/[^a-z0-9\u4e00-\u9fff]+/g,'-').replace(/^-+|-+$/g,'').slice(0,60)||'content-'+Date.now()%10000}
 function loadCreate(){const tc=$('ctypes');
  if(!tc.children.length){tc.innerHTML=Object.entries(GTYPES).map(([k,v])=>`<span class="chip ${k==='blog'?'on':''}" data-k="${k}" onclick="pickType(this,'${k}')">${v}</span>`).join('');
-  $('clang').innerHTML=GLANGS.map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}}
-function pickType(el,k){CTYPE=k;document.querySelectorAll('#ctypes .chip').forEach(x=>x.classList.remove('on'));el.classList.add('on')}
+  $('clang').innerHTML=GLANGS.map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}
+ if(!$('ctpl').children.length)api('api/templates').then(ts=>{
+  $('nav-mkt').textContent=ts.length;
+  $('ctpl').innerHTML=`<span class="chip on" onclick="pickTpl('',this)">MFlow 标准</span>`+ts.map(x=>`<span class="chip" onclick="pickTpl('${esc(x.id)}',this)">${esc(x.name)}</span>`).join('')})}
+function pickTpl(id,el){CTPL=id;document.querySelectorAll('#ctpl .chip').forEach(x=>x.classList.remove('on'));el.classList.add('on')}
 function slugFromTopic(){const t=$('ctopic').value.trim()||$('ftopic').value.trim();const s=slugify(t);return s}
 function startLoop(){const topic=$('ctopic').value.trim();if(!topic)return alert('先填主题');
  const id=($('cid').value.trim()||slugFromTopic());
- api('api/loop/create',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim()})
+ api('api/loop/create',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim()},template_id:CTPL)
   .then(r=>{if(r.error)return alert(r.error);alert('Loop 已发起（id='+r.id+'），到「Loop · Agent 模式」看实时日志');setTab('loops')})}
 function genOnce(){const topic=$('ctopic').value.trim();if(!topic)return alert('先填主题');
  const id=($('cid').value.trim()||slugFromTopic());
  const btn=event.target;btn.disabled=true;btn.textContent='生成中…';
- api('api/generate',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim()})
+ api('api/generate',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim()},template_id:CTPL)
   .then(r=>{btn.disabled=false;btn.textContent='单次生成（节点·生成步）';
    if(r.error)return alert(r.error);
    alert('已生成 '+r.path+'（'+r.chars+' 字符）\n质检 exit='+r.hook_rc+'\n\n'+(r.hook_rc===0?'✅ 质检 PASS':'⚠️ 质检 BLOCK，见下')+'\n'+r.hook_out.slice(-600))})}
@@ -809,6 +830,25 @@ function loadUsage(){api('api/usage').then(u=>{
  $('usage-profiles').innerHTML=Object.entries(u.by_profile).map(([p,n])=>`${esc(p)}: <b class="tnum">${n.toLocaleString()}</b>`).join(' · ')||'—';
  $('usage-table').innerHTML='<tr><th>时间</th><th>profile</th><th>model</th><th>prompt</th><th>completion</th><th>total</th><th>耗时</th></tr>'+
   u.recent.map(r=>`<tr><td class="mut">${esc(r.ts)}</td><td>${esc(r.profile)}</td><td class="mut">${esc(r.model)}</td><td class="tnum">${r.prompt_tokens}</td><td class="tnum">${r.completion_tokens}</td><td class="tnum">${r.total_tokens}</td><td class="tnum">${r.latency_s}s</td></tr>`).join('')||'<tr><td colspan="7" class="mut">还没有调用——配好 LLM 后在创作中心发起一次即可</td></tr>'})}
+
+/* ---- 模板市场 ---- */
+function loadMkt(){api('api/templates').then(ts=>{
+ $('nav-mkt').textContent=ts.length;
+ $('mkt-list').innerHTML=ts.map(x=>`<div class="card" style="margin-bottom:12px">
+  <div class="card-head"><h3 style="font-size:15px">${esc(x.name)} <span class="mut">v${esc(x.version)} · ${esc(x.author||'')}</span></h3>
+   <div class="row">
+    <button class="mini" onclick="openReader('${esc(x.file)}')">查看 JSON</button>
+    <button class="mini" onclick="window.open('api/templates/export?id=${esc(x.id)}')">⇩ 导出</button>
+    <button class="mini" onclick="useTpl('${esc(x.id)}')">用于创作 →</button>
+    ${!['ecommerce-content','saas-growth','local-service'].includes(x.id)?`<button class="mini" style="color:var(--danger)" onclick="delTpl('${esc(x.id)}')">删除</button>`:''}
+   </div></div>
+  <div class="mut">${esc(x.description||'')}</div>
+  ${x.workflow?`<div class="chips" style="margin-top:8px">${(x.workflow.flow||[]).map(s=>`<span class="chip" style="cursor:default">${esc(s)}</span>`).join('<span class="mut">→</span>')}</div>`:''}
+  </div>`).join('')||'<span class="mut">无模板</span>'})}
+function useTpl(id){setTab('create');setTimeout(()=>{const el=[...document.querySelectorAll('#ctpl .chip')].find(c=>(c.getAttribute('onclick')||'').includes("'"+id+"'"));if(el)el.click()},300)}
+function importTpl(){try{const tpl=JSON.parse($('imp-json').value);api('api/templates/import',{template:tpl}).then(r=>{if(r.error)return alert(r.error);alert('已导入：'+r.id);$('imp-json').value='';loadMkt()})}catch(e){alert('JSON 解析失败')}}
+function importFile(inp){const f=inp.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{$('imp-json').value=rd.result;importTpl()};rd.readAsText(f)}
+function delTpl(id){if(!confirm('删除模板 '+id+'？'))return;api('api/templates/delete',{id}).then(()=>loadMkt())}
 
 /* ---- Setup 引导 ---- */
 function loadSetup(){api('api/setup/status').then(items=>{
