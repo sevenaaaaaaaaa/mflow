@@ -148,3 +148,15 @@ oklch 暖灰色彩系统（明暗双主题）、玻璃拟态顶栏 + macOS 红�
 - ROADMAP Phase 3 细化排期：P3.1 账号角色审批（1-2d）→ P3.2 模板市场（2-3d）→ P3.3 报告 Dashboard（2d）→ P3.4 自我迭代仪表（1-2d）
 
 **待用户**：用 OpenFlow 同款用户名密码登录实测 bcrypt 匹配（如超管 Seven）；若 CF 缓存可在 CF 刷新 /mflow/*。
+
+## v3.6 追加（同日）——P3.1 账号角色与审批流
+
+**登录失败排查结论**：hash 完整（60 字符 $2y$）、PHP↔Python bcrypt 互认实测等价（PHP password_hash → Python checkpw True/False 正确）、迁移源正确（admin/login.php 确读 users.json + password_verify + 可选 TOTP/验证码，无 TOTP 用户）。"密码错误"为后端真实响应——最可能是输入凭证与 users.json 不匹配。解法=重置通道，非代码缺陷。
+
+**P3.1 交付**：
+- 角色分级落地（OpenFlow 角色直继承）：admin 全部；marketing/sales/operator=editor 级；viewer 只读 POST 拦截；admin-only 白名单（LLM 配置/账号管理/审批/管线触发/任务删除）
+- 发布审批流：dispatch 单 admin「批准发布」按钮 → approved/approved_by/approved_at + run/approvals.log 审计
+- 账号管理：设置页 admin 查看账号角色表 + 应用内重置任意账号密码（bcrypt，审计）；root CLI deploy/reset-account.sh（免登录重置，服务自动重启）
+- ROADMAP P3.1 标记完成；"我的任务"归属人过滤移入下一小批
+
+**给用户的登录修复路径**：root 执行 `bash /var/www/mflow/deploy/reset-account.sh Seven 新密码` → 用 Seven+新密码登录 → 设置页可重置其他账号。
