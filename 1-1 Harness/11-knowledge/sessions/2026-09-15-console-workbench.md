@@ -170,3 +170,18 @@ oklch 暖灰色彩系统（明暗双主题）、玻璃拟态顶栏 + macOS 红�
 - 前端：创作中心「行业模板」chips（默认 MFlow 标准）；模板市场页（卡片/JSON 查看/导出/导入/删除）；导航徽标
 - e2e：templates 3 → import 4 → delete 3；ecommerce 模板 + demo 回退生成 hook PASS
 - 教训：console 重启清空内存 session——旧 cookie 401 会被误读为路由缺失；测临时账号用 venv python 清理（系统 py3.6 ascii 编码读中文 auth.json 会炸）
+
+## v3.8 追加（同日）——去品牌化 + 多项目架构（Phase 2.5）
+
+用户要求：①解除 Lovart 绑定换通用 ②支持多项目，功能作为平台能力平等给每个项目 ③下一轮 P3.3/P3.4。
+
+**多项目设计**：项目 = `run/projects/{id}/` 数据命名空间（pipeline-state/events/tasks/loops/content/meta）；平台能力共享（用户/LLM/模板/知识中台/报告/调度）。session 携带项目上下文；queue worker 全项目扫描（并发 2 全局）；pipeline_state 调用全部带 --state-path/--events-path。
+
+**API**：GET /api/projects（列表+当前）、POST create/switch/delete（admin，删除进 _trash）。
+**前端**：侧栏 brand 下项目切换下拉 + ＋新建项目；问候语显示登录名。
+**去 Lovart**：login/console/生成提示词/demo 稿文案通用化；内部 skill ID 保留；模板 JSON 无品牌文案（profiles/skills 为内部 ID）。
+**迁移**：服务器 run/{tasks,loops}.json + 1-3 GenFlow/.pipeline/{state,events} + Console-Gen → projects/main/；旧路径 symlink 兼容（session-init）。
+
+**e2e**：main 继承存量（7 任务/3 条目）→ create B → switch B（全空）→ B 加任务 → 切回 main 不串 → delete B 进 _trash → tmptest2 清理。external 200。
+
+**踩坑**：大 patch 的 assert 中断导致整批未落盘——改"逐项容错+统一落盘+grep 终验"；Handler 方法块插入漏 _me 导致 AttributeError——方法迁移务必用方法清单核对。
