@@ -27,15 +27,29 @@
 - ✅ 报告可视化 R1 MVP：阅读器自动解析报告首个数值表 → 顶部指标卡仪表视图（月报即生效）
 - ✅ Loop 并发与队列：移除单跑限制 → queued 状态 + 调度线程（并发上限 2）+ 每 Loop token 记账
 
-## Phase 3 · 生态（后续）
+## Phase 3 · 生态（已排期，下一轮开始）
 
-- 📋 多用户账号体系（操作者实名 → 角色 → 审批流），发布授权从"共享密码"升级为"审批工作流"
-- ✅ 域名接入就绪：`deploy/setup-domain.sh` 一键反代 + `docs/domain-setup.md`（DNS → 反代 → HTTPS 三步）
+**P3.1 账号体系 · 角色 · 审批流（1-2 天）**
+- 基座已就绪：auth.json（OpenFlow bcrypt 迁移，13 用户）+ 登录名/密码 + 二级目录入口 `nownexts.com/mflow/`
+- 角色分级：admin（全部）/ editor（创作+质检+推进）/ viewer（只读）——按 auth.json role 判定
+- 卡片与 Loop 归属人过滤（"我的任务"视图）
+- 发布审批流：approved 标志升级为 admin 审批动作（页面按钮 + 审计记录）
+
+**P3.2 模板市场雏形（2-3 天）**
+- 模板包格式：{工作流定义 + 提示词模板 + 知识源清单 + 质量钩子} 单 JSON
+- 安装 / 导出 API + 模板管理页；内置 3 个行业模板（电商内容 / SaaS 增长 / 本地服务）
+
+**P3.3 报告可视化 R1 完整版（2 天）**
+- 月报 / 舆情日报 / 404 三个类型化 Dashboard 独立页（R1 MVP 已验证指标卡提取）
+
+**P3.4 自我迭代仪表（1-2 天）**
+- BLOCK 率 / token 成本 / 吞吐三曲线的月度自动回顾报告（写入报告中心）
+
+- ✅ 域名二级目录入口：`nownexts.com/mflow/`（Apache 双 vhost ProxyPass，见 session log v3.5）
+- ✅ 子域名方案备用：`deploy/setup-domain.sh` + `docs/domain-setup.md`（DNS → 反代 → HTTPS 三步）
 - 📋 已知项：质检钩子调 python3 依赖环境 PATH（服务/管线已带 venv env；手动跑 smoketest 需先 source run/env.sh）
 - 📋 报告可视化 R2-R5（Chart.js 趋势 / 双期对比 / PDF 导出 / 订阅摘要卡）
-- 📋 模板市场：把"工作流定义 + 提示词模板 + 知识源"打包为行业模板（电商/SaaS/律所…），一键安装
 - 📋 插件规范：第三方数据源/发布渠道按 §modules 协议贡献，TOOLS-REGISTRY 自动收录
-- 📋 自我迭代仪表：BLOCK 率 / token 成本 / 吞吐 三曲线的月度自动化回顾报告
 
 ## 原则
 
