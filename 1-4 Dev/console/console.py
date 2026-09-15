@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""MFlow Console v2 — content-ops workbench for the Lovart GEO workflow.
+"""MFlow Console — content-ops workbench for AI content factories (multi-project).
 
 v3 adds the production core: LLM provider config (OpenAI-compatible), generation
   entry for blog + 6 landing types, Agent mode (Loop: generate->QA->feedback, max 3
@@ -33,6 +33,8 @@ RUN_DIR = PROJECT / "run"
 STATE_FILE = PROJECT / "1-3 GenFlow" / ".pipeline" / "pipeline-state.json"
 EVENTS_FILE = PROJECT / "1-3 GenFlow" / ".pipeline" / "events.jsonl"
 TASKS_FILE = RUN_DIR / "tasks.json"
+PROJECTS_DIR = RUN_DIR / "projects"
+DEFAULT_PROJECT = "main"
 DAILY_LOG = RUN_DIR / "logs" / "daily.out.log"
 DAILY_PID = RUN_DIR / "logs" / "daily.pid"
 KB_ROOT = PROJECT / "1-2 Insight" / "Knowledge Base"
@@ -48,19 +50,26 @@ LAST_USAGE = {"total_tokens": 0}
 
 
 def loop_queue_worker():
-    """Queue scheduler: start queued loops while running < MAX_PARALLEL_LOOPS."""
+    """Queue scheduler across all projects (max parallel = MAX_PARALLEL_LOOPS)."""
     while True:
         time.sleep(4)
         try:
-            loops = read_json(LOOPS_FILE, [])
-            running = [x for x in loops if x.get("status") == "running"]
+            all_loops = []
+            if PROJECTS_DIR.exists():
+                for lf in PROJECTS_DIR.glob("*/loops.json"):
+                    pid = lf.parent.name
+                    for x in read_json(lf, []):
+                        x["_proj"] = pid
+                        all_loops.append(x)
+            running = [x for x in all_loops if x.get("status") == "running"]
             if len(running) >= MAX_PARALLEL_LOOPS:
                 continue
-            queued = [x for x in loops if x.get("status") == "queued"]
+            queued = sorted([x for x in all_loops if x.get("status") == "queued"],
+                            key=lambda x: x.get("created", ""))
             if not queued:
                 continue
-            nxt = sorted(queued, key=lambda x: x.get("created", ""))[0]
-            th = threading.Thread(target=loop_engine, args=(nxt["id"],), daemon=True)
+            nxt = queued[0]
+            th = threading.Thread(target=loop_engine, args=(nxt["id"], nxt["_proj"]), daemon=True)
             LOOP_THREADS[nxt["id"]] = th
             th.start()
         except Exception as e:
@@ -139,7 +148,7 @@ REPORT_CATS = [
 
 # 知识中台：10 大知识源（产品知识只是其一；约束/故事线/方法论/策略皆是知识）
 KNOWLEDGE_SOURCES = [
-    ("产品知识库", "Lovart 产品介绍 / 帮助中心 / 文档存档 / 新闻 / Changelog",
+    ("产品知识库", "你的产品介绍 / 帮助中心 / 文档存档 / 新闻 / Changelog",
      [("1-2 Insight/Knowledge Base", "**/*.md")]),
     ("铁律与规则", "全局铁律 RULES-00 + 六条工作线规则 + 会话路由（创作的硬约束）",
      [("1-1 Harness/02-rules", "*.md")]),
@@ -401,12 +410,12 @@ def gen_prompt(ctype, lang, topic, brief, feedback="", template=None):
     elif ctype == "blog":
         spec = f"""用{lang_name}写一篇 Blog 文章，主题：{topic}。
 结构：H1 标题 → 导语（3-4 句，直给读者收益）→ 4-6 个 H2 章节（每章有小节正文，含具体场景/步骤/对比）→ FAQ（3 条）→ 结尾行动建议。
-全文 1200-1800 字。可直接提及 Lovart（AI 设计工作台）作为相关工具推荐，但不通篇吹捧。"""
+全文 1200-1800 字。可在结尾自然推荐你的产品/工具（如适用），但不通篇吹捧。"""
     else:
         page = ctype.split("-")[1]
         spec = f"""用{lang_name}写一个 {page.upper()} 类落地页的完整文案，主题：{topic}。
 结构：Hero（大标题 + 副标题一句 + CTA 按钮文案）→ 3 个 Benefit 块（小标题 + 2-3 句说明）→ 使用场景 2 条 → FAQ（3 条）→ 底部 CTA。
- Lovart 相关功能描述基于公开常识，不编造参数。"""
+产品能力描述基于公开常识，不编造参数。"""
     anti = ANTI_SLOP + (f"\n{extra}" if extra else "")
     aud = (f"\n目标读者：{audience}" if audience else "")
     ton = (f"\n语气要求：{tone}" if tone else "")
@@ -421,28 +430,32 @@ def gen_prompt(ctype, lang, topic, brief, feedback="", template=None):
 
 
 # ── Loop 引擎（Agent 模式：生成→质检→反馈迭代，≤3 轮，对应 quality-cascade）──
-def _loop_save(loop):
-    loops = read_json(LOOPS_FILE, [])
+def _loop_save(loop, proj):
+    lp = proj_paths(proj)["loops"]
+    loops = read_json(lp, [])
     loops = [x for x in loops if x.get("id") != loop["id"]]
     loops.append(loop)
-    LOOPS_FILE.parent.mkdir(parents=True, exist_ok=True)
-    LOOPS_FILE.write_text(json.dumps(loops, ensure_ascii=False, indent=1))
+    lp.parent.mkdir(parents=True, exist_ok=True)
+    lp.write_text(json.dumps(loops, ensure_ascii=False, indent=1))
 
 
-def loop_engine(loop_id):
+def loop_engine(loop_id, proj):
+    lp = proj_paths(proj)["loops"]
+    gen_dir = proj_paths(proj)["gen"]
     def log(loop, msg):
         loop.setdefault("log", []).append(f"[{time.strftime('%H:%M:%S')}] {msg}")
-        _loop_save(loop)
+        _loop_save(loop, proj)
     with LOOP_LOCK:
-        loop = next((x for x in read_json(LOOPS_FILE, []) if x["id"] == loop_id), None)
+        loop = next((x for x in read_json(lp, []) if x["id"] == loop_id), None)
     if not loop:
         return
     loop["status"] = "running"
-    _loop_save(loop)
+    _loop_save(loop, proj)
     log(loop, f"Loop 启动：{loop['goal']}")
     item = loop["item_id"]
+    ps_args = ["--state-path", str(proj_paths(proj)["state"]), "--events-path", str(proj_paths(proj)["events"])]
     try:
-        run_tool([sys.executable, str(PS_PATH), "advance", "--id", item, "--to", "S3-creating"])
+        run_tool([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item, "--to", "S3-creating"])
     except Exception:
         pass
     feedback = ""
@@ -450,11 +463,11 @@ def loop_engine(loop_id):
         if loop.get("stop"):
             loop["status"] = "stopped"
             log(loop, "被用户停止")
-            _loop_save(loop)
+            _loop_save(loop, proj)
             return
         loop["round"] = rnd
         log(loop, f"第 {rnd} 轮：调用 LLM 生成（{loop['type']} / {loop['lang']}）")
-        _loop_save(loop)
+        _loop_save(loop, proj)
         try:
             draft = llm_chat([{"role": "user", "content": gen_prompt(
                 loop["type"], loop["lang"], loop["topic"], loop["brief"], feedback,
@@ -463,11 +476,11 @@ def loop_engine(loop_id):
         except Exception as e:
             loop["status"] = "failed"
             log(loop, f"LLM 调用失败：{e}")
-            _loop_save(loop)
+            _loop_save(loop, proj)
             return
         with _usage_lock:
             loop["tokens_used"] = loop.get("tokens_used", 0) + LAST_USAGE.get("total_tokens", 0)
-        draft_path = GEN_DIR / f"{item}.md"
+        draft_path = gen_dir / f"{item}.md"
         draft_path.parent.mkdir(parents=True, exist_ok=True)
         draft_path.write_text(draft)
         log(loop, f"草稿写入 {draft_path.relative_to(PROJECT)}（{len(draft)} 字符），跑质量门禁…")
@@ -479,18 +492,18 @@ def loop_engine(loop_id):
         if r["rc"] == 0:
             log(loop, "质检 PASS，推进状态机 S3-draft → S3-done → S4-qa")
             for stg in ("S3-draft", "S3-done", "S4-qa"):
-                run_tool([sys.executable, str(PS_PATH), "advance", "--id", item, "--to", stg])
+                run_tool([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item, "--to", stg])
             loop["status"] = "done"
             loop["draft_path"] = rel_of(draft_path)
             log(loop, "Loop 完成：草稿已入 S4-qa，等待人工审阅/继续推进")
-            _loop_save(loop)
+            _loop_save(loop, proj)
             return
         feedback = r["out"][-1500:]
         log(loop, f"质检 BLOCK（exit {r['rc']}），反馈带入下一轮")
-        _loop_save(loop)
+        _loop_save(loop, proj)
     loop["status"] = "blocked"
-    log(loop, f"达最大轮次仍 BLOCK。草稿在 {GEN_DIR / (item + '.md')}, 可人工修改后继续推进")
-    _loop_save(loop)
+    log(loop, f"达最大轮次仍 BLOCK。草稿在 {gen_dir / (item + '.md')}, 可人工修改后继续推进")
+    _loop_save(loop, proj)
 
 
 def harness_inventory():
@@ -536,7 +549,7 @@ MFlow 把写作规范做成可执行的检查，而不是写在文档里靠自�
 ## 多语言从这里开始
 
 MFlow 支持十种语言的独立撰写而非机器直译。切换语言后重新生成，你会得到符合当地表达习惯的版本。
-Lovart 团队用同样的方法维护八个语言市场的内容，具体数字因项目而异 [待考证]。
+一些团队用同样的方法维护多语言市场的内容，具体数字因项目而异 [待考证]。
 
 ## 下一步
 
@@ -553,12 +566,12 @@ Lovart 团队用同样的方法维护八个语言市场的内容，具体数字�
 """
 
 
-def setup_status():
+def setup_status(proj):
     llm = llm_config()
     llm_ok = any((p or {}).get("key") for p in llm["providers"].values())
     kb_total = sum(x["files"] for x in kb_tree())
     cal = sum(1 for _ in CALENDAR_ROOT.rglob("*.md")) if CALENDAR_ROOT.exists() else 0
-    items = len(read_json(STATE_FILE, {}).get("items", {}))
+    items = len(read_json(proj_paths(proj)["state"], {}).get("items", {}))
     return [
         {"id": "password", "label": "访问密码已设置", "ok": bool(PASSWORD),
          "hint": "run/env.sh 的 MFLOW_CONSOLE_PASSWORD", "goto": "sys"},
@@ -575,10 +588,11 @@ def setup_status():
     ]
 
 
-def seed_demo():
+def seed_demo(proj):
     DEMO_FLAG.parent.mkdir(parents=True, exist_ok=True)
     DEMO_FLAG.write_text(json.dumps({"seeded": datetime.now().isoformat(timespec="seconds")}))
-    tasks = read_json(TASKS_FILE, [])
+    tp = proj_paths(proj)["tasks"]
+    tasks = read_json(tp, [])
     have = {x.get("title") for x in tasks}
     for title, status in [("体验：发起第一个 Blog Loop（创作中心）", "todo"),
                           ("阅读：铁律与规则 → RULES-00（知识中台）", "todo"),
@@ -587,12 +601,46 @@ def seed_demo():
             tasks.append({"id": secrets.token_hex(4), "title": title, "status": status,
                           "source": "manual", "created": datetime.now().strftime("%Y-%m-%d %H:%M"),
                           "note": "demo seed", "assignee": "", "due": "", "link": "", "desc": ""})
-    TASKS_FILE.write_text(json.dumps(tasks, ensure_ascii=False, indent=1))
+    tp.write_text(json.dumps(tasks, ensure_ascii=False, indent=1))
     return {"ok": True, "note": "演示任务已注入；示例报告在 docs/demo-reports/"}
 
 
-SESSIONS = {}  # sid -> username
 AUTH_FILE = RUN_DIR / "auth.json"
+SESSIONS = {}  # sid -> {"username":…, "project":…}
+
+
+def ensure_project(pid, name=None):
+    pid = re.sub(r"[^a-z0-9-]", "", str(pid).lower())[:40] or DEFAULT_PROJECT
+    d = PROJECTS_DIR / pid
+    d.mkdir(parents=True, exist_ok=True)
+    meta = d / "meta.json"
+    if not meta.exists():
+        meta.write_text(json.dumps({"id": pid, "name": name or pid,
+                                    "created": datetime.now().strftime("%Y-%m-%d %H:%M")},
+                                   ensure_ascii=False))
+    (d / "content").mkdir(exist_ok=True)
+    return d
+
+
+def proj_paths(pid):
+    d = PROJECTS_DIR / pid
+    return {"dir": d, "state": d / "pipeline-state.json", "events": d / "events.jsonl",
+            "tasks": d / "tasks.json", "loops": d / "loops.json", "gen": d / "content"}
+
+
+def list_projects():
+    out = []
+    if PROJECTS_DIR.exists():
+        for d in sorted(PROJECTS_DIR.iterdir()):
+            if d.is_dir() and not d.name.startswith(("_", ".")):
+                meta = read_json(d / "meta.json", {})
+                st = read_json(d / "pipeline-state.json", {})
+                tasks = read_json(d / "tasks.json", [])
+                out.append({"id": d.name, "name": meta.get("name", d.name),
+                            "created": meta.get("created", ""),
+                            "items": len(st.get("items", {})),
+                            "open_tasks": sum(1 for x in tasks if x.get("status") != "done")})
+    return out
 
 
 def load_module(name, path):
@@ -729,9 +777,10 @@ def kb_search(q, src=""):
     return hits
 
 
-def tasks_all():
-    manual = read_json(TASKS_FILE, [])
-    state = read_json(STATE_FILE, {})
+def tasks_all(proj):
+    tp = proj_paths(proj)
+    manual = read_json(tp["tasks"], [])
+    state = read_json(tp["state"], {})
     pipeline = [{"id": i.get("id"), "stage": i.get("stage"), "phase": i.get("phase"),
                  "source": "pipeline"}
                 for i in state.get("items", {}).values()
@@ -756,10 +805,11 @@ def daily_status():
     return {"running": running, "tail": tail}
 
 
-def overview():
-    t = tasks_all()
+def overview(proj):
+    t = tasks_all(proj)
+    pp = proj_paths(proj)
     open_tasks = sum(1 for x in t["manual"] if x.get("status") != "done")
-    state = read_json(STATE_FILE, {})
+    state = read_json(pp["state"], {})
     inflight = sum(1 for i in state.get("items", {}).values()
                    if i.get("stage") not in ("done", "failed", "escalated"))
     sent = sorted((PROJECT / "1-2 Insight/Lovart ORM").glob("Lovart-Sentinel-*-daily.md"),
@@ -773,10 +823,10 @@ def overview():
                     key=lambda f: f.stat().st_mtime, reverse=True)
     timers = run_tool(["systemctl", "list-timers", "mflow-*", "--no-pager"], timeout=15)["out"]
     chart7 = []
-    if EVENTS_FILE.exists():
+    if pp["events"].exists():
         from collections import Counter
         days = Counter()
-        for l in EVENTS_FILE.read_text().strip().split("\n")[-2000:]:
+        for l in pp["events"].read_text().strip().split("\n")[-2000:]:
             try:
                 e = json.loads(l)
             except Exception:
@@ -801,12 +851,13 @@ def overview():
     }
 
 
-def api_state():
-    state = read_json(STATE_FILE, {})
+def api_state(proj):
+    pp = proj_paths(proj)
+    state = read_json(pp["state"], {})
     items = sorted(state.get("items", {}).values(), key=lambda i: i.get("updated_at", ""), reverse=True)
     events = []
-    if EVENTS_FILE.exists():
-        events = [json.loads(l) for l in EVENTS_FILE.read_text().strip().split("\n")[-40:] if l.strip()]
+    if pp["events"].exists():
+        events = [json.loads(l) for l in pp["events"].read_text().strip().split("\n")[-40:] if l.strip()]
     decisions = [{"stage": d.get("stage"), "scenario": d.get("scenario"),
                   "profile": d.get("profile"), "action": d.get("action")}
                  for d in (ROUTER.DECISIONS if ROUTER else [])]
@@ -889,18 +940,11 @@ class Handler(BaseHTTPRequestHandler):
     def _authed(self):
         if not PASSWORD and not AUTH_FILE.exists():
             return False  # fail-closed：既无多用户也无单密码
-        try:
-            c = http_cookies.SimpleCookie(self.headers.get("Cookie", ""))
-            return c["mflow_session"].value in SESSIONS
-        except Exception:
-            return False
+        return bool(self._me())
 
     def _me(self):
-        try:
-            c = http_cookies.SimpleCookie(self.headers.get("Cookie", ""))
-            return SESSIONS.get(c["mflow_session"].value, "")
-        except Exception:
-            return ""
+        sess = SESSIONS.get(self._sid(), "")
+        return sess.get("username", "") if isinstance(sess, dict) else str(sess)
 
     def _role(self):
         me = self._me()
@@ -908,6 +952,27 @@ class Handler(BaseHTTPRequestHandler):
             if x.get("username") == me:
                 return x.get("role", "operator")
         return "admin" if (PASSWORD and not AUTH_FILE.exists()) else "viewer"
+
+    def _proj(self):
+        sess = SESSIONS.get(self._sid(), {})
+        pid = sess.get("project", DEFAULT_PROJECT) if isinstance(sess, dict) else DEFAULT_PROJECT
+        pp = proj_paths(pid)
+        if not pp["dir"].exists():
+            ensure_project(pid)
+        return pid
+
+    def _sid(self):
+        try:
+            c = http_cookies.SimpleCookie(self.headers.get("Cookie", ""))
+            return c["mflow_session"].value
+        except Exception:
+            return ""
+
+    def _st(self): return proj_paths(self._proj())["state"]
+    def _ev(self): return proj_paths(self._proj())["events"]
+    def _tk(self): return proj_paths(self._proj())["tasks"]
+    def _lp(self): return proj_paths(self._proj())["loops"]
+    def _gen(self): return proj_paths(self._proj())["gen"]
 
     def _body(self):
         try:
@@ -927,11 +992,11 @@ class Handler(BaseHTTPRequestHandler):
             return self._send(401, {"error": "unauthorized"})
         try:
             if parsed.path == "/api/overview":
-                return self._send(200, overview())
+                return self._send(200, overview(self._proj()))
             if parsed.path == "/api/state":
-                return self._send(200, api_state())
+                return self._send(200, api_state(self._proj()))
             if parsed.path == "/api/tasks":
-                return self._send(200, tasks_all())
+                return self._send(200, tasks_all(self._proj()))
             if parsed.path == "/api/reports":
                 return self._send(200, list_reports())
             if parsed.path == "/api/kb/tree":
@@ -977,14 +1042,16 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/harness":
                 return self._send(200, harness_inventory())
             if parsed.path == "/api/loops":
-                loops = sorted(read_json(LOOPS_FILE, []),
+                loops = sorted(read_json(self._lp(), []),
                                key=lambda x: x.get("created", ""), reverse=True)
                 return self._send(200, loops)
             if parsed.path == "/api/loop/detail":
-                loop = next((x for x in read_json(LOOPS_FILE, []) if x["id"] == qs.get("id", [""])[0]), None)
+                loop = next((x for x in read_json(self._lp(), []) if x["id"] == qs.get("id", [""])[0]), None)
                 return self._send(200, loop or {"error": "not found"})
             if parsed.path == "/api/setup/status":
-                return self._send(200, setup_status())
+                return self._send(200, setup_status(self._proj()))
+            if parsed.path == "/api/projects":
+                return self._send(200, {"projects": list_projects(), "current": self._proj()})
             if parsed.path == "/api/version":
                 v = VERSION_FILE.read_text().strip() if VERSION_FILE.exists() else "dev"
                 return self._send(200, {"version": v, "started": time.strftime("%Y-%m-%d")})
@@ -1072,7 +1139,7 @@ class Handler(BaseHTTPRequestHandler):
                 name, role = username or "operator", "admin"
             if ok:
                 sid = secrets.token_urlsafe(32)
-                SESSIONS[sid] = username or name
+                SESSIONS[sid] = {"username": username or name, "project": DEFAULT_PROJECT}
                 self.send_response(200)
                 self.send_header("Set-Cookie", f"mflow_session={sid}; HttpOnly; Path=/; SameSite=Lax")
                 self.send_header("Content-Type", "application/json")
@@ -1116,12 +1183,16 @@ class Handler(BaseHTTPRequestHandler):
                 item_id = str(body.get("id", "")).strip()
                 if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,78}", item_id):
                     return self._send(400, {"error": "id 必须是小写字母/数字/连字符"})
-                r = run_tool([sys.executable, str(PS_PATH), "upsert", "--id", item_id,
+                r = run_tool([sys.executable, str(PS_PATH),
+                              "--state-path", str(self._st()), "--events-path", str(self._ev()),
+                              "upsert", "--id", item_id,
                               "--category", str(body.get("category", "blog")),
                               "--target-type", str(body.get("target_type", "blog"))])
                 return self._send(200 if r["rc"] == 0 else 400, r)
             if self.path == "/api/item/advance":
-                r = run_tool([sys.executable, str(PS_PATH), "advance", "--id", str(body.get("id", "")),
+                r = run_tool([sys.executable, str(PS_PATH),
+                              "--state-path", str(self._st()), "--events-path", str(self._ev()),
+                              "advance", "--id", str(body.get("id", "")),
                               "--to", str(body.get("to", "")),
                               "--reason", str(body.get("reason", "console"))[:200]])
                 return self._send(200 if r["rc"] == 0 else 400, r)
@@ -1186,7 +1257,9 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(400, {"error": "id 不合法"})
                 tpl = get_template(str(body.get("template_id", "")))
                 try:
-                    run_tool([sys.executable, str(PS_PATH), "upsert", "--id", item_id,
+                    run_tool([sys.executable, str(PS_PATH),
+                              "--state-path", str(self._st()), "--events-path", str(self._ev()),
+                              "upsert", "--id", item_id,
                               "--category", str(body.get("type", "blog"))])
                     draft = llm_chat([{"role": "user", "content": gen_prompt(
                         str(body.get("type", "blog")), str(body.get("lang", "zh")),
@@ -1195,7 +1268,7 @@ class Handler(BaseHTTPRequestHandler):
                         profile="lovart-creation")
                 except Exception as e:
                     return self._send(400, {"error": str(e)[:300]})
-                path = GEN_DIR / f"{item_id}.md"
+                path = self._gen() / f"{item_id}.md"
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text(draft)
                 # demo 稿豁免词数门槛（hook 按空格分词，CJK 长文会被低估）
@@ -1210,7 +1283,7 @@ class Handler(BaseHTTPRequestHandler):
                 if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,78}", item_id):
                     return self._send(400, {"error": "id 不合法"})
                 with LOOP_LOCK:
-                    loops = read_json(LOOPS_FILE, [])
+                    loops = read_json(self._lp(), [])
                     loop = {"id": secrets.token_hex(4), "item_id": item_id,
                             "goal": str(body.get("topic", ""))[:200],
                             "template_id": str(body.get("template_id", "")),
@@ -1219,17 +1292,20 @@ class Handler(BaseHTTPRequestHandler):
                             "status": "queued", "round": 0, "max_rounds": 3, "tokens_used": 0,
                             "created": datetime.now().strftime("%Y-%m-%d %H:%M"), "log": []}
                     loops.append(loop)
-                    LOOPS_FILE.parent.mkdir(parents=True, exist_ok=True)
-                    LOOPS_FILE.write_text(json.dumps(loops, ensure_ascii=False, indent=1))
-                run_tool([sys.executable, str(PS_PATH), "upsert", "--id", item_id,
+                    self._lp().parent.mkdir(parents=True, exist_ok=True)
+                    self._lp().write_text(json.dumps(loops, ensure_ascii=False, indent=1))
+                pp = proj_paths(self._proj())
+                run_tool([sys.executable, str(PS_PATH),
+                          "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
+                          "upsert", "--id", item_id,
                           "--category", str(body.get("type", "blog"))])
                 return self._send(200, {"ok": True, "id": loop["id"], "queued": True})
             if self.path == "/api/loop/stop":
-                loops = read_json(LOOPS_FILE, [])
+                loops = read_json(self._lp(), [])
                 for x in loops:
                     if x["id"] == body.get("id"):
                         x["stop"] = True
-                LOOPS_FILE.write_text(json.dumps(loops, ensure_ascii=False, indent=1))
+                self._lp().write_text(json.dumps(loops, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True})
             if self.path == "/api/trident/run":
                 step_id = str(body.get("step", ""))
@@ -1295,11 +1371,41 @@ class Handler(BaseHTTPRequestHandler):
                 if f.exists():
                     f.unlink()
                 return self._send(200, {"ok": True})
+            if self.path == "/api/projects/create":
+                name = str(body.get("name", "")).strip()[:60]
+                if not name:
+                    return self._send(400, {"error": "项目名必填"})
+                pid = re.sub(r"[^a-z0-9-]", "", str(body.get("id") or name).lower())[:40] or f"proj-{secrets.token_hex(3)}"
+                if (PROJECTS_DIR / pid).exists():
+                    return self._send(409, {"error": f"项目 id 已存在：{pid}"})
+                ensure_project(pid, name=name)
+                return self._send(200, {"ok": True, "id": pid})
+            if self.path == "/api/projects/switch":
+                pid = str(body.get("id", ""))
+                if not (PROJECTS_DIR / pid).exists():
+                    return self._send(404, {"error": "项目不存在"})
+                sid = self._sid()
+                if sid in SESSIONS:
+                    SESSIONS[sid]["project"] = pid
+                return self._send(200, {"ok": True, "current": pid})
+            if self.path == "/api/projects/delete":
+                if self._role() != "admin":
+                    return self._send(403, {"error": "需要 admin"})
+                pid = str(body.get("id", ""))
+                if pid == DEFAULT_PROJECT:
+                    return self._send(400, {"error": "默认项目不可删除"})
+                src = PROJECTS_DIR / pid
+                if not src.exists():
+                    return self._send(404, {"error": "项目不存在"})
+                trash = PROJECTS_DIR / "_trash"
+                trash.mkdir(exist_ok=True)
+                src.rename(trash / f"{pid}-{datetime.now().strftime('%Y%m%d%H%M%S')}")
+                return self._send(200, {"ok": True})
             if self.path == "/api/tasks/add":
                 title = str(body.get("title", "")).strip()[:200]
                 if not title:
                     return self._send(400, {"error": "标题必填"})
-                tasks = read_json(TASKS_FILE, [])
+                tasks = read_json(self._tk(), [])
                 tasks.append({"id": secrets.token_hex(4), "title": title,
                               "status": body.get("status", "todo"), "source": "manual",
                               "created": datetime.now().strftime("%Y-%m-%d %H:%M"),
@@ -1308,28 +1414,28 @@ class Handler(BaseHTTPRequestHandler):
                               "assignee": str(body.get("assignee", ""))[:60],
                               "due": str(body.get("due", ""))[:10],
                               "link": str(body.get("link", ""))[:300]})
-                TASKS_FILE.parent.mkdir(parents=True, exist_ok=True)
-                TASKS_FILE.write_text(json.dumps(tasks, ensure_ascii=False, indent=1))
+                self._tk().parent.mkdir(parents=True, exist_ok=True)
+                self._tk().write_text(json.dumps(tasks, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True})
             if self.path == "/api/tasks/update":
-                tasks = read_json(TASKS_FILE, [])
+                tasks = read_json(self._tk(), [])
                 for t in tasks:
                     if t["id"] == body.get("id"):
                         for k in ("title", "desc", "assignee", "due", "link", "status"):
                             if k in body:
                                 t[k] = str(body[k])[:2000]
-                TASKS_FILE.write_text(json.dumps(tasks, ensure_ascii=False, indent=1))
+                self._tk().write_text(json.dumps(tasks, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True})
             if self.path == "/api/tasks/set":
-                tasks = read_json(TASKS_FILE, [])
+                tasks = read_json(self._tk(), [])
                 for t in tasks:
                     if t["id"] == body.get("id"):
                         t["status"] = body.get("status", "todo")
-                TASKS_FILE.write_text(json.dumps(tasks, ensure_ascii=False, indent=1))
+                self._tk().write_text(json.dumps(tasks, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True})
             if self.path == "/api/tasks/del":
-                tasks = [t for t in read_json(TASKS_FILE, []) if t["id"] != body.get("id")]
-                TASKS_FILE.write_text(json.dumps(tasks, ensure_ascii=False, indent=1))
+                tasks = [t for t in read_json(self._tk(), []) if t["id"] != body.get("id")]
+                self._tk().write_text(json.dumps(tasks, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True})
         except Exception as e:
             return self._send(500, {"error": str(e)[:300]})
@@ -1339,6 +1445,7 @@ class Handler(BaseHTTPRequestHandler):
 def main():
     if not PASSWORD and not AUTH_FILE.exists():
         print("[console] FAIL-CLOSED: 无 auth.json 且未设 MFLOW_CONSOLE_PASSWORD，API 全部拒绝", file=sys.stderr)
+    ensure_project(DEFAULT_PROJECT, "默认项目")
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     threading.Thread(target=loop_queue_worker, daemon=True).start()
     print(f"[console] MFlow Console on :{PORT} (loop queue worker started, max_parallel={MAX_PARALLEL_LOOPS})")
