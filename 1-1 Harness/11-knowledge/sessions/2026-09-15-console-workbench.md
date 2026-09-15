@@ -133,3 +133,18 @@ oklch 暖灰色彩系统（明暗双主题）、玻璃拟态顶栏 + macOS 红�
 - ROADMAP Phase 3 细化排期：P3.1 账号角色审批（1-2d）→ P3.2 模板市场（2-3d）→ P3.3 报告 Dashboard（2d）→ P3.4 自我迭代仪表（1-2d）
 
 **待用户**：用 OpenFlow 同款用户名密码登录（如超管 Seven）验证 bcrypt 实际匹配；若 CF 有缓存可在 CF 刷新 /mflow/*。
+
+## v3.5 追加（同日）——二级目录入口 + OpenFlow 账号打通
+
+用户反馈：域名子域名方式打不开（无域名/DNS 未做），改用现有站点二级目录；账号密码照搬 OpenFlow。
+
+**发现**：真实站点域名 = nownexts.com（Cloudflare 代理 → 源站 172.96.253.73）；OpenFlow 部署于 /www/wwwroot/nownexts_com/（非 /var/www/openflow）；用户库 data/users.json = 13 用户 PHP bcrypt（$2y$），含超管 Seven。
+
+**交付**：
+- 入口：https://nownexts.com/mflow/（80 强制 HTTPS → 80/443 双 vhost 注入 ProxyPass /mflow/ → console:8088；备份+configtest+graceful，零影响 XMP）
+- 认证：console 登录改造为多用户 bcrypt 校验（run/auth.json 0600），单密码向后兼容，fail-closed 保留；login 页加用户名字段；header 显示当前用户；任务负责人默认当前用户
+- 前端 48 处 API 调用全部改相对路径（子路径反代兼容，绝对路径引用归零）
+- 公网验证：登录页 200 / 错误密码拒绝 / 未认证 API 401 / XMP 主站 200
+- ROADMAP Phase 3 细化排期：P3.1 账号角色审批（1-2d）→ P3.2 模板市场（2-3d）→ P3.3 报告 Dashboard（2d）→ P3.4 自我迭代仪表（1-2d）
+
+**待用户**：用 OpenFlow 同款用户名密码登录实测 bcrypt 匹配（如超管 Seven）；若 CF 缓存可在 CF 刷新 /mflow/*。
