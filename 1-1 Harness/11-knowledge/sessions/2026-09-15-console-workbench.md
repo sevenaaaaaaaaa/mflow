@@ -185,3 +185,10 @@ oklch 暖灰色彩系统（明暗双主题）、玻璃拟态顶栏 + macOS 红�
 **e2e**：main 继承存量（7 任务/3 条目）→ create B → switch B（全空）→ B 加任务 → 切回 main 不串 → delete B 进 _trash → tmptest2 清理。external 200。
 
 **踩坑**：大 patch 的 assert 中断导致整批未落盘——改"逐项容错+统一落盘+grep 终验"；Handler 方法块插入漏 _me 导致 AttributeError——方法迁移务必用方法清单核对。
+
+## v3.9 追加（同日）——P3.3 + P3.4，Phase 3 收官
+
+**P3.3 报告仪表**：通用 md 结构解析器（H2 分节 + 段落 + 表格）→「报告仪表」页（分类+报告选择 → 指标卡 + 比例条仪表渲染 + 原文切换）。月报/舆情/404 全适用（月报 20 节 29 表、舆情 15 节 12 表实测）。
+**P3.4 自我迭代仪表**：QA 历史埋点（qa-history.jsonl，覆盖手动钩子/生成/Loop 全部质检）→ 三曲线页（BLOCK 率 14 日 / token / 30 日全项目吞吐）+ 质检明细 + 一键生成月度回顾 md 入报告中心（已生成 2026-09 期）。
+
+**踩坑**：datetime 模块/类/属性三层混淆（_dt.date.timedelta / datetime.date.today）连修三次——统一约定：函数内 `import datetime as _dt` 且只用 `_dt.date.today()` 与 `_dt.timedelta()`，不引入第二套名字。
