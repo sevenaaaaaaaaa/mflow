@@ -39,3 +39,19 @@ status: ready
 - 新依赖：markdown==3.10.3（服务器 venv via uv；uv venv 无 pip，用 uv pip install --python）
 
 **验证**：overview/reports(10 类)/kb tree+search/read(月报 149K html 含表格)/tasks 增改删/穿越防护 400/外部 200 全部真实通过。
+
+## v3 追加（同日）——照 OpenFlow 控制台基因重构交互
+
+用户指路：参考 OpenFlow Dev 后台设计。解剖 openflow-console.html 提取设计基因：
+oklch 暖灰色彩系统（明暗双主题）、玻璃拟态顶栏 + macOS 红绿灯、248px 分组侧边栏、
+衬线斜体 display 标题 + mono kicker、metrics 涨跌卡、纯 CSS 柱图、漂浮光斑背景。
+
+**信息架构升级**（用户点名"主要入口、报表规划起来"）：
+- 总览 = 问候 + 4 metrics + 最新成果一键读 + 近 7 日管线活动柱图（events.jsonl 统计）+ 调度状态 + 活动流
+- 我的工作：任务看板 / 内容管线（独立页）
+- 情报与产出：报告中心 / 知识库 / 分发队列（从任务页只读区提升为独立页：pending + published + dispatch 单授权态）
+- 系统：路由·门禁 / 调度与日志
+- login.html 同风格重做（blob 背景 + 渐变 logo + 玻璃卡）
+
+后端：+/api/dist（pending/published/dispatch）、overview.chart7d。
+验证：dist 2/7/5、chart7d 正常（今日 3 次推进 = 本轮 smoke）、外部 200。
