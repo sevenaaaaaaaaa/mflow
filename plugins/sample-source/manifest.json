@@ -1,0 +1,10 @@
+{
+  "id": "sample-source",
+  "type": "source",
+  "name": "示例数据源（RSS/网页计数演示）",
+  "version": "1.0.0",
+  "author": "MFlow built-in",
+  "entry": "entry.py",
+  "permissions": ["network"],
+  "config": {"url": {"desc": "要拉取的 RSS/JSON 地址", "required": false}}
+}
