@@ -94,3 +94,17 @@ oklch 暖灰色彩系统（明暗双主题）、玻璃拟态顶栏 + macOS 红�
 6. 报告阅读器 V1 增强：TOC（月报 63 条）+ 表格数值条（月报 3753 条）；v2 规划落 docs/report-vision.md（R1 类型化 dashboard → R2 Chart.js → R3 对比模式 → R4 PDF → R5 订阅摘要）
 
 验证：calendar 3280（en796/zh792/zhtw788/ja788/ru58/pt58）、workflows 6、trident 4 步、CSV 10 行、toc 63/numbar 3753、外部 200。
+
+## v3.3 追加（同日）——产品化 Phase 0/1（面向所有公司可用）
+
+用户要求产品化排期并全部解决。交付：
+- **Setup 引导页**：6 项配置清单（密码/LLM/知识库/日历/Demo/首个工作流），徽标显示完成度，逐项跳转
+- **Demo 模式**：seed API 注入演示任务 + 标记；llm_chat 无 Key 时回退演示稿 → 未配 Key 也能完整跑通 生成→质检→状态机 闭环（hook_rc=0 验证）；示例月报/舆情报告两份（docs/demo-reports/）
+- **Trello 看板**：卡片拖拽跨列 + 编辑弹层（标题/描述/负责人/截止日）+ 操作者署名（localStorage）
+- **日历↔看板**：日历页一键「加入看板」，卡片带 🔗 关联
+- **版本体系**：VERSION 1.0.0 + /api/version + 侧栏版本号
+- **文档**：quickstart（8 步）/ deploy-guide（本地/systemd/Docker）/ modules（模块四注册点/CMS 适配器/数据源扩展/自我迭代）/ ROADMAP（四阶段排期）/ README 补新用户入口
+
+**踩坑新录**：post-write-check 词数按空格分词，CJK 长文被严重低估（680 汉字=21 词）——demo 模式豁免；正式中文稿需给 hook 加 CJK 字符当量逻辑（已列 Phase 2）。
+
+**验证**：setup 5/6 绿（差 LLM Key 属预期）、seed 注入、demo generate 680 字 hook PASS、version 1.0.0、外部 200。
