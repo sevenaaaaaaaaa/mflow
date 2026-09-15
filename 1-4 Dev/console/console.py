@@ -43,6 +43,8 @@ HARNESS_DIR = PROJECT / "1-1 Harness"
 LOOP_LOCK = threading.Lock()
 LOOP_THREADS = {}
 USAGE_FILE = RUN_DIR / "llm-usage.jsonl"
+DEMO_FLAG = RUN_DIR / "demo.json"
+VERSION_FILE = PROJECT / "VERSION"
 CALENDAR_ROOT = PROJECT / "1-3 GenFlow" / "Content Calendar"
 _CAL_CACHE = {"files": None, "ts": 0}
 
@@ -168,7 +170,12 @@ def llm_chat(messages, profile="default", max_tokens=4000, timeout=180):
     prov = cfg["providers"].get(pr["provider"], {})
     base, key, model = (prov.get("base") or "").rstrip("/"), prov.get("key", ""), pr.get("model", "")
     if not base or not key:
-        raise RuntimeError(f"LLM 未配置：provider={pr['provider']} 缺 base/key（去 设置 页填写）")
+        # Demo 模式回退：未配置 Key 但已导入 demo → 返回演示稿（零门槛看到完整闭环）
+        prompt = messages[-1]["content"] if messages else ""
+        if DEMO_FLAG.exists():
+            m = re.search(r"主题：(.+?)。", prompt)
+            return demo_draft("blog", "zh", m.group(1) if m else "工作流演示")
+        raise RuntimeError(f"LLM 未配置：provider={pr['provider']} 缺 base/key（去 设置 页填写，或先在引导页导入 Demo 数据体验演示模式）")
     req = json.dumps({"model": model, "messages": messages,
                       "temperature": 0.7, "max_tokens": max_tokens}).encode()
     import urllib.request
@@ -388,6 +395,85 @@ def harness_inventory():
                        "path": rel_of(f),
                        "desc": (m.group(1).replace("\n", " ").strip() if m else "")})
     return {"rules": rules, "skills": skills}
+
+DEMO_MODE_NOTE = {"demo": True}
+
+
+def demo_draft(ctype, lang, topic):
+    """无 LLM Key 时的演示稿：结构完整、可通过 post-write-check，让用户零门槛看到闭环。"""
+    return f"""# {topic or "Demo"}：第一次内容工作流演示
+
+这是一篇由 MFlow 工作流生成的演示草稿（demo 模式，未调用真实大模型）。
+它展示的是系统的完整闭环：生成 → 质量门禁 → 状态机推进 → 人工审阅。
+
+## 它解决什么问题
+
+内容团队每天要回答三个问题：写什么、怎么写、发到哪。这篇演示稿对应"怎么写"环节。
+读者是刚接触 MFlow 的运营者：读完你就能看懂一篇合格稿件的结构标准。
+
+## 系统如何保证质量
+
+MFlow 把写作规范做成可执行的检查，而不是写在文档里靠自觉。
+生成完成后系统自动运行质量门禁：标题层级、段落信息密度、模板话术残留、占位符都会被检查。
+不通过的稿件会带着反馈回到生成环节重写，最多三轮，这正是 Loop 模式的作用。
+
+## 多语言从这里开始
+
+MFlow 支持十种语言的独立撰写而非机器直译。切换语言后重新生成，你会得到符合当地表达习惯的版本。
+Lovart 团队用同样的方法维护八个语言市场的内容，具体数字因项目而异 [待考证]。
+
+## 下一步
+
+在设置页配置你的大模型 API Key，然后回创作中心用同一主题发起一次正式生成。
+对比演示稿与真实稿的差异，你就能判断提示词模板是否需要按你的行业调整。
+
+## FAQ
+
+**演示稿可以发布吗？** 可以走完发布流程，但它不含真实信息量，建议只用它理解流程。
+
+**质量门禁会误杀正常内容吗？** 会偶发。门禁输出会说明触发原因，人工审阅环节可以放行。
+
+**如何换成本公司的品牌语气？** 修改创作中心使用的提示词模板，把品牌词与禁用词表替换即可。
+"""
+
+
+def setup_status():
+    llm = llm_config()
+    llm_ok = any((p or {}).get("key") for p in llm["providers"].values())
+    kb_total = sum(x["files"] for x in kb_tree())
+    cal = sum(1 for _ in CALENDAR_ROOT.rglob("*.md")) if CALENDAR_ROOT.exists() else 0
+    items = len(read_json(STATE_FILE, {}).get("items", {}))
+    return [
+        {"id": "password", "label": "访问密码已设置", "ok": bool(PASSWORD),
+         "hint": "run/env.sh 的 MFLOW_CONSOLE_PASSWORD", "goto": "sys"},
+        {"id": "llm", "label": "大模型 API 已配置", "ok": llm_ok,
+         "hint": "设置页填 DeepSeek/OpenAI Key 并测试连通", "goto": "set"},
+        {"id": "kb", "label": "知识库已就绪", "ok": kb_total > 0,
+         "hint": f"当前 {kb_total} 份知识文档", "goto": "kb"},
+        {"id": "calendar", "label": "内容日历已同步", "ok": cal > 0,
+         "hint": f"当前 {cal} 篇", "goto": "calt"},
+        {"id": "demo", "label": "Demo 数据已导入（可选）", "ok": DEMO_FLAG.exists(),
+         "hint": "一键注入演示任务与示例报告", "goto": "setup"},
+        {"id": "firstflow", "label": "第一个工作流已运行", "ok": items > 0,
+         "hint": "创作中心发起一次生成或 Loop", "goto": "create"},
+    ]
+
+
+def seed_demo():
+    DEMO_FLAG.parent.mkdir(parents=True, exist_ok=True)
+    DEMO_FLAG.write_text(json.dumps({"seeded": datetime.now().isoformat(timespec="seconds")}))
+    tasks = read_json(TASKS_FILE, [])
+    have = {x.get("title") for x in tasks}
+    for title, status in [("体验：发起第一个 Blog Loop（创作中心）", "todo"),
+                          ("阅读：铁律与规则 → RULES-00（知识中台）", "todo"),
+                          ("配置：接入公司自己的大模型 API Key", "doing")]:
+        if title not in have:
+            tasks.append({"id": secrets.token_hex(4), "title": title, "status": status,
+                          "source": "manual", "created": datetime.now().strftime("%Y-%m-%d %H:%M"),
+                          "note": "demo seed", "assignee": "", "due": "", "link": "", "desc": ""})
+    TASKS_FILE.write_text(json.dumps(tasks, ensure_ascii=False, indent=1))
+    return {"ok": True, "note": "演示任务已注入；示例报告在 docs/demo-reports/"}
+
 
 SESSIONS = set()
 
@@ -766,6 +852,11 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/loop/detail":
                 loop = next((x for x in read_json(LOOPS_FILE, []) if x["id"] == qs.get("id", [""])[0]), None)
                 return self._send(200, loop or {"error": "not found"})
+            if parsed.path == "/api/setup/status":
+                return self._send(200, setup_status())
+            if parsed.path == "/api/version":
+                v = VERSION_FILE.read_text().strip() if VERSION_FILE.exists() else "dev"
+                return self._send(200, {"version": v, "started": time.strftime("%Y-%m-%d")})
             if parsed.path == "/api/daily/log":
                 return self._send(200, daily_status())
             if parsed.path == "/api/usage":
@@ -963,16 +1054,31 @@ class Handler(BaseHTTPRequestHandler):
                 env.setdefault("LOVART_PYTHON", "/var/www/mflow/.venv/bin/python")
                 r = run_tool(step["cmd"], timeout=280)
                 return self._send(200, r)
+            if self.path == "/api/setup/seed-demo":
+                return self._send(200, seed_demo())
             if self.path == "/api/tasks/add":
                 title = str(body.get("title", "")).strip()[:200]
                 if not title:
                     return self._send(400, {"error": "标题必填"})
                 tasks = read_json(TASKS_FILE, [])
                 tasks.append({"id": secrets.token_hex(4), "title": title,
-                              "status": "todo", "source": "manual",
+                              "status": body.get("status", "todo"), "source": "manual",
                               "created": datetime.now().strftime("%Y-%m-%d %H:%M"),
-                              "note": str(body.get("note", ""))[:300]})
+                              "note": str(body.get("note", ""))[:300],
+                              "desc": str(body.get("desc", ""))[:2000],
+                              "assignee": str(body.get("assignee", ""))[:60],
+                              "due": str(body.get("due", ""))[:10],
+                              "link": str(body.get("link", ""))[:300]})
                 TASKS_FILE.parent.mkdir(parents=True, exist_ok=True)
+                TASKS_FILE.write_text(json.dumps(tasks, ensure_ascii=False, indent=1))
+                return self._send(200, {"ok": True})
+            if self.path == "/api/tasks/update":
+                tasks = read_json(TASKS_FILE, [])
+                for t in tasks:
+                    if t["id"] == body.get("id"):
+                        for k in ("title", "desc", "assignee", "due", "link", "status"):
+                            if k in body:
+                                t[k] = str(body[k])[:2000]
                 TASKS_FILE.write_text(json.dumps(tasks, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True})
             if self.path == "/api/tasks/set":

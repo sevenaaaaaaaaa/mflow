@@ -233,8 +233,9 @@ th{color:var(--muted);font-weight:600}
   <button class="s-item" data-t="sys" onclick="setTab('sys')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>调度与日志</span></button>
   <button class="s-item" data-t="set" onclick="setTab('set')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg><span>设置 · LLM · Harness</span></button>
   <button class="s-item" data-t="usage" onclick="setTab('usage')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>用量与成本</span></button>
+  <button class="s-item" data-t="setup" onclick="setTab('setup')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" opacity="0"/><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span>首次引导 · Setup</span><span class="sbad" id="nav-setup">?</span></button>
   <div class="sb-foot">
-    <span class="mut" style="padding:0 8px;font-size:11px">server · 8088</span>
+    <span class="mut" style="padding:0 8px;font-size:11px" id="ver-tag">v?</span>
   </div>
 </div></aside>
 
@@ -454,8 +455,38 @@ th{color:var(--muted);font-weight:600}
     <div class="card"><div class="card-head"><h3>近 14 日消耗</h3></div><div class="chart-bars" id="usage-chart"></div>
       <div class="chart-meta"><span id="usage-days"></span><span id="usage-profiles"></span></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>最近调用明细</h3></div><div style="max-height:380px;overflow:auto"><table id="usage-table"></table></div></div>
+  <!-- ============ Setup 引导 ============ -->
+  <section class="page" id="pg-setup">
+    <div class="pg-head"><div><div class="kick">首次使用</div><h1>五分钟<em class="sf">上手引导</em></h1>
+      <p class="pg-sub">按顺序完成下面的检查项，即可从零跑通第一个内容工作流。没有大模型 Key 也可以先导入 Demo 数据体验完整闭环。</p></div>
+      <div class="head-actions"><button class="btn primary" onclick="seedDemo()">① 一键导入 Demo 数据</button></div></div>
+    <div class="card"><div class="card-head"><h3>配置检查清单</h3><button class="more" onclick="loadSetup()">刷新 ↻</button></div><div id="setup-list"></div></div>
+    <div class="ov-grid2">
+      <div class="card"><div class="card-head"><h3>示例报告（Demo 数据）</h3></div>
+        <div class="qlist ql">
+          <a onclick="openReader('docs/demo-reports/demo-monthly-report.md')"><span class="act-ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><span class="qt">示例 SEO 月报（含表格数值条效果）</span></a>
+          <a onclick="openReader('docs/demo-reports/demo-sentinel-daily.md')"><span class="act-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><span class="qt">示例舆情日报</span></a>
+        </div></div>
+      <div class="card"><div class="card-head"><h3>推荐路径</h3></div>
+        <div class="mut" style="line-height:2.1">
+        ① 导入 Demo 数据 → ② 创作中心发起一次 Loop（无 Key 也能跑通演示闭环）→
+        ③ 看板查看质检日志 → ④ 设置页配置真实 API Key →
+        ⑤ 重新生成并对比差异 → ⑥ 按 <a class="more" href="#" onclick="alert('见 docs/modules.md：数据源扩展指南')">modules 文档</a>接入自己的数据源与 CMS。<br>
+        部署形态（本地 / 服务器 / Docker）见 docs/deploy-guide.md。</div></div>
+    </div>
   </section>
 </main>
+
+<div id="tmodal" style="position:fixed;inset:0;background:oklch(0% 0 0/.45);z-index:90;display:none;align-items:center;justify-content:center" onclick="if(event.target===this)this.style.display='none'">
+  <div class="card" style="width:420px;max-width:92vw">
+    <div class="card-head"><h3>编辑任务</h3><button class="more" onclick="$('tmodal').style.display='none'">×</button></div>
+    <input id="tm-title" placeholder="标题" style="width:100%;margin-bottom:8px">
+    <textarea id="tm-desc" placeholder="描述…" style="width:100%;min-height:70px;border:1px solid var(--border);border-radius:12px;padding:9px 12px;font:inherit;background:var(--surface-strong);color:var(--fg);margin-bottom:8px"></textarea>
+    <div class="row"><input id="tm-assignee" placeholder="负责人" style="flex:1"><input id="tm-due" placeholder="截止 2026-09-30" style="flex:1"></div>
+    <div class="row"><input id="tm-link" placeholder="关联日历文章路径（可空）" style="flex:1"></div>
+    <div class="row" style="margin-top:10px"><button class="btn primary" onclick="taskSaveEdit()">保存</button><span class="mut" id="tm-meta"></span></div>
+  </div>
+</div>
 
 <div id="reader"><div class="rhead"><button class="btn ghost" onclick="closeReader()">← 返回</button><b id="rname"></b></div><div class="rbody" id="rbody"></div></div>
 
@@ -474,7 +505,7 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
  $('pg-'+t).classList.add('on');
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
-   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage}[t]||(()=>{}))()}
+   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup}[t]||(()=>{}))()}
 function openReader(path){api('/api/read?path='+encodeURIComponent(path)).then(r=>{
  $('rname').textContent=r.name;
  const toc=(r.toc||[]).filter(t=>t.level===2);
@@ -509,20 +540,42 @@ function loadHome(){api('/api/overview').then(o=>{
  $('chart7-meta').innerHTML=`近 7 日共 <b class="tnum">${c.reduce((a,b)=>a+b.n,0)}</b> 次推进`;
 })}
 
-/* ---- 任务 ---- */
+/* ---- 任务看板（Trello 式：拖拽跨列 + 卡片编辑 + 日历关联）---- */
+let TM_ID=null;
 function loadTasks(){api('/api/tasks').then(t=>{const m=t.manual||[];
- const col=(st,el)=>{$(el).innerHTML=m.filter(x=>x.status===st).map(x=>`<div class="task ${st==='done'?'done':''}">
-   <input type="checkbox" ${st==='done'?'checked':''} onchange="taskSet('${x.id}','${st==='done'?'todo':'done'}')">
-   <span class="tt">${esc(x.title)}<div class="mut" style="font-size:11px">${x.created||''}</div></span>
-   ${st!=='done'?`<button class="more" onclick="taskSet('${x.id}','${st==='todo'?'doing':'todo'}')">${st==='todo'?'→':'←'}</button>`:''}
-   <button class="more" style="color:var(--danger)" onclick="taskDel('${x.id}')">×</button></div>`).join('')||'<span class="mut">空</span>'};
+ const card=x=>`<div class="task" draggable="true" ondragstart="dragStart(event,'${x.id}')" style="cursor:grab" onclick="taskEdit('${x.id}')">
+   <span class="tt"><b style="font-weight:600">${esc(x.title)}</b>
+   ${x.link?`<div class="mut" style="font-size:11px">🔗 ${esc(x.link.split('/').pop())}</div>`:''}
+   ${(x.desc||'').trim()?`<div class="mut" style="font-size:11.5px">${esc(x.desc.slice(0,60))}</div>`:''}
+   <div class="mut" style="font-size:11px">${x.assignee?'👤 '+esc(x.assignee)+' ':''}${x.due?'📅 '+esc(x.due):''}</div></span>
+   <button class="more" style="color:var(--danger)" onclick="event.stopPropagation();taskDel('${x.id}')">×</button></div>`;
+ const col=(st,el,label)=>{$(el).innerHTML=`<div class="mut" style="font-size:11px;margin-bottom:2px">${m.filter(x=>x.status===st).length} 张 · 拖入即移动</div>`+
+   m.filter(x=>x.status===st).map(card).join('')||'<div class="mut">空</div>';
+   $(el).parentElement.parentElement.style.position='relative';
+   $(el).ondragover=e=>e.preventDefault();
+   $(el).ondrop=e=>{e.preventDefault();taskSet(dragId,st)};
+   $(el).parentElement.ondragover=e=>e.preventDefault();
+   $(el).parentElement.ondrop=e=>{e.preventDefault();taskSet(dragId,st)}};
  col('todo','col-todo');col('doing','col-doing');col('done','col-done');
  $('autoq').innerHTML=(t.pipeline||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)}</span><span class="badge pipe">管线·${esc(x.stage)}</span></div>`).join('')+
   (t.distribution||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)} <span class="mut">${esc(x.platforms||'')}</span></span><span class="badge dist">分发·${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">分发队列空</span>';
  $('nav-tasks').textContent=m.filter(x=>x.status!=='done').length})}
-function addTask(){const v=$('ttitle').value.trim();if(!v)return;api('/api/tasks/add',{title:v}).then(()=>{$('ttitle').value='';loadTasks()})}
+let dragId=null;
+function dragStart(e,id){dragId=id;e.dataTransfer.effectAllowed='move'}
+function taskEdit(id){api('/api/tasks').then(t=>{const x=(t.manual||[]).find(y=>y.id===id);if(!x)return;TM_ID=id;
+ $('tm-title').value=x.title||'';$('tm-desc').value=x.desc||'';$('tm-assignee').value=x.assignee||'';
+ $('tm-due').value=x.due||'';$('tm-link').value=x.link||'';$('tm-meta').textContent='创建于 '+(x.created||'—');
+ $('tmodal').style.display='flex'})}
+function taskSaveEdit(){api('/api/tasks/update',{id:TM_ID,title:$('tm-title').value,desc:$('tm-desc').value,
+ assignee:$('tm-assignee').value,due:$('tm-due').value,link:$('tm-link').value}).then(()=>{$('tmodal').style.display='none';loadTasks()})}
+function addTask(){const v=$('ttitle').value.trim();if(!v)return;
+ const me=localStorage.getItem('mflow-me')||'';
+ api('/api/tasks/add',{title:v,assignee:me}).then(()=>{$('ttitle').value='';loadTasks()})}
 function taskSet(id,st){api('/api/tasks/set',{id,status:st}).then(loadTasks)}
 function taskDel(id){api('/api/tasks/del',{id}).then(loadTasks)}
+function calToTask(path){const name=decodeURIComponent(path).split('/').pop().replace('.md','');
+ api('/api/tasks/add',{title:'内容：'+name,link:path,assignee:localStorage.getItem('mflow-me')||''})
+  .then(()=>{alert('已加入任务看板');setTab('tasks')})}
 
 /* ---- 报告 ---- */
 function loadReports(){if(REPORTS){renderReports();return}api('/api/reports').then(r=>{REPORTS=r;
@@ -679,7 +732,8 @@ function caltLoad(){const q=$('calt-q').value.trim(),lang=$('calt-lang').value;
   const ms=Object.entries(d.months),mx=Math.max(1,...ms.map(x=>x[1]));
   $('calt-chart').innerHTML=ms.map(([m,n])=>`<div class="cb"><span class="vl tnum">${n||''}</span><div class="bar" style="height:${Math.max(4,n/mx*100)}%"></div><span class="lb">${m.slice(2)}</span></div>`).join('');
   $('calt-n').textContent=`（显示前 ${d.files.length} 篇${q||lang?' · 已过滤':''}）`;
-  $('calt-list').innerHTML=d.files.map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${esc(f.date||'—')} · ${esc(f.lang)}</span><b>${esc(f.title)}</b><div class="mt mut">${esc(f.name)}${f.cat?' · '+esc(f.cat):''}</div></a>`).join('')||'<span class="mut">无匹配</span>'})}
+  $('calt-list').innerHTML=d.files.map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${esc(f.date||'—')} · ${esc(f.lang)}</span><b>${esc(f.title)}</b><div class="mt mut">${esc(f.name)}${f.cat?' · '+esc(f.cat):''}</div>
+   <button class="mini" style="margin-top:4px" onclick="event.stopPropagation();calToTask('${esc(f.path)}')">→ 加入看板</button></a>`).join('')||'<span class="mut">无匹配</span>'})}
 
 /* ---- 工作流地图 ---- */
 function loadWfmap(){api('/api/workflows').then(ws=>{
@@ -713,7 +767,21 @@ function loadUsage(){api('/api/usage').then(u=>{
  $('usage-table').innerHTML='<tr><th>时间</th><th>profile</th><th>model</th><th>prompt</th><th>completion</th><th>total</th><th>耗时</th></tr>'+
   u.recent.map(r=>`<tr><td class="mut">${esc(r.ts)}</td><td>${esc(r.profile)}</td><td class="mut">${esc(r.model)}</td><td class="tnum">${r.prompt_tokens}</td><td class="tnum">${r.completion_tokens}</td><td class="tnum">${r.total_tokens}</td><td class="tnum">${r.latency_s}s</td></tr>`).join('')||'<tr><td colspan="7" class="mut">还没有调用——配好 LLM 后在创作中心发起一次即可</td></tr>'})}
 
+/* ---- Setup 引导 ---- */
+function loadSetup(){api('/api/setup/status').then(items=>{
+ const done=items.filter(x=>x.ok).length;
+ $('nav-setup').textContent=done+'/'+items.length;
+ $('setup-list').innerHTML=items.map(x=>`<div class="task" style="align-items:center">
+   <span class="act-ic ${x.ok?'ok':'wn'}" style="width:26px;height:26px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>
+   <span class="tt" style="flex:1"><b style="font-weight:600">${esc(x.label)}</b><div class="mut" style="font-size:11.5px">${esc(x.hint)}</div></span>
+   ${x.ok?'':'<button class="btn ghost" onclick="setTab(\''+x.goto+'\')">去配置 →</button>'}</div>`).join('');
+ api('/api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version)})}
+function seedDemo(){api('/api/setup/seed-demo',{}).then(()=>{alert('Demo 数据已导入：\n· 3 张演示任务已进看板\n· 示例报告在本页下方\n· 创作中心现在无需 API Key 即可跑演示闭环');loadSetup()})}
+
 setTab('home');
+api('/api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version).catch(()=>{});
+api('/api/setup/status').then(items=>{const done=items.filter(x=>x.ok).length;
+ $('nav-setup').textContent=done+'/'+items.length}).catch(()=>{});
 </script>
 </body>
 </html>
