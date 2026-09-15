@@ -1,4 +1,4 @@
-# 服务器部署接线（2026-09-15，未部署——仅登记）
+# 服务器部署接线（2026-09-15 已部署 ✅）
 
 ## 目标服务器
 
@@ -29,4 +29,19 @@ MFlow 部署**必须与既有 XMP（OpenFlow，`/var/www/openflow`）完全隔�
 - 运行时：uv 建 venv（google-auth + googleapiclient + pyyaml + requests），即本机 trident-venv 的复刻
 - 凭证：环境变量 / root-only env 文件注入，绝不入 git（.gitignore 已隔离 secrets/）
 - 国内分发轨（Wechatsync 浏览器扩展）不上服务器，保留在 Mac
-- 部署动作必须用户明示授权后执行
+- ~~部署动作必须用户明示授权后执行~~ **用户已于 2026-09-15 授权，部署完成**
+
+## 已部署实况（2026-09-15）
+
+- 代码：`/var/www/mflow/`（rsync，排除 From Datawork / Content Calendar / Page Gen / 分发 Drafts / .git——创作大数据池留在 Mac）
+- 运行时：uv + Python 3.12.14 → `/var/www/mflow/.venv`（google-auth/googleapiclient/pyyaml/requests）；系统 Python 3.6 未动
+- 环境契约：`/var/www/mflow/run/env.sh`（LOVART_LOCAL_DEV_ROOT=/var/www/mflow/run/local-dev、LOVART_PYTHON=.venv）——输出/日志全部落在 mflow 自己目录内
+- systemd（全部 CST 时区，与 Mac launchd 语义一致）：
+  - `mflow-daily.timer` → 每日 08:00（mflow-pipeline@daily.service）
+  - `mflow-weekly.timer` → 周一 07:00（mflow-pipeline@weekly.service）
+  - `mflow-dream.timer` → 每日 02:30（mflow-dream.service）
+  - `mflow-status.timer` → 每 30 分钟刷新状态页（mflow-status.service）
+- 独立 URL：**http://172.96.253.73:8088/**（Apache 独立 Listen 8088 + vhost `/www/server/panel/vhost/apache/mflow.conf`，经宝塔 IncludeOptional 目录挂载，零改动既有配置；外部可达已验证）
+- 状态页：render-status.py 渲染 pipeline/Sentinel/fm-check 三源 → /status + /status.json
+- 验证记录：session-init 4 门禁 PASS · pipeline smoke 39/39 · 每日管线全链路 exit 0（gsc/sentinel/harness 全 OK，feishu SKIP 同 Mac）
+- 隔离确认：80/443 仍为 XMP/OpenFlow；MFlow 仅占 8088；无共享目录/进程/日志
