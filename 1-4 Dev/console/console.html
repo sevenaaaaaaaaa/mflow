@@ -191,6 +191,9 @@ th{color:var(--muted);font-weight:600}
 #reader h1,#reader h2,#reader h3{margin:1.2em 0 .5em}#reader table{border:1px solid var(--border)}
 #reader td,#reader th{border:1px solid var(--border);padding:6px 10px}#reader code{background:var(--hover);border-radius:5px;padding:1px 5px;font-family:var(--font-mono);font-size:12px}
 #reader pre{background:oklch(22% .02 70);color:oklch(87% .01 85)}
+.numwrap{position:relative;min-width:90px}
+.numbar{position:absolute;left:0;top:15%;bottom:15%;background:var(--accent-soft);border-radius:4px;z-index:0}
+.numwrap .tnum{position:relative;z-index:1;padding-left:4px}
 </style>
 </head>
 <body>
@@ -213,19 +216,23 @@ th{color:var(--muted);font-weight:600}
   <button class="s-item on" data-t="home" onclick="setTab('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>总览</span></button>
   <div class="sec-title">我的工作</div>
   <button class="s-item" data-t="tasks" onclick="setTab('tasks')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>任务看板</span><span class="sbad" id="nav-tasks">0</span></button>
+  <button class="s-item" data-t="calt" onclick="setTab('calt')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>内容日历</span><span class="sbad mutb" id="nav-calt">0</span></button>
   <button class="s-item" data-t="pipe" onclick="setTab('pipe')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><path d="M10 6.5h7a1 1 0 0 1 1 1V14M14 17.5H7a1 1 0 0 1-1-1V10"/></svg><span>内容管线</span><span class="sbad mutb" id="nav-pipe">0</span></button>
   <div class="sec-title">创作</div>
   <button class="s-item" data-t="create" onclick="setTab('create')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg><span>创作中心</span></button>
   <button class="s-item" data-t="loops" onclick="setTab('loops')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></svg><span>Loop · Agent 模式</span><span class="sbad mutb" id="nav-loops">0</span></button>
   <button class="s-item" data-t="flow" onclick="setTab('flow')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.5 6h9M6 8.2 10.5 16M18 8.2 13.5 16"/></svg><span>节点流水线</span></button>
+  <button class="s-item" data-t="wfmap" onclick="setTab('wfmap')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5M2 12l10 5 10-5"/></svg><span>工作流地图</span></button>
   <div class="sec-title">情报与产出</div>
   <button class="s-item" data-t="reports" onclick="setTab('reports')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></svg><span>报告中心</span><span class="sbad mutb" id="nav-reports">0</span></button>
   <button class="s-item" data-t="kb" onclick="setTab('kb')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>知识库</span></button>
   <button class="s-item" data-t="dist" onclick="setTab('dist')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><span>分发队列</span><span class="sbad mutb" id="nav-dist">0</span></button>
+  <button class="s-item" data-t="trident" onclick="setTab('trident')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8M12 10 5 22M12 10l7 12M5 5l14 0"/></svg><span>数据管线 Trident</span></button>
   <div class="sec-title">系统</div>
   <button class="s-item" data-t="eng" onclick="setTab('eng')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>路由·门禁</span></button>
   <button class="s-item" data-t="sys" onclick="setTab('sys')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>调度与日志</span></button>
   <button class="s-item" data-t="set" onclick="setTab('set')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg><span>设置 · LLM · Harness</span></button>
+  <button class="s-item" data-t="usage" onclick="setTab('usage')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>用量与成本</span></button>
   <div class="sb-foot">
     <span class="mut" style="padding:0 8px;font-size:11px">server · 8088</span>
   </div>
@@ -295,7 +302,8 @@ th{color:var(--muted);font-weight:600}
   <!-- ============ 分发 ============ -->
   <section class="page" id="pg-dist">
     <div class="pg-head"><div><div class="kick">情报与产出</div><h1>分发<em class="sf">队列</em></h1>
-      <p class="pg-sub">四轨道分发状态。发布铁律：停在 ready 等人工授权，网页端只读。</p></div></div>
+      <p class="pg-sub">四轨道分发状态。发布铁律：停在 ready 等人工授权，网页端只读。</p></div>
+      <div class="head-actions"><button class="btn primary" onclick="window.open('/api/dist/export')">⇩ 导出全部外链 CSV</button></div></div>
     <div class="ov-grid2">
       <div class="card"><div class="card-head"><h3>待发队列</h3></div><div id="dist-pending"></div></div>
       <div class="card"><div class="card-head"><h3>已发布（最近）</h3></div><div id="dist-published"></div></div>
@@ -408,6 +416,45 @@ th{color:var(--muted);font-weight:600}
         <button class="more" onclick="syncSkills()">重新同步到运行时 →</button><div id="harness-skills" style="max-height:340px;overflow:auto"></div></div>
     </div>
   </section>
+
+  <!-- ============ 内容日历 ============ -->
+  <section class="page" id="pg-calt">
+    <div class="pg-head"><div><div class="kick">我的工作</div><h1>内容<em class="sf">日历</em></h1>
+      <p class="pg-sub" id="calt-sub">多语言成品文章库：按日期浏览、按语言过滤、全文搜索、在线阅读。</p></div>
+      <div class="head-actions"><input id="calt-q" placeholder="搜标题/slug…" style="width:220px" onkeydown="if(event.key==='Enter')caltLoad()">
+      <select id="calt-lang" onchange="caltLoad()"><option value="">全部语言</option><option value="en">en</option><option value="zh">zh</option><option value="zhtw">zhtw</option><option value="ja">ja</option><option value="ko">ko</option><option value="de">de</option><option value="fr">fr</option><option value="pt">pt</option><option value="ru">ru</option><option value="it">it</option></select>
+      <button class="btn primary" onclick="caltLoad()">查询</button></div></div>
+    <div class="stats" id="calt-stats"></div>
+    <div class="card"><div class="card-head"><h3>近 12 个月发文分布</h3></div><div class="chart-bars" id="calt-chart" style="height:90px"></div></div>
+    <div class="card"><div class="card-head"><h3>文章列表 <span class="mut" id="calt-n"></span></h3></div><div id="calt-list" class="flist"></div></div>
+  </section>
+
+  <!-- ============ 工作流地图 ============ -->
+  <section class="page" id="pg-wfmap">
+    <div class="pg-head"><div><div class="kick">创作</div><h1>工作流<em class="sf">地图</em></h1>
+      <p class="pg-sub">每条工作流的阶段链、用到的角色（Profile）、Skills 组合与关联知识源——生成前看这里就知道系统会怎么干。</p></div></div>
+    <div id="wfmap-list"></div>
+  </section>
+
+  <!-- ============ 数据管线 Trident ============ -->
+  <section class="page" id="pg-trident">
+    <div class="pg-head"><div><div class="kick">情报与产出</div><h1>数据管线 <em class="sf">Trident</em></h1>
+      <p class="pg-sub">GSC / GA4 / Bing 三引擎采集与汇总。每日管线 08:00 自动跑 GSC 步骤；此处可手动触发。</p></div></div>
+    <div class="ov-grid2">
+      <div class="card"><div class="card-head"><h3>采集步骤</h3></div><div id="tri-steps"></div></div>
+      <div class="card"><div class="card-head"><h3>数据产出健康（Data Ingestion 最近文件）</h3></div><div id="tri-health"></div></div>
+    </div>
+  </section>
+
+  <!-- ============ 用量与成本 ============ -->
+  <section class="page" id="pg-usage">
+    <div class="pg-head"><div><div class="kick">系统</div><h1>Token <em class="sf">用量与成本</em></h1>
+      <p class="pg-sub">每次 LLM 调用（生成 / Loop / 测试）的真实 usage 记录。</p></div></div>
+    <div class="stats" id="usage-stats"></div>
+    <div class="card"><div class="card-head"><h3>近 14 日消耗</h3></div><div class="chart-bars" id="usage-chart"></div>
+      <div class="chart-meta"><span id="usage-days"></span><span id="usage-profiles"></span></div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>最近调用明细</h3></div><div style="max-height:380px;overflow:auto"><table id="usage-table"></table></div></div>
+  </section>
 </main>
 
 <div id="reader"><div class="rhead"><button class="btn ghost" onclick="closeReader()">← 返回</button><b id="rname"></b></div><div class="rbody" id="rbody"></div></div>
@@ -426,8 +473,13 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
  $('pg-'+t).classList.add('on');
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
-   create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet}[t]||(()=>{}))()}
-function openReader(path){api('/api/read?path='+encodeURIComponent(path)).then(r=>{$('rname').textContent=r.name;$('rbody').innerHTML=r.html;$('reader').style.display='flex';$('rbody').scrollTop=0})}
+   create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
+   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage}[t]||(()=>{}))()}
+function openReader(path){api('/api/read?path='+encodeURIComponent(path)).then(r=>{
+ $('rname').textContent=r.name;
+ const toc=(r.toc||[]).filter(t=>t.level===2);
+ $('rbody').innerHTML=(toc.length?`<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:20px"><b style="font-size:12px;color:var(--muted)">目录</b><div style="margin-top:6px">${toc.map(t=>`<a href="#${t.id}" style="display:block;color:var(--accent);text-decoration:none;padding:2px 0;font-size:13px">${esc(t.text)}</a>`).join('')}</div></div>`:'')+r.html;
+ $('reader').style.display='flex';$('rbody').scrollTop=0})}
 function closeReader(){$('reader').style.display='none'}
 
 /* ---- 总览 ---- */
@@ -616,6 +668,50 @@ function llmSave(){const providers={},profiles={};
  api('/api/llm/save',{providers,profiles}).then(()=>{alert('已保存');loadSet()})}
 function llmTest(){$('llm-test').textContent='测试中…';api('/api/llm/test',{profile:'default'}).then(r=>{
  $('llm-test').innerHTML=r.ok?'<span class="ok">连通 ✓ '+esc(r.reply)+'</span>':'<span class="bad">失败：'+esc(r.error)+'</span>'})}
+
+/* ---- 内容日历 ---- */
+function caltLoad(){const q=$('calt-q').value.trim(),lang=$('calt-lang').value;
+ api('/api/calendar?q='+encodeURIComponent(q)+'&lang='+encodeURIComponent(lang)).then(d=>{
+  $('nav-calt').textContent=d.total;
+  $('calt-sub').textContent=`多语言成品文章库：共 ${d.total} 篇。按日期浏览、按语言过滤、搜索后在线阅读。`;
+  $('calt-stats').innerHTML=`<div class="stat"><div class="n tnum">${d.total}</div><div class="t">成品文章</div></div>`+
+   Object.entries(d.langs).sort((a,b)=>b[1]-a[1]).map(([l,n])=>`<div class="stat"><div class="n tnum">${n}</div><div class="t">${l}</div></div>`).join('');
+  const ms=Object.entries(d.months),mx=Math.max(1,...ms.map(x=>x[1]));
+  $('calt-chart').innerHTML=ms.map(([m,n])=>`<div class="cb"><span class="vl tnum">${n||''}</span><div class="bar" style="height:${Math.max(4,n/mx*100)}%"></div><span class="lb">${m.slice(2)}</span></div>`).join('');
+  $('calt-n').textContent=`（显示前 ${d.files.length} 篇${q||lang?' · 已过滤':''}）`;
+  $('calt-list').innerHTML=d.files.map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${esc(f.date||'—')} · ${esc(f.lang)}</span><b>${esc(f.title)}</b><div class="mt mut">${esc(f.name)}${f.cat?' · '+esc(f.cat):''}</div></a>`).join('')||'<span class="mut">无匹配</span>'})}
+
+/* ---- 工作流地图 ---- */
+function loadWfmap(){api('/api/workflows').then(ws=>{
+ $('wfmap-list').innerHTML=ws.map(w=>`<div class="card" style="margin-bottom:14px">
+  <div class="card-head"><h3 style="font-size:15px">${esc(w.name)}</h3><span class="mut">${esc(w.profiles)}</span></div>
+  <div class="chips" style="margin-bottom:8px">${w.flow.map((s,i)=>`<span class="chip ${i===0?'on':''}" style="cursor:default">${esc(s)}</span>`).join('<span class="mut" style="align-self:center">→</span>')}</div>
+  <div class="row" style="margin-top:6px"><span class="mut" style="width:60px">Skills</span>${w.skill_items.map(s=>
+    `<button class="chip" title="${esc(s.desc)}" onclick="openReader('${esc(s.path)}')">${esc(s.name)} ↗</button>`).join('')}</div>
+  <div class="row"><span class="mut" style="width:60px">知识源</span>${w.kb.map(k=>
+    `<button class="chip" onclick="setTab('kb');setTimeout(()=>{const el=[...document.querySelectorAll('#kdirs .chip')].find(c=>c.textContent.includes('${esc(k)}'));if(el)el.click()},400)">${esc(k)} ↗</button>`).join('')}</div>
+  </div>`).join('')})}
+
+/* ---- 数据管线 Trident ---- */
+function loadTrident(){api('/api/trident').then(t=>{
+ $('tri-steps').innerHTML=t.steps.map(s=>`<div class="task"><span class="tt" style="flex:1"><b>${esc(s.name)}</b><div class="mut">${esc(s.desc)}</div></span>
+  ${s.has_cmd?`<button class="btn ghost" onclick="triRun('${s.id}',this)">执行</button>`:'<span class="mut">内置 run_all</span>'}</div>`).join('');
+ $('tri-health').innerHTML=(t.health||[]).map(h=>`<div class="task"><span class="tt" style="flex:1">${esc(h.name)}</span><span class="qd mut">${h.date}</span></div>`).join('')||'<span class="mut">暂无产出（先执行一次采集）</span>'})}
+function triRun(id,btn){btn.disabled=true;btn.textContent='运行中…';
+ api('/api/trident/run',{step:id}).then(r=>{btn.disabled=false;btn.textContent='执行';
+  alert(`exit=${r.rc}\n`+r.out.slice(-800));loadTrident()})}
+
+/* ---- 用量与成本 ---- */
+function loadUsage(){api('/api/usage').then(u=>{
+ $('usage-stats').innerHTML=`<div class="stat"><div class="n tnum">${u.total_calls}</div><div class="t">LLM 调用次数</div></div>
+  <div class="stat"><div class="n tnum">${u.total_tokens.toLocaleString()}</div><div class="t">总 tokens</div></div>
+  <div class="stat"><div class="n tnum">${(u.total_tokens/1000).toFixed(1)}K</div><div class="t">≈ K tokens</div></div>`;
+ const by=u.by_day,mx=Math.max(1,...by.map(x=>x.tokens));
+ $('usage-chart').innerHTML=by.map(x=>`<div class="cb"><span class="vl tnum">${x.tokens>999?(x.tokens/1000).toFixed(1)+'k':x.tokens||''}</span><div class="bar" style="height:${Math.max(3,x.tokens/mx*100)}%"></div><span class="lb">${x.date.slice(5)}</span></div>`).join('');
+ $('usage-days').innerHTML=`近 14 日共 <b class="tnum">${u.total_tokens.toLocaleString()}</b> tokens`;
+ $('usage-profiles').innerHTML=Object.entries(u.by_profile).map(([p,n])=>`${esc(p)}: <b class="tnum">${n.toLocaleString()}</b>`).join(' · ')||'—';
+ $('usage-table').innerHTML='<tr><th>时间</th><th>profile</th><th>model</th><th>prompt</th><th>completion</th><th>total</th><th>耗时</th></tr>'+
+  u.recent.map(r=>`<tr><td class="mut">${esc(r.ts)}</td><td>${esc(r.profile)}</td><td class="mut">${esc(r.model)}</td><td class="tnum">${r.prompt_tokens}</td><td class="tnum">${r.completion_tokens}</td><td class="tnum">${r.total_tokens}</td><td class="tnum">${r.latency_s}s</td></tr>`).join('')||'<tr><td colspan="7" class="mut">还没有调用——配好 LLM 后在创作中心发起一次即可</td></tr>'})}
 
 setTab('home');
 </script>

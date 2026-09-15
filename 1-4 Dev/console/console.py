@@ -19,6 +19,7 @@ import sys
 import threading
 import time
 import urllib.parse
+from collections import Counter
 from datetime import datetime
 from http import cookies as http_cookies
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
@@ -41,6 +42,53 @@ GEN_DIR = PROJECT / "1-3 GenFlow" / "Console-Gen"
 HARNESS_DIR = PROJECT / "1-1 Harness"
 LOOP_LOCK = threading.Lock()
 LOOP_THREADS = {}
+USAGE_FILE = RUN_DIR / "llm-usage.jsonl"
+CALENDAR_ROOT = PROJECT / "1-3 GenFlow" / "Content Calendar"
+_CAL_CACHE = {"files": None, "ts": 0}
+
+TRIDENT_STEPS = [
+    {"id": "gsc", "name": "GSC 日拉", "cmd": [sys.executable, "1-1 Harness/Skills/01-strategy/lovart-trident-data-engine/scripts/gsc_fetch.py", "--daily"],
+     "desc": "Google Search Console 全维度拉数 → Data Ingestion/gsc-full.json"},
+    {"id": "ga4", "name": "GA4 周拉", "cmd": [sys.executable, "1-4 Dev/scripts/trident/ga4_weekly_pull.py"],
+     "desc": "GA4 有机流量拉数（需 ga4-token）"},
+    {"id": "bing", "name": "Bing 拉数", "cmd": None,
+     "desc": "Bing Webmaster 拉数（脚本内置于 run_all）"},
+    {"id": "runall", "name": "全量 run_all", "cmd": ["bash", "1-1 Harness/Skills/01-strategy/lovart-trident-data-engine/scripts/run_all.sh"],
+     "desc": "Trident 全量：GSC + GA4 + Bing + 汇总分析"},
+]
+
+WORKFLOW_MAP = [
+    {"id": "blog", "name": "Blog 生产",
+     "flow": ["S0 选题入队", "S3 生成（Loop / 单次）", "S3 质检 post-write-check", "S4 QA 门禁 L1-L7", "S4-qa 人工审", "S5 pre-import → Sanity", "S6 监控"],
+     "profiles": "生成 lovart-creation · 质检 lovart-quality · 发布 lovart-ops",
+     "skills": ["lovart-blog-signal-writer", "lovart-content-quality-gates", "lovart-content-creation-orchestrator", "lovart-kb-mine"],
+     "kb": ["铁律与规则", "故事线 SSOT", "写作方法论", "产品知识库"]},
+    {"id": "landing", "name": "落地页生成",
+     "flow": ["S0 入队", "S3 landing-page 生成 bodyJson", "S3 质检（结构/图片404）", "S4 人工审", "S5 Sanity createOrReplace"],
+     "profiles": "lovart-creation · lovart-ops",
+     "skills": ["lovart-landing-page", "lovart-page-serp-writer", "refresh-page-page-generator"],
+     "kb": ["故事线 SSOT", "产品知识库", "铁律与规则"]},
+    {"id": "qa", "name": "QA 质检",
+     "flow": ["L1 convert 前 preflight", "L2 import 后 verify", "L3 发布前 5 维审计", "Anti-Slop 10 项"],
+     "profiles": "lovart-quality",
+     "skills": ["lovart-content-quality-gates", "lovart-content-audit"],
+     "kb": ["铁律与规则", "质量案例库", "阶段手册 S0-S6"]},
+    {"id": "publish", "name": "发布与分发",
+     "flow": ["preflight BLOCK=0", "Sanity --missing 增量导入", "Sitemap/IndexNow", "四轨道分发", "外链回流"],
+     "profiles": "lovart-ops · lovart-distribution",
+     "skills": ["lovart-sanity-publish", "lovart-multi-platform-push", "lovart-sitemap-update"],
+     "kb": ["UTM 与追踪规范", "铁律与规则"]},
+    {"id": "trident", "name": "数据采集 Trident",
+     "flow": ["GSC 拉数", "GA4 拉数", "Bing 拉数", "汇总分析", "周报/月报"],
+     "profiles": "lovart-reports",
+     "skills": ["lovart-trident-data-engine", "lovart-data-ingestion", "lovart-content-calendar"],
+     "kb": ["关键词研究", "阶段手册 S0-S6"]},
+    {"id": "daily", "name": "每日管线",
+     "flow": ["08:00 GSC 日拉", "Sentinel 22 源采集", "舆情日报", "harness 学习/同步"],
+     "profiles": "systemd timer（无 agent）",
+     "skills": ["lovart-sentinel", "lovart-trident-data-engine"],
+     "kb": ["项目记忆与治理"]},
+]
 PORT = int(os.environ.get("MFLOW_CONSOLE_PORT", "8088"))
 PASSWORD = os.environ.get("MFLOW_CONSOLE_PASSWORD", "")
 
@@ -127,9 +175,89 @@ def llm_chat(messages, profile="default", max_tokens=4000, timeout=180):
     r = urllib.request.Request(base + "/chat/completions", data=req,
                                headers={"Content-Type": "application/json",
                                         "Authorization": "Bearer " + key})
+    t0 = time.time()
     with urllib.request.urlopen(r, timeout=timeout) as resp:
         data = json.loads(resp.read())
-    return data["choices"][0]["message"]["content"]
+    content = data["choices"][0]["message"]["content"]
+    try:
+        rec = {"ts": datetime.now().isoformat(timespec="seconds"), "profile": profile, "model": model,
+               "prompt_tokens": data.get("usage", {}).get("prompt_tokens", 0),
+               "completion_tokens": data.get("usage", {}).get("completion_tokens", 0),
+               "total_tokens": data.get("usage", {}).get("total_tokens", 0),
+               "latency_s": round(time.time() - t0, 1)}
+        USAGE_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with open(USAGE_FILE, "a") as f:
+            f.write(json.dumps(rec) + "\n")
+    except Exception:
+        pass
+    return content
+
+
+def usage_stats():
+    rows = []
+    if USAGE_FILE.exists():
+        for l in USAGE_FILE.read_text().strip().split("\n"):
+            try:
+                rows.append(json.loads(l))
+            except Exception:
+                continue
+    by_day, by_profile = Counter(), Counter()
+    for r in rows:
+        by_day[r["ts"][:10]] += r["total_tokens"]
+        by_profile[r["profile"]] += r["total_tokens"]
+    return {"total_calls": len(rows),
+            "total_tokens": sum(r["total_tokens"] for r in rows),
+            "by_day": [{"date": d, "tokens": n} for d, n in sorted(by_day.items())[-14:]],
+            "by_profile": dict(by_profile),
+            "recent": rows[-50:][::-1]}
+
+
+def calendar_index():
+    now = time.time()
+    if _CAL_CACHE["files"] is not None and now - _CAL_CACHE["ts"] < 600:
+        return _CAL_CACHE["files"]
+    files = []
+    if CALENDAR_ROOT.exists():
+        for f in CALENDAR_ROOT.rglob("*.md"):
+            lm = re.search(r"-(ja|zh|zhtw|ko|de|fr|pt|ru|it)\.md$", f.name)
+            lang = lm.group(1) if lm else "en"
+            head = f.read_text(errors="ignore")[:600]
+            title_m = re.search(r'title:\s*"?([^"\n]+)"?', head)
+            date_m = re.search(r'^date:\s*(\d{4}-\d{2}-\d{2})', head, re.M)
+            cat_m = re.search(r'categor(?:y|ies):\s*\[?([^\]\n]+)', head)
+            files.append({"path": rel_of(f), "lang": lang,
+                          "name": f.name,
+                          "title": (title_m.group(1).strip() if title_m else f.stem),
+                          "date": date_m.group(1) if date_m else "",
+                          "cat": (cat_m.group(1).strip().strip('"') if cat_m else "")})
+    files.sort(key=lambda x: (x.get("date") or "", x["name"]), reverse=True)
+    _CAL_CACHE["files"] = files
+    _CAL_CACHE["ts"] = now
+    return files
+
+
+def calendar_view(q="", lang=""):
+    files = calendar_index()
+    if lang:
+        files = [f for f in files if f["lang"] == lang]
+    if q:
+        ql = q.lower()
+        files = [f for f in files if ql in f["title"].lower() or ql in f["name"].lower()]
+    langs = Counter(f["lang"] for f in calendar_index())
+    months = Counter((f.get("date") or "")[:7] for f in calendar_index() if f.get("date"))
+    return {"total": len(calendar_index()),
+            "langs": dict(langs), "months": dict(sorted(months.items())[-12:]),
+            "files": files[:250]}
+
+
+def trident_status():
+    ing = RUN_DIR / "local-dev/Output/Data Ingestion"
+    health = []
+    if ing.exists():
+        for f in sorted(ing.glob("*.json"), key=lambda x: x.stat().st_mtime, reverse=True)[:8]:
+            health.append({"name": f.name, "date": fdate(f.stat().st_mtime)})
+    return {"steps": [{"id": s["id"], "name": s["name"], "desc": s["desc"], "has_cmd": bool(s["cmd"])} for s in TRIDENT_STEPS],
+            "health": health}
 
 
 # ── 生成模板（signal-writer 精华浓缩版；长文全景仍走本地 signal-writer 流程）──
@@ -484,6 +612,64 @@ def api_state():
             "phases": PS.PHASES, "events": events, "decisions": decisions}
 
 
+def enhance_html(html):
+    """Report reader v2: heading anchors + TOC + in-table numeric bars."""
+    toc = []
+
+    def _head(m):
+        tag, attrs, inner = m.group(1), m.group(2), m.group(3)
+        text = re.sub(r"<[^>]+>", "", inner)
+        hid = "h-" + str(len(toc))
+        toc.append({"id": hid, "level": int(tag[1]), "text": text[:80]})
+        return f"<{tag}{attrs} id='{hid}'>{inner}</{tag}>"
+
+    html = re.sub(r"<(h[23])([^>]*)>(.*?)</\1>", _head, html, flags=re.S)
+
+    NUM = r"[+-]?\d[\d,]*\.?\d*\s*%?"
+
+    def _table(tm):
+        tbl = tm.group(0)
+        rows = re.findall(r"<tr>(.*?)</tr>", tbl, flags=re.S)
+        maxv = {}
+        for ri, row in enumerate(rows[1:], start=1):  # skip header row
+            for ci, cell in enumerate(re.findall(r"<td>(.*?)</td>", row, flags=re.S)):
+                txt = re.sub(r"<[^>]+>", "", cell).strip().replace(",", "")
+                if re.fullmatch(NUM, txt):
+                    v = abs(float(txt.replace("%", "").replace(",", "")))
+                    if v > maxv.get(ci, 0):
+                        maxv[ci] = v
+        if not maxv:
+            return tbl
+
+        def row_sub(rm):
+            parts = re.split(r"(<td>.*?</td>)", rm.group(1), flags=re.S)
+            ci = -1
+            out = []
+            for part in parts:
+                cm = re.fullmatch(r"<td>(.*?)</td>", part, flags=re.S)
+                if not cm:
+                    out.append(part)
+                    continue
+                ci += 1
+                txt = re.sub(r"<[^>]+>", "", cm.group(1)).strip().replace(",", "")
+                mv = re.fullmatch(NUM, txt)
+                if mv and ci in maxv and maxv[ci]:
+                    v = abs(float(txt.replace("%", "").replace(",", "")))
+                    w = max(4, min(100, v / maxv[ci] * 100))
+                    neg = txt.startswith("-")
+                    bar_bg = "background:var(--warn);" if neg else ""
+                    part = (f"<td><div class='numwrap'><div class='numbar' style='width:{w:.0f}%;{bar_bg}'></div>"
+                            f"<span class='tnum'>{txt}</span></div></td>")
+                out.append(part)
+            return "<tr>" + "".join(out) + "</tr>"
+
+        # skip first (header) row: header rows use <th>, so <td> split already excludes them
+        return re.sub(r"<tr>(.*?)</tr>", row_sub, tbl, flags=re.S)
+
+    html = re.sub(r"<table>.*?</table>", _table, html, flags=re.S)
+    return html, toc
+
+
 class Handler(BaseHTTPRequestHandler):
     def log_message(self, fmt, *args):
         pass
@@ -547,8 +733,9 @@ class Handler(BaseHTTPRequestHandler):
                 raw = p.read_text(errors="ignore")
                 if p.suffix.lower() == ".md":
                     html = md_lib.markdown(raw, extensions=["tables", "fenced_code"])
-                    return self._send(200, {"name": p.name, "html": html})
-                return self._send(200, {"name": p.name, "html": "<pre>" + raw[:200000].replace("<", "&lt;") + "</pre>"})
+                    html, toc = enhance_html(html)
+                    return self._send(200, {"name": p.name, "html": html, "toc": toc})
+                return self._send(200, {"name": p.name, "html": "<pre>" + raw[:200000].replace("<", "&lt;") + "</pre>", "toc": []})
             if parsed.path == "/api/dist":
                 base = PROJECT / "1-3 GenFlow/Content Distribution/queue"
                 q = read_json(base / "pending.json", {})
@@ -581,6 +768,45 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, loop or {"error": "not found"})
             if parsed.path == "/api/daily/log":
                 return self._send(200, daily_status())
+            if parsed.path == "/api/usage":
+                return self._send(200, usage_stats())
+            if parsed.path == "/api/workflows":
+                sk = {s["name"]: s for s in harness_inventory()["skills"]}
+                wfs = []
+                for w in WORKFLOW_MAP:
+                    wfs.append({**w, "skill_items": [
+                        {"name": s, "path": sk[s]["path"], "desc": sk[s]["desc"]}
+                        for s in w["skills"] if s in sk]})
+                return self._send(200, wfs)
+            if parsed.path == "/api/calendar":
+                return self._send(200, calendar_view(qs.get("q", [""])[0].strip(), qs.get("lang", [""])[0]))
+            if parsed.path == "/api/trident":
+                return self._send(200, trident_status())
+            if parsed.path == "/api/dist/export":
+                base = PROJECT / "1-3 GenFlow/Content Distribution/queue"
+                pub = read_json(base / "published.json", {}).get("items", [])
+                pend = read_json(base / "pending.json", {}).get("items", [])
+                lines = ["date,track,platform,slug_or_id,canonical,offsite_url,status"]
+                for x in pub:
+                    lines.append(",".join([
+                        (x.get("date") or ""), "published", (x.get("platform") or ""),
+                        '"' + (x.get("slug") or "").replace('"', '""') + '"',
+                        '"' + (x.get("canonical") or "") + '"',
+                        '"' + (x.get("offsite_url") or "") + '"',
+                        (x.get("status") or "")]))
+                for x in pend:
+                    lines.append(",".join([
+                        "", "pending", ",".join(x.get("platforms", [])),
+                        '"' + (x.get("id") or "") + '"',
+                        '"' + (x.get("canonical_url") or "") + '"', "", (x.get("status") or "")]))
+                csv = "\n".join(lines)
+                self.send_response(200)
+                self.send_header("Content-Type", "text/csv; charset=utf-8")
+                self.send_header("Content-Disposition", "attachment; filename=mflow-backlinks.csv")
+                self.send_header("Content-Length", str(len(csv.encode())))
+                self.end_headers()
+                self.wfile.write(csv.encode())
+                return
         except Exception as e:
             return self._send(500, {"error": str(e)[:300]})
         return self._send(404, {"error": "not found"})
@@ -728,6 +954,15 @@ class Handler(BaseHTTPRequestHandler):
                         x["stop"] = True
                 LOOPS_FILE.write_text(json.dumps(loops, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True})
+            if self.path == "/api/trident/run":
+                step_id = str(body.get("step", ""))
+                step = next((s for s in TRIDENT_STEPS if s["id"] == step_id and s["cmd"]), None)
+                if not step:
+                    return self._send(400, {"error": "unknown step or no cmd"})
+                env = dict(os.environ)
+                env.setdefault("LOVART_PYTHON", "/var/www/mflow/.venv/bin/python")
+                r = run_tool(step["cmd"], timeout=280)
+                return self._send(200, r)
             if self.path == "/api/tasks/add":
                 title = str(body.get("title", "")).strip()[:200]
                 if not title:
