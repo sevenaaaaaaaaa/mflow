@@ -225,7 +225,24 @@ def overview():
     weekly = sorted((PROJECT / "1-2 Insight/Trident Insights/reports/weekly").glob("*.md"),
                     key=lambda f: f.stat().st_mtime, reverse=True)
     timers = run_tool(["systemctl", "list-timers", "mflow-*", "--no-pager"], timeout=15)["out"]
+    chart7 = []
+    if EVENTS_FILE.exists():
+        from collections import Counter
+        days = Counter()
+        for l in EVENTS_FILE.read_text().strip().split("\n")[-2000:]:
+            try:
+                e = json.loads(l)
+            except Exception:
+                continue
+            ts = str(e.get("ts", ""))[:10]
+            if ts:
+                days[ts] += 1
+        import datetime as _dt
+        for i in range(6, -1, -1):
+            d = (_dt.date.today() - _dt.timedelta(days=i)).isoformat()
+            chart7.append({"label": d[5:], "n": days.get(d, 0)})
     return {
+        "chart7d": chart7,
         "open_tasks": open_tasks,
         "pipeline_inflight": inflight,
         "dist_open": len(t["distribution"]),
@@ -316,6 +333,20 @@ class Handler(BaseHTTPRequestHandler):
                     html = md_lib.markdown(raw, extensions=["tables", "fenced_code"])
                     return self._send(200, {"name": p.name, "html": html})
                 return self._send(200, {"name": p.name, "html": "<pre>" + raw[:200000].replace("<", "&lt;") + "</pre>"})
+            if parsed.path == "/api/dist":
+                base = PROJECT / "1-3 GenFlow/Content Distribution/queue"
+                q = read_json(base / "pending.json", {})
+                pub = read_json(base / "published.json", {})
+                dispatches = []
+                for f in sorted(base.glob("dispatch-*.json"), key=lambda x: x.stat().st_mtime, reverse=True)[:12]:
+                    d = read_json(f, {})
+                    dispatches.append({"id": d.get("id", f.stem), "approved": bool(d.get("approved")),
+                                       "cn": len(d.get("cn", [])), "gl": len(d.get("global", []))})
+                return self._send(200, {
+                    "pending": q.get("items", []),
+                    "published": (pub.get("items", []) or [])[-10:][::-1],
+                    "restart": q.get("restart", {}),
+                    "dispatches": dispatches})
             if parsed.path == "/api/daily/log":
                 return self._send(200, daily_status())
         except Exception as e:

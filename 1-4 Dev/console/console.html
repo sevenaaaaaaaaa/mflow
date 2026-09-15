@@ -1,247 +1,456 @@
 <!doctype html>
-<html lang="zh">
+<html lang="zh-CN" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MFlow 工作台</title>
+<title>MFlow · 内容工作台</title>
+<script>try{var s=JSON.parse(localStorage.getItem('mflow-console-v1')||'{}');var t=s.theme||'light';if(t==='system'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t}catch(e){}</script>
 <style>
-:root{--bg:#f4f6f9;--card:#fff;--ink:#1c2330;--mut:#68727f;--line:#e3e7ec;--acc:#2b6cb0;--ok:#0a7d38;--warn:#b7791f;--bad:#c0392b}
-*{box-sizing:border-box}body{margin:0;font-family:-apple-system,"PingFang SC",sans-serif;background:var(--bg);color:var(--ink)}
-header{background:#141a24;color:#fff;padding:12px 24px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:5}
-header h1{font-size:16px;margin:0;font-weight:600}header .sp{flex:1}
-header a,header button.lnk{color:#9fb3c8;background:none;border:1px solid #3a4a5e;border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer}
-nav{display:flex;gap:2px;padding:10px 24px 0;background:#141a24;flex-wrap:wrap}
-nav button{border:none;background:#1e2836;color:#9fb3c8;padding:8px 15px;border-radius:8px 8px 0 0;font-size:13px;cursor:pointer}
-nav button.on{background:var(--bg);color:var(--ink);font-weight:600}
-main{max-width:1200px;margin:18px auto;padding:0 16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
-.card h2{font-size:14px;margin:0 0 12px;color:var(--mut);font-weight:600;letter-spacing:.5px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px}
-.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:14px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
-.stat .n{font-size:26px;font-weight:700}.stat .t{font-size:12px;color:var(--mut);margin-top:2px}
-.phase{background:#fafbfc;border:1px solid var(--line);border-radius:8px;padding:10px;min-height:70px}
-.phase b{font-size:12px;color:var(--mut)}
-.item{background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 8px;margin-top:8px;font-size:12px}
-.item .id{font-weight:600}.item .st{color:var(--acc);font-size:11px}.item .meta{color:var(--mut);font-size:11px;margin-top:2px}
-button.act{background:var(--acc);color:#fff;border:none;border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer}
-button.ghost{background:#fff;color:var(--acc);border:1px solid var(--acc);border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer}
-button.mini{background:#fff;border:1px solid var(--line);border-radius:5px;padding:3px 8px;font-size:11px;cursor:pointer;color:var(--mut)}
-input,select{border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:13px;background:#fff}
-pre{background:#101620;color:#cfe3d8;border-radius:8px;padding:12px;font-size:12px;overflow:auto;max-height:360px;white-space:pre-wrap}
-table{border-collapse:collapse;width:100%;font-size:12px}td,th{border-bottom:1px solid var(--line);padding:6px 4px;text-align:left}
-th{color:var(--mut);font-weight:500}
-.ok{color:var(--ok);font-weight:600}.bad{color:var(--bad);font-weight:600}.warn{color:var(--warn);font-weight:600}
-.mut{color:var(--mut);font-size:12px}
-.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
-.chip{border:1px solid var(--line);background:#fff;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer}
-.chip.on{background:var(--acc);color:#fff;border-color:var(--acc)}
-.flist{max-height:420px;overflow:auto}.flist a{display:block;padding:6px 8px;border-bottom:1px solid #f0f2f5;cursor:pointer;font-size:13px;color:var(--ink);text-decoration:none}
-.flist a:hover{background:#f0f6ff}
-.flist .d{color:var(--mut);font-size:11px;float:right}
-.cols{display:grid;grid-template-columns:230px 1fr;gap:14px}
-@media(max-width:720px){.cols{grid-template-columns:1fr}}
-#reader{position:fixed;inset:0;background:#fff;z-index:20;display:none;flex-direction:column}
-#reader .rhead{background:#141a24;color:#fff;padding:10px 20px;display:flex;gap:12px;align-items:center}
-#reader .rbody{flex:1;overflow:auto;padding:24px;max-width:900px;margin:0 auto;width:100%}
-#reader h1,#reader h2,#reader h3{color:var(--ink)}#reader table{border:1px solid var(--line)}
-#reader td,#reader th{border:1px solid var(--line);padding:6px 10px}
-.task{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-top:8px;background:#fff;font-size:13px}
-.task.done .tt{text-decoration:line-through;color:var(--mut)}
-.badge{font-size:10px;border-radius:8px;padding:1px 8px;color:#fff;background:var(--mut);vertical-align:1px}
-.badge.pipe{background:var(--acc)}.badge.dist{background:var(--warn)}
+:root{
+  --bg:oklch(96.5% .016 85); --bg-soft:oklch(94% .02 85);
+  --surface:oklch(100% 0 0 / .62); --surface-strong:oklch(100% 0 0 / .88);
+  --fg:oklch(22% .02 70); --muted:oklch(44% .016 70); --faint:oklch(52% .012 75);
+  --border:oklch(86% .014 80); --border-strong:oklch(76% .02 80);
+  --hover:oklch(22% .02 70 / .055);
+  --accent:oklch(52% .17 258); --accent-strong:oklch(46% .17 258); --accent-soft:oklch(52% .17 258 / .12); --on-accent:oklch(100% 0 0);
+  --ok:oklch(47% .15 152); --ok-soft:oklch(47% .15 152 / .12);
+  --warn:oklch(52% .14 75); --warn-soft:oklch(52% .14 75 / .14);
+  --danger:oklch(52% .2 25); --danger-soft:oklch(52% .2 25 / .12);
+  --glass:oklch(100% 0 0 / .5); --glass-bright:oklch(100% 0 0 / .68);
+  --shadow:0 24px 60px -24px oklch(30% .04 80 / .3); --shadow-sm:0 10px 28px -14px oklch(30% .04 80 / .24);
+  --blob-a:oklch(72% .12 262 / .30); --blob-b:oklch(70% .13 305 / .24); --blob-c:oklch(74% .11 200 / .22);
+  --ease-spring:cubic-bezier(.34,1.56,.64,1);
+  --font-display:'Songti SC','Iowan Old Style',Georgia,'Times New Roman',serif;
+  --font-body:-apple-system,BlinkMacSystemFont,'PingFang SC','Segoe UI',system-ui,sans-serif;
+  --font-mono:ui-monospace,'SF Mono','JetBrains Mono',Menlo,monospace;
+  --r-lg:26px; --r-md:18px; --r-sm:12px; --sb-w:248px; --chrome-h:56px;
+  --grad:linear-gradient(135deg,var(--accent),oklch(58% .18 300));
+  color-scheme:light;
+}
+[data-theme="dark"]{
+  --bg:oklch(19% .014 70); --bg-soft:oklch(22.5% .014 72);
+  --surface:oklch(27% .016 75 / .55); --surface-strong:oklch(30% .016 75 / .82);
+  --fg:oklch(93% .008 85); --muted:oklch(72% .014 80); --faint:oklch(62% .012 80);
+  --border:oklch(100% 0 0 / .1); --border-strong:oklch(100% 0 0 / .22);
+  --hover:oklch(93% .008 85 / .07);
+  --accent:oklch(74% .13 258); --accent-strong:oklch(82% .12 258); --accent-soft:oklch(74% .13 258 / .15); --on-accent:oklch(16% .03 260);
+  --ok:oklch(76% .15 152); --ok-soft:oklch(76% .15 152 / .15);
+  --warn:oklch(78% .13 80); --warn-soft:oklch(78% .13 80 / .15);
+  --danger:oklch(74% .17 25);
+  --glass:oklch(30% .014 75 / .5); --glass-bright:oklch(34% .014 75 / .64);
+  --shadow:0 24px 60px -24px oklch(0% 0 0 / .55); --shadow-sm:0 10px 28px -14px oklch(0% 0 0 / .5);
+  --blob-a:oklch(66% .14 262 / .32); --blob-b:oklch(62% .15 305 / .27); --blob-c:oklch(64% .13 200 / .25);
+  --grad:linear-gradient(135deg,var(--accent),oklch(70% .16 300));
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:var(--font-body);color:var(--fg);background:var(--bg);overflow-x:clip;-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent-soft)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,select{font:inherit;color:inherit}
+h1,h2,h3,p{margin:0}
+em{font-style:normal}
+.sf{font-family:var(--font-display);font-style:italic;font-weight:600}
+.kick{font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--accent)}
+.tnum{font-variant-numeric:tabular-nums}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:99px;border:3px solid transparent;background-clip:padding-box}
+::-webkit-scrollbar-track{background:transparent}
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(72px);will-change:transform}
+.blob-a{width:52vw;height:52vw;left:-10vw;top:-14vh;background:radial-gradient(circle,var(--blob-a),transparent 65%);animation:driftA 38s ease-in-out infinite alternate}
+.blob-b{width:44vw;height:44vw;right:-8vw;top:14vh;background:radial-gradient(circle,var(--blob-b),transparent 65%);animation:driftB 44s ease-in-out infinite alternate}
+.blob-c{width:40vw;height:40vw;left:24vw;bottom:-22vh;background:radial-gradient(circle,var(--blob-c),transparent 65%);animation:driftC 50s ease-in-out infinite alternate}
+@keyframes driftA{to{transform:translate3d(6vw,4vh,0) scale(1.08)}}
+@keyframes driftB{to{transform:translate3d(-5vw,6vh,0) scale(1.12)}}
+@keyframes driftC{to{transform:translate3d(4vw,-5vh,0) scale(.94)}}
+/* chrome */
+#chrome{position:fixed;inset:0 0 auto 0;z-index:60;padding:8px 14px}
+.bar{position:relative;height:var(--chrome-h);display:flex;align-items:center;gap:10px;padding:0 10px;border-radius:18px;
+ background:var(--glass);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);
+ border:1px solid var(--border);box-shadow:var(--shadow-sm)}
+.lights{display:flex;gap:8px;padding:0 4px;flex:0 0 auto}
+.light{width:12px;height:12px;border-radius:50%}
+.light-r{background:oklch(64% .23 25)}.light-y{background:oklch(82% .17 85)}.light-g{background:oklch(70% .2 150)}
+.ws{display:flex;align-items:center;gap:9px;height:40px;padding:0 12px;border-radius:13px;font-size:13.5px;font-weight:700;flex:0 0 auto}
+.ws .ws-ic{width:26px;height:26px;border-radius:9px;background:var(--grad);color:var(--on-accent);display:grid;place-items:center;font-size:13px;font-weight:800}
+.sb-toggle{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:var(--muted)}
+.sb-toggle:hover{background:var(--hover)}
+.sb-toggle svg{width:18px;height:18px}
+.bbar{flex:0 0 auto;display:flex;align-items:center;gap:6px}
+.cbtn{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:var(--muted)}
+.cbtn:hover{background:var(--hover);color:var(--fg)}
+.cbtn svg{width:17px;height:17px}
+/* sidebar */
+#sidebar{position:fixed;top:calc(var(--chrome-h) + 16px);left:14px;bottom:14px;width:var(--sb-w);z-index:50;border-radius:20px;
+ background:var(--glass);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);
+ border:1px solid var(--border);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .35s var(--ease-spring)}
+.sb-scroll{flex:1;overflow-y:auto;padding:14px 10px}
+.sb-brand{display:flex;align-items:center;gap:10px;padding:4px 8px 12px}
+.sb-logo{width:34px;height:34px;border-radius:11px;background:var(--grad);color:var(--on-accent);display:grid;place-items:center;font-weight:800;font-size:15px}
+.sb-brand-tx{font-size:15px;font-weight:800}
+.sb-brand-tx em{font-family:var(--font-display);font-style:italic;color:var(--accent)}
+.sb-new{width:100%;height:42px;border-radius:13px;background:var(--grad);color:var(--on-accent);font-size:13.5px;font-weight:700;margin-bottom:10px;box-shadow:var(--shadow-sm);transition:transform .25s var(--ease-spring)}
+.sb-new:hover{transform:translateY(-1px)}
+.sec-title{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--faint);padding:14px 10px 6px}
+.s-item{display:flex;align-items:center;gap:11px;width:100%;height:42px;padding:0 12px;border-radius:13px;font-size:13.5px;font-weight:600;color:var(--muted);text-align:left;transition:background .18s,color .18s}
+.s-item:hover{background:var(--hover);color:var(--fg)}
+.s-item.on{background:var(--accent-soft);color:var(--accent)}
+.s-item svg{width:17px;height:17px;flex:0 0 auto}
+.sbad{margin-left:auto;font-family:var(--font-mono);font-size:11px;font-weight:700;background:var(--accent);color:var(--on-accent);border-radius:99px;padding:1px 7px}
+.sbad.mutb{background:var(--hover);color:var(--muted)}
+.sb-foot{padding:10px;border-top:1px solid var(--border);display:flex;gap:6px}
+.sb-foot .cbtn{flex:1}
+/* main */
+main{position:relative;z-index:1;margin:calc(var(--chrome-h) + 24px) 16px 24px calc(var(--sb-w) + 30px);transition:margin .35s var(--ease-spring)}
+body.sb-collapsed #sidebar{transform:translateX(calc(-1 * (var(--sb-w) + 20px)))}
+body.sb-collapsed main{margin-left:16px}
+.page{display:none}.page.on{display:block;animation:pgin .4s var(--ease-spring)}
+@keyframes pgin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pg-head{display:flex;align-items:flex-end;gap:16px;margin:6px 2px 18px;flex-wrap:wrap}
+.pg-head h1{font-size:26px;font-weight:800;letter-spacing:-.01em}
+.pg-head h1 em{font-family:var(--font-display);font-style:italic;color:var(--accent)}
+.pg-sub{color:var(--muted);font-size:13px;margin-top:5px;max-width:640px}
+.head-actions{margin-left:auto;display:flex;gap:8px}
+.btn{height:38px;padding:0 16px;border-radius:12px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:6px;transition:transform .2s var(--ease-spring),filter .2s}
+.btn.primary{background:var(--grad);color:var(--on-accent);box-shadow:var(--shadow-sm)}
+.btn.primary:hover{transform:translateY(-1px)}
+.btn.ghost{border:1px solid var(--border-strong);color:var(--fg);background:var(--surface)}
+.btn.ghost:hover{background:var(--hover)}
+.card{background:var(--surface-strong);border:1px solid var(--border);border-radius:var(--r-md);padding:18px;box-shadow:var(--shadow-sm)}
+.card-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.card-head h3{font-size:14px;font-weight:700}
+.more{font-size:12px;color:var(--accent);font-weight:600}
+.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:14px}
+.metric .m-label{font-size:12px;color:var(--muted)}
+.metric .m-val{font-size:28px;font-weight:800;margin:4px 0 2px}
+.metric .m-delta{font-size:11.5px;font-weight:600}
+.metric .m-delta .m-hint{color:var(--faint);font-weight:500;margin-left:5px}
+.up{color:var(--ok)}.down{color:var(--danger)}
+.ov-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:14px;margin-bottom:14px}
+.ov-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:920px){.ov-grid,.ov-grid2{grid-template-columns:1fr}}
+.chart-bars{display:flex;align-items:flex-end;gap:8px;height:150px;padding-top:6px}
+.chart-bars .cb{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.chart-bars .bar{width:100%;max-width:38px;border-radius:8px 8px 4px 4px;background:var(--grad);opacity:.85;min-height:4px;transition:height .6s var(--ease-spring)}
+.chart-bars .cb .lb{font-family:var(--font-mono);font-size:10px;color:var(--faint)}
+.chart-bars .cb .vl{font-family:var(--font-mono);font-size:11px;font-weight:700}
+.chart-meta{display:flex;justify-content:space-between;color:var(--muted);font-size:12px;margin-top:10px}
+.act-item{display:flex;gap:12px;padding:9px 2px;border-bottom:1px solid var(--border)}
+.act-item:last-child{border-bottom:0}
+.act-ic{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);flex:0 0 auto}
+.act-ic.ok{background:var(--ok-soft);color:var(--ok)}.act-ic.wn{background:var(--warn-soft);color:var(--warn)}
+.act-ic svg{width:15px;height:15px}
+.act-t{font-size:13px;font-weight:600}.act-m{font-size:11.5px;color:var(--faint);margin-top:1px}
+.qlist a{display:flex;gap:10px;align-items:center;padding:10px 4px;border-bottom:1px solid var(--border);cursor:pointer;text-decoration:none;color:var(--fg)}
+.qlist a:hover{background:var(--hover);border-radius:10px}
+.qlist a:last-child{border-bottom:0}
+.ql .qt{font-size:13px;font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ql .qd{font-size:11px;color:var(--faint);font-family:var(--font-mono)}
+/* tasks */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.tcol{min-height:120px}
+.task{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--border);border-radius:12px;padding:9px 11px;margin-top:8px;background:var(--surface);font-size:13px}
+.task.done .tt{text-decoration:line-through;color:var(--faint)}
+.task input[type=checkbox]{accent-color:var(--accent);margin-top:3px}
+.task .tt{flex:1;overflow-wrap:anywhere}
+.badge{font-size:10px;border-radius:99px;padding:2px 8px;color:#fff;background:var(--faint);white-space:nowrap}
+.badge.pipe{background:var(--accent)}.badge.dist{background:oklch(52% .14 75)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+input,select{border:1px solid var(--border);border-radius:12px;padding:9px 12px;font-size:13px;background:var(--surface-strong)}
+input:focus,select:focus{outline:2px solid var(--accent);outline-offset:1px}
+/* reports / kb */
+.cols{display:grid;grid-template-columns:240px 1fr;gap:14px}
+@media(max-width:760px){.cols{grid-template-columns:1fr}}
+.chips{display:flex;gap:7px;flex-wrap:wrap}
+.chip{border:1px solid var(--border);background:var(--surface);border-radius:99px;padding:6px 13px;font-size:12.5px;font-weight:600;color:var(--muted);cursor:pointer;transition:all .18s}
+.chip:hover{border-color:var(--border-strong);color:var(--fg)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.flist{max-height:460px;overflow:auto}
+.flist a{display:block;padding:9px 10px;border-bottom:1px solid var(--border);cursor:pointer;font-size:13px;color:var(--fg);text-decoration:none;border-radius:8px}
+.flist a:hover{background:var(--hover)}
+.flist .d{color:var(--faint);font-size:11px;float:right;font-family:var(--font-mono)}
+.flist .mt{color:var(--faint);font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:520px}
+/* pipeline board */
+.pgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.phase{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px;min-height:70px}
+.phase>b{font-size:11.5px;color:var(--muted);letter-spacing:.06em}
+.pitem{background:var(--surface-strong);border:1px solid var(--border);border-radius:10px;padding:8px 10px;margin-top:8px;font-size:12px}
+.pitem .id{font-weight:700}.pitem .st{color:var(--accent);font-size:11px}
+.pitem select{width:100%;margin-top:6px;padding:5px 8px;font-size:11.5px;border-radius:8px}
+/* misc */
+pre{background:oklch(22% .02 70);color:oklch(87% .01 85);border-radius:14px;padding:14px;font-size:12px;overflow:auto;max-height:340px;white-space:pre-wrap;font-family:var(--font-mono)}
+.ok{color:var(--ok);font-weight:600}.bad{color:var(--danger);font-weight:600}.warn{color:var(--warn);font-weight:600}
+.mut{color:var(--muted);font-size:12px}
+table{border-collapse:collapse;width:100%;font-size:12.5px}
+td,th{border-bottom:1px solid var(--border);padding:7px 6px;text-align:left}
+th{color:var(--muted);font-weight:600}
+#reader{position:fixed;inset:0;background:var(--bg);z-index:80;display:none;flex-direction:column}
+#reader .rhead{background:var(--glass);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border-bottom:1px solid var(--border);padding:10px 20px;display:flex;gap:14px;align-items:center}
+#reader .rbody{flex:1;overflow:auto;padding:28px;max-width:880px;margin:0 auto;width:100%;line-height:1.75;font-size:14px}
+#reader h1,#reader h2,#reader h3{margin:1.2em 0 .5em}#reader table{border:1px solid var(--border)}
+#reader td,#reader th{border:1px solid var(--border);padding:6px 10px}#reader code{background:var(--hover);border-radius:5px;padding:1px 5px;font-family:var(--font-mono);font-size:12px}
+#reader pre{background:oklch(22% .02 70);color:oklch(87% .01 85)}
 </style>
 </head>
 <body>
-<header>
-  <h1>MFlow 工作台</h1><span style="color:#9fb3c8;font-size:12px">Lovart GEO 内容工作流</span>
-  <span class="sp"></span><a href="http://172.96.253.73:8088/status-legacy" style="display:none"></a>
-  <button class="lnk" onclick="logout()">退出</button>
-</header>
-<nav id="tabs">
-  <button data-t="home" class="on">总览</button>
-  <button data-t="tasks">任务看板</button>
-  <button data-t="reports">报告中心</button>
-  <button data-t="kb">知识库</button>
-  <button data-t="pipe">内容管线</button>
-  <button data-t="eng">路由·门禁</button>
-  <button data-t="sys">系统</button>
-</nav>
+<div class="ambient"><div class="blob blob-a"></div><div class="blob blob-b"></div><div class="blob blob-c"></div></div>
+
+<div id="chrome"><div class="bar">
+  <div class="lights"><span class="light light-r"></span><span class="light light-y"></span><span class="light light-g"></span></div>
+  <button class="sb-toggle" onclick="document.body.classList.toggle('sb-collapsed')" title="折叠侧栏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <span class="ws"><span class="ws-ic">M</span>MFlow</span>
+  <span class="sp" style="flex:1"></span>
+  <div class="bbar">
+    <button class="cbtn" onclick="setTheme()" title="明暗切换"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg></button>
+    <button class="cbtn" onclick="logout()" title="退出"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="m16 17 5-5-5-5M21 12H9"/></svg></button>
+  </div>
+</div></div>
+
+<aside id="sidebar"><div class="sb-scroll">
+  <div class="sb-brand"><span class="sb-logo">M</span><span class="sb-brand-tx">M<em>Flow</em></span></div>
+  <button class="sb-new" onclick="setTab('tasks');setTimeout(()=>$('ttitle').focus(),200)">＋ 新建任务</button>
+  <button class="s-item on" data-t="home" onclick="setTab('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>总览</span></button>
+  <div class="sec-title">我的工作</div>
+  <button class="s-item" data-t="tasks" onclick="setTab('tasks')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>任务看板</span><span class="sbad" id="nav-tasks">0</span></button>
+  <button class="s-item" data-t="pipe" onclick="setTab('pipe')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><path d="M10 6.5h7a1 1 0 0 1 1 1V14M14 17.5H7a1 1 0 0 1-1-1V10"/></svg><span>内容管线</span><span class="sbad mutb" id="nav-pipe">0</span></button>
+  <div class="sec-title">情报与产出</div>
+  <button class="s-item" data-t="reports" onclick="setTab('reports')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></svg><span>报告中心</span><span class="sbad mutb" id="nav-reports">0</span></button>
+  <button class="s-item" data-t="kb" onclick="setTab('kb')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>知识库</span></button>
+  <button class="s-item" data-t="dist" onclick="setTab('dist')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><span>分发队列</span><span class="sbad mutb" id="nav-dist">0</span></button>
+  <div class="sec-title">系统</div>
+  <button class="s-item" data-t="eng" onclick="setTab('eng')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>路由·门禁</span></button>
+  <button class="s-item" data-t="sys" onclick="setTab('sys')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>调度与日志</span></button>
+  <div class="sb-foot">
+    <span class="mut" style="padding:0 8px;font-size:11px">server · 8088</span>
+  </div>
+</div></aside>
+
 <main>
-  <section id="v-home">
-    <div class="stats" id="stats"></div>
-    <div class="card"><h2>最新成果 · 点击直达</h2><div id="quick"></div></div>
-    <div class="card"><h2>系统事件（最近）</h2><pre id="h-events">…</pre></div>
-  </section>
-
-  <section id="v-tasks" style="display:none">
-    <div class="card"><h2>添加任务</h2>
-      <div class="row" style="display:flex;gap:8px">
-        <input id="ttitle" placeholder="要做什么？回车快速添加" style="flex:1" onkeydown="if(event.key==='Enter')addTask()">
-        <button class="act" onclick="addTask()">添加</button>
+  <!-- ============ 总览 ============ -->
+  <section class="page on" id="pg-home">
+    <div class="pg-head">
+      <div><div class="kick">工作台</div><h1 id="greet">你好，<em class="sf">站</em>长</h1>
+      <p class="pg-sub" id="greet-sub">正在加载今日概况…</p></div>
+      <div class="head-actions">
+        <button class="btn ghost" onclick="setTab('reports')">看报告</button>
+        <button class="btn primary" onclick="runDaily()">立即跑今日管线</button>
       </div>
     </div>
-    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
-      <div class="card"><h2>待办</h2><div id="col-todo"></div></div>
-      <div class="card"><h2>进行中</h2><div id="col-doing"></div></div>
-      <div class="card"><h2>已完成</h2><div id="col-done"></div></div>
+    <div class="metrics" id="metrics"></div>
+    <div class="ov-grid">
+      <div class="card"><div class="card-head"><h3>最新成果 · 点击阅读</h3><button class="more" onclick="setTab('reports')">全部报告 →</button></div>
+        <div class="qlist ql" id="home-quick"></div></div>
+      <div class="card"><div class="card-head"><h3>近 7 日管线活动</h3></div>
+        <div class="chart-bars" id="chart7"></div>
+        <div class="chart-meta"><span>状态机推进事件</span><span id="chart7-meta"></span></div></div>
     </div>
-    <div class="card"><h2>自动同步的队列（只读）</h2>
-      <div class="mut" style="margin-bottom:6px">内容管线 / 分发队列 由系统自动同步到这里</div>
-      <div id="autoq"></div>
-    </div>
-  </section>
-
-  <section id="v-reports" style="display:none" class="cols">
-    <div class="card" style="height:fit-content"><h2>分类</h2><div id="rcats" class="chips" style="flex-direction:column"></div></div>
-    <div class="card"><h2>报告列表 <span class="mut" id="rcount"></span></h2>
-      <div id="rlist" class="flist"></div></div>
-  </section>
-
-  <section id="v-kb" style="display:none">
-    <div class="card"><h2>知识库搜索 <span class="mut">（Lovart KB · 产品/帮助/文档/新闻）</span></h2>
-      <div style="display:flex;gap:8px">
-        <input id="kq" placeholder="搜关键词，如：封面、价格、Agent、blog" style="flex:1" onkeydown="if(event.key==='Enter')kbSearch()">
-        <button class="act" onclick="kbSearch()">搜索</button>
-      </div>
-      <div id="kdirs" class="chips"></div>
-      <div id="kres" class="flist"></div>
+    <div class="ov-grid2">
+      <div class="card"><div class="card-head"><h3>调度状态</h3><button class="more" onclick="setTab('sys')">详情 →</button></div><div id="home-timers" style="font-size:12.5px;line-height:1.9;color:var(--muted)"></div></div>
+      <div class="card"><div class="card-head"><h3>最近活动</h3></div><div id="home-acts"></div></div>
     </div>
   </section>
 
-  <section id="v-pipe" style="display:none">
-    <div class="card"><h2>新建管线条目</h2>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <input id="nid" placeholder="条目 id（如 blog-xxx）" style="flex:1;min-width:220px">
-        <select id="ncat"><option>blog</option><option>landing</option><option>feature</option><option>tool</option><option>topic</option></select>
-        <button class="act" onclick="upsert()">创建</button>
-      </div>
+  <!-- ============ 任务 ============ -->
+  <section class="page" id="pg-tasks">
+    <div class="pg-head"><div><div class="kick">我的工作</div><h1>任务<em class="sf">看板</em></h1>
+      <p class="pg-sub">手动任务可添加/流转；内容管线与分发队列自动同步，只读。</p></div></div>
+    <div class="card" style="margin-bottom:14px"><div class="row">
+      <input id="ttitle" placeholder="要做什么？回车快速添加" style="flex:1;min-width:220px" onkeydown="if(event.key==='Enter')addTask()">
+      <button class="btn primary" onclick="addTask()">添加任务</button></div></div>
+    <div class="tgrid">
+      <div class="card tcol"><div class="card-head"><h3>待办</h3></div><div id="col-todo"></div></div>
+      <div class="card tcol"><div class="card-head"><h3>进行中</h3></div><div id="col-doing"></div></div>
+      <div class="card tcol"><div class="card-head"><h3>已完成</h3></div><div id="col-done"></div></div>
     </div>
-    <div class="card"><h2>管线状态机看板</h2><div id="board" class="grid"></div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>自动同步队列（只读）</h3></div><div id="autoq"></div></div>
   </section>
 
-  <section id="v-eng" style="display:none">
-    <div class="card"><h2>路由决策（这个任务谁来做、用什么技能）</h2>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <select id="rstage"></select><select id="rscenario"></select>
-        <button class="act" onclick="decide()">问路由器</button>
-      </div>
-      <pre id="rout">选择后点击</pre>
+  <!-- ============ 报告 ============ -->
+  <section class="page" id="pg-reports">
+    <div class="pg-head"><div><div class="kick">情报与产出</div><h1>报告<em class="sf">中心</em></h1>
+      <p class="pg-sub" id="rc-sub">SEO 月报 / 周报 / 舆情 / 审计 / 404 专项 / 会话日志，在线阅读。</p></div></div>
+    <div class="cols">
+      <div class="card" style="height:fit-content"><div class="card-head"><h3>分类</h3></div><div id="rcats" style="display:flex;flex-direction:column;gap:6px"></div></div>
+      <div class="card"><div class="card-head"><h3 id="rlist-title">报告</h3></div><div id="rlist" class="flist"></div></div>
     </div>
-    <div class="card"><h2>质量钩子（对项目内文件手动执行）</h2>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <select id="hook">
+  </section>
+
+  <!-- ============ 知识库 ============ -->
+  <section class="page" id="pg-kb">
+    <div class="pg-head"><div><div class="kick">情报与产出</div><h1>知识<em class="sf">库</em></h1>
+      <p class="pg-sub">Lovart KB：产品介绍 / 帮助中心 / 文档存档 / 新闻 / Changelog，支持全文搜索。</p></div>
+      <div class="head-actions"><input id="kq" placeholder="搜关键词…" style="width:240px" onkeydown="if(event.key==='Enter')kbSearch()"><button class="btn primary" onclick="kbSearch()">搜索</button></div></div>
+    <div class="card"><div class="chips" id="kdirs"></div></div>
+    <div class="card"><div class="card-head"><h3 id="kres-t">浏览</h3></div><div id="kres" class="flist"></div></div>
+  </section>
+
+  <!-- ============ 分发 ============ -->
+  <section class="page" id="pg-dist">
+    <div class="pg-head"><div><div class="kick">情报与产出</div><h1>分发<em class="sf">队列</em></h1>
+      <p class="pg-sub">四轨道分发状态。发布铁律：停在 ready 等人工授权，网页端只读。</p></div></div>
+    <div class="ov-grid2">
+      <div class="card"><div class="card-head"><h3>待发队列</h3></div><div id="dist-pending"></div></div>
+      <div class="card"><div class="card-head"><h3>已发布（最近）</h3></div><div id="dist-published"></div></div>
+    </div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>Dispatch 单</h3></div><div id="dist-dispatch"></div></div>
+  </section>
+
+  <!-- ============ 管线 ============ -->
+  <section class="page" id="pg-pipe">
+    <div class="pg-head"><div><div class="kick">我的工作</div><h1>内容<em class="sf">管线</em></h1>
+      <p class="pg-sub">12 阶段状态机。非法跳步会被后端直接拒绝——这是质量保障的一部分。</p></div>
+      <div class="head-actions"><input id="nid" placeholder="条目 id（如 blog-xxx）" style="width:220px">
+      <select id="ncat"><option>blog</option><option>landing</option><option>feature</option><option>tool</option><option>topic</option></select>
+      <button class="btn primary" onclick="upsert()">创建条目</button></div></div>
+    <div class="pgrid" id="board"></div>
+  </section>
+
+  <!-- ============ 工程 ============ -->
+  <section class="page" id="pg-eng">
+    <div class="pg-head"><div><div class="kick">系统</div><h1>路由 · <em class="sf">门禁</em></h1>
+      <p class="pg-sub">问路由器"这活谁干"；对项目内文件手动执行质量钩子。</p></div></div>
+    <div class="ov-grid2">
+      <div class="card"><div class="card-head"><h3>路由决策</h3></div>
+        <div class="row"><select id="rstage"></select><select id="rscenario"></select><button class="btn primary" onclick="decide()">问路由器</button></div>
+        <pre id="rout" style="margin-top:12px">…</pre></div>
+      <div class="card"><div class="card-head"><h3>质量钩子</h3></div>
+        <div class="row"><select id="hook">
           <option value="pre-write-check.sh">pre-write（写前）</option>
           <option value="post-write-check.sh">post-write（写后）</option>
-          <option value="post-generation-check.sh">post-generation（生成后 5 Gate）</option>
-        </select>
-        <input id="hfile" placeholder="/var/www/mflow/… 文件路径" style="flex:1;min-width:240px">
-        <button class="act" onclick="runHook()">执行</button>
-      </div>
-      <pre id="hout">…</pre>
+          <option value="post-generation-check.sh">post-generation（5 Gate）</option></select>
+        <input id="hfile" placeholder="项目内文件路径" style="flex:1;min-width:200px">
+        <button class="btn primary" onclick="runHook()">执行</button></div>
+        <pre id="hout" style="margin-top:12px">…</pre></div>
     </div>
   </section>
 
-  <section id="v-sys" style="display:none">
-    <div class="card"><h2>每日管线（GSC → 舆情 → 规则同步）</h2>
-      <div style="display:flex;gap:8px;align-items:center"><span id="drun" class="mut">…</span>
-        <span style="flex:1"></span>
-        <button class="act" id="drbtn" onclick="runDaily()">立即执行</button></div>
-      <pre id="dtail">…</pre>
-    </div>
-    <div class="card"><h2>定时调度（systemd）</h2><pre id="stimers">…</pre></div>
+  <!-- ============ 系统 ============ -->
+  <section class="page" id="pg-sys">
+    <div class="pg-head"><div><div class="kick">系统</div><h1>调度与<em class="sf">日志</em></h1>
+      <p class="pg-sub">每日管线手动触发；systemd 定时器状态。</p></div>
+      <div class="head-actions"><button class="btn primary" id="drbtn" onclick="runDaily()">立即执行每日管线</button></div></div>
+    <div class="card"><div class="card-head"><h3>每日管线 <span id="drun"></span></h3></div><pre id="dtail">…</pre></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>定时器</h3></div><pre id="stimers">…</pre></div>
   </section>
 </main>
 
-<div id="reader"><div class="rhead"><button class="lnk" onclick="closeReader()">← 返回</button><b id="rname"></b></div><div class="rbody" id="rbody"></div></div>
+<div id="reader"><div class="rhead"><button class="btn ghost" onclick="closeReader()">← 返回</button><b id="rname"></b></div><div class="rbody" id="rbody"></div></div>
 
 <script>
-let TAB='home', REPORTS=null, RCAT=null, KDIR='';
+let TAB='home',REPORTS=null,RCAT=null,KDIR='';
 const $=id=>document.getElementById(id);
-document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>setTab(b.dataset.t));
-function setTab(t){TAB=t;document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
- for(const s of ['home','tasks','reports','kb','pipe','eng','sys'])$('v-'+s).style.display=s===t?'':'none';
- if(t==='home')loadHome();if(t==='tasks')loadTasks();if(t==='reports')loadReports();if(t==='kb')loadKb();if(t==='pipe')loadState();if(t==='sys')loadSys();}
-async function api(p,body){const o=body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{};const r=await fetch(p,o);
- if(r.status===403){$('err')&&($('err').textContent='密码错误')}if(r.status===401){location.reload();throw 0}return r.json()}
-function logout(){fetch('/api/logout',{method:'POST'}).then(()=>location.reload())}
 const esc=s=>String(s??'').replace(/</g,'&lt;');
+async function api(p,body){const o=body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{};
+ const r=await fetch(p,o);if(r.status===401){location.reload();throw 0}return r.json()}
+function logout(){fetch('/api/logout',{method:'POST'}).then(()=>location.reload())}
+function setTheme(){const d=document.documentElement;const t=d.dataset.theme==='dark'?'light':'dark';d.dataset.theme=t;
+ localStorage.setItem('mflow-console-v1',JSON.stringify({theme:t}))}
+document.querySelectorAll('.s-item').forEach(b=>b.onclick=()=>setTab(b.dataset.t));
+function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+ $('pg-'+t).classList.add('on');
+ ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys}[t]||(()=>{}))()}
 function openReader(path){api('/api/read?path='+encodeURIComponent(path)).then(r=>{$('rname').textContent=r.name;$('rbody').innerHTML=r.html;$('reader').style.display='flex';$('rbody').scrollTop=0})}
 function closeReader(){$('reader').style.display='none'}
 
 /* ---- 总览 ---- */
 function loadHome(){api('/api/overview').then(o=>{
- $('stats').innerHTML=[
-  ['待办任务',o.open_tasks,'个'],['管线进行中',o.pipeline_inflight,'条'],['分发待发',o.dist_open,'条'],
-  ['舆情日报',o.sentinel_latest?('日龄 '+o.sentinel_latest.age_days+' 天'):'—','']
- ].map(([t,n,u])=>`<div class="stat"><div class="n">${n}</div><div class="t">${t} ${u}</div></div>`).join('');
- $('quick').innerHTML=[
-  o.seo_monthly&&['SEO 最新月报',o.seo_monthly.name,o.seo_monthly.path],
-  o.seo_weekly&&['SEO 最新周报',o.seo_weekly.name,o.seo_weekly.path],
-  o.sentinel_latest&&['最新舆情日报',o.sentinel_latest.name,o.sentinel_latest.path]
- ].filter(Boolean).map(([t,n,p])=>`<div class="task" onclick="openReader('${esc(p)}')" style="cursor:pointer"><b style="color:var(--acc)">${t}</b><span class="tt" style="flex:1">${esc(n)}</span><span class="mut">阅读 →</span></div>`).join('');
- $('h-events').textContent=(o.daily.tail||'').split('\n').filter(l=>/OK|FAIL|SKIP|✅|❌/.test(l)).slice(-15).join('\n')||'（暂无）';
+ const h=new Date().getHours();const hi=h<6?'夜深了':h<12?'早上好':h<18?'下午好':'晚上好';
+ $('greet').innerHTML=`${hi}，<em class="sf">站</em>长`;
+ $('greet-sub').textContent=`待办 ${o.open_tasks} · 管线 ${o.pipeline_inflight} · 分发待发 ${o.dist_open} · 最近一次每日管线 ${o.daily.running?'运行中':'已完成'}`;
+ $('metrics').innerHTML=[
+  ['待办任务',o.open_tasks,'','手动任务'],
+  ['管线进行中',o.pipeline_inflight,'','状态机内'],
+  ['分发待发',o.dist_open,'','四轨道'],
+  ['舆情日报',o.sentinel_latest?('日龄 '+o.sentinel_latest.age_days):'—',o.sentinel_latest&&o.sentinel_latest.age_days<=1?'up':'down',o.sentinel_latest?o.sentinel_latest.name.slice(-16,-10):'']
+ ].map(([t,n,d,hint])=>`<div class="card metric"><div class="m-label">${t}</div><div class="m-val tnum">${n}</div>
+   <div class="m-delta ${d}">${d?d==='up'?'↑ 新鲜':'↓ 需关注':''}<span class="m-hint">${hint}</span></div></div>`).join('');
+ $('home-quick').innerHTML=[o.seo_monthly&&['SEO 月报',o.seo_monthly.name,o.seo_monthly.path],
+  o.seo_weekly&&['SEO 周报',o.seo_weekly.name,o.seo_weekly.path],
+  o.sentinel_latest&&['舆情日报',o.sentinel_latest.name,o.sentinel_latest.path]
+ ].filter(Boolean).map(([t,n,p])=>`<a onclick="openReader('${esc(p)}')"><span class="act-ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><span class="qt"><span class="badge" style="margin-right:8px">${t}</span>${esc(n)}</span><span class="qd">阅读 →</span></a>`).join('');
+ $('nav-tasks').textContent=o.open_tasks;$('nav-dist').textContent=o.dist_open;$('nav-pipe').textContent=o.pipeline_inflight;
+ const lines=(o.daily.tail||'').split('\n').filter(l=>/OK|FAIL|SKIP|✅|❌/.test(l)).slice(-4);
+ $('home-acts').innerHTML=(lines.length?lines.map(l=>{const ok=/OK|✅/.test(l);
+  return `<div class="act-item"><span class="act-ic ${ok?'ok':'wn'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><div class="act-tx"><div class="act-t">${esc(l.replace(/^(OK|FAIL|SKIP):?\s*/,''))}</div><div class="act-m">每日管线</div></div></div>`}).join(''):'<span class="mut">暂无活动</span>')+
+  `<div class="act-item"><span class="act-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><div class="act-tx"><div class="act-t">下次调度：每天 08:00 管线 · 02:30 梦境 · 周一 07:00 周报</div><div class="act-m">Asia/Shanghai</div></div></div>`;
+ $('home-timers').innerHTML=esc((o.timers||'').split('\n').filter(l=>/mflow/.test(l)).join('\n'))||'—';
+ const c=o.chart7d||[];const mx=Math.max(1,...c.map(x=>x.n));
+ $('chart7').innerHTML=c.map(x=>`<div class="cb"><span class="vl tnum">${x.n||''}</span><div class="bar" style="height:${Math.max(4,x.n/mx*100)}%"></div><span class="lb">${x.label}</span></div>`).join('');
+ $('chart7-meta').innerHTML=`近 7 日共 <b class="tnum">${c.reduce((a,b)=>a+b.n,0)}</b> 次推进`;
 })}
 
 /* ---- 任务 ---- */
-function loadTasks(){api('/api/tasks').then(t=>{
- const m=t.manual||[];
+function loadTasks(){api('/api/tasks').then(t=>{const m=t.manual||[];
  const col=(st,el)=>{$(el).innerHTML=m.filter(x=>x.status===st).map(x=>`<div class="task ${st==='done'?'done':''}">
-   <input type="checkbox" ${st==='done'?'checked':''} onchange="taskSet('${x.id}','${st==='done'?'todo':'done'}')" style="margin-top:3px">
-   <span class="tt" style="flex:1">${esc(x.title)}<div class="mut">${x.created||''}</div></span>
-   ${st!=='done'?`<button class="mini" onclick="taskSet('${x.id}','${st==='todo'?'doing':'todo'}')">${st==='todo'?'→ 进行':'← 待办'}</button>`:''}
-   <button class="mini" onclick="taskDel('${x.id}')">删</button></div>`).join('')||'<span class="mut">空</span>'};
+   <input type="checkbox" ${st==='done'?'checked':''} onchange="taskSet('${x.id}','${st==='done'?'todo':'done'}')">
+   <span class="tt">${esc(x.title)}<div class="mut" style="font-size:11px">${x.created||''}</div></span>
+   ${st!=='done'?`<button class="more" onclick="taskSet('${x.id}','${st==='todo'?'doing':'todo'}')">${st==='todo'?'→':'←'}</button>`:''}
+   <button class="more" style="color:var(--danger)" onclick="taskDel('${x.id}')">×</button></div>`).join('')||'<span class="mut">空</span>'};
  col('todo','col-todo');col('doing','col-doing');col('done','col-done');
- $('autoq').innerHTML=
-  (t.pipeline||[]).map(x=>`<div class="task"><span class="tt" style="flex:1">${esc(x.id)}</span><span class="badge pipe">管线·${esc(x.stage)}</span></div>`).join('')+
-  (t.distribution||[]).map(x=>`<div class="task"><span class="tt" style="flex:1">${esc(x.id)} <span class="mut">${esc(x.platforms||'')}</span></span><span class="badge dist">分发·${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">分发队列空</span>';
-})}
+ $('autoq').innerHTML=(t.pipeline||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)}</span><span class="badge pipe">管线·${esc(x.stage)}</span></div>`).join('')+
+  (t.distribution||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)} <span class="mut">${esc(x.platforms||'')}</span></span><span class="badge dist">分发·${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">分发队列空</span>';
+ $('nav-tasks').textContent=m.filter(x=>x.status!=='done').length})}
 function addTask(){const v=$('ttitle').value.trim();if(!v)return;api('/api/tasks/add',{title:v}).then(()=>{$('ttitle').value='';loadTasks()})}
 function taskSet(id,st){api('/api/tasks/set',{id,status:st}).then(loadTasks)}
 function taskDel(id){api('/api/tasks/del',{id}).then(loadTasks)}
 
 /* ---- 报告 ---- */
-function loadReports(){if(REPORTS){renderReports();return}api('/api/reports').then(r=>{REPORTS=r;renderReports()})}
+function loadReports(){if(REPORTS){renderReports();return}api('/api/reports').then(r=>{REPORTS=r;
+ $('nav-reports').textContent=Object.values(r).reduce((a,b)=>a+b.length,0);renderReports()})}
 function renderReports(){const cats=Object.keys(REPORTS);
- $('rcats').innerHTML=cats.map(c=>`<span class="chip ${RCAT===c?'on':''}" onclick="pickCat('${esc(c)}')">${c}（${REPORTS[c].length}）</span>`).join('');
+ $('rcats').innerHTML=cats.map(c=>`<button class="chip ${RCAT===c?'on':''}" style="border-radius:12px;justify-content:space-between;display:flex" onclick="pickCat('${esc(c)}')"><span>${c}</span><span class="mut">${REPORTS[c].length}</span></button>`).join('');
  if(!RCAT)pickCat(cats[0])}
-function pickCat(c){RCAT=c;document.querySelectorAll('#rcats .chip').forEach(x=>x.classList.toggle('on',x.textContent.startsWith(c)));
- const files=REPORTS[c]||[];$('rcount').textContent=`（${files.length} 份 · 点击阅读）`;
+function pickCat(c){RCAT=c;renderReports();const files=REPORTS[c]||[];
+ $('rlist-title').textContent=c+`（${files.length}）`;
  $('rlist').innerHTML=files.map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${f.date}</span>${esc(f.name)}</a>`).join('')||'<span class="mut">此分类暂无文件</span>'}
 
 /* ---- 知识库 ---- */
 function loadKb(){if($('kdirs').children.length)return;api('/api/kb/tree').then(dirs=>{
- $('kdirs').innerHTML=`<span class="chip on" onclick="pickDir('',this)">全部</span>`+dirs.map(d=>`<span class="chip" onclick="pickDir('${esc(d.name)}',this)">${esc(d.name)}（${d.files}）</span>`).join('')})}
-function pickDir(n,el){KDIR=n;document.querySelectorAll('#kdirs .chip').forEach(x=>x.classList.remove('on'));el.classList.add('on');
- if(n==='')return kbSearch();
- api('/api/kb/list?dir='+encodeURIComponent(n)).then(items=>{$('kres').innerHTML=items.filter(i=>i.type==='file').map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${f.date||''}</span>${esc(f.name)}</a>`).join('')||'<span class="mut">空</span>'})}
+ $('kdirs').innerHTML=`<button class="chip on" onclick="pickDir('',this)">全部</button>`+dirs.map(d=>`<button class="chip" onclick="pickDir('${esc(d.name)}',this)">${esc(d.name)} · ${d.files}</button>`).join('');
+ pickDir('',document.querySelector('#kdirs .chip'))})}
+function pickDir(n,el){KDIR=n;document.querySelectorAll('#kdirs .chip').forEach(x=>x.classList.remove('on'));el.classList.add('on');$('kq').value='';
+ if(n===''){api('/api/kb/list?dir=').then(items=>{$('kres-t').textContent='根目录文档';$('kres').innerHTML=items.filter(i=>i.type==='file').map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${f.date||''}</span>${esc(f.name)}</a>`).join('')});return}
+ api('/api/kb/list?dir='+encodeURIComponent(n)).then(items=>{$('kres-t').textContent=n;
+  $('kres').innerHTML=items.map(i=>i.type==='dir'
+   ?`<a onclick="pickDir('${esc(i.name)}',document.querySelectorAll('#kdirs .chip')[1])"><b>${esc(i.name)}/</b> <span class="mut">目录</span></a>`
+   :`<a onclick="openReader('${esc(i.path)}')"><span class="d">${i.date||''}</span>${esc(i.name)}</a>`).join('')||'<span class="mut">空</span>'})}
 function kbSearch(){const q=$('kq').value.trim();if(q.length<2)return alert('至少 2 个字符');
- const url='/api/kb/search?q='+encodeURIComponent(q)+(KDIR?'&dir='+encodeURIComponent(KDIR):'');
- api(url).then(hits=>{$('kres').innerHTML=hits.map(h=>`<a onclick="openReader('${esc(h.path)}')"><b>${esc(h.name)}</b><div class="mut">${esc(h.match)}</div></a>`).join('')||'<span class="mut">无匹配</span>'})}
+ api('/api/kb/search?q='+encodeURIComponent(q)+(KDIR?'&dir='+encodeURIComponent(KDIR):'')).then(hits=>{
+  $('kres-t').textContent=`搜索「${q}」（${hits.length} 命中）`;
+  $('kres').innerHTML=hits.map(h=>`<a onclick="openReader('${esc(h.path)}')"><b>${esc(h.name)}</b><div class="mt mut">${esc(h.match)}</div></a>`).join('')||'<span class="mut">无匹配</span>'})}
+
+/* ---- 分发 ---- */
+function loadDist(){api('/api/dist').then(d=>{
+ $('dist-pending').innerHTML=(d.pending||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id||x.slug||'')}<div class="mut">${esc(x.platforms||'')} · score ${x.score??'-'}</div></span><span class="badge dist">${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">空</span>';
+ $('dist-published').innerHTML=(d.published||[]).map(x=>`<div class="task"><span class="tt">${esc(x.slug||'')}<div class="mut">${esc(x.platform||'')} · ${esc(x.date||'')}</div></span><span class="badge" style="background:var(--ok)">${esc(x.status||'published')}</span></div>`).join('')||'<span class="mut">空</span>';
+ $('dist-dispatch').innerHTML=(d.dispatches||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)}<div class="mut">cn ${x.cn} · global ${x.gl}</div></span><span class="badge ${x.approved?'':'dist'}">${x.approved?'已授权':'待授权'}</span></div>`).join('')||'<span class="mut">无 dispatch 单</span>'})}
 
 /* ---- 管线 ---- */
-function loadState(){api('/api/state').then(S=>{
- const by={};S.phases.forEach(p=>by[p]=[]);
- S.items.forEach(i=>(by[i.phase]||by['?']).push(i));
+function loadPipe(){api('/api/state').then(S=>{
+ $('nav-pipe').textContent=S.items.filter(i=>!['done','failed','escalated'].includes(i.stage)).length;
+ const by={};S.phases.forEach(p=>by[p]=[]);S.items.forEach(i=>(by[i.phase]||by['?']).push(i));
  $('board').innerHTML=S.phases.map(p=>`<div class="phase"><b>${p}（${by[p].length}）</b>${by[p].map(i=>{
   const tos=S.legal_transitions[i.stage]||[];
-  return `<div class="item"><div class="id">${esc(i.id)}</div><div class="st">${esc(i.stage)}</div>
-   <div class="meta">QA ${i.qa_l1_block??0}/${i.qa_l2_block??0}/${i.qa_l7_block??0}</div>
+  return `<div class="pitem"><div class="id">${esc(i.id)}</div><div class="st">${esc(i.stage)}</div>
    ${tos.length?`<select onchange="advance('${esc(i.id)}',this.value)"><option value="">→ 推进…</option>${tos.map(t=>`<option>${t}</option>`).join('')}</select>`:''}</div>`}).join('')||'<div class="mut" style="margin-top:8px">空</div>'}</div>`).join('')})}
-function advance(id,to){if(!to)return;api('/api/item/advance',{id,to,reason:'console'}).then(r=>{if(r.rc!==0)alert('状态机拒绝：\n'+r.out);loadState()})}
-function upsert(){const id=$('nid').value.trim();if(!id)return alert('先填 id');api('/api/item/upsert',{id,category:$('ncat').value,target_type:$('ncat').value}).then(r=>{if(r.rc!==0)alert(r.out||r.error);else $('nid').value='';loadState()})}
+function advance(id,to){if(!to)return;api('/api/item/advance',{id,to,reason:'console'}).then(r=>{if(r.rc!==0)alert('状态机拒绝：\n'+r.out);loadPipe()})}
+function upsert(){const id=$('nid').value.trim();if(!id)return alert('先填 id');api('/api/item/upsert',{id,category:$('ncat').value,target_type:$('ncat').value}).then(r=>{if(r.rc!==0)alert(r.out||r.error);else $('nid').value='';loadPipe()})}
 
 /* ---- 工程 ---- */
-function renderEng(){api('/api/state').then(S=>{const stages=[...new Set(S.decisions.map(d=>d.stage))],sc=[...new Set(S.decisions.map(d=>d.scenario))];
- const os=$('rstage').value;$('rstage').innerHTML=stages.map(s=>`<option>${s}</option>`).join('');if(stages.includes(os))$('rstage').value=os;
+function renderEng(){api('/api/state').then(S=>{const st=[...new Set(S.decisions.map(d=>d.stage))],sc=[...new Set(S.decisions.map(d=>d.scenario))];
+ const os=$('rstage').value;$('rstage').innerHTML=st.map(s=>`<option>${s}</option>`).join('');if(st.includes(os))$('rstage').value=os;
  $('rscenario').innerHTML=sc.map(s=>`<option>${s}</option>`).join('')})}
 function decide(){api('/api/router/decide',{stage:$('rstage').value,scenario:$('rscenario').value}).then(r=>{$('rout').textContent=JSON.stringify(r.verdict??r,null,2)})}
 function runHook(){api('/api/hook/run',{hook:$('hook').value,file:$('hfile').value.trim()}).then(r=>{$('hout').textContent=`exit=${r.rc}\n`+r.out})}
-function loadSys(){api('/api/overview').then(o=>{$('drun').innerHTML=o.daily.running?'<span class="warn">运行中…</span>':'<span class="ok">空闲</span>';$('drbtn').disabled=o.daily.running;$('dtail').textContent=o.daily.tail||'（尚无日志）';$('stimers').textContent=o.timers})}
-function runDaily(){api('/api/daily/run').then(()=>{setTimeout(()=>{loadSys()},1500)})}
 
-setTab('home');renderEng();setInterval(()=>{if(TAB==='home'||TAB==='sys')setTabSilent()},30000);
-function setTabSilent(){if(TAB==='home')loadHome();if(TAB==='sys')loadSys()}
+/* ---- 系统 ---- */
+function loadSys(){api('/api/overview').then(o=>{$('drun').innerHTML=o.daily.running?'<span class="warn">运行中…</span>':'<span class="ok">空闲</span>';
+ $('drbtn').disabled=o.daily.running;$('dtail').textContent=o.daily.tail||'（尚无日志）';$('stimers').textContent=o.timers})}
+function runDaily(){api('/api/daily/run').then(()=>{setTimeout(()=>{if(TAB==='sys')loadSys();if(TAB==='home')loadHome()},1500)})}
+
+setTab('home');
 </script>
 </body>
 </html>

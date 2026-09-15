@@ -1,12 +1,44 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><title>MFlow 登录</title>
-<style>body{font-family:-apple-system,"PingFang SC",sans-serif;background:#141a24;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;color:#fff}
-.box{background:#1e2836;padding:36px 32px;border-radius:12px;width:300px}h1{font-size:18px;margin:0 0 6px}
-p{color:#9fb3c8;font-size:12px;margin:0 0 20px}input{width:100%;box-sizing:border-box;padding:10px;border-radius:8px;border:1px solid #3a4a5e;background:#141a24;color:#fff;font-size:14px}
-button{width:100%;margin-top:12px;padding:10px;border:none;border-radius:8px;background:#2b6cb0;color:#fff;font-size:14px;cursor:pointer}
-#err{color:#e07b7b;font-size:12px;margin-top:10px;min-height:16px}</style></head>
-<body><div class="box"><h1>MFlow 工作台</h1><p>Lovart GEO 内容工作流 · 请输入访问密码</p>
-<input id="pw" type="password" placeholder="密码" onkeydown="if(event.key==='Enter')go()">
-<button onclick="go()">进入工作台</button><div id="err"></div></div>
+<html lang="zh-CN" data-theme="light"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>MFlow · 登录</title>
+<style>
+:root{--bg:oklch(96.5% .016 85);--fg:oklch(22% .02 70);--muted:oklch(44% .016 70);--faint:oklch(52% .012 75);
+ --border:oklch(86% .014 80);--accent:oklch(52% .17 258);--on-accent:oklch(100% 0 0);
+ --glass:oklch(100% 0 0 / .55);--shadow:0 24px 60px -24px oklch(30% .04 80 / .3);
+ --blob-a:oklch(72% .12 262 / .30);--blob-b:oklch(70% .13 305 / .24);--blob-c:oklch(74% .11 200 / .22);
+ --grad:linear-gradient(135deg,var(--accent),oklch(58% .18 300));
+ --font-body:-apple-system,BlinkMacSystemFont,'PingFang SC','Segoe UI',system-ui,sans-serif;color-scheme:light}
+@media(prefers-color-scheme:dark){:root{--bg:oklch(19% .014 70);--fg:oklch(93% .008 85);--muted:oklch(72% .014 80);--faint:oklch(62% .012 80);
+ --border:oklch(100% 0 0 / .12);--accent:oklch(74% .13 258);--on-accent:oklch(16% .03 260);
+ --glass:oklch(30% .014 75 / .55)}}
+*{box-sizing:border-box}body{margin:0;font-family:var(--font-body);background:var(--bg);color:var(--fg);height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.ambient{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.blob{position:absolute;border-radius:50%;filter:blur(72px)}
+.blob-a{width:50vw;height:50vw;left:-8vw;top:-12vh;background:radial-gradient(circle,var(--blob-a),transparent 65%)}
+.blob-b{width:44vw;height:44vw;right:-8vw;bottom:-16vh;background:radial-gradient(circle,var(--blob-b),transparent 65%)}
+.box{position:relative;z-index:1;width:340px;background:var(--glass);-webkit-backdrop-filter:blur(24px) saturate(170%);backdrop-filter:blur(24px) saturate(170%);
+ border:1px solid var(--border);border-radius:24px;padding:34px 30px;box-shadow:var(--shadow)}
+.logo{width:52px;height:52px;border-radius:16px;background:var(--grad);color:var(--on-accent);display:grid;place-items:center;font-size:24px;font-weight:800;margin-bottom:16px}
+h1{font-size:20px;margin:0 0 4px}h1 em{font-family:'Songti SC',Georgia,serif;font-style:italic;color:var(--accent)}
+p{color:var(--muted);font-size:12.5px;margin:0 0 22px}
+input{width:100%;padding:11px 14px;border-radius:13px;border:1px solid var(--border);background:var(--glass);color:var(--fg);font-size:14px}
+input:focus{outline:2px solid var(--accent);outline-offset:1px}
+button{width:100%;margin-top:12px;padding:11px;border:none;border-radius:13px;background:var(--grad);color:var(--on-accent);font-size:14px;font-weight:700;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+button:hover{transform:translateY(-1px)}
+#err{color:oklch(52% .2 25);font-size:12px;margin-top:10px;min-height:16px}
+.foot{margin-top:18px;font-size:11px;color:var(--faint);font-family:ui-monospace,monospace}
+</style></head>
+<body>
+<div class="ambient"><div class="blob blob-a"></div><div class="blob blob-b"></div></div>
+<div class="box">
+  <div class="logo">M</div>
+  <h1>M<em>Flow</em> 工作台</h1>
+  <p>Lovart GEO 内容工作流 · 服务器实例 · 请输入访问密码</p>
+  <input id="pw" type="password" placeholder="密码" onkeydown="if(event.key==='Enter')go()">
+  <button onclick="go()">进入工作台</button>
+  <div id="err"></div>
+  <div class="foot">172.96.253.73:8088 · /var/www/mflow</div>
+</div>
 <script>async function go(){const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:document.getElementById('pw').value})});
-if(r.ok)location.reload();else document.getElementById('err').textContent='密码错误，重试'}</script></body></html>
+if(r.ok)location.reload();else document.getElementById('err').textContent='密码错误，重试'}</script>
+</body></html>
