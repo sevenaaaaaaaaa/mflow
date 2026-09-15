@@ -80,3 +80,17 @@ oklch 暖灰色彩系统（明暗双主题）、玻璃拟态顶栏 + macOS 红�
 源感知列表 + 跨源全文搜索（文件名优先 + 上下文摘录 + 800 文件扫描上限）。
 验证：铁律源列出 RULES-00..60；搜"故事线"跨源命中 RULES-20/STORYLINES 等 12 处。
 遗留小提示：08-storyline 里 iCloud 冲突副本 FEATURES-PRODUCTION 2.md 仍在（原 vault 卫生轮标记过），会被一起索引。
+
+## v3.2 追加（同日）——运营六缺口
+
+用户点名六条：工作流的角色/skills/知识库不可见、token 开销不可见、内容日历缺失、外链无法导出、Trident 工作流缺失、报告纯文本不利展示。
+
+全部落地：
+1. 工作流地图页：6 条工作流（blog/landing/qa/publish/trident/daily）× 阶段链 + Profile + Skills（可点读 SKILL.md）+ 关联知识源（可跳知识中台）
+2. llm_chat 记录真实 usage → llm-usage.jsonl；用量页（14 日柱图/profile 分摊/明细）
+3. Content Calendar 3280 篇同步上服务器（踩坑：rsync 远端路径空格被远端 shell 拆分，落到了 /var/www/mflow/1-3，已 mv 归位）；日历页 = 语言统计 + 12 月分布柱图 + 过滤搜索阅读
+4. /api/dist/export 导出全部已发布外链 CSV（date/platform/slug/canonical/offsite_url）
+5. Trident 页：4 步骤手动触发 + Data Ingestion 产出健康
+6. 报告阅读器 V1 增强：TOC（月报 63 条）+ 表格数值条（月报 3753 条）；v2 规划落 docs/report-vision.md（R1 类型化 dashboard → R2 Chart.js → R3 对比模式 → R4 PDF → R5 订阅摘要）
+
+验证：calendar 3280（en796/zh792/zhtw788/ja788/ru58/pt58）、workflows 6、trident 4 步、CSV 10 行、toc 63/numbar 3753、外部 200。
