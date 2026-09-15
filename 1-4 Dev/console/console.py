@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """MFlow Console v2 — content-ops workbench for the Lovart GEO workflow.
 
-Serves the console UI + JSON API. Built around what an operator actually needs:
-  总览 dashboard / 任务看板 (tasks) / 报告中心 (reports reader) / 知识库 (KB search+read)
-  内容管线 (pipeline state machine) / 路由·门禁 (router + hooks) / 系统 (timers, daily trigger)
+v3 adds the production core: LLM provider config (OpenAI-compatible), generation
+  entry for blog + 6 landing types, Agent mode (Loop: generate->QA->feedback, max 3
+  rounds, mirrors lovart-quality-cascade), node mode (per-step pipeline execution),
+  Harness rules + Skills inventory with runtime re-sync.
 
 stdlib + `markdown` package only. Publishing stays display-only (iron rule).
 Auth: MFLOW_CONSOLE_PASSWORD from env; fail-closed when unset.
@@ -15,6 +16,7 @@ import re
 import secrets
 import subprocess
 import sys
+import threading
 import time
 import urllib.parse
 from datetime import datetime
@@ -33,6 +35,12 @@ TASKS_FILE = RUN_DIR / "tasks.json"
 DAILY_LOG = RUN_DIR / "logs" / "daily.out.log"
 DAILY_PID = RUN_DIR / "logs" / "daily.pid"
 KB_ROOT = PROJECT / "1-2 Insight" / "Knowledge Base"
+LLM_FILE = RUN_DIR / "llm.json"
+LOOPS_FILE = RUN_DIR / "loops.json"
+GEN_DIR = PROJECT / "1-3 GenFlow" / "Console-Gen"
+HARNESS_DIR = PROJECT / "1-1 Harness"
+LOOP_LOCK = threading.Lock()
+LOOP_THREADS = {}
 PORT = int(os.environ.get("MFLOW_CONSOLE_PORT", "8088"))
 PASSWORD = os.environ.get("MFLOW_CONSOLE_PASSWORD", "")
 
@@ -54,6 +62,177 @@ REPORT_CATS = [
     ("SEO 报告杂项", "1-2 Insight/SEO Reports", "*.md"),
     ("会话日志", "1-1 Harness/11-knowledge/sessions", "2026-*.md"),
 ]
+
+SESSIONS = set()
+
+# ── LLM 引擎（OpenAI 兼容）────────────────────────────────────────────
+DEFAULT_LLM = {
+    "providers": {
+        "deepseek": {"base": "https://api.deepseek.com", "key": ""},
+        "openai": {"base": "https://api.openai.com/v1", "key": ""},
+        "custom": {"base": "", "key": ""}
+    },
+    "profiles": {
+        "lovart-creation": {"provider": "deepseek", "model": "deepseek-chat"},
+        "lovart-quality": {"provider": "deepseek", "model": "deepseek-chat"},
+        "default": {"provider": "deepseek", "model": "deepseek-chat"}
+    }
+}
+
+
+def llm_config():
+    cfg = read_json(LLM_FILE, {})
+    merged = json.loads(json.dumps(DEFAULT_LLM))
+    merged.update(cfg)
+    return merged
+
+
+def llm_chat(messages, profile="default", max_tokens=4000, timeout=180):
+    cfg = llm_config()
+    pr = cfg["profiles"].get(profile) or cfg["profiles"]["default"]
+    prov = cfg["providers"].get(pr["provider"], {})
+    base, key, model = (prov.get("base") or "").rstrip("/"), prov.get("key", ""), pr.get("model", "")
+    if not base or not key:
+        raise RuntimeError(f"LLM 未配置：provider={pr['provider']} 缺 base/key（去 设置 页填写）")
+    req = json.dumps({"model": model, "messages": messages,
+                      "temperature": 0.7, "max_tokens": max_tokens}).encode()
+    import urllib.request
+    r = urllib.request.Request(base + "/chat/completions", data=req,
+                               headers={"Content-Type": "application/json",
+                                        "Authorization": "Bearer " + key})
+    with urllib.request.urlopen(r, timeout=timeout) as resp:
+        data = json.loads(resp.read())
+    return data["choices"][0]["message"]["content"]
+
+
+# ── 生成模板（signal-writer 精华浓缩版；长文全景仍走本地 signal-writer 流程）──
+GEN_TYPES = {
+    "blog": "Blog 文章",
+    "landing-tools": "落地页 · Tools",
+    "landing-features": "落地页 · Features",
+    "landing-product": "落地页 · Product",
+    "landing-scenario": "落地页 · Scenario",
+    "landing-solution": "落地页 · Solution",
+    "landing-topic": "落地页 · Topic",
+}
+LANGS = ["zh", "en", "ja", "ko", "de", "fr", "pt", "ru", "it", "zh-TW"]
+
+ANTI_SLOP = """硬性写作规则（违反任何一条即为废稿）：
+- 每一段必须回答：谁会读 / 为什么现在读 / 读完改变什么 / 下一步是什么
+- 禁止以下 AI 套话：In today's fast-paced world、game-changer、cutting-edge、unlock the power、seamlessly integrate、delve into、elevate your workflow、革命性、赋能、闭环（作修饰语时）
+- 不可验证的数字一律标注 [待考证]，禁止编造产品数据
+- 段落长度由语义完整性决定，不写零碎小段
+- 面向真实用户的具体场景，不写空泛综述"""
+
+
+def gen_prompt(ctype, lang, topic, brief, feedback=""):
+    lang_name = {"zh": "简体中文", "zh-TW": "繁体中文", "en": "English", "ja": "日本語", "ko": "한국어",
+                 "de": "Deutsch", "fr": "Français", "pt": "Português", "ru": "Русский", "it": "Italiano"}.get(lang, lang)
+    if ctype == "blog":
+        spec = f"""用{lang_name}写一篇 Blog 文章，主题：{topic}。
+结构：H1 标题 → 导语（3-4 句，直给读者收益）→ 4-6 个 H2 章节（每章有小节正文，含具体场景/步骤/对比）→ FAQ（3 条）→ 结尾行动建议。
+全文 1200-1800 字。可直接提及 Lovart（AI 设计工作台）作为相关工具推荐，但不通篇吹捧。"""
+    else:
+        page = ctype.split("-")[1]
+        spec = f"""用{lang_name}写一个 {page.upper()} 类落地页的完整文案，主题：{topic}。
+结构：Hero（大标题 + 副标题一句 + CTA 按钮文案）→ 3 个 Benefit 块（小标题 + 2-3 句说明）→ 使用场景 2 条 → FAQ（3 条）→ 底部 CTA。
+ Lovart 相关功能描述基于公开常识，不编造参数。"""
+    fb = (f"\n\n上一轮质检未通过，反馈如下，务必针对性修正：\n{feedback}") if feedback else ""
+    return f"""{spec}
+
+{brief}
+
+{ANTI_SLOP}{fb}
+
+直接输出 Markdown 正文，不要任何解释性开场白。"""
+
+
+# ── Loop 引擎（Agent 模式：生成→质检→反馈迭代，≤3 轮，对应 quality-cascade）──
+def _loop_save(loop):
+    loops = read_json(LOOPS_FILE, [])
+    loops = [x for x in loops if x.get("id") != loop["id"]]
+    loops.append(loop)
+    LOOPS_FILE.parent.mkdir(parents=True, exist_ok=True)
+    LOOPS_FILE.write_text(json.dumps(loops, ensure_ascii=False, indent=1))
+
+
+def loop_engine(loop_id):
+    def log(loop, msg):
+        loop.setdefault("log", []).append(f"[{time.strftime('%H:%M:%S')}] {msg}")
+        _loop_save(loop)
+    with LOOP_LOCK:
+        loop = next((x for x in read_json(LOOPS_FILE, []) if x["id"] == loop_id), None)
+    if not loop:
+        return
+    loop["status"] = "running"
+    _loop_save(loop)
+    log(loop, f"Loop 启动：{loop['goal']}")
+    item = loop["item_id"]
+    try:
+        run_tool([sys.executable, str(PS_PATH), "advance", "--id", item, "--to", "S3-creating"])
+    except Exception:
+        pass
+    feedback = ""
+    for rnd in range(1, loop.get("max_rounds", 3) + 1):
+        if loop.get("stop"):
+            loop["status"] = "stopped"
+            log(loop, "被用户停止")
+            _loop_save(loop)
+            return
+        loop["round"] = rnd
+        log(loop, f"第 {rnd} 轮：调用 LLM 生成（{loop['type']} / {loop['lang']}）")
+        _loop_save(loop)
+        try:
+            draft = llm_chat([{"role": "user", "content": gen_prompt(
+                loop["type"], loop["lang"], loop["topic"], loop["brief"], feedback)}],
+                profile="lovart-creation", max_tokens=4000)
+        except Exception as e:
+            loop["status"] = "failed"
+            log(loop, f"LLM 调用失败：{e}")
+            _loop_save(loop)
+            return
+        draft_path = GEN_DIR / f"{item}.md"
+        draft_path.parent.mkdir(parents=True, exist_ok=True)
+        draft_path.write_text(draft)
+        log(loop, f"草稿写入 {draft_path.relative_to(PROJECT)}（{len(draft)} 字符），跑质量门禁…")
+        r = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/post-write-check.sh"),
+                      "--file", str(draft_path), "--target-words", "300"], timeout=120)
+        loop["last_hook_rc"] = r["rc"]
+        if r["rc"] == 0:
+            log(loop, "质检 PASS，推进状态机 S3-draft → S3-done → S4-qa")
+            for stg in ("S3-draft", "S3-done", "S4-qa"):
+                run_tool([sys.executable, str(PS_PATH), "advance", "--id", item, "--to", stg])
+            loop["status"] = "done"
+            loop["draft_path"] = rel_of(draft_path)
+            log(loop, "Loop 完成：草稿已入 S4-qa，等待人工审阅/继续推进")
+            _loop_save(loop)
+            return
+        feedback = r["out"][-1500:]
+        log(loop, f"质检 BLOCK（exit {r['rc']}），反馈带入下一轮")
+        _loop_save(loop)
+    loop["status"] = "blocked"
+    log(loop, f"达最大轮次仍 BLOCK。草稿在 {GEN_DIR / (item + '.md')}, 可人工修改后继续推进")
+    _loop_save(loop)
+
+
+def harness_inventory():
+    rules = []
+    rdir = HARNESS_DIR / "02-rules"
+    if rdir.exists():
+        for f in sorted(rdir.glob("RULES-*.md")) + sorted(rdir.glob("SESSION-ROUTING.md")):
+            rules.append({"name": f.name, "path": rel_of(f),
+                          "lines": len(f.read_text(errors="ignore").splitlines()),
+                          "mtime": fdate(f.stat().st_mtime)})
+    skills = []
+    sk = HARNESS_DIR / "Skills"
+    for f in sorted(sk.rglob("SKILL.md")):
+        head = f.read_text(errors="ignore")[:400]
+        m = re.search(r"description:\s*\n?\s*(.{5,120})", head)
+        skills.append({"name": f.parent.name,
+                       "group": str(f.parent.parent.relative_to(sk)),
+                       "path": rel_of(f),
+                       "desc": (m.group(1).replace("\n", " ").strip() if m else "")})
+    return {"rules": rules, "skills": skills}
 
 SESSIONS = set()
 
@@ -347,6 +526,22 @@ class Handler(BaseHTTPRequestHandler):
                     "published": (pub.get("items", []) or [])[-10:][::-1],
                     "restart": q.get("restart", {}),
                     "dispatches": dispatches})
+            if parsed.path == "/api/llm":
+                cfg = llm_config()
+                masked = json.loads(json.dumps(cfg))
+                for pv in masked["providers"].values():
+                    if pv.get("key"):
+                        pv["key"] = pv["key"][:6] + "…" + pv["key"][-4:]
+                return self._send(200, masked)
+            if parsed.path == "/api/harness":
+                return self._send(200, harness_inventory())
+            if parsed.path == "/api/loops":
+                loops = sorted(read_json(LOOPS_FILE, []),
+                               key=lambda x: x.get("created", ""), reverse=True)
+                return self._send(200, loops)
+            if parsed.path == "/api/loop/detail":
+                loop = next((x for x in read_json(LOOPS_FILE, []) if x["id"] == qs.get("id", [""])[0]), None)
+                return self._send(200, loop or {"error": "not found"})
             if parsed.path == "/api/daily/log":
                 return self._send(200, daily_status())
         except Exception as e:
@@ -418,6 +613,84 @@ class Handler(BaseHTTPRequestHandler):
                                         stdout=log, stderr=subprocess.STDOUT, cwd=str(PROJECT))
                 DAILY_PID.write_text(str(proc.pid))
                 return self._send(200, {"ok": True, "pid": proc.pid})
+            if self.path == "/api/llm/save":
+                body_providers = body.get("providers")
+                body_profiles = body.get("profiles")
+                cfg = llm_config()
+                if body_providers:
+                    for name, pv in body_providers.items():
+                        cur = cfg["providers"].setdefault(name, {})
+                        newkey = str(pv.get("key", ""))
+                        if newkey and "…" not in newkey:  # masked value = keep old
+                            cur["key"] = newkey
+                        if pv.get("base"):
+                            cur["base"] = pv["base"]
+                if body_profiles:
+                    cfg["profiles"].update(body_profiles)
+                LLM_FILE.parent.mkdir(parents=True, exist_ok=True)
+                LLM_FILE.write_text(json.dumps(cfg, ensure_ascii=False, indent=1))
+                os.chmod(LLM_FILE, 0o600)
+                return self._send(200, {"ok": True})
+            if self.path == "/api/llm/test":
+                try:
+                    out = llm_chat([{"role": "user", "content": "回复 OK 两个字母即可"}],
+                                   profile=str(body.get("profile", "default")), max_tokens=8, timeout=30)
+                    return self._send(200, {"ok": True, "reply": out[:50]})
+                except Exception as e:
+                    return self._send(400, {"ok": False, "error": str(e)[:300]})
+            if self.path == "/api/skills/sync":
+                return self._send(200, run_tool([sys.executable, str(PROJECT / "1-4 Dev/scripts/harness_sync.py")], timeout=120))
+            if self.path == "/api/generate":
+                # 节点模式单步：LLM 生成 → 落盘 → 质检钩子（同步返回）
+                item_id = str(body.get("item_id", "")).strip()
+                if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,78}", item_id):
+                    return self._send(400, {"error": "id 不合法"})
+                try:
+                    run_tool([sys.executable, str(PS_PATH), "upsert", "--id", item_id,
+                              "--category", str(body.get("type", "blog"))])
+                    draft = llm_chat([{"role": "user", "content": gen_prompt(
+                        str(body.get("type", "blog")), str(body.get("lang", "zh")),
+                        str(body.get("topic", ""))[:300], str(body.get("brief", ""))[:800])}],
+                        profile="lovart-creation")
+                except Exception as e:
+                    return self._send(400, {"error": str(e)[:300]})
+                path = GEN_DIR / f"{item_id}.md"
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(draft)
+                hook = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/post-write-check.sh"),
+                                 "--file", str(path), "--target-words", "300"], timeout=120)
+                return self._send(200, {"ok": True, "path": rel_of(path), "chars": len(draft),
+                                        "hook_rc": hook["rc"], "hook_out": hook["out"][-2000:]})
+            if self.path == "/api/loop/create":
+                item_id = str(body.get("item_id", "")).strip()
+                if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,78}", item_id):
+                    return self._send(400, {"error": "id 不合法"})
+                with LOOP_LOCK:
+                    loops = read_json(LOOPS_FILE, [])
+                    if any(x.get("status") == "running" for x in loops):
+                        return self._send(409, {"error": "已有 Loop 在运行（同时只跑一个，防超支）"})
+                    loop = {"id": secrets.token_hex(4), "item_id": item_id,
+                            "goal": str(body.get("topic", ""))[:200],
+                            "type": str(body.get("type", "blog")), "lang": str(body.get("lang", "zh")),
+                            "topic": str(body.get("topic", ""))[:300], "brief": str(body.get("brief", ""))[:800],
+                            "status": "queued", "round": 0, "max_rounds": 3,
+                            "created": datetime.now().strftime("%Y-%m-%d %H:%M"), "log": []}
+                    loops.append(loop)
+                    LOOPS_FILE.parent.mkdir(parents=True, exist_ok=True)
+                    LOOPS_FILE.write_text(json.dumps(loops, ensure_ascii=False, indent=1))
+                run_tool([sys.executable, str(PS_PATH), "upsert", "--id", item_id,
+                          "--category", str(body.get("type", "blog"))])
+                th = threading.Thread(target=loop_engine, args=(loop["id"],), daemon=True)
+                LOOP_THREADS[loop["id"]] = th
+                th.start()
+                return self._send(200, {"ok": True, "id": loop["id"]})
+            if self.path == "/api/loop/stop":
+                loops = read_json(LOOPS_FILE, [])
+                for x in loops:
+                    if x["id"] == body.get("id"):
+                        x["stop"] = True
+                LOOPS_FILE.write_text(json.dumps(loops, ensure_ascii=False, indent=1))
+                return self._send(200, {"ok": True})
             if self.path == "/api/tasks/add":
                 title = str(body.get("title", "")).strip()[:200]
                 if not title:
@@ -450,7 +723,7 @@ def main():
     if not PASSWORD:
         print("[console] FAIL-CLOSED: MFLOW_CONSOLE_PASSWORD 未设置，API 全部拒绝", file=sys.stderr)
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
-    print(f"[console] MFlow Console v2 on :{PORT}")
+    print(f"[console] MFlow Console v3 on :{PORT}")
     server.serve_forever()
 
 
