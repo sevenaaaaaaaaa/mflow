@@ -5,141 +5,243 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MFlow 工作台</title>
 <style>
-:root{--bg:#f5f6f8;--card:#fff;--ink:#1c2330;--mut:#68727f;--line:#e3e7ec;--acc:#2b6cb0;--ok:#0a7d38;--warn:#b7791f;--bad:#c0392b}
+:root{--bg:#f4f6f9;--card:#fff;--ink:#1c2330;--mut:#68727f;--line:#e3e7ec;--acc:#2b6cb0;--ok:#0a7d38;--warn:#b7791f;--bad:#c0392b}
 *{box-sizing:border-box}body{margin:0;font-family:-apple-system,"PingFang SC",sans-serif;background:var(--bg);color:var(--ink)}
-header{background:#141a24;color:#fff;padding:14px 24px;display:flex;align-items:center;gap:16px;position:sticky;top:0;z-index:5}
+header{background:#141a24;color:#fff;padding:12px 24px;display:flex;align-items:center;gap:14px;position:sticky;top:0;z-index:5}
 header h1{font-size:16px;margin:0;font-weight:600}header .sp{flex:1}
-header a,header button{color:#9fb3c8;background:none;border:1px solid #3a4a5e;border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer}
-nav{display:flex;gap:4px;padding:10px 24px 0;background:#141a24}
-nav button{border:none;background:#1e2836;color:#9fb3c8;padding:8px 16px;border-radius:8px 8px 0 0;font-size:13px;cursor:pointer}
+header a,header button.lnk{color:#9fb3c8;background:none;border:1px solid #3a4a5e;border-radius:6px;padding:4px 10px;font-size:12px;cursor:pointer}
+nav{display:flex;gap:2px;padding:10px 24px 0;background:#141a24;flex-wrap:wrap}
+nav button{border:none;background:#1e2836;color:#9fb3c8;padding:8px 15px;border-radius:8px 8px 0 0;font-size:13px;cursor:pointer}
 nav button.on{background:var(--bg);color:var(--ink);font-weight:600}
-main{max-width:1180px;margin:20px auto;padding:0 16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:16px}
+main{max-width:1200px;margin:18px auto;padding:0 16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin-bottom:14px}
 .card h2{font-size:14px;margin:0 0 12px;color:var(--mut);font-weight:600;letter-spacing:.5px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
-.phase{background:#fafbfc;border:1px solid var(--line);border-radius:8px;padding:10px;min-height:80px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:10px}
+.stats{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-bottom:14px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.stat .n{font-size:26px;font-weight:700}.stat .t{font-size:12px;color:var(--mut);margin-top:2px}
+.phase{background:#fafbfc;border:1px solid var(--line);border-radius:8px;padding:10px;min-height:70px}
 .phase b{font-size:12px;color:var(--mut)}
 .item{background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 8px;margin-top:8px;font-size:12px}
-.item .id{font-weight:600}.item .st{color:var(--acc);font-size:11px}
-.item .meta{color:var(--mut);font-size:11px;margin-top:2px}
+.item .id{font-weight:600}.item .st{color:var(--acc);font-size:11px}.item .meta{color:var(--mut);font-size:11px;margin-top:2px}
 button.act{background:var(--acc);color:#fff;border:none;border-radius:6px;padding:7px 14px;font-size:13px;cursor:pointer}
-button.ghost{background:#fff;color:var(--acc);border:1px solid var(--acc)}
-input,select{border:1px solid var(--line);border-radius:6px;padding:7px 10px;font-size:13px;background:#fff}
-pre{background:#101620;color:#cfe3d8;border-radius:8px;padding:12px;font-size:12px;overflow:auto;max-height:340px;white-space:pre-wrap}
-.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0}
+button.ghost{background:#fff;color:var(--acc);border:1px solid var(--acc);border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer}
+button.mini{background:#fff;border:1px solid var(--line);border-radius:5px;padding:3px 8px;font-size:11px;cursor:pointer;color:var(--mut)}
+input,select{border:1px solid var(--line);border-radius:6px;padding:8px 10px;font-size:13px;background:#fff}
+pre{background:#101620;color:#cfe3d8;border-radius:8px;padding:12px;font-size:12px;overflow:auto;max-height:360px;white-space:pre-wrap}
 table{border-collapse:collapse;width:100%;font-size:12px}td,th{border-bottom:1px solid var(--line);padding:6px 4px;text-align:left}
-th{color:var(--mut);font-weight:500}.ok{color:var(--ok);font-weight:600}.bad{color:var(--bad);font-weight:600}.warn{color:var(--warn)}
-.mut{color:var(--mut);font-size:12px}.big{font-size:26px;font-weight:700}
+th{color:var(--mut);font-weight:500}
+.ok{color:var(--ok);font-weight:600}.bad{color:var(--bad);font-weight:600}.warn{color:var(--warn);font-weight:600}
+.mut{color:var(--mut);font-size:12px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.chip{border:1px solid var(--line);background:#fff;border-radius:14px;padding:4px 12px;font-size:12px;cursor:pointer}
+.chip.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.flist{max-height:420px;overflow:auto}.flist a{display:block;padding:6px 8px;border-bottom:1px solid #f0f2f5;cursor:pointer;font-size:13px;color:var(--ink);text-decoration:none}
+.flist a:hover{background:#f0f6ff}
+.flist .d{color:var(--mut);font-size:11px;float:right}
+.cols{display:grid;grid-template-columns:230px 1fr;gap:14px}
+@media(max-width:720px){.cols{grid-template-columns:1fr}}
+#reader{position:fixed;inset:0;background:#fff;z-index:20;display:none;flex-direction:column}
+#reader .rhead{background:#141a24;color:#fff;padding:10px 20px;display:flex;gap:12px;align-items:center}
+#reader .rbody{flex:1;overflow:auto;padding:24px;max-width:900px;margin:0 auto;width:100%}
+#reader h1,#reader h2,#reader h3{color:var(--ink)}#reader table{border:1px solid var(--line)}
+#reader td,#reader th{border:1px solid var(--line);padding:6px 10px}
+.task{display:flex;gap:8px;align-items:flex-start;border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-top:8px;background:#fff;font-size:13px}
+.task.done .tt{text-decoration:line-through;color:var(--mut)}
+.badge{font-size:10px;border-radius:8px;padding:1px 8px;color:#fff;background:var(--mut);vertical-align:1px}
+.badge.pipe{background:var(--acc)}.badge.dist{background:var(--warn)}
 </style>
 </head>
 <body>
 <header>
-  <h1>MFlow 工作台</h1><span class="mut" style="color:#9fb3c8;font-size:12px">Lovart GEO 内容工作流 · 服务器实例</span>
-  <span class="sp"></span><button onclick="logout()">退出</button>
+  <h1>MFlow 工作台</h1><span style="color:#9fb3c8;font-size:12px">Lovart GEO 内容工作流</span>
+  <span class="sp"></span><a href="http://172.96.253.73:8088/status-legacy" style="display:none"></a>
+  <button class="lnk" onclick="logout()">退出</button>
 </header>
 <nav id="tabs">
-  <button data-t="board" class="on">看板</button>
-  <button data-t="router">路由器</button>
-  <button data-t="gates">质量门禁</button>
-  <button data-t="daily">每日管线</button>
-  <button data-t="dist">分发队列</button>
+  <button data-t="home" class="on">总览</button>
+  <button data-t="tasks">任务看板</button>
+  <button data-t="reports">报告中心</button>
+  <button data-t="kb">知识库</button>
+  <button data-t="pipe">内容管线</button>
+  <button data-t="eng">路由·门禁</button>
   <button data-t="sys">系统</button>
 </nav>
 <main>
-  <section id="v-board">
+  <section id="v-home">
+    <div class="stats" id="stats"></div>
+    <div class="card"><h2>最新成果 · 点击直达</h2><div id="quick"></div></div>
+    <div class="card"><h2>系统事件（最近）</h2><pre id="h-events">…</pre></div>
+  </section>
+
+  <section id="v-tasks" style="display:none">
+    <div class="card"><h2>添加任务</h2>
+      <div class="row" style="display:flex;gap:8px">
+        <input id="ttitle" placeholder="要做什么？回车快速添加" style="flex:1" onkeydown="if(event.key==='Enter')addTask()">
+        <button class="act" onclick="addTask()">添加</button>
+      </div>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(280px,1fr))">
+      <div class="card"><h2>待办</h2><div id="col-todo"></div></div>
+      <div class="card"><h2>进行中</h2><div id="col-doing"></div></div>
+      <div class="card"><h2>已完成</h2><div id="col-done"></div></div>
+    </div>
+    <div class="card"><h2>自动同步的队列（只读）</h2>
+      <div class="mut" style="margin-bottom:6px">内容管线 / 分发队列 由系统自动同步到这里</div>
+      <div id="autoq"></div>
+    </div>
+  </section>
+
+  <section id="v-reports" style="display:none" class="cols">
+    <div class="card" style="height:fit-content"><h2>分类</h2><div id="rcats" class="chips" style="flex-direction:column"></div></div>
+    <div class="card"><h2>报告列表 <span class="mut" id="rcount"></span></h2>
+      <div id="rlist" class="flist"></div></div>
+  </section>
+
+  <section id="v-kb" style="display:none">
+    <div class="card"><h2>知识库搜索 <span class="mut">（Lovart KB · 产品/帮助/文档/新闻）</span></h2>
+      <div style="display:flex;gap:8px">
+        <input id="kq" placeholder="搜关键词，如：封面、价格、Agent、blog" style="flex:1" onkeydown="if(event.key==='Enter')kbSearch()">
+        <button class="act" onclick="kbSearch()">搜索</button>
+      </div>
+      <div id="kdirs" class="chips"></div>
+      <div id="kres" class="flist"></div>
+    </div>
+  </section>
+
+  <section id="v-pipe" style="display:none">
     <div class="card"><h2>新建管线条目</h2>
-      <div class="row">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
         <input id="nid" placeholder="条目 id（如 blog-xxx）" style="flex:1;min-width:220px">
         <select id="ncat"><option>blog</option><option>landing</option><option>feature</option><option>tool</option><option>topic</option></select>
-        <button class="act" onclick="upsert()">创建（入 QUEUE）</button>
-      </div><span class="mut">创建后走 S0-todo → S3-creating → … 状态机；非法跳步会被后端拒绝</span>
+        <button class="act" onclick="upsert()">创建</button>
+      </div>
     </div>
-    <div class="card"><h2>管线看板</h2><div id="board" class="grid"></div></div>
-    <div class="card"><h2>最近事件</h2><pre id="events">…</pre></div>
+    <div class="card"><h2>管线状态机看板</h2><div id="board" class="grid"></div></div>
   </section>
 
-  <section id="v-router" style="display:none">
-    <div class="card"><h2>路由决策（stage × scenario → profile / skills / 动作）</h2>
-      <div class="row">
-        <select id="rstage"></select>
-        <select id="rscenario"></select>
+  <section id="v-eng" style="display:none">
+    <div class="card"><h2>路由决策（这个任务谁来做、用什么技能）</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <select id="rstage"></select><select id="rscenario"></select>
         <button class="act" onclick="decide()">问路由器</button>
       </div>
-      <pre id="rout">选择 stage 和 scenario 后点击"问路由器"</pre>
+      <pre id="rout">选择后点击</pre>
     </div>
-    <div class="card"><h2>决策矩阵（23 条）</h2><div style="max-height:420px;overflow:auto"><table id="dtable"></table></div></div>
-  </section>
-
-  <section id="v-gates" style="display:none">
     <div class="card"><h2>质量钩子（对项目内文件手动执行）</h2>
-      <div class="row">
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
         <select id="hook">
-          <option value="pre-write-check.sh">pre-write（写前：命名/路径/frontmatter/占位符）</option>
-          <option value="post-write-check.sh">post-write（写后：H2 密度/词数/fluff）</option>
-          <option value="pre-import-check.sh">pre-import（导入前：需 --id，见备注）</option>
+          <option value="pre-write-check.sh">pre-write（写前）</option>
+          <option value="post-write-check.sh">post-write（写后）</option>
           <option value="post-generation-check.sh">post-generation（生成后 5 Gate）</option>
         </select>
-        <input id="hfile" placeholder="/var/www/mflow/1-3 GenFlow/... 文件路径" style="flex:1;min-width:260px">
+        <input id="hfile" placeholder="/var/www/mflow/… 文件路径" style="flex:1;min-width:240px">
         <button class="act" onclick="runHook()">执行</button>
       </div>
-      <span class="mut">pre-import 需要状态机条目，工作台仅支持 --file 类钩子；pre-import 请在本地会话跑</span>
       <pre id="hout">…</pre>
     </div>
   </section>
 
-  <section id="v-daily" style="display:none">
-    <div class="card"><h2>每日管线（GSC → Sentinel → harness 同步）</h2>
-      <div class="row"><span id="drun" class="mut">…</span><span class="sp"></span>
-        <button class="act" id="drbtn" onclick="runDaily()">立即执行</button>
-        <button class="ghost" onclick="loadState()">刷新</button></div>
+  <section id="v-sys" style="display:none">
+    <div class="card"><h2>每日管线（GSC → 舆情 → 规则同步）</h2>
+      <div style="display:flex;gap:8px;align-items:center"><span id="drun" class="mut">…</span>
+        <span style="flex:1"></span>
+        <button class="act" id="drbtn" onclick="runDaily()">立即执行</button></div>
       <pre id="dtail">…</pre>
     </div>
-  </section>
-
-  <section id="v-dist" style="display:none">
-    <div class="card"><h2>分发队列（只读 —— 发布铁律：停在 ready 等人工授权）</h2><div id="dqlist">…</div></div>
-  </section>
-
-  <section id="v-sys" style="display:none">
-    <div class="card"><h2>调度（systemd timers）</h2><pre id="stimers">…</pre></div>
-    <div class="card"><h2>最新产出</h2><table id="sfiles"></table></div>
-    <div class="card"><h2>快捷入口</h2>
-      <span class="mut">SSH：root@172.96.253.73 -p 28766 · 目录 /var/www/mflow · 日志 run/logs/ · 部署契约 deploy/server.md · 版本真相 github.com/sevenaaaaaaaaa/mflow</span>
-    </div>
+    <div class="card"><h2>定时调度（systemd）</h2><pre id="stimers">…</pre></div>
   </section>
 </main>
+
+<div id="reader"><div class="rhead"><button class="lnk" onclick="closeReader()">← 返回</button><b id="rname"></b></div><div class="rbody" id="rbody"></div></div>
+
 <script>
-let S=null, tab='board';
+let TAB='home', REPORTS=null, RCAT=null, KDIR='';
 const $=id=>document.getElementById(id);
 document.querySelectorAll('#tabs button').forEach(b=>b.onclick=()=>setTab(b.dataset.t));
-function setTab(t){tab=t;document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
- for(const s of ['board','router','gates','daily','dist','sys'])$('v-'+s).style.display=s===t?'':'none';}
-async function api(p,body){const r=await fetch(p,body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{});if(r.status===403){alert('密码错误');throw 0}if(r.status===401){location.reload();throw 0}return r.json()}
+function setTab(t){TAB=t;document.querySelectorAll('#tabs button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+ for(const s of ['home','tasks','reports','kb','pipe','eng','sys'])$('v-'+s).style.display=s===t?'':'none';
+ if(t==='home')loadHome();if(t==='tasks')loadTasks();if(t==='reports')loadReports();if(t==='kb')loadKb();if(t==='pipe')loadState();if(t==='sys')loadSys();}
+async function api(p,body){const o=body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{};const r=await fetch(p,o);
+ if(r.status===403){$('err')&&($('err').textContent='密码错误')}if(r.status===401){location.reload();throw 0}return r.json()}
 function logout(){fetch('/api/logout',{method:'POST'}).then(()=>location.reload())}
 const esc=s=>String(s??'').replace(/</g,'&lt;');
-function loadState(){api('/api/state').then(S=>{S=S;if(tab==='board')renderBoard();if(tab==='router')renderRouter();if(tab==='daily')renderDaily();if(tab==='sys')renderSys();if(tab==='dist')renderDist()})}
-function renderBoard(){const by={};S.phases.forEach(p=>by[p]=[]);
- S.items.forEach(i=>{(by[i.phase]||by['?']).push(i)});
+function openReader(path){api('/api/read?path='+encodeURIComponent(path)).then(r=>{$('rname').textContent=r.name;$('rbody').innerHTML=r.html;$('reader').style.display='flex';$('rbody').scrollTop=0})}
+function closeReader(){$('reader').style.display='none'}
+
+/* ---- 总览 ---- */
+function loadHome(){api('/api/overview').then(o=>{
+ $('stats').innerHTML=[
+  ['待办任务',o.open_tasks,'个'],['管线进行中',o.pipeline_inflight,'条'],['分发待发',o.dist_open,'条'],
+  ['舆情日报',o.sentinel_latest?('日龄 '+o.sentinel_latest.age_days+' 天'):'—','']
+ ].map(([t,n,u])=>`<div class="stat"><div class="n">${n}</div><div class="t">${t} ${u}</div></div>`).join('');
+ $('quick').innerHTML=[
+  o.seo_monthly&&['SEO 最新月报',o.seo_monthly.name,o.seo_monthly.path],
+  o.seo_weekly&&['SEO 最新周报',o.seo_weekly.name,o.seo_weekly.path],
+  o.sentinel_latest&&['最新舆情日报',o.sentinel_latest.name,o.sentinel_latest.path]
+ ].filter(Boolean).map(([t,n,p])=>`<div class="task" onclick="openReader('${esc(p)}')" style="cursor:pointer"><b style="color:var(--acc)">${t}</b><span class="tt" style="flex:1">${esc(n)}</span><span class="mut">阅读 →</span></div>`).join('');
+ $('h-events').textContent=(o.daily.tail||'').split('\n').filter(l=>/OK|FAIL|SKIP|✅|❌/.test(l)).slice(-15).join('\n')||'（暂无）';
+})}
+
+/* ---- 任务 ---- */
+function loadTasks(){api('/api/tasks').then(t=>{
+ const m=t.manual||[];
+ const col=(st,el)=>{$(el).innerHTML=m.filter(x=>x.status===st).map(x=>`<div class="task ${st==='done'?'done':''}">
+   <input type="checkbox" ${st==='done'?'checked':''} onchange="taskSet('${x.id}','${st==='done'?'todo':'done'}')" style="margin-top:3px">
+   <span class="tt" style="flex:1">${esc(x.title)}<div class="mut">${x.created||''}</div></span>
+   ${st!=='done'?`<button class="mini" onclick="taskSet('${x.id}','${st==='todo'?'doing':'todo'}')">${st==='todo'?'→ 进行':'← 待办'}</button>`:''}
+   <button class="mini" onclick="taskDel('${x.id}')">删</button></div>`).join('')||'<span class="mut">空</span>'};
+ col('todo','col-todo');col('doing','col-doing');col('done','col-done');
+ $('autoq').innerHTML=
+  (t.pipeline||[]).map(x=>`<div class="task"><span class="tt" style="flex:1">${esc(x.id)}</span><span class="badge pipe">管线·${esc(x.stage)}</span></div>`).join('')+
+  (t.distribution||[]).map(x=>`<div class="task"><span class="tt" style="flex:1">${esc(x.id)} <span class="mut">${esc(x.platforms||'')}</span></span><span class="badge dist">分发·${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">分发队列空</span>';
+})}
+function addTask(){const v=$('ttitle').value.trim();if(!v)return;api('/api/tasks/add',{title:v}).then(()=>{$('ttitle').value='';loadTasks()})}
+function taskSet(id,st){api('/api/tasks/set',{id,status:st}).then(loadTasks)}
+function taskDel(id){api('/api/tasks/del',{id}).then(loadTasks)}
+
+/* ---- 报告 ---- */
+function loadReports(){if(REPORTS){renderReports();return}api('/api/reports').then(r=>{REPORTS=r;renderReports()})}
+function renderReports(){const cats=Object.keys(REPORTS);
+ $('rcats').innerHTML=cats.map(c=>`<span class="chip ${RCAT===c?'on':''}" onclick="pickCat('${esc(c)}')">${c}（${REPORTS[c].length}）</span>`).join('');
+ if(!RCAT)pickCat(cats[0])}
+function pickCat(c){RCAT=c;document.querySelectorAll('#rcats .chip').forEach(x=>x.classList.toggle('on',x.textContent.startsWith(c)));
+ const files=REPORTS[c]||[];$('rcount').textContent=`（${files.length} 份 · 点击阅读）`;
+ $('rlist').innerHTML=files.map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${f.date}</span>${esc(f.name)}</a>`).join('')||'<span class="mut">此分类暂无文件</span>'}
+
+/* ---- 知识库 ---- */
+function loadKb(){if($('kdirs').children.length)return;api('/api/kb/tree').then(dirs=>{
+ $('kdirs').innerHTML=`<span class="chip on" onclick="pickDir('',this)">全部</span>`+dirs.map(d=>`<span class="chip" onclick="pickDir('${esc(d.name)}',this)">${esc(d.name)}（${d.files}）</span>`).join('')})}
+function pickDir(n,el){KDIR=n;document.querySelectorAll('#kdirs .chip').forEach(x=>x.classList.remove('on'));el.classList.add('on');
+ if(n==='')return kbSearch();
+ api('/api/kb/list?dir='+encodeURIComponent(n)).then(items=>{$('kres').innerHTML=items.filter(i=>i.type==='file').map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${f.date||''}</span>${esc(f.name)}</a>`).join('')||'<span class="mut">空</span>'})}
+function kbSearch(){const q=$('kq').value.trim();if(q.length<2)return alert('至少 2 个字符');
+ const url='/api/kb/search?q='+encodeURIComponent(q)+(KDIR?'&dir='+encodeURIComponent(KDIR):'');
+ api(url).then(hits=>{$('kres').innerHTML=hits.map(h=>`<a onclick="openReader('${esc(h.path)}')"><b>${esc(h.name)}</b><div class="mut">${esc(h.match)}</div></a>`).join('')||'<span class="mut">无匹配</span>'})}
+
+/* ---- 管线 ---- */
+function loadState(){api('/api/state').then(S=>{
+ const by={};S.phases.forEach(p=>by[p]=[]);
+ S.items.forEach(i=>(by[i.phase]||by['?']).push(i));
  $('board').innerHTML=S.phases.map(p=>`<div class="phase"><b>${p}（${by[p].length}）</b>${by[p].map(i=>{
-  const tos=(S.legal_transitions[i.stage]||[]);
+  const tos=S.legal_transitions[i.stage]||[];
   return `<div class="item"><div class="id">${esc(i.id)}</div><div class="st">${esc(i.stage)}</div>
-   <div class="meta">QA BLOCK ${i.qa_l1_block??0}/${i.qa_l2_block??0}/${i.qa_l7_block??0} · fix ${i.fix_count??0}</div>
-   ${tos.length?`<select onchange="advance('${esc(i.id)}',this.value)"><option value="">→ 推进…</option>${tos.map(t=>`<option>${t}</option>`).join('')}</select>`:''}
-  </div>`}).join('')||'<div class="mut" style="margin-top:8px">空</div>'}</div>`).join('');
- $('events').textContent=S.events.map(e=>`${e.ts||''} ${e.event||''} ${e.item_id||''} ${e.from_stage||''}→${e.to_stage||''} ${e.reason||''}`).join('\n')||'（无事件）'}
-function advance(id,to){if(!to)return;api('/api/item/advance',{id,to,reason:'console'}).then(r=>{if(r.rc!==0)alert('被状态机拒绝：\n'+r.out);loadState()})}
+   <div class="meta">QA ${i.qa_l1_block??0}/${i.qa_l2_block??0}/${i.qa_l7_block??0}</div>
+   ${tos.length?`<select onchange="advance('${esc(i.id)}',this.value)"><option value="">→ 推进…</option>${tos.map(t=>`<option>${t}</option>`).join('')}</select>`:''}</div>`}).join('')||'<div class="mut" style="margin-top:8px">空</div>'}</div>`).join('')})}
+function advance(id,to){if(!to)return;api('/api/item/advance',{id,to,reason:'console'}).then(r=>{if(r.rc!==0)alert('状态机拒绝：\n'+r.out);loadState()})}
 function upsert(){const id=$('nid').value.trim();if(!id)return alert('先填 id');api('/api/item/upsert',{id,category:$('ncat').value,target_type:$('ncat').value}).then(r=>{if(r.rc!==0)alert(r.out||r.error);else $('nid').value='';loadState()})}
-function renderRouter(){const stages=[...new Set(S.decisions.map(d=>d.stage))];const old=$('rstage').value;
- $('rstage').innerHTML=stages.map(s=>`<option>${s}</option>`).join('');if(stages.includes(old))$('rstage').value=old;
- $('rscenario').innerHTML=[...new Set(S.decisions.map(d=>d.scenario))].map(s=>`<option>${s}</option>`).join('');
- $('dtable').innerHTML='<tr><th>stage</th><th>scenario</th><th>profile</th><th>action</th></tr>'+S.decisions.map(d=>`<tr><td>${esc(d.stage)}</td><td>${esc(d.scenario)}</td><td>${esc(d.profile)}</td><td>${esc(d.action)}</td></tr>`).join('')}
+
+/* ---- 工程 ---- */
+function renderEng(){api('/api/state').then(S=>{const stages=[...new Set(S.decisions.map(d=>d.stage))],sc=[...new Set(S.decisions.map(d=>d.scenario))];
+ const os=$('rstage').value;$('rstage').innerHTML=stages.map(s=>`<option>${s}</option>`).join('');if(stages.includes(os))$('rstage').value=os;
+ $('rscenario').innerHTML=sc.map(s=>`<option>${s}</option>`).join('')})}
 function decide(){api('/api/router/decide',{stage:$('rstage').value,scenario:$('rscenario').value}).then(r=>{$('rout').textContent=JSON.stringify(r.verdict??r,null,2)})}
-function runHook(){api('/api/hook/run',{hook:$('hook').value,file:$('hfile').value.trim()}).then(r=>{$('hout').textContent=`exit=${r.rc}\n`+r.out;$('hout').className=r.rc===0?'ok':''})}
-function renderDaily(){$('drun').innerHTML=S.daily.running?'<span class="warn">运行中…</span>':'<span class="ok">空闲</span>';$('drbtn').disabled=S.daily.running;$('dtail').textContent=S.daily.tail||'（尚无日志）'}
-function runDaily(){api('/api/daily/run').then(()=>{setTimeout(()=>{loadState();setTab('daily')},1500)})}
-function renderSys(){$('stimers').textContent=S.timers;$('sfiles').innerHTML='<tr><th>资产</th><th>路径</th></tr>'+[['舆情日报',S.sentinel],['fm-check',S.fmcheck]].map(([k,v])=>`<tr><td>${k}</td><td>${esc(v||'—')}</td></tr>`).join('')}
-function renderDist(){fetch('/api/state').then(r=>r.json()).then(()=>{$('dqlist').innerHTML='<span class="mut">分发队列文件在服务器副本中为只读展示（创作/发布主线在 Mac）：</span><pre>/var/www/mflow/1-3 GenFlow/Content Distribution/queue/</pre>'})}
-loadState();setInterval(()=>{if(tab==='daily'||tab==='board')loadState()},30000);
+function runHook(){api('/api/hook/run',{hook:$('hook').value,file:$('hfile').value.trim()}).then(r=>{$('hout').textContent=`exit=${r.rc}\n`+r.out})}
+function loadSys(){api('/api/overview').then(o=>{$('drun').innerHTML=o.daily.running?'<span class="warn">运行中…</span>':'<span class="ok">空闲</span>';$('drbtn').disabled=o.daily.running;$('dtail').textContent=o.daily.tail||'（尚无日志）';$('stimers').textContent=o.timers})}
+function runDaily(){api('/api/daily/run').then(()=>{setTimeout(()=>{loadSys()},1500)})}
+
+setTab('home');renderEng();setInterval(()=>{if(TAB==='home'||TAB==='sys')setTabSilent()},30000);
+function setTabSilent(){if(TAB==='home')loadHome();if(TAB==='sys')loadSys()}
 </script>
 </body>
 </html>
