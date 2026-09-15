@@ -1,0 +1,23 @@
+{
+  "id": "saas-growth",
+  "name": "SaaS 增长工作流",
+  "version": "1.0",
+  "author": "MFlow built-in",
+  "description": "面向 B 端决策者与一线用户：Use Case、行业基准、替代品对比、集成指南。强调可验证价值与免费试用转化。",
+  "workflow": {
+    "id": "blog",
+    "name": "SaaS 增长内容生产（模板版）",
+    "flow": ["S0 用例/竞品词入队", "S3 生成（用例/基准/对比/集成）", "S3 质检 + ROI 承诺检查", "S4 人工审（功能表述与定价核对）", "S5 发布", "S6 试用转化监控"],
+    "profiles": "生成 lovart-creation · 质检 lovart-quality · 发布 lovart-ops",
+    "skills": ["lovart-blog-signal-writer", "lovart-content-quality-gates", "lovart-kb-mine"],
+    "kb": ["产品知识库", "关键词研究", "内容策略"]
+  },
+  "prompt": {
+    "audience": "B 端决策者（关心成本/效率/风险）与一线使用者（关心上手难度/集成/稳定性）。",
+    "tone": "工程师式诚实：讲清适用边界，主动说'什么情况下不适合'；数据必须有出处。",
+    "structure": "写一篇 SaaS 增长内容（主题：{TOPIC}）。结构：H1 标题 → 开头给出'适用谁/不适用谁'→ 3-5 个 H2（工作流痛点 / 方案拆解 / 与替代方案对比 / 集成与上手成本）→ 每节含一个可复现的例子 → ROI 讨论只给计算框架不给承诺数字 → FAQ（4 条：定价/安全/迁移/支持）→ CTA：免费试用或预约演示。",
+    "anti_slop_extra": "SaaS 行业附加禁例：禁止无出处的 ROI/效率提升百分比承诺；禁止'颠覆''重新定义'类空词；竞品对比只引用公开定价与功能清单；安全/合规表述不超出产品文档范围。"
+  },
+  "kb_sources_suggestion": ["产品知识库", "关键词研究", "内容策略"],
+  "default_lang": "en"
+}
