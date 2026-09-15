@@ -283,11 +283,13 @@ th{color:var(--muted);font-weight:600}
 
   <!-- ============ 知识库 ============ -->
   <section class="page" id="pg-kb">
-    <div class="pg-head"><div><div class="kick">情报与产出</div><h1>知识<em class="sf">库</em></h1>
-      <p class="pg-sub">Lovart KB：产品介绍 / 帮助中心 / 文档存档 / 新闻 / Changelog，支持全文搜索。</p></div>
-      <div class="head-actions"><input id="kq" placeholder="搜关键词…" style="width:240px" onkeydown="if(event.key==='Enter')kbSearch()"><button class="btn primary" onclick="kbSearch()">搜索</button></div></div>
-    <div class="card"><div class="chips" id="kdirs"></div></div>
-    <div class="card"><div class="card-head"><h3 id="kres-t">浏览</h3></div><div id="kres" class="flist"></div></div>
+    <div class="pg-head"><div><div class="kick">情报与产出</div><h1>知识<em class="sf">中台</em></h1>
+      <p class="pg-sub" id="kb-sub">10 大知识源 · 产品知识、铁律约束、故事线、方法论、策略、关键词、规范、案例——写内容前后都该查的地方。</p></div>
+      <div class="head-actions"><input id="kq" placeholder="跨源搜关键词…" style="width:240px" onkeydown="if(event.key==='Enter')kbSearch('')"><button class="btn primary" onclick="kbSearch('')">搜索</button></div></div>
+    <div class="cols">
+      <div class="card" style="height:fit-content"><div class="card-head"><h3>知识源</h3></div><div id="kdirs" style="display:flex;flex-direction:column;gap:6px"></div></div>
+      <div class="card"><div class="card-head"><h3 id="kres-t">浏览</h3><span class="mut" id="kdesc"></span></div><div id="kres" class="flist"></div></div>
+    </div>
   </section>
 
   <!-- ============ 分发 ============ -->
@@ -480,19 +482,22 @@ function pickCat(c){RCAT=c;renderReports();const files=REPORTS[c]||[];
  $('rlist-title').textContent=c+`（${files.length}）`;
  $('rlist').innerHTML=files.map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${f.date}</span>${esc(f.name)}</a>`).join('')||'<span class="mut">此分类暂无文件</span>'}
 
-/* ---- 知识库 ---- */
-function loadKb(){if($('kdirs').children.length)return;api('/api/kb/tree').then(dirs=>{
- $('kdirs').innerHTML=`<button class="chip on" onclick="pickDir('',this)">全部</button>`+dirs.map(d=>`<button class="chip" onclick="pickDir('${esc(d.name)}',this)">${esc(d.name)} · ${d.files}</button>`).join('');
- pickDir('',document.querySelector('#kdirs .chip'))})}
+/* ---- 知识中台 ---- */
+let KDIR='';
+function loadKb(){if($('kdirs').children.length)return;api('/api/kb/tree').then(srcs=>{
+ const total=srcs.reduce((a,b)=>a+b.files,0);$('kb-sub').textContent=`${srcs.length} 大知识源 · ${total} 份文档 —— 产品知识、铁律约束、故事线、方法论、策略、关键词、规范、案例，写内容前后都该查。`;
+ $('kdirs').dataset.srcs=JSON.stringify(srcs);
+ $('kdirs').innerHTML=srcs.map(d=>`<button class="chip" style="border-radius:12px;text-align:left;justify-content:space-between;display:flex" onclick="pickDir('${esc(d.name)}',this)"><span>${esc(d.name)}</span><span class="mut">${d.files}</span></button>`).join('');
+ $('kdesc').textContent='点击左侧知识源浏览'})}
 function pickDir(n,el){KDIR=n;document.querySelectorAll('#kdirs .chip').forEach(x=>x.classList.remove('on'));el.classList.add('on');$('kq').value='';
- if(n===''){api('/api/kb/list?dir=').then(items=>{$('kres-t').textContent='根目录文档';$('kres').innerHTML=items.filter(i=>i.type==='file').map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${f.date||''}</span>${esc(f.name)}</a>`).join('')});return}
- api('/api/kb/list?dir='+encodeURIComponent(n)).then(items=>{$('kres-t').textContent=n;
-  $('kres').innerHTML=items.map(i=>i.type==='dir'
-   ?`<a onclick="pickDir('${esc(i.name)}',document.querySelectorAll('#kdirs .chip')[1])"><b>${esc(i.name)}/</b> <span class="mut">目录</span></a>`
-   :`<a onclick="openReader('${esc(i.path)}')"><span class="d">${i.date||''}</span>${esc(i.name)}</a>`).join('')||'<span class="mut">空</span>'})}
-function kbSearch(){const q=$('kq').value.trim();if(q.length<2)return alert('至少 2 个字符');
- api('/api/kb/search?q='+encodeURIComponent(q)+(KDIR?'&dir='+encodeURIComponent(KDIR):'')).then(hits=>{
-  $('kres-t').textContent=`搜索「${q}」（${hits.length} 命中）`;
+ api('/api/kb/list?src='+encodeURIComponent(n)).then(items=>{
+  const meta=(()=>{const all=JSON.parse(document.getElementById('kdirs').dataset.srcs||'[]');return all.find(x=>x.name===n)||{}})();
+  $('kres-t').textContent=n; $('kdesc').textContent=meta.desc||'';
+  $('kres').innerHTML=items.map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${f.date||''}</span>${esc(f.name)}</a>`).join('')||'<span class="mut">空</span>'})}
+function kbSearch(srcOverride){const q=$('kq').value.trim();if(q.length<2)return alert('至少 2 个字符');
+ const src=srcOverride!==undefined?srcOverride:KDIR;
+ const url='/api/kb/search?q='+encodeURIComponent(q)+(src?'&src='+encodeURIComponent(src):'');
+ api(url).then(hits=>{$('kres-t').textContent=`搜索「${q}」（${hits.length} 命中${src?' · '+src:' · 跨全部知识源'}）`;$('kdesc').textContent='';
   $('kres').innerHTML=hits.map(h=>`<a onclick="openReader('${esc(h.path)}')"><b>${esc(h.name)}</b><div class="mt mut">${esc(h.match)}</div></a>`).join('')||'<span class="mut">无匹配</span>'})}
 
 /* ---- 分发 ---- */

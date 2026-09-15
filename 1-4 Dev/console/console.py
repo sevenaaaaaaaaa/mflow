@@ -63,6 +63,33 @@ REPORT_CATS = [
     ("会话日志", "1-1 Harness/11-knowledge/sessions", "2026-*.md"),
 ]
 
+# 知识中台：10 大知识源（产品知识只是其一；约束/故事线/方法论/策略皆是知识）
+KNOWLEDGE_SOURCES = [
+    ("产品知识库", "Lovart 产品介绍 / 帮助中心 / 文档存档 / 新闻 / Changelog",
+     [("1-2 Insight/Knowledge Base", "**/*.md")]),
+    ("铁律与规则", "全局铁律 RULES-00 + 六条工作线规则 + 会话路由（创作的硬约束）",
+     [("1-1 Harness/02-rules", "*.md")]),
+    ("故事线 SSOT", "7 类页面 × 25 条故事线 + Features 生产规范（写落地页前必读）",
+     [("1-1 Harness/08-storyline", "*.md")]),
+    ("阶段手册 S0-S6", "采集/策略/创作/质检/发布/监控六阶段操作手册 + Anti-Bugs 注册表",
+     [("1-1 Harness/Docs", "**/*.md")]),
+    ("写作方法论", "Better Design 方法论：研究协议 / 信源分级 / voice 规则 / 反 slop / 伦理披露",
+     [("1-3 GenFlow/bv-skill-v01", "*.md")]),
+    ("内容策略", "漏斗矩阵 / 季节日历 / 行业深耕 / 竞品覆盖 / 程序化 SEO 等战略规划",
+     [("1-3 GenFlow/Content Strategy", "**/*.md")]),
+    ("关键词研究", "SEO 深度分析 / 竞品核心词 / SERP 文案基准 / 内容日历底稿",
+     [("1-2 Insight/Keywords Research", "**/*.md")]),
+    ("UTM 与追踪规范", "AD-Tracking SSOT：三层架构 / 平台宏 / url-builder（分发稿件必读）",
+     [("1-3 GenFlow/AD-Tracking", "**/*.md")]),
+    ("质量案例库", "历史 Bug 巡检与修复记录：tableBlock / 404 / 翻译质量 / 内链错误",
+     [("1-3 GenFlow/Bugs", "*.md")]),
+    ("项目记忆与治理", "MEMORY-PROJECT 事实清单 / 知识树 / 治理与部署 / 钩子文档",
+     [("1-1 Harness/11-knowledge", "*.md"),
+      ("1-1 Harness/09-scripts", "*.md"),
+      ("deploy", "*.md"),
+      ("1-4 Dev/scripts/hooks", "README.md")]),
+]
+
 SESSIONS = set()
 
 # ── LLM 引擎（OpenAI 兼容）────────────────────────────────────────────
@@ -299,65 +326,75 @@ def list_reports():
     return out
 
 
+def _src_dirs(src):
+    """Return [(dir, glob)] for a source label; empty if unknown."""
+    for label, _desc, pairs in KNOWLEDGE_SOURCES:
+        if label == src:
+            return pairs
+    return []
+
+
 def kb_tree():
-    dirs = []
-    if KB_ROOT.exists():
-        for d in sorted(KB_ROOT.iterdir()):
-            if d.is_dir() and not d.name.startswith((".", "_")) and d.name != "scripts":
-                n = sum(1 for _ in d.rglob("*") if _.is_file())
-                dirs.append({"name": d.name, "files": n})
-        roots = list(KB_ROOT.glob("*.md"))
-        dirs.insert(0, {"name": "(根目录文档)", "files": len(roots)})
-    return dirs
+    out = []
+    for label, desc, pairs in KNOWLEDGE_SOURCES:
+        n = 0
+        for d, pat in pairs:
+            base = PROJECT / d
+            if base.exists():
+                n += sum(1 for f in base.glob(pat) if f.is_file() and f.suffix == ".md")
+        out.append({"name": label, "desc": desc, "files": n})
+    return out
 
 
-def kb_list(sub):
-    base = (KB_ROOT / sub).resolve() if sub else KB_ROOT
-    if not str(base).startswith(str(KB_ROOT)) or not base.exists():
-        return []
-    if base == KB_ROOT:
-        entries = list(KB_ROOT.glob("*.md"))
-    else:
-        entries = list(base.iterdir())
-    items = []
-    for f in sorted(entries, key=lambda x: x.name.lower()):
-        if f.name.startswith(".") or f.name == "scripts":
+def kb_list(src):
+    files = []
+    seen = set()
+    for d, pat in _src_dirs(src):
+        base = PROJECT / d
+        if not base.exists():
             continue
-        if f.is_dir():
-            items.append({"type": "dir", "name": f.name, "path": rel_of(f)})
-        elif f.suffix.lower() in READABLE_EXT:
-            items.append({"type": "file", "name": f.name, "path": rel_of(f),
-                          "date": fdate(f.stat().st_mtime)})
-    return items[:400]
+        for f in base.glob(pat):
+            if not f.is_file() or f.suffix != ".md" or "scripts" in f.parts:
+                continue
+            rp = rel_of(f)
+            if rp in seen:
+                continue
+            seen.add(rp)
+            files.append({"path": rp, "name": f.name, "date": fdate(f.stat().st_mtime)})
+    files.sort(key=lambda x: x["name"].lower())
+    return files[:400]
 
 
-def kb_search(q, sub=""):
-    base = (KB_ROOT / sub).resolve() if sub else KB_ROOT
-    if not str(base).startswith(str(KB_ROOT)):
-        return []
+def kb_search(q, src=""):
+    sources = [(l, p) for l, _d, p in KNOWLEDGE_SOURCES if not src or l == src]
     q_lower = q.lower()
     hits, scanned = [], 0
-    for f in sorted(base.rglob("*"), key=lambda x: x.stat().st_mtime, reverse=True):
-        if not f.is_file() or f.suffix.lower() not in {".md", ".txt"} or "scripts" in f.parts:
-            continue
-        scanned += 1
-        if scanned > 400:
-            break
-        if q_lower in f.name.lower():
-            hits.append({"path": rel_of(f), "name": f.name, "match": "文件名匹配"})
-            if len(hits) >= 30:
-                return hits
-            continue
-        try:
-            text = f.read_text(errors="ignore")
-        except Exception:
-            continue
-        idx = text.lower().find(q_lower)
-        if idx >= 0:
-            snippet = text[max(0, idx - 50): idx + 90].replace("\n", " ").strip()
-            hits.append({"path": rel_of(f), "name": f.name, "match": f"…{snippet}…"})
-            if len(hits) >= 30:
-                break
+    for _label, pairs in sources:
+        for d, pat in pairs:
+            base = PROJECT / d
+            if not base.exists():
+                continue
+            for f in base.glob(pat):
+                if not f.is_file() or f.suffix != ".md" or "scripts" in f.parts:
+                    continue
+                scanned += 1
+                if scanned > 800:
+                    return hits
+                if q_lower in f.name.lower():
+                    hits.append({"path": rel_of(f), "name": f.name, "match": "文件名匹配"})
+                    if len(hits) >= 40:
+                        return hits
+                    continue
+                try:
+                    text = f.read_text(errors="ignore")
+                except Exception:
+                    continue
+                idx = text.lower().find(q_lower)
+                if idx >= 0:
+                    snippet = text[max(0, idx - 50): idx + 90].replace("\n", " ").strip()
+                    hits.append({"path": rel_of(f), "name": f.name, "match": f"…{snippet}…"})
+                    if len(hits) >= 40:
+                        return hits
     return hits
 
 
@@ -497,12 +534,12 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/kb/tree":
                 return self._send(200, kb_tree())
             if parsed.path == "/api/kb/list":
-                return self._send(200, kb_list(qs.get("dir", [""])[0]))
+                return self._send(200, kb_list(qs.get("src", [""])[0]))
             if parsed.path == "/api/kb/search":
                 q = qs.get("q", [""])[0].strip()
                 if len(q) < 2:
                     return self._send(400, {"error": "至少 2 个字符"})
-                return self._send(200, kb_search(q, qs.get("dir", [""])[0]))
+                return self._send(200, kb_search(q, qs.get("src", [""])[0]))
             if parsed.path == "/api/read":
                 p = safe_path(qs.get("path", [""])[0])
                 if not p:
