@@ -75,9 +75,18 @@ bash "1-4 Dev/automation/run-daily-pipeline.sh"
 
 ## 文档
 
+**新用户从这里开始**：
+
+- [快速上手（8 步）](docs/quickstart.md) —— 30 分钟从 clone 到第一个工作流（无 API Key 也可先体验 Demo 闭环）
+- [部署指南](docs/deploy-guide.md) —— 本地运行 / 线上服务器 systemd / Docker 三条路径
+- [首次引导](#) —— 启动工作台后侧栏「首次引导 · Setup」，逐项点亮配置清单
+
+**深入使用**：
+
 - [产品介绍](docs/product.md) —— 面向业务：为什么做、给谁看、值多少钱
-- [帮助中心](docs/help-center.md) —— 面向操作者：会话协议、创作 SOP、质量门禁、发布铁律、故障排查
-- [部署接线](deploy/server.md) —— 服务器目标、隔离要求、形态约定
+- [帮助中心](docs/help-center.md) —— 会话协议、创作 SOP、质量门禁、发布铁律、故障排查
+- [模块扩展](docs/modules.md) —— 新模块 / 接 CMS / 接数据源 / 自我迭代
+- [报告可视化规划](docs/report-vision.md) / [产品路线图](ROADMAP.md)
 - 内部深水区：`1-1 Harness/00-INDEX.md`（控制中枢索引）→ `11-knowledge/`（知识/记忆/审计 SSOT）
 
 ## 状态与边界
