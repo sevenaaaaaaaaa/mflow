@@ -25,3 +25,17 @@ status: ready
 ## 待办
 - 用户改密码（env.sh 改 MFLOW_CONSOLE_PASSWORD → systemctl restart mflow-console）
 - 看板中 demo 条目 console-smoke-test（FINAL/failed）可在 UI 推进观察，或忽略
+
+## v2 追加（同日）——从"工程面板"重做为"内容运营工作台"
+
+用户反馈：没有知识库、任务清单、报告，"这个后台我怎么用"。v1 只覆盖了管线状态机，是 agent 视角不是运营者视角。
+
+**重做内容**：
+- 总览：待办/管线/分发计数卡 + 最新月报/周报/舆情日报一键阅读 + 当日管线结果摘要
+- 任务看板：手动任务（待办/进行/完成三列，tasks.json 持久化）+ 管线/分发队列自动同步只读区；预置 4 条真实待办
+- 报告中心：10 分类（月报 27/周报 95/舆情日报 35/审计 38/404 分析 70/会话日志 55 等，共 400+ 份），markdown 渲染在线阅读（含表格）
+- 知识库：KB 55M 目录浏览 + 全文搜索（文件名优先 + 内容命中带上下文，400 文件扫描上限）
+- 认证 fail-closed（无密码配置时全拒）；路径穿越防护（400）；reader HTML 注入面 = 本地可信文档 + esc 渲染
+- 新依赖：markdown==3.10.3（服务器 venv via uv；uv venv 无 pip，用 uv pip install --python）
+
+**验证**：overview/reports(10 类)/kb tree+search/read(月报 149K html 含表格)/tasks 增改删/穿越防护 400/外部 200 全部真实通过。
