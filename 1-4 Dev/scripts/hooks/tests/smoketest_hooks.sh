@@ -8,8 +8,8 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 HOOKS_DIR="$(cd "$HERE/.." && pwd)"
 PIPELINE_DIR="$(cd "$HERE/../../../../1-1 Harness/Skills/06-orchestrate/lovart-pipeline-state" && pwd)"
 # Use vault-internal temp dir so allowed-root checks pass for hooks.
-VAULT="${LOVART_RESOURCE_ROOT:-$(cd "$HERE/../../../../../.." && pwd)}"
-TMP="$VAULT/1-Project/Lovart MFlow/1-4 Dev/scripts/hooks/tests/.tmp-smoke"
+PROJECT_ROOT="$(cd "$HERE/../../.." && pwd)"
+TMP="$HOOKS_DIR/tests/.tmp-smoke"
 # Quote TMP everywhere to survive the space in "Lovart MFlow"
 rm -rf "$TMP" && mkdir -p "$TMP"
 trap 'rm -rf "$TMP"' EXIT
@@ -97,8 +97,8 @@ EOF
 log "== pre-write-check.sh =="
 # Smoke test files live in hooks/tests, so include both real content root
 # AND tests dir as allowed (this mirrors how skill devs would use the hook).
-ALLOWED=(--allowed-root "$VAULT/1-Project/Lovart MFlow/1-3 GenFlow"
-         --allowed-root "$VAULT/1-Project/Lovart MFlow/1-4 Dev/scripts/hooks/tests")
+ALLOWED=(--allowed-root "$PROJECT_ROOT/1-3 GenFlow"
+         --allowed-root "$HOOKS_DIR/tests")
 expect_ok "valid file passes"  bash "$HOOKS_DIR/pre-write-check.sh" --file "$TMP/draft.md" "${ALLOWED[@]}"
 expect_fail "non-md extension blocked" bash "$HOOKS_DIR/pre-write-check.sh" --file "$TMP/draft.txt"
 expect_fail "uppercase filename blocked" bash "$HOOKS_DIR/pre-write-check.sh" --file "$TMP/BlogTest.md"

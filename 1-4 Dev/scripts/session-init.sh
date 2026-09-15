@@ -16,14 +16,14 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MFLOW_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 VAULT_ROOT="$(cd "$SCRIPT_DIR/../../../.." && pwd)"
-HARNESS="${LOVART_RESOURCE_ROOT:-$VAULT_ROOT}/1-Project/Lovart MFlow/1-1 Harness"
+HARNESS="$MFLOW_ROOT/1-1 Harness"
 PIPELINE_PY="$HARNESS/Skills/06-orchestrate/lovart-pipeline-state/pipeline_state.py"
 ROUTER_PY="$HARNESS/Skills/06-orchestrate/lovart-router/router.py"
 STATE="1-3 GenFlow/.pipeline/pipeline-state.json"
 
 # Resolve to absolute path
 VAULT="${LOVART_RESOURCE_ROOT:-$VAULT_ROOT}"
-STATE_ABS="$VAULT/1-Project/Lovart MFlow/$STATE"
+STATE_ABS="$MFLOW_ROOT/$STATE"
 
 MODE="full"
 for arg in "$@"; do

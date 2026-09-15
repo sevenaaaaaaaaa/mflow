@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from pathlib import Path
 """
 Batch 3: generate 60 Chinese design category topic landing page JSONs (composite-v2).
 
@@ -10,10 +11,7 @@ import os
 import sys
 import re
 
-OUT_DIR = os.path.expanduser(
-    "~/Obsidian/MindRe/MindRe/1-Project/Lovart MFlow"
-    "/1-3 GenFlow/Page Gen/Pages/topic/zh"
-)
+OUT_DIR = str(Path(__file__).resolve().parents[2] / "1-3 GenFlow/Page Gen/Pages/topic/zh")
 
 IMG_HERO = "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/4573c61a748407d72a79a8f1baabd7ae19b41f2c.png"
 IMG_CARD = "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png"

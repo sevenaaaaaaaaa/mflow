@@ -21,8 +21,8 @@ set -euo pipefail
 
 # --- Configuration ---
 LOCAL_DEV="${LOVART_LOCAL_DEV_ROOT:-$HOME/Documents/Lovart Local Dev}"
-VAULT="${LOVART_RESOURCE_ROOT:-$(cd "${BASH_SOURCE[0]%/*}/../../../.." && pwd)}"
-MFLOW="$VAULT/1-Project/Lovart MFlow"
+MFLOW="$(cd "${BASH_SOURCE[0]%/*}/../.." && pwd)"
+VAULT="${LOVART_RESOURCE_ROOT:-$(cd "$MFLOW/.." && pwd)}"
 
 # Mapping: Local Dev path → Obsidian target path
 # Format: "local_dev_subdir:obsidian_subdir:file_pattern"
