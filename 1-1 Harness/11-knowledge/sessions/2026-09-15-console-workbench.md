@@ -55,3 +55,18 @@ oklch 暖灰色彩系统（明暗双主题）、玻璃拟态顶栏 + macOS 红�
 
 后端：+/api/dist（pending/published/dispatch）、overview.chart7d。
 验证：dist 2/7/5、chart7d 正常（今日 3 次推进 = 本轮 smoke）、外部 200。
+
+## v3.1 追加（同日）——补上生产核心
+
+用户点名缺失：LLM API 配置、Harness/Skills 管理、Agent 模式、节点模式、Blog/落地页生成入口、Loop 统一管理。
+
+**交付**：
+- **设置页**：LLM providers（deepseek/openai/custom，OpenAI 兼容 base+key）+ profile→model 映射（lovart-creation→deepseek-chat 等）+ 连通测试；key 存 run/llm.json（git-ignore/600/读取打码）
+- **创作中心**：Blog + 6 类落地页（tools/features/product/scenario/solution/topic）× 10 语言；prompt 内置 Anti-Slop 硬规则（四问/禁套话/[待考证]/语义分段）；两种发起方式——单次生成（同步）或 Loop
+- **Loop · Agent 模式**：loop_engine 后台线程 = 生成 → post-write-check → BLOCK 则带反馈重写，≤3 轮（对应 quality-cascade）；PASS 自动推进 S3-draft→S3-done→S4-qa；同刻仅 1 个运行（防超支）；可停止；日志实时落 loops.json
+- **节点流水线 · 节点模式**：生成/质检/推进三节点真实可执行 + 人工审只读节点；每节点真调后端动作
+- **Harness 管理**：8 规则（可在线读）+ 45 Skills 清点（分组/描述）+ harness_sync 一键重同步运行时
+
+**诚实边界**：工作台生成的是快速稿（1.2-1.8k 字/落地页文案），7500 词级长文仍铁律走 signal-writer 完整流程；发布永远停在人工授权。
+
+**待用户动作**：设置页填入 LLM API Key（如 DeepSeek）→ 点"测试连通"→ 创作中心即可真实生成。端到端在无 key 状态验证了优雅失败（fail-clean 报"LLM 未配置"）。
