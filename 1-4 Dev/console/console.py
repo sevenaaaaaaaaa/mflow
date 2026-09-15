@@ -550,7 +550,8 @@ def seed_demo():
     return {"ok": True, "note": "演示任务已注入；示例报告在 docs/demo-reports/"}
 
 
-SESSIONS = set()
+SESSIONS = {}  # sid -> username
+AUTH_FILE = RUN_DIR / "auth.json"
 
 
 def load_module(name, path):
@@ -845,13 +846,20 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(data)
 
     def _authed(self):
-        if not PASSWORD:
-            return False  # fail-closed
+        if not PASSWORD and not AUTH_FILE.exists():
+            return False  # fail-closed：既无多用户也无单密码
         try:
             c = http_cookies.SimpleCookie(self.headers.get("Cookie", ""))
             return c["mflow_session"].value in SESSIONS
         except Exception:
             return False
+
+    def _me(self):
+        try:
+            c = http_cookies.SimpleCookie(self.headers.get("Cookie", ""))
+            return SESSIONS.get(c["mflow_session"].value, "")
+        except Exception:
+            return ""
 
     def _body(self):
         try:
@@ -984,17 +992,39 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         if self.path == "/api/login":
             body = self._body()
-            if PASSWORD and secrets.compare_digest(str(body.get("password", "")), PASSWORD):
+            username, password = str(body.get("username", "")).strip(), str(body.get("password", ""))
+            ok, name, role = False, "", "member"
+            users = read_json(AUTH_FILE, None)
+            if users:  # 多用户模式（bcrypt，迁移自 OpenFlow）
+                rec = next((x for x in users if x.get("username") == username), None)
+                if rec:
+                    h = rec.get("hash", "")
+                    try:
+                        import bcrypt
+                        ok = bool(h) and bcrypt.checkpw(password.encode(), h.encode())
+                    except Exception:
+                        ok = False
+                    name, role = rec.get("name", username), rec.get("role", "member")
+            elif PASSWORD:  # 单密码模式（向后兼容）
+                ok = secrets.compare_digest(password, PASSWORD)
+                name, role = username or "operator", "admin"
+            if ok:
                 sid = secrets.token_urlsafe(32)
-                SESSIONS.add(sid)
+                SESSIONS[sid] = username or name
                 self.send_response(200)
                 self.send_header("Set-Cookie", f"mflow_session={sid}; HttpOnly; Path=/; SameSite=Lax")
                 self.send_header("Content-Type", "application/json")
                 self.end_headers()
-                self.wfile.write(b'{"ok":true}')
+                self.wfile.write(json.dumps({"ok": True, "name": name, "role": role}).encode())
             else:
-                self._send(403, {"ok": False, "error": "wrong password"})
+                self._send(403, {"ok": False, "error": "用户名或密码错误"})
             return
+        if self.path == "/api/auth/me":
+            if not self._authed():
+                return self._send(401, {"error": "unauthorized"})
+            return self._send(200, {"username": self._me()})
+        if not self._authed():
+            return self._send(401, {"error": "unauthorized"})
         if not self._authed():
             return self._send(401, {"error": "unauthorized"})
         body = self._body()
@@ -1002,7 +1032,7 @@ class Handler(BaseHTTPRequestHandler):
             if self.path == "/api/logout":
                 try:
                     c = http_cookies.SimpleCookie(self.headers.get("Cookie", ""))
-                    SESSIONS.discard(c["mflow_session"].value)
+                    SESSIONS.pop(c["mflow_session"].value, None)
                 except Exception:
                     pass
                 return self._send(200, {"ok": True})
@@ -1175,8 +1205,8 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main():
-    if not PASSWORD:
-        print("[console] FAIL-CLOSED: MFLOW_CONSOLE_PASSWORD 未设置，API 全部拒绝", file=sys.stderr)
+    if not PASSWORD and not AUTH_FILE.exists():
+        print("[console] FAIL-CLOSED: 无 auth.json 且未设 MFLOW_CONSOLE_PASSWORD，API 全部拒绝", file=sys.stderr)
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     threading.Thread(target=loop_queue_worker, daemon=True).start()
     print(f"[console] MFlow Console on :{PORT} (loop queue worker started, max_parallel={MAX_PARALLEL_LOOPS})")

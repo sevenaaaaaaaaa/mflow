@@ -5,7 +5,7 @@
 :root{--bg:oklch(96.5% .016 85);--fg:oklch(22% .02 70);--muted:oklch(44% .016 70);--faint:oklch(52% .012 75);
  --border:oklch(86% .014 80);--accent:oklch(52% .17 258);--on-accent:oklch(100% 0 0);
  --glass:oklch(100% 0 0 / .55);--shadow:0 24px 60px -24px oklch(30% .04 80 / .3);
- --blob-a:oklch(72% .12 262 / .30);--blob-b:oklch(70% .13 305 / .24);--blob-c:oklch(74% .11 200 / .22);
+ --blob-a:oklch(72% .12 262 / .30);--blob-b:oklch(70% .13 305 / .24);
  --grad:linear-gradient(135deg,var(--accent),oklch(58% .18 300));
  --font-body:-apple-system,BlinkMacSystemFont,'PingFang SC','Segoe UI',system-ui,sans-serif;color-scheme:light}
 @media(prefers-color-scheme:dark){:root{--bg:oklch(19% .014 70);--fg:oklch(93% .008 85);--muted:oklch(72% .014 80);--faint:oklch(62% .012 80);
@@ -20,25 +20,26 @@
  border:1px solid var(--border);border-radius:24px;padding:34px 30px;box-shadow:var(--shadow)}
 .logo{width:52px;height:52px;border-radius:16px;background:var(--grad);color:var(--on-accent);display:grid;place-items:center;font-size:24px;font-weight:800;margin-bottom:16px}
 h1{font-size:20px;margin:0 0 4px}h1 em{font-family:'Songti SC',Georgia,serif;font-style:italic;color:var(--accent)}
-p{color:var(--muted);font-size:12.5px;margin:0 0 22px}
-input{width:100%;padding:11px 14px;border-radius:13px;border:1px solid var(--border);background:var(--glass);color:var(--fg);font-size:14px}
+p{color:var(--muted);font-size:12.5px;margin:0 0 18px}
+input{width:100%;padding:11px 14px;border-radius:13px;border:1px solid var(--border);background:var(--glass);color:var(--fg);font-size:14px;margin-bottom:10px}
 input:focus{outline:2px solid var(--accent);outline-offset:1px}
-button{width:100%;margin-top:12px;padding:11px;border:none;border-radius:13px;background:var(--grad);color:var(--on-accent);font-size:14px;font-weight:700;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
+button{width:100%;padding:11px;border:none;border-radius:13px;background:var(--grad);color:var(--on-accent);font-size:14px;font-weight:700;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1)}
 button:hover{transform:translateY(-1px)}
 #err{color:oklch(52% .2 25);font-size:12px;margin-top:10px;min-height:16px}
-.foot{margin-top:18px;font-size:11px;color:var(--faint);font-family:ui-monospace,monospace}
+.foot{margin-top:16px;font-size:11px;color:var(--faint);font-family:ui-monospace,monospace}
 </style></head>
 <body>
 <div class="ambient"><div class="blob blob-a"></div><div class="blob blob-b"></div></div>
 <div class="box">
   <div class="logo">M</div>
   <h1>M<em>Flow</em> 工作台</h1>
-  <p>Lovart GEO 内容工作流 · 服务器实例 · 请输入访问密码</p>
-  <input id="pw" type="password" placeholder="密码" onkeydown="if(event.key==='Enter')go()">
-  <button onclick="go()">进入工作台</button>
+  <p>Lovart GEO 内容工作流 · 请使用 OpenFlow 同款账号登录</p>
+  <input id="u" placeholder="用户名" autocomplete="username" onkeydown="if(event.key==='Enter')go()">
+  <input id="pw" type="password" placeholder="密码" autocomplete="current-password" onkeydown="if(event.key==='Enter')go()">
+  <button onclick="go()">登录工作台</button>
   <div id="err"></div>
-  <div class="foot">172.96.253.73:8088 · /var/www/mflow</div>
+  <div class="foot">MFlow · 内容工厂治理系统</div>
 </div>
-<script>async function go(){const r=await fetch('/api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:document.getElementById('pw').value})});
-if(r.ok)location.reload();else document.getElementById('err').textContent='密码错误，重试'}</script>
+<script>async function go(){const r=await fetch('api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:document.getElementById('u').value,password:document.getElementById('pw').value})});
+if(r.ok)location.reload();else document.getElementById('err').textContent='用户名或密码错误'}</script>
 </body></html>

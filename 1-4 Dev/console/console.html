@@ -203,6 +203,7 @@ th{color:var(--muted);font-weight:600}
   <div class="lights"><span class="light light-r"></span><span class="light light-y"></span><span class="light light-g"></span></div>
   <button class="sb-toggle" onclick="document.body.classList.toggle('sb-collapsed')" title="折叠侧栏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
   <span class="ws"><span class="ws-ic">M</span>MFlow</span>
+  <span id="me-name" style="color:var(--muted);font-size:12px"></span>
   <span class="sp" style="flex:1"></span>
   <div class="bbar">
     <button class="cbtn" onclick="setTheme()" title="明暗切换"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg></button>
@@ -304,7 +305,7 @@ th{color:var(--muted);font-weight:600}
   <section class="page" id="pg-dist">
     <div class="pg-head"><div><div class="kick">情报与产出</div><h1>分发<em class="sf">队列</em></h1>
       <p class="pg-sub">四轨道分发状态。发布铁律：停在 ready 等人工授权，网页端只读。</p></div>
-      <div class="head-actions"><button class="btn primary" onclick="window.open('/api/dist/export')">⇩ 导出全部外链 CSV</button></div></div>
+      <div class="head-actions"><button class="btn primary" onclick="window.open('api/dist/export')">⇩ 导出全部外链 CSV</button></div></div>
     <div class="ov-grid2">
       <div class="card"><div class="card-head"><h3>待发队列</h3></div><div id="dist-pending"></div></div>
       <div class="card"><div class="card-head"><h3>已发布（最近）</h3></div><div id="dist-published"></div></div>
@@ -498,7 +499,7 @@ const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/</g,'&lt;');
 async function api(p,body){const o=body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{};
  const r=await fetch(p,o);if(r.status===401){location.reload();throw 0}return r.json()}
-function logout(){fetch('/api/logout',{method:'POST'}).then(()=>location.reload())}
+function logout(){fetch('api/logout',{method:'POST'}).then(()=>location.reload())}
 function setTheme(){const d=document.documentElement;const t=d.dataset.theme==='dark'?'light':'dark';d.dataset.theme=t;
  localStorage.setItem('mflow-console-v1',JSON.stringify({theme:t}))}
 document.querySelectorAll('.s-item').forEach(b=>b.onclick=()=>setTab(b.dataset.t));
@@ -508,12 +509,12 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
    calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup}[t]||(()=>{}))()}
-function openReader(path){api('/api/read?path='+encodeURIComponent(path)).then(r=>{
+function openReader(path){api('api/read?path='+encodeURIComponent(path)).then(r=>{
  $('rname').textContent=r.name;
  const toc=(r.toc||[]).filter(t=>t.level===2);
  $('rbody').innerHTML=(toc.length?`<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:20px"><b style="font-size:12px;color:var(--muted)">目录</b><div style="margin-top:6px">${toc.map(t=>`<a href="#${t.id}" style="display:block;color:var(--accent);text-decoration:none;padding:2px 0;font-size:13px">${esc(t.text)}</a>`).join('')}</div></div>`:'')+r.html;
  $('reader').style.display='flex';$('rbody').scrollTop=0;
- api('/api/report/dashboard?path='+encodeURIComponent(path)).then(dash=>{
+ api('api/report/dashboard?path='+encodeURIComponent(path)).then(dash=>{
   if(!dash.headers||!dash.rows||dash.rows.length<2)return;
   const numCols=dash.headers.map((h,i)=>dash.rows.some(row=>/^[-+]?[\d,.]+\s*%?$/.test((row[i]||'').trim())));
   const card=document.createElement('div');
@@ -531,7 +532,7 @@ function fmtHook(out){return String(out||'').split('\n').map(l=>{
  return esc(l)}).join('\n')}
 
 /* ---- 总览 ---- */
-function loadHome(){api('/api/overview').then(o=>{
+function loadHome(){api('api/overview').then(o=>{
  const h=new Date().getHours();const hi=h<6?'夜深了':h<12?'早上好':h<18?'下午好':'晚上好';
  $('greet').innerHTML=`${hi}，<em class="sf">站</em>长`;
  $('greet-sub').textContent=`待办 ${o.open_tasks} · 管线 ${o.pipeline_inflight} · 分发待发 ${o.dist_open} · 最近一次每日管线 ${o.daily.running?'运行中':'已完成'}`;
@@ -559,7 +560,7 @@ function loadHome(){api('/api/overview').then(o=>{
 
 /* ---- 任务看板（Trello 式：拖拽跨列 + 卡片编辑 + 日历关联）---- */
 let TM_ID=null;
-function loadTasks(){api('/api/tasks').then(t=>{const m=t.manual||[];
+function loadTasks(){api('api/tasks').then(t=>{const m=t.manual||[];
  const card=x=>`<div class="task" draggable="true" ondragstart="dragStart(event,'${x.id}')" style="cursor:grab" onclick="taskEdit('${x.id}')">
    <span class="tt"><b style="font-weight:600">${esc(x.title)}</b>
    ${x.link?`<div class="mut" style="font-size:11px">🔗 ${esc(x.link.split('/').pop())}</div>`:''}
@@ -579,23 +580,23 @@ function loadTasks(){api('/api/tasks').then(t=>{const m=t.manual||[];
  $('nav-tasks').textContent=m.filter(x=>x.status!=='done').length})}
 let dragId=null;
 function dragStart(e,id){dragId=id;e.dataTransfer.effectAllowed='move'}
-function taskEdit(id){api('/api/tasks').then(t=>{const x=(t.manual||[]).find(y=>y.id===id);if(!x)return;TM_ID=id;
+function taskEdit(id){api('api/tasks').then(t=>{const x=(t.manual||[]).find(y=>y.id===id);if(!x)return;TM_ID=id;
  $('tm-title').value=x.title||'';$('tm-desc').value=x.desc||'';$('tm-assignee').value=x.assignee||'';
  $('tm-due').value=x.due||'';$('tm-link').value=x.link||'';$('tm-meta').textContent='创建于 '+(x.created||'—');
  $('tmodal').style.display='flex'})}
-function taskSaveEdit(){api('/api/tasks/update',{id:TM_ID,title:$('tm-title').value,desc:$('tm-desc').value,
+function taskSaveEdit(){api('api/tasks/update',{id:TM_ID,title:$('tm-title').value,desc:$('tm-desc').value,
  assignee:$('tm-assignee').value,due:$('tm-due').value,link:$('tm-link').value}).then(()=>{$('tmodal').style.display='none';loadTasks()})}
 function addTask(){const v=$('ttitle').value.trim();if(!v)return;
- const me=localStorage.getItem('mflow-me')||'';
- api('/api/tasks/add',{title:v,assignee:me}).then(()=>{$('ttitle').value='';loadTasks()})}
-function taskSet(id,st){api('/api/tasks/set',{id,status:st}).then(loadTasks)}
-function taskDel(id){api('/api/tasks/del',{id}).then(loadTasks)}
+ const me=window.__ME||'';
+ api('api/tasks/add',{title:v,assignee:me}).then(()=>{$('ttitle').value='';loadTasks()})}
+function taskSet(id,st){api('api/tasks/set',{id,status:st}).then(loadTasks)}
+function taskDel(id){api('api/tasks/del',{id}).then(loadTasks)}
 function calToTask(path){const name=decodeURIComponent(path).split('/').pop().replace('.md','');
- api('/api/tasks/add',{title:'内容：'+name,link:path,assignee:localStorage.getItem('mflow-me')||''})
+ api('api/tasks/add',{title:'内容：'+name,link:path,assignee:localStorage.getItem('mflow-me')||''})
   .then(()=>{alert('已加入任务看板');setTab('tasks')})}
 
 /* ---- 报告 ---- */
-function loadReports(){if(REPORTS){renderReports();return}api('/api/reports').then(r=>{REPORTS=r;
+function loadReports(){if(REPORTS){renderReports();return}api('api/reports').then(r=>{REPORTS=r;
  $('nav-reports').textContent=Object.values(r).reduce((a,b)=>a+b.length,0);renderReports()})}
 function renderReports(){const cats=Object.keys(REPORTS);
  $('rcats').innerHTML=cats.map(c=>`<button class="chip ${RCAT===c?'on':''}" style="border-radius:12px;justify-content:space-between;display:flex" onclick="pickCat('${esc(c)}')"><span>${c}</span><span class="mut">${REPORTS[c].length}</span></button>`).join('');
@@ -606,29 +607,29 @@ function pickCat(c){RCAT=c;renderReports();const files=REPORTS[c]||[];
 
 /* ---- 知识中台 ---- */
 let KDIR='';
-function loadKb(){if($('kdirs').children.length)return;api('/api/kb/tree').then(srcs=>{
+function loadKb(){if($('kdirs').children.length)return;api('api/kb/tree').then(srcs=>{
  const total=srcs.reduce((a,b)=>a+b.files,0);$('kb-sub').textContent=`${srcs.length} 大知识源 · ${total} 份文档 —— 产品知识、铁律约束、故事线、方法论、策略、关键词、规范、案例，写内容前后都该查。`;
  $('kdirs').dataset.srcs=JSON.stringify(srcs);
  $('kdirs').innerHTML=srcs.map(d=>`<button class="chip" style="border-radius:12px;text-align:left;justify-content:space-between;display:flex" onclick="pickDir('${esc(d.name)}',this)"><span>${esc(d.name)}</span><span class="mut">${d.files}</span></button>`).join('');
  $('kdesc').textContent='点击左侧知识源浏览'})}
 function pickDir(n,el){KDIR=n;document.querySelectorAll('#kdirs .chip').forEach(x=>x.classList.remove('on'));el.classList.add('on');$('kq').value='';
- api('/api/kb/list?src='+encodeURIComponent(n)).then(items=>{
+ api('api/kb/list?src='+encodeURIComponent(n)).then(items=>{
   const meta=(()=>{const all=JSON.parse(document.getElementById('kdirs').dataset.srcs||'[]');return all.find(x=>x.name===n)||{}})();
   $('kres-t').textContent=n; $('kdesc').textContent=meta.desc||'';
   $('kres').innerHTML=items.map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${f.date||''}</span>${esc(f.name)}</a>`).join('')||'<span class="mut">空</span>'})}
 function kbSearch(srcOverride){const q=$('kq').value.trim();if(q.length<2)return alert('至少 2 个字符');
  const src=srcOverride!==undefined?srcOverride:KDIR;
- const url='/api/kb/search?q='+encodeURIComponent(q)+(src?'&src='+encodeURIComponent(src):'');
+ const url='api/kb/search?q='+encodeURIComponent(q)+(src?'&src='+encodeURIComponent(src):'');
  api(url).then(hits=>{$('kres-t').textContent=`搜索「${q}」（${hits.length} 命中${src?' · '+src:' · 跨全部知识源'}）`;$('kdesc').textContent='';
   $('kres').innerHTML=hits.map(h=>`<a onclick="openReader('${esc(h.path)}')"><b>${esc(h.name)}</b><div class="mt mut">${esc(h.match)}</div></a>`).join('')||'<span class="mut">无匹配</span>'})}
 
 /* ---- 分发 ---- */
-function loadDist(){api('/api/dist').then(d=>{
+function loadDist(){api('api/dist').then(d=>{
  $('dist-pending').innerHTML=(d.pending||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id||x.slug||'')}<div class="mut">${esc(x.platforms||'')} · score ${x.score??'-'}</div></span><span class="badge dist">${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">空</span>';
  $('dist-published').innerHTML=(d.published||[]).map(x=>`<div class="task"><span class="tt">${esc(x.slug||'')}<div class="mut">${esc(x.platform||'')} · ${esc(x.date||'')}</div></span><span class="badge" style="background:var(--ok)">${esc(x.status||'published')}</span></div>`).join('')||'<span class="mut">空</span>';
  $('dist-dispatch').innerHTML=(d.dispatches||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)}<div class="mut">cn ${x.cn} · global ${x.gl}</div></span><span class="badge ${x.approved?'':'dist'}">${x.approved?'已授权':'待授权'}</span></div>`).join('')||'<span class="mut">无 dispatch 单</span>';
  loadImpact()})}
-function loadImpact(){api('/api/impact').then(d=>{
+function loadImpact(){api('api/impact').then(d=>{
  $('imp-note').textContent=(d.gsc_date?`GSC 数据 ${d.gsc_date} · `:'')+`归因范围 Top${d.gsc_pages||0} 页面`;
  if(!(d.rows||[]).length)return $('dist-impact').innerHTML='<span class="mut">暂无已发布外链</span>';
  $('dist-impact').innerHTML='<table><tr><th>slug</th><th>平台</th><th>主站路径</th><th>点击</th><th>曝光</th><th>站外链接</th></tr>'+
@@ -638,27 +639,27 @@ function loadImpact(){api('/api/impact').then(d=>{
   `<div class="mut" style="margin-top:8px">${esc(d.note||'')}</div>`})}
 
 /* ---- 管线 ---- */
-function loadPipe(){api('/api/state').then(S=>{
+function loadPipe(){api('api/state').then(S=>{
  $('nav-pipe').textContent=S.items.filter(i=>!['done','failed','escalated'].includes(i.stage)).length;
  const by={};S.phases.forEach(p=>by[p]=[]);S.items.forEach(i=>(by[i.phase]||by['?']).push(i));
  $('board').innerHTML=S.phases.map(p=>`<div class="phase"><b>${p}（${by[p].length}）</b>${by[p].map(i=>{
   const tos=S.legal_transitions[i.stage]||[];
   return `<div class="pitem"><div class="id">${esc(i.id)}</div><div class="st">${esc(i.stage)}</div>
    ${tos.length?`<select onchange="advance('${esc(i.id)}',this.value)"><option value="">→ 推进…</option>${tos.map(t=>`<option>${t}</option>`).join('')}</select>`:''}</div>`}).join('')||'<div class="mut" style="margin-top:8px">空</div>'}</div>`).join('')})}
-function advance(id,to){if(!to)return;api('/api/item/advance',{id,to,reason:'console'}).then(r=>{if(r.rc!==0)alert('状态机拒绝：\n'+r.out);loadPipe()})}
-function upsert(){const id=$('nid').value.trim();if(!id)return alert('先填 id');api('/api/item/upsert',{id,category:$('ncat').value,target_type:$('ncat').value}).then(r=>{if(r.rc!==0)alert(r.out||r.error);else $('nid').value='';loadPipe()})}
+function advance(id,to){if(!to)return;api('api/item/advance',{id,to,reason:'console'}).then(r=>{if(r.rc!==0)alert('状态机拒绝：\n'+r.out);loadPipe()})}
+function upsert(){const id=$('nid').value.trim();if(!id)return alert('先填 id');api('api/item/upsert',{id,category:$('ncat').value,target_type:$('ncat').value}).then(r=>{if(r.rc!==0)alert(r.out||r.error);else $('nid').value='';loadPipe()})}
 
 /* ---- 工程 ---- */
-function renderEng(){api('/api/state').then(S=>{const st=[...new Set(S.decisions.map(d=>d.stage))],sc=[...new Set(S.decisions.map(d=>d.scenario))];
+function renderEng(){api('api/state').then(S=>{const st=[...new Set(S.decisions.map(d=>d.stage))],sc=[...new Set(S.decisions.map(d=>d.scenario))];
  const os=$('rstage').value;$('rstage').innerHTML=st.map(s=>`<option>${s}</option>`).join('');if(st.includes(os))$('rstage').value=os;
  $('rscenario').innerHTML=sc.map(s=>`<option>${s}</option>`).join('')})}
-function decide(){api('/api/router/decide',{stage:$('rstage').value,scenario:$('rscenario').value}).then(r=>{$('rout').textContent=JSON.stringify(r.verdict??r,null,2)})}
-function runHook(){api('/api/hook/run',{hook:$('hook').value,file:$('hfile').value.trim()}).then(r=>{$('hout').textContent=`exit=${r.rc}\n`+r.out})}
+function decide(){api('api/router/decide',{stage:$('rstage').value,scenario:$('rscenario').value}).then(r=>{$('rout').textContent=JSON.stringify(r.verdict??r,null,2)})}
+function runHook(){api('api/hook/run',{hook:$('hook').value,file:$('hfile').value.trim()}).then(r=>{$('hout').textContent=`exit=${r.rc}\n`+r.out})}
 
 /* ---- 系统 ---- */
-function loadSys(){api('/api/overview').then(o=>{$('drun').innerHTML=o.daily.running?'<span class="warn">运行中…</span>':'<span class="ok">空闲</span>';
+function loadSys(){api('api/overview').then(o=>{$('drun').innerHTML=o.daily.running?'<span class="warn">运行中…</span>':'<span class="ok">空闲</span>';
  $('drbtn').disabled=o.daily.running;$('dtail').textContent=o.daily.tail||'（尚无日志）';$('stimers').textContent=o.timers})}
-function runDaily(){api('/api/daily/run').then(()=>{setTimeout(()=>{if(TAB==='sys')loadSys();if(TAB==='home')loadHome()},1500)})}
+function runDaily(){api('api/daily/run').then(()=>{setTimeout(()=>{if(TAB==='sys')loadSys();if(TAB==='home')loadHome()},1500)})}
 
 /* ---- 创作中心 ---- */
 const GTYPES={"blog":"Blog 文章","landing-tools":"落地页·Tools","landing-features":"落地页·Features","landing-product":"落地页·Product","landing-scenario":"落地页·Scenario","landing-solution":"落地页·Solution","landing-topic":"落地页·Topic"};
@@ -672,26 +673,26 @@ function pickType(el,k){CTYPE=k;document.querySelectorAll('#ctypes .chip').forEa
 function slugFromTopic(){const t=$('ctopic').value.trim()||$('ftopic').value.trim();const s=slugify(t);return s}
 function startLoop(){const topic=$('ctopic').value.trim();if(!topic)return alert('先填主题');
  const id=($('cid').value.trim()||slugFromTopic());
- api('/api/loop/create',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim()})
+ api('api/loop/create',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim()})
   .then(r=>{if(r.error)return alert(r.error);alert('Loop 已发起（id='+r.id+'），到「Loop · Agent 模式」看实时日志');setTab('loops')})}
 function genOnce(){const topic=$('ctopic').value.trim();if(!topic)return alert('先填主题');
  const id=($('cid').value.trim()||slugFromTopic());
  const btn=event.target;btn.disabled=true;btn.textContent='生成中…';
- api('/api/generate',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim()})
+ api('api/generate',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim()})
   .then(r=>{btn.disabled=false;btn.textContent='单次生成（节点·生成步）';
    if(r.error)return alert(r.error);
    alert('已生成 '+r.path+'（'+r.chars+' 字符）\n质检 exit='+r.hook_rc+'\n\n'+(r.hook_rc===0?'✅ 质检 PASS':'⚠️ 质检 BLOCK，见下')+'\n'+r.hook_out.slice(-600))})}
 
 /* ---- Loop 管理 ---- */
-function loadLoops(){api('/api/loops').then(L=>{
+function loadLoops(){api('api/loops').then(L=>{
  $('nav-loops').textContent=L.filter(x=>x.status==='running'||x.status==='queued').length;
  $('loop-list').innerHTML=L.map(x=>`<div class="task"><span class="tt">${esc(x.goal)}<div class="mut">${esc(x.type)} · ${esc(x.lang)} · ${esc(x.created||'')} · 轮次 ${x.round||0}/${x.max_rounds||3} · item: ${esc(x.item_id)}${x.tokens_used?` · tokens ${x.tokens_used}`:''}</div></span>
   <span class="badge ${x.status==='running'?'pipe':x.status==='done'?'':'dist'}" style="${x.status==='done'?'background:var(--ok)':''}">${esc(x.status)}</span>
   <button class="more" onclick="loopLog('${x.id}')">日志</button>
   ${x.status==='running'||x.status==='queued'?`<button class="more" style="color:var(--danger)" onclick="loopStop('${x.id}')">停止</button>`:''}</div>`).join('')||'<span class="mut">还没有 Loop——去「创作中心」发起</span>'})}
-function loopLog(id){api('/api/loop/detail?id='+id).then(x=>{$('loop-log-t').textContent='运行日志 · '+x.goal+' · '+x.status;
+function loopLog(id){api('api/loop/detail?id='+id).then(x=>{$('loop-log-t').textContent='运行日志 · '+x.goal+' · '+x.status;
  $('loop-log').innerHTML=fmtHook((x.log||[]).join('\n'))||'（无日志）'})}
-function loopStop(id){api('/api/loop/stop',{id}).then(()=>setTimeout(loadLoops,800))}
+function loopStop(id){api('api/loop/stop',{id}).then(()=>setTimeout(loadLoops,800))}
 
 /* ---- 节点流水线 ---- */
 let FNODE=0;
@@ -711,18 +712,18 @@ function renderFlow(){$('flow-nodes').innerHTML=FNODES.map((n,i)=>`<div class="p
  ${n[2]==='adv'?`<button class="btn ghost" style="width:100%" onclick="flowAdv()">推进状态机</button>`:''}
  ${i<FNODE?'<div class="ok" style="margin-top:6px;font-size:11px">✓ 已完成</div>':''}</div>`).join('')}
 function flowGen(){const id=$('fitem').value.trim();if(!id)return alert('先填条目 id');
- api('/api/generate',{item_id:id,type:$('ftype').value,lang:$('flang').value,topic:$('ftopic').value.trim()})
+ api('api/generate',{item_id:id,type:$('ftype').value,lang:$('flang').value,topic:$('ftopic').value.trim()})
   .then(r=>{if(r.error)return alert(r.error);alert('生成完成：'+r.path+'（'+r.chars+' 字符），质检 exit='+r.hook_rc+'\n'+r.hook_out.slice(-400));FNODE=Math.max(FNODE,2);renderFlow()})}
 function flowQa(){const id=$('fitem').value.trim();if(!id)return alert('先填条目 id');
- api('/api/hook/run',{hook:'post-write-check.sh',file:'1-3 GenFlow/Console-Gen/'+id+'.md'}).then(r=>{
+ api('api/hook/run',{hook:'post-write-check.sh',file:'1-3 GenFlow/Console-Gen/'+id+'.md'}).then(r=>{
   alert('质检 exit='+r.rc+'\n'+r.out.slice(-500));if(r.rc===0){FNODE=Math.max(FNODE,3);renderFlow()}})}
 function flowAdv(){const id=$('fitem').value.trim();if(!id)return alert('先填条目 id');
- (async()=>{for(const stg of ['S3-draft','S3-done','S4-qa']){const r=await api('/api/item/advance',{id,to:stg,reason:'flow node'});
+ (async()=>{for(const stg of ['S3-draft','S3-done','S4-qa']){const r=await api('api/item/advance',{id,to:stg,reason:'flow node'});
   if(r.rc!==0)return alert('推进被拒：'+r.out)}alert('已推进到 S4-qa（等待人工审阅）');FNODE=Math.max(FNODE,4);renderFlow()})()}
 
 /* ---- 设置 ---- */
 let LLMCFG=null;
-function loadSet(){api('/api/llm').then(c=>{LLMCFG=c;
+function loadSet(){api('api/llm').then(c=>{LLMCFG=c;
  $('llm-providers').innerHTML=Object.entries(c.providers).map(([n,p])=>`<div class="row">
    <b style="width:80px;font-size:13px">${n}</b>
    <input id="lp-base-${n}" value="${esc(p.base||'')}" placeholder="base url" style="flex:1;min-width:180px">
@@ -732,7 +733,7 @@ function loadSet(){api('/api/llm').then(c=>{LLMCFG=c;
    <select id="lpr-prov-${n}">${Object.keys(c.providers).map(x=>`<option ${p.provider===x?'selected':''}>${x}</option>`).join('')}</select>
    <input id="lpr-model-${n}" value="${esc(p.model||'')}" placeholder="model" style="flex:1;min-width:160px"></div>`).join('');
  if(!c.providers.deepseek.key)$('llm-test').textContent='（尚未配置 Key——生成功能不可用）';
- api('/api/harness').then(h=>{
+ api('api/harness').then(h=>{
   $('harness-rules').innerHTML='<table><tr><th>规则</th><th>行数</th><th>更新</th><th></th></tr>'+h.rules.map(r=>
    `<tr><td>${esc(r.name)}</td><td class="tnum">${r.lines}</td><td class="mut">${r.mtime}</td><td><button class="more" onclick="openReader('${esc(r.path)}')">读</button></td></tr>`).join('')+'</table>';
   const groups={};h.skills.forEach(s=>(groups[s.group]=groups[s.group]||[]).push(s));
@@ -744,13 +745,13 @@ function llmSave(){const providers={},profiles={};
  document.querySelectorAll('[id^=lp-key-]').forEach(i=>{const n=i.id.replace('lp-key-','');(providers[n]=providers[n]||{}).key=i.value});
  document.querySelectorAll('[id^=lpr-prov-]').forEach(i=>{const n=i.id.replace('lpr-prov-','');(profiles[n]=profiles[n]||{}).provider=i.value});
  document.querySelectorAll('[id^=lpr-model-]').forEach(i=>{const n=i.id.replace('lpr-model-','');(profiles[n]=profiles[n]||{}).model=i.value});
- api('/api/llm/save',{providers,profiles}).then(()=>{alert('已保存');loadSet()})}
-function llmTest(){$('llm-test').textContent='测试中…';api('/api/llm/test',{profile:'default'}).then(r=>{
+ api('api/llm/save',{providers,profiles}).then(()=>{alert('已保存');loadSet()})}
+function llmTest(){$('llm-test').textContent='测试中…';api('api/llm/test',{profile:'default'}).then(r=>{
  $('llm-test').innerHTML=r.ok?'<span class="ok">连通 ✓ '+esc(r.reply)+'</span>':'<span class="bad">失败：'+esc(r.error)+'</span>'})}
 
 /* ---- 内容日历 ---- */
 function caltLoad(){const q=$('calt-q').value.trim(),lang=$('calt-lang').value;
- api('/api/calendar?q='+encodeURIComponent(q)+'&lang='+encodeURIComponent(lang)).then(d=>{
+ api('api/calendar?q='+encodeURIComponent(q)+'&lang='+encodeURIComponent(lang)).then(d=>{
   $('nav-calt').textContent=d.total;
   $('calt-sub').textContent=`多语言成品文章库：共 ${d.total} 篇。按日期浏览、按语言过滤、搜索后在线阅读。`;
   $('calt-stats').innerHTML=`<div class="stat"><div class="n tnum">${d.total}</div><div class="t">成品文章</div></div>`+
@@ -762,7 +763,7 @@ function caltLoad(){const q=$('calt-q').value.trim(),lang=$('calt-lang').value;
    <button class="mini" style="margin-top:4px" onclick="event.stopPropagation();calToTask('${esc(f.path)}')">→ 加入看板</button></a>`).join('')||'<span class="mut">无匹配</span>'})}
 
 /* ---- 工作流地图 ---- */
-function loadWfmap(){api('/api/workflows').then(ws=>{
+function loadWfmap(){api('api/workflows').then(ws=>{
  $('wfmap-list').innerHTML=ws.map(w=>`<div class="card" style="margin-bottom:14px">
   <div class="card-head"><h3 style="font-size:15px">${esc(w.name)}</h3><span class="mut">${esc(w.profiles)}</span></div>
   <div class="chips" style="margin-bottom:8px">${w.flow.map((s,i)=>`<span class="chip ${i===0?'on':''}" style="cursor:default">${esc(s)}</span>`).join('<span class="mut" style="align-self:center">→</span>')}</div>
@@ -773,16 +774,16 @@ function loadWfmap(){api('/api/workflows').then(ws=>{
   </div>`).join('')})}
 
 /* ---- 数据管线 Trident ---- */
-function loadTrident(){api('/api/trident').then(t=>{
+function loadTrident(){api('api/trident').then(t=>{
  $('tri-steps').innerHTML=t.steps.map(s=>`<div class="task"><span class="tt" style="flex:1"><b>${esc(s.name)}</b><div class="mut">${esc(s.desc)}</div></span>
   ${s.has_cmd?`<button class="btn ghost" onclick="triRun('${s.id}',this)">执行</button>`:'<span class="mut">内置 run_all</span>'}</div>`).join('');
  $('tri-health').innerHTML=(t.health||[]).map(h=>`<div class="task"><span class="tt" style="flex:1">${esc(h.name)}</span><span class="qd mut">${h.date}</span></div>`).join('')||'<span class="mut">暂无产出（先执行一次采集）</span>'})}
 function triRun(id,btn){btn.disabled=true;btn.textContent='运行中…';
- api('/api/trident/run',{step:id}).then(r=>{btn.disabled=false;btn.textContent='执行';
+ api('api/trident/run',{step:id}).then(r=>{btn.disabled=false;btn.textContent='执行';
   alert(`exit=${r.rc}\n`+r.out.slice(-800));loadTrident()})}
 
 /* ---- 用量与成本 ---- */
-function loadUsage(){api('/api/usage').then(u=>{
+function loadUsage(){api('api/usage').then(u=>{
  $('usage-stats').innerHTML=`<div class="stat"><div class="n tnum">${u.total_calls}</div><div class="t">LLM 调用次数</div></div>
   <div class="stat"><div class="n tnum">${u.total_tokens.toLocaleString()}</div><div class="t">总 tokens</div></div>
   <div class="stat"><div class="n tnum">${(u.total_tokens/1000).toFixed(1)}K</div><div class="t">≈ K tokens</div></div>`;
@@ -794,19 +795,21 @@ function loadUsage(){api('/api/usage').then(u=>{
   u.recent.map(r=>`<tr><td class="mut">${esc(r.ts)}</td><td>${esc(r.profile)}</td><td class="mut">${esc(r.model)}</td><td class="tnum">${r.prompt_tokens}</td><td class="tnum">${r.completion_tokens}</td><td class="tnum">${r.total_tokens}</td><td class="tnum">${r.latency_s}s</td></tr>`).join('')||'<tr><td colspan="7" class="mut">还没有调用——配好 LLM 后在创作中心发起一次即可</td></tr>'})}
 
 /* ---- Setup 引导 ---- */
-function loadSetup(){api('/api/setup/status').then(items=>{
+function loadSetup(){api('api/setup/status').then(items=>{
  const done=items.filter(x=>x.ok).length;
  $('nav-setup').textContent=done+'/'+items.length;
  $('setup-list').innerHTML=items.map(x=>`<div class="task" style="align-items:center">
    <span class="act-ic ${x.ok?'ok':'wn'}" style="width:26px;height:26px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span>
    <span class="tt" style="flex:1"><b style="font-weight:600">${esc(x.label)}</b><div class="mut" style="font-size:11.5px">${esc(x.hint)}</div></span>
    ${x.ok?'':'<button class="btn ghost" onclick="setTab(\''+x.goto+'\')">去配置 →</button>'}</div>`).join('');
- api('/api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version)})}
-function seedDemo(){api('/api/setup/seed-demo',{}).then(()=>{alert('Demo 数据已导入：\n· 3 张演示任务已进看板\n· 示例报告在本页下方\n· 创作中心现在无需 API Key 即可跑演示闭环');loadSetup()})}
+ api('api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version)})}
+function seedDemo(){api('api/setup/seed-demo',{}).then(()=>{alert('Demo 数据已导入：\n· 3 张演示任务已进看板\n· 示例报告在本页下方\n· 创作中心现在无需 API Key 即可跑演示闭环');loadSetup()})}
 
+api('api/auth/me').then(me=>{$('me-name').textContent=me.username||'';window.__ME=me.username||''}).catch(()=>{});
+api('api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version).catch(()=>{});
 setTab('home');
-api('/api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version).catch(()=>{});
-api('/api/setup/status').then(items=>{const done=items.filter(x=>x.ok).length;
+api('api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version).catch(()=>{});
+api('api/setup/status').then(items=>{const done=items.filter(x=>x.ok).length;
  $('nav-setup').textContent=done+'/'+items.length}).catch(()=>{});
 </script>
 </body>
