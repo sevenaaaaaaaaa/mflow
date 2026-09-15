@@ -18,17 +18,20 @@
 - ✅ 看板 ↔ 内容日历打通：日历文章一键「加入看板」，卡片带 🔗 关联可跳回阅读
 - ✅ 版本体系：`VERSION` + 侧栏版本号 + `/api/version`
 
-## Phase 2 · 深度能力（下一轮，预计 3-5 个工作日）
+## Phase 2 · 深度能力（2026-09-15 ✅ 全部交付）
 
-- 📋 质检可视化面板：Loop/生成结果自动渲染 L1-L7 门禁逐项通过率，BLOCK 项点击看规则原文
-- 📋 媒体效果检验：外链 CSV × GSC 页面数据按 URL 归因，输出"哪条内容真的带来点击"效果榜
-- 📋 CMS 适配器接口落地：`publish_adapters/` 目录 + WordPress/Webhook 两个骨架实现 + Sanity 参考实现整理
-- 📋 报告可视化 R1（见 docs/report-vision.md）：月报/舆情/404 三类报告模板化 Dashboard
-- 📋 Loop 并发与队列：多 Loop 并行 + 排队 + 每 Loop 成本预估
+- ✅ CJK 分词修复：post-write-check 词当量 = ASCII 词 + CJK 字符/2（perl unicode），680 汉字不再被记为 21 词，16/16 回归绿
+- ✅ 质检可视化：hook 输出 ✓/✗/WARN 分项着色渲染（Loop 日志/质量钩子页复用 fmtHook）
+- ✅ 媒体效果检验：分发页「效果归因」——已发布外链 canonical × GSC Top20 页面点击/曝光关联表（数据源可扩全量）
+- ✅ CMS 适配器接口：`1-4 Dev/scripts/publish_adapters/`（接口约定 README + webhook 完整实现 + wordpress REST 骨架 + sanity 参考说明 + 统一 CLI）
+- ✅ 报告可视化 R1 MVP：阅读器自动解析报告首个数值表 → 顶部指标卡仪表视图（月报即生效）
+- ✅ Loop 并发与队列：移除单跑限制 → queued 状态 + 调度线程（并发上限 2）+ 每 Loop token 记账
 
 ## Phase 3 · 生态（后续）
 
 - 📋 多用户账号体系（操作者实名 → 角色 → 审批流），发布授权从"共享密码"升级为"审批工作流"
+- ✅ 域名接入就绪：`deploy/setup-domain.sh` 一键反代 + `docs/domain-setup.md`（DNS → 反代 → HTTPS 三步）
+- 📋 已知项：质检钩子调 python3 依赖环境 PATH（服务/管线已带 venv env；手动跑 smoketest 需先 source run/env.sh）
 - 📋 报告可视化 R2-R5（Chart.js 趋势 / 双期对比 / PDF 导出 / 订阅摘要卡）
 - 📋 模板市场：把"工作流定义 + 提示词模板 + 知识源"打包为行业模板（电商/SaaS/律所…），一键安装
 - 📋 插件规范：第三方数据源/发布渠道按 §modules 协议贡献，TOOLS-REGISTRY 自动收录
