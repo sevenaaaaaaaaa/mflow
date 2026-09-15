@@ -160,3 +160,13 @@ oklch 暖灰色彩系统（明暗双主题）、玻璃拟态顶栏 + macOS 红�
 - ROADMAP P3.1 标记完成；"我的任务"归属人过滤移入下一小批
 
 **给用户的登录修复路径**：root 执行 `bash /var/www/mflow/deploy/reset-account.sh Seven 新密码` → 用 Seven+新密码登录 → 设置页可重置其他账号。
+
+## v3.7 追加（同日）——P3.2 模板市场
+
+- 模板包 v1 schema：id/name/version/author/description + workflow{flow/profiles/skills/kb} + prompt{audience/tone/structure/anti_slop_extra} + kb_sources_suggestion；templates/ 目录随仓库分发
+- 内置：ecommerce-content（绝对化用语/原价编造/虚假销量禁例）、saas-growth（无出处 ROI 承诺禁例）、local-service（NAP/资质/价格区间约束）
+- gen_prompt 模板化：structure 替换默认结构 + audience/tone 注入 + anti_slop_extra 追加；{TOPIC} 占位符
+- API：/api/templates（列表）、/api/templates/import（三要素校验 + id 规范化）、/api/templates/export（下载）、/api/templates/delete（内置保护）；generate/loop 接受 template_id
+- 前端：创作中心「行业模板」chips（默认 MFlow 标准）；模板市场页（卡片/JSON 查看/导出/导入/删除）；导航徽标
+- e2e：templates 3 → import 4 → delete 3；ecommerce 模板 + demo 回退生成 hook PASS
+- 教训：console 重启清空内存 session——旧 cookie 401 会被误读为路由缺失；测临时账号用 venv python 清理（系统 py3.6 ascii 编码读中文 auth.json 会炸）
