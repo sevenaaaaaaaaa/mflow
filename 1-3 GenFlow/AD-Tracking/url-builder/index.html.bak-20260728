@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ad URL Builder</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background: #f5f5f5; color: #1a1a1a; line-height: 1.5; padding: 24px; }
+.container { max-width: 880px; margin: 0 auto; }
+h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+.subtitle { font-size: 13px; color: #666; margin-bottom: 20px; }
+.subtitle a { color: #1a73e8; }
+
+.tabs { display: flex; gap: 0; margin-bottom: 16px; border-bottom: 2px solid #e0e0e0; }
+.tab { padding: 10px 20px; cursor: pointer; font-size: 14px; font-weight: 600; color: #888; border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all 0.15s; user-select: none; }
+.tab:hover { color: #1a73e8; }
+.tab.active { color: #1a73e8; border-bottom-color: #1a73e8; }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.card { background: #fff; border-radius: 10px; padding: 20px 24px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.card-header { font-size: 13px; font-weight: 700; color: #888; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 14px; display: flex; align-items: center; gap: 6px; }
+.card-header .badge { font-size: 10px; background: #e8f0fe; color: #1a73e8; padding: 1px 6px; border-radius: 3px; }
+.card-header .badge.optional { background: #fff3e0; color: #e65100; }
+
+.form-row { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+.form-row:last-child { margin-bottom: 0; }
+.form-group { flex: 1; min-width: 160px; display: flex; flex-direction: column; }
+.form-group-half { flex: 0 0 calc(50% - 6px); }
+label { font-size: 13px; font-weight: 600; color: #333; margin-bottom: 4px; }
+label .req { color: #e53935; }
+label .opt { color: #999; font-weight: 400; font-size: 11px; }
+input, select, textarea { padding: 8px 12px; border: 1.5px solid #ddd; border-radius: 6px; font-size: 14px; transition: border-color 0.15s; background: #fafafa; outline: none; font-family: inherit; }
+input:focus, select:focus, textarea:focus { border-color: #1a73e8; background: #fff; }
+input.error, select.error, textarea.error { border-color: #e53935; background: #fff5f5; }
+input[readonly] { background: #f0f0f0; color: #666; cursor: default; }
+textarea { resize: vertical; min-height: 120px; font-size: 12px; font-family: "SF Mono", "Menlo", monospace; }
+.err-msg { font-size: 11px; color: #e53935; margin-top: 2px; display: none; min-height: 18px; }
+
+.combo-container { position: relative; }
+.combo-input { width: 100%; }
+.combo-dropdown { position: absolute; top: 100%; left: 0; right: 0; max-height: 220px; overflow-y: auto; background: #fff; border: 1.5px solid #1a73e8; border-top: none; border-radius: 0 0 6px 6px; z-index: 10; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.combo-dropdown.show { display: block; }
+.combo-option { padding: 8px 12px; cursor: pointer; font-size: 13px; border-bottom: 1px solid #f0f0f0; }
+.combo-option:last-child { border-bottom: none; }
+.combo-option:hover { background: #e8f0fe; }
+
+.platform-picker { position: relative; }
+.platform-picker .input-wrap { position: relative; }
+.platform-picker input { width: 100%; padding-right: 32px; }
+.platform-picker .arrow { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); pointer-events: none; font-size: 10px; color: #888; }
+.platform-dropdown { position: absolute; top: 100%; left: 0; right: 0; max-height: 320px; overflow-y: auto; background: #fff; border: 1.5px solid #1a73e8; border-top: none; border-radius: 0 0 6px 6px; z-index: 20; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+.platform-dropdown.show { display: block; }
+.platform-opt { padding: 10px 12px; cursor: pointer; font-size: 13px; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 8px; }
+.platform-opt:last-child { border-bottom: none; }
+.platform-opt:hover { background: #e8f0fe; }
+.platform-opt.selected { background: #e8f0fe; font-weight: 600; }
+.platform-opt .p-tag { font-size: 10px; padding: 1px 5px; border-radius: 3px; color: #fff; font-weight: 500; }
+.p-tag.search { background: #1a73e8; } .p-tag.social { background: #e91e63; }
+.p-tag.pmax { background: #7c4dff; } .p-tag.display { background: #ff6d00; }
+.p-tag.domestic { background: #00c853; } .p-tag.network { background: #78909c; }
+.p-no-result { padding: 12px; text-align: center; color: #999; font-size: 13px; }
+
+.macro-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.macro-item { display: flex; align-items: center; gap: 6px; font-size: 13px; padding: 6px 10px; border: 1.5px solid #e0e0e0; border-radius: 6px; cursor: pointer; transition: all 0.15s; flex: 0 0 calc(33.33% - 6px); user-select: none; }
+.macro-item:hover { border-color: #1a73e8; background: #fafbff; }
+.macro-item.checked { border-color: #1a73e8; background: #e8f0fe; }
+.macro-item input[type="checkbox"] { display: none; }
+.macro-tmpl { font-size: 11px; color: #888; font-family: "SF Mono", "Menlo", monospace; }
+
+.toggle-btn { display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px; border: 1.5px solid #e0e0e0; border-radius: 6px; background: #fff; font-size: 12px; color: #666; cursor: pointer; margin-top: 10px; }
+.toggle-btn:hover { border-color: #1a73e8; color: #1a73e8; }
+.toggle-btn .arrow-icon { font-size: 10px; transition: transform 0.2s; }
+.toggle-btn.open .arrow-icon { transform: rotate(180deg); }
+.more-macros { margin-top: 8px; display: none; }
+.more-macros.show { display: block; }
+.more-macros .macro-list { border-top: 1px solid #eee; padding-top: 8px; }
+
+.btn { padding: 10px 20px; border: none; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+.btn-primary { background: #1a73e8; color: #fff; }
+.btn-primary:hover { background: #1557b0; }
+.btn-secondary { background: #f0f0f0; color: #333; }
+.btn-secondary:hover { background: #e0e0e0; }
+.btn-outline { background: #fff; color: #1a73e8; border: 1.5px solid #1a73e8; }
+.btn-outline:hover { background: #e8f0fe; }
+.btn-sm { padding: 5px 12px; font-size: 12px; }
+.btn-xs { padding: 3px 8px; font-size: 11px; }
+.actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+
+.output-section { display: none; }
+.output-section.show { display: block; }
+.url-box { background: #f8f9fa; border: 1.5px solid #e0e0e0; border-radius: 6px; padding: 14px 16px; font-size: 12px; word-break: break-all; font-family: "SF Mono", "Menlo", monospace; line-height: 1.8; margin-bottom: 12px; max-height: 240px; overflow-y: auto; color: #333; }
+.url-box a { color: #1a73e8; text-decoration: none; }
+.toast { position: fixed; bottom: 24px; right: 24px; background: #333; color: #fff; padding: 10px 20px; border-radius: 8px; font-size: 13px; opacity: 0; transition: opacity 0.25s; pointer-events: none; z-index: 100; }
+.toast.show { opacity: 1; }
+.toast.success { background: #2e7d32; }
+.toast.error { background: #c62828; }
+
+.batch-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 12px; }
+.batch-table th, .batch-table td { padding: 8px 10px; text-align: left; border-bottom: 1px solid #eee; }
+.batch-table th { font-weight: 600; color: #888; font-size: 11px; text-transform: uppercase; white-space: nowrap; background: #fafafa; position: sticky; top: 0; }
+.batch-table td { font-family: "SF Mono", "Menlo", monospace; word-break: break-all; font-size: 11px; }
+.batch-table td.platform-cell { font-weight: 600; color: #1a73e8; font-family: inherit; }
+.batch-table td.status-cell { font-family: inherit; }
+.batch-table .status-err { color: #e53935; font-weight: 600; }
+.batch-table .status-ok { color: #00c853; }
+.batch-table .status-warn { color: #e65100; }
+.batch-url { max-width: 500px; }
+
+.hint { font-size: 11px; color: #999; margin-top: 2px; }
+
+@media (max-width: 700px) {
+  .form-row { flex-direction: column; gap: 10px; }
+  .form-group-half { flex: 1; }
+  .macro-item { flex: 0 0 calc(50% - 4px); }
+}
+</style>
+</head>
+<body>
+<div id="js_status" style="position:fixed;top:0;left:0;right:0;padding:6px 12px;font-size:12px;z-index:999;text-align:center;background:#fff3e0;color:#e65100;">JS initializing...</div>
+<div class="container" style="margin-top:18px;">
+  <h1>Ad URL Builder</h1>
+  <p class="subtitle">投放链接追踪参数生成器 — 按 <a href="../AD-TRACKING-PARAM-SPEC.md" target="_blank">规范文档</a></p>
+  <div class="toast" id="toast"></div>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="single">Single URL</div>
+    <div class="tab" data-tab="batch">Batch Import</div>
+  </div>
+
+  <!-- ====== SINGLE URL TAB ====== -->
+  <div class="tab-panel active" id="tab_single">
+
+    <div class="card">
+      <div class="card-header"><span>0. </span>基础信息</div>
+      <div class="form-row">
+        <div class="form-group" style="flex:2; min-width:280px;">
+          <label>Landing Page URL <span class="req">*</span></label>
+          <input type="text" id="base_url" placeholder="https://lovart.ai/tools/seedance" />
+          <div class="err-msg" id="err_url"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group" style="flex:2;">
+          <label>投放平台 <span class="req">*</span></label>
+          <div class="platform-picker">
+            <div class="input-wrap">
+              <input type="text" id="platform_input" placeholder="搜索或选择平台..." autocomplete="off" />
+              <span class="arrow">▼</span>
+            </div>
+            <div class="platform-dropdown" id="platform_dropdown"></div>
+          </div>
+          <div class="err-msg" id="err_platform"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span>1. </span>内部追踪 <span class="badge">Layer 1</span></div>
+      <div class="form-row">
+        <div class="form-group" style="min-width:140px;flex:0.8;">
+          <label>sourceId <span class="req">*</span></label>
+          <input type="text" id="source_id" placeholder="910001" />
+          <div class="err-msg" id="err_source_id"></div>
+        </div>
+        <div class="form-group" style="flex:1.2;">
+          <label>el — 元素位置 <span class="opt">选填</span></label>
+          <div class="combo-container" id="el_combo">
+            <input type="text" class="combo-input" id="el" placeholder="cta_primary" autocomplete="off" />
+            <div class="combo-dropdown" id="el_dropdown"></div>
+          </div>
+        </div>
+        <div class="form-group" style="flex:1.2;">
+          <label>sec — 页面模块 <span class="opt">选填</span></label>
+          <div class="combo-container" id="sec_combo">
+            <input type="text" class="combo-input" id="sec" placeholder="hero-split" autocomplete="off" />
+            <div class="combo-dropdown" id="sec_dropdown"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><span>2. </span>UTM 参数 <span class="badge">Layer 2</span></div>
+      <div class="form-row">
+        <div class="form-group form-group-half">
+          <label>utm_source <span class="req">*</span></label>
+          <input type="text" id="utm_source" readonly placeholder="选择平台后自动填入" />
+        </div>
+        <div class="form-group form-group-half">
+          <label>utm_medium <span class="req">*</span></label>
+          <select id="utm_medium"><option value="">— 请选择 —</option></select>
+          <div class="err-msg" id="err_utm_medium"></div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>utm_campaign <span class="req">*</span></label>
+          <input type="text" id="utm_campaign" placeholder="seedance-2.0-launch" />
+          <div class="err-msg" id="err_utm_campaign"></div>
+          <div class="hint">kebab-case: 小写字母 + 数字 + 连字符</div>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>utm_term <span class="opt">选填</span></label>
+          <input type="text" id="utm_term" placeholder="seedance_group" />
+        </div>
+        <div class="form-group">
+          <label>utm_content <span class="opt">选填</span></label>
+          <input type="text" id="utm_content" placeholder="variant_a" />
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="macro_card">
+      <div class="card-header"><span>3. </span>平台原生宏 <span class="badge">Layer 3</span><span class="badge optional">选填</span></div>
+      <p style="font-size:12px;color:#999;margin-bottom:12px;" id="macro_placeholder">请先选择平台</p>
+      <div id="macro_content" style="display:none;">
+        <div class="macro-list" id="default_macros"></div>
+        <button class="toggle-btn" id="toggle_more" type="button">展开全部宏 <span class="arrow-icon">▼</span></button>
+        <div class="more-macros" id="more_macros"><div class="macro-list" id="more_macros_list"></div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="actions">
+        <button class="btn btn-primary" id="btn_generate">Generate URL</button>
+      </div>
+    </div>
+
+    <div class="card output-section" id="output_section_single">
+      <div class="card-header">Output</div>
+      <div class="url-box" id="url_display"></div>
+      <div class="actions">
+        <button class="btn btn-primary btn-sm" id="btn_copy">Copy</button>
+        <button class="btn btn-outline btn-sm export-single" data-fmt="txt">Export TXT</button>
+        <button class="btn btn-outline btn-sm export-single" data-fmt="md">Export MD</button>
+        <button class="btn btn-outline btn-sm export-single" data-fmt="json">Export JSON</button>
+        <span style="font-size:11px;color:#999;margin-left:4px;" id="url_len_hint"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== BATCH IMPORT TAB ====== -->
+  <div class="tab-panel" id="tab_batch">
+
+    <div class="card">
+      <div class="card-header">Template & Import</div>
+      <p style="font-size:13px;color:#555;margin-bottom:10px;">下载模板（含全部宏字段列）→ 填写数据 → 粘贴或上传</p>
+      <div class="actions" style="margin-bottom:12px;">
+        <button class="btn btn-outline btn-sm" id="btn_template_csv">Download CSV Template</button>
+        <button class="btn btn-outline btn-sm" id="btn_template_json">Download JSON Template</button>
+        <span style="font-size:11px;color:#999;">或</span>
+        <label class="btn btn-outline btn-sm" style="cursor:pointer;">Upload File <input type="file" id="file_upload" accept=".csv,.json" style="display:none;" /></label>
+      </div>
+      <textarea id="batch_input" placeholder="在此粘贴 CSV 或 JSON 数据..."></textarea>
+      <div class="err-msg" id="err_batch" style="margin-top:6px;"></div>
+      <div class="actions" style="margin-top:10px;">
+        <button class="btn btn-primary btn-sm" id="btn_batch_parse">Parse & Preview</button>
+        <button class="btn btn-secondary btn-sm" id="btn_batch_clear">Clear</button>
+      </div>
+    </div>
+
+    <div class="card" id="batch_preview_card" style="display:none;">
+      <div class="card-header">Preview (<span id="batch_count">0</span> rows)</div>
+      <div style="overflow-x:auto; max-height:420px; overflow-y:auto;">
+        <table class="batch-table" id="batch_preview_table">
+          <thead id="batch_preview_thead"><tr></tr></thead>
+          <tbody id="batch_preview_tbody"></tbody>
+        </table>
+      </div>
+      <div class="actions" style="margin-top:12px;">
+        <button class="btn btn-primary" id="btn_batch_generate">Generate All URLs</button>
+      </div>
+    </div>
+
+    <div class="card output-section" id="output_section_batch">
+      <div class="card-header">Generated URLs (<span id="batch_gen_count">0</span>)</div>
+      <div style="overflow-x:auto;">
+        <table class="batch-table">
+          <thead><tr><th>#</th><th>Platform</th><th>URL</th></tr></thead>
+          <tbody id="batch_gen_tbody"></tbody>
+        </table>
+      </div>
+      <div class="actions" style="margin-top:12px;">
+        <button class="btn btn-outline btn-sm export-batch" data-fmt="txt">Export TXT</button>
+        <button class="btn btn-outline btn-sm export-batch" data-fmt="md">Export MD</button>
+        <button class="btn btn-outline btn-sm export-batch" data-fmt="json">Export JSON</button>
+        <button class="btn btn-outline btn-sm export-batch" data-fmt="csv">Export CSV</button>
+        <button class="btn btn-secondary btn-sm" id="btn_batch_copy_all">Copy All</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+'use strict';
+var statusEl = document.getElementById('js_status');
+
+function logStatus(msg, color) {
+  console.log('[AdURL]', msg);
+  if (statusEl) { statusEl.textContent = msg; statusEl.style.background = color || '#e8f5e9'; statusEl.style.color = '#2e7d32'; }
+}
+
+window.onerror = function(msg, url, line, col, err) {
+  var m = 'JS Error: ' + msg + ' (line ' + line + ')';
+  console.error(m, err);
+  if (statusEl) { statusEl.textContent = m; statusEl.style.background = '#ffebee'; statusEl.style.color = '#c62828'; }
+  return false;
+};
+
+try {
+
+// ====== PLATFORM CONFIG ======
+const MEDIUM_LABELS = {
+  cpc:'cpc — 搜索广告（点击付费）', cpm:'cpm — 展示广告（千次曝光）', cpa:'cpa — 效果投放（按转化）',
+  social:'social — 信息流广告', video:'video — 视频广告', shopping:'shopping — 购物广告',
+  pmax:'pmax — Performance Max', display:'display — 展示/程序化', retargeting:'retargeting — 再营销/重定向',
+};
+
+const PLATFORMS = [
+  { code:'google', name:'Google Ads (Search)', source:'google', type:'search', syntax:'google-lower', clickId:'gclid',
+    mediumOptions:['cpc','cpa','display','shopping','retargeting','video'],
+    macros:[
+      {field:'campaign_id',template:'{campaignid}',default:true},{field:'adgroup_id',template:'{adgroupid}',default:true},
+      {field:'ad_id',template:'{creative}',default:true},{field:'keyword_id',template:'{targetid}',default:false},
+      {field:'keyword',template:'{keyword}',default:true},{field:'matchtype',template:'{matchtype}',default:false},
+      {field:'network',template:'{network}',default:false},{field:'device',template:'{device}',default:true},
+      {field:'placement',template:'{placement}',default:false},{field:'loc_interest',template:'{loc_interest_ms}',default:false},
+      {field:'loc_physical',template:'{loc_physical_ms}',default:false},{field:'feeditem_id',template:'{feeditemid}',default:false},
+      {field:'extension_id',template:'{extensionid}',default:false},{field:'creative_type',template:'{adtype}',default:false},
+      {field:'param1',template:'{param1}',default:false},{field:'param2',template:'{param2}',default:false},
+    ]},
+  { code:'google_pmax', name:'Google Ads (PMax)', source:'google', type:'pmax', syntax:'google-lower', clickId:'gclid',
+    mediumOptions:['pmax'],
+    macros:[
+      {field:'campaign_id',template:'{campaignid}',default:true},{field:'asset_group_id',template:'{assetgroupid}',default:true},
+      {field:'device',template:'{device}',default:true},{field:'loc_interest',template:'{loc_interest_ms}',default:false},
+      {field:'loc_physical',template:'{loc_physical_ms}',default:false},{field:'creative_type',template:'{adtype}',default:false},
+      {field:'merchant_id',template:'{merchant_id}',default:false},{field:'product_id',template:'{product_id}',default:false},
+      {field:'product_channel',template:'{product_channel}',default:false},{field:'product_country',template:'{product_country}',default:false},
+      {field:'product_language',template:'{product_language}',default:false},
+      {field:'asset_group_name',template:'{_assetgroup}',default:false},
+    ]},
+  { code:'google_display', name:'Google Ads (Display)', source:'google', type:'display', syntax:'google-lower', clickId:'gclid',
+    mediumOptions:['display','cpm','retargeting'],
+    macros:[
+      {field:'campaign_id',template:'{campaignid}',default:true},{field:'adgroup_id',template:'{adgroupid}',default:true},
+      {field:'ad_id',template:'{creative}',default:true},{field:'keyword',template:'{keyword}',default:false},
+      {field:'network',template:'{network}',default:false},{field:'device',template:'{device}',default:true},
+      {field:'devicemodel',template:'{devicemodel}',default:false},{field:'placement',template:'{placement}',default:false},
+      {field:'target',template:'{target}',default:false},
+    ]},
+  { code:'bing', name:'Microsoft Bing Ads', source:'bing', type:'search', syntax:'google-pascal', clickId:'msclkid',
+    mediumOptions:['cpc','cpa','display','shopping','retargeting','video'],
+    macros:[
+      {field:'campaign_id',template:'{CampaignId}',default:true},{field:'adgroup_id',template:'{AdGroupId}',default:true},
+      {field:'ad_id',template:'{AdId}',default:true},{field:'keyword_id',template:'{TargetId}',default:false},
+      {field:'keyword',template:'{Keyword}',default:true},{field:'matchtype',template:'{MatchType}',default:false},
+      {field:'network',template:'{Network}',default:false},{field:'device',template:'{Device}',default:true},
+      {field:'placement',template:'{Placement}',default:false},{field:'query_string',template:'{QueryString}',default:false},
+      {field:'custom_1',template:'{Custom1}',default:false},{field:'custom_2',template:'{Custom2}',default:false},
+      {field:'custom_3',template:'{Custom3}',default:false},
+    ]},
+  { code:'bing_pmax', name:'Microsoft Bing (PMax)', source:'bing', type:'pmax', syntax:'google-pascal', clickId:'msclkid',
+    mediumOptions:['pmax'],
+    macros:[
+      {field:'campaign_id',template:'{CampaignId}',default:true},{field:'asset_group_id',template:'{AssetGroupId}',default:true},
+      {field:'device',template:'{Device}',default:true},
+    ]},
+  { code:'meta', name:'Meta Ads (FB+IG)', source:'meta', type:'social', syntax:'meta-mustache', clickId:'fbclid',
+    mediumOptions:['social','cpm','cpa','video','retargeting','display'],
+    macros:[
+      {field:'campaign_id',template:'{{campaign.id}}',default:true},{field:'campaign_name',template:'{{campaign.name}}',default:false},
+      {field:'adgroup_id',template:'{{adset.id}}',default:true},{field:'adgroup_name',template:'{{adset.name}}',default:false},
+      {field:'ad_id',template:'{{ad.id}}',default:true},{field:'ad_name',template:'{{ad.name}}',default:false},
+      {field:'placement',template:'{{placement}}',default:true},{field:'site_source_name',template:'{{site_source_name}}',default:false},
+      {field:'device',template:'{{device}}',default:false},{field:'publisher_platform',template:'{{publisher_platform}}',default:false},
+      {field:'platform_position',template:'{{platform_position}}',default:false},{field:'ad_format',template:'{{ad.format}}',default:false},
+      {field:'region',template:'{{region}}',default:false},
+    ]},
+  { code:'tiktok', name:'TikTok Ads (海外)', source:'tiktok', type:'social', syntax:'bytedance-macro', clickId:'ttclid',
+    mediumOptions:['social','cpm','cpa','video'],
+    macros:[
+      {field:'campaign_id',template:'__CAMPAIGN_ID__',default:true},{field:'adgroup_id',template:'__AID__',default:true},
+      {field:'ad_id',template:'__CID__',default:true},{field:'placement',template:'__PLACEMENT__',default:true},
+      {field:'device',template:'__DEVICE_OS__',default:false},{field:'device_model',template:'__DEVICE_MODEL__',default:false},
+      {field:'network',template:'__NETWORK__',default:false},{field:'site',template:'__SITE__',default:false},
+      {field:'ad_format',template:'__AD_FORMAT__',default:false},{field:'interest_category',template:'__INTEREST_CATEGORY__',default:false},
+      {field:'age',template:'__AGE__',default:false},{field:'gender',template:'__GENDER__',default:false},
+      {field:'language',template:'__LANGUAGE__',default:false},
+    ]},
+  { code:'snapchat', name:'Snapchat Ads', source:'snapchat', type:'social', syntax:'meta-mustache', clickId:'ScCid',
+    mediumOptions:['social','cpm','cpa','video'],
+    macros:[
+      {field:'campaign_id',template:'{{campaign.id}}',default:true},{field:'campaign_name',template:'{{campaign.name}}',default:false},
+      {field:'adgroup_id',template:'{{adset.id}}',default:true},{field:'adgroup_name',template:'{{adset.name}}',default:false},
+      {field:'ad_id',template:'{{ad.id}}',default:true},{field:'ad_name',template:'{{ad.name}}',default:false},
+      {field:'placement',template:'{{placement}}',default:false},{field:'creative_type',template:'{{creative.type}}',default:false},
+      {field:'swipe_up',template:'{{ad.is.swipeable}}',default:false},
+    ]},
+  { code:'pinterest', name:'Pinterest Ads', source:'pinterest', type:'social', syntax:'meta-mustache', clickId:'epik',
+    mediumOptions:['social','cpm','cpa','shopping'],
+    macros:[
+      {field:'campaign_id',template:'{{campaign.id}}',default:true},{field:'campaign_name',template:'{{campaign.name}}',default:false},
+      {field:'adgroup_id',template:'{{adgroup.id}}',default:true},{field:'adgroup_name',template:'{{adgroup.name}}',default:false},
+      {field:'ad_id',template:'{{ad.id}}',default:true},{field:'keyword_id',template:'{{keyword.id}}',default:false},
+      {field:'keyword_name',template:'{{keyword.name}}',default:false},{field:'creative_id',template:'{{creative.id}}',default:false},
+    ]},
+  { code:'reddit', name:'Reddit Ads', source:'reddit', type:'social', syntax:'meta-mustache', clickId:'',
+    mediumOptions:['social','cpm','cpa'],
+    macros:[
+      {field:'campaign_id',template:'{{campaign_id}}',default:true},{field:'adgroup_id',template:'{{ad_group_id}}',default:true},
+      {field:'ad_id',template:'{{ad_id}}',default:true},{field:'placement',template:'{{placement}}',default:false},
+      {field:'device',template:'{{device}}',default:false},{field:'ad_type',template:'{{ad_type}}',default:false},
+      {field:'device_type',template:'{{device_type}}',default:false},
+    ]},
+  { code:'x', name:'X.com (Twitter) Ads', source:'x', type:'social', syntax:'meta-mustache', clickId:'twclid',
+    mediumOptions:['social','cpm','cpa'],
+    macros:[
+      {field:'campaign_id',template:'{{campaign_id}}',default:true},{field:'adgroup_id',template:'{{ad_group_id}}',default:true},
+      {field:'ad_id',template:'{{ad_id}}',default:true},{field:'placement',template:'{{placement}}',default:false},
+      {field:'keyword',template:'{{keyword}}',default:false},
+    ]},
+  { code:'linkedin', name:'LinkedIn Ads', source:'linkedin', type:'social', syntax:'meta-mustache', clickId:'',
+    mediumOptions:['social','cpm','cpa','display'],
+    macros:[
+      {field:'campaign_id',template:'{{campaign.id}}',default:true},{field:'campaign_name',template:'{{campaign.name}}',default:false},
+      {field:'ad_id',template:'{{creative.id}}',default:true},{field:'ad_name',template:'{{creative.name}}',default:false},
+      {field:'audience_name',template:'{{audience.name}}',default:false},{field:'creative_id',template:'{{creative.id}}',default:false},
+      {field:'campaign_group_id',template:'{{campaignGroup.id}}',default:false},{field:'campaign_group_name',template:'{{campaignGroup.name}}',default:false},
+    ]},
+  { code:'yandex', name:'Yandex Ads (俄罗斯)', source:'yandex', type:'search', syntax:'google-snake', clickId:'yclid',
+    mediumOptions:['cpc','cpm','cpa','display','retargeting','video'],
+    macros:[
+      {field:'campaign_id',template:'{campaign_id}',default:true},{field:'adgroup_id',template:'{ad_id}',default:true},
+      {field:'ad_id',template:'{banner_id}',default:true},{field:'keyword_id',template:'{phrase_id}',default:false},
+      {field:'source_type',template:'{source_type}',default:false},{field:'position_type',template:'{position_type}',default:false},
+      {field:'region_id',template:'{region_id}',default:false},{field:'device',template:'{device_type}',default:false},
+      {field:'retargeting_id',template:'{retargeting_id}',default:false},{field:'gender',template:'{gender}',default:false},
+      {field:'age',template:'{age}',default:false},{field:'campaign_type',template:'{campaign_type}',default:false},
+    ]},
+  { code:'naver', name:'Naver Ads (韩国)', source:'naver', type:'search', syntax:'naver', clickId:'',
+    mediumOptions:['cpc','cpa'],
+    macros:[
+      {field:'campaign_id',template:'n_campaign',default:true},{field:'adgroup_id',template:'n_ad_group',default:true},
+      {field:'keyword',template:'n_query',default:true},{field:'rank',template:'n_rank',default:false},
+      {field:'media',template:'n_media',default:false},
+    ]},
+  { code:'baidu', name:'百度广告', source:'baidu', type:'domestic', syntax:'google-lower', clickId:'bd_vid',
+    mediumOptions:['cpc','cpa','display','retargeting'],
+    macros:[
+      {field:'campaign_id',template:'{planid}',default:true},{field:'adgroup_id',template:'{unitid}',default:true},
+      {field:'ad_id',template:'{creativeid}',default:true},{field:'keyword_id',template:'{keywordid}',default:false},
+      {field:'keyword',template:'{query}',default:true},{field:'matchtype',template:'{matchtype}',default:false},
+      {field:'device',template:'{device}',default:false},{field:'account_id',template:'{accountid}',default:false},
+      {field:'media_id',template:'{mediaid}',default:false},{field:'placement',template:'{placement}',default:false},
+      {field:'region',template:'{region}',default:false},{field:'winfo_id',template:'{winfoid}',default:false},
+      {field:'os',template:'{os}',default:false},{field:'age',template:'{age}',default:false},
+      {field:'gender',template:'{gender}',default:false},
+    ]},
+  { code:'q360', name:'360广告', source:'q360', type:'domestic', syntax:'google-lower', clickId:'qihoo_id',
+    mediumOptions:['cpc','cpa','display'],
+    macros:[
+      {field:'campaign_id',template:'{planid}',default:true},{field:'adgroup_id',template:'{groupid}',default:true},
+      {field:'ad_id',template:'{creativeid}',default:true},{field:'keyword_id',template:'{keywordid}',default:false},
+      {field:'keyword',template:'{query}',default:true},{field:'matchtype',template:'{matchtype}',default:false},
+      {field:'device',template:'{device}',default:false},{field:'region',template:'{region}',default:false},
+    ]},
+  { code:'gdt', name:'腾讯广点通 (GDT)', source:'gdt', type:'domestic', syntax:'bytedance-macro', clickId:'qz_gdt',
+    mediumOptions:['social','cpm','cpa','video','display'],
+    macros:[
+      {field:'campaign_id',template:'__CAMPAIGN_ID__',default:true},{field:'adgroup_id',template:'__ADGROUP_ID__',default:true},
+      {field:'ad_id',template:'__CREATIVE_ID__',default:true},{field:'account_id',template:'__ACCOUNT_ID__',default:false},
+      {field:'device',template:'__DEVICE_TYPE__',default:true},{field:'device_os',template:'__DEVICE_OS__',default:false},
+      {field:'site_set',template:'__SITE_SET__',default:false},{field:'site_set_name',template:'__SITE_SET_NAME__',default:false},
+      {field:'platform',template:'__PLATFORM__',default:false},{field:'os_version',template:'__OS_VERSION__',default:false},
+      {field:'connection',template:'__CONNECTION_TYPE__',default:false},
+    ]},
+  { code:'douyin', name:'抖音广告', source:'douyin', type:'domestic', syntax:'bytedance-macro', clickId:'ttclid',
+    mediumOptions:['social','cpm','cpa','video'],
+    macros:[
+      {field:'campaign_id',template:'__CAMPAIGN_ID__',default:true},{field:'adgroup_id',template:'__AID__',default:true},
+      {field:'ad_id',template:'__CID__',default:true},{field:'placement',template:'__PLACEMENT__',default:true},
+      {field:'device',template:'__DEVICE_OS__',default:false},{field:'device_model',template:'__DEVICE_MODEL__',default:false},
+      {field:'network',template:'__NETWORK__',default:false},{field:'site',template:'__SITE__',default:false},
+      {field:'ad_format',template:'__AD_FORMAT__',default:false},{field:'interest',template:'__INTEREST__',default:false},
+    ]},
+  { code:'kuaishou', name:'快手广告', source:'kuaishou', type:'domestic', syntax:'bytedance-macro', clickId:'ksclid',
+    mediumOptions:['social','cpm','cpa','video'],
+    macros:[
+      {field:'campaign_id',template:'__CAMPAIGN_ID__',default:true},{field:'adgroup_id',template:'__UNIT_ID__',default:true},
+      {field:'ad_id',template:'__CREATIVE_ID__',default:true},{field:'account_id',template:'__ACCOUNT_ID__',default:false},
+      {field:'device',template:'__DEVICE_OS__',default:false},{field:'platform',template:'__PLATFORM__',default:false},
+      {field:'os_version',template:'__OS_VERSION__',default:false},{field:'gender',template:'__GENDER__',default:false},
+      {field:'age',template:'__AGE__',default:false},
+    ]},
+  { code:'zhihu', name:'知乎广告', source:'zhihu', type:'domestic', syntax:'google-lower', clickId:'zhclid',
+    mediumOptions:['cpc','cpa','display'],
+    macros:[
+      {field:'campaign_id',template:'{plan_id}',default:true},{field:'adgroup_id',template:'{unit_id}',default:true},
+      {field:'ad_id',template:'{creative_id}',default:true},{field:'keyword_id',template:'{keyword_id}',default:false},
+      {field:'keyword',template:'{query}',default:true},{field:'matchtype',template:'{match_type}',default:false},
+      {field:'device',template:'{device}',default:false},{field:'position',template:'{position}',default:false},
+    ]},
+  { code:'uc', name:'UC广告 (阿里)', source:'uc', type:'domestic', syntax:'google-camel', clickId:'ali_clkid',
+    mediumOptions:['cpc','cpa','display'],
+    macros:[
+      {field:'campaign_id',template:'{planId}',default:true},{field:'adgroup_id',template:'{groupId}',default:true},
+      {field:'ad_id',template:'{creativeId}',default:true},
+    ]},
+  { code:'weibo', name:'微博广告', source:'weibo', type:'domestic', syntax:'google-lower', clickId:'sinavid',
+    mediumOptions:['social','cpm','cpa'],
+    macros:[
+      {field:'campaign_id',template:'{plan_id}',default:true},{field:'ad_id',template:'{creative_id}',default:true},
+      {field:'device',template:'{device}',default:false},{field:'placement',template:'{position}',default:false},
+    ]},
+  { code:'xiaohongshu', name:'小红书广告', source:'xiaohongshu', type:'domestic', syntax:'google-lower', clickId:'',
+    mediumOptions:['social','cpm','cpa'],
+    macros:[{field:'keyword',template:'{keyword}',default:false}]},
+  { code:'cg', name:'CG联盟', source:'cg', type:'network', syntax:'google-lower', clickId:'',
+    mediumOptions:['cpa','cpc','cpm','display'],
+    macros:[{field:'keyword',template:'{keyword}',default:false}]},
+  { code:'aifu', name:'AiFu联盟', source:'aifu', type:'network', syntax:'google-lower', clickId:'',
+    mediumOptions:['cpa'],
+    macros:[{field:'keyword',template:'{keyword}',default:false}]},
+];
+
+// All unique macro fields across all platforms (for CSV template)
+const ALL_MACRO_FIELDS = [...new Set(PLATFORMS.flatMap(p => p.macros.map(m => m.field)))].sort();
+const MACRO_FIELD_DEFAULTS = {};
+PLATFORMS.forEach(p => {
+  p.macros.forEach(m => {
+    if (!MACRO_FIELD_DEFAULTS[m.field]) MACRO_FIELD_DEFAULTS[m.field] = {};
+    MACRO_FIELD_DEFAULTS[m.field][p.code] = m.template;
+  });
+});
+
+// ====== 33 Modules based el/sec presets ======
+const EL_PRESETS = [
+  'cta_primary','cta_secondary','cta_primary_bottom','cta_secondary_bottom',
+  'nav_signup','nav_login','nav_trial','nav_pricing',
+  'card_link','tab_cta','tool_card','blog_card','price_card','pricing_cta',
+  'feature_cta','showcase_cta','portrait_cta','prompt_btn','marquee_cta',
+  'hero_btn','mosaic_tile','journey_card','canvas_link','media_click',
+  'link_inline','link_footer','stats_link','proof_link','logo_click',
+  'comparison_link','before_link','after_link',
+];
+const SEC_PRESETS = [
+  'hero-split','hero-cinematic','hero-journey','hero-mosaic','hero-gallery',
+  'bento-2','bento-4','bento-6','feature-grid','cluster-block-dense',
+  'capability-tabs','tool-grid','blog-grid','feature-detail','canvas-wall',
+  'portrait-grid-3','portrait-grid-4','showcase-stacked','showcase-horizontal',
+  'prompt-launcher','logo-loop','media-marquee',
+  'cta-default','cta-bottom',
+  'workflow-horizontal','workflow-vertical',
+  'comparison-table','comparison-before-after',
+  'testimonial','review-grid-3col','review-grid-4col',
+  'stats','proof-block','pricing-block','faq',
+];
+
+// ====== STATE ======
+let selectedPlatform = null;
+let batchParsedRows = [];
+let batchGeneratedURLs = [];
+
+// ====== DOM refs ======
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
+
+// ====== TOAST ======
+function showToast(msg, type = '') {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.className = 'toast ' + type + ' show';
+  clearTimeout(t._timeout);
+  t._timeout = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+// ====== TABS ======
+$$('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    $$('.tab').forEach(t => t.classList.remove('active'));
+    $$('.tab-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    const panel = document.getElementById('tab_' + tab.dataset.tab);
+    if (panel) panel.classList.add('active');
+  });
+});
+
+// ====== PLATFORM PICKER ======
+function platformByName(name) {
+  return PLATFORMS.find(p => p.name === name);
+}
+
+function renderPlatformDropdown(filter = '') {
+  const q = filter.toLowerCase().trim();
+  const filtered = PLATFORMS.filter(p => !q || p.name.toLowerCase().includes(q) || p.code.toLowerCase().includes(q) || p.source.toLowerCase().includes(q));
+  const dd = $('#platform_dropdown');
+  dd.innerHTML = filtered.length === 0
+    ? '<div class="p-no-result">无匹配平台</div>'
+    : filtered.map(p =>
+      `<div class="platform-opt${selectedPlatform && selectedPlatform.code === p.code ? ' selected' : ''}">
+        <span class="p-tag ${p.type}">${p.type}</span> ${p.name}
+      </div>`).join('');
+  dd.querySelectorAll('.platform-opt').forEach(div => {
+    div.addEventListener('mousedown', e => {
+      e.preventDefault();
+      const p = platformByName(div.textContent.trim().replace(/^\w+\s+/, ''));
+      if (p) selectPlatform(p);
+    });
+  });
+}
+
+function selectPlatform(p) {
+  selectedPlatform = p;
+  $('#platform_input').value = p.name;
+  $('#platform_dropdown').classList.remove('show');
+  $('#utm_source').value = p.source;
+  renderMediumOptions(p);
+  renderMacros(p);
+  clearFieldError('platform');
+}
+
+$('#platform_input').addEventListener('focus', () => { renderPlatformDropdown($('#platform_input').value); $('#platform_dropdown').classList.add('show'); });
+$('#platform_input').addEventListener('input', () => {
+  const val = $('#platform_input').value.trim();
+  renderPlatformDropdown(val);
+  $('#platform_dropdown').classList.add('show');
+  if (selectedPlatform && val !== selectedPlatform.name) {
+    selectedPlatform = null;
+    $('#utm_source').value = '';
+    $('#utm_medium').innerHTML = '<option value="">— 请选择 —</option>';
+    $('#macro_content').style.display = 'none';
+    $('#macro_placeholder').style.display = '';
+  }
+});
+$('#platform_input').addEventListener('keydown', e => { if (e.key === 'Escape') $('#platform_dropdown').classList.remove('show'); });
+document.addEventListener('click', e => { if (!e.target.closest('.platform-picker')) $('#platform_dropdown').classList.remove('show'); });
+
+// ====== MEDIUM ======
+function renderMediumOptions(p) {
+  $('#utm_medium').innerHTML = '<option value="">— 请选择 —</option>' +
+    p.mediumOptions.map(m => `<option value="${m}">${MEDIUM_LABELS[m] || m}</option>`).join('');
+}
+
+// ====== MACROS (fixed: use div, not label; prevent default) ======
+function renderMacros(p) {
+  $('#macro_placeholder').style.display = 'none';
+  $('#macro_content').style.display = '';
+  const dM = p.macros.filter(m => m.default);
+  const mM = p.macros.filter(m => !m.default);
+
+  $('#default_macros').innerHTML = dM.map(m =>
+    `<div class="macro-item checked">
+      <input type="checkbox" data-field="${m.field}" data-template="${h(m.template)}" checked />
+      ${m.field}<span class="macro-tmpl">${h(m.template)}</span>
+    </div>`).join('');
+  $('#more_macros_list').innerHTML = mM.map(m =>
+    `<div class="macro-item">
+      <input type="checkbox" data-field="${m.field}" data-template="${h(m.template)}" />
+      ${m.field}<span class="macro-tmpl">${h(m.template)}</span>
+    </div>`).join('');
+
+  $('#toggle_more').classList.remove('open');
+  $('#toggle_more').innerHTML = mM.length > 0
+    ? `展开全部宏 (+${mM.length}) <span class="arrow-icon">▼</span>`
+    : '展开全部宏 <span class="arrow-icon">▼</span>';
+  $('#toggle_more').style.display = mM.length > 0 ? '' : 'none';
+  $('#more_macros').classList.remove('show');
+
+  // Bind click handlers on individual macro items (div, not label)
+  document.querySelectorAll('#macro_content .macro-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+      const cb = this.querySelector('input[type="checkbox"]');
+      cb.checked = !cb.checked;
+      this.classList.toggle('checked', cb.checked);
+    });
+  });
+}
+
+$('#toggle_more').addEventListener('click', () => {
+  $('#toggle_more').classList.toggle('open');
+  $('#more_macros').classList.toggle('show');
+  const p = selectedPlatform;
+  const mM = p ? p.macros.filter(m => !m.default) : [];
+  $('#toggle_more').innerHTML = $('#toggle_more').classList.contains('open')
+    ? `收起 <span class="arrow-icon">▼</span>`
+    : `展开全部宏 (+${mM.length}) <span class="arrow-icon">▼</span>`;
+});
+
+// ====== COMBO BOXES ======
+function initCombo(inputId, dropdownId, presets) {
+  const input = document.getElementById(inputId);
+  const dropdown = document.getElementById(dropdownId);
+  function render(filter = '') {
+    const q = filter.toLowerCase();
+    const filtered = presets.filter(v => v.toLowerCase().includes(q));
+    dropdown.innerHTML = filtered.map(v => `<div class="combo-option">${v}</div>`).join('');
+    dropdown.classList.toggle('show', filtered.length > 0);
+    dropdown.querySelectorAll('.combo-option').forEach(opt => {
+      opt.addEventListener('mousedown', e => { e.preventDefault(); input.value = opt.textContent; dropdown.classList.remove('show'); });
+    });
+  }
+  input.addEventListener('focus', () => render(input.value));
+  input.addEventListener('input', () => render(input.value));
+  input.addEventListener('keydown', e => { if (e.key === 'Escape' || e.key === 'Enter') dropdown.classList.remove('show'); });
+}
+initCombo('el', 'el_dropdown', EL_PRESETS);
+initCombo('sec', 'sec_dropdown', SEC_PRESETS);
+document.addEventListener('click', e => { if (!e.target.closest('.combo-container')) $$('.combo-dropdown').forEach(d => d.classList.remove('show')); });
+
+// ====== VALIDATION ======
+function showFieldError(fieldId, msg) {
+  const el = document.getElementById(fieldId);
+  const err = document.getElementById('err_' + fieldId);
+  if (el) el.classList.add('error');
+  if (err) { err.textContent = msg; err.style.display = ''; }
+}
+function clearFieldError(fieldId) {
+  const el = document.getElementById(fieldId);
+  const err = document.getElementById('err_' + fieldId);
+  if (el) el.classList.remove('error');
+  if (err) { err.textContent = ''; err.style.display = 'none'; }
+}
+function clearAllErrors() {
+  $$('.err-msg').forEach(e => { e.textContent = ''; e.style.display = 'none'; });
+  $$('.error').forEach(e => e.classList.remove('error'));
+}
+function validate() {
+  clearAllErrors();
+  let valid = true;
+  const baseUrl = $('#base_url').value.trim();
+  if (!baseUrl) { showFieldError('url', '请输入落地页地址'); valid = false; }
+  else if (!/^https?:\/\/.+/.test(baseUrl)) { showFieldError('url', 'URL 需以 http:// 或 https:// 开头'); valid = false; }
+  if (!$('#source_id').value.trim()) { showFieldError('source_id', 'sourceId 为必填项'); valid = false; }
+  if (!selectedPlatform) { showFieldError('platform', '请选择投放平台'); valid = false; }
+  if (!$('#utm_medium').value) { showFieldError('utm_medium', '请选择投放形式'); valid = false; }
+  const campaign = $('#utm_campaign').value.trim();
+  if (!campaign) { showFieldError('utm_campaign', '活动名称为必填项'); valid = false; }
+  else if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(campaign)) { showFieldError('utm_campaign', '请使用 kebab-case 格式'); valid = false; }
+  return valid;
+}
+
+// ====== BUILD URL ======
+function getSelectedMacros() {
+  const cbs = document.querySelectorAll('#macro_content input[type="checkbox"]:checked');
+  return Array.from(cbs).map(cb => ({ field: cb.dataset.field, template: cb.dataset.template }));
+}
+
+function buildURL(p, overrides = {}) {
+  const baseUrl = overrides.base_url !== undefined ? overrides.base_url : $('#base_url').value.trim();
+  const srcId = overrides.sourceId !== undefined ? overrides.sourceId : $('#source_id').value.trim();
+  const el = overrides.el !== undefined ? overrides.el : $('#el').value.trim();
+  const sec = overrides.sec !== undefined ? overrides.sec : $('#sec').value.trim();
+  const source = p ? p.source : (overrides.utm_source || $('#utm_source').value.trim());
+  const medium = overrides.utm_medium !== undefined ? overrides.utm_medium : $('#utm_medium').value;
+  const campaign = overrides.utm_campaign !== undefined ? overrides.utm_campaign : $('#utm_campaign').value.trim();
+  const term = overrides.utm_term !== undefined ? overrides.utm_term : $('#utm_term').value.trim();
+  const content = overrides.utm_content !== undefined ? overrides.utm_content : $('#utm_content').value.trim();
+
+  let macros;
+  if (overrides.macros !== undefined) {
+    macros = overrides.macros;
+  } else if (overrides.fromDOM) {
+    macros = getSelectedMacros();
+  } else if (p && selectedPlatform && selectedPlatform.code === p.code) {
+    macros = getSelectedMacros();
+  } else if (p) {
+    macros = p.macros.filter(m => m.default).map(m => ({ field: m.field, template: m.template }));
+  } else {
+    macros = [];
+  }
+
+  const separator = baseUrl.includes('?') ? '&' : '?';
+  const params = [];
+  if (srcId) params.push(`sourceId=${encodeURIComponent(srcId)}`);
+  if (el) params.push(`el=${encodeURIComponent(el)}`);
+  if (sec) params.push(`sec=${encodeURIComponent(sec)}`);
+  params.push(`utm_source=${encodeURIComponent(source)}`);
+  params.push(`utm_medium=${encodeURIComponent(medium)}`);
+  params.push(`utm_campaign=${encodeURIComponent(campaign)}`);
+  if (term) params.push(`utm_term=${encodeURIComponent(term)}`);
+  if (content) params.push(`utm_content=${encodeURIComponent(content)}`);
+  macros.forEach(m => params.push(`${m.field}=${m.template}`));
+  return baseUrl + separator + params.join('&');
+}
+
+// ====== SINGLE GENERATE ======
+$('#btn_generate').addEventListener('click', () => {
+  if (!validate()) return;
+  const url = buildURL(selectedPlatform, { fromDOM: true });
+  $('#url_display').innerHTML = formatURL(url);
+  $('#output_section_single').classList.add('show');
+  $('#url_len_hint').textContent = url.length > 2000 ? `⚠ ${url.length} 字符，可能被截断` : `${url.length} 字符`;
+  $('#url_len_hint').style.color = url.length > 2000 ? '#e65100' : '#999';
+  $('#output_section_single').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  window._singleUrl = url;
+  window._singlePlatform = selectedPlatform;
+});
+
+// ====== CLIPBOARD (with fallback for file://) ======
+function copyText(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(text);
+  }
+  // Fallback for file:// or older browsers
+  return new Promise((resolve, reject) => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      resolve();
+    } catch (e) {
+      reject(e);
+    }
+    document.body.removeChild(ta);
+  });
+}
+
+// ====== COPY & EXPORT (SINGLE) ======
+$('#btn_copy').addEventListener('click', () => {
+  const url = window._singleUrl || '';
+  if (!url) { showToast('请先生成 URL', 'error'); return; }
+  copyText(url).then(() => showToast('已复制到剪贴板', 'success')).catch(() => showToast('复制失败，请手动复制', 'error'));
+});
+
+$$('.export-single').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const url = window._singleUrl || '';
+    if (!url) { showToast('请先生成 URL', 'error'); return; }
+    const fmt = btn.dataset.fmt;
+    const p = window._singlePlatform || selectedPlatform;
+    exportURLs([{ platform: p ? p.name : 'Unknown', url }], fmt, 'single-url');
+    showToast(`已导出 ${fmt.toUpperCase()}`, 'success');
+  });
+});
+
+// ====== BATCH TEMPLATES ======
+const CSV_TEMPLATE_HEADER = ['platform','base_url','sourceId','el','sec','utm_medium','utm_campaign','utm_term','utm_content',...ALL_MACRO_FIELDS];
+
+const CSV_TEMPLATE_ROWS = [
+  { platform:'google', base_url:'https://lovart.ai/tools/seedance', sourceId:'910001', el:'cta_primary', sec:'hero-split', utm_medium:'cpc', utm_campaign:'seedance-2.0-launch', utm_term:'seedance_group', utm_content:'variant_a',
+    campaign_id:'{campaignid}', adgroup_id:'{adgroupid}', ad_id:'{creative}', keyword:'{keyword}', device:'{device}' },
+  { platform:'meta', base_url:'https://lovart.ai/tools/seedance', sourceId:'910001', el:'cta_primary', sec:'hero-split', utm_medium:'social', utm_campaign:'seedance-2.0-launch', utm_term:'', utm_content:'variant_b',
+    campaign_id:'{{campaign.id}}', adgroup_id:'{{adset.id}}', ad_id:'{{ad.id}}', placement:'{{placement}}' },
+  { platform:'gdt', base_url:'https://lovart.ai/tools/seedance', sourceId:'910002', el:'cta_primary', sec:'hero-split', utm_medium:'cpa', utm_campaign:'seedance-2.0-launch', utm_term:'', utm_content:'',
+    campaign_id:'__CAMPAIGN_ID__', adgroup_id:'__ADGROUP_ID__', ad_id:'__CREATIVE_ID__', device:'__DEVICE_TYPE__' },
+];
+
+function buildCSVTemplate() {
+  const lines = [CSV_TEMPLATE_HEADER.join(',')];
+  CSV_TEMPLATE_ROWS.forEach(row => {
+    const vals = CSV_TEMPLATE_HEADER.map(h => {
+      const v = row[h];
+      if (v === undefined || v === null) return '';
+      if (v.includes(',') || v.includes('"')) return '"' + v.replace(/"/g, '""') + '"';
+      return v;
+    });
+    lines.push(vals.join(','));
+  });
+  return lines.join('\n');
+}
+
+function buildJSONTemplate() {
+  return JSON.stringify(CSV_TEMPLATE_ROWS.map(row => {
+    const obj = {};
+    CSV_TEMPLATE_HEADER.forEach(h => {
+      if (row[h] !== undefined) obj[h] = row[h];
+    });
+    return obj;
+  }), null, 2);
+}
+
+$('#btn_template_csv').addEventListener('click', () => {
+  downloadText(buildCSVTemplate(), 'ad-url-template.csv', 'text/csv');
+  showToast('CSV 模板已下载', 'success');
+});
+$('#btn_template_json').addEventListener('click', () => {
+  downloadText(buildJSONTemplate(), 'ad-url-template.json', 'application/json');
+  showToast('JSON 模板已下载', 'success');
+});
+
+$('#file_upload').addEventListener('change', e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = () => { $('#batch_input').value = reader.result; };
+  reader.readAsText(file);
+});
+
+// ====== CSV PARSING ======
+function parseCSVLine(line) {
+  const result = []; let current = '', inQuotes = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (inQuotes) {
+      if (ch === '"') { if (line[i + 1] === '"') { current += '"'; i++; } else inQuotes = false; }
+      else current += ch;
+    } else {
+      if (ch === '"') inQuotes = true;
+      else if (ch === ',') { result.push(current); current = ''; }
+      else current += ch;
+    }
+  }
+  result.push(current);
+  return result;
+}
+
+function parseCSV(text) {
+  const lines = text.trim().split(/\r?\n/);
+  if (lines.length < 2) throw new Error('CSV 至少需要表头 + 1 行数据');
+  const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+  const required = ['platform', 'base_url', 'sourceid', 'utm_medium', 'utm_campaign'];
+  const missing = required.filter(r => !headers.includes(r));
+  if (missing.length > 0) throw new Error('缺少必填列: ' + missing.join(', '));
+  const rows = [];
+  for (let i = 1; i < lines.length; i++) {
+    const vals = parseCSVLine(lines[i]);
+    if (vals.length === 0 || vals.every(v => !v.trim())) continue;
+    const row = {};
+    headers.forEach((h, idx) => { row[h] = (vals[idx] || '').trim(); });
+    rows.push(row);
+  }
+  return { headers, rows };
+}
+
+function parseJSON(text) {
+  const data = JSON.parse(text);
+  if (!Array.isArray(data)) throw new Error('JSON 格式: 必须是数组 [{...}, {...}]');
+  if (data.length === 0) throw new Error('JSON 数组不能为空');
+  return data.map(item => {
+    const row = {};
+    Object.keys(item).forEach(k => { row[k.toLowerCase()] = String(item[k] ?? ''); });
+    return row;
+  });
+}
+
+// ====== BATCH PARSE & PREVIEW ======
+function getRowField(row, name) {
+  // Try exact match, then case-insensitive
+  if (row[name] !== undefined) return row[name];
+  const key = Object.keys(row).find(k => k.toLowerCase() === name.toLowerCase());
+  return key ? row[key] : '';
+}
+
+$('#btn_batch_parse').addEventListener('click', () => {
+  const text = $('#batch_input').value.trim();
+  $('#err_batch').textContent = ''; $('#err_batch').style.display = 'none';
+  if (!text) { showToast('请粘贴或上传数据', 'error'); return; }
+  try {
+    let rows, headers;
+    if (text.startsWith('[') || text.startsWith('{')) {
+      rows = parseJSON(text);
+      // Collect all headers from JSON keys
+      const keySet = new Set();
+      rows.forEach(r => Object.keys(r).forEach(k => keySet.add(k)));
+      headers = Array.from(keySet);
+    } else {
+      const result = parseCSV(text);
+      rows = result.rows;
+      headers = result.headers;
+    }
+    if (rows.length === 0) { showToast('未解析到任何数据行', 'error'); return; }
+    batchParsedRows = rows;
+    renderBatchPreview(rows, headers);
+    showToast(`成功解析 ${rows.length} 行`, 'success');
+  } catch (e) {
+    showToast('解析失败: ' + e.message, 'error');
+    $('#err_batch').textContent = '解析失败: ' + e.message; $('#err_batch').style.display = '';
+  }
+});
+
+$('#btn_batch_clear').addEventListener('click', () => {
+  $('#batch_input').value = '';
+  $('#err_batch').textContent = ''; $('#err_batch').style.display = 'none';
+  batchParsedRows = []; batchGeneratedURLs = [];
+  $('#batch_preview_card').style.display = 'none';
+  $('#output_section_batch').classList.remove('show');
+  showToast('已清除');
+});
+
+function renderBatchPreview(rows, headers) {
+  $('#batch_count').textContent = rows.length;
+
+  // Build table headers dynamically
+  const displayHeaders = ['platform','base_url','sourceid','el','sec','utm_medium','utm_campaign','utm_term','utm_content'];
+  const extraHeaders = headers.filter(h => !displayHeaders.includes(h.toLowerCase()) && h.toLowerCase() !== 'status');
+
+  const allHeaders = [...displayHeaders, ...extraHeaders, 'status'];
+  $('#batch_preview_thead').innerHTML = '<tr>' + allHeaders.map(h =>
+    `<th>${h.replace(/_/g, ' ')}</th>`
+  ).join('') + '</tr>';
+
+  $('#batch_preview_tbody').innerHTML = rows.map((r, i) => {
+    const platformCode = getRowField(r, 'platform');
+    const p = PLATFORMS.find(p => p.code === platformCode.toLowerCase());
+    const errs = [];
+    if (!p) errs.push('平台不识');
+    if (!getRowField(r, 'base_url')) errs.push('URL缺');
+    if (!getRowField(r, 'sourceid')) errs.push('sourceId缺');
+    if (!getRowField(r, 'utm_medium')) { errs.push('medium缺'); }
+    else if (p && !p.mediumOptions.includes(getRowField(r, 'utm_medium').toLowerCase())) {
+      errs.push('medium不兼容');
+    }
+    if (!getRowField(r, 'utm_campaign')) errs.push('campaign缺');
+
+    // Check macro columns: verify platform syntax
+    const warnings = [];
+    if (p) {
+      extraHeaders.forEach(h => {
+        const val = getRowField(r, h);
+        if (!val) return;
+        const macro = p.macros.find(m => m.field === h.toLowerCase());
+        if (macro && val.trim() !== macro.template) {
+          warnings.push(`${h}语法可能不匹配`);
+        }
+        if (!macro && val.trim()) {
+          // User provided a custom macro value — that's fine
+        }
+      });
+    }
+
+    let status = '';
+    if (errs.length > 0) {
+      status = '<span class="status-err">' + errs.join(', ') + '</span>';
+    } else if (warnings.length > 0) {
+      status = '<span class="status-ok">OK</span> <span class="status-warn">(' + warnings.join(', ') + ')</span>';
+    } else {
+      status = '<span class="status-ok">OK</span>';
+    }
+
+    const cells = allHeaders.map(h => {
+      const val = getRowField(r, h);
+      if (h === 'status') return status;
+      if (h === 'platform') return `<span class="platform-cell">${p ? p.name : (val || '-')}</span>`;
+      return hd(val || '-');
+    });
+    return '<tr>' + cells.map(c => `<td>${c}</td>`).join('') + '</tr>';
+  }).join('');
+
+  $('#batch_preview_card').style.display = '';
+  $('#output_section_batch').classList.remove('show');
+}
+
+// ====== BATCH GENERATE ======
+$('#btn_batch_generate').addEventListener('click', () => {
+  if (batchParsedRows.length === 0) { showToast('请先解析数据', 'error'); return; }
+  batchGeneratedURLs = [];
+  batchParsedRows.forEach((r, i) => {
+    const platformCode = getRowField(r, 'platform');
+    const p = PLATFORMS.find(p => p.code === platformCode.toLowerCase());
+    if (!p) return;
+
+    const baseUrl = getRowField(r, 'base_url');
+    const srcId = getRowField(r, 'sourceid');
+    const medium = getRowField(r, 'utm_medium');
+    const campaign = getRowField(r, 'utm_campaign');
+    if (!baseUrl || !srcId || !medium || !campaign) return;
+
+    // Collect macros: use CSV values if present, otherwise platform defaults
+    const supportedFields = new Set(p.macros.map(m => m.field));
+    const macros = [];
+    const usedFields = new Set();
+
+    // First, use user-provided macro values from extra columns
+    Object.keys(r).forEach(k => {
+      const field = k.toLowerCase();
+      if (['platform','base_url','sourceid','el','sec','utm_medium','utm_campaign','utm_term','utm_content','utm_source'].includes(field)) return;
+      const val = (r[k] || '').trim();
+      if (!val) return;
+      // Check if this is a valid macro field for the platform or a custom field
+      if (supportedFields.has(field)) {
+        macros.push({ field, template: val });
+        usedFields.add(field);
+      } else {
+        // Pass through as custom param
+        macros.push({ field: k, template: val });
+      }
+    });
+
+    // Fill in platform defaults for unset fields
+    p.macros.forEach(m => {
+      if (!usedFields.has(m.field) && m.default) {
+        macros.push({ field: m.field, template: m.template });
+      }
+    });
+
+    const url = buildURL(p, {
+      base_url: baseUrl,
+      sourceId: srcId,
+      el: getRowField(r, 'el') || '',
+      sec: getRowField(r, 'sec') || '',
+      utm_source: p.source,
+      utm_medium: medium,
+      utm_campaign: campaign,
+      utm_term: getRowField(r, 'utm_term') || '',
+      utm_content: getRowField(r, 'utm_content') || '',
+      macros,
+    });
+    batchGeneratedURLs.push({ platform: p.name, code: p.code, url });
+  });
+
+  $('#batch_gen_count').textContent = batchGeneratedURLs.length;
+  $('#batch_gen_tbody').innerHTML = batchGeneratedURLs.map((r, i) =>
+    `<tr><td>${i + 1}</td><td class="platform-cell">${r.platform}</td><td class="batch-url">${hd(r.url)}</td></tr>`
+  ).join('');
+  $('#output_section_batch').classList.add('show');
+  $('#output_section_batch').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  showToast(`成功生成 ${batchGeneratedURLs.length} 个 URL`, 'success');
+});
+
+// ====== BATCH COPY & EXPORT ======
+$('#btn_batch_copy_all').addEventListener('click', () => {
+  if (batchGeneratedURLs.length === 0) { showToast('请先生成 URL', 'error'); return; }
+  const text = batchGeneratedURLs.map(r => r.url).join('\n');
+  copyText(text).then(() => showToast('已复制全部 URL', 'success')).catch(() => showToast('复制失败', 'error'));
+});
+
+$$('.export-batch').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (batchGeneratedURLs.length === 0) { showToast('请先生成 URL', 'error'); return; }
+    const fmt = btn.dataset.fmt;
+    exportURLs(batchGeneratedURLs, { fmt, includeFields: true }, 'ad-urls');
+    showToast(`已导出 ${fmt.toUpperCase()}`, 'success');
+  });
+});
+
+// ====== EXPORT ======
+function exportURLs(entries, opts, basename) {
+  const fmt = typeof opts === 'string' ? opts : opts.fmt;
+  const includeFields = typeof opts === 'object' ? opts.includeFields : false;
+  let content, mime, ext;
+  switch (fmt) {
+    case 'txt':
+      content = entries.map(r => r.url).join('\n');
+      mime = 'text/plain'; ext = 'txt'; break;
+    case 'md':
+      content = '# Ad URLs\n\n| # | Platform | URL |\n|---|----------|-----|\n' +
+        entries.map((r, i) => `| ${i + 1} | ${r.platform} | [URL](${r.url}) |`).join('\n');
+      mime = 'text/markdown'; ext = 'md'; break;
+    case 'json':
+      content = JSON.stringify(entries.map(r => ({ platform: r.platform, url: r.url })), null, 2);
+      mime = 'application/json'; ext = 'json'; break;
+    case 'csv':
+      content = 'Platform,URL\n' + entries.map(r => `"${r.platform}","${r.url}"`).join('\n');
+      mime = 'text/csv'; ext = 'csv'; break;
+    default: return;
+  }
+  downloadText(content, `${basename}.${ext}`, mime);
+}
+
+function downloadText(content, filename, mime) {
+  const blob = new Blob([content], { type: mime + ';charset=utf-8;' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+// ====== HELPERS ======
+function h(str) {
+  const div = document.createElement('div');
+  div.textContent = String(str);
+  return div.innerHTML;
+}
+function hd(str) { return h(str); }
+
+function formatURL(url) {
+  const idx = url.indexOf('?');
+  if (idx < 0) return `<a href="${url}" target="_blank">${h(url)}</a>`;
+  const base = url.substring(0, idx);
+  const params = url.substring(idx + 1);
+  const pairs = params.split('&');
+  const lines = pairs.map(p => {
+    const eq = p.indexOf('=');
+    const k = eq >= 0 ? p.substring(0, eq) : p;
+    const v = eq >= 0 ? p.substring(eq + 1) : '';
+    return `<span style="color:#999;">${h(k)}</span>=<span style="color:#333;">${h(v)}</span>`;
+  });
+  return `<a href="${url}" target="_blank" style="color:#1a73e8;">${h(base)}</a>?<br>  ${lines.join('&<br>  ')}`;
+}
+
+// ====== INIT COMPLETE ======
+logStatus('Ready — 请选择平台开始', '#e8f5e9');
+
+} catch(e) {
+  console.error('Ad URL Builder init error:', e);
+  logStatus('Init Error: ' + e.message, '#ffebee');
+}
+
+})();
+</script>
+</body>
+</html>

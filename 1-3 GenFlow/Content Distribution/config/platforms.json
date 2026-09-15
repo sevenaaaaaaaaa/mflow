@@ -1,0 +1,163 @@
+{
+  "_comment": "精简栈：主站 SSOT + 国内 Wechatsync + 海外 API 脚本 + 爱贝壳(Medium/X)",
+  "devto": {
+    "region": "global",
+    "label": "DEV.to",
+    "primary_publisher": "api",
+    "script": "scripts/publish-devto.js",
+    "preflight": true
+  },
+  "github_discussions": {
+    "region": "global",
+    "label": "GitHub Discussions",
+    "primary_publisher": "api",
+    "script": "scripts/publish-github-discussions.js",
+    "preflight": true
+  },
+  "blogger": {
+    "region": "global",
+    "label": "Google Blogger",
+    "primary_publisher": "api",
+    "script": "scripts/publish-blogger.js",
+    "preflight": true
+  },
+  "medium": {
+    "region": "global",
+    "label": "Medium",
+    "primary_publisher": "aibeike",
+    "aibeike_slot": 1,
+    "preflight": true
+  },
+  "x": {
+    "region": "global",
+    "label": "X (Twitter)",
+    "primary_publisher": "aibeike",
+    "aibeike_slot": 2,
+    "preflight": true
+  },
+  "zhihu": {
+    "region": "cn",
+    "label": "知乎",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "zhihu",
+    "preflight": true
+  },
+  "baijiahao": {
+    "region": "cn",
+    "label": "百家号",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "baijiahao",
+    "preflight": true
+  },
+  "juejin": {
+    "region": "cn",
+    "label": "掘金",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "juejin",
+    "preflight": true
+  },
+  "toutiao": {
+    "region": "cn",
+    "label": "头条号",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "toutiao",
+    "preflight": true
+  },
+  "csdn": {
+    "region": "cn",
+    "label": "CSDN",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "csdn",
+    "preflight": true
+  },
+  "douban": {
+    "region": "cn",
+    "label": "豆瓣",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "douban",
+    "preflight": true
+  },
+  "segmentfault": {
+    "region": "cn",
+    "label": "思否",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "segmentfault",
+    "preflight": true
+  },
+  "jianshu": {
+    "region": "cn",
+    "label": "简书",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "jianshu",
+    "preflight": true
+  },
+  "smzdm": {
+    "region": "cn",
+    "label": "什么值得买",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "smzdm",
+    "preflight": true
+  },
+  "cnblogs": {
+    "region": "cn",
+    "label": "博客园",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "cnblogs",
+    "preflight": true
+  },
+  "51cto": {
+    "region": "cn",
+    "label": "51CTO",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "51cto",
+    "preflight": true
+  },
+  "yuque": {
+    "region": "cn",
+    "label": "语雀",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "yuque",
+    "preflight": true
+  },
+  "sohu": {
+    "region": "cn",
+    "label": "搜狐号",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "sohu",
+    "preflight": true
+  },
+  "bilibili": {
+    "region": "cn",
+    "label": "B站专栏",
+    "primary_publisher": "wechatsync",
+    "wechatsync_id": "bilibili",
+    "preflight": true
+  },
+  "hashnode": {
+    "region": "global",
+    "label": "Hashnode",
+    "primary_publisher": "disabled",
+    "preflight": false,
+    "note": "已放弃"
+  },
+  "linkedin": {
+    "region": "global",
+    "label": "LinkedIn",
+    "primary_publisher": "disabled",
+    "preflight": false,
+    "note": "海外 MCP 自动不理想，暂不纳入主栈"
+  },
+  "hackernoon": {
+    "region": "global",
+    "label": "Hacker Noon",
+    "primary_publisher": "manual",
+    "preflight": true,
+    "note": "编辑审核，低频精品"
+  },
+  "hackernews": {
+    "region": "global",
+    "label": "Hacker News",
+    "primary_publisher": "manual",
+    "preflight": false
+  }
+}
