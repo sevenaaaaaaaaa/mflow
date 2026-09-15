@@ -310,6 +310,8 @@ th{color:var(--muted);font-weight:600}
       <div class="card"><div class="card-head"><h3>已发布（最近）</h3></div><div id="dist-published"></div></div>
     </div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>Dispatch 单</h3></div><div id="dist-dispatch"></div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>效果归因 <span class="mut" id="imp-note"></span></h3>
+      <button class="more" onclick="loadImpact()">刷新 ↻</button></div><div id="dist-impact"></div></div>
   </section>
 
   <!-- ============ 管线 ============ -->
@@ -510,8 +512,23 @@ function openReader(path){api('/api/read?path='+encodeURIComponent(path)).then(r
  $('rname').textContent=r.name;
  const toc=(r.toc||[]).filter(t=>t.level===2);
  $('rbody').innerHTML=(toc.length?`<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:20px"><b style="font-size:12px;color:var(--muted)">目录</b><div style="margin-top:6px">${toc.map(t=>`<a href="#${t.id}" style="display:block;color:var(--accent);text-decoration:none;padding:2px 0;font-size:13px">${esc(t.text)}</a>`).join('')}</div></div>`:'')+r.html;
- $('reader').style.display='flex';$('rbody').scrollTop=0})}
+ $('reader').style.display='flex';$('rbody').scrollTop=0;
+ api('/api/report/dashboard?path='+encodeURIComponent(path)).then(dash=>{
+  if(!dash.headers||!dash.rows||dash.rows.length<2)return;
+  const numCols=dash.headers.map((h,i)=>dash.rows.some(row=>/^[-+]?[\d,.]+\s*%?$/.test((row[i]||'').trim())));
+  const card=document.createElement('div');
+  card.className='card';card.style.cssText='margin-bottom:20px';
+  card.innerHTML=`<div class="card-head"><h3>仪表视图 · ${esc(dash.title||'')}</h3><span class="mut">报告首个表格 → 指标卡</span></div>
+   <div class="metrics">${dash.headers.map((h,i)=>numCols[i]?`<div class="card metric" style="margin:0"><div class="m-label">${esc(h)}</div>
+     ${dash.rows.slice(0,3).map(row=>`<div style="font-size:12px;margin-top:3px">${esc((row[0]||'').slice(0,14))} <b class="tnum" style="float:right">${esc(row[i]||'')}</b></div>`).join('')}</div>`:'').join('')}</div>`;
+  $('rbody').prepend(card)})
+})}
 function closeReader(){$('reader').style.display='none'}
+function fmtHook(out){return String(out||'').split('\n').map(l=>{
+ if(/^\s*✗|BLOCK/.test(l))return `<span class="bad">${esc(l)}</span>`;
+ if(/^\s*✓|VERDICT: PASS/.test(l))return `<span class="ok">${esc(l)}</span>`;
+ if(/WARN/.test(l))return `<span class="warn">${esc(l)}</span>`;
+ return esc(l)}).join('\n')}
 
 /* ---- 总览 ---- */
 function loadHome(){api('/api/overview').then(o=>{
@@ -609,7 +626,16 @@ function kbSearch(srcOverride){const q=$('kq').value.trim();if(q.length<2)return
 function loadDist(){api('/api/dist').then(d=>{
  $('dist-pending').innerHTML=(d.pending||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id||x.slug||'')}<div class="mut">${esc(x.platforms||'')} · score ${x.score??'-'}</div></span><span class="badge dist">${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">空</span>';
  $('dist-published').innerHTML=(d.published||[]).map(x=>`<div class="task"><span class="tt">${esc(x.slug||'')}<div class="mut">${esc(x.platform||'')} · ${esc(x.date||'')}</div></span><span class="badge" style="background:var(--ok)">${esc(x.status||'published')}</span></div>`).join('')||'<span class="mut">空</span>';
- $('dist-dispatch').innerHTML=(d.dispatches||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)}<div class="mut">cn ${x.cn} · global ${x.gl}</div></span><span class="badge ${x.approved?'':'dist'}">${x.approved?'已授权':'待授权'}</span></div>`).join('')||'<span class="mut">无 dispatch 单</span>'})}
+ $('dist-dispatch').innerHTML=(d.dispatches||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)}<div class="mut">cn ${x.cn} · global ${x.gl}</div></span><span class="badge ${x.approved?'':'dist'}">${x.approved?'已授权':'待授权'}</span></div>`).join('')||'<span class="mut">无 dispatch 单</span>';
+ loadImpact()})}
+function loadImpact(){api('/api/impact').then(d=>{
+ $('imp-note').textContent=(d.gsc_date?`GSC 数据 ${d.gsc_date} · `:'')+`归因范围 Top${d.gsc_pages||0} 页面`;
+ if(!(d.rows||[]).length)return $('dist-impact').innerHTML='<span class="mut">暂无已发布外链</span>';
+ $('dist-impact').innerHTML='<table><tr><th>slug</th><th>平台</th><th>主站路径</th><th>点击</th><th>曝光</th><th>站外链接</th></tr>'+
+  d.rows.map(r=>`<tr><td>${esc(r.slug)}</td><td>${esc(r.platform)}</td><td class="mut">${esc(r.canonical_path||'—')}</td>
+   <td class="tnum ${r.matched?'ok':'mut'}">${r.clicks??'—'}</td><td class="tnum">${r.impr??'—'}</td>
+   <td>${r.offsite_url?`<a href="${esc(r.offsite_url)}" target="_blank" rel="noopener" class="more">外链 ↗</a>`:'—'}</td></tr>`).join('')+'</table>'+
+  `<div class="mut" style="margin-top:8px">${esc(d.note||'')}</div>`})}
 
 /* ---- 管线 ---- */
 function loadPipe(){api('/api/state').then(S=>{
@@ -658,13 +684,13 @@ function genOnce(){const topic=$('ctopic').value.trim();if(!topic)return alert('
 
 /* ---- Loop 管理 ---- */
 function loadLoops(){api('/api/loops').then(L=>{
- $('nav-loops').textContent=L.filter(x=>x.status==='running').length;
- $('loop-list').innerHTML=L.map(x=>`<div class="task"><span class="tt">${esc(x.goal)}<div class="mut">${esc(x.type)} · ${esc(x.lang)} · ${esc(x.created||'')} · 轮次 ${x.round||0}/${x.max_rounds||3} · item: ${esc(x.item_id)}</div></span>
+ $('nav-loops').textContent=L.filter(x=>x.status==='running'||x.status==='queued').length;
+ $('loop-list').innerHTML=L.map(x=>`<div class="task"><span class="tt">${esc(x.goal)}<div class="mut">${esc(x.type)} · ${esc(x.lang)} · ${esc(x.created||'')} · 轮次 ${x.round||0}/${x.max_rounds||3} · item: ${esc(x.item_id)}${x.tokens_used?` · tokens ${x.tokens_used}`:''}</div></span>
   <span class="badge ${x.status==='running'?'pipe':x.status==='done'?'':'dist'}" style="${x.status==='done'?'background:var(--ok)':''}">${esc(x.status)}</span>
   <button class="more" onclick="loopLog('${x.id}')">日志</button>
-  ${x.status==='running'?`<button class="more" style="color:var(--danger)" onclick="loopStop('${x.id}')">停止</button>`:''}</div>`).join('')||'<span class="mut">还没有 Loop——去「创作中心」发起</span>'})}
+  ${x.status==='running'||x.status==='queued'?`<button class="more" style="color:var(--danger)" onclick="loopStop('${x.id}')">停止</button>`:''}</div>`).join('')||'<span class="mut">还没有 Loop——去「创作中心」发起</span>'})}
 function loopLog(id){api('/api/loop/detail?id='+id).then(x=>{$('loop-log-t').textContent='运行日志 · '+x.goal+' · '+x.status;
- $('loop-log').textContent=(x.log||[]).join('\n')||'（无日志）'})}
+ $('loop-log').innerHTML=fmtHook((x.log||[]).join('\n'))||'（无日志）'})}
 function loopStop(id){api('/api/loop/stop',{id}).then(()=>setTimeout(loadLoops,800))}
 
 /* ---- 节点流水线 ---- */

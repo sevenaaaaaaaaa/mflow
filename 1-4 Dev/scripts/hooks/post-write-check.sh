@@ -58,7 +58,13 @@ echo "[1/4] H2 density (need >= 4 H2 sections)"
 H2_COUNT="$(grep -cE '^## ' "$FILE" || true)"
 H3_COUNT="$(grep -cE '^### ' "$FILE" || true)"
 CHAR_COUNT="$(wc -c < "$FILE" | tr -d ' ')"
-WORD_COUNT="$(wc -w < "$FILE" | tr -d ' ')"
+# Phase 2 fix (2026-09-15): wc -w splits on whitespace only, so CJK long-form text
+# was undercounted (680 汉字 → 21 words). Word-equivalent = ASCII words + CJK/2.
+WORD_COUNT="$(perl -CSD -ne '
+    $c += () = /\p{Han}|\p{Hiragana}|\p{Katakana}|\p{Hangul}/g;
+    $w += () = /[A-Za-z0-9]+/g;
+    END { print $w + int(($c + 1) / 2) }
+' "$FILE" 2>/dev/null || wc -w < "$FILE" | tr -d ' ')"
 echo "    stats: $CHAR_COUNT chars, $WORD_COUNT words, $H2_COUNT H2, $H3_COUNT H3"
 
 # Min H2 thresholds scaled by length

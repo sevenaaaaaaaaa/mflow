@@ -42,6 +42,29 @@ GEN_DIR = PROJECT / "1-3 GenFlow" / "Console-Gen"
 HARNESS_DIR = PROJECT / "1-1 Harness"
 LOOP_LOCK = threading.Lock()
 LOOP_THREADS = {}
+MAX_PARALLEL_LOOPS = 2
+_usage_lock = threading.Lock()
+LAST_USAGE = {"total_tokens": 0}
+
+
+def loop_queue_worker():
+    """Queue scheduler: start queued loops while running < MAX_PARALLEL_LOOPS."""
+    while True:
+        time.sleep(4)
+        try:
+            loops = read_json(LOOPS_FILE, [])
+            running = [x for x in loops if x.get("status") == "running"]
+            if len(running) >= MAX_PARALLEL_LOOPS:
+                continue
+            queued = [x for x in loops if x.get("status") == "queued"]
+            if not queued:
+                continue
+            nxt = sorted(queued, key=lambda x: x.get("created", ""))[0]
+            th = threading.Thread(target=loop_engine, args=(nxt["id"],), daemon=True)
+            LOOP_THREADS[nxt["id"]] = th
+            th.start()
+        except Exception as e:
+            print(f"[queue] {e}", file=sys.stderr)
 USAGE_FILE = RUN_DIR / "llm-usage.jsonl"
 DEMO_FLAG = RUN_DIR / "demo.json"
 VERSION_FILE = PROJECT / "VERSION"
@@ -195,6 +218,9 @@ def llm_chat(messages, profile="default", max_tokens=4000, timeout=180):
         USAGE_FILE.parent.mkdir(parents=True, exist_ok=True)
         with open(USAGE_FILE, "a") as f:
             f.write(json.dumps(rec) + "\n")
+        with _usage_lock:
+            LAST_USAGE.clear()
+            LAST_USAGE.update(rec)
     except Exception:
         pass
     return content
@@ -255,6 +281,51 @@ def calendar_view(q="", lang=""):
     return {"total": len(calendar_index()),
             "langs": dict(langs), "months": dict(sorted(months.items())[-12:]),
             "files": files[:250]}
+
+
+def impact_report():
+    qbase = PROJECT / "1-3 GenFlow/Content Distribution/queue"
+    pub = read_json(qbase / "published.json", {}).get("items", [])
+    pend = read_json(qbase / "pending.json", {}).get("items", [])
+    gsc = read_json(RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json", {})
+    pages = ((gsc.get("pages") or {}).get("top20_pages")) or []
+    by_path = {}
+    for pg in pages:
+        try:
+            path = urllib.parse.urlparse(pg.get("url", "")).path
+            by_path[path] = {"clicks": pg.get("clicks", 0), "impr": pg.get("impr", 0)}
+        except Exception:
+            continue
+    rows = []
+    for x in pub:
+        cu = x.get("canonical") or ""
+        path = urllib.parse.urlparse(cu).path if cu else ""
+        m = by_path.get(path)
+        rows.append({"slug": x.get("slug") or "", "platform": x.get("platform") or "",
+                     "offsite_url": x.get("offsite_url") or "", "canonical_path": path or cu,
+                     "clicks": (m or {}).get("clicks"), "impr": (m).get("impr") if m else None,
+                     "matched": bool(m) and bool(path)})
+    rows.sort(key=lambda r: (r["clicks"] is None, -(r["clicks"] or 0)))
+    return {"rows": rows, "gsc_date": gsc.get("_date"), "gsc_pages": len(pages),
+            "note": "归因范围 = GSC Top20 页面；全量归因需扩展 gsc_fetch 行数上限"}
+
+
+def report_dashboard(path):
+    p = safe_path(path)
+    if not p:
+        return {"error": "路径不可读"}
+    raw = p.read_text(errors="ignore")
+    m = re.search(r"((?:^[^\n]*\n)?\|[^\n]*\|\n\|[-: |]+\|\n(?:\|[^\n]*\|\n)+)", raw, re.M)
+    if not m:
+        return {"headers": [], "rows": [], "title": ""}
+    tbl = m.group(1)
+    lines = [l for l in tbl.strip().split("\n") if l.strip().startswith("|")]
+    cells = lambda l: [c.strip() for c in l.strip().strip("|").split("|")]
+    headers = cells(lines[0]) if lines else []
+    rows = [cells(l) for l in lines[2:]]
+    title_m = re.search(r"^#\s+(.+)$", raw, re.M)
+    return {"headers": headers, "rows": rows[:12],
+            "title": title_m.group(1).strip()[:80] if title_m else p.name}
 
 
 def trident_status():
@@ -353,6 +424,8 @@ def loop_engine(loop_id):
             log(loop, f"LLM 调用失败：{e}")
             _loop_save(loop)
             return
+        with _usage_lock:
+            loop["tokens_used"] = loop.get("tokens_used", 0) + LAST_USAGE.get("total_tokens", 0)
         draft_path = GEN_DIR / f"{item}.md"
         draft_path.parent.mkdir(parents=True, exist_ok=True)
         draft_path.write_text(draft)
@@ -875,6 +948,10 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, calendar_view(qs.get("q", [""])[0].strip(), qs.get("lang", [""])[0]))
             if parsed.path == "/api/trident":
                 return self._send(200, trident_status())
+            if parsed.path == "/api/impact":
+                return self._send(200, impact_report())
+            if parsed.path == "/api/report/dashboard":
+                return self._send(200, report_dashboard(qs.get("path", [""])[0]))
             if parsed.path == "/api/dist/export":
                 base = PROJECT / "1-3 GenFlow/Content Distribution/queue"
                 pub = read_json(base / "published.json", {}).get("items", [])
@@ -1026,23 +1103,18 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(400, {"error": "id 不合法"})
                 with LOOP_LOCK:
                     loops = read_json(LOOPS_FILE, [])
-                    if any(x.get("status") == "running" for x in loops):
-                        return self._send(409, {"error": "已有 Loop 在运行（同时只跑一个，防超支）"})
                     loop = {"id": secrets.token_hex(4), "item_id": item_id,
                             "goal": str(body.get("topic", ""))[:200],
                             "type": str(body.get("type", "blog")), "lang": str(body.get("lang", "zh")),
                             "topic": str(body.get("topic", ""))[:300], "brief": str(body.get("brief", ""))[:800],
-                            "status": "queued", "round": 0, "max_rounds": 3,
+                            "status": "queued", "round": 0, "max_rounds": 3, "tokens_used": 0,
                             "created": datetime.now().strftime("%Y-%m-%d %H:%M"), "log": []}
                     loops.append(loop)
                     LOOPS_FILE.parent.mkdir(parents=True, exist_ok=True)
                     LOOPS_FILE.write_text(json.dumps(loops, ensure_ascii=False, indent=1))
                 run_tool([sys.executable, str(PS_PATH), "upsert", "--id", item_id,
                           "--category", str(body.get("type", "blog"))])
-                th = threading.Thread(target=loop_engine, args=(loop["id"],), daemon=True)
-                LOOP_THREADS[loop["id"]] = th
-                th.start()
-                return self._send(200, {"ok": True, "id": loop["id"]})
+                return self._send(200, {"ok": True, "id": loop["id"], "queued": True})
             if self.path == "/api/loop/stop":
                 loops = read_json(LOOPS_FILE, [])
                 for x in loops:
@@ -1106,7 +1178,8 @@ def main():
     if not PASSWORD:
         print("[console] FAIL-CLOSED: MFLOW_CONSOLE_PASSWORD 未设置，API 全部拒绝", file=sys.stderr)
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
-    print(f"[console] MFlow Console v3 on :{PORT}")
+    threading.Thread(target=loop_queue_worker, daemon=True).start()
+    print(f"[console] MFlow Console on :{PORT} (loop queue worker started, max_parallel={MAX_PARALLEL_LOOPS})")
     server.serve_forever()
 
 
