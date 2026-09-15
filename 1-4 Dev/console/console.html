@@ -414,6 +414,12 @@ th{color:var(--muted);font-weight:600}
       <div class="row" style="margin-top:12px"><button class="btn primary" onclick="llmSave()">保存配置</button><span id="llm-test" class="mut"></span></div>
       <div class="mut" style="margin-top:8px">Key 存服务器 run/llm.json（git-ignore，权限 600）。DeepSeek/OpenAI 或任何 OpenAI 兼容网关。</div>
     </div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>账号与角色 <span class="mut">（admin 专属 · 密码校验继承 OpenFlow bcrypt）</span></h3>
+      <span class="mut" id="acc-role"></span></div><div id="acc-list"></div>
+      <div class="row" style="margin-top:10px"><input id="acc-u" placeholder="账号用户名" style="flex:1;min-width:140px">
+      <input id="acc-p" placeholder="新密码（≥6 位）" style="flex:1;min-width:140px">
+      <button class="btn primary" onclick="resetAcc()">重置该账号密码</button></div>
+      <div class="mut" style="margin-top:6px">权限矩阵：admin=全部 · marketing/sales/operator=创作与质检 · 只读角色无写权限。所有重置与审批动作记入 run/approvals.log</div></div>
     <div class="ov-grid2" style="margin-top:14px">
       <div class="card"><div class="card-head"><h3>Harness 规则（全局铁律 + 工作线）</h3></div><div id="harness-rules"></div></div>
       <div class="card"><div class="card-head"><h3>Skills <span class="mut" id="skill-n"></span></h3>
@@ -627,7 +633,8 @@ function kbSearch(srcOverride){const q=$('kq').value.trim();if(q.length<2)return
 function loadDist(){api('api/dist').then(d=>{
  $('dist-pending').innerHTML=(d.pending||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id||x.slug||'')}<div class="mut">${esc(x.platforms||'')} · score ${x.score??'-'}</div></span><span class="badge dist">${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">空</span>';
  $('dist-published').innerHTML=(d.published||[]).map(x=>`<div class="task"><span class="tt">${esc(x.slug||'')}<div class="mut">${esc(x.platform||'')} · ${esc(x.date||'')}</div></span><span class="badge" style="background:var(--ok)">${esc(x.status||'published')}</span></div>`).join('')||'<span class="mut">空</span>';
- $('dist-dispatch').innerHTML=(d.dispatches||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)}<div class="mut">cn ${x.cn} · global ${x.gl}</div></span><span class="badge ${x.approved?'':'dist'}">${x.approved?'已授权':'待授权'}</span></div>`).join('')||'<span class="mut">无 dispatch 单</span>';
+ $('dist-dispatch').innerHTML=(d.dispatches||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)}<div class="mut">cn ${x.cn} · global ${x.gl}${x.approved_by?' · 批准人 '+esc(x.approved_by):''}</div></span><span class="badge ${x.approved?'':'dist'}" style="${x.approved?'background:var(--ok)':''}">${x.approved?'已授权':'待授权'}</span>
+   ${(!x.approved&&window.__ROLE==='admin')?`<button class="mini" onclick="approveDispatch('${esc(x.id)}')">批准发布（admin）</button>`:''}</div>`).join('')||'<span class="mut">无 dispatch 单</span>';
  loadImpact()})}
 function loadImpact(){api('api/impact').then(d=>{
  $('imp-note').textContent=(d.gsc_date?`GSC 数据 ${d.gsc_date} · `:'')+`归因范围 Top${d.gsc_pages||0} 页面`;
@@ -638,6 +645,8 @@ function loadImpact(){api('api/impact').then(d=>{
    <td>${r.offsite_url?`<a href="${esc(r.offsite_url)}" target="_blank" rel="noopener" class="more">外链 ↗</a>`:'—'}</td></tr>`).join('')+'</table>'+
   `<div class="mut" style="margin-top:8px">${esc(d.note||'')}</div>`})}
 
+function approveDispatch(id){if(!confirm('确认以 admin 身份批准 '+id+' 的发布授权？将记入审批日志。'))return;
+ api('api/dispatch/approve',{id}).then(r=>{if(r.error)alert(r.error);loadDist()})}
 /* ---- 管线 ---- */
 function loadPipe(){api('api/state').then(S=>{
  $('nav-pipe').textContent=S.items.filter(i=>!['done','failed','escalated'].includes(i.stage)).length;
@@ -733,6 +742,10 @@ function loadSet(){api('api/llm').then(c=>{LLMCFG=c;
    <select id="lpr-prov-${n}">${Object.keys(c.providers).map(x=>`<option ${p.provider===x?'selected':''}>${x}</option>`).join('')}</select>
    <input id="lpr-model-${n}" value="${esc(p.model||'')}" placeholder="model" style="flex:1;min-width:160px"></div>`).join('');
  if(!c.providers.deepseek.key)$('llm-test').textContent='（尚未配置 Key——生成功能不可用）';
+ api('api/account/list').then(acc=>{
+  $('acc-role').textContent=window.__ROLE==='admin'?'（当前 admin）':'（需 admin 角色可见操作）';
+  $('acc-list').innerHTML='<table><tr><th>用户名</th><th>姓名</th><th>角色</th></tr>'+acc.map(a=>
+   `<tr><td><b>${esc(a.username)}</b></td><td>${esc(a.name||'')}</td><td><span class="badge ${a.role==='admin'?'pipe':'dist'}">${esc(a.role)}</span></td></tr>`).join('')+'</table>'}).catch(e=>{})
  api('api/harness').then(h=>{
   $('harness-rules').innerHTML='<table><tr><th>规则</th><th>行数</th><th>更新</th><th></th></tr>'+h.rules.map(r=>
    `<tr><td>${esc(r.name)}</td><td class="tnum">${r.lines}</td><td class="mut">${r.mtime}</td><td><button class="more" onclick="openReader('${esc(r.path)}')">读</button></td></tr>`).join('')+'</table>';
@@ -746,6 +759,9 @@ function llmSave(){const providers={},profiles={};
  document.querySelectorAll('[id^=lpr-prov-]').forEach(i=>{const n=i.id.replace('lpr-prov-','');(profiles[n]=profiles[n]||{}).provider=i.value});
  document.querySelectorAll('[id^=lpr-model-]').forEach(i=>{const n=i.id.replace('lpr-model-','');(profiles[n]=profiles[n]||{}).model=i.value});
  api('api/llm/save',{providers,profiles}).then(()=>{alert('已保存');loadSet()})}
+function resetAcc(){const u=$('acc-u').value.trim(),p=$('acc-p').value;if(!u||p.length<6)return alert('填用户名和 ≥6 位新密码');
+ if(!confirm('确认重置 '+u+' 的密码？'))return;
+ api('api/account/reset',{username:u,new_password:p}).then(r=>{alert(r.error?('失败：'+r.error):'已重置，该账号可用新密码登录');$('acc-p').value=''})}
 function llmTest(){$('llm-test').textContent='测试中…';api('api/llm/test',{profile:'default'}).then(r=>{
  $('llm-test').innerHTML=r.ok?'<span class="ok">连通 ✓ '+esc(r.reply)+'</span>':'<span class="bad">失败：'+esc(r.error)+'</span>'})}
 
@@ -805,7 +821,7 @@ function loadSetup(){api('api/setup/status').then(items=>{
  api('api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version)})}
 function seedDemo(){api('api/setup/seed-demo',{}).then(()=>{alert('Demo 数据已导入：\n· 3 张演示任务已进看板\n· 示例报告在本页下方\n· 创作中心现在无需 API Key 即可跑演示闭环');loadSetup()})}
 
-api('api/auth/me').then(me=>{$('me-name').textContent=me.username||'';window.__ME=me.username||''}).catch(()=>{});
+api('api/auth/me').then(me=>{$('me-name').textContent=(me.username||'')+' · '+(me.role||'');window.__ME=me.username||'';window.__ROLE=me.role||'viewer'}).catch(()=>{});
 api('api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version).catch(()=>{});
 setTab('home');
 api('api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version).catch(()=>{});

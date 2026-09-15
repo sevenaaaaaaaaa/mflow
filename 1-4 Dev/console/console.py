@@ -861,6 +861,13 @@ class Handler(BaseHTTPRequestHandler):
         except Exception:
             return ""
 
+    def _role(self):
+        me = self._me()
+        for x in read_json(AUTH_FILE, []):
+            if x.get("username") == me:
+                return x.get("role", "operator")
+        return "admin" if (PASSWORD and not AUTH_FILE.exists()) else "viewer"
+
     def _body(self):
         try:
             n = int(self.headers.get("Content-Length", 0))
@@ -1022,11 +1029,25 @@ class Handler(BaseHTTPRequestHandler):
         if self.path == "/api/auth/me":
             if not self._authed():
                 return self._send(401, {"error": "unauthorized"})
-            return self._send(200, {"username": self._me()})
+            return self._send(200, {"username": self._me(), "role": self._role()})
+        if self.path == "/api/account/list":
+            if self._role() != "admin":
+                return self._send(403, {"error": "需要 admin"})
+            return self._send(200, [{"username": x["username"], "role": x.get("role", ""),
+                                     "name": x.get("name", "")} for x in read_json(AUTH_FILE, [])])
         if not self._authed():
             return self._send(401, {"error": "unauthorized"})
         if not self._authed():
             return self._send(401, {"error": "unauthorized"})
+        # P3.1 角色分级：viewer 只读；admin-only 操作白名单
+        role = self._role()
+        if role == "viewer":
+            return self._send(403, {"error": "viewer 角色只读，无写操作权限"})
+        ADMIN_ONLY = {"/api/setup/seed-demo", "/api/llm/save", "/api/llm/test",
+                      "/api/account/list", "/api/account/reset", "/api/dispatch/approve",
+                      "/api/trident/run", "/api/daily/run", "/api/tasks/del"}
+        if self.path in ADMIN_ONLY and role != "admin":
+            return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
         try:
             if self.path == "/api/logout":
@@ -1163,6 +1184,40 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, r)
             if self.path == "/api/setup/seed-demo":
                 return self._send(200, seed_demo())
+            if self.path == "/api/account/reset":
+                users = read_json(AUTH_FILE, [])
+                rec = next((x for x in users if x["username"] == body.get("username")), None)
+                if not rec:
+                    return self._send(404, {"error": "账号不存在"})
+                import bcrypt
+                newp = str(body.get("new_password", "")).encode()
+                if len(newp) < 6:
+                    return self._send(400, {"error": "新密码至少 6 位"})
+                rec["hash"] = bcrypt.hashpw(newp, bcrypt.gensalt(rounds=10)).decode()
+                AUTH_FILE.write_text(json.dumps(users, ensure_ascii=False, indent=1))
+                os.chmod(AUTH_FILE, 0o600)
+                with open(RUN_DIR / "approvals.log", "a") as f:
+                    f.write(f"{datetime.now().isoformat(timespec='seconds')} RESET {rec['username']} by {self._me()}\n")
+                return self._send(200, {"ok": True})
+            if self.path == "/api/dispatch/approve":
+                did = str(body.get("id", ""))
+                qbase = PROJECT / "1-3 GenFlow/Content Distribution/queue"
+                target = None
+                for f in qbase.glob("dispatch-*.json"):
+                    d = read_json(f, {})
+                    if d.get("id") == did:
+                        target = f
+                        dd = d
+                        break
+                if not target:
+                    return self._send(404, {"error": "dispatch 单不存在"})
+                dd["approved"] = True
+                dd["approved_by"] = self._me()
+                dd["approved_at"] = datetime.now().isoformat(timespec="seconds")
+                target.write_text(json.dumps(dd, ensure_ascii=False, indent=2))
+                with open(RUN_DIR / "approvals.log", "a") as f:
+                    f.write(f"{dd['approved_at']} APPROVE {did} by {self._me()}\n")
+                return self._send(200, {"ok": True})
             if self.path == "/api/tasks/add":
                 title = str(body.get("title", "")).strip()[:200]
                 if not title:
