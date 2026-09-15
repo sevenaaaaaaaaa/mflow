@@ -1,0 +1,73 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "1-1 Harness/02-rules/RULES-00-iron.md",
+    "1-1 Harness/02-rules/RULES-10-reports.md",
+    "1-1 Harness/02-rules/RULES-20-creation.md",
+    "1-1 Harness/02-rules/RULES-30-quality.md",
+    "1-1 Harness/02-rules/RULES-40-ops.md",
+    "1-1 Harness/02-rules/RULES-50-distribution.md",
+    "1-1 Harness/02-rules/RULES-60-management.md",
+    "1-1 Harness/00-INDEX.md",
+    "1-1 Harness/CLAUDE.md",
+    "1-1 Harness/11-knowledge/README.md",
+    "1-1 Harness/11-knowledge/KNOWLEDGE-TREE.md",
+    "1-1 Harness/11-knowledge/MEMORY-PROJECT.md"
+  ],
+  "skills": {
+    "paths": [
+      "1-1 Harness/Skills",
+      "1-1 Harness/.claude/skills"
+    ]
+  },
+  "command": {
+    "sentinel": {
+      "description": "运行舆情监测",
+      "template": "执行 lovart-sentinel 舆情监测工作流。读取 1-1 Harness/02-rules/RULES-40-ops.md 操作，输出今日舆情简报。必要时先读 1-1 Harness/11-knowledge/。"
+    },
+    "seo": {
+      "description": "生成 SEO 周报",
+      "template": "执行 lovart-trident-data-engine 数据管线，读取 GSC 数据生成 SEO 周报。参考 1-4 Dev/scripts/ 下的 seo 脚本。"
+    },
+    "publish": {
+      "description": "发布文章到 Sanity CMS",
+      "template": "执行 lovart-sanity-content-publish 技能将文章发布到 Sanity CMS。遵循 CLAUDE.md 规则：仅 import --missing，发布前干跑验证，停在 ready 状态等人审。"
+    },
+    "calendar": {
+      "description": "查看内容日历",
+      "template": "读取内容日历相关技能（lovart-content-calendar）和 1-1 Harness/ 下的排期文档，输出当前内容日历状态和待办。"
+    },
+    "kg": {
+      "description": "知识图查询",
+      "template": "执行知识图查询：分析用户查询意图，调用 bash 1-1 Harness/11-knowledge/scripts/kg stats | list | find | related-to | ancestors | start | orphans 子命令。"
+    },
+    "dream": {
+      "description": "运行梦境（consolidation + audit）",
+      "template": "执行梦境编排：调用 bash 1-1 Harness/11-knowledge/dream/consolidate.sh [--emit-only|--no-touch|--audit-only] 或 bash 1-1 Harness/11-knowledge/dream/audit.sh [A1-A6]。读 audit/reports/audit-report-{TODAY}.md 回报结果。"
+    },
+    "cascade-write": {
+      "description": "Cascade 写稿：单次 writer 代理（仅创建 profile，无 critic）",
+      "template": "执行 cascade 单次写：调用 LOVART_CASCADE_WRITER_BACKEND=mock|hermes opencode bash 1-1 Harness/Skills/06-orchestrate/lovart-quality-cascade/dispatch-write.sh '<brief-json>' '<reasons-json>'。不要做 eval。"
+    },
+    "cascade-eval": {
+      "description": "Cascade 评审：单次 critic 代理，无 writer",
+      "template": "执行 cascade 单次评：从 stdin 读 draft，调用 cat <draft> | python3 1-1 Harness/Skills/06-orchestrate/lovart-quality-cascade/dispatch-eval.py --criteria 1-1 Harness/Skills/06-orchestrate/lovart-quality-cascade/criteria.yaml。输出为 JSON quality-report。"
+    },
+    "cascade-run": {
+      "description": "Cascade 完整 loop run：writer+critic 多轮迭代到 READY 或 escalate",
+      "template": "执行 cascade loop run：调用 python3 1-1 Harness/Skills/06-orchestrate/lovart-quality-cascade/orchestrate.py --slug <slug> --topic <topic> --target-type blog --persist-dir 1-3 GenFlow/Blog Pipeline/loops/{YYYY-MM-DD}/<slug>/ --backend mock|hermes。读 loop-meta.json 取得 rc / final_state。"
+    },
+    "session-log": {
+      "description": "Session Log writer：把这一轮会话的 lessons 写到 1-1 Harness/11-knowledge/sessions/{YYYY-MM-DD}-{slug}.md",
+      "template": "执行会话收尾：调用 1-1 Harness/Skills/06-orchestrate/lovart-session-log/SKILL.md 的 process。先生成 draft 段落（Context / Solution / Files Changed / Decisions / Patterns / Open Questions），由用户确认 → 写入磁盘。如果用户没明确说要 session log，仅在触达 ≥5 个文件 + ≥1 个 schema 改动时主动建议。"
+    },
+    "kb-mine": {
+      "description": "KB 查询：按 topic 找 KB-doc 单元（KB ground truth）",
+      "template": "KB 查询：调用 python3 1-2 Insight/Knowledge Base/scripts/kb-mine.py --root <vault> --topic '<topic>' [--capability-mode] [--json]。用于 writer profile 在写之前拿 grounded context。"
+    },
+    "kb-ingest": {
+      "description": "KB 拓源：抓 Changelog/URL-LIST.md + Reference/URL-LIST.md 里的 URL 入库",
+      "template": "执行 KB 拓源：先读 URL-LIST 用户填的列表，调用 bash 1-2 Insight/Knowledge Base/scripts/kb-ingest.py --root <vault> [--allow-fetch] [--max-per-run N]。再跑 kb-frontmatter.py + build-index.py --write。"
+    }
+  }
+}

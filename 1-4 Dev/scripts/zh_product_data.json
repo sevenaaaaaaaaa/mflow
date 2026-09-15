@@ -1,0 +1,5640 @@
+[
+  {
+    "slug": "zh-ai-design-agent",
+    "pn": "AI Design Agent",
+    "t": "AI Design Agent — Lovart AI设计智能体",
+    "d": "Lovart AI Design Agent 是您的AI设计助手，从Logo到品牌视觉，从社媒素材到电商主图，一次对话完成全套设计。",
+    "st": "AI Design Agent — Lovart AI设计智能体 在线免费使用",
+    "sd": "Lovart AI Design Agent 是您的AI设计助手。一次对话完成Logo、品牌视觉、社媒素材、电商主图。免费试用。",
+    "kw": [
+      "ai design agent",
+      "AI设计助手",
+      "智能设计工具",
+      "lovart"
+    ],
+    "bento": [
+      {
+        "title": "全链路设计",
+        "description": "从Logo到品牌视觉、从社媒到电商、从平面到视频。一个智能体覆盖全部设计需求。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "对话式创作",
+        "description": "像跟设计师聊天一样说需求。不用学软件、不用写prompt，说人话就能出设计。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌一致性",
+        "description": "品牌信息一次设定，所有设计自动保持统一配色、字体与风格。品牌调性不跑偏。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "实时协作",
+        "description": "邀请团队成员共同编辑设计项目。评论、修改、批准，全程在同一个画布里完成。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [
+      {
+        "label": "MCoT 智能引擎",
+        "content": {
+          "title": "思维链推理",
+          "description": "AI Design Agent 搭载MCoT引擎，先理解您的业务场景、品牌调性和目标受众，再进行策略性设计。不是随机生图，而是有思考的设计。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "多模态理解",
+        "content": {
+          "title": "图文双向理解",
+          "description": "同时理解文字与图片。您发一张参考图、说一段需求，AI Design Agent 把两者融合生成更准确的结果。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "持续优化",
+        "content": {
+          "title": "迭代学习",
+          "description": "AI Design Agent 记住您每一次的修改偏好。用得越多，越理解您的设计风格。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      }
+    ],
+    "tools": [
+      {
+        "title": "Logo设计",
+        "description": "智能生成多风格Logo",
+        "icon": ""
+      },
+      {
+        "title": "品牌视觉",
+        "description": "全套VI自动生成",
+        "icon": ""
+      },
+      {
+        "title": "社媒素材",
+        "description": "全平台尺寸一次产出",
+        "icon": ""
+      },
+      {
+        "title": "电商视觉",
+        "description": "主图详情页直通车",
+        "icon": ""
+      },
+      {
+        "title": "视频生成",
+        "description": "文生视频图生视频",
+        "icon": ""
+      },
+      {
+        "title": "品牌管理",
+        "description": "Brand Kit统一管理",
+        "icon": ""
+      }
+    ],
+    "steps": [
+      {
+        "title": "描述需求",
+        "description": "用中文告诉AI Design Agent你想要什么：我要一张小红书封面、一个品牌Logo、一套电商主图。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "AI生成方案",
+        "description": "Design Agent 自动理解需求并生成多版设计方案供您选择。每版附带设计说明。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "微调确认",
+        "description": "选中满意的方案后进行细节调整。改颜色、换字体、调布局，最终输出高清文件。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [
+      {
+        "title": "自媒体博主",
+        "description": "日更需要大量配图。AI Design Agent 每天五分钟产出全平台素材。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "电商卖家",
+        "description": "商品主图、详情页、活动图。一次输入产品信息，批量生成各种尺寸。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌市场部",
+        "description": "品牌视觉统一管理。市场活动物料从海报到PPT全部保持品牌一致。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "创业公司",
+        "description": "没有专职设计师？AI Design Agent让创始人自己搞定专业级品牌设计。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "showcases": [
+      {
+        "title": "从0到1搭建品牌视觉",
+        "description": "创业团队使用AI Design Agent在2小时内完成了Logo、名片、PPT模板、社媒封面等15项品牌素材。传统找设计师需要2周。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "日更自媒体矩阵",
+        "description": "一位科技博主每天用AI Design Agent生成小红书、公众号、抖音三个平台的封面与配图。每月产出90+张图，耗时不到10小时。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "电商大促视觉批量生产",
+        "description": "双十一期间，某淘宝店使用AI Design Agent批量生成300+张主图与详情页。从产品信息录入到全部出图仅用3天。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "找设计师",
+      "传统AI工具",
+      "Lovart AI Design Agent"
+    ],
+    "comp_r": [
+      {
+        "feature": "交付周期",
+        "traditional": "3-7天反复沟通修改",
+        "singleTool": "30分钟手动调参",
+        "lovart": "5分钟对话完成"
+      },
+      {
+        "feature": "修改成本",
+        "traditional": "高，每次修改都收费",
+        "singleTool": "中，重新生成不可控",
+        "lovart": "低，点选修改即时生效"
+      },
+      {
+        "feature": "品牌一致性",
+        "traditional": "看设计师理解程度",
+        "singleTool": "几乎无法保证",
+        "lovart": "Brand Kit自动保持"
+      },
+      {
+        "feature": "全链路覆盖",
+        "traditional": "每个环节找不同人",
+        "singleTool": "单一功能需要多个工具",
+        "lovart": "一个智能体全链路完成"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "AI Design Agent能做什么类型的设计？",
+        "answer": "Logo设计、品牌视觉、社媒素材、电商视觉、广告创意、PPT演示、视频生成。覆盖品牌建设与日常营销的所有设计需求。"
+      },
+      {
+        "question": "AI Design Agent需要安装吗？",
+        "answer": "不需要。打开浏览器访问Lovart官网即可使用。支持电脑和手机端。"
+      },
+      {
+        "question": "AI Design Agent支持中文吗？",
+        "answer": "完全支持。中文界面、中文输入、中文理解。您用中文描述需求就能得到专业设计。"
+      },
+      {
+        "question": "AI Design Agent生成的设计版权归谁？",
+        "answer": "归您所有。包括商业使用权。Starter及以上套餐生成的素材可自由用于商业用途。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-ai-design-agent-free",
+    "pn": "AI Design Agent 免费版",
+    "t": "免费AI设计工具 — Lovart AI Design Agent Free",
+    "d": "Lovart 免费版AI设计工具，零成本获取专业设计能力。无需信用卡注册，每天免费额度支持Logo、社媒素材、电商视觉等常见需求。",
+    "st": "免费AI设计工具 — Lovart AI Design Agent Free 在线免费使用",
+    "sd": "Lovart 免费版AI设计工具。零成本获取专业设计能力，无需信用卡。每日免费额度支持Logo、社媒素材、电商视觉。",
+    "kw": [
+      "免费AI设计工具",
+      "免费设计软件",
+      "lovart免费版"
+    ],
+    "bento": [
+      {
+        "title": "零成本入门",
+        "description": "无需付费、无需信用卡。注册即可获得每日免费生成额度，体验完整设计能力。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "全功能体验",
+        "description": "免费版可使用大部分核心功能：Logo生成、社媒素材、品牌管理、基础编辑。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "高清输出",
+        "description": "免费版支持标准分辨率输出，满足社交媒体与网页展示需求。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "无时间限制",
+        "description": "免费版没有试用期限制。只要账号活跃，每日免费额度持续发放。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "注册账号",
+        "description": "打开Lovart官网，用邮箱或微信注册。无需绑定信用卡。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "描述需求",
+        "description": "用中文告诉AI你的设计需求。免费版支持生成Logo、社媒素材、电商图等。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "下载使用",
+        "description": "AI生成后预览满意即可下载。标准分辨率图片适合社交平台与网页展示。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "个人博主入门使用",
+        "description": "一位小红书新人博主用免费版每天生成封面与配图，连续使用30天产出60张原创图片，涨粉5000。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "小团队低成本试水",
+        "description": "3人创业团队用免费版先跑通社媒内容流程，确认效率提升后才升级到付费版。避免了先花钱买工具的试错成本。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "免费版",
+      "Starter",
+      "Pro"
+    ],
+    "comp_r": [
+      {
+        "feature": "价格",
+        "traditional": "$0",
+        "singleTool": "$15/月",
+        "lovart": "$72/月"
+      },
+      {
+        "feature": "生成额度",
+        "traditional": "每日有限",
+        "singleTool": "更多额度",
+        "lovart": "无限生成"
+      },
+      {
+        "feature": "输出分辨率",
+        "traditional": "标准",
+        "singleTool": "高清",
+        "lovart": "4K/8K"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "免费版每天有多少额度？",
+        "answer": "免费版每日有固定的生成次数与分辨率限制，足以满足个人日常使用。具体额度请查看Lovart官网定价页面。"
+      },
+      {
+        "question": "免费版和付费版的主要区别是什么？",
+        "answer": "免费版有每日额度限制，输出为标准分辨率。付费版解锁无限生成、高清输出、品牌管理套件和团队协作功能。"
+      },
+      {
+        "question": "免费版生成的图片可以商用吗？",
+        "answer": "免费版生成的图片可用于个人项目与非商业用途。商业用途需要升级到Starter及以上套餐。"
+      }
+    ],
+    "variant": true
+  },
+  {
+    "slug": "zh-ai-design-agent-pro",
+    "pn": "AI Design Agent 专业版",
+    "t": "AI设计工具专业版 — Lovart Pro AI Design Agent",
+    "d": "Lovart Pro 专业版解锁无限生成、4K高清输出、团队协作与品牌管理套件。适合设计机构与内容团队，每人每月$15起。",
+    "st": "AI设计工具专业版 — Lovart Pro 在线免费试用",
+    "sd": "Lovart Pro 专业版解锁无限生成、4K高清输出、团队协作与品牌管理套件。适合设计机构与内容团队。",
+    "kw": [
+      "AI设计工具专业版",
+      "专业设计软件",
+      "lovart pro"
+    ],
+    "bento": [
+      {
+        "title": "无限生成",
+        "description": "无额度限制。AI Design Agent Pro 不设每日上限，大规模内容生产任务也能完成。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "4K/8K输出",
+        "description": "支持最高8K分辨率。印刷级画质满足品牌手册、宣传海报、线下物料等高端场景。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "团队协作空间",
+        "description": "建立团队工作区。成员共享品牌资产、协作编辑项目、统一管理设计版本。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌管理套件",
+        "description": "完整的Brand Kit功能。多个品牌可切换，每个品牌的配色、字体、Logo统一管理。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "设置品牌",
+        "description": "上传品牌Logo、设定品牌色与字体。Pro版支持管理多个品牌，随时切换。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "团队协作",
+        "description": "邀请团队成员加入工作区。分配不同权限，共同管理设计项目与品牌资产。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "批量产出",
+        "description": "利用无限生成与品牌自动匹配能力，快速完成大批量设计任务。从几十到几百张，效率不变。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "设计机构数字化",
+        "description": "一家10人设计公司使用Pro版管理30+客户的品牌资产。每个客户一套Brand Kit，输出自动匹配。月产出从200件提升到600件。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌总部统一管控",
+        "description": "连锁品牌总部用Pro版建立品牌规范，全国门店运营人员通过工作区制作符合标准的本地化物料。审批流程内置，违规输出降至零。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "免费版",
+      "Starter",
+      "Pro"
+    ],
+    "comp_r": [
+      {
+        "feature": "生成额度",
+        "traditional": "每日有限",
+        "singleTool": "更多额度",
+        "lovart": "无限生成"
+      },
+      {
+        "feature": "分辨率",
+        "traditional": "标准",
+        "singleTool": "高清",
+        "lovart": "4K/8K"
+      },
+      {
+        "feature": "团队协作",
+        "traditional": "单人",
+        "singleTool": "单人",
+        "lovart": "多人实时协作"
+      },
+      {
+        "feature": "品牌管理",
+        "traditional": "不支持",
+        "singleTool": "基础",
+        "lovart": "完整品牌套件"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Pro版与Starter版主要区别是什么？",
+        "answer": "Pro版包含无限生成、团队协作、多品牌管理、优先支持等高级功能。Starter版适合个人使用，有限额但已覆盖大部分使用场景。"
+      },
+      {
+        "question": "Pro版支持多少人同时使用？",
+        "answer": "Pro版按席位计费，您可以根据团队规模购买相应数量的席位。所有席位共享品牌资产与项目空间。"
+      },
+      {
+        "question": "团队协作时设计所有权归谁？",
+        "answer": "您和您的团队完全拥有所有生成内容的知识产权。Lovart不会对您在Pro版中创作的内容主张任何权利。"
+      }
+    ],
+    "variant": true
+  },
+  {
+    "slug": "zh-mcot-engine",
+    "pn": "MCoT 引擎",
+    "t": "MCoT 引擎 — Lovart 思维链推理技术",
+    "d": "MCoT（Multi-chain Chain of Thought）是Lovart自研的思维链推理引擎。让AI不只是生图，而是先理解业务场景、再策略性设计。",
+    "st": "MCoT引擎 — Lovart 思维链推理技术 了解更多",
+    "sd": "MCoT是Lovart自研的思维链推理引擎。让AI不只是生图，而是先理解业务场景，再策略性设计。",
+    "kw": [
+      "MCoT引擎",
+      "思维链推理",
+      "AI推理引擎",
+      "lovart技术"
+    ],
+    "bento": [
+      {
+        "title": "策略性推理",
+        "description": "MCoT不是简单文生图。它先建立对设计需求的多维度理解，再构思策略方案，最后执行生成。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多链并行",
+        "description": "同时从品牌调性、目标受众、色彩心理学、竞品风格等多条路径进行推理，综合得出最优方案。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "上下文记忆",
+        "description": "记住本次项目中所有历史交互。修改需求时理解你是想调整，而不是重新开始。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "可解释输出",
+        "description": "每次生成附带设计说明：为什么选择这个配色、为什么用这种排版。设计思路透明可追溯。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [
+      {
+        "label": "思考链",
+        "content": {
+          "title": "Multi-chain 架构",
+          "description": "MCoT 同时运行多条思考链：品牌维度链分析品牌定位与调性，受众链分析目标用户偏好，场景链分析使用场景需求。最终三条链的输出在决策层合成，确保设计结果既符合品牌又贴近市场。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "推理过程",
+        "content": {
+          "title": "透明可解释",
+          "description": "每次生成附带推理过程：为什么选这个配色、为什么用这个字体、这个布局解决了什么信息层级问题。设计师可以理解AI的思路，而不是对着黑盒猜。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "持续优化",
+        "content": {
+          "title": "反馈闭环",
+          "description": "用户每次的编辑与选择都被MCoT引擎记录。它从你的修改行为中学习偏好，下次生成时自动调整方向。用得越久，越贴合你的风格。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      }
+    ],
+    "tools": [
+      {
+        "title": "品牌理解",
+        "description": "分析品牌定位与语态",
+        "icon": ""
+      },
+      {
+        "title": "受众分析",
+        "description": "理解目标人群偏好",
+        "icon": ""
+      },
+      {
+        "title": "审美推理",
+        "description": "色彩布局语义匹配",
+        "icon": ""
+      },
+      {
+        "title": "方案融合",
+        "description": "多方案最优合成",
+        "icon": ""
+      }
+    ],
+    "steps": [
+      {
+        "title": "输入设计需求",
+        "description": "告诉MCoT你的项目背景：什么品牌、什么用途、什么风格方向。越详细，推理越准确。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "MCoT推理分析",
+        "description": "引擎从多个思维链同时展开分析。品牌调性、目标受众、色彩、排版、竞品差异，每条链独立推理。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "输出设计结果",
+        "description": "综合多链推理结果生成设计方案，附带每条设计决策的推理依据。用户查看、选择、微调。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [
+      {
+        "title": "品牌Logo设计",
+        "description": "MCoT从品牌命名、行业属性、目标人群三条链推理，生成真正符合品牌定位的Logo。不是随机的图形组合。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "社媒内容批量产出",
+        "description": "MCoT记住品牌的调性偏好和封面风格。每次生成新内容时自动延续前次设定的视觉框架。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "电商详情页",
+        "description": "MCoT分析产品卖点、目标客群、竞品页面结构，生成有说服力的详情页布局与文案。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "showcases": [
+      {
+        "title": "品牌Logo推理实例",
+        "description": "某茶饮品牌要求Logo：MCoT从茶饮文化、年轻受众、国潮风格三条链推理，综合得出一个结合汉字元素与简约图形的方案。设计师评价：这是AI第一次做出了有理解的设计。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "社媒内容批量生产",
+        "description": "某知识博主设定品牌风格后，MCoT在后续30天持续产出封面与配图。每张图的配色与字体自动继承品牌规范，但构图每张都不同。粉丝反馈视觉统一感明显提升。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "传统AI模型",
+      "单prompt工具",
+      "Lovart MCoT 引擎"
+    ],
+    "comp_r": [
+      {
+        "feature": "思考方式",
+        "traditional": "无，直接生成",
+        "singleTool": "单prompt匹配",
+        "lovart": "多链并行推理"
+      },
+      {
+        "feature": "品牌理解",
+        "traditional": "无品牌感知",
+        "singleTool": "靠用户反复调参",
+        "lovart": "自动分析品牌定位"
+      },
+      {
+        "feature": "修改响应",
+        "traditional": "从头重新生成",
+        "singleTool": "改prompt再试",
+        "lovart": "理解修改意图，智能迭代"
+      },
+      {
+        "feature": "可解释性",
+        "traditional": "黑箱输出",
+        "singleTool": "无法解释",
+        "lovart": "附带推理过程说明"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "MCoT和普通AI生成有什么区别？",
+        "answer": "普通AI生图是文到图的直接映射。MCoT先建立对需求的深度理解，从品牌、受众、场景等多个角度进行推理，再基于推理结果生成设计。结果更贴合实际需求。"
+      },
+      {
+        "question": "MCoT能理解中文语境吗？",
+        "answer": "MCoT专门针对中文语料训练。它理解中国文化中的色彩象征、排版审美与品牌表达方式。不是英文思维的中文翻译。"
+      },
+      {
+        "question": "MCoT的推理过程对用户可见吗？",
+        "answer": "是的。每次生成附带设计说明：选择的配色理由、排版逻辑、字体搭配原因。您可以了解AI的设计思路，也方便您提出更精准的修改意见。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-chatcanvas",
+    "pn": "ChatCanvas",
+    "t": "ChatCanvas — Lovart AI设计画布",
+    "d": "ChatCanvas 是Lovart的智能对话画布。以自然语言沟通设计需求，AI实时生成、实时修改，像跟设计师聊天一样完成视觉创作。",
+    "st": "ChatCanvas — Lovart AI设计画布 在线免费使用",
+    "sd": "ChatCanvas 是Lovart的智能对话画布。自然语言沟通设计需求，AI实时生成、实时修改，像跟设计师聊天一样完成视觉创作。",
+    "kw": [
+      "ChatCanvas",
+      "AI设计画布",
+      "对话式设计",
+      "lovart画布"
+    ],
+    "bento": [
+      {
+        "title": "对话式交互",
+        "description": "在画布右侧对话框说需求：帮我把标题放大、改成蓝色、换个字体。AI立即执行。不用找按钮菜单。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "实时预览",
+        "description": "每一次修改即时渲染。点下发送键，画布上的内容随对话同步更新。所见即所得。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多画布管理",
+        "description": "同时打开多个项目画布。品牌Logo一个画布、社媒一个画布、电商一个画布。独立管理不混淆。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "历史回溯",
+        "description": "每次对话都是项目历史。可以回退到任意历史版本，查看之前的设计决策。不会改错回不去。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [
+      {
+        "label": "对话设计",
+        "content": {
+          "title": "自然语言驱动",
+          "description": "ChatCanvas 的核心是对话。不需要学习任何设计软件的操作方式，用你习惯的语言描述需求，AI理解并执行。改颜色说改颜色、调大小说调大小。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "多模态输入",
+        "content": {
+          "title": "图文混合理解",
+          "description": "不止支持文字。你可以拖一张参考图进来，说按这个风格做。ChatCanvas同时理解图片风格与文字指令，融合输出。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "协作画布",
+        "content": {
+          "title": "团队实时协作",
+          "description": "邀请团队成员进入同一画布。每个人都可以在对话框发指令，所有操作实时同步。适合远程设计评审与讨论。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      }
+    ],
+    "tools": [
+      {
+        "title": "文生图",
+        "description": "用文字描述生成图片",
+        "icon": ""
+      },
+      {
+        "title": "图文编辑",
+        "description": "对话式修改设计元素",
+        "icon": ""
+      },
+      {
+        "title": "多画布",
+        "description": "同时管理多个项目",
+        "icon": ""
+      },
+      {
+        "title": "版本历史",
+        "description": "回溯任意历史版本",
+        "icon": ""
+      }
+    ],
+    "steps": [
+      {
+        "title": "创建画布",
+        "description": "选择项目类型：社媒、品牌、电商、演示。ChatCanvas 自动设定画布尺寸与模板。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "对话创作",
+        "description": "在右侧对话框用中文描述需求。你想做什么就说什么，AI自动生成到画布上。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "迭代调整",
+        "description": "看结果不满意？继续说：把标题改成左对齐、背景换渐变色。每次修改即时生效。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [
+      {
+        "title": "新手设计师",
+        "description": "刚入门不会用专业软件？ChatCanvas用对话完成设计。从封面到海报，边聊边做。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "团队设计评审",
+        "description": "设计师和项目经理在同一画布里沟通。说改哪里就改哪里，不用截图、不用标注、不用反复沟通。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "快速原型",
+        "description": "先对话出效果图，再决定要不要精修。从创意到视觉原型，缩短到十分之一的时间。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "showcases": [
+      {
+        "title": "非设计师的创作日常",
+        "description": "一位产品经理用ChatCanvas自己做App Store截图模板。打开画布、描述页面结构、调整文案和颜色。两小时完成设计师两天的工作量。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "远程设计评审提速",
+        "description": "某设计团队用ChatCanvas做评审。甲方在对话框说改哪里，设计师看AI即时渲染效果后再决定是否采纳。一轮评审从2小时缩短到20分钟。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "传统设计软件",
+      "传统AI工具",
+      "Lovart ChatCanvas"
+    ],
+    "comp_r": [
+      {
+        "feature": "交互方式",
+        "traditional": "菜单/工具/图层/快捷键",
+        "singleTool": "写prompt等生成",
+        "lovart": "对话聊天，AI自动执行"
+      },
+      {
+        "feature": "学习成本",
+        "traditional": "高，需要系统学习",
+        "singleTool": "中等，需掌握prompt技巧",
+        "lovart": "零门槛，说中文就行"
+      },
+      {
+        "feature": "修改速度",
+        "traditional": "找到图层-修改-保存",
+        "singleTool": "重写prompt重新生成",
+        "lovart": "一句话即时修改"
+      },
+      {
+        "feature": "协作能力",
+        "traditional": "本地文件互相传",
+        "singleTool": "单人工具无协作",
+        "lovart": "实时多人协作画布"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "ChatCanvas和普通AI生图工具区别在哪？",
+        "answer": "普通AI生图是一次性生成，不满意要重写prompt。ChatCanvas是持续对话：生成了再修改，修改了再优化，整个流程像跟设计师聊天一样自然。"
+      },
+      {
+        "question": "ChatCanvas支持哪些文件格式导出？",
+        "answer": "支持PNG、JPG、WebP、SVG、PDF等多种格式。也可以直接复制到剪贴板粘贴到其他应用。"
+      },
+      {
+        "question": "ChatCanvas的对话记录保存在哪里？",
+        "answer": "每个画布的对话记录自动保存在云端。换设备登录Lovart账号，画布和对话历史全部同步。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-touch-edit",
+    "pn": "Touch Edit",
+    "t": "Touch Edit — Lovart 点选编辑功能",
+    "d": "Touch Edit 让您直接在画布上点选任意元素进行修改。不用写prompt，点一下文字改文字、点一下图片换图片，精准控制每一个细节。",
+    "st": "Touch Edit — Lovart 点选编辑 在线免费使用",
+    "sd": "Touch Edit 让您直接在画布上点选任意元素修改。不用写prompt，点一下文字改文字、点一下图片换图片。",
+    "kw": [
+      "Touch Edit",
+      "点选编辑",
+      "AI精准编辑",
+      "lovart编辑"
+    ],
+    "bento": [
+      {
+        "title": "点选即改",
+        "description": "鼠标点击任意元素直接编辑。点击文字改文案、点击图片换图片、点击背景改颜色。跟操作PPT一样简单。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "上下文感知",
+        "description": "修改一个元素时，AI自动调整周围元素保持布局协调。把标题改大了，下面的正文自动往下挪。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "风格保持",
+        "description": "换图片或改文字后，新内容自动适配原有的风格设定。滤镜、色调、字体不变，融入原有设计。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "撤销重做",
+        "description": "每一步修改都可撤销。多步回退，不怕改坏。对比前后版本，确认满意再保存。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [
+      {
+        "label": "精准操作",
+        "content": {
+          "title": "像素级控制",
+          "description": "Touch Edit 不只是粗糙的圈选。你可以精确点击到文字图层、图片主体、形状物体。AI会高亮可编辑区域，让用户清楚知道哪些元素可以修改。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "智能适配",
+        "content": {
+          "title": "替换即融合",
+          "description": "替换图片时，Touch Edit 自动分析新图片的色彩与构图，应用原有滤镜与色调调整。换上去的图片就像原生设计好的一样，不需要额外调色。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "批量编辑",
+        "content": {
+          "title": "全局同步修改",
+          "description": "在多张设计中使用相同品牌元素时，改一个其他全部同步更新。改一次Logo位置，所有页面中的Logo自动跟随。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      }
+    ],
+    "tools": [
+      {
+        "title": "文字编辑",
+        "description": "点击修改文本内容样式",
+        "icon": ""
+      },
+      {
+        "title": "图片替换",
+        "description": "选新图自动融入设计",
+        "icon": ""
+      },
+      {
+        "title": "颜色调整",
+        "description": "点选元素修改配色",
+        "icon": ""
+      },
+      {
+        "title": "布局微调",
+        "description": "拖拽移动元素位置",
+        "icon": ""
+      }
+    ],
+    "steps": [
+      {
+        "title": "选中元素",
+        "description": "在画布上点击你想修改的文字、图片或形状。被选中元素高亮显示。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "进行修改",
+        "description": "打字改文字、拖新图替换图片、选色盘改颜色。所有修改即时生效。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "完成导出",
+        "description": "全部修改满意后一键导出。支持单张导出也可以批量导出整个项目。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [
+      {
+        "title": "文案调整",
+        "description": "每个设计项目都需要改文案。Touch Edit 点一下文字直接改，不用进编辑模式，不用打开图层。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "电商主图优化",
+        "description": "活动价变了？主图数字要改？Touch Edit 点击数字直接修改，AI自动适配字体与位置。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "社媒模板复用",
+        "description": "每周社媒模板只需换标题和配图。Touch Edit 点两下完成，原来10分钟的工作30秒搞定。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "showcases": [
+      {
+        "title": "电商运营的日常神器",
+        "description": "某电商运营每天要改30+张主图的促销信息。用Touch Edit，打开模板点一下文字改价格、点一下图片换产品。原来两小时的活变成了20分钟。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "社媒团队批量修改",
+        "description": "某MCN机构每周产出50+张社媒图。用Touch Edit的批量同步功能，改一次标题样式，所有图片里的标题格式自动更新。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "传统设计软件",
+      "传统AI工具",
+      "Lovart Touch Edit"
+    ],
+    "comp_r": [
+      {
+        "feature": "修改方式",
+        "traditional": "找图层→选工具→修改",
+        "singleTool": "改prompt重新生成",
+        "lovart": "点选即改，所见即所得"
+      },
+      {
+        "feature": "修改精度",
+        "traditional": "高但操作复杂",
+        "singleTool": "低，每次生成不同",
+        "lovart": "高，精准定位元素"
+      },
+      {
+        "feature": "修改速度",
+        "traditional": "30秒到2分钟",
+        "singleTool": "30秒到1分钟",
+        "lovart": "1-5秒"
+      },
+      {
+        "feature": "布局保持",
+        "traditional": "手动调整",
+        "singleTool": "无法保持，重新布局",
+        "lovart": "AI自动适配保持布局"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Touch Edit能编辑哪些类型的元素？",
+        "answer": "支持文字（内容、字体、大小、颜色）、图片（替换、裁剪、滤镜）、形状（颜色、大小、位置）、背景（颜色、渐变、图片）。"
+      },
+      {
+        "question": "Touch Edit和直接在PS里编辑有什么区别？",
+        "answer": "PS需要您有设计技能和软件操作经验。Touch Edit任何用户都能用，点一下就能改，AI自动处理图层匹配和风格融合。"
+      },
+      {
+        "question": "Touch Edit支持移动端使用吗？",
+        "answer": "支持。在手机浏览器上打开Lovart，手指点击即可选中元素进行编辑。移动端体验与桌面端一致。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-text-edit",
+    "pn": "Text Edit",
+    "t": "Text Edit — Lovart 文字编辑功能",
+    "d": "Text Edit 支持对AI生成图片中的文字进行精确修改。调整文案、字体、颜色、大小、间距，就像在PS里编辑文字图层一样自由。",
+    "st": "Text Edit — Lovart 文字编辑 在线免费使用",
+    "sd": "Text Edit 支持对AI生成图片中的文字进行精确修改。调整文案、字体、颜色、大小、间距。",
+    "kw": [
+      "Text Edit",
+      "AI文字编辑",
+      "图片文字修改"
+    ],
+    "bento": [
+      {
+        "title": "文字内容修改",
+        "description": "直接点击图片中的文字，输入新内容即可替换。AI自动匹配原文字的字体风格与排版位置。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "字体切换",
+        "description": "选中文字后在字体库中更换字体。支持中文字体与英文字体，AI自动调整字距与行距。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "文字样式",
+        "description": "调整文字颜色、大小、加粗、斜体、对齐方式。所有修改即时预览，满意为止。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "文字特效",
+        "description": "为文字添加投影、描边、渐变等效果。让标题更有视觉冲击力，字号更大更醒目。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "点击文字",
+        "description": "在画布中点击你想修改的文字区域。AI会自动识别该区域为文字元素并激活编辑模式。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "输入新内容",
+        "description": "直接键盘输入替换文字。或在右侧面板修改字体、大小、颜色、字间距等参数。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "完成导出",
+        "description": "确认修改效果合适后，导出最终图片。修改前后版本自动保存可对比。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "社媒运营高效改文案",
+        "description": "某自媒体博主每次发小红书前都要试3-5版封面标题。用Text Edit，生成后点击标题直接改文案、换字体，每次调整不到10秒。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "电商主图批量改价",
+        "description": "双12大促，200张主图需要改价格和活动标签。用Text Edit批量修改功能，一次替换全部价格数字，AI自动保持字体位置。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "传统设计软件",
+      "传统AI工具",
+      "Lovart Text Edit"
+    ],
+    "comp_r": [
+      {
+        "feature": "文字编辑方式",
+        "traditional": "打开PSD→找到文字图层→修改",
+        "singleTool": "改prompt重新生成",
+        "lovart": "点击文字直接编辑"
+      },
+      {
+        "feature": "字体兼容",
+        "traditional": "需安装字体",
+        "singleTool": "不可控",
+        "lovart": "30+内置中文字体"
+      },
+      {
+        "feature": "编辑速度",
+        "traditional": "1-3分钟",
+        "singleTool": "30秒-1分钟",
+        "lovart": "1-5秒"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Text Edit识别图片中所有文字吗？",
+        "answer": "识别AI生成的文字区域。如果是上传的已有图片中的文字，需要先经过OCR识别后再编辑。"
+      },
+      {
+        "question": "Text Edit支持哪些中文字体？",
+        "answer": "内置30+中文字体，包括黑体、宋体、楷体、圆体等常用字体，以及多个设计师优选字体。"
+      },
+      {
+        "question": "修改文字后AI会重新生成图片吗？",
+        "answer": "不会。Text Edit只修改文字区域，不重新生成整个图片。所以修改速度很快，图片其他部分保持不变。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-edit-elements",
+    "pn": "Edit Elements",
+    "t": "Edit Elements — Lovart 元素编辑功能",
+    "d": "Edit Elements 可独立选中图片中的每个视觉元素进行编辑。换颜色、调位置、改大小、删物体，AI始终保持背景与光影自然融合。",
+    "st": "Edit Elements — Lovart 元素编辑 在线免费使用",
+    "sd": "Edit Elements 可独立选中图片中的每个视觉元素进行编辑。换颜色、调位置、改大小、删物体。",
+    "kw": [
+      "元素编辑",
+      "AI图片编辑",
+      "视觉元素编辑"
+    ],
+    "bento": [
+      {
+        "title": "元素独立选中",
+        "description": "AI自动识别并分离图片中的各个元素：人像、物品、背景、文字。点击即可选中单个元素进行编辑。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "位置与大小",
+        "description": "拖拽移动元素位置，拖拽边缘改变大小。AI自动保持元素比例与透视角度。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "颜色与效果",
+        "description": "选中元素后修改颜色、透明度、投影。让人物穿红衣变蓝衣，让产品换颜色，即时渲染。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "删除与替换",
+        "description": "选中不需要的元素一键删除。AI自动填充删除区域，保持背景自然。也可以选中一个元素替换为其他内容。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "选中元素",
+        "description": "鼠标悬停在图片上，AI自动高亮显示可编辑的元素区域。点击选中你想编辑的元素。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "执行编辑",
+        "description": "拖拽移动、调整大小、修改颜色或按Delete删除。所有操作实时渲染。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "确认保存",
+        "description": "编辑完成后确认效果。不满意可以撤销到上一步，重新调整直到满意。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "产品图元素替换",
+        "description": "某电商卖家需要把产品图中的白色包装换成红色版本。用Edit Elements选中包装区域，点选红色，AI自动调整高光与阴影，30秒出图。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "人像背景替换",
+        "description": "一张室外拍摄的人像照，需要换成室内场景。用Edit Elements选中人物，AI自动抠图，再选择新的背景图。光影自然融合，看不出合成痕迹。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "Photoshop",
+      "传统AI工具",
+      "Lovart Edit Elements"
+    ],
+    "comp_r": [
+      {
+        "feature": "操作方式",
+        "traditional": "钢笔工具+图层蒙版",
+        "singleTool": "AI自动但不可控",
+        "lovart": "点选元素精准编辑"
+      },
+      {
+        "feature": "修改精度",
+        "traditional": "像素级但操作复杂",
+        "singleTool": "整体重新生成",
+        "lovart": "元素级精准控制"
+      },
+      {
+        "feature": "学习门槛",
+        "traditional": "高，数周学习",
+        "singleTool": "中等",
+        "lovart": "零门槛"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Edit Elements可以编辑上传的图片吗？",
+        "answer": "可以。上传自己的图片后，AI会自动分析图片结构，分离各个元素供您编辑。"
+      },
+      {
+        "question": "删除一个元素后背景会不自然吗？",
+        "answer": "不会。Edit Elements使用AI智能填充技术，删除元素后自动分析与周围背景的匹配，填充结果自然连贯。"
+      },
+      {
+        "question": "Edit Elements支持批量编辑吗？",
+        "answer": "支持。选中一个元素调整完成后，可以将同样的修改应用到多张图片中的相似元素上。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-brand-kit",
+    "pn": "Brand Kit",
+    "t": "Brand Kit — Lovart 品牌工具包",
+    "d": "Brand Kit 是Lovart的品牌管理系统。上传Logo、设定配色与字体后，AI生成的所有设计自动保持品牌一致性。一次设置，全域生效。",
+    "st": "Brand Kit — Lovart 品牌工具包 在线免费使用",
+    "sd": "Brand Kit 是Lovart的品牌管理系统。上传Logo、设定配色与字体后，所有AI设计自动保持品牌一致性。",
+    "kw": [
+      "Brand Kit",
+      "品牌管理工具",
+      "品牌设计系统"
+    ],
+    "bento": [
+      {
+        "title": "品牌资产中心",
+        "description": "集中管理品牌Logo、配色方案、字体库、辅助图形。所有品牌视觉资产存放在一个地方。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "自动品牌匹配",
+        "description": "进行任何设计时，AI自动调用Brand Kit中的品牌规范。配色自动匹配、字体自动选用、Logo自动放置。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多品牌切换",
+        "description": "可同时管理多个品牌。一个账户下维护不同品牌各自的视觉规范，设计时一键切换。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌合规检查",
+        "description": "设计完成后自动检查是否偏离品牌规范：颜色偏差、字体误用、Logo变形等。确保输出合规。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [
+      {
+        "label": "品牌资产管理",
+        "content": {
+          "title": "一处配置全局生效",
+          "description": "把Logo、配色、字体上传到Brand Kit，后续所有AI设计任务自动使用这些品牌规范。新员工做设计也输出标准品牌物料，不再出现品牌不一致的问题。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "品牌合规检查",
+        "content": {
+          "title": "自动纠偏",
+          "description": "每次设计生成后，Brand Kit自动扫描：Logo颜色是否准确、字体是否使用品牌字体、主色调是否在品牌色板内。偏差超过阈值时自动告警。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "多品牌管理",
+        "content": {
+          "title": "子品牌独立管理",
+          "description": "品牌矩阵或多子品牌公司可以为每个品牌建立独立的Brand Kit。设计师在不同品牌间切换，品牌规范不会混淆。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      }
+    ],
+    "tools": [
+      {
+        "title": "品牌上传",
+        "description": "Logo配色字体集中管理",
+        "icon": ""
+      },
+      {
+        "title": "自动匹配",
+        "description": "设计时自动应用品牌规范",
+        "icon": ""
+      },
+      {
+        "title": "合规检测",
+        "description": "检查输出是否偏离品牌",
+        "icon": ""
+      },
+      {
+        "title": "多品牌库",
+        "description": "多个品牌独立管理切换",
+        "icon": ""
+      }
+    ],
+    "steps": [
+      {
+        "title": "设定品牌",
+        "description": "上传Logo、选择品牌色、设定品牌字体。一步完成品牌规范设置。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "开始设计",
+        "description": "创建任何设计任务，AI自动加载Brand Kit的品牌规范进行生成。不需要每次重复设置。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "合规输出",
+        "description": "设计完成后自动检查品牌合规性。如有偏差AI提示修改建议，确认后输出。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [
+      {
+        "title": "品牌部门统一管控",
+        "description": "总部制定Brand Kit标准，各地分公司按照规范生成本地化物料。所有输出自动合规。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "创业公司从零建品牌",
+        "description": "先通过AI品牌生成器创建品牌视觉，存入Brand Kit。后续所有设计自动沿用。品牌从第一天就保持统一。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "设计机构管理客户",
+        "description": "每个客户一个Brand Kit。切换客户时品牌规范自动切换，不会把A客户的配色用到B客户的设计上。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "showcases": [
+      {
+        "title": "连锁品牌全国统一",
+        "description": "某连锁餐饮品牌总部在Brand Kit设定标准配色与Logo用法。全国200家门店用Lovart做本地促销海报时，自动使用品牌规范。总部审核一次通过率从40%提升到95%。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌重塑高效落地",
+        "description": "某科技公司品牌升级，在Brand Kit中更新Logo和配色。所有在用模板和设计项目自动更新为新品牌规范。原来需要2周的品牌更新工作，2个小时完成。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "没有品牌管理",
+      "传统品牌手册",
+      "Lovart Brand Kit"
+    ],
+    "comp_r": [
+      {
+        "feature": "品牌执行",
+        "traditional": "每次设计手工对准品牌规范",
+        "singleTool": "PDF手册，设计师看完照做",
+        "lovart": "AI自动匹配品牌规范"
+      },
+      {
+        "feature": "一致性保障",
+        "traditional": "靠设计师记忆与经验",
+        "singleTool": "靠设计师翻手册",
+        "lovart": "系统强制执行品牌规范"
+      },
+      {
+        "feature": "品牌更新",
+        "traditional": "逐张修改所有设计稿",
+        "singleTool": "重新印刷品牌手册",
+        "lovart": "Brand Kit更新，所有项目自动同步"
+      },
+      {
+        "feature": "团队协作",
+        "traditional": "无法保证多人输出一致",
+        "singleTool": "无法保证",
+        "lovart": "全团队共享同一品牌规范"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Brand Kit支持哪些品牌资产上传？",
+        "answer": "支持Logo（PNG/SVG/AI/EPS）、品牌色（HEX/RGB/Pantone）、字体（TTF/OTF）、辅助图形和品牌图片素材。"
+      },
+      {
+        "question": "品牌更新后旧设计会自动更新吗？",
+        "answer": "会自动更新。Brand Kit中任意品牌元素变更后，所有引用该品牌的设计项目都会收到更新提示，可选择一键同步。"
+      },
+      {
+        "question": "一个账号可以管理多少个Brand Kit？",
+        "answer": "免费版支持1个Brand Kit。Starter版支持3个。Pro版不限数量，适合管理多个子品牌或客户品牌的设计机构。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-brand-kit-generator",
+    "pn": "品牌生成器",
+    "t": "品牌生成器 — Lovart 智能品牌设计",
+    "d": "Lovart 品牌生成器从品牌名称与行业出发，自动生成Logo、配色方案、字体系列与辅助图形。30秒搭建完整的品牌视觉识别系统。",
+    "st": "品牌生成器 — Lovart 智能品牌设计 在线免费使用",
+    "sd": "Lovart 品牌生成器从品牌名称与行业出发，自动生成Logo、配色、字体与辅助图形。30秒搭建完整品牌视觉系统。",
+    "kw": [
+      "品牌生成器",
+      "品牌设计",
+      "VI设计工具"
+    ],
+    "bento": [
+      {
+        "title": "全自动品牌搭建",
+        "description": "输入品牌名称和行业，AI自动生成完整的品牌视觉方案。Logo、配色、字体、辅助图形一步到位。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多风格方案",
+        "description": "同时生成多个品牌风格方向：现代简约、中国风、年轻潮酷、专业商务。选择最符合品牌调性的方向。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌延展",
+        "description": "基础品牌确定后，自动延展生成名片、PPT模板、社媒封面等实际应用场景的设计。品牌可以直接用。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "一键存入Brand Kit",
+        "description": "生成的品牌方案一键存入Brand Kit。后续所有设计自动继承这些品牌规范，保持一致性。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "输入品牌信息",
+        "description": "填写品牌名称、选择行业、描述品牌调性。越详细AI生成的品牌方案越精准。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "选择品牌方向",
+        "description": "AI生成3-5个品牌视觉方向。预览每个方案的Logo、配色与字体组合，选择最喜欢的。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "生成完整VI",
+        "description": "选定方向后AI自动延展完整的品牌视觉体系。包含全套应用设计，可直接投入使用。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "新品牌30分钟上线",
+        "description": "一位独立创业者用品牌生成器为自己的新消费品牌搭建全套视觉。从输入品牌名到拿到Logo、名片模板、社媒封面，一共30分钟。传统流程至少需要2周。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌重塑多方案对比",
+        "description": "某教育公司计划品牌升级。用品牌生成器同时生成4个风格方向：专业学术型、亲和创新型、国际简约型、科技未来型。团队在一天内完成了品牌方向的决策。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "找设计公司",
+      "自己用软件做",
+      "Lovart 品牌生成器"
+    ],
+    "comp_r": [
+      {
+        "feature": "交付时间",
+        "traditional": "2-4周",
+        "singleTool": "数天到数周",
+        "lovart": "30分钟"
+      },
+      {
+        "feature": "费用",
+        "traditional": "数千到数万",
+        "singleTool": "软件订阅费",
+        "lovart": "免费版可用"
+      },
+      {
+        "feature": "方案数量",
+        "traditional": "2-3个方案",
+        "singleTool": "自己做到满意",
+        "lovart": "3-5个AI方案"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "品牌生成器生成的Logo有版权吗？",
+        "answer": "有。生成的Logo设计版权归您所有。但建议进行商标查询后再注册使用，避免与已有商标冲突。"
+      },
+      {
+        "question": "品牌生成器支持中文品牌名设计吗？",
+        "answer": "完全支持中文品牌名。AI理解中文文字结构与美学，可以生成融入汉字元素的Logo与品牌方案。"
+      },
+      {
+        "question": "生成的品牌方案可以修改吗？",
+        "answer": "可以。每个品牌方案生成后都可以使用Touch Edit微调：改颜色、换字体、调整Logo布局等。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-ai-image-generator",
+    "pn": "AI图片生成器",
+    "t": "AI图片生成器 — Lovart 文生图工具",
+    "d": "Lovart AI图片生成器将您的文字描述转化为高质量图片。支持多种风格：写实、插画、3D渲染、水墨等，适配社媒、电商、广告等场景。",
+    "st": "AI图片生成器 — Lovart 文生图 在线免费使用",
+    "sd": "Lovart AI图片生成器将文字描述转化为高质量图片。支持写实、插画、3D渲染等多种风格，适配社媒电商广告。",
+    "kw": [
+      "AI图片生成器",
+      "文生图工具",
+      "AI绘画"
+    ],
+    "bento": [
+      {
+        "title": "文生图",
+        "description": "输入文字描述，AI理解并生成对应图片。说一片森林、一束阳光穿过树叶，AI出图。支持中英文输入。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "风格多样",
+        "description": "写实摄影、商业插画、3D渲染、水墨国风、像素艺术、赛博朋克等20+风格任选。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "尺寸灵活",
+        "description": "支持1:1、4:3、16:9、3:4、9:16等多种比例。适配不同平台的上传规范。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "参考图引导",
+        "description": "上传参考图，AI按照参考图的风格或构图进行生成。控制力更强，结果更可控。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [
+      {
+        "label": "文生图",
+        "content": {
+          "title": "文字到图片",
+          "description": "最核心的能力。用你的母语描述想要的画面，AI在几秒内生成高质量图片。不需要学专业prompt，说人话就能出好图。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "风格控制",
+        "content": {
+          "title": "20+风格引擎",
+          "description": "内置20多种专业风格模型：摄影级写实、商业插画、水墨国风、3D渲染、像素艺术、赛博朋克、蒸汽波等。每种风格经过调优，不是简单加滤镜。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "图生图",
+        "content": {
+          "title": "以图生图",
+          "description": "上传一张现有图片，AI在其基础上进行二次创作。改变风格、扩展画布、局部修改、生成多版本变体。一张图变出无数可能。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      }
+    ],
+    "tools": [
+      {
+        "title": "文生图",
+        "description": "文字描述直接生成图片",
+        "icon": ""
+      },
+      {
+        "title": "图生图",
+        "description": "以参考图为基础创作",
+        "icon": ""
+      },
+      {
+        "title": "风格迁移",
+        "description": "将图片转为其他风格",
+        "icon": ""
+      },
+      {
+        "title": "智能修图",
+        "description": "局部修改与扩展画布",
+        "icon": ""
+      }
+    ],
+    "steps": [
+      {
+        "title": "输入描述",
+        "description": "用中文描述你想要的画面。可以加上风格偏好、色彩方向和构图要求。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "选择风格",
+        "description": "从20+风格中选择最匹配的方向。也可以让AI根据描述自动推荐风格。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "生成与优化",
+        "description": "AI生成4张预览图。选择满意的一张进行高清放大或进一步修改。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [
+      {
+        "title": "社媒配图",
+        "description": "公众号、小红书、抖音的封面与配图。AI图片生成器根据文章主题自动生成相关配图。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "广告素材",
+        "description": "信息流广告、搜索广告的图片素材。根据目标受众与营销主题生成高点击率的创意图片。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "创意视觉",
+        "description": "概念设计、活动海报、创意插画。快速将想法转化为视觉稿。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "showcases": [
+      {
+        "title": "自媒体日更配图",
+        "description": "一位科技博主每天写一篇AI资讯，用AI图片生成器根据当日主题生成封面图。从找图到出图，原来30分钟缩到3分钟。每月省下15小时。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "电商A+页面",
+        "description": "某跨境卖家需要为30个产品生成亚马逊A+页面配图。用AI图片生成器一次性描述场景模板，批量生产统一风格的产品场景图。1天完成原本2周的工作。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "Midjourney",
+      "Stable Diffusion",
+      "Lovart AI图片生成器"
+    ],
+    "comp_r": [
+      {
+        "feature": "中文理解",
+        "traditional": "弱，英文prompt为主",
+        "singleTool": "中等，需调参",
+        "lovart": "强，中文自然语言输入"
+      },
+      {
+        "feature": "操作门槛",
+        "traditional": "需学习prompt语法",
+        "singleTool": "需技术部署与调参",
+        "lovart": "零门槛，说中文就行"
+      },
+      {
+        "feature": "风格数量",
+        "traditional": "通过prompt控制",
+        "singleTool": "需切换模型",
+        "lovart": "20+内置风格一键切换"
+      },
+      {
+        "feature": "后处理能力",
+        "traditional": "基础放大",
+        "singleTool": "第三方工具配合",
+        "lovart": "内置编辑/放大/去背景"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "AI图片生成器支持中文描述吗？",
+        "answer": "完全支持。中文输入效果经过专门优化，比英文描述加中文翻译的效果更好。您用中文描述的场景、风格、色彩都能准确理解。"
+      },
+      {
+        "question": "生成的图片分辨率和格式如何？",
+        "answer": "支持多种尺寸和比例。免费版输出标准分辨率，付费版支持4K/8K。格式支持PNG、JPG、WebP。"
+      },
+      {
+        "question": "生成的图片版权归谁？",
+        "answer": "归您所有。包括商业使用权。您可以用生成的图片做任何用途，Lovart不会主张任何权利。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-ai-image-generator-free",
+    "pn": "免费AI生图工具",
+    "t": "免费AI生图工具 — Lovart 在线文生图",
+    "d": "Lovart 免费AI生图工具无需付费即可体验文生图功能。每日免费额度充足，支持多种风格与尺寸，适合个人创作者与自媒体运营。",
+    "st": "免费AI生图工具 — Lovart 在线文生图 免费使用",
+    "sd": "Lovart 免费AI生图工具无需付费即可体验文生图。每日免费额度充足，支持多种风格与尺寸。",
+    "kw": [
+      "免费AI生图",
+      "在线文生图",
+      "免费AI绘画"
+    ],
+    "bento": [
+      {
+        "title": "免费额度",
+        "description": "每日免费生成额度，无需信用卡。注册账号即可开始使用文生图功能。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多种风格",
+        "description": "免费版可使用写实、插画、3D渲染等多种主流风格。生成高清预览图。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "灵活尺寸",
+        "description": "支持社交平台常用比例，适配小红书、公众号、抖音等平台封面尺寸。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "无时间限制",
+        "description": "免费版没有试用期。只要账号活跃，每天都能领取免费额度，长期使用。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "免费注册",
+        "description": "用邮箱或微信注册Lovart账号。无需绑定信用卡。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "描述图片需求",
+        "description": "在输入框用中文描述想要的图片内容。选择风格偏好与尺寸。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "下载使用",
+        "description": "生成后预览效果，满意即可下载免费版的标准分辨率图片。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "自媒体免费做封面",
+        "description": "一位新手博主用免费版AI图片生成器3周产出42张小红书封面。零成本获得专业级配图，粉丝从0涨到2000。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "学生项目配图",
+        "description": "某大学生用免费版为小组作业生成演示配图。5分钟产出10张风格统一的插图，课堂展示效果明显提升。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "免费版",
+      "Starter",
+      "Pro"
+    ],
+    "comp_r": [
+      {
+        "feature": "价格",
+        "traditional": "$0",
+        "singleTool": "$15/月",
+        "lovart": "$72/月"
+      },
+      {
+        "feature": "每日额度",
+        "traditional": "有限",
+        "singleTool": "更多",
+        "lovart": "无限"
+      },
+      {
+        "feature": "分辨率",
+        "traditional": "标准",
+        "singleTool": "高清",
+        "lovart": "4K/8K"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "免费版每天有多少生图额度？",
+        "answer": "免费版每日提供足够个人使用的生图次数。具体额度登录后可在账户页面查看。"
+      },
+      {
+        "question": "免费版生成的图片能去掉水印吗？",
+        "answer": "免费版生成的图片不包含水印。可以免费下载使用。升级付费版获得更高分辨率与更多功能。"
+      },
+      {
+        "question": "免费版需要科学上网吗？",
+        "answer": "不需要。Lovart在中国大陆可以直接访问。无需任何网络工具。"
+      }
+    ],
+    "variant": true
+  },
+  {
+    "slug": "zh-ai-image-generator-online",
+    "pn": "在线AI生图",
+    "t": "在线AI生图 — Lovart 网页版文生图",
+    "d": "Lovart 在线AI生图工具直接在浏览器中运行，无需下载安装。打开网页即可用文字描述生成图片，支持电脑端与移动端。",
+    "st": "在线AI生图 — Lovart 网页版文生图工具 免费在线使用",
+    "sd": "Lovart 在线AI生图工具直接在浏览器中运行。无需下载安装，打开网页即可文生图。",
+    "kw": [
+      "在线AI生图",
+      "网页文生图",
+      "浏览器生图"
+    ],
+    "bento": [
+      {
+        "title": "即开即用",
+        "description": "打开浏览器访问Lovart官网，无需下载安装任何软件。任何电脑手机都能用。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "移动端适配",
+        "description": "手机浏览器同样流畅运行。等车、午休时随时打开生图，碎片时间利用起来。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "云端存储",
+        "description": "生成的图片自动保存到云端账号。换设备登录也能查看和下载历史作品。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "实时生成",
+        "description": "输入描述后即时生成预览，不需要排队等待。算力充足，生成速度快。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "打开浏览器",
+        "description": "电脑或手机上打开Lovart官网，登录或注册账号。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "输入描述",
+        "description": "在输入框用中文描述想要的图片内容。选择风格与尺寸。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "保存使用",
+        "description": "生成后预览图片。满意即可下载到设备或直接分享到社交平台。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "随时随地创作",
+        "description": "一位旅行博主在路上用手机打开Lovart生图。根据当日见闻生成配图，到了酒店直接发小红书。不用带电脑不用找图库。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "远程团队协作",
+        "description": "某远程团队在飞书上用Lovart在线生图讨论创意。一人描述画面、生成预览、大家评论。整个创意过程在浏览器里完成。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "安装软件",
+      "在线轻量工具",
+      "Lovart 在线AI生图"
+    ],
+    "comp_r": [
+      {
+        "feature": "安装需求",
+        "traditional": "需下载安装",
+        "singleTool": "部分需要注册",
+        "lovart": "浏览器即开即用"
+      },
+      {
+        "feature": "移动端",
+        "traditional": "不支持",
+        "singleTool": "功能受限",
+        "lovart": "完整移动端支持"
+      },
+      {
+        "feature": "跨设备同步",
+        "traditional": "手动传输",
+        "singleTool": "部分支持",
+        "lovart": "云端自动同步"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "在线版对浏览器有什么要求？",
+        "answer": "支持Chrome、Edge、Safari、Firefox等主流浏览器的较新版本。建议使用Chrome以获得最佳体验。"
+      },
+      {
+        "question": "手机和电脑上功能一样吗？",
+        "answer": "核心功能一致。手机端的输入、生成、下载功能与电脑端相同。高级编辑功能建议在电脑端使用。"
+      },
+      {
+        "question": "网速慢会影响生图吗？",
+        "answer": "图片生成在云端服务器进行，本地网速主要影响页面加载和图片下载速度。生成本身不受本地网速影响。"
+      }
+    ],
+    "variant": true
+  },
+  {
+    "slug": "zh-ai-image-from-image",
+    "pn": "图生图工具",
+    "t": "AI图生图 — Lovart 以图生图工具",
+    "d": "Lovart 图生图功能以上传图片为起点进行二次创作。风格迁移、局部修改、扩展画布、生成多版本变体，一张原图演变出无限可能。",
+    "st": "AI图生图 — Lovart 以图生图工具 在线免费使用",
+    "sd": "Lovart 图生图以上传图片为起点进行二次创作。风格迁移、局部修改、扩展画布、多版本变体。",
+    "kw": [
+      "AI图生图",
+      "以图生图",
+      "图片二次创作"
+    ],
+    "bento": [
+      {
+        "title": "风格迁移",
+        "description": "上传一张普通照片，转换成水墨画、油画、赛博朋克、3D渲染等风格。原图结构保持，风格完全改变。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "画布扩展",
+        "description": "上传图片后扩展画布范围。AI智能生成扩展区域的画面内容，与原图无缝衔接。竖图扩成横图，小场景扩成大场景。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "局部修改",
+        "description": "上传图片后选中局部区域进行修改。换成其他内容或调整现有元素，AI保持修改区域与周围画面自然融合。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多版本生成",
+        "description": "一张原图同时生成多个变体版本。不同的配色方案、不同的构图调整、不同的风格方向，一次性出多版供挑选。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "上传图片",
+        "description": "上传想要处理的图片。支持JPG、PNG、WebP格式。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "选择处理方式",
+        "description": "选风格迁移、扩展画布、局部修改或生成变体。设定对应的参数。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "生成与下载",
+        "description": "AI处理图片。预览结果满意后下载高清版本。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "产品图风格统一",
+        "description": "某品牌有50张不同场景的产品照片，需要统一为插画风格用于品牌宣传。用图生图风格迁移全部转换，AI保持产品外形的准确性。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "活动海报扩展",
+        "description": "一张竖版活动海报需要扩展成横版用于线下展示架。用图生图画布扩展，AI自动生成左右两侧的背景和装饰元素，扩展到横版后海报依然完整。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "传统PS",
+      "AI工具",
+      "Lovart 图生图"
+    ],
+    "comp_r": [
+      {
+        "feature": "风格迁移",
+        "traditional": "手动操作复杂",
+        "singleTool": "效果不可控",
+        "lovart": "一键风格转换"
+      },
+      {
+        "feature": "画布扩展",
+        "traditional": "需手动修补",
+        "singleTool": "不支持",
+        "lovart": "AI智能扩展"
+      },
+      {
+        "feature": "局部修改",
+        "traditional": "需选区+内容识别",
+        "singleTool": "重新生成",
+        "lovart": "选中即改"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "图生图能保留原图的人脸特征吗？",
+        "answer": "可以。图生图功能对人物脸部有专门的保真处理。风格迁移后人物外貌特征保持稳定，不会变成另一个人的脸。"
+      },
+      {
+        "question": "图生图支持批量处理吗？",
+        "answer": "支持。Pro版用户可以一次上传多张图片，选择相同的处理方式批量生成。适合需要统一处理大量图片的场景。"
+      },
+      {
+        "question": "图生图的最大输入分辨率是多少？",
+        "answer": "支持最高4096x4096像素的输入图片。超过此尺寸的图片会自动压缩到范围内进行处理。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-ai-video-generator",
+    "pn": "AI视频生成器",
+    "t": "AI视频生成器 — Lovart 文生视频工具",
+    "d": "Lovart AI视频生成器将文案直接转为视频。支持文生视频、图生视频、口型同步、文字转语音，一站式完成从创意到成片的全流程。",
+    "st": "AI视频生成器 — Lovart 文生视频 在线免费使用",
+    "sd": "Lovart AI视频生成器将文案直接转为视频。支持文生视频、图生视频、口型同步、文字转语音。",
+    "kw": [
+      "AI视频生成器",
+      "文生视频",
+      "AI视频制作"
+    ],
+    "bento": [
+      {
+        "title": "文生视频",
+        "description": "输入文案或脚本，AI自动生成对应的视频画面。不需要拍摄、不需要素材，文字直接变成视频。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "图生视频",
+        "description": "上传静态图片，AI让图片动起来。海报变故事、产品图变使用演示、风景照变动态短片。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "口型同步",
+        "description": "上传人物讲话视频，修改配音文案后AI自动同步口型。适合视频配音翻新和口播视频制作。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "语音合成",
+        "description": "内置AI语音引擎，输入文字自动生成自然语音配音。支持多种音色与语速选择。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [
+      {
+        "label": "文生视频",
+        "content": {
+          "title": "文字直接生成视频",
+          "description": "输入脚本或文案，AI不但理解内容还理解情绪与节奏。品牌故事、产品介绍、活动预告，文字描述越详细，视频越精准。15秒短视频从创意到成片只需几分钟。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "视频编辑",
+        "content": {
+          "title": "AI自动剪辑",
+          "description": "上传原始视频素材，AI自动识别高光片段、去除停顿、添加转场特效与背景音乐。不懂视频剪辑也能做出专业感的短视频。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "多语言配音",
+        "content": {
+          "title": "一键换语音",
+          "description": "视频原有配音一键转换成其他语言的AI配音，同时口型自动同步。让同一视频内容快速适配不同语言市场。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      }
+    ],
+    "tools": [
+      {
+        "title": "文生视频",
+        "description": "文案直接生成视频",
+        "icon": ""
+      },
+      {
+        "title": "图生视频",
+        "description": "静态图片变动态视频",
+        "icon": ""
+      },
+      {
+        "title": "智能剪辑",
+        "description": "自动去停顿加转场",
+        "icon": ""
+      },
+      {
+        "title": "多语言配音",
+        "description": "AI语音+口型同步",
+        "icon": ""
+      }
+    ],
+    "steps": [
+      {
+        "title": "输入脚本",
+        "description": "用中文写视频脚本或描述想要的视频内容。AI理解脚本的情绪和节奏。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "AI生成视频",
+        "description": "AI根据脚本自动生成视频画面和配音。用户可以选择风格模板匹配品牌调性。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "调整输出",
+        "description": "预览后修改不满意的地方。调整画面、更换配音、添加字幕等，完成后导出MP4。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [
+      {
+        "title": "短视频内容",
+        "description": "抖音、视频号、小红书的短视频内容创作。AI视频生成器把文章转视频、把想法转成片。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "产品展示视频",
+        "description": "电商产品展示、功能介绍、开箱评测。用图生视频从产品图生成动态展示内容。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌故事短片",
+        "description": "品牌宣传视频、公司介绍短片。文案+AI生成，不需要拍摄团队也能出品牌视频。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "showcases": [
+      {
+        "title": "科技账号日更视频",
+        "description": "一位AI资讯博主每天把当天的文章用AI视频生成器转为短视频。5分钟文章变2分钟视频，发布到视频号与B站。月产出从10条提升到30条。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "电商短视频批量生产",
+        "description": "某淘宝店铺为50款产品制作展示视频。用图生视频功能将产品主图转为15秒动态展示视频。传统拍摄需要2周，AI仅用2天完成全部50条。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "传统视频制作",
+      "Runway/Pika",
+      "Lovart AI视频生成器"
+    ],
+    "comp_r": [
+      {
+        "feature": "制作周期",
+        "traditional": "拍摄+后期，数天到数周",
+        "singleTool": "分钟级，但控制力弱",
+        "lovart": "5分钟从脚本到成片"
+      },
+      {
+        "feature": "操作门槛",
+        "traditional": "需专业剪辑技能",
+        "singleTool": "需英文prompt",
+        "lovart": "中文脚本输入，全自动"
+      },
+      {
+        "feature": "中文支持",
+        "traditional": "好，但成本高",
+        "singleTool": "弱，prompt需英文",
+        "lovart": "原生中文支持"
+      },
+      {
+        "feature": "全链路能力",
+        "traditional": "多工具组合使用",
+        "singleTool": "仅视频生成",
+        "lovart": "生成+编辑+配音+口型同步"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "AI视频生成器支持哪些视频长度？",
+        "answer": "支持5秒到60秒的视频生成。15-30秒的短视频效果最佳。付费版支持更长视频。"
+      },
+      {
+        "question": "AI视频生成器生成的视频有版权问题吗？",
+        "answer": "没有。您完全拥有生成视频的版权，可用于商业用途。Lovart使用授权的训练数据。"
+      },
+      {
+        "question": "视频生成器支持哪些语言配音？",
+        "answer": "支持中文普通话、英文、日文、韩文、法文、德文、西班牙文等多语言配音。每种语言有多种音色可选。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-ai-video-generator-free",
+    "pn": "免费AI视频生成",
+    "t": "免费AI视频生成 — Lovart 在线视频制作",
+    "d": "Lovart 免费AI视频生成器零成本体验视频创作。每日免费额度支持生成15秒短视频，适合社交媒体内容创作者快速产出素材。",
+    "st": "免费AI视频生成 — Lovart 在线视频制作 免费使用",
+    "sd": "Lovart 免费AI视频生成器零成本体验视频创作。每日免费额度支持15秒短视频。",
+    "kw": [
+      "免费AI视频生成",
+      "免费视频制作",
+      "在线视频生成"
+    ],
+    "bento": [
+      {
+        "title": "零成本视频创作",
+        "description": "免费版提供每日视频生成额度。零成本试水AI视频创作，体验从文案到视频的全流程。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "15秒短视频",
+        "description": "免费版支持生成15秒短视频。刚好适配抖音、视频号、小红书等平台的内容时长。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "基础风格",
+        "description": "免费版可使用写实与动画两种基础风格，适配大多数内容场景。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "中文配音",
+        "description": "免费版包含AI中文语音配音功能。文字自动转语音，多种音色可选。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "免费注册",
+        "description": "注册Lovart账号，无需信用卡。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "输入脚本",
+        "description": "用中文写15秒的脚本。AI自动生成画面与配音。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "导出分享",
+        "description": "生成后预览效果，满意后导出MP4分享到社交平台。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "日更博主免费做视频",
+        "description": "一位新手博主用免费版每天早上花5分钟把公众号文章转为短视频。连续更新30天，视频号粉丝从0涨到5000。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "电商免费试水视频",
+        "description": "某淘宝卖家先用免费版为10款产品制作展示视频测试效果。发现点击率提升40%后，才决定升级付费版批量制作。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "免费版",
+      "Starter",
+      "Pro"
+    ],
+    "comp_r": [
+      {
+        "feature": "价格",
+        "traditional": "$0",
+        "singleTool": "$15/月",
+        "lovart": "$72/月"
+      },
+      {
+        "feature": "视频长度",
+        "traditional": "15秒",
+        "singleTool": "60秒",
+        "lovart": "5分钟"
+      },
+      {
+        "feature": "分辨率",
+        "traditional": "720P",
+        "singleTool": "1080P",
+        "lovart": "4K"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "免费版每天可以生成几个视频？",
+        "answer": "免费版每日有一定数量的视频生成额度。具体额度登录后可在账户页面查看。"
+      },
+      {
+        "question": "免费版生成视频有品牌水印吗？",
+        "answer": "免费版生成的视频不包含Lovart品牌水印。您可以自由使用和分发。"
+      },
+      {
+        "question": "免费版视频的分辨率是多少？",
+        "answer": "免费版输出720P标准分辨率。付费版支持1080P和4K分辨率。"
+      }
+    ],
+    "variant": true
+  },
+  {
+    "slug": "zh-ai-video-generator-online",
+    "pn": "在线AI视频生成",
+    "t": "在线AI视频生成 — Lovart 网页版视频工具",
+    "d": "Lovart 在线AI视频生成器无需安装任何软件，打开浏览器即可创作视频。支持中文文案输入、多语言配音与自动字幕生成。",
+    "st": "在线AI视频生成 — Lovart 网页版视频工具 免费在线使用",
+    "sd": "Lovart 在线AI视频生成器无需安装软件。打开浏览器即可创作视频，支持中文文案输入与自动字幕。",
+    "kw": [
+      "在线视频生成",
+      "AI视频在线",
+      "网页视频制作"
+    ],
+    "bento": [
+      {
+        "title": "浏览器即用",
+        "description": "打开Lovart网页即可开始视频创作。不需要安装After Effects、Premiere等专业软件。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "中文流畅",
+        "description": "中文界面、中文输入、中文配音。AI视频生成器完全为中国用户设计。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "自动字幕",
+        "description": "视频自动生成中文字幕。支持SRT字幕文件导出，方便二次编辑或上传到视频平台。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "模板库",
+        "description": "内置多种视频模板：产品介绍、品牌故事、知识科普、活动预告。选模板填内容快速出片。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "打开网页登录",
+        "description": "浏览器打开Lovart官网，登录账号。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "选模板或写脚本",
+        "description": "使用内置模板快速开始，或从空白脚本开始创作。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "生成与发布",
+        "description": "AI生成视频，预览修改后保存或直接分享到社交平台。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "没有剪辑经验的运营",
+        "description": "某运营专员负责公司抖音号，但完全不会视频剪辑。用Lovart在线视频生成器：写脚本、选模板、出视频。一周产出7条高质量短视频，账号播放量突破10万。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "远程团队视频沟通",
+        "description": "某远程团队用在线视频生成器制作每周项目更新视频。写周报AI自动转成视频发到群里的效率比开会高得多。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [],
+    "comp_r": [],
+    "faqs": [
+      {
+        "question": "在线版视频生成需要什么配置的电脑？",
+        "answer": "对电脑配置没有特殊要求。视频生成在云端服务器进行，任何能打开浏览器的设备都可以使用。"
+      },
+      {
+        "question": "在线版生成视频需要多长时间？",
+        "answer": "15秒短视频通常1-3分钟生成完成。等待时间取决于服务器负载和视频复杂度。"
+      },
+      {
+        "question": "导出视频支持哪些格式？",
+        "answer": "支持MP4格式导出。付费版支持MOV格式和更高的码率选项。"
+      }
+    ],
+    "variant": true
+  },
+  {
+    "slug": "zh-ai-video-editor",
+    "pn": "AI视频编辑器",
+    "t": "AI视频编辑器 — Lovart 智能视频剪辑",
+    "d": "Lovart AI视频编辑器提供智能剪辑能力：自动裁切高光片段、去停顿、加转场、配音乐。不懂剪辑也能做出专业感短视频。",
+    "st": "AI视频编辑器 — Lovart 智能视频剪辑 在线免费使用",
+    "sd": "Lovart AI视频编辑器：自动裁切高光片段、去停顿、加转场、配音乐。不懂剪辑也能做专业短视频。",
+    "kw": [
+      "AI视频编辑器",
+      "智能视频剪辑",
+      "自动视频编辑"
+    ],
+    "bento": [
+      {
+        "title": "自动高光提取",
+        "description": "上传长视频素材，AI自动识别精彩片段并剪辑成短视频。演讲、访谈、直播内容快速二次利用。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "智能去停顿",
+        "description": "自动检测并删除视频中的空白停顿、重复内容和口误。视频节奏更紧凑，观看体验提升。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "自动转场特效",
+        "description": "AI在视频段落之间自动添加合适的转场特效。平滑过渡，让视频看起来更专业。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "音乐自动匹配",
+        "description": "上传视频后AI分析画面情绪，自动推荐并匹配合适的背景音乐。音乐时长自动对齐视频长度。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "上传素材",
+        "description": "上传原始视频素材。支持MP4、MOV、AVI等常见格式。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "选择剪辑模式",
+        "description": "选择自动剪辑、高光提取、去停顿或模板匹配等模式。设定视频风格。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "导出成品",
+        "description": "AI自动完成剪辑。预览满意后可进一步手动微调，然后导出最终视频。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "直播切片二次利用",
+        "description": "某主播每天直播3小时，用AI视频编辑器自动提取高光片段。上传直播录像，AI自动识别精彩互动和关键讲解，输出10条1-3分钟的切片。直播价值翻倍。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "会议内容转短视频",
+        "description": "某科技公司CEO的演讲录像，用AI视频编辑器去停顿、加字幕、配音乐。1小时的内部讲话变成5个3分钟的金句短视频，发到公司视频号上。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "Premiere Pro",
+      "剪映",
+      "Lovart AI视频编辑器"
+    ],
+    "comp_r": [
+      {
+        "feature": "操作门槛",
+        "traditional": "需专业培训",
+        "singleTool": "较低，仍需剪辑知识",
+        "lovart": "零门槛，全自动"
+      },
+      {
+        "feature": "高光提取",
+        "traditional": "手动逐段筛选",
+        "singleTool": "手动",
+        "lovart": "AI自动识别"
+      },
+      {
+        "feature": "去停顿",
+        "traditional": "逐帧检查删除",
+        "singleTool": "手动",
+        "lovart": "AI自动去除"
+      },
+      {
+        "feature": "音乐匹配",
+        "traditional": "手动搜索试听",
+        "singleTool": "部分自动",
+        "lovart": "AI情绪分析自动匹配"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "AI视频编辑器能处理多长的素材？",
+        "answer": "支持上传最长2小时的视频素材。输出视频长度和数量不受输入长度限制。"
+      },
+      {
+        "question": "AI提取高光片段的准确率如何？",
+        "answer": "基于多模态理解（画面+语音+文字），高光提取准确率在90%以上。提取结果可以手动调整和增删。"
+      },
+      {
+        "question": "AI视频编辑器支持多人协作吗？",
+        "answer": "支持。Pro版可以邀请团队成员共同编辑同一个视频项目。每个人的修改都有记录。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-image-to-video",
+    "pn": "图生视频工具",
+    "t": "AI图生视频 — Lovart 图片转视频",
+    "d": "Lovart 图生视频将静态图片转化为动态视频。品牌海报变品牌故事、产品图变使用演示、风景照变氛围短片，一键让图片动起来。",
+    "st": "AI图生视频 — Lovart 图片转视频 在线免费使用",
+    "sd": "Lovart 图生视频将静态图片转化为动态视频。海报变故事、产品图变演示、风景照变氛围短片。",
+    "kw": [
+      "AI图生视频",
+      "图片转视频",
+      "静态图变视频"
+    ],
+    "bento": [
+      {
+        "title": "图片动起来",
+        "description": "上传静态图片，AI分析画面内容并生成自然的动态效果。云彩飘动、水波荡漾、人物眨眼，画面变得生动。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "相机运动",
+        "description": "AI给静态图片添加虚拟相机运动。推近、拉远、平移、环绕，让静图有镜头语言的动态感。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "场景动画",
+        "description": "为图片中的特定元素添加动画。产品旋转展示、文字渐入、光效流动，适合营销视觉内容。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多图转视频",
+        "description": "上传多张图片组成视频序列。AI自动排布顺序、添加过渡动画、配背景音乐，做成完整的视频短片。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "上传图片",
+        "description": "上传一张或多张图片到Lovart图生视频工具。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "选动画类型",
+        "description": "选择想让图片动起来的方式：自然动态、相机运动、场景动画或多图序列。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "生成视频",
+        "description": "AI将静态图转为视频。预览效果后可调节动画强度与时长。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "电商产品动态展示",
+        "description": "某品牌店铺把30张产品主图转成15秒的动态展示视频。每张产品图依次动态呈现，配合背景音乐。放在详情页头部，停留时间提升35%。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "婚礼照片变短片",
+        "description": "一位新娘用图生视频工具把10张婚礼照片做成1分钟的回忆短片。照片之间的转场配上相机运动让静态照片有了电影感。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "传统视频制作",
+      "动效模板",
+      "Lovart 图生视频"
+    ],
+    "comp_r": [
+      {
+        "feature": "操作方式",
+        "traditional": "AE/PR逐帧制作",
+        "singleTool": "套模板限定制",
+        "lovart": "上传即生成"
+      },
+      {
+        "feature": "制作速度",
+        "traditional": "数小时到数天",
+        "singleTool": "10-30分钟",
+        "lovart": "1-5分钟"
+      },
+      {
+        "feature": "动画质量",
+        "traditional": "高但费时",
+        "singleTool": "模板化雷同",
+        "lovart": "AI定制动画自然"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "图生视频支持哪些图片格式？",
+        "answer": "支持JPG、PNG、WebP、HEIC格式。建议使用高分辨率图片以获得更好的视频效果。"
+      },
+      {
+        "question": "一张图可以生成多长时间的动态视频？",
+        "answer": "单张图片可生成3-15秒的动态视频。多张图片组合可生成最长60秒的视频。"
+      },
+      {
+        "question": "生成的视频画面会变形吗？",
+        "answer": "不会。AI在生成动态效果时保持原图的内容与构图不变。只添加自然的动态和运动效果。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-image-to-video-free",
+    "pn": "免费图生视频",
+    "t": "免费图生视频 — Lovart 在线图片转视频",
+    "d": "Lovart 免费图生视频功能无需付费即可将图片转为短视频。支持上传JPG/PNG/WebP，生成MP4格式，适合电商产品展示与社交媒体。",
+    "st": "免费图生视频 — Lovart 在线图片转视频 免费使用",
+    "sd": "Lovart 免费图生视频无需付费即可将图片转为短视频。支持JPG/PNG/WebP，生成MP4格式。",
+    "kw": [
+      "免费图生视频",
+      "在线图片转视频",
+      "免费视频制作"
+    ],
+    "bento": [
+      {
+        "title": "免费转视频",
+        "description": "免费版支持将图片转为短视频。零成本为电商产品图或社媒图片增加动态效果。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "简单易用",
+        "description": "上传图片、选择效果、生成视频。三步完成。不需要任何视频编辑经验。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "电商适用",
+        "description": "免费版适合电商产品图转动态展示。让商品主图动起来，提升浏览吸引力。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "MP4输出",
+        "description": "免费版输出标准MP4格式。适配主流社交平台与电商平台的上传要求。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "免费注册",
+        "description": "注册Lovart账号，无需绑定信用卡。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "上传图片",
+        "description": "上传一张或多张想转为视频的图片。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "下载视频",
+        "description": "AI处理后预览效果，满意后下载MP4视频文件。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "拼多多卖家免费做视频",
+        "description": "一位拼多多卖家每天用免费图生视频工具把产品主图转为动态视频。上传到商品页后，转化率提升了15%。完全免费。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "小红书笔记动态封面",
+        "description": "一位小红书博主把静态封面图转为动态视频作为笔记封面。3秒动态封面在信息流中更吸引点击，单篇笔记曝光提升30%。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "免费版",
+      "Starter",
+      "Pro"
+    ],
+    "comp_r": [
+      {
+        "feature": "价格",
+        "traditional": "$0",
+        "singleTool": "$15/月",
+        "lovart": "$72/月"
+      },
+      {
+        "feature": "图片数量",
+        "traditional": "最多3张",
+        "singleTool": "最多10张",
+        "lovart": "不限"
+      },
+      {
+        "feature": "视频时长",
+        "traditional": "10秒",
+        "singleTool": "30秒",
+        "lovart": "60秒"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "免费版图生视频有水印吗？",
+        "answer": "没有水印。免费版生成的视频不包含Lovart品牌水印，可自由使用。"
+      },
+      {
+        "question": "免费版支持多张图片生成视频吗？",
+        "answer": "免费版支持单张图片或最多3张图片组合生成视频。更多图片组合需要升级付费版。"
+      },
+      {
+        "question": "免费版生成的视频可以商用吗？",
+        "answer": "免费版视频可用于个人项目。商业用途建议升级Starter套餐，包含完整的商业授权。"
+      }
+    ],
+    "variant": true
+  },
+  {
+    "slug": "zh-ai-avatar",
+    "pn": "AI Avatar",
+    "t": "AI Avatar — Lovart 虚拟形象生成",
+    "d": "Lovart AI Avatar 生成数字人虚拟形象。上传照片或描述角色特征，AI生成风格统一的多角度Avatar，用于直播、视频、社媒等场景。",
+    "st": "AI Avatar — Lovart 虚拟形象生成 在线免费使用",
+    "sd": "Lovart AI Avatar 生成数字人虚拟形象。上传照片或描述角色特征，生成多角度Avatar。",
+    "kw": [
+      "AI虚拟形象",
+      "AI Avatar",
+      "数字人生成"
+    ],
+    "bento": [
+      {
+        "title": "照片转Avatar",
+        "description": "上传自拍或人物照片，AI自动转为卡通、3D、写实等风格的虚拟形象。保留本人特征，风格自定义。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "文字创建Avatar",
+        "description": "描述虚拟角色的外貌特征：发型、脸型、衣着风格、配饰。AI从零生成一个不存在的虚拟形象。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多风格生成",
+        "description": "同一角色同时生成多种风格版本：3D写实、卡通动画、日系漫画、像素风等。适配不同使用场景。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多角度导出",
+        "description": "一个Avatar生成多种角度与表情：正面、侧面、半身、全身、喜怒哀乐表情包。品牌IP素材一次性补齐。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "上传或描述",
+        "description": "上传真人照片或文字描述虚拟角色的特征。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "选择风格",
+        "description": "从多种Avatar风格中选择想要的方向。可预览风格效果。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "生成与使用",
+        "description": "AI生成Avatar与多角度版本。下载PNG图片或直接用于Lovart其他功能。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "虚拟主播形象",
+        "description": "一位B站主播用AI Avatar生成自己的虚拟形象。上传照片转3D写实风格，配套生成喜怒哀乐表情。直播时使用虚拟形象出镜，观众互动提升。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌IP角色",
+        "description": "某消费品牌用AI Avatar设计品牌IP角色。从文字描述出发生成一个可爱风格的动物角色，然后生成多角度、多表情的IP素材库。用于包装、社媒和门店视觉。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "3D建模软件",
+      "传统Avatar工具",
+      "Lovart AI Avatar"
+    ],
+    "comp_r": [
+      {
+        "feature": "创建速度",
+        "traditional": "数天到数周",
+        "singleTool": "30分钟",
+        "lovart": "1-5分钟"
+      },
+      {
+        "feature": "操作难度",
+        "traditional": "需专业建模技能",
+        "singleTool": "模板填写",
+        "lovart": "上传照片或描述"
+      },
+      {
+        "feature": "风格选择",
+        "traditional": "单一风格",
+        "singleTool": "有限风格",
+        "lovart": "多风格一键切换"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "AI Avatar生成的虚拟形象像我吗？",
+        "answer": "上传真人照片生成的Avatar会保留主要面部特征。风格化程度可调节，从高度保真到完全风格化。"
+      },
+      {
+        "question": "AI Avatar生成的图像版权归谁？",
+        "answer": "归您所有。无论是以照片为基础还是文字创建的Avatar，生成结果的版权完全属于您。"
+      },
+      {
+        "question": "Avatar可以用于商业用途吗？",
+        "answer": "可以。Starter及以上套餐生成的Avatar包含商业授权，可用于品牌IP、广告、商品等商业场景。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-ai-avatar-talking",
+    "pn": "会说话的Avatar",
+    "t": "会说话的Avatar — Lovart AI口播数字人",
+    "d": "Lovart 会说话的Avatar让虚拟形象开口说话。输入文案或上传音频，数字人自动匹配口型与表情，适合口播视频、产品介绍与教学视频。",
+    "st": "会说话的Avatar — Lovart AI口播数字人 在线免费使用",
+    "sd": "Lovart 会说话的Avatar让虚拟形象开口说话。输入文案自动匹配口型与表情，适合口播与教学视频。",
+    "kw": [
+      "会说话的Avatar",
+      "AI口播数字人",
+      "虚拟人说话"
+    ],
+    "bento": [
+      {
+        "title": "输入文案即出片",
+        "description": "选择Avatar形象，输入文案。AI自动生成口播视频，口型与语音精确同步。不需要拍摄、不需要麦克风。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "自然表情动作",
+        "description": "不只是口型。AI Avatar 在说话时配以自然的头部微动、眼神变化和手势动作。不像传统数字人那样僵硬。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多语种口型适配",
+        "description": "支持中文普通话、英文、日文等多语种输入。AI根据语言特性自动调整口型，不同语言的发音口型都准确。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "音频驱动模式",
+        "description": "上传真人录制的音频，Avatar自动匹配口型与表情。适合先配音再对口型的专业工作流。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "选择Avatar",
+        "description": "从已有Avatar中选择或创建新的虚拟形象。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "输入文案或音频",
+        "description": "输入想让Avatar说的文字，或上传已录制的音频文件。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "生成口播视频",
+        "description": "AI自动生成口播视频。预览效果后调整语速与情绪，满意后导出。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "口播视频零成本制作",
+        "description": "一位知识博主每天产出一期口播视频。用会说话的Avatar生成自己的虚拟形象，输入当天话题文案，10分钟完成一期视频。原来需要半天拍摄和剪辑。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "电商产品解说视频",
+        "description": "某跨境卖家使用会说话的Avatar为50款产品生成英文解说视频。Avatar用标准美式英语介绍产品功能，口型同步自然。全部完成用了2天，传统拍摄至少2周。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "真人拍摄",
+      "传统数字人",
+      "Lovart 会说话的Avatar"
+    ],
+    "comp_r": [
+      {
+        "feature": "制作成本",
+        "traditional": "高，场地+设备+演员",
+        "singleTool": "中等，需技术团队",
+        "lovart": "低，单人10分钟完成"
+      },
+      {
+        "feature": "口型同步",
+        "traditional": "天然同步",
+        "singleTool": "不自然",
+        "lovart": "AI精确匹配"
+      },
+      {
+        "feature": "多语言",
+        "traditional": "需请翻译+演员",
+        "singleTool": "不支持",
+        "lovart": "多语言自动适配"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "会说话的Avatar支持哪些语言？",
+        "answer": "支持中文普通话、英文、日文、韩文、法文、德文、西班牙文、阿拉伯文等。每种语言口型都经过单独训练。"
+      },
+      {
+        "question": "AI口型同步有多准确？",
+        "answer": "基于音频特征的多模态口型同步技术，准确率达到95%以上。特别是中文和英文的口型匹配效果最佳。"
+      },
+      {
+        "question": "可以自定义Avatar的声音吗？",
+        "answer": "目前提供10+种预设AI音色。Pro版支持声音克隆功能，上传30秒语音样本即可克隆定制声音。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-ai-logo-generator",
+    "pn": "AI Logo生成器",
+    "t": "AI Logo生成器 — Lovart 智能Logo设计",
+    "d": "Lovart AI Logo生成器输入品牌名称与行业偏好，秒出多款Logo方案。支持字体Logo、图形Logo、组合Logo，可无限迭代直到满意。",
+    "st": "AI Logo生成器 — Lovart 智能Logo设计 在线免费使用",
+    "sd": "Lovart AI Logo生成器输入品牌名称与行业偏好，秒出多款Logo方案。字体Logo、图形Logo、组合Logo。",
+    "kw": [
+      "AI Logo生成器",
+      "智能Logo设计",
+      "在线Logo制作"
+    ],
+    "bento": [
+      {
+        "title": "输入即生成",
+        "description": "填写品牌名称和行业，AI自动生成多款Logo方案。每个方案都附带设计理念说明。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多种Logo类型",
+        "description": "字体Logo以品牌名称做创意字体设计、图形Logo用符号图形代表品牌、组合Logo两者结合。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "风格广泛",
+        "description": "从极简现代到中国风、从科技感到手绘感。AI Logo生成器覆盖20+设计风格。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "无限迭代",
+        "description": "对生成的Logo不满意？调整风格关键词或提供参考方向，AI重新生成。一直迭代到满意为止。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [
+      {
+        "label": "智能生成",
+        "content": {
+          "title": "从品牌名到Logo",
+          "description": "输入品牌名称、选择行业与风格偏好，AI在几秒内生成多个Logo方案。每个方案从品牌内涵出发进行设计，不只是随机组合图形。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "专业编辑",
+        "content": {
+          "title": "生成后自由编辑",
+          "description": "选中的Logo方案可以使用Touch Edit进行精细调整。改颜色、换字体、调整图形比例。不需要学习矢量软件。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "品牌延展",
+        "content": {
+          "title": "从Logo到品牌系统",
+          "description": "Logo确认后一键生成品牌配色方案与字体搭配，并存入Brand Kit。后续所有设计自动沿用这套品牌规范。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      }
+    ],
+    "tools": [
+      {
+        "title": "字体Logo",
+        "description": "品牌名称创意字体设计",
+        "icon": ""
+      },
+      {
+        "title": "图形Logo",
+        "description": "符号图形代表品牌",
+        "icon": ""
+      },
+      {
+        "title": "组合Logo",
+        "description": "文字与图形结合",
+        "icon": ""
+      },
+      {
+        "title": "品牌色彩",
+        "description": "Logo色彩延展配色方案",
+        "icon": ""
+      }
+    ],
+    "steps": [
+      {
+        "title": "输入品牌信息",
+        "description": "填写品牌名称、选择行业。可选填品牌调性关键词让AI更准确理解方向。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "浏览选择方案",
+        "description": "AI生成多款Logo方案。浏览每个方案，选择最符合品牌调性的方向。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "精修与导出",
+        "description": "选定Logo后进行细节调整。导出高清PNG、SVG、PDF等多种格式。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [
+      {
+        "title": "创业公司",
+        "description": "没有预算请设计公司？AI Logo生成器30秒出方案，免费版就能用。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌换新",
+        "description": "老品牌想换Logo试试不同方向。快速生成多个风格方案对比决策。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "活动Logo",
+        "description": "临时项目或活动需要单独Logo。5分钟生成，活动结束后不用也没成本。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "showcases": [
+      {
+        "title": "创业品牌快速起步",
+        "description": "一位连续创业者一周内创立了新品牌。用AI Logo生成器在5分钟内生成了30个Logo方案，选定了最满意的一个。加上名片和社媒封面设计，总共用了1小时。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌升级多方案对比",
+        "description": "某本地服务品牌成立8年想换Logo。用Lovart生成4个方向共16个方案，团队投票选出最终版本。从启动到定稿用了3天，传统找设计公司至少1个月。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "找设计公司",
+      "在线Logo模板",
+      "Lovart AI Logo生成器"
+    ],
+    "comp_r": [
+      {
+        "feature": "出稿速度",
+        "traditional": "3-7天",
+        "singleTool": "模板修改10分钟",
+        "lovart": "30秒AI生成"
+      },
+      {
+        "feature": "原创性",
+        "traditional": "手工设计",
+        "singleTool": "套模板多撞车",
+        "lovart": "AI生成每单独特"
+      },
+      {
+        "feature": "成本",
+        "traditional": "500-5000元",
+        "singleTool": "模板费50-200元",
+        "lovart": "免费版可用"
+      },
+      {
+        "feature": "修改成本",
+        "traditional": "改一次加一次钱",
+        "singleTool": "改模板有限",
+        "lovart": "无限迭代免费"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "AI Logo生成器生成的Logo可以用作商标注册吗？",
+        "answer": "可以。生成的Logo设计可申请商标注册。建议注册前先进行商标查询，确保不侵犯已有商标权。"
+      },
+      {
+        "question": "AI Logo生成器支持中文品牌名吗？",
+        "answer": "完全支持。可以设计中文、英文或中英文结合的Logo。AI理解汉字结构与排版美学。"
+      },
+      {
+        "question": "Logo生成后可以修改吗？",
+        "answer": "可以。使用Touch Edi t功能，选中Logo中的任意元素进行修改。改颜色、换字体、调整布局，不需要设计技能。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-ai-logo-generator-free",
+    "pn": "免费Logo设计",
+    "t": "免费Logo设计 — Lovart 在线Logo制作",
+    "d": "Lovart 免费Logo设计工具零成本为品牌创造专业Logo。免费版提供高清PNG下载与多种风格模板，个体创业者与小型团队首选。",
+    "st": "免费Logo设计 — Lovart 在线Logo制作 免费使用",
+    "sd": "Lovart 免费Logo设计工具零成本为品牌创造专业Logo。免费版提供高清PNG下载与多种风格模板。",
+    "kw": [
+      "免费Logo设计",
+      "在线Logo制作",
+      "免费Logo生成"
+    ],
+    "bento": [
+      {
+        "title": "完全免费",
+        "description": "无需付费即可使用AI Logo生成功能。注册即用，无隐藏费用。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "高清下载",
+        "description": "免费版支持高清PNG格式下载。可直接用于网站、社媒和印刷品。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多种风格",
+        "description": "免费可用多种Logo风格：字体Logo、简约图形、组合Logo等。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "快速出稿",
+        "description": "输入品牌名和行业，30秒内获得多个Logo方案。快速试错快速决定。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "免费注册",
+        "description": "注册Lovart账号即可开始，无需绑定信用卡。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "输入品牌信息",
+        "description": "填写品牌名称、选择行业。AI自动生成多款Logo方案。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "下载使用",
+        "description": "选中喜欢的Logo，下载高清PNG直接使用。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "个体创业者零成本Logo",
+        "description": "一位开淘宝店的个体户用免费Logo设计器为自己的店铺制作Logo。输入店铺名、选行业，30秒出方案。选了最喜欢的一版直接用到店铺上。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "学生社团Logo制作",
+        "description": "某大学社团需要Logo但没有预算。用免费版AI Logo生成器输入社团名称和方向，5分钟做出了3个候选方案。全员投票选出了最终Logo。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "免费版",
+      "Starter",
+      "Pro"
+    ],
+    "comp_r": [
+      {
+        "feature": "价格",
+        "traditional": "$0",
+        "singleTool": "$15/月",
+        "lovart": "$72/月"
+      },
+      {
+        "feature": "Logo方案数",
+        "traditional": "每批4个",
+        "singleTool": "每批8个",
+        "lovart": "不限"
+      },
+      {
+        "feature": "下载格式",
+        "traditional": "PNG",
+        "singleTool": "PNG+SVG",
+        "lovart": "PNG+SVG+PDF+AI"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "免费版Logo有版权吗？",
+        "answer": "生成的Logo版权归您所有。免费版Logo可用于个人项目和商业用途（个体经营）。"
+      },
+      {
+        "question": "免费版Logo能下载什么格式？",
+        "answer": "免费版支持高清PNG格式下载。需要SVG矢量格式请升级Starter套餐。"
+      },
+      {
+        "question": "免费版每天能生成多少次？",
+        "answer": "免费版每日提供充足生成次数。具体额度请登录后查看账户页面。"
+      }
+    ],
+    "variant": true
+  },
+  {
+    "slug": "zh-ai-logo-generator-online",
+    "pn": "在线Logo生成",
+    "t": "在线Logo生成 — Lovart 网页版Logo设计",
+    "d": "Lovart 在线Logo生成器直接在浏览器中完成Logo设计全流程。从创意构思到成品输出，无需安装任何设计软件，随时随地可用。",
+    "st": "在线Logo生成 — Lovart 网页版Logo设计 免费在线使用",
+    "sd": "Lovart 在线Logo生成器直接在浏览器中完成Logo设计。无需安装，从创意到成品在线完成。",
+    "kw": [
+      "在线Logo生成",
+      "网页Logo设计",
+      "Logo设计在线"
+    ],
+    "bento": [
+      {
+        "title": "浏览器即可",
+        "description": "无需下载安装任何软件。打开网页就能设计Logo，电脑手机都能用。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "实时预览",
+        "description": "每一步修改即时呈现。选颜色马上看到效果，换字体立即预览。所见即所得。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "云端保存",
+        "description": "Logo项目自动保存到云端。换设备登录接着做，不丢进度。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多种导出",
+        "description": "支持导出PNG、JPG、SVG格式。满足从网页使用到印刷输出的各种需求。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "打开网站",
+        "description": "电脑或手机打开Lovart官网Logo设计功能。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "AI生成Logo",
+        "description": "输入品牌信息，AI生成多款Logo方案供选择。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "下载Logo",
+        "description": "选中最满意的Logo，下载所需格式的文件。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "出差途中完成Logo设计",
+        "description": "一位创业者出差时在酒店用手机打开Lovart在线Logo生成器。输入品牌名、选行业风格，10分钟完成了公司Logo设计。直接发给合伙人确认，当晚就定稿了。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "远程团队协作Logo",
+        "description": "某远程团队在飞书群讨论Logo方向，用Lovart在线生成器实时生成各种方案。大家同时预览评论，决策效率比线下开会还高。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [],
+    "comp_r": [],
+    "faqs": [
+      {
+        "question": "在线Logo生成需要网络很快吗？",
+        "answer": "普通宽带或4G/5G网络即可流畅使用。Logo生成在云端服务器进行，对本地网速要求不高。"
+      },
+      {
+        "question": "在手机上设计Logo方便吗？",
+        "answer": "方便。手机端的操作针对触屏优化，输入品牌信息、选择风格、预览下载都能在手机上流畅完成。"
+      },
+      {
+        "question": "在线版和桌面版功能有区别吗？",
+        "answer": "核心功能一致。高级编辑功能（如Touch Edit精细调整）在电脑端大屏上操作更便利。"
+      }
+    ],
+    "variant": true
+  },
+  {
+    "slug": "zh-background-remover",
+    "pn": "智能去背景",
+    "t": "智能去背景 — Lovart AI一键去底",
+    "d": "Lovart 智能去背景功能一键识别并删除图片背景。支持人像、产品、动物等复杂边缘的精准抠图，保留发丝与半透明细节。",
+    "st": "智能去背景 — Lovart AI一键去底 在线免费使用",
+    "sd": "Lovart 智能去背景功能一键识别并删除图片背景。支持人像、产品、动物等复杂边缘精准抠图。",
+    "kw": [
+      "智能去背景",
+      "AI一键去底",
+      "自动抠图工具"
+    ],
+    "bento": [
+      {
+        "title": "一键去背景",
+        "description": "上传图片自动识别主体，一键删除背景。不需要手动涂抹选区，不需要钢笔工具。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "精细边缘",
+        "description": "AI精确识别发丝、毛发、半透明物体等复杂边缘。抠图不留白边、不切主体。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "替换背景",
+        "description": "去背景后可以直接替换为纯色、渐变或上传新背景图。AI自动融合光影。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "批量处理",
+        "description": "一次上传多张图片批量去背景。电商产品图批量处理，效率提升明显。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "上传图片",
+        "description": "上传需要去背景的图片。支持JPG、PNG、WebP格式。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "一键处理",
+        "description": "点击去背景按钮。AI自动识别主体并移除背景。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "下载或替换",
+        "description": "透明背景图片直接下载。也可以替换新背景后再导出。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "电商产品图批处理",
+        "description": "某淘宝卖家每天需要处理50+张产品图去背景。用Lovart智能去背景批量上传，一次处理20张，全部自动抠图完成。原来每天2小时的活变成10分钟。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "人像证件照换背景",
+        "description": "一位HR需要帮新员工处理证件照背景。上传集体照、AI自动抠出每个人物、换成统一蓝色背景。50张照片10分钟处理完。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "Photoshop抠图",
+      "在线抠图工具",
+      "Lovart 智能去背景"
+    ],
+    "comp_r": [
+      {
+        "feature": "操作方式",
+        "traditional": "钢笔/通道/蒙版",
+        "singleTool": "涂抹选区",
+        "lovart": "一键自动识别"
+      },
+      {
+        "feature": "发丝处理",
+        "traditional": "通道法复杂操作",
+        "singleTool": "效果一般",
+        "lovart": "AI精准保留发丝"
+      },
+      {
+        "feature": "批处理",
+        "traditional": "不支持",
+        "singleTool": "不支持",
+        "lovart": "批量上传处理"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "智能去背景能保留发丝细节吗？",
+        "answer": "可以。AI专门针对发丝、毛发等难点进行了训练。即使是复杂的发丝边缘也能完整保留，不用二次修补。"
+      },
+      {
+        "question": "去背景后可以换什么类型的背景？",
+        "answer": "支持纯色、渐变、上传自定义图片三种背景替换方式。AI自动调整主体与背景的光影匹配。"
+      },
+      {
+        "question": "批量处理最多支持多少张？",
+        "answer": "Pro版支持一次最多50张批量处理。免费版和Starter版支持单张或少量处理。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-background-remover-tool",
+    "pn": "在线去背景工具",
+    "t": "在线去背景工具 — Lovart 免费抠图",
+    "d": "Lovart 在线去背景工具免费使用AI抠图能力。上传图片自动识别主体并移除背景，支持批量处理与替换背景色。适合电商产品图处理。",
+    "st": "在线去背景工具 — Lovart 免费抠图 免费使用",
+    "sd": "Lovart 在线去背景工具免费使用AI抠图能力。上传图片自动识别主体并移除背景，支持批量处理。",
+    "kw": [
+      "在线去背景",
+      "免费抠图工具",
+      "AI去背景在线"
+    ],
+    "bento": [
+      {
+        "title": "在线免费抠图",
+        "description": "打开浏览器免费使用AI抠图。不需要安装软件，上传即可处理。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "高精度识别",
+        "description": "AI自动识别人像、产品、动物等主体。复杂边缘处理优秀。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "背景替换",
+        "description": "去背景后一键替换纯色背景或自定义图片背景。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "电商专用",
+        "description": "特别优化了产品图片的处理效果。白底图、场景图都能处理。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "打开网页",
+        "description": "浏览器打开Lovart去背景功能。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "上传图片",
+        "description": "拖拽或点击上传需要处理的图片。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "下载结果",
+        "description": "AI自动去背景。预览效果后下载透明PNG或替换背景后保存。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "微商产品图处理",
+        "description": "一位微商每天要处理20+张产品图发朋友圈。用Lovart在线去背景工具，上传图片自动抠图换白底。每天省下1小时抠图时间。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "简历照片换背景",
+        "description": "应届毕业生用在线抠图工具把手机拍的半身照抠出来换成正式蓝色背景。省下去照相馆的时间和费用。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "免费版",
+      "Starter",
+      "Pro"
+    ],
+    "comp_r": [
+      {
+        "feature": "价格",
+        "traditional": "$0",
+        "singleTool": "$15/月",
+        "lovart": "$72/月"
+      },
+      {
+        "feature": "批量处理",
+        "traditional": "单张",
+        "singleTool": "单张",
+        "lovart": "50张/批"
+      },
+      {
+        "feature": "高清输出",
+        "traditional": "标准",
+        "singleTool": "高清",
+        "lovart": "4K"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "在线抠图工具完全免费吗？",
+        "answer": "基础去背景功能免费使用。免费版每日有处理次数限制，升级付费版解锁更多功能。"
+      },
+      {
+        "question": "抠图后图片质量会下降吗？",
+        "answer": "不会。AI处理保持原图分辨率和质量。透明背景的PNG格式也不损失画质。"
+      },
+      {
+        "question": "支持手机上抠图吗？",
+        "answer": "支持。手机浏览器打开即可使用。手指点击上传照片，AI自动抠图，操作流畅。"
+      }
+    ],
+    "variant": true
+  },
+  {
+    "slug": "zh-ai-image-upscaler",
+    "pn": "AI图片无损放大",
+    "t": "AI图片无损放大 — Lovart 画质增强",
+    "d": "Lovart AI图片无损放大使用超分辨率技术将低清图片放大至4K/8K，同时修复模糊边缘与噪点。适合老照片修复与电商主图优化。",
+    "st": "AI图片无损放大 — Lovart 画质增强 在线免费使用",
+    "sd": "Lovart AI图片无损放大使用超分辨率技术将低清图片放大至4K/8K，修复模糊边缘与噪点。",
+    "kw": [
+      "AI图片无损放大",
+      "画质增强",
+      "图片超分辨率"
+    ],
+    "bento": [
+      {
+        "title": "超分辨率放大",
+        "description": "将低分辨率图片放大2倍、4倍、8倍。AI补充缺失的细节，图片放大后依然清晰。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "去噪修复",
+        "description": "自动检测并消除图片噪点、压缩伪影、模糊。老旧照片也能焕然一新。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "人脸增强",
+        "description": "针对人物照片专门优化。放大后人脸细节自然清晰，不会出现怪异面容。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "批量放大",
+        "description": "一次上传多张图片批量放大处理。适合电商批量优化产品主图。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "上传图片",
+        "description": "上传需要放大的低清图片。支持JPG、PNG、WebP格式。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "选择放大倍数",
+        "description": "选择2倍、4倍或8倍放大。AI自动分析图片内容进行画质增强。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "下载高清版",
+        "description": "处理完成后预览效果，下载高清放大版本。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "电商主图高清化",
+        "description": "某卖家有一批老产品图只有720P分辨率，已不适合现在的主图要求。用AI无损放大全部提升到4K分辨率，图片清晰度达到平台推荐标准。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "老照片修复",
+        "description": "一位用户把父母30年前的结婚照扫描后上传，将300dpi的扫描图放大4倍并去除了扫描噪点。照片上的细节都清晰呈现。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "PS插值放大",
+      "在线放大工具",
+      "Lovart AI无损放大"
+    ],
+    "comp_r": [
+      {
+        "feature": "放大质量",
+        "traditional": "模糊锯齿严重",
+        "singleTool": "有改善但不自然",
+        "lovart": "AI补充细节清晰"
+      },
+      {
+        "feature": "最大倍数",
+        "traditional": "2倍已严重失真",
+        "singleTool": "2-4倍",
+        "lovart": "8倍仍清晰"
+      },
+      {
+        "feature": "人脸增强",
+        "traditional": "不适用",
+        "singleTool": "部分支持",
+        "lovart": "独立人脸优化"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "AI无损放大能放大多大？",
+        "answer": "支持2倍、4倍、8倍放大。例如1000x1000像素的图片，4倍放大后为4000x4000像素。"
+      },
+      {
+        "question": "放大后的图片适合印刷吗？",
+        "answer": "适合。放大到4K/8K分辨率后可用于A3及以下尺寸的印刷品。"
+      },
+      {
+        "question": "老照片修复的效果如何？",
+        "answer": "对折痕、褪色、噪点有明显修复效果。严重破损的照片AI会智能补全，保持面部特征自然。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-ai-image-upscaler-tool",
+    "pn": "在线图片放大",
+    "t": "在线图片放大 — Lovart AI免费扩图",
+    "d": "Lovart 在线图片放大工具免费将低分辨率图片提升至高清。支持2倍/4倍放大，保留原图细节不损失画质。适合打印与展示场景。",
+    "st": "在线图片放大 — Lovart AI免费扩图 免费使用",
+    "sd": "Lovart 在线图片放大工具免费将低分辨率图片提升至高清。支持2倍/4倍放大。",
+    "kw": [
+      "在线图片放大",
+      "免费图片扩图",
+      "AI图片放大工具"
+    ],
+    "bento": [
+      {
+        "title": "免费放大",
+        "description": "免费版支持2倍和4倍图片放大。日常使用场景完全够用。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "保持画质",
+        "description": "AI超分辨率技术确保放大后画质不损失。细节更清晰而不是更模糊。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "快速处理",
+        "description": "上传到下载仅需几秒到几十秒。批量处理也能快速完成。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多种用途",
+        "description": "适合社交媒体图片优化、电商主图增强、打印素材准备等场景。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "上传图片",
+        "description": "拖拽或点击上传需要放大的图片。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "选放大倍数",
+        "description": "选择2倍或4倍放大。点击开始处理。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "下载高清图",
+        "description": "处理完成后预览对比，下载高清版本。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "电商主图免费优化",
+        "description": "一位淘宝卖家把手机拍的产品图通过在线放大工具免费提升分辨率。主图从模糊变清晰，点击率明显提升。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "PPT配图高清化",
+        "description": "一位职场人士从网上下载的图片分辨率不够，用在线工具免费放大后用到PPT演示中。投影效果比之前好很多。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "免费版",
+      "Starter",
+      "Pro"
+    ],
+    "comp_r": [
+      {
+        "feature": "价格",
+        "traditional": "$0",
+        "singleTool": "$15/月",
+        "lovart": "$72/月"
+      },
+      {
+        "feature": "放大倍数",
+        "traditional": "2x/4x",
+        "singleTool": "2x/4x/8x",
+        "lovart": "2x/4x/8x"
+      },
+      {
+        "feature": "批量处理",
+        "traditional": "不支持",
+        "singleTool": "有限",
+        "lovart": "大量"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "免费版放大的图片有水印吗？",
+        "answer": "没有。免费版放大后的图片不含任何水印，可自由使用。"
+      },
+      {
+        "question": "免费版最高能放多大？",
+        "answer": "免费版支持2倍和4倍放大。假设输入为1000x1000像素，4倍后为4000x4000像素。"
+      },
+      {
+        "question": "放大后的图片能商用吗？",
+        "answer": "免费版放大的图片可用于个人和商业用途。原图的版权归属与放大处理无关，请确保您有权使用原图。"
+      }
+    ],
+    "variant": true
+  },
+  {
+    "slug": "zh-ai-face-swap",
+    "pn": "AI换脸",
+    "t": "AI换脸 — Lovart 智能面部替换",
+    "d": "Lovart AI换脸功能精准替换图片或视频中的人脸。保持肤色、光影自然融合，适用于创意内容与视觉实验场景。",
+    "st": "AI换脸 — Lovart 智能面部替换 在线免费使用",
+    "sd": "Lovart AI换脸功能精准替换图片或视频中的人脸。保持肤色、光影自然融合。",
+    "kw": [
+      "AI换脸",
+      "智能换脸工具",
+      "面部替换"
+    ],
+    "bento": [
+      {
+        "title": "精准面部替换",
+        "description": "上传目标人脸和源图片，AI精确识别面部特征并进行替换。五官位置、表情、角度自动匹配。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "自然光影融合",
+        "description": "AI分析目标图片的光照条件，自动调整替换人脸的光影与色调。替换后看不出合成痕迹。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "表情保持",
+        "description": "替换人脸时保留目标人物的表情。替换的是脸型而不是表情，所以表情自然。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "视频换脸",
+        "description": "支持视频中连续帧的面部替换。每帧之间的面部保持一致性，不会闪烁。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "上传源图片",
+        "description": "上传要用的人脸照片。正面清晰照片效果最佳。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "上传目标文件",
+        "description": "上传要替换人脸的图片或视频。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "生成并下载",
+        "description": "AI自动完成面部替换。预览效果满意后下载结果。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "创意内容制作",
+        "description": "一位短视频创作者用AI换脸功能制作创意短片。把自己的脸替换到历史人物画作中，生成趣味教育视频。播放量超过100万。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "电影级预览",
+        "description": "某影视团队用AI换脸在选角阶段快速预览不同演员在角色中的效果。不需要实际拍摄，上传演员照片一键替换。选角效率大幅提升。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "传统换脸软件",
+      "开源Deepfake",
+      "Lovart AI换脸"
+    ],
+    "comp_r": [
+      {
+        "feature": "操作难度",
+        "traditional": "需大量后期处理",
+        "singleTool": "需技术部署",
+        "lovart": "上传即处理"
+      },
+      {
+        "feature": "结果自然度",
+        "traditional": "合成痕迹明显",
+        "singleTool": "需要大量训练",
+        "lovart": "AI自动光影融合"
+      },
+      {
+        "feature": "处理速度",
+        "traditional": "数小时",
+        "singleTool": "数小时训练",
+        "lovart": "数分钟"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "AI换脸功能支持视频处理吗？",
+        "answer": "支持。可上传MP4视频进行面部替换。视频中连续帧的面部保持一致性。"
+      },
+      {
+        "question": "AI换脸功能做出来的内容清晰吗？",
+        "answer": "输出分辨率为原文件分辨率。高清输入获得高清输出。付费版支持4K视频换脸。"
+      },
+      {
+        "question": "使用AI换脸需要注意什么？",
+        "answer": "请遵守法律法规，勿用于欺诈、造谣、侵犯他人肖像权等不当用途。Lovart对滥用行为保留追究权利。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-ai-lip-sync",
+    "pn": "AI口型同步",
+    "t": "AI口型同步 — Lovart 唇形匹配",
+    "d": "Lovart AI口型同步让视频中的人物口型与音频精确匹配。支持多语种自动同步，适用于配音、翻译视频、虚拟主播等场景。",
+    "st": "AI口型同步 — Lovart 唇形匹配 在线免费使用",
+    "sd": "Lovart AI口型同步让视频中的人物口型与音频精确匹配。支持多语种自动同步。",
+    "kw": [
+      "AI口型同步",
+      "唇形匹配",
+      "AI唇形同步"
+    ],
+    "bento": [
+      {
+        "title": "音频对口型",
+        "description": "上传人物视频和新音频，AI自动调整口型匹配新音频。改配音不用重拍。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多语种适配",
+        "description": "中文配音自动匹配中文口型，英文适配英文口型。不同语言的口型特征精确对应。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "表情自然",
+        "description": "不只是口型。AI同步调整面部肌肉和表情，让说话表情自然不生硬。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "保留原声特征",
+        "description": "替换音频后保留原视频的人物语气、节奏和情绪。不改变表演本身的气质。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "上传视频",
+        "description": "上传有人物讲话的视频。正面或半侧面视角效果最佳。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "上传或输入音频",
+        "description": "上传新的配音音频或输入文字让AI生成语音。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "生成同步视频",
+        "description": "AI自动同步口型与音频。预览满意后导出新视频。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "视频翻译本地化",
+        "description": "某教育机构将英文课程视频翻译成中文。用AI口型同步将中文配音与原视频口型对齐，学生看起来像是原本就说中文。整个课程库的本地化时间从3个月缩短到1周。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "虚拟主播直播",
+        "description": "一位虚拟主播用AI口型同步让Avatar根据实时语音自动匹配口型。直播时观众反馈口型比以前自然多了。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "传统对口型",
+      "简单AI工具",
+      "Lovart AI口型同步"
+    ],
+    "comp_r": [
+      {
+        "feature": "口型精度",
+        "traditional": "手动，不准确",
+        "singleTool": "基础匹配",
+        "lovart": "AI高精度同步"
+      },
+      {
+        "feature": "多语言",
+        "traditional": "不支持",
+        "singleTool": "有限",
+        "lovart": "多语言自动适配"
+      },
+      {
+        "feature": "表情配合",
+        "traditional": "无",
+        "singleTool": "仅口型",
+        "lovart": "口型+表情同步"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "AI口型同步支持哪些语言？",
+        "answer": "支持中文普通话、英文、日文、韩文、法文、德文、西班牙文等。"
+      },
+      {
+        "question": "口型同步的延迟有多长？",
+        "answer": "处理时间取决于视频长度。30秒视频通常1-2分钟处理完成。"
+      },
+      {
+        "question": "口型同步后视频画质会下降吗？",
+        "answer": "不会。只处理口部区域画面，全片画质保持不变。输出与原视频同分辨率。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-character-consistency",
+    "pn": "角色一致性",
+    "t": "角色一致性 — Lovart 角色IP管理",
+    "d": "Lovart 角色一致性功能确保AI在不同场景、不同画面中生成的角色保持统一的面部特征与风格。品牌IP角色从此告别每张图长不一样。",
+    "st": "角色一致性 — Lovart 角色IP管理 在线免费使用",
+    "sd": "Lovart 角色一致性功能确保AI在不同场景中生成的角色保持统一的面部特征与风格。",
+    "kw": [
+      "角色一致性",
+      "AI角色IP",
+      "角色统一性"
+    ],
+    "bento": [
+      {
+        "title": "角色锁定",
+        "description": "设定一个角色后，AI在所有画面中保持其面部特征、发型、身材的一致性。不论什么场景什么角度。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "风格统一",
+        "description": "不仅长相一致，角色的画风、配色、线条风格也保持一致。品牌IP的视觉统一性有保障。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "多角度生成",
+        "description": "锁定角色后，可以从不同角度生成统一形象。正面、侧面、全身，角色特征不变。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "场景切换",
+        "description": "角色在不同场景中出现时保持一致性。室内到室外、白天到黑夜，角色依然是同一个人。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "创建角色",
+        "description": "上传角色参考图或文字描述角色特征。AI建立角色模型。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "锁定角色",
+        "description": "确认角色特征后锁定。之后所有生成都自动沿用该角色。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "开始创作",
+        "description": "在任意设计任务中使用该角色。AI自动保持角色一致性。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "品牌IP角色漫画",
+        "description": "某奶茶品牌设计了IP角色用于社媒营销。用角色一致性功能确保每一张海报、每一条视频中出现的IP角色都长一样。粉丝记住了角色形象，品牌识别度明显提升。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "连载漫画创作",
+        "description": "一位插画师用Lovart创作连载小漫画。用角色一致性锁定主角，每一格画面主角都保持统一的长相和风格。读者不会因为角色变脸而出戏。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "手绘创作",
+      "普通AI工具",
+      "Lovart 角色一致性"
+    ],
+    "comp_r": [
+      {
+        "feature": "角色统一",
+        "traditional": "靠画师控制，费时",
+        "singleTool": "每次不同，无法统一",
+        "lovart": "自动锁定角色特征"
+      },
+      {
+        "feature": "产出效率",
+        "traditional": "慢，每张独立绘制",
+        "singleTool": "快但角色不统一",
+        "lovart": "快且角色一致"
+      },
+      {
+        "feature": "多场景应用",
+        "traditional": "需画师维持风格",
+        "singleTool": "无法跨场景统一",
+        "lovart": "自动保持跨场景一致"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "角色一致性支持什么样风格的角色？",
+        "answer": "支持3D写实、卡通、日系动漫、插画风等主流风格。写实风格的角色一致性格外精准。"
+      },
+      {
+        "question": "角色锁定后还能修改吗？",
+        "answer": "可以。锁定的角色在需要时可以解锁调整特征，然后重新锁定。每次修改都有版本记录。"
+      },
+      {
+        "question": "角色一致性功能支持多少个角色？",
+        "answer": "免费版支持1个角色锁定。Starter版支持5个。Pro版不限数量。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-smart-resize",
+    "pn": "智能尺寸适配",
+    "t": "智能尺寸适配 — Lovart 一键多尺寸",
+    "d": "Lovart 智能尺寸适配将单个设计一键扩展为全平台尺寸：小红书、抖音、公众号、淘宝、朋友圈。不用反复排版，内容自动适配。",
+    "st": "智能尺寸适配 — Lovart 一键多尺寸 在线免费使用",
+    "sd": "Lovart 智能尺寸适配将单个设计一键扩展为全平台尺寸。不用反复排版，内容自动适配。",
+    "kw": [
+      "智能尺寸适配",
+      "一键多尺寸",
+      "多平台排版"
+    ],
+    "bento": [
+      {
+        "title": "全平台尺寸",
+        "description": "一键生成小红书1:1、抖音9:16、公众号16:9、淘宝主图等多种平台标准尺寸。无需手动调整。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "智能布局适配",
+        "description": "AI自动调整元素布局适配不同比例。文字自动重排、图片自动裁剪、装饰元素自动取舍。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌一致",
+        "description": "所有尺寸都保持品牌配色、字体和风格。输出统一的品牌视觉体验。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "批量导出",
+        "description": "一次性导出所有尺寸。每个尺寸单独文件，命名清晰，直接上传各平台。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "完成设计",
+        "description": "完成一个基础尺寸的设计稿。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "选择目标平台",
+        "description": "勾选需要的平台尺寸：小红书、抖音、公众号、朋友圈、淘宝等。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "一键生成全部",
+        "description": "AI自动扩展适配所有选定尺寸。检查调整后批量导出。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "社媒运营的一键多尺寸",
+        "description": "某社媒运营每周需要产出10套不同尺寸的视觉素材。用智能尺寸适配功能，先做一个正方形主图，然后一键生成抖音、朋友圈、公众号封面等6种尺寸。每周设计时间从8小时减少到1小时。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌活动全渠道素材",
+        "description": "某品牌做一次促销活动需要覆盖线上线下多个渠道。用智能尺寸适配从一张海报出发生成了APP启动页、朋友圈广告、公众号推文封面、线下海报等12种尺寸。活动上线时间提前了3天。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "手动调整",
+      "模板框架",
+      "Lovart 智能尺寸适配"
+    ],
+    "comp_r": [
+      {
+        "feature": "操作方式",
+        "traditional": "每个尺寸独立设计",
+        "singleTool": "套模板手动调整",
+        "lovart": "一键AI自动适配"
+      },
+      {
+        "feature": "耗时",
+        "traditional": "每尺寸30分钟",
+        "singleTool": "每尺寸5-10分钟",
+        "lovart": "全部尺寸几分钟"
+      },
+      {
+        "feature": "品牌一致性",
+        "traditional": "靠设计师手工保持",
+        "singleTool": "链接Logo就一致",
+        "lovart": "AI自动保持品牌规范"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "智能尺寸适配支持哪些平台尺寸？",
+        "answer": "支持小红书(1:1/3:4)、抖音(9:16)、公众号(16:9)、朋友圈(1:1)、淘宝(800x800/750x1000)、微博(16:9)等20+常用尺寸。"
+      },
+      {
+        "question": "适配后需要手动调整吗？",
+        "answer": "AI自动适配后通常可直接使用。个别复杂设计可能需要微调文字位置或图片裁剪点。"
+      },
+      {
+        "question": "支持自定义尺寸吗？",
+        "answer": "支持。除了预设平台尺寸，也可以输入自定义宽高比。Pro版支持批量自定义尺寸。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-mockup",
+    "pn": "产品Mockup生成",
+    "t": "产品Mockup生成 — Lovart 样机设计",
+    "d": "Lovart 产品Mockup生成器自动将设计作品套用到实物场景中。T恤、手机、电脑屏幕、广告牌、包装盒等上百种样机模板即拖即用。",
+    "st": "产品Mockup生成 — Lovart 样机设计 在线免费使用",
+    "sd": "Lovart 产品Mockup生成器自动将设计作品套用到实物场景中。上百种样机模板即拖即用。",
+    "kw": [
+      "产品Mockup",
+      "样机生成",
+      "产品展示图"
+    ],
+    "bento": [
+      {
+        "title": "智能贴图",
+        "description": "上传设计图，AI自动识别样机的贴图区域并完美贴合。透视、光影自动匹配。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "上百种场景",
+        "description": "T恤、手机、电脑、广告牌、包装盒、画册、名片等100+样机模板。覆盖常见展示场景。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "高保真光影",
+        "description": "AI分析样机场景的光照条件，自动调整贴图的光影、反射和阴影。效果真实。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "批量套用",
+        "description": "一个设计图批量套用到多个样机场景。快速生成全方位的产品展示素材。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "上传设计图",
+        "description": "上传Logo、海报、包装设计等设计图。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "选择样机",
+        "description": "从上百种样机模板中选择最适合展示场景的模板。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "生成并下载",
+        "description": "AI自动将设计贴合到样机上。预览效果满意后下载高清图。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "品牌提案快速出图",
+        "description": "某设计公司为品牌客户提案时，用Mockup生成器将设计快速套用到名片、包装袋、店铺门头等10+场景中。客户看到效果图当场确认方案。提案成功率提升。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "电商场景图批量生产",
+        "description": "一位手机壳卖家需要为每个设计生成3张场景图。用Mockup批量套用30款设计到手机样机模板，1小时完成90张场景图。平时需要两天。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "PS手动合成",
+      "模板生成器",
+      "Lovart Mockup"
+    ],
+    "comp_r": [
+      {
+        "feature": "操作方式",
+        "traditional": "调整透视变形、图层混合",
+        "singleTool": "模板替换需手动对准",
+        "lovart": "AI自动贴合"
+      },
+      {
+        "feature": "样机数量",
+        "traditional": "自制或购买素材",
+        "singleTool": "有限模板",
+        "lovart": "100+高质量模板"
+      },
+      {
+        "feature": "真实性",
+        "traditional": "取决于技术",
+        "singleTool": "模板化明显",
+        "lovart": "AI光影匹配真实"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "Mockup生成支持哪些产品类型？",
+        "answer": "支持T恤、手机、笔记本、平板、显示器、广告牌、包装盒、画册、名片、马克杯、帆布袋等100+类型。"
+      },
+      {
+        "question": "可以上传自己的样机场景吗？",
+        "answer": "可以。Pro版支持上传自定义场景样机，AI自动识别贴图区域。"
+      },
+      {
+        "question": "Mockup输出分辨率如何？",
+        "answer": "输出分辨率与样机模板一致。通常为高清（1920x1280）以上。Pro版支持4K输出。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-ai-slides-generator",
+    "pn": "AI PPT生成器",
+    "t": "AI PPT生成器 — Lovart 智能幻灯片",
+    "d": "Lovart AI PPT生成器输入主题自动生成完整演示文稿。支持品牌风格统一、智能排版、图表生成，从大纲到成稿仅需几分钟。",
+    "st": "AI PPT生成器 — Lovart 智能幻灯片 在线免费使用",
+    "sd": "Lovart AI PPT生成器输入主题自动生成完整演示文稿。品牌风格统一、智能排版、图表生成。",
+    "kw": [
+      "AI PPT生成器",
+      "智能幻灯片",
+      "AI做PPT"
+    ],
+    "bento": [
+      {
+        "title": "主题生成",
+        "description": "输入PPT主题，AI自动生成完整的大纲和每页内容。从一句话到完整演示文稿。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "品牌模板",
+        "description": "自动应用品牌的配色、字体和Logo。每页PPT都符合品牌视觉规范。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "智能图表",
+        "description": "根据数据自动选择合适的图表类型并生成可视化图表。柱状图、饼图、折线图等自动排版。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "一键改风格",
+        "description": "不满意当前风格？一键切换配色方案和布局模板。内容不变，视觉焕然一新。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [
+      {
+        "label": "内容生成",
+        "content": {
+          "title": "从主题到内容",
+          "description": "输入演讲主题，AI自动生成结构完整、逻辑清晰的大纲与内容。支持从文档、笔记甚至思维导图导入生成。几分钟完成原本半天的工作。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "设计美化",
+        "content": {
+          "title": "AI排版优化",
+          "description": "AI自动处理字体选择、层级对比、图文排布。每页内容自动适配最佳排版，不需要手动对齐和调整。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      },
+      {
+        "label": "演讲备注",
+        "content": {
+          "title": "自动生成演讲稿",
+          "description": "每页PPT自动生成演讲备注。包含关键要点、过渡语句和数据解读。直接照着备注就能顺畅讲解。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": ""
+          }
+        }
+      }
+    ],
+    "tools": [
+      {
+        "title": "主题生成",
+        "description": "一句话生成完整PPT",
+        "icon": ""
+      },
+      {
+        "title": "智能排版",
+        "description": "AI自动优化页面布局",
+        "icon": ""
+      },
+      {
+        "title": "图表生成",
+        "description": "智能型图表可视化",
+        "icon": ""
+      },
+      {
+        "title": "品牌模板",
+        "description": "自动套用品牌规范",
+        "icon": ""
+      }
+    ],
+    "steps": [
+      {
+        "title": "输入主题",
+        "description": "输入PPT的主题、目标听众和核心要点。也可以上传大纲文档。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "AI生成内容",
+        "description": "AI自动生成完整的PPT：大纲、每页内容、配图建议。用户审核确认结构。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "设计并导出",
+        "description": "选择品牌模板或AI推荐风格。导出PPT或PDF格式，直接使用。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [
+      {
+        "title": "职场汇报",
+        "description": "周报、月报、季报、年度总结。输入数据AI自动生成结构清晰的汇报PPT。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "方案提案",
+        "description": "营销方案、产品方案、商业计划书。AI生成有说服力的提案内容。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "教学课件",
+        "description": "培训课件、课程讲义、教学材料。AI生成结构化教学内容。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "showcases": [
+      {
+        "title": "市场部月度汇报",
+        "description": "某公司市场部每月需要制作30+页的月度汇报PPT。用AI PPT生成器输入本月数据要点，AI自动生成完整汇报。原来需要一整天的活变为30分钟。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "创业公司商业计划书",
+        "description": "一位创业者用AI PPT生成器制作投资人演示材料。输入商业模式和财务数据，AI生成结构清晰、视觉专业的BP。投资人反馈这是看到的最专业的早期项目BP之一。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "手动制作PPT",
+      "PPT模板",
+      "Lovart AI PPT生成器"
+    ],
+    "comp_r": [
+      {
+        "feature": "制作时间",
+        "traditional": "半天到一天",
+        "singleTool": "2-3小时",
+        "lovart": "5-15分钟"
+      },
+      {
+        "feature": "内容组织",
+        "traditional": "手动梳理大纲",
+        "singleTool": "自己填内容",
+        "lovart": "AI自动生成内容"
+      },
+      {
+        "feature": "设计质量",
+        "traditional": "取决于个人水平",
+        "singleTool": "取决于模板质量",
+        "lovart": "AI专业排版"
+      },
+      {
+        "feature": "品牌一致",
+        "traditional": "手动保持",
+        "singleTool": "链接Logo",
+        "lovart": "自动应用Brand Kit"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "AI PPT生成器支持导出什么格式？",
+        "answer": "支持导出PPTX、PDF、PNG图片三种格式。PPTX可在PowerPoint和WPS中继续编辑。"
+      },
+      {
+        "question": "AI生成的内容准确吗？",
+        "answer": "AI生成结构化的内容框架，具体数据需要您提供和核实。建议将AI生成的内容作为草稿进行审阅和调整。"
+      },
+      {
+        "question": "可以自定义PPT模板吗？",
+        "answer": "可以。上传企业PPT模板后，AI自动识别模板版式，后续生成都使用您的自定义模板。"
+      }
+    ],
+    "variant": false
+  },
+  {
+    "slug": "zh-ai-slides-generator-free",
+    "pn": "免费PPT生成",
+    "t": "免费PPT生成 — Lovart 在线AI做PPT",
+    "d": "Lovart 免费PPT生成器零成本创建专业演示文稿。免费版支持导出PDF与图片格式，包含10+精美模板，汇报演示快速出稿。",
+    "st": "免费PPT生成 — Lovart 在线AI做PPT 免费使用",
+    "sd": "Lovart 免费PPT生成器零成本创建专业演示文稿。免费版支持导出PDF与图片格式。",
+    "kw": [
+      "免费PPT生成",
+      "在线AI做PPT",
+      "免费幻灯片"
+    ],
+    "bento": [
+      {
+        "title": "完全免费",
+        "description": "免费版可生成完整PPT。零成本体验AI做PPT的效率和效果。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "精美模板",
+        "description": "免费版包含10+专业设计模板。商务、科技、教育、营销等风格一应俱全。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "PDF导出",
+        "description": "免费版支持导出PDF格式。可直接打印或分享给他人阅览。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "快速出稿",
+        "description": "输入主题几分钟完成PPT。临时需要演示材料时快速生成。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "tabs": [],
+    "tools": [],
+    "steps": [
+      {
+        "title": "免费注册",
+        "description": "注册Lovart账号，无需绑定信用卡。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "输入主题",
+        "description": "输入PPT主题。AI自动生成大纲和内容。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "导出使用",
+        "description": "选择模板风格，导出PDF格式直接使用。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "clusters": [],
+    "showcases": [
+      {
+        "title": "学生课堂汇报",
+        "description": "一位大学生需要做课堂展示PPT。用免费PPT生成器输入课题主题，5分钟后AI生成了10页结构清晰的演示文稿。再手动微调后得到了班级最高分。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      },
+      {
+        "title": "临时工作汇报",
+        "description": "一位职场人临时被通知要汇报工作进展。用免费PPT生成器输入本周工作内容，AI快速生成一份专业演示稿。参会者评价说看不出是临时准备的。",
+        "media": {
+          "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+          "alt": ""
+        }
+      }
+    ],
+    "comp_h": [
+      "对比维度",
+      "免费版",
+      "Starter",
+      "Pro"
+    ],
+    "comp_r": [
+      {
+        "feature": "价格",
+        "traditional": "$0",
+        "singleTool": "$15/月",
+        "lovart": "$72/月"
+      },
+      {
+        "feature": "模板数量",
+        "traditional": "10+",
+        "singleTool": "30+",
+        "lovart": "不限"
+      },
+      {
+        "feature": "导出格式",
+        "traditional": "PDF",
+        "singleTool": "PDF+PPTX",
+        "lovart": "PDF+PPTX+PNG"
+      },
+      {
+        "feature": "品牌模板",
+        "traditional": "不支持",
+        "singleTool": "自定义模板",
+        "lovart": "Brand Kit集成"
+      }
+    ],
+    "faqs": [
+      {
+        "question": "免费版PPT有水印吗？",
+        "answer": "免费版生成的PPT不包含Lovart品牌水印。可以自由使用和分发。"
+      },
+      {
+        "question": "免费版每天能生成多少个PPT？",
+        "answer": "免费版每日有生成次数限制。具体额度请登录后查看账户页面。"
+      },
+      {
+        "question": "免费版PPT可以商用吗？",
+        "answer": "免费版PPT可用于个人项目和商业用途。建议升级付费版获得更完整的商业授权和高级功能。"
+      }
+    ],
+    "variant": true
+  }
+]

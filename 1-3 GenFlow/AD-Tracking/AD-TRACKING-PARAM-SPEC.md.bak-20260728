@@ -1,0 +1,272 @@
+# Ad Tracking URL Parameter Specification
+
+> 投放链接追踪参数规范（SSOT）。所有新投放链接按本文档生成，旧链接逐步迁移。
+> URL 生成工具：`url-builder/index.html`
+
+## 三层追踪架构
+
+```
+Layer 3: Platform Macros     → 平台原生动态宏，用于平台后台归因 + oCPM 回传
+Layer 2: UTM Parameters      → 跨平台标准，用于 GA4/BigQuery/BI 统一分析
+Layer 1: Internal Tracking   → 自建追踪体系（sourceId / el / sec），CRM/漏斗闭环
+```
+
+## 14 个规范字段
+
+### Layer 1 — Internal Tracking（3 个）
+
+| 字段 | 含义 | 必填 | 示例值 |
+|------|------|:--:|--------|
+| `sourceId` | 内部 CRM/归因唯一标识 | ✅ | `910001` |
+| `el` | 页面内元素（按钮/链接位置） | — | `cta_hero`, `pricing_btn`, `nav_signup`, `footer_trial` |
+| `sec` | 页面区块 | — | `hero`, `features`, `pricing`, `testimonials`, `faq` |
+
+### Layer 2 — UTM Parameters（6 个）
+
+| 字段 | 含义 | 必填 | 示例值 |
+|------|------|:--:|--------|
+| `utm_source` | 流量来源平台 | ✅ | `google`, `meta`, `gdt` |
+| `utm_medium` | 投放形式 | ✅ | `cpc`, `cpa`, `social` |
+| `utm_campaign` | 活动/系列名称 | ✅ | `seedance-2.0-launch` |
+| `utm_term` | 搜索词/定向条件 | — | `seedance_group` |
+| `utm_content` | 素材变体/差异化 | — | `variant_a` |
+| `utm_id` | 内部系统映射 ID | — | `910001` |
+
+### Layer 3 — Platform Macros（12 个，选填）
+
+| 字段 | 含义 |
+|------|------|
+| `campaign_id` | 广告系列 ID |
+| `campaign_name` | 广告系列名称（部分平台支持） |
+| `adgroup_id` | 广告组 ID |
+| `ad_id` | 广告/素材 ID |
+| `keyword_id` | 关键词 ID |
+| `keyword` | 关键词文本 / 搜索词 |
+| `matchtype` | 匹配方式 |
+| `network` | 流量网络类型 |
+| `device` | 设备类型 |
+| `placement` | 版位/投放位置 |
+| `creative_type` | 创意格式（购物/酒店/Hotel） |
+| `site_set` | 流量版位集合（国内平台） |
+
+## UTM 枚举值
+
+### utm_source
+
+```yaml
+广告平台:
+  google        - Google Ads
+  meta          - Meta Ads (Facebook + Instagram)
+  bing          - Microsoft Ads
+  tiktok        - TikTok Ads (海外)
+  douyin        - 抖音广告 (国内)
+  baidu         - 百度广告
+  gdt           - 腾讯广点通
+  kuaishou      - 快手广告
+  xiaohongshu   - 小红书广告
+  zhihu         - 知乎广告
+  weibo         - 微博广告
+  q360          - 360广告
+  uc            - UC广告
+  snapchat      - Snapchat
+  pinterest     - Pinterest
+  reddit        - Reddit
+  linkedin      - LinkedIn
+  yandex        - Yandex
+  naver         - Naver
+  x             - X/Twitter
+  cg            - CG联盟
+  aifu          - AiFu联盟
+
+内容分发:
+  zhihu_organic  - 知乎自然分发
+  baijiahao      - 百家号
+  toutiao        - 头条号
+  csdn           - CSDN
+  juejin         - 掘金
+  segmentfault   - 思否
+  devto          - DEV.to
+  medium         - Medium
+  github         - GitHub Discussions
+  hashnode       - Hashnode
+  hackernews     - Hacker News
+  blogger        - Blogger
+  x_organic      - X/Twitter 自然
+  reddit_organic - Reddit 自然
+
+自有渠道:
+  email          - 邮件营销
+  affiliate      - 网盟/联盟
+  content        - 站内内容缺口填充
+  direct         - 直投
+```
+
+### utm_medium
+
+```yaml
+付费投放:
+  cpc          - 搜索广告（点击付费）
+  cpm          - 展示广告（千次曝光付费）
+  cpa          - 效果投放（按转化付费）
+  social       - 信息流广告（社交媒体）
+  video        - 视频广告
+  shopping     - 购物广告 / PLA
+  pmax         - Performance Max
+  display      - 展示网络 / 程序化
+  retargeting  - 再营销/重定向
+
+内容分发:
+  native       - 站外内容分发（完整文章 + 回链）
+  syndication  - 站外内容同步（摘要 + 回链）
+
+自有渠道:
+  email        - 邮件
+  push         - 推送通知
+  blog         - 站内 Blog
+```
+
+### utm_campaign 命名规范
+
+格式: `{product}-{campaign_type}[-{geo}][-{variant}]`
+
+- 全小写 kebab-case
+- 必须包含产品/主题名
+- 不可含下划线（仅连字符分隔）
+
+### utm_term 命名规范
+
+- 搜索广告: `{keyword_group}_group`（snake_case）
+- 社交广告: `{interest}_interest`、`{audience}_lookalike`
+- 再营销: `{segment}_{days}d`
+
+### utm_content 命名规范
+
+- 素材变体: `variant_a`, `variant_b`, `control`
+- 素材格式: `image_16x9`, `video_9x16`, `carousel_3card`
+- CTA 类型: `signup_cta`, `trial_cta`, `demo_cta`
+
+## el / sec 预设值
+
+```yaml
+el (元素):
+  - cta_hero          # Hero 区主 CTA
+  - cta_pricing       # 定价表 CTA
+  - cta_footer        # 页面底部 CTA
+  - cta_sticky        # 悬浮导航 CTA
+  - banner_top        # 顶部横幅
+  - nav_signup        # 导航栏注册按钮
+  - nav_login         # 导航栏登录按钮
+  - card_01 ~ card_10 # 卡片位
+  - link_footer       # 页脚文字链接
+  - link_inline       # 正文内链
+
+sec (区块):
+  - hero
+  - features
+  - pricing
+  - testimonials
+  - faq
+  - comparison
+  - workflow
+  - cta_section
+  - footer
+  - sidebar
+  - nav
+```
+
+## 22 平台参数映射总表
+
+### 海外 — 搜索/综合
+
+| 平台 | source | Click ID (A) | 语法风格 | campaign_id | adgroup_id | ad_id | keyword | matchtype | device | network |
+|------|--------|-------------|---------|-------------|------------|-------|---------|-----------|--------|---------|
+| Google Ads (Search) | `google` | `gclid` | `{lower}` | `{campaignid}` | `{adgroupid}` | `{creative}` | `{keyword}` | `{matchtype}` | `{device}` | `{network}` |
+| Google PMax | `google` | `gclid` | `{lower}` | `{campaignid}` | `{assetgroupid}` | — | — | — | `{device}` | — |
+| Google Demand Gen | `google` | `gclid` | `{lower}` | `{campaignid}` | `{adgroupid}` | `{creative}` | — | — | `{device}` | — |
+| Google Display | `google` | `gclid` | `{lower}` | `{campaignid}` | `{adgroupid}` | `{creative}` | `{keyword}` | — | `{device}` | `{network}` |
+| Bing Ads | `bing` | `msclkid` | `{Pascal}` | `{CampaignId}` | `{AdGroupId}` | `{AdId}` | `{Keyword}` | `{MatchType}` | `{Device}` | `{Network}` |
+| Bing PMax | `bing` | `msclkid` | `{Pascal}` | `{CampaignId}` | `{AssetGroupId}` | — | — | — | `{Device}` | — |
+
+### 海外 — 社交/视频
+
+| 平台 | source | Click ID (A) | 语法风格 | campaign_id | adgroup_id | ad_id | placement | device |
+|------|--------|-------------|---------|-------------|------------|-------|-----------|--------|
+| Meta (FB+IG) | `meta` | `fbclid` | `{{mustache}}` | `{{campaign.id}}` | `{{adset.id}}` | `{{ad.id}}` | `{{placement}}` | `{{device}}` |
+| TikTok | `tiktok` | `ttclid` | `__MACRO__` | `__CAMPAIGN_ID__` | `__AID__` | `__CID__` | `__PLACEMENT__` | `__DEVICE_OS__` |
+| Snapchat | `snapchat` | `ScCid` | `{{mustache}}` | `{{campaign.id}}` | `{{adset.id}}` | `{{ad.id}}` | `{{placement}}` | — |
+| Pinterest | `pinterest` | `epik` | `{{mustache}}` | `{{campaign.id}}` | `{{adgroup.id}}` | `{{ad.id}}` | — | — |
+| Reddit | `reddit` | — | `{{mustache}}` | `{{campaign_id}}` | `{{ad_group_id}}` | `{{ad_id}}` | `{{placement}}` | `{{device}}` |
+| X/Twitter | `x` | `twclid` | `{{mustache}}` | `{{campaign_id}}` | `{{ad_group_id}}` | `{{ad_id}}` | `{{placement}}` | — |
+| LinkedIn | `linkedin` | — | `{{mustache}}` | `{{campaign.id}}` | — | `{{creative.id}}` | — | — |
+
+### 海外 — 区域
+
+| 平台 | source | Click ID (A) | 语法风格 | campaign_id | adgroup_id | ad_id | keyword | matchtype | device |
+|------|--------|-------------|---------|-------------|------------|-------|---------|-----------|--------|
+| Yandex | `yandex` | `yclid` | `{snake}` | `{campaign_id}` | `{ad_id}` | `{banner_id}` | `{phrase_id}` | — | `{device_type}` |
+| Naver | `naver` | — | `n_*` | `n_campaign` | `n_ad_group` | — | `n_query` | — | — |
+
+### 国内平台
+
+| 平台 | source | Click ID (A) | 语法风格 | campaign_id | adgroup_id | ad_id | keyword | matchtype | device | site_set |
+|------|--------|-------------|---------|-------------|------------|-------|---------|-----------|--------|----------|
+| 百度 | `baidu` | `bd_vid` | `{lower}` | `{planid}` | `{unitid}` | `{creativeid}` | `{query}` | `{matchtype}` | `{device}` | — |
+| 360 | `q360` | `qihoo_id` | `{lower}` | `{planid}` | `{groupid}` | `{creativeid}` | `{query}` | `{matchtype}` | `{device}` | — |
+| 广点通 | `gdt` | `qz_gdt` | `__MACRO__` | `__CAMPAIGN_ID__` | `__ADGROUP_ID__` | `__CREATIVE_ID__` | — | — | `__DEVICE_TYPE__` | `__SITE_SET__` |
+| 抖音 | `douyin` | `ttclid` | `__MACRO__` | `__CAMPAIGN_ID__` | `__AID__` | `__CID__` | — | — | `__DEVICE_OS__` | `__PLACEMENT__` |
+| 快手 | `kuaishou` | `ksclid` | `__MACRO__` | `__CAMPAIGN_ID__` | `__UNIT_ID__` | `__CREATIVE_ID__` | — | — | `__DEVICE_OS__` | — |
+| 知乎 | `zhihu` | `zhclid` | `{lower}` | `{plan_id}` | `{unit_id}` | `{creative_id}` | `{keyword_id}` | `{match_type}` | `{device}` | — |
+| UC | `uc` | `ali_clkid` | `{camel}` | `{planId}` | `{groupId}` | `{creativeId}` | — | — | — | — |
+| 微博 | `weibo` | `sinavid` | `{lower}` | `{plan_id}` | — | `{creative_id}` | — | — | `{device}` | `{position}` |
+| 小红书 | `xiaohongshu` | — | — | — | — | — | — | — | — | — |
+| CG联盟 | `cg` | — | — | — | — | — | — | — | — | — |
+| AiFu联盟 | `aifu` | — | — | — | — | — | — | — | — | — |
+
+## 语法风格对照
+
+| 风格 | 语法 | 示例 | 平台 |
+|------|------|------|------|
+| Google Curly (lower) | `{lowercase}` | `{campaignid}` | Google Ads, 百度, 360, 知乎, 微博 |
+| Google Curly (Pascal) | `{PascalCase}` | `{CampaignId}` | Bing Ads |
+| Google Curly (camel) | `{camelCase}` | `{planId}` | UC |
+| Google Curly (snake) | `{snake_case}` | `{campaign_id}` | Yandex |
+| Meta Mustache | `{{dot.path}}` | `{{campaign.id}}` | Meta, Snap, Pinterest, Reddit, X, LinkedIn |
+| ByteDance Macro | `__UPPER__` | `__CAMPAIGN_ID__` | TikTok, 抖音, 广点通, 快手 |
+| Naver | `n_field` | `n_campaign` | Naver |
+
+## URL 结构规范
+
+```
+https://{domain}/{page_path}?sourceId={id}&el={el}&sec={sec}&utm_source={src}&utm_medium={med}&utm_campaign={camp}[&utm_term={term}][&utm_content={content}][&{macro1}={val1}&{macro2}={val2}...]
+```
+
+- Layer 1（sourceId/el/sec）在前
+- Layer 2（UTM）居中
+- Layer 3（平台宏）在后
+- 参数按字母序排列（同层内）
+
+## 常见场景 URL 示例
+
+### Google Ads 搜索广告
+
+```
+https://lovart.ai/tools/seedance?sourceId=910001&el=cta_hero&sec=hero&utm_source=google&utm_medium=cpc&utm_campaign=seedance-2.0&utm_term=seedance_group&utm_content=variant_a&adgroupid={adgroupid}&campaignid={campaignid}&creative={creative}&device={device}&keyword={keyword}&matchtype={matchtype}&network={network}&targetid={targetid}
+```
+
+### Meta 信息流广告
+
+```
+https://lovart.ai/tools/seedance?sourceId=910001&el=cta_hero&sec=hero&utm_source=meta&utm_medium=social&utm_campaign=seedance-2.0&utm_content=variant_a&ad_id={{ad.id}}&adset_id={{adset.id}}&campaign_id={{campaign.id}}&placement={{placement}}
+```
+
+### 广点通投放
+
+```
+https://lovart.ai/tools/seedance?sourceId=910001&el=cta_hero&utm_source=gdt&utm_medium=cpa&utm_campaign=seedance-2.0&campaign_id=__CAMPAIGN_ID__&adgroup_id=__ADGROUP_ID__&creative_id=__CREATIVE_ID__&device=__DEVICE_TYPE__&site_set=__SITE_SET__
+```
+
+### 内容分发（知乎自然分发）
+
+```
+https://lovart.ai/blog/ai-video-tools?sourceId=0&el=link_inline&utm_source=zhihu_organic&utm_medium=syndication&utm_campaign=offsite_ai-video-tools
+```

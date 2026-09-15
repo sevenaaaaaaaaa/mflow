@@ -1,0 +1,14 @@
+{
+  "name": "Lovart SEO Yearly",
+  "description": "Annual SEO report (Jan 10). Human approval gate for Y02 content batch.",
+  "workflow": {
+    "triggers": [{"cron": {"cron": "0 6 10 1 *"}}],
+    "actions": [],
+    "prompts": [{
+      "prompt": "Generate Lovart SEO annual report for previous calendar year.\n\n1. Aggregate 12 monthly reports from 1-2 Insight/Trident Insights/reports/monthly/\n2. Write 1-2 Insight/Trident Insights/reports/yearly/SEO-Annual-YYYY.md\n3. bash report-notify --type seo-yearly --status ok --summary \"<YoY highlights>\" --artifact \"<path>\"\n4. Notion data_source_id 61514ed3-39e2-4d84-b860-8334d740823e Follow-up=__YES__\n\nGate: Do NOT run year-replace batch unless user approved. List proposals only."
+    }],
+    "model": "",
+    "agentOptions": {"skipInstall": false},
+    "memoryEnabled": false
+  }
+}

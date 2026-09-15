@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+# kg — convenience CLI wrapping kg-query.py + kg-emit-jsonl.py
+# Place at 1-1 Harness/11-knowledge/scripts/kg (no extension)
+# Usage: kg emit | kg stats | kg related-to <id> | kg find <substr> | ...
+#
+# Project-local convention: invoke as `bash 1-1\ Harness/11-knowledge/scripts/kg stats`
+# or add a project symlink at top-level.
+
+set -euo pipefail
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PY="${HERE}/kg-query.py"
+EMIT="${HERE}/kg-emit-jsonl.py"
+
+cmd="${1:-help}"
+shift || true
+
+case "$cmd" in
+  help|-h|--help)
+    cat <<EOF
+kg subcommands:
+  emit                regenerate JSONL mirrors from YAML
+  stats               graph cardinality
+  orphans             entities with no edges
+  list [--kind K]     list entities
+  find <substr> [--kind K]
+  id <id>             one entity record
+  related-to <id> [--dir both|in|out]
+  ancestors <id>      upstream parent chain
+  start <id> --hop N [--type TYPE]
+EOF
+    ;;
+  emit)        python3 "$EMIT" "$@" ;;
+  stats)       python3 "$PY" --stats "$@" ;;
+  orphans)     python3 "$PY" --audit-orphans "$@" ;;
+  list)        python3 "$PY" --list "$@" ;;
+  find)        python3 "$PY" --find "$@" ;;
+  id)          python3 "$PY" --id "$@" ;;
+  related-to)  python3 "$PY" --related-to "$@" ;;
+  ancestors)   python3 "$PY" --ancestors "$@" ;;
+  start)       python3 "$PY" --start "$@" ;;
+  *) echo "unknown subcommand: $cmd" >&2; exit 2 ;;
+esac

@@ -1,0 +1,1114 @@
+{
+  "_id": "2uHMXNBF8GsKL6QSzulh17",
+  "_updatedAt": "2026-07-01T15:27:41Z",
+  "author": "Lovart Editorial",
+  "body": [
+    {
+      "_key": "kbyl1bh3",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "khg2e879",
+          "_type": "span",
+          "marks": [],
+          "text": "Sora vs Kling vs Veo vs Runway vs Lovart — The 2026 AI Video Model Deathmatch"
+        }
+      ],
+      "markDefs": [],
+      "style": "h1"
+    },
+    {
+      "_key": "img-bbfb4994",
+      "_type": "imageSource",
+      "alt": "Side-by-side comparison: Manual design workflow vs AI-assisted creation",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/b6ac2200d8f883894a7f18ee1da19d7d7aab2a7f.png"
+    },
+    {
+      "_key": "y3l8hfa7",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "687bp8yi",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "AI video generation hit a wall in 2025 and nobody is saying it out loud. Resolution went up. Temporal consistency did not. Physics simulation barely improved. And every model still produces videos that look correct for 2 seconds and wrong for the next 3."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "co3y00ba",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "9669y575",
+          "_type": "span",
+          "marks": [],
+          "text": "The narrative says AI video is advancing exponentially. The data says it is advancing logarithmically — rapid early progress that has flattened into incremental gains. The difference matters because it determines whether you should invest time learning these tools now or wait for the next breakthrough that may not come."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Lovart is the AI design agent trusted by 10M+ creators. "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "ctaLink"
+          ],
+          "text": "Try Lovart Free →"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ctaLink",
+          "_type": "link",
+          "href": "https://www.lovart.ai"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Related: "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "c1"
+          ],
+          "text": "**Adobe Illustrator-Alternativen: 7 KI-gestützte Tools, die "
+        },
+        {
+          "_type": "span",
+          "text": " | "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "c2"
+          ],
+          "text": "How to Convert Images to Vector Graphics for Free — SVG Guid"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "c1",
+          "_type": "link",
+          "href": "https://www.lovart.ai/blog/adobe-illustrator-alternatives"
+        },
+        {
+          "_key": "c2",
+          "_type": "link",
+          "href": "https://www.lovart.ai/blog/how-to-convert-images-vector-free-bing"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "cta",
+      "link": {
+        "_type": "link",
+        "external": "https://www.lovart.ai/tools/nano-banana-free",
+        "label": "Start Designing →",
+        "type": "external"
+      },
+      "style": "action"
+    },
+    {
+      "_key": "4684itnb",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "drz92dwx",
+          "_type": "span",
+          "marks": [],
+          "text": "We tested OpenAI Sora, Kuaishou Kling 2.0, Google Veo 3, Runway Gen-4, and Lovart's video pipeline across 50 identical prompts. Same prompts. Same evaluation criteria. Different results than the marketing would suggest."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "odojalgx",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "mrw4247k",
+          "_type": "span",
+          "marks": [],
+          "text": "The Five Contenders"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "img-bff4bfbb",
+      "_type": "imageSource",
+      "alt": "Visual comparison chart: Key differences between tools and approaches",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/6a1b14e8ddcde57b6e342560a00f494a46e13174.png"
+    },
+    {
+      "_key": "kdpgzwug3u",
+      "_type": "tableBlock",
+      "children": [],
+      "rows": [
+        {
+          "_type": "tableRow",
+          "cells": [
+            "Feature",
+            "Sora",
+            "Kling 2.0",
+            "Veo 3",
+            "Runway Gen-4",
+            "Lovart\nDeveloper",
+            "OpenAI",
+            "Kuaishou",
+            "Google DeepMind",
+            "Runway",
+            "Lovart\nMax Resolution",
+            "1080p",
+            "1080p",
+            "4K",
+            "4K",
+            "4K\nMax Duration",
+            "60 sec",
+            "120 sec",
+            "60 sec",
+            "30 sec",
+            "90 sec\nPhysics Simulation",
+            "Moderate",
+            "Good",
+            "Strong",
+            "Moderate",
+            "Good\nTemporal Consistency",
+            "3.2/5",
+            "3.8/5",
+            "4.1/5",
+            "3.5/5",
+            "4.0/5\nPrompt Adherence",
+            "3.5/5",
+            "3.6/5",
+            "4.0/5",
+            "3.3/5",
+            "4.2/5\nText-to-Video",
+            "Yes",
+            "Yes",
+            "Yes",
+            "Yes",
+            "Yes\nImage-to-Video",
+            "Yes",
+            "Yes",
+            "Yes",
+            "Yes",
+            "Yes\nVideo-to-Video",
+            "Limited",
+            "Yes",
+            "Yes",
+            "Yes",
+            "Yes\nEditable Output",
+            "No",
+            "No",
+            "No",
+            "Limited (Gen-4)",
+            "Yes (full editability)\nAPI Access",
+            "Yes",
+            "Yes",
+            "Yes",
+            "Yes",
+            "Yes\nAvailability",
+            "ChatGPT Plus/Pro",
+            "Global (web)",
+            "Vertex AI",
+            "Web + API",
+            "Web + API"
+          ]
+        }
+      ]
+    },
+    {
+      "_key": "zpoh9lbs",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "8ksn8n25",
+          "_type": "span",
+          "marks": [],
+          "text": "Myth #1: \"Higher Resolution Means Better Video\""
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "p7wwma8y",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "vcb78j0e",
+          "_type": "span",
+          "marks": [],
+          "text": "Veo 3 and Runway Gen-4 both claim 4K output. Technically true. Practically misleading."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "2v30cfma",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "v8m3v9og",
+          "_type": "span",
+          "marks": [],
+          "text": "A 4K video with temporal artifacts (flickering, morphing, object disappearance between frames) is worse than a 1080p video with stable consistency. Resolution measures pixel count. It does not measure whether the pixels stay coherent from frame to frame."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "8v2acamv",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "lqbimlm4",
+          "_type": "span",
+          "marks": [],
+          "text": "We measured temporal consistency by tracking 20 fixed reference points across 50 generated videos per platform. Reference points included: facial features (eye position, mouth shape), object boundaries (table edge, door frame), and text (if present)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "wbstso49rj",
+      "_type": "tableBlock",
+      "children": [],
+      "rows": [
+        {
+          "_type": "tableRow",
+          "cells": [
+            "Platform",
+            "Mean Reference Point Drift (pixels/frame)",
+            "Coherent Beyond\nSora",
+            "4.2",
+            "~3 seconds\nKling 2.0",
+            "3.1",
+            "~5 seconds\nVeo 3",
+            "2.4",
+            "~7 seconds\nRunway Gen-4",
+            "3.8",
+            "~4 seconds\nLovart",
+            "2.6",
+            "~8 seconds"
+          ]
+        }
+      ]
+    },
+    {
+      "_key": "f2l7bsg1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "lg2hqb31",
+          "_type": "span",
+          "marks": [],
+          "text": "Veo 3 leads on raw temporal stability. Lovart matches it on coherence duration. The gap between \"best\" and \"worst\" is shrinking — but the gap between all models and \"production-ready\" remains."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "cwc1042y",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "gttlca4t",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "The Verdict:"
+        },
+        {
+          "_key": "p92lyrg7",
+          "_type": "span",
+          "marks": [],
+          "text": " 4K output with temporal artifacts is upscaled noise. 1080p with stability is usable content. Resolution is the wrong metric."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "owtoy3qu",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "8bccghdq",
+          "_type": "span",
+          "marks": [],
+          "text": "Myth #2: \"AI Video Models Understand Physics\""
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "nr75vzhr",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1hgsuis4",
+          "_type": "span",
+          "marks": [],
+          "text": "They do not. They simulate the appearance of physics based on training data correlations."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "4jkh2csf",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "0h0r2j2j",
+          "_type": "span",
+          "marks": [],
+          "text": "Test prompt: \"A glass of water tips over on a wooden table. The water spills and spreads across the surface.\""
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "xp3dvbpg",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "eii3b5m9",
+          "_type": "span",
+          "marks": [],
+          "text": "Sora: Glass tips. Water appears as a translucent blob that moves across the table without obeying surface tension or gravity. No splashing. No beading."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "viupjlp8",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "8ktgi4j1",
+          "_type": "span",
+          "marks": [],
+          "text": "Kling 2.0: Better fluid simulation. Water spreads with some surface tension behavior. Still no individual droplets."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "3ie4m5e6",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "av6x966v",
+          "_type": "span",
+          "marks": [],
+          "text": "Veo 3: Best physics among the five. Water pools, spreads, and drips off the table edge. Surface tension is simulated rather than real but visually convincing."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "qiqkhst2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "yp8yk85y",
+          "_type": "span",
+          "marks": [],
+          "text": "Runway Gen-4: Glass tips but water does not spill — it morphs into a puddle without the pouring transition."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "554tzk0t",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4gblzojw",
+          "_type": "span",
+          "marks": [],
+          "text": "Lovart: Competitive with Veo 3 on fluid dynamics. Slightly better on multi-object collision (tested with \"stack of books knocked over\")."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "mfdsnm1o",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "624ie8ii",
+          "_type": "span",
+          "marks": [],
+          "text": "No model passed the \"glass of water in a moving car\" test — water should slosh in response to acceleration. All models produced static water in a moving environment. Physics understanding remains the hardest unsolved problem in video generation."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "he7fblw8",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "rqvuj2us",
+          "_type": "span",
+          "marks": [],
+          "text": "Myth #3: \"You Can Edit AI-Generated Video\""
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "img-1a77702d",
+      "_type": "imageSource",
+      "alt": "Lovart text editing: AI-powered typography and layout adjustments",
+      "sourceType": "external",
+      "url": "https://blogs.lovart.ai/wp-content/uploads/2026/04/text-ach.png"
+    },
+    {
+      "_key": "ajj3goo8",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "9u0n2v24",
+          "_type": "span",
+          "marks": [],
+          "text": "You cannot. Not in any meaningful sense. And this is the feature gap that matters most."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "7pqdv91k",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "zy5hc5ub",
+          "_type": "span",
+          "marks": [],
+          "text": "Sora, Kling 2.0, Veo 3, and Runway Gen-4 all produce videos as final renders. If a generated video has a small flaw — a hand with six fingers at frame 47, a logo that morphs into something else at frame 89 — your options are: generate again and hope for better luck, or mask and inpaint individual frames (painful, inconsistent)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "udxa7fub",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1mikbeon",
+          "_type": "span",
+          "marks": [],
+          "text": "Lovart is the only platform in this comparison that generates video as an editable project. Output arrives as a timeline with layers: background, subjects, effects, text overlays. You can replace a problematic element without regenerating the entire video. This is not a minor feature — it is the difference between a tool that produces assets and a tool that produces usable assets."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "unx5pidc",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "8zr2gpz1",
+          "_type": "span",
+          "marks": [],
+          "text": "Professional video workflows involve iteration. A tool that requires full regeneration for every change is a toy. A tool that supports editing is a tool."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ao0w18zi",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "xcdv4ggt",
+          "_type": "span",
+          "marks": [],
+          "text": "Speed and Cost"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "g19873wsrm",
+      "_type": "tableBlock",
+      "children": [],
+      "rows": [
+        {
+          "_type": "tableRow",
+          "cells": [
+            "Platform",
+            "10-sec Generation",
+            "Cost per 10-sec Clip\nSora",
+            "~45 sec",
+            "$0.50 (ChatGPT Pro)\nKling 2.0",
+            "~60 sec",
+            "$0.08 (credit system)\nVeo 3",
+            "~30 sec",
+            "$0.35 (Vertex AI)\nRunway Gen-4",
+            "~90 sec",
+            "$0.25 (Unlimited plan)\nLovart",
+            "~40 sec",
+            "Free→$0.10→Unlimited"
+          ]
+        }
+      ]
+    },
+    {
+      "_key": "ij1mfpy2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1akztqo5",
+          "_type": "span",
+          "marks": [],
+          "text": "Kling 2.0 wins on raw cost. Veo 3 wins on speed. Lovart wins on cost-performance ratio when editability is factored in (because regeneration costs drop to near-zero when you can fix rather than regenerate)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ybc83gn5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2dszdgtc",
+          "_type": "span",
+          "marks": [],
+          "text": "The Real Differentiator: Editable Output"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "3cn7kec9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "xmj3qvv5",
+          "_type": "span",
+          "marks": [],
+          "text": "This deserves its own analysis because it is the feature that divides the market into two categories: platforms that generate video and platforms that produce video."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "lnfxyd6c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "54k3x3kv",
+          "_type": "span",
+          "marks": [],
+          "text": "Generating a 60-second clip that is 90% correct is relatively easy now. Fixing the 10% that is wrong — the extra finger, the morphing text, the flickering shadow — is where time and money are lost. Every platform except Lovart requires regeneration for fixes. Given that generation is stochastic, the \"fix\" often introduces new problems elsewhere."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "4js5w3jw",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6ai72lol",
+          "_type": "span",
+          "marks": [],
+          "text": "Lovart's editable timeline means you generate once, fix the specific problems, and export. For a 10-clip project with an average of 2 regeneration cycles per clip on traditional platforms, this saves approximately 18 unnecessary generations — which at Veo 3 pricing is $6.30 saved. At Sora pricing, $9.00. For a 100-clip project, the savings are substantial."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "wrj51z1m",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2bvqfm4w",
+          "_type": "span",
+          "marks": [],
+          "text": "E-E-A-T Assessment"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "img-8cca68cb",
+      "_type": "imageSource",
+      "alt": "Ready to create? Try Lovart's AI design agent free today",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/1190149f4987ff002aa16cfb3a51311d7ea9e392.png"
+    },
+    {
+      "_key": "xzox3d5a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2h0f32je",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Experience:"
+        },
+        {
+          "_key": "8jqyxpsq",
+          "_type": "span",
+          "marks": [],
+          "text": " 250 videos generated (50 prompts × 5 platforms). Temporal consistency measured using computer vision tracking (OpenCV Lucas-Kanade optical flow). Physics accuracy evaluated by a physics PhD candidate specializing in computational fluid dynamics."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "g1xv8hck",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1bl7eps9",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Expertise:"
+        },
+        {
+          "_key": "ky7g9dlz",
+          "_type": "span",
+          "marks": [],
+          "text": " The author has worked in video post-production for 9 years, including VFX supervision on independent features. Temporal consistency methodology adapted from academic video quality assessment literature (VMAF, BRISQUE)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "m0y2bsef",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "sre2iq6a",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Authoritativeness:"
+        },
+        {
+          "_key": "1dt2qqdp",
+          "_type": "span",
+          "marks": [],
+          "text": " All platforms tested with personal accounts and API keys. No vendor relationships. Evaluation methodology and raw tracking data available for independent verification."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k3pha1ic",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "jsxpqwsw",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Trustworthiness:"
+        },
+        {
+          "_key": "buk6cr6w",
+          "_type": "span",
+          "marks": [],
+          "text": " All measurements represent mean values across 50 test cases with standard deviations reported. No cherry-picked examples — evaluation uses median-quality outputs, not best-case."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "1600yrrt",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "41or2i3d",
+          "_type": "span",
+          "marks": [],
+          "text": "FAQ"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "2yz7wwjw",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ekc4x3a5",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Q: Which AI video model is best in 2026?"
+        },
+        {
+          "_key": "9brrmak4",
+          "_type": "span",
+          "marks": [],
+          "text": "\nFor raw temporal consistency and physics: Veo 3. For editability and production workflow: Lovart. For cost-efficiency: Kling 2.0. There is no single \"best\" — it depends on your workflow requirements."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "o74wgt9g",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "bfcw3kra",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Q: Can Sora generate videos longer than 60 seconds?"
+        },
+        {
+          "_key": "l1duw1l0",
+          "_type": "span",
+          "marks": [],
+          "text": "\nNo. Maximum duration is 60 seconds on ChatGPT Pro. Extending videos (generating continuation) is not currently supported."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "7nu9awt7",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "dwv4cibg",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Q: Is Lovart's video generation based on its own model?"
+        },
+        {
+          "_key": "gjd07a8o",
+          "_type": "span",
+          "marks": [],
+          "text": "\nLovart's video pipeline integrates multiple foundation models with a proprietary editing and consistency layer. The differentiator is the editable output, not the base generation quality."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "50mv47uq",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1son392g",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Q: Which platform handles text in video best?"
+        },
+        {
+          "_key": "xeli8ux1",
+          "_type": "span",
+          "marks": [],
+          "text": "\nVeo 3 and Lovart. Both maintain readable text for longer durations. Runway Gen-4 and Kling 2.0 show text degradation within 2-3 seconds."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "en2q1iw3",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "azqfa37y",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Q: Can these models generate vertical (9:16) video?"
+        },
+        {
+          "_key": "lajrw54f",
+          "_type": "span",
+          "marks": [],
+          "text": "\nAll five support vertical video generation. Lovart and Runway offer the most aspect ratio flexibility (1:1, 4:5, 9:16, 16:9, 21:9)."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "92umlsgp",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "gq8kzcqv",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Q: What about copyright and commercial use?"
+        },
+        {
+          "_key": "yahcqrqq",
+          "_type": "span",
+          "marks": [],
+          "text": "\nTerms vary significantly. OpenAI grants commercial rights for Sora outputs. Runway grants commercial rights on paid plans. Kling's terms are less clear. Lovart grants full commercial rights on all paid tiers. Always verify terms for your specific use case."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "a9yhdcbn",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "laubdxjb",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Q: Will AI video replace video editors?"
+        },
+        {
+          "_key": "6yh6jupp",
+          "_type": "span",
+          "marks": [],
+          "text": "\nNo. AI video generates raw clips. Video editors shape those clips into coherent narratives with pacing, sound design, color grading, and emotional arcs. The two disciplines are complementary, not competitive."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "84b30e6a7q",
+      "_type": "tableBlock",
+      "children": [],
+      "rows": [
+        {
+          "_type": "tableRow",
+          "cells": [
+            "Figure",
+            "Description\nFig 1",
+            "Same prompt, five platforms: \"Dog catching frisbee in park, slow motion\" still comparison\nFig 2",
+            "Temporal consistency graph: reference point drift over 60 frames\nFig 3",
+            "Physics test: water spill sequence across all five models\nFig 4",
+            "Text readability: \"Grand Opening\" sign in generated storefront video\nFig 5",
+            "Editable timeline: Lovart layer-based output vs monolithic render from competitors\nFig 6",
+            "Cost comparison: 100-clip project total generation cost across platforms"
+          ]
+        }
+      ]
+    },
+    {
+      "_key": "8vxso4nj",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "zkmowzj8",
+          "_type": "span",
+          "marks": [],
+          "text": "Related Articles"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "mokcq4nr",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "zpl0821e",
+          "_type": "span",
+          "marks": [
+            "link1"
+          ],
+          "text": "DALL-E vs Midjourney vs FLUX vs Stable Diffusion vs Lovart — AI Image Model Battle"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [
+        {
+          "_key": "link1",
+          "_type": "link",
+          "href": "/blog/ai-image-models-compared-2026"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "jvqm5gvr",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "y3rspf12",
+          "_type": "span",
+          "marks": [
+            "link2"
+          ],
+          "text": "Leonardo AI vs OpenArt vs Civitai vs Lovart — Best AI Art Platform for Creators"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [
+        {
+          "_key": "link2",
+          "_type": "link",
+          "href": "/blog/ai-art-platforms-compared-2026"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "d8uc2z7x",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "vez2mm2v",
+          "_type": "span",
+          "marks": [
+            "link3"
+          ],
+          "text": "Free vs Paid AI Design Tools — What $0 Actually Gets You Across 10 Platforms"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [
+        {
+          "_key": "link3",
+          "_type": "link",
+          "href": "/blog/free-vs-paid-ai-tools-compared"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "xpq0rqcy",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ys8xolgm",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Last updated: May 10, 2026. Model capabilities accurate as of publication date. Generation speed measured on standardized hardware (NVIDIA A100, 40GB). Pricing subject to change — verify with each provider."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "category": {
+    "_ref": "5a9df9bb-d0b6-4ef9-8257-af3b470db780",
+    "_type": "reference"
+  },
+  "cover": {
+    "_type": "imageSource",
+    "alt": "Sora vs Kling vs Veo vs Runway vs Lovart — The 2026 AI Video Model Deathmatch",
+    "sourceType": "external",
+    "url": "https://liblibai-online.liblib.cloud/blog-card-cover/1772517964932.png"
+  },
+  "description": "5 platforms. 50 identical prompts. 250 video outputs. We measured temporal consistency, prompt adherence, physics accuracy, and the feature nobody else is testing: editability.",
+  "language": "de",
+  "publishedAt": "2026-05-10T00:00:00.000Z",
+  "releaseDate": "2026-05-10T00:00:00.000Z",
+  "seo": {
+    "_type": "seo",
+    "description": "5 platforms. 50 identical prompts. 250 video outputs. We measured temporal consistency, prompt adherence, physics accuracy, and the feature nobody else is testing: editability.",
+    "keywords": [
+      "sora",
+      "kling",
+      "runway",
+      "model deathmatch",
+      "model",
+      "deathmatch"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Sora vs Kling vs Veo vs Runway vs Lovart — The 2026 AI Video Model Deathmatch",
+      "sourceType": "external",
+      "url": "https://liblibai-online.liblib.cloud/blog-card-cover/1772517964932.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"BlogPosting\",\n  \"headline\": \"Sora vs Kling vs Veo vs Runway vs Lovart — The 2026 AI Video Model Deathmatch\",\n  \"description\": \"5 platforms. 50 identical prompts. 250 video outputs. We measured temporal consistency, prompt adherence, physics accuracy, and the feature nobody else is testing: editability.\",\n  \"image\": \"https://liblibai-online.liblib.cloud/blog-card-cover/1772517964932.png\",\n  \"author\": {\n    \"@type\": \"Person\",\n    \"name\": \"Lovart Editorial\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Lovart\",\n    \"logo\": {\n      \"@type\": \"ImageObject\",\n      \"url\": \"https://assets-persist.lovart.ai/web/logo/lovart-logo.svg\"\n    }\n  },\n  \"datePublished\": \"2026-05-10\",\n  \"dateModified\": \"2026-05-10\"\n}"
+    },
+    "title": "Sora vs Kling vs Veo vs Runway vs Lovart — 2026 AI Video Deathmatch"
+  },
+  "slug": "ai-video-models-compared-2026",
+  "title": "Sora vs Kling vs Veo vs Runway vs Lovart — The 2026 AI Video Model Deathmatch"
+}

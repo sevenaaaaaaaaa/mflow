@@ -1,0 +1,14 @@
+{
+  "name": "Lovart Monthly Pipeline",
+  "description": "SEO monthly + content audit + Sentinel rollup. Runs 3rd of month.",
+  "workflow": {
+    "triggers": [{"cron": {"cron": "0 6 3 * *"}}],
+    "actions": [],
+    "prompts": [{
+      "prompt": "Run Lovart monthly ops pipeline:\n\nbash \"1-4 Dev/automation/run-monthly-pipeline.sh\"\n\nRead latest reports under `1-2 Insight/Trident Insights/reports/monthly/` and `~/Documents/Lovart Local Dev/Output/automation-reports/`.\nSummarize pass/fail per step.\n\nNotion create-pages data_source_id 61514ed3-39e2-4d84-b860-8334d740823e\nTitle=\"Monthly Pipeline YYYY-MM-DD\" Type=seo-monthly Status=ok|fail\n\nIf seo-monthly ok: enqueue max 3 content gaps (do NOT Sanity import). See 08-自动化总蓝图.md §三."
+    }],
+    "model": "",
+    "agentOptions": {"skipInstall": false},
+    "memoryEnabled": false
+  }
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  lovart.dream.plist — macOS launchd schedule for nightly dream.
+
+  Install:
+    cp lovert.dream.plist ~/Library/LaunchAgents/com.lovart.dream.plist
+    launchctl unload ~/Library/LaunchAgents/com.lovart.dream.plist 2>/dev/null
+    launchctl load ~/Library/LaunchAgents/com.lovart.dream.plist
+
+  Inspect:
+    launchctl list | grep lovert.dream
+    tail -f ~/Library/Logs/com.lovart.dream.log
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.lovart.dream</string>
+
+  <!-- 02:30 every day: consolidation + audit + JSONL refresh -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key>
+    <integer>2</integer>
+    <key>Minute</key>
+    <integer>30</integer>
+  </dict>
+
+  <!-- Full path to vault; consolidate.sh picks up siblings -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>-c</string>
+    <string>exec /bin/bash '/Path replacement at install: launchctl will set HOME and PWD;/REPLACE_WITH_VAULT_ROOT/1-1 Harness/11-knowledge/dream/consolidate.sh'</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/REPLACE_WITH_VAULT_ROOT</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>LOVART_DREAM_MODE</key>
+    <string>nightly</string>
+  </dict>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/com.lovart.dream.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/tmp/com.lovart.dream.err.log</string>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>Nice</key>
+  <integer>15</integer>
+</dict>
+</plist>

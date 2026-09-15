@@ -1,0 +1,51 @@
+{
+  "ssot": {
+    "canonical": "https://lovart.ai",
+    "note": "主站为唯一权威源；站外仅摘要 + UTM 回链"
+  },
+  "primary": {
+    "cn": {
+      "tool": "wechatsync",
+      "label": "文章同步助手 + @wechatsync/cli",
+      "platforms": [
+        "zhihu", "baijiahao", "juejin", "toutiao",
+        "csdn", "douban", "segmentfault", "jianshu", "smzdm",
+        "cnblogs", "51cto", "yuque", "sohu", "bilibili"
+      ],
+      "trigger": "scripts/dispatch-publish.js → wechatsync sync"
+    },
+    "global_api": {
+      "tool": "node_scripts",
+      "label": "DEV.to + GitHub Discussions + Google Blogger",
+      "platforms": ["devto", "github_discussions", "blogger"],
+      "trigger": "scripts/dispatch-publish.js → publish-*.js"
+    },
+    "global_aibeike": {
+      "tool": "aibeike",
+      "label": "爱贝壳免费额度（3 槽位，当前用 2 个）",
+      "platforms": ["medium", "x"],
+      "free_slots": 3,
+      "used_slots": 2,
+      "trigger": "扩展侧栏勾选 → 同步草稿箱 → 人工确认发布"
+    }
+  },
+  "disabled": ["hashnode", "linkedin", "bluesky", "reddit"],
+  "supplementary": {
+    "aibeike": {
+      "label": "爱贝壳内容同步助手",
+      "when": "Medium / X 及小红书等 Wechatsync 未覆盖平台"
+    },
+    "crier": {
+      "label": "crier",
+      "when": "API 脚本不可用时的海外兜底"
+    },
+    "fanout": {
+      "label": "fanout",
+      "when": "产品宣发 / HN 研究循环"
+    }
+  },
+  "legacy": {
+    "note": "content-distribution-mcp 已从主栈移除；见 channels/supplementary.md",
+    "mcp": "@automatelab/content-distribution-mcp"
+  }
+}

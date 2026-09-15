@@ -1,0 +1,74 @@
+# recipes.yaml — Audit error → fixed recipe (eval-driven Phase 2)
+#
+# Schema:
+#   id      : audit error keyword (matched in audit-X.json "errors")
+#   recipe  : shell / kg command(s) human should run to fix
+#   verify  : how to confirm fix
+#   owner   : which profile/workline should run
+#
+# Boundary:
+#   - These recipes are emitted BY dream (audit + spec).
+#   - They are EXECUTED BY humans (in lovart-management workline).
+#   - Dream NEVER auto-executes them. (RULES-00 iron spirit + dream/README.md)
+#
+# Last modified: 2026-07-05 (initial set, Phase 2 design only)
+
+A1-orphan:
+  recipe: |
+    bash 1-1\ Harness/11-knowledge/scripts/kg orphans
+    # review list → for each orphan, decide:
+    #   (a) add missing edges in relationships.yaml
+    #   (b) mark entity as planned/archived in entities.yaml
+  verify: "kg orphans | wc -l < previous_count"
+  owner: lovart-management
+
+A2-missing-frontmatter:
+  recipe: |
+    bash 1-1\ Harness/11-knowledge/scripts/fm-fix.py
+  verify: "bash 1-1\ Harness/11-knowledge/scripts/fm-check.py → no missing"
+  owner: lovart-management
+
+A3-no-11-knowledge-ref:
+  recipe: |
+    Edit the offending entry file (hermes-mem, opencode-cfg, claude-md, agents-md, or .cursor/rules/*.mdc):
+    add a line "Knowledge tree: 1-1 Harness/11-knowledge/README.md" near top.
+  verify: "kg audit A3 OK"
+  owner: lovart-management
+
+A4-cross-mirror-drift:
+  recipe: |
+    # pick skill missing in target tool's catalog; sync via 09-scripts/sync-skills.sh
+    bash 1-1\ Harness/09-scripts/sync-skills.sh <skill-name>
+  verify: "kg start <skill-id> --hop 1 --type mirrors | grep <target tool>"
+  owner: lovart-management
+
+A5-rule-inconsistency:
+  recipe: |
+    Read audit-report-{DATE}.md errors section.
+    Patch RULES-00-iron.md to re-assert the failing string (e.g., add 'import --missing').
+  verify: "kg audit A5 OK"
+  owner: lovart-management
+
+A6-cron-graph-drift:
+  recipe: |
+    bash 1-1\ Harness/11-knowledge/scripts/kg related-to <cron-id> --direction out --type runs_on
+    # if empty, register runs_on in relationships.yaml + register profile in 06-cron/README.md
+  verify: "kg audit A6 OK"
+  owner: lovart-management
+
+# ---- loop-engineering bonus (Phase 1) ----
+LOOP-criteria-drift:
+  recipe: |
+    Compare 1-1 Harness/Skills/06-orchestrate/lovart-quality-cascade/criteria.yaml
+    git diff against previous version.
+    If criteria_version bumped, also bump CHANGELOG.md under
+    1-1 Harness/11-knowledge/audit/loop-engineering/criteria-change-requests/.
+  verify: "criteria.yaml frozen (no uncommitted edits in HEAD~5)"
+  owner: lovart-management
+
+LOOP-budget-abuse:
+  recipe: |
+    Check audit/loop-engineering/{last-7-days}/*-log.md for runs with iter==max_iterations.
+    If seen more than 3 times across 7 days, criteria too tight; widen threshold or relax pattern.
+  verify: "loop escalation rate < 10% (in audit/loop-engineering/REPORT.md)"
+  owner: lovart-management

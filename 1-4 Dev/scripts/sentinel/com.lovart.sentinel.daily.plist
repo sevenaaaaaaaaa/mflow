@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.lovart.sentinel.daily</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/python3</string>
+        <string>/Users/sevenaaaaaaa/Obsidian/MindRe/MindRe/1-Project/Lovart MFlow/1-4 Dev/scripts/sentinel/collect.py</string>
+        <string>--source</string>
+        <string>all</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/sevenaaaaaaa/Obsidian/MindRe/MindRe/1-Project/Lovart MFlow/1-4 Dev</string>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>8</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/tmp/lovart-sentinel-daily.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/tmp/lovart-sentinel-daily.err</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>KeepAlive</key>
+    <false/>
+</dict>
+</plist>

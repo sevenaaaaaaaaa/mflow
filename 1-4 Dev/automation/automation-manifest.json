@@ -1,0 +1,77 @@
+{
+  "primary": [
+    {
+      "file": ".cursor/automations/lovart-weekly-pipeline.workflow.json",
+      "name": "Lovart Weekly Pipeline",
+      "cron": "0 7 * * 1",
+      "script": "run-weekly-pipeline.sh",
+      "replaces": [
+        "lovart-trident-weekly",
+        "lovart-tools-pull",
+        "lovart-content-health-weekly",
+        "lovart-seo-weekly",
+        "lovart-sentinel-weekly"
+      ]
+    },
+    {
+      "file": ".cursor/automations/lovart-daily-pipeline.workflow.json",
+      "name": "Lovart Daily Pipeline",
+      "cron": "0 8 * * *",
+      "script": "run-daily-pipeline.sh",
+      "replaces": ["lovart-sentinel-daily", "lovart-gsc-daily", "lovart-feishu-daily"]
+    },
+    {
+      "file": ".cursor/automations/lovart-notion-sync-nightly.workflow.json",
+      "name": "Lovart Notion Sync Nightly",
+      "cron": "0 21 * * *",
+      "script": "notion-list-unsynced.sh"
+    }
+  ],
+  "extended": [
+    {
+      "file": "automation/workflows/lovart-monthly-pipeline.workflow.json",
+      "cron": "0 6 3 * *",
+      "script": "run-monthly-pipeline.sh"
+    },
+    {
+      "file": "automation/workflows/lovart-sitemap-weekly.workflow.json",
+      "cron": "0 2 * * 1"
+    },
+    {
+      "file": "automation/workflows/lovart-seo-quarterly.workflow.json",
+      "cron": "0 6 5 3,6,9,12 *"
+    },
+    {
+      "file": "automation/workflows/lovart-seo-yearly.workflow.json",
+      "cron": "0 6 10 1 *"
+    }
+  ],
+  "optional_webhooks": [
+    {"file": ".cursor/automations/lovart-post-seo-content.workflow.json", "env": "LOVART_POST_SEO_WEBHOOK"},
+    {"file": ".cursor/automations/lovart-quality-gates-batch.workflow.json"}
+  ],
+  "legacy_individual": [
+    {"file": "lovart-tools-pull.workflow.json", "saved": true, "note": "Disable if Weekly Pipeline saved"},
+    {"file": "lovart-trident-weekly.workflow.json"},
+    {"file": "lovart-content-health-weekly.workflow.json"},
+    {"file": "lovart-seo-weekly.workflow.json"},
+    {"file": "lovart-sentinel-weekly.workflow.json"},
+    {"file": "lovart-sentinel-daily.workflow.json"},
+    {"file": "lovart-seo-monthly.workflow.json"},
+    {"file": "lovart-content-audit-monthly.workflow.json"},
+    {"file": "lovart-i18n-gap-weekly.workflow.json"}
+  ],
+  "notion": {
+    "database_url": "https://app.notion.com/p/1d50d2daf96d41b29739b67a80c0e714",
+    "data_source_id": "61514ed3-39e2-4d84-b860-8334d740823e"
+  },
+  "post_install": [
+    "Save 3 primary Automations in Cursor (Weekly, Daily, Notion Sync)",
+    "Optional: Save extended workflows from automation/workflows/",
+    "export LOVART_POST_SEO_WEBHOOK=<url> after Save post-seo-content",
+    "Disable duplicate Tools Pull if Weekly Pipeline is active",
+    "Unload launchd: bash 1-4 Dev/automation/unload-all-launchd.sh",
+    "Set FEISHU_WEBHOOK_URL or feishu.json",
+    "Optional: LOVART_REPORT_EMAIL"
+  ]
+}

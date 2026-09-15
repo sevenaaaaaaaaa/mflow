@@ -1,0 +1,22 @@
+# 复制到 ~/.distribution-mcp/ 并按 AutomateLab 文档调整
+# 参考: npx @automatelab/content-distribution-mcp --help
+
+profiles:
+  - id: lovart-syndication
+    name: Lovart GA syndication
+    channels:
+      devto:
+        api_key: "${DEVTO_API_KEY}"
+      hashnode:
+        token: "${HASHNODE_API_KEY}"
+        publication_id: "${HASHNODE_PUBLICATION_ID}"
+      linkedin:
+        # 运行: npx -y @automatelab/content-distribution-mcp linkedin install
+        access_token: "${LINKEDIN_ACCESS_TOKEN}"
+      github_discussions:
+        token: "${GITHUB_TOKEN}"
+        repo: "owner/repo"
+      medium:
+        # manual tier — MCP 生成草稿；可选 Integration Token fallback
+        integration_token: "${MEDIUM_INTEGRATION_TOKEN}"
+        user_id: "${MEDIUM_USER_ID}"

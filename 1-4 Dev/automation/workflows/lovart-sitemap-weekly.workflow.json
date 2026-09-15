@@ -1,0 +1,14 @@
+{
+  "name": "Lovart Sitemap Weekly",
+  "description": "Refresh sitemap via lovart-sitemap-update skill (Monday 02:00).",
+  "workflow": {
+    "triggers": [{"cron": {"cron": "0 2 * * 1"}}],
+    "actions": [],
+    "prompts": [{
+      "prompt": "Update Lovart sitemap (read Skill lovart-sitemap-update in 1-1 Harness/Skills/).\n\n1. Follow skill steps to regenerate sitemap from Sanity production URLs\n2. Validate no broken routes; compare vs last week diff\n3. bash \"1-4 Dev/automation/report-notify/report-notify.sh\" --type sitemap-weekly --status ok|fail --summary \"<url count, delta>\" --artifact \"<sitemap output path>\"\n4. Notion data_source_id 61514ed3-39e2-4d84-b860-8334d740823e\n\nDo NOT deploy or change production CMS without approval."
+    }],
+    "model": "",
+    "agentOptions": {"skipInstall": false},
+    "memoryEnabled": false
+  }
+}

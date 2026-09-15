@@ -1,0 +1,14 @@
+{
+  "name": "Lovart SEO Quarterly",
+  "description": "Quarter-end SEO rollup (5th of Mar/Jun/Sep/Dec 06:00).",
+  "workflow": {
+    "triggers": [{"cron": {"cron": "0 6 5 3,6,9,12 *"}}],
+    "actions": [],
+    "prompts": [{
+      "prompt": "Generate Lovart SEO quarterly report.\n\n1. Identify the 3 completed months in the ending quarter.\n2. For each month M: if report missing, run:\n   python3 \"1-4 Dev/scripts/seo_monthly_v2.py\" --month M\n3. Synthesize one quarterly MD under 1-2 Insight/Trident Insights/reports/quarterly/ with traffic trends, winners/losers, OKR, actions (max 5)\n4. bash report-notify --type seo-quarterly --status ok --summary \"<3 bullets>\" --artifact \"<quarterly md path>\"\n5. Notion data_source_id 61514ed3-39e2-4d84-b860-8334d740823e\n\nNo Sanity import."
+    }],
+    "model": "",
+    "agentOptions": {"skipInstall": false},
+    "memoryEnabled": false
+  }
+}

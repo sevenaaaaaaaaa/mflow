@@ -1,0 +1,45 @@
+{
+  "updated": "2026-09-14",
+  "items": [
+    {
+      "id": "ai-logo-design-guide-2026-06-07",
+      "canonical_url": "https://lovart.ai/en/blog/ai-logo-design-guide",
+      "tier": "S",
+      "score": 80.3,
+      "platforms": [
+        "devto",
+        "hashnode"
+      ],
+      "track": "syndication",
+      "status": "drafts_ready"
+    },
+    {
+      "id": "lovart-vs-midjourney-2026-06-07",
+      "canonical_url": "https://lovart.ai/en/blog/lovart-vs-midjourney",
+      "tier": "S",
+      "score": 76.7,
+      "platforms": [
+        "medium",
+        "devto"
+      ],
+      "track": "syndication",
+      "status": "pending_draft"
+    }
+  ],
+  "restart": {
+    "date": "2026-09-14",
+    "status": "ready_awaiting_authorization",
+    "manifest": "queue/dispatch-restart-2026-09-14-batch1.json",
+    "inventory": {
+      "ready_drafts": 530,
+      "cn": 519,
+      "en_verified_later": "分类器误判需重筛"
+    },
+    "blockers": [
+      "稿件正文缺 utm_source 追踪链接（AD-Tracking SSOT 要求，发布前需批量 UTM 化加工）",
+      "海外 API 通道无凭证（DEVTO_API_KEY / Blogger OAuth）",
+      "approved=false（等用户人工授权）"
+    ],
+    "dry_run_result": "dispatch → 授权闸 → 路由 → preflight 全链路通；7/7 稿被质量门正确拦截（缺 utm）"
+  }
+}

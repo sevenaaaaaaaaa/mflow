@@ -1,0 +1,453 @@
+# ============================================================
+# Lovart Sentinel V3 — 全维度舆情监测配置
+# 
+# 覆盖维度：SEO · GEO · KOL · 媒体 · 广告 · 活动 · 设计社区 · AI工具生态
+# ============================================================
+
+project:
+  name: Lovart
+  domain: lovart.ai
+  tagline: "World's First AI Design Agent"
+  positioning: ["ai design agent", "ai design tool", "ai creative suite", "brand identity ai", "logo maker ai", "ai video ad generator", "social media design ai"]
+
+# ============================================================
+# 一、搜索引擎矩阵（SEO + GEO 双用途）
+# ============================================================
+search_engines:
+  # --- 国际主流 ---
+  google:
+    queries: ["lovart ai", "ai design agent", "ai design tool", "best ai design tools 2026"]
+    geo_tracking: true  # 跟踪 ChatGPT/Perplexity 引用
+  bing:
+    queries: ["lovart ai", "ai design agent", "lovart vs canva"]
+    parasite_watch: true
+  duckduckgo:
+    role: "社媒穿透代理 + 独立搜索信号"
+    queries: ["lovart ai", "ai design agent"]
+  # --- 区域引擎（Lovart 有对应语言版本） ---
+  yandex:
+    market: "俄罗斯 (Lovart有/ru/)"
+    query: "ловарт ai дизайн"
+  yahoo_japan:
+    market: "日本 (Lovart有/ja/)"
+    query: "lovart ai デザイン"
+  naver:
+    market: "韩国 (Lovart有/ko/)"
+    query: "러바트 ai 디자인"
+  # --- 中国引擎 ---
+  baidu:
+    queries: ["lovart ai", "AI设计工具", "AI设计Agent", "AI生成海报", "AI做Logo"]
+  sogou:
+    role: "微信文章搜索"
+    queries: ["lovart ai", "AI设计智能体"]
+  so360:
+    query: "lovart ai 设计工具"
+  shenma:
+    role: "移动端搜索 (阿里生态)"
+    query: "lovart ai"
+  wechat_search:
+    role: "微信搜一搜"
+    note: "需通过搜狗微信搜索或Chrome CDP"
+
+# ============================================================
+# 二、社交媒体（KOL发现 + 品牌声量 + UGC监控）
+# ============================================================
+social_international:
+  x_twitter:
+    handle: "@lovart_ai"
+    kols_to_track:
+      - "@levelsio"       # 独立开发者，AI工具推广者
+      - "@sama"           # OpenAI CEO
+      - "@nearcyan"       # AI art influencer
+      - "@minchoi"        # design influencer
+    hashtags: ["#aiDesign", "#aiArt", "#designAgent", "#lovart", "#aitools"]
+    
+  instagram:
+    handle: "@lovart.ai"
+    method: "DuckDuckGo proxy"
+    hashtags: ["#lovart", "#lovartai", "#aidesign", "#aidesigntool", "#brandidentity", "#logodesign", "#socialmediadesign"]
+    
+  tiktok:
+    handle: "@lovart_ai"
+    method: "DuckDuckGo proxy"
+    hashtags: ["#aidesign", "#aitools", "#designhack", "#smallbusinesstips"]
+    
+  youtube:
+    channel: "@lovart_ai"
+    method: "Invidious proxy / yewtu.be"
+    kols: ["design course creators", "AI tool reviewers", "e-commerce design channels"]
+    
+  pinterest:
+    role: "视觉发现引擎 — 对AI设计工具极关键"
+    method: "Bing/DDG site:pinterest.com lovart"
+    note: "Pinterest是设计师和品牌方搜索灵感的核心平台"
+    
+  reddit:
+    subreddits:
+      - "r/ai_design"        # AI设计
+      - "r/graphic_design"   # 平面设计
+      - "r/logodesign"       # Logo设计
+      - "r/web_design"       # 网页设计
+      - "r/UI_Design"        # UI设计
+      - "r/smallbusiness"    # 小企业主（核心用户群）
+      - "r/ecommerce"        # 电商（核心用户群）
+      - "r/socialmedia"      # 社媒营销
+      - "r/marketing"        # 营销
+      - "r/startups"         # 创业者
+      - "r/SaaS"             # SaaS
+      - "r/ArtificialIntelligence"
+      - "r/StableDiffusion"  # AI图像生成社区
+      - "r/midjourney"       # 竞品社区
+    search_queries: ["lovart", "lovart ai", "ai design agent", "lovart vs", "lovart review"]
+
+  hacker_news:
+    role: "技术创业社区"
+    query: "lovart ai"
+    search_url: "https://hn.algolia.com/?q=lovart"
+    
+  indie_hackers:
+    role: "独立开发者社区（Lovart目标用户）"
+    query: "lovart"
+
+  threads:
+    role: "Meta系新社交"
+    handle: "@lovart.ai"
+    method: "DDG site:threads.net lovart"
+
+social_china:
+  xiaohongshu:
+    role: "种草平台 — AI设计工具最核心的中文渠道"
+    search_queries:
+      - "AI设计工具推荐"
+      - "AI做海报"
+      - "AI生成Logo"
+      - "AI设计软件"
+      - "AI品牌设计"
+      - "AI电商设计"
+      - "lovart"
+      - "lovart教程"
+    kols_to_find: ["设计博主", "AI工具测评博主", "电商设计博主", "品牌设计博主"]
+    
+  wechat:
+    role: "公众号 + 视频号 + 搜一搜"
+    method: "搜狗微信搜索"
+    account_types: ["AI工具号", "设计教程号", "品牌营销号", "电商号"]
+    
+  weibo:
+    queries: ["lovart", "AI设计", "AI设计工具", "AI做图"]
+    
+  bilibili:
+    role: "视频教程 + UP主生态"
+    queries: ["lovart教程", "AI设计工具", "AI设计Agent", "NanoBanana"]
+    up主类型: ["设计教程UP", "AI工具测评UP", "电商设计UP", "品牌设计UP"]
+    
+  douyin:
+    queries: ["AI设计工具", "AI做海报", "AI设计教程", "lovart"]
+    
+  kuaishou:
+    query: "AI设计"
+    
+  jike:
+    role: "即刻 — 科技/创意社区"
+    query: "lovart AI设计"
+    
+  dewuk:
+    role: "得物 — 设计/潮流社区"
+    query: "AI设计"
+
+# ============================================================
+# 三、设计社区（核心阵地 — 用户画像 + 竞品情报）
+# ============================================================
+design_communities_international:
+  dribbble:
+    role: "设计师作品展示平台"
+    query: "lovart"
+    search_url: "https://dribbble.com/search/lovart"
+    
+  behance:
+    role: "Adobe设计社区"
+    query: "lovart"
+    search_url: "https://www.behance.net/search/projects?search=lovart"
+    
+  figma_community:
+    role: "Figma插件/模板社区"
+    query: "lovart"
+    search_url: "https://www.figma.com/community/search?query=lovart"
+    
+  deviantart:
+    role: "艺术家社区"
+    query: "lovart"
+    
+  artstation:
+    role: "专业CG艺术家"
+    query: "lovart ai"
+    
+  pixiv:
+    role: "日本插画社区 (Lovart有日文版)"
+    query: "lovart AI"
+    
+  civitai:
+    role: "AI模型分享社区"
+    query: "lovart"
+    
+  promptbase:
+    role: "Prompt交易市场"
+    query: "lovart"
+    
+  midjourney_showcase:
+    role: "竞品社区 — 观察用户需求"
+    note: "通过Reddit r/midjourney + Discord公开频道"
+
+design_communities_china:
+  zcool:
+    role: "站酷 — 中国最大设计社区"
+    queries: ["lovart", "AI设计", "AI设计工具"]
+    search_url: "https://www.zcool.com.cn/search/content?word=lovart"
+    
+  huaban:
+    role: "花瓣 — 中国Pinterest"
+    queries: ["lovart", "AI设计", "AI生成"]
+    search_url: "https://huaban.com/search/?q=lovart"
+    
+  ui_cn:
+    role: "UI中国 — UI/UX设计社区"
+    query: "AI设计工具 lovart"
+    
+  uisdc:
+    role: "优设 — 设计教程平台"
+    query: "lovart AI设计工具"
+    
+  shejidaren:
+    role: "设计达人 — 设计资源"
+    query: "lovart"
+
+# ============================================================
+# 四、AI工具目录与评测平台（GEO + 用户决策）
+# ============================================================
+ai_directories:
+  product_hunt: { covered: true }
+  futurepedia: { url: "https://www.futurepedia.io/ai-tools/lovart" }
+  theresanaiforthat: { url: "https://theresanaiforthat.com/s/lovart/" }
+  aitoolhunt: { url: "https://www.aitoolhunt.com/search?q=lovart" }
+  futuretools: { url: "https://www.futuretools.io/tools/lovart" }
+  topextools: { url: "https://topextools.com/search?q=lovart" }
+  alternativeto: { role: "竞品替代搜索", query: "lovart" }
+  slant: { role: "产品对比", query: "lovart" }
+  saasworthy: { url: "https://www.saasworthy.com/search/lovart" }
+
+review_platforms:
+  g2: { url: "https://www.g2.com/products/lovart/reviews", covered: true }
+  capterra: { url: "https://www.capterra.com/p/lovart/", covered: true }
+  trustpilot: { url: "https://www.trustpilot.com/review/lovart.ai", covered: true }
+  getapp: { url: "https://www.getapp.com/search/?q=lovart" }
+  trustradius: { url: "https://www.trustradius.com/search?q=lovart" }
+  # 中国评测平台
+  smzdm: { role: "什么值得买", query: "lovart AI设计" }
+  woshipm: { role: "人人都是产品经理", query: "lovart" }
+
+# ============================================================
+# 五、科技与设计媒体（媒体关系 + PR）
+# ============================================================
+media_international:
+  tech: ["TechCrunch", "The Verge", "Wired", "VentureBeat", "Ars Technica"]
+  design: ["Creative Bloq", "Designmodo", "It's Nice That", "Smashing Magazine", "Awwwards Blog", "UX Collective"]
+  ai: ["MIT Technology Review", "Towards Data Science", "Analytics India Mag"]
+  business: ["Forbes", "Fast Company", "Inc."]
+  
+media_china:
+  tech: ["36氪", "虎嗅", "极客公园", "爱范儿", "品玩", "少数派", "钛媒体"]
+  design: ["设计癖", "标志情报局", "优优教程网", "致设计", "设计气象台"]
+  ai: ["机器之心", "量子位", "新智元", "AI科技评论"]
+  marketing: ["SocialBeta", "梅花网", "胖鲸", "广告门"]
+
+# ============================================================
+# 六、电商与营销平台（核心用户场景）
+# ============================================================
+ecommerce_communities:
+  amazon_seller: { role: "Amazon卖家社区 (Lovart核心用户)", query: "lovart ai design product image" }
+  shopify: { role: "Shopify社区", query: "lovart ai product photo" }
+  etsy: { role: "Etsy卖家论坛", query: "lovart ai" }
+  # 中国电商
+  taobao_seller: { role: "淘宝卖家社区 (千牛)", query: "AI设计工具 电商主图" }
+  pdd_seller: { role: "拼多多商家", query: "AI做图 电商" }
+  jd_seller: { role: "京东商家", query: "AI设计 商品图" }
+
+# ============================================================
+# 七、付费广告情报（广告投放策略参考）
+# ============================================================
+ad_intelligence:
+  facebook_ads_library:
+    role: "Meta广告库 — 竞品创意参考"
+    competitors_to_watch: ["canva", "midjourney", "leonardo ai", "picsart"]
+  google_ads_transparency:
+    role: "Google广告透明度"
+    query: "ai design tool"
+  tiktok_ads_library:
+    query: "ai design tool"
+  ocean_engine:
+    role: "巨量千川 (抖音广告)"
+    note: "需中国IP"
+  tencent_ads:
+    role: "腾讯广告平台"
+    note: "需中国IP"
+
+# ============================================================
+# 八、线下活动与会议（PR + BD）
+# ============================================================
+events:
+  international:
+    - { name: "Figma Config", role: "设计工具大会" }
+    - { name: "Adobe MAX", role: "创意软件大会" }
+    - { name: "AIGC Summit", role: "AI内容生成" }
+    - { name: "SXSW", role: "创意+科技" }
+    - { name: "Web Summit", role: "科技创业" }
+    - { name: "Design Thinkers", role: "设计思维" }
+    - { name: "OFFF Festival", role: "创意设计节" }
+  china:
+    - { name: "IXDC", role: "国际体验设计大会" }
+    - { name: "设计上海", role: "设计展览" }
+    - { name: "北京设计周", role: "设计周" }
+    - { name: "AIGC大会", role: "AI内容生成" }
+    - { name: "阿里设计周 (U Design Week)", role: "电商设计大会" }
+
+# ============================================================
+# 九、KOL 与达人矩阵（分平台×分类别）
+# ============================================================
+kol_matrix:
+  international:
+    categories:
+      - { type: "AI设计工具评测", platforms: ["YouTube", "X", "TikTok", "Instagram"] }
+      - { type: "品牌设计师", platforms: ["Instagram", "Dribbble", "Behance", "YouTube"] }
+      - { type: "电商卖家/运营", platforms: ["YouTube", "TikTok", "X"] }
+      - { type: "独立开发者/创业者", platforms: ["X", "Reddit", "Hacker News", "Indie Hackers"] }
+      - { type: "社媒营销专家", platforms: ["LinkedIn", "Instagram", "YouTube"] }
+      - { type: "AI艺术家", platforms: ["Instagram", "Civitai", "DeviantArt"] }
+    discovery_method: "搜索 lovart/canva/midjourney + 高播放/高互动内容 → 提取创作者"
+  
+  china:
+    categories:
+      - { type: "AI工具测评UP主", platforms: ["B站", "小红书", "抖音"] }
+      - { type: "设计师/设计教程", platforms: ["站酷", "小红书", "B站", "优设"] }
+      - { type: "电商设计/运营", platforms: ["小红书", "抖音", "淘宝"] }
+      - { type: "品牌/营销号", platforms: ["微信公众号", "小红书"] }
+      - { type: "科技自媒体", platforms: ["36氪", "虎嗅", "知乎", "B站"] }
+
+# ============================================================
+# 十、竞品多维度监控（基于30+竞品官网分析提炼）
+# ============================================================
+competitor_full_matrix:
+  # --- AI图像生成类竞品（15+） ---
+  image_generation:
+    - { name: "Canva", keywords: ["canva ai", "canva design", "canva free", "canva ai image generator", "canva logo maker"] }
+    - { name: "Leonardo AI", keywords: ["leonardo ai", "leonardo ai image generator", "leonardo product photography"] }
+    - { name: "Midjourney", keywords: ["midjourney", "midjourney v7", "midjourney logo", "midjourney brand design"] }
+    - { name: "Adobe Firefly", keywords: ["adobe firefly", "firefly ai", "firefly design"] }
+    - { name: "DALL-E", keywords: ["dall-e", "dalle ai", "chatgpt image generation", "gpt image 2"] }
+    - { name: "Picsart", keywords: ["picsart ai", "picsart ai image generator"] }
+    - { name: "Fotor", keywords: ["fotor ai", "fotor image generator"] }
+    - { name: "Recraft", keywords: ["recraft ai", "recraft vector"] }
+    - { name: "Freepik", keywords: ["freepik ai", "freepik ai image generator"] }
+    - { name: "Pollo AI", keywords: ["pollo ai", "pollo ai image generator", "pollo ai video"] }
+    - { name: "Microsoft Designer", keywords: ["microsoft designer", "microsoft ai design"] }
+    - { name: "DZine", keywords: ["dzine ai", "dzine design"] }
+    - { name: "Imagine", keywords: ["imagine ai", "imagine art"] }
+    - { name: "Monica", keywords: ["monica ai", "monica image"] }
+    - { name: "Designs.ai", keywords: ["designs.ai", "designs ai logo"] }
+
+  # --- AI视频生成类竞品（12+） ---
+  video_generation:
+    - { name: "Luma AI", keywords: ["luma ai", "luma dream machine", "luma video"] }
+    - { name: "Capcut", keywords: ["capcut ai", "capcut video editor"] }
+    - { name: "Vidu", keywords: ["vidu ai", "vidu video"] }
+    - { name: "Arcads", keywords: ["arcads ai", "arcads ugc", "arcads video"] }
+    - { name: "Higgsfield", keywords: ["higgsfield ai", "higgsfield video"] }
+    - { name: "Supermaker", keywords: ["supermaker ai", "supermaker video"] }
+    - { name: "Artlist", keywords: ["artlist ai", "artlist video"] }
+
+  # --- AI Agent类竞品 ---
+  agent_competitors:
+    - { name: "MindStudio", keywords: ["mindstudio ai", "mindstudio agent"] }
+    - { name: "Manus", keywords: ["manus ai", "manus agent"] }
+    - { name: "RelevanceAI", keywords: ["relevance ai", "relevance agent"] }
+    - { name: "AI Agent Store", keywords: ["ai agent store"] }
+
+  # --- 中国竞品 ---
+  china:
+    - { name: "稿定设计", keywords: ["稿定设计 AI", "稿定AI设计", "gaoding ai"] }
+    - { name: "创客贴", keywords: ["创客贴 AI", "创客贴AI设计", "chuangkit ai"] }
+    - { name: "即时设计", keywords: ["即时设计 AI", "jsDesign", "即时AI"] }
+    - { name: "LiblibAI", keywords: ["LiblibAI", "liblib"], relation: "母公司" }
+    - { name: "美图WHEE", keywords: ["美图AI设计", "WHEE", "美图设计室"] }
+    - { name: "星流AI", keywords: ["星流AI", "星流设计", "xingliu ai"] }
+    - { name: "即梦AI", keywords: ["即梦AI", "Jimeng", "即梦设计"] }
+    - { name: "可灵AI", keywords: ["可灵AI", "Kling设计", "可灵视频"] }
+    - { name: "通义万相", keywords: ["通义万相", "Tongyi Wanxiang"] }
+    - { name: "腾讯混元", keywords: ["腾讯混元", "混元设计"] }
+    - { name: "百度文心一格", keywords: ["文心一格", "文心AI设计"] }
+
+# ============================================================
+# 十一、核心非品牌词优先级矩阵（SEO内容生产指引）
+# ============================================================
+nonbrand_keyword_matrix:
+  P0_核心:
+    - { keyword: "AI Video Generator", competition: "🔴 高", competitors: "12+", note: "顶级市场" }
+    - { keyword: "AI Image Generator", competition: "🔴 高", competitors: "15+", note: "顶级市场" }
+    - { keyword: "Text to Video", competition: "🔴 高", competitors: "10+", note: "核心功能" }
+    
+  P1_高价值:
+    - { keyword: "AI Avatar", competition: "🟡 中", competitors: "7+", note: "差异化" }
+    - { keyword: "Talking Avatar", competition: "🟢 低", competitors: "5+", note: "差异化" }
+    - { keyword: "Lip Sync", competition: "🟢 低", competitors: "5+", note: "低竞争" }
+    - { keyword: "Marketing Video AI", competition: "🟢 低", competitors: "4+", note: "企业刚需" }
+    - { keyword: "Background Remover", competition: "🔴 高", competitors: "8+", note: "高搜索量" }
+    
+  P2_机会:
+    - { keyword: "Character Consistency", competition: "🟢 低", competitors: "5+", note: "差异化" }
+    - { keyword: "Motion Control", competition: "🟢 低", competitors: "5+", note: "技术壁垒" }
+    - { keyword: "AI Commercial Generator", competition: "🟢 低", competitors: "4+", note: "新兴市场" }
+    - { keyword: "Cinematic Video", competition: "🟢 低", competitors: "6+", note: "高端市场" }
+    - { keyword: "UGC Generator", competition: "🟢 低", competitors: "4+", note: "社媒营销" }
+    - { keyword: "AI Shorts", competition: "🟢 低", competitors: "5+", note: "短视频" }
+    
+  模型蹭量词:
+    - { keyword: "Sora", type: "视频模型", note: "对比页面引流" }
+    - { keyword: "Kling", type: "视频模型", note: "对比页面引流" }
+    - { keyword: "Veo 3", type: "视频模型", note: "对比页面引流" }
+    - { keyword: "FLUX", type: "图像模型", note: "对比页面引流" }
+    - { keyword: "Seedance", type: "视频模型", note: "功能页面引流" }
+    - { keyword: "Seedream", type: "图像模型", note: "功能页面引流" }
+    - { keyword: "Midjourney", type: "图像模型", note: "对比页面引流" }
+    - { keyword: "DALL-E", type: "图像模型", note: "对比页面引流" }
+
+# ============================================================
+# 十二、告警阈值（多部门共享）
+# ============================================================
+alerts:
+  # SEO
+  brand_ctr_drop_pct: 10
+  nonbrand_ctr_drop_pct: 20
+  keyword_ranking_drop_positions: 3
+  
+  # 品牌安全
+  parasite_serp_position: 5
+  new_parasite_detected: P0
+  
+  # 社媒
+  social_engagement_drop_pct: 30
+  instagram_no_post_days: 14
+  tiktok_no_post_days: 30
+  
+  # 评价
+  ph_no_new_review_days: 60
+  g2_rating_below: 3.5
+  
+  # 邮件
+  email_delivery_below_pct: 85
+  email_unsub_above_per_10k: 40
+  
+  # KOL
+  competitor_kol_mention_spike: "竞品被大KOL提及"
+  
+  # 竞品
+  competitor_major_launch: "竞品重大功能发布"
+  china_competitor_mention_above_normal: "中国竞品声量异常上升"

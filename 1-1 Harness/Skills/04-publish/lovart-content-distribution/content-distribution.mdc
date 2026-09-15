@@ -1,0 +1,46 @@
+---
+description: Lovart 全渠道分发 — Agent 写稿后：国内 Wechatsync、海外 content-distribution-mcp
+globs:
+  - "**/content-distribution/**"
+  - "**/drafts/**"
+  - "**/channels/**"
+  - "**/queue/**"
+---
+
+# 全渠道分发 Agent 规则
+
+主站：**https://lovart.ai**。遵守 `RUNBOOK.md` Gate 0。
+
+## 写稿后发布（固定流程）
+
+1. 各平台稿写入 `drafts/`，YAML 含 `platform`, `source_url`, `canonical`
+2. 每稿 `node scripts/preflight-distribution.js ...`
+3. 更新 `queue/dispatch-*.json` 的 `cn` / `global`
+4. 运行 `node scripts/dispatch-publish.js --manifest queue/dispatch-XXX.json`
+
+## 主轨分工
+
+| 区域 | 工具 | Agent 动作 |
+|------|------|------------|
+| **国内** | Wechatsync | dispatch 自动 `wechatsync sync`；前先 `wechatsync-wait-connect` |
+| **海外** | content-distribution-mcp | 读 `queue/mcp-pending-*.json` → `hints` + `publish` |
+
+## 海外 MCP 步骤
+
+对每个 `jobs[]` 条目：
+
+1. MCP `hints(job.channel)`
+2. 从 `job.body` 生成符合 Gate 0 的 Variant（摘要，非全文）
+3. MCP `publish`（`content_id` = job.content_id）
+4. manual_browser 档（medium/reddit/twitter）：返回 compose URL，提醒用户点击发布
+
+## 补充工具（仅用户明确要求时）
+
+- **爱贝壳**：小红书/短视频/50+ 平台 — `channels/aibeike.md`
+- **crier**：`pip install crier`，MCP 兜底
+- **fanout**：产品宣发研究循环 — `channels/supplementary.md`
+
+## 不要用主轨替代补充场景
+
+小红书 → 爱贝壳，不要强行 Wechatsync。  
+站外产品一键宣发 → fanout，不要混入 dispatch 主清单。

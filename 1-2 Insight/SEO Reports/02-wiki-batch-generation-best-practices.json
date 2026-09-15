@@ -1,0 +1,2821 @@
+{
+  "_id": "02-wiki-batch-generation-best-practices",
+  "_updatedAt": "2026-07-02T08:53:50Z",
+  "author": "Lovart Documentation Team",
+  "body": [
+    {
+      "_key": "ngfpfs3z",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "trz3phza",
+          "_type": "span",
+          "marks": [],
+          "text": "Batch Generation Best Practices"
+        }
+      ],
+      "markDefs": [],
+      "style": "h1"
+    },
+    {
+      "_key": "9jelqybd",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2akx10cl",
+          "_type": "span",
+          "marks": [],
+          "text": "Creating one design at a time doesn't scale. Whether you're generating product images for a 500-SKU catalog, producing localized ad variants for 12 markets, or creating A/B test creative for a campaign, Lovart's "
+        },
+        {
+          "_key": "ab4wun4b",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Batch Generation engine"
+        },
+        {
+          "_key": "blwcp42r",
+          "_type": "span",
+          "marks": [],
+          "text": " transforms hours of repetitive design work into minutes of structured automation."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "rn573vaw",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "khougdgt",
+          "_type": "span",
+          "marks": [],
+          "text": "This guide covers the complete batch generation workflow — from data preparation to quality control — with battle-tested practices from Lovart power users who generate 10,000+ designs per month."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Lovart is the AI design agent trusted by 10M+ creators. "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "ctaLink"
+          ],
+          "text": "Let AI agent handle your design →"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ctaLink",
+          "_type": "link",
+          "href": "https://www.lovart.ai/features/ai-design-agent"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Lovart is the AI design agent trusted by 10M+ creators. "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "ctaLink"
+          ],
+          "text": "Let AI handle your design →"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ctaLink",
+          "_type": "link",
+          "href": "https://www.lovart.ai/features/ai-design-agent"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Lovart is the AI design agent trusted by 10M+ creators. "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "ctaLink"
+          ],
+          "text": "Let AI agent handle your design →"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ctaLink",
+          "_type": "link",
+          "href": "https://www.lovart.ai/features/ai-design-agent"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Lovart is the AI design agent trusted by 10M+ creators. "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "ctaLink"
+          ],
+          "text": "Let AI agent handle your design →"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ctaLink",
+          "_type": "link",
+          "href": "https://www.lovart.ai/features/ai-design-agent"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Lovart is the world's first AI design agent — complete brand visual systems from one brief. "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "_ctaLink"
+          ],
+          "text": "Try Lovart free →"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "_ctaLink",
+          "_type": "link",
+          "href": "https://www.lovart.ai"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Lovart is an AI design agent that generates images, logos, brand kits & marketing materials from one brief — all style-consistent. "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "link"
+          ],
+          "text": "Try Lovart's AI Image Generator free"
+        },
+        {
+          "_type": "span",
+          "text": " →"
+        }
+      ],
+      "markDefs": [
+        {
+          "_type": "link",
+          "href": "https://www.lovart.ai"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "9gmrd9vb",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "hrnastg1",
+          "_type": "span",
+          "marks": [],
+          "text": "When to Use Batch Generation"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "AI Image Generator vs Traditional Design Tools"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Discover everything about ai image generator vs traditional design tools — with actionable tips and real examples from 2026."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "How to Get the Best Results from AI Image Generation"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Discover everything about to get the best results from ai image generation — with actionable tips and real examples from 2026."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Top AI Image Generators Compared in 2026"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Discover everything about top ai image generators compared in 2026 — with actionable tips and real examples from 2026."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "zp19qp3k",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a83pmbt9",
+          "_type": "span",
+          "marks": [],
+          "text": "Batch generation is ideal when you need:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "b3oza5cg",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "wy84t0el",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Multiple variants of one design"
+        },
+        {
+          "_key": "k0lf1bbw",
+          "_type": "span",
+          "marks": [],
+          "text": " — Same layout, different text/images (e.g., localized social posts, product-specific ads)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "f2jdytye",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "tc28998v",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Template application at scale"
+        },
+        {
+          "_key": "4robwttw",
+          "_type": "span",
+          "marks": [],
+          "text": " — Apply one template to hundreds of data rows (e.g., product listing images for an entire catalog)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "q4l35pn2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "nt1wd6pn",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Multi-format output"
+        },
+        {
+          "_key": "51shfl8e",
+          "_type": "span",
+          "marks": [],
+          "text": " — One design concept exported to 15 platform-specific sizes simultaneously"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "33c34np8",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "dtxvhdf3",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "A/B test creative"
+        },
+        {
+          "_key": "p2an2gav",
+          "_type": "span",
+          "marks": [],
+          "text": " — Generate 50+ design variations for ad platform testing"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "reeut31d",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "9cla0dba",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Seasonal refreshes"
+        },
+        {
+          "_key": "uhok90f5",
+          "_type": "span",
+          "marks": [],
+          "text": " — Update an entire campaign's assets with new colors, imagery, or copy"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "1595h5m5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "28apsmcg",
+          "_type": "span",
+          "marks": [],
+          "text": "Batch generation is "
+        },
+        {
+          "_key": "st9u7puz",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "not"
+        },
+        {
+          "_key": "ki5ccouc",
+          "_type": "span",
+          "marks": [],
+          "text": " ideal for:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "xbdnlec8",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "se48dti7",
+          "_type": "span",
+          "marks": [],
+          "text": "One-off, highly custom designs (use the standard generator)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "bipnf1vt",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "tp64j2gg",
+          "_type": "span",
+          "marks": [],
+          "text": "Designs requiring complex, unique layouts per output (batch works best with structural consistency)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "d5zh11sd",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "b02665v4",
+          "_type": "span",
+          "marks": [],
+          "text": "Projects where each output needs extensive manual review before approval (the batch ROI diminishes)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "2ffbi21r",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ndtu08oz",
+          "_type": "span",
+          "marks": [],
+          "text": "Step 1: Data Preparation"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "9sapku1y",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "woiijbva",
+          "_type": "span",
+          "marks": [],
+          "text": "The quality of your batch output depends almost entirely on your input data. Garbage in, garbage out applies doubly to AI generation."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "5i1j9zo7",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "uvljt96i",
+          "_type": "span",
+          "marks": [],
+          "text": "CSV Structure"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "nceo4cdr",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "giqc3cq0",
+          "_type": "span",
+          "marks": [],
+          "text": "Lovart's batch engine accepts CSV files with the following structure:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "e4ca270a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "si0ei1o3",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "sku,product_name,headline,description,image_url,category,brand_color\nSKU001,Ergonomic Desk Chair,\"Work in Comfort\",\"Premium ergonomic chair with lumbar support\",https://cdn.example.com/chair1.jpg,Office,blue\nSKU002,Standing Desk Pro,\"Stand Tall\",\"Electric standing desk with memory presets\",https://cdn.example.com/desk1.jpg,Office,green\nSKU003,Monitor Arm,\"Free Your Desk\",\"Articulating monitor arm for 17-32 screens\",https://cdn.example.com/arm1.jpg,Accessories,black"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "32945ljw",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ovjdqnvt",
+          "_type": "span",
+          "marks": [],
+          "text": "Column Mapping"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "8rdmjzrn",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "qidtvimw",
+          "_type": "span",
+          "marks": [],
+          "text": "Map your CSV columns to template variables in "
+        },
+        {
+          "_key": "zjaalvpa",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Batch Generator > Column Mapping"
+        },
+        {
+          "_key": "quwbyvm4",
+          "_type": "span",
+          "marks": [],
+          "text": ":"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "j64ay6ns",
+      "_type": "tableBlock",
+      "rows": [
+        {
+          "_key": "5i0zzcji",
+          "_type": "tableRow",
+          "cells": [
+            "CSV Column",
+            "Template Variable",
+            "Type"
+          ]
+        },
+        {
+          "_key": "7yx92irf",
+          "_type": "tableRow",
+          "cells": [
+            "product_name",
+            "{{product_name}}",
+            "Text"
+          ]
+        },
+        {
+          "_key": "zw2i34y0",
+          "_type": "tableRow",
+          "cells": [
+            "headline",
+            "{{headline}}",
+            "Text (Headline)"
+          ]
+        },
+        {
+          "_key": "y7uy66km",
+          "_type": "tableRow",
+          "cells": [
+            "description",
+            "{{description}}",
+            "Text (Body)"
+          ]
+        },
+        {
+          "_key": "ewkrkcsu",
+          "_type": "tableRow",
+          "cells": [
+            "image_url",
+            "{{product_image}}",
+            "Image URL"
+          ]
+        },
+        {
+          "_key": "vkx7p93w",
+          "_type": "tableRow",
+          "cells": [
+            "category",
+            "{{category}}",
+            "Category Selector"
+          ]
+        },
+        {
+          "_key": "0omnvdap",
+          "_type": "tableRow",
+          "cells": [
+            "brand_color",
+            "{{accent_color}}",
+            "Color Override"
+          ]
+        }
+      ]
+    },
+    {
+      "_key": "qid8lk1j",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "bfqbht4o",
+          "_type": "span",
+          "marks": [],
+          "text": "Data Quality Checklist"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "juipqxoe",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "i73ap7xi",
+          "_type": "span",
+          "marks": [],
+          "text": "Before running any batch job, validate your data:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "jot4ntaf",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "821nz8p9",
+          "_type": "span",
+          "marks": [],
+          "text": " "
+        },
+        {
+          "_key": "yaha9vrd",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "All required variables populated"
+        },
+        {
+          "_key": "4j341chw",
+          "_type": "span",
+          "marks": [],
+          "text": " — Empty cells become blank spaces in your designs"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "okrec3at",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "45g0oivt",
+          "_type": "span",
+          "marks": [],
+          "text": " "
+        },
+        {
+          "_key": "d8wzy4wq",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Text within character limits"
+        },
+        {
+          "_key": "iikypxsr",
+          "_type": "span",
+          "marks": [],
+          "text": " — Lovart truncates but doesn't intelligently reflow. Check headline max lengths for each platform."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "tsefsk32",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "jzxqtanc",
+          "_type": "span",
+          "marks": [],
+          "text": " "
+        },
+        {
+          "_key": "clqoctc0",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Image URLs accessible"
+        },
+        {
+          "_key": "8guzwgef",
+          "_type": "span",
+          "marks": [],
+          "text": " — Lovart must be able to fetch images. Protected CDNs need allow-listed IP ranges (contact support)."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "aqwfinqn",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "goo6bzb8",
+          "_type": "span",
+          "marks": [],
+          "text": " "
+        },
+        {
+          "_key": "e54gbawa",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "No special characters in filenames"
+        },
+        {
+          "_key": "9z79dywo",
+          "_type": "span",
+          "marks": [],
+          "text": " — Avoid emoji, non-Latin characters, or special symbols in output filenames"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "5mziyq47",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "0diiss09",
+          "_type": "span",
+          "marks": [],
+          "text": " "
+        },
+        {
+          "_key": "9n334975",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Consistent formatting"
+        },
+        {
+          "_key": "vecnagfv",
+          "_type": "span",
+          "marks": [],
+          "text": " — All prices use same decimal places, all dates use same format, all URLs use same protocol (HTTPS)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "p2mumdm4",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "sqkpv0tt",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Pro Tip:"
+        },
+        {
+          "_key": "jr8k1bpt",
+          "_type": "span",
+          "marks": [],
+          "text": " Add a "
+        },
+        {
+          "_key": "2bw4nqd7",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "batch_id"
+        },
+        {
+          "_key": "tobj3dsz",
+          "_type": "span",
+          "marks": [],
+          "text": " column to every CSV row. This makes it trivial to track which batch produced each output — invaluable for debugging and iteration."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "s3hzfdw6",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2biuutp7",
+          "_type": "span",
+          "marks": [],
+          "text": "Step 2: Template Preparation"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "4vbsdy6c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "jlfpx4uz",
+          "_type": "span",
+          "marks": [],
+          "text": "Naming Template Variables"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "3328cp7d",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "mw9jvpg9",
+          "_type": "span",
+          "marks": [],
+          "text": "Use Lovart's variable syntax within any template text layer:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "8qrhrw71",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "twlr34mz",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "{{variable_name}}"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "wedfwwdd",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "z38o09oq",
+          "_type": "span",
+          "marks": [],
+          "text": "Variable fallbacks provide safety nets — if a CSV cell is empty, the fallback text appears instead:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "gyql6s6i",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ns8cw646",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "{{headline:Default Headline Text}}\n{{description:No description available}}"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "dd6uh7az",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "79f4gec7",
+          "_type": "span",
+          "marks": [],
+          "text": "Conditional Visibility"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "m5d9ww4g",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "awayryfy",
+          "_type": "span",
+          "marks": [],
+          "text": "You can conditionally show or hide template layers based on whether a variable is populated:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "lk2j2hny",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "voebf9m6",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "Layer: \"Sale Badge\"\nCondition: {{discount_percentage}} != \"\"\nBehavior: If discount_percentage is empty, hide the sale badge entirely."
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "zla4p03v",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "z864chpb",
+          "_type": "span",
+          "marks": [],
+          "text": "This prevents designs from showing \"Sale: %\" when no discount data exists."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "esnh8oyu",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "0c9dznbo",
+          "_type": "span",
+          "marks": [],
+          "text": "Dynamic Color Mapping"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "qvnkq089",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "km47mu4w",
+          "_type": "span",
+          "marks": [],
+          "text": "Map CSV values to specific colors in your template:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "8jg3cus9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "q0pzoknd",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "category,accent_color\nOffice,#2563EB\nGaming,#DC2626\nWellness,#059669"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "0vn8jtkk",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "fqzc1bcs",
+          "_type": "span",
+          "marks": [],
+          "text": "In the template editor, link the category variable to a color lookup table. When batch processing hits \"Gaming\" category, the accent automatically shifts to red without any manual intervention."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "iamg7d8c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "t58d5pn1",
+          "_type": "span",
+          "marks": [],
+          "text": "Step 3: Batch Configuration"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "zhyytia9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "3o8lj7lb",
+          "_type": "span",
+          "marks": [],
+          "text": "Generation Modes"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "qv875ep6",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "r079nbt5",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Sequential Mode (Default):"
+        },
+        {
+          "_key": "v4pa5y55",
+          "_type": "span",
+          "marks": [],
+          "text": "\nProcesses rows one at a time. Slower but more stable. Recommended for:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "f9burtad",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "jdbgyca3",
+          "_type": "span",
+          "marks": [],
+          "text": "Small batches (under 100 items)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "6z91s75u",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "l8q6e2gt",
+          "_type": "span",
+          "marks": [],
+          "text": "Complex templates with AI-generated imagery"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "b8fp99ig",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "i78gky19",
+          "_type": "span",
+          "marks": [],
+          "text": "First-time batch runs (test with sequential before scaling)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "fgphfa96",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "0hm9423g",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Parallel Mode:"
+        },
+        {
+          "_key": "t0k78qqz",
+          "_type": "span",
+          "marks": [],
+          "text": "\nProcesses multiple rows simultaneously. Up to 10x faster but requires more API credits per second. Recommended for:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "fcph6xn2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "w0u2u916",
+          "_type": "span",
+          "marks": [],
+          "text": "Large batches (100+ items)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "qg07fx96",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6zka2fob",
+          "_type": "span",
+          "marks": [],
+          "text": "Simple templates (text replacement only, no AI image generation)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "e3od38bp",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ps32blmc",
+          "_type": "span",
+          "marks": [],
+          "text": "Time-sensitive production runs"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "bgnff7jp",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "51hb407v",
+          "_type": "span",
+          "marks": [],
+          "text": "Set mode in "
+        },
+        {
+          "_key": "0axvk3yl",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Batch Generator > Settings > Processing Mode"
+        },
+        {
+          "_key": "qbmhpoz4",
+          "_type": "span",
+          "marks": [],
+          "text": "."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "qk0umdh8",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4ehkczvd",
+          "_type": "span",
+          "marks": [],
+          "text": "Batch Sizing"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "2cebzvir",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "vrp18063",
+          "_type": "span",
+          "marks": [],
+          "text": "Lovart processes batches in chunks:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "7jvvi44e",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "36xgndhn",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Free Plan:"
+        },
+        {
+          "_key": "lseg0igt",
+          "_type": "span",
+          "marks": [],
+          "text": " Max 10 items per batch"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "tlomr9ey",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "7guildii",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Starter ($19/mo):"
+        },
+        {
+          "_key": "qfk8675r",
+          "_type": "span",
+          "marks": [],
+          "text": " Max 50 items per batch"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "p3cho7iu",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "cfjb9x5d",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Professional ($49/mo):"
+        },
+        {
+          "_key": "a3njz5kg",
+          "_type": "span",
+          "marks": [],
+          "text": " Max 250 items per batch"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "aal11jz2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "7c4d3y1b",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Business ($99/mo):"
+        },
+        {
+          "_key": "lyzhxieo",
+          "_type": "span",
+          "marks": [],
+          "text": " Max 1,000 items per batch"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Lovart is the AI design agent trusted by 10M+ creators. "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "ctaLink"
+          ],
+          "text": "Turn text into professional designs →"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ctaLink",
+          "_type": "link",
+          "href": "https://www.lovart.ai/tools/text-to-image-generator"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "cta",
+      "link": {
+        "_type": "link",
+        "external": "https://www.lovart.ai/features/ai-design-agent",
+        "label": "AI Design Agent →",
+        "type": "external"
+      },
+      "style": "action"
+    },
+    {
+      "_key": "uss5o1mt",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "eot8t1dg",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Enterprise ($149/mo):"
+        },
+        {
+          "_key": "nhswzo5o",
+          "_type": "span",
+          "marks": [],
+          "text": " Max 10,000 items per batch"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "kn751xul",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "beamjjeh",
+          "_type": "span",
+          "marks": [],
+          "text": "For batches exceeding your plan limit, split your CSV into multiple files and run sequentially. Or use the API for programmatic batching:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "2emiqc9c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1ak72ipm",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "import lovart\nimport pandas as pd\n\n# Split large CSV into plan-compliant chunks\ndf = pd.read_csv(\"catalog_5000_items.csv\")\nchunk_size = 250  # Professional plan limit\n\nfor i, chunk in enumerate(range(0, len(df), chunk_size)):\n    batch = df[chunk:chunk + chunk_size]\n    batch.to_csv(f\"batch_{i}.csv\", index=False)\n    lovart.generate_batch(\n        template_id=\"tmpl_xyz\",\n        csv_file=f\"batch_{i}.csv\",\n        brand_kit_id=\"bk_abc\",\n        output_format=\"png\"\n    )"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "q06t84ej",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "cp9richb",
+          "_type": "span",
+          "marks": [],
+          "text": "Output Configuration"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "u1reug4e",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "cqciu6h1",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Naming Convention:"
+        },
+        {
+          "_key": "fltuu6oo",
+          "_type": "span",
+          "marks": [],
+          "text": "\nDefine output filenames using template variables:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "e3x93jki",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "tu0cq7yc",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "{{sku}}_{{category}}_{{product_name_slug}}.png\n→ SKU001_Office_Ergonomic_Desk_Chair.png"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "45x4qfm1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "q5xna51c",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Format Options:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "25a6q7lh",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "9r4kn6i8",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Image:"
+        },
+        {
+          "_key": "t8rhdg66",
+          "_type": "span",
+          "marks": [],
+          "text": " PNG (lossless), JPEG (quality 60-100), WebP (web-optimized), SVG (vector, limited support)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "2gqzq54c",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "7z1np801",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Multi-Format Export:"
+        },
+        {
+          "_key": "rgydqrgr",
+          "_type": "span",
+          "marks": [],
+          "text": " Generate PNG + WebP simultaneously for web use"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ps76j899",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "tvvgxnst",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Dimension Presets:"
+        },
+        {
+          "_key": "2hzz5cpm",
+          "_type": "span",
+          "marks": [],
+          "text": " Apply named dimension presets (e.g., \"Instagram Post\" = 1080x1080)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "t9l0jtn9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k5qsdng8",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Multi-Size Export:"
+        },
+        {
+          "_key": "ma4jmw5m",
+          "_type": "span",
+          "marks": [],
+          "text": " Generate 5+ sizes from a single batch row"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ys0208bu",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "gaa2hv1i",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Output Organization:"
+        },
+        {
+          "_key": "5mmprtpv",
+          "_type": "span",
+          "marks": [],
+          "text": "\nChoose between:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "dry2iagv",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "vcxcq3cd",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Flat Output:"
+        },
+        {
+          "_key": "6nj4esur",
+          "_type": "span",
+          "marks": [],
+          "text": " All files in one folder"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "61g5wum4",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "xh9k7e0i",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Categorized Output:"
+        },
+        {
+          "_key": "weeb1eb8",
+          "_type": "span",
+          "marks": [],
+          "text": " Sub-folders by CSV column (e.g., "
+        },
+        {
+          "_key": "ro4fz1oq",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "/Office/"
+        },
+        {
+          "_key": "rzjifytu",
+          "_type": "span",
+          "marks": [],
+          "text": ", "
+        },
+        {
+          "_key": "ftfwbj52",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "/Gaming/"
+        },
+        {
+          "_key": "dkm4ye4l",
+          "_type": "span",
+          "marks": [],
+          "text": ", "
+        },
+        {
+          "_key": "90dhbq73",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "/Wellness/"
+        },
+        {
+          "_key": "gx89hr4o",
+          "_type": "span",
+          "marks": [],
+          "text": ")"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "eb1v5epa",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "bajmdyy8",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Row-Based Output:"
+        },
+        {
+          "_key": "nine5tly",
+          "_type": "span",
+          "marks": [],
+          "text": " Each CSV row gets its own folder (useful when each row generates multiple sizes)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "brgm3op1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "fv65l4b4",
+          "_type": "span",
+          "marks": [],
+          "text": "Step 4: Quality Control Workflow"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "cocxt8w2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "7u3elitp",
+          "_type": "span",
+          "marks": [],
+          "text": "Automated QC"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "y72wu82a",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "e5kayyn3",
+          "_type": "span",
+          "marks": [],
+          "text": "Lovart's batch engine includes automated quality checks:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "iido9s4s",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ct5ez8ni",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Pre-Generation Checks:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "sckai17n",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "kdto5ad8",
+          "_type": "span",
+          "marks": [],
+          "text": "Missing required variables"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "rjwv65tk",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ddkw51pl",
+          "_type": "span",
+          "marks": [],
+          "text": "Text that will overflow template containers"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "xcm4fvbg",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "lt6oo7tf",
+          "_type": "span",
+          "marks": [],
+          "text": "Image URLs that return 4xx/5xx errors"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "pueapue4",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "oznrfepe",
+          "_type": "span",
+          "marks": [],
+          "text": "Color contrast violations against brand accessibility profile"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "pbqvs9n2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "83nky3lm",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Post-Generation Checks:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ksk4mvt3",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "vbqvx43i",
+          "_type": "span",
+          "marks": [],
+          "text": "Image rendering errors (blank outputs, corrupted files)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "oha1awyn",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "hzhb98wr",
+          "_type": "span",
+          "marks": [],
+          "text": "Text rendering issues (font fallback artifacts, clipped text)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k7fnd8ux",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "n1x6277l",
+          "_type": "span",
+          "marks": [],
+          "text": "Logo placement violations (clear space breaches)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "00er19xa",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "k2pnlv97",
+          "_type": "span",
+          "marks": [],
+          "text": "Brand compliance deviations (unapproved colors detected)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "5ri7d8d9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1zauyy98",
+          "_type": "span",
+          "marks": [],
+          "text": "Configure QC strictness in "
+        },
+        {
+          "_key": "b362m0rv",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Batch Generator > Settings > Quality Control"
+        },
+        {
+          "_key": "z1elodax",
+          "_type": "span",
+          "marks": [],
+          "text": ":"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "uacucx8b",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "lvunlgs7",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Relaxed:"
+        },
+        {
+          "_key": "bwufbhwj",
+          "_type": "span",
+          "marks": [],
+          "text": " Warn on issues, generate anyway"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "3b1vcq8z",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "eqb6uovw",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Standard (Recommended):"
+        },
+        {
+          "_key": "fjifygav",
+          "_type": "span",
+          "marks": [],
+          "text": " Skip problematic rows, continue batch"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "vy8jk8zr",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "9s0ypkrc",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Strict:"
+        },
+        {
+          "_key": "2h0chid6",
+          "_type": "span",
+          "marks": [],
+          "text": " Halt batch on first violation"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "9wwg8m96",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "pqxqc855",
+          "_type": "span",
+          "marks": [],
+          "text": "Manual Review Sampling"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "u7pgbbxp",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "bk24pysp",
+          "_type": "span",
+          "marks": [],
+          "text": "For large batches where reviewing every output is impractical, set a review sampling strategy:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "d0xd1e8q",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "py1s5vd4",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Random Sample:"
+        },
+        {
+          "_key": "uvjw06kx",
+          "_type": "span",
+          "marks": [],
+          "text": " Review 10% of outputs randomly selected"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "5eel5yc9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "nb68hu6u",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Stratified Sample:"
+        },
+        {
+          "_key": "j9lk05gy",
+          "_type": "span",
+          "marks": [],
+          "text": " Review 2 from each category (ensures coverage across segments)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "vpkob2ki",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "vrvz9idt",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Edge Case Review:"
+        },
+        {
+          "_key": "wd0vlzgb",
+          "_type": "span",
+          "marks": [],
+          "text": " Review the 5 shortest headlines + 5 longest headlines (text overflow risk)"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "40a42ipk",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ujnq0zh6",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Confidence-Based Review:"
+        },
+        {
+          "_key": "tlsvcmld",
+          "_type": "span",
+          "marks": [],
+          "text": " Review outputs where Lovart's internal confidence score fell below threshold"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "xbxhh1tg",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "mw59kl6y",
+          "_type": "span",
+          "marks": [],
+          "text": "Lovart's batch report flags high-risk outputs (low confidence, detected anomalies) for priority review."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "4p1sjgkz",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "r4isucio",
+          "_type": "span",
+          "marks": [],
+          "text": "Step 5: Iteration & Optimization"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "zzhnf4ae",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "n6vaa5ur",
+          "_type": "span",
+          "marks": [],
+          "text": "Batch Reporting"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "b6ivp6wc",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "eg69kwdy",
+          "_type": "span",
+          "marks": [],
+          "text": "After each batch run, Lovart generates a report:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "tbbxrzh1",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "tqrlg79i",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "Batch Report: Catalog_Refresh_Q3_2027\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\nTotal Rows:        247\nSuccessful:        239 (96.8%)\nSkipped (QC):        5 (2.0%)\nFailed:              3 (1.2%)\nAvg. Generation:   4.2s per item\nTotal Time:       17m 18s\nCredits Used:      741\n\nSkipped Rows:\n  SKU142 — Image URL returned 403 (access denied)\n  SKU198 — Headline exceeds max length (32 chars → 28 allowed)\n  SKU201 — Missing required variable: product_name\n  SKU215 — Accent color contrast violation (AA fail)\n  SKU233 — Image URL timeout after 30s\n\nFailed Rows:\n  SKU088 — Template rendering error (contact support)\n  SKU176 — Font rendering artifact (fallback font applied)\n  SKU241 — Unknown error (retry succeeded on attempt 2)"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "j954900u",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "0kb3heww",
+          "_type": "span",
+          "marks": [],
+          "text": "Iterative Refinement"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "7ilp6p26",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "izeo89h0",
+          "_type": "span",
+          "marks": [],
+          "text": "Batch generation is rarely perfect on the first run. The standard workflow:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "s1gb8h2e",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "xpn75vv8",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Pilot Run"
+        },
+        {
+          "_key": "kcpeq78j",
+          "_type": "span",
+          "marks": [],
+          "text": " — Process 10-20 rows, review 100% of outputs, identify patterns in issues"
+        }
+      ],
+      "level": 1,
+      "listItem": "number",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "qt2pr26e",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "850wsl7w",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Refine"
+        },
+        {
+          "_key": "xc2v5nm5",
+          "_type": "span",
+          "marks": [],
+          "text": " — Fix template issues (overflow, contrast, layout), update CSV data, adjust QC settings"
+        }
+      ],
+      "level": 1,
+      "listItem": "number",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "3m7q477m",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "a3wuycf3",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Full Run"
+        },
+        {
+          "_key": "osu13r2f",
+          "_type": "span",
+          "marks": [],
+          "text": " — Process entire batch with refined settings"
+        }
+      ],
+      "level": 1,
+      "listItem": "number",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "5zovh0l9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "q7s7sy50",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Sampling Review"
+        },
+        {
+          "_key": "6kv47c8s",
+          "_type": "span",
+          "marks": [],
+          "text": " — Apply your review sampling strategy"
+        }
+      ],
+      "level": 1,
+      "listItem": "number",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "pom0dmj9",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "1aqrysd0",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Remediation Run"
+        },
+        {
+          "_key": "8e9c0ugj",
+          "_type": "span",
+          "marks": [],
+          "text": " — Re-process failed/skipped rows with corrected data or template fixes"
+        }
+      ],
+      "level": 1,
+      "listItem": "number",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "tfk779aj",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "w2hbzp64",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Pro Tip:"
+        },
+        {
+          "_key": "ne9yfy3o",
+          "_type": "span",
+          "marks": [],
+          "text": " Bookmark your batch generation workflows. Common patterns (e.g., \"Product Catalog Refresh\" or \"Monthly Social Media Batch\") should be saved as reusable batch presets with pre-configured templates, column mappings, and QC rules."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "5glah1kc",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2hnqdsd0",
+          "_type": "span",
+          "marks": [],
+          "text": "Advanced: Nested Batch Generation"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "lpx5v1ac",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2x6x8yzd",
+          "_type": "span",
+          "marks": [],
+          "text": "For complex production pipelines, Lovart supports nested batches — where the output of one batch becomes input for another."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ab7meqlw",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "25h2xfh9",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Example: E-commerce Product Launch"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "jb9kdvyr",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "pvbqgr67",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "Batch 1: Generate product listing images (247 SKUs, primary template)\n   ↓\nBatch 2: Generate social media variants (247 × 4 platforms = 988 outputs, using Batch 1 images as inputs)\n   ↓\nBatch 3: Generate ad creative variants (top 20 SKUs × 5 ad formats = 100 outputs, using Batch 2 selects)\n   ↓\nBatch 4: Generate email campaign assets (curated collection of 10 products, newsletter template)"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": "z1a3a9b4",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "gudahcd4",
+          "_type": "span",
+          "marks": [],
+          "text": "Nested batches can be chained manually or automated through the Lovart API with webhook triggers."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "sdqorfaj",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ub9f8lo6",
+          "_type": "span",
+          "marks": [],
+          "text": "Common Pitfalls & Solutions"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "soha9qlv",
+      "_type": "tableBlock",
+      "rows": [
+        {
+          "_key": "4r1kydo7",
+          "_type": "tableRow",
+          "cells": [
+            "Problem",
+            "Cause",
+            "Solution"
+          ]
+        },
+        {
+          "_key": "fkdi1mzq",
+          "_type": "tableRow",
+          "cells": [
+            "Inconsistent output quality",
+            "AI randomness in image generation",
+            "Lock seed values for reproducible results; increase quality parameter in generation settings"
+          ]
+        },
+        {
+          "_key": "h902un34",
+          "_type": "tableRow",
+          "cells": [
+            "Rate limiting on large batches",
+            "Exceeding API rate limits in parallel mode",
+            "Reduce parallel workers; implement exponential backoff in API scripts"
+          ]
+        },
+        {
+          "_key": "mrn8eeti",
+          "_type": "tableRow",
+          "cells": [
+            "Text overflow in small templates",
+            "Variable content longer than template expects",
+            "Use text auto-resize; set truncate: true with ellipsis for headlines"
+          ]
+        },
+        {
+          "_key": "jembc61m",
+          "_type": "tableRow",
+          "cells": [
+            "Brand colors shifting unexpectedly",
+            "CSV color values overriding brand palette",
+            "Lock brand color palette in template settings; remove accent_color from CSV mapping"
+          ]
+        },
+        {
+          "_key": "kjwfptjz",
+          "_type": "tableRow",
+          "cells": [
+            "Missing images in output",
+            "Image URLs broken or protected",
+            "Pre-validate all URLs with a simple script; upload images to Lovart's CDN for batch runs"
+          ]
+        },
+        {
+          "_key": "bfv30k9h",
+          "_type": "tableRow",
+          "cells": [
+            "Credits exhausted mid-batch",
+            "Poor credit estimation",
+            "Use batch estimator tool before running; set credit limit alerts"
+          ]
+        }
+      ]
+    },
+    {
+      "_key": "zo4ch0fi",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "2m9hs2af",
+          "_type": "span",
+          "marks": [],
+          "text": "Batch Generation API Reference"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "990rx4rv",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "3l80nnt7",
+          "_type": "span",
+          "marks": [],
+          "text": "For programmatic access, use the Lovart Batch API:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "v7ev2e4q",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "vv0y50kd",
+          "_type": "span",
+          "marks": [],
+          "text": "Full API documentation: "
+        },
+        {
+          "_key": "cjjtlju9",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "docs.lovart.ai/api/v2/batches"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "r1pfynlu",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "5iogdwn9",
+          "_type": "span",
+          "marks": [
+            "em"
+          ],
+          "text": "Batch generation is available on all Lovart plans. Processing speed varies by plan tier and current platform load. API access requires Professional plan or above. See docs.lovart.ai/pricing for current credit consumption rates."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": ""
+        }
+      ],
+      "style": "hr"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Ready to try AI design? Lovart is free to start —  "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "link"
+          ],
+          "text": "Start Free"
+        },
+        {
+          "_type": "span",
+          "text": " →"
+        }
+      ],
+      "markDefs": [
+        {
+          "_type": "link",
+          "href": "https://www.lovart.ai"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Related Batch: "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "c1"
+          ],
+          "text": "Stop Prompting Pixel by Pixel: How to Batch-Generate Your Mo"
+        },
+        {
+          "_type": "span",
+          "text": " | "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "c2"
+          ],
+          "text": "How to Batch Create Designs with AI Automation — Efficiency "
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "c1",
+          "_type": "link",
+          "href": "https://www.lovart.ai/blog/batch-generation-monday-friday-content-strategy"
+        },
+        {
+          "_key": "c2",
+          "_type": "link",
+          "href": "https://www.lovart.ai/blog/how-to-batch-create-designs-ai-bing"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "— — —"
+        }
+      ],
+      "style": "normal"
+    }
+  ],
+  "category": {
+    "_ref": "5a9df9bb-d0b6-4ef9-8257-af3b470db780",
+    "_type": "reference"
+  },
+  "cover": {
+    "_type": "imageSource",
+    "alt": "Batch Generation Best Practices: Scale Your Design Output with Lovart",
+    "sourceType": "external",
+    "url": "https://blogs.lovart.ai/wp-content/uploads/2026/03/blogcover-038-1024x682.png"
+  },
+  "description": "Master Lovart's batch generation engine to produce hundreds of on-brand designs in minutes. Covers CSV-driven generation, template variables, quality control workflows, and batch optimization strategies.",
+  "language": "en",
+  "publishedAt": "2026-05-26T15:19:37Z",
+  "releaseDate": "2026-05-26T15:19:37Z",
+  "seo": {
+    "_type": "seo",
+    "description": "Master batch AI image generation. Learn best practices, workflow automation, and tools for generating hundreds of consistent images. Save time and maintain quality at scale.",
+    "keywords": [
+      "batch generation",
+      "practices scale",
+      "design output",
+      "batch",
+      "generation",
+      "practice",
+      "scale",
+      "design"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Batch Generation Best Practices: Scale Your Design Output with Lovart",
+      "sourceType": "external",
+      "url": "https://blogs.lovart.ai/wp-content/uploads/2026/03/blogcover-038-1024x682.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\":\"https://schema.org\",\"@type\":\"Article\",\"headline\":\"Batch AI Image Generation — Best Practices & Workflow Guide | Lovart\",\"description\":\"Master batch AI image generation. Learn best practices, workflow automation, and tools for generating hundreds of consistent images. Save time and maintain quality at scale.\",\"url\":\"https://www.lovart.ai/blog/02-wiki-batch-generation-best-practices\",\"datePublished\":\"2026-05-26\",\"author\":{\"@type\":\"Person\",\"name\":\"Lovart Team\"},\"publisher\":{\"@type\":\"Organization\",\"name\":\"Lovart\",\"url\":\"https://www.lovart.ai\"}}"
+    },
+    "title": "Batch AI Image Generation — Best Practices & Workflow Guide | Lovart"
+  },
+  "slug": "02-wiki-batch-generation-best-practices",
+  "title": "Batch Generation Best Practices: Scale Your Design Output with Lovart"
+}

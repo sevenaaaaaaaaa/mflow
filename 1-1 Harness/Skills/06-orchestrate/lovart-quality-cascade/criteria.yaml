@@ -1,0 +1,98 @@
+# criteria.yaml — Quality Cascade Pass Criteria (v0.2)
+#
+# v0.2 changes from v0.1:
+#   - block_if: added MUST-CITE-KB rules (KB grounding required for product/brand claims and external URLs)
+#   - warn_if:  added KB-CITATION-DENSITY-LOW + BRAND-NAME-UNREGISTERED
+#   - max_iterations: 3 → 4 (cascade needs more room under stricter KB cite rules)
+#   - token_budget: 20K → 24K
+#
+# Conventions:
+#   - block_if: hard-stop reasons. any single hit raises BLOCK.
+#   - warn_if: soft suggestions. count up to threshold → produces WARN, not BLOCK.
+#   - pattern: regex string (Python regex)
+#   - threshold: integer count over the document that triggers BLOCK or WARN.
+#   - region: language code (ISO 639-1); only applies when target has that region.
+#   - test: callable id registered in evaluator (e.g. "must_have_humanized_terminology").
+#
+# Modification policy:
+#   - DO NOT edit in-place. Submit change request at:
+#       1-1 Harness/11-knowledge/audit/loop-engineering/criteria-change-requests/N.yaml
+#   - Each bump must ship a CHANGELOG.md entry under same dir.
+
+criteria_version: 0.2
+max_iterations: 4
+iter_timeout_s: 600
+token_budget: 24000
+
+block_if:
+  - id: ai-flavor-summary-start
+    pattern: "(值得.*的是|值得一提|下面我们|现在让我们|首先|接着)"
+    threshold: 2
+    description: "AI-flavor template openers / connectors"
+  - id: ai-flavor-connector
+    pattern: "(此外|总而言之|综上所述|不仅.*而且)"
+    threshold: 3
+    description: "Connector-phrase density"
+  - id: table-row
+    pattern: '^\|.*\|'
+    threshold: 4
+    description: "User prefs禁止表格 — ≥4 行表格强制 BLOCK"
+  - id: i18n-untranslated
+    region: '^(de|fr|it|ja|ko|pt|ru|zh|zh-TW)$'
+    test: must_have_humanized_terminology
+    threshold: 1
+    description: "Translation is rewrite, must humanize brand terms"
+  - id: preflight-block
+    check: preflight
+    description: "Hard pass-any issue from preflight BLOCK"
+  # ─────── KB grounding (v0.2 NEW) ───────
+  - id: must-cite-kb-product-claim
+    test: must_cite_kb_product_claim
+    threshold: 1
+    description: |
+      Any sentence asserting a Lovart product capability or feature name MUST
+      trace back to a KB unit via inline citation marker [kb-{slug}-{n}] OR
+      direct capability-glossary entry. Bare mention of a feature without
+      KB backing triggers BLOCK on first occurrence.
+    enforcement:
+      runner: dispatch-eval.py
+      input: 1-2 Insight/Knowledge Base/KB-Index/capability-glossary.md
+  - id: kb-url-not-in-authority
+    test: must_use_kb_authority_url
+    threshold: 1
+    description: |
+      Every external URL written into the body MUST appear in
+      1-2 Insight/Knowledge Base/KB-Index/citations.md forward map.
+      URL not in KB → BLOCK. Free-form URL use is allowed only when paired
+      with a follow-up ingest cycle.
+
+warn_if:
+  - id: redundancy
+    threshold_pct: 0.30
+    description: "Similar sentences appear too often"
+  - id: missing-link
+    threshold_pct: 0.05
+    description: "Internal link density below floor"
+  - id: heading-skipped
+    pattern: '^#+ [^#\n]+$'
+    threshold: 3
+    description: "Heading exists but no body content between"
+  # ─────── KB grounding soft warns (v0.2 NEW) ───────
+  - id: kb-citation-density-low
+    test: kb_citation_density
+    threshold_pct: 0.30
+    description: |
+      Citation marker count / non-trivial sentence count is below 30% — draft
+      leans on KB weakly. WARN, not BLOCK.
+  - id: brand-name-unregistered
+    test: brand_name_in_glossary
+    threshold: 1
+    description: |
+      Detected Lovart feature / tool name not in capability-glossary. Suggests
+      writer invented a feature. WARN, not BLOCK during v0.2 (re-evaluate
+      upgrading to BLOCK after Phase 3 KB coverage matures).
+
+escalate_to:
+  - workline: lovart-management
+    on: max-iterations-reached
+    payload: ["loop_log.md", "drafts/*", "quality-report-*.json"]

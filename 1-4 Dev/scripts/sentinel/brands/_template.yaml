@@ -1,0 +1,47 @@
+# ============================================================
+# Lovart Sentinel — 品牌配置模板
+# 复制此文件为 {brand_name}.yaml 即可新建品牌
+# ============================================================
+
+brand:
+  name: ""                          # 品牌名，如 "Lovart"
+  domain: ""                        # 官网域名，如 "lovart.ai"
+  tagline: ""                       # 品牌标语
+  positioning: []                   # 定位关键词列表
+  industry: "ai_design_tool"        # 行业分类
+
+# ---------- 品牌关键词 ----------
+keywords:
+  primary: []                       # ["lovart", "lovart ai"]
+  misspellings: []                  # ["loveart", "lovert"]
+  multilingual: {}                  # {russian: "ловарт", japanese: "ラブアート"}
+  product_terms: []                 # ["nano banana", "chatcanvas"]
+
+# ---------- 社媒账号 ----------
+social:
+  x_twitter: ""                     # handle 或完整 URL
+  instagram: ""
+  linkedin: ""
+  tiktok: ""
+  youtube: ""
+  discord: ""                       # invite URL
+
+# ---------- 评价平台 ----------
+reviews:
+  product_hunt: ""
+  g2: ""
+  trustpilot: ""
+  capterra: ""
+
+# ---------- 寄生域名 ----------
+parasite_domains: []                # 非官方的冒牌域名
+
+# ---------- 监控模式选项 ----------
+monitoring:
+  # 如果为竞品调研模式，填写我方品牌名用于对标
+  benchmark_against: ""             # 如 "lovart"
+  # 如果为 KOL 战役模式
+  campaign: ""                      # 如 "罗永浩 Lovart 94分钟"
+
+# ---------- 告警阈值（覆盖默认值） ----------
+alerts: {}

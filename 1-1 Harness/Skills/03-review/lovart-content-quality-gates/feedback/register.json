@@ -1,0 +1,42 @@
+{
+  "version": "2026-06-07",
+  "ssot": "1-1 GEO Readme/文档/04-质量治理/Content-Feedback-Loop.md",
+  "thresholds": {
+    "min_impressions_for_ctr": 500,
+    "ctr_low_pct": 0.02,
+    "rank_stuck_days": 60,
+    "rank_stuck_position": 20,
+    "rank_up_top": 10,
+    "bounce_high_pct": 0.7,
+    "min_dwell_seconds": 40
+  },
+  "entries": [
+    {
+      "content_id": "ai-design-agent",
+      "content_type": "tool",
+      "language": "en",
+      "focus_query": "ai design agent",
+      "published_at": "2025-01-15",
+      "sample_ref": "landing-en-borderline-001",
+      "rubric_score": 72,
+      "url": "https://www.lovart.ai/features/ai-design-agent",
+      "impressions_28d": 8500,
+      "clicks_28d": 95,
+      "ctr_28d": 0.0112,
+      "avg_position_28d": 18.5,
+      "bounce_rate_28d": null,
+      "signup_clicks_28d": null,
+      "top_queries": [],
+      "signals": [
+        "SIG_CTR_LOW"
+      ],
+      "actions": [
+        "ACT_REWRITE_HERO",
+        "ACT_DEMOTE_SAMPLE"
+      ],
+      "status": "action_needed",
+      "notes": "Borderline sample from SERP research; prioritize hero/workflow rewrite when GSC data available.",
+      "metrics_period_end": "2026-06-01"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+wing: lovart_mflow
+rooms:
+- name: configuration
+  description: Files from config/
+  keywords:
+  - configuration
+  - config
+- name: documentation
+  description: Files from Docs/
+  keywords:
+  - documentation
+  - docs
+- name: scripts
+  description: Files from scripts/
+  keywords:
+  - scripts
+  - scripts
+- name: general
+  description: Files that don't fit other rooms
+  keywords: []

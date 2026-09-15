@@ -1,0 +1,50 @@
+# Lovart 品牌配置
+brand:
+  name: "Lovart"
+  domain: "lovart.ai"
+  tagline: "World's First AI Design Agent"
+  positioning: ["ai design agent", "ai design tool", "ai creative suite", "brand identity ai", "logo maker ai", "ai video ad generator"]
+  industry: "ai_design_tool"
+
+keywords:
+  primary: ["lovart", "lovart ai", "lovart.ai"]
+  misspellings: ["loveart", "loveart ai", "lovert", "lavart", "lovaart", "louvart", "lovard", "lovort", "loveai"]
+  multilingual:
+    arabic: "لوفارت"
+    russian: "ловарт"
+    japanese: "ラブアート"
+    korean: "러바트"
+  product_terms: ["nano banana", "nano banana pro", "nano banana 2", "nanobanana", "chatcanvas", "touch edit lovart", "mcot engine", "lovart brand kit", "lovart logo generator"]
+
+social:
+  x_twitter: "lovart_ai"
+  instagram: "lovart.ai"
+  linkedin: "company/lovart-ai"
+  tiktok: "lovart_ai"
+  youtube: "@lovart_ai"
+  discord: "https://discord.gg/9rmVYDHD6W"
+
+reviews:
+  product_hunt: "/products/lovart"
+  g2: "/products/lovart/reviews"
+  trustpilot: "/review/lovart.ai"
+  capterra: "/p/lovart/"
+
+parasite_domains:
+  - domain: "lovart-ai.com"
+    redirects_to: "aggiii.com"
+    risk: critical
+  - domain: "lovart.pro"
+    risk: high
+  - domain: "lovart.io"
+    risk: high
+  - domain: "lovart.info"
+    risk: high
+  - domain: "lovart.me"
+    risk: high
+  - domain: "lovart.fyi"
+    risk: medium
+
+monitoring:
+  benchmark_against: ""   # 自身品牌，不对标
+  campaign: ""

@@ -1,0 +1,126 @@
+{
+  "version": "2026-06-07",
+  "ssot": "1-1 GEO Readme/文档/04-质量治理/Content-Sample-Library.md",
+  "samples": [
+    {
+      "id": "blog-en-good-001",
+      "file": "blog-en-good-001.md",
+      "verdict": "good",
+      "content_type": "blog",
+      "language": "en",
+      "focus_query": "brand consistency ai video ads",
+      "rubric_score": 86,
+      "preflight_pass": true,
+      "pair_with": "blog-en-bad-001",
+      "tags": ["video-ads", "brand-consistency", "MOFU"]
+    },
+    {
+      "id": "blog-en-bad-001",
+      "file": "blog-en-bad-001.md",
+      "verdict": "bad",
+      "content_type": "blog",
+      "language": "en",
+      "focus_query": "ai design tools",
+      "rubric_score": 28,
+      "preflight_pass": false,
+      "preflight_codes": ["AS_BANNED_DENSITY", "AS_GENERIC_H2", "UX_FAQ", "UX_CTA"],
+      "pair_with": "blog-en-good-001",
+      "tags": ["anti-slop", "training"]
+    },
+    {
+      "id": "tool-en-gold-001",
+      "file": "tool-en-gold-001.md",
+      "verdict": "gold",
+      "content_type": "tool",
+      "language": "en",
+      "focus_query": "ai commercial generator",
+      "rubric_score": 91,
+      "preflight_pass": true,
+      "storyline": "T1",
+      "pair_with": "tool-en-bad-001",
+      "tags": ["commercial", "hero-io", "serp-external"]
+    },
+    {
+      "id": "tool-en-bad-001",
+      "file": "tool-en-bad-001.md",
+      "verdict": "bad",
+      "content_type": "tool",
+      "language": "en",
+      "focus_query": "ai design generator",
+      "rubric_score": 34,
+      "preflight_pass": false,
+      "preflight_codes": ["AS_BANNED_DENSITY", "UX_FAQ", "UX_CTA", "AS_HERO_IO"],
+      "pair_with": "tool-en-gold-001",
+      "tags": ["tool-landing", "anti-slop"]
+    },
+    {
+      "id": "comparison-en-good-001",
+      "file": "comparison-en-good-001.md",
+      "verdict": "good",
+      "content_type": "comparison",
+      "language": "en",
+      "focus_query": "best ai ad generators",
+      "rubric_score": 84,
+      "preflight_pass": true,
+      "storyline": "T4",
+      "pair_with": "comparison-en-bad-001",
+      "tags": ["comparison", "EEAT"]
+    },
+    {
+      "id": "comparison-en-bad-001",
+      "file": "comparison-en-bad-001.md",
+      "verdict": "bad",
+      "content_type": "comparison",
+      "language": "en",
+      "focus_query": "canva alternatives",
+      "rubric_score": 31,
+      "preflight_pass": false,
+      "preflight_codes": ["AS_BANNED_PHRASE", "UX_FAQ"],
+      "pair_with": "comparison-en-good-001",
+      "tags": ["comparison", "BLOCK"]
+    },
+    {
+      "id": "i18n-ja-bad-001",
+      "file": "i18n-ja-bad-001.md",
+      "verdict": "bad",
+      "content_type": "i18n",
+      "language": "ja",
+      "focus_query": "ai ロゴ ジェネレーター",
+      "rubric_score": 38,
+      "preflight_pass": false,
+      "pair_with": "tool-en-gold-001",
+      "tags": ["i18n", "ja", "translation-slop"]
+    },
+    {
+      "id": "landing-en-borderline-001",
+      "file": "landing-en-borderline-001.md",
+      "verdict": "borderline",
+      "content_type": "tool",
+      "language": "en",
+      "focus_query": "ai design agent",
+      "rubric_score": 72,
+      "preflight_pass": true,
+      "preflight_codes": ["AS_BANNED_PHRASE"],
+      "storyline": "F7",
+      "pair_with": "tool-en-gold-001",
+      "tags": ["ai-design-agent", "lovart-production"]
+    }
+  ],
+  "by_type": {
+    "blog": ["blog-en-good-001", "blog-en-bad-001"],
+    "tool": ["tool-en-gold-001", "tool-en-bad-001", "landing-en-borderline-001"],
+    "comparison": ["comparison-en-good-001", "comparison-en-bad-001"],
+    "i18n": ["i18n-ja-bad-001"]
+  },
+  "gold_defaults": {
+    "blog": "blog-en-good-001",
+    "tool": "tool-en-gold-001",
+    "comparison": "comparison-en-good-001"
+  },
+  "bad_defaults": {
+    "blog": "blog-en-bad-001",
+    "tool": "tool-en-bad-001",
+    "comparison": "comparison-en-bad-001",
+    "i18n": "i18n-ja-bad-001"
+  }
+}
