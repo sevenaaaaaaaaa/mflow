@@ -440,7 +440,13 @@ th{color:var(--muted);font-weight:600}
       <div class="row"><span class="mut" style="width:150px">每日内容配额（篇）</span><input id="cfg-quota" type="number" min="0" max="50" style="width:90px">
       <label style="font-size:13px"><input id="cfg-auto" type="checkbox" style="margin-right:6px">启用自动排程（Phase 5 执行）</label>
       <button class="btn ghost" onclick="saveProjCfg()">保存项目配置</button></div>
-      <div class="mut" style="margin-top:6px">配额与开关随项目存储（meta.schedule）；自动排程执行器在 Phase 5 落地，当前仅保存意图。</div></div>
+      <div class="mut" id="sched-status" style="margin:10px 0 0;line-height:1.9">执行器状态加载中…</div>
+      <div style="margin-top:12px"><b style="font-size:13px">选题队列 <span class="mut" id="tq-n"></span></b>
+        <span class="mut">——自动排程每 5 分钟按配额从队首取选题建 Loop</span></div>
+      <div id="tq-list" style="max-height:160px;overflow:auto;margin-top:6px"></div>
+      <div class="row" style="margin-top:8px"><textarea id="tq-add" placeholder="每行一个选题，可粘贴多个" style="flex:1;min-height:52px;border:1px solid var(--border);border-radius:12px;padding:9px 12px;font:inherit;background:var(--surface-strong);color:var(--fg)"></textarea>
+      <button class="btn ghost" onclick="addTopics()">加入队列</button></div>
+      <div class="mut" style="margin-top:6px">执行器每 5 分钟扫描一次：配额未满且队列有选题时自动创建 Loop（进入 Loop 页排队执行，token 记账照常）。</div></div>
     <div class="card"><div class="card-head"><h3>大模型 API（OpenAI 兼容）</h3>
       <button class="more" onclick="llmTest()">测试连通 →</button></div>
       <div id="llm-providers"></div>
@@ -851,7 +857,19 @@ function loadProjCfg(){api('api/projects').then(d=>{
  const m=d.meta||{};const sc=m.schedule||{};
  if($('cfg-name'))$('cfg-name').textContent='（'+((d.projects.find(p=>p.id===d.current)||{name:d.current}).name)+'）';
  if($('cfg-quota'))$('cfg-quota').value=sc.daily_quota||0;
- if($('cfg-auto'))$('cfg-auto').checked=!!sc.auto_loop}).catch(()=>{})}
+ if($('cfg-auto'))$('cfg-auto').checked=!!sc.auto_loop;
+ api('api/schedule/status').then(s=>{
+  const st=$('sched-status');if(!st)return;
+  st.innerHTML=`执行器：<span class="${s.enabled?'ok':'mut'}">${s.enabled?'启用':'未启用（勾选上方开关并保存）'}</span>
+   · 今日已建 <b class="tnum">${s.created_today}</b>/<b class="tnum">${s.quota}</b> · Loop 运行 ${s.running}/排队 ${s.queued}
+   · 队列 ${s.queue_len} 选题${s.log_tail?`<pre style="margin-top:6px">${esc(s.log_tail)}</pre>`:''}`;
+  const tq=$('tq-n');if(tq)tq.textContent='（'+s.queue_len+'）';
+  const tl=$('tq-list');if(tl)tl.innerHTML=(s.queue_len?'':'<span class="mut">队列空——粘贴选题加入后，执行器将自动开工</span>');
+  api('api/topics/list').then(items=>{if(tl)tl.innerHTML=items.map((x,i)=>
+   `<div class="task" style="padding:5px 9px;margin-top:4px"><span class="tt" style="flex:1;font-size:12.5px">${esc(x)}</span><button class="mini" onclick="delTopic(${i})">×</button></div>`).join('')})}).catch(()=>{})}).catch(()=>{})}
+function addTopics(){const v=$('tq-add').value;if(!v.trim())return alert('每行一个选题');
+ api('api/topics/add',{topics:v}).then(r=>{if(r.error)return alert(r.error);$('tq-add').value='';loadProjCfg()})}
+function delTopic(i){api('api/topics/del',{index:i}).then(()=>loadProjCfg())}
 function saveProjCfg(){api('api/projects/config',{schedule:{daily_quota:$('cfg-quota').value,auto_loop:$('cfg-auto').checked}})
  .then(r=>{if(r.error)return alert(r.error);alert('项目配置已保存')})}
 function resetAcc(){const u=$('acc-u').value.trim(),p=$('acc-p').value;if(!u||p.length<6)return alert('填用户名和 ≥6 位新密码');

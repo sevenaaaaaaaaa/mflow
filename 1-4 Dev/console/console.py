@@ -74,6 +74,52 @@ def loop_queue_worker():
             th.start()
         except Exception as e:
             print(f"[queue] {e}", file=sys.stderr)
+
+
+def schedule_executor():
+    """P5 自动排程：按项目配额从选题队列自动创建 Loop（全局并发仍受 queue worker 限制）。"""
+    while True:
+        time.sleep(300)
+        try:
+            if not PROJECTS_DIR.exists():
+                continue
+            today = datetime.now().strftime("%Y-%m-%d")
+            for meta_f in PROJECTS_DIR.glob("*/meta.json"):
+                pid = meta_f.parent.name
+                meta = read_json(meta_f, {})
+                sc = meta.get("schedule") or {}
+                if not sc.get("auto_loop") or not int(sc.get("daily_quota", 0) or 0):
+                    continue
+                quota = int(sc.get("daily_quota", 0) or 0)
+                pp = proj_paths(pid)
+                loops = read_json(pp["loops"], [])
+                created_today = sum(1 for x in loops if str(x.get("created", "")).startswith(today))
+                if created_today >= quota:
+                    continue
+                topics = read_json(pp["topics"], [])
+                topic = topics[0] if topics else None
+                if topic:
+                    topics = topics[1:]
+                    pp["topics"].write_text(json.dumps(topics, ensure_ascii=False, indent=1))
+                else:
+                    topic = f"自动排程占位选题（队列空，{today}）"
+                item_id = f"auto-{pid}-{datetime.now().strftime('%Y%m%d')}-{secrets.token_hex(2)}"
+                run_tool([sys.executable, str(PS_PATH),
+                          "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
+                          "upsert", "--id", item_id, "--category", "blog"])
+                with LOOP_LOCK:
+                    loops = read_json(pp["loops"], [])
+                    loops.append({"id": secrets.token_hex(4), "item_id": item_id,
+                                  "goal": topic, "template_id": sc.get("template_id", ""),
+                                  "type": sc.get("content_type", "blog"), "lang": sc.get("lang", "zh"),
+                                  "topic": topic, "brief": "", "status": "queued", "round": 0,
+                                  "max_rounds": 3, "tokens_used": 0, "auto": True,
+                                  "created": datetime.now().strftime("%Y-%m-%d %H:%M"), "log": []})
+                    pp["loops"].write_text(json.dumps(loops, ensure_ascii=False, indent=1))
+                with open(pp["sched_log"], "a") as f:
+                    f.write(f"{datetime.now().isoformat(timespec='seconds')} CREATE {item_id} topic={topic[:40]} today={created_today + 1}/{quota}\n")
+        except Exception as e:
+            print(f"[schedule] {e}", file=sys.stderr)
 USAGE_FILE = RUN_DIR / "llm-usage.jsonl"
 DEMO_FLAG = RUN_DIR / "demo.json"
 TEMPLATES_DIR = PROJECT / "templates"
@@ -765,7 +811,8 @@ def ensure_project(pid, name=None):
 def proj_paths(pid):
     d = PROJECTS_DIR / pid
     return {"dir": d, "state": d / "pipeline-state.json", "events": d / "events.jsonl",
-            "tasks": d / "tasks.json", "loops": d / "loops.json", "gen": d / "content"}
+            "tasks": d / "tasks.json", "loops": d / "loops.json", "gen": d / "content",
+            "topics": d / "topics.json", "sched_log": d / "schedule.log"}
 
 
 def auth_record(username):
@@ -1247,6 +1294,31 @@ class Handler(BaseHTTPRequestHandler):
                                         "kb_extra": self._meta().get("kb_extra", [])})
             if parsed.path == "/api/kb/extra":
                 return self._send(200, self._meta().get("kb_extra", []))
+            if parsed.path == "/api/topics/del":
+                idx = int(qs.get("index", ["-1"])[0])
+                tp = self._tk().parent / "topics.json"
+                cur = read_json(tp, [])
+                if 0 <= idx < len(cur):
+                    cur.pop(idx)
+                    tp.write_text(json.dumps(cur, ensure_ascii=False, indent=1))
+                return self._send(200, {"ok": True})
+            if parsed.path == "/api/schedule/status":
+                pp = proj_paths(self._proj())
+                meta = self._meta()
+                sc = meta.get("schedule") or {}
+                today = datetime.now().strftime("%Y-%m-%d")
+                loops = read_json(pp["loops"], [])
+                created_today = sum(1 for x in loops if str(x.get("created", "")).startswith(today))
+                running = sum(1 for x in loops if x.get("status") == "running")
+                queued = sum(1 for x in loops if x.get("status") == "queued")
+                log_tail = ""
+                if pp["sched_log"].exists():
+                    log_tail = "\n".join(pp["sched_log"].read_text().strip().split("\n")[-8:])
+                return self._send(200, {"enabled": bool(sc.get("auto_loop")), "quota": int(sc.get("daily_quota", 0) or 0),
+                                        "created_today": created_today, "running": running, "queued": queued,
+                                        "queue_len": len(read_json(pp["topics"], [])), "log_tail": log_tail})
+            if parsed.path == "/api/topics/list":
+                return self._send(200, read_json(proj_paths(self._proj())["topics"], []))
             if parsed.path == "/api/version":
                 v = VERSION_FILE.read_text().strip() if VERSION_FILE.exists() else "dev"
                 return self._send(200, {"version": v, "started": time.strftime("%Y-%m-%d")})
@@ -1619,6 +1691,15 @@ class Handler(BaseHTTPRequestHandler):
                 if f.exists():
                     f.unlink()
                 return self._send(200, {"ok": True})
+            if self.path == "/api/topics/add":
+                items = [x.strip()[:120] for x in str(body.get("topics", "")).split("\n") if x.strip()]
+                if not items:
+                    return self._send(400, {"error": "每行一个选题，至少填一个"})
+                tp = self._tk().parent / "topics.json"
+                cur = read_json(tp, [])
+                cur.extend(items[:100])
+                tp.write_text(json.dumps(cur, ensure_ascii=False, indent=1))
+                return self._send(200, {"ok": True, "count": len(cur)})
             if self.path == "/api/projects/config":
                 meta_f = PROJECTS_DIR / self._proj() / "meta.json"
                 meta = read_json(meta_f, {})
@@ -1722,6 +1803,7 @@ def main():
     ensure_project(DEFAULT_PROJECT, "默认项目")
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     threading.Thread(target=loop_queue_worker, daemon=True).start()
+    threading.Thread(target=schedule_executor, daemon=True).start()
     print(f"[console] MFlow Console on :{PORT} (loop queue worker started, max_parallel={MAX_PARALLEL_LOOPS})")
     server.serve_forever()
 
