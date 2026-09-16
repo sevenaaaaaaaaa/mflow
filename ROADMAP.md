@@ -37,11 +37,15 @@
 - ✅ 共享平台能力：用户/LLM 配置/模板/知识中台/报告中心/调度
 - 📋 项目级调度与知识源隔离（每个项目独立知识源挂载）→ Phase 4
 
-## Phase 5 · 自动化执行（2026-09-16 ✅ 首批交付）
+## Phase 5 · 自动化执行（2026-09-16 ✅ 全部交付）
 
 - ✅ P5.1 自动排程执行器：全局线程每 5 分钟扫描——项目配额未满且选题队列有货时，自动从队首取题创建 Loop（demo/真实 LLM 通用，token 记账照常），执行日志随项目落 run/projects/{id}/schedule.log
 - ✅ P5.2 选题队列：每项目 topics.json + 工作台设置页管理（批量粘贴/逐条删除/计数）
 - ✅ 排程状态 API：/api/schedule/status（今日已建/配额/运行中/排队/队列长度/日志尾）
+- ✅ P5.3 排程报表：/api/schedule/all 跨项目一行一项目（配额进度条/运行/排队/选题队列/日志尾）进「调度与日志」页
+- ✅ P5.4 Loop 终态通知：done/blocked/failed 推飞书（stopped 不打扰）；设置页 admin 配 webhook + 测试；run/notify.json 600
+- ✅ P5.5 项目独立 LLM：meta.llm{provider/base/key/model} 覆盖全局（优先级 项目>全局>demo），生成与 Loop 同走；GET 全程打码，空 Key 即清除回退
+- ✅ P5.6 插件市场：plugins/marketplace.json 内置可装包（rss-source/webhook-publisher）+ 粘贴安装（自动 plugin_check，失败进 _trash）+ 卸载
 
 ## Phase 4 · 放大项（2026-09-15/16 ✅ 首批交付）
 
@@ -78,8 +82,7 @@
 
 - ✅ 域名二级目录入口：`nownexts.com/mflow/`（Apache 双 vhost ProxyPass，见 session log v3.5）
 - ✅ 子域名方案备用：`deploy/setup-domain.sh` + `docs/domain-setup.md`（DNS → 反代 → HTTPS 三步）
-- 📋 已知项：质检钩子调 python3 依赖环境 PATH（服务/管线已带 venv env；手动跑 smoketest 需先 source run/env.sh）
-- 📋 报告可视化 R2-R5（Chart.js 趋势 / 双期对比 / PDF 导出 / 订阅摘要卡）
+- ✅ Phase 5 收官（2026-09-16）：归属人过滤（"我的任务"）· 排程报表进调度页 · Loop 终态飞书通知（run/notify.json，admin 配置）· 项目独立 LLM Key（meta.llm，清空即回退全局）· 插件市场（marketplace.json + 安装/卸载/plugin_check 六项）· 钩子 PATH 修复（LOVART_PYTHON → 项目 venv 自动探测，smoketest 免 source 16/16）
 - 📋 插件规范：第三方数据源/发布渠道按 §modules 协议贡献，TOOLS-REGISTRY 自动收录
 
 ## 原则
