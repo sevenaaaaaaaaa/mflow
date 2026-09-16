@@ -466,9 +466,52 @@ def impact_report(proj=None):
                      "matched": bool(m) and bool(path)})
     rows.sort(key=lambda r: (r["clicks"] is None, -(r["clicks"] or 0)))
     decayed = decay_analysis(pub, by_path) if proj is not None else []
+    recheck = recheck_window(pub, cited_paths=None, proj=proj) if proj is not None else []
     return {"rows": rows, "gsc_date": gsc.get("_date"), "gsc_pages": len(pages),
-            "decayed": decayed,
+            "decayed": decayed, "recheck": recheck,
             "note": "归因范围 = GSC Top20 页面；全量归因需扩展 gsc_fetch 行数上限"}
+
+
+def _cited_paths_all():
+    """全部项目 citations.jsonl 中出现过的引用路径（B5/B1 共用）。"""
+    cited = set()
+    if PROJECTS_DIR.exists():
+        for cf in PROJECTS_DIR.glob("*/citations.jsonl"):
+            for l in cf.read_text(errors="ignore").strip().split("\n")[-400:]:
+                try:
+                    r = json.loads(l)
+                except Exception:
+                    continue
+                for cp in r.get("cited_pages") or []:
+                    cited.add(_norm_url_path(cp.get("canonical") or cp.get("cited") or ""))
+                for u in r.get("urls") or []:
+                    cited.add(_norm_url_path(u))
+    return cited
+
+
+def recheck_window(pub, cited_paths=None, proj=None, window_days=7):
+    """P7-B5 发布后复测窗口：发布 ≤N 天且尚无 AI 引用记录的页面。
+    probe_daily 开启时由 geo_scheduler 自动复测；此处只呈现窗口状态。"""
+    import datetime as _dt
+    today = _dt.date.today()
+    if cited_paths is None:
+        cited_paths = _cited_paths_all()
+    out = []
+    for x in pub:
+        cu = x.get("canonical") or ""
+        d = str(x.get("date") or "")[:10]
+        try:
+            age = (today - _dt.date.fromisoformat(d)).days if d else None
+        except Exception:
+            age = None
+        if age is None or age < 0 or age > window_days:
+            continue
+        cited = _norm_url_path(cu) in cited_paths
+        out.append({"slug": x.get("slug") or "", "canonical_path": urllib.parse.urlparse(cu).path if cu else "",
+                    "age_days": age, "cited": cited,
+                    "status": ("已被引用" if cited else f"待复测（第 {age + 1} 天 / 窗口 {window_days} 天）")})
+    out.sort(key=lambda r: (r["cited"], r["age_days"]))
+    return out
 
 
 def decay_analysis(pub, by_path, min_age_days=30):
@@ -476,19 +519,7 @@ def decay_analysis(pub, by_path, min_age_days=30):
     边界：GSC 数据是 Top20 子集——'无匹配'≠'零点击'，标注为 Top20 无记录。"""
     import datetime as _dt
     today = _dt.date.today()
-    cited_paths = set()
-    seen = set()
-    if PROJECTS_DIR.exists():
-        for cf in PROJECTS_DIR.glob("*/citations.jsonl"):
-            for l in cf.read_text(errors="ignore").strip().split("\n")[-200:]:
-                try:
-                    r = json.loads(l)
-                except Exception:
-                    continue
-                for cp in r.get("cited_pages") or []:
-                    cited_paths.add(_norm_url_path(cp.get("canonical") or cp.get("cited") or ""))
-                for u in r.get("urls") or []:
-                    cited_paths.add(_norm_url_path(u))
+    cited_paths = _cited_paths_all()
     out = []
     for x in pub:
         cu = x.get("canonical") or ""
@@ -1281,6 +1312,7 @@ def geo_cfg(proj):
             "queries": [str(x)[:200] for x in (g.get("queries") or [])[:15]],
             "engines": [str(x)[:24] for x in engines[:4]],  # P7-B3 多引擎交叉
             "probe_daily": bool(g.get("probe_daily")),
+            "auto_refresh": bool(g.get("auto_refresh")),
             "perplexity_model": str(g.get("perplexity_model", "sonar"))[:40]}
 
 
@@ -1415,12 +1447,43 @@ def geo_summary(proj):
         trend.append({"label": d[5:], "n": bd["n"], "brand": bd["brand"]})
     cross = {"multi_engine_queries": sum(1 for v in per_query.values() if len(v["engines"]) >= 2),
              "split": sum(1 for v in per_query.values() if len(v["engines"]) >= 2 and len(set(v["engines"].values())) > 1)}
+    # B2 竞品引用源反向工程：竞品被提及时的引用 URL（排除自家页面）→ 按域聚合
+    comp_urls = {}
+    our_paths = {_norm_url_path(p.get("url")) for p in _published_canonicals()}
+    for r in ok_rows:
+        if not (r.get("competitors") or []):
+            continue
+        for u in r.get("urls") or []:
+            nu = _norm_url_path(u)
+            if nu in our_paths or not u.startswith("http"):
+                continue
+            try:
+                dom = urllib.parse.urlparse(u).netloc.replace("www.", "")
+            except Exception:
+                continue
+            if not dom:
+                continue
+            e = comp_urls.setdefault(dom, {"domain": dom, "n": 0, "competitors": Counter(), "queries": set()})
+            e["n"] += 1
+            for c in r.get("competitors") or []:
+                e["competitors"][c] += 1
+            e["queries"].add(r.get("query", ""))
+    competitor_urls = [{"domain": e["domain"], "n": e["n"],
+                        "competitors": [c for c, _ in e["competitors"].most_common(3)],
+                        "queries": sorted(e["queries"])[:5]}
+                       for e in sorted(comp_urls.values(), key=lambda x: -x["n"])[:8]]
+    brand_n = sum(1 for r in ok_rows if r.get("brand"))
+    brand_rate = brand_n / max(1, len(ok_rows))
+    score, score_parts = geo_score(proj, brand_rate=brand_rate, per_query=per_query,
+                                   competitor_total=sum(comp_counter.values()), brand_total=brand_n)
     return {"total": len(ok_rows),
-            "brand_rate": round(sum(1 for r in ok_rows if r.get("brand")) / max(1, len(ok_rows)), 2),
+            "brand_rate": round(brand_rate, 2),
             "competitors": dict(comp_counter.most_common()),
             "per_query": per_query,
             "per_engine": per_engine,
             "cross": cross,
+            "competitor_urls": competitor_urls,
+            "score": score, "score_parts": score_parts,
             "cited_pages": cited_pages,
             "trend14": trend,
             "latest": rows[-10:][::-1]}
@@ -1457,8 +1520,68 @@ def geo_scheduler():
                     f.write(json.dumps({"ts": now.isoformat(timespec="seconds"),
                                         "scheduled": True, "result": ("ok" if not r.get("error") else r["error"][:120])},
                                        ensure_ascii=False) + "\n")
+                # P7 附加：衰减自动改稿 opt-in（显式开启才烧钱；每日上限 2 篇/项目）
+                meta2 = read_json(meta_f, {})
+                if (meta2.get("geo") or {}).get("auto_refresh"):
+                    gsc = read_json(RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json", {})
+                    by_path = {}
+                    for pg in ((gsc.get("pages") or {}).get("top20_pages") or []):
+                        try:
+                            by_path[urllib.parse.urlparse(pg.get("url", "")).path] = True
+                        except Exception:
+                            continue
+                    for x in decay_analysis(read_json(PROJECT / "1-3 GenFlow/Content Distribution/queue/published.json", {}).get("items", []), by_path)[:2]:
+                        item_id = "refresh-" + (re.sub(r"[^a-z0-9-]", "", str(x["slug"]).lower())[:40] or secrets.token_hex(2))
+                        pp = proj_paths(pid)
+                        loops = read_json(pp["loops"], [])
+                        if any(l.get("item_id") == item_id and l.get("status") in ("queued", "running") for l in loops):
+                            continue
+                        run_tool([sys.executable, str(PS_PATH),
+                                  "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
+                                  "upsert", "--id", item_id, "--category", "blog"])
+                        with LOOP_LOCK:
+                            loops = read_json(pp["loops"], [])
+                            loops.append({"id": secrets.token_hex(4), "item_id": item_id,
+                                          "goal": f"衰减改稿 {x['slug']}", "template_id": "", "type": "blog",
+                                          "lang": "zh", "topic": x["slug"],
+                                          "brief": "内容衰减改稿：该已发布页面 GSC Top20 无记录且无 AI 引用。按 GEO 标准（问答式 H2/数据点/FAQ/自包含短段/来源标注）重写为可摘录形态。",
+                                          "status": "queued", "round": 0, "max_rounds": 3, "tokens_used": 0,
+                                          "auto": True, "decay": True,
+                                          "created": now.strftime("%Y-%m-%d %H:%M"), "log": []})
+                            pp["loops"].write_text(json.dumps(loops, ensure_ascii=False, indent=1))
+                        with open(pp["sched_log"], "a") as f:
+                            f.write(f"{now.isoformat(timespec='seconds')} DECAY-REFRESH {item_id}\n")
         except Exception as e:
             print(f"[geo-scheduler] {e}", file=sys.stderr)
+
+
+def geo_score(proj, brand_rate, per_query, competitor_total, brand_total):
+    """P7-B6 GEO 综合分（0-100）：可探测时四因子，无数据时返回 None（不造假分）。"""
+    if not per_query:
+        return None, {}
+    # ① 提及率（40%）：探测中品牌被提及比例
+    p_mention = brand_rate
+    # ② 缺口覆盖（30%）：至少被提及一次的查询占比
+    cov = sum(1 for v in per_query.values() if v.get("brand", 0) > 0) / max(1, len(per_query))
+    p_coverage = cov
+    # ③ 相对份额（20%）：品牌提及次数 vs（品牌+竞品提及），无竞品配置则按 50% 中性分
+    rel = brand_total / (brand_total + competitor_total) if (brand_total + competitor_total) > 0 else 0.5
+    # ④ 结构健康度（10%）：衰减占比反向（衰减越少分越高）
+    qbase = PROJECT / "1-3 GenFlow/Content Distribution/queue"
+    pub = read_json(qbase / "published.json", {}).get("items", [])
+    gsc = read_json(RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json", {})
+    by_path = {}
+    for pg in ((gsc.get("pages") or {}).get("top20_pages") or []):
+        try:
+            by_path[urllib.parse.urlparse(pg.get("url", "")).path] = True
+        except Exception:
+            continue
+    dec = decay_analysis(pub, by_path)
+    struct = 1 - (len(dec) / max(1, len(pub))) if pub else 0.5
+    total = round((p_mention * 0.4 + p_coverage * 0.3 + rel * 0.2 + struct * 0.1) * 100)
+    return total, {"mention": round(p_mention * 100), "coverage": round(p_coverage * 100),
+                   "share": round(rel * 100), "structure": round(struct * 100),
+                   "note": "提及率40% + 缺口覆盖30% + 相对份额20% + 结构健康10%"}
 
 
 def daily_status():
@@ -2056,6 +2179,7 @@ class Handler(BaseHTTPRequestHandler):
                                "queries": [str(x).strip()[:200] for x in (body.get("queries") or [])[:15] if str(x).strip()],
                                "engines": engines[:4] or ["auto"],
                                "probe_daily": bool(body.get("probe_daily")),
+                               "auto_refresh": bool(body.get("auto_refresh")),
                                "perplexity_model": str(body.get("perplexity_model", old_geo.get("perplexity_model", "sonar"))).strip()[:40]}
                 meta_f.write_text(json.dumps(meta, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True})

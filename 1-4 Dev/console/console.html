@@ -328,6 +328,7 @@ th{color:var(--muted);font-weight:600}
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>效果归因 <span class="mut" id="imp-note"></span></h3>
       <button class="more" onclick="loadImpact()">刷新 ↻</button></div><div id="dist-impact"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>内容衰减监测 <span class="mut">（P7-B1 · 发布 ≥30 天 × GSC Top20 无记录 × 无 AI 引用）</span></h3></div><div id="dist-decay"></div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>发布后复测窗口 <span class="mut">（P7-B5 · 发布 ≤7 天，开「每日自动探测」后自动复测）</span></h3></div><div id="dist-recheck"></div></div>
   </section>
 
   <!-- ============ 管线 ============ -->
@@ -490,7 +491,8 @@ th{color:var(--muted);font-weight:600}
         <label style="font-size:13px"><input type="checkbox" id="geo-eng-openai" style="margin-right:4px">OpenAI</label>
         <label style="font-size:13px"><input type="checkbox" id="geo-eng-perplexity" style="margin-right:4px">Perplexity sonar</label>
         <input id="geo-ppl-model" placeholder="sonar / sonar-pro" style="width:130px">
-        <label style="font-size:13px;white-space:nowrap"><input id="geo-daily" type="checkbox" style="margin-right:6px">每日自动探测</label></div>
+        <label style="font-size:13px;white-space:nowrap"><input id="geo-daily" type="checkbox" style="margin-right:6px">每日自动探测</label>
+        <label style="font-size:13px;white-space:nowrap"><input id="geo-auto-refresh" type="checkbox" style="margin-right:6px" title="衰减页每天自动发 2 篇改稿 Loop（需真实 LLM，会烧 token）">衰减自动改稿</label></div>
       <div class="row" style="margin-top:8px"><textarea id="geo-queries" placeholder="目标查询，每行一条：用户会直接问 AI 的问题（如：最好的 AI 设计工具是什么？）。上限 10 条/次探测。" style="flex:1;min-height:70px;border:1px solid var(--border);border-radius:12px;padding:9px 12px;font:inherit;background:var(--surface-strong);color:var(--fg)"></textarea>
       <button class="btn ghost" onclick="saveGeoCfg()" style="align-self:flex-end">保存 GEO 配置</button></div>
       <div id="geo-result" style="margin-top:10px"></div>
@@ -793,7 +795,13 @@ function loadImpact(){api('api/impact').then(d=>{
   <span class="tt" style="flex:1"><b style="font-weight:600">${esc(r.slug||r.canonical_path)}</b>
    <div class="mut" style="font-size:11px">${esc(r.reason)}${r.platform?' · '+esc(r.platform):''}</div></span>
   <button class="mini" onclick="decayToRefresh(${JSON.stringify(r.slug||r.canonical_path).replace(/"/g,'&quot;')})">→ 改稿 Loop</button></div>`).join('')
-  :'<span class="mut">无衰减页面（发布 ≥30 天且 GSC Top20 无记录且零引用的才会出现在这里）</span>'})}
+  :'<span class="mut">无衰减页面（发布 ≥30 天且 GSC Top20 无记录且零引用的才会出现在这里）</span>';
+ const rk=d.recheck||[];
+ const rkEl=document.getElementById('dist-recheck');
+ if(rkEl)rkEl.innerHTML=rk.length?rk.map(r=>`<div class="task" style="align-items:center;margin-top:4px">
+  <span class="act-ic ${r.cited?'ok':'wn'}" style="width:24px;height:24px">${r.cited?'✓':'⏳'}</span>
+  <span class="tt" style="flex:1"><b style="font-weight:600">${esc(r.slug||r.canonical_path)}</b><div class="mut" style="font-size:11px">${esc(r.status)}${r.cited?' · 已进引用归因':''}</div></span></div>`).join('')
+  :'<span class="mut">近 7 天没有新发布页面（发布 ≤7 天的页面会在这里显示复测窗口状态）</span>'})}
 function decayToRefresh(slug){const id='refresh-'+slugify(slug).slice(0,40);
  api('api/loop/create',{item_id:id,type:'blog',lang:'zh',topic:slug,
   brief:'内容衰减改稿：该已发布页面 GSC Top20 无记录且无 AI 引用。按 GEO 标准（问答式 H2/数据点/FAQ/自包含短段/来源标注）重写为可摘录形态。'})
@@ -829,7 +837,8 @@ function loadGeoCfg(){api('api/projects').then(d=>{const g=(d.meta||{}).geo||{};
   $('geo-eng-openai').checked=en.includes('openai');
   $('geo-eng-perplexity').checked=en.includes('perplexity');
   $('geo-ppl-model').value=g.perplexity_model||'sonar';
-  $('geo-daily').checked=!!g.probe_daily}
+  $('geo-daily').checked=!!g.probe_daily;
+  $('geo-auto-refresh').checked=!!g.auto_refresh}
  api('api/geo/citations').then(s=>{renderGeoSummary(g,s||{})})})}
 function saveGeoCfg(){const engines=[];
  if($('geo-eng-auto').checked)engines.push('auto');
@@ -841,6 +850,7 @@ function saveGeoCfg(){const engines=[];
  competitors:$('geo-comp').value.split(/[,，]/).map(x=>x.trim()).filter(Boolean),
  queries:$('geo-queries').value.split('\n').map(x=>x.trim()).filter(Boolean),
  engines,probe_daily:$('geo-daily').checked,
+ auto_refresh:$('geo-auto-refresh').checked,
  perplexity_model:$('geo-ppl-model').value.trim()||'sonar'})
  .then(r=>{if(r.error)return alert(r.error);alert('GEO 配置已保存');loadGeoCfg()})}
 function runGeoProbe(){const el=$('geo-result');el.innerHTML='<span class="mut">探测中…（每条查询一次 LLM 调用，约 10-60 秒）</span>';
@@ -856,6 +866,15 @@ function renderGeoSummary(g,s){
   <button class="mini" onclick="gapToTopic(${JSON.stringify(q).replace(/"/g,'&quot;')})">→ 选题队列</button>
   <button class="mini" onclick="gapToRefresh(${JSON.stringify(q).replace(/"/g,'&quot;')})">→ 改稿 Loop</button></div>`).join(''):'';
  const engHtml=s.per_engine&&Object.keys(s.per_engine).length>1?'各引擎：'+Object.entries(s.per_engine).map(([e,v])=>`${esc(e)} <b class="tnum">${v.brand}/${v.n}</b>`).join(' · '):'';
+ const scoreHtml=s.score!=null?`<div class="card metric" style="margin:10px 0 4px"><div class="m-label">GEO 综合分 <span class="mut" style="font-size:10px">${esc((s.score_parts||{}).note||'')}</span></div>
+  <div class="m-val tnum">${s.score}<span style="font-size:14px;color:var(--muted)">/100</span></div>
+  <div class="m-delta"><span class="m-hint">提及 ${s.score_parts.mention} · 缺口覆盖 ${s.score_parts.coverage} · 相对份额 ${s.score_parts.share} · 结构健康 ${s.score_parts.structure}</span></div></div>`
+ :'<div class="mut" style="margin-top:8px">GEO 综合分：待首次探测后自动计算（四因子：提及率40+缺口覆盖30+相对份额20+结构健康10）</div>';
+ const cu=s.competitor_urls||[];
+ const compUrlHtml=cu.length?`<div style="margin-top:10px"><b style="font-size:13px">竞品引用源（AI 信任的来源 → 对标机会）</b>
+  ${cu.map(c=>`<div class="task" style="align-items:center;margin-top:4px"><span class="tt" style="flex:1"><b style="font-weight:600">${esc(c.domain)}</b>
+   <div class="mut" style="font-size:11px">被引 ${c.n} 次 · ${esc((c.competitors||[]).join('/'))} · 查询：${esc(c.queries.join(' / ').slice(0,60))}</div></span>
+   <button class="mini" onclick="gapToTopic(${JSON.stringify('对标'+((c.competitors||[])[0]||c.domain)+'被引来源：'+c.queries[0]).replace(/"/g,'&quot;')})">→ 对标选题</button></div>`).join('')}</div>`:'';
  const tr=s.trend14||[];const mx=Math.max(1,...tr.map(x=>x.n));
  const trendHtml=tr.some(x=>x.n)?`<div class="chart-bars" style="height:60px;margin-top:8px">${tr.map(x=>`<div class="cb"><span class="vl tnum">${x.brand||''}</span><div class="bar" style="height:${Math.max(3,x.n/mx*100)}%;${x.brand?'':'opacity:.35'}"></div><span class="lb">${x.label}</span></div>`).join('')}</div><div class="chart-meta"><span>近 14 日探测（实心=品牌被提及）</span><span></span></div>`:'';
  const cited=s.cited_pages||[];
@@ -865,7 +884,7 @@ function renderGeoSummary(g,s){
    <div class="mut" style="font-size:11px">被引 ${c.n} 次 · 查询：${esc((c.queries||[]).join(' / ').slice(0,80))}${c.platform?' · '+esc(c.platform):''}</div></span></div>`).join('')}</div>`:'<div class="mut" style="margin-top:6px;font-size:12px">暂无「已发布页面被引用」记录——归因按 canonical 路径精确匹配</div>';
  $('geo-result').innerHTML=(s.total?`<div style="font-size:13px;line-height:2">累计探测 <b class="tnum">${s.total}</b> 次 · 品牌提及率 <b class="tnum">${Math.round(s.brand_rate*100)}%</b>${g&&g.brand?`（${esc(g.brand)}）`:''}<br>
   竞品提及：${comp}${engHtml?'<br>'+engHtml:''}
-  ${s.cross&&s.cross.multi_engine_queries?`<br><span class="mut">多引擎交叉：${s.cross.multi_engine_queries} 条查询双引擎 · <span class="${s.cross.split?'warn':''}">分歧 ${s.cross.split}</span></span>`:''}</div>`+trendHtml+citedHtml+(gapHtml?`<div style="margin-top:10px"><b style="font-size:13px">引用缺口 → 闭环动作</b>${gapHtml}</div>`:'<div class="mut" style="margin-top:6px">当前查询无缺口</div>')
+  ${s.cross&&s.cross.multi_engine_queries?`<br><span class="mut">多引擎交叉：${s.cross.multi_engine_queries} 条查询双引擎 · <span class="${s.cross.split?'warn':''}">分歧 ${s.cross.split}</span></span>`:''}</div>`+scoreHtml+trendHtml+citedHtml+compUrlHtml+(gapHtml?`<div style="margin-top:10px"><b style="font-size:13px">引用缺口 → 闭环动作</b>${gapHtml}</div>`:'<div class="mut" style="margin-top:6px">当前查询无缺口</div>')
  :'<span class="mut">尚无探测数据——保存配置后点「立即探测」</span>')}
 function gapToTopic(q){api('api/topics/add',{topics:q}).then(r=>{if(r.error)return alert(r.error);alert('已加入选题队列，自动排程会消化')})}
 function gapToRefresh(q){const id='refresh-'+slugify(q).slice(0,40);
@@ -1172,12 +1191,13 @@ function rdRender(){const path=$('rd-file').value;if(!path)return;
 function rdRaw(){openReader($('rd-file').value)}
 
 /* ---- 自我迭代 ---- */
-function loadIter(){Promise.all([api('api/selfreview'),api('api/qa/stats?days=14'),api('api/usage')]).then(([sv,qa,us])=>{
+function loadIter(){Promise.all([api('api/selfreview'),api('api/qa/stats?days=14'),api('api/usage'),api('api/geo/citations')]).then(([sv,qa,us,gs])=>{
  const thr14=sv.throughput.slice(-14);
  $('iter-stats').innerHTML=`<div class="stat"><div class="n tnum">${qa.total_runs}</div><div class="t">质检执行（累计）</div></div>
   <div class="stat"><div class="n tnum">${qa.block_rate_all}%</div><div class="t">整体 BLOCK 率</div></div>
   <div class="stat"><div class="n tnum">${us.total_tokens.toLocaleString()}</div><div class="t">累计 tokens</div></div>
-  <div class="stat"><div class="n tnum">${sv.throughput.reduce((a,b)=>a+b.n,0)}</div><div class="t">30 日推进</div></div>`;
+  <div class="stat"><div class="n tnum">${sv.throughput.reduce((a,b)=>a+b.n,0)}</div><div class="t">30 日推进</div></div>
+  <div class="stat"><div class="n tnum">${gs.score!=null?gs.score:'—'}</div><div class="t">GEO 综合分 /100</div></div>`;
  const mk=(el,arr,key,fmt)=>{const mx=Math.max(1,...arr.map(x=>x[key]||0));
   $(el).innerHTML=arr.map(x=>`<div class="cb"><span class="vl tnum">${x[key]?fmt(x[key]):''}</span><div class="bar" style="height:${Math.max(3,(x[key]||0)/mx*100)}%"></div><span class="lb">${(x.date||'').slice(5)}</span></div>`).join('')||'<span class="mut">暂无数据</span>'};
  mk('it-qa',qa.days,'block_rate',v=>v+'%');
