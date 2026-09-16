@@ -38,7 +38,7 @@ button:hover{transform:translateY(-1px)}
   <input id="pw" type="password" placeholder="密码" autocomplete="current-password" onkeydown="if(event.key==='Enter')go()">
   <button onclick="go()">登录工作台</button>
   <div id="err"></div>
-  <div class="foot">MFlow · 内容工厂治理系统</div>
+  <div class="foot">MFlow · 内容生产 · 分发 · 触达</div>
 </div>
 <script>async function go(){const r=await fetch('api/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:document.getElementById('u').value,password:document.getElementById('pw').value})});
 if(r.ok)location.reload();else document.getElementById('err').textContent='用户名或密码错误'}</script>
