@@ -290,17 +290,24 @@ def llm_chat(messages, profile="default", max_tokens=4000, timeout=180, project=
 
 
 def llm_chat_full(messages, profile="default", max_tokens=4000, timeout=180, project=None, temperature=0.7, engine=None, engine_model=""):
-    """P6 二批：返回 (content, meta)；meta 含 citations（Perplexity sonar 真引用）等原始字段。
-    不做 demo 回退——探测场景必须真实引擎。engine=perplexity → providers.perplexity 配置。"""
+    """P6/P7：返回 (content, meta)；meta 含 citations（Perplexity sonar 真引用）等原始字段。
+    不做 demo 回退——探测场景必须真实引擎。
+    engine=None → profile 常规链路（含项目 llm 覆盖）；engine=<provider 名> → 用该 provider 直连（多引擎交叉探测）。"""
     cfg = llm_config()
     pr = cfg["profiles"].get(profile) or cfg["profiles"]["default"]
-    prov_name = pr["provider"]
-    if engine == "perplexity":
-        prov_name = "perplexity"
-        model = engine_model or "sonar"
-    prov = cfg["providers"].get(prov_name, {})
-    base, key, model = (prov.get("base") or "").rstrip("/"), prov.get("key", ""), (pr.get("model") if engine != "perplexity" else model)
-    if project:
+    if engine and engine != pr["provider"]:
+        if engine not in cfg["providers"]:
+            raise RuntimeError(f"engine={engine} 不是已配置的 provider")
+        prov = cfg["providers"][engine]
+        if not (prov.get("base") and prov.get("key")):
+            raise RuntimeError(f"engine={engine} 未配置 base/key（设置页填 {engine} 的 Key）")
+        prov_name, model = engine, (engine_model or pr.get("model", ""))
+    else:
+        prov_name = pr["provider"]
+        prov = cfg["providers"].get(prov_name, {})
+        model = pr.get("model", "")
+    base, key = (prov.get("base") or "").rstrip("/"), prov.get("key", "")
+    if project:  # 项目级 Key 覆盖仍最优先
         ov = (read_json(PROJECTS_DIR / project / "meta.json", {}) or {}).get("llm") or {}
         if ov.get("key") and ov.get("base"):
             base, key, model = ov["base"].rstrip("/"), ov["key"], (ov.get("model") or model)
@@ -429,7 +436,13 @@ def calendar_view(q="", lang=""):
             "files": files[:250]}
 
 
-def impact_report():
+def _norm_url_path(u):
+    """归一化 URL → 路径（协议/域/query/尾斜杠容错），用于 canonical 匹配。"""
+    u = (u or "").split("?")[0].split("#")[0].rstrip("/")
+    return "/" + u.split("://", 1)[-1].split("/", 1)[-1].lower() if "://" in u else u
+
+
+def impact_report(proj=None):
     qbase = PROJECT / "1-3 GenFlow/Content Distribution/queue"
     pub = read_json(qbase / "published.json", {}).get("items", [])
     pend = read_json(qbase / "pending.json", {}).get("items", [])
@@ -452,8 +465,49 @@ def impact_report():
                      "clicks": (m or {}).get("clicks"), "impr": (m).get("impr") if m else None,
                      "matched": bool(m) and bool(path)})
     rows.sort(key=lambda r: (r["clicks"] is None, -(r["clicks"] or 0)))
+    decayed = decay_analysis(pub, by_path) if proj is not None else []
     return {"rows": rows, "gsc_date": gsc.get("_date"), "gsc_pages": len(pages),
+            "decayed": decayed,
             "note": "归因范围 = GSC Top20 页面；全量归因需扩展 gsc_fetch 行数上限"}
+
+
+def decay_analysis(pub, by_path, min_age_days=30):
+    """P7-B1 内容衰减：已发布 ≥N 天，且 GSC Top20 无匹配、且从未被 AI 引用。
+    边界：GSC 数据是 Top20 子集——'无匹配'≠'零点击'，标注为 Top20 无记录。"""
+    import datetime as _dt
+    today = _dt.date.today()
+    cited_paths = set()
+    seen = set()
+    if PROJECTS_DIR.exists():
+        for cf in PROJECTS_DIR.glob("*/citations.jsonl"):
+            for l in cf.read_text(errors="ignore").strip().split("\n")[-200:]:
+                try:
+                    r = json.loads(l)
+                except Exception:
+                    continue
+                for cp in r.get("cited_pages") or []:
+                    cited_paths.add(_norm_url_path(cp.get("canonical") or cp.get("cited") or ""))
+                for u in r.get("urls") or []:
+                    cited_paths.add(_norm_url_path(u))
+    out = []
+    for x in pub:
+        cu = x.get("canonical") or ""
+        path = urllib.parse.urlparse(cu).path if cu else ""
+        d = str(x.get("date") or "")[:10]
+        try:
+            age = (today - _dt.date.fromisoformat(d)).days if d else None
+        except Exception:
+            age = None
+        if age is None or age < min_age_days:
+            continue
+        in_gsc = path in by_path
+        cited = _norm_url_path(cu) in cited_paths
+        if not in_gsc and not cited:
+            out.append({"slug": x.get("slug") or "", "platform": x.get("platform") or "",
+                        "canonical_path": path or cu, "age_days": age,
+                        "reason": f"发布 {age} 天 · GSC Top20 无记录 · 无 AI 引用记录"})
+    out.sort(key=lambda r: -r["age_days"])
+    return out
 
 
 def report_dashboard(path):
@@ -1221,11 +1275,13 @@ def plugin_uninstall(pid):
 def geo_cfg(proj):
     meta = read_json(PROJECTS_DIR / proj / "meta.json", {})
     g = meta.get("geo") or {}
+    engines = g.get("engines") or ([g["engine"]] if g.get("engine") else ["auto"])
     return {"brand": str(g.get("brand", ""))[:60],
             "competitors": [str(x)[:40] for x in (g.get("competitors") or [])[:12]],
             "queries": [str(x)[:200] for x in (g.get("queries") or [])[:15]],
-            "engine": g.get("engine", "auto"),  # auto=现有 provider / perplexity=sonar 真引用
-            "probe_daily": bool(g.get("probe_daily"))}
+            "engines": [str(x)[:24] for x in engines[:4]],  # P7-B3 多引擎交叉
+            "probe_daily": bool(g.get("probe_daily")),
+            "perplexity_model": str(g.get("perplexity_model", "sonar"))[:40]}
 
 
 def _citations_path(proj):
@@ -1272,37 +1328,39 @@ def geo_probe(proj):
     published = _published_canonicals()
     rows = []
     for q in g["queries"][:10]:
-        if g["engine"] == "perplexity":
-            prompt = f"回答这个问题，像 AI 助手推荐工具/方案那样给出具体名称与理由：\n\n{q}"
-        else:
-            prompt = (f"请直接回答下面的问题，像 AI 助手推荐工具/方案那样给出具体名称与理由，"
-                      f"并在末尾列出参考来源 URL（真实可访问的）：\n\n{q}")
-        try:
-            ans, meta = llm_chat_full([{"role": "user", "content": prompt}],
-                                      profile="lovart-creation", max_tokens=700, timeout=90,
-                                      project=proj, temperature=0.4,
-                                      engine=g["engine"], engine_model=g.get("perplexity_model", "sonar"))
-        except Exception as e:
-            rows.append({"query": q, "ok": False, "error": str(e)[:160]})
-            continue
-        low = ans.lower()
-        urls = sorted(set(re.findall(r"https?://[a-zA-Z0-9./?=_%&#~-]+", ans)))[:12]
-        engine_cites = meta.get("citations") or []
-        for c in engine_cites:
-            u = c if isinstance(c, str) else (c.get("url") if isinstance(c, dict) else "")
-            if u and u not in urls:
-                urls.append(u)
-        urls = urls[:15]
-        rec = {"ts": datetime.now().isoformat(timespec="seconds"), "query": q, "ok": True,
-               "engine": meta.get("model", g["engine"]), "brand": bool(g["brand"].lower() in low),
-               "competitors": [c for c in g["competitors"] if c.lower() in low],
-               "urls": urls,
-               "cited_pages": _match_published(urls, published),
-               "snippet": ans[:300],
-               "tokens": meta.get("usage", {}).get("total_tokens", 0)}
-        rows.append(rec)
-        with open(_citations_path(proj), "a") as f:
-            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+        for eng in g["engines"]:
+            if eng == "perplexity":
+                prompt = f"回答这个问题，像 AI 助手推荐工具/方案那样给出具体名称与理由：\n\n{q}"
+            else:
+                prompt = (f"请直接回答下面的问题，像 AI 助手推荐工具/方案那样给出具体名称与理由，"
+                          f"并在末尾列出参考来源 URL（真实可访问的）：\n\n{q}")
+            try:
+                ans, meta = llm_chat_full([{"role": "user", "content": prompt}],
+                                          profile="lovart-creation", max_tokens=700, timeout=90,
+                                          project=proj, temperature=0.4,
+                                          engine=None if eng == "auto" else eng,
+                                          engine_model=g["perplexity_model"] if eng == "perplexity" else "")
+            except Exception as e:
+                rows.append({"query": q, "ok": False, "engine": eng, "error": str(e)[:160]})
+                continue
+            low = ans.lower()
+            urls = sorted(set(re.findall(r"https?://[a-zA-Z0-9./?=_%&#~-]+", ans)))[:12]
+            engine_cites = meta.get("citations") or []
+            for c in engine_cites:
+                u = c if isinstance(c, str) else (c.get("url") if isinstance(c, dict) else "")
+                if u and u not in urls:
+                    urls.append(u)
+            urls = urls[:15]
+            rec = {"ts": datetime.now().isoformat(timespec="seconds"), "query": q, "ok": True,
+                   "engine": eng, "brand": bool(g["brand"].lower() in low),
+                   "competitors": [c for c in g["competitors"] if c.lower() in low],
+                   "urls": urls,
+                   "cited_pages": _match_published(urls, published),
+                   "snippet": ans[:300],
+                   "tokens": meta.get("usage", {}).get("total_tokens", 0)}
+            rows.append(rec)
+            with open(_citations_path(proj), "a") as f:
+                f.write(json.dumps(rec, ensure_ascii=False) + "\n")
     return {"rows": rows}
 
 
@@ -1320,11 +1378,18 @@ def geo_summary(proj):
     per_query = {}
     comp_counter = Counter()
     by_day = {}
+    per_engine = {}
     cited_map = {}
     for r in ok_rows:
-        pq = per_query.setdefault(r["query"], {"n": 0, "brand": 0})
+        pq = per_query.setdefault(r["query"], {"n": 0, "brand": 0, "engines": {}})
         pq["n"] += 1
         pq["brand"] += 1 if r.get("brand") else 0
+        eng = r.get("engine", "?")
+        pe = per_engine.setdefault(eng, {"n": 0, "brand": 0})
+        pe["n"] += 1
+        pe["brand"] += 1 if r.get("brand") else 0
+        if eng not in pq["engines"]:
+            pq["engines"][eng] = bool(r.get("brand"))
         for c in r.get("competitors") or []:
             comp_counter[c] += 1
         d = str(r.get("ts", ""))[:10]
@@ -1348,10 +1413,14 @@ def geo_summary(proj):
         d = (_dt.date.today() - _dt.timedelta(days=i)).isoformat()
         bd = by_day.get(d, {"n": 0, "brand": 0})
         trend.append({"label": d[5:], "n": bd["n"], "brand": bd["brand"]})
+    cross = {"multi_engine_queries": sum(1 for v in per_query.values() if len(v["engines"]) >= 2),
+             "split": sum(1 for v in per_query.values() if len(v["engines"]) >= 2 and len(set(v["engines"].values())) > 1)}
     return {"total": len(ok_rows),
             "brand_rate": round(sum(1 for r in ok_rows if r.get("brand")) / max(1, len(ok_rows)), 2),
             "competitors": dict(comp_counter.most_common()),
             "per_query": per_query,
+            "per_engine": per_engine,
+            "cross": cross,
             "cited_pages": cited_pages,
             "trend14": trend,
             "latest": rows[-10:][::-1]}
@@ -1770,7 +1839,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"new_reports": new_reports, "throughput": thr, "tokens": tok,
                                         "latest": latest[1] if latest else None})
             if parsed.path == "/api/impact":
-                rep = impact_report()
+                rep = impact_report(self._proj())
                 rep["geo"] = geo_summary(self._proj())  # P6.3：引用缺口并入归因视图
                 return self._send(200, rep)
             if parsed.path == "/api/report/structure":
@@ -1979,10 +2048,13 @@ class Handler(BaseHTTPRequestHandler):
                 meta_f = PROJECTS_DIR / self._proj() / "meta.json"
                 meta = read_json(meta_f, {})
                 old_geo = meta.get("geo") or {}
+                engines = [str(x).strip()[:24] for x in (body.get("engines") or []) if str(x).strip()]
+                if not engines and body.get("engine"):
+                    engines = [str(body["engine"])]
                 meta["geo"] = {"brand": str(body.get("brand", "")).strip()[:60],
                                "competitors": [str(x).strip()[:40] for x in (body.get("competitors") or [])[:12] if str(x).strip()],
                                "queries": [str(x).strip()[:200] for x in (body.get("queries") or [])[:15] if str(x).strip()],
-                               "engine": "perplexity" if body.get("engine") == "perplexity" else "auto",
+                               "engines": engines[:4] or ["auto"],
                                "probe_daily": bool(body.get("probe_daily")),
                                "perplexity_model": str(body.get("perplexity_model", old_geo.get("perplexity_model", "sonar"))).strip()[:40]}
                 meta_f.write_text(json.dumps(meta, ensure_ascii=False, indent=1))
