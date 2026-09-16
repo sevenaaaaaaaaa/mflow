@@ -106,6 +106,12 @@
 - ✅ P7-C 门禁固化：session-init GATE 5 console syntax（node --check JS × ast py × bash -n hooks）——4 处语法回归类事故自此有硬门禁；门禁自身 python 解析/glob 三 bug 顺修，服务器 5/5 PASS
 - 📋 P7-B2 竞品引用源反向工程 · P7-B5 发布后自动复测 · P7-B6 GEO 综合分 · 衰减自动改稿 opt-in
 
+### P7 二批（2026-09-16 ✅）
+- ✅ P7-B2 竞品引用源反向工程：competitor_urls 按域聚合 + 一键对标选题
+- ✅ P7-B5 发布后复测窗口：≤7 天新页 × 引用记录 → 复测状态卡（与每日自动探测联动）
+- ✅ P7-B6 GEO 综合分：提及率40 + 缺口覆盖30 + 相对份额20 + 结构健康10 → 0-100（无数据不造假分）
+- ✅ 衰减自动改稿 opt-in：auto_refresh 开关，每日 ≤2 篇 refresh Loop 自动排程（去重 + 审计）
+
 ## 原则
 
 1. 文件即状态：不引入数据库也能跑，规模化时才换 PG（接口已预留）
