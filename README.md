@@ -1,8 +1,9 @@
 # MFlow
 
-> **轻量版 OpenFlow，专解内容生产、分发和触达** —— 情报监测 → 内容生产 → 质量门禁 → 发布分发 → 数据回流（GEO 引用感知闭环）。
+> **轻量版 OpenFlow，专解内容生产、分发和触达；与 OpenFlow 共生不切割** —— 情报监测 → 内容生产 → 质量门禁 → 发布分发 → 数据回流（GEO 引用感知闭环）。
 > 对 CDP、CMS 要求不高（文件即状态，无库可跑）；对生成、分发的兼容度极好（任意 OpenAI 兼容 LLM + Sanity/WordPress/Webhook 多出口）。
-> 当前管理 Sanity CMS 生产库 8,200+ 文档、10 种语言、3,000+ 落地页资产；核心编排组件带 70+ 个自动化测试。完整差异化口径见 `docs/positioning.md`。
+> OpenFlow 账号可直接登录；机器 API（GET-only token）支持业务系统联动。完整定位与联动设计见 `docs/positioning.md`。
+> 当前管理 Sanity CMS 生产库 8,200+ 文档、10 种语言、3,000+ 落地页资产；核心编排组件带 70+ 个自动化测试。
 
 ---
 

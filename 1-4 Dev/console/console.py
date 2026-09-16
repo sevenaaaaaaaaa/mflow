@@ -173,6 +173,7 @@ WORKFLOW_MAP = [
 ]
 PORT = int(os.environ.get("MFLOW_CONSOLE_PORT", "8088"))
 PASSWORD = os.environ.get("MFLOW_CONSOLE_PASSWORD", "")
+API_TOKEN = os.environ.get("MFLOW_API_TOKEN", "")  # 机器联动 token（OpenFlow/外部系统调用，GET-only）
 
 PS_PATH = PROJECT / "1-1 Harness" / "Skills" / "06-orchestrate" / "lovart-pipeline-state" / "pipeline_state.py"
 ROUTER_PATH = PROJECT / "1-1 Harness" / "Skills" / "06-orchestrate" / "lovart-router" / "router.py"
@@ -1730,12 +1731,18 @@ class Handler(BaseHTTPRequestHandler):
     def _authed(self):
         if not PASSWORD and not AUTH_FILE.exists():
             return False  # fail-closed：既无多用户也无单密码
-        return bool(self._me())
+        return bool(self._me()) or self._machine()
+
+    def _machine(self):
+        """P8 联动：外部系统（如 OpenFlow）以 X-MFlow-Token 调用；GET-only（写动作仍需人工）。"""
+        if not API_TOKEN:
+            return False
+        tok = self.headers.get("X-MFlow-Token", "")
+        return bool(tok) and secrets.compare_digest(tok, API_TOKEN)
 
     def _me(self):
         sess = SESSIONS.get(self._sid(), "")
         return sess.get("username", "") if isinstance(sess, dict) else str(sess)
-
     def _role(self):
         me = self._me()
         for x in read_json(AUTH_FILE, []):
@@ -2003,6 +2010,8 @@ class Handler(BaseHTTPRequestHandler):
         return self._send(404, {"error": "not found"})
 
     def do_POST(self):
+        if self._machine() and not self._me():  # 机器联动 token：只读，写动作必须真人会话
+            return self._send(403, {"error": "机器 token 仅限 GET；写操作请以用户身份登录"})
         if self.path == "/api/login":
             body = self._body()
             username, password = str(body.get("username", "")).strip(), str(body.get("password", ""))
