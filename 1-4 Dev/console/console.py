@@ -1879,17 +1879,18 @@ class Handler(BaseHTTPRequestHandler):
                     lv = body["llm"] or {}
                     cur = meta.get("llm") or {}
                     newkey = str(lv.get("key", "")).strip()
-                    ov = {"provider": str(lv.get("provider", "custom"))[:24],
-                          "base": str(lv.get("base", "")).strip()[:200],
-                          "model": str(lv.get("model", "")).strip()[:80]}
-                    if newkey and "…" not in newkey:  # masked = 保留旧 Key
-                        ov["key"] = newkey
-                    elif cur.get("key"):
-                        ov["key"] = cur["key"]
-                    if not ov.get("key"):
-                        meta.pop("llm", None)  # 无 Key = 清除覆盖，回退全局
+                    if not newkey:
+                        meta.pop("llm", None)  # 空 Key = 显式清空覆盖，回退全局
                     else:
-                        meta["llm"] = ov
+                        ov = {"provider": str(lv.get("provider", "custom"))[:24],
+                              "base": str(lv.get("base", "")).strip()[:200],
+                              "model": str(lv.get("model", "")).strip()[:80]}
+                        if "…" not in newkey:  # masked = 保留旧 Key
+                            ov["key"] = newkey
+                        elif cur.get("key"):
+                            ov["key"] = cur["key"]
+                        if ov.get("key"):
+                            meta["llm"] = ov
                 if "kb_extra" in body:
                     extras = []
                     for ex in body["kb_extra"][:20]:
@@ -1901,6 +1902,8 @@ class Handler(BaseHTTPRequestHandler):
                                            "desc": str(ex.get("desc", ""))[:200]})
                     meta["kb_extra"] = extras
                 meta_f.write_text(json.dumps(meta, ensure_ascii=False, indent=1))
+                if isinstance(meta.get("llm"), dict) and meta["llm"].get("key"):  # 响应不回显 Key
+                    meta = {k: v for k, v in meta.items() if k != "llm"}
                 return self._send(200, {"ok": True, "meta": meta})
             if self.path == "/api/projects/create":
                 name = str(body.get("name", "")).strip()[:60]

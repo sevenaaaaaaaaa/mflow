@@ -8,11 +8,13 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 HOOKS_DIR="$(cd "$HERE/.." && pwd)"
 PIPELINE_DIR="$(cd "$HERE/../../../../1-1 Harness/Skills/06-orchestrate/lovart-pipeline-state" && pwd)"
 # Use vault-internal temp dir so allowed-root checks pass for hooks.
-PROJECT_ROOT="$(cd "$HERE/../../.." && pwd)"
+# tests → hooks → scripts → 1-4 Dev → 项目根（4 级）
+PROJECT_ROOT="$(cd "$HERE/../../../.." && pwd)"
 # P6：无 LOVART_PYTHON 时自动用项目 venv（服务器 py3.6 不认 pipeline_state 的类型标注）
 if [[ -z "${LOVART_PYTHON:-}" && -x "$PROJECT_ROOT/.venv/bin/python" ]]; then
     export LOVART_PYTHON="$PROJECT_ROOT/.venv/bin/python"
 fi
+PY3="${LOVART_PYTHON:-python3}"
 TMP="$HOOKS_DIR/tests/.tmp-smoke"
 # Quote TMP everywhere to survive the space in "Lovart MFlow"
 rm -rf "$TMP" && mkdir -p "$TMP"
@@ -47,16 +49,16 @@ STATE="$TMP/state.json"
 EVENTS="$TMP/events.jsonl"
 PS="$PIPELINE_DIR/pipeline_state.py"
 PS_ARGS=(--state-path "$STATE" --events-path "$EVENTS")
-python3 "$PS" "${PS_ARGS[@]}" init >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" init >/dev/null
 
 # Add a "ready-to-import" item
-python3 "$PS" "${PS_ARGS[@]}" upsert --id "blog-test-publish" --category blog --target-type blog --artifact-path "$TMP/draft.md" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-publish" --to "S3-creating" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-publish" --to "S3-draft" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-publish" --to "S3-done" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-publish" --to "S4-qa" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" run --id "blog-test-publish" --qa-result '{"l1_block":0,"l2_block":0,"l7_block":0}' >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-publish" --to "S4-ready" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" upsert --id "blog-test-publish" --category blog --target-type blog --artifact-path "$TMP/draft.md" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-publish" --to "S3-creating" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-publish" --to "S3-draft" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-publish" --to "S3-done" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-publish" --to "S4-qa" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" run --id "blog-test-publish" --qa-result '{"l1_block":0,"l2_block":0,"l7_block":0}' >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-publish" --to "S4-ready" >/dev/null
 
 # Create a clean blog draft (well-structured, well-sized, no fluff)
 cat > "$TMP/draft.md" <<'EOF'
@@ -218,28 +220,28 @@ target_type: blog
 Some content here.
 EOF
 # Reset item with this artifact and re-check
-python3 "$PS" "${PS_ARGS[@]}" upsert --id "blog-test-no-dates" --category blog --target-type blog --artifact-path "$TMP/no-dates.md" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-no-dates" --to "S3-creating" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-no-dates" --to "S3-draft" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-no-dates" --to "S3-done" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-no-dates" --to "S4-qa" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" run --id "blog-test-no-dates" --qa-result '{"l1_block":0,"l2_block":0,"l7_block":0}' >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-no-dates" --to "S4-ready" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" upsert --id "blog-test-no-dates" --category blog --target-type blog --artifact-path "$TMP/no-dates.md" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-no-dates" --to "S3-creating" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-no-dates" --to "S3-draft" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-no-dates" --to "S3-done" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-no-dates" --to "S4-qa" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" run --id "blog-test-no-dates" --qa-result '{"l1_block":0,"l2_block":0,"l7_block":0}' >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-no-dates" --to "S4-ready" >/dev/null
 expect_fail "missing releaseDate+publishedAt blocked" bash "$HOOKS_DIR/pre-import-check.sh" --id "blog-test-no-dates" --state-path "$STATE" --artifact "$TMP/no-dates.md"
 
 # Test item in wrong stage
-python3 "$PS" "${PS_ARGS[@]}" upsert --id "blog-test-creating" --category blog --target-type blog --artifact-path "$TMP/draft.md" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-creating" --to "S3-creating" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" upsert --id "blog-test-creating" --category blog --target-type blog --artifact-path "$TMP/draft.md" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-creating" --to "S3-creating" >/dev/null
 expect_fail "item in S3-creating rejected" bash "$HOOKS_DIR/pre-import-check.sh" --id "blog-test-creating" --state-path "$STATE" --artifact "$TMP/draft.md"
 
 # Test item with non-zero BLOCK
-python3 "$PS" "${PS_ARGS[@]}" upsert --id "blog-test-qa-fail" --category blog --target-type blog --artifact-path "$TMP/draft.md" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-qa-fail" --to "S3-creating" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-qa-fail" --to "S3-draft" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-qa-fail" --to "S3-done" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-qa-fail" --to "S4-qa" >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" run --id "blog-test-qa-fail" --qa-result '{"l1_block":2,"l2_block":0,"l7_block":0}' >/dev/null
-python3 "$PS" "${PS_ARGS[@]}" advance --id "blog-test-qa-fail" --to "S4-ready" >/dev/null  # force advance
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" upsert --id "blog-test-qa-fail" --category blog --target-type blog --artifact-path "$TMP/draft.md" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-qa-fail" --to "S3-creating" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-qa-fail" --to "S3-draft" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-qa-fail" --to "S3-done" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-qa-fail" --to "S4-qa" >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" run --id "blog-test-qa-fail" --qa-result '{"l1_block":2,"l2_block":0,"l7_block":0}' >/dev/null
+"${PY3:-python3}" "$PS" "${PS_ARGS[@]}" advance --id "blog-test-qa-fail" --to "S4-ready" >/dev/null  # force advance
 expect_fail "qa l1_block=2 blocks import" bash "$HOOKS_DIR/pre-import-check.sh" --id "blog-test-qa-fail" --state-path "$STATE" --artifact "$TMP/draft.md"
 
 # Test missing id

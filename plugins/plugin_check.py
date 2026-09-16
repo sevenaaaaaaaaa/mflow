@@ -3,6 +3,11 @@
 import json, re, sys
 from pathlib import Path
 
+try:
+    sys.stdout.reconfigure(encoding="utf-8")  # py3.7+; 老 py3.6 静默跳过
+except Exception:
+    pass
+
 TYPES = {"source", "publisher", "template"}
 REQUIRED = ["id", "type", "name", "version", "entry"]
 
