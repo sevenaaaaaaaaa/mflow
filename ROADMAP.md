@@ -85,6 +85,15 @@
 - ✅ Phase 5 收官（2026-09-16）：归属人过滤（"我的任务"）· 排程报表进调度页 · Loop 终态飞书通知（run/notify.json，admin 配置）· 项目独立 LLM Key（meta.llm，清空即回退全局）· 插件市场（marketplace.json + 安装/卸载/plugin_check 六项）· 钩子 PATH 修复（LOVART_PYTHON → 项目 venv 自动探测，smoketest 免 source 16/16）
 - 📋 插件规范：第三方数据源/发布渠道按 §modules 协议贡献，TOOLS-REGISTRY 自动收录
 
+## Phase 6 · GEO Content Loop（2026-09-16 ✅ 首批全链路）
+
+- ✅ P6.2 GEO 门禁：`geo-check.sh`（可分块结构/统计密度/问答式标题/来源标注/墙式段落，--strict 升 BLOCK）接入 Loop 质检级联与单次生成；gen_prompt 注入 GEO_RULES（问答式 H2/数据点密度/自包含短段/来源链接）
+- ✅ P6.1 引用感知：设置页配置品牌/竞品/目标查询 → 逐条走官方 OpenAI 兼容 API 问 AI 引擎，检测品牌/竞品提及与来源 URL → citations.jsonl；demo 模式 fail-clean 拒绝（演示稿不代表真实 AI 行为）
+- ✅ P6.3 归因闭环：/api/impact 并入 geo（查询级提及率 + 竞品份额）
+- ✅ P6.4 缺口自动选题：0 引用查询一键「→ 选题队列」→ 自动排程消化
+- ✅ P6.5 改稿 Loop：0 引用查询一键「→ 改稿 Loop」（refresh-slug，brief 内置 GEO 重写指令，走既有 Loop 引擎）
+- ✅ P6.6 GEO 仪表：设置页 GEO 卡——品牌提及率/竞品份额/近 14 日趋势迷你柱图/缺口清单
+
 ## 原则
 
 1. 文件即状态：不引入数据库也能跑，规模化时才换 PG（接口已预留）
