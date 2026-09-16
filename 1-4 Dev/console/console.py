@@ -176,7 +176,7 @@ PASSWORD = os.environ.get("MFLOW_CONSOLE_PASSWORD", "")
 
 PS_PATH = PROJECT / "1-1 Harness" / "Skills" / "06-orchestrate" / "lovart-pipeline-state" / "pipeline_state.py"
 ROUTER_PATH = PROJECT / "1-1 Harness" / "Skills" / "06-orchestrate" / "lovart-router" / "router.py"
-HOOKS = ["pre-write-check.sh", "post-write-check.sh", "pre-import-check.sh", "post-generation-check.sh"]
+HOOKS = ["pre-write-check.sh", "post-write-check.sh", "geo-check.sh", "pre-import-check.sh", "post-generation-check.sh"]
 READABLE_EXT = {".md", ".txt", ".json", ".csv", ".html", ".yaml", ".yml"}
 
 # 报告中心目录映射（label -> (dir, glob)）
@@ -593,6 +593,12 @@ ANTI_SLOP = """硬性写作规则（违反任何一条即为废稿）：
 - 段落长度由语义完整性决定，不写零碎小段
 - 面向真实用户的具体场景，不写空泛综述"""
 
+GEO_RULES = """GEO 可引用性规则（生成式引擎按块摘录，违反会被 GEO 门禁打回）：
+- 至少 2 个 H2/H3 标题写成用户真实提问的形式（以 ? 或 ？结尾），或包含一节 FAQ
+- 每千字至少 1 个具体数据点（百分比/价格/年份/倍数）；来源可考的注明出处链接（≥2 条外部权威链接）
+- 段落保持自包含短段：单段不超过 300 字符，一段只讲一个可摘录的观点
+- 关键结论写成可直接摘录的"定义句/结论句"（主语+判断+数据）"""
+
 
 def get_template(tid):
     if not tid:
@@ -642,7 +648,7 @@ def gen_prompt(ctype, lang, topic, brief, feedback="", template=None):
         spec = f"""用{lang_name}写一个 {page.upper()} 类落地页的完整文案，主题：{topic}。
 结构：Hero（大标题 + 副标题一句 + CTA 按钮文案）→ 3 个 Benefit 块（小标题 + 2-3 句说明）→ 使用场景 2 条 → FAQ（3 条）→ 底部 CTA。
 产品能力描述基于公开常识，不编造参数。"""
-    anti = ANTI_SLOP + (f"\n{extra}" if extra else "")
+    anti = ANTI_SLOP + "\n" + GEO_RULES + (f"\n{extra}" if extra else "")
     aud = (f"\n目标读者：{audience}" if audience else "")
     ton = (f"\n语气要求：{tone}" if tone else "")
     fb = (f"\n\n上一轮质检未通过，反馈如下，务必针对性修正：\n{feedback}") if feedback else ""
@@ -717,8 +723,12 @@ def loop_engine(loop_id, proj):
                       "--file", str(draft_path), "--target-words", "15" if demo_mode else "300"], timeout=120)
         qa_log(f"loop:{loop.get('id','')}", "post-write-check.sh", r["rc"])
         loop["last_hook_rc"] = r["rc"]
-        if r["rc"] == 0:
-            log(loop, "质检 PASS，推进状态机 S3-draft → S3-done → S4-qa")
+        geo = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/geo-check.sh"),
+                        "--file", str(draft_path)], timeout=60)
+        qa_log(f"loop:{loop.get('id','')}", "geo-check.sh", geo["rc"])
+        loop["last_geo_rc"] = geo["rc"]
+        if r["rc"] == 0 and geo["rc"] == 0:
+            log(loop, "质检 PASS（post-write + GEO 可引用性），推进状态机 S3-draft → S3-done → S4-qa")
             for stg in ("S3-draft", "S3-done", "S4-qa"):
                 run_tool([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item, "--to", stg])
             loop["status"] = "done"
@@ -727,8 +737,9 @@ def loop_engine(loop_id, proj):
             _loop_save(loop, proj)
             notify_loop_end(loop, proj, "done")
             return
-        feedback = r["out"][-1500:]
-        log(loop, f"质检 BLOCK（exit {r['rc']}），反馈带入下一轮")
+        feedback = (r["out"] if r["rc"] != 0 else "") + "\n" + (geo["out"] if geo["rc"] != 0 else "")
+        log(loop, f"质检 BLOCK（post-write exit {r['rc']} / geo exit {geo['rc']}），反馈带入下一轮")
+        _loop_save(loop, proj)
         _loop_save(loop, proj)
     loop["status"] = "blocked"
     log(loop, f"达最大轮次仍 BLOCK。草稿在 {gen_dir / (item + '.md')}, 可人工修改后继续推进")
@@ -1158,6 +1169,92 @@ def plugin_uninstall(pid):
     return {"ok": True}
 
 
+def geo_cfg(proj):
+    meta = read_json(PROJECTS_DIR / proj / "meta.json", {})
+    g = meta.get("geo") or {}
+    return {"brand": str(g.get("brand", ""))[:60],
+            "competitors": [str(x)[:40] for x in (g.get("competitors") or [])[:12]],
+            "queries": [str(x)[:200] for x in (g.get("queries") or [])[:15]]}
+
+
+def _citations_path(proj):
+    return proj_paths(proj)["dir"] / "citations.jsonl"
+
+
+def geo_probe(proj):
+    """P6.1 引用感知：逐条向 AI 引擎（OpenAI 兼容 chat）问目标问题，
+    检测品牌/竞品提及与来源 URL → citations.jsonl。只走官方 API，不爬引擎。"""
+    g = geo_cfg(proj)
+    if not g["brand"]:
+        return {"error": "先在设置页配置品牌名与目标查询"}
+    if not g["queries"]:
+        return {"error": "没有目标查询（先在设置页添加 3-10 条用户会问 AI 的问题）"}
+    # fail-clean：demo 回退稿不反映真实 AI 引擎行为，探测必须走真实 Key
+    if DEMO_FLAG.exists() and not llm_config()["providers"][
+            llm_config()["profiles"]["default"]["provider"]].get("key"):
+        return {"error": "探测需要真实 LLM Key（当前是 demo 模式，演示稿无法代表 AI 引擎的真实回答）——去设置页配 Key"}
+    rows = []
+    for q in g["queries"][:10]:
+        try:
+            ans = llm_chat([{"role": "user", "content":
+                f"请直接回答下面的问题，像 AI 助手推荐工具/方案那样给出具体名称与理由，"
+                f"并在末尾列出参考来源 URL（真实可访问的）：\n\n{q}"}],
+                profile="lovart-creation", max_tokens=700, timeout=90, project=proj)
+        except Exception as e:
+            rows.append({"query": q, "ok": False, "error": str(e)[:160]})
+            continue
+        low = ans.lower()
+        urls = sorted(set(re.findall(r"https?://[a-zA-Z0-9./?=_%&#~-]+", ans)))[:12]
+        rec = {"ts": datetime.now().isoformat(timespec="seconds"), "query": q, "ok": True,
+               "engine": "chat", "brand": bool(g["brand"].lower() in low),
+               "competitors": [c for c in g["competitors"] if c.lower() in low],
+               "urls": urls, "snippet": ans[:300],
+               "tokens": LAST_USAGE.get("total_tokens", 0)}
+        rows.append(rec)
+        with open(_citations_path(proj), "a") as f:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    return {"rows": rows}
+
+
+def geo_summary(proj):
+    """P6.1 聚合：每条查询的品牌提及率 + 全局竞品份额（近期 30 条窗口）。"""
+    f = _citations_path(proj)
+    rows = []
+    if f.exists():
+        for l in f.read_text().strip().split("\n")[-30:]:
+            try:
+                rows.append(json.loads(l))
+            except Exception:
+                continue
+    ok_rows = [r for r in rows if r.get("ok")]
+    per_query = {}
+    comp_counter = Counter()
+    by_day = {}
+    for r in ok_rows:
+        pq = per_query.setdefault(r["query"], {"n": 0, "brand": 0})
+        pq["n"] += 1
+        pq["brand"] += 1 if r.get("brand") else 0
+        for c in r.get("competitors") or []:
+            comp_counter[c] += 1
+        d = str(r.get("ts", ""))[:10]
+        if d:
+            bd = by_day.setdefault(d, {"n": 0, "brand": 0})
+            bd["n"] += 1
+            bd["brand"] += 1 if r.get("brand") else 0
+    import datetime as _dt
+    trend = []
+    for i in range(13, -1, -1):
+        d = (_dt.date.today() - _dt.timedelta(days=i)).isoformat()
+        bd = by_day.get(d, {"n": 0, "brand": 0})
+        trend.append({"label": d[5:], "n": bd["n"], "brand": bd["brand"]})
+    return {"total": len(ok_rows),
+            "brand_rate": round(sum(1 for r in ok_rows if r.get("brand")) / max(1, len(ok_rows)), 2),
+            "competitors": dict(comp_counter.most_common()),
+            "per_query": per_query,
+            "trend14": trend,
+            "latest": rows[-10:][::-1]}
+
+
 def daily_status():
     running = False
     if DAILY_PID.exists():
@@ -1479,6 +1576,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"enabled": cfg.get("enabled"), "feishu_webhook": cfg.get("feishu_webhook", "")})
             if parsed.path == "/api/plugins":
                 return self._send(200, plugins_inventory())
+            if parsed.path == "/api/geo/citations":
+                return self._send(200, geo_summary(self._proj()))
             if parsed.path == "/api/workflows":
                 sk = {s["name"]: s for s in harness_inventory()["skills"]}
                 wfs = []
@@ -1534,7 +1633,9 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"new_reports": new_reports, "throughput": thr, "tokens": tok,
                                         "latest": latest[1] if latest else None})
             if parsed.path == "/api/impact":
-                return self._send(200, impact_report())
+                rep = impact_report()
+                rep["geo"] = geo_summary(self._proj())  # P6.3：引用缺口并入归因视图
+                return self._send(200, rep)
             if parsed.path == "/api/report/structure":
                 return self._send(200, report_structure(qs.get("path", [""])[0]))
             if parsed.path == "/api/qa/stats":
@@ -1633,7 +1734,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/account/list", "/api/account/reset", "/api/dispatch/approve",
                       "/api/trident/run", "/api/daily/run", "/api/tasks/del",
                       "/api/notify/save", "/api/notify/test",
-                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall"}
+                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall",
+                      "/api/geo/probe"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
@@ -1736,6 +1838,18 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, plugin_install(body.get("manifest") or {}, body.get("entry_code", "")))
             if self.path == "/api/plugins/uninstall":
                 return self._send(200, plugin_uninstall(str(body.get("id", ""))))
+            if self.path == "/api/geo/config":
+                meta_f = PROJECTS_DIR / self._proj() / "meta.json"
+                meta = read_json(meta_f, {})
+                meta["geo"] = {"brand": str(body.get("brand", "")).strip()[:60],
+                               "competitors": [str(x).strip()[:40] for x in (body.get("competitors") or [])[:12] if str(x).strip()],
+                               "queries": [str(x).strip()[:200] for x in (body.get("queries") or [])[:15] if str(x).strip()]}
+                meta_f.write_text(json.dumps(meta, ensure_ascii=False, indent=1))
+                return self._send(200, {"ok": True})
+            if self.path == "/api/geo/probe":
+                r = geo_probe(self._proj())
+                code = 400 if r.get("error") else 200
+                return self._send(code, r)
             if self.path == "/api/skills/sync":
                 return self._send(200, run_tool([sys.executable, str(PROJECT / "1-4 Dev/scripts/harness_sync.py")], timeout=120))
             if self.path == "/api/generate":
@@ -1765,8 +1879,12 @@ class Handler(BaseHTTPRequestHandler):
                 hook = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/post-write-check.sh"),
                                  "--file", str(path), "--target-words", twords], timeout=120)
                 qa_log("generate", "post-write-check.sh", hook["rc"])
+                geo = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/geo-check.sh"),
+                                "--file", str(path)], timeout=60)
+                qa_log("generate", "geo-check.sh", geo["rc"])
                 return self._send(200, {"ok": True, "path": rel_of(path), "chars": len(draft),
-                                        "hook_rc": hook["rc"], "hook_out": hook["out"][-2000:]})
+                                        "hook_rc": hook["rc"], "hook_out": hook["out"][-2000:],
+                                        "geo_rc": geo["rc"], "geo_out": geo["out"][-2000:]})
             if self.path == "/api/loop/create":
                 item_id = str(body.get("item_id", "")).strip()
                 if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,78}", item_id):

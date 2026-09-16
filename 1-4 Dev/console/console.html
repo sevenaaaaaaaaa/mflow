@@ -478,6 +478,15 @@ th{color:var(--muted);font-weight:600}
       <div class="row" style="margin-top:12px"><button class="btn primary" onclick="llmSave()">保存配置</button><span id="llm-test" class="mut"></span></div>
       <div class="mut" style="margin-top:8px">Key 存服务器 run/llm.json（git-ignore，权限 600）。DeepSeek/OpenAI 或任何 OpenAI 兼容网关。</div>
     </div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>GEO 引用感知 <span class="mut">（P6.1 · 走官方 AI API，不爬引擎）</span></h3>
+      <button class="more" onclick="runGeoProbe()">▶ 立即探测</button></div>
+      <div class="row">
+        <input id="geo-brand" placeholder="你的品牌名（如 Lovart）" style="flex:1;min-width:140px">
+        <input id="geo-comp" placeholder="竞品名，逗号分隔" style="flex:2;min-width:200px"></div>
+      <div class="row" style="margin-top:8px"><textarea id="geo-queries" placeholder="目标查询，每行一条：用户会直接问 AI 的问题（如：最好的 AI 设计工具是什么？）。上限 10 条/次探测。" style="flex:1;min-height:70px;border:1px solid var(--border);border-radius:12px;padding:9px 12px;font:inherit;background:var(--surface-strong);color:var(--fg)"></textarea>
+      <button class="btn ghost" onclick="saveGeoCfg()" style="align-self:flex-end">保存 GEO 配置</button></div>
+      <div id="geo-result" style="margin-top:10px"></div>
+      <div class="mut" style="margin-top:6px">每次探测 = 每条查询 1 次 LLM 调用（走全局/项目 Key，token 计入用量页）。探测结果聚合为品牌提及率 + 竞品份额，供缺口归因。</div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>完成通知 <span class="mut">（Loop 终态推送）</span></h3>
       <button class="more" onclick="notifyTest()">发送测试 →</button></div>
       <div class="row" style="align-items:center"><label style="font-size:13px;white-space:nowrap"><input id="nt-en" type="checkbox" style="margin-right:6px">启用通知</label>
@@ -789,6 +798,36 @@ function decide(){api('api/router/decide',{stage:$('rstage').value,scenario:$('r
 function runHook(){api('api/hook/run',{hook:$('hook').value,file:$('hfile').value.trim()}).then(r=>{$('hout').textContent=`exit=${r.rc}\n`+r.out})}
 
 /* ---- 系统 ---- */
+function loadGeoCfg(){api('api/projects').then(d=>{const g=(d.meta||{}).geo||{};
+ if($('geo-brand')){$('geo-brand').value=g.brand||'';
+  $('geo-comp').value=(g.competitors||[]).join(', ');
+  $('geo-queries').value=(g.queries||[]).join('\n')}
+ api('api/geo/citations').then(s=>{renderGeoSummary(g,s||{})})})}
+function saveGeoCfg(){api('api/geo/config',{
+ brand:$('geo-brand').value.trim(),
+ competitors:$('geo-comp').value.split(/[,，]/).map(x=>x.trim()).filter(Boolean),
+ queries:$('geo-queries').value.split('\n').map(x=>x.trim()).filter(Boolean)})
+ .then(r=>{if(r.error)return alert(r.error);alert('GEO 配置已保存');loadGeoCfg()})}
+function runGeoProbe(){const el=$('geo-result');el.innerHTML='<span class="mut">探测中…（每条查询一次 LLM 调用，约 10-60 秒）</span>';
+ api('api/geo/probe',{}).then(r=>{if(r.error){el.innerHTML='<span class="warn">'+esc(r.error)+'</span>';return}
+  loadGeoCfg()})}
+function renderGeoSummary(g,s){
+ const comp=s.competitors&&Object.keys(s.competitors).length?Object.entries(s.competitors).map(([k,v])=>`${esc(k)} <b class="tnum">${v}</b>`).join(' · '):'—';
+ const gaps=Object.entries(s.per_query||{}).filter(([,v])=>v.brand===0);
+ const gapHtml=gaps.length?gaps.map(([q,v])=>`<div class="task" style="align-items:center;margin-top:5px">
+  <span class="tt" style="flex:1"><b style="font-weight:600">⛔ ${esc(q)}</b><div class="mut" style="font-size:11px">0/${v.n} 次探测被提及 — 引用缺口</div></span>
+  <button class="mini" onclick="gapToTopic(${JSON.stringify(q).replace(/"/g,'&quot;')})">→ 选题队列</button>
+  <button class="mini" onclick="gapToRefresh(${JSON.stringify(q).replace(/"/g,'&quot;')})">→ 改稿 Loop</button></div>`).join(''):'';
+ const tr=s.trend14||[];const mx=Math.max(1,...tr.map(x=>x.n));
+ const trendHtml=tr.some(x=>x.n)?`<div class="chart-bars" style="height:60px;margin-top:8px">${tr.map(x=>`<div class="cb"><span class="vl tnum">${x.brand||''}</span><div class="bar" style="height:${Math.max(3,x.n/mx*100)}%;${x.brand?'':'opacity:.35'}"></div><span class="lb">${x.label}</span></div>`).join('')}</div><div class="chart-meta"><span>近 14 日探测（实心=品牌被提及）</span><span></span></div>`:'';
+ $('geo-result').innerHTML=(s.total?`<div style="font-size:13px;line-height:2">累计探测 <b class="tnum">${s.total}</b> 次 · 品牌提及率 <b class="tnum">${Math.round(s.brand_rate*100)}%</b>${g&&g.brand?`（${esc(g.brand)}）`:''}<br>
+  竞品提及：${comp}</div>`+trendHtml+(gapHtml?`<div style="margin-top:10px"><b style="font-size:13px">引用缺口 → 闭环动作</b>${gapHtml}</div>`:'<div class="mut" style="margin-top:6px">当前查询无缺口</div>')
+ :'<span class="mut">尚无探测数据——保存配置后点「立即探测」</span>')}
+function gapToTopic(q){api('api/topics/add',{topics:q}).then(r=>{if(r.error)return alert(r.error);alert('已加入选题队列，自动排程会消化')})}
+function gapToRefresh(q){const id='refresh-'+slugify(q).slice(0,40);
+ api('api/loop/create',{item_id:id,type:'blog',lang:'zh',topic:q,
+  brief:'GEO 改稿：现有内容对该查询 0 引用。重写为可摘录形态：问答式 H2、每千字≥1 数据点、FAQ、自包含短段（≤300 字符）、≥2 条外部来源。'})
+ .then(r=>{if(r.error)return alert(r.error);alert('改稿 Loop 已发起，到「Loop · Agent 模式」看进度')})}
 function notifySave(){api('api/notify/save',{enabled:$('nt-en').checked,feishu_webhook:$('nt-hook').value.trim()})
  .then(()=>{$('nt-status').innerHTML='<span class="ok">✓ 已保存</span>（仅 admin 可改）'})}
 function notifyTest(){$('nt-status').textContent='发送中…';
@@ -891,6 +930,7 @@ function loadSet(){loadProjCfg();api('api/llm').then(c=>{LLMCFG=c;
    <input id="lpr-model-${n}" value="${esc(p.model||'')}" placeholder="model" style="flex:1;min-width:160px"></div>`).join('');
  if(!c.providers.deepseek.key)$('llm-test').textContent='（尚未配置 Key——生成功能不可用）';
  api('api/notify').then(n=>{$('nt-en').checked=!!n.enabled;$('nt-hook').value=n.feishu_webhook||''}).catch(()=>{});
+ loadGeoCfg();
  api('api/account/list').then(acc=>{
   $('acc-role').textContent=window.__ROLE==='admin'?'（当前 admin）':'（需 admin 角色可见操作）';
   $('acc-list').innerHTML='<table><tr><th>用户名</th><th>姓名</th><th>角色</th><th>项目</th></tr>'+acc.map(a=>
