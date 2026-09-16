@@ -1,0 +1,40 @@
+[
+  {
+    "id": "rss-source",
+    "type": "source",
+    "name": "RSS/Atom 数据源",
+    "version": "1.0.0",
+    "author": "MFlow built-in",
+    "desc": "拉取 RSS/Atom feed 到 Data Ingestion 目录，作为情报监测的补充源",
+    "manifest": {
+      "id": "rss-source",
+      "type": "source",
+      "name": "RSS/Atom 数据源",
+      "version": "1.0.0",
+      "author": "MFlow built-in",
+      "entry": "entry.py",
+      "permissions": ["network"],
+      "config": {"url": {"desc": "RSS/Atom feed 地址", "required": true}}
+    },
+    "entry_code": "\"\"\"rss-source: collect() 拉取 RSS/Atom → 输出 JSON。MFlow 插件规范 v1。\"\"\"\nimport json, os, re, urllib.request\nfrom pathlib import Path\n\n\ndef collect(url=\"\", out_dir=\"\"):\n    if not url:\n        raise ValueError(\"config.url 未配置\")\n    with urllib.request.urlopen(url, timeout=20) as r:\n        raw = r.read().decode(\"utf-8\", \"ignore\")\n    items = []\n    for m in re.finditer(r\"<item[\\s\\S]*?</item>\", raw):\n        b = m.group(0)\n        t = re.search(r\"<title>(?:<!\\\\[CDATA\\\\[)?([\\s\\S]*?)(?:\\\\]\\\\]>)?</title>\", b)\n        l = re.search(r\"<link>([\\s\\S]*?)</link>\", b)\n        d = re.search(r\"<pubDate>([\\s\\S]*?)</pubDate>\", b)\n        items.append({\"title\": (t.group(1).strip() if t else \"\"),\n                      \"link\": (l.group(1).strip() if l else \"\"),\n                      \"date\": (d.group(1).strip() if d else \"\")})\n    if not items:\n        for m in re.finditer(r\"<entry[\\s\\S]*?</entry>\", raw):\n            b = m.group(0)\n            t = re.search(r\"<title>(?:<!\\\\[CDATA\\\\[)?([\\s\\S]*?)(?:\\\\]\\\\]>)?</title>\", b)\n            l = re.search(r'href=\"([^\"]+)\"', b)\n            d = re.search(r\"<published>([\\s\\S]*?)</published>\", b)\n            items.append({\"title\": (t.group(1).strip() if t else \"\"),\n                          \"link\": (l.group(1) if l else \"\"),\n                          \"date\": (d.group(1).strip() if d else \"\")})\n    out = out_dir or os.environ.get(\"LOVART_LOCAL_DEV_ROOT\", \".\")\n    p = Path(out) / \"Output\" / \"Data Ingestion\"\n    p.mkdir(parents=True, exist_ok=True)\n    f = p / \"rss-source-latest.json\"\n    f.write_text(json.dumps({\"url\": url, \"count\": len(items), \"items\": items[:100]}, ensure_ascii=False, indent=1))\n    return {\"count\": len(items), \"path\": str(f)}\n"
+  },
+  {
+    "id": "webhook-publisher",
+    "type": "publisher",
+    "name": "Webhook 发布渠道",
+    "version": "1.0.0",
+    "author": "MFlow built-in",
+    "desc": "把已批准的稿件 POST 到自定义 HTTP 端点（任意 CMS 中转层）",
+    "manifest": {
+      "id": "webhook-publisher",
+      "type": "publisher",
+      "name": "Webhook 发布渠道",
+      "version": "1.0.0",
+      "author": "MFlow built-in",
+      "entry": "entry.py",
+      "permissions": ["network"],
+      "config": {"endpoint": {"desc": "目标 HTTP(S) 端点", "required": true}}
+    },
+    "entry_code": "\"\"\"webhook-publisher: publish() POST 稿件到自定义端点。MFlow 插件规范 v1。\"\"\"\nimport json, urllib.request\n\n\ndef publish(item, cfg):\n    endpoint = (cfg or {}).get(\"endpoint\")\n    if not endpoint:\n        return {\"ok\": False, \"error\": \"config.endpoint 未配置\"}\n    payload = json.dumps({\"title\": item.get(\"title\", \"\"), \"slug\": item.get(\"slug\", \"\"),\n                          \"content\": item.get(\"content\", \"\"), \"meta\": item.get(\"meta\", {})}).encode()\n    req = urllib.request.Request(endpoint, data=payload,\n                                 headers={\"Content-Type\": \"application/json\"})\n    with urllib.request.urlopen(req, timeout=30) as r:\n        data = json.loads(r.read() or b\"{}\")\n    return {\"ok\": True, \"cms_id\": data.get(\"id\", \"\"), \"url\": data.get(\"url\", \"\")}\n"
+  }
+]
