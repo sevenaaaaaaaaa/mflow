@@ -483,10 +483,16 @@ th{color:var(--muted);font-weight:600}
       <div class="row">
         <input id="geo-brand" placeholder="你的品牌名（如 Lovart）" style="flex:1;min-width:140px">
         <input id="geo-comp" placeholder="竞品名，逗号分隔" style="flex:2;min-width:200px"></div>
+      <div class="row" style="margin-top:8px">
+        <select id="geo-engine" style="width:200px" onchange="geoEngineUI()">
+          <option value="auto">引擎：跟随 LLM 配置</option>
+          <option value="perplexity">Perplexity sonar（真引用）</option></select>
+        <input id="geo-ppl-model" placeholder="sonar / sonar-pro" style="flex:1;min-width:130px;display:none">
+        <label style="font-size:13px;white-space:nowrap"><input id="geo-daily" type="checkbox" style="margin-right:6px">每日自动探测（09:30 后首次空闲时）</label></div>
       <div class="row" style="margin-top:8px"><textarea id="geo-queries" placeholder="目标查询，每行一条：用户会直接问 AI 的问题（如：最好的 AI 设计工具是什么？）。上限 10 条/次探测。" style="flex:1;min-height:70px;border:1px solid var(--border);border-radius:12px;padding:9px 12px;font:inherit;background:var(--surface-strong);color:var(--fg)"></textarea>
       <button class="btn ghost" onclick="saveGeoCfg()" style="align-self:flex-end">保存 GEO 配置</button></div>
       <div id="geo-result" style="margin-top:10px"></div>
-      <div class="mut" style="margin-top:6px">每次探测 = 每条查询 1 次 LLM 调用（走全局/项目 Key，token 计入用量页）。探测结果聚合为品牌提及率 + 竞品份额，供缺口归因。</div></div>
+      <div class="mut" style="margin-top:6px">每次探测 = 每条查询 1 次 LLM 调用（走全局/项目 Key，token 计入用量页）。Perplexity sonar 返回官方 citations；auto 引擎从回答文本提取 URL。探测结果聚合为品牌提及率 + 竞品份额，供缺口归因。</div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>完成通知 <span class="mut">（Loop 终态推送）</span></h3>
       <button class="more" onclick="notifyTest()">发送测试 →</button></div>
       <div class="row" style="align-items:center"><label style="font-size:13px;white-space:nowrap"><input id="nt-en" type="checkbox" style="margin-right:6px">启用通知</label>
@@ -593,6 +599,9 @@ th{color:var(--muted);font-weight:600}
       <div class="card"><div class="card-head"><h3>Token 消耗（近 14 日）</h3></div><div class="chart-bars" id="it-tok"></div>
         <div class="chart-meta"><span id="it-tok-meta"></span></div></div>
     </div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>GEO 品牌提及率（近 14 日 · AI 引用感知）</h3><span class="mut" id="it-geo-meta"></span></div>
+      <div class="chart-bars" id="it-geo"></div>
+      <div class="chart-meta"><span>实心柱 = 品牌被 AI 提及的探测次数</span><span id="it-geo-gap"></span></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>吞吐（近 14 日状态机推进）</h3></div><div class="chart-bars" id="it-thr"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>最近质检记录</h3></div><div style="max-height:300px;overflow:auto"><table id="it-table"></table></div></div>
   </section>
@@ -798,15 +807,21 @@ function decide(){api('api/router/decide',{stage:$('rstage').value,scenario:$('r
 function runHook(){api('api/hook/run',{hook:$('hook').value,file:$('hfile').value.trim()}).then(r=>{$('hout').textContent=`exit=${r.rc}\n`+r.out})}
 
 /* ---- 系统 ---- */
+function geoEngineUI(){const v=$('geo-engine').value;$('geo-ppl-model').style.display=v==='perplexity'?'':'none'}
 function loadGeoCfg(){api('api/projects').then(d=>{const g=(d.meta||{}).geo||{};
  if($('geo-brand')){$('geo-brand').value=g.brand||'';
   $('geo-comp').value=(g.competitors||[]).join(', ');
-  $('geo-queries').value=(g.queries||[]).join('\n')}
+  $('geo-queries').value=(g.queries||[]).join('\n');
+  $('geo-engine').value=g.engine==='perplexity'?'perplexity':'auto';
+  $('geo-ppl-model').value=g.perplexity_model||'sonar';
+  $('geo-daily').checked=!!g.probe_daily;geoEngineUI()}
  api('api/geo/citations').then(s=>{renderGeoSummary(g,s||{})})})}
 function saveGeoCfg(){api('api/geo/config',{
  brand:$('geo-brand').value.trim(),
  competitors:$('geo-comp').value.split(/[,，]/).map(x=>x.trim()).filter(Boolean),
- queries:$('geo-queries').value.split('\n').map(x=>x.trim()).filter(Boolean)})
+ queries:$('geo-queries').value.split('\n').map(x=>x.trim()).filter(Boolean),
+ engine:$('geo-engine').value,probe_daily:$('geo-daily').checked,
+ perplexity_model:$('geo-ppl-model').value.trim()||'sonar'})
  .then(r=>{if(r.error)return alert(r.error);alert('GEO 配置已保存');loadGeoCfg()})}
 function runGeoProbe(){const el=$('geo-result');el.innerHTML='<span class="mut">探测中…（每条查询一次 LLM 调用，约 10-60 秒）</span>';
  api('api/geo/probe',{}).then(r=>{if(r.error){el.innerHTML='<span class="warn">'+esc(r.error)+'</span>';return}
@@ -820,8 +835,13 @@ function renderGeoSummary(g,s){
   <button class="mini" onclick="gapToRefresh(${JSON.stringify(q).replace(/"/g,'&quot;')})">→ 改稿 Loop</button></div>`).join(''):'';
  const tr=s.trend14||[];const mx=Math.max(1,...tr.map(x=>x.n));
  const trendHtml=tr.some(x=>x.n)?`<div class="chart-bars" style="height:60px;margin-top:8px">${tr.map(x=>`<div class="cb"><span class="vl tnum">${x.brand||''}</span><div class="bar" style="height:${Math.max(3,x.n/mx*100)}%;${x.brand?'':'opacity:.35'}"></div><span class="lb">${x.label}</span></div>`).join('')}</div><div class="chart-meta"><span>近 14 日探测（实心=品牌被提及）</span><span></span></div>`:'';
+ const cited=s.cited_pages||[];
+ const citedHtml=cited.length?`<div style="margin-top:10px"><b style="font-size:13px">被 AI 引用的页面 <span class="mut">（citations × 已发布 canonical 精确归因）</span></b>
+  ${cited.map(c=>`<div class="task" style="align-items:center;margin-top:5px"><span class="act-ic ok" style="width:24px;height:24px">✓</span>
+   <span class="tt" style="flex:1"><b style="font-weight:600">${esc(c.slug||c.canonical)}</b>
+   <div class="mut" style="font-size:11px">被引 ${c.n} 次 · 查询：${esc((c.queries||[]).join(' / ').slice(0,80))}${c.platform?' · '+esc(c.platform):''}</div></span></div>`).join('')}</div>`:'<div class="mut" style="margin-top:6px;font-size:12px">暂无「已发布页面被引用」记录——归因按 canonical 路径精确匹配</div>';
  $('geo-result').innerHTML=(s.total?`<div style="font-size:13px;line-height:2">累计探测 <b class="tnum">${s.total}</b> 次 · 品牌提及率 <b class="tnum">${Math.round(s.brand_rate*100)}%</b>${g&&g.brand?`（${esc(g.brand)}）`:''}<br>
-  竞品提及：${comp}</div>`+trendHtml+(gapHtml?`<div style="margin-top:10px"><b style="font-size:13px">引用缺口 → 闭环动作</b>${gapHtml}</div>`:'<div class="mut" style="margin-top:6px">当前查询无缺口</div>')
+  竞品提及：${comp}</div>`+trendHtml+citedHtml+(gapHtml?`<div style="margin-top:10px"><b style="font-size:13px">引用缺口 → 闭环动作</b>${gapHtml}</div>`:'<div class="mut" style="margin-top:6px">当前查询无缺口</div>')
  :'<span class="mut">尚无探测数据——保存配置后点「立即探测」</span>')}
 function gapToTopic(q){api('api/topics/add',{topics:q}).then(r=>{if(r.error)return alert(r.error);alert('已加入选题队列，自动排程会消化')})}
 function gapToRefresh(q){const id='refresh-'+slugify(q).slice(0,40);
@@ -1141,6 +1161,12 @@ function loadIter(){Promise.all([api('api/selfreview'),api('api/qa/stats?days=14
  mk('it-tok',us.by_day.slice(-14),'tokens',v=>v>999?(v/1000).toFixed(1)+'k':v);
  $('it-tok-meta').innerHTML=`累计 <b class="tnum">${us.total_tokens.toLocaleString()}</b> tokens`;
  mk('it-thr',thr14,'n',v=>v);
+ api('api/geo/citations').then(gs=>{
+  const t=gs.trend14||[];const mx=Math.max(1,...t.map(x=>x.n||0));
+  $('it-geo').innerHTML=t.map(x=>`<div class="cb"><span class="vl tnum">${x.brand||''}</span><div class="bar" style="height:${Math.max(3,(x.n||0)/mx*100)}%;${x.brand?'':'opacity:.35'}"></div><span class="lb">${x.label}</span></div>`).join('')||'<span class="mut">暂无探测数据（去设置页 GEO 卡配置并探测）</span>';
+  const gaps=Object.values(gs.per_query||{}).filter(v=>v.brand===0).length;
+  $('it-geo-meta').innerHTML=`累计探测 <b class="tnum">${gs.total||0}</b> · 提及率 <b class="tnum">${Math.round((gs.brand_rate||0)*100)}%</b>`;
+  $('it-geo-gap').innerHTML=gaps?`<span class="warn">引用缺口 ${gaps} 条查询</span>`:'<span class="ok">无缺口</span>'}).catch(()=>{});
  $('it-table').innerHTML='<tr><th>时间</th><th>来源</th><th>钩子</th><th>结果</th></tr>'+
   qa.recent.map(r=>`<tr><td class="mut">${esc(r.ts)}</td><td>${esc(r.source)}</td><td>${esc(r.hook)}</td><td class="${r.rc===0?'ok':'bad'}">${r.rc===0?'PASS':'BLOCK'}</td></tr>`).join('')||'<tr><td colspan="4" class="mut">还没有质检记录</td></tr>'})}
 function genReview(){api('api/selfreview/generate',{}).then(r=>{if(r.error)return alert(r.error);

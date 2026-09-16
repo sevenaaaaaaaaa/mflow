@@ -227,6 +227,7 @@ DEFAULT_LLM = {
     "providers": {
         "deepseek": {"base": "https://api.deepseek.com", "key": ""},
         "openai": {"base": "https://api.openai.com/v1", "key": ""},
+        "perplexity": {"base": "https://api.perplexity.ai", "key": ""},
         "custom": {"base": "", "key": ""}
     },
     "profiles": {
@@ -286,6 +287,54 @@ def llm_chat(messages, profile="default", max_tokens=4000, timeout=180, project=
     except Exception:
         pass
     return content
+
+
+def llm_chat_full(messages, profile="default", max_tokens=4000, timeout=180, project=None, temperature=0.7, engine=None, engine_model=""):
+    """P6 二批：返回 (content, meta)；meta 含 citations（Perplexity sonar 真引用）等原始字段。
+    不做 demo 回退——探测场景必须真实引擎。engine=perplexity → providers.perplexity 配置。"""
+    cfg = llm_config()
+    pr = cfg["profiles"].get(profile) or cfg["profiles"]["default"]
+    prov_name = pr["provider"]
+    if engine == "perplexity":
+        prov_name = "perplexity"
+        model = engine_model or "sonar"
+    prov = cfg["providers"].get(prov_name, {})
+    base, key, model = (prov.get("base") or "").rstrip("/"), prov.get("key", ""), (pr.get("model") if engine != "perplexity" else model)
+    if project:
+        ov = (read_json(PROJECTS_DIR / project / "meta.json", {}) or {}).get("llm") or {}
+        if ov.get("key") and ov.get("base"):
+            base, key, model = ov["base"].rstrip("/"), ov["key"], (ov.get("model") or model)
+    if not base or not key:
+        raise RuntimeError("LLM 未配置（geo 探测需要真实引擎，不走 demo 回退）")
+    req = json.dumps({"model": model, "messages": messages,
+                      "temperature": temperature, "max_tokens": max_tokens}).encode()
+    import urllib.request
+    r = urllib.request.Request(base + "/chat/completions", data=req,
+                               headers={"Content-Type": "application/json",
+                                        "Authorization": "Bearer " + key})
+    t0 = time.time()
+    with urllib.request.urlopen(r, timeout=timeout) as resp:
+        data = json.loads(resp.read())
+    content = data["choices"][0]["message"]["content"]
+    rec = {"ts": datetime.now().isoformat(timespec="seconds"), "profile": profile, "model": model,
+           "prompt_tokens": data.get("usage", {}).get("prompt_tokens", 0),
+           "completion_tokens": data.get("usage", {}).get("completion_tokens", 0),
+           "total_tokens": data.get("usage", {}).get("total_tokens", 0),
+           "latency_s": round(time.time() - t0, 1)}
+    try:
+        USAGE_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with open(USAGE_FILE, "a") as f:
+            f.write(json.dumps(rec) + "\n")
+        with _usage_lock:
+            LAST_USAGE.clear()
+            LAST_USAGE.update(rec)
+    except Exception:
+        pass
+    meta = {"model": model, "usage": rec}
+    for k in ("citations", "search_results"):
+        if data.get(k):
+            meta[k] = data[k]  # Perplexity sonar 返回真实引用
+    return content, meta
 
 
 def notify_cfg():
@@ -1174,42 +1223,83 @@ def geo_cfg(proj):
     g = meta.get("geo") or {}
     return {"brand": str(g.get("brand", ""))[:60],
             "competitors": [str(x)[:40] for x in (g.get("competitors") or [])[:12]],
-            "queries": [str(x)[:200] for x in (g.get("queries") or [])[:15]]}
+            "queries": [str(x)[:200] for x in (g.get("queries") or [])[:15]],
+            "engine": g.get("engine", "auto"),  # auto=现有 provider / perplexity=sonar 真引用
+            "probe_daily": bool(g.get("probe_daily"))}
 
 
 def _citations_path(proj):
     return proj_paths(proj)["dir"] / "citations.jsonl"
 
 
+def _published_canonicals():
+    """已发布内容 canonical URL → slug/canonical 映射（供引用归因）。"""
+    base = PROJECT / "1-3 GenFlow/Content Distribution/queue/published.json"
+    out = []
+    for x in read_json(base, {}).get("items", []) or []:
+        u = (x.get("canonical") or "").strip()
+        if u:
+            out.append({"url": u, "slug": x.get("slug", ""), "platform": x.get("platform", ""),
+                        "date": x.get("date", "")})
+    return out
+
+
+def _match_published(urls, published):
+    """citation URL ↔ canonical 精确归因：路径段匹配（忽略 query/尾斜杠/协议头差异）。"""
+    def norm(u):
+        u = u.split("?")[0].split("#")[0].rstrip("/")
+        return "/" + u.split("://", 1)[-1].split("/", 1)[-1].lower()
+    hits = []
+    for u in urls:
+        nu = norm(u)
+        for p in published:
+            if norm(p["url"]) == nu:
+                hits.append({"cited": u, "canonical": p["url"], "slug": p["slug"],
+                             "platform": p["platform"]})
+                break
+    return hits
+
+
 def geo_probe(proj):
-    """P6.1 引用感知：逐条向 AI 引擎（OpenAI 兼容 chat）问目标问题，
-    检测品牌/竞品提及与来源 URL → citations.jsonl。只走官方 API，不爬引擎。"""
+    """P6.1/P6 二批：逐条向 AI 引擎问目标问题，检测品牌/竞品提及与引用。
+    engine=auto → 现有 provider（从答案文本提取 URL）；engine=perplexity → sonar 真引用。
+    只走官方 API，不爬引擎。"""
     g = geo_cfg(proj)
     if not g["brand"]:
         return {"error": "先在设置页配置品牌名与目标查询"}
     if not g["queries"]:
         return {"error": "没有目标查询（先在设置页添加 3-10 条用户会问 AI 的问题）"}
-    # fail-clean：demo 回退稿不反映真实 AI 引擎行为，探测必须走真实 Key
-    if DEMO_FLAG.exists() and not llm_config()["providers"][
-            llm_config()["profiles"]["default"]["provider"]].get("key"):
-        return {"error": "探测需要真实 LLM Key（当前是 demo 模式，演示稿无法代表 AI 引擎的真实回答）——去设置页配 Key"}
+    published = _published_canonicals()
     rows = []
     for q in g["queries"][:10]:
+        if g["engine"] == "perplexity":
+            prompt = f"回答这个问题，像 AI 助手推荐工具/方案那样给出具体名称与理由：\n\n{q}"
+        else:
+            prompt = (f"请直接回答下面的问题，像 AI 助手推荐工具/方案那样给出具体名称与理由，"
+                      f"并在末尾列出参考来源 URL（真实可访问的）：\n\n{q}")
         try:
-            ans = llm_chat([{"role": "user", "content":
-                f"请直接回答下面的问题，像 AI 助手推荐工具/方案那样给出具体名称与理由，"
-                f"并在末尾列出参考来源 URL（真实可访问的）：\n\n{q}"}],
-                profile="lovart-creation", max_tokens=700, timeout=90, project=proj)
+            ans, meta = llm_chat_full([{"role": "user", "content": prompt}],
+                                      profile="lovart-creation", max_tokens=700, timeout=90,
+                                      project=proj, temperature=0.4,
+                                      engine=g["engine"], engine_model=g.get("perplexity_model", "sonar"))
         except Exception as e:
             rows.append({"query": q, "ok": False, "error": str(e)[:160]})
             continue
         low = ans.lower()
         urls = sorted(set(re.findall(r"https?://[a-zA-Z0-9./?=_%&#~-]+", ans)))[:12]
+        engine_cites = meta.get("citations") or []
+        for c in engine_cites:
+            u = c if isinstance(c, str) else (c.get("url") if isinstance(c, dict) else "")
+            if u and u not in urls:
+                urls.append(u)
+        urls = urls[:15]
         rec = {"ts": datetime.now().isoformat(timespec="seconds"), "query": q, "ok": True,
-               "engine": "chat", "brand": bool(g["brand"].lower() in low),
+               "engine": meta.get("model", g["engine"]), "brand": bool(g["brand"].lower() in low),
                "competitors": [c for c in g["competitors"] if c.lower() in low],
-               "urls": urls, "snippet": ans[:300],
-               "tokens": LAST_USAGE.get("total_tokens", 0)}
+               "urls": urls,
+               "cited_pages": _match_published(urls, published),
+               "snippet": ans[:300],
+               "tokens": meta.get("usage", {}).get("total_tokens", 0)}
         rows.append(rec)
         with open(_citations_path(proj), "a") as f:
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
@@ -1230,6 +1320,7 @@ def geo_summary(proj):
     per_query = {}
     comp_counter = Counter()
     by_day = {}
+    cited_map = {}
     for r in ok_rows:
         pq = per_query.setdefault(r["query"], {"n": 0, "brand": 0})
         pq["n"] += 1
@@ -1241,6 +1332,16 @@ def geo_summary(proj):
             bd = by_day.setdefault(d, {"n": 0, "brand": 0})
             bd["n"] += 1
             bd["brand"] += 1 if r.get("brand") else 0
+        for cp in r.get("cited_pages") or []:
+            key = cp.get("canonical") or cp.get("cited")
+            e = cited_map.setdefault(key, {"canonical": cp.get("canonical", key),
+                                           "slug": cp.get("slug", ""), "platform": cp.get("platform", ""),
+                                           "n": 0, "queries": set()})
+            e["n"] += 1
+            e["queries"].add(r.get("query", ""))
+    cited_pages = [{"canonical": e["canonical"], "slug": e["slug"], "platform": e["platform"],
+                    "n": e["n"], "queries": sorted(e["queries"])[:5]}
+                   for e in sorted(cited_map.values(), key=lambda x: -x["n"])[:10]]
     import datetime as _dt
     trend = []
     for i in range(13, -1, -1):
@@ -1251,8 +1352,44 @@ def geo_summary(proj):
             "brand_rate": round(sum(1 for r in ok_rows if r.get("brand")) / max(1, len(ok_rows)), 2),
             "competitors": dict(comp_counter.most_common()),
             "per_query": per_query,
+            "cited_pages": cited_pages,
             "trend14": trend,
             "latest": rows[-10:][::-1]}
+
+
+def geo_scheduler():
+    """P6 二批：每日自动探测。每小时检查——项目开了 probe_daily 且今日未探测
+    且过了 09:30 → 跑 geo_probe（无真实 Key 时 probe 自带 fail-clean，静默跳过）。"""
+    while True:
+        time.sleep(1800)
+        try:
+            if not PROJECTS_DIR.exists():
+                continue
+            now = datetime.now()
+            for meta_f in PROJECTS_DIR.glob("*/meta.json"):
+                pid = meta_f.parent.name
+                g = geo_cfg(pid)
+                if not (g.get("probe_daily") and g.get("brand") and g.get("queries")):
+                    continue
+                cf = _citations_path(pid)
+                if cf.exists():
+                    today = now.strftime("%Y-%m-%d")
+                    # 只认当日「真实成功探测」；失败/记账行不阻塞当日重试
+                    probed = any(json.loads(l).get("ok") is True
+                                 for l in cf.read_text().strip().split("\n")[-20:]
+                                 if l.strip() and str(l).lstrip().startswith("{")
+                                 and json.loads(l).get("ts", "")[:10] == today)
+                    if probed:
+                        continue
+                if now.hour < 9:
+                    continue
+                r = geo_probe(pid)
+                with open(cf, "a") as f:
+                    f.write(json.dumps({"ts": now.isoformat(timespec="seconds"),
+                                        "scheduled": True, "result": ("ok" if not r.get("error") else r["error"][:120])},
+                                       ensure_ascii=False) + "\n")
+        except Exception as e:
+            print(f"[geo-scheduler] {e}", file=sys.stderr)
 
 
 def daily_status():
@@ -1841,9 +1978,13 @@ class Handler(BaseHTTPRequestHandler):
             if self.path == "/api/geo/config":
                 meta_f = PROJECTS_DIR / self._proj() / "meta.json"
                 meta = read_json(meta_f, {})
+                old_geo = meta.get("geo") or {}
                 meta["geo"] = {"brand": str(body.get("brand", "")).strip()[:60],
                                "competitors": [str(x).strip()[:40] for x in (body.get("competitors") or [])[:12] if str(x).strip()],
-                               "queries": [str(x).strip()[:200] for x in (body.get("queries") or [])[:15] if str(x).strip()]}
+                               "queries": [str(x).strip()[:200] for x in (body.get("queries") or [])[:15] if str(x).strip()],
+                               "engine": "perplexity" if body.get("engine") == "perplexity" else "auto",
+                               "probe_daily": bool(body.get("probe_daily")),
+                               "perplexity_model": str(body.get("perplexity_model", old_geo.get("perplexity_model", "sonar"))).strip()[:40]}
                 meta_f.write_text(json.dumps(meta, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True})
             if self.path == "/api/geo/probe":
@@ -2109,7 +2250,8 @@ def main():
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     threading.Thread(target=loop_queue_worker, daemon=True).start()
     threading.Thread(target=schedule_executor, daemon=True).start()
-    print(f"[console] MFlow Console on :{PORT} (loop queue worker started, max_parallel={MAX_PARALLEL_LOOPS})")
+    threading.Thread(target=geo_scheduler, daemon=True).start()
+    print(f"[console] MFlow Console on :{PORT} (loop queue + schedule executor + geo scheduler started, max_parallel={MAX_PARALLEL_LOOPS})")
     server.serve_forever()
 
 
