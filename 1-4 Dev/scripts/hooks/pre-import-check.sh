@@ -56,7 +56,15 @@ ok()   { echo "  ✓ $*"; }
 warn() { WARNINGS+=("$*"); echo "  ! $*"; }
 err()  { ERRORS+=("$*");   echo "  ✗ $*"; }
 
-PY="$(command -v python3 || echo python3)"
+PY="${LOVART_PYTHON:-}"
+if [[ -z "$PY" ]]; then
+    ROOT_ABS="$(cd "$HERE/../../.." && pwd)"
+    if [[ -x "$ROOT_ABS/.venv/bin/python" ]]; then
+        PY="$ROOT_ABS/.venv/bin/python"
+    else
+        PY="$(command -v python3 || echo python3)"
+    fi
+fi
 
 echo "[pre-import] id=$ID type=$TARGET_TYPE"
 

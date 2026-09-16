@@ -39,6 +39,7 @@ DAILY_LOG = RUN_DIR / "logs" / "daily.out.log"
 DAILY_PID = RUN_DIR / "logs" / "daily.pid"
 KB_ROOT = PROJECT / "1-2 Insight" / "Knowledge Base"
 LLM_FILE = RUN_DIR / "llm.json"
+NOTIFY_FILE = RUN_DIR / "notify.json"
 LOOPS_FILE = RUN_DIR / "loops.json"
 GEN_DIR = PROJECT / "1-3 GenFlow" / "Console-Gen"
 HARNESS_DIR = PROJECT / "1-1 Harness"
@@ -243,11 +244,16 @@ def llm_config():
     return merged
 
 
-def llm_chat(messages, profile="default", max_tokens=4000, timeout=180):
+def llm_chat(messages, profile="default", max_tokens=4000, timeout=180, project=None):
     cfg = llm_config()
     pr = cfg["profiles"].get(profile) or cfg["profiles"]["default"]
     prov = cfg["providers"].get(pr["provider"], {})
     base, key, model = (prov.get("base") or "").rstrip("/"), prov.get("key", ""), pr.get("model", "")
+    ov = {}
+    if project:
+        ov = (read_json(PROJECTS_DIR / project / "meta.json", {}) or {}).get("llm") or {}
+    if ov.get("key") and ov.get("base"):  # P4-4：项目级 Key 覆盖（优先于全局）
+        base, key, model = ov["base"].rstrip("/"), ov["key"], (ov.get("model") or model)
     if not base or not key:
         # Demo 模式回退：未配置 Key 但已导入 demo → 返回演示稿（零门槛看到完整闭环）
         prompt = messages[-1]["content"] if messages else ""
@@ -280,6 +286,41 @@ def llm_chat(messages, profile="default", max_tokens=4000, timeout=180):
     except Exception:
         pass
     return content
+
+
+def notify_cfg():
+    return read_json(NOTIFY_FILE, {"enabled": False, "feishu_webhook": ""})
+
+
+def notify_send(title, text, timeout=6):
+    """飞书 webhook 文本消息；失败静默（通知不可阻塞业务）。"""
+    cfg = notify_cfg()
+    if not cfg.get("enabled") or not cfg.get("feishu_webhook"):
+        return False
+    try:
+        import urllib.request
+        req = urllib.request.Request(cfg["feishu_webhook"],
+                                     data=json.dumps({"msg_type": "text", "content": {"text": f"{title}\n{text}"}}).encode(),
+                                     headers={"Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            resp.read()
+        return True
+    except Exception as e:
+        print(f"[notify] {e}", file=sys.stderr)
+        return False
+
+
+def notify_loop_end(loop, proj, outcome):
+    """Loop 终态通知：done/blocked/failed；stopped（用户主动）不打扰。"""
+    if outcome == "stopped":
+        return
+    status_zh = {"done": "✅ 完成", "blocked": "⛔ 3 轮仍 BLOCK", "failed": "❌ LLM 失败"}.get(outcome, outcome)
+    lines = [f"[{proj}] Loop {loop.get('item_id', '')} {status_zh}",
+             f"主题：{loop.get('topic', '')[:60]}",
+             f"轮次：{loop.get('round', 0)}/{loop.get('max_rounds', 3)} · tokens：{loop.get('tokens_used', 0)}"]
+    if outcome == "done" and loop.get("draft_path"):
+        lines.append(f"草稿：{loop['draft_path']}")
+    notify_send(f"MFlow · {status_zh}", "\n".join(lines))
 
 
 def usage_stats():
@@ -657,11 +698,12 @@ def loop_engine(loop_id, proj):
             draft = llm_chat([{"role": "user", "content": gen_prompt(
                 loop["type"], loop["lang"], loop["topic"], loop["brief"], feedback,
                 template=get_template(loop.get("template_id")))}],
-                profile="lovart-creation", max_tokens=4000)
+                profile="lovart-creation", max_tokens=4000, project=proj)
         except Exception as e:
             loop["status"] = "failed"
             log(loop, f"LLM 调用失败：{e}")
             _loop_save(loop, proj)
+            notify_loop_end(loop, proj, "failed")
             return
         with _usage_lock:
             loop["tokens_used"] = loop.get("tokens_used", 0) + LAST_USAGE.get("total_tokens", 0)
@@ -683,6 +725,7 @@ def loop_engine(loop_id, proj):
             loop["draft_path"] = rel_of(draft_path)
             log(loop, "Loop 完成：草稿已入 S4-qa，等待人工审阅/继续推进")
             _loop_save(loop, proj)
+            notify_loop_end(loop, proj, "done")
             return
         feedback = r["out"][-1500:]
         log(loop, f"质检 BLOCK（exit {r['rc']}），反馈带入下一轮")
@@ -690,6 +733,7 @@ def loop_engine(loop_id, proj):
     loop["status"] = "blocked"
     log(loop, f"达最大轮次仍 BLOCK。草稿在 {gen_dir / (item + '.md')}, 可人工修改后继续推进")
     _loop_save(loop, proj)
+    notify_loop_end(loop, proj, "blocked")
 
 
 def harness_inventory():
@@ -861,6 +905,11 @@ try:
 except Exception as e:
     ROUTER = None
     print(f"[console] router import failed: {e}", file=sys.stderr)
+try:
+    PCHK = load_module("mflow_plugin_check", PROJECT / "plugins" / "plugin_check.py")
+except Exception as e:
+    PCHK = None
+    print(f"[console] plugin_check import failed: {e}", file=sys.stderr)
 
 
 def run_tool(args, timeout=60):
@@ -1014,6 +1063,99 @@ def tasks_all(proj):
                      "score": it.get("score"), "platforms": ",".join(it.get("platforms", [])),
                      "source": "distribution"})
     return {"manual": manual, "pipeline": pipeline, "distribution": dist}
+
+
+def schedule_report(visible):
+    """P5 排程报表：所有可见项目的自动排程状态一行一项目。"""
+    today = datetime.now().strftime("%Y-%m-%d")
+    rows = []
+    names = {p["id"]: p.get("name", p["id"]) for p in list_projects()}
+    for pid in visible:
+        if not (PROJECTS_DIR / pid).exists():
+            continue
+        pp = proj_paths(pid)
+        meta = read_json(PROJECTS_DIR / pid / "meta.json", {})
+        sc = meta.get("schedule") or {}
+        loops = read_json(pp["loops"], [])
+        log_tail = ""
+        if pp["sched_log"].exists():
+            log_tail = "\n".join(pp["sched_log"].read_text().strip().split("\n")[-5:])
+        rows.append({"id": pid, "name": names.get(pid, pid),
+                     "enabled": bool(sc.get("auto_loop")), "quota": int(sc.get("daily_quota", 0) or 0),
+                     "created_today": sum(1 for x in loops if str(x.get("created", "")).startswith(today)),
+                     "running": sum(1 for x in loops if x.get("status") == "running"),
+                     "queued": sum(1 for x in loops if x.get("status") == "queued"),
+                     "queue_len": len(read_json(pp["topics"], [])),
+                     "log_tail": log_tail})
+    rows.sort(key=lambda r: (not r["enabled"], r["id"]))
+    return {"rows": rows, "date": today}
+
+
+def plugins_inventory():
+    """P5 插件市场：已安装扫描 + marketplace 清单（plugins/marketplace.json）。"""
+    installed = []
+    pdir = PROJECT / "plugins"
+    if pdir.exists():
+        for d in sorted(pdir.iterdir()):
+            if not d.is_dir() or d.name.startswith(("_", ".")):
+                continue
+            mf = read_json(d / "manifest.json", None)
+            if not mf:
+                continue
+            errs, oks = ([], [])
+            if PCHK:
+                try:
+                    errs, oks = PCHK.check(str(d))
+                except Exception:
+                    pass
+            installed.append({"id": mf.get("id", d.name), "type": mf.get("type", "?"),
+                              "name": mf.get("name", d.name), "version": mf.get("version", ""),
+                              "author": mf.get("author", ""), "dir": d.name,
+                              "pass": not errs, "checks": errs + oks[:4]})
+    available = read_json(pdir / "marketplace.json", [])
+    return {"installed": installed, "available": available}
+
+
+_ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]{1,48}$")
+
+
+def plugin_install(manifest, entry_code):
+    """安装：写 plugins/{id}/（manifest+entry）→ plugin_check → 失败进 _trash。"""
+    if not PCHK:
+        return {"error": "plugin_check 不可用"}
+    pid = str(manifest.get("id", "")).strip()
+    if not _ID_RE.fullmatch(pid):
+        return {"error": "id 不合法（小写字母数字连字符）"}
+    if manifest.get("type") not in ("source", "publisher"):
+        return {"error": "仅 source/publisher 类插件经此安装；模板包走模板市场导入"}
+    if not str(manifest.get("entry", "")).strip() or ".." in str(manifest.get("entry", "")):
+        return {"error": "entry 字段不合法"}
+    d = PROJECT / "plugins" / pid
+    d.parent.mkdir(exist_ok=True)
+    d.mkdir(exist_ok=True)
+    (d / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=1))
+    entry = d / str(manifest["entry"])
+    entry.write_text(str(entry_code or "# empty\n"))
+    errs, _oks = PCHK.check(str(d))
+    if errs:
+        trash = PROJECT / "plugins" / "_trash"
+        trash.mkdir(exist_ok=True)
+        target = trash / f"{pid}-{datetime.now().strftime('%Y%m%d%H%M%S')}"
+        d.rename(target)
+        return {"error": "校验未通过（已移入 _trash）：" + "; ".join(errs[:4])}
+    return {"ok": True, "id": pid}
+
+
+def plugin_uninstall(pid):
+    if not _ID_RE.fullmatch(str(pid)):
+        return {"error": "id 不合法"}
+    d = PROJECT / "plugins" / pid
+    if not d.exists():
+        return {"error": "插件不存在"}
+    trash = PROJECT / "plugins" / "_trash"
+    trash.mkdir(exist_ok=True)
+    d.rename(trash / f"{pid}-{datetime.now().strftime('%Y%m%d%H%M%S')}")
+    return {"ok": True}
 
 
 def daily_status():
@@ -1289,8 +1431,12 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, setup_status(self._proj()))
             if parsed.path == "/api/projects":
                 vis = self._visible_projects()
+                meta = json.loads(json.dumps(self._meta()))
+                if isinstance(meta.get("llm"), dict) and meta["llm"].get("key"):
+                    k = meta["llm"]["key"]
+                    meta["llm"]["key"] = k[:4] + "…" + k[-3:]
                 return self._send(200, {"projects": [p for p in list_projects() if p["id"] in vis],
-                                        "current": self._proj(), "meta": self._meta(),
+                                        "current": self._proj(), "meta": meta,
                                         "kb_extra": self._meta().get("kb_extra", [])})
             if parsed.path == "/api/kb/extra":
                 return self._send(200, self._meta().get("kb_extra", []))
@@ -1317,6 +1463,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"enabled": bool(sc.get("auto_loop")), "quota": int(sc.get("daily_quota", 0) or 0),
                                         "created_today": created_today, "running": running, "queued": queued,
                                         "queue_len": len(read_json(pp["topics"], [])), "log_tail": log_tail})
+            if parsed.path == "/api/schedule/all":
+                return self._send(200, schedule_report(self._visible_projects()))
             if parsed.path == "/api/topics/list":
                 return self._send(200, read_json(proj_paths(self._proj())["topics"], []))
             if parsed.path == "/api/version":
@@ -1326,6 +1474,11 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, daily_status())
             if parsed.path == "/api/usage":
                 return self._send(200, usage_stats())
+            if parsed.path == "/api/notify":
+                cfg = notify_cfg()
+                return self._send(200, {"enabled": cfg.get("enabled"), "feishu_webhook": cfg.get("feishu_webhook", "")})
+            if parsed.path == "/api/plugins":
+                return self._send(200, plugins_inventory())
             if parsed.path == "/api/workflows":
                 sk = {s["name"]: s for s in harness_inventory()["skills"]}
                 wfs = []
@@ -1478,7 +1631,9 @@ class Handler(BaseHTTPRequestHandler):
             return self._send(403, {"error": "viewer 角色只读，无写操作权限"})
         ADMIN_ONLY = {"/api/setup/seed-demo", "/api/llm/save", "/api/llm/test",
                       "/api/account/list", "/api/account/reset", "/api/dispatch/approve",
-                      "/api/trident/run", "/api/daily/run", "/api/tasks/del"}
+                      "/api/trident/run", "/api/daily/run", "/api/tasks/del",
+                      "/api/notify/save", "/api/notify/test",
+                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
@@ -1567,6 +1722,20 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(200, {"ok": True, "reply": out[:50]})
                 except Exception as e:
                     return self._send(400, {"ok": False, "error": str(e)[:300]})
+            if self.path == "/api/notify/save":
+                cfg = {"enabled": bool(body.get("enabled")),
+                       "feishu_webhook": str(body.get("feishu_webhook", "")).strip()}
+                NOTIFY_FILE.parent.mkdir(parents=True, exist_ok=True)
+                NOTIFY_FILE.write_text(json.dumps(cfg, ensure_ascii=False, indent=1))
+                os.chmod(NOTIFY_FILE, 0o600)
+                return self._send(200, {"ok": True})
+            if self.path == "/api/notify/test":
+                ok = notify_send("MFlow 通知测试", f"来自 {self._me()} 的连通性测试 · {time.strftime('%H:%M:%S')}")
+                return self._send(200, {"ok": ok})
+            if self.path == "/api/plugins/install":
+                return self._send(200, plugin_install(body.get("manifest") or {}, body.get("entry_code", "")))
+            if self.path == "/api/plugins/uninstall":
+                return self._send(200, plugin_uninstall(str(body.get("id", ""))))
             if self.path == "/api/skills/sync":
                 return self._send(200, run_tool([sys.executable, str(PROJECT / "1-4 Dev/scripts/harness_sync.py")], timeout=120))
             if self.path == "/api/generate":
@@ -1584,7 +1753,7 @@ class Handler(BaseHTTPRequestHandler):
                         str(body.get("type", "blog")), str(body.get("lang", "zh")),
                         str(body.get("topic", ""))[:300], str(body.get("brief", ""))[:800],
                         template=tpl)}],
-                        profile="lovart-creation")
+                        profile="lovart-creation", project=self._proj())
                 except Exception as e:
                     return self._send(400, {"error": str(e)[:300]})
                 path = self._gen() / f"{item_id}.md"
@@ -1706,6 +1875,21 @@ class Handler(BaseHTTPRequestHandler):
                 if "schedule" in body:
                     meta["schedule"] = {"daily_quota": int(body["schedule"].get("daily_quota", 0) or 0),
                                         "auto_loop": bool(body["schedule"].get("auto_loop", False))}
+                if "llm" in body:
+                    lv = body["llm"] or {}
+                    cur = meta.get("llm") or {}
+                    newkey = str(lv.get("key", "")).strip()
+                    ov = {"provider": str(lv.get("provider", "custom"))[:24],
+                          "base": str(lv.get("base", "")).strip()[:200],
+                          "model": str(lv.get("model", "")).strip()[:80]}
+                    if newkey and "…" not in newkey:  # masked = 保留旧 Key
+                        ov["key"] = newkey
+                    elif cur.get("key"):
+                        ov["key"] = cur["key"]
+                    if not ov.get("key"):
+                        meta.pop("llm", None)  # 无 Key = 清除覆盖，回退全局
+                    else:
+                        meta["llm"] = ov
                 if "kb_extra" in body:
                     extras = []
                     for ex in body["kb_extra"][:20]:

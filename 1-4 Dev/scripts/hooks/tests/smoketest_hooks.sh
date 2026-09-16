@@ -9,6 +9,10 @@ HOOKS_DIR="$(cd "$HERE/.." && pwd)"
 PIPELINE_DIR="$(cd "$HERE/../../../../1-1 Harness/Skills/06-orchestrate/lovart-pipeline-state" && pwd)"
 # Use vault-internal temp dir so allowed-root checks pass for hooks.
 PROJECT_ROOT="$(cd "$HERE/../../.." && pwd)"
+# P6：无 LOVART_PYTHON 时自动用项目 venv（服务器 py3.6 不认 pipeline_state 的类型标注）
+if [[ -z "${LOVART_PYTHON:-}" && -x "$PROJECT_ROOT/.venv/bin/python" ]]; then
+    export LOVART_PYTHON="$PROJECT_ROOT/.venv/bin/python"
+fi
 TMP="$HOOKS_DIR/tests/.tmp-smoke"
 # Quote TMP everywhere to survive the space in "Lovart MFlow"
 rm -rf "$TMP" && mkdir -p "$TMP"

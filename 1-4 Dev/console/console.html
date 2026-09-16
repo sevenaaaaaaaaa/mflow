@@ -275,7 +275,8 @@ th{color:var(--muted);font-weight:600}
   <!-- ============ 任务 ============ -->
   <section class="page" id="pg-tasks">
     <div class="pg-head"><div><div class="kick">我的工作</div><h1>任务<em class="sf">看板</em></h1>
-      <p class="pg-sub">手动任务可添加/流转；内容管线与分发队列自动同步，只读。</p></div></div>
+      <p class="pg-sub">手动任务可添加/流转；内容管线与分发队列自动同步，只读。</p></div>
+      <div class="head-actions"><div class="chips" id="task-filter"></div></div></div>
     <div class="card" style="margin-bottom:14px"><div class="row">
       <input id="ttitle" placeholder="要做什么？回车快速添加" style="flex:1;min-width:220px" onkeydown="if(event.key==='Enter')addTask()">
       <button class="btn primary" onclick="addTask()">添加任务</button></div></div>
@@ -364,6 +365,7 @@ th{color:var(--muted);font-weight:600}
       <div class="head-actions"><button class="btn primary" id="drbtn" onclick="runDaily()">立即执行每日管线</button></div></div>
     <div class="card"><div class="card-head"><h3>每日管线 <span id="drun"></span></h3></div><pre id="dtail">…</pre></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>定时器</h3></div><pre id="stimers">…</pre></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>自动排程报表</h3><span class="mut" id="sched-meta"></span></div><div id="sched-report"></div></div>
   </section>
 
   <!-- ============ 模板市场 ============ -->
@@ -380,6 +382,19 @@ th{color:var(--muted);font-weight:600}
       <input type="file" accept=".json" onchange="importFile(this)" style="font-size:12px"></div>
     </div>
     <div id="mkt-list"></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>插件市场 <span class="mut" id="plg-n"></span></h3>
+      <button class="btn ghost" onclick="$('plg-box').style.display=$('plg-box').style.display==='none'?'block':'none'">⇪ 安装插件</button></div>
+      <div class="mut" style="font-size:12px">三类插件：数据源（collect）/ 发布渠道（publish）/ 模板包（走上方模板导入）。安装前自动过 plugin_check 六项校验。</div>
+      <div id="plg-list" style="margin-top:10px"></div>
+      <div class="card" id="plg-box" style="display:none;margin-top:10px;background:var(--surface)">
+        <div class="card-head"><h3>安装插件包</h3><span class="mut">manifest JSON + entry 代码</span></div>
+        <textarea id="plg-mf" placeholder='{"id":"my-source","type":"source","name":"…","version":"1.0.0","author":"…","entry":"entry.py","permissions":["network"]}' style="width:100%;min-height:110px;border:1px solid var(--border);border-radius:12px;padding:10px;font-family:var(--font-mono);font-size:12px;background:var(--surface-strong);color:var(--fg)"></textarea>
+        <textarea id="plg-code" placeholder="entry.py 代码（source 需 def collect()；publisher 需 def publish()）" style="width:100%;min-height:110px;margin-top:8px;border:1px solid var(--border);border-radius:12px;padding:10px;font-family:var(--font-mono);font-size:12px;background:var(--surface-strong);color:var(--fg)"></textarea>
+        <div class="row" style="margin-top:8px"><button class="btn primary" onclick="plgInstall()">校验并安装</button>
+        <span class="mut" id="plg-hint">从下方「可安装」卡一键填充</span></div>
+      </div>
+      <div id="plg-avail" style="margin-top:10px"></div>
+    </div>
   </section>
 
   <!-- ============ 创作中心 ============ -->
@@ -446,7 +461,15 @@ th{color:var(--muted);font-weight:600}
       <div id="tq-list" style="max-height:160px;overflow:auto;margin-top:6px"></div>
       <div class="row" style="margin-top:8px"><textarea id="tq-add" placeholder="每行一个选题，可粘贴多个" style="flex:1;min-height:52px;border:1px solid var(--border);border-radius:12px;padding:9px 12px;font:inherit;background:var(--surface-strong);color:var(--fg)"></textarea>
       <button class="btn ghost" onclick="addTopics()">加入队列</button></div>
-      <div class="mut" style="margin-top:6px">执行器每 5 分钟扫描一次：配额未满且队列有选题时自动创建 Loop（进入 Loop 页排队执行，token 记账照常）。</div></div>
+      <div class="mut" style="margin-top:6px">执行器每 5 分钟扫描一次：配额未满且队列有选题时自动创建 Loop（进入 Loop 页排队执行，token 记账照常）。</div>
+      <div class="card-head" style="margin-top:14px"><h3>本项目独立 LLM <span class="mut">（留空则用全局配置）</span></h3></div>
+      <div class="row">
+        <select id="pj-llm-prov" style="width:130px"><option value="">（跟随全局）</option><option value="deepseek">deepseek</option><option value="openai">openai</option><option value="custom">custom</option></select>
+        <input id="pj-llm-base" placeholder="base url（必填才生效）" style="flex:1;min-width:180px">
+        <input id="pj-llm-key" placeholder="API Key" type="password" style="flex:1;min-width:160px">
+        <input id="pj-llm-model" placeholder="model（可空=全局 profile 模型）" style="flex:1;min-width:150px"></div>
+      <div class="row" style="margin-top:8px"><button class="btn ghost" onclick="saveProjLlm()">保存本项目 LLM</button>
+      <span class="mut" id="pj-llm-hint">项目 Key 优先于全局；Loop 与单次生成都走项目 Key，token 记账共用</span></div></div>
     <div class="card"><div class="card-head"><h3>大模型 API（OpenAI 兼容）</h3>
       <button class="more" onclick="llmTest()">测试连通 →</button></div>
       <div id="llm-providers"></div>
@@ -455,6 +478,12 @@ th{color:var(--muted);font-weight:600}
       <div class="row" style="margin-top:12px"><button class="btn primary" onclick="llmSave()">保存配置</button><span id="llm-test" class="mut"></span></div>
       <div class="mut" style="margin-top:8px">Key 存服务器 run/llm.json（git-ignore，权限 600）。DeepSeek/OpenAI 或任何 OpenAI 兼容网关。</div>
     </div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>完成通知 <span class="mut">（Loop 终态推送）</span></h3>
+      <button class="more" onclick="notifyTest()">发送测试 →</button></div>
+      <div class="row" style="align-items:center"><label style="font-size:13px;white-space:nowrap"><input id="nt-en" type="checkbox" style="margin-right:6px">启用通知</label>
+      <input id="nt-hook" placeholder="飞书自定义机器人 Webhook（https://open.feishu.cn/open-apis/bot/v2/hook/…）" style="flex:1;min-width:280px">
+      <button class="btn primary" onclick="notifySave()">保存通知配置</button></div>
+      <div class="mut" id="nt-status" style="margin-top:6px">Loop 完成 / BLOCK / LLM 失败 时推送到飞书群；用户手动停止不推送。</div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>账号与角色 <span class="mut">（admin 专属 · 密码校验继承 OpenFlow bcrypt）</span></h3>
       <span class="mut" id="acc-role"></span></div><div id="acc-list"></div>
       <div class="row" style="margin-top:10px"><input id="acc-u" placeholder="账号用户名" style="flex:1;min-width:140px">
@@ -641,9 +670,15 @@ $('home-timers').innerHTML=esc((o.timers||'').split('\n').filter(l=>/mflow/.test
  $('chart7-meta').innerHTML=`近 7 日共 <b class="tnum">${c.reduce((a,b)=>a+b.n,0)}</b> 次推进`;
 })}
 
-/* ---- 任务看板（Trello 式：拖拽跨列 + 卡片编辑 + 日历关联）---- */
-let TM_ID=null;
-function loadTasks(){api('api/tasks').then(t=>{const m=t.manual||[];
+/* ---- 任务看板（Trello 式：拖拽跨列 + 卡片编辑 + 日历关联 + 归属人过滤）---- */
+let TM_ID=null,TASK_MINE=false;
+function taskFilterRender(){$('task-filter').innerHTML=[
+ ['全部任务',false],['我的任务',true]].map(([t,v])=>
+ `<button class="chip ${TASK_MINE===v?'on':''}" style="border-radius:12px" onclick="TASK_MINE=${v};loadTasks()">${t}</button>`).join('')}
+function loadTasks(){taskFilterRender();api('api/tasks').then(t=>{
+ const me=window.__ME||'';
+ const all=t.manual||[];
+ const m=TASK_MINE?all.filter(x=>(x.assignee||'').trim()===me&&me):all;
  const card=x=>`<div class="task" draggable="true" ondragstart="dragStart(event,'${x.id}')" style="cursor:grab" onclick="taskEdit('${x.id}')">
    <span class="tt"><b style="font-weight:600">${esc(x.title)}</b>
    ${x.link?`<div class="mut" style="font-size:11px">🔗 ${esc(x.link.split('/').pop())}</div>`:''}
@@ -660,7 +695,13 @@ function loadTasks(){api('api/tasks').then(t=>{const m=t.manual||[];
  col('todo','col-todo');col('doing','col-doing');col('done','col-done');
  $('autoq').innerHTML=(t.pipeline||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)}</span><span class="badge pipe">管线·${esc(x.stage)}</span></div>`).join('')+
   (t.distribution||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)} <span class="mut">${esc(x.platforms||'')}</span></span><span class="badge dist">分发·${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">分发队列空</span>';
- $('nav-tasks').textContent=m.filter(x=>x.status!=='done').length})}
+   $('nav-tasks').textContent=all.filter(x=>x.status!=='done').length;
+  $('nav-tasks').title=TASK_MINE?`已过滤：仅显示 ${me||'（未登录名）'} 的任务`:'';
+  if(TASK_MINE){const cnt=m.filter(x=>x.status!=='done').length;
+   const head=$('pg-tasks').querySelector('.pg-head .pg-sub');
+   if(head)head.textContent=`归属人过滤中：仅显示「${me||'当前用户'}」的任务（${cnt} 待办 / 共 ${all.filter(x=>x.status!=='done').length} 待办）`;
+  }else{const head=$('pg-tasks').querySelector('.pg-head .pg-sub');
+   if(head)head.textContent='手动任务可添加/流转；内容管线与分发队列自动同步，只读。';}})}
 let dragId=null;
 function dragStart(e,id){dragId=id;e.dataTransfer.effectAllowed='move'}
 function taskEdit(id){api('api/tasks').then(t=>{const x=(t.manual||[]).find(y=>y.id===id);if(!x)return;TM_ID=id;
@@ -689,7 +730,6 @@ function pickCat(c){RCAT=c;renderReports();const files=REPORTS[c]||[];
  $('rlist').innerHTML=files.map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${f.date}</span>${esc(f.name)}</a>`).join('')||'<span class="mut">此分类暂无文件</span>'}
 
 /* ---- 知识中台 ---- */
-let KDIR='';
 function addKbExtra(){const label=$('kx-label').value.trim(),dir=$('kx-dir').value.trim();
  if(!label||!dir)return alert('填名称和目录');
  api('api/projects/config',{kb_extra:[{label,dir,glob:'**/*.md'}]}).then(r=>{if(r.error)return alert(r.error);
@@ -749,8 +789,30 @@ function decide(){api('api/router/decide',{stage:$('rstage').value,scenario:$('r
 function runHook(){api('api/hook/run',{hook:$('hook').value,file:$('hfile').value.trim()}).then(r=>{$('hout').textContent=`exit=${r.rc}\n`+r.out})}
 
 /* ---- 系统 ---- */
+function notifySave(){api('api/notify/save',{enabled:$('nt-en').checked,feishu_webhook:$('nt-hook').value.trim()})
+ .then(()=>{$('nt-status').innerHTML='<span class="ok">✓ 已保存</span>（仅 admin 可改）'})}
+function notifyTest(){$('nt-status').textContent='发送中…';
+ api('api/notify/test',{}).then(r=>{$('nt-status').innerHTML=r.ok?'<span class="ok">✓ 测试消息已发出，去飞书群查看</span>':'<span class="warn">发送失败：先保存启用状态与 Webhook</span>'})}
 function loadSys(){api('api/overview').then(o=>{$('drun').innerHTML=o.daily.running?'<span class="warn">运行中…</span>':'<span class="ok">空闲</span>';
- $('drbtn').disabled=o.daily.running;$('dtail').textContent=o.daily.tail||'（尚无日志）';$('stimers').textContent=o.timers})}
+ $('drbtn').disabled=o.daily.running;$('dtail').textContent=o.daily.tail||'（尚无日志）';$('stimers').textContent=o.timers});
+ loadSchedReport()}
+function loadSchedReport(){api('api/schedule/all').then(r=>{
+ const rows=r.rows||[];$('sched-meta').textContent=`${r.date} · ${rows.filter(x=>x.enabled).length}/${rows.length} 项目开启自动排程`;
+ if(!rows.length){$('sched-report').innerHTML='<span class="mut">暂无项目</span>';return}
+ const bar=x=>{const pct=x.quota?Math.min(100,x.created_today/x.quota*100):0;
+  return `<div style="display:flex;align-items:center;gap:8px"><div style="flex:1;height:8px;border-radius:99px;background:var(--hover);overflow:hidden"><div style="height:100%;width:${pct}%;background:${pct>=100?'var(--danger)':'var(--accent)'};border-radius:99px"></div></div><span class="tnum mut" style="font-size:11px;flex:0 0 auto">${x.created_today}/${x.quota||'∞'}</span></div>`};
+ $('sched-report').innerHTML=`<div style="overflow:auto"><table style="width:100%;border-collapse:collapse;font-size:12.5px">
+  <tr style="color:var(--muted);text-align:left">${['项目','自动排程','今日配额','运行中','排队 Loop','选题队列','最近排程日志'].map(h=>`<th style="padding:6px 10px;border-bottom:1px solid var(--border);font-weight:600">${h}</th>`).join('')}</tr>
+  ${rows.map(x=>`<tr>
+   <td style="padding:8px 10px;border-bottom:1px solid var(--border)"><b>${esc(x.name)}</b> <span class="mut" style="font-size:10.5px">${esc(x.id)}</span></td>
+   <td style="padding:8px 10px;border-bottom:1px solid var(--border)">${x.enabled?'<span class="ok">● 开</span>':'<span class="mut">○ 关</span>'}</td>
+   <td style="padding:8px 10px;border-bottom:1px solid var(--border);min-width:140px">${bar(x)}</td>
+   <td class="tnum" style="padding:8px 10px;border-bottom:1px solid var(--border)">${x.running||'—'}</td>
+   <td class="tnum" style="padding:8px 10px;border-bottom:1px solid var(--border)">${x.queued||'—'}</td>
+   <td class="tnum" style="padding:8px 10px;border-bottom:1px solid var(--border)">${x.queue_len}</td>
+   <td style="padding:8px 10px;border-bottom:1px solid var(--border)"><span class="mut" style="font-family:var(--font-mono);font-size:10.5px">${x.log_tail?esc(x.log_tail.split('\n').pop()):'—'}</span></td>
+  </tr>`).join('')}</table></div>`+
+ (rows.some(x=>x.log_tail)?`<details style="margin-top:10px"><summary class="mut" style="cursor:pointer;font-size:12px">展开各项目排程日志尾</summary>${rows.filter(x=>x.log_tail).map(x=>`<div style="margin-top:8px"><b style="font-size:12px">${esc(x.name)}</b><pre style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px;font-size:11px;margin-top:4px;white-space:pre-wrap">${esc(x.log_tail)}</pre></div>`).join('')}</details>`:'')})}
 function runDaily(){api('api/daily/run').then(()=>{setTimeout(()=>{if(TAB==='sys')loadSys();if(TAB==='home')loadHome()},1500)})}
 
 /* ---- 创作中心 ---- */
@@ -768,12 +830,12 @@ function pickTpl(id,el){CTPL=id;document.querySelectorAll('#ctpl .chip').forEach
 function slugFromTopic(){const t=$('ctopic').value.trim()||$('ftopic').value.trim();const s=slugify(t);return s}
 function startLoop(){const topic=$('ctopic').value.trim();if(!topic)return alert('先填主题');
  const id=($('cid').value.trim()||slugFromTopic());
- api('api/loop/create',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim()},template_id:CTPL)
+ api('api/loop/create',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim(),template_id:CTPL})
   .then(r=>{if(r.error)return alert(r.error);alert('Loop 已发起（id='+r.id+'），到「Loop · Agent 模式」看实时日志');setTab('loops')})}
 function genOnce(){const topic=$('ctopic').value.trim();if(!topic)return alert('先填主题');
  const id=($('cid').value.trim()||slugFromTopic());
  const btn=event.target;btn.disabled=true;btn.textContent='生成中…';
- api('api/generate',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim()},template_id:CTPL)
+ api('api/generate',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim(),template_id:CTPL})
   .then(r=>{btn.disabled=false;btn.textContent='单次生成（节点·生成步）';
    if(r.error)return alert(r.error);
    alert('已生成 '+r.path+'（'+r.chars+' 字符）\n质检 exit='+r.hook_rc+'\n\n'+(r.hook_rc===0?'✅ 质检 PASS':'⚠️ 质检 BLOCK，见下')+'\n'+r.hook_out.slice(-600))})}
@@ -828,6 +890,7 @@ function loadSet(){loadProjCfg();api('api/llm').then(c=>{LLMCFG=c;
    <select id="lpr-prov-${n}">${Object.keys(c.providers).map(x=>`<option ${p.provider===x?'selected':''}>${x}</option>`).join('')}</select>
    <input id="lpr-model-${n}" value="${esc(p.model||'')}" placeholder="model" style="flex:1;min-width:160px"></div>`).join('');
  if(!c.providers.deepseek.key)$('llm-test').textContent='（尚未配置 Key——生成功能不可用）';
+ api('api/notify').then(n=>{$('nt-en').checked=!!n.enabled;$('nt-hook').value=n.feishu_webhook||''}).catch(()=>{});
  api('api/account/list').then(acc=>{
   $('acc-role').textContent=window.__ROLE==='admin'?'（当前 admin）':'（需 admin 角色可见操作）';
   $('acc-list').innerHTML='<table><tr><th>用户名</th><th>姓名</th><th>角色</th><th>项目</th></tr>'+acc.map(a=>
@@ -858,6 +921,10 @@ function loadProjCfg(){api('api/projects').then(d=>{
  if($('cfg-name'))$('cfg-name').textContent='（'+((d.projects.find(p=>p.id===d.current)||{name:d.current}).name)+'）';
  if($('cfg-quota'))$('cfg-quota').value=sc.daily_quota||0;
  if($('cfg-auto'))$('cfg-auto').checked=!!sc.auto_loop;
+ const lv=m.llm||{};
+ if($('pj-llm-prov')){$('pj-llm-prov').value=lv.provider||'';
+  $('pj-llm-base').value=lv.base||'';$('pj-llm-key').value=lv.key||'';$('pj-llm-model').value=lv.model||'';
+  $('pj-llm-hint').textContent=lv.key?('已生效：项目独立 Key（'+lv.provider+'）——Loop/生成走本 Key'):'未启用覆盖：生成走全局 LLM 配置';}
  api('api/schedule/status').then(s=>{
   const st=$('sched-status');if(!st)return;
   st.innerHTML=`执行器：<span class="${s.enabled?'ok':'mut'}">${s.enabled?'启用':'未启用（勾选上方开关并保存）'}</span>
@@ -872,6 +939,9 @@ function addTopics(){const v=$('tq-add').value;if(!v.trim())return alert('每行
 function delTopic(i){api('api/topics/del',{index:i}).then(()=>loadProjCfg())}
 function saveProjCfg(){api('api/projects/config',{schedule:{daily_quota:$('cfg-quota').value,auto_loop:$('cfg-auto').checked}})
  .then(r=>{if(r.error)return alert(r.error);alert('项目配置已保存')})}
+function saveProjLlm(){api('api/projects/config',{llm:{provider:$('pj-llm-prov').value||'custom',
+ base:$('pj-llm-base').value.trim(),key:$('pj-llm-key').value.trim(),model:$('pj-llm-model').value.trim()}})
+ .then(r=>{if(r.error)return alert(r.error);alert('项目 LLM 已保存（无 Key 即回退全局）');loadProjCfg()})}
 function resetAcc(){const u=$('acc-u').value.trim(),p=$('acc-p').value;if(!u||p.length<6)return alert('填用户名和 ≥6 位新密码');
  if(!confirm('确认重置 '+u+' 的密码？'))return;
  api('api/account/reset',{username:u,new_password:p}).then(r=>{alert(r.error?('失败：'+r.error):'已重置，该账号可用新密码登录');$('acc-p').value=''})}
@@ -924,8 +994,7 @@ function loadUsage(){api('api/usage').then(u=>{
   u.recent.map(r=>`<tr><td class="mut">${esc(r.ts)}</td><td>${esc(r.profile)}</td><td class="mut">${esc(r.model)}</td><td class="tnum">${r.prompt_tokens}</td><td class="tnum">${r.completion_tokens}</td><td class="tnum">${r.total_tokens}</td><td class="tnum">${r.latency_s}s</td></tr>`).join('')||'<tr><td colspan="7" class="mut">还没有调用——配好 LLM 后在创作中心发起一次即可</td></tr>'})}
 
 /* ---- 模板市场 ---- */
-function loadMkt(){api('api/templates').then(ts=>{
- $('nav-mkt').textContent=ts.length;
+function loadMkt(){api('api/templates').then(ts=>{ $('nav-mkt').textContent=ts.length;
  $('mkt-list').innerHTML=ts.map(x=>`<div class="card" style="margin-bottom:12px">
   <div class="card-head"><h3 style="font-size:15px">${esc(x.name)} <span class="mut">v${esc(x.version)} · ${esc(x.author||'')}</span></h3>
    <div class="row">
@@ -936,11 +1005,34 @@ function loadMkt(){api('api/templates').then(ts=>{
    </div></div>
   <div class="mut">${esc(x.description||'')}</div>
   ${x.workflow?`<div class="chips" style="margin-top:8px">${(x.workflow.flow||[]).map(s=>`<span class="chip" style="cursor:default">${esc(s)}</span>`).join('<span class="mut">→</span>')}</div>`:''}
-  </div>`).join('')||'<span class="mut">无模板</span>'})}
+  </div>`).join('')||'<span class="mut">无模板</span>';loadPlugins()})}
 function useTpl(id){setTab('create');setTimeout(()=>{const el=[...document.querySelectorAll('#ctpl .chip')].find(c=>(c.getAttribute('onclick')||'').includes("'"+id+"'"));if(el)el.click()},300)}
 function importTpl(){try{const tpl=JSON.parse($('imp-json').value);api('api/templates/import',{template:tpl}).then(r=>{if(r.error)return alert(r.error);alert('已导入：'+r.id);$('imp-json').value='';loadMkt()})}catch(e){alert('JSON 解析失败')}}
 function importFile(inp){const f=inp.files[0];if(!f)return;const rd=new FileReader();rd.onload=()=>{$('imp-json').value=rd.result;importTpl()};rd.readAsText(f)}
 function delTpl(id){if(!confirm('删除模板 '+id+'？'))return;api('api/templates/delete',{id}).then(()=>loadMkt())}
+
+/* ---- 插件市场 ---- */
+function loadPlugins(){api('api/plugins').then(r=>{
+ const ins=r.installed||[],av=r.available||[];
+ $('plg-n').textContent=`（已装 ${ins.length} · 可装 ${av.length}）`;
+ $('plg-list').innerHTML=ins.map(x=>`<div class="task" style="align-items:center">
+  <span class="act-ic ${x.pass?'ok':'wn'}" style="width:26px;height:26px">${x.pass?'✓':'?'}</span>
+  <span class="tt" style="flex:1"><b style="font-weight:600">${esc(x.name)}</b>
+   <span class="badge ${x.type==='source'?'pipe':'dist'}">${esc(x.type)}</span>
+   <div class="mut" style="font-size:11px">v${esc(x.version)} · ${esc(x.author||'')} · plugins/${esc(x.dir)} ${x.pass?'· 校验 PASS':'· '+esc((x.checks||[])[0]||'校验失败')}</div></span>
+  <button class="mini" style="color:var(--danger)" onclick="plgUninstall('${esc(x.id)}')">卸载</button></div>`).join('')||'<span class="mut">尚未安装任何插件</span>';
+ $('plg-avail').innerHTML=av.length?`<b style="font-size:13px">可安装</b>`+av.map(x=>`<div class="task" style="align-items:center;margin-top:6px">
+  <span class="tt" style="flex:1"><b style="font-weight:600">${esc(x.name)}</b> <span class="badge ${x.type==='source'?'pipe':'dist'}">${esc(x.type)}</span>
+   <div class="mut" style="font-size:11.5px">${esc(x.desc||'')} · v${esc(x.version||'')} · ${esc(x.author||'')}</div></span>
+  <button class="mini" onclick="plgFill('${esc(x.id)}')">填入安装框 →</button></div>`).join(''):''})}
+function plgFill(id){api('api/plugins').then(r=>{const x=(r.available||[]).find(y=>y.id===id);if(!x)return;
+ $('plg-mf').value=JSON.stringify(x.manifest,null,1);$('plg-code').value=x.entry_code||'';
+ $('plg-box').style.display='block';$('plg-hint').textContent='已填入 '+id+'，点「校验并安装」'})}
+function plgInstall(){let mf;try{mf=JSON.parse($('plg-mf').value)}catch(e){return alert('manifest JSON 解析失败')}
+ api('api/plugins/install',{manifest:mf,entry_code:$('plg-code').value}).then(r=>{
+  if(r.error)return alert('安装失败：'+r.error);alert('已安装并通过校验：'+r.id);$('plg-mf').value='';$('plg-code').value='';loadPlugins()})}
+function plgUninstall(id){if(!confirm('卸载插件 '+id+'？（移入 plugins/_trash，可手动找回）'))return;
+ api('api/plugins/uninstall',{id}).then(r=>{if(r.error)return alert(r.error);loadPlugins()})}
 
 /* ---- 报告仪表 ---- */
 function loadRdash(){if($('rd-cat').children.length)return;
@@ -962,7 +1054,7 @@ function chartToggle(btn,tblIdx){const holder=document.getElementById('chart-'+t
  holder.style.display='block';
  const data=window.__TBLDATA&&window.__TBLDATA[tblIdx];if(!data)return;
  const canvas=document.createElement('canvas');holder.innerHTML='';holder.appendChild(canvas);
- new Chart(canvas,{type:'bar',data:{labels:data.rows.map(r=>r[0]),datasets:data.headers.slice(1).map((h,i)=>({label:h,data:data.rows.map(r=>{const v=parseFloat((r[i+1]||'').replace(/,/g,''));return isNaN(v)?0:v})),backgroundColor:`hsl(${250+i*40} 70% 60% / .65)`}))},options:{responsive:true}})}
+ new Chart(canvas,{type:'bar',data:{labels:data.rows.map(r=>r[0]),datasets:data.headers.slice(1).map((h,i)=>({label:h,data:data.rows.map(r=>{const v=parseFloat((r[i+1]||'').replace(/,/g,''));return isNaN(v)?0:v}),backgroundColor:`hsl(${250+i*40} 70% 60% / .65)`}))},options:{responsive:true}})}
 async function rdRenderDual(){const b=$('rd-file-b').value;if(!b)return;
  const d=await api('api/report/structure?path='+encodeURIComponent(b));
  $('rd-body').innerHTML=`<div class="card"><div class="card-head"><h3>对比基准：${esc(d.title)}</h3><button class="more" onclick="rdRender()">← 返回单报告</button></div>
