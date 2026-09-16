@@ -1802,7 +1802,7 @@ class Handler(BaseHTTPRequestHandler):
                 if not step:
                     return self._send(400, {"error": "unknown step or no cmd"})
                 env = dict(os.environ)
-                env.setdefault("LOVART_PYTHON", "/var/www/mflow/.venv/bin/python")
+                env.setdefault("LOVART_PYTHON", str(PROJECT / ".venv" / "bin" / "python"))
                 r = run_tool(step["cmd"], timeout=280)
                 return self._send(200, r)
             if self.path == "/api/setup/seed-demo":
