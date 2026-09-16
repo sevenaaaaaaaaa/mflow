@@ -100,6 +100,12 @@
 - ✅ P6.9 citations × 已发布 URL 精确归因：canonical 路径归一化匹配（协议/子域/query/尾斜杠容错）→ GEO 卡「被 AI 引用的页面」（slug/平台/被引次数/命中查询）
 - ✅ P6.10 GEO 曲线进自我迭代仪表：第四条曲线 = 品牌提及率 14 日（实心柱=被提及日）+ 缺口计数徽标
 
+### P7 批次（2026-09-16 ✅）
+- ✅ P7-B1 内容衰减监测：decay_analysis（发布≥30 天 × GSC Top20 无记录 × 无 AI 引用）→ 分发页衰减卡 + 一键改稿 Loop
+- ✅ P7-B3 多引擎交叉探测：engines[] 任意 provider 直连（缺 Key 引擎级报错）+ per_engine 分拆 + 引擎分歧检测徽标
+- ✅ P7-C 门禁固化：session-init GATE 5 console syntax（node --check JS × ast py × bash -n hooks）——4 处语法回归类事故自此有硬门禁；门禁自身 python 解析/glob 三 bug 顺修，服务器 5/5 PASS
+- 📋 P7-B2 竞品引用源反向工程 · P7-B5 发布后自动复测 · P7-B6 GEO 综合分 · 衰减自动改稿 opt-in
+
 ## 原则
 
 1. 文件即状态：不引入数据库也能跑，规模化时才换 PG（接口已预留）
