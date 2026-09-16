@@ -62,7 +62,7 @@
 - ✅ 发布审批流：dispatch 单 admin「批准发布」按钮 + approved_by/approved_at + run/approvals.log 审计
 - ✅ 账号管理：admin 在设置页查看 13 账号与角色、重置任意账号密码（审计留痕）；root CLI `deploy/reset-account.sh` 免登录重置
 - ✅ 二级目录入口 nownexts.com/mflow/ + 当前用户显示 + 卡片负责人默认当前用户
-- 📋 归属人过滤（"我的任务"视图）并入下一小批
+- ✅ 归属人过滤（"我的任务"视图）（2026-09-16 Phase 5 收官交付）
 
 **P3.2 模板市场雏形（2026-09-15 ✅）**
 - ✅ 模板包格式 v1：{id/name/version + workflow 定义 + prompt(audience/tone/structure/anti_slop_extra) + kb_sources_suggestion} 单 JSON，`templates/` 随仓库分发
