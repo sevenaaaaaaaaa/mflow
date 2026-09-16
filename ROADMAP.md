@@ -94,6 +94,12 @@
 - ✅ P6.5 改稿 Loop：0 引用查询一键「→ 改稿 Loop」（refresh-slug，brief 内置 GEO 重写指令，走既有 Loop 引擎）
 - ✅ P6.6 GEO 仪表：设置页 GEO 卡——品牌提及率/竞品份额/近 14 日趋势迷你柱图/缺口清单
 
+### P6 二批（2026-09-16 ✅）
+- ✅ P6.7 每日自动探测：geo_scheduler 后台线程（每小时检查，09:30 后、当日无成功记录即探测）；设置页 GEO 卡「每日自动探测」开关；失败/记账行不阻塞当日重试
+- ✅ P6.8 Perplexity sonar 真引用：providers 新增 perplexity（api.perplexity.ai）；GEO 卡选引擎 + 模型名（sonar/sonar-pro）；响应官方 citations 直接采信；llm_chat_full() 返回 (content, meta) 不走 demo 回退
+- ✅ P6.9 citations × 已发布 URL 精确归因：canonical 路径归一化匹配（协议/子域/query/尾斜杠容错）→ GEO 卡「被 AI 引用的页面」（slug/平台/被引次数/命中查询）
+- ✅ P6.10 GEO 曲线进自我迭代仪表：第四条曲线 = 品牌提及率 14 日（实心柱=被提及日）+ 缺口计数徽标
+
 ## 原则
 
 1. 文件即状态：不引入数据库也能跑，规模化时才换 PG（接口已预留）
