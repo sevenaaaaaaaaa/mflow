@@ -1903,6 +1903,10 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/version":
                 v = VERSION_FILE.read_text().strip() if VERSION_FILE.exists() else "dev"
                 return self._send(200, {"version": v, "started": time.strftime("%Y-%m-%d")})
+            if parsed.path == "/api/auth/me":
+                return self._send(200, {"username": self._me(), "role": self._role(),
+                                        "machine": self._machine() and not self._me(),
+                                        "name": (auth_record(self._me()) or {}).get("name", self._me())})
             if parsed.path == "/api/daily/log":
                 return self._send(200, daily_status())
             if parsed.path == "/api/usage":
