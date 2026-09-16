@@ -112,6 +112,15 @@
 - ✅ P7-B6 GEO 综合分：提及率40 + 缺口覆盖30 + 相对份额20 + 结构健康10 → 0-100（无数据不造假分）
 - ✅ 衰减自动改稿 opt-in：auto_refresh 开关，每日 ≤2 篇 refresh Loop 自动排程（去重 + 审计）
 
+## Phase 8 · OpenFlow 联动（2026-09-16 启动）
+
+- ✅ L1 身份打通：OpenFlow users.json bcrypt 继承登录（P3.1 已交付）
+- ✅ L2 机器 API：X-MFlow-Token GET-only（写动作仍归真人会话）——外部系统可拉版本/状态/impact/geo 缺口等只读数据
+- 📋 L3 发布回流 OpenFlow：webhook/wordpress 适配器逐家联调
+- 📋 L4 业务信号→选题：OpenFlow 订单/咨询/FAQ 热词 → topics 队列
+- 📋 L5 CDP 事件→归因：转化事件作为 impact 数据源（plugins source 规范已预留）
+- 📋 L6 后台互链：OpenFlow 面板嵌 MFlow 卡片 / 报告回链
+
 ## 原则
 
 1. 文件即状态：不引入数据库也能跑，规模化时才换 PG（接口已预留）
