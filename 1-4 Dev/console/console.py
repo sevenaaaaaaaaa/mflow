@@ -730,7 +730,8 @@ ANTI_SLOP = """硬性写作规则（违反任何一条即为废稿）：
 
 GEO_RULES = """GEO 可引用性规则（生成式引擎按块摘录，违反会被 GEO 门禁打回）：
 - 至少 2 个 H2/H3 标题写成用户真实提问的形式（以 ? 或 ？结尾），或包含一节 FAQ
-- 每千字至少 1 个具体数据点（百分比/价格/年份/倍数）；来源可考的注明出处链接（≥2 条外部权威链接）
+- 每千字至少 1 个具体数据点（百分比/价格/年份/倍数）
+- 引用外部来源时必须写出完整可点击链接（https://…）+ 来源名，全文 ≥2 条（不要只写域名）
 - 段落保持自包含短段：单段不超过 300 字符，一段只讲一个可摘录的观点
 - 关键结论写成可直接摘录的"定义句/结论句"（主语+判断+数据）"""
 
@@ -1914,7 +1915,7 @@ def api_state(proj):
     decisions = [{"stage": d.get("stage"), "scenario": d.get("scenario"),
                   "profile": d.get("profile"), "action": d.get("action")}
                  for d in (ROUTER.DECISIONS if ROUTER else [])]
-    return {"items": items,
+    return {"items": items, "project": proj,
             "legal_transitions": {k: sorted(v) for k, v in PS.TRANSITIONS.items()},
             "phases": PS.PHASES, "events": events, "decisions": decisions}
 

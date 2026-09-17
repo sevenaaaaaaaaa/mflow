@@ -864,12 +864,16 @@ function approveDispatch(id){if(!confirm('确认以 admin 身份批准 '+id+' �
  api('api/dispatch/approve',{id}).then(r=>{if(r.error)alert(r.error);loadDist()})}
 /* ---- 管线 ---- */
 function loadPipe(){api('api/state').then(S=>{
+ window.__PROJ=S.project||'main';
  $('nav-pipe').textContent=S.items.filter(i=>!['done','failed','escalated'].includes(i.stage)).length;
  const by={};S.phases.forEach(p=>by[p]=[]);S.items.forEach(i=>(by[i.phase]||by['?']).push(i));
  $('board').innerHTML=S.phases.map(p=>`<div class="phase"><b>${p}（${by[p].length}）</b>${by[p].map(i=>{
   const tos=S.legal_transitions[i.stage]||[];
   return `<div class="pitem"><div class="id">${esc(i.id)}</div><div class="st">${esc(i.stage)}</div>
+   <button class="more" onclick="readDraft('${esc(i.id)}','${esc(i.artifact_path||'')}')">读草稿</button>
    ${tos.length?`<select onchange="advance('${esc(i.id)}',this.value)"><option value="">→ 推进…</option>${tos.map(t=>`<option>${t}</option>`).join('')}</select>`:''}</div>`}).join('')||'<div class="mut" style="margin-top:8px">空</div>'}</div>`).join('')})}
+function readDraft(id,artifact){const p=artifact||`run/projects/${window.__PROJ||'main'}/content/${id}.md`;
+ api('api/read?path='+encodeURIComponent(p)).then(r=>{if(r.error||!r.html){if(confirm('按约定路径没找到草稿：\\n'+p+'\\n\\n去「Loop · Agent 模式」用日志核对实际路径。要在报告中心找找吗？'))setTab('reports');return}openReader(p)}).catch(()=>alert('读取失败：'+p))}
 function advance(id,to){if(!to)return;api('api/item/advance',{id,to,reason:'console'}).then(r=>{if(r.rc!==0)alert('状态机拒绝：\n'+r.out);loadPipe()})}
 function upsert(){const id=$('nid').value.trim();if(!id)return alert('先填 id');api('api/item/upsert',{id,category:$('ncat').value,target_type:$('ncat').value}).then(r=>{if(r.rc!==0)alert(r.out||r.error);else $('nid').value='';loadPipe()})}
 
@@ -1001,6 +1005,7 @@ function loadLoops(){api('api/loops').then(L=>{
  $('loop-list').innerHTML=L.map(x=>`<div class="task"><span class="tt">${esc(x.goal)}<div class="mut">${esc(x.type)} · ${esc(x.lang)} · ${esc(x.created||'')} · 轮次 ${x.round||0}/${x.max_rounds||3} · item: ${esc(x.item_id)}${x.tokens_used?` · tokens ${x.tokens_used}`:''}</div></span>
   <span class="badge ${x.status==='running'?'pipe':x.status==='done'?'':'dist'}" style="${x.status==='done'?'background:var(--ok)':''}">${esc(x.status)}</span>
   <button class="more" onclick="loopLog('${x.id}')">日志</button>
+  ${x.draft_path?`<button class="more" onclick="openReader('${esc(x.draft_path)}')">读草稿</button>`:''}
   ${x.status==='running'||x.status==='queued'?`<button class="more" style="color:var(--danger)" onclick="loopStop('${x.id}')">停止</button>`:''}</div>`).join('')||'<span class="mut">还没有 Loop——去「创作中心」发起</span>'})}
 function loopLog(id){api('api/loop/detail?id='+id).then(x=>{$('loop-log-t').textContent='运行日志 · '+x.goal+' · '+x.status;
  $('loop-log').innerHTML=fmtHook((x.log||[]).join('\n'))||'（无日志）'})}
