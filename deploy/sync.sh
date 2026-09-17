@@ -124,6 +124,8 @@ SYNC_ITEMS=(
     "./1-4 Dev/scripts/session-init.sh|${REMOTE_ROOT}/1-4 Dev/scripts/session-init.sh"
     "./1-4 Dev/scripts/publish_adapters/|${REMOTE_ROOT}/1-4 Dev/scripts/publish_adapters/"
     "./1-4 Dev/scripts/trident/|${REMOTE_ROOT}/1-4 Dev/scripts/trident/"
+    "./1-4 Dev/scripts/library/|${REMOTE_ROOT}/1-4 Dev/scripts/library/"
+    "run/sites/|${REMOTE_ROOT}/run/sites/"
     "plugins/|${REMOTE_ROOT}/plugins/"
     "templates/|${REMOTE_ROOT}/templates/"
     "deploy/|${REMOTE_ROOT}/deploy/"
