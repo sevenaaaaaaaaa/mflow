@@ -176,8 +176,13 @@
 - ✅ API `/api/agent/{sessions,session,chat,execute}` + 文档 docs/agent.md
 - 📋 待办：长文 skill 流程深度接入（7500 词级）；会话删除/归档
 
-**P12.4 QA → 修复编排（📋）**
-- 📋 QA 结果 → finding → 自动生成修复任务 → 执行 → 复检
+**P12.4 QA → 修复编排（✅ 2026-09-17 交付）**
+- ✅ 批量扫描：`qa` 执行器（kind=sanity 字段规则确定性检查 / kind=md 跑门禁钩子）；范围展开 `kind=sanity-filter|drafts`
+- ✅ findings 结构化：`{target, rule, severity, detail, fix{type,set}}`——规则：seoTitle 缺失/超长 · description 缺失/超长 · cover.alt 缺失 · 草稿 block/warn
+- ✅ 一键编排：字段→field_patch · alt→asset_replace · 草稿 block→rewrite（复用批量执行器；dry-run 默认）
+- ✅ 复检闭环：同目标新建 QA 任务（parent 关联）→ `/api/qa/delta` 输出已解决/新增；实测 dry-run 下如实报告"未闭环"（不伪造）
+- ✅ 工作台「QA 编排」页 + API `/api/qa/{create,tasks,findings,cycles,delta,orchestrate,recheck}` + docs/qa.md
+- 📋 待用户：真实修复放量（实测 84 项待修：60 补 seoTitle + 24 截断 description）
 
 ## 原则
 
