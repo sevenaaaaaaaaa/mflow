@@ -7,12 +7,14 @@
 # Usage: bash quota-check.sh --file x.md [--type blog|landing] [--lang zh]
 set -euo pipefail
 
-FILE=""; TYPE="blog"; LANG="zh"
+FILE=""; TYPE="blog"; LANG="zh"; PROFILE="default"; MAXWORDS_OVERRIDE=0
 while [[ $# -gt 0 ]]; do
   case "$1" in
     --file) FILE="$2"; shift 2;;
     --type) TYPE="$2"; shift 2;;
     --lang) LANG="$2"; shift 2;;
+    --profile) PROFILE="$2"; shift 2;;          # default | longform（RULES-70 §21 豁免）
+    --max-words) MAXWORDS_OVERRIDE="$2"; shift 2;;
     -h|--help) sed -n '2,10p' "$0"; exit 2;;
     *) echo "unknown arg: $1" >&2; exit 2;;
   esac
@@ -24,7 +26,7 @@ ok()   { echo "  ✓ $*"; }
 warn() { WARNINGS+=("$*"); echo "  ! $*"; }
 err()  { ERRORS+=("$*");   echo "  ✗ $*"; }
 
-echo "[quota-check] file=$FILE type=$TYPE lang=$LANG"
+echo "[quota-check] file=$FILE type=$TYPE lang=$LANG profile=$PROFILE"
 
 # 中英混合计数：CJK 字符 + 英文词
 CHARS=$(perl -CSD -ne '$c += () = /\p{Han}|\p{Hiragana}|\p{Katakana}|\p{Hangul}/g; $w += () = /[A-Za-z0-9]+/g; END { print int($c + $w * 1.5) }' "$FILE" 2>/dev/null || wc -c < "$FILE")
@@ -35,19 +37,22 @@ QH=$(grep -cE '^#{2,3} .*[?？]$' "$FILE" || true)
 # ① 字数上限（RULES-70：Blog 1200-1800，上限 +20% → 2160；落地页 600-1000 → 1200）
 echo "[1/6] 字数预算"
 if [[ "$TYPE" == "landing" ]]; then MAXW=1200; else MAXW=2160; fi
+if [[ "$PROFILE" == "longform" ]]; then MAXW=9000; H2MAX=14; FAQMAX=8; LISTMAX=14   # 长文 skill 豁免（须显式声明）
+else H2MAX=7; FAQMAX=5; LISTMAX=12; fi
+[[ "${MAXWORDS_OVERRIDE:-0}" -gt 0 ]] && MAXW="$MAXWORDS_OVERRIDE"
 if [[ "$CHARS" -gt "$MAXW" ]]; then
-  err "字数 $CHARS > 上限 $MAXW（注水嫌疑：优先删冗余，勿扩写）"
+  err "字数 $CHARS > 上限 ${MAXW}（注水嫌疑：优先删冗余，勿扩写）"
 else
   ok "字数 $CHARS ≤ $MAXW"
 fi
 
 # ② H2 数
 echo "[2/6] H2 章节数"
-if [[ "$H2" -gt 7 ]]; then err "H2=$H2 > 7（拆碎充结构）"; else ok "H2=$H2 ≤ 7"; fi
+if [[ "$H2" -gt "$H2MAX" ]]; then err "H2=$H2 > ${H2MAX}（拆碎充结构）"; else ok "H2=$H2 ≤ $H2MAX"; fi
 
 # ③ FAQ 数
 echo "[3/6] FAQ 条数"
-if [[ "$FAQ" -gt 0 && "$QH" -gt 5 ]]; then err "问答式标题 $QH > 5（FAQ 超量）"; else ok "问答式标题 $QH"; fi
+if [[ "$FAQ" -gt 0 && "$QH" -gt "$FAQMAX" ]]; then err "问答式标题 $QH > ${FAQMAX}（FAQ 超量）"; else ok "问答式标题 $QH"; fi
 
 # ④ 重复句/重复段落（去重后行数对比）
 echo "[4/6] 重复句/段落"
@@ -68,7 +73,7 @@ if [[ "$DUP" -gt 2 ]]; then err "重复句/段 $DUP 处（同一观点写了两�
 # ⑤ 列表灌水（连续列表块 / 列表总块）
 echo "[5/6] 列表灌水"
 LISTRUN=$(awk 'BEGIN{run=0;max=0} /^[-*] /{run++; if(run>max)max=run; next} {run=0} END{print max+0}' "$FILE")
-if [[ "$LISTRUN" -gt 12 ]]; then err "连续列表项 $LISTRUN > 12（把段落改成清单充数）"; else ok "连续列表项 $LISTRUN"; fi
+if [[ "$LISTRUN" -gt "$LISTMAX" ]]; then err "连续列表项 $LISTRUN > ${LISTMAX}（把段落改成清单充数）"; else ok "连续列表项 $LISTRUN"; fi
 
 # ⑥ 模板过渡词 / 无信息量形容词堆叠
 echo "[6/6] 模板过渡词与空话"

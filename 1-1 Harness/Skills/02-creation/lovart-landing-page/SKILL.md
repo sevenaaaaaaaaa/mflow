@@ -3,6 +3,15 @@ name: lovart-landing-page
 description: Lovart 落地页文案生成与修复技能。Tools 走 composite-v2 + T1–T-long；Landing Page（投放向）走 7 条故事线（landing-storylines.json）；Features 等仍可用 legacy 六区块。触发：（1）生成 Tools/Landing/Features JSON；（2）修复结构；（3）重生成；（4）SEO + JSON-LD。
 ---
 
+## 预算（RULES-70 强制）
+
+- 字数：Blog 1200–1800（**绝不超 2160**）；落地页文案 600–1000；摘要/分发稿 ≤600
+- H2 4–7 · FAQ 3–5 · 每千字 1–3 数据点（同数据不重复）· 外部来源 2–5 条（完整 URL）
+- 列表块 ≤4 处且不连续；单段 ≤300 字符；**禁止**同义反复 / 复述式总结 / 模板过渡词堆砌 / 形容词堆叠
+- 字数不足时**优先删冗余**，绝不补形容词
+- 长文（7500 词级）如需豁免：本 skill frontmatter 声明 `budget_profile: longform`，调用时显式传参（见 RULES-70 §五）
+- 交付前必须过：`post-write-check.sh` · `geo-check.sh` · `quota-check.sh` · `lang-check.sh`
+
 ## 路径契约
 
 | 层 | 路径 |

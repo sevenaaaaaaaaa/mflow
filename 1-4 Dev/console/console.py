@@ -730,6 +730,11 @@ CONTENT_BUDGET = """数量预算（RULES-70，超限即废稿）：
 - 禁止：同义反复 / 复述式总结（综上所述）/ 模板过渡词堆砌（首先其次然后最后 ≥4 次）/ 形容词堆叠（强大而灵活）
 - 字数不足时优先删冗余，绝不补形容词；能删不扩"""
 
+CONTENT_BUDGET_LONGFORM = """数量预算（长文豁免档，须 skill 显式声明 budget_profile: longform）：
+- 字数上限 9000；H2 ≤14；FAQ ≤8；连续列表项 ≤14
+- 其余同 RULES-70（数据点密度、禁止重复句/复述/过渡词堆砌、优先删冗余）
+- **豁免不等于放水**：仍受 Anti-Slop 与 GEO 门禁约束"""
+
 LANG_RULES = {
     "zh": "简体中文：全角标点；数字与英文词前后不加空格；避免连续「的」；不用英文标点结尾",
     "zh-TW": "繁體中文：禁止簡體字（設計/內容/專案/資訊/影片）；用台湾惯用语",
@@ -786,12 +791,13 @@ def list_templates():
     return out
 
 
-def run_content_gates(path, ctype="blog", lang="zh", tag="gate"):
+def run_content_gates(path, ctype="blog", lang="zh", tag="gate", budget_profile="default"):
     """统一内容门禁：结构/反slop + GEO 可引用性 + 数量预算 + 语言规范。"""
     args_by_hook = {
         "post-write-check.sh": ["--target-words", "300"],
         "geo-check.sh": [],
-        "quota-check.sh": ["--type", "landing" if str(ctype).startswith("landing") else "blog", "--lang", lang or "zh"],
+        "quota-check.sh": ["--type", "landing" if str(ctype).startswith("landing") else "blog",
+                           "--lang", lang or "zh", "--profile", budget_profile or "default"],
         "lang-check.sh": ["--lang", lang or "zh"],
     }
     out = {}
@@ -802,7 +808,7 @@ def run_content_gates(path, ctype="blog", lang="zh", tag="gate"):
     return out
 
 
-def gen_prompt(ctype, lang, topic, brief, feedback="", template=None):
+def gen_prompt(ctype, lang, topic, brief, feedback="", template=None, budget_profile="default"):
     lang_name = {"zh": "简体中文", "zh-TW": "繁体中文", "en": "English", "ja": "日本語", "ko": "한국어",
                  "de": "Deutsch", "fr": "Français", "pt": "Português", "ru": "Русский", "it": "Italiano"}.get(lang, lang)
     tpl = (template or {}).get("prompt") or {}
@@ -824,7 +830,8 @@ def gen_prompt(ctype, lang, topic, brief, feedback="", template=None):
 结构：Hero（大标题 + 副标题一句 + CTA 按钮文案）→ 3 个 Benefit 块（小标题 + 2-3 句说明）→ 使用场景 2 条 → FAQ（3 条）→ 底部 CTA。
 产品能力描述基于公开常识，不编造参数。"""
     lang_rule = LANG_RULES.get(lang, "")
-    anti = ANTI_SLOP + "\n" + GEO_RULES + "\n" + CONTENT_BUDGET + (f"\n语言规范：{lang_rule}" if lang_rule else "") + (f"\n{extra}" if extra else "")
+    budget = CONTENT_BUDGET_LONGFORM if budget_profile == "longform" else CONTENT_BUDGET
+    anti = ANTI_SLOP + "\n" + GEO_RULES + "\n" + budget + (f"\n语言规范：{lang_rule}" if lang_rule else "") + (f"\n{extra}" if extra else "")
     aud = (f"\n目标读者：{audience}" if audience else "")
     ton = (f"\n语气要求：{tone}" if tone else "")
     fb = (f"\n\n上一轮质检未通过，反馈如下，务必针对性修正：\n{feedback}") if feedback else ""
@@ -1338,13 +1345,14 @@ def _bh_field_patch(item, task, proj):
 
 
 def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", template_id="",
-                   instruction="", source_text="", prior_context=""):
+                   instruction="", source_text="", prior_context="", budget_profile="default"):
     """批量生成/改稿共用执行体：LLM → 落盘 → post-write + geo 门禁 → 状态机推进。"""
     ps_args = ["--state-path", str(proj_paths(proj)["state"]), "--events-path", str(proj_paths(proj)["events"])]
     run_tool([sys.executable, str(PS_PATH), *ps_args, "upsert", "--id", item_id, "--category", ctype])
     # 状态机顺序：先入 S3-creating（与 Loop 引擎一致，S0-todo 不可直达 S3-draft）
     run_tool([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item_id, "--to", "S3-creating"])
-    user = gen_prompt(ctype, lang, topic, brief, template=get_template(template_id))
+    user = gen_prompt(ctype, lang, topic, brief, template=get_template(template_id),
+                      budget_profile=budget_profile)
     if instruction:
         user = (f"下面是既有内容，请按指令改写（事实准确优先；不确定的数字标 [待考证]）：\n"
                 f"指令：{instruction}\n\n现有内容：\n{source_text[:12000]}\n\n" + user)
@@ -1355,7 +1363,7 @@ def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", t
     gen_dir.mkdir(parents=True, exist_ok=True)
     path = gen_dir / f"{item_id}.md"
     path.write_text(draft)
-    gates = run_content_gates(path, ctype, lang, tag=f"batch:{item_id}")
+    gates = run_content_gates(path, ctype, lang, tag=f"batch:{item_id}", budget_profile=budget_profile)
     hw, geo = gates["post-write-check.sh"], gates["geo-check.sh"]
     quota, langc = gates["quota-check.sh"], gates["lang-check.sh"]
     advanced = False
@@ -1373,7 +1381,8 @@ def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", t
 def _bh_gen(item, task, proj):
     return run_generation(proj, item["item_id"], ctype=item.get("type", "blog"), lang=item.get("lang", "zh"),
                           topic=item.get("topic", ""), brief=item.get("brief", ""),
-                          template_id=item.get("template_id", ""), prior_context=task.get("ctx_digest", ""))
+                          template_id=item.get("template_id", ""), prior_context=task.get("ctx_digest", ""),
+                          budget_profile=item.get("budget_profile") or (task.get("params") or {}).get("budget_profile", "default"))
 
 
 def _bh_rewrite(item, task, proj):
@@ -1385,7 +1394,8 @@ def _bh_rewrite(item, task, proj):
     return run_generation(proj, item["item_id"], ctype=item.get("type", "blog"), lang=item.get("lang", "zh"),
                           topic=item.get("topic", item.get("slug", "")), brief=item.get("brief", ""),
                           instruction=item.get("instruction", ""), source_text=src,
-                          prior_context=task.get("ctx_digest", ""))
+                          prior_context=task.get("ctx_digest", ""),
+                          budget_profile=item.get("budget_profile") or (task.get("params") or {}).get("budget_profile", "default"))
 
 
 BATCH_HANDLERS = {"asset_replace": _bh_asset_replace, "field_patch": _bh_field_patch,
@@ -2437,9 +2447,9 @@ def spec_guard(spec):
         return None, f"{t} 单任务 ≤{cap} 项（当前 {len(items)}）"
     allow = {"asset_replace": {"doc_id", "kind", "idx", "field", "old", "new_url", "new_alt"},
              "field_patch": {"doc_id", "set"},
-             "gen": {"item_id", "type", "lang", "topic", "brief"},
+             "gen": {"item_id", "type", "lang", "topic", "brief", "budget_profile"},
              "qa": {"kind", "doc_id", "path", "target"},
-             "rewrite": {"item_id", "lang", "topic", "instruction", "source_path"}}[t]
+             "rewrite": {"item_id", "lang", "topic", "instruction", "source_path", "budget_profile"}}[t]
     clean = []
     for it in items:
         if not isinstance(it, dict):
@@ -3828,7 +3838,8 @@ class Handler(BaseHTTPRequestHandler):
                 hook = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/post-write-check.sh"),
                                  "--file", str(path), "--target-words", twords], timeout=120)
                 qa_log("generate", "post-write-check.sh", hook["rc"])
-                gates = run_content_gates(path, str(body.get("type", "blog")), str(body.get("lang", "zh")), tag="generate")
+                gates = run_content_gates(path, str(body.get("type", "blog")), str(body.get("lang", "zh")), tag="generate",
+                                          budget_profile=str(body.get("budget_profile", "default")))
                 hook, geo = gates["post-write-check.sh"], gates["geo-check.sh"]
                 quota, langc = gates["quota-check.sh"], gates["lang-check.sh"]
                 return self._send(200, {"ok": True, "path": rel_of(path), "chars": len(draft),

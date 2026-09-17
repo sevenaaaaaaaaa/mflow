@@ -43,3 +43,12 @@ path: 1-1 Harness/02-rules/RULES-70-quota.md
 18. 生成完成后必须回答四问：**谁读 / 为何现在读 / 读完改变什么 / 下一步做什么**——任一答不出即删段而非扩写
 19. 删减优先于扩写：字数不足时**优先删冗余**而不是加段落；确需补内容则补数据/案例，不补形容词
 20. 预算与门禁冲突时：**门禁优先**（宁短不水）
+
+## 五、长文豁免（唯一例外通道）
+
+21. **长文 skill（7500 词级）可豁免上限，但必须显式声明**：
+    - skill 的 `SKILL.md` frontmatter 写 `budget_profile: longform`
+    - 调用时显式传 `budget_profile=longform`（任务 item 或 task.params）
+    - 豁免后上限：字数 ≤9000、H2 ≤14、FAQ ≤8、连续列表项 ≤14（其余规则不变）
+22. **禁止默认豁免**：无显式声明一律按标准档（Blog ≤2160）；以"长文需要"为由绕过 = 违规
+23. 豁免仍需过 `quota-check.sh --profile longform` 与全部其它门禁（Anti-Slop / GEO / 语言规范）
