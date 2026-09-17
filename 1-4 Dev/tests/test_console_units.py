@@ -272,5 +272,45 @@ Yes — paid plans include commercial rights.
         self.assertIn("page_type", str(ctx.exception))
 
 
+class TestChainAndPreset(unittest.TestCase):
+    """T1 闭环：任务链只链通过门禁的产出；预设存在且参数正确。"""
+
+    def test_preset_landing_loop_present(self):
+        ps = {p["id"]: p for p in C.presets_list()}
+        self.assertIn("landing-refresh-publish", ps)
+        p = ps["landing-refresh-publish"]
+        self.assertEqual(p["type"], "landing_refresh")
+        self.assertEqual(p["params"]["chain"]["type"], "publish_sanity")
+        self.assertTrue(p["params"]["chain"]["dry_run"], "链式发布必须默认 dry-run")
+
+    def test_chain_skips_blocked_and_publishes_ready(self):
+        task = {"id": "t1", "title": "T", "status": "done", "created_by": "tester", "dry_run": True,
+                "params": {"chain": {"type": "publish_sanity", "dry_run": True}}, "log": [],
+                "items": [
+                    {"item_id": "a", "status": "done", "result": {"path": "p/a.md", "slug": "a", "page_type": "tool",
+                                                                  "lang": "en", "gates_blocked": [], "struct_errors": []}},
+                    {"item_id": "b", "status": "done", "result": {"path": "p/b.md", "slug": "b", "page_type": "tool",
+                                                                  "lang": "en", "gates_blocked": ["quota-check.sh"], "struct_errors": []}},
+                    {"item_id": "c", "status": "failed", "result": {}},
+                ]}
+        orig_create, orig_save = C.batch_create, C._batch_log
+        created = {}
+
+        def fake_create(btype, title, items, params=None, dry_run=True, by=""):
+            created.update({"type": btype, "items": items, "dry_run": dry_run, "by": by})
+            return {"id": "batch-x", "stats": {"total": len(items)}}
+        C.batch_create = fake_create
+        C._batch_log = lambda *a, **k: None
+        try:
+            nt = C.chain_next_task(task, C.DEFAULT_PROJECT)
+        finally:
+            C.batch_create, C._batch_log = orig_create, orig_save
+        self.assertIsNotNone(nt)
+        self.assertEqual(created["type"], "publish_sanity")
+        self.assertEqual([i["item_id"] for i in created["items"]], ["a"], "只链通过门禁的项")
+        self.assertTrue(created["dry_run"], "链式发布默认 dry-run")
+        self.assertEqual(created["items"][0]["mode"], "patch")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

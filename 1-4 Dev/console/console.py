@@ -1583,6 +1583,10 @@ def batch_worker():
                 task["status"] = "done"
                 task["finished"] = datetime.now().strftime("%Y-%m-%d %H:%M")
                 _batch_log(task, f"完成：done={st['done']} skipped={st['skipped']}")
+                try:
+                    chain_next_task(task, proj)
+                except Exception as ce:
+                    _batch_log(task, f"任务链生成失败：{str(ce)[:160]}")
             batch_save(task)
         except Exception as e:
             print(f"[batch] {e}", file=sys.stderr)
@@ -2553,7 +2557,7 @@ def spec_guard(spec):
     items = spec.get("items")
     if not isinstance(items, list) or not items:
         return None, "items 必须是非空数组"
-    cap = 200 if t in ("asset_replace", "field_patch") else (20 if t in ("gen", "rewrite", "publish_sanity") else 200)
+    cap = 200 if t in ("asset_replace", "field_patch") else (20 if t in ("gen", "rewrite", "publish_sanity", "landing_refresh") else 200)
     if len(items) > cap:
         return None, f"{t} 单任务 ≤{cap} 项（当前 {len(items)}）"
     allow = {"asset_replace": {"doc_id", "kind", "idx", "field", "old", "new_url", "new_alt"},
@@ -2562,6 +2566,7 @@ def spec_guard(spec):
              "qa": {"kind", "doc_id", "path", "target"},
              "publish_sanity": {"item_id", "path", "doctype", "mode", "slug", "lang", "page_type", "title",
                                 "description", "cover_url", "cover_alt", "storyline_template", "sections_path", "category"},
+             "landing_refresh": {"item_id", "doc_id", "slug", "lang", "page_type", "source_path"},
              "rewrite": {"item_id", "lang", "topic", "instruction", "source_path", "budget_profile"}}[t]
     clean = []
     for it in items:
@@ -2608,6 +2613,106 @@ def agent_save(s):
     tmp = p.with_suffix(".tmp")
     tmp.write_text(json.dumps(s, ensure_ascii=False, indent=1))
     tmp.replace(p)
+
+
+# ===================== 落地页闭环：landing_refresh + 任务链（T1 延伸）=====================
+try:
+    PTMOD = load_module("mflow_pt_to_md", PROJECT / "1-4 Dev" / "scripts" / "library" / "pt_to_md.py")
+except Exception as _e:
+    PTMOD = None
+    print(f"[console] pt_to_md import failed: {_e}", file=sys.stderr)
+
+LANDING_STRUCT_RULES = """落地页改稿输出格式（必须是结构化 Markdown，供 composite-v2 发布）：
+- 一级标题：H1（≤60 字符，含核心关键词，不要品牌堆砌）
+- 3-4 个 **非问句** H2 小节：每节 2-4 句，含具体数据点或对比（形成 feature-detail 版块）
+- 一节 FAQ：`## FAQ` 下表 2-4 条 `### 问题？` + 一段回答（≤2 句）
+- 结尾 CTA 段：一句话行动指令（不要空泛"未来可期"）
+硬性：**禁止**重复标题或描述文案；总文案 600-1000 字符（RULES-70 落地页档）；单段 ≤300 字符"""
+
+
+def _bh_landing_refresh(item, task, proj):
+    """落地页改稿：读 Sanity 现有内容 → 按落地页结构重写 → 四门禁 + 结构校验 → 落盘（供 patch 发布）"""
+    if not SANITY_PUB:
+        raise RuntimeError("发布器未加载")
+    did = item.get("doc_id") or ""
+    if not did:
+        raise RuntimeError("需要 doc_id")
+    cur = (_sanity_req("query", {"query": f'*[_id=="{did}"][0]{{_id,title,description,language,pageType,cover,bodyJson,slug}}'}) or {}).get("result")
+    if not cur:
+        raise RuntimeError(f"Sanity 无此文档：{did}")
+    src_text = PTMOD.bodyjson_to_md(cur.get("bodyJson") or "") if PTMOD else ""
+    page_type = item.get("page_type") or cur.get("pageType") or "tool"
+    lang = item.get("lang") or cur.get("language") or "en"
+    slug = item.get("slug") or (cur.get("slug") or {}).get("current") or did
+    title = cur.get("title") or did
+    instruction = (f"这是落地页改稿任务（pageType={page_type}，语言={lang}）。\n{LANDING_STRUCT_RULES}\n"
+                   f"改写目标：提升可读性与 AI 可引用性（问答式信息、数据点、明确 CTA），保持事实准确。\n"
+                   f"现有内容（可能不完整，仅作事实参考）：\n{src_text[:6000]}")
+    draft = llm_chat([{"role": "user", "content": instruction}], profile="lovart-creation",
+                     max_tokens=4000, project=proj)
+    with _usage_lock:
+        tok = int(LAST_USAGE.get("total_tokens", 0) or 0)
+    gen_dir = proj_paths(proj)["gen"]
+    gen_dir.mkdir(parents=True, exist_ok=True)
+    path = gen_dir / f"{item.get('item_id') or ('refresh-' + re.sub(r'[^a-z0-9-]', '-', did.lower())[:40])}.md"
+    path.write_text(draft)
+    gates = run_content_gates(path, "landing", lang, tag=f"landing:{did}", budget_profile="default")
+    bad = [k for k, v in gates.items() if v["rc"] != 0]
+    # 结构校验（composite 发布前必须过）
+    struct_errs = []
+    try:
+        secs = SANITY_PUB.md_to_sections(draft, title, cur.get("description") or "",
+                                        ((cur.get("cover") or {}).get("url") or ""),
+                                        ((cur.get("cover") or {}).get("alt") or title))
+        struct_errs = SANITY_PUB.validate_sections(secs)
+    except Exception as e:
+        struct_errs = [f"版块生成失败：{str(e)[:120]}"]
+    usage_add(task.get("created_by", ""), items=1, tokens=tok)
+    return {"path": rel_of(path), "doc_id": did, "slug": slug, "page_type": page_type, "lang": lang,
+            "chars": len(draft), "tokens": tok, "gates_blocked": bad, "struct_errors": struct_errs,
+            "ready_to_publish": (not bad and not struct_errs)}
+
+
+def chain_next_task(task, proj):
+    """任务链：父任务完成后按 params.chain 生成下一步任务（默认继承 dry_run 或更保守）。"""
+    ch = dict((task.get("params") or {}).get("chain") or {})
+    if not ch or task.get("status") != "done":
+        return None
+    nxt_type = ch.get("type")
+    if nxt_type not in BATCH_HANDLERS:
+        return None
+    items = []
+    for it in task.get("items", []):
+        r = it.get("result") or {}
+        if it["status"] != "done" or not r.get("path"):
+            continue
+        if r.get("gates_blocked") or r.get("struct_errors"):
+            continue  # 未过门禁的不进入发布链
+        if nxt_type == "publish_sanity":
+            items.append({"item_id": it.get("item_id") or it.get("doc_id"),
+                          "path": r.get("path"),
+                          "doctype": ch.get("doctype", "composite"),
+                          "mode": ch.get("mode", "patch"),
+                          "page_type": r.get("page_type"), "lang": r.get("lang"), "slug": r.get("slug")})
+    if not items:
+        with open(RUN_DIR / "approvals.log", "a") as f:
+            f.write(f"{datetime.now().isoformat(timespec='seconds')} CHAIN-SKIP {task['id']} "
+                    f"-> {nxt_type}（无可发布项：门禁/结构未过）\n")
+        return None
+    dry = bool(ch.get("dry_run", True))  # 链式发布默认 dry-run（落地页写入即上线，需显式关闭）
+    nt = batch_create(nxt_type, ch.get("title") or f"{task['title']} → 发布（{len(items)} 项）", items,
+                      params={"max_attempts": 2, "from_chain": task["id"],
+                              "confirm_public": bool(ch.get("confirm_public", False))},
+                      dry_run=dry, by=task.get("created_by", "chain"))
+    task["chain_task_id"] = nt["id"]
+    _batch_log(task, f"任务链：已生成下一步 {nt['id']}（{nxt_type} · {len(items)} 项 · dry_run={dry}）")
+    with open(RUN_DIR / "approvals.log", "a") as f:
+        f.write(f"{datetime.now().isoformat(timespec='seconds')} CHAIN-CREATE {task['id']} -> {nt['id']} "
+                f"type={nxt_type} items={len(items)} dry_run={dry}\n")
+    return nt
+
+
+BATCH_HANDLERS["landing_refresh"] = _bh_landing_refresh  # T1 闭环：落地页改稿（定义后注册）
 
 
 # ===================== T3 熔断 + T5 用户配额/用量 =====================
@@ -2893,6 +2998,42 @@ def preset_expand(pid, opt, proj):
             return {"error": "扫描后没有可自动修复的字段问题（可用「例行 QA 扫描」看明细）"}
         return {"type": "field_patch", "title": f"QA 字段修复（{len(items)} 项）", "items": items,
                 "params": {"batch_size": 10}, "note": f"扫描 {len(ids)} 篇，{len(items)} 篇有可修问题"}
+
+    if pid == "landing-refresh-publish":
+        # 闭环：落地页改稿 → 结构校验 → patch 发布（链式，默认 dry-run）
+        section = str(opt.get("section", "") or "tools")
+        lg = str(opt.get("lang", "") or "")
+        prof = read_json(SITES_DIR / "lovart-global.json", {})
+        sec = next((x for x in (prof.get("sections") or []) if x.get("key") == section), None)
+        if not sec:
+            return {"error": f"未知段落：{section}（可选 features/tools/topics/...）"}
+        base = LIB_ROOT / "lovart-global" / sec.get("dir", section)
+        cands = []
+        if base.exists():
+            for f in sorted(base.rglob("*.md"), key=lambda x: x.stat().st_mtime, reverse=True):
+                if lg and f.parent.name != lg:
+                    continue
+                head = f.read_text(errors="ignore")[:600]
+                sid = re.search(r"^sanity_id:\s*(\S+)", head, re.M)
+                slug = re.search(r"^slug:\s*(\S+)", head, re.M)
+                ptype = re.search(r"^page_type:\s*(\S+)", head, re.M)
+                lang_f = re.search(r"^language:\s*(\S+)", head, re.M)
+                if sid and slug:
+                    cands.append({"doc_id": sid.group(1), "slug": slug.group(1),
+                                  "page_type": (ptype.group(1) if ptype and ptype.group(1) else sec.get("pageType", "tool")),
+                                  "lang": (lang_f.group(1) if lang_f else f.parent.name),
+                                  "source_path": rel_of(f)})
+                if len(cands) >= limit:
+                    break
+        if not cands:
+            return {"error": f"内容库里没有可改稿的落地页（段落 {section}）——先在「内容库」同步"}
+        items = [{"item_id": "refresh-" + _slug_of(c["slug"])[:40], "doc_id": c["doc_id"], "slug": c["slug"],
+                  "page_type": c["page_type"], "lang": c["lang"], "source_path": c["source_path"]}
+                 for c in cands]
+        return {"type": "landing_refresh", "title": f"落地页闭环：改稿→发布（{len(items)} 页）", "items": items,
+                "params": {"batch_size": 2, "chain": {"type": "publish_sanity", "dry_run": True,
+                                                      "doctype": "composite", "mode": "patch"}},
+                "note": "链路：改稿 → 四门禁 + 结构校验 → 只把通过项 patch 发布（默认 dry-run，真实上线需再跑一次并关闭 dry-run）"}
 
     if pid == "multilang-batch":
         topic = str(opt.get("topic", "") or "").strip()
