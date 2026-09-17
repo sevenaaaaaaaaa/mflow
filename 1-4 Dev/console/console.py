@@ -44,6 +44,7 @@ LOOPS_FILE = RUN_DIR / "loops.json"
 GEN_DIR = PROJECT / "1-3 GenFlow" / "Console-Gen"
 HARNESS_DIR = PROJECT / "1-1 Harness"
 LOOP_LOCK = threading.Lock()
+PS_LOCK = threading.Lock()  # pipeline-state.json 读改写竞争保护（并发批量生成会撞）
 LOOP_THREADS = {}
 MAX_PARALLEL_LOOPS = 2
 _usage_lock = threading.Lock()
@@ -105,9 +106,9 @@ def schedule_executor():
                 else:
                     topic = f"自动排程占位选题（队列空，{today}）"
                 item_id = f"auto-{pid}-{datetime.now().strftime('%Y%m%d')}-{secrets.token_hex(2)}"
-                run_tool([sys.executable, str(PS_PATH),
-                          "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
-                          "upsert", "--id", item_id, "--category", "blog"])
+                ps_run([sys.executable, str(PS_PATH),
+                        "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
+                        "upsert", "--id", item_id, "--category", "blog"])
                 with LOOP_LOCK:
                     loops = read_json(pp["loops"], [])
                     loops.append({"id": secrets.token_hex(4), "item_id": item_id,
@@ -870,7 +871,7 @@ def loop_engine(loop_id, proj):
     item = loop["item_id"]
     ps_args = ["--state-path", str(proj_paths(proj)["state"]), "--events-path", str(proj_paths(proj)["events"])]
     try:
-        run_tool([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item, "--to", "S3-creating"])
+        ps_run([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item, "--to", "S3-creating"])
     except Exception:
         pass
     feedback = ""
@@ -915,7 +916,7 @@ def loop_engine(loop_id, proj):
         if r["rc"] == 0 and geo["rc"] == 0 and quota["rc"] == 0 and langc["rc"] == 0:
             log(loop, "质检 PASS（post-write + GEO 可引用性），推进状态机 S3-draft → S3-done → S4-qa")
             for stg in ("S3-draft", "S3-done", "S4-qa"):
-                run_tool([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item, "--to", stg])
+                ps_run([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item, "--to", stg])
             loop["status"] = "done"
             loop["draft_path"] = rel_of(draft_path)
             log(loop, "Loop 完成：草稿已入 S4-qa，等待人工审阅/继续推进")
@@ -1348,9 +1349,9 @@ def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", t
                    instruction="", source_text="", prior_context="", budget_profile="default"):
     """批量生成/改稿共用执行体：LLM → 落盘 → post-write + geo 门禁 → 状态机推进。"""
     ps_args = ["--state-path", str(proj_paths(proj)["state"]), "--events-path", str(proj_paths(proj)["events"])]
-    run_tool([sys.executable, str(PS_PATH), *ps_args, "upsert", "--id", item_id, "--category", ctype])
+    ps_run([sys.executable, str(PS_PATH), *ps_args, "upsert", "--id", item_id, "--category", ctype])
     # 状态机顺序：先入 S3-creating（与 Loop 引擎一致，S0-todo 不可直达 S3-draft）
-    run_tool([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item_id, "--to", "S3-creating"])
+    ps_run([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item_id, "--to", "S3-creating"])
     user = gen_prompt(ctype, lang, topic, brief, template=get_template(template_id),
                       budget_profile=budget_profile)
     if instruction:
@@ -1370,7 +1371,7 @@ def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", t
     if hw["rc"] == 0 and geo["rc"] == 0 and quota["rc"] == 0 and langc["rc"] == 0:
         rcs = []
         for stg in ("S3-draft", "S3-done", "S4-qa"):
-            r = run_tool([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item_id, "--to", stg])
+            r = ps_run([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item_id, "--to", stg])
             rcs.append(r.get("rc"))
         advanced = all(rc == 0 for rc in rcs)
     return {"path": rel_of(path), "chars": len(draft), "hook_rc": hw["rc"], "geo_rc": geo["rc"],
@@ -1535,6 +1536,12 @@ def publish_wordpress(path, item_id, title=""):
         with open(RUN_DIR / "approvals.log", "a") as f:
             f.write(f"{datetime.now().isoformat(timespec='seconds')} WP-PUBLISH {item_id} url={out.get('url','')}\n")
     return out
+
+
+def ps_run(args, timeout=60):
+    """串行化对 pipeline-state 的读改写（并发批量任务/loop 共用同一状态文件）。"""
+    with PS_LOCK:
+        return run_tool(args, timeout=timeout)
 
 
 def run_tool(args, timeout=60):
@@ -2016,9 +2023,9 @@ def geo_scheduler():
                         loops = read_json(pp["loops"], [])
                         if any(l.get("item_id") == item_id and l.get("status") in ("queued", "running") for l in loops):
                             continue
-                        run_tool([sys.executable, str(PS_PATH),
-                                  "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
-                                  "upsert", "--id", item_id, "--category", "blog"])
+                        ps_run([sys.executable, str(PS_PATH),
+                                "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
+                                "upsert", "--id", item_id, "--category", "blog"])
                         with LOOP_LOCK:
                             loops = read_json(pp["loops"], [])
                             loops.append({"id": secrets.token_hex(4), "item_id": item_id,
@@ -3437,14 +3444,14 @@ class Handler(BaseHTTPRequestHandler):
                 item_id = str(body.get("id", "")).strip()
                 if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,78}", item_id):
                     return self._send(400, {"error": "id 必须是小写字母/数字/连字符"})
-                r = run_tool([sys.executable, str(PS_PATH),
+                r = ps_run([sys.executable, str(PS_PATH),
                               "--state-path", str(self._st()), "--events-path", str(self._ev()),
                               "upsert", "--id", item_id,
                               "--category", str(body.get("category", "blog")),
                               "--target-type", str(body.get("target_type", "blog"))])
                 return self._send(200 if r["rc"] == 0 else 400, r)
             if self.path == "/api/item/advance":
-                r = run_tool([sys.executable, str(PS_PATH),
+                r = ps_run([sys.executable, str(PS_PATH),
                               "--state-path", str(self._st()), "--events-path", str(self._ev()),
                               "advance", "--id", str(body.get("id", "")),
                               "--to", str(body.get("to", "")),
@@ -3818,7 +3825,7 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(400, {"error": "id 不合法"})
                 tpl = get_template(str(body.get("template_id", "")))
                 try:
-                    run_tool([sys.executable, str(PS_PATH),
+                    ps_run([sys.executable, str(PS_PATH),
                               "--state-path", str(self._st()), "--events-path", str(self._ev()),
                               "upsert", "--id", item_id,
                               "--category", str(body.get("type", "blog"))])
@@ -3864,7 +3871,7 @@ class Handler(BaseHTTPRequestHandler):
                     self._lp().parent.mkdir(parents=True, exist_ok=True)
                     self._lp().write_text(json.dumps(loops, ensure_ascii=False, indent=1))
                 pp = proj_paths(self._proj())
-                run_tool([sys.executable, str(PS_PATH),
+                ps_run([sys.executable, str(PS_PATH),
                           "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
                           "upsert", "--id", item_id,
                           "--category", str(body.get("type", "blog"))])
