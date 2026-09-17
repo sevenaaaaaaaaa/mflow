@@ -368,6 +368,7 @@ th{color:var(--muted);font-weight:600}
       <p class="pg-sub">任务 = 条目池 × 执行器（物料替换 / 字段改写 / 批量生成 / 批量改稿）。并发 2、逐项状态、断点续跑、dry-run 可预览、全程审计。</p></div>
       <div class="head-actions"><button class="btn ghost" onclick="loadBatch()">刷新 ↻</button></div></div>
     <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>预设工作流 <span class="mut">（0 门槛：点一下就能跑，数据自动取）</span></h3><button class="more" onclick="loadPresets()">刷新 ↻</button></div>
+      <div id="bt-breaker" class="mut" style="font-size:12px;margin-bottom:6px"></div>
       <div class="chips" id="bt-presets"></div>
       <div id="bt-opt" style="display:none;margin-top:10px"></div></div>
     <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>新建任务（高级）</h3><span class="mut">items 为 JSON 数组</span></div>
@@ -701,6 +702,17 @@ th{color:var(--muted);font-weight:600}
       <div class="mut" style="font-size:12px;line-height:1.8">规则：终态管线条目 >14 天归档 · 僵尸条目（S3-creating/draft >24h）标记 failed · 旧批量任务 >14 天归档 · agent 会话 >30 天归档 · citations 只留最近 200 条（其余按月归档）· 孤儿草稿只报数不自动删</div>
       <pre id="hk-out" style="margin-top:8px;max-height:200px;overflow:auto"></pre>
       <div id="hk-hist" class="mut" style="font-size:11px;font-family:var(--font-mono);max-height:120px;overflow:auto"></div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>熔断状态 <span class="mut" id="brk-flag"></span></h3>
+      <button class="more" onclick="brkReset()">手动解除熔断</button></div>
+      <div class="mut" id="brk-info" style="font-size:12.5px;line-height:1.8">加载中…</div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>用户配额与用量 <span class="mut">（本月 · admin 可改默认与逐人覆盖）</span></h3>
+      <button class="more" onclick="quotaLoad()">刷新 ↻</button></div>
+      <div class="row"><input id="q-items" type="number" placeholder="条目/月" style="width:120px">
+        <input id="q-tokens" type="number" placeholder="tokens/月" style="width:140px">
+        <input id="q-writes" type="number" placeholder="真实写入/月" style="width:130px">
+        <button class="btn ghost" onclick="quotaSave()">保存默认配额</button>
+        <span class="mut">admin 不限量；保存后即刻生效</span></div>
+      <div id="q-table" style="margin-top:10px;max-height:280px;overflow:auto"></div></div>
     <div class="ov-grid2" style="margin-top:14px">
       <div class="card"><div class="card-head"><h3>Harness 规则（全局铁律 + 工作线）</h3></div><div id="harness-rules"></div></div>
       <div class="card"><div class="card-head"><h3>Skills <span class="mut" id="skill-n"></span></h3>
@@ -1176,7 +1188,7 @@ function flowAdv(){const id=$('fitem').value.trim();if(!id)return alert('先填�
 
 /* ---- 设置 ---- */
 let LLMCFG=null;
-function loadSet(){hkLoad();loadProjCfg();api('api/llm').then(c=>{LLMCFG=c;
+function loadSet(){brkLoad();quotaLoad();hkLoad();loadProjCfg();api('api/llm').then(c=>{LLMCFG=c;
  $('llm-providers').innerHTML=Object.entries(c.providers).map(([n,p])=>`<div class="row">
    <b style="width:80px;font-size:13px">${n}</b>
    <input id="lp-base-${n}" value="${esc(p.base||'')}" placeholder="base url" style="flex:1;min-width:180px">
@@ -1536,6 +1548,32 @@ function agExec(spec,real){if(real&&!confirm('确认真实执行（会写生产�
  const body={session_id:AG_ID,spec:{...spec,dry_run:!real},force:real};
  api('api/agent/execute',body).then(r=>{if(r.error)return alert(r.error);alert('已创建任务 '+r.task_id);agOpen(AG_ID)})}
 
+/* ---- 熔断 / 配额 ---- */
+function brkLoad(){api('api/breaker').then(d=>{const s=d.state||{};
+ const el=$('brk-flag'),info=$('brk-info');
+ if(d.blocked){el.innerHTML='<span class="bad">已熔断</span>';
+  info.innerHTML=`原因：${esc(s.reason||'')}<br>触发：${esc(s.tripped_at||'')} · 冷却 ${s.cooldown_min||15} 分钟后自动恢复（也可手动解除）`}
+ else{el.innerHTML='<span class="ok">正常</span>';
+  info.textContent=(s.reset_at?('上次复位 '+s.reset_at+(s.auto?'（自动）':'')):'未触发过')}
+ const bb=document.getElementById('bt-breaker');
+ if(bb)bb.innerHTML=d.blocked?`<span class="bad">⚠ 系统熔断中：${esc((s.reason||'').slice(0,80))} —— 批量任务已暂停（可在设置页解除）</span>`:''})}
+function brkReset(){api('api/breaker/reset',{}).then(r=>{if(r.error)return alert(r.error);alert('已解除熔断');brkLoad()})}
+function quotaLoad(){api('api/quota').then(d=>{
+ const D=d.default||{};$('q-items').value=D.items_per_month||'';$('q-tokens').value=D.tokens_per_month||'';$('q-writes').value=D.writes_per_month||'';
+ $('q-table').innerHTML='<table><tr><th>用户</th><th>角色</th><th>任务</th><th>条目</th><th>tokens</th><th>真实写入</th><th>配额（条目/token/写入）</th><th>操作</th></tr>'+
+  (d.rows||[]).map(r=>`<tr><td><b>${esc(r.username)}</b></td><td>${esc(r.role)}</td>
+   <td class="tnum">${r.usage.tasks||0}</td><td class="tnum">${r.usage.items||0}</td><td class="tnum">${r.usage.tokens||0}</td>
+   <td class="tnum">${r.usage.writes||0}</td>
+   <td class="mut" style="font-size:11px">${r.unlimited?'不限':`${(r.quota||{}).items_per_month}/${(r.quota||{}).tokens_per_month}/${(r.quota||{}).writes_per_month}`}</td>
+   <td><button class="mini" onclick="quotaEdit('${esc(r.username)}',${JSON.stringify(r.quota||{}).replace(/"/g,'&quot;')},${r.unlimited})">改配额</button></td></tr>`).join('')+'</table>'})}
+function quotaEdit(un,cap,unlimited){const s=prompt(`${un} 的配额（留空=用默认；填 unlimited=不限）\n格式：条目/token/写入 如 300/300000/100`,'');
+ if(s===null)return;
+ if(s.trim()==='unlimited')return api('api/quotas/save',{per_user:{[un]:'unlimited'}}).then(()=>quotaLoad());
+ if(!s.trim())return api('api/quotas/save',{per_user:{[un]:{}}}).then(()=>quotaLoad());
+ const p=s.split('/').map(x=>x.trim());
+ return api('api/quotas/save',{per_user:{[un]:{items_per_month:p[0]||'',tokens_per_month:p[1]||'',writes_per_month:p[2]||''}}}).then(()=>quotaLoad())}
+function quotaSave(){api('api/quotas/save',{default:{items_per_month:$('q-items').value,tokens_per_month:$('q-tokens').value,writes_per_month:$('q-writes').value}}).then(r=>{if(r.error)return alert(r.error);alert('默认配额已保存');quotaLoad()})}
+
 /* ---- 预设工作流 / 健康 / 维护 ---- */
 let PRESETS=[],PRESET_SEL='';
 function loadPresets(){api('api/presets').then(ps=>{PRESETS=ps||[];
@@ -1566,7 +1604,7 @@ const BATCH_HINTS={asset_replace:"items 可留空 → 用「从图片物料计�
  gen:'每项：{"item_id":"slug","type":"blog","lang":"zh","topic":"…","brief":"…"}',
  rewrite:'每项：{"item_id":"refresh-x","lang":"zh","topic":"…","instruction":"改写要求","source_path":"run/library/…"}'};
 function btHint(){$('bt-hint').textContent=BATCH_HINTS[$('bt-type').value]||''}
-function loadBatch(){loadPresets();api('api/batch/list').then(ts=>{
+function loadBatch(){loadPresets();brkLoad();api('api/batch/list').then(ts=>{
  $('nav-batch').textContent=(ts||[]).filter(t=>t.status==='running'||t.status==='queued').length;
  $('bt-list').innerHTML=(ts||[]).length?'<table><tr><th>任务</th><th>类型</th><th>进度</th><th>状态</th><th>创建</th><th></th></tr>'+
   ts.map(t=>{const s=t.stats||{};const pct=s.total?Math.round((s.done+s.skipped+s.failed)/s.total*100):0;

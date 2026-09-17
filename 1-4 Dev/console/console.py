@@ -1263,16 +1263,22 @@ def batch_list():
 
 
 def batch_create(btype, title, items, params=None, dry_run=True, by=""):
+    role = (auth_record(by) or {}).get("role", "admin" if not AUTH_FILE.exists() else "operator")
+    ok, msg = quota_check(by, role, n_items=len(items), kind=btype)
+    if not ok:
+        raise PermissionError(msg)
     tid = f"batch-{datetime.now().strftime('%y%m%d')}-{secrets.token_hex(3)}"
     task = {"id": tid, "type": btype, "title": title or btype,
             "created": datetime.now().strftime("%Y-%m-%d %H:%M"),
             "created_by": by, "dry_run": bool(dry_run),
-            "params": {"batch_size": 5, "context_handoff": True, **(params or {})}, "concurrency": 2,
+            "params": {"batch_size": 5, "context_handoff": True, "fail_threshold": 5, "fatal_threshold": 2,
+                       **(params or {})}, "concurrency": 2,
             "status": "queued", "log": [],
             "items": [{"i": i, "status": "pending", "attempts": 0, "result": None, "error": "", **it}
                       for i, it in enumerate(items)]}
     task["stats"] = {"total": len(task["items"]), "done": 0, "failed": 0, "skipped": 0}
     batch_save(task)
+    usage_add(by, tasks=1)
     with open(RUN_DIR / "approvals.log", "a") as f:
         f.write(f"{datetime.now().isoformat(timespec='seconds')} BATCH-CREATE {tid} type={btype} "
                 f"items={len(items)} dry_run={dry_run} by={by}\n")
@@ -1326,6 +1332,7 @@ def _bh_asset_replace(item, task, proj):
         return {"skipped": True, "reason": "无可替换字段（可能已被改过）"}
     res = _sanity_req("mutate", {"mutations": [{"patch": {"id": did, "ifRevisionID": fresh.get("_rev"), "set": sets}}],
                                  "dryRun": bool(task.get("dry_run"))})
+    usage_add(task.get("created_by", ""), items=1, writes=(0 if task.get("dry_run") else 1))
     return {"dry_run": task.get("dry_run"), "transactionId": res.get("transactionId"), "set": list(sets)}
 
 
@@ -1342,11 +1349,12 @@ def _bh_field_patch(item, task, proj):
         raise RuntimeError("文档不存在")
     res = _sanity_req("mutate", {"mutations": [{"patch": {"id": did, "ifRevisionID": fresh.get("_rev"), "set": sets}}],
                                  "dryRun": bool(task.get("dry_run"))})
+    usage_add(task.get("created_by", ""), items=1, writes=(0 if task.get("dry_run") else 1))
     return {"dry_run": task.get("dry_run"), "transactionId": res.get("transactionId"), "set": list(sets)}
 
 
 def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", template_id="",
-                   instruction="", source_text="", prior_context="", budget_profile="default"):
+                   instruction="", source_text="", prior_context="", budget_profile="default", task=None):
     """批量生成/改稿共用执行体：LLM → 落盘 → post-write + geo 门禁 → 状态机推进。"""
     ps_args = ["--state-path", str(proj_paths(proj)["state"]), "--events-path", str(proj_paths(proj)["events"])]
     ps_run([sys.executable, str(PS_PATH), *ps_args, "upsert", "--id", item_id, "--category", ctype])
@@ -1362,10 +1370,12 @@ def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", t
         user = (f"【前序批次上下文（避免重复，保持口径一致）】\n{prior_context[:1500]}\n\n" + user)
 
     # 内部重试：门禁不过（尤其 quota 超字数）时带反馈重写，最多 3 轮（与 Loop 同思路）
-    draft, gates, feedback = "", None, ""
+    draft, gates, feedback, _tok = "", None, "", 0
     for _round in range(1, 4):
         draft = llm_chat([{"role": "user", "content": user + feedback}],
                          profile="lovart-creation", max_tokens=4000, project=proj)
+        with _usage_lock:
+            _tok += int(LAST_USAGE.get("total_tokens", 0) or 0)
         gen_dir = proj_paths(proj)["gen"]
         gen_dir.mkdir(parents=True, exist_ok=True)
         path = gen_dir / f"{item_id}.md"
@@ -1385,8 +1395,10 @@ def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", t
             r = ps_run([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item_id, "--to", stg])
             rcs.append(r.get("rc"))
         advanced = all(rc == 0 for rc in rcs)
+    if task:
+        usage_add(task.get("created_by", ""), items=1, tokens=_tok)
     return {"path": rel_of(path), "chars": len(draft), "hook_rc": hw["rc"], "geo_rc": geo["rc"],
-            "quota_rc": quota["rc"], "lang_rc": langc["rc"], "advanced": advanced,
+            "quota_rc": quota["rc"], "lang_rc": langc["rc"], "advanced": advanced, "tokens": _tok,
             "blocked": [k for k, v in gates.items() if v["rc"] != 0]}
 
 
@@ -1394,7 +1406,8 @@ def _bh_gen(item, task, proj):
     return run_generation(proj, item["item_id"], ctype=item.get("type", "blog"), lang=item.get("lang", "zh"),
                           topic=item.get("topic", ""), brief=item.get("brief", ""),
                           template_id=item.get("template_id", ""), prior_context=task.get("ctx_digest", ""),
-                          budget_profile=item.get("budget_profile") or (task.get("params") or {}).get("budget_profile", "default"))
+                          budget_profile=item.get("budget_profile") or (task.get("params") or {}).get("budget_profile", "default"),
+                          task=task)
 
 
 def _bh_rewrite(item, task, proj):
@@ -1439,6 +1452,9 @@ def batch_worker():
         time.sleep(5)
         try:
             BATCH_DIR.mkdir(parents=True, exist_ok=True)
+            blocked, bst = breaker_check()
+            if blocked:
+                continue  # 熔断中：不领取任何任务
             cands = [batch_load(f.stem) for f in sorted(BATCH_DIR.glob("batch-*.json"), key=lambda x: x.stat().st_mtime)]
             task = next((t for t in cands if t and t.get("status") in ("queued", "running")), None)
             if not task:
@@ -1495,15 +1511,44 @@ def batch_worker():
                                         "done": len(done_chunk), "digest": digest})
                 task["ctx_digest"] = ((task.get("ctx_digest", "") + "\n" + digest).strip())[-2500:]
                 _batch_log(task, f"批次 {len(task['batches'])} 完成 {len(done_chunk)}/{len(chunk)}")
+                # 连续失败熔断（T3）
+                cons = task.get("consecutive_fail", 0)
+                fatal_msg, cons = "", 0
+                for c in chunk:
+                    if c["status"] == "failed":
+                        cons += 1
+                        if _is_fatal_error(c.get("error")):
+                            fatal_msg = c.get("error", "")[:160]
+                    elif c["status"] in ("done", "skipped"):
+                        cons = 0
+                task["consecutive_fail"] = cons
+                thr_fatal = int(task["params"].get("fatal_threshold", 2) or 2)
+                thr = int(task["params"].get("fail_threshold", 5) or 5)
+                if fatal_msg:
+                    task["status"] = "tripped"
+                    _batch_log(task, f"熔断（致命错误）：{fatal_msg}")
+                    batch_save(task)
+                    breaker_trip(f"致命错误（任务 {task['id']}）：{fatal_msg}", cooldown_min=30)
+                    break
+                if cons >= thr:
+                    task["status"] = "tripped"
+                    _batch_log(task, f"熔断：连续 {cons} 项失败（阈值 {thr}）——请检查后「重试失败」")
+                    batch_save(task)
+                    notify_send("MFlow 任务熔断", f"任务 {task['id']} 连续 {cons} 项失败已暂停")
+                    break
                 batch_save(task)
             st = task["stats"]
             st["done"] = sum(1 for i in task["items"] if i["status"] == "done")
             st["failed"] = sum(1 for i in task["items"] if i["status"] == "failed")
             st["skipped"] = sum(1 for i in task["items"] if i["status"] == "skipped")
-            if task.get("status") == "paused":
+            if task.get("status") == "tripped":
+                pass
+            elif task.get("status") == "paused":
                 _batch_log(task, "已暂停")
             elif task.get("status") == "cancelled":
                 _batch_log(task, "已取消")
+            elif task.get("status") in ("paused", "cancelled", "tripped"):
+                pass
             elif st["failed"] or any(i["status"] == "pending" for i in task["items"]):
                 task["status"] = "failed"
                 _batch_log(task, f"结束：done={st['done']} failed={st['failed']} skipped={st['skipped']}（可重试失败项）")
@@ -2168,6 +2213,7 @@ def _bh_qa(item, task, proj):
     dst = QA_DIR / f"findings-{task['id']}-{item['i']}.json"
     QA_DIR.mkdir(parents=True, exist_ok=True)
     dst.write_text(json.dumps(findings, ensure_ascii=False, indent=1))
+    usage_add(task.get("created_by", ""), items=1)
     return {"findings": len(findings), "block": blocks, "warn": warns, "file": str(dst)}
 
 
@@ -2217,18 +2263,21 @@ def qa_orchestrate(tid, dry_run=True, max_items=200):
                                   "instruction": f"修复门禁问题：{f['detail'][:200]}",
                                   "source_path": f["item"]})
     created = {}
-    if field_items:
-        ft = batch_create("field_patch", f"QA 修复·字段（源 {tid}）", field_items[:max_items],
-                          params={"max_attempts": 2, "from_qa": tid}, dry_run=dry_run, by="qa-orchestrator")
-        created["field_patch"] = ft["id"]
-    if asset_items:
-        at = batch_create("asset_replace", f"QA 修复·物料 alt（源 {tid}）", asset_items[:max_items],
-                          params={"max_attempts": 2, "from_qa": tid}, dry_run=dry_run, by="qa-orchestrator")
-        created["asset_replace"] = at["id"]
-    if rewrite_items:
-        rt = batch_create("rewrite", f"QA 修复·改稿（源 {tid}）", rewrite_items[:20],
-                          params={"max_attempts": 2, "from_qa": tid}, dry_run=dry_run, by="qa-orchestrator")
-        created["rewrite"] = rt["id"]
+    try:
+        if field_items:
+            ft = batch_create("field_patch", f"QA 修复·字段（源 {tid}）", field_items[:max_items],
+                              params={"max_attempts": 2, "from_qa": tid}, dry_run=dry_run, by="qa-orchestrator")
+            created["field_patch"] = ft["id"]
+        if asset_items:
+            at = batch_create("asset_replace", f"QA 修复·物料 alt（源 {tid}）", asset_items[:max_items],
+                              params={"max_attempts": 2, "from_qa": tid}, dry_run=dry_run, by="qa-orchestrator")
+            created["asset_replace"] = at["id"]
+        if rewrite_items:
+            rt = batch_create("rewrite", f"QA 修复·改稿（源 {tid}）", rewrite_items[:20],
+                              params={"max_attempts": 2, "from_qa": tid}, dry_run=dry_run, by="qa-orchestrator")
+            created["rewrite"] = rt["id"]
+    except PermissionError as e:
+        return {"error": f"配额不足，未创建修复任务：{e}"}
     if not created:
         return {"error": "没有可编排的修复项（findings 无可执行 fix）"}
     t["fix_task_id"] = ",".join(created.values())
@@ -2258,7 +2307,10 @@ def qa_recheck(tid, dry_run=True):
         return {"error": "任务不存在"}
     items = [{k: v for k, v in it.items() if k in ("kind", "path", "doc_id", "target")}
              for it in t.get("items", [])]
-    nt = batch_create("qa", f"QA 复检（源 {tid}）", items, params={"from_qa": tid}, dry_run=dry_run, by="qa-recheck")
+    try:
+        nt = batch_create("qa", f"QA 复检（源 {tid}）", items, params={"from_qa": tid}, dry_run=dry_run, by="qa-recheck")
+    except PermissionError as e:
+        return {"error": str(e)}
     t["recheck_task_id"] = nt["id"]
     batch_save(t)
     return {"ok": True, "recheck_task_id": nt["id"], "parent": tid}
@@ -2527,6 +2579,138 @@ def agent_save(s):
     tmp = p.with_suffix(".tmp")
     tmp.write_text(json.dumps(s, ensure_ascii=False, indent=1))
     tmp.replace(p)
+
+
+# ===================== T3 熔断 + T5 用户配额/用量 =====================
+BREAKER_FILE = RUN_DIR / "breaker.json"
+BREAKER_LOCK = threading.Lock()
+QUOTAS_FILE = RUN_DIR / "quotas.json"
+USAGE_USERS_FILE = RUN_DIR / "users-usage.json"
+USAGE_USERS_LOCK = threading.Lock()
+
+DEFAULT_QUOTAS = {"items_per_month": 500, "tokens_per_month": 500000, "writes_per_month": 200}
+FATAL_PATTERNS = ("401", "403", "invalid api key", "incorrect api key", "authentication",
+                  "insufficient", "balance", "quota exceeded", "unauthorized", "no permission")
+
+
+def _is_fatal_error(msg):
+    m = str(msg or "").lower()
+    return any(p in m for p in FATAL_PATTERNS)
+
+
+# ---------- 熔断 ----------
+def breaker_state():
+    return read_json(BREAKER_FILE, {"tripped": False})
+
+
+def breaker_trip(reason, cooldown_min=15, scope="global"):
+    st = {"tripped": True, "reason": str(reason)[:200], "scope": scope,
+          "tripped_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+          "cooldown_min": int(cooldown_min),
+          "tripped_at_ts": time.time()}
+    BREAKER_FILE.parent.mkdir(parents=True, exist_ok=True)
+    BREAKER_FILE.write_text(json.dumps(st, ensure_ascii=False, indent=1))
+    with open(RUN_DIR / "approvals.log", "a") as f:
+        f.write(f"{datetime.now().isoformat(timespec='seconds')} BREAKER-TRIP scope={scope} reason={str(reason)[:80]}\n")
+    notify_send("MFlow 熔断", f"已暂停批量执行（scope={scope}）\n原因：{str(reason)[:180]}\n"
+                             f"冷却 {cooldown_min} 分钟后自动恢复；可在工作台手动解除。")
+    return st
+
+
+def breaker_check():
+    """返回 (blocked, state)。冷却期过后自动复位（半开）。"""
+    st = breaker_state()
+    if not st.get("tripped"):
+        return False, st
+    elapsed_min = (time.time() - float(st.get("tripped_at_ts", 0))) / 60
+    if elapsed_min >= float(st.get("cooldown_min", 15)):
+        breaker_reset(auto=True)
+        return False, breaker_state()
+    return True, st
+
+
+def breaker_reset(auto=False):
+    st = {"tripped": False, "reset_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "auto": bool(auto)}
+    BREAKER_FILE.parent.mkdir(parents=True, exist_ok=True)
+    BREAKER_FILE.write_text(json.dumps(st, ensure_ascii=False, indent=1))
+    with open(RUN_DIR / "approvals.log", "a") as f:
+        f.write(f"{datetime.now().isoformat(timespec='seconds')} BREAKER-RESET auto={auto}\n")
+    return st
+
+
+# ---------- 用户配额与用量 ----------
+def quotas_cfg():
+    c = read_json(QUOTAS_FILE, {})
+    return {"default": {**DEFAULT_QUOTAS, **(c.get("default") or {})}, "per_user": c.get("per_user") or {}}
+
+
+def user_quota(username, role=""):
+    """admin 不限量；其余按 per_user 覆盖 > default。返回 {} 表示不限。"""
+    if role == "admin":
+        return {}
+    q = quotas_cfg()
+    return {**q["default"], **(q["per_user"].get(username) or {})}
+
+
+def _month():
+    return datetime.now().strftime("%Y-%m")
+
+
+def usage_users():
+    return read_json(USAGE_USERS_FILE, {})
+
+
+def usage_get(username):
+    u = usage_users().get(username, {})
+    return u.get(_month(), {"tasks": 0, "items": 0, "tokens": 0, "writes": 0})
+
+
+def usage_add(username, tasks=0, items=0, tokens=0, writes=0):
+    if not username:
+        return
+    with USAGE_USERS_LOCK:
+        allu = usage_users()
+        u = allu.setdefault(username, {})
+        m = u.setdefault(_month(), {"tasks": 0, "items": 0, "tokens": 0, "writes": 0})
+        m["tasks"] += tasks
+        m["items"] += items
+        m["tokens"] += tokens
+        m["writes"] += writes
+        USAGE_USERS_FILE.parent.mkdir(parents=True, exist_ok=True)
+        tmp = USAGE_USERS_FILE.with_suffix(".tmp")
+        tmp.write_text(json.dumps(allu, ensure_ascii=False, indent=1))
+        tmp.replace(USAGE_USERS_FILE)
+
+
+def quota_check(username, role, n_items=0, kind="", est_tokens_per_item=2000):
+    """返回 (ok, msg)。admin 直接通过。"""
+    q = user_quota(username, role)
+    if not q:
+        return True, ""
+    u = usage_get(username)
+    if u["items"] + n_items > q["items_per_month"]:
+        return False, (f"本月条目配额不足：已用 {u['items']}/{q['items_per_month']}，本次需 {n_items}"
+                       f"（找 admin 调整「设置 → 用户配额」）")
+    est = n_items * est_tokens_per_item if kind in ("gen", "rewrite") else 0
+    if u["tokens"] + est > q["tokens_per_month"]:
+        return False, (f"本月 token 配额不足：已用 {u['tokens']}/{q['tokens_per_month']}，本次预估需 {est}")
+    if kind in ("asset_replace", "field_patch") and u["writes"] + n_items > q["writes_per_month"]:
+        return False, (f"本月真实写入配额不足：已用 {u['writes']}/{q['writes_per_month']}，本次需 {n_items}")
+    return True, ""
+
+
+def quota_report(role, me):
+    """返回给 UI：自己（或 admin 看全部）的配额与用量。"""
+    q = quotas_cfg()
+    rows = []
+    users = [a.get("username") for a in read_json(AUTH_FILE, [])] or ([me] if me else [])
+    for un in users:
+        rec = auth_record(un) or {}
+        role_u = rec.get("role", "operator")
+        cap = user_quota(un, role_u)
+        rows.append({"username": un, "role": role_u, "month": _month(),
+                     "usage": usage_get(un), "quota": cap, "unlimited": not cap})
+    return {"default": q["default"], "per_user": q["per_user"], "rows": rows, "me": me}
 
 
 # ===================== 预设工作流（0 门槛）=====================
@@ -3523,6 +3707,11 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, qa_delta(qs.get("parent", [""])[0], qs.get("child", [""])[0]))
             if parsed.path == "/api/presets":
                 return self._send(200, presets_list())
+            if parsed.path == "/api/breaker":
+                blocked, st = breaker_check()
+                return self._send(200, {"blocked": blocked, "state": st})
+            if parsed.path == "/api/quota":
+                return self._send(200, quota_report(self._role(), self._me()))
             if parsed.path == "/api/health":
                 return self._send(200, health_report(self._proj()))
             if parsed.path == "/api/housekeeping":
@@ -3765,7 +3954,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/batch/create", "/api/batch/action",
                       "/api/agent/chat", "/api/agent/execute",
                       "/api/qa/orchestrate", "/api/qa/recheck",
-                      "/api/presets/run", "/api/housekeeping/run"}
+                      "/api/presets/run", "/api/housekeeping/run",
+                      "/api/breaker/reset", "/api/quotas/save"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
@@ -4067,9 +4257,12 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(400, {"error": "items 为空"})
                 if len(items) > 5000:
                     return self._send(400, {"error": "单任务 items ≤5000"})
-                t = batch_create(btype, str(body.get("title", "")), items,
-                                 params=body.get("params") or {},
-                                 dry_run=bool(body.get("dry_run", True)), by=self._me())
+                try:
+                    t = batch_create(btype, str(body.get("title", "")), items,
+                                     params=body.get("params") or {},
+                                     dry_run=bool(body.get("dry_run", True)), by=self._me())
+                except PermissionError as e:
+                    return self._send(429, {"error": str(e)})
                 return self._send(200, {"ok": True, "id": t["id"], "total": t["stats"]["total"]})
             if self.path == "/api/batch/action":
                 t = batch_load(str(body.get("id", "")))
@@ -4133,10 +4326,13 @@ class Handler(BaseHTTPRequestHandler):
                 force = bool(body.get("force", False))
                 if not spec["dry_run"] and not force:
                     return self._send(400, {"error": "真实执行需显式确认（force=true）——建议先 dry-run"})
-                t = batch_create(spec["type"], spec["title"], spec["items"],
-                                 params={"max_attempts": 2, "from_agent": True, "rationale": spec.get("rationale", ""),
-                                         "skills_used": spec.get("skills_used", [])},
-                                 dry_run=spec["dry_run"], by=self._me())
+                try:
+                    t = batch_create(spec["type"], spec["title"], spec["items"],
+                                     params={"max_attempts": 2, "from_agent": True, "rationale": spec.get("rationale", ""),
+                                             "skills_used": spec.get("skills_used", [])},
+                                     dry_run=spec["dry_run"], by=self._me())
+                except PermissionError as e:
+                    return self._send(429, {"error": str(e)})
                 s["messages"].append({"role": "assistant", "at": datetime.now().strftime("%H:%M:%S"),
                                       "text": f"已创建批量任务 {t['id']}（{spec['type']} · {t['stats']['total']} 项 · "
                                               f"{'dry-run' if spec['dry_run'] else '真实执行'}）——执行器 5 秒内接手，"
@@ -4159,13 +4355,36 @@ class Handler(BaseHTTPRequestHandler):
                 dry = bool(opt.get("dry_run", True))
                 if len(r["items"]) > 5000:
                     return self._send(400, {"error": "预设展开超过 5000 项，请缩小范围"})
-                t = batch_create(r["type"], r["title"], r["items"], params=r.get("params") or {},
-                                 dry_run=dry, by=self._me())
+                try:
+                    t = batch_create(r["type"], r["title"], r["items"], params=r.get("params") or {},
+                                     dry_run=dry, by=self._me())
+                except PermissionError as e:
+                    return self._send(429, {"error": str(e)})
                 with open(RUN_DIR / "approvals.log", "a") as f:
                     f.write(f"{datetime.now().isoformat(timespec='seconds')} PRESET-RUN {pid} task={t['id']} "
                             f"items={t['stats']['total']} dry_run={dry} by={self._me()}\n")
                 return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"],
                                         "note": r.get("note", ""), "dry_run": dry})
+            if self.path == "/api/breaker/reset":
+                st = breaker_reset()
+                with open(RUN_DIR / "approvals.log", "a") as f:
+                    f.write(f"{datetime.now().isoformat(timespec='seconds')} BREAKER-RESET by={self._me()}\n")
+                return self._send(200, {"ok": True, **st})
+            if self.path == "/api/quotas/save":
+                body_q = body.get("default") or {}
+                per_user = body.get("per_user") or {}
+                cur = quotas_cfg()
+                newd = {"items_per_month": int(body_q.get("items_per_month", cur["default"]["items_per_month"]) or 0),
+                        "tokens_per_month": int(body_q.get("tokens_per_month", cur["default"]["tokens_per_month"]) or 0),
+                        "writes_per_month": int(body_q.get("writes_per_month", cur["default"]["writes_per_month"]) or 0)}
+                pu = dict(cur["per_user"])
+                for un, cap in (per_user or {}).items():
+                    if cap in (None, "", "unlimited"):
+                        pu.pop(un, None)
+                    else:
+                        pu[un] = {**cur["default"], **{k: int(v) for k, v in cap.items() if str(v).strip() != ""}}
+                QUOTAS_FILE.write_text(json.dumps({"default": newd, "per_user": pu}, ensure_ascii=False, indent=1))
+                return self._send(200, {"ok": True})
             if self.path == "/api/housekeeping/run":
                 rep = housekeeping(dry_run=bool(body.get("dry_run", True)))
                 return self._send(200, rep)
