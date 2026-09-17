@@ -333,6 +333,27 @@ th{color:var(--muted);font-weight:600}
       <div class="card" style="height:fit-content"><div class="card-head"><h3>语言</h3></div><div id="lib-langs" style="display:flex;flex-direction:column;gap:6px"></div></div>
       <div class="card"><div class="card-head"><h3 id="lib-list-t">条目</h3></div><div id="lib-list" class="flist"></div></div>
     </div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>图片物料 <span class="mut" id="as-stats"></span></h3>
+      <div class="row"><button class="mini" onclick="asScan()">扫描物料</button>
+      <input id="as-q" placeholder="按 URL 搜素材…" style="width:200px" onkeydown="if(event.key==='Enter')asLoad()">
+      <select id="as-role" onchange="asLoad()" style="width:110px"><option value="">全部角色</option><option value="cover">cover</option><option value="media">media</option></select>
+      <select id="as-lang2" onchange="asLoad()" style="width:100px"><option value="">全部语言</option></select></div></div>
+      <div id="as-list" style="max-height:260px;overflow:auto;margin-top:8px"></div>
+      <div class="card-head" style="margin-top:14px"><h3>批量替换物料</h3><span class="mut">先生成计划 → dry-run 预览 → 应用（admin）</span></div>
+      <div class="row"><select id="as-mode" style="width:120px"><option value="prefix">URL 前缀</option><option value="exact">精确匹配</option><option value="regex">正则</option></select>
+        <input id="as-match" placeholder="匹配（如 https://assets-persist.lovart.ai/img/079352d5…）" style="flex:1;min-width:240px">
+        <input id="as-newurl" placeholder="新 URL（留空=仅改 alt）" style="flex:1;min-width:200px">
+        <input id="as-newalt" placeholder="新 alt（可空）" style="width:180px"></div>
+      <div class="row" style="margin-top:8px"><select id="as-section" style="width:130px"></select>
+        <select id="as-lang" style="width:100px"><option value="">全部语言</option><option>en</option><option>zh</option><option>ja</option><option>ko</option><option>zh-TW</option><option>de</option><option>fr</option><option>pt</option><option>ru</option><option>it</option></select>
+        <select id="as-ptype" style="width:130px"><option value="">全部类型</option><option>feature</option><option>tool</option><option>topic</option><option>scenario</option><option>solution</option><option>product</option><option>blog</option></select>
+        <input id="as-slugs" placeholder="限定 slug（逗号分隔，可空）" style="flex:1;min-width:180px">
+        <button class="btn ghost" onclick="asPlan()">① 生成计划</button>
+        <button class="btn ghost" onclick="asApply(true)">② Dry-run 预览</button>
+        <button class="btn primary" onclick="asApply(false)">③ 应用（真写库）</button></div>
+      <pre id="as-out" style="margin-top:10px;max-height:260px;overflow:auto"></pre>
+      <div id="as-plan" class="mut" style="font-size:12px;margin-top:6px"></div>
+    </div>
   </section>
 
   <!-- ============ 分发 ============ -->
@@ -1308,6 +1329,7 @@ function loadLib(){api('api/library/sites').then(ss=>{
   $('nav-lib').textContent=tot||0;
   if(!LIB_SEC)LIB_SEC=(t.sections[0]||{}).key||'';
   $('lib-sections').innerHTML=(t.sections||[]).map(s=>`<span class="chip ${s.key===LIB_SEC?'on':''}" onclick="libPick('${esc(s.key)}')">${esc(s.key)} <span class="mut">${s.pulled||0}/${s.total||0}</span></span>`).join('');
+  if($('as-section'))$('as-section').innerHTML='<option value="">全部段落</option>'+(t.sections||[]).map(s=>`<option>${esc(s.key)}</option>`).join('');
   const sec=(t.sections||[]).find(x=>x.key===LIB_SEC)||{};
   $('lib-langs').innerHTML='<span class="chip '+(LIB_LANG===''?'on':'')+'" onclick="libLang(\'\')">全部 <span class="mut">'+(sec.pulled||0)+'</span></span>'+
    Object.entries(sec.langs||{}).sort((a,b)=>b[1]-a[1]).map(([l,n])=>`<span class="chip ${l===LIB_LANG?'on':''}" onclick="libLang('${esc(l)}')">${esc(l)} <span class="mut">${n}</span></span>`).join('');
@@ -1333,6 +1355,31 @@ function libSync(){const secs=prompt('同步哪些段落？（逗号分隔，留
  const mx=prompt('每段上限？（0=全部，试跑建议 20）','20');if(mx===null)return;
  api('api/library/sync',{site:LIB_SITE,sections:secs,max:parseInt(mx||'0',10)||0}).then(r=>{
   if(r.error)return alert(r.error);alert('同步已启动（后台）——看上方进度');libStatus()})}
+
+/* ---- 图片物料 ---- */
+function asLoad(){api('api/assets/inventory?site='+encodeURIComponent(LIB_SITE)+'&q='+encodeURIComponent($('as-q').value.trim())+'&role='+$('as-role').value+'&lang='+$('as-lang2').value)
+ .then(d=>{if(d.error)return $('as-list').innerHTML='<span class="mut">'+esc(d.error)+'</span>';
+  $('as-stats').textContent=`台账 ${d.synced_at?esc(d.synced_at.slice(0,16))+' 同步':''} · 页面 ${(d.stats||{}).pages||0} · 素材 URL ${(d.stats||{}).urls||0} · 有 cover ${(d.stats||{}).with_cover||0} · 有 media ${(d.stats||{}).with_media||0}`;
+  $('as-list').innerHTML='<table><tr><th>素材 URL</th><th>次数</th><th>角色</th><th>alt</th></tr>'+
+   (d.urls||[]).map(u=>`<tr><td style="font-family:var(--font-mono);font-size:11px;max-width:420px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(u.url)}</td>
+    <td class="tnum">${u.n}</td><td>${Object.entries(u.roles||{}).map(([k,v])=>k+':'+v).join(' ')}</td><td class="mut" style="font-size:11px">${esc((u.alt||'').slice(0,40))}</td></tr>`).join('')+'</table>'})}
+function asScan(){const secs=prompt('扫描范围：段落（逗号分隔，留空=全部落地页+blog）','');if(secs===null)return;
+ const mx=prompt('每段上限（0=全部；全量约 9k 页需几分钟）','0');if(mx===null)return;
+ api('api/assets/scan',{site:LIB_SITE,sections:secs,max:parseInt(mx||'0',10)||0}).then(r=>{if(r.error)return alert(r.error);
+  $('as-out').textContent='扫描已启动（后台）…';setTimeout(asPoll,3000)})}
+function asPoll(n){n=n||0;api('api/assets/result?site='+encodeURIComponent(LIB_SITE)+'&cmd=scan').then(r=>{
+ if(r.out){$('as-out').textContent=r.out.slice(-1500);asLoad()}else if(n<40){setTimeout(()=>asPoll(n+1),4000)}})}
+function asPlan(){api('api/assets/plan',{site:LIB_SITE,mode:$('as-mode').value,match:$('as-match').value.trim(),new_url:$('as-newurl').value.trim(),new_alt:$('as-newalt').value.trim(),section:$('as-section').value,lang:$('as-lang').value,page_type:$('as-ptype').value,slugs:$('as-slugs').value.trim()})
+ .then(r=>{if(r.error)return alert(r.error);$('as-out').textContent=JSON.stringify(r,null,1);asPollPlan()})}
+function asPollPlan(){setTimeout(()=>{api('api/assets/plan?site='+encodeURIComponent(LIB_SITE)).then(p=>{
+ if(p&&p.count!==undefined){$('as-plan').innerHTML=`计划：命中 <b class="tnum">${p.count}</b> 处物料，涉及 <b class="tnum">${p.docs}</b> 个页面 ${p.new_url?`→ ${esc(p.new_url.slice(0,60))}`:'（仅改 alt）'}`;
+  if(p.items&&p.items.length)$('as-out').textContent=p.items.slice(0,20).map(i=>i.slug+' · '+i.kind+(i.idx!==null?`[${i.idx}]`:'')+' · '+i.old.slice(0,80)).join('\n')}
+ },2500)})}
+function asApply(dry){api('api/assets/apply',{site:LIB_SITE,dry_run:dry}).then(r=>{if(r.error)return alert(r.error);
+ $('as-out').textContent='已提交（'+(dry?'dry-run':'真写库')+'），等待结果…';asPollApply(0,dry)})}
+function asPollApply(n,dry){n=n||0;api('api/assets/result?site='+encodeURIComponent(LIB_SITE)+'&cmd=apply').then(r=>{
+ if(r.out&&r.at){$('as-out').textContent=r.out.slice(-2000);if(!dry)alert('已应用——注意：MFlow 库台账需重扫以更新（Sanity 侧已变更）');return}
+ if(n<30)setTimeout(()=>asPollApply(n+1,dry),4000)})}
 
 /* ---- 报告仪表 ---- */
 function loadRdash(){if($('rd-cat').children.length)return;

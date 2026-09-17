@@ -1136,6 +1136,56 @@ def library_list(site, section, lang="", q="", limit=200):
     return out
 
 
+def assets_inventory(site, q="", role="", section="", lang="", limit=300):
+    inv = read_json(LIB_ROOT / site / "assets.json", {})
+    if not inv:
+        return {"error": "尚无物料台账——先点「扫描物料」"}
+    urls = inv.get("urls", {})
+    rows = []
+    for u, e in urls.items():
+        if q and q.lower() not in u.lower():
+            continue
+        if role and role not in (e.get("roles") or {}):
+            continue
+        if section:
+            pids = e.get("pages") or []
+            if not any((inv.get("pages", {}).get(pid, {}).get("section") == section) for pid in pids[:50]):
+                continue
+        if lang:
+            pids = e.get("pages") or []
+            if not any((inv.get("pages", {}).get(pid, {}).get("lang") == lang) for pid in pids[:50]):
+                continue
+        rows.append({"url": u, "n": e.get("n", 0), "roles": e.get("roles", {}),
+                     "alt": e.get("alt", ""), "pages": (e.get("pages") or [])[:8]})
+    rows.sort(key=lambda r: -r["n"])
+    return {"site": site, "synced_at": inv.get("synced_at", ""), "stats": inv.get("stats", {}),
+            "count": len(rows), "urls": rows[:limit]}
+
+
+def assets_run(cmd, site, **kw):
+    """后台跑 asset_tools.py（scan/plan/apply）。"""
+    args = [sys.executable, str(PROJECT / "1-4 Dev/scripts/library/asset_tools.py"), cmd, "--site", site]
+    for k, v in kw.items():
+        if v in ("", None, 0, False):
+            continue
+        flag = "--" + k.replace("_", "-")
+        if k == "yes" or k == "dry_run":
+            args.append(flag if v else flag)
+        else:
+            args += [flag, str(v)]
+    def run():
+        try:
+            r = run_tool(args, timeout=7200)
+            (LIB_ROOT / site).mkdir(parents=True, exist_ok=True)
+            (LIB_ROOT / site / f"assets-{cmd}-result.json").write_text(json.dumps(
+                {"cmd": cmd, "rc": r.get("rc"), "out": (r.get("out") or "")[-3000:],
+                 "at": datetime.now().isoformat(timespec="seconds")}, ensure_ascii=False, indent=1))
+        except Exception as e:
+            print(f"[assets-{cmd}] {e}", file=sys.stderr)
+    threading.Thread(target=run, daemon=True).start()
+    return {"ok": True, "started": True, "cmd": cmd}
+
+
 def library_sync(site, sections="", max_n=0):
     """后台跑 sanity_pull.py（状态落 run/library/{site}/sync-status.json）。"""
     def run():
@@ -2353,6 +2403,20 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/library/status":
                 site = qs.get("site", ["lovart-global"])[0]
                 return self._send(200, read_json(LIB_ROOT / site / "sync-status.json", {"state": "idle"}))
+            # ── 图片物料（落地页/Blog 素材台账与批量替换）──
+            if parsed.path == "/api/assets/inventory":
+                return self._send(200, assets_inventory(qs.get("site", ["lovart-global"])[0],
+                                                        qs.get("q", [""])[0].strip(),
+                                                        qs.get("role", [""])[0],
+                                                        qs.get("section", [""])[0],
+                                                        qs.get("lang", [""])[0]))
+            if parsed.path == "/api/assets/result":
+                site = qs.get("site", ["lovart-global"])[0]
+                cmd = qs.get("cmd", ["plan"])[0]
+                return self._send(200, read_json(LIB_ROOT / site / f"assets-{cmd}-result.json", {"state": "idle"}))
+            if parsed.path == "/api/assets/plan":
+                site = qs.get("site", ["lovart-global"])[0]
+                return self._send(200, read_json(LIB_ROOT / site / "replace-plan.json", {"count": 0, "items": []}))
             if parsed.path == "/api/workflows":
                 sk = {s["name"]: s for s in harness_inventory()["skills"]}
                 wfs = []
@@ -2550,7 +2614,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/pay/cards/clear", "/api/pay/link/create", "/api/pay/order/confirm",
                       "/api/pay/order/redeliver", "/api/pay/order/cancel", "/api/pay/voucher/save",
                       "/api/pay/voucher/delete", "/api/pay/config/save", "/api/pay/verify",
-                      "/api/publish/sanity", "/api/publish/wordpress", "/api/library/sync"}
+                      "/api/publish/sanity", "/api/publish/wordpress", "/api/library/sync",
+                      "/api/assets/scan", "/api/assets/plan", "/api/assets/apply"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
@@ -2805,6 +2870,34 @@ class Handler(BaseHTTPRequestHandler):
                 r = library_sync(site, str(body.get("sections", "")), int(body.get("max", 0) or 0))
                 with open(RUN_DIR / "approvals.log", "a") as f:
                     f.write(f"{datetime.now().isoformat(timespec='seconds')} LIBRARY-SYNC {site} sections={body.get('sections','all')} max={body.get('max',0)} by={self._me()}\n")
+                return self._send(200, r)
+            # ── 图片物料：扫描 / 生成替换计划 / 执行（dry-run 默认）──
+            if self.path == "/api/assets/scan":
+                site = str(body.get("site", "lovart-global"))
+                return self._send(200, assets_run("scan", site, sections=str(body.get("sections", "")),
+                                                  max=int(body.get("max", 0) or 0)))
+            if self.path == "/api/assets/plan":
+                site = str(body.get("site", "lovart-global"))
+                return self._send(200, assets_run("plan", site, mode=str(body.get("mode", "prefix")),
+                                                  match=str(body.get("match", "")),
+                                                  new_url=str(body.get("new_url", "")),
+                                                  new_alt=str(body.get("new_alt", "")),
+                                                  section=str(body.get("section", "")),
+                                                  lang=str(body.get("lang", "")),
+                                                  page_type=str(body.get("page_type", "")),
+                                                  slugs=str(body.get("slugs", ""))))
+            if self.path == "/api/assets/apply":
+                site = str(body.get("site", "lovart-global"))
+                dry = bool(body.get("dry_run", True))
+                plan_path = str(LIB_ROOT / site / "replace-plan.json")
+                if not (LIB_ROOT / site / "replace-plan.json").exists():
+                    return self._send(400, {"error": "无替换计划——先生成计划"})
+                r = assets_run("apply", site, plan=plan_path,
+                               max_docs=int(body.get("max_docs", 500) or 500),
+                               **({"yes": 1} if not dry else {}))
+                with open(RUN_DIR / "approvals.log", "a") as f:
+                    f.write(f"{datetime.now().isoformat(timespec='seconds')} ASSET-PLAN-APPLY {site} dry_run={dry} "
+                            f"by={self._me()} plan={plan_path}\n")
                 return self._send(200, r)
             if self.path == "/api/skills/sync":
                 return self._send(200, run_tool([sys.executable, str(PROJECT / "1-4 Dev/scripts/harness_sync.py")], timeout=120))
