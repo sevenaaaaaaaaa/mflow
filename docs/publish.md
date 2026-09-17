@@ -54,6 +54,32 @@ API：`POST /api/publish/sanity {doctype:"composite", page_type, mode, cover_url
 
 实测（线上 dry-run，零副作用）：create 模式 5 版块 tx 返回；patch 模式更新既有页 tx 返回；Sanity 文档 `_updatedAt` 未变。
 
+## 一之三、落地页闭环（改稿 → 发布，T1 延伸）
+
+**预设「🔁 落地页闭环（改稿→发布）」**：一次把「存量落地页改稿 + 校验 + patch 上线」串成任务链。
+
+```
+landing_refresh 任务（批量任务页 → 预设，或 Agent 对话）
+  ├─ 读 Sanity 现有页面内容（bodyJson → 文本）
+  ├─ 按落地页结构重写：H1 → 3-4 非问句 H2（含数据点）→ FAQ → CTA
+  ├─ 四门禁（结构/反slop · GEO 可引用性 · 配额 · 语言规范）+ **composite 结构校验**（词当量 ≤1200）
+  ├─ 不过则带反馈重写（≤3 轮，自愈收敛）
+  └─ 通过的项 → **自动链出 publish_sanity 任务**（patch 模式，dry-run 默认）
+        → 再次人工确认后关闭 dry-run 即真实上线
+```
+
+关键设计：
+- **只链通过项**：`gates_blocked` 或 `struct_errors` 非空的稿件不会进入发布链（审计记 `CHAIN-SKIP`）
+- **链式发布默认 dry-run**：落地页写入即上线，所以链式发布必须显式 `chain.dry_run=false` 才真写
+- **patch 用真实 `_id`**：内容库 `sanity_id` 是 UUID，patch 必须以它命中（slug ≠ _id）
+- **发布失败即失败**：`publish_sanity` 失败会抛错 → 条目 failed（不再"假 done"）
+
+实测（线上 dry-run）：
+```
+landing_refresh 1 项 → ready=True（四门禁+结构全过）
+  → 自动链出 publish_sanity（patch）→ tx=NngiCiCmzwd6fOe1vYPa7V  ✅
+```
+
 ## 二、WordPress（通道已通，待配置）
 
 - 实现：既有 `publish_adapters/wordpress.py`（WP REST + Application Password）+ 统一 `cli.py`

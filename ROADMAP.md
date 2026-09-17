@@ -229,7 +229,18 @@
 - ✅ 两种写入模式：`create`（createIfNotExists）· `patch`（ifRevisionID，只改指定字段，更新既有页首选）
 - ✅ **安全闸**：compositePage 无草稿态（实测 9,303 篇无 status 字段）→ 真实写入必须显式 `confirm_public`，否则拒绝
 - ✅ 批量执行器 `publish_sanity`（blog/composite 通吃）+ 发布通道 UI（文档类型/模式/封面/确认框）+ 5 个新单测（共 26）
-- 📋 待做：落地页批量改稿→发布闭环预设（refresh 后直接 patch 上线）
+- ✅ 落地页闭环（Phase 18）：`landing_refresh` 执行器（读 Sanity 现有页→按落地页结构重写→四门禁+结构校验→**带反馈重试≤3轮**）+ 通用**任务链**（只链通过项，链式发布默认 dry-run）+ 预设「🔁 落地页闭环（改稿→发布）」
+- ✅ 闭环实测：ready=True → 自动链出 publish_sanity(patch) → tx 返回；不通过项记 CHAIN-SKIP
+- ✅ 顺手修两个环境 bug：新钩子用系统 py3.6（非 ASCII 打印崩→lang-check 恒挂）→ 走 LOVART_PYTHON/venv；校验口径与 quota-check 统一为**词当量**（英文页不再被原始字符数误伤）
+
+## Phase 18 · 落地页闭环（2026-09-17 ✅）
+
+- ✅ `landing_refresh` 执行器：读 Sanity 现有内容 → 落地页结构化重写 → 四门禁 + composite 结构校验 → **内部重试 ≤3 轮（带门禁/结构反馈）**
+- ✅ 通用**任务链**：`params.chain` 在父任务完成后自动生成下一步（只链通过门禁的产出；链式发布默认 dry-run；审计 CHAIN-CREATE/CHAIN-SKIP）
+- ✅ 预设「🔁 落地页闭环（改稿→发布）」（第 8 个预设）：section/lang/条数 → landing_refresh → publish_sanity(patch)
+- ✅ 修复：`publish_sanity` 失败如实标记 failed；patch 用真实 Sanity `_id`（UUID，非 slug）
+- ✅ 环境修复：quota-check/lang-check 走 `LOVART_PYTHON`（venv）避免 py3.6 非 ASCII 崩溃；校验口径统一**词当量**
+- 实测：改稿 ready=True → 链出 patch 发布 → `tx=NngiCiCmzwd6fOe1vYPa7V`（dry-run，零副作用）
 
 ## 原则
 
