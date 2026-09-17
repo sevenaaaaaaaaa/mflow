@@ -192,7 +192,8 @@
 - ✅ 提示词注入 CONTENT_BUDGET + LANG_RULES
 - ✅ 任务拆批次 + 上下文摘要传递（batch_size 默认 5；gen/rewrite 批次摘要注入下一批）
 - ✅ 17 个 skill 补 frontmatter（45/45 有描述）；iCloud 冲突副本归档
-- 📋 遗留 A1-A5（RULES-30 硬条款 / 10·50 瘦身 / 参考样式索引 / skill 内预算 / 长文豁免）
+- ✅ A1-A5（2026-09-17 第二轮）：RULES-30 硬条款化 15 条 · RULES-10/50 重构（10+10 硬条款）· 参考样式统一索引 REFERENCE-INDEX.md · 16 skills 预算段 · 长文预算豁免贯通（profile+声明+RULES-70 §五）
+- ✅ 附带：批量生成内部重试（门禁反馈 ≤3 轮）· pipeline-state 并发锁 PS_LOCK · iCloud 副本去噪 5 个
 
 ## 原则
 
