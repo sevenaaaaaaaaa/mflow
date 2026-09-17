@@ -309,12 +309,14 @@ def md_to_sections(md_text, title="", description="", cover_url="", cover_alt=""
 
 
 def _section_text_len(sec):
-    n = 0
+    """词当量（与 quota-check 同口径）：CJK 字符 + 拉丁词数 ×1.5。英文页面不再被原始字符数误伤。"""
+    cjk = words = 0
 
     def walk(v):
-        nonlocal n
+        nonlocal cjk, words
         if isinstance(v, str):
-            n += len(v)
+            cjk += len(re.findall(r"[\u4e00-\u9fff\u3040-\u30ff\uac00-\ud7af]", v))
+            words += len(re.findall(r"[A-Za-z0-9]+", v))
         elif isinstance(v, dict):
             for x in v.values():
                 walk(x)
@@ -322,7 +324,7 @@ def _section_text_len(sec):
             for x in v:
                 walk(x)
     walk(sec)
-    return n
+    return int(cjk + words * 1.5)
 
 
 def validate_sections(sections):
@@ -345,7 +347,7 @@ def validate_sections(sections):
         errs.append("缺 cta-default 结尾版块")
     total = sum(_section_text_len(s) for s in sections)
     if total > 1200:
-        errs.append(f"文案总长 {total} > 1200（RULES-70 落地页上限，压缩冗余）")
+        errs.append(f"文案词当量 {total} > 1200（RULES-70 落地页上限，压缩冗余）")
     if total < 200:
         errs.append(f"文案总长 {total} < 200（内容过薄）")
     for i, s in enumerate(sections):
