@@ -131,6 +131,15 @@
 - ✅ 机器只读：X-MFlow-Token 可读订单/商品/统计（供 OpenFlow 联动）
 - 📋 待用户：配置收款钱包地址（TRC20 填了才开启自动核验）；ERC20/BTC 链上核验（需 Etherscan Key）
 
+## Phase 10 · 线上发布通道（2026-09-17 ✅ Sanity 上线）
+
+- ✅ Sanity 服务端发布器：`publish_adapters/sanity_publisher.py`（纯 Python HTTP API，无需 Node）+ MD→PortableText 转换器入仓
+- ✅ 凭证上云：Mac sanity-cli token → 服务器 `run/secrets/sanity.json`（600/700，git-ignore）；三级解析（env → secrets → 本地）
+- ✅ 发布 API + 工作台「发布通道」卡：连通探测 / dry-run（Sanity 原生 dryRun 不落库）/ 真实发布（status=draft，createIfNotExists 不覆盖）/ 发布历史审计
+- ✅ 人工授权门禁：条目须 S4-qa 及之后 + qa BLOCK 全 0，admin-only，真实写库二次确认
+- ✅ WordPress 通道就绪（待 `run/cms.json` 配置 base/user/app_password）；Webhook 通用出口可用
+- 📋 待用户：提供 WordPress 站点与应用密码；确认首篇真实发布（Sanity draft）
+
 ## 原则
 
 1. 文件即状态：不引入数据库也能跑，规模化时才换 PG（接口已预留）
