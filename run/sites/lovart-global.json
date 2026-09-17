@@ -1,0 +1,25 @@
+{
+  "id": "lovart-global",
+  "name": "Lovart Global",
+  "domain": "www.lovart.ai",
+  "default_lang": "en",
+  "source": {"type": "sanity", "project": "o11tm2qe", "dataset": "production"},
+  "sections": [
+    {"key": "blog", "dir": "blog", "docType": "blog", "engine": "portable-text",
+     "route": "/{lang}/blog/{slug}", "titleField": "title"},
+    {"key": "features", "dir": "features", "docType": "compositePage", "pageType": "feature",
+     "engine": "body-json", "route": "/{lang}/features/{slug}"},
+    {"key": "tools", "dir": "tools", "docType": "compositePage", "pageType": "tool",
+     "engine": "body-json", "route": "/{lang}/tools/{slug}"},
+    {"key": "topics", "dir": "topics", "docType": "compositePage", "pageType": "topic",
+     "engine": "body-json", "route": "/{lang}/topics/{slug}"},
+    {"key": "scenarios", "dir": "scenarios", "docType": "compositePage", "pageType": "scenario",
+     "engine": "body-json", "route": "/{lang}/scenarios/{slug}"},
+    {"key": "solutions", "dir": "solutions", "docType": "compositePage", "pageType": "solution",
+     "engine": "body-json", "route": "/{lang}/solutions/{slug}"},
+    {"key": "products", "dir": "products", "docType": "compositePage", "pageType": "product",
+     "engine": "body-json", "route": "/{lang}/product/{slug}"},
+    {"key": "news", "dir": "news", "docType": "news", "engine": "portable-text",
+     "route": "/{lang}/news/{slug}"}
+  ]
+}

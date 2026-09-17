@@ -233,6 +233,7 @@ th{color:var(--muted);font-weight:600}
   <button class="s-item" data-t="rdash" onclick="setTab('rdash')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-6 4 3 5-8"/></svg><span>报告仪表</span></button>
   <button class="s-item" data-t="reports" onclick="setTab('reports')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></svg><span>报告中心</span><span class="sbad mutb" id="nav-reports">0</span></button>
   <button class="s-item" data-t="kb" onclick="setTab('kb')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>知识库</span></button>
+  <button class="s-item" data-t="lib" onclick="setTab('lib')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h7"/></svg><span>内容库</span><span class="sbad mutb" id="nav-lib">0</span></button>
   <button class="s-item" data-t="dist" onclick="setTab('dist')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><span>分发队列</span><span class="sbad mutb" id="nav-dist">0</span></button>
   <button class="s-item" data-t="pay" onclick="setTab('pay')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg><span>支付 · 发卡</span><span class="sbad mutb" id="nav-pay">0</span></button>
   <button class="s-item" data-t="trident" onclick="setTab('trident')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8M12 10 5 22M12 10l7 12M5 5l14 0"/></svg><span>数据管线 Trident</span></button>
@@ -313,6 +314,24 @@ th{color:var(--muted);font-weight:600}
        <button class="btn ghost" onclick="addKbExtra()">挂载到本项目</button></div>
       <div class="mut" style="margin-top:4px">目录须在项目库内存在；挂载后进知识搜索与浏览范围</div></div>
     <div class="card"><div class="card-head"><h3 id="kres-t">浏览</h3><span class="mut" id="kdesc"></span></div><div id="kres" class="flist"></div></div>
+    </div>
+  </section>
+
+  <!-- ============ 内容库 ============ -->
+  <section class="page" id="pg-lib">
+    <div class="pg-head"><div><div class="kick">情报与产出</div><h1>内容<em class="sf">库</em></h1>
+      <p class="pg-sub">按「站点目录结构」镜像的 CMS 内容（Sanity 落地页/Blog → 本地库）。站点档案定义段落→目录→URL 规则，适配不同站点。</p></div>
+      <div class="head-actions">
+        <select id="lib-site" onchange="loadLib()" style="width:170px"></select>
+        <input id="lib-q" placeholder="搜标题/slug/正文…" style="width:220px" onkeydown="if(event.key==='Enter')libList()">
+        <button class="btn ghost" onclick="libList()">搜索</button>
+        <button class="btn primary" onclick="libSync()">同步 Sanity ↻</button></div></div>
+    <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>站点档案 <span class="mut" id="lib-meta"></span></h3>
+      <span class="mut" id="lib-status"></span></div>
+      <div class="chips" id="lib-sections"></div></div>
+    <div class="cols">
+      <div class="card" style="height:fit-content"><div class="card-head"><h3>语言</h3></div><div id="lib-langs" style="display:flex;flex-direction:column;gap:6px"></div></div>
+      <div class="card"><div class="card-head"><h3 id="lib-list-t">条目</h3></div><div id="lib-list" class="flist"></div></div>
     </div>
   </section>
 
@@ -707,7 +726,7 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
  $('pg-'+t).classList.add('on');
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
-   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay}[t]||(()=>{}))()}
+   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib}[t]||(()=>{}))()}
 function openReader(path){api('api/read?path='+encodeURIComponent(path)).then(r=>{
  $('rname').textContent=r.name;
  const toc=(r.toc||[]).filter(t=>t.level===2);
@@ -1278,6 +1297,42 @@ function pubSanity(dry){const id=$('pub-draft').value;if(!id)return alert('先�
 function pubWP(){const id=$('pub-draft').value;if(!id)return alert('先选草稿');
  api('api/publish/wordpress',{item_id:id,path:'run/projects/'+(window.__PROJ||'main')+'/content/'+id+'.md',title:$('pub-title').value.trim()})
  .then(r=>{$('pub-out').textContent=JSON.stringify(r,null,1);loadPublish()})}
+
+/* ---- 内容库（站点档案驱动）---- */
+let LIB_SITE='lovart-global',LIB_SEC='',LIB_LANG='';
+function loadLib(){api('api/library/sites').then(ss=>{
+ $('lib-site').innerHTML=(ss||[]).map(s=>`<option value="${esc(s.id)}" ${s.id===LIB_SITE?'selected':''}>${esc(s.name)} · ${esc(s.domain||'')}</option>`).join('')||'<option value="">（无站点档案）</option>'}) ;
+ api('api/library/tree?site='+encodeURIComponent(LIB_SITE)).then(t=>{
+  $('lib-meta').textContent=`${t.name||LIB_SITE} · ${t.domain||''} · 上次同步 ${t.synced_at?esc(t.synced_at.slice(0,16)):'未同步'}`;
+  const tot=(t.sections||[]).reduce((a,b)=>a+(b.pulled||0),0);
+  $('nav-lib').textContent=tot||0;
+  if(!LIB_SEC)LIB_SEC=(t.sections[0]||{}).key||'';
+  $('lib-sections').innerHTML=(t.sections||[]).map(s=>`<span class="chip ${s.key===LIB_SEC?'on':''}" onclick="libPick('${esc(s.key)}')">${esc(s.key)} <span class="mut">${s.pulled||0}/${s.total||0}</span></span>`).join('');
+  const sec=(t.sections||[]).find(x=>x.key===LIB_SEC)||{};
+  $('lib-langs').innerHTML='<span class="chip '+(LIB_LANG===''?'on':'')+'" onclick="libLang(\'\')">全部 <span class="mut">'+(sec.pulled||0)+'</span></span>'+
+   Object.entries(sec.langs||{}).sort((a,b)=>b[1]-a[1]).map(([l,n])=>`<span class="chip ${l===LIB_LANG?'on':''}" onclick="libLang('${esc(l)}')">${esc(l)} <span class="mut">${n}</span></span>`).join('');
+  libList()});
+ libStatus()}
+function libPick(k){LIB_SEC=k;LIB_LANG='';loadLib()}
+function libLang(l){LIB_LANG=l;loadLib()}
+function libList(){if(!LIB_SEC)return;$('lib-list-t').textContent=LIB_SEC+LIB_LANG?`（${LIB_SEC}${LIB_LANG?' / '+LIB_LANG:''}）`:`（${LIB_SEC}）`;
+ api('api/library/list?site='+encodeURIComponent(LIB_SITE)+'&section='+encodeURIComponent(LIB_SEC)+'&lang='+encodeURIComponent(LIB_LANG)+'&q='+encodeURIComponent($('lib-q').value.trim()))
+ .then(fs=>{$('lib-list-t').textContent=`${LIB_SEC}${LIB_LANG?' / '+LIB_LANG:''}（${fs.length}）`;
+  $('lib-list').innerHTML=(fs||[]).map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${esc(f.lang||'')}</span>${esc(f.name.replace(/\.md$/,''))}</a>`).join('')||'<span class="mut">空（点右上「同步 Sanity」拉取）</span>'})}
+function libStatus(){api('api/library/status?site='+encodeURIComponent(LIB_SITE)).then(s=>{
+ const el=$('lib-status');if(!el)return;
+ if(s.state==='running'){el.innerHTML=`<span class="warn">同步中…</span> ${esc((s.sections||[]).join(','))} ${esc((s.done_sections||[]).join('✓'))}`;
+  setTimeout(()=>{if(TAB==='lib'){libStatus();loadLibNoStatus()}},4000)}
+ else if(s.state==='done')el.innerHTML=`<span class="ok">上次同步完成</span>（pull ${s.pulled||0}）`;
+ else el.textContent=''})}
+function loadLibNoStatus(){api('api/library/tree?site='+encodeURIComponent(LIB_SITE)).then(t=>{
+ const tot=(t.sections||[]).reduce((a,b)=>a+(b.pulled||0),0);$('nav-lib').textContent=tot||0;
+ $('lib-meta').textContent=`${t.name||LIB_SITE} · ${t.domain||''} · 上次同步 ${t.synced_at?esc(t.synced_at.slice(0,16)):'未同步'}`;
+ $('lib-sections').innerHTML=(t.sections||[]).map(s=>`<span class="chip ${s.key===LIB_SEC?'on':''}" onclick="libPick('${esc(s.key)}')">${esc(s.key)} <span class="mut">${s.pulled||0}/${s.total||0}</span></span>`).join('')})}
+function libSync(){const secs=prompt('同步哪些段落？（逗号分隔，留空=全部）\n可选：blog,features,tools,topics,scenarios,solutions,products,news','');if(secs===null)return;
+ const mx=prompt('每段上限？（0=全部，试跑建议 20）','20');if(mx===null)return;
+ api('api/library/sync',{site:LIB_SITE,sections:secs,max:parseInt(mx||'0',10)||0}).then(r=>{
+  if(r.error)return alert(r.error);alert('同步已启动（后台）——看上方进度');libStatus()})}
 
 /* ---- 报告仪表 ---- */
 function loadRdash(){if($('rd-cat').children.length)return;

@@ -34,7 +34,7 @@ STATE_FILE = PROJECT / "1-3 GenFlow" / ".pipeline" / "pipeline-state.json"
 EVENTS_FILE = PROJECT / "1-3 GenFlow" / ".pipeline" / "events.jsonl"
 TASKS_FILE = RUN_DIR / "tasks.json"
 PROJECTS_DIR = RUN_DIR / "projects"
-DEFAULT_PROJECT = "main"
+DEFAULT_PROJECT = "lovart-global"
 DAILY_LOG = RUN_DIR / "logs" / "daily.out.log"
 DAILY_PID = RUN_DIR / "logs" / "daily.pid"
 KB_ROOT = PROJECT / "1-2 Insight" / "Knowledge Base"
@@ -1079,6 +1079,75 @@ def publish_gate(proj, item_id):
     if blocks:
         return False, f"质检 BLOCK 未清零：{blocks}"
     return True, ""
+
+
+LIB_ROOT = RUN_DIR / "library"
+SITES_DIR = RUN_DIR / "sites"
+
+
+def library_sites():
+    out = []
+    if SITES_DIR.exists():
+        for f in sorted(SITES_DIR.glob("*.json")):
+            s = read_json(f, {})
+            idx = read_json(LIB_ROOT / f.stem / "index.json", {})
+            out.append({"id": f.stem, "name": s.get("name", f.stem), "domain": s.get("domain", ""),
+                        "sections": [x.get("key") for x in (s.get("sections") or [])],
+                        "synced_at": idx.get("synced_at", "")})
+    return out
+
+
+def library_tree(site):
+    prof = read_json(SITES_DIR / f"{site}.json", {})
+    idx = read_json(LIB_ROOT / site / "index.json", {})
+    secs = []
+    for s in prof.get("sections") or []:
+        st = (idx.get("sections") or {}).get(s.get("key"), {})
+        secs.append({"key": s.get("key"), "dir": s.get("dir", s.get("key")), "docType": s.get("docType", ""),
+                     "pageType": s.get("pageType", ""), "route": s.get("route", ""),
+                     "pulled": st.get("pulled", 0), "total": st.get("total", 0), "langs": st.get("langs", {})})
+    return {"site": site, "name": prof.get("name", site), "domain": prof.get("domain", ""),
+            "synced_at": idx.get("synced_at", ""), "sections": secs}
+
+
+def library_list(site, section, lang="", q="", limit=200):
+    prof = read_json(SITES_DIR / f"{site}.json", {})
+    sec = next((s for s in (prof.get("sections") or []) if s.get("key") == section), None)
+    if not sec:
+        return []
+    base = LIB_ROOT / site / sec.get("dir", section)
+    out = []
+    if not base.exists():
+        return out
+    for f in sorted(base.rglob("*.md")):
+        if lang and f.parent.name != lang:
+            continue
+        if q:
+            ql = q.lower()
+            if ql not in f.name.lower() and ql not in f.read_text(errors="ignore")[:800].lower():
+                continue
+        try:
+            rel = str(f.relative_to(PROJECT))
+        except Exception:
+            rel = str(f)
+        out.append({"path": rel, "name": f.name, "section": section, "lang": f.parent.name})
+        if len(out) >= limit:
+            break
+    return out
+
+
+def library_sync(site, sections="", max_n=0):
+    """后台跑 sanity_pull.py（状态落 run/library/{site}/sync-status.json）。"""
+    def run():
+        try:
+            r = run_tool([sys.executable, str(PROJECT / "1-4 Dev/scripts/library/sanity_pull.py"),
+                          "--site", site, "--sections", sections, "--max", str(max_n)], timeout=7200)
+            if r.get("rc"):
+                print(f"[library-sync] rc={r['rc']} {r['out'][-300:]}", file=sys.stderr)
+        except Exception as e:
+            print(f"[library-sync] {e}", file=sys.stderr)
+    threading.Thread(target=run, daemon=True).start()
+    return {"ok": True, "started": True}
 
 
 def publish_wordpress(path, item_id, title=""):
@@ -2271,6 +2340,19 @@ class Handler(BaseHTTPRequestHandler):
                     lines = [l for l in ap.read_text(errors="ignore").strip().split("\n")
                              if "PUBLISH" in l][-30:][::-1]
                 return self._send(200, lines)
+            # ── 内容库（站点档案驱动的多站点内容镜像）──
+            if parsed.path == "/api/library/sites":
+                return self._send(200, library_sites())
+            if parsed.path == "/api/library/tree":
+                return self._send(200, library_tree(qs.get("site", ["lovart-global"])[0]))
+            if parsed.path == "/api/library/list":
+                return self._send(200, library_list(qs.get("site", ["lovart-global"])[0],
+                                                    qs.get("section", [""])[0],
+                                                    qs.get("lang", [""])[0],
+                                                    qs.get("q", [""])[0].strip()))
+            if parsed.path == "/api/library/status":
+                site = qs.get("site", ["lovart-global"])[0]
+                return self._send(200, read_json(LIB_ROOT / site / "sync-status.json", {"state": "idle"}))
             if parsed.path == "/api/workflows":
                 sk = {s["name"]: s for s in harness_inventory()["skills"]}
                 wfs = []
@@ -2468,7 +2550,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/pay/cards/clear", "/api/pay/link/create", "/api/pay/order/confirm",
                       "/api/pay/order/redeliver", "/api/pay/order/cancel", "/api/pay/voucher/save",
                       "/api/pay/voucher/delete", "/api/pay/config/save", "/api/pay/verify",
-                      "/api/publish/sanity", "/api/publish/wordpress"}
+                      "/api/publish/sanity", "/api/publish/wordpress", "/api/library/sync"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
@@ -2716,6 +2798,14 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(400, {"error": why})
                 r = publish_wordpress(path, item_id, str(body.get("title", "")))
                 return self._send(200 if r.get("ok") else 400, r)
+            if self.path == "/api/library/sync":
+                site = str(body.get("site", "lovart-global"))
+                if not (SITES_DIR / f"{site}.json").exists():
+                    return self._send(400, {"error": f"站点档案不存在：{site}"})
+                r = library_sync(site, str(body.get("sections", "")), int(body.get("max", 0) or 0))
+                with open(RUN_DIR / "approvals.log", "a") as f:
+                    f.write(f"{datetime.now().isoformat(timespec='seconds')} LIBRARY-SYNC {site} sections={body.get('sections','all')} max={body.get('max',0)} by={self._me()}\n")
+                return self._send(200, r)
             if self.path == "/api/skills/sync":
                 return self._send(200, run_tool([sys.executable, str(PROJECT / "1-4 Dev/scripts/harness_sync.py")], timeout=120))
             if self.path == "/api/generate":
@@ -2971,7 +3061,7 @@ class Handler(BaseHTTPRequestHandler):
 def main():
     if not PASSWORD and not AUTH_FILE.exists():
         print("[console] FAIL-CLOSED: 无 auth.json 且未设 MFLOW_CONSOLE_PASSWORD，API 全部拒绝", file=sys.stderr)
-    ensure_project(DEFAULT_PROJECT, "默认项目")
+    ensure_project(DEFAULT_PROJECT, "Lovart Global")
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     threading.Thread(target=loop_queue_worker, daemon=True).start()
     threading.Thread(target=schedule_executor, daemon=True).start()
