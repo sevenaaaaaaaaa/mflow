@@ -1186,6 +1186,227 @@ def assets_run(cmd, site, **kw):
     return {"ok": True, "started": True, "cmd": cmd}
 
 
+BATCH_DIR = RUN_DIR / "batch"
+BATCH_LOCK = threading.Lock()
+
+
+def batch_save(task):
+    BATCH_DIR.mkdir(parents=True, exist_ok=True)
+    p = BATCH_DIR / f"{task['id']}.json"
+    tmp = p.with_suffix(".tmp")
+    tmp.write_text(json.dumps(task, ensure_ascii=False, indent=1))
+    tmp.replace(p)
+
+
+def batch_load(tid):
+    return read_json(BATCH_DIR / f"{tid}.json", None)
+
+
+def batch_list():
+    out = []
+    if BATCH_DIR.exists():
+        for f in sorted(BATCH_DIR.glob("batch-*.json"), key=lambda x: x.stat().st_mtime, reverse=True):
+            t = read_json(f, {})
+            if t:
+                out.append({k: t.get(k) for k in ("id", "type", "title", "status", "created", "created_by", "dry_run", "stats")})
+    return out[:80]
+
+
+def batch_create(btype, title, items, params=None, dry_run=True, by=""):
+    tid = f"batch-{datetime.now().strftime('%y%m%d')}-{secrets.token_hex(3)}"
+    task = {"id": tid, "type": btype, "title": title or btype,
+            "created": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "created_by": by, "dry_run": bool(dry_run), "params": params or {}, "concurrency": 2,
+            "status": "queued", "log": [],
+            "items": [{"i": i, "status": "pending", "attempts": 0, "result": None, "error": "", **it}
+                      for i, it in enumerate(items)]}
+    task["stats"] = {"total": len(task["items"]), "done": 0, "failed": 0, "skipped": 0}
+    batch_save(task)
+    with open(RUN_DIR / "approvals.log", "a") as f:
+        f.write(f"{datetime.now().isoformat(timespec='seconds')} BATCH-CREATE {tid} type={btype} "
+                f"items={len(items)} dry_run={dry_run} by={by}\n")
+    return task
+
+
+def _batch_log(task, msg):
+    task.setdefault("log", []).append(f"[{time.strftime('%H:%M:%S')}] {msg}")
+    task["log"] = task["log"][-200:]
+
+
+def _sanity_req(path, payload, timeout=60):
+    cfg = SANITY_PUB.sanity_cfg()
+    url = f"https://{cfg['project']}.api.sanity.io/v2024-01-01/data/{path}/{cfg['dataset']}"
+    req = urllib.request.Request(url, data=json.dumps(payload).encode(),
+                                 headers={"Authorization": f"Bearer {cfg['token']}",
+                                          "Content-Type": "application/json"})
+    import urllib.request as _u
+    with _u.urlopen(req, timeout=timeout) as r:
+        return json.loads(r.read())
+
+
+def _bh_asset_replace(item, task, proj):
+    """物料替换：cover.url/alt、coverUrl、bodyJson[].media（ifRevisionID 并发保护）。"""
+    if not SANITY_PUB:
+        raise RuntimeError("sanity 发布器未加载")
+    did = item["doc_id"]
+    fresh = _sanity_req("query", {"query": f'*[_id=="{did}"][0]{{_id,_rev,cover,bodyJson,coverUrl}}'})["result"]
+    if not fresh:
+        raise RuntimeError("文档不存在")
+    sets = {}
+    if item.get("kind") == "cover":
+        if fresh.get("cover"):
+            sets["cover.url"] = item.get("new_url") or item.get("old")
+            if item.get("new_alt"):
+                sets["cover.alt"] = item["new_alt"]
+        else:
+            sets["coverUrl"] = item.get("new_url") or item.get("old")
+    else:
+        arr = json.loads(fresh.get("bodyJson") or "[]")
+        idx = item.get("idx")
+        fld = item.get("field", "media")
+        if idx is not None and 0 <= idx < len(arr):
+            m = arr[idx].get(fld)
+            if isinstance(m, dict) and m.get("src") == item.get("old"):
+                m["src"] = item.get("new_url") or item["old"]
+                if item.get("new_alt"):
+                    m["alt"] = item["new_alt"]
+                sets["bodyJson"] = json.dumps(arr, ensure_ascii=False)
+    if not sets:
+        return {"skipped": True, "reason": "无可替换字段（可能已被改过）"}
+    res = _sanity_req("mutate", {"mutations": [{"patch": {"id": did, "ifRevisionID": fresh.get("_rev"), "set": sets}}],
+                                 "dryRun": bool(task.get("dry_run"))})
+    return {"dry_run": task.get("dry_run"), "transactionId": res.get("transactionId"), "set": list(sets)}
+
+
+def _bh_field_patch(item, task, proj):
+    """字段改写：item.set = {"title": "...", "seoTitle": "..."}（ifRevisionID 保护）。"""
+    if not SANITY_PUB:
+        raise RuntimeError("sanity 发布器未加载")
+    did = item["doc_id"]
+    sets = item.get("set") or {}
+    if not sets:
+        raise RuntimeError("缺 set 字段")
+    fresh = _sanity_req("query", {"query": f'*[_id=="{did}"][0]{{_id,_rev}}'})["result"]
+    if not fresh:
+        raise RuntimeError("文档不存在")
+    res = _sanity_req("mutate", {"mutations": [{"patch": {"id": did, "ifRevisionID": fresh.get("_rev"), "set": sets}}],
+                                 "dryRun": bool(task.get("dry_run"))})
+    return {"dry_run": task.get("dry_run"), "transactionId": res.get("transactionId"), "set": list(sets)}
+
+
+def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", template_id="",
+                   instruction="", source_text=""):
+    """批量生成/改稿共用执行体：LLM → 落盘 → post-write + geo 门禁 → 状态机推进。"""
+    ps_args = ["--state-path", str(proj_paths(proj)["state"]), "--events-path", str(proj_paths(proj)["events"])]
+    run_tool([sys.executable, str(PS_PATH), *ps_args, "upsert", "--id", item_id, "--category", ctype])
+    # 状态机顺序：先入 S3-creating（与 Loop 引擎一致，S0-todo 不可直达 S3-draft）
+    run_tool([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item_id, "--to", "S3-creating"])
+    user = gen_prompt(ctype, lang, topic, brief, template=get_template(template_id))
+    if instruction:
+        user = (f"下面是既有内容，请按指令改写（事实准确优先；不确定的数字标 [待考证]）：\n"
+                f"指令：{instruction}\n\n现有内容：\n{source_text[:12000]}\n\n" + user)
+    draft = llm_chat([{"role": "user", "content": user}], profile="lovart-creation", max_tokens=4000, project=proj)
+    gen_dir = proj_paths(proj)["gen"]
+    gen_dir.mkdir(parents=True, exist_ok=True)
+    path = gen_dir / f"{item_id}.md"
+    path.write_text(draft)
+    hw = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/post-write-check.sh"),
+                   "--file", str(path), "--target-words", "300"], timeout=120)
+    geo = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/geo-check.sh"), "--file", str(path)], timeout=60)
+    qa_log(f"batch:{item_id}", "post-write-check.sh", hw["rc"])
+    qa_log(f"batch:{item_id}", "geo-check.sh", geo["rc"])
+    advanced = False
+    if hw["rc"] == 0 and geo["rc"] == 0:
+        rcs = []
+        for stg in ("S3-draft", "S3-done", "S4-qa"):
+            r = run_tool([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item_id, "--to", stg])
+            rcs.append(r.get("rc"))
+        advanced = all(rc == 0 for rc in rcs)
+    return {"path": rel_of(path), "chars": len(draft), "hook_rc": hw["rc"], "geo_rc": geo["rc"],
+            "advanced": advanced}
+
+
+def _bh_gen(item, task, proj):
+    return run_generation(proj, item["item_id"], ctype=item.get("type", "blog"), lang=item.get("lang", "zh"),
+                          topic=item.get("topic", ""), brief=item.get("brief", ""),
+                          template_id=item.get("template_id", ""))
+
+
+def _bh_rewrite(item, task, proj):
+    src = ""
+    if item.get("source_path"):
+        sp = safe_path(item["source_path"])
+        if sp:
+            src = sp.read_text(errors="ignore")
+    return run_generation(proj, item["item_id"], ctype=item.get("type", "blog"), lang=item.get("lang", "zh"),
+                          topic=item.get("topic", item.get("slug", "")), brief=item.get("brief", ""),
+                          instruction=item.get("instruction", ""), source_text=src)
+
+
+BATCH_HANDLERS = {"asset_replace": _bh_asset_replace, "field_patch": _bh_field_patch,
+                  "gen": _bh_gen, "rewrite": _bh_rewrite}
+
+
+def batch_worker():
+    """批量执行器：并发 2、逐项状态、断点续跑（重启自动续）、审计。"""
+    from concurrent.futures import ThreadPoolExecutor
+    while True:
+        time.sleep(5)
+        try:
+            BATCH_DIR.mkdir(parents=True, exist_ok=True)
+            cands = [batch_load(f.stem) for f in sorted(BATCH_DIR.glob("batch-*.json"), key=lambda x: x.stat().st_mtime)]
+            task = next((t for t in cands if t and t.get("status") in ("queued", "running")), None)
+            if not task:
+                continue
+            with BATCH_LOCK:
+                task["status"] = "running"
+                task.setdefault("started", datetime.now().strftime("%Y-%m-%d %H:%M"))
+                _batch_log(task, f"开始执行（type={task['type']} dry_run={task.get('dry_run')}）")
+                batch_save(task)
+            handler = BATCH_HANDLERS.get(task["type"])
+            if not handler:
+                task["status"] = "failed"
+                _batch_log(task, f"未知任务类型 {task['type']}")
+                batch_save(task)
+                continue
+            proj = DEFAULT_PROJECT
+            pending = [it for it in task["items"] if it["status"] in ("pending", "running")]
+            max_attempts = int((task.get("params") or {}).get("max_attempts", 2) or 2)
+
+            def work(it):
+                if task.get("status") in ("paused", "cancelled"):
+                    return
+                it["status"] = "running"
+                it["attempts"] = int(it.get("attempts", 0)) + 1
+                try:
+                    it["result"] = handler(it, task, proj)
+                    it["status"] = "skipped" if (isinstance(it["result"], dict) and it["result"].get("skipped")) else "done"
+                except Exception as e:
+                    it["error"] = str(e)[:300]
+                    it["status"] = "failed" if it["attempts"] >= max_attempts else "pending"
+
+            with ThreadPoolExecutor(max_workers=int(task.get("concurrency", 2))) as ex:
+                list(ex.map(work, pending))
+            st = task["stats"]
+            st["done"] = sum(1 for i in task["items"] if i["status"] == "done")
+            st["failed"] = sum(1 for i in task["items"] if i["status"] == "failed")
+            st["skipped"] = sum(1 for i in task["items"] if i["status"] == "skipped")
+            if task.get("status") == "paused":
+                _batch_log(task, "已暂停")
+            elif task.get("status") == "cancelled":
+                _batch_log(task, "已取消")
+            elif st["failed"] or any(i["status"] == "pending" for i in task["items"]):
+                task["status"] = "failed"
+                _batch_log(task, f"结束：done={st['done']} failed={st['failed']} skipped={st['skipped']}（可重试失败项）")
+            else:
+                task["status"] = "done"
+                task["finished"] = datetime.now().strftime("%Y-%m-%d %H:%M")
+                _batch_log(task, f"完成：done={st['done']} skipped={st['skipped']}")
+            batch_save(task)
+        except Exception as e:
+            print(f"[batch] {e}", file=sys.stderr)
+
+
 def library_sync(site, sections="", max_n=0):
     """后台跑 sanity_pull.py（状态落 run/library/{site}/sync-status.json）。"""
     def run():
@@ -2417,6 +2638,12 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/assets/plan":
                 site = qs.get("site", ["lovart-global"])[0]
                 return self._send(200, read_json(LIB_ROOT / site / "replace-plan.json", {"count": 0, "items": []}))
+            # ── 批量任务 ──
+            if parsed.path == "/api/batch/list":
+                return self._send(200, batch_list())
+            if parsed.path == "/api/batch/detail":
+                t = batch_load(qs.get("id", [""])[0])
+                return self._send(200, t or {"error": "任务不存在"})
             if parsed.path == "/api/workflows":
                 sk = {s["name"]: s for s in harness_inventory()["skills"]}
                 wfs = []
@@ -2615,7 +2842,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/pay/order/redeliver", "/api/pay/order/cancel", "/api/pay/voucher/save",
                       "/api/pay/voucher/delete", "/api/pay/config/save", "/api/pay/verify",
                       "/api/publish/sanity", "/api/publish/wordpress", "/api/library/sync",
-                      "/api/assets/scan", "/api/assets/plan", "/api/assets/apply"}
+                      "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
+                      "/api/batch/create", "/api/batch/action"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
@@ -2899,6 +3127,52 @@ class Handler(BaseHTTPRequestHandler):
                     f.write(f"{datetime.now().isoformat(timespec='seconds')} ASSET-PLAN-APPLY {site} dry_run={dry} "
                             f"by={self._me()} plan={plan_path}\n")
                 return self._send(200, r)
+            # ── 批量任务：创建（支持从物料计划/库条目/自定义 items 建）──
+            if self.path == "/api/batch/create":
+                btype = str(body.get("type", "")).strip()
+                if btype not in BATCH_HANDLERS:
+                    return self._send(400, {"error": f"未知类型（可选：{list(BATCH_HANDLERS)}）"})
+                items = body.get("items") or []
+                site = str(body.get("site", "lovart-global"))
+                if not items and btype == "asset_replace":
+                    pl = read_json(LIB_ROOT / site / "replace-plan.json", {})
+                    items = pl.get("items") or []
+                    if not items:
+                        return self._send(400, {"error": "物料替换计划为空——先在内容库生成计划"})
+                    for it in items:
+                        it.pop("slug", None)
+                if not items:
+                    return self._send(400, {"error": "items 为空"})
+                if len(items) > 5000:
+                    return self._send(400, {"error": "单任务 items ≤5000"})
+                t = batch_create(btype, str(body.get("title", "")), items,
+                                 params=body.get("params") or {},
+                                 dry_run=bool(body.get("dry_run", True)), by=self._me())
+                return self._send(200, {"ok": True, "id": t["id"], "total": t["stats"]["total"]})
+            if self.path == "/api/batch/action":
+                t = batch_load(str(body.get("id", "")))
+                if not t:
+                    return self._send(404, {"error": "任务不存在"})
+                act = str(body.get("action", ""))
+                if act == "pause":
+                    t["status"] = "paused"; _batch_log(t, f"手动暂停 by {self._me()}")
+                elif act == "resume":
+                    for it in t["items"]:
+                        if it["status"] == "running":
+                            it["status"] = "pending"
+                    t["status"] = "queued"; _batch_log(t, f"手动继续 by {self._me()}")
+                elif act == "cancel":
+                    t["status"] = "cancelled"; _batch_log(t, f"手动取消 by {self._me()}")
+                elif act == "retry_failed":
+                    n = 0
+                    for it in t["items"]:
+                        if it["status"] in ("failed", "pending"):
+                            it["status"] = "pending"; it["attempts"] = 0; it["error"] = ""; n += 1
+                    t["status"] = "queued"; _batch_log(t, f"重试 {n} 项 by {self._me()}")
+                else:
+                    return self._send(400, {"error": "action 可选 pause/resume/cancel/retry_failed"})
+                batch_save(t)
+                return self._send(200, {"ok": True, "status": t["status"]})
             if self.path == "/api/skills/sync":
                 return self._send(200, run_tool([sys.executable, str(PROJECT / "1-4 Dev/scripts/harness_sync.py")], timeout=120))
             if self.path == "/api/generate":
@@ -3160,6 +3434,7 @@ def main():
     threading.Thread(target=schedule_executor, daemon=True).start()
     threading.Thread(target=geo_scheduler, daemon=True).start()
     threading.Thread(target=pay_verifier, daemon=True).start()
+    threading.Thread(target=batch_worker, daemon=True).start()
     print(f"[console] MFlow Console on :{PORT} (loop queue + schedule + geo + pay verifier started, max_parallel={MAX_PARALLEL_LOOPS})")
     server.serve_forever()
 
