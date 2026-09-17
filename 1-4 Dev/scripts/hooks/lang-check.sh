@@ -18,6 +18,12 @@ while [[ $# -gt 0 ]]; do
 done
 [[ -z "$FILE" || ! -f "$FILE" ]] && { echo "[err] --file required" >&2; exit 2; }
 
+PY3="${LOVART_PYTHON:-}"
+if [[ -z "$PY3" ]]; then
+  ROOT_ABS="$(cd "$(dirname "$0")/../../.." && pwd)"
+  if [[ -x "$ROOT_ABS/.venv/bin/python" ]]; then PY3="$ROOT_ABS/.venv/bin/python"; else PY3="$(command -v python3 || echo python3)"; fi
+fi
+
 ERRORS=(); WARNINGS=()
 ok()   { echo "  ✓ $*"; }
 warn() { WARNINGS+=("$*"); echo "  ! $*"; }
@@ -26,8 +32,12 @@ err()  { ERRORS+=("$*");   echo "  ✗ $*"; }
 echo "[lang-check] file=$FILE lang=$LANG"
 
 # 只取正文（跳过 frontmatter 与代码块）
-BODY="$(python3 - "$FILE" << 'PY'
+BODY="$("$PY3" - "$FILE" << 'PY'
 import re,sys
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
 t=open(sys.argv[1],encoding="utf-8").read()
 if t.startswith("---"):
     p=t.split("---",2); t=p[2] if len(p)>=3 else t

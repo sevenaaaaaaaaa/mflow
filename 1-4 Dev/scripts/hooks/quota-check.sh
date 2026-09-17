@@ -21,6 +21,12 @@ while [[ $# -gt 0 ]]; do
 done
 [[ -z "$FILE" || ! -f "$FILE" ]] && { echo "[err] --file required" >&2; exit 2; }
 
+PY3="${LOVART_PYTHON:-}"
+if [[ -z "$PY3" ]]; then
+  ROOT_ABS="$(cd "$(dirname "$0")/../../.." && pwd)"
+  if [[ -x "$ROOT_ABS/.venv/bin/python" ]]; then PY3="$ROOT_ABS/.venv/bin/python"; else PY3="$(command -v python3 || echo python3)"; fi
+fi
+
 ERRORS=(); WARNINGS=()
 ok()   { echo "  ✓ $*"; }
 warn() { WARNINGS+=("$*"); echo "  ! $*"; }
@@ -56,8 +62,12 @@ if [[ "$FAQ" -gt 0 && "$QH" -gt "$FAQMAX" ]]; then err "问答式标题 $QH > ${
 
 # ④ 重复句/重复段落（去重后行数对比）
 echo "[4/6] 重复句/段落"
-DUP=$(python3 - "$FILE" << 'PY'
+DUP=$("$PY3" - "$FILE" << 'PY'
 import re,sys
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
 lines=[l.strip() for l in open(sys.argv[1],encoding="utf-8") if l.strip() and not l.strip().startswith(("#","|","-","*",">"))]
 seen={}; dup=0
 for l in lines:
