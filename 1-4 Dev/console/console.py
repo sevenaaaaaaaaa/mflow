@@ -1967,6 +1967,239 @@ def geo_score(proj, brand_rate, per_query, competitor_total, brand_total):
                    "note": "提及率40% + 缺口覆盖30% + 相对份额20% + 结构健康10%"}
 
 
+# ===================== P12.2 Agent 任务台（对话 → 任务规格 → 复用批量执行器）=====================
+# 设计：对话 → 上下文注入（harness 规则摘要 + 相关 skills + 库命中 + GEO 缺口）→ LLM 产出
+#       「回复 + 任务规格 JSON」→ 规格门禁（硬约束）→ 人工批准 → 批量执行器执行 → 结果回流对话。
+AGENT_DIR = RUN_DIR / "agent"
+AGENT_LOCK = threading.Lock()
+_SKILLS_CACHE = {"ts": 0, "items": []}
+
+
+def _skills_index():
+    """扫描 1-1 Harness/Skills/**/SKILL.md → [{name,group,path,desc}]（10 分钟缓存）。"""
+    now = time.time()
+    if _SKILLS_CACHE["items"] and now - _SKILLS_CACHE["ts"] < 600:
+        return _SKILLS_CACHE["items"]
+    items = []
+    sk = PROJECT / "1-1 Harness" / "Skills"
+    if sk.exists():
+        for f in sk.rglob("SKILL.md"):
+            head = f.read_text(errors="ignore")[:800]
+            m = re.search(r"description:\s*\n?\s*(.{5,200})", head)
+            items.append({"name": f.parent.name, "group": f.parent.parent.name,
+                          "path": rel_of(f),
+                          "desc": (m.group(1).replace("\n", " ").strip() if m else "")})
+    _SKILLS_CACHE.update({"ts": now, "items": items})
+    return items
+
+
+def _tokens(text):
+    text = (text or "").lower()
+    words = re.findall(r"[a-z0-9]{3,}", text)
+    cjk = re.findall(r"[\u4e00-\u9fff]", text)
+    bigrams = ["".join(cjk[i:i + 2]) for i in range(len(cjk) - 1)]
+    return set(words) | set(bigrams)
+
+
+def context_skills(query, k=5):
+    qt = _tokens(query)
+    scored = []
+    for s in _skills_index():
+        st = _tokens(s["name"].replace("-", " ") + " " + s["desc"] + " " + s["group"])
+        ov = len(qt & st)
+        if ov:
+            scored.append((ov, s))
+    scored.sort(key=lambda x: -x[0])
+    return [s for _, s in scored[:k]]
+
+
+def context_rules(limit=4000):
+    """harness 硬约束摘要：编号/项目符号列表中含「禁止/必须/不可/一律/永远/不得」的条款。"""
+    out = []
+    for f in sorted((PROJECT / "1-1 Harness" / "02-rules").glob("RULES-*.md")):
+        keep = []
+        txt = f.read_text(errors="ignore")
+        if txt.startswith("---"):
+            parts = txt.split("---", 2)
+            txt = parts[2] if len(parts) >= 3 else txt
+        for line in txt.split("\n"):
+            s = line.strip()
+            if re.match(r"^(\d+\.|[-*])\s", s) and re.search(r"禁止|必须|不可|一律|永远|不得", s):
+                keep.append(re.sub(r"\s+", " ", re.sub(r"\*\*", "", s))[:180])
+        if keep:
+            out.append(f"【{f.stem}】\n" + "\n".join(keep[:16]))
+    return "\n".join(out)[:limit]
+
+
+def context_library(site, query, k=5):
+    """从内容库命中相关条目（文件名 + 前 800 字符）。"""
+    qt = _tokens(query)
+    if not qt:
+        return []
+    base = LIB_ROOT / site
+    hits = []
+    if base.exists():
+        for f in base.rglob("*.md"):
+            if f.name.startswith("_"):
+                continue
+            name_t = _tokens(f.stem.replace("-", " "))
+            ov = len(qt & name_t)
+            if ov >= 2:
+                hits.append((ov, f))
+    hits.sort(key=lambda x: -x[0])
+    out = []
+    for _, f in hits[:k]:
+        try:
+            rel = str(f.relative_to(PROJECT))
+        except Exception:
+            rel = str(f)
+        head = re.sub(r"\s+", " ", f.read_text(errors="ignore")[:500])
+        out.append({"path": rel, "head": head[:220]})
+    return out
+
+
+def context_geo(proj):
+    try:
+        g = geo_summary(proj)
+    except Exception:
+        return {"brand_rate": None, "gaps": []}
+    gaps = [q for q, v in (g.get("per_query") or {}).items() if v.get("brand", 0) == 0]
+    return {"brand_rate": g.get("brand_rate"), "score": g.get("score"), "gaps": gaps[:8]}
+
+
+AGENT_TASK_SCHEMA = """可用的任务规格（type 与 items 字段必须严格匹配）：
+- asset_replace: items=[{"doc_id","kind":"cover|media","idx":int|null,"field":"media","old","new_url","new_alt"}]
+- field_patch:   items=[{"doc_id","set":{"字段名":"新值"}}]
+- gen:           items=[{"item_id","type":"blog","lang":"zh|en|ja|…","topic","brief"}]
+- rewrite:       items=[{"item_id","lang","topic","instruction","source_path"}]"""
+
+
+def agent_reply(session, message, proj=None):
+    """对话一轮：组装上下文 → LLM → 解析 {say, questions, spec}。"""
+    proj = proj or DEFAULT_PROJECT
+    site = "lovart-global"
+    skills = context_skills(message)
+    libs = context_library(site, message)
+    geo = context_geo(proj)
+    rules = context_rules()
+    sys_prompt = f"""你是 MFlow 的任务规划器（不是聊天机器人）。用户用自然语言提需求，你要产出**可执行的批量任务规格**。
+
+【硬约束（不可违背，来自 harness 铁律）】
+- 生产写入（Sanity/发布）默认 dry-run；真实写入必须由用户显式批准并留下审计
+- 不得执行破坏性操作；不得绕过质检门禁；不得自动发布
+- 单任务规模：asset_replace/field_patch ≤200 项；gen/rewrite ≤20 项
+- 只允许下列任务类型与字段，不得发明新字段
+
+{AGENT_TASK_SCHEMA}
+
+【可用素材与状态】
+站点：{site}（{site} 内容库 17.5k 篇；物料台账已建）
+GEO：品牌提及率 {geo.get('brand_rate')}，综合分 {geo.get('score')}；缺口查询：{geo.get('gaps')}
+
+【相关 skills（供你理解流程与规范）】
+{chr(10).join(f"- {s['name']}（{s['group']}）：{s['desc'][:110]}" for s in skills) or "（无命中）"}
+
+【内容库命中（可能是要改的对象或参考）】
+{chr(10).join(f"- {h['path']}｜{h['head'][:120]}" for h in libs) or "（无命中）"}
+
+【harness 规则摘要（执行时同样会被强制）】
+{rules}
+
+【输出格式（严格 JSON，不要多余文字）】
+{{"say": "给用户的回复（中文，简洁，含你的判断与建议）",
+ "questions": ["需要用户补充的信息，最多2条，没有就空数组"],
+ "spec": null 或 {{"type":"…","title":"…","dry_run":true,"items":[…],"rationale":"为什么这样","skills_used":["…"]}}}}
+
+规则：
+1) 若信息不足（如目标对象不明、缺新值），先问 questions，spec 置 null
+2) 若能形成方案，务必给出 spec（默认 dry_run=true）；items 必须具体可执行（doc_id/slug/path 要真实，可用库命中里的路径）
+3) 不确定的数字/事实不要编造；宁可在 say 里说明限制
+4) 讲清 dry-run 与真实执行的差别，建议先 dry-run"""
+    msgs = [{"role": "system", "content": sys_prompt}]
+    for m in session.get("messages", [])[-6:]:
+        if m.get("role") in ("user", "assistant") and m.get("text"):
+            msgs.append({"role": m["role"], "content": m["text"][:1500]})
+    msgs.append({"role": "user", "content": message[:2000]})
+    raw = llm_chat(msgs, profile="default", max_tokens=1600, project=proj, timeout=120)
+    m = re.search(r"\{[\s\S]*\}", raw)
+    data = {}
+    if m:
+        try:
+            data = json.loads(m.group(0))
+        except Exception:
+            data = {}
+    if not data:
+        data = {"say": raw[:1200], "questions": [], "spec": None}
+    used = {"skills": [s["name"] for s in skills], "library": [h["path"] for h in libs],
+            "geo_gaps": geo.get("gaps", []), "rules_chars": len(rules)}
+    return {"say": data.get("say", ""), "questions": data.get("questions") or [],
+            "spec": data.get("spec"), "context": used}
+
+
+def spec_guard(spec):
+    """规格门禁：类型白名单 + 字段白名单 + 规模上限 + 强制 dry-run（真实执行需显式 force）。"""
+    if not isinstance(spec, dict):
+        return None, "spec 必须是对象"
+    t = spec.get("type")
+    if t not in BATCH_HANDLERS:
+        return None, f"不允许的任务类型：{t}"
+    items = spec.get("items")
+    if not isinstance(items, list) or not items:
+        return None, "items 必须是非空数组"
+    cap = 200 if t in ("asset_replace", "field_patch") else 20
+    if len(items) > cap:
+        return None, f"{t} 单任务 ≤{cap} 项（当前 {len(items)}）"
+    allow = {"asset_replace": {"doc_id", "kind", "idx", "field", "old", "new_url", "new_alt"},
+             "field_patch": {"doc_id", "set"},
+             "gen": {"item_id", "type", "lang", "topic", "brief"},
+             "rewrite": {"item_id", "lang", "topic", "instruction", "source_path"}}[t]
+    clean = []
+    for it in items:
+        if not isinstance(it, dict):
+            return None, "items 元素必须是对象"
+        extra = set(it) - allow
+        if extra:
+            return None, f"items 含未允许字段：{sorted(extra)}"
+        clean.append({k: it[k] for k in it})
+    out = {"type": t, "title": str(spec.get("title", "") or t)[:80],
+           "dry_run": bool(spec.get("dry_run", True)), "items": clean,
+           "params": {}, "rationale": str(spec.get("rationale", ""))[:400],
+           "skills_used": [str(x)[:60] for x in (spec.get("skills_used") or [])][:8]}
+    return out, ""
+
+
+def agent_session_new(title=""):
+    sid = f"chat-{datetime.now().strftime('%y%m%d')}-{secrets.token_hex(3)}"
+    s = {"id": sid, "title": title or "新会话", "created": datetime.now().strftime("%Y-%m-%d %H:%M"),
+         "messages": [], "proposals": []}
+    AGENT_DIR.mkdir(parents=True, exist_ok=True)
+    (AGENT_DIR / f"{sid}.json").write_text(json.dumps(s, ensure_ascii=False, indent=1))
+    return s
+
+
+def agent_session_load(sid):
+    return read_json(AGENT_DIR / f"{sid}.json", None)
+
+
+def agent_sessions():
+    out = []
+    if AGENT_DIR.exists():
+        for f in sorted(AGENT_DIR.glob("chat-*.json"), key=lambda x: x.stat().st_mtime, reverse=True)[:40]:
+            s = read_json(f, {})
+            if s:
+                out.append({"id": s["id"], "title": s.get("title", ""), "created": s.get("created", ""),
+                            "n": len(s.get("messages", []))})
+    return out
+
+
+def agent_save(s):
+    AGENT_DIR.mkdir(parents=True, exist_ok=True)
+    p = AGENT_DIR / f"{s['id']}.json"
+    tmp = p.with_suffix(".tmp")
+    tmp.write_text(json.dumps(s, ensure_ascii=False, indent=1))
+    tmp.replace(p)
+
+
 # ===================== MFlow Pay（支付链接 · 加密收款核验 · 发卡 · 兑换券）=====================
 # 数据文件：run/pay/{products,cards,orders,vouchers,cfg}.json —— 文件即状态，与内容管线同底座。
 # 边界：不代持资金（收款地址为用户自备）；交付只在「已确认到账」后发生；公开端点无鉴权但 token 不可枚举。
@@ -2644,6 +2877,12 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/batch/detail":
                 t = batch_load(qs.get("id", [""])[0])
                 return self._send(200, t or {"error": "任务不存在"})
+            # ── Agent 任务台 ──
+            if parsed.path == "/api/agent/sessions":
+                return self._send(200, agent_sessions())
+            if parsed.path == "/api/agent/session":
+                s = agent_session_load(qs.get("id", [""])[0])
+                return self._send(200, s or {"error": "会话不存在"})
             if parsed.path == "/api/workflows":
                 sk = {s["name"]: s for s in harness_inventory()["skills"]}
                 wfs = []
@@ -2843,7 +3082,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/pay/voucher/delete", "/api/pay/config/save", "/api/pay/verify",
                       "/api/publish/sanity", "/api/publish/wordpress", "/api/library/sync",
                       "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
-                      "/api/batch/create", "/api/batch/action"}
+                      "/api/batch/create", "/api/batch/action",
+                      "/api/agent/chat", "/api/agent/execute"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
@@ -3173,6 +3413,55 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(400, {"error": "action 可选 pause/resume/cancel/retry_failed"})
                 batch_save(t)
                 return self._send(200, {"ok": True, "status": t["status"]})
+            # ── Agent 任务台：对话 / 执行 ──
+            if self.path == "/api/agent/chat":
+                msg = str(body.get("message", "")).strip()
+                if not msg:
+                    return self._send(400, {"error": "message 必填"})
+                sid = str(body.get("session_id", "")).strip()
+                s = agent_session_load(sid) if sid else None
+                if not s:
+                    s = agent_session_new(msg[:40])
+                s.setdefault("messages", []).append({"role": "user", "text": msg,
+                                                     "at": datetime.now().strftime("%H:%M:%S")})
+                try:
+                    r = agent_reply(s, msg, self._proj())
+                except Exception as e:
+                    s["messages"].append({"role": "assistant", "text": f"（规划失败：{str(e)[:200]}）"})
+                    agent_save(s)
+                    return self._send(500, {"error": str(e)[:200], "session_id": s["id"]})
+                guarded, gerr = (None, "")
+                if r.get("spec"):
+                    guarded, gerr = spec_guard(r["spec"])
+                s["messages"].append({"role": "assistant", "text": r["say"], "at": datetime.now().strftime("%H:%M:%S"),
+                                      "context": r.get("context"), "questions": r.get("questions"),
+                                      "spec": guarded, "guard_error": gerr})
+                if guarded:
+                    s.setdefault("proposals", []).append({"spec": guarded, "at": datetime.now().strftime("%Y-%m-%d %H:%M")})
+                agent_save(s)
+                return self._send(200, {"session_id": s["id"], "say": r["say"], "questions": r.get("questions"),
+                                        "spec": guarded, "guard_error": gerr, "context": r.get("context")})
+            if self.path == "/api/agent/execute":
+                s = agent_session_load(str(body.get("session_id", "")))
+                if not s:
+                    return self._send(404, {"error": "会话不存在"})
+                spec, err = spec_guard(body.get("spec") or {})
+                if err:
+                    return self._send(400, {"error": err})
+                force = bool(body.get("force", False))
+                if not spec["dry_run"] and not force:
+                    return self._send(400, {"error": "真实执行需显式确认（force=true）——建议先 dry-run"})
+                t = batch_create(spec["type"], spec["title"], spec["items"],
+                                 params={"max_attempts": 2, "from_agent": True, "rationale": spec.get("rationale", ""),
+                                         "skills_used": spec.get("skills_used", [])},
+                                 dry_run=spec["dry_run"], by=self._me())
+                s["messages"].append({"role": "assistant", "at": datetime.now().strftime("%H:%M:%S"),
+                                      "text": f"已创建批量任务 {t['id']}（{spec['type']} · {t['stats']['total']} 项 · "
+                                              f"{'dry-run' if spec['dry_run'] else '真实执行'}）——执行器 5 秒内接手，"
+                                              f"进度见「批量任务」页。",
+                                      "task_id": t["id"]})
+                agent_save(s)
+                return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"]})
             if self.path == "/api/skills/sync":
                 return self._send(200, run_tool([sys.executable, str(PROJECT / "1-4 Dev/scripts/harness_sync.py")], timeout=120))
             if self.path == "/api/generate":
