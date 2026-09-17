@@ -168,9 +168,13 @@
 - ✅ API `/api/batch/{list,detail,create,action}` + 文档 docs/batch.md
 - 📋 待用户：真实批量任务的首次放量（物料替换 / 高曝光低 CTR 改稿）
 
-**P12.2 Agent 任务台（对话入口，📋）**
-- 📋 对话 → 计划 → 任务规格 JSON → 执行器；harness 规则注入为硬约束；skills 作为可检索上下文
-- 📋 skills 深度接入（长文 skill 流程）
+**P12.2 Agent 任务台（✅ 2026-09-17 交付）**
+- ✅ 对话链路：上下文组装（harness 规则摘要 + Top5 skills + 库命中 + GEO 缺口）→ LLM 规划器（严格 JSON: say/questions/spec）→ 规格门禁 → 批准 → 复用 P12.3 批量执行器
+- ✅ 规格门禁 spec_guard：类型/字段白名单 · 规模上限（物料字段≤200、生成改稿≤20）· dry-run 默认 · 真实执行需 force
+- ✅ 不确定即反问、不编造 doc_id（实测："帮我改落地页图片"→ 反问 2 条且 spec=null）
+- ✅ 工作台「Agent 任务台」页：会话列表 / 对话线程 / 上下文可见（skills·库命中·规则字符数）/ 规格卡（批准 dry-run / 真实执行）/ 结果回流
+- ✅ API `/api/agent/{sessions,session,chat,execute}` + 文档 docs/agent.md
+- 📋 待办：长文 skill 流程深度接入（7500 词级）；会话删除/归档
 
 **P12.4 QA → 修复编排（📋）**
 - 📋 QA 结果 → finding → 自动生成修复任务 → 执行 → 复检
