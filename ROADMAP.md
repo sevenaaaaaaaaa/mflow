@@ -184,6 +184,16 @@
 - ✅ 工作台「QA 编排」页 + API `/api/qa/{create,tasks,findings,cycles,delta,orchestrate,recheck}` + docs/qa.md
 - 📋 待用户：真实修复放量（实测 84 项待修：60 补 seoTitle + 24 截断 description）
 
+## Phase 13 · Harness 治理（2026-09-17 ✅）
+
+- ✅ 审计：`docs/harness-audit.md`（规则硬条款密度 / 45 skills 体量与描述覆盖 / 故事线噪音 / 语言规则缺口）
+- ✅ RULES-70 数量限制与防注水（20 条硬规则）；RULES-80 十语言生成规则
+- ✅ 钩子 quota-check.sh（字数/H2/FAQ/重复句/列表灌水/过渡词）+ lang-check.sh（简繁/字形/标点/残留）→ 接入生成链（loop/batch/generate 四门禁）
+- ✅ 提示词注入 CONTENT_BUDGET + LANG_RULES
+- ✅ 任务拆批次 + 上下文摘要传递（batch_size 默认 5；gen/rewrite 批次摘要注入下一批）
+- ✅ 17 个 skill 补 frontmatter（45/45 有描述）；iCloud 冲突副本归档
+- 📋 遗留 A1-A5（RULES-30 硬条款 / 10·50 瘦身 / 参考样式索引 / skill 内预算 / 长文豁免）
+
 ## 原则
 
 1. 文件即状态：不引入数据库也能跑，规模化时才换 PG（接口已预留）
