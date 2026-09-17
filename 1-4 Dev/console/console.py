@@ -1967,6 +1967,205 @@ def geo_score(proj, brand_rate, per_query, competitor_total, brand_total):
                    "note": "提及率40% + 缺口覆盖30% + 相对份额20% + 结构健康10%"}
 
 
+# ===================== P12.4 QA 编排（扫描 → findings → 修复任务 → 复检）=====================
+QA_DIR = RUN_DIR / "qa"
+
+
+def _qa_finding(target, rule, severity, detail, fix=None):
+    return {"target": target, "rule": rule, "severity": severity, "detail": detail, "fix": fix or {}}
+
+
+def qa_check_md(path):
+    """对 md 草稿跑门禁钩子 → findings。"""
+    p = safe_path(path)
+    if not p:
+        return [_qa_finding(path, "file", "block", "文件不可读")]
+    findings = []
+    for hook, args in (("post-write-check.sh", ["--target-words", "300"]),
+                       ("geo-check.sh", [])):
+        r = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks" / hook), "--file", str(p), *args], timeout=120)
+        qa_log(f"qa:{Path(path).stem}", hook, r["rc"])
+        for line in (r["out"] or "").split("\n"):
+            s = line.strip()
+            if s.startswith("✗"):
+                findings.append(_qa_finding(path, hook, "block", s[1:].strip()[:200]))
+            elif s.startswith("!"):
+                findings.append(_qa_finding(path, hook, "warn", s[1:].strip()[:200]))
+    return findings
+
+
+def _qa_field_rules(doc):
+    """Sanity 字段级规则（不依赖 LLM，确定性）。"""
+    f = []
+    did = doc.get("_id", "")
+    lang = doc.get("language") or ""
+    cjk = lang in ("zh", "zh-TW", "ja", "ko")
+    seo_title = (doc.get("seoTitle") or "").strip()
+    title = (doc.get("title") or "").strip()
+    desc = (doc.get("description") or "").strip()
+    seo_desc = ((doc.get("seo") or {}).get("description") or "").strip()
+    lim_t = 30 if cjk else 60
+    lim_d = 80 if cjk else 160
+    if not seo_title:
+        sug = title[:lim_t]
+        f.append(_qa_finding(did, "seoTitle.missing", "warn", f"seoTitle 缺失（title={title[:40]}）",
+                             {"type": "field_patch", "set": {"seoTitle": sug}}))
+    elif len(seo_title) > lim_t:
+        sug = seo_title[:lim_t].rsplit(" ", 1)[0] if not cjk else seo_title[:lim_t]
+        f.append(_qa_finding(did, "seoTitle.too_long", "warn", f"seoTitle {len(seo_title)} 字符 > {lim_t}",
+                             {"type": "field_patch", "set": {"seoTitle": sug}}))
+    if not desc and not seo_desc:
+        f.append(_qa_finding(did, "description.missing", "warn", "description 与 seo.description 均缺失",
+                             {"type": "field_patch", "set": {"description": title[:lim_d]}}))
+    elif len(desc) > lim_d:
+        f.append(_qa_finding(did, "description.too_long", "warn", f"description {len(desc)} 字符 > {lim_d}",
+                             {"type": "field_patch", "set": {"description": desc[:lim_d]}}))
+    cov = doc.get("cover") or {}
+    if cov.get("url") and not (cov.get("alt") or "").strip():
+        f.append(_qa_finding(did, "cover.alt_missing", "warn", "封面缺 alt 文案",
+                             {"type": "asset_replace", "kind": "cover", "old": cov["url"],
+                              "new_url": cov["url"], "new_alt": title[:80]}))
+    return f
+
+
+def qa_check_sanity(doc_id):
+    if not SANITY_PUB:
+        return [_qa_finding(doc_id, "sanity", "block", "发布器未加载")]
+    try:
+        r = _sanity_req("query", {"query": f'*[_id=="{doc_id}"][0]{{_id,title,language,description,seoTitle,seo,cover}}'})
+        doc = (r or {}).get("result")
+    except Exception as e:
+        return [_qa_finding(doc_id, "sanity", "block", f"读取失败：{str(e)[:120]}")]
+    if not doc:
+        return [_qa_finding(doc_id, "sanity", "block", "文档不存在")]
+    return _qa_field_rules(doc)
+
+
+def _bh_qa(item, task, proj):
+    """批量 QA：kind=md → 钩子；kind=sanity → 字段规则。"""
+    kind = item.get("kind", "sanity")
+    if kind == "md":
+        findings = qa_check_md(item.get("path") or item.get("target", ""))
+    else:
+        findings = qa_check_sanity(item.get("doc_id") or item.get("target", ""))
+    blocks = sum(1 for x in findings if x["severity"] == "block")
+    warns = sum(1 for x in findings if x["severity"] == "warn")
+    dst = QA_DIR / f"findings-{task['id']}-{item['i']}.json"
+    QA_DIR.mkdir(parents=True, exist_ok=True)
+    dst.write_text(json.dumps(findings, ensure_ascii=False, indent=1))
+    return {"findings": len(findings), "block": blocks, "warn": warns, "file": str(dst)}
+
+
+def qa_findings(tid):
+    """汇总某 QA 任务的全部 findings（含可执行的 fix 建议）。"""
+    t = batch_load(tid)
+    if not t:
+        return {"error": "任务不存在"}
+    all_f = []
+    for it in t.get("items", []):
+        res = it.get("result") or {}
+        fp = res.get("file")
+        if fp and Path(fp).exists():
+            for f in read_json(fp, []):
+                f["item"] = it.get("doc_id") or it.get("path") or it.get("target") or it.get("i")
+                all_f.append(f)
+    by_rule, by_sev = Counter(), Counter()
+    for f in all_f:
+        by_rule[f["rule"]] += 1
+        by_sev[f["severity"]] += 1
+    return {"task": tid, "status": t.get("status"), "stats": t.get("stats"),
+            "total": len(all_f), "by_severity": dict(by_sev), "by_rule": dict(by_rule),
+            "fixable": sum(1 for f in all_f if (f.get("fix") or {}).get("type")),
+            "findings": all_f[:400], "fix_task_id": t.get("fix_task_id"), "recheck_task_id": t.get("recheck_task_id")}
+
+
+def qa_orchestrate(tid, dry_run=True, max_items=200):
+    """把 findings 编排成修复任务（确定性映射：字段→field_patch，alt→asset_replace，草稿→rewrite）。"""
+    t = batch_load(tid)
+    if not t:
+        return {"error": "任务不存在"}
+    if t.get("fix_task_id"):
+        return {"error": f"已生成修复任务：{t['fix_task_id']}"}
+    data = qa_findings(tid)
+    field_items, asset_items, rewrite_items = [], [], []
+    for f in data["findings"]:
+        fx = f.get("fix") or {}
+        typ = fx.get("type")
+        if typ == "field_patch" and fx.get("set"):
+            field_items.append({"doc_id": f["target"], "set": fx["set"]})
+        elif typ == "asset_replace" and fx.get("old"):
+            asset_items.append({"doc_id": f["target"], "kind": fx.get("kind", "cover"), "idx": None,
+                                "field": "media", "old": fx["old"],
+                                "new_url": fx.get("new_url") or fx["old"], "new_alt": fx.get("new_alt", "")})
+        elif f["severity"] == "block" and str(f.get("item", "")).endswith(".md"):
+            rewrite_items.append({"item_id": pr_slug(f["item"]), "lang": "zh", "topic": Path(f["item"]).stem,
+                                  "instruction": f"修复门禁问题：{f['detail'][:200]}",
+                                  "source_path": f["item"]})
+    created = {}
+    if field_items:
+        ft = batch_create("field_patch", f"QA 修复·字段（源 {tid}）", field_items[:max_items],
+                          params={"max_attempts": 2, "from_qa": tid}, dry_run=dry_run, by="qa-orchestrator")
+        created["field_patch"] = ft["id"]
+    if asset_items:
+        at = batch_create("asset_replace", f"QA 修复·物料 alt（源 {tid}）", asset_items[:max_items],
+                          params={"max_attempts": 2, "from_qa": tid}, dry_run=dry_run, by="qa-orchestrator")
+        created["asset_replace"] = at["id"]
+    if rewrite_items:
+        rt = batch_create("rewrite", f"QA 修复·改稿（源 {tid}）", rewrite_items[:20],
+                          params={"max_attempts": 2, "from_qa": tid}, dry_run=dry_run, by="qa-orchestrator")
+        created["rewrite"] = rt["id"]
+    if not created:
+        return {"error": "没有可编排的修复项（findings 无可执行 fix）"}
+    t["fix_task_id"] = ",".join(created.values())
+    t["fix_created"] = datetime.now().strftime("%Y-%m-%d %H:%M")
+    batch_save(t)
+    QA_DIR.mkdir(parents=True, exist_ok=True)
+    cycle = read_json(QA_DIR / "cycles.json", [])
+    cycle.append({"qa_task": tid, "fix_tasks": created, "dry_run": dry_run,
+                  "before": {"total": data["total"], "by_severity": data["by_severity"]},
+                  "at": datetime.now().strftime("%Y-%m-%d %H:%M")})
+    (QA_DIR / "cycles.json").write_text(json.dumps(cycle[-100:], ensure_ascii=False, indent=1))
+    with open(RUN_DIR / "approvals.log", "a") as f:
+        f.write(f"{datetime.now().isoformat(timespec='seconds')} QA-ORCHESTRATE qa={tid} fix={t['fix_task_id']} "
+                f"dry_run={dry_run}\n")
+    return {"ok": True, "fix_tasks": created, "counts": {"field": len(field_items), "asset": len(asset_items),
+                                                         "rewrite": len(rewrite_items)}}
+
+
+def pr_slug(path):
+    return re.sub(r"[^a-z0-9-]", "-", Path(str(path)).stem.lower())[:60] or f"qa-{secrets.token_hex(2)}"
+
+
+def qa_recheck(tid, dry_run=True):
+    """复检：用同一批目标新建 QA 任务（parent 指向原任务），便于前后对比。"""
+    t = batch_load(tid)
+    if not t:
+        return {"error": "任务不存在"}
+    items = [{k: v for k, v in it.items() if k in ("kind", "path", "doc_id", "target")}
+             for it in t.get("items", [])]
+    nt = batch_create("qa", f"QA 复检（源 {tid}）", items, params={"from_qa": tid}, dry_run=dry_run, by="qa-recheck")
+    t["recheck_task_id"] = nt["id"]
+    batch_save(t)
+    return {"ok": True, "recheck_task_id": nt["id"], "parent": tid}
+
+
+def qa_delta(parent, child):
+    a, b = qa_findings(parent), qa_findings(child)
+    if a.get("error") or b.get("error"):
+        return {"error": "任务不存在"}
+    at = {(f["target"], f["rule"]) for f in a["findings"]}
+    bt = {(f["target"], f["rule"]) for f in b["findings"]}
+    return {"parent": {"task": parent, "total": a["total"], "by_severity": a["by_severity"]},
+            "child": {"task": child, "total": b["total"], "by_severity": b["by_severity"],
+                      "status": b.get("status")},
+            "resolved": sorted(f"{t} | {r}" for t, r in (at - bt))[:200],
+            "new": sorted(f"{t} | {r}" for t, r in (bt - at))[:200],
+            "resolved_n": len(at - bt), "new_n": len(bt - at)}
+
+
+BATCH_HANDLERS["qa"] = _bh_qa  # P12.4：qa 执行器在定义后注册（避免 import 顺序问题）
+
+
 # ===================== P12.2 Agent 任务台（对话 → 任务规格 → 复用批量执行器）=====================
 # 设计：对话 → 上下文注入（harness 规则摘要 + 相关 skills + 库命中 + GEO 缺口）→ LLM 产出
 #       「回复 + 任务规格 JSON」→ 规格门禁（硬约束）→ 人工批准 → 批量执行器执行 → 结果回流对话。
@@ -2152,6 +2351,7 @@ def spec_guard(spec):
     allow = {"asset_replace": {"doc_id", "kind", "idx", "field", "old", "new_url", "new_alt"},
              "field_patch": {"doc_id", "set"},
              "gen": {"item_id", "type", "lang", "topic", "brief"},
+             "qa": {"kind", "doc_id", "path", "target"},
              "rewrite": {"item_id", "lang", "topic", "instruction", "source_path"}}[t]
     clean = []
     for it in items:
@@ -2883,6 +3083,46 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/agent/session":
                 s = agent_session_load(qs.get("id", [""])[0])
                 return self._send(200, s or {"error": "会话不存在"})
+            # ── QA 编排 ──
+            if parsed.path == "/api/qa/findings":
+                return self._send(200, qa_findings(qs.get("task", [""])[0]))
+            if parsed.path == "/api/qa/cycles":
+                return self._send(200, read_json(QA_DIR / "cycles.json", [])[::-1][:50])
+            if parsed.path == "/api/qa/delta":
+                return self._send(200, qa_delta(qs.get("parent", [""])[0], qs.get("child", [""])[0]))
+            if parsed.path == "/api/qa/tasks":
+                ts = [t for t in batch_list() if t.get("type") == "qa"]
+                return self._send(200, ts)
+            if parsed.path == "/api/qa/create":
+                kind = qs.get("kind", ["sanity-filter"])[0]
+                mx = max(1, min(int(qs.get("max", ["200"])[0] or 200), 2000))
+                items = []
+                if kind == "drafts":
+                    cdir = proj_paths(self._proj())["gen"]
+                    if cdir.exists():
+                        for f in sorted(cdir.glob("*.md"), key=lambda x: x.stat().st_mtime, reverse=True)[:mx]:
+                            items.append({"kind": "md", "path": rel_of(f)})
+                else:
+                    if not SANITY_PUB:
+                        return self._send(400, {"error": "发布器未加载"})
+                    pt = qs.get("page_type", [""])[0]
+                    lg = qs.get("lang", [""])[0]
+                    where = '_type=="compositePage" && !(_id in path("drafts.**"))'
+                    if pt:
+                        where += f' && pageType=="{pt}"'
+                    if lg:
+                        where += f' && language=="{lg}"'
+                    try:
+                        res = _sanity_req("query", {"query": f'*[{where}] | order(_updatedAt desc)[0...{mx}]{{_id}}'})
+                        for d in (res.get("result") or []):
+                            items.append({"kind": "sanity", "doc_id": d["_id"]})
+                    except Exception as e:
+                        return self._send(400, {"error": f"Sanity 查询失败：{str(e)[:160]}"})
+                if not items:
+                    return self._send(400, {"error": "范围内无对象"})
+                t = batch_create("qa", f"QA 扫描·{kind}（{len(items)} 项）", items,
+                                 params={"max_attempts": 1}, dry_run=True, by=self._me())
+                return self._send(200, {"ok": True, "id": t["id"], "total": len(items)})
             if parsed.path == "/api/workflows":
                 sk = {s["name"]: s for s in harness_inventory()["skills"]}
                 wfs = []
@@ -3083,7 +3323,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/publish/sanity", "/api/publish/wordpress", "/api/library/sync",
                       "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
                       "/api/batch/create", "/api/batch/action",
-                      "/api/agent/chat", "/api/agent/execute"}
+                      "/api/agent/chat", "/api/agent/execute",
+                      "/api/qa/orchestrate", "/api/qa/recheck"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
@@ -3462,6 +3703,15 @@ class Handler(BaseHTTPRequestHandler):
                                       "task_id": t["id"]})
                 agent_save(s)
                 return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"]})
+            # ── QA 编排：生成修复任务 / 复检 ──
+            if self.path == "/api/qa/orchestrate":
+                tid = str(body.get("task", ""))
+                r = qa_orchestrate(tid, dry_run=bool(body.get("dry_run", True)),
+                                   max_items=int(body.get("max_items", 200) or 200))
+                return self._send(200 if r.get("ok") else 400, r)
+            if self.path == "/api/qa/recheck":
+                r = qa_recheck(str(body.get("task", "")), dry_run=bool(body.get("dry_run", True)))
+                return self._send(200 if r.get("ok") else 400, r)
             if self.path == "/api/skills/sync":
                 return self._send(200, run_tool([sys.executable, str(PROJECT / "1-4 Dev/scripts/harness_sync.py")], timeout=120))
             if self.path == "/api/generate":

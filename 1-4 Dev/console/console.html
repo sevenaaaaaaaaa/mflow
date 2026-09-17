@@ -221,6 +221,7 @@ th{color:var(--muted);font-weight:600}
   <button class="s-item on" data-t="home" onclick="setTab('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>总览</span></button>
   <div class="sec-title">我的工作</div>
   <button class="s-item" data-t="tasks" onclick="setTab('tasks')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>任务看板</span><span class="sbad" id="nav-tasks">0</span></button>
+  <button class="s-item" data-t="qa" onclick="setTab('qa')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>QA 编排</span></button>
   <button class="s-item" data-t="agent" onclick="setTab('agent')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4v1a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3h1v3M12 3a4 4 0 0 1 4 4v1a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-1v3"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/></svg><span>Agent 任务台</span></button>
   <button class="s-item" data-t="batch" onclick="setTab('batch')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="20" cy="18" r="2"/></svg><span>批量任务</span><span class="sbad mutb" id="nav-batch">0</span></button>
   <button class="s-item" data-t="calt" onclick="setTab('calt')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>内容日历</span><span class="sbad mutb" id="nav-calt">0</span></button>
@@ -317,6 +318,33 @@ th{color:var(--muted);font-weight:600}
       <div class="mut" style="margin-top:4px">目录须在项目库内存在；挂载后进知识搜索与浏览范围</div></div>
     <div class="card"><div class="card-head"><h3 id="kres-t">浏览</h3><span class="mut" id="kdesc"></span></div><div id="kres" class="flist"></div></div>
     </div>
+  </section>
+
+  <!-- ============ QA 编排 ============ -->
+  <section class="page" id="pg-qa">
+    <div class="pg-head"><div><div class="kick">我的工作</div><h1>QA <em class="sf">编排</em></h1>
+      <p class="pg-sub">批量质检 → findings → 一键编排修复任务（字段/物料/改稿）→ 复检对比。确定性规则不需要 LLM，可执行的修复建议自动带出。</p></div>
+      <div class="head-actions"><button class="btn ghost" onclick="qaLoad()">刷新 ↻</button></div></div>
+    <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>新建 QA 扫描</h3><span class="mut">kind=sanity 查字段规则；kind=md 跑门禁钩子</span></div>
+      <div class="row"><select id="qa-scope" style="width:220px" onchange="qaScope()">
+        <option value="sanity-filter">Sanity 文档（按类型/语言批量）</option>
+        <option value="drafts">本项目草稿（md 钩子）</option>
+        <option value="custom">自定义 items（JSON）</option></select>
+        <select id="qa-ptype" style="width:140px"><option value="">全部类型</option><option>feature</option><option>tool</option><option>topic</option><option>scenario</option><option>solution</option><option>product</option></select>
+        <select id="qa-lang" style="width:110px"><option value="">全部语言</option><option>en</option><option>zh</option><option>ja</option><option>ko</option><option>zh-TW</option><option>de</option><option>fr</option><option>pt</option><option>ru</option><option>it</option></select>
+        <input id="qa-max" type="number" value="200" min="1" max="2000" style="width:90px" title="条数上限">
+        <button class="btn primary" onclick="qaCreate()">创建扫描任务</button></div>
+      <textarea id="qa-items" placeholder='自定义 items JSON：[{"kind":"sanity","doc_id":"xxx"},{"kind":"md","path":"run/projects/lovart-global/content/x.md"}]' style="display:none;width:100%;min-height:80px;margin-top:8px;border:1px solid var(--border);border-radius:12px;padding:10px;font-family:var(--font-mono);font-size:12px;background:var(--surface-strong);color:var(--fg)"></textarea>
+      <div class="mut" id="qa-hint" style="font-size:11.5px;margin-top:6px"></div></div>
+    <div class="cols">
+      <div class="card" style="height:fit-content"><div class="card-head"><h3>扫描任务</h3></div><div id="qa-tasks" style="display:flex;flex-direction:column;gap:6px"></div></div>
+      <div class="card"><div class="card-head"><h3 id="qa-f-t">findings</h3><span class="mut" id="qa-f-s"></span></div>
+        <div class="row" style="margin-bottom:8px"><button class="btn ghost" onclick="qaOrch(true)">编排修复（dry-run）</button>
+        <button class="btn ghost" onclick="qaOrch(false)">编排修复（真实，含确认）</button>
+        <button class="btn ghost" onclick="qaRecheck()">复检</button></div>
+        <div id="qa-findings" style="max-height:420px;overflow:auto"></div></div>
+    </div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>QA 闭环历史</h3></div><div id="qa-cycles"></div></div>
   </section>
 
   <!-- ============ Agent 任务台 ============ -->
@@ -791,7 +819,7 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
  $('pg-'+t).classList.add('on');
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
-   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,agent:agLoad}[t]||(()=>{}))()}
+   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,agent:agLoad,qa:qaLoad}[t]||(()=>{}))()}
 function openReader(path){api('api/read?path='+encodeURIComponent(path)).then(r=>{
  $('rname').textContent=r.name;
  const toc=(r.toc||[]).filter(t=>t.level===2);
@@ -1424,6 +1452,48 @@ function asApply(dry){api('api/assets/apply',{site:LIB_SITE,dry_run:dry}).then(r
 function asPollApply(n,dry){n=n||0;api('api/assets/result?site='+encodeURIComponent(LIB_SITE)+'&cmd=apply').then(r=>{
  if(r.out&&r.at){$('as-out').textContent=r.out.slice(-2000);if(!dry)alert('已应用——注意：MFlow 库台账需重扫以更新（Sanity 侧已变更）');return}
  if(n<30)setTimeout(()=>asPollApply(n+1,dry),4000)})}
+
+/* ---- QA 编排 ---- */
+let QA_SEL='';
+function qaScope(){const v=$('qa-scope').value;
+ $('qa-items').style.display=v==='custom'?'block':'none';
+ $('qa-ptype').style.display=v==='sanity-filter'?'':'none';
+ $('qa-lang').style.display=v==='sanity-filter'?'':'none';
+ $('qa-max').style.display=v==='custom'?'none':'';
+ $('qa-hint').textContent=v==='drafts'?'扫描 run/projects/lovart-global/content/*.md（跑 post-write + geo 钩子）'
+  :(v==='custom'?'自定义 items（kind=sanity 需 doc_id；kind=md 需 path）':'按 pageType/语言批量扫描 Sanity 文档字段规则（seoTitle/description/cover.alt）')}
+function qaLoad(){api('api/qa/tasks').then(ts=>{
+ $('qa-tasks').innerHTML=(ts||[]).map(t=>{const s=t.stats||{};
+  return `<a onclick="qaPick('${esc(t.id)}')" style="cursor:pointer;padding:7px 10px;border:1px solid var(--border);border-radius:11px;${t.id===QA_SEL?'background:var(--accent-soft);color:var(--accent)':''}">
+   <b style="font-size:12.5px">${esc(t.title||t.id)}</b><div class="mut" style="font-size:10.5px">${esc(t.id)} · ${esc(t.status)} · ${s.done||0}/${s.total||0}${t.dry_run?' · dry-run':''}</div></a>`}).join('')||'<span class="mut">还没有 QA 任务</span>'});
+ api('api/qa/cycles').then(cs=>{$('qa-cycles').innerHTML=(cs||[]).length?'<table><tr><th>QA 任务</th><th>修复任务</th><th>修复前</th><th>时间</th></tr>'+
+  cs.map(c=>`<tr><td class="mut">${esc(c.qa_task)}</td><td>${esc(JSON.stringify(c.fix_tasks||{}))}</td>
+   <td class="tnum">${((c.before||{}).by_severity)?(JSON.stringify(c.before.by_severity)):''}</td><td class="mut">${esc(c.at)}</td></tr>`).join('')+'</table>':'<span class="mut">还没有闭环记录</span>'});qaScope()}
+function qaPick(id){QA_SEL=id;qaLoad();api('api/qa/findings?task='+encodeURIComponent(id)).then(d=>{
+ if(d.error)return $('qa-findings').innerHTML='<span class="mut">'+esc(d.error)+'</span>';
+ $('qa-f-t').textContent='findings · '+id;$('qa-f-s').textContent=`共 ${d.total} · ${JSON.stringify(d.by_severity||{})} · 可自动修复 ${d.fixable}${d.fix_task_id?' · 修复任务 '+d.fix_task_id:''}${d.recheck_task_id?' · 复检 '+d.recheck_task_id:''}`;
+ $('qa-findings').innerHTML=(d.findings||[]).map(f=>`<div class="task" style="align-items:flex-start;margin-top:4px">
+  <span class="badge ${f.severity==='block'?'pipe':'dist'}" style="${f.severity==='block'?'background:var(--danger)':''}">${esc(f.severity)}</span>
+  <span class="tt" style="flex:1"><b style="font-weight:600;font-size:12px">${esc(f.rule)}</b>
+  <div class="mut" style="font-size:11px">${esc(f.target)}<br>${esc(f.detail)}</div>
+  ${(f.fix&&f.fix.type)?`<div class="ok" style="font-size:10.5px">可修复：${esc(f.fix.type)} ${esc(JSON.stringify(f.fix.set||{new_alt:f.fix.new_alt}).slice(0,80))}</div>`:''}</span></div>`).join('')||'<span class="mut">无 findings</span>'})}
+function qaCreate(){const scope=$('qa-scope').value;
+ if(scope==='custom'){let items;try{items=JSON.parse($('qa-items').value)}catch(e){return alert('JSON 解析失败')}
+  return api('api/batch/create',{type:'qa',title:'QA 自定义扫描',items,dry_run:true}).then(r=>{if(r.error)return alert(r.error);alert('已创建 '+r.id);qaLoad()})}
+ if(scope==='drafts'){return api('api/batch/create',{type:'qa',title:'QA 草稿扫描（门禁）',dry_run:true,
+   items:[{kind:'md',path:'(auto)'}]}).then(r=>{if(r.error)return alert(r.error);alert('已创建（草稿列表由执行器按目录展开）');qaLoad()})}
+ const max=parseInt($('qa-max').value||'200',10);
+ return api('api/qa/create',{kind:'sanity-filter',page_type:$('qa-ptype').value,lang:$('qa-lang').value,max}).then(r=>{
+  if(!r||r.error)return alert((r&&r.error)||'创建失败');alert(`已创建扫描任务 ${r.id}（${r.total} 项）`);qaLoad()})}
+function qaOrch(dry){if(!QA_SEL)return alert('先选一个 QA 任务');
+ if(!dry&&!confirm('确认真实编排并执行修复（会写生产库）？'))return;
+ api('api/qa/orchestrate',{task:QA_SEL,dry_run:dry}).then(r=>{if(r.error)return alert(r.error);
+  alert('已生成修复任务：'+JSON.stringify(r.fix_tasks)+'\n'+JSON.stringify(r.counts));qaPick(QA_SEL);qaLoad()})}
+function qaRecheck(){if(!QA_SEL)return alert('先选一个 QA 任务');
+ api('api/qa/recheck',{task:QA_SEL,dry_run:true}).then(r=>{if(r.error)return alert(r.error);
+  alert('复检任务已创建：'+r.recheck_task_id+'（跑完后点「对比」）');qaLoad();qaDelta(QA_SEL,r.recheck_task_id)})}
+function qaDelta(parent,child){setTimeout(()=>api('api/qa/delta?parent='+parent+'&child='+child).then(d=>{
+ if(d.error)return;alert(`复检对比：修复前 ${d.parent.total} → 现在 ${d.child.total}（child 状态 ${d.child.status}）\n已解决 ${d.resolved_n} 项，新增 ${d.new_n} 项`)}),8000)}
 
 /* ---- Agent 任务台 ---- */
 let AG_ID='';
