@@ -1445,7 +1445,9 @@ def _bh_publish_sanity(item, task, proj):
         r = SANITY_PUB.publish_file(str(sp), slug=item.get("slug", ""), lang=item.get("lang", ""),
                                     category=item.get("category", ""), title=item.get("title", ""),
                                     dry_run=dry)
-    if r.get("ok") and not dry:
+    if not r.get("ok"):
+        raise RuntimeError(r.get("error") or f"发布失败：{r.get('validation_errors')}")
+    if not dry:
         usage_add(task.get("created_by", ""), writes=1)
     return r
 
@@ -2699,11 +2701,14 @@ def chain_next_task(task, proj):
         if r.get("gates_blocked") or r.get("struct_errors"):
             continue  # 未过门禁的不进入发布链
         if nxt_type == "publish_sanity":
-            items.append({"item_id": it.get("item_id") or it.get("doc_id"),
-                          "path": r.get("path"),
+            pid = it.get("item_id") or it.get("doc_id")
+            is_patch = (ch.get("mode", "patch") == "patch")
+            items.append({"item_id": pid, "path": r.get("path"),
                           "doctype": ch.get("doctype", "composite"),
                           "mode": ch.get("mode", "patch"),
-                          "page_type": r.get("page_type"), "lang": r.get("lang"), "slug": r.get("slug")})
+                          "page_type": r.get("page_type"), "lang": r.get("lang"),
+                          # patch 必须以真实 Sanity _id 命中既有文档（slug 不一定是 _id）
+                          "slug": (r.get("doc_id") if is_patch else r.get("slug"))})
     if not items:
         with open(RUN_DIR / "approvals.log", "a") as f:
             f.write(f"{datetime.now().isoformat(timespec='seconds')} CHAIN-SKIP {task['id']} "
