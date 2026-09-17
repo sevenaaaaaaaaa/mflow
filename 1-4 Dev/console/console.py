@@ -2631,7 +2631,7 @@ LANDING_STRUCT_RULES = """落地页改稿输出格式（必须是结构化 Markd
 
 
 def _bh_landing_refresh(item, task, proj):
-    """落地页改稿：读 Sanity 现有内容 → 按落地页结构重写 → 四门禁 + 结构校验 → 落盘（供 patch 发布）"""
+    """落地页改稿：读 Sanity 现有内容 → 按落地页结构重写 → 四门禁 + 结构校验（带反馈重试 ≤3 轮）→ 落盘"""
     if not SANITY_PUB:
         raise RuntimeError("发布器未加载")
     did = item.get("doc_id") or ""
@@ -2645,32 +2645,42 @@ def _bh_landing_refresh(item, task, proj):
     lang = item.get("lang") or cur.get("language") or "en"
     slug = item.get("slug") or (cur.get("slug") or {}).get("current") or did
     title = cur.get("title") or did
-    instruction = (f"这是落地页改稿任务（pageType={page_type}，语言={lang}）。\n{LANDING_STRUCT_RULES}\n"
-                   f"改写目标：提升可读性与 AI 可引用性（问答式信息、数据点、明确 CTA），保持事实准确。\n"
-                   f"现有内容（可能不完整，仅作事实参考）：\n{src_text[:6000]}")
-    draft = llm_chat([{"role": "user", "content": instruction}], profile="lovart-creation",
-                     max_tokens=4000, project=proj)
-    with _usage_lock:
-        tok = int(LAST_USAGE.get("total_tokens", 0) or 0)
+    cover = cur.get("cover") or {}
+    base = (f"这是落地页改稿任务（pageType={page_type}，语言={lang}）。\n{LANDING_STRUCT_RULES}\n"
+            f"GEO 硬性要求：每个非问句 H2 小节至少 1 个具体数据点；全文 ≥2 条**完整 URL** 的外部来源；"
+            f"结尾 CTA 一句行动指令。\n语言要求：全文用 {lang} 写作，标点与字形必须符合该语言规范。\n"
+            f"现有内容（仅作事实参考，可能不完整）：\n{src_text[:5000]}")
     gen_dir = proj_paths(proj)["gen"]
     gen_dir.mkdir(parents=True, exist_ok=True)
     path = gen_dir / f"{item.get('item_id') or ('refresh-' + re.sub(r'[^a-z0-9-]', '-', did.lower())[:40])}.md"
-    path.write_text(draft)
-    gates = run_content_gates(path, "landing", lang, tag=f"landing:{did}", budget_profile="default")
-    bad = [k for k, v in gates.items() if v["rc"] != 0]
-    # 结构校验（composite 发布前必须过）
-    struct_errs = []
-    try:
-        secs = SANITY_PUB.md_to_sections(draft, title, cur.get("description") or "",
-                                        ((cur.get("cover") or {}).get("url") or ""),
-                                        ((cur.get("cover") or {}).get("alt") or title))
-        struct_errs = SANITY_PUB.validate_sections(secs)
-    except Exception as e:
-        struct_errs = [f"版块生成失败：{str(e)[:120]}"]
+    feedback, draft, gates, struct_errs, tok = "", "", {}, [], 0
+    for _round in range(1, 4):
+        draft = llm_chat([{"role": "user", "content": base + feedback}], profile="lovart-creation",
+                         max_tokens=4000, project=proj)
+        with _usage_lock:
+            tok += int(LAST_USAGE.get("total_tokens", 0) or 0)
+        path.write_text(draft)
+        gates = run_content_gates(path, "landing", lang, tag=f"landing:{did}", budget_profile="default")
+        bad = [k for k, v in gates.items() if v["rc"] != 0]
+        try:
+            secs = SANITY_PUB.md_to_sections(draft, title, cur.get("description") or "",
+                                            cover.get("url") or "", cover.get("alt") or title)
+            struct_errs = SANITY_PUB.validate_sections(secs)
+        except Exception as e:
+            struct_errs = [f"版块生成失败：{str(e)[:120]}"]
+        if not bad and not struct_errs:
+            break
+        if _round == 3:
+            break
+        feedback = ("\n\n【上一稿被打回，必须修正后重写】\n"
+                    + "\n".join((gates[k]["out"] or "")[-500:] for k in bad)
+                    + ("\n结构：" + "；".join(struct_errs[:3]) if struct_errs else "")
+                    + f"\n注意：当前 {len(draft)} 字符，落地页上限 1200（目标 600-1000），请删冗余而非扩写。")
     usage_add(task.get("created_by", ""), items=1, tokens=tok)
     return {"path": rel_of(path), "doc_id": did, "slug": slug, "page_type": page_type, "lang": lang,
-            "chars": len(draft), "tokens": tok, "gates_blocked": bad, "struct_errors": struct_errs,
-            "ready_to_publish": (not bad and not struct_errs)}
+            "chars": len(draft), "tokens": tok, "rounds": _round,
+            "gates_blocked": [k for k, v in gates.items() if v["rc"] != 0], "struct_errors": struct_errs,
+            "ready_to_publish": (not any(v["rc"] != 0 for v in gates.values()) and not struct_errs)}
 
 
 def chain_next_task(task, proj):
