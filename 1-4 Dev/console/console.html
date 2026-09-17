@@ -329,6 +329,22 @@ th{color:var(--muted);font-weight:600}
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>效果归因 <span class="mut" id="imp-note"></span></h3>
       <button class="more" onclick="loadImpact()">刷新 ↻</button></div><div id="dist-impact"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>内容衰减监测 <span class="mut">（P7-B1 · 发布 ≥30 天 × GSC Top20 无记录 × 无 AI 引用）</span></h3></div><div id="dist-decay"></div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>发布通道 <span class="mut">（Sanity 生产 / WordPress · 人工授权 + 门禁）</span></h3>
+      <button class="more" onclick="loadPublish()">刷新 ↻</button></div>
+      <div id="pub-status" class="mut" style="font-size:12.5px;line-height:1.9">加载中…</div>
+      <div class="row" style="margin-top:10px">
+        <select id="pub-draft" style="min-width:260px"></select>
+        <input id="pub-slug" placeholder="slug（留空=草稿文件名）" style="flex:1;min-width:160px">
+        <select id="pub-lang" style="width:100px"><option value="zh">zh</option><option value="en">en</option><option value="ja">ja</option><option value="ko">ko</option><option value="zh-TW">zh-TW</option><option value="ru">ru</option><option value="pt">pt</option><option value="de">de</option><option value="fr">fr</option><option value="it">it</option></select>
+        <select id="pub-cat" style="width:150px"><option>How-To</option><option>Best Practice</option><option>Industry Solution</option><option>Comparison</option><option>Branding</option></select></div>
+      <div class="row" style="margin-top:8px"><input id="pub-title" placeholder="标题（留空=取 frontmatter）" style="flex:1">
+        <button class="btn ghost" onclick="pubPing()">连通探测</button>
+        <button class="btn ghost" onclick="pubSanity(true)">Dry-run（不落库）</button>
+        <button class="btn primary" onclick="pubSanity(false)">发布到 Sanity（真写库）</button>
+        <button class="btn ghost" onclick="pubWP()">发 WordPress（草稿）</button></div>
+      <pre id="pub-out" style="margin-top:10px;max-height:240px;overflow:auto"></pre>
+      <div class="mut" style="font-size:11.5px;margin-top:6px">门禁：条目需在 S4-qa 及之后且质检 BLOCK 全 0；Sanity 写入 status=draft（前台发布仍需人工在 Sanity 确认）；每次发布进 approvals.log。</div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>发布历史</h3></div><div id="pub-history" style="max-height:200px;overflow:auto"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>发布后复测窗口 <span class="mut">（P7-B5 · 发布 ≤7 天，开「每日自动探测」后自动复测）</span></h3></div><div id="dist-recheck"></div></div>
   </section>
 
@@ -833,9 +849,8 @@ function loadDist(){api('api/dist').then(d=>{
  $('dist-published').innerHTML=(d.published||[]).map(x=>`<div class="task"><span class="tt">${esc(x.slug||'')}<div class="mut">${esc(x.platform||'')} · ${esc(x.date||'')}</div></span><span class="badge" style="background:var(--ok)">${esc(x.status||'published')}</span></div>`).join('')||'<span class="mut">空</span>';
  $('dist-dispatch').innerHTML=(d.dispatches||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)}<div class="mut">cn ${x.cn} · global ${x.gl}${x.approved_by?' · 批准人 '+esc(x.approved_by):''}</div></span><span class="badge ${x.approved?'':'dist'}" style="${x.approved?'background:var(--ok)':''}">${x.approved?'已授权':'待授权'}</span>
    ${(!x.approved&&window.__ROLE==='admin')?`<button class="mini" onclick="approveDispatch('${esc(x.id)}')">批准发布（admin）</button>`:''}</div>`).join('')||'<span class="mut">无 dispatch 单</span>';
- loadImpact()})}
-function loadImpact(){api('api/impact').then(d=>{
- $('imp-note').textContent=(d.gsc_date?`GSC 数据 ${d.gsc_date} · `:'')+`归因范围 Top${d.gsc_pages||0} 页面`;
+ loadImpact();loadPublish()})}
+function loadImpact(){api('api/impact').then(d=>{ $('imp-note').textContent=(d.gsc_date?`GSC 数据 ${d.gsc_date} · `:'')+`归因范围 Top${d.gsc_pages||0} 页面`;
  if(!(d.rows||[]).length)return $('dist-impact').innerHTML='<span class="mut">暂无已发布外链</span>';
  $('dist-impact').innerHTML='<table><tr><th>slug</th><th>平台</th><th>主站路径</th><th>点击</th><th>曝光</th><th>站外链接</th></tr>'+
   d.rows.map(r=>`<tr><td>${esc(r.slug)}</td><td>${esc(r.platform)}</td><td class="mut">${esc(r.canonical_path||'—')}</td>
@@ -1247,6 +1262,22 @@ function payRedeliver(id){api('api/pay/order/redeliver',{id}).then(r=>{if(r.erro
 function paySaveVoucher(){api('api/pay/voucher/save',{code:$('pv-code').value.trim(),type:$('pv-type').value,value:$('pv-value').value,max_uses:$('pv-uses').value}).then(r=>{if(r.error)return alert(r.error);alert('兑换码：'+r.code);loadPay()})}
 function payDelVoucher(code){if(!confirm('删除兑换码 '+code+'？'))return;api('api/pay/voucher/delete',{code}).then(()=>loadPay())}
 function paySaveCfg(){api('api/pay/config/save',{usdt_trc20:$('pc-trc20').value.trim(),usdt_erc20:$('pc-erc20').value.trim(),btc:$('pc-btc').value.trim(),auto_verify:$('pc-auto').checked,link_ttl_min:$('pc-ttl').value,webhook_secret:$('pc-secret').value}).then(r=>{if(r.error)return alert(r.error);alert('收款配置已保存');loadPay()})}
+
+/* ---- 发布通道 ---- */
+function loadPublish(){api('api/publish/config').then(c=>{
+ const s=c.sanity||{},w=c.wordpress||{};
+ $('pub-status').innerHTML=`Sanity：<b>${esc(s.project||'—')}</b> / ${esc(s.dataset||'—')} · ${s.configured?'<span class="ok">凭证已配置</span>（'+esc(s.source||'')+'）':'<span class="warn">未配置凭证</span>'}
+  &nbsp;|&nbsp; WordPress：${w.configured?'<span class="ok">已配置</span> '+esc(w.base||''):'<span class="mut">未配置（run/cms.json 的 wordpress 段）</span>'}`;
+ $('pub-draft').innerHTML=(c.drafts||[]).map(d=>`<option value="${esc(d.item_id)}">${esc(d.item_id)} · ${esc(d.stage)}</option>`).join('')||'<option value="">（无 S4-qa 及之后的草稿）</option>';
+ api('api/publish/history').then(h=>{$('pub-history').innerHTML=(h||[]).map(l=>`<div class="mut" style="font-size:11px;font-family:var(--font-mono)">${esc(l)}</div>`).join('')||'<span class="mut">暂无发布记录</span>'})})}
+function pubPing(){api('api/publish/ping').then(r=>{$('pub-out').textContent=JSON.stringify(r,null,1)})}
+function pubSanity(dry){const id=$('pub-draft').value;if(!id)return alert('先选草稿');
+ if(!dry&&!confirm('确认真实写入 Sanity 生产库？\n草稿：'+id+'\n（写入 status=draft，前台发布仍需在 Sanity 侧确认）'))return;
+ api('api/publish/sanity',{item_id:id,path:'run/projects/'+(window.__PROJ||'main')+'/content/'+id+'.md',slug:$('pub-slug').value.trim(),lang:$('pub-lang').value,category:$('pub-cat').value,title:$('pub-title').value.trim(),dry_run:dry})
+ .then(r=>{$('pub-out').textContent=JSON.stringify(r,null,1);if(r.ok&&!dry)loadPublish()})}
+function pubWP(){const id=$('pub-draft').value;if(!id)return alert('先选草稿');
+ api('api/publish/wordpress',{item_id:id,path:'run/projects/'+(window.__PROJ||'main')+'/content/'+id+'.md',title:$('pub-title').value.trim()})
+ .then(r=>{$('pub-out').textContent=JSON.stringify(r,null,1);loadPublish()})}
 
 /* ---- 报告仪表 ---- */
 function loadRdash(){if($('rd-cat').children.length)return;

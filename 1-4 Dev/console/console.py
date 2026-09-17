@@ -1057,6 +1057,47 @@ try:
 except Exception as e:
     PCHK = None
     print(f"[console] plugin_check import failed: {e}", file=sys.stderr)
+try:
+    SANITY_PUB = load_module("mflow_sanity_publisher",
+                             PROJECT / "1-4 Dev" / "scripts" / "publish_adapters" / "sanity_publisher.py")
+except Exception as e:
+    SANITY_PUB = None
+    print(f"[console] sanity_publisher import failed: {e}", file=sys.stderr)
+
+
+def publish_gate(proj, item_id):
+    """发布门禁（铁律）：条目必须在 S4-qa 及之后（经人工审）且 qa BLOCK 全 0。"""
+    st = read_json(proj_paths(proj)["state"], {})
+    it = (st.get("items") or {}).get(item_id)
+    if not it:
+        return False, f"管线中无条目 {item_id}（先经生成 Loop 入管线）"
+    stage = it.get("stage", "")
+    if stage not in ("S4-qa", "S4-ready", "S5-importing", "S5-imported"):
+        return False, f"当前状态 {stage} 不可发布——需推进到 S4-qa 并经人工审"
+    qa = it.get("qa") or {}
+    blocks = {k: v for k, v in qa.items() if k.endswith("_block") and v}
+    if blocks:
+        return False, f"质检 BLOCK 未清零：{blocks}"
+    return True, ""
+
+
+def publish_wordpress(path, item_id, title=""):
+    if not (PROJECT / "run" / "cms.json").exists():
+        return {"ok": False, "error": "未配置 run/cms.json 的 wordpress 段（base/user/app_password）"}
+    p = safe_path(path)
+    if not p:
+        return {"ok": False, "error": "草稿路径不可读"}
+    r = run_tool([sys.executable, str(PROJECT / "1-4 Dev/scripts/publish_adapters/cli.py"),
+                  "--adapter", "wordpress", "--item-id", item_id, "--title", title or item_id,
+                  "--body-file", str(p), "--cfg", "run/cms.json"], timeout=120)
+    try:
+        out = json.loads(r["out"].strip().split("\n")[-1])
+    except Exception:
+        out = {"ok": False, "error": r["out"][-300:]}
+    if out.get("ok"):
+        with open(RUN_DIR / "approvals.log", "a") as f:
+            f.write(f"{datetime.now().isoformat(timespec='seconds')} WP-PUBLISH {item_id} url={out.get('url','')}\n")
+    return out
 
 
 def run_tool(args, timeout=60):
@@ -2207,6 +2248,29 @@ class Handler(BaseHTTPRequestHandler):
                                                      "status": c["status"]} for c in cs[-40:][::-1]]})
             if parsed.path == "/api/pay/vouchers":
                 return self._send(200, pay_vouchers())
+            # ── 发布通道（Sanity / WordPress）──
+            if parsed.path == "/api/publish/config":
+                sc = SANITY_PUB.sanity_cfg() if SANITY_PUB else {"project": "", "dataset": "", "token": "", "source": "none"}
+                wpc = read_json(PROJECT / "run/cms.json", {}).get("wordpress") or {}
+                drafts = []
+                st = read_json(proj_paths(self._proj())["state"], {})
+                for iid, it in (st.get("items") or {}).items():
+                    if it.get("stage") in ("S4-qa", "S4-ready", "S5-importing", "S5-imported"):
+                        drafts.append({"item_id": iid, "stage": it.get("stage")})
+                return self._send(200, {"sanity": {"project": sc["project"], "dataset": sc["dataset"],
+                                                   "configured": bool(sc["token"]), "source": sc["source"]},
+                                        "wordpress": {"configured": bool(wpc.get("base") and wpc.get("app_password")),
+                                                      "base": wpc.get("base", "")},
+                                        "drafts": sorted(drafts, key=lambda x: x["item_id"])})
+            if parsed.path == "/api/publish/ping":
+                return self._send(200, SANITY_PUB.ping() if SANITY_PUB else {"ok": False, "error": "发布器未加载"})
+            if parsed.path == "/api/publish/history":
+                lines = []
+                ap = RUN_DIR / "approvals.log"
+                if ap.exists():
+                    lines = [l for l in ap.read_text(errors="ignore").strip().split("\n")
+                             if "PUBLISH" in l][-30:][::-1]
+                return self._send(200, lines)
             if parsed.path == "/api/workflows":
                 sk = {s["name"]: s for s in harness_inventory()["skills"]}
                 wfs = []
@@ -2403,7 +2467,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/pay/product/save", "/api/pay/product/delete", "/api/pay/cards/import",
                       "/api/pay/cards/clear", "/api/pay/link/create", "/api/pay/order/confirm",
                       "/api/pay/order/redeliver", "/api/pay/order/cancel", "/api/pay/voucher/save",
-                      "/api/pay/voucher/delete", "/api/pay/config/save", "/api/pay/verify"}
+                      "/api/pay/voucher/delete", "/api/pay/config/save", "/api/pay/verify",
+                      "/api/publish/sanity", "/api/publish/wordpress"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
@@ -2623,6 +2688,34 @@ class Handler(BaseHTTPRequestHandler):
                     r = pay_confirm(o["id"], tx_hash=info, by="manual-verify:" + self._me())
                     return self._send(200, {"ok": True, "verified": True, "order": r.get("order")})
                 return self._send(200, {"ok": True, "verified": False, "detail": info})
+            # ── 发布：Sanity / WordPress（admin + 门禁 + 默认 dry-run）──
+            if self.path == "/api/publish/sanity":
+                path = str(body.get("path", ""))
+                item_id = str(body.get("item_id", "")).strip() or Path(path).stem
+                ok, why = publish_gate(self._proj(), item_id)
+                if not ok:
+                    return self._send(400, {"error": why})
+                if not SANITY_PUB:
+                    return self._send(400, {"error": "发布器未加载"})
+                p = safe_path(path)
+                if not p:
+                    return self._send(400, {"error": "草稿路径不可读"})
+                dry = bool(body.get("dry_run", True))
+                r = SANITY_PUB.publish_file(str(p), slug=str(body.get("slug", "")), lang=str(body.get("lang", "")),
+                                            category=str(body.get("category", "")), title=str(body.get("title", "")),
+                                            cluster=str(body.get("cluster", "")), dry_run=dry)
+                if r.get("ok") and not dry:
+                    with open(RUN_DIR / "approvals.log", "a") as f:
+                        f.write(f"{datetime.now().isoformat(timespec='seconds')} SANITY-PUBLISH {item_id} doc={r.get('doc_id')} by={self._me()}\n")
+                return self._send(200 if r.get("ok") else 400, r)
+            if self.path == "/api/publish/wordpress":
+                path = str(body.get("path", ""))
+                item_id = str(body.get("item_id", "")).strip() or Path(path).stem
+                ok, why = publish_gate(self._proj(), item_id)
+                if not ok:
+                    return self._send(400, {"error": why})
+                r = publish_wordpress(path, item_id, str(body.get("title", "")))
+                return self._send(200 if r.get("ok") else 400, r)
             if self.path == "/api/skills/sync":
                 return self._send(200, run_tool([sys.executable, str(PROJECT / "1-4 Dev/scripts/harness_sync.py")], timeout=120))
             if self.path == "/api/generate":
