@@ -264,6 +264,7 @@ th{color:var(--muted);font-weight:600}
       </div>
     </div>
     <div class="metrics" id="metrics"></div>
+    <div id="home-health"></div>
     <div class="ov-grid">
       <div class="card"><div class="card-head"><h3>最新成果 · 点击阅读</h3><button class="more" onclick="setTab('reports')">全部报告 →</button></div>
         <div class="qlist ql" id="home-quick"></div></div>
@@ -366,7 +367,10 @@ th{color:var(--muted);font-weight:600}
     <div class="pg-head"><div><div class="kick">我的工作</div><h1>批量<em class="sf">任务</em></h1>
       <p class="pg-sub">任务 = 条目池 × 执行器（物料替换 / 字段改写 / 批量生成 / 批量改稿）。并发 2、逐项状态、断点续跑、dry-run 可预览、全程审计。</p></div>
       <div class="head-actions"><button class="btn ghost" onclick="loadBatch()">刷新 ↻</button></div></div>
-    <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>新建任务</h3><span class="mut">items 为 JSON 数组</span></div>
+    <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>预设工作流 <span class="mut">（0 门槛：点一下就能跑，数据自动取）</span></h3><button class="more" onclick="loadPresets()">刷新 ↻</button></div>
+      <div class="chips" id="bt-presets"></div>
+      <div id="bt-opt" style="display:none;margin-top:10px"></div></div>
+    <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>新建任务（高级）</h3><span class="mut">items 为 JSON 数组</span></div>
       <div class="row"><select id="bt-type" style="width:180px" onchange="btHint()">
         <option value="asset_replace">物料替换 asset_replace</option>
         <option value="field_patch">字段改写 field_patch</option>
@@ -692,6 +696,11 @@ th{color:var(--muted);font-weight:600}
       <div class="mut" style="margin-top:6px">权限矩阵：admin=全部 · marketing/sales/operator=创作与质检 · 只读角色无写权限。所有重置与审批动作记入 run/approvals.log</div>
       <div class="row" style="margin-top:10px"><span class="mut" style="width:110px">项目绑定</span><span class="mut" id="acc-proj-hint">点行内「分配」编辑该账号可见的项目</span></div>
       <div id="acc-proj-rows" style="margin-top:6px"></div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>维护 · 降噪治理 <span class="mut">（每日 03:20 自动；此处可立即执行）</span></h3>
+      <button class="more" onclick="hkRun(true)">Dry-run 预览</button><button class="more" onclick="hkRun(false)">立即清理（真删/归档）</button></div>
+      <div class="mut" style="font-size:12px;line-height:1.8">规则：终态管线条目 >14 天归档 · 僵尸条目（S3-creating/draft >24h）标记 failed · 旧批量任务 >14 天归档 · agent 会话 >30 天归档 · citations 只留最近 200 条（其余按月归档）· 孤儿草稿只报数不自动删</div>
+      <pre id="hk-out" style="margin-top:8px;max-height:200px;overflow:auto"></pre>
+      <div id="hk-hist" class="mut" style="font-size:11px;font-family:var(--font-mono);max-height:120px;overflow:auto"></div></div>
     <div class="ov-grid2" style="margin-top:14px">
       <div class="card"><div class="card-head"><h3>Harness 规则（全局铁律 + 工作线）</h3></div><div id="harness-rules"></div></div>
       <div class="card"><div class="card-head"><h3>Skills <span class="mut" id="skill-n"></span></h3>
@@ -1167,7 +1176,7 @@ function flowAdv(){const id=$('fitem').value.trim();if(!id)return alert('先填�
 
 /* ---- 设置 ---- */
 let LLMCFG=null;
-function loadSet(){loadProjCfg();api('api/llm').then(c=>{LLMCFG=c;
+function loadSet(){hkLoad();loadProjCfg();api('api/llm').then(c=>{LLMCFG=c;
  $('llm-providers').innerHTML=Object.entries(c.providers).map(([n,p])=>`<div class="row">
    <b style="width:80px;font-size:13px">${n}</b>
    <input id="lp-base-${n}" value="${esc(p.base||'')}" placeholder="base url" style="flex:1;min-width:180px">
@@ -1527,13 +1536,37 @@ function agExec(spec,real){if(real&&!confirm('确认真实执行（会写生产�
  const body={session_id:AG_ID,spec:{...spec,dry_run:!real},force:real};
  api('api/agent/execute',body).then(r=>{if(r.error)return alert(r.error);alert('已创建任务 '+r.task_id);agOpen(AG_ID)})}
 
+/* ---- 预设工作流 / 健康 / 维护 ---- */
+let PRESETS=[],PRESET_SEL='';
+function loadPresets(){api('api/presets').then(ps=>{PRESETS=ps||[];
+ $('bt-presets').innerHTML=PRESETS.map(p=>`<span class="chip ${p.id===PRESET_SEL?'on':''}" onclick="presetPick('${esc(p.id)}')" title="${esc(p.desc)}">${esc(p.icon||'')} ${esc(p.name)}</span>`).join('')||'<span class="mut">无预设</span>'})}
+function presetPick(id){PRESET_SEL=id;loadPresets();
+ const p=PRESETS.find(x=>x.id===id);if(!p)return;
+ const labels={limit:'条数上限',lang:'语言（如 zh / en / ja）',dry_run:'dry-run',min_impr:'最小曝光',page_type:'页面类型（可空）',topic:'主题',langs:'语言列表（逗号分隔）'};
+ $('bt-opt').style.display='block';
+ $('bt-opt').innerHTML=`<b style="font-size:13px">${esc(p.icon||'')} ${esc(p.name)}</b><div class="mut" style="font-size:12px;margin:4px 0 8px">${esc(p.desc)}</div>
+  <div class="row">${(p.options||[]).map(o=>o==='dry_run'
+    ?`<label style="font-size:13px"><input type="checkbox" id="po-${o}" checked style="margin-right:5px">dry-run</label>`
+    :`<input id="po-${o}" placeholder="${esc(labels[o]||o)}" style="width:${o==='topic'?'320px':(o==='langs'?'220px':'150px')}" value="${o==='limit'?'5':(o==='lang'?'zh':(o==='langs'?'zh,en,ja':''))}">`).join('')}
+   <button class="btn primary" onclick="presetRun()">运行预设</button>
+   <span class="mut" id="po-hint">预设会用当前真实数据展开成任务（默认 dry-run）</span></div>`}
+function presetRun(){const p=PRESETS.find(x=>x.id===PRESET_SEL);if(!p)return;
+ const opt={};(p.options||[]).forEach(o=>{const el=$('po-'+o);if(!el)return;opt[o]=el.type==='checkbox'?el.checked:(el.value||'')});
+ api('api/presets/run',{id:PRESET_SEL,options:opt}).then(r=>{if(r.error)return alert(r.error);
+  alert(`已创建任务 ${r.task_id}（${r.total} 项，${r.dry_run?'dry-run':'真实执行'}）${r.note?'\n'+r.note:''}`);loadBatch()})}
+function hkRun(dry){api('api/housekeeping/run',{dry_run:dry}).then(r=>{
+ if(r.error)return alert(r.error);
+ $('hk-out').textContent=JSON.stringify(r,null,1);hkLoad()})}
+function hkLoad(){api('api/housekeeping').then(d=>{
+ $('hk-hist').textContent=(d.history||[]).join('\n')||'（暂无清理记录）'})}
+
 /* ---- 批量任务 ---- */
 const BATCH_HINTS={asset_replace:"items 可留空 → 用「从图片物料计划一键建任务」",
  field_patch:'每项：{"doc_id":"…","set":{"字段":"新值"}}',
  gen:'每项：{"item_id":"slug","type":"blog","lang":"zh","topic":"…","brief":"…"}',
  rewrite:'每项：{"item_id":"refresh-x","lang":"zh","topic":"…","instruction":"改写要求","source_path":"run/library/…"}'};
 function btHint(){$('bt-hint').textContent=BATCH_HINTS[$('bt-type').value]||''}
-function loadBatch(){api('api/batch/list').then(ts=>{
+function loadBatch(){loadPresets();api('api/batch/list').then(ts=>{
  $('nav-batch').textContent=(ts||[]).filter(t=>t.status==='running'||t.status==='queued').length;
  $('bt-list').innerHTML=(ts||[]).length?'<table><tr><th>任务</th><th>类型</th><th>进度</th><th>状态</th><th>创建</th><th></th></tr>'+
   ts.map(t=>{const s=t.stats||{};const pct=s.total?Math.round((s.done+s.skipped+s.failed)/s.total*100):0;

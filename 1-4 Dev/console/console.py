@@ -2327,10 +2327,24 @@ def context_skills(query, k=5):
     return [s for _, s in scored[:k]]
 
 
-def context_rules(limit=4000):
-    """harness 硬约束摘要：编号/项目符号列表中含「禁止/必须/不可/一律/永远/不得」的条款。"""
+def context_rules(limit=4000, query=""):
+    """harness 硬约束摘要（按意图相关性挑选规则文件，降低噪音）。
+    命中意图关键词 → 只注入相关文件；无命中 → 只注入 RULES-00 + RULES-70。"""
+    files = sorted((PROJECT / "1-1 Harness" / "02-rules").glob("RULES-*.md"))
+    if query:
+        qt = _tokens(query)
+        scored = []
+        for f in files:
+            text = f.read_text(errors="ignore")
+            score = len(qt & _tokens(f.stem + " " + text[:3000]))
+            scored.append((score, f))
+        picked = [f for s, f in sorted(scored, key=lambda x: -x[0]) if s > 0][:3]
+        core = [f for f in files if f.name in ("RULES-00-iron.md", "RULES-70-quota.md") and f not in picked]
+        files = (picked + core)[:4]
+    else:
+        files = [f for f in files if f.name in ("RULES-00-iron.md", "RULES-70-quota.md")]
     out = []
-    for f in sorted((PROJECT / "1-1 Harness" / "02-rules").glob("RULES-*.md")):
+    for f in files:
         keep = []
         txt = f.read_text(errors="ignore")
         if txt.startswith("---"):
@@ -2393,9 +2407,9 @@ def agent_reply(session, message, proj=None):
     proj = proj or DEFAULT_PROJECT
     site = "lovart-global"
     skills = context_skills(message)
-    libs = context_library(site, message)
+    libs = context_library(site, message, k=3)
     geo = context_geo(proj)
-    rules = context_rules()
+    rules = context_rules(limit=1200, query=message)  # 上下文预算：按意图取相关规则，≤1200 字符
     sys_prompt = f"""你是 MFlow 的任务规划器（不是聊天机器人）。用户用自然语言提需求，你要产出**可执行的批量任务规格**。
 
 【硬约束（不可违背，来自 harness 铁律）】
@@ -2513,6 +2527,308 @@ def agent_save(s):
     tmp = p.with_suffix(".tmp")
     tmp.write_text(json.dumps(s, ensure_ascii=False, indent=1))
     tmp.replace(p)
+
+
+# ===================== 预设工作流（0 门槛）=====================
+PRESETS_FILE = PROJECT / "templates" / "presets.json"
+
+
+def presets_list():
+    return read_json(PRESETS_FILE, [])
+
+
+def _lib_source_for_slug(site, slug, lang=""):
+    """在内容库找该 slug 的本地路径（作为改稿源）。"""
+    base = LIB_ROOT / site
+    if not base.exists():
+        return ""
+    for f in base.rglob(f"{slug}.md"):
+        if not lang or f.parent.name == lang:
+            return rel_of(f)
+    return ""
+
+
+def _slug_of(s):
+    return re.sub(r"[^a-z0-9-]", "-", str(s).lower())[:60].strip("-") or f"item-{secrets.token_hex(2)}"
+
+
+def preset_expand(pid, opt, proj):
+    """把预设展开成可执行的批量任务规格（真实数据驱动）。返回 {type,title,items,params,note}"""
+    site = "lovart-global"
+    opt = opt or {}
+    limit = max(1, min(int(opt.get("limit", 5) or 5), 50))
+    lang = str(opt.get("lang", "zh") or "zh")
+
+    if pid == "geo-gap-rewrite":
+        g = geo_summary(proj)
+        gaps = [q for q, v in (g.get("per_query") or {}).items() if v.get("brand", 0) == 0]
+        if not gaps:
+            return {"error": "当前无 GEO 缺口（先做一次探测：设置页 GEO 卡 → 立即探测）"}
+        items = [{"item_id": "refresh-" + _slug_of(q), "lang": lang, "topic": q,
+                  "instruction": "GEO 缺口改稿：该查询 AI 回答 0 次提及品牌。按 GEO 标准重写为可摘录形态："
+                                 "问答式 H2、每千字≥1 数据点、FAQ 3-5 条、自包含短段（≤300 字符）、"
+                                 "≥2 条完整来源 URL；并对照竞品被引来源补足信息。",
+                  "source_path": _lib_source_for_slug(site, _slug_of(q), lang)}
+                 for q in gaps[:limit]]
+        return {"type": "rewrite", "title": f"GEO 缺口改稿（{len(items)} 条）", "items": items,
+                "params": {"batch_size": 3}, "note": f"缺口共 {len(gaps)} 条，本次取前 {len(items)}"}
+
+    if pid == "low-ctr-refresh":
+        min_impr = int(opt.get("min_impr", 10000) or 10000)
+        rep = impact_report(proj)
+        cand = [r for r in rep.get("rows", []) if (r.get("impr") or 0) >= min_impr and (r.get("clicks") or 0) >= 0]
+        cand = [r for r in cand if (r.get("clicks") or 0) / max(1, r.get("impr") or 1) < 0.02]
+        if not cand:
+            return {"error": f"没有满足条件（曝光≥{min_impr} 且 CTR<2%）的页面（GSC 数据可能未更新）"}
+        items = [{"item_id": "refresh-" + _slug_of(r["slug"] or r.get("canonical_path", "")), "lang": lang,
+                  "topic": r.get("slug") or r.get("canonical_path", ""),
+                  "instruction": f"高曝光低 CTR 改稿（曝光 {r.get('impr')}）：重写标题/首段/FAQ 以提升点击；"
+                                 "标题含明确结论与数字，首段 3 句内给出收益与适用人群。",
+                  "source_path": _lib_source_for_slug(site, r.get("slug", ""), lang)}
+                 for r in cand[:limit]]
+        return {"type": "rewrite", "title": f"高曝光低 CTR 刷新（{len(items)} 篇）", "items": items,
+                "params": {"batch_size": 3}, "note": f"候选 {len(cand)} 篇，按曝光降序取前 {len(items)}"}
+
+    if pid == "decay-refresh":
+        gsc = read_json(RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json", {})
+        by_path = {}
+        for pg in ((gsc.get("pages") or {}).get("top20_pages") or []):
+            try:
+                by_path[urllib.parse.urlparse(pg.get("url", "")).path] = True
+            except Exception:
+                continue
+        pub = read_json(PROJECT / "1-3 GenFlow/Content Distribution/queue/published.json", {}).get("items", [])
+        dec = decay_analysis(pub, by_path)
+        if not dec:
+            return {"error": "当前无衰减页面（发布≥30天 × GSC 无记录 × 无引用）"}
+        items = [{"item_id": "refresh-" + _slug_of(x.get("slug", "")), "lang": lang, "topic": x.get("slug", ""),
+                  "instruction": f"内容衰减改稿（{x.get('reason','')}）：按 GEO 标准重写为可摘录形态，"
+                                 "补数据点与来源，重排标题层级。",
+                  "source_path": _lib_source_for_slug(site, x.get("slug", ""), lang)}
+                 for x in dec[:limit]]
+        return {"type": "rewrite", "title": f"衰减页刷新（{len(items)} 篇）", "items": items,
+                "params": {"batch_size": 3}, "note": f"衰减共 {len(dec)} 篇"}
+
+    if pid in ("qa-field-fix", "qa-scan", "asset-alt-fill"):
+        if not SANITY_PUB:
+            return {"error": "发布器未加载"}
+        pt = str(opt.get("page_type", "") or "")
+        lg = str(opt.get("lang", "") or "")
+        if pid == "asset-alt-fill":
+            inv = read_json(LIB_ROOT / site / "assets.json", {})
+            if not inv:
+                return {"error": "无物料台账——先到「内容库 → 图片物料 → 扫描物料」"}
+            items = []
+            for did, p in (inv.get("pages") or {}).items():
+                cov = p.get("cover") or {}
+                if cov.get("url") and not (cov.get("alt") or "").strip():
+                    items.append({"doc_id": did, "kind": "cover", "idx": None, "field": "media",
+                                  "old": cov["url"], "new_url": cov["url"],
+                                  "new_alt": (p.get("title") or p.get("slug") or "")[:80]})
+                if len(items) >= limit:
+                    break
+            if not items:
+                return {"error": "没有缺 alt 的封面"}
+            return {"type": "asset_replace", "title": f"封面 alt 补齐（{len(items)} 项）", "items": items,
+                    "params": {"batch_size": 20}, "note": f"台账共 {inv.get('stats',{}).get('with_cover',0)} 页有封面"}
+        where = '_type=="compositePage" && !(_id in path("drafts.**"))'
+        if pt:
+            where += f' && pageType=="{pt}"'
+        if lg:
+            where += f' && language=="{lg}"'
+        try:
+            res = _sanity_req("query", {"query": f'*[{where}][0...{limit}]{{_id}}'})
+            ids = [d["_id"] for d in (res.get("result") or [])]
+        except Exception as e:
+            return {"error": f"Sanity 查询失败：{str(e)[:150]}"}
+        if not ids:
+            return {"error": "范围内无文档"}
+        if pid == "qa-scan":
+            return {"type": "qa", "title": f"例行 QA 扫描（{len(ids)} 项）",
+                    "items": [{"kind": "sanity", "doc_id": i} for i in ids], "params": {}, "note": ""}
+        # qa-field-fix：扫描后直接产出修复项（确定性）
+        items = []
+        for did in ids:
+            for f in qa_check_sanity(did):
+                fx = f.get("fix") or {}
+                if fx.get("type") == "field_patch" and fx.get("set"):
+                    items.append({"doc_id": did, "set": fx["set"]})
+                    break
+        if not items:
+            return {"error": "扫描后没有可自动修复的字段问题（可用「例行 QA 扫描」看明细）"}
+        return {"type": "field_patch", "title": f"QA 字段修复（{len(items)} 项）", "items": items,
+                "params": {"batch_size": 10}, "note": f"扫描 {len(ids)} 篇，{len(items)} 篇有可修问题"}
+
+    if pid == "multilang-batch":
+        topic = str(opt.get("topic", "") or "").strip()
+        langs = [x.strip() for x in str(opt.get("langs", "zh,en,ja") or "").split(",") if x.strip()][:5]
+        if not topic:
+            return {"error": "需要填主题（topic）"}
+        base = _slug_of(topic)[:40]
+        items = [{"item_id": f"{base}-{lg}", "lang": lg, "type": "blog", "topic": topic,
+                  "brief": str(opt.get("brief", "") or "")} for lg in langs]
+        return {"type": "gen", "title": f"多语言批量产出：{topic[:40]}（{len(items)} 语言）", "items": items,
+                "params": {"batch_size": 2}, "note": "各语言独立门禁（含语言规范检查）"}
+
+    return {"error": f"未知预设：{pid}"}
+
+
+# ===================== 健康检查与降噪治理 =====================
+HOUSEKEEPING_LOG = RUN_DIR / "logs" / "housekeeping.log"
+_HEALTH_CACHE = {"ts": 0, "sanity": None}
+
+
+def health_report(proj=None):
+    proj = proj or DEFAULT_PROJECT
+    pp = proj_paths(proj)
+    st = read_json(pp["state"], {})
+    items = st.get("items", {})
+    now = time.time()
+    zombies = []
+    for k, v in items.items():
+        if v.get("stage") in ("S3-creating", "S3-draft") and v.get("updated_at"):
+            try:
+                age_h = (now - datetime.fromisoformat(str(v["updated_at"]).replace("Z", "+00:00")).timestamp()) / 3600
+                if age_h > 24:
+                    zombies.append(k)
+            except Exception:
+                continue
+    loops = read_json(pp["loops"], [])
+    batch_pending = 0
+    if BATCH_DIR.exists():
+        for f in BATCH_DIR.glob("batch-*.json"):
+            t = read_json(f, {})
+            if t.get("status") in ("queued", "running"):
+                batch_pending += sum(1 for i in (t.get("items") or []) if i.get("status") in ("pending", "running"))
+    # Sanity 连通（10 分钟缓存，避免频繁外呼）
+    sanity = _HEALTH_CACHE.get("sanity")
+    if not sanity or now - _HEALTH_CACHE["ts"] > 600:
+        try:
+            sanity = SANITY_PUB.ping() if SANITY_PUB else {"ok": False, "error": "发布器未加载"}
+        except Exception as e:
+            sanity = {"ok": False, "error": str(e)[:120]}
+        _HEALTH_CACHE.update({"ts": now, "sanity": sanity})
+    llm_ok = bool(llm_config()["providers"][llm_config()["profiles"]["default"]["provider"]].get("key"))
+    du = run_tool(["du", "-sm", str(RUN_DIR)], timeout=30)["out"].strip().split("\t")[0] if os.path.isdir(RUN_DIR) else "0"
+    qa24 = 0
+    try:
+        rows = [json.loads(l) for l in (RUN_DIR / "qa-history.jsonl").read_text().strip().split("\n")[-400:] if l.strip()]
+        qa24 = sum(1 for r in rows if r.get("rc", 0) != 0)
+    except Exception:
+        pass
+    noise = {"items_total": len(items),
+             "items_terminal": sum(1 for v in items.values() if v.get("stage") in ("done", "failed", "escalated")),
+             "zombies": len(zombies), "batch_files": len(list(BATCH_DIR.glob("batch-*.json"))) if BATCH_DIR.exists() else 0,
+             "chat_sessions": len(list(AGENT_DIR.glob("chat-*.json"))) if AGENT_DIR.exists() else 0,
+             "drafts": len(list(pp["gen"].glob("*.md"))) if pp["gen"].exists() else 0,
+             "run_mb": int(du or 0), "qa_block_24h": qa24}
+    level = "ok"
+    if not llm_ok or not sanity.get("ok"):
+        level = "bad"
+    elif noise["zombies"] > 3 or noise["items_terminal"] > 50 or batch_pending > 30 or noise["run_mb"] > 3000:
+        level = "warn"
+    return {"level": level, "llm_configured": llm_ok, "sanity": sanity,
+            "queues": {"loops_running": sum(1 for x in loops if x.get("status") == "running"),
+                       "loops_queued": sum(1 for x in loops if x.get("status") == "queued"),
+                       "batch_items_pending": batch_pending},
+            "noise": noise, "zombies": zombies[:20], "at": datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+
+
+def housekeeping(dry_run=False, keep_days=14, proj=None):
+    """降噪治理：归档终态条目 / 归档旧批量任务与会话 / 僵尸条目标记 / citations 轮转。"""
+    proj = proj or DEFAULT_PROJECT
+    pp = proj_paths(proj)
+    report = {"at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "dry_run": dry_run,
+              "archived_items": 0, "archived_batch": 0, "archived_chats": 0, "zombies_marked": 0,
+              "citations_rotated": 0, "drafts_orphan": 0}
+    cutoff = time.time() - keep_days * 86400
+    arch = RUN_DIR / "_archive"
+    if not dry_run:
+        arch.mkdir(parents=True, exist_ok=True)
+    # ① 终态管线条目归档
+    st = read_json(pp["state"], {})
+    items = st.get("items", {})
+    keep = {}
+    moved = []
+    for k, v in items.items():
+        if v.get("stage") in ("done", "failed", "escalated") and v.get("updated_at"):
+            try:
+                ts = datetime.fromisoformat(str(v["updated_at"]).replace("Z", "+00:00")).timestamp()
+            except Exception:
+                ts = time.time()
+            if ts < cutoff:
+                moved.append({**v, "id": k})
+                continue
+        keep[k] = v
+    report["archived_items"] = len(moved)
+    if moved and not dry_run:
+        st["items"] = keep
+        (pp["state"]).write_text(json.dumps(st, ensure_ascii=False, indent=1))
+        f = arch / f"pipeline-{datetime.now().strftime('%Y%m')}.jsonl"
+        with open(f, "a") as fh:
+            for it in moved:
+                fh.write(json.dumps(it, ensure_ascii=False) + "\n")
+    # ② 僵尸条目（S3-creating/draft >24h）标记 failed（可在 UI 重试）
+    zombies = health_report(proj).get("zombies", [])
+    report["zombies_marked"] = len(zombies)
+    if zombies and not dry_run:
+        st = read_json(pp["state"], {})
+        for k in zombies:
+            if k in st.get("items", {}):
+                st["items"][k]["stage"] = "failed"
+                st["items"][k]["phase"] = "FINAL"
+        (pp["state"]).write_text(json.dumps(st, ensure_ascii=False, indent=1))
+    # ③ 旧批量任务归档（>keep_days）
+    if BATCH_DIR.exists():
+        for f in BATCH_DIR.glob("batch-*.json"):
+            if f.stat().st_mtime < cutoff:
+                report["archived_batch"] += 1
+                if not dry_run:
+                    f.rename(arch / f"batch-{f.name}")
+    # ④ 旧 agent 会话归档（>30 天）
+    if AGENT_DIR.exists():
+        for f in AGENT_DIR.glob("chat-*.json"):
+            if f.stat().st_mtime < time.time() - 30 * 86400:
+                report["archived_chats"] += 1
+                if not dry_run:
+                    f.rename(arch / f"chat-{f.name}")
+    # ⑤ citations 轮转（保留最近 200 条，其余按年月归档）
+    cf = proj_paths(proj)["dir"] / "citations.jsonl"
+    if cf.exists():
+        lines = [l for l in cf.read_text(errors="ignore").strip().split("\n") if l.strip()]
+        if len(lines) > 200:
+            report["citations_rotated"] = len(lines) - 200
+            if not dry_run:
+                with open(arch / f"citations-{datetime.now().strftime('%Y%m')}.jsonl", "a") as fh:
+                    fh.write("\n".join(lines[:-200]) + "\n")
+                cf.write_text("\n".join(lines[-200:]) + "\n")
+    # ⑥ 孤儿草稿（无对应管线条目）统计（不自动删，只报数）
+    if pp["gen"].exists():
+        ids = set(items.keys())
+        report["drafts_orphan"] = sum(1 for f in pp["gen"].glob("*.md") if f.stem not in ids)
+    HOUSEKEEPING_LOG.parent.mkdir(parents=True, exist_ok=True)
+    with open(HOUSEKEEPING_LOG, "a") as fh:
+        fh.write(json.dumps(report, ensure_ascii=False) + "\n")
+    with open(RUN_DIR / "approvals.log", "a") as fh:
+        fh.write(f"{datetime.now().isoformat(timespec='seconds')} HOUSEKEEPING dry_run={dry_run} "
+                 f"items={report['archived_items']} batch={report['archived_batch']} chats={report['archived_chats']} "
+                 f"zombies={report['zombies_marked']} citations={report['citations_rotated']}\n")
+    return report
+
+
+def housekeeping_scheduler():
+    """每日 03:20 自动降噪（保留最近 14 天）。"""
+    last = ""
+    while True:
+        time.sleep(1800)
+        try:
+            now = datetime.now()
+            today = now.strftime("%Y-%m-%d")
+            if now.hour == 3 and last != today:
+                housekeeping(dry_run=False)
+                last = today
+        except Exception as e:
+            print(f"[housekeeping] {e}", file=sys.stderr)
 
 
 # ===================== MFlow Pay（支付链接 · 加密收款核验 · 发卡 · 兑换券）=====================
@@ -3205,6 +3521,15 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, read_json(QA_DIR / "cycles.json", [])[::-1][:50])
             if parsed.path == "/api/qa/delta":
                 return self._send(200, qa_delta(qs.get("parent", [""])[0], qs.get("child", [""])[0]))
+            if parsed.path == "/api/presets":
+                return self._send(200, presets_list())
+            if parsed.path == "/api/health":
+                return self._send(200, health_report(self._proj()))
+            if parsed.path == "/api/housekeeping":
+                lg = []
+                if HOUSEKEEPING_LOG.exists():
+                    lg = [l for l in HOUSEKEEPING_LOG.read_text(errors="ignore").strip().split("\n") if l.strip()][-10:][::-1]
+                return self._send(200, {"history": lg, "keep_days": 14})
             if parsed.path == "/api/qa/tasks":
                 ts = [t for t in batch_list() if t.get("type") == "qa"]
                 return self._send(200, ts)
@@ -3439,7 +3764,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
                       "/api/batch/create", "/api/batch/action",
                       "/api/agent/chat", "/api/agent/execute",
-                      "/api/qa/orchestrate", "/api/qa/recheck"}
+                      "/api/qa/orchestrate", "/api/qa/recheck",
+                      "/api/presets/run", "/api/housekeeping/run"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
@@ -3824,6 +4150,25 @@ class Handler(BaseHTTPRequestHandler):
                 r = qa_orchestrate(tid, dry_run=bool(body.get("dry_run", True)),
                                    max_items=int(body.get("max_items", 200) or 200))
                 return self._send(200 if r.get("ok") else 400, r)
+            if self.path == "/api/presets/run":
+                pid = str(body.get("id", ""))
+                opt = body.get("options") or {}
+                r = preset_expand(pid, opt, self._proj())
+                if r.get("error"):
+                    return self._send(400, r)
+                dry = bool(opt.get("dry_run", True))
+                if len(r["items"]) > 5000:
+                    return self._send(400, {"error": "预设展开超过 5000 项，请缩小范围"})
+                t = batch_create(r["type"], r["title"], r["items"], params=r.get("params") or {},
+                                 dry_run=dry, by=self._me())
+                with open(RUN_DIR / "approvals.log", "a") as f:
+                    f.write(f"{datetime.now().isoformat(timespec='seconds')} PRESET-RUN {pid} task={t['id']} "
+                            f"items={t['stats']['total']} dry_run={dry} by={self._me()}\n")
+                return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"],
+                                        "note": r.get("note", ""), "dry_run": dry})
+            if self.path == "/api/housekeeping/run":
+                rep = housekeeping(dry_run=bool(body.get("dry_run", True)))
+                return self._send(200, rep)
             if self.path == "/api/qa/recheck":
                 r = qa_recheck(str(body.get("task", "")), dry_run=bool(body.get("dry_run", True)))
                 return self._send(200 if r.get("ok") else 400, r)
@@ -4092,6 +4437,7 @@ def main():
     threading.Thread(target=geo_scheduler, daemon=True).start()
     threading.Thread(target=pay_verifier, daemon=True).start()
     threading.Thread(target=batch_worker, daemon=True).start()
+    threading.Thread(target=housekeeping_scheduler, daemon=True).start()
     print(f"[console] MFlow Console on :{PORT} (loop queue + schedule + geo + pay verifier started, max_parallel={MAX_PARALLEL_LOOPS})")
     server.serve_forever()
 
