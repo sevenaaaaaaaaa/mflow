@@ -1515,7 +1515,7 @@ def batch_worker():
                 cons = task.get("consecutive_fail", 0)
                 fatal_msg, cons = "", 0
                 for c in chunk:
-                    if c["status"] == "failed":
+                    if c.get("error"):  # 本轮失败尝试（含被重置为 pending 的）
                         cons += 1
                         if _is_fatal_error(c.get("error")):
                             fatal_msg = c.get("error", "")[:160]
