@@ -143,7 +143,9 @@ for entry in "${SYNC_ITEMS[@]}"; do
     src="${entry%%|*}"; dst="${entry#*|}"
     # openrsync 规则：引号只能包 host: 之后的路径部分（包住 user@ 会被当非法用户名字符）
     spec="${REMOTE}:\"${dst}\""
-    if ! rsync -az -e "ssh -p $REMOTE_PORT" "$src" "$spec" >/dev/null 2>&1; then
+    DEL_FLAG=""
+    case "$dst" in *"/1-1 Harness/02-rules/"*|*"/1-1 Harness/Skills/"*|*"/1-1 Harness/08-storyline/"*) DEL_FLAG="--delete";; esac
+    if ! rsync -az $DEL_FLAG -e "ssh -p $REMOTE_PORT" "$src" "$spec" >/dev/null 2>&1; then
         fail 4 "rsync $src → $dst 失败"
     fi
 done
