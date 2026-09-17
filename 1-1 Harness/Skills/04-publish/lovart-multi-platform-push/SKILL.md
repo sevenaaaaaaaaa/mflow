@@ -1,3 +1,8 @@
+---
+name: lovart-multi-platform-push
+description: Step 5+6 of Lovart Content Pipeline — 将审计通过的内容写入飞书 Bitable（content-distributor 命令中心），由 Node.js 分发引擎自动处理所有平台的分发。返回推送结果汇总。
+---
+
 # lovart-multi-platform-push
 
 ## 路径契约

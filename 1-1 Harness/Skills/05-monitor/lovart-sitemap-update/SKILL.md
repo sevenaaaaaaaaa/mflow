@@ -1,3 +1,8 @@
+---
+name: lovart-sitemap-update
+description: Step 7 of Lovart Content Pipeline — 内容发布后自动重新生成 sitemap、llms.txt、robots.txt 等 SEO 资产，并部署到服务器。
+---
+
 # lovart-sitemap-update
 
 ## 路径契约

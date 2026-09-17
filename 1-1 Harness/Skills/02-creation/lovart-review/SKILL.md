@@ -1,3 +1,8 @@
+---
+name: lovart-review
+description: Review 子技能，用于写单品评测、best-of roundups、versus pages、tested-and-compared 类型博客。
+---
+
 # lovart-review
 
 Review 子技能，用于写单品评测、best-of roundups、versus pages、tested-and-compared 类型博客。

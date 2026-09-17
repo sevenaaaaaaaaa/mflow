@@ -1,3 +1,8 @@
+---
+name: lovart-thought-leadership
+description: Sub-skill for generating high-impact Better Design (设计重构) and Insight & Trend (行业洞察) blog posts. Codifies the thought leadership positioning strategie
+---
+
 # lovart-thought-leadership — Better Design & Insight Blog Sub-Skill
 
 ## 路径契约

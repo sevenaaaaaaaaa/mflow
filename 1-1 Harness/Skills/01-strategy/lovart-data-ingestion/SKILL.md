@@ -1,3 +1,8 @@
+---
+name: lovart-data-ingestion
+description: Step 1 of Lovart Content Pipeline — 拉取 GSC + GA4 + Bing 三源数据，生成全渠道情报摘要。
+---
+
 # lovart-data-ingestion
 
 ## 路径契约

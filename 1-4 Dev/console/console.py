@@ -177,7 +177,8 @@ API_TOKEN = os.environ.get("MFLOW_API_TOKEN", "")  # 机器联动 token（OpenFl
 
 PS_PATH = PROJECT / "1-1 Harness" / "Skills" / "06-orchestrate" / "lovart-pipeline-state" / "pipeline_state.py"
 ROUTER_PATH = PROJECT / "1-1 Harness" / "Skills" / "06-orchestrate" / "lovart-router" / "router.py"
-HOOKS = ["pre-write-check.sh", "post-write-check.sh", "geo-check.sh", "pre-import-check.sh", "post-generation-check.sh"]
+HOOKS = ["pre-write-check.sh", "post-write-check.sh", "geo-check.sh", "quota-check.sh", "lang-check.sh",
+         "pre-import-check.sh", "post-generation-check.sh"]
 READABLE_EXT = {".md", ".txt", ".json", ".csv", ".html", ".yaml", ".yml"}
 
 # 报告中心目录映射（label -> (dir, glob)）
@@ -721,6 +722,28 @@ GEN_TYPES = {
 }
 LANGS = ["zh", "en", "ja", "ko", "de", "fr", "pt", "ru", "it", "zh-TW"]
 
+CONTENT_BUDGET = """数量预算（RULES-70，超限即废稿）：
+- 字数：Blog 1200-1800（绝不超 2160）；落地页文案 600-1000
+- H2 章节 4-7 个；FAQ 3-5 条；不得为凑结构拆出空章节
+- 每千字 1-3 个数据点；同一数据不重复出现；外部来源 2-5 条（必须完整 URL）
+- 列表块 ≤4 处，禁止连续两个列表块；单段 ≤300 字符；禁止连续 3 段同句式开头
+- 禁止：同义反复 / 复述式总结（综上所述）/ 模板过渡词堆砌（首先其次然后最后 ≥4 次）/ 形容词堆叠（强大而灵活）
+- 字数不足时优先删冗余，绝不补形容词；能删不扩"""
+
+LANG_RULES = {
+    "zh": "简体中文：全角标点；数字与英文词前后不加空格；避免连续「的」；不用英文标点结尾",
+    "zh-TW": "繁體中文：禁止簡體字（設計/內容/專案/資訊/影片）；用台湾惯用语",
+    "ja": "日本語：日式漢字寫法（禁止简体中文字形）；敬体/常体全文一致；句读用「、」",
+    "ko": "한국어：谚文为主；句末敬语统一（-습니다/-해요 择一）",
+    "de": "Deutsch：名词首字母大写；复合词不造词；Sie 与 du 择一",
+    "fr": "Français：标点空格规则（«  »、冒号前空格）；标题实词不大写",
+    "pt": "Português：默认巴西葡语；术语全文一致",
+    "ru": "Русский：西里尔字母完整；避免英语借词直用；普通名词句首不大写",
+    "it": "Italiano：冠词缩合正确（del/della/nel）；标题实词不大写",
+    "en": "English：Title Case 或 Sentence Case 全文一致；禁止中文标点；避免中式长定语链",
+}
+
+
 ANTI_SLOP = """硬性写作规则（违反任何一条即为废稿）：
 - 每一段必须回答：谁会读 / 为什么现在读 / 读完改变什么 / 下一步是什么
 - 禁止以下 AI 套话：In today's fast-paced world、game-changer、cutting-edge、unlock the power、seamlessly integrate、delve into、elevate your workflow、革命性、赋能、闭环（作修饰语时）
@@ -763,6 +786,22 @@ def list_templates():
     return out
 
 
+def run_content_gates(path, ctype="blog", lang="zh", tag="gate"):
+    """统一内容门禁：结构/反slop + GEO 可引用性 + 数量预算 + 语言规范。"""
+    args_by_hook = {
+        "post-write-check.sh": ["--target-words", "300"],
+        "geo-check.sh": [],
+        "quota-check.sh": ["--type", "landing" if str(ctype).startswith("landing") else "blog", "--lang", lang or "zh"],
+        "lang-check.sh": ["--lang", lang or "zh"],
+    }
+    out = {}
+    for hook, extra in args_by_hook.items():
+        r = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks" / hook), "--file", str(path), *extra], timeout=120)
+        qa_log(tag, hook, r["rc"])
+        out[hook] = r
+    return out
+
+
 def gen_prompt(ctype, lang, topic, brief, feedback="", template=None):
     lang_name = {"zh": "简体中文", "zh-TW": "繁体中文", "en": "English", "ja": "日本語", "ko": "한국어",
                  "de": "Deutsch", "fr": "Français", "pt": "Português", "ru": "Русский", "it": "Italiano"}.get(lang, lang)
@@ -784,7 +823,8 @@ def gen_prompt(ctype, lang, topic, brief, feedback="", template=None):
         spec = f"""用{lang_name}写一个 {page.upper()} 类落地页的完整文案，主题：{topic}。
 结构：Hero（大标题 + 副标题一句 + CTA 按钮文案）→ 3 个 Benefit 块（小标题 + 2-3 句说明）→ 使用场景 2 条 → FAQ（3 条）→ 底部 CTA。
 产品能力描述基于公开常识，不编造参数。"""
-    anti = ANTI_SLOP + "\n" + GEO_RULES + (f"\n{extra}" if extra else "")
+    lang_rule = LANG_RULES.get(lang, "")
+    anti = ANTI_SLOP + "\n" + GEO_RULES + "\n" + CONTENT_BUDGET + (f"\n语言规范：{lang_rule}" if lang_rule else "") + (f"\n{extra}" if extra else "")
     aud = (f"\n目标读者：{audience}" if audience else "")
     ton = (f"\n语气要求：{tone}" if tone else "")
     fb = (f"\n\n上一轮质检未通过，反馈如下，务必针对性修正：\n{feedback}") if feedback else ""
@@ -855,15 +895,17 @@ def loop_engine(loop_id, proj):
         log(loop, f"草稿写入 {draft_path.relative_to(PROJECT)}（{len(draft)} 字符），跑质量门禁…")
         demo_mode = DEMO_FLAG.exists() and not llm_config()["providers"][
             llm_config()["profiles"]["default"]["provider"]].get("key")
-        r = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/post-write-check.sh"),
-                      "--file", str(draft_path), "--target-words", "15" if demo_mode else "300"], timeout=120)
-        qa_log(f"loop:{loop.get('id','')}", "post-write-check.sh", r["rc"])
+        gates = run_content_gates(draft_path, loop.get("type", "blog"), loop.get("lang", "zh"),
+                                  tag=f"loop:{loop.get('id','')}")
+        r = gates["post-write-check.sh"]
+        geo = gates["geo-check.sh"]
+        quota = gates["quota-check.sh"]
+        langc = gates["lang-check.sh"]
         loop["last_hook_rc"] = r["rc"]
-        geo = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/geo-check.sh"),
-                        "--file", str(draft_path)], timeout=60)
-        qa_log(f"loop:{loop.get('id','')}", "geo-check.sh", geo["rc"])
         loop["last_geo_rc"] = geo["rc"]
-        if r["rc"] == 0 and geo["rc"] == 0:
+        loop["last_quota_rc"] = quota["rc"]
+        loop["last_lang_rc"] = langc["rc"]
+        if r["rc"] == 0 and geo["rc"] == 0 and quota["rc"] == 0 and langc["rc"] == 0:
             log(loop, "质检 PASS（post-write + GEO 可引用性），推进状态机 S3-draft → S3-done → S4-qa")
             for stg in ("S3-draft", "S3-done", "S4-qa"):
                 run_tool([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item, "--to", stg])
@@ -873,8 +915,8 @@ def loop_engine(loop_id, proj):
             _loop_save(loop, proj)
             notify_loop_end(loop, proj, "done")
             return
-        feedback = (r["out"] if r["rc"] != 0 else "") + "\n" + (geo["out"] if geo["rc"] != 0 else "")
-        log(loop, f"质检 BLOCK（post-write exit {r['rc']} / geo exit {geo['rc']}），反馈带入下一轮")
+        feedback = "\n".join(x["out"] for x in (r, geo, quota, langc) if x["rc"] != 0)
+        log(loop, f"质检 BLOCK（post-write {r['rc']} / geo {geo['rc']} / quota {quota['rc']} / lang {langc['rc']}），反馈带入下一轮")
         _loop_save(loop, proj)
         _loop_save(loop, proj)
     loop["status"] = "blocked"
@@ -1216,7 +1258,8 @@ def batch_create(btype, title, items, params=None, dry_run=True, by=""):
     tid = f"batch-{datetime.now().strftime('%y%m%d')}-{secrets.token_hex(3)}"
     task = {"id": tid, "type": btype, "title": title or btype,
             "created": datetime.now().strftime("%Y-%m-%d %H:%M"),
-            "created_by": by, "dry_run": bool(dry_run), "params": params or {}, "concurrency": 2,
+            "created_by": by, "dry_run": bool(dry_run),
+            "params": {"batch_size": 5, "context_handoff": True, **(params or {})}, "concurrency": 2,
             "status": "queued", "log": [],
             "items": [{"i": i, "status": "pending", "attempts": 0, "result": None, "error": "", **it}
                       for i, it in enumerate(items)]}
@@ -1295,7 +1338,7 @@ def _bh_field_patch(item, task, proj):
 
 
 def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", template_id="",
-                   instruction="", source_text=""):
+                   instruction="", source_text="", prior_context=""):
     """批量生成/改稿共用执行体：LLM → 落盘 → post-write + geo 门禁 → 状态机推进。"""
     ps_args = ["--state-path", str(proj_paths(proj)["state"]), "--events-path", str(proj_paths(proj)["events"])]
     run_tool([sys.executable, str(PS_PATH), *ps_args, "upsert", "--id", item_id, "--category", ctype])
@@ -1305,31 +1348,32 @@ def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", t
     if instruction:
         user = (f"下面是既有内容，请按指令改写（事实准确优先；不确定的数字标 [待考证]）：\n"
                 f"指令：{instruction}\n\n现有内容：\n{source_text[:12000]}\n\n" + user)
+    if prior_context:
+        user = (f"【前序批次上下文（避免重复，保持口径一致）】\n{prior_context[:1500]}\n\n" + user)
     draft = llm_chat([{"role": "user", "content": user}], profile="lovart-creation", max_tokens=4000, project=proj)
     gen_dir = proj_paths(proj)["gen"]
     gen_dir.mkdir(parents=True, exist_ok=True)
     path = gen_dir / f"{item_id}.md"
     path.write_text(draft)
-    hw = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/post-write-check.sh"),
-                   "--file", str(path), "--target-words", "300"], timeout=120)
-    geo = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/geo-check.sh"), "--file", str(path)], timeout=60)
-    qa_log(f"batch:{item_id}", "post-write-check.sh", hw["rc"])
-    qa_log(f"batch:{item_id}", "geo-check.sh", geo["rc"])
+    gates = run_content_gates(path, ctype, lang, tag=f"batch:{item_id}")
+    hw, geo = gates["post-write-check.sh"], gates["geo-check.sh"]
+    quota, langc = gates["quota-check.sh"], gates["lang-check.sh"]
     advanced = False
-    if hw["rc"] == 0 and geo["rc"] == 0:
+    if hw["rc"] == 0 and geo["rc"] == 0 and quota["rc"] == 0 and langc["rc"] == 0:
         rcs = []
         for stg in ("S3-draft", "S3-done", "S4-qa"):
             r = run_tool([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item_id, "--to", stg])
             rcs.append(r.get("rc"))
         advanced = all(rc == 0 for rc in rcs)
     return {"path": rel_of(path), "chars": len(draft), "hook_rc": hw["rc"], "geo_rc": geo["rc"],
-            "advanced": advanced}
+            "quota_rc": quota["rc"], "lang_rc": langc["rc"], "advanced": advanced,
+            "blocked": [k for k, v in gates.items() if v["rc"] != 0]}
 
 
 def _bh_gen(item, task, proj):
     return run_generation(proj, item["item_id"], ctype=item.get("type", "blog"), lang=item.get("lang", "zh"),
                           topic=item.get("topic", ""), brief=item.get("brief", ""),
-                          template_id=item.get("template_id", ""))
+                          template_id=item.get("template_id", ""), prior_context=task.get("ctx_digest", ""))
 
 
 def _bh_rewrite(item, task, proj):
@@ -1340,11 +1384,30 @@ def _bh_rewrite(item, task, proj):
             src = sp.read_text(errors="ignore")
     return run_generation(proj, item["item_id"], ctype=item.get("type", "blog"), lang=item.get("lang", "zh"),
                           topic=item.get("topic", item.get("slug", "")), brief=item.get("brief", ""),
-                          instruction=item.get("instruction", ""), source_text=src)
+                          instruction=item.get("instruction", ""), source_text=src,
+                          prior_context=task.get("ctx_digest", ""))
 
 
 BATCH_HANDLERS = {"asset_replace": _bh_asset_replace, "field_patch": _bh_field_patch,
                   "gen": _bh_gen, "rewrite": _bh_rewrite}
+
+
+def _batch_digest_llm(task, chunk, proj):
+    """为 gen/rewrite 批次生成「上下文摘要」：写了什么/口径如何/避免重复什么。"""
+    try:
+        lines = []
+        for c in chunk:
+            r = c.get("result") or {}
+            ttl = c.get("topic") or c.get("item_id") or c.get("slug") or ""
+            lines.append(f"- 主题：{str(ttl)[:80]}｜状态：{c['status'][:6]}"
+                         f"{'｜产出：' + str(r.get('path', ''))[:60] if r.get('path') else ''}")
+        ask = ("下面是同一批量任务刚完成的批次产出。请用不超过 6 行、每行不超过 60 字的要点总结："
+               "①各条主题与角度 ②已使用的数据/结论口径 ③下一批必须避免的重复点。"
+               "只输出要点，不要客套。\n\n" + "\n".join(lines))
+        out = llm_chat([{"role": "user", "content": ask}], profile="default", max_tokens=260, project=proj, timeout=60)
+        return re.sub(r"\s+", " ", out)[:900]
+    except Exception:
+        return "；".join(f"{(c.get('topic') or c.get('item_id') or '')[:40]} {c['status']}" for c in chunk)[:700]
 
 
 def batch_worker():
@@ -1385,8 +1448,32 @@ def batch_worker():
                     it["error"] = str(e)[:300]
                     it["status"] = "failed" if it["attempts"] >= max_attempts else "pending"
 
-            with ThreadPoolExecutor(max_workers=int(task.get("concurrency", 2))) as ex:
-                list(ex.map(work, pending))
+            batch_size = max(1, int((task.get("params") or {}).get("batch_size", 5) or 5))
+            handoff = bool((task.get("params") or {}).get("context_handoff", True))
+            task.setdefault("batches", [])
+            for bi in range(0, len(pending), batch_size):
+                chunk = pending[bi:bi + batch_size]
+                if task.get("status") in ("paused", "cancelled"):
+                    break
+                with ThreadPoolExecutor(max_workers=int(task.get("concurrency", 2))) as ex:
+                    list(ex.map(work, chunk))
+                done_chunk = [c for c in chunk if c["status"] in ("done", "skipped")]
+                digest = ""
+                if handoff and done_chunk:
+                    if task["type"] in ("gen", "rewrite") and len(task["batches"]) > 0 or task["type"] in ("gen", "rewrite"):
+                        digest = _batch_digest_llm(task, done_chunk, proj)
+                    else:
+                        digest = "；".join(
+                            f"{(c.get('doc_id') or c.get('item_id') or c.get('path') or '')[:40]} "
+                            f"{c['status']}{'：' + json.dumps(c.get('result') or {}, ensure_ascii=False)[:60] if c['status'] == 'done' else ''}"
+                            for c in chunk)[:900]
+                elif done_chunk:
+                    digest = "；".join(f"{(c.get('doc_id') or c.get('item_id') or '')[:40]} {c['status']}" for c in chunk)[:600]
+                task["batches"].append({"n": len(task["batches"]) + 1, "items": len(chunk),
+                                        "done": len(done_chunk), "digest": digest})
+                task["ctx_digest"] = ((task.get("ctx_digest", "") + "\n" + digest).strip())[-2500:]
+                _batch_log(task, f"批次 {len(task['batches'])} 完成 {len(done_chunk)}/{len(chunk)}")
+                batch_save(task)
             st = task["stats"]
             st["done"] = sum(1 for i in task["items"] if i["status"] == "done")
             st["failed"] = sum(1 for i in task["items"] if i["status"] == "failed")
@@ -3741,12 +3828,14 @@ class Handler(BaseHTTPRequestHandler):
                 hook = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/post-write-check.sh"),
                                  "--file", str(path), "--target-words", twords], timeout=120)
                 qa_log("generate", "post-write-check.sh", hook["rc"])
-                geo = run_tool(["bash", str(PROJECT / "1-4 Dev/scripts/hooks/geo-check.sh"),
-                                "--file", str(path)], timeout=60)
-                qa_log("generate", "geo-check.sh", geo["rc"])
+                gates = run_content_gates(path, str(body.get("type", "blog")), str(body.get("lang", "zh")), tag="generate")
+                hook, geo = gates["post-write-check.sh"], gates["geo-check.sh"]
+                quota, langc = gates["quota-check.sh"], gates["lang-check.sh"]
                 return self._send(200, {"ok": True, "path": rel_of(path), "chars": len(draft),
                                         "hook_rc": hook["rc"], "hook_out": hook["out"][-2000:],
-                                        "geo_rc": geo["rc"], "geo_out": geo["out"][-2000:]})
+                                        "geo_rc": geo["rc"], "geo_out": geo["out"][-2000:],
+                                        "quota_rc": quota["rc"], "quota_out": quota["out"][-1500:],
+                                        "lang_rc": langc["rc"], "lang_out": langc["out"][-1500:]})
             if self.path == "/api/loop/create":
                 item_id = str(body.get("item_id", "")).strip()
                 if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,78}", item_id):

@@ -1,3 +1,8 @@
+---
+name: lovart-trident-data-engine
+description: Lovart 三引擎 SEO 数据采集与 OKR 对标报告系统。所有报告（日/周/月/季/年）统一使用 7 板块结构，不可因时间维度缩短而缩水质量。
+---
+
 # lovart-trident-data-engine
 
 ## 路径契约

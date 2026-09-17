@@ -1,3 +1,8 @@
+---
+name: lovart-best-practice
+description: Best Practice 子技能，用于写 workflow best practices、creative ops 规范、协作与 handoff 规范、参数使用习惯、团队级操作守则。
+---
+
 # lovart-best-practice
 
 Best Practice 子技能，用于写 workflow best practices、creative ops 规范、协作与 handoff 规范、参数使用习惯、团队级操作守则。

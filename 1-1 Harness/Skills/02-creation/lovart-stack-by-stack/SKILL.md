@@ -1,3 +1,8 @@
+---
+name: lovart-stack-by-stack
+description: Stack × Stack 子技能，用于写 tool stack、workflow stack、A+B vs C+D 的整栈比较文章。
+---
+
 # lovart-stack-by-stack
 
 Stack × Stack 子技能，用于写 tool stack、workflow stack、A+B vs C+D 的整栈比较文章。

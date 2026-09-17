@@ -1,3 +1,8 @@
+---
+name: lovart-complete-guide
+description: End-to-end Lovart Complete & Ultimate Guide (完整与终极指南) content production: market research → writing → high-availability translation → publishing. Tran
+---
+
 # lovart-complete-guide — Complete & Ultimate Guide Content Production
 
 ## 路径契约

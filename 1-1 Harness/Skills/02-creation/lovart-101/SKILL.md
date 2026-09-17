@@ -1,3 +1,8 @@
+---
+name: lovart-101
+description: End-to-end Lovart 101 / Getting Started (入门与枢纽指南) content production sub-skill. Translates foundational AI design concepts, prompting parameters, and 
+---
+
 # lovart-101 — Introductory & Hub-Page Content Production Sub-Skill
 
 ## 路径契约

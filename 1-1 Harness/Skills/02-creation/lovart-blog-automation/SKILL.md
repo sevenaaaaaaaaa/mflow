@@ -1,3 +1,8 @@
+---
+name: lovart-blog-automation
+description: End-to-end Lovart Blog (blogs.lovart.ai) content production: market research → writing → publishing.
+---
+
 # lovart-blog-automation
 
 ## 路径契约

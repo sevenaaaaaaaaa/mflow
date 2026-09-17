@@ -1,3 +1,8 @@
+---
+name: lovart-content-calendar
+description: Step 2 of Lovart Content Pipeline — 根据 intelligence-brief 分析结果，更新主站点（lovart.ai/blog via Sanity）、子站点（blogs.lovart.ai via WordPress）、分发平台的内容日历。
+---
+
 # lovart-content-calendar
 
 ## 路径契约

@@ -1,3 +1,8 @@
+---
+name: lovart-image-generation
+description: 为 Blog 封面、Features/Tools 页面横幅、分发配图和产品截图生成图片。调用 Lovart API（`lovart-api` skill），上传到 CDN，回写到对应 MD/JSON 的 `cover_url` 或 image 字段。
+---
+
 # lovart-image-generation
 
 ## 路径契约

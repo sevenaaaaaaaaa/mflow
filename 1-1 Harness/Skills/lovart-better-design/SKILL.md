@@ -1,3 +1,8 @@
+---
+name: lovart-better-design
+description: 先加载 `lovart-core`、`lovart-blog`、`lovart-content-quality-gates`，并遵守：
+---
+
 # Lovart Better Design Skill v0.3
 
 ## Description

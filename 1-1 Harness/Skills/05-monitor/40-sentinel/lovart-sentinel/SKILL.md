@@ -1,3 +1,8 @@
+---
+name: lovart-sentinel
+description: Lovart 品牌声誉舆情监测系统 — 每日自动采集多渠道数据，生成符合企业级标准的7板块品牌声誉舆情报告。
+---
+
 # lovart-sentinel
 
 ## 路径契约

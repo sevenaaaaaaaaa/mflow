@@ -1,3 +1,8 @@
+---
+name: lovart-content-audit
+description: Step 4 of Lovart Content Pipeline — 深度内容审计（Blog 为主）：合规、文化、可读性、SEO 深度项。
+---
+
 # lovart-content-audit
 
 ## 路径契约

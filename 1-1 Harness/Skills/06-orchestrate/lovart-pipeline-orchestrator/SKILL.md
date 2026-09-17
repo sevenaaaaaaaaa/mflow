@@ -1,3 +1,8 @@
+---
+name: lovart-pipeline-orchestrator
+description: Lovart 内容自动化 Pipeline 主编排器 v2.0 — Sentinel 报告落地自动触发 8 步闭环。Step 1 由 Trident Data Engine 提供三引擎 SEO 数据，下游对接 18 个 Skill。
+---
+
 # lovart-pipeline-orchestrator
 
 ## 路径契约
