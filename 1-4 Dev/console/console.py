@@ -1352,19 +1352,30 @@ def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", t
     ps_run([sys.executable, str(PS_PATH), *ps_args, "upsert", "--id", item_id, "--category", ctype])
     # 状态机顺序：先入 S3-creating（与 Loop 引擎一致，S0-todo 不可直达 S3-draft）
     ps_run([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item_id, "--to", "S3-creating"])
-    user = gen_prompt(ctype, lang, topic, brief, template=get_template(template_id),
-                      budget_profile=budget_profile)
+    base_user = gen_prompt(ctype, lang, topic, brief, template=get_template(template_id),
+                           budget_profile=budget_profile)
+    user = base_user
     if instruction:
         user = (f"下面是既有内容，请按指令改写（事实准确优先；不确定的数字标 [待考证]）：\n"
                 f"指令：{instruction}\n\n现有内容：\n{source_text[:12000]}\n\n" + user)
     if prior_context:
         user = (f"【前序批次上下文（避免重复，保持口径一致）】\n{prior_context[:1500]}\n\n" + user)
-    draft = llm_chat([{"role": "user", "content": user}], profile="lovart-creation", max_tokens=4000, project=proj)
-    gen_dir = proj_paths(proj)["gen"]
-    gen_dir.mkdir(parents=True, exist_ok=True)
-    path = gen_dir / f"{item_id}.md"
-    path.write_text(draft)
-    gates = run_content_gates(path, ctype, lang, tag=f"batch:{item_id}", budget_profile=budget_profile)
+
+    # 内部重试：门禁不过（尤其 quota 超字数）时带反馈重写，最多 3 轮（与 Loop 同思路）
+    draft, gates, feedback = "", None, ""
+    for _round in range(1, 4):
+        draft = llm_chat([{"role": "user", "content": user + feedback}],
+                         profile="lovart-creation", max_tokens=4000, project=proj)
+        gen_dir = proj_paths(proj)["gen"]
+        gen_dir.mkdir(parents=True, exist_ok=True)
+        path = gen_dir / f"{item_id}.md"
+        path.write_text(draft)
+        gates = run_content_gates(path, ctype, lang, tag=f"batch:{item_id}", budget_profile=budget_profile)
+        bad = [k for k, v in gates.items() if v["rc"] != 0]
+        if not bad or _round == 3:
+            break
+        feedback = ("\n\n【上一稿被门禁打回，必须修正后重写】\n"
+                    + "\n".join((gates[k]["out"] or "")[-700:] for k in bad))
     hw, geo = gates["post-write-check.sh"], gates["geo-check.sh"]
     quota, langc = gates["quota-check.sh"], gates["lang-check.sh"]
     advanced = False
