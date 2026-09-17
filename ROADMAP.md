@@ -217,6 +217,11 @@
 - ✅ T5 按用户配额与用量：`run/users-usage.json` 月度计量（tasks/items/tokens/writes，tokens 取真实 usage）；`run/quotas.json` 默认 500/500k/200，admin 不限，逐人覆盖；**建任务前拦截（429）**；设置页配额表 + 一键改配额
 - ✅ 实测：错误 Key → 任务 tripped + 全局熔断（reason=HTTP 401）；恢复后解除正常；admin 不受限；dry-run 不计写入
 
+## Phase 16 · 预警与测试（2026-09-17 ✅）
+
+- ✅ T6 配额预警：用量记账时 80% ⚠ / 100% ⛔ 飞书通知（每用户×指标×每月去重）；健康报告 `quota_alerts` → 总览健康卡；设置页配额表 80%/100% 标黄标红
+- ✅ T4 自动化测试：`1-4 Dev/tests/test_console_units.py` 21 用例（护栏/熔断/配额/降噪/上下文/预设），纯 stdlib 离线 3 秒；`run-tests.sh` 一键跑；接入 **GATE 6**（失败挡发布）
+
 ## 原则
 
 1. 文件即状态：不引入数据库也能跑，规模化时才换 PG（接口已预留）
