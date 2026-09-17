@@ -199,5 +199,78 @@ class TestPresets(unittest.TestCase):
         self.assertEqual({i["lang"] for i in r["items"]}, {"zh", "en", "ja"})
 
 
+class TestLandingPublisher(unittest.TestCase):
+    """T1 落地页：md→版块、结构校验、composite 文档构造。"""
+
+    MD_OK = """---
+title: AI Video Generator
+slug: ai-video-generator-2026
+description: Turn one line into a short video
+---
+# AI Video Generator
+
+One line to a publish-ready short video.
+
+## Built for teams that ship daily
+
+Teams ship 20 short videos a month; editing costs $300 each, up 42% in 2025.
+
+## Style control without an editor
+
+Pick from 12 styles; average brief to export is 3 minutes.
+
+## FAQ
+
+### Can I use the videos commercially?
+
+Yes — paid plans include commercial rights.
+"""
+
+    def setUp(self):
+        self.pub = C.SANITY_PUB
+        self.assertTrue(self.pub, "sanity_publisher 应已加载")
+
+    def test_md_to_sections_minimal_valid(self):
+        secs = self.pub.md_to_sections(self.MD_OK, "AI Video Generator", "One line to short video",
+                                       "https://cdn.example.com/a.png", "cover")
+        types_ = [x["type"] for x in secs]
+        self.assertIn("hero-split", types_)
+        self.assertIn("cta-default", types_)
+        self.assertTrue(any(t == "feature-detail" for t in types_))
+        self.assertEqual(self.pub.validate_sections(secs), [])
+
+    def test_validate_rejects_thin_content(self):
+        secs = [{"type": "hero-split", "title": "T", "description": "d", "media": {"src": "u", "alt": "a"}},
+                {"type": "cta-default", "title": "c", "description": "d"}]
+        errs = self.pub.validate_sections(secs)
+        self.assertTrue(any("内容版块不足" in e for e in errs))
+
+    def test_validate_rejects_missing_hero_and_alt(self):
+        secs = [{"type": "feature-detail", "title": "t", "description": "d", "items": []},
+                {"type": "feature-detail", "title": "t2", "description": "d2", "items": []},
+                {"type": "cta-default", "title": "c", "description": "d"}]
+        errs = self.pub.validate_sections(secs)
+        self.assertTrue(any("hero" in e for e in errs), errs)
+
+    def test_build_composite_doc_shape(self):
+        import tempfile, pathlib
+        p = pathlib.Path(tempfile.mkdtemp()) / "landing.md"
+        p.write_text(self.MD_OK)
+        doc = self.pub.build_composite_doc(md_path=str(p), page_type="tool", lang="en")
+        self.assertEqual(doc["_type"], "compositePage")
+        self.assertEqual(doc["pageType"], "tool")
+        self.assertEqual(doc["language"], "en")
+        self.assertEqual(doc["schemaVersion"], "composite-v2")
+        self.assertIn("bodyJson", doc)
+        self.assertGreater(len(__import__("json").loads(doc["bodyJson"])), 2)
+        self.assertFalse(self.pub.validate_sections(__import__("json").loads(doc["bodyJson"])))
+
+    def test_build_rejects_bad_page_type(self):
+        # page_type 校验先于读文件 → 不应因文件不存在而抛 FileNotFoundError
+        with self.assertRaises(RuntimeError) as ctx:
+            self.pub.build_composite_doc(md_path="", slug="s", page_type="nonsense")
+        self.assertIn("page_type", str(ctx.exception))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

@@ -454,11 +454,17 @@ th{color:var(--muted);font-weight:600}
         <input id="pub-slug" placeholder="slug（留空=草稿文件名）" style="flex:1;min-width:160px">
         <select id="pub-lang" style="width:100px"><option value="zh">zh</option><option value="en">en</option><option value="ja">ja</option><option value="ko">ko</option><option value="zh-TW">zh-TW</option><option value="ru">ru</option><option value="pt">pt</option><option value="de">de</option><option value="fr">fr</option><option value="it">it</option></select>
         <select id="pub-cat" style="width:150px"><option>How-To</option><option>Best Practice</option><option>Industry Solution</option><option>Comparison</option><option>Branding</option></select></div>
+      <div class="row" id="pub-landing-row" style="margin-top:8px;display:none">
+        <select id="pub-ptype" style="width:130px"><option>tool</option><option>feature</option><option>topic</option><option>scenario</option><option>solution</option><option>product</option><option>landing</option></select>
+        <select id="pub-mode" style="width:150px"><option value="patch">patch（更新既有页·安全）</option><option value="create">create（新建页）</option></select>
+        <input id="pub-cover" placeholder="封面 URL（留空=frontmatter cover_url）" style="flex:1;min-width:200px">
+        <label style="font-size:12.5px;white-space:nowrap"><input id="pub-confirm" type="checkbox" style="margin-right:5px">确认公开可见（写入即上线）</label></div>
       <div class="row" style="margin-top:8px"><input id="pub-title" placeholder="标题（留空=取 frontmatter）" style="flex:1">
         <button class="btn ghost" onclick="pubPing()">连通探测</button>
         <button class="btn ghost" onclick="pubSanity(true)">Dry-run（不落库）</button>
         <button class="btn primary" onclick="pubSanity(false)">发布到 Sanity（真写库）</button>
         <button class="btn ghost" onclick="pubWP()">发 WordPress（草稿）</button></div>
+      <div class="mut" id="pub-hint2" style="font-size:11.5px;margin-top:6px"></div>
       <pre id="pub-out" style="margin-top:10px;max-height:240px;overflow:auto"></pre>
       <div class="mut" style="font-size:11.5px;margin-top:6px">门禁：条目需在 S4-qa 及之后且质检 BLOCK 全 0；Sanity 写入 status=draft（前台发布仍需人工在 Sanity 确认）；每次发布进 approvals.log。</div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>发布历史</h3></div><div id="pub-history" style="max-height:200px;overflow:auto"></div></div>
@@ -1397,17 +1403,29 @@ function payDelVoucher(code){if(!confirm('删除兑换码 '+code+'？'))return;a
 function paySaveCfg(){api('api/pay/config/save',{usdt_trc20:$('pc-trc20').value.trim(),usdt_erc20:$('pc-erc20').value.trim(),btc:$('pc-btc').value.trim(),auto_verify:$('pc-auto').checked,link_ttl_min:$('pc-ttl').value,webhook_secret:$('pc-secret').value}).then(r=>{if(r.error)return alert(r.error);alert('收款配置已保存');loadPay()})}
 
 /* ---- 发布通道 ---- */
-function loadPublish(){api('api/publish/config').then(c=>{
+function loadPublish(){pubDoctypeUI();api('api/publish/config').then(c=>{
  const s=c.sanity||{},w=c.wordpress||{};
  $('pub-status').innerHTML=`Sanity：<b>${esc(s.project||'—')}</b> / ${esc(s.dataset||'—')} · ${s.configured?'<span class="ok">凭证已配置</span>（'+esc(s.source||'')+'）':'<span class="warn">未配置凭证</span>'}
   &nbsp;|&nbsp; WordPress：${w.configured?'<span class="ok">已配置</span> '+esc(w.base||''):'<span class="mut">未配置（run/cms.json 的 wordpress 段）</span>'}`;
  $('pub-draft').innerHTML=(c.drafts||[]).map(d=>`<option value="${esc(d.item_id)}">${esc(d.item_id)} · ${esc(d.stage)}</option>`).join('')||'<option value="">（无 S4-qa 及之后的草稿）</option>';
  api('api/publish/history').then(h=>{$('pub-history').innerHTML=(h||[]).map(l=>`<div class="mut" style="font-size:11px;font-family:var(--font-mono)">${esc(l)}</div>`).join('')||'<span class="mut">暂无发布记录</span>'})})}
+function pubDoctypeUI(){const c=$('pub-doctype').value==='composite';
+ $('pub-landing-row').style.display=c?'':'none';
+ $('pub-cat').style.display=c?'none':'';
+ if(c)$('pub-hint2').innerHTML='<span class="warn">落地页无草稿态：真实写入立即前台可见</span>，建议先用 patch 模式更新既有页';
+ else $('pub-hint2').textContent=''}
 function pubPing(){api('api/publish/ping').then(r=>{$('pub-out').textContent=JSON.stringify(r,null,1)})}
 function pubSanity(dry){const id=$('pub-draft').value;if(!id)return alert('先选草稿');
- if(!dry&&!confirm('确认真实写入 Sanity 生产库？\n草稿：'+id+'\n（写入 status=draft，前台发布仍需在 Sanity 侧确认）'))return;
- api('api/publish/sanity',{item_id:id,path:'run/projects/'+(window.__PROJ||'main')+'/content/'+id+'.md',slug:$('pub-slug').value.trim(),lang:$('pub-lang').value,category:$('pub-cat').value,title:$('pub-title').value.trim(),dry_run:dry})
- .then(r=>{$('pub-out').textContent=JSON.stringify(r,null,1);if(r.ok&&!dry)loadPublish()})}
+ const doctype=$('pub-doctype').value, isC=doctype==='composite';
+ const body={item_id:id,path:'run/projects/'+(window.__PROJ||'main')+'/content/'+id+'.md',
+  slug:$('pub-slug').value.trim(),lang:$('pub-lang').value,category:$('pub-cat').value,
+  title:$('pub-title').value.trim(),dry_run:dry,doctype};
+ if(isC){body.page_type=$('pub-ptype').value;body.mode=$('pub-mode').value;body.cover_url=$('pub-cover').value.trim();
+  body.confirm_public=$('pub-confirm').checked}
+ if(!dry){const msg=isC?`确认真实写入落地页？\n草稿：${id}\n模式：${body.mode}\n\n⚠ 落地页无草稿态，写入即前台可见`
+   :`确认真实写入 Sanity 生产库？\n草稿：${id}\n（写入 status=draft，前台发布仍需在 Sanity 侧确认）`;
+  if(!confirm(msg))return}
+ api('api/publish/sanity',body).then(r=>{$('pub-out').textContent=JSON.stringify(r,null,1);if(r.ok&&!dry)loadPublish()})}
 function pubWP(){const id=$('pub-draft').value;if(!id)return alert('先选草稿');
  api('api/publish/wordpress',{item_id:id,path:'run/projects/'+(window.__PROJ||'main')+'/content/'+id+'.md',title:$('pub-title').value.trim()})
  .then(r=>{$('pub-out').textContent=JSON.stringify(r,null,1);loadPublish()})}

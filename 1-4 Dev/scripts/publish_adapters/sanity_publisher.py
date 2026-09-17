@@ -224,3 +224,221 @@ if __name__ == "__main__":
         print(json.dumps(publish_file(a.file, slug=a.slug, lang=a.lang, category=a.category,
                                       title=a.title, cluster=a.cluster, dry_run=dry),
                          ensure_ascii=False, indent=1))
+
+
+# ===================== 落地页（compositePage）支持 =====================
+# 注意：compositePage 无 status 字段 → **写入即前台可见**（无草稿态）。
+# 因此：默认 dry-run；create 需显式确认；更新优先用 patch 模式（带 ifRevisionID，只改指定字段）。
+PAGE_TYPES = {"feature", "tool", "topic", "scenario", "solution", "product", "landing"}
+CONTENT_SECTION_TYPES = {"feature-detail", "capability-tabs", "bento-2", "bento-3", "bento-4", "bento-6",
+                         "comparison-table", "workflow-horizontal", "cluster-block-dense", "canvas-wall",
+                         "proof-block", "testimonial", "pricing-block", "prompt-launcher", "comparison"}
+
+
+def md_to_sections(md_text, title="", description="", cover_url="", cover_alt="", cta_href="https://www.lovart.ai/canvas"):
+    """把落地页草稿（md）转成 composite-v2 最小合法版块数组。
+    结构：hero-split → feature-detail(按 H2 归组) → (proof-block 如有数据点) → faq → cta-default"""
+    body = md_text
+    if body.startswith("---"):
+        parts = body.split("---", 2)
+        body = parts[2] if len(parts) >= 3 else body
+    lines = [l.rstrip() for l in body.split("\n")]
+    h2s, cur = [], None
+    faq_items = []
+    plain = []
+    in_faq_container = False
+    for i, l in enumerate(lines):
+        s = l.strip()
+        if s.startswith("## "):
+            head = s[3:].strip()
+            if re.match(r"^(FAQ|常见问题|よくある|자주 묻는)", head, re.I):
+                in_faq_container = True
+                cur = None
+                continue
+            in_faq_container = False
+            if head.endswith(("?", "？")):
+                cur = {"q": head.rstrip("?？"), "a": ""}
+                faq_items.append(cur)
+            else:
+                cur = {"title": head, "desc": []}
+                h2s.append(cur)
+        elif s.startswith("### ") and (in_faq_container or s[4:].strip().endswith(("?", "？"))):
+            head = s[4:].strip()
+            cur = {"q": head.rstrip("?？"), "a": ""}
+            faq_items.append(cur)
+        elif cur is not None:
+            if s.startswith("#"):
+                continue
+            if s:
+                if "q" in cur:
+                    if not cur["a"]:
+                        cur["a"] = s[:400]
+                else:
+                    cur["desc"].append(s)
+        elif s and not s.startswith("#"):
+            plain.append(s)
+    desc_text = (description or (plain[0] if plain else ""))[:400]
+    sections = [{
+        "type": "hero-split", "badge": title[:60], "title": title,
+        "highlightedText": (description or (plain[0] if plain else ""))[:80],
+        "description": desc_text,
+        "buttons": [{"text": "Start free", "href": cta_href, "variant": "primary"},
+                    {"text": "See examples", "href": cta_href, "variant": "secondary"}],
+        "media": {"src": cover_url, "alt": cover_alt or title},
+    }]
+    for h in h2s[:4]:
+        d = " ".join(h["desc"]).strip()
+        if d:
+            sections.append({"type": "feature-detail", "title": h["title"][:80], "description": "",
+                             "items": [{"title": h["title"][:80], "description": d[:400],
+                                        "media": {"src": cover_url}}]})
+    # proof-block：正文里能找到 ≥2 个含数字的短句才生成
+    nums = [s for s in (plain + [x for h in h2s for x in h["desc"]]) if len(s) < 120 and any(c.isdigit() for c in s)][:3]
+    if len(nums) >= 2:
+        sections.append({"type": "proof-block", "title": "Why teams choose this",
+                         "stats": [{"value": (re.findall(r"[\d.,]+", n) or ["—"])[0], "label": re.sub(r"[\d.,]+", "", n).strip(" ，。()")[:40] or "metric"}
+                                   for n in nums]})
+    if faq_items:
+        sections.append({"type": "faq", "title": "FAQ",
+                         "items": [[q["q"][:120], (q["a"] or "")[:400]] for q in faq_items[:6]]})
+    sections.append({"type": "cta-default", "title": f"Ready to try {title[:50]}?" if title else "Get started",
+                     "description": "Start free — no design skill required.",
+                     "buttons": [{"text": "Start free", "href": cta_href, "variant": "primary"}]})
+    return sections
+
+
+def _section_text_len(sec):
+    n = 0
+
+    def walk(v):
+        nonlocal n
+        if isinstance(v, str):
+            n += len(v)
+        elif isinstance(v, dict):
+            for x in v.values():
+                walk(x)
+        elif isinstance(v, list):
+            for x in v:
+                walk(x)
+    walk(sec)
+    return n
+
+
+def validate_sections(sections):
+    """落地页版块校验：结构合法性 + 数量预算（RULES-70）。返回错误列表（空=通过）。"""
+    errs = []
+    if not isinstance(sections, list) or not sections:
+        return ["sections 必须是非空数组"]
+    types_ = [s.get("type") for s in sections if isinstance(s, dict)]
+    if not any(t in ("hero-split", "hero-cinematic") for t in types_):
+        errs.append("缺 hero 版块（hero-split / hero-cinematic）")
+    n_content = sum(1 for t in types_ if t in CONTENT_SECTION_TYPES)
+    if n_content < 2:
+        errs.append(f"内容版块不足（需 ≥2，当前 {n_content}）")
+    faqs = [s for s in sections if isinstance(s, dict) and s.get("type") == "faq"]
+    if faqs:
+        items = faqs[0].get("items") or []
+        if len(items) > 8:
+            errs.append(f"FAQ 超过 8 条（当前 {len(items)}）")
+    if not any(t == "cta-default" for t in types_):
+        errs.append("缺 cta-default 结尾版块")
+    total = sum(_section_text_len(s) for s in sections)
+    if total > 1200:
+        errs.append(f"文案总长 {total} > 1200（RULES-70 落地页上限，压缩冗余）")
+    if total < 200:
+        errs.append(f"文案总长 {total} < 200（内容过薄）")
+    for i, s in enumerate(sections):
+        if not isinstance(s, dict) or not s.get("type"):
+            errs.append(f"sections[{i}] 缺 type")
+            continue
+        if s["type"] == "hero-split":
+            if not (s.get("title") or "").strip():
+                errs.append("hero-split 缺 title")
+            m = s.get("media") or {}
+            if m.get("src") and not (m.get("alt") or "").strip():
+                errs.append("hero media 缺 alt（GEO/可访问性）")
+    return errs
+
+
+def build_composite_doc(md_path="", slug="", lang="en", page_type="tool", title="", description="",
+                        cover_url="", cover_alt="", storyline_template="T-long", cta_href="",
+                        sections=None, sections_path=""):
+    """构造 compositePage 文档（bodyJson 为字符串）。"""
+    source_text, fm = "", {}
+    if md_path:
+        p = Path(md_path)
+        source_text = p.read_text(encoding="utf-8")
+        fm = parse_frontmatter(source_text)
+        slug = slug or fm.get("slug") or p.stem
+    if sections_path:
+        try:
+            sections = json.loads(Path(sections_path).read_text())
+        except Exception as e:
+            raise RuntimeError(f"sections 文件解析失败：{e}")
+    if page_type not in PAGE_TYPES:
+        raise RuntimeError(f"page_type 非法：{page_type}（可选 {sorted(PAGE_TYPES)}）")
+    slug = re.sub(r"[^a-zA-Z0-9\u4e00-\u9fff-]", "-", str(slug)).strip("-").lower()
+    if not slug:
+        raise RuntimeError("slug 不能为空")
+    title = title or fm.get("title") or slug
+    description = description or fm.get("description") or ""
+    cover_url = cover_url or fm.get("cover_url") or ""
+    cover_alt = cover_alt or fm.get("alt_text") or title
+    cta_href = cta_href or fm.get("cta_href") or "https://www.lovart.ai/canvas"
+    if sections is None:
+        sections = md_to_sections(source_text, title, description, cover_url, cover_alt, cta_href)
+    now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S+08:00")
+    structured = json.dumps({"@context": "https://schema.org", "@type": "WebPage",
+                             "name": title, "description": description[:160],
+                             "publisher": {"@type": "Organization", "name": "Lovart"}}, ensure_ascii=False)
+    return {
+        "_id": slug, "_type": "compositePage", "pageType": page_type, "category": page_type,
+        "language": lang, "slug": {"_type": "slug", "current": slug},
+        "title": title[:200], "description": description[:300],
+        "cover": {"_type": "imageSource", "sourceType": "external", "url": cover_url, "alt": cover_alt[:200]},
+        "bodyJson": json.dumps(sections, ensure_ascii=False),
+        "schemaVersion": "composite-v2", "storylineTemplate": storyline_template,
+        "releaseDate": now, "publishedAt": now,
+        "seo": {"description": description[:160],
+                "structuredData": {"_type": "structuredData", "enabled": True, "json": structured}},
+    }
+
+
+def publish_composite(doc, dry_run=True, mode="create"):
+    """写入 compositePage。mode=create → createIfNotExists；mode=patch → 只更新指定字段（ifRevisionID）。
+    注意：compositePage 无草稿态 → 真实写入即前台可见。"""
+    cfg = sanity_cfg()
+    if not cfg["token"]:
+        return {"ok": False, "error": "未配置 SANITY_TOKEN"}
+    if mode == "patch":
+        try:
+            with _req(cfg, "query", {"query": f'*[_id=="{doc["_id"]}"][0]{{_id,_rev}}'}, timeout=30) as r:
+                cur = json.loads(r.read()).get("result")
+        except Exception as e:
+            return {"ok": False, "error": f"读取现有文档失败：{str(e)[:120]}"}
+        if not cur:
+            return {"ok": False, "error": f"patch 模式要求文档已存在：{doc['_id']}（新建请用 mode=create）"}
+        sets = {k: v for k, v in doc.items() if not k.startswith("_")}
+        mutations = [{"patch": {"id": doc["_id"], "ifRevisionID": cur.get("_rev"), "set": sets}}]
+    else:
+        mutations = [{"createIfNotExists": doc}]
+    try:
+        with _req(cfg, "mutate", {"mutations": mutations, "dryRun": bool(dry_run)}, timeout=120) as r:
+            d = json.loads(r.read())
+        return {"ok": True, "dry_run": bool(dry_run), "mode": mode, "doctype": "compositePage",
+                "result": d, "sections": len(json.loads(doc["bodyJson"]))}
+    except urllib.error.HTTPError as e:
+        return {"ok": False, "error": f"HTTP {e.code}: {e.read().decode()[:400]}"}
+    except Exception as e:
+        return {"ok": False, "error": str(e)[:300]}
+
+
+def publish_landing(md_path, dry_run=True, mode="create", **kw):
+    doc = build_composite_doc(md_path=md_path, **kw)
+    errs = validate_sections(json.loads(doc["bodyJson"]))
+    if errs:
+        return {"ok": False, "doc_id": doc["_id"], "validation_errors": errs,
+                "error": "落地页结构校验未通过：" + "；".join(errs[:3])}
+    out = publish_composite(doc, dry_run=dry_run, mode=mode)
+    out["doc_id"] = doc["_id"]
+    return out

@@ -1423,7 +1423,34 @@ def _bh_rewrite(item, task, proj):
                           budget_profile=item.get("budget_profile") or (task.get("params") or {}).get("budget_profile", "default"))
 
 
-BATCH_HANDLERS = {"asset_replace": _bh_asset_replace, "field_patch": _bh_field_patch,
+def _bh_publish_sanity(item, task, proj):
+    """批量发布（blog / compositePage）。composite 走 validate_sections + create/patch；记账真实写入。"""
+    if not SANITY_PUB:
+        raise RuntimeError("发布器未加载")
+    path = item.get("path") or f"run/projects/{proj}/content/{item.get('item_id','')}.md"
+    sp = safe_path(path)
+    if not sp:
+        raise RuntimeError(f"草稿不可读：{path}")
+    dry = bool(task.get("dry_run"))
+    doctype = item.get("doctype", "blog")
+    if doctype == "composite":
+        r = SANITY_PUB.publish_landing(str(sp), dry_run=dry, mode=item.get("mode", "patch"),
+                                       slug=item.get("slug", ""), lang=item.get("lang", "en"),
+                                       page_type=item.get("page_type", "tool"), title=item.get("title", ""),
+                                       description=item.get("description", ""), cover_url=item.get("cover_url", ""),
+                                       cover_alt=item.get("cover_alt", ""),
+                                       storyline_template=item.get("storyline_template", "T-long"),
+                                       sections_path=item.get("sections_path", ""))
+    else:
+        r = SANITY_PUB.publish_file(str(sp), slug=item.get("slug", ""), lang=item.get("lang", ""),
+                                    category=item.get("category", ""), title=item.get("title", ""),
+                                    dry_run=dry)
+    if r.get("ok") and not dry:
+        usage_add(task.get("created_by", ""), writes=1)
+    return r
+
+
+BATCH_HANDLERS = {"asset_replace": _bh_asset_replace, "publish_sanity": _bh_publish_sanity, "field_patch": _bh_field_patch,
                   "gen": _bh_gen, "rewrite": _bh_rewrite}
 
 
@@ -2526,13 +2553,15 @@ def spec_guard(spec):
     items = spec.get("items")
     if not isinstance(items, list) or not items:
         return None, "items 必须是非空数组"
-    cap = 200 if t in ("asset_replace", "field_patch") else 20
+    cap = 200 if t in ("asset_replace", "field_patch") else (20 if t in ("gen", "rewrite", "publish_sanity") else 200)
     if len(items) > cap:
         return None, f"{t} 单任务 ≤{cap} 项（当前 {len(items)}）"
     allow = {"asset_replace": {"doc_id", "kind", "idx", "field", "old", "new_url", "new_alt"},
              "field_patch": {"doc_id", "set"},
              "gen": {"item_id", "type", "lang", "topic", "brief", "budget_profile"},
              "qa": {"kind", "doc_id", "path", "target"},
+             "publish_sanity": {"item_id", "path", "doctype", "mode", "slug", "lang", "page_type", "title",
+                                "description", "cover_url", "cover_alt", "storyline_template", "sections_path", "category"},
              "rewrite": {"item_id", "lang", "topic", "instruction", "source_path", "budget_profile"}}[t]
     clean = []
     for it in items:
@@ -4225,9 +4254,25 @@ class Handler(BaseHTTPRequestHandler):
                 if not p:
                     return self._send(400, {"error": "草稿路径不可读"})
                 dry = bool(body.get("dry_run", True))
-                r = SANITY_PUB.publish_file(str(p), slug=str(body.get("slug", "")), lang=str(body.get("lang", "")),
-                                            category=str(body.get("category", "")), title=str(body.get("title", "")),
-                                            cluster=str(body.get("cluster", "")), dry_run=dry)
+                doctype = str(body.get("doctype", "blog"))
+                if doctype == "composite":
+                    # compositePage 无草稿态：写入即前台可见 → 真实写入需显式 confirm_public
+                    if not dry and not bool(body.get("confirm_public", False)):
+                        return self._send(400, {"error": "落地页写入即上线（compositePage 无草稿态）——"
+                                                        "真实发布请在界面勾选「确认公开可见」后重试"})
+                    r = SANITY_PUB.publish_landing(str(p), dry_run=dry, mode=str(body.get("mode", "create")),
+                                                  slug=str(body.get("slug", "")), lang=str(body.get("lang", "")),
+                                                  page_type=str(body.get("page_type", "tool")),
+                                                  title=str(body.get("title", "")),
+                                                  description=str(body.get("description", "")),
+                                                  cover_url=str(body.get("cover_url", "")),
+                                                  cover_alt=str(body.get("cover_alt", "")),
+                                                  storyline_template=str(body.get("storyline_template", "T-long")),
+                                                  sections_path=str(body.get("sections_path", "")))
+                else:
+                    r = SANITY_PUB.publish_file(str(p), slug=str(body.get("slug", "")), lang=str(body.get("lang", "")),
+                                                category=str(body.get("category", "")), title=str(body.get("title", "")),
+                                                cluster=str(body.get("cluster", "")), dry_run=dry)
                 if r.get("ok") and not dry:
                     with open(RUN_DIR / "approvals.log", "a") as f:
                         f.write(f"{datetime.now().isoformat(timespec='seconds')} SANITY-PUBLISH {item_id} doc={r.get('doc_id')} by={self._me()}\n")
