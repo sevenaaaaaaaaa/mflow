@@ -1585,6 +1585,268 @@ def geo_score(proj, brand_rate, per_query, competitor_total, brand_total):
                    "note": "提及率40% + 缺口覆盖30% + 相对份额20% + 结构健康10%"}
 
 
+# ===================== MFlow Pay（支付链接 · 加密收款核验 · 发卡 · 兑换券）=====================
+# 数据文件：run/pay/{products,cards,orders,vouchers,cfg}.json —— 文件即状态，与内容管线同底座。
+# 边界：不代持资金（收款地址为用户自备）；交付只在「已确认到账」后发生；公开端点无鉴权但 token 不可枚举。
+PAY_DIR = RUN_DIR / "pay"
+USDT_TRC20_CONTRACT = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t"
+
+
+def pay_load(name, default):
+    return read_json(PAY_DIR / f"{name}.json", default)
+
+
+def pay_save(name, data):
+    PAY_DIR.mkdir(parents=True, exist_ok=True)
+    (PAY_DIR / f"{name}.json").write_text(json.dumps(data, ensure_ascii=False, indent=1))
+
+
+def pay_cfg():
+    c = pay_load("cfg", {})
+    return {"usdt_trc20": str(c.get("usdt_trc20", "")).strip(),
+            "usdt_erc20": str(c.get("usdt_erc20", "")).strip(),
+            "btc": str(c.get("btc", "")).strip(),
+            "auto_verify": bool(c.get("auto_verify", True)),
+            "link_ttl_min": int(c.get("link_ttl_min", 60) or 60),
+            "webhook_secret": str(c.get("webhook_secret", ""))}
+
+
+def pay_products():
+    return pay_load("products", [])
+
+
+def pay_cards():
+    return pay_load("cards", [])
+
+
+def pay_orders():
+    return pay_load("orders", [])
+
+
+def pay_vouchers():
+    return pay_load("vouchers", [])
+
+
+def _new_id(prefix):
+    return f"{prefix}-{datetime.now().strftime('%y%m%d')}-{secrets.token_hex(3)}"
+
+
+def pay_stock(pid):
+    return sum(1 for c in pay_cards() if c.get("product_id") == pid and c.get("status") == "available")
+
+
+def pay_voucher_check(code, pid, amount):
+    """返回 (ok, discount, reason)。支持 percent / amount / free（兑换券）。"""
+    if not code:
+        return True, 0, ""
+    vs = pay_vouchers()
+    v = next((x for x in vs if x.get("code") == code and x.get("active", True)), None)
+    if not v:
+        return False, 0, "兑换码不存在或已停用"
+    if v.get("expires") and str(v["expires"]) < datetime.now().strftime("%Y-%m-%d"):
+        return False, 0, "兑换码已过期"
+    if int(v.get("used", 0)) >= int(v.get("max_uses", 1)):
+        return False, 0, "兑换码已用完"
+    if v.get("products") and pid not in v["products"]:
+        return False, 0, "该兑换码不适用于此商品"
+    t = v.get("type", "amount")
+    if t == "free":
+        return True, float(amount), ""
+    if t == "percent":
+        return True, round(float(amount) * float(v.get("value", 0)) / 100, 2), ""
+    return True, min(float(v.get("value", 0)), float(amount)), ""
+
+
+def pay_order_public(o):
+    """公开视图：不泄露卡密（除非已交付——token 持有者即买家）。"""
+    p = next((x for x in pay_products() if x["id"] == o.get("product_id")), None)
+    cfg = pay_cfg()
+    d = {"token": o["token"], "id": o["id"], "product": (p or {}).get("name", o.get("product_id")),
+         "desc": (p or {}).get("desc", ""), "qty": o.get("qty", 1),
+         "amount": o.get("amount"), "discount": o.get("discount", 0),
+         "currency": o.get("currency", "USD"), "pay_method": o.get("pay_method", "usdt_trc20"),
+         "status": o.get("status"), "created": o.get("created"), "expires_at": o.get("expires_at"),
+         "tx_hash": o.get("tx_hash", ""),
+         "pay_to": cfg.get(o.get("pay_method", "usdt_trc20"), ""),
+         "auto_verify": cfg["auto_verify"]}
+    if o.get("status") == "delivered":
+        d["codes"] = o.get("cards", [])
+    return d
+
+
+def pay_create_order(pid, qty=1, voucher="", pay_method="usdt_trc20", ttl_min=None, spec=None):
+    p = next((x for x in pay_products() if x["id"] == pid and x.get("active", True)), None)
+    if not p:
+        return {"error": "商品不存在或已下架"}
+    qty = max(1, min(int(qty or 1), 99))
+    amount = round(float(p.get("price", 0)) * qty, 2)
+    ok, disc, reason = pay_voucher_check(voucher, pid, amount)
+    if not ok:
+        return {"error": reason}
+    ttl = int(ttl_min or pay_cfg()["link_ttl_min"])
+    now = datetime.now()
+    o = {"id": _new_id("ord"), "token": secrets.token_urlsafe(18),
+         "product_id": pid, "qty": qty, "amount": round(amount - disc, 2), "discount": round(disc, 2),
+         "voucher": voucher if voucher else "",
+         "currency": p.get("currency", "USD"), "pay_method": pay_method,
+         "status": "pending", "created": now.strftime("%Y-%m-%d %H:%M:%S"),
+         "expires_at": (now + __import__("datetime").timedelta(minutes=ttl)).strftime("%Y-%m-%d %H:%M:%S"),
+         "tx_hash": "", "spec": str(spec or "")[:200], "cards": []}
+    if o["amount"] <= 0:  # 兑换券全额抵扣 → 直接交付
+        orders = pay_orders(); orders.append(o); pay_save("orders", orders)
+        _pay_voucher_consume(voucher)
+        return pay_deliver(o["id"], note="voucher-free")
+    orders = pay_orders(); orders.append(o); pay_save("orders", orders)
+    return {"ok": True, "order": pay_order_public(o), "url": f"/pay/{o['token']}"}
+
+
+def _pay_voucher_consume(code):
+    if not code:
+        return
+    vs = pay_vouchers()
+    for v in vs:
+        if v.get("code") == code:
+            v["used"] = int(v.get("used", 0)) + 1
+    pay_save("vouchers", vs)
+
+
+def pay_deliver(oid, note=""):
+    """确认到账后交付：卡密池按序发卡；库存不足则挂 paid_no_stock 不丢单。"""
+    orders = pay_orders()
+    o = next((x for x in orders if x["id"] == oid), None)
+    if not o:
+        return {"error": "订单不存在"}
+    if o.get("status") == "delivered":
+        return {"ok": True, "order": pay_order_public(o)}
+    p = next((x for x in pay_products() if x["id"] == o["product_id"]), None) or {}
+    if p.get("delivery", "card") == "card":
+        cards = pay_cards()
+        need = int(o.get("qty", 1))
+        picked = [c for c in cards if c.get("product_id") == o["product_id"] and c.get("status") == "available"][:need]
+        if len(picked) < need:
+            o["status"] = "paid_no_stock"
+            o["note"] = f"库存不足（需 {need} 有 {len(picked)}）——补卡后重试交付"
+            pay_save("orders", orders)
+            notify_send("MFlow Pay · 库存不足", f"订单 {o['id']} 已到账但卡密不足，请补卡后确认交付")
+            return {"ok": False, "order": pay_order_public(o), "error": "库存不足"}
+        for c in picked:
+            c["status"] = "sold"; c["order_id"] = o["id"]; c["sold_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        o["cards"] = [c["code"] for c in picked]
+        pay_save("cards", cards)
+    o["status"] = "delivered"
+    o["delivered_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    if note:
+        o["note"] = note
+    pay_save("orders", orders)
+    _pay_voucher_consume(o.get("voucher", "") if o.get("voucher") else "")
+    notify_send("MFlow Pay · 交付完成", f"订单 {o['id']} · {p.get('name','')} ×{o.get('qty',1)} · {o.get('amount')} {o.get('currency','')}")
+    return {"ok": True, "order": pay_order_public(o)}
+
+
+def pay_confirm(oid, tx_hash="", by=""):
+    orders = pay_orders()
+    o = next((x for x in orders if x["id"] == oid), None)
+    if not o:
+        return {"error": "订单不存在"}
+    if o.get("status") in ("delivered", "refunded"):
+        return {"ok": True, "order": pay_order_public(o)}
+    o["status"] = "paid"
+    if tx_hash:
+        o["tx_hash"] = tx_hash
+    o["paid_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    o["confirmed_by"] = by or "manual"
+    pay_save("orders", orders)
+    with open(RUN_DIR / "approvals.log", "a") as f:
+        f.write(f"{datetime.now().isoformat(timespec='seconds')} PAY-CONFIRM {oid} by {by or 'manual'} tx={tx_hash[:24]}\n")
+    return pay_deliver(oid, note="confirmed")
+
+
+def pay_cancel(oid, reason=""):
+    orders = pay_orders()
+    o = next((x for x in orders if x["id"] == oid), None)
+    if not o:
+        return {"error": "订单不存在"}
+    if o.get("status") == "delivered":
+        return {"error": "已交付订单不可取消"}
+    o["status"] = "cancelled"; o["note"] = reason[:120]
+    pay_save("orders", orders)
+    return {"ok": True}
+
+
+def pay_expire_sweep():
+    orders = pay_orders(); changed = 0
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    for o in orders:
+        if o.get("status") == "pending" and str(o.get("expires_at", "")) < now:
+            o["status"] = "expired"; changed += 1
+    if changed:
+        pay_save("orders", orders)
+    return changed
+
+
+def pay_verify_trc20(order):
+    """USDT-TRC20 链上核验（TronGrid 公开端点，不需 Key）：金额+收款地址+时间窗匹配。"""
+    addr = pay_cfg()["usdt_trc20"]
+    if not addr:
+        return False, "未配置 USDT-TRC20 收款地址"
+    import urllib.request
+    url = (f"https://api.trongrid.io/v1/accounts/{addr}/transactions/trc20"
+           f"?only_to=true&limit=50")
+    try:
+        with urllib.request.urlopen(url, timeout=15) as r:
+            data = json.loads(r.read())
+    except Exception as e:
+        return False, f"链上查询失败：{str(e)[:80]}"
+    need = float(order.get("amount", 0))
+    for tx in data.get("data", []):
+        ti = tx.get("token_info") or {}
+        if ti.get("address") != USDT_TRC20_CONTRACT:
+            continue
+        if str(tx.get("to", "")).lower() != addr.lower():
+            continue
+        dec = int(ti.get("decimals", 6))
+        val = float(tx.get("value", 0)) / (10 ** dec)
+        ts = int(tx.get("block_timestamp", 0)) / 1000
+        created = datetime.strptime(order.get("created", "1970-01-01 00:00:00"), "%Y-%m-%d %H:%M:%S").timestamp()
+        if val + 1e-9 >= need and ts >= created - 600:
+            return True, tx.get("transaction_id", "")
+    return False, "未找到匹配转账（金额/地址/时间窗）"
+
+
+def pay_verifier():
+    """后台巡检：pending 订单自动核验（TRC20）+ 过期清扫。"""
+    while True:
+        time.sleep(60)
+        try:
+            pay_expire_sweep()
+            if not pay_cfg()["auto_verify"]:
+                continue
+            for o in pay_orders():
+                if o.get("status") == "pending" and o.get("pay_method") == "usdt_trc20":
+                    ok, info = pay_verify_trc20(o)
+                    if ok:
+                        pay_confirm(o["id"], tx_hash=info, by="auto-trc20")
+        except Exception as e:
+            print(f"[pay-verifier] {e}", file=sys.stderr)
+
+
+def pay_stats():
+    orders = pay_orders()
+    paid = [o for o in orders if o.get("status") in ("paid", "delivered", "paid_no_stock")]
+    return {"orders": len(orders), "pending": sum(1 for o in orders if o.get("status") == "pending"),
+            "delivered": sum(1 for o in orders if o.get("status") == "delivered"),
+            "revenue": round(sum(float(o.get("amount", 0)) for o in paid if o.get("currency", "USD") == "USD"), 2),
+            "cards_available": sum(1 for c in pay_cards() if c.get("status") == "available"),
+            "products": len(pay_products()), "vouchers": len(pay_vouchers())}
+
+
+def pay_public_order(token):
+    o = next((x for x in pay_orders() if x.get("token") == token), None)
+    if not o:
+        return None
+    return pay_order_public(o)
+
+
 def daily_status():
     running = False
     if DAILY_PID.exists():
@@ -1800,6 +2062,14 @@ class Handler(BaseHTTPRequestHandler):
             if not self._authed():
                 return self._send(200, (CONSOLE_DIR / "login.html").read_bytes(), "text/html; charset=utf-8")
             return self._send(200, (CONSOLE_DIR / "console.html").read_bytes(), "text/html; charset=utf-8")
+        # ── 公开收银台（无鉴权；token 即凭据）──
+        if parsed.path.startswith("/pay/"):
+            return self._send(200, (CONSOLE_DIR / "pay.html").read_bytes(), "text/html; charset=utf-8")
+        if parsed.path.startswith("/api/pay/order/"):
+            o = pay_public_order(parsed.path.rsplit("/", 1)[-1])
+            if not o:
+                return self._send(404, {"error": "订单不存在或链接失效"})
+            return self._send(200, o)
         if not self._authed():
             return self._send(401, {"error": "unauthorized"})
         try:
@@ -1918,6 +2188,24 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, plugins_inventory())
             if parsed.path == "/api/geo/citations":
                 return self._send(200, geo_summary(self._proj()))
+            # ── MFlow Pay 管理端（只读）──
+            if parsed.path == "/api/pay/overview":
+                return self._send(200, {"stats": pay_stats(), "cfg": {**pay_cfg(), "webhook_secret": "***" if pay_cfg()["webhook_secret"] else ""}})
+            if parsed.path == "/api/pay/products":
+                ps = pay_products()
+                for p in ps:
+                    p["stock"] = pay_stock(p["id"])
+                return self._send(200, ps)
+            if parsed.path == "/api/pay/orders":
+                return self._send(200, pay_orders()[-200:][::-1])
+            if parsed.path == "/api/pay/cards":
+                cs = pay_cards()
+                avail = [c for c in cs if c.get("status") == "available"]
+                return self._send(200, {"total": len(cs), "available": len(avail),
+                                        "sample": [{"product_id": c["product_id"], "code": c["code"][:4] + "…",
+                                                     "status": c["status"]} for c in cs[-40:][::-1]]})
+            if parsed.path == "/api/pay/vouchers":
+                return self._send(200, pay_vouchers())
             if parsed.path == "/api/workflows":
                 sk = {s["name"]: s for s in harness_inventory()["skills"]}
                 wfs = []
@@ -2016,6 +2304,39 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         if self._machine() and not self._me():  # 机器联动 token：只读，写动作必须真人会话
             return self._send(403, {"error": "机器 token 仅限 GET；写操作请以用户身份登录"})
+        # ── 公开：买家提交交易哈希 / 外部支付 webhook（无会话）──
+        if self.path == "/api/pay/claim":
+            body = self._body()
+            o = next((x for x in pay_orders() if x.get("token") == str(body.get("token", ""))), None)
+            if not o:
+                return self._send(404, {"error": "订单不存在或链接失效"})
+            if o.get("status") != "pending":
+                return self._send(200, pay_order_public(o))
+            txh = str(body.get("tx_hash", ""))[:120]
+            orders = pay_orders()
+            for x in orders:
+                if x["id"] == o["id"]:
+                    x["tx_hash"] = txh
+                    x["claimed_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            pay_save("orders", orders)
+            if o.get("pay_method") == "usdt_trc20" and pay_cfg()["auto_verify"]:
+                ok, info = pay_verify_trc20({**o, "tx_hash": txh})
+                if ok:
+                    pay_confirm(o["id"], tx_hash=info or txh, by="auto-trc20-onclaim")
+            return self._send(200, pay_public_order(o["token"]))
+        if self.path.startswith("/api/pay/webhook/"):
+            sec = pay_cfg()["webhook_secret"]
+            given = self.path.rsplit("/", 1)[-1]
+            if not sec or not secrets.compare_digest(sec, given):
+                return self._send(403, {"error": "webhook secret 不匹配"})
+            body = self._body()
+            oid = str(body.get("order_id", ""))
+            tok = str(body.get("token", ""))
+            o = next((x for x in pay_orders() if x["id"] == oid or (tok and x.get("token") == tok)), None)
+            if not o:
+                return self._send(404, {"error": "订单不存在"})
+            r = pay_confirm(o["id"], tx_hash=str(body.get("tx_hash", ""))[:120], by="webhook:" + str(body.get("provider", "external"))[:24])
+            return self._send(200, r)
         if self.path == "/api/login":
             body = self._body()
             username, password = str(body.get("username", "")).strip(), str(body.get("password", ""))
@@ -2077,7 +2398,11 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/trident/run", "/api/daily/run", "/api/tasks/del",
                       "/api/notify/save", "/api/notify/test",
                       "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall",
-                      "/api/geo/probe"}
+                      "/api/geo/probe",
+                      "/api/pay/product/save", "/api/pay/product/delete", "/api/pay/cards/import",
+                      "/api/pay/cards/clear", "/api/pay/link/create", "/api/pay/order/confirm",
+                      "/api/pay/order/redeliver", "/api/pay/order/cancel", "/api/pay/voucher/save",
+                      "/api/pay/voucher/delete", "/api/pay/config/save", "/api/pay/verify"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
@@ -2200,6 +2525,103 @@ class Handler(BaseHTTPRequestHandler):
                 r = geo_probe(self._proj())
                 code = 400 if r.get("error") else 200
                 return self._send(code, r)
+            # ── MFlow Pay 管理端（写）──
+            if self.path == "/api/pay/product/save":
+                ps = pay_products()
+                pid = re.sub(r"[^a-z0-9-]", "", str(body.get("id", "")).lower())[:40] or f"p-{secrets.token_hex(3)}"
+                rec = next((x for x in ps if x["id"] == pid), None)
+                data = {"id": pid, "name": str(body.get("name", "")).strip()[:80] or pid,
+                        "price": round(float(body.get("price", 0) or 0), 2),
+                        "currency": str(body.get("currency", "USD"))[:8],
+                        "desc": str(body.get("desc", ""))[:200],
+                        "delivery": "manual" if body.get("delivery") == "manual" else "card",
+                        "active": bool(body.get("active", True))}
+                if rec:
+                    rec.update(data)
+                else:
+                    ps.append(data)
+                pay_save("products", ps)
+                return self._send(200, {"ok": True, "id": pid})
+            if self.path == "/api/pay/product/delete":
+                pid = str(body.get("id", ""))
+                pay_save("products", [x for x in pay_products() if x["id"] != pid])
+                return self._send(200, {"ok": True})
+            if self.path == "/api/pay/cards/import":
+                pid = str(body.get("product_id", "")).strip()
+                if not next((x for x in pay_products() if x["id"] == pid), None):
+                    return self._send(400, {"error": "商品不存在"})
+                codes = [c.strip() for c in str(body.get("codes", "")).split("\n") if c.strip()]
+                cs = pay_cards()
+                existing = {c["code"] for c in cs if c.get("product_id") == pid}
+                added = 0
+                for code in codes[:5000]:
+                    if code in existing:
+                        continue
+                    cs.append({"id": _new_id("card"), "product_id": pid, "code": code[:200],
+                               "status": "available", "order_id": "", "sold_at": ""})
+                    added += 1
+                pay_save("cards", cs)
+                return self._send(200, {"ok": True, "added": added, "skipped": len(codes) - added})
+            if self.path == "/api/pay/cards/clear":
+                pid, status = str(body.get("product_id", "")), str(body.get("status", "available"))
+                cs = [c for c in pay_cards() if not (c.get("product_id") == pid and c.get("status") == status)]
+                pay_save("cards", cs)
+                return self._send(200, {"ok": True})
+            if self.path == "/api/pay/link/create":
+                r = pay_create_order(str(body.get("product_id", "")), body.get("qty", 1),
+                                     str(body.get("voucher", "")), str(body.get("pay_method", "usdt_trc20")),
+                                     body.get("ttl_min"), body.get("spec", ""))
+                code = 400 if r.get("error") else 200
+                return self._send(code, r)
+            if self.path == "/api/pay/order/confirm":
+                r = pay_confirm(str(body.get("id", "")), str(body.get("tx_hash", "")), by=self._me())
+                code = 400 if r.get("error") else 200
+                return self._send(code, r)
+            if self.path == "/api/pay/order/redeliver":
+                r = pay_deliver(str(body.get("id", "")), note="redeliver")
+                code = 400 if r.get("error") else 200
+                return self._send(code, r)
+            if self.path == "/api/pay/order/cancel":
+                return self._send(200, pay_cancel(str(body.get("id", "")), str(body.get("reason", ""))))
+            if self.path == "/api/pay/voucher/save":
+                vs = pay_vouchers()
+                vcode = re.sub(r"[^A-Za-z0-9-]", "", str(body.get("code", "")).strip())[:32].upper()
+                if not vcode:
+                    vcode = "V" + secrets.token_hex(4).upper()
+                rec = next((x for x in vs if x["code"] == vcode), None)
+                data = {"code": vcode, "type": "free" if body.get("type") == "free" else ("percent" if body.get("type") == "percent" else "amount"),
+                        "value": round(float(body.get("value", 0) or 0), 2),
+                        "max_uses": max(1, int(body.get("max_uses", 1) or 1)),
+                        "products": [str(x) for x in (body.get("products") or [])][:20],
+                        "expires": str(body.get("expires", ""))[:10], "active": bool(body.get("active", True))}
+                if rec:
+                    rec.update(data)
+                else:
+                    vs.append({**data, "used": 0})
+                pay_save("vouchers", vs)
+                return self._send(200, {"ok": True, "code": vcode})
+            if self.path == "/api/pay/voucher/delete":
+                pay_save("vouchers", [x for x in pay_vouchers() if x["code"] != str(body.get("code", ""))])
+                return self._send(200, {"ok": True})
+            if self.path == "/api/pay/config/save":
+                cur = pay_cfg()
+                sec = str(body.get("webhook_secret", ""))
+                pay_save("cfg", {"usdt_trc20": str(body.get("usdt_trc20", cur["usdt_trc20"])).strip()[:64],
+                                 "usdt_erc20": str(body.get("usdt_erc20", cur["usdt_erc20"])).strip()[:64],
+                                 "btc": str(body.get("btc", cur["btc"])).strip()[:64],
+                                 "auto_verify": bool(body.get("auto_verify", cur["auto_verify"])),
+                                 "link_ttl_min": max(5, int(body.get("link_ttl_min", cur["link_ttl_min"]) or 60)),
+                                 "webhook_secret": sec if sec and "…" not in sec else cur["webhook_secret"]})
+                return self._send(200, {"ok": True})
+            if self.path == "/api/pay/verify":
+                o = next((x for x in pay_orders() if x["id"] == str(body.get("id", ""))), None)
+                if not o:
+                    return self._send(404, {"error": "订单不存在"})
+                ok, info = pay_verify_trc20(o)
+                if ok:
+                    r = pay_confirm(o["id"], tx_hash=info, by="manual-verify:" + self._me())
+                    return self._send(200, {"ok": True, "verified": True, "order": r.get("order")})
+                return self._send(200, {"ok": True, "verified": False, "detail": info})
             if self.path == "/api/skills/sync":
                 return self._send(200, run_tool([sys.executable, str(PROJECT / "1-4 Dev/scripts/harness_sync.py")], timeout=120))
             if self.path == "/api/generate":
@@ -2460,7 +2882,8 @@ def main():
     threading.Thread(target=loop_queue_worker, daemon=True).start()
     threading.Thread(target=schedule_executor, daemon=True).start()
     threading.Thread(target=geo_scheduler, daemon=True).start()
-    print(f"[console] MFlow Console on :{PORT} (loop queue + schedule executor + geo scheduler started, max_parallel={MAX_PARALLEL_LOOPS})")
+    threading.Thread(target=pay_verifier, daemon=True).start()
+    print(f"[console] MFlow Console on :{PORT} (loop queue + schedule + geo + pay verifier started, max_parallel={MAX_PARALLEL_LOOPS})")
     server.serve_forever()
 
 

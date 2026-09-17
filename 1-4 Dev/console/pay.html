@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MFlow · 收银台</title>
+<style>
+:root{--bg:#f7f5f1;--card:#ffffff;--fg:#2a2724;--muted:#6b6560;--border:#e3ded6;--accent:#3b5bdb;--ok:#2f9e6b;--warn:#c98a1b;--danger:#c0392b;--mono:ui-monospace,'SF Mono',Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(60vw 60vw at 20% 0%,#e8ecff 0%,transparent 60%),radial-gradient(50vw 50vw at 90% 100%,#ffe9e3 0%,transparent 55%),var(--bg);font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Segoe UI',system-ui,sans-serif;color:var(--fg);padding:24px}
+.wrap{width:100%;max-width:460px}
+.brand{display:flex;align-items:center;gap:10px;margin-bottom:14px;font-weight:800}
+.logo{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--accent),#7a5cf0);color:#fff;display:grid;place-items:center;font-size:15px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px;box-shadow:0 24px 60px -30px rgba(60,50,30,.35)}
+h1{font-size:19px;margin:0 0 4px}
+.desc{color:var(--muted);font-size:13px;line-height:1.7;margin:6px 0 14px}
+.row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px dashed var(--border);font-size:13.5px}
+.row:last-of-type{border-bottom:0}
+.amt{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums}
+.tag{display:inline-block;padding:3px 10px;border-radius:99px;font-size:11px;font-weight:700}
+.t-pending{background:#fff3d6;color:var(--warn)}.t-ok{background:#e3f7ee;color:var(--ok)}.t-bad{background:#fdeaea;color:var(--danger)}
+.addr{display:flex;gap:8px;align-items:center;margin-top:6px}
+.addr input{flex:1;font-family:var(--mono);font-size:12px;padding:9px 11px;border:1px solid var(--border);border-radius:11px;background:#faf8f5;color:var(--fg);width:100%}
+.btn{border:0;border-radius:12px;padding:11px 16px;font-size:14px;font-weight:700;cursor:pointer;background:var(--accent);color:#fff;width:100%;margin-top:12px}
+.btn.ghost{background:#f1eee9;color:var(--fg)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.code{font-family:var(--mono);font-size:15px;background:#f4f7f2;border:1px dashed var(--ok);border-radius:11px;padding:11px 13px;margin-top:8px;word-break:break-all;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.foot{text-align:center;color:var(--muted);font-size:11px;margin-top:14px;font-family:var(--mono)}
+.tx{width:100%;font-family:var(--mono);font-size:12px;padding:9px 11px;border:1px solid var(--border);border-radius:11px;margin-top:8px;background:#faf8f5;color:var(--fg)}
+.hint{color:var(--muted);font-size:12px;line-height:1.7;margin-top:10px}
+.err{color:var(--danger);font-size:13px;margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><span class="logo">M</span><span>MFlow 收银台</span></div>
+  <div class="card" id="card"><div class="desc">加载中…</div></div>
+  <div class="foot">MFlow · 内容生产 · 分发 · 触达 · 变现</div>
+</div>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/</g,'&lt;');
+const token=location.pathname.split('/').filter(Boolean).pop();
+let timer=null,last=null;
+async function api(p,body){const o=body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{};
+ const r=await fetch(p,o);return r.json()}
+function money(a,c){return (c==='USD'?'$':'')+Number(a).toFixed(2)+(c&&c!=='USD'?' '+c:'')}
+function render(o){
+ if(o.error){$('card').innerHTML=`<h1>链接不可用</h1><div class="desc">${esc(o.error)}</div>`;return}
+ last=o;
+ const tag=o.status==='delivered'?'<span class="tag t-ok">已交付</span>':
+  o.status==='pending'?'<span class="tag t-pending">待支付</span>':
+  o.status==='expired'?'<span class="tag t-bad">已过期</span>':
+  `<span class="tag t-bad">${esc(o.status)}</span>`;
+ let html=`<h1>${esc(o.product)} ${tag}</h1><div class="desc">${esc(o.desc||'')}</div>
+ <div class="row"><span>数量</span><b>×${o.qty}</b></div>`;
+ if(o.discount>0)html+=`<div class="row"><span>优惠</span><b>-${money(o.discount,o.currency)}</b></div>`;
+ html+=`<div class="row"><span>应付</span><span class="amt">${money(o.amount,o.currency)}</span></div>`;
+ if(o.status==='delivered'){
+   html+=`<div style="margin-top:10px"><b style="font-size:13px">你的兑换码 / 卡密</b>`;
+   (o.codes||[]).forEach(c=>{html+=`<div class="code"><span>${esc(c)}</span><button class="btn" style="width:auto;margin:0;padding:7px 12px" onclick="navigator.clipboard.writeText('${esc(c)}')">复制</button></div>`});
+   html+=`</div><div class="hint">已交付，请妥善保存。页面可留作凭证。</div>`;
+ } else if(o.status==='pending'){
+   html+=`<div style="margin-top:12px"><b style="font-size:13px">支付方式</b>
+    <div class="row"><span>${esc(o.pay_method)}</span><span id="ttl" class="t-pending"></span></div>
+    <div class="addr"><input value="${esc(o.pay_to||'（未配置收款地址，请联系卖家）')}" readonly id="payaddr">
+    <button class="btn" style="width:auto;margin:0;padding:9px 12px" onclick="navigator.clipboard.writeText($('payaddr').value)">复制</button></div>
+    <div class="hint">请转入<b>恰好 ${money(o.amount,o.currency)}</b>，转账后粘贴交易哈希提交；系统自动核验到账（TRC20）后立即交付。</div>
+    <input class="tx" id="txh" placeholder="粘贴交易哈希 (tx hash)">
+    <button class="btn" onclick="claim()" id="claimbtn">我已支付，提交核验</button>
+    ${o.tx_hash?`<div class="hint">已提交：<span style="font-family:var(--mono)">${esc(o.tx_hash)}</span>（核验中，通常 1-2 分钟）</div>`:''}
+   </div>`;
+ } else if(o.status==='paid_no_stock'){
+   html+=`<div class="hint">已确认到账，卡密补货中——补货后自动交付，无需重复支付。</div>`;
+ } else {
+   html+=`<div class="hint">该链接已${o.status==='expired'?'过期':'失效'}，请向卖家重新获取。</div>`;
+ }
+ $('card').innerHTML=html;
+ if(o.status==='pending'){clearInterval(timer);timer=setInterval(tick,1000);tick();
+  if(o.tx_hash)timer2();}
+}
+function tick(){
+ if(!last||last.status!=='pending')return clearInterval(timer);
+ const end=new Date((last.expires_at||'').replace(' ','T')).getTime();
+ const left=Math.max(0,Math.floor((end-Date.now())/1000));
+ const el=$('ttl');if(!el)return;
+ el.textContent=left?`剩余 ${String(Math.floor(left/60)).padStart(2,'0')}:${String(left%60).padStart(2,'0')}`:'已过期';
+ if(left<=0){poll()}
+}
+async function claim(){
+ const txh=$('txh').value.trim();if(!txh)return alert('请粘贴交易哈希');
+ $('claimbtn').disabled=true;$('claimbtn').textContent='提交中…';
+ const o=await api('api/pay/claim',{token,tx_hash:txh});
+ render(o);
+}
+let p2=null;
+function timer2(){clearInterval(p2);p2=setInterval(poll,5000)}
+async function poll(){const o=await api('api/pay/order/'+encodeURIComponent(token));render(o)}
+async function boot(){const o=await api('api/pay/order/'+encodeURIComponent(token));render(o);
+ if(last&&last.status==='pending'){timer2()}}
+boot();
+</script>
+</body>
+</html>

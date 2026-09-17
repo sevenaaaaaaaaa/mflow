@@ -234,6 +234,7 @@ th{color:var(--muted);font-weight:600}
   <button class="s-item" data-t="reports" onclick="setTab('reports')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></svg><span>报告中心</span><span class="sbad mutb" id="nav-reports">0</span></button>
   <button class="s-item" data-t="kb" onclick="setTab('kb')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>知识库</span></button>
   <button class="s-item" data-t="dist" onclick="setTab('dist')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><span>分发队列</span><span class="sbad mutb" id="nav-dist">0</span></button>
+  <button class="s-item" data-t="pay" onclick="setTab('pay')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg><span>支付 · 发卡</span><span class="sbad mutb" id="nav-pay">0</span></button>
   <button class="s-item" data-t="trident" onclick="setTab('trident')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v8M12 10 5 22M12 10l7 12M5 5l14 0"/></svg><span>数据管线 Trident</span></button>
   <div class="sec-title">系统</div>
   <button class="s-item" data-t="eng" onclick="setTab('eng')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>路由·门禁</span></button>
@@ -368,6 +369,58 @@ th{color:var(--muted);font-weight:600}
     <div class="card"><div class="card-head"><h3>每日管线 <span id="drun"></span></h3></div><pre id="dtail">…</pre></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>定时器</h3></div><pre id="stimers">…</pre></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>自动排程报表</h3><span class="mut" id="sched-meta"></span></div><div id="sched-report"></div></div>
+  </section>
+
+  <!-- ============ 支付 · 发卡 ============ -->
+  <section class="page" id="pg-pay">
+    <div class="pg-head"><div><div class="kick">变现</div><h1>支付 · <em class="sf">发卡</em></h1>
+      <p class="pg-sub">临时支付链接（可过期）· 加密收款链上核验（USDT-TRC20 自动）· 卡密自动交付 · 兑换券抵扣。收款地址为用户自备，MFlow 不代持资金。</p></div>
+      <div class="head-actions"><button class="btn ghost" onclick="loadPay()">刷新 ↻</button></div></div>
+    <div class="stats" id="pay-stats"></div>
+    <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>生成支付链接</h3><span class="mut">买家打开链接 → 付款 → 自动核验 → 自动发卡</span></div>
+      <div class="row"><select id="pl-product" style="min-width:200px"></select>
+        <input id="pl-qty" type="number" value="1" min="1" max="99" style="width:80px" title="数量">
+        <input id="pl-voucher" placeholder="兑换码（可选）" style="width:150px">
+        <input id="pl-ttl" type="number" value="60" min="5" style="width:90px" title="有效期（分钟）">
+        <button class="btn primary" onclick="payCreateLink()">生成链接</button></div>
+      <div id="pl-out" style="margin-top:10px"></div></div>
+    <div class="ov-grid2">
+      <div class="card"><div class="card-head"><h3>商品 <span class="mut" id="pay-pn"></span></h3></div>
+        <div id="pay-products"></div>
+        <div class="card-head" style="margin-top:12px"><h3>新建 / 编辑商品</h3></div>
+        <div class="row"><input id="pp-id" placeholder="id（小写连字符）" style="width:150px">
+          <input id="pp-name" placeholder="商品名" style="flex:1;min-width:140px">
+          <input id="pp-price" placeholder="价格" type="number" step="0.01" style="width:100px">
+          <select id="pp-cur" style="width:90px"><option>USD</option><option>CNY</option></select></div>
+        <div class="row" style="margin-top:8px"><input id="pp-desc" placeholder="描述" style="flex:1">
+          <select id="pp-delivery" style="width:120px"><option value="card">卡密自动发</option><option value="manual">手工交付</option></select>
+          <button class="btn ghost" onclick="paySaveProduct()">保存商品</button></div></div>
+      <div class="card"><div class="card-head"><h3>卡密池 <span class="mut" id="pay-cn"></span></h3></div>
+        <div class="row"><select id="pc-product" style="min-width:180px"></select>
+          <button class="btn ghost" onclick="payImportCards()">批量导入</button>
+          <button class="mini" style="color:var(--danger)" onclick="payClearCards()">清空可用卡</button></div>
+        <textarea id="pc-codes" placeholder="每行一个卡密（导入后按订单自动发放）" style="width:100%;min-height:90px;margin-top:8px;border:1px solid var(--border);border-radius:12px;padding:10px;font-family:var(--font-mono);font-size:12px;background:var(--surface-strong);color:var(--fg)"></textarea>
+        <div id="pay-cards" style="margin-top:10px;max-height:220px;overflow:auto"></div></div>
+    </div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>订单 <span class="mut" id="pay-on"></span></h3></div><div id="pay-orders" style="overflow:auto"></div></div>
+    <div class="ov-grid2" style="margin-top:14px">
+      <div class="card"><div class="card-head"><h3>兑换券 / 卡券</h3></div>
+        <div id="pay-vouchers"></div>
+        <div class="row" style="margin-top:10px"><input id="pv-code" placeholder="码（留空自动生成）" style="width:150px">
+          <select id="pv-type" style="width:120px"><option value="amount">抵扣金额</option><option value="percent">折扣 %</option><option value="free">免费兑换</option></select>
+          <input id="pv-value" placeholder="值" type="number" step="0.01" style="width:90px">
+          <input id="pv-uses" placeholder="可用次数" type="number" value="1" style="width:100px">
+          <button class="btn ghost" onclick="paySaveVoucher()">保存</button></div></div>
+      <div class="card"><div class="card-head"><h3>收款配置 <span class="mut">（地址自备 · 链上核验）</span></h3></div>
+        <div class="row"><span class="mut" style="width:110px">USDT-TRC20</span><input id="pc-trc20" placeholder="T...  （自动核验）" style="flex:1;font-family:var(--font-mono);font-size:12px"></div>
+        <div class="row" style="margin-top:6px"><span class="mut" style="width:110px">USDT-ERC20</span><input id="pc-erc20" placeholder="0x...（手工确认）" style="flex:1;font-family:var(--font-mono);font-size:12px"></div>
+        <div class="row" style="margin-top:6px"><span class="mut" style="width:110px">BTC</span><input id="pc-btc" placeholder="bc1...（手工确认）" style="flex:1;font-family:var(--font-mono);font-size:12px"></div>
+        <div class="row" style="margin-top:6px"><label style="font-size:13px"><input id="pc-auto" type="checkbox" style="margin-right:6px">TRC20 自动核验（每分钟巡检 + 提交哈希即时核验）</label>
+          <input id="pc-ttl" type="number" value="60" style="width:80px" title="默认链接有效期（分钟）">
+          <input id="pc-secret" placeholder="webhook secret（外部支付回调）" style="width:220px"></div>
+        <div class="row" style="margin-top:8px"><button class="btn primary" onclick="paySaveCfg()">保存收款配置</button>
+          <span class="mut" id="pc-hint">外部支付（Stripe/OpenFlow 等）回调：POST /api/pay/webhook/{secret}</span></div></div>
+    </div>
   </section>
 
   <!-- ============ 模板市场 ============ -->
@@ -638,7 +691,7 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
  $('pg-'+t).classList.add('on');
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
-   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter}[t]||(()=>{}))()}
+   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay}[t]||(()=>{}))()}
 function openReader(path){api('api/read?path='+encodeURIComponent(path)).then(r=>{
  $('rname').textContent=r.name;
  const toc=(r.toc||[]).filter(t=>t.level===2);
@@ -1136,6 +1189,59 @@ function plgInstall(){let mf;try{mf=JSON.parse($('plg-mf').value)}catch(e){retur
   if(r.error)return alert('安装失败：'+r.error);alert('已安装并通过校验：'+r.id);$('plg-mf').value='';$('plg-code').value='';loadPlugins()})}
 function plgUninstall(id){if(!confirm('卸载插件 '+id+'？（移入 plugins/_trash，可手动找回）'))return;
  api('api/plugins/uninstall',{id}).then(r=>{if(r.error)return alert(r.error);loadPlugins()})}
+
+/* ---- 支付 · 发卡 ---- */
+function payMoney(a,c){return (c==='USD'?'$':'')+Number(a||0).toFixed(2)+(c&&c!=='USD'?' '+esc(c):'')}
+function loadPay(){api('api/pay/overview').then(ov=>{
+ const s=ov.stats||{},c=ov.cfg||{};
+ $('nav-pay').textContent=s.pending||0;
+ $('pay-stats').innerHTML=[['商品',s.products||0],['可用卡密',s.cards_available||0],['待支付',s.pending||0],['已交付',s.delivered||0],['收入(USD)',(s.revenue||0).toFixed(2)]]
+  .map(([t,n])=>`<div class="stat"><div class="n tnum">${n}</div><div class="t">${t}</div></div>`).join('');
+ $('pc-trc20').value=c.usdt_trc20||'';$('pc-erc20').value=c.usdt_erc20||'';$('pc-btc').value=c.btc||'';
+ $('pc-auto').checked=c.auto_verify!==false;$('pc-ttl').value=c.link_ttl_min||60;$('pc-secret').value=c.webhook_secret||'';
+ api('api/pay/products').then(ps=>{
+  const opts=ps.map(p=>`<option value="${esc(p.id)}">${esc(p.name)} · ${payMoney(p.price,p.currency)}（库存 ${p.stock}）</option>`).join('');
+  $('pl-product').innerHTML=opts;$('pc-product').innerHTML=opts;
+  $('pay-pn').textContent=`（${ps.length}）`;
+  $('pay-products').innerHTML='<table><tr><th>id</th><th>名称</th><th>价格</th><th>库存</th><th>交付</th><th></th></tr>'+
+   ps.map(p=>`<tr><td class="mut">${esc(p.id)}</td><td><b>${esc(p.name)}</b></td><td class="tnum">${payMoney(p.price,p.currency)}</td>
+    <td class="tnum ${p.stock>0?'ok':'bad'}">${p.stock}</td><td>${p.delivery==='card'?'卡密':'手工'}</td>
+    <td><button class="mini" style="color:var(--danger)" onclick="payDelProduct('${esc(p.id)}')">删除</button></td></tr>`).join('')+'</table>'})}) ;
+ api('api/pay/cards').then(cd=>{$('pay-cn').textContent=`（可用 ${cd.available} / 总 ${cd.total}）`;
+  $('pay-cards').innerHTML='<table><tr><th>商品</th><th>卡密</th><th>状态</th></tr>'+(cd.sample||[]).map(x=>`<tr><td class="mut">${esc(x.product_id)}</td><td style="font-family:var(--font-mono)">${esc(x.code)}</td><td>${esc(x.status)}</td></tr>`).join('')+'</table>'});
+ api('api/pay/orders').then(os=>{$('pay-on').textContent=`（${os.length}）`;
+  $('pay-orders').innerHTML='<table><tr><th>订单</th><th>商品</th><th>金额</th><th>状态</th><th>创建</th><th>tx</th><th>操作</th></tr>'+
+   os.map(o=>`<tr><td class="mut">${esc(o.id)}</td><td>${esc(o.product_id)} ×${o.qty}${o.voucher?` <span class="badge dist">${esc(o.voucher)}</span>`:''}</td>
+    <td class="tnum">${payMoney(o.amount,o.currency)}</td>
+    <td><span class="badge ${o.status==='delivered'?'pipe':(o.status==='pending'?'dist':'')}" style="${o.status==='delivered'?'background:var(--ok)':''}">${esc(o.status)}</span></td>
+    <td class="mut" style="font-size:11px">${esc(o.created||'')}</td>
+    <td class="mut" style="font-size:11px;font-family:var(--font-mono)">${esc((o.tx_hash||'').slice(0,14))}</td>
+    <td style="white-space:nowrap">
+     ${o.status==='pending'?`<button class="mini" onclick="payVerify('${esc(o.id)}')">链上核验</button><button class="mini" onclick="payConfirm('${esc(o.id)}')">手动确认</button><button class="mini" style="color:var(--danger)" onclick="payCancel('${esc(o.id)}')">取消</button>`:''}
+     ${o.status==='paid_no_stock'?`<button class="mini" onclick="payRedeliver('${esc(o.id)}')">重试交付</button>`:''}
+     ${o.status==='delivered'?`<span class="mut" style="font-size:11px">已发 ${((o.cards||[]).length)} 码</span>`:''}</td></tr>`).join('')+'</table>'});
+ api('api/pay/vouchers').then(vs=>{$('pay-vouchers').innerHTML='<table><tr><th>码</th><th>类型</th><th>值</th><th>已用/上限</th><th>过期</th><th></th></tr>'+
+  vs.map(v=>`<tr><td style="font-family:var(--font-mono)"><b>${esc(v.code)}</b></td><td>${esc(v.type)}</td><td class="tnum">${v.value}</td>
+   <td class="tnum">${v.used||0}/${v.max_uses||1}</td><td class="mut">${esc(v.expires||'—')}</td>
+   <td><button class="mini" style="color:var(--danger)" onclick="payDelVoucher('${esc(v.code)}')">删除</button></td></tr>`).join('')+'</table>'||'<span class="mut">无</span>'})}
+function payCreateLink(){api('api/pay/link/create',{product_id:$('pl-product').value,qty:$('pl-qty').value,voucher:$('pl-voucher').value.trim(),ttl_min:$('pl-ttl').value})
+ .then(r=>{if(r.error)return alert(r.error);const u=location.origin+r.url;
+  $('pl-out').innerHTML=`<div class="row"><b>支付链接已生成</b><span class="mut">有效期 ${esc(r.order.expires_at)}</span></div>
+   <div class="addr"><input value="${esc(u)}" readonly id="pl-url"><button class="btn ghost" style="width:auto;margin:0" onclick="navigator.clipboard.writeText($('pl-url').value)">复制</button>
+   <a class="btn ghost" style="width:auto;margin:0;text-decoration:none;display:inline-block" href="${esc(r.url)}" target="_blank">打开</a></div>
+   <div class="mut" style="font-size:12px;margin-top:6px">订单 ${esc(r.order.id)} · ${payMoney(r.order.amount,r.order.currency)} · 付款后自动核验并发卡</div>`})}
+function paySaveProduct(){api('api/pay/product/save',{id:$('pp-id').value.trim(),name:$('pp-name').value.trim(),price:$('pp-price').value,currency:$('pp-cur').value,desc:$('pp-desc').value.trim(),delivery:$('pp-delivery').value}).then(r=>{if(r.error)return alert(r.error);loadPay()})}
+function payDelProduct(id){if(!confirm('删除商品 '+id+'？（卡密与历史订单保留）'))return;api('api/pay/product/delete',{id}).then(()=>loadPay())}
+function payImportCards(){api('api/pay/cards/import',{product_id:$('pc-product').value,codes:$('pc-codes').value}).then(r=>{if(r.error)return alert(r.error);alert(`导入 ${r.added} 条（跳过重复 ${r.skipped}）`);$('pc-codes').value='';loadPay()})}
+function payClearCards(){if(!confirm('清空该商品所有【可用】卡密？已售出不受影响。'))return;api('api/pay/cards/clear',{product_id:$('pc-product').value,status:'available'}).then(()=>loadPay())}
+function payConfirm(id){if(!confirm('手动确认订单 '+id+' 已到账？确认后立即发卡。'))return;api('api/pay/order/confirm',{id}).then(r=>{if(r.error)return alert(r.error);alert('已确认并发卡');loadPay()})}
+function payVerify(id){api('api/pay/verify',{id}).then(r=>{if(r.error)return alert(r.error);
+ if(r.verified){alert('链上核验通过，已发卡');loadPay()}else alert('暂未核验到匹配转账：'+r.detail)})}
+function payCancel(id){const reason=prompt('取消原因（可选）')||'';api('api/pay/order/cancel',{id,reason}).then(()=>loadPay())}
+function payRedeliver(id){api('api/pay/order/redeliver',{id}).then(r=>{if(r.error)return alert(r.error);alert('已交付');loadPay()})}
+function paySaveVoucher(){api('api/pay/voucher/save',{code:$('pv-code').value.trim(),type:$('pv-type').value,value:$('pv-value').value,max_uses:$('pv-uses').value}).then(r=>{if(r.error)return alert(r.error);alert('兑换码：'+r.code);loadPay()})}
+function payDelVoucher(code){if(!confirm('删除兑换码 '+code+'？'))return;api('api/pay/voucher/delete',{code}).then(()=>loadPay())}
+function paySaveCfg(){api('api/pay/config/save',{usdt_trc20:$('pc-trc20').value.trim(),usdt_erc20:$('pc-erc20').value.trim(),btc:$('pc-btc').value.trim(),auto_verify:$('pc-auto').checked,link_ttl_min:$('pc-ttl').value,webhook_secret:$('pc-secret').value}).then(r=>{if(r.error)return alert(r.error);alert('收款配置已保存');loadPay()})}
 
 /* ---- 报告仪表 ---- */
 function loadRdash(){if($('rd-cat').children.length)return;
