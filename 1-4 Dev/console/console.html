@@ -1558,12 +1558,16 @@ function brkLoad(){api('api/breaker').then(d=>{const s=d.state||{};
  const bb=document.getElementById('bt-breaker');
  if(bb)bb.innerHTML=d.blocked?`<span class="bad">⚠ 系统熔断中：${esc((s.reason||'').slice(0,80))} —— 批量任务已暂停（可在设置页解除）</span>`:''})}
 function brkReset(){api('api/breaker/reset',{}).then(r=>{if(r.error)return alert(r.error);alert('已解除熔断');brkLoad()})}
+function qcol(used,cap,unlimited){if(unlimited||!cap)return '';const p=used/cap;
+ return p>=1?'color:var(--danger);font-weight:700':(p>=0.8?'color:var(--warn);font-weight:600':'')}
 function quotaLoad(){api('api/quota').then(d=>{
  const D=d.default||{};$('q-items').value=D.items_per_month||'';$('q-tokens').value=D.tokens_per_month||'';$('q-writes').value=D.writes_per_month||'';
  $('q-table').innerHTML='<table><tr><th>用户</th><th>角色</th><th>任务</th><th>条目</th><th>tokens</th><th>真实写入</th><th>配额（条目/token/写入）</th><th>操作</th></tr>'+
   (d.rows||[]).map(r=>`<tr><td><b>${esc(r.username)}</b></td><td>${esc(r.role)}</td>
-   <td class="tnum">${r.usage.tasks||0}</td><td class="tnum">${r.usage.items||0}</td><td class="tnum">${r.usage.tokens||0}</td>
-   <td class="tnum">${r.usage.writes||0}</td>
+   <td class="tnum">${r.usage.tasks||0}</td>
+   <td class="tnum" style="${qcol(r.usage.items,(r.quota||{}).items_per_month,r.unlimited)}">${r.usage.items||0}</td>
+   <td class="tnum" style="${qcol(r.usage.tokens,(r.quota||{}).tokens_per_month,r.unlimited)}">${r.usage.tokens||0}</td>
+   <td class="tnum" style="${qcol(r.usage.writes,(r.quota||{}).writes_per_month,r.unlimited)}">${r.usage.writes||0}</td>
    <td class="mut" style="font-size:11px">${r.unlimited?'不限':`${(r.quota||{}).items_per_month}/${(r.quota||{}).tokens_per_month}/${(r.quota||{}).writes_per_month}`}</td>
    <td><button class="mini" onclick="quotaEdit('${esc(r.username)}',${JSON.stringify(r.quota||{}).replace(/"/g,'&quot;')},${r.unlimited})">改配额</button></td></tr>`).join('')+'</table>'})}
 function quotaEdit(un,cap,unlimited){const s=prompt(`${un} 的配额（留空=用默认；填 unlimited=不限）\n格式：条目/token/写入 如 300/300000/100`,'');

@@ -106,6 +106,17 @@ for h in "$MFLOW_ROOT/1-4 Dev/scripts/hooks/"*.sh; do
 done
 [[ "$SYN_ERR" -eq 0 ]] && gate_pass 5 "console py/js + hooks sh 语法全通过"
 
+# GATE 6: 单元测试（T4：执行器/配额/熔断/预设/护栏）
+echo "[GATE 6] unit tests"
+if bash "$MFLOW_ROOT/1-4 Dev/scripts/run-tests.sh" >/tmp/mflow-tests.log 2>&1; then
+  N=$(grep -oE "Ran [0-9]+ tests" /tmp/mflow-tests.log | grep -oE "[0-9]+" | head -1)
+  gate_pass 6 "单元测试通过（$N 用例）"
+else
+  echo "  ✗ GATE 6: 单元测试失败——tail -30 /tmp/mflow-tests.log"
+  tail -12 /tmp/mflow-tests.log | sed 's/^/      /'
+  ERRORS=$((ERRORS + 1))
+fi
+
 # Summary
 echo ""
 if [[ "$ERRORS" -eq 0 ]]; then

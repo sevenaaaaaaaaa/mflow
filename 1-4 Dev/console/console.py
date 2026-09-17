@@ -2668,18 +2668,40 @@ def usage_get(username):
 def usage_add(username, tasks=0, items=0, tokens=0, writes=0):
     if not username:
         return
+    alerts = []
     with USAGE_USERS_LOCK:
         allu = usage_users()
         u = allu.setdefault(username, {})
-        m = u.setdefault(_month(), {"tasks": 0, "items": 0, "tokens": 0, "writes": 0})
+        m = u.setdefault(_month(), {"tasks": 0, "items": 0, "tokens": 0, "writes": 0, "warned": {}})
+        m.setdefault("warned", {})
         m["tasks"] += tasks
         m["items"] += items
         m["tokens"] += tokens
         m["writes"] += writes
+        # T6：80% 预警 / 100% 超额告警（每指标每月各一次，避免刷屏）
+        role = (auth_record(username) or {}).get("role", "operator")
+        q = user_quota(username, role)
+        if q:
+            for metric, capkey in (("items", "items_per_month"), ("tokens", "tokens_per_month"),
+                                   ("writes", "writes_per_month")):
+                cap = int(q.get(capkey, 0) or 0)
+                if not cap:
+                    continue
+                used = int(m.get(metric, 0))
+                for level, ratio in (("warn", 0.8), ("over", 1.0)):
+                    flag = f"{metric}:{level}"
+                    if used >= cap * ratio and not m["warned"].get(flag):
+                        m["warned"][flag] = datetime.now().strftime("%Y-%m-%d %H:%M")
+                        alerts.append((level, metric, used, cap))
         USAGE_USERS_FILE.parent.mkdir(parents=True, exist_ok=True)
         tmp = USAGE_USERS_FILE.with_suffix(".tmp")
         tmp.write_text(json.dumps(allu, ensure_ascii=False, indent=1))
         tmp.replace(USAGE_USERS_FILE)
+    for level, metric, used, cap in alerts:
+        tag = "⚠ 配额预警 80%" if level == "warn" else "⛔ 配额已用尽"
+        notify_send(f"MFlow {tag}",
+                    f"用户 {username} 本月 {metric} 已用 {used}/{cap}（{round(used / max(1, cap) * 100)}%）\n"
+                    f"继续使用可能被拦截，请到「设置 → 用户配额」调整或等待下月重置。")
 
 
 def quota_check(username, role, n_items=0, kind="", est_tokens_per_item=2000):
@@ -2911,7 +2933,22 @@ def health_report(proj=None):
         level = "bad"
     elif noise["zombies"] > 3 or noise["items_terminal"] > 50 or batch_pending > 30 or noise["run_mb"] > 3000:
         level = "warn"
-    return {"level": level, "llm_configured": llm_ok, "sanity": sanity,
+    quota_alerts = []
+    for un, months in (usage_users() or {}).items():
+        mm = months.get(_month()) or {}
+        role_u = (auth_record(un) or {}).get("role", "operator")
+        q = user_quota(un, role_u)
+        if not q:
+            continue
+        for metric, capkey in (("items", "items_per_month"), ("tokens", "tokens_per_month"), ("writes", "writes_per_month")):
+            cap = int(q.get(capkey, 0) or 0)
+            used = int(mm.get(metric, 0) or 0)
+            if cap and used >= cap * 0.8:
+                quota_alerts.append({"user": un, "metric": metric, "used": used, "cap": cap,
+                                     "pct": round(used / cap * 100)})
+    if quota_alerts:
+        level = "bad" if any(a["pct"] >= 100 for a in quota_alerts) else (level if level == "bad" else "warn")
+    return {"level": level, "quota_alerts": quota_alerts, "llm_configured": llm_ok, "sanity": sanity,
             "queues": {"loops_running": sum(1 for x in loops if x.get("status") == "running"),
                        "loops_queued": sum(1 for x in loops if x.get("status") == "queued"),
                        "batch_items_pending": batch_pending},
