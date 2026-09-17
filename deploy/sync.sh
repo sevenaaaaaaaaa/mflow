@@ -125,6 +125,7 @@ SYNC_ITEMS=(
     "./1-4 Dev/scripts/publish_adapters/|${REMOTE_ROOT}/1-4 Dev/scripts/publish_adapters/"
     "./1-4 Dev/scripts/trident/|${REMOTE_ROOT}/1-4 Dev/scripts/trident/"
     "./1-4 Dev/scripts/library/|${REMOTE_ROOT}/1-4 Dev/scripts/library/"
+    "./1-4 Dev/tests/|${REMOTE_ROOT}/1-4 Dev/tests/"
     "run/sites/|${REMOTE_ROOT}/run/sites/"
     "./1-1 Harness/02-rules/|${REMOTE_ROOT}/1-1 Harness/02-rules/"
     "./1-1 Harness/Skills/|${REMOTE_ROOT}/1-1 Harness/Skills/"
