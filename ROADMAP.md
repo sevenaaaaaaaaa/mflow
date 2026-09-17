@@ -140,6 +140,17 @@
 - ✅ WordPress 通道就绪（待 `run/cms.json` 配置 base/user/app_password）；Webhook 通用出口可用
 - 📋 待用户：提供 WordPress 站点与应用密码；确认首篇真实发布（Sanity draft）
 
+## Phase 11 · 多站点内容库（2026-09-17 ✅）
+
+- ✅ 站点档案机制：`run/sites/{site}.json`（domain/默认语言/数据源/sections: docType·pageType·dir·route）——**换站点只换档案，不改代码**
+- ✅ Sanity → 库同步器：`1-4 Dev/scripts/library/sanity_pull.py`（分页/剔草稿/两种正文引擎）+ `pt_to_md.py`（Portable Text → Markdown）
+- ✅ 首次全量镜像：17,535 篇 / 215MB（blog 8,864 · features 6,400 · tools 1,661 · topics 409 · solutions 120 · products 41 · scenarios 23 · news 17），3 分钟
+- ✅ 工作台「内容库」页：站点/段落（计数）/语言/搜索/阅读/后台同步+进度（admin，审计）
+- ✅ 默认项目更名 **Lovart Global**（id `lovart-global`，含存量管线/任务/Loop/GEO 数据迁移）
+- ✅ 内容日历清空（归档 `run/_archive/content-calendar-20260917.tar.gz`，17MB；Sanity 为 SSOT）
+- 📋 库 → GEO 闭环联动：缺口 × 库内已有 → 自动判定「改稿 / 新写」
+- 📋 第二站点档案示例（验证多站点目录结构泛化）
+
 ## 原则
 
 1. 文件即状态：不引入数据库也能跑，规模化时才换 PG（接口已预留）

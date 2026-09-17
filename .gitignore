@@ -38,3 +38,21 @@ tmp/
 .DS_Store
 1-4 Dev/scripts/multi_seo/credentials/
 1-4 Dev/notion-sync/
+
+# ===== server runtime data (mirrors/secrets/state — never track) =====
+run/library/
+run/secrets/
+run/pay/
+run/projects/
+run/local-dev/
+run/status/
+run/logs/
+run/llm.json
+run/notify.json
+run/auth.json
+run/cms.json
+run/demo.json
+run/approvals.log
+run/qa-history.jsonl
+run/llm-usage.jsonl
+run/*.log
