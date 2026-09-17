@@ -33,6 +33,27 @@ python3 "1-4 Dev/scripts/publish_adapters/sanity_publisher.py" dry-run --file x.
 python3 "1-4 Dev/scripts/publish_adapters/sanity_publisher.py" publish  --file x.md --slug s --lang zh --yes
 ```
 
+## 一之二、落地页（compositePage，T1 已上线）
+
+**⚠ 关键差异**：`compositePage` **没有 `status` 草稿字段**（实测 9,303 篇 0 个）→ **真实写入立即前台可见**。
+因此落地页发布比 blog 更保守：默认 dry-run · 真实写入必须显式勾选「确认公开可见」· 更新优先用 patch 模式。
+
+| 能力 | 说明 |
+|------|------|
+| md → composite 版块 | `md_to_sections()`：hero-split（标题/描述/CTA/封面）→ feature-detail（按 H2 归组）→ proof-block（≥2 个含数字句）→ faq（`## FAQ` 或问句 H2/H3）→ cta-default；自动去重避免文案重复计数 |
+| 结构校验 | `validate_sections()`：必须有 hero · 内容版块 ≥2 · FAQ ≤8 · 有 cta · 文案总长 200–1200（RULES-70 落地页档） |
+| 两种写入 | `create`（createIfNotExists，新建页）· **`patch`（带 ifRevisionID，只改指定字段；更新既有页首选）** |
+| 批量 | 批量任务类型 `publish_sanity`（items 带 doctype/mode/page_type/...），走配额（真实写入计量）与熔断 |
+| 安全闸 | 未勾选确认 → API 直接拒绝（"写入即上线"提示） |
+
+CLI：
+```bash
+python3 "1-4 Dev/scripts/publish_adapters/sanity_publisher.py" ...   # 见 publish_landing()/build_composite_doc()
+```
+API：`POST /api/publish/sanity {doctype:"composite", page_type, mode, cover_url, confirm_public, dry_run}`
+
+实测（线上 dry-run，零副作用）：create 模式 5 版块 tx 返回；patch 模式更新既有页 tx 返回；Sanity 文档 `_updatedAt` 未变。
+
 ## 二、WordPress（通道已通，待配置）
 
 - 实现：既有 `publish_adapters/wordpress.py`（WP REST + Application Password）+ 统一 `cli.py`

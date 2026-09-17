@@ -222,6 +222,15 @@
 - ✅ T6 配额预警：用量记账时 80% ⚠ / 100% ⛔ 飞书通知（每用户×指标×每月去重）；健康报告 `quota_alerts` → 总览健康卡；设置页配额表 80%/100% 标黄标红
 - ✅ T4 自动化测试：`1-4 Dev/tests/test_console_units.py` 21 用例（护栏/熔断/配额/降噪/上下文/预设），纯 stdlib 离线 3 秒；`run-tests.sh` 一键跑；接入 **GATE 6**（失败挡发布）
 
+## Phase 17 · 落地页整页发布（T1，2026-09-17 ✅）
+
+- ✅ `compositePage` 生成：md → composite-v2 版块（hero-split / feature-detail / proof-block / faq / cta-default），自动去重（903 字符合规）
+- ✅ 结构校验 `validate_sections`：hero 必备 · 内容版块 ≥2 · FAQ ≤8 · cta 必备 · 文案 200–1200（RULES-70 落地页档）
+- ✅ 两种写入模式：`create`（createIfNotExists）· `patch`（ifRevisionID，只改指定字段，更新既有页首选）
+- ✅ **安全闸**：compositePage 无草稿态（实测 9,303 篇无 status 字段）→ 真实写入必须显式 `confirm_public`，否则拒绝
+- ✅ 批量执行器 `publish_sanity`（blog/composite 通吃）+ 发布通道 UI（文档类型/模式/封面/确认框）+ 5 个新单测（共 26）
+- 📋 待做：落地页批量改稿→发布闭环预设（refresh 后直接 patch 上线）
+
 ## 原则
 
 1. 文件即状态：不引入数据库也能跑，规模化时才换 PG（接口已预留）
