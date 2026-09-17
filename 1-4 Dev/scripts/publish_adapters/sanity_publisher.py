@@ -278,9 +278,10 @@ def md_to_sections(md_text, title="", description="", cover_url="", cover_alt=""
         elif s and not s.startswith("#"):
             plain.append(s)
     desc_text = (description or (plain[0] if plain else ""))[:400]
+    first_sentence = re.split(r"[。.!?？]", desc_text)[0][:60] if desc_text else ""
     sections = [{
-        "type": "hero-split", "badge": title[:60], "title": title,
-        "highlightedText": (description or (plain[0] if plain else ""))[:80],
+        "type": "hero-split", "badge": "", "title": title,
+        "highlightedText": first_sentence,
         "description": desc_text,
         "buttons": [{"text": "Start free", "href": cta_href, "variant": "primary"},
                     {"text": "See examples", "href": cta_href, "variant": "secondary"}],
@@ -289,7 +290,7 @@ def md_to_sections(md_text, title="", description="", cover_url="", cover_alt=""
     for h in h2s[:4]:
         d = " ".join(h["desc"]).strip()
         if d:
-            sections.append({"type": "feature-detail", "title": h["title"][:80], "description": "",
+            sections.append({"type": "feature-detail", "title": "", "description": "",
                              "items": [{"title": h["title"][:80], "description": d[:400],
                                         "media": {"src": cover_url}}]})
     # proof-block：正文里能找到 ≥2 个含数字的短句才生成

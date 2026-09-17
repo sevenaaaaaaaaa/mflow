@@ -159,7 +159,7 @@ ssh -p "$REMOTE_PORT" "$REMOTE" "systemctl restart ${CONSOLE_SVC} && sleep 2 && 
     || fail 5 "服务重启失败"
 ssh -p "$REMOTE_PORT" "$REMOTE" "bash '${REMOTE_ROOT}/1-4 Dev/scripts/session-init.sh'" >/dev/null 2>&1 \
     || fail 5 "服务端 session-init 门禁未过"
-say "  ✓ 服务 active · 服务端门禁 5/5"
+say "  ✓ 服务 active · 服务端门禁全部通过（含 GATE6 单元测试）"
 
 # ── 6) 外部验证 ─────────────────────────────────────────
 say "⑥ 外部验证：${SITE_URL}"
