@@ -57,3 +57,28 @@
 2. 跑预设时**先 dry-run**，确认后再真跑
 3. 真实发布前用「发布通道」的 dry-run 复核
 4. 每月看一眼「维护 · 最近清理记录」确认自动治理在生效
+
+## 六、熔断（T3，2026-09-17 上线）
+
+| 层级 | 触发 | 行为 |
+|------|------|------|
+| **任务级** | 单批连续失败 ≥ `fail_threshold`（默认 5） | 任务置 `tripped` 并暂停；日志 + 飞书通知；可「重试失败」 |
+| **致命错误** | 连续 2 次命中致命模式（401/403/invalid key/insufficient/balance/quota/unauthorized） | 立即熔断任务 **并触发全局熔断** 30 分钟 |
+| **全局** | 熔断期间 | worker **不领取任何任务**；冷却期后自动复位（半开）；可手动解除（设置页） |
+
+API：`GET /api/breaker`（状态）· `POST /api/breaker/reset`（admin）
+实测：错误 Key → 任务 `tripped`，全局熔断 reason=`致命错误…HTTP 401`；恢复 Key + 手动解除 → 正常。
+
+## 七、按用户配额与用量（T5，2026-09-17 上线）
+
+**计量**（`run/users-usage.json`，按月）：`tasks / items / tokens / writes`
+- 记账点：建任务（tasks）、生成类（items + 真实 tokens）、字段/物料（items + 真实写入数）、QA（items）、批量改稿（items + tokens）
+- tokens 取每次 LLM 调用的真实 usage（含内部重试轮）
+
+**配额**（`run/quotas.json`；默认 条目 500 / tokens 500k / 真实写入 200 每月）
+- **admin 不限量**；`per_user` 可逐人覆盖，填 `unlimited` 解除限制
+- 拦截时机：**建任务前**（配额不足 → HTTP 429 + 明确提示）；涵盖批量任务、预设、Agent 规格、QA 修复编排、复检
+- UI：设置页「用户配额与用量」表（本月用量 + 配额 + 一键改配额）
+- 实测：admin 设 1 条仍不限 → 正确；`mflow` 建 3 项 QA 任务后用量 `tasks=1, items=3, tokens=0, writes=0`（dry-run 不计写入）→ 正确
+
+**为什么这两条能降低"人人可用"的风险**：配额挡住超支与滥用，熔断挡住"错误配置下的空烧"——两者都是**自动闸门**，不依赖使用者自律。
