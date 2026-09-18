@@ -3109,12 +3109,17 @@ def _auto_preset_match(message, proj=None):
     ]
 
     best_score, best_preset = 0, None
+    by_id = {p["id"]: p for p in presets}
     ml_words = set(re.findall(r"[a-z0-9\u4e00-\u9fff]{2,}", ml))
-    for preset in presets:
-        pid = preset["id"]
-        kw_score = sum(1 for kw in match_rules if any(k in ml for k in kw) and pid in str(preset["id"]))
-        name_score = len(set(re.findall(r"[a-z0-9\u4e00-\u9fff]{2,}", preset.get("name", "").lower())) & set(re.findall(r"[a-z0-9\u4e00-\u9fff]{2,}", ml)))
-        score = kw_score * 3 + name_score
+    for kws, pid in match_rules:
+        matched = sum(1 for k in kws if k in ml)
+        if not matched:
+            continue
+        preset = by_id.get(pid)
+        if not preset:
+            continue
+        name_score = len(set(re.findall(r"[a-z0-9\u4e00-\u9fff]{2,}", preset.get("name", "").lower())) & ml_words)
+        score = matched * 3 + name_score
         if score > best_score:
             best_score = score
             best_preset = preset
