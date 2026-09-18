@@ -809,7 +809,7 @@ def run_content_gates(path, ctype="blog", lang="zh", tag="gate", budget_profile=
     return out
 
 
-def gen_prompt(ctype, lang, topic, brief, feedback="", template=None, budget_profile="default"):
+def gen_prompt(ctype, lang, topic, brief, feedback="", template=None, budget_profile="default", style_id=""):
     lang_name = {"zh": "简体中文", "zh-TW": "繁体中文", "en": "English", "ja": "日本語", "ko": "한국어",
                  "de": "Deutsch", "fr": "Français", "pt": "Português", "ru": "Русский", "it": "Italiano"}.get(lang, lang)
     tpl = (template or {}).get("prompt") or {}
@@ -1368,6 +1368,10 @@ def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", t
                 f"指令：{instruction}\n\n现有内容：\n{source_text[:12000]}\n\n" + user)
     if prior_context:
         user = (f"【前序批次上下文（避免重复，保持口径一致）】\n{prior_context[:1500]}\n\n" + user)
+    if style_id:
+        style_ref = style_to_skill_ref(style_id)
+        if style_ref:
+            user = (f"【样式参考（用户自定义，必须遵循其结构规则）】\n{style_ref}\n\n" + user)
 
     # 内部重试：门禁不过（尤其 quota 超字数）时带反馈重写，最多 3 轮（与 Loop 同思路）
     draft, gates, feedback, _tok = "", None, "", 0
@@ -2917,6 +2921,103 @@ def governance_report():
 
 
 
+# ===================== 样式库（用户导入样式 → 定制模块规则 → 定制故事线）=====================
+STYLES_DIR = RUN_DIR / "styles"
+
+
+def styles_list():
+    out = []
+    if STYLES_DIR.exists():
+        for f in sorted(STYLES_DIR.glob("*.json"), key=lambda x: x.stat().st_mtime, reverse=True):
+            d = read_json(f, {})
+            if d:
+                out.append({"id": d.get("id", f.stem), "name": d.get("name", f.stem),
+                            "desc": d.get("desc", ""), "sections": len(d.get("sections") or []),
+                            "storylines": len(d.get("storylines") or []),
+                            "created": d.get("created", ""), "created_by": d.get("created_by", "")})
+    return out
+
+
+def style_load(sid):
+    return read_json(STYLES_DIR / f"{sid}.json", None)
+
+
+def style_import(data, by=""):
+    """导入样式包。格式：{id, name, desc, sections:[...], storylines:[...]}
+    sections 每项：{type, title_pattern, content_rules, required_keys, example}
+    storylines 每项：{id, name, flow:[...], prompt_structure}"""
+    if not isinstance(data, dict):
+        return {"error": "样式必须是 JSON 对象"}
+    sid = re.sub(r"[^a-z0-9-]", "", str(data.get("id", "")).lower())[:40] or f"style-{secrets.token_hex(3)}"
+    d = {"id": sid, "name": str(data.get("name", sid))[:80], "desc": str(data.get("desc", ""))[:300],
+         "sections": (data.get("sections") or [])[:20], "storylines": (data.get("storylines") or [])[:30],
+         "created": datetime.now().strftime("%Y-%m-%d %H:%M"), "created_by": by}
+    STYLES_DIR.mkdir(parents=True, exist_ok=True)
+    (STYLES_DIR / f"{sid}.json").write_text(json.dumps(d, ensure_ascii=False, indent=1))
+    with open(RUN_DIR / "approvals.log", "a") as f:
+        f.write(f"{datetime.now().isoformat(timespec='seconds')} STYLE-IMPORT {sid} sections={d['sections'].__len__()} by={by}\n")
+    return {"ok": True, "id": sid, "name": d["name"], "sections": d["sections"].__len__()}
+
+
+def style_delete(sid, by=""):
+    p = STYLES_DIR / f"{sid}.json"
+    if p.exists():
+        p.unlink()
+        with open(RUN_DIR / "approvals.log", "a") as f:
+            f.write(f"{datetime.now().isoformat(timespec='seconds')} STYLE-DELETE {sid} by={by}\n")
+        return {"ok": True}
+    return {"error": "样式不存在"}
+
+
+def style_validate(data):
+    """校验样式 JSON 结构合法性。"""
+    errs = []
+    if not isinstance(data, dict):
+        return ["必须是 JSON 对象"]
+    if not data.get("name"):
+        errs.append("缺 name")
+    secs = data.get("sections")
+    if secs:
+        if not isinstance(secs, list):
+            errs.append("sections 必须是数组")
+        else:
+            for i, s in enumerate(secs[:50]):
+                if not isinstance(s, dict):
+                    errs.append(f"sections[{i}] 必须是对象")
+                    continue
+                if not s.get("type"):
+                    errs.append(f"sections[{i}] 缺 type")
+                if s.get("required_keys"):
+                    if not isinstance(s["required_keys"], list):
+                        errs.append(f"sections[{i}].required_keys 必须是数组")
+    stls = data.get("storylines") or []
+    if stls and not isinstance(stls, list):
+        errs.append("storylines 必须是数组")
+    return errs
+
+
+def style_to_skill_ref(sid, skill_name=""):
+    """把注册的样式注入为 gen_prompt 的结构参考（运行时自动注入）。"""
+    st = style_load(sid)
+    if not st:
+        return ""
+    secs = st.get("sections") or []
+    if not secs:
+        return ""
+    lines = [f"【样式：{st.get('name', sid)}】"]
+    for s in secs[:10]:
+        tp = s.get("type", "")
+        rules = s.get("content_rules") or ""
+        req = s.get("required_keys") or []
+        lines.append(f"- {tp}: {rules}" + (f" 必含字段: {req}" if req else ""))
+    stls = st.get("storylines") or []
+    if stls:
+        lines.append("故事线：")
+        for sl in stls[:5]:
+            lines.append(f"  - {sl.get('id','')}: {sl.get('desc','')[:100]}")
+    return "\n".join(lines)
+
+
 # ===================== 自我进化（QA 高频 BLOCK → gen_prompt 禁例）=====================
 
 def self_evolve_analyze(days=14):
@@ -4203,6 +4304,12 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"blocked": blocked, "state": st})
             if parsed.path == "/api/quota":
                 return self._send(200, quota_report(self._role(), self._me()))
+            if parsed.path == "/api/styles":
+                return self._send(200, styles_list())
+            if parsed.path == "/api/styles/detail":
+                return self._send(200, style_load(qs.get("id", [""])[0]) or {"error": "样式不存在"})
+            if parsed.path == "/api/styles/validate":
+                return self._send(200, {"errors": style_validate(body)})
             if parsed.path == "/api/self-evolve/analyze":
                 return self._send(200, self_evolve_analyze(int(qs.get("days", ["14"])[0])))
             if parsed.path == "/api/self-evolve/suggestions":
@@ -4455,7 +4562,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/qa/orchestrate", "/api/qa/recheck",
                       "/api/presets/run", "/api/housekeeping/run",
                       "/api/breaker/reset", "/api/quotas/save",
-                      "/api/self-evolve/apply"}
+                      "/api/self-evolve/apply",
+                      "/api/styles/import", "/api/styles/delete"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
@@ -4881,6 +4989,14 @@ class Handler(BaseHTTPRequestHandler):
                             f"items={t['stats']['total']} dry_run={dry} by={self._me()}\n")
                 return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"],
                                         "note": r.get("note", ""), "dry_run": dry})
+            if self.path == "/api/styles/import":
+                data = body.get("data") or body
+                errs = style_validate(data)
+                if errs:
+                    return self._send(400, {"error": "样式校验失败", "errors": errs})
+                return self._send(200, style_import(data, by=self._me()))
+            if self.path == "/api/styles/delete":
+                return self._send(200, style_delete(str(body.get("id", "")), by=self._me()))
             if self.path == "/api/self-evolve/apply":
                 r = self_evolve_apply(str(body.get("pattern", "")), str(body.get("action", "")), by=self._me())
                 return self._send(200 if r.get("ok") else 400, r)

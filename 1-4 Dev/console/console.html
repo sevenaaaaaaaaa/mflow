@@ -719,6 +719,13 @@ th{color:var(--muted);font-weight:600}
         <button class="btn ghost" onclick="quotaSave()">保存默认配额</button>
         <span class="mut">admin 不限量；保存后即刻生效</span></div>
       <div id="q-table" style="margin-top:10px;max-height:280px;overflow:auto"></div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>样式库 <span class="mut">（用户导入样式 → 定制故事线）</span></h3>
+      <button class="more" onclick="styleLoad()">刷新 ↻</button></div>
+      <div id="style-list"></div>
+      <div class="card" style="margin-top:10px;background:var(--surface)"><div class="card-head"><h3>导入样式包</h3><span class="mut">JSON 格式</span></div>
+        <textarea id="style-json" placeholder='{"id":"my-style","name":"我的样式","desc":"描述","sections":[{"type":"hero-split","content_rules":"首段必须含数据点","required_keys":["title","description"]}],"storylines":[]}' style="width:100%;min-height:100px;border:1px solid var(--border);border-radius:12px;padding:10px;font-family:var(--font-mono);font-size:12px;background:var(--surface-strong);color:var(--fg)"></textarea>
+        <div class="row" style="margin-top:8px"><button class="btn ghost" onclick="styleImport()">校验并导入</button>
+        <span class="mut" id="style-hint">导入后自动注册为 gen_prompt 结构参考（下次生成生效）</span></div></div></div>
     <div class="ov-grid2" style="margin-top:14px">
       <div class="card"><div class="card-head"><h3>Harness 规则（全局铁律 + 工作线）</h3></div><div id="harness-rules"></div></div>
       <div class="card"><div class="card-head"><h3>Skills <span class="mut" id="skill-n"></span></h3>
@@ -1194,7 +1201,7 @@ function flowAdv(){const id=$('fitem').value.trim();if(!id)return alert('先填�
 
 /* ---- 设置 ---- */
 let LLMCFG=null;
-function loadSet(){brkLoad();quotaLoad();hkLoad();loadProjCfg();api('api/llm').then(c=>{LLMCFG=c;
+function loadSet(){styleLoad();brkLoad();quotaLoad();hkLoad();loadProjCfg();api('api/llm').then(c=>{LLMCFG=c;
  $('llm-providers').innerHTML=Object.entries(c.providers).map(([n,p])=>`<div class="row">
    <b style="width:80px;font-size:13px">${n}</b>
    <input id="lp-base-${n}" value="${esc(p.base||'')}" placeholder="base url" style="flex:1;min-width:180px">
@@ -1565,6 +1572,20 @@ function agSend(){const v=$('ag-input').value.trim();if(!v)return;$('ag-btn').di
 function agExec(spec,real){if(real&&!confirm('确认真实执行（会写生产库/消耗额度）？\n类型：'+spec.type+'\n条目：'+spec.items.length)) return;
  const body={session_id:AG_ID,spec:{...spec,dry_run:!real},force:real};
  api('api/agent/execute',body).then(r=>{if(r.error)return alert(r.error);alert('已创建任务 '+r.task_id);agOpen(AG_ID)})}
+
+/* ---- 样式库 ---- */
+function styleLoad(){api('api/styles').then(ss=>{
+ $('style-list').innerHTML=(ss||[]).length?'<table><tr><th>样式</th><th>版块</th><th>故事线</th><th>创建</th><th></th></tr>'+
+  ss.map(x=>`<tr><td><b>${esc(x.name)}</b><div class="mut" style="font-size:10.5px">${esc(x.id)} · ${esc(x.desc||'')}</div></td>
+   <td class="tnum">${x.sections}</td><td class="tnum">${x.storylines||0}</td><td class="mut" style="font-size:11px">${esc(x.created||'')}</td>
+   <td><button class="mini" style="color:var(--danger)" onclick="styleDel('${esc(x.id)}')">删除</button></td></tr>`).join('')+'</table>'
+  :'<span class="mut">暂无自定义样式</span>'})}
+function styleImport(){let d;try{d=JSON.parse($('style-json').value)}catch(e){return alert('JSON 解析失败')}
+ api('api/styles/import',{...d}).then(r=>{if(r.error)return alert('导入失败：'+(r.error||''));
+  if(r.errors)return alert('校验失败：\n'+r.errors.join('\n'));
+  alert(`已导入样式：${r.name}（${r.sections} 版块）`);$('style-json').value='';styleLoad()})}
+function styleDel(sid){if(!confirm('删除样式 '+sid+'？'))return;
+ api('api/styles/delete',{id:sid}).then(r=>{if(r.error)return alert(r.error);styleLoad()})}
 
 /* ---- 熔断 / 配额 ---- */
 function brkLoad(){api('api/breaker').then(d=>{const s=d.state||{};
