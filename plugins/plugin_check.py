@@ -8,8 +8,10 @@ try:
 except Exception:
     pass
 
-TYPES = {"source", "publisher", "template"}
+TYPES = {"source", "publisher", "template", "gate", "transform", "analyzer"}
 REQUIRED = ["id", "type", "name", "version", "entry"]
+ENTRY_FNS = {"source": ["collect"], "publisher": ["publish"],
+             "gate": ["check"], "transform": ["transform"], "analyzer": ["analyze"]}
 
 def check(plugin_dir):
     d = Path(plugin_dir)
@@ -32,7 +34,7 @@ def check(plugin_dir):
         errs.append(f"entry 文件不存在: {entry}")
     else:
         code = entry.read_text(errors="ignore")
-        for fn in ({"source": ["collect"], "publisher": ["publish"]}.get(m.get("type"), [])):
+        for fn in ENTRY_FNS.get(m.get("type"), []):
             (oks if f"def {fn}" in code else errs).append(
                 f"entry 暴露 {fn}() " + ("✓" if f"def {fn}" in code else "缺失"))
         for perm in m.get("permissions", []):
