@@ -97,3 +97,11 @@ Required checks: SERP brief / fact sourcing / Anti-slop / i18n / Quality Gates
 ```
 
 Then produce either the brief, outline, Markdown draft, or page JSON requested by the user.
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出受 RULES-70 数量预算约束（字数/H2/FAQ/数据点/来源）。
+
+
+- 禁止绕过质量门禁直接发布。禁止删除 production 文档。

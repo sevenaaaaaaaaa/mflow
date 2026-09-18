@@ -307,3 +307,8 @@ node scripts/preflight-content.js --type features --report "../../Output/Quality
 | AB-U03 | 缺 slug 推断后发布前 GROQ 核对 `slug.current` |
 
 **URL 探测**：日常用 `--sample-urls 8`；`--check-urls` 全量仅大批发布前偶尔使用（AB-A01：先小样本再扩大）。
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出受 RULES-70 数量预算约束（字数/H2/FAQ/数据点/来源）。

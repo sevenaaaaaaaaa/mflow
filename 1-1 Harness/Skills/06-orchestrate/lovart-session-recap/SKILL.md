@@ -1,44 +1,46 @@
 ---
-description: 会话回顾 skill。提取关键决策与待办。
+description: 会话回顾 skill。从最近会话日志提取关键决策、教训与后续待办，输出结构化回顾摘要。触发：用户要会话回顾、session recap、上次做了什么。
 ---
-# Session Recap Protocol
 
-> When the user says "继续" / "what were we doing" / "recap" / returns after a break,
-> produce this EXACT format. No preamble, no markdown, no greeting.
+# lovart-session-recap — 会话回顾
 
-## Format
+## 流程
 
-```
-{overall goal in one clause}. Currently: {current task}. Next: {one concrete action}.
-```
+1. 读取 `11-knowledge/sessions/` 最近 N 篇会话日志（默认 5 篇）
+2. 从每篇提取：交付物 / 关键决策 / 踩坑教训 / 待办
+3. 汇总输出结构化回顾
 
-## Rules
-
-- **Under 40 words total.** Hard limit.
-- **No markdown formatting.** Plain text only.
-- **No root-cause narrative.** Don't explain why things are the way they are.
-- **No fix internals.** Don't describe what you fixed or how.
-- **No secondary to-dos.** Only the ONE next action.
-- **No em-dash tangents.** Stay on the main thread.
-- **Lead with the goal.** The user needs to remember WHERE they were, not HOW.
-
-## Example
+## 输出格式
 
 ```
-Building Lovart content pipeline. Currently: validating governance check on 39 scripts. Next: write session log.
+## 交付物
+- [日期] xxx（状态）
+
+## 关键决策
+- [日期] 决策内容
+
+## 踩坑
+- 问题 → 解法
+
+## 待办
+- [ ] 待办项
 ```
 
-## Anti-patterns (DO NOT)
+## 触发
 
-```
-❌ "Welcome back! We were working on the tool governance system. We had just finished
-    running the governance check on all 39 scripts and they all passed. We also fixed
-    the G5 false positive issue. The next step is to write the session log and update
-    MEMORY-PROJECT."
-✅ "Building Lovart pipeline. Currently: 39/39 governance PASS. Next: session log."
-```
+"回顾最近会话"、"session recap"、"这周做了什么"
 
-```
-❌ "## Recap\n\n- We created 3 new skills\n- We archived 2 profiles\n- We slimmed SOULs\n\n### Next steps\n1. Write session log\n2. Update MEMORY-PROJECT"
-✅ "Lovart pipeline overhaul. Currently: all tests pass. Next: session log."
-```
+## 路径
+
+会话日志：`1-1 Harness/11-knowledge/sessions/*.md`
+项目记忆：`11-knowledge/MEMORY-PROJECT.md`
+
+## 预算
+
+输出 ≤500 字（RULES-70），只提取关键信息不展开。
+
+
+- 必须过质量门禁（post-write-check + geo-check + quota-check + lang-check）。
+
+
+- 禁止绕过质量门禁直接发布。禁止删除 production 文档。

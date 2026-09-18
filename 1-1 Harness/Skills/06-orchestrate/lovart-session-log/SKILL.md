@@ -135,3 +135,11 @@ note: 1 new pattern (P5) added — appears 1 time, will be tracked by dream/refl
 - Layer 3 (preview, 未实现)：PR Workflow + user approve/decline
 - 关联 skill：`lovart-dream-orchestrator` (梦境编排 — Layer 2 实际运行时挂这里)
 - 关联 graph entities：`ds-sessions` (planned)
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **必须**过质量门禁（post-write-check + geo-check）
+
+- **禁止**绕过质量门禁直接发布

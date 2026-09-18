@@ -700,3 +700,8 @@ Ship? → All gates pass → ship-ready。
 ---
 
 **Skill Status**: v0.3 published, ready for production use. Refresh trigger = 90 days / new Lovart voice / new platform law / new tool collision.
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出受 RULES-70 数量预算约束（字数/H2/FAQ/数据点/来源）。

@@ -158,3 +158,11 @@ python3 pipeline_state.py advance --id blog-firefly-2026-07 --to S5-published
 - `lovart-sanity-publish` —— S5-importing 后的执行器（输入要求 `pre-import-check` PASS）
 - `lovart-sitemap-update` —— S5-published 后的通知器
 - `lovart-sentinel` —— S6-monitoring 阶段的反馈源
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出受 RULES-70 数量预算约束（字数/H2/FAQ/数据点/来源）。
+
+
+- 禁止绕过质量门禁直接发布。禁止删除 production 文档。

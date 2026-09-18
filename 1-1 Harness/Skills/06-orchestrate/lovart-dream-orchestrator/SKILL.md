@@ -94,3 +94,12 @@ bash 1-1 Harness/11-knowledge/dream/audit.sh
 - 梦境说明：`1-1 Harness/11-knowledge/dream/README.md`
 - 同步：`1-1 Harness/11-knowledge/scripts/kg` (emit/query)
 - launchd 配置：`1-1 Harness/11-knowledge/dream/lovart.dream.plist`（复制到 `~/Library/LaunchAgents/com.lovart.dream.plist` 后 load）
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **必须**过质量门禁（post-write-check + geo-check）
+
+- **禁止**绕过质量门禁直接发布

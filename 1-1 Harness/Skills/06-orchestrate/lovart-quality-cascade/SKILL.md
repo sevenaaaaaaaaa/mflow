@@ -193,3 +193,8 @@ Reproduce: `bash 1-1\ Harness/Skills/06-orchestrate/lovart-quality-cascade/smoke
 - 安全 runtime：`max_iterations=3`、`iter_timeout_s=600`、`token_budget=20000`
 - related：skill `lovart-content-creation-orchestrator`（single-pass）、skill `lovart-content-quality-gates`（single-pass criteria）、skill `lovart-anti-slop`（被 cascade criterion 通过 v0.2 取代）
 - 改本 skill / criteria：提 PR 走 `git mv 1-1 Harness/Skills/06-orchestrate/lovart-quality-cascade/` → 1-1 Harness/.claude/skills/06-orchestrate/ 同路径同步。
+
+
+## 触发
+
+用户提到 quality cascade、sync、上线。

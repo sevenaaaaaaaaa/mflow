@@ -176,3 +176,12 @@ grep "{new_slug}" output/sitemap-blog.xml
 ## Downstream
 
 本步骤为 Pipeline 终点。输出汇总到 Pipeline Orchestrator 最终报告。
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **必须**过质量门禁（post-write-check + geo-check）
+
+- **禁止**绕过质量门禁直接发布

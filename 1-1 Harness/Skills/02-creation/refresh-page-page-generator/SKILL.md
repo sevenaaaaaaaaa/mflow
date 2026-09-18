@@ -85,3 +85,8 @@ Product 页额外确认：官网 SEO vs 投放、能力/特色/功能主次、�
 - 每个分叉/变体 = 独立故事线
 - 不发明 README 不存在的 `type`
 - 先 Brief + 故事线确认，再写 JSON
+
+
+## 触发
+
+用户提到 refresh page page generator、sync、上线。

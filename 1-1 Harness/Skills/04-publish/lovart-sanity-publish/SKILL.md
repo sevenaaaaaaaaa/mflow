@@ -129,3 +129,8 @@ SINCE_MINUTES=60 npx sanity exec scripts/verify-blog-publish.js --with-user-toke
 ```bash
 cd "/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Dev/lovart.sanity.studio"
 ```
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出受 RULES-70 数量预算约束（字数/H2/FAQ/数据点/来源）。

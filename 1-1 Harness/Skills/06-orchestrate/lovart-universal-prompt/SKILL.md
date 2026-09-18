@@ -51,3 +51,17 @@ When returning to a conversation after a break:
 - Lead with the overall goal and current task.
 - State the one next action.
 - Skip root-cause narrative, fix internals, secondary to-dos.
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **必须**过质量门禁（post-write-check + geo-check）
+
+- **禁止**绕过质量门禁直接发布
+
+
+## 触发
+
+用户提到 universal prompt、sync、上线。

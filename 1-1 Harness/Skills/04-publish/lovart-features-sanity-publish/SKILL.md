@@ -76,3 +76,8 @@ disable-model-invocation: true
 | AB-S05 | convert 补 `sourceType`；preflight `META_SOURCETYPE` 归零 |
 | AB-I05 | 发布后 `audit-composite-images-404.js`；404 用 `patch-composite-images-404.js` |
 | AB-A01 | patch / import 必须先 dry-run 或 `--limit` pilot |
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出受 RULES-70 数量预算约束（字数/H2/FAQ/数据点/来源）。

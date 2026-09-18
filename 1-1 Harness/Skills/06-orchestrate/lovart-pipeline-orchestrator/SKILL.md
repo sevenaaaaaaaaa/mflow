@@ -260,3 +260,8 @@ cd 1-1 Harness/Skills/lovart-trident-data-engine && bash scripts/run_all.sh
 | READ token 写库 | AB-E04 |
 
 **BLOCK 回退**：preflight BLOCK 或 audit BLOCK → 回退 Step 3；勿在 Step 5 用 `--replace` 强行覆盖。
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出受 RULES-70 数量预算约束（字数/H2/FAQ/数据点/来源）。

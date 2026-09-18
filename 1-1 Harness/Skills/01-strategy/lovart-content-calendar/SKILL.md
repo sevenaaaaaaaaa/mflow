@@ -161,3 +161,12 @@ Output/Content Calendar/
 ## Downstream
 
 完成后自动触发 → `lovart-content-writer` / `lovart-features-page` / `lovart-blog-automation` (Step 3)
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **必须**过质量门禁（post-write-check + geo-check）
+
+- **禁止**绕过质量门禁直接发布

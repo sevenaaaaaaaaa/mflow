@@ -76,3 +76,16 @@ node scripts/patch-scenarios-draft-urls.js --apply
 count(*[_type=="compositePage" && category=="scenario" && slug.current match "draft-*"])
 *[_type=="compositePage" && category=="scenario" && slug.current match "draft-*"]{_id,slug,url_path,"noIndex":seo.noIndex}[0...5]
 ```
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出受 RULES-70 数量预算约束（字数/H2/FAQ/数据点/来源）。
+
+
+## 触发
+
+用户提到 scenarios sanity publish、sync、上线。
+
+
+- 禁止绕过质量门禁直接发布。禁止删除 production 文档。

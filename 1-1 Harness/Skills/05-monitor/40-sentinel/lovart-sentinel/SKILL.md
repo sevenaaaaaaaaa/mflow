@@ -199,3 +199,12 @@ cd "1-Project/Lovart" && python3 scripts/sentinel/report.py --date $(date +%Y-%m
 - `references/data-sources.md` — 21个数据源的采集方法、列名映射、解析逻辑
 - `references/alert-rules.md` — 完整告警规则、阈值、响应机制 + 弱信号规则
 - `references/visual-plan.md` — 🆕 12种图表的类型选择、布局位置、数据映射和工具推荐
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **必须**过质量门禁（post-write-check + geo-check）
+
+- **禁止**绕过质量门禁直接发布

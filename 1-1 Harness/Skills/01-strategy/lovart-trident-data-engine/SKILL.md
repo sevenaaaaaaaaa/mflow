@@ -384,3 +384,15 @@ A: 主口径是「全月有搜索曝光的 URL 数」÷ 语料库 20k。禁止�
 
 **Q: OKR 注册/付费数据可靠吗？**
 A: 不可靠，仅作为趋势参考。标注为「估算值（UV × 目标转化率）」。
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **必须**过质量门禁（post-write-check + geo-check）
+
+
+## 触发
+
+用户提到 trident data engine、sync、上线。

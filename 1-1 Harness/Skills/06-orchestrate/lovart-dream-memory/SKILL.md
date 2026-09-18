@@ -62,3 +62,12 @@ After consolidation, print:
 - **Don't** change existing entry content — only append new sections
 - **Don't** modify `entities.yaml` or `relationships.yaml` directly — that's the graph layer
 - **Don't** run this during normal sessions — only during dream cycles (cron/manual trigger)
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **必须**过质量门禁（post-write-check + geo-check）
+
+- **禁止**绕过质量门禁直接发布

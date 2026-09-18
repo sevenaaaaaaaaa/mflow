@@ -74,3 +74,8 @@ disable-model-invocation: true
 | AB-I02 | 替换图禁止 `bg-line.png` 等装饰 URL；须 `assets-persist` 或同页 sibling |
 | AB-P02 | 日常 `--missing` only；pull 对齐后仅 push 变更 JSON |
 | AB-A01 | import 前 `--ndjson` preflight + dry-run convert |
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出受 RULES-70 数量预算约束（字数/H2/FAQ/数据点/来源）。

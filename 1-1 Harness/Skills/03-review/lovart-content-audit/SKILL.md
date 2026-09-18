@@ -214,3 +214,8 @@ BLOCK → 回退到 Step 3 修复
 | AB-C03 | EN 可读性 Flesch ≤12（WARN）；P0 slug 先 EN 编辑批次 |
 | AB-C04 | `imageBriefs` 仅 Studio 可见；验收前端不渲染 |
 | AB-A02 | SEO/category 改动不必全量前端 diff；见 Registry 附录 B |
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出受 RULES-70 数量预算约束（字数/H2/FAQ/数据点/来源）。

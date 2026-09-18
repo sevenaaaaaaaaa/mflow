@@ -83,3 +83,10 @@ description: 知识图谱查询 skill。查询项目知识与依赖关系。
 - 别名:`1-1 Harness/11-knowledge/scripts/kg <subcommand>`
 - 常用查询速查：`1-1 Harness/11-knowledge/queries/queries.md`
 - 同步：`1-1 Harness/11-knowledge/dream/consolidate.sh`（emit + 反推 Hermes 记忆）
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **必须**过质量门禁（post-write-check + geo-check）

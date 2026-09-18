@@ -105,3 +105,15 @@ python3 $HARNESS_ROOT/Skills/06-orchestrate/lovart-new-tool-governance/governanc
 - governance: 管"创建新工具时是否合规"
 
 三者互不替代：governance 不关心内容流程，只关心工具创建是否合规。
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **必须**过质量门禁（post-write-check + geo-check）
+
+
+## 触发
+
+用户提到 new tool governance、sync、上线。

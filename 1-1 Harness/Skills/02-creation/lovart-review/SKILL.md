@@ -36,3 +36,5 @@ description: Review 子技能，用于写单品评测、best-of roundups、versu
 ## 触发
 
 "写一篇 review"、"对比 X 和 Y"、"X 和 Y 哪个好"、"top 10 AI design tools"
+
+- **必须**过质量门禁（post-write-check + geo-check）

@@ -98,3 +98,12 @@ KB-Index/{by-topic, citations, capability-glossary}.md 全部重生成。
 - 后处理：`1-2 Insight/Knowledge Base/scripts/kb-frontmatter.py` + `build-index.py --write`
 - Shared schema：`1-2 Insight/Knowledge Base/KB-SCHEMA.md`
 - 关联 skill：`lovart-kb-mine`（查询 KB）
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **必须**过质量门禁（post-write-check + geo-check）
+
+- **禁止**绕过质量门禁直接发布

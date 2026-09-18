@@ -132,3 +132,10 @@ python3 router.py validate
 - `lovart-content-quality-gates` — `l1_fluff` 触发后真正执行
 - `lovart-sanity-publish` — `S5-importing` 触发后真正执行
 - `lovart-content-creation-orchestrator` — 改写后直接调 `router decide` 作为 step 1
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **禁止**绕过质量门禁直接发布

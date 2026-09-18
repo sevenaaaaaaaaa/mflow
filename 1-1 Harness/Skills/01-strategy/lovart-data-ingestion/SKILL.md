@@ -221,3 +221,12 @@ Agent 需读取以下本地文件，提取增量信号：
 ## Downstream
 
 完成后自动触发 → `lovart-content-calendar` (Step 2)
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **必须**过质量门禁（post-write-check + geo-check）
+
+- **禁止**绕过质量门禁直接发布

@@ -50,3 +50,15 @@ node scripts/import-page.js "$PRODUCTS/brand-kit-en.json" --import
 | `brand-kit-en.json` | `product-含社会证明` | `brand-kit-en` |
 
 两篇默认 **`seo.noIndex: true`**（参考稿）；正式 SEO 上线前在 Studio 改 `false`，勿在未授权时用 `--replace` 覆盖已编辑文档。
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **禁止**绕过质量门禁直接发布
+
+
+## 触发
+
+用户提到 product sanity publish、sync、上线。

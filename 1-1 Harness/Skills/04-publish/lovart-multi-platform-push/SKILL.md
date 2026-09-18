@@ -213,3 +213,12 @@ P1 (清单): 手动平台操作指引 → Output/Push Reports/manual-platforms-{
 - 全渠道分发 SOP: `Product Project Management/全渠道内容分发自动化SOP.md`
 - 飞书表格: https://resonate.feishu.cn/base/ZLWgbi6VIaCRiNsb22jcNpPRnfh
 - Notion Lovart-Home: `lovart-notion-config.md`
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **必须**过质量门禁（post-write-check + geo-check）
+
+- **禁止**绕过质量门禁直接发布

@@ -20,3 +20,13 @@ description: 将本地 News 页面 JSON（composite-v2，category news）安全�
 - 禁止修改 Sanity schema
 - 禁止删除 production 文档
 - 发布永远停在人工授权
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+
+## 触发
+
+用户提到 news sanity publish、sync、上线。

@@ -37,3 +37,10 @@ lovart-content-quality-gates (L1 preflight)
 ```
 
 勿再维护本文件中的重复命令表。
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出同样受 RULES-70 数量预算约束。
+
+- **禁止**绕过质量门禁直接发布

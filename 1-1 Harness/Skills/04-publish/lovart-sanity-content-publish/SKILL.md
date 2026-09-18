@@ -287,3 +287,8 @@ lovart-data-ingestion → lovart-content-calendar → lovart-landing-page
 | 禁止全量无授权 | AB-A01, AB-A03 | 同左 | 同左 |
 
 各管道细节见对应 Skill 的 `Anti-Bugs` 小节；破坏面矩阵见 Registry **附录 B**。
+
+
+## 预算（RULES-70 强制）
+
+本 skill 产出受 RULES-70 数量预算约束（字数/H2/FAQ/数据点/来源）。
