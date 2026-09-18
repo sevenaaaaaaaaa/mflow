@@ -1553,6 +1553,22 @@ def run_tick():
             if cur and cur["type"] == "verify" and cur["status"] == "pending":
                 cur["status"] = "running"; cur["started"] = cur.get("started") or datetime.now().strftime("%H:%M:%S")
                 # 收集要验证的 URL：步骤自带 urls，或从前序 batch 步的 spec/预设推导
+                # dry-run 未真实发布 → 跳过前台验证（否则会误判）
+                _dry = False
+                for _st in steps:
+                    if _st.get("type") in ("batch", "publish_sanity") and _st.get("task_id"):
+                        _t = batch_load(_st["task_id"]) or {}
+                        if _t.get("dry_run"):
+                            _dry = True
+                if _dry:
+                    cur["status"] = "done"; cur["detail"] = "上一步为 dry-run（未真实写入），跳过前台验证"
+                    cur["ended"] = datetime.now().strftime("%H:%M:%S"); changed = True
+                    if all(x["status"] in ("done", "failed", "warn", "blocked") for x in steps):
+                        run["status"] = ("failed" if any(x["status"] == "failed" for x in steps)
+                                         else ("warn" if any(x["status"] == "warn" for x in steps) else "done"))
+                    if changed:
+                        run_save(run)
+                    continue
                 urls = list(cur.get("urls") or [])
                 if not urls:
                     self_urls = []
