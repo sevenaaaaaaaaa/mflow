@@ -391,7 +391,7 @@ def build_composite_doc(md_path="", slug="", lang="en", page_type="tool", title=
                 if ls.startswith("# "):
                     title = ls[2:].strip()
                     break
-                elif ls and not ls.startswith(("-", "|", ">")):
+                elif ls and not ls.startswith(("-", "|", ">", "#")):
                     title = ls[:100]
                     break
     title = title or slug
