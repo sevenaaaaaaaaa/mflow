@@ -1423,6 +1423,23 @@ RUNS_DIR = RUN_DIR / "runs"
 _RUN_LOCK = threading.Lock()
 
 
+def _read_frontmatter(path):
+    """读取 md 文件 frontmatter 为 dict（无依赖）。"""
+    try:
+        txt = path.read_text(errors="ignore")
+    except Exception:
+        return {}
+    m = re.match(r"^---\s*\n([\s\S]*?)\n---", txt)
+    if not m:
+        return {}
+    out = {}
+    for line in m.group(1).split("\n"):
+        if ":" in line and not line.strip().startswith("#"):
+            k, v = line.split(":", 1)
+            out[k.strip()] = v.strip().strip('"').strip("'")
+    return out
+
+
 def _run_path(rid):
     return RUNS_DIR / (re.sub(r"[^a-z0-9-]", "", str(rid).lower()) + ".json")
 
@@ -1485,7 +1502,7 @@ def _run_sync_steps(run):
     """把与批量任务关联的步骤状态/进度同步过来。"""
     changed = False
     for st in run["steps"]:
-        if st.get("type") != "batch" or not st.get("task_id"):
+        if st.get("type") not in ("batch", "publish_sanity") or not st.get("task_id"):
             continue
         t = batch_load(st["task_id"])
         if not t:
@@ -1581,10 +1598,16 @@ def run_tick():
                             t0 = batch_load(pv["task_id"]) or {}
                             for it in (t0.get("items") or []):
                                 rp = (it.get("result") or {}).get("path")
-                                if rp and it.get("status") == "done":
-                                    items.append({"item_id": it.get("item_id") or os.path.basename(rp).replace(".md", ""),
-                                                  "path": rp, "lang": it.get("lang", "en"),
-                                                  "doctype": "composite", "mode": "patch"})
+                                if not (rp and it.get("status") == "done"):
+                                    continue
+                                src = safe_path(it.get("source_path", "")) if it.get("source_path") else None
+                                fm = _read_frontmatter(src) if src else {}
+                                slug = fm.get("slug") or (it.get("topic") or "")
+                                ptype = fm.get("page_type") or it.get("page_type") or "tool"
+                                langp = fm.get("language") or it.get("lang") or "en"
+                                items.append({"item_id": it.get("item_id") or os.path.basename(rp).replace(".md", ""),
+                                              "path": rp, "lang": langp, "slug": slug, "page_type": ptype,
+                                              "doctype": "composite", "mode": "patch" if slug else "create"})
                             if items:
                                 btype = "publish_sanity"; title = cur.get("name") or "发布上线"
                                 break
