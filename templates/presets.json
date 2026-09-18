@@ -111,11 +111,12 @@
     "name": "落地页闭环（改稿→发布）",
     "type": "landing_refresh",
     "icon": "🔁",
-    "desc": "落地页改稿 → 四门禁 + 结构校验 → 只把通过项 patch 发布（默认 dry-run，确认后再关）",
+    "desc": "落地页改稿 → 四门禁+结构校验 → 只把通过项 patch 发布（⚠ 写入即上线）",
     "options": [
       "section",
       "lang",
       "limit",
+      "chain_dry_run",
       "dry_run"
     ],
     "params": {
