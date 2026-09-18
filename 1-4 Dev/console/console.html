@@ -1667,7 +1667,22 @@ function agRenderMeta(s){
  const tid=$('ag-thread');if(tid&&AG_BUSY){tid.insertAdjacentHTML('beforeend','<div class="ag-typing" style="align-self:flex-start;padding:8px 12px"><span class="mut">思考中</span> <span class="dots"><span>.</span><span>.</span><span>.</span></span></div>')}
 }
 function agRender(ms){const th=$('ag-thread');if(!th)return;
- th.innerHTML=ms.filter(m=>!String(m.text||'').startsWith('（新会话）')).map(m=>{
+ const real=ms.filter(m=>!String(m.text||'').startsWith('（新会话）'));
+ if(!real.length){th.innerHTML=`<div style="padding:8px 4px">
+   <div class="mut" style="font-size:12.5px;margin-bottom:10px">直接用自然语言下达任务。Agent 会自动调用 <b>skills</b>、检索 <b>知识库/内容库</b>、遵守 <b>harness 规则</b>、引用真实 <b>GEO/GSC 数据</b>——你不需要给细节。</div>
+   <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+   ${[
+    ['🔍 质量体检','扫一遍 tools 的 SEO 问题并修复','发现字段/结构/占位符问题并生成修复任务'],
+    ['✍️ 写内容','写一篇关于 AI 设计工具怎么选的中文 blog','自动选题材角度、引用知识库事实、过质检'],
+    ['♻️ 刷新旧页','把正在衰减的页面按 GEO 标准刷新 5 篇','用 GSC 衰减数据驱动改稿'],
+    ['🚀 落地页闭环','跑一下落地页闭环（改稿→发布）','改稿→结构校验→发布，dry-run 先行'],
+    ['🖼️ 物料补齐','帮我把封面缺 alt 的都补上','从内容库+素材台账自动取数'],
+    ['📊 系统诊断','当前系统状态怎么样？有什么需要处理的？','读取全局状态并给出下一步']
+   ].map(([t,p,d])=>`<div class="card" style="padding:10px 12px;cursor:pointer" onclick="agPreset(${JSON.stringify(p)})">
+     <div style="font-size:12.5px;font-weight:600">${t}</div>
+     <div class="mut" style="font-size:11px;margin-top:2px">${esc(d)}</div></div>`).join('')}
+   </div></div>`;return}
+ th.innerHTML=real.map(m=>{
   if(m.role==='user')return `<div style="align-self:flex-end;max-width:85%;background:var(--accent-soft);color:var(--accent);padding:10px 14px;border-radius:14px 14px 4px 14px;font-size:13px;line-height:1.6">${esc(m.text)}</div>`;
   // agent 回复用 markdown 渲染
   let html='';
