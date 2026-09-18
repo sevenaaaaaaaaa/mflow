@@ -4122,6 +4122,10 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"blocked": blocked, "state": st})
             if parsed.path == "/api/quota":
                 return self._send(200, quota_report(self._role(), self._me()))
+            if parsed.path == "/api/self-evolve/analyze":
+                return self._send(200, self_evolve_analyze(int(qs.get("days", ["14"])[0])))
+            if parsed.path == "/api/self-evolve/suggestions":
+                return self._send(200, self_evolve_analyze())
             if parsed.path == "/api/governance":
                 return self._send(200, governance_report())
             if parsed.path == "/api/kb/gaps":
@@ -4369,7 +4373,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/agent/chat", "/api/agent/execute",
                       "/api/qa/orchestrate", "/api/qa/recheck",
                       "/api/presets/run", "/api/housekeeping/run",
-                      "/api/breaker/reset", "/api/quotas/save"}
+                      "/api/breaker/reset", "/api/quotas/save",
+                      "/api/self-evolve/apply"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
@@ -4795,6 +4800,9 @@ class Handler(BaseHTTPRequestHandler):
                             f"items={t['stats']['total']} dry_run={dry} by={self._me()}\n")
                 return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"],
                                         "note": r.get("note", ""), "dry_run": dry})
+            if self.path == "/api/self-evolve/apply":
+                r = self_evolve_apply(str(body.get("pattern", "")), str(body.get("action", "")), by=self._me())
+                return self._send(200 if r.get("ok") else 400, r)
             if self.path == "/api/breaker/reset":
                 st = breaker_reset()
                 with open(RUN_DIR / "approvals.log", "a") as f:
