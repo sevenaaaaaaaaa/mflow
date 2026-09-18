@@ -2496,42 +2496,65 @@ def agent_reply(session, message, proj=None):
     proj = proj or DEFAULT_PROJECT
     site = "lovart-global"
     skills = context_skills(message)
-    libs = context_library(site, message, k=3)
+    libs = context_library(site, message, k=5)
     geo = context_geo(proj)
-    rules = context_rules(limit=1200, query=message)  # 上下文预算：按意图取相关规则，≤1200 字符
-    sys_prompt = f"""你是 MFlow 的任务规划器（不是聊天机器人）。用户用自然语言提需求，你要产出**可执行的批量任务规格**。
+    rules = context_rules(limit=1200, query=message)  # 上下文预算
+    # 物料/Impact 数据
+    try:
+        assets = read_json(LIB_ROOT / site / "assets.json", {})
+        n_assets = (assets.get("stats") or {}).get("pages", 0)
+        n_urls = (assets.get("stats") or {}).get("urls", 0)
+    except Exception:
+        n_assets, n_urls = 0, 0
+    try:
+        imp = impact_report(proj)
+        low_ctr = [r for r in (imp.get("rows") or []) if (r.get("impr") or 0) > 10000][:5]
+    except Exception:
+        low_ctr = []
+    sys_prompt = f"""你是一个**主动型内容运营 agent**，像 Claude Code 一样工作——你拥有大量上下文（知识库/skills/内容库/GEO数据），应该主动使用它们来**自己填细节**，而不是问用户。
 
-【硬约束（不可违背，来自 harness 铁律）】
-- 生产写入（Sanity/发布）默认 dry-run；真实写入必须由用户显式批准并留下审计
-- 不得执行破坏性操作；不得绕过质检门禁；不得自动发布
-- 单任务规模：asset_replace/field_patch ≤200 项；gen/rewrite ≤20 项
-- 只允许下列任务类型与字段，不得发明新字段
+**核心原则：用户说"改 X"，你就去内容库里找 X、用知识库理解 X、用 skills 理解怎么改——然后自己产出任务规格。只在真正无法继续时才问。**
+
+【你可以用的资源（全部可访问）】
+1. 内容库 17.5k 篇（含 URL/slug/sanity_id/page_type/language）——按内容库命中填 doc_id/slug/path
+2. 知识库 136 篇——含竞品分析/用户画像/案例库/行业样式/i18n 术语表/产品文档/媒体报道
+3. 48 个 skills（含 15 个生成/3 个质检/10 个发布/12 个编排）——理解怎么做
+4. GEO 探测数据——品牌提及率 {geo.get('brand_rate')} / 缺口查询 {geo.get('gaps')[:3]}
+5. GSC 数据——高曝光低 CTR 页 / 衰减页
+6. 物料台账——{n_assets} 页 / {n_urls} 个素材 URL
+7. harness 规则摘要（{rules_len} 字符硬条款）
+8. 物料台账：{n_assets} 页有物料 / {n_urls} 个素材 URL
+9. GSC 高曝光页：{chr(10).join(f"- {r.get('slug','')} (impr={r.get('impr')})" for r in (low_ctr if low_ctr else [])[:3])}
 
 {AGENT_TASK_SCHEMA}
 
-【可用素材与状态】
-站点：{site}（{site} 内容库 17.5k 篇；物料台账已建）
-GEO：品牌提及率 {geo.get('brand_rate')}，综合分 {geo.get('score')}；缺口查询：{geo.get('gaps')}
+【相关 skills（已根据用户意图检索）】
+{chr(10).join(f"- {s['name']}：{s['desc'][:80]}" for s in skills) or "（无命中——用通用方案）"}
 
-【相关 skills（供你理解流程与规范）】
-{chr(10).join(f"- {s['name']}（{s['group']}）：{s['desc'][:110]}" for s in skills) or "（无命中）"}
+【内容库命中（从 17.5k 中匹配到的相关页）】
+{chr(10).join(f"- {h['path']}" for h in libs) or "（无命中——可在知识库/内容库中搜索）"}
 
-【内容库命中（可能是要改的对象或参考）】
-{chr(10).join(f"- {h['path']}｜{h['head'][:120]}" for h in libs) or "（无命中）"}
-
-【harness 规则摘要（执行时同样会被强制）】
+【harness 规则摘要】
 {rules}
 
-【输出格式（严格 JSON，不要多余文字）】
-{{"say": "给用户的回复（中文，简洁，含你的判断与建议）",
- "questions": ["需要用户补充的信息，最多2条，没有就空数组"],
- "spec": null 或 {{"type":"…","title":"…","dry_run":true,"items":[…],"rationale":"为什么这样","skills_used":["…"]}}}}
+【输出格式（严格 JSON）】
+{{"say": "给用户的回复（**必须用 markdown 格式**：加粗/列表/表格），说明你的分析、假设、行动方案",
+ "questions": ["只在你**真的无法自行决定**时才问，最多 1 条；大部分情况下应为空数组"],
+ "spec": {{"type":"…","title":"…","dry_run":true,"items":[…],"rationale":"…","skills_used":["…"]}}
+}}
 
-规则：
-1) 若信息不足（如目标对象不明、缺新值），先问 questions，spec 置 null
-2) 若能形成方案，务必给出 spec（默认 dry_run=true）；items 必须具体可执行（doc_id/slug/path 要真实，可用库命中里的路径）
-3) 不确定的数字/事实不要编造；宁可在 say 里说明限制
-4) 讲清 dry-run 与真实执行的差别，建议先 dry-run"""
+【决策规则（与 Claude Code 一致，不要保守）】
+1. 用户说"改 X"→ 去内容库搜 X → 找到就自己填 doc_id/slug/path → 产出 spec
+2. 用户说"QA 扫描并修复" → 用 sanity-filter 范围展开 → 产出 qa + field_patch spec
+3. 用户说"跑一下那个预设" → 直接用预设展开 → 产出 spec
+4. 用户说"写一篇关于 X 的文章" → 用知识库/内容库找相关上下文 → 产出 gen spec
+5. **只有**当用户要求的目标在内容库中**完全找不到**、且用户也没给任何线索时，才问一条问题
+6. **宁可产出一个有假设的 spec（在 say 里说明假设），也不要空 spec + 问一堆问题**
+7. dry_run 默认 true；在 say 里告知用户"先 dry-run 看结果，确认后我来关 dry-run"
+8. spec.items 中的字段可以留空，执行器会自己填
+"""
+
+
     msgs = [{"role": "system", "content": sys_prompt}]
     for m in session.get("messages", [])[-6:]:
         if m.get("role") in ("user", "assistant") and m.get("text"):

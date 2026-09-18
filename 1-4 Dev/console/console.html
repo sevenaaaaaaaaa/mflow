@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>MFlow · 内容工作台</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>try{var s=JSON.parse(localStorage.getItem('mflow-console-v1')||'{}');var t=s.theme||'light';if(t==='system'){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t}catch(e){}</script>
 <style>
 :root{
@@ -409,16 +410,30 @@ pre.mut{background:var(--surface);color:var(--muted)}
   <!-- ============ Agent 任务台 ============ -->
   <section class="page" id="pg-agent">
     <div class="pg-head"><div><div class="kick">我的工作</div><h1>Agent <em class="sf">任务台</em></h1>
-      <p class="pg-sub">用对话下达任务：规划器会带入 harness 铁律 + 相关 skills + 内容库命中 + GEO 缺口，产出可执行的批量任务规格（经门禁校验），你批准后由批量执行器执行。</p></div>
-      <div class="head-actions"><select id="ag-sessions" onchange="agOpen(this.value)" style="width:200px"></select>
+      <p class="pg-sub">像和 Claude Code 对话一样下达任务——agent 会用知识库/skills/内容库自己填细节，你只需要说想要什么。</p></div>
+      <div class="head-actions"><select id="ag-sessions" onchange="agOpen(this.value)" style="width:180px"></select>
         <button class="btn ghost" onclick="agNew()">＋ 新会话</button></div></div>
-    <div class="card"><div class="card-head"><h3>对话</h3><span class="mut" id="ag-sid"></span></div>
+    <div class="card"><div class="card-head"><h3>对话</h3>
+      <span class="mut" id="ag-tokens"></span>
+      <span class="mut" id="ag-sid"></span></div>
       <div id="ag-thread" style="max-height:520px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:4px 0"></div>
-      <div class="row" style="margin-top:10px"><textarea id="ag-input" placeholder="例如：把 tools 里用占位图 d3e44c9e 的封面换成新图（先 dry-run）｜把 5 篇高曝光低 CTR 的 blog 按 GEO 标准改稿｜给这 3 个标题做 SEO 字段改写"
-        style="flex:1;min-height:70px;border:1px solid var(--border);border-radius:12px;padding:10px;font:inherit;background:var(--surface-strong);color:var(--fg)"></textarea>
-        <button class="btn primary" onclick="agSend()" id="ag-btn" style="align-self:flex-end">发送</button></div>
-      <div class="mut" style="font-size:11.5px;margin-top:6px">规划器不会直接写生产库：所有规格默认 dry-run；真实执行需你在规格卡上二次确认（并记审计）。</div></div>
+      <div class="row" style="margin-top:10px">
+        <textarea id="ag-input" placeholder="直接说你想要什么——比如：帮我改 5 篇高曝光低 CTR 的英文页  |  扫一遍 tools 的 SEO 问题  |  给 X 写篇 blog  (Ctrl+Enter 发送)"
+          style="flex:1;min-height:80px;border:1px solid var(--border);border-radius:12px;padding:10px 12px;font:inherit;background:var(--surface-strong);color:var(--fg)"
+          onkeydown="if((event.ctrlKey||event.metaKey)&&event.key==='Enter'){event.preventDefault();agSend()}"></textarea>
+        <button class="btn primary" onclick="agSend()" id="ag-btn" style="align-self:flex-end;min-width:90px">发送</button></div>
+      <div class="row" style="margin-top:6px;gap:4px;flex-wrap:wrap">
+        <span class="chip" onclick="agPreset('帮我扫一遍 tools 的 SEO 字段问题并修复')">QA 扫描+修复</span>
+        <span class="chip" onclick="agPreset('帮我把 5 篇高曝光低 CTR 的英文 blog 按 GEO 标准改稿')">低 CTR 改稿</span>
+        <span class="chip" onclick="agPreset('跑一下落地页闭环（改稿→发布）')">落地页闭环</span>
+        <span class="chip" onclick="agPreset('帮我把封面缺 alt 的都补上')">alt 补齐</span>
+        <span class="chip" onclick="agPreset('写一篇关于 AI 设计工具怎么选的中文 blog')">写 Blog</span>
+        <span class="chip" onclick="agPreset('当前系统状态怎么样？有什么需要处理的？')">系统诊断</span>
+      </div>
+      <div class="mut" style="font-size:11px;margin-top:4px">Agent 会用知识库/skills/内容库自己填细节。Ctrl+Enter 发送。</div>
+    </div>
   </section>
+
 
   <!-- ============ 批量任务 ============ -->
   <section class="page" id="pg-batch">
@@ -1614,119 +1629,63 @@ function qaRecheck(){if(!QA_SEL)return alert('先选一个 QA 任务');
 function qaDelta(parent,child){setTimeout(()=>api('api/qa/delta?parent='+parent+'&child='+child).then(d=>{
  if(d.error)return;alert(`复检对比：修复前 ${d.parent.total} → 现在 ${d.child.total}（child 状态 ${d.child.status}）\n已解决 ${d.resolved_n} 项，新增 ${d.new_n} 项`)}),8000)}
 
-/* ---- Agent 任务台 ---- */
-let AG_ID='';
+/* ---- Agent 任务台 v2（主动模式）---- */
+let AG_ID='',AG_BUSY=false;
 function agLoad(){api('api/agent/sessions').then(ss=>{
- $('ag-sessions').innerHTML=(ss||[]).map(s=>`<option value="${esc(s.id)}" ${s.id===AG_ID?'selected':''}>${esc(s.title||s.id)} · ${esc((s.created||'').slice(5))}</option>`).join('')||'<option value="">（无会话）</option>';
+ const sel=$('ag-sessions');if(sel)sel.innerHTML=(ss||[]).map(s=>`<option value="${esc(s.id)}" ${s.id===AG_ID?'selected':''}>${esc(s.title||s.id.slice(5,15))} · ${esc((s.created||'').slice(5))}</option>`).join('');
  if(!AG_ID&&ss&&ss.length)agOpen(ss[0].id);else if(AG_ID)agOpen(AG_ID)})}
-function agNew(){api('api/agent/chat',{message:'（新会话）'}).then(()=>{}).catch(()=>{});AG_ID='';$('ag-thread').innerHTML='';agLoad()}
+function agNew(){AG_ID='';const t=$('ag-thread');if(t)t.innerHTML='';const s=$('ag-sessions');if(s)s.value='';}
 function agOpen(id){AG_ID=id;api('api/agent/session?id='+encodeURIComponent(id)).then(s=>{
- if(s.error)return; $('ag-sid').textContent=s.id+' · '+esc(s.title||'');
- agRender(s.messages||[])})}
-function agRender(ms){$('ag-thread').innerHTML=ms.filter(m=>!String(m.text||'').startsWith('（新会话）')).map(m=>{
- if(m.role==='user')return `<div style="align-self:flex-end;max-width:80%;background:var(--accent-soft);color:var(--accent);padding:9px 13px;border-radius:14px 14px 4px 14px;font-size:13px">${esc(m.text)}</div>`;
- const ctx=m.context?`<div class="mut" style="font-size:10.5px;margin-top:6px">上下文：skills [${esc((m.context.skills||[]).join(', '))}] · 库命中 ${(m.context.library||[]).length} · 规则 ${m.context.rules_chars||0} 字符</div>`:'';
- const qs=(m.questions&&m.questions.length)?`<div style="margin-top:6px;font-size:12px">需要你补充：<ul style="margin:4px 0 0 18px">${m.questions.map(q=>`<li>${esc(q)}</li>`).join('')}</ul></div>`:'';
- let spec='';
- if(m.spec){const s=m.spec;const items=(s.items||[]).slice(0,5).map(i=>esc(JSON.stringify(i)).slice(0,150)).join('<br>');
-  spec=`<div class="card" style="margin-top:8px;padding:12px"><b style="font-size:13px">任务规格：${esc(s.type)} · ${esc(s.title)}</b>
-   <span class="badge ${s.dry_run?'dist':'pipe'}" style="margin-left:6px">${s.dry_run?'dry-run':'真实执行'}</span>
-   <div class="mut" style="font-size:11.5px;margin-top:4px">${esc(s.rationale||'')}${(s.skills_used||[]).length?' · skills: '+esc(s.skills_used.join(', ')):''} · 共 ${(s.items||[]).length} 项</div>
-   <div style="font-size:11px;font-family:var(--font-mono);margin-top:6px;max-height:120px;overflow:auto">${items}${(s.items||[]).length>5?'<br>…':''}</div>
-   <div class="row" style="margin-top:8px"><button class="btn primary" onclick='agExec(${JSON.stringify(s).replace(/'/g,"&#39;")},false)'>批准执行（dry-run）</button>
-   <button class="btn ghost" onclick='agExec(${JSON.stringify(s).replace(/'/g,"&#39;")},true)'>真实执行（需确认）</button></div></div>`}
- else if(m.guard_error){spec=`<div class="warn" style="margin-top:6px;font-size:12px">规格未通过门禁：${esc(m.guard_error)}</div>`}
- const task=m.task_id?`<div class="ok" style="font-size:12px;margin-top:6px">→ 任务 ${esc(m.task_id)}（到「批量任务」看进度）</div>`:'';
- return `<div style="align-self:flex-start;max-width:86%;background:var(--surface);border:1px solid var(--border);padding:10px 13px;border-radius:14px 14px 14px 4px;font-size:13px;line-height:1.7">${esc(m.text)}${qs}${spec}${task}${ctx}</div>`}).join('')}
-function agSend(){const v=$('ag-input').value.trim();if(!v)return;$('ag-btn').disabled=true;$('ag-btn').textContent='规划中…';
- api('api/agent/chat',{session_id:AG_ID,message:v}).then(r=>{if(r.error)alert(r.error);
-  AG_ID=r.session_id||AG_ID;$('ag-input').value='';agOpen(AG_ID);
-  $('ag-btn').disabled=false;$('ag-btn').textContent='发送'}).catch(()=>{$('ag-btn').disabled=false;$('ag-btn').textContent='发送'})}
-function agExec(spec,real){if(real&&!confirm('确认真实执行（会写生产库/消耗额度）？\n类型：'+spec.type+'\n条目：'+spec.items.length)) return;
- const body={session_id:AG_ID,spec:{...spec,dry_run:!real},force:real};
- api('api/agent/execute',body).then(r=>{if(r.error)return alert(r.error);alert('已创建任务 '+r.task_id);agOpen(AG_ID)})}
-
-/* ---- 样式库 ---- */
-function styleLoad(){api('api/styles').then(ss=>{
- $('style-list').innerHTML=(ss||[]).length?'<table><tr><th>样式</th><th>版块</th><th>故事线</th><th>创建</th><th></th></tr>'+
-  ss.map(x=>`<tr><td><b>${esc(x.name)}</b><div class="mut" style="font-size:10.5px">${esc(x.id)} · ${esc(x.desc||'')}</div></td>
-   <td class="tnum">${x.sections}</td><td class="tnum">${x.storylines||0}</td><td class="mut" style="font-size:11px">${esc(x.created||'')}</td>
-   <td><button class="mini" style="color:var(--danger)" onclick="styleDel('${esc(x.id)}')">删除</button></td></tr>`).join('')+'</table>'
-  :'<span class="mut">暂无自定义样式</span>'})}
-function styleImport(){let d;try{d=JSON.parse($('style-json').value)}catch(e){return alert('JSON 解析失败')}
- api('api/styles/import',{...d}).then(r=>{if(r.error)return alert('导入失败：'+(r.error||''));
-  if(r.errors)return alert('校验失败：\n'+r.errors.join('\n'));
-  alert(`已导入样式：${r.name}（${r.sections} 版块）`);$('style-json').value='';styleLoad()})}
-function styleDel(sid){if(!confirm('删除样式 '+sid+'？'))return;
- api('api/styles/delete',{id:sid}).then(r=>{if(r.error)return alert(r.error);styleLoad()})}
-
-/* ---- 熔断 / 配额 ---- */
-function brkLoad(){api('api/breaker').then(d=>{const s=d.state||{};
- const el=$('brk-flag'),info=$('brk-info');
- if(d.blocked){el.innerHTML='<span class="bad">已熔断</span>';
-  info.innerHTML=`原因：${esc(s.reason||'')}<br>触发：${esc(s.tripped_at||'')} · 冷却 ${s.cooldown_min||15} 分钟后自动恢复（也可手动解除）`}
- else{el.innerHTML='<span class="ok">正常</span>';
-  info.textContent=(s.reset_at?('上次复位 '+s.reset_at+(s.auto?'（自动）':'')):'未触发过')}
- const bb=document.getElementById('bt-breaker');
- if(bb)bb.innerHTML=d.blocked?`<span class="bad">⚠ 系统熔断中：${esc((s.reason||'').slice(0,80))} —— 批量任务已暂停（可在设置页解除）</span>`:''})}
-function brkReset(){api('api/breaker/reset',{}).then(r=>{if(r.error)return alert(r.error);alert('已解除熔断');brkLoad()})}
-function qcol(used,cap,unlimited){if(unlimited||!cap)return '';const p=used/cap;
- return p>=1?'color:var(--danger);font-weight:700':(p>=0.8?'color:var(--warn);font-weight:600':'')}
-function quotaLoad(){api('api/quota').then(d=>{
- const D=d.default||{};$('q-items').value=D.items_per_month||'';$('q-tokens').value=D.tokens_per_month||'';$('q-writes').value=D.writes_per_month||'';
- $('q-table').innerHTML='<table><tr><th>用户</th><th>角色</th><th>任务</th><th>条目</th><th>tokens</th><th>真实写入</th><th>配额（条目/token/写入）</th><th>操作</th></tr>'+
-  (d.rows||[]).map(r=>`<tr><td><b>${esc(r.username)}</b></td><td>${esc(r.role)}</td>
-   <td class="tnum">${r.usage.tasks||0}</td>
-   <td class="tnum" style="${qcol(r.usage.items,(r.quota||{}).items_per_month,r.unlimited)}">${r.usage.items||0}</td>
-   <td class="tnum" style="${qcol(r.usage.tokens,(r.quota||{}).tokens_per_month,r.unlimited)}">${r.usage.tokens||0}</td>
-   <td class="tnum" style="${qcol(r.usage.writes,(r.quota||{}).writes_per_month,r.unlimited)}">${r.usage.writes||0}</td>
-   <td class="mut" style="font-size:11px">${r.unlimited?'不限':`${(r.quota||{}).items_per_month}/${(r.quota||{}).tokens_per_month}/${(r.quota||{}).writes_per_month}`}</td>
-   <td><button class="mini" onclick="quotaEdit('${esc(r.username)}',${JSON.stringify(r.quota||{}).replace(/"/g,'&quot;')},${r.unlimited})">改配额</button></td></tr>`).join('')+'</table>'})}
-function quotaEdit(un,cap,unlimited){const s=prompt(`${un} 的配额（留空=用默认；填 unlimited=不限）\n格式：条目/token/写入 如 300/300000/100`,'');
- if(s===null)return;
- if(s.trim()==='unlimited')return api('api/quotas/save',{per_user:{[un]:'unlimited'}}).then(()=>quotaLoad());
- if(!s.trim())return api('api/quotas/save',{per_user:{[un]:{}}}).then(()=>quotaLoad());
- const p=s.split('/').map(x=>x.trim());
- return api('api/quotas/save',{per_user:{[un]:{items_per_month:p[0]||'',tokens_per_month:p[1]||'',writes_per_month:p[2]||''}}}).then(()=>quotaLoad())}
-function quotaSave(){api('api/quotas/save',{default:{items_per_month:$('q-items').value,tokens_per_month:$('q-tokens').value,writes_per_month:$('q-writes').value}}).then(r=>{if(r.error)return alert(r.error);alert('默认配额已保存');quotaLoad()})}
-
-
-/* ---- 三模式 ---- */
-function modeLoad(){api('api/mode').then(m=>{
- const s=$('mode-select');if(s)s.value=m.current_mode;
- const b=$('mode-badge');if(b){b.textContent=m.current_mode.toUpperCase();
-  b.style.background=m.current_mode==='pipeline'?'var(--muted)':(m.current_mode==='flow'?'var(--accent)':'var(--ok)');b.style.color='var(--on-accent)'}
- const d=$('mode-desc');if(d)d.textContent=m.mode_desc||'';
- const p=$('mode-promo');if(p){p.textContent=m.promotion&&m.promotion.reason?m.promotion.reason:'';
-  p.className=m.promotion&&m.promotion.eligible?'ok':'mut'}
- const c=$('mode-counts');if(c)c.textContent=`管线 ${m.counts.pipeline_items} · Flow 任务 ${m.counts.flow_tasks} · Loop 项 ${m.counts.loop_items} · 手动管线 ${m.counts.manual_pipeline}`;
-})}
-function modeSwitch(mode){if(!confirm(`确认切换工作模式为 ${mode.toUpperCase()}？\n${{pipeline:'手动模式：自主操作空间',flow:'自动模式：预设+skills 自动流转',loop:'自治模式：周而复始自我运转'}[mode]||''}`))return;
- api('api/mode/switch',{mode}).then(r=>{if(r.error)return alert(r.error);
-  alert(`工作模式已切换：${r.old} → ${r.new}`);modeLoad()})}
-/* ---- 预设工作流 / 健康 / 维护 ---- */
-let PRESETS=[],PRESET_SEL='';
-function loadPresets(){api('api/presets').then(ps=>{PRESETS=ps||[];
- $('bt-presets').innerHTML=PRESETS.map(p=>`<span class="chip ${p.id===PRESET_SEL?'on':''}" onclick="presetPick('${esc(p.id)}')" title="${esc(p.desc)}">${esc(p.icon||'')} ${esc(p.name)}</span>`).join('')||'<span class="mut">无预设</span>'})}
-function presetPick(id){PRESET_SEL=id;loadPresets();
- const p=PRESETS.find(x=>x.id===id);if(!p)return;
- const labels={limit:'条数上限',lang:'语言（如 zh / en / ja）',dry_run:'dry-run',min_impr:'最小曝光',page_type:'页面类型（可空）',topic:'主题',langs:'语言列表（逗号分隔）'};
- $('bt-opt').style.display='block';
- $('bt-opt').innerHTML=`<b style="font-size:13px">${esc(p.icon||'')} ${esc(p.name)}</b><div class="mut" style="font-size:12px;margin:4px 0 8px">${esc(p.desc)}</div>
-  <div class="row">${(p.options||[]).map(o=>o==='dry_run'
-    ?`<label style="font-size:13px"><input type="checkbox" id="po-${o}" checked style="margin-right:5px">dry-run</label>`
-    :`<input id="po-${o}" placeholder="${esc(labels[o]||o)}" style="width:${o==='topic'?'320px':(o==='langs'?'220px':'150px')}" value="${o==='limit'?'5':(o==='lang'?'zh':(o==='langs'?'zh,en,ja':''))}">`).join('')}
-   <button class="btn primary" onclick="presetRun()">运行预设</button>
-   <span class="mut" id="po-hint">预设会用当前真实数据展开成任务（默认 dry-run）</span></div>`}
-function presetRun(){const p=PRESETS.find(x=>x.id===PRESET_SEL);if(!p)return;
- const opt={};(p.options||[]).forEach(o=>{const el=$('po-'+o);if(!el)return;opt[o]=el.type==='checkbox'?el.checked:(el.value||'')});
- api('api/presets/run',{id:PRESET_SEL,options:opt}).then(r=>{if(r.error)return alert(r.error);
-  alert(`已创建任务 ${r.task_id}（${r.total} 项，${r.dry_run?'dry-run':'真实执行'}）${r.note?'\n'+r.note:''}`);loadBatch()})}
-function hkRun(dry){api('api/housekeeping/run',{dry_run:dry}).then(r=>{
- if(r.error)return alert(r.error);
- $('hk-out').textContent=JSON.stringify(r,null,1);hkLoad()})}
-function hkLoad(){api('api/housekeeping').then(d=>{
- $('hk-hist').textContent=(d.history||[]).join('\n')||'（暂无清理记录）'})}
+ if(s.error)return; const sid=$('ag-sid');if(sid)sid.textContent=s.id;
+ agRender(s.messages||[]);agRenderMeta(s)})}
+function agRenderMeta(s){
+ const tok=$('ag-tokens');if(tok)tok.textContent=`msgs ${((s.messages||[]).length)} · tokens ~${((s.messages||[]).length*200).toLocaleString()}`;
+ const tid=$('ag-thread');if(tid&&AG_BUSY){tid.insertAdjacentHTML('beforeend','<div class="ag-typing" style="align-self:flex-start;padding:8px 12px"><span class="mut">思考中</span> <span class="dots"><span>.</span><span>.</span><span>.</span></span></div>')}
+}
+function agRender(ms){const th=$('ag-thread');if(!th)return;
+ th.innerHTML=ms.filter(m=>!String(m.text||'').startsWith('（新会话）')).map(m=>{
+  if(m.role==='user')return `<div style="align-self:flex-end;max-width:85%;background:var(--accent-soft);color:var(--accent);padding:10px 14px;border-radius:14px 14px 4px 14px;font-size:13px;line-height:1.6">${esc(m.text)}</div>`;
+  // agent 回复用 markdown 渲染
+  let html='';
+  try{html=marked.parse(m.text||'')}catch(e){html=esc(m.text||'')}
+  // markdown → 安全 HTML（加样式类）
+  html=html.replace(/<table/g,'<table class="md-tbl"').replace(/<code/g,'<code style="background:var(--hover);padding:2px 5px;border-radius:4px;font-family:var(--font-mono);font-size:12px"');
+  const ctx=m.context?`<div class="mut" style="font-size:10px;margin-top:6px;color:var(--faint)">🔍 skills: [${esc((m.context.skills||[]).join(', '))}] · 库命中 ${(m.context.library||[]).length} · 规则 ${m.context.rules_chars||0} 字符</div>`:'';
+  const qs=(m.questions&&m.questions.length)?`<div class="warn" style="margin-top:6px;font-size:12px;padding:8px;background:var(--warn-soft);border-radius:8px">需要你补充：<br>${m.questions.map(q=>'· '+esc(q)).join('<br>')}</div>`:'';
+  let spec='';
+  if(m.spec){const sp=m.spec;const itms=(sp.items||[]).slice(0,3).map(i=>esc(JSON.stringify(i)).slice(0,120)).join('<br>');
+   spec=`<div class="card" style="margin-top:8px;padding:12px;border-left:3px solid ${sp.dry_run?'var(--accent)':'var(--ok)'}">
+    <div style="display:flex;align-items:center;gap:6px"><b style="font-size:13px">${esc(sp.type)}</b>
+    <span class="badge ${sp.dry_run?'dist':'pipe'}" style="${sp.dry_run?'':'background:var(--ok)'}">${sp.dry_run?'dry-run':'真实'}</span>
+    <span class="mut" style="font-size:11px">${(sp.items||[]).length} 项</span></div>
+    <div class="mut" style="font-size:11.5px;margin-top:4px">${esc(sp.rationale||'')}</div>
+    <div style="font-size:10.5px;font-family:var(--font-mono);margin-top:6px;max-height:100px;overflow:auto;background:var(--bg);padding:6px;border-radius:8px">${itms}</div>
+    <div class="row" style="margin-top:8px"><button class="btn primary" style="font-size:12px" onclick='agExec(${JSON.stringify(sp).replace(/'/g,"&#39;")},false)'>执行（dry-run）</button>
+    <button class="btn ghost" style="font-size:12px" onclick='agExec(${JSON.stringify(sp).replace(/'/g,"&#39;")},true)'>真实执行</button></div></div>`}
+  else if(m.guard_error){spec=`<div class="warn" style="margin-top:6px;font-size:12px">规格未过门禁：${esc(m.guard_error)}</div>`}
+  const task=m.task_id?`<div class="ok" style="font-size:12px;margin-top:6px;padding:8px;background:var(--ok-soft);border-radius:8px">→ 任务 <b>${esc(m.task_id)}</b> 已创建（到「批量任务」页看进度）</div>`:'';
+  return `<div style="align-self:flex-start;max-width:88%;padding:12px 16px;border-radius:14px 14px 14px 4px;font-size:13px;line-height:1.7;overflow-wrap:break-word">${html}${qs}${spec}${task}${ctx}</div>`}).join('')+
+  (AG_BUSY?'<div class="ag-typing" style="padding:10px 16px"><span class="mut">Agent 思考中</span> <span style="animation:pulse 1s infinite">•••</span></div>':'');
+  th.scrollTop=th.scrollHeight}
+function agPreset(msg){const inp=$('ag-input');if(inp)inp.value=msg;agSend()}
+function agSend(){const v=$('ag-input').value.trim();if(!v||AG_BUSY)return;
+ AG_BUSY=true;const btn=$('ag-btn');if(btn){btn.disabled=true;btn.textContent='思考中…'}
+ // 显示 typing indicator
+ const th=$('ag-thread');if(th)th.insertAdjacentHTML('beforeend','<div id="ag-typing-ind" style="padding:10px 16px;color:var(--faint)"><span style="animation:pulse 1s infinite">●</span> Agent 思考中…</div>');
+ if(th)th.scrollTop=th.scrollHeight;
+ api('api/agent/chat',{session_id:AG_ID,message:v}).then(r=>{
+  if(r.error){toast('Agent 规划失败: '+r.error,'bad')}
+  AG_ID=r.session_id||AG_ID;
+  $('ag-input').value='';
+  agOpen(AG_ID);
+ }).catch(()=>{toast('请求失败','bad')}).finally(()=>{
+  AG_BUSY=false;if(btn){btn.disabled=false;btn.textContent='发送'}
+  const ind=document.getElementById('ag-typing-ind');if(ind)ind.remove();
+ })}
+function agExec(spec,real){if(real&&!confirm(`确认真实执行（会写生产库/消耗额度）？\n类型: ${spec.type}\n条目: ${spec.items.length}`))return;
+ api('api/agent/execute',{session_id:AG_ID,spec:{...spec,dry_run:!real},force:real}).then(r=>{
+  if(r.error)return toast(r.error,'bad');
+  toast(`任务 ${r.task_id} 已创建（${r.total} 项）`,'ok');agOpen(AG_ID)})}
 
 /* ---- 批量任务 ---- */
 const BATCH_HINTS={asset_replace:"items 可留空 → 用「从图片物料计划一键建任务」",
