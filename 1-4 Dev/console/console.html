@@ -1695,9 +1695,8 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
     <button class="btn ghost" style="font-size:12px" onclick='agExec(${JSON.stringify(sp).replace(/'/g,"&#39;")},true)'>真实执行</button></div></div>`}
   else if(m.guard_error){spec=`<div class="warn" style="margin-top:6px;font-size:12px">规格未过门禁：${esc(m.guard_error)}</div>`}
   const task=m.task_id?`<div class="ok" style="font-size:12px;margin-top:6px;padding:8px;background:var(--ok-soft);border-radius:8px">→ 任务 <b>${esc(m.task_id)}</b> 已创建（到「批量任务」页看进度）</div>`:'';
-  return `<div style="align-self:flex-start;max-width:88%;padding:12px 16px;border-radius:14px 14px 14px 4px;font-size:13px;line-height:1.7;overflow-wrap:break-word">${html}${qs}${spec}${task}${ctx}</div>`}).join('')+
-  '');
-  th.scrollTop=th.scrollHeight}
+  return `<div style="align-self:flex-start;max-width:88%;padding:12px 16px;border-radius:14px 14px 14px 4px;font-size:13px;line-height:1.7;overflow-wrap:break-word">${html}${qs}${spec}${task}${ctx}</div>`}).join('');
+ th.scrollTop=th.scrollHeight}
 function agPreset(msg){const inp=$('ag-input');if(inp)inp.value=msg;agSend()}
 function agSend(){const v=$('ag-input').value.trim();if(!v||AG_BUSY)return;
  AG_BUSY=true;const btn=$('ag-btn');if(btn){btn.disabled=true;btn.textContent='思考中…'}
