@@ -1501,7 +1501,9 @@ def _run_sync_steps(run):
         elif (stats.get("failed") or 0) > 0 or t.get("status") == "failed":
             if st["status"] != "failed":
                 st["status"] = "failed"; st["ended"] = datetime.now().strftime("%H:%M:%S"); changed = True
-            st["detail"] = f"失败 {stats.get('failed',0)} 项（可在任务详情重试）"
+            st["detail"] = (f"失败 {stats.get('failed',0)} 项（可在任务详情重试）"
+                            if (stats.get("failed") or 0) > 0 else
+                            "任务异常终止（0 成功 0 失败，请到批量任务页查看错误并重试）")
         else:
             if st["status"] != "running":
                 st["status"] = "running"; changed = True
@@ -1520,8 +1522,17 @@ def run_tick():
                 continue
             changed = _run_sync_steps(run)
             steps = run["steps"]
-            # 找到第一个 not-done 的步骤
-            cur = next((st for st in steps if st["status"] not in ("done", "failed")), None)
+            TERMINAL = ("done", "warn", "failed", "blocked")
+            # 前序步骤失败 → 后续阻断，避免连锁无效执行
+            if any(st["status"] == "failed" for st in steps):
+                for st in steps:
+                    if st["status"] == "pending":
+                        st["status"] = "blocked"; st["detail"] = "前序步骤失败，未执行"; changed = True
+                run["status"] = "failed"
+                if changed:
+                    run_save(run)
+                continue
+            cur = next((st for st in steps if st["status"] not in TERMINAL), None)
             if cur and cur["type"] == "verify" and cur["status"] == "pending":
                 cur["status"] = "running"; cur["started"] = cur.get("started") or datetime.now().strftime("%H:%M:%S")
                 # 收集要验证的 URL：步骤自带 urls，或从前序 batch 步的 spec/预设推导
@@ -1603,7 +1614,7 @@ def run_tick():
                 except Exception as e:
                     cur["status"] = "failed"; cur["detail"] = str(e)[:160]; changed = True
             # 全部结束 → 完成
-            if all(st["status"] in ("done", "failed", "warn") for st in steps):
+            if all(st["status"] in ("done", "failed", "warn", "blocked") for st in steps):
                 run["status"] = ("failed" if any(st["status"] == "failed" for st in steps)
                                  else ("warn" if any(st["status"] == "warn" for st in steps) else "done"))
                 changed = True
@@ -1622,7 +1633,8 @@ def run_view(rid):
     done = sum(1 for st in steps if st["status"] == "done")
     failed = sum(1 for st in steps if st["status"] == "failed")
     warn = sum(1 for st in steps if st["status"] == "warn")
-    run["overall"] = {"total": len(steps), "done": done, "failed": failed, "warn": warn,
+    blocked = sum(1 for st in steps if st["status"] == "blocked")
+    run["overall"] = {"total": len(steps), "done": done, "failed": failed, "warn": warn, "blocked": blocked,
                       "pct": int(round(100 * (done + failed + warn) / max(1, len(steps))))}
     if failed:
         run["status"] = "failed"
@@ -1918,7 +1930,8 @@ def ai_context_prompt(ctx, budget_profile="default"):
 
 
 def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", template_id="",
-                   instruction="", source_text="", prior_context="", budget_profile="default", task=None):
+                   instruction="", source_text="", prior_context="", budget_profile="default", task=None,
+                   style_id=""):
     """批量生成/改稿共用执行体：LLM → 落盘 → post-write + geo 门禁 → 状态机推进。"""
     ps_args = ["--state-path", str(proj_paths(proj)["state"]), "--events-path", str(proj_paths(proj)["events"])]
     ps_run([sys.executable, str(PS_PATH), *ps_args, "upsert", "--id", item_id, "--category", ctype])
@@ -1976,7 +1989,7 @@ def _bh_gen(item, task, proj):
                           topic=item.get("topic", ""), brief=item.get("brief", ""),
                           template_id=item.get("template_id", ""), prior_context=task.get("ctx_digest", ""),
                           budget_profile=item.get("budget_profile") or (task.get("params") or {}).get("budget_profile", "default"),
-                          task=task)
+                          task=task, style_id=item.get("style_id", ""))
 
 
 def _bh_rewrite(item, task, proj):
@@ -1988,7 +2001,7 @@ def _bh_rewrite(item, task, proj):
     return run_generation(proj, item["item_id"], ctype=item.get("type", "blog"), lang=item.get("lang", "zh"),
                           topic=item.get("topic", item.get("slug", "")), brief=item.get("brief", ""),
                           instruction=item.get("instruction", ""), source_text=src,
-                          prior_context=task.get("ctx_digest", ""),
+                          prior_context=task.get("ctx_digest", ""), style_id=item.get("style_id", ""),
                           budget_profile=item.get("budget_profile") or (task.get("params") or {}).get("budget_profile", "default"))
 
 
