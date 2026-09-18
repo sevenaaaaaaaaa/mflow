@@ -79,6 +79,18 @@ em{font-style:normal}
 .sb-toggle{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;color:var(--muted)}
 .sb-toggle:hover{background:var(--hover)}
 .sb-toggle svg{width:18px;height:18px}
+#topnav{display:flex;align-items:center;gap:2px;margin-left:14px;position:relative}
+#topnav .tn-group{position:relative}
+#topnav .tn-btn{display:flex;align-items:center;gap:5px;padding:7px 12px;border-radius:10px;font-size:12.5px;font-weight:600;color:var(--muted);transition:all .15s}
+#topnav .tn-btn:hover{background:var(--hover);color:var(--fg)}
+#topnav .tn-group.on .tn-btn{background:var(--accent-soft);color:var(--accent)}
+#topnav .tn-menu{position:absolute;top:calc(100% + 8px);left:0;min-width:190px;background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:6px;display:none;z-index:var(--z-chrome);backdrop-filter:blur(20px)}
+#topnav .tn-group.on .tn-menu{display:block}
+#topnav .tn-menu button{display:flex;align-items:center;gap:9px;width:100%;padding:8px 10px;border-radius:9px;font-size:12.5px;color:var(--muted);text-align:left}
+#topnav .tn-menu button:hover{background:var(--hover);color:var(--accent)}
+#topnav .tn-menu button.on{background:var(--accent-soft);color:var(--accent);font-weight:700}
+#topnav .tn-menu .sbad{margin-left:auto}
+@media(max-width:1100px){#topnav{display:none}}
 .bbar{flex:0 0 auto;display:flex;align-items:center;gap:6px}
 .cbtn{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;color:var(--muted)}
 .cbtn:hover{background:var(--hover);color:var(--fg)}
@@ -94,6 +106,10 @@ em{font-style:normal}
 .sb-brand-tx em{font-family:var(--font-display);font-style:italic;color:var(--accent)}
 .sb-new{width:100%;height:42px;border-radius:13px;background:var(--grad);color:var(--on-accent);font-size:13.5px;font-weight:700;margin-bottom:10px;box-shadow:var(--shadow-sm);transition:transform .25s var(--ease-spring)}
 .sb-new:hover{transform:translateY(-1px)}
+.sb-quick{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:6px}
+.sb-quick button{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px;border-radius:12px;background:var(--surface);border:1px solid var(--border);color:var(--muted);font-size:10.5px;font-weight:600;transition:all .18s}
+.sb-quick button:hover{background:var(--hover);color:var(--accent);border-color:var(--accent)}
+.sb-quick svg{width:17px;height:17px}
 .sec-title{font-family:var(--font-mono);font-size:10px;font-weight:700;letter-spacing:.16em;color:var(--faint);padding:14px 10px 6px}
 .s-item{display:flex;align-items:center;gap:11px;width:100%;height:42px;padding:0 12px;border-radius:13px;font-size:13.5px;font-weight:600;color:var(--muted);text-align:left;transition:background .18s,color .18s}
 .s-item:hover{background:var(--hover);color:var(--fg)}
@@ -243,6 +259,24 @@ pre.mut{background:var(--surface);color:var(--muted)}
 @media(max-width:600px){.cols{grid-template-columns:1fr}.tgrid{grid-template-columns:1fr}.pgrid{grid-template-columns:1fr 1fr}
   #sidebar{width:220px}.sb-new{font-size:12px}.head-actions{flex-direction:column;align-items:flex-start}.pg-head{flex-direction:column}}
 
+#mascot{position:fixed;right:20px;bottom:20px;z-index:var(--z-reader);display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+#mascot-btn{position:relative;width:60px;height:60px;border-radius:50%;background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow);display:grid;place-items:center;transition:transform .25s var(--ease-spring)}
+#mascot-btn:hover{transform:scale(1.08) translateY(-2px)}
+@keyframes mcfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+#mascot-btn svg{animation:mcfloat 3s ease-in-out infinite}
+.mc-ping{position:absolute;top:8px;right:8px;width:11px;height:11px;border-radius:50%;background:var(--bad);border:2px solid var(--surface);display:none;animation:pulse 1.6s infinite}
+.mc-ping.on{display:block}
+#mascot-bubble{width:320px;max-width:calc(100vw - 40px);background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);padding:14px;display:none;backdrop-filter:blur(20px)}
+#mascot-bubble.on{display:block;animation:mcin .22s var(--ease-spring)}
+@keyframes mcin{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:none}}
+.mc-head{display:flex;align-items:center;justify-content:space-between;font-weight:700;font-size:12.5px;margin-bottom:8px;color:var(--accent)}
+#mc-body{font-size:12.5px;line-height:1.75;max-height:280px;overflow:auto}
+#mc-body .mc-tip{padding:7px 0;border-bottom:1px solid var(--border)}
+#mc-body .mc-tip:last-child{border-bottom:none}
+#mc-body .mc-act{margin-top:4px;display:flex;gap:6px;flex-wrap:wrap}
+#mc-reply{margin-top:8px;font-size:12.5px;line-height:1.7;max-height:220px;overflow:auto}
+#mc-reply .mc-typing{color:var(--faint)}
+
 /* z-index 层级系统 */
 :root{--z-base:0;--z-panel:50;--z-chrome:60;--z-reader:80;--z-toast:99}
 
@@ -255,6 +289,7 @@ pre.mut{background:var(--surface);color:var(--muted)}
   <div class="lights"><span class="light light-r"></span><span class="light light-y"></span><span class="light light-g"></span></div>
   <button class="sb-toggle" onclick="document.body.classList.toggle('sb-collapsed')" title="折叠侧栏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
   <span class="ws"><span class="ws-ic">M</span>MFlow</span>
+  <nav id="topnav"></nav>
   <span id="me-name" style="color:var(--muted);font-size:12px"></span>
   <span class="sp" style="flex:1"></span>
   <div class="bbar">
@@ -265,9 +300,15 @@ pre.mut{background:var(--surface);color:var(--muted)}
 
 <aside id="sidebar"><div class="sb-scroll">
   <div class="sb-brand"><span class="sb-logo">M</span><span class="sb-brand-tx">M<em>Flow</em></span></div>
-  <select id="proj-sel" onchange="switchProj(this.value)" title="切换项目" style="width:100%;margin:0 0 8px;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--surface-strong);color:var(--fg);font-size:12.5px"></select>
-  <button class="sb-new" onclick="newProject()">＋ 新建项目</button>
-  <button class="sb-new" style="background:var(--surface);color:var(--fg);border:1px solid var(--border);box-shadow:none" onclick="setTab('tasks');setTimeout(()=>$('ttitle').focus(),200)">＋ 新建任务</button>
+  <div class="row" style="margin-bottom:8px;gap:6px">
+    <select id="proj-sel" onchange="switchProj(this.value)" title="切换项目" style="flex:1;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--surface-strong);color:var(--fg);font-size:12.5px"></select>
+    <button class="mini" onclick="newProject()" title="新建项目" style="height:34px;padding:0 10px">＋</button>
+  </div>
+  <div class="sb-quick">
+    <button onclick="setTab('tasks')" title="任务看板"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>任务看板</span></button>
+    <button onclick="setTab('agent')" title="Agent 任务台"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4v1a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3h1v3M12 3a4 4 0 0 1 4 4v1a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-1v3"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/></svg><span>Agent</span></button>
+    <button onclick="setTab('calt')" title="内容日历"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>日历</span></button>
+  </div>
   <button class="s-item on" data-t="home" onclick="setTab('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>总览</span></button>
   <div class="sec-title">工作台</div>
   <button class="s-item" data-t="agent" onclick="setTab('agent')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4v1a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3h1v3M12 3a4 4 0 0 1 4 4v1a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-1v3"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/></svg><span>Agent 任务台</span></button>
@@ -354,6 +395,7 @@ pre.mut{background:var(--surface);color:var(--muted)}
       <div class="card tcol"><div class="card-head"><h3>进行中</h3></div><div id="col-doing"></div></div>
       <div class="card tcol"><div class="card-head"><h3>已完成</h3></div><div id="col-done"></div></div>
     </div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>批量任务进度</h3><button class="more" onclick="setTab('batch')">全部 →</button></div><div id="task-batches"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>自动同步队列（只读）</h3></div><div id="autoq"></div></div>
   </section>
 
@@ -672,10 +714,12 @@ pre.mut{background:var(--surface);color:var(--muted)}
   <section class="page" id="pg-create">
     <div class="pg-head"><div><div class="kick">创作</div><h1>创作<em class="sf">中心</em></h1>
       <p class="pg-sub">Blog 与 6 类落地页的生成入口。Loop 会自动「生成 → 质检 → 按反馈迭代」最多 3 轮；通过后草稿入 S4-qa 等人工审。</p></div></div>
+    <div id="create-guide"></div>
     <div class="ov-grid2">
       <div class="card"><div class="card-head"><h3>新建内容</h3></div>
         <div class="row"><span class="mut" style="width:70px">行业模板</span><div class="chips" id="ctpl"></div></div>
         <div class="chips" id="ctypes" style="margin:10px 0"></div>
+        <div class="row" style="margin-bottom:6px"><span class="mut" style="width:70px;flex:0 0 auto">选题灵感</span><div class="chips" id="cinsp" style="flex:1"></div></div>
         <div class="row"><select id="clang"></select>
           <input id="ctopic" placeholder="主题（如：AI 海报生成器怎么选）" style="flex:1;min-width:200px"></div>
         <div class="row"><input id="cbrief" placeholder="补充简报：目标读者 / 必含要点（可空）" style="flex:1"></div>
@@ -700,6 +744,9 @@ pre.mut{background:var(--surface);color:var(--muted)}
     <div class="pg-head"><div><div class="kick">创作 · Agent 模式</div><h1>Loop <em class="sf">管理</em></h1>
       <p class="pg-sub">目标驱动的自主循环：生成 → 质量门禁 → 带反馈重写，通过即止。统一在这里创建、监控、停止。</p></div>
       <div class="head-actions"><button class="btn ghost" onclick="setTab('create')">＋ 发起新 Loop</button></div></div>
+    <div id="loop-guide"></div>
+    <div class="card"><div class="card-head"><h3>快速开始</h3><span class="mut">点一下即发起一个标准 Loop</span></div>
+      <div class="chips" id="looppresets"></div></div>
     <div class="card"><div class="card-head"><h3>Loop 列表</h3><button class="more" onclick="loadLoops()">刷新 ↻</button></div>
       <div id="loop-list"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3 id="loop-log-t">运行日志</h3></div><pre id="loop-log">选择一个 Loop 查看日志</pre></div>
@@ -709,6 +756,10 @@ pre.mut{background:var(--surface);color:var(--muted)}
   <section class="page" id="pg-flow">
     <div class="pg-head"><div><div class="kick">创作 · 节点模式</div><h1>节点<em class="sf">流水线</em></h1>
       <p class="pg-sub">选中一个条目，按节点逐步执行。每个节点是真实动作（调 LLM / 跑钩子 / 推状态机），不是模拟。</p></div></div>
+    <div id="flow-guide"></div>
+    <div class="card"><div class="card-head"><h3>选一个预设流程（推荐）</h3><span class="mut">一键带好类型/语言/主题</span></div>
+      <div class="chips" id="fpresets"></div>
+    </div>
     <div class="card"><div class="card-head"><h3>目标条目</h3></div>
       <div class="row"><input id="fitem" placeholder="条目 id（如 ai-poster-guide）" style="flex:1;min-width:200px">
       <select id="ftype"></select>
@@ -958,7 +1009,127 @@ function loadNextActions(){const el=$('next-actions');if(!el)return;
  })}
 function toggleAdv(){const g=$('adv-group'),a=$('adv-arrow');const open=g.style.display!=='none';g.style.display=open?'none':'block';a.textContent=open?'▸':'▾';if(!open){try{localStorage.setItem('mf_adv','1')}catch(e){}}}
 
+/* ---- 看板娘：小 M 内容助手 ---- */
+const MACOT_TIPS={
+ home:[['👋 欢迎回来！','我可以帮你下达任务、回答问题、解释每个功能。试试问我：「现在该做什么？」']],
+ agent:[['🤖 这是 Agent 任务台','直接用自然语言说需求即可，我会自动调用 skills/知识库/harness。例如「扫一遍 tools 的 SEO 问题」']],
+ batch:[['📦 批量任务','想一次处理很多条？用「预设工作流」最快；想看某条结果点「详情」，那里有人话化的成功/失败说明和前台预览链接。']],
+ tasks:[['📋 任务看板','这里有手动任务 + 批量任务进度。手动任务旁的 🤖 可一键交给 Agent 执行。']],
+ create:[['✍️ 创作中心','填主题点「发起 Loop」即可。不知道写什么就点「选题灵感」。']],
+ loops:[['⚡ Loop 模式','点「快速开始」一键发起，系统自动生成→质检→重写。']],
+ flow:[['🔗 节点流水线','选预设流程再逐节点执行。想全自动就用 Loop 模式。']],
+ lib:[['📚 内容库','17.5k 篇已发布内容。生成时会自动参考同类页面，避免重复。']],
+ kb:[['📖 知识库','生成内容时的真实事实来源，避免 AI 编造。']],
+ qa:[['🔍 QA 编排','先扫描发现问题，再一键生成修复任务。']],
+ default:[['需要帮忙吗？','可以问我任何关于这个页面或系统的问题，我也可以直接帮你干活。']]
+};
+let MC_OPEN=false;
+function mascotToggle(){MC_OPEN=!MC_OPEN;$('mascot-bubble').classList.toggle('on',MC_OPEN);if(MC_OPEN)mascotRender()}
+function mascotClose(){$('mascot-bubble').classList.remove('on');MC_OPEN=false}
+function mascotRender(tipOnly){
+ const tips=MACOT_TIPS[TAB]||MACOT_TIPS.default;
+ $('mc-body').innerHTML=tips.map(([t,d])=>`<div class="mc-tip"><b>${t}</b><div class="mut">${d}</div></div>`).join('')
+  +`<div class="mc-act"><button class="mini" onclick="mascotAsk('现在我该做什么？')">下一步做什么？</button>
+    <button class="mini" onclick="setTab('${TAB}');loadNextActions&&loadNextActions()">刷新建议</button></div>`;
+ if(!tipOnly)$('mc-reply').innerHTML='';
+}
+function mascotAsk(preset){const inp=$('mc-input');const q=(typeof preset==='string'?preset:(inp.value||'').trim());if(!q)return;
+ inp.value='';const box=$('mc-reply');box.innerHTML='<div class="mc-typing">小 M 思考中…</div>';
+ api('api/agent/chat',{message:q}).then(r=>{if(r.error){box.innerHTML='<span class="bad">出错了：'+esc(r.error)+'</span>';return}
+  box.innerHTML=mdRender(r.say||'')+(r.spec?`<div style="margin-top:6px"><button class="mini" onclick="setTab('agent')">去 Agent 任务台执行 →</button></div>`:'');
+ }).catch(()=>{box.innerHTML='<span class="bad">请求失败</span>'})}
+function mascotAttach(){try{const n=JSON.parse(localStorage.getItem('mflow-console-v1')||'{}').mascotSeen;if(!n){const p=$('mascot-ping');if(p)p.classList.add('on');setTimeout(()=>{const q=$('mascot-ping');if(q)q.classList.remove('on')},15000);localStorage.setItem('mflow-console-v1',JSON.stringify({...JSON.parse(localStorage.getItem('mflow-console-v1')||'{}'),mascotSeen:1}))}}catch(e){}}
+
+/* ---- 逐页 onboarding（首次进入自动展示，可关闭，可重开）---- */
+const PAGE_GUIDES={
+ home:{icon:'🏠',title:'总览：先看这里',steps:['看<b>推荐下一步</b>按提示操作','用<b>工作模式</b>切换手动/自动/自治','右侧看报告与近 7 日活动'],hint:'不确定做什么？点右下角「小 M」问一句。'},
+ agent:{icon:'🤖',title:'Agent 任务台：一句话搞定',steps:['用自然语言说需求（不用给路径）','Agent 自动调用 skills/知识库/harness','确认 dry-run 结果后即可真实执行'],hint:'Ctrl+Enter 发送。「真实执行」会写生产库，务必先看 dry-run。'},
+ batch:{icon:'📦',title:'批量任务：一次处理很多条',steps:['从<b>预设工作流</b>点一下就开跑','在<b>任务列表</b>看进度条','点<b>详情</b>看人话结果 + 前台预览'],hint:'dry-run=只校验不写库；确认无误后再关掉它跑真实。'},
+ tasks:{icon:'📋',title:'任务看板',steps:['录入手动任务并指派/设截止','点卡片上的 <b>🤖</b> 交给 Agent 执行','下方看<b>批量任务进度</b>'],hint:'拖动卡片可跨列流转（待办/进行中/完成）。'},
+ create:{icon:'✍️',title:'创作中心：生成一篇内容',steps:['选类型/语言/主题（或点选题灵感）','点<b>发起 Loop</b> 自动生成→质检→迭代','到任务看板看进度'],hint:'长文（7500 词级）走本地 signal-writer 完整流程。'},
+ loops:{icon:'⚡',title:'Loop 模式：自主循环',steps:['点<b>快速开始</b>一键发起','系统自动生成→过质检→带反馈重写','通过即止，失败熔断保护'],hint:'每个 Loop 计 token，可在「用量与成本」查看。'},
+ flow:{icon:'🔗',title:'节点流水线：手动逐步',steps:['选<b>预设流程</b>或手填条目','依次执行：生成 → 质检 → 推进状态机','每步都是真实动作'],hint:'想要全自动请用 Loop 模式或批量任务。'},
+ qa:{icon:'🔍',title:'QA 编排',steps:['先<b>扫描</b>发现质量问题','一键把问题<b>生成修复任务</b>','修复后自动<b>复检</b>看 delta'],hint:'扫描范围可选 md 草稿或线上 Sanity 内容。'},
+ dist:{icon:'🚚',title:'分发队列',steps:['查看四轨道待发内容','人工<b>审批</b>后才真正发出','—'],hint:'发布永远需要人工授权。'},
+ calt:{icon:'📅',title:'内容日历',steps:['查看/新增排期','到期自动进入管线','—'],hint:''}, 
+ pipe:{icon:'🧭',title:'内容管线',steps:['每个条目按状态机推进','S3 生成 → S4 质检 → S5 发布','—'],hint:''},
+ lib:{icon:'📚',title:'内容库',steps:['浏览已发布的 17.5k 篇','按站点/栏目/语言筛选','生成时会自动参考同类页'],hint:''},
+ kb:{icon:'📖',title:'知识库',steps:['存放品牌事实/竞品/画像/案例','生成内容时被检索作为真实来源','—'],hint:'知识库越准，AI 越不容易编造。'},
+ reports:{icon:'📊',title:'报告中心',steps:['按分类浏览 SEO/GEO/审计报告','点击在线阅读','表格会自动转指标卡'],hint:''},
+ rdash:{icon:'📈',title:'报告仪表',steps:['选报告 → 自动提取表格为图表','可与另一份报告对比','—'],hint:''},
+ mkt:{icon:'🧩',title:'模板市场',steps:['浏览可安装的行业模板/插件','安装后在创作中心选用','—'],hint:''},
+ set:{icon:'⚙️',title:'设置',steps:['配 LLM API（生成必需）','查看 Harness 规则与 Skills','项目管理与调度配置'],hint:'API Key 只存在服务器，页面会打码。'},
+ usage:{icon:'💰',title:'用量与成本',steps:['查看 token/调用/写入统计','按用户与天数聚合','—'],hint:''},
+ iter:{icon:'🔄',title:'自我迭代',steps:['系统从历史任务提炼改进','可采纳为提示词/禁用词','—'],hint:''},
+ sys:{icon:'🛠️',title:'调度与日志',steps:['查看定时任务与运行日志','排查异常','—'],hint:''},
+ eng:{icon:'🚦',title:'路由·门禁',steps:['查看生成/发布的门禁规则','每条内容的通过情况','—'],hint:''},
+ default:{icon:'💡',title:'提示',steps:['看页面标题下的说明','右下角「小 M」可随时提问'],hint:''}
+};
+function guideSeen(t){try{return (JSON.parse(localStorage.getItem('mflow-guides')||'{}'))[t]}catch(e){return false}}
+function guideSetSeen(t){try{const d=JSON.parse(localStorage.getItem('mflow-guides')||'{}');d[t]=1;localStorage.setItem('mflow-guides',JSON.stringify(d))}catch(e){}}
+function mountGuide(t){
+ const pg=$('pg-'+t);if(!pg)return;
+ const head=pg.querySelector('.pg-head');if(!head)return;
+ let box=pg.querySelector('.page-guide');
+ if(!box){box=document.createElement('div');box.className='page-guide';head.insertAdjacentElement('afterend',box)}
+ // 若页面已有专属引导（create/flow/loops），不重复
+ if(pg.querySelector('#create-guide,#flow-guide,#loop-guide')){box.remove();return}
+ const g=PAGE_GUIDES[t]||PAGE_GUIDES.default;
+ const seen=guideSeen(t);
+ box.innerHTML=seen?`<div style="text-align:right;margin-bottom:8px"><button class="mini" onclick="guideShow('${t}')">? 本页说明</button></div>`
+  :`<div class="card" style="margin-bottom:14px;border-left:3px solid var(--accent)">
+     <div style="display:flex;gap:10px;align-items:flex-start">
+      <span style="font-size:20px">${g.icon}</span>
+      <div style="flex:1"><div style="font-weight:700;font-size:13.5px;margin-bottom:5px">${g.title}</div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);line-height:1.7">
+       ${g.steps.filter(x=>x&&x!=='—').map((st,i)=>`<span><b style="color:var(--accent)">${i+1}</b> ${st}</span>`).join('')}</div>
+      ${g.hint?`<div class="mut" style="font-size:11.5px;margin-top:6px">${g.hint}</div>`:''}</div>
+      <button class="mini" onclick="guideHide('${t}')">知道了 ×</button></div></div>`;
+}
+function guideHide(t){guideSetSeen(t);mountGuide(t)}
+function guideShow(t){try{const d=JSON.parse(localStorage.getItem('mflow-guides')||'{}');delete d[t];localStorage.setItem('mflow-guides',JSON.stringify(d))}catch(e){};mountGuide(t)}
+
+/* ---- 顶部导航（分组 mega menu）---- */
+const NAV_GROUPS=[
+ {id:'home',label:'总览',items:[['home','总览']]},
+ {id:'work',label:'工作台',items:[['agent','Agent 任务台'],['batch','批量任务'],['create','创作中心'],['tasks','任务看板']]},
+ {id:'quality',label:'质量与发布',items:[['qa','QA 编排'],['dist','分发队列'],['calt','内容日历'],['pipe','内容管线']]},
+ {id:'assets',label:'内容资产',items:[['lib','内容库'],['kb','知识库'],['mkt','模板市场'],['trident','数据管线']]},
+ {id:'reports',label:'报告与迭代',items:[['reports','报告中心'],['rdash','报告仪表'],['iter','自我迭代'],['wfmap','工作流地图']]},
+ {id:'system',label:'系统',items:[['flow','节点流水线'],['loops','Loop 模式'],['eng','路由·门禁'],['pay','支付·发卡'],['sys','调度与日志'],['set','设置'],['usage','用量与成本'],['setup','首次引导']]}
+];
+function topnavBuild(){
+ const el=$('topnav');if(!el)return;
+ el.innerHTML=NAV_GROUPS.map(g=>{
+  const on=g.id===TAB||g.items.some(x=>x[0]===TAB);
+  const items=g.items.map(([t,l])=>`<button data-t="${t}" onclick="setTab('${t}');topnavClose()">${l}</button>`).join('');
+  return `<div class="tn-group ${on?'on':''}" data-g="${g.id}">
+    <button class="tn-btn" onclick="topnavToggle('${g.id}')">${g.label}<span style="font-size:9px;opacity:.5">▾</span></button>
+    <div class="tn-menu">${items}</div></div>`}).join('');
+}
+function topnavToggle(gid){
+ const cur=document.querySelector(`#topnav .tn-group[data-g="${gid}"]`);
+ const wasOn=cur&&cur.classList.contains('on');
+ document.querySelectorAll('#topnav .tn-group').forEach(x=>x.classList.remove('on'));
+ if(!wasOn&&cur)cur.classList.add('on');
+}
+function topnavClose(){document.querySelectorAll('#topnav .tn-group').forEach(x=>x.classList.remove('on'))}
+function topnavSync(){
+ document.querySelectorAll('#topnav .tn-menu button').forEach(b=>b.classList.toggle('on',b.dataset.t===TAB));
+ document.querySelectorAll('#topnav .tn-group').forEach(gr=>{
+  const items=[...gr.querySelectorAll('.tn-menu button')].map(x=>x.dataset.t);
+  gr.classList.toggle('on',items.includes(TAB)&&document.querySelector('#topnav .tn-group.on .tn-menu'))});
+ // 高亮当前分组
+ document.querySelectorAll('#topnav .tn-group').forEach(gr=>{
+  const items=[...gr.querySelectorAll('.tn-menu button')].map(x=>x.dataset.t);
+  gr.querySelector('.tn-btn').style.color=items.includes(TAB)?'var(--accent)':'';});
+}
+document.addEventListener('click',e=>{if(!e.target.closest('#topnav'))topnavClose()});
+
 function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+ if(typeof topnavSync==='function')topnavSync();
+ if(typeof MC_OPEN!=='undefined'&&MC_OPEN)mascotRender();
+ if(typeof mountGuide==='function')mountGuide(t);
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
  $('pg-'+t).classList.add('on');
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
@@ -1024,13 +1195,14 @@ function taskFilterRender(){$('task-filter').innerHTML=[
  `<button class="chip ${TASK_MINE===v?'on':''}" style="border-radius:12px" onclick="TASK_MINE=${v};loadTasks()">${t}</button>`).join('')}
 function loadTasks(){taskFilterRender();api('api/tasks').then(t=>{
  const me=window.__ME||'';
- const all=t.manual||[];
+ const all=t.manual||[];__TASKS_CACHE=all;
  const m=TASK_MINE?all.filter(x=>(x.assignee||'').trim()===me&&me):all;
  const card=x=>`<div class="task" draggable="true" ondragstart="dragStart(event,'${x.id}')" style="cursor:grab" onclick="taskEdit('${x.id}')">
    <span class="tt"><b style="font-weight:600">${esc(x.title)}</b>
    ${x.link?`<div class="mut" style="font-size:11px">🔗 ${esc(x.link.split('/').pop())}</div>`:''}
    ${(x.desc||'').trim()?`<div class="mut" style="font-size:11.5px">${esc(x.desc.slice(0,60))}</div>`:''}
    <div class="mut" style="font-size:11px">${x.assignee?'👤 '+esc(x.assignee)+' ':''}${x.due?'📅 '+esc(x.due):''}</div></span>
+   <button class="mini" title="交给 Agent 执行" onclick="event.stopPropagation();taskToAgentById('${x.id}')">🤖</button>
    <button class="more" style="color:var(--danger)" onclick="event.stopPropagation();taskDel('${x.id}')">×</button></div>`;
  const col=(st,el,label)=>{$(el).innerHTML=`<div class="mut" style="font-size:11px;margin-bottom:2px">${m.filter(x=>x.status===st).length} 张 · 拖入即移动</div>`+
    m.filter(x=>x.status===st).map(card).join('')||'<div class="mut">空</div>';
@@ -1042,6 +1214,7 @@ function loadTasks(){taskFilterRender();api('api/tasks').then(t=>{
  col('todo','col-todo');col('doing','col-doing');col('done','col-done');
  $('autoq').innerHTML=(t.pipeline||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)}</span><span class="badge pipe">管线·${esc(x.stage)}</span></div>`).join('')+
   (t.distribution||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)} <span class="mut">${esc(x.platforms||'')}</span></span><span class="badge dist">分发·${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">分发队列空</span>';
+   loadTaskBatches();
    $('nav-tasks').textContent=all.filter(x=>x.status!=='done').length;
   $('nav-tasks').title=TASK_MINE?`已过滤：仅显示 ${me||'（未登录名）'} 的任务`:'';
   if(TASK_MINE){const cnt=m.filter(x=>x.status!=='done').length;
@@ -1049,6 +1222,24 @@ function loadTasks(){taskFilterRender();api('api/tasks').then(t=>{
    if(head)head.textContent=`归属人过滤中：仅显示「${me||'当前用户'}」的任务（${cnt} 待办 / 共 ${all.filter(x=>x.status!=='done').length} 待办）`;
   }else{const head=$('pg-tasks').querySelector('.pg-head .pg-sub');
    if(head)head.textContent='手动任务可添加/流转；内容管线与分发队列自动同步，只读。';}})}
+function loadTaskBatches(){api('api/batch/list').then(ts=>{
+ const el=$('task-batches');if(!el)return;
+ const items=(ts||[]).filter(t=>t.status!=='cancelled').slice(0,6);
+ if(!items.length){el.innerHTML='<div class="mut" style="font-size:12px">暂无批量任务。到「批量任务」页用预设一键开跑。</div>';return}
+ el.innerHTML=items.map(t=>{const st=t.stats||{};const pct=st.total?Math.round((st.done+st.skipped+st.failed)/st.total*100):0;
+  const okc=t.status==='done'&&!st.failed?'var(--ok)':(st.failed||t.status==='failed')?'var(--bad)':'var(--accent)';
+  return `<div style="padding:9px 0;border-bottom:1px solid var(--border)">
+   <div style="display:flex;align-items:center;gap:8px">
+    <b style="font-size:12.5px;flex:1">${esc(t.title||t.id)}</b>
+    <span class="badge" style="background:${okc}">${esc(t.status)}</span>${t.dry_run?'<span class="badge dist">dry-run</span>':''}
+    <button class="mini" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(t.id)}'),600)">详情</button></div>
+   <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
+    <div style="flex:1;height:7px;border-radius:99px;background:var(--hover);overflow:hidden"><div style="height:100%;width:${pct}%;background:${okc};transition:width .4s"></div></div>
+    <span class="mut" style="font-size:11px;min-width:120px">${st.done||0}/${st.total||0}${st.failed?' · 失败'+st.failed:''}${st.skipped?' · 跳过'+st.skipped:''}</span></div></div>`}).join('')
+})}
+let __TASKS_CACHE=[];
+function taskToAgentById(id){const x=(__TASKS_CACHE||[]).find(y=>y.id===id);taskToAgent(x?x.title:'')}
+function taskToAgent(title){setTab('agent');setTimeout(()=>{const i=$('ag-input');if(i){i.value='帮我完成这个任务：'+title;i.focus()}},150)}
 let dragId=null;
 function dragStart(e,id){dragId=id;e.dataTransfer.effectAllowed='move'}
 function taskEdit(id){api('api/tasks').then(t=>{const x=(t.manual||[]).find(y=>y.id===id);if(!x)return;TM_ID=id;
@@ -1250,7 +1441,7 @@ const GTYPES={"blog":"Blog 文章","landing-tools":"落地页·Tools","landing-f
 const GLANGS=[["zh","简体中文"],["en","English"],["ja","日本語"],["ko","한국어"],["de","Deutsch"],["fr","Français"],["pt","Português"],["ru","Русский"],["it","Italiano"],["zh-TW","繁體中文"]];
 let CTYPE='blog', CTPL='';
 function slugify(s){return s.toLowerCase().replace(/[^a-z0-9\u4e00-\u9fff]+/g,'-').replace(/^-+|-+$/g,'').slice(0,60)||'content-'+Date.now()%10000}
-function loadCreate(){const tc=$('ctypes');
+function loadCreate(){loadCreateGuides();const tc=$('ctypes');
  if(!tc.children.length){tc.innerHTML=Object.entries(GTYPES).map(([k,v])=>`<span class="chip ${k==='blog'?'on':''}" data-k="${k}" onclick="pickType(this,'${k}')">${v}</span>`).join('');
   $('clang').innerHTML=GLANGS.map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}
  if(!$('ctpl').children.length)api('api/templates').then(ts=>{
@@ -1270,8 +1461,68 @@ function genOnce(){const topic=$('ctopic').value.trim();if(!topic)return alert('
    if(r.error)return alert(r.error);
    alert('已生成 '+r.path+'（'+r.chars+' 字符）\n质检 exit='+r.hook_rc+'\n\n'+(r.hook_rc===0?'✅ 质检 PASS':'⚠️ 质检 BLOCK，见下')+'\n'+r.hook_out.slice(-600))})}
 
+/* ---- 通用：页内引导 ---- */
+function guideBox(icon,title,steps,hint){
+ return `<div class="card" style="margin-bottom:14px;border-left:3px solid var(--accent)">
+  <div style="display:flex;gap:10px;align-items:flex-start">
+   <span style="font-size:20px">${icon}</span>
+   <div style="flex:1"><div style="font-weight:700;font-size:13.5px;margin-bottom:5px">${title}</div>
+   <div style="display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);line-height:1.7">
+    ${steps.map((st,i)=>`<span><b style="color:var(--accent)">${i+1}</b> ${st}</span>`).join('')}</div>
+   ${hint?`<div class="mut" style="font-size:11.5px;margin-top:6px">${hint}</div>`:''}</div></div></div>`}
+
+/* ---- 创作中心：引导 + 选题灵感 ---- */
+const CINSP=[
+ ['AI 海报生成器怎么选','对比 5 款主流工具，给出选型清单与真实价格','tool'],
+ ['电商团队如何用 AI 批量出图','面向 3-20 人电商团队，含流程图与成本测算','blog'],
+ ['AI 设计工具 2026 趋势','行业洞察，引用真实市场数据','blog'],
+ ['免费 AI logo 生成器实测','实测 4 个免费工具的输出质量与授权条款','tool'],
+];
+function loadCreateGuides(){
+ const g=$('create-guide');if(g&&!g.innerHTML)g.innerHTML=guideBox('✍️','三步产出一篇内容',
+  ['填写<b>类型/语言/主题</b>（点下方灵感可一键带入）','点<b>「发起 Loop」</b>自动生成→质检→迭代最多 3 轮','到<b>任务看板/批量任务</b>看进度，发布仍需人工授权'],
+  '提示：不确定写什么？让 <a href="#" onclick="setTab(\'agent\');return false" style="color:var(--accent)">Agent 任务台</a> 帮你从 GSC/知识库推荐选题。');
+ const ci=$('cinsp');if(ci&&!ci.children.length)ci.innerHTML=CINSP.map((x,i)=>`<span class="chip" onclick="useInsp(${i})">${esc(x[0])}</span>`).join('')}
+function useInsp(i){const x=CINSP[i];$('ctopic').value=x[0];$('cbrief').value=x[1];
+ document.querySelectorAll('#ctypes .chip').forEach(c=>c.classList.toggle('on',c.dataset.k===x[2]));
+ if(typeof pickType==='function'&&document.querySelector('#ctypes .chip.on'))CTYPE=x[2];
+ $('cid').value=slugify(x[0]);toast('已带入：「'+x[0]+'」','ok')}
+
+/* ---- 节点流水线：引导 + 预设 ---- */
+const FPRESETS=[
+ {label:'博客 · 中文生成',item:'',type:'blog',lang:'zh',topic:''},
+ {label:'落地页 · 英文工具页',item:'',type:'tool',lang:'en',topic:''},
+ {label:'功能页 · 日文',item:'',type:'feature',lang:'ja',topic:''},
+ {label:'选题 · 从灵感开始',item:'',type:'blog',lang:'zh',topic:'AI 设计工具怎么选'},
+];
+function loadFlowGuides(){
+ const g=$('flow-guide');if(g&&!g.innerHTML)g.innerHTML=guideBox('🔗','节点模式：手动逐步执行',
+  ['选<b>预设流程</b>或手填条目 id/类型/语言/主题','依次点节点：<b>生成 → 质检 → 推进状态机</b>','每步都是真实动作，可看到实时输出'],
+  '想全自动？改用 <a href="#" onclick="setTab(\'loops\');return false" style="color:var(--accent)">Loop 模式</a>（自动循环到通过）或 <a href="#" onclick="setTab(\'batch\');return false" style="color:var(--accent)">批量任务</a>（多条目并发）。');
+ const fp=$('fpresets');if(fp&&!fp.children.length)fp.innerHTML=FPRESETS.map((x,i)=>`<span class="chip" onclick="useFlowPreset(${i})">${esc(x.label)}</span>`).join('')}
+function useFlowPreset(i){const x=FPRESETS[i];$('ftype').value=x.type;$('flang').value=x.lang;
+ $('ftopic').value=x.topic;if(x.item)$('fitem').value=x.item;
+ if(!$('fitem').value)$('fitem').value=slugify(x.topic||('item-'+Date.now().toString(36)));toast('已套用预设：'+x.label,'ok')}
+
+/* ---- Loop：引导 + 快速开始 ---- */
+const LOOPPRESETS=[
+ ['写一篇中文博客','AI 设计工具怎么选：5 款主流工具横评','blog','zh'],
+ ['写一个英文工具落地页','AI Image to Sketch','tool','en'],
+ ['生成一篇日文功能页','Lovart 批量设计功能','feature','ja'],
+ ['写一篇电商场景文章','电商团队如何用 AI 批量出图','blog','zh'],
+];
+function loadLoopGuides(){
+ const g=$('loop-guide');if(g&&!g.innerHTML)g.innerHTML=guideBox('⚡','Loop 模式：目标驱动的自主循环',
+  ['点下方<b>快速开始</b>或到创作中心填主题发起','系统自动<b>生成→过质检→带反馈重写</b>最多 3 轮','通过即止；失败会熔断保护，不烧额度'],
+  '每个 Loop 都记账 token。可在「用量与成本」查看消耗。');
+ const lp=$('looppresets');if(lp&&!lp.children.length)lp.innerHTML=LOOPPRESETS.map((x,i)=>`<span class="chip" onclick="quickLoop(${i})">${esc(x[0])}</span>`).join('')}
+function quickLoop(i){const [label,topic,type,lang]=LOOPPRESETS[i];
+ const id=slugify(topic)||('loop-'+Date.now().toString(36));
+ api('api/loop/create',{item_id:id,type,lang,topic,brief:''}).then(r=>{
+  if(r.error)return toast(r.error,'bad');toast('Loop 已发起：'+label,'ok');loadLoops();setTab('loops')})}
+
 /* ---- Loop 管理 ---- */
-function loadLoops(){api('api/loops').then(L=>{
+function loadLoops(){loadLoopGuides();api('api/loops').then(L=>{
  $('nav-loops').textContent=L.filter(x=>x.status==='running'||x.status==='queued').length;
  $('loop-list').innerHTML=L.map(x=>`<div class="task"><span class="tt">${esc(x.goal)}<div class="mut">${esc(x.type)} · ${esc(x.lang)} · ${esc(x.created||'')} · 轮次 ${x.round||0}/${x.max_rounds||3} · item: ${esc(x.item_id)}${x.tokens_used?` · tokens ${x.tokens_used}`:''}</div></span>
   <span class="badge ${x.status==='running'?'pipe':x.status==='done'?'':'dist'}" style="${x.status==='done'?'background:var(--ok)':''}">${esc(x.status)}</span>
@@ -1289,7 +1540,7 @@ const FNODES=[["1 · 生成", "调 LLM 生成草稿到 Console-Gen/{id}.md",'gen
  ["3 · 入 S4-qa", "状态机推进：draft→done→S4-qa",'adv'],
  ["4 · 人工审阅", "在报告/文件里人工读稿（节点只读提示）",'review'],
  ["5 · 后续", "QA 通过后按铁律走 pre-import → 发布（不在网页端）",'done']];
-function loadFlow(){const ts=$('ftype');if(!ts.children.length){
+function loadFlow(){loadFlowGuides();const ts=$('ftype');if(!ts.children.length){
  ts.innerHTML=Object.entries(GTYPES).map(([k,v])=>`<option value="${k}">${v}</option>`).join('');
  $('flang').innerHTML=GLANGS.map(([k,v])=>`<option value="${k}">${v}</option>`).join('')}
  renderFlow()}
@@ -1793,15 +2044,25 @@ function btFromPlan(){api('api/batch/create',{type:'asset_replace',title:'图片
  if(r.error)return alert(r.error);alert(`已按物料计划建任务：${r.id}（${r.total} 项）`);$('bt-type').value='asset_replace';loadBatch()})}
 function btAct(id,action){if(action==='cancel'&&!confirm('取消任务 '+id+'？'))return;
  api('api/batch/action',{id,action}).then(r=>{if(r.error)return alert(r.error);loadBatch();btDetail(id)})}
-function btDetail(id){api('api/batch/detail?id='+encodeURIComponent(id)).then(t=>{if(t.error)return alert(t.error);
+function btDetail(id){api('api/batch/detail?id='+encodeURIComponent(id)).then(t=>{if(t.error)return toast(t.error,'bad');
  $('bt-detail-card').style.display='block';
- $('bt-detail-t').textContent=`任务详情 · ${t.title||t.id}（${t.status}${t.dry_run?' · dry-run':''}）`;
- $('bt-detail').innerHTML=`<div class="mut" style="font-size:12px;line-height:1.9">type=${esc(t.type)} · 并发 ${t.concurrency} · 创建 ${esc(t.created)} by ${esc(t.created_by||'')}<br>
-  ${esc((t.log||[]).slice(-4).join(' | '))}</div>
-  <div style="max-height:320px;overflow:auto;margin-top:8px"><table><tr><th>#</th><th>条目</th><th>状态</th><th>尝试</th><th>结果/错误</th></tr>`+
-  (t.items||[]).slice(0,300).map(i=>`<tr><td class="tnum">${i.i}</td><td style="font-size:11px">${esc(i.doc_id||i.item_id||i.slug||'')}</td>
-   <td class="${i.status==='done'?'ok':(i.status==='failed'?'bad':'')}">${esc(i.status)}</td><td class="tnum">${i.attempts||0}</td>
-   <td style="font-size:11px" class="mut">${esc(i.error||JSON.stringify(i.result||{}).slice(0,120))}</td></tr>`).join('')+'</table></div>'})}
+ const sm=t.summary||{};
+ $('bt-detail-t').innerHTML=`任务详情 · ${esc(t.title||t.id)} <span class="badge ${sm.ok?'pipe':'dist'}" style="${sm.ok?'background:var(--ok)':''}">${esc(t.status)}</span> ${t.dry_run?'<span class="badge dist">dry-run</span>':''}`;
+ const links=(i)=>(i.links||[]).map(l=>l.url
+   ?`<a href="${esc(l.url)}" target="_blank" class="mini" style="text-decoration:none;display:inline-block">${esc(l.label)} ↗</a>`
+   :`<button class="mini" onclick="openReader('${esc(l.reader)}')">${esc(l.label)}</button>`).join(' ');
+ const rows=(t.items||[]).slice(0,300).map(i=>{
+  const v=i.view||{};const okc=v.ok===true?'var(--ok)':v.ok===false?'var(--bad)':'var(--faint)';
+  const ico=v.ok===true?'✓':v.ok===false?'✕':'…';
+  return `<tr><td class="tnum">${i.i+1}</td>
+   <td style="font-size:11px">${esc(i.doc_id||i.item_id||i.slug||'')}<div class="mut" style="font-size:10px">${esc(i.topic||'')}</div></td>
+   <td><span style="color:${okc};font-weight:700">${ico}</span> <span style="font-size:12px">${esc(v.status_text||i.status)}</span>
+     <div class="mut" style="font-size:11px;margin-top:2px">${esc(v.detail||i.error||'')}</div></td>
+   <td style="white-space:nowrap">${links(i)}</td></tr>`}).join('');
+ $('bt-detail').innerHTML=`<div style="font-size:13px;padding:10px 12px;border-radius:10px;margin-bottom:10px;background:${sm.ok?'var(--ok-soft)':'var(--warn-soft)'}">
+   <b>${esc(sm.line||'')}</b>${t.dry_run?'<div class="mut" style="font-size:11.5px;margin-top:3px">dry-run：只校验、不写生产库。确认无误后到任务列表关掉 dry-run 再跑一次即可真正生效。</div>':''}</div>
+  <div class="mut" style="font-size:11.5px;line-height:1.8;margin-bottom:8px">类型 ${esc(t.type)} · 并发 ${t.concurrency} · 创建 ${esc(t.created)} · ${esc(t.created_by||'')}${(t.log||[]).length?'<br>最近日志：'+esc((t.log||[]).slice(-2).join(' | ')):''}</div>
+  <div style="max-height:400px;overflow:auto"><table><tr><th>#</th><th>条目</th><th>结果</th><th>操作</th></tr>${rows||'<tr><td colspan="4" class="mut">无条目</td></tr>'}</table></div>`})}
 
 /* ---- 报告仪表 ---- */
 function loadRdash(){if($('rd-cat').children.length)return;
@@ -1901,6 +2162,7 @@ function loadProjs(){api('api/projects').then(d=>{const sel=$('proj-sel');
 function switchProj(id){api('api/projects/switch',{id}).then(()=>location.reload())}
 function newProject(){const n=prompt('新项目名称：');if(!n)return;
  api('api/projects/create',{name:n}).then(r=>{if(r.error)return alert(r.error);return api('api/projects/switch',{id:r.id})}).then(()=>location.reload())}
+topnavBuild();mascotAttach();
 loadProjs();
 api('api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version).catch(()=>{});
 setTab('home');
@@ -1908,5 +2170,33 @@ api('api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version).catch((
 api('api/setup/status').then(items=>{const done=items.filter(x=>x.ok).length;
  $('nav-setup').textContent=done+'/'+items.length}).catch(()=>{});
 </script>
+
+<div id="mascot">
+  <div id="mascot-bubble">
+    <div class="mc-head"><span id="mc-name">小 M · 你的内容助手</span>
+      <button class="mini" onclick="mascotClose()">×</button></div>
+    <div id="mc-body"></div>
+    <div class="row" style="margin-top:8px;gap:6px">
+      <input id="mc-input" placeholder="问我任何事，或让我去干活…" style="flex:1" onkeydown="if(event.key==='Enter')mascotAsk()">
+      <button class="btn primary" style="padding:7px 12px" onclick="mascotAsk()">问</button>
+    </div>
+    <div id="mc-reply"></div>
+    <div class="mut" style="font-size:10.5px;margin-top:6px">我会调用 skills/知识库/harness 规则来回答。复杂任务请到 <a href="#" onclick="setTab('agent');mascotClose();return false" style="color:var(--accent)">Agent 任务台</a>。</div>
+  </div>
+  <button id="mascot-btn" onclick="mascotToggle()" title="小 M · 内容助手">
+    <svg viewBox="0 0 64 64" width="40" height="40">
+      <defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7aa2ff"/><stop offset="1" stop-color="#b48cff"/></linearGradient></defs>
+      <circle cx="32" cy="34" r="22" fill="url(#mg)"/>
+      <ellipse cx="32" cy="40" rx="20" ry="15" fill="#fff" opacity=".92"/>
+      <circle cx="24" cy="37" r="4" fill="#2b3550"/><circle cx="40" cy="37" r="4" fill="#2b3550"/>
+      <circle cx="25.5" cy="35.5" r="1.4" fill="#fff"/><circle cx="41.5" cy="35.5" r="1.4" fill="#fff"/>
+      <path d="M26 46 q6 5 12 0" stroke="#2b3550" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <path d="M32 12 v-6" stroke="#7aa2ff" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="32" cy="5" r="3.2" fill="#ffd166"/>
+      <path d="M12 26 q10 -8 20 -8 q10 0 20 8" stroke="#5f7fe0" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </svg>
+    <span class="mc-ping" id="mascot-ping"></span>
+  </button>
+</div>
 </body>
 </html>

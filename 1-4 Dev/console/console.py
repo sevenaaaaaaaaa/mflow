@@ -1276,6 +1276,116 @@ def batch_load(tid):
     return read_json(BATCH_DIR / f"{tid}.json", None)
 
 
+# ===================== 批量任务：人话化结果 + 预览链接 =====================
+
+def _site_url(site, page_type, lang, slug):
+    """按站点档案的 route 模板构造前台预览 URL。"""
+    if not slug:
+        return ""
+    prof = read_json(SITES_DIR / f"{site}.json", {}) or {}
+    domain = (prof.get("domain") or "").strip()
+    if not domain:
+        return ""
+    route = ""
+    for sec in (prof.get("sections") or []):
+        if sec.get("pageType") == page_type or sec.get("key") == page_type or sec.get("key") == f"{page_type}s":
+            route = sec.get("route", "")
+            break
+    if not route:
+        route = "/{lang}/" + str(page_type or "blog") + "/{slug}"
+    path = route.replace("{lang}", str(lang or prof.get("default_lang") or "en")).replace("{slug}", str(slug))
+    if not path.startswith("/"):
+        path = "/" + path
+    return "https://" + domain + path
+
+
+def _human_result(it, task):
+    """把机器结果翻译成人话：ok / status_text / detail。"""
+    r = it.get("result") or {}
+    st = it.get("status"); t = task.get("type"); dry = bool(task.get("dry_run"))
+    if st == "failed":
+        return {"ok": False, "status_text": "失败", "detail": str(it.get("error") or "未知错误")[:240]}
+    if st == "skipped":
+        return {"ok": None, "status_text": "已跳过", "detail": r.get("reason") or "无需处理（可能已是目标状态）"}
+    if st == "pending":
+        return {"ok": None, "status_text": "排队中", "detail": ""}
+    if st == "running":
+        return {"ok": None, "status_text": "执行中…", "detail": ""}
+    # done
+    if t in ("field_patch", "asset_replace"):
+        if r.get("skipped"):
+            return {"ok": True, "status_text": "无需改动", "detail": r.get("reason") or "内容已是最新"}
+        flds = r.get("set") or []
+        return {"ok": True,
+                "status_text": ("已校验通过（dry-run 未真正写库）" if dry else "已写入生产库"),
+                "detail": ("更新字段：" + "、".join(flds)) if flds else ("已处理" + ("" if dry else "并写库"))}
+    if t in ("gen", "rewrite"):
+        rc = r.get("hook_rc")
+        passed = (rc == 0)
+        return {"ok": passed,
+                "status_text": ("已生成草稿，质检通过" if passed else "已生成草稿，质检有告警"),
+                "detail": "%s 字符 · 草稿：%s" % (r.get("chars", 0), r.get("path", ""))}
+    if t == "publish_sanity":
+        return {"ok": True,
+                "status_text": ("已校验（dry-run 未发布）" if dry else "已发布到前台"),
+                "detail": r.get("url") or r.get("documentId") or r.get("id") or "发布完成"}
+    if t == "landing_refresh":
+        return {"ok": True, "status_text": "已按落地页结构改稿",
+                "detail": "slug=%s · %s/%s · 草稿：%s" % (r.get("slug", ""), r.get("page_type", ""), r.get("lang", ""), r.get("path", ""))}
+    if t == "qa":
+        n = r.get("findings") if isinstance(r.get("findings"), list) else r.get("count")
+        return {"ok": True, "status_text": "已扫描", "detail": ("发现 %s 个问题" % n) if n is not None else "扫描完成"}
+    return {"ok": True, "status_text": "完成", "detail": ""}
+
+
+def batch_view(task, proj=None):
+    """给批量任务详情补齐：view（人话）+ links（预览）。"""
+    if not task or task.get("error"):
+        return task
+    site = site_of(proj)
+    items = task.get("items") or []
+    # 一次性从 Sanity 取所有 doc_id 的 slug/lang/pageType（用于预览 URL）
+    meta = {}
+    dids = [it.get("doc_id") for it in items if it.get("doc_id")]
+    dids = list(dict.fromkeys(dids))[:200]
+    if dids and SANITY_PUB:
+        try:
+            q = '*[_id in [' + ",".join('"%s"' % d for d in dids) + ']]{_id,"slug":slug.current,language,pageType}'
+            res = (_sanity_req("query", {"query": q}) or {}).get("result") or []
+            for x in res:
+                meta[x.get("_id")] = x
+        except Exception:
+            pass
+    for it in items:
+        it["view"] = _human_result(it, task)
+        r = it.get("result") or {}
+        links = []
+        if r.get("url"):
+            links.append({"label": "前台预览", "url": r["url"]})
+        if r.get("path"):
+            links.append({"label": "打开草稿", "reader": r["path"]})
+        m = meta.get(it.get("doc_id")) or {}
+        slug = it.get("slug") or m.get("slug") or r.get("slug")
+        lang = it.get("lang") or m.get("language") or r.get("lang")
+        ptype = it.get("page_type") or m.get("pageType") or r.get("page_type")
+        u = _site_url(site, ptype, lang, slug)
+        if u and not any(l.get("url") == u for l in links):
+            links.append({"label": "前台预览", "url": u})
+        it["links"] = links
+    # 汇总
+    stats = task.get("stats") or {}
+    task["summary"] = {
+        "ok": stats.get("failed", 0) == 0 and task.get("status") == "done",
+        "line": "%s：成功 %s · 失败 %s · 跳过 %s / 共 %s" % (
+            ("全部完成" if stats.get("failed", 0) == 0 and task.get("status") == "done" else
+             ("有失败项" if stats.get("failed", 0) else ("进行中" if task.get("status") in ("running", "queued") else task.get("status")))),
+            stats.get("done", 0), stats.get("failed", 0), stats.get("skipped", 0), stats.get("total", 0)),
+        "dry_run": bool(task.get("dry_run")),
+    }
+    return task
+
+
+
 def batch_list():
     out = []
     if BATCH_DIR.exists():
@@ -4757,7 +4867,9 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, batch_list())
             if parsed.path == "/api/batch/detail":
                 t = batch_load(qs.get("id", [""])[0])
-                return self._send(200, t or {"error": "任务不存在"})
+                if not t:
+                    return self._send(200, {"error": "任务不存在"})
+                return self._send(200, batch_view(t, self._proj()))
             # ── Agent 任务台 ──
             if parsed.path == "/api/agent/sessions":
                 return self._send(200, agent_sessions())
