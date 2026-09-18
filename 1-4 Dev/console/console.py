@@ -1523,29 +1523,109 @@ def _bh_field_patch(item, task, proj):
 #   ① 检索相关 skills  ② 检索知识库  ③ 检索内容库范例  ④ 注入 harness 规则  ⑤ 注入 GEO/GSC 事实
 # 预算：总 ≤2400 字符（避免 token 爆炸）
 
-def kb_search_for_ai(query, k=2):
-    """从知识库检索相关文档（136 篇）。"""
+# 知识库意图路由：不同动作 → 优先检索的知识库目录
+_KB_INTENT = [
+    (["竞品", "competitor", "对比", "横评", "alternatives", " vs ", "选型", "compare", "哪个好"],
+     ["competitor-analysis", "竞品分析", "竞品内容对比"]),
+    (["画像", "用户", "persona", "受众", "audience", "团队", "电商", "目标用户"],
+     ["用户画像"]),
+    (["案例", "case", "示例", "样例", "example", "实战"],
+     ["案例库"]),
+    (["样式", "排版", "风格", "style", "layout", "设计规范", "视觉"],
+     ["行业样式参考"]),
+    (["i18n", "翻译", "术语", "多语言", "语言规范", "localization", "本地化"],
+     ["i18n"]),
+    (["产品", "功能", "介绍", "product", "feature", "能力", "what is"],
+     ["Lovart Introduction"]),
+    (["seo", "tdk", "标题", "描述", "meta", "关键词", "serp", "落地页"],
+     ["根"]),
+    (["封面", "cover", "配图", "图片", "素材", "图"],
+     ["根"]),
+    (["新闻", "媒体", "报道", "press", "news", "发布"],
+     ["Lovart News"]),
+    (["分类", "栏目", "category", "导航"],
+     ["根"]),
+    (["帮助", "faq", "教程", "guide", "怎么用", "使用"],
+     ["Lovart New Help Center", "user-guide"]),
+    (["文档", "api", "docs", "参考"],
+     ["Lovart Docs Archive", "Changelog"]),
+]
+
+_KB_INDEX_CACHE = {"mtime": 0, "idx": []}
+
+
+def _kb_index():
+    """知识库索引（按目录 mtime 缓存）：title/headings/body tokens + 目录 + 摘要。"""
     KB = PROJECT / "1-2 Insight" / "Knowledge Base"
-    if not KB.exists() or not query:
+    if not KB.exists():
         return []
-    qt = _tokens(query)
-    hits = []
+    try:
+        mt = max((f.stat().st_mtime for f in KB.rglob("*.md")), default=0)
+    except Exception:
+        mt = 0
+    if _KB_INDEX_CACHE["mtime"] == mt and _KB_INDEX_CACHE["idx"]:
+        return _KB_INDEX_CACHE["idx"]
+    idx = []
     for f in KB.rglob("*.md"):
         if f.name.startswith("."):
             continue
         try:
-            head = f.read_text(errors="ignore")[:800]
+            txt = f.read_text(errors="ignore")
+            st = f.stat().st_mtime
         except Exception:
             continue
-        nt = _tokens(f.stem + " " + head[:300])
-        ov = len(qt & nt)
-        if ov >= 2:
-            hits.append((ov, f, head))
-    hits.sort(key=lambda x: -x[0])
+        body = re.sub(r"^---[\s\S]*?---", "", txt).strip()
+        heads = re.findall(r"^#{1,4}\s+(.+)$", body, re.M)
+        rel = rel_of(f)
+        section = f.parent.name if f.parent != KB else "根"
+        flat = re.sub(r"\s+", " ", body)
+        idx.append({"path": rel, "title": f.stem, "section": section,
+                    "tok_title": _tokens(f.stem.replace("-", " ")),
+                    "tok_path": _tokens(rel.replace("/", " ")),
+                    "tok_heads": _tokens(" ".join(heads)),
+                    "tok_body": _tokens(flat[:4000]),
+                    "excerpt": flat[:400], "mtime": st})
+    _KB_INDEX_CACHE["mtime"] = mt
+    _KB_INDEX_CACHE["idx"] = idx
+    return idx
+
+
+def kb_search_for_ai(query, k=3, intent_dirs=None):
+    """知识库精准检索：意图路由 + 加权打分（标题/路径/小标题/正文 + 短语精确匹配）。"""
+    if not query:
+        return []
+    idx = _kb_index()
+    if not idx:
+        return []
+    qt = _tokens(query)
+    qlow = query.lower()
+    dirs = set(intent_dirs or [])
+    for kws, ds in _KB_INTENT:
+        if any(kw in qlow for kw in kws):
+            dirs.update(ds)
+    phrases = re.findall(r"[\u4e00-\u9fff]{2,}|[a-z0-9]{4,}", qlow)
+    scored = []
+    for d in idx:
+        sc = 0.0
+        sc += 3.0 * len(qt & d["tok_title"])
+        sc += 1.6 * len(qt & d["tok_path"])
+        sc += 1.2 * len(qt & d["tok_heads"])
+        sc += 0.7 * len(qt & d["tok_body"])
+        if d["section"] in dirs:
+            sc += 2.5
+        tl = d["title"].lower()
+        if tl and tl in qlow:
+            sc += 3.0
+        for w in phrases:
+            if w in tl:
+                sc += 1.5
+        if sc > 0:
+            scored.append((sc, d))
+    scored.sort(key=lambda x: -x[0])
     out = []
-    for ov, f, head in hits[:k]:
-        body = re.sub(r"^---[\s\S]*?---", "", head).strip()[:350]
-        out.append({"path": rel_of(f), "title": f.stem, "excerpt": re.sub(r"\s+", " ", body)})
+    for sc, d in scored[:k]:
+        out.append({"path": d["path"], "title": d["title"], "section": d["section"],
+                    "excerpt": d["excerpt"][:350], "score": round(sc, 1)})
     return out
 
 
@@ -1562,9 +1642,9 @@ def ai_context(task_type="blog", topic="", lang="zh", proj=None):
     except Exception:
         pass
 
-    # ② 知识库检索
+    # ② 知识库检索（按任务类型路由意图）
     try:
-        ctx["kb"] = kb_search_for_ai(query, k=2)
+        ctx["kb"] = kb_search_for_ai(query, k=3, intent_dirs=[task_type, str(task_type) + "s"])
     except Exception:
         pass
 
@@ -1606,7 +1686,7 @@ def ai_context_prompt(ctx, budget_profile="default"):
                      "\n".join(f"- {s['name']}：{s['desc']}" for s in ctx["skills"]))
     if ctx.get("kb"):
         parts.append("【知识库事实（必须使用这些真实信息，不要编造）】\n" +
-                     "\n".join(f"- 《{b['title']}》：{b['excerpt']}" for b in ctx["kb"]))
+                     "\n".join(f"- 《{b['title']}》（{b.get('section','')}）：{b['excerpt']}" for b in ctx["kb"]))
     if ctx.get("lib"):
         parts.append("【同类已发布内容（可参考结构，禁止抄袭）】\n" +
                      "\n".join(f"- {l['title']}" for l in ctx["lib"]))
@@ -2673,12 +2753,19 @@ def _tokens(text):
 
 def context_skills(query, k=5):
     qt = _tokens(query)
+    qlow = (query or "").lower()
     scored = []
     for s in _skills_index():
-        st = _tokens(s["name"].replace("-", " ") + " " + s["desc"] + " " + s["group"])
-        ov = len(qt & st)
-        if ov:
-            scored.append((ov, s))
+        name_t = _tokens(s["name"].replace("-", " "))
+        desc_t = _tokens(s["desc"])
+        grp_t = _tokens(s.get("group", ""))
+        sc = 3.0 * len(qt & name_t) + 1.0 * len(qt & desc_t) + 0.8 * len(qt & grp_t)
+        # 短语命中名称加分
+        for w in re.findall(r"[\u4e00-\u9fff]{2,}|[a-z0-9]{4,}", qlow):
+            if w in s["name"].lower():
+                sc += 2.0
+        if sc > 0:
+            scored.append((sc, s))
     scored.sort(key=lambda x: -x[0])
     return [s for _, s in scored[:k]]
 

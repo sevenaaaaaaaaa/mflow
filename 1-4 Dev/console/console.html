@@ -278,6 +278,20 @@ pre.mut{background:var(--surface);color:var(--muted)}
 #mc-reply{margin-top:8px;font-size:12.5px;line-height:1.7;max-height:220px;overflow:auto}
 #mc-reply .mc-typing{color:var(--faint)}
 
+
+/* ── 交互反馈层 ── */
+button{position:relative}
+button:active:not(:disabled){transform:scale(.97)}
+button:disabled{cursor:not-allowed;opacity:.65}
+.btn-busy{pointer-events:none}
+.spin{display:inline-block;width:12px;height:12px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:spin .7s linear infinite;vertical-align:-2px;margin-right:5px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.btn-done{color:var(--ok)!important;border-color:var(--ok)!important}
+button.clicked{animation:clickpulse .45s ease}
+@keyframes clickpulse{0%{box-shadow:0 0 0 0 var(--accent-soft)}60%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.chip.done{opacity:.5;text-decoration:line-through}
+.row-busy{opacity:.6;pointer-events:none}
+
 /* z-index 层级系统 */
 :root{--z-base:0;--z-panel:50;--z-chrome:60;--z-reader:80;--z-toast:99}
 
@@ -355,7 +369,7 @@ pre.mut{background:var(--surface);color:var(--muted)}
       <p class="pg-sub" id="greet-sub">正在加载今日概况…</p></div>
       <div class="head-actions">
         <button class="btn ghost" onclick="setTab('reports')">看报告</button>
-        <button class="btn primary" onclick="runDaily()">立即跑今日管线</button>
+        <button class="btn primary" onclick="runDaily(event)">立即跑今日管线</button>
       </div>
     </div>
     <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>工作模式 <span class="badge" id="mode-badge" style="margin-left:6px"></span></h3>
@@ -388,9 +402,17 @@ pre.mut{background:var(--surface);color:var(--muted)}
     <div class="pg-head"><div><div class="kick">我的工作</div><h1>任务<em class="sf">看板</em></h1>
       <p class="pg-sub">手动任务可添加/流转；内容管线与分发队列自动同步，只读。</p></div>
       <div class="head-actions"><div class="chips" id="task-filter"></div></div></div>
+    <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>快速开始（立刻产生实质动作）</h3></div>
+      <div class="chips">
+        <span class="chip" onclick="taskQuickCreate('qa',event)">🔍 扫一遍字段质量并修复</span>
+        <span class="chip" onclick="taskQuickCreate('refresh',event)">♻️ 刷新低 CTR 页面</span>
+        <span class="chip" onclick="taskQuickCreate('gen',event)">✍️ 批量产出一批内容</span>
+        <span class="chip" onclick="setTab('agent')">🤖 用 Agent 描述任务</span>
+      </div>
+      <div class="mut" style="font-size:11.5px;margin-top:8px">下面也可以记一条待办；待办卡右侧 🤖 可交给 Agent 执行。</div></div>
     <div class="card" style="margin-bottom:14px"><div class="row">
-      <input id="ttitle" placeholder="要做什么？回车快速添加" style="flex:1;min-width:220px" onkeydown="if(event.key==='Enter')addTask()">
-      <button class="btn primary" onclick="addTask()">添加任务</button></div></div>
+      <input id="ttitle" placeholder="记一条待办（可选）" style="flex:1;min-width:220px" onkeydown="if(event.key==='Enter')addTask()">
+      <button class="btn ghost" onclick="addTask(event)">添加待办</button></div></div>
     <div class="tgrid">
       <div class="card tcol"><div class="card-head"><h3>待办</h3></div><div id="col-todo"></div></div>
       <div class="card tcol"><div class="card-head"><h3>进行中</h3></div><div id="col-doing"></div></div>
@@ -440,7 +462,7 @@ pre.mut{background:var(--surface);color:var(--muted)}
         <select id="qa-ptype" style="width:140px"><option value="">全部类型</option><option>feature</option><option>tool</option><option>topic</option><option>scenario</option><option>solution</option><option>product</option></select>
         <select id="qa-lang" style="width:110px"><option value="">全部语言</option><option>en</option><option>zh</option><option>ja</option><option>ko</option><option>zh-TW</option><option>de</option><option>fr</option><option>pt</option><option>ru</option><option>it</option></select>
         <input id="qa-max" type="number" value="200" min="1" max="2000" style="width:90px" title="条数上限">
-        <button class="btn primary" onclick="qaCreate()">创建扫描任务</button></div>
+        <button class="btn primary" onclick="qaCreate(event)">创建扫描任务</button></div>
       <textarea id="qa-items" placeholder='自定义 items JSON：[{"kind":"sanity","doc_id":"xxx"},{"kind":"md","path":"run/projects/lovart-global/content/x.md"}]' style="display:none;width:100%;min-height:80px;margin-top:8px;border:1px solid var(--border);border-radius:12px;padding:10px;font-family:var(--font-mono);font-size:12px;background:var(--surface-strong);color:var(--fg)"></textarea>
       <div class="mut" id="qa-hint" style="font-size:11.5px;margin-top:6px"></div></div>
     <div class="cols">
@@ -499,7 +521,7 @@ pre.mut{background:var(--surface);color:var(--muted)}
         <option value="rewrite">批量改稿 rewrite</option></select>
         <input id="bt-title" placeholder="任务标题" style="flex:1;min-width:180px">
         <label style="font-size:13px;white-space:nowrap"><input id="bt-dry" type="checkbox" checked style="margin-right:5px">dry-run（只预览不写库）</label>
-        <button class="btn primary" onclick="btCreate()">创建任务</button></div>
+        <button class="btn primary" onclick="btCreate(event)">创建任务</button></div>
       <textarea id="bt-items" placeholder='items JSON，例如：
 物料替换（从内容库计划一键带入则留空）：[{"doc_id":"xxx","kind":"cover","old":"https://…","new_url":"https://…","new_alt":"…"}]
 字段改写：[{"doc_id":"xxx","set":{"seoTitle":"新标题","description":"新描述"}}]
@@ -624,7 +646,7 @@ pre.mut{background:var(--surface);color:var(--muted)}
   <section class="page" id="pg-sys">
     <div class="pg-head"><div><div class="kick">系统</div><h1>调度与<em class="sf">日志</em></h1>
       <p class="pg-sub">每日管线手动触发；systemd 定时器状态。</p></div>
-      <div class="head-actions"><button class="btn primary" id="drbtn" onclick="runDaily()">立即执行每日管线</button></div></div>
+      <div class="head-actions"><button class="btn primary" id="drbtn" onclick="runDaily(event)">立即执行每日管线</button></div></div>
     <div class="card"><div class="card-head"><h3>每日管线 <span id="drun"></span></h3></div><pre id="dtail">…</pre></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>定时器</h3></div><pre id="stimers">…</pre></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>自动排程报表</h3><span class="mut" id="sched-meta"></span></div><div id="sched-report"></div></div>
@@ -726,8 +748,8 @@ pre.mut{background:var(--surface);color:var(--muted)}
         <div class="row"><input id="cbrief" placeholder="补充简报：目标读者 / 必含要点（可空）" style="flex:1"></div>
         <div class="row"><input id="cid" placeholder="条目 id（小写英文连字符，如 ai-poster-guide）" style="flex:1"></div>
         <div class="row" style="margin-top:10px">
-          <button class="btn primary" onclick="startLoop()">⚡ 发起 Loop（Agent 模式）</button>
-          <button class="btn ghost" onclick="genOnce()">单次生成（节点·生成步）</button>
+          <button class="btn primary" onclick="startLoop(event)">⚡ 发起 Loop（Agent 模式）</button>
+          <button class="btn ghost" onclick="genOnce(event)">单次生成（节点·生成步）</button>
         </div>
         <div class="mut" style="margin-top:10px">需要先在「设置」配好大模型 API。生成产物：1-3 GenFlow/Console-Gen/{id}.md；长文（7500 词级）仍走本地 signal-writer 完整流程。</div>
       </div>
@@ -777,13 +799,13 @@ pre.mut{background:var(--surface);color:var(--muted)}
     <div class="card"><div class="card-head"><h3>当前项目 · 调度配置</h3><span class="mut" id="cfg-name"></span></div>
       <div class="row"><span class="mut" style="width:150px">每日内容配额（篇）</span><input id="cfg-quota" type="number" min="0" max="50" style="width:90px">
       <label style="font-size:13px"><input id="cfg-auto" type="checkbox" style="margin-right:6px">启用自动排程（Phase 5 执行）</label>
-      <button class="btn ghost" onclick="saveProjCfg()">保存项目配置</button></div>
+      <button class="btn ghost" onclick="saveProjCfg(event)">保存项目配置</button></div>
       <div class="mut" id="sched-status" style="margin:10px 0 0;line-height:1.9">执行器状态加载中…</div>
       <div style="margin-top:12px"><b style="font-size:13px">选题队列 <span class="mut" id="tq-n"></span></b>
         <span class="mut">——自动排程每 5 分钟按配额从队首取选题建 Loop</span></div>
       <div id="tq-list" style="max-height:160px;overflow:auto;margin-top:6px"></div>
       <div class="row" style="margin-top:8px"><textarea id="tq-add" placeholder="每行一个选题，可粘贴多个" style="flex:1;min-height:52px;border:1px solid var(--border);border-radius:12px;padding:9px 12px;font:inherit;background:var(--surface-strong);color:var(--fg)"></textarea>
-      <button class="btn ghost" onclick="addTopics()">加入队列</button></div>
+      <button class="btn ghost" onclick="addTopics(event)">加入队列</button></div>
       <div class="mut" style="margin-top:6px">执行器每 5 分钟扫描一次：配额未满且队列有选题时自动创建 Loop（进入 Loop 页排队执行，token 记账照常）。</div>
       <div class="card-head" style="margin-top:14px"><h3>本项目独立 LLM <span class="mut">（留空则用全局配置）</span></h3></div>
       <div class="row">
@@ -838,14 +860,14 @@ pre.mut{background:var(--surface);color:var(--muted)}
       <pre id="hk-out" style="margin-top:8px;max-height:200px;overflow:auto"></pre>
       <div id="hk-hist" class="mut" style="font-size:11px;font-family:var(--font-mono);max-height:120px;overflow:auto"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>熔断状态 <span class="mut" id="brk-flag"></span></h3>
-      <button class="more" onclick="brkReset()">手动解除熔断</button></div>
+      <button class="more" onclick="brkReset(event)">手动解除熔断</button></div>
       <div class="mut" id="brk-info" style="font-size:12.5px;line-height:1.8">加载中…</div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>用户配额与用量 <span class="mut">（本月 · admin 可改默认与逐人覆盖）</span></h3>
       <button class="more" onclick="quotaLoad()">刷新 ↻</button></div>
       <div class="row"><input id="q-items" type="number" placeholder="条目/月" style="width:120px">
         <input id="q-tokens" type="number" placeholder="tokens/月" style="width:140px">
         <input id="q-writes" type="number" placeholder="真实写入/月" style="width:130px">
-        <button class="btn ghost" onclick="quotaSave()">保存默认配额</button>
+        <button class="btn ghost" onclick="quotaSave(event)">保存默认配额</button>
         <span class="mut">admin 不限量；保存后即刻生效</span></div>
       <div id="q-table" style="margin-top:10px;max-height:280px;overflow:auto"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>样式库 <span class="mut">（用户导入样式 → 定制故事线）</span></h3>
@@ -1020,7 +1042,10 @@ function brkLoad(){api('api/breaker').then(d=>{const s=d.state||{};
  const bb=document.getElementById('bt-breaker');
  if(bb)bb.innerHTML=d.blocked?`<span class="bad">⚠ 系统熔断中：${esc((s.reason||'').slice(0,80))} —— 批量任务已暂停（可在设置页解除）</span>`:''})}
 
-function brkReset(){api('api/breaker/reset',{}).then(r=>{if(r.error)return alert(r.error);alert('已解除熔断');brkLoad()})}
+function brkReset(ev){return withBtn(ev, async()=>{
+ const r=await api('api/breaker/reset',{});
+ if(r.error)throw new Error(r.error);brkLoad();return r;
+},{busyText:'解除中…',okText:'已解除',msg:'已解除熔断'});}
 
 function hkLoad(){api('api/housekeeping').then(d=>{
  $('hk-hist').textContent=(d.history||[]).join('\n')||'（暂无清理记录）'})}
@@ -1055,13 +1080,19 @@ function presetPick(id){PRESET_SEL=id;loadPresets();
   <div class="row">${(p.options||[]).map(o=>o==='dry_run'
     ?`<label style="font-size:13px"><input type="checkbox" id="po-${o}" checked style="margin-right:5px">dry-run</label>`
     :`<input id="po-${o}" placeholder="${esc(labels[o]||o)}" style="width:${o==='topic'?'320px':(o==='langs'?'220px':'150px')}" value="${o==='limit'?'5':(o==='lang'?'zh':(o==='langs'?'zh,en,ja':''))}">`).join('')}
-   <button class="btn primary" onclick="presetRun()">运行预设</button>
+   <button class="btn primary" onclick="presetRun(event)">运行预设</button>
    <span class="mut" id="po-hint">预设会用当前真实数据展开成任务（默认 dry-run）</span></div>`}
 
-function presetRun(){const p=PRESETS.find(x=>x.id===PRESET_SEL);if(!p)return;
+function presetRun(ev){const p=PRESETS.find(x=>x.id===PRESET_SEL);if(!p)return toast('先选一个预设','warn');
  const opt={};(p.options||[]).forEach(o=>{const el=$('po-'+o);if(!el)return;opt[o]=el.type==='checkbox'?el.checked:(el.value||'')});
- api('api/presets/run',{id:PRESET_SEL,options:opt}).then(r=>{if(r.error)return alert(r.error);
-  alert(`已创建任务 ${r.task_id}（${r.total} 项，${r.dry_run?'dry-run':'真实执行'}）${r.note?'\n'+r.note:''}`);loadBatch()})}
+ return withBtn(ev, async()=>{
+  const r=await api('api/presets/run',{id:PRESET_SEL,options:opt});
+  if(r.error)throw new Error(r.error);
+  loadBatch();
+  toast(`已创建任务 ${r.task_id}（${r.total} 项，${r.dry_run?'dry-run':'真实执行'}），即将跳转详情`,'ok');
+  goBatchDetail(r.task_id);
+  return r;
+ },{busyText:'创建中…',okText:'已创建'});}
 
 function qcol(used,cap,unlimited){if(unlimited||!cap)return '';const p=used/cap;
  return p>=1?'color:var(--danger);font-weight:700':(p>=0.8?'color:var(--warn);font-weight:600':'')}
@@ -1084,7 +1115,10 @@ function quotaLoad(){api('api/quota').then(d=>{
    <td class="mut" style="font-size:11px">${r.unlimited?'不限':`${(r.quota||{}).items_per_month}/${(r.quota||{}).tokens_per_month}/${(r.quota||{}).writes_per_month}`}</td>
    <td><button class="mini" onclick="quotaEdit('${esc(r.username)}',${JSON.stringify(r.quota||{}).replace(/"/g,'&quot;')},${r.unlimited})">改配额</button></td></tr>`).join('')+'</table>'})}
 
-function quotaSave(){api('api/quotas/save',{default:{items_per_month:$('q-items').value,tokens_per_month:$('q-tokens').value,writes_per_month:$('q-writes').value}}).then(r=>{if(r.error)return alert(r.error);alert('默认配额已保存');quotaLoad()})}
+function quotaSave(ev){return withBtn(ev, async()=>{
+ const r=await api('api/quotas/save',{default:{items_per_month:$('q-items').value,tokens_per_month:$('q-tokens').value,writes_per_month:$('q-writes').value}});
+ if(r.error)throw new Error(r.error);quotaLoad();return r;
+},{busyText:'保存中…',okText:'已保存',msg:'默认配额已保存'});}
 
 function styleDel(sid){if(!confirm('删除样式 '+sid+'？'))return;
  api('api/styles/delete',{id:sid}).then(r=>{if(r.error)return alert(r.error);styleLoad()})}
@@ -1100,6 +1134,54 @@ function styleLoad(){api('api/styles').then(ss=>{
    <td class="tnum">${x.sections}</td><td class="tnum">${x.storylines||0}</td><td class="mut" style="font-size:11px">${esc(x.created||'')}</td>
    <td><button class="mini" style="color:var(--danger)" onclick="styleDel('${esc(x.id)}')">删除</button></td></tr>`).join('')+'</table>'
   :'<span class="mut">暂无自定义样式</span>'})}
+
+/* ==================== 交互反馈层 ==================== */
+function _btnOf(x){
+ if(!x) return null;
+ if(x instanceof HTMLElement && x.tagName==='BUTTON') return x;
+ if(x && x.currentTarget && x.currentTarget.tagName==='BUTTON') return x.currentTarget;
+ if(x && x.target && x.target.closest) return x.target.closest('button');
+ if(window.event && window.event.target) return window.event.target.closest('button');
+ return null;
+}
+// 点击即给视觉反馈
+document.addEventListener('click',e=>{
+ const b=e.target.closest&&e.target.closest('button');if(!b)return;
+ b.classList.add('clicked');setTimeout(()=>b.classList.remove('clicked'),450);
+},true);
+
+// 统一执行包装：busy 态 → 成功✓ / 失败✗ → 复原；防重复点击
+async function withBtn(btn, fn, opts){
+ opts=opts||{};
+ const b=_btnOf(btn);
+ const restore=(delay)=>{
+   setTimeout(()=>{ if(b&&b.isConnected){ b.innerHTML=b.__orig!=null?b.__orig:b.innerHTML; b.disabled=false; b.classList.remove('btn-busy','btn-done'); } delete b?.dataset.busy; }, delay||1200);
+ };
+ if(b){
+   if(b.dataset.busy) return;           // 已在执行 → 忽略重复点击
+   b.dataset.busy='1'; b.__orig=b.innerHTML;
+   b.disabled=true; b.classList.add('btn-busy');
+   b.innerHTML='<span class="spin"></span>'+(opts.busyText||'执行中…');
+ }
+ try{
+   const r=await fn();
+   if(b){ b.classList.add('btn-done'); b.innerHTML='✓ '+(opts.okText||'完成'); }
+   if(opts.msg) toast(opts.msg,'ok');
+   restore(1400);
+   return r;
+ }catch(err){
+   if(b){ b.innerHTML='✗ 失败'; }
+   toast((opts.errText||'')+((err&&err.message)||String(err||'操作失败')),'bad');
+   restore(2200);
+   throw err;
+ }
+}
+// 动作后跳转
+function goTab(tab, delay){setTimeout(()=>setTab(tab), delay||500)}
+function goBatchDetail(id, delay){setTimeout(()=>{setTab('batch');setTimeout(()=>btDetail(id),700)},delay||500)}
+function goLoop(id, delay){setTimeout(()=>{setTab('loops');setTimeout(()=>loopLog(id),700)},delay||500)}
+// 一次性动作：成功后置灰，避免重复点击
+function markOnce(el){const b=_btnOf(el);if(b){b.classList.add('chip','done');b.disabled=true;b.innerHTML='✓ '+b.textContent.trim()}}
 
 /* ---- 看板娘：小 M 内容助手 ---- */
 const MACOT_TIPS={
@@ -1311,23 +1393,63 @@ function loadTasks(){taskFilterRender();api('api/tasks').then(t=>{
    if(head)head.textContent=`归属人过滤中：仅显示「${me||'当前用户'}」的任务（${cnt} 待办 / 共 ${all.filter(x=>x.status!=='done').length} 待办）`;
   }else{const head=$('pg-tasks').querySelector('.pg-head .pg-sub');
    if(head)head.textContent='手动任务可添加/流转；内容管线与分发队列自动同步，只读。';}})}
-function loadTaskBatches(){api('api/batch/list').then(ts=>{
- const el=$('task-batches');if(!el)return;
- const items=(ts||[]).filter(t=>t.status!=='cancelled').slice(0,6);
- if(!items.length){el.innerHTML='<div class="mut" style="font-size:12px">暂无批量任务。到「批量任务」页用预设一键开跑。</div>';return}
- el.innerHTML=items.map(t=>{const st=t.stats||{};const pct=st.total?Math.round((st.done+st.skipped+st.failed)/st.total*100):0;
-  const okc=t.status==='done'&&!st.failed?'var(--ok)':(st.failed||t.status==='failed')?'var(--bad)':'var(--accent)';
-  return `<div style="padding:9px 0;border-bottom:1px solid var(--border)">
-   <div style="display:flex;align-items:center;gap:8px">
-    <b style="font-size:12.5px;flex:1">${esc(t.title||t.id)}</b>
-    <span class="badge" style="background:${okc}">${esc(t.status)}</span>${t.dry_run?'<span class="badge dist">dry-run</span>':''}
-    <button class="mini" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(t.id)}'),600)">详情</button></div>
-   <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
-    <div style="flex:1;height:7px;border-radius:99px;background:var(--hover);overflow:hidden"><div style="height:100%;width:${pct}%;background:${okc};transition:width .4s"></div></div>
-    <span class="mut" style="font-size:11px;min-width:120px">${st.done||0}/${st.total||0}${st.failed?' · 失败'+st.failed:''}${st.skipped?' · 跳过'+st.skipped:''}</span></div></div>`}).join('')
-})}
-let __TASKS_CACHE=[];
-function taskToAgentById(id){const x=(__TASKS_CACHE||[]).find(y=>y.id===id);taskToAgent(x?x.title:'')}
+let TB_TIMER=null;
+function loadTaskBatches(){
+ api('api/batch/list').then(ts=>{
+  const el=$('task-batches');if(!el)return;
+  const items=(ts||[]).filter(t=>t.status!=='cancelled');
+  // 概览：需要处理的优先
+  const running=items.filter(t=>t.status==='running'||t.status==='queued');
+  const failed=items.filter(t=>(t.stats||{}).failed>0||t.status==='failed');
+  const done=items.filter(t=>t.status==='done'&&!((t.stats||{}).failed>0));
+  if(!items.length){el.innerHTML='<div class="mut" style="font-size:12px">暂无批量任务。点上方「创建任务」或到「批量任务」页用预设一键开跑。</div>';return}
+  const bar=(t)=>{const st=t.stats||{};const pct=st.total?Math.round((st.done+st.skipped+st.failed)/st.total*100):0;
+   const okc=t.status==='done'&&!st.failed?'var(--ok)':(st.failed||t.status==='failed')?'var(--bad)':'var(--accent)';
+   const acts=(t.status==='running'||t.status==='queued')?`<button class="mini" onclick="tbAct('${t.id}','pause')">暂停</button>`:''
+    +(t.status==='paused'?`<button class="mini" onclick="tbAct('${t.id}','resume')">继续</button>`:'')
+    +((st.failed||0)?`<button class="mini" onclick="tbAct('${t.id}','retry_failed')">重试失败</button>`:'')
+    +((t.status==='running'||t.status==='queued'||t.status==='paused')?`<button class="mini" style="color:var(--danger)" onclick="tbAct('${t.id}','cancel')">取消</button>`:'');
+   return `<div style="padding:9px 0;border-bottom:1px solid var(--border)">
+    <div style="display:flex;align-items:center;gap:8px">
+     <b style="font-size:12.5px;flex:1">${esc(t.title||t.id)}</b>
+     <span class="badge" style="background:${okc}">${esc(t.status)}</span>${t.dry_run?'<span class="badge dist">dry-run</span>':''}
+     ${acts}
+     <button class="mini" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(t.id)}'),600)">详情 →</button></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
+     <div style="flex:1;height:7px;border-radius:99px;background:var(--hover);overflow:hidden"><div style="height:100%;width:${pct}%;background:${okc};transition:width .4s"></div></div>
+     <span class="mut" style="font-size:11px;min-width:130px">${st.done||0}/${st.total||0}${st.failed?' · 失败'+st.failed:''}${st.skipped?' · 跳过'+st.skipped:''}</span></div></div>`};
+  let html='';
+  if(running.length)html+=`<div style="font-size:11.5px;font-weight:700;color:var(--accent);margin-bottom:2px">进行中 ${running.length}</div>`+running.map(bar).join('');
+  if(failed.length)html+=`<div style="font-size:11.5px;font-weight:700;color:var(--danger);margin:10px 0 2px">需要处理 ${failed.length}</div>`+failed.map(bar).join('');
+  const recent=done.slice(0,4);
+  if(recent.length)html+=`<div style="font-size:11.5px;font-weight:700;color:var(--muted);margin:10px 0 2px">最近完成</div>`+recent.map(bar).join('');
+  el.innerHTML=html;
+ });
+ // 自动刷新：停留在任务看板时每 5 秒
+ if(TAB==='tasks'){clearTimeout(TB_TIMER);TB_TIMER=setTimeout(()=>{if(TAB==='tasks')loadTaskBatches()},5000)}
+}
+function tbAct(id,action){
+ if(action==='cancel'&&!confirm('取消任务 '+id+'？'))return;
+ withBtn(event, async()=>{
+  const r=await api('api/batch/action',{id,action});
+  if(r.error)throw new Error(r.error);
+  toast('已'+({pause:'暂停',resume:'继续',retry_failed:'重试失败',cancel:'取消'}[action]||action)+'：'+id,'ok');
+  loadTaskBatches();return r;
+ },{busyText:'处理中…',okText:'已执行'});
+}
+function taskQuickCreate(kind,ev){
+ const me=window.__ME||'';
+ const presetMap={qa:['qa-field-fix','QA 字段修复'],gen:['multilang-batch','多语言批量'],refresh:['low-ctr-refresh','低 CTR 刷新']};
+ const [pid,name]=presetMap[kind]||[];
+ if(!pid)return toast('未知动作','bad');
+ return withBtn(ev, async()=>{
+  const r=await api('api/presets/run',{id:pid,options:{limit:5}});
+  if(r.error)throw new Error(r.error);
+  toast(name+' 任务已创建（'+r.task_id+'），即将跳详情','ok');
+  goBatchDetail(r.task_id);return r;
+ },{busyText:'创建中…',okText:'已创建'});
+}
+
 function taskToAgent(title){setTab('agent');setTimeout(()=>{const i=$('ag-input');if(i){i.value='帮我完成这个任务：'+title;i.focus()}},150)}
 let dragId=null;
 function dragStart(e,id){dragId=id;e.dataTransfer.effectAllowed='move'}
@@ -1337,9 +1459,12 @@ function taskEdit(id){api('api/tasks').then(t=>{const x=(t.manual||[]).find(y=>y
  $('tmodal').style.display='flex'})}
 function taskSaveEdit(){api('api/tasks/update',{id:TM_ID,title:$('tm-title').value,desc:$('tm-desc').value,
  assignee:$('tm-assignee').value,due:$('tm-due').value,link:$('tm-link').value}).then(()=>{$('tmodal').style.display='none';loadTasks()})}
-function addTask(){const v=$('ttitle').value.trim();if(!v)return;
+function addTask(ev){const v=$('ttitle').value.trim();if(!v)return toast('先填内容','warn');
  const me=window.__ME||'';
- api('api/tasks/add',{title:v,assignee:me}).then(()=>{$('ttitle').value='';loadTasks()})}
+ return withBtn(ev, async()=>{
+  const r=await api('api/tasks/add',{title:v,assignee:me});
+  if(r.error)throw new Error(r.error);$('ttitle').value='';loadTasks();return r;
+ },{busyText:'添加中…',okText:'已添加',msg:'待办已加入任务看板'});}
 function taskSet(id,st){api('api/tasks/set',{id,status:st}).then(loadTasks)}
 function taskDel(id){api('api/tasks/del',{id}).then(loadTasks)}
 function calToTask(path){const name=decodeURIComponent(path).split('/').pop().replace('.md','');
@@ -1523,7 +1648,11 @@ function loadSchedReport(){api('api/schedule/all').then(r=>{
    <td style="padding:8px 10px;border-bottom:1px solid var(--border)"><span class="mut" style="font-family:var(--font-mono);font-size:10.5px">${x.log_tail?esc(x.log_tail.split('\n').pop()):'—'}</span></td>
   </tr>`).join('')}</table></div>`+
  (rows.some(x=>x.log_tail)?`<details style="margin-top:10px"><summary class="mut" style="cursor:pointer;font-size:12px">展开各项目排程日志尾</summary>${rows.filter(x=>x.log_tail).map(x=>`<div style="margin-top:8px"><b style="font-size:12px">${esc(x.name)}</b><pre style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:8px;font-size:11px;margin-top:4px;white-space:pre-wrap">${esc(x.log_tail)}</pre></div>`).join('')}</details>`:'')})}
-function runDaily(){api('api/daily/run').then(()=>{setTimeout(()=>{if(TAB==='sys')loadSys();if(TAB==='home')loadHome()},1500)})}
+function runDaily(ev){return withBtn(ev, async()=>{
+  const r=await api('api/daily/run');
+  setTimeout(()=>{if(TAB==='sys')loadSys();if(TAB==='home')loadHome()},1500);
+  return r;
+},{busyText:'启动中…',okText:'已启动',msg:'今日管线已启动，稍后在「调度与日志」看进度'});}
 
 /* ---- 创作中心 ---- */
 const GTYPES={"blog":"Blog 文章","landing-tools":"落地页·Tools","landing-features":"落地页·Features","landing-product":"落地页·Product","landing-scenario":"落地页·Scenario","landing-solution":"落地页·Solution","landing-topic":"落地页·Topic"};
@@ -1538,17 +1667,30 @@ function loadCreate(){loadCreateGuides();const tc=$('ctypes');
   $('ctpl').innerHTML=`<span class="chip on" onclick="pickTpl('',this)">MFlow 标准</span>`+ts.map(x=>`<span class="chip" onclick="pickTpl('${esc(x.id)}',this)">${esc(x.name)}</span>`).join('')})}
 function pickTpl(id,el){CTPL=id;document.querySelectorAll('#ctpl .chip').forEach(x=>x.classList.remove('on'));el.classList.add('on')}
 function slugFromTopic(){const t=$('ctopic').value.trim()||$('ftopic').value.trim();const s=slugify(t);return s}
-function startLoop(){const topic=$('ctopic').value.trim();if(!topic)return alert('先填主题');
+function startLoop(ev){const topic=$('ctopic').value.trim();if(!topic)return toast('先填主题','warn');
  const id=($('cid').value.trim()||slugFromTopic());
- api('api/loop/create',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim(),template_id:CTPL})
-  .then(r=>{if(r.error)return alert(r.error);alert('Loop 已发起（id='+r.id+'），到「Loop · Agent 模式」看实时日志');setTab('loops')})}
-function genOnce(){const topic=$('ctopic').value.trim();if(!topic)return alert('先填主题');
+ return withBtn(ev, async()=>{
+  const r=await api('api/loop/create',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim(),template_id:CTPL});
+  if(r.error)throw new Error(r.error);
+  toast('Loop 已发起（'+r.id+'），即将跳到实时日志','ok');
+  goLoop(r.id);
+  return r;
+ },{busyText:'发起中…',okText:'已发起'});}
+function genOnce(ev){const topic=$('ctopic').value.trim();if(!topic)return toast('先填主题','warn');
  const id=($('cid').value.trim()||slugFromTopic());
- const btn=event.target;btn.disabled=true;btn.textContent='生成中…';
- api('api/generate',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim(),template_id:CTPL})
-  .then(r=>{btn.disabled=false;btn.textContent='单次生成（节点·生成步）';
-   if(r.error)return alert(r.error);
-   alert('已生成 '+r.path+'（'+r.chars+' 字符）\n质检 exit='+r.hook_rc+'\n\n'+(r.hook_rc===0?'✅ 质检 PASS':'⚠️ 质检 BLOCK，见下')+'\n'+r.hook_out.slice(-600))})}
+ return withBtn(ev, async()=>{
+  const r=await api('api/generate',{item_id:id,type:CTYPE,lang:$('clang').value,topic,brief:$('cbrief').value.trim(),template_id:CTPL});
+  if(r.error)throw new Error(r.error);
+  const pass=r.hook_rc===0;
+  const tb=document.createElement('div');
+  tb.innerHTML=`<span style="flex:1">${pass?'✅ 已生成并通过质检':'⚠️ 已生成，质检有告警'}：${esc(r.path)}（${r.chars} 字符）<br><button class="mini" style="margin-top:6px">查看草稿</button></span><button class="mini">×</button>`;
+  tb.querySelector('button').onclick=()=>{openReader(r.path);tb.remove()};
+  tb.querySelectorAll('button')[tb.querySelectorAll('button').length-1].onclick=()=>tb.remove();
+  if(!__TOAST_WRAP){__TOAST_WRAP=document.createElement('div');__TOAST_WRAP.className='toast-wrap';document.body.appendChild(__TOAST_WRAP)}
+  tb.className='toast '+(pass?'ok':'warn');__TOAST_WRAP.appendChild(tb);
+  setTimeout(()=>{if(tb.parentElement)tb.remove()},8000);
+  return r;
+ },{busyText:'生成中…',okText:'已生成'});}
 
 /* ---- 通用：页内引导 ---- */
 function guideBox(icon,title,steps,hint){
@@ -1604,11 +1746,15 @@ function loadLoopGuides(){
  const g=$('loop-guide');if(g&&!g.innerHTML)g.innerHTML=guideBox('⚡','Loop 模式：目标驱动的自主循环',
   ['点下方<b>快速开始</b>或到创作中心填主题发起','系统自动<b>生成→过质检→带反馈重写</b>最多 3 轮','通过即止；失败会熔断保护，不烧额度'],
   '每个 Loop 都记账 token。可在「用量与成本」查看消耗。');
- const lp=$('looppresets');if(lp&&!lp.children.length)lp.innerHTML=LOOPPRESETS.map((x,i)=>`<span class="chip" onclick="quickLoop(${i})">${esc(x[0])}</span>`).join('')}
-function quickLoop(i){const [label,topic,type,lang]=LOOPPRESETS[i];
+ const lp=$('looppresets');if(lp&&!lp.children.length)lp.innerHTML=LOOPPRESETS.map((x,i)=>`<span class="chip" onclick="quickLoop(${i},event)">${esc(x[0])}</span>`).join('')}
+function quickLoop(i,ev){const [label,topic,type,lang]=LOOPPRESETS[i];
  const id=slugify(topic)||('loop-'+Date.now().toString(36));
- api('api/loop/create',{item_id:id,type,lang,topic,brief:''}).then(r=>{
-  if(r.error)return toast(r.error,'bad');toast('Loop 已发起：'+label,'ok');loadLoops();setTab('loops')})}
+ return withBtn(ev, async()=>{
+  const r=await api('api/loop/create',{item_id:id,type,lang,topic,brief:''});
+  if(r.error)throw new Error(r.error);
+  toast('Loop 已发起：'+label+'，即将看日志','ok');loadLoops();goLoop(r.id);
+  return r;
+ },{busyText:'发起中…',okText:'已发起'});}
 
 /* ---- Loop 管理 ---- */
 function loadLoops(){loadLoopGuides();api('api/loops').then(L=>{
@@ -1706,11 +1852,17 @@ function loadProjCfg(){api('api/projects').then(d=>{
   const tl=$('tq-list');if(tl)tl.innerHTML=(s.queue_len?'':'<span class="mut">队列空——粘贴选题加入后，执行器将自动开工</span>');
   api('api/topics/list').then(items=>{if(tl)tl.innerHTML=items.map((x,i)=>
    `<div class="task" style="padding:5px 9px;margin-top:4px"><span class="tt" style="flex:1;font-size:12.5px">${esc(x)}</span><button class="mini" onclick="delTopic(${i})">×</button></div>`).join('')})}).catch(()=>{})}).catch(()=>{})}
-function addTopics(){const v=$('tq-add').value;if(!v.trim())return alert('每行一个选题');
- api('api/topics/add',{topics:v}).then(r=>{if(r.error)return alert(r.error);$('tq-add').value='';loadProjCfg()})}
+function addTopics(ev){const v=$('tq-add').value;if(!v.trim())return toast('每行一个选题','warn');
+ return withBtn(ev, async()=>{
+  const r=await api('api/topics/add',{topics:v});
+  if(r.error)throw new Error(r.error);
+  $('tq-add').value='';loadProjCfg();return r;
+ },{busyText:'加入中…',okText:'已加入',msg:'选题已加入队列'});}
 function delTopic(i){api('api/topics/del',{index:i}).then(()=>loadProjCfg())}
-function saveProjCfg(){api('api/projects/config',{schedule:{daily_quota:$('cfg-quota').value,auto_loop:$('cfg-auto').checked}})
- .then(r=>{if(r.error)return alert(r.error);alert('项目配置已保存')})}
+function saveProjCfg(ev){return withBtn(ev, async()=>{
+ const r=await api('api/projects/config',{schedule:{daily_quota:$('cfg-quota').value,auto_loop:$('cfg-auto').checked}});
+ if(r.error)throw new Error(r.error);return r;
+},{busyText:'保存中…',okText:'已保存',msg:'项目配置已保存'});}
 function saveProjLlm(){api('api/projects/config',{llm:{provider:$('pj-llm-prov').value||'custom',
  base:$('pj-llm-base').value.trim(),key:$('pj-llm-key').value.trim(),model:$('pj-llm-model').value.trim()}})
  .then(r=>{if(r.error)return alert(r.error);alert('项目 LLM 已保存（无 Key 即回退全局）');loadProjCfg()})}
@@ -2027,9 +2179,9 @@ function agLoad(){api('api/agent/sessions').then(ss=>{
  const sel=$('ag-sessions');if(sel)sel.innerHTML=(ss||[]).map(s=>`<option value="${esc(s.id)}" ${s.id===AG_ID?'selected':''}>${esc(s.title||s.id.slice(5,15))} · ${esc((s.created||'').slice(5))}</option>`).join('');
  if(!AG_ID&&ss&&ss.length)agOpen(ss[0].id);else if(AG_ID)agOpen(AG_ID)})}
 function agNew(){AG_ID='';const t=$('ag-thread');if(t)t.innerHTML='';const s=$('ag-sessions');if(s)s.value='';}
-function agOpen(id){AG_ID=id;api('api/agent/session?id='+encodeURIComponent(id)).then(s=>{
+function agOpen(id){AG_ID=id;return api('api/agent/session?id='+encodeURIComponent(id)).then(s=>{
  if(s.error)return; const sid=$('ag-sid');if(sid)sid.textContent=s.id;
- agRender(s.messages||[]);agRenderMeta(s)})}
+ agRender(s.messages||[]);agRenderMeta(s);agPollTasks();return s})}
 function agRenderMeta(s){
  const tok=$('ag-tokens');
  if(tok){const tk=s.tokens||0;tok.textContent=`${((s.messages||[]).length)} 条消息 · ${tk.toLocaleString()} tokens`;}
@@ -2074,10 +2226,13 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
     <span class="mut" style="font-size:11px">${isExp?'范围展开':((sp.items||[]).length+' 项')}</span></div>
     <div class="mut" style="font-size:11.5px;margin-top:4px">${esc(sp.rationale||'')}</div>
     <div style="font-size:10.5px;font-family:var(--font-mono);margin-top:6px;max-height:100px;overflow:auto;background:var(--bg);padding:6px;border-radius:8px">${itms}</div>
-    <div class="row" style="margin-top:8px"><button class="btn primary" style="font-size:12px" onclick='agExec(${JSON.stringify(sp).replace(/'/g,"&#39;")},false)'>执行（dry-run）</button>
-    <button class="btn ghost" style="font-size:12px" onclick='agExec(${JSON.stringify(sp).replace(/'/g,"&#39;")},true)'>真实执行</button></div></div>`}
+    <div class="row" style="margin-top:8px"><button class="btn primary" style="font-size:12px" onclick='agExec(${JSON.stringify(sp).replace(/'/g,"&#39;")},false,event)'>执行（dry-run）</button>
+    <button class="btn ghost" style="font-size:12px" onclick='agExec(${JSON.stringify(sp).replace(/'/g,"&#39;")},true,event)'>真实执行</button></div></div>`}
   else if(m.guard_error){spec=`<div class="warn" style="margin-top:6px;font-size:12px">规格未过门禁：${esc(m.guard_error)}</div>`}
-  const task=m.task_id?`<div class="ok" style="font-size:12px;margin-top:6px;padding:8px;background:var(--ok-soft);border-radius:8px">→ 任务 <b>${esc(m.task_id)}</b> 已创建（到「批量任务」页看进度）</div>`:'';
+  const task=m.task_id?`<div class="ag-task" data-tid="${esc(m.task_id)}" style="font-size:12px;margin-top:6px;padding:8px 10px;background:var(--ok-soft);border-radius:8px">
+    <div style="display:flex;align-items:center;gap:8px"><b>批量任务 ${esc(m.task_id)}</b><span class="ag-tst mut"></span>
+    <button class="mini" style="margin-left:auto" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(m.task_id)}'),600)">详情 →</button></div>
+    <div class="ag-tbar" style="height:6px;border-radius:99px;background:var(--hover);overflow:hidden;margin-top:6px"><div style="height:100%;width:0;background:var(--accent);transition:width .4s"></div></div></div>`:'';
   return `<div style="align-self:flex-start;max-width:88%;padding:12px 16px;border-radius:14px 14px 14px 4px;font-size:13px;line-height:1.7;overflow-wrap:break-word">${html}${qs}${spec}${task}${ctx}</div>`}).join('');
  th.scrollTop=th.scrollHeight}
 function agPreset(msg){const inp=$('ag-input');if(inp)inp.value=msg;agSend()}
@@ -2095,12 +2250,32 @@ function agSend(){const v=$('ag-input').value.trim();if(!v||AG_BUSY)return;
   AG_BUSY=false;if(btn){btn.disabled=false;btn.textContent='发送'}
   document.querySelectorAll('#ag-thread .ag-typing,#ag-typing-ind').forEach(e=>e.remove());
  })}
-function agExec(spec,real){const _n=spec.expand?('预设「'+spec.expand.preset+'」按真实数据展开'):(spec.items||[]).length+' 项';
+function agPollTasks(){
+ const cards=document.querySelectorAll('#ag-thread .ag-task[data-tid]');
+ cards.forEach(c=>{
+  const tid=c.dataset.tid;if(c.dataset.polldone)return;
+  api('api/batch/detail?id='+encodeURIComponent(tid)).then(t=>{
+   if(!t||t.error)return;
+   const st=t.stats||{};const pct=st.total?Math.round((st.done+st.skipped+st.failed)/st.total*100):0;
+   const okc=st.failed?'var(--bad)':(t.status==='done'?'var(--ok)':'var(--accent)');
+   const bar=c.querySelector('.ag-tbar > div');if(bar){bar.style.width=pct+'%';bar.style.background=okc}
+   const lab=c.querySelector('.ag-tst');if(lab){lab.textContent=`${t.status} · ${st.done||0}/${st.total||0}${st.failed?' · 失败'+st.failed:''}${t.dry_run?' · dry-run':''}`;}
+   const sm=t.summary;if(sm&&sm.line&&t.status==='done'){c.querySelector('.ag-tst').textContent=sm.line}
+   if(t.status==='done'||t.status==='failed'||t.status==='cancelled'){c.dataset.polldone='1'}
+  }).catch(()=>{});
+ });
+ if(document.querySelector('#ag-thread .ag-task[data-tid]:not([data-polldone])')){clearTimeout(window.__AGPOLL);window.__AGPOLL=setTimeout(agPollTasks,3000)}
+}
+function agExec(spec,real,ev){const _n=spec.expand?('预设「'+spec.expand.preset+'」按真实数据展开'):(spec.items||[]).length+' 项';
  if(real&&!confirm(`确认真实执行（会写生产库/消耗额度）？\n类型: ${spec.type}\n范围: ${_n}`))return;
- api('api/agent/execute',{session_id:AG_ID,spec:{...spec,dry_run:!real},force:real}).then(r=>{
-  if(r.error)return toast(r.error,'bad');
-  toast(`任务 ${r.task_id} 已创建（${r.total} 项）`,'ok');agOpen(AG_ID)})}
-
+ return withBtn(ev||window.event, async()=>{
+  const r=await api('api/agent/execute',{session_id:AG_ID,spec:{...spec,dry_run:!real},force:real});
+  if(r.error)throw new Error(r.error);
+  toast(`任务 ${r.task_id} 已创建（${r.total} 项）`,'ok');
+  await agOpen(AG_ID);
+  agPollTasks();
+  return r;
+ },{busyText:'创建任务中…',okText:'已创建'});}
 /* ---- 批量任务 ---- */
 const BATCH_HINTS={asset_replace:"items 可留空 → 用「从图片物料计划一键建任务」",
  field_patch:'每项：{"doc_id":"…","set":{"字段":"新值"}}',
@@ -2124,11 +2299,17 @@ function loadBatch(){loadPresets();brkLoad();api('api/batch/list').then(ts=>{
      ${t.status==='running'||t.status==='paused'||t.status==='queued'?`<button class="mini" style="color:var(--danger)" onclick="btAct('${esc(t.id)}','cancel')">取消</button>`:''}</td></tr>`}).join('')+'</table>'
   :'<span class="mut">还没有批量任务</span>'});
  if(TAB==='batch')setTimeout(()=>{if(TAB==='batch')loadBatch()},5000)}
-function btCreate(){let items=[];const raw=$('bt-items').value.trim();
- if(raw){try{items=JSON.parse(raw)}catch(e){return alert('items JSON 解析失败：'+e.message)}}
- if(!Array.isArray(items))return alert('items 必须是数组');
- api('api/batch/create',{type:$('bt-type').value,title:$('bt-title').value.trim(),items,dry_run:$('bt-dry').checked}).then(r=>{
-  if(r.error)return alert(r.error);alert(`任务已创建：${r.id}（${r.total} 项）——执行器 5 秒内接手`);$('bt-items').value='';loadBatch()})}
+function btCreate(ev){let items=[];const raw=$('bt-items').value.trim();
+ if(raw){try{items=JSON.parse(raw)}catch(e){return toast('items JSON 解析失败：'+e.message,'bad')}}
+ if(!Array.isArray(items))return toast('items 必须是数组','bad');
+ return withBtn(ev, async()=>{
+  const r=await api('api/batch/create',{type:$('bt-type').value,title:$('bt-title').value.trim(),items,dry_run:$('bt-dry').checked});
+  if(r.error)throw new Error(r.error);
+  $('bt-items').value='';loadBatch();
+  toast(`任务已创建：${r.id}（${r.total} 项），即将跳转详情`,'ok');
+  goBatchDetail(r.id);
+  return r;
+ },{busyText:'创建中…',okText:'已创建'});}
 function btFromPlan(){api('api/batch/create',{type:'asset_replace',title:'图片物料替换（来自计划）',items:[],dry_run:$('bt-dry').checked}).then(r=>{
  if(r.error)return alert(r.error);alert(`已按物料计划建任务：${r.id}（${r.total} 项）`);$('bt-type').value='asset_replace';loadBatch()})}
 function btAct(id,action){if(action==='cancel'&&!confirm('取消任务 '+id+'？'))return;
