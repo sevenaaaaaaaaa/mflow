@@ -2915,6 +2915,87 @@ def governance_report():
             "at": datetime.now().strftime("%Y-%m-%d %H:%M")}
 
 
+
+
+# ===================== 自我进化（QA 高频 BLOCK → gen_prompt 禁例）=====================
+
+def self_evolve_analyze(days=14):
+    """从 qa-history 中提取高频 BLOCK 模式 → 建议追加到 gen_prompt 的禁例。"""
+    hist_file = RUN_DIR / "qa-history.jsonl"
+    if not hist_file.exists():
+        return {"suggestions": [], "summary": "无 QA 历史"}
+    rows = []
+    for l in hist_file.read_text(errors="ignore").strip().split("\n"):
+        try:
+            rows.append(json.loads(l))
+        except Exception:
+            continue
+    recent_blocks = [r for r in rows if r.get("rc", 0) != 0]
+    if not recent_blocks:
+        return {"suggestions": [], "summary": "最近无 BLOCK"}
+    block_patterns = Counter()
+    for r in recent_blocks:
+        out = r.get("out", "") or ""
+        for line in out.split("\n"):
+            ls = line.strip()
+            if ls.startswith("✗"):
+                m = re.match(r"✗\s*(.+?)(?:\s*[(\[].*)?$", ls)
+                if m:
+                    block_patterns[m.group(1).strip()[:60]] += 1
+    top = block_patterns.most_common(10)
+    suggestions = []
+    for pat, count in top:
+        if count < 3:
+            continue
+        if "word count" in pat.lower() or "字数" in pat:
+            suggestions.append({"pattern": pat, "count": count, "suggest": "文章字数不足/超限", "action": "adjust_budget"})
+        elif "H2" in pat or "structure" in pat.lower():
+            suggestions.append({"pattern": pat, "count": count, "suggest": "章节结构不足", "action": "gen_prompt_hint"})
+        elif "AI disclaimer" in pat.lower() or "as an AI" in pat.lower():
+            suggestions.append({"pattern": pat, "count": count, "suggest": "AI 自介泄漏——确认 hook 生效", "action": "check_hook"})
+        elif "fluff" in pat.lower() or "套话" in pat:
+            suggestions.append({"pattern": pat, "count": count, "suggest": "空话/套话频繁——建议追加 BANNED_WORDS", "action": "add_banned_word"})
+        else:
+            suggestions.append({"pattern": pat, "count": count, "suggest": "高频质检 BLOCK——检查规则或门禁", "action": "review"})
+    return {"suggestions": suggestions, "summary": f"{len(rows)} 次质检 · {len(top)} 种 BLOCK 模式", "top_patterns": top}
+
+
+def self_evolve_apply(pattern, action, by=""):
+    if action == "add_banned_word":
+        word = str(pattern).strip()
+        if word and word not in BANNED_WORDS_ZH and word not in BANNED_WORDS_EN:
+            BANNED_WORDS_ZH.append(word)
+            bf = RUN_DIR / "banned-words.json"
+            cur = read_json(bf, {"custom": []})
+            if word not in cur["custom"]:
+                cur["custom"].append(word)
+                bf.parent.mkdir(parents=True, exist_ok=True)
+                bf.write_text(json.dumps(cur, ensure_ascii=False, indent=1))
+            with open(RUN_DIR / "approvals.log", "a") as f:
+                f.write(f"{datetime.now().isoformat(timespec='seconds')} SELF-EVOLVE banned_word={word} by={by}\n")
+            return {"ok": True, "word": word, "note": "已加入运行时禁用词（banned-words.json 持久化）"}
+    elif action == "gen_prompt_hint":
+        hf = RUN_DIR / "prompt-hints.json"
+        cur = read_json(hf, {"hints": []})
+        cur["hints"].append({"pattern": str(pattern)[:120], "added": datetime.now().strftime("%Y-%m-%d"), "by": by})
+        hf.parent.mkdir(parents=True, exist_ok=True)
+        hf.write_text(json.dumps(cur, ensure_ascii=False, indent=1))
+        with open(RUN_DIR / "approvals.log", "a") as f:
+            f.write(f"{datetime.now().isoformat(timespec='seconds')} SELF-EVOLVE prompt_hint={str(pattern)[:60]} by={by}\n")
+        return {"ok": True, "hint": str(pattern)[:120], "note": "已加入提示词提示"}
+    return {"error": f"未知 action：{action}"}
+
+
+def _load_custom_banned():
+    bf = RUN_DIR / "banned-words.json"
+    if bf.exists():
+        for w in read_json(bf, {}).get("custom") or []:
+            if w and w not in BANNED_WORDS_ZH and w not in BANNED_WORDS_EN:
+                BANNED_WORDS_ZH.append(w)
+
+_load_custom_banned()
+
+
 # ===================== T3 熔断 + T5 用户配额/用量 =====================
 BREAKER_FILE = RUN_DIR / "breaker.json"
 BREAKER_LOCK = threading.Lock()
