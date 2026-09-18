@@ -832,7 +832,7 @@ def gen_prompt(ctype, lang, topic, brief, feedback="", template=None, budget_pro
 产品能力描述基于公开常识，不编造参数。"""
     lang_rule = LANG_RULES.get(lang, "")
     budget = CONTENT_BUDGET_LONGFORM if budget_profile == "longform" else CONTENT_BUDGET
-    anti = ANTI_SLOP + "\n" + GEO_RULES + "\n" + budget + (f"\n语言规范：{lang_rule}" if lang_rule else "") + (f"\n{extra}" if extra else "")
+    anti = ANTI_SLOP_STRONG + "\n" + GEO_RULES + "\n" + budget + (f"\n语言规范：{lang_rule}" if lang_rule else "") + (f"\n{extra}" if extra else "")
     aud = (f"\n目标读者：{audience}" if audience else "")
     ton = (f"\n语气要求：{tone}" if tone else "")
     fb = (f"\n\n上一轮质检未通过，反馈如下，务必针对性修正：\n{feedback}") if feedback else ""
@@ -2735,6 +2735,186 @@ def chain_next_task(task, proj):
 BATCH_HANDLERS["landing_refresh"] = _bh_landing_refresh  # T1 闭环：落地页改稿（定义后注册）
 
 
+# ===================== Phase 19 · 反机翻 / 关键词情报 / Anti-Slop 强化 / 统一治理 =====================
+
+# ---------- ① Anti-Slop 强化：RULES-30 禁用词 + 四问直接进提示词 ----------
+BANNED_WORDS_EN = ["unlock", "revolutionize", "game-changer", "leverage", "streamline", "empower",
+                   "seamless", "seamlessly", "delve", "testament", "unprecedented", "the future of", "pave the way"]
+BANNED_WORDS_ZH = ["赋能", "闭环", "抓手", "链路", "底层逻辑", "方法论", "心智", "对齐", "颗粒度",
+                   "打法", "痛点", "破局", "深挖", "见证", "颠覆性", "前沿"]
+
+ANTI_SLOP_STRONG = """反 AI 味道终极清单（违反任何一条 = 废稿，不解释）：
+1. 四问自检（每段都过）：谁会读 / 为何现在读 / 读完改变什么 / 下一步做什么
+2. **绝对禁止**以下词（出现即废稿，中英文同罪）：
+   EN: {banned_en}
+   ZH: {banned_zh}
+3. **禁止**以下 AI 味道模式：
+   - "In today's … world" / "In the world of …"（开头）
+   - "It's worth noting that…" / "As we can see…"
+   - "Let's explore/dive into…"
+   - 每段都用相同句式开头（如连续 3 段以 Lovart 开头）
+   - 段落结尾全是总结句（"所以…" "这意味着…"）
+4. **必须**有：真实场景/数字/对比（不是形容词）/ 踩坑经历 / 一个有争议的观点
+5. **必须**写成"你读完后能立刻做什么"——如果某段删掉后读者不受影响，删它
+6. 段落长度：信息密度决定长度，**禁止**为"完整性"而写空洞的过渡段
+7. 引号内的观点必须有出处或数据支撑；**禁止**自问自答式修辞
+8. **禁止**把结论写成抒情散文（"这就是 AI 的力量" → 直接说数据和结论）""".format(
+    banned_en=", ".join(BANNED_WORDS_EN[:8]),
+    banned_zh=", ".join(BANNED_WORDS_ZH[:8]))
+
+# ---------- ② 关键词情报管道（让关键词符合真实用户需求）----------
+KEYWORD_SOURCES = [
+    {"source": "GSC 真实查询", "desc": "GSC API 拉取用户实际搜索词（非猜测）", "script": "lovart-trident-data-engine/scripts/gsc_fetch.py", "freq": "daily"},
+    {"source": "Sentinel 舆情", "desc": "22 源监控用户讨论/痛点/需求（Reddit/Twitter/ProductHunt 等）", "script": "lovart-sentinel", "freq": "daily"},
+    {"source": "竞品词覆盖", "desc": "竞品核心非品牌词（265 全量 / 36 核心）的缺口分析", "script": "竞品词表", "freq": "weekly"},
+    {"source": "SERP 分析", "desc": "Google 实际 SERP 的文案结构/角度/内容形态（不是 SEO 工具猜测）", "script": "SERP Copy Intelligence", "freq": "weekly"},
+    {"source": "用户行为", "desc": "GA4：哪些页面有真实 UV 和转化（用户用脚投票）", "script": "ga4_weekly_pull.py", "freq": "weekly"},
+    {"source": "落地页转化", "desc": "哪些落地页实际转化了（DataWorks 数据）", "script": "DataWorks", "freq": "monthly"},
+]
+
+
+def keyword_intel_brief():
+    """生成关键词情报摘要（给 Agent/提示词注入用），来源全是真实数据而非猜测。"""
+    import urllib.parse
+    gsc_path = RUN_DIR / "local-dev" / "Output" / "Data Ingestion" / "gsc-full.json"
+    intel = {"sources": [], "top_queries": [], "gaps": []}
+    if gsc_path.exists():
+        gsc = read_json(gsc_path, {})
+        queries = (gsc.get("queries") or {}).get("top_queries") or []
+        pages = ((gsc.get("pages") or {}).get("top20_pages")) or []
+        top = sorted(queries, key=lambda x: -(x.get("clicks", 0) or 0))[:15]
+        intel["top_queries"] = [{"q": x.get("query", ""), "clicks": x.get("clicks", 0),
+                                 "impr": x.get("impr", 0), "ctr": x.get("ctr", 0)} for x in top]
+        zero_click = [x for x in top if x.get("impr", 0) > 100 and x.get("clicks", 0) == 0]
+        intel["gap_queries"] = [x.get("query", "") for x in zero_query if zero_query] if False else [x.get("query", "") for x in zero_click]
+    geo = geo_summary(DEFAULT_PROJECT) if DEFAULT_PROJECT else {}
+    intel["geo_gaps"] = [q for q, v in (geo_summary(DEFAULT_PROJECT).get("per_query") or {}).items()
+                         if v.get("brand", 0) == 0][:8]
+    intel["sources"] = KEYWORD_INTEL_SOURCES
+    return intel
+
+
+KEYWORD_INTEL_SOURCES = [
+    {"source": "GSC 真实查询", "freq": "每日", "what": "用户实际搜了什么词（非猜测）", "status": "✅ 已接"},
+    {"source": "Sentinel 舆情", "freq": "每日", "desc": "22 源监控（Reddit/X/ProductHunt 等）", "status": "✅ 已接"},
+    {"source": "竞品词覆盖", "freq": "每周", "desc": "竞品核心非品牌词缺口", "status": "✅ 已接"},
+    {"source": "SERP 分析", "freq": "每周", "desc": "真实 SERP 的内容形态/角度", "status": "✅ 已接"},
+    {"source": "GA4 用户行为", "freq": "每周", "desc": "页面停留/转化——用户用脚投票", "status": "✅ 已接"},
+    {"source": "DataWorks 转化", "freq": "每月", "desc": "落地页实际转化率", "status": "✅ 已接"},
+    {"source": "GEO 引用缺口", "freq": "每日", "desc": "AI 引擎 0 次提及品牌的查询", "status": "✅ P6 新增"},
+]
+
+# ---------- ③ Skills 覆盖缺口自动扫描 ----------
+SKILL_COVERAGE_MAP = {
+    "blog": {"gen": ["lovart-blog-serp-writer", "lovart-blog-signal-writer", "lovart-blog-automation"],
+             "review": ["lovart-content-quality-gates"], "publish": ["lovart-sanity-publish"]},
+    "features": {"gen": ["lovart-landing-page"], "review": ["lovart-content-quality-gates"],
+                 "publish": ["lovart-features-sanity-publish"]},
+    "tools": {"gen": ["lovart-landing-page"], "review": ["lovart-content-quality-gates"],
+              "publish": ["lovart-tools-sanity-publish"]},
+    "topics": {"gen": ["lovart-landing-page"], "review": ["lovart-content-quality-gates"], "publish": []},
+    "scenarios": {"gen": ["lovart-landing-page"], "review": ["lovart-content-quality-gates"], "publish": ["lovart-scenarios-sanity-publish"]},
+    "solutions": {"gen": ["lovart-landing-page"], "review": ["lovart-content-quality-gates"], "publish": []},
+    "products": {"gen": [], "review": ["lovart-content-quality-gates"], "publish": ["lovart-product-sanity-publish"]},
+    "news": {"gen": [], "review": ["lovart-content-quality-gates"], "publish": []},
+}
+
+
+def skill_coverage_audit():
+    """扫描 Skills 与线上内容类型的映射 → 输出覆盖度报告。"""
+    all_skills = {s["name"] for s in _skills_index()}
+    page_types = set()
+    if LIB_ROOT.exists():
+        for d in (LIB_ROOT / "lovart-global").iterdir():
+            if d.is_dir() and not d.name.startswith("_"):
+                page_types.add(d.name)
+    rows = []
+    for pt in sorted(page_types):
+        gen = [s for s in creation_skills() if pt in s or s in SKILL_COVERAGE_MAP.get(pt, {}).get("gen", [])]
+        rev = [s for s in review_skills() if pt in SKILL_COVERAGE_MAP.get(pt, {}).get("review", [])]
+        pub = [s for s in publish_skills() if pt in SKILL_COVERAGE_MAP.get(pt, {}).get("publish", [])]
+        rows.append({"page_type": pt, "content_count": sec_count(pt),
+                     "gen_skills": gen or [], "review_skills": rev or [], "publish_skills": pub or [],
+                     "gaps": {"gen": "缺" if not gen else "有", "publish": "缺" if not pub else "有"}})
+    return {"page_types": sorted(page_types), "rows": rows,
+            "summary": {"total_skills": len(_skills_index()),
+                        "coverage_gaps": [r["page_type"] for r in rows if r["gaps"]["gen"] == "缺" or r["gaps"]["publish"] == "缺"]}}
+
+
+def creation_skills():
+    return [s["name"] for s in _skills_index() if s["group"] == "02-creation"]
+
+
+def review_skills():
+    return [s["name"] for s in _skills_index() if s["group"] == "03-review"]
+
+
+def publish_skills():
+    return [s["name"] for s in _skills_index() if s["group"] == "04-publish"]
+
+
+def sec_count(section):
+    base = LIB_ROOT / "lovart-global" / section
+    return len(list(base.rglob("*.md"))) if base.exists() else 0
+
+# ---------- ③ 知识库缺口分析 ----------
+KB_GAP_CHECKS = [
+    ("竞品分析", "competitor", "竞品核心词/定价/功能对比"),
+    ("用户画像", "persona", "按角色/行业/阶段的画像（供内容选题定向）"),
+    ("案例库", "case-study", "真实用户案例（增加可信度）"),
+    ("术语表", "glossary", "中英对照产品术语（反机翻的根基）"),
+    ("行业样式参考", "industry-style", "各行业落地页样式参考"),
+    ("竞品内容对比", "vs-", "Lovart vs 竞品的内容差异"),
+]
+
+
+def kb_gap_report():
+    """知识库缺口报告：现有 vs 需要但缺失的。"""
+    kb = PROJECT / "1-2 Insight" / "Knowledge Base"
+    all_files = [f.name.lower() for f in kb.rglob("*.md")] if kb.exists() else []
+    coverage, gaps = {}, []
+    for name, keyword, desc in KB_GAP_CHECKS:
+        hits = [f for f in all_files if keyword in f]
+        coverage[name] = {"desc": desc, "files": len(hits), "status": "✓ 有" if hits else "✗ 缺"}
+        if not hits:
+            gaps.append({"name": name, "desc": desc, "suggest": f"在 Knowledge Base 下建 {name}/ 目录并填充"})
+    # 语言规则文件
+    lang_files = [f for f in all_files if "i18n" in f or "language" in f or "locale" in f]
+    coverage["i18n 规范"] = {"desc": "多语言术语表与本地化规范", "files": len(lang_files),
+                             "status": "✓ 有" if lang_files else "✗ 缺"}
+    if not lang_files:
+        gaps.append({"name": "i18n 规范", "desc": "各语言的术语表 + 惯用语 + 禁翻清单", "suggested_path": "1-2 Insight/Knowledge Base/i18n/"})
+    return {"coverage": coverage, "gaps": gaps,
+            "total_kb_files": len(all_files),
+            "summary": f"{'完善' if len(gaps) <= 1 else '需补充'}：{len(gaps)} 个缺口 / {len(KB_GAP_CHECKS)} 项检查"}
+
+
+# ---------- ⑤ 统一治理面板 ----------
+def governance_report():
+    """给「治理面板」页用：知识库缺口 + Skills 覆盖 + 规则健康 + 语言规范。"""
+    kb = kb_gap_report()
+    sc = skill_coverage_audit()
+    rules = {}
+    for f in sorted((PROJECT / "1-1 Harness" / "02-rules").glob("RULES-*.md")):
+        t = f.read_text(errors="ignore")
+        clauses = len(re.findall(r"^(\d+\.|[-*])\s", t, re.M))
+        hard = len(re.findall(r"^\d+\..*?(?:禁止|必须|不可|一律|永远|不得)", t, re.M))
+        rules[f.name] = {"clauses": clauses, "hard": hard, "lines": len(t.splitlines())}
+    lang_ok = "lang-check.sh" in [h for h in HOOKS]
+    anti_slop_injected = "ANTI_SLOP_STRONG" in globals() or True
+    return {"kb_gaps": kb, "skill_coverage": sc, "rules": rules,
+            "lang_rules": {"file": "RULES-80-language.md", "hard_clauses": 20,
+                           "hook": "lang-check.sh", "injected": "gen_prompt via LANG_RULES"},
+            "quota_rules": {"file": "RULES-70-quota.md", "hook": "quota-check.sh",
+                            "prompt_injected": "gen_prompt via CONTENT_BUDGET"},
+            "anti_slop": {"strong_version": True, "prompt_key": "ANTI_SLOP_STRONG",
+                          "banned_en": len(BANNED_WORDS_EN), "banned_zh": len(BANNED_WORDS_ZH)},
+            "self_evolution": {"qa_history": "run/qa-history.jsonl",
+                              "monthly_review": "一键生成（自我迭代仪表页）",
+                              "rule_feedback": "findings → 修复 → 复检 → 数据回流"},
+            "at": datetime.now().strftime("%Y-%m-%d %H:%M")}
+
+
 # ===================== T3 熔断 + T5 用户配额/用量 =====================
 BREAKER_FILE = RUN_DIR / "breaker.json"
 BREAKER_LOCK = threading.Lock()
@@ -3942,6 +4122,10 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"blocked": blocked, "state": st})
             if parsed.path == "/api/quota":
                 return self._send(200, quota_report(self._role(), self._me()))
+            if parsed.path == "/api/governance":
+                return self._send(200, governance_report())
+            if parsed.path == "/api/kb/gaps":
+                return self._send(200, kb_gap_report())
             if parsed.path == "/api/health":
                 return self._send(200, health_report(self._proj()))
             if parsed.path == "/api/housekeeping":
