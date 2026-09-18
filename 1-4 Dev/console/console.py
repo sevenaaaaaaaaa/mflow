@@ -2763,17 +2763,30 @@ def agent_reply(session, message, proj=None):
         if m.get("role") in ("user", "assistant") and m.get("text"):
             msgs.append({"role": m["role"], "content": m["text"][:1500]})
     msgs.append({"role": "user", "content": message[:2000]})
-    raw = llm_chat(msgs, profile="default", max_tokens=1600, project=proj, timeout=120)
-    _tok = int(LAST_USAGE.get("total_tokens", 0) or 0)
-    m = re.search(r"\{[\s\S]*\}", raw)
-    data = {}
-    if m:
-        try:
-            data = json.loads(m.group(0))
-        except Exception:
-            data = {}
-    if not data:
-        data = {"say": raw[:1200], "questions": [], "spec": None}
+    _tok = 0
+    try:
+        raw = llm_chat(msgs, profile="default", max_tokens=1600, project=proj, timeout=120)
+        _tok = int(LAST_USAGE.get("total_tokens", 0) or 0)
+        m = re.search(r"\{[\s\S]*\}", raw)
+        data = {}
+        if m:
+            try:
+                data = json.loads(m.group(0))
+            except Exception:
+                data = {}
+        if not data:
+            data = {"say": raw[:1200], "questions": [], "spec": None}
+    except Exception as _le:
+        # LLM 不可用（未配置/余额不足/超时）→ 降级：仍用预设+上下文给出可执行方案
+        _hint = _auto_preset_match(message, proj)
+        _say = ("⚠️ 智能规划暂时不可用（" + str(_le)[:160] + "）\n\n"
+                "不过我用**预设工作流**为你准备了一个可直接执行的方案：")
+        if _hint and _hint.get("spec"):
+            _say += "\n\n**「" + _hint["name"] + "」**：" + (_hint.get("note", "") or "")
+            data = {"say": _say, "questions": [], "spec": _hint["spec"]}
+        else:
+            _say += "\n\n没有匹配到合适预设。你可以：\n- 到「批量任务」页从预设工作流一键开跑\n- 或充值/配置 LLM 后再用智能对话"
+            data = {"say": _say, "questions": [], "spec": None}
     # Fallback：LLM 空spec → 自动匹配预设展开
     if not data.get("spec"):
         preset_hint = _auto_preset_match(message, proj)
