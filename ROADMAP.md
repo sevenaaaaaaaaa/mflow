@@ -240,7 +240,8 @@
 - ✅ 预设「🔁 落地页闭环（改稿→发布）」（第 8 个预设）：section/lang/条数 → landing_refresh → publish_sanity(patch)
 - ✅ 修复：`publish_sanity` 失败如实标记 failed；patch 用真实 Sanity `_id`（UUID，非 slug）
 - ✅ 环境修复：quota-check/lang-check 走 `LOVART_PYTHON`（venv）避免 py3.6 非 ASCII 崩溃；校验口径统一**词当量**
-- 实测：改稿 ready=True → 链出 patch 发布 → `tx=NngiCiCmzwd6fOe1vYPa7V`（dry-run，零副作用）
+- 实测：**真实闭环上线 2 篇**（`ai-storefront-designer` + `ai-image-to-sketch`）→ 改稿 ready=True → 链出 patch → **tx 确认写入 Sanity**
+- ⚠ 暴露 4 个生产 bug（hero.title 变 UUID / slug.current 被覆盖→404 / console.py 被误写 / 前端预存 500）→ 已全部修复（patch 不改 slug / H1 标题提取 / git 恢复 / 确认为预存问题）
 
 ## 原则
 
