@@ -263,6 +263,15 @@ th{color:var(--muted);font-weight:600}
         <button class="btn primary" onclick="runDaily()">立即跑今日管线</button>
       </div>
     </div>
+    <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>工作模式 <span class="badge" id="mode-badge" style="margin-left:6px"></span></h3>
+      <div class="row"><select id="mode-select" onchange="modeSwitch(this.value)" style="width:150px">
+        <option value="pipeline">Pipeline · 手动</option>
+        <option value="flow">Flow · 自动</option>
+        <option value="loop">Loop · 自治</option></select>
+        <button class="btn ghost" onclick="modeSwitch($('mode-select').value)">切换</button></div>
+      <div class="mut" id="mode-desc" style="font-size:12px;margin-top:4px"></div>
+      <div class="mut" id="mode-promo" style="font-size:12px;margin-top:4px"></div>
+      <div class="mut" id="mode-counts" style="font-size:11px;margin-top:4px"></div></div>
     <div class="metrics" id="metrics"></div>
     <div id="home-health"></div>
     <div class="ov-grid">
@@ -877,7 +886,7 @@ function fmtHook(out){return String(out||'').split('\n').map(l=>{
  return esc(l)}).join('\n')}
 
 /* ---- 总览 ---- */
-function loadHome(){api('api/overview').then(o=>{
+function loadHome(){modeLoad();api('api/overview').then(o=>{
  const h=new Date().getHours();const hi=h<6?'夜深了':h<12?'早上好':h<18?'下午好':'晚上好';
  $('greet').innerHTML=`${hi}，<em class="sf">${esc(window.__ME||'运营')}</em>`;
  $('greet-sub').textContent=`待办 ${o.open_tasks} · 管线 ${o.pipeline_inflight} · 分发待发 ${o.dist_open} · 最近一次每日管线 ${o.daily.running?'运行中':'已完成'}`;
@@ -1617,6 +1626,20 @@ function quotaEdit(un,cap,unlimited){const s=prompt(`${un} 的配额（留空=�
  return api('api/quotas/save',{per_user:{[un]:{items_per_month:p[0]||'',tokens_per_month:p[1]||'',writes_per_month:p[2]||''}}}).then(()=>quotaLoad())}
 function quotaSave(){api('api/quotas/save',{default:{items_per_month:$('q-items').value,tokens_per_month:$('q-tokens').value,writes_per_month:$('q-writes').value}}).then(r=>{if(r.error)return alert(r.error);alert('默认配额已保存');quotaLoad()})}
 
+
+/* ---- 三模式 ---- */
+function modeLoad(){api('api/mode').then(m=>{
+ const s=$('mode-select');if(s)s.value=m.current_mode;
+ const b=$('mode-badge');if(b){b.textContent=m.current_mode.toUpperCase();
+  b.style.background=m.current_mode==='pipeline'?'var(--muted)':(m.current_mode==='flow'?'var(--accent)':'var(--ok)');b.style.color='var(--on-accent)'}
+ const d=$('mode-desc');if(d)d.textContent=m.mode_desc||'';
+ const p=$('mode-promo');if(p){p.textContent=m.promotion&&m.promotion.reason?m.promotion.reason:'';
+  p.className=m.promotion&&m.promotion.eligible?'ok':'mut'}
+ const c=$('mode-counts');if(c)c.textContent=`管线 ${m.counts.pipeline_items} · Flow 任务 ${m.counts.flow_tasks} · Loop 项 ${m.counts.loop_items} · 手动管线 ${m.counts.manual_pipeline}`;
+})}
+function modeSwitch(mode){if(!confirm(`确认切换工作模式为 ${mode.toUpperCase()}？\n${{pipeline:'手动模式：自主操作空间',flow:'自动模式：预设+skills 自动流转',loop:'自治模式：周而复始自我运转'}[mode]||''}`))return;
+ api('api/mode/switch',{mode}).then(r=>{if(r.error)return alert(r.error);
+  alert(`工作模式已切换：${r.old} → ${r.new}`);modeLoad()})}
 /* ---- 预设工作流 / 健康 / 维护 ---- */
 let PRESETS=[],PRESET_SEL='';
 function loadPresets(){api('api/presets').then(ps=>{PRESETS=ps||[];

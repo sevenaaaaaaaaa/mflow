@@ -3018,6 +3018,123 @@ def style_to_skill_ref(sid, skill_name=""):
     return "\n".join(lines)
 
 
+# ===================== 三模式工作体系（Pipeline / Flow / Loop）=====================
+# 设计理念：
+#   Pipeline = 手动模式（人发现→人推动→人发布），给自主操作空间
+#   Flow = 自动模式（预设+skills 从头到尾自动流转，人工只在关键点授权）
+#   Loop = 自治模式（当 Flow 的产出稳定后，升级为周而复始的自我运转）
+#
+# 升级条件：Flow → Loop 需要最近 5 次运行 pass_rate ≥ 80% 且零熔断
+
+MODE_FILE = RUN_DIR / "modes.json"
+
+
+def mode_config():
+    return read_json(RUN_DIR / "mode-config.json", {
+        "default_mode": "pipeline",
+        "loop_promotion": {"min_runs": 5, "min_pass_rate": 0.8},
+    })
+
+
+def project_mode(proj=None):
+    proj = proj or DEFAULT_PROJECT
+    meta = read_json(PROJECTS_DIR / proj / "meta.json", {})
+    return meta.get("mode", "pipeline")
+
+
+def mode_switch(proj, new_mode):
+    """切换项目工作模式。"""
+    if new_mode not in ("pipeline", "flow", "loop"):
+        return {"error": f"未知模式：{new_mode}（可选 pipeline/flow/loop）"}
+    meta_f = PROJECTS_DIR / proj / "meta.json"
+    meta = read_json(meta_f, {})
+    old = meta.get("mode", "pipeline")
+    meta["mode"] = new_mode
+    meta_f.write_text(json.dumps(meta, ensure_ascii=False, indent=1))
+    with open(RUN_DIR / "approvals.log", "a") as f:
+        f.write(f"{datetime.now().isoformat(timespec='seconds')} MODE-SWITCH {proj} {old}→{new_mode}\n")
+    return {"ok": True, "old": old, "new": new_mode, "project": proj}
+
+
+def mode_report(proj=None):
+    """三模式状态报告：当前模式 + 可升级判断 + 各模式任务数。"""
+    proj = proj or DEFAULT_PROJECT
+    current = project_mode(proj)
+    pp = proj_paths(proj)
+    st = read_json(pp["state"], {})
+    loops = read_json(pp["loops"], [])
+    batch = []
+    if BATCH_DIR.exists():
+        for f in sorted(BATCH_DIR.glob("batch-*.json"), key=lambda x: x.stat().st_mtime, reverse=True)[:50]:
+            t = read_json(f, {})
+            if t:
+                batch.append({"id": t["id"], "type": t["type"], "status": t["status"], "dry_run": t.get("dry_run")})
+
+    # Flow → Loop 升级判断
+    from collections import Counter
+    recent_batch = [t for t in batch if t.get("dry_run") is not None]  # 排除 dry-run only
+    pass_history = []
+    for t in recent_batch[:10]:
+        if t.get("status") in ("done", "failed"):
+            items = read_json(BATCH_DIR / t["id"] / f"{t['id']}.json", {}).get("items", [])
+            if items:
+                total = len(items)
+                done = sum(1 for i in items if i.get("status") == "done")
+                pass_history.append(round(done / max(1, total), 2))
+
+    loop_ready = False
+    promotion = {"eligible": False, "reason": ""}
+    avg_pass = round(sum(pass_history) / max(1, len(pass_history)), 2) if pass_history else 0
+    if len(pass_history) >= 5:
+        if avg_pass >= 0.8:
+            loop_ready = True
+            promotion["eligible"] = True
+            promotion["reason"] = f"近 {len(pass_history)} 次平均通过率 {avg_pass:.0%} ≥ 80%——可以升级为 Loop"
+        else:
+            promotion["reason"] = f"平均通过率 {avg_pass:.0%} < 80%——需要更多合格产出"
+    else:
+        promotion["reason"] = f"历史运行不足 5 次（当前 {len(pass_history)}）"
+
+    # 三模式任务计数
+    pipeline_items = len(st.get("items", {}))
+    flow_tasks = len([b for b in batch if b.get("type") in ("gen", "rewrite", "field_patch", "asset_replace", "landing_refresh")])
+    loop_tasks = len([l for l in loops if l.get("auto", False)])
+    manual_pipeline_items = sum(1 for v in st.get("items", {}).values() if v.get("agent") is None)
+
+    return {
+        "project": proj, "current_mode": current,
+        "mode_desc": {
+            "pipeline": "手动模式：从内容库/探测中发现 → 手动推进 → 发布",
+            "flow": "自动模式：预设展开 → 批量执行 → 门禁 → 链式发布（关键点人工授权）",
+            "loop": "自治模式：每日探测 → 缺口 → 自动选题 → 生成 → 门禁 → 发布 → 优化反馈"
+        }.get(current, ""),
+        "promotion": promotion,
+        "pass_rates": pass_history[-10:],
+        "counts": {
+            "pipeline_items": pipeline_items,
+            "flow_tasks": flow_tasks,
+            "loop_items": loop_tasks,
+            "manual_pipeline": manual_pipeline_items,
+        },
+        "capabilities": {
+            "pipeline": ["手动 upsert", "手动 advance", "发布通道"],
+            "flow": ["8 预设", "批量执行器", "Agent 任务台", "链式发布", "熔断/配额"],
+            "loop": ["自动排程执行器", "GEO 每日探测", "自我进化", "降噪治理"],
+        }
+    }
+
+
+def mode_promote_check(proj=None):
+    """检查是否有可升级到 Loop 的 Flow。"""
+    r = mode_report(proj)
+    if not r.get("promotion", {}).get("eligible"):
+        return {"promotion": r.get("promotion", {}), "current": r.get("current_mode")}
+    return {"promotion": r.get("promotion"), "current": r.get("current_mode"),
+            "suggest": "当前 Flow 已稳定，建议切换到 Loop 模式让系统自我运转"}
+
+
+
+
 # ===================== 自我进化（QA 高频 BLOCK → gen_prompt 禁例）=====================
 
 def self_evolve_analyze(days=14):
@@ -4314,6 +4431,12 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, self_evolve_analyze(int(qs.get("days", ["14"])[0])))
             if parsed.path == "/api/self-evolve/suggestions":
                 return self._send(200, self_evolve_analyze())
+            if parsed.path == "/api/mode":
+                return self._send(200, mode_report(self._proj()))
+            if parsed.path == "/api/mode/switch":
+                return self._send(200 if (r:=mode_switch(self._proj(), str(body.get("mode","")))).get("ok") else 400, r)
+            if parsed.path == "/api/mode/promote":
+                return self._send(200, mode_promote_check(self._proj()))
             if parsed.path == "/api/governance":
                 return self._send(200, governance_report())
             if parsed.path == "/api/kb/gaps":
@@ -4563,7 +4686,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/presets/run", "/api/housekeeping/run",
                       "/api/breaker/reset", "/api/quotas/save",
                       "/api/self-evolve/apply",
-                      "/api/styles/import", "/api/styles/delete"}
+                      "/api/styles/import", "/api/styles/delete",
+                      "/api/mode/switch"}
         if self.path in ADMIN_ONLY and role != "admin":
             return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
         body = self._body()
