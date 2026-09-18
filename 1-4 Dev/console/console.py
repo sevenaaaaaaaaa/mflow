@@ -1417,6 +1417,190 @@ def batch_view(task, proj=None):
 
 
 
+
+# ===================== Run：可后台运行、可视化编排（执行画布）=====================
+RUNS_DIR = RUN_DIR / "runs"
+_RUN_LOCK = threading.Lock()
+
+
+def _run_path(rid):
+    return RUNS_DIR / (re.sub(r"[^a-z0-9-]", "", str(rid).lower()) + ".json")
+
+
+def run_save(run):
+    try:
+        RUNS_DIR.mkdir(parents=True, exist_ok=True)
+        p = _run_path(run["id"])
+        tmp = p.with_suffix(".tmp")
+        tmp.write_text(json.dumps(run, ensure_ascii=False, indent=1))
+        tmp.replace(p)
+    except Exception as e:
+        print(f"[console] run_save failed: {e}", file=sys.stderr)
+
+
+def run_load(rid):
+    try:
+        return read_json(_run_path(rid), None)
+    except Exception:
+        return None
+
+
+def run_list(limit=30):
+    out = []
+    if RUNS_DIR.exists():
+        for f in sorted(RUNS_DIR.glob("run-*.json"), key=lambda x: x.stat().st_mtime, reverse=True)[:limit]:
+            r = read_json(f, {})
+            if r:
+                out.append({"id": r.get("id"), "title": r.get("title"), "status": r.get("status"),
+                            "created": r.get("created"), "kind": r.get("kind"),
+                            "n": len(r.get("steps") or []), "proj": r.get("proj")})
+    return out
+
+
+def run_new(title, steps, proj=None, by="", kind="agent", session_id="", message=""):
+    rid = f"run-{datetime.now().strftime('%y%m%d')}-{secrets.token_hex(3)}"
+    run = {"id": rid, "title": title or "未命名执行", "proj": proj or DEFAULT_PROJECT, "by": by,
+           "kind": kind, "created": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+           "status": "running", "session_id": session_id, "message": (message or "")[:200],
+           "steps": []}
+    for i, st in enumerate(steps or []):
+        run["steps"].append({"i": i, "name": st.get("name") or f"步骤 {i+1}",
+                             "type": st.get("type") or "batch",
+                             "status": st.get("status") or "pending",
+                             "detail": st.get("detail") or "",
+                             "task_id": st.get("task_id") or "",
+                             "spec": st.get("spec"), "preset": st.get("preset"),
+                             "opt": st.get("opt") or {}, "urls": st.get("urls") or [],
+                             "started": st.get("started") or "", "ended": st.get("ended") or ""})
+    # 第一个可执行步骤立即置为 running
+    for st in run["steps"]:
+        if st["type"] in ("batch",) and st["status"] == "pending":
+            st["status"] = "pending"
+            break
+    run_save(run)
+    return run
+
+
+def _run_sync_steps(run):
+    """把与批量任务关联的步骤状态/进度同步过来。"""
+    changed = False
+    for st in run["steps"]:
+        if st.get("type") != "batch" or not st.get("task_id"):
+            continue
+        t = batch_load(st["task_id"])
+        if not t:
+            continue
+        stats = t.get("stats") or {}
+        done_n = (stats.get("done") or 0) + (stats.get("skipped") or 0) + (stats.get("failed") or 0)
+        st["progress"] = int(round(100 * done_n / max(1, stats.get("total") or 1)))
+        st["stats"] = stats
+        if t.get("status") == "done" and (stats.get("failed") or 0) == 0:
+            if st["status"] != "done":
+                st["status"] = "done"; st["ended"] = datetime.now().strftime("%H:%M:%S"); changed = True
+            st["detail"] = f"完成 {stats.get('done',0)}/{stats.get('total',0)}" + ("（dry-run）" if t.get("dry_run") else "")
+        elif (stats.get("failed") or 0) > 0 or t.get("status") == "failed":
+            if st["status"] != "failed":
+                st["status"] = "failed"; st["ended"] = datetime.now().strftime("%H:%M:%S"); changed = True
+            st["detail"] = f"失败 {stats.get('failed',0)} 项（可在任务详情重试）"
+        else:
+            if st["status"] != "running":
+                st["status"] = "running"; changed = True
+            st["detail"] = f"执行中 {done_n}/{stats.get('total',0)} · 失败 {stats.get('failed',0)}"
+    return changed
+
+
+def run_tick():
+    """后台推进：同步批量步、执行验证步、完成整条 run。由 batch_worker 周期调用。"""
+    if not RUNS_DIR.exists():
+        return
+    for f in RUNS_DIR.glob("run-*.json"):
+        try:
+            run = read_json(f, {})
+            if not run or run.get("status") != "running":
+                continue
+            changed = _run_sync_steps(run)
+            steps = run["steps"]
+            # 找到第一个 not-done 的步骤
+            cur = next((st for st in steps if st["status"] not in ("done", "failed")), None)
+            if cur and cur["type"] == "verify" and cur["status"] == "pending":
+                cur["status"] = "running"; cur["started"] = cur.get("started") or datetime.now().strftime("%H:%M:%S")
+                # 收集要验证的 URL：步骤自带 urls，或从前序 batch 步的 spec/预设推导
+                urls = list(cur.get("urls") or [])
+                if not urls:
+                    self_urls = []
+                    for st in steps:
+                        if st.get("type") == "batch" and st.get("task_id"):
+                            t = batch_load(st["task_id"]) or {}
+                            for it in (t.get("items") or [])[:20]:
+                                if it.get("_url"):
+                                    self_urls.append(it["_url"])
+                    urls = self_urls[:10]
+                ok_n, bad = 0, []
+                for u in urls:
+                    r = agent_tool("check_url", {"url": u}, run.get("proj"))
+                    if r.get("ok"):
+                        ok_n += 1
+                    else:
+                        bad.append(u)
+                cur["status"] = "done" if not bad else "failed"
+                cur["ended"] = datetime.now().strftime("%H:%M:%S")
+                cur["detail"] = (f"已验证 {ok_n}/{len(urls)} 个前台页面可访问" if urls
+                                 else "无可验证 URL（跳过）")
+                changed = True
+            # batch 步：若 t_id 未创建则创建（从 preset/spec）
+            elif cur and cur["type"] == "batch" and cur["status"] == "pending" and not cur.get("task_id"):
+                try:
+                    items, btype, title = [], cur.get("spec", {}).get("type") if cur.get("spec") else None, cur.get("name")
+                    if cur.get("preset"):
+                        ex = preset_expand(cur["preset"], cur.get("opt") or {}, run.get("proj"))
+                        if ex.get("error"):
+                            cur["status"] = "failed"; cur["detail"] = ex["error"]; changed = True; run_save(run); continue
+                        items, btype, title = ex.get("items") or [], ex.get("type"), ex.get("title") or title
+                    elif cur.get("spec"):
+                        sp, gerr = spec_guard(cur["spec"])
+                        if gerr:
+                            cur["status"] = "failed"; cur["detail"] = gerr; changed = True; run_save(run); continue
+                        if sp.get("expand"):
+                            ex = preset_expand(sp["expand"]["preset"], sp["expand"].get("opt") or {}, run.get("proj"))
+                            items, btype = ex.get("items") or [], ex.get("type") or sp["type"]
+                        else:
+                            items, btype = sp.get("items") or [], sp["type"]
+                    if not items:
+                        cur["status"] = "failed"; cur["detail"] = "范围为空，无可执行条目"; changed = True; run_save(run); continue
+                    t = batch_create(btype, title, items,
+                                     params={"max_attempts": 2, "from_run": run["id"]},
+                                     dry_run=bool(cur.get("opt", {}).get("dry_run", True)), by=run.get("by", ""))
+                    cur["task_id"] = t["id"]; cur["status"] = "running"
+                    cur["started"] = cur.get("started") or datetime.now().strftime("%H:%M:%S")
+                    cur["detail"] = f"已创建任务 {t['id']}（{t['stats']['total']} 项）"
+                    changed = True
+                except Exception as e:
+                    cur["status"] = "failed"; cur["detail"] = str(e)[:160]; changed = True
+            # 全部结束 → 完成
+            if all(st["status"] in ("done", "failed") for st in steps):
+                run["status"] = "done" if all(st["status"] == "done" for st in steps) else "failed"
+                changed = True
+            if changed:
+                run_save(run)
+        except Exception as e:
+            print(f"[console] run_tick {f.name}: {e}", file=sys.stderr)
+
+
+def run_view(rid):
+    run = run_load(rid)
+    if not run:
+        return {"error": "执行不存在"}
+    _run_sync_steps(run)
+    steps = run.get("steps") or []
+    done = sum(1 for st in steps if st["status"] == "done")
+    failed = sum(1 for st in steps if st["status"] == "failed")
+    run["overall"] = {"total": len(steps), "done": done, "failed": failed,
+                      "pct": int(round(100 * (done + failed) / max(1, len(steps))))}
+    run["status"] = ("done" if done == len(steps) and steps else
+                     ("failed" if failed else ("running" if steps else "queued")))
+    return run
+
+
 def batch_list():
     out = []
     if BATCH_DIR.exists():
@@ -1826,6 +2010,10 @@ def _batch_digest_llm(task, chunk, proj):
 
 
 def batch_worker():
+    try:
+        run_tick()
+    except Exception:
+        pass
     """批量执行器：并发 2、逐项状态、断点续跑（重启自动续）、审计。"""
     from concurrent.futures import ThreadPoolExecutor
     while True:
@@ -2935,6 +3123,153 @@ def _auto_preset_match(message, proj=None):
             "name": best_preset["name"], "note": r.get("note", "")}
 
 
+
+# ===================== Agent 工具集（让规划器可以"查数据/执行/验证"，而非只靠注入上下文）=====================
+AGENT_MAX_STEPS = 5
+
+_SANITY_URL_CACHE = {}
+
+
+def _sanity_query(q, timeout=45):
+    try:
+        return (_sanity_req("query", {"query": q}, timeout=timeout) or {}).get("result")
+    except Exception as e:
+        return {"_error": str(e)[:180]}
+
+
+def _doc_url(proj, doc_id):
+    site = site_of(proj)
+    if doc_id in _SANITY_URL_CACHE:
+        return _SANITY_URL_CACHE[doc_id]
+    r = _sanity_query('*[_id=="%s"][0]{"slug":slug.current,language,pageType}' % doc_id)
+    u = ""
+    if isinstance(r, dict):
+        u = _site_url(site, r.get("pageType"), r.get("language"), r.get("slug"))
+    _SANITY_URL_CACHE[doc_id] = u
+    return u
+
+
+def agent_tool(name, args, proj=None):
+    """执行一个 Agent 工具。一律只读或 dry-run，真实写入仍需 spec+force。"""
+    proj = proj or DEFAULT_PROJECT
+    site = site_of(proj)
+    args = args or {}
+    try:
+        if name == "search_content":
+            pt = str(args.get("page_type", "") or "")
+            lg = str(args.get("lang", "") or "")
+            lim = max(1, min(int(args.get("limit", 8) or 8), 30))
+            where = '_type=="compositePage" && !(_id in path("drafts.**"))'
+            if pt:
+                where += ' && pageType=="%s"' % pt
+            if lg:
+                where += ' && language=="%s"' % lg
+            q = str(args.get("q", "") or "")
+            if q:
+                where += ' && (title match "*%s*" || slug.current match "*%s*")' % (q.replace('"', ''), q.replace('"', ''))
+            res = _sanity_query('*[%s][0...%d]{_id,title,"slug":slug.current,language,pageType}' % (where, lim))
+            if isinstance(res, dict) and res.get("_error"):
+                return res
+            out = [{"doc_id": d.get("_id"), "title": d.get("title"), "slug": d.get("slug"),
+                    "lang": d.get("language"), "page_type": d.get("pageType"),
+                    "url": _site_url(site, d.get("pageType"), d.get("language"), d.get("slug"))} for d in (res or [])]
+            return {"count": len(out), "items": out}
+
+        if name == "search_kb":
+            hits = kb_search_for_ai(str(args.get("q", "") or ""), k=4)
+            return {"hits": [{"title": h["title"], "section": h["section"], "excerpt": h["excerpt"][:220]} for h in hits]}
+
+        if name == "get_task":
+            t = batch_load(str(args.get("id", "")))
+            if not t:
+                return {"_error": "任务不存在"}
+            st = t.get("stats") or {}
+            return {"id": t["id"], "type": t["type"], "status": t["status"], "dry_run": t.get("dry_run"),
+                    "stats": st, "log_tail": (t.get("log") or [])[-3:]}
+
+        if name == "list_tasks":
+            ts = [x for x in batch_list() if not args.get("status") or x.get("status") == args.get("status")]
+            lim = max(1, min(int(args.get("limit", 10) or 10), 30))
+            return {"tasks": [{"id": x["id"], "type": x["type"], "title": x.get("title"),
+                               "status": x.get("status"), "stats": x.get("stats"), "dry_run": x.get("dry_run")}
+                              for x in ts[:lim]]}
+
+        if name == "list_drafts":
+            lim = max(1, min(int(args.get("limit", 10) or 10), 40))
+            d = proj_paths(proj)["gen"]
+            out = []
+            if d.exists():
+                for f in sorted(d.glob("*.md"), key=lambda x: x.stat().st_mtime, reverse=True)[:lim]:
+                    out.append({"item_id": f.stem, "path": rel_of(f), "mtime": datetime.fromtimestamp(f.stat().st_mtime).strftime("%Y-%m-%d %H:%M")})
+            return {"count": len(out), "drafts": out}
+
+        if name == "geo_facts":
+            g = geo_summary(proj)
+            return {"brand_rate": g.get("brand_rate"), "total": g.get("total"),
+                    "gaps": [q for q, v in (g.get("per_query") or {}).items() if v.get("brand", 0) == 0][:6]}
+
+        if name == "gsc_facts":
+            gsc = read_json(RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json", {})
+            rows = (gsc.get("pages") or {}).get("top20_pages") or []
+            top = [{"path": urllib.parse.urlparse(r.get("url", "")).path, "impr": r.get("impr"), "clicks": r.get("clicks")} for r in rows[:8]]
+            return {"top_pages": top}
+
+        if name == "check_url":
+            url = str(args.get("url", "") or "")
+            if not url.startswith("http"):
+                return {"_error": "url 无效"}
+            import urllib.request as _u
+            req = _u.Request(url, headers={"User-Agent": "MFlow/1.2"})
+            try:
+                with _u.urlopen(req, timeout=20) as r:
+                    body = r.read(4000).decode(errors="ignore")
+                    return {"status": r.status, "ok": r.status == 200,
+                            "title_present": ("<title" in body.lower()), "bytes": len(body)}
+            except Exception as e:
+                return {"ok": False, "error": str(e)[:160]}
+
+        if name == "run_preset":
+            pid = str(args.get("preset", "") or "")
+            opt = args.get("opt") or {}
+            ex = preset_expand(pid, opt, proj)
+            if ex.get("error"):
+                return {"_error": ex["error"]}
+            t = batch_create(ex["type"], ex.get("title", pid), ex.get("items") or [],
+                             params=ex.get("params") or {}, dry_run=True, by="agent-tool")
+            return {"task_id": t["id"], "total": t["stats"]["total"], "dry_run": True,
+                    "type": ex["type"], "note": ex.get("note", "")}
+
+        return {"_error": "未知工具：" + str(name)}
+    except Exception as e:
+        return {"_error": str(e)[:200]}
+
+
+AGENT_TOOLS_DOC = """你可以调用以下**工具**来真实地查数据/执行/验证（像本地 agent 一样多步推理，而不是凭空猜）：
+
+- search_content {"q":"关键词","page_type":"tool|feature|blog|topic|...","lang":"en|zh|...","limit":8}
+    → 从线上内容库检索真实文档（返回 doc_id/slug/url）。用于确定要改哪些页。
+- search_kb {"q":"问题或主题"} → 从知识库检索事实（竞品/画像/案例/样式/i18n/产品…）。
+- get_task {"id":"batch-..."} → 查询某批量任务的实时状态与统计。
+- list_tasks {"status":"running|done|failed","limit":10} → 列出最近的批量任务。
+- list_drafts {"limit":10} → 列出最近生成的本地草稿。
+- geo_facts {} → 品牌 AI 提及率与 GEO 缺口查询。
+- gsc_facts {} → GSC 高曝光页面。
+- check_url {"url":"https://..."} → 校验某前台页面是否可访问（发布后验证用）。
+- run_preset {"preset":"qa-field-fix|low-ctr-refresh|decay-refresh|geo-gap-rewrite|multilang-batch|asset-alt-fill|landing-refresh-publish","opt":{"limit":5,"lang":"zh","page_type":"tool"}}
+    → 用真实数据展开并**创建一个 dry-run 批量任务**，返回 task_id。适合你已确认范围、想立即执行的场景。
+
+【工作方式（重要）】
+1. 先想清楚需要什么信息；能自己查的就**调用工具**去查，不要问用户。
+2. 每次只调用一个工具：输出 {"tool":{"name":"...","args":{...}},"say":"我正在…（一句话说明当前动作）"}。
+3. 看到工具结果后继续判断：需要更多信息就再调用工具；信息够了就给出最终 JSON（见下）。
+4. 通常 1-3 步即可；最多 5 步。不要无意义地重复调用。
+5. 一旦信息足够，输出最终结果：
+   {"say":"给用户的结论（markdown）","questions":[],"spec":{...} 或 "plan":{...}}
+   - 若是一次性、范围明确的执行 → 给 spec（含 expand 或 items）
+   - 若需要多步骤（如 改稿→发布→验证）→ 给 plan：{"steps":[{"name":"改稿","type":"rewrite","preset":"...","opt":{...}},{"name":"发布","type":"publish_sanity",...},{"name":"验证","type":"verify",...}]}
+"""
+
+
 def agent_reply(session, message, proj=None):
     """对话一轮：组装上下文 → LLM → 解析 {say, questions, spec}。"""
     proj = proj or DEFAULT_PROJECT
@@ -2971,6 +3306,8 @@ def agent_reply(session, message, proj=None):
 7. harness 硬条款 {rules_len} 字符（下方已注入）
 
 {AGENT_TASK_SCHEMA}
+
+{AGENT_TOOLS_DOC}
 
 【知识库事实（必须使用这些真实信息，禁止编造数字/案例）】
 {chr(10).join(f"- 《{b['title']}》：{b['excerpt']}" for b in kb_hits) or "（本次无命中——如涉及事实请标注 [待考证]）"}
@@ -3009,18 +3346,37 @@ def agent_reply(session, message, proj=None):
             msgs.append({"role": m["role"], "content": m["text"][:1500]})
     msgs.append({"role": "user", "content": message[:2000]})
     _tok = 0
+    _trace = []
+    data = None
     try:
-        raw = llm_chat(msgs, profile="default", max_tokens=1600, project=proj, timeout=120)
-        _tok = int(LAST_USAGE.get("total_tokens", 0) or 0)
-        m = re.search(r"\{[\s\S]*\}", raw)
-        data = {}
-        if m:
-            try:
-                data = json.loads(m.group(0))
-            except Exception:
-                data = {}
+        for _step in range(AGENT_MAX_STEPS):
+            raw = llm_chat(msgs, profile="default", max_tokens=1800, project=proj, timeout=120)
+            _tok += int(LAST_USAGE.get("total_tokens", 0) or 0)
+            m = re.search(r"\{[\s\S]*\}", raw)
+            step_data = {}
+            if m:
+                try:
+                    step_data = json.loads(m.group(0))
+                except Exception:
+                    step_data = {}
+            # 工具调用：执行后把结果喂回，继续推理
+            tl = step_data.get("tool") if isinstance(step_data, dict) else None
+            if isinstance(tl, dict) and tl.get("name"):
+                tname = str(tl.get("name"))
+                res = agent_tool(tname, tl.get("args") or {}, proj)
+                _trace.append({"step": _step + 1, "tool": tname, "args": tl.get("args") or {},
+                               "say": str(step_data.get("say", ""))[:200],
+                               "result": ({"_error": res.get("_error")} if isinstance(res, dict) and res.get("_error") else
+                                          {"count": res.get("count"), "keys": list(res.keys())[:6]})})
+                msgs.append({"role": "assistant", "content": raw[:2000]})
+                msgs.append({"role": "user", "content":
+                             "工具 `" + tname + "` 返回：\n" + json.dumps(res, ensure_ascii=False)[:2600] +
+                             "\n\n请继续：需要更多信息就再输出 {\"tool\":...}；信息足够就输出最终 JSON（say + spec 或 plan）。"})
+                continue
+            data = step_data
+            break
         if not data:
-            data = {"say": raw[:1200], "questions": [], "spec": None}
+            data = {"say": "（已达到最大推理步数，先给出当前判断）", "questions": [], "spec": None}
     except Exception as _le:
         # LLM 不可用（未配置/余额不足/超时）→ 降级：仍用预设+上下文给出可执行方案
         _hint = _auto_preset_match(message, proj)
@@ -3042,7 +3398,8 @@ def agent_reply(session, message, proj=None):
     used = {"skills": [s["name"] for s in skills], "library": [h["path"] for h in libs],
             "kb": [b["title"] for b in kb_hits], "geo_gaps": geo.get("gaps", []), "rules_chars": len(rules)}
     return {"say": data.get("say", ""), "questions": data.get("questions") or [],
-            "spec": data.get("spec"), "context": used, "tokens": _tok}
+            "spec": data.get("spec"), "plan": data.get("plan"), "trace": _trace,
+            "context": used, "tokens": _tok}
 
 
 def spec_guard(spec):
@@ -4983,6 +5340,10 @@ class Handler(BaseHTTPRequestHandler):
             # ── 批量任务 ──
             if parsed.path == "/api/batch/list":
                 return self._send(200, batch_list())
+            if parsed.path == "/api/runs":
+                return self._send(200, run_list())
+            if parsed.path == "/api/run/detail":
+                return self._send(200, run_view(qs.get("id", [""])[0]))
             if parsed.path == "/api/batch/detail":
                 t = batch_load(qs.get("id", [""])[0])
                 if not t:
@@ -5274,7 +5635,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/publish/sanity", "/api/publish/wordpress", "/api/library/sync",
                       "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
                       "/api/batch/create", "/api/batch/action",
-                      "/api/agent/chat", "/api/agent/execute",
+                      "/api/agent/chat", "/api/agent/execute", "/api/agent/run",
+                      "/api/run/action",
                       "/api/qa/orchestrate", "/api/qa/recheck",
                       "/api/presets/run", "/api/housekeeping/run",
                       "/api/breaker/reset", "/api/quotas/save",
@@ -5653,13 +6015,15 @@ class Handler(BaseHTTPRequestHandler):
                 _tk = int(r.get("tokens") or 0)
                 s["messages"].append({"role": "assistant", "text": r["say"], "at": datetime.now().strftime("%H:%M:%S"),
                                       "context": r.get("context"), "questions": r.get("questions"),
-                                      "spec": guarded, "guard_error": gerr, "tokens": _tk})
+                                      "spec": guarded, "guard_error": gerr, "tokens": _tk,
+                                      "plan": r.get("plan"), "trace": r.get("trace") or []})
                 s["tokens"] = int(s.get("tokens") or 0) + _tk
                 if guarded:
                     s.setdefault("proposals", []).append({"spec": guarded, "at": datetime.now().strftime("%Y-%m-%d %H:%M")})
                 agent_save(s)
                 return self._send(200, {"session_id": s["id"], "say": r["say"], "questions": r.get("questions"),
                                         "spec": guarded, "guard_error": gerr, "context": r.get("context"),
+                                        "plan": r.get("plan"), "trace": r.get("trace") or [],
                                         "tokens": s.get("tokens", 0)})
             if self.path == "/api/agent/execute":
                 s = agent_session_load(str(body.get("session_id", "")))
@@ -5688,13 +6052,80 @@ class Handler(BaseHTTPRequestHandler):
                                      dry_run=spec["dry_run"], by=self._me())
                 except PermissionError as e:
                     return self._send(429, {"error": str(e)})
+                run = run_new(spec.get("title") or (spec["type"] + " 执行"),
+                              [{"name": "理解与规划", "type": "note", "status": "done",
+                                "detail": (spec.get("rationale") or "")[:120]},
+                               {"name": "展开范围", "type": "note", "status": "done",
+                                "detail": f"命中 {t['stats']['total']} 项"},
+                               {"name": "批量执行", "type": "batch", "task_id": t["id"], "status": "running",
+                                "opt": {"dry_run": spec["dry_run"]}},
+                               {"name": "结果校验", "type": "verify", "status": "pending"}],
+                              proj=self._proj(), by=self._me(), kind="agent",
+                              session_id=s["id"], message=spec.get("title", ""))
                 s["messages"].append({"role": "assistant", "at": datetime.now().strftime("%H:%M:%S"),
                                       "text": f"已创建批量任务 {t['id']}（{spec['type']} · {t['stats']['total']} 项 · "
-                                              f"{'dry-run' if spec['dry_run'] else '真实执行'}）——执行器 5 秒内接手，"
-                                              f"进度见「批量任务」页。",
-                                      "task_id": t["id"]})
+                                              f"{'dry-run' if spec['dry_run'] else '真实执行'}）——画布已开始跟踪，"
+                                              f"可在「执行画布」看实时进度。",
+                                      "task_id": t["id"], "run_id": run["id"]})
                 agent_save(s)
-                return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"]})
+                return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"],
+                                        "run_id": run["id"]})
+
+            # ── Agent 计划 → Run（多步编排，后台运行）──
+            if self.path == "/api/agent/run":
+                s = agent_session_load(str(body.get("session_id", "")))
+                plan = body.get("plan") or {}
+                steps_in = plan.get("steps") or []
+                if not steps_in:
+                    return self._send(400, {"error": "plan.steps 为空"})
+                built = []
+                for st in steps_in[:8]:
+                    t = str(st.get("type", "batch"))
+                    if t == "verify":
+                        built.append({"name": st.get("name") or "结果校验", "type": "verify",
+                                      "status": "pending", "urls": st.get("urls") or []})
+                    else:
+                        built.append({"name": st.get("name") or "批量执行", "type": "batch",
+                                      "status": "pending", "preset": st.get("preset"),
+                                      "opt": st.get("opt") or {"dry_run": True},
+                                      "spec": st.get("spec")})
+                # 首个 batch 步立即 pending→由 run_tick 创建任务
+                run = run_new(plan.get("title") or "Agent 编排执行", built,
+                              proj=self._proj(), by=self._me(), kind="plan",
+                              session_id=(s or {}).get("id", ""), message=str(plan.get("title", ""))[:200])
+                if s:
+                    s["messages"].append({"role": "assistant", "at": datetime.now().strftime("%H:%M:%S"),
+                                          "text": f"已启动执行计划「{run['title']}」（{len(built)} 步，后台运行）——到「执行画布」看实时进度。",
+                                          "run_id": run["id"]})
+                    agent_save(s)
+                return self._send(200, {"ok": True, "run_id": run["id"], "steps": len(built)})
+            # ── Run 控制：取消 / 重试 ──
+            if self.path == "/api/run/action":
+                rid = str(body.get("id", ""))
+                act = str(body.get("action", ""))
+                run = run_load(rid)
+                if not run:
+                    return self._send(404, {"error": "执行不存在"})
+                if act == "cancel":
+                    for st in run.get("steps", []):
+                        if st.get("type") == "batch" and st.get("task_id") and st.get("status") in ("running", "pending"):
+                            try:
+                                t = batch_load(st["task_id"])
+                                if t and t.get("status") in ("running", "queued", "paused"):
+                                    t["status"] = "cancel"; batch_save(t)
+                            except Exception:
+                                pass
+                    run["status"] = "cancelled"
+                    run_save(run)
+                    return self._send(200, {"ok": True})
+                if act == "retry":
+                    run["status"] = "running"
+                    for st in run.get("steps", []):
+                        if st["status"] == "failed":
+                            st["status"] = "pending"; st["detail"] = ""
+                    run_save(run)
+                    return self._send(200, {"ok": True})
+                return self._send(400, {"error": "未知动作"})
             # ── QA 编排：生成修复任务 / 复检 ──
             if self.path == "/api/qa/orchestrate":
                 tid = str(body.get("task", ""))

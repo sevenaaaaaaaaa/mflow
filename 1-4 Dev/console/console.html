@@ -292,6 +292,26 @@ button.clicked{animation:clickpulse .45s ease}
 .chip.done{opacity:.5;text-decoration:line-through}
 .row-busy{opacity:.6;pointer-events:none}
 
+
+/* ── 执行画布 ── */
+.run-pbar{height:9px;border-radius:99px;background:var(--hover);overflow:hidden;margin:6px 0 14px}
+.run-pbar > div{height:100%;background:var(--accent);transition:width .5s var(--ease-spring)}
+.run-step{display:flex;gap:12px}
+.run-rail{display:flex;flex-direction:column;align-items:center;width:26px;flex:0 0 auto}
+.run-dot{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff;background:var(--faint);flex:0 0 auto;z-index:1}
+.run-dot.pending{background:var(--faint)}
+.run-dot.running{background:var(--accent);animation:runpulse 1.4s infinite}
+.run-dot.done{background:var(--ok)}
+.run-dot.failed{background:var(--bad)}
+@keyframes runpulse{0%,100%{box-shadow:0 0 0 0 var(--accent-soft)}50%{box-shadow:0 0 0 8px transparent}}
+.run-line{flex:1;width:2px;background:var(--border);margin:2px 0}
+.run-line.done{background:var(--ok)}
+.run-body{flex:1;padding-bottom:16px}
+.run-body .rn{font-size:13px;font-weight:700}
+.run-body .rd{font-size:11.5px;color:var(--muted);margin-top:2px}
+.run-step-progress{height:6px;border-radius:99px;background:var(--hover);overflow:hidden;margin-top:6px}
+.run-step-progress > div{height:100%;background:var(--accent);transition:width .4s}
+
 /* z-index 层级系统 */
 :root{--z-base:0;--z-panel:50;--z-chrome:60;--z-reader:80;--z-toast:99}
 
@@ -327,6 +347,7 @@ button.clicked{animation:clickpulse .45s ease}
   <button class="s-item on" data-t="home" onclick="setTab('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>总览</span></button>
   <div class="sec-title">工作台</div>
   <button class="s-item" data-t="agent" onclick="setTab('agent')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4v1a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3h1v3M12 3a4 4 0 0 1 4 4v1a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-1v3"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/></svg><span>Agent 任务台</span></button>
+  <button class="s-item" data-t="run" onclick="setTab('run')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><circle cx="8" cy="16" r="2"/><circle cx="15" cy="9" r="2"/><path d="M9.5 14.5 13.5 10.5"/></svg><span>执行画布</span><span class="sbad mutb" id="nav-run">0</span></button>
   <button class="s-item" data-t="batch" onclick="setTab('batch')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="20" cy="18" r="2"/></svg><span>批量任务</span><span class="sbad mutb" id="nav-batch">0</span></button>
   <button class="s-item" data-t="create" onclick="setTab('create')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg><span>创作中心</span></button>
   <button class="s-item" data-t="tasks" onclick="setTab('tasks')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>任务看板</span><span class="sbad" id="nav-tasks">0</span></button>
@@ -420,6 +441,21 @@ button.clicked{animation:clickpulse .45s ease}
     </div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>批量任务进度</h3><button class="more" onclick="setTab('batch')">全部 →</button></div><div id="task-batches"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>自动同步队列（只读）</h3></div><div id="autoq"></div></div>
+  </section>
+
+  <!-- ============ 执行画布 ============ -->
+  <section class="page" id="pg-run">
+    <div class="pg-head"><div><div class="kick">工作台</div><h1>执行<em class="sf">画布</em></h1>
+      <p class="pg-sub">后台运行中的任务在这里实时可视化：每步状态、当前动作、整体进度一目了然。</p></div>
+      <div class="head-actions"><button class="btn ghost" onclick="loadRuns()">刷新 ↻</button></div></div>
+    <div class="cols" style="grid-template-columns:280px 1fr">
+      <div class="card" style="height:fit-content"><div class="card-head"><h3>执行记录</h3></div>
+        <div id="run-list" class="flist"></div></div>
+      <div class="card"><div class="card-head"><h3 id="run-title">选择一个执行查看画布</h3>
+        <span id="run-badge"></span></div>
+        <div id="run-canvas"><div class="mut">左侧选一条执行记录，或用 Agent 下达任务自动生成。</div></div>
+      </div>
+    </div>
   </section>
 
   <!-- ============ 报告 ============ -->
@@ -1268,7 +1304,7 @@ function guideShow(t){try{const d=JSON.parse(localStorage.getItem('mflow-guides'
 /* ---- 顶部导航（分组 mega menu）---- */
 const NAV_GROUPS=[
  {id:'home',label:'总览',items:[['home','总览']]},
- {id:'work',label:'工作台',items:[['agent','Agent 任务台'],['batch','批量任务'],['create','创作中心'],['tasks','任务看板']]},
+ {id:'work',label:'工作台',items:[['agent','Agent 任务台'],['run','执行画布'],['batch','批量任务'],['create','创作中心'],['tasks','任务看板']]},
  {id:'quality',label:'质量与发布',items:[['qa','QA 编排'],['dist','分发队列'],['calt','内容日历'],['pipe','内容管线']]},
  {id:'assets',label:'内容资产',items:[['lib','内容库'],['kb','知识库'],['mkt','模板市场'],['trident','数据管线']]},
  {id:'reports',label:'报告与迭代',items:[['reports','报告中心'],['rdash','报告仪表'],['iter','自我迭代'],['wfmap','工作流地图']]},
@@ -1307,7 +1343,7 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
  $('pg-'+t).classList.add('on');
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
-   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,agent:agLoad,qa:qaLoad}[t]||(()=>{}))()}
+   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,agent:agLoad,qa:qaLoad,run:runLoad}[t]||(()=>{}))()}
 function openReader(path){api('api/read?path='+encodeURIComponent(path)).then(r=>{
  $('rname').textContent=r.name;
  const toc=(r.toc||[]).filter(t=>t.level===2);
@@ -2219,6 +2255,18 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
    const tk=m.tokens?` · ${m.tokens} tokens`:'';
    return bits.length?`<div class="mut" style="font-size:10px;margin-top:6px;color:var(--faint)">🧠 ${esc(bits.join(' · '))}${tk}</div>`:(tk?`<div class="mut" style="font-size:10px;margin-top:6px;color:var(--faint)">${tk.trim()}</div>`:'')})();
   const qs=(m.questions&&m.questions.length)?`<div class="warn" style="margin-top:6px;font-size:12px;padding:8px;background:var(--warn-soft);border-radius:8px">需要你补充：<br>${m.questions.map(q=>'· '+esc(q)).join('<br>')}</div>`:'';
+  // 推理轨迹（工具调用）
+  const trace=(m.trace&&m.trace.length)?`<div class="mut" style="font-size:11px;margin-top:6px;padding:6px 8px;background:var(--bg);border-radius:8px">
+    ${m.trace.map(t=>`<div>🔧 第${t.step}步 · <b>${esc(t.tool)}</b>(${esc(JSON.stringify(t.args||{})).slice(0,60)}) ${t.result&&t.result._error?'<span class="bad">'+esc(t.result._error)+'</span>':(t.result&&t.result.count!=null?'→ '+t.result.count+' 条':'')}</div>`).join('')}</div>`:'';
+  // 多步计划
+  let plan='';
+  if(m.plan&&m.plan.steps&&m.plan.steps.length){
+   plan=`<div class="card" style="margin-top:8px;padding:12px;border-left:3px solid var(--accent)">
+    <div style="font-weight:700;font-size:13px;margin-bottom:6px">📋 执行计划（${m.plan.steps.length} 步，可后台运行）</div>
+    ${m.plan.steps.map((st,i)=>`<div style="font-size:12px;padding:3px 0"><b style="color:var(--accent)">${i+1}</b> ${esc(st.name||st.type)} <span class="mut">${esc(st.preset||st.type||'')}${st.opt&&st.opt.limit?' · '+st.opt.limit+' 项':''}</span></div>`).join('')}
+    <div class="row" style="margin-top:8px"><button class="btn primary" style="font-size:12px" onclick='agRunPlan(${JSON.stringify(m.plan).replace(/'/g,"&#39;")},event)'>▶ 执行计划（后台运行）</button></div></div>`;
+  }
+  const runLink=m.run_id?`<div style="font-size:12px;margin-top:6px"><button class="mini" onclick="setTab('run');setTimeout(()=>runDetail('${esc(m.run_id)}'),600)">查看执行画布 →</button></div>`:'';
   let spec='';
   if(m.spec){const sp=m.spec;const isExp=sp.expand&&sp.expand.preset;
    const itms=isExp?`<span class="mut">将按预设「${esc(sp.expand.preset)}」用真实数据展开${sp.expand.opt?'（'+esc(JSON.stringify(sp.expand.opt))+'）':''}</span>`:(sp.items||[]).slice(0,3).map(i=>esc(JSON.stringify(i)).slice(0,120)).join('<br>');
@@ -2235,7 +2283,7 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
     <div style="display:flex;align-items:center;gap:8px"><b>批量任务 ${esc(m.task_id)}</b><span class="ag-tst mut"></span>
     <button class="mini" style="margin-left:auto" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(m.task_id)}'),600)">详情 →</button></div>
     <div class="ag-tbar" style="height:6px;border-radius:99px;background:var(--hover);overflow:hidden;margin-top:6px"><div style="height:100%;width:0;background:var(--accent);transition:width .4s"></div></div></div>`:'';
-  return `<div style="align-self:flex-start;max-width:88%;padding:12px 16px;border-radius:14px 14px 14px 4px;font-size:13px;line-height:1.7;overflow-wrap:break-word">${html}${qs}${spec}${task}${ctx}</div>`}).join('');
+  return `<div style="align-self:flex-start;max-width:88%;padding:12px 16px;border-radius:14px 14px 14px 4px;font-size:13px;line-height:1.7;overflow-wrap:break-word">${html}${trace}${qs}${spec}${plan}${runLink}${task}${ctx}</div>`}).join('');
  th.scrollTop=th.scrollHeight}
 function agPreset(msg){const inp=$('ag-input');if(inp)inp.value=msg;agSend()}
 function agSend(){const v=$('ag-input').value.trim();if(!v||AG_BUSY)return;
@@ -2252,6 +2300,13 @@ function agSend(){const v=$('ag-input').value.trim();if(!v||AG_BUSY)return;
   AG_BUSY=false;if(btn){btn.disabled=false;btn.textContent='发送'}
   document.querySelectorAll('#ag-thread .ag-typing,#ag-typing-ind').forEach(e=>e.remove());
  })}
+function agRunPlan(plan,ev){return withBtn(ev, async()=>{
+ const r=await api('api/agent/run',{session_id:AG_ID,plan});
+ if(r.error)throw new Error(r.error);
+ toast('执行计划已启动（后台运行，共 '+r.steps+' 步），即将跳画布','ok');
+ setTab('run');setTimeout(()=>runDetail(r.run_id),700);
+ return r;
+},{busyText:'启动中…',okText:'已启动'});}
 function agPollTasks(){
  const cards=document.querySelectorAll('#ag-thread .ag-task[data-tid]');
  cards.forEach(c=>{
@@ -2278,6 +2333,42 @@ function agExec(spec,real,ev){const _n=spec.expand?('预设「'+spec.expand.pres
   agPollTasks();
   return r;
  },{busyText:'创建任务中…',okText:'已创建'});}
+/* ---- 执行画布 ---- */
+let RUN_ID='',RUN_TIMER=null;
+function runLoad(){api('api/runs').then(rs=>{
+ const running=(rs||[]).filter(r=>r.status==='running').length;
+ $('nav-run').textContent=running||'';
+ const el=$('run-list');
+ if(!rs||!rs.length){el.innerHTML='<div class="mut" style="font-size:12px">还没有执行记录。到 Agent 任务台下达任务，或用任务看板的「快速开始」。</div>';return}
+ el.innerHTML=rs.map(r=>`<a onclick="runDetail('${esc(r.id)}')" class="${r.id===RUN_ID?'on':''}" style="${r.id===RUN_ID?'background:var(--accent-soft)':''}">
+   <span class="badge" style="background:${r.status==='running'?'var(--accent)':(r.status==='done'?'var(--ok)':'var(--bad)')};margin-right:6px">${r.status==='running'?'运行':(r.status==='done'?'完成':'失败')}</span>${esc(r.title||r.id)}
+   <div class="mut" style="font-size:10.5px">${esc(r.created||'')} · ${r.n} 步</div></a>`).join('');
+ if(RUN_ID)runDetail(RUN_ID);
+})}
+function runDetail(id){RUN_ID=id;api('api/run/detail?id='+encodeURIComponent(id)).then(r=>{
+ if(r.error){$('run-canvas').innerHTML='<span class="bad">'+esc(r.error)+'</span>';return}
+ $('run-title').textContent=r.title||r.id;
+ const ov=r.overall||{};
+ $('run-badge').innerHTML=`<span class="badge" style="background:${r.status==='running'?'var(--accent)':(r.status==='done'?'var(--ok)':'var(--bad)')}">${r.status}</span> <span class="mut" style="font-size:11px">${ov.done||0}/${ov.total||0} 步 · ${ov.pct||0}%</span>`;
+ const steps=r.steps||[];
+ $('run-canvas').innerHTML=`<div class="run-pbar"><div style="width:${ov.pct||0}%"></div></div>`+
+  steps.map((st,i)=>{
+   const dot={done:'✓',failed:'✕',running:'●',pending:i+1}[st.status]||i+1;
+   const prog=(st.type==='batch'&&st.progress!=null)?`<div class="run-step-progress"><div style="width:${st.progress}%"></div></div>`:'';
+   return `<div class="run-step">
+     <div class="run-rail"><span class="run-dot ${st.status}">${dot}</span>${i<steps.length-1?`<span class="run-line ${st.status==='done'?'done':''}"></span>`:''}</div>
+     <div class="run-body"><div class="rn">${esc(st.name)} ${st.status==='running'?'<span class="mut" style="font-size:11px">进行中…</span>':''}</div>
+      <div class="rd">${esc(st.detail||'')}</div>${prog}
+      ${st.task_id?`<button class="mini" style="margin-top:6px" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(st.task_id)}'),600)">查看任务 →</button>`:''}</div></div>`}).join('')+
+  `<div class="row" style="margin-top:6px">${r.status==='running'?`<button class="btn ghost" onclick="runAct('${esc(r.id)}','cancel')">取消执行</button>`:''}${r.status==='failed'?`<button class="btn primary" onclick="runAct('${esc(r.id)}','retry')">重试失败步骤</button>`:''}</div>`;
+ // 运行中自动刷新
+ if(r.status==='running'){clearTimeout(RUN_TIMER);RUN_TIMER=setTimeout(()=>{if(TAB==='run')runDetail(RUN_ID)},2500)}
+});}
+function runAct(id,action){withBtn(event, async()=>{
+ const r=await api('api/run/action',{id,action});if(r.error)throw new Error(r.error);
+ toast(action==='cancel'?'已取消':'已重试','ok');runDetail(id);return r;
+},{busyText:'处理中…',okText:'已执行'});}
+
 /* ---- 批量任务 ---- */
 const BATCH_HINTS={asset_replace:"items 可留空 → 用「从图片物料计划一键建任务」",
  field_patch:'每项：{"doc_id":"…","set":{"字段":"新值"}}',
