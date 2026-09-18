@@ -426,13 +426,14 @@ def publish_composite(doc, dry_run=True, mode="create"):
         return {"ok": False, "error": "未配置 SANITY_TOKEN"}
     if mode == "patch":
         try:
-            with _req(cfg, "query", {"query": f'*[_id=="{doc["_id"]}"][0]{{_id,_rev}}'}, timeout=30) as r:
+            with _req(cfg, "query", {"query": f'*[_id=="{doc["_id"]}"][0]{{_id,_rev,slug}}'}, timeout=30) as r:
                 cur = json.loads(r.read()).get("result")
         except Exception as e:
             return {"ok": False, "error": f"读取现有文档失败：{str(e)[:120]}"}
         if not cur:
             return {"ok": False, "error": f"patch 模式要求文档已存在：{doc['_id']}（新建请用 mode=create）"}
-        sets = {k: v for k, v in doc.items() if not k.startswith("_")}
+        # ⚠ patch 模式：保留既有 slug（覆盖会导致前台路由 404）
+        sets = {k: v for k, v in doc.items() if not k.startswith("_") and k != "slug"}
         mutations = [{"patch": {"id": doc["_id"], "ifRevisionID": cur.get("_rev"), "set": sets}}]
     else:
         mutations = [{"createIfNotExists": doc}]
