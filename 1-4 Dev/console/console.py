@@ -4433,10 +4433,6 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, self_evolve_analyze())
             if parsed.path == "/api/mode":
                 return self._send(200, mode_report(self._proj()))
-            if parsed.path == "/api/mode/switch":
-                return self._send(200 if (r:=mode_switch(self._proj(), str(body.get("mode","")))).get("ok") else 400, r)
-            if parsed.path == "/api/mode/promote":
-                return self._send(200, mode_promote_check(self._proj()))
             if parsed.path == "/api/governance":
                 return self._send(200, governance_report())
             if parsed.path == "/api/kb/gaps":
@@ -5147,6 +5143,11 @@ class Handler(BaseHTTPRequestHandler):
             if self.path == "/api/housekeeping/run":
                 rep = housekeeping(dry_run=bool(body.get("dry_run", True)))
                 return self._send(200, rep)
+            if self.path == "/api/mode/switch":
+                r = mode_switch(self._proj(), str(body.get("mode", "")))
+                return self._send(200 if r.get("ok") else 400, r)
+            if self.path == "/api/mode/promote":
+                return self._send(200, mode_promote_check(self._proj()))
             if self.path == "/api/qa/recheck":
                 r = qa_recheck(str(body.get("task", "")), dry_run=bool(body.get("dry_run", True)))
                 return self._send(200 if r.get("ok") else 400, r)
