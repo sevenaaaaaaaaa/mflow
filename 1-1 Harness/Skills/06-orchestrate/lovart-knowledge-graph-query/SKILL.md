@@ -1,13 +1,6 @@
 ---
-name: lovart-knowledge-graph-query
-description: |
-  Lovart 知识图查询 skill — 在 1-1 Harness/11-knowledge/ 的实体+关系图里查
-  "X 是什么 / 跟谁相关 / 3 跳内什么 / 谁会受我改动影响"。
-  Use when the user asks "这个 skill 是谁在调", "改 X 会影响哪些 Profile",
-  "新加 cron 该挂哪个 profile", "我做的这个动作违反 RULES-00 吗",
-  or any graph-aware query where knowing the dependency surface matters.
+description: 知识图谱查询 skill。查询项目知识与依赖关系。
 ---
-
 # lovart-knowledge-graph-query
 
 > 任意 Profile / 任意 agent 可用。SSOT 在 `1-1 Harness/11-knowledge/`；

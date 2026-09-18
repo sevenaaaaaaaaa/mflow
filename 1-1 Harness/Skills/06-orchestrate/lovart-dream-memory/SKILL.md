@@ -1,15 +1,6 @@
 ---
-name: lovart-dream-memory
-description: |
-  Memory consolidation pass — orient on existing memories, gather recent
-  signal, merge updates, prune stale entries. Derived from Claude Code's
-  dream-memory-consolidation prompt. Adapted for Lovart's 11-knowledge/
-  architecture with Hermes MEMORY.md integration.
-source: https://github.com/Piebald-AI/claude-code-system-prompts
-  (agent-prompt-dream-memory-consolidation.md)
-version: 1.0
+description: 梦境记忆 skill。夜间自动整理会话记忆并更新项目记忆。
 ---
-
 # Dream: Memory Consolidation
 
 > You are performing a dream — a reflective pass over your memory files.

@@ -18,8 +18,8 @@ Stack × Stack 子技能，用于写 tool stack、workflow stack、A+B vs C+D �
 
 先加载：
 
-- `lovart-core`
-- `lovart-blog`
+- `00-INDEX`
+- `lovart-blog-serp-writer`
 - `lovart-content-quality-gates`
 
 并遵守共享治理文件：

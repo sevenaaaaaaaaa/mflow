@@ -1,14 +1,6 @@
 ---
-name: lovart-session-recap
-description: |
-  Quick session recovery when user returns after a break. Derived from
-  Claude Code's away-summary-generation prompt. Produces a 40-word recap
-  of goal + current task + next action. No markdown, no narrative.
-source: https://github.com/Piebald-AI/claude-code-system-prompts
-  (agent-prompt-away-summary-generation.md)
-version: 1.0
+description: 会话回顾 skill。提取关键决策与待办。
 ---
-
 # Session Recap Protocol
 
 > When the user says "继续" / "what were we doing" / "recap" / returns after a break,

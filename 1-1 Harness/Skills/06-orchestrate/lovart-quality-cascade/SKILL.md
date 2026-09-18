@@ -1,15 +1,6 @@
 ---
-name: lovart-quality-cascade
-description: |
-  Experimental / explicit-only 双代理内容质量 cascade loop (A+C 流派) — v0.2 runnable orchestrator。
-  writer (lovart-creation) 写 v(N) → critic (lovart-quality) 评 BLOCK+reasons
-  → 若 fail，携 reasons 回 writer v(N+1)，N+1 < max_iterations=3
-  → 命中 BLOCK=0 停;超出 escalate 人工。
-  仅在用户明确说「跑 cascade」「双代理」「writer+critic」「quality loop」时触发；不得作为默认质量门禁。
-  ADR 看 1-1 Harness/11-knowledge/dream/LOOP-ENGINEERING-PROPOSAL.md。
-disable-model-invocation: true
+description: 质量级联 skill。生成 → 质检 → BLOCK 反馈重写 ≤3 轮。
 ---
-
 # lovart-quality-cascade — v0.2 runnable orchestrator
 
 > 双代理 cascade 引擎正式版。状态机 + criteria 评估 + dispatch 抽象。

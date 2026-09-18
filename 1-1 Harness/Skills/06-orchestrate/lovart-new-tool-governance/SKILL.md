@@ -1,12 +1,6 @@
 ---
-name: lovart-new-tool-governance
-description: |
-  Gate for creating new scripts/tools in the Lovart project. Every new script must
-  pass this governance check before it enters the project. Prevents noise, duplication,
-  path violations, and naming chaos.
-disable-model-invocation: false
+description: 新工具治理 skill。注册新工具到 TOOLS-REGISTRY。
 ---
-
 # lovart-new-tool-governance — tool creation gate
 
 > **Why this exists**: When the agent encounters a new problem and creates a script,

@@ -1,12 +1,6 @@
 ---
-name: lovart-kb-mine
-description: |
-  KB 查询 skill — writer profile（lovart-creation / page-serp-writer / blog-signal-writer 等）
-  开始写之前**必须**先调用此 skill 拿 grounded context。
-  Use when the user asks "writer 自己查 KB"、"查 capability 词表"、"KB 给这段 topic 哪些 unit"、
-  or any content-creation task where factual grounding on Lovart product / brand / capability is needed.
+description: 知识库挖掘 skill。从已有 KB 文档中提取洞察、关联知识和内容选题线索。
 ---
-
 ## 预算（RULES-70 强制）
 
 - 字数：Blog 1200–1800（**绝不超 2160**）；落地页文案 600–1000；摘要/分发稿 ≤600

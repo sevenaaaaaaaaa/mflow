@@ -1,10 +1,6 @@
 ---
-name: lovart-sanity-preflight
-description: >-
-  Deprecated alias — use lovart-content-quality-gates for all preflight/import QA.
-  Kept for pipeline triggers that mention "sanity-preflight".
+description: Sanity 发布前检查。兼容别名，指向 lovart-content-quality-gates。
 ---
-
 ## 路径契约
 
 | 层 | 路径 |

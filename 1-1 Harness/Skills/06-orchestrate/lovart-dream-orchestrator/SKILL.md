@@ -1,11 +1,6 @@
 ---
-name: lovart-dream-orchestrator
-description: |
-  Lovart 梦境编排 skill — 手动触发 / 监控系统整理（consolidation + audit）。
-  触发：用户说"今晚先梦境跑一遍"、"新人入项，先 audit"、"换工具配置了，先看一致"、
-  "上次 audit 出的错误修完了，再跑一次确认"、"换季度，需要刷 MEMORY-PROJECT.md"。
+description: 梦境编排器。调度夜间整理/审计/反思流程。
 ---
-
 # lovart-dream-orchestrator
 
 > 让"系统记账"流程可技能化触发。SSOT 在 `1-1 Harness/11-knowledge/dream/`。

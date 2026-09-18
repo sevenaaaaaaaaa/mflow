@@ -1,13 +1,6 @@
 ---
-name: lovart-universal-prompt
-description: |
-  Universal behavioral base for all Lovart Hermes profiles. Derived from
-  Fable 5 distilled system prompt (KinetiNode/claude-fable-5-system-prompt-clean)
-  + Lovart-specific adaptations. Every SOUL.md inherits these 6 principles.
-source: https://github.com/KinetiNode/claude-fable-5-system-prompt-clean
-version: 1.0
+description: 通用 prompt 模板。统一基础 prompt 含 Anti-Slop。
 ---
-
 # Universal Prompt — All Lovart Profiles
 
 > These 6 principles override any conflicting instruction in a profile's SOUL.md.

@@ -26,7 +26,7 @@ description: End-to-end Lovart 101 / Getting Started (入门与枢纽指南) con
 
 End-to-end Lovart 101 / Getting Started (入门与枢纽指南) content production sub-skill. Translates foundational AI design concepts, prompting parameters, and terminology into highly readable, high-retention hub pages designed for broad search traffic and Topic Cluster building.
 
-先加载 `lovart-core`、`lovart-blog`、`lovart-content-quality-gates`，并遵守：
+先加载 `00-INDEX`、`lovart-blog-serp-writer`、`lovart-content-quality-gates`，并遵守：
 `1-1 Harness/Skills/02-creation/references-blog-subskill-governance.md`
 
 ## Triggers

@@ -1,12 +1,5 @@
 ---
-name: lovart-blog-signal-writer
-description: >-
-  舆情(ORM/Sentinel)+GSC 信号驱动的 blogs.lovart.ai 博客自动撰写。从舆情报告与
-  GSC 数据中挖掘选题/角度 → 按 blogs 子站内容生产规范撰写英文长文（全分类 ≥7,500 词，
-  multi-turn，禁脚本灌字）→ 过质量门禁 → status: ready，停在发布前等人工授权。
-  Use for "根据舆情和GSC写博客"、"signal-driven blog"、"挖选题写博客"、
-  "舆情+GSC 内容生产"、"写一篇 blogs.lovart.ai 博客".
-budget_profile: longform  # 长文豁免（RULES-70 §五）
+description: 舆情+GSC 信号驱动博客撰写。从舆情报告与 GSC 数据挖掘选题，撰写英文长文，过质量门禁后停在发布前。
 ---
 ## 预算（RULES-70 强制）
 

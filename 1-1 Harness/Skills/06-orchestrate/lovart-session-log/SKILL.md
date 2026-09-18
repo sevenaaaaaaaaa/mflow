@@ -1,12 +1,6 @@
 ---
-name: lovart-session-log
-description: |
-  Session Log writer — 给 "每个工具里的每段对话" 一个固定的位置留痕。
-  Use when a session is wrapping up, when the user says "收尾 / 写日志 / wrap up / log this / 归档",
-  or whenever the agent judges the session touched 5+ files / made a key decision.
-  输出: 1-1 Harness/11-knowledge/sessions/{YYYY-MM-DD}-{slug}.md
+description: 会话日志 skill。自动写结构化日志。
 ---
-
 # lovart-session-log — 自我生长循环的 Layer 1
 
 > **核心问题**：每段会话（不限工具 / 限 profile）解决了问题，但 lessons **没沉淀**——下次又从 0 开始。

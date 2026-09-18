@@ -1,11 +1,6 @@
 ---
-name: lovart-insight-trend
-description: >-
-  Lovart 行业洞察与趋势（Insight & Trend）博客长文创作技能。
-  基于 2026 最新行业数据、C2PA 标准、认知科学画布范式及企业级 ROI 框架，撰写思想领导力（Thought Leadership）长文。
-  Use for "write an insight & trend post", "行业洞察文章", "AIGC 趋势报告", "write an industry trend report", "AI design trend".
+description: Insight & Trend 子技能，用于写行业洞察、趋势分析、技术前瞻类博客。
 ---
-
 ## 预算（RULES-70 强制）
 
 - 字数：Blog 1200–1800（**绝不超 2160**）；落地页文案 600–1000；摘要/分发稿 ≤600
@@ -17,7 +12,7 @@ description: >-
 
 # Lovart Insight & Trend — 行业洞察与趋势长文创作技能
 
-先加载 `lovart-core`、`lovart-blog`、`lovart-content-quality-gates`。本技能专门用于生成具备极高思想领导力（Thought Leadership）、数据支撑、且符合 2026 最新技术与合规标准的**行业洞察（Insight & Trend）**长文。
+先加载 `00-INDEX`、`lovart-blog-serp-writer`、`lovart-content-quality-gates`。本技能专门用于生成具备极高思想领导力（Thought Leadership）、数据支撑、且符合 2026 最新技术与合规标准的**行业洞察（Insight & Trend）**长文。
 
 并遵守：
 `1-1 Harness/Skills/02-creation/references-blog-subskill-governance.md`

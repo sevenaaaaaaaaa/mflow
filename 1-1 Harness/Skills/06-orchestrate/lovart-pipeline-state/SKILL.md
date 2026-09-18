@@ -1,13 +1,6 @@
 ---
-name: lovart-pipeline-state
-description: |
-  Pipeline state machine — single source of truth for S0-S6 content progress.
-  Every Blog / Feature / Tool / Scenario / Solution / Product / Topic / Landing
-  item must be registered here as it moves through CREATE → REVIEW → SHIP → FINAL.
-  Solves "I'm done with QA, what now?" and "I just wrote, why is QA running again?"
-disable-model-invocation: false
+description: 管线状态机。12 阶段状态机，原子写，非法转换 exit 2。
 ---
-
 # lovart-pipeline-state — pipeline state machine (v1.0)
 
 > **Why this exists**: 6 Profile + 6 工作线 × 12 个 skill 的 Lovart 内容工厂里,最

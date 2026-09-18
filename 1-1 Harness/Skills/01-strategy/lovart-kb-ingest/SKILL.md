@@ -1,12 +1,6 @@
 ---
-name: lovart-kb-ingest
-description: |
-  KB 拓源 skill — 把 URL list (Changelog/URL-LIST.md, Reference/URL-LIST.md)
-  抓下来 → 转 md → 入 Layer 0 → 重 build index → 扩 capability-glossary。
-  Use when the user says "把官方 changelog 抓下来"、"reference 二级 doc 加进来"、
-  "Lovart KB 拓源"、"新一批 URL 入库"、"同步 Lovart 官方 doc"。
+description: 知识库采集 skill。从外部来源拉取内容并结构化入库 Knowledge Base。
 ---
-
 # lovart-kb-ingest — KB 拓源 (crawler + ingest)
 
 > **位置**：1-2 Insight/Knowledge Base/{Changelog,Reference}/URL-LIST.md 是用户给料的入口。

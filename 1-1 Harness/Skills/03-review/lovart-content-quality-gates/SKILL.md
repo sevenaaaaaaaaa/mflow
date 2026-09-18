@@ -1,11 +1,6 @@
 ---
-name: lovart-content-quality-gates
-description: >-
-  Lovart 内容质量门禁 — 创建/翻译/更新/发布前自检：UX、SEO、URL 可用性、JSON·MD 语言兼容、
-  i18n 缺口、合规与代码预检。Use for "质量检查"、"preflight"、"SEO 检查"、"URL 检查"、
-  "多语言检查"、"发布前验证"、"content QA".
+description: 内容质量门禁系统（三层 L1/L2/L3）。质检唯一父入口。
 ---
-
 ## 路径契约
 
 | 层 | 路径 |

@@ -1,46 +1,38 @@
 ---
-name: lovart-review
-description: Review 子技能，用于写单品评测、best-of roundups、versus pages、tested-and-compared 类型博客。
+description: Review 子技能，用于写单品评测、best-of roundups、versus pages、tested-and-compared 类型博客。触发：用户要写 review、comparison、roundup、best-of 或评测类内容。
 ---
 
-## 预算（RULES-70 强制）
+# lovart-review — Review / Versus / Roundup 子技能
 
-- 字数：Blog 1200–1800（**绝不超 2160**）；落地页文案 600–1000；摘要/分发稿 ≤600
-- H2 4–7 · FAQ 3–5 · 每千字 1–3 数据点（同数据不重复）· 外部来源 2–5 条（完整 URL）
-- 列表块 ≤4 处且不连续；单段 ≤300 字符；**禁止**同义反复 / 复述式总结 / 模板过渡词堆砌 / 形容词堆叠
-- 字数不足时**优先删冗余**，绝不补形容词
-- 长文（7500 词级）如需豁免：本 skill frontmatter 声明 `budget_profile: longform`，调用时显式传参（见 RULES-70 §五）
-- 交付前必须过：`post-write-check.sh` · `geo-check.sh` · `quota-check.sh` · `lang-check.sh`
+## 内容类型
 
-# lovart-review
+1. **单品评测**（Single Product Review）：深度实测一个工具/产品的优缺点
+2. **Best-of Roundup**（Top N 列表）："Best AI Design Tools for 2026" 类
+3. **Versus Page**（A vs B）：两个产品的直接对比
+4. **Tested & Compared**（实测对比）：多个产品的同场景实测
 
-Review 子技能，用于写单品评测、best-of roundups、versus pages、tested-and-compared 类型博客。
+## 内容结构
 
-先加载：
+| 版块 | 要求 |
+|------|------|
+| 开头 | 直给结论（"我用 X 代替 Y 已经 3 个月了，结论是…"）|
+| 实测过程 | 必须有截图/截图说明（image_briefs）|
+| 优缺点 | 用表格式（不是散文），每项有具体证据 |
+| 对比表 | feature × product 矩阵，每格是数据而非形容词 |
+| 结论 | 明确推荐 + 适用场景（"如果你是 X 选 A；如果你是 Y 选 B"）|
 
-- `lovart-core`
-- `lovart-blog`
-- `lovart-content-quality-gates`
+## 硬规则
 
-并遵守共享治理文件：
+- **必须**有实测过程（不是看官网复述）→ 写 "I tested..." "我实际操作了..."
+- **必须**有至少一个"踩坑/翻车"段落
+- **禁止**从竞品官网复制 feature list（必须用自己的话）
+- **必须**标注竞品公开定价（带 link）
+- 引用外部来源 ≥2 条
 
-- `1-1 Harness/Skills/02-creation/references-blog-subskill-governance.md`
+## 预算（RULES-70）
 
-研究参考：
+- 字数 1200-1800 · H2 4-7 · FAQ 3-5 · 数据点每千字 1-3 · 来源 2-5
 
-- `.cursor/skills/lovart-review-benchmark-research/`
+## 触发
 
-## Triggers
-
-- "write a review"
-- "tool review"
-- "best X"
-- "tested and compared"
-- "评测 / 测评文章"
-
-## Minimum requirements
-
-- 明确评测对象和 criteria
-- strengths / weaknesses / audience-fit
-- clear recommendation logic
-- 不得写成产品页伪装的 review
+"写一篇 review"、"对比 X 和 Y"、"X 和 Y 哪个好"、"top 10 AI design tools"

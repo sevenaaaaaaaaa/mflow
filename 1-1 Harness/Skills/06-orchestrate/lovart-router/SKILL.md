@@ -1,13 +1,6 @@
 ---
-name: lovart-router
-description: |
-  State-aware profile router — given (stage, scenario) returns (profile_target,
-  skills_to_load, next_action). Solves "I'm in profile X but should I be in Y?"
-  decisions and prevents skill-bloat by routing instead of duplicating.
-  Pair with lovart-pipeline-state: every session starts with `router decide`.
-disable-model-invocation: false
+description: 路由器 skill。23 条决策矩阵决定 profile/skill/action。
 ---
-
 # lovart-router — state-aware profile router (v1.0)
 
 > **Why this exists**: 6 个 Profile 各管一段,但现实任务是横切的——创作撞 QA bug、

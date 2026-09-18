@@ -1,13 +1,13 @@
 ---
 name: lovart-better-design
-description: 先加载 `lovart-core`、`lovart-blog`、`lovart-content-quality-gates`，并遵守：
+description: 先加载 `00-INDEX`、`lovart-blog-serp-writer`、`lovart-content-quality-gates`，并遵守：
 ---
 
 # Lovart Better Design Skill v0.3
 
 ## Description
 
-先加载 `lovart-core`、`lovart-blog`、`lovart-content-quality-gates`，并遵守：
+先加载 `00-INDEX`、`lovart-blog-serp-writer`、`lovart-content-quality-gates`，并遵守：
 `1-1 Harness/Skills/02-creation/references-blog-subskill-governance.md`
 
 跨 Lovart 全工作流（数据采集 / 内容创作 / 质量审核 / 发布 / 监控 / 编排）的 **方法论 Skill**。它不是 S1–S6 任一阶段的执行 skill，而是治理所有 Lovart 内容生产 / 设计 / marketing deliverable 的质量门禁层。

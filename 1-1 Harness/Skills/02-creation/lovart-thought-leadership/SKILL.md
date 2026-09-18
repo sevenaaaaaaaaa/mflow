@@ -26,7 +26,7 @@ description: Sub-skill for generating high-impact Better Design (设计重构) a
 
 Sub-skill for generating high-impact Better Design (设计重构) and Insight & Trend (行业洞察) blog posts. Codifies the thought leadership positioning strategies of Canva ("Imperfect by Design"), Figma ("The Messy Middle"), and Adobe ("All the Feels") to establish Lovart as an industry authority.
 
-先加载 `lovart-core`、`lovart-blog`、`lovart-content-quality-gates`，并遵守：
+先加载 `00-INDEX`、`lovart-blog-serp-writer`、`lovart-content-quality-gates`，并遵守：
 `1-1 Harness/Skills/02-creation/references-blog-subskill-governance.md`
 
 ## Triggers

@@ -18,8 +18,8 @@ Best Practice 子技能，用于写 workflow best practices、creative ops 规�
 
 先加载：
 
-- `lovart-core`
-- `lovart-blog`
+- `00-INDEX`
+- `lovart-blog-serp-writer`
 - `lovart-content-quality-gates`
 
 并遵守共享治理文件：
