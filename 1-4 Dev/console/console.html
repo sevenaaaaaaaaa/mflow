@@ -417,9 +417,9 @@ pre.mut{background:var(--surface);color:var(--muted)}
       <p class="pg-sub">像和 Claude Code 对话一样下达任务——agent 会用知识库/skills/内容库自己填细节，你只需要说想要什么。</p></div>
       <div class="head-actions"><select id="ag-sessions" onchange="agOpen(this.value)" style="width:180px"></select>
         <button class="btn ghost" onclick="agNew()">＋ 新会话</button></div></div>
-    <div class="card"><div class="card-head"><h3>对话</h3>
+    <div class="card"><div class="card-head"><h3><span id="ag-title">新会话</span></h3>
       <span class="mut" id="ag-tokens"></span>
-      <span class="mut" id="ag-sid"></span></div>
+      <span class="mut" id="ag-sid" style="font-size:10px"></span></div>
       <div id="ag-thread" style="max-height:520px;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:4px 0"></div>
       <div class="row" style="margin-top:10px">
         <textarea id="ag-input" placeholder="直接说你想要什么——比如：帮我改 5 篇高曝光低 CTR 的英文页  |  扫一遍 tools 的 SEO 问题  |  给 X 写篇 blog  (Ctrl+Enter 发送)"
@@ -1661,7 +1661,9 @@ function agOpen(id){AG_ID=id;api('api/agent/session?id='+encodeURIComponent(id))
  if(s.error)return; const sid=$('ag-sid');if(sid)sid.textContent=s.id;
  agRender(s.messages||[]);agRenderMeta(s)})}
 function agRenderMeta(s){
- const tok=$('ag-tokens');if(tok)tok.textContent=`msgs ${((s.messages||[]).length)} · tokens ~${((s.messages||[]).length*200).toLocaleString()}`;
+ const tok=$('ag-tokens');
+ if(tok){const tk=s.tokens||0;tok.textContent=`${((s.messages||[]).length)} 条消息 · ${tk.toLocaleString()} tokens`;}
+ const tt=$('ag-title');if(tt)tt.textContent=s.title||'新会话';
  const tid=$('ag-thread');if(tid&&AG_BUSY){tid.insertAdjacentHTML('beforeend','<div class="ag-typing" style="align-self:flex-start;padding:8px 12px"><span class="mut">思考中</span> <span class="dots"><span>.</span><span>.</span><span>.</span></span></div>')}
 }
 function agRender(ms){const th=$('ag-thread');if(!th)return;
@@ -1672,7 +1674,14 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
   try{html=marked.parse(m.text||'')}catch(e){html=esc(m.text||'')}
   // markdown → 安全 HTML（加样式类）
   html=html.replace(/<table/g,'<table class="md-tbl"').replace(/<code/g,'<code style="background:var(--hover);padding:2px 5px;border-radius:4px;font-family:var(--font-mono);font-size:12px"');
-  const ctx=m.context?`<div class="mut" style="font-size:10px;margin-top:6px;color:var(--faint)">🔍 skills: [${esc((m.context.skills||[]).join(', '))}] · 库命中 ${(m.context.library||[]).length} · 规则 ${m.context.rules_chars||0} 字符</div>`:'';
+  const ctx=(()=>{const c=m.context;if(!c)return '';
+   const bits=[];
+   if(c.skills&&c.skills.length)bits.push('skills: '+c.skills.map(x=>x.replace('lovart-','')).join(', '));
+   if(c.kb&&c.kb.length)bits.push('知识库: '+c.kb.join(', '));
+   if(c.library&&c.library.length)bits.push('内容库范例 '+c.library.length+' 篇');
+   if(c.rules_chars)bits.push('harness 规则 '+c.rules_chars+' 字符');
+   const tk=m.tokens?` · ${m.tokens} tokens`:'';
+   return bits.length?`<div class="mut" style="font-size:10px;margin-top:6px;color:var(--faint)">🧠 ${esc(bits.join(' · '))}${tk}</div>`:(tk?`<div class="mut" style="font-size:10px;margin-top:6px;color:var(--faint)">${tk.trim()}</div>`:'')})();
   const qs=(m.questions&&m.questions.length)?`<div class="warn" style="margin-top:6px;font-size:12px;padding:8px;background:var(--warn-soft);border-radius:8px">需要你补充：<br>${m.questions.map(q=>'· '+esc(q)).join('<br>')}</div>`:'';
   let spec='';
   if(m.spec){const sp=m.spec;const itms=(sp.items||[]).slice(0,3).map(i=>esc(JSON.stringify(i)).slice(0,120)).join('<br>');
@@ -1687,7 +1696,7 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
   else if(m.guard_error){spec=`<div class="warn" style="margin-top:6px;font-size:12px">规格未过门禁：${esc(m.guard_error)}</div>`}
   const task=m.task_id?`<div class="ok" style="font-size:12px;margin-top:6px;padding:8px;background:var(--ok-soft);border-radius:8px">→ 任务 <b>${esc(m.task_id)}</b> 已创建（到「批量任务」页看进度）</div>`:'';
   return `<div style="align-self:flex-start;max-width:88%;padding:12px 16px;border-radius:14px 14px 14px 4px;font-size:13px;line-height:1.7;overflow-wrap:break-word">${html}${qs}${spec}${task}${ctx}</div>`}).join('')+
-  (AG_BUSY?'<div class="ag-typing" style="padding:10px 16px"><span class="mut">Agent 思考中</span> <span style="animation:pulse 1s infinite">•••</span></div>':'');
+  '');
   th.scrollTop=th.scrollHeight}
 function agPreset(msg){const inp=$('ag-input');if(inp)inp.value=msg;agSend()}
 function agSend(){const v=$('ag-input').value.trim();if(!v||AG_BUSY)return;
@@ -1702,7 +1711,7 @@ function agSend(){const v=$('ag-input').value.trim();if(!v||AG_BUSY)return;
   agOpen(AG_ID);
  }).catch(()=>{toast('请求失败','bad')}).finally(()=>{
   AG_BUSY=false;if(btn){btn.disabled=false;btn.textContent='发送'}
-  const ind=document.getElementById('ag-typing-ind');if(ind)ind.remove();
+  document.querySelectorAll('#ag-thread .ag-typing,#ag-typing-ind').forEach(e=>e.remove());
  })}
 function agExec(spec,real){if(real&&!confirm(`确认真实执行（会写生产库/消耗额度）？\n类型: ${spec.type}\n条目: ${spec.items.length}`))return;
  api('api/agent/execute',{session_id:AG_ID,spec:{...spec,dry_run:!real},force:real}).then(r=>{

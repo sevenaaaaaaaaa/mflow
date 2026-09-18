@@ -2699,6 +2699,7 @@ def agent_reply(session, message, proj=None):
     geo = context_geo(proj)
     rules = context_rules(limit=1200, query=message)  # 上下文预算
     rules_len = len(rules)
+    kb_hits = kb_search_for_ai(message, k=3)
     # 物料/Impact 数据
     try:
         assets = read_json(LIB_ROOT / site / "assets.json", {})
@@ -2717,16 +2718,17 @@ def agent_reply(session, message, proj=None):
 
 【你可以用的资源（全部可访问）】
 1. 内容库 17.5k 篇（含 URL/slug/sanity_id/page_type/language）——按内容库命中填 doc_id/slug/path
-2. 知识库 136 篇——含竞品分析/用户画像/案例库/行业样式/i18n 术语表/产品文档/媒体报道
-3. 48 个 skills（含 15 个生成/3 个质检/10 个发布/12 个编排）——理解怎么做
-4. GEO 探测数据——品牌提及率 {geo.get('brand_rate')} / 缺口查询 {geo.get('gaps')[:3]}
-5. GSC 数据——高曝光低 CTR 页 / 衰减页
-6. 物料台账——{n_assets} 页 / {n_urls} 个素材 URL
-7. harness 规则摘要（{rules_len} 字符硬条款）
-8. 物料台账：{n_assets} 页有物料 / {n_urls} 个素材 URL
-9. GSC 高曝光页：{chr(10).join(f"- {r.get('slug','')} (impr={r.get('impr')})" for r in (low_ctr if low_ctr else [])[:3])}
+2. 知识库——含竞品分析/用户画像/案例库/行业样式/i18n 术语表/产品文档/媒体报道（下方已注入命中事实）
+3. 48 个 skills——理解"怎么做"（下方已注入相关 skills）
+4. GEO 探测：品牌提及率 {geo.get('brand_rate')}，缺口查询 {(geo.get('gaps') or [])[:3]}
+5. GSC 高曝光/低 CTR 页：{chr(10).join(f"- {r.get('slug','')} (impr={r.get('impr')})" for r in (low_ctr if low_ctr else [])[:3]) or "（暂无）"}
+6. 物料台账：{n_assets} 页有物料 / {n_urls} 个素材 URL
+7. harness 硬条款 {rules_len} 字符（下方已注入）
 
 {AGENT_TASK_SCHEMA}
+
+【知识库事实（必须使用这些真实信息，禁止编造数字/案例）】
+{chr(10).join(f"- 《{b['title']}》：{b['excerpt']}" for b in kb_hits) or "（本次无命中——如涉及事实请标注 [待考证]）"}
 
 【相关 skills（已根据用户意图检索）】
 {chr(10).join(f"- {s['name']}：{s['desc'][:80]}" for s in skills) or "（无命中——用通用方案）"}
@@ -2762,6 +2764,7 @@ def agent_reply(session, message, proj=None):
             msgs.append({"role": m["role"], "content": m["text"][:1500]})
     msgs.append({"role": "user", "content": message[:2000]})
     raw = llm_chat(msgs, profile="default", max_tokens=1600, project=proj, timeout=120)
+    _tok = int(LAST_USAGE.get("total_tokens", 0) or 0)
     m = re.search(r"\{[\s\S]*\}", raw)
     data = {}
     if m:
@@ -2779,9 +2782,9 @@ def agent_reply(session, message, proj=None):
             data["say"] = (data.get("say") or "") + "\n\n---\n我已自动匹配到「" + preset_hint["name"] + "」预设并展开了任务。如果你想要不同的范围，告诉我。"
             data["questions"] = []
     used = {"skills": [s["name"] for s in skills], "library": [h["path"] for h in libs],
-            "geo_gaps": geo.get("gaps", []), "rules_chars": len(rules)}
+            "kb": [b["title"] for b in kb_hits], "geo_gaps": geo.get("gaps", []), "rules_chars": len(rules)}
     return {"say": data.get("say", ""), "questions": data.get("questions") or [],
-            "spec": data.get("spec"), "context": used}
+            "spec": data.get("spec"), "context": used, "tokens": _tok}
 
 
 def spec_guard(spec):
@@ -2840,7 +2843,7 @@ def agent_sessions():
             s = read_json(f, {})
             if s:
                 out.append({"id": s["id"], "title": s.get("title", ""), "created": s.get("created", ""),
-                            "n": len(s.get("messages", []))})
+                            "n": len(s.get("messages", [])), "tokens": s.get("tokens", 0)})
     return out
 
 
@@ -5369,14 +5372,17 @@ class Handler(BaseHTTPRequestHandler):
                 guarded, gerr = (None, "")
                 if r.get("spec"):
                     guarded, gerr = spec_guard(r["spec"])
+                _tk = int(r.get("tokens") or 0)
                 s["messages"].append({"role": "assistant", "text": r["say"], "at": datetime.now().strftime("%H:%M:%S"),
                                       "context": r.get("context"), "questions": r.get("questions"),
-                                      "spec": guarded, "guard_error": gerr})
+                                      "spec": guarded, "guard_error": gerr, "tokens": _tk})
+                s["tokens"] = int(s.get("tokens") or 0) + _tk
                 if guarded:
                     s.setdefault("proposals", []).append({"spec": guarded, "at": datetime.now().strftime("%Y-%m-%d %H:%M")})
                 agent_save(s)
                 return self._send(200, {"session_id": s["id"], "say": r["say"], "questions": r.get("questions"),
-                                        "spec": guarded, "guard_error": gerr, "context": r.get("context")})
+                                        "spec": guarded, "guard_error": gerr, "context": r.get("context"),
+                                        "tokens": s.get("tokens", 0)})
             if self.path == "/api/agent/execute":
                 s = agent_session_load(str(body.get("session_id", "")))
                 if not s:
