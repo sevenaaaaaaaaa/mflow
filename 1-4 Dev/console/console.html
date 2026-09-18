@@ -1136,17 +1136,18 @@ function styleLoad(){api('api/styles').then(ss=>{
   :'<span class="mut">暂无自定义样式</span>'})}
 
 /* ==================== 交互反馈层 ==================== */
+const _FB_SEL='button,.chip,.btn,.mini';
 function _btnOf(x){
  if(!x) return null;
- if(x instanceof HTMLElement && x.tagName==='BUTTON') return x;
- if(x && x.currentTarget && x.currentTarget.tagName==='BUTTON') return x.currentTarget;
- if(x && x.target && x.target.closest) return x.target.closest('button');
- if(window.event && window.event.target) return window.event.target.closest('button');
+ if(x instanceof HTMLElement && (x.matches?x.matches(_FB_SEL):false)) return x;
+ if(x && x.currentTarget && x.currentTarget.matches && x.currentTarget.matches(_FB_SEL)) return x.currentTarget;
+ if(x && x.target && x.target.closest) return x.target.closest(_FB_SEL);
+ if(window.event && window.event.target && window.event.target.closest) return window.event.target.closest(_FB_SEL);
  return null;
 }
 // 点击即给视觉反馈
 document.addEventListener('click',e=>{
- const b=e.target.closest&&e.target.closest('button');if(!b)return;
+ const b=e.target.closest&&e.target.closest(_FB_SEL);if(!b)return;
  b.classList.add('clicked');setTimeout(()=>b.classList.remove('clicked'),450);
 },true);
 
@@ -1155,12 +1156,13 @@ async function withBtn(btn, fn, opts){
  opts=opts||{};
  const b=_btnOf(btn);
  const restore=(delay)=>{
-   setTimeout(()=>{ if(b&&b.isConnected){ b.innerHTML=b.__orig!=null?b.__orig:b.innerHTML; b.disabled=false; b.classList.remove('btn-busy','btn-done'); } delete b?.dataset.busy; }, delay||1200);
+   setTimeout(()=>{ if(b&&b.isConnected){ b.innerHTML=b.__orig!=null?b.__orig:b.innerHTML; if('disabled' in b)b.disabled=false; b.classList.remove('btn-busy','btn-done'); } if(b)delete b.dataset.busy; }, delay||1200);
  };
  if(b){
    if(b.dataset.busy) return;           // 已在执行 → 忽略重复点击
    b.dataset.busy='1'; b.__orig=b.innerHTML;
-   b.disabled=true; b.classList.add('btn-busy');
+   if('disabled' in b) b.disabled=true;
+   b.classList.add('btn-busy');
    b.innerHTML='<span class="spin"></span>'+(opts.busyText||'执行中…');
  }
  try{
