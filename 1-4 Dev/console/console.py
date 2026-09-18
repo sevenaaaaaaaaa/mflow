@@ -1562,7 +1562,21 @@ def run_tick():
             # batch 步：若 t_id 未创建则创建（从 preset/spec）
             elif cur and cur["type"] == "batch" and cur["status"] == "pending" and not cur.get("task_id"):
                 try:
-                    items, btype, title = [], cur.get("spec", {}).get("type") if cur.get("spec") else None, cur.get("name")
+                    items, btype, title = [], (cur.get("spec") or {}).get("type") or ("publish_sanity" if cur.get("type") == "publish_sanity" else None), cur.get("name")
+                    # 发布步：自动承接前序改稿步产出的草稿
+                    if cur.get("type") == "publish_sanity" and not cur.get("spec") and not cur.get("preset"):
+                        prev = [x for x in steps if x.get("type") == "batch" and x.get("task_id") and x is not cur]
+                        for pv in reversed(prev):
+                            t0 = batch_load(pv["task_id"]) or {}
+                            for it in (t0.get("items") or []):
+                                rp = (it.get("result") or {}).get("path")
+                                if rp and it.get("status") == "done":
+                                    items.append({"item_id": it.get("item_id") or os.path.basename(rp).replace(".md", ""),
+                                                  "path": rp, "lang": it.get("lang", "en"),
+                                                  "doctype": "composite", "mode": "patch"})
+                            if items:
+                                btype = "publish_sanity"; title = cur.get("name") or "发布上线"
+                                break
                     if cur.get("preset"):
                         ex = preset_expand(cur["preset"], cur.get("opt") or {}, run.get("proj"))
                         if ex.get("error"):
@@ -2030,14 +2044,14 @@ def _batch_digest_llm(task, chunk, proj):
 
 
 def batch_worker():
-    try:
-        run_tick()
-    except Exception:
-        pass
-    """批量执行器：并发 2、逐项状态、断点续跑（重启自动续）、审计。"""
+    """批量执行器：并发 2、逐项状态、断点续跑（重启自动续）、审计；同时推进 Run 画布。"""
     from concurrent.futures import ThreadPoolExecutor
     while True:
         time.sleep(5)
+        try:
+            run_tick()
+        except Exception as _e:
+            print(f"[console] run_tick: {_e}", file=sys.stderr)
         try:
             BATCH_DIR.mkdir(parents=True, exist_ok=True)
             blocked, bst = breaker_check()
@@ -3284,6 +3298,8 @@ AGENT_TOOLS_DOC = """你可以调用以下**工具**来真实地查数据/执行
     → 用真实数据展开并**创建一个 dry-run 批量任务**，返回 task_id。适合你已确认范围、想立即执行的场景。
 
 【工作方式（重要）】
+0. **决定要"给 plan"时，不要先调用 run_preset**——plan 会统一编排执行，避免重复建任务。
+   run_preset 只用于：用户明确说"现在就做这一步 / 只要这一步"的单步即时执行。
 1. 先想清楚需要什么信息；能自己查的就**调用工具**去查，不要问用户。
 2. 每次只调用一个工具：输出 {"tool":{"name":"...","args":{...}},"say":"我正在…（一句话说明当前动作）"}。
 3. 看到工具结果后继续判断：需要更多信息就再调用工具；信息够了就给出最终 JSON（见下）。
