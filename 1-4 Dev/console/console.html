@@ -1653,6 +1653,36 @@ function qaDelta(parent,child){setTimeout(()=>api('api/qa/delta?parent='+parent+
 
 /* ---- Agent 任务台 v2（主动模式）---- */
 let AG_ID='',AG_BUSY=false;
+function mdRender(text){
+ const t=String(text==null?'':text);
+ if(window.marked&&typeof window.marked.parse==='function'){try{return marked.parse(t)}catch(e){}}
+ // 兜底：轻量 markdown → HTML
+ const esc0=x=>String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+ const lines=t.split(/\r?\n/);let out=[],inUl=false,inOl=false,inCode=false,cbuf=[];
+ const closeList=()=>{if(inUl){out.push('</ul>');inUl=false}if(inOl){out.push('</ol>');inOl=false}};
+ const inline=x=>esc0(x)
+   .replace(/`([^`]+)`/g,'<code style="background:var(--hover);padding:2px 5px;border-radius:4px;font-size:12px">$1</code>')
+   .replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>')
+   .replace(/(^|[^*])\*([^*\n]+)\*/g,'$1<i>$2</i>')
+   .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g,'<a href="$2" target="_blank" style="color:var(--accent)">$1</a>');
+ for(const ln of lines){
+  if(/^\s*```/.test(ln)){if(inCode){out.push('<pre style="background:var(--bg);padding:8px;border-radius:8px;overflow:auto;font-size:12px">'+esc0(cbuf.join('\n'))+'</pre>');cbuf=[];inCode=false}else{closeList();inCode=true}continue}
+  if(inCode){cbuf.push(ln);continue}
+  let m;
+  if(m=ln.match(/^(#{1,4})\s+(.*)$/)){closeList();const lv=m[1].length;const sz=lv===1?'18px':lv===2?'15.5px':lv===3?'13.5px':'12.5px';out.push(`<div style="font-size:${sz};font-weight:700;margin:10px 0 4px">${inline(m[2])}</div>`);continue}
+  if(/^\s*[-*]\s+/.test(ln)){if(!inUl){closeList();out.push('<ul style="margin:4px 0;padding-left:20px">');inUl=true}out.push('<li style="margin:2px 0">'+inline(ln.replace(/^\s*[-*]\s+/,''))+'</li>');continue}
+  if(/^\s*\d+[.)]\s+/.test(ln)){if(!inOl){closeList();out.push('<ol style="margin:4px 0;padding-left:20px">');inOl=true}out.push('<li style="margin:2px 0">'+inline(ln.replace(/^\s*\d+[.)]\s+/,''))+'</li>');continue}
+  if(/^\s*(---|\*\*\*)\s*$/.test(ln)){closeList();out.push('<hr style="border:none;border-top:1px solid var(--border);margin:10px 0">');continue}
+  if(/^\s*\|.*\|\s*$/.test(ln)){closeList();const cells=ln.trim().replace(/^\||\|$/g,'').split('|').map(c=>c.trim());
+    out.push('<div style="display:flex;gap:8px;font-size:12px;padding:3px 0;border-bottom:1px solid var(--border)">'+cells.map(c=>'<span style="flex:1">'+inline(c)+'</span>').join('')+'</div>');continue}
+  if(!ln.trim()){closeList();continue}
+  closeList();out.push('<div style="margin:4px 0">'+inline(ln)+'</div>');
+ }
+ if(inCode&&cbuf.length)out.push('<pre style="background:var(--bg);padding:8px;border-radius:8px;overflow:auto;font-size:12px">'+esc0(cbuf.join('\n'))+'</pre>');
+ closeList();
+ return out.join('');
+}
+
 function agLoad(){api('api/agent/sessions').then(ss=>{
  const sel=$('ag-sessions');if(sel)sel.innerHTML=(ss||[]).map(s=>`<option value="${esc(s.id)}" ${s.id===AG_ID?'selected':''}>${esc(s.title||s.id.slice(5,15))} · ${esc((s.created||'').slice(5))}</option>`).join('');
  if(!AG_ID&&ss&&ss.length)agOpen(ss[0].id);else if(AG_ID)agOpen(AG_ID)})}
@@ -1685,10 +1715,7 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
  th.innerHTML=real.map(m=>{
   if(m.role==='user')return `<div style="align-self:flex-end;max-width:85%;background:var(--accent-soft);color:var(--accent);padding:10px 14px;border-radius:14px 14px 4px 14px;font-size:13px;line-height:1.6">${esc(m.text)}</div>`;
   // agent 回复用 markdown 渲染
-  let html='';
-  try{html=marked.parse(m.text||'')}catch(e){html=esc(m.text||'')}
-  // markdown → 安全 HTML（加样式类）
-  html=html.replace(/<table/g,'<table class="md-tbl"').replace(/<code/g,'<code style="background:var(--hover);padding:2px 5px;border-radius:4px;font-family:var(--font-mono);font-size:12px"');
+  let html=mdRender(m.text||'');
   const ctx=(()=>{const c=m.context;if(!c)return '';
    const bits=[];
    if(c.skills&&c.skills.length)bits.push('skills: '+c.skills.map(x=>x.replace('lovart-','')).join(', '));
