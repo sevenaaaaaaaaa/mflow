@@ -1,40 +1,131 @@
 [
-  {
-    "id": "rss-source",
-    "type": "source",
-    "name": "RSS/Atom 数据源",
-    "version": "1.0.0",
-    "author": "MFlow built-in",
-    "desc": "拉取 RSS/Atom feed 到 Data Ingestion 目录，作为情报监测的补充源",
-    "manifest": {
-      "id": "rss-source",
-      "type": "source",
-      "name": "RSS/Atom 数据源",
-      "version": "1.0.0",
-      "author": "MFlow built-in",
-      "entry": "entry.py",
-      "permissions": ["network"],
-      "config": {"url": {"desc": "RSS/Atom feed 地址", "required": true}}
-    },
-    "entry_code": "\"\"\"rss-source: collect() 拉取 RSS/Atom → 输出 JSON。MFlow 插件规范 v1。\"\"\"\nimport json, os, re, urllib.request\nfrom pathlib import Path\n\n\ndef collect(url=\"\", out_dir=\"\"):\n    if not url:\n        raise ValueError(\"config.url 未配置\")\n    with urllib.request.urlopen(url, timeout=20) as r:\n        raw = r.read().decode(\"utf-8\", \"ignore\")\n    items = []\n    for m in re.finditer(r\"<item[\\s\\S]*?</item>\", raw):\n        b = m.group(0)\n        t = re.search(r\"<title>(?:<!\\\\[CDATA\\\\[)?([\\s\\S]*?)(?:\\\\]\\\\]>)?</title>\", b)\n        l = re.search(r\"<link>([\\s\\S]*?)</link>\", b)\n        d = re.search(r\"<pubDate>([\\s\\S]*?)</pubDate>\", b)\n        items.append({\"title\": (t.group(1).strip() if t else \"\"),\n                      \"link\": (l.group(1).strip() if l else \"\"),\n                      \"date\": (d.group(1).strip() if d else \"\")})\n    if not items:\n        for m in re.finditer(r\"<entry[\\s\\S]*?</entry>\", raw):\n            b = m.group(0)\n            t = re.search(r\"<title>(?:<!\\\\[CDATA\\\\[)?([\\s\\S]*?)(?:\\\\]\\\\]>)?</title>\", b)\n            l = re.search(r'href=\"([^\"]+)\"', b)\n            d = re.search(r\"<published>([\\s\\S]*?)</published>\", b)\n            items.append({\"title\": (t.group(1).strip() if t else \"\"),\n                          \"link\": (l.group(1) if l else \"\"),\n                          \"date\": (d.group(1).strip() if d else \"\")})\n    out = out_dir or os.environ.get(\"LOVART_LOCAL_DEV_ROOT\", \".\")\n    p = Path(out) / \"Output\" / \"Data Ingestion\"\n    p.mkdir(parents=True, exist_ok=True)\n    f = p / \"rss-source-latest.json\"\n    f.write_text(json.dumps({\"url\": url, \"count\": len(items), \"items\": items[:100]}, ensure_ascii=False, indent=1))\n    return {\"count\": len(items), \"path\": str(f)}\n"
+ {
+  "id": "rss-source",
+  "type": "source",
+  "name": "RSS/Atom 数据源",
+  "version": "1.0.0",
+  "author": "MFlow built-in",
+  "desc": "拉取 RSS/Atom feed 到 Data Ingestion 目录，作为情报监测的补充源",
+  "manifest": {
+   "id": "rss-source",
+   "type": "source",
+   "name": "RSS/Atom 数据源",
+   "version": "1.0.0",
+   "author": "MFlow built-in",
+   "entry": "entry.py",
+   "permissions": [
+    "network"
+   ],
+   "config": {
+    "url": {
+     "desc": "RSS/Atom feed 地址",
+     "required": true
+    }
+   }
   },
-  {
-    "id": "webhook-publisher",
-    "type": "publisher",
-    "name": "Webhook 发布渠道",
-    "version": "1.0.0",
-    "author": "MFlow built-in",
-    "desc": "把已批准的稿件 POST 到自定义 HTTP 端点（任意 CMS 中转层）",
-    "manifest": {
-      "id": "webhook-publisher",
-      "type": "publisher",
-      "name": "Webhook 发布渠道",
-      "version": "1.0.0",
-      "author": "MFlow built-in",
-      "entry": "entry.py",
-      "permissions": ["network"],
-      "config": {"endpoint": {"desc": "目标 HTTP(S) 端点", "required": true}}
-    },
-    "entry_code": "\"\"\"webhook-publisher: publish() POST 稿件到自定义端点。MFlow 插件规范 v1。\"\"\"\nimport json, urllib.request\n\n\ndef publish(item, cfg):\n    endpoint = (cfg or {}).get(\"endpoint\")\n    if not endpoint:\n        return {\"ok\": False, \"error\": \"config.endpoint 未配置\"}\n    payload = json.dumps({\"title\": item.get(\"title\", \"\"), \"slug\": item.get(\"slug\", \"\"),\n                          \"content\": item.get(\"content\", \"\"), \"meta\": item.get(\"meta\", {})}).encode()\n    req = urllib.request.Request(endpoint, data=payload,\n                                 headers={\"Content-Type\": \"application/json\"})\n    with urllib.request.urlopen(req, timeout=30) as r:\n        data = json.loads(r.read() or b\"{}\")\n    return {\"ok\": True, \"cms_id\": data.get(\"id\", \"\"), \"url\": data.get(\"url\", \"\")}\n"
-  }
+  "entry_code": "\"\"\"rss-source: collect() 拉取 RSS/Atom → 输出 JSON。MFlow 插件规范 v1。\"\"\"\nimport json, os, re, urllib.request\nfrom pathlib import Path\n\n\ndef collect(url=\"\", out_dir=\"\"):\n    if not url:\n        raise ValueError(\"config.url 未配置\")\n    with urllib.request.urlopen(url, timeout=20) as r:\n        raw = r.read().decode(\"utf-8\", \"ignore\")\n    items = []\n    for m in re.finditer(r\"<item[\\s\\S]*?</item>\", raw):\n        b = m.group(0)\n        t = re.search(r\"<title>(?:<!\\\\[CDATA\\\\[)?([\\s\\S]*?)(?:\\\\]\\\\]>)?</title>\", b)\n        l = re.search(r\"<link>([\\s\\S]*?)</link>\", b)\n        d = re.search(r\"<pubDate>([\\s\\S]*?)</pubDate>\", b)\n        items.append({\"title\": (t.group(1).strip() if t else \"\"),\n                      \"link\": (l.group(1).strip() if l else \"\"),\n                      \"date\": (d.group(1).strip() if d else \"\")})\n    if not items:\n        for m in re.finditer(r\"<entry[\\s\\S]*?</entry>\", raw):\n            b = m.group(0)\n            t = re.search(r\"<title>(?:<!\\\\[CDATA\\\\[)?([\\s\\S]*?)(?:\\\\]\\\\]>)?</title>\", b)\n            l = re.search(r'href=\"([^\"]+)\"', b)\n            d = re.search(r\"<published>([\\s\\S]*?)</published>\", b)\n            items.append({\"title\": (t.group(1).strip() if t else \"\"),\n                          \"link\": (l.group(1) if l else \"\"),\n                          \"date\": (d.group(1).strip() if d else \"\")})\n    out = out_dir or os.environ.get(\"LOVART_LOCAL_DEV_ROOT\", \".\")\n    p = Path(out) / \"Output\" / \"Data Ingestion\"\n    p.mkdir(parents=True, exist_ok=True)\n    f = p / \"rss-source-latest.json\"\n    f.write_text(json.dumps({\"url\": url, \"count\": len(items), \"items\": items[:100]}, ensure_ascii=False, indent=1))\n    return {\"count\": len(items), \"path\": str(f)}\n"
+ },
+ {
+  "id": "webhook-publisher",
+  "type": "publisher",
+  "name": "Webhook 发布渠道",
+  "version": "1.0.0",
+  "author": "MFlow built-in",
+  "desc": "把已批准的稿件 POST 到自定义 HTTP 端点（任意 CMS 中转层）",
+  "manifest": {
+   "id": "webhook-publisher",
+   "type": "publisher",
+   "name": "Webhook 发布渠道",
+   "version": "1.0.0",
+   "author": "MFlow built-in",
+   "entry": "entry.py",
+   "permissions": [
+    "network"
+   ],
+   "config": {
+    "endpoint": {
+     "desc": "目标 HTTP(S) 端点",
+     "required": true
+    }
+   }
+  },
+  "entry_code": "\"\"\"webhook-publisher: publish() POST 稿件到自定义端点。MFlow 插件规范 v1。\"\"\"\nimport json, urllib.request\n\n\ndef publish(item, cfg):\n    endpoint = (cfg or {}).get(\"endpoint\")\n    if not endpoint:\n        return {\"ok\": False, \"error\": \"config.endpoint 未配置\"}\n    payload = json.dumps({\"title\": item.get(\"title\", \"\"), \"slug\": item.get(\"slug\", \"\"),\n                          \"content\": item.get(\"content\", \"\"), \"meta\": item.get(\"meta\", {})}).encode()\n    req = urllib.request.Request(endpoint, data=payload,\n                                 headers={\"Content-Type\": \"application/json\"})\n    with urllib.request.urlopen(req, timeout=30) as r:\n        data = json.loads(r.read() or b\"{}\")\n    return {\"ok\": True, \"cms_id\": data.get(\"id\", \"\"), \"url\": data.get(\"url\", \"\")}\n"
+ },
+ {
+  "id": "readability-gate",
+  "type": "gate",
+  "name": "Flesch 可读性评分",
+  "version": "1.0.0",
+  "author": "MFlow built-in",
+  "desc": "Flesch 可读性评分 — MFlow plugin",
+  "manifest": {
+   "id": "readability-gate",
+   "type": "gate",
+   "name": "Flesch 可读性评分",
+   "version": "1.0.0",
+   "author": "MFlow built-in",
+   "entry": "entry.py",
+   "permissions": [],
+   "config": {
+    "max_score": {
+     "desc": "最大 Flesch 分数",
+     "required": false,
+     "default": 12
+    }
+   }
+  },
+  "entry_code": "\"\"\"readability-gate: Flesch Reading Ease scoring gate (EN only)\"\"\"\nimport re\n\ndef check(file_path, lang=\"en\", config=None):\n    max_score = (config or {}).get(\"max_score\", 12)\n    if lang != \"en\":\n        return {\"rc\": 0, \"out\": f\"[readability] skip (lang={lang}, only EN scored)\"}\n    text = open(file_path, encoding=\"utf-8\").read()\n    if text.startswith(\"---\"):\n        text = text.split(\"---\", 2)[-1] if text.count(\"---\") >= 2 else text\n    text = re.sub(r\"^#+ .*\", \"\", text, flags=re.M)\n    text = re.sub(r\"```[\\s\\S]*?```\", \"\", text)\n    sentences = [s.strip() for s in re.split(r\"[.!?]+\", text) if len(s.strip()) > 5]\n    words = re.findall(r\"[A-Za-z]+\", text)\n    if not sentences or not words:\n        return {\"rc\": 0, \"out\": \"[readability] insufficient content\"}\n    syllables = sum(max(1, len(re.findall(r\"[aeiouAEIOU]\", w))) for w in words)\n    flesch = 206.835 - 1.015 * (len(words) / len(sentences)) - 1.455 * (syllables / len(words))\n    if flesch > max_score:\n        return {\"rc\": 1, \"out\": f\"Flesch {flesch:.1f} > {max_score} — too complex\"}\n    return {\"rc\": 0, \"out\": f\"Flesch={flesch:.1f} <= {max_score}\"}\n"
+ },
+ {
+  "id": "schema-generator",
+  "type": "transform",
+  "name": "Schema.org JSON-LD Generator",
+  "version": "1.0.0",
+  "author": "MFlow built-in",
+  "desc": "Schema.org JSON-LD Generator — MFlow plugin",
+  "manifest": {
+   "id": "schema-generator",
+   "type": "transform",
+   "name": "Schema.org JSON-LD Generator",
+   "version": "1.0.0",
+   "author": "MFlow built-in",
+   "entry": "entry.py",
+   "permissions": [],
+   "config": {
+    "author": {
+     "desc": "publisher name",
+     "required": false,
+     "default": "Lovart"
+    }
+   }
+  },
+  "entry_code": "\"\"\"schema-generator: transform(text, config) -> JSON-LD string\"\"\"\nimport json, re\nfrom datetime import datetime\n\ndef transform(text, config=None):\n    slug = (config or {}).get(\"slug\", \"untitled\")\n    lang = (config or {}).get(\"lang\", \"en\")\n    title_m = re.search(r\"#\\s+(.+)\", text)\n    title = title_m.group(1) if title_m else slug\n    desc_m = re.search(r\"description:\\s*(.+)\", text)\n    desc = desc_m.group(1) if desc_m else \"\"\n    now = datetime.now().strftime(\"%Y-%m-%dT%H:%M:%S+08:00\")\n    if lang != \"en\":\n        url = f\"https://www.lovart.ai/{lang}/blog/{slug}\"\n    else:\n        url = f\"https://www.lovart.ai/blog/{slug}\"\n    return json.dumps({\n        \"@context\": \"https://schema.org\", \"@type\": \"Article\",\n        \"headline\": title[:110], \"description\": desc[:160], \"url\": url,\n        \"author\": {\"@type\": \"Organization\", \"name\": (config or {}).get(\"author\", \"Lovart\")},\n        \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\"},\n        \"datePublished\": now, \"dateModified\": now, \"inLanguage\": lang\n    }, ensure_ascii=False, indent=2)\n"
+ },
+ {
+  "id": "link-suggester",
+  "type": "analyzer",
+  "name": "Internal Link Suggester",
+  "version": "1.0.0",
+  "author": "MFlow built-in",
+  "desc": "Internal Link Suggester — MFlow plugin",
+  "manifest": {
+   "id": "link-suggester",
+   "type": "analyzer",
+   "name": "Internal Link Suggester",
+   "version": "1.0.0",
+   "author": "MFlow built-in",
+   "entry": "entry.py",
+   "permissions": [
+    "read"
+   ],
+   "config": {
+    "top": {
+     "desc": "number of suggestions",
+     "required": false,
+     "default": 5
+    }
+   }
+  },
+  "entry_code": "\"\"\"link-suggester: analyze(data) -> {suggestions: [...]}\"\"\"\nimport json, math, re\nfrom pathlib import Path\n\ndef analyze(data, config=None):\n    text = data.get(\"text\", \"\")[:3000]\n    library_path = data.get(\"library_path\", \"/www/wwwroot/mflow/run/library/lovart-global\")\n    top = (config or {}).get(\"top\", 5)\n    t = text.lower()\n    words = set(re.findall(r\"[a-z0-9]{3,}\", t))\n    cjk = re.findall(r\"[\\u4e00-\\u9fff]\", t)\n    bigrams = {\"\".join(cjk[i:i + 2]) for i in range(len(cjk) - 1)}\n    dt = words | bigrams\n    if not dt:\n        return {\"suggestions\": [], \"note\": \"no tokens\"}\n    base = Path(library_path)\n    if not base.exists():\n        return {\"suggestions\": [], \"note\": \"library not found\"}\n    hits = []\n    for f in base.rglob(\"*.md\"):\n        if f.name.startswith(\"_\"):\n            continue\n        name_t = set(re.findall(r\"[a-z0-9]{3,}\", f.stem.lower()))\n        overlap = len(dt & name_t)\n        if overlap < 2:\n            continue\n        hits.append((overlap * math.log(1 + overlap), f))\n    hits.sort(key=lambda x: -x[0])\n    return {\"suggestions\": [{\"slug\": f.stem, \"path\": str(f), \"relevance\": round(s, 1)}\n                            for s, f in hits[:top]]}\n"
+ }
 ]
