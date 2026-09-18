@@ -1571,7 +1571,7 @@ def run_tick():
                 cur["ended"] = datetime.now().strftime("%H:%M:%S")
                 changed = True
             # batch 步：若 t_id 未创建则创建（从 preset/spec）
-            elif cur and cur["type"] == "batch" and cur["status"] == "pending" and not cur.get("task_id"):
+            elif cur and cur["type"] in ("batch", "publish_sanity") and cur["status"] == "pending" and not cur.get("task_id"):
                 try:
                     items, btype, title = [], (cur.get("spec") or {}).get("type") or ("publish_sanity" if cur.get("type") == "publish_sanity" else None), cur.get("name")
                     # 发布步：自动承接前序改稿步产出的草稿
@@ -6138,6 +6138,10 @@ class Handler(BaseHTTPRequestHandler):
                     if t == "verify":
                         built.append({"name": st.get("name") or "结果校验", "type": "verify",
                                       "status": "pending", "urls": st.get("urls") or []})
+                    elif t in ("publish_sanity", "publish"):
+                        built.append({"name": st.get("name") or "发布上线", "type": "publish_sanity",
+                                      "status": "pending", "opt": st.get("opt") or {"dry_run": True},
+                                      "spec": st.get("spec")})
                     else:
                         built.append({"name": st.get("name") or "批量执行", "type": "batch",
                                       "status": "pending", "preset": st.get("preset"),
