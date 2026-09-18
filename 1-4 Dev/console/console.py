@@ -3333,6 +3333,12 @@ AGENT_TOOLS_DOC = """你可以调用以下**工具**来真实地查数据/执行
 - run_preset {"preset":"qa-field-fix|low-ctr-refresh|decay-refresh|geo-gap-rewrite|multilang-batch|asset-alt-fill|landing-refresh-publish","opt":{"limit":5,"lang":"zh","page_type":"tool"}}
     → 用真实数据展开并**创建一个 dry-run 批量任务**，返回 task_id。适合你已确认范围、想立即执行的场景。
 
+【关键配对规则（避免结构校验失败）】
+- **工具页/功能页/主题页等落地页（compositePage）的"改稿+发布"→ 直接用 `landing-refresh-publish`**（它按落地页结构改稿并发布，闭环一步到位）。
+  不要用 `decay-refresh`/`low-ctr-refresh`（它们产出通用 rewrite 草稿）再串一个发布步——那样会因结构版块不足而被门禁拦下。
+- 仅当目标是 blog（PortableText）时，才用 rewrite→publish_sanity 组合。
+- 只扫描不改 → qa-scan；只修字段 → qa-field-fix；只补图 alt → asset-alt-fill。
+
 【工作方式（重要）】
 0. **决定要"给 plan"时，不要先调用 run_preset**——plan 会统一编排执行，避免重复建任务。
    run_preset 只用于：用户明确说"现在就做这一步 / 只要这一步"的单步即时执行。
