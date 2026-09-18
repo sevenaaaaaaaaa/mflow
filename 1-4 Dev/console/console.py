@@ -223,8 +223,6 @@ KNOWLEDGE_SOURCES = [
       ("1-4 Dev/scripts/hooks", "README.md")]),
 ]
 
-SESSIONS = set()
-
 # ── LLM 引擎（OpenAI 兼容）────────────────────────────────────────────
 DEFAULT_LLM = {
     "providers": {
@@ -1057,7 +1055,40 @@ def seed_demo(proj):
 
 
 AUTH_FILE = RUN_DIR / "auth.json"
-SESSIONS = {}  # sid -> {"username":…, "project":…}
+SESSIONS_FILE = RUN_DIR / "sessions.json"
+SESS_LOG = RUN_DIR / "sessions.log"
+SESSION_TTL_DAYS = 60
+_SESS_LOCK = threading.Lock()
+
+
+def _sessions_load():
+    try:
+        d = json.loads(SESSIONS_FILE.read_text()) if SESSIONS_FILE.exists() else {}
+    except Exception:
+        d = {}
+    if not isinstance(d, dict):
+        d = {}
+    now = time.time()
+    return {k: v for k, v in d.items() if (v or {}).get("_exp", now + 1) > now}
+
+
+def sessions_save():
+    """持久化会话（重启/部署后不掉线）。顺带清理过期。"""
+    try:
+        with _SESS_LOCK:
+            now = time.time()
+            for k in list(SESSIONS.keys()):
+                if (SESSIONS.get(k) or {}).get("_exp", now + 1) <= now:
+                    SESSIONS.pop(k, None)
+            RUN_DIR.mkdir(parents=True, exist_ok=True)
+            tmp = SESSIONS_FILE.with_suffix(".tmp")
+            tmp.write_text(json.dumps(SESSIONS, ensure_ascii=False))
+            tmp.replace(SESSIONS_FILE)
+    except Exception as _e:
+        print(f"[console] sessions_save failed: {_e}", file=sys.stderr)
+
+
+SESSIONS = _sessions_load()  # sid -> {"username":…, "project":…, "_exp":ts}
 
 
 def ensure_project(pid, name=None):
@@ -5099,7 +5130,15 @@ class Handler(BaseHTTPRequestHandler):
                 name, role = username or "operator", "admin"
             if ok:
                 sid = secrets.token_urlsafe(32)
-                SESSIONS[sid] = {"username": username or name, "project": DEFAULT_PROJECT}
+                SESSIONS[sid] = {"username": username or name, "project": DEFAULT_PROJECT,
+                                 "created": datetime.now().isoformat(timespec="seconds"),
+                                 "_exp": time.time() + SESSION_TTL_DAYS * 86400}
+                sessions_save()
+                try:
+                    with open(SESS_LOG, "a") as _f:
+                        _f.write(f"{datetime.now().isoformat(timespec='seconds')} LOGIN {username or name} sid={sid[:10]}\n")
+                except Exception:
+                    pass
                 self.send_response(200)
                 self.send_header("Set-Cookie", f"mflow_session={sid}; HttpOnly; Path=/; SameSite=Lax")
                 self.send_header("Content-Type", "application/json")
@@ -5163,6 +5202,7 @@ class Handler(BaseHTTPRequestHandler):
                 try:
                     c = http_cookies.SimpleCookie(self.headers.get("Cookie", ""))
                     SESSIONS.pop(c["mflow_session"].value, None)
+                    sessions_save()
                 except Exception:
                     pass
                 return self._send(200, {"ok": True})
@@ -5836,6 +5876,7 @@ class Handler(BaseHTTPRequestHandler):
                 sid = self._sid()
                 if sid in SESSIONS:
                     SESSIONS[sid]["project"] = pid
+                    sessions_save()
                 return self._send(200, {"ok": True, "current": pid})
             if self.path == "/api/projects/delete":
                 if self._role() != "admin":

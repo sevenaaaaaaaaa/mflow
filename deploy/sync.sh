@@ -175,7 +175,8 @@ if [[ -f deploy/cf.env ]]; then
         if [[ "$CF_PURGE_ALL" -eq 1 ]]; then
             BODY='{"purge_everything":true}'
         else
-            URLS=$(printf '"%s",' "$SITE_URL/" "$SITE_URL" | sed 's/,$//')
+            BASE="${SITE_URL%/}"                      # 去尾部斜杠，避免 // 重复
+            URLS=$(printf '"%s",' "$BASE" "$BASE/" "$BASE/index.html" "$BASE/console.html" | sed 's/,$//')
             BODY="{\"files\":[$URLS]}"
         fi
         R=$(curl -s -X POST "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
