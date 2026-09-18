@@ -83,9 +83,10 @@ em{font-style:normal}
 #topnav .tn-group{position:relative}
 #topnav .tn-btn{display:flex;align-items:center;gap:5px;padding:7px 12px;border-radius:10px;font-size:12.5px;font-weight:600;color:var(--muted);transition:all .15s}
 #topnav .tn-btn:hover{background:var(--hover);color:var(--fg)}
-#topnav .tn-group.on .tn-btn{background:var(--accent-soft);color:var(--accent)}
+#topnav .tn-group.cur .tn-btn{background:var(--accent-soft);color:var(--accent)}
+#topnav .tn-group.open .tn-btn{background:var(--hover);color:var(--fg)}
 #topnav .tn-menu{position:absolute;top:calc(100% + 8px);left:0;min-width:190px;background:var(--surface);border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);padding:6px;display:none;z-index:var(--z-chrome);backdrop-filter:blur(20px)}
-#topnav .tn-group.on .tn-menu{display:block}
+#topnav .tn-group.open .tn-menu{display:block}
 #topnav .tn-menu button{display:flex;align-items:center;gap:9px;width:100%;padding:8px 10px;border-radius:9px;font-size:12.5px;color:var(--muted);text-align:left}
 #topnav .tn-menu button:hover{background:var(--hover);color:var(--accent)}
 #topnav .tn-menu button.on{background:var(--accent-soft);color:var(--accent);font-weight:700}
@@ -1009,6 +1010,97 @@ function loadNextActions(){const el=$('next-actions');if(!el)return;
  })}
 function toggleAdv(){const g=$('adv-group'),a=$('adv-arrow');const open=g.style.display!=='none';g.style.display=open?'none':'block';a.textContent=open?'▸':'▾';if(!open){try{localStorage.setItem('mf_adv','1')}catch(e){}}}
 
+/* ---- 恢复：此前被误删的工具函数（mode/quota/style/breaker/hooks/presets）---- */
+function brkLoad(){api('api/breaker').then(d=>{const s=d.state||{};
+ const el=$('brk-flag'),info=$('brk-info');
+ if(d.blocked){el.innerHTML='<span class="bad">已熔断</span>';
+  info.innerHTML=`原因：${esc(s.reason||'')}<br>触发：${esc(s.tripped_at||'')} · 冷却 ${s.cooldown_min||15} 分钟后自动恢复（也可手动解除）`}
+ else{el.innerHTML='<span class="ok">正常</span>';
+  info.textContent=(s.reset_at?('上次复位 '+s.reset_at+(s.auto?'（自动）':'')):'未触发过')}
+ const bb=document.getElementById('bt-breaker');
+ if(bb)bb.innerHTML=d.blocked?`<span class="bad">⚠ 系统熔断中：${esc((s.reason||'').slice(0,80))} —— 批量任务已暂停（可在设置页解除）</span>`:''})}
+
+function brkReset(){api('api/breaker/reset',{}).then(r=>{if(r.error)return alert(r.error);alert('已解除熔断');brkLoad()})}
+
+function hkLoad(){api('api/housekeeping').then(d=>{
+ $('hk-hist').textContent=(d.history||[]).join('\n')||'（暂无清理记录）'})}
+
+function hkRun(dry){api('api/housekeeping/run',{dry_run:dry}).then(r=>{
+ if(r.error)return alert(r.error);
+ $('hk-out').textContent=JSON.stringify(r,null,1);hkLoad()})}
+
+let PRESETS=[],PRESET_SEL='';
+function loadPresets(){api('api/presets').then(ps=>{PRESETS=ps||[];
+ $('bt-presets').innerHTML=PRESETS.map(p=>`<span class="chip ${p.id===PRESET_SEL?'on':''}" onclick="presetPick('${esc(p.id)}')" title="${esc(p.desc)}">${esc(p.icon||'')} ${esc(p.name)}</span>`).join('')||'<span class="mut">无预设</span>'})}
+
+function modeLoad(){api('api/mode').then(m=>{
+ const s=$('mode-select');if(s)s.value=m.current_mode;
+ const b=$('mode-badge');if(b){b.textContent=m.current_mode.toUpperCase();
+  b.style.background=m.current_mode==='pipeline'?'var(--muted)':(m.current_mode==='flow'?'var(--accent)':'var(--ok)');b.style.color='var(--on-accent)'}
+ const d=$('mode-desc');if(d)d.textContent=m.mode_desc||'';
+ const p=$('mode-promo');if(p){p.textContent=m.promotion&&m.promotion.reason?m.promotion.reason:'';
+  p.className=m.promotion&&m.promotion.eligible?'ok':'mut'}
+ const c=$('mode-counts');if(c)c.textContent=`管线 ${m.counts.pipeline_items} · Flow 任务 ${m.counts.flow_tasks} · Loop 项 ${m.counts.loop_items} · 手动管线 ${m.counts.manual_pipeline}`;
+})}
+
+function modeSwitch(mode){if(!confirm(`确认切换工作模式为 ${mode.toUpperCase()}？\n${{pipeline:'手动模式：自主操作空间',flow:'自动模式：预设+skills 自动流转',loop:'自治模式：周而复始自我运转'}[mode]||''}`))return;
+ api('api/mode/switch',{mode}).then(r=>{if(r.error)return alert(r.error);
+  alert(`工作模式已切换：${r.old} → ${r.new}`);modeLoad()})}
+
+function presetPick(id){PRESET_SEL=id;loadPresets();
+ const p=PRESETS.find(x=>x.id===id);if(!p)return;
+ const labels={limit:'条数上限',lang:'语言（如 zh / en / ja）',dry_run:'dry-run',min_impr:'最小曝光',page_type:'页面类型（可空）',topic:'主题',langs:'语言列表（逗号分隔）'};
+ $('bt-opt').style.display='block';
+ $('bt-opt').innerHTML=`<b style="font-size:13px">${esc(p.icon||'')} ${esc(p.name)}</b><div class="mut" style="font-size:12px;margin:4px 0 8px">${esc(p.desc)}</div>
+  <div class="row">${(p.options||[]).map(o=>o==='dry_run'
+    ?`<label style="font-size:13px"><input type="checkbox" id="po-${o}" checked style="margin-right:5px">dry-run</label>`
+    :`<input id="po-${o}" placeholder="${esc(labels[o]||o)}" style="width:${o==='topic'?'320px':(o==='langs'?'220px':'150px')}" value="${o==='limit'?'5':(o==='lang'?'zh':(o==='langs'?'zh,en,ja':''))}">`).join('')}
+   <button class="btn primary" onclick="presetRun()">运行预设</button>
+   <span class="mut" id="po-hint">预设会用当前真实数据展开成任务（默认 dry-run）</span></div>`}
+
+function presetRun(){const p=PRESETS.find(x=>x.id===PRESET_SEL);if(!p)return;
+ const opt={};(p.options||[]).forEach(o=>{const el=$('po-'+o);if(!el)return;opt[o]=el.type==='checkbox'?el.checked:(el.value||'')});
+ api('api/presets/run',{id:PRESET_SEL,options:opt}).then(r=>{if(r.error)return alert(r.error);
+  alert(`已创建任务 ${r.task_id}（${r.total} 项，${r.dry_run?'dry-run':'真实执行'}）${r.note?'\n'+r.note:''}`);loadBatch()})}
+
+function qcol(used,cap,unlimited){if(unlimited||!cap)return '';const p=used/cap;
+ return p>=1?'color:var(--danger);font-weight:700':(p>=0.8?'color:var(--warn);font-weight:600':'')}
+
+function quotaEdit(un,cap,unlimited){const s=prompt(`${un} 的配额（留空=用默认；填 unlimited=不限）\n格式：条目/token/写入 如 300/300000/100`,'');
+ if(s===null)return;
+ if(s.trim()==='unlimited')return api('api/quotas/save',{per_user:{[un]:'unlimited'}}).then(()=>quotaLoad());
+ if(!s.trim())return api('api/quotas/save',{per_user:{[un]:{}}}).then(()=>quotaLoad());
+ const p=s.split('/').map(x=>x.trim());
+ return api('api/quotas/save',{per_user:{[un]:{items_per_month:p[0]||'',tokens_per_month:p[1]||'',writes_per_month:p[2]||''}}}).then(()=>quotaLoad())}
+
+function quotaLoad(){api('api/quota').then(d=>{
+ const D=d.default||{};$('q-items').value=D.items_per_month||'';$('q-tokens').value=D.tokens_per_month||'';$('q-writes').value=D.writes_per_month||'';
+ $('q-table').innerHTML='<table><tr><th>用户</th><th>角色</th><th>任务</th><th>条目</th><th>tokens</th><th>真实写入</th><th>配额（条目/token/写入）</th><th>操作</th></tr>'+
+  (d.rows||[]).map(r=>`<tr><td><b>${esc(r.username)}</b></td><td>${esc(r.role)}</td>
+   <td class="tnum">${r.usage.tasks||0}</td>
+   <td class="tnum" style="${qcol(r.usage.items,(r.quota||{}).items_per_month,r.unlimited)}">${r.usage.items||0}</td>
+   <td class="tnum" style="${qcol(r.usage.tokens,(r.quota||{}).tokens_per_month,r.unlimited)}">${r.usage.tokens||0}</td>
+   <td class="tnum" style="${qcol(r.usage.writes,(r.quota||{}).writes_per_month,r.unlimited)}">${r.usage.writes||0}</td>
+   <td class="mut" style="font-size:11px">${r.unlimited?'不限':`${(r.quota||{}).items_per_month}/${(r.quota||{}).tokens_per_month}/${(r.quota||{}).writes_per_month}`}</td>
+   <td><button class="mini" onclick="quotaEdit('${esc(r.username)}',${JSON.stringify(r.quota||{}).replace(/"/g,'&quot;')},${r.unlimited})">改配额</button></td></tr>`).join('')+'</table>'})}
+
+function quotaSave(){api('api/quotas/save',{default:{items_per_month:$('q-items').value,tokens_per_month:$('q-tokens').value,writes_per_month:$('q-writes').value}}).then(r=>{if(r.error)return alert(r.error);alert('默认配额已保存');quotaLoad()})}
+
+function styleDel(sid){if(!confirm('删除样式 '+sid+'？'))return;
+ api('api/styles/delete',{id:sid}).then(r=>{if(r.error)return alert(r.error);styleLoad()})}
+
+function styleImport(){let d;try{d=JSON.parse($('style-json').value)}catch(e){return alert('JSON 解析失败')}
+ api('api/styles/import',{...d}).then(r=>{if(r.error)return alert('导入失败：'+(r.error||''));
+  if(r.errors)return alert('校验失败：\n'+r.errors.join('\n'));
+  alert(`已导入样式：${r.name}（${r.sections} 版块）`);$('style-json').value='';styleLoad()})}
+
+function styleLoad(){api('api/styles').then(ss=>{
+ $('style-list').innerHTML=(ss||[]).length?'<table><tr><th>样式</th><th>版块</th><th>故事线</th><th>创建</th><th></th></tr>'+
+  ss.map(x=>`<tr><td><b>${esc(x.name)}</b><div class="mut" style="font-size:10.5px">${esc(x.id)} · ${esc(x.desc||'')}</div></td>
+   <td class="tnum">${x.sections}</td><td class="tnum">${x.storylines||0}</td><td class="mut" style="font-size:11px">${esc(x.created||'')}</td>
+   <td><button class="mini" style="color:var(--danger)" onclick="styleDel('${esc(x.id)}')">删除</button></td></tr>`).join('')+'</table>'
+  :'<span class="mut">暂无自定义样式</span>'})}
+
 /* ---- 看板娘：小 M 内容助手 ---- */
 const MACOT_TIPS={
  home:[['👋 欢迎回来！','我可以帮你下达任务、回答问题、解释每个功能。试试问我：「现在该做什么？」']],
@@ -1100,29 +1192,26 @@ const NAV_GROUPS=[
 ];
 function topnavBuild(){
  const el=$('topnav');if(!el)return;
- el.innerHTML=NAV_GROUPS.map(g=>{
-  const on=g.id===TAB||g.items.some(x=>x[0]===TAB);
-  const items=g.items.map(([t,l])=>`<button data-t="${t}" onclick="setTab('${t}');topnavClose()">${l}</button>`).join('');
-  return `<div class="tn-group ${on?'on':''}" data-g="${g.id}">
+ el.innerHTML=NAV_GROUPS.map(g=>
+  `<div class="tn-group" data-g="${g.id}">
     <button class="tn-btn" onclick="topnavToggle('${g.id}')">${g.label}<span style="font-size:9px;opacity:.5">▾</span></button>
-    <div class="tn-menu">${items}</div></div>`}).join('');
+    <div class="tn-menu">${g.items.map(([t,l])=>`<button data-t="${t}" onclick="setTab('${t}');topnavClose()">${l}</button>`).join('')}</div>
+  </div>`).join('');
+ topnavSync();
 }
 function topnavToggle(gid){
- const cur=document.querySelector(`#topnav .tn-group[data-g="${gid}"]`);
- const wasOn=cur&&cur.classList.contains('on');
- document.querySelectorAll('#topnav .tn-group').forEach(x=>x.classList.remove('on'));
- if(!wasOn&&cur)cur.classList.add('on');
+ const cur=document.querySelector('#topnav .tn-group[data-g="'+gid+'"]');
+ const wasOpen=cur&&cur.classList.contains('open');
+ document.querySelectorAll('#topnav .tn-group').forEach(x=>x.classList.remove('open'));
+ if(!wasOpen&&cur)cur.classList.add('open');
 }
-function topnavClose(){document.querySelectorAll('#topnav .tn-group').forEach(x=>x.classList.remove('on'))}
+function topnavClose(){document.querySelectorAll('#topnav .tn-group').forEach(x=>x.classList.remove('open'))}
 function topnavSync(){
  document.querySelectorAll('#topnav .tn-menu button').forEach(b=>b.classList.toggle('on',b.dataset.t===TAB));
  document.querySelectorAll('#topnav .tn-group').forEach(gr=>{
   const items=[...gr.querySelectorAll('.tn-menu button')].map(x=>x.dataset.t);
-  gr.classList.toggle('on',items.includes(TAB)&&document.querySelector('#topnav .tn-group.on .tn-menu'))});
- // 高亮当前分组
- document.querySelectorAll('#topnav .tn-group').forEach(gr=>{
-  const items=[...gr.querySelectorAll('.tn-menu button')].map(x=>x.dataset.t);
-  gr.querySelector('.tn-btn').style.color=items.includes(TAB)?'var(--accent)':'';});
+  gr.classList.toggle('cur',items.includes(TAB));
+ });
 }
 document.addEventListener('click',e=>{if(!e.target.closest('#topnav'))topnavClose()});
 
