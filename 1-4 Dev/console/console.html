@@ -196,6 +196,55 @@ th{color:var(--muted);font-weight:600}
 .numbar{position:absolute;left:0;top:15%;bottom:15%;background:var(--accent-soft);border-radius:4px;z-index:0}
 .numwrap .tnum{position:relative;z-index:1;padding-left:4px}
 @media print{#chrome,#sidebar,.head-actions,.row button{display:none!important}main{margin:8px}}
+
+/* ===== UI 优化层（v2）===== */
+/* 统一表格样式 */
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);font-weight:600;color:var(--muted);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:hover td{background:var(--hover)}
+
+/* 统一 pre 样式 */
+pre{background:oklch(22% .02 70);color:oklch(87% .01 85);border-radius:10px;padding:10px;font-size:11.5px;white-space:pre-wrap;word-break:break-all;margin:6px 0}
+pre.mut{background:var(--surface);color:var(--muted)}
+
+/* 统一 panel/card 间距 */
+.card + .card{margin-top:0}
+.card{transition:box-shadow .2s}
+
+/* 输入元素间距统一 */
+.row input,.row select{margin:0}
+
+/* toast 通知 */
+.toast-wrap{position:fixed;bottom:20px;right:20px;z-index:99;display:flex;flex-direction:column;gap:8px;pointer-events:none}
+.toast{background:var(--surface-strong);border:1px solid var(--border);border-radius:12px;padding:12px 16px;font-size:13px;font-weight:600;max-width:360px;box-shadow:var(--shadow);animation:toastIn .3s var(--ease-spring);pointer-events:auto;display:flex;align-items:center;gap:10px}
+.toast.ok{border-left:3px solid var(--ok)}.toast.warn{border-left:3px solid var(--warn)}.toast.bad{border-left:3px solid var(--danger)}
+@keyframes toastIn{from{transform:translateX(80px);opacity:0}to{transform:translateX(0);opacity:1}}
+
+/* 加载状态 */
+.api-loading{opacity:.5;pointer-events:none;transition:opacity .2s}
+.api-loading::after{content:"…";animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+
+/* 暗色模式 */
+[data-theme="dark"] .task{background:var(--surface-strong);border-color:var(--border)}
+[data-theme="dark"] .chip{background:oklch(30% .016 75/.5)}
+[data-theme="dark"] .phase{background:oklch(28% .016 75)}
+[data-theme="dark"] .pitem{background:oklch(32% .016 75)}
+[data-theme="dark"] #reader pre{background:oklch(16% .02 70);color:oklch(80% .01 85)}
+[data-theme="dark"] .toast{background:oklch(28% .016 75);border-color:var(--border)}
+[data-theme="dark"] .card.metric{background:oklch(26% .016 75)}
+[data-theme="dark"] .pitem{background:oklch(32% .016 75)}
+[data-theme="dark"] #reader .rhead{background:oklch(22% .02 70)}
+
+/* 响应式优化 */
+@media(max-width:900px){.ov-grid2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.cols{grid-template-columns:1fr}.tgrid{grid-template-columns:1fr}.pgrid{grid-template-columns:1fr 1fr}
+  #sidebar{width:220px}.sb-new{font-size:12px}.head-actions{flex-direction:column;align-items:flex-start}.pg-head{flex-direction:column}}
+
+/* z-index 层级系统 */
+:root{--z-base:0;--z-panel:50;--z-chrome:60;--z-reader:80;--z-toast:99}
+
 </style>
 </head>
 <body>
@@ -851,6 +900,21 @@ th{color:var(--muted);font-weight:600}
 let TAB='home',REPORTS=null,RCAT=null,KDIR='';
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/</g,'&lt;');
+
+/* ---- Toast 通知（替代 alert）---- */
+let __TOAST_WRAP=null;
+function toast(msg,level='ok',duration=3000){
+ if(!__TOAST_WRAP){__TOAST_WRAP=document.createElement('div');__TOAST_WRAP.className='toast-wrap';document.body.appendChild(__TOAST_WRAP)}
+ const el=document.createElement('div');
+ el.className=`toast ${level}`;
+ el.innerHTML=`<span style="flex:1">${esc(msg)}</span><button class="mini" onclick="this.parentElement.remove()">×</button>`;
+ __TOAST_WRAP.appendChild(el);
+ setTimeout(()=>{if(el.parentElement)el.remove()},duration);
+}
+const _orig_alert=window.alert;
+window.alert=function(msg){toast(msg,'warn',5000)};
+window.toast=toast;
+
 async function api(p,body){const o=body?{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}:{};
  const r=await fetch(p,o);if(r.status===401){location.reload();throw 0}return r.json()}
 function logout(){fetch('api/logout',{method:'POST'}).then(()=>location.reload())}
