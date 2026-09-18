@@ -1699,11 +1699,12 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
    return bits.length?`<div class="mut" style="font-size:10px;margin-top:6px;color:var(--faint)">🧠 ${esc(bits.join(' · '))}${tk}</div>`:(tk?`<div class="mut" style="font-size:10px;margin-top:6px;color:var(--faint)">${tk.trim()}</div>`:'')})();
   const qs=(m.questions&&m.questions.length)?`<div class="warn" style="margin-top:6px;font-size:12px;padding:8px;background:var(--warn-soft);border-radius:8px">需要你补充：<br>${m.questions.map(q=>'· '+esc(q)).join('<br>')}</div>`:'';
   let spec='';
-  if(m.spec){const sp=m.spec;const itms=(sp.items||[]).slice(0,3).map(i=>esc(JSON.stringify(i)).slice(0,120)).join('<br>');
+  if(m.spec){const sp=m.spec;const isExp=sp.expand&&sp.expand.preset;
+   const itms=isExp?`<span class="mut">将按预设「${esc(sp.expand.preset)}」用真实数据展开${sp.expand.opt?'（'+esc(JSON.stringify(sp.expand.opt))+'）':''}</span>`:(sp.items||[]).slice(0,3).map(i=>esc(JSON.stringify(i)).slice(0,120)).join('<br>');
    spec=`<div class="card" style="margin-top:8px;padding:12px;border-left:3px solid ${sp.dry_run?'var(--accent)':'var(--ok)'}">
     <div style="display:flex;align-items:center;gap:6px"><b style="font-size:13px">${esc(sp.type)}</b>
     <span class="badge ${sp.dry_run?'dist':'pipe'}" style="${sp.dry_run?'':'background:var(--ok)'}">${sp.dry_run?'dry-run':'真实'}</span>
-    <span class="mut" style="font-size:11px">${(sp.items||[]).length} 项</span></div>
+    <span class="mut" style="font-size:11px">${isExp?'范围展开':((sp.items||[]).length+' 项')}</span></div>
     <div class="mut" style="font-size:11.5px;margin-top:4px">${esc(sp.rationale||'')}</div>
     <div style="font-size:10.5px;font-family:var(--font-mono);margin-top:6px;max-height:100px;overflow:auto;background:var(--bg);padding:6px;border-radius:8px">${itms}</div>
     <div class="row" style="margin-top:8px"><button class="btn primary" style="font-size:12px" onclick='agExec(${JSON.stringify(sp).replace(/'/g,"&#39;")},false)'>执行（dry-run）</button>
@@ -1727,7 +1728,8 @@ function agSend(){const v=$('ag-input').value.trim();if(!v||AG_BUSY)return;
   AG_BUSY=false;if(btn){btn.disabled=false;btn.textContent='发送'}
   document.querySelectorAll('#ag-thread .ag-typing,#ag-typing-ind').forEach(e=>e.remove());
  })}
-function agExec(spec,real){if(real&&!confirm(`确认真实执行（会写生产库/消耗额度）？\n类型: ${spec.type}\n条目: ${spec.items.length}`))return;
+function agExec(spec,real){const _n=spec.expand?('预设「'+spec.expand.preset+'」按真实数据展开'):(spec.items||[]).length+' 项';
+ if(real&&!confirm(`确认真实执行（会写生产库/消耗额度）？\n类型: ${spec.type}\n范围: ${_n}`))return;
  api('api/agent/execute',{session_id:AG_ID,spec:{...spec,dry_run:!real},force:real}).then(r=>{
   if(r.error)return toast(r.error,'bad');
   toast(`任务 ${r.task_id} 已创建（${r.total} 项）`,'ok');agOpen(AG_ID)})}

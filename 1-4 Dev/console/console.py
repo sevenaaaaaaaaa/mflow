@@ -2633,7 +2633,24 @@ AGENT_TASK_SCHEMA = """可用的任务规格（type 与 items 字段必须严格
 - asset_replace: items=[{"doc_id","kind":"cover|media","idx":int|null,"field":"media","old","new_url","new_alt"}]
 - field_patch:   items=[{"doc_id","set":{"字段名":"新值"}}]
 - gen:           items=[{"item_id","type":"blog","lang":"zh|en|ja|…","topic","brief"}]
-- rewrite:       items=[{"item_id","lang","topic","instruction","source_path"}]"""
+- rewrite:       items=[{"item_id","lang","topic","instruction","source_path"}]
+- qa:            items=[{"kind":"md|sanity","path|doc_id"}]
+- landing_refresh: items=[{"item_id","doc_id","slug","lang","page_type"}]
+
+【重要：范围类任务用 expand，不要手写 items】
+当任务是"全量扫描/批量刷新/按筛选条件"这类**数据驱动范围**时，不要自己编造 items（你拿不到真实 doc_id）。
+改用 expand 让后端用真实数据展开：
+  {"type":"<类型>","title":"…","expand":{"preset":"<预设 id>","opt":{"limit":5,"lang":"zh","page_type":"tool"}}}
+可用预设 id（与 opt）：
+- qa-field-fix        QA 字段修复（opt: limit,lang,page_type）
+- qa-scan             例行 QA 扫描（opt: limit,lang,page_type）
+- asset-alt-fill      封面 alt 补齐（opt: limit,lang,page_type）
+- low-ctr-refresh     高曝光低 CTR 刷新（opt: limit,lang）
+- decay-refresh       衰减页刷新（opt: limit,lang）
+- geo-gap-rewrite     GEO 缺口改稿（opt: limit,lang）
+- multilang-batch     多语言批量产出（opt: limit,lang）
+- landing-refresh-publish 落地页闭环（opt: limit,lang）
+若确实有明确的少量条目（用户给了具体 slug/doc_id），才手写 items。"""
 
 
 
@@ -2754,7 +2771,7 @@ def agent_reply(session, message, proj=None):
 6. 对于范围类问题（如 tools 全量/子集/语言），**自行假设最合理范围并在 say 里说明**，spec 照常产出——用户可以通过不执行来否定你的假设
 6. **宁可产出一个有假设的 spec（在 say 里说明假设），也不要空 spec + 问一堆问题**
 7. dry_run 默认 true；在 say 里告知用户"先 dry-run 看结果，确认后我来关 dry-run"
-8. spec.items 中的字段可以留空，执行器会自己填
+8. **范围类任务（全量/批量/按条件筛选）必须用 spec.expand + preset，而不是手写 items**（你拿不到真实 doc_id，手写会错）。只有用户给了明确的少量 slug/doc_id 时才写 items。
 """
 
 
@@ -2805,6 +2822,15 @@ def spec_guard(spec):
     if not isinstance(spec, dict):
         return None, "spec 必须是对象"
     t = spec.get("type")
+    # expand 模式：范围由后端用真实数据展开（items 可空）
+    exp = spec.get("expand")
+    if isinstance(exp, dict) and exp.get("preset"):
+        pid = str(exp.get("preset"))
+        if not any(p.get("id") == pid for p in presets_list()):
+            return None, f"未知预设：{pid}"
+        return ({"type": t, "title": spec.get("title") or pid, "dry_run": bool(spec.get("dry_run", True)),
+                 "items": [], "expand": {"preset": pid, "opt": exp.get("opt") or {}},
+                 "rationale": spec.get("rationale", ""), "skills_used": spec.get("skills_used", [])}), ""
     if t not in BATCH_HANDLERS:
         return None, f"不允许的任务类型：{t}"
     items = spec.get("items")
@@ -5407,7 +5433,17 @@ class Handler(BaseHTTPRequestHandler):
                 if not spec["dry_run"] and not force:
                     return self._send(400, {"error": "真实执行需显式确认（force=true）——建议先 dry-run"})
                 try:
-                    t = batch_create(spec["type"], spec["title"], spec["items"],
+                    _items = spec["items"]
+                    if spec.get("expand"):
+                        _ex = preset_expand(spec["expand"]["preset"], spec["expand"].get("opt") or {}, self._proj())
+                        if _ex.get("error"):
+                            return self._send(400, {"error": "预设展开失败：" + str(_ex["error"])})
+                        _items = _ex.get("items") or []
+                        if not _items:
+                            return self._send(400, {"error": "预设展开为空（范围内没有匹配数据）"})
+                        spec["type"] = _ex.get("type") or spec["type"]
+                        spec["title"] = spec.get("title") or _ex.get("title", "")
+                    t = batch_create(spec["type"], spec["title"], _items,
                                      params={"max_attempts": 2, "from_agent": True, "rationale": spec.get("rationale", ""),
                                              "skills_used": spec.get("skills_used", [])},
                                      dry_run=spec["dry_run"], by=self._me())
