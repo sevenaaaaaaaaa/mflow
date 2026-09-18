@@ -2343,7 +2343,7 @@ function runLoad(){api('api/runs').then(rs=>{
  el.innerHTML=rs.map(r=>`<a onclick="runDetail('${esc(r.id)}')" class="${r.id===RUN_ID?'on':''}" style="${r.id===RUN_ID?'background:var(--accent-soft)':''}">
    <span class="badge" style="background:${r.status==='running'?'var(--accent)':(r.status==='done'?'var(--ok)':'var(--bad)')};margin-right:6px">${r.status==='running'?'运行':(r.status==='done'?'完成':'失败')}</span>${esc(r.title||r.id)}
    <div class="mut" style="font-size:10.5px">${esc(r.created||'')} · ${r.n} 步</div></a>`).join('');
- if(RUN_ID)runDetail(RUN_ID);
+ if(RUN_ID)runDetail(RUN_ID); else if(!RUN_ID&&rs&&rs.length){runDetail(rs[0].id)}
 })}
 function runDetail(id){RUN_ID=id;api('api/run/detail?id='+encodeURIComponent(id)).then(r=>{
  if(r.error){$('run-canvas').innerHTML='<span class="bad">'+esc(r.error)+'</span>';return}
