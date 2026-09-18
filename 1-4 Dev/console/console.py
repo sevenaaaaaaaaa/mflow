@@ -809,7 +809,7 @@ def run_content_gates(path, ctype="blog", lang="zh", tag="gate", budget_profile=
     return out
 
 
-def gen_prompt(ctype, lang, topic, brief, feedback="", template=None, budget_profile="default", style_id=""):
+def gen_prompt(ctype, lang, topic, brief, feedback="", template=None, budget_profile="default", style_id="", ai_ctx=None):
     lang_name = {"zh": "简体中文", "zh-TW": "繁体中文", "en": "English", "ja": "日本語", "ko": "한국어",
                  "de": "Deutsch", "fr": "Français", "pt": "Português", "ru": "Русский", "it": "Italiano"}.get(lang, lang)
     tpl = (template or {}).get("prompt") or {}
@@ -836,7 +836,8 @@ def gen_prompt(ctype, lang, topic, brief, feedback="", template=None, budget_pro
     aud = (f"\n目标读者：{audience}" if audience else "")
     ton = (f"\n语气要求：{tone}" if tone else "")
     fb = (f"\n\n上一轮质检未通过，反馈如下，务必针对性修正：\n{feedback}") if feedback else ""
-    return f"""{spec}{aud}{ton}
+    ai_section = ("\n\n" + ai_context_prompt(ai_ctx)) if ai_ctx else ""
+    return f"""{spec}{aud}{ton}{ai_section}
 
 {brief}
 
@@ -885,9 +886,10 @@ def loop_engine(loop_id, proj):
         log(loop, f"第 {rnd} 轮：调用 LLM 生成（{loop['type']} / {loop['lang']}）")
         _loop_save(loop, proj)
         try:
+            _ctx = ai_context(loop["type"], loop["topic"], loop["lang"], proj)
             draft = llm_chat([{"role": "user", "content": gen_prompt(
                 loop["type"], loop["lang"], loop["topic"], loop["brief"], feedback,
-                template=get_template(loop.get("template_id")))}],
+                template=get_template(loop.get("template_id")), ai_ctx=_ctx)}],
                 profile="lovart-creation", max_tokens=4000, project=proj)
         except Exception as e:
             loop["status"] = "failed"
@@ -1353,6 +1355,107 @@ def _bh_field_patch(item, task, proj):
     return {"dry_run": task.get("dry_run"), "transactionId": res.get("transactionId"), "set": list(sets)}
 
 
+# ===================== 统一 AI 上下文构建器（v1）=====================
+# 原则：所有调用 LLM 的路径（生成/Loop/批量/Agent）都必须：
+#   ① 检索相关 skills  ② 检索知识库  ③ 检索内容库范例  ④ 注入 harness 规则  ⑤ 注入 GEO/GSC 事实
+# 预算：总 ≤2400 字符（避免 token 爆炸）
+
+def kb_search_for_ai(query, k=2):
+    """从知识库检索相关文档（136 篇）。"""
+    KB = PROJECT / "1-2 Insight" / "Knowledge Base"
+    if not KB.exists() or not query:
+        return []
+    qt = _tokens(query)
+    hits = []
+    for f in KB.rglob("*.md"):
+        if f.name.startswith("."):
+            continue
+        try:
+            head = f.read_text(errors="ignore")[:800]
+        except Exception:
+            continue
+        nt = _tokens(f.stem + " " + head[:300])
+        ov = len(qt & nt)
+        if ov >= 2:
+            hits.append((ov, f, head))
+    hits.sort(key=lambda x: -x[0])
+    out = []
+    for ov, f, head in hits[:k]:
+        body = re.sub(r"^---[\s\S]*?---", "", head).strip()[:350]
+        out.append({"path": rel_of(f), "title": f.stem, "excerpt": re.sub(r"\s+", " ", body)})
+    return out
+
+
+def ai_context(task_type="blog", topic="", lang="zh", proj=None):
+    """统一上下文构建：所有 AI 路径共用。返回 {skills, kb, lib, rules, facts, budget_chars}"""
+    proj = proj or DEFAULT_PROJECT
+    query = f"{task_type} {topic} {lang}"
+    ctx = {"skills": [], "kb": [], "lib": [], "rules": "", "facts": [], "budget_chars": 0}
+
+    # ① 相关 skills（按类型 + 主题匹配）
+    try:
+        sk = context_skills(query, k=3)
+        ctx["skills"] = [{"name": s["name"], "desc": s["desc"][:100]} for s in sk]
+    except Exception:
+        pass
+
+    # ② 知识库检索
+    try:
+        ctx["kb"] = kb_search_for_ai(query, k=2)
+    except Exception:
+        pass
+
+    # ③ 内容库范例（找同类已发布页做参考）
+    try:
+        libs = context_library("lovart-global", topic or task_type, k=2)
+        ctx["lib"] = [{"path": h["path"], "title": h["path"].split("/")[-1].replace(".md", "")} for h in libs]
+    except Exception:
+        pass
+
+    # ④ harness 规则（相关子集）
+    try:
+        ctx["rules"] = context_rules(limit=700, query=query)
+    except Exception:
+        pass
+
+    # ⑤ GEO/GSC 事实
+    try:
+        g = geo_summary(proj)
+        if g.get("total"):
+            ctx["facts"].append(f"品牌 AI 提及率 {round((g.get('brand_rate') or 0)*100)}%，缺口查询 {len([q for q,v in (g.get('per_query') or {}).items() if v.get('brand',0)==0])} 条")
+        gsc = read_json(RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json", {})
+        pages = ((gsc.get("pages") or {}).get("top20_pages")) or []
+        if pages:
+            top = max(pages, key=lambda x: x.get("impr", 0))
+            ctx["facts"].append(f"GSC 最高曝光页 {urllib.parse.urlparse(top.get('url','')).path}（曝光 {top.get('impr',0):,}）")
+    except Exception:
+        pass
+
+    ctx["budget_chars"] = len(json.dumps(ctx, ensure_ascii=False))
+    return ctx
+
+
+def ai_context_prompt(ctx, budget_profile="default"):
+    """把上下文渲染成提示词片段（≤2400 字符）。"""
+    parts = []
+    if ctx.get("skills"):
+        parts.append("【相关 skills（按这些 skill 的方法论执行）】\n" +
+                     "\n".join(f"- {s['name']}：{s['desc']}" for s in ctx["skills"]))
+    if ctx.get("kb"):
+        parts.append("【知识库事实（必须使用这些真实信息，不要编造）】\n" +
+                     "\n".join(f"- 《{b['title']}》：{b['excerpt']}" for b in ctx["kb"]))
+    if ctx.get("lib"):
+        parts.append("【同类已发布内容（可参考结构，禁止抄袭）】\n" +
+                     "\n".join(f"- {l['title']}" for l in ctx["lib"]))
+    if ctx.get("facts"):
+        parts.append("【真实数据（引用时用这些数字）】\n" + "\n".join(f"- {f}" for f in ctx["facts"]))
+    if ctx.get("rules"):
+        parts.append("【harness 硬约束（违反即废稿）】\n" + ctx["rules"])
+    return "\n\n".join(parts)
+
+
+
+
 def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", template_id="",
                    instruction="", source_text="", prior_context="", budget_profile="default", task=None):
     """批量生成/改稿共用执行体：LLM → 落盘 → post-write + geo 门禁 → 状态机推进。"""
@@ -1360,8 +1463,9 @@ def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", t
     ps_run([sys.executable, str(PS_PATH), *ps_args, "upsert", "--id", item_id, "--category", ctype])
     # 状态机顺序：先入 S3-creating（与 Loop 引擎一致，S0-todo 不可直达 S3-draft）
     ps_run([sys.executable, str(PS_PATH), *ps_args, "advance", "--id", item_id, "--to", "S3-creating"])
+    _ai_ctx = ai_context(ctype, topic, lang, proj)
     base_user = gen_prompt(ctype, lang, topic, brief, template=get_template(template_id),
-                           budget_profile=budget_profile)
+                           budget_profile=budget_profile, ai_ctx=_ai_ctx)
     user = base_user
     if instruction:
         user = (f"下面是既有内容，请按指令改写（事实准确优先；不确定的数字标 [待考证]）：\n"
@@ -2738,10 +2842,13 @@ def _bh_landing_refresh(item, task, proj):
     slug = item.get("slug") or (cur.get("slug") or {}).get("current") or did
     title = cur.get("title") or did
     cover = cur.get("cover") or {}
+    _ctx = ai_context(page_type, title, lang, proj)
+    _ctx_txt = ai_context_prompt(_ctx)
     base = (f"这是落地页改稿任务（pageType={page_type}，语言={lang}）。\n{LANDING_STRUCT_RULES}\n"
             f"GEO 硬性要求：每个非问句 H2 小节至少 1 个具体数据点；全文 ≥2 条**完整 URL** 的外部来源；"
             f"结尾 CTA 一句行动指令。\n语言要求：全文用 {lang} 写作，标点与字形必须符合该语言规范。\n"
-            f"现有内容（仅作事实参考，可能不完整）：\n{src_text[:5000]}")
+            f"现有内容（仅作事实参考，可能不完整）：\n{src_text[:5000]}"
+            + (("\n\n" + _ctx_txt) if _ctx_txt else ""))
     gen_dir = proj_paths(proj)["gen"]
     gen_dir.mkdir(parents=True, exist_ok=True)
     path = gen_dir / f"{item.get('item_id') or ('refresh-' + re.sub(r'[^a-z0-9-]', '-', did.lower())[:40])}.md"
@@ -3642,6 +3749,77 @@ HOUSEKEEPING_LOG = RUN_DIR / "logs" / "housekeeping.log"
 _HEALTH_CACHE = {"ts": 0, "sanity": None}
 
 
+def next_actions(proj=None):
+    """推荐下一步：根据系统状态给出人话建议 + 一键动作。所有新手/老手都能用。"""
+    proj = proj or DEFAULT_PROJECT
+    acts = []
+    # 1) LLM 可用性
+    try:
+        _c = llm_config()
+        _prov = _c["providers"][_c["profiles"]["default"]["provider"]]
+        ok = bool(_prov.get("key"))
+    except Exception:
+        ok = None
+    if ok is False:
+        acts.append({"prio": "P0", "title": "DeepSeek 余额不足，AI 生成已停",
+                     "desc": "请充值后恢复生成。无需 AI 的动作（发布/查库/看报告）仍可用。",
+                     "cta": {"label": "去充值", "url": "https://platform.deepseek.com/top_up"}})
+    # 2) 待办任务
+    try:
+        tasks = read_json(proj_paths(proj)["tasks"], []) or []
+        open_tasks = [t for t in tasks if t.get("status") != "done"]
+        if open_tasks:
+            acts.append({"prio": "P1", "title": f"你有 {len(open_tasks)} 个待办任务",
+                         "desc": "在任务看板查看、认领或流转。",
+                         "cta": {"label": "打开任务看板", "tab": "tasks"}})
+    except Exception:
+        pass
+    # 3) QA 问题
+    try:
+        qa = read_json(RUN_DIR / "qa" / "latest.json", {}) or {}
+        nf = len(qa.get("findings") or [])
+        if nf:
+            acts.append({"prio": "P1", "title": f"QA 发现 {nf} 个问题待修复",
+                         "desc": "一键生成修复任务（dry-run 先看）。",
+                         "cta": {"label": "去 QA 编排", "tab": "qa"}})
+    except Exception:
+        pass
+    # 4) 衰减页
+    try:
+        gsc = read_json(RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json", {}) or {}
+        dec = gsc.get("decaying_pages") or []
+        if dec:
+            acts.append({"prio": "P2", "title": f"{len(dec)} 篇内容正在衰减",
+                         "desc": "按 GEO 标准刷新，通常能止跌回升。",
+                         "cta": {"label": "让 Agent 刷新", "agent": "帮我把正在衰减的页面按 GEO 标准刷新 5 篇"}})
+    except Exception:
+        pass
+    # 5) 模式升级
+    try:
+        m = {"mode": project_mode(proj)}
+        if (m or {}).get("mode") == "pipeline":
+            acts.append({"prio": "P3", "title": "当前是手动模式（Pipeline）",
+                         "desc": "预设工作流可自动串起「生成→质检→发布」，试试 Flow 模式。",
+                         "cta": {"label": "了解预设工作流", "tab": "batch"}})
+    except Exception:
+        pass
+    # 6) 零基础引导
+    try:
+        if not (RUN_DIR / "local-dev").exists():
+            acts.append({"prio": "P0", "title": "还没接入数据源",
+                         "desc": "先按引导接好数据，报告与发布才有内容。",
+                         "cta": {"label": "打开首次引导", "tab": "setup"}})
+    except Exception:
+        pass
+    if not acts:
+        acts.append({"prio": "P3", "title": "一切正常，没有紧急事项",
+                     "desc": "可以让 Agent 帮你写新内容、扫质量、或刷新旧页。",
+                     "cta": {"label": "去 Agent 下达任务", "tab": "agent"}})
+    order = {"P0": 0, "P1": 1, "P2": 2, "P3": 3}
+    acts.sort(key=lambda a: order.get(a["prio"], 9))
+    return {"actions": acts[:5], "project": proj}
+
+
 def health_report(proj=None):
     proj = proj or DEFAULT_PROJECT
     pp = proj_paths(proj)
@@ -4525,6 +4703,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, kb_gap_report())
             if parsed.path == "/api/health":
                 return self._send(200, health_report(self._proj()))
+            if parsed.path == "/api/next-actions":
+                return self._send(200, next_actions(self._proj()))
             if parsed.path == "/api/housekeeping":
                 lg = []
                 if HOUSEKEEPING_LOG.exists():
@@ -5250,10 +5430,11 @@ class Handler(BaseHTTPRequestHandler):
                               "--state-path", str(self._st()), "--events-path", str(self._ev()),
                               "upsert", "--id", item_id,
                               "--category", str(body.get("type", "blog"))])
+                    _ctx = ai_context(str(body.get("type", "blog")), str(body.get("topic", "")), str(body.get("lang", "zh")), self._proj())
                     draft = llm_chat([{"role": "user", "content": gen_prompt(
                         str(body.get("type", "blog")), str(body.get("lang", "zh")),
                         str(body.get("topic", ""))[:300], str(body.get("brief", ""))[:800],
-                        template=tpl)}],
+                        template=tpl, ai_ctx=_ctx)}],
                         profile="lovart-creation", project=self._proj())
                 except Exception as e:
                     return self._send(400, {"error": str(e)[:300]})
