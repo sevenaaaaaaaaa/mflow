@@ -2679,8 +2679,13 @@ def _bh_landing_refresh(item, task, proj):
                     + ("\n结构：" + "；".join(struct_errs[:3]) if struct_errs else "")
                     + f"\n注意：当前 {len(draft)} 字符，落地页上限 1200（目标 600-1000），请删冗余而非扩写。")
     usage_add(task.get("created_by", ""), items=1, tokens=tok)
+    new_title = ""
+    for l in draft.split("\n"):
+        if l.strip().startswith("# "):
+            new_title = l.strip()[2:].strip()
+            break
     return {"path": rel_of(path), "doc_id": did, "slug": slug, "page_type": page_type, "lang": lang,
-            "chars": len(draft), "tokens": tok, "rounds": _round,
+            "title": new_title, "chars": len(draft), "tokens": tok, "rounds": _round,
             "gates_blocked": [k for k, v in gates.items() if v["rc"] != 0], "struct_errors": struct_errs,
             "ready_to_publish": (not any(v["rc"] != 0 for v in gates.values()) and not struct_errs)}
 
@@ -2706,7 +2711,7 @@ def chain_next_task(task, proj):
             items.append({"item_id": pid, "path": r.get("path"),
                           "doctype": ch.get("doctype", "composite"),
                           "mode": ch.get("mode", "patch"),
-                          "page_type": r.get("page_type"), "lang": r.get("lang"),
+                          "page_type": r.get("page_type"), "lang": r.get("lang"), "title": r.get("title",""),
                           # patch 必须以真实 Sanity _id 命中既有文档（slug 不一定是 _id）
                           "slug": (r.get("doc_id") if is_patch else r.get("slug"))})
     if not items:

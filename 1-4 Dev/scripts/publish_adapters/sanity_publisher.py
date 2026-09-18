@@ -383,7 +383,18 @@ def build_composite_doc(md_path="", slug="", lang="en", page_type="tool", title=
     slug = re.sub(r"[^a-zA-Z0-9\u4e00-\u9fff-]", "-", str(slug)).strip("-").lower()
     if not slug:
         raise RuntimeError("slug 不能为空")
-    title = title or fm.get("title") or slug
+    if not title:
+        title = fm.get("title") or ""
+        if not title:
+            for l in source_text.split("\n"):
+                ls = l.strip()
+                if ls.startswith("# "):
+                    title = ls[2:].strip()
+                    break
+                elif ls and not ls.startswith(("-", "|", ">")):
+                    title = ls[:100]
+                    break
+    title = title or slug
     description = description or fm.get("description") or ""
     cover_url = cover_url or fm.get("cover_url") or ""
     cover_alt = cover_alt or fm.get("alt_text") or title
