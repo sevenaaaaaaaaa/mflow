@@ -272,8 +272,25 @@ def llm_chat(messages, profile="default", max_tokens=4000, timeout=180, project=
                                headers={"Content-Type": "application/json",
                                         "Authorization": "Bearer " + key})
     t0 = time.time()
-    with urllib.request.urlopen(r, timeout=timeout) as resp:
-        data = json.loads(resp.read())
+    try:
+        with urllib.request.urlopen(r, timeout=timeout) as resp:
+            data = json.loads(resp.read())
+    except Exception as e:
+        code = getattr(e, "code", None)
+        emsg = ""
+        try:
+            emsg = e.read().decode(errors="ignore")[:300]
+        except Exception:
+            emsg = str(e)[:300]
+        try:
+            write_json(RUN_DIR / "llm-status.json",
+                       {"ok": False, "code": code, "msg": emsg, "model": model,
+                        "ts": datetime.now().isoformat(timespec="seconds")})
+        except Exception:
+            pass
+        if code == 402:
+            raise RuntimeError("LLM 余额不足（HTTP 402）：请到 DeepSeek 平台充值后重试。原始信息：" + emsg)
+        raise
     content = data["choices"][0]["message"]["content"]
     try:
         rec = {"ts": datetime.now().isoformat(timespec="seconds"), "profile": profile, "model": model,
@@ -287,6 +304,11 @@ def llm_chat(messages, profile="default", max_tokens=4000, timeout=180, project=
         with _usage_lock:
             LAST_USAGE.clear()
             LAST_USAGE.update(rec)
+    except Exception:
+        pass
+    try:
+        write_json(RUN_DIR / "llm-status.json",
+                   {"ok": True, "model": model, "ts": datetime.now().isoformat(timespec="seconds")})
     except Exception:
         pass
     return content
@@ -1407,7 +1429,7 @@ def ai_context(task_type="blog", topic="", lang="zh", proj=None):
 
     # ③ 内容库范例（找同类已发布页做参考）
     try:
-        libs = context_library("lovart-global", topic or task_type, k=2)
+        libs = context_library(site_of(proj), topic or task_type, k=2, task_type=task_type)
         ctx["lib"] = [{"path": h["path"], "title": h["path"].split("/")[-1].replace(".md", "")} for h in libs]
     except Exception:
         pass
@@ -2552,8 +2574,18 @@ def context_rules(limit=4000, query=""):
     return "\n".join(out)[:limit]
 
 
-def context_library(site, query, k=5):
-    """从内容库命中相关条目（文件名 + 前 800 字符）。"""
+def site_of(proj=None):
+    """项目对应的站点标识（内容库目录名）。"""
+    proj = proj or DEFAULT_PROJECT
+    try:
+        m = read_json(PROJECTS_DIR / proj / "meta.json", {}) or {}
+        return m.get("site") or proj or DEFAULT_PROJECT
+    except Exception:
+        return proj or DEFAULT_PROJECT
+
+
+def context_library(site, query, k=5, task_type=""):
+    """从内容库命中相关条目。无命中时回退到同类型代表性页面（保证 AI 总有范例）。"""
     qt = _tokens(query)
     if not qt:
         return []
@@ -2567,6 +2599,15 @@ def context_library(site, query, k=5):
             ov = len(qt & name_t)
             if ov >= 2:
                 hits.append((ov, f))
+    if not hits and base.exists():
+        # 回退①：按 task_type 映射到子目录，取代表页
+        dmap = {"blog": "blog", "article": "blog", "tool": "tools", "landing": "tools",
+                "feature": "features", "topic": "topics", "solution": "solutions",
+                "news": "news", "product": "products", "scenario": "scenarios"}
+        sub = base / dmap.get(str(task_type).lower(), "blog")
+        if sub.exists():
+            cands = [f for f in sub.rglob("*.md") if not f.name.startswith("_")][:k]
+            hits = [(1, f) for f in cands]
     hits.sort(key=lambda x: -x[0])
     out = []
     for _, f in hits[:k]:
@@ -2652,7 +2693,7 @@ def _auto_preset_match(message, proj=None):
 def agent_reply(session, message, proj=None):
     """对话一轮：组装上下文 → LLM → 解析 {say, questions, spec}。"""
     proj = proj or DEFAULT_PROJECT
-    site = "lovart-global"
+    site = site_of(proj)
     skills = context_skills(message)
     libs = context_library(site, message, k=5)
     geo = context_geo(proj)
@@ -3586,7 +3627,7 @@ def _slug_of(s):
 
 def preset_expand(pid, opt, proj):
     """把预设展开成可执行的批量任务规格（真实数据驱动）。返回 {type,title,items,params,note}"""
-    site = "lovart-global"
+    site = site_of(proj)
     opt = opt or {}
     limit = max(1, min(int(opt.get("limit", 5) or 5), 50))
     lang = str(opt.get("lang", "zh") or "zh")
@@ -3753,7 +3794,17 @@ def next_actions(proj=None):
     """推荐下一步：根据系统状态给出人话建议 + 一键动作。所有新手/老手都能用。"""
     proj = proj or DEFAULT_PROJECT
     acts = []
-    # 1) LLM 可用性
+    # 1) LLM 可用性（含余额不足 402）
+    try:
+        _st = read_json(RUN_DIR / "llm-status.json", {}) or {}
+        if _st.get("ok") is False and _st.get("code") == 402:
+            acts.append({"prio": "P0", "title": "DeepSeek 余额不足，AI 生成已停",
+                         "desc": "充值后自动恢复。无需 AI 的动作（发布/查库/看报告）仍可用。",
+                         "cta": {"label": "去充值", "url": "https://platform.deepseek.com/top_up"}})
+    except Exception:
+        pass
+
+    # 2) LLM 未配置
     try:
         _c = llm_config()
         _prov = _c["providers"][_c["profiles"]["default"]["provider"]]
@@ -3761,10 +3812,10 @@ def next_actions(proj=None):
     except Exception:
         ok = None
     if ok is False:
-        acts.append({"prio": "P0", "title": "DeepSeek 余额不足，AI 生成已停",
-                     "desc": "请充值后恢复生成。无需 AI 的动作（发布/查库/看报告）仍可用。",
-                     "cta": {"label": "去充值", "url": "https://platform.deepseek.com/top_up"}})
-    # 2) 待办任务
+        acts.append({"prio": "P0", "title": "LLM 未配置",
+                     "desc": "去设置页填入 base/key，或先在引导页导入 Demo 数据体验完整闭环。",
+                     "cta": {"label": "去设置", "tab": "set"}})
+    # 3) 待办任务
     try:
         tasks = read_json(proj_paths(proj)["tasks"], []) or []
         open_tasks = [t for t in tasks if t.get("status") != "done"]
