@@ -2491,6 +2491,60 @@ AGENT_TASK_SCHEMA = """可用的任务规格（type 与 items 字段必须严格
 - rewrite:       items=[{"item_id","lang","topic","instruction","source_path"}]"""
 
 
+
+def _auto_preset_match(message, proj=None):
+    """当 LLM 空_spec 时，自动匹配用户意图到预设并展开。"""
+    ml = message.lower()
+    presets = presets_list()
+    if not presets:
+        return None
+
+    # 关键词匹配规则
+    match_rules = [
+        (["qa", "扫描", "质检", "seo 问题", "字段", "seoTitle", "description"], "qa-field-fix"),
+        (["修复", "fix", "补齐", "alt"], "asset-alt-fill"),
+        (["衰减", "刷新", "decay", "refresh", "30 天"], "decay-refresh"),
+        (["低 ctr", "高曝光", "低点击", "ctr"], "low-ctr-refresh"),
+        (["geo", "缺口", "提及", "引用"], "geo-gap-rewrite"),
+        (["多语言", "多语言批量", "翻译"], "multilang-batch"),
+        (["落地页", "闭环", "改稿发布"], "landing-refresh-publish"),
+    ]
+
+    best_score, best_preset = 0, None
+    ml_words = set(re.findall(r"[a-z0-9\u4e00-\u9fff]{2,}", ml))
+    for preset in presets:
+        pid = preset["id"]
+        kw_score = sum(1 for kw in match_rules if any(k in ml for k in kw) and pid in str(preset["id"]))
+        name_score = len(set(re.findall(r"[a-z0-9\u4e00-\u9fff]{2,}", preset.get("name", "").lower())) & set(re.findall(r"[a-z0-9\u4e00-\u9fff]{2,}", ml)))
+        score = kw_score * 3 + name_score
+        if score > best_score:
+            best_score = score
+            best_preset = preset
+
+    if not best_preset or best_score < 2:
+        # 兜底：QA 类意图 → qa-field-fix；改稿 → low-ctr-refresh
+        if any(k in ml for k in ["扫", "扫描", "体检", "检查", "qa", "seo"]):
+            best_preset = next((p for p in presets if p["id"] == "qa-field-fix"), None)
+        elif any(k in ml for k in ["改", "刷新", "重写"]):
+            best_preset = next((p for p in presets if p["id"] == "low-ctr-refresh"), None)
+
+    if not best_preset:
+        return None
+
+    # 用合理默认值展开
+    opt = {"limit": 5, "lang": "zh"}
+    if "en" in ml: opt["lang"] = "en"
+    if "ja" in ml: opt["lang"] = "ja"
+    if "tools" in ml: opt["page_type"] = "tool"
+    if "feature" in ml: opt["page_type"] = "feature"
+    r = preset_expand(best_preset["id"], opt, proj)
+    if r.get("error"):
+        return None
+    return {"spec": {"type": r["type"], "title": r["title"], "dry_run": True, "items": r["items"],
+                     "rationale": f"自动匹配预设「{best_preset['name']}」", "skills_used": []},
+            "name": best_preset["name"], "note": r.get("note", "")}
+
+
 def agent_reply(session, message, proj=None):
     """对话一轮：组装上下文 → LLM → 解析 {say, questions, spec}。"""
     proj = proj or DEFAULT_PROJECT
@@ -2499,6 +2553,7 @@ def agent_reply(session, message, proj=None):
     libs = context_library(site, message, k=5)
     geo = context_geo(proj)
     rules = context_rules(limit=1200, query=message)  # 上下文预算
+    rules_len = len(rules)
     # 物料/Impact 数据
     try:
         assets = read_json(LIB_ROOT / site / "assets.json", {})
@@ -2549,6 +2604,7 @@ def agent_reply(session, message, proj=None):
 3. 用户说"跑一下那个预设" → 直接用预设展开 → 产出 spec
 4. 用户说"写一篇关于 X 的文章" → 用知识库/内容库找相关上下文 → 产出 gen spec
 5. **只有**当用户要求的目标在内容库中**完全找不到**、且用户也没给任何线索时，才问一条问题
+6. 对于范围类问题（如 tools 全量/子集/语言），**自行假设最合理范围并在 say 里说明**，spec 照常产出——用户可以通过不执行来否定你的假设
 6. **宁可产出一个有假设的 spec（在 say 里说明假设），也不要空 spec + 问一堆问题**
 7. dry_run 默认 true；在 say 里告知用户"先 dry-run 看结果，确认后我来关 dry-run"
 8. spec.items 中的字段可以留空，执行器会自己填
@@ -2570,6 +2626,13 @@ def agent_reply(session, message, proj=None):
             data = {}
     if not data:
         data = {"say": raw[:1200], "questions": [], "spec": None}
+    # Fallback：LLM 空spec → 自动匹配预设展开
+    if not data.get("spec"):
+        preset_hint = _auto_preset_match(message, proj)
+        if preset_hint and preset_hint.get("spec"):
+            data["spec"] = preset_hint["spec"]
+            data["say"] = (data.get("say") or "") + "\n\n---\n我已自动匹配到「" + preset_hint["name"] + "」预设并展开了任务。如果你想要不同的范围，告诉我。"
+            data["questions"] = []
     used = {"skills": [s["name"] for s in skills], "library": [h["path"] for h in libs],
             "geo_gaps": geo.get("gaps", []), "rules_chars": len(rules)}
     return {"say": data.get("say", ""), "questions": data.get("questions") or [],
