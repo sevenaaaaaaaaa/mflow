@@ -1531,10 +1531,17 @@ def run_tick():
                     for st in steps:
                         if st.get("type") == "batch" and st.get("task_id"):
                             t = batch_load(st["task_id"]) or {}
-                            for it in (t.get("items") or [])[:20]:
-                                if it.get("_url"):
-                                    self_urls.append(it["_url"])
-                    urls = self_urls[:10]
+                            for it in (t.get("items") or [])[:10]:
+                                did = it.get("doc_id")
+                                if did:
+                                    u = _doc_url(run.get("proj"), did)
+                                    if u:
+                                        self_urls.append(u)
+                                elif it.get("slug"):
+                                    u = _site_url(site_of(run.get("proj")), it.get("page_type"), it.get("lang"), it.get("slug"))
+                                    if u:
+                                        self_urls.append(u)
+                    urls = list(dict.fromkeys(self_urls))[:8]
                 ok_n, bad = 0, []
                 for u in urls:
                     r = agent_tool("check_url", {"url": u}, run.get("proj"))
