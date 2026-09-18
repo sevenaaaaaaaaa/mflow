@@ -1549,10 +1549,15 @@ def run_tick():
                         ok_n += 1
                     else:
                         bad.append(u)
-                cur["status"] = "done" if not bad else "failed"
+                if not urls:
+                    cur["status"] = "done"; cur["detail"] = "无可验证 URL（跳过）"
+                elif ok_n == 0:
+                    cur["status"] = "failed"; cur["detail"] = f"全部 {len(urls)} 个页面不可访问（需排查）"
+                elif bad:
+                    cur["status"] = "warn"; cur["detail"] = f"已验证 {ok_n}/{len(urls)} 可访问；{len(bad)} 个不可访问（可能为站点预存问题，非本次改动）"
+                else:
+                    cur["status"] = "done"; cur["detail"] = f"已验证 {ok_n}/{len(urls)} 个前台页面可访问"
                 cur["ended"] = datetime.now().strftime("%H:%M:%S")
-                cur["detail"] = (f"已验证 {ok_n}/{len(urls)} 个前台页面可访问" if urls
-                                 else "无可验证 URL（跳过）")
                 changed = True
             # batch 步：若 t_id 未创建则创建（从 preset/spec）
             elif cur and cur["type"] == "batch" and cur["status"] == "pending" and not cur.get("task_id"):
@@ -1584,8 +1589,9 @@ def run_tick():
                 except Exception as e:
                     cur["status"] = "failed"; cur["detail"] = str(e)[:160]; changed = True
             # 全部结束 → 完成
-            if all(st["status"] in ("done", "failed") for st in steps):
-                run["status"] = "done" if all(st["status"] == "done" for st in steps) else "failed"
+            if all(st["status"] in ("done", "failed", "warn") for st in steps):
+                run["status"] = ("failed" if any(st["status"] == "failed" for st in steps)
+                                 else ("warn" if any(st["status"] == "warn" for st in steps) else "done"))
                 changed = True
             if changed:
                 run_save(run)
@@ -1601,10 +1607,17 @@ def run_view(rid):
     steps = run.get("steps") or []
     done = sum(1 for st in steps if st["status"] == "done")
     failed = sum(1 for st in steps if st["status"] == "failed")
-    run["overall"] = {"total": len(steps), "done": done, "failed": failed,
-                      "pct": int(round(100 * (done + failed) / max(1, len(steps))))}
-    run["status"] = ("done" if done == len(steps) and steps else
-                     ("failed" if failed else ("running" if steps else "queued")))
+    warn = sum(1 for st in steps if st["status"] == "warn")
+    run["overall"] = {"total": len(steps), "done": done, "failed": failed, "warn": warn,
+                      "pct": int(round(100 * (done + failed + warn) / max(1, len(steps))))}
+    if failed:
+        run["status"] = "failed"
+    elif warn:
+        run["status"] = "warn"
+    elif done == len(steps) and steps:
+        run["status"] = "done"
+    else:
+        run["status"] = "running"
     return run
 
 

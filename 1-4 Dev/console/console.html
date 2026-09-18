@@ -303,6 +303,8 @@ button.clicked{animation:clickpulse .45s ease}
 .run-dot.running{background:var(--accent);animation:runpulse 1.4s infinite}
 .run-dot.done{background:var(--ok)}
 .run-dot.failed{background:var(--bad)}
+.run-dot.warn{background:var(--warn)}
+.run-dot.warn,.run-dot.failed{}
 @keyframes runpulse{0%,100%{box-shadow:0 0 0 0 var(--accent-soft)}50%{box-shadow:0 0 0 8px transparent}}
 .run-line{flex:1;width:2px;background:var(--border);margin:2px 0}
 .run-line.done{background:var(--ok)}
@@ -1274,6 +1276,7 @@ const PAGE_GUIDES={
  usage:{icon:'💰',title:'用量与成本',steps:['查看 token/调用/写入统计','按用户与天数聚合','—'],hint:''},
  iter:{icon:'🔄',title:'自我迭代',steps:['系统从历史任务提炼改进','可采纳为提示词/禁用词','—'],hint:''},
  sys:{icon:'🛠️',title:'调度与日志',steps:['查看定时任务与运行日志','排查异常','—'],hint:''},
+ run:{icon:'🗺️',title:'执行画布：看着任务在跑',steps:['左边选一条执行记录','看每一步的状态与进度条','点「查看任务」下钻到条目详情'],hint:'执行可后台运行；画布实时刷新。失败步骤可一键重试。'},
  eng:{icon:'🚦',title:'路由·门禁',steps:['查看生成/发布的门禁规则','每条内容的通过情况','—'],hint:''},
  default:{icon:'💡',title:'提示',steps:['看页面标题下的说明','右下角「小 M」可随时提问'],hint:''}
 };
@@ -2341,7 +2344,7 @@ function runLoad(){api('api/runs').then(rs=>{
  const el=$('run-list');
  if(!rs||!rs.length){el.innerHTML='<div class="mut" style="font-size:12px">还没有执行记录。到 Agent 任务台下达任务，或用任务看板的「快速开始」。</div>';return}
  el.innerHTML=rs.map(r=>`<a onclick="runDetail('${esc(r.id)}')" class="${r.id===RUN_ID?'on':''}" style="${r.id===RUN_ID?'background:var(--accent-soft)':''}">
-   <span class="badge" style="background:${r.status==='running'?'var(--accent)':(r.status==='done'?'var(--ok)':'var(--bad)')};margin-right:6px">${r.status==='running'?'运行':(r.status==='done'?'完成':'失败')}</span>${esc(r.title||r.id)}
+   <span class="badge" style="background:${{running:'var(--accent)',done:'var(--ok)',warn:'var(--warn)',failed:'var(--bad)',cancelled:'var(--muted)'}[r.status]||'var(--muted)'};margin-right:6px">${{running:'运行',done:'完成',warn:'告警',failed:'失败',cancelled:'取消'}[r.status]||r.status}</span>${esc(r.title||r.id)}
    <div class="mut" style="font-size:10.5px">${esc(r.created||'')} · ${r.n} 步</div></a>`).join('');
  if(RUN_ID)runDetail(RUN_ID); else if(!RUN_ID&&rs&&rs.length){runDetail(rs[0].id)}
 })}
@@ -2349,11 +2352,13 @@ function runDetail(id){RUN_ID=id;api('api/run/detail?id='+encodeURIComponent(id)
  if(r.error){$('run-canvas').innerHTML='<span class="bad">'+esc(r.error)+'</span>';return}
  $('run-title').textContent=r.title||r.id;
  const ov=r.overall||{};
- $('run-badge').innerHTML=`<span class="badge" style="background:${r.status==='running'?'var(--accent)':(r.status==='done'?'var(--ok)':'var(--bad)')}">${r.status}</span> <span class="mut" style="font-size:11px">${ov.done||0}/${ov.total||0} 步 · ${ov.pct||0}%</span>`;
+ const _bg={running:'var(--accent)',done:'var(--ok)',warn:'var(--warn)',failed:'var(--bad)',cancelled:'var(--muted)'}[r.status]||'var(--muted)';
+ const _st={running:'运行中',done:'完成',warn:'完成（有告警）',failed:'失败',cancelled:'已取消'}[r.status]||r.status;
+ $('run-badge').innerHTML=`<span class="badge" style="background:${_bg}">${_st}</span> <span class="mut" style="font-size:11px">${ov.done||0}/${ov.total||0} 步 · ${ov.pct||0}%</span>`;
  const steps=r.steps||[];
  $('run-canvas').innerHTML=`<div class="run-pbar"><div style="width:${ov.pct||0}%"></div></div>`+
   steps.map((st,i)=>{
-   const dot={done:'✓',failed:'✕',running:'●',pending:i+1}[st.status]||i+1;
+   const dot={done:'✓',failed:'✕',warn:'!',running:'●',pending:i+1}[st.status]||i+1;
    const prog=(st.type==='batch'&&st.progress!=null)?`<div class="run-step-progress"><div style="width:${st.progress}%"></div></div>`:'';
    return `<div class="run-step">
      <div class="run-rail"><span class="run-dot ${st.status}">${dot}</span>${i<steps.length-1?`<span class="run-line ${st.status==='done'?'done':''}"></span>`:''}</div>
