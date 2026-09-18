@@ -3045,10 +3045,13 @@ def preset_expand(pid, opt, proj):
         items = [{"item_id": "refresh-" + _slug_of(c["slug"])[:40], "doc_id": c["doc_id"], "slug": c["slug"],
                   "page_type": c["page_type"], "lang": c["lang"], "source_path": c["source_path"]}
                  for c in cands]
-        return {"type": "landing_refresh", "title": f"落地页闭环：改稿→发布（{len(items)} 页）", "items": items,
-                "params": {"batch_size": 2, "chain": {"type": "publish_sanity", "dry_run": True,
-                                                      "doctype": "composite", "mode": "patch"}},
-                "note": "链路：改稿 → 四门禁 + 结构校验 → 只把通过项 patch 发布（默认 dry-run，真实上线需再跑一次并关闭 dry-run）"}
+        chain_dry = bool(opt.get("chain_dry_run", True))
+        return {"type": "landing_refresh", "title": f"落地页闭环：改稿→发布（{len(items)} 页，链 {'dry-run' if chain_dry else '真实上线'})", "items": items,
+                "params": {"batch_size": 2, "chain": {"type": "publish_sanity", "dry_run": chain_dry,
+                                                      "doctype": "composite", "mode": "patch",
+                                                      "confirm_public": not chain_dry}},
+                "note": "链路：改稿 → 四门禁+结构校验 → 只把通过项 patch 发布"
+                        + ("（dry-run 预览）" if chain_dry else "（⚠ 真实上线：写入即前台可见）")}
 
     if pid == "multilang-batch":
         topic = str(opt.get("topic", "") or "").strip()
