@@ -1294,9 +1294,18 @@ function openDrawer(title, html, actions){
 function closeDrawer(){$('drawer').classList.remove('on');$('drawer-mask').classList.remove('on')}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
 
+function retryItem(tid,i){withBtn(event, async()=>{
+ const r=await api('api/batch/retry_item',{id:tid,i});if(r.error)throw new Error(r.error);
+ toast('已重试该条目，执行器稍后接手','ok');closeDrawer();
+ setTimeout(()=>{if(TAB==='batch')btDetail(tid)},1500);return r;
+},{busyText:'重试中…',okText:'已重试'});}
+function fixByAgent(ctx){closeDrawer();setTab('agent');
+ setTimeout(()=>{const i=$('ag-input');if(i){i.value=`请修复批量任务 ${ctx.task} 第 ${ctx.i+1} 条的问题（未通过门禁：${(ctx.labels||[]).join('、')}）：先用工具查看该条目的详情和错误，给出针对性修复并创建 dry-run 修复任务`;i.focus()}},250);}
+
 /* ---- 条目详情（含质检门禁 + QA findings）---- */
 function openItemDetail(tid, i){
- openDrawer('条目详情', '<div class="mut">加载中…</div>');
+ openDrawer('条目详情', '<div class="mut">加载中…</div>',
+   [['↻ 重试此条', "retryItem('"+tid+"',"+i+")"]]);
  api('api/batch/item?id='+encodeURIComponent(tid)+'&i='+i).then(d=>{
   if(!d||d.error){$('drawer-body').innerHTML='<span class="bad">'+esc((d&&d.error)||'加载失败')+'</span>';return}
   const it=d.item||{},r=d.result||{},v=d.view||{},g=d.gates||{};
@@ -1306,6 +1315,22 @@ function openItemDetail(tid, i){
   const blocked=(g.blocked||[]).length?`<div class="bad" style="font-size:12px;margin-top:6px">被以下门禁拦截：${(g.blocked).map(esc).join('、')}</div>`:'';
   const structs=(it.struct_errors||[]).length?`<div class="mut" style="font-size:12px;margin-top:6px">结构问题：${(it.struct_errors).map(esc).join('；')}</div>`:'';
   const links=(d.links||[]).map(l=>l.url?`<a class="mini" style="text-decoration:none;display:inline-block;margin-right:6px" href="${esc(l.url)}" target="_blank">${esc(l.label)} ↗</a>`:`<button class="mini" onclick="openReader('${esc(l.reader)}')">${esc(l.label)}</button>`).join(' ')||'<span class="mut">无</span>';
+  // 每个失败门禁给出可执行修复建议
+  const GATE_FIX={
+   'post-write':'内容未过写作规则 → 让 Agent 按规则改稿，或到 QA 编排查看规则明细',
+   'geo':'缺少数据点/来源 URL → 用「GEO 缺口改稿」预设刷新本页',
+   'quota':'字数超出预算 → 让 Agent 精简到目标字数',
+   'language':'语言/标点不符 → 用「语言校验」修复，或指定正确语言重写',
+   '落地页结构':'版块不足/结构不符 → 用「落地页闭环（改稿→发布）」预设按结构重改',
+   '结构问题':'段落结构异常 → 让 Agent 按落地页结构重排',
+   'QA-阻断':'存在阻断级问题 → 到「QA 编排」一键生成修复任务',
+   'QA-告警':'存在告警项 → 可选择性修复'
+  };
+  const fails=Object.entries(g).filter(([k,val])=>val==='fail'||val==='warn').filter(([k])=>k!=='blocked');
+  const fixHints=fails.length?`<div style="margin-top:8px;padding:8px 10px;border-radius:8px;background:var(--warn-soft)">
+    <b style="font-size:12px">怎么修复</b>
+    <div class="mut" style="font-size:11.5px;margin-top:4px;line-height:1.7">${fails.map(([k])=>`<div>· <b>${esc(k)}</b>：${esc(GATE_FIX[k]||'查看规则后针对性调整')}</div>`).join('')}</div>
+    <button class="mini" style="margin-top:6px" onclick='fixByAgent(${JSON.stringify({task:tid,i:idx,labels:fails.map(f=>f[0])}).replace(/'/g,"&#39;")})'>🤖 让 Agent 修复这条</button></div>`:'';
   const findings=(d.findings||[]);
   const ftable=findings.length?`<table style="margin-top:6px"><tr><th>级别</th><th>规则</th><th>问题</th><th>可修复</th></tr>`+
     findings.map(f=>`<tr><td><span class="sev ${f.severity}">${esc(f.severity)}</span></td><td>${esc(f.rule)}</td>
@@ -1314,7 +1339,7 @@ function openItemDetail(tid, i){
     ['页面类型',it.page_type],['状态',(v.status_text||it.status)+(it.attempts>1?`（尝试 ${it.attempts} 次）`:'')],
     ['说明',v.detail],[ '错误',it.error],['草稿路径',r.path],['字符数',r.chars],['token',it.tokens||r.tokens],
     ['发布时间',r.documentId||''],['事务',r.transactionId||'']].filter(x=>x[1]!==undefined&&x[1]!==null&&String(x[1]).trim()!=='');
-  $('drawer-body').innerHTML=`<div style="margin-bottom:10px"><b style="font-size:12.5px">质检门禁</b><div style="margin-top:6px">${gates}</div>${blocked}${structs}</div>
+  $('drawer-body').innerHTML=`<div style="margin-bottom:10px"><b style="font-size:12.5px">质检门禁</b><div style="margin-top:6px">${gates}</div>${blocked}${structs}${fixHints}</div>
    <div style="margin-bottom:10px"><b style="font-size:12.5px">预览 / 操作</b><div style="margin-top:6px">${links}</div></div>
    <div style="margin-bottom:10px"><b style="font-size:12.5px">基本信息</b><div class="kv" style="margin-top:6px">
      ${kv.map(([k,val])=>`<span class="k">${esc(k)}</span><span class="v">${esc(String(val))}</span>`).join('')}</div></div>

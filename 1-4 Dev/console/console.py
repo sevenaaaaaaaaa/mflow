@@ -1475,6 +1475,25 @@ def _human_result(it, task):
 
 
 
+def batch_retry_item(tid, idx):
+    """重试单个条目：重置为 pending，任务回到 queued。"""
+    t = batch_load(tid)
+    if not t:
+        return {"error": "任务不存在"}
+    try:
+        idx = int(idx)
+    except Exception:
+        return {"error": "条目序号无效"}
+    it = next((x for x in (t.get("items") or []) if x.get("i") == idx), None)
+    if not it:
+        return {"error": "条目不存在"}
+    it["status"] = "pending"; it["error"] = ""; it["attempts"] = 0
+    t["status"] = "queued"
+    _batch_log(t, f"单条重试：条目 {idx + 1}")
+    batch_save(t)
+    return {"ok": True, "task": tid, "item": idx}
+
+
 def batch_revive_stale():
     """把长时间无进展的 running 任务重置为 queued（未完成项回到 pending），让执行器重新接手。"""
     revived = []
@@ -6553,7 +6572,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
                       "/api/batch/create", "/api/batch/action",
                       "/api/agent/chat", "/api/agent/execute", "/api/agent/run", "/api/agent/profile",
-                      "/api/batch/revive_stale",
+                      "/api/batch/revive_stale", "/api/batch/retry_item",
                       "/api/run/action",
                       "/api/qa/orchestrate", "/api/qa/recheck",
                       "/api/presets/run", "/api/housekeeping/run",
@@ -7075,6 +7094,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"ok": True, "run_id": run["id"], "steps": len(built)})
             if self.path == "/api/batch/revive_stale":
                 return self._send(200, batch_revive_stale())
+            if self.path == "/api/batch/retry_item":
+                return self._send(200, batch_retry_item(str(body.get("id", "")), body.get("i")))
             # ── Run 控制：取消 / 重试 ──
             if self.path == "/api/run/action":
                 rid = str(body.get("id", ""))
