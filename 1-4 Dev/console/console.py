@@ -3569,26 +3569,22 @@ def link_suggest(site, slug, section="tools", lang="en", top=5, same_section_boo
         return {"error": f"找不到源页：{slug}（{lang}）"}
     txt = src.read_text(errors="ignore")
     fms = _read_frontmatter(src)
-    stok = _tokens(fms.get("title", "") + " " + slug.replace("-", " ") + " " + re.sub(r"\s+", " ", txt)[:2500])
+    # 源页正文前段补 token（正文用于语义相关，标题/slug 更强）
+    stok = _tokens(fms.get("title", "") + " " + slug.replace("-", " ") + " " + re.sub(r"\s+", " ", txt)[:1500])
+    idx = _lib_link_index(site, lang)
     cands = []
-    for f in base.rglob("*.md"):
-        if f.name.startswith("_"):
+    for e in idx:
+        if e["slug"] == slug and e["section"] == section:
             continue
-        if f.parent.name != lang:
-            continue
-        if f.resolve() == src.resolve():
-            continue
-        fm = _read_frontmatter(f)
-        ntok = _tokens(f.stem.replace("-", " ") + " " + fm.get("title", ""))
-        ov = len(stok & ntok)
+        ov = len(stok & e["tok"])
         if ov < 2:
             continue
-        sec = f.parent.parent.name
+        sec = e["section"]
         score = ov * 2 + (same_section_boost if sec == section else 0)
-        cands.append((score, ov, sec, f.stem, fm.get("title", ""), f))
+        cands.append((score, ov, sec, e["slug"], e["title"]))
     cands.sort(key=lambda x: -x[0])
     out = []
-    for score, ov, sec, tslug, title, f in cands[:top]:
+    for score, ov, sec, tslug, title in cands[:top]:
         out.append({"slug": tslug, "title": title or tslug, "section": sec,
                     "url": _site_url(site, _page_type_for_section(site, sec), lang, tslug),
                     "relevance": round(score, 1), "overlap": ov})
@@ -3598,6 +3594,27 @@ def link_suggest(site, slug, section="tools", lang="en", top=5, same_section_boo
 
 
 _SECTION_PT = {}
+_LIB_LINK_CACHE = {}
+
+
+def _lib_link_index(site, lang):
+    """某站点某语言的页面 token 索引（缓存 10 分钟），供内链建议用。避免每次全库扫描。"""
+    key = (site, lang)
+    c = _LIB_LINK_CACHE.get(key)
+    if c and time.time() - c["ts"] < 600:
+        return c["idx"]
+    base = LIB_ROOT / site
+    idx = []
+    if base.exists():
+        for f in base.glob(f"*/{lang}/*.md"):
+            if f.name.startswith("_"):
+                continue
+            fm = _read_frontmatter(f)
+            sec = f.parent.parent.name
+            idx.append({"slug": f.stem, "section": sec, "title": fm.get("title", ""),
+                        "tok": _tokens(f.stem.replace("-", " ") + " " + fm.get("title", ""))})
+    _LIB_LINK_CACHE[key] = {"ts": time.time(), "idx": idx}
+    return idx
 
 
 def _page_type_for_section(site, section):
@@ -3612,6 +3629,7 @@ def link_audit(site, section="tools", lang="en", limit=50, top=5):
     base = LIB_ROOT / site / section / lang
     if not base.exists():
         return {"error": f"栏目不存在：{section}/{lang}"}
+    _lib_link_index(site, lang)  # 预热
     slugs = sorted(f.stem for f in base.glob("*.md"))[:limit]
     rows, no_link = [], []
     for sl in slugs:
