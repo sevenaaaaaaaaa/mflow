@@ -2540,7 +2540,7 @@ def local_embed(text, dim=512):
         w = (1 + math.log(cnt)) if cnt > 0 else 0
         vec[idx] = vec.get(idx, 0.0) + w
     n = math.sqrt(sum(v * v for v in vec.values())) or 1.0
-    return {k: round(v / n, 5) for k, v in vec.items()}
+    return {str(k): round(v / n, 5) for k, v in vec.items()}
 
 
 def remote_embed(texts):
