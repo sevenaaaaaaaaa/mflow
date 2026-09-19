@@ -360,6 +360,8 @@ button.clicked{animation:clickpulse .45s ease}
   <span class="ws"><span class="ws-ic">M</span>MFlow</span>
   <nav id="topnav"></nav>
   <span id="me-name" style="color:var(--muted);font-size:12px"></span>
+  <span id="worker-ind" class="mut" title="后台执行器状态" style="font-size:11px;display:flex;align-items:center;gap:5px;cursor:pointer" onclick="setTab('auto')">
+    <span id="worker-dot" style="width:8px;height:8px;border-radius:50%;background:var(--faint);display:inline-block"></span><span id="worker-tx">执行器</span></span>
   <span class="sp" style="flex:1"></span>
   <div class="bbar">
     <button class="cbtn" onclick="setTheme()" title="明暗切换"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg></button>
@@ -1541,6 +1543,14 @@ function seedOnboard(ev){return withBtn(ev, async()=>{
  toast(`已填充 ${n} 个任务${skip?'（'+skip+' 项需人工发起）':''}`,'ok');
  setTimeout(()=>setTab('run'),900);return r;
 },{busyText:'填充中…',okText:'已填充'});}
+function workerPing(){api('api/health').then(h=>{
+ const d=$('worker-dot'),t=$('worker-tx');if(!d)return;
+ const w=(h&&h.worker)||{};const ok=w.alive;
+ d.style.background=ok?'var(--ok)':'var(--bad)';d.style.boxShadow=ok?'0 0 0 3px var(--ok-soft)':'0 0 0 3px var(--warn-soft)';
+ if(t)t.textContent=ok?'执行器在线':('执行器离线'+(w.idle_sec<999999?`（${w.idle_sec}s）`:''));
+ if(!ok&&!window.__workerWarned){window.__workerWarned=1;toast('⚠️ 后台执行器离线——任务不会执行，请到「调度与日志」检查服务','bad',8000)}
+ if(ok)window.__workerWarned=0;
+}).catch(()=>{})}
 /* ---- 系统自检（防卡死）---- */
 function loadSelfcheck(){api('api/selfcheck').then(d=>{
  const el=$('selfcheck');if(!el||!d)return;
@@ -2731,7 +2741,11 @@ function runDetail(id){RUN_ID=id;api('api/run/detail?id='+encodeURIComponent(id)
  const _st={running:'运行中',done:'完成',warn:'完成（有告警）',failed:'失败',cancelled:'已取消'}[r.status]||r.status;
  $('run-badge').innerHTML=`<span class="badge" style="background:${_bg}">${_st}</span> <span class="mut" style="font-size:11px">${ov.done||0}/${ov.total||0} 步 · ${ov.pct||0}%</span>`;
  const steps=r.steps||[];
- const m=r.metrics||{};const rk=r.risk||{};
+ const m=r.metrics||{};const rk=r.risk||{};const lv=r.liveness||{};
+ const liveLine=`<div class="mut" style="font-size:11.5px;margin-bottom:8px">
+   执行器 <span style="color:${lv.worker_alive?'var(--ok)':'var(--bad)'}">${lv.worker_alive?'在线':'离线'}</span>
+   ${lv.recovered?` · 已自动恢复 <b style="color:var(--warn)">${lv.recovered}</b> 次`:''}
+   ${r.status==='running'&&!lv.worker_alive?' · <span class="bad">执行器离线，任务已暂停，恢复服务后自动继续</span>':''}</div>`;
  const fmt=(n)=>n>=60?Math.floor(n/60)+'m'+String(n%60).padStart(2,'0')+'s':(n||0)+'s';
  const riskColor=rk.level==='high'?'var(--bad)':rk.level==='medium'?'var(--warn)':rk.level==='low'?'var(--accent)':'var(--muted)';
  const riskBanner=(rk.items&&rk.items.length)?`<div style="margin:6px 0 10px;padding:8px 10px;border-radius:8px;background:var(--surface);border-left:3px solid ${riskColor}">
@@ -2752,7 +2766,7 @@ function runDetail(id){RUN_ID=id;api('api/run/detail?id='+encodeURIComponent(id)
      ?`<a class="mini" style="text-decoration:none" href="${esc(x.url)}" target="_blank">🌐 ${esc(x.label)} ↗</a>`
      :(x.kind==='published'?`<span class="mini">✅ 已发布 ${esc(x.id)}</span>`
      :`<button class="mini" onclick="openReader('${esc(x.path)}')">📄 ${esc(x.label)}</button>`)).join('')}</div></div>`:'';
- $('run-canvas').innerHTML=`<div class="run-pbar"><div style="width:${ov.pct||0}%"></div></div>`+metricsRow+riskBanner+
+ $('run-canvas').innerHTML=`<div class="run-pbar"><div style="width:${ov.pct||0}%"></div></div>`+liveLine+metricsRow+riskBanner+
   steps.map((st,i)=>{
    const dot={done:'✓',failed:'✕',warn:'!',running:'●',replanned:'↻',blocked:'—',pending:i+1}[st.status]||i+1;
    const prog=(st.type==='batch'&&st.progress!=null)?`<div class="run-step-progress"><div style="width:${st.progress}%"></div></div>`:'';
@@ -2831,6 +2845,7 @@ function btDetail(id){api('api/batch/detail?id='+encodeURIComponent(id)).then(t=
      <button class="mini" onclick="openItemDetail('${esc(t.id)}',${i.i})">详情 ⤢</button></td></tr>`}).join('');
  $('bt-detail').innerHTML=`<div style="font-size:13px;padding:10px 12px;border-radius:10px;margin-bottom:10px;background:${sm.ok?'var(--ok-soft)':'var(--warn-soft)'}">
    <b>${esc(sm.line||'')}</b>${t.dry_run?'<div class="mut" style="font-size:11.5px;margin-top:3px">dry-run：只校验、不写生产库。确认无误后到任务列表关掉 dry-run 再跑一次即可真正生效。</div>':''}</div>
+  ${(()=>{const lv=t.liveness||{};return `<div class="mut" style="font-size:11.5px;margin-bottom:6px">心跳 ${esc(lv.heartbeat_at||'—')}${lv.idle_sec!=null?`（${lv.idle_sec}s 前）`:''}${lv.recovered?` · 已自动恢复 <b style="color:var(--warn)">${lv.recovered}</b> 次`:''}${lv.stale?' · <span class="warn">疑似停滞，执行器将自动恢复</span>':''}</div>`})()}
   <div class="mut" style="font-size:11.5px;line-height:1.8;margin-bottom:8px">类型 ${esc(t.type)} · 并发 ${t.concurrency} · 创建 ${esc(t.created)} · ${esc(t.created_by||'')}${(t.log||[]).length?'<br>最近日志：'+esc((t.log||[]).slice(-2).join(' | ')):''}</div>
   <div style="max-height:400px;overflow:auto"><table><tr><th>#</th><th>条目</th><th>结果</th><th>操作</th></tr>${rows||'<tr><td colspan="4" class="mut">无条目</td></tr>'}</table></div>`})}
 
@@ -2932,7 +2947,7 @@ function loadProjs(){api('api/projects').then(d=>{const sel=$('proj-sel');
 function switchProj(id){api('api/projects/switch',{id}).then(()=>location.reload())}
 function newProject(){const n=prompt('新项目名称：');if(!n)return;
  api('api/projects/create',{name:n}).then(r=>{if(r.error)return alert(r.error);return api('api/projects/switch',{id:r.id})}).then(()=>location.reload())}
-topnavBuild();mascotAttach();
+topnavBuild();mascotAttach();workerPing();setInterval(workerPing,30000);
 loadProjs();
 api('api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version).catch(()=>{});
 setTab('home');
