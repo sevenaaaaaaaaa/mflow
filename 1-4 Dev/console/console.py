@@ -1475,6 +1475,28 @@ def _human_result(it, task):
 
 
 
+def batch_revive_stale():
+    """把长时间无进展的 running 任务重置为 queued（未完成项回到 pending），让执行器重新接手。"""
+    revived = []
+    for f in sorted(BATCH_DIR.glob("batch-*.json")):
+        try:
+            t = read_json(f, {}) or {}
+            if t.get("status") not in ("running", "queued"):
+                continue
+            if time.time() - f.stat().st_mtime <= 900:
+                continue
+            for it in t.get("items", []):
+                if it.get("status") == "running":
+                    it["status"] = "pending"
+            t["status"] = "queued"
+            _batch_log(t, "看板自检：检测到长时间无进展，已重置为排队（重新接手）")
+            batch_save(t)
+            revived.append(t["id"])
+        except Exception:
+            pass
+    return {"revived": revived, "count": len(revived)}
+
+
 def batch_item_detail(tid, idx):
     """单个条目的完整详情：字段 + 结果 + 质检门禁 + QA findings + 预览链接。"""
     t = batch_load(tid)
@@ -5138,6 +5160,160 @@ def _greet():
     return "凌晨了" if h < 6 else ("早上好" if h < 12 else ("下午好" if h < 18 else "晚上好"))
 
 
+
+# ===================== 系统自检（防"卡死无法继续"）=====================
+def selfcheck(proj=None):
+    """检测会阻断使用的因素，每条给出人话说明 + 一键修复/去配置。返回 {level, checks}。"""
+    proj = proj or DEFAULT_PROJECT
+    site = site_of(proj)
+    checks = []
+
+    def add(cid, level, title, detail, fix=None):
+        checks.append({"id": cid, "level": level, "title": title, "detail": detail, "fix": fix})
+
+    # 1) LLM
+    try:
+        _c = llm_config()
+        _prov = _c["providers"][_c["profiles"]["default"]["provider"]]
+        if not _prov.get("key"):
+            add("llm", "block", "大模型未配置", "所有生成/改稿/Agent 都依赖大模型。",
+                {"label": "去设置", "action": "tab:set"})
+        else:
+            st = read_json(RUN_DIR / "llm-status.json", {}) or {}
+            if st.get("ok") is False and st.get("code") == 402:
+                add("llm_balance", "block", "DeepSeek 余额不足（HTTP 402）",
+                    "AI 生成已暂停；充值后自动恢复。无需 AI 的动作仍可用。",
+                    {"label": "去充值", "action": "url:https://platform.deepseek.com/top_up"})
+            elif st.get("ok") is False:
+                add("llm_err", "warn", "大模型调用最近失败",
+                    "最近一次调用失败：" + str(st.get("msg", ""))[:120],
+                    {"label": "去设置", "action": "tab:set"})
+    except Exception:
+        pass
+
+    # 2) Sanity / 发布器
+    try:
+        if not SANITY_PUB:
+            add("sanity_pub", "block", "Sanity 发布器未加载",
+                "无法发布/写库。通常是 token 缺失或模块加载失败。",
+                {"label": "去设置", "action": "tab:set"})
+        else:
+            cfg = SANITY_PUB.sanity_cfg()
+            if not cfg.get("token"):
+                add("sanity_token", "block", "Sanity token 缺失",
+                    "发布与写库不可用。", {"label": "去设置", "action": "tab:set"})
+    except Exception:
+        pass
+
+    # 3) GSC 数据
+    try:
+        gsc_f = RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json"
+        if not gsc_f.exists():
+            add("gsc", "warn", "缺少 GSC 数据",
+                "低 CTR / 衰减 / 关键词情报等功能没有数据源。",
+                {"label": "去数据管线", "action": "tab:trident"})
+        else:
+            age_h = (time.time() - gsc_f.stat().st_mtime) / 3600
+            if age_h > 24 * 21:
+                add("gsc_stale", "warn", "GSC 数据超过 3 周未更新",
+                    f"最近更新约 {int(age_h/24)} 天前，建议重新采集。",
+                    {"label": "去数据管线", "action": "tab:trident"})
+    except Exception:
+        pass
+
+    # 4) 知识库
+    try:
+        kb = PROJECT / "1-2 Insight" / "Knowledge Base"
+        n = len(list(kb.rglob("*.md"))) if kb.exists() else 0
+        if n == 0:
+            add("kb", "warn", "知识库为空",
+                "生成内容会缺少真实事实，容易编造。",
+                {"label": "去知识库", "action": "tab:kb"})
+    except Exception:
+        pass
+
+    # 5) 内容库
+    try:
+        idx = read_json(LIB_ROOT / site / "index.json", {})
+        if not idx.get("sections"):
+            add("lib", "warn", "内容库未同步",
+                "生成时无法参考同类已发布页、也无法按真实范围展开。",
+                {"label": "去内容库同步", "action": "tab:lib"})
+    except Exception:
+        pass
+
+    # 6) 熔断
+    try:
+        blocked, bst = breaker_check()
+        if blocked:
+            add("breaker", "block", "全局熔断中",
+                "批量执行已暂停：" + str((bst or {}).get("reason", ""))[:120],
+                {"label": "一键解除熔断", "action": "api:/api/breaker/reset", "confirm": True})
+    except Exception:
+        pass
+
+    # 7) 卡住的任务
+    try:
+        stale = []
+        for f in BATCH_DIR.glob("batch-*.json"):
+            t = read_json(f, {}) or {}
+            if t.get("status") in ("running", "queued"):
+                idle = time.time() - f.stat().st_mtime
+                if idle > 900:  # 15 分钟无进展
+                    stale.append(t)
+        if stale:
+            add("stuck", "warn", f"{len(stale)} 个任务疑似卡住",
+                "超过 15 分钟无进展（执行器可能被中断）。可一键重试或取消。",
+                {"label": "重试卡住任务", "action": "api:/api/batch/revive_stale", "confirm": True})
+    except Exception:
+        pass
+
+    # 8) 配额
+    try:
+        me = ""
+        for un in [a.get("username") for a in read_json(AUTH_FILE, [])][:50]:
+            q = user_quota(un, (auth_record(un) or {}).get("role", "operator"))
+            if not q:
+                continue
+            u = usage_get(un)
+            for metric, used, cap, lab in (("items", u["items"], q["items_per_month"], "条目"),
+                                            ("tokens", u["tokens"], q["tokens_per_month"], "token"),
+                                            ("writes", u["writes"], q["writes_per_month"], "写入")):
+                if cap and used / max(1, cap) >= 0.9:
+                    add("quota_" + un + "_" + metric, "warn", f"{un} 的 {lab}配额将满",
+                        f"已用 {used}/{cap}（{int(round(100*used/cap))}%）",
+                        {"label": "去配额设置", "action": "tab:set"})
+                    break
+    except Exception:
+        pass
+
+    # 9) 维护/梦境
+    try:
+        if HOUSEKEEPING_LOG.exists():
+            age_h = (time.time() - HOUSEKEEPING_LOG.stat().st_mtime) / 3600
+            if age_h > 24 * 7:
+                add("housekeeping", "info", "维护任务超过 1 周未运行",
+                    "磁盘清理/归档会逐渐堆积。", {"label": "一键运行维护", "action": "api:/api/housekeeping/run"})
+    except Exception:
+        pass
+
+    # 10) 质检阻断过多
+    try:
+        h = health_report(proj)
+        if (h.get("noise") or {}).get("qa_block_24h", 0) >= 30:
+            add("qa_block", "info", "近 24h 质检阻断较多",
+                f"{h['noise']['qa_block_24h']} 条未通过，建议跑一轮 QA 编排修复。",
+                {"label": "去 QA 编排", "action": "tab:qa"})
+    except Exception:
+        pass
+
+    order = {"block": 0, "warn": 1, "info": 2}
+    checks.sort(key=lambda c: order.get(c["level"], 3))
+    level = ("block" if any(c["level"] == "block" for c in checks)
+             else ("warn" if any(c["level"] == "warn" for c in checks) else "ok"))
+    return {"level": level, "checks": checks, "at": datetime.now().strftime("%Y-%m-%d %H:%M")}
+
+
 def next_actions(proj=None):
     """推荐下一步：根据系统状态给出人话建议 + 一键动作。所有新手/老手都能用。"""
     proj = proj or DEFAULT_PROJECT
@@ -6128,6 +6304,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, next_actions(self._proj()))
             if parsed.path == "/api/start":
                 return self._send(200, start_report(self._me(), self._proj()))
+            if parsed.path == "/api/selfcheck":
+                return self._send(200, selfcheck(self._proj()))
             if parsed.path == "/api/housekeeping":
                 lg = []
                 if HOUSEKEEPING_LOG.exists():
@@ -6375,6 +6553,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
                       "/api/batch/create", "/api/batch/action",
                       "/api/agent/chat", "/api/agent/execute", "/api/agent/run", "/api/agent/profile",
+                      "/api/batch/revive_stale",
                       "/api/run/action",
                       "/api/qa/orchestrate", "/api/qa/recheck",
                       "/api/presets/run", "/api/housekeeping/run",
@@ -6894,6 +7073,8 @@ class Handler(BaseHTTPRequestHandler):
                                           "run_id": run["id"]})
                     agent_save(s)
                 return self._send(200, {"ok": True, "run_id": run["id"], "steps": len(built)})
+            if self.path == "/api/batch/revive_stale":
+                return self._send(200, batch_revive_stale())
             # ── Run 控制：取消 / 重试 ──
             if self.path == "/api/run/action":
                 rid = str(body.get("id", ""))

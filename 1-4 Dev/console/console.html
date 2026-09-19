@@ -436,6 +436,7 @@ button.clicked{animation:clickpulse .45s ease}
       <div class="mut" id="mode-desc" style="font-size:12px;margin-top:4px"></div>
       <div class="mut" id="mode-promo" style="font-size:12px;margin-top:4px"></div>
       <div class="mut" id="mode-counts" style="font-size:11px;margin-top:4px"></div></div>
+    <div id="selfcheck"></div>
     <div id="start-brief"></div>
     <div id="next-actions"></div>
     <div class="metrics" id="metrics"></div>
@@ -1354,6 +1355,39 @@ function mascotAsk(preset){const inp=$('mc-input');const q=(typeof preset==='str
  }).catch(()=>{box.innerHTML='<span class="bad">请求失败</span>'})}
 function mascotAttach(){try{const n=JSON.parse(localStorage.getItem('mflow-console-v1')||'{}').mascotSeen;if(!n){const p=$('mascot-ping');if(p)p.classList.add('on');setTimeout(()=>{const q=$('mascot-ping');if(q)q.classList.remove('on')},15000);localStorage.setItem('mflow-console-v1',JSON.stringify({...JSON.parse(localStorage.getItem('mflow-console-v1')||'{}'),mascotSeen:1}))}}catch(e){}}
 
+/* ---- 系统自检（防卡死）---- */
+function loadSelfcheck(){api('api/selfcheck').then(d=>{
+ const el=$('selfcheck');if(!el||!d)return;
+ const badge=$('nav-home-badge');
+ const checks=(d.checks||[]).filter(c=>c.id!=='housekeeping'||c.level!=='info');
+ if(!checks.length){el.innerHTML='';if(badge)badge.style.display='none';return}
+ const lvColor={block:'var(--bad)',warn:'var(--warn)',info:'var(--accent)'};
+ el.innerHTML=`<div class="card" style="margin-bottom:14px;border-left:3px solid ${lvColor[d.level]||'var(--accent)'}">
+  <div class="card-head"><h3>系统自检 <span class="badge" style="background:${lvColor[d.level]||'var(--accent)'}">${d.level==='block'?'需处理':(d.level==='warn'?'有告警':'提示')}</span></h3>
+   <span class="mut" style="font-size:11px">${esc(d.at||'')}</span></div>
+  <div style="display:flex;flex-direction:column;gap:8px">${checks.map(c=>`
+   <div style="display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid var(--border)">
+    <span style="width:8px;height:8px;border-radius:50%;background:${lvColor[c.level]||'var(--muted)'};flex:0 0 auto"></span>
+    <div style="flex:1"><div style="font-size:12.5px;font-weight:600">${esc(c.title)}</div>
+     <div class="mut" style="font-size:11.5px">${esc(c.detail||'')}</div></div>
+    ${c.fix?`<button class="mini" onclick='runFix(${JSON.stringify(c.fix).replace(/'/g,"&#39;")},event)'>${esc(c.fix.label)}</button>`:''}
+   </div>`).join('')}</div></div>`;
+ if(badge){const n=checks.filter(c=>c.level!=='info').length;badge.style.display=n?'inline-block':'none';badge.textContent=n}
+}).catch(()=>{})}
+function runFix(fix,ev){
+ if(!fix||!fix.action)return;
+ const [kind,...rest]=fix.action.split(':');
+ const val=rest.join(':');
+ if(kind==='tab'){setTab(val);toast('已前往：'+val,'ok');return}
+ if(kind==='url'){window.open(val,'_blank');return}
+ if(kind==='api'){
+  if(fix.confirm&&!confirm(fix.label+'？'))return;
+  return withBtn(ev, async()=>{const r=await api(val,{});
+   if(r&&r.error)throw new Error(r.error);
+   toast('已执行：'+fix.label,'ok');setTimeout(()=>loadSelfcheck(),1200);return r;
+  },{busyText:'执行中…',okText:'已执行'});
+ }
+}
 /* ---- 开工简报（继续上次 / 隔夜简报）---- */
 function loadStart(){api('api/start').then(d=>{
  const el=$('start-brief');if(!el||!d||d.error)return;
@@ -1498,7 +1532,7 @@ function fmtHook(out){return String(out||'').split('\n').map(l=>{
  return esc(l)}).join('\n')}
 
 /* ---- 总览 ---- */
-function loadHome(){modeLoad();loadStart();loadNextActions();api('api/overview').then(o=>{
+function loadHome(){modeLoad();loadSelfcheck();loadStart();loadNextActions();api('api/overview').then(o=>{
  const h=new Date().getHours();const hi=h<6?'夜深了':h<12?'早上好':h<18?'下午好':'晚上好';
  $('greet').innerHTML=`${hi}，<em class="sf">${esc(window.__ME||'运营')}</em>`;
  $('greet-sub').textContent=`待办 ${o.open_tasks} · 管线 ${o.pipeline_inflight} · 分发待发 ${o.dist_open} · 最近一次每日管线 ${o.daily.running?'运行中':'已完成'}`;
