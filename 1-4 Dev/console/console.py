@@ -10,6 +10,7 @@ stdlib + `markdown` package only. Publishing stays display-only (iron rule).
 Auth: MFLOW_CONSOLE_PASSWORD from env; fail-closed when unset.
 """
 import hashlib
+import hmac
 import importlib.util
 import json
 import math
@@ -491,6 +492,104 @@ def notify_task_end(task):
         _batch_log(task, f"离线通知 {owner or '(未指定)'} → {info}")
     except Exception as e:
         print(f"[console] notify_task_end: {e}", file=sys.stderr)
+
+
+
+# ===================== 出站 Webhook（任务/执行/发布事件推送外部系统）=====================
+WEBHOOKS_FILE = RUN_DIR / "webhooks.json"
+WEBHOOK_LOG = RUN_DIR / "webhooks.log"
+WEBHOOK_EVENTS = ["task.done", "task.failed", "task.tripped", "run.done", "run.failed",
+                  "publish.done", "automation.run", "loop.done", "audit.rollback"]
+
+
+def webhooks_cfg():
+    arr = read_json(WEBHOOKS_FILE, []) or []
+    out = []
+    for w in arr:
+        w = dict(w)
+        if w.get("secret"):
+            w["secret"] = "***"
+        out.append(w)
+    return out
+
+
+def webhooks_raw():
+    return read_json(WEBHOOKS_FILE, []) or []
+
+
+def webhook_save(w):
+    arr = webhooks_raw()
+    w = dict(w)
+    if not w.get("url", "").startswith("http"):
+        return {"error": "url 必须以 http(s):// 开头"}
+    if not w.get("id"):
+        w["id"] = "wh-" + secrets.token_hex(3)
+    if w.get("secret") == "***":
+        w.pop("secret", None)  # 未修改
+    for i, x in enumerate(arr):
+        if x.get("id") == w["id"]:
+            arr[i] = {**x, **w}
+            break
+    else:
+        arr.append(w)
+    RUN_DIR.mkdir(parents=True, exist_ok=True)
+    WEBHOOKS_FILE.write_text(json.dumps(arr, ensure_ascii=False, indent=1))
+    return {"ok": True, "id": w["id"]}
+
+
+def webhook_delete(wid):
+    arr = [x for x in webhooks_raw() if x.get("id") != wid]
+    WEBHOOKS_FILE.write_text(json.dumps(arr, ensure_ascii=False, indent=1))
+    return {"ok": True}
+
+
+def _webhook_deliver(url, body, secret="", headers=None):
+    data = json.dumps(body, ensure_ascii=False).encode()
+    hdr = {"Content-Type": "application/json", **(headers or {})}
+    if secret:
+        hdr["X-MFlow-Signature"] = "sha256=" + hmac.new(secret.encode(), data, hashlib.sha256).hexdigest()
+    req = urllib.request.Request(url, data=data, headers=hdr)
+    with urllib.request.urlopen(req, timeout=15) as r:
+        return r.status
+
+
+def webhook_emit(event, payload):
+    """事件推送（后台线程，失败静默；不改动业务）。"""
+    targets = [w for w in webhooks_raw() if w.get("enabled") and (event in (w.get("events") or []))]
+    if not targets:
+        return 0
+
+    def _do():
+        for w in targets:
+            try:
+                st = _webhook_deliver(w["url"], {"event": event, "at": datetime.now().isoformat(timespec="seconds"),
+                                                 "data": payload}, w.get("secret", ""), w.get("headers"))
+                line = f"{datetime.now().isoformat(timespec='seconds')} {event} -> {w.get('name') or w['id']} HTTP {st}"
+            except Exception as e:
+                line = f"{datetime.now().isoformat(timespec='seconds')} {event} -> {w.get('name') or w.get('id')} FAIL {str(e)[:120]}"
+            try:
+                with open(WEBHOOK_LOG, "a") as f:
+                    f.write(line + "\n")
+            except Exception:
+                pass
+
+    try:
+        threading.Thread(target=_do, daemon=True).start()
+    except Exception:
+        pass
+    return len(targets)
+
+
+def webhook_test(wid):
+    w = next((x for x in webhooks_raw() if x.get("id") == wid), None)
+    if not w:
+        return {"error": "webhook 不存在"}
+    try:
+        st = _webhook_deliver(w["url"], {"event": "test", "at": datetime.now().isoformat(timespec="seconds"),
+                                         "data": {"hello": "MFlow webhook test"}}, w.get("secret", ""), w.get("headers"))
+        return {"ok": True, "status": st}
+    except Exception as e:
+        return {"error": str(e)[:200]}
 
 
 def notify_loop_end(loop, proj, outcome):
@@ -1990,7 +2089,14 @@ def run_tick():
                                  else ("warn" if any(st["status"] == "warn" for st in steps) else "done"))
                 changed = True
             if changed:
+                prev = read_json(f, {}).get("status")
                 run_save(run)
+                if run.get("status") in ("done", "failed", "warn") and prev != run.get("status"):
+                    try:
+                        webhook_emit("run." + run["status"], {"run_id": run["id"], "title": run.get("title"),
+                                                              "metrics": run.get("metrics"), "risk": run.get("risk")})
+                    except Exception:
+                        pass
         except Exception as e:
             print(f"[console] run_tick {f.name}: {e}", file=sys.stderr)
 
@@ -2278,6 +2384,10 @@ def audit_rollback(cid, by=""):
     try:
         with open(RUN_DIR / "approvals.log", "a") as f:
             f.write(f"{datetime.now().isoformat(timespec='seconds')} AUDIT-ROLLBACK {cid} doc={did} by={by}\n")
+    except Exception:
+        pass
+    try:
+        webhook_emit("audit.rollback", {"change": cid, "doc_id": did, "restored": list(sets), "by": by})
     except Exception:
         pass
     return {"ok": True, "id": cid, "rollback_tx": res.get("transactionId", ""), "restored": list(sets)}
@@ -3462,6 +3572,12 @@ def batch_worker():
                     _batch_log(task, f"任务链生成失败：{str(ce)[:160]}")
             if task.get("status") in ("done", "failed", "tripped"):
                 notify_task_end(task)
+                try:
+                    webhook_emit("task." + task["status"], {"task_id": task["id"], "type": task.get("type"),
+                                                            "title": task.get("title"), "dry_run": task.get("dry_run"),
+                                                            "stats": task.get("stats"), "tokens": task.get("tokens", 0)})
+                except Exception:
+                    pass
             batch_save(task)
         except Exception as e:
             print(f"[batch] {e}", file=sys.stderr)
@@ -6712,6 +6828,10 @@ def automation_run(aid, proj=None, by="automation"):
             return {"error": "未知 mode：" + mode}
         automation_save({"id": aid, "last_run": datetime.now().strftime("%Y-%m-%d %H:%M"), **out})
         try:
+            webhook_emit("automation.run", {"automation": aid, "name": a.get("name"), "mode": mode, **out})
+        except Exception:
+            pass
+        try:
             with open(RUN_DIR / "approvals.log", "a") as f:
                 f.write(f"{datetime.now().isoformat(timespec='seconds')} AUTOMATION-RUN {aid} mode={mode} "
                         f"dry_run={dry} by={by} {out}\n")
@@ -7631,6 +7751,10 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/batch/failures":
                 t = batch_load(qs.get("id", [""])[0])
                 return self._send(200, failure_digest(t) if t else {"error": "任务不存在"})
+            if parsed.path == "/api/webhooks":
+                return self._send(200, {"webhooks": webhooks_cfg(), "events": WEBHOOK_EVENTS,
+                                        "log": ([l for l in WEBHOOK_LOG.read_text(errors="ignore").strip().split("\n") if l][-15:]
+                                                if WEBHOOK_LOG.exists() else [])})
             if parsed.path == "/api/audit/changes":
                 return self._send(200, {"changes": audit_list(int(qs.get("limit", ["100"])[0] or 100))})
             if parsed.path == "/api/rag/status":
@@ -8034,7 +8158,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/account/list", "/api/account/reset", "/api/dispatch/approve",
                       "/api/trident/run", "/api/daily/run", "/api/tasks/del",
                       "/api/notify/save", "/api/notify/test", "/api/email/save", "/api/email/test", "/api/user/email",
-                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install", "/api/memory/fact", "/api/memory/entity", "/api/rag/build", "/api/audit/rollback",
+                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install", "/api/memory/fact", "/api/memory/entity", "/api/rag/build", "/api/audit/rollback", "/api/webhooks/save", "/api/webhooks/delete", "/api/webhooks/test",
                       "/api/plugins/toggle", "/api/plugins/state",
                       "/api/geo/probe",
                       "/api/pay/product/save", "/api/pay/product/delete", "/api/pay/cards/import",
@@ -8189,6 +8313,13 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(404, {"error": "用户不存在"})
                 AUTH_FILE.write_text(json.dumps(recs, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True, "username": un, "email": em})
+            if self.path == "/api/webhooks/save":
+                return self._send(200, webhook_save(body))
+            if self.path == "/api/webhooks/delete":
+                return self._send(200, webhook_delete(str(body.get("id", ""))))
+            if self.path == "/api/webhooks/test":
+                r = webhook_test(str(body.get("id", "")))
+                return self._send(200 if r.get("ok") else 400, r)
             if self.path == "/api/audit/rollback":
                 return self._send(200, audit_rollback(str(body.get("id", "")), self._me()))
             if self.path == "/api/rag/build":

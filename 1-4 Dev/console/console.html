@@ -1084,6 +1084,11 @@ body.sb-open #sb-mask{display:block}
         <button class="btn primary" onclick="emailSave()">保存邮件配置</button></div>
       <div id="em-users" style="margin-top:10px"></div>
       <div class="mut" id="em-status" style="margin-top:6px">批量任务完成/失败/熔断时，若创建者当前不在登录态，则发邮件提醒他回来查看。</div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>出站 Webhook <span class="mut">（事件推送外部系统）</span></h3>
+      <button class="mini" onclick="whAdd()">＋ 新增</button></div>
+      <div class="mut" style="font-size:12px">任务/执行/发布/自动化/回滚事件 POST 到你的端点（带 HMAC 签名，可选）。事件：task.done / task.failed / task.tripped / run.done / run.failed / automation.run / audit.rollback。</div>
+      <div id="wh-list" style="margin-top:10px"></div>
+      <details style="margin-top:8px"><summary class="mut" style="font-size:11.5px;cursor:pointer">最近投递日志</summary><pre id="wh-log" style="font-size:11px;max-height:180px;overflow:auto"></pre></details></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>账号与角色 <span class="mut">（admin 专属 · 密码校验继承 OpenFlow bcrypt）</span></h3>
       <span class="mut" id="acc-role"></span></div><div id="acc-list"></div>
       <div class="row" style="margin-top:10px"><input id="acc-u" placeholder="账号用户名" style="flex:1;min-width:140px">
@@ -2264,6 +2269,38 @@ function notifySave(){api('api/notify/save',{enabled:$('nt-en').checked,feishu_w
  .then(()=>{$('nt-status').innerHTML='<span class="ok">✓ 已保存</span>（仅 admin 可改）'})}
 function notifyTest(){$('nt-status').textContent='发送中…';
  api('api/notify/test',{}).then(r=>{$('nt-status').innerHTML=r.ok?'<span class="ok">✓ 测试消息已发出，去飞书群查看</span>':'<span class="warn">发送失败：先保存启用状态与 Webhook</span>'})}
+function whAdd(){openDrawer('新增 Webhook', `
+  <div class="kv" style="grid-template-columns:100px 1fr">
+   <span class="k">名称</span><input id="wh-name" placeholder="如：飞书机器人 / n8n / Zapier" style="width:100%">
+   <span class="k">URL</span><input id="wh-url" placeholder="https://..." style="width:100%">
+   <span class="k">密钥</span><input id="wh-secret" placeholder="可选：用于 HMAC 签名" style="width:100%">
+   <span class="k">事件</span><div id="wh-events" class="chips" style="grid-column:2"></div>
+  </div>
+  <div class="row" style="margin-top:10px"><button class="btn primary" onclick="whSave(null,event)">保存</button></div>`);
+ const ev=$('wh-events');
+ api('api/webhooks').then(d=>{ev.innerHTML=(d.events||[]).map(e=>`<span class="chip" data-ev="${esc(e)}" onclick="this.classList.toggle('on')">${esc(e)}</span>`).join('')})}
+function whSave(id,ev){const evs=[...document.querySelectorAll('#wh-events .chip.on')].map(x=>x.dataset.ev);
+ if(!evs.length)return toast('至少选一个事件','warn');
+ return withBtn(ev,async()=>{const r=await api('api/webhooks/save',{id:id||'',name:$('wh-name').value.trim(),url:$('wh-url').value.trim(),
+   secret:$('wh-secret').value.trim(),events:evs,enabled:true});
+  if(r.error)throw new Error(r.error);toast('已保存','ok');closeDrawer();loadWebhooks();return r;
+ },{busyText:'保存中…',okText:'已保存'})}
+function loadWebhooks(){api('api/webhooks').then(d=>{
+ const el=$('wh-list');if(!el)return;const ws=(d&&d.webhooks)||[];
+ if(!ws.length){el.innerHTML=emptyBox('🔌','还没有 Webhook','新增一个',"whAdd()");$('wh-log').textContent=(d.log||[]).join('\n')||'—';return}
+ el.innerHTML=ws.map(w=>`<div style="display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border)">
+   <span class="badge" style="background:${w.enabled?'var(--ok)':'var(--muted)'}">${w.enabled?'启用':'停用'}</span>
+   <div style="flex:1"><b style="font-size:12.5px">${esc(w.name||w.id)}</b>
+    <div class="mut" style="font-size:11px">${esc(w.url)} · ${(w.events||[]).length} 事件</div></div>
+   <button class="mini" onclick="whTest('${esc(w.id)}')">测试</button>
+   <button class="mini" onclick="whToggle('${esc(w.id)}',${w.enabled?'false':'true'})">${w.enabled?'停用':'启用'}</button>
+   <button class="mini" style="color:var(--danger)" onclick="whDel('${esc(w.id)}')">删除</button></div>`).join('');
+ $('wh-log').textContent=(d.log||[]).join('\n')||'（暂无投递）'})}
+function whTest(id){withBtn(event,async()=>{const r=await api('api/webhooks/test',{id});
+ if(r.error)throw new Error(r.error);toast('测试投递成功 HTTP '+r.status,'ok');loadWebhooks();return r;
+},{busyText:'投递中…',okText:'已投递'})}
+function whToggle(id,en){api('api/webhooks/save',{id,enabled:en}).then(()=>loadWebhooks())}
+function whDel(id){if(!confirm('删除该 Webhook？'))return;api('api/webhooks/delete',{id}).then(()=>loadWebhooks())}
 function loadEmail(){api('api/email').then(c=>{if(!c||c.error)return;
  $('em-en').checked=!!c.enabled;$('em-host').value=c.host||'';$('em-port').value=c.port||465;$('em-tls').value=c.tls||'ssl';
  $('em-user').value=c.user||'';$('em-sender').value=c.sender||'';$('em-default').value=c.default_to||'';
@@ -2284,7 +2321,7 @@ function emailSave(){const rec={};document.querySelectorAll('[data-em-user]').fo
 function emailTest(){$('em-status').textContent='发送中…';
  api('api/email/test',{to:$('em-default').value.trim()}).then(r=>{
   $('em-status').innerHTML=r.ok?`<span class="ok">✓ 测试邮件已发往 ${esc(r.to||'')}</span>`:`<span class="warn">发送失败：${esc(r.info||'')}</span>`})}
-function loadSys(){loadEmail();api('api/overview').then(o=>{$('drun').innerHTML=o.daily.running?'<span class="warn">运行中…</span>':'<span class="ok">空闲</span>';
+function loadSys(){loadEmail();loadWebhooks();api('api/overview').then(o=>{$('drun').innerHTML=o.daily.running?'<span class="warn">运行中…</span>':'<span class="ok">空闲</span>';
  $('drbtn').disabled=o.daily.running;$('dtail').textContent=o.daily.tail||'（尚无日志）';$('stimers').textContent=o.timers});
  loadSchedReport()}
 function loadSchedReport(){api('api/schedule/all').then(r=>{
