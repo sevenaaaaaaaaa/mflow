@@ -1471,6 +1471,39 @@ def _human_result(it, task):
     return {"ok": True, "status_text": "完成", "detail": ""}
 
 
+
+def batch_item_detail(tid, idx):
+    """单个条目的完整详情：字段 + 结果 + 质检门禁 + QA findings + 预览链接。"""
+    t = batch_load(tid)
+    if not t:
+        return {"error": "任务不存在"}
+    try:
+        idx = int(idx)
+    except Exception:
+        idx = -1
+    items = t.get("items") or []
+    it = next((x for x in items if x.get("i") == idx), None) if idx >= 0 else None
+    if not it:
+        return {"error": "条目不存在"}
+    # 复用 batch_view 补 view/links（只处理该项）
+    sub = dict(t)
+    sub["items"] = [it]
+    batch_view(sub, t.get("proj"))
+    r = it.get("result") or {}
+    out = {"task": {"id": t["id"], "type": t["type"], "title": t.get("title"),
+                    "dry_run": t.get("dry_run"), "status": t.get("status")},
+           "item": it, "view": it.get("view"), "links": it.get("links", []),
+           "gates": it.get("gates", {}), "result": r}
+    # QA findings
+    fp = r.get("file")
+    if fp and Path(fp).exists():
+        try:
+            out["findings"] = read_json(fp, [])
+        except Exception:
+            out["findings"] = []
+    return out
+
+
 def batch_view(task, proj=None):
     """给批量任务详情补齐：view（人话）+ links（预览）。"""
     if not task or task.get("error"):
@@ -1492,6 +1525,14 @@ def batch_view(task, proj=None):
     for it in items:
         it["view"] = _human_result(it, task)
         r = it.get("result") or {}
+        # 质检门禁摘要（生成/改稿类）
+        g = {}
+        for k, label in (("hook_rc", "post-write"), ("geo_rc", "geo"), ("quota_rc", "quota"), ("lang_rc", "language")):
+            if k in r:
+                g[label] = "pass" if r.get(k) == 0 else "fail"
+        if r.get("blocked"):
+            g["blocked"] = r["blocked"]
+        it["gates"] = g
         links = []
         if r.get("url"):
             links.append({"label": "前台预览", "url": r["url"]})
@@ -6015,6 +6056,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, run_list())
             if parsed.path == "/api/run/detail":
                 return self._send(200, run_view(qs.get("id", [""])[0]))
+            if parsed.path == "/api/batch/item":
+                return self._send(200, batch_item_detail(qs.get("id", [""])[0], qs.get("i", ["0"])[0]))
             if parsed.path == "/api/batch/detail":
                 t = batch_load(qs.get("id", [""])[0])
                 if not t:

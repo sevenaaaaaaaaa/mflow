@@ -167,8 +167,9 @@ body.sb-collapsed main{margin-left:16px}
 .ql .qt{font-size:13px;font-weight:600;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .ql .qd{font-size:11px;color:var(--faint);font-family:var(--font-mono)}
 /* tasks */
-.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
-.tcol{min-height:120px}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;align-items:start}
+.tcol{min-height:160px;display:flex;flex-direction:column}
+.kcol{max-height:62vh;overflow:auto;min-height:90px;border-radius:10px;transition:background .15s;padding:2px}
 .task{display:flex;gap:9px;align-items:flex-start;border:1px solid var(--border);border-radius:12px;padding:9px 11px;margin-top:8px;background:var(--surface);font-size:13px}
 .task.done .tt{text-decoration:line-through;color:var(--faint)}
 .task input[type=checkbox]{accent-color:var(--accent);margin-top:3px}
@@ -315,6 +316,36 @@ button.clicked{animation:clickpulse .45s ease}
 .run-step-progress{height:6px;border-radius:99px;background:var(--hover);overflow:hidden;margin-top:6px}
 .run-step-progress > div{height:100%;background:var(--accent);transition:width .4s}
 
+
+/* ── 详情抽屉 ── */
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(560px,94vw);background:var(--surface);border-left:1px solid var(--border);
+ box-shadow:-24px 0 60px -30px oklch(30% .04 80 / .45);transform:translateX(102%);transition:transform .3s var(--ease-spring);z-index:var(--z-reader);display:flex;flex-direction:column}
+.drawer.on{transform:none}
+.drawer-head{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--border)}
+.drawer-head h3{font-size:14px;flex:1;margin:0}
+.drawer-body{flex:1;overflow:auto;padding:16px}
+.drawer-mask{position:fixed;inset:0;background:oklch(20% .02 70 / .35);backdrop-filter:blur(2px);opacity:0;pointer-events:none;transition:opacity .25s;z-index:calc(var(--z-reader) - 1)}
+.drawer-mask.on{opacity:1;pointer-events:auto}
+.kv{display:grid;grid-template-columns:118px 1fr;gap:4px 10px;font-size:12.5px}
+.kv .k{color:var(--muted)}
+.kv .v{overflow-wrap:anywhere}
+.gate{display:inline-flex;align-items:center;gap:4px;font-size:11px;padding:2px 9px;border-radius:99px;border:1px solid var(--border);margin:0 5px 5px 0}
+.gate.pass{color:var(--ok);border-color:var(--ok)}
+.gate.fail{color:var(--bad);border-color:var(--bad);font-weight:700}
+.sev{font-size:10px;border-radius:99px;padding:1px 7px;color:#fff}
+.sev.block{background:var(--bad)}.sev.warn{background:var(--warn)}.sev.info{background:var(--faint)}
+/* ── 看板卡片增强 ── */
+.tcol.dragover{background:var(--accent-soft);border-color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+.kanban .task{draggable:true}
+.task{cursor:grab;transition:box-shadow .15s,transform .15s,border-color .15s}
+.task:hover{box-shadow:var(--shadow-sm);border-color:var(--border-strong)}
+.task.dragging{opacity:.45;transform:rotate(1.5deg) scale(.98)}
+.task .tmeta{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin-top:6px;font-size:10.5px;color:var(--faint)}
+.task .tchip{display:inline-flex;align-items:center;gap:3px;padding:1px 7px;border-radius:99px;background:var(--hover);font-size:10px}
+.task .tdesc{font-size:11.5px;color:var(--muted);margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.task .tacts{display:flex;gap:3px;opacity:0;transition:opacity .15s}
+.task:hover .tacts{opacity:1}
+
 /* z-index 层级系统 */
 :root{--z-base:0;--z-panel:50;--z-chrome:60;--z-reader:80;--z-toast:99}
 
@@ -439,9 +470,9 @@ button.clicked{animation:clickpulse .45s ease}
       <input id="ttitle" placeholder="记一条待办（可选）" style="flex:1;min-width:220px" onkeydown="if(event.key==='Enter')addTask()">
       <button class="btn ghost" onclick="addTask(event)">添加待办</button></div></div>
     <div class="tgrid">
-      <div class="card tcol"><div class="card-head"><h3>待办</h3></div><div id="col-todo"></div></div>
-      <div class="card tcol"><div class="card-head"><h3>进行中</h3></div><div id="col-doing"></div></div>
-      <div class="card tcol"><div class="card-head"><h3>已完成</h3></div><div id="col-done"></div></div>
+      <div class="card tcol"><div class="card-head"><h3>待办 <span class="mut tnum" id="cnt-todo"></span></h3></div><div id="col-todo" class="kcol"></div></div>
+      <div class="card tcol"><div class="card-head"><h3>进行中 <span class="mut tnum" id="cnt-doing"></span></h3></div><div id="col-doing" class="kcol"></div></div>
+      <div class="card tcol"><div class="card-head"><h3>已完成 <span class="mut tnum" id="cnt-done"></span></h3></div><div id="col-done" class="kcol"></div></div>
     </div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>批量任务进度</h3><button class="more" onclick="setTab('batch')">全部 →</button></div><div id="task-batches"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>自动同步队列（只读）</h3></div><div id="autoq"></div></div>
@@ -1252,6 +1283,45 @@ function goLoop(id, delay){setTimeout(()=>{setTab('loops');setTimeout(()=>loopLo
 // 一次性动作：成功后置灰，避免重复点击
 function markOnce(el){const b=_btnOf(el);if(b){b.classList.add('chip','done');b.disabled=true;b.innerHTML='✓ '+b.textContent.trim()}}
 
+/* ---- 详情抽屉 ---- */
+function openDrawer(title, html, actions){
+ $('drawer-title').textContent=title;
+ $('drawer-actions').innerHTML=(actions||[]).map(([label,code])=>`<button class="mini" onclick="${code}">${esc(label)}</button>`).join('');
+ $('drawer-body').innerHTML=html;
+ $('drawer').classList.add('on');$('drawer-mask').classList.add('on');
+}
+function closeDrawer(){$('drawer').classList.remove('on');$('drawer-mask').classList.remove('on')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer()});
+
+/* ---- 条目详情（含质检门禁 + QA findings）---- */
+function openItemDetail(tid, i){
+ openDrawer('条目详情', '<div class="mut">加载中…</div>');
+ api('api/batch/item?id='+encodeURIComponent(tid)+'&i='+i).then(d=>{
+  if(!d||d.error){$('drawer-body').innerHTML='<span class="bad">'+esc((d&&d.error)||'加载失败')+'</span>';return}
+  const it=d.item||{},r=d.result||{},v=d.view||{},g=d.gates||{};
+  const gateLabels={pass:'通过',fail:'未通过'};
+  const gates=Object.entries(g).filter(([k])=>k!=='blocked').map(([k,val])=>
+    `<span class="gate ${val==='pass'?'pass':'fail'}">${gateLabels[val]||val} · ${esc(k)}</span>`).join('')||'<span class="mut" style="font-size:12px">无门禁记录（该类型不跑质检）</span>';
+  const blocked=(g.blocked||[]).length?`<div class="bad" style="font-size:12px;margin-top:6px">被以下门禁拦截：${(g.blocked).map(esc).join('、')}</div>`:'';
+  const links=(d.links||[]).map(l=>l.url?`<a class="mini" style="text-decoration:none;display:inline-block;margin-right:6px" href="${esc(l.url)}" target="_blank">${esc(l.label)} ↗</a>`:`<button class="mini" onclick="openReader('${esc(l.reader)}')">${esc(l.label)}</button>`).join(' ')||'<span class="mut">无</span>';
+  const findings=(d.findings||[]);
+  const ftable=findings.length?`<table style="margin-top:6px"><tr><th>级别</th><th>规则</th><th>问题</th><th>可修复</th></tr>`+
+    findings.map(f=>`<tr><td><span class="sev ${f.severity}">${esc(f.severity)}</span></td><td>${esc(f.rule)}</td>
+      <td style="font-size:11.5px">${esc(f.message||f.msg||'')}</td><td>${(f.fix||{}).type?'✓ '+esc((f.fix||{}).type):'—'}</td></tr>`).join('')+'</table>':'';
+  const kv=[['条目',it.item_id||it.doc_id||it.slug||it.path],['主题',it.topic],['语言',it.lang],
+    ['页面类型',it.page_type],['状态',(v.status_text||it.status)+(it.attempts>1?`（尝试 ${it.attempts} 次）`:'')],
+    ['说明',v.detail],[ '错误',it.error],['草稿路径',r.path],['字符数',r.chars],['token',it.tokens||r.tokens],
+    ['发布时间',r.documentId||''],['事务',r.transactionId||'']].filter(x=>x[1]!==undefined&&x[1]!==null&&String(x[1]).trim()!=='');
+  $('drawer-body').innerHTML=`<div style="margin-bottom:10px"><b style="font-size:12.5px">质检门禁</b><div style="margin-top:6px">${gates}</div>${blocked}</div>
+   <div style="margin-bottom:10px"><b style="font-size:12.5px">预览 / 操作</b><div style="margin-top:6px">${links}</div></div>
+   <div style="margin-bottom:10px"><b style="font-size:12.5px">基本信息</b><div class="kv" style="margin-top:6px">
+     ${kv.map(([k,val])=>`<span class="k">${esc(k)}</span><span class="v">${esc(String(val))}</span>`).join('')}</div></div>
+   ${findings.length?`<div style="margin-bottom:10px"><b style="font-size:12.5px">质检明细（${findings.length}）</b>${ftable}</div>`:''}
+   <details style="margin-top:8px"><summary class="mut" style="font-size:12px;cursor:pointer">原始结果 JSON</summary>
+     <pre style="font-size:11px;overflow:auto;background:var(--bg);padding:8px;border-radius:8px;margin-top:6px">${esc(JSON.stringify(r,null,1))}</pre></details>`;
+ }, ()=>{$('drawer-body').innerHTML='<span class="bad">加载失败</span>'});
+}
+
 /* ---- 看板娘：小 M 内容助手 ---- */
 const MACOT_TIPS={
  home:[['👋 欢迎回来！','我可以帮你下达任务、回答问题、解释每个功能。试试问我：「现在该做什么？」']],
@@ -1462,108 +1532,71 @@ let TM_ID=null,TASK_MINE=false;
 function taskFilterRender(){$('task-filter').innerHTML=[
  ['全部任务',false],['我的任务',true]].map(([t,v])=>
  `<button class="chip ${TASK_MINE===v?'on':''}" style="border-radius:12px" onclick="TASK_MINE=${v};loadTasks()">${t}</button>`).join('')}
-function loadTasks(){taskFilterRender();api('api/tasks').then(t=>{
+let DRAGGING=false, dragId=null;
+function loadTasks(){if(DRAGGING)return;taskFilterRender();api('api/tasks').then(t=>{
  const me=window.__ME||'';
  const all=t.manual||[];__TASKS_CACHE=all;
  const m=TASK_MINE?all.filter(x=>(x.assignee||'').trim()===me&&me):all;
- const card=x=>`<div class="task" draggable="true" ondragstart="dragStart(event,'${x.id}')" style="cursor:grab" onclick="taskEdit('${x.id}')">
+ const prio=x=>x.status==='doing'?0:1;
+ const card=x=>`<div class="task" draggable="true" data-id="${x.id}" data-status="${esc(x.status)}"
+   ondragstart="dragStart(event,'${x.id}')" ondragend="dragEnd()" onclick="taskEdit('${x.id}')">
    <span class="tt"><b style="font-weight:600">${esc(x.title)}</b>
-   ${x.link?`<div class="mut" style="font-size:11px">🔗 ${esc(x.link.split('/').pop())}</div>`:''}
-   ${(x.desc||'').trim()?`<div class="mut" style="font-size:11.5px">${esc(x.desc.slice(0,60))}</div>`:''}
-   <div class="mut" style="font-size:11px">${x.assignee?'👤 '+esc(x.assignee)+' ':''}${x.due?'📅 '+esc(x.due):''}</div></span>
-   <button class="mini" title="交给 Agent 执行" onclick="event.stopPropagation();taskToAgentById('${x.id}')">🤖</button>
-   <button class="more" style="color:var(--danger)" onclick="event.stopPropagation();taskDel('${x.id}')">×</button></div>`;
- const col=(st,el,label)=>{$(el).innerHTML=`<div class="mut" style="font-size:11px;margin-bottom:2px">${m.filter(x=>x.status===st).length} 张 · 拖入即移动</div>`+
-   m.filter(x=>x.status===st).map(card).join('')||'<div class="mut">空</div>';
-   $(el).parentElement.parentElement.style.position='relative';
-   $(el).ondragover=e=>e.preventDefault();
-   $(el).ondrop=e=>{e.preventDefault();taskSet(dragId,st)};
-   $(el).parentElement.ondragover=e=>e.preventDefault();
-   $(el).parentElement.ondrop=e=>{e.preventDefault();taskSet(dragId,st)}};
+   ${(x.desc||'').trim()?`<div class="tdesc">${esc(x.desc)}</div>`:''}
+   <div class="tmeta">
+    ${x.assignee?`<span class="tchip">👤 ${esc(x.assignee)}</span>`:''}
+    ${x.due?`<span class="tchip" style="color:var(--warn)">📅 ${esc(x.due)}</span>`:''}
+    ${x.link?`<span class="tchip" title="${esc(x.link)}">🔗 ${esc(String(x.link).split('/').pop().slice(0,20))}</span>`:''}
+   </div></span>
+   <span class="tacts">
+    <button class="mini" title="交给 Agent 执行" onclick="event.stopPropagation();taskToAgentById('${x.id}')">🤖</button>
+    <button class="mini" title="详情" onclick="event.stopPropagation();openTaskDetail('${x.id}')">⤢</button>
+    <button class="mini" style="color:var(--danger)" title="删除" onclick="event.stopPropagation();taskDel('${x.id}')">×</button>
+   </span></div>`;
+ const col=(st,el)=>{const list=m.filter(x=>x.status===st).sort((a,b)=>prio(a)-prio(b));
+  const c=$(el);
+  c.innerHTML=`<div class="tcount mut" style="font-size:11px;margin-bottom:2px">${list.length} 张 · 拖入即移动</div>`+
+   (list.map(card).join('')||'<div class="mut" style="padding:8px">空</div>');
+  const card=c.closest('.tcol')||c;
+  c.ondragover=e=>{e.preventDefault();card.classList.add('dragover')};
+  c.ondragleave=e=>{if(!c.contains(e.relatedTarget))card.classList.remove('dragover')};
+  c.ondrop=e=>{e.preventDefault();card.classList.remove('dragover');dropTask(dragId,st,el)};
+ };
  col('todo','col-todo');col('doing','col-doing');col('done','col-done');
- $('autoq').innerHTML=(t.pipeline||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)}</span><span class="badge pipe">管线·${esc(x.stage)}</span></div>`).join('')+
-  (t.distribution||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)} <span class="mut">${esc(x.platforms||'')}</span></span><span class="badge dist">分发·${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">分发队列空</span>';
-   loadTaskBatches();
-   $('nav-tasks').textContent=all.filter(x=>x.status!=='done').length;
-  $('nav-tasks').title=TASK_MINE?`已过滤：仅显示 ${me||'（未登录名）'} 的任务`:'';
-  if(TASK_MINE){const cnt=m.filter(x=>x.status!=='done').length;
-   const head=$('pg-tasks').querySelector('.pg-head .pg-sub');
-   if(head)head.textContent=`归属人过滤中：仅显示「${me||'当前用户'}」的任务（${cnt} 待办 / 共 ${all.filter(x=>x.status!=='done').length} 待办）`;
-  }else{const head=$('pg-tasks').querySelector('.pg-head .pg-sub');
-   if(head)head.textContent='手动任务可添加/流转；内容管线与分发队列自动同步，只读。';}})}
-let TB_TIMER=null;
-function loadTaskBatches(){
- api('api/batch/list').then(ts=>{
-  const el=$('task-batches');if(!el)return;
-  const items=(ts||[]).filter(t=>t.status!=='cancelled');
-  // 概览：需要处理的优先
-  const running=items.filter(t=>t.status==='running'||t.status==='queued');
-  const failed=items.filter(t=>(t.stats||{}).failed>0||t.status==='failed');
-  const done=items.filter(t=>t.status==='done'&&!((t.stats||{}).failed>0));
-  if(!items.length){el.innerHTML='<div class="mut" style="font-size:12px">暂无批量任务。点上方「创建任务」或到「批量任务」页用预设一键开跑。</div>';return}
-  const bar=(t)=>{const st=t.stats||{};const pct=st.total?Math.round((st.done+st.skipped+st.failed)/st.total*100):0;
-   const okc=t.status==='done'&&!st.failed?'var(--ok)':(st.failed||t.status==='failed')?'var(--bad)':'var(--accent)';
-   const acts=(t.status==='running'||t.status==='queued')?`<button class="mini" onclick="tbAct('${t.id}','pause')">暂停</button>`:''
-    +(t.status==='paused'?`<button class="mini" onclick="tbAct('${t.id}','resume')">继续</button>`:'')
-    +((st.failed||0)?`<button class="mini" onclick="tbAct('${t.id}','retry_failed')">重试失败</button>`:'')
-    +((t.status==='running'||t.status==='queued'||t.status==='paused')?`<button class="mini" style="color:var(--danger)" onclick="tbAct('${t.id}','cancel')">取消</button>`:'');
-   return `<div style="padding:9px 0;border-bottom:1px solid var(--border)">
-    <div style="display:flex;align-items:center;gap:8px">
-     <b style="font-size:12.5px;flex:1">${esc(t.title||t.id)}</b>
-     <span class="badge" style="background:${okc}">${esc(t.status)}</span>${t.dry_run?'<span class="badge dist">dry-run</span>':''}
-     ${acts}
-     <button class="mini" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(t.id)}'),600)">详情 →</button></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-top:6px">
-     <div style="flex:1;height:7px;border-radius:99px;background:var(--hover);overflow:hidden"><div style="height:100%;width:${pct}%;background:${okc};transition:width .4s"></div></div>
-     <span class="mut" style="font-size:11px;min-width:130px">${st.done||0}/${st.total||0}${st.failed?' · 失败'+st.failed:''}${st.skipped?' · 跳过'+st.skipped:''}</span></div></div>`};
-  let html='';
-  if(running.length)html+=`<div style="font-size:11.5px;font-weight:700;color:var(--accent);margin-bottom:2px">进行中 ${running.length}</div>`+running.map(bar).join('');
-  if(failed.length)html+=`<div style="font-size:11.5px;font-weight:700;color:var(--danger);margin:10px 0 2px">需要处理 ${failed.length}</div>`+failed.map(bar).join('');
-  const recent=done.slice(0,4);
-  if(recent.length)html+=`<div style="font-size:11.5px;font-weight:700;color:var(--muted);margin:10px 0 2px">最近完成</div>`+recent.map(bar).join('');
-  el.innerHTML=html;
- });
- // 自动刷新：停留在任务看板时每 5 秒
- if(TAB==='tasks'){clearTimeout(TB_TIMER);TB_TIMER=setTimeout(()=>{if(TAB==='tasks')loadTaskBatches()},5000)}
+ $('autoq').innerHTML=(t.pipeline||[]).map(x=>`<div class="task" style="cursor:pointer" onclick="setTab('pipe')"><span class="tt">${esc(x.id)}</span><span class="badge pipe">管线·${esc(x.stage)}</span></div>`).join('')+
+  (t.distribution||[]).map(x=>`<div class="task" style="cursor:pointer" onclick="setTab('dist')"><span class="tt">${esc(x.id)} <span class="mut">${esc(x.platforms||'')}</span></span><span class="badge dist">分发·${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">分发队列空</span>';
+ loadTaskBatches();
+ updateNavTasks();
+ const head=$('pg-tasks').querySelector('.pg-head .pg-sub');
+ if(head)head.textContent=TASK_MINE?`归属人过滤中：仅显示「${me||'当前用户'}」的任务（${m.filter(x=>x.status!=='done').length} 待办）`:'手动任务可添加/流转；内容管线与分发队列自动同步，只读。';
+})}
+function updateNavTasks(){const all=__TASKS_CACHE||[];const n=all.filter(x=>x.status!=='done').length;
+ const el=$('nav-tasks');if(el)el.textContent=n}
+function refreshColCounts(){const m=TASK_MINE?(__TASKS_CACHE||[]).filter(x=>(x.assignee||'').trim()===(window.__ME||'')&&window.__ME):(__TASKS_CACHE||[]);
+ [['todo','col-todo'],['doing','col-doing'],['done','col-done']].forEach(([st,el])=>{const c=$(el);if(!c)return;
+  const t=c.querySelector('.tcount');if(t)t.textContent=`${m.filter(x=>x.status===st).length} 张 · 拖入即移动`});}
+function dragStart(e,id){dragId=id;DRAGGING=true;e.dataTransfer.effectAllowed='move';
+ const el=e.target.closest('.task');if(el){el.classList.add('dragging');e.dataTransfer.setData('text/plain',id);}}
+function dragEnd(){DRAGGING=false;dragId=null;
+ document.querySelectorAll('.task.dragging').forEach(x=>x.classList.remove('dragging'));
+ document.querySelectorAll('.tcol.dragover').forEach(x=>x.classList.remove('dragover'));}
+function dropTask(id,st,el){if(!id)return;
+ const card=document.querySelector(`.task[data-id="${id}"]`);
+ if(card){const c=$(el);const empty=c.querySelector('.mut');if(empty&&empty.textContent.trim()==='空')empty.remove();c.appendChild(card);card.dataset.status=st;}
+ const x=(__TASKS_CACHE||[]).find(y=>y.id===id);if(x)x.status=st;
+ refreshColCounts();updateNavTasks();
+ taskSetSilent(id,st);
 }
-function tbAct(id,action){
- if(action==='cancel'&&!confirm('取消任务 '+id+'？'))return;
- withBtn(event, async()=>{
-  const r=await api('api/batch/action',{id,action});
-  if(r.error)throw new Error(r.error);
-  toast('已'+({pause:'暂停',resume:'继续',retry_failed:'重试失败',cancel:'取消'}[action]||action)+'：'+id,'ok');
-  loadTaskBatches();return r;
- },{busyText:'处理中…',okText:'已执行'});
-}
-function taskQuickCreate(kind,ev){
- const me=window.__ME||'';
- const presetMap={qa:['qa-field-fix','QA 字段修复'],gen:['multilang-batch','多语言批量'],refresh:['low-ctr-refresh','低 CTR 刷新']};
- const [pid,name]=presetMap[kind]||[];
- if(!pid)return toast('未知动作','bad');
- return withBtn(ev, async()=>{
-  const r=await api('api/presets/run',{id:pid,options:{limit:5}});
-  if(r.error)throw new Error(r.error);
-  toast(name+' 任务已创建（'+r.task_id+'），即将跳详情','ok');
-  goBatchDetail(r.task_id);return r;
- },{busyText:'创建中…',okText:'已创建'});
-}
-
-function taskToAgent(title){setTab('agent');setTimeout(()=>{const i=$('ag-input');if(i){i.value='帮我完成这个任务：'+title;i.focus()}},150)}
-let dragId=null;
-function dragStart(e,id){dragId=id;e.dataTransfer.effectAllowed='move'}
-function taskEdit(id){api('api/tasks').then(t=>{const x=(t.manual||[]).find(y=>y.id===id);if(!x)return;TM_ID=id;
- $('tm-title').value=x.title||'';$('tm-desc').value=x.desc||'';$('tm-assignee').value=x.assignee||'';
- $('tm-due').value=x.due||'';$('tm-link').value=x.link||'';$('tm-meta').textContent='创建于 '+(x.created||'—');
- $('tmodal').style.display='flex'})}
-function taskSaveEdit(){api('api/tasks/update',{id:TM_ID,title:$('tm-title').value,desc:$('tm-desc').value,
- assignee:$('tm-assignee').value,due:$('tm-due').value,link:$('tm-link').value}).then(()=>{$('tmodal').style.display='none';loadTasks()})}
-function addTask(ev){const v=$('ttitle').value.trim();if(!v)return toast('先填内容','warn');
- const me=window.__ME||'';
- return withBtn(ev, async()=>{
-  const r=await api('api/tasks/add',{title:v,assignee:me});
-  if(r.error)throw new Error(r.error);$('ttitle').value='';loadTasks();return r;
- },{busyText:'添加中…',okText:'已添加',msg:'待办已加入任务看板'});}
-function taskSet(id,st){api('api/tasks/set',{id,status:st}).then(loadTasks)}
+function taskSetSilent(id,st){api('api/tasks/set',{id,status:st}).catch(()=>loadTasks())}
+function taskSet(id,st){api('api/tasks/set',{id,status:st}).then(()=>{const x=(__TASKS_CACHE||[]).find(y=>y.id===id);if(x)x.status=st;loadTasks()})}
+function openTaskDetail(id){const x=(__TASKS_CACHE||[]).find(y=>y.id===id);if(!x)return;
+ const row=(k,v)=>v?`<div class="k"><span class="k">${k}</span><span class="v">${esc(v)}</span></div>`:'';
+ openDrawer('任务详情',`<div class="kv">
+   <span class="k">标题</span><span class="v"><b>${esc(x.title)}</b></span>
+   <span class="k">状态</span><span class="v">${esc(x.status)}</span>
+   ${row('负责人',x.assignee)}${row('截止',x.due)}${row('创建',x.created)}
+   ${x.link?`<span class="k">关联</span><span class="v"><a href="#" style="color:var(--accent)" onclick="openReader('${esc(x.link)}');return false">${esc(x.link)}</a></span>`:''}
+   ${x.desc?`<span class="k">描述</span><span class="v">${esc(x.desc)}</span>`:''}
+  </div>`, [['🤖 交给 Agent', "closeDrawer();taskToAgentById('"+id+"')"],['✎ 编辑', "closeDrawer();taskEdit('"+id+"')"]]);}
 function taskDel(id){api('api/tasks/del',{id}).then(loadTasks)}
 function calToTask(path){const name=decodeURIComponent(path).split('/').pop().replace('.md','');
  api('api/tasks/add',{title:'内容：'+name,link:path,assignee:localStorage.getItem('mflow-me')||''})
@@ -2544,11 +2577,14 @@ function btDetail(id){api('api/batch/detail?id='+encodeURIComponent(id)).then(t=
  const rows=(t.items||[]).slice(0,300).map(i=>{
   const v=i.view||{};const okc=v.ok===true?'var(--ok)':v.ok===false?'var(--bad)':'var(--faint)';
   const ico=v.ok===true?'✓':v.ok===false?'✕':'…';
-  return `<tr><td class="tnum">${i.i+1}</td>
-   <td style="font-size:11px">${esc(i.doc_id||i.item_id||i.slug||'')}<div class="mut" style="font-size:10px">${esc(i.topic||'')}</div></td>
+  const gc=Object.entries(i.gates||{}).filter(([k])=>k!=='blocked').map(([k,val])=>`<span class="gate ${val==='pass'?'pass':'fail'}" style="margin:0 3px 0 0;padding:0 6px">${val==='pass'?'✓':'✕'}${esc(k)}</span>`).join('');
+  return `<tr style="cursor:pointer" onclick="openItemDetail('${esc(t.id)}',${i.i})" title="点击查看详情（含质检门禁）">
+   <td class="tnum">${i.i+1}</td>
+   <td style="font-size:11px">${esc(i.doc_id||i.item_id||i.slug||'')}<div class="mut" style="font-size:10px">${esc(i.topic||'')}</div>${gc}</td>
    <td><span style="color:${okc};font-weight:700">${ico}</span> <span style="font-size:12px">${esc(v.status_text||i.status)}</span>
      <div class="mut" style="font-size:11px;margin-top:2px">${esc(v.detail||i.error||'')}</div></td>
-   <td style="white-space:nowrap">${links(i)}</td></tr>`}).join('');
+   <td style="white-space:nowrap" onclick="event.stopPropagation()">${links(i)}
+     <button class="mini" onclick="openItemDetail('${esc(t.id)}',${i.i})">详情 ⤢</button></td></tr>`}).join('');
  $('bt-detail').innerHTML=`<div style="font-size:13px;padding:10px 12px;border-radius:10px;margin-bottom:10px;background:${sm.ok?'var(--ok-soft)':'var(--warn-soft)'}">
    <b>${esc(sm.line||'')}</b>${t.dry_run?'<div class="mut" style="font-size:11.5px;margin-top:3px">dry-run：只校验、不写生产库。确认无误后到任务列表关掉 dry-run 再跑一次即可真正生效。</div>':''}</div>
   <div class="mut" style="font-size:11.5px;line-height:1.8;margin-bottom:8px">类型 ${esc(t.type)} · 并发 ${t.concurrency} · 创建 ${esc(t.created)} · ${esc(t.created_by||'')}${(t.log||[]).length?'<br>最近日志：'+esc((t.log||[]).slice(-2).join(' | ')):''}</div>
@@ -2688,5 +2724,10 @@ api('api/setup/status').then(items=>{const done=items.filter(x=>x.ok).length;
     <span class="mc-ping" id="mascot-ping"></span>
   </button>
 </div>
+<div id="drawer" class="drawer"><div class="drawer-head"><h3 id="drawer-title">详情</h3>
+  <div class="row" id="drawer-actions"></div>
+  <button class="cbtn" onclick="closeDrawer()" title="关闭"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
+  <div class="drawer-body" id="drawer-body"></div></div>
+<div id="drawer-mask" class="drawer-mask" onclick="closeDrawer()"></div>
 </body>
 </html>
