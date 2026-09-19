@@ -12,6 +12,7 @@ Auth: MFLOW_CONSOLE_PASSWORD from env; fail-closed when unset.
 import hashlib
 import importlib.util
 import json
+import math
 import os
 import re
 import secrets
@@ -2260,10 +2261,37 @@ def kb_search_for_ai(query, k=3, intent_dirs=None):
         if sc > 0:
             scored.append((sc, d))
     scored.sort(key=lambda x: -x[0])
+    # 向量召回融合（RRF）：索引缺失则跳过，纯关键词行为不变
+    try:
+        vs = rag_search(query, k=k * 3, src_filter=["kb"])
+        if vs:
+            boost = {}
+            for rank, v in enumerate(vs):
+                boost[v["ref"]] = _rrf(rank) * 8.0
+            merged, used = [], set()
+            for sc, d in scored:
+                b = boost.get(d["path"], 0.0)
+                merged.append((sc + b, d)); used.add(d["path"])
+            for rank, v in enumerate(vs):
+                if v["ref"] in used:
+                    continue
+                merged.append((_rrf(rank) * 8.0 + 1.0,
+                               {"path": v["ref"], "title": v["title"], "section": v["section"],
+                                "excerpt": v["text"][:350]}))
+            merged.sort(key=lambda x: -x[0])
+            scored = merged
+    except Exception:
+        pass
     out = []
-    for sc, d in scored[:k]:
+    seen_p = set()
+    for sc, d in scored:
+        if d["path"] in seen_p:
+            continue
+        seen_p.add(d["path"])
         out.append({"path": d["path"], "title": d["title"], "section": d["section"],
                     "excerpt": d["excerpt"][:350], "score": round(sc, 1)})
+        if len(out) >= k:
+            break
     return out
 
 
@@ -2473,6 +2501,184 @@ def palette(q, proj=None):
 
     out.sort(key=lambda x: x["prio"])
     return {"results": out[:24], "q": q}
+
+
+
+# ===================== RAG：可插拔 embedding + 混合检索（关键词 + 向量）=====================
+RAG_DIR = RUN_DIR / "rag"
+RAG_INDEX = RAG_DIR / "index.json"
+_RAG_CACHE = {"mtime": 0, "idx": None, "backend": ""}
+
+
+def rag_cfg():
+    c = (llm_config().get("embedding") or {})
+    return {"provider": str(c.get("provider", "") or ""), "base": (c.get("base") or "").rstrip("/"),
+            "key": c.get("key", ""), "model": c.get("model", ""), "dim": int(c.get("dim", 512) or 512)}
+
+
+def _term_weights(text):
+    """抽取检索项权重：英文词（≥2）+ 中文 bigram/trigram。"""
+    t = (text or "").lower()
+    terms = {}
+    for w in re.findall(r"[a-z0-9]{2,}", t):
+        terms[w] = terms.get(w, 0) + 1
+    cjk = re.findall(r"[\u4e00-\u9fff]", t)
+    for i in range(len(cjk) - 1):
+        g = "".join(cjk[i:i + 2]); terms[g] = terms.get(g, 0) + 1
+    for i in range(len(cjk) - 2):
+        g = "".join(cjk[i:i + 3]); terms[g] = terms.get(g, 0) + 0.5
+    return terms
+
+
+def local_embed(text, dim=512):
+    """零依赖哈希向量：hashed TF-IDF-ish + L2 归一（稀疏 dict）。"""
+    terms = _term_weights(text)
+    vec = {}
+    for term, cnt in terms.items():
+        h = int(hashlib.md5(term.encode("utf-8")).hexdigest()[:8], 16)
+        idx = h % dim
+        w = (1 + math.log(cnt)) if cnt > 0 else 0
+        vec[idx] = vec.get(idx, 0.0) + w
+    n = math.sqrt(sum(v * v for v in vec.values())) or 1.0
+    return {k: round(v / n, 5) for k, v in vec.items()}
+
+
+def remote_embed(texts):
+    """OpenAI 兼容 /embeddings。返回 [[...], ...] 或 None。"""
+    c = rag_cfg()
+    if not (c["base"] and c["key"] and c["model"]):
+        return None
+    try:
+        req = json.dumps({"model": c["model"], "input": texts}).encode()
+        r = urllib.request.Request(c["base"] + "/embeddings", data=req,
+                                   headers={"Content-Type": "application/json", "Authorization": "Bearer " + c["key"]})
+        with urllib.request.urlopen(r, timeout=60) as resp:
+            d = json.loads(resp.read())
+        return [x["embedding"] for x in d.get("data", [])]
+    except Exception as e:
+        print(f"[console] remote_embed failed: {e}", file=sys.stderr)
+        return None
+
+
+def embed_texts(texts):
+    """真实向量优先，否则本地哈希向量。返回 (vectors, backend)。"""
+    v = remote_embed(texts)
+    if v and len(v) == len(texts):
+        return v, "remote"
+    dim = rag_cfg()["dim"]
+    return [local_embed(t, dim) for t in texts], "local"
+
+
+def _sparse_dot(a, b):
+    if not a or not b:
+        return 0.0
+    if len(b) < len(a):
+        a, b = b, a
+    return sum(w * b.get(k, 0.0) for k, w in a.items())
+
+
+def _rag_chunks():
+    """构建语料块：知识库(按标题分块) + 项目记忆 + 实体。"""
+    chunks = []
+    kb = PROJECT / "1-2 Insight" / "Knowledge Base"
+    if kb.exists():
+        for f in kb.rglob("*.md"):
+            if f.name.startswith("."):
+                continue
+            try:
+                txt = f.read_text(errors="ignore")
+            except Exception:
+                continue
+            body = re.sub(r"^---[\s\S]*?---", "", txt).strip()
+            parts = re.split(r"\n(?=#{1,3}\s)", body)
+            for i, part in enumerate(parts):
+                part = part.strip()
+                if len(part) < 40:
+                    continue
+                head = part.split("\n", 1)[0][:80]
+                chunks.append({"src": "kb", "ref": rel_of(f), "section": f.parent.name,
+                               "text": part[:1200], "title": f.stem + ((" · " + head) if head else "")})
+    try:
+        for f in _memory_index():
+            chunks.append({"src": "memory", "ref": f["section"], "section": f["section"],
+                           "text": f["text"], "title": f["text"][:60]})
+    except Exception:
+        pass
+    try:
+        for e in _entities_index():
+            chunks.append({"src": "entity", "ref": e["id"], "section": e["type"],
+                           "text": (e["name"] + "：" + e["notes"]), "title": e["name"]})
+    except Exception:
+        pass
+    return chunks
+
+
+def rag_build():
+    """构建/重建索引（增量：按内容哈希跳过未变块）。"""
+    old = read_json(RAG_INDEX, {}) or {}
+    old_map = {c["id"]: c for c in (old.get("chunks") or [])}
+    chunks = _rag_chunks()
+    vectors, backend = embed_texts([c["text"] for c in chunks])
+    dim = rag_cfg()["dim"]
+    out = []
+    for c, v in zip(chunks, vectors):
+        cid = hashlib.sha1((c["src"] + "|" + c["ref"] + "|" + c["text"]).encode("utf-8")).hexdigest()[:14]
+        o = old_map.get(cid)
+        if o and backend == old.get("backend"):
+            out.append(o); continue
+        out.append({**c, "id": cid, "vec": v})
+    RAG_DIR.mkdir(parents=True, exist_ok=True)
+    RAG_INDEX.write_text(json.dumps({"backend": backend, "dim": dim, "built": datetime.now().strftime("%Y-%m-%d %H:%M"),
+                                     "count": len(out), "chunks": out}, ensure_ascii=False))
+    _RAG_CACHE.update(mtime=0, idx=None)
+    return {"backend": backend, "dim": dim, "count": len(out), "reused": len(old_map)}
+
+
+def _rag_load():
+    if not RAG_INDEX.exists():
+        return None
+    try:
+        mt = RAG_INDEX.stat().st_mtime
+    except Exception:
+        mt = 0
+    if _RAG_CACHE["mtime"] == mt and _RAG_CACHE["idx"] is not None:
+        return _RAG_CACHE["idx"]
+    d = read_json(RAG_INDEX, {}) or {}
+    _RAG_CACHE.update(mtime=mt, idx=d, backend=d.get("backend", ""))
+    return d
+
+
+def rag_search(query, k=6, src_filter=None):
+    """向量检索：返回 [{src,ref,section,title,score}]。索引缺失时返回 []。"""
+    d = _rag_load()
+    if not d or not d.get("chunks"):
+        return []
+    qvec, _ = embed_texts([query])
+    qv = qvec[0]
+    scored = []
+    for c in d["chunks"]:
+        if src_filter and c.get("src") not in src_filter:
+            continue
+        sc = _sparse_dot(qv, c.get("vec") or {})
+        if sc > 0:
+            scored.append((sc, c))
+    scored.sort(key=lambda x: -x[0])
+    return [{"src": c["src"], "ref": c["ref"], "section": c.get("section", ""),
+             "title": c.get("title", "")[:80], "score": round(sc, 4), "text": c.get("text", "")[:300]}
+            for sc, c in scored[:k]]
+
+
+def _rrf(rank, k=60):
+    return 1.0 / (k + rank)
+
+
+def rag_status():
+    d = _rag_load()
+    c = rag_cfg()
+    return {"indexed": bool(d), "backend": (d or {}).get("backend", ""), "count": (d or {}).get("count", 0),
+            "built": (d or {}).get("built", ""), "dim": (d or {}).get("dim", c["dim"]),
+            "embedding_configured": bool(c["base"] and c["key"] and c["model"]),
+            "provider": c["provider"], "model": c["model"]}
 
 
 def memory_review():
@@ -4261,6 +4467,9 @@ def agent_tool(name, args, proj=None):
                     "url": _site_url(site, d.get("pageType"), d.get("language"), d.get("slug"))} for d in (res or [])]
             return {"count": len(out), "items": out}
 
+        if name == "semantic_search":
+            return {"results": rag_search(str(args.get("q", "") or ""), int(args.get("k", 6) or 6))}
+
         if name == "recall":
             hits = recall(str(args.get("q", "") or ""), k=int(args.get("k", 6) or 6))
             return {"count": len(hits), "hits": hits}
@@ -4339,6 +4548,7 @@ AGENT_TOOLS_DOC = """你可以调用以下**工具**来真实地查数据/执行
 - search_content {"q":"关键词","page_type":"tool|feature|blog|topic|...","lang":"en|zh|...","limit":8}
     → 从线上内容库检索真实文档（返回 doc_id/slug/url）。用于确定要改哪些页。
 - search_kb {"q":"问题或主题"} → 从知识库检索事实（竞品/画像/案例/样式/i18n/产品…）。
+- semantic_search {"q":"自然语言问题","k":6} → 语义检索（向量+关键词混合），适合同义/改述/跨语言提问。
 - recall {"q":"关键词","k":6} → **跨源回忆**：项目记忆(MEMORY-PROJECT 事实)、实体图谱(entities.yaml)、历史会话日志、执行记录。用于回答"上次/以前/我们之前"这类问题，了解既有约定。
 - get_task {"id":"batch-..."} → 查询某批量任务的实时状态与统计。
 - list_tasks {"status":"running|done|failed","limit":10} → 列出最近的批量任务。
@@ -7107,6 +7317,10 @@ class Handler(BaseHTTPRequestHandler):
                 cfg = notify_cfg()
                 return self._send(200, {"enabled": cfg.get("enabled"), "feishu_webhook": cfg.get("feishu_webhook", ""),
                                         "email": {k: v for k, v in email_cfg().items() if k != "pass"}})
+            if parsed.path == "/api/rag/status":
+                return self._send(200, rag_status())
+            if parsed.path == "/api/rag/search":
+                return self._send(200, {"results": rag_search(qs.get("q", [""])[0], int(qs.get("k", ["8"])[0] or 8))})
             if parsed.path == "/api/palette":
                 return self._send(200, palette(qs.get("q", [""])[0], self._proj()))
             if parsed.path == "/api/memory":
@@ -7504,7 +7718,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/account/list", "/api/account/reset", "/api/dispatch/approve",
                       "/api/trident/run", "/api/daily/run", "/api/tasks/del",
                       "/api/notify/save", "/api/notify/test", "/api/email/save", "/api/email/test", "/api/user/email",
-                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install", "/api/memory/fact", "/api/memory/entity",
+                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install", "/api/memory/fact", "/api/memory/entity", "/api/rag/build",
                       "/api/plugins/toggle", "/api/plugins/state",
                       "/api/geo/probe",
                       "/api/pay/product/save", "/api/pay/product/delete", "/api/pay/cards/import",
@@ -7659,6 +7873,8 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(404, {"error": "用户不存在"})
                 AUTH_FILE.write_text(json.dumps(recs, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True, "username": un, "email": em})
+            if self.path == "/api/rag/build":
+                return self._send(200, rag_build())
             if self.path == "/api/memory/fact":
                 fid = str(body.get("id", ""))
                 if not fid:
