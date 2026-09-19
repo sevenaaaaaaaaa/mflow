@@ -1463,8 +1463,11 @@ def _human_result(it, task):
                 "status_text": ("已校验（dry-run 未发布）" if dry else "已发布到前台"),
                 "detail": r.get("url") or r.get("documentId") or r.get("id") or "发布完成"}
     if t == "landing_refresh":
-        return {"ok": True, "status_text": "已按落地页结构改稿",
-                "detail": "slug=%s · %s/%s · 草稿：%s" % (r.get("slug", ""), r.get("page_type", ""), r.get("lang", ""), r.get("path", ""))}
+        ok = bool(r.get("ready_to_publish", True)) and not r.get("gates_blocked")
+        note = "可发布" if r.get("ready_to_publish") else ("结构校验未过：" + ("；".join(r.get("struct_errors") or [])[:80]))
+        return {"ok": ok, "status_text": "已按落地页结构改稿（" + note + "）",
+                "detail": "%s 字符 · slug=%s · %s/%s · 草稿：%s" % (r.get("chars", 0), r.get("slug", ""),
+                                                                   r.get("page_type", ""), r.get("lang", ""), r.get("path", ""))}
     if t == "qa":
         n = r.get("findings") if isinstance(r.get("findings"), list) else r.get("count")
         return {"ok": True, "status_text": "已扫描", "detail": ("发现 %s 个问题" % n) if n is not None else "扫描完成"}
@@ -1525,14 +1528,25 @@ def batch_view(task, proj=None):
     for it in items:
         it["view"] = _human_result(it, task)
         r = it.get("result") or {}
-        # 质检门禁摘要（生成/改稿类）
+        # 质检门禁摘要（多类型）
         g = {}
         for k, label in (("hook_rc", "post-write"), ("geo_rc", "geo"), ("quota_rc", "quota"), ("lang_rc", "language")):
             if k in r:
                 g[label] = "pass" if r.get(k) == 0 else "fail"
-        if r.get("blocked"):
-            g["blocked"] = r["blocked"]
+        if "ready_to_publish" in r:
+            g["落地页结构"] = "pass" if r.get("ready_to_publish") else "fail"
+        if r.get("struct_errors"):
+            g["结构问题"] = "fail"
+        if r.get("block"):
+            g["QA-阻断"] = "fail"
+        if r.get("warn"):
+            g["QA-告警"] = "warn"
+        blocked = list(r.get("blocked") or []) + list(r.get("gates_blocked") or [])
+        if blocked:
+            g["blocked"] = blocked
         it["gates"] = g
+        if r.get("struct_errors"):
+            it["struct_errors"] = r["struct_errors"][:6]
         links = []
         if r.get("url"):
             links.append({"label": "前台预览", "url": r["url"]})

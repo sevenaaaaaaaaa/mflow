@@ -1299,10 +1299,11 @@ function openItemDetail(tid, i){
  api('api/batch/item?id='+encodeURIComponent(tid)+'&i='+i).then(d=>{
   if(!d||d.error){$('drawer-body').innerHTML='<span class="bad">'+esc((d&&d.error)||'加载失败')+'</span>';return}
   const it=d.item||{},r=d.result||{},v=d.view||{},g=d.gates||{};
-  const gateLabels={pass:'通过',fail:'未通过'};
+  const gateLabels={pass:'通过',fail:'未通过',warn:'告警'};
   const gates=Object.entries(g).filter(([k])=>k!=='blocked').map(([k,val])=>
-    `<span class="gate ${val==='pass'?'pass':'fail'}">${gateLabels[val]||val} · ${esc(k)}</span>`).join('')||'<span class="mut" style="font-size:12px">无门禁记录（该类型不跑质检）</span>';
+    `<span class="gate ${val==='pass'?'pass':(val==='warn'?'':'fail')}" style="${val==='warn'?'color:var(--warn);border-color:var(--warn)':''}">${gateLabels[val]||val} · ${esc(k)}</span>`).join('')||'<span class="mut" style="font-size:12px">无门禁记录（该类型不跑质检）</span>';
   const blocked=(g.blocked||[]).length?`<div class="bad" style="font-size:12px;margin-top:6px">被以下门禁拦截：${(g.blocked).map(esc).join('、')}</div>`:'';
+  const structs=(it.struct_errors||[]).length?`<div class="mut" style="font-size:12px;margin-top:6px">结构问题：${(it.struct_errors).map(esc).join('；')}</div>`:'';
   const links=(d.links||[]).map(l=>l.url?`<a class="mini" style="text-decoration:none;display:inline-block;margin-right:6px" href="${esc(l.url)}" target="_blank">${esc(l.label)} ↗</a>`:`<button class="mini" onclick="openReader('${esc(l.reader)}')">${esc(l.label)}</button>`).join(' ')||'<span class="mut">无</span>';
   const findings=(d.findings||[]);
   const ftable=findings.length?`<table style="margin-top:6px"><tr><th>级别</th><th>规则</th><th>问题</th><th>可修复</th></tr>`+
@@ -1312,7 +1313,7 @@ function openItemDetail(tid, i){
     ['页面类型',it.page_type],['状态',(v.status_text||it.status)+(it.attempts>1?`（尝试 ${it.attempts} 次）`:'')],
     ['说明',v.detail],[ '错误',it.error],['草稿路径',r.path],['字符数',r.chars],['token',it.tokens||r.tokens],
     ['发布时间',r.documentId||''],['事务',r.transactionId||'']].filter(x=>x[1]!==undefined&&x[1]!==null&&String(x[1]).trim()!=='');
-  $('drawer-body').innerHTML=`<div style="margin-bottom:10px"><b style="font-size:12.5px">质检门禁</b><div style="margin-top:6px">${gates}</div>${blocked}</div>
+  $('drawer-body').innerHTML=`<div style="margin-bottom:10px"><b style="font-size:12.5px">质检门禁</b><div style="margin-top:6px">${gates}</div>${blocked}${structs}</div>
    <div style="margin-bottom:10px"><b style="font-size:12.5px">预览 / 操作</b><div style="margin-top:6px">${links}</div></div>
    <div style="margin-bottom:10px"><b style="font-size:12.5px">基本信息</b><div class="kv" style="margin-top:6px">
      ${kv.map(([k,val])=>`<span class="k">${esc(k)}</span><span class="v">${esc(String(val))}</span>`).join('')}</div></div>
