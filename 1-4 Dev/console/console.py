@@ -4254,7 +4254,7 @@ def agent_reply(session, message, proj=None):
     try:
         for _step in range(AGENT_MAX_STEPS):
             _model_profile = prof.get("model") or "default"
-            raw = llm_chat(msgs, profile=_model_profile, max_tokens=1800, project=proj, timeout=120)
+            raw = llm_chat(msgs, profile=_model_profile, max_tokens=2600, project=proj, timeout=120)
             _tok += int(LAST_USAGE.get("total_tokens", 0) or 0)
             m = re.search(r"\{[\s\S]*\}", raw)
             step_data = {}
@@ -4281,7 +4281,31 @@ def agent_reply(session, message, proj=None):
             if isinstance(step_data, dict) and (step_data.get("say") or step_data.get("spec") or step_data.get("plan")):
                 data = step_data
             else:
-                data = {"say": (raw or "")[:1800].strip(), "questions": [], "spec": None}
+                # JSON 可能被 max_tokens 截断：尝试抢救 say 字段
+                _t = (raw or "")
+                _mark = '"say"'
+                _idx = _t.find(_mark)
+                _say = ""
+                if _idx >= 0:
+                    _rest = _t[_idx + len(_mark):]
+                    _c = _rest.find(":")
+                    _rest = _rest[_c + 1:] if _c >= 0 else _rest
+                    _rest = _rest.lstrip()
+                    if _rest.startswith('"'):
+                        _rest = _rest[1:]
+                    _buf, _esc = [], False
+                    for _ch in _rest:
+                        if _esc:
+                            _buf.append(_ch); _esc = False; continue
+                        if _ch == "\\":
+                            _esc = True; continue
+                        if _ch == '"':
+                            break
+                        _buf.append(_ch)
+                    _say = "".join(_buf)
+                if not _say:
+                    _say = _t.strip()[:1800]
+                data = {"say": _say.strip(), "questions": [], "spec": None}
             break
         if not data:
             data = {"say": "（已达到最大推理步数，先给出当前判断）", "questions": [], "spec": None}
