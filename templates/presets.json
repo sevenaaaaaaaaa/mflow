@@ -1,132 +1,147 @@
 [
-  {
-    "id": "geo-gap-rewrite",
-    "name": "GEO 缺口改稿",
-    "type": "rewrite",
-    "icon": "🎯",
-    "desc": "把「AI 回答 0 次提及品牌」的查询变成改稿任务（数据自动取自最新探测）",
-    "options": [
-      "limit",
-      "lang",
-      "dry_run"
-    ],
-    "params": {
-      "batch_size": 3
-    }
-  },
-  {
-    "id": "low-ctr-refresh",
-    "name": "高曝光低 CTR 刷新",
-    "type": "rewrite",
-    "icon": "📉",
-    "desc": "按 GSC 曝光排序，刷新 CTR 偏低的已发布页面（有曝光=有基础，CTR 是杠杆）",
-    "options": [
-      "limit",
-      "lang",
-      "dry_run",
-      "min_impr"
-    ],
-    "params": {
-      "batch_size": 3
-    }
-  },
-  {
-    "id": "decay-refresh",
-    "name": "衰减页刷新",
-    "type": "rewrite",
-    "icon": "🍂",
-    "desc": "发布 ≥30 天 × GSC Top20 无记录 × 无 AI 引用的页面 → 按 GEO 标准重写",
-    "options": [
-      "limit",
-      "lang",
-      "dry_run"
-    ],
-    "params": {
-      "batch_size": 3
-    }
-  },
-  {
-    "id": "qa-field-fix",
-    "name": "QA 字段修复",
-    "type": "field_patch",
-    "icon": "🔧",
-    "desc": "扫描 Sanity 字段问题（seoTitle 缺失/超长、description 缺失/超长）并直接生成修复任务",
-    "options": [
-      "page_type",
-      "lang",
-      "limit",
-      "dry_run"
-    ],
-    "params": {
-      "batch_size": 10
-    }
-  },
-  {
-    "id": "asset-alt-fill",
-    "name": "封面 alt 补齐",
-    "type": "asset_replace",
-    "icon": "🏷️",
-    "desc": "为「有封面但缺 alt」的页面批量补 alt（用标题生成）",
-    "options": [
-      "limit",
-      "dry_run"
-    ],
-    "params": {
-      "batch_size": 20
-    }
-  },
-  {
-    "id": "qa-scan",
-    "name": "例行 QA 扫描",
-    "type": "qa",
-    "icon": "🔍",
-    "desc": "按类型/语言扫描字段规则（先发现问题，再一键编排修复）",
-    "options": [
-      "page_type",
-      "lang",
-      "limit",
-      "dry_run"
-    ],
-    "params": {
-      "batch_size": 25
-    }
-  },
-  {
-    "id": "multilang-batch",
-    "name": "多语言批量产出",
-    "type": "gen",
-    "icon": "🌏",
-    "desc": "一个主题 × N 语言 → 批量生成（每语言一条，独立门禁）",
-    "options": [
-      "topic",
-      "langs",
-      "dry_run"
-    ],
-    "params": {
-      "batch_size": 2
-    }
-  },
-  {
-    "id": "landing-refresh-publish",
-    "name": "落地页闭环（改稿→发布）",
-    "type": "landing_refresh",
-    "icon": "🔁",
-    "desc": "落地页改稿 → 四门禁+结构校验 → 只把通过项 patch 发布（⚠ 写入即上线）",
-    "options": [
-      "section",
-      "lang",
-      "limit",
-      "chain_dry_run",
-      "dry_run"
-    ],
-    "params": {
-      "batch_size": 2,
-      "chain": {
-        "type": "publish_sanity",
-        "dry_run": true,
-        "doctype": "composite",
-        "mode": "patch"
-      }
-    }
+ {
+  "id": "geo-gap-rewrite",
+  "name": "GEO 缺口改稿",
+  "type": "rewrite",
+  "icon": "🎯",
+  "desc": "把「AI 回答 0 次提及品牌」的查询变成改稿任务（数据自动取自最新探测）",
+  "options": [
+   "limit",
+   "lang",
+   "dry_run"
+  ],
+  "params": {
+   "batch_size": 3
   }
+ },
+ {
+  "id": "low-ctr-refresh",
+  "name": "高曝光低 CTR 刷新",
+  "type": "rewrite",
+  "icon": "📉",
+  "desc": "按 GSC 曝光排序，刷新 CTR 偏低的已发布页面（有曝光=有基础，CTR 是杠杆）",
+  "options": [
+   "limit",
+   "lang",
+   "dry_run",
+   "min_impr"
+  ],
+  "params": {
+   "batch_size": 3
+  }
+ },
+ {
+  "id": "decay-refresh",
+  "name": "衰减页刷新",
+  "type": "rewrite",
+  "icon": "🍂",
+  "desc": "发布 ≥30 天 × GSC Top20 无记录 × 无 AI 引用的页面 → 按 GEO 标准重写",
+  "options": [
+   "limit",
+   "lang",
+   "dry_run"
+  ],
+  "params": {
+   "batch_size": 3
+  }
+ },
+ {
+  "id": "qa-field-fix",
+  "name": "QA 字段修复",
+  "type": "field_patch",
+  "icon": "🔧",
+  "desc": "扫描 Sanity 字段问题（seoTitle 缺失/超长、description 缺失/超长）并直接生成修复任务",
+  "options": [
+   "page_type",
+   "lang",
+   "limit",
+   "dry_run"
+  ],
+  "params": {
+   "batch_size": 10
+  }
+ },
+ {
+  "id": "asset-alt-fill",
+  "name": "封面 alt 补齐",
+  "type": "asset_replace",
+  "icon": "🏷️",
+  "desc": "为「有封面但缺 alt」的页面批量补 alt（用标题生成）",
+  "options": [
+   "limit",
+   "dry_run"
+  ],
+  "params": {
+   "batch_size": 20
+  }
+ },
+ {
+  "id": "qa-scan",
+  "name": "例行 QA 扫描",
+  "type": "qa",
+  "icon": "🔍",
+  "desc": "按类型/语言扫描字段规则（先发现问题，再一键编排修复）",
+  "options": [
+   "page_type",
+   "lang",
+   "limit",
+   "dry_run"
+  ],
+  "params": {
+   "batch_size": 25
+  }
+ },
+ {
+  "id": "multilang-batch",
+  "name": "多语言批量产出",
+  "type": "gen",
+  "icon": "🌏",
+  "desc": "一个主题 × N 语言 → 批量生成（每语言一条，独立门禁）",
+  "options": [
+   "topic",
+   "langs",
+   "dry_run"
+  ],
+  "params": {
+   "batch_size": 2
+  }
+ },
+ {
+  "id": "landing-refresh-publish",
+  "name": "落地页闭环（改稿→发布）",
+  "type": "landing_refresh",
+  "icon": "🔁",
+  "desc": "落地页改稿 → 四门禁+结构校验 → 只把通过项 patch 发布（⚠ 写入即上线）",
+  "options": [
+   "section",
+   "lang",
+   "limit",
+   "chain_dry_run",
+   "dry_run"
+  ],
+  "params": {
+   "batch_size": 2,
+   "chain": {
+    "type": "publish_sanity",
+    "dry_run": true,
+    "doctype": "composite",
+    "mode": "patch"
+   }
+  }
+ },
+ {
+  "id": "internal-link-audit",
+  "name": "内链建议体检",
+  "type": "internal_link",
+  "icon": "🔗",
+  "desc": "扫描某栏目页面的内链建议（只读分析，输出报告，不写库）",
+  "options": [
+   "section",
+   "lang",
+   "limit"
+  ],
+  "params": {
+   "batch_size": 20
+  }
+ }
 ]
