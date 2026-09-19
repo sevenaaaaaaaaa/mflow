@@ -2611,6 +2611,10 @@ def batch_worker():
         except Exception as _e:
             print(f"[console] orphan recover: {_e}", file=sys.stderr)
         try:
+            automation_tick()
+        except Exception as _e:
+            print(f"[console] automation tick: {_e}", file=sys.stderr)
+        try:
             BATCH_DIR.mkdir(parents=True, exist_ok=True)
             blocked, bst = breaker_check()
             if blocked:
@@ -5571,6 +5575,196 @@ def onboard_seed(limit=3, proj=None):
     return {"created": created, "skipped": skipped}
 
 
+
+def loop_new(proj, item_id, ctype="blog", lang="zh", topic="", brief="", template_id=""):
+    """创建 Loop 并入队（供 /api/loop/create 与自动化复用）。"""
+    if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,78}", item_id):
+        raise ValueError("id 不合法")
+    pp = proj_paths(proj)
+    loop = {"id": secrets.token_hex(4), "item_id": item_id, "goal": topic[:200],
+            "template_id": template_id, "type": ctype, "lang": lang,
+            "topic": topic[:300], "brief": brief[:800],
+            "status": "queued", "round": 0, "max_rounds": 3, "tokens_used": 0,
+            "created": datetime.now().strftime("%Y-%m-%d %H:%M"), "log": []}
+    with LOOP_LOCK:
+        loops = read_json(pp["loops"], [])
+        loops.append(loop)
+        pp["loops"].parent.mkdir(parents=True, exist_ok=True)
+        pp["loops"].write_text(json.dumps(loops, ensure_ascii=False, indent=1))
+    ps_run([sys.executable, str(PS_PATH), "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
+            "upsert", "--id", item_id, "--category", ctype])
+    return loop["id"]
+
+
+# ===================== P1-1 多语言覆盖盘点 =====================
+def multilang_coverage(site, section="tools", base_lang="en", limit=4000):
+    """统计某栏目各语言覆盖：以 base_lang 的页面为基准，看其他语言缺哪些。"""
+    base = LIB_ROOT / site / section
+    if not base.exists():
+        return {"error": "该栏目不存在"}
+    langs = sorted([d.name for d in base.iterdir() if d.is_dir()])
+    if base_lang not in langs:
+        return {"error": f"基准语言 {base_lang} 不存在（现有：{','.join(langs)}）"}
+    base_slugs = {f.stem for f in (base / base_lang).glob("*.md")}
+    cov, gaps = {}, {}
+    for lg in langs:
+        have = {f.stem for f in (base / lg).glob("*.md")}
+        miss = sorted(base_slugs - have)
+        cov[lg] = len(have & base_slugs)
+        gaps[lg] = miss[:limit]
+    return {"section": section, "base_lang": base_lang, "langs": langs,
+            "base_total": len(base_slugs), "coverage": cov,
+            "missing": {lg: len(base_slugs) - cov.get(lg, 0) for lg in langs},
+            "gap_slugs": gaps}
+
+
+def multilang_fill(site, section, target_lang, base_lang="en", limit=10, proj=None):
+    """为某栏目缺目标语言的页面创建本地化（rewrite）任务条目。"""
+    cov = multilang_coverage(site, section, base_lang, limit=limit)
+    if cov.get("error"):
+        return cov
+    slugs = (cov.get("gap_slugs") or {}).get(target_lang) or []
+    if not slugs:
+        return {"error": f"{section} 没有缺 {target_lang} 的页面（或已全覆盖）"}
+    items = []
+    for sl in slugs[:limit]:
+        src = LIB_ROOT / site / section / base_lang / (sl + ".md")
+        items.append({"item_id": f"{section}-{sl}-{target_lang}", "lang": target_lang,
+                      "topic": sl, "source_path": rel_of(src),
+                      "instruction": (f"把这篇内容本地化为 {target_lang}（不是直译：保留事实与结构，"
+                                      f"标题/描述/FAQ 用地道 {target_lang}，术语遵循 i18n 词表，标点与字形符合该语言规范）。")})
+    return {"type": "rewrite", "title": f"{section} 补 {target_lang}（{len(items)} 篇）",
+            "items": items, "params": {"batch_size": 3},
+            "note": f"基准 {base_lang} 共 {cov['base_total']} 篇，缺 {target_lang} {cov['missing'].get(target_lang,0)} 篇，本次取 {len(items)}"}
+
+
+# ===================== 自动化注册表（自动化任务 = 一等公民）=====================
+AUTOMATIONS_FILE = RUN_DIR / "automations.json"
+_AUTO_LOCK = threading.Lock()
+
+
+def automations_list():
+    return read_json(AUTOMATIONS_FILE, []) or []
+
+
+def automation_save(a):
+    with _AUTO_LOCK:
+        arr = automations_list()
+        a = dict(a)
+        if not a.get("id"):
+            a["id"] = "auto-" + secrets.token_hex(3)
+            a["created"] = datetime.now().strftime("%Y-%m-%d %H:%M")
+        for i, x in enumerate(arr):
+            if x.get("id") == a["id"]:
+                arr[i] = {**x, **a}
+                break
+        else:
+            arr.append(a)
+        RUN_DIR.mkdir(parents=True, exist_ok=True)
+        AUTOMATIONS_FILE.write_text(json.dumps(arr, ensure_ascii=False, indent=1))
+        return a
+
+
+def automation_delete(aid):
+    with _AUTO_LOCK:
+        arr = [x for x in automations_list() if x.get("id") != aid]
+        AUTOMATIONS_FILE.write_text(json.dumps(arr, ensure_ascii=False, indent=1))
+    return {"ok": True}
+
+
+def automation_run(aid, proj=None, by="automation"):
+    """执行一条自动化：preset / plan / batch / loop。返回创建的 id。"""
+    proj = proj or DEFAULT_PROJECT
+    a = next((x for x in automations_list() if x.get("id") == aid), None)
+    if not a:
+        return {"error": "自动化不存在"}
+    mode = a.get("mode", "preset")
+    spec = a.get("spec") or {}
+    dry = bool(a.get("dry_run", True))
+    out = {}
+    try:
+        if mode == "preset":
+            ex = preset_expand(spec.get("preset"), spec.get("opt") or {}, proj)
+            if ex.get("error"):
+                return {"error": ex["error"]}
+            t = batch_create(ex.get("type"), a.get("name") or ex.get("title") or spec.get("preset"),
+                             ex.get("items") or [], params=ex.get("params") or {}, dry_run=dry, by=by)
+            out = {"task_id": t["id"], "total": t["stats"]["total"]}
+        elif mode == "batch":
+            t = batch_create(spec.get("type"), a.get("name") or spec.get("type"),
+                             spec.get("items") or [], params=spec.get("params") or {}, dry_run=dry, by=by)
+            out = {"task_id": t["id"], "total": t["stats"]["total"]}
+        elif mode == "plan":
+            steps = spec.get("steps") or []
+            run = run_new(a.get("name") or "自动化计划", steps, proj=proj, by=by, kind="automation")
+            out = {"run_id": run["id"]}
+        elif mode == "loop":
+            lid = loop_new(proj, spec.get("item_id") or ("auto-" + datetime.now().strftime("%y%m%d") + "-" + secrets.token_hex(2)),
+                           ctype=spec.get("type", "blog"), lang=spec.get("lang", "zh"),
+                           topic=spec.get("topic", ""), brief=spec.get("brief", ""),
+                           template_id=spec.get("template_id", ""))
+            out = {"loop_id": lid}
+        else:
+            return {"error": "未知 mode：" + mode}
+        automation_save({"id": aid, "last_run": datetime.now().strftime("%Y-%m-%d %H:%M"), **out})
+        try:
+            with open(RUN_DIR / "approvals.log", "a") as f:
+                f.write(f"{datetime.now().isoformat(timespec='seconds')} AUTOMATION-RUN {aid} mode={mode} "
+                        f"dry_run={dry} by={by} {out}\n")
+        except Exception:
+            pass
+        return {"ok": True, **out}
+    except PermissionError as e:
+        return {"error": str(e)}
+    except Exception as e:
+        return {"error": str(e)[:200]}
+
+
+def _auto_due(a, now):
+    sc = a.get("schedule") or {}
+    typ = sc.get("type", "daily")
+    last = a.get("last_run") or ""
+    try:
+        last_ts = datetime.strptime(last, "%Y-%m-%d %H:%M").timestamp() if last else 0
+    except Exception:
+        last_ts = 0
+    if typ == "interval":
+        every = max(5, int(sc.get("every_min", 60) or 60)) * 60
+        return (now - last_ts) >= every
+    at = sc.get("at", "08:00")
+    today = datetime.now().strftime("%Y-%m-%d")
+    hh, mm = (at.split(":") + ["0"])[:2]
+    try:
+        target = datetime.strptime(f"{today} {int(hh):02d}:{int(mm):02d}", "%Y-%m-%d %H:%M").timestamp()
+    except Exception:
+        target = 0
+    if now < target:
+        return False
+    if typ == "daily":
+        return last_ts < target
+    if typ == "weekly":
+        wd = int(sc.get("weekday", 1) or 1)
+        if datetime.now().weekday() + 1 != wd:
+            return False
+        return last_ts < target
+    return False
+
+
+def automation_tick():
+    """调度：到期的自动化依次执行（后台）。"""
+    now = time.time()
+    for a in automations_list():
+        try:
+            if not a.get("enabled"):
+                continue
+            if not _auto_due(a, now):
+                continue
+            r = automation_run(a["id"])
+            print(f"[auto] {a['id']} -> {r}", file=sys.stderr)
+        except Exception as e:
+            print(f"[auto] {a.get('id')} error: {e}", file=sys.stderr)
+
+
 def next_actions(proj=None):
     """推荐下一步：根据系统状态给出人话建议 + 一键动作。所有新手/老手都能用。"""
     proj = proj or DEFAULT_PROJECT
@@ -6565,6 +6759,11 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, selfcheck(self._proj()))
             if parsed.path == "/api/onboard/plan":
                 return self._send(200, onboard_plan(self._proj()))
+            if parsed.path == "/api/multilang/coverage":
+                return self._send(200, multilang_coverage(site_of(self._proj()),
+                                  qs.get("section", ["tools"])[0], qs.get("base_lang", ["en"])[0]))
+            if parsed.path == "/api/automations":
+                return self._send(200, automations_list())
             if parsed.path == "/api/housekeeping":
                 lg = []
                 if HOUSEKEEPING_LOG.exists():
@@ -6813,6 +7012,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/batch/create", "/api/batch/action",
                       "/api/agent/chat", "/api/agent/execute", "/api/agent/run", "/api/agent/profile",
                       "/api/agent/goal", "/api/agent/compact", "/api/onboard/seed",
+                      "/api/multilang/fill", "/api/automations/save", "/api/automations/delete",
+                      "/api/automations/run", "/api/work/convert",
                       "/api/batch/revive_stale", "/api/batch/retry_item",
                       "/api/run/action",
                       "/api/qa/orchestrate", "/api/qa/recheck",
@@ -7291,6 +7492,88 @@ class Handler(BaseHTTPRequestHandler):
 
             if self.path == "/api/onboard/seed":
                 return self._send(200, onboard_seed(int(body.get("limit", 3) or 3), self._proj()))
+
+            # ── 多语言补齐 ──
+            if self.path == "/api/multilang/fill":
+                site = site_of(self._proj())
+                ex = multilang_fill(site, str(body.get("section", "tools")), str(body.get("target_lang", "")),
+                                    base_lang=str(body.get("base_lang", "en")),
+                                    limit=int(body.get("limit", 10) or 10), proj=self._proj())
+                if ex.get("error"):
+                    return self._send(400, {"error": ex["error"]})
+                t = batch_create(ex["type"], ex["title"], ex.get("items") or [],
+                                 params=ex.get("params") or {}, dry_run=bool(body.get("dry_run", True)), by=self._me())
+                return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"], "note": ex.get("note", "")})
+            # ── 自动化 CRUD / 执行 ──
+            if self.path == "/api/automations/save":
+                a = {"id": str(body.get("id", "")), "name": str(body.get("name", ""))[:80],
+                     "mode": str(body.get("mode", "preset")), "spec": body.get("spec") or {},
+                     "schedule": body.get("schedule") or {"type": "daily", "at": "08:30"},
+                     "dry_run": bool(body.get("dry_run", True)), "enabled": bool(body.get("enabled", True))}
+                if a["mode"] not in ("preset", "plan", "batch", "loop"):
+                    return self._send(400, {"error": "mode 可选 preset/plan/batch/loop"})
+                r = automation_save(a)
+                return self._send(200, {"ok": True, "id": r["id"]})
+            if self.path == "/api/automations/delete":
+                return self._send(200, automation_delete(str(body.get("id", ""))))
+            if self.path == "/api/automations/run":
+                r = automation_run(str(body.get("id", "")), self._proj(), by=self._me())
+                return self._send(200 if r.get("ok") else 400, r)
+            if self.path == "/api/automations/toggle":
+                a = next((x for x in automations_list() if x.get("id") == str(body.get("id", ""))), None)
+                if not a:
+                    return self._send(404, {"error": "自动化不存在"})
+                automation_save({"id": a["id"], "enabled": bool(body.get("enabled", not a.get("enabled")))})
+                return self._send(200, {"ok": True})
+            # ── 统一执行方式切换（任务 ⇄ 批量 ⇄ Loop ⇄ 自动化 ⇄ Agent）──
+            if self.path == "/api/work/convert":
+                frm = body.get("from") or {}
+                to = str(body.get("to", ""))
+                params = body.get("params") or {}
+                kind = str(frm.get("kind", ""))
+                if to == "automation":
+                    spec = params.get("spec")
+                    if not spec:
+                        if kind == "preset":
+                            spec = {"preset": frm.get("preset"), "opt": frm.get("opt") or {}}
+                        elif kind == "plan":
+                            spec = {"steps": frm.get("steps") or []}
+                        elif kind == "run":
+                            rr = run_load(str(frm.get("id", ""))) or {}
+                            spec = {"steps": [{"name": st.get("name"), "type": st.get("type"),
+                                               "preset": st.get("preset"), "opt": st.get("opt"),
+                                               "spec": st.get("spec"), "urls": st.get("urls")} for st in (rr.get("steps") or [])]}
+                        elif kind == "batch":
+                            bt = batch_load(str(frm.get("id", ""))) or {}
+                            spec = {"type": bt.get("type"), "items": (bt.get("items") or [])[:500],
+                                    "params": bt.get("params") or {}}
+                        elif kind == "task":
+                            spec = {"preset": params.get("preset", "qa-scan"), "opt": params.get("opt") or {}}
+                    if not spec:
+                        return self._send(400, {"error": "无法从来源推断自动化定义，请提供 spec"})
+                    a = automation_save({"id": params.get("id", ""), "name": params.get("name") or frm.get("title") or "自动化",
+                                         "mode": params.get("mode") or ("plan" if spec.get("steps") else ("batch" if spec.get("items") else "preset")),
+                                         "spec": spec,
+                                         "schedule": params.get("schedule") or {"type": "daily", "at": "08:30"},
+                                         "dry_run": bool(params.get("dry_run", True)), "enabled": True})
+                    return self._send(200, {"ok": True, "id": a["id"], "to": "automation"})
+                if to == "batch":
+                    preset = params.get("preset") or "qa-scan"
+                    ex = preset_expand(preset, params.get("opt") or {}, self._proj())
+                    if ex.get("error"):
+                        return self._send(400, {"error": ex["error"]})
+                    title = params.get("title") or frm.get("title") or ex.get("title") or preset
+                    t = batch_create(ex.get("type"), title, ex.get("items") or [],
+                                     params=ex.get("params") or {}, dry_run=bool(params.get("dry_run", True)), by=self._me())
+                    return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"], "to": "batch"})
+                if to == "loop":
+                    iid = params.get("item_id") or ("loop-" + datetime.now().strftime("%y%m%d") + "-" + secrets.token_hex(2))
+                    lid = loop_new(self._proj(), iid, ctype=params.get("type", "blog"),
+                                   lang=params.get("lang", "zh"), topic=params.get("topic") or frm.get("title") or "",
+                                   brief=params.get("brief", ""))
+                    return self._send(200, {"ok": True, "loop_id": lid, "to": "loop"})
+                return self._send(400, {"error": "to 可选 automation/batch/loop（agent 由前端处理）"})
+
             # ── Agent 会话目标 ──
             if self.path == "/api/agent/goal":
                 s = agent_session_load(str(body.get("session_id", "")))
@@ -7512,26 +7795,13 @@ class Handler(BaseHTTPRequestHandler):
                                         "lang_rc": langc["rc"], "lang_out": langc["out"][-1500:]})
             if self.path == "/api/loop/create":
                 item_id = str(body.get("item_id", "")).strip()
-                if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,78}", item_id):
-                    return self._send(400, {"error": "id 不合法"})
-                with LOOP_LOCK:
-                    loops = read_json(self._lp(), [])
-                    loop = {"id": secrets.token_hex(4), "item_id": item_id,
-                            "goal": str(body.get("topic", ""))[:200],
-                            "template_id": str(body.get("template_id", "")),
-                            "type": str(body.get("type", "blog")), "lang": str(body.get("lang", "zh")),
-                            "topic": str(body.get("topic", ""))[:300], "brief": str(body.get("brief", ""))[:800],
-                            "status": "queued", "round": 0, "max_rounds": 3, "tokens_used": 0,
-                            "created": datetime.now().strftime("%Y-%m-%d %H:%M"), "log": []}
-                    loops.append(loop)
-                    self._lp().parent.mkdir(parents=True, exist_ok=True)
-                    self._lp().write_text(json.dumps(loops, ensure_ascii=False, indent=1))
-                pp = proj_paths(self._proj())
-                ps_run([sys.executable, str(PS_PATH),
-                          "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
-                          "upsert", "--id", item_id,
-                          "--category", str(body.get("type", "blog"))])
-                return self._send(200, {"ok": True, "id": loop["id"], "queued": True})
+                try:
+                    lid = loop_new(self._proj(), item_id, ctype=str(body.get("type", "blog")),
+                                   lang=str(body.get("lang", "zh")), topic=str(body.get("topic", "")),
+                                   brief=str(body.get("brief", "")), template_id=str(body.get("template_id", "")))
+                except ValueError as e:
+                    return self._send(400, {"error": str(e)})
+                return self._send(200, {"ok": True, "id": lid, "queued": True})
             if self.path == "/api/loop/stop":
                 loops = read_json(self._lp(), [])
                 for x in loops:
