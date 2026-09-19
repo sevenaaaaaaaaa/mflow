@@ -2524,6 +2524,88 @@ def _entities_index():
 
 
 # ===================== 全局命令面板（⌘K）：一处搜/执行 =====================
+
+# ===================== 收件箱：需要我处理的，集中一屏 =====================
+def inbox(me="", proj=None):
+    proj = proj or DEFAULT_PROJECT
+    items = []
+
+    def add(kind, title, detail, action, prio, count=1):
+        items.append({"kind": kind, "title": title, "detail": detail, "action": action,
+                      "prio": prio, "count": count})
+
+    # 1) 系统自检 block/warn
+    try:
+        sc = selfcheck(proj)
+        for c in (sc.get("checks") or []):
+            if c["level"] in ("block", "warn"):
+                add("系统", c["title"], c.get("detail", ""), c.get("fix") or {"action": "tab:home"},
+                    0 if c["level"] == "block" else 2)
+    except Exception:
+        pass
+    # 2) 待办（分配给我）
+    try:
+        tasks = [t for t in (read_json(proj_paths(proj)["tasks"], []) or []) if t.get("status") != "done"]
+        mine = [t for t in tasks if me and (t.get("assignee") or "") == me]
+        other = [t for t in tasks if not (t.get("assignee") or "")]
+        if mine:
+            add("待办", f"{len(mine)} 个待办分配给我", "、".join((t.get("title") or "")[:18] for t in mine[:3]),
+                {"tab": "tasks"}, 1, len(mine))
+        if other:
+            add("待办", f"{len(other)} 个未指派待办", "、".join((t.get("title") or "")[:18] for t in other[:3]),
+                {"tab": "tasks"}, 3, len(other))
+    except Exception:
+        pass
+    # 3) 批量任务失败/熔断
+    try:
+        bad = [t for t in batch_list() if t.get("status") in ("failed", "tripped") or ((t.get("stats") or {}).get("failed", 0) > 0 and t.get("status") != "done")]
+        if bad:
+            add("任务", f"{len(bad)} 个批量任务需要处理", "、".join((t.get("title") or t["id"])[:20] for t in bad[:3]),
+                {"batch": bad[0]["id"]}, 0, len(bad))
+    except Exception:
+        pass
+    # 4) 待授权发布
+    try:
+        q = read_json(PROJECT / "1-3 GenFlow/Content Distribution/queue/pending.json", {})
+        pend = [x for x in (q.get("items") or []) if x.get("status") in ("pending", "ready", None)]
+        if pend:
+            add("发布", f"{len(pend)} 条等待授权发布", "到分发队列逐条审批", {"tab": "dist"}, 1, len(pend))
+    except Exception:
+        pass
+    # 5) 失败的执行
+    try:
+        runs = [r for r in run_list(40) if r.get("status") == "failed"]
+        if runs:
+            add("执行", f"{len(runs)} 条执行失败", "、".join((r.get("title") or r["id"])[:18] for r in runs[:3]),
+                {"run": runs[0]["id"]}, 1, len(runs))
+    except Exception:
+        pass
+    # 6) 待审阅的 Agent 提议（有 spec 未执行）
+    try:
+        pending_specs = 0
+        for f in sorted(AGENT_DIR.glob("chat-*.json"), key=lambda x: x.stat().st_mtime, reverse=True)[:8]:
+            ss = read_json(f, {}) or {}
+            msgs = ss.get("messages") or []
+            if msgs and msgs[-1].get("spec") and not msgs[-1].get("task_id"):
+                pending_specs += 1
+        if pending_specs:
+            add("Agent", f"{pending_specs} 个会话有待执行的方案", "到 Agent 任务台确认执行", {"tab": "agent"}, 2, pending_specs)
+    except Exception:
+        pass
+    # 7) 自动化失败
+    try:
+        af = [a for a in automations_list() if a.get("enabled") and a.get("last_run") and not a.get("task_id") and not a.get("run_id") and not a.get("loop_id")]
+        if af:
+            add("自动化", f"{len(af)} 条自动化上次未成功", "检查配置或计划", {"tab": "auto"}, 2, len(af))
+    except Exception:
+        pass
+
+    items.sort(key=lambda x: x["prio"])
+    return {"items": items, "total": len(items),
+            "urgent": sum(1 for x in items if x["prio"] == 0),
+            "at": datetime.now().strftime("%Y-%m-%d %H:%M")}
+
+
 def palette(q, proj=None):
     """统一检索：页面动作 / 待办 / 批量 / 执行 / 自动化 / 内容库 / Skills / 记忆 / 报告。"""
     proj = proj or DEFAULT_PROJECT
@@ -7458,6 +7540,8 @@ class Handler(BaseHTTPRequestHandler):
                 cfg = notify_cfg()
                 return self._send(200, {"enabled": cfg.get("enabled"), "feishu_webhook": cfg.get("feishu_webhook", ""),
                                         "email": {k: v for k, v in email_cfg().items() if k != "pass"}})
+            if parsed.path == "/api/inbox":
+                return self._send(200, inbox(self._me(), self._proj()))
             if parsed.path == "/api/audit/changes":
                 return self._send(200, {"changes": audit_list(int(qs.get("limit", ["100"])[0] or 100))})
             if parsed.path == "/api/rag/status":
