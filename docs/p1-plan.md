@@ -1,9 +1,31 @@
+# 统一执行方式（本轮并行交付的能力）
+
+四类能力统一为"同一件工作、可自由切换执行方式"：
+
+| 方式 | 入口 | 后端 |
+|---|---|---|
+| 创建任务 | 任务看板 / 对话 | `/api/tasks/*` |
+| 批量任务 | 批量任务页 / 预设 | `/api/batch/*`、`presets` |
+| 任务编排 | 执行画布 / Agent 计划 | `/api/agent/run`、`Run` |
+| Agent 模式 | Agent 任务台 / 小 M | `/api/agent/chat`（工具循环） |
+| **自动化** | 自动化页 | `/api/automations/*`（定时自动执行） |
+
+**切换**：任意来源 → `⇄ 执行方式` → 转为批量 / Loop / 自动化（定时）/ 交给 Agent。
+- 任务卡、批量详情、执行画布、Agent 计划卡均已挂「⇄ 执行方式」。
+- API：`/api/work/convert` {from:{kind,id,...}, to:'batch|loop|automation', params}。
+
+---
+
 # P1 安排（可轻量吸收）
 
 > 承接 P0（记忆/会话/角色/自愈）与「开工向导」。以下按"轻量可吸收 + 高杠杆"排序，均为在现有单进程文件态架构内的增量，不引入重框架。
 > 状态：待排期（用户确认后按序实施）。
 
-## P1-1 记忆审阅 UI（Settings → 记忆）
+## P1-1 多语言覆盖盘点与补齐 ✅ 已完成（2026-09-19）
+- 已交付：内容库「多语言覆盖」卡（每语言 已覆盖/总数 + 一键补 N，dry-run）；API `/api/multilang/coverage`、`/api/multilang/fill`。
+- 实测：tools 基准 en 385 篇，de 81 / fr 90 / ja 79 …，一键创建本地化 rewrite 任务。
+
+## P1-1b 记忆审阅 UI（Settings → 记忆）
 - **为什么**：`entities.yaml` / `MEMORY-PROJECT.md` 已被 Agent 读取，但用户无法查看/纠正，长期会漂移。
 - **做什么**：只读浏览（实体列表 + 事实条目，按 section/优先级筛选）+ 标注"已过时/已更正"；写回复用 `dream/consolidate`。
 - **成本**：低（1 个页面 + 2 个只读端点；写回复用现有脚本）。
