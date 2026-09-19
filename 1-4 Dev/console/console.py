@@ -5389,6 +5389,166 @@ def selfcheck(proj=None):
     return {"level": level, "checks": checks, "at": datetime.now().strftime("%Y-%m-%d %H:%M")}
 
 
+
+# ===================== 开工向导：体检 → 盘点 → 规划 → 填满 =====================
+def _asset_alt_gap(site):
+    inv = read_json(LIB_ROOT / site / "assets.json", {})
+    pages = inv.get("pages") or {}
+    no_alt, covered = 0, 0
+    for _did, pg in pages.items():
+        cov = pg.get("cover") or {}
+        if cov.get("url"):
+            covered += 1
+            if not (cov.get("alt") or "").strip():
+                no_alt += 1
+    return {"pages": len(pages), "with_cover": covered, "no_alt": no_alt,
+            "with_media": (inv.get("stats") or {}).get("with_media", 0)}
+
+
+def _qa_sample(limit=15, page_type="", lang=""):
+    where = '_type=="compositePage" && !(_id in path("drafts.**"))'
+    if page_type:
+        where += f' && pageType=="{page_type}"'
+    if lang:
+        where += f' && language=="{lang}"'
+    res = _sanity_query('*[%s][0...%d]{_id}' % (where, limit)) or []
+    if isinstance(res, dict):
+        return {"scanned": 0, "findings": 0, "fixable": 0, "error": res.get("_error")}
+    total_f = fix_n = block_n = 0
+    for d in res:
+        try:
+            fs = qa_check_sanity(d["_id"])
+        except Exception:
+            continue
+        total_f += len(fs)
+        for f in fs:
+            if (f.get("fix") or {}).get("type"):
+                fix_n += 1
+            if f.get("severity") == "block":
+                block_n += 1
+    return {"scanned": len(res), "findings": total_f, "fixable": fix_n, "block": block_n}
+
+
+def onboard_plan(proj=None):
+    """体检 + 盘点 + 可做任务规划 + 推荐启动包（真实数据）。"""
+    proj = proj or DEFAULT_PROJECT
+    site = site_of(proj)
+    checks = selfcheck(proj)
+    idx = read_json(LIB_ROOT / site / "index.json", {})
+    secs = idx.get("sections") or {}
+    lib_total = sum(int(v.get("pulled") or 0) for v in secs.values())
+    kb = PROJECT / "1-2 Insight" / "Knowledge Base"
+    kb_n = len(list(kb.rglob("*.md"))) if kb.exists() else 0
+    alt = _asset_alt_gap(site)
+    qa = _qa_sample(15, page_type="tool")
+    # GSC
+    gsc = read_json(RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json", {})
+    rows = (gsc.get("pages") or {}).get("top20_pages") or []
+    low_ctr = sum(1 for r in rows if (r.get("impr") or 0) >= 10000 and (r.get("clicks") or 0) / max(1, r.get("impr") or 1) < 0.02)
+    # GEO
+    try:
+        g = geo_summary(proj)
+        gaps = [q for q, v in (g.get("per_query") or {}).items() if v.get("brand", 0) == 0]
+        geo_rate = g.get("brand_rate")
+    except Exception:
+        gaps, geo_rate = [], None
+    # 多语言缺口（示例：某 en tool 页缺 fr/ja）
+    try:
+        comp = _sanity_query('count(*[_type=="compositePage" && language=="en" && !(_id in path("drafts.**"))])')
+    except Exception:
+        comp = None
+
+    inventory = {
+        "library_total": lib_total,
+        "library_sections": {k: v.get("pulled") for k, v in secs.items()},
+        "kb_files": kb_n,
+        "skills": len(_skills_index()),
+        "presets": len(presets_list()),
+        "assets": alt,
+        "gsc_pages": len(rows),
+        "geo_brand_rate": geo_rate,
+        "shops": {"composite_en": comp},
+    }
+
+    tasks = []
+    def add(tid, title, why, count, cta, eta, level="ready"):
+        tasks.append({"id": tid, "title": title, "why": why, "count": count, "cta": cta, "eta_min": eta, "level": level})
+
+    # 1) QA 全面体检
+    add("qa", "全站内容体检（QA 扫描）",
+        f"抽样 {qa.get('scanned',0)} 篇发现 {qa.get('findings',0)} 个问题，可自动修复 {qa.get('fixable',0)} 个",
+        qa.get("findings", 0), {"label": "一键扫描", "kind": "preset", "preset": "qa-scan", "opt": {"limit": 200}}, 8)
+    # 2) 字段修复
+    if qa.get("fixable", 0):
+        add("field", "修复字段问题（标题/描述/日期）",
+            "把扫描出的可修字段一次性修好（dry-run 先看）",
+            qa.get("fixable", 0), {"label": "一键修复", "kind": "preset", "preset": "qa-field-fix", "opt": {"limit": 50, "page_type": "tool"}}, 10)
+    # 3) 封面 alt
+    if alt["no_alt"]:
+        add("alt", "补齐封面 alt（SEO/无障碍）",
+            f"{alt['no_alt']} 篇有封面但缺 alt 文案",
+            alt["no_alt"], {"label": "一键补齐", "kind": "preset", "preset": "asset-alt-fill", "opt": {"limit": 50}}, 6)
+    # 4) 低 CTR 刷新
+    if low_ctr:
+        add("lowctr", "刷新高曝光低 CTR 页面",
+            f"GSC 中 {low_ctr} 个页面曝光高但点击低",
+            low_ctr, {"label": "开始刷新", "kind": "preset", "preset": "low-ctr-refresh", "opt": {"limit": 10, "lang": "en"}}, 20)
+    # 5) GEO 缺口
+    if gaps:
+        add("geo", "补 GEO 缺口（让 AI 引用品牌）",
+            f"{len(gaps)} 个查询 AI 回答 0 次提及品牌：" + "、".join(gaps[:3]),
+            len(gaps), {"label": "缺口改稿", "kind": "preset", "preset": "geo-gap-rewrite", "opt": {"limit": 10, "lang": "zh"}}, 20)
+    # 6) 落地页闭环
+    add("landing", "落地页闭环（改稿→发布→验证）",
+        "挑 1 个工具页跑完整闭环，验证 改稿→发布→前台 链路",
+        1, {"label": "跑闭环", "kind": "preset", "preset": "landing-refresh-publish", "opt": {"limit": 1, "lang": "en", "dry_run": True}}, 12)
+    # 7) 多语言批量
+    add("multilang", "多语言产出（同题多语种）",
+        "为一条主题批量生成多语言版本（需填主题，或用 Agent 指定）",
+        None, {"label": "用 Agent 发起", "kind": "agent", "prompt": "选一个当前有曝光的主题，生成 zh/en/ja 三个语言版本的内容（dry-run）"}, 15)
+    # 8) 内容库同步
+    stale = True
+    try:
+        mt = (LIB_ROOT / site / "index.json").stat().st_mtime
+        stale = (time.time() - mt) > 86400 * 3
+    except Exception:
+        pass
+    if stale:
+        add("libsync", "同步内容库（拉取线上最新）",
+            "让生成参考最新已发布内容、范围展开更准",
+            lib_total, {"label": "去同步", "kind": "tab", "tab": "lib"}, 15)
+
+    starter = [t for t in tasks if t["level"] == "ready"][:4]
+    return {"checks": checks, "inventory": inventory, "qa_sample": qa, "tasks": tasks,
+            "starter": starter, "at": datetime.now().strftime("%Y-%m-%d %H:%M")}
+
+
+def onboard_seed(limit=3, proj=None):
+    """把推荐启动包的前 N 项创建为 dry-run 任务（填满后台，但不擅自写入生产）。"""
+    plan = onboard_plan(proj)
+    created, skipped = [], []
+    for t in plan.get("starter", [])[:limit]:
+        c = t.get("cta") or {}
+        if c.get("kind") != "preset":
+            skipped.append({"id": t["id"], "reason": "需人工发起（Agent/" + str(c.get("kind")) + "）"})
+            continue
+        try:
+            ex = preset_expand(c["preset"], c.get("opt") or {}, proj)
+            if ex.get("error"):
+                skipped.append({"id": t["id"], "reason": ex["error"]})
+                continue
+            items = ex.get("items") or []
+            if not items:
+                skipped.append({"id": t["id"], "reason": "范围内无条目"})
+                continue
+            task = batch_create(ex.get("type"), t["title"] + "（开工）", items,
+                                params={"max_attempts": 2, "from_onboard": True}, dry_run=True, by="onboard")
+            created.append({"id": t["id"], "task_id": task["id"], "total": task["stats"]["total"]})
+        except Exception as e:
+            skipped.append({"id": t["id"], "reason": str(e)[:120]})
+    return {"created": created, "skipped": skipped}
+
+
 def next_actions(proj=None):
     """推荐下一步：根据系统状态给出人话建议 + 一键动作。所有新手/老手都能用。"""
     proj = proj or DEFAULT_PROJECT
@@ -6381,6 +6541,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, start_report(self._me(), self._proj()))
             if parsed.path == "/api/selfcheck":
                 return self._send(200, selfcheck(self._proj()))
+            if parsed.path == "/api/onboard/plan":
+                return self._send(200, onboard_plan(self._proj()))
             if parsed.path == "/api/housekeeping":
                 lg = []
                 if HOUSEKEEPING_LOG.exists():
@@ -6628,7 +6790,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
                       "/api/batch/create", "/api/batch/action",
                       "/api/agent/chat", "/api/agent/execute", "/api/agent/run", "/api/agent/profile",
-                      "/api/agent/goal", "/api/agent/compact",
+                      "/api/agent/goal", "/api/agent/compact", "/api/onboard/seed",
                       "/api/batch/revive_stale", "/api/batch/retry_item",
                       "/api/run/action",
                       "/api/qa/orchestrate", "/api/qa/recheck",
@@ -7105,6 +7267,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"],
                                         "run_id": run["id"]})
 
+            if self.path == "/api/onboard/seed":
+                return self._send(200, onboard_seed(int(body.get("limit", 3) or 3), self._proj()))
             # ── Agent 会话目标 ──
             if self.path == "/api/agent/goal":
                 s = agent_session_load(str(body.get("session_id", "")))
