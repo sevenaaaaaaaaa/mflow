@@ -59,7 +59,11 @@
 - **成本**：低（读 index.json 的 langs + 报表页）。
 - **验收**：能看到"tools/en 有 385 篇，缺 ja 的 N 篇"，并可一键补齐。
 
-## P1-6 Skill / 插件市场一键安装 UI
+## P1-6 Skill / 插件市场一键安装 UI ✅ 已完成（2026-09-19）
+- 已交付：市场页「一键安装」（从 marketplace.json 直接装，无需粘贴代码）；`plugin_install` 从仅 source/publisher 扩展到全部 5 类可执行类型（source/publisher/gate/transform/analyzer）；插件「启用/停用」（`plugins/<id>/state.json` + `/api/plugins/toggle`）；新增「Skills 目录」浏览（48 个，按分组 + 检索）。
+- 实测：一键安装 rss-source 通过 plugin_check；停用/启用生效；（测试后已卸载还原）。
+
+## P1-6b Skill / 插件市场一键安装（原描述）
 - **为什么**：`plugins/marketplace.json` 已有可安装包，但无 UI 入口。
 - **做什么**：模板市场页加"插件"分区，展示 marketplace 条目 + 一键安装/卸载（复用 `plugin_install`）。
 - **成本**：低（市场页 + 已有端点）。
