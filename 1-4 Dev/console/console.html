@@ -2841,6 +2841,12 @@ topnavBuild();mascotAttach();
 loadProjs();
 api('api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version).catch(()=>{});
 setTab('home');
+// 首次进入：引导到开工向导（每浏览器一次，admin 优先）
+try{
+ if(!localStorage.getItem('mflow-onboarded') && (window.__ROLE==='admin')){
+   setTimeout(()=>{ if(TAB==='home'){ setTab('onboard'); toast('先花 2 分钟跑一遍「开工向导」，第一天就能用起来','ok',6000); localStorage.setItem('mflow-onboarded','1'); } },1800);
+ }
+}catch(e){}
 api('api/version').then(v=>$('ver-tag').textContent='MFlow v'+v.version).catch(()=>{});
 api('api/setup/status').then(items=>{const done=items.filter(x=>x.ok).length;
  $('nav-setup').textContent=done+'/'+items.length}).catch(()=>{});

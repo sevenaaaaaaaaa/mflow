@@ -5444,7 +5444,13 @@ def onboard_plan(proj=None):
     # GSC
     gsc = read_json(RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json", {})
     rows = (gsc.get("pages") or {}).get("top20_pages") or []
-    low_ctr = sum(1 for r in rows if (r.get("impr") or 0) >= 10000 and (r.get("clicks") or 0) / max(1, r.get("impr") or 1) < 0.02)
+    # 与 low-ctr-refresh 预设保持同一口径（来自 impact_report）
+    try:
+        rep = impact_report(proj)
+        low_ctr = len([r for r in (rep.get("rows") or [])
+                       if (r.get("impr") or 0) >= 10000 and (r.get("clicks") or 0) / max(1, r.get("impr") or 1) < 0.02])
+    except Exception:
+        low_ctr = 0
     # GEO
     try:
         g = geo_summary(proj)
