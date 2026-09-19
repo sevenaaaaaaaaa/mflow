@@ -1608,10 +1608,15 @@ def batch_retry_all(scope="task", tid="", proj=None):
         if t:
             targets = [t]
     else:
-        targets = [t for t in batch_list()
-                   if t.get("status") in ("failed", "tripped")
-                   or any(i.get("status") == "failed" or (i.get("error") and i.get("status") not in ("done", "skipped"))
-                          for i in (t.get("items") or []))]
+        # batch_list 不含 items，必须逐个 load 全量
+        for meta in batch_list():
+            t = batch_load(meta["id"])
+            if not t:
+                continue
+            if (t.get("status") in ("failed", "tripped")
+                    or any(i.get("status") == "failed" or (i.get("error") and i.get("status") not in ("done", "skipped"))
+                           for i in (t.get("items") or []))):
+                targets.append(t)
     done = []
     for t in targets:
         n = 0
