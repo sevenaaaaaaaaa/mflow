@@ -5037,9 +5037,19 @@ def start_report(me="", proj=None):
     # housekeeping
     try:
         if HOUSEKEEPING_LOG.exists():
-            for l in HOUSEKEEPING_LOG.read_text(errors="ignore").strip().split("\n")[-20:]:
-                if l.strip():
-                    overnight["maintenance"].append(l[:140])
+            for l in HOUSEKEEPING_LOG.read_text(errors="ignore").strip().split("\n")[-8:]:
+                l = l.strip()
+                if not l:
+                    continue
+                try:
+                    o = json.loads(l)
+                    when = str(o.get("at", ""))[-8:-3]
+                    overnight["maintenance"].append(
+                        f"{when} 归档 {o.get('archived_items',0)} 项 / {o.get('archived_batch',0)} 批"
+                        + ("（dry-run）" if o.get("dry_run") else ""))
+                except Exception:
+                    overnight["maintenance"].append(l[:120])
+            overnight["maintenance"] = overnight["maintenance"][-3:]
     except Exception:
         pass
     # 我的待办
