@@ -1557,6 +1557,8 @@ _FAIL_PATTERNS = [
     ("timeout", ["timeout", "超时", "timed out"], "调用超时", "可重试；持续超时请缩小批量或稍后再跑"),
     ("rate", ["429", "rate limit", "too many"], "被限流", "降低并发/稍后重试"),
     ("no_data", ["范围内无", "无匹配", "没有满足条件", "已有 alt"], "范围内无对象", "放宽筛选条件或换栏目/语言"),
+    ("internal", ["is not defined", "NameError", "TypeError", "AttributeError", "Traceback", "KeyError", "IndexError"],
+     "系统内部错误（代码异常）", "多为版本缺陷，通常重试即可通过；若反复出现请把该条错误反馈给维护者"),
 ]
 _FAIL_HINTS = {k: h for k, _ks, _t, h in [(x[0], x[1], x[2], x[3]) for x in _FAIL_PATTERNS]}
 
