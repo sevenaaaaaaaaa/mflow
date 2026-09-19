@@ -1626,6 +1626,18 @@ def batch_view(task, proj=None):
         if u and not any(l.get("url") == u for l in links):
             links.append({"label": "前台预览", "url": u})
         it["links"] = links
+    # 存活/恢复信息
+    hb = float(task.get("heartbeat_ts") or 0)
+    try:
+        idle = time.time() - (hb or BATCH_DIR.joinpath(task["id"] + ".json").stat().st_mtime)
+    except Exception:
+        idle = None
+    task["liveness"] = {
+        "heartbeat_at": (datetime.fromtimestamp(hb).strftime("%H:%M:%S") if hb else ""),
+        "idle_sec": int(idle) if idle is not None else None,
+        "stale": bool(idle is not None and idle > 360 and task.get("status") == "running"),
+        "recovered": int(task.get("recovered", 0) or 0),
+    }
     # 汇总
     stats = task.get("stats") or {}
     task["summary"] = {
@@ -2019,6 +2031,10 @@ def run_view(rid):
                 if k not in seen_d:
                     seen_d.add(k); dels.append({"kind": "published", "label": "已发布", "id": r["documentId"]})
     run["deliverables"] = dels[:40]
+    alive, idle = worker_alive()
+    run["liveness"] = {"worker_alive": alive, "worker_idle_sec": idle,
+                       "recovered": sum(int((batch_load(st["task_id"]) or {}).get("recovered", 0) or 0)
+                                        for st in steps if st.get("task_id"))}
 
     run["risk"] = {"level": ("high" if any(r["level"] == "high" for r in risks)
                              else ("medium" if any(r["level"] == "medium" for r in risks)
@@ -2597,11 +2613,35 @@ def _batch_digest_llm(task, chunk, proj):
         return "；".join(f"{(c.get('topic') or c.get('item_id') or '')[:40]} {c['status']}" for c in chunk)[:700]
 
 
+WORKER_HB = RUN_DIR / "worker-heartbeat.json"
+
+
+def worker_alive(max_idle=30):
+    """执行器是否在线（心跳文件 mtime）。"""
+    try:
+        if not WORKER_HB.exists():
+            return False, 999999
+        idle = time.time() - WORKER_HB.stat().st_mtime
+        return idle <= max_idle, int(idle)
+    except Exception:
+        return False, 999999
+
+
+def _worker_beat(extra=None):
+    try:
+        write_json(WORKER_HB, {"ts": time.time(),
+                               "at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                               **(extra or {})})
+    except Exception:
+        pass
+
+
 def batch_worker():
     """批量执行器：并发 2、逐项状态、断点续跑（重启自动续）、审计；同时推进 Run 画布。"""
     from concurrent.futures import ThreadPoolExecutor
     while True:
         time.sleep(5)
+        _worker_beat()
         try:
             run_tick()
         except Exception as _e:
@@ -5321,6 +5361,16 @@ def selfcheck(proj=None):
     except Exception:
         pass
 
+    # 5.5) 执行器存活
+    try:
+        alive, idle = worker_alive()
+        if not alive:
+            add("worker", "block", "执行器不在线",
+                f"后台批量执行器已停止（{idle if idle < 999999 else '从未'} 秒无心跳）——所有任务都不会执行。",
+                {"label": "查看服务日志", "action": "tab:sys"})
+    except Exception:
+        pass
+
     # 6) 熔断
     try:
         blocked, bst = breaker_check()
@@ -5849,6 +5899,10 @@ def next_actions(proj=None):
 def health_report(proj=None):
     proj = proj or DEFAULT_PROJECT
     pp = proj_paths(proj)
+    try:
+        _alive, _idle = worker_alive()
+    except Exception:
+        _alive, _idle = False, 999999
     st = read_json(pp["state"], {})
     items = st.get("items", {})
     now = time.time()
@@ -5910,7 +5964,7 @@ def health_report(proj=None):
                                      "pct": round(used / cap * 100)})
     if quota_alerts:
         level = "bad" if any(a["pct"] >= 100 for a in quota_alerts) else (level if level == "bad" else "warn")
-    return {"level": level, "quota_alerts": quota_alerts, "llm_configured": llm_ok, "sanity": sanity,
+    return {"level": level, "worker": {"alive": _alive, "idle_sec": _idle}, "quota_alerts": quota_alerts, "llm_configured": llm_ok, "sanity": sanity,
             "queues": {"loops_running": sum(1 for x in loops if x.get("status") == "running"),
                        "loops_queued": sum(1 for x in loops if x.get("status") == "queued"),
                        "batch_items_pending": batch_pending},
