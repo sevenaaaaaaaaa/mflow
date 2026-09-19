@@ -411,6 +411,7 @@ button.clicked{animation:clickpulse .45s ease}
   <button class="s-item" data-t="eng" onclick="setTab('eng')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg><span>路由·门禁</span></button>
   <button class="s-item" data-t="pay" onclick="setTab('pay')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg><span>支付 · 发卡</span><span class="sbad mutb" id="nav-pay">0</span></button>
   <button class="s-item" data-t="sys" onclick="setTab('sys')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg><span>调度与日志</span></button>
+  <button class="s-item" data-t="mem" onclick="setTab('mem')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 2 1 3 1 5v3a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-3c0-2 1-3 1-5a7 7 0 0 0-7-7z"/><path d="M9 22v-3M15 22v-3"/></svg><span>记忆审阅</span></button>
   <button class="s-item" data-t="set" onclick="setTab('set')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/></svg><span>设置 · LLM · Harness</span></button>
   <button class="s-item" data-t="usage" onclick="setTab('usage')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>用量与成本</span></button>
   <button class="s-item" data-t="setup" onclick="setTab('setup')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z" opacity="0"/><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg><span>首次引导 · Setup</span><span class="sbad" id="nav-setup">?</span></button>
@@ -910,6 +911,18 @@ button.clicked{animation:clickpulse .45s ease}
       <input id="ftopic" placeholder="主题（生成节点用）" style="flex:1;min-width:180px"></div>
     </div>
     <div class="pgrid" id="flow-nodes" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))"></div>
+  </section>
+
+  <!-- ============ 记忆审阅 ============ -->
+  <section class="page" id="pg-mem">
+    <div class="pg-head"><div><div class="kick">系统</div><h1>记忆<em class="sf">审阅</em></h1>
+      <p class="pg-sub">Agent 依据的项目事实（MEMORY-PROJECT）与实体图谱（entities.yaml）。标为「过时」后 Agent 立即不再引用；「更正」会替换内容并生效。</p></div>
+      <div class="head-actions">
+        <select id="mem-view" onchange="memRender()" style="width:120px"><option value="facts">事实</option><option value="entities">实体</option><option value="overrides">已修改</option></select>
+        <input id="mem-q" placeholder="搜关键词…" style="width:200px" onkeydown="if(event.key==='Enter')memLoad()">
+        <button class="btn ghost" onclick="memLoad()">刷新 ↻</button></div></div>
+    <div class="card" style="margin-bottom:12px"><div class="mut" id="mem-stats" style="font-size:12.5px">加载中…</div></div>
+    <div id="mem-body"></div>
   </section>
 
   <!-- ============ 设置 ============ -->
@@ -1437,6 +1450,57 @@ function mlFill(sec,lang,base,ev){return withBtn(ev, async()=>{
  if(r.error)throw new Error(r.error);toast(`已创建本地化任务 ${r.task_id}（${r.total} 篇，dry-run）`,'ok');
  goBatchDetail(r.task_id);return r;
 },{busyText:'创建中…',okText:'已创建'});}
+/* ---- 记忆审阅 ---- */
+let MEM_DATA=null;
+function memLoad(){api('api/memory').then(d=>{
+ if(!d||d.error){$('mem-body').innerHTML='<span class="bad">加载失败</span>';return}
+ MEM_DATA=d;
+ const st=d.stats||{};
+ $('mem-stats').innerHTML=`事实 <b>${st.facts}</b> 条 · 实体 <b>${st.entities}</b> 个 · 已标过时 <b style="color:var(--warn)">${st.outdated_facts||0}</b> · 已更正 <b style="color:var(--accent)">${st.corrected_facts||0}</b> · 实体修改 <b>${st.overridden_entities||0}</b>　<span class="mut">来源：${esc(d.memory_file||'')}</span>`;
+ memRender();
+}).catch(()=>{})}
+function memRender(){
+ const d=MEM_DATA;if(!d)return;const view=$('mem-view').value;const q=($('mem-q').value||'').toLowerCase();
+ const el=$('mem-body');
+ if(view==='facts'){
+  const facts=(d.facts||[]).filter(f=>!q||(f.text+f.section).toLowerCase().includes(q));
+  const secs={};facts.forEach(f=>(secs[f.section||'（无标题）']=secs[f.section||'（无标题）']||[]).push(f));
+  el.innerHTML=Object.entries(secs).map(([sec,arr])=>`<div class="card" style="margin-bottom:10px"><div class="card-head"><h3>${esc(sec)} <span class="mut">${arr.length}</span></h3></div>
+   ${arr.map(f=>`<div style="display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--border)">
+     <span class="badge" style="background:${f.prio>=3?'var(--bad)':f.prio===2?'var(--warn)':'var(--faint)'}" title="优先级">P${f.prio}</span>
+     <div style="flex:1"><span style="font-size:12.5px">${esc(f.text)}</span>${f.overridden?`<span class="badge dist" style="margin-left:6px">${f.overridden==='corrected'?'已更正':'已修改'}</span>`:''}${f.note?`<div class="mut" style="font-size:11px">备注：${esc(f.note)}</div>`:''}</div>
+     <div style="white-space:nowrap"><button class="mini" onclick="memFactEdit('${esc(f.id)}')">更正</button>
+      <button class="mini" style="color:var(--warn)" onclick="memFact('${esc(f.id)}','outdated')">标为过时</button></div></div>`).join('')}</div>`).join('')||'<div class="card"><span class="mut">无匹配事实</span></div>';
+ } else if(view==='entities'){
+  const ents=(d.entities||[]).filter(e=>!q||(e.name+e.id+e.notes).toLowerCase().includes(q));
+  const byt={};ents.forEach(e=>(byt[e.type||'other']=byt[e.type||'other']||[]).push(e));
+  el.innerHTML=Object.entries(byt).map(([t,arr])=>`<div class="card" style="margin-bottom:10px"><div class="card-head"><h3>${esc(t)} <span class="mut">${arr.length}</span></h3></div>
+   ${arr.map(e=>`<div style="display:flex;gap:10px;padding:7px 0;border-bottom:1px solid var(--border)">
+     <span class="badge ${e.status==='active'?'pipe':''}" style="${e.status!=='active'?'background:var(--warn)':''}">${esc(e.status||'?')}</span>
+     <div style="flex:1"><b style="font-size:12.5px">${esc(e.name)}</b> <span class="mut" style="font-size:11px">${esc(e.id)}</span>${e.overridden?'<span class="badge dist" style="margin-left:6px">已修改</span>':''}
+      <div class="mut" style="font-size:11.5px;margin-top:2px">${esc(e.notes||'')}</div></div>
+     <button class="mini" onclick="memEntEdit('${esc(e.id)}','${esc(e.name)}','${esc(e.notes)}')">更正</button></div>`).join('')}</div>`).join('')||'<div class="card"><span class="mut">无匹配实体</span></div>';
+ } else {
+  const fo=d.overrides&&d.overrides.facts||{}, eo=d.overrides&&d.overrides.entities||{};
+  const fl=Object.entries(fo), el2=Object.entries(eo);
+  el.innerHTML=`<div class="card"><div class="card-head"><h3>事实修改（${fl.length}）</h3></div>
+   ${fl.map(([id,o])=>`<div style="padding:6px 0;border-bottom:1px solid var(--border);font-size:12px"><b>${esc(id)}</b> · ${esc(o.status)} · ${esc(o.by||'')} · ${esc(o.at||'')}${o.note?'<div class="mut">'+esc(o.note)+'</div>':''}${o.text?'<div class="mut">→ '+esc(o.text)+'</div>':''}
+    <button class="mini" onclick="memFact('${esc(id)}','active')">撤销</button></div>`).join('')||'<span class="mut">无</span>'}</div>
+   <div class="card" style="margin-top:10px"><div class="card-head"><h3>实体修改（${el2.length}）</h3></div>
+   ${el2.map(([id,o])=>`<div style="padding:6px 0;border-bottom:1px solid var(--border);font-size:12px"><b>${esc(id)}</b> · ${esc(o.status||'')} · ${esc(o.by||'')} · ${esc(o.at||'')}${o.note?'<div class="mut">'+esc(o.note)+'</div>':''}</div>`).join('')||'<span class="mut">无</span>'}</div>`;
+ }
+}
+function memFact(id,status){let note='';
+ if(status==='outdated')note=prompt('为什么标为过时？（可空）')||'';
+ api('api/memory/fact',{id,status,note}).then(r=>{if(r.error)return toast(r.error,'bad');
+  toast(status==='outdated'?'已标为过时，Agent 不再引用':'已撤销','ok');memLoad()})}
+function memFactEdit(id){
+ const f=(MEM_DATA.facts||[]).find(x=>x.id===id);if(!f)return;
+ const txt=prompt('更正后的内容（将替换原事实，Agent 立即采用）：',f.text);if(txt===null)return;
+ const note=prompt('备注原因（可空）：','')||'';
+ api('api/memory/fact',{id,status:'corrected',text:txt,note}).then(r=>{if(r.error)return toast(r.error,'bad');toast('已更正并生效','ok');memLoad()})}
+function memEntEdit(id,name,notes){const n=prompt('更新「'+name+'」的说明/备注：',notes);if(n===null)return;
+ api('api/memory/entity',{id,note:n}).then(r=>{if(r.error)return toast(r.error,'bad');toast('已更新实体','ok');memLoad()})}
 /* ---- 自动化 ---- */
 function loadAuto(){api('api/automations').then(arr=>{
  const el=$('auto-body');if(!el)return;
@@ -1674,7 +1738,7 @@ const NAV_GROUPS=[
  {id:'quality',label:'质量与发布',items:[['qa','QA 编排'],['dist','分发队列'],['calt','内容日历'],['pipe','内容管线']]},
  {id:'assets',label:'内容资产',items:[['lib','内容库'],['kb','知识库'],['mkt','模板市场'],['trident','数据管线']]},
  {id:'reports',label:'报告与迭代',items:[['reports','报告中心'],['rdash','报告仪表'],['iter','自我迭代'],['wfmap','工作流地图']]},
- {id:'system',label:'系统',items:[['flow','节点流水线'],['loops','Loop 模式'],['eng','路由·门禁'],['pay','支付·发卡'],['sys','调度与日志'],['set','设置'],['usage','用量与成本'],['setup','首次引导']]}
+ {id:'system',label:'系统',items:[['mem','记忆审阅'],['flow','节点流水线'],['loops','Loop 模式'],['eng','路由·门禁'],['pay','支付·发卡'],['sys','调度与日志'],['set','设置'],['usage','用量与成本'],['setup','首次引导']]}
 ];
 function topnavBuild(){
  const el=$('topnav');if(!el)return;
@@ -1709,7 +1773,7 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
  $('pg-'+t).classList.add('on');
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
-   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,agent:agLoad,qa:qaLoad,run:runLoad,onboard:loadOnboard,auto:loadAuto}[t]||(()=>{}))()}
+   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,agent:agLoad,qa:qaLoad,run:runLoad,onboard:loadOnboard,auto:loadAuto,mem:memLoad}[t]||(()=>{}))()}
 function openReader(path){api('api/read?path='+encodeURIComponent(path)).then(r=>{
  $('rname').textContent=r.name;
  const toc=(r.toc||[]).filter(t=>t.level===2);

@@ -2402,9 +2402,9 @@ def memory_review():
             "types": {k: len(v) for k, v in by_type.items()},
             "overrides": {"facts": ov.get("facts", {}), "entities": ov.get("entities", {})},
             "stats": {"facts": len(facts), "entities": len(ents),
-                      "outdated_facts": sum(1 for f in facts if f.get("overridden") == "outdated"),
-                      "corrected_facts": sum(1 for f in facts if f.get("overridden") == "corrected"),
-                      "overridden_entities": sum(1 for e in ents if e.get("overridden"))},
+                      "outdated_facts": sum(1 for v in (ov.get("facts") or {}).values() if v.get("status") == "outdated"),
+                      "corrected_facts": sum(1 for v in (ov.get("facts") or {}).values() if v.get("status") == "corrected"),
+                      "overridden_entities": len(ov.get("entities") or {})},
             "memory_file": rel_of(MEMORY_FILE) if MEMORY_FILE.exists() else ""}
 
 
