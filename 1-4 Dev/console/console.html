@@ -1556,10 +1556,10 @@ function loadTasks(){if(DRAGGING)return;taskFilterRender();api('api/tasks').then
   const c=$(el);
   c.innerHTML=`<div class="tcount mut" style="font-size:11px;margin-bottom:2px">${list.length} 张 · 拖入即移动</div>`+
    (list.map(card).join('')||'<div class="mut" style="padding:8px">空</div>');
-  const card=c.closest('.tcol')||c;
-  c.ondragover=e=>{e.preventDefault();card.classList.add('dragover')};
-  c.ondragleave=e=>{if(!c.contains(e.relatedTarget))card.classList.remove('dragover')};
-  c.ondrop=e=>{e.preventDefault();card.classList.remove('dragover');dropTask(dragId,st,el)};
+  const colCard=c.closest('.tcol')||c;
+  c.ondragover=e=>{e.preventDefault();colCard.classList.add('dragover')};
+  c.ondragleave=e=>{if(!c.contains(e.relatedTarget))colCard.classList.remove('dragover')};
+  c.ondrop=e=>{e.preventDefault();colCard.classList.remove('dragover');dropTask(dragId,st,el)};
  };
  col('todo','col-todo');col('doing','col-doing');col('done','col-done');
  refreshColCounts();
