@@ -1562,6 +1562,7 @@ function loadTasks(){if(DRAGGING)return;taskFilterRender();api('api/tasks').then
   c.ondrop=e=>{e.preventDefault();card.classList.remove('dragover');dropTask(dragId,st,el)};
  };
  col('todo','col-todo');col('doing','col-doing');col('done','col-done');
+ refreshColCounts();
  $('autoq').innerHTML=(t.pipeline||[]).map(x=>`<div class="task" style="cursor:pointer" onclick="setTab('pipe')"><span class="tt">${esc(x.id)}</span><span class="badge pipe">管线·${esc(x.stage)}</span></div>`).join('')+
   (t.distribution||[]).map(x=>`<div class="task" style="cursor:pointer" onclick="setTab('dist')"><span class="tt">${esc(x.id)} <span class="mut">${esc(x.platforms||'')}</span></span><span class="badge dist">分发·${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">分发队列空</span>';
  loadTaskBatches();
@@ -1572,8 +1573,10 @@ function loadTasks(){if(DRAGGING)return;taskFilterRender();api('api/tasks').then
 function updateNavTasks(){const all=__TASKS_CACHE||[];const n=all.filter(x=>x.status!=='done').length;
  const el=$('nav-tasks');if(el)el.textContent=n}
 function refreshColCounts(){const m=TASK_MINE?(__TASKS_CACHE||[]).filter(x=>(x.assignee||'').trim()===(window.__ME||'')&&window.__ME):(__TASKS_CACHE||[]);
- [['todo','col-todo'],['doing','col-doing'],['done','col-done']].forEach(([st,el])=>{const c=$(el);if(!c)return;
-  const t=c.querySelector('.tcount');if(t)t.textContent=`${m.filter(x=>x.status===st).length} 张 · 拖入即移动`});}
+ [['todo','col-todo','cnt-todo'],['doing','col-doing','cnt-doing'],['done','col-done','cnt-done']].forEach(([st,el,cnt])=>{
+  const n=m.filter(x=>x.status===st).length;
+  const c=$(el);if(c){const t=c.querySelector('.tcount');if(t)t.textContent=`${n} 张 · 拖入即移动`}
+  const ce=$(cnt);if(ce)ce.textContent='('+n+')'});}
 function dragStart(e,id){dragId=id;DRAGGING=true;e.dataTransfer.effectAllowed='move';
  const el=e.target.closest('.task');if(el){el.classList.add('dragging');e.dataTransfer.setData('text/plain',id);}}
 function dragEnd(){DRAGGING=false;dragId=null;
