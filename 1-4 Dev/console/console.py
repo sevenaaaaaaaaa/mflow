@@ -1469,6 +1469,9 @@ def _human_result(it, task):
         return {"ok": ok, "status_text": "已按落地页结构改稿（" + note + "）",
                 "detail": "%s 字符 · slug=%s · %s/%s · 草稿：%s" % (r.get("chars", 0), r.get("slug", ""),
                                                                    r.get("page_type", ""), r.get("lang", ""), r.get("path", ""))}
+    if t == "internal_link":
+        n = r.get("count", 0)
+        return {"ok": True, "status_text": "已生成内链建议", "detail": f"{n} 条相关页面建议"}
     if t == "qa":
         n = r.get("findings") if isinstance(r.get("findings"), list) else r.get("count")
         return {"ok": True, "status_text": "已扫描", "detail": ("发现 %s 个问题" % n) if n is not None else "扫描完成"}
@@ -2633,6 +2636,20 @@ def _bh_rewrite(item, task, proj):
                           budget_profile=item.get("budget_profile") or (task.get("params") or {}).get("budget_profile", "default"))
 
 
+def _bh_internal_link(item, task, proj):
+    """内链建议（分析，不写库）：为一页产出内链建议。"""
+    site = site_of(proj)
+    slug = item.get("slug") or item.get("item_id") or ""
+    section = item.get("section") or "tools"
+    lang = item.get("lang") or "en"
+    top = int(item.get("top", 5) or 5)
+    r = link_suggest(site, slug, section, lang, top)
+    if r.get("error"):
+        raise RuntimeError(r["error"])
+    usage_add(task.get("created_by", ""), items=1)
+    return {"suggestions": r["suggestions"], "count": r["count"], "source_url": (r.get("source") or {}).get("url", "")}
+
+
 def _bh_publish_sanity(item, task, proj):
     """批量发布（blog / compositePage）。composite 走 validate_sections + create/patch；记账真实写入。"""
     if not SANITY_PUB:
@@ -2663,7 +2680,7 @@ def _bh_publish_sanity(item, task, proj):
 
 
 BATCH_HANDLERS = {"asset_replace": _bh_asset_replace, "publish_sanity": _bh_publish_sanity, "field_patch": _bh_field_patch,
-                  "gen": _bh_gen, "rewrite": _bh_rewrite}
+                  "gen": _bh_gen, "rewrite": _bh_rewrite, "internal_link": _bh_internal_link}
 
 
 def _batch_digest_llm(task, chunk, proj):
@@ -3538,6 +3555,93 @@ def qa_check_sanity(doc_id):
     return _qa_field_rules(doc)
 
 
+
+# ===================== P1-4 内链建议（批量化、确定性、不擅改正文）=====================
+def link_suggest(site, slug, section="tools", lang="en", top=5, same_section_boost=2.0):
+    """为某页计算内链建议：基于 标题/slug/正文关键词 重叠（确定性，无 LLM）。返回建议列表。"""
+    base = LIB_ROOT / site
+    src = base / section / lang / (slug + ".md")
+    if not src.exists():
+        # 兜底：在同语言下按 slug 找
+        found = list((base).rglob(f"{slug}.md"))
+        src = next((f for f in found if f.parent.name == lang), found[0] if found else None)
+    if not src:
+        return {"error": f"找不到源页：{slug}（{lang}）"}
+    txt = src.read_text(errors="ignore")
+    fms = _read_frontmatter(src)
+    stok = _tokens(fms.get("title", "") + " " + slug.replace("-", " ") + " " + re.sub(r"\s+", " ", txt)[:2500])
+    cands = []
+    for f in base.rglob("*.md"):
+        if f.name.startswith("_"):
+            continue
+        if f.parent.name != lang:
+            continue
+        if f.resolve() == src.resolve():
+            continue
+        fm = _read_frontmatter(f)
+        ntok = _tokens(f.stem.replace("-", " ") + " " + fm.get("title", ""))
+        ov = len(stok & ntok)
+        if ov < 2:
+            continue
+        sec = f.parent.parent.name
+        score = ov * 2 + (same_section_boost if sec == section else 0)
+        cands.append((score, ov, sec, f.stem, fm.get("title", ""), f))
+    cands.sort(key=lambda x: -x[0])
+    out = []
+    for score, ov, sec, tslug, title, f in cands[:top]:
+        out.append({"slug": tslug, "title": title or tslug, "section": sec,
+                    "url": _site_url(site, _page_type_for_section(site, sec), lang, tslug),
+                    "relevance": round(score, 1), "overlap": ov})
+    return {"source": {"slug": slug, "section": section, "lang": lang,
+                       "url": _site_url(site, _page_type_for_section(site, section), lang, slug)},
+            "suggestions": out, "count": len(out)}
+
+
+_SECTION_PT = {}
+
+
+def _page_type_for_section(site, section):
+    if not _SECTION_PT.get(site):
+        prof = read_json(SITES_DIR / f"{site}.json", {}) or {}
+        _SECTION_PT[site] = {x.get("key"): x.get("pageType") for x in (prof.get("sections") or [])}
+    return _SECTION_PT[site].get(section, section)
+
+
+def link_audit(site, section="tools", lang="en", limit=50, top=5):
+    """对某栏目批量产出内链建议（只读分析），并汇总为报告。"""
+    base = LIB_ROOT / site / section / lang
+    if not base.exists():
+        return {"error": f"栏目不存在：{section}/{lang}"}
+    slugs = sorted(f.stem for f in base.glob("*.md"))[:limit]
+    rows, no_link = [], []
+    for sl in slugs:
+        r = link_suggest(site, sl, section, lang, top)
+        sugs = r.get("suggestions") or []
+        if sugs:
+            rows.append({"slug": sl, "suggestions": sugs})
+        else:
+            no_link.append(sl)
+    # 写报告
+    try:
+        d = PROJECT / "1-1 Harness/11-knowledge/audit/reports"
+        d.mkdir(parents=True, exist_ok=True)
+        rp = d / f"internal-links-{section}-{lang}-{datetime.now().strftime('%Y%m%d')}.md"
+        lines = [f"# 内链建议报告 · {site} / {section} / {lang}", "",
+                 f"生成：{datetime.now().strftime('%Y-%m-%d %H:%M')} · 扫描 {len(slugs)} 页 · 有建议 {len(rows)} 页 · 无建议 {len(no_link)} 页", ""]
+        for r in rows:
+            lines.append(f"## {r['slug']}")
+            for s2 in r["suggestions"]:
+                lines.append(f"- [{s2['title']}]({s2['url']})（相关度 {s2['relevance']}）")
+            lines.append("")
+        rp.write_text("\n".join(lines))
+        report = rel_of(rp)
+    except Exception:
+        report = ""
+    return {"section": section, "lang": lang, "scanned": len(slugs),
+            "with_suggestions": len(rows), "without": len(no_link), "report": report,
+            "sample": rows[:10]}
+
+
 def _bh_qa(item, task, proj):
     """批量 QA：kind=md → 钩子；kind=sanity → 字段规则。"""
     kind = item.get("kind", "sanity")
@@ -3845,6 +3949,7 @@ AGENT_TASK_SCHEMA = """可用的任务规格（type 与 items 字段必须严格
 - rewrite:       items=[{"item_id","lang","topic","instruction","source_path"}]
 - qa:            items=[{"kind":"md|sanity","path|doc_id"}]
 - landing_refresh: items=[{"item_id","doc_id","slug","lang","page_type"}]
+- internal_link: items=[{"slug","section","lang","top"}]
 
 【重要：范围类任务用 expand，不要手写 items】
 当任务是"全量扫描/批量刷新/按筛选条件"这类**数据驱动范围**时，不要自己编造 items（你拿不到真实 doc_id）。
@@ -4354,10 +4459,11 @@ def spec_guard(spec):
     items = spec.get("items")
     if not isinstance(items, list) or not items:
         return None, "items 必须是非空数组"
-    cap = 200 if t in ("asset_replace", "field_patch") else (20 if t in ("gen", "rewrite", "publish_sanity", "landing_refresh") else 200)
+    cap = 200 if t in ("asset_replace", "field_patch", "internal_link") else (20 if t in ("gen", "rewrite", "publish_sanity", "landing_refresh") else 200)
     if len(items) > cap:
         return None, f"{t} 单任务 ≤{cap} 项（当前 {len(items)}）"
-    allow = {"asset_replace": {"doc_id", "kind", "idx", "field", "old", "new_url", "new_alt"},
+    allow = {"internal_link": {"slug", "item_id", "section", "lang", "top"},
+             "asset_replace": {"doc_id", "kind", "idx", "field", "old", "new_url", "new_alt"},
              "field_patch": {"doc_id", "set"},
              "gen": {"item_id", "type", "lang", "topic", "brief", "budget_profile"},
              "qa": {"kind", "doc_id", "path", "target"},
@@ -5231,6 +5337,19 @@ def preset_expand(pid, opt, proj):
     opt = opt or {}
     limit = max(1, min(int(opt.get("limit", 5) or 5), 50))
     lang = str(opt.get("lang", "zh") or "zh")
+
+    if pid == "internal-link-audit":
+        section = str(opt.get("section", "tools") or "tools")
+        lang2 = str(opt.get("lang", "en") or "en")
+        base = LIB_ROOT / site / section / lang2
+        if not base.exists():
+            return {"error": f"栏目不存在：{section}/{lang2}"}
+        slugs = sorted(f.stem for f in base.glob("*.md"))[:limit]
+        if not slugs:
+            return {"error": "该栏目无页面"}
+        return {"type": "internal_link", "title": f"内链建议体检（{section}/{lang2}，{len(slugs)} 页）",
+                "items": [{"slug": sl, "section": section, "lang": lang2, "top": 5} for sl in slugs],
+                "params": {"batch_size": 20}, "note": f"只读分析，产出内链建议报告"}
 
     if pid == "geo-gap-rewrite":
         g = geo_summary(proj)
@@ -6887,6 +7006,14 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, memory_review())
             if parsed.path == "/api/skills":
                 return self._send(200, skills_inventory(qs.get("q", [""])[0]))
+            if parsed.path == "/api/links/audit":
+                return self._send(200, link_audit(site_of(self._proj()),
+                                  qs.get("section", ["tools"])[0], qs.get("lang", ["en"])[0],
+                                  int(qs.get("limit", ["50"])[0] or 50)))
+            if parsed.path == "/api/links/suggest":
+                return self._send(200, link_suggest(site_of(self._proj()),
+                                  qs.get("slug", [""])[0], qs.get("section", ["tools"])[0],
+                                  qs.get("lang", ["en"])[0], int(qs.get("top", ["5"])[0] or 5)))
             if parsed.path == "/api/plugins":
                 return self._send(200, plugins_inventory())
             if parsed.path == "/api/geo/citations":
