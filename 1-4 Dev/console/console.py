@@ -5415,13 +5415,20 @@ def _qa_sample(limit=15, page_type="", lang=""):
     if isinstance(res, dict):
         return {"scanned": 0, "findings": 0, "fixable": 0, "error": res.get("_error")}
     total_f = fix_n = block_n = 0
-    for d in res:
-        try:
-            fs = qa_check_sanity(d["_id"])
-        except Exception:
-            continue
-        total_f += len(fs)
-        for f in fs:
+    try:
+        from concurrent.futures import ThreadPoolExecutor
+        with ThreadPoolExecutor(max_workers=6) as ex:
+            results = list(ex.map(lambda d: (qa_check_sanity(d["_id"]) if True else []), [x for x in res]))
+    except Exception:
+        results = []
+        for d in res:
+            try:
+                results.append(qa_check_sanity(d["_id"]))
+            except Exception:
+                results.append([])
+    for fs in results:
+        for f in fs or []:
+            total_f += 1
             if (f.get("fix") or {}).get("type"):
                 fix_n += 1
             if f.get("severity") == "block":
@@ -5429,9 +5436,15 @@ def _qa_sample(limit=15, page_type="", lang=""):
     return {"scanned": len(res), "findings": total_f, "fixable": fix_n, "block": block_n}
 
 
+_ONBOARD_CACHE = {"ts": 0, "proj": "", "data": None}
+
+
 def onboard_plan(proj=None):
-    """体检 + 盘点 + 可做任务规划 + 推荐启动包（真实数据）。"""
+    """体检 + 盘点 + 可做任务规划 + 推荐启动包（真实数据）。结果缓存 5 分钟。"""
     proj = proj or DEFAULT_PROJECT
+    if (_ONBOARD_CACHE["data"] and _ONBOARD_CACHE["proj"] == proj
+            and time.time() - _ONBOARD_CACHE["ts"] < 300):
+        return _ONBOARD_CACHE["data"]
     site = site_of(proj)
     checks = selfcheck(proj)
     idx = read_json(LIB_ROOT / site / "index.json", {})
@@ -5525,8 +5538,10 @@ def onboard_plan(proj=None):
             lib_total, {"label": "去同步", "kind": "tab", "tab": "lib"}, 15)
 
     starter = [t for t in tasks if t["level"] == "ready"][:4]
-    return {"checks": checks, "inventory": inventory, "qa_sample": qa, "tasks": tasks,
-            "starter": starter, "at": datetime.now().strftime("%Y-%m-%d %H:%M")}
+    result = {"checks": checks, "inventory": inventory, "qa_sample": qa, "tasks": tasks,
+              "starter": starter, "at": datetime.now().strftime("%Y-%m-%d %H:%M")}
+    _ONBOARD_CACHE.update(ts=time.time(), proj=proj, data=result)
+    return result
 
 
 def onboard_seed(limit=3, proj=None):
@@ -5552,6 +5567,7 @@ def onboard_seed(limit=3, proj=None):
             created.append({"id": t["id"], "task_id": task["id"], "total": task["stats"]["total"]})
         except Exception as e:
             skipped.append({"id": t["id"], "reason": str(e)[:120]})
+    _ONBOARD_CACHE["ts"] = 0
     return {"created": created, "skipped": skipped}
 
 
