@@ -1572,8 +1572,16 @@ def _categorize_error(err):
 def failure_digest(task):
     """把失败项按原因归类，给出人话摘要与处理建议。"""
     items = task.get("items") or []
-    failed = [i for i in items if i.get("status") == "failed"]
+    failed = [i for i in items if i.get("status") == "failed"
+              or (i.get("error") and i.get("status") not in ("done", "skipped"))]
     if not failed:
+        if task.get("status") in ("failed", "tripped"):
+            last = (task.get("log") or [""])[-1]
+            return {"total": 1, "retryable": 1,
+                    "categories": [{"key": "task", "label": "任务异常终止", "count": 1,
+                                    "samples": [str(last)[:140]],
+                                    "hint": "点「重试全部失败项」重新排队；若反复失败请查看任务日志"}],
+                    "line": "任务异常终止（无逐条错误，多为执行中断）"}
         return {"total": 0, "categories": [], "line": ""}
     cats = {}
     for it in failed:
@@ -1598,12 +1606,15 @@ def batch_retry_all(scope="task", tid="", proj=None):
         if t:
             targets = [t]
     else:
-        targets = [t for t in batch_list() if any(i.get("status") == "failed" for i in (t.get("items") or []))]
+        targets = [t for t in batch_list()
+                   if t.get("status") in ("failed", "tripped")
+                   or any(i.get("status") == "failed" or (i.get("error") and i.get("status") not in ("done", "skipped"))
+                          for i in (t.get("items") or []))]
     done = []
     for t in targets:
         n = 0
         for it in t.get("items") or []:
-            if it.get("status") == "failed":
+            if it.get("status") == "failed" or (it.get("error") and it.get("status") not in ("done", "skipped")):
                 it["status"] = "pending"; it["error"] = ""; it["attempts"] = 0; n += 1
         if n:
             t["status"] = "queued"
