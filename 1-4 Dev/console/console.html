@@ -546,7 +546,12 @@ button.clicked{animation:clickpulse .45s ease}
   <section class="page" id="pg-kb">
     <div class="pg-head"><div><div class="kick">情报与产出</div><h1>知识<em class="sf">中台</em></h1>
       <p class="pg-sub" id="kb-sub">10 大知识源 · 产品知识、铁律约束、故事线、方法论、策略、关键词、规范、案例——写内容前后都该查的地方。</p></div>
-      <div class="head-actions"><input id="kq" placeholder="跨源搜关键词…" style="width:240px" onkeydown="if(event.key==='Enter')kbSearch('')"><button class="btn primary" onclick="kbSearch('')">搜索</button></div></div>
+      <div class="head-actions"><input id="kq" placeholder="搜关键词 / 自然语言…" style="width:240px" onkeydown="if(event.key==='Enter')kbSearch('')">
+        <label class="mut" style="font-size:11.5px;display:flex;align-items:center;gap:4px" title="语义检索：向量+关键词混合（同义/改述提问）"><input type="checkbox" id="kb-sem" onchange="kbSearch('')">语义</label>
+        <button class="btn primary" onclick="kbSearch('')">搜索</button></div></div>
+    <div class="card" style="margin-bottom:12px"><div class="card-head"><h3>检索底座 <span class="mut">RAG / 向量化</span></h3>
+      <div class="row"><button class="mini" onclick="ragBuild()">重建索引</button></div></div>
+      <div class="mut" id="rag-status" style="font-size:12px">加载中…</div></div>
     <div class="cols">
       <div class="card" style="height:fit-content"><div class="card-head"><h3>知识源</h3></div><div id="kdirs" style="display:flex;flex-direction:column;gap:6px"></div><span id="proj-extra-anchor" style="display:none"></span></div>
       <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>本项目专属知识源</h3></div>
@@ -1976,7 +1981,7 @@ function addKbExtra(){const label=$('kx-label').value.trim(),dir=$('kx-dir').val
  if(!label||!dir)return alert('填名称和目录');
  api('api/projects/config',{kb_extra:[{label,dir,glob:'**/*.md'}]}).then(r=>{if(r.error)return alert(r.error);
   $('kdirs').innerHTML='';loadKb()})}
-function loadKb(){if($('kdirs').children.length)return;api('api/kb/tree').then(srcs=>{
+function loadKb(){ragStatus();if($('kdirs').children.length)return;api('api/kb/tree').then(srcs=>{
  const total=srcs.reduce((a,b)=>a+b.files,0);$('kb-sub').textContent=`${srcs.length} 大知识源 · ${total} 份文档 —— 产品知识、铁律约束、故事线、方法论、策略、关键词、规范、案例，写内容前后都该查。`;
  $('kdirs').dataset.srcs=JSON.stringify(srcs.filter(x=>!x.name.startsWith('[项目]')));
  $('kdirs').innerHTML=srcs.filter(x=>!x.name.startsWith('[项目]')).map(d=>`<button class="chip" style="border-radius:12px;text-align:left;justify-content:space-between;display:flex" onclick="pickDir('${esc(d.name)}',this)"><span>${esc(d.name)}</span><span class="mut">${d.files}</span></button>`).join('');
@@ -1985,15 +1990,37 @@ function loadKb(){if($('kdirs').children.length)return;api('api/kb/tree').then(s
  const kx=$('k-extra');if(kx)kx.innerHTML=extras.map(x=>`<span class="chip" onclick="pickDir('${esc(x.name)}',document.getElementById('proj-extra-anchor'))">${esc(x.name)} · ${x.files}</span>`).join('')||'<span class="mut">尚无项目专属源——用下方表单挂载</span>'})}
 function pickDir(n,el){KDIR=n;document.querySelectorAll('#kdirs .chip').forEach(x=>x.classList.remove('on'));el.classList.add('on');$('kq').value='';
  api('api/kb/list?src='+encodeURIComponent(n)).then(items=>{
+  if(($('kb-sem')||{}).checked)$('kb-sem').checked=false;
   const meta=(()=>{const all=JSON.parse(document.getElementById('kdirs').dataset.srcs||'[]');return all.find(x=>x.name===n)||{}})();
   $('kres-t').textContent=n; $('kdesc').textContent=meta.desc||'';
   $('kres').innerHTML=items.map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${f.date||''}</span>${esc(f.name)}</a>`).join('')||'<span class="mut">空</span>'})}
+function ragStatus(){api('api/rag/status').then(d=>{
+ const el=$('rag-status');if(!el||!d)return;
+ const be=d.backend==='remote'?('远程向量 · '+esc(d.model||'')):(d.backend==='local'?'本地 TF-IDF（零依赖词法）':'未构建');
+ el.innerHTML=`后端：<b>${be}</b> · 分块 <b>${d.count||0}</b> · ${d.built?('建于 '+esc(d.built)):'—'}<br>
+  <span style="color:${d.embedding_configured?'var(--ok)':'var(--warn)'}">${d.embedding_configured?'已配置真实 embedding（语义更强）':'未配置 embedding → 使用本地词法兜底（同义/跨语言较弱）'}</span>
+  <span class="mut">　配置方法：设置→LLM→llm.json 增加 "embedding": {provider,base,key,model}</span>`;
+})}
+function ragBuild(){withBtn(event,async()=>{const r=await api('api/rag/build',{});
+ if(r.error)throw new Error(r.error);toast('索引已重建：'+r.count+' 块（'+r.backend+'）','ok');ragStatus();return r;
+},{busyText:'重建中…',okText:'已重建'});}
 function kbSearch(srcOverride){const q=$('kq').value.trim();if(q.length<2)return alert('至少 2 个字符');
+ if(($('kb-sem')||{}).checked)return kbSemantic(q);
  const src=srcOverride!==undefined?srcOverride:KDIR;
  const url='api/kb/search?q='+encodeURIComponent(q)+(src?'&src='+encodeURIComponent(src):'');
  api(url).then(hits=>{$('kres-t').textContent=`搜索「${q}」（${hits.length} 命中${src?' · '+src:' · 跨全部知识源'}）`;$('kdesc').textContent='';
   $('kres').innerHTML=hits.map(h=>`<a onclick="openReader('${esc(h.path)}')"><b>${esc(h.name)}</b><div class="mt mut">${esc(h.match)}</div></a>`).join('')||'<span class="mut">无匹配</span>'})}
 
+function kbSemantic(q){
+ api('api/rag/search?q='+encodeURIComponent(q)+'&k=12').then(d=>{
+  const rs=d.results||[];
+  $('kres-t').textContent=`语义检索「${q}」（${rs.length} 命中）`;
+  $('kdesc').textContent='混合排序（向量+词法）· 分数越高越相关';
+  $('kres').innerHTML=rs.map(r=>{
+   const act=r.src==='kb'?`openReader('${esc(r.ref)}')`:(r.src==='memory'?`setTab('mem')`:`setTab('mem')`);
+   return `<a onclick="${act}"><span class="d">${esc(r.src)} · ${esc(r.section)}</span><b>${esc(r.title||'')}</b>
+    <div class="mt mut">${esc((r.text||'').replace(/\s+/g,' ').slice(0,160))}</div>
+    <div class="mut" style="font-size:10.5px">相关度 ${r.score}</div></a>`}).join('')||'<span class="mut">无匹配（可能索引未构建——点上方「重建索引」）</span>'})}
 /* ---- 分发 ---- */
 function loadDist(){api('api/dist').then(d=>{
  $('dist-pending').innerHTML=(d.pending||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id||x.slug||'')}<div class="mut">${esc(x.platforms||'')} · score ${x.score??'-'}</div></span><span class="badge dist">${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">空</span>';
