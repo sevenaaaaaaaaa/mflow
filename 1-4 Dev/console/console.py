@@ -2105,6 +2105,98 @@ def _sanity_req(path, payload, timeout=60):
         return json.loads(r.read())
 
 
+AUDIT_FILE = RUN_DIR / "audit-changes.jsonl"
+_AUDIT_MAX = 400000  # 单条最大字节（bodyJson 可能很大）
+
+
+def audit_record(kind, did, before, after, task, by="", extra=None):
+    """记录一次真实写入的 before/after（供回滚）。dry-run 不记录。"""
+    try:
+        if task.get("dry_run"):
+            return None
+        rec = {"id": "chg-" + secrets.token_hex(4), "ts": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+               "kind": kind, "doc_id": did, "by": by or task.get("created_by", ""),
+               "task": task.get("id", ""), "before": before or {}, "after": after or {},
+               "rolled_back": False, "extra": extra or {}}
+        blob = json.dumps(rec, ensure_ascii=False)
+        if len(blob.encode("utf-8")) > _AUDIT_MAX:
+            rec["truncated"] = True
+            for k in list((rec.get("before") or {}).keys()):
+                v = rec["before"][k]
+                if isinstance(v, str) and len(v) > 20000:
+                    rec["before"][k] = None
+        RUN_DIR.mkdir(parents=True, exist_ok=True)
+        with open(AUDIT_FILE, "a") as f:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+        return rec["id"]
+    except Exception as e:
+        print(f"[console] audit_record failed: {e}", file=sys.stderr)
+        return None
+
+
+def audit_list(limit=100):
+    out = []
+    if AUDIT_FILE.exists():
+        for line in AUDIT_FILE.read_text(errors="ignore").strip().split("\n")[-limit * 2:]:
+            line = line.strip()
+            if not line:
+                continue
+            try:
+                out.append(json.loads(line))
+            except Exception:
+                continue
+    return out[::-1][:limit]
+
+
+def _audit_update(cid, patch):
+    if not AUDIT_FILE.exists():
+        return
+    rows = []
+    for line in AUDIT_FILE.read_text(errors="ignore").split("\n"):
+        if not line.strip():
+            continue
+        try:
+            r = json.loads(line)
+        except Exception:
+            continue
+        if r.get("id") == cid:
+            r.update(patch)
+        rows.append(r)
+    AUDIT_FILE.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n")
+
+
+def audit_rollback(cid, by=""):
+    """按审计记录把字段恢复为写入前的值（仅字段级，不删文档）。"""
+    rec = next((r for r in audit_list(500) if r.get("id") == cid), None)
+    if not rec:
+        return {"error": "变更记录不存在"}
+    if rec.get("rolled_back"):
+        return {"error": "该变更已回滚"}
+    if not SANITY_PUB:
+        return {"error": "发布器未加载"}
+    before = rec.get("before") or {}
+    sets = {k: v for k, v in before.items() if v is not None}
+    if not sets:
+        return {"error": "无可用回滚值（可能被截断或为新建操作）"}
+    did = rec["doc_id"]
+    fresh = (_sanity_req("query", {"query": f'*[_id=="{did}"][0]{{_id,_rev}}'}) or {}).get("result")
+    if not fresh:
+        return {"error": "文档不存在"}
+    try:
+        res = _sanity_req("mutate", {"mutations": [{"patch": {"id": did, "ifRevisionID": fresh.get("_rev"), "set": sets}}],
+                                     "dryRun": False})
+    except Exception as e:
+        return {"error": f"回滚失败：{str(e)[:180]}"}
+    _audit_update(cid, {"rolled_back": True, "rolled_back_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                        "rolled_back_by": by, "rollback_tx": res.get("transactionId", "")})
+    try:
+        with open(RUN_DIR / "approvals.log", "a") as f:
+            f.write(f"{datetime.now().isoformat(timespec='seconds')} AUDIT-ROLLBACK {cid} doc={did} by={by}\n")
+    except Exception:
+        pass
+    return {"ok": True, "id": cid, "rollback_tx": res.get("transactionId", ""), "restored": list(sets)}
+
+
 def _bh_asset_replace(item, task, proj):
     """物料替换：cover.url/alt、coverUrl、bodyJson[].media（ifRevisionID 并发保护）。"""
     if not SANITY_PUB:
@@ -2134,10 +2226,20 @@ def _bh_asset_replace(item, task, proj):
                 sets["bodyJson"] = json.dumps(arr, ensure_ascii=False)
     if not sets:
         return {"skipped": True, "reason": "无可替换字段（可能已被改过）"}
+    before = {}
+    for k in sets.keys():
+        if k.startswith("cover."):
+            before[k] = (fresh.get("cover") or {}).get(k.split(".", 1)[1])
+        elif k == "coverUrl":
+            before[k] = fresh.get("coverUrl")
+        elif k == "bodyJson":
+            before[k] = fresh.get("bodyJson")
     res = _sanity_req("mutate", {"mutations": [{"patch": {"id": did, "ifRevisionID": fresh.get("_rev"), "set": sets}}],
                                  "dryRun": bool(task.get("dry_run"))})
     usage_add(task.get("created_by", ""), items=1, writes=(0 if task.get("dry_run") else 1))
-    return {"dry_run": task.get("dry_run"), "transactionId": res.get("transactionId"), "set": list(sets)}
+    cid = audit_record("asset_replace", did, before, sets, task)
+    return {"dry_run": task.get("dry_run"), "transactionId": res.get("transactionId"), "set": list(sets),
+            "change_id": cid}
 
 
 def _bh_field_patch(item, task, proj):
@@ -2148,13 +2250,17 @@ def _bh_field_patch(item, task, proj):
     sets = item.get("set") or {}
     if not sets:
         raise RuntimeError("缺 set 字段")
-    fresh = _sanity_req("query", {"query": f'*[_id=="{did}"][0]{{_id,_rev}}'})["result"]
+    proj_fields = ",".join(sorted(sets.keys()))
+    fresh = _sanity_req("query", {"query": f'*[_id=="{did}"][0]{{_id,_rev,{proj_fields}}}'})["result"]
     if not fresh:
         raise RuntimeError("文档不存在")
+    before = {k: fresh.get(k) for k in sets.keys()}
     res = _sanity_req("mutate", {"mutations": [{"patch": {"id": did, "ifRevisionID": fresh.get("_rev"), "set": sets}}],
                                  "dryRun": bool(task.get("dry_run"))})
     usage_add(task.get("created_by", ""), items=1, writes=(0 if task.get("dry_run") else 1))
-    return {"dry_run": task.get("dry_run"), "transactionId": res.get("transactionId"), "set": list(sets)}
+    cid = audit_record("field_patch", did, before, sets, task)
+    return {"dry_run": task.get("dry_run"), "transactionId": res.get("transactionId"), "set": list(sets),
+            "change_id": cid}
 
 
 # ===================== 统一 AI 上下文构建器（v1）=====================
@@ -2991,6 +3097,19 @@ def _bh_publish_sanity(item, task, proj):
         raise RuntimeError(r.get("error") or f"发布失败：{r.get('validation_errors')}")
     if not dry:
         usage_add(task.get("created_by", ""), writes=1)
+        try:
+            did = r.get("documentId") or r.get("id") or item.get("doc_id") or ""
+            mode = item.get("mode", "patch")
+            if did and mode == "patch":
+                audit_record("publish_patch", did, {}, {"note": "发布改稿（正文写入，不自动回滚）"}, task,
+                             extra={"slug": item.get("slug", ""), "lang": item.get("lang", ""),
+                                    "page_type": item.get("page_type", ""), "mode": mode,
+                                    "no_rollback": True, "hint": "发布类变更涉及正文，请人工评估后再处理"})
+            elif did:
+                audit_record("publish_create", did, {}, {"note": "新建文档（不提供删除回滚）"}, task,
+                             extra={"slug": item.get("slug", ""), "mode": mode, "no_rollback": True})
+        except Exception as _e:
+            print(f"[console] audit publish failed: {_e}", file=sys.stderr)
     return r
 
 
@@ -7339,6 +7458,8 @@ class Handler(BaseHTTPRequestHandler):
                 cfg = notify_cfg()
                 return self._send(200, {"enabled": cfg.get("enabled"), "feishu_webhook": cfg.get("feishu_webhook", ""),
                                         "email": {k: v for k, v in email_cfg().items() if k != "pass"}})
+            if parsed.path == "/api/audit/changes":
+                return self._send(200, {"changes": audit_list(int(qs.get("limit", ["100"])[0] or 100))})
             if parsed.path == "/api/rag/status":
                 return self._send(200, rag_status())
             if parsed.path == "/api/rag/search":
@@ -7740,7 +7861,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/account/list", "/api/account/reset", "/api/dispatch/approve",
                       "/api/trident/run", "/api/daily/run", "/api/tasks/del",
                       "/api/notify/save", "/api/notify/test", "/api/email/save", "/api/email/test", "/api/user/email",
-                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install", "/api/memory/fact", "/api/memory/entity", "/api/rag/build",
+                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install", "/api/memory/fact", "/api/memory/entity", "/api/rag/build", "/api/audit/rollback",
                       "/api/plugins/toggle", "/api/plugins/state",
                       "/api/geo/probe",
                       "/api/pay/product/save", "/api/pay/product/delete", "/api/pay/cards/import",
@@ -7895,6 +8016,8 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(404, {"error": "用户不存在"})
                 AUTH_FILE.write_text(json.dumps(recs, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True, "username": un, "email": em})
+            if self.path == "/api/audit/rollback":
+                return self._send(200, audit_rollback(str(body.get("id", "")), self._me()))
             if self.path == "/api/rag/build":
                 return self._send(200, rag_build())
             if self.path == "/api/memory/fact":
