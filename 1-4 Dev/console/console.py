@@ -1346,7 +1346,7 @@ def library_list(site, section, lang="", q="", limit=200):
 def assets_inventory(site, q="", role="", section="", lang="", limit=300):
     inv = read_json(LIB_ROOT / site / "assets.json", {})
     if not inv:
-        return {"error": "尚无物料台账——先点「扫描物料」"}
+        return {"error": "尚无物料台账 → 到「内容库 → 图片物料」点「扫描物料」后再试"}
     urls = inv.get("urls", {})
     rows = []
     for u, e in urls.items():
@@ -2501,11 +2501,11 @@ def _bh_rewrite(item, task, proj):
 def _bh_publish_sanity(item, task, proj):
     """批量发布（blog / compositePage）。composite 走 validate_sections + create/patch；记账真实写入。"""
     if not SANITY_PUB:
-        raise RuntimeError("发布器未加载")
+        raise RuntimeError("发布器未加载：Sanity token 缺失或模块异常 → 到「设置」检查 Sanity 配置后重试")
     path = item.get("path") or f"run/projects/{proj}/content/{item.get('item_id','')}.md"
     sp = safe_path(path)
     if not sp:
-        raise RuntimeError(f"草稿不可读：{path}")
+        raise RuntimeError(f"草稿不可读：{path}（确认文件存在，且路径在项目目录内）")
     dry = bool(task.get("dry_run"))
     doctype = item.get("doctype", "blog")
     if doctype == "composite":
@@ -3320,7 +3320,7 @@ def _qa_field_rules(doc):
 
 def qa_check_sanity(doc_id):
     if not SANITY_PUB:
-        return [_qa_finding(doc_id, "sanity", "block", "发布器未加载")]
+        return [_qa_finding(doc_id, "sanity", "block", "发布器未加载：请到「设置」检查 Sanity token/项目配置")]
     try:
         r = _sanity_req("query", {"query": f'*[_id=="{doc_id}"][0]{{_id,title,language,description,seoTitle,seo,cover}}'})
         doc = (r or {}).get("result")
@@ -4990,7 +4990,7 @@ def preset_expand(pid, opt, proj):
                 if len(items) >= limit:
                     break
             if not items:
-                return {"error": "没有缺 alt 的封面"}
+                return {"error": "没有缺 alt 的封面（都已有 alt，无需处理）"}
             return {"type": "asset_replace", "title": f"封面 alt 补齐（{len(items)} 项）", "items": items,
                     "params": {"batch_size": 20}, "note": f"台账共 {inv.get('stats',{}).get('with_cover',0)} 页有封面"}
         where = '_type=="compositePage" && !(_id in path("drafts.**"))'
@@ -5002,9 +5002,9 @@ def preset_expand(pid, opt, proj):
             res = _sanity_req("query", {"query": f'*[{where}][0...{limit}]{{_id}}'})
             ids = [d["_id"] for d in (res.get("result") or [])]
         except Exception as e:
-            return {"error": f"Sanity 查询失败：{str(e)[:150]}"}
+            return {"error": f"Sanity 查询失败：{str(e)[:150]}（检查网络与 token，或稍后重试）"}
         if not ids:
-            return {"error": "范围内无文档"}
+            return {"error": "范围内无文档 → 换语言或页面类型；若内容库为空请先到「内容库」同步"}
         if pid == "qa-scan":
             return {"type": "qa", "title": f"例行 QA 扫描（{len(ids)} 项）",
                     "items": [{"kind": "sanity", "doc_id": i} for i in ids], "params": {}, "note": ""}
@@ -5064,7 +5064,7 @@ def preset_expand(pid, opt, proj):
         topic = str(opt.get("topic", "") or "").strip()
         langs = [x.strip() for x in str(opt.get("langs", "zh,en,ja") or "").split(",") if x.strip()][:5]
         if not topic:
-            return {"error": "需要填主题（topic）"}
+            return {"error": "需要填主题（topic）：该预设要求指定主题/关键词（在预设选项里填 topic）"}
         base = _slug_of(topic)[:40]
         items = [{"item_id": f"{base}-{lg}", "lang": lg, "type": "blog", "topic": topic,
                   "brief": str(opt.get("brief", "") or "")} for lg in langs]
@@ -6906,7 +6906,7 @@ class Handler(BaseHTTPRequestHandler):
                 dry = bool(body.get("dry_run", True))
                 plan_path = str(LIB_ROOT / site / "replace-plan.json")
                 if not (LIB_ROOT / site / "replace-plan.json").exists():
-                    return self._send(400, {"error": "无替换计划——先生成计划"})
+                    return self._send(400, {"error": "无替换计划 → 先到「内容库 → 图片物料」生成替换计划"})
                 r = assets_run("apply", site, plan=plan_path,
                                max_docs=int(body.get("max_docs", 500) or 500),
                                **({"yes": 1} if not dry else {}))
@@ -7020,7 +7020,7 @@ class Handler(BaseHTTPRequestHandler):
                             return self._send(400, {"error": "预设展开失败：" + str(_ex["error"])})
                         _items = _ex.get("items") or []
                         if not _items:
-                            return self._send(400, {"error": "预设展开为空（范围内没有匹配数据）"})
+                            return self._send(400, {"error": "预设展开为空（范围内没有匹配数据）→ 放宽范围：换语言/页面类型，或去掉类型限制后重试"})
                         spec["type"] = _ex.get("type") or spec["type"]
                         spec["title"] = spec.get("title") or _ex.get("title", "")
                     t = batch_create(spec["type"], spec["title"], _items,
