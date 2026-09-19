@@ -1683,7 +1683,9 @@ def run_replan(run, failed_step):
         f"失败步骤：{failed_step.get('name')}\n失败原因：{failed_step.get('detail') or failed_step.get('error') or '未知'}\n\n"
         "可用的批量预设（用 preset+opt）：\n" + plist + "\n\n"
         "要求：给出 1-3 个替代步骤，尽量降低风险（可缩范围、换预设、改为只扫描或 dry-run）。"
-        "不要重复已失败的步骤。只输出 JSON：\n"
+        "不要重复已失败的步骤。**优先只用不需要额外主题参数的预设**"
+        "（qa-scan / qa-field-fix / asset-alt-fill / decay-refresh / low-ctr-refresh / geo-gap-rewrite / landing-refresh-publish），"
+        "multilang-batch 这类需要 topic 的预设除非你已能从上下文确定主题，否则不要用。只输出 JSON：\n"
         '{"reason":"为什么这样改","steps":[{"name":"步骤名","type":"batch","preset":"预设id","opt":{"limit":3,"lang":"en","dry_run":true}},{"name":"验证","type":"verify"}]}'
     )
     try:
