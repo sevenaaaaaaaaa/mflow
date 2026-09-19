@@ -3947,6 +3947,84 @@ def _doc_url(proj, doc_id):
     return u
 
 
+
+# ===================== 审阅子代理（只判断、不动笔）=====================
+# 设计原则（针对历史痛点）：
+#  1. 与规划器共享同一上下文（skills / 规则 / 记忆 / 知识库 / 目标）→ 解决"没有上下文"
+#  2. 硬性要求每条意见引用 RULES-xx / skill / 记忆条目 → 解决"不遵守 skills"
+#  3. 禁止修改/续写任何内容，只能"收紧"（dry-run、缩范围、补参数）→ 解决"掺水、乱改"
+#  4. 不确定就 pass；最多 3 条 → 不制造噪音
+REVIEW_SYS = """你是「审阅子代理」，只做**判断**，**绝对不修改、不续写、不重写任何内容**。
+
+【你只审这四类，其余一律 pass】
+1. scope  范围风险：范围过大/过小，或与用户目标明显不符
+2. write  写入风险：会真实写生产库（dry_run=false）却没有先 dry-run 的过程
+3. consistency 一致性：与「项目记忆」或「harness 规则」冲突
+4. executable 可执行性：缺少必填参数、目标对象不存在、语言/类型非法
+
+【硬性要求（违反即视为无效意见）】
+- 每条意见必须引用依据：`RULES-xx` 或 `skill <名称>` 或 `记忆<§>`。**无依据不要提**。
+- **禁止**提"文风/措辞/可以更好/建议丰富"等主观建议。
+- **禁止**要求重写或补充正文内容。
+- 不确定就 pass；最多 3 条意见。
+
+【只输出 JSON】
+{"verdict":"pass|revise|block",
+ "reasons":[{"kind":"scope|write|consistency|executable","rule":"依据","detail":"问题","fix":"该如何收紧"}],
+ "safe_spec":{仅当 revise 且能用安全方式自动收紧时给出，例如把 dry_run 设为 true、减小 expand.opt.limit、补 topic；不要改内容语义}}
+"""
+
+
+def review_spec(session, message, spec, proj=None):
+    """审阅子代理：返回 {verdict, reasons, safe_spec}，失败则返回 None（fail-open 不阻塞）。"""
+    if not spec:
+        return None
+    proj = proj or DEFAULT_PROJECT
+    try:
+        prof_key = (session.get("profile") or "auto")
+        prof = AGENT_PROFILES.get(prof_key) or AGENT_PROFILES["auto"]
+        rules = (context_rules(limit=1100, force_files=prof["files"]) if prof.get("files")
+                 else context_rules(limit=900, query=message))
+        mem = memory_digest(message + " " + str(spec.get("title", "")), k=3)
+        kb = kb_search_for_ai((spec.get("type", "") + " " + message), k=2)
+        skills = context_skills(message + " " + str(spec.get("title", "")), k=3)
+        items = spec.get("items") or []
+        sample = json.dumps(items[:5], ensure_ascii=False)[:900]
+        body = f"""【本会话目标】{session.get('goal') or '（未设定）'}
+【用户原话】{message[:500]}
+【待审 spec】type={spec.get('type')} dry_run={spec.get('dry_run')} title={spec.get('title')}
+expand={json.dumps(spec.get('expand'), ensure_ascii=False) if spec.get('expand') else '无'}
+items 数量={len(items)}（前几条示例）：{sample}
+
+【可用 skills（判断一致性时参考）】{', '.join(x['name'] for x in skills) or '（无）'}
+【项目记忆（判断冲突时引用）】
+{chr(10).join('- 〔' + m['section'] + '〕' + m['text'][:160] for m in mem) or '（无）'}
+【harness 规则】
+{rules}
+【知识库命中】{chr(10).join('- 《' + b['title'] + '》' + b['excerpt'][:120] for b in kb) or '（无）'}
+
+请按规则只输出 JSON。"""
+        raw = llm_chat([{"role": "system", "content": REVIEW_SYS},
+                        {"role": "user", "content": body}],
+                       profile="default", max_tokens=700, project=proj, timeout=90)
+        m = re.search(r"\{[\s\S]*\}", raw)
+        d = json.loads(m.group(0)) if m else {}
+        v = str(d.get("verdict", "pass"))
+        if v not in ("pass", "revise", "block"):
+            v = "pass"
+        reasons = []
+        for r in (d.get("reasons") or [])[:3]:
+            if not isinstance(r, dict):
+                continue
+            reasons.append({"kind": str(r.get("kind", ""))[:20], "rule": str(r.get("rule", ""))[:80],
+                            "detail": str(r.get("detail", ""))[:240], "fix": str(r.get("fix", ""))[:200]})
+        return {"verdict": v, "reasons": reasons, "safe_spec": d.get("safe_spec"),
+                "tokens": int(LAST_USAGE.get("total_tokens", 0) or 0)}
+    except Exception as e:
+        print(f"[console] review_spec failed: {e}", file=sys.stderr)
+        return None
+
+
 def agent_tool(name, args, proj=None):
     """执行一个 Agent 工具。一律只读或 dry-run，真实写入仍需 spec+force。"""
     proj = proj or DEFAULT_PROJECT
@@ -7179,7 +7257,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
                       "/api/batch/create", "/api/batch/action",
                       "/api/agent/chat", "/api/agent/execute", "/api/agent/run", "/api/agent/profile",
-                      "/api/agent/goal", "/api/agent/compact", "/api/onboard/seed",
+                      "/api/agent/goal", "/api/agent/compact", "/api/agent/review", "/api/onboard/seed",
                       "/api/multilang/fill", "/api/automations/save", "/api/automations/delete",
                       "/api/automations/run", "/api/work/convert",
                       "/api/batch/revive_stale", "/api/batch/retry_item",
@@ -7632,11 +7710,46 @@ class Handler(BaseHTTPRequestHandler):
                 guarded, gerr = (None, "")
                 if r.get("spec"):
                     guarded, gerr = spec_guard(r["spec"])
+                review = None
+                if guarded and s.get("review", True) is not False:
+                    review = review_spec(s, msg, guarded, self._proj())
+                    if review and review.get("verdict") == "revise":
+                        # 只允许"收紧"：绝不放宽、绝不改内容语义
+                        ss = review.get("safe_spec") or {}
+                        g2, _e2 = spec_guard(ss) if ss else (None, "")
+                        merged = dict(guarded)
+                        applied = []
+                        if g2:
+                            if g2.get("dry_run") is True and merged.get("dry_run") is not True:
+                                merged["dry_run"] = True; applied.append("强制 dry-run")
+                            if g2.get("expand") and merged.get("expand"):
+                                try:
+                                    a = int((merged["expand"].get("opt") or {}).get("limit") or 0)
+                                    b = int((g2["expand"].get("opt") or {}).get("limit") or 0)
+                                    if b and (not a or b < a):
+                                        merged["expand"].setdefault("opt", {})["limit"] = b
+                                        applied.append(f"缩小范围至 {b}")
+                                except Exception:
+                                    pass
+                                for k, v in (g2["expand"].get("opt") or {}).items():
+                                    if v and not (merged["expand"].get("opt") or {}).get(k):
+                                        merged["expand"].setdefault("opt", {})[k] = v; applied.append(f"补 {k}")
+                        else:
+                            if merged.get("dry_run") is not True:
+                                merged["dry_run"] = True; applied.append("强制 dry-run")
+                        merged["dry_run"] = True if (merged.get("dry_run") is True or applied) else merged.get("dry_run")
+                        guarded = merged
+                        review["applied"] = bool(applied)
+                        review["applied_notes"] = applied
+                        if not review.get("reasons"):
+                            review["reasons"] = [{"kind": "write", "rule": "RULES-00",
+                                                  "detail": "审阅要求收紧范围/改为 dry-run", "fix": "已自动收紧"}]
                 _tk = int(r.get("tokens") or 0)
                 s["messages"].append({"role": "assistant", "text": r["say"], "at": datetime.now().strftime("%H:%M:%S"),
                                       "context": r.get("context"), "questions": r.get("questions"),
                                       "spec": guarded, "guard_error": gerr, "tokens": _tk,
-                                      "plan": r.get("plan"), "trace": r.get("trace") or []})
+                                      "plan": r.get("plan"), "trace": r.get("trace") or [],
+                                      "review": review})
                 s["tokens"] = int(s.get("tokens") or 0) + _tk
                 if guarded:
                     s.setdefault("proposals", []).append({"spec": guarded, "at": datetime.now().strftime("%Y-%m-%d %H:%M")})
@@ -7645,7 +7758,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"session_id": s["id"], "say": r["say"], "questions": r.get("questions"),
                                         "spec": guarded, "guard_error": gerr, "context": r.get("context"),
                                         "plan": r.get("plan"), "trace": r.get("trace") or [],
-                                        "tokens": s.get("tokens", 0),
+                                        "review": review, "tokens": s.get("tokens", 0),
                                         "ctx": {"chars": _cc, "limit": CTX_LIMIT_CHARS,
                                                 "pct": int(round(100 * _cc / CTX_LIMIT_CHARS)),
                                                 "summary": bool(s.get("summary")),
@@ -7658,6 +7771,12 @@ class Handler(BaseHTTPRequestHandler):
                 if err:
                     return self._send(400, {"error": err})
                 force = bool(body.get("force", False))
+                # 审阅结论为 block 且用户未确认为强制 → 拦截（前端会要求二次确认）
+                rv = body.get("review") or {}
+                if rv.get("verdict") == "block" and not body.get("ack_review"):
+                    return self._send(409, {"error": "审阅子代理判定为阻断：" +
+                                            "；".join(x.get("detail", "") for x in (rv.get("reasons") or [])[:3]) +
+                                            "——如确认要继续，请勾选「我已了解风险」"})
                 if not spec["dry_run"] and not force:
                     return self._send(400, {"error": "真实执行需显式确认（force=true）——建议先 dry-run"})
                 try:
@@ -7780,6 +7899,13 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(200, {"ok": True, "loop_id": lid, "to": "loop"})
                 return self._send(400, {"error": "to 可选 automation/batch/loop（agent 由前端处理）"})
 
+            if self.path == "/api/agent/review":
+                s = agent_session_load(str(body.get("session_id", "")))
+                if not s:
+                    return self._send(404, {"error": "会话不存在"})
+                s["review"] = bool(body.get("enabled", True))
+                agent_save(s)
+                return self._send(200, {"ok": True, "review": s["review"]})
             # ── Agent 会话目标 ──
             if self.path == "/api/agent/goal":
                 s = agent_session_load(str(body.get("session_id", "")))

@@ -576,6 +576,8 @@ button.clicked{animation:clickpulse .45s ease}
     <div class="pg-head"><div><div class="kick">我的工作</div><h1>Agent <em class="sf">任务台</em></h1>
       <p class="pg-sub">像和 Claude Code 对话一样下达任务——agent 会用知识库/skills/内容库自己填细节，你只需要说想要什么。</p></div>
       <div class="head-actions">
+        <label class="mut" style="font-size:11.5px;display:flex;align-items:center;gap:4px" title="开：执行前由审阅子代理把关（只判断、不改内容）">
+          <input type="checkbox" id="ag-review" checked onchange="agSetReview(this.checked)">审阅</label>
         <select id="ag-profile" onchange="agSetProfile(this.value)" title="Agent 角色（工作线）" style="width:120px"></select>
         <select id="ag-sessions" onchange="agOpen(this.value)" style="width:180px"></select>
         <button class="btn ghost" onclick="agNew()">＋ 新会话</button></div></div>
@@ -2658,6 +2660,7 @@ function agOpen(id){AG_ID=id;return api('api/agent/session?id='+encodeURICompone
  if(s.error)return; const sid=$('ag-sid');if(sid)sid.textContent=s.id;
  const ps=$('ag-profile');if(ps&&s.profile)ps.value=s.profile;
  const gi=$('ag-goal');if(gi&&s.goal!==undefined&&document.activeElement!==gi)gi.value=s.goal||'';
+ const rg=$('ag-review');if(rg&&s.review!==undefined)rg.checked=s.review!==false;
  agRender(s.messages||[]);agRenderMeta(s);agCtx(s.ctx||{});agPollTasks();return s})}
 function agCtx(c){
  const bar=$('ag-ctxbar'),tx=$('ag-ctxtx'),sm=$('ag-summary');if(!bar)return;
@@ -2675,6 +2678,8 @@ function agCompact(){if(!AG_ID)return;
   if(r.error)throw new Error(r.error);toast(`已压缩：${r.before} → ${r.after} 字符`,'ok');
   if(r.ctx)agCtx(r.ctx);await agOpen(AG_ID);return r;
  },{busyText:'压缩中…',okText:'已压缩'});}
+function agSetReview(en){if(!AG_ID){toast('先发一条消息或新建会话','warn');return}
+ api('api/agent/review',{session_id:AG_ID,enabled:en}).then(r=>{if(r.error)return toast(r.error,'bad');toast(en?'已开启审阅子代理':'已关闭审阅','ok')})}
 function agSetProfile(v){if(!AG_ID){toast('先发一条消息或新建会话','warn');return}
  withBtn(event, async()=>{const r=await api('api/agent/profile',{session_id:AG_ID,profile:v});
   if(r.error)throw new Error(r.error);toast('已切换角色：'+r.label,'ok');return r;},{busyText:'切换中…',okText:'已切换'});}
@@ -2729,6 +2734,12 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
      <button class="btn ghost" style="font-size:12px" onclick='openConvert({kind:"plan",title:"Agent 计划",steps:${JSON.stringify(m.plan.steps||[]).replace(/'/g,"&#39;")}},event)'>⇄ 存为自动化</button></div></div>`;
   }
   const runLink=m.run_id?`<div style="font-size:12px;margin-top:6px"><button class="mini" onclick="setTab('run');setTimeout(()=>runDetail('${esc(m.run_id)}'),600)">查看执行画布 →</button></div>`:'';
+  const rv=m.review||{};
+  const rvC={pass:'var(--ok)',revise:'var(--warn)',block:'var(--bad)'}[rv.verdict]||'var(--muted)';
+  const rvL={pass:'审阅通过',revise:'审阅：已收紧',block:'审阅：阻断'}[rv.verdict]||'';
+  const rv2={block:rv.verdict==='block', html:rv.verdict?`<div style="margin-top:8px;padding:8px 10px;border-radius:8px;background:var(--surface);border-left:3px solid ${rvC}">
+    <b style="font-size:11.5px;color:${rvC}">🛡 ${rvL}</b>${rv.applied?` <span class="mut" style="font-size:11px">已自动收紧：${esc((rv.applied_notes||[]).join('、')||'dry-run')}</span>`:''}
+    ${(rv.reasons||[]).length?`<div class="mut" style="font-size:11px;margin-top:4px;line-height:1.7">${(rv.reasons||[]).map(x=>`· [${esc(x.kind)}] ${esc(x.detail)} <span style="opacity:.7">（依据：${esc(x.rule)}）</span>${x.fix?' → '+esc(x.fix):''}`).join('<br>')}</div>`:'<div class="mut" style="font-size:11px;margin-top:3px">未发现问题</div>'}</div>`:''};
   let spec='';
   if(m.spec){const sp=m.spec;const isExp=sp.expand&&sp.expand.preset;
    const itms=isExp?`<span class="mut">将按预设「${esc(sp.expand.preset)}」用真实数据展开${sp.expand.opt?'（'+esc(JSON.stringify(sp.expand.opt))+'）':''}</span>`:(sp.items||[]).slice(0,3).map(i=>esc(JSON.stringify(i)).slice(0,120)).join('<br>');
@@ -2738,8 +2749,10 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
     <span class="mut" style="font-size:11px">${isExp?'范围展开':((sp.items||[]).length+' 项')}</span></div>
     <div class="mut" style="font-size:11.5px;margin-top:4px">${esc(sp.rationale||'')}</div>
     <div style="font-size:10.5px;font-family:var(--font-mono);margin-top:6px;max-height:100px;overflow:auto;background:var(--bg);padding:6px;border-radius:8px">${itms}</div>
-    <div class="row" style="margin-top:8px"><button class="btn primary" style="font-size:12px" onclick='agExec(${JSON.stringify(sp).replace(/'/g,"&#39;")},false,event)'>执行（dry-run）</button>
-    <button class="btn ghost" style="font-size:12px" onclick='agExec(${JSON.stringify(sp).replace(/'/g,"&#39;")},true,event)'>真实执行</button></div></div>`}
+    <div class="row" style="margin-top:8px"><button class="btn primary" style="font-size:12px" ${rv2.block?'disabled':''} onclick='agExec(${JSON.stringify(sp).replace(/'/g,"&#39;")},false,event)'>执行（dry-run）</button>
+    <button class="btn ghost" style="font-size:12px" ${rv2.block?'disabled':''} onclick='agExec(${JSON.stringify(sp).replace(/'/g,"&#39;")},true,event)'>真实执行</button>
+    ${rv2.block?`<label style="font-size:11px;display:flex;align-items:center;gap:4px"><input type="checkbox" id="ack-${m.at||''}" onchange="this.closest('.card').querySelectorAll('button').forEach(b=>b.disabled=!this.checked)">我已了解风险</label>`:''}</div>
+    ${rv2.html}</div>`}
   else if(m.guard_error){spec=`<div class="warn" style="margin-top:6px;font-size:12px">规格未过门禁：${esc(m.guard_error)}</div>`}
   const task=m.task_id?`<div class="ag-task" data-tid="${esc(m.task_id)}" style="font-size:12px;margin-top:6px;padding:8px 10px;background:var(--ok-soft);border-radius:8px">
     <div style="display:flex;align-items:center;gap:8px"><b>批量任务 ${esc(m.task_id)}</b><span class="ag-tst mut"></span>
@@ -2800,8 +2813,9 @@ function agPollTasks(){
 }
 function agExec(spec,real,ev){const _n=spec.expand?('预设「'+spec.expand.preset+'」按真实数据展开'):(spec.items||[]).length+' 项';
  if(real&&!confirm(`确认真实执行（会写生产库/消耗额度）？\n类型: ${spec.type}\n范围: ${_n}`))return;
+ const _ack=(ev&&ev.target&&ev.target.closest&&ev.target.closest('.card'))?!!(ev.target.closest('.card').querySelector('input[type=checkbox]')||{}).checked:false;
  return withBtn(ev||window.event, async()=>{
-  const r=await api('api/agent/execute',{session_id:AG_ID,spec:{...spec,dry_run:!real},force:real});
+  const r=await api('api/agent/execute',{session_id:AG_ID,spec:{...spec,dry_run:!real},force:real,review:window.__lastReview||{},ack_review:_ack});
   if(r.error)throw new Error(r.error);
   toast(`任务 ${r.task_id} 已创建（${r.total} 项）`,'ok');
   await agOpen(AG_ID);
