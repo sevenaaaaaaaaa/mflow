@@ -1330,7 +1330,7 @@ function openItemDetail(tid, i){
   const fixHints=fails.length?`<div style="margin-top:8px;padding:8px 10px;border-radius:8px;background:var(--warn-soft)">
     <b style="font-size:12px">怎么修复</b>
     <div class="mut" style="font-size:11.5px;margin-top:4px;line-height:1.7">${fails.map(([k])=>`<div>· <b>${esc(k)}</b>：${esc(GATE_FIX[k]||'查看规则后针对性调整')}</div>`).join('')}</div>
-    <button class="mini" style="margin-top:6px" onclick='fixByAgent(${JSON.stringify({task:tid,i:idx,labels:fails.map(f=>f[0])}).replace(/'/g,"&#39;")})'>🤖 让 Agent 修复这条</button></div>`:'';
+    <button class="mini" style="margin-top:6px" onclick='fixByAgent(${JSON.stringify({task:tid,i:i,labels:fails.map(f=>f[0])}).replace(/'/g,"&#39;")})'>🤖 让 Agent 修复这条</button></div>`:'';
   const findings=(d.findings||[]);
   const ftable=findings.length?`<table style="margin-top:6px"><tr><th>级别</th><th>规则</th><th>问题</th><th>可修复</th></tr>`+
     findings.map(f=>`<tr><td><span class="sev ${f.severity}">${esc(f.severity)}</span></td><td>${esc(f.rule)}</td>
