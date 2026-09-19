@@ -1494,6 +1494,31 @@ def batch_retry_item(tid, idx):
     return {"ok": True, "task": tid, "item": idx}
 
 
+def batch_recover_orphans(max_idle_sec=360):
+    """执行器中断留下的僵尸任务：running 但心跳/文件超过 N 秒无更新 → 自动重置重跑。"""
+    recovered = []
+    for f in sorted(BATCH_DIR.glob("batch-*.json")):
+        try:
+            t = read_json(f, {}) or {}
+            if t.get("status") != "running":
+                continue
+            hb = float(t.get("heartbeat_ts") or 0)
+            last = max(hb, f.stat().st_mtime)
+            if time.time() - last <= max_idle_sec:
+                continue
+            for it in t.get("items", []):
+                if it.get("status") == "running":
+                    it["status"] = "pending"
+            t["status"] = "queued"
+            t["recovered"] = int(t.get("recovered", 0)) + 1
+            _batch_log(t, f"检测到执行中断（> {max_idle_sec}s 无心跳），已自动恢复为排队")
+            batch_save(t)
+            recovered.append(t["id"])
+        except Exception:
+            pass
+    return recovered
+
+
 def batch_revive_stale():
     """把长时间无进展的 running 任务重置为 queued（未完成项回到 pending），让执行器重新接手。"""
     revived = []
@@ -1972,6 +1997,29 @@ def run_view(rid):
         pass
     if items_total and items_done < items_total and rate == 0 and elapsed > 120:
         risks.append({"level": "medium", "text": "长时间无产出，可能卡住"})
+    # 交付物（草稿 / 前台链接 / 发布 id）
+    dels, seen_d = [], set()
+    for st in steps:
+        if not st.get("task_id"):
+            continue
+        t = batch_load(st["task_id"]) or {}
+        for it in (t.get("items") or []):
+            r = it.get("result") or {}
+            if r.get("path"):
+                k = "d:" + str(r["path"])
+                if k not in seen_d:
+                    seen_d.add(k)
+                    dels.append({"kind": "draft", "label": os.path.basename(str(r["path"])).replace(".md", ""), "path": r["path"]})
+            if r.get("url"):
+                k = "u:" + str(r["url"])
+                if k not in seen_d:
+                    seen_d.add(k); dels.append({"kind": "url", "label": "前台页面", "url": r["url"]})
+            if r.get("documentId") and not r.get("dry_run"):
+                k = "p:" + str(r["documentId"])
+                if k not in seen_d:
+                    seen_d.add(k); dels.append({"kind": "published", "label": "已发布", "id": r["documentId"]})
+    run["deliverables"] = dels[:40]
+
     run["risk"] = {"level": ("high" if any(r["level"] == "high" for r in risks)
                              else ("medium" if any(r["level"] == "medium" for r in risks)
                                    else ("low" if risks else "none"))),
@@ -2559,6 +2607,10 @@ def batch_worker():
         except Exception as _e:
             print(f"[console] run_tick: {_e}", file=sys.stderr)
         try:
+            batch_recover_orphans()
+        except Exception as _e:
+            print(f"[console] orphan recover: {_e}", file=sys.stderr)
+        try:
             BATCH_DIR.mkdir(parents=True, exist_ok=True)
             blocked, bst = breaker_check()
             if blocked:
@@ -2570,6 +2622,7 @@ def batch_worker():
             with BATCH_LOCK:
                 task["status"] = "running"
                 task.setdefault("started", datetime.now().strftime("%Y-%m-%d %H:%M"))
+                task["heartbeat_ts"] = time.time()
                 _batch_log(task, f"开始执行（type={task['type']} dry_run={task.get('dry_run')}）")
                 batch_save(task)
             handler = BATCH_HANDLERS.get(task["type"])
@@ -2618,6 +2671,7 @@ def batch_worker():
                 task["batches"].append({"n": len(task["batches"]) + 1, "items": len(chunk),
                                         "done": len(done_chunk), "digest": digest})
                 task["ctx_digest"] = ((task.get("ctx_digest", "") + "\n" + digest).strip())[-2500:]
+                task["heartbeat_ts"] = time.time()
                 _batch_log(task, f"批次 {len(task['batches'])} 完成 {len(done_chunk)}/{len(chunk)}")
                 # 连续失败熔断（T3）
                 cons = task.get("consecutive_fail", 0)
@@ -3955,6 +4009,8 @@ def agent_reply(session, message, proj=None):
 
 
     msgs = [{"role": "system", "content": sys_prompt}]
+    if session.get("goal"):
+        msgs.append({"role": "system", "content": "【本会话目标（始终对齐）】" + str(session["goal"])[:400]})
     if session.get("summary"):
         msgs.append({"role": "system", "content": "【前情摘要（较早对话已压缩）】\n" + str(session["summary"])[:1800]})
     for m in session.get("messages", [])[-6:]:
@@ -6572,6 +6628,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
                       "/api/batch/create", "/api/batch/action",
                       "/api/agent/chat", "/api/agent/execute", "/api/agent/run", "/api/agent/profile",
+                      "/api/agent/goal", "/api/agent/compact",
                       "/api/batch/revive_stale", "/api/batch/retry_item",
                       "/api/run/action",
                       "/api/qa/orchestrate", "/api/qa/recheck",
@@ -7048,6 +7105,44 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"],
                                         "run_id": run["id"]})
 
+            # ── Agent 会话目标 ──
+            if self.path == "/api/agent/goal":
+                s = agent_session_load(str(body.get("session_id", "")))
+                if not s:
+                    return self._send(404, {"error": "会话不存在"})
+                s["goal"] = str(body.get("goal", "")).strip()[:400]
+                agent_save(s)
+                return self._send(200, {"ok": True, "goal": s["goal"]})
+            # ── 手动压缩上下文 ──
+            if self.path == "/api/agent/compact":
+                s = agent_session_load(str(body.get("session_id", "")))
+                if not s:
+                    return self._send(404, {"error": "会话不存在"})
+                before = session_ctx_chars(s)
+                # 强制压缩：临时降低阈值
+                msgs = s.get("messages", [])
+                if len(msgs) > 4:
+                    old = msgs[:-4]
+                    lines = []
+                    for m in old[-24:]:
+                        role = "用户" if m.get("role") == "user" else "助手"
+                        lines.append(f"{role}：{re.sub(chr(92) + 's+', ' ', str(m.get('text') or ''))[:220]}")
+                    prev = s.get("summary") or ""
+                    txt = prev + "\n" + "\n".join(lines)
+                    try:
+                        summary = llm_chat([{"role": "user", "content":
+                            "把下面这段内容工作台的对话历史压缩成不超过 8 行要点，保留目标/约束/决策/未完成事项。只输出要点。\n\n" + txt[-6000:]}],
+                            profile="default", max_tokens=400, project=self._proj(), timeout=60)
+                        s["summary"] = re.sub(r"\s+\n", "\n", summary).strip()[:1500]
+                    except Exception:
+                        s["summary"] = txt[-1500:]
+                    s["messages"] = msgs[-4:]
+                    s["compressed_at"] = datetime.now().strftime("%Y-%m-%d %H:%M")
+                    agent_save(s)
+                _cc = session_ctx_chars(s)
+                return self._send(200, {"ok": True, "before": before, "after": _cc,
+                                        "ctx": {"chars": _cc, "limit": CTX_LIMIT_CHARS,
+                                                "pct": int(round(100 * _cc / CTX_LIMIT_CHARS))}})
             # ── Agent 角色（工作线 Profile）──
             if self.path == "/api/agent/profile":
                 s = agent_session_load(str(body.get("session_id", "")))

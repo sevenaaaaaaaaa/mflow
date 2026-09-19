@@ -557,6 +557,12 @@ button.clicked{animation:clickpulse .45s ease}
         <select id="ag-sessions" onchange="agOpen(this.value)" style="width:180px"></select>
         <button class="btn ghost" onclick="agNew()">＋ 新会话</button></div></div>
     <div class="card" style="margin-bottom:12px;padding:10px 14px">
+      <div class="row" style="margin-bottom:6px">
+        <span class="mut" style="font-size:11.5px;white-space:nowrap">🎯 会话目标</span>
+        <input id="ag-goal" placeholder="给这个会话定个目标（AI 会始终对齐，如：把 tools 页 SEO 修到零问题）" style="flex:1" onkeydown="if(event.key==='Enter')agSetGoal()">
+        <button class="btn ghost" style="font-size:12px" onclick="agSetGoal()">设定</button>
+        <button class="mini" onclick="agCompact()" title="把较早对话压缩成摘要，释放上下文">压缩上下文</button>
+      </div>
       <div style="display:flex;align-items:center;gap:10px">
         <span class="mut" style="font-size:11.5px;white-space:nowrap">上下文占用</span>
         <div style="flex:1;height:8px;border-radius:99px;background:var(--hover);overflow:hidden"><div id="ag-ctxbar" style="height:100%;width:0;background:var(--accent);transition:width .4s"></div></div>
@@ -2399,6 +2405,7 @@ function agNew(){AG_ID='';const t=$('ag-thread');if(t)t.innerHTML='';const s=$('
 function agOpen(id){AG_ID=id;return api('api/agent/session?id='+encodeURIComponent(id)).then(s=>{
  if(s.error)return; const sid=$('ag-sid');if(sid)sid.textContent=s.id;
  const ps=$('ag-profile');if(ps&&s.profile)ps.value=s.profile;
+ const gi=$('ag-goal');if(gi&&s.goal!==undefined&&document.activeElement!==gi)gi.value=s.goal||'';
  agRender(s.messages||[]);agRenderMeta(s);agCtx(s.ctx||{});agPollTasks();return s})}
 function agCtx(c){
  const bar=$('ag-ctxbar'),tx=$('ag-ctxtx'),sm=$('ag-summary');if(!bar)return;
@@ -2407,6 +2414,15 @@ function agCtx(c){
  if(tx)tx.textContent=`${(c.chars||0).toLocaleString()} / ${(c.limit||0).toLocaleString()} 字符（${pct}%）`;
  if(sm)sm.textContent=c.summary?`较早对话已自动压缩为摘要（${c.compressed_at||''}）——AI 仍记得要点。`:'';
 }
+function agSetGoal(){if(!AG_ID){toast('先发一条消息或新建会话','warn');return}
+ withBtn(event, async()=>{const r=await api('api/agent/goal',{session_id:AG_ID,goal:$('ag-goal').value.trim()});
+  if(r.error)throw new Error(r.error);toast(r.goal?'目标已设定':'目标已清除','ok');return r;
+ },{busyText:'保存中…',okText:'已设定'});}
+function agCompact(){if(!AG_ID)return;
+ withBtn(event, async()=>{const r=await api('api/agent/compact',{session_id:AG_ID});
+  if(r.error)throw new Error(r.error);toast(`已压缩：${r.before} → ${r.after} 字符`,'ok');
+  if(r.ctx)agCtx(r.ctx);await agOpen(AG_ID);return r;
+ },{busyText:'压缩中…',okText:'已压缩'});}
 function agSetProfile(v){if(!AG_ID){toast('先发一条消息或新建会话','warn');return}
  withBtn(event, async()=>{const r=await api('api/agent/profile',{session_id:AG_ID,profile:v});
   if(r.error)throw new Error(r.error);toast('已切换角色：'+r.label,'ok');return r;},{busyText:'切换中…',okText:'已切换'});}
@@ -2574,6 +2590,12 @@ function runDetail(id){RUN_ID=id;api('api/run/detail?id='+encodeURIComponent(id)
    ${m.retries?`<span class="mut">重试 <b style="color:var(--warn)">${m.retries}</b></span>`:''}
    ${m.rate_per_min?`<span class="mut">速率 <b style="color:var(--fg)">${m.rate_per_min}/分</b></span>`:''}
   </div>`;
+ const dels=r.deliverables||[];
+ const delHtml=dels.length?`<div style="margin:10px 0 4px"><b style="font-size:12.5px">交付物（${dels.length}）</b>
+   <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px">${dels.map(x=>x.url
+     ?`<a class="mini" style="text-decoration:none" href="${esc(x.url)}" target="_blank">🌐 ${esc(x.label)} ↗</a>`
+     :(x.kind==='published'?`<span class="mini">✅ 已发布 ${esc(x.id)}</span>`
+     :`<button class="mini" onclick="openReader('${esc(x.path)}')">📄 ${esc(x.label)}</button>`)).join('')}</div></div>`:'';
  $('run-canvas').innerHTML=`<div class="run-pbar"><div style="width:${ov.pct||0}%"></div></div>`+metricsRow+riskBanner+
   steps.map((st,i)=>{
    const dot={done:'✓',failed:'✕',warn:'!',running:'●',replanned:'↻',blocked:'—',pending:i+1}[st.status]||i+1;
@@ -2583,7 +2605,7 @@ function runDetail(id){RUN_ID=id;api('api/run/detail?id='+encodeURIComponent(id)
      <div class="run-body"><div class="rn">${esc(st.name)} ${st.status==='running'?'<span class="mut" style="font-size:11px">进行中…</span>':(st.status==='replanned'?'<span class="warn" style="font-size:11px">已重规划</span>':(st.status==='blocked'?'<span class="mut" style="font-size:11px">已跳过</span>':''))}</div>
       <div class="rd">${esc(st.detail||'')}</div>${prog}
       ${st.task_id?`<button class="mini" style="margin-top:6px" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(st.task_id)}'),600)">查看任务 →</button>`:''}</div></div>`}).join('')+
-  `<div class="row" style="margin-top:6px">${r.status==='running'?`<button class="btn ghost" onclick="runAct('${esc(r.id)}','cancel')">取消执行</button>`:''}${r.status==='failed'?`<button class="btn primary" onclick="runAct('${esc(r.id)}','retry')">重试失败步骤</button>`:''}</div>`;
+  delHtml+`<div class="row" style="margin-top:6px">${r.status==='running'?`<button class="btn ghost" onclick="runAct('${esc(r.id)}','cancel')">取消执行</button>`:''}${r.status==='failed'?`<button class="btn primary" onclick="runAct('${esc(r.id)}','retry')">重试失败步骤</button>`:''}</div>`;
  // 运行中自动刷新
  if(r.status==='running'){clearTimeout(RUN_TIMER);RUN_TIMER=setTimeout(()=>{if(TAB==='run')runDetail(RUN_ID)},2500)}
 });}
