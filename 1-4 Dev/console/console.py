@@ -2388,6 +2388,93 @@ def _entities_index():
     return ents
 
 
+
+# ===================== 全局命令面板（⌘K）：一处搜/执行 =====================
+def palette(q, proj=None):
+    """统一检索：页面动作 / 待办 / 批量 / 执行 / 自动化 / 内容库 / Skills / 记忆 / 报告。"""
+    proj = proj or DEFAULT_PROJECT
+    ql = (q or "").strip().lower()
+    if not ql:
+        return {"results": [], "q": q}
+    out = []
+
+    def add(t, label, sub, action, prio=5):
+        out.append({"type": t, "label": label[:90], "sub": (sub or "")[:80], "action": action, "prio": prio})
+
+    # 待办
+    try:
+        for t in (read_json(proj_paths(proj)["tasks"], []) or []):
+            if ql in str(t.get("title", "")).lower():
+                add("待办", t.get("title", ""), t.get("status", ""), {"tab": "tasks"}, 4)
+    except Exception:
+        pass
+    # 批量
+    try:
+        for t in batch_list()[:120]:
+            if ql in (str(t.get("title", "")) + " " + str(t["id"]) + " " + str(t.get("type", ""))).lower():
+                st = t.get("stats") or {}
+                add("批量", t.get("title") or t["id"], f"{t.get('type')} · {t.get('status')} · {st.get('done',0)}/{st.get('total',0)}",
+                    {"batch": t["id"]}, 3)
+    except Exception:
+        pass
+    # 执行
+    try:
+        for r in run_list(60):
+            if ql in (str(r.get("title", "")) + " " + str(r["id"])).lower():
+                add("执行", r.get("title") or r["id"], f"{r.get('status')}", {"run": r["id"]}, 3)
+    except Exception:
+        pass
+    # 自动化
+    try:
+        for a in automations_list():
+            if ql in (str(a.get("name", "")) + " " + str(a["id"])).lower():
+                add("自动化", a.get("name") or a["id"], f"{a.get('mode')} · {'启用' if a.get('enabled') else '停用'}", {"tab": "auto"}, 3)
+    except Exception:
+        pass
+    # 内容库
+    try:
+        site = site_of(proj)
+        rr = library_list(site, "", "", q, 6)
+        items = rr.get("items") if isinstance(rr, dict) else (rr or [])
+        for x in (items or [])[:6]:
+            add("内容", x.get("slug") or x.get("name") or str(x)[:40], x.get("section", ""),
+                {"lib": {"site": site, "section": x.get("section", ""), "lang": x.get("lang", "")}}, 4)
+    except Exception:
+        pass
+    # Skills
+    try:
+        for sk in _skills_index():
+            if ql in (sk["name"] + " " + sk.get("desc", "")).lower():
+                add("Skill", sk["name"], sk.get("group", ""), {"tab": "mkt"}, 5)
+    except Exception:
+        pass
+    # 记忆
+    try:
+        for f in memory_digest(q, k=4):
+            add("记忆", f["text"][:80], f["section"], {"tab": "mem"}, 6)
+    except Exception:
+        pass
+    # 报告
+    try:
+        for c, files in (list_reports() or {}).items():
+            for f in (files or [])[:60]:
+                if ql in str(f.get("name", "")).lower():
+                    add("报告", f.get("name", ""), c, {"reader": f.get("path", "")}, 5)
+    except Exception:
+        pass
+    # 预设（可作为动作）
+    try:
+        for pz in presets_list():
+            if ql in (pz.get("name", "") + pz.get("id", "") + pz.get("desc", "")).lower():
+                add("预设", pz.get("name", ""), pz.get("desc", "")[:60],
+                    {"python": None, "preset": pz["id"]}, 2)
+    except Exception:
+        pass
+
+    out.sort(key=lambda x: x["prio"])
+    return {"results": out[:24], "q": q}
+
+
 def memory_review():
     """记忆审阅：事实 + 实体 + 覆盖，供 UI 浏览/更正。"""
     facts = _memory_index()
@@ -7020,6 +7107,8 @@ class Handler(BaseHTTPRequestHandler):
                 cfg = notify_cfg()
                 return self._send(200, {"enabled": cfg.get("enabled"), "feishu_webhook": cfg.get("feishu_webhook", ""),
                                         "email": {k: v for k, v in email_cfg().items() if k != "pass"}})
+            if parsed.path == "/api/palette":
+                return self._send(200, palette(qs.get("q", [""])[0], self._proj()))
             if parsed.path == "/api/memory":
                 return self._send(200, memory_review())
             if parsed.path == "/api/skills":

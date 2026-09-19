@@ -346,6 +346,20 @@ button.clicked{animation:clickpulse .45s ease}
 .task .tacts{display:flex;gap:3px;opacity:0;transition:opacity .15s}
 .task:hover .tacts{opacity:1}
 
+
+/* ── 命令面板 ── */
+.palette{position:fixed;inset:0;z-index:var(--z-toast);display:none;align-items:flex-start;justify-content:center;padding-top:12vh;background:oklch(20% .02 70 / .35);backdrop-filter:blur(3px)}
+.palette.on{display:flex}
+.pal-box{width:min(640px,94vw);background:var(--surface);border:1px solid var(--border);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;animation:mcin .2s var(--ease-spring)}
+.pal-input{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--border)}
+.pal-input input{flex:1;border:none;background:transparent;font-size:15px;padding:0;color:var(--fg)}
+.pal-input input:focus{outline:none}
+.pal-res{max-height:52vh;overflow:auto;padding:6px}
+.pal-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;cursor:pointer;font-size:13px}
+.pal-item.on{background:var(--accent-soft);color:var(--accent)}
+.pal-item .pt{font-size:10px;border-radius:99px;padding:1px 7px;background:var(--hover);color:var(--muted);min-width:38px;text-align:center}
+.pal-foot{display:flex;justify-content:space-between;padding:8px 14px;border-top:1px solid var(--border);font-size:11px}
+
 /* z-index 层级系统 */
 :root{--z-base:0;--z-panel:50;--z-chrome:60;--z-reader:80;--z-toast:99}
 
@@ -362,6 +376,7 @@ button.clicked{animation:clickpulse .45s ease}
   <span id="me-name" style="color:var(--muted);font-size:12px"></span>
   <span id="worker-ind" class="mut" title="后台执行器状态" style="font-size:11px;display:flex;align-items:center;gap:5px;cursor:pointer" onclick="setTab('auto')">
     <span id="worker-dot" style="width:8px;height:8px;border-radius:50%;background:var(--faint);display:inline-block"></span><span id="worker-tx">执行器</span></span>
+  <button class="cbtn" style="width:auto;padding:0 12px;font-size:12px;gap:6px" onclick="palOpen()" title="全局搜索 / 执行（⌘K）">🔍 搜索 <span class="mut" style="font-size:10px">⌘K</span></button>
   <span class="sp" style="flex:1"></span>
   <div class="bbar">
     <button class="cbtn" onclick="setTheme()" title="明暗切换"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg></button>
@@ -1456,6 +1471,41 @@ function mlFill(sec,lang,base,ev){return withBtn(ev, async()=>{
  if(r.error)throw new Error(r.error);toast(`已创建本地化任务 ${r.task_id}（${r.total} 篇，dry-run）`,'ok');
  goBatchDetail(r.task_id);return r;
 },{busyText:'创建中…',okText:'已创建'});}
+/* ---- 命令面板 ⌘K ---- */
+const PAL_CMDS=[
+ ['总览','home'],['开工向导','onboard'],['自动化','auto'],['Agent 任务台','agent'],['执行画布','run'],['批量任务','batch'],
+ ['创作中心','create'],['任务看板','tasks'],['QA 编排','qa'],['分发队列','dist'],['内容日历','calt'],['内容管线','pipe'],
+ ['内容库','lib'],['知识库','kb'],['模板市场','mkt'],['数据管线','trident'],['报告中心','reports'],['报告仪表','rdash'],
+ ['自我迭代','iter'],['工作流地图','wfmap'],['记忆审阅','mem'],['节点流水线','flow'],['Loop 模式','loops'],['路由·门禁','eng'],
+ ['支付·发卡','pay'],['调度与日志','sys'],['设置','set'],['用量与成本','usage'],['首次引导','setup']
+];
+let PAL_IDX=0, PAL_ITEMS=[], PAL_TIMER=null;
+function palOpen(){const p=$('palette');if(!p)return;p.classList.add('on');$('pal-q').value='';$('pal-q').focus();palSearch()}
+function palClose(){$('palette').classList.remove('on')}
+function palToggle(){const p=$('palette');p.classList.contains('on')?palClose():palOpen()}
+document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();palToggle()}
+ if(e.key==='Escape')palClose()});
+function palKey(e){if(e.key==='ArrowDown'){e.preventDefault();PAL_IDX=Math.min(PAL_ITEMS.length-1,PAL_IDX+1);palRender()} 
+ if(e.key==='ArrowUp'){e.preventDefault();PAL_IDX=Math.max(0,PAL_IDX-1);palRender()}
+ if(e.key==='Enter'){e.preventDefault();palRun(PAL_ITEMS[PAL_IDX])}}
+function palSearch(){const q=($('pal-q').value||'').trim().toLowerCase();
+ const cmds=PAL_CMDS.filter(([n])=>!q||n.toLowerCase().includes(q)).map(([n,t])=>({type:'页面',label:n,action:{tab:t},prio:0}));
+ PAL_ITEMS=cmds;PAL_IDX=0;palRender();
+ clearTimeout(PAL_TIMER);PAL_TIMER=setTimeout(()=>{if(!q)return;
+  api('api/palette?q='+encodeURIComponent(q)).then(d=>{PAL_ITEMS=cmds.concat((d&&d.results)||[]);PAL_IDX=0;palRender();$('pal-hint').textContent=(d&&d.results||[]).length+' 条结果'}).catch(()=>{})},180)}
+function palRender(){const el=$('pal-res');if(!el)return;
+ el.innerHTML=PAL_ITEMS.map((x,i)=>`<div class="pal-item ${i===PAL_IDX?'on':''}" onclick="palRun(PAL_ITEMS[${i}])" onmouseenter="PAL_IDX=${i};palRender()">
+   <span class="pt">${esc(x.type||'')}</span><span style="flex:1">${esc(x.label||'')}</span><span class="mut" style="font-size:11px">${esc(x.sub||'')}</span></div>`).join('')||'<div class="mut" style="padding:14px">无匹配</div>';
+ const on=el.querySelector('.pal-item.on');if(on)on.scrollIntoView({block:'nearest'})}
+function palRun(it){if(!it)return;const a=it.action||{};palClose();
+ if(a.tab){setTab(a.tab);return}
+ if(a.batch){setTab('batch');setTimeout(()=>btDetail(a.batch),600);return}
+ if(a.run){setTab('run');setTimeout(()=>runDetail(a.run),600);return}
+ if(a.reader){openReader(a.reader);return}
+ if(a.preset){withBtn(null,async()=>{const r=await api('api/presets/run',{id:a.preset,options:{}});
+   if(r.error)throw new Error(r.error);toast('已运行预设 '+a.preset+' → '+(r.task_id||''),'ok');goBatchDetail(r.task_id);return r;},{busyText:'运行中…',okText:'已运行',msg:'预设已运行'});return}
+ if(a.lib){setTab('lib');return}
+}
 /* ---- 记忆审阅 ---- */
 let MEM_DATA=null;
 function memLoad(){api('api/memory').then(d=>{
@@ -3099,5 +3149,10 @@ api('api/setup/status').then(items=>{const done=items.filter(x=>x.ok).length;
   <button class="cbtn" onclick="closeDrawer()" title="关闭"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg></button></div>
   <div class="drawer-body" id="drawer-body"></div></div>
 <div id="drawer-mask" class="drawer-mask" onclick="closeDrawer()"></div>
+<div id="palette" class="palette"><div class="pal-box">
+  <div class="pal-input"><span style="opacity:.5">⌘K</span><input id="pal-q" placeholder="搜索或执行：页面 / 任务 / 批量 / 执行 / 自动化 / 内容 / Skill / 记忆 / 预设…" oninput="palSearch()" onkeydown="palKey(event)"></div>
+  <div id="pal-res" class="pal-res"></div>
+  <div class="pal-foot"><span class="mut">↑↓ 选择 · Enter 执行 · Esc 关闭</span><span class="mut" id="pal-hint"></span></div>
+</div></div>
 </body>
 </html>
