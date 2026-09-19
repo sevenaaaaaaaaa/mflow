@@ -1898,11 +1898,155 @@ def kb_search_for_ai(query, k=3, intent_dirs=None):
     return out
 
 
+
+# ===================== P0-1 记忆层：项目记忆 / 实体图谱 / 历史检索 =====================
+MEMORY_FILE = PROJECT / "1-1 Harness" / "11-knowledge" / "MEMORY-PROJECT.md"
+ENTITIES_FILE = PROJECT / "1-1 Harness" / "11-knowledge" / "entities.yaml"
+KNOWLEDGE_PROJECT_DIR = PROJECT / "1-1 Harness" / "11-knowledge" / "project"
+KB_SESSIONS_DIR = PROJECT / "1-1 Harness" / "11-knowledge" / "sessions"
+USER_MEMORY_FILE = Path.home() / ".hermes" / "memories" / "USER.md"
+
+_MEM_CACHE = {"mtime": 0, "facts": []}
+_ENT_CACHE = {"mtime": 0, "ents": []}
+
+
+def _memory_index():
+    """解析 MEMORY-PROJECT.md 为事实条目（按 section + 优先级标记），mtime 缓存。"""
+    if not MEMORY_FILE.exists():
+        return []
+    try:
+        mt = MEMORY_FILE.stat().st_mtime
+    except Exception:
+        mt = 0
+    if _MEM_CACHE["mtime"] == mt and _MEM_CACHE["facts"]:
+        return _MEM_CACHE["facts"]
+    facts, section = [], ""
+    for line in MEMORY_FILE.read_text(errors="ignore").split("\n"):
+        m = re.match(r"^#{1,4}\s+(.+)$", line)
+        if m:
+            section = m.group(1).strip()
+            continue
+        if line.strip().startswith("-"):
+            txt = re.sub(r"^[-\s]+", "", line).strip()
+            if len(txt) < 8:
+                continue
+            prio = 3 if "📌" in txt else (2 if ("✋" in txt or "⚙️" in txt) else 1)
+            clean = re.sub(r"[📌✋⚙️🤖]", "", txt).strip()
+            facts.append({"section": section, "text": clean, "prio": prio, "tok": _tokens(section + " " + clean)})
+    _MEM_CACHE["mtime"] = mt
+    _MEM_CACHE["facts"] = facts
+    return facts
+
+
+def _entities_index():
+    """加载 entities.yaml 为扁平实体列表（id/name/type/notes/path），mtime 缓存。"""
+    if not ENTITIES_FILE.exists():
+        return []
+    try:
+        mt = ENTITIES_FILE.stat().st_mtime
+    except Exception:
+        mt = 0
+    if _ENT_CACHE["mtime"] == mt and _ENT_CACHE["ents"]:
+        return _ENT_CACHE["ents"]
+    ents = []
+    try:
+        import yaml
+        d = yaml.safe_load(ENTITIES_FILE.read_text(errors="ignore")) or {}
+        for k, v in d.items():
+            if not isinstance(v, list):
+                continue
+            for it in v:
+                if not isinstance(it, dict):
+                    continue
+                name = str(it.get("name") or it.get("id") or "")
+                notes = str(it.get("notes") or "")
+                desc = " ".join(str(x) for x in [name, notes, it.get("purpose", ""), it.get("role", ""),
+                                                 it.get("path", ""), it.get("model", "")] if x)
+                ents.append({"type": it.get("type") or k, "id": it.get("id", ""), "name": name,
+                             "status": it.get("status", ""), "notes": notes[:220],
+                             "tok": _tokens(k + " " + desc)})
+    except Exception as e:
+        print(f"[console] entities load failed: {e}", file=sys.stderr)
+    _ENT_CACHE["mtime"] = mt
+    _ENT_CACHE["ents"] = ents
+    return ents
+
+
+def memory_digest(query, k=3):
+    """从 MEMORY-PROJECT 取与查询相关的事实（📌 优先）。"""
+    qt = _tokens(query)
+    if not qt:
+        return []
+    scored = []
+    for f in _memory_index():
+        ov = len(qt & f["tok"])
+        if ov:
+            scored.append((ov * 2 + f["prio"], f))
+    scored.sort(key=lambda x: -x[0])
+    out, seen = [], set()
+    for _, f in scored:
+        sig = f["text"][:24]
+        if sig in seen:
+            continue
+        seen.add(sig)
+        out.append({"section": f["section"], "text": f["text"][:220]})
+        if len(out) >= k:
+            break
+    return out
+
+
+def recall(query, k=6):
+    """跨源回忆：项目记忆 + 实体图谱 + 历史会话日志 + 执行记录。"""
+    qt = _tokens(query)
+    hits = []
+    # 记忆事实
+    for f in memory_digest(query, k=4):
+        hits.append({"src": "项目记忆", "ref": f["section"], "text": f["text"]})
+    # 实体
+    if qt:
+        es = []
+        for e in _entities_index():
+            ov = len(qt & e["tok"])
+            if ov:
+                es.append((ov, e))
+        es.sort(key=lambda x: -x[0])
+        for _, e in es[:3]:
+            hits.append({"src": "图谱/" + e["type"], "ref": e["id"], "text": (e["name"] + "： " + e["notes"])[:200]})
+    # 历史会话日志
+    if KNOWLEDGE_PROJECT_DIR.exists() or KB_SESSIONS_DIR.exists():
+        cands = []
+        for d in (KB_SESSIONS_DIR, KNOWLEDGE_PROJECT_DIR):
+            if d.exists():
+                cands += list(d.glob("*.md"))
+        scored = []
+        for f in cands:
+            try:
+                head = f.read_text(errors="ignore")[:2500]
+            except Exception:
+                continue
+            ov = len(qt & _tokens(f.stem + " " + head)) if qt else 0
+            if ov:
+                scored.append((ov, f, head))
+        scored.sort(key=lambda x: -x[0])
+        for _, f, head in scored[:2]:
+            body = re.sub(r"^---[\s\S]*?---", "", head)
+            snippet = re.sub(r"\s+", " ", body).strip()[:260]
+            hits.append({"src": "历史", "ref": f.stem, "text": snippet})
+    # 执行记录
+    try:
+        for r in run_list(limit=20):
+            if qt and (qt & _tokens(str(r.get("title", "")) + " " + str(r.get("id", "")))):
+                hits.append({"src": "执行记录", "ref": r["id"], "text": f"{r.get('title')}（{r.get('status')}）"})
+    except Exception:
+        pass
+    return hits[:k]
+
+
 def ai_context(task_type="blog", topic="", lang="zh", proj=None):
     """统一上下文构建：所有 AI 路径共用。返回 {skills, kb, lib, rules, facts, budget_chars}"""
     proj = proj or DEFAULT_PROJECT
     query = f"{task_type} {topic} {lang}"
-    ctx = {"skills": [], "kb": [], "lib": [], "rules": "", "facts": [], "budget_chars": 0}
+    ctx = {"skills": [], "kb": [], "lib": [], "rules": "", "facts": [], "memory": [], "budget_chars": 0}
 
     # ① 相关 skills（按类型 + 主题匹配）
     try:
@@ -1921,6 +2065,12 @@ def ai_context(task_type="blog", topic="", lang="zh", proj=None):
     try:
         libs = context_library(site_of(proj), topic or task_type, k=2, task_type=task_type)
         ctx["lib"] = [{"path": h["path"], "title": h["path"].split("/")[-1].replace(".md", "")} for h in libs]
+    except Exception:
+        pass
+
+    # ③.5 项目记忆（MEMORY-PROJECT 相关事实）
+    try:
+        ctx["memory"] = memory_digest(query, k=3)
     except Exception:
         pass
 
@@ -1956,6 +2106,9 @@ def ai_context_prompt(ctx, budget_profile="default"):
     if ctx.get("kb"):
         parts.append("【知识库事实（必须使用这些真实信息，不要编造）】\n" +
                      "\n".join(f"- 《{b['title']}》（{b.get('section','')}）：{b['excerpt']}" for b in ctx["kb"]))
+    if ctx.get("memory"):
+        parts.append("【项目记忆（本项目的既有事实/约定，必须遵守）】\n" +
+                     "\n".join(f"- 〔{m['section']}〕{m['text']}" for m in ctx["memory"]))
     if ctx.get("lib"):
         parts.append("【同类已发布内容（可参考结构，禁止抄袭）】\n" +
                      "\n".join(f"- {l['title']}" for l in ctx["lib"]))
@@ -3266,6 +3419,10 @@ def agent_tool(name, args, proj=None):
                     "url": _site_url(site, d.get("pageType"), d.get("language"), d.get("slug"))} for d in (res or [])]
             return {"count": len(out), "items": out}
 
+        if name == "recall":
+            hits = recall(str(args.get("q", "") or ""), k=int(args.get("k", 6) or 6))
+            return {"count": len(hits), "hits": hits}
+
         if name == "search_kb":
             hits = kb_search_for_ai(str(args.get("q", "") or ""), k=4)
             return {"hits": [{"title": h["title"], "section": h["section"], "excerpt": h["excerpt"][:220]} for h in hits]}
@@ -3340,6 +3497,7 @@ AGENT_TOOLS_DOC = """你可以调用以下**工具**来真实地查数据/执行
 - search_content {"q":"关键词","page_type":"tool|feature|blog|topic|...","lang":"en|zh|...","limit":8}
     → 从线上内容库检索真实文档（返回 doc_id/slug/url）。用于确定要改哪些页。
 - search_kb {"q":"问题或主题"} → 从知识库检索事实（竞品/画像/案例/样式/i18n/产品…）。
+- recall {"q":"关键词","k":6} → **跨源回忆**：项目记忆(MEMORY-PROJECT 事实)、实体图谱(entities.yaml)、历史会话日志、执行记录。用于回答"上次/以前/我们之前"这类问题，了解既有约定。
 - get_task {"id":"batch-..."} → 查询某批量任务的实时状态与统计。
 - list_tasks {"status":"running|done|failed","limit":10} → 列出最近的批量任务。
 - list_drafts {"limit":10} → 列出最近生成的本地草稿。
@@ -3379,6 +3537,7 @@ def agent_reply(session, message, proj=None):
     rules = context_rules(limit=1200, query=message)  # 上下文预算
     rules_len = len(rules)
     kb_hits = kb_search_for_ai(message, k=3)
+    mem_hits = memory_digest(message, k=3)
     # 物料/Impact 数据
     try:
         assets = read_json(LIB_ROOT / site / "assets.json", {})
@@ -3410,6 +3569,9 @@ def agent_reply(session, message, proj=None):
 
 【知识库事实（必须使用这些真实信息，禁止编造数字/案例）】
 {chr(10).join(f"- 《{b['title']}》：{b['excerpt']}" for b in kb_hits) or "（本次无命中——如涉及事实请标注 [待考证]）"}
+
+【项目记忆（本项目既有事实与硬约定，必须遵守）】
+{chr(10).join(f"- 〔{m['section']}〕{m['text']}" for m in mem_hits) or "（本次无相关记忆）"}
 
 【相关 skills（已根据用户意图检索）】
 {chr(10).join(f"- {s['name']}：{s['desc'][:80]}" for s in skills) or "（无命中——用通用方案）"}
@@ -3495,7 +3657,8 @@ def agent_reply(session, message, proj=None):
             data["say"] = (data.get("say") or "") + "\n\n---\n我已自动匹配到「" + preset_hint["name"] + "」预设并展开了任务。如果你想要不同的范围，告诉我。"
             data["questions"] = []
     used = {"skills": [s["name"] for s in skills], "library": [h["path"] for h in libs],
-            "kb": [b["title"] for b in kb_hits], "geo_gaps": geo.get("gaps", []), "rules_chars": len(rules)}
+            "kb": [b["title"] for b in kb_hits], "memory": [m["section"] for m in mem_hits],
+            "geo_gaps": geo.get("gaps", []), "rules_chars": len(rules)}
     return {"say": data.get("say", ""), "questions": data.get("questions") or [],
             "spec": data.get("spec"), "plan": data.get("plan"), "trace": _trace,
             "context": used, "tokens": _tok}
