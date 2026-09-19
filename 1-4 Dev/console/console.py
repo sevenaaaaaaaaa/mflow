@@ -9,6 +9,7 @@ v3 adds the production core: LLM provider config (OpenAI-compatible), generation
 stdlib + `markdown` package only. Publishing stays display-only (iron rule).
 Auth: MFLOW_CONSOLE_PASSWORD from env; fail-closed when unset.
 """
+import hashlib
 import importlib.util
 import json
 import os
@@ -2275,16 +2276,47 @@ _MEM_CACHE = {"mtime": 0, "facts": []}
 _ENT_CACHE = {"mtime": 0, "ents": []}
 
 
+MEM_OVERRIDES_FILE = RUN_DIR / "memory-overrides.json"
+
+
+def mem_overrides():
+    d = read_json(MEM_OVERRIDES_FILE, {}) or {}
+    d.setdefault("facts", {})
+    d.setdefault("entities", {})
+    return d
+
+
+def mem_override_set(kind, oid, patch):
+    with _SESS_LOCK:
+        d = mem_overrides()
+        cur = dict((d.get(kind) or {}).get(oid) or {})
+        cur.update({k: v for k, v in (patch or {}).items() if v is not None})
+        cur["at"] = datetime.now().strftime("%Y-%m-%d %H:%M")
+        d.setdefault(kind, {})[oid] = cur
+        RUN_DIR.mkdir(parents=True, exist_ok=True)
+        MEM_OVERRIDES_FILE.write_text(json.dumps(d, ensure_ascii=False, indent=1))
+        # 失效缓存
+        _MEM_CACHE["mtime"] = 0
+        _ENT_CACHE["mtime"] = 0
+        return cur
+
+
+def _fact_id(section, text):
+    return "f" + hashlib.sha1((section + "|" + text).encode("utf-8")).hexdigest()[:12]
+
+
 def _memory_index():
-    """解析 MEMORY-PROJECT.md 为事实条目（按 section + 优先级标记），mtime 缓存。"""
+    """解析 MEMORY-PROJECT.md 为事实条目（按 section + 优先级标记），叠加用户覆盖，mtime 缓存。"""
     if not MEMORY_FILE.exists():
         return []
     try:
         mt = MEMORY_FILE.stat().st_mtime
+        om = MEM_OVERRIDES_FILE.stat().st_mtime if MEM_OVERRIDES_FILE.exists() else 0
     except Exception:
-        mt = 0
-    if _MEM_CACHE["mtime"] == mt and _MEM_CACHE["facts"]:
+        mt, om = 0, 0
+    if _MEM_CACHE["mtime"] == (mt, om) and _MEM_CACHE["facts"]:
         return _MEM_CACHE["facts"]
+    ov = mem_overrides().get("facts") or {}
     facts, section = [], ""
     for line in MEMORY_FILE.read_text(errors="ignore").split("\n"):
         m = re.match(r"^#{1,4}\s+(.+)$", line)
@@ -2297,8 +2329,15 @@ def _memory_index():
                 continue
             prio = 3 if "📌" in txt else (2 if ("✋" in txt or "⚙️" in txt) else 1)
             clean = re.sub(r"[📌✋⚙️🤖]", "", txt).strip()
-            facts.append({"section": section, "text": clean, "prio": prio, "tok": _tokens(section + " " + clean)})
-    _MEM_CACHE["mtime"] = mt
+            fid = _fact_id(section, clean)
+            o = ov.get(fid) or {}
+            if o.get("status") == "outdated":
+                continue  # 用户标为过时 → Agent 不再引用
+            text2 = o.get("text") or clean
+            facts.append({"id": fid, "section": section, "text": text2, "prio": prio,
+                          "tok": _tokens(section + " " + text2),
+                          "overridden": o.get("status") or "", "note": o.get("note", "")})
+    _MEM_CACHE["mtime"] = (mt, om)
     _MEM_CACHE["facts"] = facts
     return facts
 
@@ -2311,9 +2350,14 @@ def _entities_index():
         mt = ENTITIES_FILE.stat().st_mtime
     except Exception:
         mt = 0
-    if _ENT_CACHE["mtime"] == mt and _ENT_CACHE["ents"]:
+    try:
+        om = MEM_OVERRIDES_FILE.stat().st_mtime if MEM_OVERRIDES_FILE.exists() else 0
+    except Exception:
+        om = 0
+    if _ENT_CACHE["mtime"] == (mt, om) and _ENT_CACHE["ents"]:
         return _ENT_CACHE["ents"]
     ents = []
+    eov = mem_overrides().get("entities") or {}
     try:
         import yaml
         d = yaml.safe_load(ENTITIES_FILE.read_text(errors="ignore")) or {}
@@ -2327,14 +2371,39 @@ def _entities_index():
                 notes = str(it.get("notes") or "")
                 desc = " ".join(str(x) for x in [name, notes, it.get("purpose", ""), it.get("role", ""),
                                                  it.get("path", ""), it.get("model", "")] if x)
-                ents.append({"type": it.get("type") or k, "id": it.get("id", ""), "name": name,
-                             "status": it.get("status", ""), "notes": notes[:220],
-                             "tok": _tokens(k + " " + desc)})
+                eid = it.get("id", "")
+                o = eov.get(eid) or {}
+                stat = o.get("status") or it.get("status", "")
+                n2 = o.get("note") or notes
+                ents.append({"type": it.get("type") or k, "id": eid, "name": name,
+                             "status": stat, "notes": n2[:220], "overridden": bool(o),
+                             "tok": _tokens(k + " " + name + " " + n2)})
     except Exception as e:
         print(f"[console] entities load failed: {e}", file=sys.stderr)
-    _ENT_CACHE["mtime"] = mt
+    _ENT_CACHE["mtime"] = (mt, om)
     _ENT_CACHE["ents"] = ents
     return ents
+
+
+def memory_review():
+    """记忆审阅：事实 + 实体 + 覆盖，供 UI 浏览/更正。"""
+    facts = _memory_index()
+    ents = _entities_index()
+    ov = mem_overrides()
+    by_sec, by_type = {}, {}
+    for f in facts:
+        by_sec.setdefault(f["section"] or "（无标题）", []).append(f)
+    for e in ents:
+        by_type.setdefault(e["type"] or "other", []).append(e)
+    return {"facts": facts, "entities": ents,
+            "sections": {k: len(v) for k, v in by_sec.items()},
+            "types": {k: len(v) for k, v in by_type.items()},
+            "overrides": {"facts": ov.get("facts", {}), "entities": ov.get("entities", {})},
+            "stats": {"facts": len(facts), "entities": len(ents),
+                      "outdated_facts": sum(1 for f in facts if f.get("overridden") == "outdated"),
+                      "corrected_facts": sum(1 for f in facts if f.get("overridden") == "corrected"),
+                      "overridden_entities": sum(1 for e in ents if e.get("overridden"))},
+            "memory_file": rel_of(MEMORY_FILE) if MEMORY_FILE.exists() else ""}
 
 
 def memory_digest(query, k=3):
@@ -6710,6 +6779,8 @@ class Handler(BaseHTTPRequestHandler):
                 cfg = notify_cfg()
                 return self._send(200, {"enabled": cfg.get("enabled"), "feishu_webhook": cfg.get("feishu_webhook", ""),
                                         "email": {k: v for k, v in email_cfg().items() if k != "pass"}})
+            if parsed.path == "/api/memory":
+                return self._send(200, memory_review())
             if parsed.path == "/api/skills":
                 return self._send(200, skills_inventory(qs.get("q", [""])[0]))
             if parsed.path == "/api/plugins":
@@ -7095,7 +7166,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/account/list", "/api/account/reset", "/api/dispatch/approve",
                       "/api/trident/run", "/api/daily/run", "/api/tasks/del",
                       "/api/notify/save", "/api/notify/test", "/api/email/save", "/api/email/test", "/api/user/email",
-                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install",
+                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install", "/api/memory/fact", "/api/memory/entity",
                       "/api/plugins/toggle", "/api/plugins/state",
                       "/api/geo/probe",
                       "/api/pay/product/save", "/api/pay/product/delete", "/api/pay/cards/import",
@@ -7250,6 +7321,31 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(404, {"error": "用户不存在"})
                 AUTH_FILE.write_text(json.dumps(recs, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True, "username": un, "email": em})
+            if self.path == "/api/memory/fact":
+                fid = str(body.get("id", ""))
+                if not fid:
+                    return self._send(400, {"error": "缺 id"})
+                st = str(body.get("status", ""))
+                if st not in ("", "active", "outdated", "corrected"):
+                    return self._send(400, {"error": "status 可选 active/outdated/corrected"})
+                patch = {"status": st, "by": self._me()}
+                if "note" in body:
+                    patch["note"] = str(body["note"])[:300]
+                if "text" in body:
+                    patch["text"] = str(body["text"])[:600]
+                cur = mem_override_set("facts", fid, patch)
+                return self._send(200, {"ok": True, "id": fid, "override": cur})
+            if self.path == "/api/memory/entity":
+                eid = str(body.get("id", ""))
+                if not eid:
+                    return self._send(400, {"error": "缺 id"})
+                patch = {"by": self._me()}
+                if "status" in body:
+                    patch["status"] = str(body["status"])[:40]
+                if "note" in body:
+                    patch["note"] = str(body["note"])[:400]
+                cur = mem_override_set("entities", eid, patch)
+                return self._send(200, {"ok": True, "id": eid, "override": cur})
             if self.path == "/api/plugins/market/install":
                 r = plugin_market_install(str(body.get("id", "")))
                 return self._send(200 if r.get("ok") else 400, r)
