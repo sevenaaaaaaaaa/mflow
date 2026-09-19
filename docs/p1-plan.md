@@ -94,3 +94,21 @@
 
 ## 明确不做（与项目判断一致）
 - 不引入 DeerFlow 的多 Gateway worker / LangGraph checkpointer / 沙箱 / SSE lease 重架构（见 `11-knowledge/dream/OPENHARNESS-BRIDGE.md` 原则）。
+
+
+---
+
+## 可用性提升（P1 之后，按性价比）
+
+1. ✅ **全局命令面板 ⌘K**（2026-09-19）：一处搜并可执行（页面/任务/批量/执行/自动化/内容/Skill/记忆/报告/预设）。
+2. ✅ **变更审计 + 一键回滚**（2026-09-19）：真实写入记 before/after（`run/audit-changes.jsonl`），字段级回滚（发布类不自动回滚）；`/api/audit/changes|rollback`；「变更审计」页。
+3. ✅ **统一收件箱**（2026-09-19）：系统阻断/待办/失败任务/待授权发布/待执行方案 集中一屏；`/api/inbox`；nav 角标。
+4. ⏳ **失败摘要 + 一键重试全部失败项**（下一步）。
+5. ⏳ 空状态 CTA 全覆盖。
+6. ⏳ 窄屏/移动端适配。
+7. ⏳ 出站 Webhook（任务完成/失败推外部）。
+
+### 知识库 / RAG（2026-09-19）
+- ✅ 知识中台可视化重构（左筛选 + 右宽结果 + 检索底座状态卡）。
+- ✅ RAG 底座：可插拔 embedding（配了用远程，未配用本地 TF-IDF）+ 混合检索（RRF）+ `semantic_search` 工具。
+- ⏳ 真实 embedding 待配置（见 `docs/rag-plan.md`，一步开启）。
