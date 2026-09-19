@@ -459,10 +459,10 @@ def notify_offline(owner, subject, body):
         ok, info = email_send(to, subject, body)
         sent.append(f"email:{'ok' if ok else info}")
         try:
-            notify_send(subject, body)
-            sent.append("feishu:ok")
+            _fok = notify_send(subject, body)
+            sent.append("feishu:" + ("ok" if _fok else "off"))
         except Exception:
-            pass
+            sent.append("feishu:err")
     else:
         sent.append("owner-online:skip")
     return "; ".join(sent)
