@@ -7335,6 +7335,13 @@ class Handler(BaseHTTPRequestHandler):
                     patch["note"] = str(body["note"])[:300]
                 if "text" in body:
                     patch["text"] = str(body["text"])[:600]
+                if st == "active" and not str(body.get("note", "")).strip() and not str(body.get("text", "")).strip():
+                    d = mem_overrides()
+                    if fid in (d.get("facts") or {}):
+                        d["facts"].pop(fid, None)
+                        MEM_OVERRIDES_FILE.write_text(json.dumps(d, ensure_ascii=False, indent=1))
+                        _MEM_CACHE["mtime"] = 0
+                    return self._send(200, {"ok": True, "id": fid, "cleared": True})
                 cur = mem_override_set("facts", fid, patch)
                 return self._send(200, {"ok": True, "id": fid, "override": cur})
             if self.path == "/api/memory/entity":
