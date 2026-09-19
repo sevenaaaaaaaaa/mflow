@@ -25,7 +25,12 @@
 - 已交付：内容库「多语言覆盖」卡（每语言 已覆盖/总数 + 一键补 N，dry-run）；API `/api/multilang/coverage`、`/api/multilang/fill`。
 - 实测：tools 基准 en 385 篇，de 81 / fr 90 / ja 79 …，一键创建本地化 rewrite 任务。
 
-## P1-1b 记忆审阅 UI（Settings → 记忆）
+## P1-1b 记忆审阅 UI ✅ 已完成（2026-09-19）
+- 已交付：`记忆审阅` 页（系统组）。事实视图（288 条，按 section 分组，P1/P2/P3 优先级）与实体视图（98 个，按类型）；每条可「更正」（替换文本）或「标为过时」；「已修改」清单可撤销。
+- Agent 立即生效：`_memory_index`/`_entities_index` 叠加 `run/memory-overrides.json`；过时=从索引移除，更正=替换文本；缓存按覆盖文件 mtime 失效。
+- 实测：标注过时 → 索引消失；更正 → 索引返回新文本（overridden=corrected）；撤销 → 清除覆盖并恢复。
+
+## P1-1c 记忆审阅 UI（原描述）
 - **为什么**：`entities.yaml` / `MEMORY-PROJECT.md` 已被 Agent 读取，但用户无法查看/纠正，长期会漂移。
 - **做什么**：只读浏览（实体列表 + 事实条目，按 section/优先级筛选）+ 标注"已过时/已更正"；写回复用 `dream/consolidate`。
 - **成本**：低（1 个页面 + 2 个只读端点；写回复用现有脚本）。
