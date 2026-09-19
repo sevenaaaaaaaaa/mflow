@@ -2530,17 +2530,26 @@ def _term_weights(text):
     return terms
 
 
-def local_embed(text, dim=512):
-    """零依赖哈希向量：hashed TF-IDF-ish + L2 归一（稀疏 dict）。"""
+def local_embed(text, idf=None):
+    """零依赖稀疏 TF-IDF 向量（term→weight），L2 归一。idf 来自语料。"""
     terms = _term_weights(text)
     vec = {}
     for term, cnt in terms.items():
-        h = int(hashlib.md5(term.encode("utf-8")).hexdigest()[:8], 16)
-        idx = h % dim
-        w = (1 + math.log(cnt)) if cnt > 0 else 0
-        vec[idx] = vec.get(idx, 0.0) + w
+        tf = 1 + math.log(cnt) if cnt > 0 else 0
+        w = tf * ((idf or {}).get(term, 1.0))
+        vec[term] = vec.get(term, 0.0) + w
     n = math.sqrt(sum(v * v for v in vec.values())) or 1.0
-    return {str(k): round(v / n, 5) for k, v in vec.items()}
+    return {k: round(v / n, 5) for k, v in vec.items()}
+
+
+def _corpus_idf(texts):
+    import collections as _c
+    df = _c.Counter()
+    for t in texts:
+        for term in _term_weights(t):
+            df[term] += 1
+    n = max(1, len(texts))
+    return {term: math.log(1 + n / (1 + c)) for term, c in df.items()}
 
 
 def remote_embed(texts):
@@ -2560,16 +2569,22 @@ def remote_embed(texts):
         return None
 
 
-def embed_texts(texts):
-    """真实向量优先，否则本地哈希向量。返回 (vectors, backend)。"""
+def embed_texts(texts, idf=None):
+    """真实向量优先，否则本地稀疏 TF-IDF。返回 (vectors, backend)。"""
     v = remote_embed(texts)
     if v and len(v) == len(texts):
         return v, "remote"
-    dim = rag_cfg()["dim"]
-    return [local_embed(t, dim) for t in texts], "local"
+    return [local_embed(t, idf) for t in texts], "local"
 
 
 def _sparse_dot(a, b):
+    if a is None or b is None:
+        return 0.0
+    if isinstance(a, list) or isinstance(b, list):
+        try:
+            return sum(x * y for x, y in zip(a, b))
+        except Exception:
+            return 0.0
     if not a or not b:
         return 0.0
     if len(b) < len(a):
@@ -2618,7 +2633,9 @@ def rag_build():
     old = read_json(RAG_INDEX, {}) or {}
     old_map = {c["id"]: c for c in (old.get("chunks") or [])}
     chunks = _rag_chunks()
-    vectors, backend = embed_texts([c["text"] for c in chunks])
+    texts = [c["text"] for c in chunks]
+    idf = _corpus_idf(texts)
+    vectors, backend = embed_texts(texts, idf)
     dim = rag_cfg()["dim"]
     out = []
     for c, v in zip(chunks, vectors):
@@ -2629,7 +2646,8 @@ def rag_build():
         out.append({**c, "id": cid, "vec": v})
     RAG_DIR.mkdir(parents=True, exist_ok=True)
     RAG_INDEX.write_text(json.dumps({"backend": backend, "dim": dim, "built": datetime.now().strftime("%Y-%m-%d %H:%M"),
-                                     "count": len(out), "chunks": out}, ensure_ascii=False))
+                                     "count": len(out), "idf": (idf if backend == "local" else {}), "chunks": out},
+                                    ensure_ascii=False))
     _RAG_CACHE.update(mtime=0, idx=None)
     return {"backend": backend, "dim": dim, "count": len(out), "reused": len(old_map)}
 
@@ -2653,7 +2671,8 @@ def rag_search(query, k=6, src_filter=None):
     d = _rag_load()
     if not d or not d.get("chunks"):
         return []
-    qvec, _ = embed_texts([query])
+    _idf = d.get("idf") or None
+    qvec, _ = embed_texts([query], _idf)
     qv = qvec[0]
     scored = []
     for c in d["chunks"]:
