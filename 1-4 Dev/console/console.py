@@ -3721,7 +3721,11 @@ def agent_reply(session, message, proj=None):
                              "工具 `" + tname + "` 返回：\n" + json.dumps(res, ensure_ascii=False)[:2600] +
                              "\n\n请继续：需要更多信息就再输出 {\"tool\":...}；信息足够就输出最终 JSON（say + spec 或 plan）。"})
                 continue
-            data = step_data
+            # 无工具调用：能解析出结构化结果就用，否则把模型原文作为回复
+            if isinstance(step_data, dict) and (step_data.get("say") or step_data.get("spec") or step_data.get("plan")):
+                data = step_data
+            else:
+                data = {"say": (raw or "")[:1800].strip(), "questions": [], "spec": None}
             break
         if not data:
             data = {"say": "（已达到最大推理步数，先给出当前判断）", "questions": [], "spec": None}
