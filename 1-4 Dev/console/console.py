@@ -1546,6 +1546,73 @@ def batch_revive_stale():
     return {"revived": revived, "count": len(revived)}
 
 
+
+# ===================== 失败摘要 + 一键重试全部失败项 =====================
+_FAIL_PATTERNS = [
+    ("topic", ["需要填主题", "topic", "缺主题"], "缺主题参数", "在预设选项里填 topic / 或改用 Agent 指定主题"),
+    ("doc_missing", ["文档不存在", "无此文档", "找不到源页", "草稿不可读", "不可读", "文件不存在"], "目标文档/源文件缺失", "内容库可能未同步，或该页已下线——先同步内容库再重试"),
+    ("llm_balance", ["402", "余额不足", "quota", "配额不足"], "LLM 余额/配额不足", "充值或调整配额后重试"),
+    ("sanity", ["Sanity 查询失败", "Query", "查询失败"], "数据查询失败", "检查 Sanity token 与网络，稍后重试"),
+    ("structure", ["结构校验", "版块不足", "preflight", "BLOCK"], "结构/门禁未通过", "用「落地页闭环」预设按结构重改，或先人工修正草稿"),
+    ("timeout", ["timeout", "超时", "timed out"], "调用超时", "可重试；持续超时请缩小批量或稍后再跑"),
+    ("rate", ["429", "rate limit", "too many"], "被限流", "降低并发/稍后重试"),
+    ("no_data", ["范围内无", "无匹配", "没有满足条件", "已有 alt"], "范围内无对象", "放宽筛选条件或换栏目/语言"),
+]
+_FAIL_HINTS = {k: h for k, _ks, _t, h in [(x[0], x[1], x[2], x[3]) for x in _FAIL_PATTERNS]}
+
+
+def _categorize_error(err):
+    t = (err or "").lower()
+    for key, kws, label, _hint in _FAIL_PATTERNS:
+        if any(k.lower() in t for k in kws):
+            return key, label
+    return "other", "其他错误"
+
+
+def failure_digest(task):
+    """把失败项按原因归类，给出人话摘要与处理建议。"""
+    items = task.get("items") or []
+    failed = [i for i in items if i.get("status") == "failed"]
+    if not failed:
+        return {"total": 0, "categories": [], "line": ""}
+    cats = {}
+    for it in failed:
+        key, label = _categorize_error(it.get("error", ""))
+        c = cats.setdefault(key, {"key": key, "label": label, "count": 0, "samples": [],
+                                  "hint": _FAIL_HINTS.get(key, "查看条目详情后针对性处理")})
+        c["count"] += 1
+        if len(c["samples"]) < 2 and it.get("error"):
+            c["samples"].append(str(it["error"])[:120])
+    ordered = sorted(cats.values(), key=lambda x: -x["count"])
+    bits = "、".join(f"{c['count']} 项{c['label']}" for c in ordered[:3])
+    return {"total": len(failed), "categories": ordered,
+            "line": f"{len(failed)} 项失败：" + bits,
+            "retryable": sum(c["count"] for c in ordered if c["key"] in ("timeout", "rate", "sanity", "llm_balance", "other"))}
+
+
+def batch_retry_all(scope="task", tid="", proj=None):
+    """一键重试失败项：scope=task（单任务）或 all（全部任务）。"""
+    targets = []
+    if scope == "task" and tid:
+        t = batch_load(tid)
+        if t:
+            targets = [t]
+    else:
+        targets = [t for t in batch_list() if any(i.get("status") == "failed" for i in (t.get("items") or []))]
+    done = []
+    for t in targets:
+        n = 0
+        for it in t.get("items") or []:
+            if it.get("status") == "failed":
+                it["status"] = "pending"; it["error"] = ""; it["attempts"] = 0; n += 1
+        if n:
+            t["status"] = "queued"
+            _batch_log(t, f"一键重试失败项：{n} 项")
+            batch_save(t)
+            done.append({"task": t["id"], "retried": n})
+    return {"ok": True, "retried": sum(x["retried"] for x in done), "tasks": done}
+
+
 def batch_item_detail(tid, idx):
     """单个条目的完整详情：字段 + 结果 + 质检门禁 + QA findings + 预览链接。"""
     t = batch_load(tid)
@@ -1631,6 +1698,7 @@ def batch_view(task, proj=None):
         if u and not any(l.get("url") == u for l in links):
             links.append({"label": "前台预览", "url": u})
         it["links"] = links
+    task["failures"] = failure_digest(task)
     # 存活/恢复信息
     hb = float(task.get("heartbeat_ts") or 0)
     try:
@@ -7542,6 +7610,9 @@ class Handler(BaseHTTPRequestHandler):
                                         "email": {k: v for k, v in email_cfg().items() if k != "pass"}})
             if parsed.path == "/api/inbox":
                 return self._send(200, inbox(self._me(), self._proj()))
+            if parsed.path == "/api/batch/failures":
+                t = batch_load(qs.get("id", [""])[0])
+                return self._send(200, failure_digest(t) if t else {"error": "任务不存在"})
             if parsed.path == "/api/audit/changes":
                 return self._send(200, {"changes": audit_list(int(qs.get("limit", ["100"])[0] or 100))})
             if parsed.path == "/api/rag/status":
@@ -7959,7 +8030,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/agent/goal", "/api/agent/compact", "/api/agent/review", "/api/onboard/seed",
                       "/api/multilang/fill", "/api/automations/save", "/api/automations/delete",
                       "/api/automations/run", "/api/work/convert",
-                      "/api/batch/revive_stale", "/api/batch/retry_item",
+                      "/api/batch/revive_stale", "/api/batch/retry_item", "/api/batch/retry_all",
                       "/api/run/action",
                       "/api/qa/orchestrate", "/api/qa/recheck",
                       "/api/presets/run", "/api/housekeeping/run",
@@ -8693,6 +8764,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"ok": True, "run_id": run["id"], "steps": len(built)})
             if self.path == "/api/batch/revive_stale":
                 return self._send(200, batch_revive_stale())
+            if self.path == "/api/batch/retry_all":
+                return self._send(200, batch_retry_all(str(body.get("scope", "all")), str(body.get("id", "")), self._proj()))
             if self.path == "/api/batch/retry_item":
                 return self._send(200, batch_retry_item(str(body.get("id", "")), body.get("i")))
             # ── Run 控制：取消 / 重试 ──

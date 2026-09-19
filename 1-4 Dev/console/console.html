@@ -658,7 +658,8 @@ button.clicked{animation:clickpulse .45s ease}
   <section class="page" id="pg-batch">
     <div class="pg-head"><div><div class="kick">我的工作</div><h1>批量<em class="sf">任务</em></h1>
       <p class="pg-sub">任务 = 条目池 × 执行器（物料替换 / 字段改写 / 批量生成 / 批量改稿）。并发 2、逐项状态、断点续跑、dry-run 可预览、全程审计。</p></div>
-      <div class="head-actions"><button class="btn ghost" onclick="loadBatch()">刷新 ↻</button></div></div>
+      <div class="head-actions"><button class="btn ghost" onclick="retryAll('all','',event)">↻ 重试所有失败项</button>
+        <button class="btn ghost" onclick="loadBatch()">刷新 ↻</button></div></div>
     <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>预设工作流 <span class="mut">（0 门槛：点一下就能跑，数据自动取）</span></h3><button class="more" onclick="loadPresets()">刷新 ↻</button></div>
       <div id="bt-breaker" class="mut" style="font-size:12px;margin-bottom:6px"></div>
       <div class="chips" id="bt-presets"></div>
@@ -1514,7 +1515,8 @@ function inboxLoad(){api('api/inbox').then(d=>{
  el.innerHTML=its.map(x=>`<div style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)">
    <span class="badge" style="background:${lv[x.prio]||'var(--muted)'}">${esc(x.kind)}</span>
    <div style="flex:1"><div style="font-size:12.5px;font-weight:600">${esc(x.title)}</div>
-    <div class="mut" style="font-size:11.5px">${esc(x.detail||'')}</div></div>
+    <div class="mut" style="font-size:11.5px">${esc(x.detail||'')}</div>
+    ${x.kind==='任务'?`<button class="mini" style="margin-top:3px" onclick='retryAll("all","",event)'>↻ 重试全部失败项</button>`:''}</div>
    <button class="mini" onclick='inboxRun(${JSON.stringify(x.action).replace(/'/g,"&#39;")},event)'>处理 →</button></div>`).join('');
 }).catch(()=>{})}
 function inboxRun(a,ev){if(!a)return;
@@ -3102,6 +3104,13 @@ function btDetail(id){api('api/batch/detail?id='+encodeURIComponent(id)).then(t=
  $('bt-detail').innerHTML=`<div style="font-size:13px;padding:10px 12px;border-radius:10px;margin-bottom:10px;background:${sm.ok?'var(--ok-soft)':'var(--warn-soft)'}">
    <b>${esc(sm.line||'')}</b>${t.dry_run?'<div class="mut" style="font-size:11.5px;margin-top:3px">dry-run：只校验、不写生产库。确认无误后到任务列表关掉 dry-run 再跑一次即可真正生效。</div>':''}</div>
   ${(()=>{const lv=t.liveness||{};return `<div class="mut" style="font-size:11.5px;margin-bottom:6px">心跳 ${esc(lv.heartbeat_at||'—')}${lv.idle_sec!=null?`（${lv.idle_sec}s 前）`:''}${lv.recovered?` · 已自动恢复 <b style="color:var(--warn)">${lv.recovered}</b> 次`:''}${lv.stale?' · <span class="warn">疑似停滞，执行器将自动恢复</span>':''}</div>`})()}
+  ${(t.failures&&t.failures.total)?`<div class="card" style="margin-bottom:10px;padding:10px 12px;border-left:3px solid var(--bad)">
+    <div style="display:flex;align-items:center;gap:8px"><b style="font-size:12.5px;color:var(--bad)">失败摘要（${t.failures.total} 项）</b>
+     <span class="mut" style="font-size:11px">${esc(t.failures.line||'')}</span>
+     <button class="mini" style="margin-left:auto" onclick="retryAll('task','${esc(t.id)}',event)">↻ 重试全部失败项</button></div>
+    <div style="margin-top:6px">${(t.failures.categories||[]).map(c=>`<div style="font-size:11.5px;padding:3px 0">
+      <b>${c.count}×</b> ${esc(c.label)} <span class="mut">→ ${esc(c.hint)}</span>
+      ${(c.samples||[]).length?`<div class="mut" style="font-size:10.5px;margin-left:14px">例：${esc(c.samples[0])}</div>`:''}</div>`).join('')}</div></div>`:''}
   <div class="mut" style="font-size:11.5px;line-height:1.8;margin-bottom:8px">类型 ${esc(t.type)} · 并发 ${t.concurrency} · 创建 ${esc(t.created)} · ${esc(t.created_by||'')}${(t.log||[]).length?'<br>最近日志：'+esc((t.log||[]).slice(-2).join(' | ')):''}</div>
   <div style="max-height:400px;overflow:auto"><table><tr><th>#</th><th>条目</th><th>结果</th><th>操作</th></tr>${rows||'<tr><td colspan="4" class="mut">无条目</td></tr>'}</table></div>`})}
 
