@@ -62,7 +62,12 @@
 - **成本**：中低（一次额外 LLM 调用 + spec 流程加一步）。
 - **验收**：大范围/真实写入的 spec 会被要求先 dry-run 或缩范围。
 
-## P1-4 内链建议批量化
+## P1-4 内链建议批量化 ✅ 已完成（2026-09-19）
+- 已交付：执行器 `internal_link`（**只读分析、不写库**）+ 预设「内链建议体检」+ `/api/links/audit`、`/api/links/suggest`；产出 markdown 报告到 `11-knowledge/audit/reports/internal-links-*.md`；抽屉展示每页建议（含 URL 与相关度）。
+- 性能：新增按「站点+语言」的页面 token 索引（仅扫该语言目录，缓存 10 分钟），避免每项全库 rglob —— 20 项由"卡住"降到 <8s。
+- 实测：tools/en 60 页 100% 有建议；报告已生成。
+
+## P1-4b 内链建议批量化（原描述）
 - **为什么**：`link-suggester` 插件已存在但只能单页用。
 - **做什么**：新增批量执行器类型 `internal_link`（读 CONTENT_LINK_INDEX），为一组页面产出内链建议并 dry-run 应用。
 - **成本**：中（复用插件 + 一个 handler）。
