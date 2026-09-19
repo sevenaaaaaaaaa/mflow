@@ -1539,8 +1539,14 @@ def run_tick():
                 continue
             changed = _run_sync_steps(run)
             steps = run["steps"]
-            TERMINAL = ("done", "warn", "failed", "blocked")
-            # 前序步骤失败 → 后续阻断，避免连锁无效执行
+            TERMINAL = ("done", "warn", "failed", "blocked", "replanned")
+            # 前序步骤失败 → 先尝试自愈重规划；失败才阻断
+            if any(st["status"] == "failed" for st in steps) and not run.get("replanned"):
+                fstep = next(st for st in steps if st["status"] == "failed")
+                if run_replan(run, fstep):
+                    run["status"] = "running"
+                    run_save(run)
+                    continue
             if any(st["status"] == "failed" for st in steps):
                 for st in steps:
                     if st["status"] == "pending":
@@ -1653,7 +1659,7 @@ def run_tick():
                 except Exception as e:
                     cur["status"] = "failed"; cur["detail"] = str(e)[:160]; changed = True
             # 全部结束 → 完成
-            if all(st["status"] in ("done", "failed", "warn", "blocked") for st in steps):
+            if all(st["status"] in ("done", "failed", "warn", "blocked", "replanned") for st in steps):
                 run["status"] = ("failed" if any(st["status"] == "failed" for st in steps)
                                  else ("warn" if any(st["status"] == "warn" for st in steps) else "done"))
                 changed = True
@@ -1661,6 +1667,50 @@ def run_tick():
                 run_save(run)
         except Exception as e:
             print(f"[console] run_tick {f.name}: {e}", file=sys.stderr)
+
+
+
+def run_replan(run, failed_step):
+    """步骤失败时让 LLM 给出替代方案（换预设/缩范围/降级），实现自愈。最多每 run 一次。"""
+    presets = presets_list()
+    plist = "\n".join(f"- {p['id']}：{p.get('name')}（{p.get('type','')}）" for p in presets)
+    done = [st for st in run.get("steps", []) if st.get("status") == "done"]
+    ctx_lines = "\n".join(f"- 已完成：{st['name']}（{st.get('detail','')[:60]}）" for st in done) or "（无）"
+    prompt = (
+        "你是编排自愈器。一次内容执行的某步失败了，请给出**替代方案**让整体目标仍能达成。\n\n"
+        f"执行目标：{run.get('title')}\n"
+        f"已完成：\n{ctx_lines}\n"
+        f"失败步骤：{failed_step.get('name')}\n失败原因：{failed_step.get('detail') or failed_step.get('error') or '未知'}\n\n"
+        "可用的批量预设（用 preset+opt）：\n" + plist + "\n\n"
+        "要求：给出 1-3 个替代步骤，尽量降低风险（可缩范围、换预设、改为只扫描或 dry-run）。"
+        "不要重复已失败的步骤。只输出 JSON：\n"
+        '{"reason":"为什么这样改","steps":[{"name":"步骤名","type":"batch","preset":"预设id","opt":{"limit":3,"lang":"en","dry_run":true}},{"name":"验证","type":"verify"}]}'
+    )
+    try:
+        raw = llm_chat([{"role": "user", "content": prompt}], profile="default",
+                       max_tokens=700, project=run.get("proj"), timeout=90)
+        m = re.search(r"\{[\s\S]*\}", raw)
+        data = json.loads(m.group(0)) if m else {}
+        new_steps = data.get("steps") or []
+        if not new_steps:
+            return False
+        base = len(run["steps"])
+        for i, st in enumerate(new_steps[:3]):
+            t = str(st.get("type", "batch"))
+            run["steps"].append({"i": base + i, "name": st.get("name") or "替代步骤",
+                                 "type": "verify" if t == "verify" else ("publish_sanity" if t in ("publish_sanity", "publish") else "batch"),
+                                 "status": "pending", "detail": "", "task_id": "",
+                                 "preset": st.get("preset"), "opt": st.get("opt") or {"dry_run": True},
+                                 "spec": st.get("spec"), "urls": st.get("urls") or [],
+                                 "started": "", "ended": "", "replanned_from": failed_step.get("i")})
+        failed_step["status"] = "replanned"
+        failed_step["detail"] = (failed_step.get("detail") or "") + " → 已重规划"
+        run["replan_reason"] = str(data.get("reason", ""))[:300]
+        run["replanned"] = True
+        return True
+    except Exception as e:
+        print(f"[console] run_replan failed: {e}", file=sys.stderr)
+        return False
 
 
 def run_view(rid):
@@ -1672,7 +1722,7 @@ def run_view(rid):
     done = sum(1 for st in steps if st["status"] == "done")
     failed = sum(1 for st in steps if st["status"] == "failed")
     warn = sum(1 for st in steps if st["status"] == "warn")
-    blocked = sum(1 for st in steps if st["status"] == "blocked")
+    blocked = sum(1 for st in steps if st["status"] in ("blocked", "replanned"))
     run["overall"] = {"total": len(steps), "done": done, "failed": failed, "warn": warn, "blocked": blocked,
                       "pct": int(round(100 * (done + failed + warn) / max(1, len(steps))))}
     if failed:
@@ -3197,10 +3247,38 @@ def context_skills(query, k=5):
     return [s for _, s in scored[:k]]
 
 
-def context_rules(limit=4000, query=""):
+AGENT_PROFILES = {
+    "auto": {"label": "通用", "issue": "不限定工作线，按意图自动匹配规则与 skills", "model": "default",
+             "files": [], "skill_hint": ""},
+    "creation": {"label": "创作", "issue": "写 Blog/落地页/多语言内容", "model": "lovart-creation",
+                 "files": ["RULES-00-iron.md", "RULES-20-creation.md", "RULES-70-quota.md", "RULES-80-language.md"],
+                 "skill_hint": "lovart-blog-signal-writer, lovart-page-serp-writer, lovart-landing-page, lovart-anti-slop"},
+    "quality": {"label": "质检", "issue": "Anti-Slop/字段/结构/i18n 质量审计", "model": "lovart-quality",
+                "files": ["RULES-00-iron.md", "RULES-30-quality.md", "RULES-70-quota.md", "RULES-80-language.md"],
+                "skill_hint": "lovart-content-quality-gates, lovart-content-audit, lovart-anti-slop"},
+    "reports": {"label": "报告", "issue": "SEO/GEO/舆情/竞品情报分析", "model": "default",
+                "files": ["RULES-00-iron.md", "RULES-10-reports.md", "RULES-70-quota.md", "RULES-80-language.md"],
+                "skill_hint": "lovart-data-ingestion, lovart-trident-data-engine, lovart-seo-report"},
+    "ops": {"label": "运维", "issue": "Sanity 发布/物料/技术 SEO", "model": "default",
+            "files": ["RULES-00-iron.md", "RULES-40-ops.md", "RULES-70-quota.md", "RULES-80-language.md"],
+            "skill_hint": "lovart-sanity-publish, lovart-sitemap-update"},
+    "distribution": {"label": "分发", "issue": "多平台分发/站外稿", "model": "default",
+                     "files": ["RULES-00-iron.md", "RULES-50-distribution.md", "RULES-70-quota.md", "RULES-80-language.md"],
+                     "skill_hint": "lovart-multi-platform-push, ai-self-media-article"},
+    "management": {"label": "管理", "issue": "规划/工程/Skill 维护", "model": "default",
+                   "files": ["RULES-00-iron.md", "RULES-60-management.md", "RULES-70-quota.md", "RULES-80-language.md"],
+                   "skill_hint": "lovart-project-architecture, lovart-dream-orchestrator"},
+}
+
+
+def context_rules(limit=4000, query="", force_files=None):
     """harness 硬约束摘要（按意图相关性挑选规则文件，降低噪音）。
+    force_files=["RULES-30-quality.md"] 时只注入这些文件（Profile 模式）。
     命中意图关键词 → 只注入相关文件；无命中 → 只注入 RULES-00 + RULES-70。"""
     files = sorted((PROJECT / "1-1 Harness" / "02-rules").glob("RULES-*.md"))
+    if force_files:
+        wanted = set(force_files)
+        files = [f for f in files if f.name in wanted]
     if query:
         qt = _tokens(query)
         scored = []
@@ -3534,7 +3612,10 @@ def agent_reply(session, message, proj=None):
     skills = context_skills(message)
     libs = context_library(site, message, k=5)
     geo = context_geo(proj)
-    rules = context_rules(limit=1200, query=message)  # 上下文预算
+    prof_key = (session.get("profile") or "auto")
+    prof = AGENT_PROFILES.get(prof_key) or AGENT_PROFILES["auto"]
+    rules = (context_rules(limit=1600, force_files=prof["files"])
+             if prof.get("files") else context_rules(limit=1200, query=message))
     rules_len = len(rules)
     kb_hits = kb_search_for_ai(message, k=3)
     mem_hits = memory_digest(message, k=3)
@@ -3553,6 +3634,9 @@ def agent_reply(session, message, proj=None):
     sys_prompt = f"""你是一个**主动型内容运营 agent**，像 Claude Code 一样工作——你拥有大量上下文（知识库/skills/内容库/GEO数据），应该主动使用它们来**自己填细节**，而不是问用户。
 
 **核心原则：用户说"改 X"，你就去内容库里找 X、用知识库理解 X、用 skills 理解怎么改——然后自己产出任务规格。只在真正无法继续时才问。**
+
+【你的角色】{prof['label']}（{prof['issue']}）
+{('请优先按这些 skills 的方法论工作：' + prof['skill_hint']) if prof.get('skill_hint') else '按意图自动匹配 skills 与规则。'}
 
 【你可以用的资源（全部可访问）】
 1. 内容库 17.5k 篇（含 URL/slug/sanity_id/page_type/language）——按内容库命中填 doc_id/slug/path
@@ -3602,6 +3686,8 @@ def agent_reply(session, message, proj=None):
 
 
     msgs = [{"role": "system", "content": sys_prompt}]
+    if session.get("summary"):
+        msgs.append({"role": "system", "content": "【前情摘要（较早对话已压缩）】\n" + str(session["summary"])[:1800]})
     for m in session.get("messages", [])[-6:]:
         if m.get("role") in ("user", "assistant") and m.get("text"):
             msgs.append({"role": m["role"], "content": m["text"][:1500]})
@@ -3611,7 +3697,8 @@ def agent_reply(session, message, proj=None):
     data = None
     try:
         for _step in range(AGENT_MAX_STEPS):
-            raw = llm_chat(msgs, profile="default", max_tokens=1800, project=proj, timeout=120)
+            _model_profile = prof.get("model") or "default"
+            raw = llm_chat(msgs, profile=_model_profile, max_tokens=1800, project=proj, timeout=120)
             _tok += int(LAST_USAGE.get("total_tokens", 0) or 0)
             m = re.search(r"\{[\s\S]*\}", raw)
             step_data = {}
@@ -3656,7 +3743,7 @@ def agent_reply(session, message, proj=None):
             data["spec"] = preset_hint["spec"]
             data["say"] = (data.get("say") or "") + "\n\n---\n我已自动匹配到「" + preset_hint["name"] + "」预设并展开了任务。如果你想要不同的范围，告诉我。"
             data["questions"] = []
-    used = {"skills": [s["name"] for s in skills], "library": [h["path"] for h in libs],
+    used = {"profile": prof["label"], "skills": [s["name"] for s in skills], "library": [h["path"] for h in libs],
             "kb": [b["title"] for b in kb_hits], "memory": [m["section"] for m in mem_hits],
             "geo_gaps": geo.get("gaps", []), "rules_chars": len(rules)}
     return {"say": data.get("say", ""), "questions": data.get("questions") or [],
@@ -3707,6 +3794,46 @@ def spec_guard(spec):
            "params": {}, "rationale": str(spec.get("rationale", ""))[:400],
            "skills_used": [str(x)[:60] for x in (spec.get("skills_used") or [])][:8]}
     return out, ""
+
+
+
+CTX_LIMIT_CHARS = 12000
+CTX_KEEP_MSGS = 8
+
+
+def session_ctx_chars(session):
+    n = len(session.get("summary") or "")
+    for m in session.get("messages", []):
+        n += len(str(m.get("text") or ""))
+    return n
+
+
+def session_maybe_compress(session, proj=None):
+    """超过上下文预算时，把最旧的消息压缩成摘要（保留最近 N 条）。"""
+    msgs = session.get("messages", [])
+    if session_ctx_chars(session) <= CTX_LIMIT_CHARS or len(msgs) <= CTX_KEEP_MSGS:
+        return False
+    old = msgs[:-CTX_KEEP_MSGS]
+    if not old:
+        return False
+    lines = []
+    for m in old[-24:]:
+        role = "用户" if m.get("role") == "user" else "助手"
+        lines.append(f"{role}：{re.sub(chr(92) + 's+', ' ', str(m.get('text') or ''))[:220]}")
+    prev = session.get("summary") or ""
+    txt = prev + "\n" + "\n".join(lines)
+    try:
+        ask = ("把下面这段内容工作台的对话历史压缩成不超过 8 行的要点，保留：①用户的目标与约束 "
+               "②已确认的范围/决策 ③未完成事项。只输出要点，不要客套。\n\n" + txt[-6000:])
+        summary = llm_chat([{"role": "user", "content": ask}], profile="default",
+                           max_tokens=400, project=proj, timeout=60)
+        summary = re.sub(r"\s+\n", "\n", summary).strip()[:1500]
+    except Exception:
+        summary = txt[-1500:]
+    session["summary"] = summary
+    session["messages"] = msgs[-CTX_KEEP_MSGS:]
+    session["compressed_at"] = datetime.now().strftime("%Y-%m-%d %H:%M")
+    return True
 
 
 def agent_session_new(title=""):
@@ -5614,9 +5741,18 @@ class Handler(BaseHTTPRequestHandler):
             # ── Agent 任务台 ──
             if parsed.path == "/api/agent/sessions":
                 return self._send(200, agent_sessions())
+            if parsed.path == "/api/agent/profiles":
+                return self._send(200, {k: {"label": v["label"], "issue": v["issue"]} for k, v in AGENT_PROFILES.items()})
             if parsed.path == "/api/agent/session":
                 s = agent_session_load(qs.get("id", [""])[0])
-                return self._send(200, s or {"error": "会话不存在"})
+                if not s:
+                    return self._send(200, {"error": "会话不存在"})
+                _cc = session_ctx_chars(s)
+                s["ctx"] = {"chars": _cc, "limit": CTX_LIMIT_CHARS,
+                            "pct": int(round(100 * _cc / CTX_LIMIT_CHARS)),
+                            "summary": bool(s.get("summary")), "compressed_at": s.get("compressed_at", "")}
+                s["profiles"] = {k: {"label": v["label"], "issue": v["issue"]} for k, v in AGENT_PROFILES.items()}
+                return self._send(200, s)
             # ── QA 编排 ──
             if parsed.path == "/api/qa/findings":
                 return self._send(200, qa_findings(qs.get("task", [""])[0]))
@@ -5897,7 +6033,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/publish/sanity", "/api/publish/wordpress", "/api/library/sync",
                       "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
                       "/api/batch/create", "/api/batch/action",
-                      "/api/agent/chat", "/api/agent/execute", "/api/agent/run",
+                      "/api/agent/chat", "/api/agent/execute", "/api/agent/run", "/api/agent/profile",
                       "/api/run/action",
                       "/api/qa/orchestrate", "/api/qa/recheck",
                       "/api/presets/run", "/api/housekeeping/run",
@@ -6266,6 +6402,7 @@ class Handler(BaseHTTPRequestHandler):
                 s.setdefault("messages", []).append({"role": "user", "text": msg,
                                                      "at": datetime.now().strftime("%H:%M:%S")})
                 try:
+                    session_maybe_compress(s, self._proj())
                     r = agent_reply(s, msg, self._proj())
                 except Exception as e:
                     s["messages"].append({"role": "assistant", "text": f"（规划失败：{str(e)[:200]}）"})
@@ -6283,10 +6420,15 @@ class Handler(BaseHTTPRequestHandler):
                 if guarded:
                     s.setdefault("proposals", []).append({"spec": guarded, "at": datetime.now().strftime("%Y-%m-%d %H:%M")})
                 agent_save(s)
+                _cc = session_ctx_chars(s)
                 return self._send(200, {"session_id": s["id"], "say": r["say"], "questions": r.get("questions"),
                                         "spec": guarded, "guard_error": gerr, "context": r.get("context"),
                                         "plan": r.get("plan"), "trace": r.get("trace") or [],
-                                        "tokens": s.get("tokens", 0)})
+                                        "tokens": s.get("tokens", 0),
+                                        "ctx": {"chars": _cc, "limit": CTX_LIMIT_CHARS,
+                                                "pct": int(round(100 * _cc / CTX_LIMIT_CHARS)),
+                                                "summary": bool(s.get("summary")),
+                                                "compressed_at": s.get("compressed_at", "")}})
             if self.path == "/api/agent/execute":
                 s = agent_session_load(str(body.get("session_id", "")))
                 if not s:
@@ -6332,6 +6474,18 @@ class Handler(BaseHTTPRequestHandler):
                 agent_save(s)
                 return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"],
                                         "run_id": run["id"]})
+
+            # ── Agent 角色（工作线 Profile）──
+            if self.path == "/api/agent/profile":
+                s = agent_session_load(str(body.get("session_id", "")))
+                if not s:
+                    return self._send(404, {"error": "会话不存在"})
+                key = str(body.get("profile", "auto"))
+                if key not in AGENT_PROFILES:
+                    return self._send(400, {"error": "未知角色"})
+                s["profile"] = key
+                agent_save(s)
+                return self._send(200, {"ok": True, "profile": key, "label": AGENT_PROFILES[key]["label"]})
 
             # ── Agent 计划 → Run（多步编排，后台运行）──
             if self.path == "/api/agent/run":

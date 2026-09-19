@@ -304,7 +304,8 @@ button.clicked{animation:clickpulse .45s ease}
 .run-dot.done{background:var(--ok)}
 .run-dot.failed{background:var(--bad)}
 .run-dot.warn{background:var(--warn)}
-.run-dot.warn,.run-dot.failed{}
+.run-dot.replanned{background:var(--warn);opacity:.75}
+.run-dot.blocked{background:var(--muted);opacity:.6}
 @keyframes runpulse{0%,100%{box-shadow:0 0 0 0 var(--accent-soft)}50%{box-shadow:0 0 0 8px transparent}}
 .run-line{flex:1;width:2px;background:var(--border);margin:2px 0}
 .run-line.done{background:var(--ok)}
@@ -518,8 +519,18 @@ button.clicked{animation:clickpulse .45s ease}
   <section class="page" id="pg-agent">
     <div class="pg-head"><div><div class="kick">我的工作</div><h1>Agent <em class="sf">任务台</em></h1>
       <p class="pg-sub">像和 Claude Code 对话一样下达任务——agent 会用知识库/skills/内容库自己填细节，你只需要说想要什么。</p></div>
-      <div class="head-actions"><select id="ag-sessions" onchange="agOpen(this.value)" style="width:180px"></select>
+      <div class="head-actions">
+        <select id="ag-profile" onchange="agSetProfile(this.value)" title="Agent 角色（工作线）" style="width:120px"></select>
+        <select id="ag-sessions" onchange="agOpen(this.value)" style="width:180px"></select>
         <button class="btn ghost" onclick="agNew()">＋ 新会话</button></div></div>
+    <div class="card" style="margin-bottom:12px;padding:10px 14px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span class="mut" style="font-size:11.5px;white-space:nowrap">上下文占用</span>
+        <div style="flex:1;height:8px;border-radius:99px;background:var(--hover);overflow:hidden"><div id="ag-ctxbar" style="height:100%;width:0;background:var(--accent);transition:width .4s"></div></div>
+        <span class="mut" id="ag-ctxtx" style="font-size:11px;white-space:nowrap"></span>
+      </div>
+      <div class="mut" id="ag-summary" style="font-size:11px;margin-top:5px"></div>
+    </div>
     <div class="card"><div class="card-head"><h3><span id="ag-title">新会话</span></h3>
       <span class="mut" id="ag-tokens"></span>
       <span class="mut" id="ag-sid" style="font-size:10px"></span></div>
@@ -2216,13 +2227,30 @@ function mdRender(text){
  return out.join('');
 }
 
-function agLoad(){api('api/agent/sessions').then(ss=>{
+function agLoad(){api('api/agent/profiles').then(ps=>{
+  const sel=$('ag-profile');
+  if(sel&&ps&&!sel.children.length){sel.innerHTML=Object.entries(ps).map(([k,v])=>`<option value="${k}">${esc(v.label)}</option>`).join('')}
+ }).catch(()=>{}).then(()=>api('api/agent/sessions')).then(ss=>{
  const sel=$('ag-sessions');if(sel)sel.innerHTML=(ss||[]).map(s=>`<option value="${esc(s.id)}" ${s.id===AG_ID?'selected':''}>${esc(s.title||s.id.slice(5,15))} · ${esc((s.created||'').slice(5))}</option>`).join('');
  if(!AG_ID&&ss&&ss.length)agOpen(ss[0].id);else if(AG_ID)agOpen(AG_ID)})}
 function agNew(){AG_ID='';const t=$('ag-thread');if(t)t.innerHTML='';const s=$('ag-sessions');if(s)s.value='';}
 function agOpen(id){AG_ID=id;return api('api/agent/session?id='+encodeURIComponent(id)).then(s=>{
  if(s.error)return; const sid=$('ag-sid');if(sid)sid.textContent=s.id;
- agRender(s.messages||[]);agRenderMeta(s);agPollTasks();return s})}
+ const ps=$('ag-profile');if(ps&&s.profile)ps.value=s.profile;
+ agRender(s.messages||[]);agRenderMeta(s);agCtx(s.ctx||{});agPollTasks();return s})}
+function agCtx(c){
+ const bar=$('ag-ctxbar'),tx=$('ag-ctxtx'),sm=$('ag-summary');if(!bar)return;
+ const pct=c.pct||0;bar.style.width=Math.min(100,pct)+'%';
+ bar.style.background=pct>=90?'var(--bad)':pct>=70?'var(--warn)':'var(--accent)';
+ if(tx)tx.textContent=`${(c.chars||0).toLocaleString()} / ${(c.limit||0).toLocaleString()} 字符（${pct}%）`;
+ if(sm)sm.textContent=c.summary?`较早对话已自动压缩为摘要（${c.compressed_at||''}）——AI 仍记得要点。`:'';
+}
+function agSetProfile(v){if(!AG_ID){toast('先发一条消息或新建会话','warn');return}
+ withBtn(event, async()=>{const r=await api('api/agent/profile',{session_id:AG_ID,profile:v});
+  if(r.error)throw new Error(r.error);toast('已切换角色：'+r.label,'ok');return r;},{busyText:'切换中…',okText:'已切换'});}
+function agNew(){AG_ID='';const t=$('ag-thread');if(t)t.innerHTML='';const s=$('ag-sessions');if(s)s.value='';
+ agCtx({chars:0,limit:12000,pct:0});
+}
 function agRenderMeta(s){
  const tok=$('ag-tokens');
  if(tok){const tk=s.tokens||0;tok.textContent=`${((s.messages||[]).length)} 条消息 · ${tk.toLocaleString()} tokens`;}
@@ -2299,6 +2327,7 @@ function agSend(){const v=$('ag-input').value.trim();if(!v||AG_BUSY)return;
   AG_ID=r.session_id||AG_ID;
   $('ag-input').value='';
   agOpen(AG_ID);
+  if(r.ctx)agCtx(r.ctx);
  }).catch(()=>{toast('请求失败','bad')}).finally(()=>{
   AG_BUSY=false;if(btn){btn.disabled=false;btn.textContent='发送'}
   document.querySelectorAll('#ag-thread .ag-typing,#ag-typing-ind').forEach(e=>e.remove());
@@ -2358,11 +2387,11 @@ function runDetail(id){RUN_ID=id;api('api/run/detail?id='+encodeURIComponent(id)
  const steps=r.steps||[];
  $('run-canvas').innerHTML=`<div class="run-pbar"><div style="width:${ov.pct||0}%"></div></div>`+
   steps.map((st,i)=>{
-   const dot={done:'✓',failed:'✕',warn:'!',running:'●',pending:i+1}[st.status]||i+1;
+   const dot={done:'✓',failed:'✕',warn:'!',running:'●',replanned:'↻',blocked:'—',pending:i+1}[st.status]||i+1;
    const prog=(st.type==='batch'&&st.progress!=null)?`<div class="run-step-progress"><div style="width:${st.progress}%"></div></div>`:'';
    return `<div class="run-step">
      <div class="run-rail"><span class="run-dot ${st.status}">${dot}</span>${i<steps.length-1?`<span class="run-line ${st.status==='done'?'done':''}"></span>`:''}</div>
-     <div class="run-body"><div class="rn">${esc(st.name)} ${st.status==='running'?'<span class="mut" style="font-size:11px">进行中…</span>':''}</div>
+     <div class="run-body"><div class="rn">${esc(st.name)} ${st.status==='running'?'<span class="mut" style="font-size:11px">进行中…</span>':(st.status==='replanned'?'<span class="warn" style="font-size:11px">已重规划</span>':(st.status==='blocked'?'<span class="mut" style="font-size:11px">已跳过</span>':''))}</div>
       <div class="rd">${esc(st.detail||'')}</div>${prog}
       ${st.task_id?`<button class="mini" style="margin-top:6px" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(st.task_id)}'),600)">查看任务 →</button>`:''}</div></div>`}).join('')+
   `<div class="row" style="margin-top:6px">${r.status==='running'?`<button class="btn ghost" onclick="runAct('${esc(r.id)}','cancel')">取消执行</button>`:''}${r.status==='failed'?`<button class="btn primary" onclick="runAct('${esc(r.id)}','retry')">重试失败步骤</button>`:''}</div>`;
