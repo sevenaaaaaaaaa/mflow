@@ -2395,7 +2395,9 @@ def memory_review():
         by_sec.setdefault(f["section"] or "（无标题）", []).append(f)
     for e in ents:
         by_type.setdefault(e["type"] or "other", []).append(e)
-    return {"facts": facts, "entities": ents,
+    facts_out = [{k: v for k, v in f.items() if k != "tok"} for f in facts]
+    ents_out = [{k: v for k, v in e.items() if k != "tok"} for e in ents]
+    return {"facts": facts_out, "entities": ents_out,
             "sections": {k: len(v) for k, v in by_sec.items()},
             "types": {k: len(v) for k, v in by_type.items()},
             "overrides": {"facts": ov.get("facts", {}), "entities": ov.get("entities", {})},
