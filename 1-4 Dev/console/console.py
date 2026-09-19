@@ -2631,7 +2631,9 @@ def _rag_chunks():
 def rag_build():
     """构建/重建索引（增量：按内容哈希跳过未变块）。"""
     old = read_json(RAG_INDEX, {}) or {}
-    old_map = {c["id"]: c for c in (old.get("chunks") or [])}
+    _scheme = "tfidf-v1" if not (rag_cfg()["base"] and rag_cfg()["key"] and rag_cfg()["model"]) else ("remote-" + rag_cfg()["model"])
+    old_map = ({c["id"]: c for c in (old.get("chunks") or [])}
+               if old.get("scheme") == _scheme and old.get("backend") else {})
     chunks = _rag_chunks()
     texts = [c["text"] for c in chunks]
     idf = _corpus_idf(texts)
@@ -2641,12 +2643,13 @@ def rag_build():
     for c, v in zip(chunks, vectors):
         cid = hashlib.sha1((c["src"] + "|" + c["ref"] + "|" + c["text"]).encode("utf-8")).hexdigest()[:14]
         o = old_map.get(cid)
-        if o and backend == old.get("backend"):
+        if o:
             out.append(o); continue
         out.append({**c, "id": cid, "vec": v})
     RAG_DIR.mkdir(parents=True, exist_ok=True)
     RAG_INDEX.write_text(json.dumps({"backend": backend, "dim": dim, "built": datetime.now().strftime("%Y-%m-%d %H:%M"),
-                                     "count": len(out), "idf": (idf if backend == "local" else {}), "chunks": out},
+                                     "count": len(out), "scheme": _scheme,
+                                     "idf": (idf if backend == "local" else {}), "chunks": out},
                                     ensure_ascii=False))
     _RAG_CACHE.update(mtime=0, idx=None)
     return {"backend": backend, "dim": dim, "count": len(out), "reused": len(old_map)}
