@@ -389,6 +389,108 @@ def notify_send(title, text, timeout=6):
         return False
 
 
+
+# ===================== 邮件通知（负责人离线时）=====================
+EMAIL_FILE = RUN_DIR / "email.json"
+
+
+def email_cfg():
+    return read_json(EMAIL_FILE, {"enabled": False, "host": "", "port": 465, "user": "", "pass": "",
+                                  "sender": "", "tls": "ssl", "recipients": {}, "default_to": ""})
+
+
+def user_email(username):
+    cfg = email_cfg()
+    rec = auth_record(username) or {}
+    return (rec.get("email") or "").strip() or (cfg.get("recipients") or {}).get(username) or ""
+
+
+def user_online(username):
+    """该用户当前是否有活跃会话（登录态）。"""
+    if not username:
+        return False
+    now = time.time()
+    for sid, sess in list(SESSIONS.items()):
+        if isinstance(sess, dict) and sess.get("username") == username:
+            # 会话 12 小时内视为在线
+            if now - float(sess.get("_exp", 0) - SESSION_TTL_DAYS * 86400) < 12 * 3600:
+                return True
+    return False
+
+
+def email_send(to, subject, body):
+    """SMTP 发送；未配置则返回 (False, '未配置')。"""
+    cfg = email_cfg()
+    if not (cfg.get("enabled") and cfg.get("host") and cfg.get("user") and (cfg.get("pass") or cfg.get("sender"))):
+        return False, "邮件未配置（设置 → 通知 → SMTP）"
+    to = to or cfg.get("default_to") or ""
+    if not to:
+        return False, "无收件人"
+    try:
+        import smtplib
+        from email.mime.text import MIMEText
+        from email.header import Header
+        sender = cfg.get("sender") or cfg.get("user")
+        msg = MIMEText(body, "plain", "utf-8")
+        msg["Subject"] = Header(subject, "utf-8")
+        msg["From"] = sender
+        msg["To"] = to
+        port = int(cfg.get("port") or (465 if cfg.get("tls") == "ssl" else 587))
+        if cfg.get("tls") == "ssl":
+            srv = smtplib.SMTP_SSL(cfg["host"], port, timeout=20)
+        else:
+            srv = smtplib.SMTP(cfg["host"], port, timeout=20)
+            if cfg.get("tls") != "none":
+                srv.starttls()
+        srv.login(cfg["user"], cfg["pass"] or "")
+        srv.sendmail(sender, [x.strip() for x in to.split(",") if x.strip()], msg.as_string())
+        srv.quit()
+        return True, "已发送"
+    except Exception as e:
+        print(f"[console] email_send failed: {e}", file=sys.stderr)
+        return False, str(e)[:200]
+
+
+def notify_offline(owner, subject, body):
+    """负责人不在登录态 → 邮件；顺带飞书。返回发送结果摘要。"""
+    sent = []
+    if owner and not user_online(owner):
+        to = user_email(owner)
+        ok, info = email_send(to, subject, body)
+        sent.append(f"email:{'ok' if ok else info}")
+        try:
+            notify_send(subject, body)
+            sent.append("feishu:ok")
+        except Exception:
+            pass
+    else:
+        sent.append("owner-online:skip")
+    return "; ".join(sent)
+
+
+def notify_task_end(task):
+    """批量任务到达终态时，若负责人离线则通知。"""
+    try:
+        owner = task.get("created_by") or task.get("by") or ""
+        st = task.get("stats") or {}
+        status = task.get("status")
+        if status not in ("done", "failed", "tripped"):
+            return
+        emoji = {"done": "✅ 完成", "failed": "⚠️ 部分失败", "tripped": "⛔ 已熔断"}.get(status, status)
+        subj = f"[MFlow] 任务{emoji}：{task.get('title') or task['id']}"
+        body = (f"任务：{task.get('title') or task['id']}\n"
+                f"类型：{task.get('type')}　状态：{status}　{'dry-run' if task.get('dry_run') else '真实执行'}\n"
+                f"条目：成功 {st.get('done',0)} / 失败 {st.get('failed',0)} / 跳过 {st.get('skipped',0)} / 共 {st.get('total',0)}\n"
+                f"token 消耗：{task.get('tokens',0)}　重试：{task.get('retries',0)}\n"
+                f"创建：{task.get('created','')} by {owner}\n\n"
+                f"查看：https://nownexts.com/mflow/?run={task['id']}\n"
+                f"（此邮件因你当前不在登录状态而发送）")
+        info = notify_offline(owner, subj, body)
+        _batch_log(task, f"离线通知 {owner or '(未指定)'} → {info}")
+    except Exception as e:
+        print(f"[console] notify_task_end: {e}", file=sys.stderr)
+
+
 def notify_loop_end(loop, proj, outcome):
     """Loop 终态通知：done/blocked/failed；stopped（用户主动）不打扰。"""
     if outcome == "stopped":
@@ -1479,7 +1581,7 @@ def run_new(title, steps, proj=None, by="", kind="agent", session_id="", message
     run = {"id": rid, "title": title or "未命名执行", "proj": proj or DEFAULT_PROJECT, "by": by,
            "kind": kind, "created": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
            "status": "running", "session_id": session_id, "message": (message or "")[:200],
-           "steps": []}
+           "started_ts": time.time(), "steps": []}
     for i, st in enumerate(steps or []):
         run["steps"].append({"i": i, "name": st.get("name") or f"步骤 {i+1}",
                              "type": st.get("type") or "batch",
@@ -1727,6 +1829,57 @@ def run_view(rid):
     blocked = sum(1 for st in steps if st["status"] in ("blocked", "replanned"))
     run["overall"] = {"total": len(steps), "done": done, "failed": failed, "warn": warn, "blocked": blocked,
                       "pct": int(round(100 * (done + failed + warn) / max(1, len(steps))))}
+    # ── 进度/成本/ETA/风险 ──
+    items_total = items_done = tokens = retries = 0
+    for st in steps:
+        if st.get("task_id"):
+            t = batch_load(st["task_id"]) or {}
+            s2 = t.get("stats") or {}
+            items_total += int(s2.get("total") or 0)
+            items_done += int(s2.get("done") or 0) + int(s2.get("skipped") or 0)
+            tokens += int(t.get("tokens") or 0)
+            retries += int(t.get("retries") or 0)
+    elapsed = max(1.0, time.time() - float(run.get("started_ts") or time.time()))
+    rate = items_done / elapsed if items_done else 0
+    remain = max(0, items_total - items_done)
+    eta = int(remain / rate) if rate > 0 and remain > 0 else (0 if remain == 0 else None)
+    run["metrics"] = {"items_total": items_total, "items_done": items_done, "tokens": tokens,
+                      "retries": retries, "elapsed_sec": int(elapsed), "eta_sec": eta,
+                      "rate_per_min": round(rate * 60, 1)}
+    # 风险累积
+    risks = []
+    if failed:
+        risks.append({"level": "high", "text": f"{failed} 个步骤失败"})
+    if retries:
+        risks.append({"level": "medium", "text": f"{retries} 次重试（可能有反复失败项）"})
+    if warn:
+        risks.append({"level": "low", "text": f"{warn} 个步骤有告警（如部分前台不可访问）"})
+    try:
+        _blocked, _bst = breaker_check()
+        if _blocked:
+            risks.append({"level": "high", "text": "全局熔断中：" + str((_bst or {}).get("reason", ""))[:60]})
+    except Exception:
+        pass
+    try:
+        _un = run.get("by") or ""
+        _q = user_quota(_un, (auth_record(_un) or {}).get("role", "operator")) if _un else None
+        if _q:
+            _u = usage_get(_un)
+            for _metric, _used, _cap, _label in (("items", _u["items"], _q["items_per_month"], "条目"),
+                                                  ("tokens", _u["tokens"], _q["tokens_per_month"], "token"),
+                                                  ("writes", _u["writes"], _q["writes_per_month"], "写入")):
+                if _cap and _used / max(1, _cap) >= 0.8:
+                    _pc = int(round(100 * _used / _cap))
+                    risks.append({"level": "medium" if _pc < 100 else "high",
+                                  "text": f"{_label}配额已用 {_pc}%"})
+    except Exception:
+        pass
+    if items_total and items_done < items_total and rate == 0 and elapsed > 120:
+        risks.append({"level": "medium", "text": "长时间无产出，可能卡住"})
+    run["risk"] = {"level": ("high" if any(r["level"] == "high" for r in risks)
+                             else ("medium" if any(r["level"] == "medium" for r in risks)
+                                   else ("low" if risks else "none"))),
+                   "items": risks}
     if failed:
         run["status"] = "failed"
     elif warn:
@@ -2400,6 +2553,10 @@ def batch_worker():
             st["done"] = sum(1 for i in task["items"] if i["status"] == "done")
             st["failed"] = sum(1 for i in task["items"] if i["status"] == "failed")
             st["skipped"] = sum(1 for i in task["items"] if i["status"] == "skipped")
+            task["tokens"] = sum(int((i.get("result") or {}).get("tokens") or 0)
+                                 for i in task["items"] if isinstance(i.get("result"), dict))
+            task["retries"] = sum(max(0, int(i.get("attempts", 1)) - 1) for i in task["items"])
+            task.setdefault("started_ts", time.time())
             if task.get("status") == "tripped":
                 pass
             elif task.get("status") == "paused":
@@ -2419,6 +2576,8 @@ def batch_worker():
                     chain_next_task(task, proj)
                 except Exception as ce:
                     _batch_log(task, f"任务链生成失败：{str(ce)[:160]}")
+            if task.get("status") in ("done", "failed", "tripped"):
+                notify_task_end(task)
             batch_save(task)
         except Exception as e:
             print(f"[batch] {e}", file=sys.stderr)
@@ -2469,6 +2628,18 @@ def run_tool(args, timeout=60):
         return {"rc": r.returncode, "out": (r.stdout + r.stderr)[-4000:]}
     except subprocess.TimeoutExpired:
         return {"rc": 124, "out": "timeout"}
+
+
+def write_json(path, obj):
+    """原子写入 JSON（临时文件 + replace）。"""
+    try:
+        path = Path(path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        tmp = path.with_suffix(path.suffix + ".tmp")
+        tmp.write_text(json.dumps(obj, ensure_ascii=False, indent=1))
+        tmp.replace(path)
+    except Exception as e:
+        print(f"[console] write_json {path} failed: {e}", file=sys.stderr)
 
 
 def read_json(path, default):
@@ -4812,6 +4983,96 @@ HOUSEKEEPING_LOG = RUN_DIR / "logs" / "housekeeping.log"
 _HEALTH_CACHE = {"ts": 0, "sanity": None}
 
 
+
+# ===================== 开工简报（每日开启体感 / 继续上次）=====================
+START_STATE = RUN_DIR / "start-state.json"
+
+
+def start_report(me="", proj=None):
+    """返回「继续上次」+「隔夜简报」+「进行中」+「我的待办」。"""
+    proj = proj or DEFAULT_PROJECT
+    now = time.time()
+    state = read_json(START_STATE, {}) or {}
+    last = float((state.get(me) or {}).get("ts") or 0)
+    # 继续上次
+    ss = agent_sessions()
+    last_session = None
+    if ss:
+        cand = [x for x in ss if (not me or x.get("by") == me)] or ss
+        last_session = {"id": cand[0]["id"], "title": cand[0].get("title", ""), "created": cand[0].get("created", ""),
+                        "n": cand[0].get("n", 0), "tokens": cand[0].get("tokens", 0)}
+    # 进行中
+    running_runs = [r for r in run_list(50) if r.get("status") == "running"]
+    active_batches = [t for t in batch_list() if t.get("status") in ("running", "queued", "paused", "tripped")]
+    # 隔夜简报：自上次访问以来
+    since = last if last else (now - 12 * 3600)
+    overnight = {"done": [], "failed": [], "reports": [], "maintenance": []}
+    for t in batch_list():
+        try:
+            mt = _run_path  # noop
+        except Exception:
+            pass
+        fin = t.get("finished") or t.get("created") or ""
+        try:
+            ts = datetime.strptime(fin, "%Y-%m-%d %H:%M").timestamp()
+        except Exception:
+            ts = 0
+        if ts >= since:
+            st = t.get("stats") or {}
+            line = f"{t.get('title') or t['id']}（成功 {st.get('done',0)}/失败 {st.get('failed',0)}）"
+            if t.get("status") in ("done",):
+                overnight["done"].append(line)
+            elif t.get("status") in ("failed", "tripped"):
+                overnight["failed"].append(line)
+    # 报告（按 mtime）
+    try:
+        for d in (PROJECT / "1-1 Harness/11-knowledge/audit/reports", PROJECT / "1-1 Harness/11-knowledge/audit"):
+            if d.exists():
+                for f in sorted(d.glob("*.md"), key=lambda x: x.stat().st_mtime, reverse=True)[:10]:
+                    if f.stat().st_mtime >= since:
+                        overnight["reports"].append(f.stem[:60])
+            break
+    except Exception:
+        pass
+    # housekeeping
+    try:
+        if HOUSEKEEPING_LOG.exists():
+            for l in HOUSEKEEPING_LOG.read_text(errors="ignore").strip().split("\n")[-20:]:
+                if l.strip():
+                    overnight["maintenance"].append(l[:140])
+    except Exception:
+        pass
+    # 我的待办
+    try:
+        tasks = read_json(proj_paths(proj)["tasks"], []) or []
+        mine = [t for t in tasks if t.get("status") != "done" and (not me or (t.get("assignee") or "") == me)]
+        if not mine:
+            mine = [t for t in tasks if t.get("status") != "done"][:8]
+    except Exception:
+        mine = []
+    # 记录本次访问
+    state[me or "_"] = {"ts": now, "at": datetime.now().strftime("%Y-%m-%d %H:%M")}
+    try:
+        write_json(START_STATE, state)
+    except Exception:
+        pass
+    hours = int((now - since) / 3600) if since else 12
+    return {"greeting": _greet(), "away_hours": hours,
+            "last_session": last_session,
+            "running_runs": running_runs[:5],
+            "active_batches": [{"id": t["id"], "title": t.get("title"), "status": t.get("status"),
+                                "stats": t.get("stats"), "dry_run": t.get("dry_run")} for t in active_batches[:8]],
+            "overnight": overnight,
+            "my_tasks": [{"id": t.get("id"), "title": t.get("title"), "status": t.get("status"),
+                          "assignee": t.get("assignee"), "due": t.get("due")} for t in mine[:8]],
+            "next": next_actions(proj).get("actions", [])}
+
+
+def _greet():
+    h = datetime.now().hour
+    return "凌晨了" if h < 6 else ("早上好" if h < 12 else ("下午好" if h < 18 else "晚上好"))
+
+
 def next_actions(proj=None):
     """推荐下一步：根据系统状态给出人话建议 + 一键动作。所有新手/老手都能用。"""
     proj = proj or DEFAULT_PROJECT
@@ -5657,9 +5918,14 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, daily_status())
             if parsed.path == "/api/usage":
                 return self._send(200, usage_stats())
+            if parsed.path == "/api/email":
+                cfg = dict(email_cfg())
+                cfg["pass"] = "***" if cfg.get("pass") else ""
+                return self._send(200, cfg)
             if parsed.path == "/api/notify":
                 cfg = notify_cfg()
-                return self._send(200, {"enabled": cfg.get("enabled"), "feishu_webhook": cfg.get("feishu_webhook", "")})
+                return self._send(200, {"enabled": cfg.get("enabled"), "feishu_webhook": cfg.get("feishu_webhook", ""),
+                                        "email": {k: v for k, v in email_cfg().items() if k != "pass"}})
             if parsed.path == "/api/plugins":
                 return self._send(200, plugins_inventory())
             if parsed.path == "/api/geo/citations":
@@ -5793,6 +6059,8 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, health_report(self._proj()))
             if parsed.path == "/api/next-actions":
                 return self._send(200, next_actions(self._proj()))
+            if parsed.path == "/api/start":
+                return self._send(200, start_report(self._me(), self._proj()))
             if parsed.path == "/api/housekeeping":
                 lg = []
                 if HOUSEKEEPING_LOG.exists():
@@ -6007,7 +6275,7 @@ class Handler(BaseHTTPRequestHandler):
             if self._role() != "admin":
                 return self._send(403, {"error": "需要 admin"})
             return self._send(200, [{"username": x["username"], "role": x.get("role", ""),
-                                     "name": x.get("name", ""),
+                                     "name": x.get("name", ""), "email": x.get("email", ""),
                                      "projects": x.get("projects", [])} for x in read_json(AUTH_FILE, [])])
         if self.path == "/api/account/set-projects":
             if self._role() != "admin":
@@ -6029,7 +6297,7 @@ class Handler(BaseHTTPRequestHandler):
         ADMIN_ONLY = {"/api/setup/seed-demo", "/api/llm/save", "/api/llm/test",
                       "/api/account/list", "/api/account/reset", "/api/dispatch/approve",
                       "/api/trident/run", "/api/daily/run", "/api/tasks/del",
-                      "/api/notify/save", "/api/notify/test",
+                      "/api/notify/save", "/api/notify/test", "/api/email/save", "/api/email/test", "/api/user/email",
                       "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall",
                       "/api/geo/probe",
                       "/api/pay/product/save", "/api/pay/product/delete", "/api/pay/cards/import",
@@ -6146,6 +6414,40 @@ class Handler(BaseHTTPRequestHandler):
             if self.path == "/api/notify/test":
                 ok = notify_send("MFlow 通知测试", f"来自 {self._me()} 的连通性测试 · {time.strftime('%H:%M:%S')}")
                 return self._send(200, {"ok": ok})
+            if self.path == "/api/email/save":
+                cur = email_cfg()
+                if body.get("pass"):
+                    cur["pass"] = str(body["pass"])
+                for k in ("enabled", "host", "port", "user", "sender", "tls", "default_to"):
+                    if k in body:
+                        cur[k] = body[k]
+                if isinstance(body.get("recipients"), dict):
+                    cur["recipients"] = {str(k): str(v).strip() for k, v in body["recipients"].items()}
+                RUN_DIR.mkdir(parents=True, exist_ok=True)
+                EMAIL_FILE.write_text(json.dumps(cur, ensure_ascii=False, indent=1))
+                try:
+                    os.chmod(EMAIL_FILE, 0o600)
+                except Exception:
+                    pass
+                return self._send(200, {"ok": True})
+            if self.path == "/api/email/test":
+                to = str(body.get("to", "")).strip() or user_email(self._me())
+                ok, info = email_send(to, "[MFlow] 邮件通知测试",
+                                      f"来自 {self._me()} 的连通性测试 · {time.strftime('%H:%M:%S')}\n收件人：{to}")
+                return self._send(200, {"ok": ok, "info": info, "to": to})
+            if self.path == "/api/user/email":
+                un = str(body.get("username", "")).strip()
+                em = str(body.get("email", "")).strip()
+                recs = read_json(AUTH_FILE, []) or []
+                found = False
+                for r in recs:
+                    if r.get("username") == un:
+                        r["email"] = em
+                        found = True
+                if not found:
+                    return self._send(404, {"error": "用户不存在"})
+                AUTH_FILE.write_text(json.dumps(recs, ensure_ascii=False, indent=1))
+                return self._send(200, {"ok": True, "username": un, "email": em})
             if self.path == "/api/plugins/install":
                 return self._send(200, plugin_install(body.get("manifest") or {}, body.get("entry_code", "")))
             if self.path == "/api/plugins/uninstall":

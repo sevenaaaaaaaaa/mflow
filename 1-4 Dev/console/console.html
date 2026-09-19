@@ -405,6 +405,7 @@ button.clicked{animation:clickpulse .45s ease}
       <div class="mut" id="mode-desc" style="font-size:12px;margin-top:4px"></div>
       <div class="mut" id="mode-promo" style="font-size:12px;margin-top:4px"></div>
       <div class="mut" id="mode-counts" style="font-size:11px;margin-top:4px"></div></div>
+    <div id="start-brief"></div>
     <div id="next-actions"></div>
     <div class="metrics" id="metrics"></div>
     <div id="home-health"></div>
@@ -895,6 +896,23 @@ button.clicked{animation:clickpulse .45s ease}
       <input id="nt-hook" placeholder="飞书自定义机器人 Webhook（https://open.feishu.cn/open-apis/bot/v2/hook/…）" style="flex:1;min-width:280px">
       <button class="btn primary" onclick="notifySave()">保存通知配置</button></div>
       <div class="mut" id="nt-status" style="margin-top:6px">Loop 完成 / BLOCK / LLM 失败 时推送到飞书群；用户手动停止不推送。</div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>邮件通知 <span class="mut">（负责人不在登录态时发送）</span></h3>
+      <button class="more" onclick="emailTest()">发送测试 →</button></div>
+      <div class="row" style="align-items:center;flex-wrap:wrap;gap:8px">
+        <label style="font-size:13px;white-space:nowrap"><input id="em-en" type="checkbox" style="margin-right:6px">启用邮件</label>
+        <input id="em-host" placeholder="SMTP 主机（如 smtp.qq.com）" style="flex:1;min-width:180px">
+        <input id="em-port" type="number" placeholder="端口" style="width:90px">
+        <select id="em-tls" style="width:110px"><option value="ssl">SSL(465)</option><option value="starttls">STARTTLS(587)</option><option value="none">无加密</option></select>
+      </div>
+      <div class="row" style="margin-top:8px;flex-wrap:wrap;gap:8px">
+        <input id="em-user" placeholder="SMTP 用户名" style="flex:1;min-width:170px">
+        <input id="em-pass" type="password" placeholder="SMTP 密码/授权码（留空=不修改）" style="flex:1;min-width:170px">
+        <input id="em-sender" placeholder="发件人地址（默认=用户名）" style="flex:1;min-width:170px">
+      </div>
+      <div class="row" style="margin-top:8px"><input id="em-default" placeholder="默认收件人（无对应用户邮箱时用，可多个逗号分隔）" style="flex:1">
+        <button class="btn primary" onclick="emailSave()">保存邮件配置</button></div>
+      <div id="em-users" style="margin-top:10px"></div>
+      <div class="mut" id="em-status" style="margin-top:6px">批量任务完成/失败/熔断时，若创建者当前不在登录态，则发邮件提醒他回来查看。</div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>账号与角色 <span class="mut">（admin 专属 · 密码校验继承 OpenFlow bcrypt）</span></h3>
       <span class="mut" id="acc-role"></span></div><div id="acc-list"></div>
       <div class="row" style="margin-top:10px"><input id="acc-u" placeholder="账号用户名" style="flex:1;min-width:140px">
@@ -1265,6 +1283,34 @@ function mascotAsk(preset){const inp=$('mc-input');const q=(typeof preset==='str
  }).catch(()=>{box.innerHTML='<span class="bad">请求失败</span>'})}
 function mascotAttach(){try{const n=JSON.parse(localStorage.getItem('mflow-console-v1')||'{}').mascotSeen;if(!n){const p=$('mascot-ping');if(p)p.classList.add('on');setTimeout(()=>{const q=$('mascot-ping');if(q)q.classList.remove('on')},15000);localStorage.setItem('mflow-console-v1',JSON.stringify({...JSON.parse(localStorage.getItem('mflow-console-v1')||'{}'),mascotSeen:1}))}}catch(e){}}
 
+/* ---- 开工简报（继续上次 / 隔夜简报）---- */
+function loadStart(){api('api/start').then(d=>{
+ const el=$('start-brief');if(!el||!d||d.error)return;
+ const ov=d.overnight||{};
+ const line=(arr,cls)=>arr&&arr.length?`<div class="mut" style="font-size:12px;margin-top:3px">${arr.slice(0,4).map(x=>`<span class="${cls}">· ${esc(x)}</span>`).join('<br>')}</div>`:'';
+ const ls=d.last_session;
+ el.innerHTML=`<div class="card" style="margin-bottom:14px;border-left:3px solid var(--accent)">
+  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+   <span style="font-size:20px">🌅</span>
+   <div style="flex:1;min-width:220px"><div style="font-weight:700;font-size:13.5px">${esc(d.greeting)}，欢迎回来（离开 ${d.away_hours} 小时）</div>
+    <div class="mut" style="font-size:11.5px">上次离开后的产出与变化汇总如下</div></div>
+   ${ls?`<button class="btn primary" style="font-size:12.5px" onclick="resumeSession('${esc(ls.id)}')">▶ 继续上次：${esc((ls.title||'').slice(0,18))}</button>`:''}
+  </div>
+  <div class="ov-grid2" style="margin-top:10px;gap:10px">
+   <div><b style="font-size:12px">进行中</b>
+    ${(d.active_batches||[]).length?`<div style="margin-top:3px">${(d.active_batches).slice(0,4).map(b=>{const st=b.stats||{};const pct=st.total?Math.round((st.done+st.skipped+st.failed)/st.total*100):0;
+      return `<div class="mut" style="font-size:12px;cursor:pointer" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(b.id)}'),500)">· ${esc((b.title||b.id).slice(0,22))} <b>${pct}%</b>${b.dry_run?' (dry)':''}</div>`}).join('')}</div>`:'<div class="mut" style="font-size:12px;margin-top:3px">无</div>'}
+    ${(d.running_runs||[]).length?`<div class="mut" style="font-size:12px;margin-top:3px">执行画布运行中 ${d.running_runs.length} 条 → <a href="#" onclick="setTab('run');return false" style="color:var(--accent)">查看</a></div>`:''}
+   </div>
+   <div><b style="font-size:12px">隔夜变化</b>
+    ${line(ov.done,'ok')}${line(ov.failed,'bad')}${line(ov.reports,'')}${line(ov.maintenance,'mut')}
+    ${(!ov.done?.length&&!ov.failed?.length&&!ov.reports?.length&&!ov.maintenance?.length)?'<div class="mut" style="font-size:12px;margin-top:3px">无新变化</div>':''}
+   </div>
+  </div>
+  ${(d.my_tasks||[]).length?`<div style="margin-top:10px"><b style="font-size:12px">我的待办</b><div class="mut" style="font-size:12px;margin-top:3px">${d.my_tasks.slice(0,5).map(t=>`· ${esc((t.title||'').slice(0,30))}${t.due?' <span style="color:var(--warn)">'+esc(t.due)+'</span>':''}`).join('<br>')}</div></div>`:''}
+ </div>`;
+})}
+function resumeSession(id){AG_ID=id;setTab('agent');setTimeout(()=>agOpen(id),400)}
 /* ---- 逐页 onboarding（首次进入自动展示，可关闭，可重开）---- */
 const PAGE_GUIDES={
  home:{icon:'🏠',title:'总览：先看这里',steps:['看<b>推荐下一步</b>按提示操作','用<b>工作模式</b>切换手动/自动/自治','右侧看报告与近 7 日活动'],hint:'不确定做什么？点右下角「小 M」问一句。'},
@@ -1381,7 +1427,7 @@ function fmtHook(out){return String(out||'').split('\n').map(l=>{
  return esc(l)}).join('\n')}
 
 /* ---- 总览 ---- */
-function loadHome(){modeLoad();loadNextActions();api('api/overview').then(o=>{
+function loadHome(){modeLoad();loadStart();loadNextActions();api('api/overview').then(o=>{
  const h=new Date().getHours();const hi=h<6?'夜深了':h<12?'早上好':h<18?'下午好':'晚上好';
  $('greet').innerHTML=`${hi}，<em class="sf">${esc(window.__ME||'运营')}</em>`;
  $('greet-sub').textContent=`待办 ${o.open_tasks} · 管线 ${o.pipeline_inflight} · 分发待发 ${o.dist_open} · 最近一次每日管线 ${o.daily.running?'运行中':'已完成'}`;
@@ -1680,7 +1726,27 @@ function notifySave(){api('api/notify/save',{enabled:$('nt-en').checked,feishu_w
  .then(()=>{$('nt-status').innerHTML='<span class="ok">✓ 已保存</span>（仅 admin 可改）'})}
 function notifyTest(){$('nt-status').textContent='发送中…';
  api('api/notify/test',{}).then(r=>{$('nt-status').innerHTML=r.ok?'<span class="ok">✓ 测试消息已发出，去飞书群查看</span>':'<span class="warn">发送失败：先保存启用状态与 Webhook</span>'})}
-function loadSys(){api('api/overview').then(o=>{$('drun').innerHTML=o.daily.running?'<span class="warn">运行中…</span>':'<span class="ok">空闲</span>';
+function loadEmail(){api('api/email').then(c=>{if(!c||c.error)return;
+ $('em-en').checked=!!c.enabled;$('em-host').value=c.host||'';$('em-port').value=c.port||465;$('em-tls').value=c.tls||'ssl';
+ $('em-user').value=c.user||'';$('em-sender').value=c.sender||'';$('em-default').value=c.default_to||'';
+ api('api/account/list').then(acc=>{
+  const users=(acc&&acc.users)||acc||[];
+  const rec=c.recipients||{};
+  $('em-users').innerHTML='<b style="font-size:12.5px">成员邮箱</b><div class="row" style="flex-wrap:wrap;gap:8px;margin-top:6px">'+
+   (users||[]).map(u=>{const un=u.username||u;const em=u.email||rec[un]||'';
+    return `<span style="display:flex;align-items:center;gap:4px;font-size:12px"><b>${esc(un)}</b><input data-em-user="${esc(un)}" value="${esc(em)}" placeholder="email" style="width:150px;padding:5px 8px;border:1px solid var(--border);border-radius:8px;background:var(--surface-strong);color:var(--fg)"></span>`}).join('')+'</div>';
+ }).catch(()=>{});
+}).catch(()=>{})}
+function emailSave(){const rec={};document.querySelectorAll('[data-em-user]').forEach(i=>{if(i.value.trim())rec[i.dataset.emUser]=i.value.trim()});
+ api('api/email/save',{enabled:$('em-en').checked,host:$('em-host').value.trim(),port:$('em-port').value,
+  tls:$('em-tls').value,user:$('em-user').value.trim(),pass:$('em-pass').value,sender:$('em-sender').value.trim(),
+  default_to:$('em-default').value.trim(),recipients:rec}).then(r=>{
+  if(r.error)return toast(r.error,'bad');$('em-status').innerHTML='<span class="ok">✓ 已保存</span>（仅 admin 可改）';$('em-pass').value='';
+  toast('邮件配置已保存','ok')})}
+function emailTest(){$('em-status').textContent='发送中…';
+ api('api/email/test',{to:$('em-default').value.trim()}).then(r=>{
+  $('em-status').innerHTML=r.ok?`<span class="ok">✓ 测试邮件已发往 ${esc(r.to||'')}</span>`:`<span class="warn">发送失败：${esc(r.info||'')}</span>`})}
+function loadSys(){loadEmail();api('api/overview').then(o=>{$('drun').innerHTML=o.daily.running?'<span class="warn">运行中…</span>':'<span class="ok">空闲</span>';
  $('drbtn').disabled=o.daily.running;$('dtail').textContent=o.daily.tail||'（尚无日志）';$('stimers').textContent=o.timers});
  loadSchedReport()}
 function loadSchedReport(){api('api/schedule/all').then(r=>{
@@ -2313,7 +2379,8 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
   const task=m.task_id?`<div class="ag-task" data-tid="${esc(m.task_id)}" style="font-size:12px;margin-top:6px;padding:8px 10px;background:var(--ok-soft);border-radius:8px">
     <div style="display:flex;align-items:center;gap:8px"><b>批量任务 ${esc(m.task_id)}</b><span class="ag-tst mut"></span>
     <button class="mini" style="margin-left:auto" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(m.task_id)}'),600)">详情 →</button></div>
-    <div class="ag-tbar" style="height:6px;border-radius:99px;background:var(--hover);overflow:hidden;margin-top:6px"><div style="height:100%;width:0;background:var(--accent);transition:width .4s"></div></div></div>`:'';
+    <div class="ag-tbar" style="height:6px;border-radius:99px;background:var(--hover);overflow:hidden;margin-top:6px"><div style="height:100%;width:0;background:var(--accent);transition:width .4s"></div></div>
+    <div class="mut ag-tmeta" style="font-size:10.5px;margin-top:4px"></div></div>`:'';
   return `<div style="align-self:flex-start;max-width:88%;padding:12px 16px;border-radius:14px 14px 14px 4px;font-size:13px;line-height:1.7;overflow-wrap:break-word">${html}${trace}${qs}${spec}${plan}${runLink}${task}${ctx}</div>`}).join('');
  th.scrollTop=th.scrollHeight}
 function agPreset(msg){const inp=$('ag-input');if(inp)inp.value=msg;agSend()}
@@ -2348,8 +2415,19 @@ function agPollTasks(){
    const st=t.stats||{};const pct=st.total?Math.round((st.done+st.skipped+st.failed)/st.total*100):0;
    const okc=st.failed?'var(--bad)':(t.status==='done'?'var(--ok)':'var(--accent)');
    const bar=c.querySelector('.ag-tbar > div');if(bar){bar.style.width=pct+'%';bar.style.background=okc}
-   const lab=c.querySelector('.ag-tst');if(lab){lab.textContent=`${t.status} · ${st.done||0}/${st.total||0}${st.failed?' · 失败'+st.failed:''}${t.dry_run?' · dry-run':''}`;}
+   const lab=c.querySelector('.ag-tst');if(lab){lab.textContent=`${t.status} · ${st.done||0}/${st.total||0}${st.failed?' · 失败'+st.failed:''}${t.dry_run?' · dry-run':''}${t.tokens?' · '+t.tokens.toLocaleString()+' tok':''}`;}
+   const meta=c.querySelector('.ag-tmeta');
+   if(meta){
+    const start=Number(c.dataset.start||0)||Date.now();
+    const el=Math.round((Date.now()-start)/1000);
+    const doneN=(st.done||0)+(st.skipped||0);
+    const rate=doneN/Math.max(1,el);
+    const remain=Math.max(0,(st.total||0)-doneN);
+    const eta=(t.status==='running'&&rate>0&&remain>0)?Math.round(remain/rate):null;
+    meta.textContent=`已用 ${el}s`+(eta!=null?` · 剩余约 ${eta}s`:'')+(st.failed?` · ⚠ ${st.failed} 项失败`:'')+(t.retries?` · ${t.retries} 次重试`:'');
+   }
    const sm=t.summary;if(sm&&sm.line&&t.status==='done'){c.querySelector('.ag-tst').textContent=sm.line}
+   if(!c.dataset.start)c.dataset.start=String(Date.now());
    if(t.status==='done'||t.status==='failed'||t.status==='cancelled'){c.dataset.polldone='1'}
   }).catch(()=>{});
  });
@@ -2385,7 +2463,22 @@ function runDetail(id){RUN_ID=id;api('api/run/detail?id='+encodeURIComponent(id)
  const _st={running:'运行中',done:'完成',warn:'完成（有告警）',failed:'失败',cancelled:'已取消'}[r.status]||r.status;
  $('run-badge').innerHTML=`<span class="badge" style="background:${_bg}">${_st}</span> <span class="mut" style="font-size:11px">${ov.done||0}/${ov.total||0} 步 · ${ov.pct||0}%</span>`;
  const steps=r.steps||[];
- $('run-canvas').innerHTML=`<div class="run-pbar"><div style="width:${ov.pct||0}%"></div></div>`+
+ const m=r.metrics||{};const rk=r.risk||{};
+ const fmt=(n)=>n>=60?Math.floor(n/60)+'m'+String(n%60).padStart(2,'0')+'s':(n||0)+'s';
+ const riskColor=rk.level==='high'?'var(--bad)':rk.level==='medium'?'var(--warn)':rk.level==='low'?'var(--accent)':'var(--muted)';
+ const riskBanner=(rk.items&&rk.items.length)?`<div style="margin:6px 0 10px;padding:8px 10px;border-radius:8px;background:var(--surface);border-left:3px solid ${riskColor}">
+   <b style="font-size:12px;color:${riskColor}">风险 ${({high:'高',medium:'中',low:'低',none:'无'}[rk.level]||rk.level)}</b>
+   <div class="mut" style="font-size:11.5px;margin-top:3px">${rk.items.map(x=>'· '+esc(x.text)).join('<br>')}</div></div>`:'';
+ const metricsRow=`<div style="display:flex;gap:16px;flex-wrap:wrap;font-size:12px;margin:2px 0 10px">
+   <span class="mut">进度 <b style="color:var(--fg)">${ov.done||0}/${ov.total||0} 步</b></span>
+   <span class="mut">条目 <b style="color:var(--fg)">${m.items_done||0}/${m.items_total||0}</b></span>
+   <span class="mut">token <b style="color:var(--fg)">${(m.tokens||0).toLocaleString()}</b></span>
+   <span class="mut">已用 <b style="color:var(--fg)">${fmt(m.elapsed_sec)}</b></span>
+   <span class="mut">剩余 <b style="color:var(--fg)">${r.status==='running'?(m.eta_sec!=null?('约 '+fmt(m.eta_sec)):'计算中'):'—'}</b></span>
+   ${m.retries?`<span class="mut">重试 <b style="color:var(--warn)">${m.retries}</b></span>`:''}
+   ${m.rate_per_min?`<span class="mut">速率 <b style="color:var(--fg)">${m.rate_per_min}/分</b></span>`:''}
+  </div>`;
+ $('run-canvas').innerHTML=`<div class="run-pbar"><div style="width:${ov.pct||0}%"></div></div>`+metricsRow+riskBanner+
   steps.map((st,i)=>{
    const dot={done:'✓',failed:'✕',warn:'!',running:'●',replanned:'↻',blocked:'—',pending:i+1}[st.status]||i+1;
    const prog=(st.type==='batch'&&st.progress!=null)?`<div class="run-step-progress"><div style="width:${st.progress}%"></div></div>`:'';
