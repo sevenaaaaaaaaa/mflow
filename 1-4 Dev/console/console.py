@@ -6537,13 +6537,13 @@ class Handler(BaseHTTPRequestHandler):
             return self._send(200, {"username": self._me(), "role": self._role()})
         if self.path == "/api/account/list":
             if self._role() != "admin":
-                return self._send(403, {"error": "需要 admin"})
+                return self._send(403, {"error": "需要 admin 权限（当前角色：%s）——请联系管理员开通" % self._role()})
             return self._send(200, [{"username": x["username"], "role": x.get("role", ""),
                                      "name": x.get("name", ""), "email": x.get("email", ""),
                                      "projects": x.get("projects", [])} for x in read_json(AUTH_FILE, [])])
         if self.path == "/api/account/set-projects":
             if self._role() != "admin":
-                return self._send(403, {"error": "需要 admin"})
+                return self._send(403, {"error": "需要 admin 权限（当前角色：%s）——请联系管理员开通" % self._role()})
             users = read_json(AUTH_FILE, [])
             for u in users:
                 if u["username"] == body.get("username"):
@@ -6557,7 +6557,7 @@ class Handler(BaseHTTPRequestHandler):
         # P3.1 角色分级：viewer 只读；admin-only 操作白名单
         role = self._role()
         if role == "viewer":
-            return self._send(403, {"error": "viewer 角色只读，无写操作权限"})
+            return self._send(403, {"error": "viewer 角色只读，无写权限——需要操作请联系管理员提升为 operator"})
         ADMIN_ONLY = {"/api/setup/seed-demo", "/api/llm/save", "/api/llm/test",
                       "/api/account/list", "/api/account/reset", "/api/dispatch/approve",
                       "/api/trident/run", "/api/daily/run", "/api/tasks/del",
@@ -6581,7 +6581,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/styles/import", "/api/styles/delete",
                       "/api/mode/switch"}
         if self.path in ADMIN_ONLY and role != "admin":
-            return self._send(403, {"error": f"需要 admin 角色（当前 {role}）"})
+            return self._send(403, {"error": f"需要 admin 权限（当前 {role}）——请联系管理员开通"})
         body = self._body()
         try:
             if self.path == "/api/logout":
@@ -7395,7 +7395,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, {"ok": True, "current": pid})
             if self.path == "/api/projects/delete":
                 if self._role() != "admin":
-                    return self._send(403, {"error": "需要 admin"})
+                    return self._send(403, {"error": "需要 admin 权限（当前角色：%s）——请联系管理员开通" % self._role()})
                 pid = str(body.get("id", ""))
                 if pid == DEFAULT_PROJECT:
                     return self._send(400, {"error": "默认项目不可删除"})
