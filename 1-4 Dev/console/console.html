@@ -835,7 +835,7 @@ button.clicked{animation:clickpulse .45s ease}
     <div id="mkt-list"></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>插件市场 <span class="mut" id="plg-n"></span></h3>
       <button class="btn ghost" onclick="$('plg-box').style.display=$('plg-box').style.display==='none'?'block':'none'">⇪ 安装插件</button></div>
-      <div class="mut" style="font-size:12px">三类插件：数据源（collect）/ 发布渠道（publish）/ 模板包（走上方模板导入）。安装前自动过 plugin_check 六项校验。</div>
+      <div class="mut" style="font-size:12px">六类插件：数据源(source·collect) / 发布渠道(publisher·publish) / 质检门禁(gate·check) / 变换(transform·transform) / 分析(analyzer·analyze) / 模板包(走上方模板导入)。安装前自动过 plugin_check 六项校验。可一键安装并可随时停用。</div>
       <div id="plg-list" style="margin-top:10px"></div>
       <div class="card" id="plg-box" style="display:none;margin-top:10px;background:var(--surface)">
         <div class="card-head"><h3>安装插件包</h3><span class="mut">manifest JSON + entry 代码</span></div>
@@ -846,6 +846,11 @@ button.clicked{animation:clickpulse .45s ease}
       </div>
       <div id="plg-avail" style="margin-top:10px"></div>
     </div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>Skills 目录 <span class="mut" id="skill-n"></span></h3>
+      <input id="skill-q" placeholder="搜 skill…" style="width:200px" onkeydown="if(event.key==='Enter')loadSkills()">
+      <button class="mini" onclick="loadSkills()">刷新</button></div>
+      <div class="mut" style="font-size:12px">Skills 是生成/质检/发布的方法论，生成内容时按意图自动检索并注入。</div>
+      <div id="skill-list" style="margin-top:10px"></div></div>
   </section>
 
   <!-- ============ 创作中心 ============ -->
@@ -2303,7 +2308,7 @@ function loadUsage(){api('api/usage').then(u=>{
   u.recent.map(r=>`<tr><td class="mut">${esc(r.ts)}</td><td>${esc(r.profile)}</td><td class="mut">${esc(r.model)}</td><td class="tnum">${r.prompt_tokens}</td><td class="tnum">${r.completion_tokens}</td><td class="tnum">${r.total_tokens}</td><td class="tnum">${r.latency_s}s</td></tr>`).join('')||'<tr><td colspan="7" class="mut">还没有调用——配好 LLM 后在创作中心发起一次即可</td></tr>'})}
 
 /* ---- 模板市场 ---- */
-function loadMkt(){api('api/templates').then(ts=>{ $('nav-mkt').textContent=ts.length;
+function loadMkt(){loadPlugins();loadSkills();api('api/templates').then(ts=>{ $('nav-mkt').textContent=ts.length;
  $('mkt-list').innerHTML=ts.map(x=>`<div class="card" style="margin-bottom:12px">
   <div class="card-head"><h3 style="font-size:15px">${esc(x.name)} <span class="mut">v${esc(x.version)} · ${esc(x.author||'')}</span></h3>
    <div class="row">
@@ -2329,11 +2334,29 @@ function loadPlugins(){api('api/plugins').then(r=>{
   <span class="tt" style="flex:1"><b style="font-weight:600">${esc(x.name)}</b>
    <span class="badge ${x.type==='source'?'pipe':'dist'}">${esc(x.type)}</span>
    <div class="mut" style="font-size:11px">v${esc(x.version)} · ${esc(x.author||'')} · plugins/${esc(x.dir)} ${x.pass?'· 校验 PASS':'· '+esc((x.checks||[])[0]||'校验失败')}</div></span>
+  <span class="badge" style="background:${x.enabled?'var(--ok)':'var(--muted)'}">${x.enabled?'启用':'停用'}</span>
+  <button class="mini" onclick="plgToggle('${esc(x.dir||x.id)}',${x.enabled?'false':'true'})">${x.enabled?'停用':'启用'}</button>
   <button class="mini" style="color:var(--danger)" onclick="plgUninstall('${esc(x.id)}')">卸载</button></div>`).join('')||'<span class="mut">尚未安装任何插件</span>';
  $('plg-avail').innerHTML=av.length?`<b style="font-size:13px">可安装</b>`+av.map(x=>`<div class="task" style="align-items:center;margin-top:6px">
   <span class="tt" style="flex:1"><b style="font-weight:600">${esc(x.name)}</b> <span class="badge ${x.type==='source'?'pipe':'dist'}">${esc(x.type)}</span>
    <div class="mut" style="font-size:11.5px">${esc(x.desc||'')} · v${esc(x.version||'')} · ${esc(x.author||'')}</div></span>
-  <button class="mini" onclick="plgFill('${esc(x.id)}')">填入安装框 →</button></div>`).join(''):''})}
+  <button class="mini" style="background:var(--accent);color:#fff" onclick="plgInstallNow('${esc(x.id)}',event)">一键安装</button>
+  <button class="mini" onclick="plgFill('${esc(x.id)}')">查看/改代码</button></div>`).join(''):''})}
+function plgInstallNow(id,ev){return withBtn(ev, async()=>{
+ const r=await api('api/plugins/market/install',{id});
+ if(r.error)throw new Error(r.error);toast('已安装并通过校验：'+r.id,'ok');loadPlugins();return r;
+},{busyText:'安装中…',okText:'已安装'});}
+function plgToggle(id,en){api('api/plugins/toggle',{id,enabled:en}).then(r=>{if(r.error)return toast(r.error,'bad');toast((en?'已启用 ':'已停用 ')+id,'ok');loadPlugins()})}
+/* ---- Skills 浏览 ---- */
+function loadSkills(){api('api/skills?q='+encodeURIComponent(($('skill-q')||{}).value||'')).then(d=>{
+ const el=$('skill-list');if(!el)return;
+ $('skill-n').textContent=`（共 ${d.total||0} 个）`;
+ const gs=d.groups||{};
+ el.innerHTML=Object.entries(gs).map(([g,arr])=>`<div style="margin-bottom:10px"><b style="font-size:12.5px">${esc(g)} <span class="mut">${arr.length}</span></b>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:8px;margin-top:6px">
+  ${arr.map(x=>`<div class="card" style="padding:9px 11px"><b style="font-size:12px">${esc(x.name)}</b>
+   <div class="mut" style="font-size:11px;margin-top:2px">${esc(x.desc)}</div></div>`).join('')}</div></div>`).join('')||'<span class="mut">无</span>';
+}).catch(()=>{})}
 function plgFill(id){api('api/plugins').then(r=>{const x=(r.available||[]).find(y=>y.id===id);if(!x)return;
  $('plg-mf').value=JSON.stringify(x.manifest,null,1);$('plg-code').value=x.entry_code||'';
  $('plg-box').style.display='block';$('plg-hint').textContent='已填入 '+id+'，点「校验并安装」'})}

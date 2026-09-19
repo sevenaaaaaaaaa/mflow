@@ -3007,6 +3007,19 @@ def schedule_report(visible):
     return {"rows": rows, "date": today}
 
 
+def skills_inventory(q=""):
+    """列出 Skills（按分组），供市场页浏览/检索。"""
+    out = []
+    for sk in _skills_index():
+        if q and q.lower() not in (sk["name"] + " " + sk.get("desc", "") + " " + sk.get("group", "")).lower():
+            continue
+        out.append({"name": sk["name"], "group": sk.get("group", ""), "desc": (sk.get("desc") or "")[:180]})
+    groups = {}
+    for x in out:
+        groups.setdefault(x["group"] or "未分组", []).append(x)
+    return {"total": len(out), "groups": groups}
+
+
 def plugins_inventory():
     """P5 插件市场：已安装扫描 + marketplace 清单（plugins/marketplace.json）。"""
     installed = []
@@ -3027,6 +3040,7 @@ def plugins_inventory():
             installed.append({"id": mf.get("id", d.name), "type": mf.get("type", "?"),
                               "name": mf.get("name", d.name), "version": mf.get("version", ""),
                               "author": mf.get("author", ""), "dir": d.name,
+                              "enabled": plugin_enabled(d.name),
                               "pass": not errs, "checks": errs + oks[:4]})
     available = read_json(pdir / "marketplace.json", [])
     return {"installed": installed, "available": available}
@@ -3042,8 +3056,8 @@ def plugin_install(manifest, entry_code):
     pid = str(manifest.get("id", "")).strip()
     if not _ID_RE.fullmatch(pid):
         return {"error": "id 不合法（小写字母数字连字符）"}
-    if manifest.get("type") not in ("source", "publisher"):
-        return {"error": "仅 source/publisher 类插件经此安装；模板包走模板市场导入"}
+    if manifest.get("type") not in ("source", "publisher", "gate", "transform", "analyzer"):
+        return {"error": "type 需为 source/publisher/gate/transform/analyzer（模板包走模板市场导入）"}
     if not str(manifest.get("entry", "")).strip() or ".." in str(manifest.get("entry", "")):
         return {"error": "entry 字段不合法"}
     d = PROJECT / "plugins" / pid
@@ -3060,6 +3074,30 @@ def plugin_install(manifest, entry_code):
         d.rename(target)
         return {"error": "校验未通过（已移入 _trash）：" + "; ".join(errs[:4])}
     return {"ok": True, "id": pid}
+
+
+def plugin_market_install(mid):
+    """从 marketplace.json 一键安装（无需粘贴代码）。"""
+    av = read_json(PROJECT / "plugins" / "marketplace.json", []) or []
+    x = next((y for y in av if y.get("id") == mid), None)
+    if not x:
+        return {"error": "市场中无此插件"}
+    return plugin_install(x.get("manifest") or {}, x.get("entry_code", ""))
+
+
+def plugin_enabled(pid):
+    st = read_json(PROJECT / "plugins" / pid / "state.json", {})
+    return bool(st.get("enabled", True))
+
+
+def plugin_set_enabled(pid, enabled):
+    if not _ID_RE.fullmatch(str(pid)):
+        return {"error": "id 不合法"}
+    d = PROJECT / "plugins" / pid
+    if not d.exists():
+        return {"error": "插件不存在"}
+    (d / "state.json").write_text(json.dumps({"enabled": bool(enabled)}, ensure_ascii=False))
+    return {"ok": True, "id": pid, "enabled": bool(enabled)}
 
 
 def plugin_uninstall(pid):
@@ -6672,6 +6710,8 @@ class Handler(BaseHTTPRequestHandler):
                 cfg = notify_cfg()
                 return self._send(200, {"enabled": cfg.get("enabled"), "feishu_webhook": cfg.get("feishu_webhook", ""),
                                         "email": {k: v for k, v in email_cfg().items() if k != "pass"}})
+            if parsed.path == "/api/skills":
+                return self._send(200, skills_inventory(qs.get("q", [""])[0]))
             if parsed.path == "/api/plugins":
                 return self._send(200, plugins_inventory())
             if parsed.path == "/api/geo/citations":
@@ -7055,7 +7095,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/account/list", "/api/account/reset", "/api/dispatch/approve",
                       "/api/trident/run", "/api/daily/run", "/api/tasks/del",
                       "/api/notify/save", "/api/notify/test", "/api/email/save", "/api/email/test", "/api/user/email",
-                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall",
+                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install",
+                      "/api/plugins/toggle", "/api/plugins/state",
                       "/api/geo/probe",
                       "/api/pay/product/save", "/api/pay/product/delete", "/api/pay/cards/import",
                       "/api/pay/cards/clear", "/api/pay/link/create", "/api/pay/order/confirm",
@@ -7209,6 +7250,12 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(404, {"error": "用户不存在"})
                 AUTH_FILE.write_text(json.dumps(recs, ensure_ascii=False, indent=1))
                 return self._send(200, {"ok": True, "username": un, "email": em})
+            if self.path == "/api/plugins/market/install":
+                r = plugin_market_install(str(body.get("id", "")))
+                return self._send(200 if r.get("ok") else 400, r)
+            if self.path == "/api/plugins/toggle":
+                r = plugin_set_enabled(str(body.get("id", "")), bool(body.get("enabled", True)))
+                return self._send(200 if r.get("ok") else 400, r)
             if self.path == "/api/plugins/install":
                 return self._send(200, plugin_install(body.get("manifest") or {}, body.get("entry_code", "")))
             if self.path == "/api/plugins/uninstall":
