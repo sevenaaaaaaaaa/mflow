@@ -360,6 +360,44 @@ button.clicked{animation:clickpulse .45s ease}
 .pal-item .pt{font-size:10px;border-radius:99px;padding:1px 7px;background:var(--hover);color:var(--muted);min-width:38px;text-align:center}
 .pal-foot{display:flex;justify-content:space-between;padding:8px 14px;border-top:1px solid var(--border);font-size:11px}
 
+.empty{padding:16px;text-align:center;color:var(--muted);font-size:12.5px}
+.empty .eic{font-size:22px;display:block;margin-bottom:6px;opacity:.8}
+
+
+/* ── 窄屏 / 移动端 ── */
+#sb-mask{position:fixed;inset:0;background:oklch(20% .02 70 / .4);z-index:49;display:none}
+body.sb-open #sb-mask{display:block}
+@media(max-width:900px){
+  :root{--chrome-h:52px}
+  #sidebar{width:min(80vw,300px);top:calc(var(--chrome-h) + 8px);left:8px;bottom:8px;transform:translateX(calc(-1 * (min(80vw,300px) + 20px)))}
+  body.sb-open #sidebar{transform:none}
+  body.sb-collapsed #sidebar{transform:translateX(calc(-1 * (min(80vw,300px) + 20px)))}
+  main{margin:calc(var(--chrome-h) + 14px) 10px 20px 10px!important}
+  #topnav{display:none}
+  #me-name{display:none}
+  .pg-head h1{font-size:20px}
+  .head-actions{width:100%;flex-wrap:wrap;gap:6px}
+  .head-actions input,.head-actions select{width:100%!important}
+  .cols{grid-template-columns:1fr!important}
+  .ov-grid,.ov-grid2,.tgrid,.pgrid,.metrics{grid-template-columns:1fr!important}
+  .drawer{width:100vw}
+  .pal-box{margin-top:6vh}
+  table{font-size:11.5px}
+  td,th{padding:6px 6px}
+  .metrics .metric{margin:0}
+  .flist{max-height:none}
+  #mascot{right:12px;bottom:12px}
+  #mascot-btn{width:50px;height:50px}
+}
+@media(max-width:620px){
+  .metrics{grid-template-columns:1fr 1fr!important}
+  #topnav{display:none}
+  .sb-quick{grid-template-columns:1fr 1fr 1fr}
+  .pal-box{width:96vw}
+  h1{font-size:19px}
+  .card{padding:12px}
+}
+
 /* z-index 层级系统 */
 :root{--z-base:0;--z-panel:50;--z-chrome:60;--z-reader:80;--z-toast:99}
 
@@ -368,9 +406,10 @@ button.clicked{animation:clickpulse .45s ease}
 <body>
 <div class="ambient"><div class="blob blob-a"></div><div class="blob blob-b"></div><div class="blob blob-c"></div></div>
 
+<div id="sb-mask" onclick="document.body.classList.remove('sb-open')"></div>
 <div id="chrome"><div class="bar">
   <div class="lights"><span class="light light-r"></span><span class="light light-y"></span><span class="light light-g"></span></div>
-  <button class="sb-toggle" onclick="document.body.classList.toggle('sb-collapsed')" title="折叠侧栏"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+  <button class="sb-toggle" onclick="sbToggle()" title="菜单"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
   <span class="ws"><span class="ws-ic">M</span>MFlow</span>
   <nav id="topnav"></nav>
   <span id="me-name" style="color:var(--muted);font-size:12px"></span>
@@ -1247,7 +1286,7 @@ function brkReset(ev){return withBtn(ev, async()=>{
 },{busyText:'解除中…',okText:'已解除',msg:'已解除熔断'});}
 
 function hkLoad(){api('api/housekeeping').then(d=>{
- $('hk-hist').textContent=(d.history||[]).join('\n')||'（暂无清理记录）'})}
+ $('hk-hist').innerHTML=(d.history||[]).join('\n')||emptyBox('🧹','暂无清理记录','立即运行维护',"hkRun(true)")})}
 
 function hkRun(dry){api('api/housekeeping/run',{dry_run:dry}).then(r=>{
  if(r.error)return alert(r.error);
@@ -1255,7 +1294,7 @@ function hkRun(dry){api('api/housekeeping/run',{dry_run:dry}).then(r=>{
 
 let PRESETS=[],PRESET_SEL='';
 function loadPresets(){api('api/presets').then(ps=>{PRESETS=ps||[];
- $('bt-presets').innerHTML=PRESETS.map(p=>`<span class="chip ${p.id===PRESET_SEL?'on':''}" onclick="presetPick('${esc(p.id)}')" title="${esc(p.desc)}">${esc(p.icon||'')} ${esc(p.name)}</span>`).join('')||'<span class="mut">无预设</span>'})}
+ $('bt-presets').innerHTML=PRESETS.map(p=>`<span class="chip ${p.id===PRESET_SEL?'on':''}" onclick="presetPick('${esc(p.id)}')" title="${esc(p.desc)}">${esc(p.icon||'')} ${esc(p.name)}</span>`).join('')||emptyBox('🧩','无预设可用','去模板市场',"setTab('mkt')")})}
 
 function modeLoad(){api('api/mode').then(m=>{
  const s=$('mode-select');if(s)s.value=m.current_mode;
@@ -1332,7 +1371,7 @@ function styleLoad(){api('api/styles').then(ss=>{
   ss.map(x=>`<tr><td><b>${esc(x.name)}</b><div class="mut" style="font-size:10.5px">${esc(x.id)} · ${esc(x.desc||'')}</div></td>
    <td class="tnum">${x.sections}</td><td class="tnum">${x.storylines||0}</td><td class="mut" style="font-size:11px">${esc(x.created||'')}</td>
    <td><button class="mini" style="color:var(--danger)" onclick="styleDel('${esc(x.id)}')">删除</button></td></tr>`).join('')+'</table>'
-  :'<span class="mut">暂无自定义样式</span>'})}
+  :emptyBox('🎨','尚无自定义样式','导入样式',"$('style-json')&&$('style-json').focus()")})}
 
 /* ==================== 交互反馈层 ==================== */
 const _FB_SEL='button,.chip,.btn,.mini';
@@ -1505,6 +1544,8 @@ function mlFill(sec,lang,base,ev){return withBtn(ev, async()=>{
 },{busyText:'创建中…',okText:'已创建'});}
 function inboxMini(){api('api/inbox').then(d=>{const nb=$('nav-inbox');if(!nb)return;
  const n=(d&&d.items||[]).length;nb.style.display=n?'inline-block':'none';nb.textContent=n}).catch(()=>{})}
+function emptyBox(icon,text,label,action){
+ return `<div class="empty"><span class="eic">${icon||'🗂'}</span>${esc(text)}${label?`<div style="margin-top:8px"><button class="mini" onclick="${action}">${esc(label)}</button></div>`:''}</div>`}
 /* ---- 收件箱 ---- */
 function inboxLoad(){api('api/inbox').then(d=>{
  const el=$('inbox-body');if(!el)return;const its=(d&&d.items)||[];
@@ -1877,6 +1918,8 @@ const NAV_GROUPS=[
  {id:'reports',label:'报告与迭代',items:[['reports','报告中心'],['rdash','报告仪表'],['iter','自我迭代'],['wfmap','工作流地图']]},
  {id:'system',label:'系统',items:[['audit','变更审计'],['mem','记忆审阅'],['flow','节点流水线'],['loops','Loop 模式'],['eng','路由·门禁'],['pay','支付·发卡'],['sys','调度与日志'],['set','设置'],['usage','用量与成本'],['setup','首次引导']]}
 ];
+function sbToggle(){if(window.matchMedia('(max-width:900px)').matches){document.body.classList.toggle('sb-open')}else{document.body.classList.toggle('sb-collapsed')}}
+document.addEventListener('click',e=>{if(window.matchMedia('(max-width:900px)').matches){if(e.target.closest('#sidebar .s-item')||e.target.closest('.sb-quick button')){document.body.classList.remove('sb-open')}}});
 function topnavBuild(){
  const el=$('topnav');if(!el)return;
  el.innerHTML=NAV_GROUPS.map(g=>
@@ -1952,7 +1995,7 @@ function loadHome(){modeLoad();loadSelfcheck();loadStart();loadNextActions();inb
  $('nav-tasks').textContent=o.open_tasks;$('nav-dist').textContent=o.dist_open;$('nav-pipe').textContent=o.pipeline_inflight;
  const lines=(o.daily.tail||'').split('\n').filter(l=>/OK|FAIL|SKIP|✅|❌/.test(l)).slice(-4);
  $('home-acts').innerHTML=(lines.length?lines.map(l=>{const ok=/OK|✅/.test(l);
-  return `<div class="act-item"><span class="act-ic ${ok?'ok':'wn'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><div class="act-tx"><div class="act-t">${esc(l.replace(/^(OK|FAIL|SKIP):?\s*/,''))}</div><div class="act-m">每日管线</div></div></div>`}).join(''):'<span class="mut">暂无活动</span>')+
+  return `<div class="act-item"><span class="act-ic ${ok?'ok':'wn'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><div class="act-tx"><div class="act-t">${esc(l.replace(/^(OK|FAIL|SKIP):?\s*/,''))}</div><div class="act-m">每日管线</div></div></div>`}).join(''):emptyBox('🌙','暂无活动','看调度与日志',"setTab('sys')"))+
   `<div class="act-item"><span class="act-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><div class="act-tx"><div class="act-t">下次调度：每天 08:00 管线 · 02:30 梦境 · 周一 07:00 周报</div><div class="act-m">Asia/Shanghai</div></div></div>`;
  try{api('api/digest').then(dg=>{
  if(!dg)return;$('home-timers').parentElement.insertAdjacentHTML('beforebegin',
@@ -2001,7 +2044,7 @@ function loadTasks(){if(DRAGGING)return;taskFilterRender();api('api/tasks').then
  col('todo','col-todo');col('doing','col-doing');col('done','col-done');
  refreshColCounts();
  $('autoq').innerHTML=(t.pipeline||[]).map(x=>`<div class="task" style="cursor:pointer" onclick="setTab('pipe')"><span class="tt">${esc(x.id)}</span><span class="badge pipe">管线·${esc(x.stage)}</span></div>`).join('')+
-  (t.distribution||[]).map(x=>`<div class="task" style="cursor:pointer" onclick="setTab('dist')"><span class="tt">${esc(x.id)} <span class="mut">${esc(x.platforms||'')}</span></span><span class="badge dist">分发·${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">分发队列空</span>';
+  (t.distribution||[]).map(x=>`<div class="task" style="cursor:pointer" onclick="setTab('dist')"><span class="tt">${esc(x.id)} <span class="mut">${esc(x.platforms||'')}</span></span><span class="badge dist">分发·${esc(x.status||'')}</span></div>`).join('')||emptyBox('🚚','分发队列为空','去分发队列',"setTab('dist')");
  loadTaskBatches();
  updateNavTasks();
  const head=$('pg-tasks').querySelector('.pg-head .pg-sub');
@@ -2050,7 +2093,7 @@ function renderReports(){const cats=Object.keys(REPORTS);
  if(!RCAT)pickCat(cats[0])}
 function pickCat(c){RCAT=c;renderReports();const files=REPORTS[c]||[];
  $('rlist-title').textContent=c+`（${files.length}）`;
- $('rlist').innerHTML=files.map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${f.date}</span>${esc(f.name)}</a>`).join('')||'<span class="mut">此分类暂无文件</span>'}
+ $('rlist').innerHTML=files.map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${f.date}</span>${esc(f.name)}</a>`).join('')||emptyBox('📄','此分类暂无文件','看知识中台',"setTab('kb')")}
 
 /* ---- 知识中台 ---- */
 function addKbExtra(){const label=$('kx-label').value.trim(),dir=$('kx-dir').value.trim();
@@ -2099,8 +2142,8 @@ function kbSemantic(q){
     <div class="mut" style="font-size:10.5px">相关度 ${r.score}</div></a>`}).join('')||'<span class="mut">无匹配（可能索引未构建——点上方「重建索引」）</span>'})}
 /* ---- 分发 ---- */
 function loadDist(){api('api/dist').then(d=>{
- $('dist-pending').innerHTML=(d.pending||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id||x.slug||'')}<div class="mut">${esc(x.platforms||'')} · score ${x.score??'-'}</div></span><span class="badge dist">${esc(x.status||'')}</span></div>`).join('')||'<span class="mut">空</span>';
- $('dist-published').innerHTML=(d.published||[]).map(x=>`<div class="task"><span class="tt">${esc(x.slug||'')}<div class="mut">${esc(x.platform||'')} · ${esc(x.date||'')}</div></span><span class="badge" style="background:var(--ok)">${esc(x.status||'published')}</span></div>`).join('')||'<span class="mut">空</span>';
+ $('dist-pending').innerHTML=(d.pending||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id||x.slug||'')}<div class="mut">${esc(x.platforms||'')} · score ${x.score??'-'}</div></span><span class="badge dist">${esc(x.status||'')}</span></div>`).join('')||emptyBox('🚚','暂无待发','去内容日历排期',"setTab('calt')");
+ $('dist-published').innerHTML=(d.published||[]).map(x=>`<div class="task"><span class="tt">${esc(x.slug||'')}<div class="mut">${esc(x.platform||'')} · ${esc(x.date||'')}</div></span><span class="badge" style="background:var(--ok)">${esc(x.status||'published')}</span></div>`).join('')||emptyBox('📤','暂无已发布','去分发队列',"setTab('dist')");
  $('dist-dispatch').innerHTML=(d.dispatches||[]).map(x=>`<div class="task"><span class="tt">${esc(x.id)}<div class="mut">cn ${x.cn} · global ${x.gl}${x.approved_by?' · 批准人 '+esc(x.approved_by):''}</div></span><span class="badge ${x.approved?'':'dist'}" style="${x.approved?'background:var(--ok)':''}">${x.approved?'已授权':'待授权'}</span>
    ${(!x.approved&&window.__ROLE==='admin')?`<button class="mini" onclick="approveDispatch('${esc(x.id)}')">批准发布（admin）</button>`:''}</div>`).join('')||'<span class="mut">无 dispatch 单</span>';
  loadImpact();loadPublish()})}
@@ -2140,7 +2183,7 @@ function loadPipe(){api('api/state').then(S=>{
   const tos=S.legal_transitions[i.stage]||[];
   return `<div class="pitem"><div class="id">${esc(i.id)}</div><div class="st">${esc(i.stage)}</div>
    <button class="more" onclick="readDraft('${esc(i.id)}','${esc(i.artifact_path||'')}')">读草稿</button>
-   ${tos.length?`<select onchange="advance('${esc(i.id)}',this.value)"><option value="">→ 推进…</option>${tos.map(t=>`<option>${t}</option>`).join('')}</select>`:''}</div>`}).join('')||'<div class="mut" style="margin-top:8px">空</div>'}</div>`).join('')})}
+   ${tos.length?`<select onchange="advance('${esc(i.id)}',this.value)"><option value="">→ 推进…</option>${tos.map(t=>`<option>${t}</option>`).join('')}</select>`:''}</div>`}).join('')||emptyBox('🧭','该阶段暂无条目','去内容管线',"setTab('pipe')")}</div>`).join('')})}
 function readDraft(id,artifact){const p=artifact||`run/projects/${window.__PROJ||'main'}/content/${id}.md`;
  api('api/read?path='+encodeURIComponent(p)).then(r=>{if(r.error||!r.html){if(confirm('按约定路径没找到草稿：\\n'+p+'\\n\\n去「Loop · Agent 模式」用日志核对实际路径。要在报告中心找找吗？'))setTab('reports');return}openReader(p)}).catch(()=>alert('读取失败：'+p))}
 function advance(id,to){if(!to)return;api('api/item/advance',{id,to,reason:'console'}).then(r=>{if(r.rc!==0)alert('状态机拒绝：\n'+r.out);loadPipe()})}
@@ -2246,7 +2289,7 @@ function loadSys(){loadEmail();api('api/overview').then(o=>{$('drun').innerHTML=
  loadSchedReport()}
 function loadSchedReport(){api('api/schedule/all').then(r=>{
  const rows=r.rows||[];$('sched-meta').textContent=`${r.date} · ${rows.filter(x=>x.enabled).length}/${rows.length} 项目开启自动排程`;
- if(!rows.length){$('sched-report').innerHTML='<span class="mut">暂无项目</span>';return}
+ if(!rows.length){$('sched-report').innerHTML=emptyBox('📁','暂无项目','新建项目',"newProject()");return}
  const bar=x=>{const pct=x.quota?Math.min(100,x.created_today/x.quota*100):0;
   return `<div style="display:flex;align-items:center;gap:8px"><div style="flex:1;height:8px;border-radius:99px;background:var(--hover);overflow:hidden"><div style="height:100%;width:${pct}%;background:${pct>=100?'var(--danger)':'var(--accent)'};border-radius:99px"></div></div><span class="tnum mut" style="font-size:11px;flex:0 0 auto">${x.created_today}/${x.quota||'∞'}</span></div>`};
  $('sched-report').innerHTML=`<div style="overflow:auto"><table style="width:100%;border-collapse:collapse;font-size:12.5px">
@@ -2376,7 +2419,7 @@ function loadLoops(){loadLoopGuides();api('api/loops').then(L=>{
   <span class="badge ${x.status==='running'?'pipe':x.status==='done'?'':'dist'}" style="${x.status==='done'?'background:var(--ok)':''}">${esc(x.status)}</span>
   <button class="more" onclick="loopLog('${x.id}')">日志</button>
   ${x.draft_path?`<button class="more" onclick="openReader('${esc(x.draft_path)}')">读草稿</button>`:''}
-  ${x.status==='running'||x.status==='queued'?`<button class="more" style="color:var(--danger)" onclick="loopStop('${x.id}')">停止</button>`:''}</div>`).join('')||'<span class="mut">还没有 Loop——去「创作中心」发起</span>'})}
+  ${x.status==='running'||x.status==='queued'?`<button class="more" style="color:var(--danger)" onclick="loopStop('${x.id}')">停止</button>`:''}</div>`).join('')||emptyBox('⚡','还没有 Loop','到创作中心发起',"setTab('create')")})}
 function loopLog(id){api('api/loop/detail?id='+id).then(x=>{$('loop-log-t').textContent='运行日志 · '+x.goal+' · '+x.status;
  $('loop-log').innerHTML=fmtHook((x.log||[]).join('\n'))||'（无日志）'})}
 function loopStop(id){api('api/loop/stop',{id}).then(()=>setTimeout(loadLoops,800))}
@@ -2513,7 +2556,7 @@ function loadWfmap(){api('api/workflows').then(ws=>{
 function loadTrident(){api('api/trident').then(t=>{
  $('tri-steps').innerHTML=t.steps.map(s=>`<div class="task"><span class="tt" style="flex:1"><b>${esc(s.name)}</b><div class="mut">${esc(s.desc)}</div></span>
   ${s.has_cmd?`<button class="btn ghost" onclick="triRun('${s.id}',this)">执行</button>`:'<span class="mut">内置 run_all</span>'}</div>`).join('');
- $('tri-health').innerHTML=(t.health||[]).map(h=>`<div class="task"><span class="tt" style="flex:1">${esc(h.name)}</span><span class="qd mut">${h.date}</span></div>`).join('')||'<span class="mut">暂无产出（先执行一次采集）</span>'})}
+ $('tri-health').innerHTML=(t.health||[]).map(h=>`<div class="task"><span class="tt" style="flex:1">${esc(h.name)}</span><span class="qd mut">${h.date}</span></div>`).join('')||emptyBox('🛰','暂无产出','执行一次采集',"tridentRun()")})}
 function triRun(id,btn){btn.disabled=true;btn.textContent='运行中…';
  api('api/trident/run',{step:id}).then(r=>{btn.disabled=false;btn.textContent='执行';
   alert(`exit=${r.rc}\n`+r.out.slice(-800));loadTrident()})}
@@ -2744,10 +2787,10 @@ function qaScope(){const v=$('qa-scope').value;
 function qaLoad(){api('api/qa/tasks').then(ts=>{
  $('qa-tasks').innerHTML=(ts||[]).map(t=>{const s=t.stats||{};
   return `<a onclick="qaPick('${esc(t.id)}')" style="cursor:pointer;padding:7px 10px;border:1px solid var(--border);border-radius:11px;${t.id===QA_SEL?'background:var(--accent-soft);color:var(--accent)':''}">
-   <b style="font-size:12.5px">${esc(t.title||t.id)}</b><div class="mut" style="font-size:10.5px">${esc(t.id)} · ${esc(t.status)} · ${s.done||0}/${s.total||0}${t.dry_run?' · dry-run':''}</div></a>`}).join('')||'<span class="mut">还没有 QA 任务</span>'});
+   <b style="font-size:12.5px">${esc(t.title||t.id)}</b><div class="mut" style="font-size:10.5px">${esc(t.id)} · ${esc(t.status)} · ${s.done||0}/${s.total||0}${t.dry_run?' · dry-run':''}</div></a>`}).join('')||emptyBox('🔍','还没有 QA 任务','创建一次扫描',"qaCreate(event)")});
  api('api/qa/cycles').then(cs=>{$('qa-cycles').innerHTML=(cs||[]).length?'<table><tr><th>QA 任务</th><th>修复任务</th><th>修复前</th><th>时间</th></tr>'+
   cs.map(c=>`<tr><td class="mut">${esc(c.qa_task)}</td><td>${esc(JSON.stringify(c.fix_tasks||{}))}</td>
-   <td class="tnum">${((c.before||{}).by_severity)?(JSON.stringify(c.before.by_severity)):''}</td><td class="mut">${esc(c.at)}</td></tr>`).join('')+'</table>':'<span class="mut">还没有闭环记录</span>'});qaScope()}
+   <td class="tnum">${((c.before||{}).by_severity)?(JSON.stringify(c.before.by_severity)):''}</td><td class="mut">${esc(c.at)}</td></tr>`).join('')+'</table>':emptyBox('🔁','还没有闭环记录','先做一次 QA 扫描',"setTab('qa')")});qaScope()}
 function qaPick(id){QA_SEL=id;qaLoad();api('api/qa/findings?task='+encodeURIComponent(id)).then(d=>{
  if(d.error)return $('qa-findings').innerHTML='<span class="mut">'+esc(d.error)+'</span>';
  $('qa-f-t').textContent='findings · '+id;$('qa-f-s').textContent=`共 ${d.total} · ${JSON.stringify(d.by_severity||{})} · 可自动修复 ${d.fixable}${d.fix_task_id?' · 修复任务 '+d.fix_task_id:''}${d.recheck_task_id?' · 复检 '+d.recheck_task_id:''}`;
@@ -3066,7 +3109,7 @@ function loadBatch(){loadPresets();brkLoad();api('api/batch/list').then(ts=>{
      ${t.status==='paused'?`<button class="mini" onclick="btAct('${esc(t.id)}','resume')">继续</button>`:''}
      ${(s.failed||t.status==='failed')?`<button class="mini" onclick="btAct('${esc(t.id)}','retry_failed')">重试失败</button>`:''}
      ${t.status==='running'||t.status==='paused'||t.status==='queued'?`<button class="mini" style="color:var(--danger)" onclick="btAct('${esc(t.id)}','cancel')">取消</button>`:''}</td></tr>`}).join('')+'</table>'
-  :'<span class="mut">还没有批量任务</span>'});
+  :emptyBox('📦','还没有批量任务','用预设一键开跑',"setTab('batch')")});
  if(TAB==='batch')setTimeout(()=>{if(TAB==='batch')loadBatch()},5000)}
 function btCreate(ev){let items=[];const raw=$('bt-items').value.trim();
  if(raw){try{items=JSON.parse(raw)}catch(e){return toast('items JSON 解析失败：'+e.message,'bad')}}
@@ -3176,7 +3219,7 @@ function loadIter(){Promise.all([api('api/selfreview'),api('api/qa/stats?days=14
   <div class="stat"><div class="n tnum">${sv.throughput.reduce((a,b)=>a+b.n,0)}</div><div class="t">30 日推进</div></div>
   <div class="stat"><div class="n tnum">${gs.score!=null?gs.score:'—'}</div><div class="t">GEO 综合分 /100</div></div>`;
  const mk=(el,arr,key,fmt)=>{const mx=Math.max(1,...arr.map(x=>x[key]||0));
-  $(el).innerHTML=arr.map(x=>`<div class="cb"><span class="vl tnum">${x[key]?fmt(x[key]):''}</span><div class="bar" style="height:${Math.max(3,(x[key]||0)/mx*100)}%"></div><span class="lb">${(x.date||'').slice(5)}</span></div>`).join('')||'<span class="mut">暂无数据</span>'};
+  $(el).innerHTML=arr.map(x=>`<div class="cb"><span class="vl tnum">${x[key]?fmt(x[key]):''}</span><div class="bar" style="height:${Math.max(3,(x[key]||0)/mx*100)}%"></div><span class="lb">${(x.date||'').slice(5)}</span></div>`).join('')||emptyBox('📊','暂无数据','看报告中心',"setTab('reports')")};
  mk('it-qa',qa.days,'block_rate',v=>v+'%');
  $('it-qa-meta').innerHTML=`整体 BLOCK 率 <b class="tnum">${qa.block_rate_all}%</b>`;
  mk('it-tok',us.by_day.slice(-14),'tokens',v=>v>999?(v/1000).toFixed(1)+'k':v);
