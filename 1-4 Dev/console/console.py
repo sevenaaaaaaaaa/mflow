@@ -1913,6 +1913,7 @@ def run_new(title, steps, proj=None, by="", kind="agent", session_id="", message
                              "task_id": st.get("task_id") or "",
                              "spec": st.get("spec"), "preset": st.get("preset"),
                              "opt": st.get("opt") or {}, "urls": st.get("urls") or [],
+                             "expr": st.get("expr", ""), "on_false": st.get("on_false", "stop"),
                              "started": st.get("started") or "", "ended": st.get("ended") or ""})
     # 第一个可执行步骤立即置为 running
     for st in run["steps"]:
@@ -2110,8 +2111,10 @@ def run_tick():
                     cur["status"] = "failed"; cur["detail"] = str(e)[:160]; changed = True
             # 全部结束 → 完成
             if all(st["status"] in ("done", "failed", "warn", "blocked", "replanned") for st in steps):
-                run["status"] = ("failed" if any(st["status"] == "failed" for st in steps)
-                                 else ("warn" if any(st["status"] == "warn" for st in steps) else "done"))
+                new_status = ("failed" if any(st["status"] == "failed" for st in steps)
+                              else ("warn" if any(st["status"] == "warn" for st in steps) else "done"))
+                if run.get("status") != new_status:
+                    run["status"] = new_status
                 changed = True
             if changed:
                 prev = read_json(f, {}).get("status")
