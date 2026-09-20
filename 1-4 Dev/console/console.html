@@ -406,6 +406,7 @@ body.sb-open #sb-mask{display:block}
 <body>
 <div class="ambient"><div class="blob blob-a"></div><div class="blob blob-b"></div><div class="blob blob-c"></div></div>
 
+<div id="helpbox" class="palette"></div>
 <div id="sb-mask" onclick="document.body.classList.remove('sb-open')"></div>
 <div id="chrome"><div class="bar">
   <div class="lights"><span class="light light-r"></span><span class="light light-y"></span><span class="light light-g"></span></div>
@@ -416,6 +417,7 @@ body.sb-open #sb-mask{display:block}
   <span id="worker-ind" class="mut" title="后台执行器状态" style="font-size:11px;display:flex;align-items:center;gap:5px;cursor:pointer" onclick="setTab('auto')">
     <span id="worker-dot" style="width:8px;height:8px;border-radius:50%;background:var(--faint);display:inline-block"></span><span id="worker-tx">执行器</span></span>
   <button class="cbtn" style="width:auto;padding:0 12px;font-size:12px;gap:6px" onclick="palOpen()" title="全局搜索 / 执行（⌘K）">🔍 搜索 <span class="mut" style="font-size:10px">⌘K</span></button>
+  <button class="cbtn" onclick="helpToggle()" title="快捷键（?）">?</button>
   <span class="sp" style="flex:1"></span>
   <div class="bbar">
     <button class="cbtn" onclick="setTheme()" title="明暗切换"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg></button>
@@ -1598,14 +1600,16 @@ function palKey(e){if(e.key==='ArrowDown'){e.preventDefault();PAL_IDX=Math.min(P
  if(e.key==='Enter'){e.preventDefault();palRun(PAL_ITEMS[PAL_IDX])}}
 function palSearch(){const q=($('pal-q').value||'').trim().toLowerCase();
  const cmds=PAL_CMDS.filter(([n])=>!q||n.toLowerCase().includes(q)).map(([n,t])=>({type:'页面',label:n,action:{tab:t},prio:0}));
- PAL_ITEMS=cmds;PAL_IDX=0;palRender();
+ const sec=palSections();
+ PAL_ITEMS=sec?sec.concat(cmds):cmds;PAL_IDX=0;palRender();if(sec)$('pal-hint').textContent='收藏 / 最近使用';
  clearTimeout(PAL_TIMER);PAL_TIMER=setTimeout(()=>{if(!q)return;
   api('api/palette?q='+encodeURIComponent(q)).then(d=>{PAL_ITEMS=cmds.concat((d&&d.results)||[]);PAL_IDX=0;palRender();$('pal-hint').textContent=(d&&d.results||[]).length+' 条结果'}).catch(()=>{})},180)}
 function palRender(){const el=$('pal-res');if(!el)return;
  el.innerHTML=PAL_ITEMS.map((x,i)=>`<div class="pal-item ${i===PAL_IDX?'on':''}" onclick="palRun(PAL_ITEMS[${i}])" onmouseenter="PAL_IDX=${i};palRender()">
-   <span class="pt">${esc(x.type||'')}</span><span style="flex:1">${esc(x.label||'')}</span><span class="mut" style="font-size:11px">${esc(x.sub||'')}</span></div>`).join('')||'<div class="mut" style="padding:14px">无匹配</div>';
+   <span class="pt">${esc(x.type||'')}</span><span style="flex:1">${esc(x.label||'')}</span><span class="mut" style="font-size:11px">${esc(x.sub||'')}</span>
+   <span onclick='palFavToggle(event,${JSON.stringify({type:x.type,label:x.label,sub:x.sub,action:x.action}).replace(/'/g,"&#39;")})' style="padding:0 6px;cursor:pointer;color:${palFavs().some(f=>f.label===x.label)?'var(--warn)':'var(--faint)'}" title="收藏">★</span></div>`).join('')||'<div class="mut" style="padding:14px">无匹配</div>';
  const on=el.querySelector('.pal-item.on');if(on)on.scrollIntoView({block:'nearest'})}
-function palRun(it){if(!it)return;const a=it.action||{};palClose();
+function palRun(it){if(!it)return;const a=it.action||{};palRemember(it);palClose();
  if(a.tab){setTab(a.tab);return}
  if(a.batch){setTab('batch');setTimeout(()=>btDetail(a.batch),600);return}
  if(a.run){setTab('run');setTimeout(()=>runDetail(a.run),600);return}
@@ -1636,6 +1640,41 @@ function auditRollback(id){if(!confirm('确认回滚该变更？（把字段恢�
  return withBtn(event,async()=>{const r=await api('api/audit/rollback',{id});
   if(r.error)throw new Error(r.error);toast('已回滚：'+id,'ok');auditLoad();return r;
  },{busyText:'回滚中…',okText:'已回滚'});}
+/* ---- 快捷键 + 帮助浮层 ---- */
+function palRecent(){try{return JSON.parse(localStorage.getItem('mflow-pal-recent')||'[]')}catch(e){return[]}}
+function palFavs(){try{return JSON.parse(localStorage.getItem('mflow-pal-favs')||'[]')}catch(e){return[]}}
+function palRemember(item){if(!item||!item.label)return;
+ const r=palRecent().filter((x)=>x.label!==item.label);r.unshift({type:item.type,label:item.label,sub:item.sub,action:item.action});
+ localStorage.setItem('mflow-pal-recent',JSON.stringify(r.slice(0,8)))}
+function palFavToggle(ev,item){ev.stopPropagation();
+ const f=palFavs();const has=f.some(x=>x.label===item.label);
+ const nf=has?f.filter(x=>x.label!==item.label):[{type:item.type,label:item.label,sub:item.sub,action:item.action},...f];
+ localStorage.setItem('mflow-pal-favs',JSON.stringify(nf.slice(0,12)));palSearch();}
+function palSections(){const q=($('pal-q').value||'').trim();
+ if(q)return null;
+ const favs=palFavs(),rec=palRecent();
+ return [...favs.map(x=>({...x,type:'★ '+x.type})),...rec.filter(r=>!favs.some(f=>f.label===r.label)).map(x=>({...x,type:'最近'}))]}
+
+/* ---- 帮助 ---- */
+const SHORTCUTS=[['⌘K / Ctrl+K','打开搜索与执行面板'],['/','聚焦搜索面板'],['g h','总览'],['g i','收件箱'],['g a','Agent 任务台'],
+ ['g r','执行画布'],['g b','批量任务'],['g t','任务看板'],['g m','记忆审阅'],['g s','设置'],['?','显示/隐藏本帮助'],['Esc','关闭浮层']];
+function helpToggle(){const el=$('helpbox');if(!el)return;
+ if(el.classList.contains('on')){el.classList.remove('on');return}
+ el.innerHTML=`<div class="pal-box"><div class="pal-input"><b style="flex:1">快捷键</b><button class="mini" onclick="helpToggle()">关闭</button></div>
+  <div style="padding:10px 14px">${SHORTCUTS.map(([k,d])=>`<div style="display:flex;gap:12px;padding:5px 0;font-size:12.5px"><code style="min-width:90px;background:var(--hover);border-radius:6px;padding:1px 6px">${esc(k)}</code><span class="mut">${esc(d)}</span></div>`).join('')}</div></div>`;
+ el.classList.add('on')}
+let _gPending=false;
+document.addEventListener('keydown',e=>{
+ const tag=(e.target.tagName||'').toLowerCase();
+ const typing=tag==='input'||tag==='textarea'||e.target.isContentEditable;
+ if(e.key==='?'&&!typing){e.preventDefault();helpToggle();return}
+ if(e.key==='/'&&!typing){e.preventDefault();palOpen();return}
+ if(e.key==='Escape'){const h=$('helpbox');if(h)h.classList.remove('on')}
+ if(typing)return;
+ if(e.key==='g'){_gPending=true;setTimeout(()=>{_gPending=false},900);return}
+ if(_gPending){const map={h:'home',i:'inbox',a:'agent',r:'run',b:'batch',t:'tasks',m:'mem',s:'set',c:'create',q:'qa',l:'lib',k:'kb',d:'dist'};
+  if(map[e.key]){e.preventDefault();setTab(map[e.key]);_gPending=false}}
+});
 /* ---- 记忆审阅 ---- */
 let MEM_DATA=null;
 function memLoad(){api('api/memory').then(d=>{
