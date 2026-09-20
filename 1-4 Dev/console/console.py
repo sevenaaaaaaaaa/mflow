@@ -7489,7 +7489,7 @@ def health_report(proj=None):
     level = "ok"
     if not llm_ok or not sanity.get("ok"):
         level = "bad"
-    elif noise["zombies"] > 3 or noise["items_terminal"] > 50 or batch_pending > 30 or noise["run_mb"] > 3000:
+    elif noise["zombies"] > 3 or noise["items_terminal"] > 200 or batch_pending > 800 or noise["run_mb"] > 5000:
         level = "warn"
     quota_alerts = []
     for un, months in (usage_users() or {}).items():
