@@ -2750,6 +2750,140 @@ def _entities_index():
 # ===================== 全局命令面板（⌘K）：一处搜/执行 =====================
 
 # ===================== 收件箱：需要我处理的，集中一屏 =====================
+
+# ===================== 自愈：自检可安全修复项自动处理 =====================
+def _selfcheck_apply_fix(fix):
+    """按 selfcheck 的 fix.action 执行安全修复。返回 (ok, msg)。"""
+    act = str((fix or {}).get("action", ""))
+    if not act.startswith("api:"):
+        return False, "需人工"
+    path = act.split(":", 1)[1]
+    try:
+        if path == "/api/breaker/reset":
+            breaker_reset("selfheal"); return True, "已解除熔断"
+        if path == "/api/batch/revive_stale":
+            r = batch_revive_stale(); return True, f"已恢复 {r.get('count',0)} 个卡住任务"
+        if path == "/api/housekeeping/run":
+            housekeeping(dry_run=False); return True, "已运行维护"
+        if path == "/api/rag/build":
+            r = rag_build(); return True, f"已重建索引（{r.get('count')} 块）"
+        if path == "/api/batch/retry_all":
+            r = batch_retry_all("all", "", DEFAULT_PROJECT); return True, f"已重试 {r.get('retried',0)} 项"
+    except Exception as e:
+        return False, str(e)[:120]
+    return False, "无可自动修复动作"
+
+
+def selfcheck_autofix(proj=None, only_safe=True):
+    """一键自愈：对自检中带安全修复动作的项自动执行。"""
+    sc = selfcheck(proj)
+    done, skipped = [], []
+    for c in (sc.get("checks") or []):
+        fx = c.get("fix") or {}
+        if not str(fx.get("action", "")).startswith("api:"):
+            skipped.append({"id": c["id"], "reason": "需人工处理"})
+            continue
+        ok, msg = _selfcheck_apply_fix(fx)
+        (done if ok else skipped).append({"id": c["id"], "title": c["title"], "result": msg})
+    if done:
+        try:
+            with open(RUN_DIR / "approvals.log", "a") as f:
+                f.write(f"{datetime.now().isoformat(timespec='seconds')} SELF-HEAL {[d['id'] for d in done]} by=selfcheck\n")
+        except Exception:
+            pass
+    return {"ok": True, "fixed": done, "skipped": skipped,
+            "level_after": selfcheck(proj).get("level")}
+
+
+def selfheal_tick():
+    """后台静默自愈（每 ~10 分钟一次，仅安全项）。"""
+    try:
+        sc = selfcheck(DEFAULT_PROJECT)
+        safe = [c for c in (sc.get("checks") or []) if str((c.get("fix") or {}).get("action", "")).startswith("api:")]
+        # 只自动处理"熔断/卡住/维护/索引"这类确定安全的
+        allow = {"/api/breaker/reset", "/api/batch/revive_stale", "/api/housekeeping/run", "/api/rag/build"}
+        for c in safe:
+            if (c.get("fix") or {}).get("action", "").split(":", 1)[1] in allow:
+                ok, msg = _selfcheck_apply_fix(c.get("fix"))
+                if ok:
+                    print(f"[selfheal] {c['id']} -> {msg}", file=sys.stderr)
+    except Exception as e:
+        print(f"[selfheal] {e}", file=sys.stderr)
+
+
+# ===================== 自我进化：从失败中学习 =====================
+LEARNINGS_FILE = RUN_DIR / "learnings.json"
+
+
+def _learnings():
+    return read_json(LEARNINGS_FILE, []) or []
+
+
+def _learning_save(rec):
+    arr = _learnings()
+    key = rec.get("key")
+    for i, x in enumerate(arr):
+        if x.get("key") == key:
+            arr[i] = {**x, **rec}
+            break
+    else:
+        arr.append(rec)
+    RUN_DIR.mkdir(parents=True, exist_ok=True)
+    LEARNINGS_FILE.write_text(json.dumps(arr, ensure_ascii=False, indent=1))
+    return rec
+
+
+def learn_from_failures(days=7, limit=120):
+    """扫描近期失败，按类别聚合 → 产出学习项（含可一键应用的建议）。"""
+    cutoff = time.time() - days * 86400
+    cats = {}
+    scanned = 0
+    for meta in batch_list():
+        try:
+            ts = datetime.strptime(meta.get("created", ""), "%Y-%m-%d %H:%M").timestamp()
+        except Exception:
+            ts = 0
+        if ts and ts < cutoff:
+            continue
+        t = batch_load(meta["id"])
+        if not t:
+            continue
+        d = failure_digest(t)
+        if not d.get("total"):
+            continue
+        scanned += 1
+        for c in d.get("categories") or []:
+            k = c["key"]
+            e = cats.setdefault(k, {"key": k, "label": c["label"], "count": 0, "samples": []})
+            e["count"] += c["count"]
+            for sm in (c.get("samples") or [])[:1]:
+                if len(e["samples"]) < 3:
+                    e["samples"].append(sm)
+    out = []
+    for k, e in sorted(cats.items(), key=lambda x: -x[1]["count"]):
+        if e["count"] < 2:
+            continue
+        action, hint = "review", "人工复核"
+        if k == "internal":
+            action, hint = "gen_prompt_hint", "把该错误模式记入提示词提示，便于后续规避并作为缺陷线索"
+        elif k == "structure":
+            action, hint = "gen_prompt_hint", "强化落地页结构规则（用 landing-refresh-publish）"
+        elif k == "timeout" or k == "rate":
+            action, hint = "review", "降低并发或缩小批量"
+        elif k == "no_data":
+            action, hint = "review", "调整预设默认范围"
+        rec = {"key": "fail:" + k, "kind": "failure", "label": e["label"], "count": e["count"],
+               "samples": e["samples"], "suggest_action": action, "suggest": hint,
+               "at": datetime.now().strftime("%Y-%m-%d %H:%M")}
+        _learning_save(rec)
+        out.append(rec)
+    return {"scanned_tasks": scanned, "learnings": out, "total": len(out)}
+
+
+def learnings_list():
+    return {"learnings": _learnings(), "failure_scan": learn_from_failures.__doc__ and None}
+
+
 def inbox(me="", proj=None):
     proj = proj or DEFAULT_PROJECT
     items = []
@@ -3486,6 +3620,13 @@ def batch_worker():
             playbook_tick()
         except Exception as _e:
             print(f"[console] playbook tick: {_e}", file=sys.stderr)
+        _SELFHEAL_N = globals().get("_SELFHEAL_N", 0) + 1
+        globals()["_SELFHEAL_N"] = _SELFHEAL_N
+        if _SELFHEAL_N % 120 == 0:
+            try:
+                selfheal_tick()
+            except Exception as _e:
+                print(f"[console] selfheal: {_e}", file=sys.stderr)
         try:
             BATCH_DIR.mkdir(parents=True, exist_ok=True)
             blocked, bst = breaker_check()
@@ -6522,6 +6663,15 @@ def selfcheck(proj=None):
     except Exception:
         pass
 
+    # 8.5) RAG 索引
+    try:
+        from pathlib import Path as _P
+        if not (RUN_DIR / "rag" / "index.json").exists():
+            add("rag", "warn", "知识检索索引未构建",
+                "语义检索/混合召回未启用（仍可用关键词）。", {"label": "重建索引", "action": "api:/api/rag/build"})
+    except Exception:
+        pass
+
     # 9) 维护/梦境
     try:
         if HOUSEKEEPING_LOG.exists():
@@ -8099,6 +8249,10 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, next_actions(self._proj()))
             if parsed.path == "/api/start":
                 return self._send(200, start_report(self._me(), self._proj()))
+            if parsed.path == "/api/selfcheck/autofix":
+                return self._send(200, selfcheck_autofix(self._proj()))
+            if parsed.path == "/api/learnings":
+                return self._send(200, {"learnings": _learnings()})
             if parsed.path == "/api/selfcheck":
                 return self._send(200, selfcheck(self._proj()))
             if parsed.path == "/api/onboard/plan":
@@ -8347,7 +8501,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/account/list", "/api/account/reset", "/api/dispatch/approve",
                       "/api/trident/run", "/api/daily/run", "/api/tasks/del",
                       "/api/notify/save", "/api/notify/test", "/api/email/save", "/api/email/test", "/api/user/email",
-                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install", "/api/memory/fact", "/api/memory/entity", "/api/rag/build", "/api/audit/rollback", "/api/webhooks/save", "/api/webhooks/delete", "/api/webhooks/test",
+                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install", "/api/memory/fact", "/api/memory/entity", "/api/rag/build", "/api/audit/rollback", "/api/selfcheck/autofix", "/api/learnings/scan", "/api/webhooks/save", "/api/webhooks/delete", "/api/webhooks/test",
                       "/api/plugins/toggle", "/api/plugins/state",
                       "/api/geo/probe",
                       "/api/pay/product/save", "/api/pay/product/delete", "/api/pay/cards/import",
@@ -8510,6 +8664,8 @@ class Handler(BaseHTTPRequestHandler):
             if self.path == "/api/webhooks/test":
                 r = webhook_test(str(body.get("id", "")))
                 return self._send(200 if r.get("ok") else 400, r)
+            if self.path == "/api/learnings/scan":
+                return self._send(200, learn_from_failures(int(body.get("days", 7) or 7)))
             if self.path == "/api/audit/rollback":
                 return self._send(200, audit_rollback(str(body.get("id", "")), self._me()))
             if self.path == "/api/rag/build":
