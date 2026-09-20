@@ -112,3 +112,18 @@
 - ✅ 知识中台可视化重构（左筛选 + 右宽结果 + 检索底座状态卡）。
 - ✅ RAG 底座：可插拔 embedding（配了用远程，未配用本地 TF-IDF）+ 混合检索（RRF）+ `semantic_search` 工具。
 - ⏳ 真实 embedding 待配置（见 `docs/rag-plan.md`，一步开启）。
+
+
+---
+
+## 自动化剧本 Playbook（2026-09-20）
+把"定时单步自动化"升级为**多步 + 条件 + 触发器**，执行走 Run 画布：
+- 存储 `run/playbooks.json`；模板 `templates/playbooks.json`（6 个）。
+- 步骤：preset / spec / guard（条件）/ verify；触发器：schedule / event / manual。
+- 端点 `/api/playbooks`、`save|delete|run|install`；UI 在「自动化」页。
+- 实测：每日 QA 闭环 → QA扫描 → findings>0 成立 → 字段修复 → 验证（100%）。
+
+### 后续（更智能/自进化）
+- 剧本分支（if/else）与步骤级重试/超时。
+- 失败与结果 → 自动提炼规则/禁用词；质量趋势 → 自动调参；自检 block 自动修复；记忆写回。
+- 子代理分工（planner→workers→reviewer）并发；RAG rerank；命令面板最近/收藏。
