@@ -151,3 +151,8 @@
 - **自进化闭环**：`POST /api/learnings/apply|ignore`；需人工复核的项拒绝自动应用（不盲自动化）。
 - **OPC**：`POST /api/playbooks/enable_recommended` 一键安装并启用推荐剧本（每日 QA / 每周衰减 / 每周 alt / 每周 GEO）。
 - **关键修复**：系统执行者（`schedule`/`automation`/`mcp`/`playbook`/`onboard`/`selfheal`）**不再计入用户配额**——此前被默认 500 条上限打满导致 health=bad 且自动化被自身配额卡死。
+
+
+### 事故与修复（2026-09-20）
+- **剧本重复触发**：`playbook_run` 用带校验的 `playbook_save` 写 `last_run` 被拒 → 每 5s 重复触发。修复：`playbook_patch` 局部更新 + `playbook_save` 兼容 merge + tick 最小间隔 10 分钟；清理 11 个重复任务。
+- **系统配额自锁**：系统执行者（schedule/automation/mcp/playbook）计入用户配额被打满 → health=bad 且自动化被拒。修复：`SYSTEM_ACTORS` 豁免。
