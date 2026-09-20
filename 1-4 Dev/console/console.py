@@ -7190,6 +7190,15 @@ def playbook_save(pb):
     pb = dict(pb)
     if not pb.get("id"):
         pb["id"] = "pb-" + secrets.token_hex(3)
+    if not pb.get("name") and pb.get("id"):
+        # 局部更新（如启停/运行态）：合并到已有记录
+        for i, x in enumerate(arr):
+            if x.get("id") == pb["id"]:
+                arr[i] = {**x, **pb}
+                RUN_DIR.mkdir(parents=True, exist_ok=True)
+                PLAYBOOKS_FILE.write_text(json.dumps(arr, ensure_ascii=False, indent=1))
+                return {"ok": True, "id": pb["id"]}
+        return {"error": "剧本不存在"}
     if not pb.get("name"):
         return {"error": "缺 name"}
     if not isinstance(pb.get("steps"), list) or not pb["steps"]:
@@ -7207,6 +7216,23 @@ def playbook_save(pb):
     RUN_DIR.mkdir(parents=True, exist_ok=True)
     PLAYBOOKS_FILE.write_text(json.dumps(arr, ensure_ascii=False, indent=1))
     return {"ok": True, "id": pb["id"]}
+
+
+def playbook_patch(pid, fields):
+    """局部更新剧本（不校验 name/steps），用于记录 last_run 等运行态。"""
+    arr = playbooks_list()
+    for i, x in enumerate(arr):
+        if x.get("id") == pid:
+            arr[i] = {**x, **(fields or {})}
+            RUN_DIR.mkdir(parents=True, exist_ok=True)
+            playbooks_save_all(arr)
+            return {"ok": True, "id": pid}
+    return {"error": "剧本不存在"}
+
+
+def playbooks_save_all(arr):
+    RUN_DIR.mkdir(parents=True, exist_ok=True)
+    PLAYBOOKS_FILE.write_text(json.dumps(arr, ensure_ascii=False, indent=1))
 
 
 def playbook_delete(pid):
@@ -7279,8 +7305,8 @@ def playbook_run(pb, by="playbook", proj=None):
                   message=str(pb.get("name", ""))[:200])
     run["playbook"] = pb.get("id", "")
     run_save(run)
-    playbook_save({"id": pb.get("id"), "last_run": datetime.now().strftime("%Y-%m-%d %H:%M"),
-                   "last_run_id": run["id"]})
+    playbook_patch(pb.get("id", ""), {"last_run": datetime.now().strftime("%Y-%m-%d %H:%M"),
+                                      "last_run_id": run["id"]})
     try:
         webhook_emit("playbook.run", {"playbook": pb.get("id"), "name": pb.get("name"), "run_id": run["id"]})
     except Exception:
@@ -7318,6 +7344,8 @@ def playbook_tick():
                 wd = int(sc.get("weekday", 1) or 1)
                 if datetime.now().weekday() + 1 != wd:
                     continue
+            if now - last_ts < 600:  # 最小间隔 10 分钟，防抖
+                continue
             playbook_run(pb, by="schedule")
             print(f"[playbook] {pb['id']} fired (schedule)", file=sys.stderr)
         except Exception as e:
