@@ -2881,7 +2881,32 @@ def learn_from_failures(days=7, limit=120):
 
 
 def learnings_list():
-    return {"learnings": _learnings(), "failure_scan": learn_from_failures.__doc__ and None}
+    return {"learnings": _learnings()}
+
+
+def learning_set(key, status, by=""):
+    arr = _learnings()
+    for i, x in enumerate(arr):
+        if x.get("key") == key:
+            arr[i] = {**x, "status": status, "status_at": datetime.now().strftime("%Y-%m-%d %H:%M"), "status_by": by}
+            LEARNINGS_FILE.write_text(json.dumps(arr, ensure_ascii=False, indent=1))
+            return arr[i]
+    return {"error": "学习项不存在"}
+
+
+def learning_apply(key, by=""):
+    """把学习项落地：复用 self_evolve_apply（提示词提示 / 禁用词）。"""
+    l = next((x for x in _learnings() if x.get("key") == key), None)
+    if not l:
+        return {"error": "学习项不存在"}
+    pat = (l.get("samples") or [l.get("label") or ""])[0] or l.get("label", "")
+    act = l.get("suggest_action", "review")
+    if act not in ("gen_prompt_hint", "add_banned_word"):
+        return {"error": "该学习项需人工复核（" + str(l.get("suggest", "")) + "）"}
+    r = self_evolve_apply(pat, act, by=by)
+    if r.get("ok"):
+        learning_set(key, "applied", by)
+    return r
 
 
 def inbox(me="", proj=None):
@@ -2962,6 +2987,87 @@ def inbox(me="", proj=None):
     return {"items": items, "total": len(items),
             "urgent": sum(1 for x in items if x["prio"] == 0),
             "at": datetime.now().strftime("%Y-%m-%d %H:%M")}
+
+
+
+# ===================== MCP：把 MFlow 能力开放给任意 AI 客户端 =====================
+MCP_TOOLS = [
+    {"name": "mflow_health", "desc": "系统健康（执行器/LLM/Sanity/队列）", "schema": {}},
+    {"name": "mflow_selfcheck", "desc": "系统自检（阻断项与修复建议）", "schema": {}},
+    {"name": "mflow_inbox", "desc": "需要处理的待办聚合", "schema": {}},
+    {"name": "mflow_search_content", "desc": "按关键词/类型/语言检索线上内容库，返回 doc_id/slug/url",
+     "schema": {"q": "关键词", "page_type": "tool|feature|blog|...", "lang": "en|zh|...", "limit": "数量"}},
+    {"name": "mflow_search_kb", "desc": "知识库检索（竞品/画像/案例/样式/i18n/产品）", "schema": {"q": "问题或主题"}},
+    {"name": "mflow_semantic_search", "desc": "语义+关键词混合检索（同义/改述提问）", "schema": {"q": "自然语言问题", "k": "条数"}},
+    {"name": "mflow_recall", "desc": "跨源回忆：项目记忆 + 实体图谱 + 历史会话 + 执行记录", "schema": {"q": "关键词"}},
+    {"name": "mflow_list_tasks", "desc": "列出最近批量任务", "schema": {"status": "running|done|failed", "limit": "数量"}},
+    {"name": "mflow_get_task", "desc": "查询某批量任务状态与失败摘要", "schema": {"id": "batch-..."}},
+    {"name": "mflow_list_runs", "desc": "列出最近执行（画布）", "schema": {}},
+    {"name": "mflow_run_detail", "desc": "查询某执行的步骤/指标/风险/交付物", "schema": {"id": "run-..."}},
+    {"name": "mflow_list_automations", "desc": "列出定时自动化", "schema": {}},
+    {"name": "mflow_list_playbooks", "desc": "列出自动化剧本与模板", "schema": {}},
+    {"name": "mflow_run_preset", "desc": "运行预设工作流（**强制 dry-run**，不写生产库）",
+     "schema": {"preset": "预设 id", "opt": "选项对象"}},
+    {"name": "mflow_run_playbook", "desc": "运行剧本（**强制 dry-run**）", "schema": {"id": "剧本 id"}},
+    {"name": "mflow_check_url", "desc": "检查某前台 URL 是否可访问", "schema": {"url": "https://..."}},
+    {"name": "mflow_list_reports", "desc": "列出报告", "schema": {}},
+]
+
+
+def mcp_tool(name, args, proj=None):
+    """执行一个 MCP 工具（只读 + dry-run 动作）。"""
+    proj = proj or DEFAULT_PROJECT
+    a = args or {}
+    try:
+        if name == "mflow_health":
+            return health_report(proj)
+        if name == "mflow_selfcheck":
+            return selfcheck(proj)
+        if name == "mflow_inbox":
+            return inbox("", proj)
+        if name == "mflow_search_content":
+            return agent_tool("search_content", a, proj)
+        if name == "mflow_search_kb":
+            return agent_tool("search_kb", a, proj)
+        if name == "mflow_semantic_search":
+            return {"results": rag_search(str(a.get("q", "")), int(a.get("k", 6) or 6))}
+        if name == "mflow_recall":
+            return agent_tool("recall", a, proj)
+        if name == "mflow_list_tasks":
+            return agent_tool("list_tasks", a, proj)
+        if name == "mflow_get_task":
+            t = batch_load(str(a.get("id", "")))
+            if not t:
+                return {"error": "任务不存在"}
+            return batch_view(t, proj)
+        if name == "mflow_list_runs":
+            return {"runs": run_list(30)}
+        if name == "mflow_run_detail":
+            return run_view(str(a.get("id", "")))
+        if name == "mflow_list_automations":
+            return {"automations": automations_list()}
+        if name == "mflow_list_playbooks":
+            return {"playbooks": playbooks_list(), "templates": playbooks_templates()}
+        if name == "mflow_run_preset":
+            ex = preset_expand(str(a.get("preset", "")), a.get("opt") or {}, proj)
+            if ex.get("error"):
+                return {"error": ex["error"]}
+            t = batch_create(ex.get("type"), ex.get("title") or str(a.get("preset")), ex.get("items") or [],
+                             params=ex.get("params") or {}, dry_run=True, by="mcp")
+            return {"task_id": t["id"], "total": t["stats"]["total"], "dry_run": True, "note": ex.get("note", "")}
+        if name == "mflow_run_playbook":
+            pb = next((x for x in playbooks_list() if x.get("id") == str(a.get("id", ""))), None)
+            if not pb:
+                return {"error": "剧本不存在"}
+            pb = dict(pb); pb["dry_run"] = True  # 强制 dry-run
+            return playbook_run(pb, by="mcp", proj=proj)
+        if name == "mflow_check_url":
+            return agent_tool("check_url", a, proj)
+        if name == "mflow_list_reports":
+            return list_reports()
+        return {"error": "未知工具：" + str(name)}
+    except Exception as e:
+        return {"error": str(e)[:240]}
 
 
 def palette(q, proj=None):
@@ -7104,6 +7210,26 @@ def playbook_delete(pid):
     return {"ok": True}
 
 
+def playbooks_enable_recommended():
+    """OPC 一键：安装并启用所有标记 recommended 的剧本（跳过事件型，避免误触发）。"""
+    have = {x.get("name") for x in playbooks_list()}
+    added, enabled = [], []
+    for t in playbooks_templates():
+        if not t.get("recommended"):
+            continue
+        name = t.get("name")
+        if name in have:
+            pb = next((x for x in playbooks_list() if x.get("name") == name), None)
+            if pb and not pb.get("enabled"):
+                playbook_save({"id": pb["id"], "enabled": True}); enabled.append(name)
+            continue
+        r = playbook_install(t.get("id"))
+        if r.get("ok"):
+            added.append(name)
+            playbook_save({"id": r["id"], "enabled": True, "trigger": t.get("trigger")})
+    return {"ok": True, "added": added, "enabled": enabled}
+
+
 def playbook_install(tpl_id):
     """把模板复制为可运行剧本。"""
     t = next((x for x in playbooks_templates() if x.get("id") == tpl_id), None)
@@ -8249,6 +8375,15 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, next_actions(self._proj()))
             if parsed.path == "/api/start":
                 return self._send(200, start_report(self._me(), self._proj()))
+            if parsed.path == "/api/open/status":
+                return self._send(200, {"token_configured": bool(API_TOKEN),
+                                        "token_hint": (API_TOKEN[:4] + "…" + API_TOKEN[-4:]) if len(API_TOKEN) > 8 else ("已配置" if API_TOKEN else "未配置"),
+                                        "mcp_tools": len(MCP_TOOLS),
+                                        "mcp_script": "1-4 Dev/scripts/mcp_server.py",
+                                        "docs": "docs/mcp.md",
+                                        "base": "https://nownexts.com/mflow"})
+            if parsed.path == "/api/mcp/tools":
+                return self._send(200, {"tools": MCP_TOOLS})
             if parsed.path == "/api/learnings":
                 return self._send(200, {"learnings": _learnings()})
             if parsed.path == "/api/selfcheck":
@@ -8396,6 +8531,13 @@ class Handler(BaseHTTPRequestHandler):
         return self._send(404, {"error": "not found"})
 
     def do_POST(self):
+        # ── MCP：允许机器 token 调用白名单工具（只读 + 强制 dry-run 动作）──
+        if self.path == "/api/mcp/tool":
+            if not (self._machine() or self._me()):
+                return self._send(401, {"error": "需要 X-MFlow-Token 或登录会话"})
+            body = self._body()
+            return self._send(200, {"ok": True, "tool": body.get("name"),
+                                    "result": mcp_tool(str(body.get("name", "")), body.get("args") or {}, self._proj())})
         if self._machine() and not self._me():  # 机器联动 token：只读，写动作必须真人会话
             return self._send(403, {"error": "机器 token 仅限 GET；写操作请以用户身份登录"})
         # ── 公开：买家提交交易哈希 / 外部支付 webhook（无会话）──
@@ -8499,7 +8641,8 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/account/list", "/api/account/reset", "/api/dispatch/approve",
                       "/api/trident/run", "/api/daily/run", "/api/tasks/del",
                       "/api/notify/save", "/api/notify/test", "/api/email/save", "/api/email/test", "/api/user/email",
-                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install", "/api/memory/fact", "/api/memory/entity", "/api/rag/build", "/api/audit/rollback", "/api/selfcheck/autofix", "/api/learnings/scan",  "/api/webhooks/save", "/api/webhooks/delete", "/api/webhooks/test",
+                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install", "/api/memory/fact", "/api/memory/entity", "/api/rag/build", "/api/audit/rollback", "/api/selfcheck/autofix", "/api/learnings/scan", "/api/learnings/apply", "/api/learnings/ignore",
+                      "/api/playbooks/enable_recommended",  "/api/webhooks/save", "/api/webhooks/delete", "/api/webhooks/test",
                       "/api/plugins/toggle", "/api/plugins/state",
                       "/api/geo/probe",
                       "/api/pay/product/save", "/api/pay/product/delete", "/api/pay/cards/import",
@@ -8664,6 +8807,12 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200 if r.get("ok") else 400, r)
             if self.path == "/api/selfcheck/autofix":
                 return self._send(200, selfcheck_autofix(self._proj()))
+            if self.path == "/api/learnings/apply":
+                return self._send(200, learning_apply(str(body.get("key", "")), self._me()))
+            if self.path == "/api/learnings/ignore":
+                return self._send(200, learning_set(str(body.get("key", "")), "ignored", self._me()))
+            if self.path == "/api/playbooks/enable_recommended":
+                return self._send(200, playbooks_enable_recommended())
             if self.path == "/api/learnings/scan":
                 return self._send(200, learn_from_failures(int(body.get("days", 7) or 7)))
             if self.path == "/api/audit/rollback":

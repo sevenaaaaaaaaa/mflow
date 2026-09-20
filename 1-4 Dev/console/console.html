@@ -549,7 +549,8 @@ body.sb-open #sb-mask{display:block}
       <div class="head-actions"><button class="btn ghost" onclick="loadAuto()">刷新 ↻</button>
         <button class="btn primary" onclick="openConvert({kind:'blank',title:'新建自动化'},event)">＋ 新建自动化</button></div></div>
     <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>自动化剧本 Playbook <span class="mut">多步 + 条件 + 触发器</span></h3>
-      <span class="mut" style="font-size:11px">执行过程在「执行画布」可见、可恢复</span></div>
+      <div class="row"><button class="mini" onclick="pbEnableRecommended(event)">⚡ 一键启用推荐剧本（OPC）</button></div></div>
+      <div class="mut" style="font-size:11px;margin-bottom:6px">执行过程在「执行画布」可见、可恢复。推荐剧本 = 每日 QA 闭环 / 每周衰减刷新 / 每周 alt 补齐 / 每周 GEO 缺口。</div>
       <div id="pb-body"><div class="mut">加载中…</div></div></div>
     <div id="auto-body"><div class="mut">加载中…</div></div>
   </section>
@@ -1089,6 +1090,9 @@ body.sb-open #sb-mask{display:block}
         <button class="btn primary" onclick="emailSave()">保存邮件配置</button></div>
       <div id="em-users" style="margin-top:10px"></div>
       <div class="mut" id="em-status" style="margin-top:6px">批量任务完成/失败/熔断时，若创建者当前不在登录态，则发邮件提醒他回来查看。</div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>开放接入 <span class="mut">MCP / REST / 事件</span></h3>
+      <button class="more" onclick="openReader('docs/mcp.md')">查看文档 →</button></div>
+      <div class="mut" id="open-status" style="font-size:12px;line-height:1.9">加载中…</div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>出站 Webhook <span class="mut">（事件推送外部系统）</span></h3>
       <button class="mini" onclick="whAdd()">＋ 新增</button></div>
       <div class="mut" style="font-size:12px">任务/执行/发布/自动化/回滚事件 POST 到你的端点（带 HMAC 签名，可选）。事件：task.done / task.failed / task.tripped / run.done / run.failed / automation.run / audit.rollback。</div>
@@ -1217,6 +1221,10 @@ body.sb-open #sb-mask{display:block}
       <div class="card"><div class="card-head"><h3>Token 消耗（近 14 日）</h3></div><div class="chart-bars" id="it-tok"></div>
         <div class="chart-meta"><span id="it-tok-meta"></span></div></div>
     </div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>学习（失败 → 进化）</h3>
+      <div class="row"><button class="mini" onclick="learnScan()">扫描近期失败</button></div></div>
+      <div class="mut" style="font-size:11.5px">系统从近期失败中归纳问题类型并给出改进动作；应用后会写入提示词提示或禁用词。</div>
+      <div id="it-learn" style="margin-top:8px"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>GEO 品牌提及率（近 14 日 · AI 引用感知）</h3><span class="mut" id="it-geo-meta"></span></div>
       <div class="chart-bars" id="it-geo"></div>
       <div class="chart-meta"><span>实心柱 = 品牌被 AI 提及的探测次数</span><span id="it-geo-gap"></span></div></div>
@@ -1618,6 +1626,26 @@ function palRun(it){if(!it)return;const a=it.action||{};palRemember(it);palClose
    if(r.error)throw new Error(r.error);toast('已运行预设 '+a.preset+' → '+(r.task_id||''),'ok');goBatchDetail(r.task_id);return r;},{busyText:'运行中…',okText:'已运行',msg:'预设已运行'});return}
  if(a.lib){setTab('lib');return}
 }
+/* ---- 学习（失败→进化）---- */
+function learnLoad(){api('api/learnings').then(d=>{
+ const el=$('it-learn');if(!el)return;const ls=(d&&d.learnings)||[];
+ if(!ls.length){el.innerHTML='<span class="mut" style="font-size:12px">暂无学习项——点「扫描近期失败」</span>';return}
+ const st={applied:'已应用',ignored:'已忽略'}[0];
+ el.innerHTML=ls.map(l=>{const done=l.status==='applied'||l.status==='ignored';
+  return `<div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)">
+   <span class="badge" style="background:${l.status==='applied'?'var(--ok)':(l.status==='ignored'?'var(--muted)':'var(--warn)')}">${l.status==='applied'?'已应用':(l.status==='ignored'?'已忽略':'待处理')}</span>
+   <div style="flex:1"><b style="font-size:12.5px">${esc(l.label)} ×${l.count}</b>
+    <div class="mut" style="font-size:11px">${esc(l.suggest||'')}${(l.samples||[])[0]?' · 例：'+esc((l.samples||[])[0]).slice(0,60):''}</div></div>
+   ${done?'':`<button class="mini" onclick="learnApply('${esc(l.key)}',event)">应用</button>
+    <button class="mini" onclick="learnIgnore('${esc(l.key)}')">忽略</button>`}</div>`}).join('');
+}).catch(()=>{})}
+function learnScan(){withBtn(event,async()=>{const r=await api('api/learnings/scan',{days:7});
+ if(r.error)throw new Error(r.error);toast('扫描完成：'+r.total+' 条学习项','ok');learnLoad();return r;
+},{busyText:'扫描中…',okText:'已扫描'});}
+function learnApply(key,ev){return withBtn(ev,async()=>{const r=await api('api/learnings/apply',{key});
+ if(r.error)throw new Error(r.error);toast(r.note||'已应用','ok');learnLoad();return r;
+},{busyText:'应用中…',okText:'已应用'});}
+function learnIgnore(key){api('api/learnings/ignore',{key}).then(()=>learnLoad())}
 /* ---- 变更审计 ---- */
 function auditLoad(){api('api/audit/changes').then(d=>{
  const el=$('audit-body');if(!el)return;const cs=(d&&d.changes)||[];
@@ -1782,6 +1810,9 @@ function pbLoad(){api('api/playbooks').then(d=>{
    ${pbs.some(x=>(x.name||'')===(t.name||''))?'<span class="badge" style="background:var(--muted)">已添加</span>':`<button class="mini" onclick="pbInstall('${esc(t.id)}',event)">添加</button>`}</div>`).join('');
  el.innerHTML=html;
 }).catch(()=>{})}
+function pbEnableRecommended(ev){return withBtn(ev,async()=>{const r=await api('api/playbooks/enable_recommended',{});
+ if(r.error)throw new Error(r.error);toast(`已添加 ${(r.added||[]).length} 个、启用 ${(r.enabled||[]).length} 个推荐剧本`,'ok');pbLoad();return r;
+},{busyText:'启用中…',okText:'已启用'});}
 function pbRun(id,ev){return withBtn(ev,async()=>{const r=await api('api/playbooks/run',{id});
  if(r.error)throw new Error(r.error);toast('剧本已启动（'+r.steps+' 步），可在执行画布看进度','ok');
  setTab('run');setTimeout(()=>runDetail(r.run_id),700);return r;
@@ -2367,6 +2398,13 @@ function whSave(id,ev){const evs=[...document.querySelectorAll('#wh-events .chip
    secret:$('wh-secret').value.trim(),events:evs,enabled:true});
   if(r.error)throw new Error(r.error);toast('已保存','ok');closeDrawer();loadWebhooks();return r;
  },{busyText:'保存中…',okText:'已保存'})}
+function loadOpen(){api('api/open/status').then(d=>{
+ const el=$('open-status');if(!el||!d)return;
+ el.innerHTML=`机器 token：<b>${esc(d.token_hint)}</b>${d.token_configured?'':' <span class="warn">（未配置：在服务器 run/env.sh 设 MFLOW_API_TOKEN）</span>'}<br>
+  MCP 工具：<b>${d.mcp_tools}</b> 个 · 脚本 <code>${esc(d.mcp_script)}</code> · 文档 <code>${esc(d.docs)}</code><br>
+  REST 机器接口：<code>GET ${esc(d.base)}/api/*</code> + 头 <code>X-MFlow-Token</code>（只读）<br>
+  <span class="mut">MCP：把 MFlow 接进 Claude Desktop / Cursor / 自研 Agent（检索+看任务+跑预设，强制 dry-run）。</span>`;
+}).catch(()=>{})}
 function loadWebhooks(){api('api/webhooks').then(d=>{
  const el=$('wh-list');if(!el)return;const ws=(d&&d.webhooks)||[];
  if(!ws.length){el.innerHTML=emptyBox('🔌','还没有 Webhook','新增一个',"whAdd()");$('wh-log').textContent=(d.log||[]).join('\n')||'—';return}
@@ -2403,7 +2441,7 @@ function emailSave(){const rec={};document.querySelectorAll('[data-em-user]').fo
 function emailTest(){$('em-status').textContent='发送中…';
  api('api/email/test',{to:$('em-default').value.trim()}).then(r=>{
   $('em-status').innerHTML=r.ok?`<span class="ok">✓ 测试邮件已发往 ${esc(r.to||'')}</span>`:`<span class="warn">发送失败：${esc(r.info||'')}</span>`})}
-function loadSys(){loadEmail();loadWebhooks();api('api/overview').then(o=>{$('drun').innerHTML=o.daily.running?'<span class="warn">运行中…</span>':'<span class="ok">空闲</span>';
+function loadSys(){loadEmail();loadWebhooks();loadOpen();api('api/overview').then(o=>{$('drun').innerHTML=o.daily.running?'<span class="warn">运行中…</span>':'<span class="ok">空闲</span>';
  $('drbtn').disabled=o.daily.running;$('dtail').textContent=o.daily.tail||'（尚无日志）';$('stimers').textContent=o.timers});
  loadSchedReport()}
 function loadSchedReport(){api('api/schedule/all').then(r=>{
@@ -3330,7 +3368,7 @@ function rdRender(){const path=$('rd-file').value;if(!path)return;
 function rdRaw(){openReader($('rd-file').value)}
 
 /* ---- 自我迭代 ---- */
-function loadIter(){Promise.all([api('api/selfreview'),api('api/qa/stats?days=14'),api('api/usage'),api('api/geo/citations')]).then(([sv,qa,us,gs])=>{
+function loadIter(){learnLoad();Promise.all([api('api/selfreview'),api('api/qa/stats?days=14'),api('api/usage'),api('api/geo/citations')]).then(([sv,qa,us,gs])=>{
  const thr14=sv.throughput.slice(-14);
  $('iter-stats').innerHTML=`<div class="stat"><div class="n tnum">${qa.total_runs}</div><div class="t">质检执行（累计）</div></div>
   <div class="stat"><div class="n tnum">${qa.block_rate_all}%</div><div class="t">整体 BLOCK 率</div></div>
