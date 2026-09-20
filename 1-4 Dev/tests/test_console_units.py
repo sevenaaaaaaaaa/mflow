@@ -11,6 +11,7 @@ import json
 import os
 import sys
 import tempfile
+import time
 import types
 import unittest
 from pathlib import Path
@@ -310,6 +311,111 @@ class TestChainAndPreset(unittest.TestCase):
         self.assertEqual([i["item_id"] for i in created["items"]], ["a"], "只链通过门禁的项")
         self.assertTrue(created["dry_run"], "链式发布默认 dry-run")
         self.assertEqual(created["items"][0]["mode"], "patch")
+
+
+class TestPlaybookBranchRetry(unittest.TestCase):
+    """剧本分支（前向 goto）+ 步骤级重试/超时。"""
+
+    def _steps(self):
+        return [
+            {"i": 0, "id": "scan", "name": "扫描", "type": "batch", "status": "done"},
+            {"i": 1, "id": "has", "name": "条件", "type": "guard", "status": "pending",
+             "expr": "findings>0", "on_true": "next", "on_false": "goto:verify"},
+            {"i": 2, "id": "fix", "name": "修复", "type": "batch", "status": "pending"},
+            {"i": 3, "id": "verify", "name": "验证", "type": "verify", "status": "pending"},
+        ]
+
+    def test_eval_guard(self):
+        self.assertTrue(C._eval_guard("findings>0", {"findings": 3}))
+        self.assertFalse(C._eval_guard("findings>0", {"findings": 0}))
+        self.assertIsNone(C._eval_guard("rm -rf", {}))
+
+    def test_parse_dest(self):
+        self.assertEqual(C._parse_dest("continue"), ("next", None))
+        self.assertEqual(C._parse_dest("stop"), ("stop", None))
+        self.assertEqual(C._parse_dest("goto:verify"), ("goto", "verify"))
+        self.assertEqual(C._parse_dest("verify"), ("goto", "verify"))
+
+    def test_branch_false_skips_then(self):
+        steps = self._steps()
+        ok, detail = C._apply_branch(steps, 1, "goto:verify", "条件不成立")
+        self.assertTrue(ok)
+        self.assertEqual(steps[2]["status"], "skipped")
+        self.assertEqual(steps[3]["status"], "pending")
+        self.assertIn("跳到 验证", detail)
+
+    def test_branch_stop_blocks_rest(self):
+        steps = self._steps()
+        ok, _ = C._apply_branch(steps, 1, "stop", "条件不成立")
+        self.assertTrue(ok)
+        self.assertEqual(steps[2]["status"], "blocked")
+        self.assertEqual(steps[3]["status"], "blocked")
+
+    def test_branch_reject_backjump(self):
+        steps = self._steps()
+        ok, detail = C._apply_branch(steps, 2, "goto:scan", "")
+        self.assertFalse(ok)
+        self.assertIn("回跳", detail)
+        self.assertEqual(steps[3]["status"], "blocked")
+
+    def test_branch_missing_target(self):
+        steps = self._steps()
+        ok, detail = C._apply_branch(steps, 1, "goto:nope", "")
+        self.assertFalse(ok)
+        self.assertIn("不存在", detail)
+
+    def test_join_after_then(self):
+        steps = self._steps()
+        steps[2]["next"] = "goto:verify"
+        steps.append({"i": 4, "id": "else", "name": "无需修复", "type": "note", "status": "pending"})
+        # 把 else 插到 verify 前更符合真实 if/else；这里测完成后跳过中间
+        steps[2]["status"] = "done"
+        ok, _ = C._apply_branch(steps, 2, "goto:verify", "完成后走另一路")
+        self.assertTrue(ok)
+        self.assertEqual(steps[3]["status"], "pending")
+
+    def test_retry_schedule_and_exhaust(self):
+        st = {"status": "failed", "retry_max": 2, "retry_delay_sec": 10, "retries_used": 0}
+        self.assertTrue(C._step_can_retry(st))
+        C._schedule_step_retry(st)
+        self.assertEqual(st["status"], "pending")
+        self.assertEqual(st["retries_used"], 1)
+        self.assertGreater(st["retry_after"], time.time())
+        st["status"] = "failed"
+        C._schedule_step_retry(st)
+        st["status"] = "failed"
+        self.assertFalse(C._step_can_retry(st))
+
+    def test_timeout(self):
+        now = time.time()
+        st = {"status": "running", "timeout_min": 15, "started_ts": now - 16 * 60}
+        self.assertTrue(C._step_timed_out(st, now))
+        st["started_ts"] = now - 60
+        self.assertFalse(C._step_timed_out(st, now))
+        st["timeout_min"] = 0
+        st["started_ts"] = now - 9999
+        self.assertFalse(C._step_timed_out(st, now))
+
+    def test_normalize_and_validate(self):
+        steps = C.playbook_normalize_steps([
+            {"name": "A", "type": "preset"},
+            {"name": "B", "type": "guard", "on_false": "goto:s3"},
+            {"name": "C", "type": "verify"},
+        ])
+        self.assertEqual([s["id"] for s in steps], ["s1", "s2", "s3"])
+        self.assertEqual(C.playbook_validate_jumps(steps), "")
+        steps[1]["on_false"] = "goto:ghost"
+        self.assertIn("未知目标", C.playbook_validate_jumps(steps))
+
+    def test_preview_skip_names(self):
+        steps = C.playbook_normalize_steps([
+            {"name": "扫", "id": "scan", "type": "preset"},
+            {"name": "条件", "id": "has", "type": "guard", "on_false": "goto:verify"},
+            {"name": "修", "id": "fix", "type": "preset"},
+            {"name": "验", "id": "verify", "type": "verify"},
+        ])
+        self.assertEqual(C._preview_skip_names(steps, 1, "goto:verify"), ["修"])
+        self.assertEqual(C._preview_skip_names(steps, 1, "stop"), ["修", "验"])
 
 
 if __name__ == "__main__":

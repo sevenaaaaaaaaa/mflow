@@ -1924,6 +1924,11 @@ def run_new(title, steps, proj=None, by="", kind="agent", session_id="", message
            "status": "running", "session_id": session_id, "message": (message or "")[:200],
            "started_ts": time.time(), "steps": []}
     for i, st in enumerate(steps or []):
+        def _ii(k, d=0):
+            try:
+                return int(st.get(k) if st.get(k) not in (None, "") else d)
+            except Exception:
+                return d
         run["steps"].append({"i": i, "name": st.get("name") or f"步骤 {i+1}",
                              "type": st.get("type") or "batch",
                              "status": st.get("status") or "pending",
@@ -1931,7 +1936,14 @@ def run_new(title, steps, proj=None, by="", kind="agent", session_id="", message
                              "task_id": st.get("task_id") or "",
                              "spec": st.get("spec"), "preset": st.get("preset"),
                              "opt": st.get("opt") or {}, "urls": st.get("urls") or [],
+                             "id": str(st.get("id") or f"s{i+1}"),
                              "expr": st.get("expr", ""), "on_false": st.get("on_false", "stop"),
+                             "on_true": st.get("on_true", "next"),
+                             "next": st.get("next", "next"),
+                             "retry_max": max(0, min(5, _ii("retry_max", 0))),
+                             "retry_delay_sec": max(5, min(600, _ii("retry_delay_sec", 30))),
+                             "timeout_min": max(0, min(180, _ii("timeout_min", 0))),
+                             "retries_used": _ii("retries_used", 0),
                              "started": st.get("started") or "", "ended": st.get("ended") or ""})
     # 第一个可执行步骤立即置为 running
     for st in run["steps"]:
@@ -1946,6 +1958,8 @@ def _run_sync_steps(run):
     """把与批量任务关联的步骤状态/进度同步过来。"""
     changed = False
     for st in run["steps"]:
+        if st.get("retry_after") and time.time() < float(st.get("retry_after") or 0):
+            continue
         if st.get("type") not in ("batch", "publish_sanity") or not st.get("task_id"):
             continue
         t = batch_load(st["task_id"])
@@ -1968,6 +1982,7 @@ def _run_sync_steps(run):
         else:
             if st["status"] != "running":
                 st["status"] = "running"; changed = True
+                st.setdefault("started_ts", time.time())
             st["detail"] = f"执行中 {done_n}/{stats.get('total',0)} · 失败 {stats.get('failed',0)}"
     return changed
 
@@ -1983,7 +1998,42 @@ def run_tick():
                 continue
             changed = _run_sync_steps(run)
             steps = run["steps"]
-            TERMINAL = ("done", "warn", "failed", "blocked", "replanned")
+            TERMINAL = ("done", "warn", "failed", "blocked", "replanned", "skipped")
+            now = time.time()
+            for st in steps:
+                if _step_timed_out(st, now):
+                    st["status"] = "failed"
+                    st["ended"] = datetime.now().strftime("%H:%M:%S")
+                    st["detail"] = f"步骤超时（>{int(st.get('timeout_min') or 0)} 分钟）"
+                    tid = st.get("task_id")
+                    if tid:
+                        t = batch_load(tid) or {}
+                        if t.get("status") in ("running", "queued", "paused"):
+                            t["status"] = "cancelled"
+                            try:
+                                _batch_log(t, "步骤超时，已取消")
+                            except Exception:
+                                pass
+                            batch_save(t)
+                    changed = True
+            for st in steps:
+                ra = st.get("retry_after")
+                if ra and st.get("status") == "pending" and now >= float(ra):
+                    _fire_step_retry(st)
+                    changed = True
+            for st in steps:
+                if st.get("status") == "failed" and _step_can_retry(st):
+                    _schedule_step_retry(st)
+                    changed = True
+            for i, st in enumerate(steps):
+                if st.get("type") == "guard" or st.get("_jumped"):
+                    continue
+                if st.get("status") in ("done", "warn"):
+                    dest = st.get("next") or "next"
+                    if _parse_dest(dest)[0] != "next":
+                        _apply_branch(steps, i, dest, "完成后走另一路")
+                    st["_jumped"] = True
+                    changed = True
             # 前序步骤失败 → 先尝试自愈重规划；失败才阻断
             if any(st["status"] == "failed" for st in steps) and not run.get("replanned"):
                 fstep = next(st for st in steps if st["status"] == "failed")
@@ -1999,8 +2049,8 @@ def run_tick():
                 if changed:
                     run_save(run)
                 continue
-            cur = next((st for st in steps if st["status"] not in TERMINAL), None)
-            # guard：按前序产出评估条件，决定继续/停止
+            cur = next((st for st in steps if st["status"] not in TERMINAL and not _is_waiting_retry(st)), None)
+            # guard：按前序产出评估条件，决定继续 / 终止 / 跳到另一路
             if cur and cur.get("type") == "guard" and cur["status"] == "pending":
                 agg = {"failed": 0, "done": 0, "total": 0, "skipped": 0, "findings": 0, "suggestions": 0}
                 for st in steps:
@@ -2016,17 +2066,18 @@ def run_tick():
                             agg["findings"] += int(r.get("findings") or 0)
                             agg["suggestions"] += int(r.get("count") or 0) if it.get("status") == "done" else 0
                 ok = _eval_guard(cur.get("expr", ""), agg)
-                cur["status"] = "done" if ok else ("blocked" if cur.get("on_false", "stop") == "stop" else "done")
-                cur["detail"] = f"条件 {cur.get('expr')} → {'成立（继续）' if ok else '不成立'}" +                                 ("" if ok else ("（终止后续）" if cur.get("on_false", "stop") == "stop" else "（继续）"))
-                if not ok and cur.get("on_false", "stop") == "stop":
-                    for st2 in steps:
-                        if st2["status"] == "pending":
-                            st2["status"] = "blocked"; st2["detail"] = "条件不满足，未执行"
+                dest = (cur.get("on_true") or "next") if ok else (cur.get("on_false") or "stop")
+                cur["status"] = "done"
+                _bok, bdetail = _apply_branch(steps, steps.index(cur), dest,
+                                              "条件成立" if ok else "条件不成立")
+                cur["detail"] = f"条件 {cur.get('expr')} → {'成立' if ok else '不成立'} · {bdetail}"
+                cur["_jumped"] = True
                 changed = True
                 run_save(run)
                 continue
             if cur and cur["type"] == "verify" and cur["status"] == "pending":
                 cur["status"] = "running"; cur["started"] = cur.get("started") or datetime.now().strftime("%H:%M:%S")
+                cur.setdefault("started_ts", time.time())
                 # 收集要验证的 URL：步骤自带 urls，或从前序 batch 步的 spec/预设推导
                 # dry-run 未真实发布 → 跳过前台验证（否则会误判）
                 _dry = False
@@ -2037,8 +2088,9 @@ def run_tick():
                             _dry = True
                 if _dry:
                     cur["status"] = "done"; cur["detail"] = "上一步为 dry-run（未真实写入），跳过前台验证"
-                    cur["ended"] = datetime.now().strftime("%H:%M:%S"); changed = True
-                    if all(x["status"] in ("done", "failed", "warn", "blocked") for x in steps):
+                    cur["ended"] = datetime.now().strftime("%H:%M:%S")
+                    cur.setdefault("started_ts", time.time()); changed = True
+                    if all(x["status"] in ("done", "failed", "warn", "blocked", "replanned", "skipped") for x in steps):
                         run["status"] = ("failed" if any(x["status"] == "failed" for x in steps)
                                          else ("warn" if any(x["status"] == "warn" for x in steps) else "done"))
                     if changed:
@@ -2127,12 +2179,13 @@ def run_tick():
                                      dry_run=bool(cur.get("opt", {}).get("dry_run", True)), by=run.get("by", ""))
                     cur["task_id"] = t["id"]; cur["status"] = "running"
                     cur["started"] = cur.get("started") or datetime.now().strftime("%H:%M:%S")
+                    cur.setdefault("started_ts", time.time())
                     cur["detail"] = f"已创建任务 {t['id']}（{t['stats']['total']} 项）"
                     changed = True
                 except Exception as e:
                     cur["status"] = "failed"; cur["detail"] = str(e)[:160]; changed = True
             # 全部结束 → 完成
-            if all(st["status"] in ("done", "failed", "warn", "blocked", "replanned") for st in steps):
+            if all(st["status"] in ("done", "failed", "warn", "blocked", "replanned", "skipped") for st in steps):
                 new_status = ("failed" if any(st["status"] == "failed" for st in steps)
                               else ("warn" if any(st["status"] == "warn" for st in steps) else "done"))
                 if run.get("status") != new_status:
@@ -2241,9 +2294,9 @@ def run_view(rid):
     done = sum(1 for st in steps if st["status"] == "done")
     failed = sum(1 for st in steps if st["status"] == "failed")
     warn = sum(1 for st in steps if st["status"] == "warn")
-    blocked = sum(1 for st in steps if st["status"] in ("blocked", "replanned"))
+    blocked = sum(1 for st in steps if st["status"] in ("blocked", "replanned", "skipped"))
     run["overall"] = {"total": len(steps), "done": done, "failed": failed, "warn": warn, "blocked": blocked,
-                      "pct": int(round(100 * (done + failed + warn) / max(1, len(steps))))}
+                      "pct": int(round(100 * (done + failed + warn + blocked) / max(1, len(steps))))}
     # ── 进度/成本/ETA/风险 ──
     items_total = items_done = tokens = retries = 0
     for st in steps:
@@ -7482,6 +7535,10 @@ def playbook_save(pb):
         return {"error": "缺 name"}
     if not isinstance(pb.get("steps"), list) or not pb["steps"]:
         return {"error": "steps 必须是非空数组"}
+    pb["steps"] = playbook_normalize_steps(pb["steps"])
+    jerr = playbook_validate_jumps(pb["steps"])
+    if jerr:
+        return {"error": jerr}
     pb.setdefault("created", datetime.now().strftime("%Y-%m-%d %H:%M"))
     pb.setdefault("enabled", True)
     pb.setdefault("dry_run", True)
@@ -7561,6 +7618,200 @@ def _eval_guard(expr, vars_):
             ">=": val >= num, "<=": val <= num}[op]
 
 
+RUN_TERMINAL = ("done", "warn", "failed", "blocked", "replanned", "skipped")
+
+
+def _parse_dest(dest):
+    """next|continue|stop|goto:ID|裸 ID → (kind, target)。"""
+    d = str(dest or "next").strip()
+    low = d.lower()
+    if low in ("", "next", "continue"):
+        return "next", None
+    if low in ("stop", "end"):
+        return "stop", None
+    if low.startswith("goto:"):
+        return "goto", d.split(":", 1)[1].strip()
+    return "goto", d
+
+
+def _step_sid(st, i=None):
+    sid = str(st.get("id") or "").strip()
+    if sid:
+        return sid
+    if i is None:
+        i = st.get("i")
+    try:
+        return f"s{int(i) + 1}"
+    except Exception:
+        return ""
+
+
+def _find_step_i(steps, sid):
+    sid = str(sid or "").strip()
+    if not sid:
+        return -1
+    for i, st in enumerate(steps):
+        if _step_sid(st, i) == sid:
+            return i
+    return -1
+
+
+def _apply_branch(steps, from_i, dest, reason=""):
+    """前向跳转：next 无操作；stop 阻断后续 pending；goto 把中间步标 skipped。禁止回跳。"""
+    kind, target = _parse_dest(dest)
+    if kind == "next":
+        return True, "继续下一步"
+    if kind == "stop":
+        n = 0
+        for st in steps[from_i + 1:]:
+            if st.get("status") not in RUN_TERMINAL:
+                st["status"] = "blocked"
+                st["detail"] = reason or "条件不满足，未执行"
+                n += 1
+        return True, (reason or "终止后续") + (f"（跳过 {n} 步）" if n else "")
+    to_i = _find_step_i(steps, target)
+    if to_i < 0:
+        _apply_branch(steps, from_i, "stop", f"跳转目标「{target}」不存在，已终止")
+        return False, f"跳转目标「{target}」不存在"
+    if to_i <= from_i:
+        _apply_branch(steps, from_i, "stop", "禁止回跳（防死循环），已终止")
+        return False, "禁止回跳"
+    n = 0
+    for st in steps[from_i + 1:to_i]:
+        if st.get("status") not in RUN_TERMINAL:
+            st["status"] = "skipped"
+            st["detail"] = reason or "分支未走"
+            n += 1
+    return True, f"跳到 {steps[to_i].get('name') or target}" + (f"（跳过 {n} 步）" if n else "")
+
+
+def _is_waiting_retry(st):
+    ra = st.get("retry_after")
+    try:
+        return bool(ra) and time.time() < float(ra)
+    except Exception:
+        return False
+
+
+def _step_can_retry(st):
+    try:
+        return int(st.get("retry_max") or 0) > int(st.get("retries_used") or 0)
+    except Exception:
+        return False
+
+
+def _schedule_step_retry(st):
+    used = int(st.get("retries_used") or 0) + 1
+    try:
+        delay = max(5, min(600, int(st.get("retry_delay_sec") or 30)))
+    except Exception:
+        delay = 30
+    st["retries_used"] = used
+    st["retry_after"] = time.time() + delay
+    st["status"] = "pending"
+    st["ended"] = ""
+    st["detail"] = f"将重试（第 {used}/{int(st.get('retry_max') or 0)} 次，{delay}s 后）"
+    return True
+
+
+def _fire_step_retry(st):
+    st.pop("retry_after", None)
+    tid = st.get("task_id")
+    if tid:
+        t = batch_load(tid)
+        if t:
+            for it in t.get("items") or []:
+                if it.get("status") in ("failed", "pending"):
+                    it["status"] = "pending"
+                    it["attempts"] = 0
+                    it["error"] = ""
+            t["status"] = "queued"
+            try:
+                _batch_log(t, f"步骤级重试 {st.get('retries_used')}/{st.get('retry_max')}")
+            except Exception:
+                pass
+            batch_save(t)
+            st["status"] = "running"
+            st["started_ts"] = time.time()
+            st["detail"] = f"重试中（第 {st.get('retries_used')}/{st.get('retry_max')} 次）"
+            return True
+        st["task_id"] = ""
+    st["status"] = "pending"
+    st["detail"] = f"重试中（第 {st.get('retries_used')}/{st.get('retry_max')} 次）"
+    return True
+
+
+def _step_timed_out(st, now=None):
+    try:
+        tmin = int(st.get("timeout_min") or 0)
+    except Exception:
+        tmin = 0
+    if tmin <= 0 or st.get("status") != "running":
+        return False
+    try:
+        started = float(st.get("started_ts") or 0)
+    except Exception:
+        started = 0
+    if not started:
+        return False
+    return (now or time.time()) - started > tmin * 60
+
+
+def _pb_copy_flow(st):
+    def _ii(k, d=0):
+        try:
+            return int(st.get(k) if st.get(k) not in (None, "") else d)
+        except Exception:
+            return d
+    return {
+        "id": str(st.get("id") or "").strip(),
+        "on_true": st.get("on_true") or "next",
+        "on_false": st.get("on_false") or "stop",
+        "next": st.get("next") or "next",
+        "retry_max": max(0, min(5, _ii("retry_max", 0))),
+        "retry_delay_sec": max(5, min(600, _ii("retry_delay_sec", 30))),
+        "timeout_min": max(0, min(180, _ii("timeout_min", 0))),
+    }
+
+
+def playbook_normalize_steps(steps):
+    out = []
+    for i, st in enumerate(steps or []):
+        s = dict(st)
+        s.update(_pb_copy_flow(s))
+        if not s.get("id"):
+            s["id"] = f"s{i + 1}"
+        out.append(s)
+    return out
+
+
+def _preview_skip_names(steps, from_i, dest):
+    kind, target = _parse_dest(dest)
+    if kind == "stop":
+        return [st.get("name") or st.get("id") or "" for st in steps[from_i + 1:]]
+    if kind == "goto":
+        to = _find_step_i(steps, target)
+        if to > from_i:
+            return [st.get("name") or st.get("id") or "" for st in steps[from_i + 1:to]]
+    return []
+
+
+def playbook_validate_jumps(steps):
+    ids = {_step_sid(st, i) for i, st in enumerate(steps)}
+    labels = {"on_true": "成立", "on_false": "不成立", "next": "完成后"}
+    for i, st in enumerate(steps):
+        fields = ("on_true", "on_false") if st.get("type") == "guard" else ("next",)
+        for field in fields:
+            kind, target = _parse_dest(st.get(field) or "next")
+            if kind != "goto":
+                continue
+            if target not in ids:
+                return f"步骤「{st.get('name') or st.get('id')}」的{labels.get(field, field)}跳到未知目标 {target}"
+            if _find_step_i(steps, target) <= i:
+                return f"步骤「{st.get('name') or st.get('id')}」禁止回跳（防死循环）"
+    return ""
+
+
 DEFAULT_PB_LIMITS = {"max_runs_per_day": 50, "max_concurrent": 2, "cooldown_min": 5, "max_steps": 12}
 
 
@@ -7607,8 +7858,11 @@ def playbook_run(pb, by="playbook", proj=None, force=False, _internal=False):
             return {"error": "已被硬闸拦截：" + reason, "blocked": True}
     steps = []
     _loops = []
-    for st in (pb.get("steps") or [])[:12]:
+    for i, st in enumerate(playbook_normalize_steps(pb.get("steps") or [])[:12]):
         t = str(st.get("type", "preset"))
+        flow = _pb_copy_flow(st)
+        if not flow.get("id"):
+            flow["id"] = f"s{i + 1}"
         if t == "loop":
             try:
                 lid = loop_new(proj, st.get("item_id") or ("pb-" + datetime.now().strftime("%y%m%d") + "-" + secrets.token_hex(2)),
@@ -7616,22 +7870,22 @@ def playbook_run(pb, by="playbook", proj=None, force=False, _internal=False):
                                lang=st.get("lang", "zh"), topic=st.get("topic", ""), brief=st.get("brief", ""),
                                template_id=st.get("template_id", ""))
                 _loops.append(lid)
-                steps.append({"name": st.get("name") or "Loop", "type": "note", "status": "done",
+                steps.append({**flow, "name": st.get("name") or "Loop", "type": "note", "status": "done",
                               "detail": "已发起 Loop " + lid})
             except Exception as e:
-                steps.append({"name": st.get("name") or "Loop", "type": "note", "status": "failed",
+                steps.append({**flow, "name": st.get("name") or "Loop", "type": "note", "status": "failed",
                               "detail": str(e)[:160]})
         elif t == "verify":
-            steps.append({"name": st.get("name") or "验证", "type": "verify", "status": "pending",
+            steps.append({**flow, "name": st.get("name") or "验证", "type": "verify", "status": "pending",
                           "urls": st.get("urls") or []})
         elif t == "guard":
-            steps.append({"name": st.get("name") or "条件", "type": "guard", "status": "pending",
-                          "expr": st.get("expr", ""), "on_false": st.get("on_false", "stop")})
+            steps.append({**flow, "name": st.get("name") or "条件", "type": "guard", "status": "pending",
+                          "expr": st.get("expr", "")})
         elif t == "spec":
-            steps.append({"name": st.get("name") or "批量执行", "type": "batch", "status": "pending",
+            steps.append({**flow, "name": st.get("name") or "批量执行", "type": "batch", "status": "pending",
                           "spec": st.get("spec"), "opt": st.get("opt") or {"dry_run": True}})
         else:  # preset
-            steps.append({"name": st.get("name") or st.get("preset") or "批量执行", "type": "batch",
+            steps.append({**flow, "name": st.get("name") or st.get("preset") or "批量执行", "type": "batch",
                           "status": "pending", "preset": st.get("preset"),
                           "opt": {**(st.get("opt") or {}), "dry_run": pb.get("dry_run", True)}})
     run = run_new(pb.get("name") or "剧本执行", steps, proj=proj, by=by, kind="playbook",
@@ -7653,9 +7907,11 @@ def playbook_preview(pb, proj=None):
     """试运行预览（不创建任何任务）：逐步骤展开，显示将处理什么、多少条。"""
     proj = proj or pb.get("proj") or DEFAULT_PROJECT
     out = []
-    for i, st in enumerate((pb.get("steps") or [])[:12]):
+    norm = playbook_normalize_steps(pb.get("steps") or [])
+    for i, st in enumerate(norm[:12]):
         t = str(st.get("type", "preset"))
-        row = {"i": i + 1, "name": st.get("name") or "", "type": t}
+        row = {"i": i + 1, "name": st.get("name") or "", "type": t, "id": st.get("id") or f"s{i+1}",
+               "retry_max": st.get("retry_max") or 0, "timeout_min": st.get("timeout_min") or 0}
         try:
             if t == "preset":
                 ex = preset_expand(st.get("preset"), st.get("opt") or {}, proj)
@@ -7666,14 +7922,21 @@ def playbook_preview(pb, proj=None):
                                 "count": len(ex.get("items") or []), "note": ex.get("note", ""),
                                 "sample": [x.get("slug") or x.get("item_id") or x.get("doc_id") for x in (ex.get("items") or [])[:3]]})
             elif t == "guard":
-                row.update({"expr": st.get("expr", ""), "on_false": st.get("on_false", "stop")})
+                skip_t = _preview_skip_names(norm, i, st.get("on_true") or "next")
+                skip_f = _preview_skip_names(norm, i, st.get("on_false") or "stop")
+                row.update({"expr": st.get("expr", ""),
+                            "on_true": st.get("on_true") or "next", "on_false": st.get("on_false") or "stop",
+                            "skip_if_true": skip_t, "skip_if_false": skip_f})
             elif t == "verify":
-                row.update({"urls": st.get("urls") or []})
+                row.update({"urls": st.get("urls") or [], "next": st.get("next") or "next"})
             elif t == "spec":
                 sp = st.get("spec") or {}
-                row.update({"task_type": sp.get("type"), "count": len(sp.get("items") or [])})
+                row.update({"task_type": sp.get("type"), "count": len(sp.get("items") or []),
+                            "next": st.get("next") or "next"})
             elif t == "loop":
                 row.update({"task_type": "loop", "count": 1, "note": st.get("topic", "")})
+            else:
+                row.update({"next": st.get("next") or "next"})
         except Exception as e:
             row.update({"error": str(e)[:160], "count": 0})
         out.append(row)

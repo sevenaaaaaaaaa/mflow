@@ -14,28 +14,39 @@
   "steps": [
    {
     "name": "QA 扫描",
+    "id": "scan",
     "type": "preset",
     "preset": "qa-scan",
     "opt": {
      "limit": 200
-    }
+    },
+    "retry_max": 1,
+    "retry_delay_sec": 30,
+    "timeout_min": 20
    },
    {
     "name": "条件：有发现",
+    "id": "has",
     "type": "guard",
     "expr": "findings>0",
-    "on_false": "stop"
+    "on_true": "next",
+    "on_false": "goto:verify"
    },
    {
     "name": "字段修复",
+    "id": "fix",
     "type": "preset",
     "preset": "qa-field-fix",
     "opt": {
      "limit": 50
-    }
+    },
+    "retry_max": 1,
+    "retry_delay_sec": 30,
+    "timeout_min": 30
    },
    {
     "name": "验证",
+    "id": "verify",
     "type": "verify"
    }
   ],

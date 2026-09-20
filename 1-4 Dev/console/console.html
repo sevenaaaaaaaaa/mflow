@@ -307,6 +307,7 @@ button.clicked{animation:clickpulse .45s ease}
 .run-dot.warn{background:var(--warn)}
 .run-dot.replanned{background:var(--warn);opacity:.75}
 .run-dot.blocked{background:var(--muted);opacity:.6}
+.run-dot.skipped{background:var(--faint);color:var(--muted)}
 @keyframes runpulse{0%,100%{box-shadow:0 0 0 0 var(--accent-soft)}50%{box-shadow:0 0 0 8px transparent}}
 .run-line{flex:1;width:2px;background:var(--border);margin:2px 0}
 .run-line.done{background:var(--ok)}
@@ -1852,6 +1853,18 @@ function pbEdit(id){const pb=(PB_DATA.playbooks||[]).find(x=>x.id===id);if(!pb)r
  PB_EDIT=JSON.parse(JSON.stringify(pb));PB_EDIT.limits=PB_EDIT.limits||{max_runs_per_day:50,max_concurrent:2,cooldown_min:5};
  pbLoadPresets().then(()=>pbEditorRender())}
 function pbLoadPresets(){return api('api/presets').then(ps=>{PB_PRESETS=ps||[]}).catch(()=>{})}
+function pbDestSel(i,field,cur){
+ const v=(cur==='continue')?'next':(cur||'next');
+ const opts=[['next','下一步'],['stop','终止']];
+ (PB_EDIT.steps||[]).forEach((s,j)=>{
+  if(j<=i)return;
+  const id=s.id||('s'+(j+1));
+  opts.push(['goto:'+id,'跳到 '+(j+1)+'. '+(s.name||id)]);
+ });
+ if(v&&v.indexOf('goto:')===0&&!opts.some(o=>o[0]===v))opts.push([v,v]);
+ return `<select onchange="PB_EDIT.steps[${i}].${field}=this.value" style="padding:3px 6px;font-size:12px">
+  ${opts.map(([val,l])=>`<option value="${val}" ${v===val?'selected':''}>${l}</option>`).join('')}</select>`;
+}
 function pbEditorRender(){const pb=PB_EDIT;if(!pb)return;
  const tr=pb.trigger||{};
  const stepHtml=(st,i)=>`<div class="pb-step" draggable="true" ondragstart="pbDragStart(${i})" ondragover="event.preventDefault()" ondrop="pbDrop(${i})"
@@ -1867,12 +1880,19 @@ function pbEditorRender(){const pb=PB_EDIT;if(!pb)return;
      ${st.type==='preset'?`<select onchange="PB_EDIT.steps[${i}].preset=this.value" style="width:200px;padding:3px 6px;font-size:12px">
         <option value="">选择预设…</option>${PB_PRESETS.map(pp=>`<option value="${esc(pp.id)}" ${st.preset===pp.id?'selected':''}>${esc(pp.name)}</option>`).join('')}</select>
        <input placeholder="opt JSON 如 {limit:10,lang:en}" value='${esc(JSON.stringify(st.opt||{}))}' oninput="pbStepOpt(${i},this.value)" style="flex:1;min-width:160px;padding:3px 6px;font-size:12px">`:''}
-     ${st.type==='guard'?`<input placeholder="条件如 findings>0" value="${esc(st.expr||'')}" oninput="PB_EDIT.steps[${i}].expr=this.value" style="width:180px;padding:3px 6px;font-size:12px">
-       <select onchange="PB_EDIT.steps[${i}].on_false=this.value" style="padding:3px 6px;font-size:12px">
-        <option value="stop" ${st.on_false!=='continue'?'selected':''}>不成立→终止后续</option>
-        <option value="continue" ${st.on_false==='continue'?'selected':''}>不成立→继续</option></select>`:''}
+     ${st.type==='guard'?`<input placeholder="条件如 findings>0" value="${esc(st.expr||'')}" oninput="PB_EDIT.steps[${i}].expr=this.value" style="width:180px;padding:3px 6px;font-size:12px">`:''}
      ${st.type==='verify'?`<input placeholder="urls（可选，逗号分隔）" value="${esc((st.urls||[]).join(','))}" oninput="PB_EDIT.steps[${i}].urls=this.value.split(',').filter(Boolean)" style="flex:1;padding:3px 6px;font-size:12px">`:''}
      ${st.type==='spec'?`<input placeholder='spec JSON 如 {"type":"field_patch","items":[...]}' value='${esc(JSON.stringify(st.spec||{}))}' oninput="pbStepSpec(${i},this.value)" style="flex:1;padding:3px 6px;font-size:12px">`:''}
+   </div>
+   <div class="row" style="margin-top:6px;gap:6px;font-size:12px;flex-wrap:wrap;align-items:center">
+     <label>id <input value="${esc(st.id||('s'+(i+1)))}" oninput="PB_EDIT.steps[${i}].id=this.value" style="width:72px;padding:2px 6px;font-size:12px"></label>
+     ${st.type==='guard'?`<span class="mut">成立→</span>${pbDestSel(i,'on_true',st.on_true||'next')}<span class="mut">不成立→</span>${pbDestSel(i,'on_false',st.on_false||'stop')}`
+      :`<span class="mut">完成后→</span>${pbDestSel(i,'next',st.next||'next')}`}
+   </div>
+   <div class="row" style="margin-top:4px;gap:10px;font-size:12px;flex-wrap:wrap">
+     <label>重试 <input type="number" min="0" max="5" value="${st.retry_max||0}" oninput="PB_EDIT.steps[${i}].retry_max=+this.value" style="width:48px;padding:2px 6px;font-size:12px"> 次</label>
+     <label>间隔 <input type="number" min="5" max="600" value="${st.retry_delay_sec||30}" oninput="PB_EDIT.steps[${i}].retry_delay_sec=+this.value" style="width:56px;padding:2px 6px;font-size:12px"> 秒</label>
+     <label>超时 <input type="number" min="0" max="180" value="${st.timeout_min||0}" oninput="PB_EDIT.steps[${i}].timeout_min=+this.value" style="width:48px;padding:2px 6px;font-size:12px"> 分（0=不限）</label>
    </div></div>`;
  openDrawer('剧本编辑 · '+esc(pb.name||''), `
   <div class="kv" style="grid-template-columns:90px 1fr">
@@ -1909,7 +1929,10 @@ function pbPreview(ev){return withBtn(ev,async()=>{const r=await api('api/playbo
  const rows=(r.steps||[]).map(x=>`<div style="padding:7px 0;border-bottom:1px solid var(--border)">
    <b style="font-size:12.5px">${x.i}. ${esc(x.name||x.type)}</b>
    <span class="badge" style="margin-left:6px">${esc(x.type)}</span>
-   ${x.error?`<span class="bad">${esc(x.error)}</span>`:(x.type==='preset'?`<span class="mut"> → ${esc(x.task_type||'')} · <b>${x.count||0}</b> 条${x.note?' · '+esc(x.note):''}</span>`:(x.type==='guard'?`<span class="mut"> 条件 ${esc(x.expr||'')}（不成立→${esc(x.on_false||'stop')}）</span>`:''))}
+   ${x.error?`<span class="bad">${esc(x.error)}</span>`:(x.type==='preset'?`<span class="mut"> → ${esc(x.task_type||'')} · <b>${x.count||0}</b> 条${x.note?' · '+esc(x.note):''}</span>`:(x.type==='guard'?`<span class="mut"> 条件 ${esc(x.expr||'')}（成立→${esc(x.on_true||'next')} / 不成立→${esc(x.on_false||'stop')}）</span>`:''))}
+   ${(x.skip_if_false||[]).length?`<div class="mut" style="font-size:10.5px;margin-left:14px">不成立将跳过：${x.skip_if_false.map(esc).join('、')}</div>`:''}
+   ${x.retry_max?`<span class="mut" style="font-size:10.5px"> · 失败重试 ${x.retry_max} 次</span>`:''}
+   ${x.timeout_min?`<span class="mut" style="font-size:10.5px"> · 超时 ${x.timeout_min} 分</span>`:''}
    ${(x.sample||[]).length?`<div class="mut" style="font-size:10.5px;margin-left:14px">例：${x.sample.map(esc).join('、')}</div>`:''}</div>`).join('');
  $('drawer-body').innerHTML=`<div class="card" style="padding:10px;margin-bottom:10px;border-left:3px solid var(--accent)">
    <b style="font-size:12.5px">试运行预览（不创建任何任务）</b>
@@ -1918,12 +1941,12 @@ function pbPreview(ev){return withBtn(ev,async()=>{const r=await api('api/playbo
 },{busyText:'预览中…',okText:'已预览'});}
 function pbStepType(i,v){const st=PB_EDIT.steps[i];st.type=v;
  if(v==='preset'){st.preset=st.preset||'qa-scan';st.opt=st.opt||{limit:50};delete st.expr;}
- if(v==='guard'){st.expr=st.expr||'findings>0';st.on_false=st.on_false||'stop';delete st.preset;}
+ if(v==='guard'){st.expr=st.expr||'findings>0';st.on_true=st.on_true||'next';st.on_false=st.on_false||'stop';delete st.preset;}
  if(v==='verify'){st.urls=st.urls||[];delete st.preset;}
  pbEditorRender()}
 function pbStepOpt(i,v){try{PB_EDIT.steps[i].opt=JSON.parse(v||'{}')}catch(e){}}
 function pbStepSpec(i,v){try{PB_EDIT.steps[i].spec=JSON.parse(v||'{}')}catch(e){}}
-function pbStepAdd(){PB_EDIT.steps=PB_EDIT.steps||[];PB_EDIT.steps.push({name:'新步骤',type:'preset',preset:'qa-scan',opt:{limit:50}});pbEditorRender()}
+function pbStepAdd(){PB_EDIT.steps=PB_EDIT.steps||[];PB_EDIT.steps.push({name:'新步骤',id:'s'+(PB_EDIT.steps.length+1),type:'preset',preset:'qa-scan',opt:{limit:50},retry_max:0,timeout_min:0});pbEditorRender()}
 function pbStepDel(i){PB_EDIT.steps.splice(i,1);pbEditorRender()}
 function pbMove(i,d){const a=PB_EDIT.steps;const j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];pbEditorRender()}
 function pbDragStart(i){PB_DRAG=i}
@@ -3340,11 +3363,12 @@ function runDetail(id){RUN_ID=id;api('api/run/detail?id='+encodeURIComponent(id)
      :`<button class="mini" onclick="openReader('${esc(x.path)}')">📄 ${esc(x.label)}</button>`)).join('')}</div></div>`:'';
  $('run-canvas').innerHTML=`<div class="run-pbar"><div style="width:${ov.pct||0}%"></div></div>`+liveLine+metricsRow+riskBanner+
   steps.map((st,i)=>{
-   const dot={done:'✓',failed:'✕',warn:'!',running:'●',replanned:'↻',blocked:'—',pending:i+1}[st.status]||i+1;
+   const dot={done:'✓',failed:'✕',warn:'!',running:'●',replanned:'↻',blocked:'—',skipped:'↷',pending:i+1}[st.status]||i+1;
    const prog=(st.type==='batch'&&st.progress!=null)?`<div class="run-step-progress"><div style="width:${st.progress}%"></div></div>`:'';
+   const waitRetry=st.status==='pending'&&st.retry_after;
    return `<div class="run-step">
-     <div class="run-rail"><span class="run-dot ${st.status}">${dot}</span>${i<steps.length-1?`<span class="run-line ${st.status==='done'?'done':''}"></span>`:''}</div>
-     <div class="run-body"><div class="rn">${esc(st.name)} ${st.status==='running'?'<span class="mut" style="font-size:11px">进行中…</span>':(st.status==='replanned'?'<span class="warn" style="font-size:11px">已重规划</span>':(st.status==='blocked'?'<span class="mut" style="font-size:11px">已跳过</span>':''))}</div>
+     <div class="run-rail"><span class="run-dot ${st.status}">${dot}</span>${i<steps.length-1?`<span class="run-line ${st.status==='done'||st.status==='skipped'?'done':''}"></span>`:''}</div>
+     <div class="run-body"><div class="rn">${esc(st.name)} ${st.status==='running'?'<span class="mut" style="font-size:11px">进行中…</span>':(st.status==='replanned'?'<span class="warn" style="font-size:11px">已重规划</span>':(st.status==='blocked'?'<span class="mut" style="font-size:11px">已跳过</span>':(st.status==='skipped'?'<span class="mut" style="font-size:11px">分支未走</span>':(waitRetry?'<span class="warn" style="font-size:11px">等待重试…</span>':''))))}</div>
       <div class="rd">${esc(st.detail||'')}</div>${prog}
       ${st.task_id?`<button class="mini" style="margin-top:6px" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(st.task_id)}'),600)">查看任务 →</button>`:''}</div></div>`}).join('')+
   delHtml+`<div class="row" style="margin-top:6px">

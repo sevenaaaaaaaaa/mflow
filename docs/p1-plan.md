@@ -124,9 +124,9 @@
 - 实测：每日 QA 闭环 → QA扫描 → findings>0 成立 → 字段修复 → 验证（100%）。
 
 ### 后续（更智能/自进化）
-- 剧本分支（if/else）与步骤级重试/超时。
+- ✅ 剧本分支（if/else）与步骤级重试/超时（2026-09-20）：步骤 `id` + `on_true`/`on_false`/`next` 支持 `next|stop|goto:ID`（仅前向，防死循环）；未走分支标 `skipped`。步骤级 `retry_max`/`retry_delay_sec`/`timeout_min`（超时取消关联批量任务后可重试）。编辑器可视化配置；试运行预览显示将跳过的步骤。模板「每日 QA 闭环」：无发现 → 跳过修复、仍验证。
 - 失败与结果 → 自动提炼规则/禁用词；质量趋势 → 自动调参；自检 block 自动修复；记忆写回。
-- 子代理分工（planner→workers→reviewer）并发；RAG rerank；命令面板最近/收藏。
+- 子代理分工（planner→workers→reviewer）并发。
 
 
 ---
