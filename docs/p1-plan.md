@@ -127,3 +127,17 @@
 - 剧本分支（if/else）与步骤级重试/超时。
 - 失败与结果 → 自动提炼规则/禁用词；质量趋势 → 自动调参；自检 block 自动修复；记忆写回。
 - 子代理分工（planner→workers→reviewer）并发；RAG rerank；命令面板最近/收藏。
+
+
+---
+
+### 自愈 / 自进化 / 易用敏捷（2026-09-20）
+
+**自愈**：`selfcheck_autofix()` 一键修复自检中带安全动作的项（熔断/卡住任务/维护/RAG 索引/失败重试）；后台 `selfheal_tick()` 每 ~10 分钟静默自愈；自检新增 RAG 索引项。端点 `POST /api/selfcheck/autofix`。
+
+**自我进化**：`learn_from_failures(days)` 聚合近期失败类别 → 生成学习项（含建议动作），落 `run/learnings.json`；`POST /api/learnings/scan`、`GET /api/learnings`；可复用 `self_evolve_apply` 生成提示词提示/禁用词。
+
+**更易用 / 更敏捷**：
+- 命令面板 **收藏（★）+ 最近使用**（localStorage，空查询时置顶）。
+- **全局快捷键**：`⌘K`/`/` 搜索面板、`?` 帮助、`g h/i/a/r/b/t/m/s/c/q/l/k/d` 快速导航、`Esc` 关闭。
+- **帮助浮层**（12 条快捷键）。
