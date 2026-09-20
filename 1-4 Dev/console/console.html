@@ -1759,7 +1759,7 @@ function memEntEdit(id,name,notes){const n=prompt('更新「'+name+'」的说明
  api('api/memory/entity',{id,note:n}).then(r=>{if(r.error)return toast(r.error,'bad');toast('已更新实体','ok');memLoad()})}
 /* ---- 自动化 ---- */
 function loadAuto(){pbLoad();api('api/runs').then(rr=>{
- const runs=(rr&&rr.runs)||[];
+ const runs=Array.isArray(rr)?rr:((rr&&rr.runs)||[]);
  const nav=$('nav-auto');const n=(PB_DATA.playbooks||[]).filter(x=>x.enabled).length;if(nav)nav.textContent=n||'';
  const el=$('auto-body');if(el){
   const mine=runs.filter(r=>r.kind==='playbook'||r.playbook).slice(0,8);
