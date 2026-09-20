@@ -1768,7 +1768,8 @@ function loadAuto(){pbLoad();api('api/automations').then(arr=>{
    <td><b>${esc(a.name||a.id)}</b><div class="mut" style="font-size:10.5px">${esc(a.id)} · ${esc(a.spec&&(a.spec.preset||(a.spec.steps?'plan':a.spec.type))||'')}</div></td>
    <td>${esc({preset:'预设',plan:'编排',batch:'批量',loop:'Loop'}[a.mode]||a.mode)}</td>
    <td>${esc(sch(a.schedule))}</td>
-   <td>${a.dry_run?'<span class="badge dist">dry-run</span>':'<span class="badge pipe">真实</span>'}</td>
+   <td>${a.dry_run?'<span class="badge dist">dry-run</span>':'<span class="badge pipe">真实</span>'}
+    <div class="mut" style="font-size:10px">硬闸 每日≤${(a.limits||{}).max_runs_per_day||50} 并发≤${(a.limits||{}).max_concurrent||2}${a.runs_today?' · 今日'+a.runs_today:''}</div></td>
    <td class="mut" style="font-size:11px">${esc(a.last_run||'—')}${a.task_id?'<div>'+esc(a.task_id)+'</div>':''}</td>
    <td><span class="badge" style="background:${a.enabled?'var(--ok)':'var(--muted)'}">${a.enabled?'启用':'停用'}</span></td>
    <td style="white-space:nowrap"><button class="mini" onclick="autoRun('${esc(a.id)}')">立即运行</button>
@@ -1887,8 +1888,20 @@ function pbEditorRender(){const pb=PB_EDIT;if(!pb)return;
    </div></div>
   <div><div class="row" style="justify-content:space-between;margin-bottom:6px"><b style="font-size:12.5px">步骤（可拖拽/↑↓排序）</b>
    <button class="mini" onclick="pbStepAdd()">＋ 加步骤</button></div>${(pb.steps||[]).map(stepHtml).join('')||emptyBox('🧩','还没有步骤','加一个','pbStepAdd()')}</div>`,
-  [['保存', 'pbSave(event)']]);
+  [['试运行预览', 'pbPreview(event)'],['保存', 'pbSave(event)']]);
 }
+function pbPreview(ev){return withBtn(ev,async()=>{const r=await api('api/playbooks/preview',{playbook:PB_EDIT});
+ if(r.error)throw new Error(r.error);
+ const rows=(r.steps||[]).map(x=>`<div style="padding:7px 0;border-bottom:1px solid var(--border)">
+   <b style="font-size:12.5px">${x.i}. ${esc(x.name||x.type)}</b>
+   <span class="badge" style="margin-left:6px">${esc(x.type)}</span>
+   ${x.error?`<span class="bad">${esc(x.error)}</span>`:(x.type==='preset'?`<span class="mut"> → ${esc(x.task_type||'')} · <b>${x.count||0}</b> 条${x.note?' · '+esc(x.note):''}</span>`:(x.type==='guard'?`<span class="mut"> 条件 ${esc(x.expr||'')}（不成立→${esc(x.on_false||'stop')}）</span>`:''))}
+   ${(x.sample||[]).length?`<div class="mut" style="font-size:10.5px;margin-left:14px">例：${x.sample.map(esc).join('、')}</div>`:''}</div>`).join('');
+ $('drawer-body').innerHTML=`<div class="card" style="padding:10px;margin-bottom:10px;border-left:3px solid var(--accent)">
+   <b style="font-size:12.5px">试运行预览（不创建任何任务）</b>
+   <div class="mut" style="font-size:11.5px;margin-top:4px">共将处理 <b>${r.total_items||0}</b> 条 · dry_run=${r.dry_run} · 硬闸：每日≤${(r.limits||{}).max_runs_per_day} 并发≤${(r.limits||{}).max_concurrent} 冷却≥${(r.limits||{}).cooldown_min}min</div></div>${rows}`;
+ return r;
+},{busyText:'预览中…',okText:'已预览'});}
 function pbStepType(i,v){const st=PB_EDIT.steps[i];st.type=v;
  if(v==='preset'){st.preset=st.preset||'qa-scan';st.opt=st.opt||{limit:50};delete st.expr;}
  if(v==='guard'){st.expr=st.expr||'findings>0';st.on_false=st.on_false||'stop';delete st.preset;}
