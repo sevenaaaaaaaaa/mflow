@@ -156,3 +156,11 @@
 ### 事故与修复（2026-09-20）
 - **剧本重复触发**：`playbook_run` 用带校验的 `playbook_save` 写 `last_run` 被拒 → 每 5s 重复触发。修复：`playbook_patch` 局部更新 + `playbook_save` 兼容 merge + tick 最小间隔 10 分钟；清理 11 个重复任务。
 - **系统配额自锁**：系统执行者（schedule/automation/mcp/playbook）计入用户配额被打满 → health=bad 且自动化被拒。修复：`SYSTEM_ACTORS` 豁免。
+
+
+---
+
+### 剧本硬闸 + 可视化编辑（2026-09-20）
+- **单剧本硬闸**：`limits{max_runs_per_day, max_concurrent, cooldown_min, max_steps}`（默认 50/2/5/12）；`playbook_limits_check` 在所有触发路径（手动/定时/事件）统一校验；被拦时发 `playbook.blocked` webhook；记录 `runs_today/day`。
+- **僵尸 run 回收** `run_gc()`：长时间 running 且无存活批量任务 → 标记 failed（执行器每 5 分钟巡检）。修复硬闸被僵尸占用。
+- **可视化编辑器**：抽屉式；名称/图标/说明/启停/dry-run；触发器（手动/定时/每周/事件+match）；硬闸三项；步骤支持**拖拽与 ↑↓ 排序**、类型（预设/规格/条件/验证）、预设下拉、opt JSON、条件表达式与 on_false、verify urls。
