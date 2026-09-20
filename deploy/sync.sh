@@ -123,6 +123,7 @@ SYNC_ITEMS=(
     "./1-4 Dev/scripts/hooks/|${REMOTE_ROOT}/1-4 Dev/scripts/hooks/"
     "./1-4 Dev/scripts/session-init.sh|${REMOTE_ROOT}/1-4 Dev/scripts/session-init.sh"
     "./1-4 Dev/scripts/run-tests.sh|${REMOTE_ROOT}/1-4 Dev/scripts/run-tests.sh"
+    "./1-4 Dev/scripts/mcp_server.py|${REMOTE_ROOT}/1-4 Dev/scripts/mcp_server.py"
     "./1-4 Dev/scripts/publish_adapters/|${REMOTE_ROOT}/1-4 Dev/scripts/publish_adapters/"
     "./1-4 Dev/scripts/trident/|${REMOTE_ROOT}/1-4 Dev/scripts/trident/"
     "./1-4 Dev/scripts/library/|${REMOTE_ROOT}/1-4 Dev/scripts/library/"
