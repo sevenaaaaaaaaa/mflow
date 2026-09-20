@@ -1090,7 +1090,8 @@ body.sb-open #sb-mask{display:block}
       <div class="row" style="margin-top:8px"><input id="em-default" placeholder="默认收件人（无对应用户邮箱时用，可多个逗号分隔）" style="flex:1">
         <button class="btn primary" onclick="emailSave()">保存邮件配置</button></div>
       <div id="em-users" style="margin-top:10px"></div>
-      <div class="mut" id="em-status" style="margin-top:6px">批量任务完成/失败/熔断时，若创建者当前不在登录态，则发邮件提醒他回来查看。</div></div>
+      <div class="mut" id="em-status" style="margin-top:6px">批量任务完成/失败/熔断时，若创建者当前不在登录态，则发邮件提醒他回来查看。<br>
+       <b>SMTP 留空 = 走本机 postfix/sendmail 直发（无需凭证，已验证可用）</b>；也可填第三方 SMTP（如 QQ/企业邮箱授权码）。</div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>开放接入 <span class="mut">MCP / REST / 事件</span></h3>
       <button class="more" onclick="openReader('docs/mcp.md')">查看文档 →</button></div>
       <div class="mut" id="open-status" style="font-size:12px;line-height:1.9">加载中…</div></div>
