@@ -398,8 +398,9 @@ EMAIL_FILE = RUN_DIR / "email.json"
 
 
 def email_cfg():
-    return read_json(EMAIL_FILE, {"enabled": False, "host": "", "port": 465, "user": "", "pass": "",
-                                  "sender": "", "tls": "ssl", "recipients": {}, "default_to": ""})
+    return read_json(EMAIL_FILE, {"enabled": True, "host": "", "port": 465, "user": "", "pass": "",
+                                  "sender": "mflow@nownexts.com", "tls": "sendmail",
+                                  "recipients": {}, "default_to": ""})
 
 
 def user_email(username):
@@ -421,14 +422,31 @@ def user_online(username):
     return False
 
 
+def _sendmail_send(to, subject, body, sender="mflow@nownexts.com"):
+    """本机 postfix/sendmail 直发（无需凭证）。"""
+    try:
+        msg = ("From: " + sender + "\nTo: " + to + "\nSubject: " + subject +
+               "\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\n\n" + body)
+        pr = subprocess.run(["/usr/sbin/sendmail", "-t", "-i", "-f", sender],
+                            input=msg.encode("utf-8"), capture_output=True, timeout=30)
+        if pr.returncode == 0:
+            return True, "已通过本机 sendmail 投递"
+        return False, ("sendmail 失败：" + pr.stderr.decode(errors="ignore")[:160])
+    except Exception as e:
+        return False, str(e)[:160]
+
+
 def email_send(to, subject, body):
-    """SMTP 发送；未配置则返回 (False, '未配置')。"""
+    """发送邮件：SMTP（若配置）否则本机 sendmail（无需凭证）。"""
     cfg = email_cfg()
-    if not (cfg.get("enabled") and cfg.get("host") and cfg.get("user") and (cfg.get("pass") or cfg.get("sender"))):
-        return False, "邮件未配置（设置 → 通知 → SMTP）"
     to = to or cfg.get("default_to") or ""
     if not to:
         return False, "无收件人"
+    # 未配置 SMTP 时，走本机 sendmail
+    if not (cfg.get("host") and cfg.get("user")):
+        if os.path.exists("/usr/sbin/sendmail"):
+            return _sendmail_send(to, subject, body, cfg.get("sender") or "mflow@nownexts.com")
+        return False, "既未配置 SMTP，也无本机 sendmail"
     try:
         import smtplib
         from email.mime.text import MIMEText
@@ -458,7 +476,7 @@ def notify_offline(owner, subject, body):
     """负责人不在登录态 → 邮件；顺带飞书。返回发送结果摘要。"""
     sent = []
     if owner and not user_online(owner):
-        to = user_email(owner)
+        to = user_email(owner) or (email_cfg().get("default_to") or "")
         ok, info = email_send(to, subject, body)
         sent.append(f"email:{'ok' if ok else info}")
         try:
@@ -3065,7 +3083,7 @@ def mcp_tool(name, args, proj=None):
         if name == "mflow_search_kb":
             return agent_tool("search_kb", a, proj)
         if name == "mflow_semantic_search":
-            return {"results": rag_search(str(a.get("q", "")), int(a.get("k", 6) or 6))}
+            return {"results": rag_search_smart(str(a.get("q", "")), int(a.get("k", 6) or 6))}
         if name == "mflow_recall":
             return agent_tool("recall", a, proj)
         if name == "mflow_list_tasks":
@@ -3379,6 +3397,42 @@ def rag_search(query, k=6, src_filter=None):
 
 def _rrf(rank, k=60):
     return 1.0 / (k + rank)
+
+
+def rag_rerank(query, items, top=5):
+    """用对话模型对候选做重排（无需 embedding）。items=[{title,text,...}]。"""
+    if not items:
+        return []
+    cand = []
+    for i, x in enumerate(items[:20]):
+        cand.append(f"[{i}] {x.get('title') or ''} :: {(x.get('text') or '')[:180]}")
+    try:
+        raw = llm_chat([{"role": "user", "content":
+            "你是检索重排器。根据查询，从候选里挑出最相关的，按相关度降序返回序号。"
+            "只输出 JSON：{\"order\":[序号,...]}（最多 " + str(top) + " 个）。\n\n查询：" + str(query) +
+            "\n\n候选：\n" + "\n".join(cand)}], max_tokens=200, timeout=45)
+        m = re.search(r"\{[\s\S]*\}", raw)
+        d = json.loads(m.group(0)) if m else {}
+        order = [int(i) for i in (d.get("order") or []) if isinstance(i, (int, float)) or str(i).isdigit()]
+        out = []
+        for i in order[:top]:
+            if 0 <= i < len(items):
+                it = dict(items[i]); it["reranked"] = True; out.append(it)
+        return out or items[:top]
+    except Exception as e:
+        print(f"[console] rag_rerank failed: {e}", file=sys.stderr)
+        return items[:top]
+
+
+def rag_search_smart(query, k=6, rerank=True):
+    """先向量/词法召回，再可选 LLM 重排（用现有对话模型）。"""
+    cand = rag_search(query, k=max(12, k * 3))
+    if not cand:
+        return []
+    if rerank and llm_config().get("providers", {}).get(
+            llm_config()["profiles"]["default"]["provider"], {}).get("key"):
+        return rag_rerank(query, cand, top=k)
+    return cand[:k]
 
 
 def rag_status():
@@ -5216,7 +5270,8 @@ def agent_tool(name, args, proj=None):
             return {"count": len(out), "items": out}
 
         if name == "semantic_search":
-            return {"results": rag_search(str(args.get("q", "") or ""), int(args.get("k", 6) or 6))}
+            return {"results": rag_search_smart(str(args.get("q", "") or ""), int(args.get("k", 6) or 6),
+                                                rerank=bool(args.get("rerank", True)))}
 
         if name == "recall":
             hits = recall(str(args.get("q", "") or ""), k=int(args.get("k", 6) or 6))
@@ -8339,7 +8394,10 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/rag/status":
                 return self._send(200, rag_status())
             if parsed.path == "/api/rag/search":
-                return self._send(200, {"results": rag_search(qs.get("q", [""])[0], int(qs.get("k", ["8"])[0] or 8))})
+                _q = qs.get("q", [""])[0]
+                _k = int(qs.get("k", ["8"])[0] or 8)
+                _rr = qs.get("rerank", ["1"])[0] not in ("0", "false")
+                return self._send(200, {"results": rag_search_smart(_q, _k, _rr), "rerank": _rr})
             if parsed.path == "/api/palette":
                 return self._send(200, palette(qs.get("q", [""])[0], self._proj()))
             if parsed.path == "/api/memory":
