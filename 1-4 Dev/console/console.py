@@ -2175,6 +2175,41 @@ def run_replan(run, failed_step):
         return False
 
 
+def run_gc(max_idle_sec=1800):
+    """回收僵尸 run：长时间 running 但无进展（无 running 的批量任务且步骤停滞）→ 标记 failed。"""
+    fixed = []
+    if not RUNS_DIR.exists():
+        return {"fixed": []}
+    for f in RUNS_DIR.glob("run-*.json"):
+        try:
+            if time.time() - f.stat().st_mtime <= max_idle_sec:
+                continue
+            r = read_json(f, {}) or {}
+            if r.get("status") != "running":
+                continue
+            running_tasks = [st.get("task_id") for st in (r.get("steps") or [])
+                             if st.get("status") == "running" and st.get("task_id")]
+            alive = False
+            for tid in running_tasks:
+                t = batch_load(tid) or {}
+                if t.get("status") in ("running", "queued"):
+                    alive = True
+                    break
+            if alive:
+                continue
+            for st in (r.get("steps") or []):
+                if st.get("status") in ("running", "pending"):
+                    st["status"] = "failed"
+                    st["detail"] = (st.get("detail") or "") + "（执行器未跟进，已回收）"
+            r["status"] = "failed"
+            r["gc_at"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            run_save(r)
+            fixed.append(r["id"])
+        except Exception:
+            pass
+    return {"fixed": fixed}
+
+
 def run_view(rid):
     run = run_load(rid)
     if not run:
@@ -3728,6 +3763,11 @@ def batch_worker():
             print(f"[console] playbook tick: {_e}", file=sys.stderr)
         _SELFHEAL_N = globals().get("_SELFHEAL_N", 0) + 1
         globals()["_SELFHEAL_N"] = _SELFHEAL_N
+        if _SELFHEAL_N % 60 == 0:
+            try:
+                run_gc()
+            except Exception as _e:
+                print(f"[console] run_gc: {_e}", file=sys.stderr)
         if _SELFHEAL_N % 120 == 0:
             try:
                 selfheal_tick()
