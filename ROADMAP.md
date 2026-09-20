@@ -2,6 +2,7 @@
 
 > 目标：让任何公司 clone 下来 30 分钟跑通第一个内容工作流，并随使用深度逐步扩展。
 > 状态标记：✅ 已交付 · 🔄 进行中 · 📋 规划
+> 更新：2026-09-20（覆盖至 Phase 22）。进行中的细粒度计划见 `docs/p1-plan.md`；能力现状与缺口见 `docs/capability-matrix.md`；一手记录见 `1-1 Harness/11-knowledge/sessions/`。
 
 ## Phase 0 · 产品化基座（2026-09-15 ✅）
 
@@ -242,6 +243,102 @@
 - ✅ 环境修复：quota-check/lang-check 走 `LOVART_PYTHON`（venv）避免 py3.6 非 ASCII 崩溃；校验口径统一**词当量**
 - 实测：**真实闭环上线 2 篇**（`ai-storefront-designer` + `ai-image-to-sketch`）→ 改稿 ready=True → 链出 patch → **tx 确认写入 Sanity**
 - ⚠ 暴露 4 个生产 bug（hero.title 变 UUID / slug.current 被覆盖→404 / console.py 被误写 / 前端预存 500）→ 已全部修复（patch 不改 slug / H1 标题提取 / git 恢复 / 确认为预存问题）
+
+## Phase 19 · 知识治理 · Anti-Slop · 三模式（2026-09-18 ✅）
+
+**P19.1 首次真实发布闭环**
+- ✅ 2 篇真实工具落地页走完 改稿→四门禁→ready→链出 patch→**tx 真写 Sanity**（`ai-storefront-designer` / `ai-image-to-sketch`）
+- ✅ 代价是抓出 4 个生产级 bug 并全部修复：hero.title 变 UUID · **slug.current 被覆盖致前台 404** · console.py 被编辑脚本误写 · 前端 500（经查为 lovart.ai 预存问题，非 MFlow）
+- ✅ 沉淀铁律：**patch 模式永远不写 slug**；不要用 `_id` 当 title；大改前先 dry-run 并抽检前台渲染
+
+**P19.2 知识库治理**
+- ✅ `GET /api/kb/gaps` 缺口扫描 → 6 个缺口（竞品分析/用户画像/案例库/行业样式/竞品对比/i18n）
+- ✅ 清理 67 篇垃圾（34 TDK + 5 iCloud 副本 + 18 重复 docs + 6 一次性文件）→ 归档不删，**136 → 48 篇有效知识**
+- ✅ 知识库扩充：OpenClaw 指南 / 18 篇 lovart.ai docs / 海外媒体报道 / 竞品 26 家流量 + 12 词簇零覆盖
+
+**P19.3 Anti-Slop Strong 与语言规则**
+- ✅ ANTI_SLOP_STRONG 注入 gen_prompt：29 禁用词 + 8 条 AI 味模式 + 四问自检 + 「删掉后读者不受影响就删」
+- ✅ 实测：生成 647 词 blog → 29 禁用词 **0 命中** → hook PASS
+- ✅ RULES-20/40/60 硬条款化（0% → 100%）；悬空引用 7→0；Harness 目录瘦身 13→10
+- ✅ 关键词情报管道 `GET /api/keyword/intel`（6 源：GSC/Sentinel/竞品词/SERP/GA4/DataWorks）
+
+**P19.4 三模式工作体系**
+- ✅ **Pipeline（手动）→ Flow（半自动）→ Loop（自治）**，代表自动化成熟度演进
+- ✅ `mode_report()` / `mode_switch()` 项目级切换（记 approvals.log）+ 总览页模式选择器
+- ✅ Flow→Loop 升级判断：近 5 次 pass_rate ≥80% 且零熔断 → 建议升级
+
+**P19.5 插件生态与治理面板**
+- ✅ plugin_check 扩到 6 类型（source/publisher/gate/transform/analyzer + manifest）；7 个标准插件注册
+- ✅ `GET /api/governance` 治理面板 API（知识库缺口 + Skills 覆盖 + 规则健康 + 语言/配额/Anti-Slop + 自我进化）
+- ✅ Skills 覆盖审计：发现 topics/solutions/products/news 4 类无专属生成 skill（靠 landing-page 泛化）
+- ✅ 48/48 skill 有 frontmatter 描述；补 3 个 publish skill
+- ✅ UI：116 处 alert 换 Toast + 暗色模式 11 条规则
+
+## Phase 20 · Agent 化与可用性（2026-09-19 ✅ 93 commits）
+
+**P20.1 Agent 底座（P0）**
+- ✅ Agent 记忆接线 + 会话压缩 / 上下文可视化 + 角色 Profile + 失败自愈重规划
+- ✅ **Agent 工具循环 + 执行画布（Run）**：能力不输本地 agent，且全程可视、可取消、可重试
+- ✅ 会话持久化 + Cloudflare 缓存旁路（复用 OpenFlow CF 凭证）
+
+**P20.2 P1 六项**
+- ✅ P1-1 多语言覆盖盘点与补齐（`/api/multilang/coverage|fill`）
+- ✅ P1-1b **记忆审阅 UI**：288 条事实 / 98 实体可「更正」或「标为过时」，叠加 `run/memory-overrides.json`，Agent 立即生效
+- ✅ P1-2 执行器心跳（`run/worker-heartbeat.json`，5s）+ 恢复可解释 + 顶栏状态灯
+- ✅ P1-3 **审阅子代理**：与规划器共享上下文 · 必须引依据（RULES-xx/skill/记忆§）· **只判断不动笔** · **只能收紧** · 不确定即 pass。block 时执行需二次确认
+- ✅ P1-4 内链建议批量化（只读分析 + markdown 报告 + 按站点语言的 token 索引，20 项从"卡住"降到 <8s）
+- ✅ P1-6 插件市场一键安装 + 全 5 类可执行类型 + 启停 + Skills 目录浏览
+
+**P20.3 统一执行方式**
+- ✅ 任务 / 批量 / 编排 / Agent / 自动化 五种入口**可自由互转**：`POST /api/work/convert`
+
+**P20.4 可用性七件套**
+- ✅ 全局命令面板 ⌘K（含 ★收藏 + 最近使用）· 全局快捷键 `g+字母` · 帮助浮层
+- ✅ 变更审计 + 一键回滚（`run/audit-changes.jsonl`，字段级；发布类不自动回滚）
+- ✅ 统一收件箱（系统阻断/待办/失败任务/待授权发布/待执行方案）+ nav 角标
+- ✅ 失败摘要（按原因归类 + 人话建议）+ 一键重试全部失败项
+- ✅ 空状态 CTA 全覆盖（17+ 处）· 窄屏/移动端适配 · 出站 Webhook（可选 HMAC）
+
+**P20.5 RAG 底座**
+- ✅ 可插拔 embedding（配了走远程，未配走本地 TF-IDF）+ 混合检索 RRF + `semantic_search` 工具
+- ✅ 知识中台可视化重构（左筛选 + 右宽结果 + 检索底座状态卡）
+
+## Phase 21 · 自动化剧本 · 开放 · 自愈自进化（2026-09-20 ✅）
+
+**P21.1 Playbook 自动化剧本**
+- ✅ 多步 + 条件 `guard` + 触发器（schedule / event / manual），执行走 Run 画布；`run/playbooks.json` + 6 个模板
+- ✅ **分支 if/else**：步骤 `id` + `on_true`/`on_false`/`next` 取 `next|stop|goto:ID`（**仅前向，防死循环**）；未走分支标 skipped
+- ✅ **步骤级重试/超时**：`retry_max`/`retry_delay_sec`/`timeout_min`（重试排在 run_replan 之前）
+- ✅ **单剧本硬闸** `limits{每日次数/并发/冷却/步数}`（默认 50/2/5/12），覆盖手动/定时/事件全部触发路径，被拦发 `playbook.blocked`
+- ✅ **僵尸 run 回收** `run_gc()`：>30 分钟 running 且批量任务已不在跑 → 标 failed（执行器每 5 分钟巡检）
+- ✅ 可视化编辑器（拖拽 + ↑↓ 排序、类型化字段、触发器、硬闸）+ **试运行预览**（零副作用，先看要动多少条）
+- ✅ **统一**：automations 合并进 Playbook（单一"定时工作"模型），幂等迁移 + 兼容层 + 单一调度链路
+
+**P21.2 事故与护栏（同日发生并修复）**
+- ⚠→✅ **剧本每 5s 重复触发**：`playbook_run` 用带校验的 `playbook_save` 写 `last_run` 被拒 → 从未落盘 → 每周期都判定"到期未运行"。修复 `playbook_patch` 局部更新 + tick 最小间隔 10 分钟；清理 11 个重复任务
+- ⚠→✅ **系统配额自锁**：系统执行者按普通用户计配额被 500 条上限打满 → health=bad 且自动化被自己的配额拒绝。修复 `SYSTEM_ACTORS` 豁免
+
+**P21.3 开放接入（MCP）**
+- ✅ `1-4 Dev/scripts/mcp_server.py` 纯标准库 stdio JSON-RPC，**17 个工具**；动作类工具**强制 dry-run**
+- ✅ HTTP 传输 `POST /api/mcp`（JSON-RPC，协议 2025-06-18）+ `GET /api/mcp/sse`（有界心跳）——远程客户端无需本地进程
+- ✅ 设置页「开放接入」卡 + `docs/mcp.md`；安全边界：**只读 + dry-run，写生产库必须真人会话**
+
+**P21.4 自愈与自我进化**
+- ✅ `selfcheck_autofix()` 一键修复带安全动作的自检项（熔断/卡住任务/维护/RAG 索引/失败重试）；`selfheal_tick()` 每 ~10 分钟静默自愈（仅白名单）
+- ✅ `learn_from_failures()` 失败按类别聚合 → 学习项落 `run/learnings.json`；`apply|ignore`，**review 类拒绝自动应用**
+- ✅ **OPC** `POST /api/playbooks/enable_recommended` 一键装启 4 个推荐剧本
+
+**P21.5 实测澄清（能力边界）**
+- ✅ **DeepSeek 无 embeddings**（`/embeddings` 对任何模型 404）→ 改用**词法召回 + LLM 重排**，无需新厂商
+- ✅ 邮件改走本机 postfix/sendmail（零凭证），SMTP 降级为可选增强
+- ✅ RAG 语料补入 harness RULES + Skills（1,430 → **1,538 块**）——此前质量类提问召不回规则
+
+## Phase 22 · 开工预热（2026-09-20 ✅）
+
+- ✅ `1-4 Dev/scripts/warmup.py`（纯标准库）：用**真实只读 / dry-run** 动作，把 Lovart Global 六个板块的历史记录、findings、缺口清单、报告一次性跑出来，让后台开箱即有内容而非满屏空状态
+- ✅ 安全边界：**不提供 `--real` 开关**，写生产库仍走人工授权；幂等；skip/fail 如实记录，**不补数**
+- ✅ 报告落 `run/logs/warmup-*.md`；文档 `docs/warmup.md`；已纳入 `deploy/sync.sh`
+- ✅ 顺修：**单测污染生产审计日志**——`import console` 即写 `run/approvals.log`（实测一天 92 条噪音）。`RUN_DIR` 改为可由 `MFLOW_RUN_DIR` 覆盖，`run-tests.sh` 强制指向临时目录，并补 3 个隔离用例（**42/42 绿**）
 
 ## 原则
 
