@@ -32,7 +32,9 @@ import markdown as md_lib
 
 PROJECT = Path(__file__).resolve().parents[2]
 CONSOLE_DIR = Path(__file__).resolve().parent
-RUN_DIR = PROJECT / "run"
+# RUN_DIR 可被 MFLOW_RUN_DIR 覆盖——单测/预演必须指向临时目录，
+# 否则 import console 就会往生产的 run/approvals.log 写审计噪音（2026-09-20 实测污染 92 条/天）。
+RUN_DIR = Path(os.environ["MFLOW_RUN_DIR"]).resolve() if os.environ.get("MFLOW_RUN_DIR") else PROJECT / "run"
 STATE_FILE = PROJECT / "1-3 GenFlow" / ".pipeline" / "pipeline-state.json"
 EVENTS_FILE = PROJECT / "1-3 GenFlow" / ".pipeline" / "events.jsonl"
 TASKS_FILE = RUN_DIR / "tasks.json"

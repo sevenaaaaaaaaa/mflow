@@ -418,5 +418,31 @@ class TestPlaybookBranchRetry(unittest.TestCase):
         self.assertEqual(C._preview_skip_names(steps, 1, "stop"), ["修", "验"])
 
 
+class TestRunDirIsolation(unittest.TestCase):
+    """RUN_DIR 隔离——踩过的坑：单测 import console 就往生产 run/approvals.log 写审计噪音。
+
+    错误只犯一次：这条测试保证 MFLOW_RUN_DIR 始终被尊重，
+    run-tests.sh 也必须设置它（否则本用例直接失败）。
+    """
+
+    def test_env_override_is_honored(self):
+        self.assertTrue(
+            os.environ.get("MFLOW_RUN_DIR"),
+            "run-tests.sh 必须设置 MFLOW_RUN_DIR，否则单测会污染生产 run/",
+        )
+        self.assertEqual(
+            C.RUN_DIR, Path(os.environ["MFLOW_RUN_DIR"]).resolve(),
+            "console.RUN_DIR 未跟随 MFLOW_RUN_DIR——审计日志会写回生产目录",
+        )
+
+    def test_not_pointing_at_repo_run(self):
+        self.assertNotEqual(C.RUN_DIR, ROOT / "run")
+
+    def test_derived_paths_follow(self):
+        # TASKS_FILE / PROJECTS_DIR 等派生路径必须一起搬走，否则隔离只做了一半
+        self.assertTrue(str(C.TASKS_FILE).startswith(str(C.RUN_DIR)))
+        self.assertTrue(str(C.PROJECTS_DIR).startswith(str(C.RUN_DIR)))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)
