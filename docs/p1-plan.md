@@ -171,3 +171,11 @@
 - **automations 同款硬闸**：`limits{max_runs_per_day,max_concurrent,cooldown_min}` + `runs_today/day`；列表显示硬闸与今日次数。
 - **剧本试运行预览**：`POST /api/playbooks/preview` 逐步展开（不创建任务），显示每步类型/将处理条数/样例/条件/错误；编辑器「试运行预览」按钮。
 - **邮件/检索用现有资源**：本机 sendmail 发信（无需凭证）；RAG 用现有对话模型做 LLM 重排 + 语料纳入 RULES/Skills（1,538 块）。
+
+
+### 统一：automations 合并进 Playbook（2026-09-20）
+- **单一模型**：Playbook 为唯一"定时工作"模型；automation = 单步剧本（preset/spec/loop）。
+- **迁移** `migrate_automations()`：启动时幂等迁移 `run/automations.json` → playbooks（带 `legacy_automation` 映射），并归档原文件。
+- **兼容层**：`/api/automations*` 全部映射到 playbooks（list/save/delete/run/toggle），旧调用不受影响；`automation_tick` 置空，避免与 `playbook_tick` 双重触发。
+- **UI**：自动化页只有「剧本」列表（唯一的定时工作入口）+「历史执行记录」。
+- 实测：2 条自动化迁为剧本（auto-01f60f→pb-35036f, auto-2aea57→pb-459d02）；兼容端点运行返回 run_id；30s 无重复触发。
