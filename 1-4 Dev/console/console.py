@@ -8249,8 +8249,6 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, next_actions(self._proj()))
             if parsed.path == "/api/start":
                 return self._send(200, start_report(self._me(), self._proj()))
-            if parsed.path == "/api/selfcheck/autofix":
-                return self._send(200, selfcheck_autofix(self._proj()))
             if parsed.path == "/api/learnings":
                 return self._send(200, {"learnings": _learnings()})
             if parsed.path == "/api/selfcheck":
@@ -8501,7 +8499,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/account/list", "/api/account/reset", "/api/dispatch/approve",
                       "/api/trident/run", "/api/daily/run", "/api/tasks/del",
                       "/api/notify/save", "/api/notify/test", "/api/email/save", "/api/email/test", "/api/user/email",
-                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install", "/api/memory/fact", "/api/memory/entity", "/api/rag/build", "/api/audit/rollback", "/api/selfcheck/autofix", "/api/learnings/scan", "/api/webhooks/save", "/api/webhooks/delete", "/api/webhooks/test",
+                      "/api/llm/proj-key", "/api/plugins/install", "/api/plugins/uninstall", "/api/plugins/market/install", "/api/memory/fact", "/api/memory/entity", "/api/rag/build", "/api/audit/rollback", "/api/selfcheck/autofix", "/api/learnings/scan",  "/api/webhooks/save", "/api/webhooks/delete", "/api/webhooks/test",
                       "/api/plugins/toggle", "/api/plugins/state",
                       "/api/geo/probe",
                       "/api/pay/product/save", "/api/pay/product/delete", "/api/pay/cards/import",
@@ -8664,6 +8662,8 @@ class Handler(BaseHTTPRequestHandler):
             if self.path == "/api/webhooks/test":
                 r = webhook_test(str(body.get("id", "")))
                 return self._send(200 if r.get("ok") else 400, r)
+            if self.path == "/api/selfcheck/autofix":
+                return self._send(200, selfcheck_autofix(self._proj()))
             if self.path == "/api/learnings/scan":
                 return self._send(200, learn_from_failures(int(body.get("days", 7) or 7)))
             if self.path == "/api/audit/rollback":
