@@ -164,3 +164,10 @@
 - **单剧本硬闸**：`limits{max_runs_per_day, max_concurrent, cooldown_min, max_steps}`（默认 50/2/5/12）；`playbook_limits_check` 在所有触发路径（手动/定时/事件）统一校验；被拦时发 `playbook.blocked` webhook；记录 `runs_today/day`。
 - **僵尸 run 回收** `run_gc()`：长时间 running 且无存活批量任务 → 标记 failed（执行器每 5 分钟巡检）。修复硬闸被僵尸占用。
 - **可视化编辑器**：抽屉式；名称/图标/说明/启停/dry-run；触发器（手动/定时/每周/事件+match）；硬闸三项；步骤支持**拖拽与 ↑↓ 排序**、类型（预设/规格/条件/验证）、预设下拉、opt JSON、条件表达式与 on_false、verify urls。
+
+
+### MCP HTTP/SSE + 自动化硬闸 + 试运行预览（2026-09-20）
+- **MCP HTTP 传输**：`POST /api/mcp`（JSON-RPC：initialize/tools/list/tools/call/ping，协议 2025-06-18）+ `GET /api/mcp/sse`（endpoint 事件 + 心跳，兼容旧 SSE）。远程客户端无需本地进程即可接入。
+- **automations 同款硬闸**：`limits{max_runs_per_day,max_concurrent,cooldown_min}` + `runs_today/day`；列表显示硬闸与今日次数。
+- **剧本试运行预览**：`POST /api/playbooks/preview` 逐步展开（不创建任务），显示每步类型/将处理条数/样例/条件/错误；编辑器「试运行预览」按钮。
+- **邮件/检索用现有资源**：本机 sendmail 发信（无需凭证）；RAG 用现有对话模型做 LLM 重排 + 语料纳入 RULES/Skills（1,538 块）。
