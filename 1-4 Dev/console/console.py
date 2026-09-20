@@ -6300,8 +6300,13 @@ def usage_add(username, tasks=0, items=0, tokens=0, writes=0):
                     f"继续使用可能被拦截，请到「设置 → 用户配额」调整或等待下月重置。")
 
 
+SYSTEM_ACTORS = {"schedule", "automation", "mcp", "onboard", "agent-tool", "system", "selfheal", "playbook"}
+
+
 def quota_check(username, role, n_items=0, kind="", est_tokens_per_item=2000):
-    """返回 (ok, msg)。admin 直接通过。"""
+    """返回 (ok, msg)。admin 与系统内部执行者（定时/事件/MCP/剧本）不计入用户配额。"""
+    if str(username) in SYSTEM_ACTORS:
+        return True, ""
     q = user_quota(username, role)
     if not q:
         return True, ""
@@ -7488,6 +7493,8 @@ def health_report(proj=None):
         level = "warn"
     quota_alerts = []
     for un, months in (usage_users() or {}).items():
+        if str(un) in SYSTEM_ACTORS:
+            continue
         mm = months.get(_month()) or {}
         role_u = (auth_record(un) or {}).get("role", "operator")
         q = user_quota(un, role_u)
