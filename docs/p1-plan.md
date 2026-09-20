@@ -141,3 +141,13 @@
 - 命令面板 **收藏（★）+ 最近使用**（localStorage，空查询时置顶）。
 - **全局快捷键**：`⌘K`/`/` 搜索面板、`?` 帮助、`g h/i/a/r/b/t/m/s/c/q/l/k/d` 快速导航、`Esc` 关闭。
 - **帮助浮层**（12 条快捷键）。
+
+
+---
+
+### MCP 开放 / 自进化闭环 / OPC（2026-09-20）
+- **MCP 服务**：`1-4 Dev/scripts/mcp_server.py`（纯标准库 stdio JSON-RPC），17 个工具；端点 `GET /api/mcp/tools`、`POST /api/mcp/tool`（`X-MFlow-Token` 或 admin）。动作类工具**强制 dry-run**。文档 `docs/mcp.md`。
+- **开放接入页**：设置页显示 机器 token / MCP 工具数 / 脚本 / 文档 / REST 说明。
+- **自进化闭环**：`POST /api/learnings/apply|ignore`；需人工复核的项拒绝自动应用（不盲自动化）。
+- **OPC**：`POST /api/playbooks/enable_recommended` 一键安装并启用推荐剧本（每日 QA / 每周衰减 / 每周 alt / 每周 GEO）。
+- **关键修复**：系统执行者（`schedule`/`automation`/`mcp`/`playbook`/`onboard`/`selfheal`）**不再计入用户配额**——此前被默认 500 条上限打满导致 health=bad 且自动化被自身配额卡死。
