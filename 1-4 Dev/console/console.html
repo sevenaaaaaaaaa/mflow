@@ -553,7 +553,8 @@ body.sb-open #sb-mask{display:block}
         <button class="mini" onclick="pbNew()">＋ 新建剧本</button></div></div>
       <div class="mut" style="font-size:11px;margin-bottom:6px">执行过程在「执行画布」可见、可恢复。推荐剧本 = 每日 QA 闭环 / 每周衰减刷新 / 每周 alt 补齐 / 每周 GEO 缺口。</div>
       <div id="pb-body"><div class="mut">加载中…</div></div></div>
-    <div id="auto-body"><div class="mut">加载中…</div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>历史执行记录</h3><span class="mut" style="font-size:11px">由剧本触发</span></div>
+      <div id="auto-body"><div class="mut">加载中…</div></div></div>
   </section>
 
   <!-- ============ 收件箱 ============ -->
@@ -1757,7 +1758,20 @@ function memFactEdit(id){
 function memEntEdit(id,name,notes){const n=prompt('更新「'+name+'」的说明/备注：',notes);if(n===null)return;
  api('api/memory/entity',{id,note:n}).then(r=>{if(r.error)return toast(r.error,'bad');toast('已更新实体','ok');memLoad()})}
 /* ---- 自动化 ---- */
-function loadAuto(){pbLoad();api('api/automations').then(arr=>{
+function loadAuto(){pbLoad();api('api/runs').then(rr=>{
+ const runs=(rr&&rr.runs)||[];
+ const nav=$('nav-auto');const n=(PB_DATA.playbooks||[]).filter(x=>x.enabled).length;if(nav)nav.textContent=n||'';
+ const el=$('auto-body');if(el){
+  const mine=runs.filter(r=>r.kind==='playbook'||r.playbook).slice(0,8);
+  el.innerHTML=mine.length?'<table><tr><th>执行</th><th>剧本</th><th>状态</th><th>创建</th><th></th></tr>'+
+   mine.map(r=>`<tr><td class="mut" style="font-size:11px">${esc(r.id)}</td><td>${esc(r.title||'')}</td>
+    <td><span class="badge" style="background:${r.status==='done'?'var(--ok)':(r.status==='failed'?'var(--bad)':'var(--accent)')}">${esc(r.status)}</span></td>
+    <td class="mut" style="font-size:11px">${esc(r.created||'')}</td>
+    <td><button class="mini" onclick="setTab('run');setTimeout(()=>runDetail('${esc(r.id)}'),600)">看画布 →</button></td></tr>`).join('')+'</table>'
+   :emptyBox('📘','还没有剧本触发记录','运行一个剧本','setTab("auto")');
+ }
+}).catch(()=>{})}
+function loadAutoOld(){pbLoad();api('api/automations').then(arr=>{
  const el=$('auto-body');if(!el)return;
  const nb=arr.filter(a=>a.enabled).length;const nav=$('nav-auto');if(nav)nav.textContent=arr.length||'';
  if(!arr.length){el.innerHTML='<div class="card"><div class="mut">还没有自动化。可从「批量任务/执行画布/Agent 计划」一键存为自动化，或点右上角新建。</div></div>';return}

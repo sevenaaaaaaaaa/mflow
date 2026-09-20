@@ -2079,6 +2079,10 @@ def run_tick():
                 cur["ended"] = datetime.now().strftime("%H:%M:%S")
                 changed = True
             # batch 步：若 t_id 未创建则创建（从 preset/spec）
+            elif cur and cur["type"] == "note" and cur["status"] == "pending":
+                cur["status"] = "done"; changed = True
+                run_save(run)
+                continue
             elif cur and cur["type"] in ("batch", "publish_sanity") and cur["status"] == "pending" and not cur.get("task_id"):
                 try:
                     items, btype, title = [], (cur.get("spec") or {}).get("type") or ("publish_sanity" if cur.get("type") == "publish_sanity" else None), cur.get("name")
@@ -7217,37 +7221,69 @@ _AUTO_LOCK = threading.Lock()
 
 
 def automations_list():
-    return read_json(AUTOMATIONS_FILE, []) or []
+    """兼容层：自动化已统一为剧本（单步）。返回由自动化迁移来的剧本（旧结构视图）。"""
+    out = []
+    for pb in playbooks_list():
+        if not pb.get("legacy_automation"):
+            continue
+        step = (pb.get("steps") or [{}])[0]
+        mode = {"loop": "loop", "spec": "batch", "verify": "plan"}.get(step.get("type"), "preset")
+        if step.get("type") == "preset":
+            mode = "preset"
+        out.append({"id": pb["legacy_automation"], "playbook_id": pb["id"], "name": pb.get("name"),
+                    "mode": mode, "spec": {"preset": step.get("preset"), "opt": step.get("opt")},
+                    "schedule": pb.get("trigger"), "dry_run": pb.get("dry_run"), "enabled": pb.get("enabled"),
+                    "limits": pb.get("limits"), "last_run": pb.get("last_run"),
+                    "runs_today": pb.get("runs_today"), "day": pb.get("day")})
+    return out
 
 
 def automation_save(a):
-    with _AUTO_LOCK:
-        arr = automations_list()
-        a = dict(a)
-        if not a.get("id"):
-            a["id"] = "auto-" + secrets.token_hex(3)
-            a["created"] = datetime.now().strftime("%Y-%m-%d %H:%M")
-        for i, x in enumerate(arr):
-            if x.get("id") == a["id"]:
-                arr[i] = {**x, **a}
-                break
-        else:
-            arr.append(a)
-        RUN_DIR.mkdir(parents=True, exist_ok=True)
-        AUTOMATIONS_FILE.write_text(json.dumps(arr, ensure_ascii=False, indent=1))
-        return a
+    """兼容层：保存为剧本（单步）。"""
+    a = dict(a)
+    if a.get("id"):
+        cur = next((x for x in playbooks_list() if x.get("legacy_automation") == a["id"]), None)
+        if cur:
+            patch = {}
+            for k in ("name", "dry_run", "enabled", "limits", "last_run", "runs_today", "day"):
+                if k in a:
+                    patch[k] = a[k]
+            if ("last_run" in a or "runs_today" in a) and not patch.get("steps"):
+                playbook_patch(cur["id"], patch)
+                return {**cur, **patch}
+    spec = a.get("spec") or {}
+    steps = a.get("steps") or _automation_to_steps({**a, "mode": a.get("mode", "preset")})
+    sc = a.get("schedule") or {}
+    trig = {"type": "manual"}
+    if sc.get("type") in ("daily", "weekly"):
+        trig = {"type": "schedule", "every": sc["type"], "at": sc.get("at", "08:30"), "weekday": sc.get("weekday", 1)}
+    elif sc.get("type") == "interval":
+        trig = {"type": "schedule", "every": "daily", "at": "08:30"}
+    r = playbook_save({"id": "", "name": a.get("name") or a.get("id") or "自动化", "icon": "⏱",
+                       "desc": "（自动化）", "dry_run": a.get("dry_run", True), "enabled": a.get("enabled", True),
+                       "trigger": trig, "limits": a.get("limits") or {}, "steps": steps,
+                       "legacy_automation": a.get("id") or ("auto-" + secrets.token_hex(3))})
+    pb = next((x for x in playbooks_list() if x["id"] == r.get("id")), None)
+    return {"id": (pb or {}).get("legacy_automation", a.get("id")), "playbook_id": r.get("id"), **(pb or {})}
 
 
 def automation_delete(aid):
-    with _AUTO_LOCK:
-        arr = [x for x in automations_list() if x.get("id") != aid]
-        AUTOMATIONS_FILE.write_text(json.dumps(arr, ensure_ascii=False, indent=1))
+    pb = next((x for x in playbooks_list() if x.get("legacy_automation") == aid), None)
+    if pb:
+        return playbook_delete(pb["id"])
     return {"ok": True}
 
 
 def automation_run(aid, proj=None, by="automation"):
-    """执行一条自动化：preset / plan / batch / loop。返回创建的 id。"""
+    """兼容层：自动化 → 剧本执行。"""
     proj = proj or DEFAULT_PROJECT
+    pb = next((x for x in playbooks_list() if x.get("legacy_automation") == aid), None)
+    if not pb:
+        return {"error": "自动化不存在（已统一为剧本，请到「自动化」页查看剧本）"}
+    return playbook_run(pb, by=by, proj=proj)
+
+
+def _automation_run_legacy(aid, proj=None, by="automation"):
     a = next((x for x in automations_list() if x.get("id") == aid), None)
     if not a:
         return {"error": "自动化不存在"}
@@ -7350,6 +7386,74 @@ def _auto_due(a, now):
 # ===================== 剧本 Playbook：多步 + 条件 + 触发器（自动化/自进化核心）=====================
 PLAYBOOKS_FILE = RUN_DIR / "playbooks.json"
 PLAYBOOKS_TPL = PROJECT / "templates" / "playbooks.json"
+
+
+def _automation_to_steps(a):
+    """把 automation（preset|plan|batch|loop）转成 playbook steps。"""
+    mode = a.get("mode", "preset")
+    spec = a.get("spec") or {}
+    if mode == "preset":
+        return [{"name": a.get("name") or spec.get("preset") or "执行", "type": "preset",
+                 "preset": spec.get("preset"), "opt": spec.get("opt") or {}}]
+    if mode == "batch":
+        return [{"name": a.get("name") or spec.get("type") or "批量执行", "type": "spec",
+                 "spec": {"type": spec.get("type"), "items": spec.get("items") or []}}]
+    if mode == "plan":
+        out = []
+        for st in (spec.get("steps") or []):
+            t = str(st.get("type", "batch"))
+            if t == "verify":
+                out.append({"name": st.get("name") or "验证", "type": "verify", "urls": st.get("urls") or []})
+            elif t == "guard":
+                out.append({"name": st.get("name") or "条件", "type": "guard", "expr": st.get("expr", ""),
+                            "on_false": st.get("on_false", "stop")})
+            elif st.get("preset"):
+                out.append({"name": st.get("name") or st.get("preset"), "type": "preset",
+                            "preset": st.get("preset"), "opt": st.get("opt") or {}})
+            else:
+                out.append({"name": st.get("name") or "批量执行", "type": "spec", "spec": st.get("spec")})
+        return out or [{"name": "空计划", "type": "verify"}]
+    if mode == "loop":
+        return [{"name": a.get("name") or "Loop", "type": "loop", "topic": spec.get("topic", ""),
+                 "lang": spec.get("lang", "zh"), "content_type": spec.get("type", "blog"),
+                 "brief": spec.get("brief", ""), "item_id": spec.get("item_id", "")}]
+    return [{"name": a.get("name") or "执行", "type": "verify"}]
+
+
+def migrate_automations():
+    """一次性把 run/automations.json 合并进 playbooks.json（幂等）。"""
+    if not AUTOMATIONS_FILE.exists():
+        return {"migrated": 0}
+    arr = read_json(AUTOMATIONS_FILE, []) or []
+    pbs = playbooks_list()
+    have = {x.get("legacy_automation") for x in pbs}
+    n = 0
+    for a in arr:
+        if a.get("id") in have:
+            continue
+        trig = {"type": "manual"}
+        sc = a.get("schedule") or {}
+        if sc.get("type") == "interval":
+            trig = {"type": "schedule", "every": "daily", "at": "08:30", "legacy_interval_min": sc.get("every_min", 60)}
+        elif sc.get("type") in ("daily", "weekly"):
+            trig = {"type": "schedule", "every": sc.get("type"), "at": sc.get("at", "08:30"),
+                    "weekday": sc.get("weekday", 1)}
+        pbs.append({"id": "pb-" + secrets.token_hex(3), "name": a.get("name") or a.get("id"),
+                    "icon": "⏱", "desc": "（由自动化迁移）" + str(a.get("mode", "")),
+                    "dry_run": bool(a.get("dry_run", True)), "enabled": bool(a.get("enabled", True)),
+                    "trigger": trig, "limits": a.get("limits") or {},
+                    "steps": _automation_to_steps(a), "legacy_automation": a.get("id"),
+                    "last_run": a.get("last_run", ""), "runs_today": a.get("runs_today"),
+                    "day": a.get("day"), "created": a.get("created", "")})
+        n += 1
+    if n:
+        RUN_DIR.mkdir(parents=True, exist_ok=True)
+        playbooks_save_all(pbs)
+        try:
+            AUTOMATIONS_FILE.rename(RUN_DIR / ("automations.migrated-" + datetime.now().strftime("%Y%m%d%H%M") + ".json"))
+        except Exception:
+            pass
+    return {"migrated": n}
 
 
 def playbooks_list():
@@ -7502,9 +7606,22 @@ def playbook_run(pb, by="playbook", proj=None, force=False, _internal=False):
                 pass
             return {"error": "已被硬闸拦截：" + reason, "blocked": True}
     steps = []
+    _loops = []
     for st in (pb.get("steps") or [])[:12]:
         t = str(st.get("type", "preset"))
-        if t == "verify":
+        if t == "loop":
+            try:
+                lid = loop_new(proj, st.get("item_id") or ("pb-" + datetime.now().strftime("%y%m%d") + "-" + secrets.token_hex(2)),
+                               ctype=st.get("content_type", st.get("type_field", "blog")),
+                               lang=st.get("lang", "zh"), topic=st.get("topic", ""), brief=st.get("brief", ""),
+                               template_id=st.get("template_id", ""))
+                _loops.append(lid)
+                steps.append({"name": st.get("name") or "Loop", "type": "note", "status": "done",
+                              "detail": "已发起 Loop " + lid})
+            except Exception as e:
+                steps.append({"name": st.get("name") or "Loop", "type": "note", "status": "failed",
+                              "detail": str(e)[:160]})
+        elif t == "verify":
             steps.append({"name": st.get("name") or "验证", "type": "verify", "status": "pending",
                           "urls": st.get("urls") or []})
         elif t == "guard":
@@ -7555,6 +7672,8 @@ def playbook_preview(pb, proj=None):
             elif t == "spec":
                 sp = st.get("spec") or {}
                 row.update({"task_type": sp.get("type"), "count": len(sp.get("items") or [])})
+            elif t == "loop":
+                row.update({"task_type": "loop", "count": 1, "note": st.get("topic", "")})
         except Exception as e:
             row.update({"error": str(e)[:160], "count": 0})
         out.append(row)
@@ -7619,7 +7738,11 @@ def playbook_event(event, payload):
 
 
 def automation_tick():
-    """调度：到期的自动化依次执行（后台）。"""
+    """兼容层：调度已由 playbook_tick 统一负责（保留空实现避免重复触发）。"""
+    return
+
+
+def _automation_tick_legacy():
     now = time.time()
     for a in automations_list():
         try:
@@ -10088,6 +10211,12 @@ def main():
     threading.Thread(target=schedule_executor, daemon=True).start()
     threading.Thread(target=geo_scheduler, daemon=True).start()
     threading.Thread(target=pay_verifier, daemon=True).start()
+    try:
+        _mg = migrate_automations()
+        if _mg.get("migrated"):
+            print(f"[console] automations → playbooks 迁移 {_mg['migrated']} 条", file=sys.stderr)
+    except Exception as _e:
+        print(f"[console] migrate_automations: {_e}", file=sys.stderr)
     threading.Thread(target=batch_worker, daemon=True).start()
     threading.Thread(target=housekeeping_scheduler, daemon=True).start()
     print(f"[console] MFlow Console on :{PORT} (loop queue + schedule + geo + pay verifier started, max_parallel={MAX_PARALLEL_LOOPS})")
