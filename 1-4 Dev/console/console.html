@@ -549,7 +549,8 @@ body.sb-open #sb-mask{display:block}
       <div class="head-actions"><button class="btn ghost" onclick="loadAuto()">刷新 ↻</button>
         <button class="btn primary" onclick="openConvert({kind:'blank',title:'新建自动化'},event)">＋ 新建自动化</button></div></div>
     <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>自动化剧本 Playbook <span class="mut">多步 + 条件 + 触发器</span></h3>
-      <div class="row"><button class="mini" onclick="pbEnableRecommended(event)">⚡ 一键启用推荐剧本（OPC）</button></div></div>
+      <div class="row"><button class="mini" onclick="pbEnableRecommended(event)">⚡ 一键启用推荐剧本（OPC）</button>
+        <button class="mini" onclick="pbNew()">＋ 新建剧本</button></div></div>
       <div class="mut" style="font-size:11px;margin-bottom:6px">执行过程在「执行画布」可见、可恢复。推荐剧本 = 每日 QA 闭环 / 每周衰减刷新 / 每周 alt 补齐 / 每周 GEO 缺口。</div>
       <div id="pb-body"><div class="mut">加载中…</div></div></div>
     <div id="auto-body"><div class="mut">加载中…</div></div>
@@ -1797,8 +1798,10 @@ function pbLoad(){api('api/playbooks').then(d=>{
     <span class="mut" style="font-size:11px;margin-left:auto">上次 ${esc(pb.last_run||'—')}</span></div>
    <div class="mut" style="font-size:11.5px;margin-top:4px">${esc(pb.desc||'')}</div>
    <div class="mut" style="font-size:11px;margin-top:4px">步骤：${(pb.steps||[]).map(x=>esc(x.name||x.preset||x.type)).join(' → ')}</div>
+   <div class="mut" style="font-size:10.5px;margin-top:2px">硬闸：每日≤${(pb.limits||{}).max_runs_per_day||50} · 并发≤${(pb.limits||{}).max_concurrent||2} · 冷却≥${(pb.limits||{}).cooldown_min||5}min${pb.runs_today?` · 今日已跑 ${pb.runs_today}`:''}</div>
    <div class="row" style="margin-top:8px">
     <button class="mini" style="background:var(--accent);color:#fff" onclick="pbRun('${esc(pb.id)}',event)">▶ 运行</button>
+    <button class="mini" onclick="pbEdit('${esc(pb.id)}')">✎ 编辑</button>
     <button class="mini" onclick="pbToggle('${esc(pb.id)}',${pb.enabled?'false':'true'})">${pb.enabled?'停用':'启用'}</button>
     ${pb.last_run_id?`<button class="mini" onclick="setTab('run');setTimeout(()=>runDetail('${esc(pb.last_run_id)}'),600)">看画布 →</button>`:''}
     <button class="mini" style="color:var(--danger)" onclick="pbDel('${esc(pb.id)}')">删除</button></div></div>`).join('')||emptyBox('📘','还没有剧本','从下方模板一键添加');
@@ -1823,6 +1826,89 @@ function pbInstall(id,ev){return withBtn(ev,async()=>{const r=await api('api/pla
 function pbToggle(id,en){const pb=(PB_DATA.playbooks||[]).find(x=>x.id===id);if(!pb)return;
  api('api/playbooks/save',{...pb,enabled:en}).then(()=>pbLoad())}
 function pbDel(id){if(!confirm('删除该剧本？'))return;api('api/playbooks/delete',{id}).then(()=>pbLoad())}
+/* ---- 剧本可视化编辑器 ---- */
+let PB_EDIT=null, PB_DRAG=null, PB_PRESETS=[];
+function pbTplDefault(){return {id:'',name:'新剧本',icon:'🧭',desc:'',dry_run:true,enabled:false,
+ trigger:{type:'manual'}, limits:{max_runs_per_day:50,max_concurrent:2,cooldown_min:5},
+ steps:[{name:'QA 扫描',type:'preset',preset:'qa-scan',opt:{limit:50}}]}}
+function pbNew(){PB_EDIT=pbTplDefault();pbLoadPresets().then(()=>pbEditorRender())}
+function pbEdit(id){const pb=(PB_DATA.playbooks||[]).find(x=>x.id===id);if(!pb)return;
+ PB_EDIT=JSON.parse(JSON.stringify(pb));PB_EDIT.limits=PB_EDIT.limits||{max_runs_per_day:50,max_concurrent:2,cooldown_min:5};
+ pbLoadPresets().then(()=>pbEditorRender())}
+function pbLoadPresets(){return api('api/presets').then(ps=>{PB_PRESETS=ps||[]}).catch(()=>{})}
+function pbEditorRender(){const pb=PB_EDIT;if(!pb)return;
+ const tr=pb.trigger||{};
+ const stepHtml=(st,i)=>`<div class="pb-step" draggable="true" ondragstart="pbDragStart(${i})" ondragover="event.preventDefault()" ondrop="pbDrop(${i})"
+   style="border:1px solid var(--border);border-radius:10px;padding:8px 10px;margin-bottom:6px;background:var(--surface-strong);cursor:grab">
+   <div style="display:flex;align-items:center;gap:6px">
+     <b style="font-size:12px;flex:1">${i+1}. <input value="${esc(st.name||'')}" oninput="PB_EDIT.steps[${i}].name=this.value" style="width:120px;padding:2px 6px;font-size:12px"></b>
+     <select onchange="pbStepType(${i},this.value)" style="width:110px;padding:3px 6px;font-size:12px">
+      ${[['preset','预设'],['spec','规格 JSON'],['guard','条件'],['verify','验证']].map(([v,l])=>`<option value="${v}" ${st.type===v?'selected':''}>${l}</option>`).join('')}</select>
+     <button class="mini" onclick="pbMove(${i},-1)" title="上移">↑</button>
+     <button class="mini" onclick="pbMove(${i},1)" title="下移">↓</button>
+     <button class="mini" style="color:var(--danger)" onclick="pbStepDel(${i})">×</button></div>
+   <div class="row" style="margin-top:6px;gap:6px">
+     ${st.type==='preset'?`<select onchange="PB_EDIT.steps[${i}].preset=this.value" style="width:200px;padding:3px 6px;font-size:12px">
+        <option value="">选择预设…</option>${PB_PRESETS.map(pp=>`<option value="${esc(pp.id)}" ${st.preset===pp.id?'selected':''}>${esc(pp.name)}</option>`).join('')}</select>
+       <input placeholder="opt JSON 如 {limit:10,lang:en}" value='${esc(JSON.stringify(st.opt||{}))}' oninput="pbStepOpt(${i},this.value)" style="flex:1;min-width:160px;padding:3px 6px;font-size:12px">`:''}
+     ${st.type==='guard'?`<input placeholder="条件如 findings>0" value="${esc(st.expr||'')}" oninput="PB_EDIT.steps[${i}].expr=this.value" style="width:180px;padding:3px 6px;font-size:12px">
+       <select onchange="PB_EDIT.steps[${i}].on_false=this.value" style="padding:3px 6px;font-size:12px">
+        <option value="stop" ${st.on_false!=='continue'?'selected':''}>不成立→终止后续</option>
+        <option value="continue" ${st.on_false==='continue'?'selected':''}>不成立→继续</option></select>`:''}
+     ${st.type==='verify'?`<input placeholder="urls（可选，逗号分隔）" value="${esc((st.urls||[]).join(','))}" oninput="PB_EDIT.steps[${i}].urls=this.value.split(',').filter(Boolean)" style="flex:1;padding:3px 6px;font-size:12px">`:''}
+     ${st.type==='spec'?`<input placeholder='spec JSON 如 {"type":"field_patch","items":[...]}' value='${esc(JSON.stringify(st.spec||{}))}' oninput="pbStepSpec(${i},this.value)" style="flex:1;padding:3px 6px;font-size:12px">`:''}
+   </div></div>`;
+ openDrawer('剧本编辑 · '+esc(pb.name||''), `
+  <div class="kv" style="grid-template-columns:90px 1fr">
+   <span class="k">名称</span><input value="${esc(pb.name||'')}" oninput="PB_EDIT.name=this.value" style="width:100%">
+   <span class="k">图标</span><input value="${esc(pb.icon||'')}" oninput="PB_EDIT.icon=this.value" style="width:80px">
+   <span class="k">说明</span><input value="${esc(pb.desc||'')}" oninput="PB_EDIT.desc=this.value" style="width:100%">
+  </div>
+  <div class="row" style="margin:8px 0;gap:12px">
+   <label style="font-size:12px"><input type="checkbox" ${pb.enabled?'checked':''} onchange="PB_EDIT.enabled=this.checked"> 启用</label>
+   <label style="font-size:12px"><input type="checkbox" ${pb.dry_run!==false?'checked':''} onchange="PB_EDIT.dry_run=this.checked"> dry-run</label>
+  </div>
+  <div class="card" style="padding:10px;margin-bottom:10px"><b style="font-size:12.5px">触发器</b>
+   <div class="row" style="margin-top:6px;gap:6px">
+    <select onchange="pbTrigType(this.value)" style="width:120px;font-size:12px">
+     ${[['manual','手动'],['schedule','定时'],['event','事件']].map(([v,l])=>`<option value="${v}" ${tr.type===v?'selected':''}>${l}</option>`).join('')}</select>
+    ${tr.type==='schedule'?`<select onchange="PB_EDIT.trigger.every=this.value" style="width:90px;font-size:12px"><option value="daily" ${tr.every!=='weekly'?'selected':''}>每天</option><option value="weekly" ${tr.every==='weekly'?'selected':''}>每周</option></select>
+      ${tr.every==='weekly'?`<select onchange="PB_EDIT.trigger.weekday=+this.value" style="width:70px;font-size:12px">${[1,2,3,4,5,6,7].map(d=>`<option value="${d}" ${tr.weekday===d?'selected':''}>周${['一','二','三','四','五','六','日'][d-1]}</option>`).join('')}</select>`:''}
+      <input value="${esc(tr.at||'08:30')}" oninput="PB_EDIT.trigger.at=this.value" placeholder="08:30" style="width:80px;font-size:12px">`:''}
+    ${tr.type==='event'?`<select onchange="PB_EDIT.trigger.event=this.value" style="width:160px;font-size:12px">${["task.done","task.failed","task.tripped","run.done","run.failed"].map(e=>`<option ${tr.event===e?'selected':''}>${e}</option>`).join('')}</select>
+      <input placeholder='match JSON 如 {"type":"qa"}' value='${esc(JSON.stringify(tr.match||{}))}' oninput="pbTrigMatch(this.value)" style="flex:1;font-size:12px">`:''}
+   </div></div>
+  <div class="card" style="padding:10px;margin-bottom:10px"><b style="font-size:12.5px">硬闸（防失控）</b>
+   <div class="row" style="margin-top:6px;gap:10px;font-size:12px">
+    <label>每日上限 <input type="number" value="${(pb.limits||{}).max_runs_per_day??50}" oninput="PB_EDIT.limits.max_runs_per_day=+this.value" style="width:70px"></label>
+    <label>并发上限 <input type="number" value="${(pb.limits||{}).max_concurrent??2}" oninput="PB_EDIT.limits.max_concurrent=+this.value" style="width:60px"></label>
+    <label>冷却(分) <input type="number" value="${(pb.limits||{}).cooldown_min??5}" oninput="PB_EDIT.limits.cooldown_min=+this.value" style="width:60px"></label>
+   </div></div>
+  <div><div class="row" style="justify-content:space-between;margin-bottom:6px"><b style="font-size:12.5px">步骤（可拖拽/↑↓排序）</b>
+   <button class="mini" onclick="pbStepAdd()">＋ 加步骤</button></div>${(pb.steps||[]).map(stepHtml).join('')||emptyBox('🧩','还没有步骤','加一个','pbStepAdd()')}</div>`,
+  [['保存', 'pbSave(event)']]);
+}
+function pbStepType(i,v){const st=PB_EDIT.steps[i];st.type=v;
+ if(v==='preset'){st.preset=st.preset||'qa-scan';st.opt=st.opt||{limit:50};delete st.expr;}
+ if(v==='guard'){st.expr=st.expr||'findings>0';st.on_false=st.on_false||'stop';delete st.preset;}
+ if(v==='verify'){st.urls=st.urls||[];delete st.preset;}
+ pbEditorRender()}
+function pbStepOpt(i,v){try{PB_EDIT.steps[i].opt=JSON.parse(v||'{}')}catch(e){}}
+function pbStepSpec(i,v){try{PB_EDIT.steps[i].spec=JSON.parse(v||'{}')}catch(e){}}
+function pbStepAdd(){PB_EDIT.steps=PB_EDIT.steps||[];PB_EDIT.steps.push({name:'新步骤',type:'preset',preset:'qa-scan',opt:{limit:50}});pbEditorRender()}
+function pbStepDel(i){PB_EDIT.steps.splice(i,1);pbEditorRender()}
+function pbMove(i,d){const a=PB_EDIT.steps;const j=i+d;if(j<0||j>=a.length)return;[a[i],a[j]]=[a[j],a[i]];pbEditorRender()}
+function pbDragStart(i){PB_DRAG=i}
+function pbDrop(i){if(PB_DRAG==null||PB_DRAG===i){PB_DRAG=null;return}
+ const a=PB_EDIT.steps;const [x]=a.splice(PB_DRAG,1);a.splice(i,0,x);PB_DRAG=null;pbEditorRender()}
+function pbTrigType(v){PB_EDIT.trigger={type:v};
+ if(v==='schedule')PB_EDIT.trigger={type:'schedule',every:'daily',at:'08:30'};
+ if(v==='event')PB_EDIT.trigger={type:'event',event:'task.done',match:{}};
+ pbEditorRender()}
+function pbTrigMatch(v){try{PB_EDIT.trigger.match=JSON.parse(v||'{}')}catch(e){}}
+function pbSave(ev){return withBtn(ev,async()=>{const r=await api('api/playbooks/save',PB_EDIT);
+ if(r.error)throw new Error(r.error);toast('已保存','ok');closeDrawer();pbLoad();return r;
+},{busyText:'保存中…',okText:'已保存'});}
 /* ---- 统一执行方式切换 ---- */
 function openConvert(from, ev){
  const canAuto=true;

@@ -1894,7 +1894,7 @@ def run_list(limit=30):
             r = read_json(f, {})
             if r:
                 out.append({"id": r.get("id"), "title": r.get("title"), "status": r.get("status"),
-                            "created": r.get("created"), "kind": r.get("kind"),
+                            "created": r.get("created"), "kind": r.get("kind"), "playbook": r.get("playbook", ""),
                             "n": len(r.get("steps") or []), "proj": r.get("proj")})
     return out
 
@@ -7282,9 +7282,50 @@ def _eval_guard(expr, vars_):
             ">=": val >= num, "<=": val <= num}[op]
 
 
-def playbook_run(pb, by="playbook", proj=None):
-    """执行剧本 → 创建 Run（步骤：preset/spec/verify/guard）。"""
+DEFAULT_PB_LIMITS = {"max_runs_per_day": 50, "max_concurrent": 2, "cooldown_min": 5, "max_steps": 12}
+
+
+def _pb_limits(pb):
+    lim = dict(DEFAULT_PB_LIMITS)
+    lim.update({k: v for k, v in ((pb.get("limits") or {})).items() if v is not None})
+    return lim
+
+
+def playbook_limits_check(pb):
+    """单剧本硬闸：每日次数 / 并发 / 冷却 / 步数。返回 (ok, reason)。"""
+    lim = _pb_limits(pb)
+    today = datetime.now().strftime("%Y-%m-%d")
+    if int(lim.get("max_runs_per_day") or 0) and pb.get("day") == today \
+            and int(pb.get("runs_today") or 0) >= int(lim["max_runs_per_day"]):
+        return False, f"今日运行已达上限（{lim['max_runs_per_day']} 次）"
+    if int(lim.get("cooldown_min") or 0):
+        try:
+            last = datetime.strptime(pb.get("last_run") or "", "%Y-%m-%d %H:%M").timestamp()
+        except Exception:
+            last = 0
+        if last and (time.time() - last) < int(lim["cooldown_min"]) * 60:
+            return False, f"冷却中（{lim['cooldown_min']} 分钟内不重复运行）"
+    if int(lim.get("max_concurrent") or 0):
+        running = sum(1 for r in run_list(100)
+                      if r.get("playbook") == pb.get("id") and r.get("status") == "running")
+        if running >= int(lim["max_concurrent"]):
+            return False, f"并发已达上限（{lim['max_concurrent']} 个在跑）"
+    if len(pb.get("steps") or []) > int(lim.get("max_steps") or 12):
+        return False, f"步骤过多（上限 {lim['max_steps']}）"
+    return True, ""
+
+
+def playbook_run(pb, by="playbook", proj=None, force=False, _internal=False):
+    """执行剧本 → 创建 Run（步骤：preset/spec/verify/guard）。带硬闸。"""
     proj = proj or pb.get("proj") or DEFAULT_PROJECT
+    if not force:
+        ok, reason = playbook_limits_check(pb)
+        if not ok:
+            try:
+                webhook_emit("playbook.blocked", {"playbook": pb.get("id"), "name": pb.get("name"), "reason": reason})
+            except Exception:
+                pass
+            return {"error": "已被硬闸拦截：" + reason, "blocked": True}
     steps = []
     for st in (pb.get("steps") or [])[:12]:
         t = str(st.get("type", "preset"))
@@ -7305,8 +7346,10 @@ def playbook_run(pb, by="playbook", proj=None):
                   message=str(pb.get("name", ""))[:200])
     run["playbook"] = pb.get("id", "")
     run_save(run)
+    today = datetime.now().strftime("%Y-%m-%d")
+    runs_today = (int(pb.get("runs_today") or 0) + 1) if pb.get("day") == today else 1
     playbook_patch(pb.get("id", ""), {"last_run": datetime.now().strftime("%Y-%m-%d %H:%M"),
-                                      "last_run_id": run["id"]})
+                                      "last_run_id": run["id"], "day": today, "runs_today": runs_today})
     try:
         webhook_emit("playbook.run", {"playbook": pb.get("id"), "name": pb.get("name"), "run_id": run["id"]})
     except Exception:
@@ -7344,9 +7387,7 @@ def playbook_tick():
                 wd = int(sc.get("weekday", 1) or 1)
                 if datetime.now().weekday() + 1 != wd:
                     continue
-            if now - last_ts < 600:  # 最小间隔 10 分钟，防抖
-                continue
-            playbook_run(pb, by="schedule")
+            playbook_run(pb, by="schedule")  # 硬闸在 playbook_run 内统一校验
             print(f"[playbook] {pb['id']} fired (schedule)", file=sys.stderr)
         except Exception as e:
             print(f"[playbook] {pb.get('id')} error: {e}", file=sys.stderr)
