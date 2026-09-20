@@ -1,0 +1,180 @@
+[
+ {
+  "id": "pb-daily-qa",
+  "name": "每日 QA 闭环",
+  "icon": "🛡",
+  "desc": "每天扫一遍问题 → 有可修复项就修 → 验证",
+  "dry_run": true,
+  "enabled": true,
+  "trigger": {
+   "type": "schedule",
+   "every": "daily",
+   "at": "08:30"
+  },
+  "steps": [
+   {
+    "name": "QA 扫描",
+    "type": "preset",
+    "preset": "qa-scan",
+    "opt": {
+     "limit": 200
+    }
+   },
+   {
+    "name": "条件：有发现",
+    "type": "guard",
+    "expr": "findings>0",
+    "on_false": "stop"
+   },
+   {
+    "name": "字段修复",
+    "type": "preset",
+    "preset": "qa-field-fix",
+    "opt": {
+     "limit": 50
+    }
+   },
+   {
+    "name": "验证",
+    "type": "verify"
+   }
+  ]
+ },
+ {
+  "id": "pb-weekly-decay",
+  "name": "每周衰减页刷新",
+  "icon": "♻️",
+  "desc": "每周把衰减页面按 GEO 标准刷新",
+  "dry_run": true,
+  "enabled": true,
+  "trigger": {
+   "type": "schedule",
+   "every": "weekly",
+   "weekday": 1,
+   "at": "07:00"
+  },
+  "steps": [
+   {
+    "name": "衰减刷新",
+    "type": "preset",
+    "preset": "decay-refresh",
+    "opt": {
+     "limit": 10,
+     "lang": "en"
+    }
+   },
+   {
+    "name": "验证",
+    "type": "verify"
+   }
+  ]
+ },
+ {
+  "id": "pb-weekly-alt",
+  "name": "每周封面 alt 补齐",
+  "icon": "🖼",
+  "desc": "每周补一批缺 alt 的封面（SEO/无障碍）",
+  "dry_run": true,
+  "enabled": true,
+  "trigger": {
+   "type": "schedule",
+   "every": "weekly",
+   "weekday": 3,
+   "at": "07:00"
+  },
+  "steps": [
+   {
+    "name": "alt 补齐",
+    "type": "preset",
+    "preset": "asset-alt-fill",
+    "opt": {
+     "limit": 50
+    }
+   }
+  ]
+ },
+ {
+  "id": "pb-weekly-geo",
+  "name": "每周 GEO 缺口改稿",
+  "icon": "🎯",
+  "desc": "对 AI 回答 0 次提及品牌的查询按 GEO 重写",
+  "dry_run": true,
+  "enabled": true,
+  "trigger": {
+   "type": "schedule",
+   "every": "weekly",
+   "weekday": 2,
+   "at": "07:00"
+  },
+  "steps": [
+   {
+    "name": "GEO 改稿",
+    "type": "preset",
+    "preset": "geo-gap-rewrite",
+    "opt": {
+     "limit": 10,
+     "lang": "zh"
+    }
+   },
+   {
+    "name": "验证",
+    "type": "verify"
+   }
+  ]
+ },
+ {
+  "id": "pb-event-qa-chain",
+  "name": "事件：QA 完成即修复",
+  "icon": "⚡",
+  "desc": "任意 QA 任务完成后自动生成字段修复",
+  "dry_run": true,
+  "enabled": false,
+  "trigger": {
+   "type": "event",
+   "event": "task.done",
+   "match": {
+    "type": "qa"
+   }
+  },
+  "steps": [
+   {
+    "name": "字段修复",
+    "type": "preset",
+    "preset": "qa-field-fix",
+    "opt": {
+     "limit": 50
+    }
+   },
+   {
+    "name": "验证",
+    "type": "verify"
+   }
+  ]
+ },
+ {
+  "id": "pb-landing-loop",
+  "name": "落地页闭环（改稿→发布→验证）",
+  "icon": "🚀",
+  "desc": "挑 1 个工具页跑完整闭环",
+  "dry_run": true,
+  "enabled": false,
+  "trigger": {
+   "type": "manual"
+  },
+  "steps": [
+   {
+    "name": "落地页改稿+发布",
+    "type": "preset",
+    "preset": "landing-refresh-publish",
+    "opt": {
+     "limit": 1,
+     "lang": "en"
+    }
+   },
+   {
+    "name": "验证",
+    "type": "verify"
+   }
+  ]
+ }
+]
