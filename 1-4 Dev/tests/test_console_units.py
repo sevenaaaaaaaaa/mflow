@@ -418,6 +418,104 @@ class TestPlaybookBranchRetry(unittest.TestCase):
         self.assertEqual(C._preview_skip_names(steps, 1, "stop"), ["修", "验"])
 
 
+class TestContentEditor(unittest.TestCase):
+    """P2-1 正文编辑器：路径白名单 · 版本轮转 · diff。
+
+    安全要点：editable_path 是唯一的写入闸门。它一旦放宽，UI 就能改规则/报告/代码，
+    相当于给 RULES 开后门——所以这些用例是护栏，不是覆盖率。
+    """
+
+    def _mk(self, rel, text="# t\n\nbody\n"):
+        p = C.PROJECTS_DIR / rel
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(text, encoding="utf-8")
+        return p
+
+    # ── 路径白名单 ──
+    def test_rejects_non_md(self):
+        self.assertIsNone(C.editable_path("run/projects/lovart-global/content/a.json"))
+
+    def test_rejects_traversal(self):
+        self.assertIsNone(C.editable_path("run/projects/../../etc/passwd.md"))
+        self.assertIsNone(C.editable_path("../outside.md"))
+
+    def test_rejects_rules_and_docs(self):
+        # 规则与文档是 SSOT / 由脚本生成，UI 不许改
+        self.assertIsNone(C.editable_path("1-1 Harness/02-rules/RULES-00-iron.md"))
+        self.assertIsNone(C.editable_path("ROADMAP.md"))
+        self.assertIsNone(C.editable_path("docs/warmup.md"))
+
+    def test_accepts_project_content(self):
+        p = self._mk("lovart-global/content/demo-edit.md")
+        self.assertEqual(C.editable_path(str(p)), p.resolve())
+
+    def test_save_refuses_non_editable(self):
+        r = C.content_save("ROADMAP.md", "x", by="t")
+        self.assertIn("error", r)
+        # 且没有真的去动那个文件
+        self.assertNotIn("ok", r)
+
+    # ── 版本轮转 ──
+    def test_snapshot_rotation_keeps_n(self):
+        p = self._mk("lovart-global/content/rot.md", "v0\n")
+        for i in range(C.VERSIONS_KEEP + 4):
+            p.write_text(f"v{i}\n", encoding="utf-8")
+            C.content_snapshot(p, by="t", note=f"n{i}")
+        vs = C.content_versions(p)
+        self.assertEqual(len(vs), C.VERSIONS_KEEP)
+        self.assertTrue(all(v.get("by") == "t" for v in vs))
+
+    def test_restore_roundtrip(self):
+        p = self._mk("lovart-global/content/rt.md", "原始\n")
+        ts = C.content_snapshot(p, by="t")
+        p.write_text("改坏了\n", encoding="utf-8")
+        r = C.content_restore(str(p), ts, by="t")
+        self.assertTrue(r.get("ok"), r)
+        self.assertEqual(p.read_text(), "原始\n")
+        # 恢复前会把「改坏了」也存一版，不丢东西
+        self.assertGreaterEqual(len(C.content_versions(p)), 2)
+
+    # ── diff ──
+    def test_diff_counts(self):
+        d = C.content_diff("a\nb\nc\n", "a\nB\nc\nd\n")
+        self.assertTrue(d["changed"])
+        self.assertEqual(d["added"], 2)    # B + d
+        self.assertEqual(d["removed"], 1)  # b
+
+    def test_diff_identical(self):
+        d = C.content_diff("same\ntext\n", "same\ntext\n")
+        self.assertFalse(d["changed"])
+        self.assertEqual((d["added"], d["removed"]), (0, 0))
+
+    def test_diff_folds_long_unchanged_runs(self):
+        old = "\n".join(f"line{i}" for i in range(60))
+        new = old + "\nTAIL"
+        d = C.content_diff(old, new, ctx=3)
+        self.assertTrue(any(r["t"] == "gap" for r in d["rows"]), "长段未改动应折叠为 gap")
+        # 折叠后行数远少于原文，否则 diff 视图会被无关内容淹没
+        self.assertLess(len([r for r in d["rows"] if r["t"] == "ctx"]), 20)
+
+    # ── 编辑门禁结论 → 发布硬拦 ──
+    def test_gate_state_absent_by_default(self):
+        """没编辑过的稿子必须没有门禁记录——否则会给存量内容引入回归。"""
+        p = self._mk("lovart-global/content/never-edited.md")
+        self.assertEqual(C.content_gate_state(p), {})
+
+    def test_gate_state_roundtrip(self):
+        p = self._mk("lovart-global/content/gated.md")
+        C._ver_dir(p).mkdir(parents=True, exist_ok=True)
+        C.write_json(C._ver_dir(p) / "last-gate.json",
+                     {"ok": False, "rcs": {"lang-check.sh": 1, "quota-check.sh": 0}})
+        g = C.content_gate_state(p)
+        self.assertFalse(g.get("ok"))
+        self.assertEqual(g["rcs"]["lang-check.sh"], 1)
+
+    def test_diff_empty_side(self):
+        d = C.content_diff("", "新建\n")
+        self.assertTrue(d["changed"])
+        self.assertEqual(d["removed"], 0)
+
+
 class TestRunDirIsolation(unittest.TestCase):
     """RUN_DIR 隔离——踩过的坑：单测 import console 就往生产 run/approvals.log 写审计噪音。
 

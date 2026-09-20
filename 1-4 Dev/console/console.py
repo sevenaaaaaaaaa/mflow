@@ -9,6 +9,7 @@ v3 adds the production core: LLM provider config (OpenAI-compatible), generation
 stdlib + `markdown` package only. Publishing stays display-only (iron rule).
 Auth: MFLOW_CONSOLE_PASSWORD from env; fail-closed when unset.
 """
+import difflib
 import hashlib
 import hmac
 import importlib.util
@@ -1050,6 +1051,192 @@ def run_content_gates(path, ctype="blog", lang="zh", tag="gate", budget_profile=
         qa_log(tag, hook, r["rc"])
         out[hook] = r
     return out
+
+
+# ── 正文编辑 · 版本 · diff（P2-1）────────────────────────────────────────
+# 为什么：此前 AI 出稿后人只能「通过 / 打回重跑」——改一个词都要回 Sanity 或重跑 Loop，
+# 而"改两句就能发"恰恰是内容团队最高频的动作。
+# 铁律：编辑必须与门禁绑定。保存即重跑四道门禁，BLOCK 就不给「可发布」，
+#       绕过门禁的编辑入口等于给 RULES 开后门。
+EDIT_EXT = {".md"}
+VERSIONS_KEEP = 10
+
+
+def _edit_roots():
+    """可编辑正文的白名单根。报告 / 规则 / 知识库 / 代码一律只读——
+    它们要么是 SSOT，要么由脚本生成，在 UI 里改会和生成链打架。"""
+    return [PROJECTS_DIR, LIB_ROOT, PROJECT / "1-3 GenFlow"]
+
+
+def editable_path(rel):
+    """比 safe_path 严得多：必须是 .md，且必须落在某个可编辑根之内。
+    安全边界是「在可编辑根内」而非「在 PROJECT 内」——RUN_DIR 可被 MFLOW_RUN_DIR
+    搬到项目外，按 PROJECT 判会把合法路径全判死。"""
+    rel = str(rel or "")
+    if not rel or ".." in rel.split("/"):
+        return None
+    try:
+        p = Path(rel)
+        p = (p if p.is_absolute() else PROJECT / p).resolve()
+    except Exception:
+        return None
+    if p.suffix.lower() not in EDIT_EXT:
+        return None
+    for root in _edit_roots():
+        try:
+            if root.resolve() in p.parents:
+                return p
+        except Exception:
+            continue
+    return None
+
+
+def rel_or_abs(p):
+    """优先给项目相对路径；RUN_DIR 被搬到项目外时退回绝对路径，不抛异常。"""
+    try:
+        return rel_of(p)
+    except Exception:
+        return str(p)
+
+
+def _ver_dir(p):
+    return RUN_DIR / "versions" / hashlib.sha1(rel_or_abs(p).encode()).hexdigest()[:16]
+
+
+def content_versions(p):
+    d = _ver_dir(p)
+    if not d.exists():
+        return []
+    out = []
+    for f in sorted(d.glob("*.md"), reverse=True):
+        meta = read_json(f.with_suffix(".json"), {}) or {}
+        out.append({"ts": f.stem, "by": meta.get("by", ""), "note": meta.get("note", ""),
+                    "at": meta.get("at", ""), "chars": f.stat().st_size})
+    return out
+
+
+def content_snapshot(p, by="", note=""):
+    """写之前存一版，轮转保留 VERSIONS_KEEP 份。"""
+    if not p.exists():
+        return ""
+    d = _ver_dir(p)
+    d.mkdir(parents=True, exist_ok=True)
+    # 版本号必须保证唯一：秒级（甚至毫秒级）时间戳在连续保存时会互相覆盖，版本直接丢
+    # （单测 test_snapshot_rotation_keeps_n 抓到的真 bug）。
+    # 微秒 + 碰撞计数，且只含数字与短横，content_restore 的 ts 清洗规则不受影响。
+    base = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+    ts, k = base, 0
+    while (d / f"{ts}.md").exists():
+        k += 1
+        ts = f"{base}-{k}"
+    (d / f"{ts}.md").write_text(p.read_text(errors="ignore"), encoding="utf-8")
+    write_json(d / f"{ts}.json", {"by": by, "note": note, "path": rel_or_abs(p),
+                                  "at": datetime.now().isoformat(timespec="seconds")})
+    for f in sorted(d.glob("*.md"), reverse=True)[VERSIONS_KEEP:]:
+        f.unlink(missing_ok=True)
+        f.with_suffix(".json").unlink(missing_ok=True)
+    return ts
+
+
+def content_diff(old, new, ctx=3):
+    """行级 diff，无变化区段折叠成 gap。供前端左右对照渲染。"""
+    a, b = (old or "").splitlines(), (new or "").splitlines()
+    rows, added, removed = [], 0, 0
+    ops = difflib.SequenceMatcher(None, a, b).get_opcodes()
+    for idx, (tag, i1, i2, j1, j2) in enumerate(ops):
+        if tag == "equal":
+            n = i2 - i1
+            head = 0 if idx == 0 else ctx
+            tail = 0 if idx == len(ops) - 1 else ctx
+            if n > head + tail + 1:
+                for k in range(i1, i1 + head):
+                    rows.append({"t": "ctx", "a": k + 1, "b": j1 + (k - i1) + 1, "text": a[k]})
+                rows.append({"t": "gap", "n": n - head - tail})
+                for k in range(i2 - tail, i2):
+                    rows.append({"t": "ctx", "a": k + 1, "b": j2 - (i2 - k) + 1, "text": a[k]})
+            else:
+                for k in range(i1, i2):
+                    rows.append({"t": "ctx", "a": k + 1, "b": j1 + (k - i1) + 1, "text": a[k]})
+        else:
+            for k in range(i1, i2):
+                rows.append({"t": "del", "a": k + 1, "text": a[k]})
+                removed += 1
+            for k in range(j1, j2):
+                rows.append({"t": "add", "b": k + 1, "text": b[k]})
+                added += 1
+    return {"rows": rows, "added": added, "removed": removed, "changed": bool(added or removed)}
+
+
+def content_save(rel, text, by="", ctype="blog", lang="zh", budget_profile="default"):
+    """保存 = 快照旧版 → 原子写 → 重跑四道门禁。
+    门禁不通过不回滚文件（用户的修改不该被吞），但 gate_pass=False，发布链据此拦截。"""
+    p = editable_path(rel)
+    if not p:
+        return {"error": "该文件不可编辑（仅限项目生成目录 / 内容库 / GenFlow 下的 .md）"}
+    if len(text) > 400000:
+        return {"error": "正文超过 400k 字符，请拆分"}
+    before = p.read_text(errors="ignore") if p.exists() else ""
+    if before == text:
+        return {"ok": True, "unchanged": True, "path": rel_or_abs(p)}
+    ts = content_snapshot(p, by=by, note="编辑前自动快照")
+    tmp = p.with_suffix(p.suffix + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    tmp.replace(p)
+    gates = run_content_gates(p, ctype, lang, tag="edit", budget_profile=budget_profile)
+    ok = all(g["rc"] == 0 for g in gates.values())
+    d = content_diff(before, text)
+    try:
+        with open(RUN_DIR / "approvals.log", "a") as f:
+            f.write(f"{datetime.now().isoformat(timespec='seconds')} CONTENT-EDIT {rel_or_abs(p)} "
+                    f"+{d['added']}/-{d['removed']} gates={'PASS' if ok else 'BLOCK'} by={by}\n")
+    except Exception:
+        pass
+    # 把结论落盘：发布链据此硬拦，否则"编辑后要重新质检"只是句口号
+    try:
+        write_json(_ver_dir(p) / "last-gate.json",
+                   {"ok": ok, "by": by, "at": datetime.now().isoformat(timespec="seconds"),
+                    "rcs": {h: g["rc"] for h, g in gates.items()}})
+    except Exception:
+        pass
+    return {"ok": True, "path": rel_or_abs(p), "snapshot": ts, "gate_pass": ok,
+            "gates": {h: {"rc": g["rc"], "out": g["out"][-1500:]} for h, g in gates.items()},
+            "diff": {"added": d["added"], "removed": d["removed"]}}
+
+
+def content_gate_state(p):
+    """最近一次人工编辑的门禁结论。没编辑过就返回 {}（不改变既有行为）。"""
+    try:
+        return read_json(_ver_dir(Path(p)) / "last-gate.json", {}) or {}
+    except Exception:
+        return {}
+
+
+def content_restore(rel, ts, by=""):
+    p = editable_path(rel)
+    if not p:
+        return {"error": "该文件不可编辑"}
+    src = _ver_dir(p) / f"{re.sub(r'[^0-9-]', '', str(ts))}.md"
+    if not src.exists():
+        return {"error": "版本不存在"}
+    content_snapshot(p, by=by, note=f"恢复到 {ts} 之前的快照")
+    p.write_text(src.read_text(errors="ignore"), encoding="utf-8")
+    try:
+        with open(RUN_DIR / "approvals.log", "a") as f:
+            f.write(f"{datetime.now().isoformat(timespec='seconds')} CONTENT-RESTORE {rel_or_abs(p)} <- {ts} by={by}\n")
+    except Exception:
+        pass
+    return {"ok": True, "path": rel_or_abs(p), "restored": ts}
+
+
+def content_text_of(path_rel, ver=""):
+    """取某个版本或当前的正文。ver 为空或 current = 当前文件。"""
+    p = editable_path(path_rel) or safe_path(path_rel)
+    if not p:
+        return None
+    if ver and ver != "current":
+        vp = _ver_dir(p) / f"{re.sub(r'[^0-9-]', '', str(ver))}.md"
+        return vp.read_text(errors="ignore") if vp.exists() else None
+    return p.read_text(errors="ignore") if p.exists() else None
 
 
 def gen_prompt(ctype, lang, topic, brief, feedback="", template=None, budget_profile="default", style_id="", ai_ctx=None):
@@ -3805,11 +3992,15 @@ def _bh_rewrite(item, task, proj):
         sp = safe_path(item["source_path"])
         if sp:
             src = sp.read_text(errors="ignore")
-    return run_generation(proj, item["item_id"], ctype=item.get("type", "blog"), lang=item.get("lang", "zh"),
-                          topic=item.get("topic", item.get("slug", "")), brief=item.get("brief", ""),
-                          instruction=item.get("instruction", ""), source_text=src,
-                          prior_context=task.get("ctx_digest", ""), style_id=item.get("style_id", ""),
-                          budget_profile=item.get("budget_profile") or (task.get("params") or {}).get("budget_profile", "default"))
+    r = run_generation(proj, item["item_id"], ctype=item.get("type", "blog"), lang=item.get("lang", "zh"),
+                       topic=item.get("topic", item.get("slug", "")), brief=item.get("brief", ""),
+                       instruction=item.get("instruction", ""), source_text=src,
+                       prior_context=task.get("ctx_digest", ""), style_id=item.get("style_id", ""),
+                       budget_profile=item.get("budget_profile") or (task.get("params") or {}).get("budget_profile", "default"))
+    # P2-1：带上原稿路径，批量详情才能给出「看改动」的 diff（改稿任务最该被看见的就是改了什么）
+    if isinstance(r, dict) and item.get("source_path"):
+        r["source_path"] = item["source_path"]
+    return r
 
 
 def _bh_internal_link(item, task, proj):
@@ -3834,6 +4025,13 @@ def _bh_publish_sanity(item, task, proj):
     sp = safe_path(path)
     if not sp:
         raise RuntimeError(f"草稿不可读：{path}（确认文件存在，且路径在项目目录内）")
+    # P2-1：人工编辑过且门禁 BLOCK 的稿子不许进发布链。
+    # 没编辑过的稿子无此记录 → 行为与之前完全一致，不引入回归。
+    _g = content_gate_state(sp)
+    if _g and not _g.get("ok"):
+        _bad = ", ".join(h for h, rc in (_g.get("rcs") or {}).items() if rc) or "质量门禁"
+        raise RuntimeError(f"这篇最近一次人工编辑未通过门禁（{_bad}）——到阅读器「编辑」改完重存，"
+                           f"门禁全绿后再发布")
     dry = bool(task.get("dry_run"))
     doctype = item.get("doctype", "blog")
     if doctype == "composite":
@@ -8809,6 +9007,30 @@ class Handler(BaseHTTPRequestHandler):
                     html, toc = enhance_html(html)
                     return self._send(200, {"name": p.name, "html": html, "toc": toc})
                 return self._send(200, {"name": p.name, "html": "<pre>" + raw[:200000].replace("<", "&lt;") + "</pre>", "toc": []})
+            # ── 正文编辑 · 版本 · diff（P2-1）──
+            if parsed.path == "/api/content/raw":
+                rel = qs.get("path", [""])[0]
+                ep, ro = editable_path(rel), safe_path(rel)
+                tgt = ep or ro
+                if not tgt:
+                    return self._send(400, {"error": "路径不可读"})
+                return self._send(200, {"name": tgt.name, "path": rel_or_abs(tgt),
+                                        "text": tgt.read_text(errors="ignore")[:400000],
+                                        "editable": bool(ep),
+                                        "versions": content_versions(tgt) if ep else []})
+            if parsed.path == "/api/content/versions":
+                ep = editable_path(qs.get("path", [""])[0])
+                if not ep:
+                    return self._send(400, {"error": "该文件不可编辑"})
+                return self._send(200, {"path": rel_or_abs(ep), "versions": content_versions(ep)})
+            if parsed.path == "/api/content/diff":
+                base = qs.get("path", [""])[0]
+                a_path = qs.get("a_path", [""])[0]
+                a = content_text_of(a_path or base, "" if a_path else qs.get("a", [""])[0])
+                b = content_text_of(base, qs.get("b", ["current"])[0])
+                if a is None or b is None:
+                    return self._send(400, {"error": "对比对象不存在或不可读"})
+                return self._send(200, content_diff(a, b))
             if parsed.path == "/api/dist":
                 base = PROJECT / "1-3 GenFlow/Content Distribution/queue"
                 q = read_json(base / "pending.json", {})
@@ -10162,6 +10384,20 @@ class Handler(BaseHTTPRequestHandler):
                 r = qa_orchestrate(tid, dry_run=bool(body.get("dry_run", True)),
                                    max_items=int(body.get("max_items", 200) or 200))
                 return self._send(200 if r.get("ok") else 400, r)
+            # ── 正文编辑（P2-1）：保存即重跑四道门禁 ──
+            if self.path == "/api/content/save":
+                r = content_save(str(body.get("path", "")), str(body.get("text", "")), by=self._me(),
+                                 ctype=str(body.get("type", "blog")), lang=str(body.get("lang", "zh")),
+                                 budget_profile=str(body.get("budget_profile", "default")))
+                return self._send(400 if r.get("error") else 200, r)
+            if self.path == "/api/content/preview":
+                # 预览必须用与正式渲染同一个 renderer，否则"编辑时看到的"和"发出去的"会不一样
+                _h = md_lib.markdown(str(body.get("text", ""))[:400000], extensions=["tables", "fenced_code"])
+                _h, _t = enhance_html(_h)
+                return self._send(200, {"html": _h})
+            if self.path == "/api/content/restore":
+                r = content_restore(str(body.get("path", "")), str(body.get("ts", "")), by=self._me())
+                return self._send(400 if r.get("error") else 200, r)
             if self.path == "/api/presets/run":
                 pid = str(body.get("id", ""))
                 opt = body.get("options") or {}

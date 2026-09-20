@@ -211,6 +211,21 @@ th{color:var(--muted);font-weight:600}
 #reader h1,#reader h2,#reader h3{margin:1.2em 0 .5em}#reader table{border:1px solid var(--border)}
 #reader td,#reader th{border:1px solid var(--border);padding:6px 10px}#reader code{background:var(--hover);border-radius:5px;padding:1px 5px;font-family:var(--font-mono);font-size:12px}
 #reader pre{background:oklch(22% .02 70);color:oklch(87% .01 85)}
+/* P2-1 正文编辑器与 diff */
+#reader .rbody.wide{max-width:1280px}
+.mini.on{background:var(--accent-soft);color:var(--accent);border-color:var(--accent)}
+.red-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+.red-ta{width:100%;min-height:60vh;border:1px solid var(--border);border-radius:12px;padding:14px;font-family:var(--font-mono);font-size:12.5px;line-height:1.75;background:var(--surface-strong);color:var(--fg);resize:vertical}
+.red-pv{border:1px solid var(--border);border-radius:12px;padding:14px 18px;min-height:60vh;max-height:70vh;overflow:auto;background:var(--surface)}
+.red-bar{position:sticky;bottom:0;background:var(--glass);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border-top:1px solid var(--border);padding:12px 0;margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;z-index:2}
+.df{font-family:var(--font-mono);font-size:12.5px;line-height:1.65;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.df .r{display:flex;white-space:pre-wrap;word-break:break-word}
+.df .ln{flex:0 0 74px;text-align:right;padding:1px 10px 1px 0;color:var(--muted);opacity:.65;user-select:none}
+.df .tx{flex:1;padding:1px 12px}
+.df .add{background:rgba(46,160,67,.16);box-shadow:inset 3px 0 0 rgba(46,160,67,.7)}
+.df .del{background:rgba(248,81,73,.15);box-shadow:inset 3px 0 0 rgba(248,81,73,.7)}
+.df .gap{background:var(--hover);color:var(--muted);font-style:italic;padding:4px 14px;font-size:11.5px}
+@media(max-width:900px){.red-grid{grid-template-columns:1fr}.red-ta,.red-pv{min-height:38vh}}
 .numwrap{position:relative;min-width:90px}
 .numbar{position:absolute;left:0;top:15%;bottom:15%;background:var(--accent-soft);border-radius:4px;z-index:0}
 .numwrap .tnum{position:relative;z-index:1;padding-left:4px}
@@ -1247,7 +1262,7 @@ body.sb-open #sb-mask{display:block}
   </div>
 </div>
 
-<div id="reader"><div class="rhead"><button class="btn ghost" onclick="closeReader()">← 返回</button><b id="rname"></b></div><div class="rbody" id="rbody"></div></div>
+<div id="reader"><div class="rhead"><button class="btn ghost" onclick="closeReader()">← 返回</button><b id="rname"></b><span id="rtools" style="margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap"></span></div><div class="rbody" id="rbody"></div></div>
 
 <script>
 let TAB='home',REPORTS=null,RCAT=null,KDIR='';
@@ -1475,7 +1490,12 @@ function openItemDetail(tid, i){
     `<span class="gate ${val==='pass'?'pass':(val==='warn'?'':'fail')}" style="${val==='warn'?'color:var(--warn);border-color:var(--warn)':''}">${gateLabels[val]||val} · ${esc(k)}</span>`).join('')||'<span class="mut" style="font-size:12px">无门禁记录（该类型不跑质检）</span>';
   const blocked=(g.blocked||[]).length?`<div class="bad" style="font-size:12px;margin-top:6px">被以下门禁拦截：${(g.blocked).map(esc).join('、')}</div>`:'';
   const structs=(it.struct_errors||[]).length?`<div class="mut" style="font-size:12px;margin-top:6px">结构问题：${(it.struct_errors).map(esc).join('；')}</div>`:'';
-  const links=(d.links||[]).map(l=>l.url?`<a class="mini" style="text-decoration:none;display:inline-block;margin-right:6px" href="${esc(l.url)}" target="_blank">${esc(l.label)} ↗</a>`:`<button class="mini" onclick="openReader('${esc(l.reader)}')">${esc(l.label)}</button>`).join(' ')||'<span class="mut">无</span>';
+  // P2-1：改稿类条目直接给「看改动」与「编辑」——改了什么不该靠人去两个文件里对
+  const editBtns=[
+   r.path&&r.source_path?`<button class="mini" onclick="rdOpenDiff('${esc(r.path)}','${esc(r.source_path)}')">↔ 看改动</button>`:'',
+   r.path?`<button class="mini" onclick="openReader('${esc(r.path)}');setTimeout(()=>{if(RD.editable)rdEdit()},600)">✎ 编辑</button>`:''
+  ].filter(Boolean).join(' ');
+  const links=((d.links||[]).map(l=>l.url?`<a class="mini" style="text-decoration:none;display:inline-block;margin-right:6px" href="${esc(l.url)}" target="_blank">${esc(l.label)} ↗</a>`:`<button class="mini" onclick="openReader('${esc(l.reader)}')">${esc(l.label)}</button>`).join(' ')+' '+editBtns).trim()||'<span class="mut">无</span>';
   // 每个失败门禁给出可执行修复建议
   const GATE_FIX={
    'post-write':'内容未过写作规则 → 让 Agent 按规则改稿，或到 QA 编排查看规则明细',
@@ -2209,22 +2229,162 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
    calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,agent:agLoad,qa:qaLoad,run:runLoad,onboard:loadOnboard,auto:loadAuto,mem:memLoad,audit:auditLoad,inbox:inboxLoad}[t]||(()=>{}))()}
-function openReader(path){api('api/read?path='+encodeURIComponent(path)).then(r=>{
- $('rname').textContent=r.name;
- const toc=(r.toc||[]).filter(t=>t.level===2);
- $('rbody').innerHTML=(toc.length?`<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:20px"><b style="font-size:12px;color:var(--muted)">目录</b><div style="margin-top:6px">${toc.map(t=>`<a href="#${t.id}" style="display:block;color:var(--accent);text-decoration:none;padding:2px 0;font-size:13px">${esc(t.text)}</a>`).join('')}</div></div>`:'')+r.html;
- $('reader').style.display='flex';$('rbody').scrollTop=0;
- api('api/report/dashboard?path='+encodeURIComponent(path)).then(dash=>{
-  if(!dash.headers||!dash.rows||dash.rows.length<2)return;
-  const numCols=dash.headers.map((h,i)=>dash.rows.some(row=>/^[-+]?[\d,.]+\s*%?$/.test((row[i]||'').trim())));
-  const card=document.createElement('div');
-  card.className='card';card.style.cssText='margin-bottom:20px';
-  card.innerHTML=`<div class="card-head"><h3>仪表视图 · ${esc(dash.title||'')}</h3><span class="mut">报告首个表格 → 指标卡</span></div>
-   <div class="metrics">${dash.headers.map((h,i)=>numCols[i]?`<div class="card metric" style="margin:0"><div class="m-label">${esc(h)}</div>
-     ${dash.rows.slice(0,3).map(row=>`<div style="font-size:12px;margin-top:3px">${esc((row[0]||'').slice(0,14))} <b class="tnum" style="float:right">${esc(row[i]||'')}</b></div>`).join('')}</div>`:'').join('')}</div>`;
-  $('rbody').prepend(card)})
-})}
-function closeReader(){$('reader').style.display='none'}
+/* ---- 阅读器 + 正文编辑器 + 改动对照（P2-1）----
+   此前阅读器全只读：AI 出稿后人只能「通过/打回重跑」，改一个词都要回 Sanity。
+   编辑与门禁强绑定——保存即重跑四道门禁，BLOCK 不给「可发布」。 */
+let RD={path:'',editable:false,text:'',orig:'',versions:[],mode:'read',html:'',tmr:null};
+
+function openReader(path){
+ RD={path:path,editable:false,text:'',orig:'',versions:[],mode:'read',html:'',tmr:null};
+ $('rtools').innerHTML='';
+ api('api/read?path='+encodeURIComponent(path)).then(r=>{
+  $('rname').textContent=r.name;
+  const toc=(r.toc||[]).filter(t=>t.level===2);
+  RD.html=(toc.length?`<div style="background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:20px"><b style="font-size:12px;color:var(--muted)">目录</b><div style="margin-top:6px">${toc.map(t=>`<a href="#${t.id}" style="display:block;color:var(--accent);text-decoration:none;padding:2px 0;font-size:13px">${esc(t.text)}</a>`).join('')}</div></div>`:'')+r.html;
+  $('reader').style.display='flex';
+  rdRead();
+  api('api/report/dashboard?path='+encodeURIComponent(path)).then(dash=>{
+   if(RD.mode!=='read')return;
+   if(!dash.headers||!dash.rows||dash.rows.length<2)return;
+   const numCols=dash.headers.map((h,i)=>dash.rows.some(row=>/^[-+]?[\d,.]+\s*%?$/.test((row[i]||'').trim())));
+   const card=document.createElement('div');
+   card.className='card';card.style.cssText='margin-bottom:20px';
+   card.innerHTML=`<div class="card-head"><h3>仪表视图 · ${esc(dash.title||'')}</h3><span class="mut">报告首个表格 → 指标卡</span></div>
+    <div class="metrics">${dash.headers.map((h,i)=>numCols[i]?`<div class="card metric" style="margin:0"><div class="m-label">${esc(h)}</div>
+      ${dash.rows.slice(0,3).map(row=>`<div style="font-size:12px;margin-top:3px">${esc((row[0]||'').slice(0,14))} <b class="tnum" style="float:right">${esc(row[i]||'')}</b></div>`).join('')}</div>`:'').join('')}</div>`;
+   $('rbody').prepend(card)})
+ });
+ // 能不能编辑由后端白名单说了算（报告/规则/知识库只读）
+ api('api/content/raw?path='+encodeURIComponent(path)).then(c=>{
+  if(c&&!c.error){RD.editable=!!c.editable;RD.text=c.text||'';RD.orig=c.text||'';RD.versions=c.versions||[]}
+  rdTools()}).catch(()=>{});
+}
+function closeReader(){if(!rdConfirmLeave())return;$('reader').style.display='none';$('rbody').classList.remove('wide')}
+function rdDirty(){return RD.mode==='edit'&&RD.text!==RD.orig}
+function rdConfirmLeave(){return !rdDirty()||confirm('有未保存的修改，确定离开？')}
+
+function rdTools(){
+ const el=$('rtools');if(!el)return;
+ if(!RD.editable){el.innerHTML='<span class="mut" style="font-size:12px">只读文件</span>';return}
+ const vs=RD.versions||[];
+ el.innerHTML=`<button class="mini ${RD.mode==='read'?'on':''}" onclick="rdRead()">阅读</button>
+  <button class="mini ${RD.mode==='edit'?'on':''}" onclick="rdEdit()">编辑${rdDirty()?' •':''}</button>
+  ${vs.length?`<button class="mini ${RD.mode==='diff'?'on':''}" onclick="rdDiff('${esc(vs[0].ts)}','current')">改动</button>
+   <select class="mini" onchange="rdVerPick(this.value);this.value=''"><option value="">历史版本 (${vs.length})…</option>
+   ${vs.map(v=>`<option value="${esc(v.ts)}">${esc(v.ts)} · ${esc(v.by||'—')}${v.note?' · '+esc(v.note):''}</option>`).join('')}</select>`
+  :'<span class="mut" style="font-size:12px">暂无历史版本</span>'}`;
+}
+function rdVerPick(ts){if(ts)rdDiff(ts,'current')}
+
+function rdRead(){
+ if(!rdConfirmLeave())return;
+ RD.mode='read';$('rbody').classList.remove('wide');
+ $('rbody').innerHTML=RD.html;$('rbody').scrollTop=0;rdTools();
+}
+
+function rdGuessType(){return /\/(tools|features|topics|solutions|products|scenarios)\//.test(RD.path)?'landing-tool':'blog'}
+function rdGuessLang(){const m=RD.path.match(/\/([a-z]{2}(?:-[A-Z]{2})?)\/[^/]+\.md$/);return m?m[1]:'zh'}
+
+function rdEdit(){
+ RD.mode='edit';$('rbody').classList.add('wide');
+ const LANGS=['zh','zh-TW','en','ja','ko','de','fr','pt','ru','it'];
+ const gl=rdGuessLang(),gt=rdGuessType();
+ $('rbody').innerHTML=`<div class="red-grid">
+   <textarea class="red-ta" id="red-ta" spellcheck="false"></textarea>
+   <div class="red-pv" id="red-pv"><span class="mut">预览加载中…</span></div>
+  </div>
+  <div class="red-bar">
+   <button class="btn" onclick="rdSave()">保存并质检</button>
+   <button class="btn ghost" onclick="rdRevert()">放弃修改</button>
+   <span class="mut" style="font-size:12px">门禁口径</span>
+   <select class="mini" id="red-type"><option value="blog"${gt==='blog'?' selected':''}>blog</option><option value="landing-tool"${gt!=='blog'?' selected':''}>landing</option></select>
+   <select class="mini" id="red-lang">${LANGS.map(l=>`<option value="${l}"${l===gl?' selected':''}>${l}</option>`).join('')}</select>
+   <span class="mut" id="red-stat" style="font-size:12px"></span>
+   <span class="mut" id="red-cnt" style="margin-left:auto;font-size:12px"></span>
+  </div>
+  <div id="red-gate" style="margin-top:14px"></div>`;
+ const ta=$('red-ta');ta.value=RD.text;
+ ta.addEventListener('input',()=>{RD.text=ta.value;rdCount();clearTimeout(RD.tmr);RD.tmr=setTimeout(rdPreview,400)});
+ ta.addEventListener('keydown',e=>{if((e.ctrlKey||e.metaKey)&&e.key==='s'){e.preventDefault();rdSave()}});
+ rdCount();rdPreview();rdTools();
+}
+function rdCount(){
+ const t=RD.text||'';
+ // 词当量：与 quota-check 口径一致（ASCII 词 + CJK 字符/2），否则编辑时看到的字数会骗人
+ const cjk=(t.match(/[一-鿿぀-ヿ가-힯]/g)||[]).length;
+ const ascii=(t.replace(/[一-鿿぀-ヿ가-힯]/g,' ').match(/[A-Za-z0-9][A-Za-z0-9'-]*/g)||[]).length;
+ const el=$('red-cnt');if(el)el.textContent=`${t.length} 字符 · 约 ${ascii+Math.round(cjk/2)} 词当量${RD.text!==RD.orig?' · 未保存':''}`;
+}
+function rdPreview(){
+ api('api/content/preview',{text:RD.text}).then(r=>{const el=$('red-pv');if(el)el.innerHTML=r.html||''}).catch(()=>{});
+}
+function rdRevert(){
+ if(RD.text===RD.orig)return toast('没有改动','ok');
+ if(!confirm('放弃本次所有未保存的修改？'))return;
+ RD.text=RD.orig;$('red-ta').value=RD.orig;rdCount();rdPreview();rdTools();
+}
+function rdSave(){
+ const st=$('red-stat');if(st)st.textContent='保存中…';
+ api('api/content/save',{path:RD.path,text:RD.text,
+   type:($('red-type')||{}).value||'blog',lang:($('red-lang')||{}).value||'zh'}).then(r=>{
+  if(st)st.textContent='';
+  if(r.error){toast(r.error,'bad',7000);return}
+  if(r.unchanged){toast('没有改动','ok');return}
+  RD.orig=RD.text;rdCount();
+  api('api/content/versions?path='+encodeURIComponent(RD.path)).then(v=>{RD.versions=v.versions||[];rdTools()});
+  const g=r.gates||{},d=r.diff||{};
+  $('red-gate').innerHTML=`<div class="card"><div class="card-head">
+    <h3>质量门禁 ${r.gate_pass?'<span class="ok">PASS</span>':'<span class="bad">BLOCK</span>'}</h3>
+    <span class="mut">本次 +${d.added||0} / -${d.removed||0} 行${r.snapshot?' · 旧版已存为 '+esc(r.snapshot):''}</span></div>
+   ${r.gate_pass?'':'<div class="mut" style="margin-bottom:8px">门禁未过不影响你的文件已保存，但这篇不会被允许进入发布链——按下面的提示改完再存一次。</div>'}
+   ${Object.keys(g).map(h=>`<div style="margin-top:10px"><b style="font-size:12px">${esc(h)}</b>
+     ${g[h].rc===0?'<span class="ok">✓ PASS</span>':'<span class="bad">✗ rc='+g[h].rc+'</span>'}
+     <pre style="margin-top:4px;white-space:pre-wrap;font-size:11.5px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 10px">${fmtHook(g[h].out)}</pre></div>`).join('')}</div>`;
+  toast(r.gate_pass?'已保存，四道门禁全过':'已保存，但门禁 BLOCK——修好才能发布',r.gate_pass?'ok':'warn',6000);
+ })
+}
+
+function rdDiff(a,b,aPath){
+ if(!rdConfirmLeave())return;
+ RD.mode='diff';$('rbody').classList.add('wide');
+ $('rbody').innerHTML='<span class="mut">对比中…</span>';rdTools();
+ let q='api/content/diff?path='+encodeURIComponent(RD.path)+'&b='+encodeURIComponent(b||'current');
+ q+=aPath?('&a_path='+encodeURIComponent(aPath)):('&a='+encodeURIComponent(a||''));
+ api(q).then(d=>{
+  if(d.error){$('rbody').innerHTML=`<div class="mut" style="padding:24px">${esc(d.error)}</div>`;return}
+  const isVer=!aPath&&a&&a!=='current';
+  $('rbody').innerHTML=`<div class="card-head" style="margin-bottom:12px"><h3>改动对照</h3>
+    <span class="mut">+${d.added} / -${d.removed} 行 · 左 ${esc(aPath||a||'上一版')} → 右 ${esc(b==='current'||!b?'当前':b)}
+    ${isVer?` <button class="mini" style="margin-left:8px" onclick="rdRestore('${esc(a)}')">恢复这一版</button>`:''}</span></div>`+rdDiffHtml(d);
+  $('rbody').scrollTop=0;
+ })
+}
+function rdDiffHtml(d){
+ if(!d.changed)return '<div class="mut" style="padding:24px">两版内容完全一致。</div>';
+ return '<div class="df">'+(d.rows||[]).map(r=>{
+  if(r.t==='gap')return `<div class="gap">⋯ 省略 ${r.n} 行未改动</div>`;
+  const cls=r.t==='add'?'add':(r.t==='del'?'del':'');
+  const ln=r.t==='add'?('+'+r.b):(r.t==='del'?('-'+r.a):String(r.a||''));
+  return `<div class="r ${cls}"><span class="ln">${esc(ln)}</span><span class="tx">${esc(r.text||'')}</span></div>`
+ }).join('')+'</div>';
+}
+function rdRestore(ts){
+ if(!confirm(`把正文恢复到 ${ts} 这一版？当前内容会先自动存为新快照。`))return;
+ api('api/content/restore',{path:RD.path,ts:ts}).then(r=>{
+  if(r.error)return toast(r.error,'bad',6000);
+  toast('已恢复到 '+ts,'ok');openReader(RD.path);
+ })
+}
+/* 从批量任务的改稿条目直接看「改了什么」：原稿 vs 新稿 */
+function rdOpenDiff(newPath,srcPath){
+ RD={path:newPath,editable:false,text:'',orig:'',versions:[],mode:'diff',html:'',tmr:null};
+ $('rname').textContent=newPath.split('/').pop();$('rtools').innerHTML='';
+ $('reader').style.display='flex';
+ api('api/content/raw?path='+encodeURIComponent(newPath)).then(c=>{
+  if(c&&!c.error){RD.editable=!!c.editable;RD.text=c.text||'';RD.orig=c.text||'';RD.versions=c.versions||[]}
+  rdTools()}).catch(()=>{});
+ rdDiff('','current',srcPath);
+}
 function fmtHook(out){return String(out||'').split('\n').map(l=>{
  if(/^\s*✗|BLOCK/.test(l))return `<span class="bad">${esc(l)}</span>`;
  if(/^\s*✓|VERDICT: PASS/.test(l))return `<span class="ok">${esc(l)}</span>`;
