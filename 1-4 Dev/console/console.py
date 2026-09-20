@@ -1981,6 +1981,31 @@ def run_tick():
                     run_save(run)
                 continue
             cur = next((st for st in steps if st["status"] not in TERMINAL), None)
+            # guard：按前序产出评估条件，决定继续/停止
+            if cur and cur.get("type") == "guard" and cur["status"] == "pending":
+                agg = {"failed": 0, "done": 0, "total": 0, "skipped": 0, "findings": 0, "suggestions": 0}
+                for st in steps:
+                    if st.get("task_id"):
+                        t = batch_load(st["task_id"]) or {}
+                        stt = t.get("stats") or {}
+                        agg["failed"] += int(stt.get("failed") or 0)
+                        agg["done"] += int(stt.get("done") or 0)
+                        agg["skipped"] += int(stt.get("skipped") or 0)
+                        agg["total"] += int(stt.get("total") or 0)
+                        for it in (t.get("items") or []):
+                            r = it.get("result") or {}
+                            agg["findings"] += int(r.get("findings") or 0)
+                            agg["suggestions"] += int(r.get("count") or 0) if it.get("status") == "done" else 0
+                ok = _eval_guard(cur.get("expr", ""), agg)
+                cur["status"] = "done" if ok else ("blocked" if cur.get("on_false", "stop") == "stop" else "done")
+                cur["detail"] = f"条件 {cur.get('expr')} → {'成立（继续）' if ok else '不成立'}" +                                 ("" if ok else ("（终止后续）" if cur.get("on_false", "stop") == "stop" else "（继续）"))
+                if not ok and cur.get("on_false", "stop") == "stop":
+                    for st2 in steps:
+                        if st2["status"] == "pending":
+                            st2["status"] = "blocked"; st2["detail"] = "条件不满足，未执行"
+                changed = True
+                run_save(run)
+                continue
             if cur and cur["type"] == "verify" and cur["status"] == "pending":
                 cur["status"] = "running"; cur["started"] = cur.get("started") or datetime.now().strftime("%H:%M:%S")
                 # 收集要验证的 URL：步骤自带 urls，或从前序 batch 步的 spec/预设推导
@@ -3455,6 +3480,10 @@ def batch_worker():
         except Exception as _e:
             print(f"[console] automation tick: {_e}", file=sys.stderr)
         try:
+            playbook_tick()
+        except Exception as _e:
+            print(f"[console] playbook tick: {_e}", file=sys.stderr)
+        try:
             BATCH_DIR.mkdir(parents=True, exist_ok=True)
             blocked, bst = breaker_check()
             if blocked:
@@ -3572,6 +3601,10 @@ def batch_worker():
                     _batch_log(task, f"任务链生成失败：{str(ce)[:160]}")
             if task.get("status") in ("done", "failed", "tripped"):
                 notify_task_end(task)
+                try:
+                    playbook_event("task." + task["status"], {"task_id": task["id"], "type": task.get("type")})
+                except Exception:
+                    pass
                 try:
                     webhook_emit("task." + task["status"], {"task_id": task["id"], "type": task.get("type"),
                                                             "title": task.get("title"), "dry_run": task.get("dry_run"),
@@ -6874,6 +6907,157 @@ def _auto_due(a, now):
     return False
 
 
+
+# ===================== 剧本 Playbook：多步 + 条件 + 触发器（自动化/自进化核心）=====================
+PLAYBOOKS_FILE = RUN_DIR / "playbooks.json"
+PLAYBOOKS_TPL = PROJECT / "templates" / "playbooks.json"
+
+
+def playbooks_list():
+    return read_json(PLAYBOOKS_FILE, []) or []
+
+
+def playbooks_templates():
+    return read_json(PLAYBOOKS_TPL, []) or []
+
+
+def playbook_save(pb):
+    arr = playbooks_list()
+    pb = dict(pb)
+    if not pb.get("id"):
+        pb["id"] = "pb-" + secrets.token_hex(3)
+    if not pb.get("name"):
+        return {"error": "缺 name"}
+    if not isinstance(pb.get("steps"), list) or not pb["steps"]:
+        return {"error": "steps 必须是非空数组"}
+    pb.setdefault("created", datetime.now().strftime("%Y-%m-%d %H:%M"))
+    pb.setdefault("enabled", True)
+    pb.setdefault("dry_run", True)
+    pb.setdefault("trigger", {"type": "manual"})
+    for i, x in enumerate(arr):
+        if x.get("id") == pb["id"]:
+            arr[i] = {**x, **pb}
+            break
+    else:
+        arr.append(pb)
+    RUN_DIR.mkdir(parents=True, exist_ok=True)
+    PLAYBOOKS_FILE.write_text(json.dumps(arr, ensure_ascii=False, indent=1))
+    return {"ok": True, "id": pb["id"]}
+
+
+def playbook_delete(pid):
+    arr = [x for x in playbooks_list() if x.get("id") != pid]
+    PLAYBOOKS_FILE.write_text(json.dumps(arr, ensure_ascii=False, indent=1))
+    return {"ok": True}
+
+
+def playbook_install(tpl_id):
+    """把模板复制为可运行剧本。"""
+    t = next((x for x in playbooks_templates() if x.get("id") == tpl_id), None)
+    if not t:
+        return {"error": "模板不存在"}
+    t = dict(t)
+    t["id"] = ""  # 生成新 id，避免覆盖用户改动
+    return playbook_save(t)
+
+
+def _eval_guard(expr, vars_):
+    """极简安全条件求值：VAR op NUM（== != > < >= <=）。"""
+    m = re.match(r"^\s*([a-zA-Z_][\w]*)\s*(==|!=|>=|<=|>|<)\s*(-?\d+)\s*$", str(expr or ""))
+    if not m:
+        return None
+    var, op, num = m.group(1), m.group(2), int(m.group(3))
+    val = int(vars_.get(var, 0) or 0)
+    return {"==": val == num, "!=": val != num, ">": val > num, "<": val < num,
+            ">=": val >= num, "<=": val <= num}[op]
+
+
+def playbook_run(pb, by="playbook", proj=None):
+    """执行剧本 → 创建 Run（步骤：preset/spec/verify/guard）。"""
+    proj = proj or pb.get("proj") or DEFAULT_PROJECT
+    steps = []
+    for st in (pb.get("steps") or [])[:12]:
+        t = str(st.get("type", "preset"))
+        if t == "verify":
+            steps.append({"name": st.get("name") or "验证", "type": "verify", "status": "pending",
+                          "urls": st.get("urls") or []})
+        elif t == "guard":
+            steps.append({"name": st.get("name") or "条件", "type": "guard", "status": "pending",
+                          "expr": st.get("expr", ""), "on_false": st.get("on_false", "stop")})
+        elif t == "spec":
+            steps.append({"name": st.get("name") or "批量执行", "type": "batch", "status": "pending",
+                          "spec": st.get("spec"), "opt": st.get("opt") or {"dry_run": True}})
+        else:  # preset
+            steps.append({"name": st.get("name") or st.get("preset") or "批量执行", "type": "batch",
+                          "status": "pending", "preset": st.get("preset"),
+                          "opt": {**(st.get("opt") or {}), "dry_run": pb.get("dry_run", True)}})
+    run = run_new(pb.get("name") or "剧本执行", steps, proj=proj, by=by, kind="playbook",
+                  message=str(pb.get("name", ""))[:200])
+    run["playbook"] = pb.get("id", "")
+    run_save(run)
+    playbook_save({"id": pb.get("id"), "last_run": datetime.now().strftime("%Y-%m-%d %H:%M"),
+                   "last_run_id": run["id"]})
+    try:
+        webhook_emit("playbook.run", {"playbook": pb.get("id"), "name": pb.get("name"), "run_id": run["id"]})
+    except Exception:
+        pass
+    return {"ok": True, "run_id": run["id"], "steps": len(steps)}
+
+
+def playbook_tick():
+    """定时触发器：到期的剧本自动执行。"""
+    now = time.time()
+    for pb in playbooks_list():
+        try:
+            if not pb.get("enabled"):
+                continue
+            tr = pb.get("trigger") or {}
+            if tr.get("type") != "schedule":
+                continue
+            sc = tr
+            last = pb.get("last_run") or ""
+            try:
+                last_ts = datetime.strptime(last, "%Y-%m-%d %H:%M").timestamp() if last else 0
+            except Exception:
+                last_ts = 0
+            typ = sc.get("every", "daily")
+            at = sc.get("at", "08:30")
+            hh, mm = (at.split(":") + ["0"])[:2]
+            today = datetime.now().strftime("%Y-%m-%d")
+            try:
+                target = datetime.strptime(f"{today} {int(hh):02d}:{int(mm):02d}", "%Y-%m-%d %H:%M").timestamp()
+            except Exception:
+                continue
+            if now < target or last_ts >= target:
+                continue
+            if typ == "weekly":
+                wd = int(sc.get("weekday", 1) or 1)
+                if datetime.now().weekday() + 1 != wd:
+                    continue
+            playbook_run(pb, by="schedule")
+            print(f"[playbook] {pb['id']} fired (schedule)", file=sys.stderr)
+        except Exception as e:
+            print(f"[playbook] {pb.get('id')} error: {e}", file=sys.stderr)
+
+
+def playbook_event(event, payload):
+    """事件触发器：task.done/failed 等匹配则执行剧本。"""
+    for pb in playbooks_list():
+        try:
+            if not pb.get("enabled"):
+                continue
+            tr = pb.get("trigger") or {}
+            if tr.get("type") != "event" or tr.get("event") != event:
+                continue
+            mt = tr.get("match") or {}
+            if any(str(payload.get(k)) != str(v) for k, v in mt.items()):
+                continue
+            playbook_run(pb, by="event:" + event)
+            print(f"[playbook] {pb['id']} fired ({event})", file=sys.stderr)
+        except Exception as e:
+            print(f"[playbook] {pb.get('id')} event error: {e}", file=sys.stderr)
+
+
 def automation_tick():
     """调度：到期的自动化依次执行（后台）。"""
     now = time.time()
@@ -7919,6 +8103,8 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/multilang/coverage":
                 return self._send(200, multilang_coverage(site_of(self._proj()),
                                   qs.get("section", ["tools"])[0], qs.get("base_lang", ["en"])[0]))
+            if parsed.path == "/api/playbooks":
+                return self._send(200, {"playbooks": playbooks_list(), "templates": playbooks_templates()})
             if parsed.path == "/api/automations":
                 return self._send(200, automations_list())
             if parsed.path == "/api/housekeeping":
@@ -8172,6 +8358,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/agent/goal", "/api/agent/compact", "/api/agent/review", "/api/onboard/seed",
                       "/api/multilang/fill", "/api/automations/save", "/api/automations/delete",
                       "/api/automations/run", "/api/work/convert",
+                      "/api/playbooks/save", "/api/playbooks/delete", "/api/playbooks/run", "/api/playbooks/install",
                       "/api/batch/revive_stale", "/api/batch/retry_item", "/api/batch/retry_all",
                       "/api/run/action",
                       "/api/qa/orchestrate", "/api/qa/recheck",
@@ -8752,6 +8939,18 @@ class Handler(BaseHTTPRequestHandler):
                 t = batch_create(ex["type"], ex["title"], ex.get("items") or [],
                                  params=ex.get("params") or {}, dry_run=bool(body.get("dry_run", True)), by=self._me())
                 return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"], "note": ex.get("note", "")})
+            # ── 剧本 Playbook ──
+            if self.path == "/api/playbooks/save":
+                return self._send(200, playbook_save(body))
+            if self.path == "/api/playbooks/delete":
+                return self._send(200, playbook_delete(str(body.get("id", ""))))
+            if self.path == "/api/playbooks/run":
+                pb = next((x for x in playbooks_list() if x.get("id") == str(body.get("id", ""))), None)
+                if not pb:
+                    return self._send(404, {"error": "剧本不存在"})
+                return self._send(200, playbook_run(pb, by=self._me(), proj=self._proj()))
+            if self.path == "/api/playbooks/install":
+                return self._send(200, playbook_install(str(body.get("id", ""))))
             # ── 自动化 CRUD / 执行 ──
             if self.path == "/api/automations/save":
                 a = {"id": str(body.get("id", "")), "name": str(body.get("name", ""))[:80],

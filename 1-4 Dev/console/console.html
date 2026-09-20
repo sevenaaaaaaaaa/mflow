@@ -546,6 +546,9 @@ body.sb-open #sb-mask{display:block}
       <p class="pg-sub">把任何工作（预设 / 计划 / 批量 / Loop）存成定时自动化，后台按计划自动执行。默认 dry-run，确认后关掉即真实生效。</p></div>
       <div class="head-actions"><button class="btn ghost" onclick="loadAuto()">刷新 ↻</button>
         <button class="btn primary" onclick="openConvert({kind:'blank',title:'新建自动化'},event)">＋ 新建自动化</button></div></div>
+    <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>自动化剧本 Playbook <span class="mut">多步 + 条件 + 触发器</span></h3>
+      <span class="mut" style="font-size:11px">执行过程在「执行画布」可见、可恢复</span></div>
+      <div id="pb-body"><div class="mut">加载中…</div></div></div>
     <div id="auto-body"><div class="mut">加载中…</div></div>
   </section>
 
@@ -1685,7 +1688,7 @@ function memFactEdit(id){
 function memEntEdit(id,name,notes){const n=prompt('更新「'+name+'」的说明/备注：',notes);if(n===null)return;
  api('api/memory/entity',{id,note:n}).then(r=>{if(r.error)return toast(r.error,'bad');toast('已更新实体','ok');memLoad()})}
 /* ---- 自动化 ---- */
-function loadAuto(){api('api/automations').then(arr=>{
+function loadAuto(){pbLoad();api('api/automations').then(arr=>{
  const el=$('auto-body');if(!el)return;
  const nb=arr.filter(a=>a.enabled).length;const nav=$('nav-auto');if(nav)nav.textContent=arr.length||'';
  if(!arr.length){el.innerHTML='<div class="card"><div class="mut">还没有自动化。可从「批量任务/执行画布/Agent 计划」一键存为自动化，或点右上角新建。</div></div>';return}
@@ -1710,6 +1713,46 @@ function autoRun(id){return withBtn(event, async()=>{const r=await api('api/auto
 function autoToggle(id,en){api('api/automations/toggle',{id,enabled:en}).then(()=>loadAuto())}
 function autoDel(id){if(!confirm('删除自动化 '+id+'？'))return;api('api/automations/delete',{id}).then(()=>loadAuto())}
 
+/* ---- 自动化剧本 ---- */
+let PB_DATA={playbooks:[],templates:[]};
+function pbLoad(){api('api/playbooks').then(d=>{
+ PB_DATA=d||{playbooks:[],templates:[]};
+ const el=$('pb-body');if(!el)return;
+ const tr=(t)=>{t=t||{};if(t.type==='schedule')return (t.every==='weekly'?'每周'+['一','二','三','四','五','六','日'][Math.max(0,Math.min(6,(t.weekday||1)-1))]:'每天')+' '+esc(t.at||'');
+  if(t.type==='event')return '事件 '+esc(t.event||'')+(Object.keys(t.match||{}).length?(' 匹配 '+esc(JSON.stringify(t.match))):'');
+  return '手动触发'};
+ const pbs=(PB_DATA.playbooks||[]);
+ let html='<div class="mut" style="font-size:11.5px;margin-bottom:6px">已配置 '+pbs.length+' 个</div>';
+ html+=pbs.map(pb=>`<div class="card" style="padding:10px 12px;margin-bottom:8px;border-left:3px solid ${pb.enabled?'var(--accent)':'var(--muted)'}">
+   <div style="display:flex;align-items:center;gap:8px"><b style="font-size:13px">${esc(pb.icon||'🧭')} ${esc(pb.name)}</b>
+    <span class="badge" style="background:${pb.enabled?'var(--ok)':'var(--muted)'}">${pb.enabled?'启用':'停用'}</span>
+    <span class="badge dist">${tr(pb.trigger)}</span>
+    <span class="mut" style="font-size:11px;margin-left:auto">上次 ${esc(pb.last_run||'—')}</span></div>
+   <div class="mut" style="font-size:11.5px;margin-top:4px">${esc(pb.desc||'')}</div>
+   <div class="mut" style="font-size:11px;margin-top:4px">步骤：${(pb.steps||[]).map(x=>esc(x.name||x.preset||x.type)).join(' → ')}</div>
+   <div class="row" style="margin-top:8px">
+    <button class="mini" style="background:var(--accent);color:#fff" onclick="pbRun('${esc(pb.id)}',event)">▶ 运行</button>
+    <button class="mini" onclick="pbToggle('${esc(pb.id)}',${pb.enabled?'false':'true'})">${pb.enabled?'停用':'启用'}</button>
+    ${pb.last_run_id?`<button class="mini" onclick="setTab('run');setTimeout(()=>runDetail('${esc(pb.last_run_id)}'),600)">看画布 →</button>`:''}
+    <button class="mini" style="color:var(--danger)" onclick="pbDel('${esc(pb.id)}')">删除</button></div></div>`).join('')||emptyBox('📘','还没有剧本','从下方模板一键添加');
+ const tpls=(PB_DATA.templates||[]);
+ html+=`<div class="mut" style="font-size:11.5px;margin:10px 0 6px">模板库（点「添加」即成为可运行剧本，可自行改 JSON）</div>`;
+ html+=tpls.map(t=>`<div style="display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--border)">
+   <b style="font-size:12.5px">${esc(t.icon||'')} ${esc(t.name)}</b>
+   <span class="mut" style="font-size:11px;flex:1">${esc(t.desc||'')} · ${tr(t.trigger)}</span>
+   ${pbs.some(x=>(x.name||'')===(t.name||''))?'<span class="badge" style="background:var(--muted)">已添加</span>':`<button class="mini" onclick="pbInstall('${esc(t.id)}',event)">添加</button>`}</div>`).join('');
+ el.innerHTML=html;
+}).catch(()=>{})}
+function pbRun(id,ev){return withBtn(ev,async()=>{const r=await api('api/playbooks/run',{id});
+ if(r.error)throw new Error(r.error);toast('剧本已启动（'+r.steps+' 步），可在执行画布看进度','ok');
+ setTab('run');setTimeout(()=>runDetail(r.run_id),700);return r;
+},{busyText:'启动中…',okText:'已启动'});}
+function pbInstall(id,ev){return withBtn(ev,async()=>{const r=await api('api/playbooks/install',{id});
+ if(r.error)throw new Error(r.error);toast('已添加剧本','ok');pbLoad();return r;
+},{busyText:'添加中…',okText:'已添加'});}
+function pbToggle(id,en){const pb=(PB_DATA.playbooks||[]).find(x=>x.id===id);if(!pb)return;
+ api('api/playbooks/save',{...pb,enabled:en}).then(()=>pbLoad())}
+function pbDel(id){if(!confirm('删除该剧本？'))return;api('api/playbooks/delete',{id}).then(()=>pbLoad())}
 /* ---- 统一执行方式切换 ---- */
 function openConvert(from, ev){
  const canAuto=true;
