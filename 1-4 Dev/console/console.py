@@ -3330,6 +3330,31 @@ def _rag_chunks():
                            "text": (e["name"] + "：" + e["notes"]), "title": e["name"]})
     except Exception:
         pass
+    # harness 规则（内容质量/发布/语言/配额等硬约束）
+    try:
+        for f in sorted((PROJECT / "1-1 Harness" / "02-rules").glob("RULES-*.md")):
+            try:
+                txt = f.read_text(errors="ignore")
+            except Exception:
+                continue
+            body = re.sub(r"^---[\s\S]*?---", "", txt).strip()
+            for part in re.split(r"\n(?=#{1,3}\s)", body):
+                part = part.strip()
+                if len(part) < 30:
+                    continue
+                chunks.append({"src": "rule", "ref": rel_of(f), "section": f.stem,
+                               "text": part[:1200], "title": f.stem + " · " + part.split("\n", 1)[0][:60]})
+    except Exception:
+        pass
+    # Skills（方法论）
+    try:
+        for sk in _skills_index():
+            txt = (sk.get("name", "") + "：" + (sk.get("desc") or ""))
+            if len(txt) > 30:
+                chunks.append({"src": "skill", "ref": sk["name"], "section": sk.get("group", ""),
+                               "text": txt[:800], "title": sk["name"]})
+    except Exception:
+        pass
     return chunks
 
 
