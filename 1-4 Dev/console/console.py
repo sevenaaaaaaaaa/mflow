@@ -3067,6 +3067,42 @@ MCP_TOOLS = [
 ]
 
 
+def mcp_handle(msg, proj=None):
+    """MCP JSON-RPC（HTTP 传输）：initialize / tools/list / tools/call / ping。"""
+    method = msg.get("method")
+    mid = msg.get("id")
+    PROTO = "2025-06-18"
+    if method == "initialize":
+        return {"jsonrpc": "2.0", "id": mid, "result": {
+            "protocolVersion": PROTO,
+            "capabilities": {"tools": {"listChanged": False}},
+            "serverInfo": {"name": "mflow", "version": "1.0.0"}}}
+    if method in ("notifications/initialized", "initialized"):
+        return None
+    if method == "ping":
+        return {"jsonrpc": "2.0", "id": mid, "result": {}}
+    if method == "tools/list":
+        tools = []
+        for t in MCP_TOOLS:
+            props = {k: {"type": ["string", "number", "object", "boolean"], "description": str(v)}
+                     for k, v in (t.get("schema") or {}).items()}
+            tools.append({"name": t["name"], "description": t.get("desc", ""),
+                          "inputSchema": {"type": "object", "properties": props, "additionalProperties": True}})
+        return {"jsonrpc": "2.0", "id": mid, "result": {"tools": tools}}
+    if method == "tools/call":
+        params = msg.get("params") or {}
+        name = params.get("name")
+        args = params.get("arguments") or {}
+        result = mcp_tool(str(name), args, proj)
+        is_err = isinstance(result, dict) and bool(result.get("error"))
+        return {"jsonrpc": "2.0", "id": mid,
+                "result": {"content": [{"type": "text", "text": json.dumps(result, ensure_ascii=False, indent=1)}],
+                           "isError": is_err}}
+    if mid is None:
+        return None
+    return {"jsonrpc": "2.0", "id": mid, "error": {"code": -32601, "message": "Method not found: " + str(method)}}
+
+
 def mcp_tool(name, args, proj=None):
     """执行一个 MCP 工具（只读 + dry-run 动作）。"""
     proj = proj or DEFAULT_PROJECT
@@ -7215,6 +7251,23 @@ def automation_run(aid, proj=None, by="automation"):
     a = next((x for x in automations_list() if x.get("id") == aid), None)
     if not a:
         return {"error": "自动化不存在"}
+    # 硬闸（与剧本一致）
+    lim = {"max_runs_per_day": 50, "max_concurrent": 2, "cooldown_min": 5}
+    lim.update({k: v for k, v in (a.get("limits") or {}).items() if v is not None})
+    today = datetime.now().strftime("%Y-%m-%d")
+    if int(lim["max_runs_per_day"]) and a.get("day") == today and int(a.get("runs_today") or 0) >= int(lim["max_runs_per_day"]):
+        return {"error": f"已被硬闸拦截：今日运行已达上限（{lim['max_runs_per_day']} 次）", "blocked": True}
+    if int(lim["cooldown_min"]):
+        try:
+            _last = datetime.strptime(a.get("last_run") or "", "%Y-%m-%d %H:%M").timestamp()
+        except Exception:
+            _last = 0
+        if _last and (time.time() - _last) < int(lim["cooldown_min"]) * 60:
+            return {"error": f"已被硬闸拦截：冷却中（{lim['cooldown_min']} 分钟）", "blocked": True}
+    if int(lim["max_concurrent"]):
+        _running = sum(1 for r in run_list(100) if r.get("kind") == "automation" and r.get("status") == "running")
+        if _running >= int(lim["max_concurrent"]):
+            return {"error": f"已被硬闸拦截：并发已达上限（{lim['max_concurrent']}）", "blocked": True}
     mode = a.get("mode", "preset")
     spec = a.get("spec") or {}
     dry = bool(a.get("dry_run", True))
@@ -7243,7 +7296,9 @@ def automation_run(aid, proj=None, by="automation"):
             out = {"loop_id": lid}
         else:
             return {"error": "未知 mode：" + mode}
-        automation_save({"id": aid, "last_run": datetime.now().strftime("%Y-%m-%d %H:%M"), **out})
+        _rt = (int(a.get("runs_today") or 0) + 1) if a.get("day") == today else 1
+        automation_save({"id": aid, "last_run": datetime.now().strftime("%Y-%m-%d %H:%M"),
+                         "day": today, "runs_today": _rt, **out})
         try:
             webhook_emit("automation.run", {"automation": aid, "name": a.get("name"), "mode": mode, **out})
         except Exception:
@@ -7475,6 +7530,38 @@ def playbook_run(pb, by="playbook", proj=None, force=False, _internal=False):
     except Exception:
         pass
     return {"ok": True, "run_id": run["id"], "steps": len(steps)}
+
+
+def playbook_preview(pb, proj=None):
+    """试运行预览（不创建任何任务）：逐步骤展开，显示将处理什么、多少条。"""
+    proj = proj or pb.get("proj") or DEFAULT_PROJECT
+    out = []
+    for i, st in enumerate((pb.get("steps") or [])[:12]):
+        t = str(st.get("type", "preset"))
+        row = {"i": i + 1, "name": st.get("name") or "", "type": t}
+        try:
+            if t == "preset":
+                ex = preset_expand(st.get("preset"), st.get("opt") or {}, proj)
+                if ex.get("error"):
+                    row.update({"error": ex["error"], "count": 0})
+                else:
+                    row.update({"preset": st.get("preset"), "task_type": ex.get("type"),
+                                "count": len(ex.get("items") or []), "note": ex.get("note", ""),
+                                "sample": [x.get("slug") or x.get("item_id") or x.get("doc_id") for x in (ex.get("items") or [])[:3]]})
+            elif t == "guard":
+                row.update({"expr": st.get("expr", ""), "on_false": st.get("on_false", "stop")})
+            elif t == "verify":
+                row.update({"urls": st.get("urls") or []})
+            elif t == "spec":
+                sp = st.get("spec") or {}
+                row.update({"task_type": sp.get("type"), "count": len(sp.get("items") or [])})
+        except Exception as e:
+            row.update({"error": str(e)[:160], "count": 0})
+        out.append(row)
+    lim = _pb_limits(pb)
+    return {"ok": True, "name": pb.get("name"), "dry_run": pb.get("dry_run", True),
+            "trigger": pb.get("trigger") or {}, "limits": lim, "steps": out,
+            "total_items": sum(int(x.get("count") or 0) for x in out)}
 
 
 def playbook_tick():
@@ -8211,6 +8298,24 @@ class Handler(BaseHTTPRequestHandler):
             return False  # fail-closed：既无多用户也无单密码
         return bool(self._me()) or self._machine()
 
+    def _send_sse_mcp(self):
+        """MCP 旧版 SSE 传输兼容：返回 endpoint 事件 + 心跳（有界，避免长占线程）。"""
+        if not (self._machine() or self._me()):
+            return self._send(401, {"error": "需要 X-MFlow-Token 或登录会话"})
+        try:
+            self.send_response(200)
+            self.send_header("Content-Type", "text/event-stream")
+            self.send_header("Cache-Control", "no-cache")
+            self.send_header("Connection", "keep-alive")
+            self.end_headers()
+            self.wfile.write(b"event: endpoint\ndata: /mflow/api/mcp\n\n")
+            for _ in range(6):  # ~30s 心跳后关闭
+                time.sleep(5)
+                self.wfile.write(b": ping\n\n")
+                self.wfile.flush()
+        except Exception:
+            pass
+
     def _machine(self):
         """P8 联动：外部系统（如 OpenFlow）以 X-MFlow-Token 调用；GET-only（写动作仍需人工）。"""
         if not API_TOKEN:
@@ -8581,6 +8686,8 @@ class Handler(BaseHTTPRequestHandler):
                                         "mcp_script": "1-4 Dev/scripts/mcp_server.py",
                                         "docs": "docs/mcp.md",
                                         "base": "https://nownexts.com/mflow"})
+            if parsed.path == "/api/mcp/sse":
+                return self._send_sse_mcp()
             if parsed.path == "/api/mcp/tools":
                 return self._send(200, {"tools": MCP_TOOLS})
             if parsed.path == "/api/learnings":
@@ -8731,6 +8838,14 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_POST(self):
         # ── MCP：允许机器 token 调用白名单工具（只读 + 强制 dry-run 动作）──
+        if self.path == "/api/mcp":  # MCP JSON-RPC over HTTP（Streamable HTTP）
+            if not (self._machine() or self._me()):
+                return self._send(401, {"error": "需要 X-MFlow-Token 或登录会话"})
+            body = self._body()
+            r = mcp_handle(body, self._proj())
+            if r is None:
+                return self._send(202, {"ok": True})
+            return self._send(200, r)
         if self.path == "/api/mcp/tool":
             if not (self._machine() or self._me()):
                 return self._send(401, {"error": "需要 X-MFlow-Token 或登录会话"})
@@ -8856,6 +8971,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/multilang/fill", "/api/automations/save", "/api/automations/delete",
                       "/api/automations/run", "/api/work/convert",
                       "/api/playbooks/save", "/api/playbooks/delete", "/api/playbooks/run", "/api/playbooks/install",
+                      "/api/playbooks/preview",
                       "/api/batch/revive_stale", "/api/batch/retry_item", "/api/batch/retry_all",
                       "/api/run/action",
                       "/api/qa/orchestrate", "/api/qa/recheck",
@@ -9447,6 +9563,8 @@ class Handler(BaseHTTPRequestHandler):
                                  params=ex.get("params") or {}, dry_run=bool(body.get("dry_run", True)), by=self._me())
                 return self._send(200, {"ok": True, "task_id": t["id"], "total": t["stats"]["total"], "note": ex.get("note", "")})
             # ── 剧本 Playbook ──
+            if self.path == "/api/playbooks/preview":
+                return self._send(200, playbook_preview(body.get("playbook") or {}, self._proj()))
             if self.path == "/api/playbooks/save":
                 return self._send(200, playbook_save(body))
             if self.path == "/api/playbooks/delete":
