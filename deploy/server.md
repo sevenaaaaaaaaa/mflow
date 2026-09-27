@@ -41,9 +41,8 @@ mv ~/mflow-data-backup/"1-2 Insight" ~/mflow-data-backup/"1-3 GenFlow" .
 mkdir -p "1-1 Harness/11-knowledge"
 cp -a ~/mflow-data-backup/"1-1 Harness/11-knowledge/." "1-1 Harness/11-knowledge/" 2>/dev/null || true
 
-# 4) 默认项目目录对齐新命名（工作台默认项目 id 已改为 main）
-[ -d run/projects/lovart-global ] && [ ! -d run/projects/main ] && \
-  mv run/projects/lovart-global run/projects/main || true
+# 4) 默认项目目录对齐新命名（工作台默认项目 id 已改为 main）：
+#    若 run/projects/ 下存在旧默认项目目录（不带 main 名），整体改名为 main
 
 # 5) 重启工作台并验证
 systemctl restart mflow-console.service
