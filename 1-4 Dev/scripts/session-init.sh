@@ -17,8 +17,8 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MFLOW_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 VAULT_ROOT="$(cd "$SCRIPT_DIR/../../../.." && pwd)"
 HARNESS="$MFLOW_ROOT/1-1 Harness"
-PIPELINE_PY="$HARNESS/Skills/06-orchestrate/lovart-pipeline-state/pipeline_state.py"
-ROUTER_PY="$HARNESS/Skills/06-orchestrate/lovart-router/router.py"
+PIPELINE_PY="$HARNESS/Skills/06-orchestrate/pipeline-state/pipeline_state.py"
+ROUTER_PY="$HARNESS/Skills/06-orchestrate/router/router.py"
 STATE="1-3 GenFlow/.pipeline/pipeline-state.json"
 
 # Resolve to absolute path

@@ -44,7 +44,7 @@ Table structure (Lovart production schema SSOT — @sanity/table):
 HARD RULES (2026-08-03 corrected against deployed schema):
 - cells MUST be string[]; never tableCell / block / span trees
 - table + tableRow MUST have _key; string cells have no _key
-- Do NOT invent tableCell — it is not in o11tm2qe schema
+- Do NOT invent tableCell — it is not in your-project-id schema
 """
 
 import re

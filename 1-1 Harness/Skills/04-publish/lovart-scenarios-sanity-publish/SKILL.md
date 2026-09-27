@@ -12,7 +12,7 @@ disable-model-invocation: true
 
 - 只用 **`import --missing`**（批量经 `import-scenarios-drafts.js --import`；单篇经 `import-page.js --import`）
 - ❌ 不 `sanity deploy`、不改 schema、不 `--replace`、不删文档
-- projectId **`o11tm2qe`** · dataset **`production`**
+- projectId **`your-project-id`** · dataset **`production`**
 - 试点稿保持 **`seo.noIndex: true`**，slug 前缀 **`draft-`**
 - `url_path` 使用 **`/scenario/`**（单数，非 `/scenarios/`）
 

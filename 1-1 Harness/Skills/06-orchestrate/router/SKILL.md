@@ -1,7 +1,7 @@
 ---
 description: 路由器 skill。23 条决策矩阵决定 profile/skill/action。
 ---
-# lovart-router — state-aware profile router (v1.0)
+# router — state-aware profile router (v1.0)
 
 > **Why this exists**: 6 个 Profile 各管一段,但现实任务是横切的——创作撞 QA bug、
 > 发布撞 BLOCK、QA 撞 i18n 缺陷。每个 profile 装所有相关 skill → token 爆炸;装太少
@@ -75,7 +75,7 @@ ANY              calendar_oversubscribed      lovart-management      reroute
 
 ### 任意会话开头
 ```bash
-python3 lovart-router/router.py decide
+python3 router/router.py decide
 # → 输出: profile_target + skills_to_load + next_action
 ```
 
@@ -120,7 +120,7 @@ python3 router.py validate
 ## File map
 
 ```
-1-1 Harness/Skills/06-orchestrate/lovart-router/
+1-1 Harness/Skills/06-orchestrate/router/
 ├── SKILL.md              ← 本文件
 ├── router.py             ← 6 subcommand CLI + 23 decisions + 6 profiles
 └── tests/smoketest.sh    ← 24 个 router 测试 (TBD)
@@ -128,7 +128,7 @@ python3 router.py validate
 
 ## Related skills
 
-- `lovart-pipeline-state` — router 的输入(state stage 来自它)
+- `pipeline-state` — router 的输入(state stage 来自它)
 - `lovart-content-quality-gates` — `l1_fluff` 触发后真正执行
 - `lovart-sanity-publish` — `S5-importing` 触发后真正执行
 - `lovart-content-creation-orchestrator` — 改写后直接调 `router decide` 作为 step 1

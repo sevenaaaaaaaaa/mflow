@@ -69,7 +69,7 @@
 | `sourceType` | `tools`（数据集 legacy 字段，导入脚本写入） |
 | `_id` | `{id}-{lang}`（`id` 来自 JSON 或 `_index.json`） |
 | Studio | https://lovart.sanity.studio → **Content → Tools** |
-| Project / Dataset | `o11tm2qe` / `production` |
+| Project / Dataset | `your-project-id` / `production` |
 
 ### 2.4 单篇导入 `import-page.js`
 
@@ -124,7 +124,7 @@ node scripts/import-page.js "../1-3 Content Gen/Page Gen/Pages/Tools/en/{slug}-e
 ```bash
 cd "…/1-4 Dev/lovart.sanity.studio"
 grep -E "SANITY_STUDIO_PROJECT|SANITY_STUDIO_DATASET" .env
-# 期望：o11tm2qe / production
+# 期望：your-project-id / production
 
 npx sanity debug --secrets
 # 已登录 sevena@lovart.ai

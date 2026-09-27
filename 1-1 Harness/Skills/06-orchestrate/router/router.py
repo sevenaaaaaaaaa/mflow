@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-lovart-router — state-aware profile router for Lovart content factory.
+router — state-aware profile router for Lovart content factory.
 
 Problem:
     6+ Profile × 13+ cross-profile scenarios × N skills per profile = context
@@ -10,18 +10,18 @@ Problem:
 
 Solution:
     Single decision table mapping (state, scenario) → (action, profile_target,
-    skills_to_load). Every profile's first action is `lovart-router decide`
+    skills_to_load). Every profile's first action is `router decide`
     which returns ONE precise next step.
 
 Usage:
     # In any profile, at session start:
-    python3 lovart-router/router.py decide [--state-path ...]
+    python3 router/router.py decide [--state-path ...]
 
     # When bug discovered mid-session:
-    python3 lovart-router/router.py decide --from-context "qa_l1_fluff"
+    python3 router/router.py decide --from-context "qa_l1_fluff"
 
     # List all decisions and which profile handles them:
-    python3 lovart-router/router.py matrix
+    python3 router/router.py matrix
 """
 
 from __future__ import annotations
@@ -35,7 +35,7 @@ from pathlib import Path
 from typing import Any
 
 HERE = Path(__file__).resolve().parent
-PIPELINE_STATE_PY = HERE.parent / "lovart-pipeline-state" / "pipeline_state.py"
+PIPELINE_STATE_PY = HERE.parent / "pipeline-state" / "pipeline_state.py"
 
 
 # ---------------------------------------------------------------------------
@@ -90,7 +90,7 @@ PROFILES = {
         "model": "deepseek-chat",
         "work_line": "M0-meta",
         "owns_stages": [],
-        "key_skills": ["lovart-pipeline-state", "lovart-router",
+        "key_skills": ["pipeline-state", "router",
                        "lovart-project-architecture", "lovart-knowledge-graph-query"],
         "token_budget_hint": 4000,
     },
@@ -110,14 +110,14 @@ DECISIONS: list[dict[str, Any]] = [
         "stage": "S0-todo", "scenario": "default",
         "action": "upsert",
         "profile": "lovart-creation",
-        "skills": ["lovart-pipeline-state", "lovart-blog-signal-writer"],
+        "skills": ["pipeline-state", "lovart-blog-signal-writer"],
         "reason": "S0-todo → first creation step",
     },
     {
         "stage": "S0-todo", "scenario": "from_sentinel",
         "action": "upsert",
         "profile": "lovart-creation",
-        "skills": ["lovart-pipeline-state", "lovart-blog-signal-writer"],
+        "skills": ["pipeline-state", "lovart-blog-signal-writer"],
         "reason": "Sentinel-triggered creation",
     },
 
@@ -168,7 +168,7 @@ DECISIONS: list[dict[str, Any]] = [
         "stage": "S3-done", "scenario": "default",
         "action": "advance_only",
         "profile": "lovart-creation",
-        "skills": ["lovart-pipeline-state"],
+        "skills": ["pipeline-state"],
         "reason": "S3 done → advance to S4-qa and close session",
     },
 
@@ -198,7 +198,7 @@ DECISIONS: list[dict[str, Any]] = [
         "stage": "S4-ready", "scenario": "default",
         "action": "advance_only",
         "profile": "lovart-quality",
-        "skills": ["lovart-pipeline-state"],
+        "skills": ["pipeline-state"],
         "reason": "QA done → close session; ops profile will pick up next",
     },
 
@@ -258,7 +258,7 @@ DECISIONS: list[dict[str, Any]] = [
         "stage": "ANY", "scenario": "user_asks_state",
         "action": "info_only",
         "profile": None,  # use current profile
-        "skills": ["lovart-pipeline-state"],
+        "skills": ["pipeline-state"],
         "reason": "State query → use pipeline-state CLI directly",
     },
     {

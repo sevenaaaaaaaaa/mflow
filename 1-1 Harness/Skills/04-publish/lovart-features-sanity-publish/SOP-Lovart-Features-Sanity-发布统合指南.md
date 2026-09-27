@@ -73,7 +73,7 @@
 | `sourceType` | `features`（legacy） |
 | `_id` | `{id}-{lang}` |
 | 支持语言 | `en`, `de`, `fr`, `it`, `ja`, `ko`, `pt`, `ru`, `zh-TW` |
-| Project / Dataset | `o11tm2qe` / `production` |
+| Project / Dataset | `your-project-id` / `production` |
 | Studio | **Content → Features** |
 
 ---
@@ -174,7 +174,7 @@ _source                           → 不写入
 ```bash
 cd "…/1-4 Dev/lovart.sanity.studio"
 grep -E "SANITY_STUDIO_PROJECT|SANITY_STUDIO_DATASET" .env
-# 期望：o11tm2qe / production
+# 期望：your-project-id / production
 
 npx sanity debug --secrets
 # 已登录 sevena@lovart.ai

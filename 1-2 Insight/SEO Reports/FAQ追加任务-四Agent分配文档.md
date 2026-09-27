@@ -27,8 +27,8 @@ with open('/Users/seveno/.config/sanity/config.json') as f:
 token = cfg['authToken']
 
 HEADERS = {'Authorization': f'Bearer {token}', 'Content-Type': 'application/json'}
-QUERY_URL = 'https://o11tm2qe.api.sanity.io/v2026-01-01/data/query/production'
-MUTATE_URL = 'https://o11tm2qe.api.sanity.io/v2026-01-01/data/mutate/production'
+QUERY_URL = 'https://your-project-id.api.sanity.io/v2026-01-01/data/query/production'
+MUTATE_URL = 'https://your-project-id.api.sanity.io/v2026-01-01/data/mutate/production'
 
 def q(query_str):
     payload = json.dumps({'query': query_str}).encode()

@@ -82,7 +82,7 @@ Docs/         = 阶段 S1-S6 详细 SOP            → 谁读：操作时按阶�
 
 | 目的地 | Owner Skill | 凭证 |
 |--------|------------|------|
-| Sanity (o11tm2qe / prod) | `lovart-sanity-publish` + `*-sanity-publish` 各分支 | `~/.config/sanity/config.json` |
+| Sanity (your-project-id / prod) | `lovart-sanity-publish` + `*-sanity-publish` 各分支 | `~/.config/sanity/config.json` |
 | IndexNow | `lovart-sitemap-update` | 无 |
 | GitHub | `lovart-multi-platform-push` | `$LOVART_GH_TOKEN` |
 | DEV.to | 同上 | `$DEVTO_API_KEY` |

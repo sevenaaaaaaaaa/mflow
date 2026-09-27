@@ -12,4 +12,4 @@
 
 **类型**: Comparison × 7 | **框架**: The Duel | **总字数**: ~12,300 | **语言**: EN
 **GSC 来源**: P0 竞品词 (pos 3.1–8.7, imp 941–2,059)
-**Sanity**: project o11tm2qe / production | 导入时间: 2026-05-26T15:19:39Z
+**Sanity**: project your-project-id / production | 导入时间: 2026-05-26T15:19:39Z

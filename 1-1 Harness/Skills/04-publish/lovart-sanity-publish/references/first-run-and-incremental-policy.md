@@ -32,7 +32,7 @@
 
 | 步骤 | 动作 | 产出 / 目的 |
 |------|------|-------------|
-| 1 | 复制 `.env.example` → `.env`，填 `o11tm2qe` / `production` / API token | `dataset import` 可用 |
+| 1 | 复制 `.env.example` → `.env`，填 `your-project-id` / `production` / API token | `dataset import` 可用 |
 | 2 | `npx sanity login` | `sanity exec` 可用 |
 | 3 | `node scripts/check-sanity-auth.js` | 环境与登录 PASS |
 | 4 | **拉取线上参照到本地** | 见下表 |

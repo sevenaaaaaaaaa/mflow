@@ -1,7 +1,7 @@
 # Sanity GROQ 速查 — Blog / Features / Tools（production）
 
 > **用途**：import 前查线上是否已有、import 后验收。在 https://lovart.sanity.studio Vision 或 `npx sanity documents query` 执行。  
-> **项目**：`o11tm2qe` · **dataset**：`production`
+> **项目**：`your-project-id` · **dataset**：`production`
 
 ---
 

@@ -75,7 +75,7 @@ VAULT="<vault-root>  # 即 LOVART_RESOURCE_ROOT，Obsidian MindRe 根目录"
 ## 验证
 
 ```bash
-bash 1-1\ Harness/Skills/06-orchestrate/lovart-pipeline-state/smoketest.sh  # 39 tests
+bash 1-1\ Harness/Skills/06-orchestrate/pipeline-state/smoketest.sh  # 39 tests
 cd 1-4\ Dev/scripts/hooks/tests && bash ./smoketest_hooks.sh                    # 16 tests
 ```
 

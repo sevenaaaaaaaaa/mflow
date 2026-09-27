@@ -17,7 +17,7 @@ User authorized publish ("发布吧"). Ran publish via `createIfNotExists` GROQ 
 
 ## Wins
 
-### Articles published to Sanity production (o11tm2qe / production)
+### Articles published to Sanity production (your-project-id / production)
 
 | Doc _id | Status | Word count (Portable Text blocks) | Result |
 |---------|--------|-----------------------------------|--------|
@@ -106,7 +106,7 @@ The 3rd article's pre-existing English version was actually high-quality (Lovart
 | Portable Text blocks total published | 165 |
 | GROQ mutation rc | 0 for all 3 |
 | Token used | `skrMo7XDgEvt6V8ud69q...` |
-| Project / Dataset | `o11tm2qe` / `production` |
+| Project / Dataset | `your-project-id` / `production` |
 | Pre-flight pass rate (Word count + Banned + Table + Internal links) | 3/3 OK |
 
 ## Follow-up TODOs (next session priority)

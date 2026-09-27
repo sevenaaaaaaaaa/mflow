@@ -1,7 +1,7 @@
 # TOOLS 素材缺口排查报告
 
 > **排查日期**: 2026-06-15
-> **数据源**: Sanity CMS `o11tm2qe/production` · `_type == "compositePage"`
+> **数据源**: Sanity CMS `your-project-id/production` · `_type == "compositePage"`
 > **排查范围**: tool / feature / solution / product 四个分类
 
 ---

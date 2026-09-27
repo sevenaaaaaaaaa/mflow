@@ -12,7 +12,7 @@ bash "1-4 Dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / r
 ```
 
 - GATE 1-3 全过 = 会话可以开工；状态机 SSOT：`1-3 GenFlow/.pipeline/pipeline-state.json`
-- 创作任务先问路由器：`python3 "1-1 Harness/Skills/06-orchestrate/lovart-router/router.py" decide --stage S3 --scenario blog`
+- 创作任务先问路由器：`python3 "1-1 Harness/Skills/06-orchestrate/router/router.py" decide --stage S3 --scenario blog`
 - 调度真相：launchd 三任务（daily 08:00 / weekly 周一 07:00 / dream 02:30），定义见 `1-4 Dev/automation/automation-manifest.json`
 
 ---

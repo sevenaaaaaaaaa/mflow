@@ -1,9 +1,9 @@
 ---
 session_date: 2026-07-20
-session_topic: "档案盘点 + lovart-router skill + Blog 闭环验证 — 解上下文分片悖论"
+session_topic: "档案盘点 + router skill + Blog 闭环验证 — 解上下文分片悖论"
 session_slug: "profile-router-rollout"
 profiles_used: [profile-lovart-management]
-tools_used: [lovart-pipeline-state, lovart-router, pre-write-check, post-write-check, pre-import-check, dryrun-blog-pipeline]
+tools_used: [pipeline-state, router, pre-write-check, post-write-check, pre-import-check, dryrun-blog-pipeline]
 agents: [hermes]
 duration_min: 75
 files_changed_count: 9
@@ -19,9 +19,9 @@ status: ready
 **两轮交付 + 一次真实数据验证**:
 
 第 1 轮 (前一会话): pipeline-state + 3 hooks — 解决"流程串不起来 + 铁律不遵守"
-第 2 轮 (本会话): lovart-router — 解决"上下文分片悖论"
+第 2 轮 (本会话): router — 解决"上下文分片悖论"
 
-**lovart-router 架构**:
+**router 架构**:
 - 6 个 active profile 的 registry (model / work_line / owns_stages / key_skills)
 - 23 个决策 (stage, scenario) → (action, profile_target, skills_to_load)
 - 6 subcommand CLI: decide / matrix / profile / profiles / validate
@@ -36,10 +36,10 @@ status: ready
 # Files Changed
 | 路径 | 操作 | 备注 |
 |------|------|------|
-| `1-1 Harness/Skills/06-orchestrate/lovart-router/router.py` | add | 6 subcommand CLI + 23 decisions + 6 profile registry |
-| `1-1 Harness/Skills/06-orchestrate/lovart-router/SKILL.md` | add | 决策表 + 典型 session flow |
-| `1-1 Harness/Skills/06-orchestrate/lovart-router/tests/dryrun-blog-pipeline.py` | add | 模拟 3 种策略跑 18 个 stage |
-| `1-1 Harness/Skills/06-orchestrate/lovart-router/tests/smoketest.sh` | add | 15 router 测试 |
+| `1-1 Harness/Skills/06-orchestrate/router/router.py` | add | 6 subcommand CLI + 23 decisions + 6 profile registry |
+| `1-1 Harness/Skills/06-orchestrate/router/SKILL.md` | add | 决策表 + 典型 session flow |
+| `1-1 Harness/Skills/06-orchestrate/router/tests/dryrun-blog-pipeline.py` | add | 模拟 3 种策略跑 18 个 stage |
+| `1-1 Harness/Skills/06-orchestrate/router/tests/smoketest.sh` | add | 15 router 测试 |
 | `1-1 Harness/11-knowledge/sessions/2026-07-20-profile-router-rollout.md` | add | 本文件 |
 
 # Decisions Made
@@ -64,9 +64,9 @@ status: ready
 - Q5: i18n audit fail 路由回 creation 是正确吗? 还是应回 quality 然后跳 ops?(当前决策未覆盖此路径)
 
 # Cross-References
-- entities: skill-lovart-router, skill-lovart-pipeline-state, concept-cross-profile-routing
+- entities: skill-router, skill-pipeline-state, concept-cross-profile-routing
 - decisions: MEMORY-PROJECT.md § 6.5 (上轮) + 本 session log
-- skills: lovart-router, lovart-pipeline-state, post-write-check, pre-import-check
+- skills: router, pipeline-state, post-write-check, pre-import-check
 - verification: 70 smoke tests pass (39 + 16 + 15)
 
 # Tags

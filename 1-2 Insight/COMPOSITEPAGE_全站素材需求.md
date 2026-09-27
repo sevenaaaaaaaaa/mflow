@@ -1,7 +1,7 @@
 # 全站 compositePage 素材需求清单
 
 > 更新日期: 2026-06-15
-> 数据源: Sanity CMS o11tm2qe/production
+> 数据源: Sanity CMS your-project-id/production
 > 状态: 框架已全部升级至生产标准，等待素材填充
 
 ---

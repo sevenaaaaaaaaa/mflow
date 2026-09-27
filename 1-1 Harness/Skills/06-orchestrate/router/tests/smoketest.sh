@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Smoke test for lovart-router — verifies decision matrix + scenario detection.
+# Smoke test for router — verifies decision matrix + scenario detection.
 # Returns rc=0 only if all checks pass.
 
 set -e
@@ -45,7 +45,7 @@ expect_eq() {
 # Set up a real pipeline-state with items at various stages
 STATE="$TMP/state.json"
 EVENTS="$TMP/events.jsonl"
-PS="$(cd "$HERE/../../lovart-pipeline-state" && pwd)/pipeline_state.py"
+PS="$(cd "$HERE/../../pipeline-state" && pwd)/pipeline_state.py"
 PS_ARGS=(--state-path "$STATE" --events-path "$EVENTS")
 python3 "$PS" "${PS_ARGS[@]}" init >/dev/null
 

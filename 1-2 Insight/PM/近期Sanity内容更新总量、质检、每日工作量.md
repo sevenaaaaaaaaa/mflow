@@ -1,6 +1,6 @@
 ## Lovart.ai 内容生产数据总结
 
-**数据来源**：Sanity `o11tm2qe.production` GROQ 直接查询 | **快照**：2026-07-10
+**数据来源**：Sanity `your-project-id.production` GROQ 直接查询 | **快照**：2026-07-10
 
 ---
 
@@ -73,7 +73,7 @@
 | 资源 | 地址 |
 |------|------|
 | Sanity Studio | `https://lovart-wp-headless.sanity.studio/` |
-| Sanity API 项目 | `o11tm2qe.api.sanity.io` (dataset: production) |
+| Sanity API 项目 | `your-project-id.api.sanity.io` (dataset: production) |
 | Live site (EN) | `https://lovart.ai/` |
 | Live blog | `https://blogs.lovart.ai/` |
 | Sanity 配置 | `~/.config/sanity/config.json` |

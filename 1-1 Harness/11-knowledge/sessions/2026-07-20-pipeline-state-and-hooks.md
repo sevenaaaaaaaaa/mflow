@@ -3,7 +3,7 @@ session_date: 2026-07-20
 session_topic: "Pipeline state machine + hooks — 解 S0-S6 串不起来 + 铁律不遵守"
 session_slug: "pipeline-state-and-hooks"
 profiles_used: [profile-lovart-management]
-tools_used: [lovart-pipeline-state, pre-write-check, post-write-check, pre-import-check]
+tools_used: [pipeline-state, pre-write-check, post-write-check, pre-import-check]
 agents: [hermes]
 duration_min: 45
 files_changed_count: 8
@@ -18,7 +18,7 @@ status: ready
 
 # Solution
 两层交付,不动现有 skill,只在外部包约束:
-1. **lovart-pipeline-state**: 12-stage state machine + 8 subcommand CLI,atomic write + transition guard + fix_count cap (3)
+1. **pipeline-state**: 12-stage state machine + 8 subcommand CLI,atomic write + transition guard + fix_count cap (3)
 2. **3 hooks**: pre-write / post-write / pre-import,每个 exit-code 化 (0=pass / 1=BLOCK / 2=engine err)
 3. **集成**: `pre-import-check` 内部调 `pipeline_state.py check`,两层自动串接
 4. **测试**: pipeline-state 39/39 PASS + hooks 16/16 PASS,合计 55 个真实测试用例
@@ -26,9 +26,9 @@ status: ready
 # Files Changed
 | 路径 | 操作 | 备注 |
 |------|------|------|
-| `1-1 Harness/Skills/06-orchestrate/lovart-pipeline-state/pipeline_state.py` | add | 8 subcommand CLI, atomic write, 12-stage state machine |
-| `1-1 Harness/Skills/06-orchestrate/lovart-pipeline-state/smoketest.sh` | add | 39 个状态机测试 (init/upsert/get/list/next/advance/run/check/summary) |
-| `1-1 Harness/Skills/06-orchestrate/lovart-pipeline-state/SKILL.md` | add | 典型 session flow + safety guards + anti-patterns |
+| `1-1 Harness/Skills/06-orchestrate/pipeline-state/pipeline_state.py` | add | 8 subcommand CLI, atomic write, 12-stage state machine |
+| `1-1 Harness/Skills/06-orchestrate/pipeline-state/smoketest.sh` | add | 39 个状态机测试 (init/upsert/get/list/next/advance/run/check/summary) |
+| `1-1 Harness/Skills/06-orchestrate/pipeline-state/SKILL.md` | add | 典型 session flow + safety guards + anti-patterns |
 | `1-4 Dev/scripts/hooks/pre-write-check.sh` | add | 文件名/路径/frontmatter/占位符 (5 维) |
 | `1-4 Dev/scripts/hooks/post-write-check.sh` | add | H2 密度/词数/fluff/AI 自介/模板残留 (5 维) |
 | `1-4 Dev/scripts/hooks/pre-import-check.sh` | add | pipeline-state stage / qa BLOCKs / 日期双写 / 多语言 / artifact (5 维) |
@@ -56,9 +56,9 @@ status: ready
 - Q4: hooks/README.md 写完后,要不要在 cron 加个每小时 dry-run 报告?
 
 # Cross-References
-- entities: skill-lovart-pipeline-state, skill-lovart-quality-cascade, concept-pipeline-state-machine
+- entities: skill-pipeline-state, skill-lovart-quality-cascade, concept-pipeline-state-machine
 - decisions: MEMORY-PROJECT.md § 6.5
-- skills: lovart-pipeline-state, lovart-content-quality-gates, lovart-sanity-publish
+- skills: pipeline-state, lovart-content-quality-gates, lovart-sanity-publish
 
 # Tags
 - relevant-tags: #pipeline-orchestration #state-machine #hooks #engineering-quality #2026-07

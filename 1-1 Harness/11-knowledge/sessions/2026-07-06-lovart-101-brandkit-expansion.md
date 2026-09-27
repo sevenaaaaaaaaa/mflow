@@ -13,7 +13,7 @@ status: ready
 * **质量门禁指标**：
   * 每篇字数（词数）必须 $\ge 7500$ 词。
   * 必备块齐全：H2 intro hook、Derivative Scenarios 3+、FAQ 3-5 Q&A、E-E-A-T 信号、3+ 站内链接、合规封面图等。
-  * 成功发布/更新到 Sanity CMS 生产环境（Project ID: `o11tm2qe`）。
+  * 成功发布/更新到 Sanity CMS 生产环境（Project ID: `your-project-id`）。
   * 提交 IndexNow 索引（API 返回 202 成功）。
 
 ## 2. 方案设计与执行 (Approach & Execution)

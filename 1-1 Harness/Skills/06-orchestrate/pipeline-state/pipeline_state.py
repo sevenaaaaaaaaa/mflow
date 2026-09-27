@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-lovart-pipeline-state — single source of truth for content pipeline progress.
+pipeline-state — single source of truth for content pipeline progress.
 
 Problem this solves:
     S3 says "I'm done writing, next should be QA".

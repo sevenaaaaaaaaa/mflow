@@ -48,7 +48,7 @@ PROFILES = {
 # Per-stage realistic action chain (what must happen, regardless of strategy)
 STAGES = [
     # (stage, action, expected_skills, optional=True means some strategies skip it)
-    ("S0-todo",         "pick_next + upsert",         ["lovart-pipeline-state"], False),
+    ("S0-todo",         "pick_next + upsert",         ["pipeline-state"], False),
     ("S3-creating",     "load brief + draft skeleton", ["lovart-blog-signal-writer"], False),
     ("S3-draft",        "write 7500 words",            ["lovart-blog-signal-writer"], False),
     ("S3-draft",        "post-write-check",            ["post-write-check"], False),
@@ -56,10 +56,10 @@ STAGES = [
     ("S3-draft",        "fix L2 keyword gap",          ["lovart-content-quality-gates"], True),
     ("S3-draft",        "verify dates double-write",   ["pre-write-check"], True),
     ("S3-draft",        "i18n translate (10 langs)",   ["lovart-i18n-pipeline"], True),
-    ("S3-done",         "advance to S4-qa",            ["lovart-pipeline-state"], False),
+    ("S3-done",         "advance to S4-qa",            ["pipeline-state"], False),
     ("S4-qa",           "run full QA gates",           ["lovart-content-quality-gates"], False),
     ("S4-fix",          "re-fix any blocker",          ["lovart-anti-slop"], True),
-    ("S4-ready",        "advance to S5-importing",     ["lovart-pipeline-state"], False),
+    ("S4-ready",        "advance to S5-importing",     ["pipeline-state"], False),
     ("S5-importing",    "pre-import-check",            ["pre-import-check"], False),
     ("S5-importing",    "sanity import",               ["lovart-sanity-publish"], False),
     ("S5-published",    "sitemap + indexnow",          ["lovart-sitemap-update"], False),
@@ -85,7 +85,7 @@ STAGE_PROFILE = {
 # Skills that each profile has pre-loaded (mimic reality)
 PROFILE_HAS_SKILLS = {
     "content-gen-lovart": set([  # monolith: ALL
-        "lovart-pipeline-state", "post-write-check", "pre-write-check",
+        "pipeline-state", "post-write-check", "pre-write-check",
         "lovart-blog-signal-writer", "lovart-anti-slop",
         "lovart-content-quality-gates", "lovart-i18n-pipeline",
         "lovart-sanity-publish", "lovart-sitemap-update",
@@ -93,20 +93,20 @@ PROFILE_HAS_SKILLS = {
         "lovart-seo-reporting", "lovart-page-serp-writer",
     ]),
     "lovart-creation": set([  # 24 skills — covers most of S3
-        "lovart-pipeline-state", "lovart-blog-signal-writer",
+        "pipeline-state", "lovart-blog-signal-writer",
         "lovart-anti-slop",  # yes, anti-slop is loaded here today
         "lovart-i18n-pipeline", "lovart-image-generation",
     ]),
     "lovart-quality": set([  # 24 skills — covers most of S4
-        "lovart-pipeline-state", "lovart-content-quality-gates",
+        "pipeline-state", "lovart-content-quality-gates",
         "lovart-anti-slop", "post-write-check",
     ]),
     "lovart-ops": set([
-        "lovart-pipeline-state", "lovart-sanity-publish",
+        "pipeline-state", "lovart-sanity-publish",
         "pre-import-check", "lovart-sitemap-update", "lovart-post-publish-verify",
     ]),
     "lovart-reports": set([
-        "lovart-pipeline-state", "lovart-seo-reporting",
+        "pipeline-state", "lovart-seo-reporting",
         "lovart-trident-data-engine",
     ]),
 }

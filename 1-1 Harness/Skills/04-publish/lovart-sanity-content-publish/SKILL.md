@@ -46,7 +46,7 @@ disable-model-invocation: true
 ```
                     ┌─────────────────────────────────┐
                     │  Lovart Sanity 内容发布          │
-                    │  project: o11tm2qe              │
+                    │  project: your-project-id              │
                     │  dataset: production            │
                     │  Studio: lovart.sanity.studio   │
                     └───────────────┬─────────────────┘
@@ -120,7 +120,7 @@ node scripts/check-publish-deps.js
 # 旧脚本兼容：如单独覆盖内容根，可 export LOVART_ROOT="/你的路径/1-Project/1-3 Content Gen"
 
 grep -E "SANITY_STUDIO_PROJECT|SANITY_STUDIO_DATASET" .env
-# o11tm2qe / production
+# your-project-id / production
 
 npx sanity debug --secrets
 # 已登录的 Sanity 账号

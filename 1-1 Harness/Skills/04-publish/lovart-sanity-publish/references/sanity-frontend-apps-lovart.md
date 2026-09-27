@@ -22,7 +22,7 @@
 | Blog | `https://www.lovart.ai/{lang}/blog/{slug}` |
 | Features | `https://www.lovart.ai/{lang}/features/{slug}` |
 | Tools | `https://www.lovart.ai/{lang}/tools/{slug}` |
-| Dataset | `production` @ project `o11tm2qe` |
+| Dataset | `production` @ project `your-project-id` |
 
 ---
 

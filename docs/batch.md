@@ -26,8 +26,8 @@
 
 | type | items 字段 | 行为 | dry-run |
 |------|-----------|------|:---:|
-| `asset_replace` | `doc_id, kind(cover/media), idx, field, old, new_url, new_alt` | Sanity patch（cover.url/alt、coverUrl、bodyJson 版块 media），`ifRevisionID` 并发保护 | ✅ |
-| `field_patch` | `doc_id, set:{"seoTitle":…,"description":…}` | 任意字段改写（Sanity patch） | ✅ |
+| `asset_replace` | `doc_id, kind(cover/media), idx, field, old, new_url, new_alt` | CMS patch（cover.url/alt、coverUrl、bodyJson 版块 media），`ifRevisionID` 并发保护 | ✅ |
+| `field_patch` | `doc_id, set:{"seoTitle":…,"description":…}` | 任意字段改写（CMS patch） | ✅ |
 | `gen` | `item_id, type, lang, topic, brief, template_id?` | LLM 生成 → 落盘 → post-write + geo 门禁 → 状态机推进（S3-creating→S3-draft→S3-done→S4-qa） | 不适用（产出草稿，天然安全） |
 | `rewrite` | `item_id, lang, topic, instruction, source_path?` | 读既有内容 → 按指令改写 → 同上（用于衰减页/高曝光低 CTR 页刷新） | 不适用 |
 
@@ -62,7 +62,7 @@
 {"type":"rewrite","dry_run":false,"items":[
   {"item_id":"refresh-text-to-image","lang":"en","topic":"text to image generator",
    "instruction":"重写 Title/首段/FAQ，提升 CTR；补数据点与来源链接",
-   "source_path":"run/library/lovart-global/blog/en/xxx.md"}]}
+   "source_path":"run/library/main/blog/en/xxx.md"}]}
 ```
 
 **③ SEO 字段批量改写（title/description）**

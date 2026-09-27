@@ -2,7 +2,7 @@
 
 > **单一事实来源（SSOT）** — 统合自：SOP 同步指南、内容管道规则、AGENTS 规范、Sanity Publish Skill、批量导入方案、Skills 汇总。
 >
-> 适用项目：**lovart.ai** · Project ID `o11tm2qe` · Dataset `production` · Studio https://lovart.sanity.studio
+> 适用项目：**lovart.ai** · Project ID `your-project-id` · Dataset `production` · Studio https://lovart.sanity.studio
 
 ---
 
@@ -54,7 +54,7 @@ lovart.ai 前端渲染
 
 | 项 | 值 |
 |---|---|
-| Project ID | `o11tm2qe` |
+| Project ID | `your-project-id` |
 | Dataset | `production`（当前无 staging，测试需单独创建） |
 | Studio | https://lovart.sanity.studio |
 | 本地代码 | `1-Project/1-4 Dev/lovart.sanity.studio/`（或 `~/lovart`） |
@@ -86,7 +86,7 @@ grep SANITY_STUDIO .env
 
 | 变量 | 期望值 |
 |------|--------|
-| `SANITY_STUDIO_PROJECT_ID` | `o11tm2qe` |
+| `SANITY_STUDIO_PROJECT_ID` | `your-project-id` |
 | `SANITY_STUDIO_DATASET` | `production` |
 | `SANITY_STUDIO_API_TOKEN` | Editor 权限 Token（manage.sanity.io → API → Tokens） |
 
@@ -99,7 +99,7 @@ npx sanity debug --secrets
 ### 3.4 执行前检查清单（按顺序）
 
 1. 工作目录为正确的 `sanity-studio/`
-2. `.env` 指向 `o11tm2qe` + `production`（不擅自修改）
+2. `.env` 指向 `your-project-id` + `production`（不擅自修改）
 3. `git status`：未误改 `sanity.config.ts`、`sanity.cli.ts`、`schemaTypes/`
 4. 待发布 MD 已在 `Sanity Blog/` 下就绪
 5. 导入前预览 `import.ndjson`（条数、`_type`、`_id`、语言、slug）
@@ -578,7 +578,7 @@ npx sanity documents query "*[_type=='blog']" --dataset production > blogs.json
 ┌─────────────────────────────────────────────────────────┐
 │  Sanity Blog 发布 — 快速卡片 (v1.2)                       │
 ├─────────────────────────────────────────────────────────┤
-│  ① .env → o11tm2qe / production（见 .env.example）      │
+│  ① .env → your-project-id / production（见 .env.example）      │
 │  ② preflight MD → sync-blog-taxonomy → convert.js       │
 │  ③ preflight NDJSON → import --missing                  │
 │  ④ fix-category-refs → link-translations                │

@@ -140,7 +140,7 @@ GSC 数据过期时先刷新：`cd "1-1 Harness/Skills/lovart-trident-data-engin
 **症状**：Blog 上传后表格丢格式 / Studio 校验失败。
 
 **根因（2026-08-03 纠正）**：把通用 Sanity `@sanity/table` 文档里的 `tableCell` 五层树当成了 Lovart 规范。  
-`o11tm2qe` 已部署 schema 实际是 `tableRow.cells: string[]`，**没有** `tableCell` 类型。生产可渲染样本（pillar ja 等）全部是 string cells。
+`your-project-id` 已部署 schema 实际是 `tableRow.cells: string[]`，**没有** `tableCell` 类型。生产可渲染样本（pillar ja 等）全部是 string cells。
 
 **正确做法**：
 

@@ -3,7 +3,7 @@
 
 v3 adds the production core: LLM provider config (OpenAI-compatible), generation
   entry for blog + 6 landing types, Agent mode (Loop: generate->QA->feedback, max 3
-  rounds, mirrors lovart-quality-cascade), node mode (per-step pipeline execution),
+  rounds, mirrors the quality-cascade skill), node mode (per-step pipeline execution),
   Harness rules + Skills inventory with runtime re-sync.
 
 stdlib + `markdown` package only. Publishing stays display-only (iron rule).
@@ -40,7 +40,7 @@ STATE_FILE = PROJECT / "1-3 GenFlow" / ".pipeline" / "pipeline-state.json"
 EVENTS_FILE = PROJECT / "1-3 GenFlow" / ".pipeline" / "events.jsonl"
 TASKS_FILE = RUN_DIR / "tasks.json"
 PROJECTS_DIR = RUN_DIR / "projects"
-DEFAULT_PROJECT = "lovart-global"
+DEFAULT_PROJECT = "main"
 DAILY_LOG = RUN_DIR / "logs" / "daily.out.log"
 DAILY_PID = RUN_DIR / "logs" / "daily.pid"
 KB_ROOT = PROJECT / "1-2 Insight" / "Knowledge Base"
@@ -148,42 +148,42 @@ TRIDENT_STEPS = [
 
 WORKFLOW_MAP = [
     {"id": "blog", "name": "Blog 生产",
-     "flow": ["S0 选题入队", "S3 生成（Loop / 单次）", "S3 质检 post-write-check", "S4 QA 门禁 L1-L7", "S4-qa 人工审", "S5 pre-import → Sanity", "S6 监控"],
-     "profiles": "生成 lovart-creation · 质检 lovart-quality · 发布 lovart-ops",
-     "skills": ["lovart-blog-signal-writer", "lovart-content-quality-gates", "lovart-content-creation-orchestrator", "lovart-kb-mine"],
+     "flow": ["S0 选题入队", "S3 生成（Loop / 单次）", "S3 质检 post-write-check", "S4 QA 门禁 L1-L7", "S4-qa 人工审", "S5 pre-import → CMS", "S6 监控"],
+     "profiles": "生成创作档案 · 质检质量档案 · 发布运维档案",
+     "skills": ["blog-signal-writer", "content-quality-gates", "content-creation-orchestrator", "kb-mine"],
      "kb": ["铁律与规则", "故事线 SSOT", "写作方法论", "产品知识库"]},
     {"id": "landing", "name": "落地页生成",
-     "flow": ["S0 入队", "S3 landing-page 生成 bodyJson", "S3 质检（结构/图片404）", "S4 人工审", "S5 Sanity createOrReplace"],
-     "profiles": "lovart-creation · lovart-ops",
-     "skills": ["lovart-landing-page", "lovart-page-serp-writer", "refresh-page-page-generator"],
+     "flow": ["S0 入队", "S3 landing-page 生成 bodyJson", "S3 质检（结构/图片404）", "S4 人工审", "S5 CMS 写入 createOrReplace"],
+     "profiles": "创作档案 · 运维档案",
+     "skills": ["landing-page", "page-serp-writer", "refresh-page-page-generator"],
      "kb": ["故事线 SSOT", "产品知识库", "铁律与规则"]},
     {"id": "qa", "name": "QA 质检",
      "flow": ["L1 convert 前 preflight", "L2 import 后 verify", "L3 发布前 5 维审计", "Anti-Slop 10 项"],
-     "profiles": "lovart-quality",
-     "skills": ["lovart-content-quality-gates", "lovart-content-audit"],
+     "profiles": "质量档案",
+     "skills": ["content-quality-gates", "content-audit"],
      "kb": ["铁律与规则", "质量案例库", "阶段手册 S0-S6"]},
     {"id": "publish", "name": "发布与分发",
-     "flow": ["preflight BLOCK=0", "Sanity --missing 增量导入", "Sitemap/IndexNow", "四轨道分发", "外链回流"],
-     "profiles": "lovart-ops · lovart-distribution",
-     "skills": ["lovart-sanity-publish", "lovart-multi-platform-push", "lovart-sitemap-update"],
+     "flow": ["preflight BLOCK=0", "CMS --missing 增量导入", "Sitemap/IndexNow", "四轨道分发", "外链回流"],
+     "profiles": "运维 · 分发档案",
+     "skills": ["cms-publish", "multi-platform-push", "sitemap-update"],
      "kb": ["UTM 与追踪规范", "铁律与规则"]},
     {"id": "trident", "name": "数据采集 Trident",
      "flow": ["GSC 拉数", "GA4 拉数", "Bing 拉数", "汇总分析", "周报/月报"],
-     "profiles": "lovart-reports",
-     "skills": ["lovart-trident-data-engine", "lovart-data-ingestion", "lovart-content-calendar"],
+     "profiles": "报告档案",
+     "skills": ["trident-data-engine", "data-ingestion", "content-calendar"],
      "kb": ["关键词研究", "阶段手册 S0-S6"]},
     {"id": "daily", "name": "每日管线",
      "flow": ["08:00 GSC 日拉", "Sentinel 22 源采集", "舆情日报", "harness 学习/同步"],
      "profiles": "systemd timer（无 agent）",
-     "skills": ["lovart-sentinel", "lovart-trident-data-engine"],
+     "skills": ["sentinel", "trident-data-engine"],
      "kb": ["项目记忆与治理"]},
 ]
 PORT = int(os.environ.get("MFLOW_CONSOLE_PORT", "8088"))
 PASSWORD = os.environ.get("MFLOW_CONSOLE_PASSWORD", "")
 API_TOKEN = os.environ.get("MFLOW_API_TOKEN", "")  # 机器联动 token（OpenFlow/外部系统调用，GET-only）
 
-PS_PATH = PROJECT / "1-1 Harness" / "Skills" / "06-orchestrate" / "lovart-pipeline-state" / "pipeline_state.py"
-ROUTER_PATH = PROJECT / "1-1 Harness" / "Skills" / "06-orchestrate" / "lovart-router" / "router.py"
+PS_PATH = PROJECT / "1-1 Harness" / "Skills" / "06-orchestrate" / "pipeline-state" / "pipeline_state.py"
+ROUTER_PATH = PROJECT / "1-1 Harness" / "Skills" / "06-orchestrate" / "router" / "router.py"
 HOOKS = ["pre-write-check.sh", "post-write-check.sh", "geo-check.sh", "quota-check.sh", "lang-check.sh",
          "pre-import-check.sh", "post-generation-check.sh"]
 READABLE_EXT = {".md", ".txt", ".json", ".csv", ".html", ".yaml", ".yml"}
@@ -1858,7 +1858,7 @@ _FAIL_PATTERNS = [
     ("topic", ["需要填主题", "topic", "缺主题"], "缺主题参数", "在预设选项里填 topic / 或改用 Agent 指定主题"),
     ("doc_missing", ["文档不存在", "无此文档", "找不到源页", "草稿不可读", "不可读", "文件不存在"], "目标文档/源文件缺失", "内容库可能未同步，或该页已下线——先同步内容库再重试"),
     ("llm_balance", ["402", "余额不足", "quota", "配额不足"], "LLM 余额/配额不足", "充值或调整配额后重试"),
-    ("sanity", ["Sanity 查询失败", "Query", "查询失败"], "数据查询失败", "检查 Sanity token 与网络，稍后重试"),
+    ("sanity", ["CMS 查询失败", "Sanity 查询失败", "Query", "查询失败"], "数据查询失败", "检查 CMS token 与网络，稍后重试"),
     ("structure", ["结构校验", "版块不足", "preflight", "BLOCK"], "结构/门禁未通过", "用「落地页闭环」预设按结构重改，或先人工修正草稿"),
     ("timeout", ["timeout", "超时", "timed out"], "调用超时", "可重试；持续超时请缩小批量或稍后再跑"),
     ("rate", ["429", "rate limit", "too many"], "被限流", "降低并发/稍后重试"),
@@ -1975,7 +1975,7 @@ def batch_view(task, proj=None):
         return task
     site = site_of(proj)
     items = task.get("items") or []
-    # 一次性从 Sanity 取所有 doc_id 的 slug/lang/pageType（用于预览 URL）
+    # 一次性从 CMS 取所有 doc_id 的 slug/lang/pageType（用于预览 URL）
     meta = {}
     dids = [it.get("doc_id") for it in items if it.get("doc_id")]
     dids = list(dict.fromkeys(dids))[:200]
@@ -4020,7 +4020,7 @@ def _bh_internal_link(item, task, proj):
 def _bh_publish_sanity(item, task, proj):
     """批量发布（blog / compositePage）。composite 走 validate_sections + create/patch；记账真实写入。"""
     if not SANITY_PUB:
-        raise RuntimeError("发布器未加载：Sanity token 缺失或模块异常 → 到「设置」检查 Sanity 配置后重试")
+        raise RuntimeError("发布器未加载：CMS token 缺失或模块异常 → 到「设置」检查 CMS 配置后重试")
     path = item.get("path") or f"run/projects/{proj}/content/{item.get('item_id','')}.md"
     sp = safe_path(path)
     if not sp:
@@ -4922,7 +4922,7 @@ def qa_check_md(path):
 
 
 def _qa_field_rules(doc):
-    """Sanity 字段级规则（不依赖 LLM，确定性）。"""
+    """CMS 字段级规则（不依赖 LLM，确定性）。"""
     f = []
     did = doc.get("_id", "")
     lang = doc.get("language") or ""
@@ -4957,7 +4957,7 @@ def _qa_field_rules(doc):
 
 def qa_check_sanity(doc_id):
     if not SANITY_PUB:
-        return [_qa_finding(doc_id, "sanity", "block", "发布器未加载：请到「设置」检查 Sanity token/项目配置")]
+        return [_qa_finding(doc_id, "sanity", "block", "发布器未加载：请到「设置」检查 CMS token/项目配置")]
     try:
         r = _sanity_req("query", {"query": f'*[_id=="{doc_id}"][0]{{_id,title,language,description,seoTitle,seo,cover}}'})
         doc = (r or {}).get("result")
@@ -5263,22 +5263,22 @@ AGENT_PROFILES = {
              "files": [], "skill_hint": ""},
     "creation": {"label": "创作", "issue": "写 Blog/落地页/多语言内容", "model": "lovart-creation",
                  "files": ["RULES-00-iron.md", "RULES-20-creation.md", "RULES-70-quota.md", "RULES-80-language.md"],
-                 "skill_hint": "lovart-blog-signal-writer, lovart-page-serp-writer, lovart-landing-page, lovart-anti-slop"},
+                 "skill_hint": "blog-signal-writer, page-serp-writer, landing-page, anti-slop"},
     "quality": {"label": "质检", "issue": "Anti-Slop/字段/结构/i18n 质量审计", "model": "lovart-quality",
                 "files": ["RULES-00-iron.md", "RULES-30-quality.md", "RULES-70-quota.md", "RULES-80-language.md"],
-                "skill_hint": "lovart-content-quality-gates, lovart-content-audit, lovart-anti-slop"},
+                "skill_hint": "content-quality-gates, content-audit, anti-slop"},
     "reports": {"label": "报告", "issue": "SEO/GEO/舆情/竞品情报分析", "model": "default",
                 "files": ["RULES-00-iron.md", "RULES-10-reports.md", "RULES-70-quota.md", "RULES-80-language.md"],
-                "skill_hint": "lovart-data-ingestion, lovart-trident-data-engine, lovart-seo-report"},
-    "ops": {"label": "运维", "issue": "Sanity 发布/物料/技术 SEO", "model": "default",
+                "skill_hint": "data-ingestion, trident-data-engine, seo-report"},
+    "ops": {"label": "运维", "issue": "CMS 发布/物料/技术 SEO", "model": "default",
             "files": ["RULES-00-iron.md", "RULES-40-ops.md", "RULES-70-quota.md", "RULES-80-language.md"],
-            "skill_hint": "lovart-sanity-publish, lovart-sitemap-update"},
+            "skill_hint": "cms-publish, sitemap-update"},
     "distribution": {"label": "分发", "issue": "多平台分发/站外稿", "model": "default",
                      "files": ["RULES-00-iron.md", "RULES-50-distribution.md", "RULES-70-quota.md", "RULES-80-language.md"],
-                     "skill_hint": "lovart-multi-platform-push, ai-self-media-article"},
+                     "skill_hint": "multi-platform-push, ai-self-media-article"},
     "management": {"label": "管理", "issue": "规划/工程/Skill 维护", "model": "default",
                    "files": ["RULES-00-iron.md", "RULES-60-management.md", "RULES-70-quota.md", "RULES-80-language.md"],
-                   "skill_hint": "lovart-project-architecture, lovart-dream-orchestrator"},
+                   "skill_hint": "project-architecture, dream-orchestrator"},
 }
 
 
@@ -6010,7 +6010,7 @@ LANDING_STRUCT_RULES = """落地页改稿输出格式（必须是结构化 Markd
 
 
 def _bh_landing_refresh(item, task, proj):
-    """落地页改稿：读 Sanity 现有内容 → 按落地页结构重写 → 四门禁 + 结构校验（带反馈重试 ≤3 轮）→ 落盘"""
+    """落地页改稿：读 CMS 现有内容 → 按落地页结构重写 → 四门禁 + 结构校验（带反馈重试 ≤3 轮）→ 落盘"""
     if not SANITY_PUB:
         raise RuntimeError("发布器未加载")
     did = item.get("doc_id") or ""
@@ -6018,7 +6018,7 @@ def _bh_landing_refresh(item, task, proj):
         raise RuntimeError("需要 doc_id")
     cur = (_sanity_req("query", {"query": f'*[_id=="{did}"][0]{{_id,title,description,language,pageType,cover,bodyJson,slug}}'}) or {}).get("result")
     if not cur:
-        raise RuntimeError(f"Sanity 无此文档：{did}")
+        raise RuntimeError(f"CMS 无此文档：{did}")
     src_text = PTMOD.bodyjson_to_md(cur.get("bodyJson") or "") if PTMOD else ""
     page_type = item.get("page_type") or cur.get("pageType") or "tool"
     lang = item.get("lang") or cur.get("language") or "en"
@@ -6092,7 +6092,7 @@ def chain_next_task(task, proj):
                           "doctype": ch.get("doctype", "composite"),
                           "mode": ch.get("mode", "patch"),
                           "page_type": r.get("page_type"), "lang": r.get("lang"), "title": r.get("title",""),
-                          # patch 必须以真实 Sanity _id 命中既有文档（slug 不一定是 _id）
+                          # patch 必须以真实 CMS _id 命中既有文档（slug 不一定是 _id）
                           "slug": (r.get("doc_id") if is_patch else r.get("slug"))})
     if not items:
         with open(RUN_DIR / "approvals.log", "a") as f:
@@ -6144,8 +6144,8 @@ ANTI_SLOP_STRONG = """反 AI 味道终极清单（违反任何一条 = 废稿，
 
 # ---------- ② 关键词情报管道（让关键词符合真实用户需求）----------
 KEYWORD_SOURCES = [
-    {"source": "GSC 真实查询", "desc": "GSC API 拉取用户实际搜索词（非猜测）", "script": "lovart-trident-data-engine/scripts/gsc_fetch.py", "freq": "daily"},
-    {"source": "Sentinel 舆情", "desc": "22 源监控用户讨论/痛点/需求（Reddit/Twitter/ProductHunt 等）", "script": "lovart-sentinel", "freq": "daily"},
+    {"source": "GSC 真实查询", "desc": "GSC API 拉取用户实际搜索词（非猜测）", "script": "trident-data-engine/scripts/gsc_fetch.py", "freq": "daily"},
+    {"source": "Sentinel 舆情", "desc": "22 源监控用户讨论/痛点/需求（Reddit/Twitter/ProductHunt 等）", "script": "sentinel", "freq": "daily"},
     {"source": "竞品词覆盖", "desc": "竞品核心非品牌词（265 全量 / 36 核心）的缺口分析", "script": "竞品词表", "freq": "weekly"},
     {"source": "SERP 分析", "desc": "Google 实际 SERP 的文案结构/角度/内容形态（不是 SEO 工具猜测）", "script": "SERP Copy Intelligence", "freq": "weekly"},
     {"source": "用户行为", "desc": "GA4：哪些页面有真实 UV 和转化（用户用脚投票）", "script": "ga4_weekly_pull.py", "freq": "weekly"},
@@ -6205,7 +6205,7 @@ def skill_coverage_audit():
     all_skills = {s["name"] for s in _skills_index()}
     page_types = set()
     if LIB_ROOT.exists():
-        for d in (LIB_ROOT / "lovart-global").iterdir():
+        for d in (LIB_ROOT / "main").iterdir():
             if d.is_dir() and not d.name.startswith("_"):
                 page_types.add(d.name)
     rows = []
@@ -6234,7 +6234,7 @@ def publish_skills():
 
 
 def sec_count(section):
-    base = LIB_ROOT / "lovart-global" / section
+    base = LIB_ROOT / "main" / section
     return len(list(base.rglob("*.md"))) if base.exists() else 0
 
 # ---------- ③ 知识库缺口分析 ----------
@@ -6873,7 +6873,7 @@ def preset_expand(pid, opt, proj):
             res = _sanity_req("query", {"query": f'*[{where}][0...{limit}]{{_id}}'})
             ids = [d["_id"] for d in (res.get("result") or [])]
         except Exception as e:
-            return {"error": f"Sanity 查询失败：{str(e)[:150]}（检查网络与 token，或稍后重试）"}
+            return {"error": f"CMS 查询失败：{str(e)[:150]}（检查网络与 token，或稍后重试）"}
         if not ids:
             return {"error": "范围内无文档 → 换语言或页面类型；若内容库为空请先到「内容库」同步"}
         if pid == "qa-scan":
@@ -6896,11 +6896,11 @@ def preset_expand(pid, opt, proj):
         # 闭环：落地页改稿 → 结构校验 → patch 发布（链式，默认 dry-run）
         section = str(opt.get("section", "") or "tools")
         lg = str(opt.get("lang", "") or "")
-        prof = read_json(SITES_DIR / "lovart-global.json", {})
+        prof = read_json(SITES_DIR / "main.json", {})
         sec = next((x for x in (prof.get("sections") or []) if x.get("key") == section), None)
         if not sec:
             return {"error": f"未知段落：{section}（可选 features/tools/topics/...）"}
-        base = LIB_ROOT / "lovart-global" / sec.get("dir", section)
+        base = LIB_ROOT / "main" / sec.get("dir", section)
         cands = []
         if base.exists():
             for f in sorted(base.rglob("*.md"), key=lambda x: x.stat().st_mtime, reverse=True):
@@ -7081,16 +7081,16 @@ def selfcheck(proj=None):
     except Exception:
         pass
 
-    # 2) Sanity / 发布器
+    # 2) CMS / 发布器
     try:
         if not SANITY_PUB:
-            add("sanity_pub", "block", "Sanity 发布器未加载",
+            add("sanity_pub", "block", "CMS 发布器未加载",
                 "无法发布/写库。通常是 token 缺失或模块加载失败。",
                 {"label": "去设置", "action": "tab:set"})
         else:
             cfg = SANITY_PUB.sanity_cfg()
             if not cfg.get("token"):
-                add("sanity_token", "block", "Sanity token 缺失",
+                add("sanity_token", "block", "CMS token 缺失",
                     "发布与写库不可用。", {"label": "去设置", "action": "tab:set"})
     except Exception:
         pass
@@ -8326,7 +8326,7 @@ def health_report(proj=None):
             t = read_json(f, {})
             if t.get("status") in ("queued", "running"):
                 batch_pending += sum(1 for i in (t.get("items") or []) if i.get("status") in ("pending", "running"))
-    # Sanity 连通（10 分钟缓存，避免频繁外呼）
+    # CMS 连通（10 分钟缓存，避免频繁外呼）
     sanity = _HEALTH_CACHE.get("sanity")
     if not sanity or now - _HEALTH_CACHE["ts"] > 600:
         try:
@@ -9174,7 +9174,7 @@ class Handler(BaseHTTPRequestHandler):
                                                      "status": c["status"]} for c in cs[-40:][::-1]]})
             if parsed.path == "/api/pay/vouchers":
                 return self._send(200, pay_vouchers())
-            # ── 发布通道（Sanity / WordPress）──
+            # ── 发布通道（CMS / WordPress）──
             if parsed.path == "/api/publish/config":
                 sc = SANITY_PUB.sanity_cfg() if SANITY_PUB else {"project": "", "dataset": "", "token": "", "source": "none"}
                 wpc = read_json(PROJECT / "run/cms.json", {}).get("wordpress") or {}
@@ -9201,28 +9201,28 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/library/sites":
                 return self._send(200, library_sites())
             if parsed.path == "/api/library/tree":
-                return self._send(200, library_tree(qs.get("site", ["lovart-global"])[0]))
+                return self._send(200, library_tree(qs.get("site", ["main"])[0]))
             if parsed.path == "/api/library/list":
-                return self._send(200, library_list(qs.get("site", ["lovart-global"])[0],
+                return self._send(200, library_list(qs.get("site", ["main"])[0],
                                                     qs.get("section", [""])[0],
                                                     qs.get("lang", [""])[0],
                                                     qs.get("q", [""])[0].strip()))
             if parsed.path == "/api/library/status":
-                site = qs.get("site", ["lovart-global"])[0]
+                site = qs.get("site", ["main"])[0]
                 return self._send(200, read_json(LIB_ROOT / site / "sync-status.json", {"state": "idle"}))
             # ── 图片物料（落地页/Blog 素材台账与批量替换）──
             if parsed.path == "/api/assets/inventory":
-                return self._send(200, assets_inventory(qs.get("site", ["lovart-global"])[0],
+                return self._send(200, assets_inventory(qs.get("site", ["main"])[0],
                                                         qs.get("q", [""])[0].strip(),
                                                         qs.get("role", [""])[0],
                                                         qs.get("section", [""])[0],
                                                         qs.get("lang", [""])[0]))
             if parsed.path == "/api/assets/result":
-                site = qs.get("site", ["lovart-global"])[0]
+                site = qs.get("site", ["main"])[0]
                 cmd = qs.get("cmd", ["plan"])[0]
                 return self._send(200, read_json(LIB_ROOT / site / f"assets-{cmd}-result.json", {"state": "idle"}))
             if parsed.path == "/api/assets/plan":
-                site = qs.get("site", ["lovart-global"])[0]
+                site = qs.get("site", ["main"])[0]
                 return self._send(200, read_json(LIB_ROOT / site / "replace-plan.json", {"count": 0, "items": []}))
             # ── 批量任务 ──
             if parsed.path == "/api/batch/list":
@@ -9345,7 +9345,7 @@ class Handler(BaseHTTPRequestHandler):
                         for d in (res.get("result") or []):
                             items.append({"kind": "sanity", "doc_id": d["_id"]})
                     except Exception as e:
-                        return self._send(400, {"error": f"Sanity 查询失败：{str(e)[:160]}"})
+                        return self._send(400, {"error": f"CMS 查询失败：{str(e)[:160]}"})
                 if not items:
                     return self._send(400, {"error": "范围内无对象"})
                 t = batch_create("qa", f"QA 扫描·{kind}（{len(items)} 项）", items,
@@ -9903,7 +9903,7 @@ class Handler(BaseHTTPRequestHandler):
                     r = pay_confirm(o["id"], tx_hash=info, by="manual-verify:" + self._me())
                     return self._send(200, {"ok": True, "verified": True, "order": r.get("order")})
                 return self._send(200, {"ok": True, "verified": False, "detail": info})
-            # ── 发布：Sanity / WordPress（admin + 门禁 + 默认 dry-run）──
+            # ── 发布：CMS / WordPress（admin + 门禁 + 默认 dry-run）──
             if self.path == "/api/publish/sanity":
                 path = str(body.get("path", ""))
                 item_id = str(body.get("item_id", "")).strip() or Path(path).stem
@@ -9948,7 +9948,7 @@ class Handler(BaseHTTPRequestHandler):
                 r = publish_wordpress(path, item_id, str(body.get("title", "")))
                 return self._send(200 if r.get("ok") else 400, r)
             if self.path == "/api/library/sync":
-                site = str(body.get("site", "lovart-global"))
+                site = str(body.get("site", "main"))
                 if not (SITES_DIR / f"{site}.json").exists():
                     return self._send(400, {"error": f"站点档案不存在：{site}"})
                 r = library_sync(site, str(body.get("sections", "")), int(body.get("max", 0) or 0))
@@ -9957,11 +9957,11 @@ class Handler(BaseHTTPRequestHandler):
                 return self._send(200, r)
             # ── 图片物料：扫描 / 生成替换计划 / 执行（dry-run 默认）──
             if self.path == "/api/assets/scan":
-                site = str(body.get("site", "lovart-global"))
+                site = str(body.get("site", "main"))
                 return self._send(200, assets_run("scan", site, sections=str(body.get("sections", "")),
                                                   max=int(body.get("max", 0) or 0)))
             if self.path == "/api/assets/plan":
-                site = str(body.get("site", "lovart-global"))
+                site = str(body.get("site", "main"))
                 return self._send(200, assets_run("plan", site, mode=str(body.get("mode", "prefix")),
                                                   match=str(body.get("match", "")),
                                                   new_url=str(body.get("new_url", "")),
@@ -9971,7 +9971,7 @@ class Handler(BaseHTTPRequestHandler):
                                                   page_type=str(body.get("page_type", "")),
                                                   slugs=str(body.get("slugs", ""))))
             if self.path == "/api/assets/apply":
-                site = str(body.get("site", "lovart-global"))
+                site = str(body.get("site", "main"))
                 dry = bool(body.get("dry_run", True))
                 plan_path = str(LIB_ROOT / site / "replace-plan.json")
                 if not (LIB_ROOT / site / "replace-plan.json").exists():
@@ -9989,7 +9989,7 @@ class Handler(BaseHTTPRequestHandler):
                 if btype not in BATCH_HANDLERS:
                     return self._send(400, {"error": f"未知类型（可选：{list(BATCH_HANDLERS)}）"})
                 items = body.get("items") or []
-                site = str(body.get("site", "lovart-global"))
+                site = str(body.get("site", "main"))
                 if not items and btype == "asset_replace":
                     pl = read_json(LIB_ROOT / site / "replace-plan.json", {})
                     items = pl.get("items") or []
@@ -10524,7 +10524,7 @@ class Handler(BaseHTTPRequestHandler):
                 r = run_tool(step["cmd"], timeout=280)
                 return self._send(200, r)
             if self.path == "/api/setup/seed-demo":
-                return self._send(200, seed_demo())
+                return self._send(200, seed_demo(self._proj()))
             if self.path == "/api/account/reset":
                 users = read_json(AUTH_FILE, [])
                 rec = next((x for x in users if x["username"] == body.get("username")), None)

@@ -83,14 +83,14 @@ type Store struct {
 var store = &Store{
 	items: make(map[string]*PipelineItem),
 	decisions: []Decision{
-		{Stage: "S0-todo", Scenario: "default", ProfileTarget: "lovart-creation", Action: "upsert", Skills: []string{"lovart-pipeline-state", "lovart-blog-signal-writer"}, Reason: "S0-todo → first creation step"},
+		{Stage: "S0-todo", Scenario: "default", ProfileTarget: "lovart-creation", Action: "upsert", Skills: []string{"pipeline-state", "lovart-blog-signal-writer"}, Reason: "S0-todo → first creation step"},
 		{Stage: "S3-creating", Scenario: "default", ProfileTarget: "lovart-creation", Action: "execute_skill", Skills: []string{"lovart-blog-signal-writer"}, Reason: "Writing in progress"},
 		{Stage: "S3-draft", Scenario: "default", ProfileTarget: "lovart-creation", Action: "run_hook_and_advance", Skills: []string{"post-write-check"}, Reason: "Draft exists → run post-write-check"},
 		{Stage: "S3-draft", Scenario: "l1_fluff", ProfileTarget: "lovart-quality", Action: "reroute", Skills: []string{"lovart-anti-slop"}, Reason: "L1 fluff → quality profile"},
-		{Stage: "S3-done", Scenario: "default", ProfileTarget: "lovart-creation", Action: "advance_only", Skills: []string{"lovart-pipeline-state"}, Reason: "S3 done → advance to S4-qa"},
+		{Stage: "S3-done", Scenario: "default", ProfileTarget: "lovart-creation", Action: "advance_only", Skills: []string{"pipeline-state"}, Reason: "S3 done → advance to S4-qa"},
 		{Stage: "S4-qa", Scenario: "default", ProfileTarget: "lovart-quality", Action: "execute_skill", Skills: []string{"lovart-content-quality-gates"}, Reason: "QA in progress"},
 		{Stage: "S4-fix", Scenario: "default", ProfileTarget: "lovart-creation", Action: "reroute", Skills: []string{"lovart-blog-signal-writer"}, Reason: "Fix → back to creation"},
-		{Stage: "S4-ready", Scenario: "default", ProfileTarget: "lovart-quality", Action: "advance_only", Skills: []string{"lovart-pipeline-state"}, Reason: "QA done → close session"},
+		{Stage: "S4-ready", Scenario: "default", ProfileTarget: "lovart-quality", Action: "advance_only", Skills: []string{"pipeline-state"}, Reason: "QA done → close session"},
 		{Stage: "S5-importing", Scenario: "default", ProfileTarget: "lovart-ops", Action: "execute_skill", Skills: []string{"lovart-sanity-publish", "pre-import-check"}, Reason: "Importing to Sanity"},
 		{Stage: "S5-published", Scenario: "default", ProfileTarget: "lovart-ops", Action: "execute_skill", Skills: []string{"lovart-sitemap-update"}, Reason: "Notify engines"},
 		{Stage: "S6-monitoring", Scenario: "default", ProfileTarget: "lovart-reports", Action: "execute_skill", Skills: []string{"lovart-seo-reporting"}, Reason: "Monitoring data"},

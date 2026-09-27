@@ -67,7 +67,7 @@ python3 -c "
 import json
 p = '$STATE'
 d = json.load(open(p))
-d['items']['blog-test-001']['publish'] = {'sanity_id':'o11tm2qe-abc-001','imported_at':'2026-07-17T10:00:00Z','status':'published'}
+d['items']['blog-test-001']['publish'] = {'sanity_id':'your-project-id-abc-001','imported_at':'2026-07-17T10:00:00Z','status':'published'}
 d['items']['blog-test-001']['updated_at'] = '2026-07-17T10:00:00Z'
 json.dump(d, open(p,'w'), indent=2, ensure_ascii=False)
 "

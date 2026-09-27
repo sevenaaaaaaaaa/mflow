@@ -86,11 +86,11 @@
 
 | path | purpose | created | owner | status | smoke |
 |------|---------|---------|-------|--------|-------|
-| `lovart-pipeline-state/pipeline_state.py` | 流水线状态机 | 2026-07-20 | lovart-management | active | 39/39 |
+| `pipeline-state/pipeline_state.py` | 流水线状态机 | 2026-07-20 | lovart-management | active | 39/39 |
 | `1-4 Dev/console/console.py` | Web 工作台后端（看板/路由/门禁/管线触发，密码认证） | 2026-09-15 | lovart-management | active | e2e 已验证 |
 | `1-4 Dev/console/console.html` + `login.html` | 工作台前端（单页，stdlib 服务直出） | 2026-09-15 | lovart-management | active | 8088 |
 | `1-4 Dev/automation/render-status.py` | 静态状态页渲染（已被 console 取代，保留备用） | 2026-09-15 | lovart-management | retired | — |
-| `lovart-router/router.py` | 跨档案路由决策 | 2026-07-20 | lovart-management | active | 15/15 |
+| `router/router.py` | 跨档案路由决策 | 2026-07-20 | lovart-management | active | 15/15 |
 | `lovart-new-tool-governance/governance_check.py` | 新工具合规校验 | 2026-07-20 | lovart-management | active | TBD |
 
 ## 统计

@@ -14,7 +14,7 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 
-SANITY_PROJECT = "o11tm2qe"
+SANITY_PROJECT = "your-project-id"
 SANITY_DATASET = "production"
 API_VERSION = "2024-01-01"
 API_BASE = f"https://{SANITY_PROJECT}.api.sanity.io/v{API_VERSION}/data"

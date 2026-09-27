@@ -26,7 +26,7 @@ On startup, automatically detect the best available knowledge source in this pri
 | Priority | Source | Detection Method | Fallback If Unavailable |
 |----------|--------|-----------------|------------------------|
 | 1st | **Lovart Knowledge Base** | `1-Project/1-6 Knowledge Base/` exists | ↓ |
-| 2nd | Sanity MCP | `Sanity` MCP configured (project `o11tm2qe`) | ↓ |
+| 2nd | Sanity MCP | `Sanity` MCP configured (project `your-project-id`) | ↓ |
 | 3rd | Obsidian Vault | Local vault path detected | ↓ |
 | 4th | Notion MCP | `NOTION_API_TOKEN` or `notion` MCP configured | ↓ |
 | 5th | Local Files | Knowledge base files (`4-Archive/Skills/lovart-*.md`) | ↓ |

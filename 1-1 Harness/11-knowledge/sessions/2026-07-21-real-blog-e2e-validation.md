@@ -3,7 +3,7 @@ session_date: 2026-07-21
 session_topic: "真实 Blog 全流程验证 — pipeline-state + hooks + router + governance 串联"
 session_slug: "real-blog-e2e-validation"
 profiles_used: [profile-lovart-management]
-tools_used: [lovart-pipeline-state, lovart-router, post-write-check, pre-import-check, governance_check.py]
+tools_used: [pipeline-state, router, post-write-check, pre-import-check, governance_check.py]
 agents: [hermes]
 duration_min: 20
 files_changed_count: 1
@@ -57,9 +57,9 @@ S0-todo → router decide → profile=lovart-creation → advance S3-creating
 - P3: pipeline-state 的 check 命令在 S4-qa 和 S5-importing 都能正确验证
 
 # Cross-References
-- entities: skill-lovart-pipeline-state, skill-lovart-router, skill-lovart-new-tool-governance
+- entities: skill-pipeline-state, skill-router, skill-lovart-new-tool-governance
 - decisions: MEMORY-PROJECT.md § 6.5-6.9
-- skills: lovart-pipeline-state, lovart-router, post-write-check, pre-import-check
+- skills: pipeline-state, router, post-write-check, pre-import-check
 
 # Tags
 - relevant-tags: #e2e-validation #real-blog #pipeline串联 #hook门禁 #2026-07

@@ -69,8 +69,8 @@ VAULT="$HOME/Knowledge/Obsidian/MindRe/1-Project/Lovart MFlow"
 for script in pipeline_state.py router.py governance_check.py; do
   src="$VAULT/1-1 Harness/Skills/06-orchestrate"
   case "$script" in
-    pipeline_state.py) src="$src/lovart-pipeline-state/$script" ;;
-    router.py) src="$src/lovart-router/$script" ;;
+    pipeline_state.py) src="$src/pipeline-state/$script" ;;
+    router.py) src="$src/router/$script" ;;
     governance_check.py) src="$src/lovart-new-tool-governance/$script" ;;
   esac
   if [[ -f "$src" ]]; then

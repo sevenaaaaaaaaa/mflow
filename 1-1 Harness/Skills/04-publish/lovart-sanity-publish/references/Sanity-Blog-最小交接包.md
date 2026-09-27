@@ -30,7 +30,7 @@
 
 ## 2. 交接人必做（Sanity 后台）
 
-1. [manage.sanity.io](https://www.sanity.io/manage) 项目 **`o11tm2qe`** 邀请接手人  
+1. [manage.sanity.io](https://www.sanity.io/manage) 项目 **`your-project-id`** 邀请接手人  
 2. 接手人自建 **Editor API Token** → 写入本机 `.env`  
 3. 接手人 `npx sanity login`（与 API token 是两套认证）
 

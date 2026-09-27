@@ -14,7 +14,7 @@
 
 ## 数据口径
 
-- 源：Sanity `o11tm2qe` / `production`，`_type=="blog" && language=="zh"`
+- 源：Sanity `your-project-id` / `production`，`_type=="blog" && language=="zh"`
 - 对照：`1-2 Insight/QA/2026-08-03-blog-top100-body-language-mismatch.md`、`Output/QA-Memo/audit-zh-zhtw-ja-body-2026-07-22.json`
 - 本地对照：`Output/QA-Memo/feature-zh-batch*`（有大量 Features ready）；Blog 侧无对等的全量 zh SEO ready 目录
 

@@ -145,7 +145,7 @@ Description 公式: [动作][结果] with AI. [独特卖点1], [独特卖点2], 
 # 单个页面 patch 示例（需替换 _id）
 npx sanity documents patch \
   --dataset production \
-  --projectId o11tm2qe \
+  --projectId your-project-id \
   --id <tools-text-to-image-_id> \
   --set '{"seo": {"title": "Free AI Text to Image Generator — Create Stunning Art in Seconds | Lovart", "description": "Type a prompt, get professional AI art in any style. Free to try, no design skills needed. Generate images for social media, marketing, branding in seconds."}}'
 ```

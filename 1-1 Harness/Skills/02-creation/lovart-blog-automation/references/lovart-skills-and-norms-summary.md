@@ -120,7 +120,7 @@ Daily Raw/ CSV → ① keywords-intake (评分 P0/P1/P2 → 更新日历)
 
 | 项目 | 值 |
 |---|---|
-| Project ID | `o11tm2qe` |
+| Project ID | `your-project-id` |
 | 数据集 | `production` |
 | 账号 | `sevena@lovart.ai` |
 | 在线 Studio | `https://lovart.sanity.studio` |

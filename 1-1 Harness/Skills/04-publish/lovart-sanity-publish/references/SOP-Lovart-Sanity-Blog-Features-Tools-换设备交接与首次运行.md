@@ -38,7 +38,7 @@
 
 | 步骤 | 动作 |
 |------|------|
-| 1 | [manage.sanity.io](https://www.sanity.io/manage) 项目 **`o11tm2qe`** 邀请接手人（Developer 或 Editor） |
+| 1 | [manage.sanity.io](https://www.sanity.io/manage) 项目 **`your-project-id`** 邀请接手人（Developer 或 Editor） |
 | 2 | 接手人创建 **Editor API Token** → `.env` 的 `SANITY_STUDIO_API_TOKEN`（`dataset import` 写 production） |
 | 3 | 接手人 `npx sanity login`（`sanity exec`、verify、sync-taxonomy 用 OAuth，与 API token **不同**） |
 
@@ -152,7 +152,7 @@ import 前可用 [GROQ](./groq-snippets-sanity-blog-features-tools.md) 查线上
 | **`1-4 Dev/lovart.sanity.studio/`** | Blog/Features/Tools **convert·import cwd** | ✅ 在此跑脚本 |
 | **`1-4 Dev/lovart.sanity.studio/`** | 线上 **Schema Studio**（compositePage 等） | ❌ 勿 `sanity deploy`（除非 schema 团队授权） |
 
-- 数据集唯一目标：**`production` @ `o11tm2qe`**
+- 数据集唯一目标：**`production` @ `your-project-id`**
 - Studio 列表导航以 **`category`** 为准（`feature` / `tool` …）；`sourceType` 为 legacy 字段
 - 前端 `apps/lovart` **不在本 vault**；主站渲染契约需另取前端仓库
 
@@ -206,7 +206,7 @@ Sanity **内容**不通过 sync-skills 同步；内容在 `1-4 Dev/lovart.sanity
 - [ ] 单篇 `import-page.js --dry-run` 或 Blog 单批 `--missing` 试跑成功  
 - [ ] `verify-blog-publish` 或 `verify-composite --sample 5` PASS  
 - [ ] 已读 first-run policy，确认**默认不全量重导**  
-- [ ] 已被邀请进 `o11tm2qe`，能打开 https://lovart.sanity.studio  
+- [ ] 已被邀请进 `your-project-id`，能打开 https://lovart.sanity.studio  
 
 ---
 

@@ -69,7 +69,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 |------|-----|
 | `$LOVART_RESOURCE_ROOT` | vault 根（Obsidian MindRe） |
 | `$LOVART_LOCAL_DEV_ROOT` | `~/Documents/Lovart Local Dev/` |
-| Sanity project | `o11tm2qe` / `production` |
+| Sanity project | `your-project-id` / `production` |
 | Sanity token | `~/.config/sanity/config.json` → `/tmp/sanitytoken.txt` |
 | Vault 脚本路径 | `1-4 Dev/`（非 `1-4 Dev/`，历史别名） |
 

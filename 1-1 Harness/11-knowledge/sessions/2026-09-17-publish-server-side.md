@@ -11,7 +11,7 @@ status: ready
 用户指出"Sanity 凭证在 Mac 侧、服务器没有"是阻塞——要让线上 MFlow 自己能同步内容到 Sanity、WordPress 等平台。
 
 ## 关键发现
-- Sanity 是 **纯 Python + HTTP API 就能写**（`o11tm2qe` / production / API 2024-01-01），根本不需要 Node（服务器无 node 也不影响）
+- Sanity 是 **纯 Python + HTTP API 就能写**（`your-project-id` / production / API 2024-01-01），根本不需要 Node（服务器无 node 也不影响）
 - 既有 `1-4 Dev/scripts/import_zh_product_blogs_to_sanity.py` 已含完整文档结构（_type=blog / category reference UUID / structuredData / status=draft / createIfNotExists）
 - MD→PortableText 转换器 `md_to_portable_text.py`（598 行，纯 stdlib）此前只在 Mac `~/Documents/Lovart Local Dev/scripts/` → **已 vendor 入仓**
 - 凭证源：Mac `~/.config/sanity/config.json` 的 authToken（81 字符）；Sanity CLI 本地存储

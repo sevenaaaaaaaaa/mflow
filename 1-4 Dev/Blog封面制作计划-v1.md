@@ -634,10 +634,10 @@ or elements in the bottom-left text zone.
 
 ### 8.1 Sanity 数据查询
 
-- **项目 ID**：`o11tm2qe`
+- **项目 ID**：`your-project-id`
 - **Dataset**：`production`
-- **API 端点**：`https://o11tm2qe.api.sanity.io/v2026-01-01/data/query/production`
-- **Studio URL**：`https://o11tm2qe.sanity.studio`
+- **API 端点**：`https://your-project-id.api.sanity.io/v2026-01-01/data/query/production`
+- **Studio URL**：`https://your-project-id.sanity.studio`
 
 拉取文章列表的 GROQ 查询：
 ```groq

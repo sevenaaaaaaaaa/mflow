@@ -14,7 +14,7 @@ import urllib.parse
 
 # Configuration
 SANITY_CONFIG = os.path.expanduser("~/.config/sanity/config.json")
-PROJECT_ID = "o11tm2qe"
+PROJECT_ID = "your-project-id"
 DATASET = "production"
 API_VERSION = "v2024-01-01"
 

@@ -52,7 +52,7 @@ Product **不走** legacy `convert-tools.js` / 五段式 Features 转换；本�
 ```bash
 cd "1-4 Dev/lovart.sanity.studio"
 grep -E "SANITY_STUDIO_PROJECT|SANITY_STUDIO_DATASET" .env
-# o11tm2qe / production
+# your-project-id / production
 npx sanity debug --secrets
 git status   # 无 schema 误改
 ```

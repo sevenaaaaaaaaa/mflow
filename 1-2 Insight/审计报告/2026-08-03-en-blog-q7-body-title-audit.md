@@ -114,15 +114,15 @@ T1 头部（高曝光首页机会）：
 不是「token 坏了」，是 **组织角色 ≠ 项目角色**：
 
 - 组织 `oxA3yhI8j`（Lovart）：`sevena@lovart.ai` = **administrator** ✓
-- 项目 `o11tm2qe`（lovart.ai）：同一 Google 身份成员 `pGsWkXnou` = **viewer** ✗（`role: read`）
+- 项目 `your-project-id`（lovart.ai）：同一 Google 身份成员 `pGsWkXnou` = **viewer** ✗（`role: read`）
 - MCP OAuth 已重授；CLI `/tmp/sanitytoken.txt` 与 MCP 同一身份，mutate 仍 403 `permission "update" required`
 - 项目仅 2 个 Administrator 成员：`p40QyCnUw`、`pJqOkjyJg`（均非当前登录身份）
 
 解锁（任选其一）：
 
-1. 打开 [manage.sanity.io](https://www.sanity.io/manage/project/o11tm2qe/members) → 把 `sevena@lovart.ai` 的 **项目角色** 从 Viewer 改为 Administrator/Editor  
+1. 打开 [manage.sanity.io](https://www.sanity.io/manage/project/your-project-id/members) → 把 `sevena@lovart.ai` 的 **项目角色** 从 Viewer 改为 Administrator/Editor  
 2. 或用已有项目 Admin 账号创建 **Editor robot token**，写入 `/tmp/sanitytoken.txt`  
-3. 提权后跑：`curl -s -H "Authorization: Bearer $(cat /tmp/sanitytoken.txt)" https://o11tm2qe.api.sanity.io/v2024-01-01/users/me` → `roles` 须含 `administrator` 或 `editor`，不能是 `viewer`
+3. 提权后跑：`curl -s -H "Authorization: Bearer $(cat /tmp/sanitytoken.txt)" https://your-project-id.api.sanity.io/v2024-01-01/users/me` → `roles` 须含 `administrator` 或 `editor`，不能是 `viewer`
 
 ## 修复标准（纠偏）
 

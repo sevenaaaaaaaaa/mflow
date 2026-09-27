@@ -76,11 +76,11 @@ products:
   type: product
   status: active
   name: lovart.ai 主站 + subdomains
-  notes: Sanity o11tm2qe / production 承载；blogs.lovart.ai / landing pages / multi-region
+  notes: Sanity your-project-id / production 承载；blogs.lovart.ai / landing pages / multi-region
     i18n（de/fr/it/ja/ko/pt/ru/zh/zh-TW）
   meta:
     cms: sanity
-    cms_project_id: o11tm2qe
+    cms_project_id: your-project-id
     cms_dataset: production
     python_token: ~/.config/sanity/config.json
     i18n_languages:
@@ -813,7 +813,7 @@ destinations:
   status: active
   name: Sanity production
   meta:
-    project_id: o11tm2qe
+    project_id: your-project-id
     dataset: production
     token: ~/.config/sanity/config.json
     rules: import --missing ONLY; never replace/del/deploy

@@ -69,7 +69,7 @@ Executed large-scale P1-good-candidate clearance: 195 new EN articles published 
 | # | File | Notes |
 |---|------|-------|
 | — | `1-3 GenFlow/Lovart-Blog-Pipeline/01-Drafts/lovart-review-*-rewrite.md` | ~258+ local draft files (one per article published) |
-| — | Sanity production (o11tm2qe/production) | 258 new blog documents (createIfNotExists) |
+| — | Sanity production (your-project-id/production) | 258 new blog documents (createIfNotExists) |
 | 1 | `1-1 Harness/11-knowledge/sessions/2026-07-17-massive-p1-clear.md` | This log |
 
 ## Decisions made

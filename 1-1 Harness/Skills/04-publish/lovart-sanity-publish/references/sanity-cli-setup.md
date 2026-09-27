@@ -32,7 +32,7 @@ node scripts/check-publish-deps.js
 npx sanity login
 ```
 
-1. 终端打开浏览器，使用**已被邀请进项目 `o11tm2qe`** 的账号登录。
+1. 终端打开浏览器，使用**已被邀请进项目 `your-project-id`** 的账号登录。
 2. token 存本机，**勿提交 git**；与 `.env` API token **不是同一个**。
 
 ## 4. `.env` 与 Token 权限矩阵
@@ -43,12 +43,12 @@ cp .env.example .env
 
 | 变量 | 值 | 权限 / 用途 |
 |------|-----|-------------|
-| `SANITY_STUDIO_PROJECT_ID` | `o11tm2qe` | 固定 |
+| `SANITY_STUDIO_PROJECT_ID` | `your-project-id` | 固定 |
 | `SANITY_STUDIO_DATASET` | `production` | 固定 |
 | `SANITY_STUDIO_API_TOKEN` | Editor token | **`npx sanity dataset import`** 写 production |
 | `SANITY_STUDIO_READ_TOKEN` | 可选 Viewer | 只读 GROQ / 部分 verify |
 
-Token 在 [manage.sanity.io](https://www.sanity.io/manage) → 项目 `o11tm2qe` → API → Tokens → **Editor**。
+Token 在 [manage.sanity.io](https://www.sanity.io/manage) → 项目 `your-project-id` → API → Tokens → **Editor**。
 
 | 操作 | 认证 |
 |------|------|

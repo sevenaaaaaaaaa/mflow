@@ -1,6 +1,6 @@
 # Lovart 内容审计与修复 · 会话总结
 
-**审计对象**：Sanity 生产库 `o11tm2qe/production` — Blog 8267 篇（已发布）+ compositePage 4965 篇
+**审计对象**：Sanity 生产库 `your-project-id/production` — Blog 8267 篇（已发布）+ compositePage 4965 篇
 **审计方法**：GROQ 全量数据扫描 + Python 正则深度复核 + HTTP 真实探测（封面 65 池 / CP 图片 949 引用 / 内部链接）
 **修复通道**：Sanity `mutate` 增量 `patch`（符合 RULE 2，不用 replace/deploy），逐篇原子写入 + 实时断点续传 + 强重试
 

@@ -649,16 +649,16 @@ body.sb-open #sb-mask{display:block}
     <div class="pg-head"><div><div class="kick">我的工作</div><h1>QA <em class="sf">编排</em></h1>
       <p class="pg-sub">批量质检 → findings → 一键编排修复任务（字段/物料/改稿）→ 复检对比。确定性规则不需要 LLM，可执行的修复建议自动带出。</p></div>
       <div class="head-actions"><button class="btn ghost" onclick="qaLoad()">刷新 ↻</button></div></div>
-    <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>新建 QA 扫描</h3><span class="mut">kind=sanity 查字段规则；kind=md 跑门禁钩子</span></div>
+    <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>新建 QA 扫描</h3><span class="mut">CMS 文档查字段规则；md 草稿跑门禁钩子</span></div>
       <div class="row"><select id="qa-scope" style="width:220px" onchange="qaScope()">
-        <option value="sanity-filter">Sanity 文档（按类型/语言批量）</option>
+        <option value="sanity-filter">CMS 文档（按类型/语言批量）</option>
         <option value="drafts">本项目草稿（md 钩子）</option>
         <option value="custom">自定义 items（JSON）</option></select>
         <select id="qa-ptype" style="width:140px"><option value="">全部类型</option><option>feature</option><option>tool</option><option>topic</option><option>scenario</option><option>solution</option><option>product</option></select>
         <select id="qa-lang" style="width:110px"><option value="">全部语言</option><option>en</option><option>zh</option><option>ja</option><option>ko</option><option>zh-TW</option><option>de</option><option>fr</option><option>pt</option><option>ru</option><option>it</option></select>
         <input id="qa-max" type="number" value="200" min="1" max="2000" style="width:90px" title="条数上限">
         <button class="btn primary" onclick="qaCreate(event)">创建扫描任务</button></div>
-      <textarea id="qa-items" placeholder='自定义 items JSON：[{"kind":"sanity","doc_id":"xxx"},{"kind":"md","path":"run/projects/lovart-global/content/x.md"}]' style="display:none;width:100%;min-height:80px;margin-top:8px;border:1px solid var(--border);border-radius:12px;padding:10px;font-family:var(--font-mono);font-size:12px;background:var(--surface-strong);color:var(--fg)"></textarea>
+      <textarea id="qa-items" placeholder='自定义 items JSON：[{"kind":"sanity","doc_id":"xxx"},{"kind":"md","path":"run/projects/main/content/x.md"}]' style="display:none;width:100%;min-height:80px;margin-top:8px;border:1px solid var(--border);border-radius:12px;padding:10px;font-family:var(--font-mono);font-size:12px;background:var(--surface-strong);color:var(--fg)"></textarea>
       <div class="mut" id="qa-hint" style="font-size:11.5px;margin-top:6px"></div></div>
     <div class="cols">
       <div class="card" style="height:fit-content"><div class="card-head"><h3>扫描任务</h3></div><div id="qa-tasks" style="display:flex;flex-direction:column;gap:6px"></div></div>
@@ -740,7 +740,7 @@ body.sb-open #sb-mask{display:block}
 物料替换（从内容库计划一键带入则留空）：[{"doc_id":"xxx","kind":"cover","old":"https://…","new_url":"https://…","new_alt":"…"}]
 字段改写：[{"doc_id":"xxx","set":{"seoTitle":"新标题","description":"新描述"}}]
 批量生成：[{"item_id":"topic-slug","type":"blog","lang":"zh","topic":"主题","brief":"要点"}]
-批量改稿：[{"item_id":"refresh-xxx","lang":"zh","topic":"主题","instruction":"改写指令","source_path":"run/library/lovart-global/blog/zh/xxx.md"}]'
+批量改稿：[{"item_id":"refresh-xxx","lang":"zh","topic":"主题","instruction":"改写指令","source_path":"run/library/main/blog/zh/xxx.md"}]'
        style="width:100%;min-height:110px;margin-top:8px;border:1px solid var(--border);border-radius:12px;padding:10px;font-family:var(--font-mono);font-size:12px;background:var(--surface-strong);color:var(--fg)"></textarea>
       <div class="row" style="margin-top:8px"><button class="btn ghost" onclick="btFromPlan()">从「内容库→图片物料」计划一键建任务</button>
         <span class="mut" id="bt-hint"></span></div></div>
@@ -753,12 +753,12 @@ body.sb-open #sb-mask{display:block}
   <!-- ============ 内容库 ============ -->
   <section class="page" id="pg-lib">
     <div class="pg-head"><div><div class="kick">情报与产出</div><h1>内容<em class="sf">库</em></h1>
-      <p class="pg-sub">按「站点目录结构」镜像的 CMS 内容（Sanity 落地页/Blog → 本地库）。站点档案定义段落→目录→URL 规则，适配不同站点。</p></div>
+      <p class="pg-sub">按「站点目录结构」镜像的 CMS 内容（无头 CMS 落地页/Blog → 本地库）。站点档案定义段落→目录→URL 规则，适配不同站点。</p></div>
       <div class="head-actions">
         <select id="lib-site" onchange="loadLib()" style="width:170px"></select>
         <input id="lib-q" placeholder="搜标题/slug/正文…" style="width:220px" onkeydown="if(event.key==='Enter')libList()">
         <button class="btn ghost" onclick="libList()">搜索</button>
-        <button class="btn primary" onclick="libSync()">同步 Sanity ↻</button></div></div>
+        <button class="btn primary" onclick="libSync()">同步 CMS ↻</button></div></div>
     <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>站点档案 <span class="mut" id="lib-meta"></span></h3>
       <span class="mut" id="lib-status"></span></div>
       <div class="chips" id="lib-sections"></div></div>
@@ -779,7 +779,7 @@ body.sb-open #sb-mask{display:block}
       <div id="as-list" style="max-height:260px;overflow:auto;margin-top:8px"></div>
       <div class="card-head" style="margin-top:14px"><h3>批量替换物料</h3><span class="mut">先生成计划 → dry-run 预览 → 应用（admin）</span></div>
       <div class="row"><select id="as-mode" style="width:120px"><option value="prefix">URL 前缀</option><option value="exact">精确匹配</option><option value="regex">正则</option></select>
-        <input id="as-match" placeholder="匹配（如 https://assets-persist.lovart.ai/img/079352d5…）" style="flex:1;min-width:240px">
+        <input id="as-match" placeholder="匹配（如 https://assets.example.com/img/079352d5…）" style="flex:1;min-width:240px">
         <input id="as-newurl" placeholder="新 URL（留空=仅改 alt）" style="flex:1;min-width:200px">
         <input id="as-newalt" placeholder="新 alt（可空）" style="width:180px"></div>
       <div class="row" style="margin-top:8px"><select id="as-section" style="width:130px"></select>
@@ -807,7 +807,7 @@ body.sb-open #sb-mask{display:block}
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>效果归因 <span class="mut" id="imp-note"></span></h3>
       <button class="more" onclick="loadImpact()">刷新 ↻</button></div><div id="dist-impact"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>内容衰减监测 <span class="mut">（P7-B1 · 发布 ≥30 天 × GSC Top20 无记录 × 无 AI 引用）</span></h3></div><div id="dist-decay"></div></div>
-    <div class="card" style="margin-top:14px"><div class="card-head"><h3>发布通道 <span class="mut">（Sanity 生产 / WordPress · 人工授权 + 门禁）</span></h3>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>发布通道 <span class="mut">（CMS / WordPress · 人工授权 + 门禁）</span></h3>
       <button class="more" onclick="loadPublish()">刷新 ↻</button></div>
       <div id="pub-status" class="mut" style="font-size:12.5px;line-height:1.9">加载中…</div>
       <div class="row" style="margin-top:10px">
@@ -822,12 +822,12 @@ body.sb-open #sb-mask{display:block}
         <label style="font-size:12.5px;white-space:nowrap"><input id="pub-confirm" type="checkbox" style="margin-right:5px">确认公开可见（写入即上线）</label></div>
       <div class="row" style="margin-top:8px"><input id="pub-title" placeholder="标题（留空=取 frontmatter）" style="flex:1">
         <button class="btn ghost" onclick="pubPing()">连通探测</button>
-        <button class="btn ghost" onclick="pubSanity(true)">Dry-run（不落库）</button>
-        <button class="btn primary" onclick="pubSanity(false)">发布到 Sanity（真写库）</button>
+        <button class="btn ghost" onclick="pubCms(true)">Dry-run（不落库）</button>
+        <button class="btn primary" onclick="pubCms(false)">发布到 CMS（真写库）</button>
         <button class="btn ghost" onclick="pubWP()">发 WordPress（草稿）</button></div>
       <div class="mut" id="pub-hint2" style="font-size:11.5px;margin-top:6px"></div>
       <pre id="pub-out" style="margin-top:10px;max-height:240px;overflow:auto"></pre>
-      <div class="mut" style="font-size:11.5px;margin-top:6px">门禁：条目需在 S4-qa 及之后且质检 BLOCK 全 0；Sanity 写入 status=draft（前台发布仍需人工在 Sanity 确认）；每次发布进 approvals.log。</div></div>
+      <div class="mut" style="font-size:11.5px;margin-top:6px">门禁：条目需在 S4-qa 及之后且质检 BLOCK 全 0；CMS 写入 status=draft（前台发布仍需人工在 CMS 侧确认）；每次发布进 approvals.log。</div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>发布历史</h3></div><div id="pub-history" style="max-height:200px;overflow:auto"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>发布后复测窗口 <span class="mut">（P7-B5 · 发布 ≤7 天，开「每日自动探测」后自动复测）</span></h3></div><div id="dist-recheck"></div></div>
   </section>
@@ -1071,7 +1071,7 @@ body.sb-open #sb-mask{display:block}
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>GEO 引用感知 <span class="mut">（P6.1 · 走官方 AI API，不爬引擎）</span></h3>
       <button class="more" onclick="runGeoProbe()">▶ 立即探测</button></div>
       <div class="row">
-        <input id="geo-brand" placeholder="你的品牌名（如 Lovart）" style="flex:1;min-width:140px">
+        <input id="geo-brand" placeholder="你的品牌名（如 Acme）" style="flex:1;min-width:140px">
         <input id="geo-comp" placeholder="竞品名，逗号分隔" style="flex:2;min-width:200px"></div>
       <div class="row" style="margin-top:8px;align-items:center">
         <span class="mut" style="width:80px;font-size:13px">探测引擎</span>
@@ -1192,6 +1192,7 @@ body.sb-open #sb-mask{display:block}
     <div class="card"><div class="card-head"><h3>近 14 日消耗</h3></div><div class="chart-bars" id="usage-chart"></div>
       <div class="chart-meta"><span id="usage-days"></span><span id="usage-profiles"></span></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>最近调用明细</h3></div><div style="max-height:380px;overflow:auto"><table id="usage-table"></table></div></div>
+  </section>
   <!-- ============ Setup 引导 ============ -->
   <section class="page" id="pg-setup">
     <div class="pg-head"><div><div class="kick">首次使用</div><h1>五分钟<em class="sf">上手引导</em></h1>
@@ -1212,7 +1213,6 @@ body.sb-open #sb-mask{display:block}
         部署形态（本地 / 服务器 / Docker）见 docs/deploy-guide.md。</div></div>
     </div>
   </section>
-</main>
 
   <!-- ============ 报告仪表 ============ -->
   <section class="page" id="pg-rdash">
@@ -1566,7 +1566,7 @@ function mascotAsk(preset){const inp=$('mc-input');const q=(typeof preset==='str
 function mascotAttach(){try{const n=JSON.parse(localStorage.getItem('mflow-console-v1')||'{}').mascotSeen;if(!n){const p=$('mascot-ping');if(p)p.classList.add('on');setTimeout(()=>{const q=$('mascot-ping');if(q)q.classList.remove('on')},15000);localStorage.setItem('mflow-console-v1',JSON.stringify({...JSON.parse(localStorage.getItem('mflow-console-v1')||'{}'),mascotSeen:1}))}}catch(e){}}
 
 /* ---- 多语言覆盖 ---- */
-function mlLoad(){const site=$('lib-site')?$('lib-site').value:'lovart-global';
+function mlLoad(){const site=$('lib-site')?$('lib-site').value:'main';
  const sec=$('ml-section').value||'tools';const base=$('ml-base').value||'en';
  api('api/multilang/coverage?section='+encodeURIComponent(sec)+'&base_lang='+encodeURIComponent(base)).then(d=>{
   if(!d||d.error){$('ml-body').innerHTML='<span class="mut" style="font-size:12px">'+esc((d&&d.error)||'无数据')+'</span>';return}
@@ -2143,7 +2143,7 @@ const PAGE_GUIDES={
  create:{icon:'✍️',title:'创作中心：生成一篇内容',steps:['选类型/语言/主题（或点选题灵感）','点<b>发起 Loop</b> 自动生成→质检→迭代','到任务看板看进度'],hint:'长文（7500 词级）走本地 signal-writer 完整流程。'},
  loops:{icon:'⚡',title:'Loop 模式：自主循环',steps:['点<b>快速开始</b>一键发起','系统自动生成→过质检→带反馈重写','通过即止，失败熔断保护'],hint:'每个 Loop 计 token，可在「用量与成本」查看。'},
  flow:{icon:'🔗',title:'节点流水线：手动逐步',steps:['选<b>预设流程</b>或手填条目','依次执行：生成 → 质检 → 推进状态机','每步都是真实动作'],hint:'想要全自动请用 Loop 模式或批量任务。'},
- qa:{icon:'🔍',title:'QA 编排',steps:['先<b>扫描</b>发现质量问题','一键把问题<b>生成修复任务</b>','修复后自动<b>复检</b>看 delta'],hint:'扫描范围可选 md 草稿或线上 Sanity 内容。'},
+ qa:{icon:'🔍',title:'QA 编排',steps:['先<b>扫描</b>发现质量问题','一键把问题<b>生成修复任务</b>','修复后自动<b>复检</b>看 delta'],hint:'扫描范围可选 md 草稿或线上 CMS 内容。'},
  dist:{icon:'🚚',title:'分发队列',steps:['查看四轨道待发内容','人工<b>审批</b>后才真正发出','—'],hint:'发布永远需要人工授权。'},
  calt:{icon:'📅',title:'内容日历',steps:['查看/新增排期','到期自动进入管线','—'],hint:''}, 
  pipe:{icon:'🧭',title:'内容管线',steps:['每个条目按状态机推进','S3 生成 → S4 质检 → S5 发布','—'],hint:''},
@@ -2593,7 +2593,7 @@ function approveDispatch(id){if(!confirm('确认以 admin 身份批准 '+id+' �
 function loadPipe(){api('api/state').then(S=>{
  window.__PROJ=S.project||'main';
  $('nav-pipe').textContent=S.items.filter(i=>!['done','failed','escalated'].includes(i.stage)).length;
- const by={};S.phases.forEach(p=>by[p]=[]);S.items.forEach(i=>(by[i.phase]||by['?']).push(i));
+ const by={};S.phases.forEach(p=>by[p]=[]);S.items.forEach(i=>{const k=i.phase;if(!by[k])by[k]=[];by[k].push(i)});
  $('board').innerHTML=S.phases.map(p=>`<div class="phase"><b>${p}（${by[p].length}）</b>${by[p].map(i=>{
   const tos=S.legal_transitions[i.stage]||[];
   return `<div class="pitem"><div class="id">${esc(i.id)}</div><div class="st">${esc(i.stage)}</div>
@@ -2849,7 +2849,7 @@ function useFlowPreset(i){const x=FPRESETS[i];$('ftype').value=x.type;$('flang')
 const LOOPPRESETS=[
  ['写一篇中文博客','AI 设计工具怎么选：5 款主流工具横评','blog','zh'],
  ['写一个英文工具落地页','AI Image to Sketch','tool','en'],
- ['生成一篇日文功能页','Lovart 批量设计功能','feature','ja'],
+ ['生成一篇日文功能页','批量设计功能页','feature','ja'],
  ['写一篇电商场景文章','电商团队如何用 AI 批量出图','blog','zh'],
 ];
 function loadLoopGuides(){
@@ -3141,8 +3141,8 @@ function paySaveCfg(){api('api/pay/config/save',{usdt_trc20:$('pc-trc20').value.
 
 /* ---- 发布通道 ---- */
 function loadPublish(){pubDoctypeUI();api('api/publish/config').then(c=>{
- const s=c.sanity||{},w=c.wordpress||{};
- $('pub-status').innerHTML=`Sanity：<b>${esc(s.project||'—')}</b> / ${esc(s.dataset||'—')} · ${s.configured?'<span class="ok">凭证已配置</span>（'+esc(s.source||'')+'）':'<span class="warn">未配置凭证</span>'}
+ const s=c.cms||c.sanity||{},w=c.wordpress||{};
+ $('pub-status').innerHTML=`CMS：<b>${esc(s.project||'—')}</b> / ${esc(s.dataset||'—')} · ${s.configured?'<span class="ok">凭证已配置</span>（'+esc(s.source||'')+'）':'<span class="warn">未配置凭证</span>'}
   &nbsp;|&nbsp; WordPress：${w.configured?'<span class="ok">已配置</span> '+esc(w.base||''):'<span class="mut">未配置（run/cms.json 的 wordpress 段）</span>'}`;
  $('pub-draft').innerHTML=(c.drafts||[]).map(d=>`<option value="${esc(d.item_id)}">${esc(d.item_id)} · ${esc(d.stage)}</option>`).join('')||'<option value="">（无 S4-qa 及之后的草稿）</option>';
  api('api/publish/history').then(h=>{$('pub-history').innerHTML=(h||[]).map(l=>`<div class="mut" style="font-size:11px;font-family:var(--font-mono)">${esc(l)}</div>`).join('')||'<span class="mut">暂无发布记录</span>'})})}
@@ -3152,7 +3152,7 @@ function pubDoctypeUI(){const c=$('pub-doctype').value==='composite';
  if(c)$('pub-hint2').innerHTML='<span class="warn">落地页无草稿态：真实写入立即前台可见</span>，建议先用 patch 模式更新既有页';
  else $('pub-hint2').textContent=''}
 function pubPing(){api('api/publish/ping').then(r=>{$('pub-out').textContent=JSON.stringify(r,null,1)})}
-function pubSanity(dry){const id=$('pub-draft').value;if(!id)return alert('先选草稿');
+function pubCms(dry){const id=$('pub-draft').value;if(!id)return alert('先选草稿');
  const doctype=$('pub-doctype').value, isC=doctype==='composite';
  const body={item_id:id,path:'run/projects/'+(window.__PROJ||'main')+'/content/'+id+'.md',
   slug:$('pub-slug').value.trim(),lang:$('pub-lang').value,category:$('pub-cat').value,
@@ -3160,7 +3160,7 @@ function pubSanity(dry){const id=$('pub-draft').value;if(!id)return alert('先�
  if(isC){body.page_type=$('pub-ptype').value;body.mode=$('pub-mode').value;body.cover_url=$('pub-cover').value.trim();
   body.confirm_public=$('pub-confirm').checked}
  if(!dry){const msg=isC?`确认真实写入落地页？\n草稿：${id}\n模式：${body.mode}\n\n⚠ 落地页无草稿态，写入即前台可见`
-   :`确认真实写入 Sanity 生产库？\n草稿：${id}\n（写入 status=draft，前台发布仍需在 Sanity 侧确认）`;
+   :`确认真实写入 CMS 生产库？\n草稿：${id}\n（写入 status=draft，前台发布仍需在 CMS 侧确认）`;
   if(!confirm(msg))return}
  api('api/publish/sanity',body).then(r=>{$('pub-out').textContent=JSON.stringify(r,null,1);if(r.ok&&!dry)loadPublish()})}
 function pubWP(){const id=$('pub-draft').value;if(!id)return alert('先选草稿');
@@ -3168,7 +3168,7 @@ function pubWP(){const id=$('pub-draft').value;if(!id)return alert('先选草稿
  .then(r=>{$('pub-out').textContent=JSON.stringify(r,null,1);loadPublish()})}
 
 /* ---- 内容库（站点档案驱动）---- */
-let LIB_SITE='lovart-global',LIB_SEC='',LIB_LANG='';
+let LIB_SITE='main',LIB_SEC='',LIB_LANG='';
 function loadLib(){setTimeout(()=>{try{mlLoad()}catch(e){}},600);api('api/library/sites').then(ss=>{
  $('lib-site').innerHTML=(ss||[]).map(s=>`<option value="${esc(s.id)}" ${s.id===LIB_SITE?'selected':''}>${esc(s.name)} · ${esc(s.domain||'')}</option>`).join('')||'<option value="">（无站点档案）</option>'}) ;
  api('api/library/tree?site='+encodeURIComponent(LIB_SITE)).then(t=>{
@@ -3188,7 +3188,7 @@ function libLang(l){LIB_LANG=l;loadLib()}
 function libList(){if(!LIB_SEC)return;$('lib-list-t').textContent=LIB_SEC+LIB_LANG?`（${LIB_SEC}${LIB_LANG?' / '+LIB_LANG:''}）`:`（${LIB_SEC}）`;
  api('api/library/list?site='+encodeURIComponent(LIB_SITE)+'&section='+encodeURIComponent(LIB_SEC)+'&lang='+encodeURIComponent(LIB_LANG)+'&q='+encodeURIComponent($('lib-q').value.trim()))
  .then(fs=>{$('lib-list-t').textContent=`${LIB_SEC}${LIB_LANG?' / '+LIB_LANG:''}（${fs.length}）`;
-  $('lib-list').innerHTML=(fs||[]).map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${esc(f.lang||'')}</span>${esc(f.name.replace(/\.md$/,''))}</a>`).join('')||'<span class="mut">空（点右上「同步 Sanity」拉取）</span>'})}
+  $('lib-list').innerHTML=(fs||[]).map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${esc(f.lang||'')}</span>${esc(f.name.replace(/\.md$/,''))}</a>`).join('')||'<span class="mut">空（点右上「同步 CMS」拉取）</span>'})}
 function libStatus(){api('api/library/status?site='+encodeURIComponent(LIB_SITE)).then(s=>{
  const el=$('lib-status');if(!el)return;
  if(s.state==='running'){el.innerHTML=`<span class="warn">同步中…</span> ${esc((s.sections||[]).join(','))} ${esc((s.done_sections||[]).join('✓'))}`;
@@ -3226,7 +3226,7 @@ function asPollPlan(){setTimeout(()=>{api('api/assets/plan?site='+encodeURICompo
 function asApply(dry){api('api/assets/apply',{site:LIB_SITE,dry_run:dry}).then(r=>{if(r.error)return alert(r.error);
  $('as-out').textContent='已提交（'+(dry?'dry-run':'真写库')+'），等待结果…';asPollApply(0,dry)})}
 function asPollApply(n,dry){n=n||0;api('api/assets/result?site='+encodeURIComponent(LIB_SITE)+'&cmd=apply').then(r=>{
- if(r.out&&r.at){$('as-out').textContent=r.out.slice(-2000);if(!dry)alert('已应用——注意：MFlow 库台账需重扫以更新（Sanity 侧已变更）');return}
+ if(r.out&&r.at){$('as-out').textContent=r.out.slice(-2000);if(!dry)alert('已应用——注意：MFlow 库台账需重扫以更新（CMS 侧已变更）');return}
  if(n<30)setTimeout(()=>asPollApply(n+1,dry),4000)})}
 
 /* ---- QA 编排 ---- */
@@ -3236,8 +3236,8 @@ function qaScope(){const v=$('qa-scope').value;
  $('qa-ptype').style.display=v==='sanity-filter'?'':'none';
  $('qa-lang').style.display=v==='sanity-filter'?'':'none';
  $('qa-max').style.display=v==='custom'?'none':'';
- $('qa-hint').textContent=v==='drafts'?'扫描 run/projects/lovart-global/content/*.md（跑 post-write + geo 钩子）'
-  :(v==='custom'?'自定义 items（kind=sanity 需 doc_id；kind=md 需 path）':'按 pageType/语言批量扫描 Sanity 文档字段规则（seoTitle/description/cover.alt）')}
+ $('qa-hint').textContent=v==='drafts'?'扫描 run/projects/main/content/*.md（跑 post-write + geo 钩子）'
+  :(v==='custom'?'自定义 items（CMS 条目需 doc_id；md 需 path）':'按 pageType/语言批量扫描 CMS 文档字段规则（seoTitle/description/cover.alt）')}
 function qaLoad(){api('api/qa/tasks').then(ts=>{
  $('qa-tasks').innerHTML=(ts||[]).map(t=>{const s=t.stats||{};
   return `<a onclick="qaPick('${esc(t.id)}')" style="cursor:pointer;padding:7px 10px;border:1px solid var(--border);border-radius:11px;${t.id===QA_SEL?'background:var(--accent-soft);color:var(--accent)':''}">
@@ -3368,7 +3368,7 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
   let html=mdRender(m.text||'');
   const ctx=(()=>{const c=m.context;if(!c)return '';
    const bits=[];
-   if(c.skills&&c.skills.length)bits.push('skills: '+c.skills.map(x=>x.replace('lovart-','')).join(', '));
+   if(c.skills&&c.skills.length)bits.push('skills: '+c.skills.map(x=>x.replace(/^(lovart|mflow)-/,'')).join(', '));
    if(c.kb&&c.kb.length)bits.push('知识库: '+c.kb.join(', '));
    if(c.library&&c.library.length)bits.push('内容库范例 '+c.library.length+' 篇');
    if(c.rules_chars)bits.push('harness 规则 '+c.rules_chars+' 字符');

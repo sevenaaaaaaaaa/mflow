@@ -36,8 +36,8 @@ updated: 2026-09-18
 lovart-kb-ingest / lovart-kb-mine / lovart-blog-signal-writer
 lovart-insight-trend / lovart-content-quality-gates / lovart-sanity-preflight
 lovart-dream-memory / lovart-dream-orchestrator / lovart-knowledge-graph-query
-lovart-new-tool-governance / lovart-pipeline-state / lovart-quality-cascade
-lovart-router / lovart-session-log / lovart-session-recap / lovart-universal-prompt
+lovart-new-tool-governance / pipeline-state / lovart-quality-cascade
+router / lovart-session-log / lovart-session-recap / lovart-universal-prompt
 ```
 **修复**：为全部 16 个补 description（从正文首段提取）
 

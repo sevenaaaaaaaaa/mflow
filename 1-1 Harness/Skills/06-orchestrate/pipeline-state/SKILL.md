@@ -1,7 +1,7 @@
 ---
 description: 管线状态机。12 阶段状态机，原子写，非法转换 exit 2。
 ---
-# lovart-pipeline-state — pipeline state machine (v1.0)
+# pipeline-state — pipeline state machine (v1.0)
 
 > **Why this exists**: 6 Profile + 6 工作线 × 12 个 skill 的 Lovart 内容工厂里,最
 > 大的隐性 bug 是「谁也不知道上一步是谁、下一步给谁」。结果就是:跑完 QA 该生成了、
@@ -145,7 +145,7 @@ python3 pipeline_state.py advance --id blog-firefly-2026-07 --to S5-published
 ## File map
 
 ```
-1-1 Harness/Skills/06-orchestrate/lovart-pipeline-state/
+1-1 Harness/Skills/06-orchestrate/pipeline-state/
 ├── SKILL.md              ← 本文件
 ├── pipeline_state.py     ← CLI（8 个 subcommand）
 ├── smoketest.sh          ← 39 个测试，验证状态机

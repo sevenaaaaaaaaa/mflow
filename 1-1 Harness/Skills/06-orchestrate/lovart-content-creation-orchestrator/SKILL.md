@@ -17,10 +17,10 @@ Before doing anything, determine the current state of the item and which profile
 
 ```bash
 # 1) See what pipeline items exist and their stage
-python3 $HARNESS_ROOT/Skills/06-orchestrate/lovart-pipeline-state/pipeline_state.py next
+python3 $HARNESS_ROOT/Skills/06-orchestrate/pipeline-state/pipeline_state.py next
 
 # 2) Ask router for the right profile and skill to use right now
-python3 $HARNESS_ROOT/Skills/06-orchestrate/lovart-router/router.py decide
+python3 $HARNESS_ROOT/Skills/06-orchestrate/router/router.py decide
 ```
 
 If `decide` says **reroute** to a different profile, **stop and tell the user** which profile to switch to. Do not continue in the wrong profile.

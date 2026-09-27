@@ -228,7 +228,7 @@ def sanity_scan(langs: list[str] | None, limit: int | None):
     }}'''
     if limit:
         q = q + f"[0...{int(limit)}]"
-    url = f"https://o11tm2qe.api.sanity.io/v2024-01-01/data/query/production?query={urllib.parse.quote(q)}"
+    url = f"https://your-project-id.api.sanity.io/v2024-01-01/data/query/production?query={urllib.parse.quote(q)}"
     req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
     with urllib.request.urlopen(req, timeout=300) as resp:
         return json.loads(resp.read().decode())["result"]

@@ -6,7 +6,7 @@
 
 `table(_key) → tableRow(_key) → cells: string[]`
 
-`tableCell` 类型在 `o11tm2qe` schema 中不存在；生产抽样可渲染表格（pillar ja/pt/ru 等）全部是 string cells。仍有一批文档用 `cells: block` 对象，属于历史污染，前端易丢格式。
+`tableCell` 类型在 `your-project-id` schema 中不存在；生产抽样可渲染表格（pillar ja/pt/ru 等）全部是 string cells。仍有一批文档用 `cells: block` 对象，属于历史污染，前端易丢格式。
 
 ## 证据
 

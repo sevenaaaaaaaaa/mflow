@@ -2,7 +2,7 @@
 
 > **执行时间**：2026-06-25 ~ 2026-06-26
 > **执行范围**：815 个 EN compositePage 落地页
-> **Sanity Project**：`o11tm2qe` / `production`
+> **Sanity Project**：`your-project-id` / `production`
 
 ---
 
@@ -104,7 +104,7 @@
 
 | 项目 | 详情 |
 |------|------|
-| Project | `o11tm2qe` |
+| Project | `your-project-id` |
 | Dataset | `production` |
 | API | `https://{PROJECT}.api.sanity.io/v{API_VERSION}/data/mutate/{DATASET}` |
 | 鉴权 | Bearer Token（来自 `~/.config/sanity/config.json`） |

@@ -41,7 +41,7 @@ changelog:
 ## § 1 — Sanity / CMS 事实
 
 - 📌 **永久铁律**：禁 `sanity deploy` / 禁 `--replace` / 禁改 `schemaTypes/` / 禁删 production 文档 / 每次 import 前必须 preflight BLOCK=0。
-- ⚙️ Sanity project：`o11tm2qe` / dataset `production`。
+- ⚙️ Sanity project：`your-project-id` / dataset `production`。
 - ⚙️ Sanity token：`~/.config/sanity/config.json` → 写入 `/tmp/sanitytoken.txt`。
 - ⚙️ Blog 日期字段双写（2026-07-01 纠正）：`releaseDate` + `publishedAt` 必须同时设。
 - ⚙️ CLI > MCP：正文不进 LLM 上下文（NDJSON 磁盘流）；仅最小 GROQ 查询可用 MCP。
@@ -103,7 +103,7 @@ changelog:
 **问题**：6 工作线 × 多 skill 间"该跑哪一步"没有显式状态机 → Agent 重启后瞎猜 → "跑完 QA 该生成 / 跑完生成该跑 QA" 循环扯皮。铁律是文本,Agent 会"善意绕过"。
 
 **解法（两层）**：
-1. **状态机 SSOT**：`1-1 Harness/Skills/06-orchestrate/lovart-pipeline-state/pipeline_state.py`
+1. **状态机 SSOT**：`1-1 Harness/Skills/06-orchestrate/pipeline-state/pipeline_state.py`
    - 12 个 stage,4 phase: QUEUE / CREATE / REVIEW / SHIP / FINAL
    - 8 个 subcommand: init / upsert / get / list / next / advance / run / check / summary
    - 默认 state path: `1-3 GenFlow/.pipeline/pipeline-state.json`
@@ -121,7 +121,7 @@ changelog:
 - 任何 S3/S4/S5 skill 的 SOP 步骤里加一句"先跑 hook"即可接入
 - 不动现有 skill 文件,只在外部包一层约束——最小破坏面
 
-**SKILL.md**：`lovart-pipeline-state/SKILL.md` 包含典型 session flow (创作/QA/发布 三段)。
+**SKILL.md**：`pipeline-state/SKILL.md` 包含典型 session flow (创作/QA/发布 三段)。
 **README**：`1-4 Dev/scripts/hooks/README.md` 包含调用方式 + 与 pipeline-state 的关系图。
 
 **TODO（用户决定是否做）**：
@@ -132,7 +132,7 @@ changelog:
 
 **执行人**：主 agent（MiniMax-M3, content-gen-lovart profile）
 **触动文件**（5 个新文件）：
-- `1-1 Harness/Skills/06-orchestrate/lovart-pipeline-state/{SKILL.md,pipeline_state.py,smoketest.sh}`
+- `1-1 Harness/Skills/06-orchestrate/pipeline-state/{SKILL.md,pipeline_state.py,smoketest.sh}`
 - `1-4 Dev/scripts/hooks/{pre-write-check.sh,post-write-check.sh,pre-import-check.sh,README.md,tests/smoketest_hooks.sh}`
 
 ### ⚙️ § 6.6 — 2026-07-20 Profile Router Rollout
@@ -144,7 +144,7 @@ changelog:
 - 6 个标准档案 `lovart-{creation,quality,reports,ops,distribution,management}`（SOUL 186-232 行,23-26 skill）
 - 2 个冗余档案 `qa-of-lovart` / `seo-opt-lovart` 与 `content-gen-lovart` 38/39 skill 完全相同
 
-**解法**：`1-1 Harness/Skills/06-orchestrate/lovart-router/router.py`
+**解法**：`1-1 Harness/Skills/06-orchestrate/router/router.py`
 - 6 active profile 注册表（model / work_line / owns_stages / key_skills）
 - 23 个决策 (stage, scenario) → (action, profile_target, skills_to_load)
 - 6 subcommand CLI: decide / matrix / profile / profiles / validate
@@ -165,7 +165,7 @@ changelog:
 4. dream cron 加 `router decide` 作为 step 1
 
 **触动文件**（4 个新文件）：
-- `1-1 Harness/Skills/06-orchestrate/lovart-router/{SKILL.md,router.py,tests/dryrun-blog-pipeline.py,tests/smoketest.sh}`
+- `1-1 Harness/Skills/06-orchestrate/router/{SKILL.md,router.py,tests/dryrun-blog-pipeline.py,tests/smoketest.sh}`
 
 ### ⚙️ § 6.7 — 2026-07-20 Profile Archive + SOUL Slimming
 
@@ -205,7 +205,7 @@ changelog:
 - 2 个 profile 目录移到 archive + INDEX/REDIRECT/notice SOUL
 - `1-1 Harness/09-scripts/sync-profile-skills.sh`（11→9 active profiles）
 - 6 个 SOUL.md（lovart-creation/quality/reports/ops/distribution/management）
-- `lovart-router/tests/dryrun-blog-pipeline.py`（用新数字）
+- `router/tests/dryrun-blog-pipeline.py`（用新数字）
 
 ### ⚙️ § 6.8 — 2026-07-20 Router Integration + SOUL Unification
 
@@ -239,8 +239,8 @@ changelog:
 **触动文件**：
 - `~/.hermes/profiles/content-gen-lovart/SOUL.md`
 - `1-1 Harness/Skills/06-orchestrate/lovart-content-creation-orchestrator/SKILL.md`
-- `1-1 Harness/Skills/06-orchestrate/lovart-router/router.py`
-- `1-1 Harness/Skills/06-orchestrate/lovart-router/tests/smoketest.sh`
+- `1-1 Harness/Skills/06-orchestrate/router/router.py`
+- `1-1 Harness/Skills/06-orchestrate/router/tests/smoketest.sh`
 - `1-1 Harness/11-knowledge/sessions/2026-07-20-soul-slim-router-integration.md`
 
 ### ⚙️ § 6.9 — 2026-07-20 Tool Governance Rollout

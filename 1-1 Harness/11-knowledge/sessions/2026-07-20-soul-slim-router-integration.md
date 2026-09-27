@@ -3,7 +3,7 @@ session_date: 2026-07-20
 session_topic: "SOUL 瘦身 + router 集成 content-creation-orchestrator + --brief 模式"
 session_slug: "soul-slim-router-integration"
 profiles_used: [profile-lovart-management]
-tools_used: [lovart-router, lovart-pipeline-state, lovart-content-creation-orchestrator, sync-profile-skills.sh, dryrun-blog-pipeline]
+tools_used: [router, pipeline-state, lovart-content-creation-orchestrator, sync-profile-skills.sh, dryrun-blog-pipeline]
 agents: [hermes]
 duration_min: 40
 files_changed_count: 5
@@ -37,8 +37,8 @@ status: ready
 |------|------|------|
 | `~/.hermes/profiles/content-gen-lovart/SOUL.md` | modify | 56→50 行,移除规则嵌入 |
 | `1-1 Harness/Skills/06-orchestrate/lovart-content-creation-orchestrator/SKILL.md` | modify | 加 Step 0 (router decide + pipeline_state next) |
-| `1-1 Harness/Skills/06-orchestrate/lovart-router/router.py` | modify | 加 --brief flag + parser arg |
-| `1-1 Harness/Skills/06-orchestrate/lovart-router/tests/smoketest.sh` | modify | 加 brief 模式测试 |
+| `1-1 Harness/Skills/06-orchestrate/router/router.py` | modify | 加 --brief flag + parser arg |
+| `1-1 Harness/Skills/06-orchestrate/router/tests/smoketest.sh` | modify | 加 brief 模式测试 |
 | `1-1 Harness/11-knowledge/sessions/2026-07-20-soul-slim-router-integration.md` | add | 本文件 |
 
 # Decisions Made
@@ -52,9 +52,9 @@ status: ready
 - P3: --brief 模式比 --json 省 90% token,但保留了机器可解析性
 
 # Cross-References
-- entities: skill-lovart-router, skill-lovart-content-creation-orchestrator, profile-content-gen-lovart
+- entities: skill-router, skill-lovart-content-creation-orchestrator, profile-content-gen-lovart
 - decisions: MEMORY-PROJECT.md § 6.6-6.7
-- skills: lovart-router, lovart-pipeline-state, lovart-content-creation-orchestrator
+- skills: router, pipeline-state, lovart-content-creation-orchestrator
 
 # Tags
 - relevant-tags: #router-integration #soul-unification #brief-mode #2026-07

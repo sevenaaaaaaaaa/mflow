@@ -18,7 +18,7 @@ from typing import Any
 
 import requests
 
-PROJECT_ID = "o11tm2qe"
+PROJECT_ID = "your-project-id"
 DATASET = "production"
 API_VERSION = "2024-01-01"
 QUERY_URL = f"https://{PROJECT_ID}.api.sanity.io/v{API_VERSION}/data/query/{DATASET}"

@@ -3,7 +3,7 @@ session_date: 2026-07-20
 session_topic: "归档 qa-of-lovart / seo-opt-lovart + 6 标准 profile SOUL 瘦身"
 session_slug: "profile-archive-and-soul-slim"
 profiles_used: [profile-lovart-management]
-tools_used: [lovart-router, lovart-pipeline-state, sync-profile-skills.sh, dryrun-blog-pipeline]
+tools_used: [router, pipeline-state, sync-profile-skills.sh, dryrun-blog-pipeline]
 agents: [hermes]
 duration_min: 60
 files_changed_count: 11
@@ -47,7 +47,7 @@ status: ready
 | `~/.hermes/profiles/lovart-ops/SOUL.md` | modify | 186→60 行 |
 | `~/.hermes/profiles/lovart-distribution/SOUL.md` | modify | 191→55 行 |
 | `~/.hermes/profiles/lovart-management/SOUL.md` | modify | 201→61 行 |
-| `1-1 Harness/Skills/06-orchestrate/lovart-router/tests/dryrun-blog-pipeline.py` | modify | 用新 SOUL+skill 数重算 |
+| `1-1 Harness/Skills/06-orchestrate/router/tests/dryrun-blog-pipeline.py` | modify | 用新 SOUL+skill 数重算 |
 
 # Decisions Made
 - D1: 保留 content-gen-lovart (用户指定),归档另外 2 个
@@ -70,9 +70,9 @@ status: ready
 - Q4: legacy lovart-content / lovart-seo 何时可以归档? (cron 切换到 lovart-creation 之后)
 
 # Cross-References
-- entities: skill-lovart-router, skill-lovart-pipeline-state, profile-content-gen-lovart, profile-lovart-creation, profile-lovart-quality
+- entities: skill-router, skill-pipeline-state, profile-content-gen-lovart, profile-lovart-creation, profile-lovart-quality
 - decisions: MEMORY-PROJECT.md § 6.6 (上轮) + § 6.7 (本 session)
-- skills: lovart-router, lovart-pipeline-state, sync-profile-skills.sh
+- skills: router, pipeline-state, sync-profile-skills.sh
 - verification: 79 tests pass (39+16+15+9 sync)
 
 # Tags

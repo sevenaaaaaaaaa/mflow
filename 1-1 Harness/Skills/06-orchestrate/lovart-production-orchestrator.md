@@ -180,7 +180,7 @@ After Sanity publish skill completes:
 ```
 🏁 Phase ③ 完成 — Sanity 发布成功
    本次发布: [N] 篇
-   Project: o11tm2qe / production
+   Project: your-project-id / production
    模式: --missing
 
    ✅ 全流程完成: Keywords → Writing → Publish

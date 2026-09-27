@@ -1,9 +1,9 @@
 {
-  "id": "lovart-global",
-  "name": "Lovart Global",
-  "domain": "www.lovart.ai",
+  "id": "main",
+  "name": "My Site",
+  "domain": "www.example.com",
   "default_lang": "en",
-  "source": {"type": "sanity", "project": "o11tm2qe", "dataset": "production"},
+  "source": {"type": "cms", "project": "your-project-id", "dataset": "production"},
   "sections": [
     {"key": "blog", "dir": "blog", "docType": "blog", "engine": "portable-text",
      "route": "/{lang}/blog/{slug}", "titleField": "title"},

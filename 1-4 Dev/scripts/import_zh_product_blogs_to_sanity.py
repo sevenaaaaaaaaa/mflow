@@ -17,7 +17,7 @@ if _SSOT_DIR not in sys.path:
 from md_to_portable_text import md_to_portable_text as md_to_pt
 
 
-SANITY_PROJECT = "o11tm2qe"
+SANITY_PROJECT = "your-project-id"
 SANITY_DATASET = "production"
 API_VERSION = "2024-01-01"
 API_BASE = f"https://{SANITY_PROJECT}.api.sanity.io/v{API_VERSION}/data"

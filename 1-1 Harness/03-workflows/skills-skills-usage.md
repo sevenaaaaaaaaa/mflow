@@ -47,8 +47,8 @@ S1-数据采集 → S2-内容策略 → S3-内容创作 → S4-质量审核 → 
 
 | 技能 | 说明 | 验证 |
 |------|------|------|
-| `lovart-pipeline-state` | 12-stage 状态机 SSOT（`1-3 GenFlow/.pipeline/`），8 个子命令，非法转换 exit 2 | smoketest 39/39 |
-| `lovart-router` | stage+scenario → profile/skills 路由决策（23 条矩阵），6 个 active profile | smoketest 15/15 |
+| `pipeline-state` | 12-stage 状态机 SSOT（`1-3 GenFlow/.pipeline/`），8 个子命令，非法转换 exit 2 | smoketest 39/39 |
+| `router` | stage+scenario → profile/skills 路由决策（23 条矩阵），6 个 active profile | smoketest 15/15 |
 | `lovart-new-tool-governance` | 新脚本 6-gate 门禁 + TOOLS-REGISTRY 注册 | governance_check.py |
 
 **质量与记忆**：`lovart-quality-cascade`（writer→critic 循环，explicit-only）、`lovart-universal-prompt`（全 profile 行为基座）、`lovart-dream-memory`、`lovart-dream-orchestrator`（梦境手动入口）

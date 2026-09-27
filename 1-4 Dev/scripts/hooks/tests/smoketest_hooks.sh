@@ -6,7 +6,7 @@
 set -e
 HERE="$(cd "$(dirname "$0")" && pwd)"
 HOOKS_DIR="$(cd "$HERE/.." && pwd)"
-PIPELINE_DIR="$(cd "$HERE/../../../../1-1 Harness/Skills/06-orchestrate/lovart-pipeline-state" && pwd)"
+PIPELINE_DIR="$(cd "$HERE/../../../../1-1 Harness/Skills/06-orchestrate/pipeline-state" && pwd)"
 # Use vault-internal temp dir so allowed-root checks pass for hooks.
 # tests → hooks → scripts → 1-4 Dev → 项目根（4 级）
 PROJECT_ROOT="$(cd "$HERE/../../../.." && pwd)"

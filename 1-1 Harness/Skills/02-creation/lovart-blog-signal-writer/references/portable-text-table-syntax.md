@@ -1,6 +1,6 @@
 # Portable Text 表格语法（Lovart SSOT）
 
-> 2026-08-03 对照 `o11tm2qe` / `production` 已部署 schema 纠正。
+> 2026-08-03 对照 `your-project-id` / `production` 已部署 schema 纠正。
 > 转换入口：`~/Documents/Lovart Local Dev/scripts/md_to_portable_text.py`
 
 ## Schema 真相

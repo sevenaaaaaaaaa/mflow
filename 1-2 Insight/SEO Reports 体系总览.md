@@ -268,5 +268,5 @@
 | DataWorks | 产品日度 CSV | 日 | `1-2 Insight/From Datawork/seo_geo_daily_report_YYYYMMDD.csv` |
 | 竞品词库 | 手工维护 | 静态 | `1-2 Insight/Keywords Research/竞品核心非品牌词/` |
 | 品牌词匹配 | `lovart_brand_match.py` | 实时 | `1-4 Dev/scripts/lovart_brand_match.py` |
-| Sanity CMS | Sanity API | 按需 | Project `o11tm2qe`, dataset `production` |
+| Sanity CMS | Sanity API | 按需 | Project `your-project-id`, dataset `production` |
 | OKR | Markdown 文件 | 月 | `1-1 Harness/07-okr/` |

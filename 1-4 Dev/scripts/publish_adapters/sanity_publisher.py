@@ -32,7 +32,7 @@ except Exception as e:  # pragma: no cover
     md_to_pt = None
     _PT_ERR = str(e)
 
-DEFAULT_PROJECT = "o11tm2qe"
+DEFAULT_PROJECT = "your-project-id"
 DEFAULT_DATASET = "production"
 API_VERSION = "2024-01-01"
 
