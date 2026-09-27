@@ -7,7 +7,7 @@
 
 | 类型 | type | 注册点 | 约定 |
 |------|------|--------|------|
-| 数据源 | `source` | Trident 步骤表 / Sentinel 源列表 | `entry.py` 暴露 `collect() -> dict`，输出 JSON 到 `$LOVART_LOCAL_DEV_ROOT/Output/Data Ingestion/` |
+| 数据源 | `source` | Trident 步骤表 / Sentinel 源列表 | `entry.py` 暴露 `collect() -> dict`，输出 JSON 到 `$MFLOW_LOCAL_DEV_ROOT/Output/Data Ingestion/` |
 | 发布渠道 | `publisher` | `1-4 Dev/scripts/publish_adapters/` 同接口 | `entry.py` 暴露 `publish(item, cfg) -> {"ok", "url", "cms_id"}` |
 | 模板包 | `template` | `templates/` | 单 JSON（见模板市场，无需代码） |
 

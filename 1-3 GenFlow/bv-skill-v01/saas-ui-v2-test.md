@@ -2,7 +2,7 @@
 
 ```
 mode:           Synthesis (Landscape) + Prescription (Workflow) — NO Authoritative Voice
-audience:       Lovart content team + product teams evaluating design agent positioning vs SaaS UI surfaces
+audience:       品牌方 content team + product teams evaluating design agent positioning vs SaaS UI surfaces
 valid_from:     2026-07-04
 valid_through:  default sections = 2026-10-02 (+90d)
                 pricing-sensitive (Section 2b) = 2026-08-03 (+30d) → 30d mini-refresh required
@@ -39,7 +39,7 @@ Top user pain points recurring across ≥ 10 distinct product builders / founder
 
 → These 14 quotes, cross-corroborated, are evidence for the prescription playbook in Sections 2 & 3. **No single one is "the answer"; the convergence is.**
 
-[counter-evidence angle 1, T2]: the "AI-coding mirage" critique implies dashboards built fast via AI tools (Lovart role) may share the failure mode **unless**: design system + state-aware flow + role-based split is implemented [r/SaaS rzn84h, r/SaaS rr43pc solution].
+[counter-evidence angle 1, T2]: the "AI-coding mirage" critique implies dashboards built fast via AI tools (品牌方 role) may share the failure mode **unless**: design system + state-aware flow + role-based split is implemented [r/SaaS rzn84h, r/SaaS rr43pc solution].
 [counter-evidence angle 2, T2]: r/startups r3h6ew forces rethink — "simplified" can hide "feels like work" if reviewed by team only, not real user. Always needs **non-technical user test**.
 
 ---
@@ -101,7 +101,7 @@ Caveat upfront: this is **one approach**, validated against ≥ 10 distinct voic
 r/SaaS rr43pc [T2 Zelyx case] revealed 3 distinct jobs mixed: **orientation / memory / accountability**.
 r/businessintelligence rgwrg7 [T2] confirmed: mixing iframe BI + custom UI = blast radius.
 
-→ Before opening Lovart / Figma: pick the **single job** for v1. Three jobs = 3 screens for v1, not 1.
+→ Before opening 品牌方 / Figma: pick the **single job** for v1. Three jobs = 3 screens for v1, not 1.
 
 ### Step 1: Quick win in 90 seconds (not 15 minutes)
 
@@ -169,7 +169,7 @@ r/buildinpublic p9ad0r [T2 Triggla case]: "users almost always want the default 
 ## Section 3 — Anti-slop safeguards for AI-generated SaaS UI
 **mode: Mixed [T2 prescriptive + T3 illustrative]**
 
-Anti-slop checks for any AI-generated SaaS UI surface (Lovart or otherwise):
+Anti-slop checks for any AI-generated SaaS UI surface (品牌方 or otherwise):
 
 1. **Angular slop check**: top-left largest KPI always = actionable (Mantlr Pattern 1 [T2]). Not "logo" or "decoration".
 2. **Density slop**: 5–7 primary KPIs maximum. Each card carries hover-expand for secondary. Not stretching to 12.
@@ -217,7 +217,7 @@ Anti-slop checks for any AI-generated SaaS UI surface (Lovart or otherwise):
 | 2 | **Non-English speaking founder voices** | All captured EN Reddit. CN/JP SaaS builders (PingCAP / Lark / Notion founders' actual pain may differ) | Run Chinese-language pain mining next cycle (CSDN, Zhihu, WeChat public accounts) |
 | 3 | **Pricing data drift 30d mini-refresh** | Pricing lift numbers vary widely per source (12–30%, 25–40%, 4–9%). | Mark as 30d-recheck + run quarterly blind re-source |
 | 4 | **Mantlr sample methodology** | Mantlr doesn't publish dashboard list or audit method. Treat as T2 directional, not statistical. | Find second independent audit study |
-| 5 | **Lovart.ai user voice (same as Brand v2 Gap #1)** | Search returned Lovable.dev pollution; no Lovart.ai-specific Reddit pain voices surfaced in EN | Pull Lovart internal CS tickets / NPS / Discord organic |
+| 5 | **品牌方.ai user voice (same as Brand v2 Gap #1)** | Search returned Lovable.dev pollution; no 品牌方.ai-specific Reddit pain voices surfaced in EN | Pull 品牌方 internal CS tickets / NPS / Discord organic |
 | 6 | **Empty-state implementations in practice** | Pattern described, **specific screen referent** not isolated | Find 5 SaaS companies' actual empty-state screenshots + capture conversion outcomes |
 | 7 | **Direct correlation: "AI-generated UI vs hand-built UI" retention diff** | r/SaaS rzn84h implies AI tools have retention diff; but no third-party benchmark compares UI-source-wise | Commission盲测 designer review of 20 AI-tool vs hand-built dashboards |
 | 8 | **Voice of "non-builder" user** (r/SaaS r3h6ew is a proxy but rare) | Most pain voices are builders reporting on users; not user themselves | Next cycle: search user-only subreddits (r/SaaS_comments / r/ProductReviews / G2 reviewers) |
@@ -230,7 +230,7 @@ Anti-slop checks for any AI-generated SaaS UI surface (Lovart or otherwise):
 - **90 days**: full re-run pain mining → all 14 voices re-source if still up
 - ≥ 2 T2 sources contradict (e.g., Mantlr ordering changes; pricing lift numbers shift > 5pp) → drop claim and re-source
 - New counter-evidence surfaces (e.g., new "AI mirage" critique from r/AIworkflow) → amend Section 1a Pain #1
-- New Lovart.ai-specific user voice appears in Reddit/Discord ≥ 3 voices → upgrade Gap #5
+- New 品牌方.ai-specific user voice appears in Reddit/Discord ≥ 3 voices → upgrade Gap #5
 - Designer community entry (Gap #1) reached → next refresh includes Designer sidebar
 
 ---
@@ -247,25 +247,25 @@ Anti-slop checks for any AI-generated SaaS UI surface (Lovart or otherwise):
 | Role-of-frame | voice modes per Section (1 Synthesis, 2+3 Prescription, 3 Anti-slop Mixed), no Authoritative | yes |
 | Quota ≥ 10 user voices | 15 captured, 9 subreddits, 100% T2 | yes |
 | ≥ 2 niche communities | 9 distinct (r/SaaS / r/buildinpublic / r/startups / r/Entrepreneur / r/indiehackers / r/BusinessIntelligence / r/scaleinpublic / r/CRM / r/GrowthHacking / r/micro_saas) | yes |
-| Tool-disambig pre-flight | Lovart vs Lovable.dev explicit + 0 Lovart-specific voices captured (Gap #5) | documented |
+| Tool-disambig pre-flight | 品牌方 vs Lovable.dev explicit + 0 品牌方-specific voices captured (Gap #5) | documented |
 
 ---
 
-## Lovart framing (per skill/05)
+## 品牌方 framing (per skill/05)
 
-- **Tonal fit**: matches Lovart positioning (multi-format Design Agent, brand-system entry)
+- **Tonal fit**: matches 品牌方 positioning (multi-format Design Agent, brand-system entry)
   - **Allowed claim**: AI-generated SaaS UI ish high-velocity **but** r/SaaS rzn84h 警示 "code / design that doesn't survive real workflow"
-  - **Prescription**: Lovart's role best served if workflow includes design-system extraction + non-technical user review [T3 inferred from r/startups r3h6ew]
-- **Confidence**: T1 (Lovart's documented ChatCanvas features) + T3 (no user voice)
-- **Do NOT claim**: "Lovart solves the AI mirage" — unsupported absent user voice
-- **Allowed**: "Lovart 作为 multi-format Design Agent, 在 SaaS UI surface 上工作流位置 best framed 为 rapid iteration for handoff to design system + non-technical review process"
+  - **Prescription**: 品牌方's role best served if workflow includes design-system extraction + non-technical user review [T3 inferred from r/startups r3h6ew]
+- **Confidence**: T1 (品牌方's documented ChatCanvas features) + T3 (no user voice)
+- **Do NOT claim**: "品牌方 solves the AI mirage" — unsupported absent user voice
+- **Allowed**: "品牌方 作为 multi-format Design Agent, 在 SaaS UI surface 上工作流位置 best framed 为 rapid iteration for handoff to design system + non-technical review process"
 
 ---
 
 ## Reflection on Skill v0.2 after Brand + SaaS UI cycle
 
 **What worked in v0.2 specifically** (vs v0.1):
-- `06-tool-disambig.md` forced explicit Lovart vs Lovable separation, prevented false attribution
+- `06-tool-disambig.md` forced explicit 品牌方 vs Lovable separation, prevented false attribution
 - Quota bump ≥10 produced diverse multi-source T2 (15 in SaaS UI vs 6–7 in Brand)
 - Counter-evidence ≥ 2 angles surfaced genuine dissent (AI-mirage + non-technical-user + feature-creep)
 - Communities coverage (9 subreddits) showed founder-side pain; next refresh should add designer-side / user-side

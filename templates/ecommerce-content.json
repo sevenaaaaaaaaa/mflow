@@ -8,8 +8,8 @@
     "id": "blog",
     "name": "电商内容生产（模板版）",
     "flow": ["S0 选品/关键词入队", "S3 生成（对比/选品/教程）", "S3 质检 + 广告法禁例检查", "S4 人工审（价格与促销信息核对）", "S5 发布", "S6 转化监控"],
-    "profiles": "生成 lovart-creation · 质检 lovart-quality · 发布 lovart-ops",
-    "skills": ["lovart-blog-signal-writer", "lovart-content-quality-gates"],
+    "profiles": "生成 mflow-creation · 质检 mflow-quality · 发布 mflow-ops",
+    "skills": ["blog-signal-writer", "content-quality-gates"],
     "kb": ["产品知识库", "关键词研究", "铁律与规则"]
   },
   "prompt": {

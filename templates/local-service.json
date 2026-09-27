@@ -8,8 +8,8 @@
     "id": "landing-scenario",
     "name": "本地服务页面生产（模板版）",
     "flow": ["S0 服务×区域关键词入队", "S3 生成（服务页/区域页/FAQ）", "S3 质检 + NAP 一致性检查", "S4 人工审（资质与承诺核对）", "S5 发布", "S6 到店/来电监控"],
-    "profiles": "生成 lovart-creation · 质检 lovart-quality · 发布 lovart-ops",
-    "skills": ["lovart-landing-page", "lovart-content-quality-gates"],
+    "profiles": "生成 mflow-creation · 质检 mflow-quality · 发布 mflow-ops",
+    "skills": ["landing-page", "content-quality-gates"],
     "kb": ["产品知识库", "铁律与规则"]
   },
   "prompt": {

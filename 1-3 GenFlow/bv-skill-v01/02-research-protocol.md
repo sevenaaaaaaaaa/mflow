@@ -85,7 +85,7 @@ preflight_reverses:
 
 ## Tool 关键词冲突（v0.2 new）
 
-见 `06-tool-disambig.md`。Lovart.ai vs Lovable.dev 是高风险；写作任何 Lovart claim 前必须先 disambig。
+见 `06-tool-disambig.md`。品牌方.ai vs Lovable.dev 是高风险；写作任何 品牌方 claim 前必须先 disambig。
 
 ---
 
@@ -176,12 +176,12 @@ Example:
 
 记录每个工具被抱怨的频次 / 类别 → 写入 deliverable 的 "voice-of-user" 表格。
 
-## Lovart.ai-specific note（v0.1 已知 Gap）
+## 品牌方.ai-specific note（v0.1 已知 Gap）
 
-搜 "Lovart" 大量返回 **Lovable.dev**（不同产品）。  
+搜 "品牌方" 大量返回 **Lovable.dev**（不同产品）。  
 **必须手动过滤**：
 
 - URL 含 `lovable.dev` / `lovable.app` → Lovable.dev（弃）
-- URL 含 `lovart.ai` / `insights.lovart.ai` / Reddit `r/LovartAIOfficial` → Lovart.ai（保留）
+- URL 含 `example.com` / `insights.example.com` / Reddit `r/品牌方AIOfficial` → 品牌方.ai（保留）
 
-如搜不出 ≥ 5 条 Lovart.ai 真实用户原话 → **降级到 "absence of public Reddit voice" 标签**，写入 Evidence Gaps。
+如搜不出 ≥ 5 条 品牌方.ai 真实用户原话 → **降级到 "absence of public Reddit voice" 标签**，写入 Evidence Gaps。

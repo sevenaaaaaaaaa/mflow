@@ -30,7 +30,7 @@
 {"id": "reddit-ads", "name": "Reddit 广告效果", "cmd": [PYTHON, "1-4 Dev/scripts/sources/reddit_ads.py"], "desc": "..."},
 ```
 
-脚本约定：输出 JSON 到 `$LOVART_LOCAL_DEV_ROOT/Output/Data Ingestion/`，文件名含日期。
+脚本约定：输出 JSON 到 `$MFLOW_LOCAL_DEV_ROOT/Output/Data Ingestion/`，文件名含日期。
 工作台「数据管线 Trident」页会自动出现新步骤与产出健康度。
 
 **舆情类（发布前监测）**——参考 `1-4 Dev/scripts/sentinel/sources/*.py` 的 collect() 协议：
@@ -50,7 +50,7 @@ def publish(item: dict, cfg: dict) -> dict:
     ...
 ```
 
-- **Sanity（参考实现）**：见 `lovart-sanity-publish` skill——NDJSON + `--missing` 增量导入 + preflight BLOCK=0 前置
+- **Sanity（参考实现）**：见 `sanity-publish` skill——NDJSON + `--missing` 增量导入 + preflight BLOCK=0 前置
 - **WordPress**：REST `POST /wp-json/wp/v2/posts`（Application Passwords），参考 OpenFlow 项目的 wp 集成
 - **通用 Webhook**：POST item JSON 到你的后端，返回 `{url}` 即回写外链表
 - 工作台"分发队列"读的是 `queue/published.json`——适配器成功后按既有 schema 追加，
