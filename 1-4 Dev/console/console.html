@@ -2230,7 +2230,7 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
    calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,agent:agLoad,qa:qaLoad,run:runLoad,onboard:loadOnboard,auto:loadAuto,mem:memLoad,audit:auditLoad,inbox:inboxLoad}[t]||(()=>{}))()}
 /* ---- 阅读器 + 正文编辑器 + 改动对照（P2-1）----
-   此前阅读器全只读：AI 出稿后人只能「通过/打回重跑」，改一个词都要回 Sanity。
+   此前阅读器全只读：AI 出稿后人只能「通过/打回重跑」，改一个词都要回 CMS。
    编辑与门禁强绑定——保存即重跑四道门禁，BLOCK 不给「可发布」。 */
 let RD={path:'',editable:false,text:'',orig:'',versions:[],mode:'read',html:'',tmr:null};
 

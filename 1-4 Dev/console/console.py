@@ -1054,7 +1054,7 @@ def run_content_gates(path, ctype="blog", lang="zh", tag="gate", budget_profile=
 
 
 # ── 正文编辑 · 版本 · diff（P2-1）────────────────────────────────────────
-# 为什么：此前 AI 出稿后人只能「通过 / 打回重跑」——改一个词都要回 Sanity 或重跑 Loop，
+# 为什么：此前 AI 出稿后人只能「通过 / 打回重跑」——改一个词都要回 CMS 或重跑 Loop，
 # 而"改两句就能发"恰恰是内容团队最高频的动作。
 # 铁律：编辑必须与门禁绑定。保存即重跑四道门禁，BLOCK 就不给「可发布」，
 #       绕过门禁的编辑入口等于给 RULES 开后门。
@@ -3291,7 +3291,7 @@ def inbox(me="", proj=None):
 
 # ===================== MCP：把 MFlow 能力开放给任意 AI 客户端 =====================
 MCP_TOOLS = [
-    {"name": "mflow_health", "desc": "系统健康（执行器/LLM/Sanity/队列）", "schema": {}},
+    {"name": "mflow_health", "desc": "系统健康（执行器/LLM/CMS/队列）", "schema": {}},
     {"name": "mflow_selfcheck", "desc": "系统自检（阻断项与修复建议）", "schema": {}},
     {"name": "mflow_inbox", "desc": "需要处理的待办聚合", "schema": {}},
     {"name": "mflow_search_content", "desc": "按关键词/类型/语言检索线上内容库，返回 doc_id/slug/url",
