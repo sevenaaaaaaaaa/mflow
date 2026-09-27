@@ -34,6 +34,6 @@ bash "1-4 Dev/scripts/run-tests.sh"       # 本地
 
 ## 后续扩充建议
 
-- 执行器端到端（起临时目录 + 假 Sanity 端点）→ 覆盖 `asset_replace/field_patch` 的 patch 构造
-- `preset_expand` 其余分支（依赖真实 Sanity/GEO 数据 → 需 fixture 化）
+- 执行器端到端（起临时目录 + 假 CMS 端点）→ 覆盖 `asset_replace/field_patch` 的 patch 构造
+- `preset_expand` 其余分支（依赖真实 CMS/GEO 数据 → 需 fixture 化）
 - 前端 JS 语法检查已由 GATE 5 覆盖（node --check），可补关键函数的行为测试

@@ -41,7 +41,7 @@
 | POST | `/api/qa/orchestrate` | `{task, dry_run}` → 生成修复任务（可按类型拆多个） |
 | POST | `/api/qa/recheck` | `{task, dry_run}` → 新建复检任务（parent 关联） |
 
-## 实测（2026-09-17，真实 Sanity 数据）
+## 实测（2026-09-17，真实 CMS 数据）
 
 | 步骤 | 结果 |
 |------|------|

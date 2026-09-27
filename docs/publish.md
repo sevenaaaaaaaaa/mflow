@@ -6,7 +6,7 @@
 ## 一、Sanity（已上线，纯 Python + HTTP API，无需 Node）
 
 - 实现：`1-4 Dev/scripts/publish_adapters/sanity_publisher.py`（stdlib only）+ `md_to_portable_text.py`（598 行 MD→PortableText 转换器，已入仓库）
-- 项目：`o11tm2qe` / dataset `production`
+- 项目：`your-project-id` / dataset `production`
 - 写入方式：`createIfNotExists`（**不覆盖既有文档**，`_id = slug`）+ 原生 `dryRun` 支持
 - 文档结构：`_type=blog`、`slug`、`language`、`category`（reference，映射既有 taxonomy UUID）、`seo.structuredData`（HowTo/Article JSON-LD）、`body`=portable text、`status=draft`
 

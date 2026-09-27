@@ -30,7 +30,7 @@
 
 ## Phase 2.5 · 平台化多项目（2026-09-15 ✅ 计划外提前交付）
 
-- ✅ 去 Lovart 化：登录页/后台文案/生成提示词全部通用化（"提及你的产品/工具"），内部 skill ID 保留
+- ✅ 去品牌化：登录页/后台文案/生成提示词全部通用化（"提及你的产品/工具"），内部 skill ID 保留
 - ✅ 多项目架构：项目 = `run/projects/{id}/` 独立数据命名空间（管线状态/事件/看板/Loop/生成物）
 - ✅ 项目 API：新建（slug 化 + meta.json）/ 切换（session 上下文）/ 删除（admin → _trash 回收站）
 - ✅ 前端：侧栏项目切换器 + ＋新建项目；总览问候显示登录名
@@ -132,23 +132,23 @@
 - ✅ 机器只读：X-MFlow-Token 可读订单/商品/统计（供 OpenFlow 联动）
 - 📋 待用户：配置收款钱包地址（TRC20 填了才开启自动核验）；ERC20/BTC 链上核验（需 Etherscan Key）
 
-## Phase 10 · 线上发布通道（2026-09-17 ✅ Sanity 上线）
+## Phase 10 · 线上发布通道（2026-09-17 ✅ CMS 发布通道上线）
 
-- ✅ Sanity 服务端发布器：`publish_adapters/sanity_publisher.py`（纯 Python HTTP API，无需 Node）+ MD→PortableText 转换器入仓
-- ✅ 凭证上云：Mac sanity-cli token → 服务器 `run/secrets/sanity.json`（600/700，git-ignore）；三级解析（env → secrets → 本地）
-- ✅ 发布 API + 工作台「发布通道」卡：连通探测 / dry-run（Sanity 原生 dryRun 不落库）/ 真实发布（status=draft，createIfNotExists 不覆盖）/ 发布历史审计
+- ✅ CMS 服务端发布器（无头 CMS 参考实现）：`publish_adapters/sanity_publisher.py`（纯 Python HTTP API，无需 Node）+ MD→PortableText 转换器入仓
+- ✅ 凭证上云：本地 CMS token → 服务器 `run/secrets/sanity.json`（600/700，git-ignore）；三级解析（env → secrets → 本地）
+- ✅ 发布 API + 工作台「发布通道」卡：连通探测 / dry-run（CMS 原生 dryRun 不落库）/ 真实发布（status=draft，createIfNotExists 不覆盖）/ 发布历史审计
 - ✅ 人工授权门禁：条目须 S4-qa 及之后 + qa BLOCK 全 0，admin-only，真实写库二次确认
 - ✅ WordPress 通道就绪（待 `run/cms.json` 配置 base/user/app_password）；Webhook 通用出口可用
-- 📋 待用户：提供 WordPress 站点与应用密码；确认首篇真实发布（Sanity draft）
+- 📋 待用户：提供 WordPress 站点与应用密码；确认首篇真实发布（CMS draft）
 
 ## Phase 11 · 多站点内容库（2026-09-17 ✅）
 
 - ✅ 站点档案机制：`run/sites/{site}.json`（domain/默认语言/数据源/sections: docType·pageType·dir·route）——**换站点只换档案，不改代码**
-- ✅ Sanity → 库同步器：`1-4 Dev/scripts/library/sanity_pull.py`（分页/剔草稿/两种正文引擎）+ `pt_to_md.py`（Portable Text → Markdown）
+- ✅ CMS → 库同步器：`1-4 Dev/scripts/library/sanity_pull.py`（分页/剔草稿/两种正文引擎）+ `pt_to_md.py`（Portable Text → Markdown）
 - ✅ 首次全量镜像：17,535 篇 / 215MB（blog 8,864 · features 6,400 · tools 1,661 · topics 409 · solutions 120 · products 41 · scenarios 23 · news 17），3 分钟
 - ✅ 工作台「内容库」页：站点/段落（计数）/语言/搜索/阅读/后台同步+进度（admin，审计）
-- ✅ 默认项目更名 **Lovart Global**（id `lovart-global`，含存量管线/任务/Loop/GEO 数据迁移）
-- ✅ 内容日历清空（归档 `run/_archive/content-calendar-20260917.tar.gz`，17MB；Sanity 为 SSOT）
+- ✅ 默认项目定名 **My Site**（id `main`，含存量管线/任务/Loop/GEO 数据迁移）
+- ✅ 内容日历清空（归档 `run/_archive/content-calendar-20260917.tar.gz`，17MB；CMS 为 SSOT）
 - 📋 库 → GEO 闭环联动：缺口 × 库内已有 → 自动判定「改稿 / 新写」
 - 📋 第二站点档案示例（验证多站点目录结构泛化）
 
@@ -157,7 +157,7 @@
 **P12.1 落地页与图片物料（✅ 已交付）**
 - ✅ 物料台账：`asset_tools.py scan` → 17,538 页 / 208 素材 URL（反查谁在用）；`run/library/{site}/assets.json`
 - ✅ 替换计划：exact/prefix/regex/url-map + 过滤（段落/语言/类型/slug）
-- ✅ 批量应用：默认 dry-run（Sanity 原生）；真写带 `ifRevisionID` 并发保护、≤50/批、审计 approvals.log
+- ✅ 批量应用：默认 dry-run（CMS 原生）；真写带 `ifRevisionID` 并发保护、≤50/批、审计 approvals.log
 - ✅ 工作台「内容库 → 图片物料」：扫描 / 台账 / 三步替换（计划→dry-run→应用）
 - 📋 待用户：真实替换 pilot（需提供新图 URL 或素材替换规则）
 
@@ -178,7 +178,7 @@
 - 📋 待办：长文 skill 流程深度接入（7500 词级）；会话删除/归档
 
 **P12.4 QA → 修复编排（✅ 2026-09-17 交付）**
-- ✅ 批量扫描：`qa` 执行器（kind=sanity 字段规则确定性检查 / kind=md 跑门禁钩子）；范围展开 `kind=sanity-filter|drafts`
+- ✅ 批量扫描：`qa` 执行器（kind=cms 字段规则确定性检查 / kind=md 跑门禁钩子）；范围展开 `kind=sanity-filter|drafts`
 - ✅ findings 结构化：`{target, rule, severity, detail, fix{type,set}}`——规则：seoTitle 缺失/超长 · description 缺失/超长 · cover.alt 缺失 · 草稿 block/warn
 - ✅ 一键编排：字段→field_patch · alt→asset_replace · 草稿 block→rewrite（复用批量执行器；dry-run 默认）
 - ✅ 复检闭环：同目标新建 QA 任务（parent 关联）→ `/api/qa/delta` 输出已解决/新增；实测 dry-run 下如实报告"未闭环"（不伪造）
@@ -200,7 +200,7 @@
 
 **P14.1 预设工作流（0 门槛）**
 - ✅ `templates/presets.json` 7 个预设：GEO 缺口改稿 / 高曝光低 CTR 刷新 / 衰减页刷新 / QA 字段修复 / 封面 alt 补齐 / 例行 QA 扫描 / 多语言批量产出
-- ✅ 服务端按真实数据展开（geo gaps / impact / decay / assets / Sanity 过滤 / 主题×语言）；`POST /api/presets/run`（默认 dry-run，审计）
+- ✅ 服务端按真实数据展开（geo gaps / impact / decay / assets / CMS 过滤 / 主题×语言）；`POST /api/presets/run`（默认 dry-run，审计）
 - ✅ 工作台「批量任务 → 预设工作流」chips + 参数弹层（点一下就能跑）
 
 **P14.2 健康与降噪治理（稳定性）**
@@ -230,18 +230,18 @@
 - ✅ 两种写入模式：`create`（createIfNotExists）· `patch`（ifRevisionID，只改指定字段，更新既有页首选）
 - ✅ **安全闸**：compositePage 无草稿态（实测 9,303 篇无 status 字段）→ 真实写入必须显式 `confirm_public`，否则拒绝
 - ✅ 批量执行器 `publish_sanity`（blog/composite 通吃）+ 发布通道 UI（文档类型/模式/封面/确认框）+ 5 个新单测（共 26）
-- ✅ 落地页闭环（Phase 18）：`landing_refresh` 执行器（读 Sanity 现有页→按落地页结构重写→四门禁+结构校验→**带反馈重试≤3轮**）+ 通用**任务链**（只链通过项，链式发布默认 dry-run）+ 预设「🔁 落地页闭环（改稿→发布）」
+- ✅ 落地页闭环（Phase 18）：`landing_refresh` 执行器（读 CMS 现有页→按落地页结构重写→四门禁+结构校验→**带反馈重试≤3轮**）+ 通用**任务链**（只链通过项，链式发布默认 dry-run）+ 预设「🔁 落地页闭环（改稿→发布）」
 - ✅ 闭环实测：ready=True → 自动链出 publish_sanity(patch) → tx 返回；不通过项记 CHAIN-SKIP
 - ✅ 顺手修两个环境 bug：新钩子用系统 py3.6（非 ASCII 打印崩→lang-check 恒挂）→ 走 LOVART_PYTHON/venv；校验口径与 quota-check 统一为**词当量**（英文页不再被原始字符数误伤）
 
 ## Phase 18 · 落地页闭环（2026-09-17 ✅）
 
-- ✅ `landing_refresh` 执行器：读 Sanity 现有内容 → 落地页结构化重写 → 四门禁 + composite 结构校验 → **内部重试 ≤3 轮（带门禁/结构反馈）**
+- ✅ `landing_refresh` 执行器：读 CMS 现有内容 → 落地页结构化重写 → 四门禁 + composite 结构校验 → **内部重试 ≤3 轮（带门禁/结构反馈）**
 - ✅ 通用**任务链**：`params.chain` 在父任务完成后自动生成下一步（只链通过门禁的产出；链式发布默认 dry-run；审计 CHAIN-CREATE/CHAIN-SKIP）
 - ✅ 预设「🔁 落地页闭环（改稿→发布）」（第 8 个预设）：section/lang/条数 → landing_refresh → publish_sanity(patch)
-- ✅ 修复：`publish_sanity` 失败如实标记 failed；patch 用真实 Sanity `_id`（UUID，非 slug）
+- ✅ 修复：`publish_sanity` 失败如实标记 failed；patch 用真实 CMS `_id`（UUID，非 slug）
 - ✅ 环境修复：quota-check/lang-check 走 `LOVART_PYTHON`（venv）避免 py3.6 非 ASCII 崩溃；校验口径统一**词当量**
-- 实测：**真实闭环上线 2 篇**（`ai-storefront-designer` + `ai-image-to-sketch`）→ 改稿 ready=True → 链出 patch → **tx 确认写入 Sanity**
+- 实测：**真实闭环上线 2 篇**（`ai-storefront-designer` + `ai-image-to-sketch`）→ 改稿 ready=True → 链出 patch → **tx 确认写入 CMS**
 - ⚠ 暴露 4 个生产 bug（hero.title 变 UUID / slug.current 被覆盖→404 / console.py 被误写 / 前端预存 500）→ 已全部修复（patch 不改 slug / H1 标题提取 / git 恢复 / 确认为预存问题）
 
 ## Phase 19 · 知识治理 · Anti-Slop · 三模式（2026-09-18 ✅）

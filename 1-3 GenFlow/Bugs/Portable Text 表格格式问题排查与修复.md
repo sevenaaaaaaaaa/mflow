@@ -11,7 +11,7 @@
 | Q1 | Blog 正文表格上传 Sanity 后前端渲染丢格式 | BLOCK | 转换器产出的 cells 形态与 schema 不符（object / tableCell / 缺 `_key`） |
 | Q2 | 表格 block 缺 `_key`（table / tableRow） | BLOCK | 历史脚本未写 `_key` |
 | Q3 | 多脚本内联错误转换函数 | BLOCK | 各写各的 `md_to_pt()`，与 SSOT 背离 |
-| Q4 | 「五层 tableCell」误修 | BLOCK | 通用 Sanity 文档被当成 Lovart 规范；`o11tm2qe` **无** `tableCell` 类型 |
+| Q4 | 「五层 tableCell」误修 | BLOCK | 通用 Sanity 文档被当成 Lovart 规范；`your-project-id` **无** `tableCell` 类型 |
 
 ---
 

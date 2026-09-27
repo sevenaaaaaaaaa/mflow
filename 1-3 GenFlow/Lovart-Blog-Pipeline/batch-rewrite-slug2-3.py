@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.expanduser('~/Documents/Lovart Local Dev/scripts'))
 from md_to_portable_text import md_to_portable_text as md_to_pt
 
 TOKEN = open("/tmp/sanitytoken.txt").read().strip()
-PROJECT = "o11tm2qe"
+PROJECT = "your-project-id"
 DATASET = "production"
 MUTATE_URL = f"https://{PROJECT}.api.sanity.io/v2024-01-01/data/mutate/{DATASET}"
 QUERY_URL = f"https://{PROJECT}.api.sanity.io/v2024-01-01/data/query/{DATASET}"

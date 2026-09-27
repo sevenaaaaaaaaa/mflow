@@ -41,7 +41,7 @@
 
 ## 三、如何与 CMS / 技术栈打通
 
-发布环节做成适配器接口（与 Lovart 的 Sanity 实现解耦）：
+发布环节做成适配器接口（与内置无头 CMS 参考实现解耦）：
 
 ```python
 # 1-4 Dev/scripts/publish_adapters/my_cms.py

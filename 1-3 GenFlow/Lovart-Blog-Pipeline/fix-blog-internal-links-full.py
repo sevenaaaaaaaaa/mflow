@@ -21,7 +21,7 @@ if not _tok:
     print('ERROR: No Sanity auth token', file=sys.stderr)
     sys.exit(1)
 
-PROJECT = 'o11tm2qe'
+PROJECT = 'your-project-id'
 DATASET = 'production'
 API_VERSION = '2024-01-01'
 BASE = f'https://{PROJECT}.api.sanity.io/v{API_VERSION}/data'

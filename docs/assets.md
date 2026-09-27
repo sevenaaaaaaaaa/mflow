@@ -16,17 +16,17 @@
 
 ```bash
 # ① 扫描：生成台账 run/library/{site}/assets.json
-python3 "1-4 Dev/scripts/library/asset_tools.py" scan --site lovart-global [--sections tools,features] [--max 100]
+python3 "1-4 Dev/scripts/library/asset_tools.py" scan --site main [--sections tools,features] [--max 100]
 
 # ② 计划：按规则匹配 + 过滤（不改任何东西）
-python3 "1-4 Dev/scripts/library/asset_tools.py" plan --site lovart-global \
+python3 "1-4 Dev/scripts/library/asset_tools.py" plan --site main \
   --mode exact|prefix|regex --match "<URL 或前缀/正则>" \
   --new-url "https://新的图.png" --new-alt "新 alt" \
   [--section tools --lang zh --page-type feature --slugs a,b,c] \
   [--url-map map.json]        # 逐页映射：{"旧URL": "新URL"}
 
-# ③ 应用：默认 dry-run（Sanity 原生 dryRun，返回 transactionId 不落库）
-python3 "1-4 Dev/scripts/library/asset_tools.py" apply --site lovart-global --plan <plan.json> [--yes] [--max-docs 500]
+# ③ 应用：默认 dry-run（CMS 原生 dryRun，返回 transactionId 不落库）
+python3 "1-4 Dev/scripts/library/asset_tools.py" apply --site main --plan <plan.json> [--yes] [--max-docs 500]
 ```
 
 ## 台账结构（assets.json）
@@ -71,4 +71,4 @@ python3 "1-4 Dev/scripts/library/asset_tools.py" apply --site lovart-global --pl
 
 - 扫描：17,538 页 / 208 素材 URL / 90 秒 / 台账 8.8MB
 - 计划：`exact` 匹配占位图 + 限定 3 个 slug → 命中 3 处 cover
-- dry-run：3 个 patch → `transactionId: dZ9OtxTg3BJgkSl5q0gDfx`，operations=update，**Sanity 侧 URL 保持不变（零副作用）**
+- dry-run：3 个 patch → `transactionId: dZ9OtxTg3BJgkSl5q0gDfx`，operations=update，**CMS 侧 URL 保持不变（零副作用）**
