@@ -7,7 +7,7 @@
 ### 1. 确认文件确实不在磁盘
 
 ```bash
-ls -la ~/Documents/Lovart\ Local\ Dev/自媒体样稿-*.md
+ls -la ~/Documents/品牌方\ Local\ Dev/自媒体样稿-*.md
 ls -la ~/.Trash/*样稿*
 find ~/Library/Mobile\ Documents/com~apple~CloudDocs -name "自媒体样稿*" 2>/dev/null
 ```
@@ -91,4 +91,4 @@ for a in articles:
 
 ## 实战案例
 
-2026-06-15：9 篇自媒体样稿（001-009）从 `~/Documents/Lovart Local Dev/` 消失。通过查询 `state.db` 的 `messages` 表，从 session `20260612_195624_2ad13b` 的 tool_calls 中恢复全部内容。耗时约 2 分钟。
+2026-06-15：9 篇自媒体样稿（001-009）从 `~/Documents/MFlow Local Dev/` 消失。通过查询 `state.db` 的 `messages` 表，从 session `20260612_195624_2ad13b` 的 tool_calls 中恢复全部内容。耗时约 2 分钟。

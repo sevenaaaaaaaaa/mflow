@@ -6,7 +6,7 @@
 # 故这里强制 MFLOW_RUN_DIR 指向临时目录，跑完即删。
 set -euo pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
-PY="${LOVART_PYTHON:-}"
+PY="${MFLOW_PYTHON:-}"
 if [[ -z "$PY" && -x "$ROOT/.venv/bin/python" ]]; then PY="$ROOT/.venv/bin/python"; fi
 PY="${PY:-python3}"
 cd "$ROOT"

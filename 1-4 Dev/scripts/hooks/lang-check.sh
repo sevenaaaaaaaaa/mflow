@@ -18,7 +18,7 @@ while [[ $# -gt 0 ]]; do
 done
 [[ -z "$FILE" || ! -f "$FILE" ]] && { echo "[err] --file required" >&2; exit 2; }
 
-PY3="${LOVART_PYTHON:-}"
+PY3="${MFLOW_PYTHON:-}"
 if [[ -z "$PY3" ]]; then
   ROOT_ABS="$(cd "$(dirname "$0")/../../.." && pwd)"
   if [[ -x "$ROOT_ABS/.venv/bin/python" ]]; then PY3="$ROOT_ABS/.venv/bin/python"; else PY3="$(command -v python3 || echo python3)"; fi

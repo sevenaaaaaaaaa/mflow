@@ -433,7 +433,7 @@ class TestContentEditor(unittest.TestCase):
 
     # ── 路径白名单 ──
     def test_rejects_non_md(self):
-        self.assertIsNone(C.editable_path("run/projects/lovart-global/content/a.json"))
+        self.assertIsNone(C.editable_path("run/projects/main/content/a.json"))
 
     def test_rejects_traversal(self):
         self.assertIsNone(C.editable_path("run/projects/../../etc/passwd.md"))
@@ -446,7 +446,7 @@ class TestContentEditor(unittest.TestCase):
         self.assertIsNone(C.editable_path("docs/warmup.md"))
 
     def test_accepts_project_content(self):
-        p = self._mk("lovart-global/content/demo-edit.md")
+        p = self._mk("main/content/demo-edit.md")
         self.assertEqual(C.editable_path(str(p)), p.resolve())
 
     def test_save_refuses_non_editable(self):
@@ -457,7 +457,7 @@ class TestContentEditor(unittest.TestCase):
 
     # ── 版本轮转 ──
     def test_snapshot_rotation_keeps_n(self):
-        p = self._mk("lovart-global/content/rot.md", "v0\n")
+        p = self._mk("main/content/rot.md", "v0\n")
         for i in range(C.VERSIONS_KEEP + 4):
             p.write_text(f"v{i}\n", encoding="utf-8")
             C.content_snapshot(p, by="t", note=f"n{i}")
@@ -466,7 +466,7 @@ class TestContentEditor(unittest.TestCase):
         self.assertTrue(all(v.get("by") == "t" for v in vs))
 
     def test_restore_roundtrip(self):
-        p = self._mk("lovart-global/content/rt.md", "原始\n")
+        p = self._mk("main/content/rt.md", "原始\n")
         ts = C.content_snapshot(p, by="t")
         p.write_text("改坏了\n", encoding="utf-8")
         r = C.content_restore(str(p), ts, by="t")
@@ -498,11 +498,11 @@ class TestContentEditor(unittest.TestCase):
     # ── 编辑门禁结论 → 发布硬拦 ──
     def test_gate_state_absent_by_default(self):
         """没编辑过的稿子必须没有门禁记录——否则会给存量内容引入回归。"""
-        p = self._mk("lovart-global/content/never-edited.md")
+        p = self._mk("main/content/never-edited.md")
         self.assertEqual(C.content_gate_state(p), {})
 
     def test_gate_state_roundtrip(self):
-        p = self._mk("lovart-global/content/gated.md")
+        p = self._mk("main/content/gated.md")
         C._ver_dir(p).mkdir(parents=True, exist_ok=True)
         C.write_json(C._ver_dir(p) / "last-gate.json",
                      {"ok": False, "rcs": {"lang-check.sh": 1, "quota-check.sh": 0}})

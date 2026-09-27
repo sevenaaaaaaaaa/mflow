@@ -24,7 +24,7 @@ PROJECT_ID = "your-project-id"
 DATASET = "production"
 API_VERSION = "2024-01-01"
 QUERY_URL = f"https://{PROJECT_ID}.api.sanity.io/v{API_VERSION}/data/query/{DATASET}"
-BASE_URL = "https://www.lovart.ai"
+BASE_URL = "https://www.example.com"
 
 
 def load_token() -> str:
@@ -212,7 +212,7 @@ def audit_blog(doc: dict) -> list[Issue]:
     h2_lower = [h.lower() for h in h2s]
     has_real = any("real project" in h for h in h2_lower)
     has_week = any("week-in-the-life" in h or "week in the life" in h for h in h2_lower)
-    has_not = any("when this approach does not" in h or "when lovart is not" in h or "when not" in h for h in h2_lower)
+    has_not = any("when this approach does not" in h or "when 品牌 is not" in h or "when not" in h for h in h2_lower)
     if not has_real:
         issues.append(Issue("WARN", "STRUCT_NO_REAL_PROJECT", "Missing 'Real Project' H2", f"slug={slug}"))
     if not has_week:
@@ -260,25 +260,25 @@ def audit_blog(doc: dict) -> list[Issue]:
 
     # --- CTA ---
     cta_patterns = [
-        r"try\s+lovart\s+free",
+        r"try\s+品牌\s+free",
         r"get\s+started",
         r"sign\s+up",
         r"start\s+free",
-        r"start\s+with\s+lovart",
-        r"lovart\.ai/signup",
-        r"lovart\.ai/pricing",
+        r"start\s+with\s+品牌",
+        r"品牌\.ai/signup",
+        r"品牌\.ai/pricing",
     ]
     has_cta = any(re.search(p, plain, re.IGNORECASE) for p in cta_patterns)
     if not has_cta:
-        issues.append(Issue("WARN", "UX_NO_CTA", "No CTA found (try lovart free / sign up)", f"slug={slug}"))
+        issues.append(Issue("WARN", "UX_NO_CTA", "No CTA found (try 品牌 free / sign up)", f"slug={slug}"))
 
     # --- BRAND ---
-    # Check Lovart spelling
-    bad_brand = re.findall(r"\blovart\b", plain, re.IGNORECASE)
-    correct_brand = re.findall(r"\bLovart\b", plain)
+    # Check 品牌方 spelling
+    bad_brand = re.findall(r"\b品牌\b", plain, re.IGNORECASE)
+    correct_brand = re.findall(r"\b品牌方\b", plain)
     # Also check for common misspellings
-    misspellings = re.findall(r"\b(?:lovart|lovert|lavart|lavort|loveart)\b", plain, re.IGNORECASE)
-    misspellings_correct = [m for m in misspellings if m != "Lovart"]
+    misspellings = re.findall(r"\b(?:品牌|lovert|lavart|lavort|loveart)\b", plain, re.IGNORECASE)
+    misspellings_correct = [m for m in misspellings if m != "品牌方"]
     if misspellings_correct:
         issues.append(Issue("BLOCK", "BRAND_MISSPELL", f"Brand misspelling: {misspellings_correct[:3]}", f"slug={slug}"))
 

@@ -11,13 +11,13 @@ def transform(text, config=None):
     desc = desc_m.group(1) if desc_m else ""
     now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S+08:00")
     if lang != "en":
-        url = f"https://www.lovart.ai/{lang}/blog/{slug}"
+        url = f"https://www.example.com/{lang}/blog/{slug}"
     else:
-        url = f"https://www.lovart.ai/blog/{slug}"
+        url = f"https://www.example.com/blog/{slug}"
     return json.dumps({
         "@context": "https://schema.org", "@type": "Article",
         "headline": title[:110], "description": desc[:160], "url": url,
-        "author": {"@type": "Organization", "name": (config or {}).get("author", "Lovart")},
-        "publisher": {"@type": "Organization", "name": "Lovart"},
+        "author": {"@type": "Organization", "name": (config or {}).get("author", "the brand")},
+        "publisher": {"@type": "Organization", "name": "the brand"},
         "datePublished": now, "dateModified": now, "inLanguage": lang
     }, ensure_ascii=False, indent=2)

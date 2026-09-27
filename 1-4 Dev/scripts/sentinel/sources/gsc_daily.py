@@ -1,5 +1,5 @@
 """
-Lovart Sentinel - GSC Daily Data Source
+品牌方 Sentinel - GSC Daily Data Source
 Reads latest GSC CSV exports from 1-2 Insight/Keywords Research/Daily Raw Data/
 """
 from __future__ import annotations

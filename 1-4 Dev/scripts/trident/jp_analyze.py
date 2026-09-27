@@ -10,7 +10,7 @@ from pathlib import Path
 from collections import defaultdict
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from lovart_brand_match import is_brand
+from brand_match import is_brand
 
 OUT = Path("/tmp/jp_pull")
 gsc = json.loads((OUT / "gsc_jp.json").read_text())
@@ -84,7 +84,7 @@ A["gsc"]["jp_kw"] = jp_kw
 
 # 页面分类
 def classify(url):
-    u = url.split("lovart.ai")[-1].lstrip("/")
+    u = url.split("example.com")[-1].lstrip("/")
     if u == "" or u.startswith("?"): return "homepage"
     seg = u.split("/")[0].split("?")[0]
     if seg in ("ja", "jp", "ja-JP"): return "jp_localized"

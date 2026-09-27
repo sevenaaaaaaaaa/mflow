@@ -8,17 +8,17 @@ status: active
 path: 1-1 Harness/02-rules/RULES-40-ops.md
 generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 ---
-# Lovart RULES — 40 运维类（Ops）
+# 品牌方 RULES — 40 运维类（Ops）
 
 > 适用路线：Sitemap 生成、IndexNow、CRO 专项、页面素材质量
-> 加载 Profile：`lovart-ops`
+> 加载 Profile：`mflow-ops`
 
 ---
 
 
 ## 一、硬条款（违反即 BLOCK）
 
-1. **必须**使用 `LOVART_LOCAL_DEV_ROOT` 作为输出根目录（禁止硬编码绝对路径）
+1. **必须**使用 `MFLOW_LOCAL_DEV_ROOT` 作为输出根目录（禁止硬编码绝对路径）
 2. **禁止**写入 `.venv/` 或 `secrets/` 目录
 3. **必须**所有报告含环比（禁止只出 snapshot）
 4. **必须**每次真实发布记入 approvals.log
@@ -35,11 +35,11 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 
 | 项 | 说明 |
 |---|------|
-| 输出根 | `LOVART_LOCAL_DEV_ROOT` → Output/ |
-| 备份 | `LOVART_LOCAL_DEV_ROOT` → Backup/ |
-| Sanity | `LOVART_LOCAL_DEV_ROOT` → Sanity/production-pulls |
-| WordPress | `LOVART_LOCAL_DEV_ROOT` → WordPress/readonly-pulls |
-| Git | `LOVART_LOCAL_DEV_ROOT` → Git/ |
+| 输出根 | `MFLOW_LOCAL_DEV_ROOT` → Output/ |
+| 备份 | `MFLOW_LOCAL_DEV_ROOT` → Backup/ |
+| Sanity | `MFLOW_LOCAL_DEV_ROOT` → Sanity/production-pulls |
+| WordPress | `MFLOW_LOCAL_DEV_ROOT` → WordPress/readonly-pulls |
+| Git | `MFLOW_LOCAL_DEV_ROOT` → Git/ |
 
 ### 定时任务
 

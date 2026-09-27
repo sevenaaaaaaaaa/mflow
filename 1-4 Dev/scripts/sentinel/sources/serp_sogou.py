@@ -1,12 +1,12 @@
 """
-Lovart Sentinel - Sogou SERP Scanner
+品牌方 Sentinel - Sogou SERP Scanner
 搜狗搜索（中国第二大搜索引擎），内置微信文章搜索
 """
 from ._common import banner
 
 QUERIES = {
-    "brand": "https://www.sogou.com/web?query=lovart+ai",
-    "wechat": "https://weixin.sogou.com/weixin?query=lovart+ai&type=2&ie=utf8",
+    "brand": "https://www.sogou.com/web?query=品牌+ai",
+    "wechat": "https://weixin.sogou.com/weixin?query=品牌+ai&type=2&ie=utf8",
 }
 
 
@@ -15,11 +15,11 @@ def collect() -> dict:
     data["status"] = "delegated"
     data["queries"] = QUERIES
     data["_instructions"] = """
-    1. webfetch 搜狗搜索 "lovart ai"
+    1. webfetch 搜狗搜索 "品牌 ai"
     2. 提取：首条结果域名（关注是否有寄生域名排第一）
     3. 利用搜狗"微信"tab 搜索微信公众号文章
-    4. 提取"相关搜索"和"问过的人"数据（如"lovart ai官网怎么进入"—52人问）
-    5. 关键信号：搜狗搜索lovart时lovart.me可能排第一
+    4. 提取"相关搜索"和"问过的人"数据（如"品牌 ai官网怎么进入"—52人问）
+    5. 关键信号：搜狗搜索品牌时品牌.me可能排第一
     """
     return data
 
@@ -41,7 +41,7 @@ def parse_sogou_serp(html_content: str) -> dict:
         result["first_result_domain"] = first_url.group(1)
 
     # 检测寄生域名
-    for parasite in ["lovart-ai.com", "lovart.pro", "lovart.io", "lovart.info", "lovart.me"]:
+    for parasite in ["mflow-ai.com", "品牌.pro", "品牌.io", "品牌.info", "品牌.me"]:
         if parasite in html_content:
             result["parasites_found"].append(parasite)
 
@@ -50,7 +50,7 @@ def parse_sogou_serp(html_content: str) -> dict:
     result["wechat_articles"] = wechat_titles[:10]
 
     # "问过的人"数据
-    asked = re.findall(r'lovart[^"]*[？?].*?(\d+)人在问', html_content)
+    asked = re.findall(r'品牌[^"]*[？?].*?(\d+)人在问', html_content)
     result["asked_questions"] = asked
 
     return result

@@ -1,14 +1,14 @@
 """
-Lovart Sentinel - Google SERP Scanner (via webfetch delegation)
+品牌方 Sentinel - Google SERP Scanner (via webfetch delegation)
 """
 from ._common import banner
 
 QUERIES = {
-    "brand": "lovart ai",
-    "brand_long": "\"lovart ai\" design agent",
+    "brand": "品牌 ai",
+    "brand_long": "\"品牌 ai\" design agent",
     "competitor_tool": "best ai design tools 2026",
-    "competitor_vs": "lovart vs canva vs midjourney",
-    "review": "lovart ai review",
+    "competitor_vs": "品牌 vs canva vs midjourney",
+    "review": "品牌 ai review",
 }
 
 

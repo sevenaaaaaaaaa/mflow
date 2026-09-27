@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lovart May 2026 SEO 月度复盘 — 全维度采集 + 环比 + 报告生成"""
+"""品牌方 May 2026 SEO 月度复盘 — 全维度采集 + 环比 + 报告生成"""
 from __future__ import annotations
 
 import json, re, datetime, sqlite3
@@ -10,17 +10,17 @@ import sys
 _SCRIPT_DIR = Path(__file__).resolve().parent
 if str(_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_SCRIPT_DIR))
-from lovart_brand_match import is_brand
+from brand_match import is_brand
 
-SKILLS = Path(__file__).resolve().parents[2] / "1-1 Harness/Skills/lovart-trident-data-engine"
+SKILLS = Path(__file__).resolve().parents[2] / "1-1 Harness/Skills/trident-data-engine"
 CRED = SKILLS / "credentials"
-LOVART_DEV = Path(__file__).resolve().parents[2] / "1-4 Dev"
+MFLOW_DEV = Path(__file__).resolve().parents[2] / "1-4 Dev"
 TRIDENT_REPORTS = Path(__file__).resolve().parents[2] / "1-2 Insight/Trident Insights/reports"
-WAREHOUSE_DB = LOVART_DEV / "Output/Warehouse/trident_data.db"
-OUT_DIR = LOVART_DEV / "Output/Data Ingestion"
+WAREHOUSE_DB = MFLOW_DEV / "Output/Warehouse/trident_data.db"
+OUT_DIR = MFLOW_DEV / "Output/Data Ingestion"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-SITE = "https://www.lovart.ai/"
+SITE = "https://www.example.com/"
 SCOPES_GSC = ["https://www.googleapis.com/auth/webmasters.readonly"]
 SCOPES_GA4 = ["https://www.googleapis.com/auth/analytics.readonly"]
 PROPERTY = "properties/403618427"
@@ -257,7 +257,7 @@ def fmt_change_float(a, m, diff, pct, decimals=1):
     return f"{m:.{decimals}f} ({arrow}{diff:+.{decimals}f} / {pct:+.1f}%)"
 
 def generate_report(gsc_apr, gsc_may, ga4_apr, ga4_may, bing_data):
-    report = f"""# Lovart SEO 月度复盘报告 — 2026年5月
+    report = f"""# 品牌方 SEO 月度复盘报告 — 2026年5月
 
 > **周期**: 2026-05 (全月) vs 2026-04 (全月) ｜ **生成**: {datetime.date.today().isoformat()}  
 > **数据源**: Google Search Console + Google Analytics 4 + Bing Webmaster Tools  
@@ -487,7 +487,7 @@ def generate_report(gsc_apr, gsc_may, ga4_apr, ga4_may, bing_data):
 |---|-----|----------|----------|---------|----------|
 """
     for i, p in enumerate(gsc_may.get('pages', [])[:20]):
-        url_short = p['url'].replace('https://www.lovart.ai', '')[:50]
+        url_short = p['url'].replace('https://www.example.com', '')[:50]
         report += f"| {i+1} | {url_short} | {p['clicks']:,} | {p['impressions']:,} | {p['ctr']}% | {p['pos']:.1f} |\n"
 
     # Section 7: Regional breakdown
@@ -615,7 +615,7 @@ def generate_report(gsc_apr, gsc_may, ga4_apr, ga4_may, bing_data):
 
 ---
 
-> *本报告由 Lovart Trident Data Engine 自动生成*  
+> *本报告由 品牌方 Trident Data Engine 自动生成*  
 > *GSC 数据窗口: 4月 (2026-04-01~2026-04-30) vs 5月 (2026-05-01~2026-05-30)*  
 > *GA4 数据窗口: 同上*  
 """
@@ -627,7 +627,7 @@ def generate_report(gsc_apr, gsc_may, ga4_apr, ga4_may, bing_data):
 # ============================================================
 if __name__ == "__main__":
     print("=" * 60)
-    print("  Lovart May 2026 SEO 月度复盘 — 全自动采集+分析")
+    print("  品牌方 May 2026 SEO 月度复盘 — 全自动采集+分析")
     print("=" * 60)
 
     # 1. Fetch GSC
@@ -653,7 +653,7 @@ if __name__ == "__main__":
     # 5. Generate report
     print("\n[4/4] 生成月度报告...")
     report = generate_report(gsc_apr_data, gsc_may_data, ga4_apr_data, ga4_may_data, bing_data)
-    out_path = TRIDENT_REPORTS / "monthly" / "Lovart-SEO-2026-05.md"
+    out_path = TRIDENT_REPORTS / "monthly" / "品牌方-SEO-2026-05.md"
     out_path.write_text(report)
     print(f"\n  📄 {out_path}")
     print(f"  📊 Report: {len(report):,} chars, ~{len(report.splitlines())} lines")

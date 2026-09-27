@@ -1,5 +1,5 @@
 """
-Lovart Sentinel - Brave Search API Scanner
+the brand Sentinel - Brave Search API Scanner
 
 Uses Brave Search API instead of scraping search.brave.com, which quickly
 returns 429 for repeated SERP requests.
@@ -26,21 +26,21 @@ except ImportError:  # Allows direct local execution.
 
 
 QUERIES = {
-    "brand": "lovart ai",
-    "official": "www.lovart.ai",
-    "review": "lovart ai review",
+    "brand": "mflow ai",
+    "official": "www.example.com",
+    "review": "mflow ai review",
     "design_agent": "ai design agent",
     "logo": "ai logo generator",
     "ko_design_agent": "AI 디자인 에이전트",
-    "ja_brand": "Lovart AI デザイン",
+    "ja_brand": "the brand AI デザイン",
 }
 
 PARASITES = [
-    "lovart-ai.com",
-    "lovart.pro",
-    "lovart.io",
-    "lovart.info",
-    "lovart.me",
+    "mflow-ai.com",
+    "mflow.pro",
+    "mflow.io",
+    "mflow.info",
+    "mflow.me",
 ]
 
 
@@ -70,7 +70,7 @@ def _domain(url: str) -> str:
 def _classify_results(items: list[dict]) -> dict:
     top_domains = []
     seen = set()
-    lovart_positions = []
+    mflow_positions = []
     parasite_hits = []
 
     for i, item in enumerate(items, start=1):
@@ -79,15 +79,15 @@ def _classify_results(items: list[dict]) -> dict:
         if domain and domain not in seen:
             seen.add(domain)
             top_domains.append(domain)
-        if "lovart.ai" in domain:
-            lovart_positions.append(i)
+        if "example.com" in domain:
+            mflow_positions.append(i)
         if any(p in domain for p in PARASITES):
             parasite_hits.append({"position": i, "domain": domain, "url": url})
 
     return {
         "top_domains": top_domains[:10],
-        "lovart_positions": lovart_positions,
-        "best_lovart_position": min(lovart_positions) if lovart_positions else None,
+        "mflow_positions": mflow_positions,
+        "best_mflow_position": min(mflow_positions) if mflow_positions else None,
         "parasite_hits": parasite_hits,
     }
 

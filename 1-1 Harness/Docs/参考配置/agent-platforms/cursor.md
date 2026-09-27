@@ -6,7 +6,7 @@
 |------|------|
 | `1-Project/1-1 Harness/AGENTS.md` | 运维规则（Harness） |
 | `1-Project/1-1 GEO Readme/AGENTS.md` | GEO / Sanity 规则 |
-| `1-Project/1-4 Dev/.cursor/rules/lovart-sanity-content-pipeline.mdc` | Sanity 管道红线（alwaysApply） |
+| `1-Project/1-4 Dev/.cursor/rules/mflow-sanity-content-pipeline.mdc` | Sanity 管道红线（alwaysApply） |
 
 ## Automations（定时）
 
@@ -14,11 +14,11 @@
 
 | JSON | 状态 |
 |------|------|
-| `lovart-tools-pull.workflow.json` | **已保存** |
-| `lovart-content-health-weekly.workflow.json` | 待 Save |
-| `lovart-trident-weekly.workflow.json` | 待 Save |
-| `lovart-seo-weekly.workflow.json` | 待 Save |
-| `lovart-sentinel-daily.workflow.json` | 待 Save |
+| `mflow-tools-pull.workflow.json` | **已保存** |
+| `mflow-content-health-weekly.workflow.json` | 待 Save |
+| `mflow-trident-weekly.workflow.json` | 待 Save |
+| `mflow-seo-weekly.workflow.json` | 待 Save |
+| `mflow-sentinel-daily.workflow.json` | 待 Save |
 
 **工作区**：Automations 环境选 vault 根 `LifeOS Pro PARA Vault`，分支 `main`。
 
@@ -30,7 +30,7 @@
 |------|------|
 | Tools pull | 「跑 Tools pull」/ 「pull tools from production」 |
 | 健康检查 | 「weekly health check」/ 「preflight sanity」 |
-| 完整 pipeline | 「运行完整 pipeline」（见 `LOVART-AUTOMATION-WORKFLOW.md`） |
+| 完整 pipeline | 「运行完整 pipeline」（见 `MFLOW-AUTOMATION-WORKFLOW.md`） |
 
 ## 注意
 

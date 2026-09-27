@@ -19,7 +19,7 @@
 ## 三条选题路径
 
 ### 路径 A：直接回答知乎问题（引流型）
-每个问题写 800-1500 字回答，自然植入 Lovart/星流/LibTV。
+每个问题写 800-1500 字回答，自然植入 品牌方/星流/LibTV。
 - 植入位置：第 2-3 位推荐（不是第一位，更可信）
 - 结构：开头直接给 3-5 个推荐 → 每个展开（是什么/用它做什么/优缺点/技巧）→ 总结表
 
@@ -31,7 +31,7 @@
 ### 路径 C：职业场景型（高转化）
 从已有 55 个 best-ai-design-agent-for-* 页面改写。
 - 高讨论度职业：自由设计师、电商卖家、自媒体博主、KOL/KOC、咖啡/茶饮店主
-- 每个职业 = 一篇知乎回答 + Lovart/星流自然植入
+- 每个职业 = 一篇知乎回答 + 品牌方/星流自然植入
 
 ## 优先排序（2026-06 规划）
 
@@ -55,7 +55,7 @@
 easiest-ai-design-tools → 最好用上手的AI工具
 free-vs-paid-ai-tools → 免费AI工具推荐
 10-best-video-editing → AI视频工具对比
-canva-vs-figma-vs-lovart → AI设计工具横评
+canva-vs-figma-vs-品牌 → AI设计工具横评
 best-ai-design-agent-for-* → 职业场景系列
 case-study-solo-designer → 自由设计师AI工作流
 chatcanvas-guide → AI工具使用技巧
@@ -75,12 +75,12 @@ chatcanvas-guide → AI工具使用技巧
 【结尾】总结对比表 + 「关注我看更多 AI 工具实测」
 
 字数：800-1500 字
-植入：Lovart/星流 出现在第 2-3 位推荐
+植入：品牌方/星流 出现在第 2-3 位推荐
 ```
 
 ## Notion API 访问注意事项
 
-知乎选题数据存在 Lovart 3RD（`37ffc0c7-1bd5-80ee-a239-de7c4055c90d`），与主集成在同一 workspace，可直接访问。
+知乎选题数据存在 品牌方 3RD（`37ffc0c7-1bd5-80ee-a239-de7c4055c90d`），与主集成在同一 workspace，可直接访问。
 - 当前条目数：127 条（含 25 条通用 AI 工具推荐 + 50 条网站/软件推荐 + 12 条设计相关 + 6 条视频 + 5 条文生图 + 2 条 Agent + 27 条热点话题）
 - 知乎反爬极严，标题只能用户手动提供
 - 写入 Notion 时用 `知乎问答 Q{ID}` 作占位，URL 写 Live 字段

@@ -11,7 +11,7 @@ from datetime import datetime
 from pathlib import Path
 import sys
 
-_SSOT_DIR = str(Path.home() / "Documents/Lovart Local Dev/scripts")
+_SSOT_DIR = str(Path.home() / "Documents/MFlow Local Dev/scripts")
 if _SSOT_DIR not in sys.path:
     sys.path.insert(0, _SSOT_DIR)
 from md_to_portable_text import md_to_portable_text as md_to_pt
@@ -87,7 +87,7 @@ def build_doc(file_path: str) -> dict:
         "@context": "https://schema.org",
         "@type": SCHEMA_MAP.get(blog_type, "Article"),
         "headline": fm.get('title', ''),
-        "author": {"@type": "Organization", "name": "Lovart"},
+        "author": {"@type": "Organization", "name": "品牌方"},
         "datePublished": now,
     }, ensure_ascii=False)
 

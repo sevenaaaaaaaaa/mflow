@@ -8,10 +8,10 @@ status: active
 path: 1-1 Harness/02-rules/RULES-60-management.md
 generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 ---
-# Lovart RULES — 60 管理类（Management）
+# 品牌方 RULES — 60 管理类（Management）
 
 > 适用路线：项目管理、工程管理、知识管理、Hermes 优化
-> 加载 Profile：`lovart-management`
+> 加载 Profile：`mflow-management`
 
 ---
 

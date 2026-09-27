@@ -33,21 +33,21 @@ updated: 2026-09-18
 ### 2.1 空描述（16 个 = 35%）→ Agent 检索盲区
 
 ```
-lovart-kb-ingest / lovart-kb-mine / lovart-blog-signal-writer
-lovart-insight-trend / lovart-content-quality-gates / lovart-sanity-preflight
-lovart-dream-memory / lovart-dream-orchestrator / lovart-knowledge-graph-query
-lovart-new-tool-governance / pipeline-state / lovart-quality-cascade
-router / lovart-session-log / lovart-session-recap / lovart-universal-prompt
+kb-ingest / kb-mine / blog-signal-writer
+insight-trend / content-quality-gates / sanity-preflight
+dream-memory / dream-orchestrator / knowledge-graph-query
+new-tool-governance / pipeline-state / quality-cascade
+router / session-log / session-recap / universal-prompt
 ```
 **修复**：为全部 16 个补 description（从正文首段提取）
 
 ### 2.2 引用不存在的依赖
 
 ```
-7 个 skill 引用 lovart-core（不存在）
-7 个 skill 引用 lovart-blog（不存在）
+7 个 skill 引用 mflow-core（不存在）
+7 个 skill 引用 mflow-blog（不存在）
 ```
-**修复**：lovart-core 应指向 00-INDEX.md；lovart-blog 应指向 lovart-blog-serp-writer 或 lovart-blog-automation
+**修复**：mflow-core 应指向 00-INDEX.md；mflow-blog 应指向 blog-serp-writer 或 blog-automation
 
 ### 2.3 按线上 8 类页面 × 覆盖检查
 
@@ -67,24 +67,24 @@ router / lovart-session-log / lovart-session-recap / lovart-universal-prompt
 | 过大（需拆分） | 行数 |
 |--------------|-----:|
 | ai-self-media-article | **912L** |
-| lovart-better-design | **702L** |
-| lovart-landing-page | **658L** |
+| better-design | **702L** |
+| landing-page | **658L** |
 
 | 过薄（需充实） | 行数 |
 |--------------|-----:|
-| lovart-review | **46L** |
-| lovart-sanity-preflight | **43L** |
-| lovart-session-recap | **52L** |
-| lovart-best-practice | **53L** |
-| lovart-stack-by-stack | **53L** |
+| review | **46L** |
+| sanity-preflight | **43L** |
+| session-recap | **52L** |
+| best-practice | **53L** |
+| stack-by-stack | **53L** |
 
-### 2.5 引用悬空（lovart-core / lovart-blog 不存在）
+### 2.5 引用悬空（mflow-core / mflow-blog 不存在）
 
 ```
-7 个 skill 引用 lovart-core（不存在）→ 应指向 00-INDEX.md
-7 个 skill 引用 lovart-blog（不存在）→ 应指向 lovart-blog-serp-writer
+7 个 skill 引用 mflow-core（不存在）→ 应指向 00-INDEX.md
+7 个 skill 引用 mflow-blog（不存在）→ 应指向 blog-serp-writer
 ```
-涉及：lovart-101 / best-practice / insight-trend / review / stack-by-stack / thought-leadership / better-design
+涉及：content-101 / best-practice / insight-trend / review / stack-by-stack / thought-leadership / better-design
 
 ---
 
@@ -138,7 +138,7 @@ router / lovart-session-log / lovart-session-recap / lovart-universal-prompt
 | **1** | RULES-20 硬条款化（239 行全散文 → 15+ 硬条款） | 🔴 创作规则是最高频引用 | 2h |
 | **2** | RULES-40/60 硬条款化 | 同上 | 1h |
 | **3** | 16 个 skill 补 description（Agent 检索盲区）| 直接影响 Agent 任务台质量 | 1h |
-| **4** | 修复 7 个 skill 的 lovart-core/lovart-blog 悬空引用 | Agent 加载时会报错 | 0.5h |
+| **4** | 修复 7 个 skill 的 mflow-core/mflow-blog 悬空引用 | Agent 加载时会报错 | 0.5h |
 | **5** | Harness 目录瘦身（01-project→11-knowledge / 07-okr→11-knowledge / 81 篇旧会话归档） | 降低噪音 | 0.5h |
 | **6** | 4 个缺失页面类型的 publish skill（topics/solutions/products/news）| 发布覆盖不全 | 2h |
 | **7** | 3 个过薄 skill 补充（review/preflight/stack-by-stack） | 质量提升 | 1h |

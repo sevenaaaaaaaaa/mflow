@@ -19,7 +19,7 @@ def load(name):
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from lovart_brand_match import is_brand, partition_keywords
+from brand_match import is_brand, partition_keywords
 
 def generate():
     gsc = load("gsc-full.json")
@@ -60,8 +60,8 @@ def generate():
     lines = []
     L = lines.append
 
-    L("# Lovart 全渠道情报摘要")
-    L(f"\n**数据源**: GSC(28d) + GA4(30d) + Bing(全部历史) — lovart.ai\n")
+    L("# 品牌方 全渠道情报摘要")
+    L(f"\n**数据源**: GSC(28d) + GA4(30d) + Bing(全部历史) — example.com\n")
     
     L("## 1. 关键词对比: Google vs Bing\n")
     L(f"| 指标 | Google (GSC) | Bing | 合计 |")

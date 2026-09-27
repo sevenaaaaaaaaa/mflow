@@ -5,7 +5,7 @@
 | **适用角色** | SEO 负责人、数据分析师 |
 | **前置** | GSC/GA4 凭据、Python 依赖 |
 | **脚本 SSOT** | `1-4 Dev/scripts/seo_monthly_v2.py`、`weekly_review_v3.py`、`1-4 Dev/scripts/seo_monthly_extras.py` |
-| **Skill** | `lovart-trident-data-engine` |
+| **Skill** | `trident-data-engine` |
 | **规则 SSOT** | [AGENTS.md Part A](../../AGENTS.md) |
 
 ---
@@ -27,7 +27,7 @@ python3 "1-4 Dev/scripts/weekly_review_v3.py"
 
 ## 产出路径
 
-- 月报：`1-2 Insight/Trident Insights/reports/monthly/Lovart-SEO-YYYY-MM.md`
+- 月报：`1-2 Insight/Trident Insights/reports/monthly/品牌方-SEO-YYYY-MM.md`
 - 周报：`1-2 Insight/Trident Insights/reports/weekly/`
 
 ---

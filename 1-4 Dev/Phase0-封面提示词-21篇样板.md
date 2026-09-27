@@ -6,7 +6,7 @@
 
 ---
 
-## 一、Lovart 101 分类（Lime `#D0FC16`）
+## 一、品牌方 101 分类（Lime `#D0FC16`）
 
 **VI 组合**：Lime | 背景液态玻璃色调 `#E8F5A0` Lime Light | 高光 `#D0FC16` Lightning | 元素黑线白填
 **外框几何**：未封闭圆形 | **核心元素**：线条书本 / 线条灯泡 / 线条手指
@@ -58,7 +58,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Lovart 101 category — Lovart VI "Lime" combination.
+COLOR PALETTE: 品牌方 101 category — 品牌方 VI "Lime" combination.
 - Background: APPLE LIQUID GLASS, #E8F5A0 glass tint, #D0FC16 highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -80,11 +80,11 @@ or elements in the bottom-left text zone.
 
 ---
 
-### 002 — Switching from Canva to Lovart: The 7-Day Migration Guide
+### 002 — Switching from Canva to 品牌方: The 7-Day Migration Guide
 
 **文章信息**：
 - Slug: `01-bofu-canva-migration-guide`
-- Title: Switching from Canva to Lovart: The 7-Day Migration Guide
+- Title: Switching from Canva to 品牌方: The 7-Day Migration Guide
 - Description: 迁移计划、品牌资产、模板、工作流、零停机
 
 **主题关键词映射**：migration, transition, workflow → 线条箭头 + 线条书本
@@ -125,7 +125,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Lovart 101 category — Lovart VI "Lime" combination.
+COLOR PALETTE: 品牌方 101 category — 品牌方 VI "Lime" combination.
 - Background: APPLE LIQUID GLASS, #E8F5A0 glass tint, #D0FC16 highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -147,11 +147,11 @@ or elements in the bottom-left text zone.
 
 ---
 
-### 003 — Canva vs Lovart: Template Design vs AI Design Agent (2026)
+### 003 — Canva vs 品牌方: Template Design vs AI Design Agent (2026)
 
 **文章信息**：
-- Slug: `01-canva-vs-lovart`
-- Title: Canva vs Lovart: Template Design vs AI Design Agent (2026)
+- Slug: `01-canva-vs-品牌`
+- Title: Canva vs 品牌方: Template Design vs AI Design Agent (2026)
 - Description: 对比评测、模板设计 vs AI 设计代理
 
 **主题关键词映射**：comparison, vs, alternative → 线条 VS 符号 + 线条手指
@@ -192,7 +192,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Lovart 101 category — Lovart VI "Lime" combination.
+COLOR PALETTE: 品牌方 101 category — 品牌方 VI "Lime" combination.
 - Background: APPLE LIQUID GLASS, #E8F5A0 glass tint, #D0FC16 highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -267,7 +267,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: How-To category — Lovart VI "Green" combination.
+COLOR PALETTE: How-To category — 品牌方 VI "Green" combination.
 - Background: APPLE LIQUID GLASS, #CFFFE9 glass tint, #48D85E highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -335,7 +335,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: How-To category — Lovart VI "Green" combination.
+COLOR PALETTE: How-To category — 品牌方 VI "Green" combination.
 - Background: APPLE LIQUID GLASS, #CFFFE9 glass tint, #48D85E highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -403,7 +403,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: How-To category — Lovart VI "Green" combination.
+COLOR PALETTE: How-To category — 品牌方 VI "Green" combination.
 - Background: APPLE LIQUID GLASS, #CFFFE9 glass tint, #48D85E highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -477,7 +477,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Best Practice category — Lovart VI "Blue" combination.
+COLOR PALETTE: Best Practice category — 品牌方 VI "Blue" combination.
 - Background: APPLE LIQUID GLASS, #C4DFFF glass tint, #1A7AFF highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -500,12 +500,12 @@ or elements in the bottom-left text zone.
 
 ---
 
-### 008 — DALL-E vs Lovart: OpenAI's Image Generator vs an AI Design Agent
+### 008 — DALL-E vs 品牌方: OpenAI's Image Generator vs an AI Design Agent
 
 **文章信息**：
-- Slug: `03-dalle-vs-lovart`
-- Title: DALL-E vs Lovart: OpenAI's Image Generator vs an AI Design Agent
-- Description: DALL-E vs Lovart 对比、图像生成器 vs 设计代理
+- Slug: `03-dalle-vs-品牌`
+- Title: DALL-E vs 品牌方: OpenAI's Image Generator vs an AI Design Agent
+- Description: DALL-E vs 品牌方 对比、图像生成器 vs 设计代理
 
 **主题关键词映射**：comparison, AI, image → 线条 VS 符号 + 线条画笔
 
@@ -545,7 +545,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Best Practice category — Lovart VI "Blue" combination.
+COLOR PALETTE: Best Practice category — 品牌方 VI "Blue" combination.
 - Background: APPLE LIQUID GLASS, #C4DFFF glass tint, #1A7AFF highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -613,7 +613,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Best Practice category — Lovart VI "Blue" combination.
+COLOR PALETTE: Best Practice category — 品牌方 VI "Blue" combination.
 - Background: APPLE LIQUID GLASS, #C4DFFF glass tint, #1A7AFF highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -647,7 +647,7 @@ or elements in the bottom-left text zone.
 
 **文章信息**：
 - Slug: `ai-branding-design`
-- Title: Complete Guide to AI Branding Design: Professional Brand Identity with Lovart
+- Title: Complete Guide to AI Branding Design: Professional Brand Identity with 品牌方
 - Description: AI 品牌设计、品牌标识、整体思维
 
 **主题关键词映射**：brand, identity, guide → 线条盾牌 + 线条书本
@@ -688,7 +688,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Better Design category — Lovart VI "Orange" combination.
+COLOR PALETTE: Better Design category — 品牌方 VI "Orange" combination.
 - Background: APPLE LIQUID GLASS, #FFD4B8 glass tint, #FF7A1A highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -755,7 +755,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Better Design category — Lovart VI "Orange" combination.
+COLOR PALETTE: Better Design category — 品牌方 VI "Orange" combination.
 - Background: APPLE LIQUID GLASS, #FFD4B8 glass tint, #FF7A1A highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -822,7 +822,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Better Design category — Lovart VI "Orange" combination.
+COLOR PALETTE: Better Design category — 品牌方 VI "Orange" combination.
 - Background: APPLE LIQUID GLASS, #FFD4B8 glass tint, #FF7A1A highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -896,7 +896,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Insight & Trend category — Lovart VI "Purple" combination.
+COLOR PALETTE: Insight & Trend category — 品牌方 VI "Purple" combination.
 - Background: APPLE LIQUID GLASS, #E6D5F5 glass tint, #8B4BF7 highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -964,7 +964,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Insight & Trend category — Lovart VI "Purple" combination.
+COLOR PALETTE: Insight & Trend category — 品牌方 VI "Purple" combination.
 - Background: APPLE LIQUID GLASS, #E6D5F5 glass tint, #8B4BF7 highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -1032,7 +1032,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Insight & Trend category — Lovart VI "Purple" combination.
+COLOR PALETTE: Insight & Trend category — 品牌方 VI "Purple" combination.
 - Background: APPLE LIQUID GLASS, #E6D5F5 glass tint, #8B4BF7 highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -1107,7 +1107,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Topics category — Lovart VI "Yellow" combination.
+COLOR PALETTE: Topics category — 品牌方 VI "Yellow" combination.
 - Background: APPLE LIQUID GLASS, #FEF3C7 glass tint, #FCD34D highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -1173,7 +1173,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Topics category — Lovart VI "Yellow" combination.
+COLOR PALETTE: Topics category — 品牌方 VI "Yellow" combination.
 - Background: APPLE LIQUID GLASS, #FEF3C7 glass tint, #FCD34D highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -1239,7 +1239,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Topics category — Lovart VI "Yellow" combination.
+COLOR PALETTE: Topics category — 品牌方 VI "Yellow" combination.
 - Background: APPLE LIQUID GLASS, #FEF3C7 glass tint, #FCD34D highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -1271,7 +1271,7 @@ or elements in the bottom-left text zone.
 ### 019 — How to Create a Brand Kit for Your Beauty Salon or Spa
 
 **文章信息**：
-- Slug: `brand-kit-beauty-salon-spa-lovart`
+- Slug: `brand-kit-beauty-salon-spa-品牌`
 - Title: How to Create a Brand Kit for Your Beauty Salon or Spa — Elegant Visual Identity
 - Description: 美容品牌、视觉标识、色彩、排版、优雅
 
@@ -1313,7 +1313,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Branding category — Lovart VI "Pink" combination.
+COLOR PALETTE: Branding category — 品牌方 VI "Pink" combination.
 - Background: APPLE LIQUID GLASS, #F9D6E8 glass tint, #FA5CB8 highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -1339,7 +1339,7 @@ or elements in the bottom-left text zone.
 ### 020 — How to Create a Brand Kit for Your E-commerce Store
 
 **文章信息**：
-- Slug: `brand-kit-ecommerce-store-lovart`
+- Slug: `brand-kit-ecommerce-store-品牌`
 - Title: How to Create a Brand Kit for Your E-commerce Store — Consistent Product Branding
 - Description: 电商品牌、视觉标识、色彩系统、产品页模板、一致性
 
@@ -1381,7 +1381,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Branding category — Lovart VI "Pink" combination.
+COLOR PALETTE: Branding category — 品牌方 VI "Pink" combination.
 - Background: APPLE LIQUID GLASS, #F9D6E8 glass tint, #FA5CB8 highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -1406,7 +1406,7 @@ or elements in the bottom-left text zone.
 ### 021 — How to Create a Brand Kit for Your Fitness Studio or Gym
 
 **文章信息**：
-- Slug: `brand-kit-fitness-gym-lovart`
+- Slug: `brand-kit-fitness-gym-品牌`
 - Title: How to Create a Brand Kit for Your Fitness Studio or Gym — Energetic Visual Identity
 - Description: 健身品牌、高能量、激励色彩、课程表模板
 
@@ -1448,7 +1448,7 @@ VISIBILITY REQUIREMENTS (CRITICAL):
 - All elements must be exactly centered on the canvas
 - Black lines + white fills ensure maximum visibility on any glass background
 
-COLOR PALETTE: Branding category — Lovart VI "Pink" combination.
+COLOR PALETTE: Branding category — 品牌方 VI "Pink" combination.
 - Background: APPLE LIQUID GLASS, #F9D6E8 glass tint, #FA5CB8 highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -1474,7 +1474,7 @@ or elements in the bottom-left text zone.
 
 | 分类 | VI 组合 | 主色 | 背景 | 外框 | 核心元素 |
 |------|--------|------|------|------|---------|
-| Lovart 101 | Lime | `#D0FC16` | `#E8F5A0` | 未封闭圆形 | 书本/灯泡/手指 |
+| 品牌方 101 | Lime | `#D0FC16` | `#E8F5A0` | 未封闭圆形 | 书本/灯泡/手指 |
 | How-To | Green | `#48D85E` | `#CFFFE9` | 圆角矩形 | 画笔/齿轮/喇叭 |
 | Best Practice | Blue | `#1A7AFF` | `#C4DFFF` | 未封闭圆形 | 灯泡/齿轮/VS符号 |
 | Better Design | Orange | `#FF7A1A` | `#FFD4B8` | 六边形 | 眼睛/画笔/盾牌 |

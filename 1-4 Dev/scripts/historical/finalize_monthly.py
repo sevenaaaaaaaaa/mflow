@@ -16,7 +16,7 @@ from seo_report_tier import DATA_TIER_FULL
 
 PYTHON = sys.executable
 MONTHLY = _SCRIPTS / "seo_monthly_v2.py"
-INGEST = _SCRIPTS / "lovart_seo_geo_metrics.py"
+INGEST = _SCRIPTS / "seo_geo_metrics.py"
 from path_constants import DATAWORK_DIR, PROJECT
 
 
@@ -40,7 +40,7 @@ def validate_full_for_month(ym: str) -> None:
     sgeo = load_sgeo(ym)
     if not has_valid_dataworks(sgeo, ym, DATAWORK_DIR):
         xlsx = DATAWORK_DIR / f"{ym} SEO GEO.xlsx"
-        raise SystemExit(f"缺 DataWorks: {xlsx} — 放入后运行 lovart_seo_geo_metrics.py --month {ym}")
+        raise SystemExit(f"缺 DataWorks: {xlsx} — 放入后运行 seo_geo_metrics.py --month {ym}")
 
 
 if __name__ == "__main__":

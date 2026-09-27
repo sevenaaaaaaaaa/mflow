@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# Daily Lovart ops: GSC fetch → Sentinel collect/report → Feishu summary.
+# Daily the brand ops: GSC fetch → Sentinel collect/report → Feishu summary.
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 NOTIFY="$SCRIPT_DIR/report-notify/report-notify.sh"
 source "$SCRIPT_DIR/local-dev-env.sh"
-ensure_lovart_local_dev_dirs
+ensure_mflow_local_dev_dirs
 # GSC/GA4 API pulls need google-* libs — use the trident venv (falls back to system python3)
-PYTHON="${LOVART_PYTHON:-python3}"
+PYTHON="${MFLOW_PYTHON:-python3}"
 STAMP="$(date +%Y-%m-%d)"
 FAIL=0
 
@@ -34,7 +34,7 @@ run_step() {
 gsc_script() {
   local p
   for p in \
-    "$PROJECT_ROOT/1-1 Harness/Skills/01-strategy/lovart-trident-data-engine/scripts/gsc_fetch.py" \
+    "$PROJECT_ROOT/1-1 Harness/Skills/01-strategy/trident-data-engine/scripts/gsc_fetch.py" \
     "$PROJECT_ROOT/1-4 Dev/scripts/trident/gsc_fetch.py"; do
     [[ -f "$p" ]] && { echo "$p"; return 0; }
   done
@@ -44,7 +44,7 @@ gsc_script() {
 feishu_script() {
   local p
   for p in \
-    "$PROJECT_ROOT/1-1 Harness/Skills/01-strategy/lovart-trident-data-engine/scripts/push_to_feishu.py" \
+    "$PROJECT_ROOT/1-1 Harness/Skills/01-strategy/trident-data-engine/scripts/push_to_feishu.py" \
     "$PROJECT_ROOT/1-4 Dev/scripts/trident/push_to_feishu.py"; do
     [[ -f "$p" ]] && { echo "$p"; return 0; }
   done
@@ -65,9 +65,9 @@ fi
 # D02/D03 Sentinel
 SENTINEL="$PROJECT_ROOT/1-4 Dev/scripts/sentinel"
 if [[ -f "$SENTINEL/collect.py" && -f "$SENTINEL/report.py" ]]; then
-  run_step "sentinel-collect" "$PYTHON" "$SENTINEL/collect.py" --brand lovart --mode daily --source all \
+  run_step "sentinel-collect" "$PYTHON" "$SENTINEL/collect.py" --brand mflow --mode daily --source all \
     && run_step "sentinel-daily" "$PYTHON" "$SENTINEL/report.py" --mode daily \
-    && notify sentinel-daily ok "Sentinel daily $STAMP" "1-2 Insight/Lovart ORM/daily/" \
+    && notify sentinel-daily ok "Sentinel daily $STAMP" "1-2 Insight/ORM/daily/" \
     || notify sentinel-daily fail "Sentinel daily failed $STAMP" ""
 else
   echo "SKIP sentinel (scripts missing)"
@@ -107,10 +107,10 @@ fi
 
 echo ""
 if [[ "$FAIL" -eq 0 ]]; then
-  notify daily-pipeline ok "Daily pipeline ok $STAMP" "$LOVART_LOCAL_OUTPUT_DIR/automation-reports/"
+  notify daily-pipeline ok "Daily pipeline ok $STAMP" "$MFLOW_LOCAL_OUTPUT_DIR/automation-reports/"
   echo "✅ Daily pipeline complete"
   exit 0
 fi
-notify daily-pipeline fail "Daily pipeline had failures $STAMP" "$LOVART_LOCAL_OUTPUT_DIR/automation-reports/"
+notify daily-pipeline fail "Daily pipeline had failures $STAMP" "$MFLOW_LOCAL_OUTPUT_DIR/automation-reports/"
 echo "❌ Daily pipeline had failures"
 exit 1

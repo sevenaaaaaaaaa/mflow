@@ -10,13 +10,13 @@ PIPELINE_DIR="$(cd "$HERE/../../../../1-1 Harness/Skills/06-orchestrate/pipeline
 # Use vault-internal temp dir so allowed-root checks pass for hooks.
 # tests → hooks → scripts → 1-4 Dev → 项目根（4 级）
 PROJECT_ROOT="$(cd "$HERE/../../../.." && pwd)"
-# P6：无 LOVART_PYTHON 时自动用项目 venv（服务器 py3.6 不认 pipeline_state 的类型标注）
-if [[ -z "${LOVART_PYTHON:-}" && -x "$PROJECT_ROOT/.venv/bin/python" ]]; then
-    export LOVART_PYTHON="$PROJECT_ROOT/.venv/bin/python"
+# P6：无 MFLOW_PYTHON 时自动用项目 venv（服务器 py3.6 不认 pipeline_state 的类型标注）
+if [[ -z "${MFLOW_PYTHON:-}" && -x "$PROJECT_ROOT/.venv/bin/python" ]]; then
+    export MFLOW_PYTHON="$PROJECT_ROOT/.venv/bin/python"
 fi
-PY3="${LOVART_PYTHON:-python3}"
+PY3="${MFLOW_PYTHON:-python3}"
 TMP="$HOOKS_DIR/tests/.tmp-smoke"
-# Quote TMP everywhere to survive the space in "Lovart MFlow"
+# Quote TMP everywhere to survive the space in "品牌方 MFlow"
 rm -rf "$TMP" && mkdir -p "$TMP"
 trap 'rm -rf "$TMP"' EXIT
 

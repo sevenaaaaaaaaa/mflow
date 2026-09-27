@@ -1,4 +1,4 @@
-# Lovart Sentinel 报告结构说明 V3
+# 品牌方 Sentinel 报告结构说明 V3
 
 ## 企业级品牌声誉报告结构（7板块）
 

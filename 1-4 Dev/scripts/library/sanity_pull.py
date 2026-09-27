@@ -10,9 +10,9 @@
   run/library/{site}/sync-status.json                （后台同步进度）
 
 用法：
-  python3 sanity_pull.py --site lovart-global --dry-run
-  python3 sanity_pull.py --site lovart-global --sections blog --max 20      # 试跑
-  python3 sanity_pull.py --site lovart-global --sections blog,features,tools,topic,scenario,solution,product
+  python3 sanity_pull.py --site main --dry-run
+  python3 sanity_pull.py --site main --sections blog --max 20      # 试跑
+  python3 sanity_pull.py --site main --sections blog,features,tools,topic,scenario,solution,product
 """
 import argparse
 import json
@@ -151,7 +151,7 @@ def pull_section(site_id, site, sec, token, max_n=0, dry=False, progress=None):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--site", default="lovart-global")
+    ap.add_argument("--site", default="main")
     ap.add_argument("--sections", default="", help="逗号分隔 section key；空=全部")
     ap.add_argument("--max", type=int, default=0, help="每 section 上限（0=全部）")
     ap.add_argument("--dry-run", action="store_true")

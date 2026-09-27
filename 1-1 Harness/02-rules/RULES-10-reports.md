@@ -8,10 +8,10 @@ status: active
 path: 1-1 Harness/02-rules/RULES-10-reports.md
 generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 ---
-# Lovart RULES — 10 报告类（Reports）
+# 品牌方 RULES — 10 报告类（Reports）
 
 > 适用路线：SEO 报告、舆情报告、竞品报告、SERP 报告、OKR 完成度
-> 加载 Profile：`lovart-reports`
+> 加载 Profile：`mflow-reports`
 
 ---
 
@@ -23,7 +23,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 4. 天数不等时**必须**用日均值
 5. **必须**按月报 V2 的 13 章节固定顺序输出（见 §三），不得缺章或改序
 6. **必须**每章附 💡 洞察（问题/根源/缓解）+ 📊 年均对比
-7. **必须**品牌词用 `lovart_brand_match.py` 的 regex（改词只改一处，**禁止**各处硬编码）
+7. **必须**品牌词用 `brand_match.py` 的 regex（改词只改一处，**禁止**各处硬编码）
 8. **必须**用『有曝光 URL / 语料库 20,000』作为收录主口径（**禁止**用 sitemap 提交量 ÷1000）
 9. Sentinel 舆情**必须** 8 板块齐全；与 SEO 报告分界（**禁止**混入 OKR 看板/关键词分层）
 10. Agent 跑报告前**必须**确认 OKR 版本（默认 2026-05；用户未确认不得沿用旧值）
@@ -58,7 +58,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 
 - 关键词表：点击+曝光+CTR + 三者环比 + 点击占比+曝光占比
 - 地区每区 mini 月报 + Top15 品牌/非品牌词 + Top10 页面
-- 代码 SSOT：`seo_monthly_v2.py` + `lovart_brand_match.py`
+- 代码 SSOT：`seo_monthly_v2.py` + `brand_match.py`
 
 ### 地区分组（固定，不可改）
 

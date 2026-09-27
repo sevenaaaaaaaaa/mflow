@@ -36,4 +36,4 @@
 
 - 铁律：报告必须有环比（RULES-10）；可视化不得绕过"问题/根源/缓解"三段洞察要求。
 - 所有渲染在后端 console 进程内完成，不引入持久化 schema 变更。
-- 数据口径以 Trident 快照为 SSOT（GSC 正式口径 = www.lovart.ai URL 前缀；GA4 需 hostName 过滤 + LA 时区）。
+- 数据口径以 Trident 快照为 SSOT（GSC 正式口径 = www.example.com URL 前缀；GA4 需 hostName 过滤 + LA 时区）。

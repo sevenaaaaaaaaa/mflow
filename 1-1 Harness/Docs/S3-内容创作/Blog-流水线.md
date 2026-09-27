@@ -2,7 +2,7 @@
 type: stage-sop/s3
 version: 1.0
 updated: 2026-07-05
-scope: "profile-lovart-creation"
+scope: "profile-mflow-creation"
 tools: [opencode, claude]
 status: active
 path: 1-1 Harness/Docs/S3-内容创作/Blog-流水线.md
@@ -13,9 +13,9 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 | 项 | 内容 |
 |----|------|
 | **适用角色** | 内容策略、SEO、编辑 |
-| **内容源** | `1-3 Content Gen/Content Calendar/`、`Lovart-Blog-Pipeline/` |
+| **内容源** | `1-3 Content Gen/Content Calendar/`、`blog-pipeline/` |
 | **脚本 SSOT** | `convert.js`、`verify-blog-publish.js`、`patch-blog-*.js` |
-| **Skill** | `lovart-blog-automation`、`lovart-sanity-publish` |
+| **Skill** | `blog-automation`、`sanity-publish` |
 
 ---
 
@@ -26,10 +26,10 @@ Content Calendar MD → preflight blog-md → convert.js → NDJSON preflight �
 ```
 
 ```bash
-cd "1-4 Dev/lovart.sanity.studio"
+cd "1-4 Dev/品牌.sanity.studio"
 node scripts/preflight-content.js --type blog-md
 node scripts/convert.js --lang en --dry-run
-npx sanity dataset import ~/lovart/import-blog-en-batch01.ndjson production --missing
+npx sanity dataset import ~/品牌/import-blog-en-batch01.ndjson production --missing
 npx sanity exec scripts/verify-blog-publish.js --with-user-token
 ```
 
@@ -56,7 +56,7 @@ node scripts/audit-content-quality.js
 ## 写作质量
 
 - [Anti-Slop.md](../04-质量治理/Anti-Slop.md)
-- Skill：`lovart-content-writer.md`
+- Skill：`content-writer.md`
 
 ---
 

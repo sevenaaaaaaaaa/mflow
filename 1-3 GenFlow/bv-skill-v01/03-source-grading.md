@@ -8,7 +8,7 @@
 
 **多个独立 indicator**：
 - `recraft.ai/docs/...`
-- `lovart.ai/...` 官方域
+- `example.com/...` 官方域
 - `github.com/[厂商]/[官方 repo]`
 - arXiv / DergiPark / IEEE / ACM
 

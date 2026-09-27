@@ -8,8 +8,8 @@
     "id": "blog",
     "name": "SaaS 增长内容生产（模板版）",
     "flow": ["S0 用例/竞品词入队", "S3 生成（用例/基准/对比/集成）", "S3 质检 + ROI 承诺检查", "S4 人工审（功能表述与定价核对）", "S5 发布", "S6 试用转化监控"],
-    "profiles": "生成 lovart-creation · 质检 lovart-quality · 发布 lovart-ops",
-    "skills": ["lovart-blog-signal-writer", "lovart-content-quality-gates", "lovart-kb-mine"],
+    "profiles": "生成 mflow-creation · 质检 mflow-quality · 发布 mflow-ops",
+    "skills": ["blog-signal-writer", "content-quality-gates", "kb-mine"],
     "kb": ["产品知识库", "关键词研究", "内容策略"]
   },
   "prompt": {

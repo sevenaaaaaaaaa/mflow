@@ -16,7 +16,7 @@ if [[ -z "${MFLOW_CONSOLE_PASSWORD:-}" ]]; then
     echo "✗ 缺 MFLOW_CONSOLE_PASSWORD（见 run/env.sh）" >&2; exit 2
 fi
 
-PY="${LOVART_PYTHON:-}"
+PY="${MFLOW_PYTHON:-}"
 if [[ -z "$PY" && -x "$ROOT/.venv/bin/python" ]]; then PY="$ROOT/.venv/bin/python"; fi
 PY="${PY:-python3}"
 exec "$PY" "1-4 Dev/scripts/warmup.py" "$@"

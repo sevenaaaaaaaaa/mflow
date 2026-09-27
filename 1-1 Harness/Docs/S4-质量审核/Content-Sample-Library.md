@@ -60,7 +60,7 @@ Rubric 告诉 Agent「怎么判」，Preflight 告诉脚本「拦什么」，但
 ## Why this verdict
 （按 Rubric 维度说明）
 
-## Reuse for Lovart
+## Reuse for 品牌方
 （结构可学什么，文案不可抄什么）
 
 ## Preflight expectation
@@ -74,7 +74,7 @@ Rubric 告诉 Agent「怎么判」，Preflight 告诉脚本「拦什么」，但
 
 ## 4. 样本目录
 
-文件位置：`1-1 Harness/Skills/lovart-content-quality-gates/samples/`
+文件位置：`1-1 Harness/Skills/content-quality-gates/samples/`
 
 索引：`samples/index.json`（机器可读）
 
@@ -102,7 +102,7 @@ Rubric 告诉 Agent「怎么判」，Preflight 告诉脚本「拦什么」，但
 ### 5.2 成稿后校准
 
 ```bash
-cd "1-1 Harness/Skills/lovart-content-quality-gates/scripts"
+cd "1-1 Harness/Skills/content-quality-gates/scripts"
 node anti-slop-preflight.js --file path/to/draft.md --strict
 ```
 
@@ -137,7 +137,7 @@ node anti-slop-preflight.js --file path/to/draft.md --strict
 
 ## 7. 与反馈闭环的关系
 
-SSOT：[Content-Feedback-Loop.md](./Content-Feedback-Loop.md) · 登记：`1-1 Harness/Skills/lovart-content-quality-gates/feedback/register.json`
+SSOT：[Content-Feedback-Loop.md](./Content-Feedback-Loop.md) · 登记：`1-1 Harness/Skills/content-quality-gates/feedback/register.json`
 
 | 信号 | 回流到样本库 |
 |---|---|
@@ -147,7 +147,7 @@ SSOT：[Content-Feedback-Loop.md](./Content-Feedback-Loop.md) · 登记：`1-1 H
 | 舆情/合规 | bad 样本库增加违规片段（`ACT_ADD_BAD_SAMPLE`） |
 
 ```bash
-cd "1-1 Harness/Skills/lovart-content-quality-gates/scripts"
+cd "1-1 Harness/Skills/content-quality-gates/scripts"
 node feedback-loop-cli.js evaluate
 ```
 

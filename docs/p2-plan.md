@@ -162,7 +162,7 @@ def library_list(site, section, lang="", q="", limit=200):
 ## P2-9 补齐 4 类页面的专属 skill（T9）　🟡
 
 **依据**：`/api/governance` 实测 topics / solutions / products / news **无专属生成 skill**，
-全靠 `lovart-landing-page` 泛化。而内容库里这四类合计 **589 篇**（topics 409 + solutions 120 + products 41 + news 17）。
+全靠 `landing-page` 泛化。而内容库里这四类合计 **589 篇**（topics 409 + solutions 120 + products 41 + news 17）。
 
 **做什么**：复用 landing-page 模板 + 各自路由规则与结构约束，补 4 个 SKILL.md（48 → 52）。
 **成本**：低中　**验收**：治理面板 Skills 覆盖缺口归零。

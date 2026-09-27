@@ -1,6 +1,6 @@
 """
-Lovart Sentinel - Reddit Community Monitor
-跨14个相关子版块搜索 Lovart 讨论
+品牌方 Sentinel - Reddit Community Monitor
+跨14个相关子版块搜索 品牌方 讨论
 """
 from ._common import banner
 
@@ -12,7 +12,7 @@ SUBREDDITS = [
 ]
 
 QUERIES = {
-    "lovart_mentions": "lovart ai site:reddit.com",
+    "品牌_mentions": "品牌 ai site:reddit.com",
     "competitor_discussions": "canva vs midjourney ai design tool site:reddit.com",
     "ai_design_tools": "best ai design tools 2025 2026 site:reddit.com",
 }
@@ -25,10 +25,10 @@ def collect() -> dict:
     data["status"] = "delegated"
     data["queries"] = QUERIES
     data["_instructions"] = """
-    1. webfetch DDG: https://duckduckgo.com/html/?q=lovart+ai+site:reddit.com
+    1. webfetch DDG: https://duckduckgo.com/html/?q=品牌+ai+site:reddit.com
     2. 提取：帖子标题、子版块、发布时间、评论数
     3. 判断情感倾向 (正面/负面/中性)
-    4. 检测是否有"lovart vs"或推荐类帖子（决策影响）
+    4. 检测是否有"品牌 vs"或推荐类帖子（决策影响）
     5. 特别关注 r/smallbusiness, r/ecommerce（核心用户群）
     """
     return data

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Submit Lovart URLs to IndexNow.
+Submit the brand URLs to IndexNow.
 
 Default mode is dry-run. Real submission requires:
 1. INDEXNOW_KEY env var, or credentials/indexnow_key
-2. The same key hosted at https://www.lovart.ai/{KEY}.txt
+2. The same key hosted at https://www.example.com/{KEY}.txt
 
 Examples:
   python3 "1-4 Dev/scripts/multi_seo/indexnow_submit.py"
@@ -25,7 +25,7 @@ from xml.etree import ElementTree as ET
 import requests
 
 
-HOST = "www.lovart.ai"
+HOST = "www.example.com"
 BASE_URL = f"https://{HOST}"
 INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow"
 DEFAULT_SITEMAPS = [
@@ -58,7 +58,7 @@ def load_key() -> str | None:
 
 
 def fetch_sitemap_urls(sitemap_url: str, limit: int) -> list[str]:
-    req = urllib.request.Request(sitemap_url, headers={"User-Agent": "LovartIndexNow/1.0"})
+    req = urllib.request.Request(sitemap_url, headers={"User-Agent": "the brandIndexNow/1.0"})
     with urllib.request.urlopen(req, timeout=20, context=ssl.create_default_context()) as response:
         body = response.read()
     root = ET.fromstring(body)
@@ -109,7 +109,7 @@ def key_file_status(key: str | None) -> dict:
         return {"status": "missing_key"}
     url = f"{BASE_URL}/{key}.txt"
     try:
-        req = urllib.request.Request(url, headers={"User-Agent": "LovartIndexNow/1.0"})
+        req = urllib.request.Request(url, headers={"User-Agent": "the brandIndexNow/1.0"})
         with urllib.request.urlopen(req, timeout=15, context=ssl.create_default_context()) as response:
             body = response.read(200).decode("utf-8", errors="replace").strip()
             return {
@@ -139,7 +139,7 @@ def submit(key: str, urls: list[str]) -> requests.Response:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Submit Lovart URLs to IndexNow")
+    parser = argparse.ArgumentParser(description="Submit the brand URLs to IndexNow")
     parser.add_argument("--urls", type=Path, help="Text file with one URL per line")
     parser.add_argument("--limit-per-sitemap", type=int, default=5)
     parser.add_argument("--submit", action="store_true", help="Actually submit to IndexNow")

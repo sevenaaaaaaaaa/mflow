@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-router — state-aware profile router for Lovart content factory.
+router — state-aware profile router for the brand content factory.
 
 Problem:
     6+ Profile × 13+ cross-profile scenarios × N skills per profile = context
@@ -44,54 +44,54 @@ PIPELINE_STATE_PY = HERE.parent / "pipeline-state" / "pipeline_state.py"
 # ---------------------------------------------------------------------------
 
 PROFILES = {
-    "lovart-reports": {
+    "mflow-reports": {
         "model": "deepseek-chat",
         "work_line": "S1-data + S6-monitor",
         "owns_stages": ["S0-todo"],
-        "key_skills": ["lovart-trident-data-engine", "lovart-sentinel",
-                       "lovart-data-ingestion", "lovart-seo-reporting"],
+        "key_skills": ["trident-data-engine", "mflow-sentinel",
+                       "data-ingestion", "mflow-seo-reporting"],
         "token_budget_hint": 4500,
     },
-    "lovart-creation": {
+    "mflow-creation": {
         "model": "deepseek-v4-pro",
         "work_line": "S3-content-production",
         "owns_stages": ["S3-creating", "S3-draft", "S3-done"],
-        "key_skills": ["lovart-blog-signal-writer", "lovart-page-serp-writer",
-                       "lovart-landing-page", "lovart-image-generation",
-                       "lovart-i18n-pipeline"],
+        "key_skills": ["blog-signal-writer", "page-serp-writer",
+                       "landing-page", "image-generation",
+                       "mflow-i18n-pipeline"],
         "token_budget_hint": 4500,
     },
-    "lovart-quality": {
+    "mflow-quality": {
         "model": "deepseek-chat",
         "work_line": "S4-review",
         "owns_stages": ["S4-qa", "S4-fix", "S4-ready"],
-        "key_skills": ["lovart-content-quality-gates", "lovart-anti-slop",
-                       "lovart-content-audit", "post-write-check"],
+        "key_skills": ["content-quality-gates", "mflow-anti-slop",
+                       "content-audit", "post-write-check"],
         "token_budget_hint": 3500,
     },
-    "lovart-ops": {
+    "mflow-ops": {
         "model": "deepseek-chat",
         "work_line": "S5-publish",
         "owns_stages": ["S5-importing", "S5-published", "S6-monitoring"],
-        "key_skills": ["lovart-sanity-publish", "lovart-sitemap-update",
+        "key_skills": ["sanity-publish", "sitemap-update",
                        "pre-import-check"],
         "token_budget_hint": 3500,
     },
-    "lovart-distribution": {
+    "mflow-distribution": {
         "model": "deepseek-chat",
         "work_line": "S5b-distribute",
         "owns_stages": [],  # distribution doesn't own a stage; operates on
                             # already-published items.
-        "key_skills": ["lovart-multi-platform-push",
-                       "lovart-content-distribution"],
+        "key_skills": ["multi-platform-push",
+                       "content-distribution"],
         "token_budget_hint": 3500,
     },
-    "lovart-management": {
+    "mflow-management": {
         "model": "deepseek-chat",
         "work_line": "M0-meta",
         "owns_stages": [],
         "key_skills": ["pipeline-state", "router",
-                       "lovart-project-architecture", "lovart-knowledge-graph-query"],
+                       "mflow-project-architecture", "knowledge-graph-query"],
         "token_budget_hint": 4000,
     },
 }
@@ -109,15 +109,15 @@ DECISIONS: list[dict[str, Any]] = [
     {
         "stage": "S0-todo", "scenario": "default",
         "action": "upsert",
-        "profile": "lovart-creation",
-        "skills": ["pipeline-state", "lovart-blog-signal-writer"],
+        "profile": "mflow-creation",
+        "skills": ["pipeline-state", "blog-signal-writer"],
         "reason": "S0-todo → first creation step",
     },
     {
         "stage": "S0-todo", "scenario": "from_sentinel",
         "action": "upsert",
-        "profile": "lovart-creation",
-        "skills": ["pipeline-state", "lovart-blog-signal-writer"],
+        "profile": "mflow-creation",
+        "skills": ["pipeline-state", "blog-signal-writer"],
         "reason": "Sentinel-triggered creation",
     },
 
@@ -125,49 +125,49 @@ DECISIONS: list[dict[str, Any]] = [
     {
         "stage": "S3-creating", "scenario": "default",
         "action": "execute_skill",
-        "profile": "lovart-creation",
-        "skills": ["lovart-blog-signal-writer"],
+        "profile": "mflow-creation",
+        "skills": ["blog-signal-writer"],
         "reason": "Writing in progress",
     },
     {
         "stage": "S3-draft", "scenario": "default",
         "action": "run_hook_and_advance",
-        "profile": "lovart-creation",
+        "profile": "mflow-creation",
         "skills": ["post-write-check"],
         "reason": "Draft exists → run post-write-check before advancing to S3-done",
     },
     {
         "stage": "S3-draft", "scenario": "l1_fluff",
         "action": "reroute",
-        "profile": "lovart-quality",
-        "skills": ["lovart-anti-slop"],
+        "profile": "mflow-quality",
+        "skills": ["mflow-anti-slop"],
         "reason": "L1 fluff → quality profile specializes in slop detection",
     },
     {
         "stage": "S3-draft", "scenario": "word_count_low",
         "action": "execute_skill",
-        "profile": "lovart-creation",
-        "skills": ["lovart-blog-signal-writer"],
+        "profile": "mflow-creation",
+        "skills": ["blog-signal-writer"],
         "reason": "Word count short → keep creation profile, extend draft",
     },
     {
         "stage": "S3-draft", "scenario": "missing_dates",
         "action": "patch_artifact",
-        "profile": "lovart-creation",
+        "profile": "mflow-creation",
         "skills": ["pre-write-check"],
         "reason": "Missing frontmatter dates → fix in same profile",
     },
     {
         "stage": "S3-draft", "scenario": "i18n_translation_needed",
         "action": "execute_skill",
-        "profile": "lovart-creation",
-        "skills": ["lovart-i18n-pipeline"],
+        "profile": "mflow-creation",
+        "skills": ["mflow-i18n-pipeline"],
         "reason": "Translation → stay in creation profile (i18n is a sub-mode)",
     },
     {
         "stage": "S3-done", "scenario": "default",
         "action": "advance_only",
-        "profile": "lovart-creation",
+        "profile": "mflow-creation",
         "skills": ["pipeline-state"],
         "reason": "S3 done → advance to S4-qa and close session",
     },
@@ -176,28 +176,28 @@ DECISIONS: list[dict[str, Any]] = [
     {
         "stage": "S4-qa", "scenario": "default",
         "action": "execute_skill",
-        "profile": "lovart-quality",
-        "skills": ["lovart-content-quality-gates"],
+        "profile": "mflow-quality",
+        "skills": ["content-quality-gates"],
         "reason": "QA in progress",
     },
     {
         "stage": "S4-fix", "scenario": "default",
         "action": "reroute",
-        "profile": "lovart-creation",
-        "skills": ["lovart-blog-signal-writer"],
+        "profile": "mflow-creation",
+        "skills": ["blog-signal-writer"],
         "reason": "Fix → back to creation profile to edit artifact",
     },
     {
         "stage": "S4-fix", "scenario": "i18n_audit_fail",
         "action": "reroute",
-        "profile": "lovart-creation",
-        "skills": ["lovart-i18n-pipeline"],
+        "profile": "mflow-creation",
+        "skills": ["mflow-i18n-pipeline"],
         "reason": "i18n audit fail → creation profile (i18n sub-mode)",
     },
     {
         "stage": "S4-ready", "scenario": "default",
         "action": "advance_only",
-        "profile": "lovart-quality",
+        "profile": "mflow-quality",
         "skills": ["pipeline-state"],
         "reason": "QA done → close session; ops profile will pick up next",
     },
@@ -206,50 +206,50 @@ DECISIONS: list[dict[str, Any]] = [
     {
         "stage": "S5-importing", "scenario": "default",
         "action": "execute_skill",
-        "profile": "lovart-ops",
-        "skills": ["lovart-sanity-publish", "pre-import-check"],
+        "profile": "mflow-ops",
+        "skills": ["sanity-publish", "pre-import-check"],
         "reason": "Importing to Sanity",
     },
     {
         "stage": "S5-importing", "scenario": "preflight_fail",
         "action": "reroute",
-        "profile": "lovart-quality",
-        "skills": ["lovart-content-quality-gates"],
+        "profile": "mflow-quality",
+        "skills": ["content-quality-gates"],
         "reason": "pre-import-check BLOCK → quality profile to fix BLOCKs",
     },
     {
         "stage": "S5-importing", "scenario": "sanity_id_exists",
         "action": "execute_skill",
-        "profile": "lovart-ops",
-        "skills": ["lovart-sanity-publish"],
+        "profile": "mflow-ops",
+        "skills": ["sanity-publish"],
         "reason": "Sanity ID exists → use patch (not --replace)",
     },
     {
         "stage": "S5-published", "scenario": "default",
         "action": "execute_skill",
-        "profile": "lovart-ops",
-        "skills": ["lovart-sitemap-update", "lovart-post-publish-verify"],
+        "profile": "mflow-ops",
+        "skills": ["sitemap-update", "mflow-post-publish-verify"],
         "reason": "Notify engines + verify",
     },
     {
         "stage": "S5-published", "scenario": "needs_distribution",
         "action": "reroute",
-        "profile": "lovart-distribution",
-        "skills": ["lovart-multi-platform-push"],
+        "profile": "mflow-distribution",
+        "skills": ["multi-platform-push"],
         "reason": "Distribution needed for newly published item",
     },
     {
         "stage": "S6-monitoring", "scenario": "default",
         "action": "execute_skill",
-        "profile": "lovart-reports",
-        "skills": ["lovart-seo-reporting"],
+        "profile": "mflow-reports",
+        "skills": ["mflow-seo-reporting"],
         "reason": "Monitoring data lives in reports profile",
     },
     {
         "stage": "S6-monitoring", "scenario": "ranking_drop",
         "action": "execute_skill",
-        "profile": "lovart-creation",
-        "skills": ["lovart-existing-page-rewriting"],
+        "profile": "mflow-creation",
+        "skills": ["mflow-existing-page-rewriting"],
         "reason": "Ranking drop → rewrite existing page (creation sub-mode)",
     },
 
@@ -271,8 +271,8 @@ DECISIONS: list[dict[str, Any]] = [
     {
         "stage": "ANY", "scenario": "calendar_oversubscribed",
         "action": "reroute",
-        "profile": "lovart-management",
-        "skills": ["lovart-content-calendar"],
+        "profile": "mflow-management",
+        "skills": ["content-calendar"],
         "reason": "Calendar conflict → management escalates",
     },
 ]
@@ -485,7 +485,7 @@ def cmd_list_profiles(args) -> int:
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="router.py",
-        description="Lovart state-aware profile router",
+        description="the brand state-aware profile router",
     )
     p.add_argument("--state-path", default="1-3 GenFlow/.pipeline/pipeline-state.json")
     sub = p.add_subparsers(dest="cmd", required=True)

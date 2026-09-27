@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Lovart 中文 Product Page → Sanity 导入脚本
+品牌方 中文 Product Page → Sanity 导入脚本
 读取 NDJSON → createIfNotExists → Sanity production
 用法:
   python3 import_zh_products_to_sanity.py --ndjson zh-products-batch2.ndjson [--dry-run]

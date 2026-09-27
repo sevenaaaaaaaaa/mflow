@@ -13,7 +13,7 @@ if str(_SCRIPT_DIR) not in sys.path:
 _TRIDENT_SCRIPT_DIR = _SCRIPT_DIR / "trident"
 if str(_TRIDENT_SCRIPT_DIR) not in sys.path:
     sys.path.insert(0, str(_TRIDENT_SCRIPT_DIR))
-from lovart_brand_match import is_brand
+from brand_match import is_brand
 from credential_paths import credential_file
 
 TRIDENT = Path(__file__).resolve().parents[2] / "1-2 Insight/Trident Insights"
@@ -30,7 +30,7 @@ def extract_competitor_keywords():
     keywords_by_category = defaultdict(set)
     current_category = "Unknown"
     
-    for md_file in [kw_dir / "lovart_competitors_core_keywords.md", kw_dir / "lovart_competitors_keywords.md"]:
+    for md_file in [kw_dir / "品牌_competitors_core_keywords.md", kw_dir / "品牌_competitors_keywords.md"]:
         text = md_file.read_text(encoding="utf-8")
         
         for line in text.split("\n"):
@@ -67,7 +67,7 @@ def extract_competitor_keywords():
     
     # Also extract from priority matrices and code blocks
     all_text = ""
-    for md_file in [kw_dir / "lovart_competitors_core_keywords.md", kw_dir / "lovart_competitors_keywords.md"]:
+    for md_file in [kw_dir / "品牌_competitors_core_keywords.md", kw_dir / "品牌_competitors_keywords.md"]:
         all_text += md_file.read_text(encoding="utf-8") + "\n"
     
     # Extract from markdown code blocks
@@ -119,11 +119,11 @@ def fetch_gsc_5k(start_date, end_date, label):
     from google.oauth2.credentials import Credentials
     from googleapiclient.discovery import build
     
-    token = json.loads(credential_file("gsc-token.json", "LOVART_GSC_TOKEN_FILE").read_text())
+    token = json.loads(credential_file("gsc-token.json", "MFLOW_GSC_TOKEN_FILE").read_text())
     creds = Credentials.from_authorized_user_info(token, ["https://www.googleapis.com/auth/webmasters.readonly"])
     svc = build("searchconsole", "v1", credentials=creds)
     search = svc.searchanalytics()
-    SITE = "https://www.lovart.ai/"
+    SITE = "https://www.example.com/"
     
     body = {
         "startDate": start_date, "endDate": end_date,
@@ -236,7 +236,7 @@ def match_competitor(gsc_keywords, competitor_keywords, core_keywords, label):
 # ============================================================
 def update_report(comp_data):
     """读取现有月报，替换第4节（竞品非品牌词）"""
-    report_path = TRIDENT / "reports" / "monthly" / "Lovart-SEO-2026-05.md"
+    report_path = TRIDENT / "reports" / "monthly" / "品牌方-SEO-2026-05.md"
     report = report_path.read_text()
     
     # Find section 4 boundaries
@@ -324,7 +324,7 @@ def update_report(comp_data):
         new_sec4 += f"- {kw}\n"
 
     new_sec4 += """
-> **关键洞察**: 竞品词覆盖从早期的"0/252 假词库"升级为真实数据分析。Full 匹配代表宽口径（所有竞品词的变体/组合表现），Core 匹配代表严口径（核心高价值词的实际排名）。两者差异越大，说明 Lovart 的 SEO 长尾主要来自模型名称/品牌变体蹭流量，而非真正行业词。
+> **关键洞察**: 竞品词覆盖从早期的"0/252 假词库"升级为真实数据分析。Full 匹配代表宽口径（所有竞品词的变体/组合表现），Core 匹配代表严口径（核心高价值词的实际排名）。两者差异越大，说明 品牌方 的 SEO 长尾主要来自模型名称/品牌变体蹭流量，而非真正行业词。
 """
     
     updated_report = before + new_sec4 + "\n" + after

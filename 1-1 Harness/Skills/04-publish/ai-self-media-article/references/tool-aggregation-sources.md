@@ -37,5 +37,5 @@
 
 所有工具笔记统一使用 `_template.md` 格式：
 - YAML frontmatter：title, slug, date, tags, categories, summary, focus_keyword, source, author, status
-- 结构化章节：这是什么 → 适合谁 → 安装 → 核心用法 → 注意事项 → 与 Lovart/LibTV 的关系 → 相关链接
+- 结构化章节：这是什么 → 适合谁 → 安装 → 核心用法 → 注意事项 → 与 品牌方/LibTV 的关系 → 相关链接
 - 新工具 `status: draft`，待后续深测时填充

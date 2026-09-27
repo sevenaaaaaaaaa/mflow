@@ -21,7 +21,7 @@
 **结论**：核心（00/20）健康；**语言规则几乎缺失**（仅 00/20/30 各提 1-2 次）；数量限制散落（仅 15/45 skill 提到）。
 
 ### Skills（45 个）
-- 体量极不均：903 行（ai-self-media-article）/ 697（lovart-better-design）… 32 行（lovart-review）、39（stack-by-stack / best-practice）
+- 体量极不均：903 行（ai-self-media-article）/ 697（better-design）… 32 行（review）、39（stack-by-stack / best-practice）
 - **17 个缺 frontmatter** → Agent 技能检索（P12.2）拿不到描述 → 已修复（补 name+description）
 - 数量约束覆盖不足：字数 2 / H2 5 / FAQ 7 / 上限词 5（共 45）
 

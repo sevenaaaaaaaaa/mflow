@@ -1,10 +1,10 @@
-# Lovart Blog Subskill Governance
+# the brand Blog Subskill Governance
 
-Shared governance reference for Lovart blog subskills across Cursor / Hermes / Claude / Codex-facing skill trees.
+Shared governance reference for the brand blog subskills across Cursor / Hermes / Claude / Codex-facing skill trees.
 
 Every blog subskill must inherit:
 
-- `lovart-core`
+- `mflow-core`
 - blog production rules
 - quality-gate rules
 
@@ -31,11 +31,11 @@ And must not bypass:
 
 ## Applies to
 
-- `lovart-101`
-- `lovart-complete-guide`
-- `lovart-insight-trend`
-- `lovart-thought-leadership`
-- `lovart-better-design`
-- `lovart-best-practice`
-- `lovart-stack-by-stack`
-- `lovart-review`
+- `content-101`
+- `complete-guide`
+- `insight-trend`
+- `thought-leadership`
+- `better-design`
+- `best-practice`
+- `stack-by-stack`
+- `review`

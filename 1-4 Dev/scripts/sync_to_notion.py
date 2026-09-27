@@ -43,11 +43,10 @@ if not NOTION_API_KEY:
 NOTION_VERSION = "2022-06-28"
 NOTION_BASE = "https://api.notion.com/v1"
 
-VAULT = Path(os.environ.get("LOVART_RESOURCE_ROOT",
-              Path(__file__).resolve().parents[4]))
-MFLOW = VAULT / "1-Project" / "Lovart MFlow"
+VAULT = Path(os.environ.get("MFLOW_RESOURCE_ROOT", Path(__file__).resolve().parents[4]))
+MFLOW = VAULT / "1-Project" / "品牌方 MFlow"
 
-# Database ID mapping (from lovart-notion-config.md)
+# Database ID mapping (from mflow-notion-config.md)
 DATABASES = {
     "content-calendar": {
         "id": "37afc0c7-1bd5-8124-a031-ca4eca128da2",
@@ -71,7 +70,7 @@ DATABASES = {
     },
     "sentinel-orm": {
         "id": None,  # TBD
-        "source_dir": MFLOW / "1-2 Insight" / "Lovart ORM",
+        "source_dir": MFLOW / "1-2 Insight" / "ORM",
         "file_pattern": "*.md",
         "name_field": "title",
         "path_field": "File Path",

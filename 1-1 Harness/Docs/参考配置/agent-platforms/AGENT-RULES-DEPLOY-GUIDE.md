@@ -11,8 +11,8 @@
 
 | 文件 | 目标位置 | 状态 |
 |------|---------|------|
-| `lovart-seo-report-iron-rules.mdc` | `1-4 Dev/.cursor/rules/` | ✅ 已部署 |
-| `lovart-content-anti-slop.mdc` | `1-4 Dev/.cursor/rules/` | ✅ 已部署 |
+| `mflow-seo-report-iron-rules.mdc` | `1-4 Dev/.cursor/rules/` | ✅ 已部署 |
+| `mflow-content-anti-slop.mdc` | `1-4 Dev/.cursor/rules/` | ✅ 已部署 |
 
 ### ⚠️ 需手动部署（沙箱限制，请复制）
 
@@ -49,7 +49,7 @@ cat ~/.config/opencode/opencode.jsonc
 
 **变更内容**：
 - 新增 `instructions` 字段，指向 AGENTS.md 和 WORKFLOWS.md（每会话自动加载）
-- `skills.paths` 新增 Lovart Harness Skills 目录
+- `skills.paths` 新增 品牌方 Harness Skills 目录
 
 ### 2. Claude Code
 
@@ -77,7 +77,7 @@ cp deploy/trae-project-rules.md "/Users/seveno/Knowledge/Obsidian/MindRe/1-Proje
 在 DeepSeek GUI 的"系统提示"输入框中粘贴以下精简版铁律（50 行以内）：
 
 ```
-你是 Lovart SEO 内容营销项目的 AI 助手。必须遵守以下铁律：
+你是 品牌方 SEO 内容营销项目的 AI 助手。必须遵守以下铁律：
 
 【Sanity 管道】
 - 禁止 sanity deploy

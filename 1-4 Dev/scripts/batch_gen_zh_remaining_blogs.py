@@ -5,8 +5,8 @@ from pathlib import Path
 
 import os
 
-OUT_DIR = str(Path(__file__).resolve().parents[2] / "1-3 GenFlow/Lovart-Blog-Pipeline/01-Drafts")
-COVER = "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png"
+OUT_DIR = str(Path(__file__).resolve().parents[2] / "1-3 GenFlow/blog-pipeline/01-Drafts")
+COVER = "https://assets-persist.example.com/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png"
 
 def blog(**kw):
     return kw
@@ -23,7 +23,7 @@ BLOGS.append(blog(
     alt_text="双11大促设计攻略",
     keywords=["双11设计","大促素材","双11攻略"],
     category="How-To",
-    seo_title="2026双11设计全攻略 卖家时间节点素材清单 Lovart",
+    seo_title="2026双11设计全攻略 卖家时间节点素材清单 品牌方",
     seo_description="2026双11大促设计从筹备到爆发的全流程素材规划和时间节点安排。",
     target_lp_slug="zh-campaign-double-11",
     content_cluster="Zh-Batch5-Scenario",
@@ -37,11 +37,11 @@ BLOGS.append(blog(
 
 先把所有参加双11的产品清单拉出来，每个产品需要哪些素材列清楚：主图×5张、详情页×1、促销标签×3、直通车图×2。80个SKU加起来接近1000张图。
 
-这个量靠人工不可能。我在Lovart里把产品按类目分好组，给每组做了统一的模板。家居类一种模板风格，数码类另一种。
+这个量靠人工不可能。我在品牌方里把产品按类目分好组，给每组做了统一的模板。家居类一种模板风格，数码类另一种。
 
 ## 第二阶段（10月下旬）：批量出图
 
-模板就位后开始批量出图。1000张图分批生成，每天跑一批，五天全部出完。出图的同时我在Lovart里过了第一遍质检——主要是检查Logo位置、促销文案是否正确、色调是否统一。
+模板就位后开始批量出图。1000张图分批生成，每天跑一批，五天全部出完。出图的同时我在品牌方里过了第一遍质检——主要是检查Logo位置、促销文案是否正确、色调是否统一。
 
 翻车经历：第一批跑的时候，有些深色产品的促销标签颜色跟背景混在一起看不清。后来统一加了标签描边，这个问题就解决了。
 
@@ -53,9 +53,9 @@ BLOGS.append(blog(
 
 ## 第四阶段（11月10日前）：最终检查
 
-最后三天不产生新图，只做检查。用Lovart的质检功能统一跑了一遍——图片分辨率、文字正确性、品牌色值。确保所有素材在上线前零差错。
+最后三天不产生新图，只做检查。用品牌方的质检功能统一跑了一遍——图片分辨率、文字正确性、品牌色值。确保所有素材在上线前零差错。
 
-## Lovart + 双11组合拳
+## 品牌方 + 双11组合拳
 
 模板搭建→批量生成→质检微调→上线投放。四个环节串起来，1000张图从零到完成用了两周，比往年节省了60%的时间。
 
@@ -72,7 +72,7 @@ BLOGS.append(blog(
     alt_text="618大促设计复盘",
     keywords=["618设计","大促复盘","转化率"],
     category="Best Practice",
-    seo_title="618大促设计复盘 转化率最高风格 Lovart",
+    seo_title="618大促设计复盘 转化率最高风格 品牌方",
     seo_description="618大促设计复盘总结，分析不同视觉风格的转化率表现。",
     target_lp_slug="zh-campaign-618",
     content_cluster="Zh-Batch5-Scenario",
@@ -111,7 +111,7 @@ BLOGS.append(blog(
     alt_text="春节品牌营销设计",
     keywords=["春节设计","品牌营销","节日视觉"],
     category="Best Practice",
-    seo_title="春节品牌营销设计 氛围感差异化 Lovart",
+    seo_title="春节品牌营销设计 氛围感差异化 品牌方",
     seo_description="春节品牌营销设计如何做出差异化，从色彩到文化元素的实战心得。",
     target_lp_slug="zh-campaign-spring-festival",
     content_cluster="Zh-Batch5-Scenario",
@@ -131,7 +131,7 @@ BLOGS.append(blog(
 
 很多品牌的春节营销就是简单把Logo周围加一圈红色边框。真正有效的春节设计是从产品图到品牌视觉体系做统一调整。
 
-我用Lovart的Brand Kit功能把所有素材的春节版本统一管理——主色调从日常的蓝色切换到春节的暗红配色，字体增加了手写风格，产品场景图加入了春节元素但不喧宾夺主。
+我用品牌方的Brand Kit功能把所有素材的春节版本统一管理——主色调从日常的蓝色切换到春节的暗红配色，字体增加了手写风格，产品场景图加入了春节元素但不喧宾夺主。
 
 ## 翻车经验
 
@@ -152,7 +152,7 @@ BLOGS.append(blog(
     alt_text="新品上市设计素材",
     keywords=["新品上市","预热设计","种草素材"],
     category="How-To",
-    seo_title="新品上市24小时 预热到爆发全套设计 Lovart",
+    seo_title="新品上市24小时 预热到爆发全套设计 品牌方",
     seo_description="新品上市24小时内从预热海报到种草图文到开箱封面的全套设计素材清单。",
     target_lp_slug="zh-campaign-product-launch",
     content_cluster="Zh-Batch5-Scenario",
@@ -164,17 +164,17 @@ BLOGS.append(blog(
 
 预热期的目的是"制造悬念"。我们做的是三张悬念海报——第一天只露出产品轮廓和一句文案，第二天增加一个核心卖点的暗示，第三天公布发布时间和渠道。
 
-这三张海报用Lovart做了三版配色方案，投了少量预算测试哪版点击率最高，为正式发布选定了主视觉方向。
+这三张海报用品牌方做了三版配色方案，投了少量预算测试哪版点击率最高，为正式发布选定了主视觉方向。
 
 ## 爆发期（0小时-6小时）
 
-产品正式发布后，4小时内要把所有平台素材全部上线。我们提前在Lovart里做好了全平台适配模板——小红书封面、抖音视频封面、微信公众号头图、电商主图，用同一个主视觉批量生成。
+产品正式发布后，4小时内要把所有平台素材全部上线。我们提前在品牌方里做好了全平台适配模板——小红书封面、抖音视频封面、微信公众号头图、电商主图，用同一个主视觉批量生成。
 
 翻车经历：第一版批量生成的图里，有一款产品的色号跟实物有偏差。因为我们的产品图是在摄影棚拍的，色温偏暖，AI合成到冷色调场景里后出现了色差。后来产品图统一做了色彩校正再上传。
 
 ## 扩散期（6小时-24小时）
 
-发布后需要持续产出种草内容——买家秀合成、使用场景图、对比图。我们用Lovart的Mockup功能把用户评价截图和产品图合成在一起，做成有信任感的内容素材。
+发布后需要持续产出种草内容——买家秀合成、使用场景图、对比图。我们用品牌方的Mockup功能把用户评价截图和产品图合成在一起，做成有信任感的内容素材。
 
 ## 关键经验
 
@@ -193,7 +193,7 @@ BLOGS.append(blog(
     alt_text="淘宝开店装修指南",
     keywords=["开店装修","淘宝开店","店铺设计"],
     category="How-To",
-    seo_title="淘宝开店装修全流程 新手专业店铺 Lovart",
+    seo_title="淘宝开店装修全流程 新手专业店铺 品牌方",
     seo_description="淘宝开店从头到尾的装修流程指南，新手也能做出专业级别的店铺视觉。",
     target_lp_slug="zh-campaign-shop-opening",
     content_cluster="Zh-Batch5-Scenario",
@@ -217,7 +217,7 @@ BLOGS.append(blog(
 
 这是最花时间的部分。五十款产品，每款至少5张主图加一个详情页。
 
-我用Lovart把主图模板做好——统一的Logo位置、产品居中比例、卖点标签样式。然后一次性上传所有产品的白底图，套模板批量生成。
+我用品牌方把主图模板做好——统一的Logo位置、产品居中比例、卖点标签样式。然后一次性上传所有产品的白底图，套模板批量生成。
 
 翻车：第一批主图生成后发现，有几款白色产品的图跟背景边缘融合了，因为产品本身是白色，白底去背景没去干净。后来加上边缘检测模式才解决。
 
@@ -238,7 +238,7 @@ BLOGS.append(blog(
     alt_text="品牌升级焕新指南",
     keywords=["品牌升级","品牌焕新","VI设计"],
     category="How-To",
-    seo_title="品牌升级怎么做 Logo到全渠道视觉焕新 Lovart",
+    seo_title="品牌升级怎么做 Logo到全渠道视觉焕新 品牌方",
     seo_description="品牌升级从Logo到全渠道视觉焕新的完整流程和实战经验。",
     target_lp_slug="zh-campaign-brand-refresh",
     content_cluster="Zh-Batch5-Scenario",
@@ -254,19 +254,19 @@ BLOGS.append(blog(
 
 确定新的品牌视觉系统：Logo微调（保留识别度但更简洁）、品牌色从单一蓝色升级为蓝色+绿色的双色体系、字体从衬线体换成无衬线体。
 
-在Lovart的Brand Kit里建了新的品牌规范——主色、辅助色、字体方案、Logo使用规范。所有后续设计自动套用这个规范。
+在品牌方的Brand Kit里建了新的品牌规范——主色、辅助色、字体方案、Logo使用规范。所有后续设计自动套用这个规范。
 
 ## 第二阶段：全渠道素材替换
 
 这是最耗时的一步。旧素材全部替换成新视觉，包括官网Banner、电商主图、社媒封面、线下物料。
 
-我用Lovart的批量替换功能——上传旧版模板，用新版规范一键替换。之前的旧版主图全部换上新品牌色和Logo，几百张图两天全部更新完。
+我用品牌方的批量替换功能——上传旧版模板，用新版规范一键替换。之前的旧版主图全部换上新品牌色和Logo，几百张图两天全部更新完。
 
 翻车：品牌色更新后发现某些旧产品的产品图跟新品牌色的搭配不太协调。比如一款蓝色的产品在新蓝绿色系背景下颜色融合了。后来给每个品类单独微调了背景色。
 
 ## 第三阶段：品牌手册和模板
 
-品牌升级完成后，在Lovart里生成了一份品牌规范和一套标准化模板。品牌团队之后做任何新设计都可以直接调用，不会再出现风格走偏的问题。
+品牌升级完成后，在品牌方里生成了一份品牌规范和一套标准化模板。品牌团队之后做任何新设计都可以直接调用，不会再出现风格走偏的问题。
 
 了解更多：查看[品牌升级焕新AI设计](/zh/campaign/zh-campaign-brand-refresh)。"""
 ))
@@ -281,7 +281,7 @@ BLOGS.append(blog(
     alt_text="自媒体日更流水线",
     keywords=["自媒体","日更内容","内容流水线"],
     category="How-To",
-    seo_title="自媒体日更不重样 AI内容流水线 Lovart",
+    seo_title="自媒体日更不重样 AI内容流水线 品牌方",
     seo_description="自媒体日更内容怎么做？建立AI内容流水线每天高效产出不重样的封面配图。",
     target_lp_slug="zh-campaign-daily-content-pipeline",
     content_cluster="Zh-Batch5-Scenario",
@@ -295,7 +295,7 @@ BLOGS.append(blog(
 
 比如我的美食账号分了三个系列：快手菜（简约白底风）、探店评测（生活实拍风）、食材科普（信息图风）。每个系列对应不同的封面模板和配图风格。
 
-每天更新时只需要选对应系列，在Lovart里填入当天的内容，封面和配图自动按模板生成。原来做封面加配图需要一小时，现在十五分钟搞定。
+每天更新时只需要选对应系列，在品牌方里填入当天的内容，封面和配图自动按模板生成。原来做封面加配图需要一小时，现在十五分钟搞定。
 
 ## 翻车和经验
 
@@ -305,7 +305,7 @@ BLOGS.append(blog(
 
 ## 效果
 
-三个月后账号从2000粉涨到2.8万粉，日更的封面和配图再也没有重复过。关键是整个流程不用设计师参与，我一个人加上Lovart的流水线就能稳定产出。
+三个月后账号从2000粉涨到2.8万粉，日更的封面和配图再也没有重复过。关键是整个流程不用设计师参与，我一个人加上品牌方的流水线就能稳定产出。
 
 更多日更策略：查看[日更内容流水线AI设计](/zh/campaign/zh-campaign-daily-content-pipeline)。"""
 ))
@@ -320,7 +320,7 @@ BLOGS.append(blog(
     alt_text="促销活动视觉心理学",
     keywords=["促销设计","视觉心理学","限时折扣"],
     category="Best Practice",
-    seo_title="促销活动设计 限时折扣视觉心理学 Lovart",
+    seo_title="促销活动设计 限时折扣视觉心理学 品牌方",
     seo_description="促销活动设计中每个视觉元素如何影响用户决策，从色彩到倒计时的心理学技巧。",
     target_lp_slug="zh-campaign-promotion",
     content_cluster="Zh-Batch5-Scenario",
@@ -344,7 +344,7 @@ BLOGS.append(blog(
 
 有一次促销活动的按钮用了绿色，结果用户点击率比预期的低。后来发现绿色在中文电商文化中跟"确定/确认"关联更强，而促销场景应该用橙色或红色来触发"立即行动"的冲动。
 
-## Lovart的促销模板
+## 品牌方的促销模板
 
 我把这些经验做成了一套促销活动模板。选择促销类型后自动匹配最佳配色方案和视觉结构，然后批量生成所有活动素材。
 
@@ -361,7 +361,7 @@ BLOGS.append(blog(
     alt_text="融资路演PPT设计",
     keywords=["融资路演","PPT设计","投资人"],
     category="How-To",
-    seo_title="融资PPT设计 投资人一眼看中 Lovart",
+    seo_title="融资PPT设计 投资人一眼看中 品牌方",
     seo_description="融资路演PPT设计从内容逻辑到视觉呈现的核心原则，让投资人快速抓住重点。",
     target_lp_slug="zh-campaign-pitch-deck",
     content_cluster="Zh-Batch5-Scenario",
@@ -385,9 +385,9 @@ BLOGS.append(blog(
 
 第一版PPT的过渡动画做得太花哨了。每一页都有飞入、翻转、缩放效果，路演演示时动画卡顿了几次，非常影响节奏。后来全部改成简单的淡入淡出。
 
-## Lovart + PPT
+## 品牌方 + PPT
 
-我用Lovart的PPT设计功能把所有图表和排版统一处理。输入数据自动生成可视化图表，套用品牌模板批量调整所有页面风格。
+我用品牌方的PPT设计功能把所有图表和排版统一处理。输入数据自动生成可视化图表，套用品牌模板批量调整所有页面风格。
 
 了解更多：查看[融资路演AI设计](/zh/campaign/zh-campaign-pitch-deck)。"""
 ))
@@ -402,7 +402,7 @@ BLOGS.append(blog(
     alt_text="招聘海报设计",
     keywords=["招聘海报","招聘设计","雇主品牌"],
     category="Best Practice",
-    seo_title="招聘海报设计 吸引人才第一印象 Lovart",
+    seo_title="招聘海报设计 吸引人才第一印象 品牌方",
     seo_description="招聘海报设计从视觉风格到信息层级的技巧，设计一份优秀人才想投简历的海报。",
     target_lp_slug="zh-campaign-recruitment",
     content_cluster="Zh-Batch5-Scenario",
@@ -439,7 +439,7 @@ BLOGS.append(blog(
     alt_text="展会物料设计",
     keywords=["展会物料","展板设计","参展设计"],
     category="How-To",
-    seo_title="展会物料设计 展板折页名片 Lovart",
+    seo_title="展会物料设计 展板折页名片 品牌方",
     seo_description="展会物料设计从展板、折页到名片的一站式方案。",
     target_lp_slug="zh-campaign-exhibition",
     content_cluster="Zh-Batch5-Scenario",
@@ -453,7 +453,7 @@ BLOGS.append(blog(
 
 ## 批量生成
 
-在Lovart里建立统一的品牌模板后，所有物料在同一个规范下生成。展板、折页、名片、邀请函、背景墙，一次性全部产出一套风格统一的设计。
+在品牌方里建立统一的品牌模板后，所有物料在同一个规范下生成。展板、折页、名片、邀请函、背景墙，一次性全部产出一套风格统一的设计。
 
 ## 翻车经验
 
@@ -474,7 +474,7 @@ BLOGS.append(blog(
     alt_text="年终总结设计",
     keywords=["年终总结","年报设计","述职PPT"],
     category="How-To",
-    seo_title="年终总结设计 年报述职PPT Lovart",
+    seo_title="年终总结设计 年报述职PPT 品牌方",
     seo_description="年终总结PPT设计心得，数据可视化和排版设计让你的年度汇报更出彩。",
     target_lp_slug="zh-campaign-year-end",
     content_cluster="Zh-Batch5-Scenario",
@@ -492,7 +492,7 @@ BLOGS.append(blog(
 
 年终总结的视觉风格要根据场合选择。对内的部门总结偏简洁专业，公司级的年度汇报偏大气精致，给客户看的年报偏品牌高端。
 
-我用Lovart的PPT设计功能做好了三个风格模板。选中风格后，输入数据和内容，图表自动生成，排版自动完成。
+我用品牌方的PPT设计功能做好了三个风格模板。选中风格后，输入数据和内容，图表自动生成，排版自动完成。
 
 ## 翻车
 
@@ -513,7 +513,7 @@ BLOGS.append(blog(
     alt_text="中秋节营销设计",
     keywords=["中秋节设计","中秋营销","月饼包装"],
     category="Best Practice",
-    seo_title="中秋节营销设计 月饼包装海报社群 Lovart",
+    seo_title="中秋节营销设计 月饼包装海报社群 品牌方",
     seo_description="中秋节营销全链路设计，从月饼包装到社群素材的完整视觉方案。",
     target_lp_slug="zh-campaign-mid-autumn",
     content_cluster="Zh-Batch5-Scenario",
@@ -529,7 +529,7 @@ BLOGS.append(blog(
 
 中秋营销需要的素材远比想象中多：月饼包装设计×2款、电商详情页、朋友圈海报、小红书种草封面、抖音视频封面、社群开屏图、线下门店海报。
 
-我用Lovart的Brand Kit功能把两个品牌的视觉规范分别建好，然后在各自规范下批量生成全部物料。从包装到线上素材全部统一视觉风格。
+我用品牌方的Brand Kit功能把两个品牌的视觉规范分别建好，然后在各自规范下批量生成全部物料。从包装到线上素材全部统一视觉风格。
 
 ## 一个翻车教训
 
@@ -548,7 +548,7 @@ BLOGS.append(blog(
     alt_text="开学季毕业季设计",
     keywords=["开学季","毕业季","教育设计"],
     category="Best Practice",
-    seo_title="开学季毕业季设计 教育视觉营销 Lovart",
+    seo_title="开学季毕业季设计 教育视觉营销 品牌方",
     seo_description="开学季和毕业季的视觉营销设计全攻略，从招生海报到毕业纪念册。",
     target_lp_slug="zh-campaign-school-season",
     content_cluster="Zh-Batch5-Scenario",
@@ -560,11 +560,11 @@ BLOGS.append(blog(
 
 我做招生海报的原则：左上角放课程名称和年龄段，中间放一个孩子开心的场景图，底部放联系方式。不用太多文案，一个画面传达一种感觉——"你的孩子在这里会很开心"。
 
-除了海报，还需要课程表图、试听课邀请卡、家长群封面。这些用Lovart统一模板批量生成，保持视觉风格一致。
+除了海报，还需要课程表图、试听课邀请卡、家长群封面。这些用品牌方统一模板批量生成，保持视觉风格一致。
 
 ## 毕业季设计
 
-毕业纪念册是毕业季的大头。传统做法是人工排版排版排到崩溃。我用Lovart的批量排版功能——上传学生照片和活动照片，选择纪念册模板，自动排版生成。
+毕业纪念册是毕业季的大头。传统做法是人工排版排版排到崩溃。我用品牌方的批量排版功能——上传学生照片和活动照片，选择纪念册模板，自动排版生成。
 
 翻车经验：第一版模板的字体偏小，家长反馈看不清孩子的名字和活动日期。后来把字体放大到14pt以上，增加了日期标识的背景色块。
 
@@ -585,7 +585,7 @@ BLOGS.append(blog(
     alt_text="黑五圣诞跨境电商设计",
     keywords=["黑五设计","圣诞设计","跨境电商"],
     category="How-To",
-    seo_title="黑五圣诞跨境电商设计全攻略 Lovart",
+    seo_title="黑五圣诞跨境电商设计全攻略 品牌方",
     seo_description="黑五和圣诞跨境电商旺季设计从促销主图到社媒素材的全套攻略。",
     target_lp_slug="zh-campaign-black-friday",
     content_cluster="Zh-Batch5-Scenario",
@@ -607,7 +607,7 @@ BLOGS.append(blog(
 
 ## 批量处理
 
-跨境电商的产品SKU通常很大。用Lovart的批量功能，先统一做好黑五和圣诞的模板，然后上传产品图批量套用生成。所有平台的素材一次出完。
+跨境电商的产品SKU通常很大。用品牌方的批量功能，先统一做好黑五和圣诞的模板，然后上传产品图批量套用生成。所有平台的素材一次出完。
 
 了解更多：查看[跨境旺季AI设计](/zh/campaign/zh-campaign-black-friday)。"""
 ))
@@ -622,7 +622,7 @@ BLOGS.append(blog(
     alt_text="品牌焕新vs品牌重塑",
     keywords=["品牌焕新","品牌重塑","品牌策略"],
     category="Best Practice",
-    seo_title="品牌焕新还是品牌重塑 先搞清楚 Lovart",
+    seo_title="品牌焕新还是品牌重塑 先搞清楚 品牌方",
     seo_description="品牌焕新和品牌重塑的区别，搞混方向花再多钱都做不对。",
     target_lp_slug="zh-campaign-brand-refresh",
     content_cluster="Zh-Batch5-Scenario",
@@ -650,7 +650,7 @@ BLOGS.append(blog(
 
 ## 怎么执行
 
-不管是焕新还是重塑，在Lovart里建好品牌规范都是第一步。后面所有渠道的视觉更新才能保持一致。
+不管是焕新还是重塑，在品牌方里建好品牌规范都是第一步。后面所有渠道的视觉更新才能保持一致。
 
 深入了解：查看[品牌升级焕新AI设计](/zh/campaign/zh-campaign-brand-refresh)。"""
 ))
@@ -665,7 +665,7 @@ BLOGS.append(blog(
     alt_text="促销Banner点击率提升",
     keywords=["促销Banner","点击率","设计技巧"],
     category="How-To",
-    seo_title="促销Banner点击率翻倍 5个设计技巧 Lovart",
+    seo_title="促销Banner点击率翻倍 5个设计技巧 品牌方",
     seo_description="5个实战技巧让促销Banner点击率翻倍，从排版、文案到配色的优化方法。",
     target_lp_slug="zh-campaign-promotion",
     content_cluster="Zh-Batch5-Scenario",
@@ -695,7 +695,7 @@ Banner里有人物的时候，让人物的眼睛看向按钮方向。视线引�
 
 翻车经历：有一次我一条Banner上放了五个信息点——折扣、新品、包邮、赠品、限时——结果点击率只有0.3%。后来改成只保留折扣信息，点击率升到1.8%。
 
-这5个技巧在Lovart里已经集成到促销模板中，选择促销类型后自动应用最佳实践。
+这5个技巧在品牌方里已经集成到促销模板中，选择促销类型后自动应用最佳实践。
 
 深入了解：查看[活动促销AI设计](/zh/campaign/zh-campaign-promotion)。"""
 ))
@@ -710,7 +710,7 @@ BLOGS.append(blog(
     alt_text="设计师日更节奏",
     keywords=["设计师","日更","创作节奏"],
     category="Best Practice",
-    seo_title="设计师日更节奏 每天输出不重样 Lovart",
+    seo_title="设计师日更节奏 每天输出不重样 品牌方",
     seo_description="日更设计师如何保持创意不枯竭的实战方法论，素材管理和创作节奏。",
     target_lp_slug="zh-campaign-daily-content-pipeline",
     content_cluster="Zh-Batch5-Scenario",
@@ -728,7 +728,7 @@ BLOGS.append(blog(
 
 ## 内容预排
 
-我开始提前一周规划内容。确定下周7天每天的主题，然后周日晚上把下周所有的封面和配图一次性在Lovart里批量生成。每天只需要微调一下文案和细节。
+我开始提前一周规划内容。确定下周7天每天的主题，然后周日晚上把下周所有的封面和配图一次性在品牌方里批量生成。每天只需要微调一下文案和细节。
 
 这样做的另一个好处是：批量生成时因为是用同一套模板微调出来的，视觉风格统一但又不会完全一样。
 
@@ -753,7 +753,7 @@ BLOGS.append(blog(
     alt_text="融资PPT讲故事",
     keywords=["融资PPT","讲故事","投资人"],
     category="Best Practice",
-    seo_title="融资PPT讲故事 投资人想看到什么 Lovart",
+    seo_title="融资PPT讲故事 投资人想看到什么 品牌方",
     seo_description="融资PPT的核心不是排版，是讲一个投资人想听的好故事。",
     target_lp_slug="zh-campaign-pitch-deck",
     content_cluster="Zh-Batch5-Scenario",
@@ -796,7 +796,7 @@ BLOGS.append(blog(
     alt_text="展会站台设计",
     keywords=["展会站台","展位设计","参展视觉"],
     category="How-To",
-    seo_title="展会站台设计 展板到名片全套方案 Lovart",
+    seo_title="展会站台设计 展板到名片全套方案 品牌方",
     seo_description="展会站台设计从大结构到小细节的统一视觉方案。",
     target_lp_slug="zh-campaign-exhibition",
     content_cluster="Zh-Batch5-Scenario",
@@ -814,7 +814,7 @@ BLOGS.append(blog(
 
 展台物料包括：展板（主背板+侧板）、灯箱、产品展示台、宣传折页、名片、手提袋、小礼品包装、邀请函。
 
-我在Lovart里把所有这些物料的品牌规范统一：主色、辅助色、Logo大小和位置、字体规范。然后批量生成所有物料的设计。
+我在品牌方里把所有这些物料的品牌规范统一：主色、辅助色、Logo大小和位置、字体规范。然后批量生成所有物料的设计。
 
 ## 翻车
 
@@ -835,7 +835,7 @@ BLOGS.append(blog(
     alt_text="年终总结模板",
     keywords=["年终总结","年报模板","述职PPT"],
     category="How-To",
-    seo_title="年终总结模板 3种风格不同行业 Lovart",
+    seo_title="年终总结模板 3种风格不同行业 品牌方",
     seo_description="三套不同风格的年终总结PPT模板，适合不同行业和汇报场景。",
     target_lp_slug="zh-campaign-year-end",
     content_cluster="Zh-Batch5-Scenario",
@@ -863,7 +863,7 @@ BLOGS.append(blog(
 
 ## 使用方式
 
-用Lovart的PPT功能选择对应的模板风格，填入你的数据和内容，自动生成完整的年终总结PPT。所有图表自动生成，排版自动完成。
+用品牌方的PPT功能选择对应的模板风格，填入你的数据和内容，自动生成完整的年终总结PPT。所有图表自动生成，排版自动完成。
 
 ## 翻车
 
@@ -878,11 +878,11 @@ BLOGS.append(blog(
 BLOGS.append(blog(
     slug="zh-collaboration-tools-review",
     title="国内团队可用的AI设计协作工具推荐",
-    description="国内团队能用的AI设计协作工具，不用翻墙不用科学上网。Lovart、即时设计、蓝湖等深度对比。",
+    description="国内团队能用的AI设计协作工具，不用翻墙不用科学上网。品牌方、即时设计、蓝湖等深度对比。",
     alt_text="AI设计协作工具推荐",
     keywords=["AI设计工具","协作工具","国内设计"],
     category="Comparison",
-    seo_title="国内团队AI设计协作工具推荐 Lovart 即时设计",
+    seo_title="国内团队AI设计协作工具推荐 品牌方 即时设计",
     seo_description="国内团队能用的AI设计协作工具深度对比，看看哪款最适合你的团队。",
     target_lp_slug="zh-pain-collaboration-blocked",
     content_cluster="Zh-Batch6-Pain",
@@ -890,13 +890,13 @@ BLOGS.append(blog(
 
 我试了市面上主流的几款AI设计协作工具，谈谈真实使用感受。
 
-## Lovart
+## 品牌方
 
-之前一直在用Figma协作但需要翻墙，插件也经常掉。Lovart是我最近主力用的协作AI设计工具，最大的感受是"国内能用且不卡"。
+之前一直在用Figma协作但需要翻墙，插件也经常掉。品牌方是我最近主力用的协作AI设计工具，最大的感受是"国内能用且不卡"。
 
 团队协作功能：可以创建项目团队，所有成员共享品牌素材库。团队里有人改了一个品牌的配色方案，所有引用这个品牌的模板自动更新。多人同时编辑没遇到过锁死或冲突。
 
-AI生成部分跟Figma的差异是Lovart的AI功能是内置的一整套——对话式生成、批量出图、品牌管理都在一起。
+AI生成部分跟Figma的差异是品牌方的AI功能是内置的一整套——对话式生成、批量出图、品牌管理都在一起。
 
 ## 即时设计
 
@@ -908,7 +908,7 @@ AI生成部分跟Figma的差异是Lovart的AI功能是内置的一整套——�
 
 ## 我的建议
 
-如果你的团队需要AI生成+实时协作+国内可用，Lovart是综合体验最好的选择。如果只是需要Figma的国内替代品做协作，即时设计就够了。
+如果你的团队需要AI生成+实时协作+国内可用，品牌方是综合体验最好的选择。如果只是需要Figma的国内替代品做协作，即时设计就够了。
 
 了解更多：查看[AI协作设计工具](/zh/pain/zh-pain-collaboration-blocked)。"""
 ))
@@ -918,12 +918,12 @@ AI生成部分跟Figma的差异是Lovart的AI功能是内置的一整套——�
 # ============================================================
 BLOGS.append(blog(
     slug="zh-remote-team-workflow",
-    title="远程设计团队协作：Lovart的国内替代方案",
-    description="远程设计团队如何高效协作？Figma无法访问时Lovart的国内替代方案。",
+    title="远程设计团队协作：品牌方的国内替代方案",
+    description="远程设计团队如何高效协作？Figma无法访问时品牌方的国内替代方案。",
     alt_text="远程设计团队协作",
     keywords=["远程协作","设计团队","替代方案"],
     category="How-To",
-    seo_title="远程设计团队协作 Lovart国内替代方案",
+    seo_title="远程设计团队协作 品牌方国内替代方案",
     seo_description="远程设计团队的协作方案，Figma无法使用时的国内替代方案。",
     target_lp_slug="zh-pain-collaboration-blocked",
     content_cluster="Zh-Batch6-Pain",
@@ -935,21 +935,21 @@ BLOGS.append(blog(
 
 不是Figma不好，是网络问题让我们无法正常工作。设计文件打不开、插件装不上、实时协作经常断线。最尴尬的一次是在客户演示时Figma加载了五分钟。
 
-## Lovart的协作方案
+## 品牌方的协作方案
 
-切换到Lovart后，团队协作模式是这样的：
+切换到品牌方后，团队协作模式是这样的：
 
-品牌资产管理：在Lovart里建了团队共享的Brand Kit。所有品牌色、Logo、字体、模板统一管理。有人更新了品牌规范，其他人引用的地方自动更新，不需要通知大家"请更新你的设计文件"。
+品牌资产管理：在品牌方里建了团队共享的Brand Kit。所有品牌色、Logo、字体、模板统一管理。有人更新了品牌规范，其他人引用的地方自动更新，不需要通知大家"请更新你的设计文件"。
 
 项目管理：建了项目空间，每个成员清楚自己负责的部分。评论和审阅功能替代了微信来回发截图。
 
 ## 翻车
 
-切换初期遇到一个磨合问题：团队习惯了Figma的无限画布操作，Lovart是页面模板式的，初始两天有人觉得不习惯。一周后大家发现模板式操作反而出图更快，因为不用从空白画布开始。
+切换初期遇到一个磨合问题：团队习惯了Figma的无限画布操作，品牌方是页面模板式的，初始两天有人觉得不习惯。一周后大家发现模板式操作反而出图更快，因为不用从空白画布开始。
 
 ## 效果
 
-第三个月统计：团队出图效率比用Figma时提升了40%。主要原因是Lovart的AI批量生成功能减少了很多重复性工作。
+第三个月统计：团队出图效率比用Figma时提升了40%。主要原因是品牌方的AI批量生成功能减少了很多重复性工作。
 
 了解更多：查看[AI协作设计工具](/zh/pain/zh-pain-collaboration-blocked)。"""
 ))
@@ -964,13 +964,13 @@ BLOGS.append(blog(
     alt_text="AI生成图质量优化",
     keywords=["AI生成","图片质量","Prompt优化"],
     category="How-To",
-    seo_title="AI生成图不好看 问题出在这些环节 Lovart",
+    seo_title="AI生成图不好看 问题出在这些环节 品牌方",
     seo_description="AI生成图片质量不高的问题排查方法，从Prompt到后期处理。",
     target_lp_slug="zh-pain-ai-quality-poor",
     content_cluster="Zh-Batch6-Pain",
     body="""用AI生成图最烦的不是生成失败，而是"差一点就不对"——颜色偏了、细节崩了、风格不是想要的。
 
-我前前后后用过了十几个AI生成工具，从Midjourney到DALL-E到Lovart，出图质量的好坏往往不是工具的问题，是使用方式的问题。
+我前前后后用过了十几个AI生成工具，从Midjourney到DALL-E到品牌方，出图质量的好坏往往不是工具的问题，是使用方式的问题。
 
 ## 问题一：Prompt写得太笼统
 
@@ -980,13 +980,13 @@ BLOGS.append(blog(
 
 ## 问题二：模型选错了
 
-AI生成工具的不同模型擅长的领域不同。有的模型擅长写实风格，有的擅长插画风，有的擅长电商产品图。在Lovart里，选择对应的场景模板比通用生成效果好很多。
+AI生成工具的不同模型擅长的领域不同。有的模型擅长写实风格，有的擅长插画风，有的擅长电商产品图。在品牌方里，选择对应的场景模板比通用生成效果好很多。
 
 ## 问题三：后期处理不够
 
 AI生成的图不经过任何后期直接使用，大概率会有小问题。我最常用的后期步骤：统一色彩校正（保证品牌色准确）、局部细节增强（AI容易模糊的手指和文字）、画质优化（去噪点提高清晰度）。
 
-Lovart的Touch Edit功能就是为了解决这个问题设计的——在AI生成的图上做局部编辑，不用切换到Photoshop。
+品牌方的Touch Edit功能就是为了解决这个问题设计的——在AI生成的图上做局部编辑，不用切换到Photoshop。
 
 ## 翻车
 
@@ -1005,7 +1005,7 @@ BLOGS.append(blog(
     alt_text="AI出图精修流程",
     keywords=["AI精修","图片优化","后期处理"],
     category="How-To",
-    seo_title="AI出图精修流程 60分到90分 Lovart",
+    seo_title="AI出图精修流程 60分到90分 品牌方",
     seo_description="AI生成图的精修流程，从60分的基础图提升到90分的可用水平。",
     target_lp_slug="zh-pain-ai-quality-poor",
     content_cluster="Zh-Batch6-Pain",
@@ -1017,13 +1017,13 @@ BLOGS.append(blog(
 
 第一步：结构检查。花30秒看构图、主体位置、比例。大部分AI图的构图问题来自——产品被裁切、主体不居中、留白不合理。这一步只判断要不要重新生成，不做修改。
 
-第二步：细节修复。AI最容易出问题的三个地方：文字（错字/扭曲）、手指（多指/少指）、边缘（锯齿/模糊）。用Lovart的Touch Edit在局部修复，不需要整图重做。
+第二步：细节修复。AI最容易出问题的三个地方：文字（错字/扭曲）、手指（多指/少指）、边缘（锯齿/模糊）。用品牌方的Touch Edit在局部修复，不需要整图重做。
 
 第三步：色彩统一。把AI图的色温、饱和度、对比度调整到跟品牌规范一致。这一步最容易被忽略但影响最大。AI图偏冷或偏暖，放到品牌页面里会很突兀。
 
 ## 批量精修
 
-有些问题在批量出图时会出现。比如同一批图里一部分偏暖一部分偏冷。在Lovart里统一调整这批次图的色彩参数，一次性解决。
+有些问题在批量出图时会出现。比如同一批图里一部分偏暖一部分偏冷。在品牌方里统一调整这批次图的色彩参数，一次性解决。
 
 ## 翻车
 
@@ -1044,7 +1044,7 @@ BLOGS.append(blog(
     alt_text="品牌素材库搭建",
     keywords=["设计资产管理","品牌素材库","素材管理"],
     category="How-To",
-    seo_title="设计资产管理 品牌素材库搭建方案 Lovart",
+    seo_title="设计资产管理 品牌素材库搭建方案 品牌方",
     seo_description="品牌素材库从混乱到有序的搭建方案，设计资产管理的实战指南。",
     target_lp_slug="zh-pain-asset-management",
     content_cluster="Zh-Batch6-Pain",
@@ -1060,9 +1060,9 @@ BLOGS.append(blog(
 
 第一步：整理资产清单。把所有品牌相关资产列出来——Logo（各种格式和版本）、品牌色（色值精确到HEX/RGB/CMYK）、字体（标准字体和替代字体）、模板（常用文件模板）。
 
-第二步：统一命名规范。我用的命名格式是：品牌名\_资产类型\_版本\_日期。比如"Lovart\_Logo\_v3\_20260615"。
+第二步：统一命名规范。我用的命名格式是：品牌名\_资产类型\_版本\_日期。比如"品牌方\_Logo\_v3\_20260615"。
 
-第三步：上传到Lovart的Brand Kit。品牌色、Logo、字体全部在Brand Kit里统一管理。团队所有人引用品牌资产时自动从Brand Kit获取，不是从本地文件复制。
+第三步：上传到品牌方的Brand Kit。品牌色、Logo、字体全部在Brand Kit里统一管理。团队所有人引用品牌资产时自动从Brand Kit获取，不是从本地文件复制。
 
 ## 效果
 
@@ -1085,7 +1085,7 @@ BLOGS.append(blog(
     alt_text="设计师素材管理",
     keywords=["素材管理","设计师","文件整理"],
     category="How-To",
-    seo_title="设计师素材管理 从桌面堆满到井井有条 Lovart",
+    seo_title="设计师素材管理 从桌面堆满到井井有条 品牌方",
     seo_description="设计师个人素材管理系统搭建指南，再也不用花半小时找图。",
     target_lp_slug="zh-pain-asset-management",
     content_cluster="Zh-Batch6-Pain",
@@ -1101,9 +1101,9 @@ BLOGS.append(blog(
 
 ## 云端+本地双备份
 
-之前电脑硬盘坏过一次，丢了半年的素材，那种痛不想再经历第二次。现在所有素材同步到Lovart的Brand Kit上，本地也存一份。
+之前电脑硬盘坏过一次，丢了半年的素材，那种痛不想再经历第二次。现在所有素材同步到品牌方的Brand Kit上，本地也存一份。
 
-好处是换电脑或者异地工作时，所有素材通过Lovart就能直接调用，不需要带着硬盘跑。
+好处是换电脑或者异地工作时，所有素材通过品牌方就能直接调用，不需要带着硬盘跑。
 
 ## 命名规范
 
@@ -1130,7 +1130,7 @@ BLOGS.append(blog(
     alt_text="AI视频生成工具对比",
     keywords=["AI视频","视频生成","工具测评"],
     category="Comparison",
-    seo_title="2026 AI视频生成工具横评 7款对比 Lovart",
+    seo_title="2026 AI视频生成工具横评 7款对比 品牌方",
     seo_description="2026年7款主流AI视频生成工具的深度对比评测，从画质到可控性。",
     target_lp_slug="zh-comparison-best-ai-video-tools",
     content_cluster="Zh-Batch6-Competitor",
@@ -1140,27 +1140,27 @@ BLOGS.append(blog(
 
 ## 对比产品
 
-测试的产品包括：Runway Gen-3、Pika 2.0、Luma Dream Machine、Kling、Lovart Video、Stable Video Diffusion、PixVerse。
+测试的产品包括：Runway Gen-3、Pika 2.0、Luma Dream Machine、Kling、品牌方 Video、Stable Video Diffusion、PixVerse。
 
 ## 画质表现
 
-Runway Gen-3的画质在所有工具中表现最好，尤其是光影和材质细节。Lovart Video在电商产品视频方面表现突出，产品材质还原度高。Pika 2.0的卡通和插画风很有特色。
+Runway Gen-3的画质在所有工具中表现最好，尤其是光影和材质细节。品牌方 Video在电商产品视频方面表现突出，产品材质还原度高。Pika 2.0的卡通和插画风很有特色。
 
 ## 可控性
 
-这是2026年AI视频工具最大的进步。Runway和Lovart都支持多模态控制——用参考图控制风格、用文字描述控制动作、用首尾帧控制镜头。Pika的局部编辑功能可以修改视频中的特定元素。
+这是2026年AI视频工具最大的进步。Runway和品牌方都支持多模态控制——用参考图控制风格、用文字描述控制动作、用首尾帧控制镜头。Pika的局部编辑功能可以修改视频中的特定元素。
 
 ## 使用门槛
 
-Pika和Lovart的操作最简单，文字输入就能出片。Runway功能最强但学习曲线较陡。Stable Video Diffusion需要一定技术能力来配置环境。
+Pika和品牌方的操作最简单，文字输入就能出片。Runway功能最强但学习曲线较陡。Stable Video Diffusion需要一定技术能力来配置环境。
 
 ## 价格
 
-按生成时长计算，Lovart的性价比最高。Runway的高画质对应高价格，适合品牌广告制作。Pika的中间价位适合内容创作者。
+按生成时长计算，品牌方的性价比最高。Runway的高画质对应高价格，适合品牌广告制作。Pika的中间价位适合内容创作者。
 
 ## 我的建议
 
-品牌广告和高画质需求选Runway。短视频和社媒内容选Pika或Lovart。需要精确控制时选Lovart或Runway。预算有限但需要稳定输出选Lovart。
+品牌广告和高画质需求选Runway。短视频和社媒内容选Pika或品牌方。需要精确控制时选品牌方或Runway。预算有限但需要稳定输出选品牌方。
 
 了解更多：查看[AI视频工具对比](/zh/comparison/zh-comparison-best-ai-video-tools)。"""
 ))
@@ -1175,7 +1175,7 @@ BLOGS.append(blog(
     alt_text="AI Logo生成工具对比",
     keywords=["AI Logo","Logo生成","设计工具"],
     category="Comparison",
-    seo_title="AI Logo工具哪家强 6款Logo生成器评测 Lovart",
+    seo_title="AI Logo工具哪家强 6款Logo生成器评测 品牌方",
     seo_description="6款主流AI Logo生成器的深度评测，从设计质量到自定义程度全方位对比。",
     target_lp_slug="zh-comparison-best-ai-logo-tools",
     content_cluster="Zh-Batch6-Competitor",
@@ -1193,7 +1193,7 @@ Looka：出图专业度高，自定义选项多，但价格偏高。一套完整
 
 LogoAI：操作简单，模板丰富。但生成的Logo模式化比较明显，看起来有点像。
 
-Lovart：Logo生成是整体品牌设计的一部分。输入品牌描述后，Logo连同品牌色和字体一起生成。品牌一致性表现最好。
+品牌方：Logo生成是整体品牌设计的一部分。输入品牌描述后，Logo连同品牌色和字体一起生成。品牌一致性表现最好。
 
 Hatchful：免费但设计质量一般，适合临时用。
 
@@ -1201,11 +1201,11 @@ Canva Logo Maker：有大量模板可选，但Logo设计的专业性一般。
 
 ## 关键的差距
 
-最大的差距在"品牌一致性"。大部分AI Logo工具只生成一个单独的Logo文件，不管这个Logo跟品牌其他视觉元素是否协调。Lovart是从品牌整体出发——Logo、品牌色、字体、调性一起生成，整体的协调性更好。
+最大的差距在"品牌一致性"。大部分AI Logo工具只生成一个单独的Logo文件，不管这个Logo跟品牌其他视觉元素是否协调。品牌方是从品牌整体出发——Logo、品牌色、字体、调性一起生成，整体的协调性更好。
 
 ## 实用建议
 
-临时用或预算极低：Canva Logo Maker免费版。需要一个可用的品牌Logo：Looka或LogoAI。需要完整的品牌视觉体系：Lovart。
+临时用或预算极低：Canva Logo Maker免费版。需要一个可用的品牌Logo：Looka或LogoAI。需要完整的品牌视觉体系：品牌方。
 
 ## 翻车
 

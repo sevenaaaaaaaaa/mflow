@@ -9,7 +9,7 @@ from pathlib import Path
 from path_constants import MONTHLY_DIR, SNAPSHOT_DIR, TRIDENT
 
 CHECKS = [
-    ("月报样例", MONTHLY_DIR / "Lovart-SEO-2026-05.md"),
+    ("月报样例", MONTHLY_DIR / "品牌方-SEO-2026-05.md"),
     ("GSC 快照", SNAPSHOT_DIR / "gsc-2026-05.json"),
     ("主脚本", Path(__file__).resolve().parents[1] / "seo_monthly_v2.py"),
     ("盘点输出", TRIDENT / "reports" / "_inventory" / "history-coverage.json"),

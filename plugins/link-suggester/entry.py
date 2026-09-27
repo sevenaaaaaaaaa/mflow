@@ -4,7 +4,7 @@ from pathlib import Path
 
 def analyze(data, config=None):
     text = data.get("text", "")[:3000]
-    library_path = data.get("library_path", "/www/wwwroot/mflow/run/library/lovart-global")
+    library_path = data.get("library_path", "/www/wwwroot/mflow/run/library/main")
     top = (config or {}).get("top", 5)
     t = text.lower()
     words = set(re.findall(r"[a-z0-9]{3,}", t))

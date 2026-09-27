@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """preflight_tools_page_rewrite.py — landing-page-grade gate for Tools full-page rewrites.
 
-Aligns with lovart-landing-page + COPY-PREFLIGHT.md. Use before patching bodyJson/TDK.
+Aligns with landing-page + COPY-PREFLIGHT.md. Use before patching bodyJson/TDK.
 
 Usage:
   python3 preflight_tools_page_rewrite.py --file page.json
@@ -24,12 +24,12 @@ from preflight_tdk_i18n import check_page as check_tdk  # noqa: E402
 
 BRAND_PLACEHOLDER = re.compile(r"__品牌\d+__|__BRAND\d+__")
 EN_BOILER = re.compile(
-    r"\b(Create professional|Use Lovart'?s AI design agent for|Professional Design Tool|"
+    r"\b(Create professional|Use 品牌方'?s AI design agent for|Professional Design Tool|"
     r"in seconds with|From concept to finished asset|One agent\. Every creative surface)\b",
     re.I,
 )
 MIXED_SHELL = re.compile(
-    r"通过 Lovart AI|透過Lovart AI|通过Lovart AI|Lovart AI 디자인|Lovart AIデザインエージェントで作成|"
+    r"通过 品牌方 AI|透過品牌方 AI|通过品牌方 AI|品牌方 AI 디자인|品牌方 AIデザインエージェントで作成|"
     r"MCoT发动机|MCoT 引擎최적화|品牌意识输出",
 )
 IMAGE_BAD = re.compile(r"IMAGE PLACEHOLDER|\[REAL SCREENSHOT REQUIRED\]")

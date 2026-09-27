@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Lovart SEO 四周趋势折线图 — W1:7/14-20 W2:7/21-27 W3:7/28-8/3 W4:8/4-10
+"""品牌方 SEO 四周趋势折线图 — W1:7/14-20 W2:7/21-27 W3:7/28-8/3 W4:8/4-10
 
 5 组图:
 1. GSC 整体曝光/点击/CTR (country 维度)
@@ -7,7 +7,7 @@
 3. UV→注册、UV→付费 数 (SEO+GEO / SEO / GEO)
 4. 点击转UV / UV转注册 / 注册转付费 率 (SEO+GEO / SEO / GEO)
 5. 新增付费数趋势 (SEO+GEO / SEO / GEO)
-输出: reports/weekly/Lovart-4w-charts-*.png
+输出: reports/weekly/品牌方-4w-charts-*.png
 """
 import json, sys
 from pathlib import Path
@@ -20,7 +20,7 @@ plt.rcParams["font.family"] = ["PingFang SC", "Hiragino Sans GB", "Arial Unicode
 plt.rcParams["axes.unicode_minus"] = False
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from lovart_brand_match import is_brand
+from brand_match import is_brand
 
 GSC = json.load(open("/tmp/gsc_4w.json"))
 DW = json.load(open("/tmp/dataworks_4w.json"))
@@ -88,7 +88,7 @@ axes[2].yaxis.set_major_formatter(mticker.FormatStrFormatter("%.1f%%"))
 for i, v in enumerate([gsc_country[w]["ctr"] for w in WEEKS]):
     axes[2].annotate(f"{v:.1f}%", (i, v), textcoords="offset points", xytext=(0, 8), ha="center", fontsize=10)
 plt.tight_layout()
-f1 = OUT_DIR / "Lovart-4w-chart-1-gsc-overall.png"
+f1 = OUT_DIR / "品牌方-4w-chart-1-gsc-overall.png"
 plt.savefig(f1, dpi=150, bbox_inches="tight"); plt.close()
 print("图1:", f1)
 
@@ -109,7 +109,7 @@ for ax, key, title in ((axes[0], "impr", "曝光"), (axes[1], "clicks", "点击"
     if key == "ctr":
         ax.yaxis.set_major_formatter(mticker.FormatStrFormatter("%.1f%%"))
 plt.tight_layout()
-f2 = OUT_DIR / "Lovart-4w-chart-2-brand-nonbrand.png"
+f2 = OUT_DIR / "品牌方-4w-chart-2-brand-nonbrand.png"
 plt.savefig(f2, dpi=150, bbox_inches="tight"); plt.close()
 print("图2:", f2)
 
@@ -127,7 +127,7 @@ for ax, (bucket, label) in zip(axes, (("seo_geo", "SEO+GEO"), ("seo", "SEO"), ("
     for i, v in enumerate(pay):
         ax.annotate(f"{v:.1f}", (i, v), textcoords="offset points", xytext=(0, -14), ha="center", fontsize=9)
 plt.tight_layout()
-f3 = OUT_DIR / "Lovart-4w-chart-3-uv-reg-pay.png"
+f3 = OUT_DIR / "品牌方-4w-chart-3-uv-reg-pay.png"
 plt.savefig(f3, dpi=150, bbox_inches="tight"); plt.close()
 print("图3:", f3)
 
@@ -147,7 +147,7 @@ for ax, (bucket, label) in zip(axes, (("seo_geo", "SEO+GEO"), ("seo", "SEO"), ("
         ax.annotate(f"{uv2reg[i]:.1f}%", (i, uv2reg[i]), textcoords="offset points", xytext=(0, -16), ha="center", fontsize=8)
         ax.annotate(f"{reg2pay[i]:.2f}%", (i, reg2pay[i]), textcoords="offset points", xytext=(-22, -30), ha="center", fontsize=8)
 plt.tight_layout()
-f4 = OUT_DIR / "Lovart-4w-chart-4-funnel-rates.png"
+f4 = OUT_DIR / "品牌方-4w-chart-4-funnel-rates.png"
 plt.savefig(f4, dpi=150, bbox_inches="tight"); plt.close()
 print("图4:", f4)
 
@@ -162,7 +162,7 @@ for ax, (bucket, label) in zip(axes, (("seo_geo", "SEO+GEO"), ("seo", "SEO"), ("
     for i, v in enumerate(pay):
         ax.annotate(f"{v:.1f}", (i, v), textcoords="offset points", xytext=(0, 8), ha="center", fontsize=10)
 plt.tight_layout()
-f5 = OUT_DIR / "Lovart-4w-chart-5-new-pay-uv.png"
+f5 = OUT_DIR / "品牌方-4w-chart-5-new-pay-uv.png"
 plt.savefig(f5, dpi=150, bbox_inches="tight"); plt.close()
 print("图5:", f5)
 

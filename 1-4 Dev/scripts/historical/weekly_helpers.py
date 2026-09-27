@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""自然周批跑：monkey-patch 日期窗并输出 Lovart-SEO-Week_ 文件名。"""
+"""自然周批跑：monkey-patch 日期窗并输出 品牌方-SEO-Week_ 文件名。"""
 from __future__ import annotations
 
 import sys
@@ -27,8 +27,8 @@ def run_natural_week(week_anchor: str | None = None, gsc_lag: int = 2) -> Path:
     w.run_review_week(week_anchor, gsc_lag)
 
     GS, GE, _, _, _ = resolve_natural_week(week_anchor, gsc_lag)
-    review_path = WEEKLY / f"Lovart-SEO-review-{GS}-{GE}.md"
-    natural_path = WEEKLY / f"Lovart-SEO-Week_{GS}_{GE}.md"
+    review_path = WEEKLY / f"品牌方-SEO-review-{GS}-{GE}.md"
+    natural_path = WEEKLY / f"品牌方-SEO-Week_{GS}_{GE}.md"
     if review_path.is_file():
         text = review_path.read_text()
         text = text.replace("复盘周报", "自然周报").replace("复盘周", "自然周（周一~周日）")

@@ -1,5 +1,5 @@
 """
-Lovart Sentinel - Content Production Monitor
+品牌方 Sentinel - Content Production Monitor
 读取内容日历和产出报告
 """
 from pathlib import Path

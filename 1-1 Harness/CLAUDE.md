@@ -8,7 +8,7 @@ status: active
 path: 1-1 Harness/CLAUDE.md
 generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 ---
-# Lovart MFlow — Claude
+# 品牌方 MFlow — Claude
 
 Claude 打开 `1-1 Harness/` 时的项目记忆。技能库见 `.claude/skills/`（Claude 专用副本，与 Hermes 的 `Skills/` 独立）。
 
@@ -19,11 +19,11 @@ Claude 打开 `1-1 Harness/` 时的项目记忆。技能库见 `.claude/skills/`
 3. **再读**：`1-1 Harness/00-INDEX.md` 选章节
 4. **改前后 audit**：在改 entities/relationships/入口文件之前/之后跑 `bash 1-1 Harness/11-knowledge/dream/audit.sh`
 
-知识图查询用 `bash 1-1 Harness/11-knowledge/scripts/kg <subcommand>`，梦境编排用 `bash 1-1 Harness/11-knowledge/dream/consolidate.sh`，详见对应 SKILL.md：`lovart-knowledge-graph-query` + `lovart-dream-orchestrator`。
+知识图查询用 `bash 1-1 Harness/11-knowledge/scripts/kg <subcommand>`，梦境编排用 `bash 1-1 Harness/11-knowledge/dream/consolidate.sh`，详见对应 SKILL.md：`knowledge-graph-query` + `dream-orchestrator`。
 
 ## 会话收尾（重要！）
 
-每段会话**结束前**自动或主动触发 skill **`lovart-session-log`** — 写结构化 Session Log 到 `1-1 Harness/11-knowledge/sessions/{YYYY-MM-DD}-{slug}.md`。
+每段会话**结束前**自动或主动触发 skill **`session-log`** — 写结构化 Session Log 到 `1-1 Harness/11-knowledge/sessions/{YYYY-MM-DD}-{slug}.md`。
 
 **触发信号**（任一即可）：
 - 用户说"这轮可以收尾"、"写日志"、"归档"、"wrap up"、"log this"、"session 完结"、"本轮收尾"
@@ -49,33 +49,33 @@ Claude 打开 `1-1 Harness/` 时的项目记忆。技能库见 `.claude/skills/`
 
 ## 常用入口
 
-- 舆情监测：`lovart-sentinel`
-- 数据/SEO：`lovart-data-ingestion`、`lovart-trident-data-engine`
-- 内容日历：`lovart-content-calendar`
-- Blog 生产：`lovart-blog-automation`、`lovart-blog-signal-writer`、`lovart-complete-guide`
-- 落地页：`lovart-landing-page`、`lovart-page-serp-writer`、`refresh-page-page-generator`
-- 质检：`lovart-content-quality-gates`、`lovart-content-audit`
-- 发布：`lovart-sanity-content-publish`（路由）→ 各 `*-sanity-publish`
-- 分发：`lovart-multi-platform-push`、`lovart-content-distribution`
-- 编排：`lovart-pipeline-orchestrator`、`lovart-content-creation-orchestrator`
+- 舆情监测：`mflow-sentinel`
+- 数据/SEO：`data-ingestion`、`trident-data-engine`
+- 内容日历：`content-calendar`
+- Blog 生产：`blog-automation`、`blog-signal-writer`、`complete-guide`
+- 落地页：`landing-page`、`page-serp-writer`、`refresh-page-page-generator`
+- 质检：`content-quality-gates`、`content-audit`
+- 发布：`sanity-content-publish`（路由）→ 各 `*-sanity-publish`
+- 分发：`multi-platform-push`、`content-distribution`
+- 编排：`pipeline-orchestrator`、`content-creation-orchestrator`
 
 ## 角色子代理（≈Hermes 档案）
 
-位于 `.claude/agents/`，各预载对应阶段技能到独立上下文（省主线程 token）。用法：说"用 lovart-blog 写…"或 `@agent-lovart-blog`；`--agent lovart-intel` 可整场只用该角色。
+位于 `.claude/agents/`，各预载对应阶段技能到独立上下文（省主线程 token）。用法：说"用 mflow-blog 写…"或 `@agent-mflow-blog`；`--agent mflow-intel` 可整场只用该角色。
 
-- `lovart-intel` — 情报监测（sentinel + trident；data-ingestion 可发现）
-- `lovart-blog` — Blog 生产（blog-signal-writer；blog-automation/image-generation 可发现）
-- `lovart-page` — 落地页生产（landing-page + page-serp-writer；refresh-page 可发现）
-- `lovart-qa` — 质检（content-quality-gates；content-audit 可发现）
-- `lovart-publisher` — Sanity 发布路由（sanity-content-publish → 各 *-sanity-publish）
-- `lovart-distributor` — 多平台分发（multi-platform-push；content-distribution 可发现）
-- `lovart-orchestrator` — 全流程编排（pipeline + content-creation-orchestrator；content-calendar）
+- `mflow-intel` — 情报监测（sentinel + trident；data-ingestion 可发现）
+- `mflow-blog` — Blog 生产（blog-signal-writer；blog-automation/image-generation 可发现）
+- `mflow-page` — 落地页生产（landing-page + page-serp-writer；refresh-page 可发现）
+- `mflow-qa` — 质检（content-quality-gates；content-audit 可发现）
+- `mflow-publisher` — Sanity 发布路由（sanity-content-publish → 各 *-sanity-publish）
+- `mflow-distributor` — 多平台分发（multi-platform-push；content-distribution 可发现）
+- `mflow-orchestrator` — 全流程编排（pipeline + content-creation-orchestrator；content-calendar）
 
 改动 agent 文件后需重启会话生效；用 `/agents` 界面创建/编辑则即时生效。
 
 ## 路径契约（SSOT）
 
 - 文档 SSOT：`1-1 GEO Readme/`
-- Sanity 脚本：`1-4 Dev/lovart.sanity.studio/scripts/`
+- Sanity 脚本：`1-4 Dev/品牌.sanity.studio/scripts/`
 - SEO/Sentinel 脚本：`1-4 Dev/scripts/`
 - 自动化：`1-4 Dev/automation/`

@@ -1,7 +1,7 @@
 """
-Lovart Sentinel - 媒体库系统化轮询
+品牌方 Sentinel - 媒体库系统化轮询
 ====================================
-定期轮询固定的国际+中文科技/设计媒体站点，检测Lovart报道。
+定期轮询固定的国际+中文科技/设计媒体站点，检测品牌方报道。
 """
 from ._common import banner
 
@@ -10,32 +10,32 @@ MEDIA_SITES = {
     "international_tech": {
         "sites": "techcrunch.com OR wired.com OR theverge.com OR venturebeat.com OR arstechnica.com",
         "label": "国际科技媒体",
-        "query": "lovart ai design agent",
+        "query": "品牌 ai design agent",
     },
     "international_design": {
         "sites": "creativebloq.com OR designmodo.com OR smashingmagazine.com OR itsnicethat.com OR awwwards.com",
         "label": "国际设计媒体",
-        "query": "lovart ai design tool",
+        "query": "品牌 ai design tool",
     },
     "china_tech": {
         "sites": "36kr.com OR geekpark.com OR ifanr.com OR pingwest.com OR sspai.com OR huxiu.com",
         "label": "中文科技媒体",
-        "query": "lovart AI设计",
+        "query": "品牌 AI设计",
     },
     "china_design": {
         "sites": "shejipi.com OR logonews.cn OR uisdc.com OR uiiiuiii.com OR zcool.com.cn",
         "label": "中文设计媒体",
-        "query": "lovart AI设计工具",
+        "query": "品牌 AI设计工具",
     },
     "china_ai": {
         "sites": "jiqizhixin.com OR liangziben.com OR qbitai.com OR aitechreview.com",
         "label": "中文AI媒体",
-        "query": "lovart AI设计Agent",
+        "query": "品牌 AI设计Agent",
     },
     "china_marketing": {
         "sites": "socialbeta.com OR meihua.info OR adquan.com OR pangjing.cn",
         "label": "中文营销媒体",
-        "query": "lovart AI设计",
+        "query": "品牌 AI设计",
     },
 }
 
@@ -47,8 +47,8 @@ def collect() -> dict:
     data["search_engine"] = "Bing (国际) / 百度 (中文)"
     data["_instructions"] = """
     对每个media_group执行1条Bing/百度 webfetch：
-      Bing:  site:{sites} lovart ai
-      百度:  site:{sites} lovart AI设计
+      Bing:  site:{sites} 品牌 ai
+      百度:  site:{sites} 品牌 AI设计
     
     对每条结果提取：
     - 文章标题、发布日期、媒体名称、URL
@@ -69,7 +69,7 @@ def parse_media_results(markdown: str, group_name: str) -> dict:
         "sentiment_distribution": {"positive": 0, "neutral": 0, "negative": 0},
     }
 
-    article_blocks = re.findall(r'(\d{4}[年/-]\d{1,2}[月/-]\d{1,2})[^\n]*\n([^\n]*(?:lovart|Lovart|LOVART)[^\n]*)', markdown, re.IGNORECASE)
+    article_blocks = re.findall(r'(\d{4}[年/-]\d{1,2}[月/-]\d{1,2})[^\n]*\n([^\n]*(?:品牌|品牌方|MFLOW)[^\n]*)', markdown, re.IGNORECASE)
     for date, title in article_blocks[:20]:
         result["articles_found"] += 1
         article = {"date": date, "title": title.strip()[:200]}

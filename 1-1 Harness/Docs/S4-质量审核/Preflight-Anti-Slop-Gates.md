@@ -2,8 +2,8 @@
 
 > 用途：把 [Content-Quality-Rubric](./Content-Quality-Rubric.md) 与 [Content-Production-Ledger](./Content-Production-Ledger.md) 中可自动检测项，映射到 preflight 错误码与严重级。  
 > 上游：Rubric、Ledger、Anti-Slop  
-> 实现：`1-1 Harness/Skills/lovart-content-quality-gates/scripts/anti-slop-preflight.js`  
-> 目标合并：`1-4 Dev/lovart.sanity.studio/scripts/preflight-content.js`
+> 实现：`1-1 Harness/Skills/content-quality-gates/scripts/anti-slop-preflight.js`  
+> 目标合并：`1-4 Dev/品牌.sanity.studio/scripts/preflight-content.js`
 
 ---
 
@@ -13,7 +13,7 @@
 |---|---|---|
 | **L1 结构** | `preflight-content.js` | slug、i18n、JSON、SEO 长度、URL |
 | **L1b Anti-Slop** | `anti-slop-preflight.js` | 占位符、空泛词、薄 H2、缩水、FAQ/CTA |
-| **L3 深度** | `lovart-content-audit` | 合规、文化、可读性、TF-IDF |
+| **L3 深度** | `content-audit` | 合规、文化、可读性、TF-IDF |
 
 L1b 不替代 L3；它挡住最明显的 AI slop 与结构缩水，再交人工/Rubric 细评。
 
@@ -88,7 +88,7 @@ L1b 不替代 L3；它挡住最明显的 AI slop 与结构缩水，再交人工/
 ### 5.1 独立运行（Harness，立即可用）
 
 ```bash
-cd "1-1 Harness/Skills/lovart-content-quality-gates/scripts"
+cd "1-1 Harness/Skills/content-quality-gates/scripts"
 
 # 单篇 Blog
 node anti-slop-preflight.js --file "../../../1-3 Content Gen/Content Calendar/01-How-To/example.md"
@@ -108,10 +108,10 @@ node anti-slop-preflight.js --file article.md --strict --report "../../Output/Qu
 ### 5.2 与 studio preflight 串联（推荐发布前）
 
 ```bash
-cd "1-4 Dev/lovart.sanity.studio"
+cd "1-4 Dev/品牌.sanity.studio"
 
 node scripts/preflight-content.js --type blog-md --strict
-node ../1-5\ Harness/Skills/lovart-content-quality-gates/scripts/anti-slop-preflight.js \
+node ../1-5\ Harness/Skills/content-quality-gates/scripts/anti-slop-preflight.js \
   --dir "../../1-3 Content Gen/Content Calendar" --glob "*.md" --strict
 ```
 
@@ -120,7 +120,7 @@ node ../1-5\ Harness/Skills/lovart-content-quality-gates/scripts/anti-slop-prefl
 在 `preflight-content.js` 的 Blog / composite 检查路径中：
 
 ```javascript
-const antiSlop = require('../../1-1 Harness/Skills/lovart-content-quality-gates/scripts/lib/anti-slop-rules.js')
+const antiSlop = require('../../1-1 Harness/Skills/content-quality-gates/scripts/lib/anti-slop-rules.js')
 
 // Blog MD path
 const r = antiSlop.checkBlogMarkdown(md, { strict: opts.strict, language })
@@ -144,7 +144,7 @@ const r2 = antiSlop.checkCompositePage(page, { strict: opts.strict })
 SERP brief → Ledger → 撰写 → anti-slop-preflight (CREATE)
        → preflight-content (TRANSLATE / PRE-PUBLISH)
        → Rubric 人工/Agent 评分
-       → lovart-content-audit (DEEP QA)
+       → content-audit (DEEP QA)
 ```
 
 | 阶段 | 必跑 |
@@ -177,6 +177,6 @@ SERP brief → Ledger → 撰写 → anti-slop-preflight (CREATE)
 - 样本库：[Content-Sample-Library.md](./Content-Sample-Library.md) — 好稿/坏稿标注用于校准本表阈值。
 
 ```bash
-cd "1-1 Harness/Skills/lovart-content-quality-gates/scripts"
+cd "1-1 Harness/Skills/content-quality-gates/scripts"
 node sample-library-cli.js calibrate
 ```

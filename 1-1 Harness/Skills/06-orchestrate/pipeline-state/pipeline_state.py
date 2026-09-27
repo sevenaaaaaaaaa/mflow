@@ -517,7 +517,7 @@ def _print_item_human(item: dict) -> None:
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="pipeline_state.py",
-        description="Lovart MFlow pipeline state machine (single source of truth)",
+        description="the brand MFlow pipeline state machine (single source of truth)",
     )
     p.add_argument("--state-path", default=str(DEFAULT_STATE_FILE),
                    help=f"path to pipeline-state.json (default: {DEFAULT_STATE_FILE})")

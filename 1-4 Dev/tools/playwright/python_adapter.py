@@ -8,13 +8,13 @@ Use this when you need:
 
 The adapter takes care of:
   - Chromium launch (headless, sandboxed, configurable)
-  - Optional cookie injection from $LOVART_BROWSER_COOKIES_JSON
+  - Optional cookie injection from $MFLOW_BROWSER_COOKIES_JSON
   - Markdown extraction via inner_text + best-effort cleanup
   - Persistent profile dir so you can log in once, reuse forever
 
 CLI:
     PYTHONPATH= $VENV/bin/python python_adapter.py https://app.notion.so/...
-    PYTHONPATH= $VENV/bin/python python_adapter.py https://gmail.com/ --user-data-dir ~/.lovart-browser
+    PYTHONPATH= $VENV/bin/python python_adapter.py https://gmail.com/ --user-data-dir ~/.mflow-browser
 """
 from __future__ import annotations
 
@@ -33,7 +33,7 @@ CHROME_UA = (
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36"
 )
 
-DEFAULT_USER_DATA_DIR = Path.home() / "Library" / "Caches" / "lovart-browser-profile"
+DEFAULT_USER_DATA_DIR = Path.home() / "Library" / "Caches" / "mflow-browser-profile"
 
 
 def _strip_to_markdown(text: str) -> str:
@@ -72,7 +72,7 @@ def fetch(
 
     Returns dict: {ok, title, markdown, html_chars, http_status, elapsed_s, error}.
     """
-    user_data_dir = user_data_dir or os.environ.get("LOVART_BROWSER_USER_DATA_DIR",
+    user_data_dir = user_data_dir or os.environ.get("MFLOW_BROWSER_USER_DATA_DIR",
                                                     str(DEFAULT_USER_DATA_DIR))
     Path(user_data_dir).mkdir(parents=True, exist_ok=True)
 

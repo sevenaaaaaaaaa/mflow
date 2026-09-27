@@ -8,7 +8,7 @@ status: active
 path: 1-1 Harness/02-rules/RULES-00-iron.md
 generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 ---
-# Lovart RULES — 00 全局铁律（所有会话必载）
+# 品牌方 RULES — 00 全局铁律（所有会话必载）
 
 > 本文件是唯一跨所有 Profile 加载的规则文件。任何会话、任何工作线，以下规则不可违反。
 
@@ -58,7 +58,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 1. 所有报告、所有维度**必须有环比**（绝对变化 + 百分比），不允许只出当期快照
 2. 天数不等对比时全部用**日均值**，不比较绝对数
 3. 竞品词库 265 全量 + 36 核心（真实词库，不可编造）
-4. 品牌词用 `lovart_brand_match.is_brand()` 精确分类
+4. 品牌词用 `brand_match.is_brand()` 精确分类
 5. 地区分组：南亚(IN+PK+ID)、拉美(BR+MX)、中东非(IR+EG+DZ) 是主要区域
 6. GSC 拉取需全维度（query/country/page/country×query/device）
 7. 每节必须有 💡 洞察（问题/根源/缓解），三部分缺一不可
@@ -67,8 +67,8 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 
 | 变量 | 值 |
 |------|-----|
-| `$LOVART_RESOURCE_ROOT` | vault 根（Obsidian MindRe） |
-| `$LOVART_LOCAL_DEV_ROOT` | `~/Documents/Lovart Local Dev/` |
+| `$MFLOW_RESOURCE_ROOT` | vault 根（Obsidian MindRe） |
+| `$MFLOW_LOCAL_DEV_ROOT` | `~/Documents/MFlow Local Dev/` |
 | Sanity project | `your-project-id` / `production` |
 | Sanity token | `~/.config/sanity/config.json` → `/tmp/sanitytoken.txt` |
 | Vault 脚本路径 | `1-4 Dev/`（非 `1-4 Dev/`，历史别名） |
@@ -77,6 +77,6 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 
 - 文章写作禁止 delegate_task。子 agent 无法保持 voice 深度。
 - 所有 API 已验证：Sanity/GSC/GA4/Bing/WP/Notion ✓
-- Profiles: lovart-seo(deepseek-chat) lovart-content(deepseek-v4-pro)
+- Profiles: mflow-seo(deepseek-chat) mflow-content(deepseek-v4-pro)
 - Gateway launchd 已装，12 cron deliver→origin
-- Kanban lovart 板 6 任务 workspace 已配
+- Kanban 品牌 板 6 任务 workspace 已配

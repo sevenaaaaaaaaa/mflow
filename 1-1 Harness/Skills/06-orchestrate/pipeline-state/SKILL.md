@@ -3,7 +3,7 @@ description: 管线状态机。12 阶段状态机，原子写，非法转换 exi
 ---
 # pipeline-state — pipeline state machine (v1.0)
 
-> **Why this exists**: 6 Profile + 6 工作线 × 12 个 skill 的 Lovart 内容工厂里,最
+> **Why this exists**: 6 Profile + 6 工作线 × 12 个 skill 的 品牌方 内容工厂里,最
 > 大的隐性 bug 是「谁也不知道上一步是谁、下一步给谁」。结果就是:跑完 QA 该生成了、
 > 跑完生成该跑 QA,来回扯皮。
 >
@@ -55,13 +55,13 @@ FINAL  : done, failed, escalated
 ## Required state file location
 
 默认: `1-3 GenFlow/.pipeline/pipeline-state.json`
-（即 vault 根 → Lovart MFlow → 1-3 GenFlow → .pipeline/pipeline-state.json）
+（即 vault 根 → 品牌方 MFlow → 1-3 GenFlow → .pipeline/pipeline-state.json）
 
 用 `--state-path` 可 override。
 
 ## Typical session flow
 
-### 创作会话 (lovart-creation)
+### 创作会话 (mflow-creation)
 ```bash
 # 1) 开 session 先 next
 python3 pipeline_state.py next
@@ -69,8 +69,8 @@ python3 pipeline_state.py next
 # 2) 取一个 item,upsert 更新 artifact_path
 python3 pipeline_state.py upsert --id blog-firefly-2026-07 \
   --artifact-path "1-3 GenFlow/Blog Pipeline/drafts/firefly.md" \
-  --agent lovart-creation \
-  --skill lovart-blog-signal-writer
+  --agent mflow-creation \
+  --skill blog-signal-writer
 
 # 3) advance 到 S3-creating
 python3 pipeline_state.py advance --id blog-firefly-2026-07 --to S3-creating \
@@ -84,7 +84,7 @@ python3 pipeline_state.py advance --id blog-firefly-2026-07 --to S3-done \
   --reason "7500 words, all H2 sections present"
 ```
 
-### QA 会话 (lovart-quality)
+### QA 会话 (mflow-quality)
 ```bash
 # 1) 看哪些 S3-done 等 QA
 python3 pipeline_state.py list --phase REVIEW
@@ -105,7 +105,7 @@ python3 pipeline_state.py advance --id blog-firefly-2026-07 --to S4-fix --reason
 python3 pipeline_state.py advance --id blog-firefly-2026-07 --to S4-ready
 ```
 
-### 发布会话 (lovart-ops)
+### 发布会话 (mflow-ops)
 ```bash
 # 1) 看哪些 S4-ready
 python3 pipeline_state.py list --phase SHIP
@@ -154,10 +154,10 @@ python3 pipeline_state.py advance --id blog-firefly-2026-07 --to S5-published
 
 ## Related skills
 
-- `lovart-content-quality-gates` —— S4 QA 阶段的执行器（输出 → `run --qa-result`）
-- `lovart-sanity-publish` —— S5-importing 后的执行器（输入要求 `pre-import-check` PASS）
-- `lovart-sitemap-update` —— S5-published 后的通知器
-- `lovart-sentinel` —— S6-monitoring 阶段的反馈源
+- `content-quality-gates` —— S4 QA 阶段的执行器（输出 → `run --qa-result`）
+- `sanity-publish` —— S5-importing 后的执行器（输入要求 `pre-import-check` PASS）
+- `sitemap-update` —— S5-published 后的通知器
+- `mflow-sentinel` —— S6-monitoring 阶段的反馈源
 
 
 ## 预算（RULES-70 强制）

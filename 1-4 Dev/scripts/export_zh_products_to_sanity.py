@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Lovart 中文 Product Page → Sanity NDJSON 导出脚本
+品牌方 中文 Product Page → Sanity NDJSON 导出脚本
 ===========================================
 读取 Pages/Products/zh/*.json → 添加 Sanity import 字段 → 输出 NDJSON
 
@@ -16,7 +16,7 @@ import json
 import os
 import sys
 
-DEFAULT_OG_URL = "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png"
+DEFAULT_OG_URL = "https://assets-persist.example.com/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png"
 
 
 def _extract_first_image(body_sections):
@@ -47,11 +47,11 @@ def _make_structured_data(title, description, slug):
         "@type": "Product",
         "name": title,
         "description": description or title,
-        "url": f"https://www.lovart.ai/zh/{slug}",
+        "url": f"https://www.example.com/zh/{slug}",
         "publisher": {
             "@type": "Organization",
-            "name": "Lovart",
-            "url": "https://www.lovart.ai"
+            "name": "品牌方",
+            "url": "https://www.example.com"
         }
     }
     return data
@@ -96,7 +96,7 @@ def export_product(input_path, output_path, dry_run=False):
             "noIndex": prod.get("seo", {}).get("noIndex", False),
             "ogImage": {
                 "_type": "imageSource",
-                "alt": f"{title} — Lovart AI Design",
+                "alt": f"{title} — 品牌方 AI Design",
                 "sourceType": "external",
                 "url": og_url
             },
@@ -109,7 +109,7 @@ def export_product(input_path, output_path, dry_run=False):
                 )
             }
         },
-        "urlPath": f"https://www.lovart.ai/zh/{base_slug}"
+        "urlPath": f"https://www.example.com/zh/{base_slug}"
     }
 
     line = json.dumps(record, ensure_ascii=False)

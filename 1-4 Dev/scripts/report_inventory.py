@@ -44,8 +44,8 @@ def scan_coverage(from_ym: str, to_ym: str) -> dict:
         except Exception:
             bing_data = {}
 
-    weekly_review = list((REPORTS / "weekly").glob("Lovart-SEO-review-*.md")) if (REPORTS / "weekly").is_dir() else []
-    weekly_natural = list((REPORTS / "weekly").glob("Lovart-SEO-Week_*.md")) if (REPORTS / "weekly").is_dir() else []
+    weekly_review = list((REPORTS / "weekly").glob("品牌方-SEO-review-*.md")) if (REPORTS / "weekly").is_dir() else []
+    weekly_natural = list((REPORTS / "weekly").glob("品牌方-SEO-Week_*.md")) if (REPORTS / "weekly").is_dir() else []
     daily_dir = REPORTS / "daily"
 
     months = {}
@@ -56,7 +56,7 @@ def scan_coverage(from_ym: str, to_ym: str) -> dict:
             "seo_geo": _has_snapshot("seo-geo", ym),
             "bing": _has_bing_month(ym, bing_data),
             "dataworks_xlsx": _has_dataworks(ym),
-            "rendered_monthly": (REPORTS / "monthly" / f"Lovart-SEO-{ym}.md").is_file(),
+            "rendered_monthly": (REPORTS / "monthly" / f"品牌方-SEO-{ym}.md").is_file(),
             "rendered_topics": len(list((REPORTS / "topics").glob(f"*-{ym}.md"))) if (REPORTS / "topics").is_dir() else 0,
         }
 

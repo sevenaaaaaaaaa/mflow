@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Lovart Sentinel - 数据采集编排器 V4 (品牌配置化)
+品牌方 Sentinel - 数据采集编排器 V4 (品牌配置化)
 ================================================
 用法:
-  python collect.py --brand lovart
+  python collect.py --brand 品牌
   python collect.py --brand canva --mode competitor
 """
 
@@ -21,7 +21,7 @@ from typing import Optional
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 SENTINEL_ROOT = Path(__file__).resolve().parent
 BRANDS_DIR = SENTINEL_ROOT / "brands"
-RAW_OUT = PROJECT_ROOT / "1-2 Insight" / "Lovart ORM" / "raw"
+RAW_OUT = PROJECT_ROOT / "1-2 Insight" / "ORM" / "raw"
 
 
 def today_str() -> str:
@@ -77,9 +77,9 @@ def run_source(name: str, out_dir: Path, brand_config: Optional[dict] = None) ->
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Lovart Sentinel Collector V4")
+    parser = argparse.ArgumentParser(description="品牌方 Sentinel Collector V4")
     parser.add_argument("--source", default="all", help="Source module name or 'all'")
-    parser.add_argument("--brand", default="lovart", help="Brand config name (e.g., lovart, canva)")
+    parser.add_argument("--brand", default="品牌", help="Brand config name (e.g., 品牌, canva)")
     parser.add_argument("--mode", default="weekly", choices=["weekly", "daily", "competitor", "pulse"])
     args = parser.parse_args()
 

@@ -28,7 +28,7 @@ Portable Text block structure:
   "markDefs": [{"_key": "link-<n>", "_type": "link", "href": "..."}]
 }
 
-Table structure (Lovart production schema SSOT — @sanity/table):
+Table structure (the brand production schema SSOT — @sanity/table):
 {
   "_type": "table",
   "_key": "<random>",
@@ -206,7 +206,7 @@ def _plain_cell_text(text):
 
 
 def _make_table_block(rows_data):
-    """Create a Lovart-schema table block: cells are plain strings."""
+    """Create a the brand-schema table block: cells are plain strings."""
     rows = []
     for row_cells in rows_data:
         cells = [_plain_cell_text(cell_text) for cell_text in row_cells]
@@ -250,7 +250,7 @@ def count_key_issues(nodes, path="body"):
 
 
 def validate_portable_text_body(blocks):
-    """Validate Lovart blog body PT structure. Returns {ok, issues}.
+    """Validate the brand blog body PT structure. Returns {ok, issues}.
 
     Checks:
     1. every typed node has _key (except string cells)

@@ -50,14 +50,14 @@ bash 1-4\ Dev/scripts/hooks/pre-import-check.sh \
 
 ### 方式 2:Hermes cron 调度
 
-加到 `~/.hermes/profiles/content-gen-lovart/cron/preflight-hourly.sh`:
+加到 `~/.hermes/profiles/content-gen-品牌/cron/preflight-hourly.sh`:
 
 ```bash
 #!/usr/bin/env bash
 # 每小时跑一次所有 hook 的 dry-run,产出问题清单
-LOVART_HOOKS="<vault>/1-Project/Lovart MFlow/1-4 Dev/scripts/hooks"
-VAULT="<vault-root>  # 即 LOVART_RESOURCE_ROOT，Obsidian MindRe 根目录"
-"$LOVART_HOOKS/pre-write-check.sh" --file "$VAULT/1-3 GenFlow/.pipeline/sentinel.md"
+MFLOW_HOOKS="<vault>/1-Project/品牌方 MFlow/1-4 Dev/scripts/hooks"
+VAULT="<vault-root>  # 即 MFLOW_RESOURCE_ROOT，Obsidian MindRe 根目录"
+"$MFLOW_HOOKS/pre-write-check.sh" --file "$VAULT/1-3 GenFlow/.pipeline/sentinel.md"
 ```
 
 ### 方式 3:Git pre-commit hook (TODO)

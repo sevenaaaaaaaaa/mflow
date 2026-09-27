@@ -1,7 +1,7 @@
 # Quality Gates — 质量门禁（人类可读）
 
-> **执行 SSOT**：`1-1 Harness/Skills/lovart-content-quality-gates/SKILL.md`  
-> **脚本 SSOT**：`1-4 Dev/lovart.sanity.studio/scripts/preflight-content.js`
+> **执行 SSOT**：`1-1 Harness/Skills/content-quality-gates/SKILL.md`  
+> **脚本 SSOT**：`1-4 Dev/品牌.sanity.studio/scripts/preflight-content.js`
 
 ---
 
@@ -11,9 +11,9 @@
 |------|------|------|
 | CREATE | L1 | `preflight --type tools\|features\|blog-md` |
 | TRANSLATE | L1+L5 | marker 清零、i18n 文件名 |
-| PRE-PUBLISH | L1 | `--ndjson ~/lovart/import-*.ndjson` |
+| PRE-PUBLISH | L1 | `--ndjson ~/品牌/import-*.ndjson` |
 | POST-PUBLISH | L2 | `verify-blog-publish` / `verify-composite` |
-| DEEP QA | L3 | `lovart-content-audit`、Anti-Slop 人工 |
+| DEEP QA | L3 | `content-audit`、Anti-Slop 人工 |
 | 周期 | L1+HTTP | `audit-*` 脚本 |
 
 ---

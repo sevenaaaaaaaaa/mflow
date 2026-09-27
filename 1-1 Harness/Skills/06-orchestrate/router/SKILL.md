@@ -13,13 +13,13 @@ description: 路由器 skill。23 条决策矩阵决定 profile/skill/action。
 ## When this skill loads
 
 加载条件:
-- **任意** Lovart 会话开头(skill 极轻,几十行决策表)
+- **任意** 品牌方 会话开头(skill 极轻,几十行决策表)
 - 不撞具体 stage——但凡用到 pipeline-state 的会话都该先 `router decide`
 
 不加载:
 - 用户问一次性事实问题
 - 报告类(月报 / 周报 / Sentinel)
-- 项目管理类(Pipeline / Cron 配置)——这些用 `lovart-management` 自带的决策即可
+- 项目管理类(Pipeline / Cron 配置)——这些用 `mflow-management` 自带的决策即可
 
 ## Commands (6 个)
 
@@ -35,40 +35,40 @@ description: 路由器 skill。23 条决策矩阵决定 profile/skill/action。
 
 | profile | work_line | 拥有的 stage | 关键 skill 数 |
 |---------|-----------|-------------|--------------|
-| `lovart-reports` | S1-data + S6-monitor | S0-todo | 4 |
-| `lovart-creation` | S3-content-production | S3-creating, S3-draft, S3-done | 5 |
-| `lovart-quality` | S4-review | S4-qa, S4-fix, S4-ready | 4 |
-| `lovart-ops` | S5-publish | S5-importing, S5-published, S6-monitoring | 3 |
-| `lovart-distribution` | S5b-distribute | (无,操作已发布内容) | 2 |
-| `lovart-management` | M0-meta | (无) | 4 |
+| `mflow-reports` | S1-data + S6-monitor | S0-todo | 4 |
+| `mflow-creation` | S3-content-production | S3-creating, S3-draft, S3-done | 5 |
+| `mflow-quality` | S4-review | S4-qa, S4-fix, S4-ready | 4 |
+| `mflow-ops` | S5-publish | S5-importing, S5-published, S6-monitoring | 3 |
+| `mflow-distribution` | S5b-distribute | (无,操作已发布内容) | 2 |
+| `mflow-management` | M0-meta | (无) | 4 |
 
 ## Decision matrix (23 个)
 
 ```
 stage            scenario                     profile                action
-S0-todo          default                      lovart-creation        upsert
-S0-todo          from_sentinel                lovart-creation        upsert
-S3-creating      default                      lovart-creation        execute_skill
-S3-draft         default                      lovart-creation        run_hook_and_advance
-S3-draft         l1_fluff                     lovart-quality         reroute      ← 你最痛的!
-S3-draft         word_count_low               lovart-creation        execute_skill
-S3-draft         missing_dates                lovart-creation        patch_artifact
-S3-draft         i18n_translation_needed      lovart-creation        execute_skill
-S3-done          default                      lovart-creation        advance_only
-S4-qa            default                      lovart-quality         execute_skill
-S4-fix           default                      lovart-creation        reroute      ← 修复回路
-S4-fix           i18n_audit_fail              lovart-creation        reroute
-S4-ready         default                      lovart-quality         advance_only
-S5-importing     default                      lovart-ops             execute_skill
-S5-importing     preflight_fail               lovart-quality         reroute      ← 你最痛的!
-S5-importing     sanity_id_exists             lovart-ops             execute_skill
-S5-published     default                      lovart-ops             execute_skill
-S5-published     needs_distribution           lovart-distribution    reroute
-S6-monitoring    default                      lovart-reports         execute_skill
-S6-monitoring    ranking_drop                 lovart-creation        execute_skill
+S0-todo          default                      mflow-creation        upsert
+S0-todo          from_sentinel                mflow-creation        upsert
+S3-creating      default                      mflow-creation        execute_skill
+S3-draft         default                      mflow-creation        run_hook_and_advance
+S3-draft         l1_fluff                     mflow-quality         reroute      ← 你最痛的!
+S3-draft         word_count_low               mflow-creation        execute_skill
+S3-draft         missing_dates                mflow-creation        patch_artifact
+S3-draft         i18n_translation_needed      mflow-creation        execute_skill
+S3-done          default                      mflow-creation        advance_only
+S4-qa            default                      mflow-quality         execute_skill
+S4-fix           default                      mflow-creation        reroute      ← 修复回路
+S4-fix           i18n_audit_fail              mflow-creation        reroute
+S4-ready         default                      mflow-quality         advance_only
+S5-importing     default                      mflow-ops             execute_skill
+S5-importing     preflight_fail               mflow-quality         reroute      ← 你最痛的!
+S5-importing     sanity_id_exists             mflow-ops             execute_skill
+S5-published     default                      mflow-ops             execute_skill
+S5-published     needs_distribution           mflow-distribution    reroute
+S6-monitoring    default                      mflow-reports         execute_skill
+S6-monitoring    ranking_drop                 mflow-creation        execute_skill
 ANY              user_asks_state              current                info_only
 ANY              user_asks_skill_list         current                info_only
-ANY              calendar_oversubscribed      lovart-management      reroute
+ANY              calendar_oversubscribed      mflow-management      reroute
 ```
 
 ## Typical session flow
@@ -82,19 +82,19 @@ python3 router/router.py decide
 例:
 ```text
 [decide] id=blog-firefly-2026-07  stage=S3-draft  scenario=l1_fluff
-  → profile: lovart-quality
+  → profile: mflow-quality
   → action:  reroute
-  → skills:  lovart-anti-slop
+  → skills:  mflow-anti-slop
   → reason:  L1 fluff → quality profile specializes in slop detection
 ```
 
-→ 立刻 `hermes -p lovart-quality`(自动重启) → 该 profile 装的就是 anti-slop → 修 → patch state → 关闭
+→ 立刻 `hermes -p mflow-quality`(自动重启) → 该 profile 装的就是 anti-slop → 修 → patch state → 关闭
 
 ### 撞到跨档案场景时的"立即路由"
 ```bash
-# 在 lovart-creation 跑着,撞到 L1 fluff
+# 在 mflow-creation 跑着,撞到 L1 fluff
 python3 router.py decide --id blog-firefly-2026-07 --from-context "L1 fluff in section 3"
-# → 建议跳到 lovart-quality
+# → 建议跳到 mflow-quality
 ```
 
 ### 修改决策表后校验
@@ -108,7 +108,7 @@ python3 router.py validate
 下一步改造(在 todo 第 4 步里):
 - 把每个 profile 的 SOUL.md 缩短到 80-120 行(只装路由表 + 自身定位)
 - 把"我装哪些 skill"改成由 `router decide` 动态决定
-- 3 个冗余 profile(`content-gen-lovart` / `qa-of-lovart` / `seo-opt-lovart`)合并掉
+- 3 个冗余 profile(`content-gen-品牌` / `qa-of-品牌` / `seo-opt-品牌`)合并掉
 
 ## Safety / anti-patterns
 
@@ -129,9 +129,9 @@ python3 router.py validate
 ## Related skills
 
 - `pipeline-state` — router 的输入(state stage 来自它)
-- `lovart-content-quality-gates` — `l1_fluff` 触发后真正执行
-- `lovart-sanity-publish` — `S5-importing` 触发后真正执行
-- `lovart-content-creation-orchestrator` — 改写后直接调 `router decide` 作为 step 1
+- `content-quality-gates` — `l1_fluff` 触发后真正执行
+- `sanity-publish` — `S5-importing` 触发后真正执行
+- `content-creation-orchestrator` — 改写后直接调 `router decide` 作为 step 1
 
 
 ## 预算（RULES-70 强制）

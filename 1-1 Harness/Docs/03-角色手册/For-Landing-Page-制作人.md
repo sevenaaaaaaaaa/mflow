@@ -2,7 +2,7 @@
 
 > **文档定位**：面向落地页制作人员的操作指南  
 > **更新日期**：2026-06-07  
-> **适用范围**：Lovart 项目所有落地页制作相关人员
+> **适用范围**：品牌方 项目所有落地页制作相关人员
 
 ---
 
@@ -95,7 +95,7 @@
 
 | `type` | 作用 | 适用场景 |
 |--------|------|----------|
-| `comparison-table` | 多列功能对比表 | Lovart vs 竞品 / 旧工作流 |
+| `comparison-table` | 多列功能对比表 | 品牌方 vs 竞品 / 旧工作流 |
 | `comparison-before-after` | 单图前后对比滑块 | 效果类工具、视觉改善证明 |
 
 ### 2.8 证言 / 评价（3 变体）
@@ -335,28 +335,28 @@
 
 **流水线：**
 
-在 `1-4 Dev/lovart.sanity.studio/` 下（输出落在工作区内，避免沙箱写 `~/lovart`）：
+在 `1-4 Dev/品牌.sanity.studio/` 下（输出落在工作区内，避免沙箱写 `~/品牌`）：
 
 ```bash
-# _pull 已外置到运行层，通过 LOVART_PULL_DIR 环境变量引用
-source "$(cd ../.. && pwd)/1-Project/Lovart MFlow/1-4 Dev/automation/local-dev-env.sh"
-PULL="$LOVART_PULL_DIR"
+# _pull 已外置到运行层，通过 MFLOW_PULL_DIR 环境变量引用
+source "$(cd ../.. && pwd)/1-Project/品牌方 MFlow/1-4 Dev/automation/local-dev-env.sh"
+PULL="$MFLOW_PULL_DIR"
 
 # 1) 只读拉取线上全量英文 Features 页（含 bodyJson + seo）
-LOVART_PULL_DIR="$PULL" node scripts/export-feature-pages.js --lang en
+MFLOW_PULL_DIR="$PULL" node scripts/export-feature-pages.js --lang en
 
 # 2) 全量重排为新 13 段故事线（本地草稿，noIndex，不导入）
-LOVART_PULL_DIR="$PULL" node scripts/reflow-feature-pages.js
+MFLOW_PULL_DIR="$PULL" node scripts/reflow-feature-pages.js
 #   --limit 5            只跑前 5 篇
 #   --slug ai-logo-maker 只跑某页
 #   --storyline features-main  强制统一故事线
 ```
 
-- 输入：`$LOVART_PULL_DIR/composite/features-full/*.json`
-- 输出：`$LOVART_PULL_DIR/features-reflow/Features/en/<slug>-en.json` + `_manifest.json` + `_report.md`
+- 输入：`$MFLOW_PULL_DIR/composite/features-full/*.json`
+- 输出：`$MFLOW_PULL_DIR/features-reflow/Features/en/<slug>-en.json` + `_manifest.json` + `_report.md`
 
-> ⚠️ `_pull/` 已从 `1-3 GenFlow/Page Gen/Pages/drafts/` 迁移到 `~/Documents/Lovart Local Dev/Output/Page Gen/_pull/`。
-> 所有脚本通过 `LOVART_PULL_DIR` 环境变量读取，默认值由 `local-dev-env.sh` 提供。
+> ⚠️ `_pull/` 已从 `1-3 GenFlow/Page Gen/Pages/drafts/` 迁移到 `~/Documents/MFlow Local Dev/Output/Page Gen/_pull/`。
+> 所有脚本通过 `MFLOW_PULL_DIR` 环境变量读取，默认值由 `local-dev-env.sh` 提供。
 
 ### 5.2 故事线分配（按页内容自动判定）
 
@@ -400,7 +400,7 @@ LOVART_PULL_DIR="$PULL" node scripts/reflow-feature-pages.js
 
 ### 6.2 如何修改 JSON 模块？
 
-1. **找到对应文件**：在 `$LOVART_PULL_DIR/features-reflow/` 目录下找到对应的 JSON 文件
+1. **找到对应文件**：在 `$MFLOW_PULL_DIR/features-reflow/` 目录下找到对应的 JSON 文件
 2. **修改 type 字段**：将 `type` 字段修改为需要的 JSON 模块类型
 3. **调整内容结构**：根据新模块的要求调整内容结构
 4. **预览效果**：使用预览工具查看效果
@@ -428,6 +428,6 @@ LOVART_PULL_DIR="$PULL" node scripts/reflow-feature-pages.js
 
 ---
 
-> **维护者**：Lovart 团队  
+> **维护者**：品牌方 团队  
 > **最后更新**：2026-06-04  
 > **版本**：V1.0

@@ -1,5 +1,5 @@
 """
-Lovart Sentinel - Bing SERP Scanner
+品牌方 Sentinel - Bing SERP Scanner
 通过 webfetch 实时扫描 Bing 搜索结果页
 注意：需要在 opencode agent 上下文中运行，调用 webfetch
 """
@@ -7,16 +7,16 @@ from ._common import banner
 
 # 寄生域名列表
 PARASITES = [
-    "lovart-ai.com", "lovart.pro", "lovart.io",
-    "lovart.info", "lovart.me", "lovart.fyi"
+    "mflow-ai.com", "品牌.pro", "品牌.io",
+    "品牌.info", "品牌.me", "品牌.fyi"
 ]
 
 QUERIES = {
-    "brand": "lovart ai",
-    "brand_variant": "lovart ai design agent",
-    "competitor": "lovart vs canva vs midjourney ai design tool",
-    "review": "lovart ai review 2025 2026",
-    "chinese": "lovart ai 使用 体验 评价",
+    "brand": "品牌 ai",
+    "brand_variant": "品牌 ai design agent",
+    "competitor": "品牌 vs canva vs midjourney ai design tool",
+    "review": "品牌 ai review 2025 2026",
+    "chinese": "品牌 ai 使用 体验 评价",
 }
 
 
@@ -47,7 +47,7 @@ def collect() -> dict:
 def parse_bing_serp(markdown_content: str, query_name: str) -> dict:
     """从 webfetch 返回的 markdown 内容中提取 SERP 数据"""
     import re
-    result = {"query": query_name, "total_results": 0, "top_domains": [], "has_parasites": False, "lovart_position": None}
+    result = {"query": query_name, "total_results": 0, "top_domains": [], "has_parasites": False, "品牌_position": None}
 
     # 提取 URL 模式
     url_pattern = re.findall(r'https?://([^/\s\)]+)', markdown_content)
@@ -69,10 +69,10 @@ def parse_bing_serp(markdown_content: str, query_name: str) -> dict:
     result["parasites_in_serp"] = parasites_found
     result["has_parasites"] = len(parasites_found) > 0
 
-    # Lovart 官方排名
+    # 品牌方 官方排名
     for i, d in enumerate(domains):
-        if "lovart.ai" in d:
-            result["lovart_position"] = i + 1
+        if "example.com" in d:
+            result["品牌_position"] = i + 1
             break
 
     return result

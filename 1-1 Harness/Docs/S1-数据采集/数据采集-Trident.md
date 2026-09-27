@@ -4,7 +4,7 @@
 |----|------|
 | **适用角色** | 数据对接分析师、SEO |
 | **脚本 SSOT** | `1-4 Dev/scripts/trident/`（采集）· `seo_monthly_v2.py` / `weekly_review_v3.py`（报告） |
-| **Skill** | `lovart-trident-data-engine` |
+| **Skill** | `trident-data-engine` |
 | **产出** | `1-4 Dev/Output/Data Ingestion/`、`1-2 Insight/` |
 
 ---
@@ -13,7 +13,7 @@
 
 ```bash
 python3 "1-4 Dev/scripts/seo_monthly_v2.py" --month 2026-05
-# 或 Harness Trident 脚本（配置见 lovart-gsc-api-setup-guide.md）
+# 或 Harness Trident 脚本（配置见 gsc-api-setup-guide.md）
 ```
 
 Trident 原始采集：
@@ -26,7 +26,7 @@ python3 "1-4 Dev/scripts/trident/gsc_fetch.py" --month 2026-05
 
 ## GA4 / Bing
 
-见 Harness `lovart-trident-data-engine/scripts/ga4_fetch.py`、`bing_fetch.py`。
+见 Harness `trident-data-engine/scripts/ga4_fetch.py`、`bing_fetch.py`。
 
 ---
 

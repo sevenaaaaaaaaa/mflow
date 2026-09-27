@@ -75,51 +75,51 @@ expect_ok "validate passes on clean decision table" python3 "$ROUTER" validate
 
 log "2) profiles listed"
 out=$(python3 "$ROUTER" profiles 2>&1)
-n=$(echo "$out" | grep -c "^  lovart-")
+n=$(echo "$out" | grep -c "^  mflow-")
 expect_eq "exactly 6 profiles" "6" "$n"
 
 log "3) decide picks S0-todo first"
 out=$(python3 "$ROUTER" "${ROUTER_ARGS[@]}" decide 2>&1)
 target=$(echo "$out" | grep "→ profile:" | awk '{print $NF}')
-expect_eq "S0-todo → lovart-creation" "lovart-creation" "$target"
+expect_eq "S0-todo → mflow-creation" "mflow-creation" "$target"
 
 log "4) decide --id routes by stage"
 out=$(python3 "$ROUTER" "${ROUTER_ARGS[@]}" decide --id item-s3-creating 2>&1)
 target=$(echo "$out" | grep "→ profile:" | awk '{print $NF}')
-expect_eq "S3-creating → lovart-creation" "lovart-creation" "$target"
+expect_eq "S3-creating → mflow-creation" "mflow-creation" "$target"
 
 out=$(python3 "$ROUTER" "${ROUTER_ARGS[@]}" decide --id item-s3-draft 2>&1)
 target=$(echo "$out" | grep "→ profile:" | awk '{print $NF}')
-expect_eq "S3-draft (default) → lovart-creation" "lovart-creation" "$target"
+expect_eq "S3-draft (default) → mflow-creation" "mflow-creation" "$target"
 
 out=$(python3 "$ROUTER" "${ROUTER_ARGS[@]}" decide --id item-s4-fix 2>&1)
 target=$(echo "$out" | grep "→ profile:" | awk '{print $NF}')
-expect_eq "S4-fix → lovart-creation (back to write)" "lovart-creation" "$target"
+expect_eq "S4-fix → mflow-creation (back to write)" "mflow-creation" "$target"
 
 out=$(python3 "$ROUTER" "${ROUTER_ARGS[@]}" decide --id item-s5-importing 2>&1)
 target=$(echo "$out" | grep "→ profile:" | awk '{print $NF}')
-expect_eq "S5-importing → lovart-ops" "lovart-ops" "$target"
+expect_eq "S5-importing → mflow-ops" "mflow-ops" "$target"
 
 log "5) decide --from-context detects scenarios"
-# L1 fluff → lovart-quality
+# L1 fluff → mflow-quality
 out=$(python3 "$ROUTER" "${ROUTER_ARGS[@]}" decide --id item-s3-draft --from-context "L1 fluff in section 3" 2>&1)
 target=$(echo "$out" | grep "→ profile:" | awk '{print $NF}')
-expect_eq "l1_fluff context → lovart-quality" "lovart-quality" "$target"
+expect_eq "l1_fluff context → mflow-quality" "mflow-quality" "$target"
 
-# preflight fail → lovart-quality
+# preflight fail → mflow-quality
 out=$(python3 "$ROUTER" "${ROUTER_ARGS[@]}" decide --id item-s5-importing --from-context "preflight failed BLOCK != 0" 2>&1)
 target=$(echo "$out" | grep "→ profile:" | awk '{print $NF}')
-expect_eq "preflight_fail context → lovart-quality" "lovart-quality" "$target"
+expect_eq "preflight_fail context → mflow-quality" "mflow-quality" "$target"
 
-# sanity_id_exists → lovart-ops
+# sanity_id_exists → mflow-ops
 out=$(python3 "$ROUTER" "${ROUTER_ARGS[@]}" decide --id item-s5-importing --from-context "sanity_id already exists, can't import" 2>&1)
 target=$(echo "$out" | grep "→ profile:" | awk '{print $NF}')
-expect_eq "sanity_id_exists context → lovart-ops" "lovart-ops" "$target"
+expect_eq "sanity_id_exists context → mflow-ops" "mflow-ops" "$target"
 
 # i18n translation → stays in creation
 out=$(python3 "$ROUTER" "${ROUTER_ARGS[@]}" decide --id item-s3-draft --from-context "need to translate to 10 languages" 2>&1)
 target=$(echo "$out" | grep "→ profile:" | awk '{print $NF}')
-expect_eq "i18n_translation context → lovart-creation" "lovart-creation" "$target"
+expect_eq "i18n_translation context → mflow-creation" "mflow-creation" "$target"
 
 log "6) decide --json has expected keys"
 out=$(python3 "$ROUTER" "${ROUTER_ARGS[@]}" decide --id item-s3-draft --json 2>&1)

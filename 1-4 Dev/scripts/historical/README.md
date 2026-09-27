@@ -45,10 +45,10 @@ python3 report_batch_runner.py finalize-monthly --from 2025-03 --to 2026-05
 | 类型 | 路径 |
 |------|------|
 | 盘点 | `reports/_inventory/history-coverage.json` |
-| 月报 | `reports/monthly/Lovart-SEO-YYYY-MM.md` |
-| 专题 | `reports/topics/Lovart-SEO-topic-{name}-YYYY-MM.md` |
+| 月报 | `reports/monthly/品牌方-SEO-YYYY-MM.md` |
+| 专题 | `reports/topics/品牌方-SEO-topic-{name}-YYYY-MM.md` |
 | 季报 | `reports/quarterly/` |
-| 双月报 | `reports/bimonthly/Lovart-SEO-YYYY-Bn.md`（V2 全结构；B1=1–2月 … B6=11–12月；需四月快照） |
+| 双月报 | `reports/bimonthly/品牌方-SEO-YYYY-Bn.md`（V2 全结构；B1=1–2月 … B6=11–12月；需四月快照） |
 | 年报 | `reports/annual/` |
 | 整体史 | `reports/lifetime/` |
 | 周报 | `reports/weekly/` |

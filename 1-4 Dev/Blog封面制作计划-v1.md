@@ -1,7 +1,7 @@
-# Lovart Blog 封面制作计划
+# 品牌方 Blog 封面制作计划
 
 > 版本：v1.5 | 日期：2026-06-22 | 状态：v1.5 液态玻璃 + 黑线白填版
-> 执行路径：第一步撰写提示词 → 第二步交给 Lovart 制作
+> 执行路径：第一步撰写提示词 → 第二步交给 品牌方 制作
 >
 > **v1.5 变更摘要**（基于 v1.4 实践效果不佳修复）：
 > 1. 背景质感：从"有机流动光晕"升级为"苹果 Liquid Glass 液态玻璃"——半透明材质、折射反射、动态光效、层次感、光泽感
@@ -40,13 +40,13 @@
 | 英文 (en) | 1,343 | 优先制作 |
 | 中文 (zh) | 898 | 后续按需 |
 | 日文 (ja) | 895 | 后续按需 |
-| 其他 | ~7,095 | Lovart 101 批量生成内容 |
+| 其他 | ~7,095 | 品牌方 101 批量生成内容 |
 
 ### 1.3 分类分布（线上实际有效分类）
 
 | 分类 | 数量 | 占比 | 封面策略优先级 |
 |------|------|------|---------------|
-| **Lovart 101** | 6,394 | 66.7% | P2 — 数量大，可按子主题分批 |
+| **品牌方 101** | 6,394 | 66.7% | P2 — 数量大，可按子主题分批 |
 | **How-To** | 1,158 | 12.1% | P1 — 核心流量分类 |
 | **Best Practice** | 832 | 8.7% | P1 — 产品使用技巧 |
 | **Better Design** | 260 | 2.7% | P1 — 设计知识 |
@@ -107,11 +107,11 @@
 
 ---
 
-## 三、分类配色方案（基于 Lovart 官方 VI 系统 v1.0）
+## 三、分类配色方案（基于 品牌方 官方 VI 系统 v1.0）
 
-### 3.0 Lovart 官方 VI 色彩体系总览
+### 3.0 品牌方 官方 VI 色彩体系总览
 
-封面配色严格遵循 Lovart Brand Guidelines v1.0 中定义的色彩体系，不引入任何品牌外的颜色。
+封面配色严格遵循 品牌方 Brand Guidelines v1.0 中定义的色彩体系，不引入任何品牌外的颜色。
 
 **主色（Primary）**：
 | 名称 | HEX | RGB | 用途 |
@@ -157,7 +157,7 @@
 
 | 分类 | 映射 VI 组合 | 背景液态玻璃色调 (Light) | 背景液态玻璃色调 (Theme) | 元素勾边 | 元素填充 | 色彩温度 |
 |------|------------|-------------------------|-------------------------|---------|---------|---------|
-| **Lovart 101** | **Lime** | `#E8F5A0` Lime Light | `#D0FC16` Lightning | `#000000` 黑色 | `#FFFFFF` 白色 | 暖-黄绿 |
+| **品牌方 101** | **Lime** | `#E8F5A0` Lime Light | `#D0FC16` Lightning | `#000000` 黑色 | `#FFFFFF` 白色 | 暖-黄绿 |
 | **How-To** | **Green** | `#CFFFE9` Mint Light | `#48D85E` Jade | `#000000` 黑色 | `#FFFFFF` 白色 | 冷-绿 |
 | **Best Practice** | **Blue** | `#C4DFFF` Haze Light | `#1A7AFF` Azure | `#000000` 黑色 | `#FFFFFF` 白色 | 冷-蓝 |
 | **Better Design** | **Orange** | `#FFD4B8` Bare Light | `#FF7A1A` Citrus | `#000000` 黑色 | `#FFFFFF` 白色 | 暖-橙 |
@@ -195,7 +195,7 @@
 ```
 
 **外框几何**（选择其一）：
-- **未封闭圆形**：代表完整、循环、入门（Lovart 101、Best Practice）
+- **未封闭圆形**：代表完整、循环、入门（品牌方 101、Best Practice）
 - **圆角矩形**：代表结构、工具、实用（How-To、Branding）
 - **三角形**：代表方向、趋势、洞察（Insight & Trend、Topics）
 - **六边形**：代表系统、网络、专业（Better Design）
@@ -208,7 +208,7 @@
 - 线条齿轮 → 工作流、效率
 - 线条眼睛 → 洞察、趋势、分析
 - 线条灯泡 → 创意、灵感、Best Practice
-- 线条书本 → 学习、入门、Lovart 101
+- 线条书本 → 学习、入门、品牌方 101
 - 线条对比符号 (VS) → 对比、评测
 - 线条节点网络 → 系统思维、行业方案
 - 线条盾牌 → 品牌、信任、安全
@@ -217,7 +217,7 @@
 
 | 分类 | 外框 | 核心线条元素 | 辅助元素 | 示意描述 |
 |------|------|-------------|---------|---------|
-| **Lovart 101** | 未封闭圆形 | 线条书本 或 线条灯泡 | 小光点 ×3 | "一本打开的书被未封闭的圆环环绕，三个小光点散落在圆环外侧" |
+| **品牌方 101** | 未封闭圆形 | 线条书本 或 线条灯泡 | 小光点 ×3 | "一本打开的书被未封闭的圆环环绕，三个小光点散落在圆环外侧" |
 | **How-To** | 圆角矩形 | 线条齿轮 或 线条画笔 | 箭头连接线 | "圆角矩形内有一支线条画笔，右侧用箭头连接到一个小齿轮" |
 | **Best Practice** | 未封闭圆形 | 线条灯泡 或 线条手指 | 小圆点轨迹 | "灯泡居中，被未封闭圆环环绕，圆环上有三个等距小圆点" |
 | **Better Design** | 六边形 | 线条画笔 或 线条眼睛 | 辅助几何碎片 | "六边形内有一只线条眼睛，周围漂浮着 2-3 个小三角形碎片" |
@@ -375,7 +375,7 @@ optical properties like frosted glass with green tint. Multiple glass layers sta
 creating depth. Light flowing along glass curves with bright highlight points.
 Absolutely NO solid color, NO geometric gradient, NO noise/grain, NO flat texture.
 
-COLOR PALETTE: How-To category — mapped to Lovart VI "Green" combination.
+COLOR PALETTE: How-To category — mapped to 品牌方 VI "Green" combination.
 - Background: APPLE LIQUID GLASS, #CFFFE9 glass tint, #48D85E highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -410,7 +410,7 @@ or elements in the bottom-left text zone.
 ```
 
 **示例 2：Insight & Trend 类文章**
-> 文章：*AI Design in 2027: Predictions from the Lovart Research Team*
+> 文章：*AI Design in 2027: Predictions from the 品牌方 Research Team*
 > 映射 VI 组合：**Purple**（背景液态玻璃色调 `#E6D5F5` Iris Light，高光 `#8B4BF7` Amethyst）
 
 ```
@@ -434,7 +434,7 @@ Realistic optical properties like frosted glass with purple tint. Multiple glass
 stacked creating depth. Light flowing along glass curves with bright highlight points.
 Absolutely NO solid color, NO geometric gradient, NO noise/grain, NO flat texture.
 
-COLOR PALETTE: Insight & Trend category — mapped to Lovart VI "Purple" combination.
+COLOR PALETTE: Insight & Trend category — mapped to 品牌方 VI "Purple" combination.
 - Background: APPLE LIQUID GLASS, #E6D5F5 glass tint, #8B4BF7 highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -468,7 +468,7 @@ geometric gradients, noise, grain, flat textures, mechanical straight lines,
 or elements in the bottom-left text zone.
 ```
 
-**示例 3：Lovart 101 类文章**
+**示例 3：品牌方 101 类文章**
 > 文章：*AI Brand Identity 101: From Logo to Full Visual System*
 > 映射 VI 组合：**Lime**（背景液态玻璃色调 `#E8F5A0` Lime Light，高光 `#D0FC16` Lightning）
 
@@ -493,7 +493,7 @@ Realistic optical properties like frosted glass with lime tint. Multiple glass l
 stacked creating depth. Light flowing along glass curves with bright highlight points.
 Absolutely NO solid color, NO geometric gradient, NO noise/grain, NO flat texture.
 
-COLOR PALETTE: Lovart 101 category — mapped to Lovart VI "Lime" combination.
+COLOR PALETTE: 品牌方 101 category — mapped to 品牌方 VI "Lime" combination.
 - Background: APPLE LIQUID GLASS, #E8F5A0 glass tint, #D0FC16 highlights/refraction
 - Element stroke: BLACK (#000000) flowing hand-drawn lines, 100% opacity
 - Element fill: WHITE (#FFFFFF) solid fill for core elements
@@ -534,7 +534,7 @@ or elements in the bottom-left text zone.
 |------|------|------|------|
 | **Phase 0** | 样板验证 | 每个分类 3 篇 = 21 篇 | 21 张样板封面 + 21 条提示词 |
 | **Phase 1** | 英文核心分类 | How-To + Best Practice + Better Design + Insight & Trend = ~2,388 篇 | 批量提示词 |
-| **Phase 2** | 英文 Lovart 101 | ~6,394 篇（按子主题分批） | 批量提示词 |
+| **Phase 2** | 英文 品牌方 101 | ~6,394 篇（按子主题分批） | 批量提示词 |
 | **Phase 3** | 英文剩余 | Topics + Branding + 无分类 = ~933 篇 | 批量提示词 |
 | **Phase 4** | 多语言 | zh + ja = ~1,793 篇 | 复用/调整英文提示词 |
 
@@ -544,9 +544,9 @@ or elements in the bottom-left text zone.
 
 | 分类 | 样板文章 | 核心主题 | 元素组合 |
 |------|---------|---------|---------|
-| Lovart 101 | AI Brand Identity 101 | 品牌入门 | 未封闭圆 + 线条书本 |
-| Lovart 101 | AI Video Creation 101 | 视频入门 | 未封闭圆 + 线条播放键 |
-| Lovart 101 | ChatCanvas 101 Getting Started | 产品入门 | 未封闭圆 + 线条手指 |
+| 品牌方 101 | AI Brand Identity 101 | 品牌入门 | 未封闭圆 + 线条书本 |
+| 品牌方 101 | AI Video Creation 101 | 视频入门 | 未封闭圆 + 线条播放键 |
+| 品牌方 101 | ChatCanvas 101 Getting Started | 产品入门 | 未封闭圆 + 线条手指 |
 | How-To | Facebook Ad Creatives with AI | 广告创意 | 圆角矩形 + 线条喇叭 |
 | How-To | YouTube Thumbnails That Get Clicks | 缩略图 | 圆角矩形 + 线条眼睛 |
 | How-To | Shopify Product Images with AI | 电商图片 | 圆角矩形 + 线条画笔 |
@@ -615,7 +615,7 @@ or elements in the bottom-left text zone.
 | 检查项 | 标准 |
 |--------|------|
 | **比例** | 16:9 (2400×1350px 或 1200×675px) |
-| **配色** | 在该分类映射的 Lovart VI 组合色系内，不超过 2 种色相 |
+| **配色** | 在该分类映射的 品牌方 VI 组合色系内，不超过 2 种色相 |
 | **风格** | 极简抽象几何，非写实、非卡通、非图标堆砌 |
 | **背景质感**（v1.5 重写） | 背景必须是**苹果 Liquid Glass 液态玻璃**：半透明材质、折射反射、动态光效、层次感、光泽感。**禁止**纯色、几何渐变、噪点、颗粒、扁平无质感 |
 | **负空间** | ≥ 30%，底部/左侧留足文字叠加区 |
@@ -667,6 +667,6 @@ or elements in the bottom-left text zone.
 3. **审核样板**：验证风格方向是否符合预期
 4. **调整规范**：根据样板反馈微调配色/元素
 5. **批量生成提示词**：按 Phase 1-4 顺序执行
-6. **Lovart 制作**：将提示词批量交给 Lovart 执行
+6. **品牌方 制作**：将提示词批量交给 品牌方 执行
 7. **质量验收**：按第七章标准逐批验收
 8. **上传替换**：通过 Sanity API 批量更新封面

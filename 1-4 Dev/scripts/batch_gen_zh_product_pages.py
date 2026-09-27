@@ -5,7 +5,7 @@ import json
 import os
 
 OG_FALLBACK = (
-    "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/"
+    "https://assets-persist.example.com/img/079352d520c34315b54e3e3eb87c2674/"
     "d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png"
 )
 
@@ -23,7 +23,7 @@ def sec_hero(title, description, pn):
         "type": "hero-cinematic", "tag": "AI设计产品",
         "title": title, "highlightedText": "", "description": description,
         "buttons": [
-            {"text": "免费试用", "href": "https://lovart.ai/signup", "variant": "primary"},
+            {"text": "免费试用", "href": "https://example.com/signup", "variant": "primary"},
             {"text": "了解更多", "href": "", "variant": "secondary"},
         ],
         "media": {"src": OG_FALLBACK, "alt": pn},
@@ -55,9 +55,9 @@ def sec_testimonial():
     return {
         "type": "testimonial", "title": "用户评价", "description": "来自真实用户的体验分享",
         "testimonials": [
-            {"content": "用了Lovart之后，每月设计成本从3万降到3千，产出翻了三倍。最关键是品牌一致性比以前找外包还要稳定。", "author": "陈明辉", "role": "某消费品牌市场总监", "avatar": ""},
-            {"content": "一个人运营三个社媒账号，以前每天花两小时做图。Lovart说一句出十版让我挑，五分钟搞定一天的素材。", "author": "林小艺", "role": "30万粉丝科技博主", "avatar": ""},
-            {"content": "我们团队试过市面上所有AI设计工具，Lovart是唯一真正理解设计流程的平台。Brand Kit加ChatCanvas的组合解决了团队协作的核心问题。", "author": "张一鸣", "role": "创意设计机构创始人", "avatar": ""},
+            {"content": "用了品牌方之后，每月设计成本从3万降到3千，产出翻了三倍。最关键是品牌一致性比以前找外包还要稳定。", "author": "陈明辉", "role": "某消费品牌市场总监", "avatar": ""},
+            {"content": "一个人运营三个社媒账号，以前每天花两小时做图。品牌方说一句出十版让我挑，五分钟搞定一天的素材。", "author": "林小艺", "role": "30万粉丝科技博主", "avatar": ""},
+            {"content": "我们团队试过市面上所有AI设计工具，品牌方是唯一真正理解设计流程的平台。Brand Kit加ChatCanvas的组合解决了团队协作的核心问题。", "author": "张一鸣", "role": "创意设计机构创始人", "avatar": ""},
         ],
     }
 
@@ -78,8 +78,8 @@ def sec_cta(pn, desc=None):
     return {
         "type": "cta-default",
         "title": f"开始使用{pn}",
-        "description": desc or "无需信用卡。免费额度让您亲身体验Lovart的设计能力。",
-        "buttons": [{"text": "免费试用", "href": "https://lovart.ai/signup", "variant": "primary"}],
+        "description": desc or "无需信用卡。免费额度让您亲身体验品牌方的设计能力。",
+        "buttons": [{"text": "免费试用", "href": "https://example.com/signup", "variant": "primary"}],
     }
 
 # ── Build one product ─────────────────────────────────────────────

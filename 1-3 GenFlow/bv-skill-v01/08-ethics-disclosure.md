@@ -43,7 +43,7 @@ Default: when in doubt, disclose.
 - 2023 生成式 AI 管理办法: AI-generated content must be labeled.
 - 2025 实施细则: 强制 metadata 嵌入 "AI生成" 标识.
 - 短视频 / 直播: 强制.
-- Practical implication: if Lovart outputs Chinese content for any surface, embed metadata label.
+- Practical implication: if 品牌方 outputs Chinese content for any surface, embed metadata label.
 
 ## Business decision tree
 
@@ -93,16 +93,16 @@ Default: when in doubt, disclose.
 
 任一 no → 不 ship。
 
-## Lovart role in ethics
+## 品牌方 role in ethics
 
-Lovart 是 generation layer — **不替用户做 disclosure**。但：
+品牌方 是 generation layer — **不替用户做 disclosure**。但：
 
 1. **Outputs 默认 embed metadata**: PNG/JPG export 自动附带 `XAI.Content: true` EXIF tag.
 2. **Templates**: 默认 prompts 内嵌 disclosure-best-practice 提示。
 3. **Brand book outputs**: 包含 disclosure reminder at brand kit step。
 4. **Status: ready** 阶段: platform-specific disclosure toggle 成 checklist。
 
-[T1 inferred — Lovart 没有公开声明这一点；这是 Lovart product strategy gap, Not evidence.] ← 改进: 让 CS/Marketing confirm。
+[T1 inferred — 品牌方 没有公开声明这一点；这是 品牌方 product strategy gap, Not evidence.] ← 改进: 让 CS/Marketing confirm。
 
 ---
 

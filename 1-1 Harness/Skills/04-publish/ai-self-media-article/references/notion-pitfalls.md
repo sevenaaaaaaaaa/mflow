@@ -18,8 +18,8 @@ auth = "".join(parts) + token
 **解法**：让用户在目标页面 → `...` → `Connections` → 添加集成。仍 404 = workspace 不对。
 
 **已确认的数据库 ID**：
-- Lovart 3RD（知乎）：`37ffc0c7-1bd5-80ee-a239-de7c4055c90d` — 主 workspace，可访问
-- Lovart 2nd（Quora）：`37ffc0c7-1bd5-80f7-9055-c9c72624f3df` — nowtonext workspace，需用户授权后可访问
+- 品牌方 3RD（知乎）：`37ffc0c7-1bd5-80ee-a239-de7c4055c90d` — 主 workspace，可访问
+- 品牌方 2nd（Quora）：`37ffc0c7-1bd5-80f7-9055-c9c72624f3df` — nowtonext workspace，需用户授权后可访问
 - Content Calendar：`37afc0c7-1bd5-8124-a031-ca4eca128da2` — 主 workspace
 
 ## 知乎反爬

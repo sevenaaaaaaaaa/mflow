@@ -4,15 +4,15 @@
 |----|------|
 | **适用角色** | 内容工程、SEO 发布 |
 | **前置** | `npx sanity login`、`check-sanity-auth.js` PASS |
-| **Studio SSOT** | `1-4 Dev/lovart.sanity.studio` |
-| **Skill** | `lovart-sanity-publish`、`lovart-sanity-content-publish` |
+| **Studio SSOT** | `1-4 Dev/品牌.sanity.studio` |
+| **Skill** | `sanity-publish`、`sanity-content-publish` |
 
 ---
 
 ## 工作目录
 
 ```bash
-cd "/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Dev/lovart.sanity.studio"
+cd "/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Dev/品牌.sanity.studio"
 ```
 
 ---
@@ -37,8 +37,8 @@ preflight L1 → convert（限定范围）→ preflight NDJSON → import --miss
 ```bash
 node scripts/preflight-content.js --type blog-md
 node scripts/convert.js --lang en --dry-run
-node scripts/preflight-content.js --ndjson ~/lovart/import-blog-en-batch01.ndjson
-npx sanity dataset import ~/lovart/import-blog-en-batch01.ndjson production --missing
+node scripts/preflight-content.js --ndjson ~/品牌/import-blog-en-batch01.ndjson
+npx sanity dataset import ~/品牌/import-blog-en-batch01.ndjson production --missing
 npx sanity exec scripts/verify-blog-publish.js --with-user-token
 ```
 

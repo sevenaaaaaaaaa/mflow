@@ -1,5 +1,5 @@
 """
-Lovart Sentinel - GSC Weekly Report
+品牌方 Sentinel - GSC Weekly Report
 Reads latest SEO weekly report markdown
 """
 from pathlib import Path

@@ -6,7 +6,7 @@ import sys
 _scripts = Path(__file__).resolve().parents[1]
 if str(_scripts) not in sys.path:
     sys.path.insert(0, str(_scripts))
-from lovart_brand_match import is_brand
+from brand_match import is_brand
 from datetime import date, timedelta
 from calendar import monthrange
 import urllib.request
@@ -20,11 +20,11 @@ BASE = ROOT / "1-2 Insight/Trident Insights/reports"
 OUT_M = BASE / "monthly"; OUT_Q = BASE / "quarterly"; OUT_A = BASE / "annual"; OUT_W = BASE / "weekly"
 for d in [OUT_M, OUT_Q, OUT_A, OUT_W]: d.mkdir(parents=True, exist_ok=True)
 
-CRED_DIR = ROOT / "Lovart" / "scripts" / "sentinel"
+CRED_DIR = ROOT / "品牌方" / "scripts" / "sentinel"
 GSC_C = json.loads((CRED_DIR / "gsc_credentials" / "gsc-token.json").read_text())
 GA4_T = json.loads((CRED_DIR / "ga4_credentials" / "ga4-token.json").read_text())['token']
 BING = json.loads((BASE / "bing-full.json").read_text())
-SITE = "https://www.lovart.ai/"
+SITE = "https://www.example.com/"
 
 def ib(q): return any(re.search(p, q.lower()) for p in BP)
 def fm(n): return f"{n:,}"
@@ -32,7 +32,7 @@ def fm(n): return f"{n:,}"
 # Load competitor keyword library
 COMP_KWS = set()
 try:
-    kw_lib = ROOT / "1-2 Insight" / "Trident Insights" / "竞品核心非品牌词" / "lovart_competitors_keywords.md"
+    kw_lib = ROOT / "1-2 Insight" / "Trident Insights" / "竞品核心非品牌词" / "品牌_competitors_keywords.md"
     for line in kw_lib.read_text().lower().split('\n'):
         parts = [p.strip() for p in line.split('|')]
         if len(parts) >= 2:
@@ -126,7 +126,7 @@ def gen_monthly(y, m, kw, geo_gsc, pages, sm_total, comp_hits, comp_cl, org, seg
     bb = [k for k in BING['keywords'] if ib(k['query'])]; bn = [k for k in BING['keywords'] if not ib(k['query'])]
     b_total = sum(k['clicks'] for k in BING['keywords']); b_non = sum(k['clicks'] for k in bn)
 
-    L = [f"# Lovart SEO 月报 — {period}"]
+    L = [f"# 品牌方 SEO 月报 — {period}"]
     L.append(f"\n**周期**: {period}-01 至 {period}-{end_day} | **生成**: {date.today().isoformat()}")
 
     # 1. Keywords
@@ -227,7 +227,7 @@ def gen_monthly(y, m, kw, geo_gsc, pages, sm_total, comp_hits, comp_cl, org, seg
     for i,t in enumerate(todos[:6],1): L.append(f"{i}. {t}")
 
     L.append(f"\n> Bing 数据为全量历史统计 | 竞品词库 {len(COMP_KWS)} 词")
-    (OUT_M / f"Lovart-SEO-{period}.md").write_text("\n".join(L)+"\n")
+    (OUT_M / f"品牌方-SEO-{period}.md").write_text("\n".join(L)+"\n")
     return org
 
 # ===== MAIN =====

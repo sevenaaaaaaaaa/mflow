@@ -1,11 +1,11 @@
 """
-Lovart Sentinel - 精细化情感分析引擎 V2
+品牌方 Sentinel - 精细化情感分析引擎 V2
 =========================================
 替代NLP的复合情感量化方案：
 
 1. 规则引擎 — 细分情感词典 + 否定/程度词处理
 2. 平台原生信号 — 提取各平台自带的评分/标签/tag
-3. 竞品基准对比 — 同渠道Lovart vs 竞品情感占比
+3. 竞品基准对比 — 同渠道品牌方 vs 竞品情感占比
 4. 情感漂移追踪 — 时序维度检测情感拐点
 5. 多维标签 — 不止正/负/中，加功能/价格/服务/信任子维度
 6. 弱信号检测 — 在负面爆发前捕获早期预警
@@ -58,8 +58,8 @@ def collect() -> dict:
        - 搜索: CTR/排名作为意图匹配代理
 
     3. 竞品基准对比：
-       - 同渠道Lovart vs Canva vs Midjourney情感分布
-       - 识别Lovart在哪些维度优于/劣于竞品
+       - 同渠道品牌方 vs Canva vs Midjourney情感分布
+       - 识别品牌方在哪些维度优于/劣于竞品
 
     4. 多维标签归类：
        - 每条提及打上维度标签（功能/价格/服务/对比/信任/易用）
@@ -140,26 +140,26 @@ COMPETITOR_BENCHMARKS = {
     "canva": {"ph_rating": 4.7, "g2_rating": 4.7, "estimated_social_sentiment": 0.82},
     "midjourney": {"ph_rating": 4.8, "g2_rating": 4.6, "estimated_social_sentiment": 0.85},
     "adobe_firefly": {"ph_rating": 4.3, "g2_rating": 4.5, "estimated_social_sentiment": 0.75},
-    "lovart": {"ph_rating": 4.9, "g2_rating": None, "estimated_social_sentiment": None},
+    "品牌": {"ph_rating": 4.9, "g2_rating": None, "estimated_social_sentiment": None},
 }
 
 
-def benchmark_against_competitors(lovart_data: dict) -> dict:
+def benchmark_against_competitors(品牌_data: dict) -> dict:
     """对标竞品情感基准"""
     result = {
         "ph_rating_comparison": {},
         "social_sentiment_gap": {},
     }
 
-    lovart_ph = lovart_data.get("product_hunt", {}).get("rating", 4.9)
+    品牌_ph = 品牌_data.get("product_hunt", {}).get("rating", 4.9)
     for comp, metrics in COMPETITOR_BENCHMARKS.items():
-        if comp == "lovart":
+        if comp == "品牌":
             continue
         if metrics.get("ph_rating"):
             result["ph_rating_comparison"][comp] = {
                 "competitor_rating": metrics["ph_rating"],
-                "lovart_rating": lovart_ph,
-                "difference": round(lovart_ph - metrics["ph_rating"], 1),
+                "品牌_rating": 品牌_ph,
+                "difference": round(品牌_ph - metrics["ph_rating"], 1),
             }
 
     return result
@@ -182,9 +182,9 @@ WEAK_SIGNAL_RULES = {
         "threshold": 1.0,
         "signal": "新用户兴趣下降，存量用户不满上升",
     },
-    "competitor_mention_in_lovart_context": {
-        "description": "在Lovart讨论中同时提及竞品的比例",
+    "competitor_mention_in_品牌_context": {
+        "description": "在品牌方讨论中同时提及竞品的比例",
         "threshold": 0.25,
-        "signal": "用户在做决策对比，Lovart正在被放在替代品位置考量",
+        "signal": "用户在做决策对比，品牌方正在被放在替代品位置考量",
     },
 }

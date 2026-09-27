@@ -3,7 +3,7 @@
 > 用途：把 GSC/Bing/GA4/舆情等上线信号，回流到 Rubric 权重、样本库、空泛词表、Ledger 默认项与改写队列。  
 > 上游：发布内容、SEO 月报、舆情监控、SERP 调研  
 > 配对：[Content-Quality-Rubric](./Content-Quality-Rubric.md)、[Content-Sample-Library](./Content-Sample-Library.md)、[Preflight-Anti-Slop-Gates](./Preflight-Anti-Slop-Gates.md)  
-> 登记文件：`1-1 Harness/Skills/lovart-content-quality-gates/feedback/register.json`
+> 登记文件：`1-1 Harness/Skills/content-quality-gates/feedback/register.json`
 
 ---
 
@@ -28,8 +28,8 @@
 | **Google Search Console** | GSC UI / API | 展示、点击、CTR、排名、query-page | 周 |
 | **Bing Webmaster** | Bing 后台 | 非品牌词覆盖、点击结构 | 月 |
 | **GA4** | 分析后台 | 落地转化、停留、跳出 | 周 |
-| **SEO 月报** | `1-2 Insight/Trident Insights/reports/monthly/Lovart-SEO-*.md` | 品牌依赖、缺口词、竞品覆盖 | 月 |
-| **非品牌 SEO** | `1-2 Insight/Lovart ORM/monthly/Lovart-NonBrand-SEO-*.md` | 高展示低点击词 | 月 |
+| **SEO 月报** | `1-2 Insight/Trident Insights/reports/monthly/品牌方-SEO-*.md` | 品牌依赖、缺口词、竞品覆盖 | 月 |
+| **非品牌 SEO** | `1-2 Insight/ORM/monthly/品牌方-NonBrand-SEO-*.md` | 高展示低点击词 | 月 |
 | **舆情监控** | ORM 月报 / 告警 | 夸大宣传、用户吐槽、合规风险 | 实时/周 |
 | **Sanity 发布记录** | import 日志 / GROQ | slug、language、发布日 | 每次发布 |
 | **Preflight / Rubric** | 发布时存档 | 成稿分数、BLOCK、样本 ID | 每次发布 |
@@ -131,7 +131,7 @@
 ### Step 2 — 更新 register
 
 ```bash
-cd "1-1 Harness/Skills/lovart-content-quality-gates/scripts"
+cd "1-1 Harness/Skills/content-quality-gates/scripts"
 node feedback-loop-cli.js import --csv path/to/gsc-page-export.csv
 node feedback-loop-cli.js evaluate
 node feedback-loop-cli.js report --month 2026-06
@@ -168,7 +168,7 @@ node feedback-loop-cli.js report --month 2026-06
 
 ```csv
 url,impressions,clicks,ctr,position,period_end
-https://www.lovart.ai/tools/ai-commercial-generator,12000,180,0.015,14.2,2026-06-01
+https://www.example.com/tools/ai-commercial-generator,12000,180,0.015,14.2,2026-06-01
 ```
 
 匹配规则：URL path → `register.json` 的 `url` 或 `content_id`（slug）。
@@ -191,7 +191,7 @@ https://www.lovart.ai/tools/ai-commercial-generator,12000,180,0.015,14.2,2026-06
 
 - 不因短期波动（<28 天、<200 展示）频繁改 gold 样本。
 - 不把品牌词 CTR 与非品牌词混评。
-- 不未核实就因竞品上涨降 Lovart 稿；先 SERP 刷新。
+- 不未核实就因竞品上涨降 品牌方 稿；先 SERP 刷新。
 - 反馈闭环**不自动发布**改写；只产出队列与建议，人工或 Agent 带 Ledger 重写。
 
 ---

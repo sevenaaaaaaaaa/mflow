@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Lovart Sentinel - 品牌声誉舆情报告生成器 V3
+品牌方 Sentinel - 品牌声誉舆情报告生成器 V3
 ============================================
 生成符合企业级品牌声誉报告标准的7板块舆情报告。
 
@@ -30,8 +30,8 @@ from typing import Any
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 SENTINEL_ROOT = Path(__file__).resolve().parent
-RAW_ROOT = PROJECT_ROOT / "1-2 Insight" / "Lovart ORM" / "raw"
-REPORT_OUT = PROJECT_ROOT / "1-2 Insight" / "Lovart ORM"
+RAW_ROOT = PROJECT_ROOT / "1-2 Insight" / "ORM" / "raw"
+REPORT_OUT = PROJECT_ROOT / "1-2 Insight" / "ORM"
 
 
 def load_snapshot(date_str: str) -> dict[str, Any]:
@@ -128,12 +128,12 @@ def section_serp_radar(data: dict) -> str:
         lines.append("\n### ⚠️ 品牌寄生域名状态")
         lines.append("| 域名 | Bing位置 | 风险 | 状态 |")
         lines.append("|------|----------|------|------|")
-        lines.append("| lovart-ai.com | 第2位 | 🔴 极高 | 跳转aggiii.com |")
-        lines.append("| lovart.pro | 第3位 | 🟠 高 | 仿冒官网 |")
-        lines.append("| lovart.io | 第4位 | 🟠 高 | 仿冒社区 |")
-        lines.append("| lovart.info | 第5位 | 🟠 高 | 仿冒信息站 |")
-        lines.append("| lovart.me | 第6位 | 🟠 高 | 仿冒Agent页 |")
-        lines.append("| lovart.fyi | 第7位 | 🟡 中 | 教程/截流站 |")
+        lines.append("| mflow-ai.com | 第2位 | 🔴 极高 | 跳转aggiii.com |")
+        lines.append("| 品牌.pro | 第3位 | 🟠 高 | 仿冒官网 |")
+        lines.append("| 品牌.io | 第4位 | 🟠 高 | 仿冒社区 |")
+        lines.append("| 品牌.info | 第5位 | 🟠 高 | 仿冒信息站 |")
+        lines.append("| 品牌.me | 第6位 | 🟠 高 | 仿冒Agent页 |")
+        lines.append("| 品牌.fyi | 第7位 | 🟡 中 | 教程/截流站 |")
 
     # 地域分布
     countries = gsc.get("top_countries", [])
@@ -228,12 +228,12 @@ def section_social_radar(data: dict) -> str:
 
     lines.append("| 平台 | 账号 | 粉丝/关注 | 内容量 | 互动率 | 趋势 | 评估 |")
     lines.append("|------|------|-----------|--------|--------|------|------|")
-    lines.append("| X/Twitter | @lovart_ai | 31,071 | 765帖 | 2.4赞/帖 | → | 🟡 极低互动 |")
-    lines.append("| LinkedIn | Lovart AI | 5,415 | 2-3帖/周 | 5-41 reactions | → | 🟡 低互动 |")
-    lines.append("| YouTube | @lovart_ai | 未知 | 未知 | -- | ? | 🔴 数据缺失 |")
-    lines.append("| Instagram | @lovart.ai | 未知 | 未知 | -- | ? | 🔴 数据缺失 |")
-    lines.append("| TikTok | @lovart_ai | 未知 | 未知 | -- | ? | 🔴 数据缺失 |")
-    lines.append("| Discord | lovart | 未知 | -- | -- | ? | 🔴 数据缺失 |")
+    lines.append("| X/Twitter | @品牌_ai | 31,071 | 765帖 | 2.4赞/帖 | → | 🟡 极低互动 |")
+    lines.append("| LinkedIn | 品牌方 AI | 5,415 | 2-3帖/周 | 5-41 reactions | → | 🟡 低互动 |")
+    lines.append("| YouTube | @品牌_ai | 未知 | 未知 | -- | ? | 🔴 数据缺失 |")
+    lines.append("| Instagram | @example.com | 未知 | 未知 | -- | ? | 🔴 数据缺失 |")
+    lines.append("| TikTok | @品牌_ai | 未知 | 未知 | -- | ? | 🔴 数据缺失 |")
+    lines.append("| Discord | 品牌 | 未知 | -- | -- | ? | 🔴 数据缺失 |")
     lines.append("| Reddit | -- | -- | 0讨论 | -- | -- | 🔴 零存在 |")
     lines.append("| 小红书 | -- | -- | 0内容 | -- | -- | 🔴 中国空白 |")
     lines.append("| 微信/微博 | -- | -- | 0内容 | -- | -- | 🔴 中国空白 |")
@@ -313,7 +313,7 @@ def section_todos(data: dict) -> str:
         todos.append({"priority": priority, "task": alert["msg"], "source": "Email Monitor"})
 
     # 品牌安全
-    todos.append({"priority": "P0", "task": "Bing品牌寄生域名清除（lovart-ai.com跳转aggiii.com）", "source": "Bing SERP"})
+    todos.append({"priority": "P0", "task": "Bing品牌寄生域名清除（mflow-ai.com跳转aggiii.com）", "source": "Bing SERP"})
 
     # PH评价
     todos.append({"priority": "P1", "task": "Product Hunt已半年无新评价，需引导用户评价", "source": "PH Monitor"})
@@ -353,13 +353,13 @@ def section_todos(data: dict) -> str:
 def section_competitor_pulse(data: dict) -> str:
     """竞品脉搏"""
     lines = ["\n## 🔍 竞品脉搏\n"]
-    lines.append("| 竞品 | 近期动态 | 对Lovart威胁 | 应对建议 |")
+    lines.append("| 竞品 | 近期动态 | 对品牌方威胁 | 应对建议 |")
     lines.append("|------|----------|-------------|----------|")
     lines.append("| Canva | AI功能持续迭代，中国市场(canva.cn)活跃 | 🟠 直接竞品 | 强化Agent差异化叙事 |")
     lines.append("| Midjourney | V7模型+编辑器模式推进 | 🟡 图像生成交叉 | 突出全栈(图像+视频+品牌)优势 |")
     lines.append("| Adobe Firefly | 企业级安全合规，Adobe生态绑定 | 🟡 企业市场 | 继续主打性价比+上手门槛 |")
     lines.append("| Leonardo AI | 游戏/3D垂直强化 | 🟢 赛道不同 | -- |")
-    lines.append("| Pollo AI | 对比关键词中频繁出现 | 🟡 直接竞品 | 持续产出Pollo vs Lovart对比内容 |")
+    lines.append("| Pollo AI | 对比关键词中频繁出现 | 🟡 直接竞品 | 持续产出Pollo vs 品牌方对比内容 |")
     lines.append("| Kling/可灵 | 中国视频生成市场强势 | 🟢 地理隔离 | 中国市场需差异化切入 |")
     return "\n".join(lines)
 
@@ -369,7 +369,7 @@ def section_competitor_pulse(data: dict) -> str:
 def generate_report(date_str: str, mode: str = "daily") -> str:
     data = load_snapshot(date_str)
 
-    report = f"""# 🔭 Lovart 品牌舆情日报
+    report = f"""# 🔭 品牌方 品牌舆情日报
 
 > 日期：{date_str}
 > 生成时间：{datetime.datetime.now().strftime('%H:%M')}
@@ -392,7 +392,7 @@ def generate_report(date_str: str, mode: str = "daily") -> str:
 
 ---
 
-*本报告由 Lovart Sentinel 自动生成。数据来源详见 1-2 Insight/Lovart ORM/raw/{date_str}/*
+*本报告由 品牌方 Sentinel 自动生成。数据来源详见 1-2 Insight/ORM/raw/{date_str}/*
 *部分社交平台数据需手动/agent采集：Instagram, TikTok, YouTube, Discord, Reddit, 小红书, 微信*
 """
 
@@ -400,7 +400,7 @@ def generate_report(date_str: str, mode: str = "daily") -> str:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="Lovart Sentinel Report Generator")
+    parser = argparse.ArgumentParser(description="品牌方 Sentinel Report Generator")
     parser.add_argument("--date", default=datetime.date.today().isoformat(), help="Date to generate report for")
     parser.add_argument("--mode", default="daily", choices=["daily", "weekly"])
     parser.add_argument("--output", default=None, help="Output path (default: auto)")
@@ -414,7 +414,7 @@ def main() -> int:
         out_path = Path(args.output)
     else:
         suffix = "daily" if args.mode == "daily" else "weekly"
-        out_path = out_dir / f"Lovart-Sentinel-{args.date}-{suffix}.md"
+        out_path = out_dir / f"品牌方-Sentinel-{args.date}-{suffix}.md"
 
     out_path.write_text(report, encoding="utf-8")
     print(f"[Sentinel] Report written to {out_path}")

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Lovart SEO 月报 V2 — 全量 5K 词 GSC + GA4 + 竞品词库 + 完整 10 板块
+品牌方 SEO 月报 V2 — 全量 5K 词 GSC + GA4 + 竞品词库 + 完整 10 板块
 
 强制标准（与 AGENTS.md Part A0–A0d / seo_report_standards.py 同步）：
 - 环比：报告月 vs 上一自然月（--month 2026-05 → vs 2026-04）
@@ -26,9 +26,9 @@ from seo_report_standards import (
     print_pre_run_checklist,
     okr_confirmation_reminder,
 )
-from lovart_brand_match import is_brand, partition_keywords
-from lovart_indexing_metrics import fetch_indexing_bundle
-from lovart_seo_geo_metrics import ingest_for_month, load_seo_geo_snapshot
+from brand_match import is_brand, partition_keywords
+from indexing_metrics import fetch_indexing_bundle
+from seo_geo_metrics import ingest_for_month, load_seo_geo_snapshot
 from seo_monthly_extras import (
     annual_note,
     build_region_pages,
@@ -96,7 +96,7 @@ def report_month_meta(ym: str) -> dict:
         ),
     }
 
-SKILLS = Path(__file__).resolve().parents[2] / "1-1 Harness/Skills/lovart-trident-data-engine"
+SKILLS = Path(__file__).resolve().parents[2] / "1-1 Harness/Skills/trident-data-engine"
 _CRED_CANDIDATES = [
     SKILLS / "credentials",
     _SCRIPT_DIR / "sentinel" / "gsc_credentials",
@@ -126,7 +126,7 @@ def save_snapshot(kind: str, ym: str, data: dict) -> None:
 
 
 def refresh_keyword_brand_splits(g: dict | None) -> None:
-    """快照可能含旧品牌划分；每次跑报前按 lovart_brand_match 重算。"""
+    """快照可能含旧品牌划分；每次跑报前按 brand_match 重算。"""
     if not g or not g.get("keywords"):
         return
     g["brand_kw"], g["nonbrand_kw"] = partition_keywords(g["keywords"])
@@ -246,11 +246,11 @@ def load_ga4_from_legacy_cache(ym: str) -> dict | None:
         "geo": geo,
     }
 
-SITE = "https://www.lovart.ai/"
+SITE = "https://www.example.com/"
 PROPERTY = "properties/403618427"
 STREAM = "10524753059"
 
-# is_brand → lovart_brand_match.py (SSOT)
+# is_brand → brand_match.py (SSOT)
 
 
 TARGET_GROUPS = {
@@ -308,7 +308,7 @@ def classify_page(url: str) -> str:
 
 
 def format_page_path(url: str) -> str:
-    s = url.replace(SITE, "").replace("https://www.lovart.ai", "").strip()
+    s = url.replace(SITE, "").replace("https://www.example.com", "").strip()
     return s if s else "/"
 
 
@@ -896,7 +896,7 @@ def generate_report(
         core_ctx["cross_engine_count"] = len(gm & bm)
 
     # ========== BUILD REPORT ==========
-    heading = meta.get("report_heading") or f"Lovart SEO 月度复盘报告 — {ty}"
+    heading = meta.get("report_heading") or f"品牌方 SEO 月度复盘报告 — {ty}"
     perspective = meta.get("perspective_line")
     perspective_line = f"> **视角**: {perspective}  \n" if perspective else ""
     rep = f"""# {heading}
@@ -1321,7 +1321,7 @@ def generate_report(
 
 ---
 
-> *本报告由 Lovart Trident Data Engine V2 生成*  
+> *本报告由 品牌方 Trident Data Engine V2 生成*  
 > *GSC: 5,000 关键词全量, {footer_gsc}*  
 > *GA4: 同期全月*  
 > *竞品词库: 265 全量 / 36 核心 (来自 1-2 Insight/Trident Insights/竞品核心非品牌词/)*
@@ -1479,7 +1479,7 @@ def run_monthly_report(
         sgeo_prev=sgeo_prev, sgeo_curr=sgeo_curr,
     )
 
-    out_path = TRIDENT / "reports" / "monthly" / f"Lovart-SEO-{report_ym}.md"
+    out_path = TRIDENT / "reports" / "monthly" / f"品牌方-SEO-{report_ym}.md"
     out_path.write_text(report)
     print(f"\n  📄 {out_path}")
     print(f"  📊 {len(report):,} chars, {len(report.splitlines())} lines")
@@ -1499,7 +1499,7 @@ def run_monthly_report(
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Lovart SEO monthly report (GSC 5K + GA4 + competitor)")
+    parser = argparse.ArgumentParser(description="品牌方 SEO monthly report (GSC 5K + GA4 + competitor)")
     parser.add_argument("--month", default="2026-05", help="Report month YYYY-MM (default: 2026-05)")
     parser.add_argument("--resume", action="store_true", help="Use cached snapshots for completed fetch steps")
     parser.add_argument("--render-only", action="store_true", help="Skip API; render from GSC snapshots + GA4 cache")

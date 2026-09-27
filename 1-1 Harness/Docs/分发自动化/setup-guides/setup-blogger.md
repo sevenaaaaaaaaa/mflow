@@ -65,5 +65,5 @@ node scripts/publish-blogger.js --draft drafts/blogger-ai-logo-design-guide.md
 ## Gate 0
 
 - 发摘要稿，非主站全文
-- 文末 canonical 链 `lovart.ai`（脚本自动追加 footer）
+- 文末 canonical 链 `example.com`（脚本自动追加 footer）
 - Blogger 无原生 canonical 字段，靠 footer + 不同标题防抢权重

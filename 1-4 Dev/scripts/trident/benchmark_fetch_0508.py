@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-benchmark_fetch_0508.py — 为「Lovart 海外增长 Benchmark」补齐曝光侧数据。
+benchmark_fetch_0508.py — 为「品牌方 海外增长 Benchmark」补齐曝光侧数据。
 
 与 trident/ 下其它脚本的区别：拉**固定历史区间的日粒度**，不是滚动 7/30 天窗口。
 并且刻意绕开三个 API 的「默认只返回一部分」行为：
@@ -12,7 +12,7 @@ benchmark_fetch_0508.py — 为「Lovart 海外增长 Benchmark」补齐曝光�
   GA4 : limit 默认 10000（已按 rowCount 用 offset 翻页到底）
         高基数维度会被折叠成 "(other)" → 自动检测并告警
         抽样 metadata.samplingMetadatas → 自动检测并告警
-        账号接了多个站 → 默认按 hostName 锁定 lovart.ai，另出审计文件
+        账号接了多个站 → 默认按 hostName 锁定 example.com，另出审计文件
   Bing: GetQueryStats 每周只给 top-N → 站点总量改用 GetRankAndTrafficStats
 
 只读，不写任何线上系统。
@@ -33,8 +33,8 @@ PROJECT = HERE.parents[2]
 OUT = PROJECT / "1-2 Insight" / "From Datawork" / "benchmark-2026-05-08"
 OUT.mkdir(parents=True, exist_ok=True)
 
-SITE_DOMAIN   = "lovart.ai"                     # hostName / 属性归属的判定依据
-GSC_SITE      = "https://www.lovart.ai/"        # 兜底；实际属性由 sites().list() 决定
+SITE_DOMAIN   = "example.com"                     # hostName / 属性归属的判定依据
+GSC_SITE      = "https://www.example.com/"        # 兜底；实际属性由 sites().list() 决定
 GA4_PROPERTY  = "properties/403618427"
 GA4_STREAM    = "10524753059"
 NOTES = []                                       # 收集数据质量标记
@@ -45,10 +45,10 @@ def note(msg, level="INFO"):
     print(("  ! " if level != "INFO" else "    ") + msg, flush=True)
 
 CRED_DIRS = [
-    Path(os.environ["LOVART_TRIDENT_CREDENTIALS_DIR"]).expanduser() if os.environ.get("LOVART_TRIDENT_CREDENTIALS_DIR") else None,
-    Path("~/Library/Application Support/Lovart/credentials/trident").expanduser(),
-    PROJECT / "1-1 Harness" / "Skills" / "01-strategy" / "lovart-trident-data-engine" / "credentials",
-    PROJECT / "1-1 Harness" / "Skills" / "lovart-trident-data-engine" / "credentials",
+    Path(os.environ["MFLOW_TRIDENT_CREDENTIALS_DIR"]).expanduser() if os.environ.get("MFLOW_TRIDENT_CREDENTIALS_DIR") else None,
+    Path("~/Library/Application Support/品牌方/credentials/trident").expanduser(),
+    PROJECT / "1-1 Harness" / "Skills" / "01-strategy" / "trident-data-engine" / "credentials",
+    PROJECT / "1-1 Harness" / "Skills" / "trident-data-engine" / "credentials",
     HERE.parent / "sentinel" / "gsc_credentials",
     HERE.parent / "sentinel" / "ga4_credentials",
     HERE.parent / "sentinel" / "bing_credentials",
@@ -127,9 +127,9 @@ def gsc_pick_properties(svc):
     """列出全部可访问属性，优先 sc-domain:（URL 前缀属性会漏掉非 www 和子域）。
 
     关键：只有 permissionLevel ∈ {siteOwner, siteFullUser, siteRestrictedUser} 的属性
-    才能调 searchanalytics；siteUnverifiedUser（如 docs./blogs.lovart.ai）会返回
+    才能调 searchanalytics；siteUnverifiedUser（如 docs./blogs.example.com）会返回
     403 "User does not have sufficient permission for site"，必须在此剔除。
-    另外 URL 前缀属性只认 www.lovart.ai / lovart.ai 本体，子域（docs./blogs.）不算同一口径。
+    另外 URL 前缀属性只认 www.example.com / example.com 本体，子域（docs./blogs.）不算同一口径。
     """
     from urllib.parse import urlparse
     sites = svc.sites().list().execute().get("siteEntry", [])
@@ -223,12 +223,12 @@ def fetch_gsc(start, end, audit_only=False):
         # 3) 月 × query —— 按月而非按日，匿名化阈值下按月覆盖率更高
         try:
             sys.path.insert(0, str(HERE.parent))
-            from lovart_brand_match import is_brand      # 项目 SSOT，不要另写规则
+            from brand_match import is_brand      # 项目 SSOT，不要另写规则
             brandfn = is_brand
-            note("品牌词判定使用 SSOT lovart_brand_match.is_brand()")
+            note("品牌词判定使用 SSOT brand_match.is_brand()")
         except Exception as ex:
             brandfn = None
-            note(f"无法导入 lovart_brand_match.is_brand，is_brand 列留空：{_err(ex)}", "WARN")
+            note(f"无法导入 brand_match.is_brand，is_brand 列留空：{_err(ex)}", "WARN")
         qrows, cov, qfail = [], [], []
         web_by_month = {}
         for r in web: web_by_month[r[0][:7]] = web_by_month.get(r[0][:7], 0) + r[2]
@@ -330,7 +330,7 @@ def _stream_filter():
     return {"filter": {"fieldName": "streamId", "stringFilter": {"matchType": "EXACT", "value": GA4_STREAM}}}
 
 def ga4_pages(data, dims, s, e, scope="host", extra=None, tag=""):
-    """scope: host = 按 hostName 锁 lovart.ai（正式口径）| stream = 旧口径 | none = 全量审计
+    """scope: host = 按 hostName 锁 example.com（正式口径）| stream = 旧口径 | none = 全量审计
 
     逐页 yield，调用方自己决定是攒内存还是边写盘 —— referral 明细单月可达百万行，
     全攒内存会吃掉数 GB。
@@ -440,7 +440,7 @@ def fetch_ga4(start, end, audit_only=False):
         write_csv(name, ["date"] + GA4_METRICS, sorted(rows))
     if audit_only: return
 
-    # C) 正式口径（hostName = lovart.ai）下的各维度明细
+    # C) 正式口径（hostName = example.com）下的各维度明细
     for dims, name in ([["date","sessionDefaultChannelGroup","firstUserDefaultChannelGroup"], "ga4_daily_by_channel.csv"],
                        [["date","sessionSource","sessionMedium"], "ga4_daily_by_source_medium.csv"],
                        [["date","country"], "ga4_daily_by_country.csv"]):
@@ -486,7 +486,7 @@ def fetch_bing(start, end, audit_only=False):
     print("Bing ...", flush=True)
     key = cred("api_key").read_text().strip()
     sess = requests.Session()
-    sess.headers.update({"Accept": "application/json", "User-Agent": "lovart-trident/benchmark_fetch_0508"})
+    sess.headers.update({"Accept": "application/json", "User-Agent": "mflow-trident/benchmark_fetch_0508"})
 
     def jget(action, **params):
         params["apikey"] = key
@@ -498,7 +498,7 @@ def fetch_bing(start, end, audit_only=False):
             return r.json().get("d", [])
         return retry(go, f"Bing {action} {params.get('siteUrl', '')}")
 
-    # 审计：这个 Bing 账号下有哪些站，lovart.ai 的 siteUrl 到底写成什么
+    # 审计：这个 Bing 账号下有哪些站，example.com 的 siteUrl 到底写成什么
     site = GSC_SITE
     try:
         sites = jget("GetUserSites")
@@ -510,7 +510,7 @@ def fetch_bing(start, end, audit_only=False):
         if ver: site = ver[0]["Url"]
         elif cand: site = cand[0]["Url"]
         if len(cand) > 1:
-            note(f"匹配到多个 lovart 站点 {[s.get('Url') for s in cand]}，使用 {site}（优先已验证）", "WARN")
+            note(f"匹配到多个 品牌 站点 {[s.get('Url') for s in cand]}，使用 {site}（优先已验证）", "WARN")
         if not cand:
             note(f"Bing 账号下没有 {SITE_DOMAIN}，回退 {GSC_SITE}", "WARN")
     except Exception as ex:
@@ -567,9 +567,9 @@ def write_brand_snapshot():
     import hashlib
     try:
         sys.path.insert(0, str(HERE.parent))
-        import lovart_brand_match as bm
+        import brand_match as bm
     except Exception as ex:
-        note(f"brand_rules_snapshot.json 生成失败：无法导入 lovart_brand_match（{_err(ex, 200)}）", "WARN")
+        note(f"brand_rules_snapshot.json 生成失败：无法导入 brand_match（{_err(ex, 200)}）", "WARN")
         return
     p = Path(bm.__file__).resolve()
     sha = hashlib.sha256(p.read_bytes()).hexdigest()
@@ -577,7 +577,7 @@ def write_brand_snapshot():
         "generated_at": time.strftime("%Y-%m-%d %H:%M:%S"),
         "module_path": str(p),
         "module_sha256": sha,
-        "note": "is_brand() 的 SSOT 是 1-4 Dev/scripts/lovart_brand_match.py；本文件只是该规则的快照，不替代它。",
+        "note": "is_brand() 的 SSOT 是 1-4 Dev/scripts/brand_match.py；本文件只是该规则的快照，不替代它。",
         "brand_patterns": list(bm.BRAND_PATTERNS),
         "translit_fragments": list(bm._TRANSLIT_FRAGMENTS),
         "brand_roots": sorted(bm._BRAND_ROOTS),
@@ -585,13 +585,13 @@ def write_brand_snapshot():
         "short_roots": sorted(bm._SHORT_ROOTS),
         "fuzzy_deny": sorted(bm._FUZZY_DENY),
         "samples": {q: bool(bm.is_brand(q)) for q in [
-            "lovart", "lovart ai", "lovart登录", "ロバート", "art ai",
-            "ai image generator", "logo", "login", "lovart.ai", "nano banana"]},
+            "品牌", "品牌 ai", "品牌登录", "ロバート", "art ai",
+            "ai image generator", "logo", "login", "example.com", "nano banana"]},
     }
     (OUT / "brand_rules_snapshot.json").write_text(
         json.dumps(snap, ensure_ascii=False, indent=2), encoding="utf-8")
-    print(f"  ✓ brand_rules_snapshot.json（lovart_brand_match.py sha256 {sha[:12]}…）", flush=True)
-    note(f"品牌词规则快照已导出 brand_rules_snapshot.json（lovart_brand_match.py sha256 {sha[:16]}）")
+    print(f"  ✓ brand_rules_snapshot.json（brand_match.py sha256 {sha[:12]}…）", flush=True)
+    note(f"品牌词规则快照已导出 brand_rules_snapshot.json（brand_match.py sha256 {sha[:16]}）")
 
 # ═══════════════════════════════════════════════════════════ main
 if __name__ == "__main__":

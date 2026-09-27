@@ -2,9 +2,9 @@
 
 > **文档定位**：面向数据对接分析师的操作指南  
 > **更新日期**：2026-06-07  
-> **适用范围**：Lovart 项目 GSC、Bing、GA4 数据回传到数仓相关人员
+> **适用范围**：品牌方 项目 GSC、Bing、GA4 数据回传到数仓相关人员
 
-> **路径原则**：可执行脚本 SSOT 是 `1-4 Dev/scripts/trident/`。`1-1 Harness/Skills/lovart-trident-data-engine/` 保留为 Agent Skill、历史兼容入口和本地共享凭证位置。真实凭证允许本地项目内保存以便交接，但已通过 `.gitignore` 防止提交。
+> **路径原则**：可执行脚本 SSOT 是 `1-4 Dev/scripts/trident/`。`1-1 Harness/Skills/trident-data-engine/` 保留为 Agent Skill、历史兼容入口和本地共享凭证位置。真实凭证允许本地项目内保存以便交接，但已通过 `.gitignore` 防止提交。
 
 ---
 
@@ -284,7 +284,7 @@ gsutil cp 2026-05-31/snapshots.csv gs://my-bucket/2026-05-31/snapshots.csv
 
 # 摄入到 BigQuery
 bq load --source_format=CSV \
-  lovart_trident.snapshots \
+  品牌_trident.snapshots \
   gs://my-bucket/2026-05-31/snapshots.csv
 ```
 
@@ -297,7 +297,7 @@ CREATE STAGE my_stage
   CREDENTIALS = (AWS_KEY_ID = 'xxx' AWS_SECRET_KEY = 'xxx');
 
 -- 摄入数据
-COPY INTO lovart_trident.snapshots
+COPY INTO 品牌_trident.snapshots
 FROM @my_stage/2026-05-31/snapshots.csv
 FILE_FORMAT = (TYPE = CSV SKIP_HEADER = 1);
 ```
@@ -462,13 +462,13 @@ python3 "1-4 Dev/scripts/check_warehouse_permissions.py"
 
 | 文件 | 路径 | 用途 | 获取方式 |
 |------|------|------|----------|
-| `gsc-token.json` | `1-1 Harness/Skills/lovart-trident-data-engine/credentials/` | GSC OAuth token | 运行 `gsc_auth.py` 首次授权 |
-| `oauth-client.json` | `1-1 Harness/Skills/lovart-trident-data-engine/credentials/` | GSC OAuth client | GCP Console → OAuth 2.0 桌面应用 |
-| `ga4-token.json` | `1-1 Harness/Skills/lovart-trident-data-engine/credentials/` | GA4 OAuth token | 运行 `ga4_auth.py` 首次授权 |
-| `service-account.json` | `1-1 Harness/Skills/lovart-trident-data-engine/credentials/` | GA4 服务账号 | GCP Console → IAM 服务账号 |
-| `api_key` | `1-1 Harness/Skills/lovart-trident-data-engine/credentials/` | Bing Webmaster API | Bing Webmaster → API 访问 |
+| `gsc-token.json` | `1-1 Harness/Skills/trident-data-engine/credentials/` | GSC OAuth token | 运行 `gsc_auth.py` 首次授权 |
+| `oauth-client.json` | `1-1 Harness/Skills/trident-data-engine/credentials/` | GSC OAuth client | GCP Console → OAuth 2.0 桌面应用 |
+| `ga4-token.json` | `1-1 Harness/Skills/trident-data-engine/credentials/` | GA4 OAuth token | 运行 `ga4_auth.py` 首次授权 |
+| `service-account.json` | `1-1 Harness/Skills/trident-data-engine/credentials/` | GA4 服务账号 | GCP Console → IAM 服务账号 |
+| `api_key` | `1-1 Harness/Skills/trident-data-engine/credentials/` | Bing Webmaster API | Bing Webmaster → API 访问 |
 
-读取顺序：显式文件环境变量 → `LOVART_TRIDENT_CREDENTIALS_DIR` → 用户私有目录 → 项目内 `1-1 Harness/Skills/lovart-trident-data-engine/credentials/` → 脚本目录 fallback。当前策略允许项目内保留真实凭证，重点是不提交到 Git。
+读取顺序：显式文件环境变量 → `MFLOW_TRIDENT_CREDENTIALS_DIR` → 用户私有目录 → 项目内 `1-1 Harness/Skills/trident-data-engine/credentials/` → 脚本目录 fallback。当前策略允许项目内保留真实凭证，重点是不提交到 Git。
 
 ### 10.2 凭证更新流程
 
@@ -499,6 +499,6 @@ python3 "1-4 Dev/scripts/trident/ga4_auth.py"
 
 ---
 
-> **维护者**：Lovart 团队  
+> **维护者**：品牌方 团队  
 > **最后更新**：2026-06-04  
 > **版本**：V1.0

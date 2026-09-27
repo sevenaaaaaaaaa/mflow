@@ -1,4 +1,4 @@
-# Lovart Sentinel - 每日舆情采集 Agent 工作流 V2
+# 品牌方 Sentinel - 每日舆情采集 Agent 工作流 V2
 
 ## 触发条件
 每日执行，或收到 `/sentinel` 命令时触发。
@@ -18,36 +18,36 @@ python3 collect.py
 
 | # | URL | 用途 |
 |---|-----|------|
-| 1 | `https://www.bing.com/search?q=lovart+ai` | Bing SERP + 寄生域名 |
-| 2 | `https://www.baidu.com/s?wd=lovart+ai` | 🆕 百度SERP + 相关搜索 |
-| 3 | `https://www.sogou.com/web?query=lovart+ai` | 🆕 搜狗SERP + 寄生域名 |
-| 4 | `https://www.bing.com/search?q=lovart+ai+review` | Bing评测SERP |
-| 5 | `https://www.bing.com/search?q=%22lovart%22+reddit+OR+quora+review` | 社区搜索 |
-| 6 | `https://duckduckgo.com/html/?q=lovart+site:hupu.com+OR+site:coolapk.com+OR+site:v2ex.com+OR+site:smzdm.com` | 🆕 综合垂直社区 |
+| 1 | `https://www.bing.com/search?q=品牌+ai` | Bing SERP + 寄生域名 |
+| 2 | `https://www.baidu.com/s?wd=品牌+ai` | 🆕 百度SERP + 相关搜索 |
+| 3 | `https://www.sogou.com/web?query=品牌+ai` | 🆕 搜狗SERP + 寄生域名 |
+| 4 | `https://www.bing.com/search?q=品牌+ai+review` | Bing评测SERP |
+| 5 | `https://www.bing.com/search?q=%22品牌%22+reddit+OR+quora+review` | 社区搜索 |
+| 6 | `https://duckduckgo.com/html/?q=品牌+site:hupu.com+OR+site:coolapk.com+OR+site:v2ex.com+OR+site:smzdm.com` | 🆕 综合垂直社区 |
 
 ### 2.2 社交媒体 API (3条)
 
 | # | URL | 用途 |
 |---|-----|------|
-| 7 | `https://api.fxtwitter.com/lovart_ai` | X/Twitter 实时数据 |
-| 8 | `https://www.linkedin.com/company/lovart-ai` | LinkedIn 公司页 |
-| 9 | `https://www.producthunt.com/products/lovart/reviews` | Product Hunt 评价 |
+| 7 | `https://api.fxtwitter.com/品牌_ai` | X/Twitter 实时数据 |
+| 8 | `https://www.linkedin.com/company/mflow-ai` | LinkedIn 公司页 |
+| 9 | `https://www.producthunt.com/products/品牌/reviews` | Product Hunt 评价 |
 
 ### 2.3 🆕 社媒代理穿透 (3条)
 
 | # | URL | 用途 |
 |---|-----|------|
-| 10 | `https://duckduckgo.com/html/?q=lovart.ai+site:instagram.com` | 🆕 Instagram: 粉丝/帖子/互动 |
-| 11 | `https://duckduckgo.com/html/?q=lovart+site:tiktok.com` | 🆕 TikTok: 粉丝/视频/UGC |
-| 12 | `https://yewtu.be/search?q=lovart+ai` | 🆕 YouTube: 视频/播放量 (Invidious) |
+| 10 | `https://duckduckgo.com/html/?q=example.com+site:instagram.com` | 🆕 Instagram: 粉丝/帖子/互动 |
+| 11 | `https://duckduckgo.com/html/?q=品牌+site:tiktok.com` | 🆕 TikTok: 粉丝/视频/UGC |
+| 12 | `https://yewtu.be/search?q=品牌+ai` | 🆕 YouTube: 视频/播放量 (Invidious) |
 
 ### 2.4 中国平台 (3条)
 
 | # | URL | 用途 |
 |---|-----|------|
-| 13 | `https://weixin.sogou.com/weixin?query=lovart+ai&type=2` | 🆕 微信公众号文章 (搜狗) |
-| 14 | `https://www.baidu.com/s?wd=lovart+ai+%E5%B0%8F%E7%BA%A2%E4%B9%A6+%E5%BE%AE%E4%BF%A1+%E7%9F%A5%E4%B9%8E` | 🆕 百度综合中文生态 |
-| 15 | `https://baike.baidu.com/item/Lovart/66266116` | 🆕 百度百科词条 |
+| 13 | `https://weixin.sogou.com/weixin?query=品牌+ai&type=2` | 🆕 微信公众号文章 (搜狗) |
+| 14 | `https://www.baidu.com/s?wd=品牌+ai+%E5%B0%8F%E7%BA%A2%E4%B9%A6+%E5%BE%AE%E4%BF%A1+%E7%9F%A5%E4%B9%8E` | 🆕 百度综合中文生态 |
+| 15 | `https://baike.baidu.com/item/品牌方/66266116` | 🆕 百度百科词条 |
 
 ### 2.5 竞品监控 (3条)
 

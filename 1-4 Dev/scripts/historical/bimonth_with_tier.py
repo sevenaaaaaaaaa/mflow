@@ -22,7 +22,7 @@ def run(year: int, b: int, *, data_tier: str = DATA_TIER_DRAFT, render_only: boo
     except FileNotFoundError:
         raise
 
-    path = BIMONTHLY_DIR / f"Lovart-SEO-{year}-B{b}.md"
+    path = BIMONTHLY_DIR / f"品牌方-SEO-{year}-B{b}.md"
     tier = data_tier
     if data_tier == DATA_TIER_FULL and not all(
         has_valid_dataworks(load_sgeo(ym), ym, DATAWORK_DIR) for ym in months

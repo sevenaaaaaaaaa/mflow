@@ -39,7 +39,7 @@ def render_year(year: int, tier: str = "draft") -> Path:
         d = total - prev_total
         yoy = f"{'↑' if d>0 else '↓'}{d:+,} / {d/prev_total*100:.1f}%"
 
-    report = f"""# Lovart SEO 年度复盘报告 — {year}
+    report = f"""# 品牌方 SEO 年度复盘报告 — {year}
 
 > **生成**: {date.today().isoformat()}  
 > **数据完整度**: {tier}  
@@ -64,7 +64,7 @@ def render_year(year: int, tier: str = "draft") -> Path:
 - 整体史：`reports/lifetime/`
 
 """
-    out = ANNUAL_DIR / f"Lovart-SEO-{year}.md"
+    out = ANNUAL_DIR / f"品牌方-SEO-{year}.md"
     out.write_text(report)
     _render_lifetime_appendix(year, clicks, tier)
     print(f"✅ {out}")
@@ -83,7 +83,7 @@ def _render_lifetime_appendix(latest_year: int, series: list, tier: str) -> None
     lines = ["| 月 | GSC 点击 |", "|---|---:|"]
     for ym, c in all_months:
         lines.append(f"| {ym} | {c:,} |")
-    report = f"""# Lovart SEO 整体史报告 — 截至 {date.today().isoformat()}
+    report = f"""# 品牌方 SEO 整体史报告 — 截至 {date.today().isoformat()}
 
 > **数据完整度**: {tier}  
 > Part A：可用月 GSC 点击曲线（来自月快照）  
@@ -107,6 +107,6 @@ def _render_lifetime_appendix(latest_year: int, series: list, tier: str) -> None
 见 `reports/_inventory/history-coverage.json` 的 `dataworks_xlsx` 字段。
 
 """
-    out = LIFETIME_DIR / f"Lovart-SEO-lifetime-{date.today().isoformat()}.md"
+    out = LIFETIME_DIR / f"品牌方-SEO-lifetime-{date.today().isoformat()}.md"
     out.write_text(report)
     print(f"✅ {out}")

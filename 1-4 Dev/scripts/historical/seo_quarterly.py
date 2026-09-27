@@ -77,7 +77,7 @@ def render_quarter(year: int, quarter: int, tier: str = "draft") -> Path:
     for ym, s in rows_curr:
         trend_lines.append(f"| {ym} | {(s.get('clicks') or 0):,} | {s.get('brand_share', '—')}% |")
 
-    report = f"""# Lovart SEO 季度报告 — {year}年Q{quarter}
+    report = f"""# 品牌方 SEO 季度报告 — {year}年Q{quarter}
 
 > **周期**: {months[0]} ~ {months[-1]} vs {prev_months[0]} ~ {prev_months[-1]}  
 > **生成**: {date.today().isoformat()}  
@@ -98,8 +98,8 @@ def render_quarter(year: int, quarter: int, tier: str = "draft") -> Path:
 ## 章节索引
 
 - 关键词/品牌/竞品/页面/地区：见各月专题报告 `reports/topics/`
-- 月报全文：`reports/monthly/Lovart-SEO-YYYY-MM.md`
-- 双月报（两月 vs 上两月）：`reports/bimonthly/Lovart-SEO-YYYY-Bn.md`
+- 月报全文：`reports/monthly/品牌方-SEO-YYYY-MM.md`
+- 双月报（两月 vs 上两月）：`reports/bimonthly/品牌方-SEO-YYYY-Bn.md`
 
 ## TODO
 
@@ -109,7 +109,7 @@ def render_quarter(year: int, quarter: int, tier: str = "draft") -> Path:
 | P2 | 对照 SKILL 季报模板补 GA4 逐月与会话质量表 |
 
 """
-    out = QUARTERLY_DIR / f"Lovart-SEO-{year}-Q{quarter}.md"
+    out = QUARTERLY_DIR / f"品牌方-SEO-{year}-Q{quarter}.md"
     out.write_text(report)
     print(f"✅ {out}")
     return out

@@ -1,12 +1,12 @@
 # ============================================================
-# Lovart Sentinel V3 — 全维度舆情监测配置
+# 品牌方 Sentinel V3 — 全维度舆情监测配置
 # 
 # 覆盖维度：SEO · GEO · KOL · 媒体 · 广告 · 活动 · 设计社区 · AI工具生态
 # ============================================================
 
 project:
-  name: Lovart
-  domain: lovart.ai
+  name: 品牌方
+  domain: example.com
   tagline: "World's First AI Design Agent"
   positioning: ["ai design agent", "ai design tool", "ai creative suite", "brand identity ai", "logo maker ai", "ai video ad generator", "social media design ai"]
 
@@ -16,35 +16,35 @@ project:
 search_engines:
   # --- 国际主流 ---
   google:
-    queries: ["lovart ai", "ai design agent", "ai design tool", "best ai design tools 2026"]
+    queries: ["品牌 ai", "ai design agent", "ai design tool", "best ai design tools 2026"]
     geo_tracking: true  # 跟踪 ChatGPT/Perplexity 引用
   bing:
-    queries: ["lovart ai", "ai design agent", "lovart vs canva"]
+    queries: ["品牌 ai", "ai design agent", "品牌 vs canva"]
     parasite_watch: true
   duckduckgo:
     role: "社媒穿透代理 + 独立搜索信号"
-    queries: ["lovart ai", "ai design agent"]
-  # --- 区域引擎（Lovart 有对应语言版本） ---
+    queries: ["品牌 ai", "ai design agent"]
+  # --- 区域引擎（品牌方 有对应语言版本） ---
   yandex:
-    market: "俄罗斯 (Lovart有/ru/)"
+    market: "俄罗斯 (品牌方有/ru/)"
     query: "ловарт ai дизайн"
   yahoo_japan:
-    market: "日本 (Lovart有/ja/)"
-    query: "lovart ai デザイン"
+    market: "日本 (品牌方有/ja/)"
+    query: "品牌 ai デザイン"
   naver:
-    market: "韩国 (Lovart有/ko/)"
+    market: "韩国 (品牌方有/ko/)"
     query: "러바트 ai 디자인"
   # --- 中国引擎 ---
   baidu:
-    queries: ["lovart ai", "AI设计工具", "AI设计Agent", "AI生成海报", "AI做Logo"]
+    queries: ["品牌 ai", "AI设计工具", "AI设计Agent", "AI生成海报", "AI做Logo"]
   sogou:
     role: "微信文章搜索"
-    queries: ["lovart ai", "AI设计智能体"]
+    queries: ["品牌 ai", "AI设计智能体"]
   so360:
-    query: "lovart ai 设计工具"
+    query: "品牌 ai 设计工具"
   shenma:
     role: "移动端搜索 (阿里生态)"
-    query: "lovart ai"
+    query: "品牌 ai"
   wechat_search:
     role: "微信搜一搜"
     note: "需通过搜狗微信搜索或Chrome CDP"
@@ -54,32 +54,32 @@ search_engines:
 # ============================================================
 social_international:
   x_twitter:
-    handle: "@lovart_ai"
+    handle: "@品牌_ai"
     kols_to_track:
       - "@levelsio"       # 独立开发者，AI工具推广者
       - "@sama"           # OpenAI CEO
       - "@nearcyan"       # AI art influencer
       - "@minchoi"        # design influencer
-    hashtags: ["#aiDesign", "#aiArt", "#designAgent", "#lovart", "#aitools"]
+    hashtags: ["#aiDesign", "#aiArt", "#designAgent", "#品牌", "#aitools"]
     
   instagram:
-    handle: "@lovart.ai"
+    handle: "@example.com"
     method: "DuckDuckGo proxy"
-    hashtags: ["#lovart", "#lovartai", "#aidesign", "#aidesigntool", "#brandidentity", "#logodesign", "#socialmediadesign"]
+    hashtags: ["#品牌", "#品牌ai", "#aidesign", "#aidesigntool", "#brandidentity", "#logodesign", "#socialmediadesign"]
     
   tiktok:
-    handle: "@lovart_ai"
+    handle: "@品牌_ai"
     method: "DuckDuckGo proxy"
     hashtags: ["#aidesign", "#aitools", "#designhack", "#smallbusinesstips"]
     
   youtube:
-    channel: "@lovart_ai"
+    channel: "@品牌_ai"
     method: "Invidious proxy / yewtu.be"
     kols: ["design course creators", "AI tool reviewers", "e-commerce design channels"]
     
   pinterest:
     role: "视觉发现引擎 — 对AI设计工具极关键"
-    method: "Bing/DDG site:pinterest.com lovart"
+    method: "Bing/DDG site:pinterest.com 品牌"
     note: "Pinterest是设计师和品牌方搜索灵感的核心平台"
     
   reddit:
@@ -98,21 +98,21 @@ social_international:
       - "r/ArtificialIntelligence"
       - "r/StableDiffusion"  # AI图像生成社区
       - "r/midjourney"       # 竞品社区
-    search_queries: ["lovart", "lovart ai", "ai design agent", "lovart vs", "lovart review"]
+    search_queries: ["品牌", "品牌 ai", "ai design agent", "品牌 vs", "品牌 review"]
 
   hacker_news:
     role: "技术创业社区"
-    query: "lovart ai"
-    search_url: "https://hn.algolia.com/?q=lovart"
+    query: "品牌 ai"
+    search_url: "https://hn.algolia.com/?q=品牌"
     
   indie_hackers:
-    role: "独立开发者社区（Lovart目标用户）"
-    query: "lovart"
+    role: "独立开发者社区（品牌方目标用户）"
+    query: "品牌"
 
   threads:
     role: "Meta系新社交"
-    handle: "@lovart.ai"
-    method: "DDG site:threads.net lovart"
+    handle: "@example.com"
+    method: "DDG site:threads.net 品牌"
 
 social_china:
   xiaohongshu:
@@ -124,8 +124,8 @@ social_china:
       - "AI设计软件"
       - "AI品牌设计"
       - "AI电商设计"
-      - "lovart"
-      - "lovart教程"
+      - "品牌"
+      - "品牌教程"
     kols_to_find: ["设计博主", "AI工具测评博主", "电商设计博主", "品牌设计博主"]
     
   wechat:
@@ -134,22 +134,22 @@ social_china:
     account_types: ["AI工具号", "设计教程号", "品牌营销号", "电商号"]
     
   weibo:
-    queries: ["lovart", "AI设计", "AI设计工具", "AI做图"]
+    queries: ["品牌", "AI设计", "AI设计工具", "AI做图"]
     
   bilibili:
     role: "视频教程 + UP主生态"
-    queries: ["lovart教程", "AI设计工具", "AI设计Agent", "NanoBanana"]
+    queries: ["品牌教程", "AI设计工具", "AI设计Agent", "NanoBanana"]
     up主类型: ["设计教程UP", "AI工具测评UP", "电商设计UP", "品牌设计UP"]
     
   douyin:
-    queries: ["AI设计工具", "AI做海报", "AI设计教程", "lovart"]
+    queries: ["AI设计工具", "AI做海报", "AI设计教程", "品牌"]
     
   kuaishou:
     query: "AI设计"
     
   jike:
     role: "即刻 — 科技/创意社区"
-    query: "lovart AI设计"
+    query: "品牌 AI设计"
     
   dewuk:
     role: "得物 — 设计/潮流社区"
@@ -161,38 +161,38 @@ social_china:
 design_communities_international:
   dribbble:
     role: "设计师作品展示平台"
-    query: "lovart"
-    search_url: "https://dribbble.com/search/lovart"
+    query: "品牌"
+    search_url: "https://dribbble.com/search/品牌"
     
   behance:
     role: "Adobe设计社区"
-    query: "lovart"
-    search_url: "https://www.behance.net/search/projects?search=lovart"
+    query: "品牌"
+    search_url: "https://www.behance.net/search/projects?search=品牌"
     
   figma_community:
     role: "Figma插件/模板社区"
-    query: "lovart"
-    search_url: "https://www.figma.com/community/search?query=lovart"
+    query: "品牌"
+    search_url: "https://www.figma.com/community/search?query=品牌"
     
   deviantart:
     role: "艺术家社区"
-    query: "lovart"
+    query: "品牌"
     
   artstation:
     role: "专业CG艺术家"
-    query: "lovart ai"
+    query: "品牌 ai"
     
   pixiv:
-    role: "日本插画社区 (Lovart有日文版)"
-    query: "lovart AI"
+    role: "日本插画社区 (品牌方有日文版)"
+    query: "品牌 AI"
     
   civitai:
     role: "AI模型分享社区"
-    query: "lovart"
+    query: "品牌"
     
   promptbase:
     role: "Prompt交易市场"
-    query: "lovart"
+    query: "品牌"
     
   midjourney_showcase:
     role: "竞品社区 — 观察用户需求"
@@ -201,49 +201,49 @@ design_communities_international:
 design_communities_china:
   zcool:
     role: "站酷 — 中国最大设计社区"
-    queries: ["lovart", "AI设计", "AI设计工具"]
-    search_url: "https://www.zcool.com.cn/search/content?word=lovart"
+    queries: ["品牌", "AI设计", "AI设计工具"]
+    search_url: "https://www.zcool.com.cn/search/content?word=品牌"
     
   huaban:
     role: "花瓣 — 中国Pinterest"
-    queries: ["lovart", "AI设计", "AI生成"]
-    search_url: "https://huaban.com/search/?q=lovart"
+    queries: ["品牌", "AI设计", "AI生成"]
+    search_url: "https://huaban.com/search/?q=品牌"
     
   ui_cn:
     role: "UI中国 — UI/UX设计社区"
-    query: "AI设计工具 lovart"
+    query: "AI设计工具 品牌"
     
   uisdc:
     role: "优设 — 设计教程平台"
-    query: "lovart AI设计工具"
+    query: "品牌 AI设计工具"
     
   shejidaren:
     role: "设计达人 — 设计资源"
-    query: "lovart"
+    query: "品牌"
 
 # ============================================================
 # 四、AI工具目录与评测平台（GEO + 用户决策）
 # ============================================================
 ai_directories:
   product_hunt: { covered: true }
-  futurepedia: { url: "https://www.futurepedia.io/ai-tools/lovart" }
-  theresanaiforthat: { url: "https://theresanaiforthat.com/s/lovart/" }
-  aitoolhunt: { url: "https://www.aitoolhunt.com/search?q=lovart" }
-  futuretools: { url: "https://www.futuretools.io/tools/lovart" }
-  topextools: { url: "https://topextools.com/search?q=lovart" }
-  alternativeto: { role: "竞品替代搜索", query: "lovart" }
-  slant: { role: "产品对比", query: "lovart" }
-  saasworthy: { url: "https://www.saasworthy.com/search/lovart" }
+  futurepedia: { url: "https://www.futurepedia.io/ai-tools/品牌" }
+  theresanaiforthat: { url: "https://theresanaiforthat.com/s/品牌/" }
+  aitoolhunt: { url: "https://www.aitoolhunt.com/search?q=品牌" }
+  futuretools: { url: "https://www.futuretools.io/tools/品牌" }
+  topextools: { url: "https://topextools.com/search?q=品牌" }
+  alternativeto: { role: "竞品替代搜索", query: "品牌" }
+  slant: { role: "产品对比", query: "品牌" }
+  saasworthy: { url: "https://www.saasworthy.com/search/品牌" }
 
 review_platforms:
-  g2: { url: "https://www.g2.com/products/lovart/reviews", covered: true }
-  capterra: { url: "https://www.capterra.com/p/lovart/", covered: true }
-  trustpilot: { url: "https://www.trustpilot.com/review/lovart.ai", covered: true }
-  getapp: { url: "https://www.getapp.com/search/?q=lovart" }
-  trustradius: { url: "https://www.trustradius.com/search?q=lovart" }
+  g2: { url: "https://www.g2.com/products/品牌/reviews", covered: true }
+  capterra: { url: "https://www.capterra.com/p/品牌/", covered: true }
+  trustpilot: { url: "https://www.trustpilot.com/review/example.com", covered: true }
+  getapp: { url: "https://www.getapp.com/search/?q=品牌" }
+  trustradius: { url: "https://www.trustradius.com/search?q=品牌" }
   # 中国评测平台
-  smzdm: { role: "什么值得买", query: "lovart AI设计" }
-  woshipm: { role: "人人都是产品经理", query: "lovart" }
+  smzdm: { role: "什么值得买", query: "品牌 AI设计" }
+  woshipm: { role: "人人都是产品经理", query: "品牌" }
 
 # ============================================================
 # 五、科技与设计媒体（媒体关系 + PR）
@@ -264,9 +264,9 @@ media_china:
 # 六、电商与营销平台（核心用户场景）
 # ============================================================
 ecommerce_communities:
-  amazon_seller: { role: "Amazon卖家社区 (Lovart核心用户)", query: "lovart ai design product image" }
-  shopify: { role: "Shopify社区", query: "lovart ai product photo" }
-  etsy: { role: "Etsy卖家论坛", query: "lovart ai" }
+  amazon_seller: { role: "Amazon卖家社区 (品牌方核心用户)", query: "品牌 ai design product image" }
+  shopify: { role: "Shopify社区", query: "品牌 ai product photo" }
+  etsy: { role: "Etsy卖家论坛", query: "品牌 ai" }
   # 中国电商
   taobao_seller: { role: "淘宝卖家社区 (千牛)", query: "AI设计工具 电商主图" }
   pdd_seller: { role: "拼多多商家", query: "AI做图 电商" }
@@ -322,7 +322,7 @@ kol_matrix:
       - { type: "独立开发者/创业者", platforms: ["X", "Reddit", "Hacker News", "Indie Hackers"] }
       - { type: "社媒营销专家", platforms: ["LinkedIn", "Instagram", "YouTube"] }
       - { type: "AI艺术家", platforms: ["Instagram", "Civitai", "DeviantArt"] }
-    discovery_method: "搜索 lovart/canva/midjourney + 高播放/高互动内容 → 提取创作者"
+    discovery_method: "搜索 品牌/canva/midjourney + 高播放/高互动内容 → 提取创作者"
   
   china:
     categories:

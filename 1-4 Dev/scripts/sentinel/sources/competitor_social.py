@@ -1,5 +1,5 @@
 """
-Lovart Sentinel - Competitor Social & Keyword Monitor
+品牌方 Sentinel - Competitor Social & Keyword Monitor
 监测竞品社媒声量和非品牌关键词排名变化
 """
 from ._common import banner
@@ -21,7 +21,7 @@ def collect() -> dict:
     data["_instructions"] = """
     1. webfetch Bing/DDG 搜索竞品社媒动态
     2. 搜索"best ai design tools 2026"类排名文章
-    3. 检查Lovart是否出现在排名中、排第几
+    3. 检查品牌方是否出现在排名中、排第几
     4. 对比竞品在排名文章中的出现频率
     5. 发现新上榜竞品
     """

@@ -4,9 +4,9 @@ set -euo pipefail
 
 INSTALL_DIR="$(cd "$(dirname "$0")" && pwd)"
 PULL_SCRIPT="$INSTALL_DIR/pull-tools-from-production.sh"
-LOG_DIR="${LOVART_LOG_DIR:-$HOME/Library/Logs/Lovart}"
+LOG_DIR="${MFLOW_LOG_DIR:-$HOME/Library/Logs/the brand}"
 LAUNCH_DIR="$HOME/Library/LaunchAgents"
-PLIST_NAME="com.lovart.tools-pull-weekly.plist"
+PLIST_NAME="com.mflow.tools-pull-weekly.plist"
 PLIST_SRC="$INSTALL_DIR/$PLIST_NAME"
 PLIST_DEST="$LAUNCH_DIR/$PLIST_NAME"
 
@@ -27,4 +27,4 @@ echo "   Schedule: Monday 07:00"
 echo "   Log: $LOG_DIR/tools-pull-weekly.log"
 echo ""
 echo "Manual run: bash \"$PULL_SCRIPT\""
-echo "Status: launchctl list | grep com.lovart.tools-pull"
+echo "Status: launchctl list | grep com.mflow.tools-pull"

@@ -2,7 +2,7 @@
 type: stage-sop/s3
 version: 1.0
 updated: 2026-07-05
-scope: "profile-lovart-creation"
+scope: "profile-mflow-creation"
 tools: [opencode, claude]
 status: active
 path: 1-1 Harness/Docs/S3-内容创作/前端JSON模块说明.md
@@ -12,7 +12,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 
 > **文档定位**：前端 JSON 模块的详细说明  
 > **更新日期**：2026-06-04  
-> **适用范围**：Lovart 项目前端 JSON 模块开发和维护相关人员
+> **适用范围**：品牌方 项目前端 JSON 模块开发和维护相关人员
 
 ---
 
@@ -73,11 +73,11 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
   "type": "hero-split",
   "tag": "AI Design Tool",
   "title": "Create Stunning Designs with AI",
-  "subtitle": "Lovart's MCoT-powered AI Creative Director understands your design needs",
+  "subtitle": "品牌方's MCoT-powered AI Creative Director understands your design needs",
   "button_text": "Start Designing",
   "button_url": "/ai-design-tool#start",
-  "hero_image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
-  "hero_image_alt": "Lovart AI creating a professional design"
+  "hero_image": "https://cdn.example.com/images/agents/8f3f2384.png",
+  "hero_image_alt": "品牌方 AI creating a professional design"
 }
 ```
 
@@ -105,11 +105,11 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 {
   "type": "hero-cinematic",
   "title": "The Future of Design",
-  "subtitle": "Powered by Lovart's AI Creative Director",
+  "subtitle": "Powered by 品牌方's AI Creative Director",
   "button_text": "Explore Now",
   "button_url": "/explore",
-  "hero_image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
-  "hero_image_alt": "Lovart AI design showcase"
+  "hero_image": "https://cdn.example.com/images/agents/98800dc8.png",
+  "hero_image_alt": "品牌方 AI design showcase"
 }
 ```
 
@@ -144,7 +144,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
   "steps": [
     {
       "title": "Describe",
-      "description": "Tell Lovart what you want to create",
+      "description": "Tell 品牌方 what you want to create",
       "icon": "pencil"
     },
     {
@@ -191,17 +191,17 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
   "subtitle": "Every tool you need in one place",
   "tiles": [
     {
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Logo Design",
       "label": "Logo Design"
     },
     {
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Poster Design",
       "label": "Poster Design"
     },
     {
-      "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "image": "https://cdn.example.com/images/agents/da4b4705.png",
       "alt": "Social Media",
       "label": "Social Media"
     }
@@ -292,13 +292,13 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
     {
       "title": "AI-Powered",
       "description": "Advanced AI understands your design intent",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "AI Design"
     },
     {
       "title": "Professional Quality",
       "description": "Output meets professional standards",
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Professional Design"
     }
   ]
@@ -335,28 +335,28 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
     {
       "title": "Logo Design",
       "description": "Create professional logos in minutes",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Logo Design",
       "size": "large"
     },
     {
       "title": "Poster Design",
       "description": "Design stunning posters",
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Poster Design",
       "size": "small"
     },
     {
       "title": "Social Media",
       "description": "Complete social media kits",
-      "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "image": "https://cdn.example.com/images/agents/da4b4705.png",
       "alt": "Social Media",
       "size": "small"
     },
     {
       "title": "Brand Kit",
       "description": "Complete brand identity",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Brand Kit",
       "size": "large"
     }
@@ -393,37 +393,37 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
     {
       "title": "Logo Design",
       "description": "Professional logos",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Logo Design"
     },
     {
       "title": "Poster Design",
       "description": "Stunning posters",
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Poster Design"
     },
     {
       "title": "Social Media",
       "description": "Social media kits",
-      "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "image": "https://cdn.example.com/images/agents/da4b4705.png",
       "alt": "Social Media"
     },
     {
       "title": "Brand Kit",
       "description": "Brand identity",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Brand Kit"
     },
     {
       "title": "Website Design",
       "description": "Website layouts",
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Website Design"
     },
     {
       "title": "App Design",
       "description": "Mobile app designs",
-      "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "image": "https://cdn.example.com/images/agents/da4b4705.png",
       "alt": "App Design"
     }
   ]
@@ -551,19 +551,19 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
     {
       "title": "Logo Design",
       "description": "Create professional logos with AI assistance",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Logo Design"
     },
     {
       "title": "Poster Design",
       "description": "Design stunning posters for any occasion",
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Poster Design"
     },
     {
       "title": "Social Media",
       "description": "Complete social media design kits",
-      "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "image": "https://cdn.example.com/images/agents/da4b4705.png",
       "alt": "Social Media"
     }
   ]
@@ -653,7 +653,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
     {
       "title": "How to Create a Professional Logo",
       "excerpt": "Learn the step-by-step process...",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Logo Design Tutorial",
       "url": "/blog/how-to-create-logo",
       "date": "2026-05-15"
@@ -661,7 +661,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
     {
       "title": "Design Trends for 2026",
       "excerpt": "Discover the latest design trends...",
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Design Trends",
       "url": "/blog/design-trends-2026",
       "date": "2026-05-10"
@@ -700,14 +700,14 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
     {
       "title": "AI-Powered Design",
       "description": "Our AI understands your design intent and creates professional results",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "AI Design",
       "reverse": false
     },
     {
       "title": "Professional Quality",
       "description": "Output meets professional standards for any use case",
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Professional Quality",
       "reverse": true
     }
@@ -742,13 +742,13 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
   "type": "canvas-wall",
   "items": [
     {
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Logo Design",
       "author": "John Doe",
       "likes": 150
     },
     {
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Poster Design",
       "author": "Jane Smith",
       "likes": 200
@@ -788,19 +788,19 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
     {
       "title": "Business",
       "description": "Professional business designs",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Business Design"
     },
     {
       "title": "Creative",
       "description": "Artistic creative designs",
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Creative Design"
     },
     {
       "title": "Social",
       "description": "Social media designs",
-      "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "image": "https://cdn.example.com/images/agents/da4b4705.png",
       "alt": "Social Design"
     }
   ]
@@ -836,25 +836,25 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
     {
       "title": "Logo",
       "description": "Professional logos",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Logo"
     },
     {
       "title": "Poster",
       "description": "Stunning posters",
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Poster"
     },
     {
       "title": "Social",
       "description": "Social media",
-      "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "image": "https://cdn.example.com/images/agents/da4b4705.png",
       "alt": "Social"
     },
     {
       "title": "Brand",
       "description": "Brand identity",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Brand"
     }
   ]
@@ -889,20 +889,20 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
   "items": [
     {
       "title": "Step 1: Describe",
-      "description": "Tell Lovart what you want to create",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "description": "Tell 品牌方 what you want to create",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Step 1"
     },
     {
       "title": "Step 2: Generate",
       "description": "AI creates multiple design options",
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Step 2"
     },
     {
       "title": "Step 3: Refine",
       "description": "Perfect your design with AI assistance",
-      "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "image": "https://cdn.example.com/images/agents/da4b4705.png",
       "alt": "Step 3"
     }
   ]
@@ -938,19 +938,19 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
     {
       "title": "Logo Design",
       "description": "Professional logos",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Logo Design"
     },
     {
       "title": "Poster Design",
       "description": "Stunning posters",
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Poster Design"
     },
     {
       "title": "Social Media",
       "description": "Social media kits",
-      "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "image": "https://cdn.example.com/images/agents/da4b4705.png",
       "alt": "Social Media"
     }
   ]
@@ -981,7 +981,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 ```json
 {
   "type": "prompt-launcher",
-  "title": "Try Lovart Now",
+  "title": "Try 品牌方 Now",
   "subtitle": "Describe what you want to create",
   "placeholder": "e.g., A professional logo for a tech startup",
   "button_text": "Generate",
@@ -1016,17 +1016,17 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
   "logos": [
     {
       "name": "Company A",
-      "logo": "https://cdn.lovart.ai/logos/company-a.png",
+      "logo": "https://cdn.example.com/logos/company-a.png",
       "alt": "Company A"
     },
     {
       "name": "Company B",
-      "logo": "https://cdn.lovart.ai/logos/company-b.png",
+      "logo": "https://cdn.example.com/logos/company-b.png",
       "alt": "Company B"
     },
     {
       "name": "Company C",
-      "logo": "https://cdn.lovart.ai/logos/company-c.png",
+      "logo": "https://cdn.example.com/logos/company-c.png",
       "alt": "Company C"
     }
   ]
@@ -1058,15 +1058,15 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
   "type": "media-marquee",
   "items": [
     {
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Design 1"
     },
     {
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Design 2"
     },
     {
-      "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "image": "https://cdn.example.com/images/agents/da4b4705.png",
       "alt": "Design 3"
     }
   ]
@@ -1103,7 +1103,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 {
   "type": "cta-default",
   "title": "Ready to Start?",
-  "subtitle": "Join thousands of creators using Lovart",
+  "subtitle": "Join thousands of creators using 品牌方",
   "primary_button": {
     "text": "Get Started Free",
     "url": "/signup"
@@ -1197,22 +1197,22 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
     {
       "number": 1,
       "title": "Describe Your Design",
-      "description": "Tell Lovart what you want to create",
-      "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "description": "Tell 品牌方 what you want to create",
+      "image": "https://cdn.example.com/images/agents/8f3f2384.png",
       "alt": "Step 1"
     },
     {
       "number": 2,
       "title": "AI Generates Options",
       "description": "AI creates multiple design options",
-      "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+      "image": "https://cdn.example.com/images/agents/98800dc8.png",
       "alt": "Step 2"
     },
     {
       "number": 3,
       "title": "Refine & Download",
       "description": "Perfect your design and download",
-      "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "image": "https://cdn.example.com/images/agents/da4b4705.png",
       "alt": "Step 3"
     }
   ]
@@ -1225,7 +1225,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 
 **作用：** 多列功能对比表
 
-**适用场景：** Lovart vs 竞品 / 旧工作流
+**适用场景：** 品牌方 vs 竞品 / 旧工作流
 
 **字段结构：**
 ```json
@@ -1246,8 +1246,8 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 ```json
 {
   "type": "comparison-table",
-  "title": "Lovart vs Traditional Design",
-  "headers": ["Feature", "Lovart", "Traditional"],
+  "title": "品牌方 vs Traditional Design",
+  "headers": ["Feature", "品牌方", "Traditional"],
   "rows": [
     {
       "feature": "Time",
@@ -1295,12 +1295,12 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
   "type": "comparison-before-after",
   "title": "See the Difference",
   "before": {
-    "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+    "image": "https://cdn.example.com/images/agents/8f3f2384.png",
     "alt": "Before",
     "label": "Before"
   },
   "after": {
-    "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+    "image": "https://cdn.example.com/images/agents/98800dc8.png",
     "alt": "After",
     "label": "After"
   }
@@ -1337,18 +1337,18 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
   "type": "testimonial",
   "testimonials": [
     {
-      "quote": "Lovart transformed our design workflow",
+      "quote": "品牌方 transformed our design workflow",
       "author": "John Doe",
       "role": "Marketing Director",
       "company": "Tech Corp",
-      "avatar": "https://cdn.lovart.ai/avatars/john.png"
+      "avatar": "https://cdn.example.com/avatars/john.png"
     },
     {
       "quote": "Professional results in minutes",
       "author": "Jane Smith",
       "role": "Freelance Designer",
       "company": "Self-employed",
-      "avatar": "https://cdn.lovart.ai/avatars/jane.png"
+      "avatar": "https://cdn.example.com/avatars/jane.png"
     }
   ]
 }
@@ -1629,8 +1629,8 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
   "title": "Frequently Asked Questions",
   "faqs": [
     {
-      "question": "What is Lovart?",
-      "answer": "Lovart is an AI-powered design platform that helps you create professional designs in minutes."
+      "question": "What is 品牌方?",
+      "answer": "品牌方 is an AI-powered design platform that helps you create professional designs in minutes."
     },
     {
       "question": "How does it work?",
@@ -1638,7 +1638,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
     },
     {
       "question": "Is it free?",
-      "answer": "Yes! Lovart offers a free plan with 5 designs per day. For more features, upgrade to Pro."
+      "answer": "Yes! 品牌方 offers a free plan with 5 designs per day. For more features, upgrade to Pro."
     }
   ]
 }
@@ -1722,6 +1722,6 @@ A: 在 `preview-data.json` 中添加示例，然后在页面中使用。
 
 ---
 
-> **维护者**：Lovart 团队  
+> **维护者**：品牌方 团队  
 > **最后更新**：2026-06-04  
 > **版本**：V1.0

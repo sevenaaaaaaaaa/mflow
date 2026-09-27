@@ -2,7 +2,7 @@
 
 > **文档定位**：面向北美市场团队的操作指南  
 > **更新日期**：2026-06-04  
-> **适用范围**：Lovart 项目北美市场 SEO 优化和内容策略相关人员
+> **适用范围**：品牌方 项目北美市场 SEO 优化和内容策略相关人员
 
 ---
 
@@ -72,17 +72,17 @@ python3 "1-4 Dev/scripts/sentinel/collect.py" --source gsc --region north_americ
 
 ### 3.1 品牌词分类规则
 
-> **🚨 SSOT 铁律**：品牌词分类的唯一代码来源是 `1-4 Dev/scripts/lovart_brand_match.py`。禁止硬编码品牌词列表。所有品牌词判定必须通过 `is_brand()` 函数。
+> **🚨 SSOT 铁律**：品牌词分类的唯一代码来源是 `1-4 Dev/scripts/brand_match.py`。禁止硬编码品牌词列表。所有品牌词判定必须通过 `is_brand()` 函数。
 
 ```python
-from lovart_brand_match import is_brand, partition_keywords
+from brand_match import is_brand, partition_keywords
 ```
 
-**北美市场常见品牌词变体（已由 `lovart_brand_match` 覆盖）：**
-- lovart ai（最常见）
+**北美市场常见品牌词变体（已由 `brand_match` 覆盖）：**
+- 品牌 ai（最常见）
 - loveart（常见拼写错误）
 - lo art（分词搜索）
-- lovart.ia（AI 变体）
+- 品牌.ia（AI 变体）
 
 ### 3.2 非品牌词分析
 
@@ -204,7 +204,7 @@ cat "1-2 Insight/Trident Insights/reports/competitor_match_result.json" | python
 **GSC 数据查询：**
 ```bash
 # 查询北美地区 GSC 数据
-python3 "1-1 Harness/Skills/lovart-trident-data-engine/scripts/gsc_fetch.py" --region north_america
+python3 "1-1 Harness/Skills/trident-data-engine/scripts/gsc_fetch.py" --region north_america
 ```
 
 ### 6.2 GA4 数据源
@@ -218,13 +218,13 @@ python3 "1-1 Harness/Skills/lovart-trident-data-engine/scripts/gsc_fetch.py" --r
 **GA4 数据查询：**
 ```bash
 # 查询北美地区 GA4 数据
-python3 "1-1 Harness/Skills/lovart-trident-data-engine/scripts/ga4_fetch.py" --region north_america
+python3 "1-1 Harness/Skills/trident-data-engine/scripts/ga4_fetch.py" --region north_america
 ```
 
 ### 6.3 竞品词库数据源
 
 **竞品词库数据：**
-- `1-2 Insight/Trident Insights/竞品核心非品牌词/lovart_competitors_keywords.md`
+- `1-2 Insight/Trident Insights/竞品核心非品牌词/品牌_competitors_keywords.md`
 - 265 全量词 / 36 核心词
 
 **竞品词匹配：**
@@ -241,8 +241,8 @@ python3 "1-4 Dev/scripts/competitor_deep_match.py" --region north_america
 
 ```
 1-2 Insight/Trident Insights/reports/monthly/
-├── Lovart-SEO-2026-05.md                    # 全站月报
-├── Lovart-SEO-2026-05-north-america.md      # 北美地区月报
+├── 品牌方-SEO-2026-05.md                    # 全站月报
+├── 品牌方-SEO-2026-05-north-america.md      # 北美地区月报
 ├── .metrics/
 │   ├── 2026-05.json                         # 年均 metrics
 │   └── 2026-05-north-america.json           # 北美地区 metrics
@@ -252,16 +252,16 @@ python3 "1-4 Dev/scripts/competitor_deep_match.py" --region north_america
 
 ```
 1-2 Insight/Trident Insights/reports/weekly/
-├── Lovart-SEO-review-2026-05-25-2026-05-31.md                    # 全站周报
-├── Lovart-SEO-review-2026-05-25-2026-05-31-north-america.md      # 北美地区周报
+├── 品牌方-SEO-review-2026-05-25-2026-05-31.md                    # 全站周报
+├── 品牌方-SEO-review-2026-05-25-2026-05-31-north-america.md      # 北美地区周报
 ```
 
 ### 7.3 日报产出路径
 
 ```
 1-2 Insight/Trident Insights/reports/daily/
-├── Lovart-SEO-2026-05-31.md                    # 全站日报
-├── Lovart-SEO-2026-05-31-north-america.md      # 北美地区日报
+├── 品牌方-SEO-2026-05-31.md                    # 全站日报
+├── 品牌方-SEO-2026-05-31-north-america.md      # 北美地区日报
 ```
 
 ---
@@ -331,6 +331,6 @@ python3 "1-4 Dev/scripts/competitor_deep_match.py" --region north_america
 
 ---
 
-> **维护者**：Lovart 团队  
+> **维护者**：品牌方 团队  
 > **最后更新**：2026-06-04  
 > **版本**：V1.0

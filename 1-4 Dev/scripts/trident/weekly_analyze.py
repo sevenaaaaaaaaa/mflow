@@ -5,7 +5,7 @@ from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from lovart_brand_match import is_brand
+from brand_match import is_brand
 
 GSC = json.load(open("/tmp/gsc_windows.json"))
 GA4 = json.load(open("/tmp/ga4_windows.json"))
@@ -15,7 +15,7 @@ BING = json.load(open(Path(__file__).resolve().parents[3] / "1-2 Insight/Trident
 # 竞品词库
 COMP_DIR = str(Path(__file__).resolve().parents[3] / "1-2 Insight/Keywords Research/竞品核心非品牌词")
 COMP = []
-for fn in ["lovart_competitors_keywords.md", "lovart_competitors_core_keywords.md"]:
+for fn in ["品牌_competitors_keywords.md", "品牌_competitors_core_keywords.md"]:
     txt = Path(COMP_DIR, fn).read_text()
     COMP += [w.strip().lower() for w in re.findall(r"[^\n|]+", txt) if len(w.strip()) > 2]
 COMP = sorted(set(COMP))
@@ -102,7 +102,7 @@ for wname in ("cur", "prev"):
 
 # 页面分类
 def classify_page(url):
-    u = url.replace("https://www.lovart.ai", "").replace("http://www.lovart.ai", "")
+    u = url.replace("https://www.example.com", "").replace("http://www.example.com", "")
     if u in ("/", ""): return "首页"
     m = re.match(r"^/([a-z]{2}(-[a-z]{2})?)/", u)
     if m and m.group(1) not in ("blog", "tools", "features"):

@@ -387,13 +387,13 @@ def export_tables(db, today):
 ### BigQuery
 ```bash
 bq load --source_format=CSV \\
-  lovart_trident.snapshots \\
+  品牌_trident.snapshots \\
   gs://my-bucket/{today}/snapshots.csv
 ```
 
 ### Snowflake
 ```sql
-COPY INTO lovart_trident.snapshots
+COPY INTO 品牌_trident.snapshots
 FROM @my_stage/{today}/snapshots.csv
 FILE_FORMAT = (TYPE = CSV SKIP_HEADER = 1);
 ```

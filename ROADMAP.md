@@ -83,7 +83,7 @@
 
 - ✅ 域名二级目录入口：`nownexts.com/mflow/`（Apache 双 vhost ProxyPass，见 session log v3.5）
 - ✅ 子域名方案备用：`deploy/setup-domain.sh` + `docs/domain-setup.md`（DNS → 反代 → HTTPS 三步）
-- ✅ Phase 5 收官（2026-09-16）：归属人过滤（"我的任务"）· 排程报表进调度页 · Loop 终态飞书通知（run/notify.json，admin 配置）· 项目独立 LLM Key（meta.llm，清空即回退全局）· 插件市场（marketplace.json + 安装/卸载/plugin_check 六项）· 钩子 PATH 修复（LOVART_PYTHON → 项目 venv 自动探测，smoketest 免 source 16/16）
+- ✅ Phase 5 收官（2026-09-16）：归属人过滤（"我的任务"）· 排程报表进调度页 · Loop 终态飞书通知（run/notify.json，admin 配置）· 项目独立 LLM Key（meta.llm，清空即回退全局）· 插件市场（marketplace.json + 安装/卸载/plugin_check 六项）· 钩子 PATH 修复（MFLOW_PYTHON → 项目 venv 自动探测，smoketest 免 source 16/16）
 - 📋 插件规范：第三方数据源/发布渠道按 §modules 协议贡献，TOOLS-REGISTRY 自动收录
 
 ## Phase 6 · GEO Content Loop（2026-09-16 ✅ 首批全链路）
@@ -232,7 +232,7 @@
 - ✅ 批量执行器 `publish_sanity`（blog/composite 通吃）+ 发布通道 UI（文档类型/模式/封面/确认框）+ 5 个新单测（共 26）
 - ✅ 落地页闭环（Phase 18）：`landing_refresh` 执行器（读 CMS 现有页→按落地页结构重写→四门禁+结构校验→**带反馈重试≤3轮**）+ 通用**任务链**（只链通过项，链式发布默认 dry-run）+ 预设「🔁 落地页闭环（改稿→发布）」
 - ✅ 闭环实测：ready=True → 自动链出 publish_sanity(patch) → tx 返回；不通过项记 CHAIN-SKIP
-- ✅ 顺手修两个环境 bug：新钩子用系统 py3.6（非 ASCII 打印崩→lang-check 恒挂）→ 走 LOVART_PYTHON/venv；校验口径与 quota-check 统一为**词当量**（英文页不再被原始字符数误伤）
+- ✅ 顺手修两个环境 bug：新钩子用系统 py3.6（非 ASCII 打印崩→lang-check 恒挂）→ 走 MFLOW_PYTHON/venv；校验口径与 quota-check 统一为**词当量**（英文页不再被原始字符数误伤）
 
 ## Phase 18 · 落地页闭环（2026-09-17 ✅）
 
@@ -240,7 +240,7 @@
 - ✅ 通用**任务链**：`params.chain` 在父任务完成后自动生成下一步（只链通过门禁的产出；链式发布默认 dry-run；审计 CHAIN-CREATE/CHAIN-SKIP）
 - ✅ 预设「🔁 落地页闭环（改稿→发布）」（第 8 个预设）：section/lang/条数 → landing_refresh → publish_sanity(patch)
 - ✅ 修复：`publish_sanity` 失败如实标记 failed；patch 用真实 CMS `_id`（UUID，非 slug）
-- ✅ 环境修复：quota-check/lang-check 走 `LOVART_PYTHON`（venv）避免 py3.6 非 ASCII 崩溃；校验口径统一**词当量**
+- ✅ 环境修复：quota-check/lang-check 走 `MFLOW_PYTHON`（venv）避免 py3.6 非 ASCII 崩溃；校验口径统一**词当量**
 - 实测：**真实闭环上线 2 篇**（`ai-storefront-designer` + `ai-image-to-sketch`）→ 改稿 ready=True → 链出 patch → **tx 确认写入 CMS**
 - ⚠ 暴露 4 个生产 bug（hero.title 变 UUID / slug.current 被覆盖→404 / console.py 被误写 / 前端预存 500）→ 已全部修复（patch 不改 slug / H1 标题提取 / git 恢复 / 确认为预存问题）
 
@@ -248,13 +248,13 @@
 
 **P19.1 首次真实发布闭环**
 - ✅ 2 篇真实工具落地页走完 改稿→四门禁→ready→链出 patch→**tx 真写 Sanity**（`ai-storefront-designer` / `ai-image-to-sketch`）
-- ✅ 代价是抓出 4 个生产级 bug 并全部修复：hero.title 变 UUID · **slug.current 被覆盖致前台 404** · console.py 被编辑脚本误写 · 前端 500（经查为 lovart.ai 预存问题，非 MFlow）
+- ✅ 代价是抓出 4 个生产级 bug 并全部修复：hero.title 变 UUID · **slug.current 被覆盖致前台 404** · console.py 被编辑脚本误写 · 前端 500（经查为 example.com 预存问题，非 MFlow）
 - ✅ 沉淀铁律：**patch 模式永远不写 slug**；不要用 `_id` 当 title；大改前先 dry-run 并抽检前台渲染
 
 **P19.2 知识库治理**
 - ✅ `GET /api/kb/gaps` 缺口扫描 → 6 个缺口（竞品分析/用户画像/案例库/行业样式/竞品对比/i18n）
 - ✅ 清理 67 篇垃圾（34 TDK + 5 iCloud 副本 + 18 重复 docs + 6 一次性文件）→ 归档不删，**136 → 48 篇有效知识**
-- ✅ 知识库扩充：OpenClaw 指南 / 18 篇 lovart.ai docs / 海外媒体报道 / 竞品 26 家流量 + 12 词簇零覆盖
+- ✅ 知识库扩充：OpenClaw 指南 / 18 篇 example.com docs / 海外媒体报道 / 竞品 26 家流量 + 12 词簇零覆盖
 
 **P19.3 Anti-Slop Strong 与语言规则**
 - ✅ ANTI_SLOP_STRONG 注入 gen_prompt：29 禁用词 + 8 条 AI 味模式 + 四问自检 + 「删掉后读者不受影响就删」
@@ -335,7 +335,7 @@
 
 ## Phase 22 · 开工预热（2026-09-20 ✅）
 
-- ✅ `1-4 Dev/scripts/warmup.py`（纯标准库）：用**真实只读 / dry-run** 动作，把 Lovart Global 六个板块的历史记录、findings、缺口清单、报告一次性跑出来，让后台开箱即有内容而非满屏空状态
+- ✅ `1-4 Dev/scripts/warmup.py`（纯标准库）：用**真实只读 / dry-run** 动作，把 默认项目 六个板块的历史记录、findings、缺口清单、报告一次性跑出来，让后台开箱即有内容而非满屏空状态
 - ✅ 安全边界：**不提供 `--real` 开关**，写生产库仍走人工授权；幂等；skip/fail 如实记录，**不补数**
 - ✅ 报告落 `run/logs/warmup-*.md`；文档 `docs/warmup.md`；已纳入 `deploy/sync.sh`
 - ✅ 顺修：**单测污染生产审计日志**——`import console` 即写 `run/approvals.log`（实测一天 92 条噪音）。`RUN_DIR` 改为可由 `MFLOW_RUN_DIR` 覆盖，`run-tests.sh` 强制指向临时目录，并补 3 个隔离用例（**42/42 绿**）

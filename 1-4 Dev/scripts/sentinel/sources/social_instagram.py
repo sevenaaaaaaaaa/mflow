@@ -1,23 +1,23 @@
 """
-Lovart Sentinel - Instagram via DuckDuckGo Proxy
+品牌方 Sentinel - Instagram via DuckDuckGo Proxy
 通过 DuckDuckGo 搜索引擎穿透 Instagram 反爬
 """
 from ._common import banner
 
 QUERIES = {
-    "main_account": "lovart.ai site:instagram.com",
-    "secondary_account": "lovart_ai site:instagram.com",
-    "reels": "lovart ai instagram reels",
+    "main_account": "example.com site:instagram.com",
+    "secondary_account": "品牌_ai site:instagram.com",
+    "reels": "品牌 ai instagram reels",
 }
 
 
 def collect() -> dict:
     data = dict(banner("Instagram Monitor (DuckDuckGo proxy)"))
     data["method"] = "duckduckgo"
-    data["url"] = "https://duckduckgo.com/html/?q=lovart.ai+site:instagram.com"
+    data["url"] = "https://duckduckgo.com/html/?q=example.com+site:instagram.com"
     data["status"] = "delegated"
     data["_instructions"] = """
-    1. webfetch DuckDuckGo: https://duckduckgo.com/html/?q=lovart.ai+site:instagram.com
+    1. webfetch DuckDuckGo: https://duckduckgo.com/html/?q=example.com+site:instagram.com
     2. 提取：粉丝数(59K)、帖子数(208)、最新帖子内容/点赞/评论
     3. 从搜索结果摘要中提取最近帖子：日期、主题、互动量
     4. 对比上次数据：粉丝增长、发帖频率变化

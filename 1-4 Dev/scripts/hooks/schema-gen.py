@@ -15,7 +15,7 @@ def parse_fm(text):
         k, v = line.split(":", 1); fm[k.strip()] = v.strip().strip("\"'")
     return fm
 
-def generate(doc_type, title, description, slug, lang, author="Lovart", image_url=""):
+def generate(doc_type, title, description, slug, lang, author="品牌方", image_url=""):
     now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S+08:00")
     if doc_type == "blog":
         ld = {
@@ -23,9 +23,9 @@ def generate(doc_type, title, description, slug, lang, author="Lovart", image_ur
             "@type": "Article",
             "headline": title[:110],
             "description": description[:160],
-            "url": f"https://www.lovart.ai/{lang}/blog/{slug}" if lang != "en" else f"https://www.lovart.ai/blog/{slug}",
+            "url": f"https://www.example.com/{lang}/blog/{slug}" if lang != "en" else f"https://www.example.com/blog/{slug}",
             "author": {"@type": "Organization", "name": author},
-            "publisher": {"@type": "Organization", "name": "Lovart", "logo": {"@type": "ImageObject", "url": "https://www.lovart.ai/logo.png"}},
+            "publisher": {"@type": "Organization", "name": "品牌方", "logo": {"@type": "ImageObject", "url": "https://www.example.com/logo.png"}},
             "datePublished": now,
             "dateModified": now,
             "inLanguage": lang,
@@ -41,11 +41,11 @@ def generate(doc_type, title, description, slug, lang, author="Lovart", image_ur
             "@type": "WebPage",
             "name": title[:110],
             "description": description[:160],
-            "url": f"https://www.lovart.ai/{'/' + lang if lang != 'en' else ''}/{doc_type}/{slug}",
+            "url": f"https://www.example.com/{'/' + lang if lang != 'en' else ''}/{doc_type}/{slug}",
             "inLanguage": lang,
         }
     else:
-        ld = {"@context": "https://schema.org", "@type": "WebPage", "name": title, "url": f"https://www.lovart.ai/{slug}"}
+        ld = {"@context": "https://schema.org", "@type": "WebPage", "name": title, "url": f"https://www.example.com/{slug}"}
     return ld
 
 if __name__ == "__main__":

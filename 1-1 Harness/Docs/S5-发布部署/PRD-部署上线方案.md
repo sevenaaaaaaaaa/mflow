@@ -1,6 +1,6 @@
-# PRD：Lovart GEO 本地部署与定时调度方案
+# PRD：品牌方 GEO 本地部署与定时调度方案
 
-> v1.0 | 2026-06-04 | Lovart Growth Team
+> v1.0 | 2026-06-04 | 品牌方 Growth Team
 >
 > 面向 macOS 本地部署的全自动定时调度方案。所有脚本通过 launchd plist 管理，无需 Docker/n8n（本地开发阶段）。
 
@@ -56,16 +56,16 @@
 
 | 凭证文件 | 位置 | 用途 |
 |----------|------|------|
-| `gsc-token.json` | `1-1 Harness/Skills/lovart-trident-data-engine/credentials/` | GSC OAuth token |
-| `oauth-client.json` | `1-1 Harness/Skills/lovart-trident-data-engine/credentials/` | GSC OAuth client |
-| `ga4-token.json` | `1-1 Harness/Skills/lovart-trident-data-engine/credentials/` | GA4 OAuth token |
-| `service-account.json` | `1-1 Harness/Skills/lovart-trident-data-engine/credentials/` | GA4 服务账号 |
-| `api_key` | `1-1 Harness/Skills/lovart-trident-data-engine/credentials/` | Bing Webmaster API key |
-| `.env` | `1-4 Dev/lovart.sanity.studio/` | Sanity 项目凭证 |
+| `gsc-token.json` | `1-1 Harness/Skills/trident-data-engine/credentials/` | GSC OAuth token |
+| `oauth-client.json` | `1-1 Harness/Skills/trident-data-engine/credentials/` | GSC OAuth client |
+| `ga4-token.json` | `1-1 Harness/Skills/trident-data-engine/credentials/` | GA4 OAuth token |
+| `service-account.json` | `1-1 Harness/Skills/trident-data-engine/credentials/` | GA4 服务账号 |
+| `api_key` | `1-1 Harness/Skills/trident-data-engine/credentials/` | Bing Webmaster API key |
+| `.env` | `1-4 Dev/品牌.sanity.studio/` | Sanity 项目凭证 |
 | `OPENAI_API_KEY` | 环境变量 `~/.zshrc` | LLM API |
 | `ANTHROPIC_API_KEY` | 环境变量 `~/.zshrc` | LLM 备用 |
-| `wp-auth.local.env` | `1-3 Content Gen/Lovart-Blog-Pipeline/Lovart-Blogs/scripts/` | WordPress 凭证 |
-| `feishu.json` | `1-1 Harness/Skills/lovart-trident-data-engine/credentials/` | 飞书应用凭证 |
+| `wp-auth.local.env` | `1-3 Content Gen/blog-pipeline/品牌方-Blogs/scripts/` | WordPress 凭证 |
+| `feishu.json` | `1-1 Harness/Skills/trident-data-engine/credentials/` | 飞书应用凭证 |
 
 > ⚠️ 所有凭证已在 `.gitignore` 排除。交接时通过安全渠道传输。
 
@@ -80,11 +80,11 @@
 | 时间 | 任务 | 脚本 | 产出 | 预计耗时 |
 |------|------|------|------|----------|
 | 00:05 | GSC 日报数据拉取 | `scripts/trident/gsc_fetch.py --daily` | `1-4 Dev/Output/Data Ingestion/gsc-daily.json` | 2 min |
-| 00:10 | Sentinel 数据采集 | `1-4 Dev/scripts/sentinel/collect.py --source all` | `1-2 Insight/Lovart ORM/raw/YYYY-MM-DD/` | 5 min |
-| 00:30 | Sentinel 日报生成 | `1-4 Dev/scripts/sentinel/report.py --daily` | `1-2 Insight/Lovart ORM/daily/` | 3 min |
-| 08:00 | 缺口队列补充（3篇） | `lovart-pipeline-orchestrator` → Blog 生成 | `1-3 Content Gen/Lovart-Blog-Pipeline/Lovart-Blogs/01-Drafts/` | 15 min |
-| 10:00 | 多语言翻译队列 | `lovart-pipeline-orchestrator` → LLM 翻译 | `1-3 Content Gen/Lovart-Blog-Pipeline/Lovart-Blogs/01-Drafts/` | 10 min |
-| 18:00 | SEO 日报生成 | `1-4 Dev/scripts/sentinel/sources/gsc_daily.py` | `1-2 Insight/Lovart ORM/daily/` | 1 min |
+| 00:10 | Sentinel 数据采集 | `1-4 Dev/scripts/sentinel/collect.py --source all` | `1-2 Insight/ORM/raw/YYYY-MM-DD/` | 5 min |
+| 00:30 | Sentinel 日报生成 | `1-4 Dev/scripts/sentinel/report.py --daily` | `1-2 Insight/ORM/daily/` | 3 min |
+| 08:00 | 缺口队列补充（3篇） | `pipeline-orchestrator` → Blog 生成 | `1-3 Content Gen/blog-pipeline/品牌方-Blogs/01-Drafts/` | 15 min |
+| 10:00 | 多语言翻译队列 | `pipeline-orchestrator` → LLM 翻译 | `1-3 Content Gen/blog-pipeline/品牌方-Blogs/01-Drafts/` | 10 min |
+| 18:00 | SEO 日报生成 | `1-4 Dev/scripts/sentinel/sources/gsc_daily.py` | `1-2 Insight/ORM/daily/` | 1 min |
 | 20:00 | 每日汇总通知（飞书） | `scripts/trident/push_to_feishu.py --daily-summary` | 飞书消息 | 1 min |
 
 ### 4.2 每周任务
@@ -96,7 +96,7 @@
 | 周一 08:00 | Bing 数据拉取 | `scripts/trident/bing_fetch.py` | `1-2 Insight/Trident Insights/reports/bing-full.json` | 2 min |
 | 周一 09:00 | SEO 复盘周报生成 | `1-4 Dev/scripts/weekly_review_v3.py` | `1-2 Insight/Trident Insights/reports/weekly/` | 10 min |
 | 周一 09:00 | Semrush 排名拉取 | Playwright 脚本 | Google Sheets 日志表 | 5 min |
-| 周一 10:00 | Sentinel 周报生成 | `1-4 Dev/scripts/sentinel/report.py --weekly` | `1-2 Insight/Lovart ORM/weekly/` | 5 min |
+| 周一 10:00 | Sentinel 周报生成 | `1-4 Dev/scripts/sentinel/report.py --weekly` | `1-2 Insight/ORM/weekly/` | 5 min |
 | 周一 11:00 | AI 搜索引用监测 | Playwright 脚本（check Perplexity/ChatGPT） | `1-2 Insight/Page Analytic/geo-monitor.json` | 10 min |
 | 周三 09:00 | 自然周报生成 | `1-4 Dev/scripts/weekly_review_v3.py --natural` | `1-2 Insight/Trident Insights/reports/weekly/` | 10 min |
 
@@ -106,16 +106,16 @@
 |------|------|------|------|----------|
 | 每月 2 日 06:00 | DataWorks 数据检查 | 检查 `1-2 Insight/From Datawork/{YYYY-MM} SEO GEO.xlsx` 是否就位 | — | 1 min |
 | 每月 3 日 06:00 | SEO 月报 V2 生成 | `1-4 Dev/scripts/seo_monthly_v2.py --month YYYY-MM` | `1-2 Insight/Trident Insights/reports/monthly/` | 20 min |
-| 每月 3 日 12:00 | Sentinel 月报生成 | `1-4 Dev/scripts/sentinel/report.py --monthly` | `1-2 Insight/Lovart ORM/monthly/` | 5 min |
-| 每月 5 日 09:00 | 内容老化检测 | `lovart-content-audit` → 扫描 6 个月以上文章 | Google Sheets | 5 min |
-| 每月 5 日 10:00 | Sitemap 全量更新 | `lovart-sitemap-update` | `1-4 Dev/Sitemap/` | 3 min |
+| 每月 3 日 12:00 | Sentinel 月报生成 | `1-4 Dev/scripts/sentinel/report.py --monthly` | `1-2 Insight/ORM/monthly/` | 5 min |
+| 每月 5 日 09:00 | 内容老化检测 | `content-audit` → 扫描 6 个月以上文章 | Google Sheets | 5 min |
+| 每月 5 日 10:00 | Sitemap 全量更新 | `sitemap-update` | `1-4 Dev/Sitemap/` | 3 min |
 
 ### 4.4 每季/每年任务
 
 | 时间 | 任务 | 脚本 | 产出 | 预计耗时 |
 |------|------|------|------|----------|
 | 季末月 5 日 | SEO 季报生成 | `seo_monthly_v2.py`（季报模式） | `1-2 Insight/Trident Insights/reports/quarterly/` | 15 min |
-| 季末月 5 日 | Sentinel 季报生成 | `1-4 Dev/scripts/sentinel/report.py --quarterly` | `1-2 Insight/Lovart ORM/` | 5 min |
+| 季末月 5 日 | Sentinel 季报生成 | `1-4 Dev/scripts/sentinel/report.py --quarterly` | `1-2 Insight/ORM/` | 5 min |
 | 每年 1 月 10 日 | SEO 年报生成 | `seo_monthly_v2.py`（年报模式） | `1-2 Insight/Trident Insights/reports/annual/` | 20 min |
 | 每年 12 月 28 日 | 年度内容批量更新（年份替换） | LLM 批量任务 | 全部文章 | 1 hr |
 
@@ -127,7 +127,7 @@
 
 ### 5.1 每日 Sentinel 采集（00:10）
 
-**文件:** `~/Library/LaunchAgents/com.lovart.sentinel.daily.plist`
+**文件:** `~/Library/LaunchAgents/com.mflow.sentinel.daily.plist`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -136,7 +136,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.lovart.sentinel.daily</string>
+    <string>com.mflow.sentinel.daily</string>
     <key>ProgramArguments</key>
     <array>
         <string>/usr/bin/python3</string>
@@ -152,9 +152,9 @@
     <key>WorkingDirectory</key>
     <string>/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project</string>
     <key>StandardOutPath</key>
-    <string>/tmp/lovart-sentinel-daily.out</string>
+    <string>/tmp/mflow-sentinel-daily.out</string>
     <key>StandardErrorPath</key>
-    <string>/tmp/lovart-sentinel-daily.err</string>
+    <string>/tmp/mflow-sentinel-daily.err</string>
     <key>RunAtLoad</key><false/>
 </dict>
 </plist>
@@ -162,7 +162,7 @@
 
 ### 5.2 每日 Sentinel 日报生成（00:30）
 
-**文件:** `~/Library/LaunchAgents/com.lovart.sentinel.report.daily.plist`
+**文件:** `~/Library/LaunchAgents/com.mflow.sentinel.report.daily.plist`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -171,7 +171,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.lovart.sentinel.report.daily</string>
+    <string>com.mflow.sentinel.report.daily</string>
     <key>ProgramArguments</key>
     <array>
         <string>/usr/bin/python3</string>
@@ -186,9 +186,9 @@
     <key>WorkingDirectory</key>
     <string>/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project</string>
     <key>StandardOutPath</key>
-    <string>/tmp/lovart-sentinel-report-daily.out</string>
+    <string>/tmp/mflow-sentinel-report-daily.out</string>
     <key>StandardErrorPath</key>
-    <string>/tmp/lovart-sentinel-report-daily.err</string>
+    <string>/tmp/mflow-sentinel-report-daily.err</string>
     <key>RunAtLoad</key><false/>
 </dict>
 </plist>
@@ -196,7 +196,7 @@
 
 ### 5.3 每周一 GSC + GA4 + Bing 全量采集（周一 06:00-08:00）
 
-**文件:** `~/Library/LaunchAgents/com.lovart.trident.weekly.plist`
+**文件:** `~/Library/LaunchAgents/com.mflow.trident.weekly.plist`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -205,11 +205,11 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.lovart.trident.weekly</string>
+    <string>com.mflow.trident.weekly</string>
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
-        <string>/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-1 Harness/Skills/lovart-trident-data-engine/scripts/run_all.sh</string>
+        <string>/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-1 Harness/Skills/trident-data-engine/scripts/run_all.sh</string>
     </array>
     <key>StartCalendarInterval</key>
     <dict>
@@ -220,9 +220,9 @@
     <key>WorkingDirectory</key>
     <string>/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project</string>
     <key>StandardOutPath</key>
-    <string>/tmp/lovart-trident-weekly.out</string>
+    <string>/tmp/mflow-trident-weekly.out</string>
     <key>StandardErrorPath</key>
-    <string>/tmp/lovart-trident-weekly.err</string>
+    <string>/tmp/mflow-trident-weekly.err</string>
     <key>RunAtLoad</key><false/>
 </dict>
 </plist>
@@ -230,7 +230,7 @@
 
 ### 5.4 每周一 SEO 复盘周报（周一 09:00）
 
-**文件:** `~/Library/LaunchAgents/com.lovart.seo.weekly.plist`
+**文件:** `~/Library/LaunchAgents/com.mflow.seo.weekly.plist`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -239,7 +239,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.lovart.seo.weekly</string>
+    <string>com.mflow.seo.weekly</string>
     <key>ProgramArguments</key>
     <array>
         <string>/usr/bin/python3</string>
@@ -254,9 +254,9 @@
     <key>WorkingDirectory</key>
     <string>/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project</string>
     <key>StandardOutPath</key>
-    <string>/tmp/lovart-seo-weekly.out</string>
+    <string>/tmp/mflow-seo-weekly.out</string>
     <key>StandardErrorPath</key>
-    <string>/tmp/lovart-seo-weekly.err</string>
+    <string>/tmp/mflow-seo-weekly.err</string>
     <key>RunAtLoad</key><false/>
 </dict>
 </plist>
@@ -264,7 +264,7 @@
 
 ### 5.5 每周一 Sentinel 周报（周一 10:00）
 
-**文件:** `~/Library/LaunchAgents/com.lovart.sentinel.report.weekly.plist`
+**文件:** `~/Library/LaunchAgents/com.mflow.sentinel.report.weekly.plist`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -273,7 +273,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.lovart.sentinel.report.weekly</string>
+    <string>com.mflow.sentinel.report.weekly</string>
     <key>ProgramArguments</key>
     <array>
         <string>/usr/bin/python3</string>
@@ -289,9 +289,9 @@
     <key>WorkingDirectory</key>
     <string>/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project</string>
     <key>StandardOutPath</key>
-    <string>/tmp/lovart-sentinel-weekly.out</string>
+    <string>/tmp/mflow-sentinel-weekly.out</string>
     <key>StandardErrorPath</key>
-    <string>/tmp/lovart-sentinel-weekly.err</string>
+    <string>/tmp/mflow-sentinel-weekly.err</string>
     <key>RunAtLoad</key><false/>
 </dict>
 </plist>
@@ -299,7 +299,7 @@
 
 ### 5.6 每月 SEO 月报 V2（每月 3 日 06:00）
 
-**文件:** `~/Library/LaunchAgents/com.lovart.seo.monthly.plist`
+**文件:** `~/Library/LaunchAgents/com.mflow.seo.monthly.plist`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -308,7 +308,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.lovart.seo.monthly</string>
+    <string>com.mflow.seo.monthly</string>
     <key>ProgramArguments</key>
     <array>
         <string>/bin/bash</string>
@@ -324,9 +324,9 @@
     <key>WorkingDirectory</key>
     <string>/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project</string>
     <key>StandardOutPath</key>
-    <string>/tmp/lovart-seo-monthly.out</string>
+    <string>/tmp/mflow-seo-monthly.out</string>
     <key>StandardErrorPath</key>
-    <string>/tmp/lovart-seo-monthly.err</string>
+    <string>/tmp/mflow-seo-monthly.err</string>
     <key>RunAtLoad</key><false/>
 </dict>
 </plist>
@@ -334,7 +334,7 @@
 
 ### 5.7 每月内容老化检测（每月 5 日 09:00）
 
-**文件:** `~/Library/LaunchAgents/com.lovart.content.audit.plist`
+**文件:** `~/Library/LaunchAgents/com.mflow.content.audit.plist`
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -343,7 +343,7 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.lovart.content.audit</string>
+    <string>com.mflow.content.audit</string>
     <key>ProgramArguments</key>
     <array>
         <string>/usr/bin/python3</string>
@@ -359,9 +359,9 @@
     <key>WorkingDirectory</key>
     <string>/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project</string>
     <key>StandardOutPath</key>
-    <string>/tmp/lovart-content-audit.out</string>
+    <string>/tmp/content-audit.out</string>
     <key>StandardErrorPath</key>
-    <string>/tmp/lovart-content-audit.err</string>
+    <string>/tmp/content-audit.err</string>
     <key>RunAtLoad</key><false/>
 </dict>
 </plist>
@@ -373,26 +373,26 @@
 
 ```bash
 # 加载所有 plist
-launchctl load ~/Library/LaunchAgents/com.lovart.sentinel.daily.plist
-launchctl load ~/Library/LaunchAgents/com.lovart.sentinel.report.daily.plist
-launchctl load ~/Library/LaunchAgents/com.lovart.trident.weekly.plist
-launchctl load ~/Library/LaunchAgents/com.lovart.seo.weekly.plist
-launchctl load ~/Library/LaunchAgents/com.lovart.sentinel.report.weekly.plist
-launchctl load ~/Library/LaunchAgents/com.lovart.seo.monthly.plist
-launchctl load ~/Library/LaunchAgents/com.lovart.content.audit.plist
+launchctl load ~/Library/LaunchAgents/com.mflow.sentinel.daily.plist
+launchctl load ~/Library/LaunchAgents/com.mflow.sentinel.report.daily.plist
+launchctl load ~/Library/LaunchAgents/com.mflow.trident.weekly.plist
+launchctl load ~/Library/LaunchAgents/com.mflow.seo.weekly.plist
+launchctl load ~/Library/LaunchAgents/com.mflow.sentinel.report.weekly.plist
+launchctl load ~/Library/LaunchAgents/com.mflow.seo.monthly.plist
+launchctl load ~/Library/LaunchAgents/com.mflow.content.audit.plist
 
 # 卸载
-launchctl unload ~/Library/LaunchAgents/com.lovart.sentinel.daily.plist
+launchctl unload ~/Library/LaunchAgents/com.mflow.sentinel.daily.plist
 
-# 列出所有 Lovart 任务
-launchctl list | grep lovart
+# 列出所有 品牌方 任务
+launchctl list | grep 品牌
 
 # 立即手动触发（测试用）
-launchctl start com.lovart.sentinel.daily
+launchctl start com.mflow.sentinel.daily
 
 # 查看日志
-tail -f /tmp/lovart-sentinel-daily.out
-tail -f /tmp/lovart-sentinel-daily.err
+tail -f /tmp/mflow-sentinel-daily.out
+tail -f /tmp/mflow-sentinel-daily.err
 ```
 
 ---
@@ -405,7 +405,7 @@ tail -f /tmp/lovart-sentinel-daily.err
 #!/bin/bash
 # 每日 00:01 执行 — 检查所有依赖和凭证
 
-echo "=== Lovart Health Check $(date) ==="
+echo "=== 品牌方 Health Check $(date) ==="
 
 # Python 依赖
 python3 -c "import googleapiclient; import requests; import zeep" 2>/dev/null
@@ -416,14 +416,14 @@ check_cred() {
     if [ -f "$1" ]; then echo "✅ $2 OK"; else echo "⚠️  $2 MISSING: $1"; fi
 }
 
-CRED_DIR="1-1 Harness/Skills/lovart-trident-data-engine/credentials"
+CRED_DIR="1-1 Harness/Skills/trident-data-engine/credentials"
 check_cred "$CRED_DIR/gsc-token.json" "GSC token"
 check_cred "$CRED_DIR/ga4-token.json" "GA4 token"
 check_cred "$CRED_DIR/service-account.json" "GA4 service account"
 check_cred "$CRED_DIR/api_key" "Bing API key"
 
 # Sanity
-if [ -f "1-4 Dev/lovart.sanity.studio/.env" ]; then
+if [ -f "1-4 Dev/品牌.sanity.studio/.env" ]; then
     echo "✅ Sanity .env OK"
 else
     echo "❌ Sanity .env MISSING"
@@ -465,7 +465,7 @@ echo "=== Health Check Done ==="
 
 | 故障 | 表现 | 排查 |
 |------|------|------|
-| plist 未执行 | `launchctl list | grep lovart` 无输出 | 检查 plist 文件语法：`plutil -lint file.plist` |
+| plist 未执行 | `launchctl list | grep 品牌` 无输出 | 检查 plist 文件语法：`plutil -lint file.plist` |
 | GSC 认证过期 | 脚本报 401 | 重新运行 `gsc_auth.py` |
 | API 限流 | 脚本报 429 | 等待 60 秒后重试，或降低并发的采集量 |
 | Sentienl 无数据 | raw/ 目录为空 | 检查网络和 API key，查看 stderr 日志 |
@@ -479,13 +479,13 @@ echo "=== Health Check Done ==="
 
 | plist 文件 | 任务 | 频次 |
 |-----------|------|------|
-| `com.lovart.sentinel.daily.plist` | Sentinel 数据采集 | 每日 00:10 |
-| `com.lovart.sentinel.report.daily.plist` | Sentinel 日报生成 | 每日 00:30 |
-| `com.lovart.trident.weekly.plist` | GSC+GA4+Bing 全量采集 | 每周一 06:00 |
-| `com.lovart.seo.weekly.plist` | SEO 复盘周报 | 每周一 09:00 |
-| `com.lovart.sentinel.report.weekly.plist` | Sentinel 周报 | 每周一 10:00 |
-| `com.lovart.seo.monthly.plist` | SEO 月报 V2 | 每月 3 日 06:00 |
-| `com.lovart.content.audit.plist` | 内容老化检测 | 每月 5 日 09:00 |
+| `com.mflow.sentinel.daily.plist` | Sentinel 数据采集 | 每日 00:10 |
+| `com.mflow.sentinel.report.daily.plist` | Sentinel 日报生成 | 每日 00:30 |
+| `com.mflow.trident.weekly.plist` | GSC+GA4+Bing 全量采集 | 每周一 06:00 |
+| `com.mflow.seo.weekly.plist` | SEO 复盘周报 | 每周一 09:00 |
+| `com.mflow.sentinel.report.weekly.plist` | Sentinel 周报 | 每周一 10:00 |
+| `com.mflow.seo.monthly.plist` | SEO 月报 V2 | 每月 3 日 06:00 |
+| `com.mflow.content.audit.plist` | 内容老化检测 | 每月 5 日 09:00 |
 
 ### B. 时间线示意图
 

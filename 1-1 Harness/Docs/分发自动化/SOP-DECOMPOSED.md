@@ -52,6 +52,6 @@
 
 默认 `TRIDENT_ROOT`：
 
-`~/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/Lovart Dev`
+`~/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/品牌方 Dev`
 
 或 `1-4 Dev`（若已迁移）。

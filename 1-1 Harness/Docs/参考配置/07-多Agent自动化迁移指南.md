@@ -15,7 +15,7 @@
 | **launchd** | 可全部卸载；保留仅作离线兜底 |
 
 ```bash
-# 卸载本机全部 com.lovart.* launchd（迁到 Cursor 后）
+# 卸载本机全部 com.mflow.* launchd（迁到 Cursor 后）
 bash "1-4 Dev/automation/unload-all-launchd.sh"
 ```
 
@@ -25,13 +25,13 @@ bash "1-4 Dev/automation/unload-all-launchd.sh"
 
 | 任务 | 频率 | 项目入口 | Cursor 草稿 JSON | 原 launchd |
 |------|------|----------|------------------|------------|
-| Tools Pull | 周一 08:00 | `automation/tools-pull/pull-tools-from-production.sh` | `lovart-tools-pull.workflow.json` | ✅ 已保存 |
-| 内容健康检查 | 周一 08:30 | `automation/content-health/weekly-health-check.sh` | `lovart-content-health-weekly.workflow.json` | `com.lovart.content-health-weekly` |
-| Trident 三引擎 | 周一 06:00 | `1-4 Dev/scripts/trident/run_all.sh` | `lovart-trident-weekly.workflow.json` | PRD `com.lovart.trident.weekly` |
-| SEO 周报 | 周一 09:00 | `1-4 Dev/scripts/weekly_review_v3.py` | `lovart-seo-weekly.workflow.json` | PRD `com.lovart.seo.weekly` |
-| Sentinel 采集+日报 | 每日 08:00 | `scripts/sentinel/collect.py` + `report.py --daily` | `lovart-sentinel-daily.workflow.json` | PRD / 旧 plist |
+| Tools Pull | 周一 08:00 | `automation/tools-pull/pull-tools-from-production.sh` | `mflow-tools-pull.workflow.json` | ✅ 已保存 |
+| 内容健康检查 | 周一 08:30 | `automation/content-health/weekly-health-check.sh` | `mflow-content-health-weekly.workflow.json` | `com.mflow.content-health-weekly` |
+| Trident 三引擎 | 周一 06:00 | `1-4 Dev/scripts/trident/run_all.sh` | `mflow-trident-weekly.workflow.json` | PRD `com.mflow.trident.weekly` |
+| SEO 周报 | 周一 09:00 | `1-4 Dev/scripts/weekly_review_v3.py` | `mflow-seo-weekly.workflow.json` | PRD `com.mflow.seo.weekly` |
+| Sentinel 采集+日报 | 每日 08:00 | `scripts/sentinel/collect.py` + `report.py --daily` | `mflow-sentinel-daily.workflow.json` | PRD / 旧 plist |
 | SEO 月报 | 每月 3 日 06:00 | `scripts/seo_monthly_v2.py` | 待建 | PRD |
-| Sitemap 周更 | 周一 02:00 | Skill `lovart-sitemap-update` | 待建 | 归档 v2 plist |
+| Sitemap 周更 | 周一 02:00 | Skill `sitemap-update` | 待建 | 归档 v2 plist |
 
 **Cursor 导入**：Automations → New → 用 `open_automation` 预填各 JSON，或复制 `workflow.prompts[0].prompt` + cron。工作区选 **vault 根**。
 
@@ -58,7 +58,7 @@ bash "1-4 Dev/automation/unload-all-launchd.sh"
 
 ```
 bash "1-4 Dev/automation/tools-pull/pull-tools-from-production.sh"
-Read `~/Documents/Lovart Local Dev/Output/composite-v2-audit/pull-tools-latest.json` — legacy must be 0.
+Read `~/Documents/MFlow Local Dev/Output/composite-v2-audit/pull-tools-latest.json` — legacy must be 0.
 Do NOT sanity import/deploy/--replace.
 ```
 
@@ -66,14 +66,14 @@ Do NOT sanity import/deploy/--replace.
 
 ```
 bash "1-4 Dev/automation/content-health/weekly-health-check.sh"
-Future release dates = 0; brokenUrls = 0 in `~/Documents/Lovart Local Dev/Temp/lovart/pull` reports.
+Future release dates = 0; brokenUrls = 0 in `~/Documents/MFlow Local Dev/Temp/品牌/pull` reports.
 ```
 
 ### Trident Weekly
 
 ```
 cd "1-4 Dev/scripts/trident" && bash run_all.sh
-Summarize updated JSON under `~/Documents/Lovart Local Dev/Output/Data Ingestion/` and reports under `1-2 Insight/Trident Insights/`.
+Summarize updated JSON under `~/Documents/MFlow Local Dev/Output/Data Ingestion/` and reports under `1-2 Insight/Trident Insights/`.
 Do NOT sanity import/deploy/--replace.
 ```
 
@@ -87,10 +87,10 @@ Do NOT sanity import/deploy/--replace.
 
 | 项 | 位置 |
 |----|------|
-| Sanity | `1-4 Dev/lovart.sanity.studio/.env` 或 `SANITY_API_TOKEN` |
-| GSC/GA4/Bing | 项目内共享：`1-1 Harness/Skills/lovart-trident-data-engine/credentials/`；脚本入口：`1-4 Dev/scripts/trident/` |
+| Sanity | `1-4 Dev/品牌.sanity.studio/.env` 或 `SANITY_API_TOKEN` |
+| GSC/GA4/Bing | 项目内共享：`1-1 Harness/Skills/trident-data-engine/credentials/`；脚本入口：`1-4 Dev/scripts/trident/` |
 | LLM | `~/.zshrc`：`OPENAI_API_KEY`、`ANTHROPIC_API_KEY` |
-| 日志 | `~/Library/Logs/Lovart/`（launchd 遗留）、`pull-tools-latest.json` |
+| 日志 | `~/Library/Logs/品牌方/`（launchd 遗留）、`pull-tools-latest.json` |
 
 Cloud Agent **无法**直接读本机 `~/.zshrc` 与 iCloud 路径 — Cursor Automation 需选 **本机 Cloud Agent / local cwd** 且 vault 可访问；纯云端 VM 需改方案（git remote + secrets）。
 

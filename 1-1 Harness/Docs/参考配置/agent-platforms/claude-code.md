@@ -12,7 +12,7 @@ claude   # 或 Claude Code IDE 打开该文件夹
 ## CLAUDE.md（建议放在 `1-Project/CLAUDE.md`）
 
 ```markdown
-# Lovart — Claude Code
+# 品牌方 — Claude Code
 
 ## 规则
 - 读 `1-1 Harness/AGENTS.md` 与 `1-1 GEO Readme/AGENTS.md`
@@ -24,7 +24,7 @@ claude   # 或 Claude Code IDE 打开该文件夹
 - SEO weekly: `python3 "1-4 Dev/scripts/weekly_review_v3.py"`
 
 ## 路径
-- Studio scripts: `1-4 Dev/lovart.sanity.studio/scripts/`
+- Studio scripts: `1-4 Dev/品牌.sanity.studio/scripts/`
 - Tools SSOT: `1-3 Content Gen/Page Gen/Pages/Tools/`
 ```
 

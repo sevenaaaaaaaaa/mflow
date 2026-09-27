@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Lovart Harness Compiler & Synchronizer (harness_sync.py)
+品牌方 Harness Compiler & Synchronizer (harness_sync.py)
 -------------------------------------------------------
 This script enforces a Single Source of Truth (SSOT) for all agent rules and skills.
 It reads the master rules from `1-1 Harness/02-rules/` and automatically compiles/synchronizes them to:
 1. Cursor MDC Rules (.cursor/rules/*.mdc)
 2. Claude Code Rules (.clauderc)
 3. Codex Rules (.codexrules)
-4. Hermes / OpenCode Profiles (via install-hermes-lovart-profiles.sh)
+4. Hermes / OpenCode Profiles (via install-hermes-profiles.sh)
 
 Usage:
     python3 harness_sync.py
@@ -29,9 +29,9 @@ CURSOR_RULES_DIR = os.path.join(PROJECT_ROOT, ".cursor/rules")
 CLAUDE_RC_PATH = os.path.join(PROJECT_ROOT, ".clauderc")
 CODEX_RULES_PATH = os.path.join(PROJECT_ROOT, ".codexrules")
 OPENCODE_CONFIG_PATH = os.path.join(PROJECT_ROOT, "opencode.jsonc")
-HERMES_INSTALL_SCRIPT = os.path.join(PROJECT_ROOT, "1-4 Dev/automation/install-hermes-lovart-profiles.sh")
+HERMES_INSTALL_SCRIPT = os.path.join(PROJECT_ROOT, "1-4 Dev/automation/install-hermes-profiles.sh")
 VAULT_SKILLS_ROOT = os.path.join(PROJECT_ROOT, "1-1 Harness/Skills")
-HERMES_LOVART_SKILLS = os.path.join(os.path.expanduser("~"), ".hermes", "skills", "lovart")
+HERMES_MFLOW_SKILLS = os.path.join(os.path.expanduser("~"), ".hermes", "skills", "品牌")
 RULE_FILES = [
     "RULES-00-iron.md",
     "RULES-10-reports.md",
@@ -69,23 +69,23 @@ def write_file(path, content):
 def compile_cursor_rules():
     print("Compiling Cursor MDC Rules...")
     
-    # 1. lovart-core.mdc (from RULES-00-iron.md)
+    # 1. mflow-core.mdc (from RULES-00-iron.md)
     iron_content = read_rule_file("RULES-00-iron.md")
     core_mdc = f"""---
-description: Lovart MFlow 项目基础契约：路径变量、全局铁律、产出路由、与 Hermes 技能的关系。在 Lovart 项目内做任何任务前加载。
+description: 品牌方 MFlow 项目基础契约：路径变量、全局铁律、产出路由、与 Hermes 技能的关系。在 品牌方 项目内做任何任务前加载。
 globs: "*"
 alwaysApply: true
 ---
 
 {iron_content}
 """
-    write_file(os.path.join(CURSOR_RULES_DIR, "lovart-core.mdc"), core_mdc)
+    write_file(os.path.join(CURSOR_RULES_DIR, "mflow-core.mdc"), core_mdc)
 
-    # 2. lovart-quality-gates.mdc (from RULES-30-quality.md)
+    # 2. mflow-quality-gates.mdc (from RULES-30-quality.md)
     quality_content = read_rule_file("RULES-30-quality.md")
     # Add extra anti-slop guidelines directly into MDC
     quality_mdc = f"""---
-description: Lovart 内容质量门禁：preflight、SEO/URL/i18n 检查、Anti-Slop 审计，发布前 BLOCK 验证。确保内容不缩水、不乱写、无 AI 腔调。
+description: 品牌方 内容质量门禁：preflight、SEO/URL/i18n 检查、Anti-Slop 审计，发布前 BLOCK 验证。确保内容不缩水、不乱写、无 AI 腔调。
 globs: "*"
 alwaysApply: true
 ---
@@ -102,12 +102,12 @@ alwaysApply: true
 - **绝对禁用**：`赋能`, `闭环`, `抓手`, `链路`, `生态位`, `底层逻辑`, `方法论`, `心智`, `对齐`, `颗粒度`, `打法`, `痛点`, `引爆`, `破局`, `维度`, `深挖`, `见证`, `颠覆性`, `前沿`
 - *替代方案*：用人话和具体业务词汇代替。例如用 `支持`/`帮助` 代替 `赋能`，用 `流程`/`环节` 代替 `链路`。
 """
-    write_file(os.path.join(CURSOR_RULES_DIR, "lovart-quality-gates.mdc"), quality_mdc)
+    write_file(os.path.join(CURSOR_RULES_DIR, "mflow-quality-gates.mdc"), quality_mdc)
 
-    # 3. lovart-blog.mdc (from RULES-20-creation.md + Blog Specifics)
+    # 3. mflow-blog.mdc (from RULES-20-creation.md + Blog Specifics)
     creation_content = read_rule_file("RULES-20-creation.md")
     blog_mdc = f"""---
-description: Lovart Blog 创作与优化规则。适用于所有博客生成、重写、优化与分类路由任务。强制执行 Complete Guide 和 Insight & Trend 的高标准要求。
+description: 品牌方 Blog 创作与优化规则。适用于所有博客生成、重写、优化与分类路由任务。强制执行 Complete Guide 和 Insight & Trend 的高标准要求。
 globs: "**/*.md"
 alwaysApply: false
 ---
@@ -137,11 +137,11 @@ alwaysApply: false
 3. **字数实时统计**：在每段生成结束时，必须在心里（或在输出中）计算当前已生成的总字数，确保最终产出 100% 达标。
 4. **拒绝概括**：严禁在后半部分使用 "In summary...", "To conclude..." 等概括性词汇敷衍。
 """
-    write_file(os.path.join(CURSOR_RULES_DIR, "lovart-blog.mdc"), blog_mdc)
+    write_file(os.path.join(CURSOR_RULES_DIR, "mflow-blog.mdc"), blog_mdc)
 
-    # 4. lovart-landing-page.mdc (from RULES-20-creation.md + Landing Page Specifics)
+    # 4. landing-page.mdc (from RULES-20-creation.md + Landing Page Specifics)
     landing_mdc = f"""---
-description: Lovart 落地页（Tools, Features, Scenarios, Solutions）生产与刷新规则。适用于所有落地页 JSON 生成与刷新任务。
+description: 品牌方 落地页（Tools, Features, Scenarios, Solutions）生产与刷新规则。适用于所有落地页 JSON 生成与刷新任务。
 globs: "**/*.json"
 alwaysApply: false
 ---
@@ -160,13 +160,13 @@ alwaysApply: false
 1. **大 JSON 分段审查**：必须使用 Read 工具分段检查，绝对不能一次性将数千行的 JSON 贴入对话。
 2. **严格的键值校验**：所有的 `_id` 必须符合命名规范（如 `tools-ai-logo-maker-en`），多语言版本必须有各自独立的 JSON 文件且语言代码正确。
 """
-    write_file(os.path.join(CURSOR_RULES_DIR, "lovart-landing-page.mdc"), landing_mdc)
+    write_file(os.path.join(CURSOR_RULES_DIR, "landing-page.mdc"), landing_mdc)
 
-    # 5. lovart-sanity-publish.mdc (from RULES-40-ops.md)
+    # 5. sanity-publish.mdc (from RULES-40-ops.md)
     ops_content = read_rule_file("RULES-40-ops.md")
     sanity_mdc = f"""---
-description: Lovart Sanity 内容管道发布规则。适用于所有发布到 Sanity CMS 的任务。防止覆盖线上数据和配置错误。
-globs: "1-4 Dev/lovart.sanity.studio/**/*"
+description: 品牌方 Sanity 内容管道发布规则。适用于所有发布到 Sanity CMS 的任务。防止覆盖线上数据和配置错误。
+globs: "1-4 Dev/品牌.sanity.studio/**/*"
 alwaysApply: false
 ---
 
@@ -179,29 +179,29 @@ alwaysApply: false
 3. **内链可用性**：Markdown 正文中的所有站内链接必须使用 `/blog/{{slug}}` 格式，严禁使用 `.md` 后缀、`/cluster/*` 旧路径或 `#` 占位符。
 4. **发布状态控制**：所有的发布类任务在导入前，文档状态应设为 `status: ready`，等待人工审核后再进行最终 import。
 """
-    write_file(os.path.join(CURSOR_RULES_DIR, "lovart-sanity-publish.mdc"), sanity_mdc)
+    write_file(os.path.join(CURSOR_RULES_DIR, "sanity-publish.mdc"), sanity_mdc)
 
-    # 6. lovart-seo-report-iron-rules.mdc (from RULES-10-reports.md)
+    # 6. mflow-seo-report-iron-rules.mdc (from RULES-10-reports.md)
     reports_content = read_rule_file("RULES-10-reports.md")
     seo_mdc = f"""---
-description: Lovart SEO 报告铁律 — 环比总则 + 月报结构 + OKR
+description: 品牌方 SEO 报告铁律 — 环比总则 + 月报结构 + OKR
 globs: "*"
 alwaysApply: true
 ---
 
 {reports_content}
 """
-    write_file(os.path.join(CURSOR_RULES_DIR, "lovart-seo-report-iron-rules.mdc"), seo_mdc)
+    write_file(os.path.join(CURSOR_RULES_DIR, "mflow-seo-report-iron-rules.mdc"), seo_mdc)
 
 
 def compile_claude_code_rules():
     print("Compiling Claude Code Rules (.clauderc)...")
     rules_content = read_rule_bundle()
     
-    clauderc_content = f"""# Lovart Claude Code System Rules
+    clauderc_content = f"""# 品牌方 Claude Code System Rules
 # Generated automatically by harness_sync.py. DO NOT EDIT DIRECTLY.
 
-## Lovart Full Harness Rule Bundle
+## 品牌方 Full Harness Rule Bundle
 {rules_content}
 """
     write_file(CLAUDE_RC_PATH, clauderc_content)
@@ -211,7 +211,7 @@ def compile_codex_rules():
     print("Compiling Codex Rules (.codexrules)...")
     rules_content = read_rule_bundle()
     
-    codex_content = f"""# Lovart Codex Rules
+    codex_content = f"""# 品牌方 Codex Rules
 # Generated automatically by harness_sync.py. DO NOT EDIT DIRECTLY.
 
 {rules_content}
@@ -243,18 +243,18 @@ def sync_opencode_config():
 
 
 def sync_hermes_skills():
-    """Copy vault Skills/ (SSOT) -> ~/.hermes/skills/lovart/.
+    """Copy vault Skills/ (SSOT) -> ~/.hermes/skills/品牌/.
 
     Vault dirs containing SKILL.md are the single truth; the Hermes runtime is a
     regenerated cache. Additive & idempotent: never deletes runtime-only skills
-    (e.g. legacy lovart-content-generation) so nothing breaks mid-flight.
+    (e.g. legacy mflow-content-generation) so nothing breaks mid-flight.
     Must run before sync_hermes_profiles() so profile builds see fresh skills.
     """
-    print("Synchronizing Hermes lovart skills from vault...")
+    print("Synchronizing Hermes 品牌 skills from vault...")
     if not os.path.isdir(VAULT_SKILLS_ROOT):
         print(f"Warning: vault skills root missing: {VAULT_SKILLS_ROOT}", file=sys.stderr)
         return
-    os.makedirs(HERMES_LOVART_SKILLS, exist_ok=True)
+    os.makedirs(HERMES_MFLOW_SKILLS, exist_ok=True)
     count = 0
     for dirpath, dirnames, filenames in os.walk(VAULT_SKILLS_ROOT):
         if "SKILL.md" not in filenames:
@@ -262,10 +262,10 @@ def sync_hermes_skills():
         name = os.path.basename(os.path.normpath(dirpath))
         if not name:
             continue
-        dest = os.path.join(HERMES_LOVART_SKILLS, name)
+        dest = os.path.join(HERMES_MFLOW_SKILLS, name)
         shutil.copytree(dirpath, dest, dirs_exist_ok=True)
         count += 1
-    print(f"✓ Synchronized: {count} vault skills -> {HERMES_LOVART_SKILLS}")
+    print(f"✓ Synchronized: {count} vault skills -> {HERMES_MFLOW_SKILLS}")
 
 
 def sync_hermes_profiles():
@@ -291,7 +291,7 @@ def sync_hermes_profiles():
 
 def main():
     print("==========================================")
-    print("Lovart Harness Synchronization Started")
+    print("品牌方 Harness Synchronization Started")
     print("==========================================")
     
     compile_cursor_rules()

@@ -1,9 +1,9 @@
-# ===== secrets — never track (migrated per user authorization, 2026-09-15) =====
+# ===== secrets — never track =====
 secrets/
 .env
 *.env
 !.env.example
-1-1 Harness/Skills/01-strategy/lovart-trident-data-engine/credentials/
+1-1 Harness/Skills/01-strategy/trident-data-engine/credentials/
 1-4 Dev/scripts/sentinel/gsc_credentials/
 1-4 Dev/scripts/sentinel/ga4_credentials/
 1-4 Dev/scripts/sentinel/bing_credentials/
@@ -13,21 +13,23 @@ secrets/
 **/service-account.json
 **/feishu.json
 
-# ===== bulk data (sandbox keeps on disk, not tracked) =====
-1-2 Insight/From Datawork/
-1-2 Insight/Knowledge Base/
-1-2 Insight/Lovart ORM/raw/
+# ===== 情报/内容数据：本地与服务器保留，公开仓库不追踪 =====
+# 服务器迁移 runbook 见 deploy/server.md（pull 前备份，pull 后移回即可恢复）
+1-2 Insight/*
+!1-2 Insight/README.md
+1-3 GenFlow/*
+!1-3 GenFlow/README.md
+!1-3 GenFlow/bv-skill-v01/
+!1-3 GenFlow/.pipeline/
+1-3 GenFlow/.pipeline/events.jsonl
+
+1-1 Harness/11-knowledge/*
+!1-1 Harness/11-knowledge/README.md
+!1-1 Harness/11-knowledge/MEMORY-PROJECT.example.md
 1-4 Dev/Output/
 tmp/
 .video_agent/
 .v2c/
-
-# ===== content pools (kernel repo ships no content) =====
-1-3 GenFlow/Content Calendar/
-1-3 GenFlow/Page Gen/
-1-3 GenFlow/Lovart-Blog-Pipeline/01-Drafts/
-1-3 GenFlow/Lovart-Blog-Pipeline/Lovart-Blogs/
-1-3 GenFlow/Content Distribution/Drafts/
 
 # ===== generated artifacts =====
 .cursor/rules/

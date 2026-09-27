@@ -42,7 +42,7 @@ def run(
     except subprocess.CalledProcessError:
         if data_tier != DATA_TIER_DRAFT:
             raise
-        out = MONTHLY_DIR / f"Lovart-SEO-{month}.md"
+        out = MONTHLY_DIR / f"品牌方-SEO-{month}.md"
         if not out.is_file():
             raise
         print(f"  ⚠️ 月报生成有警告，继续 Draft 后处理: {month}")

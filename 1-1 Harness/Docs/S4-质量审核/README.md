@@ -29,7 +29,7 @@ SERP brief
 ## 脚本入口
 
 ```bash
-cd "1-1 Harness/Skills/lovart-content-quality-gates/scripts"
+cd "1-1 Harness/Skills/content-quality-gates/scripts"
 
 node sample-library-cli.js pair blog
 node anti-slop-preflight.js --file draft.md --strict

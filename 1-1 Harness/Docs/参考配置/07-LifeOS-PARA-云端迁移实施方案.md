@@ -211,7 +211,7 @@
 | Obsidian 信号 | Notion 字段 | 规则 |
 |---|---|---|
 | 一级目录，如 `1-3 Content Gen` | Area | 按目录职责映射到 Area |
-| 二级目录，如 `Lovart-Blog-Pipeline` | Project 或 Resource Type | 如果有明确产出/状态，建 Project；否则建 Resource |
+| 二级目录，如 `blog-pipeline` | Project 或 Resource Type | 如果有明确产出/状态，建 Project；否则建 Resource |
 | 文件名 | Name/Title | 去掉序号和日期噪音后作为标题 |
 | YAML `tags` | Tags/Context | 保留为 Multi-select |
 | YAML `created` | Created Date | 如 Notion API 导入可保留 |
@@ -255,9 +255,9 @@
 | 对象 | 来源 | 目标 |
 |---|---|---|
 | Area: GEO Operations | `1-1 GEO Readme/` | Areas |
-| Project: Lovart GEO Automation | `1-1 GEO Readme/README.md` | Projects |
+| Project: 品牌方 GEO Automation | `1-1 GEO Readme/README.md` | Projects |
 | Resource: 系统总览/角色手册/质量治理 | `1-1 GEO Readme/文档/` | Resources |
-| Automation: Tools Pull | `automation/tools-pull/`、`.cursor/automations/lovart-tools-pull.workflow.json` | Automations |
+| Automation: Tools Pull | `automation/tools-pull/`、`.cursor/automations/mflow-tools-pull.workflow.json` | Automations |
 | Automation: 内容健康检查 | `automation/content-health/` | Automations |
 | Task: 确认 launchd 与 Cursor Automation 二选一 | `06-自动化状态.md` | Tasks |
 
@@ -271,7 +271,7 @@
 | 对象 | 来源 | 目标 |
 |---|---|---|
 | Area: Content Production | `1-3 Content Gen/` | Areas |
-| Project: Lovart Blog Pipeline | `1-3 Content Gen/Lovart-Blog-Pipeline/` | Projects |
+| Project: 品牌方 Blog Pipeline | `1-3 Content Gen/blog-pipeline/` | Projects |
 | Content Item: SEO Brief/Draft/Refresh | Blog Pipeline 和 Page Gen 中的活跃项 | Content Pipeline |
 | Resource: Blog 写作规范/发布 SOP | README、SOP、Skill 文档 | Resources |
 | Automation: Sanity Publish / WordPress Publish | Sanity/WordPress 发布入口 | Automations |
@@ -286,7 +286,7 @@
 | 对象 | 来源 | 目标 |
 |---|---|---|
 | Report: SEO Weekly/Monthly | `1-2 Insight/` 与脚本输出 | Reports/Insights |
-| Report: Sentinel | `Lovart ORM` 输出 | Reports/Insights |
+| Report: Sentinel | `ORM` 输出 | Reports/Insights |
 | Report: Quality Audit | `1-7 Output/quality-audits/` | Reports/Insights |
 | Automation Run | 最近一次报告/审计运行 | Automation Runs |
 

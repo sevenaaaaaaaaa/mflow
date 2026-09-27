@@ -1,16 +1,16 @@
 # 知乎 + Quora 双语选题规划
 
-> 更新于 2026-06-12。基于 Lovart 2nd（Quora 151 条）+ Lovart 3RD（知乎 127 条）实际数据。
+> 更新于 2026-06-12。基于 品牌方 2nd（Quora 151 条）+ 品牌方 3RD（知乎 127 条）实际数据。
 
 ## 数据源
 
-### Quora — Lovart 2nd
+### Quora — 品牌方 2nd
 - **数据库 ID**：`37ffc0c7-1bd5-80f7-9055-c9c72624f3df`（nowtonext workspace）
 - **条目数**：151 条
 - **Schema**：Film (title), Tags (multi_select), Description (rich_text), Artist (rich_text), Live (url), Files & media (rich_text)
 - **全部有标题和链接**，可直接用于选题
 
-### 知乎 — Lovart 3RD
+### 知乎 — 品牌方 3RD
 - **数据库 ID**：`37ffc0c7-1bd5-80ee-a239-de7c4055c90d`
 - **条目数**：127 条
 - **大部分有标题**（用户手动补完），少量仍是占位符
@@ -42,7 +42,7 @@
 
 ## 中英文交叉热点矩阵
 
-| 主题 | Quora | 知乎 | Lovart 植入 | 星流植入 | 优先级 |
+| 主题 | Quora | 知乎 | 品牌方 植入 | 星流植入 | 优先级 |
 |------|-------|------|------------|---------|--------|
 | AI 设计工具推荐/对比 | 32 | 75 | ✅ vs Canva/MJ/DALL-E | ✅ 中文版 | ⭐⭐⭐ |
 | 免费 AI 工具 | 10 | ~5 | ✅ 免费注册 | ✅ 免费注册 | ⭐⭐⭐ |
@@ -80,6 +80,6 @@ Quora 英文回答 ──翻译改写──→ 知乎中文回答
 
 ## Notion API 注意事项
 
-- Lovart 2nd 和 3RD 在同一个 integration 可访问（nowtonext workspace 已授权）
+- 品牌方 2nd 和 3RD 在同一个 integration 可访问（nowtonext workspace 已授权）
 - Token redaction 问题：写 Python 脚本到 /tmp/ 再用 terminal 执行，不要在 execute_code 里直接拼接
 - 详见 `references/notion-pitfalls.md`

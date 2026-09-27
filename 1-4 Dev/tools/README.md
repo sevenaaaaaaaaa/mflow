@@ -1,6 +1,6 @@
 # 1-4 Dev/tools — Web Data Acquisition Stack
 
-把 Firecrawl / Tavily / Hermes curl 三件套接进 Lovart 现有项目,**用 web_router 自动选工具**。
+把 Firecrawl / Tavily / Hermes curl 三件套接进 品牌方 现有项目,**用 web_router 自动选工具**。
 
 ## 目录结构
 
@@ -9,7 +9,7 @@ tools/
 ├── README.md                       ← 你正在看
 ├── web_router.py                   ← 入口:给定 URL 自动选最便宜/最合适的工具
 ├── firecrawl/
-│   ├── lovart_changelog.py         ← 单点示例:抓 lovart.ai/changelog → 结构化 JSON
+│   ├── brand_changelog.py         ← 单点示例:抓 example.com/changelog → 结构化 JSON
 │   ├── README.md
 │   └── output/
 ├── tavily/
@@ -53,10 +53,10 @@ tools/
 
 ```bash
 # 1. 自动选工具
-python3 web_router.py https://www.lovart.ai/changelog --out result.json
+python3 web_router.py https://www.example.com/changelog --out result.json
 
 # 2. 强制 firecrawl + JSON schema(结构化抽取)
-python3 web_router.py https://www.lovart.ai/changelog \
+python3 web_router.py https://www.example.com/changelog \
   --tool firecrawl \
   --schema schema.json \
   --out changelog.json
@@ -68,8 +68,8 @@ python3 web_router.py https://www.linkedin.com/ --tool hermes_curl
 python3 web_router.py "best AI design agent 2026" --tool tavily
 
 # 5. 单点脚本
-python3 firecrawl/lovart_changelog.py
-python3 tavily/tavily_search.py "lovart alternative"
+python3 firecrawl/brand_changelog.py
+python3 tavily/tavily_search.py "品牌 alternative"
 python3 hermes_curl/hermes_curl.py https://example.com
 ```
 
@@ -84,12 +84,12 @@ python3 hermes_curl/hermes_curl.py https://example.com
 
 所有抓取结果落到 `1-4 Dev/Output/{Tool}/{date}-{domain}.json`(由各脚本自建)。
 
-## 与 Lovart 现有管线集成
+## 与 品牌方 现有管线集成
 
 `web_router.fetch_url(url, schema=..., prompt=...)` 返回 dict,可直接喂给:
 - `1-3 GenFlow/Content Calendar/scripts/`(选题生成)
 - `1-3 GenFlow/Content Distribution/`(多语言分发)
-- `1-3 GenFlow/Lovart-Blog-Pipeline/`(Blog 写作)
+- `1-3 GenFlow/blog-pipeline/`(Blog 写作)
 
 调用方只需 `from web_router import fetch_url`,不需要关心走哪个工具。
 
@@ -97,4 +97,4 @@ python3 hermes_curl/hermes_curl.py https://example.com
 
 1. 写 `web_router/playwright_adapter.py`,搞定登录态抓取(Gmail/Slack/Notion workspace)
 2. 加 `tools/web_router/cli.py` 的并行批量模式(`--urls file.txt`)
-3. 接进 `1-1 Harness/06-cron/`,每周一 09:00 跑 `lovart_changelog.py` 自动对比上周
+3. 接进 `1-1 Harness/06-cron/`,每周一 09:00 跑 `brand_changelog.py` 自动对比上周

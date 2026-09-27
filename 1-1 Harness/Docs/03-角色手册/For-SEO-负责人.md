@@ -2,7 +2,7 @@
 
 > **文档定位**：面向 SEO 负责人的操作指南  
 > **更新日期**：2026-06-04  
-> **适用范围**：Lovart 项目 SEO 报告生成和优化相关人员
+> **适用范围**：品牌方 项目 SEO 报告生成和优化相关人员
 
 ---
 
@@ -92,7 +92,7 @@ python3 "1-4 Dev/scripts/seo_monthly_v2.py" --month YYYY-MM --render-only  # 仅
 python3 "1-4 Dev/scripts/seo_monthly_v2.py" --month YYYY-MM --resume --refresh-indexing  # 重拉收录分页
 ```
 
-**实现模块：** `seo_monthly_v2.py` + `seo_monthly_extras.py` + `lovart_brand_match.py` + `lovart_indexing_metrics.py`；快照目录 `1-4 Dev/Output/Data Ingestion/monthly-snapshots/`；收录缓存 `indexing-YYYY-MM.json`；年均缓存 `1-2 Insight/Trident Insights/reports/monthly/.metrics/`。
+**实现模块：** `seo_monthly_v2.py` + `seo_monthly_extras.py` + `brand_match.py` + `indexing_metrics.py`；快照目录 `1-4 Dev/Output/Data Ingestion/monthly-snapshots/`；收录缓存 `indexing-YYYY-MM.json`；年均缓存 `1-2 Insight/Trident Insights/reports/monthly/.metrics/`。
 
 **固定章节顺序（大标题 + 子号；2026-06 起生效）：**
 
@@ -141,7 +141,7 @@ python3 "1-4 Dev/scripts/seo_monthly_v2.py" --month YYYY-MM --resume --refresh-i
 | 13 | **GSC 数据量** | 月报 5,000 词 / 周报 2,000 词 / 日报 200 词。不可缩减 |
 | 14 | **全维度环比** | GSC 关键词：**点击+曝光+CTR 三者环比**；其他表格至少含主要指标环比 |
 | 15 | **分层占比** | Top N、地区、目录、品牌/非品牌拆分：**点击占比+曝光占比** 不可缺 |
-| 16 | **品牌词过筛** | SSOT：`lovart_brand_match.py`（禁止各脚本重复 `is_brand`）。含 lavort、lavart、lovert、`\blav[o0]rt\b` 等 typo；lova/love/art 变体+多语言 |
+| 16 | **品牌词过筛** | SSOT：`brand_match.py`（禁止各脚本重复 `is_brand`）。含 lavort、lavart、lovert、`\blav[o0]rt\b` 等 typo；lova/love/art 变体+多语言 |
 | 17 | **GA4 地区兼容** | `country_group()` 必须同时接受 GSC 缩写（usa/bra/ind）和 GA4 全名（United States/Brazil/India） |
 | 18 | **曝光占比验证** | 所有地区曝光占比总和必须 ≤100%（±1%误差），总和>100% 视为计算错误 |
 | 19 | **地区子区域拆分** | 「其他」必须拆为拉美/南亚/中东非洲/其他，不可合并为 80%+ catch-all |
@@ -161,22 +161,22 @@ python3 "1-4 Dev/scripts/seo_monthly_v2.py" --month YYYY-MM --resume --refresh-i
 
 ## 五、品牌词分类规则
 
-> **🚨 SSOT 铁律**：品牌词分类的唯一代码来源是 `1-4 Dev/scripts/lovart_brand_match.py`。**禁止**在任何 Skill/报告/工作流中硬编码品牌词列表。所有品牌词判定必须通过 `is_brand()` 函数。
+> **🚨 SSOT 铁律**：品牌词分类的唯一代码来源是 `1-4 Dev/scripts/brand_match.py`。**禁止**在任何 Skill/报告/工作流中硬编码品牌词列表。所有品牌词判定必须通过 `is_brand()` 函数。
 
 ```python
-from lovart_brand_match import is_brand, partition_keywords
+from brand_match import is_brand, partition_keywords
 brand, nonbrand = partition_keywords(keywords)
 ```
 
-### 5 层匹配规则（详见 `lovart_brand_match.py`）
+### 5 层匹配规则（详见 `brand_match.py`）
 
-1. **正则匹配** — 40+ pattern：lovart/loveart/lovert/lavort 及多语言变体（日/韩/阿/俄/中文）
+1. **正则匹配** — 40+ pattern：品牌/loveart/lovert/lavort 及多语言变体（日/韩/阿/俄/中文）
 2. **分词匹配** — multi-token：lo+art、love+art 等组合
 3. **紧凑形式匹配** — Levenshtein ≤ 2 模糊匹配
 4. **模糊 token 匹配** — 品牌词根 + 排除列表（logo/login/local 等非品牌词）
 5. **音译匹配** — 日文(ロバート)、韩文(로바트)、中文(洛瓦特)、阿拉伯文(لوفارت)、俄文(ловарт)
 
-**代码 SSOT**：`1-4 Dev/scripts/lovart_brand_match.py` + `test_brand_match.py`（改 regex 只改一处）。
+**代码 SSOT**：`1-4 Dev/scripts/brand_match.py` + `test_brand_match.py`（改 regex 只改一处）。
 
 ---
 
@@ -247,7 +247,7 @@ GSC N 关键词 × 竞品 265 全量词（子串匹配）
 | 收录数 | 9,268 / 20,000 (46.34%) |
 | 竞品词库规模 | 265 全量 / 36 核心 |
 | GA4 Property | 403618427 |
-| GSC Site | `https://www.lovart.ai/` |
+| GSC Site | `https://www.example.com/` |
 
 ---
 
@@ -265,10 +265,10 @@ GSC N 关键词 × 竞品 265 全量词（子串匹配）
 
 | 步骤 | 脚本 | 引擎 | 用途 |
 |:---:|------|------|------|
-| 1 | `1-1 Harness/Skills/lovart-trident-data-engine/scripts/gsc_fetch.py` | GSC | 关键词拉取（月报 5K/周报 2K/日报 200） |
-| 2 | `1-1 Harness/Skills/lovart-trident-data-engine/scripts/ga4_fetch.py` | GA4 | 全维度用户数据（Sessions/Users/Segments/Channels/Geo） |
+| 1 | `1-1 Harness/Skills/trident-data-engine/scripts/gsc_fetch.py` | GSC | 关键词拉取（月报 5K/周报 2K/日报 200） |
+| 2 | `1-1 Harness/Skills/trident-data-engine/scripts/ga4_fetch.py` | GA4 | 全维度用户数据（Sessions/Users/Segments/Channels/Geo） |
 | 3 | `1-4 Dev/scripts/competitor_deep_match.py` | 竞品词库 | 265全量词 + 36核心词 × GSC 关键词 子串匹配 |
-| 4 | `1-1 Harness/Skills/lovart-trident-data-engine/scripts/unified_brief.py` | 汇总 | 三引擎统一情报摘要 |
+| 4 | `1-1 Harness/Skills/trident-data-engine/scripts/unified_brief.py` | 汇总 | 三引擎统一情报摘要 |
 | — | `1-4 Dev/scripts/seo_monthly_v2.py` | 生成 | 月报 V2（含 `seo_monthly_extras.py`：OKR/洞察/movers/分区 mini） |
 | — | `1-4 Dev/scripts/weekly_review_v3.py` | 生成 | 周报最终生成（调用引擎 1-3） |
 
@@ -278,7 +278,7 @@ GSC N 关键词 × 竞品 265 全量词（子串匹配）
 
 ```bash
 # 全量采集（GSC+GA4+Bing）
-cd 1-1 Harness/Skills/lovart-trident-data-engine && bash scripts/run_all.sh
+cd 1-1 Harness/Skills/trident-data-engine && bash scripts/run_all.sh
 
 # 月报 V2（环比=上一自然月；详见 AGENTS.md A0d）
 python3 "1-4 Dev/scripts/seo_monthly_v2.py" --month 2026-05
@@ -298,11 +298,11 @@ python3 "1-4 Dev/scripts/competitor_deep_match.py"
 
 | 频次 | 路径 |
 |------|------|
-| 月报 | `1-2 Insight/Trident Insights/reports/monthly/Lovart-SEO-YYYY-MM.md` |
-| 周报 | `1-2 Insight/Trident Insights/reports/weekly/Lovart-SEO-review-YYYY-MM-DD-YYYY-MM-DD.md` |
-| 日报 | `1-2 Insight/Trident Insights/reports/daily/Lovart-SEO-YYYY-MM-DD.md` |
-| 季报 | `1-2 Insight/Trident Insights/reports/quarterly/Lovart-SEO-YYYY-QX.md` |
-| 年报 | `1-2 Insight/Trident Insights/reports/annual/Lovart-SEO-YYYY-Annual.md` |
+| 月报 | `1-2 Insight/Trident Insights/reports/monthly/品牌方-SEO-YYYY-MM.md` |
+| 周报 | `1-2 Insight/Trident Insights/reports/weekly/品牌方-SEO-review-YYYY-MM-DD-YYYY-MM-DD.md` |
+| 日报 | `1-2 Insight/Trident Insights/reports/daily/品牌方-SEO-YYYY-MM-DD.md` |
+| 季报 | `1-2 Insight/Trident Insights/reports/quarterly/品牌方-SEO-YYYY-QX.md` |
+| 年报 | `1-2 Insight/Trident Insights/reports/annual/品牌方-SEO-YYYY-Annual.md` |
 
 ---
 
@@ -310,7 +310,7 @@ python3 "1-4 Dev/scripts/competitor_deep_match.py"
 
 | 依赖 | 位置 |
 |------|------|
-| 竞品词库（265+36） | `1-2 Insight/Trident Insights/竞品核心非品牌词/lovart_competitors_keywords.md` |
+| 竞品词库（265+36） | `1-2 Insight/Trident Insights/竞品核心非品牌词/品牌_competitors_keywords.md` |
 | GSC 5K JSON | `1-4 Dev/Output/Data Ingestion/gsc-5k-YYYY-MM.json` |
 | GSC/GA4 月报快照 | `1-4 Dev/Output/Data Ingestion/monthly-snapshots/{gsc,ga4}-YYYY-MM.json` |
 | 月报年均 metrics | `1-2 Insight/Trident Insights/reports/monthly/.metrics/YYYY-MM.json` |
@@ -355,8 +355,8 @@ python3 "1-4 Dev/scripts/competitor_deep_match.py"
 | 重跑月报时全量删改旧 Markdown | **增量**改脚本/模板，用 `--render-only` 重渲染 |
 | 分区洞察品牌占比恒为 0% | `section_insight_region` 传入大区 `region_stats` 的 brand/nonbrand，勿把整个 map 当单区 dict |
 | API 中断后从头拉 | 使用 `--resume` 读 `monthly-snapshots/` |
-| 收录率恒为 1.43%（1000/70k） | `lovart_indexing_metrics` 分页 + 语料库 20k 主口径 |
-| lavort 出现在非品牌 Top10 | 品牌 regex 只改 `lovart_brand_match.py` |
+| 收录率恒为 1.43%（1000/70k） | `indexing_metrics` 分页 + 语料库 20k 主口径 |
+| lavort 出现在非品牌 Top10 | 品牌 regex 只改 `brand_match.py` |
 | Dashboard 单表混排 GSC/GA4/收录 | §三 卡 A–F 分开 |
 
 ---
@@ -371,6 +371,6 @@ python3 "1-4 Dev/scripts/competitor_deep_match.py"
 
 ---
 
-> **维护者**：Lovart 团队  
+> **维护者**：品牌方 团队  
 > **最后更新**：2026-06-04  
 > **版本**：V1.0

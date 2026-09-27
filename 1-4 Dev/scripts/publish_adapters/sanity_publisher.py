@@ -36,7 +36,7 @@ DEFAULT_PROJECT = "your-project-id"
 DEFAULT_DATASET = "production"
 API_VERSION = "2024-01-01"
 
-# 分类引用（Lovart production 既有 taxonomy；未知分类回落到 How-To）
+# 分类引用（品牌方 production 既有 taxonomy；未知分类回落到 How-To）
 CAT_REF = {
     "How-To": "9d3210aa-e6e1-4391-b1fd-a634147de088",
     "Best Practice": "a5d8df07-3ab1-4411-a7b0-5b7fad3adf82",
@@ -149,7 +149,7 @@ def build_blog_doc(md_path, slug="", lang="", category="", title="", description
     structured = json.dumps({
         "@context": "https://schema.org", "@type": SCHEMA_MAP.get(category, "Article"),
         "headline": title or fm.get("title", ""),
-        "author": {"@type": "Organization", "name": author or "Lovart"},
+        "author": {"@type": "Organization", "name": author or "品牌方"},
         "datePublished": now,
     }, ensure_ascii=False)
     return {
@@ -235,7 +235,7 @@ CONTENT_SECTION_TYPES = {"feature-detail", "capability-tabs", "bento-2", "bento-
                          "proof-block", "testimonial", "pricing-block", "prompt-launcher", "comparison"}
 
 
-def md_to_sections(md_text, title="", description="", cover_url="", cover_alt="", cta_href="https://www.lovart.ai/canvas"):
+def md_to_sections(md_text, title="", description="", cover_url="", cover_alt="", cta_href="https://www.example.com/canvas"):
     """把落地页草稿（md）转成 composite-v2 最小合法版块数组。
     结构：hero-split → feature-detail(按 H2 归组) → (proof-block 如有数据点) → faq → cta-default"""
     body = md_text
@@ -398,13 +398,13 @@ def build_composite_doc(md_path="", slug="", lang="en", page_type="tool", title=
     description = description or fm.get("description") or ""
     cover_url = cover_url or fm.get("cover_url") or ""
     cover_alt = cover_alt or fm.get("alt_text") or title
-    cta_href = cta_href or fm.get("cta_href") or "https://www.lovart.ai/canvas"
+    cta_href = cta_href or fm.get("cta_href") or "https://www.example.com/canvas"
     if sections is None:
         sections = md_to_sections(source_text, title, description, cover_url, cover_alt, cta_href)
     now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S+08:00")
     structured = json.dumps({"@context": "https://schema.org", "@type": "WebPage",
                              "name": title, "description": description[:160],
-                             "publisher": {"@type": "Organization", "name": "Lovart"}}, ensure_ascii=False)
+                             "publisher": {"@type": "Organization", "name": "品牌方"}}, ensure_ascii=False)
     return {
         "_id": slug, "_type": "compositePage", "pageType": page_type, "category": page_type,
         "language": lang, "slug": {"_type": "slug", "current": slug},

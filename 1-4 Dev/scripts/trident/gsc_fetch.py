@@ -15,15 +15,15 @@ from googleapiclient.discovery import build
 from credential_paths import credential_file
 from trident_paths import DATA_INGESTION_DIR
 
-TOKEN = credential_file("gsc-token.json", "LOVART_GSC_TOKEN_FILE")
-SITE = "https://www.lovart.ai/"
+TOKEN = credential_file("gsc-token.json", "MFLOW_GSC_TOKEN_FILE")
+SITE = "https://www.example.com/"
 SCOPES = ["https://www.googleapis.com/auth/webmasters.readonly"]
 
-# 品牌词分类规则 — SSOT: lovart_brand_match.py
+# 品牌词分类规则 — SSOT: brand_match.py
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
-from lovart_brand_match import is_brand, partition_keywords
+from brand_match import is_brand, partition_keywords
 COMPETITOR_NONBRAND = [
     'ai design', 'ai image', 'ai video', 'ai logo', 'ai art', 'ai poster',
     'ai branding', 'ai generator', 'text to image', 'text to video', 'image to video',

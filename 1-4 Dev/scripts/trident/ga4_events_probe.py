@@ -12,7 +12,7 @@ from googleapiclient.discovery import build
 
 from credential_paths import credential_file
 
-TOKEN_FILE = credential_file("ga4-token.json", "LOVART_GA4_TOKEN_FILE")
+TOKEN_FILE = credential_file("ga4-token.json", "MFLOW_GA4_TOKEN_FILE")
 PROPERTY = "properties/403618427"
 STREAM = "10524753059"
 SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"]

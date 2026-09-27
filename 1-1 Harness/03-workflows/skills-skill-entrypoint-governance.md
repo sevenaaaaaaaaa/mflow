@@ -1,4 +1,4 @@
-# Lovart Skill Entrypoint Governance
+# 品牌方 Skill Entrypoint Governance
 
 > 目的：防止 skill 层重新出现“父入口已存在，但中间层/子 skill 继续抢路由”的问题。
 
@@ -6,11 +6,11 @@
 
 | 场景 | 唯一父入口 | 内部支撑 skill |
 |------|------------|----------------|
-| Blog 创作 | `lovart-blog` / `lovart-blog-signal-writer` 父链 | `lovart-complete-guide`、`lovart-insight-trend`、`lovart-best-practice` 等分类子 skill |
-| 落地页生成/刷新 | `lovart-landing-page` | `lovart-page-serp-writer`、`refresh-page-page-generator` |
-| 质量门禁 | `lovart-content-quality-gates` | `lovart-content-audit`；`lovart-sanity-preflight` 仅兼容别名 |
-| Sanity 发布 | `lovart-sanity-publish` | `lovart-sanity-content-publish`、`lovart-tools-sanity-publish`、`lovart-features-sanity-publish`、`lovart-product-sanity-publish`、`lovart-scenarios-sanity-publish` |
-| 分发 | `lovart-multi-platform-push` | `lovart-content-distribution` |
+| Blog 创作 | `mflow-blog` / `blog-signal-writer` 父链 | `complete-guide`、`insight-trend`、`best-practice` 等分类子 skill |
+| 落地页生成/刷新 | `landing-page` | `page-serp-writer`、`refresh-page-page-generator` |
+| 质量门禁 | `content-quality-gates` | `content-audit`；`sanity-preflight` 仅兼容别名 |
+| Sanity 发布 | `sanity-publish` | `sanity-content-publish`、`tools-sanity-publish`、`features-sanity-publish`、`product-sanity-publish`、`scenarios-sanity-publish` |
+| 分发 | `multi-platform-push` | `content-distribution` |
 
 ## Support-Only Rule
 
@@ -25,9 +25,9 @@
 
 Claude/Hermes/OpenCode profile 只预加载父入口 skill：
 
-- `lovart-page` 只预加载 `lovart-landing-page`。
-- `lovart-qa` 只预加载 `lovart-content-quality-gates`。
-- `lovart-publisher` 只预加载 `lovart-sanity-publish`。
+- `mflow-page` 只预加载 `landing-page`。
+- `mflow-qa` 只预加载 `content-quality-gates`。
+- `mflow-publisher` 只预加载 `sanity-publish`。
 - 分类 blog 子 skill 不预加载到非 blog agent。
 
 ## 新增 Skill Checklist

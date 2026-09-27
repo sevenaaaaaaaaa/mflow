@@ -11,12 +11,12 @@ git clone https://github.com/sevenaaaaaaaaa/mflow.git && cd mflow
 uv venv .venv
 uv pip install --python .venv/bin/python markdown pyyaml requests google-auth google-auth-httplib2 google-api-python-client
 mkdir -p run/logs
-printf 'export MFLOW_CONSOLE_PASSWORD=change-me\nexport LOVART_PYTHON=%s/.venv/bin/python\nexport LOVART_LOCAL_DEV_ROOT=%s/run/local-dev\n' "$PWD" "$PWD" > run/env.sh
+printf 'export MFLOW_CONSOLE_PASSWORD=change-me\nexport MFLOW_PYTHON=%s/.venv/bin/python\nexport MFLOW_LOCAL_DEV_ROOT=%s/run/local-dev\n' "$PWD" "$PWD" > run/env.sh
 source run/env.sh && .venv/bin/python "1-4 Dev/console/console.py"
 # http://127.0.0.1:8088
 ```
 
-`LOVART_LOCAL_DEV_ROOT` 是输出/日志/数据的运行时根目录，全部收在项目内，删目录即完全重置。
+`MFLOW_LOCAL_DEV_ROOT` 是输出/日志/数据的运行时根目录，全部收在项目内，删目录即完全重置。
 
 ## 二、线上服务器（systemd，生产推荐）
 
@@ -33,8 +33,8 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 mkdir -p run/logs run/local-dev
 cat > run/env.sh <<EOF
 export MFLOW_CONSOLE_PASSWORD=你的强密码
-export LOVART_LOCAL_DEV_ROOT=/var/www/mflow/run/local-dev
-export LOVART_PYTHON=/var/www/mflow/.venv/bin/python
+export MFLOW_LOCAL_DEV_ROOT=/var/www/mflow/run/local-dev
+export MFLOW_PYTHON=/var/www/mflow/.venv/bin/python
 export PATH=/var/www/mflow/.venv/bin:/usr/local/bin:/usr/bin:/bin
 EOF
 chmod 600 run/env.sh
@@ -108,5 +108,5 @@ docker build -t mflow . && docker run -d -p 8088:8088 \
 ## 五、路径契约
 
 - 所有脚本按自身位置推导路径，clone 到任意平铺目录即可
-- 环境变量（可选覆盖）：`MFLOW_CONSOLE_PASSWORD` / `MFLOW_CONSOLE_PORT` / `LOVART_LOCAL_DEV_ROOT` / `LOVART_PYTHON` / `LOVART_RESOURCE_ROOT`
+- 环境变量（可选覆盖）：`MFLOW_CONSOLE_PASSWORD` / `MFLOW_CONSOLE_PORT` / `MFLOW_LOCAL_DEV_ROOT` / `MFLOW_PYTHON` / `MFLOW_RESOURCE_ROOT`
 - 注意：systemd 的 `EnvironmentFile` 不认 `export` 语法；env 文件含 export 时统一用 `bash -c source` 启动（实战教训，见 deploy/server.md）

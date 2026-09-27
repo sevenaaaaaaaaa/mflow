@@ -56,7 +56,7 @@ ok()   { echo "  ✓ $*"; }
 warn() { WARNINGS+=("$*"); echo "  ! $*"; }
 err()  { ERRORS+=("$*");   echo "  ✗ $*"; }
 
-PY="${LOVART_PYTHON:-}"
+PY="${MFLOW_PYTHON:-}"
 if [[ -z "$PY" ]]; then
     ROOT_ABS="$(cd "$HERE/../../.." && pwd)"
     if [[ -x "$ROOT_ABS/.venv/bin/python" ]]; then
@@ -71,7 +71,7 @@ echo "[pre-import] id=$ID type=$TARGET_TYPE"
 # --- 1) pipeline-state readiness ---
 echo "[1/5] pipeline-state readiness"
 # Resolve PIPELINE_PY as absolute path so we never depend on shell `..` expansion.
-# $HERE = hooks/, so 3 levels up gets us to 1-Project/Lovart MFlow/.
+# $HERE = hooks/, so 3 levels up gets us to 1-Project/the brand MFlow/.
 HERE_ABS="$(cd "$HERE/../../.." && pwd)"
 PIPELINE_PY="$HERE_ABS/1-1 Harness/Skills/06-orchestrate/pipeline-state/pipeline_state.py"
 if ! STAGE_JSON="$("$PY" "$PIPELINE_PY" --state-path "$PIPELINE_STATE" get --id "$ID" --json 2>/dev/null)"; then

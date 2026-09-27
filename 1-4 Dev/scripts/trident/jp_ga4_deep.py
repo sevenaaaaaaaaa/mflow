@@ -58,7 +58,7 @@ def run(svc, start, end, dims, metrics, extra_filter=None, limit=100000):
 
 
 def main():
-    token = credential_file("ga4-token.json", "LOVART_GA4_TOKEN_FILE")
+    token = credential_file("ga4-token.json", "MFLOW_GA4_TOKEN_FILE")
     creds = Credentials.from_authorized_user_info(json.loads(token.read_text()), SCOPES)
     svc = build("analyticsdata", "v1beta", credentials=creds)
     jpf = jp_filter()

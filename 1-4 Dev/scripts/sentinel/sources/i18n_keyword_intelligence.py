@@ -1,5 +1,5 @@
 """
-Lovart Sentinel - i18n Keyword Intelligence
+品牌方 Sentinel - i18n Keyword Intelligence
 
 Turns daily GSC query exports into locale-specific content production signals.
 This is intentionally separate from the English-first SEO workflow so localized

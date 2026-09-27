@@ -40,7 +40,7 @@ Anti-Bugs 记录 production 上已发生、且可能复发的问题。每条含�
 ## 守门脚本（Geo Dev）
 
 ```bash
-cd "1-4 Dev/lovart.sanity.studio"
+cd "1-4 Dev/品牌.sanity.studio"
 node scripts/audit-blog-future-release-dates.js
 node scripts/audit-blog-covers.js --check-http
 node scripts/audit-composite-images-404.js

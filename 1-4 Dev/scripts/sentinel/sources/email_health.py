@@ -1,12 +1,12 @@
 """
-Lovart Sentinel - Email Health Monitor
+品牌方 Sentinel - Email Health Monitor
 读取邮件复盘报告并提取关键健康指标
 """
 from pathlib import Path
 from ._common import banner
 import re, glob
 
-EMAIL_REPORT_DIR = Path(__file__).resolve().parent.parent.parent.parent / "Lovart"
+EMAIL_REPORT_DIR = Path(__file__).resolve().parent.parent.parent.parent / "品牌方"
 
 
 def collect() -> dict:

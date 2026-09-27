@@ -30,9 +30,9 @@ bash "1-4 Dev/scripts/session-init.sh"     # 4 道门禁全过 = 环境健康
 python3 "1-4 Dev/scripts/harness_sync.py"  # 从 vault 真相同步规则到各 agent 运行时
 ```
 
-**路径契约**：所有脚本按自身位置推导路径；两个可选环境变量：`LOVART_LOCAL_DEV_ROOT`（运行时输出，默认 `~/Documents/MFlow Local Dev`）、`LOVART_PYTHON`（数据拉取用 venv 解释器）。禁止硬编码绝对路径。
+**路径契约**：所有脚本按自身位置推导路径；两个可选环境变量：`MFLOW_LOCAL_DEV_ROOT`（运行时输出，默认 `~/Documents/MFlow Local Dev`）、`MFLOW_PYTHON`（数据拉取用 venv 解释器）。禁止硬编码绝对路径。
 
-**凭证**：`secrets/`（CMS/Notion token）、`1-1 Harness/Skills/01-strategy/lovart-trident-data-engine/credentials/`（GSC/GA4/飞书）、`1-4 Dev/scripts/sentinel/*_credentials/`。全部 git-ignore，丢失时参照 `secrets/README.md` 恢复。
+**凭证**：`secrets/`（CMS/Notion token）、`1-1 Harness/Skills/01-strategy/trident-data-engine/credentials/`（GSC/GA4/飞书）、`1-4 Dev/scripts/sentinel/*_credentials/`。全部 git-ignore，丢失时参照 `secrets/README.md` 恢复。
 
 ## 2. 会话协议
 
@@ -59,8 +59,8 @@ python3 "1-1 Harness/Skills/06-orchestrate/router/router.py" decide --stage S3 -
 
 **唯一入口铁律**：
 
-- 所有语言的所有 Blog → `lovart-blog-signal-writer`（不翻译、不走 i18n-pipeline、没有例外）
-- 所有落地页 → `lovart-landing-page`
+- 所有语言的所有 Blog → `blog-signal-writer`（不翻译、不走 i18n-pipeline、没有例外）
+- 所有落地页 → `landing-page`
 - 10 语言（en/zh/zh-TW/ja/ko/de/fr/pt/ru/it）全部是**信号驱动重写**，不是 EN 翻译
 
 **≥5,000 词 Blog 强制状态机**（RULES-20 v1.1）：
@@ -97,7 +97,7 @@ python3 ".../pipeline_state.py" next      # 我下一步该干什么
 
 **Anti-Slop 底线**（RULES-00）：每段回答"谁会读/为什么现在读/读完改变什么/下一步"；禁编造产品数据、禁可见占位符、禁关键词堆砌；用户对 AI 味零容忍。
 
-**三层门禁**（RULES-30）：L1 convert 前 preflight → L2 import 后 verify → L3 发布前 5 维审计。唯一质检父入口 `lovart-content-quality-gates`（sanity-preflight 已废弃并入）。
+**三层门禁**（RULES-30）：L1 convert 前 preflight → L2 import 后 verify → L3 发布前 5 维审计。唯一质检父入口 `content-quality-gates`（sanity-preflight 已废弃并入）。
 
 ## 5. 发布与 CMS 铁律
 
@@ -113,7 +113,7 @@ python3 ".../pipeline_state.py" next      # 我下一步该干什么
 
 **发布原则**：发布类动作停在 ready 等人工授权，不做无人值守自动发布。
 
-**CMS ID 对账**：`1-3 GenFlow/CONTENT_LINK_INDEX.md` 是 SSOT（注意：当前实际覆盖有限，Blog 对账以 `Lovart-Blog-Pipeline/BLOG_PUBLISHED_INDEX.md` 为准——两账合一在路线图上）。
+**CMS ID 对账**：`1-3 GenFlow/CONTENT_LINK_INDEX.md` 是 SSOT（注意：当前实际覆盖有限，Blog 对账以 `blog-pipeline/BLOG_PUBLISHED_INDEX.md` 为准——两账合一在路线图上）。
 
 ## 6. 分发（四轨道）
 
@@ -130,17 +130,17 @@ python3 ".../pipeline_state.py" next      # 我下一步该干什么
 
 ## 7. 数据报告与监控
 
-- **Trident**（`1-4 Dev/scripts/trident/`）：GSC/GA4/Bing 拉数。日拉 `gsc_fetch.py --daily`；数据落 `$LOVART_LOCAL_DEV_ROOT/Output/Data Ingestion/`
-- **Sentinel**（`1-4 Dev/scripts/sentinel/`）：每日 22 源舆情采集 + 日报，产出 `1-2 Insight/Lovart ORM/`
-- **报告铁律**（RULES-10）：任何报告任何维度**必须有环比**（绝对变化+百分比）；不等长窗口用日均值；品牌词用品牌词分类器（`lovart_brand_match.is_brand()`） 精确分类；每节必须有 💡 洞察（问题/根源/缓解）
-- **SSOT 归属**：SEO 月报 → `1-2 Insight/Trident Insights/reports/monthly/`；舆情 → `Lovart ORM/`；关键词 → `Keywords Research/`
+- **Trident**（`1-4 Dev/scripts/trident/`）：GSC/GA4/Bing 拉数。日拉 `gsc_fetch.py --daily`；数据落 `$MFLOW_LOCAL_DEV_ROOT/Output/Data Ingestion/`
+- **Sentinel**（`1-4 Dev/scripts/sentinel/`）：每日 22 源舆情采集 + 日报，产出 `1-2 Insight/ORM/`
+- **报告铁律**（RULES-10）：任何报告任何维度**必须有环比**（绝对变化+百分比）；不等长窗口用日均值；品牌词用品牌词分类器（`brand_match.is_brand()`） 精确分类；每节必须有 💡 洞察（问题/根源/缓解）
+- **SSOT 归属**：SEO 月报 → `1-2 Insight/Trident Insights/reports/monthly/`；舆情 → `ORM/`；关键词 → `Keywords Research/`
 
 ## 8. 调度与运维
 
-**macOS launchd**（当前生产）：`com.lovart.daily-pipeline`（08:00）/ `com.lovart.weekly-pipeline`（周一 07:00）/ `com.lovart.dream`（02:30）。plist 源在 `1-4 Dev/automation/plists/`，安装：
+**macOS launchd**（当前生产）：`com.mflow.daily-pipeline`（08:00）/ `com.mflow.weekly-pipeline`（周一 07:00）/ `com.mflow.dream`（02:30）。plist 源在 `1-4 Dev/automation/plists/`，安装：
 
 ```bash
-cp "1-4 Dev/automation/plists/com.lovart.daily-pipeline.plist" ~/Library/LaunchAgents/ && launchctl load ~/Library/LaunchAgents/com.lovart.daily-pipeline.plist
+cp "1-4 Dev/automation/plists/com.mflow.daily-pipeline.plist" ~/Library/LaunchAgents/ && launchctl load ~/Library/LaunchAgents/com.mflow.daily-pipeline.plist
 ```
 
 **每日管线步骤**（`run-daily-pipeline.sh`）：GSC 日拉 → Sentinel 采集+日报 → 飞书摘要（需凭据，可选）→ harness 学习报告 → 规则跨工具同步。
@@ -151,7 +151,7 @@ cp "1-4 Dev/automation/plists/com.lovart.daily-pipeline.plist" ~/Library/LaunchA
 
 ## 9. 治理
 
-**加新脚本（强制流程）**：先搜 `1-1 Harness/09-scripts/TOOLS-REGISTRY.md` 防重复 → 走 `lovart-new-tool-governance` skill → governance_check 6 门（命名/shebang/位置/docstring/无违规/smoke）→ 注册。不注册的脚本会在下次治理清理中归档。
+**加新脚本（强制流程）**：先搜 `1-1 Harness/09-scripts/TOOLS-REGISTRY.md` 防重复 → 走 `new-tool-governance` skill → governance_check 6 门（命名/shebang/位置/docstring/无违规/smoke）→ 注册。不注册的脚本会在下次治理清理中归档。
 
 **加/改技能**：改 `1-1 Harness/Skills/`（真相源）→ 跑 `harness_sync.py` 再生各工具运行时副本（.cursor/rules、~/.hermes 等）。每场景只有一个父入口，support-only 子技能标 `disable-model-invocation`。
 
@@ -165,13 +165,13 @@ cp "1-4 Dev/automation/plists/com.lovart.daily-pipeline.plist" ~/Library/LaunchA
 GATE 1 挂 = `.pipeline/pipeline-state.json` 丢失 → `pipeline_state.py init` 重建。GATE 2 挂 = 路由器状态异常 → `router.py validate` 看明细。
 
 **Q：gsc_fetch 报 ModuleNotFoundError: google？**
-数据拉取必须用 trident-venv：`export LOVART_PYTHON=$LOVART_LOCAL_DEV_ROOT/trident-venv/bin/python`，管线脚本会自动消费。
+数据拉取必须用 trident-venv：`export MFLOW_PYTHON=$MFLOW_LOCAL_DEV_ROOT/trident-venv/bin/python`，管线脚本会自动消费。
 
 **Q：Sentinel 采集失败？**
-看 `1-2 Insight/Lovart ORM/raw/{当日}/` 缺哪个源；个别源失败不阻塞其他源；凭证在 `sentinel/*_credentials/`。
+看 `1-2 Insight/ORM/raw/{当日}/` 缺哪个源；个别源失败不阻塞其他源；凭证在 `sentinel/*_credentials/`。
 
 **Q：launchd 任务没跑？**
-`launchctl list | grep lovart` 看在册与上次退出码；日志 `$LOVART_LOCAL_DEV_ROOT/Logs/com.lovart.*.log` 或 /tmp 对应 plist 的 StandardOutPath。
+`launchctl list | grep 品牌` 看在册与上次退出码；日志 `$MFLOW_LOCAL_DEV_ROOT/Logs/com.mflow.*.log` 或 /tmp 对应 plist 的 StandardOutPath。
 
 **Q：飞书推送 SKIP？**
 正常降级——未配 feishu.json（`trident-data-engine/credentials/`），非致命。

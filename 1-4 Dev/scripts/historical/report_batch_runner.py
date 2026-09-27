@@ -114,9 +114,9 @@ def cmd_render_weekly(args: argparse.Namespace) -> None:
         anchor = we
         out = TRIDENT / "reports" / "weekly"
         if args.type == "review":
-            fname = f"Lovart-SEO-review-{ws}-{we}.md"
+            fname = f"品牌方-SEO-review-{ws}-{we}.md"
         else:
-            fname = f"Lovart-SEO-Week_{ws}_{we}.md"
+            fname = f"品牌方-SEO-Week_{ws}_{we}.md"
         if (out / fname).is_file() and not args.force:
             print(f"  skip {fname}")
             continue
@@ -227,7 +227,7 @@ def default_16mo_from() -> str:
 
 
 def main() -> None:
-    p = argparse.ArgumentParser(description="Lovart 历史 SEO 报告批处理")
+    p = argparse.ArgumentParser(description="品牌方 历史 SEO 报告批处理")
     sub = p.add_subparsers(dest="cmd", required=True)
 
     inv = sub.add_parser("inventory")

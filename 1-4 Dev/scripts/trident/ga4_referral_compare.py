@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-GA4 Referral 渠道双窗口环比对比 — lovart.ai
+GA4 Referral 渠道双窗口环比对比 — example.com
 
 对比两个 7 天窗口的 Referral 渠道数据：
   - 本期: 2026-08-04 ~ 2026-08-10（上周二~本周一）
@@ -20,7 +20,7 @@ from googleapiclient.discovery import build
 from credential_paths import credential_file
 from trident_paths import DATA_INGESTION_DIR
 
-TOKEN_FILE = credential_file("ga4-token.json", "LOVART_GA4_TOKEN_FILE")
+TOKEN_FILE = credential_file("ga4-token.json", "MFLOW_GA4_TOKEN_FILE")
 PROPERTY = "properties/403618427"
 STREAM = "10524753059"
 SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"]

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """link-suggest.py — 从内容库自动找相关页做内链建议。
-Usage: python3 link-suggest.py --file draft.md --site lovart-global --top 5
+Usage: python3 link-suggest.py --file draft.md --site main --top 5
 从 draft 中提取关键词 → 在 run/library/{site} 的 17.5k 篇中找最相关的页面 → 输出建议内链列表"""
 import json, math, re, sys, argparse, collections
 from pathlib import Path
@@ -15,7 +15,7 @@ def tokens(text):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--file", required=True)
-    ap.add_argument("--site", default="lovart-global")
+    ap.add_argument("--site", default="main")
     ap.add_argument("--top", type=int, default=5)
     a = ap.parse_args()
 

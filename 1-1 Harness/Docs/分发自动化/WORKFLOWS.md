@@ -1,7 +1,7 @@
 # 分发架构：主站 + 国内 + 海外 API + 爱贝壳
 
 ```
-lovart.ai（SSOT）
+example.com（SSOT）
        ↓ 延迟 7–14 天
 Agent 写摘要稿 → drafts/ → preflight
        ↓

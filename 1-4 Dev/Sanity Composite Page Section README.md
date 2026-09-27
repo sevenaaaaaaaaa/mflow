@@ -4,7 +4,7 @@
 
 - 渲染入口：`CompositeSectionRenderer.tsx`，按 `section.type` 字符串 dispatch。
 - 数据来源：Sanity `compositePage` document 的 `bodyJson` 字段（顶层数组），每条 `{ type, ...其它字段 }`。
-- 在线预览：访问 `/internal/composite-page-all` 查看所有新 type 的真实渲染。预览数据源 `apps/lovart/src/views/compositePage/internal/preview-data.json`。
+- 在线预览：访问 `/internal/composite-page-all` 查看所有新 type 的真实渲染。预览数据源 `apps/品牌/src/views/compositePage/internal/preview-data.json`。
 
 ## 预览页右侧 Variants 面板
 
@@ -29,7 +29,7 @@
     "type": "hero-split",
     "title": "Turn one product brief into",
     "highlightedText": "a full conversion funnel",
-    "description": "Lovart helps Shopify teams ship a full creative funnel from one brief.",
+    "description": "品牌方 helps Shopify teams ship a full creative funnel from one brief.",
     "buttons": [{ "text": "Design the funnel", "href": "/start", "variant": "primary" }],
     "media": { "src": "https://...", "alt": "..." }
   },
@@ -94,7 +94,7 @@
 
 - `variant: 'primary'` 是实心主按钮，`secondary` / `outline` 是描边按钮
 - 空 `href` 渲染为 `#`
-- `action: 'openLogin'`：点击唤起登录弹窗（跳 `/home`），同时上报 `lovart.get.started.button.click`（埋点 `source: 'cta_section'`）— 仅 `cta-default` 当前支持；不传 action 则按 `href` 正常跳转
+- `action: 'openLogin'`：点击唤起登录弹窗（跳 `/home`），同时上报 `品牌.get.started.button.click`（埋点 `source: 'cta_section'`）— 仅 `cta-default` 当前支持；不传 action 则按 `href` 正常跳转
 
 ### Icon key 字典
 
@@ -199,7 +199,7 @@
 ```json
 {
   "type": "bento-2",
-  "title": "Two conversion jobs Lovart owns end-to-end",
+  "title": "Two conversion jobs 品牌方 owns end-to-end",
   "description": "...",
   "features": [
     {
@@ -267,7 +267,7 @@
 ```json
 {
   "type": "capability-tabs",
-  "title": "Four Lovart capabilities",
+  "title": "Four 品牌方 capabilities",
   "autoplayIntervalMs": 0,
   "tabs": [
     {
@@ -292,7 +292,7 @@
 ```json
 {
   "type": "tool-grid",
-  "title": "Lovart tools mapped to Shopify growth tasks",
+  "title": "品牌方 tools mapped to Shopify growth tasks",
   "description": "...",
   "tools": [
     {
@@ -471,7 +471,7 @@
 视觉：一行 logo 循环滚动，logo 列表写死在前端（27b / Huge / Deliveroo / Linktree / Spotify / TikTok）。
 
 ```json
-{ "type": "logo-loop", "text": "Lovart is trusted by millions of designers, creatives, and brands." }
+{ "type": "logo-loop", "text": "品牌方 is trusted by millions of designers, creatives, and brands." }
 ```
 
 `text` 是 logo 上方一句话标题，可省略。
@@ -501,13 +501,13 @@
 ```json
 {
   "type": "cta-default",
-  "title": "Start designing with Lovart",
+  "title": "Start designing with 品牌方",
   "description": "...",
   "buttons": [{ "text": "Get started", "action": "openLogin", "variant": "primary" }]
 }
 ```
 
-> 用 `action: 'openLogin'` 时，`href` 会被忽略；同时会上报 `lovart.get.started.button.click` 埋点（source=`cta_section`）。
+> 用 `action: 'openLogin'` 时，`href` 会被忽略；同时会上报 `品牌.get.started.button.click` 埋点（source=`cta_section`）。
 
 ### `workflow-horizontal` — 横向 N 步流程
 
@@ -546,9 +546,9 @@
 ```json
 {
   "type": "comparison-table",
-  "title": "Lovart vs common Shopify creative workflows",
+  "title": "品牌方 vs common Shopify creative workflows",
   "description": "...",
-  "headers": ["Need", "Single-purpose AI generator", "Manual design workflow", "Lovart AI Design Agent"],
+  "headers": ["Need", "Single-purpose AI generator", "Manual design workflow", "品牌方 AI Design Agent"],
   "highlightColumn": 3,
   "rows": [
     {
@@ -576,7 +576,7 @@
   "description": "...",
   "aspect": "16:9",
   "before": { "media": { "src": "...", "alt": "..." }, "label": "Before" },
-  "after": { "media": { "src": "...", "alt": "..." }, "label": "After Lovart" }
+  "after": { "media": { "src": "...", "alt": "..." }, "label": "After 品牌方" }
 }
 ```
 
@@ -649,7 +649,7 @@
 ```json
 {
   "type": "proof-block",
-  "title": "Why use Lovart for Shopify conversion work?",
+  "title": "Why use 品牌方 for Shopify conversion work?",
   "description": "...",
   "cards": [{ "icon": "search", "title": "Context before pixels", "description": "..." }]
 }
@@ -677,7 +677,7 @@
 {
   "type": "faq",
   "title": "Frequently asked questions",
-  "items": [{ "question": "Is Lovart a Shopify app or a design workflow?", "answer": "..." }]
+  "items": [{ "question": "Is 品牌方 a Shopify app or a design workflow?", "answer": "..." }]
 }
 ```
 

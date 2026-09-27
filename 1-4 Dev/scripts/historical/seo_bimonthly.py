@@ -77,7 +77,7 @@ def bimonth_meta(year: int, b: int) -> dict:
         "bimonth_months": months,
         "bimonth_prev_months": prev_months,
         "title_year_month": f"{year}年 B{b}（{label}）",
-        "report_heading": f"Lovart SEO 双月复盘报告 — {year}年 B{b}（{label}）",
+        "report_heading": f"品牌方 SEO 双月复盘报告 — {year}年 B{b}（{label}）",
         "perspective_line": "双月窗（连续两自然月 vs 上两自然月；结构同月报 V2）",
         "period_line": f"{months[0]}~{months[1]} (双月) vs {prev_months[0]}~{prev_months[1]} (上双月)",
         "prev_label": f"{pm1}–{pm2}月",
@@ -111,7 +111,7 @@ def _load_period_snapshots(months: list[str], kind: str) -> list[dict]:
 
 
 def _load_sgeo_period(months: list[str]) -> dict:
-    from lovart_seo_geo_metrics import ingest_for_month, load_seo_geo_snapshot
+    from seo_geo_metrics import ingest_for_month, load_seo_geo_snapshot
 
     snaps = []
     for ym in months:
@@ -194,7 +194,7 @@ def run_bimonthly_report(year: int, b: int, *, render_only: bool = True) -> Path
     )
 
     BIMONTHLY_DIR.mkdir(parents=True, exist_ok=True)
-    out = BIMONTHLY_DIR / f"Lovart-SEO-{year}-B{b}.md"
+    out = BIMONTHLY_DIR / f"品牌方-SEO-{year}-B{b}.md"
     out.write_text(report)
     print(f"\n  📄 {out}")
     print(f"  📊 {len(report):,} chars, {len(report.splitlines())} lines")
@@ -210,4 +210,4 @@ def render_bimonth(year: int, b: int, tier: str = "draft") -> Path:
     from bimonth_with_tier import run
 
     run(year, b, data_tier=tier, render_only=True)
-    return BIMONTHLY_DIR / f"Lovart-SEO-{year}-B{b}.md"
+    return BIMONTHLY_DIR / f"品牌方-SEO-{year}-B{b}.md"

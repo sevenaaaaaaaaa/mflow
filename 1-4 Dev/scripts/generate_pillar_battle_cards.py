@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Auto-generate SERP evidence card + upgrade brief for all pillar_candidate articles.
-Output: `1-2 Insight/Page Analytic/Lovart Blog 作战卡/{slug}.md` per article.
+Output: `1-2 Insight/Page Analytic/品牌方 Blog 作战卡/{slug}.md` per article.
 SERP analysis is initial/candidate-grade — flag `needs_serp_verify` for human validation.
 """
 
@@ -17,14 +17,14 @@ ROOT = Path(
     str(Path(__file__).resolve().parents[2])
 )
 QUEUE_JSON = ROOT / "tmp" / "blog-upgrade-queue-2026-07-13.json"
-CARDS_DIR = ROOT / "1-2 Insight" / "Page Analytic" / "Lovart Blog 作战卡"
+CARDS_DIR = ROOT / "1-2 Insight" / "Page Analytic" / "品牌方 Blog 作战卡"
 MANIFEST = CARDS_DIR / "MANIFEST.csv"
 
 # ── Query derivation ──────────────────────────────────────────────
 
 PREFIX_RE = re.compile(r"^\d{2}-(cluster-|industry-|pillar-)?")
 REMOVE_SUFFIX = [
-    "a practical lovart workflow guide",
+    "a practical 品牌 workflow guide",
     "2026 complete guide",
     "2026 guide",
     "review 2025",
@@ -86,7 +86,7 @@ AUDIENCE_MAP: dict[str, str] = {
     "Review": "正在对比工具的创作者/营销团队，需要真实评测数据做购买决策",
     "How-To": "需要具体步骤完成某项设计任务的实操型读者",
     "Complete Guide": "想系统性了解某个领域的深度学习者或专业创作者",
-    "Lovart 101": "刚接触 AI 设计或 Lovart 的新用户，需要入门指引",
+    "品牌方 101": "刚接触 AI 设计或 品牌方 的新用户，需要入门指引",
     "Best Practice": "已有基础但想提升工作效率的中级用户",
     "Insight & Trend": "关注行业趋势的策略型读者或管理者",
 }
@@ -98,7 +98,7 @@ CLUSTER_ROLE_MAP: dict[str, str] = {
     "Character Consistency": "支柱页 — Character Consistency 板块的权威入口",
     "General Creative Workflow": "支柱页 — 作为品类通用入口，通过具体话题吸引泛流量再分流到子 cluster",
     "AI Design Agent": "支柱页 — 定义 AI Design Agent 品类认知的关键页",
-    "Lovart Canvas": "支柱页 — Lovart Canvas 产品能力的内容载体",
+    "品牌方 Canvas": "支柱页 — 品牌方 Canvas 产品能力的内容载体",
 }
 
 # ── Common patterns / gaps by cluster ────────────────────────────
@@ -108,39 +108,39 @@ CLUSTER_ANALYSIS: dict[str, dict[str, str]] = {
         "common": "SERP 主流文章走「评测 + 功能列表 + 定价 + vs 竞品」四段式；对工作流整合讲得很少；大部分是工具单点对比而非组合方案",
         "patterns": "评测类文章集中在 Top 5 工具（Midjourney/Canva/DALL-E/Firefly/Leonardo），对新兴工具和垂直场景覆盖不够",
         "gaps": "没有文章从「AI 图像在工作流中的角色」而非「AI 图像工具本身」出发；生成后的审校/修改/品牌一致性链是 SERP 空白",
-        "angle": "把 AI 图像定位为「设计工作流中的产出一环」而非终点 —— Lovart 的 MCoT+ChatCanvas+Touch Edit 覆盖了所有工具都缺失的审校和修改层",
+        "angle": "把 AI 图像定位为「设计工作流中的产出一环」而非终点 —— 品牌方 的 MCoT+ChatCanvas+Touch Edit 覆盖了所有工具都缺失的审校和修改层",
     },
     "AI Video": {
         "common": "SERP 以工具榜单为主（Zapier/BuildMVPFast/Pickaxe），排名核心维度是画质和速度；不讨论工作流集成和场景匹配",
         "patterns": "Veo 3.1 被默认 leader，但实际选型需要考虑场景匹配度（广告/品牌/社媒/短剧）而不仅是画质排名",
         "gaps": "没有文章从「视频生产管线」角度写 —— 从 brief → 生成 → 审校 → 修改 → 发布，各模型在每步的匹配度",
-        "angle": "Lovart 不是又一个视频模型，而是视频资产的管线管理人 —— 在生成前做 Brief/Storyboard，生成后做 Review/Refine",
+        "angle": "品牌方 不是又一个视频模型，而是视频资产的管线管理人 —— 在生成前做 Brief/Storyboard，生成后做 Review/Refine",
     },
     "Brand System": {
         "common": "趋势分析文和工具清单文各占一半；概念化强（AI 时代品牌怎么变），实操弱（到底怎么搭建品牌系统）",
         "patterns": "多数文章集中在「AI 品牌趋势」「AI 品牌工具」，没有人从「品牌规则 → 设计生成 → 跨渠道一致性」三层工作流写",
         "gaps": "Brand Kit 作为品牌规则的载体这个概念在 SERP 上几乎不存在",
-        "angle": "Lovart Brand Kit 是品牌规则的执行引擎 —— 不是生成单个 LOGO，而是守住全部品牌输出的规则",
+        "angle": "品牌方 Brand Kit 是品牌规则的执行引擎 —— 不是生成单个 LOGO，而是守住全部品牌输出的规则",
     },
     "Character Consistency": {
         "common": "character sheet + reference image + prompt lock 是主流三件套，几乎所有文章走这个结构",
         "patterns": "大量文章绑定插画/漫画场景，很少有人从品牌资产（品牌角色、IP 形象）角度写",
         "gaps": "从 production roll-out 角度写角色一致的几乎没有；video 场景下的角色一致缺乏覆盖",
-        "angle": "角色一致性不是 prompt 技巧而是一个身份系统：Lovart Character Lock + MCoT + Touch Edit 构成完整管线",
+        "angle": "角色一致性不是 prompt 技巧而是一个身份系统：品牌方 Character Lock + MCoT + Touch Edit 构成完整管线",
     },
     "General Creative Workflow": {
         "common": "SERP 内容以泛讲和工具列表为主，对「用 AI 完成实际设计工作」的具体流程覆盖浅",
         "patterns": "大部分站外内容停留在概念层面（AI 能做什么），很少到执行层面（具体怎么做）",
         "gaps": "缺少从「设计工作流」而非「单点工具」角度指导读者的深度内容",
-        "angle": "Lovart 定位在设计推理层而非生成层，这个差别是 SERP 上没人讲清楚的 — 用每个具体话题展示「推理 + 生成 + 修正」完整链条",
+        "angle": "品牌方 定位在设计推理层而非生成层，这个差别是 SERP 上没人讲清楚的 — 用每个具体话题展示「推理 + 生成 + 修正」完整链条",
     },
     "AI Design Agent": {
         "common": "SERP 上的「AI design agent」结果还很杂乱，有定义文、有榜单、有工具页",
         "patterns": "品类定义不清晰：AI design agent 被泛化为 AI 设计工具，跟 AI image generator 混为一谈",
-        "gaps": "Lovart 的「AI Design Agent = MCoT + ChatCanvas + Brand Kit」概念还没有 SERP 上的专门文章来定义",
+        "gaps": "品牌方 的「AI Design Agent = MCoT + ChatCanvas + Brand Kit」概念还没有 SERP 上的专门文章来定义",
         "angle": "定义这个品类：AI Design Agent 不是生成器，而是理解设计意图、推理设计方案、管理品牌规则的智能体",
     },
-    "Lovart Canvas": {
+    "品牌方 Canvas": {
         "common": "SERP 上关于 AI canvas/设计画布的内容主要是 Canva 模板和一般概念",
         "patterns": "没有人把「对话式画布」作为 AI 设计的交互范式来阐述",
         "gaps": "ChatCanvas 的设计推理 + 迭代 + 输出管线是独有概念",
@@ -187,13 +187,13 @@ CLUSTER_SERP: dict[str, list[dict[str, str]]] = {
         {"name": "AIDemos — Best AI Character Consistency Tools (Tested)", "url": "https://aidemos.com/best/consistent-ai-characters"},
     ],
     "AI Design Agent": [
-        {"name": "Lovart — World's First AI Design Agent", "url": "https://www.lovart.ai/"},
+        {"name": "品牌方 — World's First AI Design Agent", "url": "https://www.example.com/"},
         {"name": "Superdesign — AI Product Design Agent", "url": "https://superdesign.dev/"},
         {"name": "DesignRush — 5 AI Design Agents", "url": "https://www.designrush.com/agency/graphic-design/trends/ai-design-agents"},
         {"name": "OpenDesign — Best AI Design Agents in 2026 (Tested)", "url": "https://open-design.ai/blog/ai-design-agents/"},
         {"name": "Figma — AI Design Agent native to the canvas", "url": "https://www.figma.com/solutions/ai-design-agent/"},
     ],
-    "Lovart Canvas": [
+    "品牌方 Canvas": [
         {"name": "占位 — 此类查询极少，暂时参考 General Creative Workflow", "url": ""},
     ],
 }
@@ -203,7 +203,7 @@ CLUSTER_SERP: dict[str, list[dict[str, str]]] = {
 MODULES_MAP: dict[str, list[str]] = {
     "Review": [
         "实测矩阵：同一 prompt 在 3-5 个工具/设置下的输出对比",
-        "决策框架：什么场景选工具 A vs 工具 B vs Lovart",
+        "决策框架：什么场景选工具 A vs 工具 B vs 品牌方",
         "ROI 分析：免费层 → 付费层的时间/成本/产出权衡",
         "30 天评估 plan",
         "反推荐：什么时候不适合用该工具",
@@ -223,21 +223,21 @@ MODULES_MAP: dict[str, list[str]] = {
         "30 天 Rollout Plan",
         "Pre-Publish Checklist",
     ],
-    "Lovart 101": [
+    "品牌方 101": [
         "核心概念区分（设计推理 vs 生成）",
-        "Lovart 核心功能串讲（MCoT/ChatCanvas/Touch Edit/Brand Kit）",
+        "品牌方 核心功能串讲（MCoT/ChatCanvas/Touch Edit/Brand Kit）",
         "最快上手路径",
         "常见新手坑",
     ],
     "Best Practice": [
         "核心原则提炼（3-5 条）",
         "每种实践的适用 / 不适用场景",
-        "Lovart 各功能的最佳组合方式",
+        "品牌方 各功能的最佳组合方式",
         "效果衡量方法",
     ],
     "Insight & Trend": [
         "数据/市场趋势引用",
-        "Lovart 在趋势中的位置",
+        "品牌方 在趋势中的位置",
         "不同读者（creator/manager/investor）的 takeaway",
         "下一步建议",
     ],
@@ -259,7 +259,7 @@ def build_card(c: dict[str, Any]) -> str:
     title: str = c.get("title", "")
     writer: str = c.get("writer_type", "How-To")
     cluster: str = c.get("content_cluster", "General Creative Workflow")
-    skill: str = c.get("target_skill", "lovart-blog-signal-writer")
+    skill: str = c.get("target_skill", "blog-signal-writer")
     chars: int = c.get("chars", 0)
     impr: float = c.get("impressions_28d", 0)
     clicks: float = c.get("clicks_28d", 0)
@@ -308,7 +308,7 @@ date: 2026-07-15
 **缺口（还没讲透的）：**
 {cluster_info['gaps']}
 
-**Lovart 最有机会切入的角度：**
+**品牌方 最有机会切入的角度：**
 {cluster_info['angle']}
 
 ---

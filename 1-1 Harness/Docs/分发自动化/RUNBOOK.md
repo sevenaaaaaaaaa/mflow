@@ -1,6 +1,6 @@
 # 全渠道内容分发 RUNBOOK
 
-主站 canonical：**https://lovart.ai**
+主站 canonical：**https://example.com**
 
 ---
 
@@ -9,7 +9,7 @@
 发布前逐项确认（`preflight-distribution.js` 自动校验）：
 
 1. **禁止**全文复制主站到站外（Medium / DEV.to / Hashnode / 百家号等）
-2. **必须**含主站链接，格式：`https://lovart.ai/...?utm_source={platform}&utm_medium=syndication&utm_campaign=offsite_{slug}`
+2. **必须**含主站链接，格式：`https://example.com/...?utm_source={platform}&utm_medium=syndication&utm_campaign=offsite_{slug}`
 3. **canonical**（Medium / DEV.to / Hashnode）：指向主站完整 URL
 4. **标题**：与主站 `<title>` 编辑距离 > 15% 或明显不同角度
 5. **首 120 字**：必须重写，不得与主站 meta description 相同
@@ -43,7 +43,7 @@ Trident GSC 竞品未覆盖词 / 站外意图选题
   → Agent 用 templates/offsite-native.md
   → preflight（无 canonical 冲突，因主站无同题页）
   → 全文字数可完整发布
-  → CTA 链 lovart.ai 相关工具页
+  → CTA 链 example.com 相关工具页
 ```
 
 ---
@@ -54,7 +54,7 @@ Trident GSC 竞品未覆盖词 / 站外意图选题
 
 ```bash
 # .env
-TRIDENT_ROOT=/path/to/Lovart Dev
+TRIDENT_ROOT=/path/to/品牌方 Dev
 # 或 1-4 Dev
 ```
 
@@ -112,7 +112,7 @@ score = 0.35×norm(sessions) + 0.25×norm(engagement_time)
 # 预检示例
 node scripts/preflight-distribution.js \
   --draft drafts/medium-my-slug.md \
-  --canonical https://lovart.ai/en/blog/my-slug \
+  --canonical https://example.com/en/blog/my-slug \
   --platform medium \
   --source-title "Main Site Original Title" \
   --source-word-count 2500
@@ -182,7 +182,7 @@ node scripts/dispatch-publish.js --manifest queue/dispatch-2026-06-07.json
 
 ## 明确不做
 
-- 与 Lovart Sanity 发布管线合并
+- 与 品牌方 Sanity 发布管线合并
 - n8n（除非 SOP 后续要求）
 - Reddit/HN 自动发帖
 - 品牌词页面站外全文索引

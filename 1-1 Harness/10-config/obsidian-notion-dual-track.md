@@ -53,7 +53,7 @@ Notion Database ID: `37afc0c7-1bd5-8124-a031-ca4eca128da2`
 ### 2. SEO Reports (新建)
 
 ```
-Database Name: Lovart SEO Reports
+Database Name: 品牌方 SEO Reports
 Fields:
   - Report Name (Title) — "2026-07 月报" / "W28 周报"
   - Report Type (Select) — monthly / weekly / daily / special
@@ -69,10 +69,10 @@ Fields:
 ### 3. Sentinel ORM (新建)
 
 ```
-Database Name: Lovart Sentinel Daily
+Database Name: 品牌方 Sentinel Daily
 Fields:
   - Date (Date) — 舆情日期
-  - Brand (Select) — lovart / competitor
+  - Brand (Select) — 品牌 / competitor
   - Sentiment (Select) — positive / neutral / negative / mixed
   - Alert Level (Select) — info / warning / critical
   - Summary (Rich Text) — 一句话摘要
@@ -85,7 +85,7 @@ Fields:
 ### 4. OKR (新建)
 
 ```
-Database Name: Lovart OKR
+Database Name: 品牌方 OKR
 Fields:
   - Objective (Title) — 目标描述
   - Quarter (Select) — Q1/Q2/Q3/Q4 2026

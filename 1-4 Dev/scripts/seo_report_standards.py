@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-Lovart SEO 报告强制标准（代码 SSOT）
+品牌方 SEO 报告强制标准（代码 SSOT）
 
 与以下文档保持同步：
-- Lovart/AGENTS.md Part A
-- Skills/lovart-trident-data-engine/SKILL.md
+- 品牌方/AGENTS.md Part A
+- Skills/trident-data-engine/SKILL.md
 
 Agent 生成任何 SEO 报告前必须遵守；脚本启动时应 print_pre_run_checklist()。
 """
@@ -126,8 +126,8 @@ MONTHLY_AGENT_MISTAKES = (
     "无 📊 年均对比（2025 月均 vs 2026 YTD 月均）",
     "重跑时手删整份月报而非改脚本 + --render-only",
     "分区 💡 品牌占比恒为 0%（region_stats 传参错误）",
-    "收录率固定 1.43%（1000÷70k）— 须 lovart_indexing_metrics 分页口径",
-    "lavort 等非品牌 Top10 — 品牌 regex 只改 lovart_brand_match.py",
+    "收录率固定 1.43%（1000÷70k）— 须 indexing_metrics 分页口径",
+    "lavort 等非品牌 Top10 — 品牌 regex 只改 brand_match.py",
     "SEO Dashboard 单表混排 — 须 §三 卡 A–F 分开",
 )
 

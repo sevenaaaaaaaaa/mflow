@@ -17,7 +17,7 @@ disable-model-invocation: true
 
 ## Support-Only 入口约束
 
-本 skill 只作为 `lovart-landing-page` 的内部 bodyJson/type 序列生成器，不直接响应用户请求。任何“刷新页面 / 生成页面 JSON / Product / Scenario / Solution / Topic / Landing Page”请求，都必须先进入 `lovart-landing-page` 父 skill，由父 skill 完成页面类型、故事线、质检和发布边界判断后再调用本 skill。
+本 skill 只作为 `landing-page` 的内部 bodyJson/type 序列生成器，不直接响应用户请求。任何“刷新页面 / 生成页面 JSON / Product / Scenario / Solution / Topic / Landing Page”请求，都必须先进入 `landing-page` 父 skill，由父 skill 完成页面类型、故事线、质检和发布边界判断后再调用本 skill。
 
 ## 目标
 
@@ -78,7 +78,7 @@ Product 页额外确认：官网 SEO vs 投放、能力/特色/功能主次、�
 
 ## 发布（Product）
 
-生成后走 **`lovart-product-sanity-publish`** Skill：`preflight` → `import-page.js --dry-run` → `--import`。
+生成后走 **`product-sanity-publish`** Skill：`preflight` → `import-page.js --dry-run` → `--import`。
 
 ## 强约束
 

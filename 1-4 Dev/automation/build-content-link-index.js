@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /*
- * Build a lightweight internal-link index for Lovart content planning.
+ * Build a lightweight internal-link index for the brand content planning.
  *
  * Outputs:
  *   1-3 Content Gen/CONTENT_LINK_INDEX.md
@@ -13,14 +13,14 @@ const PROJECT_ROOT = path.resolve(__dirname, '../..')
 const CONTENT_ROOT = fs.existsSync(path.join(PROJECT_ROOT, '1-3 GenFlow'))
   ? path.join(PROJECT_ROOT, '1-3 GenFlow')
   : path.join(PROJECT_ROOT, '1-3 Content Gen')
-const BLOG_ROOT = path.join(CONTENT_ROOT, 'Lovart-Blog-Pipeline/Lovart-Blogs/03-Published')
+const BLOG_ROOT = path.join(CONTENT_ROOT, 'blog-pipeline/the brand-Blogs/03-Published')
 const PAGE_ROOT = path.join(CONTENT_ROOT, 'Page Gen/Pages')
 const REFRESH_ROOT = path.join(CONTENT_ROOT, 'Page Gen/Refresh-Page/landing-examples')
 const OUT_MD = path.join(CONTENT_ROOT, 'CONTENT_LINK_INDEX.md')
 const OUT_CSV = path.join(CONTENT_ROOT, 'content-link-index.csv')
 
-const BLOG_BASE_URL = process.env.LOVART_BLOG_BASE_URL || 'https://blogs.lovart.ai'
-const SITE_BASE_URL = process.env.LOVART_SITE_BASE_URL || 'https://www.lovart.ai'
+const BLOG_BASE_URL = process.env.MFLOW_BLOG_BASE_URL || 'https://blogs.example.com'
+const SITE_BASE_URL = process.env.MFLOW_SITE_BASE_URL || 'https://www.example.com'
 
 function walk(dir, predicate, out = []) {
   if (!fs.existsSync(dir)) return out

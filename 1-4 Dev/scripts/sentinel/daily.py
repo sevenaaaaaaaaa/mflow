@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Lovart Sentinel - Daily Agent Workflow
+品牌方 Sentinel - Daily Agent Workflow
 ======================================
 这是 opencode agent 每日运行的入口脚本。
 它结合本地数据读取 + webfetch 远程采集，生成完整舆情报告。
@@ -9,7 +9,7 @@ agent 每日运行流程：
   1. 读取本地 GSC CSV / SEO报告 / 邮件复盘
   2. webfetch 调用各社媒/搜索API
   3. 运行 report.py 生成舆情日报
-  4. 输出到 1-2 Insight/Lovart ORM/
+  4. 输出到 1-2 Insight/ORM/
 """
 from __future__ import annotations
 
@@ -23,7 +23,7 @@ PROJECT_ROOT = SENTINEL_DIR.parents[2]
 
 def main():
     print("=" * 60)
-    print("  Lovart Sentinel - Daily Agent Workflow")
+    print("  品牌方 Sentinel - Daily Agent Workflow")
     print("=" * 60)
 
     # Step 1: 运行本地数据采集
@@ -56,10 +56,10 @@ def main():
     print("  ⬜ YouTube/TikTok/Instagram")
 
     print("\n[4/4] 产出文件...")
-    reports = sorted((PROJECT_ROOT / "1-2 Insight" / "Lovart ORM").glob("Lovart-Sentinel-*.md"))
+    reports = sorted((PROJECT_ROOT / "1-2 Insight" / "ORM").glob("品牌方-Sentinel-*.md"))
     if reports:
         print(f"  最新报告: {reports[-1].name}")
-    raw_dir = PROJECT_ROOT / "1-2 Insight" / "Lovart ORM" / "raw"
+    raw_dir = PROJECT_ROOT / "1-2 Insight" / "ORM" / "raw"
     if raw_dir.exists():
         snapshots = sorted(raw_dir.glob("*"))
         if snapshots:

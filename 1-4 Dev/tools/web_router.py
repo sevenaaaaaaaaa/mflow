@@ -2,12 +2,12 @@
 web_router — Given a URL, automatically pick the right tool
 (Firecrawl / Tavily / Hermes curl / Playwright MCP) to handle it.
 
-This is the entry point for any "fetch web content" task in the Lovart pipeline.
+This is the entry point for any "fetch web content" task in the the brand pipeline.
 The single rule: try cheap first (Hermes curl), escalate only on failure.
 
 Usage:
     from web_router import fetch_url
-    result = fetch_url("https://www.lovart.ai/changelog")
+    result = fetch_url("https://www.example.com/changelog")
     # result is {tool, ok, markdown, error, ...}
 
     fetch_url("https://example.com", schema={...})   # if Firecrawl is used,
@@ -26,8 +26,8 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any, Callable
 
-# ---------- detect Playwright Python (vendored at ~/Library/Caches/lovart-tools-venv) ----------
-PW_VENV_PY = Path.home() / "Library" / "Caches" / "lovart-tools-venv" / "bin" / "python"
+# ---------- detect Playwright Python (vendored at ~/Library/Caches/mflow-tools-venv) ----------
+PW_VENV_PY = Path.home() / "Library" / "Caches" / "mflow-tools-venv" / "bin" / "python"
 if PW_VENV_PY.exists():
     # When running under system python (no playwright in site-packages),
     # inject PW_VENV_PY's site-packages into path so we can import playwright.
@@ -150,7 +150,7 @@ def _firecrawl_scrape(url: str, schema: dict | None = None, prompt: str | None =
         headers={
             "Authorization": f"Bearer {key}",
             "Content-Type": "application/json",
-            "User-Agent": "lovart-web-router/1.0",
+            "User-Agent": "mflow-web-router/1.0",
         },
     )
     try:

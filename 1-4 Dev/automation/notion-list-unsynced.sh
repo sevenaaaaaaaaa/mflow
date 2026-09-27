@@ -5,8 +5,8 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 source "$PROJECT_ROOT/1-4 Dev/automation/local-dev-env.sh"
-ensure_lovart_local_dev_dirs
-REPORTS="$LOVART_LOCAL_OUTPUT_DIR/automation-reports"
+ensure_mflow_local_dev_dirs
+REPORTS="$MFLOW_LOCAL_OUTPUT_DIR/automation-reports"
 DAYS="${1:-7}"
 
 echo "Unsynced candidates (last $DAYS days) — Agent should dedupe by Title+Date in Notion:"

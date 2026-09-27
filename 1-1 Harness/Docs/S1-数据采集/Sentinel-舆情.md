@@ -5,7 +5,7 @@
 | **适用角色** | 品牌/ORM、SEO、内容策略 |
 | **前置** | `1-4 Dev/scripts/sentinel/config.yaml` |
 | **脚本 SSOT** | `collect.py`、`report.py`、`daily.py` |
-| **Skill** | `40-sentinel/lovart-sentinel` |
+| **Skill** | `40-sentinel/mflow-sentinel` |
 | **规则** | [AGENTS.md Part D](../../AGENTS.md) |
 
 ---
@@ -27,7 +27,7 @@ python3 "1-4 Dev/scripts/sentinel/report.py"
 
 ## 产出路径
 
-`1-2 Insight/Lovart ORM/{daily,weekly,monthly,quarterly,annual,raw}/`
+`1-2 Insight/ORM/{daily,weekly,monthly,quarterly,annual,raw}/`
 
 ---
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Audit or patch legacy Lovart path aliases.
+"""Audit or patch legacy the brand path aliases.
 
 Default mode is audit-only. Use `--apply` to write replacements.
 """
@@ -30,7 +30,7 @@ EXCLUDE_DIRS = {
 }
 
 EXCLUDE_PATH_PARTS = {
-    os.path.normpath(".cursor/skills/lovart-core/SKILL.md"),
+    os.path.normpath(".cursor/skills/mflow-core/SKILL.md"),
     os.path.normpath("1-4 Dev/scripts/harness_patch_paths.py"),
     os.path.normpath("1-4 Dev/notion-sync"),
     os.path.normpath("1-3 GenFlow/Page Gen/Pages/drafts"),
@@ -71,12 +71,12 @@ def should_skip_path(file_path):
     return any(rel == part or rel.startswith(part + os.sep) for part in EXCLUDE_PATH_PARTS)
 
 def main():
-    parser = argparse.ArgumentParser(description="Audit or patch legacy Lovart path aliases.")
+    parser = argparse.ArgumentParser(description="Audit or patch legacy the brand path aliases.")
     parser.add_argument("--apply", action="store_true", help="Write replacements. Default is audit-only.")
     args = parser.parse_args()
 
     print("==========================================")
-    print("Lovart Harness Path Alias Auditor")
+    print("the brand Harness Path Alias Auditor")
     print("==========================================")
 
     matched_count = 0

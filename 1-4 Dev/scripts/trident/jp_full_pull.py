@@ -20,7 +20,7 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from credential_paths import credential_file
 
-SITE = "https://www.lovart.ai/"
+SITE = "https://www.example.com/"
 OUT = Path("/tmp/jp_pull"); OUT.mkdir(parents=True, exist_ok=True)
 SCOPES_GSC = ["https://www.googleapis.com/auth/webmasters.readonly"]
 SCOPES_GA4 = ["https://www.googleapis.com/auth/analytics.readonly"]
@@ -66,7 +66,7 @@ def norm_row(r, key_idx=0):
 
 
 def fetch_gsc():
-    token = credential_file("gsc-token.json", "LOVART_GSC_TOKEN_FILE")
+    token = credential_file("gsc-token.json", "MFLOW_GSC_TOKEN_FILE")
     creds = Credentials.from_authorized_user_info(json.loads(token.read_text()), SCOPES_GSC)
     svc = build("searchconsole", "v1", credentials=creds)
     out = {"_site": SITE, "months": {}}
@@ -122,7 +122,7 @@ def month_key(datestr):
 
 
 def fetch_ga4():
-    token = credential_file("ga4-token.json", "LOVART_GA4_TOKEN_FILE")
+    token = credential_file("ga4-token.json", "MFLOW_GA4_TOKEN_FILE")
     creds = Credentials.from_authorized_user_info(json.loads(token.read_text()), SCOPES_GA4)
     svc = build("analyticsdata", "v1beta", credentials=creds)
     out = {}

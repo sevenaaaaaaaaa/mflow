@@ -19,7 +19,7 @@
 
 set -euo pipefail
 
-VAULT="${LOVART_RESOURCE_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../../.." && pwd)}"
+VAULT="${MFLOW_RESOURCE_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../../.." && pwd)}"
 FILE=""
 SCRIPT=""
 TYPE="blog"
@@ -129,8 +129,8 @@ if [[ -n "$ALL_URLS" ]]; then
   DEAD=0
   while IFS= read -r url; do
     [[ -z "$url" ]] && continue
-    # Skip CDN URLs (lovart.ai, blogs.lovart.ai) — assume valid
-    if echo "$url" | grep -qE "lovart\.ai|blogs\.lovart\.ai"; then
+    # Skip CDN URLs (example.com, blogs.example.com) — assume valid
+    if echo "$url" | grep -qE "品牌\.ai|blogs\.品牌\.ai"; then
       continue
     fi
     HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 5 "$url" 2>/dev/null || echo "000")

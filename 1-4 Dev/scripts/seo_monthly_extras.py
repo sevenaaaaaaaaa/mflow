@@ -7,8 +7,8 @@ from pathlib import Path
 from collections import defaultdict
 from typing import Any
 
-from lovart_brand_match import is_brand
-from lovart_seo_geo_metrics import (
+from brand_match import is_brand
+from seo_geo_metrics import (
     NEW_VS_ALL_PAY_FOOTNOTE,
     DAILY_SUM_FOOTNOTE,
     GA4_DATAWORK_FOOTNOTE,
@@ -1058,8 +1058,8 @@ def _bing_path(url: str) -> str:
     if not url:
         return "/"
     for prefix in (
-        "https://www.lovart.ai", "https://lovart.ai",
-        "http://www.lovart.ai", "https://insight.lovart.ai",
+        "https://www.example.com", "https://example.com",
+        "http://www.example.com", "https://insight.example.com",
     ):
         url = url.replace(prefix, "")
     return (url.strip() or "/")[:55]
@@ -1160,7 +1160,7 @@ def render_engine_overview(g_prev, g_curr, bp, bc, pl, cl, chg_str) -> str:
 | DuckDuckGo / Yahoo Japan | 无独立站长平台；主要依赖 Bing/IndexNow/自然抓取 | 作为生态覆盖说明，不做官方曝光 KPI | 必要时低频 SERP spot check |
 | Naver | 暂不单独接入 Search Advisor | 仅保留韩国市场观察项 | 若韩国市场优先级提升再单开验证 |
 | 百度 | 仅保留人工/资源平台可能性 | 不进入脚本化月报 KPI | 需要账号和人工验证时再开任务 |
-| 360 / 神马 / 头条等国内搜索 | 不再推进 | 不纳入 Lovart 当前 Multi SEO 任务 | 无 |
+| 360 / 神马 / 头条等国内搜索 | 不再推进 | 不纳入 品牌方 当前 Multi SEO 任务 | 无 |
 | Brave / Yandex | Brave 无订阅且 429；Yandex 验证码阻塞 | 不进入近期执行范围 | 有 API/账号条件后再重启 |
 
 """

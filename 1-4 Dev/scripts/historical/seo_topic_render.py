@@ -52,7 +52,7 @@ def _indexing_excerpt(md: str, ym: str) -> str:
 
 
 def render_topic(ym: str, slug: str, title: str, start: str, end: str) -> Path:
-    monthly = MONTHLY_DIR / f"Lovart-SEO-{ym}.md"
+    monthly = MONTHLY_DIR / f"品牌方-SEO-{ym}.md"
     if not monthly.is_file():
         raise FileNotFoundError(f"缺月报 {monthly}")
     md = monthly.read_text()
@@ -63,9 +63,9 @@ def render_topic(ym: str, slug: str, title: str, start: str, end: str) -> Path:
     else:
         body = _extract_section(md, start, end)
 
-    report = f"""# Lovart SEO 专题 — {title} — {ym}
+    report = f"""# 品牌方 SEO 专题 — {title} — {ym}
 
-> **来源**: [Lovart-SEO-{ym}.md](../monthly/Lovart-SEO-{ym}.md)  
+> **来源**: [品牌方-SEO-{ym}.md](../monthly/品牌方-SEO-{ym}.md)  
 > **生成**: {date.today().isoformat()}  
 > **类型**: 维度专题（从月报拆片，无新 API）
 
@@ -74,7 +74,7 @@ def render_topic(ym: str, slug: str, title: str, start: str, end: str) -> Path:
 {body}
 """
     TOPICS_DIR.mkdir(parents=True, exist_ok=True)
-    out = TOPICS_DIR / f"Lovart-SEO-topic-{slug}-{ym}.md"
+    out = TOPICS_DIR / f"品牌方-SEO-topic-{slug}-{ym}.md"
     out.write_text(report)
     print(f"  topic {out.name}")
     return out

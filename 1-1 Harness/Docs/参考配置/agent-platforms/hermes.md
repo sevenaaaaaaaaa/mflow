@@ -12,7 +12,7 @@
 ## 配置要点
 
 1. 安装 OpenCode + Hermes 插件（按你当前 Hermes 发行版文档）。
-2. 飞书凭证：`1-1 Harness/Skills/lovart-trident-data-engine/credentials/feishu.json`（勿提交 git）。
+2. 飞书凭证：`1-1 Harness/Skills/trident-data-engine/credentials/feishu.json`（勿提交 git）。
 3. 在 Hermes 中挂载与 OpenCode 相同的 **instructions**（见 [opencode.md](./opencode.md)）。
 
 ## 自动化边界
@@ -33,7 +33,7 @@ Cursor Automation (cron)
 Hermes 侧 **系统提示** 片段：
 
 ```
-你是 Lovart 运维 Bot。收到「weekly ops」时：
+你是 品牌方 运维 Bot。收到「weekly ops」时：
 1. 读取用户粘贴的 pull-tools-latest.json 或 health check 日志
 2. 用中文 3 条 bullet 摘要；legacy>0 或 brokenUrls>0 时 @负责人
 3. 不要自行执行 sanity import

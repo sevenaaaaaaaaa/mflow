@@ -11,9 +11,9 @@ from pathlib import Path
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
-CRED_DIR = Path(__file__).resolve().parents[3] / "1-1 Harness/Skills/01-strategy/lovart-trident-data-engine/credentials"
+CRED_DIR = Path(__file__).resolve().parents[3] / "1-1 Harness/Skills/01-strategy/trident-data-engine/credentials"
 TOKEN = json.loads((CRED_DIR / "gsc-token.json").read_text())
-SITE = "https://www.lovart.ai/"
+SITE = "https://www.example.com/"
 SCOPES = ["https://www.googleapis.com/auth/webmasters.readonly"]
 
 WINDOWS = {

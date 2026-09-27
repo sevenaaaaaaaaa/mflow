@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# sync-local-dev.sh — bidirectional sync between Lovart Local Dev and Obsidian vault
+# sync-local-dev.sh — bidirectional sync between MFlow Local Dev and Obsidian vault
 #
-# Problem: Two folders (Obsidian vault + Lovart Local Dev) hold overlapping content.
+# Problem: Two folders (Obsidian vault + MFlow Local Dev) hold overlapping content.
 #          Files drift apart. No one knows which is latest.
 #
 # Solution: One-directional SSOT sync with clear rules:
@@ -20,9 +20,9 @@
 set -euo pipefail
 
 # --- Configuration ---
-LOCAL_DEV="${LOVART_LOCAL_DEV_ROOT:-$HOME/Documents/Lovart Local Dev}"
+LOCAL_DEV="${MFLOW_LOCAL_DEV_ROOT:-$HOME/Documents/MFlow Local Dev}"
 MFLOW="$(cd "${BASH_SOURCE[0]%/*}/../.." && pwd)"
-VAULT="${LOVART_RESOURCE_ROOT:-$(cd "$MFLOW/.." && pwd)}"
+VAULT="${MFLOW_RESOURCE_ROOT:-$(cd "$MFLOW/.." && pwd)}"
 
 # Mapping: Local Dev path → Obsidian target path
 # Format: "local_dev_subdir:obsidian_subdir:file_pattern"
@@ -33,8 +33,8 @@ SYNC_MAP=(
   "Output/SEO-Reports:1-2 Insight/SEO Reports:*"
   # Output/Knowledge Base → 1-2 Insight/Knowledge Base/
   "Output/Knowledge Base:1-2 Insight/Knowledge Base:*"
-  # Output/Lovart-Blog-Pipeline → 1-3 GenFlow/Lovart-Blog-Pipeline/
-  "Output/Lovart-Blog-Pipeline:1-3 GenFlow/Lovart-Blog-Pipeline:*"
+  # Output/blog-pipeline → 1-3 GenFlow/blog-pipeline/
+  "Output/blog-pipeline:1-3 GenFlow/blog-pipeline:*"
   # Output/Content Calendar → 1-3 GenFlow/Content Calendar/
   "Output/Content Calendar:1-3 GenFlow/Content Calendar:*"
   # Output/Page Gen → 1-3 GenFlow/Page Gen/
@@ -99,7 +99,7 @@ if [[ ! -d "$LOCAL_DEV" ]]; then
   exit 2
 fi
 if [[ ! -d "$MFLOW" ]]; then
-  log "ERROR: Lovart MFlow not found at $MFLOW"
+  log "ERROR: the brand MFlow not found at $MFLOW"
   exit 2
 fi
 
@@ -212,14 +212,14 @@ else
 
   # 4) Output/ subdirectories → corresponding Obsidian paths
   log "--- Output/ subdirectories ---"
-  for subdir in "Output/SEO-Reports" "Output/Knowledge Base" "Output/Lovart-Blog-Pipeline" "Output/Content Calendar" "Output/Page Gen"; do
+  for subdir in "Output/SEO-Reports" "Output/Knowledge Base" "Output/blog-pipeline" "Output/Content Calendar" "Output/Page Gen"; do
     src="$LOCAL_DEV/$subdir"
     [[ -d "$src" ]] || continue
     # Map to Obsidian target
     case "$subdir" in
       "Output/SEO-Reports") dst="$MFLOW/1-2 Insight/SEO Reports" ;;
       "Output/Knowledge Base") dst="$MFLOW/1-2 Insight/Knowledge Base" ;;
-      "Output/Lovart-Blog-Pipeline") dst="$MFLOW/1-3 GenFlow/Lovart-Blog-Pipeline" ;;
+      "Output/blog-pipeline") dst="$MFLOW/1-3 GenFlow/blog-pipeline" ;;
       "Output/Content Calendar") dst="$MFLOW/1-3 GenFlow/Content Calendar" ;;
       "Output/Page Gen") dst="$MFLOW/1-3 GenFlow/Page Gen" ;;
     esac

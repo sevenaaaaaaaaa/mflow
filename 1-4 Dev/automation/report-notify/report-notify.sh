@@ -6,14 +6,14 @@
 #     --artifact "1-2 Insight/Trident Insights/reports/weekly/foo.md"
 #
 # Env:
-#   LOVART_PROJECT_ROOT  (default: auto-detect from script)
+#   MFLOW_PROJECT_ROOT  (default: auto-detect from script)
 #   FEISHU_WEBHOOK_URL   (optional; or feishu.json in trident credentials)
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECT_ROOT="${LOVART_PROJECT_ROOT:-$(cd "$SCRIPT_DIR/../../.." && pwd)}"
+PROJECT_ROOT="${MFLOW_PROJECT_ROOT:-$(cd "$SCRIPT_DIR/../../.." && pwd)}"
 source "$PROJECT_ROOT/1-4 Dev/automation/local-dev-env.sh"
-ensure_lovart_local_dev_dirs
+ensure_mflow_local_dev_dirs
 DATE="$(date +%Y-%m-%d)"
 TIME="$(date +%H:%M:%S)"
 STAMP="${DATE}T${TIME}"
@@ -37,7 +37,7 @@ done
 
 [[ -n "$TYPE" ]] || { echo "Missing --type"; exit 1; }
 
-REPORT_DIR="$LOVART_LOCAL_OUTPUT_DIR/automation-reports/$DATE"
+REPORT_DIR="$MFLOW_LOCAL_OUTPUT_DIR/automation-reports/$DATE"
 mkdir -p "$REPORT_DIR"
 
 MANIFEST="$REPORT_DIR/${TYPE}-${STAMP}.json"
@@ -55,7 +55,7 @@ EOF
 # Markdown digest for Obsidian + Notion paste
 MD="$REPORT_DIR/${TYPE}-${STAMP}.md"
 {
-  echo "# Lovart Automation Report: $TYPE"
+  echo "# the brand Automation Report: $TYPE"
   echo ""
   echo "| Field | Value |"
   echo "|-------|-------|"
@@ -80,7 +80,7 @@ MD="$REPORT_DIR/${TYPE}-${STAMP}.md"
 } > "$MD"
 
 # Rolling index
-INDEX="$LOVART_LOCAL_OUTPUT_DIR/automation-reports/INDEX.md"
+INDEX="$MFLOW_LOCAL_OUTPUT_DIR/automation-reports/INDEX.md"
 {
   echo "| $STAMP | $TYPE | $STATUS | [$MD]($MD) |"
 } >> "$INDEX"
@@ -89,7 +89,7 @@ echo "Local report → $MD"
 echo "Manifest → $MANIFEST"
 
 # Feishu (optional)
-FEISHU_JSON="$PROJECT_ROOT/1-1 Harness/Skills/01-strategy/lovart-trident-data-engine/credentials/feishu.json"
+FEISHU_JSON="$PROJECT_ROOT/1-1 Harness/Skills/01-strategy/trident-data-engine/credentials/feishu.json"
 WEBHOOK="${FEISHU_WEBHOOK_URL:-}"
 if [[ -z "$WEBHOOK" && -f "$FEISHU_JSON" ]]; then
   WEBHOOK="$(python3 -c "import json; print(json.load(open('$FEISHU_JSON')).get('webhook_url',''))" 2>/dev/null || true)"
@@ -102,7 +102,7 @@ if [[ -n "$WEBHOOK" ]]; then
 import json
 print(json.dumps({
   "msg_type": "text",
-  "content": {"text": f"$ICON Lovart [$TYPE] $STATUS\\n$SUMMARY\\n$MD"}
+  "content": {"text": f"$ICON the brand [$TYPE] $STATUS\\n$SUMMARY\\n$MD"}
 }))
 PY
 )
@@ -112,15 +112,15 @@ else
   echo "Feishu → skipped (no webhook)"
 fi
 
-# Email: macOS mail stub (set LOVART_REPORT_EMAIL to enable)
-if [[ -n "${LOVART_REPORT_EMAIL:-}" ]]; then
-  SUBJECT="Lovart [$TYPE] $STATUS — $DATE"
-  mail -s "$SUBJECT" "$LOVART_REPORT_EMAIL" < "$MD" 2>/dev/null && echo "Email → $LOVART_REPORT_EMAIL" || echo "Email → failed"
+# Email: macOS mail stub (set MFLOW_REPORT_EMAIL to enable)
+if [[ -n "${MFLOW_REPORT_EMAIL:-}" ]]; then
+  SUBJECT="the brand [$TYPE] $STATUS — $DATE"
+  mail -s "$SUBJECT" "$MFLOW_REPORT_EMAIL" < "$MD" 2>/dev/null && echo "Email → $MFLOW_REPORT_EMAIL" || echo "Email → failed"
 fi
 
 echo ""
-echo "Notion DB: Lovart Ops Reports"
-NOTION_CFG="$LOVART_LOCAL_OUTPUT_DIR/automation-reports/notion-config.json"
+echo "Notion DB: the brand Ops Reports"
+NOTION_CFG="$MFLOW_LOCAL_OUTPUT_DIR/automation-reports/notion-config.json"
 if [[ -f "$NOTION_CFG" ]]; then
   python3 -c "import json; c=json.load(open('$NOTION_CFG')); print('  url:', c.get('database_url','')); print('  data_source_id:', c.get('data_source_id',''))"
 fi

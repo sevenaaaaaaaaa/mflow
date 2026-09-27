@@ -8,10 +8,10 @@ status: active
 path: 1-1 Harness/02-rules/RULES-50-distribution.md
 generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 ---
-# Lovart RULES — 50 分发类（Distribution）
+# 品牌方 RULES — 50 分发类（Distribution）
 
 > 适用路线：国内内容分发、国外内容分发
-> 加载 Profile：`lovart-distribution`
+> 加载 Profile：`mflow-distribution`
 
 ---
 

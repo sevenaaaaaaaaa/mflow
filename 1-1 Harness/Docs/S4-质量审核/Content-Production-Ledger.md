@@ -3,7 +3,7 @@
 > 用途：在生成过程中逐节记录「必须写什么」，防止漏模块、后半缩水、续写失忆。  
 > 上游：[Anti-Slop.md](./Anti-Slop.md)、SERP brief  
 > 配对：[Content-Quality-Rubric.md](./Content-Quality-Rubric.md)（Rubric 判好坏；Ledger 保完整）  
-> 下游：Blog / Page skills、`lovart-content-quality-gates`、preflight、样本库
+> 下游：Blog / Page skills、`content-quality-gates`、preflight、样本库
 
 ---
 
@@ -101,7 +101,7 @@ Ledger 是**生成前的计划表 + 生成中的状态表 + 成稿前的核对�
 | Reader promise | | planned | |
 | FAQ (3-5) | | planned | 真实长尾问题 |
 | E-E-A-T block | | planned | 经验/方法/来源/限制 |
-| Lovart angle | | planned | 仅写已核实能力 |
+| 品牌方 angle | | planned | 仅写已核实能力 |
 | Internal links | | planned | 验证 slug |
 | image_briefs | | planned | frontmatter，正文无占位符 |
 | Closing next step | | planned | 非「未来可期」 |
@@ -220,7 +220,7 @@ Landing / Tools composite-v2 按 **section / module** 记账，不按 H2。
 | examples / pain points | | yes | | planned | |
 | CTA | | yes | | planned | |
 | FAQ | | yes | | planned | |
-| brand terms | Lovart / MCoT / ChatCanvas | consistent | | planned | |
+| brand terms | 品牌方 / MCoT / ChatCanvas | consistent | | planned | |
 
 ### i18n BLOCK checks
 
@@ -373,11 +373,11 @@ Verdict: [pass | rewrite last third | rewrite middle | full restructure]
 
 | Skill | Ledger 要求 |
 |---|---|
-| `lovart-content-creation-orchestrator` | brief 后要求创建 Ledger |
-| `lovart-blog-serp-writer` | 长文必须先出 H2 Ledger；Final QA 含 Shrinkage check |
-| `lovart-page-serp-writer` | 按 storyline 填 Section Ledger；Tools v2 核对 global checks |
-| `lovart-content-quality-gates` | CREATE 阶段检查 Ledger 是否存在；TRANSLATE 检查 i18n Ledger |
-| `lovart-content-audit` | 深度审计时对照 Ledger 查漏项 |
+| `content-creation-orchestrator` | brief 后要求创建 Ledger |
+| `blog-serp-writer` | 长文必须先出 H2 Ledger；Final QA 含 Shrinkage check |
+| `page-serp-writer` | 按 storyline 填 Section Ledger；Tools v2 核对 global checks |
+| `content-quality-gates` | CREATE 阶段检查 Ledger 是否存在；TRANSLATE 检查 i18n Ledger |
+| `content-audit` | 深度审计时对照 Ledger 查漏项 |
 
 ---
 
@@ -400,7 +400,7 @@ Ledger 中可自动化的项（已映射见 [Preflight-Anti-Slop-Gates.md](./Pre
 | i18n 文件名 | `--type tools` / `blog-i18n` | `I18N_FILENAME` |
 | section marker | `grep section_` | `I18N_MARKER` |
 
-运行：`1-1 Harness/Skills/lovart-content-quality-gates/scripts/anti-slop-preflight.js`
+运行：`1-1 Harness/Skills/content-quality-gates/scripts/anti-slop-preflight.js`
 
 ---
 
@@ -408,7 +408,7 @@ Ledger 中可自动化的项（已映射见 [Preflight-Anti-Slop-Gates.md](./Pre
 
 | # | h2 | judgment | mechanism | example | evidence | cta_or_next | status |
 |---:|---|---|---|---|---|---|---|
-| 1 | 商业视频 AI 真正难的是一致性，不是第一次生成 | 品牌团队怕的不是生成慢，而是改一帧坏全片 | 多轮迭代中角色/产品/字幕漂移 | 电商 SKU 换色后口型与包装不同步 | Lovart Touch Edit + 分镜锁定；竞品多为单次生成 | 用自家 SKU 试一轮变体流程 | planned |
+| 1 | 商业视频 AI 真正难的是一致性，不是第一次生成 | 品牌团队怕的不是生成慢，而是改一帧坏全片 | 多轮迭代中角色/产品/字幕漂移 | 电商 SKU 换色后口型与包装不同步 | 品牌方 Touch Edit + 分镜锁定；竞品多为单次生成 | 用自家 SKU 试一轮变体流程 | planned |
 
 ---
 

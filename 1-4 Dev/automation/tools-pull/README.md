@@ -9,13 +9,13 @@
 bash "1-4 Dev/automation/tools-pull/pull-tools-from-production.sh"
 
 # 或进入 studio
-cd "1-4 Dev/lovart.sanity.studio"
+cd "1-4 Dev/品牌.sanity.studio"
 node scripts/pull-tools-from-production.js
 ```
 
 等价于顺序执行：
 
-1. `export-composite-production.js` → `~/Documents/Lovart Local Dev/Output/composite-v2-audit/production-export.json`
+1. `export-composite-production.js` → `~/Documents/MFlow Local Dev/Output/composite-v2-audit/production-export.json`
 2. `sync-tools-from-production.js` → `Page Gen/Pages/Tools/`
 3. 审计摘要 + `pull-tools-latest.json`
 
@@ -46,8 +46,8 @@ bash install.sh
 ```
 
 - 默认：**每周一 07:00**
-- 日志：`~/Library/Logs/Lovart/tools-pull-weekly.log`
-- 手动：`launchctl start com.lovart.tools-pull-weekly`
+- 日志：`~/Library/Logs/品牌方/tools-pull-weekly.log`
+- 手动：`launchctl start com.mflow.tools-pull-weekly`
 
 ## Cursor Automation（第二层）
 
@@ -67,6 +67,6 @@ bash install.sh
 
 | 路径 | 说明 |
 |------|------|
-| `~/Documents/Lovart Local Dev/Output/composite-v2-audit/production-export.json` | 线上快照 |
-| `~/Documents/Lovart Local Dev/Output/composite-v2-audit/pull-tools-latest.json` | 最近一次 pull 摘要 |
+| `~/Documents/MFlow Local Dev/Output/composite-v2-audit/production-export.json` | 线上快照 |
+| `~/Documents/MFlow Local Dev/Output/composite-v2-audit/pull-tools-latest.json` | 最近一次 pull 摘要 |
 | `1-3 Content Gen/Page Gen/Pages/Tools/` | 本地正式源（含 `_syncedFromProduction`） |

@@ -28,7 +28,7 @@ RANKING_PATH = (
     Path(__file__).resolve().parents[2]
     / "1-2 Insight/排序分析/landing_pages_ranking_v2.json"
 )
-OUT_DIR = Path.home() / "Documents/Lovart Local Dev/Output/quality-audits"
+OUT_DIR = Path.home() / "Documents/MFlow Local Dev/Output/quality-audits"
 
 HOME_SLOTS: dict[str, int] = {
     "tool": 6,

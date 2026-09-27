@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""品牌词布局清单生成器 — 从 lovart_brand_match.py SSOT 还原全部需要布局的 Lovart 品牌词。
+"""品牌词布局清单生成器 — 从 brand_match.py SSOT 还原全部需要布局的 品牌方 品牌词。
 
 按 BRAND_PATTERNS / _TRANSLIT_FRAGMENTS / _BRAND_ROOTS / token 对 / 模糊规则逐条展开，
 每个候选词用 is_brand() 实测验证，输出品牌词 vs 非品牌排除词清单（markdown）。
@@ -13,7 +13,7 @@ from pathlib import Path
 # 保证能 import SSOT（无论从哪个 cwd 运行）
 _MF = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(_MF))
-from lovart_brand_match import (  # noqa: E402
+from brand_match import (  # noqa: E402
     BRAND_PATTERNS,
     _BRAND_ROOTS,
     _TRANSLIT_FRAGMENTS,
@@ -28,12 +28,12 @@ from lovart_brand_match import (  # noqa: E402
 
 CANDIDATES: list[tuple[str, str, list[str]]] = [
     ("A. 核心词族（canonical）",
-     "规则 1-3：\\blovart\\b / \\bloveart\\b / \\blovert\\b + \\blevert\\b",
-     ["lovart", "loveart", "lovert", "levert", "lovart.ai", "lovartai", "lovart ai"]),
+     "规则 1-3：\\b品牌\\b / \\bloveart\\b / \\blovert\\b + \\blevert\\b",
+     ["品牌", "loveart", "lovert", "levert", "example.com", "品牌ai", "品牌 ai"]),
 
     ("B. 近拼写变体（单字符差/OCR 键盘误触）",
      "规则 19-51：lov[a-z0-9]*art* / lav* / luv* / 数字替换",
-     ["lovartia", "lavorat", "louvat", "lavrt", "l9vart", "lorvat", "lavort",
+     ["品牌ia", "lavorat", "louvat", "lavrt", "l9vart", "lorvat", "lavort",
       "lavart", "lavard", "lawat", "lova", "lovar", "lovat", "lovurt", "lavrat",
       "lvart", "lavort", "lav0rt", "lavartai", "lavartpro", "lavardai",
       "lavorat", "louvar", "louvard", "luvart", "luvat", "livart", "lowart",
@@ -44,12 +44,12 @@ CANDIDATES: list[tuple[str, str, list[str]]] = [
      ["lo art", "lo ai", "lo ia", "lov art", "lov ai", "lov ia", "love art",
       "love ai", "love ia", "luv art", "art love", "art lov", "art ai",
       "art ia", "ia art", "levert ai", "lovert ai", "lavard ai", "lawat ai",
-      "lovart ai", "lovart ia", "l o v a r t", "l o v e a r t"]),
+      "品牌 ai", "品牌 ia", "l o v a r t", "l o v e a r t"]),
 
     ("D. 组合品牌词（复合/产品名）",
      "规则 61-67 + roots：artlov / iloveart / nano banana 等",
      ["artlov", "artlove", "iloveart", "nano banana", "nanobanana",
-      "chatcanvas", "mcot", "brand kit lovart", "brandkit lovart"]),
+      "chatcanvas", "mcot", "brand kit 品牌", "brandkit 品牌"]),
 
     ("E. 音译词（非拉丁字母市场）",
      "规则 55-60 + _TRANSLIT_FRAGMENTS（JA/KO/ZH/RU/AR）",
@@ -59,16 +59,16 @@ CANDIDATES: list[tuple[str, str, list[str]]] = [
       "لافرت", "لافورت", "لافارت"]),
 
     ("F. 模糊匹配层（Levenshtein ≤ 2 于锚点）",
-     "_compact_form_brand / _fuzzy_lovart_token 的 levenshtein 分支",
-     ["lovort", "lovars", "lovartt", "lovarts", "lovarty", "lovardi",
-      "lovartly", "lovarta", "loveartt", "lovertz", "lovartpro", "lavorta",
+     "_compact_form_brand / _fuzzy_品牌_token 的 levenshtein 分支",
+     ["lovort", "lovars", "品牌t", "品牌s", "品牌y", "lovardi",
+      "品牌ly", "品牌a", "loveartt", "lovertz", "品牌pro", "lavorta",
       "lavarti", "louvat", "luvart", "luvarti", "luvartai"]),
 
     ("G. 品牌词根独立出现（短词）",
      "_BRAND_ROOTS + _SHORT_ROOTS（与 art/ai/ia 组合或整句极短时）",
      ["lo", "lov", "love", "lover", "luv", "lav", "louv", "lavort", "lavart",
-      "lavard", "lawat", "lavrt", "lavorat", "louvat", "lorvat", "lovart",
-      "loveart", "lovartai", "lovar", "lovat", "lova", "louart", "lovurt",
+      "lavard", "lawat", "lavrt", "lavorat", "louvat", "lorvat", "品牌",
+      "loveart", "品牌ai", "lovar", "lovat", "lova", "louart", "lovurt",
       "lavrat", "lvart", "l9vart", "artlov", "iloveart", "volart", "levart",
       "levert", "lovert", "lova", "lovu", "luvi"]),
 ]
@@ -83,9 +83,9 @@ NONBRAND_CANDIDATES = [
 
 def main() -> int:
     lines: list[str] = []
-    lines.append("# Lovart 品牌词布局清单（还原自 lovart_brand_match.py SSOT）")
+    lines.append("# 品牌方 品牌词布局清单（还原自 brand_match.py SSOT）")
     lines.append("")
-    lines.append(f"> 来源：`{_MF / 'lovart_brand_match.py'}` · 每个候选词均经 `is_brand()` 实测验证 · 生成时间按需")
+    lines.append(f"> 来源：`{_MF / 'brand_match.py'}` · 每个候选词均经 `is_brand()` 实测验证 · 生成时间按需")
     lines.append("")
     lines.append("## 一、品牌词全量清单（需要布局）")
     lines.append("")
@@ -114,11 +114,11 @@ def main() -> int:
     lines.append("")
     lines.append("| 规则 | 含义 | 布局建议 |")
     lines.append("|---|---|---|")
-    lines.append("| `lov[a-z0-9]*art[a-z0-9]*` | lov…art 任意中缀/后缀 | 品牌词根 + 业务词缀：lovartai / lovartpro / lovartapp |")
+    lines.append("| `lov[a-z0-9]*art[a-z0-9]*` | lov…art 任意中缀/后缀 | 品牌词根 + 业务词缀：品牌ai / 品牌pro / 品牌app |")
     lines.append("| `l[o0uv][vaeiou]*r?t`（4-10 字符） | 元音簇替换 | lovt / lovat / lovet / luvat / luvert |")
-    lines.append("| `lov[a-z0-9]*ard` | lov…ard | lovard / lovartd / lovars |")
+    lines.append("| `lov[a-z0-9]*ard` | lov…ard | lovard / 品牌d / lovars |")
     lines.append("| `artlov[a-z]*` | art+lov 复合 | artlov / artlove / artlover |")
-    lines.append("| `lovart[\\u4e00-\\u9fff]+` | lovart+中文 | lovart中文工具 / lovart官网（中文布局） |")
+    lines.append("| `品牌[\\u4e00-\\u9fff]+` | 品牌+中文 | 品牌中文工具 / 品牌官网（中文布局） |")
     lines.append("")
     lines.append("## 四、布局建议（按组落地）")
     lines.append("")
@@ -130,7 +130,7 @@ def main() -> int:
     lines.append("")
 
     out_path = Path(
-        str(Path.home() / "Documents/Lovart Local Dev/Output/SEO-Reports/品牌词布局/brand-keyword-inventory.md")
+        str(Path.home() / "Documents/MFlow Local Dev/Output/SEO-Reports/品牌词布局/brand-keyword-inventory.md")
     )
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text("\n".join(lines), encoding="utf-8")

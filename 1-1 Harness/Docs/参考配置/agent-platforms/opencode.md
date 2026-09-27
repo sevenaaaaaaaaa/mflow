@@ -43,14 +43,14 @@ bash sync-skills.sh --to-opencode  # vault → opencode（覆盖原始 vault ski
 
 OpenCode 侧分组：`00-core`、`10-lark`、`20-hermes`、`30-clawx`。
 
-## Lovart 相关 Skill 入口
+## 品牌方 相关 Skill 入口
 
 | 任务 | Skill 目录 |
 |------|------------|
-| Tools 发布 | `lovart-tools-sanity-publish/` |
-| Blog 发布 | `lovart-sanity-publish/` |
-| Pipeline | `lovart-pipeline-orchestrator/` |
-| Trident | `lovart-trident-data-engine/` |
+| Tools 发布 | `tools-sanity-publish/` |
+| Blog 发布 | `sanity-publish/` |
+| Pipeline | `pipeline-orchestrator/` |
+| Trident | `trident-data-engine/` |
 
 ## 定时任务
 
@@ -59,8 +59,8 @@ OpenCode **无** Cron Automations → 用 **Cursor Automations** 或 launchd/cro
 ## 工作目录
 
 ```bash
-cd "/Users/seveno/.../1-Project/1-4 Dev/lovart.sanity.studio"
-# 或 sanity-studio-copies/LovartPM-sanity-studio（若你 cwd 在那）
+cd "/Users/seveno/.../1-Project/1-4 Dev/品牌.sanity.studio"
+# 或 sanity-studio-copies/品牌方PM-sanity-studio（若你 cwd 在那）
 ```
 
 ## 触发词（见 10-automation README 副本）

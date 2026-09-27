@@ -1,5 +1,5 @@
 """
-Lovart Sentinel - TikTok via DuckDuckGo Proxy
+品牌方 Sentinel - TikTok via DuckDuckGo Proxy
 通过 DuckDuckGo 搜索引擎穿透 TikTok 反爬
 """
 from ._common import banner
@@ -8,13 +8,13 @@ from ._common import banner
 def collect() -> dict:
     data = dict(banner("TikTok Monitor (DuckDuckGo proxy)"))
     data["method"] = "duckduckgo"
-    data["url"] = "https://duckduckgo.com/html/?q=lovart+site:tiktok.com"
+    data["url"] = "https://duckduckgo.com/html/?q=品牌+site:tiktok.com"
     data["status"] = "delegated"
     data["_instructions"] = """
-    1. webfetch DuckDuckGo: https://duckduckgo.com/html/?q=lovart+site:tiktok.com
-    2. 提取：@lovart.ai粉丝数(749)、@lovart_ai粉丝数(270)
+    1. webfetch DuckDuckGo: https://duckduckgo.com/html/?q=品牌+site:tiktok.com
+    2. 提取：@example.com粉丝数(749)、@品牌_ai粉丝数(270)
     3. 从搜索结果摘要提取：视频标题、播放量、日期
-    4. 检测是否有UGC内容（非官方账号发布的Lovart视频）
+    4. 检测是否有UGC内容（非官方账号发布的品牌方视频）
     """
     return data
 

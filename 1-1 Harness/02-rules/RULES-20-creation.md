@@ -2,7 +2,7 @@
 type: rule/creation
 version: 2.0
 updated: 2026-09-18
-scope: "profile-lovart-creation"
+scope: "profile-mflow-creation"
 tools: [mflow, agent]
 status: active
 path: 1-1 Harness/02-rules/RULES-20-creation.md
@@ -10,7 +10,7 @@ path: 1-1 Harness/02-rules/RULES-20-creation.md
 # RULES 20 — 创作类（Creation）
 
 > 适用路线：Blog 创作、Features/Tools/Solution/Product/Scenario/Landing/Topic 落地页
-> 加载 Profile：`lovart-creation`
+> 加载 Profile：`mflow-creation`
 
 ## 一、硬条款（违反即 BLOCK）
 
@@ -63,25 +63,25 @@ path: 1-1 Harness/02-rules/RULES-20-creation.md
 
 | 内容类型 | Skill |
 |---------|-------|
-| Getting Started / 101 | lovart-101 |
-| Best Practice | lovart-best-practice |
-| Complete Guide | lovart-complete-guide |
-| Review / Roundup | lovart-review |
-| Stack × Stack | lovart-stack-by-stack |
-| Insight & Trend | lovart-insight-trend |
-| Thought Leadership | lovart-thought-leadership |
-| SERP 驱动 Blog | lovart-blog-serp-writer |
-| 舆情驱动 Blog | lovart-blog-signal-writer |
-| Blog 全流程 | lovart-blog-automation |
+| Getting Started / 101 | content-101 |
+| Best Practice | best-practice |
+| Complete Guide | complete-guide |
+| Review / Roundup | review |
+| Stack × Stack | stack-by-stack |
+| Insight & Trend | insight-trend |
+| Thought Leadership | thought-leadership |
+| SERP 驱动 Blog | blog-serp-writer |
+| 舆情驱动 Blog | blog-signal-writer |
+| Blog 全流程 | blog-automation |
 
 ### 落地页子技能
 
 | 页面类型 | 生成 skill | 发布 skill |
 |---------|-----------|-----------|
-| Tools | lovart-landing-page | lovart-tools-sanity-publish |
-| Features | lovart-landing-page | lovart-features-sanity-publish |
-| Products | lovart-landing-page（泛化） | lovart-product-sanity-publish |
-| Scenarios | lovart-landing-page（泛化） | lovart-scenarios-sanity-publish |
-| Topics | lovart-landing-page（泛化） | — 缺 |
-| Solutions | lovart-landing-page（泛化） | — 缺 |
-| Landing Page（投放） | lovart-landing-page | — |
+| Tools | landing-page | tools-sanity-publish |
+| Features | landing-page | features-sanity-publish |
+| Products | landing-page（泛化） | product-sanity-publish |
+| Scenarios | landing-page（泛化） | scenarios-sanity-publish |
+| Topics | landing-page（泛化） | — 缺 |
+| Solutions | landing-page（泛化） | — 缺 |
+| Landing Page（投放） | landing-page | — |

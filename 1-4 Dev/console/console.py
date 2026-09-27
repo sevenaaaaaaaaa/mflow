@@ -136,13 +136,13 @@ CALENDAR_ROOT = PROJECT / "1-3 GenFlow" / "Content Calendar"
 _CAL_CACHE = {"files": None, "ts": 0}
 
 TRIDENT_STEPS = [
-    {"id": "gsc", "name": "GSC 日拉", "cmd": [sys.executable, "1-1 Harness/Skills/01-strategy/lovart-trident-data-engine/scripts/gsc_fetch.py", "--daily"],
+    {"id": "gsc", "name": "GSC 日拉", "cmd": [sys.executable, "1-1 Harness/Skills/01-strategy/trident-data-engine/scripts/gsc_fetch.py", "--daily"],
      "desc": "Google Search Console 全维度拉数 → Data Ingestion/gsc-full.json"},
     {"id": "ga4", "name": "GA4 周拉", "cmd": [sys.executable, "1-4 Dev/scripts/trident/ga4_weekly_pull.py"],
      "desc": "GA4 有机流量拉数（需 ga4-token）"},
     {"id": "bing", "name": "Bing 拉数", "cmd": None,
      "desc": "Bing Webmaster 拉数（脚本内置于 run_all）"},
-    {"id": "runall", "name": "全量 run_all", "cmd": ["bash", "1-1 Harness/Skills/01-strategy/lovart-trident-data-engine/scripts/run_all.sh"],
+    {"id": "runall", "name": "全量 run_all", "cmd": ["bash", "1-1 Harness/Skills/01-strategy/trident-data-engine/scripts/run_all.sh"],
      "desc": "Trident 全量：GSC + GA4 + Bing + 汇总分析"},
 ]
 
@@ -193,8 +193,8 @@ REPORT_CATS = [
     ("SEO 月报", "1-2 Insight/Trident Insights/reports/monthly", "*.md"),
     ("SEO 周报", "1-2 Insight/Trident Insights/reports/weekly", "*.md"),
     ("SEO 季报/年报", "1-2 Insight/Trident Insights/reports", "*.md"),
-    ("舆情日报", "1-2 Insight/Lovart ORM", "Lovart-Sentinel-*-daily.md"),
-    ("舆情周月报", "1-2 Insight/Lovart ORM/monthly", "*.md"),
+    ("舆情日报", "1-2 Insight/ORM", "品牌方-Sentinel-*-daily.md"),
+    ("舆情周月报", "1-2 Insight/ORM/monthly", "*.md"),
     ("质量审计", "1-2 Insight/审计报告", "*.md"),
     ("页面分析/404", "1-2 Insight/Page Analytic", "*.md"),
     ("QA 记录", "1-2 Insight/QA", "*.md"),
@@ -238,8 +238,8 @@ DEFAULT_LLM = {
         "custom": {"base": "", "key": ""}
     },
     "profiles": {
-        "lovart-creation": {"provider": "deepseek", "model": "deepseek-chat"},
-        "lovart-quality": {"provider": "deepseek", "model": "deepseek-chat"},
+        "mflow-creation": {"provider": "deepseek", "model": "deepseek-chat"},
+        "mflow-quality": {"provider": "deepseek", "model": "deepseek-chat"},
         "default": {"provider": "deepseek", "model": "deepseek-chat"}
     }
 }
@@ -1320,7 +1320,7 @@ def loop_engine(loop_id, proj):
             draft = llm_chat([{"role": "user", "content": gen_prompt(
                 loop["type"], loop["lang"], loop["topic"], loop["brief"], feedback,
                 template=get_template(loop.get("template_id")), ai_ctx=_ctx)}],
-                profile="lovart-creation", max_tokens=4000, project=proj)
+                profile="mflow-creation", max_tokens=4000, project=proj)
         except Exception as e:
             loop["status"] = "failed"
             log(loop, f"LLM 调用失败：{e}")
@@ -2804,19 +2804,19 @@ _KB_INTENT = [
     (["i18n", "翻译", "术语", "多语言", "语言规范", "localization", "本地化"],
      ["i18n"]),
     (["产品", "功能", "介绍", "product", "feature", "能力", "what is"],
-     ["Lovart Introduction"]),
+     ["品牌方 Introduction"]),
     (["seo", "tdk", "标题", "描述", "meta", "关键词", "serp", "落地页"],
      ["根"]),
     (["封面", "cover", "配图", "图片", "素材", "图"],
      ["根"]),
     (["新闻", "媒体", "报道", "press", "news", "发布"],
-     ["Lovart News"]),
+     ["品牌方 News"]),
     (["分类", "栏目", "category", "导航"],
      ["根"]),
     (["帮助", "faq", "教程", "guide", "怎么用", "使用"],
-     ["Lovart New Help Center", "user-guide"]),
+     ["品牌方 New Help Center", "user-guide"]),
     (["文档", "api", "docs", "参考"],
-     ["Lovart Docs Archive", "Changelog"]),
+     ["品牌方 Docs Archive", "Changelog"]),
 ]
 
 _KB_INDEX_CACHE = {"mtime": 0, "idx": []}
@@ -3949,7 +3949,7 @@ def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", t
     draft, gates, feedback, _tok = "", None, "", 0
     for _round in range(1, 4):
         draft = llm_chat([{"role": "user", "content": user + feedback}],
-                         profile="lovart-creation", max_tokens=4000, project=proj)
+                         profile="mflow-creation", max_tokens=4000, project=proj)
         with _usage_lock:
             _tok += int(LAST_USAGE.get("total_tokens", 0) or 0)
         gen_dir = proj_paths(proj)["gen"]
@@ -4678,7 +4678,7 @@ def geo_probe(proj):
                           f"并在末尾列出参考来源 URL（真实可访问的）：\n\n{q}")
             try:
                 ans, meta = llm_chat_full([{"role": "user", "content": prompt}],
-                                          profile="lovart-creation", max_tokens=700, timeout=90,
+                                          profile="mflow-creation", max_tokens=700, timeout=90,
                                           project=proj, temperature=0.4,
                                           engine=None if eng == "auto" else eng,
                                           engine_model=g["perplexity_model"] if eng == "perplexity" else "")
@@ -5261,10 +5261,10 @@ def context_skills(query, k=5):
 AGENT_PROFILES = {
     "auto": {"label": "通用", "issue": "不限定工作线，按意图自动匹配规则与 skills", "model": "default",
              "files": [], "skill_hint": ""},
-    "creation": {"label": "创作", "issue": "写 Blog/落地页/多语言内容", "model": "lovart-creation",
+    "creation": {"label": "创作", "issue": "写 Blog/落地页/多语言内容", "model": "mflow-creation",
                  "files": ["RULES-00-iron.md", "RULES-20-creation.md", "RULES-70-quota.md", "RULES-80-language.md"],
                  "skill_hint": "blog-signal-writer, page-serp-writer, landing-page, anti-slop"},
-    "quality": {"label": "质检", "issue": "Anti-Slop/字段/结构/i18n 质量审计", "model": "lovart-quality",
+    "quality": {"label": "质检", "issue": "Anti-Slop/字段/结构/i18n 质量审计", "model": "mflow-quality",
                 "files": ["RULES-00-iron.md", "RULES-30-quality.md", "RULES-70-quota.md", "RULES-80-language.md"],
                 "skill_hint": "content-quality-gates, content-audit, anti-slop"},
     "reports": {"label": "报告", "issue": "SEO/GEO/舆情/竞品情报分析", "model": "default",
@@ -6037,7 +6037,7 @@ def _bh_landing_refresh(item, task, proj):
     path = gen_dir / f"{item.get('item_id') or ('refresh-' + re.sub(r'[^a-z0-9-]', '-', did.lower())[:40])}.md"
     feedback, draft, gates, struct_errs, tok = "", "", {}, [], 0
     for _round in range(1, 4):
-        draft = llm_chat([{"role": "user", "content": base + feedback}], profile="lovart-creation",
+        draft = llm_chat([{"role": "user", "content": base + feedback}], profile="mflow-creation",
                          max_tokens=4000, project=proj)
         with _usage_lock:
             tok += int(LAST_USAGE.get("total_tokens", 0) or 0)
@@ -6132,7 +6132,7 @@ ANTI_SLOP_STRONG = """反 AI 味道终极清单（违反任何一条 = 废稿，
    - "In today's … world" / "In the world of …"（开头）
    - "It's worth noting that…" / "As we can see…"
    - "Let's explore/dive into…"
-   - 每段都用相同句式开头（如连续 3 段以 Lovart 开头）
+   - 每段都用相同句式开头（如连续 3 段以 品牌方 开头）
    - 段落结尾全是总结句（"所以…" "这意味着…"）
 4. **必须**有：真实场景/数字/对比（不是形容词）/ 踩坑经历 / 一个有争议的观点
 5. **必须**写成"你读完后能立刻做什么"——如果某段删掉后读者不受影响，删它
@@ -6186,17 +6186,17 @@ KEYWORD_INTEL_SOURCES = [
 
 # ---------- ③ Skills 覆盖缺口自动扫描 ----------
 SKILL_COVERAGE_MAP = {
-    "blog": {"gen": ["lovart-blog-serp-writer", "lovart-blog-signal-writer", "lovart-blog-automation"],
-             "review": ["lovart-content-quality-gates"], "publish": ["lovart-sanity-publish"]},
-    "features": {"gen": ["lovart-landing-page"], "review": ["lovart-content-quality-gates"],
-                 "publish": ["lovart-features-sanity-publish"]},
-    "tools": {"gen": ["lovart-landing-page"], "review": ["lovart-content-quality-gates"],
-              "publish": ["lovart-tools-sanity-publish"]},
-    "topics": {"gen": ["lovart-landing-page"], "review": ["lovart-content-quality-gates"], "publish": []},
-    "scenarios": {"gen": ["lovart-landing-page"], "review": ["lovart-content-quality-gates"], "publish": ["lovart-scenarios-sanity-publish"]},
-    "solutions": {"gen": ["lovart-landing-page"], "review": ["lovart-content-quality-gates"], "publish": []},
-    "products": {"gen": [], "review": ["lovart-content-quality-gates"], "publish": ["lovart-product-sanity-publish"]},
-    "news": {"gen": [], "review": ["lovart-content-quality-gates"], "publish": []},
+    "blog": {"gen": ["blog-serp-writer", "blog-signal-writer", "blog-automation"],
+             "review": ["content-quality-gates"], "publish": ["sanity-publish"]},
+    "features": {"gen": ["landing-page"], "review": ["content-quality-gates"],
+                 "publish": ["features-sanity-publish"]},
+    "tools": {"gen": ["landing-page"], "review": ["content-quality-gates"],
+              "publish": ["tools-sanity-publish"]},
+    "topics": {"gen": ["landing-page"], "review": ["content-quality-gates"], "publish": []},
+    "scenarios": {"gen": ["landing-page"], "review": ["content-quality-gates"], "publish": ["scenarios-sanity-publish"]},
+    "solutions": {"gen": ["landing-page"], "review": ["content-quality-gates"], "publish": []},
+    "products": {"gen": [], "review": ["content-quality-gates"], "publish": ["product-sanity-publish"]},
+    "news": {"gen": [], "review": ["content-quality-gates"], "publish": []},
 }
 
 
@@ -6244,7 +6244,7 @@ KB_GAP_CHECKS = [
     ("案例库", "case-study", "真实用户案例（增加可信度）"),
     ("术语表", "glossary", "中英对照产品术语（反机翻的根基）"),
     ("行业样式参考", "industry-style", "各行业落地页样式参考"),
-    ("竞品内容对比", "vs-", "Lovart vs 竞品的内容差异"),
+    ("竞品内容对比", "vs-", "品牌方 vs 竞品的内容差异"),
 ]
 
 
@@ -8754,7 +8754,7 @@ def overview(proj):
     state = read_json(pp["state"], {})
     inflight = sum(1 for i in state.get("items", {}).values()
                    if i.get("stage") not in ("done", "failed", "escalated"))
-    sent = sorted((PROJECT / "1-2 Insight/Lovart ORM").glob("Lovart-Sentinel-*-daily.md"),
+    sent = sorted((PROJECT / "1-2 Insight/ORM").glob("品牌方-Sentinel-*-daily.md"),
                   key=lambda f: f.stat().st_mtime, reverse=True)
     sent_age = None
     if sent:
@@ -10477,7 +10477,7 @@ class Handler(BaseHTTPRequestHandler):
                         str(body.get("type", "blog")), str(body.get("lang", "zh")),
                         str(body.get("topic", ""))[:300], str(body.get("brief", ""))[:800],
                         template=tpl, ai_ctx=_ctx)}],
-                        profile="lovart-creation", project=self._proj())
+                        profile="mflow-creation", project=self._proj())
                 except Exception as e:
                     return self._send(400, {"error": str(e)[:300]})
                 path = self._gen() / f"{item_id}.md"
@@ -10520,7 +10520,7 @@ class Handler(BaseHTTPRequestHandler):
                 if not step:
                     return self._send(400, {"error": "unknown step or no cmd"})
                 env = dict(os.environ)
-                env.setdefault("LOVART_PYTHON", str(PROJECT / ".venv" / "bin" / "python"))
+                env.setdefault("MFLOW_PYTHON", str(PROJECT / ".venv" / "bin" / "python"))
                 r = run_tool(step["cmd"], timeout=280)
                 return self._send(200, r)
             if self.path == "/api/setup/seed-demo":
@@ -10706,7 +10706,7 @@ class Handler(BaseHTTPRequestHandler):
 def main():
     if not PASSWORD and not AUTH_FILE.exists():
         print("[console] FAIL-CLOSED: 无 auth.json 且未设 MFLOW_CONSOLE_PASSWORD，API 全部拒绝", file=sys.stderr)
-    ensure_project(DEFAULT_PROJECT, "Lovart Global")
+    ensure_project(DEFAULT_PROJECT, "默认项目")
     server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
     threading.Thread(target=loop_queue_worker, daemon=True).start()
     threading.Thread(target=schedule_executor, daemon=True).start()

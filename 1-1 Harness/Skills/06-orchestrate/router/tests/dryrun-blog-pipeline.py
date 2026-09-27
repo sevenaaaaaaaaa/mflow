@@ -3,7 +3,7 @@
 dryrun-blog-pipeline.py — simulate S0→done token + step loss for ONE blog,
 under three different orchestration strategies:
 
-  A. monolith: single profile (content-gen-lovart), all skills loaded.
+  A. monolith: single profile (content-gen-mflow), all skills loaded.
   B. router-aware single-profile: single profile, but router.py decide called.
   C. profile-switching: each stage opens its proper profile (router-driven).
 
@@ -36,78 +36,78 @@ from pathlib import Path
 PROFILES = {
     # token cost to load each profile's SOUL + always-loaded skills
     # 2026-07-20: SOUL slimmed to < 70 lines each (was 186-232)
-    "content-gen-lovart":  {"soul": 600,  "always_skills": 39, "per_skill": 2500},
-    "lovart-creation":     {"soul": 700,  "always_skills": 18, "per_skill": 2500},  # SOUL slimmed
-    "lovart-quality":      {"soul": 700,  "always_skills": 11, "per_skill": 2500},  # SOUL slimmed
-    "lovart-ops":          {"soul": 700,  "always_skills": 18, "per_skill": 2500},  # SOUL slimmed
-    "lovart-reports":      {"soul": 700,  "always_skills": 13, "per_skill": 2500},  # SOUL slimmed
-    "lovart-distribution": {"soul": 700,  "always_skills": 10, "per_skill": 2500},  # SOUL slimmed
-    "lovart-management":   {"soul": 700,  "always_skills": 8,  "per_skill": 2500},  # SOUL slimmed
+    "content-gen-mflow":  {"soul": 600,  "always_skills": 39, "per_skill": 2500},
+    "mflow-creation":     {"soul": 700,  "always_skills": 18, "per_skill": 2500},  # SOUL slimmed
+    "mflow-quality":      {"soul": 700,  "always_skills": 11, "per_skill": 2500},  # SOUL slimmed
+    "mflow-ops":          {"soul": 700,  "always_skills": 18, "per_skill": 2500},  # SOUL slimmed
+    "mflow-reports":      {"soul": 700,  "always_skills": 13, "per_skill": 2500},  # SOUL slimmed
+    "mflow-distribution": {"soul": 700,  "always_skills": 10, "per_skill": 2500},  # SOUL slimmed
+    "mflow-management":   {"soul": 700,  "always_skills": 8,  "per_skill": 2500},  # SOUL slimmed
 }
 
 # Per-stage realistic action chain (what must happen, regardless of strategy)
 STAGES = [
     # (stage, action, expected_skills, optional=True means some strategies skip it)
     ("S0-todo",         "pick_next + upsert",         ["pipeline-state"], False),
-    ("S3-creating",     "load brief + draft skeleton", ["lovart-blog-signal-writer"], False),
-    ("S3-draft",        "write 7500 words",            ["lovart-blog-signal-writer"], False),
+    ("S3-creating",     "load brief + draft skeleton", ["blog-signal-writer"], False),
+    ("S3-draft",        "write 7500 words",            ["blog-signal-writer"], False),
     ("S3-draft",        "post-write-check",            ["post-write-check"], False),
-    ("S3-draft",        "fix L1 fluff (if found)",     ["lovart-anti-slop"], True),
-    ("S3-draft",        "fix L2 keyword gap",          ["lovart-content-quality-gates"], True),
+    ("S3-draft",        "fix L1 fluff (if found)",     ["mflow-anti-slop"], True),
+    ("S3-draft",        "fix L2 keyword gap",          ["content-quality-gates"], True),
     ("S3-draft",        "verify dates double-write",   ["pre-write-check"], True),
-    ("S3-draft",        "i18n translate (10 langs)",   ["lovart-i18n-pipeline"], True),
+    ("S3-draft",        "i18n translate (10 langs)",   ["mflow-i18n-pipeline"], True),
     ("S3-done",         "advance to S4-qa",            ["pipeline-state"], False),
-    ("S4-qa",           "run full QA gates",           ["lovart-content-quality-gates"], False),
-    ("S4-fix",          "re-fix any blocker",          ["lovart-anti-slop"], True),
+    ("S4-qa",           "run full QA gates",           ["content-quality-gates"], False),
+    ("S4-fix",          "re-fix any blocker",          ["mflow-anti-slop"], True),
     ("S4-ready",        "advance to S5-importing",     ["pipeline-state"], False),
     ("S5-importing",    "pre-import-check",            ["pre-import-check"], False),
-    ("S5-importing",    "sanity import",               ["lovart-sanity-publish"], False),
-    ("S5-published",    "sitemap + indexnow",          ["lovart-sitemap-update"], False),
-    ("S5-published",    "multi-platform push",         ["lovart-multi-platform-push"], True),
-    ("S6-monitoring",   "post-publish verify",         ["lovart-post-publish-verify"], False),
-    ("S6-monitoring",   "weekly SEO report",           ["lovart-seo-reporting"], True),
+    ("S5-importing",    "sanity import",               ["sanity-publish"], False),
+    ("S5-published",    "sitemap + indexnow",          ["sitemap-update"], False),
+    ("S5-published",    "multi-platform push",         ["multi-platform-push"], True),
+    ("S6-monitoring",   "post-publish verify",         ["mflow-post-publish-verify"], False),
+    ("S6-monitoring",   "weekly SEO report",           ["mflow-seo-reporting"], True),
 ]
 
 # Per-stage expected profile (from router decision matrix)
 STAGE_PROFILE = {
-    "S0-todo":         "lovart-creation",
-    "S3-creating":     "lovart-creation",
-    "S3-draft":        "lovart-creation",
-    "S3-done":         "lovart-creation",
-    "S4-qa":           "lovart-quality",
-    "S4-fix":          "lovart-quality",   # fix happens IN QA profile with creation skill borrowed
-    "S4-ready":        "lovart-quality",
-    "S5-importing":    "lovart-ops",
-    "S5-published":    "lovart-ops",
-    "S6-monitoring":   "lovart-reports",
+    "S0-todo":         "mflow-creation",
+    "S3-creating":     "mflow-creation",
+    "S3-draft":        "mflow-creation",
+    "S3-done":         "mflow-creation",
+    "S4-qa":           "mflow-quality",
+    "S4-fix":          "mflow-quality",   # fix happens IN QA profile with creation skill borrowed
+    "S4-ready":        "mflow-quality",
+    "S5-importing":    "mflow-ops",
+    "S5-published":    "mflow-ops",
+    "S6-monitoring":   "mflow-reports",
 }
 
 # Skills that each profile has pre-loaded (mimic reality)
 PROFILE_HAS_SKILLS = {
-    "content-gen-lovart": set([  # monolith: ALL
+    "content-gen-mflow": set([  # monolith: ALL
         "pipeline-state", "post-write-check", "pre-write-check",
-        "lovart-blog-signal-writer", "lovart-anti-slop",
-        "lovart-content-quality-gates", "lovart-i18n-pipeline",
-        "lovart-sanity-publish", "lovart-sitemap-update",
-        "lovart-multi-platform-push", "lovart-post-publish-verify",
-        "lovart-seo-reporting", "lovart-page-serp-writer",
+        "blog-signal-writer", "mflow-anti-slop",
+        "content-quality-gates", "mflow-i18n-pipeline",
+        "sanity-publish", "sitemap-update",
+        "multi-platform-push", "mflow-post-publish-verify",
+        "mflow-seo-reporting", "page-serp-writer",
     ]),
-    "lovart-creation": set([  # 24 skills — covers most of S3
-        "pipeline-state", "lovart-blog-signal-writer",
-        "lovart-anti-slop",  # yes, anti-slop is loaded here today
-        "lovart-i18n-pipeline", "lovart-image-generation",
+    "mflow-creation": set([  # 24 skills — covers most of S3
+        "pipeline-state", "blog-signal-writer",
+        "mflow-anti-slop",  # yes, anti-slop is loaded here today
+        "mflow-i18n-pipeline", "image-generation",
     ]),
-    "lovart-quality": set([  # 24 skills — covers most of S4
-        "pipeline-state", "lovart-content-quality-gates",
-        "lovart-anti-slop", "post-write-check",
+    "mflow-quality": set([  # 24 skills — covers most of S4
+        "pipeline-state", "content-quality-gates",
+        "mflow-anti-slop", "post-write-check",
     ]),
-    "lovart-ops": set([
-        "pipeline-state", "lovart-sanity-publish",
-        "pre-import-check", "lovart-sitemap-update", "lovart-post-publish-verify",
+    "mflow-ops": set([
+        "pipeline-state", "sanity-publish",
+        "pre-import-check", "sitemap-update", "mflow-post-publish-verify",
     ]),
-    "lovart-reports": set([
-        "pipeline-state", "lovart-seo-reporting",
-        "lovart-trident-data-engine",
+    "mflow-reports": set([
+        "pipeline-state", "mflow-seo-reporting",
+        "trident-data-engine",
     ]),
 }
 
@@ -150,10 +150,10 @@ def simulate(strategy: str) -> dict:
 
     if strategy == "A_monolith":
         # Single profile for everything
-        cur_profile = "content-gen-lovart"
+        cur_profile = "content-gen-mflow"
         for i, (stage, action, skills, optional) in enumerate(STAGES):
             close_session()
-            cur_profile = "content-gen-lovart"
+            cur_profile = "content-gen-mflow"
             cur_session_start = i
             for s in skills:
                 total_skill += cost_to_activate_skill(s, cur_profile)
@@ -165,10 +165,10 @@ def simulate(strategy: str) -> dict:
 
     elif strategy == "B_router_aware_single":
         # Single profile (creation) but router.py called for routing cues.
-        # When router says "go to lovart-quality", agent stays in creation
+        # When router says "go to mflow-quality", agent stays in creation
         # profile and tries to invoke quality skills — if skill not in profile,
         # pay activation cost.
-        cur_profile = "lovart-creation"
+        cur_profile = "mflow-creation"
         for i, (stage, action, skills, optional) in enumerate(STAGES):
             # Decide if router would have moved us to a different profile
             target = STAGE_PROFILE[stage]
@@ -223,7 +223,7 @@ def simulate(strategy: str) -> dict:
 
 def main():
     print("=" * 78)
-    print("Blog lifecycle simulation: magnific-vs-lovart-comparison (10021 words)")
+    print("Blog lifecycle simulation: magnific-vs-mflow-comparison (10021 words)")
     print("=" * 78)
     print()
     print(f"Total stages simulated: {len(STAGES)}")

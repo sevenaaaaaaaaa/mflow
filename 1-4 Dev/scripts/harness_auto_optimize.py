@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Lovart Harness Auto-Optimizer Data Gatherer & Self-Optimizer (harness_auto_optimize.py)
+品牌方 Harness Auto-Optimizer Data Gatherer & Self-Optimizer (harness_auto_optimize.py)
 -------------------------------------------------------------------------------------
 This script runs daily to collect feedback and autonomously optimize Harness rules:
 1. It analyzes git diffs of content files (.md, .json) over the last 24 hours to capture user manual edits.
@@ -86,7 +86,7 @@ def get_recent_git_diffs():
 
 def gather_preflight_logs():
     print("Gathering preflight/linter logs...")
-    temp_log_path = os.path.expanduser("~/Documents/Lovart Local Dev/Temp/preflight-failures.log")
+    temp_log_path = os.path.expanduser("~/Documents/MFlow Local Dev/Temp/preflight-failures.log")
     if os.path.exists(temp_log_path):
         with open(temp_log_path, "r", encoding="utf-8") as f:
             return f.read().strip()
@@ -277,7 +277,7 @@ def main():
     # Run autonomous optimization
     rules_optimized = autonomously_optimize_rules(new_banned_words)
     
-    report_content = f"""# Lovart Harness Daily Learning Report — {stamp}
+    report_content = f"""# 品牌方 Harness Daily Learning Report — {stamp}
 
 > This report is automatically generated to feed back into the Harness Self-Optimization Loop.
 > It captures user manual edits (git diffs) and preflight quality gate failures from the last 24 hours.

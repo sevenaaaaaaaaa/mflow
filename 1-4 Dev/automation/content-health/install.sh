@@ -4,9 +4,9 @@ set -euo pipefail
 
 INSTALL_DIR="$(cd "$(dirname "$0")" && pwd)"
 HEALTH_SCRIPT="$INSTALL_DIR/weekly-health-check.sh"
-LOG_DIR="${LOVART_LOG_DIR:-$HOME/Library/Logs/Lovart}"
+LOG_DIR="${MFLOW_LOG_DIR:-$HOME/Library/Logs/the brand}"
 LAUNCH_DIR="$HOME/Library/LaunchAgents"
-PLIST_NAME="com.lovart.content-health-weekly.plist"
+PLIST_NAME="com.mflow.content-health-weekly.plist"
 PLIST_SRC="$INSTALL_DIR/$PLIST_NAME"
 PLIST_DEST="$LAUNCH_DIR/$PLIST_NAME"
 
@@ -27,4 +27,4 @@ echo "   Schedule: Monday 08:30"
 echo "   Log: $LOG_DIR/content-health-weekly.log"
 echo ""
 echo "Manual run: bash \"$HEALTH_SCRIPT\""
-echo "Status: launchctl list | grep com.lovart.content-health"
+echo "Status: launchctl list | grep com.mflow.content-health"

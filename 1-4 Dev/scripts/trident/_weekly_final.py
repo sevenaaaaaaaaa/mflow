@@ -5,12 +5,12 @@ from collections import defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from lovart_brand_match import is_brand
+from brand_match import is_brand
 
 GSC = json.load(open("/tmp/gsc_windows.json"))
 GA4 = json.load(open("/tmp/ga4_windows.json"))
 DW = json.load(open("/tmp/dataworks_windows.json"))
-BING = json.load(open(Path.home() / "Documents/Lovart Local Dev/Output/Data Ingestion/bing-full.json"))
+BING = json.load(open(Path.home() / "Documents/MFlow Local Dev/Output/Data Ingestion/bing-full.json"))
 
 def gsc_rows(wname, dim):
     return GSC["data"][wname].get(dim, [])
@@ -19,7 +19,7 @@ def qkey(r, i=0):
     return r["keys"][i]
 
 # ============ 竞品核心词 (36 词) ============
-CORE_FILE = str(Path(__file__).resolve().parents[3] / "1-2 Insight/Keywords Research/竞品核心非品牌词/lovart_competitors_core_keywords.md")
+CORE_FILE = str(Path(__file__).resolve().parents[3] / "1-2 Insight/Keywords Research/竞品核心非品牌词/品牌_competitors_core_keywords.md")
 txt = Path(CORE_FILE).read_text()
 core_words = set()
 for line in txt.splitlines():
@@ -37,7 +37,7 @@ print(f"核心词: {len(core_words)}")
 print(core_words)
 
 # 全量词库
-FULL_FILE = str(Path(__file__).resolve().parents[3] / "1-2 Insight/Keywords Research/竞品核心非品牌词/lovart_competitors_keywords.md")
+FULL_FILE = str(Path(__file__).resolve().parents[3] / "1-2 Insight/Keywords Research/竞品核心非品牌词/品牌_competitors_keywords.md")
 txt2 = Path(FULL_FILE).read_text()
 full_words = set()
 for line in txt2.splitlines():

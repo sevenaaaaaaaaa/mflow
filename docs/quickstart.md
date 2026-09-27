@@ -16,7 +16,7 @@ uv venv .venv && uv pip install --python .venv/bin/python markdown pyyaml reques
 
 ```bash
 echo 'export MFLOW_CONSOLE_PASSWORD=你的密码' > run/env.sh
-echo 'export LOVART_PYTHON=$PWD/.venv/bin/python' >> run/env.sh
+echo 'export MFLOW_PYTHON=$PWD/.venv/bin/python' >> run/env.sh
 ```
 
 ## 第 3 步 · 启动工作台

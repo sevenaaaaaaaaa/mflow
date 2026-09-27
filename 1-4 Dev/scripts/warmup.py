@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""warmup.py — Lovart Global 开工预热（真实只读 / dry-run）
+"""warmup.py — 默认项目 开工预热（真实只读 / dry-run）
 
 目的：让后台每一块都带着**真实的**历史记录、曲线、findings、缺口清单开工，
      而不是一屏空状态。所有动作要么只读，要么 dry-run——不写生产库。
@@ -609,12 +609,12 @@ def write_report(R, args, started):
 
 
 def main():
-    ap = argparse.ArgumentParser(description="Lovart Global 开工预热（真实只读 / dry-run）")
+    ap = argparse.ArgumentParser(description="默认项目 开工预热（真实只读 / dry-run）")
     ap.add_argument("--base", default=os.environ.get("MFLOW_BASE", "http://127.0.0.1:8088"))
     ap.add_argument("--user", default=os.environ.get("MFLOW_CONSOLE_USER", "admin"))
     ap.add_argument("--password", default=os.environ.get("MFLOW_CONSOLE_PASSWORD", ""))
-    ap.add_argument("--project", default="lovart-global")
-    ap.add_argument("--site", default="lovart-global")
+    ap.add_argument("--project", default="main")
+    ap.add_argument("--site", default="main")
     ap.add_argument("--only", default="", help="只跑指定板块，如 A,B（板块：0 A B C D E）")
     ap.add_argument("--limit", type=int, default=30, help="每个 dry-run 预设的条数上限")
     ap.add_argument("--qa-max", type=int, default=200, help="QA 扫描页数上限")

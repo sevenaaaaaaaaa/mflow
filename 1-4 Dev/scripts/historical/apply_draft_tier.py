@@ -135,7 +135,7 @@ def validate_full(report_ym: str) -> None:
 def process_file(report_ym: str, data_tier: str = DATA_TIER_DRAFT) -> Path:
     if data_tier == DATA_TIER_FULL:
         validate_full(report_ym)
-    path = TRIDENT / "reports" / "monthly" / f"Lovart-SEO-{report_ym}.md"
+    path = TRIDENT / "reports" / "monthly" / f"品牌方-SEO-{report_ym}.md"
     if not path.is_file():
         raise SystemExit(f"月报不存在: {path}")
     try:

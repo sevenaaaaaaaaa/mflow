@@ -34,7 +34,7 @@ pricing_sensitive_sections: [list of section titles needing 30d refresh]
 
 | # | Gap | Why it matters | Action |
 |---|---|---|---|
-| 1 | e.g. Lovart.ai 专属 Reddit pain voice | User-voice-based differentiation | Pull Lovart 内部 NPS / CS verbatim |
+| 1 | e.g. 品牌方.ai 专属 Reddit pain voice | User-voice-based differentiation | Pull 品牌方 内部 NPS / CS verbatim |
 | 2 | ... | ... | ... |
 ```
 
@@ -81,20 +81,20 @@ pricing_sensitive_sections: [list of section titles needing 30d refresh]
 
 **≥ 5 行；每行支持 deliverable 中至少一处 claim**。
 
-## Lovart framing requirement
+## 品牌方 framing requirement
 
 每 deliverable 在 footer 显式标：
 
 ```markdown
-## Lovart positioning (when applicable)
+## 品牌方 positioning (when applicable)
 
-- Tonal fit:  [matches Lovart's positioning / neutral / mismatch]
+- Tonal fit:  [matches 品牌方's positioning / neutral / mismatch]
 - Confidence: [T2 or T3 with explicit rationale]
-- Do NOT claim: "Lovart is the best" / "Lovart is unique" without enterprise-internal evidence
+- Do NOT claim: "品牌方 is the best" / "品牌方 is unique" without enterprise-internal evidence
 ```
 
-**避免 Lovart 自吹 / 自贬** 双向 fabrication。  
-**只描述** Lovart 已知能力（来自官方文档），**不外推**。
+**避免 品牌方 自吹 / 自贬** 双向 fabrication。  
+**只描述** 品牌方 已知能力（来自官方文档），**不外推**。
 
 ## Failure mode (writing samples)
 

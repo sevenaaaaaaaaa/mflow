@@ -5,7 +5,7 @@
 import json, os, hashlib
 
 VAULT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-OG_FALLBACK = "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png"
+OG_FALLBACK = "https://assets-persist.example.com/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png"
 
 SCENARIO_OUT = os.path.join(VAULT, "1-3 GenFlow/Page Gen/Pages/Campaign/zh")
 TOPIC_OUT = os.path.join(VAULT, "1-3 GenFlow/Page Gen/Pages/topic/zh")
@@ -16,11 +16,11 @@ def q(s):
     return json.dumps(s, ensure_ascii=False)
 
 def hero_split(title, desc, c):
-    return q({"type":"hero-split","title":title,"description":desc,"buttons":[{"text":"免费试用","href":"https://lovart.ai/signup","variant":"primary"}],"media":{"src":OG_FALLBACK,"alt":title}})
+    return q({"type":"hero-split","title":title,"description":desc,"buttons":[{"text":"免费试用","href":"https://example.com/signup","variant":"primary"}],"media":{"src":OG_FALLBACK,"alt":title}})
 
 def hero_gallery(title, desc, c):
     tiles = [{"label":c.get(f"ht_{i}_label",""),"sublabel":c.get(f"ht_{i}_sub",""),"media":{"src":OG_FALLBACK,"alt":""}} for i in range(1,7)]
-    return q({"type":"hero-gallery","title":title,"description":desc,"buttons":[{"text":"免费试用","href":"https://lovart.ai/signup","variant":"primary"},{"text":"了解更多","href":"","variant":"secondary"}],"toolTiles":tiles})
+    return q({"type":"hero-gallery","title":title,"description":desc,"buttons":[{"text":"免费试用","href":"https://example.com/signup","variant":"primary"},{"text":"了解更多","href":"","variant":"secondary"}],"toolTiles":tiles})
 
 def cluster_block_dense(title, c):
     cards = []
@@ -59,7 +59,7 @@ def faq_block(c):
     return q({"type":"faq","title":"常见问题","items":items})
 
 def cta_default():
-    return q({"type":"cta-default","title":"开始使用Lovart","description":"免费试用，无需信用卡","buttons":[{"text":"免费试用","href":"https://lovart.ai/signup","variant":"primary"}]})
+    return q({"type":"cta-default","title":"开始使用品牌方","description":"免费试用，无需信用卡","buttons":[{"text":"免费试用","href":"https://example.com/signup","variant":"primary"}]})
 
 def tool_grid(c):
     tools = []
@@ -70,13 +70,13 @@ def tool_grid(c):
     return q({"type":"tool-grid","title":"相关工具","tools":tools})
 
 def canvas_wall(c):
-    return q({"type":"canvas-wall","title":"作品展示","description":"看看其他用户用Lovart做出的设计","media":{"src":OG_FALLBACK,"alt":""}})
+    return q({"type":"canvas-wall","title":"作品展示","description":"看看其他用户用品牌方做出的设计","media":{"src":OG_FALLBACK,"alt":""}})
 
 # ============================================================
 # SCENARIO LP DATA (15 items) — category: scenario, storylines-A
 # ============================================================
 SCENARIOS = [
-    {"slug":"zh-campaign-double-11","storyline":"scenarios-A","title":"双11大促AI设计 | 全链路大促素材批量生成","desc":"双11大促设计不用愁。Lovart帮你批量生成主图、详情页、直通车图，全链路大促素材。","kw":["双11设计","大促素材","AI批量生成"],"tag":"场景方案"},
+    {"slug":"zh-campaign-double-11","storyline":"scenarios-A","title":"双11大促AI设计 | 全链路大促素材批量生成","desc":"双11大促设计不用愁。品牌方帮你批量生成主图、详情页、直通车图，全链路大促素材。","kw":["双11设计","大促素材","AI批量生成"],"tag":"场景方案"},
     {"slug":"zh-campaign-618","storyline":"scenarios-A","title":"618大促AI设计 | 年中促素材方案","desc":"618年中促设计素材。批量产出主图、促销海报、直播间背景，抓住618流量红利。","kw":["618设计","年中促素材","AI设计"],"tag":"场景方案"},
     {"slug":"zh-campaign-spring-festival","storyline":"scenarios-A","title":"春节营销AI设计 | 中国年特色视觉方案","desc":"春节营销AI设计。对联、红包封面、年夜饭海报、拜年视频封面，中国年味设计一套搞定。","kw":["春节设计","春节营销","AI设计"],"tag":"场景方案"},
     {"slug":"zh-campaign-product-launch","storyline":"scenarios-A","title":"新品上市AI设计 | 种草预热全流程","desc":"新品上市AI设计。从预热海报到种草图文到开箱视频封面，全流程设计素材一站式生成。","kw":["新品上市","种草设计","AI设计"],"tag":"场景方案"},
@@ -98,8 +98,8 @@ SCENARIOS = [
 # ============================================================
 PAIN_LPS = [
     {"slug":"zh-pain-collaboration-blocked","storyline":"landing-gallery-detail","title":"国内团队AI协作设计工具推荐","desc":"国内团队好用不卡的AI协作设计工具。支持多人实时协作，不用魔法不用翻墙。","kw":["AI协作工具","团队协作","设计协作"],"tag":"痛点解决"},
-    {"slug":"zh-pain-ai-quality-poor","storyline":"landing-gallery-detail","title":"AI生成图质量差怎么办","desc":"AI生成的图片质量不好？问题出在Prompt、模型选择和后期处理。Lovart帮你一键提升出图质量。","kw":["AI生成质量","图片优化","Prompt技巧"],"tag":"痛点解决"},
-    {"slug":"zh-pain-asset-management","storyline":"landing-gallery-detail","title":"品牌素材管理方案","desc":"品牌素材管理的混乱你经历过吗？用Lovart Brand Kit统一管理团队品牌素材。","kw":["素材管理","品牌管理","设计系统"],"tag":"痛点解决"},
+    {"slug":"zh-pain-ai-quality-poor","storyline":"landing-gallery-detail","title":"AI生成图质量差怎么办","desc":"AI生成的图片质量不好？问题出在Prompt、模型选择和后期处理。品牌方帮你一键提升出图质量。","kw":["AI生成质量","图片优化","Prompt技巧"],"tag":"痛点解决"},
+    {"slug":"zh-pain-asset-management","storyline":"landing-gallery-detail","title":"品牌素材管理方案","desc":"品牌素材管理的混乱你经历过吗？用品牌方 Brand Kit统一管理团队品牌素材。","kw":["素材管理","品牌管理","设计系统"],"tag":"痛点解决"},
 ]
 
 # ============================================================
@@ -223,7 +223,7 @@ SECTION_GEN_TOPIC = {
     "bento-6": lambda t,d,c: bento_6("工具矩阵",["快速出图","批量处理","品牌统一","多平台适配","团队协作","持续优化"],c),
     "capability-tabs": lambda t,d,c: capability_tabs(c),
     "tool-grid": lambda t,d,c: tool_grid(c),
-    "bento-4": lambda t,d,c: bento_4("为什么选择Lovart",["效率提升5-10倍","专业输出质量","品牌一致性","成本节省70%+"],c),
+    "bento-4": lambda t,d,c: bento_4("为什么选择品牌方",["效率提升5-10倍","专业输出质量","品牌一致性","成本节省70%+"],c),
     "canvas-wall": lambda t,d,c: canvas_wall(c),
     "workflow-horizontal": lambda t,d,c: workflow_horizontal(c),
     "comparison-table": lambda t,d,c: comparison_table(c),

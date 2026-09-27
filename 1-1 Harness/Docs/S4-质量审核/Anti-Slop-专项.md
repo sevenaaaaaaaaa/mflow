@@ -1,6 +1,6 @@
 # Anti-Slop 专项 — 入口
 
-> **定位**：质量治理体系的核心专项，确保所有 Lovart 对外内容（落地页、Blog、产品文案、SEO 页面、多语言版本）达到可发布标准。
+> **定位**：质量治理体系的核心专项，确保所有 品牌方 对外内容（落地页、Blog、产品文案、SEO 页面、多语言版本）达到可发布标准。
 
 ---
 
@@ -21,7 +21,7 @@ SERP 报告 → 外部/标杆结构
     ↓
 草稿 → anti-slop-preflight（CREATE）→ preflight-content（TRANSLATE/PRE-PUBLISH）
     ↓
-Rubric 人工/Agent 评分 → lovart-content-audit（DEEP QA）
+Rubric 人工/Agent 评分 → content-audit（DEEP QA）
     ↓
 发布 → 发布后信号 → 反馈闭环 → 更新样本 & 阈值
 ```
@@ -41,7 +41,7 @@ Rubric 人工/Agent 评分 → lovart-content-audit（DEEP QA）
 | **Content-Production-Ledger.md** | 14.0KB | 生产台账：内容生产跟踪 |
 | **Content-Feedback-Loop.md** | 8.6KB | 反馈闭环：发布后信号 → 样本调整 |
 
-### 实现脚本（1-1 Harness/Skills/lovart-content-quality-gates/）
+### 实现脚本（1-1 Harness/Skills/content-quality-gates/）
 
 | 文件 | 用途 |
 |------|------|
@@ -58,7 +58,7 @@ Rubric 人工/Agent 评分 → lovart-content-audit（DEEP QA）
 | 层级 | 名称 | Anti-Slop 角色 |
 |------|------|---------------|
 | **L1b** | Anti-Slop 预检 | `anti-slop-preflight.js` — 禁用词密度、薄 H2、缩水、FAQ/CTA 缺失 |
-| **L3b** | Anti-Slop 深度审计 | `audit-content-quality.js` + `lovart-content-audit` — 占位符检测、可读性、SERP 意图对齐 |
+| **L3b** | Anti-Slop 深度审计 | `audit-content-quality.js` + `content-audit` — 占位符检测、可读性、SERP 意图对齐 |
 
 ---
 
@@ -84,6 +84,6 @@ Rubric 人工/Agent 评分 → lovart-content-audit（DEEP QA）
 
 ## 相关 Skill
 
-- `lovart-content-quality-gates` — 质量门禁总 Skill（含 Anti-Slop L1b + L3b）
-- `lovart-content-audit` — 深度人工审计 Skill
-- `lovart-sanity-preflight` — ⚠️ 已废弃，功能合并到 quality-gates
+- `content-quality-gates` — 质量门禁总 Skill（含 Anti-Slop L1b + L3b）
+- `content-audit` — 深度人工审计 Skill
+- `sanity-preflight` — ⚠️ 已废弃，功能合并到 quality-gates

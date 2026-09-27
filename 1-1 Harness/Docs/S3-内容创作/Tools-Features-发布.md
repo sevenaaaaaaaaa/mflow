@@ -2,7 +2,7 @@
 type: stage-sop/s3
 version: 1.0
 updated: 2026-07-05
-scope: "profile-lovart-creation"
+scope: "profile-mflow-creation"
 tools: [opencode, claude]
 status: active
 path: 1-1 Harness/Docs/S3-内容创作/Tools-Features-发布.md
@@ -15,17 +15,17 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 | **适用角色** | 落地页制作、SEO、内容工程 |
 | **内容源** | `1-3 Content Gen/Page Gen/Pages/Tools/`、`Pages/Features/` |
 | **线上真相源** | Tools：**production**（每周 pull 到本地） |
-| **Skill** | `lovart-tools-sanity-publish`、`lovart-features-sanity-publish` |
+| **Skill** | `tools-sanity-publish`、`features-sanity-publish` |
 
 ---
 
 ## Tools（composite-v2 only）
 
 ```bash
-cd "1-4 Dev/lovart.sanity.studio"
+cd "1-4 Dev/品牌.sanity.studio"
 node scripts/preflight-content.js --type tools --strict
 node scripts/convert-tools.js --lang en --dry-run
-npx sanity dataset import ~/lovart/import-tools.ndjson production --missing
+npx sanity dataset import ~/品牌/import-tools.ndjson production --missing
 npx sanity exec scripts/verify-composite.js --with-user-token -- --type tool --sample 20
 ```
 

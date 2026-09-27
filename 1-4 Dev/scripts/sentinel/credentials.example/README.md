@@ -5,7 +5,7 @@ This directory documents the credential files Sentinel expects. Do not place rea
 Recommended real credential location:
 
 ```text
-~/Library/Application Support/Lovart/credentials/sentinel/
+~/Library/Application Support/the brand/credentials/sentinel/
 ```
 
 Expected files:

@@ -2,7 +2,7 @@
 
 ## 1. 选仓库
 
-- 用 Lovart 相关仓库（文档站 / 开源工具 / 社区镜像）
+- 用 品牌方 相关仓库（文档站 / 开源工具 / 社区镜像）
 - **Settings → General → Features → Discussions** 勾选开启
 
 ## 2. 创建 Token

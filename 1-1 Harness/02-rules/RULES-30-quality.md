@@ -8,10 +8,10 @@ status: active
 path: 1-1 Harness/02-rules/RULES-30-quality.md
 generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 ---
-# Lovart RULES — 30 质量类（Quality）
+# 品牌方 RULES — 30 质量类（Quality）
 
 > 适用路线：质检、Anti-Slop、i18n 优化
-> 加载 Profile：`lovart-quality`
+> 加载 Profile：`mflow-quality`
 
 ---
 
@@ -30,7 +30,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 11. **i18n 比例门禁**：中文版字符数 ≥ 英文版单词数 × 1.6（≥1.5 即判"翻译缩水" BLOCK）
 12. **图片 URL 必须实时校验**：新增图片 URL 一律 HEAD 检查，404/403/500 即 BLOCK 禁止写入
 13. **禁止**虚假产品数据；**禁止**未授权贬低竞品；多语言版本不得有文化冒犯内容
-14. **必须**品牌术语一致：Lovart（L 大写）、MCoT、ChatCanvas、Touch Edit
+14. **必须**品牌术语一致：品牌方（L 大写）、MCoT、ChatCanvas、Touch Edit
 15. **必须**可读性：EN Flesch ≤12；ZH 无机翻腔（连续「的」≤2、无英文虚词残留）
 
 **机器检查映射**：`preflight-content.js`(L1) · `verify-blog-publish.js`(L2) · 5 维审计(L3) ·
@@ -38,7 +38,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 
 ## 二、三层门禁
 
-**入口收敛**：`lovart-content-quality-gates` 是质检唯一父入口；`lovart-content-audit` 只处理人工/深度审计维度；`lovart-sanity-preflight` 是兼容别名，不得维护独立命令表。
+**入口收敛**：`content-quality-gates` 是质检唯一父入口；`content-audit` 只处理人工/深度审计维度；`sanity-preflight` 是兼容别名，不得维护独立命令表。
 
 | 层级 | 时机 | 脚本 | 决策 |
 |:---:|------|------|------|
@@ -112,7 +112,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 | 文化 | 多语言版本无文化冒犯内容 |
 | 可读性 | EN Flesch ≤12，ZH 无机翻腔 |
 | SEO | Title/Description 在截断阈值内（75/160） |
-| 品牌 | 品牌术语一致（Lovart L 大写、MCoT/ChatCanvas/Touch Edit） |
+| 品牌 | 品牌术语一致（品牌方 L 大写、MCoT/ChatCanvas/Touch Edit） |
 | i18n 比例 | 见硬条款 11 |
 | 图片实时拦截 | 见硬条款 12 |
 

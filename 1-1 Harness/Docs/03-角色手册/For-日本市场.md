@@ -2,7 +2,7 @@
 
 > **文档定位**：面向日本市场团队的操作指南  
 > **更新日期**：2026-06-04  
-> **适用范围**：Lovart 项目日本市场 SEO 优化和内容策略相关人员
+> **适用范围**：品牌方 项目日本市场 SEO 优化和内容策略相关人员
 
 ---
 
@@ -71,17 +71,17 @@ python3 "1-4 Dev/scripts/sentinel/collect.py" --source gsc --region japan
 
 ### 3.1 品牌词分类规则
 
-> **🚨 SSOT 铁律**：品牌词分类的唯一代码来源是 `1-4 Dev/scripts/lovart_brand_match.py`。禁止硬编码品牌词列表。所有品牌词判定必须通过 `is_brand()` 函数。
+> **🚨 SSOT 铁律**：品牌词分类的唯一代码来源是 `1-4 Dev/scripts/brand_match.py`。禁止硬编码品牌词列表。所有品牌词判定必须通过 `is_brand()` 函数。
 
 ```python
-from lovart_brand_match import is_brand, partition_keywords
+from brand_match import is_brand, partition_keywords
 ```
 
-**日本市场常见品牌词变体（已由 `lovart_brand_match` 覆盖）：**
+**日本市场常见品牌词变体（已由 `brand_match` 覆盖）：**
 - ラブアート（日语品牌名）— regex pattern
-- lovart ai（英文品牌名）
+- 品牌 ai（英文品牌名）
 - ラブアートAI（日语品牌名+AI）
-- lovart.ia（AI 变体）
+- 品牌.ia（AI 变体）
 
 ### 3.2 非品牌词分析
 
@@ -248,7 +248,7 @@ cat "1-2 Insight/Trident Insights/reports/competitor_match_result.json" | python
 **GSC 数据查询：**
 ```bash
 # 查询日本地区 GSC 数据
-python3 "1-1 Harness/Skills/lovart-trident-data-engine/scripts/gsc_fetch.py" --region japan
+python3 "1-1 Harness/Skills/trident-data-engine/scripts/gsc_fetch.py" --region japan
 ```
 
 ### 7.2 GA4 数据源
@@ -262,13 +262,13 @@ python3 "1-1 Harness/Skills/lovart-trident-data-engine/scripts/gsc_fetch.py" --r
 **GA4 数据查询：**
 ```bash
 # 查询日本地区 GA4 数据
-python3 "1-1 Harness/Skills/lovart-trident-data-engine/scripts/ga4_fetch.py" --region japan
+python3 "1-1 Harness/Skills/trident-data-engine/scripts/ga4_fetch.py" --region japan
 ```
 
 ### 7.3 竞品词库数据源
 
 **竞品词库数据：**
-- `1-2 Insight/Trident Insights/竞品核心非品牌词/lovart_competitors_keywords.md`
+- `1-2 Insight/Trident Insights/竞品核心非品牌词/品牌_competitors_keywords.md`
 - 265 全量词 / 36 核心词
 
 **竞品词匹配：**
@@ -285,8 +285,8 @@ python3 "1-4 Dev/scripts/competitor_deep_match.py" --region japan
 
 ```
 1-2 Insight/Trident Insights/reports/monthly/
-├── Lovart-SEO-2026-05.md                    # 全站月报
-├── Lovart-SEO-2026-05-japan.md              # 日本地区月报
+├── 品牌方-SEO-2026-05.md                    # 全站月报
+├── 品牌方-SEO-2026-05-japan.md              # 日本地区月报
 ├── .metrics/
 │   ├── 2026-05.json                         # 年均 metrics
 │   └── 2026-05-japan.json                   # 日本地区 metrics
@@ -296,16 +296,16 @@ python3 "1-4 Dev/scripts/competitor_deep_match.py" --region japan
 
 ```
 1-2 Insight/Trident Insights/reports/weekly/
-├── Lovart-SEO-review-2026-05-25-2026-05-31.md                    # 全站周报
-├── Lovart-SEO-review-2026-05-25-2026-05-31-japan.md              # 日本周报
+├── 品牌方-SEO-review-2026-05-25-2026-05-31.md                    # 全站周报
+├── 品牌方-SEO-review-2026-05-25-2026-05-31-japan.md              # 日本周报
 ```
 
 ### 8.3 日报产出路径
 
 ```
 1-2 Insight/Trident Insights/reports/daily/
-├── Lovart-SEO-2026-05-31.md                    # 全站日报
-├── Lovart-SEO-2026-05-31-japan.md              # 日本地区日报
+├── 品牌方-SEO-2026-05-31.md                    # 全站日报
+├── 品牌方-SEO-2026-05-31-japan.md              # 日本地区日报
 ```
 
 ---
@@ -375,6 +375,6 @@ python3 "1-4 Dev/scripts/competitor_deep_match.py" --region japan
 
 ---
 
-> **维护者**：Lovart 团队  
+> **维护者**：品牌方 团队  
 > **最后更新**：2026-06-04  
 > **版本**：V1.0

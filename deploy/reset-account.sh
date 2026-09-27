@@ -5,7 +5,7 @@ set -euo pipefail
 U="${1:-}"; P="${2:-}"
 [[ -z "$U" || -z "$P" ]] && { echo "Usage: bash $0 <username> <new-password(>=6)>"; exit 1; }
 [[ ${#P} -lt 6 ]] && { echo "密码至少 6 位"; exit 1; }
-PYTHON="${LOVART_PYTHON:-/www/wwwroot/mflow/.venv/bin/python}"
+PYTHON="${MFLOW_PYTHON:-/www/wwwroot/mflow/.venv/bin/python}"
 "$PYTHON" - "$U" "$P" <<'PY'
 import bcrypt, json, sys, os, datetime
 u, pw = sys.argv[1], sys.argv[2]

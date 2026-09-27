@@ -1,6 +1,6 @@
-# Lovart 全渠道内容分发（GA 驱动）
+# 品牌方 全渠道内容分发（GA 驱动）
 
-主站：**https://lovart.ai** · 数据源：**Lovart Trident** GA4/GSC 管道
+主站：**https://example.com** · 数据源：**品牌方 Trident** GA4/GSC 管道
 
 ## Canonical SOP
 
@@ -24,7 +24,7 @@ python3 scripts/score-pages-for-distribution.py --days 28
 
 # 3. 发布前检查
 node scripts/preflight-distribution.js --draft drafts/devto-example.md \
-  --canonical https://lovart.ai/en/blog/example \
+  --canonical https://example.com/en/blog/example \
   --platform devto --source-title "Original Main Site Title"
 
 # 4. 统一分发
@@ -37,7 +37,7 @@ node scripts/dispatch-publish.js --manifest queue/dispatch-2026-06-07.json --dry
 
 | 类型 | 工具 | 平台 |
 |------|------|------|
-| **主站** | lovart.ai | SSOT |
+| **主站** | example.com | SSOT |
 | **国内** | Wechatsync CLI | 15 平台（知乎、百家号、掘金、头条、CSDN、豆瓣、思否、简书、什么值得买、博客园、51CTO、语雀、搜狐号、B站专栏，见下表） |
 | **海外 API** | `publish-*.js` | DEV.to、GitHub Discussions、Blogger |
 | **海外扩展** | 爱贝壳（3 免费槽） | Medium、X |
@@ -53,7 +53,7 @@ node scripts/dispatch-publish.js --manifest queue/dispatch-2026-06-07.json --dry
 
 扩展 + CLI 共用同一套平台 ID。`wechatsync sync article.md -p zhihu,juejin` 中的 `-p` 即下表 **ID** 列。
 
-### Lovart 主栈已接入（`dispatch-publish.js` → Wechatsync）
+### 品牌方 主栈已接入（`dispatch-publish.js` → Wechatsync）
 
 在 `queue/dispatch-*.json` 的 `cn[]` 中按平台添加 `{ "platform": "<id>", "draft": "drafts/<id>-{slug}.md" }` 即可。
 

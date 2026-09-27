@@ -1,7 +1,7 @@
-![[../1-2 Insight/Trident Insights/reports/monthly/Lovart-SEO-2026-05]]# GSC / GA4 / Bing 可查询字段速查表
+![[../1-2 Insight/Trident Insights/reports/monthly/品牌方-SEO-2026-05]]# GSC / GA4 / Bing 可查询字段速查表
 
-> **用途**：Lovart SEO 报告拉数前的字段 SSOT。  
-> **站点**：`https://www.lovart.ai/`  
+> **用途**：品牌方 SEO 报告拉数前的字段 SSOT。  
+> **站点**：`https://www.example.com/`  
 > **GA4 Property**：`properties/403618427` · **Stream**：`10524753059`  
 > **更新**：2026-06-07
 
@@ -28,7 +28,7 @@
 
 #### 可分组维度
 
-| 维度 | API 值 | 取值示例 | Lovart 已接 |
+| 维度 | API 值 | 取值示例 | 品牌方 已接 |
 |------|--------|----------|-------------|
 | 查询词 | `query` | 任意搜索词 | ✅ |
 | 页面 | `page` | 完整 URL | ✅ |
@@ -48,7 +48,7 @@
 | `ctr` | 点击率 |
 | `position` | 平均排名（曝光加权） |
 
-#### 常用 dimension 组合（Lovart）
+#### 常用 dimension 组合（品牌方）
 
 | 组合 | 脚本入口 | 用途 |
 |------|----------|------|
@@ -56,7 +56,7 @@
 | `country` | 同上 | 分国家汇总 |
 | `country` + `query` | 同上 | 大区品牌/非品牌 Top 词 |
 | `country` + `page` | 同上 + `weekly_review_v3` | 分地区 Top 页 |
-| `page`（分页） | `lovart_indexing_metrics.paginate_pages_with_traffic` | 收录率 / Top 页 |
+| `page`（分页） | `indexing_metrics.paginate_pages_with_traffic` | 收录率 / Top 页 |
 | `query` | `weekly_review_v3.gsc_q` | 复盘周关键词 |
 | `query` | `historical/seo_daily.render_day` | 日报 Top 200 词 |
 
@@ -112,7 +112,7 @@
 
 ### 2. Sitemaps（`sitemaps.list`）
 
-| 字段 | 含义 | Lovart 映射 |
+| 字段 | 含义 | 品牌方 映射 |
 |------|------|-------------|
 | `path` | Sitemap URL | — |
 | `lastSubmitted` | 最后提交 | — |
@@ -121,7 +121,7 @@
 | `contents[].submitted` | 提交 URL 数 | `sitemap_submitted` |
 | `contents[].indexed` | 已索引 URL 数 | `sitemap_indexed` |
 
-**脚本**：`lovart_indexing_metrics.fetch_sitemap_counts` / `fetch_indexing_bundle`
+**脚本**：`indexing_metrics.fetch_sitemap_counts` / `fetch_indexing_bundle`
 
 ---
 
@@ -136,7 +136,7 @@
 | `richResultsResult` | `verdict` + 检测项 |
 | `ampResult` | `verdict` + AMP 问题 |
 
-**Lovart**：未接入（收录主口径 = 有曝光 URL 分页）。
+**品牌方**：未接入（收录主口径 = 有曝光 URL 分页）。
 
 ---
 
@@ -163,7 +163,7 @@
 
 ### 1. GetQueryStats — 关键词
 
-| 字段 | 类型 | 含义 | Lovart 映射 |
+| 字段 | 类型 | 含义 | 品牌方 映射 |
 |------|------|------|-------------|
 | `Query` | string | 搜索词 | `q` |
 | `Date` | datetime | 周桶（约 top~100/周） | → `keywords_monthly` |
@@ -181,7 +181,7 @@
 
 ### 3. GetRankAndTrafficStats — 站点日流量
 
-| 字段 | 含义 | Lovart 映射 |
+| 字段 | 含义 | 品牌方 映射 |
 |------|------|-------------|
 | `Date` | 日级（约 13 个月） | `traffic_daily[].date` |
 | `Clicks` | 全站点击（多 vertical 合计） | `traffic_monthly` |
@@ -191,7 +191,7 @@
 
 ### 4. GetCrawlStats — 爬虫/索引
 
-| 字段 | 含义 | Lovart 已用 |
+| 字段 | 含义 | 品牌方 已用 |
 |------|------|-------------|
 | `Date` | 日期 | ✅ |
 | `CrawledPages` | 爬取页数 | ✅ |
@@ -225,11 +225,11 @@
 | `offset` | 分页偏移 |
 | `orderBys[]` | 排序 |
 
-#### Lovart 固定过滤
+#### 品牌方 固定过滤
 
 | 过滤器 | 字段 | 值 | 说明 |
 |--------|------|-----|------|
-| 数据流 | `streamId` | `10524753059` | 仅 lovart.ai Web 流 |
+| 数据流 | `streamId` | `10524753059` | 仅 example.com Web 流 |
 | 自然搜索 | `sessionDefaultChannelGroup` | `Organic Search` | 月报 §五、周报主体 |
 | 引荐 | `sessionDefaultChannelGroup` | `Referral` | 周报 OKR 估算 |
 
@@ -237,7 +237,7 @@
 
 ---
 
-#### 已接维度（Lovart 脚本实际使用）
+#### 已接维度（品牌方 脚本实际使用）
 
 | 维度 | API 名 | 取值示例 | 脚本 | 报告位置 |
 |------|--------|----------|------|----------|
@@ -248,7 +248,7 @@
 | 会话来源 | `sessionSource` | `google` `bing` `yahoo` | 月报 | §5.4 引擎拆分 |
 | 国家×来源 | `country` + `sessionSource` | 组合 | 月报 | §11.10 Bing 地区近似 |
 
-#### 已接指标（Lovart 脚本实际使用）
+#### 已接指标（品牌方 脚本实际使用）
 
 | 指标 | API 名 | 含义 | 报告用途 |
 |------|--------|------|----------|
@@ -299,7 +299,7 @@
 
 ---
 
-#### 常用 dimension 组合（Lovart）
+#### 常用 dimension 组合（品牌方）
 
 | 组合 | 脚本入口 | 用途 |
 |------|----------|------|
@@ -378,12 +378,12 @@
 
 ---
 
-## 五、Lovart 脚本索引
+## 五、品牌方 脚本索引
 
 | 脚本 | 数据源 | 主要维度/字段 |
 |------|--------|---------------|
 | `seo_monthly_v2.py` → `fetch_gsc_full` | GSC | query, country, country×query, country×page |
-| `lovart_indexing_metrics.py` | GSC | page 分页 + sitemap |
+| `indexing_metrics.py` | GSC | page 分页 + sitemap |
 | `weekly_review_v3.py` | GSC | query, country, country×query, country×page, page |
 | `historical/seo_daily.py` | GSC | query (200) |
 | `trident/gsc_fetch.py` | GSC | query, country, country×query, page |

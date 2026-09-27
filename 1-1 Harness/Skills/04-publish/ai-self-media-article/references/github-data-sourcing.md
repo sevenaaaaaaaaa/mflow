@@ -201,7 +201,7 @@ browser_navigate("https://github.com/topics/generative-ai")
 3. **方案 A2（API keyword 全文搜索，⭐优于 topic 标签搜索）**：并行 curl 3-4 个 keyword 搜索到临时 JSON 文件。⚠️ **优先使用 keyword 全文搜索**（如 `q=ai+image+generation`），而非 `topic:` 标签过滤——topic 标签覆盖率极低，大量高星 AI 项目未打对应标签，导致结果偏少（仅 2-10 条 vs keyword 的 1500+ 条）。推荐 keyword 搜索组合：`ai+image+generation`、`ai+video+generation`、`ai+design+generator`、`ai+agent`。
 4. **方案 A3（单个 repo API）**：对选中的项目用 `curl -o /tmp/gh_{repo}.json` 获取完整 API 数据（stars/forks/license/topics/description），再用 `read_file` 提取关键字段。数据比 README 更结构化，适合填充文章表格。
 5. 综合三套数据，筛选 4-5 个 AI 创意类项目（优先月增 5000+ 或周增 1000+ 的项目）
-6. 保存文章到 `~/Documents/Lovart Local Dev/自媒体稿件/YYYY-MM-DD-ai-daily.md`
+6. 保存文章到 `~/Documents/MFlow Local Dev/自媒体稿件/YYYY-MM-DD-ai-daily.md`
 
 ### 项目筛选标准
 

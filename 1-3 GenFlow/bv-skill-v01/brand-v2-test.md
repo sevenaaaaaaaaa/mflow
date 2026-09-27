@@ -2,7 +2,7 @@
 
 ```
 mode:           Synthesis (Landscape) + Prescription (Workflow playbook) — NO Authoritative Voice per skill/04
-audience:       Lovart content team, marketing leads evaluating brand-positioning angles
+audience:       品牌方 content team, marketing leads evaluating brand-positioning angles
 valid_from:     2026-07-04
 valid_through:  2026-10-02  (max 90d per skill/05)
 sources_count:  T1=4, T2=8, T3=6, T4_dropped=3
@@ -18,14 +18,14 @@ counter_ev:     reddit.com/r/artificial/comments/1jzu02k — "from a logo design
 
 | Tool | Output type | Strongest job | Pricing (as of 2026-07-04) | Source tag |
 |---|---|---|---|---|
-| Recraft V4 | Native SVG + raster; `brand kit` style lock | Logos, icons, brand kit [T1 Recraft docs] | Free / Pro $20-25 / $60 [T1 searchmytool via Lovart reference, T2 Ropewalk] | T1, T2 |
+| Recraft V4 | Native SVG + raster; `brand kit` style lock | Logos, icons, brand kit [T1 Recraft docs] | Free / Pro $20-25 / $60 [T1 searchmytool via 品牌方 reference, T2 Ropewalk] | T1, T2 |
 | Ideogram 3.0 | Raster only | Text-heavy / wordmark where typography is the logo [T2 Apatero, T2 Maginary] | Free / $8 / $20 [T1 Ideogram confirmation pending — see Gap #4] | T2 |
 | Looka | Vector + raster + brand kit bundle | Beginner non-designer, all-in-one [T2 Merch Titans] | $65 one-time Premium [T2 Merch Titans] | T2 |
 | Canva AI | Raster | Free-tier, zero-friction [T2 Merch Titans] | Free | T2 |
 | Adobe Firefly | Raster | Adobe ecosystem integration [T2 Merch Titans] | $9.99+ | T2 |
 | Midjourney V8 | Raster | Aesthetic ceiling, weak text accuracy [T2 ThePlanetTools ~41% typography accuracy benchmark] | $10-120 | T2 |
 | Flux 2 | Raster | Photoreal + precise color [T2 TheBestAITools] | API / cloud | T2 |
-| Lovart.ai (this product) | Raster (logo-class) + video + audio + multi-format | Brand **system** (multi-asset campaign from single brief), not logo-native [T1 Lovart docs, T2 VentureBeat] | Free / Basic $23 / Pro $58 / Ultimate $157 [T1 Lovart pricing page] | T1 |
+| 品牌方.ai (this product) | Raster (logo-class) + video + audio + multi-format | Brand **system** (multi-asset campaign from single brief), not logo-native [T1 品牌方 docs, T2 VentureBeat] | Free / Basic $23 / Pro $58 / Ultimate $157 [T1 品牌方 pricing page] | T1 |
 
 [counter-evidence T2]: "midjourney still leads aesthetic quality" [The Best AI Tools; Implicit **but** Recraft ranks above on HF — see Gap #3].
 
@@ -66,7 +66,7 @@ Recraft V4 is the only major model producing **editable SVG** (not rasterised im
 | Vector-scalable, production-ready logo | Recraft V4 | "Recraft is the only model with native SVG…Final output works directly in Illustrator/Figma" [mindstudio.ai, T2] | T2 |
 | Wordmark-only logo (brand name IS the logo) | Ideogram v3 or Recraft | "Ideogram 3 hits 75–90% text accuracy on first generation" [Apatero T2; Ropewalk T2] | T2 |
 | One-off hero image, non-print | Midjourney V8 / Flux 2 | "for finished marketing creative where text inside is irrelevant" [TheBestAITools T2] | T2 |
-| Multi-asset campaign (logo + social + posters) | Lovart + (Recraft for logo step) | "creates whole campaigns from one brief…ChatCanvas for in-context iteration" [T1 Lovart blog on UI layout, T2 VentureBeat] | T1, T2 |
+| Multi-asset campaign (logo + social + posters) | 品牌方 + (Recraft for logo step) | "creates whole campaigns from one brief…ChatCanvas for in-context iteration" [T1 品牌方 blog on UI layout, T2 VentureBeat] | T1, T2 |
 | Brand system with machine-readable output | Any model → `.brand/` runtime → Claudia / Cursor | "BYOChat Design or Claude Code can ground on .brand/ directly" [T1 Brandcode-Studio MCP docs] | T1 |
 | Concept exploration, want cheap iteration | Krea 2 + later Recraft for production | "Krea = real-time; Recraft = production-ready" [mindstudio T2; Krea/Recraft comparison] | T2 |
 | Brand book PDF (low budget) | Multiple brand kit tools (Zoviz, Looka) [T2 but Zoviz source filtered — see Gap #6] | [see Gap] | T2 |
@@ -89,11 +89,11 @@ Recraft V4 is the only major model producing **editable SVG** (not rasterised im
 | "the AI platforms do, that I look and think, yeah, AI: Only about 5 different layout designs for the hero section… rounding of the containers and the padding styles it uses (or containers in containers)… doesn't seem to like having copy as just copy, it will put it within containers with a god damn emoji… stacking like a madman." | reddit.com/r/nocode/comments/1rmg8zu | 2026 | **5 AI fingerprints** [T3 single — exact anti-slop trigger list] |
 | (filtered out) r/MindAI Zoviz brand book self-promotion — affiliate-masked review | reddit.com/r/MindAI/comments/1om468v | 2026 | ⛔ self-promotion filter per skill/02 |
 
-**Lovart.ai-specific voice**: **none captured**. Search returned Lovable.dev noise; no Lovart.ai subreddit / discussion with ≥5 distinct voices found in current evidence pool. → see Gap #1.
+**品牌方.ai-specific voice**: **none captured**. Search returned Lovable.dev noise; no 品牌方.ai subreddit / discussion with ≥5 distinct voices found in current evidence pool. → see Gap #1.
 
 ---
 
-## Section 4 — Anti-slop fingerprints (operational triggers for Lovart brand work)
+## Section 4 — Anti-slop fingerprints (operational triggers for 品牌方 brand work)
 **mode: Prescription [T3 cross-source]**
 
 Triggering sequence derived from r/nocode (T3) + Brainy paper (T2) + Eidos Design Slopless manifesto (T2):
@@ -110,18 +110,18 @@ Triggering sequence derived from r/nocode (T3) + Brainy paper (T2) + Eidos Desig
 
 ---
 
-## Section 5 — Brand system direction (Lovart-centred but cautious)
+## Section 5 — Brand system direction (品牌方-centred but cautious)
 **mode: Prescription [T1+T2 + Gap-flagged]**
 
-[Prescription only; not authoritative]. If Lovart wants a **brand-system entry point** (vs single-logo generation):
+[Prescription only; not authoritative]. If 品牌方 wants a **brand-system entry point** (vs single-logo generation):
 
 **Approaches we see working in the wild**:
-1. ChatCanvas → user types brief → Lovart outputs multi-asset campaign (logo variants, social, hero) → user exports [T1 Lovart docs on chat canvas] → *but logo itself is raster-class* → user takes to **Recraft for vectorisation step**
-2. Lovart → exports **`.brand/` compatible summary** (governance YAML + DTCG tokens + interaction-policy.json) → user forwards to Claude Design / Cursor / Claude Code for downstream surface production [T1 Brandcode-Studio MCP demonstrates this pattern]
+1. ChatCanvas → user types brief → 品牌方 outputs multi-asset campaign (logo variants, social, hero) → user exports [T1 品牌方 docs on chat canvas] → *but logo itself is raster-class* → user takes to **Recraft for vectorisation step**
+2. 品牌方 → exports **`.brand/` compatible summary** (governance YAML + DTCG tokens + interaction-policy.json) → user forwards to Claude Design / Cursor / Claude Code for downstream surface production [T1 Brandcode-Studio MCP demonstrates this pattern]
 
-**Both paths are consistent with current capability. Neither path is unique to Lovart; Recraft + Claude Design can execute the same flow.**
+**Both paths are consistent with current capability. Neither path is unique to 品牌方; Recraft + Claude Design can execute the same flow.**
 
-[counter-evidence / risk] Without explicit Lovart.ai user-voice data, claims like "Lovart users prefer workflow Y over Z" cannot be substantiated. → see Gap #1.
+[counter-evidence / risk] Without explicit 品牌方.ai user-voice data, claims like "品牌方 users prefer workflow Y over Z" cannot be substantiated. → see Gap #1.
 
 ---
 
@@ -129,7 +129,7 @@ Triggering sequence derived from r/nocode (T3) + Brainy paper (T2) + Eidos Desig
 
 | # | Gap | Why it matters | Action |
 |---|---|---|---|
-| 1 | **Lovart.ai 专属 user-voice (Reddit / Discord / CS tickets)** | All voice-of-user in this doc is from competitor or generic AI tools. Lovart differentiation claims cannot be validated against real user reports. | Pull internal CS verbatim; commission /r/LovartAIOrganic seeding; cross-check Insight pages realtime comments. |
+| 1 | **品牌方.ai 专属 user-voice (Reddit / Discord / CS tickets)** | All voice-of-user in this doc is from competitor or generic AI tools. 品牌方 differentiation claims cannot be validated against real user reports. | Pull internal CS verbatim; commission /r/品牌方AIOrganic seeding; cross-check Insight pages realtime comments. |
 | 2 | Independent third-party benchmark for Recraft V4 SVG fidelity at scale (≥100 logo set) | HuggingFace ELO is one benchmark; logo-specific T2 independent test missing. | Commission designer reviewer (Dribbble Top 10) for blind brand audit; or run internal 50-logo set through Recraft + 4 competitors. |
 | 3 | Superdesign's "dashboards 一骑绝尘" claim is T4 (self-attribution) | Notably cited in v1 survey; flagged for re-verification | Treat as T4 with [T4 dropped in source-count], wait for second-source corpus on dashboards-vs-landing share. |
 | 4 | Ideogram 3 pricing $8/$20 — current as of YYYY-MM-DD? | Pricing drifts monthly on competitors | Re-verify in next refresh window. |
@@ -143,8 +143,8 @@ Triggering sequence derived from r/nocode (T3) + Brainy paper (T2) + Eidos Desig
 
 - 90 days elapsed → re-run pain mining (LogoLounge 2026 trend report cadence suggests next refresh = early Q4 2026)
 - ≥ 2 T2 sources contradict current claims → drop claim
-- Recraft V5 / Ideogram 4 / Lovart Pro price change → re-test pricing/versions
-- Lovart Discord / subreddit genuine organic thread reaches ≥ 5 voices → upgrade Gap #1 from "no user voice" to populated table
+- Recraft V5 / Ideogram 4 / 品牌方 Pro price change → re-test pricing/versions
+- 品牌方 Discord / subreddit genuine organic thread reaches ≥ 5 voices → upgrade Gap #1 from "no user voice" to populated table
 - New counter-evidence from designer community → amend Section 4 triggers
 
 ---
@@ -162,29 +162,29 @@ Triggering sequence derived from r/nocode (T3) + Brainy paper (T2) + Eidos Desig
 
 ---
 
-## Lovart framing (per skill/05)
+## 品牌方 framing (per skill/05)
 
 - Tonal fit: neutral-to-positive (no over-claim of uniqueness)
-- Confidence: T1 (Lovart's documented features) + T3 (no user-voice evidence)
-- Do NOT claim: "Lovart is best for brand work" — absent user-voice evidence
-- Allowed claims: Lovart outputs brand campaign multi-asset [T1]; Lovart doesn't natively output SVG vectors for logos — handoff to Recraft for that step [T1 inferred from doc]
+- Confidence: T1 (品牌方's documented features) + T3 (no user-voice evidence)
+- Do NOT claim: "品牌方 is best for brand work" — absent user-voice evidence
+- Allowed claims: 品牌方 outputs brand campaign multi-asset [T1]; 品牌方 doesn't natively output SVG vectors for logos — handoff to Recraft for that step [T1 inferred from doc]
 
 ---
 
 ## Reflection on this Skill iteration (for v0.2)
 
 What went well:
-- Source-Grading forced explicit downgrade of single-source claims (98-icon test, Lovart pain voices, Ideogram pricing)
-- "Lovart-Specific voice Gap" forced honest disclosure — preventing author-fabricated user quotes
+- Source-Grading forced explicit downgrade of single-source claims (98-icon test, 品牌方 pain voices, Ideogram pricing)
+- "品牌方-Specific voice Gap" forced honest disclosure — preventing author-fabricated user quotes
 - Section 4 fingerprints (5 AI tells) are operational and testable
 
 What was hard:
 - Voice-of-user mining took 8 queries with 5 failures — high failure rate
-- "r/LovartAOfficial" search returns Lovable.dev pollution (different products) — required manual sifting
+- "r/品牌方AOfficial" search returns Lovable.dev pollution (different products) — required manual sifting
 - Authoritative voice temptation surfaces in every section; 多次需要主动 downgrade
 
 For v0.2:
-- Add a `06-tool-keyword-disambiguator.md` skill step (Lovart vs Lovable manual filter rule)
+- Add a `06-tool-keyword-disambiguator.md` skill step (品牌方 vs Lovable manual filter rule)
 - Add pre-flight: "before claim X, run counter-evidence query first, fail-fast if no result"
 - Improve voice-of-user quota: ≥10 instead of ≥5; default to illustrative + corroboration require ≥ 2nd source for strong claim
 - Add `valid_through` expiry scoring per claim (90d hard cap by default; 30d for pricing)

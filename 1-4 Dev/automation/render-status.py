@@ -40,7 +40,7 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     now = datetime.now().strftime("%Y-%m-%d %H:%M %Z").strip()
 
-    sent = latest("Lovart-Sentinel-*-daily.md", PROJECT / "1-2 Insight" / "Lovart ORM")
+    sent = latest("品牌方-Sentinel-*-daily.md", PROJECT / "1-2 Insight" / "ORM")
     sent_date = None
     if sent:
         m = re.search(r"(\d{4}-\d{2}-\d{2})", sent.name)
@@ -74,7 +74,7 @@ def main():
 h1{{font-size:20px}} table{{border-collapse:collapse;width:100%}} td{{border-bottom:1px solid #eee;padding:8px 4px}}
 td:first-child{{color:#666;width:130px}} .ok{{color:#0a7d38;font-weight:600}}</style>
 <h1>MFlow 状态页 <span class="ok">●</span></h1>
-<p>Lovart GEO 内容工作流 · 独立实例（与 XMP/OpenFlow 隔离）</p>
+<p>品牌方 GEO 内容工作流 · 独立实例（与 XMP/OpenFlow 隔离）</p>
 <table>{rows}</table>
 <p style="color:#999;font-size:12px">pipeline.json: /status.json · 刷新: mflow-status.timer (30min) · 数据源: pipeline-state / Sentinel / fm-check</p>"""
     (OUT / "index.html").write_text(html)

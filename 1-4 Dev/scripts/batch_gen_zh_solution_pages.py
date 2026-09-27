@@ -8,7 +8,7 @@ VAULT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__
 OUT = os.path.join(VAULT, "1-3 GenFlow/Page Gen/Pages/Solution/zh")
 os.makedirs(OUT, exist_ok=True)
 
-OG_FALLBACK = "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png"
+OG_FALLBACK = "https://assets-persist.example.com/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png"
 
 STORYLINES = {
     "solution-ecommerce": {
@@ -34,16 +34,16 @@ STORYLINES = {
 def q(s): return json.dumps(s, ensure_ascii=False)
 
 def hero_cinematic(product_tag, product_title, product_desc, C):
-    return q({"type":"hero-cinematic","tag":product_tag,"title":product_title,"description":product_desc,"buttons":[{"text":"免费试用","href":"https://lovart.ai/signup","variant":"primary"}],"media":{"src":OG_FALLBACK,"alt":product_title}})
+    return q({"type":"hero-cinematic","tag":product_tag,"title":product_title,"description":product_desc,"buttons":[{"text":"免费试用","href":"https://example.com/signup","variant":"primary"}],"media":{"src":OG_FALLBACK,"alt":product_title}})
 
 def hero_split(product_title, product_desc, C):
-    return q({"type":"hero-split","title":product_title,"description":product_desc,"buttons":[{"text":"免费试用","href":"https://lovart.ai/signup","variant":"primary"}],"media":{"src":OG_FALLBACK,"alt":product_title}})
+    return q({"type":"hero-split","title":product_title,"description":product_desc,"buttons":[{"text":"免费试用","href":"https://example.com/signup","variant":"primary"}],"media":{"src":OG_FALLBACK,"alt":product_title}})
 
 def hero_journey(product_title, product_desc, C):
-    return q({"type":"hero-journey","title":product_title,"description":product_desc,"journeyCards":[{"step":f"步骤{n}","title":C.get(f"journey_{n}",""),"description":C.get(f"journey_{n}_desc","")} for n in range(1,6)],"buttons":[{"text":"免费试用","href":"https://lovart.ai/signup","variant":"primary"}]})
+    return q({"type":"hero-journey","title":product_title,"description":product_desc,"journeyCards":[{"step":f"步骤{n}","title":C.get(f"journey_{n}",""),"description":C.get(f"journey_{n}_desc","")} for n in range(1,6)],"buttons":[{"text":"免费试用","href":"https://example.com/signup","variant":"primary"}]})
 
 def hero_mosaic(product_title, product_desc, C):
-    return q({"type":"hero-mosaic","title":product_title,"description":product_desc,"mosaicTiles":[{"title":C.get(f"mosaic_{n}",""),"description":C.get(f"mosaic_{n}_desc","")} for n in range(1,5)],"buttons":[{"text":"免费试用","href":"https://lovart.ai/signup","variant":"primary"}]})
+    return q({"type":"hero-mosaic","title":product_title,"description":product_desc,"mosaicTiles":[{"title":C.get(f"mosaic_{n}",""),"description":C.get(f"mosaic_{n}_desc","")} for n in range(1,5)],"buttons":[{"text":"免费试用","href":"https://example.com/signup","variant":"primary"}]})
 
 def bento_4(title, cards, C):
     return q({"type":"bento-4","title":title,"cards":[{"title":c,"description":C.get(f"b4_{i}",""),"media":{"src":OG_FALLBACK,"alt":""}} for i,c in enumerate(cards)]})
@@ -106,7 +106,7 @@ def faq_block(C):
     return q({"type":"faq","title":"常见问题","items":items})
 
 def cta_default(C):
-    return q({"type":"cta-default","title":"开始使用Lovart","description":"免费试用，无需信用卡","buttons":[{"text":"免费试用","href":"https://lovart.ai/signup","variant":"primary"}]})
+    return q({"type":"cta-default","title":"开始使用品牌方","description":"免费试用，无需信用卡","buttons":[{"text":"免费试用","href":"https://example.com/signup","variant":"primary"}]})
 
 def feature_detail(C):
     return q({"type":"feature-detail","title":C.get("fd_title",""),"description":C.get("fd_desc",""),"media":{"src":OG_FALLBACK,"alt":""}})
@@ -136,8 +136,8 @@ SECTION_GEN = {
 }
 
 ALL_DATA = [
-    {"slug":"zh-solution-ecommerce-taobao","storyline":"solution-ecommerce","title":"淘宝天猫AI设计解决方案 - 电商主图详情页批量生成 | Lovart","desc":"淘宝天猫卖家AI设计工具。批量生成主图、详情页、直通车图、大促素材，自动适配平台规范。","kw":["淘宝主图设计","电商AI设计","详情页批量生成"],"tag":"电商解决方案","ht":"淘宝天猫AI设计解决方案","hd":"从主图到详情页，从日常到双11大促。Lovart为淘宝天猫卖家提供全链路AI设计能力。"},
-    {"slug":"zh-solution-ecommerce-pdd","storyline":"solution-ecommerce","title":"拼多多AI设计解决方案 - 白底图场景图促销图批量生成 | Lovart","desc":"拼多多卖家AI设计工具。批量生成白底图、场景图、促销标签图，适配拼多多平台风格。"},
+    {"slug":"zh-solution-ecommerce-taobao","storyline":"solution-ecommerce","title":"淘宝天猫AI设计解决方案 - 电商主图详情页批量生成 | 品牌方","desc":"淘宝天猫卖家AI设计工具。批量生成主图、详情页、直通车图、大促素材，自动适配平台规范。","kw":["淘宝主图设计","电商AI设计","详情页批量生成"],"tag":"电商解决方案","ht":"淘宝天猫AI设计解决方案","hd":"从主图到详情页，从日常到双11大促。品牌方为淘宝天猫卖家提供全链路AI设计能力。"},
+    {"slug":"zh-solution-ecommerce-pdd","storyline":"solution-ecommerce","title":"拼多多AI设计解决方案 - 白底图场景图促销图批量生成 | 品牌方","desc":"拼多多卖家AI设计工具。批量生成白底图、场景图、促销标签图，适配拼多多平台风格。"},
     {"slug":"zh-solution-ecommerce-douyin","storyline":"solution-ecommerce","title":"抖音电商AI设计解决方案 - 直播切片图文带货素材批量生成","desc":"抖音电商AI设计工具。生成直播切片、图文带货素材、商品卡，适配抖音推荐流。"},
     {"slug":"zh-solution-ecommerce-cross-border","storyline":"solution-ecommerce","title":"跨境电商AI设计解决方案 - 多语言主图详情页Shopify独立站","desc":"跨境电商AI设计。多语言主图、A+页面、Shopify素材，独立站和亚马逊全覆盖。"},
     {"slug":"zh-solution-ecommerce-jd","storyline":"solution-ecommerce","title":"京东AI设计解决方案 - 京东主图详情页店铺装修批量生成","desc":"京东卖家AI设计。主图、商详、店铺首页装修素材，适配京东平台规范。"},
@@ -188,7 +188,7 @@ def gen_all(OUT):
             elif stype == "hero-split":
                 sections.append(hero_split(ht, hd, {}))
             elif stype == "hero-journey":
-                sections.append(hero_journey(ht, hd, {"journey_1":"市场洞察","journey_1_desc":"分析行业痛点","journey_2":"方案设计","journey_2_desc":"匹配Lovart能力","journey_3":"落地实施","journey_3_desc":"配置自动化","journey_4":"效果验证","journey_4_desc":"数据对比","journey_5":"持续优化","journey_5_desc":"迭代改进"}))
+                sections.append(hero_journey(ht, hd, {"journey_1":"市场洞察","journey_1_desc":"分析行业痛点","journey_2":"方案设计","journey_2_desc":"匹配品牌方能力","journey_3":"落地实施","journey_3_desc":"配置自动化","journey_4":"效果验证","journey_4_desc":"数据对比","journey_5":"持续优化","journey_5_desc":"迭代改进"}))
             elif stype == "hero-mosaic":
                 sections.append(hero_mosaic(ht, hd, {"mosaic_1":"方案设计","mosaic_1_desc":"匹配行业需求","mosaic_2":"内容生产","mosaic_2_desc":"批量素材生成","mosaic_3":"品牌管理","mosaic_3_desc":"一致性保障","mosaic_4":"效果追踪","mosaic_4_desc":"数据驱动优化"}))
             elif stype == "bento-4":
@@ -198,21 +198,21 @@ def gen_all(OUT):
             elif stype == "bento-2":
                 sections.append(bento_2("关键特性",["核心功能","场景覆盖"],{"b2_0":"覆盖该行业所有设计场景","b2_1":"从简单到复杂全覆盖"}))
             elif stype == "capability-tabs":
-                sections.append(capability_tabs({"tab_1_label":"方案一","tab_1_title":"需求分析","tab_1_desc":"深入了解行业特性，匹配最佳Lovart能力组合","tab_2_label":"方案二","tab_2_title":"执行流程","tab_2_desc":"从设计到交付的全链路自动化","tab_3_label":"方案三","tab_3_title":"质量保障","tab_3_desc":"AI预检+人工复检双层把关","tab_4_label":"方案四","tab_4_title":"迭代优化","tab_4_desc":"基于反馈持续优化输出质量"}))
+                sections.append(capability_tabs({"tab_1_label":"方案一","tab_1_title":"需求分析","tab_1_desc":"深入了解行业特性，匹配最佳品牌方能力组合","tab_2_label":"方案二","tab_2_title":"执行流程","tab_2_desc":"从设计到交付的全链路自动化","tab_3_label":"方案三","tab_3_title":"质量保障","tab_3_desc":"AI预检+人工复检双层把关","tab_4_label":"方案四","tab_4_title":"迭代优化","tab_4_desc":"基于反馈持续优化输出质量"}))
             elif stype == "workflow-vertical":
-                sections.append(workflow_vertical({"wv_1":"需求整理","wv_1_desc":"明确设计需求和品牌规范","wv_2":"AI生成","wv_2_desc":"Lovart AI批量生成初稿","wv_3":"人工精调","wv_3_desc":"在AI输出基础上微调","wv_4":"交付发布","wv_4_desc":"确认后发布到对应平台"}))
+                sections.append(workflow_vertical({"wv_1":"需求整理","wv_1_desc":"明确设计需求和品牌规范","wv_2":"AI生成","wv_2_desc":"品牌方 AI批量生成初稿","wv_3":"人工精调","wv_3_desc":"在AI输出基础上微调","wv_4":"交付发布","wv_4_desc":"确认后发布到对应平台"}))
             elif stype == "workflow-horizontal":
                 sections.append(workflow_horizontal({"wh_1":"需求梳理","wh_1_desc":"客户需求标准化","wh_2":"AI批处理","wh_2_desc":"批量生成交付物","wh_3":"品控交付","wh_3_desc":"统一质检后交付"}))
             elif stype == "comparison-table":
-                sections.append(comparison_table({"comp_1_label":"效率","comp_1_before":"传统方式","comp_1_after":"Lovart方案","comp_2_label":"质量","comp_2_before":"依赖个人水平","comp_2_after":"AI专业输出","comp_3_label":"一致性","comp_3_before":"难以统一","comp_3_after":"规范自动保持","comp_4_label":"成本","comp_4_before":"高额外包","comp_4_after":"工具订阅","comp_5_label":"迭代","comp_5_before":"慢","comp_5_after":"实时调整"}))
+                sections.append(comparison_table({"comp_1_label":"效率","comp_1_before":"传统方式","comp_1_after":"品牌方方案","comp_2_label":"质量","comp_2_before":"依赖个人水平","comp_2_after":"AI专业输出","comp_3_label":"一致性","comp_3_before":"难以统一","comp_3_after":"规范自动保持","comp_4_label":"成本","comp_4_before":"高额外包","comp_4_after":"工具订阅","comp_5_label":"迭代","comp_5_before":"慢","comp_5_after":"实时调整"}))
             elif stype == "comparison-before-after":
-                sections.append(comparison_before_after({"ba_before_title":"传统方式","ba_before_desc":"设计软件操作复杂，改稿周期长，成本高","ba_after_title":"Lovart方案","ba_after_desc":"对话式设计，秒级出稿，低门槛高产出"}))
+                sections.append(comparison_before_after({"ba_before_title":"传统方式","ba_before_desc":"设计软件操作复杂，改稿周期长，成本高","ba_after_title":"品牌方方案","ba_after_desc":"对话式设计，秒级出稿，低门槛高产出"}))
             elif stype == "cluster-block-dense":
                 sections.append(cluster_block_dense({"cl_1":"日常运营","cl_1_desc":"日常内容高效产出","cl_2":"大促活动","cl_2_desc":"活动物料快速准备","cl_3":"品牌升级","cl_3_desc":"品牌视觉迭代升级","cl_4":"多平台","cl_4_desc":"跨平台统一管理","cl_5":"团队协作","cl_5_desc":"多人协作效率","cl_6":"数据分析","cl_6_desc":"效果数据反馈优化"}))
             elif stype == "showcase-stacked":
-                sections.append(showcase_stacked({"ss_1":"案例一","ss_1_desc":"某客户使用Lovart后设计效率提升5倍","ss_2":"案例二","ss_2_desc":"品牌一致性从60%提升到95%","ss_3":"案例三","ss_3_desc":"设计成本降低70%同时产出翻倍"}))
+                sections.append(showcase_stacked({"ss_1":"案例一","ss_1_desc":"某客户使用品牌方后设计效率提升5倍","ss_2":"案例二","ss_2_desc":"品牌一致性从60%提升到95%","ss_3":"案例三","ss_3_desc":"设计成本降低70%同时产出翻倍"}))
             elif stype == "testimonial":
-                sections.append(testimonial_block({"test_quote":"Lovart彻底改变了我们的设计工作流。过去一周的工作量现在一天就能完成。","test_author":"张先生","test_role":"设计总监"}))
+                sections.append(testimonial_block({"test_quote":"品牌方彻底改变了我们的设计工作流。过去一周的工作量现在一天就能完成。","test_author":"张先生","test_role":"设计总监"}))
             elif stype == "review-grid-3col":
                 sections.append(review_grid_3col({"rev_1":"效率提升超预期，团队产能翻倍","rev_1_author":"用户A","rev_2":"品牌一致性再也不用担心","rev_2_author":"用户B","rev_3":"AI生成+人工微调的最佳组合","rev_3_author":"用户C"}))
             elif stype == "review-grid-4col":

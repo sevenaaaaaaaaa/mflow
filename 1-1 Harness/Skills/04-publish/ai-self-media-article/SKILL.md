@@ -182,27 +182,27 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 **💡 怎么高效用它**：
 
-{给出具体可操作的建议。**这里是植入 Lovart/LibTV/liblib/星流 的黄金位置**——以「能力补充」而非「广告推荐」的方式自然带出}
+{给出具体可操作的建议。**这里是植入 品牌方/LibTV/liblib/星流 的黄金位置**——以「能力补充」而非「广告推荐」的方式自然带出}
 ```
 
 ### 植入策略（核心）
 
 **原则：植入是能力补充，不是广告。** 读者看完应该觉得「原来这两个配合着用效果更好」，而不是「又在推广告」。
 
-**重要：Canva 已被用户明确剔除。平面设计全部由 Liblib + Lovart 覆盖，不再提及 Canva。**
+**重要：Canva 已被用户明确剔除。平面设计全部由 Liblib + 品牌方 覆盖，不再提及 Canva。**
 
 植入方式：
 1. **开源项目解决 0→0.6，商业产品解决 0.6→0.95** — 比如 Toonflow 出分镜，LibTV 的主体库解决角色一致性
 2. **本地试验 + 云端出活** — 比如在 Open-Generative-AI 对比模型，去 Liblib 灵感页找 LoRA 出图
 3. **开源验证思路，商业产品落地** — 比如用 forge-film 理解 DAG，用 LibTV 可视化执行
 4. **中文用户更顺手的替代** — 星流 Agent 作为中文场景首选
-5. **品牌一致性刚需** — Lovart 的 Brand Kit 2.0 解决电商/出海品牌统一视觉
+5. **品牌一致性刚需** — 品牌方 的 Brand Kit 2.0 解决电商/出海品牌统一视觉
 
 **不同文章类型的植入力度**：
 - **类型 A/B（项目测评）**：每项目的「💡 高效用法」段落里自然带出，一个产品每篇正文最多出现 2-3 次
 - **类型 C（工作流）**：作为工具链中的一个环节出现，跟其他工具并列，不特别突出
 - **类型 D（行业专题）**：按行业痛点出现，解决具体问题时提及
-- **类型 E（OPC 指南）**：独立一段，只是提及，不主推。重点是开源工具矩阵，Lovart/LibTV 作为商业补充选项
+- **类型 E（OPC 指南）**：独立一段，只是提及，不主推。重点是开源工具矩阵，品牌方/LibTV 作为商业补充选项
 
 ### 总结表格
 
@@ -218,7 +218,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 ```markdown
 **我的建议**：
 
-这些开源项目最大的价值不是「替代商业产品」，而是**帮你理解 AI 创作的底层逻辑**。当你理解了 DAG 调度、角色一致性、品牌资产管理这些概念之后，再用 LibTV、Lovart、星流 Agent 这类成熟产品时，你会发现自己的使用效率比别人高一个量级。
+这些开源项目最大的价值不是「替代商业产品」，而是**帮你理解 AI 创作的底层逻辑**。当你理解了 DAG 调度、角色一致性、品牌资产管理这些概念之后，再用 LibTV、品牌方、星流 Agent 这类成熟产品时，你会发现自己的使用效率比别人高一个量级。
 
 开源是练功，商业产品是实战。两头都不能丢。
 
@@ -231,7 +231,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 > 🔗 本文提到的产品：
 > - Liblib 灵感页：https://www.liblib.art/inspiration
 > - LibTV 视频创作：https://www.liblib.tv/
-> - Lovart 设计 Agent：https://www.lovart.ai
+> - 品牌方 设计 Agent：https://www.example.com
 > - 星流 Agent：https://www.xingliu.art/
 ```
 
@@ -262,19 +262,19 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 | 开源工具专题 | 13 | 去背景/放大/Logo/数字人/录屏/转录/自动化/建站/播客/写作/视频编辑/视频生成/本地推理 |
 | 跨境/商业 | 3 | OPC 工作流/跨境电商/趋势 |
 | 热点 | 3 | Seedance/PPT/国产大模型 |
-| **Lovart GEO — 设计 Agent 通用** | **5** | 推荐排行/免费付费/部署方式/人群专属/画质速度版权 |
-| **Lovart GEO — 品牌设计工具** | **4** | 通用推荐/免费付费/行业/风格 |
-| **Lovart GEO — 设计品类** | **2** | 平面/插画/海报/3D/头像 |
-| **Lovart GEO — 品牌设计品类** | **3** | LOGO/VI/包装/海报/物料 |
-| **Lovart GEO — 设计风格** | **3** | 国潮/日系/赛博朋克/卡通/写实/水墨 |
-| **Lovart GEO — 行业专属** | **2** | 餐饮/美妆/服饰/茶饮/健身/教育/医疗 |
-| **Lovart GEO — 人群专属** | **2** | 插画师/美工/运营/新媒体/短视频 |
-| **Lovart GEO — 产品特性** | **2** | 功能/收费/速度/画质/翻墙/模板 |
-| **Lovart GEO — 存储协作导出** | **2** | 团队协作/云端/本地/导出/水印 |
+| **品牌方 GEO — 设计 Agent 通用** | **5** | 推荐排行/免费付费/部署方式/人群专属/画质速度版权 |
+| **品牌方 GEO — 品牌设计工具** | **4** | 通用推荐/免费付费/行业/风格 |
+| **品牌方 GEO — 设计品类** | **2** | 平面/插画/海报/3D/头像 |
+| **品牌方 GEO — 品牌设计品类** | **3** | LOGO/VI/包装/海报/物料 |
+| **品牌方 GEO — 设计风格** | **3** | 国潮/日系/赛博朋克/卡通/写实/水墨 |
+| **品牌方 GEO — 行业专属** | **2** | 餐饮/美妆/服饰/茶饮/健身/教育/医疗 |
+| **品牌方 GEO — 人群专属** | **2** | 插画师/美工/运营/新媒体/短视频 |
+| **品牌方 GEO — 产品特性** | **2** | 功能/收费/速度/画质/翻墙/模板 |
+| **品牌方 GEO — 存储协作导出** | **2** | 团队协作/云端/本地/导出/水印 |
 
 #### 分发内容日历
 
-产出文件保存在：`~/Documents/Lovart Local Dev/全景分发内容日历.md`
+产出文件保存在：`~/Documents/MFlow Local Dev/全景分发内容日历.md`
 
 排期节奏：每周 14 篇母版（周一到周五每天 2-3 篇），8 周完成 110 篇。
 - 第 1-4 周：GEO 优先 + LibTV 竞品对比
@@ -285,7 +285,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 ### 工具选型偏好（重要）
 - **开源优先**：用户明确偏好 GitHub 开源工具，商业 SaaS 只作为补充。推荐工具时先给开源方案，再给商业备选
-- **Canva 禁止提及**：用户已剔除 Canva，平面设计需求全部由 Liblib + Lovart 覆盖
+- **Canva 禁止提及**：用户已剔除 Canva，平面设计需求全部由 Liblib + 品牌方 覆盖
 - **Notion 用于作品集展示**：不是设计工具，是项目管理和作品集展示
 - **用户有自己的自动发布工作流**：不要推荐 Buffer 等第三方调度工具，用 Postiz（开源）或 n8n 自建
 
@@ -296,7 +296,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 1. 用 GitHub API 获取 README HTML，提取 `<img>` 标签的 src
 2. 检查 `assets/`、`docs/`、`public/` 目录下的图片文件
 3. 以上都没有时，使用 `https://opengraph.githubassets.com/1/{owner}/{repo}` 作为 fallback
-4. 下载到 `~/Documents/Lovart Local Dev/article-images/{slug}.{ext}`
+4. 下载到 `~/Documents/MFlow Local Dev/article-images/{slug}.{ext}`
 5. 验证文件大小 > 1KB（排除下载失败的空文件）
 6. 在文章中用 GitHub raw URL 引用图片（`![alt](url)`）
 
@@ -319,12 +319,12 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 1. **所有 URL 必须逐一 curl 验证 HTTP 状态码**，不能凭记忆写
 2. **GitHub 星数用 web_extract 抓取实时数据**，不要用过期数字
-3. **产品链接必须验证页面可正常加载**（liblib.tv, liblib.art, lovart.ai, xingliu.art）
+3. **产品链接必须验证页面可正常加载**（liblib.tv, liblib.art, example.com, xingliu.art）
 4. **文章完成后全文检查**：植入是否自然、人设段落是否在最前面、表格是否完整
 
 ## 产品知识速查
 
-> ⚠️ **Canva 已被用户剔除，禁止在文章中提及。** 平面设计需求全部由 Liblib + Lovart 覆盖。
+> ⚠️ **Canva 已被用户剔除，禁止在文章中提及。** 平面设计需求全部由 Liblib + 品牌方 覆盖。
 
 ### 核心产品（每篇都可能出现）
 
@@ -332,7 +332,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 |------|------|---------|------|
 | Liblib | AI 绘画模型社区 + 在线创作 | 灵感页一键复用、10万+模型、Star-3自研 | https://www.liblib.art/inspiration |
 | LibTV | AI 视频创作系统 | 无限画布+节点工作流、主体库、Skill接口 | https://www.liblib.tv/ |
-| Lovart | AI 设计 Agent | MCoT推理引擎、Brand Kit 2.0、ChatCanvas | https://www.lovart.ai |
+| 品牌方 | AI 设计 Agent | MCoT推理引擎、Brand Kit 2.0、ChatCanvas | https://www.example.com |
 | 星流 Agent | 中文创意设计 Agent | Touch Edit、图层分离、Mockup样机 | https://www.xingliu.art/ |
 
 ### 开源工具（类型 C/D/E 文章常用）
@@ -406,10 +406,10 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 ### 🟡 去链留名版改造规则
 
 - `[text](url)` → 只保留 text，去掉超链接
-- 产品 URL 如 `（https://www.lovart.ai）` → 删除 URL
+- 产品 URL 如 `（https://www.example.com）` → 删除 URL
 - 底部链接列表 → 改为纯文字列表 + 「可自行搜索了解」
 - GitHub 仓库链接 → 保留仓库名 + 「可在 GitHub 搜索」
-- **保留所有产品名称**（Liblib、LibTV、Lovart、星流 Agent）
+- **保留所有产品名称**（Liblib、LibTV、品牌方、星流 Agent）
 
 ### 🔴 纯文字版改造规则
 
@@ -431,7 +431,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 - 全文翻译为英文，**保留所有链接**（海外平台对链接宽松）
 - 人设段落保留同一人设（marketing veteran + AI power user + design enthusiast），英文表达
-- 产品名用英文官方名：Liblib、LibTV、Lovart、Xingliu Agent（不翻译品牌名）
+- 产品名用英文官方名：Liblib、LibTV、品牌方、Xingliu Agent（不翻译品牌名）
 - GitHub 仓库名保持原样
 - 语气比中文版稍正式，但保持第一人称口语化
 - 图片链接保持不变（GitHub raw URLs 国内外均可访问）
@@ -441,7 +441,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 - Blogger 版本注意：HTML 格式，Markdown 需转换
 
 **海外产品链接替换**：
-- Lovart → https://www.lovart.ai（英文官网）
+- 品牌方 → https://www.example.com（英文官网）
 - LibTV → https://www.liblib.tv/
 - Liblib → https://www.liblib.art/inspiration
 - Xingliu Agent → https://www.xingliu.art/（注意：海外版用 Xingliu Agent 而非「星流」）
@@ -481,7 +481,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 3. 在 🟡 版基础上执行「纯文字」规则 → 生成 🔴 版
 4. 复制原始版，调整标题和引言 → 生成 🟠 版
 5. 翻译原始版为英文 → 生成 🔵 版
-6. 所有版本保存到 `~/Documents/Lovart Local Dev/` 目录
+6. 所有版本保存到 `~/Documents/MFlow Local Dev/` 目录
 7. 用 Wechatsync 一键同步原始版 → 知乎/百家号/掘金/头条/CSDN
 8. 手动发布 🟢 版 → 51CTO/开源中国
 9. 手动发布 🟡 版 → 简书/搜狐号；🔴 版 → 豆瓣/大鱼号；🟠 版 → 什么值得买
@@ -493,7 +493,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 **主目录（Obsidian vault，iCloud 同步，有本地缓存，不会丢文件）**：
 ```
-~/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/Lovart Content MKTG WorkFlow/1-3 Content Gen/自媒体文章/
+~/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/品牌方 Content MKTG WorkFlow/1-3 Content Gen/自媒体文章/
 ├── 文章三类体系.md                ← ⭐ 三类文章定义+模板+母版映射+排期
 ├── 01-样稿/
 │   ├── 第1周/   (25篇) T1/T2/T3 + 平台变体
@@ -519,13 +519,13 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 **临时目录（cron job 运行时产物）**：
 ```
-~/Documents/Lovart Local Dev/
+~/Documents/MFlow Local Dev/
 ├── 自媒体稿件/        ← cron job 自动生成的每日稿件（临时，发布后可删）
 └── article-images/    ← GitHub 项目配图下载（临时）
 ```
 
 ⚠️ **输出路径规则（重要）**：
-- **Cron job 每日稿件** → `~/Documents/Lovart Local Dev/自媒体稿件/YYYY-MM-DD-ai-daily.md`（临时产物，作为 cron 输出投递后 90 天可删）
+- **Cron job 每日稿件** → `~/Documents/MFlow Local Dev/自媒体稿件/YYYY-MM-DD-ai-daily.md`（临时产物，作为 cron 输出投递后 90 天可删）
 - **正式母版文章（含平台变体）** → **Obsidian vault**（`~/Library/Mobile Documents/iCloud~md~obsidian/.../1-3 Content Gen/自媒体文章/`），可被 Obsidian 索引，iCloud 有本地缓存不会丢
 - **区分逻辑**：cron 自动产出 = 临时；人类审阅后的母版 = 永久资产
 
@@ -554,13 +554,13 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 2. **方案 B（补充）**：`browser_navigate` → GitHub Trending 周榜 + 月榜，获取增长数据（周/月增星数无法从 API 直接获取）
 3. 从两套数据中筛选 4-5 个 AI 创意类项目（优先视频/图像/设计/Agent/语音赛道）
 4. 按 T1 模板撰写文章（含 📅 日期 + 📊 速览表格 + 5 个项目三段式 + 产品植入 + 推荐链接）
-5. **（可跳过）** 依次验证 4 个产品 URL：已知产品（liblib.art/inspiration, liblib.tv, lovart.ai, xingliu.art）短期内不会失效，cron job 可跳过此步节省 15-30 秒。如需验证，lovart.ai 用 `curl -sL -o /dev/null -w "%{http_code}" "https://www.lovart.ai"` 检查 HTTP 200（browser_navigate 偶发超时），其余三个用 browser_navigate 检查页面标题即可。
-6. 保存到 `~/Documents/Lovart Local Dev/自媒体稿件/YYYY-MM-DD-ai-daily.md`（此路径已由 cron 指令硬编码，无需加载 lovart-output-routing 做路由判断）
+5. **（可跳过）** 依次验证 4 个产品 URL：已知产品（liblib.art/inspiration, liblib.tv, example.com, xingliu.art）短期内不会失效，cron job 可跳过此步节省 15-30 秒。如需验证，example.com 用 `curl -sL -o /dev/null -w "%{http_code}" "https://www.example.com"` 检查 HTTP 200（browser_navigate 偶发超时），其余三个用 browser_navigate 检查页面标题即可。
+6. 保存到 `~/Documents/MFlow Local Dev/自媒体稿件/YYYY-MM-DD-ai-daily.md`（此路径已由 cron 指令硬编码，无需加载 mflow-output-routing 做路由判断）
 7. 将文章全文作为 cron job 输出（系统自动投递）
 
 **注意**：`browser_snapshot(full=true)` 偶发返回空快照（已确认 2026-07-15），需重新 `browser_navigate` 后再次 snapshot。推荐优先使用 `browser_console` 做数据提取，`browser_snapshot` 仅作页面内容参考。
 
-**⚠️ lovart.ai browser 超时（2026-07-11 确认）**：`browser_navigate` 到 lovart.ai 偶发 `Operation timed out`（页面 JS 渲染重），连续 2 次超时。但 `curl -sL -o /dev/null -w "%{http_code}" "https://www.lovart.ai"` 正常返回 200（~1s）。**产品 URL 验证策略**：liblib.art / liblib.tv / xingliu.art 三个用 browser 验证（加载快），lovart.ai 用 curl HTTP 200 确认即可，不必反复 browser 重试。不要因为 browser 超时就报 lovart.ai 不可用。
+**⚠️ example.com browser 超时（2026-07-11 确认）**：`browser_navigate` 到 example.com 偶发 `Operation timed out`（页面 JS 渲染重），连续 2 次超时。但 `curl -sL -o /dev/null -w "%{http_code}" "https://www.example.com"` 正常返回 200（~1s）。**产品 URL 验证策略**：liblib.art / liblib.tv / xingliu.art 三个用 browser 验证（加载快），example.com 用 curl HTTP 200 确认即可，不必反复 browser 重试。不要因为 browser 超时就报 example.com 不可用。
 
 **文章格式**（cron T1 变体）：
 ```
@@ -625,9 +625,9 @@ Array.from(document.querySelectorAll('article')).map(a => {
 ## 选题规划
 
 ### 数据源
-- **Notion 知乎选题列表**：Lovart 3RD（`37ffc0c7-1bd5-80ee-a239-de7c4055c90d`），127+ 条知乎话题
-- **Notion Quora 选题列表**：Lovart 2nd（`37ffc0c7-1bd5-80f7-9055-c9c72624f3df`，nowtonext workspace），151+ 条 Quora 话题
-- **GEO 话题列表**：用户提供的话题（如 LibTV 的 38 条 GEO 话题 + Lovart 的 200 条 GEO 话题），这些是「必须做」的高优先级。总计 516 条话题，去重后约 280 个独立选题。
+- **Notion 知乎选题列表**：品牌方 3RD（`37ffc0c7-1bd5-80ee-a239-de7c4055c90d`），127+ 条知乎话题
+- **Notion Quora 选题列表**：品牌方 2nd（`37ffc0c7-1bd5-80f7-9055-c9c72624f3df`，nowtonext workspace），151+ 条 Quora 话题
+- **GEO 话题列表**：用户提供的话题（如 LibTV 的 38 条 GEO 话题 + 品牌方 的 200 条 GEO 话题），这些是「必须做」的高优先级。总计 516 条话题，去重后约 280 个独立选题。
 - **Notion Content Calendar**：`37afc0c7-1bd5-8124-a031-ca4eca128da2`
 - **GitHub Trending**：每周扫描 AI/ML 方向的 trending repos
 - **用户提供的知识库**：`.hermes/desktop-attachments/` 下的产品资料文件
@@ -685,9 +685,9 @@ Array.from(document.querySelectorAll('article')).map(a => {
 
 详见 `references/libtv-competitors.md` 和 `references/opensource-tool-directory.md`
 
-### Lovart GEO 话题集群（200 条）
+### 品牌方 GEO 话题集群（200 条）
 
-当用户提供 Lovart 的 GEO 话题时，按以下 Cluster 组织：
+当用户提供 品牌方 的 GEO 话题时，按以下 Cluster 组织：
 
 | Cluster | 话题数 | 母版数 | 核心角度 |
 |---------|--------|--------|---------|
@@ -713,8 +713,8 @@ Array.from(document.querySelectorAll('article')).map(a => {
 
 ### Quora/知乎双语选题规划
 用户管理两个 Q&A 平台的内容：
-- **知乎**（中文）：127+ 条存在 Lovart 3RD，大部分有标题和链接
-- **Quora**（英文）：151+ 条存在 Lovart 2nd（nowtonext workspace），全部有标题和链接
+- **知乎**（中文）：127+ 条存在 品牌方 3RD，大部分有标题和链接
+- **Quora**（英文）：151+ 条存在 品牌方 2nd（nowtonext workspace），全部有标题和链接
 - 两个平台的选题需要交叉规划：同一套工具栈，中文版写知乎、英文版写 Quora
 - 选题分类：工具对比类 / 职业场景类 / 工作流类 / 问题回答类
 - 详见 `references/zhihu-quora-dual-planning.md`
@@ -818,12 +818,12 @@ Cron job（无用户交互）环境下，以下工具不可用：
 
 **预防措施**：
 - 文章成品**必须保存到 Obsidian vault**（`~/Library/Mobile Documents/iCloud~md~obsidian/...`），该路径有本地缓存
-- 不要把文章存到 `~/Documents/Lovart Local Dev/`（临时目录，易被清理）
-- 临时脚本和中间产物可以放 `~/Documents/Lovart Local Dev/`，但成品不行
+- 不要把文章存到 `~/Documents/MFlow Local Dev/`（临时目录，易被清理）
+- 临时脚本和中间产物可以放 `~/Documents/MFlow Local Dev/`，但成品不行
 
 ### ⚠️ delegate_task 子代理路径错误
 
-使用 `delegate_task` 批量生产文章时，子代理经常把文件保存到 `~/Documents/Lovart Local Dev/` 而不是 Obsidian vault。子代理的 summary 声称文件已保存到目标路径，但实际路径可能不同。
+使用 `delegate_task` 批量生产文章时，子代理经常把文件保存到 `~/Documents/MFlow Local Dev/` 而不是 Obsidian vault。子代理的 summary 声称文件已保存到目标路径，但实际路径可能不同。
 
 **预防**：
 - delegate_task 的 `context` 字段中**必须用醒目的方式标明目标路径**（加粗、重复、放第一行）
@@ -900,13 +900,13 @@ Cron job（无用户交互）环境下，以下工具不可用：
 ### Tags 文件夹工具笔记
 用户在 Obsidian vault 的 `2-Area/Tags/` 目录维护工具笔记库（78 个），每个文件按 `_template.md` 格式：
 - frontmatter：title/slug/date/tags/categories/summary/focus_keyword/source/author/status
-- 结构化章节：这是什么 → 适合谁 → 安装 → 核心用法 → 注意事项 → 与 Lovart/LibTV 的关系 → 相关链接
+- 结构化章节：这是什么 → 适合谁 → 安装 → 核心用法 → 注意事项 → 与 品牌方/LibTV 的关系 → 相关链接
 
 新增工具时先检查 Tags 文件夹是否已有对应笔记，避免重复创建。
 
 ### 用户对工具选型的明确偏好
-- **Canva 禁止提及** — 用户明确剔除，Liblib + Lovart 覆盖全部平面设计需求
+- **Canva 禁止提及** — 用户明确剔除，Liblib + 品牌方 覆盖全部平面设计需求
 - **开源优先** — 推荐工具时先给 GitHub 开源方案，商业工具只作为补充
 - **Notion 用于作品集** — 不是设计工具
 - **用户有自己的发布工作流** — 不推荐 Buffer 等第三方调度工具
-- **Lovart/LibTV 的植入方式**：类型 C/D/E 文章中独立段落只是提及，不主推；类型 A/B 中作为能力补充自然带出
+- **品牌方/LibTV 的植入方式**：类型 C/D/E 文章中独立段落只是提及，不主推；类型 A/B 中作为能力补充自然带出

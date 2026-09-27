@@ -1,15 +1,15 @@
 """
-Lovart Sentinel - 微博/抖音/快手 中文短视频+社媒采集
+品牌方 Sentinel - 微博/抖音/快手 中文短视频+社媒采集
 通过搜索引擎代理穿透反爬
 """
 from ._common import banner
 
 QUERIES = {
-    "weibo_bing": "lovart site:weibo.com",
-    "weibo_sogou": "https://www.sogou.com/web?query=lovart+site:weibo.com",
-    "douyin": "lovart ai site:douyin.com",
-    "kuaishou": "lovart ai site:kuaishou.com",
-    "weibo_hot": "lovart AI设计 site:weibo.com",
+    "weibo_bing": "品牌 site:weibo.com",
+    "weibo_sogou": "https://www.sogou.com/web?query=品牌+site:weibo.com",
+    "douyin": "品牌 ai site:douyin.com",
+    "kuaishou": "品牌 ai site:kuaishou.com",
+    "weibo_hot": "品牌 AI设计 site:weibo.com",
 }
 
 
@@ -19,8 +19,8 @@ def collect() -> dict:
     data["method"] = "Bing + 搜狗 (微博) / Bing (抖音/快手)"
     data["queries"] = QUERIES
     data["_instructions"] = """
-    1. 搜狗搜索 lovart site:weibo.com（搜狗对中文站点收录优于Bing）
-    2. Bing搜索 lovart site:douyin.com
+    1. 搜狗搜索 品牌 site:weibo.com（搜狗对中文站点收录优于Bing）
+    2. Bing搜索 品牌 site:douyin.com
     3. 提取：提及数量、是否有热门话题、头部内容互动量
     4. 微博特定：是否有#话题标签、热搜相关、是否有KOL转发
     5. 抖音特定：视频标题、创作者、是否有UGC内容
@@ -50,7 +50,7 @@ def parse_weibo_douyin_results(markdown: str, source: str) -> dict:
         result["has_kol_content"] = True
 
     # 统计提及数
-    mention_count = len(re.findall(r'(?:lovart|Lovart|LOVART)', markdown))
+    mention_count = len(re.findall(r'(?:品牌|品牌方|MFLOW)', markdown))
     result["mentions_found"] = mention_count
 
     return result

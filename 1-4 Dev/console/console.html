@@ -3368,7 +3368,7 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
   let html=mdRender(m.text||'');
   const ctx=(()=>{const c=m.context;if(!c)return '';
    const bits=[];
-   if(c.skills&&c.skills.length)bits.push('skills: '+c.skills.map(x=>x.replace(/^(lovart|mflow)-/,'')).join(', '));
+   if(c.skills&&c.skills.length)bits.push('skills: '+c.skills.map(x=>x.replace(/^(品牌|mflow)-/,'')).join(', '));
    if(c.kb&&c.kb.length)bits.push('知识库: '+c.kb.join(', '));
    if(c.library&&c.library.length)bits.push('内容库范例 '+c.library.length+' 篇');
    if(c.rules_chars)bits.push('harness 规则 '+c.rules_chars+' 字符');

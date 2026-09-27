@@ -41,9 +41,8 @@ if not NOTION_API_KEY:
 NOTION_VERSION = "2022-06-28"
 NOTION_BASE = "https://api.notion.com/v1"
 
-VAULT = Path(os.environ.get("LOVART_RESOURCE_ROOT",
-              Path(__file__).resolve().parents[4]))
-MFLOW = VAULT / "1-Project" / "Lovart MFlow"
+VAULT = Path(os.environ.get("MFLOW_RESOURCE_ROOT", Path(__file__).resolve().parents[4]))
+MFLOW = VAULT / "1-Project" / "品牌方 MFlow"
 
 DATABASES = {
     "content-calendar": {

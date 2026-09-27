@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # session-init.sh — lightweight session startup check
-# Run this at the start of every Lovart session to ensure pipeline state is fresh.
+# Run this at the start of every 品牌方 session to ensure pipeline state is fresh.
 #
 # Usage:
 #   bash session-init.sh              # full check
@@ -22,11 +22,11 @@ ROUTER_PY="$HARNESS/Skills/06-orchestrate/router/router.py"
 STATE="1-3 GenFlow/.pipeline/pipeline-state.json"
 
 # Resolve to absolute path
-VAULT="${LOVART_RESOURCE_ROOT:-$VAULT_ROOT}"
+VAULT="${MFLOW_RESOURCE_ROOT:-$VAULT_ROOT}"
 STATE_ABS="$MFLOW_ROOT/$STATE"
 
-# P7-C：python 解析统一 LOVART_PYTHON → 项目 venv → 系统 python3（服务器 py3.6 ascii 读中文会炸）
-PY3="${LOVART_PYTHON:-}"
+# P7-C：python 解析统一 MFLOW_PYTHON → 项目 venv → 系统 python3（服务器 py3.6 ascii 读中文会炸）
+PY3="${MFLOW_PYTHON:-}"
 if [[ -z "$PY3" && -x "$MFLOW_ROOT/.venv/bin/python" ]]; then
     PY3="$MFLOW_ROOT/.venv/bin/python"
 fi

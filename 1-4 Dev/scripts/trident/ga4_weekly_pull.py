@@ -11,7 +11,7 @@ from pathlib import Path
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
-CRED_DIR = Path(__file__).resolve().parents[3] / "1-1 Harness/Skills/01-strategy/lovart-trident-data-engine/credentials"
+CRED_DIR = Path(__file__).resolve().parents[3] / "1-1 Harness/Skills/01-strategy/trident-data-engine/credentials"
 TOKEN = json.loads((CRED_DIR / "ga4-token.json").read_text())
 PROPERTY = "properties/403618427"
 STREAM = "10524753059"

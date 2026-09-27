@@ -14,11 +14,11 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
 from credential_paths import credential_file
-from lovart_brand_match import is_brand
+from brand_match import is_brand
 from seo_monthly_v2 import country_group
 
 from path_constants import DAILY_DIR
-SITE = "https://www.lovart.ai/"
+SITE = "https://www.example.com/"
 PROPERTY = "properties/403618427"
 STREAM = "10524753059"
 
@@ -72,7 +72,7 @@ def render_day(day: str) -> Path:
     top = sorted(ck, key=lambda x: x["clicks"], reverse=True)[:10]
     top_lines = "\n".join(f"- {k['q']}: {k['clicks']} clicks" for k in top)
 
-    report = f"""# Lovart SEO 日报 — {day}
+    report = f"""# 品牌方 SEO 日报 — {day}
 
 > **环比**: vs {prev}  
 > **生成**: {date.today().isoformat()}  
@@ -100,7 +100,7 @@ def render_day(day: str) -> Path:
 
 """
     DAILY_DIR.mkdir(parents=True, exist_ok=True)
-    out = DAILY_DIR / f"Lovart-SEO-{day}.md"
+    out = DAILY_DIR / f"品牌方-SEO-{day}.md"
     out.write_text(report)
     print(f"✅ {out.name}")
     return out
@@ -109,7 +109,7 @@ def render_day(day: str) -> Path:
 def render_daily_range(start: date, end: date, skip_existing: bool = True) -> None:
     d = start
     while d <= end:
-        out = DAILY_DIR / f"Lovart-SEO-{d.isoformat()}.md"
+        out = DAILY_DIR / f"品牌方-SEO-{d.isoformat()}.md"
         if out.is_file() and skip_existing:
             print(f"  skip {d}")
         else:

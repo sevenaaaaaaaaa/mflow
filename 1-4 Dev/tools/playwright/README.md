@@ -6,7 +6,7 @@
 
 | 文件 | 何时用 | 依赖 |
 |---|---|---|
-| `python_adapter.py` | **推荐**。本地 Python Playwright,完全控制,cookie 持久化最简单 | `~/Library/Caches/lovart-tools-venv`(已装好) |
+| `python_adapter.py` | **推荐**。本地 Python Playwright,完全控制,cookie 持久化最简单 | `~/Library/Caches/mflow-tools-venv`(已装好) |
 | `mcp_adapter.py` | Claude/Cursor 已配 `@playwright/mcp` 时,通过 JSON-RPC 复用 | `npx -y @playwright/mcp` |
 
 `web_router` 默认走 `python`(失败时降级到 mcp)。
@@ -15,11 +15,11 @@
 
 ```bash
 # 1. 建独立 venv(避开 Hermes 全局 PYTHONPATH 污染 + 系统 Python ensurepip 缺位)
-/opt/homebrew/bin/python3.13 -m venv ~/Library/Caches/lovart-tools-venv
+/opt/homebrew/bin/python3.13 -m venv ~/Library/Caches/mflow-tools-venv
 
 # 2. 装 playwright + chromium
-~/Library/Caches/lovart-tools-venv/bin/pip install playwright
-~/Library/Caches/lovart-tools-venv/bin/playwright install chromium
+~/Library/Caches/mflow-tools-venv/bin/pip install playwright
+~/Library/Caches/mflow-tools-venv/bin/playwright install chromium
 ```
 
 **为什么不装到 Hermes 自带 venv**:`/Users/seveno/.hermes/hermes-agent/venv/lib/python3.11/site-packages/greenlet` 的 C 扩展坏掉了,任何 import `playwright.sync_api` 都会 ModuleNotFoundError。独立 venv 完全隔离。
@@ -28,7 +28,7 @@
 
 ### 直接用 adapter(不走 router)
 ```bash
-PYTHONPATH= ~/Library/Caches/lovart-tools-venv/bin/python \
+PYTHONPATH= ~/Library/Caches/mflow-tools-venv/bin/python \
   tools/playwright/python_adapter.py https://www.notion.so/product \
   --wait-ms 3000 \
   --out notion-product.json
@@ -47,18 +47,18 @@ result = fetch_url("https://app.slack.com/", force_tool="playwright")
 ```
 
 ### 登录一次复用(nice trick)
-adapter 默认用 `~/Library/Caches/lovart-browser-profile` 当 Chromium user-data-dir。
+adapter 默认用 `~/Library/Caches/mflow-browser-profile` 当 Chromium user-data-dir。
 **第一次手动跑一次 headless=false** 完成登录,之后所有 headless 调用都自动复用 cookie。
 
 ```bash
 # 第一次:无头模式关掉,会弹出浏览器,登录 Gmail/Slack,然后关浏览器
-PYTHONPATH= ~/Library/Caches/lovart-tools-venv/bin/python \
+PYTHONPATH= ~/Library/Caches/mflow-tools-venv/bin/python \
   tools/playwright/python_adapter.py https://gmail.com/ --headless false
 ```
 
 之后:
 ```bash
-PYTHONPATH= ~/Library/Caches/lovart-tools-venv/bin/python \
+PYTHONPATH= ~/Library/Caches/mflow-tools-venv/bin/python \
   tools/playwright/python_adapter.py https://mail.google.com/inbox --wait-ms 4000
 ```
 

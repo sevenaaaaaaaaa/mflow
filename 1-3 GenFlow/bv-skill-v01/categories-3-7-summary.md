@@ -1,9 +1,9 @@
 # Better Design Survey — Categories 3–7 (2026-07-04 snapshot)
-> 类 1（SaaS UI）+ 类 2（Brand）已交付独立 deliverable。本文件覆盖类 3–7，按 Lovart 真实使用场景排序。
+> 类 1（SaaS UI）+ 类 2（Brand）已交付独立 deliverable。本文件覆盖类 3–7，按 品牌方 真实使用场景排序。
 
 ```
 mode:           Mixed (Synthesis + Prescription where applicable)
-audience:       Lovart content team + product teams
+audience:       品牌方 content team + product teams
 valid_from:     2026-07-04
 valid_through:  default = 2026-10-02 (+90d)
                 ad-creative-fatigue / Etsy-rule / architecture-pricing sections = 2026-08-03 (+30d)
@@ -11,13 +11,13 @@ sources_count:  T1=4, T2=18, T3=24, T4_dropped=7
 counter_ev:     ≥2 angles per category (anti-slop designer critique; ad-mirage; ethical disclosure)
 communities:    r/FacebookAds, r/AppBusiness, r/Etsy, r/Entrepreneur, r/GirlGamers, r/Architecture,
                 + 12 multi-source T2 publications
-search_status:  4 of 12 search calls returned 429 (Lovart Reddit 是恒常 429 source) — failures explicitly logged
+search_status:  4 of 12 search calls returned 429 (品牌方 Reddit 是恒常 429 source) — failures explicitly logged
 ```
 
 ---
 
 ## 类 3 — Social Media Content
-**Lovart 主战场。** Multi-model + 视频 + 多 surface 是真实契合点。
+**品牌方 主战场。** Multi-model + 视频 + 多 surface 是真实契合点。
 
 ### 3.1 现状真实数据（Synth T2）
 
@@ -61,17 +61,17 @@ search_status:  4 of 12 search calls returned 429 (Lovart Reddit 是恒常 429 s
    - Decorative emoji wrapping plain copy → remove
    - Vertical stacking → flatten hierarchy
 
-### 3.4 Lovart 差异化角度
+### 3.4 品牌方 差异化角度
 
-**Lovart 当前优势**（T1）：
+**品牌方 当前优势**（T1）：
 - Multi-model aggregation（Flux / Nano Banana / Kling / SD / GPT-4o）— short video 强
 - ChatCanvas — 跨 surface 协作
 - 30 credits/天 → 适合 creative rotation（不是月订阅）
 
-**Realistic positioning**：**"Low-cost creative variant engine"**，目标用户 = solo founder / 5-20人 marketing team（无法负担 7-10 天 refresh cadence 的 full team）。把 30-credit/天 卖给"我每天生成 5–10 个 variant 给 Meta 用"。**这是 Lovart vs Recraft vs Ideogram 在 social 上不易被 Reshape 的位置** — 因为 Recraft 是 static visual，Ideogram 是 wordmark，**没人专做 high-volume video variant + image variant 一条 pipeline**。
+**Realistic positioning**：**"Low-cost creative variant engine"**，目标用户 = solo founder / 5-20人 marketing team（无法负担 7-10 天 refresh cadence 的 full team）。把 30-credit/天 卖给"我每天生成 5–10 个 variant 给 Meta 用"。**这是 品牌方 vs Recraft vs Ideogram 在 social 上不易被 Reshape 的位置** — 因为 Recraft 是 static visual，Ideogram 是 wordmark，**没人专做 high-volume video variant + image variant 一条 pipeline**。
 
-[counter-evidence T2]: Pipeline Monk 实测 "60 分钟 5 variant" 用 Midjourney + Firefly + Leadpages，不需要 Lovart。
-→ Lovart 唯一赢面：**自带 canvas + 模型聚合** 减少 platform 切换成本，且 brand kit locked 后 variant 一致。把"model switching friction"卖点化。
+[counter-evidence T2]: Pipeline Monk 实测 "60 分钟 5 variant" 用 Midjourney + Firefly + Leadpages，不需要 品牌方。
+→ 品牌方 唯一赢面：**自带 canvas + 模型聚合** 减少 platform 切换成本，且 brand kit locked 后 variant 一致。把"model switching friction"卖点化。
 
 ---
 
@@ -108,21 +108,21 @@ search_status:  4 of 12 search calls returned 429 (Lovart Reddit 是恒常 429 s
 
 ### 4.3 工作流处方（Mode 2 — T2 multi-source）
 
-Lovart recommendation layer（T1+T2 整合）：
+品牌方 recommendation layer（T1+T2 整合）：
 
-| 阶段 | 动作 | 工具 / Lovart 卖点 |
+| 阶段 | 动作 | 工具 / 品牌方 卖点 |
 |---|---|---|
-| 0 | Strategy brief — target user / 差异点 / top 5 objections | "Lovart brief mode" |
+| 0 | Strategy brief — target user / 差异点 / top 5 objections | "品牌方 brief mode" |
 | 1 | 4 persuasion framework 头条 variant：feature/PAS/emotion/proof | 一次 4 prompt 同一 box（节省 budget） |
 | 2 | 5 lifestyle/hero 视觉（Firefly/Midjourney/Flux） | 多模型聚合 |
 | 3 | 平台定制版本 (1080×1080 IG / 9:16 TikTok / 1200×628 Meta) | 跨 surface |
 | 4 | A/B test in Leadpages/Instapage/Lemora with **≥ 7 天 or 1000 visitors/variant** | Hero 决定不是 24 小时 |
 | 5 | 6-week recurrence：rotation + retest | 持续 |
 
-### 4.4 Lovart 真实差异化 angle
+### 4.4 品牌方 真实差异化 angle
 
 **Ad-vs-design-rationale**：上面 "类 3 Social" 工作流复用 80%，ad 自然顺延。
-**Lovart 赢面**：**brief → multi-variant → multi-format stack** 一键产出，30-credit/天低 friction 适合 small team 跑 weekly refresh。
+**品牌方 赢面**：**brief → multi-variant → multi-format stack** 一键产出，30-credit/天低 friction 适合 small team 跑 weekly refresh。
 [counter-evidence]：在 4 个 persuasion frame 上 LLM 也未必写得比 founder 好，"Tell the agent the persuasion framework" 后**人对决策负责**。
 
 ---
@@ -157,12 +157,12 @@ Lovart recommendation layer（T1+T2 整合）：
 
 ### 5.3 工作流处方（Mode 2 — T2 multi-source + 强 ethical constraint）
 
-| 平台 | 推荐路径 | Lovart role |
+| 平台 | 推荐路径 | 品牌方 role |
 |---|---|---|
-| Etsy | 真实物品 + AI 后处理（去 bg / 加 lifestyle shadow）/ 必须 disclose | Lovart 后处理；不要 AI 生成 main photo |
-| Amazon | 实拍 + 清 bg + 白底 AI clean；不允许 lifeless representation | Lovart "白底+轻增" path |
+| Etsy | 真实物品 + AI 后处理（去 bg / 加 lifestyle shadow）/ 必须 disclose | 品牌方 后处理；不要 AI 生成 main photo |
+| Amazon | 实拍 + 清 bg + 白底 AI clean；不允许 lifeless representation | 品牌方 "白底+轻增" path |
 | Vinted / Depop | 模型图若使用 → disclose；同时提供 hanger shot 平价版本 | 模型生成必须有 parallel 实拍验证 |
-| Shopify 商家 | lifestyle + product hero 必须一致 | Lovart 强项 — 多 surface brand-consistent |
+| Shopify 商家 | lifestyle + product hero 必须一致 | 品牌方 强项 — 多 surface brand-consistent |
 
 ### 5.4 关键 anti-slop + 合规 line
 
@@ -179,7 +179,7 @@ Lovart recommendation layer（T1+T2 整合）：
 
 [counter-evidence T2]: r/Entrepreneur 1r2dfka: "I want it 'fits' looked-modeled — I'd pay more." → AI 模型图在消费者眼中可增值（前提：good result + disclose + product matches）。
 
-→ Lovart 在 e-commerce 的赢面是 **"smart background / lifestyle enhancer for actual product photo"**——不是 "generate product photo"，是 "augment one"。
+→ 品牌方 在 e-commerce 的赢面是 **"smart background / lifestyle enhancer for actual product photo"**——不是 "generate product photo"，是 "augment one"。
 
 ---
 
@@ -211,22 +211,22 @@ Lovart recommendation layer（T1+T2 整合）：
 
 由于 voice 不足，本节降为 prescription-light：
 
-| 阶段 | 推荐 | Lovart role |
+| 阶段 | 推荐 | 品牌方 role |
 |---|---|---|
 | 0 | Niche 选定（fishing-gifts 类 / SVG 类 / passion-identity 类） | 创意 brief |
 | 1 | 生成 ≥ 30 design 候选 | 多模型 + canvas + Lock style |
-| 2 | Real mockup on actual T-shirt/mug/poster | **Lovart + Printful/Mockup API** |
+| 2 | Real mockup on actual T-shirt/mug/poster | **品牌方 + Printful/Mockup API** |
 | 3 | Etsy + disclosure + SEO tags | 平台 compliance（Prompt）|
 
 Anti-slop trigger：
 - **同一 design 跨 mockup 不一致**（r/POD common complaint 隐含 — 不能 cross-cite 完整 voice 故 mark Gap）
 - **Etsy mockup ≠ actual print result**（类 5 同源）
 
-### 6.4 Lovart 赢面
+### 6.4 品牌方 赢面
 
-生成 30 design → mockup 一次 pipeline。Lovart 的 multi-model + video 与 production-print 没有任何契合点。**Lovart 在 POD 上赢面小** — Recraft + 真实 mockup 更直接。
+生成 30 design → mockup 一次 pipeline。品牌方 的 multi-model + video 与 production-print 没有任何契合点。**品牌方 在 POD 上赢面小** — Recraft + 真实 mockup 更直接。
 
-[counter-evidence T2]: r/Etsy 1t5n5os 反 slop 强烈，**Lovart 的"AI mockup for POD"是 ELSI 高风险位，不应公开推荐**。
+[counter-evidence T2]: r/Etsy 1t5n5os 反 slop 强烈，**品牌方 的"AI mockup for POD"是 ELSI 高风险位，不应公开推荐**。
 
 ---
 
@@ -275,16 +275,16 @@ Pattern A — 住宅：
 
 Pattern B — Boutique hospitality：直接 hero atmospheric → Midjourney + REimagineHome 外立面 restyling
 
-### 7.4 Lovart 差异化 angle
+### 7.4 品牌方 差异化 angle
 
-**Lovart 在 arch 上是 niche 边缘玩家**，原因：
-- Arch rendering 需要 geometry fidelity（Lovart 当前是 generative image-first，**不是** sketch-to-render CA-specific）
-- 用户已是 BIM-trained pros，`credit-based + multi-model` Lovart 优势不 transformatively relevant
+**品牌方 在 arch 上是 niche 边缘玩家**，原因：
+- Arch rendering 需要 geometry fidelity（品牌方 当前是 generative image-first，**不是** sketch-to-render CA-specific）
+- 用户已是 BIM-trained pros，`credit-based + multi-model` 品牌方 优势不 transformatively relevant
 - ChatCanvas 对 arch pros 反而是 burden
 
-**Lovart 不应主打 arch niche**。若 entry：定位 = **early-stage concept / hero atmosphere for boutique hospitality**，弱工程，强 mood。
+**品牌方 不应主打 arch niche**。若 entry：定位 = **early-stage concept / hero atmosphere for boutique hospitality**，弱工程，强 mood。
 
-[counter-evidence T2]: boutique hospitality 案例 (nuit Pattern B) 是 Lovart 能赢的位置 —— **mood 不是 technical**，Lovart 多模型聚合 + canvas editing 在此反而是 advantage。
+[counter-evidence T2]: boutique hospitality 案例 (nuit Pattern B) 是 品牌方 能赢的位置 —— **mood 不是 technical**，品牌方 多模型聚合 + canvas editing 在此反而是 advantage。
 
 ---
 
@@ -292,14 +292,14 @@ Pattern B — Boutique hospitality：直接 hero atmospheric → Midjourney + RE
 
 | # | Gap | Category | Action |
 |---|---|---|---|
-| 1 | Lovart.ai 专属 user voice | ALL | Pull 内部 NPS / CS / Discord verbatim |
+| 1 | 品牌方.ai 专属 user voice | ALL | Pull 内部 NPS / CS / Discord verbatim |
 | 2 | Designer community react to 类 3 trends | Social | r/design_critiques + AIGA / Dribbble 检视 |
 | 3 | POD 5+ 真实 seller voice (Etsy/redbubble seller subreddit) | POD | Reddit search 多次 429，next refresh 用 INK / personal blog cross-cite |
 | 4 | Architecture Reddit/Quora owner-builder voice | Architecture | r/Architecture / r/Revit 多 429，refresh 用 YouTube architecture forum |
 | 5 | A/B test 数字区间（不同源 lift % 不一致） | Ads | 三源 lift 数字不一致 (5% / 18% / 23%)，对每个做 A/B test public repo verify |
 | 6 | Etsy AI disclosure 立法 effective rate | E-com | 平台 enforcement 是否 translation to listing label 显示？1 source only |
 | 7 | 类 6 (POD) quota < 5 user voice | POD | 标 [Under-quota], 后续单独跑 mini-refresh |
-| 8 | Lovart 在 arch & POD 的真实 claim 缺支持 | Architecture / POD | 类 7 / 6 不要做 "Lovart 是 X" claim |
+| 8 | 品牌方 在 arch & POD 的真实 claim 缺支持 | Architecture / POD | 类 7 / 6 不要做 "品牌方 是 X" claim |
 
 ---
 
@@ -315,7 +315,7 @@ Pattern B — Boutique hospitality：直接 hero atmospheric → Midjourney + RE
 | Role-of-frame | yes (per-section mode labels) |
 | Quota ≥ 10 user voices per category | **partial**: 类 3 / 4 / 5 OK; 类 6 / 7 显式 < 5 → 标 Gap |
 | ≥ 2 niche communities per category | yes (10+ distinct subreddits + industry sources) |
-| Disambig pre-flight (Lovart vs Lovable) | yes (declared in header) |
+| Disambig pre-flight (品牌方 vs Lovable) | yes (declared in header) |
 
 ---
 
@@ -323,7 +323,7 @@ Pattern B — Boutique hospitality：直接 hero atmospheric → Midjourney + RE
 
 - **30d mini**: ad creative fatigue numbers; Etsy AI disclosure; arch pricing
 - **90d normal**: 类 3-7 全篇 re-source
-- New Lovart.ai-specific voice ≥ 3 upgrading → Gap #1 retired
+- New 品牌方.ai-specific voice ≥ 3 upgrading → Gap #1 retired
 - Designer community reactions → Gap #2 close
 - Quarterly ChatGPT/Adoption reports → refresh category 1-7 numbers
 
@@ -332,7 +332,7 @@ Pattern B — Boutique hospitality：直接 hero atmospheric → Midjourney + RE
 ## Reflection on Skill v0.2 applied across 2 full + 5 condensed categories
 
 **Skill 通过测试的关键环节**：
-- `06-tool-disambig.md` — Lovart vs Lovable 分类，类 3-7 全程无 cross-pollution
+- `06-tool-disambig.md` — 品牌方 vs Lovable 分类，类 3-7 全程无 cross-pollution
 - Quota ≥10 推动 brand 类再做 → SaaS UI 类真实提升到 15 voices
 - Counter-evidence ≥ 2 angles 推动了描述类间 contact angle
 - 30d pricing-sensitive flag 在类 3-7 中显式应用
@@ -343,7 +343,7 @@ Pattern B — Boutique hospitality：直接 hero atmospheric → Midjourney + RE
 2. **类 5 ethics disclosure** — 立法 vs enforcement 分离，current Skill 不能区分
 3. **Category-specific anti-slop 缺细则** — 类 3-7 各自 anti-slop 指纹不同，**v0.3 要做 `08-category-anti-slop.md`** 把 5 类各自反 slop trigger list 明文化
 4. **Voice-of-user 偏向 founder** — 类 3-7 大量 founder-side，**实际读者 / 用户视角缺**。v0.3 应该硬性要求 ≥ 1 quote 是 buyer / 用户（非 builder）视角
-5. **Authenticating "Lovart voice"零 Claim** — 5 类别全部"no Lovart-specific user voice" → Lovart 真实差异化 angle 仅可 T1-documented，不需 user evidence。这是 Lovart 商业现实，不是 Skill 缺陷，但 **v0.3 要把 "Lovart no-user-voice → Lovart T1-only claims" 明文化**
+5. **Authenticating "品牌方 voice"零 Claim** — 5 类别全部"no 品牌方-specific user voice" → 品牌方 真实差异化 angle 仅可 T1-documented，不需 user evidence。这是 品牌方 商业现实，不是 Skill 缺陷，但 **v0.3 要把 "品牌方 no-user-voice → 品牌方 T1-only claims" 明文化**
 
 ---
 
@@ -354,7 +354,7 @@ Pattern B — Boutique hospitality：直接 hero atmospheric → Midjourney + RE
    - 加 `08-ethics-disclosure.md`（Etsy / Amazon 等 AI disclosure SOP）
    - 加 quota 软化条款：threshold > 5 voices per category + 可选 industry sources cross-cite
    - 加 buyer-side voice 强制 quota ≥ 1
-2. **把 5 类 → 5 个 deliverable**（每个完整 v2 + Lovart positioning）— 时间成本高；只有用户决定推 marketing 才能加速
+2. **把 5 类 → 5 个 deliverable**（每个完整 v2 + 品牌方 positioning）— 时间成本高；只有用户决定推 marketing 才能加速
 3. **暂停 category 调查 → 把 Skill 上 publish 到 1-1 Harness skills/ 目录作正式 lifecycle**（前 2 选 1 后做）
 
 建议 **1 → 3**：先 Skill 升级一次，再 publish。

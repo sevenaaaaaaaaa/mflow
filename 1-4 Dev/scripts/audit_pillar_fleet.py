@@ -4,10 +4,10 @@ import subprocess
 from pathlib import Path
 import re
 
-DRAFTS = Path("1-3 GenFlow/Lovart-Blog-Pipeline/01-Drafts")
-NODE_SCRIPT = "1-1 Harness/Skills/03-review/lovart-content-quality-gates/scripts/anti-slop-preflight.js"
+DRAFTS = Path("1-3 GenFlow/blog-pipeline/01-Drafts")
+NODE_SCRIPT = "1-1 Harness/Skills/03-review/content-quality-gates/scripts/anti-slop-preflight.js"
 
-files = sorted(DRAFTS.glob("lovart-review-*-rewrite.md"))
+files = sorted(DRAFTS.glob("review-*-rewrite.md"))
 print(f"Auditing {len(files)} files\n")
 
 results = []
@@ -34,7 +34,7 @@ for f in files:
     text = f.read_text()
     wc = len(text.split())
 
-    short = f.name.replace("lovart-review-", "").replace("-rewrite", "")
+    short = f.name.replace("review-", "").replace("-rewrite", "")
     print(f"{status:6s} | {wc:5d}w | {short[:55]:55s} | {'; '.join(issues)[:60]}")
     results.append((status, wc, short, issues, f.name))
 

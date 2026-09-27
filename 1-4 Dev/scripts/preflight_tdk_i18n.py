@@ -28,28 +28,28 @@ LATIN = re.compile(r"[A-Za-z]")
 LANG_TAG = re.compile(r"^\[(IT|PT|FR|DE|JA|KO|RU|ZH|EN)\]\s*", re.I)
 # Full boiler: EN shell on non-English pages (keep aggressive).
 EN_BOILER = re.compile(
-    r"\b(Create professional|with Lovart'?s AI Design Agent|Professional Design Tool|"
-    r"Design Tool \| Lovart|in seconds with|Free to Try|from Text)\b",
+    r"\b(Create professional|with 品牌方'?s AI Design Agent|Professional Design Tool|"
+    r"Design Tool \| 品牌方|in seconds with|Free to Try|from Text)\b",
     re.I,
 )
 # EN pages: only true slug-dump / product-shell templates — not "from text" / "in seconds with".
 EN_PAGE_BOILER = re.compile(
-    r"\b(Create professional|Professional Design Tool|Design Tool \| Lovart)\b",
+    r"\b(Create professional|Professional Design Tool|Design Tool \| 品牌方)\b",
     re.I,
 )
-SLUG_TC = re.compile(r"^Ai [A-Z][a-z]+( [A-Za-z0-9/-]+){1,10}\s*\|\s*Lovart\s*$")
+SLUG_TC = re.compile(r"^Ai [A-Z][a-z]+( [A-Za-z0-9/-]+){1,10}\s*\|\s*品牌方\s*$")
 SYNTH_SHELL = re.compile(
-    r"｜Lovart AI 设计工具\s*$|｜Lovart AI 設計工具\s*$|"
-    r"^Lovartの.+｜AIでプロ品質|"
-    r"\|\s*Lovart AI로 전문 디자인\s*$|"
-    r"\sс ИИ \| Lovart\s*$|"
-    r"用 Lovart AI 设计代理，为「|用 Lovart AI 設計代理，為「|"
-    r"LovartのAIデザインエージェントで「|Lovart AI 디자인 에이전트로|"
+    r"｜品牌方 AI 设计工具\s*$|｜品牌方 AI 設計工具\s*$|"
+    r"^品牌方の.+｜AIでプロ品質|"
+    r"\|\s*品牌方 AI로 전문 디자인\s*$|"
+    r"\sс ИИ \| 品牌方\s*$|"
+    r"用 品牌方 AI 设计代理，为「|用 品牌方 AI 設計代理，為「|"
+    r"品牌方のAIデザインエージェントで「|品牌方 AI 디자인 에이전트로|"
     r"Создавайте профессиональные материалы для «|"
     r"Créez des résultats professionnels pour|"
     r"Crea risultati professionali per|"
     r"Crie resultados profissionais para|"
-    r"Erstellen Sie mit Lovarts KI-Design-Agenten professionelle Ergebnisse"
+    r"Erstellen Sie mit 品牌方s KI-Design-Agenten professionelle Ergebnisse"
 )
 
 
