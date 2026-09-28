@@ -133,7 +133,6 @@ SYNC_ITEMS=(
     "run/sites/|${REMOTE_ROOT}/run/sites/"
     "./1-1 Harness/02-rules/|${REMOTE_ROOT}/1-1 Harness/02-rules/"
     "./1-1 Harness/Skills/|${REMOTE_ROOT}/1-1 Harness/Skills/"
-    "./1-1 Harness/08-storyline/|${REMOTE_ROOT}/1-1 Harness/08-storyline/"
     "./1-1 Harness/03-workflows/|${REMOTE_ROOT}/1-1 Harness/03-workflows/"
     "./1-1 Harness/10-config/|${REMOTE_ROOT}/1-1 Harness/10-config/"
     "plugins/|${REMOTE_ROOT}/plugins/"
@@ -142,14 +141,13 @@ SYNC_ITEMS=(
     "docs/|${REMOTE_ROOT}/docs/"
     "VERSION|${REMOTE_ROOT}/VERSION"
     "ROADMAP.md|${REMOTE_ROOT}/ROADMAP.md"
-    "./1-1 Harness/11-knowledge/sessions/|${REMOTE_ROOT}/1-1 Harness/11-knowledge/sessions/"
 )
 for entry in "${SYNC_ITEMS[@]}"; do
     src="${entry%%|*}"; dst="${entry#*|}"
     # openrsync 规则：引号只能包 host: 之后的路径部分（包住 user@ 会被当非法用户名字符）
     spec="${REMOTE}:\"${dst}\""
     DEL_FLAG=""
-    case "$dst" in *"/1-1 Harness/02-rules/"*|*"/1-1 Harness/Skills/"*|*"/1-1 Harness/08-storyline/"*) DEL_FLAG="--delete";; esac
+    case "$dst" in *"/1-1 Harness/02-rules/"*|*"/1-1 Harness/Skills/"*) DEL_FLAG="--delete";; esac
     if ! rsync -az $DEL_FLAG -e "ssh -p $REMOTE_PORT" "$src" "$spec" >/dev/null 2>&1; then
         fail 4 "rsync $src → $dst 失败"
     fi
