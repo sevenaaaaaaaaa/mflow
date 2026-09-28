@@ -516,6 +516,46 @@ class TestContentEditor(unittest.TestCase):
         self.assertEqual(d["removed"], 0)
 
 
+class TestDigest(unittest.TestCase):
+    """工作台首页「本周速览」(/api/digest) 回归。
+
+    踩过的坑：后台把 usage_stats()["by_day"] 的键读成 total_tokens（实为 tokens），
+    导致 /api/digest 恒 500、首页整块不渲染。这条锁住口径。
+    """
+
+    def _with_usage(self, rows):
+        f = C.USAGE_FILE
+        f.parent.mkdir(parents=True, exist_ok=True)
+        backup = f.read_text(encoding="utf-8") if f.exists() else None
+        f.write_text("\n".join(json.dumps(r, ensure_ascii=False) for r in rows) + "\n",
+                     encoding="utf-8")
+        return backup
+
+    def _restore(self, backup):
+        f = C.USAGE_FILE
+        if backup is None:
+            f.unlink(missing_ok=True)
+        else:
+            f.write_text(backup, encoding="utf-8")
+
+    def test_digest_tokens_sums_by_day(self):
+        today = time.strftime("%Y-%m-%d")
+        rows = [{"ts": today + "T01:00:00", "profile": "default", "total_tokens": 5},
+                {"ts": today + "T02:00:00", "profile": "default", "total_tokens": 7}]
+        backup = self._with_usage(rows)
+        try:
+            self.assertEqual(C.digest_tokens(), 12)
+        finally:
+            self._restore(backup)
+
+    def test_digest_tokens_empty(self):
+        backup = self._with_usage([])
+        try:
+            self.assertEqual(C.digest_tokens(), 0)
+        finally:
+            self._restore(backup)
+
+
 class TestRunDirIsolation(unittest.TestCase):
     """RUN_DIR 隔离——踩过的坑：单测 import console 就往生产 run/approvals.log 写审计噪音。
 

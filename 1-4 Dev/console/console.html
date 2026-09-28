@@ -2415,7 +2415,7 @@ function loadHome(){modeLoad();loadSelfcheck();loadStart();loadNextActions();inb
  try{api('api/digest').then(dg=>{
  if(!dg)return;$('home-timers').parentElement.insertAdjacentHTML('beforebegin',
   `<div class="card" style="margin-bottom:14px"><div class="card-head"><h3>本周速览</h3></div><div class="mut" style="font-size:13px;line-height:1.9">
-   近 7 日新增报告 <b>${dg.new_reports}</b> 份 · 状态机推进 <b>${dg.throughput}</b> 次 · tokens <b>${dg.tokens.toLocaleString()}</b>${dg.latest?` · 最新报告：<a class="more" href="#" onclick="openReader('${esc(dg.latest.path)}');return false">${esc(dg.latest.name)}</a>`:''}</div></div>`)})}catch(e){}
+   近 7 日新增报告 <b>${dg.new_reports}</b> 份 · 状态机推进 <b>${dg.throughput}</b> 次 · tokens <b>${(dg.tokens||0).toLocaleString()}</b>${dg.latest?` · 最新报告：<a class="more" href="#" onclick="openReader('${esc(dg.latest.path)}');return false">${esc(dg.latest.name)}</a>`:''}</div></div>`)})}catch(e){}
 $('home-timers').innerHTML=esc((o.timers||'').split('\n').filter(l=>/mflow/.test(l)).join('\n'))||'—';
  const c=o.chart7d||[];const mx=Math.max(1,...c.map(x=>x.n));
  $('chart7').innerHTML=c.map(x=>`<div class="cb"><span class="vl tnum">${x.n||''}</span><div class="bar" style="height:${Math.max(4,x.n/mx*100)}%"></div><span class="lb">${x.label}</span></div>`).join('');

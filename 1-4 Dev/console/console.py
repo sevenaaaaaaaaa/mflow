@@ -645,6 +645,15 @@ def usage_stats():
             "recent": rows[-50:][::-1]}
 
 
+def digest_tokens():
+    """近 7 日 token 合计（/api/digest 用）。键名必须与 usage_stats().by_day 对齐（tokens）。
+
+    踩过的坑：这里曾写成 x["total_tokens"]，而 by_day 每项的键是 tokens，
+    导致 /api/digest 恒 500、工作台首页「本周速览」整个不渲染。
+    """
+    return sum(x["tokens"] for x in usage_stats()["by_day"][-7:])
+
+
 def calendar_index():
     now = time.time()
     if _CAL_CACHE["files"] is not None and now - _CAL_CACHE["ts"] < 600:
@@ -9402,7 +9411,7 @@ class Handler(BaseHTTPRequestHandler):
                                     thr += 1
                             except Exception:
                                 continue
-                tok = sum(x["total_tokens"] for x in usage_stats()["by_day"][-7:])
+                tok = digest_tokens()
                 return self._send(200, {"new_reports": new_reports, "throughput": thr, "tokens": tok,
                                         "latest": latest[1] if latest else None})
             if parsed.path == "/api/impact":
