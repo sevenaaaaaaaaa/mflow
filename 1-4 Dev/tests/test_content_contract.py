@@ -228,16 +228,24 @@ class TestBlogDocModel(unittest.TestCase):
 
 
 class TestStorylines(unittest.TestCase):
-    """故事线顺序校验：族内变体可替换；跨族错位 BLOCK；T-long 无固定序列。"""
+    """故事线顺序校验：族内变体可替换；跨族错位 BLOCK；T-long 无固定序列。
+    开源版/服务器部署不带 1-3 GenFlow SSOT（零品牌内容）→ load 为空是合法降级，跳过本组。"""
+
+    _SSOT = storylines.load_storylines()
+
+    @classmethod
+    def setUpClass(cls):
+        if not cls._SSOT:
+            raise unittest.SkipTest("故事线 SSOT（1-3 GenFlow/Page Gen/Refresh-Page）不在本部署")
 
     def test_load_storylines_nonempty(self):
-        sl = storylines.load_storylines()
+        sl = self._SSOT
         self.assertIn("F1", sl)
         self.assertIn("landing-brand-trust", sl)
         self.assertIn("solution-team", sl)
 
     def test_f1_match_ok_and_mismatch_blocked(self):
-        f1 = storylines.load_storylines()["F1"]["sections"]
+        f1 = self._SSOT["F1"]["sections"]
         self.assertTrue(storylines.check_storyline(f1, "F1")["ok"])
         swapped = [f1[1], f1[0]] + f1[2:]
         chk = storylines.check_storyline(swapped, "F1")
@@ -245,7 +253,7 @@ class TestStorylines(unittest.TestCase):
         self.assertTrue(any("位置 1" in p for p in chk["problems"]))
 
     def test_variant_substitution_within_family_ok(self):
-        t1 = storylines.load_storylines()["T1"]["sections"]
+        t1 = self._SSOT["T1"]["sections"]
         # bento-2 → bento-6：同族变体替换，顺序校验必须放行
         sub = ["bento-6" if t == "bento-2" else t for t in t1]
         self.assertTrue(storylines.check_storyline(sub, "T1")["ok"])
