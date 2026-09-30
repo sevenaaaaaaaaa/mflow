@@ -62,7 +62,8 @@ def portable_text_to_md(body):
             out.append(_block_md(b))
         elif t == "image":
             alt = b.get("alt") or ""
-            out.append(f"![{alt}]()")
+            src = b.get("src") or b.get("url") or ""
+            out.append(f"![{alt}]({src})")
         elif t == "code":
             lang = b.get("language") or ""
             out.append(f"```{lang}\n{b.get('code','')}\n```")

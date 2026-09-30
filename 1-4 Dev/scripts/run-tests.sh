@@ -20,4 +20,11 @@ mkdir -p "$TEST_RUN_DIR/sites"
 [[ -d "$ROOT/run/sites" ]] && cp -a "$ROOT/run/sites/." "$TEST_RUN_DIR/sites/" 2>/dev/null || true
 
 export MFLOW_RUN_DIR="$TEST_RUN_DIR"
-exec "$PY" "1-4 Dev/tests/test_console_units.py" "$@"
+
+# 跑 tests/ 下全部 test_*.py（逐文件执行，路径含空格也能跑；任一失败整体非零退出）
+rc=0
+for f in "$ROOT/1-4 Dev/tests"/test_*.py; do
+  echo "== $(basename "$f") =="
+  "$PY" "$f" "$@" || rc=1
+done
+exit $rc

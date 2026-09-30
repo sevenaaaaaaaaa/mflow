@@ -8,13 +8,22 @@
 
 安全设计：
   - 默认 dry_run=True（Sanity mutate API 原生 dryRun，不落库）
-  - 写操作用 createIfNotExists（不覆盖既有文档），status 一律 "draft"（发布到前台仍需人工在 Sanity 侧确认）
+  - 写操作用 createIfNotExists（不覆盖既有文档）；blog status 默认 "draft"（发布到前台仍需人工确认）
   - 只读探测 ping() 用于验证凭证与数据集连通
+
+内容模型（2026-09-30 起，对齐 PRD-Blog文章页面开发 §1.3/§4.3 与 Composite 手册 §2.2）：
+  - 文档 _id = (type, slug, language) 唯一键：blog → `blog-{slug}-{lang}`，
+    compositePage → `{page_type}-{slug}-{lang}`（同线上既有形态，如 tools-logo-maker-en）。
+    旧行为（_id=slug）可用环境变量 MFLOW_LEGACY_DOC_ID=1 临时回退。
+  - patch 定位按 slug+language GROQ 查询（手册 §2.4），与 _id 方案解耦，旧文档也可 patch。
+  - 三时间：publishedAt（真实发布）/ displayedAt（对外显示，PRD C3）；createdAt 用系统 _createdAt 不写。
+  - status 五态：draft / scheduled / published / unpublished / archived（PRD §1.3；MFlow 落显式字段）。
 
 用法（CLI）：
   python3 sanity_publisher.py ping
   python3 sanity_publisher.py dry-run --file draft.md --slug my-slug --lang zh --category How-To
   python3 sanity_publisher.py publish  --file draft.md --slug my-slug --lang zh --category How-To --yes
+  python3 sanity_publisher.py publish  --file draft.md --mode patch --status scheduled --yes
 """
 import json
 import os
@@ -31,6 +40,14 @@ try:
 except Exception as e:  # pragma: no cover
     md_to_pt = None
     _PT_ERR = str(e)
+try:
+    import section_registry as _REG
+except Exception:  # pragma: no cover
+    _REG = None
+try:
+    import storylines as _STORY
+except Exception:  # pragma: no cover
+    _STORY = None
 
 DEFAULT_PROJECT = "your-project-id"
 DEFAULT_DATASET = "production"
@@ -130,9 +147,38 @@ def parse_frontmatter(text):
     return fm
 
 
+STATUS_ENUM = ("draft", "scheduled", "published", "unpublished", "archived")
+
+
+def doc_id(doc_type, slug, lang):
+    """（type, slug, language）唯一键 → 文档 _id（PRD I1 / 手册 §2.2）。
+    MFLOW_LEGACY_DOC_ID=1 回退旧行为（_id=slug），仅供迁移期应急。"""
+    if os.environ.get("MFLOW_LEGACY_DOC_ID"):
+        return slug
+    return f"{doc_type}-{slug}-{lang}"
+
+
+def _iso(dt_text, fallback):
+    """frontmatter 日期 → ISO（带时区）。接受 YYYY-MM-DD 或 ISO；空值回落 fallback。"""
+    t = str(dt_text or "").strip()
+    if not t:
+        return fallback
+    if re.match(r"^\d{4}-\d{2}-\d{2}$", t):
+        return t + "T00:00:00+08:00"
+    if re.match(r"^\d{4}-\d{2}-\d{2}[T ]", t) and "+" not in t and "Z" not in t:
+        return t.replace(" ", "T") + "+08:00"
+    return t
+
+
 def build_blog_doc(md_path, slug="", lang="", category="", title="", description="",
-                   keywords=None, cover_url="", cluster="", author=""):
-    """把本地 md 草稿转成 Sanity blog 文档（status=draft，不覆盖既有 _id）。"""
+                   keywords=None, cover_url="", cluster="", author="",
+                   status="", published_at="", displayed_at="", legacy_id=None):
+    """把本地 md 草稿转成 Sanity blog 文档（默认 status=draft，不覆盖既有 _id）。
+
+    三时间映射（PRD C3）：frontmatter `published` → publishedAt（真实发布时间）；
+    `date` → displayedAt（对外显示时间，缺省回落 publishedAt）；createdAt 用系统 _createdAt 不写。
+    status 取 CLI 参数 > frontmatter `status` > "draft"，五态外回落 draft。
+    """
     if md_to_pt is None:
         raise RuntimeError(f"md_to_portable_text 不可用：{_PT_ERR}")
     p = Path(md_path)
@@ -145,15 +191,23 @@ def build_blog_doc(md_path, slug="", lang="", category="", title="", description
     lang = lang or fm.get("language") or fm.get("lang") or "zh"
     category = category or fm.get("category") or "How-To"
     now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S+08:00")
+    published = _iso(published_at or fm.get("published") or fm.get("published_at"), now)
+    displayed = _iso(displayed_at or fm.get("displayed_at") or fm.get("date"), published)
+    st = (status or fm.get("status") or "draft").strip().lower()
+    if st not in STATUS_ENUM:
+        st = "draft"
+    no_index = str(fm.get("no_index", fm.get("noindex", ""))).strip().lower() in ("1", "true", "yes", "on")
+    use_legacy = bool(os.environ.get("MFLOW_LEGACY_DOC_ID")) if legacy_id is None else bool(legacy_id)
     body_blocks = md_to_pt(body_md)
+    # JSON-LD datePublished 用对外显示时间（PRD C5：datePublished=displayedAt）
     structured = json.dumps({
         "@context": "https://schema.org", "@type": SCHEMA_MAP.get(category, "Article"),
         "headline": title or fm.get("title", ""),
         "author": {"@type": "Organization", "name": author or "品牌方"},
-        "datePublished": now,
+        "datePublished": displayed,
     }, ensure_ascii=False)
     return {
-        "_id": slug,
+        "_id": slug if use_legacy else doc_id("blog", slug, lang),
         "_type": "blog",
         "title": (title or fm.get("title") or "")[:200],
         "slug": {"_type": "slug", "current": slug},
@@ -165,11 +219,12 @@ def build_blog_doc(md_path, slug="", lang="", category="", title="", description
         "seoDescription": (fm.get("seo_description") or "")[:160],
         "coverUrl": cover_url or fm.get("cover_url") or "",
         "altText": fm.get("alt_text", ""),
-        "status": "draft",
-        "noIndex": False,
+        "status": st,
+        "noIndex": no_index,
         "contentCluster": cluster or fm.get("content_cluster") or "MFlow-GEO",
         "releaseDate": now,
-        "publishedAt": now,
+        "publishedAt": published,
+        "displayedAt": displayed,
         "seo": {"structuredData": {"_type": "structuredData", "enabled": True, "json": structured}},
         "body": body_blocks,
     }
@@ -191,10 +246,53 @@ def upsert(doc, dry_run=True, mode="createIfNotExists"):
         return {"ok": False, "error": str(e)[:300]}
 
 
-def publish_file(md_path, **kw):
-    dry = kw.pop("dry_run", True)
+def find_by_slug_lang(doc_type, slug, lang):
+    """按（slug, language）查文档（手册 §2.4 的取数契约；与 _id 方案解耦）。返回 {_id,_rev} 或 None。"""
+    cfg = sanity_cfg()
+    if not cfg["token"]:
+        return None
+    q = f'*[_type=="{doc_type}" && slug.current==$slug && language==$lang][0]{{_id,_rev}}'
+    try:
+        with _req(cfg, "query", {"query": q, "params": {"slug": slug, "lang": lang}}, timeout=30) as r:
+            return json.loads(r.read()).get("result")
+    except Exception:
+        return None
+
+
+def publish_blog(doc, dry_run=True, mode="create"):
+    """blog 写入。mode=create：同（slug,language）已存在则拒绝并提示（不再静默跳过/重复建号）；
+    mode=patch：按 slug+language 定位，ifRevisionID 保护，仅更新内容字段（slug/_id 不动）。"""
+    cfg = sanity_cfg()
+    if not cfg["token"]:
+        return {"ok": False, "error": "未配置 SANITY_TOKEN"}
+    slug = doc["slug"]["current"]
+    cur = find_by_slug_lang("blog", slug, doc.get("language", ""))
+    if mode == "patch":
+        if not cur:
+            return {"ok": False, "error": f"patch 模式要求文档已存在：slug={slug} lang={doc.get('language')}（新建请用 --mode create）"}
+        sets = {k: v for k, v in doc.items() if k not in ("_id", "_type", "slug")}
+        mutations = [{"patch": {"id": cur["_id"], "ifRevisionID": cur.get("_rev"), "set": sets}}]
+        op = "patch"
+    else:
+        if cur:
+            return {"ok": False,
+                    "error": f"同 slug+language 已存在（_id={cur['_id']}）：create 不覆盖既有文档，更新请用 --mode patch"}
+        mutations = [{"createIfNotExists": doc}]
+        op = "createIfNotExists"
+    try:
+        with _req(cfg, "mutate", {"mutations": mutations, "dryRun": bool(dry_run)}, timeout=120) as r:
+            d = json.loads(r.read())
+        return {"ok": True, "dry_run": bool(dry_run), "mode": op, "doctype": "blog",
+                "result": d, "blocks": len(doc.get("body", []))}
+    except urllib.error.HTTPError as e:
+        return {"ok": False, "error": f"HTTP {e.code}: {e.read().decode()[:400]}"}
+    except Exception as e:
+        return {"ok": False, "error": str(e)[:300]}
+
+
+def publish_file(md_path, dry_run=True, mode="create", **kw):
     doc = build_blog_doc(md_path, **kw)
-    return {"doc_id": doc["_id"], **upsert(doc, dry_run=dry)}
+    return {"doc_id": doc["_id"], **publish_blog(doc, dry_run=dry_run, mode=mode)}
 
 
 if __name__ == "__main__":
@@ -210,6 +308,11 @@ if __name__ == "__main__":
         s.add_argument("--category", default="")
         s.add_argument("--title", default="")
         s.add_argument("--cluster", default="")
+        s.add_argument("--status", default="", choices=("",) + STATUS_ENUM,
+                       help="draft/scheduled/published/unpublished/archived（缺省读 frontmatter，再缺省 draft）")
+        s.add_argument("--mode", default="create", choices=("create", "patch"),
+                       help="create=新建（同 slug+language 已存在则拒绝）；patch=按 slug+language 定位更新")
+        s.add_argument("--legacy-id", action="store_true", help="临时回退 _id=slug 旧行为（迁移期应急）")
         if name == "publish":
             s.add_argument("--yes", action="store_true", help="确认真实写库（默认 dry-run）")
     a = ap.parse_args()
@@ -217,12 +320,14 @@ if __name__ == "__main__":
         print(json.dumps(ping(), ensure_ascii=False, indent=1))
     elif a.cmd == "dry-run":
         print(json.dumps(publish_file(a.file, slug=a.slug, lang=a.lang, category=a.category,
-                                      title=a.title, cluster=a.cluster, dry_run=True),
+                                      title=a.title, cluster=a.cluster, status=a.status,
+                                      mode=a.mode, legacy_id=a.legacy_id or None, dry_run=True),
                          ensure_ascii=False, indent=1))
     else:
         dry = not a.yes
         print(json.dumps(publish_file(a.file, slug=a.slug, lang=a.lang, category=a.category,
-                                      title=a.title, cluster=a.cluster, dry_run=dry),
+                                      title=a.title, cluster=a.cluster, status=a.status,
+                                      mode=a.mode, legacy_id=a.legacy_id or None, dry_run=dry),
                          ensure_ascii=False, indent=1))
 
 
@@ -232,7 +337,10 @@ if __name__ == "__main__":
 PAGE_TYPES = {"feature", "tool", "topic", "scenario", "solution", "product", "landing"}
 CONTENT_SECTION_TYPES = {"feature-detail", "capability-tabs", "bento-2", "bento-3", "bento-4", "bento-6",
                          "comparison-table", "workflow-horizontal", "cluster-block-dense", "canvas-wall",
-                         "proof-block", "testimonial", "pricing-block", "prompt-launcher", "comparison"}
+                         "proof-block", "testimonial", "pricing-block", "prompt-launcher", "comparison",
+                         "stats", "feature-grid", "tool-grid", "blog-grid", "portrait-grid-3",
+                         "portrait-grid-4", "showcase-stacked", "showcase-horizontal", "media-marquee",
+                         "workflow-vertical", "review-grid-3col", "review-grid-4col"}
 
 
 def md_to_sections(md_text, title="", description="", cover_url="", cover_alt="", cta_href="https://www.example.com/canvas"):
@@ -292,16 +400,18 @@ def md_to_sections(md_text, title="", description="", cover_url="", cover_alt=""
         if d:
             sections.append({"type": "feature-detail", "title": "", "description": "",
                              "items": [{"title": h["title"][:80], "description": d[:400],
-                                        "media": {"src": cover_url}}]})
-    # proof-block：正文里能找到 ≥2 个含数字的短句才生成
+                                        "media": {"src": cover_url, "alt": h["title"][:60] or title}}]})
+    # 数字证据段：value+label 数据天然是 stats 型（曾误写成 proof-block + stats 字段错配，前端渲染为空）
     nums = [s for s in (plain + [x for h in h2s for x in h["desc"]]) if len(s) < 120 and any(c.isdigit() for c in s)][:3]
     if len(nums) >= 2:
-        sections.append({"type": "proof-block", "title": "Why teams choose this",
-                         "stats": [{"value": (re.findall(r"[\d.,]+", n) or ["—"])[0], "label": re.sub(r"[\d.,]+", "", n).strip(" ，。()")[:40] or "metric"}
+        sections.append({"type": "stats",
+                         "stats": [{"value": (re.findall(r"[\d.,]+", n) or ["—"])[0],
+                                    "label": re.sub(r"[\d.,]+", "", n).strip(" ，。()")[:40] or "metric"}
                                    for n in nums]})
     if faq_items:
         sections.append({"type": "faq", "title": "FAQ",
-                         "items": [[q["q"][:120], (q["a"] or "")[:400]] for q in faq_items[:6]]})
+                         "items": [{"question": q["q"][:120], "answer": (q["a"] or "")[:400]}
+                                   for q in faq_items[:6]]})
     sections.append({"type": "cta-default", "title": f"Ready to try {title[:50]}?" if title else "Get started",
                      "description": "Start free — no design skill required.",
                      "buttons": [{"text": "Start free", "href": cta_href, "variant": "primary"}]})
@@ -327,8 +437,9 @@ def _section_text_len(sec):
     return int(cjk + words * 1.5)
 
 
-def validate_sections(sections):
-    """落地页版块校验：结构合法性 + 数量预算（RULES-70）。返回错误列表（空=通过）。"""
+def validate_sections(sections, registry=True):
+    """落地页版块校验：结构合法性 + 数量预算（RULES-70）+ 注册表逐型字段契约。
+    返回 BLOCK 级错误列表（空=通过）；registry=False 或 MFLOW_SKIP_REGISTRY=1 可跳过注册表层。"""
     errs = []
     if not isinstance(sections, list) or not sections:
         return ["sections 必须是非空数组"]
@@ -360,7 +471,16 @@ def validate_sections(sections):
             m = s.get("media") or {}
             if m.get("src") and not (m.get("alt") or "").strip():
                 errs.append("hero media 缺 alt（GEO/可访问性）")
+    if registry and _REG is not None and not os.environ.get("MFLOW_SKIP_REGISTRY"):
+        errs.extend(_REG.validate_sections(sections))
     return errs
+
+
+def registry_warnings(sections):
+    """注册表建议级（不拦发布）：alt 缺省、canvas-wall 条数不足等。"""
+    if _REG is None or os.environ.get("MFLOW_SKIP_REGISTRY"):
+        return []
+    return _REG.validate_sections_full(sections)["warnings"]
 
 
 def build_composite_doc(md_path="", slug="", lang="en", page_type="tool", title="", description="",
@@ -402,17 +522,19 @@ def build_composite_doc(md_path="", slug="", lang="en", page_type="tool", title=
     if sections is None:
         sections = md_to_sections(source_text, title, description, cover_url, cover_alt, cta_href)
     now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S+08:00")
+    displayed = _iso(fm.get("displayed_at") or fm.get("date"), now)
     structured = json.dumps({"@context": "https://schema.org", "@type": "WebPage",
                              "name": title, "description": description[:160],
                              "publisher": {"@type": "Organization", "name": "品牌方"}}, ensure_ascii=False)
     return {
-        "_id": slug, "_type": "compositePage", "pageType": page_type, "category": page_type,
+        "_id": doc_id(page_type, slug, lang), "_type": "compositePage",
+        "pageType": page_type, "category": page_type,
         "language": lang, "slug": {"_type": "slug", "current": slug},
         "title": title[:200], "description": description[:300],
         "cover": {"_type": "imageSource", "sourceType": "external", "url": cover_url, "alt": cover_alt[:200]},
         "bodyJson": json.dumps(sections, ensure_ascii=False),
         "schemaVersion": "composite-v2", "storylineTemplate": storyline_template,
-        "releaseDate": now, "publishedAt": now,
+        "releaseDate": now, "publishedAt": now, "displayedAt": displayed,
         "seo": {"description": description[:160],
                 "structuredData": {"_type": "structuredData", "enabled": True, "json": structured}},
     }
@@ -420,21 +542,19 @@ def build_composite_doc(md_path="", slug="", lang="en", page_type="tool", title=
 
 def publish_composite(doc, dry_run=True, mode="create"):
     """写入 compositePage。mode=create → createIfNotExists；mode=patch → 只更新指定字段（ifRevisionID）。
+    patch 定位按（slug, language）GROQ 查询（手册 §2.4），与 _id 方案解耦，旧 _id 文档也可 patch。
     注意：compositePage 无草稿态 → 真实写入即前台可见。"""
     cfg = sanity_cfg()
     if not cfg["token"]:
         return {"ok": False, "error": "未配置 SANITY_TOKEN"}
     if mode == "patch":
-        try:
-            with _req(cfg, "query", {"query": f'*[_id=="{doc["_id"]}"][0]{{_id,_rev,slug}}'}, timeout=30) as r:
-                cur = json.loads(r.read()).get("result")
-        except Exception as e:
-            return {"ok": False, "error": f"读取现有文档失败：{str(e)[:120]}"}
-        if not cur:
-            return {"ok": False, "error": f"patch 模式要求文档已存在：{doc['_id']}（新建请用 mode=create）"}
+        cur = find_by_slug_lang("compositePage", doc["slug"]["current"], doc.get("language", ""))
+        if cur is None:
+            return {"ok": False, "error": (f"patch 模式要求文档已存在：slug={doc['slug']['current']} "
+                                           f"lang={doc.get('language')}（新建请用 mode=create）")}
         # ⚠ patch 模式：保留既有 slug（覆盖会导致前台路由 404）
         sets = {k: v for k, v in doc.items() if not k.startswith("_") and k != "slug"}
-        mutations = [{"patch": {"id": doc["_id"], "ifRevisionID": cur.get("_rev"), "set": sets}}]
+        mutations = [{"patch": {"id": cur["_id"], "ifRevisionID": cur.get("_rev"), "set": sets}}]
     else:
         mutations = [{"createIfNotExists": doc}]
     try:
@@ -448,12 +568,24 @@ def publish_composite(doc, dry_run=True, mode="create"):
         return {"ok": False, "error": str(e)[:300]}
 
 
-def publish_landing(md_path, dry_run=True, mode="create", **kw):
+def publish_landing(md_path, dry_run=True, mode="create", registry=True, **kw):
+    """落地页发布：结构校验 + 注册表逐型字段校验 + 故事线顺序校验（known 故事线错位=BLOCK）。
+    故事线 SSOT：1-3 GenFlow/Page Gen/Refresh-Page/；未注册故事线降级为 warning 不拦。"""
     doc = build_composite_doc(md_path=md_path, **kw)
-    errs = validate_sections(json.loads(doc["bodyJson"]))
+    sections = json.loads(doc["bodyJson"])
+    errs = validate_sections(sections, registry=registry)
+    warns = registry_warnings(sections) if registry else []
+    sid = kw.get("storyline_template") or ""
+    if sid and _STORY is not None and not os.environ.get("MFLOW_SKIP_REGISTRY"):
+        chk = _STORY.check_storyline([s.get("type") for s in sections], sid)
+        if chk["known"] and chk["fixed"] and not chk["ok"]:
+            errs.extend(chk["problems"])
+        elif not chk["known"]:
+            warns.append(f"故事线 {sid} 未注册（SSOT：1-3 GenFlow/Page Gen/Refresh-Page），跳过顺序校验")
     if errs:
-        return {"ok": False, "doc_id": doc["_id"], "validation_errors": errs,
+        return {"ok": False, "doc_id": doc["_id"], "validation_errors": errs, "warnings": warns,
                 "error": "落地页结构校验未通过：" + "；".join(errs[:3])}
     out = publish_composite(doc, dry_run=dry_run, mode=mode)
     out["doc_id"] = doc["_id"]
+    out["warnings"] = warns
     return out

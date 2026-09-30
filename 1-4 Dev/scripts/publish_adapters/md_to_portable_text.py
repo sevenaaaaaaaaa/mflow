@@ -41,6 +41,14 @@ Table structure (the brand production schema SSOT — @sanity/table):
   ]
 }
 
+Image block (PRD §1.4; standalone-line images only — inline images degrade to links):
+{
+  "_type": "image",
+  "_key": "<random>",
+  "src": "https://...",   # external URL（C6 本地化后为自有资产域）
+  "alt": "..."
+}
+
 HARD RULES (2026-08-03 corrected against deployed schema):
 - cells MUST be string[]; never tableCell / block / span trees
 - table + tableRow MUST have _key; string cells have no _key
@@ -120,14 +128,18 @@ def _parse_inline(text):
                     i = paren_end + 1
                     continue
         
-        # Image ![alt](url) - treat as text placeholder
+        # Image ![alt](url) - inline image: keep URL as link (degrade rule: embed→link)
         if text[i:i+2] == '![':
             bracket_end = text.find(']', i + 2)
             if bracket_end > 0 and bracket_end + 1 < n and text[bracket_end + 1] == '(':
                 paren_end = text.find(')', bracket_end + 2)
                 if paren_end > 0:
                     alt = text[i+2:bracket_end] or "image"
-                    spans.append({"_type": "span", "_key": _key(), "text": f"[{alt}]"})
+                    url = text[bracket_end+2:paren_end]
+                    link_key = f"link-{link_counter[0]}"
+                    link_counter[0] += 1
+                    markDefs.append({"_key": link_key, "_type": "link", "href": url})
+                    spans.append({"_type": "span", "_key": _key(), "text": alt, "marks": [link_key]})
                     i = paren_end + 1
                     continue
         
@@ -293,6 +305,15 @@ def validate_portable_text_body(blocks):
                     issues.append(
                         f"body[{bi}].children[{ci}].text embeds \\n\\n blank line (AB-NEWLINES)"
                     )
+
+        if blk.get("_type") == "image":
+            src = blk.get("src")
+            if not isinstance(src, str) or not src.strip():
+                issues.append(f"body[{bi}].image 缺 src（PRD §1.4 image block 必带 URL）")
+            elif not src.startswith(("http://", "https://", "/")):
+                issues.append(f"body[{bi}].image.src 非绝对 URL：{src[:60]}")
+            if not (blk.get("alt") or "").strip():
+                issues.append(f"body[{bi}].image 缺 alt（可访问性；前端用相邻文本兜底）")
 
         if blk.get("_type") != "table":
             continue
@@ -533,21 +554,17 @@ def md_to_portable_text(md_text):
                 })
             continue
         
-        # Image on its own line (![alt](url))
+        # Image on its own line (![alt](url)) → PT image block（PRD §1.4 image block；
+        # 2026-09-30 起不再降级为 "[Image: alt]" 文本——图片 URL 是 C6 本地化与 F4 渲染的前提数据）
         img_match = re.match(r'^!\[([^\]]*)\]\(([^)]+)\)\s*$', line)
         if img_match:
             alt_text = img_match.group(1) or "image"
-            img_url = img_match.group(2)
+            img_url = img_match.group(2).strip()
             blocks.append({
-                "_type": "block",
+                "_type": "image",
                 "_key": _key(),
-                "style": "normal",
-                "children": [{
-                    "_type": "span",
-                    "_key": _key(),
-                    "text": f"[Image: {alt_text}]",
-                }],
-                "markDefs": [],
+                "src": img_url,
+                "alt": alt_text,
             })
             i += 1
             continue

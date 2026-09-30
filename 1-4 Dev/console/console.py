@@ -208,8 +208,9 @@ KNOWLEDGE_SOURCES = [
      [("1-2 Insight/Knowledge Base", "**/*.md")]),
     ("铁律与规则", "全局铁律 RULES-00 + 六条工作线规则 + 会话路由（创作的硬约束）",
      [("1-1 Harness/02-rules", "*.md")]),
-    ("故事线 SSOT", "7 类页面 × 25 条故事线 + Features 生产规范（写落地页前必读）",
-     [("1-1 Harness/08-storyline", "*.md")]),
+    ("故事线 SSOT", "六类页面故事线（F/T/P/C/K/N）+ Landing/Solution/Scenarios 机器可读 JSON + 全变体预览夹具（写落地页前必读）",
+     [("1-3 GenFlow/Page Gen/Refresh-Page", "*.md"),
+      ("1-3 GenFlow/Page Gen/Refresh-Page", "*.json")]),
     ("阶段手册 S0-S6", "采集/策略/创作/质检/发布/监控六阶段操作手册 + Anti-Bugs 注册表",
      [("1-1 Harness/Docs", "**/*.md")]),
     ("写作方法论", "Better Design 方法论：研究协议 / 信源分级 / voice 规则 / 反 slop / 伦理披露",
@@ -4400,7 +4401,7 @@ def kb_tree(extra=None):
         for d, pat in pairs:
             base = PROJECT / d
             if base.exists():
-                n += sum(1 for f in base.glob(pat) if f.is_file() and f.suffix == ".md")
+                n += sum(1 for f in base.glob(pat) if f.is_file() and f.suffix in (".md", ".json"))
         out.append({"name": label, "desc": desc, "files": n})
     for ex in (extra or []):
         n = 0
@@ -4451,7 +4452,7 @@ def kb_search(q, src="", extra=None):
             if not base.exists():
                 continue
             for f in base.glob(pat):
-                if not f.is_file() or f.suffix != ".md" or "scripts" in f.parts:
+                if not f.is_file() or f.suffix not in (".md", ".json") or "scripts" in f.parts:
                     continue
                 scanned += 1
                 if scanned > 800:
