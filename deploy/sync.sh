@@ -147,10 +147,16 @@ for entry in "${SYNC_ITEMS[@]}"; do
     # openrsync 规则：引号只能包 host: 之后的路径部分（包住 user@ 会被当非法用户名字符）
     spec="${REMOTE}:\"${dst}\""
     DEL_FLAG=""
-    case "$dst" in *"/1-1 Harness/02-rules/"*|*"/1-1 Harness/Skills/"*) DEL_FLAG="--delete";; esac
-    if ! rsync -az $DEL_FLAG -e "ssh -p $REMOTE_PORT" "$src" "$spec" >/dev/null 2>&1; then
-        fail 4 "rsync $src → $dst 失败"
-    fi
+    case "$dst" in *"/1-1 Harness/02-rules/"*|*"/1-1 Harness/Skills/"*|*"/1-1 Harness/08-storyline/"*) DEL_FLAG="--delete"; esac
+    # 每组重试：22 组各自建 SSH 连接，服务器抖动时随机掉一两组（2026-09-30 实测连坑三轮）
+    ok=""
+    for attempt in 1 2 3; do
+        if rsync -az $DEL_FLAG -e "ssh -p $REMOTE_PORT" "$src" "$spec" >/dev/null 2>&1; then
+            ok=1; break
+        fi
+        [[ $attempt -lt 3 ]] && sleep 3
+    done
+    [[ -n "$ok" ]] || fail 4 "rsync $src → $dst 失败（重试 3 次仍失败）"
 done
 say "  ✓ ${#SYNC_ITEMS[@]} 组已同步"
 
