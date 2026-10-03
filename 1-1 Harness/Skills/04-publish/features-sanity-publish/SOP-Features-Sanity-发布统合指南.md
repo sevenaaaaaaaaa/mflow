@@ -22,7 +22,7 @@
 | Blog 发布（另一条管道） | `SOP-Sanity同步指南.md` + `convert.js` | **勿**对 Features 跑 `convert.js` |
 | 内容管道红线 | `.cursor/rules/mflow-sanity-content-pipeline.mdc` | 全局安全规则 |
 | 生成 Features JSON | `Skills/02-creation/landing-page/SKILL.md` | Step 3 `feature-page` |
-| 5 组件架构规范 | `Skills/blog-automation/references/mflow-skills-and-norms-summary.md` | § Features Page |
+| 5 组件架构规范 | `Skills/blog-writer/references/mflow-skills-and-norms-summary.md` | § Features Page |
 
 ---
 

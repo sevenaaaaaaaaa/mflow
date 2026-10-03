@@ -21,8 +21,7 @@
 | 卡片标题↔图映射 | `card-title-image-mapping.md` | 同上 |
 | 图池（已校验） | `verified-image-pool-2026-06.md` | 同上 |
 | 图池拉取脚本 | `image_pool.py` | 同上 |
-| Blog（SERP 向） | `blog-serp-writer` SKILL + references | `Skills/02-creation/blog-serp-writer/` |
-| Blog（信号/长文） | `blog-signal-writer` SKILL + references | `Skills/02-creation/blog-signal-writer/` |
+| Blog（唯一入口：信号选题+方法论+类型+门禁） | `blog-writer` SKILL + references | `Skills/02-creation/blog-writer/` |
 | 101 / Complete Guide / Stack-by-stack / Best Practice / Insight&Trend / Thought Leadership | 各自 `references/` 下模板与样例 | `Skills/02-creation/*/references/` |
 | 页面刷新（存量改稿） | `refresh-page-page-generator` SKILL | `Skills/02-creation/refresh-page-page-generator/` |
 | 自媒体长文（外部平台） | `ai-self-media-article` SKILL + 14 references | `Skills/04-publish/ai-self-media-article/` |

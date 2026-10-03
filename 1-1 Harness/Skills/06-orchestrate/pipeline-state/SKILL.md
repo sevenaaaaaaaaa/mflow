@@ -70,7 +70,7 @@ python3 pipeline_state.py next
 python3 pipeline_state.py upsert --id blog-firefly-2026-07 \
   --artifact-path "1-3 GenFlow/Blog Pipeline/drafts/firefly.md" \
   --agent mflow-creation \
-  --skill blog-signal-writer
+  --skill blog-writer
 
 # 3) advance 到 S3-creating
 python3 pipeline_state.py advance --id blog-firefly-2026-07 --to S3-creating \

@@ -15,7 +15,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 | **适用角色** | 内容策略、SEO、编辑 |
 | **内容源** | `1-3 Content Gen/Content Calendar/`、`blog-pipeline/` |
 | **脚本 SSOT** | `convert.js`、`verify-blog-publish.js`、`patch-blog-*.js` |
-| **Skill** | `blog-automation`、`sanity-publish` |
+| **Skill** | `blog-writer`、`sanity-publish` |
 
 ---
 
@@ -56,7 +56,7 @@ node scripts/audit-content-quality.js
 ## 写作质量
 
 - [Anti-Slop.md](../04-质量治理/Anti-Slop.md)
-- Skill：`content-writer.md`
+- Skill：`blog-writer`
 
 ---
 

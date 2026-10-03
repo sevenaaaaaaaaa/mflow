@@ -8,9 +8,9 @@ Use this to choose the right Blog type before writing.
 |---|---|
 | `1-6 Knowledge Base/博客分类.md` | 8 strategy categories: Topics, 品牌方101, How-To, Segment, Best Practice, Better Design, Insight&Trend, 品牌方 Digest. |
 | `1-3 Content Gen/Content Calendar/` | Production calendar folders with 14 practical columns. |
-| `1-1 Harness/Skills/content-writer.md` | 12 content types and 11 narrative frameworks. |
-| `1-1 Harness/Skills/blog-automation/SKILL.md` | Phase 0 research and writing sequence. |
-| `1-1 Harness/Skills/blog-automation/references/writing-spec.md` | Frontmatter, category mapping, word count, FAQ, image_briefs, links. |
+| `1-1 Harness/Skills/blog-writer（方法论 references/methodology-content-writer.md）` | 12 content types and 11 narrative frameworks. |
+| `1-1 Harness/Skills/blog-writer/SKILL.md` | Phase 0 research and writing sequence. |
+| `1-1 Harness/Skills/blog-writer/references/writing-spec.md` | Frontmatter, category mapping, word count, FAQ, image_briefs, links. |
 | `1-1 Harness/Skills/content-quality-gates/SKILL.md` | Preflight and audit gates. |
 
 ## Unified Blog Route Table

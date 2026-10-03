@@ -49,8 +49,8 @@ PROFILES = {
 STAGES = [
     # (stage, action, expected_skills, optional=True means some strategies skip it)
     ("S0-todo",         "pick_next + upsert",         ["pipeline-state"], False),
-    ("S3-creating",     "load brief + draft skeleton", ["blog-signal-writer"], False),
-    ("S3-draft",        "write 7500 words",            ["blog-signal-writer"], False),
+    ("S3-creating",     "load brief + draft skeleton", ["blog-writer"], False),
+    ("S3-draft",        "write 7500 words",            ["blog-writer"], False),
     ("S3-draft",        "post-write-check",            ["post-write-check"], False),
     ("S3-draft",        "fix L1 fluff (if found)",     ["mflow-anti-slop"], True),
     ("S3-draft",        "fix L2 keyword gap",          ["content-quality-gates"], True),
@@ -86,14 +86,14 @@ STAGE_PROFILE = {
 PROFILE_HAS_SKILLS = {
     "content-gen-mflow": set([  # monolith: ALL
         "pipeline-state", "post-write-check", "pre-write-check",
-        "blog-signal-writer", "mflow-anti-slop",
+        "blog-writer", "mflow-anti-slop",
         "content-quality-gates", "mflow-i18n-pipeline",
         "sanity-publish", "sitemap-update",
         "multi-platform-push", "mflow-post-publish-verify",
         "mflow-seo-reporting", "page-serp-writer",
     ]),
     "mflow-creation": set([  # 24 skills — covers most of S3
-        "pipeline-state", "blog-signal-writer",
+        "pipeline-state", "blog-writer",
         "mflow-anti-slop",  # yes, anti-slop is loaded here today
         "mflow-i18n-pipeline", "image-generation",
     ]),

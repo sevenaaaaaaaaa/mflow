@@ -29,7 +29,7 @@ Step 2 of 品牌方 Content Pipeline — 根据 intelligence-brief 分析结果�
 - Step 1 (`data-ingestion`) 已完成，`1-2 Insight/Trident Insights/reports/YYYY-MM-DD/intelligence-brief.md` 存在
 - Content Calendar 目录结构存在：`1-3 Content Gen/Content Calendar/`
 - 关键词分类委托给 `keywords-intake`（旧版 v1.0，8 种分类器）
-- 内容类型矩阵来自 `content-writer`（v4.0，12 类型 x 11 框架）
+- 内容类型矩阵来自 `blog-writer`（v4.0，12 类型 x 11 框架）
 
 ## Workflow (sequential)
 
@@ -128,7 +128,7 @@ Output/Content Calendar/
 # Creation Tasks — Week WW
 
 ## Sanity Blog (example.com)
-- [ ] `{slug}` → 调用 `content-writer` (type: blog)
+- [ ] `{slug}` → 调用 `blog-writer` (type: blog)
 
 ## Features Page
 - [ ] `{slug}` → 调用 `features-page` (type: feature)
@@ -140,7 +140,7 @@ Output/Content Calendar/
 - [ ] `{slug}` → 调用 `landing-page`
 
 ## WordPress Blog (blogs.example.com)
-- [ ] `{slug}` → 调用 `blog-automation`
+- [ ] `{slug}` → 调用 `blog-writer`
 
 ## Distribution
 - [ ] X thread from `{slug}` → 分发草稿生成
@@ -160,7 +160,7 @@ Output/Content Calendar/
 
 ## Downstream
 
-完成后自动触发 → `content-writer` / `features-page` / `blog-automation` (Step 3)
+完成后自动触发 → `blog-writer` / `features-page` / `blog-writer` (Step 3)
 
 
 ## 预算（RULES-70 强制）

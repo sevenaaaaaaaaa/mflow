@@ -58,10 +58,10 @@ description: 品牌方 内容自动化 Pipeline 主编排器 v2.0 — Sentinel �
 │  ││GSC API│ │ │          │ │  ├ features-publish │ │→CDN回写  │ │→Feishu│ │
 │  ││GA4 API│ │ │          │ │  └ tools-publish    │ │          │ │Bitable│ │
 │  ││Bing   │ │ │          │ │                     │ └──────────┘ │  ↓    │ │
-│  │└───────┘ │ │          │ │ content-writer v4   │              │content│ │
+│  │└───────┘ │ │          │ │ blog-writer v4   │              │content│ │
 │  │    ↓     │ │          │ │ features-page v2.3  │              │-dist  │ │
 │  │unified   │ │          │ │ landing-page        │              │engine │ │
-│  │brief     │ │          │ │ blog-automation     │              │22 API │ │
+│  │brief     │ │          │ │ blog-writer     │              │22 API │ │
 │  │          │ │          │ │                     │              │平台   │ │
 │  │kw-intake │ │          │ └────────────────────┘              └───────┘ │
 │  │+sentinel │ │          │                                               │
@@ -86,10 +86,10 @@ description: 品牌方 内容自动化 Pipeline 主编排器 v2.0 — Sentinel �
 | **1b** | `keywords-intake` | v1.0 — 8 种关键词分类器 + P0/P1/P2 评分 |
 | **1c** | `mflow-sentinel` | 舆情数据采集 (15 条并行 webfetch) |
 | **2** | `content-calendar` | 14 品类 × 5 语言 → 三大日历 → creation-tasks |
-| **3a** | `content-writer` | v4.0 — 12 类型 × 11 框架 → Sanity Blog MD |
+| **3a** | `blog-writer` | v4.0 — 12 类型 × 11 框架 → Sanity Blog MD |
 | **3b** | `features-page` | v2.3 — 5 组件 × 11 语言 × 6 角色 → Features JSON |
 | **3c** | `landing-page` | 6 区块 × 10 语言 × 5 维定制 → Landing Page JSON |
-| **3d** | `blog-automation` | WordPress 博客 (publish-to-wp.py) |
+| **3d** | `blog-writer` | WordPress 博客 (publish-to-wp.py) |
 | **3.5** | `image-generation` | 品牌方 API 生成封面/配图 + CDN 回写 |
 | **4a** | `content-quality-gates` | L1 预检 + L2 落库抽查 |
 | **4b** | `content-audit` | L3 审计 (质量/SEO/全球合规/文化敏感/品牌一致性) |

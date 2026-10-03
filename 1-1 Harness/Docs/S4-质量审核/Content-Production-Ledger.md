@@ -374,7 +374,7 @@ Verdict: [pass | rewrite last third | rewrite middle | full restructure]
 | Skill | Ledger 要求 |
 |---|---|
 | `content-creation-orchestrator` | brief 后要求创建 Ledger |
-| `blog-serp-writer` | 长文必须先出 H2 Ledger；Final QA 含 Shrinkage check |
+| `blog-writer` | 长文必须先出 H2 Ledger；Final QA 含 Shrinkage check |
 | `page-serp-writer` | 按 storyline 填 Section Ledger；Tools v2 核对 global checks |
 | `content-quality-gates` | CREATE 阶段检查 Ledger 是否存在；TRANSLATE 检查 i18n Ledger |
 | `content-audit` | 深度审计时对照 Ledger 查漏项 |

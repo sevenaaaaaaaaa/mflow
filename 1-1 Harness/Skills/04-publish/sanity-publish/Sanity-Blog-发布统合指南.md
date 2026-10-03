@@ -501,15 +501,15 @@ Studio `blogType.ts` 支持 9 种 body 块：
 ```
 Daily Raw CSV
   → ① keywords-intake（P0/P1/P2 评分 → 更新日历）
-  → ② content-writer（12 类型 × 11 框架 → 写作 + SEO + MD 导出）
-  → ② content-writer → ③ content-quality-gates（MD/NDJSON 技术预检）
+  → ② blog-writer（12 类型 × 11 框架 → 写作 + SEO + MD 导出）
+  → ② blog-writer → ③ content-quality-gates（MD/NDJSON 技术预检）
   → ④ sanity-publish（7 步安全发布协议）
 ```
 
 | Skill | 版本 | 位置 |
 |-------|------|------|
 | Keywords Intake | 1.0.0 | `4-Archive/Skills/keywords-intake.md` |
-| Content Writer | 4.0.0 | `4-Archive/Skills/content-writer.md` |
+| Content Writer | 4.0.0 | `4-Archive/Skills/blog-writer` |
 | Production Orchestrator | 1.0.0 | `4-Archive/Skills/production-orchestrator.md` |
 | **Quality Gates** | 1.0.0 | `Skills/content-quality-gates/` |
 | **Sanity Publish** | 3.0.0 | `Skills/sanity-publish/` |
@@ -567,7 +567,7 @@ npx sanity documents query "*[_type=='blog']" --dataset production > blogs.json
 | Studio 开发规范 | `sanity-studio/AGENTS.md` | Schema/模块开发用 |
 | 批量导入通用方案 | `Product Project Management/Sanity批量导入实操方案.md` | 通用 Sanity 导入参考 |
 | Sanity Publish Skill | `Skills/sanity-publish/SKILL.md` | 7 步门控摘要 |
-| Skills 汇总 | `Skills/blog-automation/references/mflow-skills-and-norms-summary.md` | 全管线索引 |
+| Skills 汇总 | `Skills/blog-writer/references/mflow-skills-and-norms-summary.md` | 全管线索引 |
 | pt/ru 批次 | `sanity-studio/OPENCODE-L0-PT-RU-SYNC.md` | 多语言专项 |
 
 ---

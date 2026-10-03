@@ -63,16 +63,16 @@ path: 1-1 Harness/02-rules/RULES-20-creation.md
 
 | 内容类型 | Skill |
 |---------|-------|
-| Getting Started / 101 | content-101 |
-| Best Practice | best-practice |
-| Complete Guide | complete-guide |
+| Getting Started / 101 | blog-writer |
+| Best Practice | blog-writer |
+| Complete Guide | blog-writer |
 | Review / Roundup | review |
-| Stack × Stack | stack-by-stack |
-| Insight & Trend | insight-trend |
-| Thought Leadership | thought-leadership |
-| SERP 驱动 Blog | blog-serp-writer |
-| 舆情驱动 Blog | blog-signal-writer |
-| Blog 全流程 | blog-automation |
+| Stack × Stack | blog-writer |
+| Insight & Trend | blog-writer |
+| Thought Leadership | blog-writer |
+| SERP 驱动 Blog | blog-writer |
+| 舆情驱动 Blog | blog-writer |
+| Blog 全流程 | blog-writer |
 
 ### 落地页子技能
 

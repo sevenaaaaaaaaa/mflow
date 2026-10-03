@@ -17,7 +17,7 @@
    ```
 4. **禁止**内联 `def md_to_pt` / `def markdown_to_portable_text`
 5. **import 前**：`python3 validate_pt_body.py --ndjson <file>` 必须 `BLOCK=0`
-6. 规范详情：`1-1 Harness/Skills/02-creation/blog-signal-writer/references/portable-text-table-syntax.md`
+6. 规范详情：`1-1 Harness/Skills/02-creation/blog-writer/references/portable-text-table-syntax.md`
 
 | path | purpose | created | owner | status | smoke |
 |------|---------|---------|-------|--------|-------|

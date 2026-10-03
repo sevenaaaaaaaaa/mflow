@@ -313,8 +313,8 @@ Articles must declare a **primary category** and **2-4 tags** from the official 
 
 | Category | Use For | Funnel Stage |
 |---|---|---|
-| `insight-trend` | Industry insights, design trends, thought leadership | TOFU |
-| `content-101` | Beginner guides, comprehensive overviews, pillar pages | TOFU-MOFU |
+| references/types/insight-trend/GUIDE.md | Industry insights, design trends, thought leadership | TOFU |
+| references/types/101/GUIDE.md | Beginner guides, comprehensive overviews, pillar pages | TOFU-MOFU |
 | `how-to` | Tutorials, step-by-step guides, workflow walkthroughs | MOFU |
 | `segment` | Industry/audience-specific content, case studies | MOFU-BOFU |
 | `best-practice` | Product tips, feature-specific guides, quick wins | Post-Purchase |

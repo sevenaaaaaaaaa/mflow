@@ -53,7 +53,7 @@ generator: 1-1 Harness/11-knowledge/scripts/fm-fix.py
 hermes -p mflow-reports -s mflow-seo-reporting
 
 # 创作 Blog
-hermes -p mflow-creation -s blog-serp-writer,mflow-anti-slop
+hermes -p mflow-creation -s blog-writer,mflow-anti-slop
 
 # 创作 Tools 页
 hermes -p mflow-creation -s page-serp-writer,landing-page

@@ -6,7 +6,7 @@
 
 | 场景 | 唯一父入口 | 内部支撑 skill |
 |------|------------|----------------|
-| Blog 创作 | `mflow-blog` / `blog-signal-writer` 父链 | `complete-guide`、`insight-trend`、`best-practice` 等分类子 skill |
+| Blog 创作 | `blog-writer` 唯一入口 | 类型结构内置于 `blog-writer/references/types/` |
 | 落地页生成/刷新 | `landing-page` | `page-serp-writer`、`refresh-page-page-generator` |
 | 质量门禁 | `content-quality-gates` | `content-audit`；`sanity-preflight` 仅兼容别名 |
 | Sanity 发布 | `sanity-publish` | `sanity-content-publish`、`tools-sanity-publish`、`features-sanity-publish`、`product-sanity-publish`、`scenarios-sanity-publish` |

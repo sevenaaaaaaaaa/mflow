@@ -52,7 +52,7 @@ Claude 打开 `1-1 Harness/` 时的项目记忆。技能库见 `.claude/skills/`
 - 舆情监测：`mflow-sentinel`
 - 数据/SEO：`data-ingestion`、`trident-data-engine`
 - 内容日历：`content-calendar`
-- Blog 生产：`blog-automation`、`blog-signal-writer`、`complete-guide`
+- Blog 生产：`blog-writer`、`blog-writer`、`blog-writer`
 - 落地页：`landing-page`、`page-serp-writer`、`refresh-page-page-generator`
 - 质检：`content-quality-gates`、`content-audit`
 - 发布：`sanity-content-publish`（路由）→ 各 `*-sanity-publish`
@@ -64,7 +64,7 @@ Claude 打开 `1-1 Harness/` 时的项目记忆。技能库见 `.claude/skills/`
 位于 `.claude/agents/`，各预载对应阶段技能到独立上下文（省主线程 token）。用法：说"用 mflow-blog 写…"或 `@agent-mflow-blog`；`--agent mflow-intel` 可整场只用该角色。
 
 - `mflow-intel` — 情报监测（sentinel + trident；data-ingestion 可发现）
-- `mflow-blog` — Blog 生产（blog-signal-writer；blog-automation/image-generation 可发现）
+- `mflow-blog` — Blog 生产（blog-writer；blog-writer/image-generation 可发现）
 - `mflow-page` — 落地页生产（landing-page + page-serp-writer；refresh-page 可发现）
 - `mflow-qa` — 质检（content-quality-gates；content-audit 可发现）
 - `mflow-publisher` — Sanity 发布路由（sanity-content-publish → 各 *-sanity-publish）

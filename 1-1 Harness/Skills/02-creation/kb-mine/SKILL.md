@@ -21,7 +21,7 @@ description: 知识库挖掘 skill。从已有 KB 文档中提取洞察、关联
 
 加载条件（满足任一即触发）：
 
-- writer profile（mflow-creation / page-serp-writer / blog-signal-writer 等）启动
+- writer profile（mflow-creation / page-serp-writer / blog-writer 等）启动
 - 用户说 "查 KB"、"mine KB"、"KB 给这段 topic 哪些 unit"
 - 内容涉及 品牌方 产品 / 品牌 / capability（如 "ChatCanvas"、"Brand Kit"、"Sora 2" 等）
 - 拓关键词时需要「能力映射」
@@ -101,7 +101,7 @@ description: 知识库挖掘 skill。从已有 KB 文档中提取洞察、关联
 
 | 同级 skill | 与 mine 关系 |
 |-----------|-------------|
-| `blog-signal-writer` | 上游：brief → mine → writer dispatch |
+| `blog-writer` | 上游：brief → mine → writer dispatch |
 | `page-serp-writer` | 同上 |
 | `content-quality-gates` | **下游**：用 KB 索引做 MUST-CITE-KB 验证 |
 | `kb-ingest` | **横向**：KB 没命中时调用，扩张 KB |

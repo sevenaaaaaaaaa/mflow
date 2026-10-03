@@ -17,7 +17,7 @@ Master orchestrator for the 品牌方 daily blog production pipeline. Calls thre
 | Order | Skill | File | Role |
 |---|---|---|---|
 | ① | Keywords Intake | `keywords-intake.md` | Scan Daily Raw → score → update calendar → briefing |
-| ② | Content Writer | `content-writer.md` | Write articles per content type (12 types × 11 frameworks) |
+| ② | Content Writer | `blog-writer（方法论 references/methodology-content-writer.md）` | Write articles per content type (12 types × 11 frameworks) |
 | ③ | Sanity Publish | `sanity-publish.md` | Schema sync → convert → preview → confirm → import |
 | ④ | Link Summary | (built-in) | Auto-generate production URL table + stats → save to Content Calendar |
 
@@ -98,9 +98,9 @@ Delegate to `keywords-intake.md`. The orchestrator's only responsibility here is
 
 ### Execution
 
-**Authoritative source**: `content-writer.md` v4.0.0 — the full skill is loaded and treated as the single source of truth for all article production. Every rule in it is mandatory.
+**Authoritative source**: `blog-writer（方法论 references/methodology-content-writer.md）` v4.0.0 — the full skill is loaded and treated as the single source of truth for all article production. Every rule in it is mandatory.
 
-For each article in the production queue, execute the full `content-writer.md` Execution Workflow (§Step 0-5) without skipping:
+For each article in the production queue, execute the full `blog-writer（方法论 references/methodology-content-writer.md）` Execution Workflow (§Step 0-5) without skipping:
 
 | Step | What | Hard Gate |
 |---|---|---|
@@ -115,7 +115,7 @@ For each article in the production queue, execute the full `content-writer.md` E
 
 | # | Rule | Hard Fail If |
 |---|---|---|
-| 1 | Article follows the content-writer skill exactly, not a simplified version | Any step of Execution Workflow skipped |
+| 1 | Article follows the blog-writer skill exactly, not a simplified version | Any step of Execution Workflow skipped |
 | 2 | ≥3 internal links per article with funnel-stage awareness | 0 internal links |
 | 3 | Image prompts saved to `IMAGE_PROMPTS_ALL_2115.csv`, not to article file | `### Appendix: Image Prompts` found in output |
 | 4 | E-E-A-T + Anti-AI checklists executed silently, not saved | Either checklist found in output |

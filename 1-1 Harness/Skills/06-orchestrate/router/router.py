@@ -56,7 +56,7 @@ PROFILES = {
         "model": "deepseek-v4-pro",
         "work_line": "S3-content-production",
         "owns_stages": ["S3-creating", "S3-draft", "S3-done"],
-        "key_skills": ["blog-signal-writer", "page-serp-writer",
+        "key_skills": ["blog-writer", "page-serp-writer",
                        "landing-page", "image-generation",
                        "mflow-i18n-pipeline"],
         "token_budget_hint": 4500,
@@ -110,14 +110,14 @@ DECISIONS: list[dict[str, Any]] = [
         "stage": "S0-todo", "scenario": "default",
         "action": "upsert",
         "profile": "mflow-creation",
-        "skills": ["pipeline-state", "blog-signal-writer"],
+        "skills": ["pipeline-state", "blog-writer"],
         "reason": "S0-todo → first creation step",
     },
     {
         "stage": "S0-todo", "scenario": "from_sentinel",
         "action": "upsert",
         "profile": "mflow-creation",
-        "skills": ["pipeline-state", "blog-signal-writer"],
+        "skills": ["pipeline-state", "blog-writer"],
         "reason": "Sentinel-triggered creation",
     },
 
@@ -126,7 +126,7 @@ DECISIONS: list[dict[str, Any]] = [
         "stage": "S3-creating", "scenario": "default",
         "action": "execute_skill",
         "profile": "mflow-creation",
-        "skills": ["blog-signal-writer"],
+        "skills": ["blog-writer"],
         "reason": "Writing in progress",
     },
     {
@@ -147,7 +147,7 @@ DECISIONS: list[dict[str, Any]] = [
         "stage": "S3-draft", "scenario": "word_count_low",
         "action": "execute_skill",
         "profile": "mflow-creation",
-        "skills": ["blog-signal-writer"],
+        "skills": ["blog-writer"],
         "reason": "Word count short → keep creation profile, extend draft",
     },
     {
@@ -184,7 +184,7 @@ DECISIONS: list[dict[str, Any]] = [
         "stage": "S4-fix", "scenario": "default",
         "action": "reroute",
         "profile": "mflow-creation",
-        "skills": ["blog-signal-writer"],
+        "skills": ["blog-writer"],
         "reason": "Fix → back to creation profile to edit artifact",
     },
     {

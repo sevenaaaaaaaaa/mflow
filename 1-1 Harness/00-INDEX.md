@@ -97,7 +97,7 @@ bash "1-4 Dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / r
 |------|------|
 | `05-skills/skills-usage.md` | 技能使用指南（按 S1-S6 阶段映射） |
 | `05-skills/skill-entrypoint-governance.md` | 入口治理：每场景唯一父入口 + support-only 规则 |
-| `Skills/` | 45 个 skill 实体（01-strategy 4 / 02-creation 15 / 03-review 3 / 04-publish 8 / 05-monitor 2 / 06-orchestrate 12 / 顶层 1） |
+| `Skills/` | 34 个 skill 实体（01-strategy 4 / 02-creation 7 / 03-review 3 / 04-publish 8 / 05-monitor 2 / 06-orchestrate 12 / 顶层 1；博客类 12 技能并入 blog-writer） |
 
 > Skill 真相 = 本 vault `Skills/` 目录。`~/.hermes/` 运行时由 `1-4 Dev/scripts/harness_sync.py` 从 vault 重新生成（每日管线 D07 步骤）。
 
