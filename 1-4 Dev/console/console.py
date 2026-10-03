@@ -2868,8 +2868,9 @@ def _kb_index():
     return idx
 
 
-def kb_search_for_ai(query, k=3, intent_dirs=None):
-    """知识库精准检索：意图路由 + 加权打分（标题/路径/小标题/正文 + 短语精确匹配）。"""
+def kb_search_for_ai(query, k=3, intent_dirs=None, boost_dirs=None):
+    """知识库精准检索：意图路由 + 加权打分（标题/路径/小标题/正文 + 短语精确匹配）。
+    boost_dirs：项目级强意图目录（meta.kb_intent），加权高于通用意图——多项目共享 KB 时防跨品牌污染。"""
     if not query:
         return []
     idx = _kb_index()
@@ -2878,6 +2879,7 @@ def kb_search_for_ai(query, k=3, intent_dirs=None):
     qt = _tokens(query)
     qlow = query.lower()
     dirs = set(intent_dirs or [])
+    boost = set(boost_dirs or [])
     for kws, ds in _KB_INTENT:
         if any(kw in qlow for kw in kws):
             dirs.update(ds)
@@ -2891,6 +2893,8 @@ def kb_search_for_ai(query, k=3, intent_dirs=None):
         sc += 0.7 * len(qt & d["tok_body"])
         if d["section"] in dirs:
             sc += 2.5
+        if d["section"] in boost:
+            sc += 6.0
         tl = d["title"].lower()
         if tl and tl in qlow:
             sc += 3.0
@@ -3867,9 +3871,16 @@ def ai_context(task_type="blog", topic="", lang="zh", proj=None):
     except Exception:
         pass
 
-    # ② 知识库检索（按任务类型路由意图）
+    # ② 知识库检索（按任务类型路由意图 + 项目级强加权 meta.kb_intent）
     try:
-        ctx["kb"] = kb_search_for_ai(query, k=3, intent_dirs=[task_type, str(task_type) + "s"])
+        intent = [task_type, str(task_type) + "s"]
+        boost = []
+        try:
+            _im = read_json(PROJECTS_DIR / proj / "meta.json", {}) or {}
+            boost = [str(x)[:40] for x in (_im.get("kb_intent") or [])]
+        except Exception:
+            pass
+        ctx["kb"] = kb_search_for_ai(query, k=3, intent_dirs=intent, boost_dirs=boost)
     except Exception:
         pass
 
