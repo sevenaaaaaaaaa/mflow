@@ -24,6 +24,7 @@ S1-数据采集 → S2-内容策略 → S3-内容创作 → S4-质量审核 → 
 | **S3 内容创作** | `02-creation/` | `blog-writer` | **Blog 唯一入口**：所有语言所有 Blog，不翻译不走 i18n 管线（2026-10-03 四合一） |
 | | | ~~`blog-serp-writer` / `blog-automation` / 8 类型子技能~~ | ⛔ 已并入 `blog-writer` |
 | | | `landing-writer` | **落地页唯一父入口**：Tools/Features/Product/Scenario/Solution/Topic 生成与刷新 |
+| | | `hub-writer` | **聚合页唯一入口**：目录/榜单/主题 Hub，策略性 SEO 页（≥8 详情页前置） |
 | | | ~~`page-serp-writer` / `refresh-page-page-generator` / `features-page.md`~~ | ⛔ 已并入 `landing-writer` references |
 
 | | | 类型结构 | 内置于 `blog-writer/references/types/`（8 类 GUIDE） |

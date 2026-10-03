@@ -7,7 +7,7 @@
 | 场景 | 唯一父入口 | 内部支撑 skill |
 |------|------------|----------------|
 | Blog 创作 | `blog-writer` 唯一入口 | 类型结构内置于 `blog-writer/references/types/` |
-| 落地页生成/刷新 | `landing-writer` 唯一入口 | 文案/刷新细节在 references/（page-copy-serp、refresh-page-generator） |
+| 落地页生成/刷新 | `landing-writer` 唯一入口 | 聚合页走 `hub-writer`（独立体系） | 文案/刷新细节在 references/（page-copy-serp、refresh-page-generator） |
 | 质量门禁 | `content-quality-gates` | `content-audit`；`sanity-preflight` 仅兼容别名 |
 | Sanity 发布 | `sanity-publish` | `sanity-content-publish`、`tools-sanity-publish`、`features-sanity-publish`、`product-sanity-publish`、`scenarios-sanity-publish` |
 | 分发 | `multi-platform-push` | `content-distribution` |

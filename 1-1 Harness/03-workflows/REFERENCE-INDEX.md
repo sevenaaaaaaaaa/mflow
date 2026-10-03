@@ -67,3 +67,5 @@
 2. **登记制**：新增 references 文件必须在本索引出现（PR/提交时检查）
 3. **版本优先**：多版本参考（benchmark-seed v1-v3）默认用**最高版本**，旧版仅供追溯
 4. **与 MFlow 的关系**：MFlow 的内容库（`run/library/`）是**产出**；本索引指向的是**写作依据**
+
+| 聚合页（Hub） | `hub-writer` SKILL + references（hub-storylines.json） | `Skills/02-creation/hub-writer/` |（2026-10-04 新增：策略性 SEO 聚合页，独立于 landing 转化体系）

@@ -56,7 +56,7 @@ PROFILES = {
         "model": "deepseek-v4-pro",
         "work_line": "S3-content-production",
         "owns_stages": ["S3-creating", "S3-draft", "S3-done"],
-        "key_skills": ["blog-writer", "landing-writer",
+        "key_skills": ["blog-writer", "landing-writer", "hub-writer",
                        "mflow-i18n-pipeline"],
         "token_budget_hint": 4500,
     },

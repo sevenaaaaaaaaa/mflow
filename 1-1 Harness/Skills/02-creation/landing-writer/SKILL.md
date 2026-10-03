@@ -2,8 +2,8 @@
 name: landing-writer
 description: >-
   品牌落地页/页面创作唯一入口（深度整合版：分类→故事线→模块文案→按钮文字 四层决策内置 + CRO 五维 +
-  8 条故事线含聚合页 landing-hub）。止步发布前（发布走 sanity-publish）。
-  Use for 「生成/修复/重写/刷新 Tools、Features、Product、Solution、Scenario、Topic、Landing、聚合页/Hub」、
+  7 条转化向故事线）。止步发布前（发布走 sanity-publish）。
+  Use for 「生成/修复/重写/刷新 Tools、Features、Product、Solution、Scenario、Topic、Landing」。聚合页/Hub/目录/榜单 → `hub-writer`（独立技能，生成逻辑不同）、
   页面 SERP 文案、composite-v2、页面 SEO/JSON-LD、配图、CTA 按钮。
 ---
 
@@ -20,18 +20,17 @@ description: >-
 |---|---|---|---|
 | **Tools**（category: tool，单工具页） | C | composite-v2 JSON，每语言 1 文件 → `Page Gen/Pages/Tools/{lang}/` | `tools-v2-template.md` |
 | **Landing**（投放向） | D | composite-v2，12–15 段 | `landing-ssot/landing-v2-template.md` + 故事线 JSON |
-| **聚合页 / Hub**（目录/榜单/主题入口） | **E** | composite-v2，12 段，故事线 `landing-hub` | 本文 §轨道E + `landing-ssot/` |
+| **聚合页 / Hub**（目录/榜单/主题入口） | → **`hub-writer`** | 独立技能：聚合=拓扑+分发逻辑，与转化页不同 | — |
 | **Features / legacy** | A | 单文件 10 个 `section_xx` key | `json-template.md` + `pages/features-legacy.md` |
 | **JSON 修复/诊断** | B | 诊断报告 + 重建 | `landing-master.md` §轨道B |
 | **存量页刷新**（storyline-driven） | 隶属 C/D/E | bodyJson/type 序列 | `pages/refresh-page-generator.md` |
 
-判断口诀：单 job 转 → C；买量/竞品词落地 → D；"best/all/榜单/大全/一切工具" → **E**；旧六区块体系 → A；拿到 JSON 报错 → B。未说明类型先问一句。
+判断口诀：单 job 转 → C；买量/竞品词落地 → D；"best/all/榜单/大全" → **hub-writer（不在本技能）**；旧六区块体系 → A；拿到 JSON 报错 → B。未说明类型先问一句。
 
-### 第二层 · 故事线（9 条，intent 以故事线为准，禁止自定义）
+### 第二层 · 故事线（7 条，intent 以故事线为准，禁止自定义）
 
 | 故事线 | intent | 叙事 | 何时用 | routingSignals 关键词 |
 |---|---|---|---|---|
-| `landing-hub` | discover-explore | 入口→分类导航→矩阵→案例墙→集群深链 | 聚合页：工具目录、best-of、主题入口、资源大全 | best / top / all-in-one / collection / directory / hub |
 | `landing-trial-now` | search-convert | 分屏首屏→prompt 试用→三步上手 | 搜索转化、工具词、"try free" | try free / free trial / prompt / tool keyword |
 | `landing-vs-competitor` | competitor-conquest | 首屏→对比→before-after | 竞品词、"vs/alternative" | competitor / alternative / vs / versus |
 | `landing-brand-trust` | brand-upper-funnel | 电影感首屏→logo→testimonial | 品牌词、upper-funnel、信任建设 | brand awareness / upper funnel / trust |
@@ -66,7 +65,6 @@ description: >-
 | `compare`（vs-competitor） | 并排比较、随时可切换 | "Compare side by side" / "See the workflow before you switch" |
 | `brand`（brand-trust） | 信任先行、看真实案例 | "See real campaigns" / "Watch the workflow" |
 | `offer`（offer-close） | 稀缺+行动 | "Claim your plan" / "Upgrade now" |
-| `explore`（**hub**） | 浏览全库、从这开始 | "Browse the full inventory" / "Start where it matters most" |
 | `educate` / `solution` / `default` | 教育转化 | 按引擎默认分支 |
 
 **流量来源微调**：Google 付费广告 → 消除风险（No Credit Card）；SEO/内容 → 价值先行（Free for 14 Days）；社交 → 速度效果（in Seconds）；邮件 → 便捷（Your Free Account）；联盟 → 好奇（Explore）。
@@ -86,25 +84,12 @@ description: >-
 行业信任信号：电商=转化率数据 / 广告=A-B 测试 / 媒体=版权合规 / 建筑=渲染速度+4K / 游戏=风格一致 / 服装=批量上新。
 **Social Proof 数字**必须溯源（官网/官方报告），无出处 → `[待考证]`，禁编造。
 
-## 轨道 E · 聚合页（landing-hub 专用规则）
-
-**定位**：聚合页的 KPI 是**分发点击到子页 + 收录**，不是表单转化——CTA 弱化（explore），内链是主角。
-**12 段骨架**（故事线已定义）：`hero-split → bento-6(分类导航) → tool-grid(工具矩阵) → capability-tabs → blog-grid(内容聚合) → canvas-wall(案例墙) → showcase-stacked(精选) → cluster-block-dense(集群深链) → workflow-horizontal → proof-block → faq → cta-default`。
-**内链纪律（ doorway 红线）**：
-1. hub 页 ≥8 条出链到子页（tools/blog/case，全部 verified slug 或 production 存活）
-2. 每个被聚合的子页**回链 hub**（集群互链，不单向）
-3. 每张卡必须给 hub 独有价值：差异化一句 + 标签/场景注解——**纯链接堆砌页（doorway）会被降权，禁做**
-4. 卡片 title 用子页主词但不与子页 H1 完全相同（避免 cannibalization：hub 卡 = 类目词/场景词，子页 = 具体工具词）
-**SEO**：结构化数据加 ItemList（聚合实体清单）；标题模式 "Best/The Complete Guide to/All {类别} in One Place"；每卡 desc 唯一。
-**素材前置**：≥8 个可链子页存在才建 hub——子页不足先建子页（hub 先行 = 空目录页）。
-
 ## 轨道速览（细节 → references/landing-master.md）
 
 - **A legacy 六区块**：JSON 骨架 `json-template.md`；6 区块齐 + heroSection 第 1 位 faqSection 末位 + 10 语言（`section`/`_zh-CN`/`_zh-TW`/`_ja`/`_ko`/`_de`/`_fr`/`_ru`/`_pt`/`_it`）+ 分批协议（≤3 语言/批）+ Banned Patterns
 - **B 诊断修复**：判型（composite-v2 vs legacy）→ 结构/完整性/资源三类诊断 → 报告（Critical/Copy/Resource/Language）→ 重建
 - **C Tools**：单 job 页面原则；prompt-launcher 真实样例；每批 ≤3 语言文件；C5 自检 `preflight-content.js --type tools --strict` + `convert-tools.js --dry-run`
 - **D Landing**：12–15 段；copy 必须与故事线意图严格对齐（trial=上手路径 / vs=可比较差异 / trust=品牌级结果 / offer=少教育多 why-now / gallery=Hero 与矩阵间要有桥）
-- **E Hub**：见上节
 
 ## 溯源与配图（零幻觉）
 
@@ -117,11 +102,11 @@ MCoT Engine · ChatCanvas · Nano Banana Pro · Agentic Intelligence · Touch Ed
 
 ## 元数据输出（JSON 后必须）
 
-SEO TDK（slug / title≤60 / description≤160 / keywords 5–8）+ OG/Twitter Card + FAQPage JSON-LD（仅英文，name/text 与 section 原文逐字一致）。hub 页追加 ItemList JSON-LD。
+SEO TDK（slug / title≤60 / description≤160 / keywords 5–8）+ OG/Twitter Card + FAQPage JSON-LD（仅英文，name/text 与 section 原文逐字一致）。
 
 ## 自检清单（交付前逐项）
 
-composite-v2（C/D/E）：schemaVersion · storylineTemplate 合法 · bodyJson 无 legacy type · 模块序列与故事线 sections 一致 · 10 语言齐 · media.src 来自图库或 [待考证] · **hub 页另查：≥8 出链/卡片注解唯一/ItemList**。
+composite-v2（C/D/E）：schemaVersion · storylineTemplate 合法 · bodyJson 无 legacy type · 模块序列与故事线 sections 一致 · 10 语言齐 · media.src 来自图库或 [待考证]。
 Legacy（A/B）：6 区块齐 · hero 首位 faq 末位 · 10 语言齐 · image_url 全图库 · 无 Banned Patterns · Persona 已声明 · FAQ 含商用版权+操作门槛 · JSON-LD 逐字一致 · 分批格式正确。
 跨轨道：`1-3 GenFlow/Page Gen/Refresh-Page/COPY-PREFLIGHT.md`（storyline-driven）。
 

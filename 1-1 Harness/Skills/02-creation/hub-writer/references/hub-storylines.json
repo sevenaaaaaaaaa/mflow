@@ -1,0 +1,97 @@
+{
+  "version": "2026-10-04",
+  "note": "聚合页故事线 SSOT（lovart-hub-writer 专属）。独立于 landing-storylines.json——生成逻辑不同：聚合页=拓扑+分发+类目词 SEO，落地页=转化。本文件不进 landing 治理机器（validator/copy preflight 不感知），由 hub-writer 技能自洽消费。",
+  "blockTypes": {
+    "matrix": {
+      "label": "全量矩阵",
+      "desc": "某类目下全部详情页，分域分组铺开",
+      "cardCount": "10-30（超 30 必须分域分组）",
+      "order": "类目逻辑（非时间）",
+      "useWhen": "目录页主体块"
+    },
+    "ranked": {
+      "label": "排名榜",
+      "desc": "Top N 带名次、注解与排序理由",
+      "cardCount": "5-12",
+      "order": "编辑排序（有观点：为什么第一是第一）",
+      "useWhen": "best-of 榜单页主体块"
+    },
+    "curated": {
+      "label": "精选注解",
+      "desc": "编辑精选 + 每卡一句判断（适合谁/解决什么）",
+      "cardCount": "3-9",
+      "order": "场景逻辑",
+      "useWhen": "专题化外观的核心块——编辑感来源"
+    },
+    "category": {
+      "label": "类目分块",
+      "desc": "按场景/人群/格式切的多个分块（可复用多次）",
+      "cardCount": "3-8 每块",
+      "order": "类目内字母序或权重",
+      "useWhen": "多分块聚合的主体"
+    },
+    "recent": {
+      "label": "最新动态",
+      "desc": "最新详情页/内容，证伪'死页'维护感",
+      "cardCount": "3-6",
+      "order": "时间倒序",
+      "useWhen": "页面下部长青信号块"
+    },
+    "cluster-link": {
+      "label": "集群深链",
+      "desc": "纯内链块：相关 hub/相邻集群/上级导航",
+      "cardCount": "3-8",
+      "order": "拓扑关系（同层 hub 互链 + 上级）",
+      "useWhen": "相关推荐位 + 拓扑收口"
+    }
+  },
+  "storylines": {
+    "hub-directory": {
+      "label": "全量目录",
+      "intent": "aggregate-directory",
+      "narrative": "hero banner（全库承诺+数字背书）→ 单一 matrix 大矩阵（分域分组）→ cluster-link 相关推荐 → 收口",
+      "aggregationBlocks": ["matrix"],
+      "sections": ["hero-banner", "matrix", "cluster-link", "faq-light", "cta-soft"],
+      "signals": ["all tools", "directory", "everything", "full list", "a-z"],
+      "targetQueries": ["all {category} tools", "{category} directory", "complete list of {category}"],
+      "evergreenMode": "strict"
+    },
+    "hub-best-of": {
+      "label": "榜单精选",
+      "intent": "aggregate-ranked",
+      "narrative": "hero banner（榜单承诺+评选标准）→ ranked 主榜 → category 分类块（补充长尾）→ cluster-link → 收口",
+      "aggregationBlocks": ["ranked", "category"],
+      "sections": ["hero-banner", "ranked", "category", "cluster-link", "faq-light", "cta-soft"],
+      "signals": ["best", "top", "ranked", "which is better", "recommended"],
+      "targetQueries": ["best {category} 2026", "top {category} for {use-case}"],
+      "evergreenMode": "hybrid（结构长青，榜单可带年份但每年复核）"
+    },
+    "hub-topic": {
+      "label": "主题入口",
+      "intent": "aggregate-topic",
+      "narrative": "hero banner（主题价值）→ 观点导语块（轻教育，专题化外观）→ 多个 category 分块（按场景/人群/格式切）→ curated 精选 → cluster-link → 收口",
+      "aggregationBlocks": ["category", "curated", "category", "recent"],
+      "sections": ["hero-banner", "topic-intro", "category", "curated", "category", "recent", "cluster-link", "faq-light", "cta-soft"],
+      "signals": ["topic", "guide to", "everything about", "start here", "hub"],
+      "targetQueries": ["{topic} hub", "{topic} everything you need", "{topic} resources"],
+      "evergreenMode": "strict"
+    },
+    "hub-mixed": {
+      "label": "混合聚合",
+      "intent": "aggregate-mixed",
+      "narrative": "hero banner → 单一 curated 精选块（少而精）→ matrix 或 category 兜底 → cluster-link → 收口",
+      "aggregationBlocks": ["curated", "matrix"],
+      "sections": ["hero-banner", "curated", "matrix", "cluster-link", "faq-light", "cta-soft"],
+      "signals": ["collection", "roundup", "handpicked"],
+      "targetQueries": ["{category} collection", "{category} roundup"],
+      "evergreenMode": "strict"
+    }
+  },
+  "topologyRules": {
+    "minOutbound": 8,
+    "backlink": "必选：每个被聚合的详情页回链本 hub（面包屑或相关块）",
+    "hubToHub": "cluster-link 块互链同层 hub + 上级",
+    "depthBudget": "任意详情页 ≤3 跳达任意 hub",
+    "antiDoorway": ["每卡注解唯一且有编辑判断", "分类/排序有逻辑并写明", "hub 自有内容（导语/观点/FAQ）≥300 词"]
+  }
+}
