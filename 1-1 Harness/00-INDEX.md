@@ -5,6 +5,29 @@
 
 ---
 
+## 五层架构（2026-10-04 重构声明 — 策略先行）
+
+```
+L0 策略层（先行，产出机读契约 strategy/*.json）
+   ├── seo-strategist      ← 打哪些查询/空档/黑名单/GEO（seo-strategy.json）
+   ├── media-strategist    ← 投什么/不投什么/终止判据（paid-strategy.json）
+   ├── content-strategist  ← 人群×漏斗配比/集群拓扑/复用链（content-strategy.json）
+   └── audience-ops        ← 生命周期/触点/反馈回路（audience-strategy.json）
+        │ 选题三重 trace（词群 ∩ 人群格 ∩ 集群位置）——缺一不进队列
+        ▼
+L1 生成层：blog-writer / landing-writer / hub-writer（+ image-generation/kb-mine）
+        ▼ 发布（止步 ready，人工授权）
+L2 持续优化层：optimization-loop（信号→工单→pipeline）+ 05-monitor（sentinel/trident/sitemap 信号采集）
+        ▼
+L3 CRO 层：cro-optimizer（漏斗诊断/三清单审计/实验）→ 回流生成默认值与策略基准
+横切：质检门禁（hooks/quality-gates）· 编排（router/pipeline/dream）· 知识（KB/Memory/Dream）
+L0 输入管道：data-ingestion / trident / kb-ingest / keywords-intake（喂策略，本身不决策）
+```
+
+**铁律**：策略修订只改 `1-3 GenFlow/Content Strategy/strategy/*.json`（版本递增），不改生成技能；生成层选题无策略 trace = 不开工。
+
+---
+
 ## 会话启动门禁（任何 agent 先跑这个）
 
 ```bash
@@ -97,7 +120,7 @@ bash "1-4 Dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / r
 |------|------|
 | `05-skills/skills-usage.md` | 技能使用指南（按 S1-S6 阶段映射） |
 | `05-skills/skill-entrypoint-governance.md` | 入口治理：每场景唯一父入口 + support-only 规则 |
-| `Skills/` | 30 个 skill 实体（01-strategy 4 / 02-creation 4 / 03-review 3 / 04-publish 8 / 05-monitor 2 / 06-orchestrate 12 / 顶层 1；博客 12 技能并入 blog-writer，落地页 4 技能并入 landing-writer） |
+| `Skills/` | 38 个 skill 实体（01-strategy 8 / 02-creation 6 / 03-review 3 / 04-publish 8 / 05-monitor 2 / 06-orchestrate 12 / 顶层 1；博客 12 技能并入 blog-writer，落地页 4 技能并入 landing-writer） |
 
 > Skill 真相 = 本 vault `Skills/` 目录。`~/.hermes/` 运行时由 `1-4 Dev/scripts/harness_sync.py` 从 vault 重新生成（每日管线 D07 步骤）。
 

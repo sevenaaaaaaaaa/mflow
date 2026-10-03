@@ -12,6 +12,10 @@ description: >-
 落地页文案 600–1000 词 · H2 4–7 · FAQ 3–5 · 每千字 1–3 数据点 · 外部来源 2–5 条 · 列表 ≤4 不连续 · 单段 ≤300 字符 · 字数不足删冗余不补形容词。
 交付前四门禁：`post-write-check.sh` · `geo-check.sh` · `quota-check.sh` · `lang-check.sh`。
 
+## 第零层 · 策略对齐（L0 契约）
+
+读 ：页面主词必须来自 seo-strategy 词群；投放承接页必须命中 paid-strategy 白名单页且故事线/CTA 语气按渠道匹配（channel→storyline→ctaTone）；转化基准以 cro-audits 最近评分 ≥80 为投放资格。策略缺失 → 退回 L0，不硬生成。
+
 ## 四层决策（生成任何页面前逐层过，全部留痕到"策略说明"）
 
 ### 第一层 · 分类（页面类型 → 轨道）
