@@ -17,6 +17,14 @@ SEO 策略不是关键词列表。它是四个决策的系统：
 
 没有这四个决策就开工生成 = 把预算撒进随机查询——这就是"生成很傻"的根因。
 
+
+## 历史资产承接（不另起炉灶）
+
+- **KR 式结构**继承 `01-project/Lovart-SEO-Q3-Tactical-Plan-2026.md`（数据基线诊断 → O/KR → 12 周执行日历 → 预期效果模拟 → 风险应对）——本技能的策略文件保留 baseline/krs/timeline/projection/risks 字段
+- **数据摄入**不重建：GSC/GA4 刷新走 `trident-data-engine`，词表摄入走 `keywords-intake`——本技能只做"摄入之后的战略加工"
+- **竞品实测范式**继承 Moodio 侧竞品调研方法论（SimilarWeb/Semrush 实测 → 分层战场 → 空档词群）
+- GEO 探针复用 console 既有 geo_scheduler/citations.jsonl 设施，策略文件只声明目标查询
+
 ## 方法论（五阶段，产出自 `1-3 GenFlow/Content Strategy/`）
 
 ### Phase 1 · 市场测绘（实测，不拍脑袋）

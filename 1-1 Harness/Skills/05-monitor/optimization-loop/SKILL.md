@@ -25,6 +25,13 @@ description: >-
 | 用户之声（audience-ops）：高频问题 | 内容缺口 | 新选题候选（进 content-strategist 评审） |
 | 季度审计：零流量零转化资产 | 资产无效 | 301 合并 / 深度重写 / 下架建议 |
 
+
+## 历史资产承接
+
+- **博客线信号细则**以 `blog-writer/references/signals-and-phases.md` §Phase 0 信号映射表为共享 SSOT（本表的信号行与之一致，不复制不分支——改就改一处）
+- **复盘方法论**继承 Docs/S2-内容策略《内容复盘与缺口分析》与 08-执行日历审计（SEO/内链审计格式）——审计产物格式沿用，动作进 pipeline
+- **信号采集**仍是 05-monitor 既有设施（sentinel/sitemap/trident），本技能只做诊断与动作
+
 ## 方法论（周循环）
 
 1. **测**：每周一跑 trident（GSC/GA4 刷新）+ 读 GEO 周汇总 + Sentinel 周报 + 上周 pipeline 表现。

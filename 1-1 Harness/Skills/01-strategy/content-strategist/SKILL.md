@@ -17,6 +17,18 @@ description: >-
 
 **与 SEO 策略的关系**：seo-strategist 决定"打哪些查询"（需求侧），content-strategist 决定"用什么资产网络承接并服务谁"（供给侧+人群侧）。两者共同约束生成层：**选题 = 词群 ∩ 人群格子 ∩ 集群位置**，三者缺一的选题不进队列。
 
+
+## 历史资产承接（十份既有策略文档 = 本技能的维度来源）
+
+`Content Strategy/00-09-*.md` 不是废弃品，是本策略的**分维度详情**，映射写死在 content-strategy.json 的 lineage 字段：
+- 00-全景清单 → **Silo Structure**（页面类型体系/博客分类/内链路由）→ clusters.linkRule
+- 01-漏斗矩阵 → **funnelMix**（四阶段覆盖度与 BOFU 缺口分析）
+- 02-季节性日历 → axisPlans.seasonal　03-行业深度 → axisPlans.industries
+- 04-职业工作流 → axisPlans.professions　05-企业级 → axisPlans.enterprise
+- 06-复用分发 → reuseChains + 渠道优先级　07-伦理法律 → axisPlans.ethicsLegal
+- 08-执行日历审计 / Docs/S2《内容复盘与缺口分析》→ 已升级为 `optimization-loop`
+- **节奏执行**仍由 `content-calendar` 落地（本技能产出节奏，calendar 写日历——分工不变）
+
 ## 方法论
 
 ### Phase 1 · 人群-漏斗矩阵

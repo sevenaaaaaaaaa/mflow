@@ -5,26 +5,21 @@
 
 ---
 
-## 五层架构（2026-10-04 重构声明 — 策略先行）
+## 五层架构（2026-10-04 v2 融合版 — 接管既有结构，不另起炉灶）
 
-```
-L0 策略层（先行，产出机读契约 strategy/*.json）
-   ├── seo-strategist      ← 打哪些查询/空档/黑名单/GEO（seo-strategy.json）
-   ├── media-strategist    ← 投什么/不投什么/终止判据（paid-strategy.json）
-   ├── content-strategist  ← 人群×漏斗配比/集群拓扑/复用链（content-strategy.json）
-   └── audience-ops        ← 生命周期/触点/反馈回路（audience-strategy.json）
-        │ 选题三重 trace（词群 ∩ 人群格 ∩ 集群位置）——缺一不进队列
-        ▼
-L1 生成层：blog-writer / landing-writer / hub-writer（+ image-generation/kb-mine）
-        ▼ 发布（止步 ready，人工授权）
-L2 持续优化层：optimization-loop（信号→工单→pipeline）+ 05-monitor（sentinel/trident/sitemap 信号采集）
-        ▼
-L3 CRO 层：cro-optimizer（漏斗诊断/三清单审计/实验）→ 回流生成默认值与策略基准
-横切：质检门禁（hooks/quality-gates）· 编排（router/pipeline/dream）· 知识（KB/Memory/Dream）
-L0 输入管道：data-ingestion / trident / kb-ingest / keywords-intake（喂策略，本身不决策）
-```
+**层 × 阶段 × Profile 三向映射**（S0-S6 是 Docs/ 阶段手册的既有主线；profile 是 router 既有体系）：
 
-**铁律**：策略修订只改 `1-3 GenFlow/Content Strategy/strategy/*.json`（版本递增），不改生成技能；生成层选题无策略 trace = 不开工。
+| 层 | S 阶段 | Profile（router 既有） | 技能 | 吸收的历史资产（不废弃，接管） |
+|---|---|---|---|---|
+| **L0 策略**（先行） | S2-内容策略（手册所在）+ S1 输入 | mflow-reports（S1/S6 拥有者）；建议增设 mflow-strategy | seo-strategist / media-strategist / content-strategist / audience-ops | Content Strategy 00-09 十份策略文档（→ strategy/*.json 各维度，lineage 字段记录）；Q3 战术计划 KR 式框架；keywords-intake / trident / data-ingestion / kb-ingest = **输入管道（保留原职）**；content-calendar = **节奏执行器（保留原职）** |
+| **L1 生成** | S3-内容创作 | mflow-creation（key_skills 已含三 writer） | blog-writer / landing-writer / hub-writer + image-generation / kb-mine | RULES-20/70/80、content-writer 方法论、8 类型 GUIDE、33 组件库、hub-storylines（全部既有，零改动） |
+| **L2 持续优化** | S6-监控分析 + S2 复盘 → 回灌 S0 | mflow-reports | optimization-loop | Docs/S2《内容复盘与缺口分析》+ 08-执行日历审计格式；blog-writer 信号映射表（共享 SSOT 不复制）；sentinel/trident/sitemap = 信号采集（保留原职） |
+| **L3 CRO** | S4 转化维度 + S5 后指标 | mflow-quality / mflow-ops 协作 | cro-optimizer | Q3 计划 O2（CRO 驱动增长）+ 01-漏斗矩阵 BOFU 篇；landing-writer CRO 五维术语共享 |
+| 质检横切 | S4-质量审核 | mflow-quality | content-quality-gates / content-audit（既有） | RULES-30 三层门禁 + hooks（零改动） |
+| 编排横切 | 全程 | mflow-management | router / pipeline-state / pipeline-orchestrator / dream-*（既有） | 23 决策矩阵 / S0-S6 状态机（零改动） |
+
+**策略契约**：`1-3 GenFlow/Content Strategy/strategy/`（seo/paid/content/audience 四 json + optimization-log.jsonl + cro-audits.jsonl）。lineage 字段记录每个维度继承自哪份历史文档；历史文档保留为分维度详情，以 json 为机读总纲。
+**铁律**：① 选题三重 trace（词群 ∩ 人群格 ∩ 集群位置），无策略不开工；② 策略修订只改 strategy json（版本递增），不改生成技能；③ 新策略技能只做"摄入之后的战略加工"，管道技能（trident/keywords-intake/data-ingestion/kb-ingest）与执行器（content-calendar）不替代不合并。
 
 ---
 

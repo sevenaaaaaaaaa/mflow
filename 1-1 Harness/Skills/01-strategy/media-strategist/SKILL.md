@@ -15,6 +15,13 @@ description: >-
 3. **不投什么**——黑名单先于白名单。竞品用真金白银验证过的坑（买大词转化腰斩、模型名截流养不出留存）直接继承。
 4. **何时停**——每条投放线带终止判据（kill criteria）：踩线即停，不恋战。
 
+
+## 历史资产承接
+
+- **黑名单文化**继承影视竞品实测结论（Flora/OiiOii 反面教材已在 paid-strategy.antiPatterns）——后续每季实测继续追加
+- **CTA 语气表**与 `landing-writer` 第四层共享同一套 ctaStyle 口径（写入时下限 / 本技能管投放资格）
+- **UTM 与追踪**不重建：分发执行沿 AD-Tracking SSOT（1-3 GenFlow/AD-Tracking）
+
 ## 方法论
 
 ### Phase 1 · 可投资产盘点
