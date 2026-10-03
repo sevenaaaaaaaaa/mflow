@@ -53,7 +53,7 @@ Claude 打开 `1-1 Harness/` 时的项目记忆。技能库见 `.claude/skills/`
 - 数据/SEO：`data-ingestion`、`trident-data-engine`
 - 内容日历：`content-calendar`
 - Blog 生产：`blog-writer`、`blog-writer`、`blog-writer`
-- 落地页：`landing-page`、`page-serp-writer`、`refresh-page-page-generator`
+- 落地页：`landing-writer`、`landing-writer`、`landing-writer`
 - 质检：`content-quality-gates`、`content-audit`
 - 发布：`sanity-content-publish`（路由）→ 各 `*-sanity-publish`
 - 分发：`multi-platform-push`、`content-distribution`
@@ -65,7 +65,7 @@ Claude 打开 `1-1 Harness/` 时的项目记忆。技能库见 `.claude/skills/`
 
 - `mflow-intel` — 情报监测（sentinel + trident；data-ingestion 可发现）
 - `mflow-blog` — Blog 生产（blog-writer；blog-writer/image-generation 可发现）
-- `mflow-page` — 落地页生产（landing-page + page-serp-writer；refresh-page 可发现）
+- `mflow-page` — 落地页生产（landing-writer + landing-writer；refresh-page 可发现）
 - `mflow-qa` — 质检（content-quality-gates；content-audit 可发现）
 - `mflow-publisher` — Sanity 发布路由（sanity-content-publish → 各 *-sanity-publish）
 - `mflow-distributor` — 多平台分发（multi-platform-push；content-distribution 可发现）

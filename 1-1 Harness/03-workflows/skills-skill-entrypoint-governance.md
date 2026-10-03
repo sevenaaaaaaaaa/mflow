@@ -7,7 +7,7 @@
 | 场景 | 唯一父入口 | 内部支撑 skill |
 |------|------------|----------------|
 | Blog 创作 | `blog-writer` 唯一入口 | 类型结构内置于 `blog-writer/references/types/` |
-| 落地页生成/刷新 | `landing-page` | `page-serp-writer`、`refresh-page-page-generator` |
+| 落地页生成/刷新 | `landing-writer` 唯一入口 | 文案/刷新细节在 references/（page-copy-serp、refresh-page-generator） |
 | 质量门禁 | `content-quality-gates` | `content-audit`；`sanity-preflight` 仅兼容别名 |
 | Sanity 发布 | `sanity-publish` | `sanity-content-publish`、`tools-sanity-publish`、`features-sanity-publish`、`product-sanity-publish`、`scenarios-sanity-publish` |
 | 分发 | `multi-platform-push` | `content-distribution` |
@@ -25,7 +25,7 @@
 
 Claude/Hermes/OpenCode profile 只预加载父入口 skill：
 
-- `mflow-page` 只预加载 `landing-page`。
+- `mflow-page` 只预加载 `landing-writer`。
 - `mflow-qa` 只预加载 `content-quality-gates`。
 - `mflow-publisher` 只预加载 `sanity-publish`。
 - 分类 blog 子 skill 不预加载到非 blog agent。

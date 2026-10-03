@@ -1,7 +1,7 @@
 # 品牌方 Tools → Sanity 发布统合指南
 
 > **单一事实来源（SSOT）**：本地 Tools 页面 JSON 同步到 Sanity `production` 的完整流程、安全规则、脚本与排障。  
-> 统合自：`SOP-PageJSON导入指南.md`、`sanity-publish`、`mflow-sanity-content-pipeline.mdc`、`landing-page`、`convert-features.js` 及线上实践经验。  
+> 统合自：`SOP-PageJSON导入指南.md`、`sanity-publish`、`mflow-sanity-content-pipeline.mdc`、`landing-writer`、`convert-features.js` 及线上实践经验。  
 > **本文件位置**：`1-Project/1-1 Harness/Skills/tools-sanity-publish/`（与 `SKILL.md` 同目录）。镜像副本：`1-4 Dev/品牌.sanity.studio/SOP-品牌方-Tools-Sanity-发布统合指南.md`。
 
 ---
@@ -23,7 +23,7 @@
 | 页面 JSON 简版 SOP | `1-4 Dev/品牌.sanity.studio/SOP-PageJSON导入指南.md` | 已并入本指南 §4–§8 |
 | 内容管道红线 | `1-4 Dev/.cursor/rules/mflow-sanity-content-pipeline.mdc` | 全局安全规则 |
 | Blog 同步 SOP | `1-4 Dev/品牌.sanity.studio/SOP-Sanity同步指南.md` | 仅 Markdown → `blog` |
-| 生成 Tools JSON | `Skills/02-creation/landing-page/SKILL.md` | Step 3 `tool-page` |
+| 生成 Tools JSON | `Skills/02-creation/landing-writer/SKILL.md` | Step 3 `tool-page` |
 | Studio 结构说明 | `1-4 Dev/品牌.sanity.studio/AGENTS.md` | schema、desk、GROQ |
 
 ---
@@ -312,7 +312,7 @@ npx sanity exec fix-category-refs.js --with-user-token
 ## 8. 与内容生产管线的关系
 
 ```
-content-calendar → landing-page (tool-page)
+content-calendar → landing-writer (tool-page)
        → Pages/Tools/{lang}/*.json
        → content-audit
        → 【本指南】convert-tools.js → import --missing

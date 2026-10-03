@@ -263,7 +263,7 @@ IF preflight OK AND content-audit PASS (Blog):
 |-------|----------|
 | **本 Skill** | L1 自动化 + 全维度清单索引 |
 | `content-audit` | Blog 深度审计（合规/文化/可读性） |
-| `landing-page` | 生成后 **必须** preflight |
+| `landing-writer` | 生成后 **必须** preflight |
 | `mflow-tools/features-sanity-publish` | import 前 **必须** `--ndjson` preflight |
 | `sanity-publish` | Blog NDJSON 字段 + CDN + 多语言 parity |
 | `pipeline-orchestrator` | Step 3 后 L1；Step 4 audit；Step 5 前 NDJSON |

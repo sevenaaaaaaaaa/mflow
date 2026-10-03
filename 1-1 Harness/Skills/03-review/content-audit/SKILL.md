@@ -28,7 +28,7 @@ Step 4 of 品牌方 Content Pipeline — 深度内容审计（Blog 为主）：�
 
 ## Prerequisites
 
-- Step 3 内容创作（`blog-writer` / `features-page` / `blog-writer`）已完成
+- Step 3 内容创作（`blog-writer` / `landing-writer` / `blog-writer`）已完成
 - 待审内容存在于对应输出目录
 
 ## Audit Dimensions

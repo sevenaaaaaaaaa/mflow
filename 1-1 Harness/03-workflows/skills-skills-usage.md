@@ -23,9 +23,9 @@ S1-数据采集 → S2-内容策略 → S3-内容创作 → S4-质量审核 → 
 | | | `kb-ingest` | 知识库摄取（KB units） |
 | **S3 内容创作** | `02-creation/` | `blog-writer` | **Blog 唯一入口**：所有语言所有 Blog，不翻译不走 i18n 管线（2026-10-03 四合一） |
 | | | ~~`blog-serp-writer` / `blog-automation` / 8 类型子技能~~ | ⛔ 已并入 `blog-writer` |
-| | | `landing-page` | **落地页唯一父入口**：Tools/Features/Product/Scenario/Solution/Topic 生成与刷新 |
-| | | `page-serp-writer` | support-only：由 `landing-page` 内部调用 |
-| | | `refresh-page-page-generator` | support-only：bodyJson/type 序列生成器 |
+| | | `landing-writer` | **落地页唯一父入口**：Tools/Features/Product/Scenario/Solution/Topic 生成与刷新 |
+| | | ~~`page-serp-writer` / `refresh-page-page-generator` / `features-page.md`~~ | ⛔ 已并入 `landing-writer` references |
+
 | | | 类型结构 | 内置于 `blog-writer/references/types/`（8 类 GUIDE） |
 | | | `image-generation` | 封面/横幅图片生成 |
 | | | `kb-mine` | 写作前 KB 挖掘 |

@@ -58,7 +58,7 @@ Lovart 博客由 `blog-writer` 驱动（Sentinel 舆情 + GSC 数据 → 选题�
 
 **Blog 8 类**（继承 Lovart taxonomy，governance 见 `../references-blog-subskill-governance.md`）：101 / How-To / Best Practice / Better Design / Insight & Trend / Review / Complete Guide / Stack×Stack → Moodio 首月主力：How-To、Comparison（=05-competitors 规则）、Insight & Trend、101。类型子技能（content-101/complete-guide 等）结构规则通用可读，但其中 Lovart 案例/术语以 Moodio KB 覆盖。
 
-**落地页六类**（console GEN_TYPES）：features/tools/product/scenario/solution/topic → 走创作中心 + moodio-film-studio 模板 + 四门禁。**注意**：Lovart 的 `landing-page` skill 完整机器（故事线 6 维绑定/composite-v2 JSON/图片库/Sanity 发布）**依赖 1-3 GenFlow 与 Sanity，Moodio 当前不可迁**——Moodio 页面 = Hero（主词+副标+CTA"申请内测码"）→ 3 Benefit → 场景 2 → FAQ 3 → CTA，七要素总则（buyer/input/output/edit path/proof/CTA/FAQ）照常适用。
+**落地页六类**（console GEN_TYPES）：features/tools/product/scenario/solution/topic → 走创作中心 + moodio-film-studio 模板 + 四门禁。**注意**：Lovart 的 `landing-writer` skill 完整机器（故事线 6 维绑定/composite-v2 JSON/图片库/Sanity 发布）**依赖 1-3 GenFlow 与 Sanity，Moodio 当前不可迁**——Moodio 页面 = Hero（主词+副标+CTA"申请内测码"）→ 3 Benefit → 场景 2 → FAQ 3 → CTA，七要素总则（buyer/input/output/edit path/proof/CTA/FAQ）照常适用。
 
 ### Step 4 写作注入
 
@@ -74,7 +74,7 @@ Lovart 博客由 `blog-writer` 驱动（Sentinel 舆情 + GSC 数据 → 选题�
 |---|---|---|
 | blog-writer 的 Sentinel 舆情 + GSC 信号 | ⏸ 站点未上线无数据 | 06 词矩阵 + GEO citations 缺口 + topics 队列（上线后切回） |
 | 封面池（56 URL）+ pick-cover.py | ⏸ 媒体素材 TBD | image_briefs 字段占位，等素材包 |
-| landing-page 完整故事线机器（6 维绑定/composite-v2/33 组件） | ⏸ 依赖 1-3 GenFlow SSOT | console 模板+门禁生成；CMS 定后建 Moodio 故事线（Phase 2） |
+| landing-writer 完整故事线机器（6 维绑定/composite-v2/33 组件） | ⏸ 依赖 1-3 GenFlow SSOT | console 模板+门禁生成；CMS 定后建 Moodio 故事线（Phase 2） |
 | Sanity 发布链（sanity-publish 12 技能） | ⏸ CMS 未定 | 自动化止步 S4-qa，发布人工（原则同 Lovart"发布前人工授权"） |
 | WordPress 终端（blogs.example.com） | ✗ 不适用 | 无 |
 | RULES-20/30/70/80、content-writer.md、Anti-AI 规则、governance、四门禁 | ✅ 直接继承 | — |

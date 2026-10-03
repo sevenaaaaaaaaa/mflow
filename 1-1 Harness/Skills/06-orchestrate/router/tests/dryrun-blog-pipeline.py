@@ -90,7 +90,7 @@ PROFILE_HAS_SKILLS = {
         "content-quality-gates", "mflow-i18n-pipeline",
         "sanity-publish", "sitemap-update",
         "multi-platform-push", "mflow-post-publish-verify",
-        "mflow-seo-reporting", "page-serp-writer",
+        "mflow-seo-reporting", "landing-writer",
     ]),
     "mflow-creation": set([  # 24 skills — covers most of S3
         "pipeline-state", "blog-writer",

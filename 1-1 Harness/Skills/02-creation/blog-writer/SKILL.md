@@ -25,7 +25,7 @@ description: >-
 本 skill 是 **Lovart 博客创作唯一入口**。2026-10-03 起以下技能已并入本 skill，不再独立存在：
 `lovart-content-writer.md`（→ references/methodology-content-writer.md）、`lovart-blog-signal-writer`（→ references/signals-and-phases.md）、8 个类型子技能（→ references/types/）、`lovart-blog-automation`（→ references/wp-publishing.md 及 references/ 规范文件）、`blog-serp-writer`（弃用，存 `02-creation/_archived-blog-skills/`）。
 
-- 页面类请求（Tools/Features/Landing/Topic…）→ `landing-page` / `page-serp-writer`，不在本 skill
+- 页面类请求（Tools/Features/Landing/Topic…）→ `landing-writer` / `landing-writer`，不在本 skill
 - 发布前深度审计 → `03-review/content-audit`
 - 主站 Sanity 发布 → `sanity-publish`；本 skill 默认终端是子站 WordPress（见 Step 6）
 

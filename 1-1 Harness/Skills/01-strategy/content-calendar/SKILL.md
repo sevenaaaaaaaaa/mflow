@@ -137,7 +137,7 @@ Output/Content Calendar/
 - [ ] `{slug}` → (tools JSON 生成)
 
 ## Landing Page
-- [ ] `{slug}` → 调用 `landing-page`
+- [ ] `{slug}` → 调用 `landing-writer`
 
 ## WordPress Blog (blogs.example.com)
 - [ ] `{slug}` → 调用 `blog-writer`

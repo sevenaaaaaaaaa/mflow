@@ -10,20 +10,20 @@
 | 故事线总表 | `1-1 Harness/08-storyline/STORYLINES.md` | 7 类页面 × 25 条故事线定义 | 所有页面生成 skill |
 | 方向索引 | `1-1 Harness/08-storyline/STORYLINE-BY-DIRECTION.md` | 按投放方向选故事线 | landing/投放向 |
 | Features 生产规范 | `1-1 Harness/08-storyline/FEATURES-PRODUCTION.md` | Features 页专用结构 | features |
-| landing 故事线 JSON | 由 `landing-page` skill 引用（`landing-storylines.json`，随 skill references 提供） | 7 条投放故事线的机读定义 | landing-page skill |
+| landing 故事线 JSON | 由 `landing-writer` skill 引用（`landing-storylines.json`，随 skill references 提供） | 7 条投放故事线的机读定义 | landing-writer skill |
 
 ## 二、页面/文章模板与结构（按页面类型）
 
 | 页面类型 | 模板/结构参考 | 位置 |
 |---------|--------------|------|
-| 落地页（Tools/Landing/Features） | `landing-v2-template.md` | `Skills/02-creation/landing-page/references/` |
+| 落地页（Tools/Landing/Features） | `landing-v2-template.md` | `Skills/02-creation/landing-writer/references/landing-ssot/` |
 | 落地页文案约束（SSOT） | `landing-copy-constraints-ssot.md` | 同上 |
 | 卡片标题↔图映射 | `card-title-image-mapping.md` | 同上 |
 | 图池（已校验） | `verified-image-pool-2026-06.md` | 同上 |
 | 图池拉取脚本 | `image_pool.py` | 同上 |
 | Blog（唯一入口：信号选题+方法论+类型+门禁） | `blog-writer` SKILL + references | `Skills/02-creation/blog-writer/` |
 | 101 / Complete Guide / Stack-by-stack / Best Practice / Insight&Trend / Thought Leadership | 各自 `references/` 下模板与样例 | `Skills/02-creation/*/references/` |
-| 页面刷新（存量改稿） | `refresh-page-page-generator` SKILL | `Skills/02-creation/refresh-page-page-generator/` |
+| 页面刷新（存量改稿） | `landing-writer`（references/pages/refresh-page-generator.md） | `Skills/02-creation/landing-writer/` |
 | 自媒体长文（外部平台） | `ai-self-media-article` SKILL + 14 references | `Skills/04-publish/ai-self-media-article/` |
 
 ## 三、创作方法论与质量参考

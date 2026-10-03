@@ -60,7 +60,7 @@ Use `references/serp-and-competitor-sources.md`.
 ### 3. Route to the specialist
 
 - Blog: use `blog-writer` (GSC/ORM signal-driven, higher quality standard).
-- Page / landing / Tools / Features / compositePage: use `page-serp-writer`.
+- Page / landing / Tools / Features / compositePage: use `landing-writer`.
 - Quality verification: use `content-quality-gates`.
 - Publishing/import: use the existing Sanity publish skills.
 
@@ -92,7 +92,7 @@ For any creation task, start by stating:
 ```text
 Content route: [Blog | Tool | Feature | Product | Solution | Scenario | Topic | Comparison | Category Education]
 SERP intent: [tool | category | comparison | technical | model | audience | utility]
-Primary skill: [blog-writer | page-serp-writer]
+Primary skill: [blog-writer | landing-writer]
 Required checks: SERP brief / fact sourcing / Anti-slop / i18n / Quality Gates
 ```
 

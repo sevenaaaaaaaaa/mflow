@@ -61,7 +61,7 @@ tags: [tool-landing, anti-slop, T1-negative]
 
 ## Reuse for the brand
 
-- **Structure**: Negative example for `page-serp-writer` and Page Ledger checks.
+- **Structure**: Negative example for `landing-writer` and Page Ledger checks.
 - **Rewrite direction**: Replace hero with "Turn [brief] into [campaign kit] with [edit path]."
 
 ## Preflight expectation

@@ -78,10 +78,10 @@ path: 1-1 Harness/02-rules/RULES-20-creation.md
 
 | 页面类型 | 生成 skill | 发布 skill |
 |---------|-----------|-----------|
-| Tools | landing-page | tools-sanity-publish |
-| Features | landing-page | features-sanity-publish |
-| Products | landing-page（泛化） | product-sanity-publish |
-| Scenarios | landing-page（泛化） | scenarios-sanity-publish |
-| Topics | landing-page（泛化） | — 缺 |
-| Solutions | landing-page（泛化） | — 缺 |
-| Landing Page（投放） | landing-page | — |
+| Tools | landing-writer | tools-sanity-publish |
+| Features | landing-writer | features-sanity-publish |
+| Products | landing-writer（泛化） | product-sanity-publish |
+| Scenarios | landing-writer（泛化） | scenarios-sanity-publish |
+| Topics | landing-writer（泛化） | — 缺 |
+| Solutions | landing-writer（泛化） | — 缺 |
+| Landing Page（投放） | landing-writer | — |

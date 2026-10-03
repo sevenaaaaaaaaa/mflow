@@ -56,7 +56,7 @@ hermes -p mflow-reports -s mflow-seo-reporting
 hermes -p mflow-creation -s blog-writer,mflow-anti-slop
 
 # 创作 Tools 页
-hermes -p mflow-creation -s page-serp-writer,landing-page
+hermes -p mflow-creation -s landing-writer,landing-writer
 
 # 质检
 hermes -p mflow-quality -s content-quality-gates,mflow-anti-slop

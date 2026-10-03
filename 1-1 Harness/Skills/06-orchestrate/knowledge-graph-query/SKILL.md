@@ -52,7 +52,7 @@ description: 知识图谱查询 skill。查询项目知识与依赖关系。
 > Profile `mflow-creation` 直接使用以下 skills（按 S3 顺序）：
 > 1. `blog-writer` (hops 1)
 > 2. `blog-writer` (hops 1)
-> 3. `page-serp-writer` (hops 1)
+> 3. `landing-writer` (hops 1)
 > ...
 > 受影响的下游：6 个 skill 中每个都在 Hermes + Claude + 通常 Cursor 至少有一个副本。改任意一个 skill 前必须先看它的 `mirrors` 边以确认哪些工具需要同步。
 

@@ -12,8 +12,8 @@ Use this before writing the brand landing/page copy or generating composite-v2 J
 | `1-3 Content Gen/Page Gen/Refresh-Page/SCENARIOS-PRODUCTION.md` | Scenarios production guide. |
 | `references/scenarios-routing.md` | Scenarios theme + storyline selection. |
 | `1-3 Content Gen/Page Gen/Refresh-Page/PAGE-MODULE-MATRIX.md` | Component matrix and module direction. |
-| `1-1 Harness/Skills/landing-page/SKILL.md` | Persona, PMF, source verification, CTA, social proof. |
-| `1-1 Harness/Skills/landing-page/tools-v2-template.md` | Tools composite-v2 JSON template and language batches. |
+| `1-1 Harness/Skills/landing-writer/SKILL.md`（细节 references/landing-master.md） | Persona, PMF, source verification, CTA, social proof. |
+| `1-1 Harness/Skills/landing-writer/references/tools-v2-template.md` | Tools composite-v2 JSON template and language batches. |
 | `1-4 Dev/mflow.sanity.studio/schemaTypes/compositePageType.ts` | Sanity `compositePage` category source. |
 
 ## Sanity Categories

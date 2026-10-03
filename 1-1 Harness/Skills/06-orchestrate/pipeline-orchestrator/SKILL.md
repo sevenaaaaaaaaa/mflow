@@ -60,7 +60,7 @@ description: 品牌方 内容自动化 Pipeline 主编排器 v2.0 — Sentinel �
 │  ││Bing   │ │ │          │ │                     │ └──────────┘ │  ↓    │ │
 │  │└───────┘ │ │          │ │ blog-writer v4   │              │content│ │
 │  │    ↓     │ │          │ │ features-page v2.3  │              │-dist  │ │
-│  │unified   │ │          │ │ landing-page        │              │engine │ │
+│  │unified   │ │          │ │ landing-writer        │              │engine │ │
 │  │brief     │ │          │ │ blog-writer     │              │22 API │ │
 │  │          │ │          │ │                     │              │平台   │ │
 │  │kw-intake │ │          │ └────────────────────┘              └───────┘ │
@@ -88,7 +88,7 @@ description: 品牌方 内容自动化 Pipeline 主编排器 v2.0 — Sentinel �
 | **2** | `content-calendar` | 14 品类 × 5 语言 → 三大日历 → creation-tasks |
 | **3a** | `blog-writer` | v4.0 — 12 类型 × 11 框架 → Sanity Blog MD |
 | **3b** | `features-page` | v2.3 — 5 组件 × 11 语言 × 6 角色 → Features JSON |
-| **3c** | `landing-page` | 6 区块 × 10 语言 × 5 维定制 → Landing Page JSON |
+| **3c** | `landing-writer` | 6 区块 × 10 语言 × 5 维定制 → Landing Page JSON |
 | **3d** | `blog-writer` | WordPress 博客 (publish-to-wp.py) |
 | **3.5** | `image-generation` | 品牌方 API 生成封面/配图 + CDN 回写 |
 | **4a** | `content-quality-gates` | L1 预检 + L2 落库抽查 |
