@@ -1,0 +1,43 @@
+{
+  "id": "moodio-film-studio",
+  "name": "Moodio AI 影视创作",
+  "version": "1.0",
+  "author": "MFlow built-in",
+  "description": "Moodio（AI-native film set）专用模板：面向专业影视创作者与新一代创作者，讲全流程工作流、审美表达与团队协作。内置官方表达口径（不比成片效果、不比库量、不宣称替代创作者、CTA=申请内测码）。",
+  "workflow": {
+    "id": "blog",
+    "name": "Moodio 内容生产（模板版）",
+    "flow": [
+      "S0 选题入队（06-seo-keywords 取词）",
+      "S3 生成（KB-grounded + 表达口径）",
+      "S3 质检 + 表达红线检查",
+      "S4 人工审（能力词核对 01-capability-glossary）",
+      "S5 发布",
+      "S6 GEO/收录监控"
+    ],
+    "profiles": "生成 mflow-creation · 质检 mflow-quality · 发布 mflow-ops",
+    "skills": [
+      "moodio-film-content",
+      "blog-serp-writer",
+      "content-quality-gates",
+      "kb-mine"
+    ],
+    "kb": [
+      "产品知识库",
+      "内容策略",
+      "关键词研究"
+    ]
+  },
+  "prompt": {
+    "audience": "专业影视创作者（AI-native 团队、传统影视人、短剧团队）、AI 原生广告工作室/代理商/MCN、以及有明确创作追求的新一代创作者。专业读者关心分工/一致性/交付；新手关心'带着想法就能开拍'。",
+    "tone": "懂技术的导演/制片人语气：专业、克制、尊重 craft。讲工作流、可控性与审美表达；AI 是协助者不是替代者。专业术语（previz/shot list/FDX/continuity）可用但需顺手解释。禁止 hard-sell 与'一键成片/用 AI 赚钱'式卖点。",
+    "structure": "写一篇 Moodio 内容（主题：{TOPIC}）。结构：H1 标题（含主关键词）→ 定义式开头段（3-4 句，利于 AI 引擎摘录）→ 4-6 个 H2（按灵感检索→剧本→资产→分镜生成→剪辑→协作的全流程或场景化组织，每节含具体工作流步骤或判断框架）→ FAQ（3-5 条）→ 结尾自然引导：Moodio 目前为私有 beta，可在 app.moodio.art 申请内测码。品牌事实（15 人同画布/毫秒级同步/CMU 自研检索模型/FDX·XML 导出等）只允许出自知识库 Moodio 目录。",
+    "anti_slop_extra": "Moodio 官方表达红线（违反即重写）：① 不声称 Moodio 成片效果直接优于其他平台——改讲帮助创作者发挥自身审美；② 不强调素材库数量、不与竞品比库量——改讲'搜到你脑中的画面'；③ 不把协同简化为多人同画布——写不同角色在不同画布/阶段并行推进；④ 不把专业工作流绑定'只服务专业团队'——强调初学者也能用；⑤ 不宣称最终成片完全在 Moodio 完成——强调各阶段专业格式导出（Word/PDF/FDX 剧本、XML 剪辑、Final Cut 工程、衔接达芬奇）；⑥ 不写任何定价数字、模型版本号、用户总量、客户案例名（官方未公布）；⑦ 不使用'一键成片''做 AI 就能赚钱''颠覆''革命性'；⑧ Moodio 与 Lovart 是独立品牌，写 Moodio 时不得借用 Lovart 设计能力词。"
+  },
+  "kb_sources_suggestion": [
+    "产品知识库",
+    "关键词研究",
+    "内容策略"
+  ],
+  "default_lang": "en"
+}
