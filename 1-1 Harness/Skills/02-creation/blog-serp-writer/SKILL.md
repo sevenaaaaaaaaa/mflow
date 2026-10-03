@@ -1,6 +1,6 @@
 ---
 name: blog-serp-writer
-description: 品牌方 Blog 创作 skill。Use when writing, planning, outlining, researching, localizing, or rewriting 品牌方 blog posts, including How-To, Comparison, Insight, 品牌方 101, Segment, Best Practice, Better Design, Case Study, Digest, Glossary, and SERP-driven SEO articles.
+description: "[DEPRECATED — 博客创作主入口已让位 blog-signal-writer（见 blog-automation SKILL §定位）] 品牌方 Blog 创作 skill。Use when writing, planning, outlining, researching, localizing, or rewriting 品牌方 blog posts, including How-To, Comparison, Insight, 品牌方 101, Segment, Best Practice, Better Design, Case Study, Digest, Glossary, and SERP-driven SEO articles."
 ---
 
 ## 预算（RULES-70 强制）

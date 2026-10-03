@@ -1,62 +1,81 @@
 ---
 name: moodio-film-content
-description: Moodio Global 品牌内容创作 skill（blog + 六类落地页）。Use when writing, planning, outlining, researching, rewriting Moodio blog posts, landing pages (features/tools/product/scenario/solution/topic), GEO 答案内容, or 校验 Moodio 表达口径. 方法论继承 blog-serp-writer / page-serp-writer / landing-page，品牌事实以知识库 Moodio 目录为唯一出处。
+description: Moodio Global 创作父入口（blog + 六类落地页）。Use when planning, researching, writing, rewriting, or QA-ing Moodio content, or when a Moodio content task needs routing. 架构对齐 Lovart 真实创作链：orchestrator 总控 → 信号层选题 → content-writer 方法论 → 类型子技能治理 → 门禁 → S4-qa 止步。品牌事实唯一出处 = KB Moodio 目录。
 ---
 
-## 预算（继承 RULES-70，与 Lovart 同规）
+## 预算与铁律（继承，非另写）
 
-- 字数：Blog 1200–1800（**绝不超 2160**）；落地页文案 600–1000；摘要/分发稿 ≤600
-- H2 4–7 · FAQ 3–5 · 每千字 1–3 数据点（同数据不重复）· 外部来源 2–5 条（完整 URL）
-- 列表块 ≤4 处且不连续；单段 ≤300 字符；禁止同义反复 / 复述式总结 / 模板过渡词堆砌 / 形容词堆叠
-- 字数不足时**优先删冗余**，绝不补形容词
-- 交付前必须过四道门禁：`post-write-check.sh` · `geo-check.sh` · `quota-check.sh` · `lang-check.sh`（MFlow loop 引擎自动执行，手动写稿跑 `1-4 Dev/scripts/hooks/`）
+- **RULES-70 预算**：Blog 1200–1800 词（绝不超 2160）；落地页 600–1000；H2 4–7；FAQ 3–5；每千字 1–3 数据点；外部来源 2–5 条完整 URL；列表块 ≤4 且不连续；单段 ≤300 字符；字数不足删冗余不补形容词。
+- **RULES-20 创作硬条款（Moodio 适用子集）**：每个 Blog ≥1 个可引用观点句（金句）；每 500 字 ≥1 个 H2；slug kebab-case 禁下划线；多语言版本语义等价、字数不低于其他版本 60%；禁编造产品/竞品数据，不确定标 `[待考证]`。
+- **交付前四门禁**：`post-write-check.sh` · `geo-check.sh` · `quota-check.sh` · `lang-check.sh`（Moodio 全部已实测适配，见 04 审计记录）。
+- **三层门禁体系**（RULES-30）L1 机器钩子 → L2 content-quality-gates skill → L3 人工 QA（清单见 §Phase 4）。
 
-## 路径契约
+## 品牌事实 SSOT（唯一出处，零幻觉）
 
-| 层 | 路径 |
-|----|------|
-| 品牌事实 SSOT | `1-2 Insight/Knowledge Base/Moodio/`（9 份：00-brand-core / 01-capability-glossary / 02-personas-scenarios / 03-messaging-rules / 04-product-facts / 05-competitors / 06-seo-keywords / 07-voice-and-geo / 08-team） |
-| 行业模板 | `templates/moodio-film-studio.json`（生成时 template_id 必带） |
-| 选题队列 | `run/projects/moodioglobal/topics.json` |
-| 项目配置 | `run/projects/moodioglobal/meta.json`（geo 查询 / schedule） |
-| 本 Skill | `1-1 Harness/Skills/02-creation/moodio-film-content/SKILL.md` |
+- 能力词：`1-2 Insight/Knowledge Base/Moodio/01-capability-glossary.md`
+- 数字/事实：`04-product-facts.md`；表达红线：`03-messaging-rules.md`（官方 5 条 Don'ts，违反即 BLOCK）
+- 人群/场景：`02-personas-scenarios.md`；团队/融资/案例：`08-team.md`
+- **Lovart 术语（MCoT/ChatCanvas/Nano Banana 等）在 Moodio 内容中一概禁止**——两个工具不同，术语不互通。
 
-## 角色定位
+## 定位与真链路（对齐 Lovart 架构）
 
-你是 Moodio 的全球增长负责人 + 资深影视营销编辑。根据选题，撰写 KB-grounded、SERP-aware、符合官方表达口径的 blog 与落地页。**品牌事实 trace back 到 KB Moodio 目录；KB 没有的能力/数字不写。**
+本 skill 是 **Moodio 创作父入口**，对应 Lovart 体系中 `content-creation-orchestrator` 的角色：
 
-## 必备输入（缺省取默认并声明）
+```
+Step 0 路由（pipeline-state + 判断 blog/page/refresh）
+  → Step 1 信号层（选题从哪来——Moodio 适配版，见下）
+  → Step 2 方法论（content-writer.md 核心，品牌无关部分直接继承）
+  → Step 3 类型路由（8 类博客 taxonomy / 落地页类型）
+  → Step 4 写作（模板 moodio-film-studio 注入官方口径）
+  → Step 5 门禁（四钩子自动 + L2 gates）
+  → Step 6 S4-qa 人工审（自动化止步于此，发布人工授权——与 Lovart 同原则）
+```
 
-- Focus keyword / topic（从 `06-seo-keywords.md` 取主词 + 2-3 辅词）
-- 目标人群（02-personas-scenarios：专业影视 / 机构 MCN / 新一代创作者）
-- 内容类型与漏斗阶段（TOFU 认知 / MOFU 工作流 / BOFM 对比与 beta 转化）
-- 语言（默认 en；其他语言走 loop 的 lang 参数）
-- 输出形态：大纲 / 初稿 / 重写 / QA / GEO 答案段
+### Step 1 信号层 —— Moodio 适配版（与 Lovart 的关键差异）
 
-## Phase 0 · SERP 与 KB 双检索
+Lovart 博客由 `blog-signal-writer` 驱动（Sentinel 舆情 + GSC 数据 → 选题）。**Moodio 站未上线，无 GSC/舆情存量——信号层降级为三源**：
 
-1. KB 检索：按主题关键词查 `Knowledge Base/Moodio/`（MFlow 生成链路自动做 `kb_search_for_ai`；人工写作直接读文件）。
-2. SERP（有条件时）：看目标词当前排名内容，找「比通用 AI 文章更好」的空位——Moodio 的优势角度 = 真实工作流细节 + 专业影视术语 + 全流程视角。
-3. 竞品内容出现时遵守 `05-competitors.md` 对比规则（场景化判断框架，不做优劣裁决，不比库量/成片效果）。
+| Moodio 信号源 | 取什么 | 对应 Lovart 信号 |
+|---|---|---|
+| `06-seo-keywords.md` 词矩阵 | 主词+辅词+空档标记（⭐） | GSC 词表（上线后切换为真 GSC） |
+| `run/projects/moodioglobal/citations.jsonl`（GEO 探针） | 竞品被提及而 Moodio 缺席的查询 → 对比/答案内容 | 舆情 §二 竞品动态 |
+| topics.json 队列 | 排程弹题（auto_loop 已开，quota 2/天） | PRODUCTION-PLAN 排期 |
 
-## Phase 1 · 结构
+**去重**（同 Lovart Phase 1 两层法）：topics 队列内查重 + `run/projects/moodioglobal/content/` 已生成稿查重。**优先级**：ICE（Impact=词意图×商业价值 / Confidence=空档与竞争度 / Ease=写作成本）。**GSC 上线后**：本节切回 signal 模式（高曝光低点击词/排名 8-20 词/竞品对比词三表照搬 Lovart）。
 
-- **Blog**：H1（含主词）→ 定义式开头（3-4 句，供 GEO 摘录）→ 4-6 H2（按官方全流程组织：灵感检索→剧本→资产→分镜生成→剪辑→协作，或按场景）→ FAQ 3-5 → CTA：**Moodio 私有 beta，app.moodio.art 申请内测码**。
-- **落地页**（六类 features/tools/product/scenario/solution/topic）：Hero（主词 + 一句副标 + CTA 按钮"申请内测码"）→ 3 Benefit 块 → 使用场景 2 条 → FAQ 3 → 底部 CTA。场景类从 `02-personas-scenarios.md` 五大场景取材。
+### Step 2 方法论 —— content-writer.md 直接继承（品牌无关部分）
 
-## Phase 2 · 表达口径对照（交稿前逐条自查，质检同标准）
+写前必读 `../content-writer.md`（41KB 核心叙事规则），以下对其**原样继承**：
 
-读 `03-messaging-rules.md` 五条红线 + 风格禁例；`04-product-facts.md` 数字白名单核对（15 人同画布 / 毫秒级 / 200+ 创作者 3000 分钟 / CMU / FDX·XML·Final Cut / World Labs·Atlas 国内第一批 / 检索免费）。**定价、模型版本、客户名、用户量：官方未公布，禁写。**
+- **12 类型矩阵 + 11 叙事框架库** + 类型↔框架配对规则
+- **Anti-AI Writing Rules v4（全部强制）**：开头禁统计句（用场景/具体的人开）；禁 "Part 1/Part 2" 标签；禁 "There are three reasons…" 式列表旗标；禁三明治段落节奏；禁 PAS 模板块；[Comparison] 禁"类别/我方/竞品"三列表格为主结构（用叙事对比）；数据必须有上下文，禁假精确
+- **Angle Engine**：微观人群切片（"senior product designers at Series B SaaS" 级别）→ 摩擦点 → 反共识角度 → 5 标题法（1 观点/1 人物/1 数字/1 SEO/对比加 verdict）
+- 执行流 Step 0-5（Routing → Angle → 开场 → 实证 → 收口）
 
-## Phase 3 · MFlow 工作流接入
+**读法适配**：文中 `品牌方` 占位符 = Moodio；Sanity Output Protocol 节暂不适用（CMS 未定，见"不可迁移清单"）。
 
-- **自动排程**（已开启，quota 2/天）：schedule_executor 每天从 topics.json 弹题 → template_id=moodio-film-studio → loop 引擎生成 + 四门禁 → S4-qa 人工审。
-- **手动/批量**：创作中心选 Moodio Global 项目 → 内容类型 + 语言 + 模板 `moodio-film-studio` → 入队；批量用 batch。
-- **落地页生产**：创作中心 landing 六类；文案过门禁后由 CMS 适配器发布（站点 CMS 接入前内容停在 S4-qa）。
-- **QA 审稿清单**：能力词对表 01 / 事实对表 04 / 红线对表 03 / 关键词落位（主词进 H1·首段·slug）/ FAQ 3-5 / CTA 口径。
+### Step 3 类型路由
 
-## Phase 4 · GEO 联动
+**Blog 8 类**（继承 Lovart taxonomy，governance 见 `../references-blog-subskill-governance.md`）：101 / How-To / Best Practice / Better Design / Insight & Trend / Review / Complete Guide / Stack×Stack → Moodio 首月主力：How-To、Comparison（=05-competitors 规则）、Insight & Trend、101。类型子技能（content-101/complete-guide 等）结构规则通用可读，但其中 Lovart 案例/术语以 Moodio KB 覆盖。
 
-- 每篇内容保证：定义句开头 + 一个结构化"事实段"（列表/表格）+ 2-5 权威来源。
-- 每周对照 `run/projects/moodioglobal/citations.jsonl`：竞品被提及而 Moodio 缺席的查询 → 生成对应内容入队。
-- 新增选题先补 `06-seo-keywords.md`，再入 topics.json——词表与队列同源。
+**落地页六类**（console GEN_TYPES）：features/tools/product/scenario/solution/topic → 走创作中心 + moodio-film-studio 模板 + 四门禁。**注意**：Lovart 的 `landing-page` skill 完整机器（故事线 6 维绑定/composite-v2 JSON/图片库/Sanity 发布）**依赖 1-3 GenFlow 与 Sanity，Moodio 当前不可迁**——Moodio 页面 = Hero（主词+副标+CTA"申请内测码"）→ 3 Benefit → 场景 2 → FAQ 3 → CTA，七要素总则（buyer/input/output/edit path/proof/CTA/FAQ）照常适用。
+
+### Step 4 写作注入
+
+生成走 console 时 template_id=`moodio-film-studio`（audience/tone/structure/anti_slop_extra 八条官方红线已内置）。人工/agent 写作按本 skill §SSOT + 模板 prompt 同源规则。
+
+### Phase 4 / Step 6 — 人工 QA 清单（S4-qa）
+
+1. 表达红线 5 条逐条对照（03）2. 能力词对表（01）3. 数字对白名单（04）4. 金句存在 + H2 密度 5. 主词落位 H1/首段/slug 6. FAQ 3-5 覆盖真实异议（内测资格/导出格式/与竞品区别/适用边界）7. Anti-AI 抽查（Part 1 标签/三明治段落/假精确）8. 案例仅《了不起啊！朋友》可用且复核上线状态 9. 补外部来源 2-5 10. CTA=申请内测码。
+
+## 不可迁移清单（Lovart 资产 → Moodio 适配状态）
+
+| Lovart 资产 | 状态 | Moodio 替代 |
+|---|---|---|
+| blog-signal-writer 的 Sentinel 舆情 + GSC 信号 | ⏸ 站点未上线无数据 | 06 词矩阵 + GEO citations 缺口 + topics 队列（上线后切回） |
+| 封面池（56 URL）+ pick-cover.py | ⏸ 媒体素材 TBD | image_briefs 字段占位，等素材包 |
+| landing-page 完整故事线机器（6 维绑定/composite-v2/33 组件） | ⏸ 依赖 1-3 GenFlow SSOT | console 模板+门禁生成；CMS 定后建 Moodio 故事线（Phase 2） |
+| Sanity 发布链（sanity-publish 12 技能） | ⏸ CMS 未定 | 自动化止步 S4-qa，发布人工（原则同 Lovart"发布前人工授权"） |
+| WordPress 终端（blogs.example.com） | ✗ 不适用 | 无 |
+| RULES-20/30/70/80、content-writer.md、Anti-AI 规则、governance、四门禁 | ✅ 直接继承 | — |
+| 竞品数据（05-competitors v2.0 实测档案） | ✅ Moodio 特有（Lovart 无此版） | — |
