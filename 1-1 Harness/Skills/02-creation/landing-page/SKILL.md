@@ -141,17 +141,22 @@ FAQ 至少 3 条，优先回答高意图异议：
 - 适用边界
 - 和相邻页面 / 工具 / 竞品的区别
 
-## 核心产品术语（必须严格使用官方表述）
+## 核心产品术语（按项目路由 — 多品牌硬规则）
 
-- **MCoT Engine** — 思维链引擎
-- **ChatCanvas** — AI 画布交互界面
-- **Nano Banana Pro** — 专业设计模型
-- **Agentic Intelligence** — 代理式 AI
-- **Touch Edit** — 触控式精准编辑
-- **Text Edit** — 文本级指令编辑
+**术语属哪个品牌由当前项目决定，禁止跨品牌混用：**
 
-品牌定位：AI Design Partner，系统化思考（Thinking in Systems）。
-核心钩子：零门槛、自动化流、商业级 4K 输出、全图层可编辑。
+- **Lovart 项目**（下方为 Lovart 官方术语，仅 Lovart 内容可用）：
+  - **MCoT Engine** — 思维链引擎
+  - **ChatCanvas** — AI 画布交互界面
+  - **Nano Banana Pro** — 专业设计模型
+  - **Agentic Intelligence** — 代理式 AI
+  - **Touch Edit** — 触控式精准编辑
+  - **Text Edit** — 文本级指令编辑
+  - 品牌定位：AI Design Partner，系统化思考（Thinking in Systems）。
+  - 核心钩子：零门槛、自动化流、商业级 4K 输出、全图层可编辑。
+- **Moodio 项目**：术语与事实**只允许出自 `1-2 Insight/Knowledge Base/Moodio/01-capability-glossary.md`（能力）与 `04-product-facts.md`（数字）**；表达红线见同目录 03-messaging-rules.md。写 Moodio 页面时，上表 Lovart 术语一概不得出现。
+
+其他新品牌项目：先在 `1-2 Insight/Knowledge Base/{品牌}/` 建能力词表，再按本节模式接入。
 
 ---
 

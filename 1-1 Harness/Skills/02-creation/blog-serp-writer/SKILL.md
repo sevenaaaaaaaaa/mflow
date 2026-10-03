@@ -79,7 +79,7 @@ Every article must include:
 - At least 3 concrete use cases or examples unless the format is glossary/digest.
 - FAQ with 3-5 long-tail questions.
 - E-E-A-T signals: experience, method, sources, limitations.
-- 品牌方 angle: MCoT, ChatCanvas, Touch Edit, Brand Kit, Nano Banana only when relevant and verified.
+- 品牌术语按项目路由：**Lovart 项目**才可引用 MCoT、ChatCanvas、Touch Edit、Brand Kit、Nano Banana（且仅在相关并已核实时）；**Moodio 项目**只允许引用 `Knowledge Base/Moodio/01-capability-glossary.md` 的能力词（灵感检索/剧本/模卡/分镜生成/剪辑审片/协作）与 `04-product-facts.md` 的事实，禁止混入 Lovart 术语。
 - Internal links to verified slugs plus signup/pricing when appropriate.
 - `image_briefs` in frontmatter; no visible image placeholders in body.
 

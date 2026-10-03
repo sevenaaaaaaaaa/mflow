@@ -15,7 +15,7 @@ description: Moodio Global 品牌内容创作 skill（blog + 六类落地页）�
 
 | 层 | 路径 |
 |----|------|
-| 品牌事实 SSOT | `1-2 Insight/Knowledge Base/Moodio/`（8 份：00-brand-core / 01-capability-glossary / 02-personas-scenarios / 03-messaging-rules / 04-product-facts / 05-competitors / 06-seo-keywords / 07-voice-and-geo） |
+| 品牌事实 SSOT | `1-2 Insight/Knowledge Base/Moodio/`（9 份：00-brand-core / 01-capability-glossary / 02-personas-scenarios / 03-messaging-rules / 04-product-facts / 05-competitors / 06-seo-keywords / 07-voice-and-geo / 08-team） |
 | 行业模板 | `templates/moodio-film-studio.json`（生成时 template_id 必带） |
 | 选题队列 | `run/projects/moodioglobal/topics.json` |
 | 项目配置 | `run/projects/moodioglobal/meta.json`（geo 查询 / schedule） |
