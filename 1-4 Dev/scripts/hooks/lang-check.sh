@@ -79,9 +79,25 @@ if [[ "$LANG" == "zh" || "$LANG" == "zh-TW" || "$LANG" == "ja" || "$LANG" == "ko
   if [[ "$HALF" -gt 3 ]]; then warn "中日韩文本中疑似半角标点 $HALF 处"; else ok "标点规范"; fi
 fi
 if [[ "$LANG" == "en" ]]; then
-  CJK_P=$(printf '%s' "$BODY" | grep -oE '[，。！？、；：]' | wc -l | tr -d ' ' || true)
+  # CJK 判定必须走 python unicode 正则：C locale 下 grep 按字节匹配，
+  # em-dash(—) 等 UTF-8 字节会误中中文标点字节段（2026-10-03 实测英文稿被误 BLOCK）
+  EN_CJK="$("$PY3" - "$FILE" << 'PY'
+import re, sys
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+t = open(sys.argv[1], encoding="utf-8").read()
+if t.startswith("---"):
+    p = t.split("---", 2); t = p[2] if len(p) >= 3 else t
+t = re.sub(r"```[\s\S]*?```", "", t)
+punct = len(re.findall(r"[，。！？、；：]", t))
+han = len(re.findall(r"[\u4e00-\u9fff]", t))
+print(f"{punct} {han}")
+PY
+)"
+  CJK_P="${EN_CJK%% *}"; CJK="${EN_CJK##* }"
   if [[ "$CJK_P" -gt 0 ]]; then err "英文正文含中文标点 $CJK_P 处"; else ok "英文标点规范"; fi
-  CJK=$(printf '%s' "$BODY" | grep -oE '[\u4e00-\u9fff]' | wc -l | tr -d ' ' || true)
   if [[ "$CJK" -gt 20 ]]; then warn "英文正文含汉字 $CJK 个（疑似未翻译）"; else ok "无未翻译残留"; fi
 fi
 
