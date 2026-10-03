@@ -19,7 +19,7 @@ description: Moodio Global 创作父入口（blog + 六类落地页）。Use whe
 
 ## 定位与真链路（对齐 Lovart 架构）
 
-本 skill 是 **Moodio 创作父入口**，对应 Lovart 体系中 `content-creation-orchestrator` 的角色：
+本 skill 是 **Moodio 创作父入口**，对应 Lovart 体系中 `blog-writer（总控模式）` 的角色：
 
 ```
 Step 0 路由（pipeline-state + 判断 blog/page/refresh）
@@ -33,7 +33,7 @@ Step 0 路由（pipeline-state + 判断 blog/page/refresh）
 
 ### Step 1 信号层 —— Moodio 适配版（与 Lovart 的关键差异）
 
-Lovart 博客由 `blog-signal-writer` 驱动（Sentinel 舆情 + GSC 数据 → 选题）。**Moodio 站未上线，无 GSC/舆情存量——信号层降级为三源**：
+Lovart 博客由 `blog-writer` 驱动（Sentinel 舆情 + GSC 数据 → 选题）。**Moodio 站未上线，无 GSC/舆情存量——信号层降级为三源**：
 
 | Moodio 信号源 | 取什么 | 对应 Lovart 信号 |
 |---|---|---|
@@ -72,7 +72,7 @@ Lovart 博客由 `blog-signal-writer` 驱动（Sentinel 舆情 + GSC 数据 → 
 
 | Lovart 资产 | 状态 | Moodio 替代 |
 |---|---|---|
-| blog-signal-writer 的 Sentinel 舆情 + GSC 信号 | ⏸ 站点未上线无数据 | 06 词矩阵 + GEO citations 缺口 + topics 队列（上线后切回） |
+| blog-writer 的 Sentinel 舆情 + GSC 信号 | ⏸ 站点未上线无数据 | 06 词矩阵 + GEO citations 缺口 + topics 队列（上线后切回） |
 | 封面池（56 URL）+ pick-cover.py | ⏸ 媒体素材 TBD | image_briefs 字段占位，等素材包 |
 | landing-page 完整故事线机器（6 维绑定/composite-v2/33 组件） | ⏸ 依赖 1-3 GenFlow SSOT | console 模板+门禁生成；CMS 定后建 Moodio 故事线（Phase 2） |
 | Sanity 发布链（sanity-publish 12 技能） | ⏸ CMS 未定 | 自动化止步 S4-qa，发布人工（原则同 Lovart"发布前人工授权"） |
