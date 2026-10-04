@@ -3,7 +3,10 @@
 ## 路径契约
 
 | 层 | 路径 |
-|----|------|
+|---
+
+> **⚠ 状态：legacy-deprecated（2026-10-04 品牌裁定）**——WordPress 子站线已从发布方案中整体移除（WP 方案不够系统，统一 Sanity+MFlow）。本文件仅作存量迁移参考；blogs 子站发布目标重新规划中（见 `Skills/infra/subsites/README.md`）。恢复使用需品牌方重新裁定。
+-|------|
 | 文档 SSOT | `1-1 GEO Readme/` |
 | Sanity 脚本 | `1-4 Dev/lovart.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `1-4 Dev/scripts/` |
