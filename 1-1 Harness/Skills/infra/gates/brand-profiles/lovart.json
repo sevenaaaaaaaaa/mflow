@@ -1,0 +1,24 @@
+{
+  "_readme": "Lovart 品牌差异配置（infra/gates brand profile v1.0）。机制收敛后品牌只剩本文件——门禁/知识库/生成钩子读取此文件获得品牌差异。字段即品牌差异点清单。",
+  "brand": "lovart",
+  "deploy": {"tree": "vault（生产）+ sandbox（开源镜像）", "consoleProjectId": "main"},
+  "contentBudget": {"blog": [1200, 1800], "blogLongform": 7500, "blogMax": 2160, "landing": [600, 1000], "summary": 600},
+  "languages": {"primary": "en", "supported": ["en", "zh", "ja", "zh-TW", "pt", "ru"], "landingLanguages": 10},
+  "kb": {
+    "dir": "1-2 Insight/Knowledge Base",
+    "kbIntent": [],
+    "capabilityGlossary": "（散落：help center/docs archive/KB-Index——Lovart 历史结构）",
+    "factRules": "Q3 计划 + 官网核实；未验证标 [待考证]",
+    "messagingRules": "1-1 GEO Readme/文档/04-质量治理/Anti-Slop.md"
+  },
+  "strategy": {
+    "keywordClusters": "Skills/02-creation/lovart-blog-writer/references/keyword-clusters.json",
+    "contentStrategy": "Skills/02-creation/lovart-blog-writer/references/strategy-content.md",
+    "paidStrategy": "Skills/02-creation/lovart-landing-writer/references/paid-strategy.md",
+    "croAudit": "Skills/02-creation/lovart-landing-writer/references/cro-audit.md"
+  },
+  "cta": {"style": "free-trial", "primary": "Try Free", "url": "lovart.ai/signup", "secondary": "lovart.ai/pricing"},
+  "templates": {"default": null, "note": "Lovart 走原生 prompt（RULES-20），不走 console 行业模板"},
+  "publishTarget": {"cms": "sanity", "project": "o11tm2qe（生产 dataset）", "subsite": "blogs.lovart.ai（WordPress 长文线）"},
+  "quality": {"gates": ["post-write-check", "geo-check", "quota-check", "lang-check"], "gatesVersion": "infra/gates v1.0"}
+}
