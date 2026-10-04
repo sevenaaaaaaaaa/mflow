@@ -18,6 +18,7 @@
         ▼ 止步 ready，发布人工授权
 采集管道（原职保留）：trident（GSC/GA4）· keywords-intake（词表摄入）· data-ingestion · kb-ingest · sentinel（舆情）· sitemap
 执行器（原职保留）：content-calendar（节奏落地）· content-distribution / multi-platform-push（分发）
+**基建层（Skills/infra/，2026-10-04 抽取启动）**：infra/gates（四钩子契约 + brand-profiles 品牌差异配置化——机制收敛后品牌只剩一个 profile 文件）· infra/knowledge（KB 四层机制契约 + 新品牌接入五步 checklist）。抽取顺序（按成熟度）：门禁✓ → 知识库✓ → 编排（下批）→ 策略 schema（挂条件：optimization 信号表跑满月度修订周期再抽）
 横切：质检门禁（hooks + quality-gates，RULES-30 三层）· 编排（router/pipeline/dream）· 知识（KB/Memory/Dream）
 ```
 
