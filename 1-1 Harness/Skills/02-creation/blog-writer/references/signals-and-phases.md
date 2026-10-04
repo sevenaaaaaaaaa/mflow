@@ -147,3 +147,18 @@ GSC 数据过期时先刷新：`cd "1-1 Harness/Skills/lovart-trident-data-engin
 3. import 前 `validate_pt_body.py` 必须 `BLOCK=0`
 
 详见：`references/portable-text-table-syntax.md`
+## 附：全资产信号 → 动作总表（2026-10-04 由 lovart-optimization-loop 撤编并入；周循环：测→诊→方→行→复测）
+
+| 信号（来源） | 诊断 | 动作 |
+|---|---|---|
+| GSC 高曝光低点击 | 标题/摘要不匹配意图 | 标题+meta 重写（不动正文） |
+| GSC 排名 8–20 且曝光 >100 | 差一口气 | Content Refresh（补深度/数据/内链，走本 skill refresh 路径） |
+| GSC 排名持续下滑 | 过时或竞品超车 | 衰减改稿（复核事实/补新段落） |
+| GEO 探针：竞品被提及品牌缺席 | 答案缺口 | 新选题入队（对比页/答案文，补三重 trace） |
+| GEO 探针：品牌被引但指向旧页 | 页面失焦 | 该页 GEO 结构化改稿（定义句/统计/来源） |
+| Sentinel：竞品动作/负面议题 | 机会或风险 | Comparison/Insight 选题（7 天内跟进） |
+| 拓扑审计：hub 出链<8 / spoke 未回链 | 拓扑破损 | 内链修补工单 |
+| 用户之声高频问题 | 内容缺口 | 新选题候选（trace 词群∩人群） |
+| 季度审计：零流量零转化 | 资产无效 | 301 合并 / 深度重写 / 下架建议 |
+
+里程碑判定：每词群的 milestone（keyword-clusters.json）是刷新基准；动作后 14 天复核同一信号，结果记录进工单。发布动作照旧止步 ready，人工授权。复盘格式继承 Docs/S2《内容复盘与缺口分析》与 08-执行日历审计。

@@ -39,12 +39,11 @@ description: >-
 > Languages: [Tier 1 | +2 | +3]  > Lane: [Deep|Medium|Light]（长文）
 ```
 
-### Step 0.5 · 策略对齐（L0 契约，先于一切选题）
+### Step 0.5 · 策略对齐（先于一切选题）
 
-读  + ：
-- 选题必须 trace 到某个 **cluster.id**（词群）+ **persona 格** + **集群位置**（三重 trace），写进产出元数据 
-- 命中  / 无词群归属的选题 → **不写**，退回 seo-strategist / content-strategist 补策略
-- 策略文件无词群或为骨架版 → 先触发策略会，不硬生成
+- 词群：——选题必须 trace 到 cluster.id，命中 bannedQueries 不写
+- 选题策略：——漏斗配比/五轴/Silo/复用/用户运营触点；三重 trace（词群∩人群格∩集群位置）
+- 词群为骨架版时 → 先补词群评审，不硬生成
 
 ### Step 1 · 信号 → 选题候选
 读 `references/signals-and-phases.md` §Phase 0：舆情表（`1-2 Insight/ORM/{daily,weekly,monthly}/品牌-Sentinel-*.md`）+ GSC 表（`gsc-full.json`）→ 信号→类型映射 → 写 `01-Drafts/_signal-queue-{date}.md`。

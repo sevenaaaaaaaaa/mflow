@@ -1,0 +1,26 @@
+{
+  "_readme": "词群地图（blog-writer 内联版，三入口共享）。lineage：lovart-seo-strategist 撤编并入；KR 式目标框架继承 01-project/Lovart-SEO-Q3-Tactical-Plan-2026.md；数据摄入走 trident→keywords-intake（既有管道）。landing-writer / hub-writer 直接引用本文件，不另建。",
+  "version": "0.1-skeleton",
+  "updated": "2026-10-04",
+  "bannedQueries": [
+    {"q": "ai video generator", "why": "品类大词被垄断，竞品实测转化<0.01%"}
+  ],
+  "clusters": [
+    {"id": "EXAMPLE-storyboard",
+     "queries": ["ai storyboard generator", "script to storyboard"],
+     "intent": "informational|commercial|transactional|navigation",
+     "contentType": "blog-howto|landing-tools|hub-directory|hub-best-of",
+     "ownerSkill": "blog-writer|landing-writer|hub-writer",
+     "competition": "open|contested|monopolized",
+     "priority": "P0|P1|P2",
+     "gapFlag": true,
+     "milestone": ["收录", "Top20", "Top10", "GEO 提及"],
+     "hub": null,
+     "note": "示例条目——首轮策略会按此 schema 填真实词群后删除"}
+  ],
+  "geoTargetQueries": [],
+  "krs": [
+    {"id": "EXAMPLE-KR1", "objective": "收录率与排名优化", "baseline": null, "target": null}
+  ],
+  "reviewCadence": {"monthly": "GEO 探针 + GSC 滚动修订（blog-writer 信号层执行）", "quarterly": "全量词群复核"}
+}

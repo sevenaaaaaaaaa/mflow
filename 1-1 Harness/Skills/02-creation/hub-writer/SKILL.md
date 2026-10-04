@@ -26,9 +26,11 @@ description: >-
 | 前置 | 无 | ≥8 可索引详情页 |
 | 故障形态 | 转化低 | doorway 降权 / 空目录 / 死链 |
 
-## 策略对齐（L0 契约）
+## 策略对齐
 
-hub 选址 = content-strategy 集群拓扑里声明的那一个（一集群一 hub 一主词）；聚合对象 = seo-strategy 词群的已收录 spoke；前置门槛（≥8 可索引详情页）以 pipeline 实况为准。策略未声明该集群 → 建议先补 spokes，不建空 hub。
+- hub 选址： 词群的 hub 字段（一集群一 hub 一主词，共享不另建）
+- 集群结构规则： §Silo（spokes≥5 才建 hub）
+- 前置门槛（≥8 可索引详情页）以 pipeline 实况为准；策略未声明该集群 → 先补 spokes，不建空 hub
 
 ## 四层决策
 
