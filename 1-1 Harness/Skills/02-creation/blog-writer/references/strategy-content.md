@@ -31,11 +31,41 @@
 
 ### 五轴当前值（v1.0 · Moodio 内测期）
 
-- **季节性**：Q4 = 节日广告季（广告场景线：TVC/信息流素材工作流）；年初 = 颁奖季/短片节投递季（独立短片线）
-- **行业**：P0 = 短剧（精品化最快 + 有案例《了不起啊！朋友》）、广告代理/MCN（团队协作+积分池诉求）；P1 = 动画、独立电影
-- **职业**：P0 = 短剧制片团队（episode pipeline）、信息流广告优化师（素材迭代）、AI 内容创作者（MCN 签约）；persona 口径 = 02-personas 三类人群
-- **企业级**：团队协作（10/15 人同画布+角色分工）、积分池预算管理、审批流（Pending/Approved）——面向工作室/代理商的团队线
-- **伦理与法律**：AI 内容放映许可（案例本身即素材：国内首批获许可 AI 中剧）、训练数据与版权、AI 创作署名——E-E-A-T 强信号线
+### 具体选题系列（v1.0 · 词群 → 条目，仿 Lovart 条目矩阵风格）
+
+**SD 短剧系列（P0 楔子 · cluster-shortdrama）**
+| ID | 条目 | 形态 | 优先级 |
+|---|---|---|---|
+| SD1 | Short Drama Storyboard Workflow: From Novel Script to Episode Board | How-To | P0 |
+| SD2 | Keeping Characters Consistent Across 60 Episodes: The Asset Card Way | How-To | P0 |
+| SD3 | Episode Review at Scale: Time-Stamped Feedback for Drama Teams | Best Practice | P1 |
+| SD4 | Case: 《了不起啊！朋友》— AI 中剧的放映许可之路（复核上线后发布） | Case | P1 |
+
+**AD 广告系列（P1 楔子 · cluster-ads）**
+| ID | 条目 | 形态 | 优先级 |
+|---|---|---|---|
+| AD1 | TVC Storyboard in a Day: Agency Workflow with AI Previz | How-To | P1 |
+| AD2 | From Brief to Board: Aligning Clients on References Before Shooting | Best Practice | P1 |
+| AD3 | In-Feed Ads That Don't Look Generated: Taste as a Workflow | Insight | P2 |
+
+**ST 分镜/Shot List 系列（P0 空档 · cluster-shotlist+storyboard）**
+| ID | 条目 | 形态 | 优先级 |
+|---|---|---|---|
+| ST1 | Shot List Template for Short Films（已生成，S4-qa） | How-To | P0 |
+| ST2 | Storyboard vs Shot List: What Professional Crews Actually Use | Comparison | P0 |
+| ST3 | Script to Shot List: The Agent-Assisted Breakdown | How-To | P0 |
+| ST4 | Searching References by Camera Movement: A Director's Guide | How-To | P1 |
+
+**DEF 定义系列（P1 GEO · cluster-definitions）**
+DEF1 What Is an AI-Native Film Set（GEO 定义锚）· DEF2 AI Filmmaking Terms Glossary · DEF3 What Is FDX and Why It Matters · DEF4 Previz Explained（P1）
+
+**VS 对比系列（P1 BOFU · cluster-vs）**
+VS1 Moodio vs Runway · VS2 vs Sora/Kling/LTX（场景化判断框架；遵守 05-competitors 实测数据规则）
+
+**EX 交付系列（P2 · cluster-export）**
+EX1 Export to DaVinci Resolve · EX2 FDX → Final Draft · EX3 Final Cut 工程交接
+
+> 配比落位：SD/AD/ST = MOFU 主力（工作流）；DEF = TOFU（GEO）；VS/EX = BOFU（转化）。
 
 ## 三、Silo 内链（← 00-内容日历全景清单）
 
