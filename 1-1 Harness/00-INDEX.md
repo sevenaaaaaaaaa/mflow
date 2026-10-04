@@ -5,30 +5,24 @@
 
 ---
 
-## 架构（2026-10-04 v5 三层模型）
+## 架构（2026-10-04 v6 四层模型）
 
 ```
-① 工程管理类（Harness 的角色：约束全程——不跑偏、稳定可靠、防幻觉、防意外）
-   基础红线   RULES-00 铁律（Sanity 管道/行为/Anti-Slop/SEO 通用/路径）
-   流程要求   session-init 四道门禁 · S0-S6 状态机 · 会话路由（router 23 决策）·
-              自动化止步 ready（发布人工授权）· RULES-20/30/70/80
-   防幻觉     知识溯源协议（零幻觉/[待考证]）· 品牌事实白名单机制 · 术语 trace back
-   防意外     门禁 BLOCK 反馈重写（≤3 轮）· fail-closed · git 固化纪律 · infra 契约（gates/knowledge）
+① 工程管理类（Harness 角色：约束全程——不跑偏、稳定可靠、防幻觉、防意外）
+   RULES-00 红线 · session-init 门禁 · S0-S6 状态机 · router 路由 · 止步 ready（发布人工授权）
+   · 溯源协议防幻觉 · BLOCK 反馈重写 · fail-closed · git 固化 · infra 契约
 ② 品牌类（一个品牌一份的差异资产与配置）
-   接口       brand profile（infra/gates/brand-profiles/{brand}.json，10 组字段）
-   知识库     Knowledge Base/{Brand}/（能力词表/事实白名单/表达红线/人群/竞品/团队背书）
-   保存位置   路径约定（KB 目录/策略文件/项目目录 run/projects/{id}/模板）——profile 内声明
-   字数要求   contentBudget（blog/landing/长文铁律）
-   尺寸要求   visual（封面池/图片库/组件规格）——profile.visual
-   策略真值   词群作战地图 · 内容选题计划 · 投放策略 · CRO 审计（各品牌各一份）
-   其他       表达红线口径 · 行业模板 · CTA 口径 · 可引用案例清单
+   brand profile（10 组字段含 visual 尺寸）· KB/{Brand}/ 知识库 · 路径约定 · 字数要求 ·
+   策略真值（词群作战地图/内容选题计划/投放策略/CRO 审计）· 表达红线 · 模板 · CTA · 案例清单
 ③ 执行层（三个创作入口：读 ①的约束 + ②的资产，干活）
-   blog-writer（查词群作战地图+选题计划 → 写）· landing-writer（查投放策略 → 建 → CRO 回炉）
-   hub-writer（查集群拓扑 → 聚合）· moodio-film-content（Moodio 品牌入口，路由到三入口）
+   blog-writer（词群+选题计划→写）· landing-writer（投放策略→建→CRO 回炉）· hub-writer（拓扑→聚合）
+④ 体验层（发布之后：用户实际看到什么、页面活得好不好）
+   page-experience 四条巡查线：渲染（404/表格/图片/边距，每周+新页 48h）·
+   性能转化（30 天无访问/转化基准/主推页停留，每月）· 多语言质量（每季）· 内链健康（每周）→ 体验工单回 pipeline
 ```
 
-**运行规则**：②的策略资产驱动 ③ 的选题与页面；①的门禁全程拦截（BLOCK 反馈重写 ≤3 轮）；自动化止步 ready，发布人工授权。
-**品牌接入** = 填满 ②（profile + KB 首批 4 份 + 两份策略真值 + 模板），③ 与 ① 零改动（Moodio 一天完成实测）。
+**运行规则**：②的资产驱动 ③ 的选题与页面；①的门禁全程拦截；**④的工单回流 ③修复、信号同源 blog-writer 信号表、转化问题联动 CRO**；自动化止步 ready，发布人工授权。
+**品牌接入** = 填满 ②，①③ 零改动，④ 上线后按规程启动（Moodio 一天完成接入实测；体验层待其站点上线后启用）。
 
 ---
 

@@ -39,6 +39,7 @@ S1-数据采集 → S2-内容策略 → S3-内容创作 → S4-质量审核 → 
 | | | `content-distribution` | 分发渠道管理 |
 | | | `ai-self-media-article` | 站外自媒体写作父入口（T2 加深：`mflow-t2-deep-dive`） |
 | **S6 监控分析** | `05-monitor/` | `mflow-sentinel` (40-sentinel/) | 品牌舆情监控 |
+| | | `page-experience` | **体验层唯一入口**：渲染/转化/多语言/内链四条巡查线，工单回 pipeline |
 | | | `sitemap-update` | Sitemap/llms.txt/robots.txt 更新 |
 
 ### 编排层（06-orchestrate/，12 个）
