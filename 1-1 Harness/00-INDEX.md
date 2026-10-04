@@ -234,4 +234,4 @@ bash "1-4 Dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / r
 - **废弃文档**：移至 `1-8 Backup/archives/`（vault 外）或 Local Dev Backup，勿留 `_old` / `_v2` 后缀文件
 - **Skill 更新**：改 vault `Skills/`（真相），运行时副本由 `harness_sync.py` 重新生成
 - **新脚本**：先查 `09-scripts/TOOLS-REGISTRY.md` 防重复，创建后走 `new-tool-governance` 注册
-- **路径引用**：禁止硬编码绝对路径，统一用 `$MFLOW_RESOURCE_ROOT` / `$MFLOW_LOCAL_DEV_ROOT`（定义见 `1-4 Dev/automation/local-dev-env.sh`）
+- **路径引用**：禁止硬编码绝对路径，统一用 `$MFLOW_RESOURCE_ROOT` / `$MFLOW_LOCAL_DEV_ROOT`（定义见 `1-4 Dev/automation/local-dev-env.sh`） · infra/subsites（子站机制：知识库共享 + 策略/站点/体验/GEO/编排五项【继承+勾选覆盖+独立新增】；WordPress 线已裁定移除，blogs 子站重规划中）

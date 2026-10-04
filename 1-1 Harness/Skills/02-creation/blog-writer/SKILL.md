@@ -82,7 +82,7 @@ GSC 过期先刷：`trident-data-engine`（`scripts/run_all.sh`）。
 全部通过 → frontmatter `status: ready`，`_signal-queue` 标 ready，**到此停下**，报告 ready 篇目 + 信号来源，**等待发布授权**。
 
 ### Phase 4 · 发布（仅人工授权后）
-子站 WordPress：`references/wp-publishing.md`（`publish-to-wp.py`，凭据 `scripts/wp-auth.local.env` gitignore；状态 blocked-until-dry-run-verified）。主站 Sanity 走 `sanity-publish`。
+blogs 子站：发布目标重新规划中（WordPress 线已移除，见 `infra/subsites/README.md`）；主站 Sanity 走 `sanity-publish`。主站 Sanity 走 `sanity-publish`。
 
 ## 关键路径
 
