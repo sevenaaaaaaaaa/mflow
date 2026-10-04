@@ -1,6 +1,7 @@
 # 选题策略（Content Strategy — blog-writer 内联版）
 
 > **lineage**：2026-10-04 由 lovart-content-strategist + lovart-audience-ops 撤编并入；维度继承 `Content Strategy/00-09-*.md` 十份历史策略文档（每节标注来源）。本文件 = 博客选题策略 SSOT。
+> **v1.0 首轮策略会（2026-10-04 · Moodio 轮）**：骨架值已按 Moodio 现状填充（内测期），值出处 = KB Moodio（02-personas/05-competitors v2.0/06-seo-keywords v1.1/08-team）+ 竞品实测调研。词群见 keyword-clusters.json v1.0（12 词群/4 KR）。品牌事实只出自 KB Moodio 目录。
 > **铁律**：选题三重 trace = 词群（keyword-clusters.json）∩ 人群格（本文件 §漏斗）∩ 集群位置（§Silo）。缺一不写。
 
 ## 一、漏斗配比（← 01-漏斗内容矩阵）
@@ -9,9 +10,9 @@
 
 | 漏斗 | 形态 | 默认配比 | 说明 |
 |---|---|---|---|
-| TOFU | guide / insight / glossary | 40% | 冷启动抢词主力 |
-| MOFU | howto / comparison / best-practice | 40% | 增长期加权 |
-| BOFU | case / vs 页 / beta 页 / 替代品 | 20% | 收割；案例必须 trace 官方可引用清单（Moodio：《了不起啊！朋友》级） |
+| TOFU | guide / insight / glossary / 定义式 | **50%** | 内测期抢词占位（空档词群 storyboard/shotlist 主力） |
+| MOFU | howto / comparison / workflow | **30%** | 工作流内容（全流程主张落点） |
+| BOFU | vs 页 / beta 申请页 / 导出互操作 | **20%** | 内测码转化；vs 遵守 05-competitors 对比规则；案例仅《了不起啊！朋友》可引用（复核上线状态） |
 | Post-Purchase | 工作流指南 / changelog 解读 | 随 BoFu 摊 | 留存（← audience-ops 续费段触点） |
 
 冷启动偏 TOFU，增长期调向 MOFU/BOFU——配比改动写回本节（版本递增）。
@@ -27,6 +28,14 @@
 | 职业 | 04-职业工作流规划 | 职业-产品匹配度高的职业？ | 职业工作流教程（persona 切片素材来源） |
 | 企业级 | 05-企业级内容规划 | 采购决策链谁在看？安全合规懂不懂？ | 安全合规/团队协作/ROI 框架文 |
 | 伦理与法律 | 07-AI 伦理法律 | 版权/伦理焦虑是否被回应？ | 权威回应文（E-E-A-T 强信号） |
+
+### 五轴当前值（v1.0 · Moodio 内测期）
+
+- **季节性**：Q4 = 节日广告季（广告场景线：TVC/信息流素材工作流）；年初 = 颁奖季/短片节投递季（独立短片线）
+- **行业**：P0 = 短剧（精品化最快 + 有案例《了不起啊！朋友》）、广告代理/MCN（团队协作+积分池诉求）；P1 = 动画、独立电影
+- **职业**：P0 = 短剧制片团队（episode pipeline）、信息流广告优化师（素材迭代）、AI 内容创作者（MCN 签约）；persona 口径 = 02-personas 三类人群
+- **企业级**：团队协作（10/15 人同画布+角色分工）、积分池预算管理、审批流（Pending/Approved）——面向工作室/代理商的团队线
+- **伦理与法律**：AI 内容放映许可（案例本身即素材：国内首批获许可 AI 中剧）、训练数据与版权、AI 创作署名——E-E-A-T 强信号线
 
 ## 三、Silo 内链（← 00-内容日历全景清单）
 
@@ -52,6 +61,12 @@
 | 拥护 | 案例共创 / UGC 征集 | 推荐数 |
 
 北极星 = **周回访做项目的用户数**（不是注册数）。用户高频问题/流失原因回流 §一 作为新选题（反馈回路）。
+
+### 触点当前值（v1.0 · Moodio 内测期）
+
+- 唯一转化出口 = **申请内测码**（app.moodio.art；全站 CTA 统一口径，禁写免费注册/购买）
+- Onboarding 北极星 = **首作完成率**（带想法进来 → 完成第一部短片）——激活序列内容：D0 灵感检索上手、D3 剧本→分镜、D7 资产一致性、D14 导出交付
+- 用户之声回流：内测创作者高频问题 → 词群评审（keyword-clusters.json 月度修订）
 
 ## 六、使用规则
 
