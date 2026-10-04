@@ -102,3 +102,7 @@ cd 1-4\ Dev/scripts/hooks/tests && bash ./smoketest_hooks.sh                    
 | S5 import | `pre-import-check`（含 pipeline-state check）→ import → `advance --to S5-published` |
 
 `pre-import-check` 内部已经调 `pipeline_state.py check`,所以两层串接自动。
+
+---
+
+> **基建归属（2026-10-04）**：本目录钩子 = infra/gates 契约（`1-1 Harness/Skills/infra/gates/README.md`）的执行体。品牌差异（字数预算/语种表）只经参数传入或查 `1-1 Harness/Skills/infra/gates/brand-profiles/{brand}.json`，不在钩子内硬编码。
