@@ -51,7 +51,7 @@ Claude 打开 `1-1 Harness/` 时的项目记忆。技能库见 `.claude/skills/`
 
 - 舆情监测：`mflow-sentinel`
 - 数据/SEO：`data-ingestion`、`trident-data-engine`
-- 内容日历：`content-calendar`
+- 内容日历：`选题计划（strategy-content.md）+ 自动排程`
 - Blog 生产：`blog-writer`、`blog-writer`、`blog-writer`
 - 落地页：`landing-writer`、`landing-writer`、`landing-writer`
 - 质检：`content-quality-gates`、`content-audit`
@@ -69,7 +69,7 @@ Claude 打开 `1-1 Harness/` 时的项目记忆。技能库见 `.claude/skills/`
 - `mflow-qa` — 质检（content-quality-gates；content-audit 可发现）
 - `mflow-publisher` — Sanity 发布路由（sanity-content-publish → 各 *-sanity-publish）
 - `mflow-distributor` — 多平台分发（multi-platform-push；content-distribution 可发现）
-- `mflow-orchestrator` — 全流程编排（pipeline + content-creation-orchestrator；content-calendar）
+- `mflow-orchestrator` — 全流程编排（pipeline + content-creation-orchestrator；选题计划（strategy-content.md）+ 自动排程）
 
 改动 agent 文件后需重启会话生效；用 `/agents` 界面创建/编辑则即时生效。
 

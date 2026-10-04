@@ -5,25 +5,29 @@
 
 ---
 
-## 架构（2026-10-04 v3 集中式 — 三入口全功能，策略内联）
+## 架构（2026-10-04 v4 业务语言版）
 
 ```
-三大创作入口（策略内联，一个技能管到底）
-  lovart-blog-writer   = 信号/优化循环（signals-and-phases 附全资产信号→动作总表）
-                         + 选题策略（strategy-content.md：漏斗配比/五轴/Silo/复用/用户运营）
-                         + 词群地图（keyword-clusters.json：三入口共享）+ 方法论 + 8 类型 + 门禁
-  lovart-landing-writer= 投放策略（paid-strategy.md：渠道×故事线×CTA/三张词表/终止判据）
-                         + CRO 审计（cro-audit.md：三清单评分卡，≥80 才可投）+ 四层决策 + 7 故事线
-  lovart-hub-writer    = 集群拓扑（引用 blog-writer 词群 hub 字段）+ 4 聚合故事线 + 拓扑三律
-        ▼ 止步 ready，发布人工授权
-采集管道（原职保留）：trident（GSC/GA4）· keywords-intake（词表摄入）· data-ingestion · kb-ingest · sentinel（舆情）· sitemap
-执行器（原职保留）：content-calendar（节奏落地）· content-distribution / multi-platform-push（分发）
-**基建层（Skills/infra/，2026-10-04 抽取启动）**：infra/gates（四钩子契约 + brand-profiles 品牌差异配置化——机制收敛后品牌只剩一个 profile 文件）· infra/knowledge（KB 四层机制契约 + 新品牌接入五步 checklist）。抽取顺序（按成熟度）：门禁✓ → 知识库✓ → 编排（下批）→ 策略 schema（挂条件：optimization 信号表跑满月度修订周期再抽）
-横切：质检门禁（hooks + quality-gates，RULES-30 三层）· 编排（router/pipeline/dream）· 知识（KB/Memory/Dream）
-```
+┌ 业务层：三个创作入口（每个自带策略，一个技能管到底）──────────────┐
+│ 写博客的 blog-writer：动笔前查【词群作战地图】+【内容选题计划】；    │
+│   写作方法（怎么开头/举证/去 AI 味/写多长）+ 8 种文章类型模板；      │
+│   发布后按数据回炉（高曝光低点击→改标题；排名下滑→翻新）            │
+│ 做落地页的 landing-writer：自带【投放策略】（投什么/不投什么/何时停）│
+│   + 四层决策 + 7 条投放故事线 +【落地页体检】（三清单评分，≥80 可投）│
+│ 做聚合页的 hub-writer：管【页面互跳拓扑】+ 4 条聚合版式 + 前置门槛  │
+└──────────────── 止步 ready，发布人工授权 ────────────────┘
+┌ 基建层（一切支撑机制，品牌无关）───────────────────────────┐
+│ 1 质量门禁：四道自动检查（hooks）+ 人工审（RULES-30 三层）          │
+│ 2 知识库：品牌事实唯一出处 + 检索 + 防串味（kb_intent）             │
+│ 3 编排调度：状态机 S0-S6 + 自动排程 + 每日/每周定时管线 + 路由      │
+│ 4 数据采集：GSC/GA4（trident）· 舆情（sentinel）· 词表摄入 · sitemap│
+│ 5 发布渠道：Sanity 分线 + WordPress 长文线 + 分发/多平台推送        │
+│ 6 策略资产（品牌唯一要填的）：词群作战地图 + 选题计划 + 投放策略      │
+└──────────────────────────────────────────────┘
+品牌差异收敛：一个 brand profile（infra/gates/brand-profiles/{brand}.json）+ 一个 KB 目录 + 两份策略资产 + 一份行业模板。
+治理铁律：选题三重 trace（词群∩人群格∩集群位置）；策略修订改 reference 不改方法论；新体系必须声明 lineage。
 
-**策略内联铁律**：选题三重 trace（词群 ∩ 人群格 ∩ 集群位置）写在各入口 SKILL 的策略对齐节；词群/策略修订改对应 reference 文件（版本递增），不改方法论正文。
-**历史承接**：Content Strategy 00-09 十份策略文档维度 → blog-writer/strategy-content.md（lineage 标注）；Q3 计划 KR 框架 → keyword-clusters.json；S2 复盘手册/08 审计 → 信号→动作总表；管道与执行器技能零改动。
+---
 
 ## 会话启动门禁（任何 agent 先跑这个）
 
@@ -117,7 +121,7 @@ bash "1-4 Dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / r
 |------|------|
 | `05-skills/skills-usage.md` | 技能使用指南（按 S1-S6 阶段映射） |
 | `05-skills/skill-entrypoint-governance.md` | 入口治理：每场景唯一父入口 + support-only 规则 |
-| `Skills/` | 32 个 skill 实体（01-strategy 4 / 02-creation 5 / 03-review 3 / 04-publish 8 / 05-monitor 2 / 06-orchestrate 12 / 顶层 1；博客 12 技能并入 blog-writer，落地页 4 技能并入 landing-writer） |
+| `Skills/` | 31 个 skill 实体（01-strategy 3 / 02-creation 5 / 03-review 3 / 04-publish 8 / 05-monitor 2 / 06-orchestrate 12 / 顶层 1；博客 12 技能并入 blog-writer，落地页 4 技能并入 landing-writer） |
 
 > Skill 真相 = 本 vault `Skills/` 目录。`~/.hermes/` 运行时由 `1-4 Dev/scripts/harness_sync.py` 从 vault 重新生成（每日管线 D07 步骤）。
 

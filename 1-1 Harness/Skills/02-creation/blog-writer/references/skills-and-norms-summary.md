@@ -131,7 +131,7 @@ Daily Raw/ CSV → ① keywords-intake (评分 P0/P1/P2 → 更新日历)
 
 | 文件 | 内容 |
 |---|---|
-| `lovart-academy-content-calendar-v1.md` | 统一内容日历（12 类型 × 4 漏斗 × 8 行业 × 多语言） |
+| `lovart-academy-选题计划（strategy-content.md）+ 自动排程-v1.md` | 统一内容日历（12 类型 × 4 漏斗 × 8 行业 × 多语言） |
 | `lovart-skills-and-norms-index.md` | 全量索引（537 行，统合 9 大板块） |
 | `Lovart-Content-Production-Skills.md` | 团队操作手册（374 行，935 篇内容运营规范） |
 

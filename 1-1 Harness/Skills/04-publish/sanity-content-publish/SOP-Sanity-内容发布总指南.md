@@ -206,7 +206,7 @@ npx sanity dataset import ~/品牌/import-tools.ndjson --dataset production --mi
 ## 7. 内容生产管线（Pipeline）
 
 ```
-data-ingestion → content-calendar → landing-writer
+data-ingestion → 选题计划（strategy-content.md）+ 自动排程 → landing-writer
   ├─ sanity-blog    → 管道 A
   ├─ feature-page   → 管道 B
   └─ tool-page      → 管道 C

@@ -370,7 +370,7 @@ node convert.js                        # Blog
 ## 11. 与内容生产管线的关系
 
 ```
-content-calendar
+选题计划（strategy-content.md）+ 自动排程
   → landing-writer (feature-page)
   → Pages/Features/{lang}/*.json
   → content-audit

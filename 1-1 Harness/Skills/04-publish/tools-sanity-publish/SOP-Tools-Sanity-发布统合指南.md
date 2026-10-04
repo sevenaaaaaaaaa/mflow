@@ -312,7 +312,7 @@ npx sanity exec fix-category-refs.js --with-user-token
 ## 8. 与内容生产管线的关系
 
 ```
-content-calendar → landing-writer (tool-page)
+选题计划（strategy-content.md）+ 自动排程 → landing-writer (tool-page)
        → Pages/Tools/{lang}/*.json
        → content-audit
        → 【本指南】convert-tools.js → import --missing

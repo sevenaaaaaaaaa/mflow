@@ -36,7 +36,7 @@
 ~/Documents/MFlow Local Dev/
 ├── 1-3-content-temp/
 │   ├── Refresh-Page/landing-examples/keyword-manifest.json  ← 41 个关键词落地页清单
-│   ├── content-calendar-priority-queue-2026-06.csv           ← 内容日历优先队列
+│   ├── 选题计划（strategy-content.md）+ 自动排程-priority-queue-2026-06.csv           ← 内容日历优先队列
 │   └── blog-published-index-2026-06.csv                      ← 已发布 160 篇博客索引
 └── article-images/                                          ← 文章配图下载目录
 ```

@@ -39,11 +39,14 @@ description: >-
 > Languages: [Tier 1 | +2 | +3]  > Lane: [Deep|Medium|Light]（长文）
 ```
 
-### Step 0.5 · 策略对齐（先于一切选题）
+### Step 0.5 · 策略对齐（动笔前先回答：打哪个词、给谁写、在集群哪个位置）
 
-- 词群：——选题必须 trace 到 cluster.id，命中 bannedQueries 不写
-- 选题策略：——漏斗配比/五轴/Silo/复用/用户运营触点；三重 trace（词群∩人群格∩集群位置）
-- 词群为骨架版时 → 先补词群评审，不硬生成
+两张表，动笔前必查：
+
+1. **词群作战地图**（`references/keyword-clusters.json`）——我们打哪些搜索词、优先级、绝不碰的词。选题必须属于某个词群（写进产出 `content_cluster`）；命中黑名单的选题不写。
+2. **内容选题计划**（`references/strategy-content.md`）——给谁写（人群×阶段）、写什么（五条选题线的具体条目）、按什么节奏。选题必须能落到一条选题线的一个格子里。
+
+两张表查完还落不了位 → 选题不成立，退回词群评审，不硬写。
 
 ### Step 1 · 信号 → 选题候选
 读 `references/signals-and-phases.md` §Phase 0：舆情表（`1-2 Insight/ORM/{daily,weekly,monthly}/品牌-Sentinel-*.md`）+ GSC 表（`gsc-full.json`）→ 信号→类型映射 → 写 `01-Drafts/_signal-queue-{date}.md`。

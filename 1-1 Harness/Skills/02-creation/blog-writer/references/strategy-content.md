@@ -1,5 +1,7 @@
 # 选题策略（Content Strategy — blog-writer 内联版）
 
+> **这是什么**：一页「内容选题计划」——回答四个问题：**给谁写**（人群×阶段配比）、**写什么**（五条选题线的具体条目）、**怎么互链**（集群结构）、**按什么节奏**（发布与复用）。动笔前查这里，选题从这来。
+
 > **lineage**：2026-10-04 由 lovart-content-strategist + lovart-audience-ops 撤编并入；维度继承 `Content Strategy/00-09-*.md` 十份历史策略文档（每节标注来源）。本文件 = 博客选题策略 SSOT。
 > **v1.0 首轮策略会（2026-10-04 · Moodio 轮）**：骨架值已按 Moodio 现状填充（内测期），值出处 = KB Moodio（02-personas/05-competitors v2.0/06-seo-keywords v1.1/08-team）+ 竞品实测调研。词群见 keyword-clusters.json v1.0（12 词群/4 KR）。品牌事实只出自 KB Moodio 目录。
 > **铁律**：选题三重 trace = 词群（keyword-clusters.json）∩ 人群格（本文件 §漏斗）∩ 集群位置（§Silo）。缺一不写。
@@ -100,6 +102,6 @@ EX1 Export to DaVinci Resolve · EX2 FDX → Final Draft · EX3 Final Cut 工程
 
 ## 六、使用规则
 
-1. 排期执行仍由 lovart-content-calendar 落地（本文件定节奏与配比，calendar 写日历）。
+1. 排期执行仍由 strategy-content.md（选题计划）+ 自动排程 落地（本文件定节奏与配比，calendar 写日历）。
 2. 信号驱动的临时选题（舆情/GSC/优化循环）也必须补三重 trace 后才入队。
 3. 本文件修订 = 版本递增 + 在此记录一行 changelog。

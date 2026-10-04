@@ -19,7 +19,7 @@ S1-数据采集 → S2-内容策略 → S3-内容创作 → S4-质量审核 → 
 |------|------------|------|------|
 | **S1 数据采集** | `01-strategy/` | `trident-data-engine` | 三引擎数据采集（GSC+GA4+Bing） |
 | | | `data-ingestion` | 数据摄入（简化版） |
-| **S2 内容策略** | `01-strategy/` | `content-calendar` | 内容日历排期（关键词 intake 并入，不保留独立入口） |
+| **S2 内容策略** | `01-strategy/` | `选题计划（strategy-content.md）+ 自动排程` | 内容日历排期（关键词 intake 并入，不保留独立入口） |
 | | | `kb-ingest` | 知识库摄取（KB units） |
 | **S3 内容创作** | `02-creation/` | `blog-writer` | **Blog 唯一入口**：所有语言所有 Blog，不翻译不走 i18n 管线（2026-10-03 四合一） |
 | | | ~~`blog-serp-writer` / `blog-automation` / 8 类型子技能~~ | ⛔ 已并入 `blog-writer` |
