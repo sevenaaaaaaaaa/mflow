@@ -1,8 +1,6 @@
 <?php
 /**
- * Lovart theme — block auto-registrar.
- * Any blocks/{type}/block.json is registered automatically;
- * render callback = blocks/{type}/render.php (receives $attributes).
+ * Lovart theme — block auto-registrar + asset loading.
  */
 add_action('init', function () {
     $base = get_theme_file_path('blocks');
@@ -21,6 +19,12 @@ add_action('init', function () {
         }
         register_block_type($type_dir, $args);
     }
+});
+
+/** Styles: block theme does NOT auto-load style.css — explicit enqueue. */
+add_action('wp_enqueue_scripts', function () {
+    wp_enqueue_style('lovart-base', get_theme_file_uri('style.css'), [], '0.2.0');
+    wp_enqueue_style('lovart-fonts', 'https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Serif+SC:wght@400;600&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&family=Barlow+Condensed:wght@500;600&display=swap', [], null);
 });
 
 function lovart_part($name) { echo get_theme_file_path('parts/' . $name . '.php'); }
