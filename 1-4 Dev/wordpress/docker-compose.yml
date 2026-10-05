@@ -1,0 +1,25 @@
+# 本地 WP 测试环境：docker compose up -d → http://localhost:8090（主题热挂载）
+services:
+  wp:
+    image: wordpress:6.7-php8.3-apache
+    ports: ["8090:80"]
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wp
+      WORDPRESS_DB_PASSWORD: wp
+      WORDPRESS_DB_NAME: wp
+    volumes:
+      - wp_data:/var/www/html
+      - ./lovart-theme/lovart-theme:/var/www/html/wp-content/themes/lovart
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: wp
+      MYSQL_USER: wp
+      MYSQL_PASSWORD: wp
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db_data:/var/lib/mysql
+volumes:
+  wp_data:
+  db_data:

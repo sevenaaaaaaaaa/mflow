@@ -1,0 +1,29 @@
+{
+ "$schema": "https://schemas.wp.org/trunk/block.json",
+ "apiVersion": 3,
+ "name": "lovart/cta-default",
+ "version": "0.1.0",
+ "title": "Lovart CTA",
+ "category": "lovart",
+ "icon": "megaphone",
+ "description": "Closing CTA section (replicates lovart.ai cta-default).",
+ "attributes": {
+  "title": {
+   "type": "string",
+   "default": "Ready to use Lovart in a real workflow?"
+  },
+  "description": {
+   "type": "string",
+   "default": "Start from a real brief, generate the first output, then refine and export without leaving ChatCanvas."
+  },
+  "buttons": {
+   "type": "array",
+   "default": [
+    {
+     "label": "Try Free",
+     "url": "https://lovart.ai/signup"
+    }
+   ]
+  }
+ }
+}
