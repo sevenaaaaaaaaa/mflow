@@ -47,9 +47,15 @@ a { color: inherit; }
 h1, h2, h3 { font-family: var(--lovart-font-serif); font-weight: 400; letter-spacing: -0.01em; }
 
 /* ── Header / Footer ── */
-.wp-site-blocks > header { border-bottom: 1px solid var(--lovart-border); background: var(--lovart-bg); }
+.wp-site-blocks > header { border-bottom: 1px solid var(--lovart-border); background: transparent; }
 .wp-site-blocks > header .wp-block-site-title a { font-family: var(--lovart-font-serif); font-size: 24px; text-decoration: none; }
 .wp-site-blocks > footer { background: var(--lovart-bg-secondary); border-top: 1px solid var(--lovart-border); }
+/* dark 模式（复刻页）下 header/footer 跟随深色 tokens */
+.dark .wp-site-blocks > header { background: var(--lovart-dark); border-color: rgba(255,255,255,.1); }
+.dark .wp-site-blocks > header .wp-block-site-title a { color: #fff; }
+.dark .wp-site-blocks > footer { background: transparent; border-color: rgba(255,255,255,.1); }
+.dark .wp-site-blocks > footer p, .dark .wp-site-blocks > footer a { color: rgba(255,255,255,.6); }
+.dark .wp-block-post-title, .dark h1, .dark h2, .dark .wp-block-post-title a { color: #f5f4ef; }
 .wp-site-blocks > footer p, .wp-site-blocks > footer a { color: var(--lovart-text-secondary); font-size: 14px; }
 
 /* ── Blog 文章排版（主站博客规范）── */
