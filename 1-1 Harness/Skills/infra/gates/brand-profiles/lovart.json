@@ -63,7 +63,7 @@
  "publishTarget": {
   "cms": "sanity",
   "project": "o11tm2qe（生产 dataset）",
-  "note": "blogs.lovart.ai 发布目标待定（WP 线已裁定移除）"
+  "note": "blogs 子站 = WordPress 现役（存量运行）；长期方向统一 Sanity+MFlow"
  },
  "quality": {
   "gates": [
@@ -78,9 +78,9 @@
   {
    "id": "blogs",
    "name": "Lovart Blog 子站",
-   "status": "replanning",
+   "status": "active",
    "domain": "blogs.lovart.ai",
-   "techStack": "TBD（原 WordPress 线已裁定移除；候选：Sanity 同栈 / MFlow 静态导出）",
+   "techStack": "WordPress（现役——存量已发布内容运行中；长期方向统一 Sanity+MFlow，WP 按 capability 维护）",
    "projectId": "main",
    "langs": [
     "en"
@@ -89,8 +89,10 @@
     "blog"
    ],
    "publishTarget": {
-    "cms": "TBD",
-    "note": "待子项目方案定稿后配置"
+    "cms": "wordpress",
+    "url": "blogs.lovart.ai",
+    "auth": "WP_USER/WP_PASS 或 scripts/wp-auth.local.env（gitignore）",
+    "gate": "blocked-until-dry-run-verified（发布前必须 --dry-run）"
    },
    "capabilities": {
     "kb": {
@@ -148,7 +150,8 @@
       },
       "gates": {
        "postWriteTargetWords": 7500
-      }
+      },
+      "publish": "publish-to-wp.py 现役（dry-run 前置）"
      }
     }
    }

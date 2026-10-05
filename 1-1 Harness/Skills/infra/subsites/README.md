@@ -1,7 +1,7 @@
 # infra/subsites · 子站（子项目）机制契约（v1.0 规划定稿）
 
-> **背景决策**（品牌裁定 2026-10-04）：① WordPress 子站线从发布方案中**整体移除**（WP 方案不够系统，统一 Sanity+MFlow 方向）；② 子站改为**品牌内子项目**：与主项目共享知识库，其余能力按"继承 + 勾选覆盖 + 独立新增"配置。
-> **首批对象**：Lovart blogs 子站（blogs.lovart.ai，原 WP 长文线，发布目标重新规划中）。Moodio 侧暂不启用。
+> **背景决策**（品牌裁定 2026-10-04，v1.1 修正）：① WordPress 子站线**保留现役**——blogs.lovart.ai 有已发布存量运行中，WP 是 blogs 子站的现役发布目标（dry-run 前置的安全闸不变）；长期方向仍是统一 Sanity+MFlow，WP 按 capability 维护、不新增投入。② 子站模型：与主项目共享知识库，其余能力按"继承 + 勾选覆盖 + 独立新增"配置。
+> **首批对象**：Lovart blogs 子站（blogs.lovart.ai，WP 现役）。Moodio 侧暂不启用。
 
 ## 一、继承模型（五项能力 × 三种模式）
 
@@ -30,18 +30,18 @@
 | **GEO** | inherit——共享查询集与探针；子站 URL 计入 citations 归因（引用来源标注站点） |
 | **编排 orchestration** | inherit+override——session-init/router/hooks/S0-S6 全继承；blogs 独立排期（weeklyDrip）与钩子参数（postWriteTargetWords=7500） |
 
-## 三、WordPress 移除执行（品牌裁定落地）
+## 三、WordPress 线定位（v1.1 修正：保留现役）
 
-1. `blog-writer/references/wp-publishing.md` → 状态改 **legacy-deprecated**（不再维护；历史方法仅作迁移参考）。
-2. Lovart 生产侧 `publish-to-wp.py` 管线**冻结保留**：存量已发布内容不动、凭证不删、脚本不更新；恢复使用需品牌方重新裁定。
-3. 链路上所有"发布到 blogs.lovart.ai"的表述改为"发布到 blogs 子站（目标待定）"。
-4. presets/自动化/发布技能零 WP 污染（已核），无需清理。
+1. `blog-writer/references/wp-publishing.md` → **现役**（blocked-until-dry-run-verified 安全闸保留）。
+2. 生产侧 `publish-to-wp.py` 管线**继续运行**：存量已发布内容不动、新长文按既有流程发布。
+3. 长期方向仍为统一 Sanity+MFlow；WP 只维护不加投——迁移评估列为远期可选项（存量 SEO 影响评估后另议）。
+4. presets/自动化/发布技能零 WP 污染（已核）。
 
 ## 四、blogs 子站待决清单（重新规划开放项）
 
 | # | 待决 | 依赖 |
 |---|---|---|
-| 1 | 发布目标技术栈（候选：Sanity 同栈 blog section / MFlow 静态导出） | 子项目方案定稿 + 主站 Sanity 结构评估 |
-| 2 | 7500 词长文线在新栈的形态（长文是 blogs 线核心资产） | #1 |
-| 3 | 存量 WP 内容迁移评估（量/SEO 影响/301 方案） | #1 |
+| 1 | ~~发布目标技术栈~~ ✅ 已定：WordPress 现役（v1.1 修正） | — |
+| 2 | ~~7500 词长文形态~~ ✅ 已定：WP 长文线即现状，维持 | — |
+| 3 | 迁移评估（远期可选）：量/SEO 影响/301 方案 | 统一 Sanity+MFlow 启动时 |
 | 4 | 子站排期与主站日历的切分（PRODUCTION-PLAN 拆分） | #2 |

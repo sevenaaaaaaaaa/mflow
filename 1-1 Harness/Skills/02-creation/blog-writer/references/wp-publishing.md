@@ -5,7 +5,7 @@
 | 层 | 路径 |
 |---
 
-> **⚠ 状态：legacy-deprecated（2026-10-04 品牌裁定）**——WordPress 子站线已从发布方案中整体移除（WP 方案不够系统，统一 Sanity+MFlow）。本文件仅作存量迁移参考；blogs 子站发布目标重新规划中（见 `Skills/infra/subsites/README.md`）。恢复使用需品牌方重新裁定。
+> **状态：现役（2026-10-04 v1.1）**——blogs.lovart.ai 有已发布存量，WP 为 blogs 子站现役发布目标（安全闸 blocked-until-dry-run-verified 不变）。子站模型见 `Skills/infra/subsites/README.md`。
 -|------|
 | 文档 SSOT | `1-1 GEO Readme/` |
 | Sanity 脚本 | `1-4 Dev/lovart.sanity.studio/scripts/` |
