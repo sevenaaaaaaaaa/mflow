@@ -131,7 +131,8 @@ h1, h2, h3 { font-family: var(--lovart-font-serif); font-weight: 400; letter-spa
 }
 .lovart-cta__btn:hover { transform: translateY(-1px); }
 .lovart-cta__btn--ghost { background: transparent; color: var(--lovart-text); border: 1px solid var(--lovart-border); }
-.wp-block-lovart-hero-cinematic .lovart-cta__btn--ghost { color: #fff; border-color: rgba(255,255,255,.28); }
+.wp-block-lovart-hero-cinematic .lovart-cta__btn { background: #fff; color: var(--lovart-text); }
+.wp-block-lovart-hero-cinematic .lovart-cta__btn--ghost { background: transparent; color: #fff; border-color: rgba(255,255,255,.28); }
 
 /* ── 通用：页面容器 ── */
 .wp-block-group.has-background { border-radius: var(--lovart-radius-xl); }
