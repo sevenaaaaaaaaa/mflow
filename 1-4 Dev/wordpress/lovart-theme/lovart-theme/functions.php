@@ -24,6 +24,7 @@ add_action('init', function () {
 /** Styles: block theme does NOT auto-load style.css — explicit enqueue. */
 add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('lovart-base', get_theme_file_uri('style.css'), [], '0.2.0');
+    wp_enqueue_style('lovart-site', get_theme_file_uri('assets/lovart-site.css'), [], '1.0.0');
     wp_enqueue_style('lovart-fonts', 'https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Serif+SC:wght@400;600&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&family=Barlow+Condensed:wght@500;600&display=swap', [], null);
 });
 

@@ -1,12 +1,4 @@
 <?php
-/** @var array $attributes */
-?>
-<section class="wp-block-lovart-cta-default">
-  <h2 class="lovart-cta__title"><?= esc_html($attributes['title'] ?? '') ?></h2>
-  <p class="lovart-cta__description"><?= esc_html($attributes['description'] ?? '') ?></p>
-  <div class="lovart-cta__buttons">
-    <?php foreach (($attributes['buttons'] ?? []) as $b): ?>
-      <a class="lovart-cta__btn" href="<?= esc_url($b['url'] ?? '#') ?>"><?= esc_html($b['label'] ?? '') ?></a>
-    <?php endforeach; ?>
-  </div>
-</section>
+/** Lovart cta-default — 1:1 SSR replica from composite-page-all. Content edits: edit section.html. */
+$lovart_section_html = file_get_contents(get_theme_file_path('blocks/cta-default/section.html'));
+echo $lovart_section_html;

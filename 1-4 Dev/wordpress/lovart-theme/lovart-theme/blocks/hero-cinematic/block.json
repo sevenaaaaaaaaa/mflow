@@ -2,41 +2,11 @@
  "$schema": "https://schemas.wp.org/trunk/block.json",
  "apiVersion": 3,
  "name": "lovart/hero-cinematic",
- "version": "0.1.0",
- "title": "Lovart Hero Cinematic",
+ "version": "1.0.0",
+ "title": "Lovart hero-cinematic",
  "category": "lovart",
- "icon": "align-full-width",
- "description": "Full-bleed cinematic hero (replicates lovart.ai hero-cinematic).",
- "attributes": {
-  "badge": {
-   "type": "string",
-   "default": "AI Design Partner"
-  },
-  "title": {
-   "type": "string",
-   "default": "Creative that feels"
-  },
-  "highlightedText": {
-   "type": "string",
-   "default": "agency-grade from day one"
-  },
-  "description": {
-   "type": "string",
-   "default": ""
-  },
-  "buttons": {
-   "type": "array",
-   "default": []
-  },
-  "media": {
-   "type": "object",
-   "default": {}
-  },
-  "align": {
-   "type": "string",
-   "default": "full"
-  }
- },
+ "icon": "layout",
+ "description": "1:1 replica of lovart.ai hero-cinematic section (composite-page-all source).",
  "supports": {
   "align": [
    "full",
