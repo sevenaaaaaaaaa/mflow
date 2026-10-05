@@ -1,0 +1,62 @@
+{
+ "key": "group_lovart_sections",
+ "title": "Lovart Sections",
+ "fields": [
+  {
+   "key": "sec_0_badge",
+   "label": "badge",
+   "name": "badge",
+   "type": "text"
+  },
+  {
+   "key": "sec_0_title",
+   "label": "title",
+   "name": "title",
+   "type": "text"
+  },
+  {
+   "key": "sec_0_highlightedText",
+   "label": "highlightedText",
+   "name": "highlightedText",
+   "type": "text"
+  },
+  {
+   "key": "sec_0_description",
+   "label": "description",
+   "name": "description",
+   "type": "wysiwyg"
+  },
+  {
+   "key": "sec_0_buttons",
+   "label": "buttons",
+   "name": "buttons",
+   "type": "repeater",
+   "sub_fields": [
+    {
+     "key": "sec_0_buttons_0_text",
+     "label": "text",
+     "name": "text",
+     "type": "text"
+    },
+    {
+     "key": "sec_0_buttons_0_href",
+     "label": "href",
+     "name": "href",
+     "type": "text"
+    },
+    {
+     "key": "sec_0_buttons_0_variant",
+     "label": "variant",
+     "name": "variant",
+     "type": "text"
+    }
+   ]
+  },
+  {
+   "key": "sec_0_media",
+   "label": "media",
+   "name": "media",
+   "type": "relationship"
+  }
+ ]
+}
