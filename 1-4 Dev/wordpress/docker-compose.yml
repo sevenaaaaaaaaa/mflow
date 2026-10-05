@@ -1,7 +1,7 @@
 # 本地 WP 测试环境：docker compose up -d → http://localhost:8090（主题热挂载）
 services:
   wp:
-    image: wordpress:6.7-php8.3-apache
+    image: docker.m.daocloud.io/library/wordpress:6.7-php8.3-apache
     ports: ["8090:80"]
     environment:
       WORDPRESS_DB_HOST: db
@@ -12,7 +12,7 @@ services:
       - wp_data:/var/www/html
       - ./lovart-theme/lovart-theme:/var/www/html/wp-content/themes/lovart
   db:
-    image: mysql:8.0
+    image: docker.m.daocloud.io/library/mysql:8.0
     environment:
       MYSQL_DATABASE: wp
       MYSQL_USER: wp
