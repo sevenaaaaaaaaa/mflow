@@ -1,0 +1,48 @@
+"""IR v1.0 schema — 组件包契约（平台无关）。适配器按此消费。"""
+SCHEMA = {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Replication IR",
+    "type": "object",
+    "required": ["irVersion", "source", "design", "sections"],
+    "properties": {
+        "irVersion": {"type": "string", "const": "1.0"},
+        "generatedAt": {"type": "string"},
+        "source": {
+            "type": "object",
+            "required": ["url"],
+            "properties": {
+                "url": {"type": "string", "format": "uri"},
+                "ssr": {"type": "boolean"}
+            }
+        },
+        "darkMode": {"enum": ["class", "prefers", "none"]},
+        "design": {
+            "type": "object",
+            "required": ["css"],
+            "properties": {
+                "css": {"type": "string",
+                        "description": "源站编译 CSS 合并（资源 URL 已绝对化）"},
+                "tokens": {"type": "object"},
+                "breakpoints": {"type": "object"},
+                "fonts": {"type": "object"},
+                "cssFiles": {"type": "array"}
+            }
+        },
+        "sections": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "type": "object",
+                "required": ["type", "html"],
+                "properties": {
+                    "order": {"type": "integer"},
+                    "type": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+                    "html": {"type": "string",
+                             "description": "该组件的真实 SSR HTML（已修边、已剥离脚本）"},
+                    "assets": {"type": "array", "items": {"type": "string"}}
+                }
+            }
+        },
+        "meta": {"type": "object"}
+    }
+}
