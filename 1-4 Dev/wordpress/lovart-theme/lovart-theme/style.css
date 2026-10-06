@@ -142,3 +142,19 @@ h1, h2, h3 { font-family: var(--lovart-font-serif); font-weight: 400; letter-spa
 
 /* ── 通用：页面容器 ── */
 .wp-block-group.has-background { border-radius: var(--lovart-radius-xl); }
+
+
+/* ── 复刻页（composite-replica-all）：全宽直出，解除 WP 窄容器 ── */
+.page-template-page-composite-replica-all .wp-block-group > .wp-block-post-content { max-width: none; }
+.page-template-page-composite-replica-all main.wp-block-group { max-width: none; padding: 0; }
+.page-template-page-composite-replica-all .wp-block-post-content > * { max-width: none; margin-left: 0; margin-right: 0; }
+.page-template-page-composite-replica-all { background: var(--lovart-dark); }
+
+
+/* ── 复刻页链接细节：导航/按钮无下划线（对齐主站）── */
+.lovart-site-header a { text-decoration: none !important; }
+.lovart-site-header a:hover { text-decoration: none; }
+.wp-block-lovart-hero-cinematic a, .wp-block-lovart-cta-default a,
+[class*="lovart"] .lovart-cta__btn { text-decoration: none !important; }
+.page-template-page-composite-replica-all .wp-block-post-content a.lovart-btn,
+.page-template-page-composite-replica-all main a[class*="rounded-full"] { text-decoration: none !important; }

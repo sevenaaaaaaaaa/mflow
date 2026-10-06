@@ -1,6 +1,6 @@
 <?php
 /**
- * Lovart theme — block auto-registrar + asset loading.
+ * Lovart theme — block auto-registrar + real site header/footer + assets.
  */
 add_action('init', function () {
     $base = get_theme_file_path('blocks');
@@ -28,10 +28,16 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('lovart-fonts', 'https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Serif+SC:wght@400;600&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&family=Barlow+Condensed:wght@500;600&display=swap', [], null);
 });
 
+/** Replica pages: output the real lovart.ai header / footer (extracted SSR HTML). */
+function lovart_site_header() {
+    echo file_get_contents(get_theme_file_path('assets/site-header.html'));
+}
+function lovart_site_footer() {
+    echo file_get_contents(get_theme_file_path('assets/site-footer.html'));
+}
+
 /** Dark mode: composite replica pages render with the site's dark token set. */
 add_filter('body_class', function ($classes) {
     if (is_page('composite-replica-all')) { $classes[] = 'dark'; }
     return $classes;
 });
-
-function lovart_part($name) { echo get_theme_file_path('parts/' . $name . '.php'); }
