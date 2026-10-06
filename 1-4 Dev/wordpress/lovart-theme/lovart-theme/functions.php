@@ -28,6 +28,25 @@ add_action('wp_enqueue_scripts', function () {
     wp_enqueue_style('lovart-fonts', 'https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Noto+Serif+SC:wght@400;600&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500&family=Barlow+Condensed:wght@500;600&display=swap', [], null);
 });
 
+/** Header scroll effect: shrink on scroll (replicates lovart.ai sticky header behavior). */
+add_action('wp_footer', function () {
+    ?>
+    <script>
+    (function () {
+      var last = null;
+      function update() {
+        var h = document.querySelector('.lovart-site-header');
+        if (!h) return;
+        var on = (window.scrollY || document.documentElement.scrollTop) > 24;
+        if (on !== last) { h.classList.toggle('is-scrolled', on); last = on; }
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
+    </script>
+    <?php
+}, 99);
+
 /** Replica pages: output the real lovart.ai header / footer (extracted SSR HTML). */
 function lovart_site_header() {
     echo file_get_contents(get_theme_file_path('assets/site-header.html'));

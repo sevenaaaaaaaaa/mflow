@@ -47,10 +47,16 @@ a { color: inherit; }
 h1, h2, h3 { font-family: var(--lovart-font-serif); font-weight: 400; letter-spacing: -0.01em; }
 
 /* ── Header / Footer ── */
-.wp-site-blocks > header { border-bottom: 1px solid var(--lovart-border); background: transparent; }
+.wp-site-blocks > header { border-bottom: 1px solid transparent; background: transparent; position: sticky; top: 0; z-index: 150; transition: background .5s ease, border-color .5s ease, box-shadow .5s ease; }
+.lovart-site-header .lovart-header__inner { height: 56px; transition: height .5s cubic-bezier(.4,0,.2,1); }
+.lovart-site-header.is-scrolled { background: rgba(249,248,246,.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--lovart-border); box-shadow: 0 1px 12px rgba(16,15,9,.05); }
+.lovart-site-header.is-scrolled .lovart-header__inner { height: 44px; }
+.lovart-site-header.is-scrolled .wp-block-site-title a { font-size: 20px; }
+.wp-block-site-title a { transition: font-size .5s ease; }
 .wp-site-blocks > header .wp-block-site-title a { font-family: var(--lovart-font-serif); font-size: 24px; text-decoration: none; }
 .wp-site-blocks > footer { background: var(--lovart-bg-secondary); border-top: 1px solid var(--lovart-border); }
 /* dark 模式（复刻页）下 header/footer 跟随深色 tokens */
+.dark .lovart-site-header.is-scrolled { background: rgba(16,15,9,.88); border-color: rgba(255,255,255,.08); box-shadow: 0 1px 12px rgba(0,0,0,.3); }
 .dark .wp-site-blocks > header { background: var(--lovart-dark); border-color: rgba(255,255,255,.1); }
 .dark .wp-site-blocks > header .wp-block-site-title a { color: #fff; }
 .dark .wp-site-blocks > footer { background: transparent; border-color: rgba(255,255,255,.1); }
