@@ -24,11 +24,17 @@
   python3 sanity_publisher.py dry-run --file draft.md --slug my-slug --lang zh --category How-To
   python3 sanity_publisher.py publish  --file draft.md --slug my-slug --lang zh --category How-To --yes
   python3 sanity_publisher.py publish  --file draft.md --mode patch --status scheduled --yes
+
+正文分段（b20 bug 修复，2026-10-07）：
+  patch 模式正文 > BODY_PATCH_CHUNK（默认 40，env MFLOW_PT_CHUNK）个 block 时，
+  自动改为分段事务：首段 set（标量字段 + body 前缀），后续 insert after body[-1] 追加。
+  每段独立 HTTP 事务 + 重试；中断时文档处于合法前缀状态，重跑整篇续传。
 """
 import json
 import os
 import re
 import sys
+import time
 import urllib.error
 import urllib.request
 from datetime import datetime
@@ -149,6 +155,10 @@ def parse_frontmatter(text):
 
 STATUS_ENUM = ("draft", "scheduled", "published", "unpublished", "archived")
 
+# 正文分段阈值（b20 bug：200+ block 整包 patch 单事务会 hang）。
+# 分段 = 首段 set 承接 + 后续 insert after body[-1] 逐段追加；每段独立事务、独立重试、状态始终一致。
+BODY_PATCH_CHUNK = int(os.environ.get("MFLOW_PT_CHUNK", "40"))
+
 
 def doc_id(doc_type, slug, lang):
     """（type, slug, language）唯一键 → 文档 _id（PRD I1 / 手册 §2.2）。
@@ -246,6 +256,64 @@ def upsert(doc, dry_run=True, mode="createIfNotExists"):
         return {"ok": False, "error": str(e)[:300]}
 
 
+def split_body_chunks(body_blocks, chunk=None):
+    """正文分段：返回 [(kind, blocks)]，首段 'set_prefix'，后续 'insert'。
+    纯函数（测试用）；kind=set_prefix 的段会整段替换 body，kind=insert 的段追加到 body[-1] 之后。"""
+    K = int(chunk or BODY_PATCH_CHUNK)
+    if K <= 0:
+        raise ValueError("chunk 必须 > 0")
+    n = len(body_blocks)
+    if n <= K:
+        return [("set_prefix", list(body_blocks))] if n else []
+    out = [("set_prefix", list(body_blocks[:K]))]
+    for i in range(K, n, K):
+        out.append(("insert", list(body_blocks[i:i + K])))
+    return out
+
+
+def _patch_mutations_for_patches(patches, doc_id):
+    """分段计划 → Sanity patch mutation 列表（纯函数）。insert 用 body[-1] 相对定位（HTTP API 语法）。"""
+    muts = []
+    for kind, blocks in patches:
+        if kind == "set_prefix":
+            muts.append({"patch": {"id": doc_id, "set": {"body": blocks}}})
+        else:
+            muts.append({"patch": {"id": doc_id, "insert": {"after": "body[-1]", "items": blocks}}})
+    return muts
+
+
+def _mutate_retry(cfg, mutations, dry_run, attempts=3, timeout=90):
+    """单事务 send，网络抖动重试（3 次、间隔递增）。dryRun 事务同样回调便于预演分段。"""
+    last = None
+    for i in range(attempts):
+        try:
+            with _req(cfg, "mutate", {"mutations": mutations, "dryRun": bool(dry_run)}, timeout=timeout) as r:
+                return {"ok": True, "result": json.loads(r.read())}
+        except urllib.error.HTTPError as e:
+            return {"ok": False, "error": f"HTTP {e.code}: {e.read().decode()[:400]}"}
+        except Exception as e:
+            last = e
+            time.sleep(1.5 * (i + 1))
+    return {"ok": False, "error": str(last)[:300]}
+
+
+def patch_body_chunked(patches, doc_id, dry_run=True):
+    """分段 patch 执行器：每个 mutation 单独一个 HTTP 事务（堵 b20 单事务 hang）。
+    中断 safety：已完成段的状态是合法前缀（set/insert 均幂等替换或追加），重跑从断点续传需重查 _rev 后重放。"""
+    cfg = sanity_cfg()
+    if not cfg["token"]:
+        return {"ok": False, "error": "未配置 SANITY_TOKEN"}
+    muts = _patch_mutations_for_patches(patches, doc_id)
+    done = 0
+    for m in muts:
+        r = _mutate_retry(cfg, [m], dry_run)
+        if not r.get("ok"):
+            return {"ok": False, "error": f"第 {done + 1} 段失败（已完成 {done}/{len(muts)}）：{r.get('error')}",
+                    "chunks_total": len(muts), "chunks_done": done}
+        done += 1
+    return {"ok": True, "chunks": len(muts), "dry_run": bool(dry_run), "mode": "patch-chunked"}
+
+
 def find_by_slug_lang(doc_type, slug, lang):
     """按（slug, language）查文档（手册 §2.4 的取数契约；与 _id 方案解耦）。返回 {_id,_rev} 或 None。"""
     cfg = sanity_cfg()
@@ -271,8 +339,38 @@ def publish_blog(doc, dry_run=True, mode="create"):
         if not cur:
             return {"ok": False, "error": f"patch 模式要求文档已存在：slug={slug} lang={doc.get('language')}（新建请用 --mode create）"}
         sets = {k: v for k, v in doc.items() if k not in ("_id", "_type", "slug")}
-        mutations = [{"patch": {"id": cur["_id"], "ifRevisionID": cur.get("_rev"), "set": sets}}]
-        op = "patch"
+        body = sets.pop("body", [])
+        chunks = split_body_chunks(body)
+        if len(chunks) <= 1:
+            # 常规长度：单事务 patch（含 body）
+            if sets:
+                sets["body"] = body
+            mutations = [{"patch": {"id": cur["_id"], "ifRevisionID": cur.get("_rev"), "set": sets}}]
+            try:
+                with _req(cfg, "mutate", {"mutations": mutations, "dryRun": bool(dry_run)}, timeout=120) as r:
+                    d = json.loads(r.read())
+                return {"ok": True, "dry_run": bool(dry_run), "mode": "patch", "doctype": "blog",
+                        "result": d, "blocks": len(body)}
+            except urllib.error.HTTPError as e:
+                return {"ok": False, "error": f"HTTP {e.code}: {e.read().decode()[:400]}"}
+            except Exception as e:
+                return {"ok": False, "error": str(e)[:300]}
+        # b20 修复：长正文分段 patch（第 1 段 set 其余标量字段 + body 前缀；后续段 insert 追加）
+        first = chunks[0][1]
+        sets["body"] = first
+        patches = [("set_prefix", first)] + [(k, b) for k, b in chunks[1:]]
+        mut_first = [{"patch": {"id": cur["_id"], "ifRevisionID": cur.get("_rev"), "set": sets}}]
+        out = _mutate_retry(cfg, mut_first, dry_run, timeout=120)
+        if not out.get("ok"):
+            return {"ok": False, "error": f"分段 patch 首段失败：{out.get('error')}"}
+        rest = _patch_mutations_for_patches(patches[1:], cur["_id"])
+        for m in rest:
+            r2 = _mutate_retry(cfg, [m], dry_run)
+            if not r2.get("ok"):
+                return {"ok": False, "chunks_done": 1, "chunks_total": len(patches),
+                        "error": f"追加段失败（文档当前为前缀状态，重跑整篇即可续传）：{r2.get('error')}"}
+        return {"ok": True, "dry_run": bool(dry_run), "mode": "patch-chunked", "doctype": "blog",
+                "blocks": len(body), "chunks": len(patches)}
     else:
         if cur:
             return {"ok": False,

@@ -53,15 +53,23 @@ LOOP_LOCK = threading.Lock()
 PS_LOCK = threading.Lock()  # pipeline-state.json 读改写竞争保护（并发批量生成会撞）
 LOOP_THREADS = {}
 MAX_PARALLEL_LOOPS = 2
+LOOP_TOKEN_CAP = int(os.environ.get("MFLOW_LOOP_TOKEN_CAP", "90000"))  # 单 loop token 预算（失控烧钱熔断线）
 _usage_lock = threading.Lock()
 LAST_USAGE = {"total_tokens": 0}
 
 
 def loop_queue_worker():
-    """Queue scheduler across all projects (max parallel = MAX_PARALLEL_LOOPS)."""
+    """Queue scheduler across all projects (max parallel = MAX_PARALLEL_LOOPS).
+    熔断中不领取新任务（在跑的 loop 由 loop_engine 轮内自检暂停）。"""
     while True:
         time.sleep(4)
         try:
+            try:
+                blocked, _ = breaker_check()
+            except Exception:
+                blocked = False
+            if blocked:
+                continue
             all_loops = []
             if PROJECTS_DIR.exists():
                 for lf in PROJECTS_DIR.glob("*/loops.json"):
@@ -89,6 +97,12 @@ def schedule_executor():
     while True:
         time.sleep(300)
         try:
+            try:
+                blocked, _ = breaker_check()
+            except Exception:
+                blocked = False
+            if blocked:
+                continue  # 熔断中：自动排程一律暂停（人工排程不受限）
             if not PROJECTS_DIR.exists():
                 continue
             today = datetime.now().strftime("%Y-%m-%d")
@@ -110,7 +124,10 @@ def schedule_executor():
                     topics = topics[1:]
                     pp["topics"].write_text(json.dumps(topics, ensure_ascii=False, indent=1))
                 else:
-                    topic = f"自动排程占位选题（队列空，{today}）"
+                    # 选题队列空 = 不产稿（防占位垃圾稿：无真实选题绝不自动生成）
+                    with open(pp["sched_log"], "a") as f:
+                        f.write(f"{datetime.now().isoformat(timespec='seconds')} SKIP 题库空，未创建（防占位垃圾稿）\n")
+                    continue
                 item_id = f"auto-{pid}-{datetime.now().strftime('%Y%m%d')}-{secrets.token_hex(2)}"
                 ps_run([sys.executable, str(PS_PATH),
                         "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
@@ -1321,6 +1338,22 @@ def loop_engine(loop_id, proj):
             loop["status"] = "stopped"
             log(loop, "被用户停止")
             _loop_save(loop, proj)
+            return
+        # 全局熔断在跑也要让路：打回队列，熔断解除后由 queue worker 自动续跑
+        try:
+            _blk, _bst = breaker_check()
+            if _blk:
+                loop["status"] = "queued"
+                log(loop, f"熔断中，Loop 暂停回队（{_bst.get('reason', '')[:60]}）")
+                _loop_save(loop, proj)
+                return
+        except Exception:
+            pass
+        if int(loop.get("tokens_used", 0)) > LOOP_TOKEN_CAP:
+            loop["status"] = "blocked"
+            log(loop, f"token 预算超限（{loop.get('tokens_used', 0)} > {LOOP_TOKEN_CAP}），需人工接管")
+            _loop_save(loop, proj)
+            notify_loop_end(loop, proj, "blocked")
             return
         loop["round"] = rnd
         log(loop, f"第 {rnd} 轮：调用 LLM 生成（{loop['type']} / {loop['lang']}）")
@@ -6648,14 +6681,17 @@ def breaker_trip(reason, cooldown_min=15, scope="global"):
 
 
 def breaker_check():
-    """返回 (blocked, state)。冷却期过后自动复位（半开）。"""
+    """返回 (blocked, state)。冷却期过后自动复位（半开）。
+    cooldown_min<=0 = 人工熔断（kill switch）：不自动复位，必须 /api/breaker/reset 手动解除。"""
     st = breaker_state()
     if not st.get("tripped"):
         return False, st
-    elapsed_min = (time.time() - float(st.get("tripped_at_ts", 0))) / 60
-    if elapsed_min >= float(st.get("cooldown_min", 15)):
-        breaker_reset(auto=True)
-        return False, breaker_state()
+    cd = float(st.get("cooldown_min", 15))
+    if cd > 0:
+        elapsed_min = (time.time() - float(st.get("tripped_at_ts", 0))) / 60
+        if elapsed_min >= cd:
+            breaker_reset(auto=True)
+            return False, breaker_state()
     return True, st
 
 
@@ -8034,6 +8070,23 @@ def playbook_validate_jumps(steps):
 
 
 DEFAULT_PB_LIMITS = {"max_runs_per_day": 50, "max_concurrent": 2, "cooldown_min": 5, "max_steps": 12}
+GLOBAL_LIMITS_FILE = RUN_DIR / "limits.json"
+DEFAULT_GLOBAL_LIMITS = {"max_runs_per_day": 200}  # 全部剧本当日运行总和上限（防多剧本叠加失控）
+
+
+def _global_limits():
+    d = read_json(GLOBAL_LIMITS_FILE, {})
+    lim = dict(DEFAULT_GLOBAL_LIMITS)
+    lim.update({k: v for k, v in (d.get("playbooks") if isinstance(d.get("playbooks"), dict) else d).items()
+                if k in DEFAULT_GLOBAL_LIMITS and v is not None})
+    return lim
+
+
+def _global_runs_today(playbooks=None):
+    """全部剧本（含兼容层自动化）当日 runs_today 总和（全局上限的计数口径）。"""
+    today = datetime.now().strftime("%Y-%m-%d")
+    pbs = playbooks if playbooks is not None else playbooks_list()
+    return sum(int(pb.get("runs_today") or 0) for pb in pbs if pb.get("day") == today)
 
 
 def _pb_limits(pb):
@@ -8043,9 +8096,14 @@ def _pb_limits(pb):
 
 
 def playbook_limits_check(pb):
-    """单剧本硬闸：每日次数 / 并发 / 冷却 / 步数。返回 (ok, reason)。"""
+    """单剧本硬闸：每日次数 / 并发 / 冷却 / 步数 + 全局每日总上限。返回 (ok, reason)。"""
     lim = _pb_limits(pb)
     today = datetime.now().strftime("%Y-%m-%d")
+    glim = _global_limits()
+    greq = _global_runs_today()
+    if int(glim.get("max_runs_per_day") or 0) and greq >= int(glim["max_runs_per_day"]):
+        return False, (f"全局每日运行已达上限（{greq}/{glim['max_runs_per_day']}）"
+                       f"——多剧本叠加可能失控，可调 run/limits.json")
     if int(lim.get("max_runs_per_day") or 0) and pb.get("day") == today \
             and int(pb.get("runs_today") or 0) >= int(lim["max_runs_per_day"]):
         return False, f"今日运行已达上限（{lim['max_runs_per_day']} 次）"
@@ -8168,7 +8226,14 @@ def playbook_preview(pb, proj=None):
 
 
 def playbook_tick():
-    """定时触发器：到期的剧本自动执行。"""
+    """定时触发器：到期的剧本自动执行。全局熔断（含人工 kill switch）时空转。"""
+    try:
+        blocked, _bst = breaker_check()
+    except Exception:
+        blocked = False
+    if blocked:
+        print("[playbook] 熔断中，跳过本轮定时触发", file=sys.stderr)
+        return
     now = time.time()
     for pb in playbooks_list():
         try:
@@ -8204,7 +8269,14 @@ def playbook_tick():
 
 
 def playbook_event(event, payload):
-    """事件触发器：task.done/failed 等匹配则执行剧本。"""
+    """事件触发器：task.done/failed 等匹配则执行剧本。熔断中不触发。"""
+    try:
+        blocked, _bst = breaker_check()
+    except Exception:
+        blocked = False
+    if blocked:
+        print(f"[playbook] 熔断中，事件 {event} 触发被跳过", file=sys.stderr)
+        return
     for pb in playbooks_list():
         try:
             if not pb.get("enabled"):
@@ -9607,7 +9679,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/run/action",
                       "/api/qa/orchestrate", "/api/qa/recheck",
                       "/api/presets/run", "/api/housekeeping/run",
-                      "/api/breaker/reset", "/api/quotas/save",
+                      "/api/breaker/trip", "/api/breaker/reset", "/api/quotas/save",
                       "/api/self-evolve/apply",
                       "/api/styles/import", "/api/styles/delete",
                       "/api/mode/switch"}
@@ -10449,6 +10521,10 @@ class Handler(BaseHTTPRequestHandler):
             if self.path == "/api/self-evolve/apply":
                 r = self_evolve_apply(str(body.get("pattern", "")), str(body.get("action", "")), by=self._me())
                 return self._send(200 if r.get("ok") else 400, r)
+            if self.path == "/api/breaker/trip":
+                reason = str(body.get("reason") or "人工紧急停止")
+                st = breaker_trip(reason=reason, cooldown_min=0)
+                return self._send(200, {"ok": True, "note": "已人工熔断（kill switch）：所有自动化/loop/批量暂停，需手动解除", **st})
             if self.path == "/api/breaker/reset":
                 st = breaker_reset()
                 with open(RUN_DIR / "approvals.log", "a") as f:

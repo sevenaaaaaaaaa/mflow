@@ -89,11 +89,19 @@ class TestBreaker(unittest.TestCase):
         self.assertTrue(st["tripped"])
 
     def test_auto_reset_after_cooldown(self):
-        st = C.breaker_trip("test", cooldown_min=0)
-        st["tripped_at_ts"] = st["tripped_at_ts"] - 60  # 已过冷却
+        st = C.breaker_trip("test", cooldown_min=15)
+        st["tripped_at_ts"] = st["tripped_at_ts"] - 3600  # 已过 15 分钟冷却
         C.BREAKER_FILE.write_text(json.dumps(st))
         blocked, _ = C.breaker_check()
         self.assertFalse(blocked)
+
+    def test_zero_cooldown_is_manual_kill_switch(self):
+        # cooldown_min<=0 = 人工熔断：无论过期多久都不自动复位（2026-10-07 P0）
+        st = C.breaker_trip("test", cooldown_min=0)
+        st["tripped_at_ts"] = st["tripped_at_ts"] - 3600
+        C.BREAKER_FILE.write_text(json.dumps(st))
+        blocked, _ = C.breaker_check()
+        self.assertTrue(blocked)
 
     def test_manual_reset(self):
         C.breaker_trip("test", cooldown_min=30)
