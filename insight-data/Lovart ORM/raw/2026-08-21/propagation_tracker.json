@@ -1,7 +1,0 @@
-{
-  "generated_at": "2026-08-21",
-  "generator": "Lovart Sentinel",
-  "title": "Propagation Chain Tracker",
-  "status": "delegated",
-  "_instructions": "\n    当发现重要内容（如媒体报道、KOL视频、热门话题）时执行：\n\n    1. 源内容定位：记录原始发布平台、发布时间、初始互动量\n    2. 跨平台搜索：用源内容标题关键字追踪是否有：\n       - 知乎引用/讨论\n       - B站二次创作/反应视频\n       - 微信公众号转载\n       - 微博话题引用\n       - Reddit/Twitter讨论\n    3. 传播层次量化：\n       - 转载/引用数量\n       - 各平台互动量对比\n       - 传播时间线\n    4. 涟漪效应评估：源内容是否引发了新的讨论/二次传播链\n\n    示例追踪链：腾讯新闻《月薪19刀》→ 搜狐转载 → 知乎讨论 → B站UP主引用\n    "
-}

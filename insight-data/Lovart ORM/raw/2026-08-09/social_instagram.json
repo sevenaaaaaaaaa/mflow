@@ -1,9 +1,0 @@
-{
-  "generated_at": "2026-08-09",
-  "generator": "Lovart Sentinel",
-  "title": "Instagram Monitor (DuckDuckGo proxy)",
-  "method": "duckduckgo",
-  "url": "https://duckduckgo.com/html/?q=lovart.ai+site:instagram.com",
-  "status": "delegated",
-  "_instructions": "\n    1. webfetch DuckDuckGo: https://duckduckgo.com/html/?q=lovart.ai+site:instagram.com\n    2. 提取：粉丝数(59K)、帖子数(208)、最新帖子内容/点赞/评论\n    3. 从搜索结果摘要中提取最近帖子：日期、主题、互动量\n    4. 对比上次数据：粉丝增长、发帖频率变化\n    "
-}

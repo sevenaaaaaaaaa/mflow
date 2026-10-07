@@ -1,9 +1,0 @@
-{
-  "generated_at": "2026-09-16",
-  "generator": "Lovart Sentinel",
-  "title": "TikTok Monitor (DuckDuckGo proxy)",
-  "method": "duckduckgo",
-  "url": "https://duckduckgo.com/html/?q=lovart+site:tiktok.com",
-  "status": "delegated",
-  "_instructions": "\n    1. webfetch DuckDuckGo: https://duckduckgo.com/html/?q=lovart+site:tiktok.com\n    2. 提取：@lovart.ai粉丝数(749)、@lovart_ai粉丝数(270)\n    3. 从搜索结果摘要提取：视频标题、播放量、日期\n    4. 检测是否有UGC内容（非官方账号发布的Lovart视频）\n    "
-}
