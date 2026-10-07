@@ -1,0 +1,478 @@
+{
+  "_id": "features-ai-video-generator-ja",
+  "reflowSourceId": "features-ai-video-generator-ja",
+  "slug": "ai-video-generator",
+  "language": "ja",
+  "category": "feature",
+  "title": "Sora 2、Veo 3、Klingで動画生成｜Lovart",
+  "description": "Generate cinematic AI videos with Lovart's all-in-one tool. Access Sora 2, Gemini Veo 3, and Kling AI. Features motion control, 4K upscaling, and keyframe animation.",
+  "seo": {
+    "description": "Lovartのオールインワンツールで映画のようなAI動画を生成。Sora 2、Gemini Veo 3、Kling AIに対応。モーションコントロール、4Kアップスケーリング、キーフレームアニメーション搭載。",
+    "keywords": [
+      "AI動画生成ツール",
+      "テキストから動画へのAI",
+      "Sora 2",
+      "Gemini Veo 3",
+      "Kling AI",
+      "動画アップスケーラー",
+      "AI映画制作ツール",
+      "モーションコントロール動画",
+      "シネマティックAI動画ツール"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Lovart AI Video Generator workspace",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/8efdfd8318084a8c88bb72c706bb33c7f2564b8b.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Sora 2、Veo 3、Klingで動画生成｜Lovart\", \"description\": \"Generate cinematic AI videos with Lovart's all-in-one tool. Access Sora 2, Gemini Veo 3, and Kling AI. Features motion control, 4K upscaling, and keyframe animation.\", \"url\": \"https://www.lovart.ai/features/ai-video-generator\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Lovartではどの動画モデルを利用できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovartは、OpenAIのSora 2、GoogleのGemini Veo 3 & 3.1、KuaishouのKling 2.6 & O1、MiniMaxのHailuo、Wan 2.6など、世界最高の動画モデルを統合しています。最新技術を含めるためにライブラリを常に更新しています。\"}}, {\"@type\": \"Question\", \"name\": \"カメラの動きを制御できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい！モーションコントロール機能により、パン、チルト、ズーム、ロールを調整できます。カメラの動きを監督して、特定のシネマティック効果を作成できます。\"}}, {\"@type\": \"Question\", \"name\": \"動画の最大解像度はどれくらいですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"ほとんどのモデルはネイティブで720pまたは1080pで生成されますが、Lovartには動画を高忠実度で4K解像度に強化できる内蔵アップスケーラーが含まれています。\"}}, {\"@type\": \"Question\", \"name\": \"生成される動画の長さはどれくらいですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"標準的な生成時間は通常5秒で、これはAIの一貫性にとって最適です。マルチフレームツールを使用して動画を拡張したりループさせたりできます。\"}}, {\"@type\": \"Question\", \"name\": \"商用ライセンスはありますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい、有料プラン（Starter、Basic、Pro）で生成された動画には商用ライセンスが含まれており、広告、ソーシャルメディア、クライアントワークにコンテンツを使用できます。\"}}]}}"
+    },
+    "title": "Sora 2、Veo 3、Klingで動画生成｜Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-main",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Sora 2、Veo 3、Klingで動画生成｜Lovart\",\"description\":\"Generate cinematic AI videos with Lovart's all-in-one tool. Access Sora 2, Gemini Veo 3, and Kling AI. Features motion control, 4K upscaling, and keyframe animation.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/8efdfd8318084a8c88bb72c706bb33c7f2564b8b.png\",\"alt\":\"Lovart AI Video Generator workspace\"}},{\"type\":\"cluster-block-dense\",\"title\":\"What you can do\",\"description\":\"\",\"cards\":[{\"icon\":\"chat\",\"title\":\"マルチモデルアクセス\",\"description\":\"Sora 2、Veo 3、Kling、Hailuo、Wan 2.6など、業界をリードするモデルに1つのサブスクリプションでアクセス。モデル選びで迷うことはもうありません。\"},{\"icon\":\"image\",\"title\":\"精密モーションコントロール\",\"description\":\"カメラの動きのパラメータ（パン、チルト、ズーム）を精密に制御し、物語を語るダイナミックでシネマティックなショットを作成します。\"},{\"icon\":\"flask\",\"title\":\"キーフレームアニメーション\",\"description\":\"「開始フレーム」と「終了フレーム」をアップロードして動画の始まりと終わりを正確に定義し、完璧なトランジションとループを可能にします。\"},{\"icon\":\"brand\",\"title\":\"4Kアップスケーリング\",\"description\":\"標準的なHD生成物を美しい4K映像に変えます。当社の専門的な動画アップスケーラーは、ディテールをシャープにし、AIアーチファクトを低減します。\"},{\"icon\":\"globe\",\"title\":\"Image-to-Video\",\"description\":\"静止画に命を吹き込みましょう。写真やデザインをアップロードして、Lovartがリアルな物理法則と動きでアニメーション化するのをご覧ください。\"},{\"icon\":\"refresh\",\"title\":\"商用利用権\",\"description\":\"自信を持って制作しましょう。Lovartの有料プランで生成されたすべての動画には完全な商用利用権が付帯しており、プロジェクトに使用できます。\"}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"tabs\":[{\"label\":\"Multi-model research\",\"content\":{\"title\":\"Pick the right engine for the job before generating\",\"description\":\"Lovart supports Seedance 2.0, Sora, Veo 3 and Kling. Use Web Search and Thinking Mode to analyze product materials, competitor video ads and platform specs before selecting the optimal engine per shot.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png\",\"alt\":\"Multi-model video research in Lovart\"},\"cta\":{\"text\":\"Research video angles\",\"href\":\"\"},\"points\":[\"Analyze competitor ad structures frame-by-frame\",\"Match engine to use case: motion realism vs stylized output\",\"Use product specs and brand guidelines as generation context\"]}},{\"label\":\"Keyframe + motion control\",\"content\":{\"title\":\"Control start, end and motion direction for every clip\",\"description\":\"Define start keyframes, end keyframes and motion references. Lovart preserves character and product consistency between frames while letting you adjust pacing, camera angle and action intensity.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/55b94439550ff0fefec6a09ca160df2fe8d0f24f.png\",\"alt\":\"Keyframe and motion control in Lovart Video Generator\"},\"cta\":{\"text\":\"Control your video motion\",\"href\":\"\"},\"points\":[\"Start/end keyframe + text prompt per shot\",\"Motion intensity, camera direction and pace controls\",\"Character consistency preserved across clips\"]}},{\"label\":\"Editable after generation\",\"content\":{\"title\":\"Edit frames, copy and visuals without restarting the whole video\",\"description\":\"Use Touch Edit to fix product placement, Text Edit to update offer copy and Edit Elements to adjust layouts — all inside the generated video frames while preserving the motion direction.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/eb6f103da589f07f425f2c736237e33f4d1719fa.png\",\"alt\":\"Editable video frames in Lovart\"},\"cta\":{\"text\":\"Refine your video\",\"href\":\"\"},\"points\":[\"Point-and-edit product details or backgrounds\",\"Rewrite offer copy and localized text in place\",\"Adjust layout without regeneration\"]}},{\"label\":\"Variant loop + scaling\",\"content\":{\"title\":\"Spin 30 platform variants from one creative direction\",\"description\":\"Once a winning video structure is validated, use Fast Mode to explore hook angles, offer framing and aspect ratios for TikTok, Reels, YouTube Shorts and Meta ads. Switch to Thinking Mode to build the full campaign system.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/7eb9d35ed6aaf819fbe425badb3310b77bdc38a7.png\",\"alt\":\"Video variant scaling in Lovart\"},\"cta\":{\"text\":\"Scale your ad variants\",\"href\":\"\"},\"points\":[\"Fast Mode: explore many hooks quickly\",\"Thinking Mode: build coordinated campaign systems\",\"9:16, 1:1, 16:9 and 4:5 aspect ratios\"]}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"description\":\"The 2-column grid for the highest-leverage video production outcomes.\",\"columns\":2,\"features\":[{\"title\":\"マルチモデルアクセス\",\"description\":\"Sora 2、Veo 3、Kling、Hailuo、Wan 2.6など、業界をリードするモデルに1つのサブスクリプションでアクセス。モデル選びで迷うことはもうありません。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/4c90f673629d0bbd5fce85ad374352d4e40deb3e.png\",\"alt\":\"Product launch video system\"}},{\"title\":\"精密モーションコントロール\",\"description\":\"カメラの動きのパラメータ（パン、チルト、ズーム）を精密に制御し、物語を語るダイナミックでシネマティックなショットを作成します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/5d48ca781dea8ab12d0c93fc32e3ad8afa815631.png\",\"alt\":\"Paid social creative testing\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"description\":\"Each row maps one capability cluster to a concrete output that growth and creative teams can ship.\",\"items\":[{\"title\":\"AI Video Generator プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\",\"points\":[\"Upload MP4 references, brand guide PDFs and SKU sheets\",\"Analyze competitor video structures and hook patterns\",\"Extract product benefits, audience segments and platform requirements\"],\"cta\":{\"text\":\"Build the video brief\",\"href\":\"\",\"variant\":\"primary\"},\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/5d48ca781dea8ab12d0c93fc32e3ad8afa815631.png\",\"alt\":\"Video research and brief context\"}},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true,\"points\":[\"Script + keyframe + motion spec per video segment\",\"Multiple model support: Seedance 2.0, Sora, Veo 3, Kling\",\"9:16 vertical, 1:1 square, 16:9 landscape formats\"],\"cta\":{\"text\":\"Generate video ads\",\"href\":\"\",\"variant\":\"primary\"},\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/b6ac2200d8f883894a7f18ee1da19d7d7aab2a7f.png\",\"alt\":\"Video generation workflow\"}},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"points\":[\"Touch Edit: adjust product, background or label in one frame\",\"Text Edit: update offer, discount or localized copy in place\",\"Edit Elements: rearrange visual layers without regeneration\"],\"cta\":{\"text\":\"Refine the video\",\"href\":\"\",\"variant\":\"primary\"},\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/d11411bc15e95312819272bf39a65a3cbdf230b2.png\",\"alt\":\"Video editing capabilities\"}},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true,\"points\":[\"Fast Mode: explore 10+ ad angles in minutes\",\"Thinking Mode: build cross-platform campaign architecture\",\"Brand Kit + Style Consistency across every variant\"],\"cta\":{\"text\":\"Scale the campaign\",\"href\":\"\",\"variant\":\"primary\"},\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/7eb9d35ed6aaf819fbe425badb3310b77bdc38a7.png\",\"alt\":\"Full campaign video scaling\"}}]},{\"type\":\"prompt-launcher\",\"title\":\"究極のAI動画生成ツール。Sora 2、Veo 3、Klingで作成。\",\"description\":\"1つのモデルで妥協する必要はありません。Lovartは、Sora 2、Gemini Veo 3.1、Kling 2.6、Hailuo 2.3、Wan 2.6を1つの強力なワークスペースに統合した、世界最先端のAI動画生成ツールです。テキストからの動画生成から、精密なキーフレームアニメーション、4Kアップスケーリングまで、アプリを切り替えることなくすべてをコントロールできます。\",\"prompts\":[{\"label\":\"自然ドキュメンタリー\",\"prompt\":\"Hyper-realistic close-up of a lion roaring in slow motion, water droplets flying, 8k resolution\"},{\"label\":\"製品CM\",\"prompt\":\"Futuristic product reveal of a glowing smartphone, sleek 3D animation style, studio lighting\"},{\"label\":\"旅行＆ライフスタイル\",\"prompt\":\"POV shot of driving a vintage convertible along the Amalfi coast at sunset, warm color grading\"},{\"label\":\"映画予告編\",\"prompt\":\"Epic fantasy battle scene with dragons, particle effects, dynamic camera movement\"}],\"cta\":{\"text\":\"動画を生成\"},\"input_placeholder\":\"例：「雨に濡れたネオンライトが反射するサイバーパンクな都市の上空を飛ぶシネマティックなドローンショット、4k、スムーズな動き」\",\"tip\":\"プロのヒント：「フレーム（Frames）」を使用して特定の開始フレームと終了フレームをアップロードし、動画の物語の流れを正確に制御しましょう。\"},{\"type\":\"workflow-horizontal\",\"title\":\"3ステップでプロフェッショナルな動画制作\",\"description\":\"A concise how-it-works band for teams who want to understand the motion in seconds.\",\"layout\":\"horizontal\",\"steps\":[{\"step\":1,\"title\":\"エンジンを選択\",\"description\":\"ニーズに最適なモデルを選択してください。フォトリアリズムにはSora 2、複雑な人間の動きにはKling 2.6、流動的で夢のような物理効果にはGemini Veo 3を使用します。\"},{\"step\":2,\"title\":\"ショットを監督\",\"description\":\"高度なモーション設定でコントロール。パン、チルト、ズーム、ロールを調整し、実際の監督のようにカメラを思い通りの場所に誘導します。\"},{\"step\":3,\"title\":\"アップスケール＆エクスポート\",\"description\":\"品質に妥協しないでください。内蔵のAIアップスケーラーを使用して動画の解像度を4Kに引き上げ、あらゆるプラットフォームで鮮明な放送品質の結果を保証します。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Video Generator：Lovart と一般的なワークフローの比較\",\"description\":\"The highlighted Lovart column shows the difference between an agent workflow and fragmented production.\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"AI Video Generator プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]},{\"feature\":\"Scale to full campaign\",\"values\":[\"Single video, no variant system\",\"Brief per variant, slow cycle\",\"Fast Mode for hooks, Thinking Mode for campaign architecture\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"AI Video Generator が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから AI Video Generator の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"絵コンテやBロールの作成にLovartを使っています。SoraとVeoを1か所で使えるおかげで、ツールを行き来する時間を何時間も節約できました。4Kアップスケールは画期的です。\",\"author\":\"Alex R.\",\"role\":\"映画製作者\"},{\"quote\":\"モーションコントロール機能のおかげで、スタジオで撮影したかのような精密な製品ショットを作成できます。これまで使用した中で最も多機能な動画ツールです。\",\"author\":\"Jessica M.\",\"role\":\"広告代理店ディレクター\"},{\"quote\":\"私は顔出しなしのコンテンツを作成していますが、Lovartが私の制作チームのすべてです。一貫したキャラクターを生成し、簡単にアニメーション化できます。強くお勧めします。\",\"author\":\"David K.\",\"role\":\"YouTuber\"}],\"title\":\"Lovartでビジョンを実現するクリエイターたち\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"Lovartではどの動画モデルを利用できますか？\",\"answer\":\"Lovartは、OpenAIのSora 2、GoogleのGemini Veo 3 & 3.1、KuaishouのKling 2.6 & O1、MiniMaxのHailuo、Wan 2.6など、世界最高の動画モデルを統合しています。最新技術を含めるためにライブラリを常に更新しています。\"},{\"question\":\"カメラの動きを制御できますか？\",\"answer\":\"はい！モーションコントロール機能により、パン、チルト、ズーム、ロールを調整できます。カメラの動きを監督して、特定のシネマティック効果を作成できます。\"},{\"question\":\"動画の最大解像度はどれくらいですか？\",\"answer\":\"ほとんどのモデルはネイティブで720pまたは1080pで生成されますが、Lovartには動画を高忠実度で4K解像度に強化できる内蔵アップスケーラーが含まれています。\"},{\"question\":\"生成される動画の長さはどれくらいですか？\",\"answer\":\"標準的な生成時間は通常5秒で、これはAIの一貫性にとって最適です。マルチフレームツールを使用して動画を拡張したりループさせたりできます。\"},{\"question\":\"商用ライセンスはありますか？\",\"answer\":\"はい、有料プラン（Starter、Basic、Pro）で生成された動画には商用ライセンスが含まれており、広告、ソーシャルメディア、クライアントワークにコンテンツを使用できます。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Sora 2、Veo 3、Klingで動画生成｜Lovart",
+      "description": "Generate cinematic AI videos with Lovart's all-in-one tool. Access Sora 2, Gemini Veo 3, and Kling AI. Features motion control, 4K upscaling, and keyframe animation.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/8efdfd8318084a8c88bb72c706bb33c7f2564b8b.png",
+        "alt": "Lovart AI Video Generator workspace"
+      }
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "What you can do",
+      "description": "",
+      "cards": [
+        {
+          "icon": "chat",
+          "title": "マルチモデルアクセス",
+          "description": "Sora 2、Veo 3、Kling、Hailuo、Wan 2.6など、業界をリードするモデルに1つのサブスクリプションでアクセス。モデル選びで迷うことはもうありません。"
+        },
+        {
+          "icon": "image",
+          "title": "精密モーションコントロール",
+          "description": "カメラの動きのパラメータ（パン、チルト、ズーム）を精密に制御し、物語を語るダイナミックでシネマティックなショットを作成します。"
+        },
+        {
+          "icon": "flask",
+          "title": "キーフレームアニメーション",
+          "description": "「開始フレーム」と「終了フレーム」をアップロードして動画の始まりと終わりを正確に定義し、完璧なトランジションとループを可能にします。"
+        },
+        {
+          "icon": "brand",
+          "title": "4Kアップスケーリング",
+          "description": "標準的なHD生成物を美しい4K映像に変えます。当社の専門的な動画アップスケーラーは、ディテールをシャープにし、AIアーチファクトを低減します。"
+        },
+        {
+          "icon": "globe",
+          "title": "Image-to-Video",
+          "description": "静止画に命を吹き込みましょう。写真やデザインをアップロードして、Lovartがリアルな物理法則と動きでアニメーション化するのをご覧ください。"
+        },
+        {
+          "icon": "refresh",
+          "title": "商用利用権",
+          "description": "自信を持って制作しましょう。Lovartの有料プランで生成されたすべての動画には完全な商用利用権が付帯しており、プロジェクトに使用できます。"
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "tabs": [
+        {
+          "label": "Multi-model research",
+          "content": {
+            "title": "Pick the right engine for the job before generating",
+            "description": "Lovart supports Seedance 2.0, Sora, Veo 3 and Kling. Use Web Search and Thinking Mode to analyze product materials, competitor video ads and platform specs before selecting the optimal engine per shot.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png",
+              "alt": "Multi-model video research in Lovart"
+            },
+            "cta": {
+              "text": "Research video angles",
+              "href": ""
+            },
+            "points": [
+              "Analyze competitor ad structures frame-by-frame",
+              "Match engine to use case: motion realism vs stylized output",
+              "Use product specs and brand guidelines as generation context"
+            ]
+          }
+        },
+        {
+          "label": "Keyframe + motion control",
+          "content": {
+            "title": "Control start, end and motion direction for every clip",
+            "description": "Define start keyframes, end keyframes and motion references. Lovart preserves character and product consistency between frames while letting you adjust pacing, camera angle and action intensity.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/55b94439550ff0fefec6a09ca160df2fe8d0f24f.png",
+              "alt": "Keyframe and motion control in Lovart Video Generator"
+            },
+            "cta": {
+              "text": "Control your video motion",
+              "href": ""
+            },
+            "points": [
+              "Start/end keyframe + text prompt per shot",
+              "Motion intensity, camera direction and pace controls",
+              "Character consistency preserved across clips"
+            ]
+          }
+        },
+        {
+          "label": "Editable after generation",
+          "content": {
+            "title": "Edit frames, copy and visuals without restarting the whole video",
+            "description": "Use Touch Edit to fix product placement, Text Edit to update offer copy and Edit Elements to adjust layouts — all inside the generated video frames while preserving the motion direction.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/eb6f103da589f07f425f2c736237e33f4d1719fa.png",
+              "alt": "Editable video frames in Lovart"
+            },
+            "cta": {
+              "text": "Refine your video",
+              "href": ""
+            },
+            "points": [
+              "Point-and-edit product details or backgrounds",
+              "Rewrite offer copy and localized text in place",
+              "Adjust layout without regeneration"
+            ]
+          }
+        },
+        {
+          "label": "Variant loop + scaling",
+          "content": {
+            "title": "Spin 30 platform variants from one creative direction",
+            "description": "Once a winning video structure is validated, use Fast Mode to explore hook angles, offer framing and aspect ratios for TikTok, Reels, YouTube Shorts and Meta ads. Switch to Thinking Mode to build the full campaign system.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/7eb9d35ed6aaf819fbe425badb3310b77bdc38a7.png",
+              "alt": "Video variant scaling in Lovart"
+            },
+            "cta": {
+              "text": "Scale your ad variants",
+              "href": ""
+            },
+            "points": [
+              "Fast Mode: explore many hooks quickly",
+              "Thinking Mode: build coordinated campaign systems",
+              "9:16, 1:1, 16:9 and 4:5 aspect ratios"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "description": "The 2-column grid for the highest-leverage video production outcomes.",
+      "columns": 2,
+      "features": [
+        {
+          "title": "マルチモデルアクセス",
+          "description": "Sora 2、Veo 3、Kling、Hailuo、Wan 2.6など、業界をリードするモデルに1つのサブスクリプションでアクセス。モデル選びで迷うことはもうありません。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/4c90f673629d0bbd5fce85ad374352d4e40deb3e.png",
+            "alt": "Product launch video system"
+          }
+        },
+        {
+          "title": "精密モーションコントロール",
+          "description": "カメラの動きのパラメータ（パン、チルト、ズーム）を精密に制御し、物語を語るダイナミックでシネマティックなショットを作成します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/5d48ca781dea8ab12d0c93fc32e3ad8afa815631.png",
+            "alt": "Paid social creative testing"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "description": "Each row maps one capability cluster to a concrete output that growth and creative teams can ship.",
+      "items": [
+        {
+          "title": "AI Video Generator プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。",
+          "points": [
+            "Upload MP4 references, brand guide PDFs and SKU sheets",
+            "Analyze competitor video structures and hook patterns",
+            "Extract product benefits, audience segments and platform requirements"
+          ],
+          "cta": {
+            "text": "Build the video brief",
+            "href": "",
+            "variant": "primary"
+          },
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/5d48ca781dea8ab12d0c93fc32e3ad8afa815631.png",
+            "alt": "Video research and brief context"
+          }
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true,
+          "points": [
+            "Script + keyframe + motion spec per video segment",
+            "Multiple model support: Seedance 2.0, Sora, Veo 3, Kling",
+            "9:16 vertical, 1:1 square, 16:9 landscape formats"
+          ],
+          "cta": {
+            "text": "Generate video ads",
+            "href": "",
+            "variant": "primary"
+          },
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/b6ac2200d8f883894a7f18ee1da19d7d7aab2a7f.png",
+            "alt": "Video generation workflow"
+          }
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "points": [
+            "Touch Edit: adjust product, background or label in one frame",
+            "Text Edit: update offer, discount or localized copy in place",
+            "Edit Elements: rearrange visual layers without regeneration"
+          ],
+          "cta": {
+            "text": "Refine the video",
+            "href": "",
+            "variant": "primary"
+          },
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/d11411bc15e95312819272bf39a65a3cbdf230b2.png",
+            "alt": "Video editing capabilities"
+          }
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true,
+          "points": [
+            "Fast Mode: explore 10+ ad angles in minutes",
+            "Thinking Mode: build cross-platform campaign architecture",
+            "Brand Kit + Style Consistency across every variant"
+          ],
+          "cta": {
+            "text": "Scale the campaign",
+            "href": "",
+            "variant": "primary"
+          },
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/7eb9d35ed6aaf819fbe425badb3310b77bdc38a7.png",
+            "alt": "Full campaign video scaling"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "究極のAI動画生成ツール。Sora 2、Veo 3、Klingで作成。",
+      "description": "1つのモデルで妥協する必要はありません。Lovartは、Sora 2、Gemini Veo 3.1、Kling 2.6、Hailuo 2.3、Wan 2.6を1つの強力なワークスペースに統合した、世界最先端のAI動画生成ツールです。テキストからの動画生成から、精密なキーフレームアニメーション、4Kアップスケーリングまで、アプリを切り替えることなくすべてをコントロールできます。",
+      "prompts": [
+        {
+          "label": "自然ドキュメンタリー",
+          "prompt": "Hyper-realistic close-up of a lion roaring in slow motion, water droplets flying, 8k resolution"
+        },
+        {
+          "label": "製品CM",
+          "prompt": "Futuristic product reveal of a glowing smartphone, sleek 3D animation style, studio lighting"
+        },
+        {
+          "label": "旅行＆ライフスタイル",
+          "prompt": "POV shot of driving a vintage convertible along the Amalfi coast at sunset, warm color grading"
+        },
+        {
+          "label": "映画予告編",
+          "prompt": "Epic fantasy battle scene with dragons, particle effects, dynamic camera movement"
+        }
+      ],
+      "cta": {
+        "text": "動画を生成"
+      },
+      "input_placeholder": "例：「雨に濡れたネオンライトが反射するサイバーパンクな都市の上空を飛ぶシネマティックなドローンショット、4k、スムーズな動き」",
+      "tip": "プロのヒント：「フレーム（Frames）」を使用して特定の開始フレームと終了フレームをアップロードし、動画の物語の流れを正確に制御しましょう。"
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "3ステップでプロフェッショナルな動画制作",
+      "description": "A concise how-it-works band for teams who want to understand the motion in seconds.",
+      "layout": "horizontal",
+      "steps": [
+        {
+          "step": 1,
+          "title": "エンジンを選択",
+          "description": "ニーズに最適なモデルを選択してください。フォトリアリズムにはSora 2、複雑な人間の動きにはKling 2.6、流動的で夢のような物理効果にはGemini Veo 3を使用します。"
+        },
+        {
+          "step": 2,
+          "title": "ショットを監督",
+          "description": "高度なモーション設定でコントロール。パン、チルト、ズーム、ロールを調整し、実際の監督のようにカメラを思い通りの場所に誘導します。"
+        },
+        {
+          "step": 3,
+          "title": "アップスケール＆エクスポート",
+          "description": "品質に妥協しないでください。内蔵のAIアップスケーラーを使用して動画の解像度を4Kに引き上げ、あらゆるプラットフォームで鮮明な放送品質の結果を保証します。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Video Generator：Lovart と一般的なワークフローの比較",
+      "description": "The highlighted Lovart column shows the difference between an agent workflow and fragmented production.",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "AI Video Generator プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        },
+        {
+          "feature": "Scale to full campaign",
+          "values": [
+            "Single video, no variant system",
+            "Brief per variant, slow cycle",
+            "Fast Mode for hooks, Thinking Mode for campaign architecture"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "AI Video Generator が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから AI Video Generator の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "絵コンテやBロールの作成にLovartを使っています。SoraとVeoを1か所で使えるおかげで、ツールを行き来する時間を何時間も節約できました。4Kアップスケールは画期的です。",
+          "author": "Alex R.",
+          "role": "映画製作者"
+        },
+        {
+          "quote": "モーションコントロール機能のおかげで、スタジオで撮影したかのような精密な製品ショットを作成できます。これまで使用した中で最も多機能な動画ツールです。",
+          "author": "Jessica M.",
+          "role": "広告代理店ディレクター"
+        },
+        {
+          "quote": "私は顔出しなしのコンテンツを作成していますが、Lovartが私の制作チームのすべてです。一貫したキャラクターを生成し、簡単にアニメーション化できます。強くお勧めします。",
+          "author": "David K.",
+          "role": "YouTuber"
+        }
+      ],
+      "title": "Lovartでビジョンを実現するクリエイターたち"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "Lovartではどの動画モデルを利用できますか？",
+          "answer": "Lovartは、OpenAIのSora 2、GoogleのGemini Veo 3 & 3.1、KuaishouのKling 2.6 & O1、MiniMaxのHailuo、Wan 2.6など、世界最高の動画モデルを統合しています。最新技術を含めるためにライブラリを常に更新しています。"
+        },
+        {
+          "question": "カメラの動きを制御できますか？",
+          "answer": "はい！モーションコントロール機能により、パン、チルト、ズーム、ロールを調整できます。カメラの動きを監督して、特定のシネマティック効果を作成できます。"
+        },
+        {
+          "question": "動画の最大解像度はどれくらいですか？",
+          "answer": "ほとんどのモデルはネイティブで720pまたは1080pで生成されますが、Lovartには動画を高忠実度で4K解像度に強化できる内蔵アップスケーラーが含まれています。"
+        },
+        {
+          "question": "生成される動画の長さはどれくらいですか？",
+          "answer": "標準的な生成時間は通常5秒で、これはAIの一貫性にとって最適です。マルチフレームツールを使用して動画を拡張したりループさせたりできます。"
+        },
+        {
+          "question": "商用ライセンスはありますか？",
+          "answer": "はい、有料プラン（Starter、Basic、Pro）で生成された動画には商用ライセンスが含まれており、広告、ソーシャルメディア、クライアントワークにコンテンツを使用できます。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

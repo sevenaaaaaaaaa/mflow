@@ -1,0 +1,386 @@
+{
+  "_id": "ai-product-image-generator-de",
+  "reflowSourceId": "ai-product-image-generator-de",
+  "slug": "ai-product-image-generator",
+  "language": "de",
+  "category": "feature",
+  "title": "KI-Google-Shopping-Feed-Bildgenerator: Erstelle konforme Produktfotos | Lovart",
+  "description": "Generate high-CTR Google Shopping feed images. Auto-remove backgrounds, upscale to 4K, and create lifestyle product photography with Lovart AI Design Agent.",
+  "seo": {
+    "description": "Erstelle High-CTR Google Shopping Bilder. Automatischer Hintergrundentfernung, 4K-Upscaling & Lifestyle-Produktfotos mit Lovart KI Design Agent.",
+    "keywords": [
+      "Google Shopping Feed Bild",
+      "Produktfotografie KI",
+      "Hintergrund entfernen für Amazon",
+      "E-Commerce Bildgenerator",
+      "Weißer Hintergrund Maker",
+      "Lifestyle-Produktfotos"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Remove Background",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"KI-Google-Shopping-Feed-Bildgenerator: Erstelle konforme Produktfotos | Lovart\", \"description\": \"Generate high-CTR Google Shopping feed images. Auto-remove backgrounds, upscale to 4K, and create lifestyle product photography with Lovart AI Design Agent.\", \"url\": \"https://www.lovart.ai/features/ai-product-image-generator\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Werden diese Bilder vom Google Merchant Center akzeptiert?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Ja. Lovart ermöglicht es Ihnen, Bilder mit rein weißem Hintergrund (Hex #FFFFFF) und hoher Auflösung zu erstellen, was die Schlüsselanforderungen für die Genehmigung des Google Shopping Feeds sind.\"}}, {\"@type\": \"Question\", \"name\": \"Kann ich Lovart verwenden, um bestehende Produktfotos zu verbessern?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Absolut. Laden Sie Ihr Foto hoch, verwenden Sie 'Remover', um Defekte zu beseitigen, 'Upscale' zur Qualitätsverbesserung und 'Hintergrund entfernen' oder 'Elemente bearbeiten', um die Komposition zu korrigieren.\"}}, {\"@type\": \"Question\", \"name\": \"Muss ich mein physisches Produkt zu Ihnen schicken?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Nein. Lovart ist ein KI-Design-Agent. Sie laden einfach ein Foto Ihres Produkts hoch (selbst ein Handyfoto funktioniert), und unsere KI verbessert es oder platziert es digital in neuen Umgebungen.\"}}, {\"@type\": \"Question\", \"name\": \"Was ist die beste Auflösung für E-Commerce?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Google empfiehlt mindestens 1000x1000 Pixel. Mit Lovart können Sie Bilder in 2K (2048px) und 4K (4096px) generieren oder hochskalieren, um sicherzustellen, dass Ihre Produkte auf allen Geräten scharf aussehen.\"}}, {\"@type\": \"Question\", \"name\": \"Kann ich saisonale Variationen meiner Produktbilder erstellen?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Ja! Mit Nano Banana Pro können Sie Ihr Standardprodukt nehmen und Umgebungen wie 'Weihnachtskamin' oder 'Sommerstrand' prompten, um in Sekunden saisonale Anzeigen-Creatives zu erstellen.\"}}]}}"
+    },
+    "title": "KI-Google-Shopping-Feed-Bildgenerator: Erstelle konforme Produktfotos | Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"KI-Google-Shopping-Feed-Bildgenerator: Erstelle konforme Produktfotos | Lovart\",\"description\":\"Generate high-CTR Google Shopping feed images. Auto-remove backgrounds, upscale to 4K, and create lifestyle product photography with Lovart AI Design Agent.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Remove Background\"}},{\"type\":\"bento-6\",\"title\":\"The E-commerce Visual Toolkit\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Hintergrund entfernen\",\"description\":\"Das unverzichtbare Tool für Google Shopping. Isolieren Sie Ihr Produkt mit KI-Präzision, um die strenge 'weißer Hintergrund'-Richtlinie ohne manuelles Freistellen zu erfüllen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Hintergrund entfernen\"}},{\"title\":\"Nano Banana Pro\",\"description\":\"Generieren Sie hyperrealistische Produktinszenierungen. Beschreiben Sie eine Szene (z. B. 'gemütliches Wohnzimmer') und Lovart integriert Ihr Produkt mit perfekter Beleuchtung und Schatten.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Nano Banana Pro\"}},{\"title\":\"KI-Entferner (Remover)\",\"description\":\"Säubern Sie Ihre Aufnahmen. Entfernen Sie sofort Staub, Kratzer, Datumsstempel oder unerwünschten Text aus Ihren Quellbildern, damit sie professionell aussehen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"KI-Entferner (Remover)\"}},{\"title\":\"Auf 4K hochskalieren\",\"description\":\"Erfüllen Sie Pixelanforderungen. Verwandeln Sie kleine Webbilder in High-Definition-Assets, die Googles Qualitätsprüfungen bestehen und auf Retina-Displays großartig aussehen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Auf 4K hochskalieren\"}},{\"title\":\"Elemente bearbeiten\",\"description\":\"Passen Sie die Komposition an. Bewegen Sie Ihr Produkt in die Mitte, ändern Sie die Größe, damit es 85% des Rahmens einnimmt, oder drehen Sie es direkt auf der Leinwand für einen besseren Winkel.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Elemente bearbeiten\"}},{\"title\":\"Mockup-Generator\",\"description\":\"Verkaufen Sie digitale Güter oder Designs? Wenden Sie Ihr Kunstwerk sofort auf T-Shirts, Tassen oder Schachteln an, um feed-bereite Produkt-Mockups zu erstellen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Mockup-Generator\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Alle Funktionen in einem Agenten\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Hintergrund entfernen\",\"icon\":\"chat\",\"content\":{\"title\":\"Hintergrund entfernen\",\"description\":\"Das unverzichtbare Tool für Google Shopping. Isolieren Sie Ihr Produkt mit KI-Präzision, um die strenge 'weißer Hintergrund'-Richtlinie ohne manuelles Freistellen zu erfüllen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Hintergrund entfernen\"}}},{\"label\":\"Nano Banana Pro\",\"icon\":\"image\",\"content\":{\"title\":\"Nano Banana Pro\",\"description\":\"Generieren Sie hyperrealistische Produktinszenierungen. Beschreiben Sie eine Szene (z. B. 'gemütliches Wohnzimmer') und Lovart integriert Ihr Produkt mit perfekter Beleuchtung und Schatten.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Nano Banana Pro\"}}},{\"label\":\"KI-Entferner (Remover)\",\"icon\":\"flask\",\"content\":{\"title\":\"KI-Entferner (Remover)\",\"description\":\"Säubern Sie Ihre Aufnahmen. Entfernen Sie sofort Staub, Kratzer, Datumsstempel oder unerwünschten Text aus Ihren Quellbildern, damit sie professionell aussehen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"KI-Entferner (Remover)\"}}},{\"label\":\"Auf 4K hochskalieren\",\"icon\":\"brand\",\"content\":{\"title\":\"Auf 4K hochskalieren\",\"description\":\"Erfüllen Sie Pixelanforderungen. Verwandeln Sie kleine Webbilder in High-Definition-Assets, die Googles Qualitätsprüfungen bestehen und auf Retina-Displays großartig aussehen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Auf 4K hochskalieren\"}}}]},{\"type\":\"bento-2\",\"title\":\"Zwei Dinge, die besonders gut gelingen\",\"columns\":2,\"features\":[{\"title\":\"Elemente bearbeiten\",\"description\":\"Passen Sie die Komposition an. Bewegen Sie Ihr Produkt in die Mitte, ändern Sie die Größe, damit es 85% des Rahmens einnimmt, oder drehen Sie es direkt auf der Leinwand für einen besseren Winkel.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Elemente bearbeiten\"}},{\"title\":\"Mockup-Generator\",\"description\":\"Verkaufen Sie digitale Güter oder Designs? Wenden Sie Ihr Kunstwerk sofort auf T-Shirts, Tassen oder Schachteln an, um feed-bereite Produkt-Mockups zu erstellen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Mockup-Generator\"}}]},{\"type\":\"feature-detail\",\"title\":\"So funktioniert es im Detail\",\"items\":[{\"title\":\"Starte dein AI Google Shopping Feed Image Generator: Create Compliant Product Photos-Projekt\",\"description\":\"Beschreibe das gewünschte Ergebnis und füge Referenzen hinzu.\"},{\"title\":\"Mit dem Agenten iterieren\",\"description\":\"Details anpassen und Varianten auf derselben Canvas erkunden.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Steigern Sie Ihre Google Shopping CTR. KI-Produktfotografie-Agent.\",\"description\":\"Hören Sie auf, abgelehnte Feeds zu riskieren. Der KI-Design-Agent von Lovart hilft E-Commerce-Verkäufern, konforme, hochkonvertierende Produktbilder sofort zu erstellen. Generieren Sie rein weiße Hintergründe für Hauptbilder und atemberaubende Lifestyle-Aufnahmen für Sekundärbilder – ganz ohne Studio.\",\"input_placeholder\":\"Z. B. 'Minimalistische Hautpflegeflasche auf Marmor-Podest, weiches Sonnenlicht, 4k Realismus'\",\"prompts\":[{\"label\":\"Konformes Hauptbild\",\"prompt\":\"Running shoe on pure white background, studio lighting, soft natural drop shadow\"},{\"label\":\"Lifestyle-Kontext\",\"prompt\":\"Luxury perfume bottle on a wooden table with blurred nature background, golden hour light\"},{\"label\":\"Tech Flat Lay\",\"prompt\":\"Tech gadget flat lay on concrete surface, high contrast, tech accessories around\"},{\"label\":\"Kreativer Hero Shot\",\"prompt\":\"Organic juice bottle splash photography, water droplets, fresh fruits in background\"}],\"tip\":\"Tipp: Verwenden Sie 'Hintergrund entfernen', um sofort die Anforderungen des Google Merchant Center für weiße Hintergründe zu erfüllen, und dann 'Upscale' auf 4K für gestochen scharfen Zoom.\",\"cta\":{\"text\":\"Produktbilder generieren\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Optimieren Sie Ihren Feed in 3 Schritten\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"Konformität sicherstellen\",\"description\":\"Google hasst überladene Hintergründe. Laden Sie Ihr rohes Produktfoto hoch und nutzen Sie 'Hintergrund entfernen', um mit einem Klick einen richtlinienkonformen weißen Hintergrund zu erhalten.\"},{\"step\":2,\"title\":\"Auflösung steigern\",\"description\":\"Lassen Sie nicht zu, dass verschwommene Pixel Ihre Verkäufe töten. Nutzen Sie 'Upscale', um niedrigauflösende Lieferantenfotos in gestochen scharfe 2K- oder 4K-Assets zu verwandeln, in die Kunden hineinzoomen können.\"},{\"step\":3,\"title\":\"Verlangen wecken\",\"description\":\"Weiße Hintergründe informieren, aber Lifestyle-Bilder verkaufen. Nutzen Sie Nano Banana Pro, um Ihr Produkt sofort in einer realistischen Küche, einem Büro oder einer Außenumgebung zu platzieren.\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Google Shopping Feed Image Generator: Create Compliant Product Photos: Lovart im Vergleich zu üblichen Workflows\",\"headers\":[\"Anforderung\",\"Generisches Tool\",\"Manueller Workflow\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Starte dein AI Google Shopping Feed Image Generator: Create Compliant Product Photos-Projekt\",\"values\":[\"Ein Prompt\",\"Manuelles Briefing\",\"Briefing-gesteuertes Reasoning\"]},{\"feature\":\"Zeit bis zum ersten Ergebnis\",\"values\":[\"Minuten\",\"Tage\",\"Minuten\"]},{\"feature\":\"Bearbeitung nach der Generierung\",\"values\":[\"Begrenzt\",\"Korrekturschleifen\",\"Touch / Text / Elemente\"]},{\"feature\":\"Markenkonform bleiben\",\"values\":[\"Manuell\",\"Manuell\",\"Brand-Kit-fähig\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Wofür sich AI Google Shopping Feed Image Generator: Create Compliant Product Photos eignet\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Schneller starten\",\"description\":\"Vom Briefing zu AI Google Shopping Feed Image Generator: Create Compliant Product Photos-Assets in einer einzigen Session.\"},{\"icon\":\"brand\",\"title\":\"Konsistent bleiben\",\"description\":\"Das Brand Kit hält jedes Asset einheitlich.\"},{\"icon\":\"refresh\",\"title\":\"Schnell iterieren\",\"description\":\"Details bearbeiten, ohne das Projekt neu zu starten.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"Ich habe früher 50 $ pro Foto für Lifestyle-Aufnahmen bezahlt. Jetzt nutze ich Lovarts Nano Banana Pro, um sie zu generieren. Meine CTR bei Google Shopping ist um 35% gestiegen.\",\"author\":\"James T.\",\"role\":\"Amazon FBA-Verkäufer\"},{\"quote\":\"Das 'Hintergrund entfernen'-Tool ist makellos. Es handhabt Haare und transparente Glasflaschen besser als Photoshop. Hat mir Stunden beim Freistellen gespart.\",\"author\":\"Linda W.\",\"role\":\"Shopify-Shop-Inhaberin\"},{\"quote\":\"Upscaling ist ein Game Changer. Ich nehme niedrigauflösende Bilder von Lieferanten, lasse sie durch Lovart laufen, und sie sehen aus wie Premium-Markenfotos.\",\"author\":\"Chen Y.\",\"role\":\"Dropshipper\"}],\"title\":\"Verkäufer skalieren mit Lovart\"},{\"type\":\"pricing-block\",\"title\":\"Wähle den passenden Plan für dein Team\",\"description\":\"Kostenlos starten. Upgraden, sobald die Arbeit zum Kunden geht.\"},{\"type\":\"faq\",\"title\":\"Häufig gestellte Fragen\",\"items\":[{\"question\":\"Werden diese Bilder vom Google Merchant Center akzeptiert?\",\"answer\":\"Ja. Lovart ermöglicht es Ihnen, Bilder mit rein weißem Hintergrund (Hex #FFFFFF) und hoher Auflösung zu erstellen, was die Schlüsselanforderungen für die Genehmigung des Google Shopping Feeds sind.\"},{\"question\":\"Kann ich Lovart verwenden, um bestehende Produktfotos zu verbessern?\",\"answer\":\"Absolut. Laden Sie Ihr Foto hoch, verwenden Sie 'Remover', um Defekte zu beseitigen, 'Upscale' zur Qualitätsverbesserung und 'Hintergrund entfernen' oder 'Elemente bearbeiten', um die Komposition zu korrigieren.\"},{\"question\":\"Muss ich mein physisches Produkt zu Ihnen schicken?\",\"answer\":\"Nein. Lovart ist ein KI-Design-Agent. Sie laden einfach ein Foto Ihres Produkts hoch (selbst ein Handyfoto funktioniert), und unsere KI verbessert es oder platziert es digital in neuen Umgebungen.\"},{\"question\":\"Was ist die beste Auflösung für E-Commerce?\",\"answer\":\"Google empfiehlt mindestens 1000x1000 Pixel. Mit Lovart können Sie Bilder in 2K (2048px) und 4K (4096px) generieren oder hochskalieren, um sicherzustellen, dass Ihre Produkte auf allen Geräten scharf aussehen.\"},{\"question\":\"Kann ich saisonale Variationen meiner Produktbilder erstellen?\",\"answer\":\"Ja! Mit Nano Banana Pro können Sie Ihr Standardprodukt nehmen und Umgebungen wie 'Weihnachtskamin' oder 'Sommerstrand' prompten, um in Sekunden saisonale Anzeigen-Creatives zu erstellen.\"}]},{\"type\":\"cta-default\",\"title\":\"Starte deine Designs mit Lovart\",\"description\":\"Verwandle dein Briefing in wenigen Minuten in markengerechte Visuals.\",\"buttons\":[{\"text\":\"Kostenlos starten\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "KI-Google-Shopping-Feed-Bildgenerator: Erstelle konforme Produktfotos | Lovart",
+      "description": "Generate high-CTR Google Shopping feed images. Auto-remove backgrounds, upscale to 4K, and create lifestyle product photography with Lovart AI Design Agent.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "alt": "Remove Background"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "The E-commerce Visual Toolkit",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Hintergrund entfernen",
+          "description": "Das unverzichtbare Tool für Google Shopping. Isolieren Sie Ihr Produkt mit KI-Präzision, um die strenge 'weißer Hintergrund'-Richtlinie ohne manuelles Freistellen zu erfüllen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "Hintergrund entfernen"
+          }
+        },
+        {
+          "title": "Nano Banana Pro",
+          "description": "Generieren Sie hyperrealistische Produktinszenierungen. Beschreiben Sie eine Szene (z. B. 'gemütliches Wohnzimmer') und Lovart integriert Ihr Produkt mit perfekter Beleuchtung und Schatten.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Nano Banana Pro"
+          }
+        },
+        {
+          "title": "KI-Entferner (Remover)",
+          "description": "Säubern Sie Ihre Aufnahmen. Entfernen Sie sofort Staub, Kratzer, Datumsstempel oder unerwünschten Text aus Ihren Quellbildern, damit sie professionell aussehen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "KI-Entferner (Remover)"
+          }
+        },
+        {
+          "title": "Auf 4K hochskalieren",
+          "description": "Erfüllen Sie Pixelanforderungen. Verwandeln Sie kleine Webbilder in High-Definition-Assets, die Googles Qualitätsprüfungen bestehen und auf Retina-Displays großartig aussehen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Auf 4K hochskalieren"
+          }
+        },
+        {
+          "title": "Elemente bearbeiten",
+          "description": "Passen Sie die Komposition an. Bewegen Sie Ihr Produkt in die Mitte, ändern Sie die Größe, damit es 85% des Rahmens einnimmt, oder drehen Sie es direkt auf der Leinwand für einen besseren Winkel.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Elemente bearbeiten"
+          }
+        },
+        {
+          "title": "Mockup-Generator",
+          "description": "Verkaufen Sie digitale Güter oder Designs? Wenden Sie Ihr Kunstwerk sofort auf T-Shirts, Tassen oder Schachteln an, um feed-bereite Produkt-Mockups zu erstellen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Mockup-Generator"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Alle Funktionen in einem Agenten",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Hintergrund entfernen",
+          "icon": "chat",
+          "content": {
+            "title": "Hintergrund entfernen",
+            "description": "Das unverzichtbare Tool für Google Shopping. Isolieren Sie Ihr Produkt mit KI-Präzision, um die strenge 'weißer Hintergrund'-Richtlinie ohne manuelles Freistellen zu erfüllen.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "Hintergrund entfernen"
+            }
+          }
+        },
+        {
+          "label": "Nano Banana Pro",
+          "icon": "image",
+          "content": {
+            "title": "Nano Banana Pro",
+            "description": "Generieren Sie hyperrealistische Produktinszenierungen. Beschreiben Sie eine Szene (z. B. 'gemütliches Wohnzimmer') und Lovart integriert Ihr Produkt mit perfekter Beleuchtung und Schatten.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Nano Banana Pro"
+            }
+          }
+        },
+        {
+          "label": "KI-Entferner (Remover)",
+          "icon": "flask",
+          "content": {
+            "title": "KI-Entferner (Remover)",
+            "description": "Säubern Sie Ihre Aufnahmen. Entfernen Sie sofort Staub, Kratzer, Datumsstempel oder unerwünschten Text aus Ihren Quellbildern, damit sie professionell aussehen.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "KI-Entferner (Remover)"
+            }
+          }
+        },
+        {
+          "label": "Auf 4K hochskalieren",
+          "icon": "brand",
+          "content": {
+            "title": "Auf 4K hochskalieren",
+            "description": "Erfüllen Sie Pixelanforderungen. Verwandeln Sie kleine Webbilder in High-Definition-Assets, die Googles Qualitätsprüfungen bestehen und auf Retina-Displays großartig aussehen.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Auf 4K hochskalieren"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Zwei Dinge, die besonders gut gelingen",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Elemente bearbeiten",
+          "description": "Passen Sie die Komposition an. Bewegen Sie Ihr Produkt in die Mitte, ändern Sie die Größe, damit es 85% des Rahmens einnimmt, oder drehen Sie es direkt auf der Leinwand für einen besseren Winkel.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Elemente bearbeiten"
+          }
+        },
+        {
+          "title": "Mockup-Generator",
+          "description": "Verkaufen Sie digitale Güter oder Designs? Wenden Sie Ihr Kunstwerk sofort auf T-Shirts, Tassen oder Schachteln an, um feed-bereite Produkt-Mockups zu erstellen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Mockup-Generator"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "So funktioniert es im Detail",
+      "items": [
+        {
+          "title": "Starte dein AI Google Shopping Feed Image Generator: Create Compliant Product Photos-Projekt",
+          "description": "Beschreibe das gewünschte Ergebnis und füge Referenzen hinzu."
+        },
+        {
+          "title": "Mit dem Agenten iterieren",
+          "description": "Details anpassen und Varianten auf derselben Canvas erkunden.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Steigern Sie Ihre Google Shopping CTR. KI-Produktfotografie-Agent.",
+      "description": "Hören Sie auf, abgelehnte Feeds zu riskieren. Der KI-Design-Agent von Lovart hilft E-Commerce-Verkäufern, konforme, hochkonvertierende Produktbilder sofort zu erstellen. Generieren Sie rein weiße Hintergründe für Hauptbilder und atemberaubende Lifestyle-Aufnahmen für Sekundärbilder – ganz ohne Studio.",
+      "input_placeholder": "Z. B. 'Minimalistische Hautpflegeflasche auf Marmor-Podest, weiches Sonnenlicht, 4k Realismus'",
+      "prompts": [
+        {
+          "label": "Konformes Hauptbild",
+          "prompt": "Running shoe on pure white background, studio lighting, soft natural drop shadow"
+        },
+        {
+          "label": "Lifestyle-Kontext",
+          "prompt": "Luxury perfume bottle on a wooden table with blurred nature background, golden hour light"
+        },
+        {
+          "label": "Tech Flat Lay",
+          "prompt": "Tech gadget flat lay on concrete surface, high contrast, tech accessories around"
+        },
+        {
+          "label": "Kreativer Hero Shot",
+          "prompt": "Organic juice bottle splash photography, water droplets, fresh fruits in background"
+        }
+      ],
+      "tip": "Tipp: Verwenden Sie 'Hintergrund entfernen', um sofort die Anforderungen des Google Merchant Center für weiße Hintergründe zu erfüllen, und dann 'Upscale' auf 4K für gestochen scharfen Zoom.",
+      "cta": {
+        "text": "Produktbilder generieren"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Optimieren Sie Ihren Feed in 3 Schritten",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Konformität sicherstellen",
+          "description": "Google hasst überladene Hintergründe. Laden Sie Ihr rohes Produktfoto hoch und nutzen Sie 'Hintergrund entfernen', um mit einem Klick einen richtlinienkonformen weißen Hintergrund zu erhalten."
+        },
+        {
+          "step": 2,
+          "title": "Auflösung steigern",
+          "description": "Lassen Sie nicht zu, dass verschwommene Pixel Ihre Verkäufe töten. Nutzen Sie 'Upscale', um niedrigauflösende Lieferantenfotos in gestochen scharfe 2K- oder 4K-Assets zu verwandeln, in die Kunden hineinzoomen können."
+        },
+        {
+          "step": 3,
+          "title": "Verlangen wecken",
+          "description": "Weiße Hintergründe informieren, aber Lifestyle-Bilder verkaufen. Nutzen Sie Nano Banana Pro, um Ihr Produkt sofort in einer realistischen Küche, einem Büro oder einer Außenumgebung zu platzieren."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Google Shopping Feed Image Generator: Create Compliant Product Photos: Lovart im Vergleich zu üblichen Workflows",
+      "headers": [
+        "Anforderung",
+        "Generisches Tool",
+        "Manueller Workflow",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Starte dein AI Google Shopping Feed Image Generator: Create Compliant Product Photos-Projekt",
+          "values": [
+            "Ein Prompt",
+            "Manuelles Briefing",
+            "Briefing-gesteuertes Reasoning"
+          ]
+        },
+        {
+          "feature": "Zeit bis zum ersten Ergebnis",
+          "values": [
+            "Minuten",
+            "Tage",
+            "Minuten"
+          ]
+        },
+        {
+          "feature": "Bearbeitung nach der Generierung",
+          "values": [
+            "Begrenzt",
+            "Korrekturschleifen",
+            "Touch / Text / Elemente"
+          ]
+        },
+        {
+          "feature": "Markenkonform bleiben",
+          "values": [
+            "Manuell",
+            "Manuell",
+            "Brand-Kit-fähig"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Wofür sich AI Google Shopping Feed Image Generator: Create Compliant Product Photos eignet",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Schneller starten",
+          "description": "Vom Briefing zu AI Google Shopping Feed Image Generator: Create Compliant Product Photos-Assets in einer einzigen Session."
+        },
+        {
+          "icon": "brand",
+          "title": "Konsistent bleiben",
+          "description": "Das Brand Kit hält jedes Asset einheitlich."
+        },
+        {
+          "icon": "refresh",
+          "title": "Schnell iterieren",
+          "description": "Details bearbeiten, ohne das Projekt neu zu starten."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "Ich habe früher 50 $ pro Foto für Lifestyle-Aufnahmen bezahlt. Jetzt nutze ich Lovarts Nano Banana Pro, um sie zu generieren. Meine CTR bei Google Shopping ist um 35% gestiegen.",
+          "author": "James T.",
+          "role": "Amazon FBA-Verkäufer"
+        },
+        {
+          "quote": "Das 'Hintergrund entfernen'-Tool ist makellos. Es handhabt Haare und transparente Glasflaschen besser als Photoshop. Hat mir Stunden beim Freistellen gespart.",
+          "author": "Linda W.",
+          "role": "Shopify-Shop-Inhaberin"
+        },
+        {
+          "quote": "Upscaling ist ein Game Changer. Ich nehme niedrigauflösende Bilder von Lieferanten, lasse sie durch Lovart laufen, und sie sehen aus wie Premium-Markenfotos.",
+          "author": "Chen Y.",
+          "role": "Dropshipper"
+        }
+      ],
+      "title": "Verkäufer skalieren mit Lovart"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Wähle den passenden Plan für dein Team",
+      "description": "Kostenlos starten. Upgraden, sobald die Arbeit zum Kunden geht."
+    },
+    {
+      "type": "faq",
+      "title": "Häufig gestellte Fragen",
+      "items": [
+        {
+          "question": "Werden diese Bilder vom Google Merchant Center akzeptiert?",
+          "answer": "Ja. Lovart ermöglicht es Ihnen, Bilder mit rein weißem Hintergrund (Hex #FFFFFF) und hoher Auflösung zu erstellen, was die Schlüsselanforderungen für die Genehmigung des Google Shopping Feeds sind."
+        },
+        {
+          "question": "Kann ich Lovart verwenden, um bestehende Produktfotos zu verbessern?",
+          "answer": "Absolut. Laden Sie Ihr Foto hoch, verwenden Sie 'Remover', um Defekte zu beseitigen, 'Upscale' zur Qualitätsverbesserung und 'Hintergrund entfernen' oder 'Elemente bearbeiten', um die Komposition zu korrigieren."
+        },
+        {
+          "question": "Muss ich mein physisches Produkt zu Ihnen schicken?",
+          "answer": "Nein. Lovart ist ein KI-Design-Agent. Sie laden einfach ein Foto Ihres Produkts hoch (selbst ein Handyfoto funktioniert), und unsere KI verbessert es oder platziert es digital in neuen Umgebungen."
+        },
+        {
+          "question": "Was ist die beste Auflösung für E-Commerce?",
+          "answer": "Google empfiehlt mindestens 1000x1000 Pixel. Mit Lovart können Sie Bilder in 2K (2048px) und 4K (4096px) generieren oder hochskalieren, um sicherzustellen, dass Ihre Produkte auf allen Geräten scharf aussehen."
+        },
+        {
+          "question": "Kann ich saisonale Variationen meiner Produktbilder erstellen?",
+          "answer": "Ja! Mit Nano Banana Pro können Sie Ihr Standardprodukt nehmen und Umgebungen wie 'Weihnachtskamin' oder 'Sommerstrand' prompten, um in Sekunden saisonale Anzeigen-Creatives zu erstellen."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Starte deine Designs mit Lovart",
+      "description": "Verwandle dein Briefing in wenigen Minuten in markengerechte Visuals.",
+      "buttons": [
+        {
+          "text": "Kostenlos starten",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

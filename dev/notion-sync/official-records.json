@@ -1,0 +1,84 @@
+{
+  "version": "2026-06-07",
+  "command_center_url": "https://app.notion.com/p/378fc0c71bd581798f67dc2f306257d7",
+  "status": "formal_databases_created",
+  "principle": "Formal databases are the working system. Backfill Queue is only a temporary intake queue.",
+  "created_counts": {
+    "Areas": 8,
+    "Projects": 4,
+    "Content Pipeline": 6,
+    "Resources": 9,
+    "Automations": 7,
+    "Assets": 1,
+    "Reports/Insights": 1,
+    "Linked Views": 6
+  },
+  "views": [
+    "Areas Overview",
+    "Active Projects",
+    "Content Pipeline Board",
+    "Automation Board",
+    "Current Resources",
+    "Reports And Audits"
+  ],
+  "formal_records": {
+    "Areas": [
+      "GEO Operations",
+      "Content Production",
+      "Automation",
+      "Insights",
+      "Engineering",
+      "Agent System",
+      "Quality",
+      "Knowledge System"
+    ],
+    "Projects": [
+      "Lovart GEO Automation",
+      "Lovart Blog Pipeline",
+      "Sanity 内容管道",
+      "Features 页面 composite-v2 生产"
+    ],
+    "Content Pipeline": [
+      "Lovart Blog Pipeline Index",
+      "Tools 正式源 composite-v2",
+      "Features 多语言缺口补齐",
+      "Lovart 内容日历与关键词布局策略",
+      "职业工作流内容规划",
+      "Lovart 博客插图生产项目"
+    ],
+    "Resources": [
+      "Lovart GEO 自动化文档中枢",
+      "LifeOS/PARA 云端迁移实施方案",
+      "Sanity 内容管道规则",
+      "Lovart Agent 工作流规则",
+      "Refresh Page 组件清单",
+      "Legacy 到 composite-v2 迁移说明",
+      "情景与组件组合菜谱",
+      "Skills 技能库镜像",
+      "Trident 脚本 Harness 入口"
+    ],
+    "Automations": [
+      "Tools Pull",
+      "内容健康检查",
+      "SEO 周报",
+      "SEO 月报",
+      "Sentinel 舆情日报",
+      "Tools production 到本地同步",
+      "Lovart Content Pipeline v2.0"
+    ],
+    "Assets": [
+      "Lovart 博客插图 Prompt 清单"
+    ],
+    "Reports/Insights": [
+      "Quality Audits Index"
+    ]
+  },
+  "sync_policy_revision": "2026-06-08 — 从 index_only 改为 full_mirror；现有正式记录均需补全文 body。",
+  "next_steps": [
+    "按 sync-scope.json 执行 K1→S1→H1→R1→R3（P0 全文镜像）。",
+    "为每条正式记录更新 Notion 页 body + Content Hash + Body Synced。",
+    "清空 Backfill Queue 重复项；backfill-queue.csv 回填 notion_id。",
+    "建 lovart-notion-full-mirror-nightly Automation。",
+    "本地稳定后执行 cutover_gate，切换 Notion 为主库。"
+  ]
+}

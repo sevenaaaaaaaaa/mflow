@@ -1,0 +1,388 @@
+{
+  "_id": "features-touch-edit-ai-ja",
+  "reflowSourceId": "features-touch-edit-ai-ja",
+  "slug": "touch-edit-ai",
+  "language": "ja",
+  "category": "feature",
+  "title": "タッチ編集：AIオブジェクト編集＆生成塗りつぶしツール｜Lovart",
+  "description": "Edit images instantly with Lovart's Touch Edit. Click to select objects without masking and use AI to replace, modify, or remove elements using simple text prompts.",
+  "seo": {
+    "description": "Lovartのタッチ編集で画像を瞬時に編集。マスキング不要でオブジェクトをクリック選択し、AIがテキスト指示に応じて要素を置換・修正・削除します。",
+    "keywords": [
+      "AI image editor",
+      "touch edit",
+      "generative fill",
+      "object replacement",
+      "AI inpainting",
+      "photo editing AI",
+      "remove object AI",
+      "Lovart features"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Semantic Recognition",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"タッチ編集：AIオブジェクト編集＆生成塗りつぶしツール｜Lovart\", \"description\": \"Edit images instantly with Lovart's Touch Edit. Click to select objects without masking and use AI to replace, modify, or remove elements using simple text prompts.\", \"url\": \"https://www.lovart.ai/features/touch-edit-ai\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Touch Editは従来の選択ツールとどう違いますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Touch EditはAIセマンティックセグメンテーションを使用して、クリックしたオブジェクトを「理解」します。色のコントラストに基づいてピクセルを選択する投げ縄ツールとは異なり、Touch Editはエッジが複雑であっても、オブジェクト全体（猫、車など）の構造を識別します。\"}}, {\"@type\": \"Question\", \"name\": \"アップロードした自分の写真にTouch Editを使用できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい！Touch Editは、Lovartによって生成されたものでも、デバイスからアップロードされたものでも、キャンバス上のあらゆる画像で機能します。商品写真、個人的なスナップショット、ストック画像を編集できます。\"}}, {\"@type\": \"Question\", \"name\": \"Touch Editは照明や影を自動的に処理しますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"もちろんです。Lovartの生成AIは、シーンの照明方向、色温度、遠近感を分析し、修正または追加された要素が写真のようにリアルに溶け込むようにします。\"}}, {\"@type\": \"Question\", \"name\": \"AIが画像の誤った部分を選択した場合はどうなりますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovartのマークモードは非常に正確ですが、複数回クリックして領域を拡張したり、ネガティブプロンプトを使用して特定の部分を除外したりすることで、選択を絞り込むことができます。\"}}, {\"@type\": \"Question\", \"name\": \"Touch Editは無料プランに含まれていますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Touch EditはLovartプラットフォームの中核機能です。基本的な使用はすべての人に提供されますが、高解像度処理と無制限の編集はProプランユーザー向けに最適化されています。\"}}]}}"
+    },
+    "title": "タッチ編集：AIオブジェクト編集＆生成塗りつぶしツール｜Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"タッチ編集：AIオブジェクト編集＆生成塗りつぶしツール｜Lovart\",\"description\":\"Edit images instantly with Lovart's Touch Edit. Click to select objects without masking and use AI to replace, modify, or remove elements using simple text prompts.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Semantic Recognition\"}},{\"type\":\"bento-6\",\"title\":\"Why Touch Edit Changes the Game\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"セマンティック認識\",\"description\":\"Lovartは単にピクセルを見るのではなく、オブジェクトを見ます。線を引かなくても、「髪」と「帽子」の違いを理解します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"セマンティック認識\"}},{\"title\":\"文脈認識インペインティング\",\"description\":\"編集は貼り付けられるのではなく、シーンの中に生成されます。照明、影、反射は、新しいオブジェクトに合わせて自動的に更新されます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"文脈認識インペインティング\"}},{\"title\":\"マスキング不要\",\"description\":\"ペンツールに別れを告げましょう。クリック1つで正確なオブジェクト選択が即座に行われ、手作業の時間を大幅に節約できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"マスキング不要\"}},{\"title\":\"複数オブジェクト編集\",\"description\":\"複数のアイテムを一度に選択（Shift + クリック）して、すべての花の色を変えたり、複数の背景人物を削除したりするなど、一括変更を適用できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"複数オブジェクト編集\"}},{\"title\":\"クイック編集の統合\",\"description\":\"オブジェクトを選択した後に「Tab」キーを押すと、色の変更、サイズ変更、バリエーション生成などの一般的なAI調整ツールに即座にアクセスできます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"クイック編集の統合\"}},{\"title\":\"非破壊ワークフロー\",\"description\":\"恐れずに実験しましょう。すべてのTouch Editは新しいバリエーションとして生成されるため、いつでも元に戻したり、オプションを並べて比較したりできます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"非破壊ワークフロー\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"セマンティック認識\",\"icon\":\"chat\",\"content\":{\"title\":\"セマンティック認識\",\"description\":\"Lovartは単にピクセルを見るのではなく、オブジェクトを見ます。線を引かなくても、「髪」と「帽子」の違いを理解します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"セマンティック認識\"}}},{\"label\":\"文脈認識インペインティング\",\"icon\":\"image\",\"content\":{\"title\":\"文脈認識インペインティング\",\"description\":\"編集は貼り付けられるのではなく、シーンの中に生成されます。照明、影、反射は、新しいオブジェクトに合わせて自動的に更新されます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"文脈認識インペインティング\"}}},{\"label\":\"マスキング不要\",\"icon\":\"flask\",\"content\":{\"title\":\"マスキング不要\",\"description\":\"ペンツールに別れを告げましょう。クリック1つで正確なオブジェクト選択が即座に行われ、手作業の時間を大幅に節約できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"マスキング不要\"}}},{\"label\":\"複数オブジェクト編集\",\"icon\":\"brand\",\"content\":{\"title\":\"複数オブジェクト編集\",\"description\":\"複数のアイテムを一度に選択（Shift + クリック）して、すべての花の色を変えたり、複数の背景人物を削除したりするなど、一括変更を適用できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"複数オブジェクト編集\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"クイック編集の統合\",\"description\":\"オブジェクトを選択した後に「Tab」キーを押すと、色の変更、サイズ変更、バリエーション生成などの一般的なAI調整ツールに即座にアクセスできます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"クイック編集の統合\"}},{\"title\":\"非破壊ワークフロー\",\"description\":\"恐れずに実験しましょう。すべてのTouch Editは新しいバリエーションとして生成されるため、いつでも元に戻したり、オプションを並べて比較したりできます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"非破壊ワークフロー\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"Touch Edit: AI Object Editing & Generative Fill Tool プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"選択しないで。タッチするだけ。AI編集の未来、Touch Edit。\",\"description\":\"投げ縄ツールやレイヤーマスクに時間を費やすのはやめましょう。LovartのTouch Editなら、人物、背景、製品など、あらゆるオブジェクトをクリックするだけで、AIがあなたの意図を正確に理解します。自然言語で要素を即座に修正、置換、削除。これは単なる編集ではなく、キャンバスとの対話です。\",\"input_placeholder\":\"例：「この赤い車をビンテージの青いコンバーチブルに変えて」\",\"prompts\":[{\"label\":\"ファッションの変更\",\"prompt\":\"Change the model's outfit to a summer floral dress, maintaining the pose\"},{\"label\":\"シーンの変更\",\"prompt\":\"Replace the background city with a lush forest at golden hour\"},{\"label\":\"素材の変更\",\"prompt\":\"Turn this wooden chair into a modern glass design\"},{\"label\":\"オブジェクトの削除\",\"prompt\":\"Remove this person from the crowd and fill the space naturally\"}],\"tip\":\"プロのヒント：「マークモード（Mark Mode）」（ショートカット：M）を使用して、クリックする前にAIが認識したセグメントを可視化しましょう。\",\"cta\":{\"text\":\"Touch Editを開始\"}},{\"type\":\"workflow-horizontal\",\"title\":\"シンプルな3ステップであらゆるものを編集\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"ポイント＆クリック\",\"description\":\"Touch Editモードを有効にします。要素の上にカーソルを置くと、LovartのセマンティックAIがオブジェクト、レイヤー、構造を即座にハイライト表示します。クリックするだけでターゲットをロック。マスキングは不要です。\"},{\"step\":2,\"title\":\"変更内容を記述\",\"description\":\"変更したい内容を平易な言葉でAIに伝えてください。「大きくして」「色を変えて」「猫に置き換えて」など。AIは選択範囲の文脈を理解します。\"},{\"step\":3,\"title\":\"シームレスな融合\",\"description\":\"AIがピクセルを再構築する様子をご覧ください。編集された要素は、元の画像の既存の照明、影、遠近感と完璧に調和します。\"}]},{\"type\":\"comparison-table\",\"title\":\"Touch Edit: AI Object Editing & Generative Fill Tool：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Touch Edit: AI Object Editing & Generative Fill Tool プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Touch Edit: AI Object Editing & Generative Fill Tool が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから Touch Edit: AI Object Editing & Generative Fill Tool の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"以前は色を変えるために商品写真のマスキングに何時間も費やしていました。Touch Editを使えば、シャツをクリックして「赤にして」と言うだけです。まるで魔法です。\",\"author\":\"Alex R.\",\"role\":\"Eコマースマネージャー\"},{\"quote\":\"セマンティック認識能力は驚くほど優れています。「ビンテージランプ」のような複雑なオブジェクトを即座に識別し、シーン構成を信じられないほど高速化します。\",\"author\":\"Jessica M.\",\"role\":\"アートディレクター\"},{\"quote\":\"Touch Editは、私の「ほぼ完璧」なAI生成物をまさに私が望んでいたものに変えてくれました。クリック1つで奇妙な手や目を修正できるのは本当に救世主です。\",\"author\":\"David K.\",\"role\":\"コンテンツクリエイター\"}],\"title\":\"Touch Editで時間を節約したデザイナーの声\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"Touch Editは従来の選択ツールとどう違いますか？\",\"answer\":\"Touch EditはAIセマンティックセグメンテーションを使用して、クリックしたオブジェクトを「理解」します。色のコントラストに基づいてピクセルを選択する投げ縄ツールとは異なり、Touch Editはエッジが複雑であっても、オブジェクト全体（猫、車など）の構造を識別します。\"},{\"question\":\"アップロードした自分の写真にTouch Editを使用できますか？\",\"answer\":\"はい！Touch Editは、Lovartによって生成されたものでも、デバイスからアップロードされたものでも、キャンバス上のあらゆる画像で機能します。商品写真、個人的なスナップショット、ストック画像を編集できます。\"},{\"question\":\"Touch Editは照明や影を自動的に処理しますか？\",\"answer\":\"もちろんです。Lovartの生成AIは、シーンの照明方向、色温度、遠近感を分析し、修正または追加された要素が写真のようにリアルに溶け込むようにします。\"},{\"question\":\"AIが画像の誤った部分を選択した場合はどうなりますか？\",\"answer\":\"Lovartのマークモードは非常に正確ですが、複数回クリックして領域を拡張したり、ネガティブプロンプトを使用して特定の部分を除外したりすることで、選択を絞り込むことができます。\"},{\"question\":\"Touch Editは無料プランに含まれていますか？\",\"answer\":\"Touch EditはLovartプラットフォームの中核機能です。基本的な使用はすべての人に提供されますが、高解像度処理と無制限の編集はProプランユーザー向けに最適化されています。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "タッチ編集：AIオブジェクト編集＆生成塗りつぶしツール｜Lovart",
+      "description": "Edit images instantly with Lovart's Touch Edit. Click to select objects without masking and use AI to replace, modify, or remove elements using simple text prompts.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Semantic Recognition"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Why Touch Edit Changes the Game",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "セマンティック認識",
+          "description": "Lovartは単にピクセルを見るのではなく、オブジェクトを見ます。線を引かなくても、「髪」と「帽子」の違いを理解します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "セマンティック認識"
+          }
+        },
+        {
+          "title": "文脈認識インペインティング",
+          "description": "編集は貼り付けられるのではなく、シーンの中に生成されます。照明、影、反射は、新しいオブジェクトに合わせて自動的に更新されます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "文脈認識インペインティング"
+          }
+        },
+        {
+          "title": "マスキング不要",
+          "description": "ペンツールに別れを告げましょう。クリック1つで正確なオブジェクト選択が即座に行われ、手作業の時間を大幅に節約できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "マスキング不要"
+          }
+        },
+        {
+          "title": "複数オブジェクト編集",
+          "description": "複数のアイテムを一度に選択（Shift + クリック）して、すべての花の色を変えたり、複数の背景人物を削除したりするなど、一括変更を適用できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "複数オブジェクト編集"
+          }
+        },
+        {
+          "title": "クイック編集の統合",
+          "description": "オブジェクトを選択した後に「Tab」キーを押すと、色の変更、サイズ変更、バリエーション生成などの一般的なAI調整ツールに即座にアクセスできます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "クイック編集の統合"
+          }
+        },
+        {
+          "title": "非破壊ワークフロー",
+          "description": "恐れずに実験しましょう。すべてのTouch Editは新しいバリエーションとして生成されるため、いつでも元に戻したり、オプションを並べて比較したりできます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "非破壊ワークフロー"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "セマンティック認識",
+          "icon": "chat",
+          "content": {
+            "title": "セマンティック認識",
+            "description": "Lovartは単にピクセルを見るのではなく、オブジェクトを見ます。線を引かなくても、「髪」と「帽子」の違いを理解します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "セマンティック認識"
+            }
+          }
+        },
+        {
+          "label": "文脈認識インペインティング",
+          "icon": "image",
+          "content": {
+            "title": "文脈認識インペインティング",
+            "description": "編集は貼り付けられるのではなく、シーンの中に生成されます。照明、影、反射は、新しいオブジェクトに合わせて自動的に更新されます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "文脈認識インペインティング"
+            }
+          }
+        },
+        {
+          "label": "マスキング不要",
+          "icon": "flask",
+          "content": {
+            "title": "マスキング不要",
+            "description": "ペンツールに別れを告げましょう。クリック1つで正確なオブジェクト選択が即座に行われ、手作業の時間を大幅に節約できます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "マスキング不要"
+            }
+          }
+        },
+        {
+          "label": "複数オブジェクト編集",
+          "icon": "brand",
+          "content": {
+            "title": "複数オブジェクト編集",
+            "description": "複数のアイテムを一度に選択（Shift + クリック）して、すべての花の色を変えたり、複数の背景人物を削除したりするなど、一括変更を適用できます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "複数オブジェクト編集"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "クイック編集の統合",
+          "description": "オブジェクトを選択した後に「Tab」キーを押すと、色の変更、サイズ変更、バリエーション生成などの一般的なAI調整ツールに即座にアクセスできます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "クイック編集の統合"
+          }
+        },
+        {
+          "title": "非破壊ワークフロー",
+          "description": "恐れずに実験しましょう。すべてのTouch Editは新しいバリエーションとして生成されるため、いつでも元に戻したり、オプションを並べて比較したりできます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "非破壊ワークフロー"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "Touch Edit: AI Object Editing & Generative Fill Tool プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "選択しないで。タッチするだけ。AI編集の未来、Touch Edit。",
+      "description": "投げ縄ツールやレイヤーマスクに時間を費やすのはやめましょう。LovartのTouch Editなら、人物、背景、製品など、あらゆるオブジェクトをクリックするだけで、AIがあなたの意図を正確に理解します。自然言語で要素を即座に修正、置換、削除。これは単なる編集ではなく、キャンバスとの対話です。",
+      "input_placeholder": "例：「この赤い車をビンテージの青いコンバーチブルに変えて」",
+      "prompts": [
+        {
+          "label": "ファッションの変更",
+          "prompt": "Change the model's outfit to a summer floral dress, maintaining the pose"
+        },
+        {
+          "label": "シーンの変更",
+          "prompt": "Replace the background city with a lush forest at golden hour"
+        },
+        {
+          "label": "素材の変更",
+          "prompt": "Turn this wooden chair into a modern glass design"
+        },
+        {
+          "label": "オブジェクトの削除",
+          "prompt": "Remove this person from the crowd and fill the space naturally"
+        }
+      ],
+      "tip": "プロのヒント：「マークモード（Mark Mode）」（ショートカット：M）を使用して、クリックする前にAIが認識したセグメントを可視化しましょう。",
+      "cta": {
+        "text": "Touch Editを開始"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "シンプルな3ステップであらゆるものを編集",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "ポイント＆クリック",
+          "description": "Touch Editモードを有効にします。要素の上にカーソルを置くと、LovartのセマンティックAIがオブジェクト、レイヤー、構造を即座にハイライト表示します。クリックするだけでターゲットをロック。マスキングは不要です。"
+        },
+        {
+          "step": 2,
+          "title": "変更内容を記述",
+          "description": "変更したい内容を平易な言葉でAIに伝えてください。「大きくして」「色を変えて」「猫に置き換えて」など。AIは選択範囲の文脈を理解します。"
+        },
+        {
+          "step": 3,
+          "title": "シームレスな融合",
+          "description": "AIがピクセルを再構築する様子をご覧ください。編集された要素は、元の画像の既存の照明、影、遠近感と完璧に調和します。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Touch Edit: AI Object Editing & Generative Fill Tool：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Touch Edit: AI Object Editing & Generative Fill Tool プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Touch Edit: AI Object Editing & Generative Fill Tool が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから Touch Edit: AI Object Editing & Generative Fill Tool の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "以前は色を変えるために商品写真のマスキングに何時間も費やしていました。Touch Editを使えば、シャツをクリックして「赤にして」と言うだけです。まるで魔法です。",
+          "author": "Alex R.",
+          "role": "Eコマースマネージャー"
+        },
+        {
+          "quote": "セマンティック認識能力は驚くほど優れています。「ビンテージランプ」のような複雑なオブジェクトを即座に識別し、シーン構成を信じられないほど高速化します。",
+          "author": "Jessica M.",
+          "role": "アートディレクター"
+        },
+        {
+          "quote": "Touch Editは、私の「ほぼ完璧」なAI生成物をまさに私が望んでいたものに変えてくれました。クリック1つで奇妙な手や目を修正できるのは本当に救世主です。",
+          "author": "David K.",
+          "role": "コンテンツクリエイター"
+        }
+      ],
+      "title": "Touch Editで時間を節約したデザイナーの声"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "Touch Editは従来の選択ツールとどう違いますか？",
+          "answer": "Touch EditはAIセマンティックセグメンテーションを使用して、クリックしたオブジェクトを「理解」します。色のコントラストに基づいてピクセルを選択する投げ縄ツールとは異なり、Touch Editはエッジが複雑であっても、オブジェクト全体（猫、車など）の構造を識別します。"
+        },
+        {
+          "question": "アップロードした自分の写真にTouch Editを使用できますか？",
+          "answer": "はい！Touch Editは、Lovartによって生成されたものでも、デバイスからアップロードされたものでも、キャンバス上のあらゆる画像で機能します。商品写真、個人的なスナップショット、ストック画像を編集できます。"
+        },
+        {
+          "question": "Touch Editは照明や影を自動的に処理しますか？",
+          "answer": "もちろんです。Lovartの生成AIは、シーンの照明方向、色温度、遠近感を分析し、修正または追加された要素が写真のようにリアルに溶け込むようにします。"
+        },
+        {
+          "question": "AIが画像の誤った部分を選択した場合はどうなりますか？",
+          "answer": "Lovartのマークモードは非常に正確ですが、複数回クリックして領域を拡張したり、ネガティブプロンプトを使用して特定の部分を除外したりすることで、選択を絞り込むことができます。"
+        },
+        {
+          "question": "Touch Editは無料プランに含まれていますか？",
+          "answer": "Touch EditはLovartプラットフォームの中核機能です。基本的な使用はすべての人に提供されますが、高解像度処理と無制限の編集はProプランユーザー向けに最適化されています。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

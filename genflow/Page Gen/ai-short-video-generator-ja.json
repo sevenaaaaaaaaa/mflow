@@ -1,0 +1,389 @@
+{
+  "_id": "features-ai-short-video-generator-ja",
+  "reflowSourceId": "features-ai-short-video-generator-ja",
+  "slug": "ai-short-video-generator",
+  "language": "ja",
+  "category": "feature",
+  "title": "Lovartで作るバズるショート動画",
+  "description": "Generate 4K AI short videos for TikTok, Reels, and Shorts. Use Kling 2.6, Gemini Veo 3, and Sora 2 to create viral content from text or images. No cameras needed.",
+  "seo": {
+    "description": "テキストや画像からTikTok、Reels、Shorts向けの4K AIショート動画を生成。Kling 2.6、Gemini Veo 3、Sora 2でバイラルコンテンツを制作。カメラ不要。",
+    "keywords": [
+      "AIショート動画生成ツール",
+      "テキストからショート動画へ",
+      "AIリール作成ツール",
+      "Kling AI",
+      "Gemini Veo 3",
+      "Sora 2",
+      "TikTok動画生成ツール",
+      "バイラルAI動画",
+      "縦型AI動画生成ツール"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Multi-Model Powerhouse",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovartで作るバズるショート動画\", \"description\": \"Generate 4K AI short videos for TikTok, Reels, and Shorts. Use Kling 2.6, Gemini Veo 3, and Sora 2 to create viral content from text or images. No cameras needed.\", \"url\": \"https://www.lovart.ai/features/ai-short-video-generator\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"TikTokやReels用の縦型動画を生成できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい！Lovartはアスペクト比の選択をサポートしています。生成設定で「9:16」を選択するだけで、TikTok、Instagram Reels、YouTube Shortsに最適な全画面の縦型動画を作成できます。\"}}, {\"@type\": \"Question\", \"name\": \"ショート動画に最適な動画モデルはどれですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"スタイルによります。Kling 2.6とSora 2はフォトリアリズムと複雑な動きに優れています。Gemini Veo 3は流動的で夢のようなビジュアルに最適です。Lovartではこれらすべてを試すことができます。\"}}, {\"@type\": \"Question\", \"name\": \"動画を4Kにするにはどうすればよいですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"動画を生成した後、上部ツールバーの「アップスケール（Upscale）」ボタンをクリックするだけです。LovartのAIが動画を処理し、解像度を4Kに高めながら、ディテールと鮮明さを向上させます。\"}}, {\"@type\": \"Question\", \"name\": \"自分の写真をアニメーション化できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"もちろんです。「Image-to-Video」機能を使用してください。画像を「開始フレーム」としてアップロードし、モデル（KlingやHailuoなど）を選択して、見たい動きをプロンプトで指示します。\"}}, {\"@type\": \"Question\", \"name\": \"作成した動画の所有権は自分にありますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。有料サブスクリプション（Starter、Basic、またはPro）をご利用の場合、生成した動画の完全な商用利用権をお持ちいただけます。つまり、ソーシャルプラットフォームで収益化することができます。\"}}]}}"
+    },
+    "title": "Lovartで作るバズるショート動画"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Lovartで作るバズるショート動画\",\"description\":\"Generate 4K AI short videos for TikTok, Reels, and Shorts. Use Kling 2.6, Gemini Veo 3, and Sora 2 to create viral content from text or images. No cameras needed.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Multi-Model Powerhouse\"}},{\"type\":\"bento-6\",\"title\":\"The All-in-One Studio for Short Video Creators\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"マルチモデル・パワーハウス\",\"description\":\"1つのサブスクリプションでKling 2.6、Sora 2、Veo 3、Hailuoにアクセス。モデルを瞬時に切り替えて、特定のニッチに最適なモーションを見つけましょう。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"マルチモデル・パワーハウス\"}},{\"title\":\"ネイティブ9:16生成\",\"description\":\"全画面の縦型動画を直接生成。トリミングなし、品質の損失なし。TikTok、Reels、Shortsにすぐに投稿できるコンテンツです。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"ネイティブ9:16生成\"}},{\"title\":\"4K動画アップスケーラー\",\"description\":\"AIで動画解像度を最大4Kまで引き上げます。テクスチャをシャープにし、ディテールを明確にして、無限スクロールの中で目立たせましょう。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"4K動画アップスケーラー\"}},{\"title\":\"精密なモーションコントロール\",\"description\":\"プロのようにカメラを監督しましょう。パン、チルト、ズーム、ロールを制御して、ショットにシネマティックなエネルギーを加え、視聴者の注意を誘導します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"精密なモーションコントロール\"}},{\"title\":\"シームレスループ\",\"description\":\"開始/終了フレーム制御を使用して、満足感のある無限ループ動画を作成。動く背景、ASMR、ビジュアライザーに最適です。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"シームレスループ\"}},{\"title\":\"商用利用権\",\"description\":\"コンテンツを所有しましょう。有料プランで生成された動画には完全な商用利用権が付帯しており、チャンネルやクライアントワークで収益化できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"商用利用権\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"マルチモデル・パワーハウス\",\"icon\":\"chat\",\"content\":{\"title\":\"マルチモデル・パワーハウス\",\"description\":\"1つのサブスクリプションでKling 2.6、Sora 2、Veo 3、Hailuoにアクセス。モデルを瞬時に切り替えて、特定のニッチに最適なモーションを見つけましょう。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"マルチモデル・パワーハウス\"}}},{\"label\":\"ネイティブ9:16生成\",\"icon\":\"image\",\"content\":{\"title\":\"ネイティブ9:16生成\",\"description\":\"全画面の縦型動画を直接生成。トリミングなし、品質の損失なし。TikTok、Reels、Shortsにすぐに投稿できるコンテンツです。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"ネイティブ9:16生成\"}}},{\"label\":\"4K動画アップスケーラー\",\"icon\":\"flask\",\"content\":{\"title\":\"4K動画アップスケーラー\",\"description\":\"AIで動画解像度を最大4Kまで引き上げます。テクスチャをシャープにし、ディテールを明確にして、無限スクロールの中で目立たせましょう。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"4K動画アップスケーラー\"}}},{\"label\":\"精密なモーションコントロール\",\"icon\":\"brand\",\"content\":{\"title\":\"精密なモーションコントロール\",\"description\":\"プロのようにカメラを監督しましょう。パン、チルト、ズーム、ロールを制御して、ショットにシネマティックなエネルギーを加え、視聴者の注意を誘導します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"精密なモーションコントロール\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"シームレスループ\",\"description\":\"開始/終了フレーム制御を使用して、満足感のある無限ループ動画を作成。動く背景、ASMR、ビジュアライザーに最適です。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"シームレスループ\"}},{\"title\":\"商用利用権\",\"description\":\"コンテンツを所有しましょう。有料プランで生成された動画には完全な商用利用権が付帯しており、チャンネルやクライアントワークで収益化できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"商用利用権\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"AI Short Video Generator: Create Viral Shorts & Reels プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"カメラなしでバイラルショート動画を作成。究極のAI動画生成ツール。\",\"description\":\"TikTok、Instagram Reels、YouTube Shortsを制覇しましょう。Lovartなら、Kling 2.6、Gemini Veo 3、Sora 2といった世界最高のAIモデルを使用して、美しい放送品質のショート動画を生成できます。テキストや画像を、完璧なモーションコントロールを備えた4K縦型動画に変えましょう。すべて1つのブラウザタブで完結します。\",\"input_placeholder\":\"例：「ネオンの雨の中で踊るサイバーパンクの少女、ハイエナジー、TikTokトレンド、9:16比率」\",\"prompts\":[{\"label\":\"グルメASMR\",\"prompt\":\"POV shot of a chef slicing a juicy steak, steam rising, hyper-realistic food porn style, 4k\"},{\"label\":\"ループ背景\",\"prompt\":\"Futuristic luxury car driving through a synthwave tunnel, looping background for lofi music\"},{\"label\":\"可愛いマスコット\",\"prompt\":\"Cute 3D fluffy cat reacting to a flying butterfly, Pixar style animation, bright lighting\"},{\"label\":\"旅行＆風景\",\"prompt\":\"Cinematic drone shot flying over a fantasy castle at sunset, epic establishing shot\"}],\"tip\":\"ヒント：Nano Bananaで生成したキャラクターで「Image-to-Video」を使用して、複数の動画間でインフルエンサーキャラクターの顔の一貫性を保ちましょう。\",\"cta\":{\"text\":\"ショート動画を生成\"}},{\"type\":\"workflow-horizontal\",\"title\":\"3つのステップでバイラル動画を作成\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"スターモデルを選択\",\"description\":\"あなたの雰囲気に合ったエンジンを選びましょう。リアルな人間の動きにはKling 2.6、流れるようなダイナミクスにはGemini Veo 3、クリエイティブなトランジションにはHailuo。もうモデル選びで迷うことはありません。\"},{\"step\":2,\"title\":\"アクションを監督\",\"description\":\"ランダムな動きで妥協しないでください。「モーションコントロール（Motion Control）」を使って、パン、チルト、ズームを指示。「開始」と「終了」フレームを設定して、ソーシャルメディアの維持率に最適なシームレスなループを作成しましょう。\"},{\"step\":3,\"title\":\"4K縦型にアップスケール\",\"description\":\"ぼやけたコンテンツの投稿はやめましょう。AI生成ショート動画を即座に4K解像度にアップスケールし、どのスマートフォンの画面でもプロフェッショナルに見える鮮明なディテールを確保します。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Short Video Generator: Create Viral Shorts & Reels：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"AI Short Video Generator: Create Viral Shorts & Reels プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"AI Short Video Generator: Create Viral Shorts & Reels が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから AI Short Video Generator: Create Viral Shorts & Reels の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"Lovartを使って3ヶ月で10万フォロワーのTikTokアカウントを構築しました。Klingモデルはあまりにもリアルな映像を生成するので、人々はAIだと信じないほどです。4Kアップスケールは必須です。\",\"author\":\"Leo Z.\",\"role\":\"顔出しなしチャンネルのクリエイター\"},{\"quote\":\"以前はBロールの作成に何日もかかっていました。今はLovartのVeo 3を使って、特定の製品背景を数分で生成しています。代理店の制作コストを数千ドル節約できました。\",\"author\":\"Sarah J.\",\"role\":\"ソーシャルメディアマネージャー\"},{\"quote\":\"モーションコントロール機能は比類がありません。ついにAIカメラを自分の望む場所に正確に指示できるようになりました。エンゲージメント率が急上昇しました。\",\"author\":\"Mike T.\",\"role\":\"ビジュアルアーティスト\"}],\"title\":\"Lovartでバイラルを生み出すクリエイターたち\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"TikTokやReels用の縦型動画を生成できますか？\",\"answer\":\"はい！Lovartはアスペクト比の選択をサポートしています。生成設定で「9:16」を選択するだけで、TikTok、Instagram Reels、YouTube Shortsに最適な全画面の縦型動画を作成できます。\"},{\"question\":\"ショート動画に最適な動画モデルはどれですか？\",\"answer\":\"スタイルによります。Kling 2.6とSora 2はフォトリアリズムと複雑な動きに優れています。Gemini Veo 3は流動的で夢のようなビジュアルに最適です。Lovartではこれらすべてを試すことができます。\"},{\"question\":\"動画を4Kにするにはどうすればよいですか？\",\"answer\":\"動画を生成した後、上部ツールバーの「アップスケール（Upscale）」ボタンをクリックするだけです。LovartのAIが動画を処理し、解像度を4Kに高めながら、ディテールと鮮明さを向上させます。\"},{\"question\":\"自分の写真をアニメーション化できますか？\",\"answer\":\"もちろんです。「Image-to-Video」機能を使用してください。画像を「開始フレーム」としてアップロードし、モデル（KlingやHailuoなど）を選択して、見たい動きをプロンプトで指示します。\"},{\"question\":\"作成した動画の所有権は自分にありますか？\",\"answer\":\"はい。有料サブスクリプション（Starter、Basic、またはPro）をご利用の場合、生成した動画の完全な商用利用権をお持ちいただけます。つまり、ソーシャルプラットフォームで収益化することができます。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Lovartで作るバズるショート動画",
+      "description": "Generate 4K AI short videos for TikTok, Reels, and Shorts. Use Kling 2.6, Gemini Veo 3, and Sora 2 to create viral content from text or images. No cameras needed.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Multi-Model Powerhouse"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "The All-in-One Studio for Short Video Creators",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "マルチモデル・パワーハウス",
+          "description": "1つのサブスクリプションでKling 2.6、Sora 2、Veo 3、Hailuoにアクセス。モデルを瞬時に切り替えて、特定のニッチに最適なモーションを見つけましょう。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "マルチモデル・パワーハウス"
+          }
+        },
+        {
+          "title": "ネイティブ9:16生成",
+          "description": "全画面の縦型動画を直接生成。トリミングなし、品質の損失なし。TikTok、Reels、Shortsにすぐに投稿できるコンテンツです。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "ネイティブ9:16生成"
+          }
+        },
+        {
+          "title": "4K動画アップスケーラー",
+          "description": "AIで動画解像度を最大4Kまで引き上げます。テクスチャをシャープにし、ディテールを明確にして、無限スクロールの中で目立たせましょう。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "4K動画アップスケーラー"
+          }
+        },
+        {
+          "title": "精密なモーションコントロール",
+          "description": "プロのようにカメラを監督しましょう。パン、チルト、ズーム、ロールを制御して、ショットにシネマティックなエネルギーを加え、視聴者の注意を誘導します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "精密なモーションコントロール"
+          }
+        },
+        {
+          "title": "シームレスループ",
+          "description": "開始/終了フレーム制御を使用して、満足感のある無限ループ動画を作成。動く背景、ASMR、ビジュアライザーに最適です。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "シームレスループ"
+          }
+        },
+        {
+          "title": "商用利用権",
+          "description": "コンテンツを所有しましょう。有料プランで生成された動画には完全な商用利用権が付帯しており、チャンネルやクライアントワークで収益化できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "商用利用権"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "マルチモデル・パワーハウス",
+          "icon": "chat",
+          "content": {
+            "title": "マルチモデル・パワーハウス",
+            "description": "1つのサブスクリプションでKling 2.6、Sora 2、Veo 3、Hailuoにアクセス。モデルを瞬時に切り替えて、特定のニッチに最適なモーションを見つけましょう。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "マルチモデル・パワーハウス"
+            }
+          }
+        },
+        {
+          "label": "ネイティブ9:16生成",
+          "icon": "image",
+          "content": {
+            "title": "ネイティブ9:16生成",
+            "description": "全画面の縦型動画を直接生成。トリミングなし、品質の損失なし。TikTok、Reels、Shortsにすぐに投稿できるコンテンツです。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "ネイティブ9:16生成"
+            }
+          }
+        },
+        {
+          "label": "4K動画アップスケーラー",
+          "icon": "flask",
+          "content": {
+            "title": "4K動画アップスケーラー",
+            "description": "AIで動画解像度を最大4Kまで引き上げます。テクスチャをシャープにし、ディテールを明確にして、無限スクロールの中で目立たせましょう。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "4K動画アップスケーラー"
+            }
+          }
+        },
+        {
+          "label": "精密なモーションコントロール",
+          "icon": "brand",
+          "content": {
+            "title": "精密なモーションコントロール",
+            "description": "プロのようにカメラを監督しましょう。パン、チルト、ズーム、ロールを制御して、ショットにシネマティックなエネルギーを加え、視聴者の注意を誘導します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "精密なモーションコントロール"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "シームレスループ",
+          "description": "開始/終了フレーム制御を使用して、満足感のある無限ループ動画を作成。動く背景、ASMR、ビジュアライザーに最適です。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "シームレスループ"
+          }
+        },
+        {
+          "title": "商用利用権",
+          "description": "コンテンツを所有しましょう。有料プランで生成された動画には完全な商用利用権が付帯しており、チャンネルやクライアントワークで収益化できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "商用利用権"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "AI Short Video Generator: Create Viral Shorts & Reels プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "カメラなしでバイラルショート動画を作成。究極のAI動画生成ツール。",
+      "description": "TikTok、Instagram Reels、YouTube Shortsを制覇しましょう。Lovartなら、Kling 2.6、Gemini Veo 3、Sora 2といった世界最高のAIモデルを使用して、美しい放送品質のショート動画を生成できます。テキストや画像を、完璧なモーションコントロールを備えた4K縦型動画に変えましょう。すべて1つのブラウザタブで完結します。",
+      "input_placeholder": "例：「ネオンの雨の中で踊るサイバーパンクの少女、ハイエナジー、TikTokトレンド、9:16比率」",
+      "prompts": [
+        {
+          "label": "グルメASMR",
+          "prompt": "POV shot of a chef slicing a juicy steak, steam rising, hyper-realistic food porn style, 4k"
+        },
+        {
+          "label": "ループ背景",
+          "prompt": "Futuristic luxury car driving through a synthwave tunnel, looping background for lofi music"
+        },
+        {
+          "label": "可愛いマスコット",
+          "prompt": "Cute 3D fluffy cat reacting to a flying butterfly, Pixar style animation, bright lighting"
+        },
+        {
+          "label": "旅行＆風景",
+          "prompt": "Cinematic drone shot flying over a fantasy castle at sunset, epic establishing shot"
+        }
+      ],
+      "tip": "ヒント：Nano Bananaで生成したキャラクターで「Image-to-Video」を使用して、複数の動画間でインフルエンサーキャラクターの顔の一貫性を保ちましょう。",
+      "cta": {
+        "text": "ショート動画を生成"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "3つのステップでバイラル動画を作成",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "スターモデルを選択",
+          "description": "あなたの雰囲気に合ったエンジンを選びましょう。リアルな人間の動きにはKling 2.6、流れるようなダイナミクスにはGemini Veo 3、クリエイティブなトランジションにはHailuo。もうモデル選びで迷うことはありません。"
+        },
+        {
+          "step": 2,
+          "title": "アクションを監督",
+          "description": "ランダムな動きで妥協しないでください。「モーションコントロール（Motion Control）」を使って、パン、チルト、ズームを指示。「開始」と「終了」フレームを設定して、ソーシャルメディアの維持率に最適なシームレスなループを作成しましょう。"
+        },
+        {
+          "step": 3,
+          "title": "4K縦型にアップスケール",
+          "description": "ぼやけたコンテンツの投稿はやめましょう。AI生成ショート動画を即座に4K解像度にアップスケールし、どのスマートフォンの画面でもプロフェッショナルに見える鮮明なディテールを確保します。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Short Video Generator: Create Viral Shorts & Reels：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "AI Short Video Generator: Create Viral Shorts & Reels プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "AI Short Video Generator: Create Viral Shorts & Reels が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから AI Short Video Generator: Create Viral Shorts & Reels の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "Lovartを使って3ヶ月で10万フォロワーのTikTokアカウントを構築しました。Klingモデルはあまりにもリアルな映像を生成するので、人々はAIだと信じないほどです。4Kアップスケールは必須です。",
+          "author": "Leo Z.",
+          "role": "顔出しなしチャンネルのクリエイター"
+        },
+        {
+          "quote": "以前はBロールの作成に何日もかかっていました。今はLovartのVeo 3を使って、特定の製品背景を数分で生成しています。代理店の制作コストを数千ドル節約できました。",
+          "author": "Sarah J.",
+          "role": "ソーシャルメディアマネージャー"
+        },
+        {
+          "quote": "モーションコントロール機能は比類がありません。ついにAIカメラを自分の望む場所に正確に指示できるようになりました。エンゲージメント率が急上昇しました。",
+          "author": "Mike T.",
+          "role": "ビジュアルアーティスト"
+        }
+      ],
+      "title": "Lovartでバイラルを生み出すクリエイターたち"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "TikTokやReels用の縦型動画を生成できますか？",
+          "answer": "はい！Lovartはアスペクト比の選択をサポートしています。生成設定で「9:16」を選択するだけで、TikTok、Instagram Reels、YouTube Shortsに最適な全画面の縦型動画を作成できます。"
+        },
+        {
+          "question": "ショート動画に最適な動画モデルはどれですか？",
+          "answer": "スタイルによります。Kling 2.6とSora 2はフォトリアリズムと複雑な動きに優れています。Gemini Veo 3は流動的で夢のようなビジュアルに最適です。Lovartではこれらすべてを試すことができます。"
+        },
+        {
+          "question": "動画を4Kにするにはどうすればよいですか？",
+          "answer": "動画を生成した後、上部ツールバーの「アップスケール（Upscale）」ボタンをクリックするだけです。LovartのAIが動画を処理し、解像度を4Kに高めながら、ディテールと鮮明さを向上させます。"
+        },
+        {
+          "question": "自分の写真をアニメーション化できますか？",
+          "answer": "もちろんです。「Image-to-Video」機能を使用してください。画像を「開始フレーム」としてアップロードし、モデル（KlingやHailuoなど）を選択して、見たい動きをプロンプトで指示します。"
+        },
+        {
+          "question": "作成した動画の所有権は自分にありますか？",
+          "answer": "はい。有料サブスクリプション（Starter、Basic、またはPro）をご利用の場合、生成した動画の完全な商用利用権をお持ちいただけます。つまり、ソーシャルプラットフォームで収益化することができます。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

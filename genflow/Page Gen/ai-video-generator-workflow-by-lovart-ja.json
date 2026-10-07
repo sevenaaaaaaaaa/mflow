@@ -1,0 +1,386 @@
+{
+  "_id": "features-ai-video-generator-workflow-by-lovart-ja",
+  "reflowSourceId": "features-ai-video-generator-workflow-by-lovart-ja",
+  "slug": "ai-video-generator-workflow-by-lovart",
+  "language": "ja",
+  "category": "feature",
+  "title": "究極のAI動画生成：台本から完成まで",
+  "description": "Master the Ultimate AI Video Generator Workflow: From Script to Screen",
+  "seo": {
+    "description": "究極のAI動画生成ワークフローを習得：スクリプトから映像完成まで",
+    "keywords": [
+      "AI動画ワークフロー",
+      "一貫性のあるキャラクタービデオ",
+      "Veo 3動画生成ツール",
+      "画像から動画へのAI",
+      "シネマティック動画制作",
+      "AIストーリーボード"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Character Consistency",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"究極のAI動画生成：台本から完成まで\", \"description\": \"Master the Ultimate AI Video Generator Workflow: From Script to Screen\", \"url\": \"https://www.lovart.ai/features/ai-video-generator-workflow-by-lovart\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Lovartの動画ワークフローは他のツールと何が違うのですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovartは単なるジェネレーターではなく、包括的なワークスペースです。画像生成（一貫性のため）、無限キャンバス（絵コンテのため）、動画生成（Veo 3）を一つのシームレスな「デザインエージェント」体験に統合し、アプリ間を切り替える必要をなくしました。\"}}, {\"@type\": \"Question\", \"name\": \"動画内でキャラクターの一貫性を保つにはどうすればよいですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"2ステップのワークフローをお勧めします。まず、Nano BananaまたはFlux Contextモデルを使用して、完璧な「キャラクターシート」または参照画像を生成します。次に、その参照を使用して「Image-to-Video」機能を使用すると、キャラクターのアイデンティティが固定されます。\"}}, {\"@type\": \"Question\", \"name\": \"生成される動画の最大解像度はどれくらいですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"標準生成は通常720pまたは1080pですが、統合されたAIアップスケーラー機能を使用すると、詳細と鮮明さを強化して、あらゆるビデオクリップを4K解像度まで高めることができます。\"}}, {\"@type\": \"Question\", \"name\": \"カメラの動きを制御できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。Text-to-Videoを使用する場合、プロンプトに「左にパン」「ズームイン」「ドローンショット」などのカメラの動きを指定できます。Veo 3モデルは、これらのシネマティックな指示に非常に敏感に反応します。\"}}, {\"@type\": \"Question\", \"name\": \"このワークフローは長尺コンテンツに適していますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。AIは短いクリップ（通常4〜10秒）を生成しますが、Lovartのワークフローではキャンバス上で連続したクリップを生成できます。クリップAの最後のフレームをクリップBの開始フレームとして使用することで、より長く、連続したシーケンスを作成できます。\"}}]}}"
+    },
+    "title": "究極のAI動画生成：台本から完成まで"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"究極のAI動画生成：台本から完成まで\",\"description\":\"Master the Ultimate AI Video Generator Workflow: From Script to Screen\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Character Consistency\"}},{\"type\":\"bento-6\",\"title\":\"Features That Power Your Video Workflow\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"キャラクターの一貫性\",\"description\":\"AI動画の聖杯です。Flux ContextまたはNano Bananaモデルでキャラクターを定義すれば、エージェントが複数のビデオクリップ間でその人物を認識可能な状態に保ちます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"キャラクターの一貫性\"}},{\"title\":\"マルチモデル・オーケストレーション\",\"description\":\"Lovartは一つのモデルに限定されません。リアルな物理挙動であれ、様式化されたアニメーションであれ、特定のショットに最適なエンジン（Veo 3、Klingなど）をインテリジェントに選択します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"マルチモデル・オーケストレーション\"}},{\"title\":\"開始・終了フレーム制御\",\"description\":\"時間の流れを指揮しましょう。開始画像と終了画像をアップロードすれば、AIがその間のスムーズな移行を生成します。モーフィング効果や特定の物語のビートに最適です。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"開始・終了フレーム制御\"}},{\"title\":\"キャンバス・ストーリーボード\",\"description\":\"タイムライン全体を空間的に視覚化します。生成されたクリップを無限キャンバス上に並べて配置し、エクスポートする前にカラーグレーディングと連続性を確認できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"キャンバス・ストーリーボード\"}},{\"title\":\"モーションブラシ (ベータ版)\",\"description\":\"近日公開：画像のどの部分を動かすか（例：「旗は波打たせる」が「柱は静止させる」）をブラシで正確にペイントし、詳細な演出制御が可能になります。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"モーションブラシ (ベータ版)\"}},{\"title\":\"4Kシネマティック・アップスケーリング\",\"description\":\"プロフェッショナルな結果を提供します。専用のビデオアップスケーラーがアーティファクトを除去し、詳細をシャープにして、YouTube 4Kや大型ディスプレイに対応した動画にします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"4Kシネマティック・アップスケーリング\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"キャラクターの一貫性\",\"icon\":\"chat\",\"content\":{\"title\":\"キャラクターの一貫性\",\"description\":\"AI動画の聖杯です。Flux ContextまたはNano Bananaモデルでキャラクターを定義すれば、エージェントが複数のビデオクリップ間でその人物を認識可能な状態に保ちます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"キャラクターの一貫性\"}}},{\"label\":\"マルチモデル・オーケストレーション\",\"icon\":\"image\",\"content\":{\"title\":\"マルチモデル・オーケストレーション\",\"description\":\"Lovartは一つのモデルに限定されません。リアルな物理挙動であれ、様式化されたアニメーションであれ、特定のショットに最適なエンジン（Veo 3、Klingなど）をインテリジェントに選択します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"マルチモデル・オーケストレーション\"}}},{\"label\":\"開始・終了フレーム制御\",\"icon\":\"flask\",\"content\":{\"title\":\"開始・終了フレーム制御\",\"description\":\"時間の流れを指揮しましょう。開始画像と終了画像をアップロードすれば、AIがその間のスムーズな移行を生成します。モーフィング効果や特定の物語のビートに最適です。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"開始・終了フレーム制御\"}}},{\"label\":\"キャンバス・ストーリーボード\",\"icon\":\"brand\",\"content\":{\"title\":\"キャンバス・ストーリーボード\",\"description\":\"タイムライン全体を空間的に視覚化します。生成されたクリップを無限キャンバス上に並べて配置し、エクスポートする前にカラーグレーディングと連続性を確認できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"キャンバス・ストーリーボード\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"モーションブラシ (ベータ版)\",\"description\":\"近日公開：画像のどの部分を動かすか（例：「旗は波打たせる」が「柱は静止させる」）をブラシで正確にペイントし、詳細な演出制御が可能になります。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"モーションブラシ (ベータ版)\"}},{\"title\":\"4Kシネマティック・アップスケーリング\",\"description\":\"プロフェッショナルな結果を提供します。専用のビデオアップスケーラーがアーティファクトを除去し、詳細をシャープにして、YouTube 4Kや大型ディスプレイに対応した動画にします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"4Kシネマティック・アップスケーリング\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"Master the Ultimate AI Video Generator Workflow: From Script to Screen プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"究極のAI動画生成ワークフローをマスターする\",\"description\":\"断片化されたツールを行き来するのはやめましょう。LovartのAIデザインエージェントは、単一のキャンバス上で動画制作プロセス全体を調整します。Nano Bananaによる一貫したキャラクターデザインからVeo 3によるシネマティックなモーション生成まで、脚本を首尾一貫した視覚的な物語に変えるシームレスなワークフローを体験してください。\",\"input_placeholder\":\"動画のシーンを説明するか、キャラクターのリファレンスをアップロードしてください...\",\"prompts\":[{\"label\":\"シネマティック・ストーリーテリング\",\"prompt\":\"ネオンの雨の中を歩くサイバーパンクの探偵、ドローントラッキングショット、一貫したキャラクター\"},{\"label\":\"製品コマーシャル\",\"prompt\":\"製品公開：空中で自ら組み立てられる浮遊スニーカー、スタジオ照明、スローモーション\"},{\"label\":\"ミュージックビデオ・ビジュアル\",\"prompt\":\"昼から夜へと移り変わるファンタジー風景の飛行、ループ背景\"},{\"label\":\"キャラクターアニメーション\",\"prompt\":\"幸せそうに踊るピクサースタイルの3Dアニメキャラクター、固定カメラアングル\"}],\"tip\":\"ヒント：最高の一貫性を得るために、まず主人公を説明し、次にアクションを記述してください。\",\"cta\":{\"text\":\"動画ワークフローを開始\"}},{\"type\":\"workflow-horizontal\",\"title\":\"一貫したAI動画のための統合ワークフロー\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"デザイン & 絵コンテ\",\"description\":\"ランダムなノイズから始めないでください。まずNano Bananaを使ってキャラクターとシーンをデザインしましょう。Lovartの無限キャンバスに配置して、モーションを生成する前に一貫性のある絵コンテを構築します。\"},{\"step\":2,\"title\":\"Veo 3でアニメーション化\",\"description\":\"GoogleのVeo 3モデルを使用して、静的な絵コンテを高精細な動画に変換します。「Image-to-Video」を使用することで、どのショットでもキャラクターが全く同じに見えるようにします。\"},{\"step\":3,\"title\":\"洗練 & アップスケール\",\"description\":\"キャンバス上で直接クリップを磨き上げます。クリップの長さを延長し、「領域リペイント」で不具合を修正し、放送品質のために4K解像度へ自動アップスケールします。\"}]},{\"type\":\"comparison-table\",\"title\":\"Master the Ultimate AI Video Generator Workflow: From Script to Screen：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Master the Ultimate AI Video Generator Workflow: From Script to Screen プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Master the Ultimate AI Video Generator Workflow: From Script to Screen が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから Master the Ultimate AI Video Generator Workflow: From Script to Screen の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"一貫性はAI動画における私の最大の悪夢でした。Lovartのワークフローがそれを変えました。Nano Bananaでキャラクターを生成し、Veo 3でアニメーション化できます。今では本物の制作パイプラインのように感じられます。\",\"author\":\"Chris Nolan (Indie)\",\"role\":\"短編映画監督\"},{\"quote\":\"私たちは週に50本以上の動画広告を作成しています。キャンバス上でバッチ生成し、最高のショットを即座に選べる機能のおかげで、何百時間も節約できました。Veo 3の品質は驚異的です。\",\"author\":\"Anita L.\",\"role\":\"デジタルマーケティングリード\"},{\"quote\":\"「開始・終了フレーム」制御により、この時間枠内ではAfter Effectsでも達成できなかったトランジションが可能になりました。迅速なプロトタイピングと最終納品のための強力なツールです。\",\"author\":\"Kenji Sato\",\"role\":\"モーションデザイナー\"}],\"title\":\"Lovartで制作を効率化した映画製作者やマーケターたち\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"Lovartの動画ワークフローは他のツールと何が違うのですか？\",\"answer\":\"Lovartは単なるジェネレーターではなく、包括的なワークスペースです。画像生成（一貫性のため）、無限キャンバス（絵コンテのため）、動画生成（Veo 3）を一つのシームレスな「デザインエージェント」体験に統合し、アプリ間を切り替える必要をなくしました。\"},{\"question\":\"動画内でキャラクターの一貫性を保つにはどうすればよいですか？\",\"answer\":\"2ステップのワークフローをお勧めします。まず、Nano BananaまたはFlux Contextモデルを使用して、完璧な「キャラクターシート」または参照画像を生成します。次に、その参照を使用して「Image-to-Video」機能を使用すると、キャラクターのアイデンティティが固定されます。\"},{\"question\":\"生成される動画の最大解像度はどれくらいですか？\",\"answer\":\"標準生成は通常720pまたは1080pですが、統合されたAIアップスケーラー機能を使用すると、詳細と鮮明さを強化して、あらゆるビデオクリップを4K解像度まで高めることができます。\"},{\"question\":\"カメラの動きを制御できますか？\",\"answer\":\"はい。Text-to-Videoを使用する場合、プロンプトに「左にパン」「ズームイン」「ドローンショット」などのカメラの動きを指定できます。Veo 3モデルは、これらのシネマティックな指示に非常に敏感に反応します。\"},{\"question\":\"このワークフローは長尺コンテンツに適していますか？\",\"answer\":\"はい。AIは短いクリップ（通常4〜10秒）を生成しますが、Lovartのワークフローではキャンバス上で連続したクリップを生成できます。クリップAの最後のフレームをクリップBの開始フレームとして使用することで、より長く、連続したシーケンスを作成できます。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "究極のAI動画生成：台本から完成まで",
+      "description": "Master the Ultimate AI Video Generator Workflow: From Script to Screen",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Character Consistency"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Features That Power Your Video Workflow",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "キャラクターの一貫性",
+          "description": "AI動画の聖杯です。Flux ContextまたはNano Bananaモデルでキャラクターを定義すれば、エージェントが複数のビデオクリップ間でその人物を認識可能な状態に保ちます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "キャラクターの一貫性"
+          }
+        },
+        {
+          "title": "マルチモデル・オーケストレーション",
+          "description": "Lovartは一つのモデルに限定されません。リアルな物理挙動であれ、様式化されたアニメーションであれ、特定のショットに最適なエンジン（Veo 3、Klingなど）をインテリジェントに選択します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "マルチモデル・オーケストレーション"
+          }
+        },
+        {
+          "title": "開始・終了フレーム制御",
+          "description": "時間の流れを指揮しましょう。開始画像と終了画像をアップロードすれば、AIがその間のスムーズな移行を生成します。モーフィング効果や特定の物語のビートに最適です。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "開始・終了フレーム制御"
+          }
+        },
+        {
+          "title": "キャンバス・ストーリーボード",
+          "description": "タイムライン全体を空間的に視覚化します。生成されたクリップを無限キャンバス上に並べて配置し、エクスポートする前にカラーグレーディングと連続性を確認できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "キャンバス・ストーリーボード"
+          }
+        },
+        {
+          "title": "モーションブラシ (ベータ版)",
+          "description": "近日公開：画像のどの部分を動かすか（例：「旗は波打たせる」が「柱は静止させる」）をブラシで正確にペイントし、詳細な演出制御が可能になります。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "モーションブラシ (ベータ版)"
+          }
+        },
+        {
+          "title": "4Kシネマティック・アップスケーリング",
+          "description": "プロフェッショナルな結果を提供します。専用のビデオアップスケーラーがアーティファクトを除去し、詳細をシャープにして、YouTube 4Kや大型ディスプレイに対応した動画にします。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "4Kシネマティック・アップスケーリング"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "キャラクターの一貫性",
+          "icon": "chat",
+          "content": {
+            "title": "キャラクターの一貫性",
+            "description": "AI動画の聖杯です。Flux ContextまたはNano Bananaモデルでキャラクターを定義すれば、エージェントが複数のビデオクリップ間でその人物を認識可能な状態に保ちます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "キャラクターの一貫性"
+            }
+          }
+        },
+        {
+          "label": "マルチモデル・オーケストレーション",
+          "icon": "image",
+          "content": {
+            "title": "マルチモデル・オーケストレーション",
+            "description": "Lovartは一つのモデルに限定されません。リアルな物理挙動であれ、様式化されたアニメーションであれ、特定のショットに最適なエンジン（Veo 3、Klingなど）をインテリジェントに選択します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "マルチモデル・オーケストレーション"
+            }
+          }
+        },
+        {
+          "label": "開始・終了フレーム制御",
+          "icon": "flask",
+          "content": {
+            "title": "開始・終了フレーム制御",
+            "description": "時間の流れを指揮しましょう。開始画像と終了画像をアップロードすれば、AIがその間のスムーズな移行を生成します。モーフィング効果や特定の物語のビートに最適です。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "開始・終了フレーム制御"
+            }
+          }
+        },
+        {
+          "label": "キャンバス・ストーリーボード",
+          "icon": "brand",
+          "content": {
+            "title": "キャンバス・ストーリーボード",
+            "description": "タイムライン全体を空間的に視覚化します。生成されたクリップを無限キャンバス上に並べて配置し、エクスポートする前にカラーグレーディングと連続性を確認できます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "キャンバス・ストーリーボード"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "モーションブラシ (ベータ版)",
+          "description": "近日公開：画像のどの部分を動かすか（例：「旗は波打たせる」が「柱は静止させる」）をブラシで正確にペイントし、詳細な演出制御が可能になります。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "モーションブラシ (ベータ版)"
+          }
+        },
+        {
+          "title": "4Kシネマティック・アップスケーリング",
+          "description": "プロフェッショナルな結果を提供します。専用のビデオアップスケーラーがアーティファクトを除去し、詳細をシャープにして、YouTube 4Kや大型ディスプレイに対応した動画にします。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "4Kシネマティック・アップスケーリング"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "Master the Ultimate AI Video Generator Workflow: From Script to Screen プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "究極のAI動画生成ワークフローをマスターする",
+      "description": "断片化されたツールを行き来するのはやめましょう。LovartのAIデザインエージェントは、単一のキャンバス上で動画制作プロセス全体を調整します。Nano Bananaによる一貫したキャラクターデザインからVeo 3によるシネマティックなモーション生成まで、脚本を首尾一貫した視覚的な物語に変えるシームレスなワークフローを体験してください。",
+      "input_placeholder": "動画のシーンを説明するか、キャラクターのリファレンスをアップロードしてください...",
+      "prompts": [
+        {
+          "label": "シネマティック・ストーリーテリング",
+          "prompt": "ネオンの雨の中を歩くサイバーパンクの探偵、ドローントラッキングショット、一貫したキャラクター"
+        },
+        {
+          "label": "製品コマーシャル",
+          "prompt": "製品公開：空中で自ら組み立てられる浮遊スニーカー、スタジオ照明、スローモーション"
+        },
+        {
+          "label": "ミュージックビデオ・ビジュアル",
+          "prompt": "昼から夜へと移り変わるファンタジー風景の飛行、ループ背景"
+        },
+        {
+          "label": "キャラクターアニメーション",
+          "prompt": "幸せそうに踊るピクサースタイルの3Dアニメキャラクター、固定カメラアングル"
+        }
+      ],
+      "tip": "ヒント：最高の一貫性を得るために、まず主人公を説明し、次にアクションを記述してください。",
+      "cta": {
+        "text": "動画ワークフローを開始"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "一貫したAI動画のための統合ワークフロー",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "デザイン & 絵コンテ",
+          "description": "ランダムなノイズから始めないでください。まずNano Bananaを使ってキャラクターとシーンをデザインしましょう。Lovartの無限キャンバスに配置して、モーションを生成する前に一貫性のある絵コンテを構築します。"
+        },
+        {
+          "step": 2,
+          "title": "Veo 3でアニメーション化",
+          "description": "GoogleのVeo 3モデルを使用して、静的な絵コンテを高精細な動画に変換します。「Image-to-Video」を使用することで、どのショットでもキャラクターが全く同じに見えるようにします。"
+        },
+        {
+          "step": 3,
+          "title": "洗練 & アップスケール",
+          "description": "キャンバス上で直接クリップを磨き上げます。クリップの長さを延長し、「領域リペイント」で不具合を修正し、放送品質のために4K解像度へ自動アップスケールします。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Master the Ultimate AI Video Generator Workflow: From Script to Screen：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Master the Ultimate AI Video Generator Workflow: From Script to Screen プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Master the Ultimate AI Video Generator Workflow: From Script to Screen が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから Master the Ultimate AI Video Generator Workflow: From Script to Screen の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "一貫性はAI動画における私の最大の悪夢でした。Lovartのワークフローがそれを変えました。Nano Bananaでキャラクターを生成し、Veo 3でアニメーション化できます。今では本物の制作パイプラインのように感じられます。",
+          "author": "Chris Nolan (Indie)",
+          "role": "短編映画監督"
+        },
+        {
+          "quote": "私たちは週に50本以上の動画広告を作成しています。キャンバス上でバッチ生成し、最高のショットを即座に選べる機能のおかげで、何百時間も節約できました。Veo 3の品質は驚異的です。",
+          "author": "Anita L.",
+          "role": "デジタルマーケティングリード"
+        },
+        {
+          "quote": "「開始・終了フレーム」制御により、この時間枠内ではAfter Effectsでも達成できなかったトランジションが可能になりました。迅速なプロトタイピングと最終納品のための強力なツールです。",
+          "author": "Kenji Sato",
+          "role": "モーションデザイナー"
+        }
+      ],
+      "title": "Lovartで制作を効率化した映画製作者やマーケターたち"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "Lovartの動画ワークフローは他のツールと何が違うのですか？",
+          "answer": "Lovartは単なるジェネレーターではなく、包括的なワークスペースです。画像生成（一貫性のため）、無限キャンバス（絵コンテのため）、動画生成（Veo 3）を一つのシームレスな「デザインエージェント」体験に統合し、アプリ間を切り替える必要をなくしました。"
+        },
+        {
+          "question": "動画内でキャラクターの一貫性を保つにはどうすればよいですか？",
+          "answer": "2ステップのワークフローをお勧めします。まず、Nano BananaまたはFlux Contextモデルを使用して、完璧な「キャラクターシート」または参照画像を生成します。次に、その参照を使用して「Image-to-Video」機能を使用すると、キャラクターのアイデンティティが固定されます。"
+        },
+        {
+          "question": "生成される動画の最大解像度はどれくらいですか？",
+          "answer": "標準生成は通常720pまたは1080pですが、統合されたAIアップスケーラー機能を使用すると、詳細と鮮明さを強化して、あらゆるビデオクリップを4K解像度まで高めることができます。"
+        },
+        {
+          "question": "カメラの動きを制御できますか？",
+          "answer": "はい。Text-to-Videoを使用する場合、プロンプトに「左にパン」「ズームイン」「ドローンショット」などのカメラの動きを指定できます。Veo 3モデルは、これらのシネマティックな指示に非常に敏感に反応します。"
+        },
+        {
+          "question": "このワークフローは長尺コンテンツに適していますか？",
+          "answer": "はい。AIは短いクリップ（通常4〜10秒）を生成しますが、Lovartのワークフローではキャンバス上で連続したクリップを生成できます。クリップAの最後のフレームをクリップBの開始フレームとして使用することで、より長く、連続したシーケンスを作成できます。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

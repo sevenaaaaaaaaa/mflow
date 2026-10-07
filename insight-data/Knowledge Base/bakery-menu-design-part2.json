@@ -1,0 +1,566 @@
+```json
+,
+  "section_ja": [
+  {
+    "type": "centeredInputSection",
+    "title": "AIベーカリーメニューメーカー",
+    "subtitle": "Lovart — 世界初のAIデザインエージェントで、食欲をそそるベーカリーメニューを数秒でデザイン。MCoTクリエイティブディレクションとChatCanvas精密編集を搭載。",
+    "buttonText": "メニューをデザイン",
+    "system_prompt": "あなたはLovartのクリエイティブディレクターMCoTで、ベーカリーメニューデザインを専門としています。多段階推論を調整して、ベーカリーのブランドアイデンティティ、ターゲットオーディエンス、メニュー内容を分析します。ChatCanvasを使用して、レイアウト、タイポグラフィ、カラーパレット、フードフォトグラフィースタイリングを協調的に洗練させます。プロフェッショナルなデザイン原則を通じて、すべてのメニューが新鮮さ、クラフトマンシップ、食欲をそそる魅力を伝えるようにします。ユーザーの説明：$input$",
+    "suggestion": [
+      "サクサクのクロワッサンとデニッシュが並ぶペストリー陳列メニュー",
+      "小麦粉を振りかけた職人パンの素朴なメニュー",
+      "華やかなウェディングケーキを含むエレガントなケーキカタログ",
+      "ラテアートと季節限定ドリンクが並ぶ居心地の良いカフェメニュー"
+    ],
+    "input_placeholder": ""
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "着想から印刷可能な状態までわずかな時間で",
+    "columns": [
+      {
+        "title": "AI生成レイアウト",
+        "description": "あなたのベーカリースタイルを説明すると、LovartのMCoTエージェントが即座にあなたのブランドに合わせた調和のとれたグリッド、フォント、配色を備えた完全なメニュー構成を生成します。",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "ChatCanvas精密編集",
+        "description": "メニュー上の任意の要素 — テキスト、画像、装飾 — をクリックしてチャットで調整。自然言語で価格の変更、写真の差し替え、タイポグラフィの微調整ができます。",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "8Kプロフェッショナルエクスポート",
+        "description": "8K解像度で印刷可能なメニューをPNG、JPG、SVG、PSD形式でエクスポート。店内ディスプレイ、SNS、プロ印刷に最適です。",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "ベーカリーメニューに必要なすべて",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "フードフォト強化",
+        "description": "ベーカリー製品の写真を自動的に強化 — 温かみを高め、質感をシャープにし、ペストリーをメニュー上で魅力的に新鮮に見せます。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "価格テキスト編集",
+        "description": "Touch EditとText Editでメニュー全体の価格を即座に更新。通貨の変更、説明の追加、おすすめ商品のハイライトをワンクリックで。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "スマートモックアップ",
+        "description": "Smart Mockupを使用して、リアルなカフェテーブル、カウンターディスプレイ、ウィンドウボードにメニューを配置 — 実際の空間でどのように見えるかを正確に確認。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "ブランド一貫性",
+        "description": "Lovartはすべてのメニューでベーカリーのブランドアイデンティティを維持 — 一貫したフォント、色、ロゴ配置、ビジュアルスタイルで統一感のある顧客体験を。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "8Kプリントエクスポート",
+        "description": "8K解像度でメニューをPNG、JPG、SVG、PSD形式でエクスポート。大判印刷、サイネージ、高品質デジタルディスプレイに対応。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "マルチフォーマット出力",
+        "description": "単一のデザインから印刷（PSD、SVG）、SNS（PNG、JPG）、Web用に最適化されたメニューを生成。追加ツールや再フォーマットは不要です。"
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "ベーカリーのプロフェッショナルに信頼されています",
+    "testimonials": [
+      {
+        "name": "田中 美香",
+        "role": "Sweet Hearth ベーカリー オーナー",
+        "quote": "Lovartはたった1午後でメニューラインナップ全体を再デザインしました。お客様の反応はすぐに跳ね上がり、ペストリーメニューだけで最初の1ヶ月でペストリー売上が30％増加しました。フードフォト強化で商品が魅力的に見えるようになりました。",
+        "metric": "売上30％増加",
+        "avatar_url": ""
+      },
+      {
+        "name": "山田 健太",
+        "role": "Brew & Bake Co. カフェマネージャー",
+        "quote": "以前はフリーランスと修正を繰り返して1メニューあたり8時間かかっていました。LovartのChatCanvasで、15分以内にプロフェッショナルなメニューを作成・修正できます。節約した97%の時間を顧客サービスと運営に充てています。",
+        "metric": "1メニュー15分",
+        "avatar_url": ""
+      },
+      {
+        "name": "伊藤 桜",
+        "role": "パティシエ兼オーナー, Fleur de Pâtisserie",
+        "quote": "パティシエとして、見た目がすべてです。Lovartは料理の芸術性を理解し、メニューデザインに反映します。ケーキカタログは高級パティスリーのようなプロフェッショナルな佇まいになり、お客様はメニューのエレガンスを絶賛しています。",
+        "metric": "高級感のあるプロフェッショナルな仕上がり",
+        "avatar_url": ""
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "AIベーカリーメニューメーカーは無料で使えますか？",
+        "answer": "はい！毎日無料クレジットを提供しており、コストゼロでAIベーカリーメニューを生成・ダウンロードできます。高解像度ダウンロードと商用利用権が必要になったら、有料プランにアップグレードしてください。"
+      },
+      {
+        "question": "Lovartの料金プランは？",
+        "answer": "Lovartの月額プランはStarter（2,000クレジット/月）、Basic（3,500クレジット/月）、Pro（11,000クレジット/月）の3種類です。すべての有料プランにベーカリーメニューデザインの完全な商用利用権が含まれます。"
+      },
+      {
+        "question": "ベーカリーメニューの商用利用権はありますか？",
+        "answer": "はい！すべての有料プラン（Starter、Basic、Pro）に完全な商用利用権が含まれます。作成したメニューをビジネス用に印刷・配布・使用する権利を所有します。"
+      },
+      {
+        "question": "どのようなファイル形式でエクスポートできますか？",
+        "answer": "Lovartは8K解像度でPNG、JPG、SVG、PSD形式のエクスポートに対応しています。PNGとJPGはSNSやデジタル表示に、SVGは拡大縮小可能なWeb用に、PSDは高度な編集やプロ印刷に最適です。"
+      },
+      {
+        "question": "Touch Editはベーカリーメニューでどのように機能しますか？",
+        "answer": "Touch Editでは、ChatCanvas上でメニューの任意の要素 — 価格タグ、ペストリー写真、セクションヘッダー — をクリックして即座に変更できます。価格の更新、画像の差し替え、要素のリサイズ、レイアウト調整を直感的に行えます。"
+      },
+      {
+        "question": "Text Editでメニュー項目を更新するには？",
+        "answer": "Text Editでは、クリックして入力するだけでメニューのテキストを変更できます。商品名、価格、説明の更新や日替わりスペシャルの追加がChatCanvas上で即座に反映され、複数項目を素早く連続編集できます。"
+      },
+      {
+        "question": "さまざまなタイプのベーカリーメニューをデザインできますか？",
+        "answer": "はい。LovartのMCoTエージェントはペストリー陳列、職人パンメニュー、ケーキカタログ、カフェドリンクメニュー、季節限定商品など、あらゆるベーカリーメニュータイプに対応します。必要なものを説明するだけで、AIクリエイティブディレクターが応じてデザインします。"
+      },
+      {
+        "question": "Lovartはすべてのメニューでブランド一貫性を維持しますか？",
+        "answer": "はい。Lovartがベーカリーのブランドアイデンティティ（色、フォント、ロゴ、ビジュアルスタイル）を理解すると、作成するすべてのメニューに一貫したブランディングを適用します。ペストリーメニューからドリンクメニュー、ケーキカタログまですべてが統一感のあるブランドに。"
+      },
+      {
+        "question": "メニューに満足できない場合の返金はありますか？",
+        "answer": "満足保証制度があります。生成されたメニューにご満足いただけない場合、購入から7日以内にサポートチームにご連絡いただければ全額返金いたします。"
+      }
+    ]
+  }
+],
+  "section_ko": [
+  {
+    "type": "centeredInputSection",
+    "title": "AI 베이커리 메뉴 메이커",
+    "subtitle": "Lovart — 세계 최초의 AI 디자인 에이전트로, 군침 도는 베이커리 메뉴를 몇 초 만에 디자인하세요. MCoT 크리에이티브 디렉션과 ChatCanvas 정밀 편집이 지원됩니다.",
+    "buttonText": "메뉴 디자인",
+    "system_prompt": "당신은 Lovart의 크리에이티브 디렉터 MCoT로, 베이커리 메뉴 디자인을 전문으로 합니다. 다단계 추론을 조정하여 베이커리의 브랜드 아이덴티티, 타겟 오디언스, 메뉴 구성을 분석합니다. ChatCanvas를 사용하여 레이아웃, 타이포그래피, 색상 팔레트, 음식 사진 스타일링을 협업적으로 다듬습니다. 전문적인 디자인 원칙을 통해 모든 메뉴가 신선함, 장인정신, 식욕을 자극하는 매력을 전달하도록 합니다. 사용자 설명: $input$",
+    "suggestion": [
+      "바삭한 크루아상과 데니시가 있는 페이스트리 진열 메뉴",
+      "밀가루를 뿌린 장인 빵의 소박한 메뉴",
+      "화려한 웨딩 케이크가 포함된 우아한 케이크 카탈로그",
+      "라떼 아트와 시즌 스페셜 음료가 있는 아늑한 카페 메뉴"
+    ],
+    "input_placeholder": ""
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "영감에서 인쇄 가능한 상태까지 순식간에",
+    "columns": [
+      {
+        "title": "AI 생성 레이아웃",
+        "description": "베이커리 스타일을 설명하면 Lovart의 MCoT 에이전트가 즉시 브랜드에 맞춘 조화로운 그리드, 폰트, 색상 구성을 갖춘 완전한 메뉴 구성을 생성합니다.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "ChatCanvas 정밀 편집",
+        "description": "메뉴의 모든 요소 — 텍스트, 이미지, 장식 — 를 클릭하고 채팅으로 조정하세요. 자연어로 가격 변경, 사진 교체, 타이포그래피 미세 조정이 가능합니다.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "8K 전문가 내보내기",
+        "description": "8K 해상도로 인쇄 가능한 메뉴를 PNG, JPG, SVG, PSD 형식으로 내보내기. 매장 디스플레이, SNS, 전문 인쇄에 완벽합니다.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "베이커리 메뉴에 필요한 모든 것",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "음식 사진 향상",
+        "description": "베이커리 제품 사진을 자동으로 향상 — 따뜻함을 높이고, 질감을 선명하게 하여 페이스트리가 메뉴에서 거부할 수 없이 신선하게 보이도록 합니다."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "가격 텍스트 편집",
+        "description": "Touch Edit와 Text Edit로 메뉴 전체의 가격을 즉시 업데이트. 통화 변경, 설명 추가, 특별 상품 하이라이트를 클릭 한 번으로."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "스마트 목업",
+        "description": "Smart Mockup을 사용하여 실제 카페 테이블, 카운터 디스플레이, 윈도우 보드에 메뉴 배치 — 실제 공간에서 어떻게 보이는지 정확히 확인."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "브랜드 일관성",
+        "description": "Lovart는 모든 메뉴에서 베이커리의 브랜드 아이덴티티를 유지 — 일관된 폰트, 색상, 로고 배치, 비주얼 스타일로 통일된 고객 경험을 제공."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "8K 인쇄 내보내기",
+        "description": "8K 해상도로 메뉴를 PNG, JPG, SVG, PSD 형식으로 내보내기. 대형 인쇄, 사이니지, 고품질 디지털 디스플레이에 대응."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "멀티 포맷 출력",
+        "description": "단일 디자인에서 인쇄(PSD, SVG), SNS(PNG, JPG), 웹용으로 최적화된 메뉴 생성. 추가 도구나 재포맷이 필요 없습니다."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "베이커리 전문가들의 신뢰",
+    "testimonials": [
+      {
+        "name": "김미향",
+        "role": "Sweet Hearth 베이커리 오너",
+        "quote": "Lovart가 단 하루 오후 만에 전체 메뉴 라인업을 재디자인했습니다. 고객 반응이 즉시 급증했고, 페이스트리 메뉴 하나만으로 첫 달에 페이스트리 매출이 30% 증가했습니다. 음식 사진 향상 기능 덕분에 제품이 거부할 수 없이 보입니다.",
+        "metric": "매출 30% 증가",
+        "avatar_url": ""
+      },
+      {
+        "name": "박건우",
+        "role": "Brew & Bake Co. 카페 매니저",
+        "quote": "예전에는 프리랜서와 수정을 주고받으며 메뉴 하나에 8시간을 썼습니다. Lovart의 ChatCanvas로 15분 이내에 전문적인 메뉴를 만들고 수정할 수 있어요. 절약한 97%의 시간을 고객 서비스와 운영에 사용하고 있습니다.",
+        "metric": "메뉴당 15분",
+        "avatar_url": ""
+      },
+      {
+        "name": "최서연",
+        "role": "페이스트리 셰프 & 오너, Fleur de Pâtisserie",
+        "quote": "페이스트리 셰프로서 프레젠테이션이 전부입니다. Lovart는 음식 프레젠테이션의 예술성을 이해하고 이를 메뉴 디자인에 반영합니다. 케이크 카탈로그가 이제 고급 파티스리의 전문적인 느낌을 가지며, 고객들이 메뉴의 우아함에 끊임없이 감탄합니다.",
+        "metric": "럭셔리한 전문적 느낌",
+        "avatar_url": ""
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "AI 베이커리 메뉴 메이커는 무료로 사용할 수 있나요?",
+        "answer": "네! 매일 무료 크레딧을 제공하여 비용 없이 AI 베이커리 메뉴를 생성하고 다운로드할 수 있습니다. 고해상도 다운로드와 상업적 사용 권한이 필요할 때 유료 플랜으로 업그레이드하세요."
+      },
+      {
+        "question": "Lovart의 요금제는 어떻게 되나요?",
+        "answer": "Lovart의 월간 요금제는 Starter(월 2,000크레딧), Basic(월 3,500크레딧), Pro(월 11,000크레딧) 세 가지입니다. 모든 유료 플랜에는 베이커리 메뉴 디자인의 완전한 상업적 사용 권한이 포함됩니다."
+      },
+      {
+        "question": "베이커리 메뉴의 상업적 사용 권한이 있나요?",
+        "answer": "네! 모든 유료 플랜(Starter, Basic, Pro)에는 완전한 상업적 사용 권한이 포함됩니다. 생성한 메뉴를 비즈니스용으로 인쇄, 배포, 사용할 권리를 소유합니다."
+      },
+      {
+        "question": "어떤 파일 형식으로 내보낼 수 있나요?",
+        "answer": "Lovart는 8K 해상도로 PNG, JPG, SVG, PSD 형식 내보내기를 지원합니다. PNG와 JPG는 SNS 및 디지털 디스플레이에, SVG는 확장 가능한 웹용으로, PSD는 고급 편집 및 전문 인쇄에 완벽합니다."
+      },
+      {
+        "question": "Touch Edit는 베이커리 메뉴에서 어떻게 작동하나요?",
+        "answer": "Touch Edit를 사용하면 ChatCanvas에서 메뉴의 모든 요소 — 가격 태그, 페이스트리 사진, 섹션 헤더 — 를 클릭하여 즉시 수정할 수 있습니다. 가격 업데이트, 이미지 교체, 요소 크기 조정, 레이아웃 조정을 직관적으로 수행할 수 있습니다."
+      },
+      {
+        "question": "Text Edit로 메뉴 항목을 어떻게 업데이트하나요?",
+        "answer": "Text Edit를 사용하면 클릭하고 입력하는 것만으로 메뉴의 모든 텍스트를 변경할 수 있습니다. 품목 이름, 가격, 설명을 업데이트하거나 일일 특별 메뉴를 추가할 수 있으며, ChatCanvas에 즉시 반영됩니다."
+      },
+      {
+        "question": "다양한 유형의 베이커리 메뉴를 디자인할 수 있나요?",
+        "answer": "네. Lovart의 MCoT 에이전트는 페이스트리 진열, 장인 빵 메뉴, 케이크 카탈로그, 카페 음료 메뉴, 시즌 스페셜 등 모든 베이커리 메뉴 유형에 적응합니다. 필요한 것을 설명하기만 하면 AI 크리에이티브 디렉터가 그에 맞춰 디자인합니다."
+      },
+      {
+        "question": "Lovart는 모든 메뉴에서 브랜드 일관성을 유지하나요?",
+        "answer": "네. Lovart가 베이커리의 브랜드 아이덴티티(색상, 폰트, 로고, 비주얼 스타일)를 이해하면, 생성하는 모든 메뉴에 일관된 브랜딩을 적용합니다. 페이스트리 메뉴, 음료 메뉴, 케이크 카탈로그가 모두 하나의 통일된 베이커리 브랜드로 느껴집니다."
+      },
+      {
+        "question": "메뉴가 만족스럽지 않으면 환불이 되나요?",
+        "answer": "만족 보장 제도를 운영합니다. 생성된 메뉴에 만족하지 못하실 경우, 구매 후 7일 이내에 지원팀에 연락하시면 전액 환불해 드립니다."
+      }
+    ]
+  }
+],
+  "section_de": [
+  {
+    "type": "centeredInputSection",
+    "title": "KI Bäckerei-Menü-Generator",
+    "subtitle": "Gestalten Sie in Sekunden appetitanregende Bäckerei-Menüs mit Lovart — dem weltweit ersten KI-Design-Agenten. Mit MCoT-Kreativdirektion und präziser ChatCanvas-Bearbeitung.",
+    "buttonText": "Menü gestalten",
+    "system_prompt": "Sie sind MCoT, der Kreativdirektor bei Lovart, spezialisiert auf Bäckerei-Menüdesign. Sie orchestrieren mehrstufiges Reasoning, um die Markenidentität, Zielgruppe und Menüangebote der Bäckerei zu analysieren. Mit ChatCanvas verfeinern Sie kollaborativ Layouts, Typografie, Farbpaletten und Food-Fotografie-Styling. Sie stellen sicher, dass jedes Menü durch professionelle Designprinzipien Frische, Handwerk und appetitanregende Anziehungskraft vermittelt. Nutzerbeschreibung: $input$",
+    "suggestion": [
+      "Gebäckvitrinen-Menü mit knusprigen Croissants und Plundergebäck",
+      "Rustikales Handwerksbrot-Menü mit mehlbestäubter Fotografie",
+      "Eleganter Tortenkatalog mit mehrstöckigen Hochzeitstorten",
+      "Gemütliches Café-Getränkemenü mit Latte-Art und saisonalen Spezialitäten"
+    ],
+    "input_placeholder": ""
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "Von der Inspiration zur Druckreife in kürzester Zeit",
+    "columns": [
+      {
+        "title": "KI-generierte Layouts",
+        "description": "Beschreiben Sie Ihren Bäckerei-Stil und der MCoT-Agent von Lovart generiert sofort vollständige Menü-Kompositionen mit harmonischen Rastern, Schriftarten und Farbschemata, die auf Ihre Marke abgestimmt sind.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "ChatCanvas-Präzision",
+        "description": "Klicken Sie auf ein beliebiges Element Ihres Menüs — Text, Bild oder Dekoration — und chatten Sie, um es zu verfeinern. Passen Sie Preise an, ersetzen Sie Fotos oder optimieren Sie die Typografie in natürlicher Sprache.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "8K Profi-Export",
+        "description": "Exportieren Sie druckfertige Menüs in 8K-Auflösung in den Formaten PNG, JPG, SVG und PSD. Perfekt für Schaufenster, soziale Medien und professionellen Druck.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Alles, was Ihr Bäckerei-Menü braucht",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Food-Foto-Verbesserung",
+        "description": "Verbessern Sie Backwaren-Fotos automatisch — verstärken Sie die Wärme, schärfen Sie Texturen und lassen Sie Gebäck auf Ihrem Menü unwiderstehlich frisch aussehen."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Preis-Textbearbeitung",
+        "description": "Aktualisieren Sie Preise im gesamten Menü sofort mit Touch Edit und Text Edit. Ändern Sie Währungen, fügen Sie Beschreibungen hinzu oder heben Sie Angebote mit einem Klick hervor."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "Smart Mockup",
+        "description": "Platzieren Sie Ihre Menüs mit Smart Mockup auf realistischen Café-Tischen, Thekendisplays und Fenstertafeln — sehen Sie genau, wie sie in Ihrem Raum aussehen."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Markenkonsistenz",
+        "description": "Lovart bewahrt die Markenidentität Ihrer Bäckerei auf jedem Menü — konsistente Schriftarten, Farben, Logo-Platzierung und visueller Stil für ein einheitliches Kundenerlebnis."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "8K Druck-Export",
+        "description": "Exportieren Sie Ihre Menüs in beeindruckender 8K-Auflösung in den Formaten PNG, JPG, SVG und PSD. Bereit für Großformatdruck, Beschilderung und hochwertige Digitalanzeige."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Multi-Format-Ausgabe",
+        "description": "Generieren Sie Menüs optimiert für Druck (PSD, SVG), soziale Medien (PNG, JPG) und Web — alles aus einem einzigen Design. Keine zusätzlichen Tools oder Neuformatierung nötig."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Vertraut von Bäckerei-Profis",
+    "testimonials": [
+      {
+        "name": "Anna Müller",
+        "role": "Inhaberin, Sweet Hearth Bakery",
+        "quote": "Lovart hat unsere gesamte Menülinie an einem einzigen Nachmittag neu gestaltet. Das Kundenengagement stieg sofort, und allein unser Gebäckvitrinen-Menü führte im ersten Monat zu 30% mehr Gebäckverkäufen. Die Food-Foto-Verbesserung ließ unsere Produkte unwiderstehlich aussehen.",
+        "metric": "30% Umsatzsteigerung",
+        "avatar_url": ""
+      },
+      {
+        "name": "Klaus Weber",
+        "role": "Café-Manager, Brew & Bake Co.",
+        "quote": "Früher habe ich 8 Stunden pro Menüdesign mit Freelancern verbracht, mit ständigen Überarbeitungen. Mit Lovarts ChatCanvas erstelle und verfeinere ich professionelle Menüs in unter 15 Minuten. Das ist eine Zeitersparnis von 97%, die ich in Kundenservice und Betrieb investiere.",
+        "metric": "15 Minuten pro Menü",
+        "avatar_url": ""
+      },
+      {
+        "name": "Greta Schmidt",
+        "role": "Konditormeisterin & Inhaberin, Fleur de Pâtisserie",
+        "quote": "Als Konditorin ist Präsentation alles. Lovart versteht die Kunst der Speisenpräsentation und überträgt sie ins Menüdesign. Unser Tortenkatalog hat jetzt das professionelle Niveau einer Luxus-Patisserie, und Kunden loben ständig die Eleganz unseres Menüs.",
+        "metric": "Professioneller Luxus-Look",
+        "avatar_url": ""
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "Ist der KI Bäckerei-Menü-Generator kostenlos?",
+        "answer": "Ja! Wir bieten täglich kostenlose Credits, damit Sie KI-generierte Bäckerei-Menüs kostenlos erstellen und herunterladen können. Wenn Sie hochauflösende Downloads und kommerzielle Rechte benötigen, steigen Sie auf einen kostenpflichtigen Plan um."
+      },
+      {
+        "question": "Welche Preispläne bietet Lovart an?",
+        "answer": "Lovart bietet drei Monatspläne: Starter (2.000 Credits/Monat), Basic (3.500 Credits/Monat) und Pro (11.000 Credits/Monat). Alle kostenpflichtigen Pläne beinhalten vollständige kommerzielle Nutzungsrechte für Ihre Bäckerei-Menüdesigns."
+      },
+      {
+        "question": "Habe ich die kommerziellen Rechte an meinen Menüs?",
+        "answer": "Ja! Alle kostenpflichtigen Pläne (Starter, Basic, Pro) beinhalten vollständige kommerzielle Nutzungsrechte. Sie besitzen Ihre erstellten Menüs und können sie für Ihr Geschäft drucken, verteilen und nutzen."
+      },
+      {
+        "question": "Welche Dateiformate kann ich exportieren?",
+        "answer": "Lovart unterstützt 8K-Auflösungsexport in PNG, JPG, SVG und PSD. PNG und JPG sind perfekt für soziale Medien und Digitaldisplays, SVG für skalierbare Webnutzung und PSD für fortgeschrittene Bearbeitung und professionellen Druck."
+      },
+      {
+        "question": "Wie funktioniert Touch Edit für Bäckerei-Menüs?",
+        "answer": "Mit Touch Edit können Sie jedes Element Ihres Menüs direkt auf ChatCanvas anklicken — ein Preisschild, ein Gebäckfoto, eine Abschnittsüberschrift — und es sofort ändern. Aktualisieren Sie Preise, tauschen Sie Bilder aus, skalieren Sie Elemente und passen Sie Layouts mit präzisen, intuitiven Steuerelementen an."
+      },
+      {
+        "question": "Wie funktioniert Text Edit für Menüpunkte?",
+        "answer": "Mit Text Edit ändern Sie jeden Text auf Ihrem Menü durch einfaches Klicken und Tippen. Aktualisieren Sie Artikelnamen, Preise, Beschreibungen oder fügen Sie Tagesangebote hinzu. Änderungen werden sofort auf ChatCanvas angezeigt."
+      },
+      {
+        "question": "Kann Lovart verschiedene Arten von Bäckerei-Menüs gestalten?",
+        "answer": "Absolut. Der MCoT-Agent von Lovart passt sich jedem Bäckerei-Menütyp an — Gebäckvitrinen, Handwerksbrot-Menüs, Tortenkataloge, Café-Getränkekarten, saisonale Spezialitäten und mehr. Beschreiben Sie einfach, was Sie brauchen, und der KI-Kreativdirektor gestaltet entsprechend."
+      },
+      {
+        "question": "Hält Lovart die Markenkonsistenz über alle meine Menüs hinweg aufrecht?",
+        "answer": "Ja. Sobald Lovart die Markenidentität Ihrer Bäckerei versteht — Farben, Schriften, Logo und visueller Stil — wendet es konsistentes Branding auf jedes von Ihnen erstellte Menü an. So fühlen sich Gebäckmenü, Getränkekarte und Tortenkatalog wie eine zusammenhängende Bäckereimarke an."
+      },
+      {
+        "question": "Bieten Sie eine Rückerstattung an, wenn ich nicht zufrieden bin?",
+        "answer": "Wir bieten eine Zufriedenheitsgarantie. Wenn Sie mit Ihren generierten Menüs nicht zufrieden sind, kontaktieren Sie unser Support-Team innerhalb von 7 Tagen nach dem Kauf für eine vollständige Rückerstattung."
+      }
+    ]
+  }
+],
+  "section_ru": [
+  {
+    "type": "centeredInputSection",
+    "title": "AI Создатель Меню для Пекарни",
+    "subtitle": "Создавайте аппетитные меню для пекарни за секунды с Lovart — первым в мире AI-дизайн-агентом. Творческое руководство MCoT и точное редактирование ChatCanvas.",
+    "buttonText": "Создать меню",
+    "system_prompt": "Вы — MCoT, креативный директор Lovart, специализирующийся на дизайне меню для пекарен. Вы организуете многоэтапное рассуждение для анализа идентичности бренда пекарни, целевой аудитории и меню. Используя ChatCanvas, вы совместно совершенствуете макеты, типографику, цветовые палитры и стиль фуд-фотографии. Вы обеспечиваете, чтобы каждое меню передавало свежесть, мастерство и аппетитную привлекательность через профессиональные принципы дизайна. Описание пользователя: $input$",
+    "suggestion": [
+      "Меню витрины с круассанами и датской выпечкой",
+      "Деревенское меню ремесленного хлеба с фотографией в муке",
+      "Элегантный каталог тортов с многоярусными свадебными тортами",
+      "Уютное меню напитков для кафе с латте-артом и сезонными предложениями"
+    ],
+    "input_placeholder": ""
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "От вдохновения до готовности к печати за мгновение",
+    "columns": [
+      {
+        "title": "Макеты, созданные AI",
+        "description": "Опишите стиль вашей пекарни, и MCoT-агент Lovart мгновенно сгенерирует полные композиции меню с гармоничными сетками, шрифтами и цветовыми схемами, адаптированными под ваш бренд.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "Точность ChatCanvas",
+        "description": "Нажмите на любой элемент меню — текст, изображение или декор — и общайтесь, чтобы улучшить его. Корректируйте цены, заменяйте фото или настраивайте типографику на естественном языке.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "Профессиональный экспорт 8K",
+        "description": "Экспортируйте готовые к печати меню в разрешении 8K в форматах PNG, JPG, SVG и PSD. Идеально для витрин, соцсетей и профессиональной печати.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Всё, что нужно вашему меню пекарни",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Улучшение фотографий еды",
+        "description": "Автоматически улучшайте фотографии выпечки — повышайте теплоту, усиливайте текстуры и делайте выпечку неотразимо свежей в меню."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Редактирование цен",
+        "description": "Обновляйте цены во всём меню мгновенно с помощью Touch Edit и Text Edit. Меняйте валюту, добавляйте описания или выделяйте специальные предложения одним кликом."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "Умный мокап",
+        "description": "Размещайте меню на реалистичных столах кафе, витринах и оконных досках с помощью Smart Mockup — смотрите, как именно они выглядят в вашем пространстве."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Консистентность бренда",
+        "description": "Lovart сохраняет идентичность бренда вашей пекарни во всех меню — согласованные шрифты, цвета, расположение логотипа и визуальный стиль для целостного клиентского опыта."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "Экспорт для печати 8K",
+        "description": "Экспортируйте меню в потрясающем разрешении 8K в форматах PNG, JPG, SVG и PSD. Готово для широкоформатной печати, вывесок и высококачественного цифрового дисплея."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Мультиформатный вывод",
+        "description": "Генерируйте меню, оптимизированные для печати (PSD, SVG), соцсетей (PNG, JPG) и веба — всё из одного дизайна. Дополнительные инструменты или переформатирование не требуются."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Доверяют профессионалы пекарного дела",
+    "testimonials": [
+      {
+        "name": "Анна Кузнецова",
+        "role": "Владелец, Sweet Hearth Пекарня",
+        "quote": "Lovart переделал всю нашу линейку меню за один день. Вовлечённость клиентов мгновенно выросла, а только меню выпечки привело к росту продаж на 30% в первый месяц. Улучшение фотографий сделало наши продукты неотразимыми.",
+        "metric": "Рост продаж 30%",
+        "avatar_url": ""
+      },
+      {
+        "name": "Игорь Фёдоров",
+        "role": "Менеджер кафе, Brew & Bake Co.",
+        "quote": "Раньше я тратил 8 часов на дизайн меню с фрилансерами, бесконечно согласовывая правки. С ChatCanvas от Lovart я создаю и дорабатываю профессиональные меню менее чем за 15 минут. Это экономия 97% времени, которое я направляю на обслуживание клиентов.",
+        "metric": "15 минут на меню",
+        "avatar_url": ""
+      },
+      {
+        "name": "Елена Смирнова",
+        "role": "Шеф-кондитер и владелец, Fleur de Pâtisserie",
+        "quote": "Как шеф-кондитер, я знаю, что презентация — это всё. Lovart понимает искусство подачи блюд и переносит его в дизайн меню. Наш каталог тортов теперь выглядит как в люксовой кондитерской, и клиенты постоянно хвалят элегантность нашего меню.",
+        "metric": "Профессиональный люксовый вид",
+        "avatar_url": ""
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "AI-генератор меню для пекарни бесплатный?",
+        "answer": "Да! Мы предоставляем ежедневные бесплатные кредиты для создания и скачивания AI-меню без затрат. Когда вам понадобятся файлы в высоком разрешении и коммерческие права, перейдите на платный тариф."
+      },
+      {
+        "question": "Какие тарифы предлагает Lovart?",
+        "answer": "Lovart предлагает три месячных тарифа: Starter (2 000 кредитов/мес), Basic (3 500 кредитов/мес) и Pro (11 000 кредитов/мес). Все платные тарифы включают полные коммерческие права на дизайны меню."
+      },
+      {
+        "question": "Есть ли у меня коммерческие права на меню?",
+        "answer": "Да! Все платные тарифы (Starter, Basic, Pro) включают полные права коммерческого использования. Вы владеете созданными меню и можете печатать, распространять и использовать их для бизнеса."
+      },
+      {
+        "question": "В каких форматах можно экспортировать?",
+        "answer": "Lovart поддерживает экспорт в разрешении 8K в форматах PNG, JPG, SVG и PSD. PNG и JPG отлично подходят для соцсетей, SVG — для масштабируемого веб-использования, PSD — для продвинутого редактирования и профессиональной печати."
+      },
+      {
+        "question": "Как Touch Edit работает с меню пекарни?",
+        "answer": "Touch Edit позволяет нажать на любой элемент меню прямо в ChatCanvas — ценник, фото выпечки, заголовок раздела — и мгновенно изменить его. Обновляйте цены, заменяйте изображения, изменяйте размер и расположение элементов."
+      },
+      {
+        "question": "Как Text Edit обновляет пункты меню?",
+        "answer": "Text Edit позволяет изменить любой текст в меню простым кликом и вводом. Обновляйте названия, цены, описания или добавляйте спецпредложения дня. Изменения мгновенно отображаются в ChatCanvas."
+      },
+      {
+        "question": "Можно ли создавать разные типы меню?",
+        "answer": "Да. MCoT-агент Lovart адаптируется к любому типу меню пекарни — витрины с выпечкой, меню ремесленного хлеба, каталоги тортов, карты напитков, сезонные предложения. Просто опишите, что вам нужно."
+      },
+      {
+        "question": "Сохраняет ли Lovart консистентность бренда во всех меню?",
+        "answer": "Да. Как только Lovart понимает идентичность бренда вашей пекарни — цвета, шрифты, логотип и визуальный стиль — он применяет единый брендинг ко всем созданным меню."
+      },
+      {
+        "question": "Есть ли возврат, если я недоволен?",
+        "answer": "Мы предоставляем гарантию удовлетворения. Если вы недовольны сгенерированными меню, свяжитесь со службой поддержки в течение 7 дней после покупки для полного возврата."
+      }
+    ]
+  }
+]

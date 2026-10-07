@@ -1,0 +1,50 @@
+{
+  "generated_at": "2026-09-30",
+  "generator": "Lovart Sentinel",
+  "title": "Bing SERP Scan",
+  "status": "delegated",
+  "instructions": "Run webfetch for each query below and parse results",
+  "queries": {
+    "brand": "lovart ai",
+    "brand_variant": "lovart ai design agent",
+    "competitor": "lovart vs canva vs midjourney ai design tool",
+    "review": "lovart ai review 2025 2026",
+    "chinese": "lovart ai 使用 体验 评价"
+  },
+  "parasite_domains_to_watch": [
+    "lovart-ai.com",
+    "lovart.pro",
+    "lovart.io",
+    "lovart.info",
+    "lovart.me",
+    "lovart.fyi"
+  ],
+  "_note": "此 source 需 opencode agent 使用 webfetch 工具逐条查询并解析 SERP",
+  "_serp_results": {
+    "brand": {
+      "query": "lovart ai",
+      "url": "https://www.bing.com/search?q=lovart+ai",
+      "status": "pending_agent_fetch"
+    },
+    "brand_variant": {
+      "query": "lovart ai design agent",
+      "url": "https://www.bing.com/search?q=lovart+ai+design+agent",
+      "status": "pending_agent_fetch"
+    },
+    "competitor": {
+      "query": "lovart vs canva vs midjourney ai design tool",
+      "url": "https://www.bing.com/search?q=lovart+vs+canva+vs+midjourney+ai+design+tool",
+      "status": "pending_agent_fetch"
+    },
+    "review": {
+      "query": "lovart ai review 2025 2026",
+      "url": "https://www.bing.com/search?q=lovart+ai+review+2025+2026",
+      "status": "pending_agent_fetch"
+    },
+    "chinese": {
+      "query": "lovart ai 使用 体验 评价",
+      "url": "https://www.bing.com/search?q=lovart+ai+使用+体验+评价",
+      "status": "pending_agent_fetch"
+    }
+  }
+}

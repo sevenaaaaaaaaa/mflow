@@ -1,0 +1,385 @@
+{
+  "_id": "features-video-background-changer-ja",
+  "reflowSourceId": "features-video-background-changer-ja",
+  "slug": "video-background-changer",
+  "language": "ja",
+  "category": "feature",
+  "title": "Lovartで動画背景をAI自動変更",
+  "description": "Instantly change video backgrounds without a green screen. Use Lovart's AI Design Agent to extract subjects and generate realistic new 4K environments.",
+  "seo": {
+    "description": "グリーンスクリーン不要で動画の背景を瞬時に変更。LovartのAIデザインエージェントで被写体を抽出し、リアルな4K環境を生成。",
+    "keywords": [
+      "video background changer",
+      "change video background ai",
+      "replace video background",
+      "ai video editor",
+      "remove video background"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Green-Screen-Free Matting",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovartで動画背景をAI自動変更\", \"description\": \"Instantly change video backgrounds without a green screen. Use Lovart's AI Design Agent to extract subjects and generate realistic new 4K environments.\", \"url\": \"https://www.lovart.ai/features/video-background-changer\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Lovartは通常の動画背景チェンジャーとどう違うのですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"従来のツールは、透明な動画を提供するか、一般的なストック背景の使用を強制するだけです。Lovartは、無限のChatCanvas上で動作するAIデザインエージェントです。背景を削除し、すぐにAIにプロンプトを出してまったく新しい超リアルな環境を生成し、1つのシームレスなワークフローで最終的な動画を合成します。\"}}, {\"@type\": \"Question\", \"name\": \"動画の背景チェンジャーを使用するにはグリーンスクリーンが必要ですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"グリーンスクリーンは必要ありません！Lovartの高度なAIモデルは深度と動きを分析し、信じられないほどのフレーム単位の精度で、複雑で散らかった背景や動く背景から主要な被写体をインテリジェントに分離します。\"}}, {\"@type\": \"Question\", \"name\": \"新しい背景の照明に被写体を合わせることはできますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。Lovartの最も強力な機能の1つは「Touch Edit」です。動画の背景を変更したら、会話形式のコマンドを使用して被写体の照明、影、カラーグレーディングを調整し、AIが生成した新しい環境に自然に溶け込むようにすることができます。\"}}, {\"@type\": \"Question\", \"name\": \"Lovartはどのファイル形式と解像度をサポートしていますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"MP4やMOVなどの標準的な動画形式をアップロードできます。シーンを交換した後、高品質の合成動画をエクスポートできます。組み込みのUpscale機能により、最終的な出力を鮮明な4K解像度まで強化できます。\"}}, {\"@type\": \"Question\", \"name\": \"背景を変更した動画を商用広告に使用できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。当社の有料プラン（Starter、Plus、Pro）のいずれかを購読しているユーザーは、Lovartで生成および編集したアセットの完全な商用利用権を保持します。新しい動画は、有料広告、クライアントへの納品物、SNSの収益化に安全に使用できます。\"}}]}}"
+    },
+    "title": "Lovartで動画背景をAI自動変更"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Lovartで動画背景をAI自動変更\",\"description\":\"Instantly change video backgrounds without a green screen. Use Lovart's AI Design Agent to extract subjects and generate realistic new 4K environments.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Green-Screen-Free Matting\"}},{\"type\":\"bento-6\",\"title\":\"The Ultimate AI Toolkit for Video Background Replacement\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"グリーンスクリーン不要のマット処理\",\"description\":\"なびく髪、複雑な動き、モーションブラーがあっても完璧なエッジ検出を実現します。Lovartはフレーム間で被写体をインテリジェントに追跡し、あらゆる環境から被写体を分離します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"グリーンスクリーン不要のマット処理\"}},{\"title\":\"照明と影の調和\",\"description\":\"被写体が「ステッカー」のように見えるのを防ぎます。LovartのTouch Editを使用して自然に調整を指示し、被写体のカラーグレーディングと影を新しく生成されたシーンに合わせます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"照明と影の調和\"}},{\"title\":\"無限のシーン生成\",\"description\":\"動画編集とAI画像生成のギャップを埋めます。ChatCanvas上で直接、想像できるあらゆる背景を作成し、もう二度とストック素材を探し回る必要はありません。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"無限のシーン生成\"}},{\"title\":\"マルチモーダル・ディレクション\",\"description\":\"クリエイティブの境界を押し広げます。背景を変更した動画をSeedance 2.0でリファレンスとして使用し、同期されたオーディオを備えたまったく新しい映画のようなシーケンスをオーケストレーションします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"マルチモーダル・ディレクション\"}},{\"title\":\"4Kブロードキャスト・アップスケール\",\"description\":\"コンテンツがプレミアムエージェンシーの基準を満たしていることを確認します。Lovartに組み込まれたUpscale機能を使用して、最終的な動画合成を非常にクリアな4K解像度に強化します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"4Kブロードキャスト・アップスケール\"}},{\"title\":\"オムニチャネル・エクスポート\",\"description\":\"公開するプラットフォームに合わせて動画を正確にフォーマットします。完全に合成されたシーンを、TikTok/Reels向けの9:16の縦型動画、またはYouTube向けの16:9のシネマティックカットとしてエクスポートします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"オムニチャネル・エクスポート\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"グリーンスクリーン不要のマット処理\",\"icon\":\"chat\",\"content\":{\"title\":\"グリーンスクリーン不要のマット処理\",\"description\":\"なびく髪、複雑な動き、モーションブラーがあっても完璧なエッジ検出を実現します。Lovartはフレーム間で被写体をインテリジェントに追跡し、あらゆる環境から被写体を分離します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"グリーンスクリーン不要のマット処理\"}}},{\"label\":\"照明と影の調和\",\"icon\":\"image\",\"content\":{\"title\":\"照明と影の調和\",\"description\":\"被写体が「ステッカー」のように見えるのを防ぎます。LovartのTouch Editを使用して自然に調整を指示し、被写体のカラーグレーディングと影を新しく生成されたシーンに合わせます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"照明と影の調和\"}}},{\"label\":\"無限のシーン生成\",\"icon\":\"flask\",\"content\":{\"title\":\"無限のシーン生成\",\"description\":\"動画編集とAI画像生成のギャップを埋めます。ChatCanvas上で直接、想像できるあらゆる背景を作成し、もう二度とストック素材を探し回る必要はありません。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"無限のシーン生成\"}}},{\"label\":\"マルチモーダル・ディレクション\",\"icon\":\"brand\",\"content\":{\"title\":\"マルチモーダル・ディレクション\",\"description\":\"クリエイティブの境界を押し広げます。背景を変更した動画をSeedance 2.0でリファレンスとして使用し、同期されたオーディオを備えたまったく新しい映画のようなシーケンスをオーケストレーションします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"マルチモーダル・ディレクション\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"4Kブロードキャスト・アップスケール\",\"description\":\"コンテンツがプレミアムエージェンシーの基準を満たしていることを確認します。Lovartに組み込まれたUpscale機能を使用して、最終的な動画合成を非常にクリアな4K解像度に強化します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"4Kブロードキャスト・アップスケール\"}},{\"title\":\"オムニチャネル・エクスポート\",\"description\":\"公開するプラットフォームに合わせて動画を正確にフォーマットします。完全に合成されたシーンを、TikTok/Reels向けの9:16の縦型動画、またはYouTube向けの16:9のシネマティックカットとしてエクスポートします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"オムニチャネル・エクスポート\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"AI Video Background Changer プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"AI動画背景チェンジャー＆デザインエージェント\",\"description\":\"グリーンスクリーンや高価なスタジオのレンタルはもう不要です。LovartのAIデザインエージェントは、究極の動画背景チェンジャーであり、散らかった環境を瞬時に超リアルなAI生成の環境に置き換えることができます。MCoTエンジンを搭載し、被写体を簡単に抽出し、Nano Banana Proでカスタム4Kシーンを生成し、無限のChatCanvas上で完璧な照明の調和を実現します。\",\"input_placeholder\":\"例：「この製品動画の背景を、柔らかな朝の光が差し込む豪華な大理石のカウンタートップに変更して。」\",\"prompts\":[{\"label\":\"Eコマース広告\",\"prompt\":\"E-commerce Product: Change the warehouse background and place the model wearing our jacket onto a sunny Paris street.\"},{\"label\":\"SNSクリエイター\",\"prompt\":\"Social Media Hook: Replace my messy bedroom background with a high-end, neon-lit cyberpunk podcast studio.\"},{\"label\":\"ビジネスプレゼン\",\"prompt\":\"Professional Presentation: Change my home office background to a sleek corporate boardroom with a city skyline view.\"},{\"label\":\"シネマティックVFX\",\"prompt\":\"Cinematic VFX: Change the background of this running car to a futuristic sci-fi desert highway at sunset.\"}],\"tip\":\"プロのヒント：MP4/MOVクリップをアップロードしてください。被写体が抽出されたら、エージェントにプロンプトを出して想像できるあらゆる背景を生成し、「Touch Edit」を使用して被写体の照明を新しいシーンにシームレスにブレンドします。\",\"cta\":{\"text\":\"動画の背景を変更\"}},{\"type\":\"workflow-horizontal\",\"title\":\"簡単な3ステップで動画の背景を変更する方法\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"被写体を自動抽出\",\"description\":\"動画をChatCanvasにアップロードします。LovartのMCoTエンジンは動きと深度を分析し、最も散らかった背景から被写体を瞬時に分離します。手作業によるロトスコープは不要です。\"},{\"step\":2,\"title\":\"カスタムシーンを生成\",\"description\":\"安っぽいストックテンプレートに別れを告げましょう。エージェントにプロンプトを出して、Nano Banana Proなどのエリートモデルを使用し、ブランドに合わせて完璧に調整された、息をのむような超リアルなカスタム背景を作成します。\"},{\"step\":3,\"title\":\"調和とエクスポート\",\"description\":\"セマンティックなTouch Editを使用して照明、影、カラーグレーディングを調整し、被写体が新しい環境に自然に馴染むようにします。最終的な合成を4Kにアップスケールし、キャンペーン用にエクスポートします。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Video Background Changer：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"AI Video Background Changer プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"AI Video Background Changer が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから AI Video Background Changer の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"TikTok広告の撮影にスタジオを借りるために毎月5,000ドルを費やしていました。今では、クリエイターはリビングルームで撮影し、Lovartを使用して動画の背景をカスタムのハイエンド3Dセットに変更しています。現実の生活と区別がつかず、大金を節約できます。\",\"author\":\"マーカス・T.\",\"role\":\"SNSエージェンシー創設者\"},{\"quote\":\"髪の毛や服の端の処理があるため、動画の背景の変更は常に悪夢でした。LovartのMCoTエンジンはモデルを完璧に抽出します。次に、AIにプロンプトを出して、ミニマリストなランウェイにモデルを配置します。コンバージョン率は22%上昇しました。\",\"author\":\"エレナ・R.\",\"role\":\"Eコマース動画エディター\"},{\"quote\":\"グリーンスクリーンなしでシーンを変更できる機能はまさに魔法です。ガレージで俳優を撮影し、Lovartを使用して背景をNano Banana Proで生成したサイバーパンク都市に交換しました。照明は完璧に一致しました。真のゲームチェンジャーです。\",\"author\":\"デビッド・L.\",\"role\":\"インディーズ映画監督\"}],\"title\":\"Lovartの動画チェンジャーでキャンペーンを拡大するマーケター\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"Lovartは通常の動画背景チェンジャーとどう違うのですか？\",\"answer\":\"従来のツールは、透明な動画を提供するか、一般的なストック背景の使用を強制するだけです。Lovartは、無限のChatCanvas上で動作するAIデザインエージェントです。背景を削除し、すぐにAIにプロンプトを出してまったく新しい超リアルな環境を生成し、1つのシームレスなワークフローで最終的な動画を合成します。\"},{\"question\":\"動画の背景チェンジャーを使用するにはグリーンスクリーンが必要ですか？\",\"answer\":\"グリーンスクリーンは必要ありません！Lovartの高度なAIモデルは深度と動きを分析し、信じられないほどのフレーム単位の精度で、複雑で散らかった背景や動く背景から主要な被写体をインテリジェントに分離します。\"},{\"question\":\"新しい背景の照明に被写体を合わせることはできますか？\",\"answer\":\"はい。Lovartの最も強力な機能の1つは「Touch Edit」です。動画の背景を変更したら、会話形式のコマンドを使用して被写体の照明、影、カラーグレーディングを調整し、AIが生成した新しい環境に自然に溶け込むようにすることができます。\"},{\"question\":\"Lovartはどのファイル形式と解像度をサポートしていますか？\",\"answer\":\"MP4やMOVなどの標準的な動画形式をアップロードできます。シーンを交換した後、高品質の合成動画をエクスポートできます。組み込みのUpscale機能により、最終的な出力を鮮明な4K解像度まで強化できます。\"},{\"question\":\"背景を変更した動画を商用広告に使用できますか？\",\"answer\":\"はい。当社の有料プラン（Starter、Plus、Pro）のいずれかを購読しているユーザーは、Lovartで生成および編集したアセットの完全な商用利用権を保持します。新しい動画は、有料広告、クライアントへの納品物、SNSの収益化に安全に使用できます。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Lovartで動画背景をAI自動変更",
+      "description": "Instantly change video backgrounds without a green screen. Use Lovart's AI Design Agent to extract subjects and generate realistic new 4K environments.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Green-Screen-Free Matting"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "The Ultimate AI Toolkit for Video Background Replacement",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "グリーンスクリーン不要のマット処理",
+          "description": "なびく髪、複雑な動き、モーションブラーがあっても完璧なエッジ検出を実現します。Lovartはフレーム間で被写体をインテリジェントに追跡し、あらゆる環境から被写体を分離します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "グリーンスクリーン不要のマット処理"
+          }
+        },
+        {
+          "title": "照明と影の調和",
+          "description": "被写体が「ステッカー」のように見えるのを防ぎます。LovartのTouch Editを使用して自然に調整を指示し、被写体のカラーグレーディングと影を新しく生成されたシーンに合わせます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "照明と影の調和"
+          }
+        },
+        {
+          "title": "無限のシーン生成",
+          "description": "動画編集とAI画像生成のギャップを埋めます。ChatCanvas上で直接、想像できるあらゆる背景を作成し、もう二度とストック素材を探し回る必要はありません。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "無限のシーン生成"
+          }
+        },
+        {
+          "title": "マルチモーダル・ディレクション",
+          "description": "クリエイティブの境界を押し広げます。背景を変更した動画をSeedance 2.0でリファレンスとして使用し、同期されたオーディオを備えたまったく新しい映画のようなシーケンスをオーケストレーションします。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "マルチモーダル・ディレクション"
+          }
+        },
+        {
+          "title": "4Kブロードキャスト・アップスケール",
+          "description": "コンテンツがプレミアムエージェンシーの基準を満たしていることを確認します。Lovartに組み込まれたUpscale機能を使用して、最終的な動画合成を非常にクリアな4K解像度に強化します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "4Kブロードキャスト・アップスケール"
+          }
+        },
+        {
+          "title": "オムニチャネル・エクスポート",
+          "description": "公開するプラットフォームに合わせて動画を正確にフォーマットします。完全に合成されたシーンを、TikTok/Reels向けの9:16の縦型動画、またはYouTube向けの16:9のシネマティックカットとしてエクスポートします。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "オムニチャネル・エクスポート"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "グリーンスクリーン不要のマット処理",
+          "icon": "chat",
+          "content": {
+            "title": "グリーンスクリーン不要のマット処理",
+            "description": "なびく髪、複雑な動き、モーションブラーがあっても完璧なエッジ検出を実現します。Lovartはフレーム間で被写体をインテリジェントに追跡し、あらゆる環境から被写体を分離します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "グリーンスクリーン不要のマット処理"
+            }
+          }
+        },
+        {
+          "label": "照明と影の調和",
+          "icon": "image",
+          "content": {
+            "title": "照明と影の調和",
+            "description": "被写体が「ステッカー」のように見えるのを防ぎます。LovartのTouch Editを使用して自然に調整を指示し、被写体のカラーグレーディングと影を新しく生成されたシーンに合わせます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+              "alt": "照明と影の調和"
+            }
+          }
+        },
+        {
+          "label": "無限のシーン生成",
+          "icon": "flask",
+          "content": {
+            "title": "無限のシーン生成",
+            "description": "動画編集とAI画像生成のギャップを埋めます。ChatCanvas上で直接、想像できるあらゆる背景を作成し、もう二度とストック素材を探し回る必要はありません。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "無限のシーン生成"
+            }
+          }
+        },
+        {
+          "label": "マルチモーダル・ディレクション",
+          "icon": "brand",
+          "content": {
+            "title": "マルチモーダル・ディレクション",
+            "description": "クリエイティブの境界を押し広げます。背景を変更した動画をSeedance 2.0でリファレンスとして使用し、同期されたオーディオを備えたまったく新しい映画のようなシーケンスをオーケストレーションします。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "マルチモーダル・ディレクション"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "4Kブロードキャスト・アップスケール",
+          "description": "コンテンツがプレミアムエージェンシーの基準を満たしていることを確認します。Lovartに組み込まれたUpscale機能を使用して、最終的な動画合成を非常にクリアな4K解像度に強化します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "4Kブロードキャスト・アップスケール"
+          }
+        },
+        {
+          "title": "オムニチャネル・エクスポート",
+          "description": "公開するプラットフォームに合わせて動画を正確にフォーマットします。完全に合成されたシーンを、TikTok/Reels向けの9:16の縦型動画、またはYouTube向けの16:9のシネマティックカットとしてエクスポートします。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "オムニチャネル・エクスポート"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "AI Video Background Changer プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "AI動画背景チェンジャー＆デザインエージェント",
+      "description": "グリーンスクリーンや高価なスタジオのレンタルはもう不要です。LovartのAIデザインエージェントは、究極の動画背景チェンジャーであり、散らかった環境を瞬時に超リアルなAI生成の環境に置き換えることができます。MCoTエンジンを搭載し、被写体を簡単に抽出し、Nano Banana Proでカスタム4Kシーンを生成し、無限のChatCanvas上で完璧な照明の調和を実現します。",
+      "input_placeholder": "例：「この製品動画の背景を、柔らかな朝の光が差し込む豪華な大理石のカウンタートップに変更して。」",
+      "prompts": [
+        {
+          "label": "Eコマース広告",
+          "prompt": "E-commerce Product: Change the warehouse background and place the model wearing our jacket onto a sunny Paris street."
+        },
+        {
+          "label": "SNSクリエイター",
+          "prompt": "Social Media Hook: Replace my messy bedroom background with a high-end, neon-lit cyberpunk podcast studio."
+        },
+        {
+          "label": "ビジネスプレゼン",
+          "prompt": "Professional Presentation: Change my home office background to a sleek corporate boardroom with a city skyline view."
+        },
+        {
+          "label": "シネマティックVFX",
+          "prompt": "Cinematic VFX: Change the background of this running car to a futuristic sci-fi desert highway at sunset."
+        }
+      ],
+      "tip": "プロのヒント：MP4/MOVクリップをアップロードしてください。被写体が抽出されたら、エージェントにプロンプトを出して想像できるあらゆる背景を生成し、「Touch Edit」を使用して被写体の照明を新しいシーンにシームレスにブレンドします。",
+      "cta": {
+        "text": "動画の背景を変更"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "簡単な3ステップで動画の背景を変更する方法",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "被写体を自動抽出",
+          "description": "動画をChatCanvasにアップロードします。LovartのMCoTエンジンは動きと深度を分析し、最も散らかった背景から被写体を瞬時に分離します。手作業によるロトスコープは不要です。"
+        },
+        {
+          "step": 2,
+          "title": "カスタムシーンを生成",
+          "description": "安っぽいストックテンプレートに別れを告げましょう。エージェントにプロンプトを出して、Nano Banana Proなどのエリートモデルを使用し、ブランドに合わせて完璧に調整された、息をのむような超リアルなカスタム背景を作成します。"
+        },
+        {
+          "step": 3,
+          "title": "調和とエクスポート",
+          "description": "セマンティックなTouch Editを使用して照明、影、カラーグレーディングを調整し、被写体が新しい環境に自然に馴染むようにします。最終的な合成を4Kにアップスケールし、キャンペーン用にエクスポートします。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Video Background Changer：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "AI Video Background Changer プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "AI Video Background Changer が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから AI Video Background Changer の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "TikTok広告の撮影にスタジオを借りるために毎月5,000ドルを費やしていました。今では、クリエイターはリビングルームで撮影し、Lovartを使用して動画の背景をカスタムのハイエンド3Dセットに変更しています。現実の生活と区別がつかず、大金を節約できます。",
+          "author": "マーカス・T.",
+          "role": "SNSエージェンシー創設者"
+        },
+        {
+          "quote": "髪の毛や服の端の処理があるため、動画の背景の変更は常に悪夢でした。LovartのMCoTエンジンはモデルを完璧に抽出します。次に、AIにプロンプトを出して、ミニマリストなランウェイにモデルを配置します。コンバージョン率は22%上昇しました。",
+          "author": "エレナ・R.",
+          "role": "Eコマース動画エディター"
+        },
+        {
+          "quote": "グリーンスクリーンなしでシーンを変更できる機能はまさに魔法です。ガレージで俳優を撮影し、Lovartを使用して背景をNano Banana Proで生成したサイバーパンク都市に交換しました。照明は完璧に一致しました。真のゲームチェンジャーです。",
+          "author": "デビッド・L.",
+          "role": "インディーズ映画監督"
+        }
+      ],
+      "title": "Lovartの動画チェンジャーでキャンペーンを拡大するマーケター"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "Lovartは通常の動画背景チェンジャーとどう違うのですか？",
+          "answer": "従来のツールは、透明な動画を提供するか、一般的なストック背景の使用を強制するだけです。Lovartは、無限のChatCanvas上で動作するAIデザインエージェントです。背景を削除し、すぐにAIにプロンプトを出してまったく新しい超リアルな環境を生成し、1つのシームレスなワークフローで最終的な動画を合成します。"
+        },
+        {
+          "question": "動画の背景チェンジャーを使用するにはグリーンスクリーンが必要ですか？",
+          "answer": "グリーンスクリーンは必要ありません！Lovartの高度なAIモデルは深度と動きを分析し、信じられないほどのフレーム単位の精度で、複雑で散らかった背景や動く背景から主要な被写体をインテリジェントに分離します。"
+        },
+        {
+          "question": "新しい背景の照明に被写体を合わせることはできますか？",
+          "answer": "はい。Lovartの最も強力な機能の1つは「Touch Edit」です。動画の背景を変更したら、会話形式のコマンドを使用して被写体の照明、影、カラーグレーディングを調整し、AIが生成した新しい環境に自然に溶け込むようにすることができます。"
+        },
+        {
+          "question": "Lovartはどのファイル形式と解像度をサポートしていますか？",
+          "answer": "MP4やMOVなどの標準的な動画形式をアップロードできます。シーンを交換した後、高品質の合成動画をエクスポートできます。組み込みのUpscale機能により、最終的な出力を鮮明な4K解像度まで強化できます。"
+        },
+        {
+          "question": "背景を変更した動画を商用広告に使用できますか？",
+          "answer": "はい。当社の有料プラン（Starter、Plus、Pro）のいずれかを購読しているユーザーは、Lovartで生成および編集したアセットの完全な商用利用権を保持します。新しい動画は、有料広告、クライアントへの納品物、SNSの収益化に安全に使用できます。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

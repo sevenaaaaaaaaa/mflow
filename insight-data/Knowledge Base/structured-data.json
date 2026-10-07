@@ -1,0 +1,387 @@
+{
+  "_meta": {
+    "generated": "2026-05-19",
+    "base_url": "https://www.lovart.ai",
+    "usage": {
+      "organization": "Embed in all pages inside <script type=\"application/ld+json\">",
+      "website": "Embed in homepage only",
+      "breadcrumb_*": "Embed in respective section pages, add trailing {slug, title} items for sub-pages",
+      "faq_pricing": "Embed in /pricing page only",
+      "blogposting_template": "Use for each blog article page, fill template variables",
+      "howto_template": "Use for tutorial blog posts",
+      "newsarticle_template": "Use for news article pages",
+      "software_app": "Embed in homepage (for Google rich results)"
+    },
+    "homepage_schema": "Place all of [organization, website, software_app, breadcrumb_home] in homepage <head>"
+  },
+  "organization": {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Lovart AI",
+    "alternateName": [
+      "Lovart",
+      "Lovart Design Agent"
+    ],
+    "url": "https://www.lovart.ai",
+    "logo": "https://www.lovart.ai/favicon.ico",
+    "description": "Lovart is the world's first AI Design Agent. Automate your entire creative workflow — from logos and social media graphics to full marketing campaigns. Create professional designs instantly with AI.",
+    "foundingDate": "2025",
+    "founders": [
+      {
+        "@type": "Person",
+        "name": "Melvin Chen",
+        "jobTitle": "Co-Founder & CEO"
+      },
+      {
+        "@type": "Person",
+        "name": "Wang Haofan",
+        "jobTitle": "Co-Founder & CTO"
+      }
+    ],
+    "parentOrganization": {
+      "@type": "Organization",
+      "name": "LiblibAI"
+    },
+    "sameAs": [
+      "https://twitter.com/lovart_ai",
+      "https://www.instagram.com/lovart.ai",
+      "https://www.linkedin.com/company/lovart-ai",
+      "https://www.youtube.com/@lovart_ai",
+      "https://www.tiktok.com/@lovart_ai",
+      "https://www.facebook.com/lovart.ai"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "url": "https://www.lovart.ai/"
+    },
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "United States"
+      },
+      {
+        "@type": "Country",
+        "name": "China"
+      },
+      {
+        "@type": "Country",
+        "name": "Japan"
+      },
+      {
+        "@type": "Country",
+        "name": "South Korea"
+      },
+      {
+        "@type": "Country",
+        "name": "Germany"
+      },
+      {
+        "@type": "Country",
+        "name": "France"
+      },
+      {
+        "@type": "Country",
+        "name": "Brazil"
+      },
+      {
+        "@type": "Country",
+        "name": "Russia"
+      },
+      {
+        "@type": "Country",
+        "name": "Italy"
+      }
+    ]
+  },
+  "website": {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Lovart AI",
+    "url": "https://www.lovart.ai",
+    "description": "World's First AI Design Agent — from logo to full marketing campaign in one conversation. Join 200K+ creators.",
+    "inLanguage": [
+      "en",
+      "zh",
+      "zh-TW",
+      "ja",
+      "ko",
+      "de",
+      "fr",
+      "pt",
+      "ru",
+      "it"
+    ],
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {
+        "@type": "EntryPoint",
+        "urlTemplate": "https://www.lovart.ai/blog?q={search_term_string}"
+      },
+      "query-input": "required name=search_term_string"
+    }
+  },
+  "software_app": {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Lovart AI Design Agent",
+    "applicationCategory": "DesignApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "AggregateOffer",
+      "lowPrice": "0",
+      "highPrice": "149",
+      "priceCurrency": "USD",
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Starter",
+          "price": "15",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Basic",
+          "price": "26",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro",
+          "price": "69",
+          "priceCurrency": "USD"
+        },
+        {
+          "@type": "Offer",
+          "name": "Ultimate",
+          "price": "149",
+          "priceCurrency": "USD"
+        }
+      ]
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "ratingCount": "12",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  },
+  "breadcrumb_home": {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.lovart.ai/"
+      }
+    ]
+  },
+  "breadcrumb_blog": {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.lovart.ai/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Blog",
+        "item": "https://www.lovart.ai/blog"
+      }
+    ]
+  },
+  "breadcrumb_features": {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.lovart.ai/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Features",
+        "item": "https://www.lovart.ai/features"
+      }
+    ]
+  },
+  "breadcrumb_tools": {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.lovart.ai/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Tools",
+        "item": "https://www.lovart.ai/tools"
+      }
+    ]
+  },
+  "breadcrumb_pricing": {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.lovart.ai/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Pricing",
+        "item": "https://www.lovart.ai/pricing"
+      }
+    ]
+  },
+  "breadcrumb_news": {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.lovart.ai/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "News",
+        "item": "https://www.lovart.ai/news"
+      }
+    ]
+  },
+  "faq_pricing": {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do credits work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Credits are used to process your request and generate the final output, with usage depending on what you choose and how complex the task is. More complex tasks require more credits."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will credits expire?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Monthly Plan Credits are valid for the duration of your current billing cycle and automatically reset next billing date. Annual Plan credits are distributed monthly and valid within that month's cycle."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Monthly and Annual plans?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Annual plans offer a discount compared to monthly billing. Both receive monthly credit allocations based on the plan tier."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I upgrade or downgrade my plan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, you can upgrade or downgrade your plan at any time. Changes take effect at the start of your next billing cycle."
+        }
+      }
+    ]
+  },
+  "blogposting_template": {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "_comment": "Template — replace headline, description, datePublished, dateModified, url, image per article",
+    "headline": "{{ARTICLE_TITLE}}",
+    "description": "{{ARTICLE_DESCRIPTION}}",
+    "datePublished": "{{DATE}}",
+    "dateModified": "{{DATE}}",
+    "author": {
+      "@type": "Organization",
+      "name": "Lovart AI",
+      "url": "https://www.lovart.ai"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lovart AI",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.lovart.ai/favicon.ico"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "{{ARTICLE_URL}}"
+    }
+  },
+  "howto_template": {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "_comment": "Template for tutorial blog posts",
+    "name": "{{TUTORIAL_TITLE}}",
+    "description": "{{TUTORIAL_DESCRIPTION}}",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "{{STEP_1_NAME}}",
+        "text": "{{STEP_1_TEXT}}"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "{{STEP_2_NAME}}",
+        "text": "{{STEP_2_TEXT}}"
+      },
+      {
+        "@type": "HowToStep",
+        "name": "{{STEP_3_NAME}}",
+        "text": "{{STEP_3_TEXT}}"
+      }
+    ]
+  },
+  "newsarticle_template": {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "_comment": "Template for news articles",
+    "headline": "{{NEWS_TITLE}}",
+    "description": "{{NEWS_DESCRIPTION}}",
+    "datePublished": "{{DATE}}",
+    "dateModified": "{{DATE}}",
+    "author": {
+      "@type": "Organization",
+      "name": "Lovart AI"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lovart AI",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://www.lovart.ai/favicon.ico"
+      }
+    }
+  }
+}

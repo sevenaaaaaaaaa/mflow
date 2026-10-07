@@ -1,0 +1,577 @@
+{
+  "version": "2026-06-07-v2",
+  "sectionCount": 12,
+  "taxonomy": {
+    "primaryAxes": [
+      "persona",
+      "industry"
+    ],
+    "balance": "6 人群故事线 + 6 行业故事线；选题时两条轴都标，发布时只选 1 条",
+    "selectionPriority": [
+      "1. slug / 标题是否点名垂直行业 → 行业轴",
+      "2. 正文是否以行业痛点为主（SKU、门店、筹款、课程、剧集）→ 行业轴",
+      "3. 否则看组织角色与采购主体 → 人群轴",
+      "4. 仍模糊 → solution-p-marketing（团队默认）"
+    ]
+  },
+  "coverageMatrix": {
+    "persona": {
+      "solution-p-marketing": {
+        "status": "example",
+        "slug": "ai-design-solution-for-marketing-teams"
+      },
+      "solution-p-founder": {
+        "status": "planned",
+        "slug": "ai-design-solution-for-startups"
+      },
+      "solution-p-design": {
+        "status": "planned",
+        "slug": null
+      },
+      "solution-p-agency": {
+        "status": "example",
+        "slug": "ai-design-solution-for-agencies"
+      },
+      "solution-p-enterprise": {
+        "status": "planned",
+        "slug": "ai-design-solution-for-enterprise"
+      },
+      "solution-p-individual": {
+        "status": "planned",
+        "slug": "ai-design-solution-for-freelancers"
+      }
+    },
+    "industry": {
+      "solution-i-ecommerce": {
+        "status": "example",
+        "slug": "ai-design-solution-for-shopify"
+      },
+      "solution-i-saas": {
+        "status": "example",
+        "slug": "ai-design-solution-for-saas"
+      },
+      "solution-i-local": {
+        "status": "example",
+        "slug": "ai-design-for-small-business-hub"
+      },
+      "solution-i-wellness": {
+        "status": "example",
+        "slug": "ai-design-for-fitness-wellness-hub"
+      },
+      "solution-i-mission": {
+        "status": "example",
+        "slug": "ai-design-solution-for-nonprofits"
+      },
+      "solution-i-creator": {
+        "status": "example",
+        "slug": "ai-design-solution-for-creators"
+      }
+    }
+  },
+  "aliases": {
+    "solution-team": "solution-p-marketing",
+    "solution-ecommerce": "solution-i-ecommerce",
+    "solution-agency": "solution-p-agency",
+    "solution-enterprise": "solution-p-enterprise",
+    "solution-solo": "solution-p-individual",
+    "solution-mission": "solution-i-mission"
+  },
+  "storylines": {
+    "solution-p-marketing": {
+      "label": "市场 / 增长团队",
+      "axis": "persona",
+      "code": "P1",
+      "narrative": "渠道扩产、分布式生产、采购与品牌治理",
+      "audience": [
+        "marketing-teams",
+        "growth-teams",
+        "demand-gen",
+        "content-ops"
+      ],
+      "sections": [
+        "hero-cinematic",
+        "bento-4",
+        "capability-tabs",
+        "bento-2",
+        "workflow-vertical",
+        "comparison-table",
+        "cluster-block-dense",
+        "showcase-stacked",
+        "testimonial",
+        "pricing-block",
+        "faq",
+        "cta-default"
+      ]
+    },
+    "solution-p-founder": {
+      "label": "创业公司创始人 / 产品负责人",
+      "axis": "persona",
+      "code": "P2",
+      "narrative": "缺设计编制、从 0 到 1 品牌与 GTM 素材",
+      "audience": [
+        "startup-founders",
+        "product-leads",
+        "solo-founders-with-gtm"
+      ],
+      "sections": [
+        "hero-journey",
+        "bento-4",
+        "capability-tabs",
+        "bento-2",
+        "workflow-horizontal",
+        "comparison-table",
+        "cluster-block-dense",
+        "showcase-stacked",
+        "testimonial",
+        "pricing-block",
+        "faq",
+        "cta-default"
+      ]
+    },
+    "solution-p-design": {
+      "label": "企业内部设计 / 品牌团队",
+      "axis": "persona",
+      "code": "P3",
+      "narrative": "设计产能放大、品牌系统落地、业务方自助生产",
+      "audience": [
+        "in-house-design",
+        "brand-teams",
+        "creative-ops"
+      ],
+      "sections": [
+        "hero-cinematic",
+        "bento-4",
+        "capability-tabs",
+        "feature-detail",
+        "workflow-vertical",
+        "comparison-table",
+        "cluster-block-dense",
+        "canvas-wall",
+        "review-grid-3col",
+        "pricing-block",
+        "faq",
+        "cta-default"
+      ]
+    },
+    "solution-p-agency": {
+      "label": "代理商 / 创意工作室",
+      "axis": "persona",
+      "code": "P4",
+      "narrative": "多客户并行、pitch 加速、交付扩产与利润率",
+      "audience": [
+        "agencies",
+        "creative-studios",
+        "design-shops",
+        "marketing-agencies"
+      ],
+      "sections": [
+        "hero-mosaic",
+        "bento-4",
+        "capability-tabs",
+        "feature-detail",
+        "workflow-horizontal",
+        "comparison-table",
+        "cluster-block-dense",
+        "canvas-wall",
+        "review-grid-4col",
+        "pricing-block",
+        "faq",
+        "cta-default"
+      ]
+    },
+    "solution-p-enterprise": {
+      "label": "大企业 / 全球品牌组织",
+      "axis": "persona",
+      "code": "P5",
+      "narrative": "治理、合规、多区域一致性、规模化采购",
+      "audience": [
+        "enterprise",
+        "global-brand-teams",
+        "procurement-led-teams"
+      ],
+      "sections": [
+        "hero-cinematic",
+        "bento-6",
+        "capability-tabs",
+        "feature-detail",
+        "workflow-vertical",
+        "comparison-table",
+        "cluster-block-dense",
+        "showcase-horizontal",
+        "review-grid-3col",
+        "pricing-block",
+        "faq",
+        "cta-default"
+      ]
+    },
+    "solution-p-individual": {
+      "label": "自由职业 / 个体经营者",
+      "axis": "persona",
+      "code": "P6",
+      "narrative": "个人交付、低门槛、接单与自媒体素材",
+      "audience": [
+        "freelancers",
+        "solopreneurs",
+        "consultants",
+        "one-person-shops"
+      ],
+      "sections": [
+        "hero-split",
+        "bento-4",
+        "capability-tabs",
+        "bento-2",
+        "workflow-horizontal",
+        "comparison-before-after",
+        "cluster-block-dense",
+        "showcase-stacked",
+        "testimonial",
+        "pricing-block",
+        "faq",
+        "cta-default"
+      ]
+    },
+    "solution-i-ecommerce": {
+      "label": "电商 / DTC / 零售线上",
+      "axis": "industry",
+      "code": "I1",
+      "narrative": "买家旅程、SKU 素材、全漏斗转化测试",
+      "industry": [
+        "ecommerce",
+        "dtc",
+        "shopify",
+        "marketplace-sellers",
+        "retail-online"
+      ],
+      "sections": [
+        "hero-journey",
+        "bento-4",
+        "capability-tabs",
+        "bento-2",
+        "workflow-vertical",
+        "comparison-table",
+        "cluster-block-dense",
+        "showcase-stacked",
+        "review-grid-3col",
+        "pricing-block",
+        "faq",
+        "cta-default"
+      ]
+    },
+    "solution-i-saas": {
+      "label": "B2B SaaS / 科技产品",
+      "axis": "industry",
+      "code": "I2",
+      "narrative": "产品营销、PLG 素材、销售赋能与发布节奏",
+      "industry": [
+        "saas",
+        "b2b-tech",
+        "devtools",
+        "fintech-product"
+      ],
+      "sections": [
+        "hero-cinematic",
+        "bento-4",
+        "capability-tabs",
+        "bento-2",
+        "workflow-vertical",
+        "comparison-table",
+        "cluster-block-dense",
+        "showcase-stacked",
+        "review-grid-3col",
+        "pricing-block",
+        "faq",
+        "cta-default"
+      ]
+    },
+    "solution-i-local": {
+      "label": "本地商家 / 餐饮 / 服务业",
+      "axis": "industry",
+      "code": "I3",
+      "narrative": "到店引流、套餐促销、门店视觉与口碑素材",
+      "industry": [
+        "local-business",
+        "hospitality",
+        "food-beverage",
+        "real-estate-local",
+        "services"
+      ],
+      "sections": [
+        "hero-journey",
+        "bento-4",
+        "capability-tabs",
+        "bento-2",
+        "workflow-horizontal",
+        "comparison-table",
+        "cluster-block-dense",
+        "showcase-stacked",
+        "testimonial",
+        "pricing-block",
+        "faq",
+        "cta-default"
+      ]
+    },
+    "solution-i-wellness": {
+      "label": "健身 / 健康 / 美业",
+      "axis": "industry",
+      "code": "I4",
+      "narrative": "课程推广、会员转化、前后对比与社群素材",
+      "industry": [
+        "fitness",
+        "wellness",
+        "beauty",
+        "health-coaching",
+        "clinics-aesthetics"
+      ],
+      "sections": [
+        "hero-cinematic",
+        "bento-4",
+        "capability-tabs",
+        "bento-2",
+        "workflow-vertical",
+        "comparison-before-after",
+        "cluster-block-dense",
+        "showcase-stacked",
+        "testimonial",
+        "pricing-block",
+        "faq",
+        "cta-default"
+      ]
+    },
+    "solution-i-mission": {
+      "label": "非营利 / 教育 / 公益影响",
+      "axis": "industry",
+      "code": "I5",
+      "narrative": "筹款活动、影响力叙事、志愿者招募与品牌信任",
+      "industry": [
+        "nonprofit",
+        "ngo",
+        "education",
+        "social-impact",
+        "community-orgs"
+      ],
+      "sections": [
+        "hero-journey",
+        "bento-4",
+        "capability-tabs",
+        "bento-2",
+        "workflow-vertical",
+        "comparison-table",
+        "cluster-block-dense",
+        "showcase-stacked",
+        "testimonial",
+        "pricing-block",
+        "faq",
+        "cta-default"
+      ]
+    },
+    "solution-i-creator": {
+      "label": "创作者经济 / 媒体 / 个人 IP",
+      "axis": "industry",
+      "code": "I6",
+      "narrative": "多平台内容、栏目视觉、商单交付与粉丝增长",
+      "industry": [
+        "creators",
+        "media",
+        "podcast",
+        "newsletter",
+        "personal-brand"
+      ],
+      "sections": [
+        "hero-gallery",
+        "bento-4",
+        "capability-tabs",
+        "bento-2",
+        "workflow-horizontal",
+        "comparison-table",
+        "cluster-block-dense",
+        "showcase-horizontal",
+        "testimonial",
+        "pricing-block",
+        "faq",
+        "cta-default"
+      ]
+    }
+  },
+  "selectionRules": [
+    {
+      "priority": 1,
+      "axis": "industry",
+      "signals": [
+        "shopify",
+        "dtc",
+        "ecommerce",
+        "pdp",
+        "sku",
+        "marketplace",
+        "conversion-funnel"
+      ],
+      "storyline": "solution-i-ecommerce"
+    },
+    {
+      "priority": 1,
+      "axis": "industry",
+      "signals": [
+        "saas",
+        "b2b",
+        "product-launch",
+        "plg",
+        "sales-enablement",
+        "devtools"
+      ],
+      "storyline": "solution-i-saas"
+    },
+    {
+      "priority": 1,
+      "axis": "industry",
+      "signals": [
+        "restaurant",
+        "cafe",
+        "local-business",
+        "salon",
+        "real-estate-agent",
+        "storefront"
+      ],
+      "storyline": "solution-i-local"
+    },
+    {
+      "priority": 1,
+      "axis": "industry",
+      "signals": [
+        "fitness",
+        "wellness",
+        "gym",
+        "yoga",
+        "beauty",
+        "spa",
+        "coaching"
+      ],
+      "storyline": "solution-i-wellness"
+    },
+    {
+      "priority": 1,
+      "axis": "industry",
+      "signals": [
+        "nonprofit",
+        "ngo",
+        "charity",
+        "fundraising",
+        "donation",
+        "volunteer",
+        "education-org"
+      ],
+      "storyline": "solution-i-mission"
+    },
+    {
+      "priority": 1,
+      "axis": "industry",
+      "signals": [
+        "creator",
+        "youtuber",
+        "podcast",
+        "newsletter",
+        "influencer",
+        "personal-brand",
+        "content-series"
+      ],
+      "storyline": "solution-i-creator"
+    },
+    {
+      "priority": 2,
+      "axis": "persona",
+      "signals": [
+        "agency",
+        "studio",
+        "multi-client",
+        "retainer",
+        "pitch",
+        "portfolio"
+      ],
+      "storyline": "solution-p-agency"
+    },
+    {
+      "priority": 2,
+      "axis": "persona",
+      "signals": [
+        "enterprise",
+        "global",
+        "sso",
+        "governance",
+        "multi-region",
+        "compliance"
+      ],
+      "storyline": "solution-p-enterprise"
+    },
+    {
+      "priority": 2,
+      "axis": "persona",
+      "signals": [
+        "in-house-design",
+        "brand-team",
+        "creative-ops",
+        "design-system"
+      ],
+      "storyline": "solution-p-design"
+    },
+    {
+      "priority": 2,
+      "axis": "persona",
+      "signals": [
+        "founder",
+        "startup",
+        "seed-stage",
+        "series-a",
+        "no-design-hire"
+      ],
+      "storyline": "solution-p-founder"
+    },
+    {
+      "priority": 2,
+      "axis": "persona",
+      "signals": [
+        "freelancer",
+        "solopreneur",
+        "consultant",
+        "one-person",
+        "side-hustle"
+      ],
+      "storyline": "solution-p-individual"
+    },
+    {
+      "priority": 2,
+      "axis": "persona",
+      "signals": [
+        "marketing-team",
+        "growth-team",
+        "demand-gen",
+        "content-team"
+      ],
+      "storyline": "solution-p-marketing"
+    }
+  ],
+  "contentStrategyMapping": {
+    "ai-design-solution-for-marketing-teams": "solution-p-marketing",
+    "ai-design-solution-for-startups": "solution-p-founder",
+    "ai-design-solution-for-shopify": "solution-i-ecommerce",
+    "ai-design-solution-for-agencies": "solution-p-agency",
+    "ai-design-solution-for-enterprise": "solution-p-enterprise",
+    "ai-design-solution-for-freelancers": "solution-p-individual",
+    "ai-design-solution-for-solopreneurs": "solution-p-individual",
+    "ai-design-for-small-business-hub": "solution-i-local",
+    "ai-design-solution-for-nonprofits": "solution-i-mission",
+    "ai-design-for-fitness-wellness-hub": "solution-i-wellness",
+    "ai-design-solution-for-saas": "solution-i-saas",
+    "ai-design-solution-for-creators": "solution-i-creator",
+    "good-design-for-marketers": "solution-p-marketing",
+    "good-design-for-business-owners": "solution-i-ecommerce"
+  },
+  "gapBacklog": {
+    "persona": [
+      "solution-p-design",
+      "solution-p-founder",
+      "solution-p-enterprise",
+      "solution-p-individual"
+    ],
+    "industry": [],
+    "note": "有 Markdown 无 JSON 范例的条目见 coverageMatrix；优先补行业轴缺口"
+  }
+}

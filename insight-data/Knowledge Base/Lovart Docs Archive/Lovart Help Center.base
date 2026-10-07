@@ -1,0 +1,15 @@
+views:
+  - type: table
+    name: 表格
+    filters:
+      and:
+        - file.inFolder("1. 项目/Lovart Docs")
+    order:
+      - file.name
+      - author
+      - description
+      - title
+      - URL
+      - source
+    columnSize:
+      file.name: 470

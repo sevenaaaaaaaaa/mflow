@@ -1,0 +1,362 @@
+---
+type: kb-index/by-topic
+version: 1.0
+generated: 2026-07-05
+generator: build-index.py
+---
+
+# KB Index by Topic
+
+Each topic lists all KB units that touch it, ordered by authority (5 first).
+
+## agent  (26 units)
+- **[5] official-hand-curated-doc**  `kb-ai-transformation` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/AI Transformation.md
+- **[5] official-hand-curated-doc**  `kb-basic-ai-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Basic AI Editing.md
+- **[5] official-hand-curated-doc**  `kb-design-your-first-project` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/Design Your First Project.md
+- **[5] official-hand-curated-doc**  `kb-how-lovart-works` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/How Lovart Works.md
+- **[5] official-hand-curated-doc**  `kb-adding-references` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Adding References.md
+- **[5] official-hand-curated-doc**  `kb-agent-skills` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Agent Skills.md
+- **[5] official-hand-curated-doc**  `kb-chat-tools` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Chat Tools.md
+- **[5] official-hand-curated-doc**  `kb-selecting-ai-models` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Selecting AI Models.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 1.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 2.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 3.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 4.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 5.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform.md
+- **[3] internal-curated**  `kb-lovart-agent` — insight-data/Knowledge Base/Lovart Introduction/Lovart Agent 官方介绍.md
+- **[3] internal-curated**  `kb-lovart-knowledge-base-v8` — insight-data/Knowledge Base/Lovart Introduction/Lovart Knowledge Base V8.md
+- **[3] internal-curated**  `kb-lovart-one-pager` — insight-data/Knowledge Base/Lovart Introduction/Lovart one pager.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 传播指导文档.md
+- **[3] internal-curated**  `kb-lovart-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 帮你了解Lovart.md
+- **[3] internal-curated**  `kb-` — insight-data/Knowledge Base/博客分类.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-mention-guide-lock-models-flux-veo-3-context` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart @ Mention Guide Lock Models (Flux, Veo 3) & Context.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-modes-thinking-mode-strategy-vs-fast-mode-speed` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart AI Modes Thinking Mode Strategy vs. Fast Mode Speed.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-file-upload-import-images-video-pdf-references` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart File Upload Import Images, Video & PDF References.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-model-select-guide-preferences-for-flux-veo-3-tripo` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart Model Select Guide Preferences for Flux, Veo 3 & Tripo.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-web-search-real-time-design-trends-url-analysis` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart Web Search Real-Time Design Trends & URL Analysis.md
+- **[2] user-curated**  `kb-lovart-social-media-knowledge-base-2026-07` — insight-data/Knowledge Base/Lovart Social Media Knowledge Base 2026-07.md
+
+## brand  (27 units)
+- **[5] official-crawl-derived**  `kb-changelog` — insight-data/Knowledge Base/Changelog/Changelog.md
+- **[5] official-hand-curated-doc**  `kb-ai-transformation` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/AI Transformation.md
+- **[5] official-hand-curated-doc**  `kb-design-your-first-project` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/Design Your First Project.md
+- **[5] official-hand-curated-doc**  `kb-how-lovart-works` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/How Lovart Works.md
+- **[5] official-hand-curated-doc**  `kb-things-you-should-set-up-first` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/Things You Should Set Up First.md
+- **[5] official-hand-curated-doc**  `kb-adding-references` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Adding References.md
+- **[5] official-hand-curated-doc**  `kb-agent-skills` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Agent Skills.md
+- **[5] official-hand-curated-doc**  `kb-chat-tools` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Chat Tools.md
+- **[5] official-hand-curated-doc**  `kb-other-things-you-can-prompt-to-create` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Other Things You Can Prompt to Create.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 1.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 2.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 3.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 4.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 5.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform.md
+- **[3] internal-curated**  `kb-lovart-knowledge-base-v8` — insight-data/Knowledge Base/Lovart Introduction/Lovart Knowledge Base V8.md
+- **[3] internal-curated**  `kb-lovart-one-pager` — insight-data/Knowledge Base/Lovart Introduction/Lovart one pager.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 传播指导文档.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart功能详细说明文档.md
+- **[3] internal-curated**  `kb-` — insight-data/Knowledge Base/博客分类.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-modes-thinking-mode-strategy-vs-fast-mode-speed` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart AI Modes Thinking Mode Strategy vs. Fast Mode Speed.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-file-upload-import-images-video-pdf-references` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart File Upload Import Images, Video & PDF References.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-web-search-real-time-design-trends-url-analysis` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart Web Search Real-Time Design Trends & URL Analysis.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-image-generator-create-with-nano-banana-pro-flux-2` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart AI Image Generator Create with Nano Banana Pro & Flux 2.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-guide-upload-images-videos-use-frames` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Guide Upload Images, Videos & Use Frames.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-text-tool-guide-add-headlines-labels-ai-typography` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Text Tool Guide Add Headlines, Labels & AI Typography.md
+- **[2] user-curated**  `kb-lovart-social-media-knowledge-base-2026-07` — insight-data/Knowledge Base/Lovart Social Media Knowledge Base 2026-07.md
+
+## canvas  (42 units)
+- **[5] official-crawl-derived**  `kb-changelog` — insight-data/Knowledge Base/Changelog/Changelog.md
+- **[5] official-hand-curated-doc**  `kb-ai-transformation` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/AI Transformation.md
+- **[5] official-hand-curated-doc**  `kb-advanced-ai-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Advanced AI Editing.md
+- **[5] official-hand-curated-doc**  `kb-basic-ai-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Basic AI Editing.md
+- **[5] official-hand-curated-doc**  `kb-basic-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Basic Editing.md
+- **[5] official-hand-curated-doc**  `kb-canvas-objects` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Canvas Objects.md
+- **[5] official-hand-curated-doc**  `kb-customize-your-canvas` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Customize Your Canvas.md
+- **[5] official-hand-curated-doc**  `kb-export-formats` — insight-data/Knowledge Base/Lovart New Help Center/Export Your Assets/Export Formats.md
+- **[5] official-hand-curated-doc**  `kb-design-your-first-project` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/Design Your First Project.md
+- **[5] official-hand-curated-doc**  `kb-how-lovart-works` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/How Lovart Works.md
+- **[5] official-hand-curated-doc**  `kb-adding-references` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Adding References.md
+- **[5] official-hand-curated-doc**  `kb-chat-tools` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Chat Tools.md
+- **[5] official-hand-curated-doc**  `kb-other-things-you-can-prompt-to-create` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Other Things You Can Prompt to Create.md
+- **[5] official-hand-curated-doc**  `kb-keyboard-shortcuts` — insight-data/Knowledge Base/Lovart New Help Center/Reference/Keyboard Shortcuts.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 2.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 3.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 4.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 5.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform.md
+- **[3] internal-curated**  `kb-lovart-knowledge-base-v8` — insight-data/Knowledge Base/Lovart Introduction/Lovart Knowledge Base V8.md
+- **[3] internal-curated**  `kb-lovart-one-pager` — insight-data/Knowledge Base/Lovart Introduction/Lovart one pager.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 传播指导文档.md
+- **[3] internal-curated**  `kb-lovart-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 帮你了解Lovart.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart功能详细说明文档.md
+- **[3] internal-curated**  `kb-` — insight-data/Knowledge Base/博客分类.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-file-upload-import-images-video-pdf-references` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart File Upload Import Images, Video & PDF References.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-remover-erase-objects-text-watermarks-instantly` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart AI Remover Erase Objects, Text & Watermarks Instantly.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-upscale-boost-images-to-8k-videos-to-4k` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart AI Upscale Boost Images to 8K & Videos to 4K.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-crop-tool-reframe-images-adjust-aspect-ratios` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Crop Tool Reframe Images & Adjust Aspect Ratios.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-edit-elements-auto-split-images-into-editable-layers` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Edit Elements Auto-Split Images into Editable Layers.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-edit-text-guide-modify-image-text-fix-typos` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Edit Text Guide Modify Image Text & Fix Typos.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-expand-tool-ai-outpainting-aspect-ratio-resizing` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Expand Tool AI Outpainting & Aspect Ratio Resizing.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-mockup-tool-instant-photorealistic-product-scene-gene` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Mockup Tool Instant Photorealistic Product & Scene Generation.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-quick-edit-instant-ai-adjustments-via-tab-shortcut` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Quick Edit Instant AI Adjustments via Tab Shortcut.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-remove-bg-one-click-background-removal-isolation` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Remove BG One-Click Background Removal & Isolation.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-image-generator-create-with-nano-banana-pro-flux-2` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart AI Image Generator Create with Nano Banana Pro & Flux 2.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-guide-master-shapes-masks-layout-grids` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Guide Master Shapes, Masks & Layout Grids.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-guide-upload-images-videos-use-frames` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Guide Upload Images, Videos & Use Frames.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-tools-master-touch-edit-smart-select-hand-tool` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Tools Master Touch Edit, Smart Select & Hand Tool.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-chatcanvas-vector-tools-master-pencil-b-pen-p` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart ChatCanvas Vector Tools Master Pencil (B) & Pen (P).md
+- **[2] official-hand-curated-legacy**  `kb-lovart-text-tool-guide-add-headlines-labels-ai-typography` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Text Tool Guide Add Headlines, Labels & AI Typography.md
+- **[2] user-curated**  `kb-lovart-social-media-knowledge-base-2026-07` — insight-data/Knowledge Base/Lovart Social Media Knowledge Base 2026-07.md
+
+## image  (45 units)
+- **[5] official-crawl-derived**  `kb-changelog` — insight-data/Knowledge Base/Changelog/Changelog.md
+- **[5] official-hand-curated-doc**  `kb-ai-transformation` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/AI Transformation.md
+- **[5] official-hand-curated-doc**  `kb-advanced-ai-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Advanced AI Editing.md
+- **[5] official-hand-curated-doc**  `kb-basic-ai-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Basic AI Editing.md
+- **[5] official-hand-curated-doc**  `kb-basic-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Basic Editing.md
+- **[5] official-hand-curated-doc**  `kb-canvas-objects` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Canvas Objects.md
+- **[5] official-hand-curated-doc**  `kb-customize-your-canvas` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Customize Your Canvas.md
+- **[5] official-hand-curated-doc**  `kb-export-formats` — insight-data/Knowledge Base/Lovart New Help Center/Export Your Assets/Export Formats.md
+- **[5] official-hand-curated-doc**  `kb-design-your-first-project` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/Design Your First Project.md
+- **[5] official-hand-curated-doc**  `kb-how-lovart-works` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/How Lovart Works.md
+- **[5] official-hand-curated-doc**  `kb-adding-references` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Adding References.md
+- **[5] official-hand-curated-doc**  `kb-agent-skills` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Agent Skills.md
+- **[5] official-hand-curated-doc**  `kb-chat-tools` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Chat Tools.md
+- **[5] official-hand-curated-doc**  `kb-other-things-you-can-prompt-to-create` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Other Things You Can Prompt to Create.md
+- **[5] official-hand-curated-doc**  `kb-selecting-ai-models` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Selecting AI Models.md
+- **[5] official-hand-curated-doc**  `kb-keyboard-shortcuts` — insight-data/Knowledge Base/Lovart New Help Center/Reference/Keyboard Shortcuts.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 1.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 2.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 4.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 5.md
+- **[3] internal-curated**  `kb-lovart-knowledge-base-v8` — insight-data/Knowledge Base/Lovart Introduction/Lovart Knowledge Base V8.md
+- **[3] internal-curated**  `kb-lovart-one-pager` — insight-data/Knowledge Base/Lovart Introduction/Lovart one pager.md
+- **[3] internal-curated**  `kb-lovart-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 帮你了解Lovart.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart功能详细说明文档.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-mention-guide-lock-models-flux-veo-3-context` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart @ Mention Guide Lock Models (Flux, Veo 3) & Context.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-modes-thinking-mode-strategy-vs-fast-mode-speed` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart AI Modes Thinking Mode Strategy vs. Fast Mode Speed.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-file-upload-import-images-video-pdf-references` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart File Upload Import Images, Video & PDF References.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-model-select-guide-preferences-for-flux-veo-3-tripo` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart Model Select Guide Preferences for Flux, Veo 3 & Tripo.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-web-search-real-time-design-trends-url-analysis` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart Web Search Real-Time Design Trends & URL Analysis.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-remover-erase-objects-text-watermarks-instantly` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart AI Remover Erase Objects, Text & Watermarks Instantly.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-upscale-boost-images-to-8k-videos-to-4k` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart AI Upscale Boost Images to 8K & Videos to 4K.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-crop-tool-reframe-images-adjust-aspect-ratios` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Crop Tool Reframe Images & Adjust Aspect Ratios.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-edit-elements-auto-split-images-into-editable-layers` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Edit Elements Auto-Split Images into Editable Layers.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-edit-text-guide-modify-image-text-fix-typos` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Edit Text Guide Modify Image Text & Fix Typos.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-expand-tool-ai-outpainting-aspect-ratio-resizing` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Expand Tool AI Outpainting & Aspect Ratio Resizing.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-mockup-tool-instant-photorealistic-product-scene-gene` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Mockup Tool Instant Photorealistic Product & Scene Generation.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-quick-edit-instant-ai-adjustments-via-tab-shortcut` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Quick Edit Instant AI Adjustments via Tab Shortcut.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-remove-bg-one-click-background-removal-isolation` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Remove BG One-Click Background Removal & Isolation.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-image-generator-create-with-nano-banana-pro-flux-2` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart AI Image Generator Create with Nano Banana Pro & Flux 2.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-video-generator-create-with-sora-2-veo-3-kling` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart AI Video Generator Create with Sora 2, Veo 3 & Kling.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-guide-master-shapes-masks-layout-grids` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Guide Master Shapes, Masks & Layout Grids.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-guide-upload-images-videos-use-frames` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Guide Upload Images, Videos & Use Frames.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-tools-master-touch-edit-smart-select-hand-tool` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Tools Master Touch Edit, Smart Select & Hand Tool.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-text-tool-guide-add-headlines-labels-ai-typography` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Text Tool Guide Add Headlines, Labels & AI Typography.md
+- **[2] user-curated**  `kb-lovart-social-media-knowledge-base-2026-07` — insight-data/Knowledge Base/Lovart Social Media Knowledge Base 2026-07.md
+
+## knowledge  (54 units)
+- **[5] official-crawl-derived**  `kb-changelog` — insight-data/Knowledge Base/Changelog/Changelog.md
+- **[5] official-hand-curated-doc**  `kb-ai-transformation` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/AI Transformation.md
+- **[5] official-hand-curated-doc**  `kb-advanced-ai-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Advanced AI Editing.md
+- **[5] official-hand-curated-doc**  `kb-basic-ai-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Basic AI Editing.md
+- **[5] official-hand-curated-doc**  `kb-basic-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Basic Editing.md
+- **[5] official-hand-curated-doc**  `kb-canvas-objects` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Canvas Objects.md
+- **[5] official-hand-curated-doc**  `kb-customize-your-canvas` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Customize Your Canvas.md
+- **[5] official-hand-curated-doc**  `kb-export-formats` — insight-data/Knowledge Base/Lovart New Help Center/Export Your Assets/Export Formats.md
+- **[5] official-hand-curated-doc**  `kb-design-your-first-project` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/Design Your First Project.md
+- **[5] official-hand-curated-doc**  `kb-how-lovart-works` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/How Lovart Works.md
+- **[5] official-hand-curated-doc**  `kb-things-you-should-set-up-first` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/Things You Should Set Up First.md
+- **[5] official-hand-curated-doc**  `kb-adding-references` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Adding References.md
+- **[5] official-hand-curated-doc**  `kb-agent-skills` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Agent Skills.md
+- **[5] official-hand-curated-doc**  `kb-chat-tools` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Chat Tools.md
+- **[5] official-hand-curated-doc**  `kb-other-things-you-can-prompt-to-create` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Other Things You Can Prompt to Create.md
+- **[5] official-hand-curated-doc**  `kb-selecting-ai-models` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Selecting AI Models.md
+- **[5] official-hand-curated-doc**  `kb-keyboard-shortcuts` — insight-data/Knowledge Base/Lovart New Help Center/Reference/Keyboard Shortcuts.md
+- **[5] official-hand-curated-doc**  `kb-models-pricing` — insight-data/Knowledge Base/Lovart New Help Center/Reference/Models & Pricing.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 1.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 2.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 3.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 4.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 5.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform.md
+- **[3] internal-curated**  `kb-lovart-agent` — insight-data/Knowledge Base/Lovart Introduction/Lovart Agent 官方介绍.md
+- **[3] internal-curated**  `kb-lovart-knowledge-base-v8` — insight-data/Knowledge Base/Lovart Introduction/Lovart Knowledge Base V8.md
+- **[3] internal-curated**  `kb-lovart-one-pager` — insight-data/Knowledge Base/Lovart Introduction/Lovart one pager.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 传播指导文档.md
+- **[3] internal-curated**  `kb-lovart-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 帮你了解Lovart.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart功能详细说明文档.md
+- **[3] internal-curated**  `kb-` — insight-data/Knowledge Base/博客分类.md
+- **[2] internal-curated**  `kb-cover-url` — insight-data/Knowledge Base/Cover Url 随机调取.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-mention-guide-lock-models-flux-veo-3-context` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart @ Mention Guide Lock Models (Flux, Veo 3) & Context.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-modes-thinking-mode-strategy-vs-fast-mode-speed` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart AI Modes Thinking Mode Strategy vs. Fast Mode Speed.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-file-upload-import-images-video-pdf-references` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart File Upload Import Images, Video & PDF References.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-model-select-guide-preferences-for-flux-veo-3-tripo` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart Model Select Guide Preferences for Flux, Veo 3 & Tripo.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-web-search-real-time-design-trends-url-analysis` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart Web Search Real-Time Design Trends & URL Analysis.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-remover-erase-objects-text-watermarks-instantly` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart AI Remover Erase Objects, Text & Watermarks Instantly.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-upscale-boost-images-to-8k-videos-to-4k` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart AI Upscale Boost Images to 8K & Videos to 4K.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-crop-tool-reframe-images-adjust-aspect-ratios` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Crop Tool Reframe Images & Adjust Aspect Ratios.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-edit-elements-auto-split-images-into-editable-layers` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Edit Elements Auto-Split Images into Editable Layers.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-edit-text-guide-modify-image-text-fix-typos` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Edit Text Guide Modify Image Text & Fix Typos.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-expand-tool-ai-outpainting-aspect-ratio-resizing` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Expand Tool AI Outpainting & Aspect Ratio Resizing.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-mockup-tool-instant-photorealistic-product-scene-gene` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Mockup Tool Instant Photorealistic Product & Scene Generation.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-quick-edit-instant-ai-adjustments-via-tab-shortcut` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Quick Edit Instant AI Adjustments via Tab Shortcut.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-remove-bg-one-click-background-removal-isolation` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Remove BG One-Click Background Removal & Isolation.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-image-generator-create-with-nano-banana-pro-flux-2` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart AI Image Generator Create with Nano Banana Pro & Flux 2.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-video-generator-create-with-sora-2-veo-3-kling` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart AI Video Generator Create with Sora 2, Veo 3 & Kling.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-guide-master-shapes-masks-layout-grids` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Guide Master Shapes, Masks & Layout Grids.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-guide-upload-images-videos-use-frames` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Guide Upload Images, Videos & Use Frames.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-tools-master-touch-edit-smart-select-hand-tool` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Tools Master Touch Edit, Smart Select & Hand Tool.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-chatcanvas-vector-tools-master-pencil-b-pen-p` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart ChatCanvas Vector Tools Master Pencil (B) & Pen (P).md
+- **[2] official-hand-curated-legacy**  `kb-lovart-text-tool-guide-add-headlines-labels-ai-typography` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Text Tool Guide Add Headlines, Labels & AI Typography.md
+- **[2] user-curated**  `kb-lovart-social-media-knowledge-base-2026-07` — insight-data/Knowledge Base/Lovart Social Media Knowledge Base 2026-07.md
+
+## pricing  (49 units)
+- **[5] official-crawl-derived**  `kb-changelog` — insight-data/Knowledge Base/Changelog/Changelog.md
+- **[5] official-hand-curated-doc**  `kb-ai-transformation` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/AI Transformation.md
+- **[5] official-hand-curated-doc**  `kb-advanced-ai-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Advanced AI Editing.md
+- **[5] official-hand-curated-doc**  `kb-basic-ai-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Basic AI Editing.md
+- **[5] official-hand-curated-doc**  `kb-basic-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Basic Editing.md
+- **[5] official-hand-curated-doc**  `kb-canvas-objects` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Canvas Objects.md
+- **[5] official-hand-curated-doc**  `kb-customize-your-canvas` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Customize Your Canvas.md
+- **[5] official-hand-curated-doc**  `kb-design-your-first-project` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/Design Your First Project.md
+- **[5] official-hand-curated-doc**  `kb-how-lovart-works` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/How Lovart Works.md
+- **[5] official-hand-curated-doc**  `kb-things-you-should-set-up-first` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/Things You Should Set Up First.md
+- **[5] official-hand-curated-doc**  `kb-adding-references` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Adding References.md
+- **[5] official-hand-curated-doc**  `kb-agent-skills` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Agent Skills.md
+- **[5] official-hand-curated-doc**  `kb-chat-tools` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Chat Tools.md
+- **[5] official-hand-curated-doc**  `kb-other-things-you-can-prompt-to-create` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Other Things You Can Prompt to Create.md
+- **[5] official-hand-curated-doc**  `kb-selecting-ai-models` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Selecting AI Models.md
+- **[5] official-hand-curated-doc**  `kb-models-pricing` — insight-data/Knowledge Base/Lovart New Help Center/Reference/Models & Pricing.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 1.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 2.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 3.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 4.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 5.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform.md
+- **[3] internal-curated**  `kb-lovart-agent` — insight-data/Knowledge Base/Lovart Introduction/Lovart Agent 官方介绍.md
+- **[3] internal-curated**  `kb-lovart-knowledge-base-v8` — insight-data/Knowledge Base/Lovart Introduction/Lovart Knowledge Base V8.md
+- **[3] internal-curated**  `kb-lovart-one-pager` — insight-data/Knowledge Base/Lovart Introduction/Lovart one pager.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 传播指导文档.md
+- **[3] internal-curated**  `kb-lovart-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 帮你了解Lovart.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart功能详细说明文档.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-mention-guide-lock-models-flux-veo-3-context` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart @ Mention Guide Lock Models (Flux, Veo 3) & Context.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-modes-thinking-mode-strategy-vs-fast-mode-speed` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart AI Modes Thinking Mode Strategy vs. Fast Mode Speed.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-file-upload-import-images-video-pdf-references` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart File Upload Import Images, Video & PDF References.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-model-select-guide-preferences-for-flux-veo-3-tripo` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart Model Select Guide Preferences for Flux, Veo 3 & Tripo.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-web-search-real-time-design-trends-url-analysis` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart Web Search Real-Time Design Trends & URL Analysis.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-remover-erase-objects-text-watermarks-instantly` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart AI Remover Erase Objects, Text & Watermarks Instantly.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-upscale-boost-images-to-8k-videos-to-4k` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart AI Upscale Boost Images to 8K & Videos to 4K.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-crop-tool-reframe-images-adjust-aspect-ratios` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Crop Tool Reframe Images & Adjust Aspect Ratios.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-edit-elements-auto-split-images-into-editable-layers` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Edit Elements Auto-Split Images into Editable Layers.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-edit-text-guide-modify-image-text-fix-typos` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Edit Text Guide Modify Image Text & Fix Typos.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-expand-tool-ai-outpainting-aspect-ratio-resizing` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Expand Tool AI Outpainting & Aspect Ratio Resizing.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-mockup-tool-instant-photorealistic-product-scene-gene` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Mockup Tool Instant Photorealistic Product & Scene Generation.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-quick-edit-instant-ai-adjustments-via-tab-shortcut` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Quick Edit Instant AI Adjustments via Tab Shortcut.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-remove-bg-one-click-background-removal-isolation` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Remove BG One-Click Background Removal & Isolation.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-image-generator-create-with-nano-banana-pro-flux-2` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart AI Image Generator Create with Nano Banana Pro & Flux 2.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-video-generator-create-with-sora-2-veo-3-kling` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart AI Video Generator Create with Sora 2, Veo 3 & Kling.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-guide-master-shapes-masks-layout-grids` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Guide Master Shapes, Masks & Layout Grids.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-guide-upload-images-videos-use-frames` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Guide Upload Images, Videos & Use Frames.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-tools-master-touch-edit-smart-select-hand-tool` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Tools Master Touch Edit, Smart Select & Hand Tool.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-chatcanvas-vector-tools-master-pencil-b-pen-p` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart ChatCanvas Vector Tools Master Pencil (B) & Pen (P).md
+- **[2] official-hand-curated-legacy**  `kb-lovart-text-tool-guide-add-headlines-labels-ai-typography` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Text Tool Guide Add Headlines, Labels & AI Typography.md
+
+## release  (4 units)
+- **[5] official-crawl-derived**  `kb-changelog` — insight-data/Knowledge Base/Changelog/Changelog.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 5.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform.md
+- **[3] internal-curated**  `kb-lovart-knowledge-base-v8` — insight-data/Knowledge Base/Lovart Introduction/Lovart Knowledge Base V8.md
+
+## tools  (45 units)
+- **[5] official-crawl-derived**  `kb-changelog` — insight-data/Knowledge Base/Changelog/Changelog.md
+- **[5] official-hand-curated-doc**  `kb-ai-transformation` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/AI Transformation.md
+- **[5] official-hand-curated-doc**  `kb-advanced-ai-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Advanced AI Editing.md
+- **[5] official-hand-curated-doc**  `kb-basic-ai-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Basic AI Editing.md
+- **[5] official-hand-curated-doc**  `kb-basic-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Basic Editing.md
+- **[5] official-hand-curated-doc**  `kb-canvas-objects` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Canvas Objects.md
+- **[5] official-hand-curated-doc**  `kb-customize-your-canvas` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Customize Your Canvas.md
+- **[5] official-hand-curated-doc**  `kb-export-formats` — insight-data/Knowledge Base/Lovart New Help Center/Export Your Assets/Export Formats.md
+- **[5] official-hand-curated-doc**  `kb-design-your-first-project` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/Design Your First Project.md
+- **[5] official-hand-curated-doc**  `kb-how-lovart-works` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/How Lovart Works.md
+- **[5] official-hand-curated-doc**  `kb-things-you-should-set-up-first` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/Things You Should Set Up First.md
+- **[5] official-hand-curated-doc**  `kb-adding-references` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Adding References.md
+- **[5] official-hand-curated-doc**  `kb-agent-skills` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Agent Skills.md
+- **[5] official-hand-curated-doc**  `kb-chat-tools` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Chat Tools.md
+- **[5] official-hand-curated-doc**  `kb-other-things-you-can-prompt-to-create` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Other Things You Can Prompt to Create.md
+- **[5] official-hand-curated-doc**  `kb-selecting-ai-models` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Selecting AI Models.md
+- **[5] official-hand-curated-doc**  `kb-keyboard-shortcuts` — insight-data/Knowledge Base/Lovart New Help Center/Reference/Keyboard Shortcuts.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 1.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 2.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 4.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 5.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform.md
+- **[3] internal-curated**  `kb-lovart-knowledge-base-v8` — insight-data/Knowledge Base/Lovart Introduction/Lovart Knowledge Base V8.md
+- **[3] internal-curated**  `kb-lovart-one-pager` — insight-data/Knowledge Base/Lovart Introduction/Lovart one pager.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 传播指导文档.md
+- **[3] internal-curated**  `kb-lovart-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 帮你了解Lovart.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart功能详细说明文档.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-mention-guide-lock-models-flux-veo-3-context` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart @ Mention Guide Lock Models (Flux, Veo 3) & Context.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-modes-thinking-mode-strategy-vs-fast-mode-speed` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart AI Modes Thinking Mode Strategy vs. Fast Mode Speed.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-file-upload-import-images-video-pdf-references` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart File Upload Import Images, Video & PDF References.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-remover-erase-objects-text-watermarks-instantly` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart AI Remover Erase Objects, Text & Watermarks Instantly.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-crop-tool-reframe-images-adjust-aspect-ratios` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Crop Tool Reframe Images & Adjust Aspect Ratios.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-edit-elements-auto-split-images-into-editable-layers` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Edit Elements Auto-Split Images into Editable Layers.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-edit-text-guide-modify-image-text-fix-typos` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Edit Text Guide Modify Image Text & Fix Typos.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-expand-tool-ai-outpainting-aspect-ratio-resizing` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Expand Tool AI Outpainting & Aspect Ratio Resizing.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-mockup-tool-instant-photorealistic-product-scene-gene` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Mockup Tool Instant Photorealistic Product & Scene Generation.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-quick-edit-instant-ai-adjustments-via-tab-shortcut` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Quick Edit Instant AI Adjustments via Tab Shortcut.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-remove-bg-one-click-background-removal-isolation` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Remove BG One-Click Background Removal & Isolation.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-image-generator-create-with-nano-banana-pro-flux-2` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart AI Image Generator Create with Nano Banana Pro & Flux 2.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-video-generator-create-with-sora-2-veo-3-kling` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart AI Video Generator Create with Sora 2, Veo 3 & Kling.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-guide-master-shapes-masks-layout-grids` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Guide Master Shapes, Masks & Layout Grids.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-guide-upload-images-videos-use-frames` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Guide Upload Images, Videos & Use Frames.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-tools-master-touch-edit-smart-select-hand-tool` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Tools Master Touch Edit, Smart Select & Hand Tool.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-chatcanvas-vector-tools-master-pencil-b-pen-p` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart ChatCanvas Vector Tools Master Pencil (B) & Pen (P).md
+- **[2] official-hand-curated-legacy**  `kb-lovart-text-tool-guide-add-headlines-labels-ai-typography` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Text Tool Guide Add Headlines, Labels & AI Typography.md
+
+## typography  (8 units)
+- **[5] official-hand-curated-doc**  `kb-advanced-ai-editing` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Advanced AI Editing.md
+- **[5] official-hand-curated-doc**  `kb-canvas-objects` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Canvas Objects.md
+- **[5] official-hand-curated-doc**  `kb-other-things-you-can-prompt-to-create` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Other Things You Can Prompt to Create.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform.md
+- **[3] internal-curated**  `kb-lovart-one-pager` — insight-data/Knowledge Base/Lovart Introduction/Lovart one pager.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-modes-thinking-mode-strategy-vs-fast-mode-speed` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart AI Modes Thinking Mode Strategy vs. Fast Mode Speed.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-web-search-real-time-design-trends-url-analysis` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart Web Search Real-Time Design Trends & URL Analysis.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-text-tool-guide-add-headlines-labels-ai-typography` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Text Tool Guide Add Headlines, Labels & AI Typography.md
+
+## video  (30 units)
+- **[5] official-crawl-derived**  `kb-changelog` — insight-data/Knowledge Base/Changelog/Changelog.md
+- **[5] official-hand-curated-doc**  `kb-ai-transformation` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/AI Transformation.md
+- **[5] official-hand-curated-doc**  `kb-canvas-objects` — insight-data/Knowledge Base/Lovart New Help Center/Edit Your Design/Canvas Objects.md
+- **[5] official-hand-curated-doc**  `kb-export-formats` — insight-data/Knowledge Base/Lovart New Help Center/Export Your Assets/Export Formats.md
+- **[5] official-hand-curated-doc**  `kb-design-your-first-project` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/Design Your First Project.md
+- **[5] official-hand-curated-doc**  `kb-how-lovart-works` — insight-data/Knowledge Base/Lovart New Help Center/Getting Started/How Lovart Works.md
+- **[5] official-hand-curated-doc**  `kb-adding-references` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Adding References.md
+- **[5] official-hand-curated-doc**  `kb-agent-skills` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Agent Skills.md
+- **[5] official-hand-curated-doc**  `kb-other-things-you-can-prompt-to-create` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Other Things You Can Prompt to Create.md
+- **[5] official-hand-curated-doc**  `kb-selecting-ai-models` — insight-data/Knowledge Base/Lovart New Help Center/How To Prompt/Selecting AI Models.md
+- **[5] official-hand-curated-doc**  `kb-keyboard-shortcuts` — insight-data/Knowledge Base/Lovart New Help Center/Reference/Keyboard Shortcuts.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 4.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform 5.md
+- **[4] official-news**  `kb-lovart-the-world-s-first-ai-design-agent-automated-graphic-d` — insight-data/Knowledge Base/Lovart News/Lovart The World's First AI Design Agent  Automated Graphic Design Platform.md
+- **[3] internal-curated**  `kb-lovart-agent` — insight-data/Knowledge Base/Lovart Introduction/Lovart Agent 官方介绍.md
+- **[3] internal-curated**  `kb-lovart-knowledge-base-v8` — insight-data/Knowledge Base/Lovart Introduction/Lovart Knowledge Base V8.md
+- **[3] internal-curated**  `kb-lovart-one-pager` — insight-data/Knowledge Base/Lovart Introduction/Lovart one pager.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 传播指导文档.md
+- **[3] internal-curated**  `kb-lovart-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart 帮你了解Lovart.md
+- **[3] internal-curated**  `kb-lovart` — insight-data/Knowledge Base/Lovart Introduction/Lovart功能详细说明文档.md
+- **[3] internal-curated**  `kb-` — insight-data/Knowledge Base/博客分类.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-mention-guide-lock-models-flux-veo-3-context` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart @ Mention Guide Lock Models (Flux, Veo 3) & Context.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-file-upload-import-images-video-pdf-references` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart File Upload Import Images, Video & PDF References.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-model-select-guide-preferences-for-flux-veo-3-tripo` — insight-data/Knowledge Base/Lovart Docs Archive/Agent/Lovart Model Select Guide Preferences for Flux, Veo 3 & Tripo.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-upscale-boost-images-to-8k-videos-to-4k` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart AI Upscale Boost Images to 8K & Videos to 4K.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-crop-tool-reframe-images-adjust-aspect-ratios` — insight-data/Knowledge Base/Lovart Docs Archive/Cavans/Lovart Crop Tool Reframe Images & Adjust Aspect Ratios.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-ai-video-generator-create-with-sora-2-veo-3-kling` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart AI Video Generator Create with Sora 2, Veo 3 & Kling.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-guide-upload-images-videos-use-frames` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Guide Upload Images, Videos & Use Frames.md
+- **[2] official-hand-curated-legacy**  `kb-lovart-canvas-tools-master-touch-edit-smart-select-hand-tool` — insight-data/Knowledge Base/Lovart Docs Archive/Tools/Lovart Canvas Tools Master Touch Edit, Smart Select & Hand Tool.md
+- **[2] user-curated**  `kb-lovart-social-media-knowledge-base-2026-07` — insight-data/Knowledge Base/Lovart Social Media Knowledge Base 2026-07.md
+
+---

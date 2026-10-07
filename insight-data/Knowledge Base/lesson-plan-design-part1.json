@@ -1,0 +1,554 @@
+{
+  "section_en": [
+    {
+      "section_en": "hero",
+      "title": "AI Lesson Plan Maker",
+      "subtitle": "Design Professional Lesson Plans with Lovart",
+      "description": "Create polished, visually engaging lesson plans in minutes — not hours. Lovart's MCoT-powered AI Creative Director understands educational design: clear learning objectives, structured activities, assessment frameworks, and beautiful layouts that impress students, parents, and administrators alike. Whether you teach elementary math, high school science, ESL, or corporate training, Lovart generates professional lesson plans that elevate your teaching materials. Start free with daily credits — no design experience needed.",
+      "badge": "Built for Educators — Powered by MCoT Engine",
+      "button_text": "Design My Lesson Plan",
+      "button_url": "/ai-lesson-plan-maker#start",
+      "hero_image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "hero_image_alt": "Lovart AI creating a professional lesson plan with educational layout and activity visuals",
+      "type": "centeredInputSection",
+      "suggestion": [
+        "Free Daily Credits",
+        "8K Print Quality",
+        "Teacher-Approved Layouts",
+        "Teacher-Approved Layouts"
+      ]
+    },
+    {
+      "section_en": "suggestions",
+      "title": "What Are You Teaching Today?",
+      "subtitle": "Select your subject and grade level — Lovart designs the perfect lesson plan structure",
+      "type": "threeColumnSection",
+      "columns": [
+        {
+          "title": "Elementary Math",
+          "description": "Colorful, engaging lesson plans with number visuals, activity diagrams, and clear step-by-step instruction blocks. Designed for young learners with fun, accessible layouts that keep students focused and excited.",
+          "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+          "prompt": "Create a 3rd grade elementary math lesson plan on multiplication with visual aids, group activities, and assessment questions",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "High School Science",
+          "description": "Structured, detailed lesson plans with lab activity diagrams, hypothesis frameworks, data table templates, and discussion prompts. Professional layouts suitable for department review and student handouts.",
+          "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+          "prompt": "Design a high school chemistry lesson plan on chemical reactions with lab procedure visualization and safety notes",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "ESL & Tutoring",
+          "description": "Clean, scaffolded lesson plans with vocabulary sections, conversation prompts, grammar focus blocks, and progress tracking templates. Ideal for one-on-one tutoring and small group language instruction.",
+          "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+          "prompt": "Create an ESL tutoring lesson plan for intermediate learners on business English with role-play activities and vocabulary drills",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "section_en": "features",
+      "title": "Designed for Educators, Engineered for Excellence",
+      "subtitle": "Six powerful features that make Lovart the essential tool for every teacher's toolkit",
+      "type": "featureGridSection",
+      "features": [
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c2b2d0e9.svg",
+          "title": "Educational Layout Templates",
+          "description": "Choose from a library of educator-designed layout templates optimized for lesson plans. Structured blocks for objectives, materials, procedures, differentiation, and assessment — with flexible arrangements that adapt to any subject or grade level.",
+          "highlight": "Curriculum-Ready",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/f30b2cdc.svg",
+          "title": "Activity Visualization",
+          "description": "Bring classroom activities to life with AI-generated diagrams, charts, and visual aids. Illustrate group work setups, lab procedures, game-based learning stations, and step-by-step activity flows that make instructions crystal clear for students.",
+          "highlight": "Visual Learning",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c0a7bbac.svg",
+          "title": "Smart Mockup",
+          "description": "Preview exactly how your lesson plan will look when printed, displayed on a classroom screen, or shared as a PDF. The Smart Mockup feature renders realistic previews of your plan on paper, tablet, and projector — ensuring formatting is perfect before you share.",
+          "highlight": "Print Preview",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/09928fa3.svg",
+          "title": "Brand & School Consistency",
+          "description": "Maintain consistent branding across all your lesson materials. Apply your school logo, colors, and fonts once — Lovart remembers and applies them to every new lesson plan automatically. Perfect for departments and schools that require uniform formatting.",
+          "highlight": "School Branded",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/a605b61b.svg",
+          "title": "8K Export",
+          "description": "Export your lesson plans in stunning 8K resolution — perfect for large-format classroom posters, high-quality printed handouts, and detailed projection. Every diagram, chart, and text element remains crisp and legible at any size.",
+          "highlight": "Classroom-Ready Print",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c7f26357.svg",
+          "title": "Multi-Format",
+          "description": "Download lesson plans as PNG, JPG, SVG, or PSD files. Use PNG and JPG for quick sharing and printing, SVG for scalable vector graphics on interactive whiteboards, and PSD for further customization in Adobe Photoshop or similar tools.",
+          "highlight": "4 Export Options",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+        }
+      ]
+    },
+    {
+      "section_en": "testimonials",
+      "title": "Trusted by Educators Everywhere",
+      "subtitle": "From elementary classrooms to corporate training rooms — see how Lovart transforms lesson planning",
+      "type": "testimonialSection",
+      "testimonials": [
+        {
+          "name": "Angela Wright",
+          "role": "3rd Grade Teacher, Lincoln Elementary",
+          "avatar": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+          "quote": "I used to spend 6-8 hours every Sunday formatting lesson plans. Now Lovart does it in under 10 minutes. My plans look so professional that my principal asked to feature them in our district showcase. The kids love the colorful activity visuals — engagement has never been higher. I've created over 80 plans this semester alone.",
+          "rating": 4.9,
+          "stat_value": "80+",
+          "stat_label": "Plans This Semester",
+          "verified": true,
+          "avatar_url": ""
+        },
+        {
+          "name": "Dr. Marcus Okafor",
+          "role": "Biology Professor, State University",
+          "avatar": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+          "quote": "Lovart streamlined my entire course prep workflow. I design 3 lectures per week with lab activity diagrams, assessment frameworks, and discussion prompts — all branded with our university colors. My student evaluations improved 22% after I started using visually structured lesson plans. I recommend Lovart to every faculty member in my department.",
+          "rating": 4.8,
+          "stat_value": "22%",
+          "stat_label": "Better Evaluations",
+          "verified": true,
+          "avatar_url": ""
+        },
+        {
+          "name": "Rachel Tan",
+          "role": "Corporate L&D Manager, TechGlobal Inc.",
+          "avatar": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+          "quote": "We train 500+ employees quarterly across 12 departments. Lovart's Brand Consistency feature ensures every training plan shares the same professional look — company logo, brand colors, standardized layouts. We've reduced training material design time by 65% and saved $15,000 annually on external design costs. The Pro plan pays for itself 10x over.",
+          "rating": 4.9,
+          "stat_value": "$15K",
+          "stat_label": "Annual Savings",
+          "verified": true,
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "section_en": "faq",
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything educators need to know about designing lesson plans with Lovart",
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Is Lovart free for teachers and educators?",
+          "answer": "Yes. Lovart offers a generous free plan with daily credits that lets educators create and download professional lesson plans at no cost. You get full access to educational layout templates, activity visualization, Smart Mockup, Brand Consistency, 8K export, and all four file formats (PNG, JPG, SVG, PSD) — without entering a credit card. The free plan is ideal for individual teachers creating a few lesson plans per week."
+        },
+        {
+          "question": "What makes Lovart's lesson plan maker better than Google Docs or Word templates?",
+          "answer": "Unlike static templates where you manually type and format everything, Lovart uses its MCoT (Multi-Chain of Thought) AI to design lesson plans conversationally. You describe your lesson — 'a 45-minute high school chemistry lab on titration with safety notes and assessment rubric' — and Lovart reasons through layout, hierarchy, typography, and visual elements to create a polished, classroom-ready plan. Plus, features like Activity Visualization generate diagrams automatically, and Smart Mockup lets you preview the printed result instantly."
+        },
+        {
+          "question": "Can Lovart generate activity diagrams and visual aids?",
+          "answer": "Absolutely — Activity Visualization is a core feature. Lovart can generate diagrams for lab setups, group work arrangements, game-based learning stations, process flows, timelines, comparison charts, and more. Simply describe the activity and Lovart creates clear, instructional visuals that help students understand procedures and expectations at a glance."
+        },
+        {
+          "question": "How does Brand & School Consistency work for lesson plans?",
+          "answer": "Upload your school or institution logo, specify your brand colors and preferred fonts once, and Lovart stores them in a Brand Consistency profile. Every subsequent lesson plan you create automatically applies these branding elements — ensuring all your teaching materials share a professional, uniform look. You can create multiple profiles for different schools, departments, or courses."
+        },
+        {
+          "question": "Can I preview how my lesson plan will look when printed?",
+          "answer": "Yes — Smart Mockup renders a realistic preview of your lesson plan on paper, showing exact page layout, margins, text flow, and image placement as they will appear when printed. You can also preview tablet and projector views. This eliminates formatting surprises and ensures your handouts, posters, and slides look exactly as intended before you print or share them."
+        },
+        {
+          "question": "What are the paid plan options for educators?",
+          "answer": "Lovart offers three paid plans: Starter ($20/month, 2,000 credits) — perfect for individual teachers creating 15-25 lesson plans per month; Basic ($35/month, 3,500 credits) — ideal for grade-level teams or tutors managing 30-50 plans monthly; Pro ($110/month, 11,000 credits) — built for departments, schools, and corporate training teams producing 100+ lesson plans per month. All paid plans include commercial usage rights and priority rendering."
+        },
+        {
+          "question": "What export formats are available and which should I use?",
+          "answer": "Lesson plans can be exported in PNG, JPG, SVG, and PSD at up to 8K resolution. For printed handouts, use PNG (lossless, crisp text). For quick digital sharing via email or LMS, use JPG (smaller file size). For interactive whiteboards and projection, use SVG (infinitely scalable, stays sharp at any zoom level). For advanced editing, use PSD with full layer support. All formats are available on every plan including free."
+        },
+        {
+          "question": "Can I edit my lesson plans after Lovart generates them?",
+          "answer": "Yes — Lovart's ChatCanvas lets you refine plans conversationally. After generation, you can say things like 'add a warm-up activity section at the beginning', 'change the assessment to a rubric format', 'make the diagrams larger', or 'use more colorful headers for elementary students'. Touch Edit and Text Edit give you precise manual control over every element. MCoT understands natural language refinement, so editing feels like collaborating with a design-savvy teaching assistant."
+        },
+        {
+          "question": "Does Lovart support different educational standards or curriculum formats?",
+          "answer": "Lovart's educational layout templates are flexible and can be adapted to any curriculum format — Common Core, NGSS, IB, state standards, or institution-specific frameworks. You can specify your preferred structure (e.g., 'include sections for standards alignment, learning targets, success criteria, and formative assessment') and Lovart will design a plan that matches your requirements. The Brand Consistency feature ensures every plan follows your school or district formatting guidelines."
+        }
+      ]
+    }
+  ],
+  "section_zh-CN": [
+    {
+      "section_zh-CN": "hero",
+      "title": "AI 教案制作器",
+      "subtitle": "用 Lovart 设计专业教案",
+      "description": "在几分钟内创建精美、视觉吸引力强的教案——无需耗费数小时。Lovart 搭载 MCoT 的 AI 创意总监深谙教学设计：清晰的学习目标、结构化的课堂活动、完善的评估框架，以及让学生、家长和管理层都印象深刻的精美排版。无论你教的是小学数学、高中科学、英语作为第二语言还是企业培训，Lovart 都能生成专业的教案，提升你的教学材料品质。每日免费额度即可开始使用——无需任何设计经验。",
+      "badge": "专为教育工作者打造——MCoT 引擎驱动",
+      "button_text": "设计我的教案",
+      "button_url": "/ai-lesson-plan-maker#start",
+      "hero_image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "hero_image_alt": "Lovart AI 正在创建带有教学排版和活动可视化效果的专业教案",
+      "type": "centeredInputSection",
+      "suggestion": [
+        "每日免费额度",
+        "8K 打印品质",
+        "教师认可排版",
+        "教师认可排版"
+      ]
+    },
+    {
+      "section_zh-CN": "suggestions",
+      "title": "今天教什么？",
+      "subtitle": "选择你的学科和年级——Lovart 会设计最合适的教案结构",
+      "type": "threeColumnSection",
+      "columns": [
+        {
+          "title": "小学数学",
+          "description": "色彩丰富、引人入胜的教案，配有数字可视化、活动图解和清晰的分步教学模块。专为低龄学习者设计，以有趣、易懂的排版保持学生专注和热情。",
+          "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+          "prompt": "创建一份三年级小学数学乘法教案，包含可视化辅助、小组活动和评估题目",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "高中科学",
+          "description": "结构清晰、内容详实的教案，配有实验活动图解、假设框架、数据表格模板和讨论引导。专业的排版适合教研组评审和学生讲义。",
+          "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+          "prompt": "设计一份高中化学化学反应教案，包含实验步骤可视化和安全须知",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "英语教学与辅导",
+          "description": "简洁、循序渐进的教案，包含词汇板块、会话引导、语法重点模块和进度跟踪模板。非常适合一对一辅导和小组语言教学。",
+          "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+          "prompt": "创建一份中级英语学习者商务英语辅导教案，包含角色扮演活动和词汇练习",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "section_zh-CN": "features",
+      "title": "为教育者设计，以卓越为驱动",
+      "subtitle": "六大强大功能，让 Lovart 成为每位教师不可或缺的工具",
+      "type": "featureGridSection",
+      "features": [
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c2b2d0e9.svg",
+          "title": "教学排版模板",
+          "description": "从教育者设计的排版模板库中选择，专为教案优化。为教学目标、教学材料、教学流程、差异化教学和评估提供结构化的模块——灵活的排列方式可适配任何学科或年级。",
+          "highlight": "课程就绪",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/f30b2cdc.svg",
+          "title": "活动可视化",
+          "description": "用 AI 生成的图解、图表和可视化辅助工具让课堂活动橱橱如生。展示小组合作安排、实验步骤、游戏式学习站和分步活动流程，让学生对指令一目了然。",
+          "highlight": "视觉学习",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c0a7bbac.svg",
+          "title": "智能样机预览",
+          "description": "精确预览教案在打印、教室屏幕展示或 PDF 分享时的实际效果。智能样机功能可渲染教案在纸张、平板和投影仪上的逼真预览——在分享之前确保排版完美无误。",
+          "highlight": "打印预览",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/09928fa3.svg",
+          "title": "品牌与学校统一性",
+          "description": "在所有教学材料中保持统一的品牌风格。只需上传一次学校标志、指定品牌颜色和首选字体——Lovart 会记住并自动应用到每一份新教案中。非常适合需要格式统一的教研组和学校。",
+          "highlight": "学校品牌化",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/a605b61b.svg",
+          "title": "8K 导出",
+          "description": "以惊艳的 8K 分辨率导出教案——非常适合大幅教室海报、高质量打印讲义和精细投影。所有图解、图表和文字元素在任何尺寸下都保持清晰可读。",
+          "highlight": "教室级打印品质",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c7f26357.svg",
+          "title": "多格式支持",
+          "description": "将教案下载为 PNG、JPG、SVG 或 PSD 文件。PNG 和 JPG 适合快速分享和打印，SVG 适合交互式白板上的可缩放矢量图形，PSD 适合在 Adobe Photoshop 或类似工具中进一步自定义。",
+          "highlight": "4 种导出格式",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+        }
+      ]
+    },
+    {
+      "section_zh-CN": "testimonials",
+      "title": "全球教育者的信赖之选",
+      "subtitle": "从小学课堂到企业培训室——看看 Lovart 如何变革教案设计",
+      "type": "testimonialSection",
+      "testimonials": [
+        {
+          "name": "Angela Wright",
+          "role": "三年级教师，林肯小学",
+          "avatar": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+          "quote": "我以前每个周日都要花6到8个小时排版教案。现在 Lovart 不到10分钟就能搞定。我的教案看起来专业到校长主动要求收录进我们学区的教学展示中。孩子们喜欢那些色彩缤纷的活动插图——课堂参与度从未这么高。仅这个学期我就创建了80多份教案。",
+          "rating": 4.9,
+          "stat_value": "80+",
+          "stat_label": "本学期教案数",
+          "verified": true,
+          "avatar_url": ""
+        },
+        {
+          "name": "Dr. Marcus Okafor",
+          "role": "生物学教授，州立大学",
+          "avatar": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+          "quote": "Lovart 简化了我的整个课程备课流程。我每周设计3份讲义，配有实验图解、评估框架和讨论引导——全部使用我们大学的品牌配色。自从开始使用结构化视觉教案后，我的学生评教提高了22%。我向系里的每一位教师推荐 Lovart。",
+          "rating": 4.8,
+          "stat_value": "22%",
+          "stat_label": "评教提升",
+          "verified": true,
+          "avatar_url": ""
+        },
+        {
+          "name": "Rachel Tan",
+          "role": "企业培训与发展经理，TechGlobal 公司",
+          "avatar": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+          "quote": "我们每季度培训500多名员工，覆盖12个部门。Lovart 的品牌统一性功能确保每份培训计划都呈现相同的专业外观——公司标志、品牌颜色、标准化排版。我们将培训材料设计时间缩短了65%，每年节省了15,000美元的外部设计费用。Pro 方案的投入回报超过10倍。",
+          "rating": 4.9,
+          "stat_value": "$15K",
+          "stat_label": "年节省金额",
+          "verified": true,
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "section_zh-CN": "faq",
+      "title": "常见问题",
+      "subtitle": "教育工作者需要了解的有关用 Lovart 设计教案的一切",
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart 对教师和教育工作者免费吗？",
+          "answer": "是的。Lovart 提供慷慨的免费方案，包含每日额度，让教育工作者免费创建和下载专业教案。你可以完全使用教学排版模板、活动可视化、智能样机预览、品牌统一性、8K 导出和全部四种文件格式（PNG、JPG、SVG、PSD）——无需绑定信用卡。免费方案非常适合每周需要创建少量教案的个体教师。"
+        },
+        {
+          "question": "Lovart 的教案制作器比 Google Docs 或 Word 模板好在哪里？",
+          "answer": "与需要手动输入和排版的静态模板不同，Lovart 使用 MCoT（多链思维）AI 以对话方式设计教案。你只需描述课程——比如“45分钟的高中化学滴定实验，包含安全须知和评估量表”——Lovart 就能从排版、层次结构、字体设计和视觉元素等方面进行推理，创建出精美的、可直接用于课堂的教案。此外，活动可视化功能可自动生成图表，智能样机预览让你即时看到打印效果。"
+        },
+        {
+          "question": "Lovart 能生成活动图解和视觉辅助吗？",
+          "answer": "绝对可以——活动可视化是核心功能。Lovart 可以生成实验设备配置、小组活动安排、游戏式学习站、流程说明、时间线、对比图表等各种图解。只需描述活动，Lovart 就能创建清晰的教学视觉元素，帮助学生一眼理解流程和要求。"
+        },
+        {
+          "question": "品牌与学校统一性功能在教案中是如何工作的？",
+          "answer": "只需上传一次学校或机构的标志，指定品牌颜色和首选字体，Lovart 会将它们保存在品牌统一性配置文件中。此后你创建的每一份教案都会自动应用这些品牌元素——确保所有教学材料保持专业、统一的外观。你可以为不同学校、院系或课程创建多个品牌配置文件。"
+        },
+        {
+          "question": "能预览教案打印后的效果吗？",
+          "answer": "可以——智能样机预览功能可以渲染教案在纸张上的逼真预览，展示精确的页面排布、页边距、文字流向和图片布局，和打印后的效果一模一样。你还可以预览平板和投影仪显示效果。这避免了排版意外，确保讲义、海报和幻灯片在打印或分享之前效果完全符合预期。"
+        },
+        {
+          "question": "教育工作者有哪些付费方案选择？",
+          "answer": "Lovart 提供三种付费方案：Starter（$20/月，2,000 额度）——适合每月创建15-25份教案的个体教师；Basic（$35/月，3,500 额度）——适合年级团队或导师每月管理30-50份教案；Pro（$110/月，11,000 额度）——为每月产出100份以上教案的院系、学校和企业培训团队设计。所有付费方案均包含商业使用授权和优先渲染。"
+        },
+        {
+          "question": "有哪些导出格式可用，我该选哪种？",
+          "answer": "教案支持导出为 PNG、JPG、SVG 和 PSD 格式，最高 8K 分辨率。打印讲义推荐使用 PNG（无损，文字清晰）。通过邮件或教学管理系统快速分享推荐使用 JPG（文件更小）。交互式白板和投影推荐使用 SVG（无限缩放，任意缩放比例都保持清晰）。高级编辑推荐使用 PSD，支持完整图层操作。所有格式在所有方案（含免费方案）中均可使用。"
+        },
+        {
+          "question": "Lovart 生成教案后还能编辑吗？",
+          "answer": "可以——Lovart 的 ChatCanvas 让你以对话方式优化教案。生成后，你可以说“在开头加入热身活动环节”“将评估方式改为量表格式”“把图解放大”或“为小学生使用更鲜艳的标题”。触控编辑和文字编辑为你提供每个元素的精确手动控制。MCoT 理解自然语言优化指令，编辑体验就像和一位懂设计的教学助理协作。"
+        },
+        {
+          "question": "Lovart 支持不同的教育标准或课程标准格式吗？",
+          "answer": "Lovart 的教学排版模板灵活可调，可适配任何课程标准格式——通用核心标准、下一代科学标准、IB 课程、州级标准或机构专属框架。你可以指定偏好的结构（如“包含标准对齐、学习目标、成功标准和形成性评估等板块”），Lovart 会设计出符合你要求的教案。品牌统一性功能确保每份教案都遵循你所在学校或学区的排版规范。"
+        }
+      ]
+    }
+  ],
+  "section_zh-TW": [
+    {
+      "section_zh-TW": "hero",
+      "title": "AI 教案製作器",
+      "subtitle": "用 Lovart 設計專業教案",
+      "description": "在幾分鐘內建立精美、視覺吸引力強的教案——無需耗費數小時。Lovart 搭載 MCoT 的 AI 創意總監深諡教學設計：清晰的學習目標、結構化的課堂活動、完善的評估架構，以及讓學生、家長和管理層都印象深刻的精美排版。無論你教的是小學數學、高中科學、英語作爲第二語言還是企業培訓，Lovart 都能生成專業的教案，提升你的教學材料品質。每日免費額度即可開始使用——無需任何設計經驗。",
+      "badge": "專為教育工作者打造——MCoT 引擎驅動",
+      "button_text": "設計我的教案",
+      "button_url": "/ai-lesson-plan-maker#start",
+      "hero_image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+      "hero_image_alt": "Lovart AI 正在建立帶有教學排版和活動視覺化效果的專業教案",
+      "type": "centeredInputSection",
+      "suggestion": [
+        "每日免費額度",
+        "8K 列印品質",
+        "教師認可排版",
+        "教師認可排版"
+      ]
+    },
+    {
+      "section_zh-TW": "suggestions",
+      "title": "今天教什麼？",
+      "subtitle": "選擇你的學科和年級——Lovart 會設計最合適的教案結構",
+      "type": "threeColumnSection",
+      "columns": [
+        {
+          "title": "小學數學",
+          "description": "色彩豐富、引人入勝的教案，配有數字視覺化、活動圖解和清晰的分步教學模組。專為低齡學習者設計，以有趣、易懂的排版保持學生專注和熱情。",
+          "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+          "prompt": "建立一份三年級小學數學乘法教案，包含視覺化輔助、小組活動和評估題目",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "高中科學",
+          "description": "結構清晰、內容詳實的教案，配有實驗活動圖解、假設框架、數據表格範本和討論引導。專業的排版適合教研組評審和學生講義。",
+          "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+          "prompt": "設計一份高中化學化學反應教案，包含實驗步驟視覺化和安全須知",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "英語教學與輔導",
+          "description": "簡潔、循序漸進的教案，包含詞彙區塊、會話引導、文法重點模組和進度追蹤範本。非常適合一對一輔導和小組語言教學。",
+          "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+          "prompt": "建立一份中級英語學習者商務英語輔導教案，包含角色扮演活動和詞彙練習",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "section_zh-TW": "features",
+      "title": "為教育者設計，以卓越為驅動",
+      "subtitle": "六大強大功能，讓 Lovart 成為每位教師不可或缺的工具",
+      "type": "featureGridSection",
+      "features": [
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c2b2d0e9.svg",
+          "title": "教學排版範本",
+          "description": "從教育者設計的排版範本庫中選擇，專為教案最佳化。為教學目標、教學材料、教學流程、差異化教學和評估提供結構化的模組——靈活的排列方式可適配任何學科或年級。",
+          "highlight": "課程就緒",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/f30b2cdc.svg",
+          "title": "活動視覺化",
+          "description": "用 AI 生成的圖解、圖表和視覺化輔助工具讓課堂活動業業如生。展示小組合作安排、實驗步驟、遊戲式學習站和分步活動流程，讓學生對指令一目瞭然。",
+          "highlight": "視覺學習",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c0a7bbac.svg",
+          "title": "智慧型樣機預覽",
+          "description": "精確預覽教案在列印、教室螢幕展示或 PDF 分享時的實際效果。智慧型樣機功能可渲染教案在紙張、平板和投影機上的逼真預覽——在分享之前確保排版完美無誤。",
+          "highlight": "列印預覽",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/09928fa3.svg",
+          "title": "品牌與學校統一性",
+          "description": "在所有教學材料中保持統一的品牌風格。只需上傳一次學校標誌、指定品牌顏色和首選字體——Lovart 會記住並自動套用到每一份新教案中。非常適合需要格式統一的教研組和學校。",
+          "highlight": "學校品牌化",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/a605b61b.svg",
+          "title": "8K 匯出",
+          "description": "以驚豔的 8K 解析度匯出教案——非常適合大幅教室海報、高品質列印講義和精細投影。所有圖解、圖表和文字元素在任何尺寸下都保持清晰可讀。",
+          "highlight": "教室級列印品質",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c7f26357.svg",
+          "title": "多格式支援",
+          "description": "將教案下載為 PNG、JPG、SVG 或 PSD 檔案。PNG 和 JPG 適合快速分享和列印，SVG 適合互動式白板上的可縮放向量圖形，PSD 適合在 Adobe Photoshop 或類似工具中進一步自訂。",
+          "highlight": "4 種匯出格式",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+        }
+      ]
+    },
+    {
+      "section_zh-TW": "testimonials",
+      "title": "全球教育者的信賴之選",
+      "subtitle": "從小學課堂到企業培訓室——看看 Lovart 如何變革教案設計",
+      "type": "testimonialSection",
+      "testimonials": [
+        {
+          "name": "Angela Wright",
+          "role": "三年級教師，林肯小學",
+          "avatar": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+          "quote": "我以前每個週日都要花6到8個小時排版教案。現在 Lovart 不到10分鐘就能搞定。我的教案看起來專業到校長主動要求收錄進我們學區的教學展示中。孩子們喜歡那些色彩繽紛的活動插圖——課堂參與度從未這麼高。光這個學期我就建立了80多份教案。",
+          "rating": 4.9,
+          "stat_value": "80+",
+          "stat_label": "本學期教案數",
+          "verified": true,
+          "avatar_url": ""
+        },
+        {
+          "name": "Dr. Marcus Okafor",
+          "role": "生物學教授，州立大學",
+          "avatar": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+          "quote": "Lovart 簡化了我的整個課程備課流程。我每週設計3份講義，配有實驗圖解、評估架構和討論引導——全部使用我們大學的品牌配色。自從開始使用結構化視覺教案後，我的學生評教提高了22%。我向系裡的每一位教師推薦 Lovart。",
+          "rating": 4.8,
+          "stat_value": "22%",
+          "stat_label": "評教提升",
+          "verified": true,
+          "avatar_url": ""
+        },
+        {
+          "name": "Rachel Tan",
+          "role": "企業培訓與發展經理，TechGlobal 公司",
+          "avatar": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+          "quote": "我們每季培訓500多名員工，涵蓋12個部門。Lovart 的品牌統一性功能確保每份培訓計畫都呈現相同的專業外觀——公司標誌、品牌顏色、標準化排版。我們將培訓材料設計時間縮短了65%，每年節省了15,000美元的外部設計費用。Pro 方案的投入回報超過10倍。",
+          "rating": 4.9,
+          "stat_value": "$15K",
+          "stat_label": "年節省金額",
+          "verified": true,
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "section_zh-TW": "faq",
+      "title": "常見問題",
+      "subtitle": "教育工作者需要了解的有關用 Lovart 設計教案的一切",
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart 對教師和教育工作者免費嗎？",
+          "answer": "是的。Lovart 提供慷慨的免費方案，包含每日額度，讓教育工作者免費建立和下載專業教案。你可以完全使用教學排版範本、活動視覺化、智慧型樣機預覽、品牌統一性、8K 匯出和全部四種檔案格式（PNG、JPG、SVG、PSD）——無需綁定信用卡。免費方案非常適合每週需要建立少量教案的個體教師。"
+        },
+        {
+          "question": "Lovart 的教案製作器比 Google Docs 或 Word 範本好在哪裡？",
+          "answer": "與需要手動輸入和排版的靜態範本不同，Lovart 使用 MCoT（多鏈思維）AI 以對話方式設計教案。你只需描述課程——比如“45分鐘的高中化學滴定實驗，包含安全須知和評估量表”——Lovart 就能從排版、層次結構、字體設計和視覺元素等方面進行推理，建立出精美的、可直接用於課堂的教案。此外，活動視覺化功能可自動生成圖表，智慧型樣機預覽讓你即時看到列印效果。"
+        },
+        {
+          "question": "Lovart 能生成活動圖解和視覺輔助嗎？",
+          "answer": "絕對可以——活動視覺化是核心功能。Lovart 可以生成實驗設備配置、小組活動安排、遊戲式學習站、流程說明、時間線、對比圖表等各種圖解。只需描述活動，Lovart 就能建立清晰的教學視覺元素，幫助學生一眼理解流程和要求。"
+        },
+        {
+          "question": "品牌與學校統一性功能在教案中是如何運作的？",
+          "answer": "只需上傳一次學校或機構的標誌，指定品牌顏色和首選字體，Lovart 會將它們儲存在品牌統一性設定檔中。此後你建立的每一份教案都會自動套用這些品牌元素——確保所有教學材料保持專業、統一的外觀。你可以為不同學校、院系或課程建立多個品牌設定檔。"
+        },
+        {
+          "question": "能預覽教案列印後的效果嗎？",
+          "answer": "可以——智慧型樣機預覽功能可以渲染教案在紙張上的逼真預覽，展示精確的頁面排佈、頁邊距、文字流向和圖片佈局，和列印後的效果一模一樣。你還可以預覽平板和投影機顯示效果。這避免了排版意外，確保講義、海報和投影片在列印或分享之前效果完全符合預期。"
+        },
+        {
+          "question": "教育工作者有哪些付費方案選擇？",
+          "answer": "Lovart 提供三種付費方案：Starter（$20/月，2,000 額度）——適合每月建立15-25份教案的個體教師；Basic（$35/月，3,500 額度）——適合年級團隊或導師每月管理30-50份教案；Pro（$110/月，11,000 額度）——為每月產出100份以上教案的院系、學校和企業培訓團隊設計。所有付費方案均包含商業使用授權和優先渲染。"
+        },
+        {
+          "question": "有哪些匯出格式可用，我該選哪種？",
+          "answer": "教案支援匯出為 PNG、JPG、SVG 和 PSD 格式，最高 8K 解析度。列印講義推薦使用 PNG（無損，文字清晰）。透過郵件或教學管理系統快速分享推薦使用 JPG（檔案更小）。互動式白板和投影推薦使用 SVG（無限縮放，任意縮放比例都保持清晰）。進階編輯推薦使用 PSD，支援完整圖層操作。所有格式在所有方案（含免費方案）中均可使用。"
+        },
+        {
+          "question": "Lovart 生成教案後還能編輯嗎？",
+          "answer": "可以——Lovart 的 ChatCanvas 讓你以對話方式最佳化教案。生成後，你可以說“在開頭加入熱身活動環節”“將評估方式改為量表格式”“把圖解放大”或“為小學生使用更鮮豔的標題”。觸控編輯和文字編輯為你提供每個元素的精確手動控制。MCoT 理解自然語言最佳化指令，編輯體驗就像和一位懂設計的教學助理協作。"
+        },
+        {
+          "question": "Lovart 支援不同的教育標準或課程標準格式嗎？",
+          "answer": "Lovart 的教學排版範本靈活可調，可適配任何課程標準格式——通用核心標準、下一代科學標準、IB 課程、州級標準或機構專屬架構。你可以指定偏好的結構（如“包含標準對齊、學習目標、成功標準和形成性評估等區塊”），Lovart 會設計出符合你要求的教案。品牌統一性功能確保每份教案都遵循你所在學校或學區的排版規範。"
+        }
+      ]
+    }
+  ]
+}

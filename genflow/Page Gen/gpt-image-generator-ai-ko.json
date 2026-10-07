@@ -1,0 +1,387 @@
+{
+  "_id": "features-gpt-image-generator-ai-ko",
+  "reflowSourceId": "features-gpt-image-generator-ai-ko",
+  "slug": "gpt-image-generator-ai",
+  "language": "ko",
+  "category": "feature",
+  "title": "복잡한 다이어그램 & AI 아트 생성 | Lovart",
+  "description": "Lovart's GPT Image integration delivers superior prompt adherence and logical composition for AI art. Create accurate diagrams, complex scenes, and editorial concepts that standard generators can't handle.",
+  "seo": {
+    "description": "로바트 GPT 이미지 통합은 뛰어난 프롬프트 준수와 논리적 구성을 제공합니다. 정확한 다이어그램, 복잡한 장면, 편집 콘셉트를 일반 생성기로는 불가능한 수준으로 제작하세요.",
+    "keywords": [
+      "gpt 이미지 생성기",
+      "ai 다이어그램 제작기",
+      "복잡한 장면 생성",
+      "지시 수행 ai",
+      "dall-e 3 대체",
+      "논리 기반 ai 아트",
+      "lovart gpt 모델"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Semantic Understanding",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"복잡한 다이어그램 & AI 아트 생성 | Lovart\", \"description\": \"Lovart's GPT Image integration delivers superior prompt adherence and logical composition for AI art. Create accurate diagrams, complex scenes, and editorial concepts that standard generators can't handle.\", \"url\": \"https://www.lovart.ai/features/gpt-image-generator-ai\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"GPT Image와 Flux 같은 다른 모델의 차이점은 무엇인가요? (section_ko)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"GPT Image(DALL-E 3 기술 기반)는 복잡하고 논리적인 프롬프트를 이해하고 구체적인 지시를 따르는 데 탁월합니다. Flux나 Nano Banana가 인물 사진의 사실감 면에서 더 뛰어날 수 있지만, GPT Image는 복잡한 장면, 다이어그램, 여러 피사체가 상호 작용하는 콘셉트에 더 우수합니다. (section_ko)\"}}, {\"@type\": \"Question\", \"name\": \"GPT Image로 생성된 이미지를 편집할 수 있나요? (section_ko)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"네! GPT Image가 Lovart의 ChatCanvas에 비주얼을 생성하면, 'Touch Edit', '배경 제거', '텍스트 편집'과 같은 강력한 도구를 사용하여 더욱 정교하게 다듬을 수 있습니다. (section_ko)\"}}, {\"@type\": \"Question\", \"name\": \"GPT Image는 이미지 내 텍스트를 지원하나요? (section_ko)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"네, GPT Image는 이전 모델에 비해 이미지 내에서 읽을 수 있는 텍스트를 렌더링하는 능력이 훨씬 뛰어납니다. 더 정밀한 텍스트 제어를 원하시면 생성된 결과물에 Lovart 전용 'Text Edit' 기능을 사용할 수 있습니다. (section_ko)\"}}, {\"@type\": \"Question\", \"name\": \"상업적 용도로 적합한가요? (section_ko)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"물론입니다. Lovart 유료 구독자는 GPT Image로 생성된 자산에 대한 완전한 상업적 권리를 보유하므로 광고, 블로그, 상품 제작에 완벽합니다. (section_ko)\"}}, {\"@type\": \"Question\", \"name\": \"Lovart에서 GPT Image에 어떻게 액세스하나요? (section_ko)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart 인터페이스 오른쪽의 '모델 선택' 패널에서 'GPT Image'를 선택하거나, 채팅 프롬프트에 '@GPT'를 입력하여 이 모델을 특별히 호출하면 됩니다. (section_ko)\"}}]}}"
+    },
+    "title": "복잡한 다이어그램 & AI 아트 생성 | Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"복잡한 다이어그램 & AI 아트 생성 | Lovart\",\"description\":\"Lovart's GPT Image integration delivers superior prompt adherence and logical composition for AI art. Create accurate diagrams, complex scenes, and editorial concepts that standard generators can't handle.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Semantic Understanding\"}},{\"type\":\"bento-6\",\"title\":\"The Intelligent Design Agent Advantage\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"의미론적 이해\",\"description\":\"고급 LLM 추론으로 구동되는 이 모델은 표준 확산 모델을 혼란스럽게 하는 뉘앙스, 관용구, 복잡한 문장 구조를 이해합니다.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"의미론적 이해\"}},{\"title\":\"다이어그램 & 인포그래픽 생성\",\"description\":\"프레젠테이션 및 교육 자료에 적합한 가독성 높은 다이어그램, 단면도, 정보 그래픽을 생성할 수 있는 독보적인 기능을 제공합니다.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"다이어그램 & 인포그래픽 생성\"}},{\"title\":\"통합 편집 도구\",\"description\":\"GPT Image로 생성한 다음 Lovart로 다듬으세요. 'Touch Edit'으로 특정 부분을 조정하거나 'Upscale'을 사용하여 콘셉트를 4K 인쇄용으로 만드세요.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"통합 편집 도구\"}},{\"title\":\"텍스트 인식 창작\",\"description\":\"이미지에 간판이나 텍스트가 필요하신가요? GPT Image는 탁월한 텍스트 렌더링 기능을 갖추고 있어 후반 작업 타이포그래피 작업을 줄여줍니다.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"텍스트 인식 창작\"}},{\"title\":\"다중 비율 지원\",\"description\":\"정사각형에 국한되지 마세요. 구도의 논리적 타당성을 유지하면서 와이드스크린 시네마틱 샷(16:9)이나 긴 소셜 미디어 게시물(9:16)을 생성하세요.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"다중 비율 지원\"}},{\"title\":\"대화가 곧 캔버스\",\"description\":\"Lovart의 채팅을 사용하여 이미지를 정교하게 다듬으세요. '왼쪽 나무 제거해 줘' 또는 '시간을 일몰로 바꿔줘'라고 말하면 에이전트가 지능적으로 비주얼을 업데이트합니다.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"대화가 곧 캔버스\"}}]},{\"type\":\"capability-tabs\",\"title\":\"하나의 에이전트에 모든 기능을\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"의미론적 이해\",\"icon\":\"chat\",\"content\":{\"title\":\"의미론적 이해\",\"description\":\"고급 LLM 추론으로 구동되는 이 모델은 표준 확산 모델을 혼란스럽게 하는 뉘앙스, 관용구, 복잡한 문장 구조를 이해합니다.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"의미론적 이해\"}}},{\"label\":\"다이어그램 & 인포그래픽 생성\",\"icon\":\"image\",\"content\":{\"title\":\"다이어그램 & 인포그래픽 생성\",\"description\":\"프레젠테이션 및 교육 자료에 적합한 가독성 높은 다이어그램, 단면도, 정보 그래픽을 생성할 수 있는 독보적인 기능을 제공합니다.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"다이어그램 & 인포그래픽 생성\"}}},{\"label\":\"통합 편집 도구\",\"icon\":\"flask\",\"content\":{\"title\":\"통합 편집 도구\",\"description\":\"GPT Image로 생성한 다음 Lovart로 다듬으세요. 'Touch Edit'으로 특정 부분을 조정하거나 'Upscale'을 사용하여 콘셉트를 4K 인쇄용으로 만드세요.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"통합 편집 도구\"}}},{\"label\":\"텍스트 인식 창작\",\"icon\":\"brand\",\"content\":{\"title\":\"텍스트 인식 창작\",\"description\":\"이미지에 간판이나 텍스트가 필요하신가요? GPT Image는 탁월한 텍스트 렌더링 기능을 갖추고 있어 후반 작업 타이포그래피 작업을 줄여줍니다.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"텍스트 인식 창작\"}}}]},{\"type\":\"bento-2\",\"title\":\"특히 잘하는 두 가지\",\"columns\":2,\"features\":[{\"title\":\"다중 비율 지원\",\"description\":\"정사각형에 국한되지 마세요. 구도의 논리적 타당성을 유지하면서 와이드스크린 시네마틱 샷(16:9)이나 긴 소셜 미디어 게시물(9:16)을 생성하세요.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"다중 비율 지원\"}},{\"title\":\"대화가 곧 캔버스\",\"description\":\"Lovart의 채팅을 사용하여 이미지를 정교하게 다듬으세요. '왼쪽 나무 제거해 줘' 또는 '시간을 일몰로 바꿔줘'라고 말하면 에이전트가 지능적으로 비주얼을 업데이트합니다.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"대화가 곧 캔버스\"}}]},{\"type\":\"feature-detail\",\"title\":\"작동 방식 자세히 보기\",\"items\":[{\"title\":\"GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art 프로젝트 시작하기\",\"description\":\"원하는 결과를 설명하고 참고 자료를 추가하세요.\"},{\"title\":\"에이전트와 함께 다듬기\",\"description\":\"같은 캔버스에서 디테일을 조정하고 다양한 버전을 탐색하세요.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"논리를 시각화하세요. GPT Image로 더 똑똑한 아트를 만드세요.\",\"description\":\"프롬프트의 절반을 무시하는 AI에 지치셨나요? Lovart의 GPT Image 통합은 디자인 워크플로우에 타의 추종을 불허하는 지시 준수 능력을 제공합니다. 정확성이 미학만큼이나 중요한 복잡한 장면, 사설 콘셉트, 논리적 다이어그램에 완벽합니다.\",\"input_placeholder\":\"예: '태양 전지판, 물 재활용, 수직 정원을 보여주는 미래형 친환경 주택의 단면도, 아이소메트릭 뷰'\",\"prompts\":[{\"label\":\"기술 다이어그램\",\"prompt\":\"An isometric diagram of a coffee machine's internal heating mechanism with clearly defined parts\"},{\"label\":\"사설 콘셉트 일러스트\",\"prompt\":\"A surreal editorial illustration of a businessman juggling clocks, representing time management, minimalist style\"},{\"label\":\"복잡한 피사체 관계\",\"prompt\":\"A cat wearing a blue hat and a dog wearing a red scarf shaking hands in a park\"},{\"label\":\"레이아웃 인식 디자인\",\"prompt\":\"A layout for a travel magazine cover with space left intentionally blank at the top for the title\"}],\"tip\":\"프로 팁: GPT Image는 '공간 논리'에 탁월합니다. 사물이 어디에 있어야 하는지 정확히 설명해 보세요(예: '왼쪽에', '배경에'). AI가 실제로 이해합니다.\",\"cta\":{\"text\":\"정밀하게 생성하기\"}},{\"type\":\"workflow-horizontal\",\"title\":\"GPT Image가 AI 아트의 '두뇌'인 이유\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"비교할 수 없는 지시 준수\",\"description\":\"운에 맡기지 마세요. 다른 모델들이 '분위기'를 우선시할 때, GPT Image는 여러분의 지시를 우선시합니다. 노란 꽃 옆에 있는 파란 상자 위에 빨간 공을 그려달라고 하면, 정확히 그대로 그려냅니다.\"},{\"step\":2,\"title\":\"논리적 장면 구성\",\"description\":\"특정 레이아웃이 필요하신가요? GPT Image는 공간 관계를 이해합니다. 구도가 선택이 아닌 필수인 스토리보드, 다이어그램, 마케팅 비주얼을 생성하는 데 이상적인 엔진입니다.\"},{\"step\":3,\"title\":\"개념적 추론\",\"description\":\"GPT Image는 단순히 픽셀을 렌더링하는 것이 아니라 아이디어를 렌더링합니다. '기술과 자연의 교차점'과 같은 추상적인 개념을 요청하면, 다른 어떤 모델보다 은유를 시각적으로 더 잘 해석합니다.\"}]},{\"type\":\"comparison-table\",\"title\":\"GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art: Lovart vs 일반적인 워크플로우\",\"headers\":[\"니즈\",\"일반 도구\",\"수작업 워크플로우\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art 프로젝트 시작하기\",\"values\":[\"프롬프트 한 번\",\"수동 브리프 작성\",\"브리프 기반 추론\"]},{\"feature\":\"첫 결과물까지 걸리는 시간\",\"values\":[\"몇 분\",\"며칠\",\"몇 분\"]},{\"feature\":\"생성 후 편집\",\"values\":[\"제한적\",\"수정 반복\",\"터치 / 텍스트 / 요소 편집\"]},{\"feature\":\"브랜드 일관성 유지\",\"values\":[\"수동\",\"수동\",\"Brand Kit 지원\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art이(가) 빛을 발하는 순간\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"더 빠르게 시작\",\"description\":\"브리프부터 GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art 결과물까지 한 세션에 완성.\"},{\"icon\":\"brand\",\"title\":\"일관성 유지\",\"description\":\"Brand Kit가 모든 결과물을 통일감 있게 유지합니다.\"},{\"icon\":\"refresh\",\"title\":\"빠른 반복\",\"description\":\"프로젝트를 처음부터 다시 시작하지 않고 디테일을 편집하세요.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"피치덱을 위해 '데이터 산을 오르는 팀'이라는 구체적인 일러스트가 필요했습니다. Midjourney는 계속 이상하게 만들더군요. Lovart의 GPT Image는 첫 시도에 콘셉트를 정확히 잡아냈습니다.\",\"author\":\"Sarah J.\",\"role\":\"마케팅 디렉터\"},{\"quote\":\"과학 블로그용 다이어그램을 만드는 데 몇 시간이 걸리곤 했습니다. 이제는 Lovart에게 생물학적 과정을 설명하기만 하면 GPT Image가 즉시 사용할 수 있는 거의 완벽한 도식을 생성해 줍니다.\",\"author\":\"Mike T.\",\"role\":\"교육 콘텐츠 크리에이터\"},{\"quote\":\"'타이틀 텍스트를 위해 상단 3분의 1은 비워둬'와 같이 구체적인 구도를 요청할 수 있는 능력은 정말 획기적입니다. 나중에 포토샵 작업 시간을 엄청나게 줄여줍니다.\",\"author\":\"Elena R.\",\"role\":\"북 커버 디자이너\"}],\"title\":\"GPT Image로 실제 문제를 해결하는 크리에이터들\"},{\"type\":\"pricing-block\",\"title\":\"팀에 맞는 요금제 선택\",\"description\":\"무료로 시작하고, 클라이언트 작업이 시작되면 업그레이드하세요.\"},{\"type\":\"faq\",\"title\":\"자주 묻는 질문\",\"items\":[{\"question\":\"GPT Image와 Flux 같은 다른 모델의 차이점은 무엇인가요?\",\"answer\":\"GPT Image(DALL-E 3 기술 기반)는 복잡하고 논리적인 프롬프트를 이해하고 구체적인 지시를 따르는 데 탁월합니다. Flux나 Nano Banana가 인물 사진의 사실감 면에서 더 뛰어날 수 있지만, GPT Image는 복잡한 장면, 다이어그램, 여러 피사체가 상호 작용하는 콘셉트에 더 우수합니다.\"},{\"question\":\"GPT Image로 생성된 이미지를 편집할 수 있나요?\",\"answer\":\"네! GPT Image가 Lovart의 ChatCanvas에 비주얼을 생성하면, 'Touch Edit', '배경 제거', '텍스트 편집'과 같은 강력한 도구를 사용하여 더욱 정교하게 다듬을 수 있습니다.\"},{\"question\":\"GPT Image는 이미지 내 텍스트를 지원하나요?\",\"answer\":\"네, GPT Image는 이전 모델에 비해 이미지 내에서 읽을 수 있는 텍스트를 렌더링하는 능력이 훨씬 뛰어납니다. 더 정밀한 텍스트 제어를 원하시면 생성된 결과물에 Lovart 전용 'Text Edit' 기능을 사용할 수 있습니다.\"},{\"question\":\"상업적 용도로 적합한가요?\",\"answer\":\"물론입니다. Lovart 유료 구독자는 GPT Image로 생성된 자산에 대한 완전한 상업적 권리를 보유하므로 광고, 블로그, 상품 제작에 완벽합니다.\"},{\"question\":\"Lovart에서 GPT Image에 어떻게 액세스하나요?\",\"answer\":\"Lovart 인터페이스 오른쪽의 '모델 선택' 패널에서 'GPT Image'를 선택하거나, 채팅 프롬프트에 '@GPT'를 입력하여 이 모델을 특별히 호출하면 됩니다.\"}]},{\"type\":\"cta-default\",\"title\":\"Lovart로 디자인을 시작하세요\",\"description\":\"브리프를 몇 분 만에 브랜드에 맞는 비주얼로 바꿔보세요.\",\"buttons\":[{\"text\":\"무료로 시작하기\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "복잡한 다이어그램 & AI 아트 생성 | Lovart",
+      "description": "Lovart's GPT Image integration delivers superior prompt adherence and logical composition for AI art. Create accurate diagrams, complex scenes, and editorial concepts that standard generators can't handle.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Semantic Understanding"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "The Intelligent Design Agent Advantage",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "의미론적 이해",
+          "description": "고급 LLM 추론으로 구동되는 이 모델은 표준 확산 모델을 혼란스럽게 하는 뉘앙스, 관용구, 복잡한 문장 구조를 이해합니다.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "의미론적 이해"
+          }
+        },
+        {
+          "title": "다이어그램 & 인포그래픽 생성",
+          "description": "프레젠테이션 및 교육 자료에 적합한 가독성 높은 다이어그램, 단면도, 정보 그래픽을 생성할 수 있는 독보적인 기능을 제공합니다.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "다이어그램 & 인포그래픽 생성"
+          }
+        },
+        {
+          "title": "통합 편집 도구",
+          "description": "GPT Image로 생성한 다음 Lovart로 다듬으세요. 'Touch Edit'으로 특정 부분을 조정하거나 'Upscale'을 사용하여 콘셉트를 4K 인쇄용으로 만드세요.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "통합 편집 도구"
+          }
+        },
+        {
+          "title": "텍스트 인식 창작",
+          "description": "이미지에 간판이나 텍스트가 필요하신가요? GPT Image는 탁월한 텍스트 렌더링 기능을 갖추고 있어 후반 작업 타이포그래피 작업을 줄여줍니다.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "텍스트 인식 창작"
+          }
+        },
+        {
+          "title": "다중 비율 지원",
+          "description": "정사각형에 국한되지 마세요. 구도의 논리적 타당성을 유지하면서 와이드스크린 시네마틱 샷(16:9)이나 긴 소셜 미디어 게시물(9:16)을 생성하세요.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "다중 비율 지원"
+          }
+        },
+        {
+          "title": "대화가 곧 캔버스",
+          "description": "Lovart의 채팅을 사용하여 이미지를 정교하게 다듬으세요. '왼쪽 나무 제거해 줘' 또는 '시간을 일몰로 바꿔줘'라고 말하면 에이전트가 지능적으로 비주얼을 업데이트합니다.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "대화가 곧 캔버스"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "하나의 에이전트에 모든 기능을",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "의미론적 이해",
+          "icon": "chat",
+          "content": {
+            "title": "의미론적 이해",
+            "description": "고급 LLM 추론으로 구동되는 이 모델은 표준 확산 모델을 혼란스럽게 하는 뉘앙스, 관용구, 복잡한 문장 구조를 이해합니다.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "의미론적 이해"
+            }
+          }
+        },
+        {
+          "label": "다이어그램 & 인포그래픽 생성",
+          "icon": "image",
+          "content": {
+            "title": "다이어그램 & 인포그래픽 생성",
+            "description": "프레젠테이션 및 교육 자료에 적합한 가독성 높은 다이어그램, 단면도, 정보 그래픽을 생성할 수 있는 독보적인 기능을 제공합니다.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "다이어그램 & 인포그래픽 생성"
+            }
+          }
+        },
+        {
+          "label": "통합 편집 도구",
+          "icon": "flask",
+          "content": {
+            "title": "통합 편집 도구",
+            "description": "GPT Image로 생성한 다음 Lovart로 다듬으세요. 'Touch Edit'으로 특정 부분을 조정하거나 'Upscale'을 사용하여 콘셉트를 4K 인쇄용으로 만드세요.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "통합 편집 도구"
+            }
+          }
+        },
+        {
+          "label": "텍스트 인식 창작",
+          "icon": "brand",
+          "content": {
+            "title": "텍스트 인식 창작",
+            "description": "이미지에 간판이나 텍스트가 필요하신가요? GPT Image는 탁월한 텍스트 렌더링 기능을 갖추고 있어 후반 작업 타이포그래피 작업을 줄여줍니다.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "텍스트 인식 창작"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "특히 잘하는 두 가지",
+      "columns": 2,
+      "features": [
+        {
+          "title": "다중 비율 지원",
+          "description": "정사각형에 국한되지 마세요. 구도의 논리적 타당성을 유지하면서 와이드스크린 시네마틱 샷(16:9)이나 긴 소셜 미디어 게시물(9:16)을 생성하세요.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "다중 비율 지원"
+          }
+        },
+        {
+          "title": "대화가 곧 캔버스",
+          "description": "Lovart의 채팅을 사용하여 이미지를 정교하게 다듬으세요. '왼쪽 나무 제거해 줘' 또는 '시간을 일몰로 바꿔줘'라고 말하면 에이전트가 지능적으로 비주얼을 업데이트합니다.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "대화가 곧 캔버스"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "작동 방식 자세히 보기",
+      "items": [
+        {
+          "title": "GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art 프로젝트 시작하기",
+          "description": "원하는 결과를 설명하고 참고 자료를 추가하세요."
+        },
+        {
+          "title": "에이전트와 함께 다듬기",
+          "description": "같은 캔버스에서 디테일을 조정하고 다양한 버전을 탐색하세요.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "논리를 시각화하세요. GPT Image로 더 똑똑한 아트를 만드세요.",
+      "description": "프롬프트의 절반을 무시하는 AI에 지치셨나요? Lovart의 GPT Image 통합은 디자인 워크플로우에 타의 추종을 불허하는 지시 준수 능력을 제공합니다. 정확성이 미학만큼이나 중요한 복잡한 장면, 사설 콘셉트, 논리적 다이어그램에 완벽합니다.",
+      "input_placeholder": "예: '태양 전지판, 물 재활용, 수직 정원을 보여주는 미래형 친환경 주택의 단면도, 아이소메트릭 뷰'",
+      "prompts": [
+        {
+          "label": "기술 다이어그램",
+          "prompt": "An isometric diagram of a coffee machine's internal heating mechanism with clearly defined parts"
+        },
+        {
+          "label": "사설 콘셉트 일러스트",
+          "prompt": "A surreal editorial illustration of a businessman juggling clocks, representing time management, minimalist style"
+        },
+        {
+          "label": "복잡한 피사체 관계",
+          "prompt": "A cat wearing a blue hat and a dog wearing a red scarf shaking hands in a park"
+        },
+        {
+          "label": "레이아웃 인식 디자인",
+          "prompt": "A layout for a travel magazine cover with space left intentionally blank at the top for the title"
+        }
+      ],
+      "tip": "프로 팁: GPT Image는 '공간 논리'에 탁월합니다. 사물이 어디에 있어야 하는지 정확히 설명해 보세요(예: '왼쪽에', '배경에'). AI가 실제로 이해합니다.",
+      "cta": {
+        "text": "정밀하게 생성하기"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "GPT Image가 AI 아트의 '두뇌'인 이유",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "비교할 수 없는 지시 준수",
+          "description": "운에 맡기지 마세요. 다른 모델들이 '분위기'를 우선시할 때, GPT Image는 여러분의 지시를 우선시합니다. 노란 꽃 옆에 있는 파란 상자 위에 빨간 공을 그려달라고 하면, 정확히 그대로 그려냅니다."
+        },
+        {
+          "step": 2,
+          "title": "논리적 장면 구성",
+          "description": "특정 레이아웃이 필요하신가요? GPT Image는 공간 관계를 이해합니다. 구도가 선택이 아닌 필수인 스토리보드, 다이어그램, 마케팅 비주얼을 생성하는 데 이상적인 엔진입니다."
+        },
+        {
+          "step": 3,
+          "title": "개념적 추론",
+          "description": "GPT Image는 단순히 픽셀을 렌더링하는 것이 아니라 아이디어를 렌더링합니다. '기술과 자연의 교차점'과 같은 추상적인 개념을 요청하면, 다른 어떤 모델보다 은유를 시각적으로 더 잘 해석합니다."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art: Lovart vs 일반적인 워크플로우",
+      "headers": [
+        "니즈",
+        "일반 도구",
+        "수작업 워크플로우",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art 프로젝트 시작하기",
+          "values": [
+            "프롬프트 한 번",
+            "수동 브리프 작성",
+            "브리프 기반 추론"
+          ]
+        },
+        {
+          "feature": "첫 결과물까지 걸리는 시간",
+          "values": [
+            "몇 분",
+            "며칠",
+            "몇 분"
+          ]
+        },
+        {
+          "feature": "생성 후 편집",
+          "values": [
+            "제한적",
+            "수정 반복",
+            "터치 / 텍스트 / 요소 편집"
+          ]
+        },
+        {
+          "feature": "브랜드 일관성 유지",
+          "values": [
+            "수동",
+            "수동",
+            "Brand Kit 지원"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art이(가) 빛을 발하는 순간",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "더 빠르게 시작",
+          "description": "브리프부터 GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art 결과물까지 한 세션에 완성."
+        },
+        {
+          "icon": "brand",
+          "title": "일관성 유지",
+          "description": "Brand Kit가 모든 결과물을 통일감 있게 유지합니다."
+        },
+        {
+          "icon": "refresh",
+          "title": "빠른 반복",
+          "description": "프로젝트를 처음부터 다시 시작하지 않고 디테일을 편집하세요."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "피치덱을 위해 '데이터 산을 오르는 팀'이라는 구체적인 일러스트가 필요했습니다. Midjourney는 계속 이상하게 만들더군요. Lovart의 GPT Image는 첫 시도에 콘셉트를 정확히 잡아냈습니다.",
+          "author": "Sarah J.",
+          "role": "마케팅 디렉터"
+        },
+        {
+          "quote": "과학 블로그용 다이어그램을 만드는 데 몇 시간이 걸리곤 했습니다. 이제는 Lovart에게 생물학적 과정을 설명하기만 하면 GPT Image가 즉시 사용할 수 있는 거의 완벽한 도식을 생성해 줍니다.",
+          "author": "Mike T.",
+          "role": "교육 콘텐츠 크리에이터"
+        },
+        {
+          "quote": "'타이틀 텍스트를 위해 상단 3분의 1은 비워둬'와 같이 구체적인 구도를 요청할 수 있는 능력은 정말 획기적입니다. 나중에 포토샵 작업 시간을 엄청나게 줄여줍니다.",
+          "author": "Elena R.",
+          "role": "북 커버 디자이너"
+        }
+      ],
+      "title": "GPT Image로 실제 문제를 해결하는 크리에이터들"
+    },
+    {
+      "type": "pricing-block",
+      "title": "팀에 맞는 요금제 선택",
+      "description": "무료로 시작하고, 클라이언트 작업이 시작되면 업그레이드하세요."
+    },
+    {
+      "type": "faq",
+      "title": "자주 묻는 질문",
+      "items": [
+        {
+          "question": "GPT Image와 Flux 같은 다른 모델의 차이점은 무엇인가요?",
+          "answer": "GPT Image(DALL-E 3 기술 기반)는 복잡하고 논리적인 프롬프트를 이해하고 구체적인 지시를 따르는 데 탁월합니다. Flux나 Nano Banana가 인물 사진의 사실감 면에서 더 뛰어날 수 있지만, GPT Image는 복잡한 장면, 다이어그램, 여러 피사체가 상호 작용하는 콘셉트에 더 우수합니다."
+        },
+        {
+          "question": "GPT Image로 생성된 이미지를 편집할 수 있나요?",
+          "answer": "네! GPT Image가 Lovart의 ChatCanvas에 비주얼을 생성하면, 'Touch Edit', '배경 제거', '텍스트 편집'과 같은 강력한 도구를 사용하여 더욱 정교하게 다듬을 수 있습니다."
+        },
+        {
+          "question": "GPT Image는 이미지 내 텍스트를 지원하나요?",
+          "answer": "네, GPT Image는 이전 모델에 비해 이미지 내에서 읽을 수 있는 텍스트를 렌더링하는 능력이 훨씬 뛰어납니다. 더 정밀한 텍스트 제어를 원하시면 생성된 결과물에 Lovart 전용 'Text Edit' 기능을 사용할 수 있습니다."
+        },
+        {
+          "question": "상업적 용도로 적합한가요?",
+          "answer": "물론입니다. Lovart 유료 구독자는 GPT Image로 생성된 자산에 대한 완전한 상업적 권리를 보유하므로 광고, 블로그, 상품 제작에 완벽합니다."
+        },
+        {
+          "question": "Lovart에서 GPT Image에 어떻게 액세스하나요?",
+          "answer": "Lovart 인터페이스 오른쪽의 '모델 선택' 패널에서 'GPT Image'를 선택하거나, 채팅 프롬프트에 '@GPT'를 입력하여 이 모델을 특별히 호출하면 됩니다."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovart로 디자인을 시작하세요",
+      "description": "브리프를 몇 분 만에 브랜드에 맞는 비주얼로 바꿔보세요.",
+      "buttons": [
+        {
+          "text": "무료로 시작하기",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

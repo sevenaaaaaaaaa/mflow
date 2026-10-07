@@ -1,0 +1,387 @@
+{
+  "_id": "features-ai-bakery-menu-maker-ja",
+  "reflowSourceId": "features-ai-bakery-menu-maker-ja",
+  "slug": "ai-bakery-menu-maker",
+  "language": "ja",
+  "category": "feature",
+  "title": "LovartのAIベーカリーメニュー作成ツール",
+  "description": "Design appetizing bakery menus and price lists with Lovart's AI Agent. Generate realistic food photos, update prices instantly, and create print-ready layouts in minutes.",
+  "seo": {
+    "description": "LovartのAIエージェントで魅力的なベーカリーメニューと価格表をデザイン。リアルな食品写真を生成し、価格を瞬時に更新、印刷可能なレイアウトを数分で作成。",
+    "keywords": [
+      "AIメニューメーカー",
+      "ベーカリーメニューデザイン",
+      "ペストリー価格表",
+      "レストランメニュージェネレーター",
+      "フードフォトグラフィーAI",
+      "印刷可能なメニューテンプレート",
+      "カフェブランディング"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "AI Food Photography",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"LovartのAIベーカリーメニュー作成ツール\", \"description\": \"Design appetizing bakery menus and price lists with Lovart's AI Agent. Generate realistic food photos, update prices instantly, and create print-ready layouts in minutes.\", \"url\": \"https://www.lovart.ai/features/ai-bakery-menu-maker\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"メニューにAIフード画像を使用できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい！Nano Banana Proなどのモデルによって生成された画像は忠実度が高く、商用利用のためのロイヤリティフリーです。写真撮影を手配する前にメニュー項目を説明するのに最適です。\"}}, {\"@type\": \"Question\", \"name\": \"メニューは印刷に適していますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"もちろんです。Lovartを使用すると、デザインを4Kにアップスケールし、カードストックや大きなボードへのプロフェッショナルな印刷に適した高品質フォーマットでエクスポートできます。\"}}, {\"@type\": \"Question\", \"name\": \"後で価格を編集できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。Lovartの「テキスト編集」機能は、テキストを編集可能な状態に保ちます。いつでも戻ってきて、価格をクリックして更新でき、画像全体を再生成する必要はありません。\"}}, {\"@type\": \"Question\", \"name\": \"異なる言語をサポートしていますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい、Lovartのテキストモデルは多言語をサポートしています。正しいタイポグラフィで、英語、フランス語、スペイン語、日本語などのメニューを作成できます。\"}}, {\"@type\": \"Question\", \"name\": \"自分のロゴを追加できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい、「画像アップロード」ツールを使用して既存のロゴをアップロードし、メニューの任意の場所に配置できます。必要であれば、Lovartが新しいロゴのデザインをお手伝いすることもできます。\"}}]}}"
+    },
+    "title": "LovartのAIベーカリーメニュー作成ツール"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"LovartのAIベーカリーメニュー作成ツール\",\"description\":\"Design appetizing bakery menus and price lists with Lovart's AI Agent. Generate realistic food photos, update prices instantly, and create print-ready layouts in minutes.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"AI Food Photography\"}},{\"type\":\"bento-6\",\"title\":\"Ingredients for the Perfect Menu\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"AIフードフォトグラフィー\",\"description\":\"Nano Banana Proを搭載し、パン、ケーキ、ペストリーの超リアルな画像を生成。実際の写真と見分けがつかず、撮影を手配する前にスペシャルを強調するのに最適です。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"AIフードフォトグラフィー\"}},{\"title\":\"即時の価格更新\",\"description\":\"インフレは避けられません。Lovartの「テキスト編集」機能を使えば、デザインのフォントや配置を完璧に保ちながら、数秒で価格や商品説明を変更できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"即時の価格更新\"}},{\"title\":\"メニューエンジニアリング\",\"description\":\"当社のエージェントは、心理的なアンカーと視覚的な階層構造を使用して、顧客の注意を利益率の高い商品に誘導するレイアウトを提案します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"メニューエンジニアリング\"}},{\"title\":\"季節のキャンペーン\",\"description\":\"メインメニューを瞬時にホリデースペシャルに変身させます。エージェントに「クリスマスのテーマを追加」と頼むだけで、レイアウトを崩さずにお祝いの要素を適用します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"季節のキャンペーン\"}},{\"title\":\"背景削除\",\"description\":\"自分のケーキの写真がありますか？ワンクリック「背景削除」を使って分離し、新しいメニューデザインの上にきれいに配置しましょう。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"背景削除\"}},{\"title\":\"マルチフォーマットエクスポート\",\"description\":\"デザインを一度生成すれば、Lovartが壁のメニュー、テーブルテントカード、Instagramストーリーズ用に自動的にサイズ変更します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"マルチフォーマットエクスポート\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"AIフードフォトグラフィー\",\"icon\":\"chat\",\"content\":{\"title\":\"AIフードフォトグラフィー\",\"description\":\"Nano Banana Proを搭載し、パン、ケーキ、ペストリーの超リアルな画像を生成。実際の写真と見分けがつかず、撮影を手配する前にスペシャルを強調するのに最適です。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"AIフードフォトグラフィー\"}}},{\"label\":\"即時の価格更新\",\"icon\":\"image\",\"content\":{\"title\":\"即時の価格更新\",\"description\":\"インフレは避けられません。Lovartの「テキスト編集」機能を使えば、デザインのフォントや配置を完璧に保ちながら、数秒で価格や商品説明を変更できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"即時の価格更新\"}}},{\"label\":\"メニューエンジニアリング\",\"icon\":\"flask\",\"content\":{\"title\":\"メニューエンジニアリング\",\"description\":\"当社のエージェントは、心理的なアンカーと視覚的な階層構造を使用して、顧客の注意を利益率の高い商品に誘導するレイアウトを提案します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"メニューエンジニアリング\"}}},{\"label\":\"季節のキャンペーン\",\"icon\":\"brand\",\"content\":{\"title\":\"季節のキャンペーン\",\"description\":\"メインメニューを瞬時にホリデースペシャルに変身させます。エージェントに「クリスマスのテーマを追加」と頼むだけで、レイアウトを崩さずにお祝いの要素を適用します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"季節のキャンペーン\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"背景削除\",\"description\":\"自分のケーキの写真がありますか？ワンクリック「背景削除」を使って分離し、新しいメニューデザインの上にきれいに配置しましょう。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"背景削除\"}},{\"title\":\"マルチフォーマットエクスポート\",\"description\":\"デザインを一度生成すれば、Lovartが壁のメニュー、テーブルテントカード、Instagramストーリーズ用に自動的にサイズ変更します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"マルチフォーマットエクスポート\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"AI Bakery Menu Design Agent: Create Menus & Price Lists プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"食欲をそそる。AIでバイラルなベーカリーメニューをデザイン。\",\"description\":\"高価な写真撮影はスキップしましょう。LovartのAIエージェントは、超リアルなペストリーのビジュアルを生成し、数秒でプロフェッショナルな価格表をレイアウトします。素朴なサワードウのブランディングからエレガントなパティスリーの美学まで、顧客が味わう前に魅了するメニューを作成しましょう。\",\"input_placeholder\":\"例：「フランスのパティスリーメニュー、パステルピンクとゴールド、フォトリアルなイチゴのタルト、エレガントなセリフフォント」\",\"prompts\":[{\"label\":\"素朴な黒板スタイル\",\"prompt\":\"Rustic bakery menu board, chalkboard style with chalk art croissants and wheat, warm lighting\"},{\"label\":\"モダンポップスタイル\",\"prompt\":\"Modern minimalist donut shop price list, bold colorful typography, pop-art style visuals\"},{\"label\":\"ラグジュアリーウェディング\",\"prompt\":\"Elegant wedding cake brochure, cream and gold foil textures, high-end luxury aesthetic\"},{\"label\":\"居心地の良い水彩画風\",\"prompt\":\"Cozy cafe menu flyer, watercolor illustrations of bagels and coffee, soft paper texture\"}],\"tip\":\"ヒント：「テキスト編集（Edit Text）」を使って、美しいレイアウトを崩すことなく、季節の価格を即座に更新できます。\",\"cta\":{\"text\":\"ベーカリーメニューを生成\"}},{\"type\":\"workflow-horizontal\",\"title\":\"生地からデザインまで3ステップ\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"味を視覚化\",\"description\":\"新作クロナッツの写真がありませんか？問題ありません。説明するだけで、Nano Banana Proモデルがすべてのグレーズやパン粉を捉えたスタジオ品質の料理写真を生成します。\"},{\"step\":2,\"title\":\"スマートメニューレイアウト\",\"description\":\"Lovartのエージェントはメニューエンジニアリングを理解しています。商品を整理し、ベストセラーを強調し、可読性と販売転換率を最大化するように価格表を構築します。\"},{\"step\":3,\"title\":\"更新と印刷\",\"description\":\"価格が変わりましたか？季節のスペシャルですか？「テキスト編集」を使って詳細を即座に修正。プロの印刷用に高解像度PDFまたはCMYK対応形式でエクスポートします。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Bakery Menu Design Agent: Create Menus & Price Lists：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"AI Bakery Menu Design Agent: Create Menus & Price Lists プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"AI Bakery Menu Design Agent: Create Menus & Price Lists が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから AI Bakery Menu Design Agent: Create Menus & Price Lists の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"バレンタインのメニューが急ぎで必要でした。Lovartは、私が焼く前なのに、素晴らしいハート型のクッキーの画像を生成してくれました。おかげで製造前に予約注文を取ることができました！\",\"author\":\"Elena R.\",\"role\":\"Petit Fourカフェ オーナー\"},{\"quote\":\"「テキスト編集」ツールは命の恩人です。私は毎朝、日替わりスペシャルを変更します。Lovartのおかげで、テキストを更新するだけで、2分で新しいメニューを印刷できます。\",\"author\":\"Marcus T.\",\"role\":\"アルチザンベーカー\"},{\"quote\":\"デザイナーを雇う余裕はありませんでした。Lovartは、私のホームビジネスを高級ブティックのように見せるプロフェッショナルな価格表を作成するのを手伝ってくれました。\",\"author\":\"Sophie L.\",\"role\":\"ホームベーカー\"}],\"title\":\"Lovartで成長するベーカリー\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"メニューにAIフード画像を使用できますか？\",\"answer\":\"はい！Nano Banana Proなどのモデルによって生成された画像は忠実度が高く、商用利用のためのロイヤリティフリーです。写真撮影を手配する前にメニュー項目を説明するのに最適です。\"},{\"question\":\"メニューは印刷に適していますか？\",\"answer\":\"もちろんです。Lovartを使用すると、デザインを4Kにアップスケールし、カードストックや大きなボードへのプロフェッショナルな印刷に適した高品質フォーマットでエクスポートできます。\"},{\"question\":\"後で価格を編集できますか？\",\"answer\":\"はい。Lovartの「テキスト編集」機能は、テキストを編集可能な状態に保ちます。いつでも戻ってきて、価格をクリックして更新でき、画像全体を再生成する必要はありません。\"},{\"question\":\"異なる言語をサポートしていますか？\",\"answer\":\"はい、Lovartのテキストモデルは多言語をサポートしています。正しいタイポグラフィで、英語、フランス語、スペイン語、日本語などのメニューを作成できます。\"},{\"question\":\"自分のロゴを追加できますか？\",\"answer\":\"はい、「画像アップロード」ツールを使用して既存のロゴをアップロードし、メニューの任意の場所に配置できます。必要であれば、Lovartが新しいロゴのデザインをお手伝いすることもできます。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "LovartのAIベーカリーメニュー作成ツール",
+      "description": "Design appetizing bakery menus and price lists with Lovart's AI Agent. Generate realistic food photos, update prices instantly, and create print-ready layouts in minutes.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "AI Food Photography"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Ingredients for the Perfect Menu",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "AIフードフォトグラフィー",
+          "description": "Nano Banana Proを搭載し、パン、ケーキ、ペストリーの超リアルな画像を生成。実際の写真と見分けがつかず、撮影を手配する前にスペシャルを強調するのに最適です。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "AIフードフォトグラフィー"
+          }
+        },
+        {
+          "title": "即時の価格更新",
+          "description": "インフレは避けられません。Lovartの「テキスト編集」機能を使えば、デザインのフォントや配置を完璧に保ちながら、数秒で価格や商品説明を変更できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "即時の価格更新"
+          }
+        },
+        {
+          "title": "メニューエンジニアリング",
+          "description": "当社のエージェントは、心理的なアンカーと視覚的な階層構造を使用して、顧客の注意を利益率の高い商品に誘導するレイアウトを提案します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "メニューエンジニアリング"
+          }
+        },
+        {
+          "title": "季節のキャンペーン",
+          "description": "メインメニューを瞬時にホリデースペシャルに変身させます。エージェントに「クリスマスのテーマを追加」と頼むだけで、レイアウトを崩さずにお祝いの要素を適用します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "季節のキャンペーン"
+          }
+        },
+        {
+          "title": "背景削除",
+          "description": "自分のケーキの写真がありますか？ワンクリック「背景削除」を使って分離し、新しいメニューデザインの上にきれいに配置しましょう。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "背景削除"
+          }
+        },
+        {
+          "title": "マルチフォーマットエクスポート",
+          "description": "デザインを一度生成すれば、Lovartが壁のメニュー、テーブルテントカード、Instagramストーリーズ用に自動的にサイズ変更します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "マルチフォーマットエクスポート"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "AIフードフォトグラフィー",
+          "icon": "chat",
+          "content": {
+            "title": "AIフードフォトグラフィー",
+            "description": "Nano Banana Proを搭載し、パン、ケーキ、ペストリーの超リアルな画像を生成。実際の写真と見分けがつかず、撮影を手配する前にスペシャルを強調するのに最適です。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "AIフードフォトグラフィー"
+            }
+          }
+        },
+        {
+          "label": "即時の価格更新",
+          "icon": "image",
+          "content": {
+            "title": "即時の価格更新",
+            "description": "インフレは避けられません。Lovartの「テキスト編集」機能を使えば、デザインのフォントや配置を完璧に保ちながら、数秒で価格や商品説明を変更できます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "即時の価格更新"
+            }
+          }
+        },
+        {
+          "label": "メニューエンジニアリング",
+          "icon": "flask",
+          "content": {
+            "title": "メニューエンジニアリング",
+            "description": "当社のエージェントは、心理的なアンカーと視覚的な階層構造を使用して、顧客の注意を利益率の高い商品に誘導するレイアウトを提案します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+              "alt": "メニューエンジニアリング"
+            }
+          }
+        },
+        {
+          "label": "季節のキャンペーン",
+          "icon": "brand",
+          "content": {
+            "title": "季節のキャンペーン",
+            "description": "メインメニューを瞬時にホリデースペシャルに変身させます。エージェントに「クリスマスのテーマを追加」と頼むだけで、レイアウトを崩さずにお祝いの要素を適用します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "季節のキャンペーン"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "背景削除",
+          "description": "自分のケーキの写真がありますか？ワンクリック「背景削除」を使って分離し、新しいメニューデザインの上にきれいに配置しましょう。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "背景削除"
+          }
+        },
+        {
+          "title": "マルチフォーマットエクスポート",
+          "description": "デザインを一度生成すれば、Lovartが壁のメニュー、テーブルテントカード、Instagramストーリーズ用に自動的にサイズ変更します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "マルチフォーマットエクスポート"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "AI Bakery Menu Design Agent: Create Menus & Price Lists プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "食欲をそそる。AIでバイラルなベーカリーメニューをデザイン。",
+      "description": "高価な写真撮影はスキップしましょう。LovartのAIエージェントは、超リアルなペストリーのビジュアルを生成し、数秒でプロフェッショナルな価格表をレイアウトします。素朴なサワードウのブランディングからエレガントなパティスリーの美学まで、顧客が味わう前に魅了するメニューを作成しましょう。",
+      "input_placeholder": "例：「フランスのパティスリーメニュー、パステルピンクとゴールド、フォトリアルなイチゴのタルト、エレガントなセリフフォント」",
+      "prompts": [
+        {
+          "label": "素朴な黒板スタイル",
+          "prompt": "Rustic bakery menu board, chalkboard style with chalk art croissants and wheat, warm lighting"
+        },
+        {
+          "label": "モダンポップスタイル",
+          "prompt": "Modern minimalist donut shop price list, bold colorful typography, pop-art style visuals"
+        },
+        {
+          "label": "ラグジュアリーウェディング",
+          "prompt": "Elegant wedding cake brochure, cream and gold foil textures, high-end luxury aesthetic"
+        },
+        {
+          "label": "居心地の良い水彩画風",
+          "prompt": "Cozy cafe menu flyer, watercolor illustrations of bagels and coffee, soft paper texture"
+        }
+      ],
+      "tip": "ヒント：「テキスト編集（Edit Text）」を使って、美しいレイアウトを崩すことなく、季節の価格を即座に更新できます。",
+      "cta": {
+        "text": "ベーカリーメニューを生成"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "生地からデザインまで3ステップ",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "味を視覚化",
+          "description": "新作クロナッツの写真がありませんか？問題ありません。説明するだけで、Nano Banana Proモデルがすべてのグレーズやパン粉を捉えたスタジオ品質の料理写真を生成します。"
+        },
+        {
+          "step": 2,
+          "title": "スマートメニューレイアウト",
+          "description": "Lovartのエージェントはメニューエンジニアリングを理解しています。商品を整理し、ベストセラーを強調し、可読性と販売転換率を最大化するように価格表を構築します。"
+        },
+        {
+          "step": 3,
+          "title": "更新と印刷",
+          "description": "価格が変わりましたか？季節のスペシャルですか？「テキスト編集」を使って詳細を即座に修正。プロの印刷用に高解像度PDFまたはCMYK対応形式でエクスポートします。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Bakery Menu Design Agent: Create Menus & Price Lists：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "AI Bakery Menu Design Agent: Create Menus & Price Lists プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "AI Bakery Menu Design Agent: Create Menus & Price Lists が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから AI Bakery Menu Design Agent: Create Menus & Price Lists の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "バレンタインのメニューが急ぎで必要でした。Lovartは、私が焼く前なのに、素晴らしいハート型のクッキーの画像を生成してくれました。おかげで製造前に予約注文を取ることができました！",
+          "author": "Elena R.",
+          "role": "Petit Fourカフェ オーナー"
+        },
+        {
+          "quote": "「テキスト編集」ツールは命の恩人です。私は毎朝、日替わりスペシャルを変更します。Lovartのおかげで、テキストを更新するだけで、2分で新しいメニューを印刷できます。",
+          "author": "Marcus T.",
+          "role": "アルチザンベーカー"
+        },
+        {
+          "quote": "デザイナーを雇う余裕はありませんでした。Lovartは、私のホームビジネスを高級ブティックのように見せるプロフェッショナルな価格表を作成するのを手伝ってくれました。",
+          "author": "Sophie L.",
+          "role": "ホームベーカー"
+        }
+      ],
+      "title": "Lovartで成長するベーカリー"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "メニューにAIフード画像を使用できますか？",
+          "answer": "はい！Nano Banana Proなどのモデルによって生成された画像は忠実度が高く、商用利用のためのロイヤリティフリーです。写真撮影を手配する前にメニュー項目を説明するのに最適です。"
+        },
+        {
+          "question": "メニューは印刷に適していますか？",
+          "answer": "もちろんです。Lovartを使用すると、デザインを4Kにアップスケールし、カードストックや大きなボードへのプロフェッショナルな印刷に適した高品質フォーマットでエクスポートできます。"
+        },
+        {
+          "question": "後で価格を編集できますか？",
+          "answer": "はい。Lovartの「テキスト編集」機能は、テキストを編集可能な状態に保ちます。いつでも戻ってきて、価格をクリックして更新でき、画像全体を再生成する必要はありません。"
+        },
+        {
+          "question": "異なる言語をサポートしていますか？",
+          "answer": "はい、Lovartのテキストモデルは多言語をサポートしています。正しいタイポグラフィで、英語、フランス語、スペイン語、日本語などのメニューを作成できます。"
+        },
+        {
+          "question": "自分のロゴを追加できますか？",
+          "answer": "はい、「画像アップロード」ツールを使用して既存のロゴをアップロードし、メニューの任意の場所に配置できます。必要であれば、Lovartが新しいロゴのデザインをお手伝いすることもできます。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

@@ -1,0 +1,388 @@
+{
+  "_id": "features-touch-edit-ai-pt",
+  "reflowSourceId": "features-touch-edit-ai-pt",
+  "slug": "touch-edit-ai",
+  "language": "pt",
+  "category": "feature",
+  "title": "Toque Editar: Edição de Objetos com IA & Preenchimento Gerativo | Lovart",
+  "description": "Edit images instantly with Lovart's Touch Edit. Click to select objects without masking and use AI to replace, modify, or remove elements using simple text prompts.",
+  "seo": {
+    "description": "Edite imagens instantaneamente com o Touch Edit da Lovart. Selecione objetos sem máscara e use IA para substituir, modificar ou remover elementos com comandos de texto simples.",
+    "keywords": [
+      "Editor de imagem com IA",
+      "edição por toque",
+      "preenchimento generativo",
+      "substituição de objetos",
+      "inpaint com IA",
+      "edição de fotos com IA",
+      "remoção de objetos com IA",
+      "recursos do Lovart"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Semantic Recognition",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Toque Editar: Edição de Objetos com IA & Preenchimento Gerativo | Lovart\", \"description\": \"Edit images instantly with Lovart's Touch Edit. Click to select objects without masking and use AI to replace, modify, or remove elements using simple text prompts.\", \"url\": \"https://www.lovart.ai/features/touch-edit-ai\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Como o Touch Edit é diferente das ferramentas de seleção tradicionais?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"O Touch Edit usa segmentação semântica de IA para 'entender' o objeto no qual você está clicando. Ao contrário de uma ferramenta laço que seleciona pixels com base no contraste de cor, o Touch Edit identifica a estrutura completa do objeto (por exemplo, um gato, um carro), mesmo que tenha bordas complexas.\"}}, {\"@type\": \"Question\", \"name\": \"Posso usar o Touch Edit nas minhas próprias fotos enviadas?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sim! O Touch Edit funciona em qualquer imagem na tela, seja ela gerada pela Lovart ou enviada do seu dispositivo. Você pode editar fotos de produtos, instantâneos pessoais ou imagens de banco de imagens.\"}}, {\"@type\": \"Question\", \"name\": \"O Touch Edit lida com iluminação e sombras automaticamente?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Com certeza. A IA generativa da Lovart analisa a direção da iluminação, a temperatura da cor e a perspectiva da cena para garantir que qualquer elemento modificado ou adicionado se misture de forma fotorrealista.\"}}, {\"@type\": \"Question\", \"name\": \"E se a IA selecionar a parte errada da imagem?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"O Modo de Marcação da Lovart é altamente preciso, mas você pode refinar sua seleção clicando várias vezes para expandir a área ou usando prompts negativos para excluir partes específicas.\"}}, {\"@type\": \"Question\", \"name\": \"O Touch Edit está incluído no plano gratuito?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"O Touch Edit é um recurso central da plataforma Lovart. Embora o uso básico esteja disponível para todos, o processamento de alta resolução e as edições ilimitadas são otimizados para usuários do plano Pro.\"}}]}}"
+    },
+    "title": "Toque Editar: Edição de Objetos com IA & Preenchimento Gerativo | Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Toque Editar: Edição de Objetos com IA & Preenchimento Gerativo | Lovart\",\"description\":\"Edit images instantly with Lovart's Touch Edit. Click to select objects without masking and use AI to replace, modify, or remove elements using simple text prompts.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Semantic Recognition\"}},{\"type\":\"bento-6\",\"title\":\"Why Touch Edit Changes the Game\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Reconhecimento Semântico\",\"description\":\"A Lovart não vê apenas pixels; ela vê objetos. Ela sabe a diferença entre 'cabelo' e 'chapéu' sem você desenhar uma única linha.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Reconhecimento Semântico\"}},{\"title\":\"Inpainting Sensível ao Contexto\",\"description\":\"As edições não são coladas; elas são geradas na cena. Iluminação, sombras e reflexos são atualizados automaticamente para combinar com o novo objeto.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Inpainting Sensível ao Contexto\"}},{\"title\":\"Nenhuma Máscara Necessária\",\"description\":\"Diga adeus à ferramenta Caneta. A seleção precisa de objetos acontece instantaneamente com um único clique, economizando horas de trabalho manual.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Nenhuma Máscara Necessária\"}},{\"title\":\"Edição Multi-Objeto\",\"description\":\"Selecione vários itens de uma vez (Shift + Clique) para aplicar alterações em massa, como recolorir todas as flores ou remover várias figuras de fundo.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Edição Multi-Objeto\"}},{\"title\":\"Integração Quick Edit\",\"description\":\"Pressione 'Tab' após selecionar um objeto para acessar instantaneamente ferramentas comuns de ajuste de IA, como recolorir, redimensionar ou gerar variações.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Integração Quick Edit\"}},{\"title\":\"Fluxo de Trabalho Não Destrutivo\",\"description\":\"Experimente sem medo. Todas as edições de Touch Edit são geradas como novas variações, para que você possa sempre reverter ao original ou comparar opções lado a lado.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Fluxo de Trabalho Não Destrutivo\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Todos os recursos em um só agente\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Reconhecimento Semântico\",\"icon\":\"chat\",\"content\":{\"title\":\"Reconhecimento Semântico\",\"description\":\"A Lovart não vê apenas pixels; ela vê objetos. Ela sabe a diferença entre 'cabelo' e 'chapéu' sem você desenhar uma única linha.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Reconhecimento Semântico\"}}},{\"label\":\"Inpainting Sensível ao Contexto\",\"icon\":\"image\",\"content\":{\"title\":\"Inpainting Sensível ao Contexto\",\"description\":\"As edições não são coladas; elas são geradas na cena. Iluminação, sombras e reflexos são atualizados automaticamente para combinar com o novo objeto.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Inpainting Sensível ao Contexto\"}}},{\"label\":\"Nenhuma Máscara Necessária\",\"icon\":\"flask\",\"content\":{\"title\":\"Nenhuma Máscara Necessária\",\"description\":\"Diga adeus à ferramenta Caneta. A seleção precisa de objetos acontece instantaneamente com um único clique, economizando horas de trabalho manual.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Nenhuma Máscara Necessária\"}}},{\"label\":\"Edição Multi-Objeto\",\"icon\":\"brand\",\"content\":{\"title\":\"Edição Multi-Objeto\",\"description\":\"Selecione vários itens de uma vez (Shift + Clique) para aplicar alterações em massa, como recolorir todas as flores ou remover várias figuras de fundo.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Edição Multi-Objeto\"}}}]},{\"type\":\"bento-2\",\"title\":\"Duas coisas que ele faz muito bem\",\"columns\":2,\"features\":[{\"title\":\"Integração Quick Edit\",\"description\":\"Pressione 'Tab' após selecionar um objeto para acessar instantaneamente ferramentas comuns de ajuste de IA, como recolorir, redimensionar ou gerar variações.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Integração Quick Edit\"}},{\"title\":\"Fluxo de Trabalho Não Destrutivo\",\"description\":\"Experimente sem medo. Todas as edições de Touch Edit são geradas como novas variações, para que você possa sempre reverter ao original ou comparar opções lado a lado.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Fluxo de Trabalho Não Destrutivo\"}}]},{\"type\":\"feature-detail\",\"title\":\"Como funciona em detalhes\",\"items\":[{\"title\":\"Inicie seu projeto de Touch Edit: AI Object Editing & Generative Fill Tool\",\"description\":\"Descreva o resultado desejado e adicione referências.\"},{\"title\":\"Itere com o agente\",\"description\":\"Ajuste detalhes e explore variações no mesmo canvas.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Não Selecione. Apenas Toque. O Futuro da Edição com IA: Touch Edit.\",\"description\":\"Pare de desperdiçar horas com laços e máscaras de camada. Com o Touch Edit da Lovart, basta clicar em qualquer objeto — uma pessoa, um fundo, um produto — e nossa IA entende exatamente o que você quer dizer. Modifique, substitua ou remova elementos instantaneamente com linguagem natural. Não é apenas edição; é uma conversa com sua tela.\",\"input_placeholder\":\"Ex: 'Mude este carro vermelho para um conversível azul vintage'\",\"prompts\":[{\"label\":\"Troca de Roupa\",\"prompt\":\"Change the model's outfit to a summer floral dress, maintaining the pose\"},{\"label\":\"Mudança de Cena\",\"prompt\":\"Replace the background city with a lush forest at golden hour\"},{\"label\":\"Troca de Material\",\"prompt\":\"Turn this wooden chair into a modern glass design\"},{\"label\":\"Remoção de Objeto\",\"prompt\":\"Remove this person from the crowd and fill the space naturally\"}],\"tip\":\"Dica Profissional: Use o 'Modo de Marcação' (Atalho: M) para visualizar os segmentos reconhecidos pela IA antes de clicar.\",\"cta\":{\"text\":\"Iniciar Touch Edit\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Edite Qualquer Coisa em 3 Passos Simples\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"Aponte e Clique\",\"description\":\"Ative o modo Touch Edit. Passe o mouse sobre qualquer elemento — a IA semântica da Lovart destaca instantaneamente objetos, camadas e estruturas. Apenas clique para bloquear seu alvo. Nenhuma máscara necessária.\"},{\"step\":2,\"title\":\"Descreva a Mudança\",\"description\":\"Diga à IA o que você quer em linguagem simples. 'Aumente isso', 'Mude a cor' ou 'Substitua por um gato'. A IA entende o contexto da sua seleção.\"},{\"step\":3,\"title\":\"Fusão Perfeita\",\"description\":\"Veja a IA reconstruir os pixels. O elemento editado se mistura perfeitamente com a iluminação, sombras e perspectiva existentes da sua imagem original.\"}]},{\"type\":\"comparison-table\",\"title\":\"Touch Edit: AI Object Editing & Generative Fill Tool: Lovart vs. fluxos de trabalho tradicionais\",\"headers\":[\"Necessidade\",\"Ferramenta genérica\",\"Fluxo manual\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Inicie seu projeto de Touch Edit: AI Object Editing & Generative Fill Tool\",\"values\":[\"Um prompt\",\"Briefing manual\",\"Raciocínio guiado pelo briefing\"]},{\"feature\":\"Tempo até o primeiro resultado\",\"values\":[\"Minutos\",\"Dias\",\"Minutos\"]},{\"feature\":\"Edição após a geração\",\"values\":[\"Limitado\",\"Rodadas de revisão\",\"Touch / Texto / Elementos\"]},{\"feature\":\"Manter a identidade da marca\",\"values\":[\"Manual\",\"Manual\",\"Compatível com Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Onde Touch Edit: AI Object Editing & Generative Fill Tool ajuda\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Lance mais rápido\",\"description\":\"Do briefing aos assets de Touch Edit: AI Object Editing & Generative Fill Tool em uma única sessão.\"},{\"icon\":\"brand\",\"title\":\"Mantenha a consistência\",\"description\":\"O Brand Kit mantém cada asset alinhado.\"},{\"icon\":\"refresh\",\"title\":\"Itere rapidamente\",\"description\":\"Edite detalhes sem recomeçar o projeto.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"Eu costumava passar horas mascarando fotos de produtos para mudar as cores. Com o Touch Edit, eu apenas clico na camisa e digo 'torne vermelha'. É mágica.\",\"author\":\"Alex R.\",\"role\":\"Gerente de E-commerce\"},{\"quote\":\"O reconhecimento semântico é assustadoramente bom. Ele identifica objetos complexos como 'lâmpada vintage' instantaneamente, tornando a composição de cenas incrivelmente rápida.\",\"author\":\"Jessica M.\",\"role\":\"Diretora de Arte\"},{\"quote\":\"O Touch Edit transformou minhas gerações de IA 'quase perfeitas' exatamente no que eu queria. Poder consertar mãos ou olhos estranhos com um clique é um salva-vidas.\",\"author\":\"David K.\",\"role\":\"Criador de Conteúdo\"}],\"title\":\"Designers Economizando Horas com o Touch Edit\"},{\"type\":\"pricing-block\",\"title\":\"Escolha o plano ideal para a sua equipe\",\"description\":\"Comece de graça. Faça upgrade quando o trabalho for para o cliente.\"},{\"type\":\"faq\",\"title\":\"Perguntas frequentes\",\"items\":[{\"question\":\"Como o Touch Edit é diferente das ferramentas de seleção tradicionais?\",\"answer\":\"O Touch Edit usa segmentação semântica de IA para 'entender' o objeto no qual você está clicando. Ao contrário de uma ferramenta laço que seleciona pixels com base no contraste de cor, o Touch Edit identifica a estrutura completa do objeto (por exemplo, um gato, um carro), mesmo que tenha bordas complexas.\"},{\"question\":\"Posso usar o Touch Edit nas minhas próprias fotos enviadas?\",\"answer\":\"Sim! O Touch Edit funciona em qualquer imagem na tela, seja ela gerada pela Lovart ou enviada do seu dispositivo. Você pode editar fotos de produtos, instantâneos pessoais ou imagens de banco de imagens.\"},{\"question\":\"O Touch Edit lida com iluminação e sombras automaticamente?\",\"answer\":\"Com certeza. A IA generativa da Lovart analisa a direção da iluminação, a temperatura da cor e a perspectiva da cena para garantir que qualquer elemento modificado ou adicionado se misture de forma fotorrealista.\"},{\"question\":\"E se a IA selecionar a parte errada da imagem?\",\"answer\":\"O Modo de Marcação da Lovart é altamente preciso, mas você pode refinar sua seleção clicando várias vezes para expandir a área ou usando prompts negativos para excluir partes específicas.\"},{\"question\":\"O Touch Edit está incluído no plano gratuito?\",\"answer\":\"O Touch Edit é um recurso central da plataforma Lovart. Embora o uso básico esteja disponível para todos, o processamento de alta resolução e as edições ilimitadas são otimizados para usuários do plano Pro.\"}]},{\"type\":\"cta-default\",\"title\":\"Comece a criar com a Lovart\",\"description\":\"Transforme seu briefing em visuais alinhados à marca em minutos.\",\"buttons\":[{\"text\":\"Começar grátis\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Toque Editar: Edição de Objetos com IA & Preenchimento Gerativo | Lovart",
+      "description": "Edit images instantly with Lovart's Touch Edit. Click to select objects without masking and use AI to replace, modify, or remove elements using simple text prompts.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Semantic Recognition"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Why Touch Edit Changes the Game",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Reconhecimento Semântico",
+          "description": "A Lovart não vê apenas pixels; ela vê objetos. Ela sabe a diferença entre 'cabelo' e 'chapéu' sem você desenhar uma única linha.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Reconhecimento Semântico"
+          }
+        },
+        {
+          "title": "Inpainting Sensível ao Contexto",
+          "description": "As edições não são coladas; elas são geradas na cena. Iluminação, sombras e reflexos são atualizados automaticamente para combinar com o novo objeto.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Inpainting Sensível ao Contexto"
+          }
+        },
+        {
+          "title": "Nenhuma Máscara Necessária",
+          "description": "Diga adeus à ferramenta Caneta. A seleção precisa de objetos acontece instantaneamente com um único clique, economizando horas de trabalho manual.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Nenhuma Máscara Necessária"
+          }
+        },
+        {
+          "title": "Edição Multi-Objeto",
+          "description": "Selecione vários itens de uma vez (Shift + Clique) para aplicar alterações em massa, como recolorir todas as flores ou remover várias figuras de fundo.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Edição Multi-Objeto"
+          }
+        },
+        {
+          "title": "Integração Quick Edit",
+          "description": "Pressione 'Tab' após selecionar um objeto para acessar instantaneamente ferramentas comuns de ajuste de IA, como recolorir, redimensionar ou gerar variações.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Integração Quick Edit"
+          }
+        },
+        {
+          "title": "Fluxo de Trabalho Não Destrutivo",
+          "description": "Experimente sem medo. Todas as edições de Touch Edit são geradas como novas variações, para que você possa sempre reverter ao original ou comparar opções lado a lado.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Fluxo de Trabalho Não Destrutivo"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Todos os recursos em um só agente",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Reconhecimento Semântico",
+          "icon": "chat",
+          "content": {
+            "title": "Reconhecimento Semântico",
+            "description": "A Lovart não vê apenas pixels; ela vê objetos. Ela sabe a diferença entre 'cabelo' e 'chapéu' sem você desenhar uma única linha.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "Reconhecimento Semântico"
+            }
+          }
+        },
+        {
+          "label": "Inpainting Sensível ao Contexto",
+          "icon": "image",
+          "content": {
+            "title": "Inpainting Sensível ao Contexto",
+            "description": "As edições não são coladas; elas são geradas na cena. Iluminação, sombras e reflexos são atualizados automaticamente para combinar com o novo objeto.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Inpainting Sensível ao Contexto"
+            }
+          }
+        },
+        {
+          "label": "Nenhuma Máscara Necessária",
+          "icon": "flask",
+          "content": {
+            "title": "Nenhuma Máscara Necessária",
+            "description": "Diga adeus à ferramenta Caneta. A seleção precisa de objetos acontece instantaneamente com um único clique, economizando horas de trabalho manual.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Nenhuma Máscara Necessária"
+            }
+          }
+        },
+        {
+          "label": "Edição Multi-Objeto",
+          "icon": "brand",
+          "content": {
+            "title": "Edição Multi-Objeto",
+            "description": "Selecione vários itens de uma vez (Shift + Clique) para aplicar alterações em massa, como recolorir todas as flores ou remover várias figuras de fundo.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Edição Multi-Objeto"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Duas coisas que ele faz muito bem",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Integração Quick Edit",
+          "description": "Pressione 'Tab' após selecionar um objeto para acessar instantaneamente ferramentas comuns de ajuste de IA, como recolorir, redimensionar ou gerar variações.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Integração Quick Edit"
+          }
+        },
+        {
+          "title": "Fluxo de Trabalho Não Destrutivo",
+          "description": "Experimente sem medo. Todas as edições de Touch Edit são geradas como novas variações, para que você possa sempre reverter ao original ou comparar opções lado a lado.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Fluxo de Trabalho Não Destrutivo"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "Como funciona em detalhes",
+      "items": [
+        {
+          "title": "Inicie seu projeto de Touch Edit: AI Object Editing & Generative Fill Tool",
+          "description": "Descreva o resultado desejado e adicione referências."
+        },
+        {
+          "title": "Itere com o agente",
+          "description": "Ajuste detalhes e explore variações no mesmo canvas.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Não Selecione. Apenas Toque. O Futuro da Edição com IA: Touch Edit.",
+      "description": "Pare de desperdiçar horas com laços e máscaras de camada. Com o Touch Edit da Lovart, basta clicar em qualquer objeto — uma pessoa, um fundo, um produto — e nossa IA entende exatamente o que você quer dizer. Modifique, substitua ou remova elementos instantaneamente com linguagem natural. Não é apenas edição; é uma conversa com sua tela.",
+      "input_placeholder": "Ex: 'Mude este carro vermelho para um conversível azul vintage'",
+      "prompts": [
+        {
+          "label": "Troca de Roupa",
+          "prompt": "Change the model's outfit to a summer floral dress, maintaining the pose"
+        },
+        {
+          "label": "Mudança de Cena",
+          "prompt": "Replace the background city with a lush forest at golden hour"
+        },
+        {
+          "label": "Troca de Material",
+          "prompt": "Turn this wooden chair into a modern glass design"
+        },
+        {
+          "label": "Remoção de Objeto",
+          "prompt": "Remove this person from the crowd and fill the space naturally"
+        }
+      ],
+      "tip": "Dica Profissional: Use o 'Modo de Marcação' (Atalho: M) para visualizar os segmentos reconhecidos pela IA antes de clicar.",
+      "cta": {
+        "text": "Iniciar Touch Edit"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Edite Qualquer Coisa em 3 Passos Simples",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Aponte e Clique",
+          "description": "Ative o modo Touch Edit. Passe o mouse sobre qualquer elemento — a IA semântica da Lovart destaca instantaneamente objetos, camadas e estruturas. Apenas clique para bloquear seu alvo. Nenhuma máscara necessária."
+        },
+        {
+          "step": 2,
+          "title": "Descreva a Mudança",
+          "description": "Diga à IA o que você quer em linguagem simples. 'Aumente isso', 'Mude a cor' ou 'Substitua por um gato'. A IA entende o contexto da sua seleção."
+        },
+        {
+          "step": 3,
+          "title": "Fusão Perfeita",
+          "description": "Veja a IA reconstruir os pixels. O elemento editado se mistura perfeitamente com a iluminação, sombras e perspectiva existentes da sua imagem original."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Touch Edit: AI Object Editing & Generative Fill Tool: Lovart vs. fluxos de trabalho tradicionais",
+      "headers": [
+        "Necessidade",
+        "Ferramenta genérica",
+        "Fluxo manual",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Inicie seu projeto de Touch Edit: AI Object Editing & Generative Fill Tool",
+          "values": [
+            "Um prompt",
+            "Briefing manual",
+            "Raciocínio guiado pelo briefing"
+          ]
+        },
+        {
+          "feature": "Tempo até o primeiro resultado",
+          "values": [
+            "Minutos",
+            "Dias",
+            "Minutos"
+          ]
+        },
+        {
+          "feature": "Edição após a geração",
+          "values": [
+            "Limitado",
+            "Rodadas de revisão",
+            "Touch / Texto / Elementos"
+          ]
+        },
+        {
+          "feature": "Manter a identidade da marca",
+          "values": [
+            "Manual",
+            "Manual",
+            "Compatível com Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Onde Touch Edit: AI Object Editing & Generative Fill Tool ajuda",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Lance mais rápido",
+          "description": "Do briefing aos assets de Touch Edit: AI Object Editing & Generative Fill Tool em uma única sessão."
+        },
+        {
+          "icon": "brand",
+          "title": "Mantenha a consistência",
+          "description": "O Brand Kit mantém cada asset alinhado."
+        },
+        {
+          "icon": "refresh",
+          "title": "Itere rapidamente",
+          "description": "Edite detalhes sem recomeçar o projeto."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "Eu costumava passar horas mascarando fotos de produtos para mudar as cores. Com o Touch Edit, eu apenas clico na camisa e digo 'torne vermelha'. É mágica.",
+          "author": "Alex R.",
+          "role": "Gerente de E-commerce"
+        },
+        {
+          "quote": "O reconhecimento semântico é assustadoramente bom. Ele identifica objetos complexos como 'lâmpada vintage' instantaneamente, tornando a composição de cenas incrivelmente rápida.",
+          "author": "Jessica M.",
+          "role": "Diretora de Arte"
+        },
+        {
+          "quote": "O Touch Edit transformou minhas gerações de IA 'quase perfeitas' exatamente no que eu queria. Poder consertar mãos ou olhos estranhos com um clique é um salva-vidas.",
+          "author": "David K.",
+          "role": "Criador de Conteúdo"
+        }
+      ],
+      "title": "Designers Economizando Horas com o Touch Edit"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Escolha o plano ideal para a sua equipe",
+      "description": "Comece de graça. Faça upgrade quando o trabalho for para o cliente."
+    },
+    {
+      "type": "faq",
+      "title": "Perguntas frequentes",
+      "items": [
+        {
+          "question": "Como o Touch Edit é diferente das ferramentas de seleção tradicionais?",
+          "answer": "O Touch Edit usa segmentação semântica de IA para 'entender' o objeto no qual você está clicando. Ao contrário de uma ferramenta laço que seleciona pixels com base no contraste de cor, o Touch Edit identifica a estrutura completa do objeto (por exemplo, um gato, um carro), mesmo que tenha bordas complexas."
+        },
+        {
+          "question": "Posso usar o Touch Edit nas minhas próprias fotos enviadas?",
+          "answer": "Sim! O Touch Edit funciona em qualquer imagem na tela, seja ela gerada pela Lovart ou enviada do seu dispositivo. Você pode editar fotos de produtos, instantâneos pessoais ou imagens de banco de imagens."
+        },
+        {
+          "question": "O Touch Edit lida com iluminação e sombras automaticamente?",
+          "answer": "Com certeza. A IA generativa da Lovart analisa a direção da iluminação, a temperatura da cor e a perspectiva da cena para garantir que qualquer elemento modificado ou adicionado se misture de forma fotorrealista."
+        },
+        {
+          "question": "E se a IA selecionar a parte errada da imagem?",
+          "answer": "O Modo de Marcação da Lovart é altamente preciso, mas você pode refinar sua seleção clicando várias vezes para expandir a área ou usando prompts negativos para excluir partes específicas."
+        },
+        {
+          "question": "O Touch Edit está incluído no plano gratuito?",
+          "answer": "O Touch Edit é um recurso central da plataforma Lovart. Embora o uso básico esteja disponível para todos, o processamento de alta resolução e as edições ilimitadas são otimizados para usuários do plano Pro."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Comece a criar com a Lovart",
+      "description": "Transforme seu briefing em visuais alinhados à marca em minutos.",
+      "buttons": [
+        {
+          "text": "Começar grátis",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

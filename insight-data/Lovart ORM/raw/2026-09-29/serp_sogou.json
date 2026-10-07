@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-09-29",
+  "generator": "Lovart Sentinel",
+  "title": "Sogou SERP Scan",
+  "status": "delegated",
+  "queries": {
+    "brand": "https://www.sogou.com/web?query=lovart+ai",
+    "wechat": "https://weixin.sogou.com/weixin?query=lovart+ai&type=2&ie=utf8"
+  },
+  "_instructions": "\n    1. webfetch 搜狗搜索 \"lovart ai\"\n    2. 提取：首条结果域名（关注是否有寄生域名排第一）\n    3. 利用搜狗\"微信\"tab 搜索微信公众号文章\n    4. 提取\"相关搜索\"和\"问过的人\"数据（如\"lovart ai官网怎么进入\"—52人问）\n    5. 关键信号：搜狗搜索lovart时lovart.me可能排第一\n    "
+}

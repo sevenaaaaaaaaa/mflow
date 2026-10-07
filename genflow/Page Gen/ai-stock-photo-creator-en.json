@@ -1,0 +1,150 @@
+{
+  "id": "tools-ai-stock-photo-creator-en",
+  "slug": {
+    "_type": "slug",
+    "current": "ai-stock-photo-creator"
+  },
+  "language": "en",
+  "category": "tool",
+  "schemaVersion": "composite-v2",
+  "storylineTemplate": "T2",
+  "title": "AI Stock Photo Creator — Original Royalty-Free Images | Lovart",
+  "description": {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AI Stock Photo Creator — Original Royalty-Free Images | Lova",
+    "description": "Generate unique stock photos for any purpose. No license restrictions, no generic poses.",
+    "url": "https://www.lovart.ai/tools/ai-stock-photo-creator",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lovart",
+      "url": "https://www.lovart.ai"
+    },
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need design experience?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Describe what you want in plain language — the MCoT Engine applies professional design principles automatically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use output commercially?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Full commercial rights on all designs. No attribution required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What formats can I export?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PNG, JPEG, SVG, PDF (CMYK+bleed for professional printing), and layered PSD."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Lovart different from other tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lovart is an AI Design Agent — it reasons about design context via MCoT, edits specific elements with Touch Edit, enforces brand consistency via Brand Kit. Not templates, not image gen."
+          }
+        }
+      ]
+    }
+  },
+  "bodyJson": "[{\"type\": \"hero-split\", \"badge\": \"AI Design Agent\", \"title\": \"AI Stock Photo Creator — Original Royalty-Free Images | Lovart\", \"description\": \"Generate unique, royalty-free stock photos for any purpose — no license restrictions, no generic poses, no repetitive backgrounds. The MCoT Engine reasons through composition, lighting, subject placement, and visual storytelling. ChatCanvas explores creative directions with you. Touch Edit refines specific elements — adjust lighting, swap backgrounds, modify expressions. Nano Banana Pro generates photorealistic images indistinguishable from professional photography.\", \"buttons\": [{\"text\": \"Start Free\", \"href\": \"/home\", \"variant\": \"primary\"}], \"media\": {\"src\": \"\", \"alt\": \"AI Stock Photo Creator — Original Royalty-Free Images | Lovart\"}}, {\"type\": \"feature-grid\", \"title\": \"Everything You Can Do\", \"columns\": 3, \"features\": [{\"title\": \"MCoT Photo Intelligence\", \"description\": \"The Multi-step Chain-of-Thought Engine reasons through composition rules, lighting direction, subject placement, depth of field, and visual narrative — creating stock photos that look professionally shot, not AI-generated.\"}, {\"title\": \"ChatCanvas Photo Exploration\", \"description\": \"Describe the shot you need in plain language. ChatCanvas generates multiple photo concepts with different compositions, lighting setups, and moods. Iterate interactively — 'warmer lighting', 'tighter crop', 'more candid expression'.\"}, {\"title\": \"Touch Edit Photo Refinement\", \"description\": \"Adjust specific elements without regenerating the entire image. Change background, modify lighting temperature, alter subject pose, adjust color grading. Touch Edit gives you granular control over every photographic element.\"}, {\"title\": \"Nano Banana Pro Photorealism\", \"description\": \"Powered by Nano Banana Pro for true photorealism — natural skin textures, realistic fabric draping, authentic environmental lighting. Images indistinguishable from professional stock photography.\"}, {\"title\": \"Brand Kit Visual Consistency\", \"description\": \"Your Brand Kit's color palette and visual style auto-apply to every stock photo. Maintain consistent mood, color temperature, and aesthetic across your entire image library.\"}, {\"title\": \"Full Commercial Rights\", \"description\": \"Every image belongs to you with full commercial usage rights. No model releases to chase, no license restrictions, no attribution required. Use anywhere — ads, products, websites, print.\"}]}, {\"type\": \"how-it-works-section\", \"title\": \"How AI Stock Photo Creator Works — Powered by MCoT\", \"subtitle\": \"The MCoT Engine (Multi-step Chain-of-Thought) guides every photographic decision — from lighting to composition to final export.\", \"steps\": [{\"step\": 1, \"title\": \"Describe Your Photo\", \"description\": \"Tell Lovart what you need: subject, setting, mood, composition, lighting style. MCoT interprets your description — understanding photographic intent (editorial, commercial, lifestyle) and technical requirements (resolution, aspect ratio, lighting conditions).\"}, {\"step\": 2, \"title\": \"Explore Compositions in ChatCanvas\", \"description\": \"MCoT generates multiple photo concepts with different compositions, lighting setups, and color treatments. ChatCanvas lets you compare, combine, and steer — 'more natural light', 'add negative space', 'change to golden hour mood'.\"}, {\"step\": 3, \"title\": \"Refine with Touch Edit & Nano Banana Pro\", \"description\": \"Touch Edit adjusts individual elements: swap the background, modify lighting temperature, adjust subject positioning. Nano Banana Pro ensures photorealistic quality — authentic textures, natural shadows, true-to-life color rendering.\"}, {\"step\": 4, \"title\": \"Export & License\", \"description\": \"Download in your preferred format (PNG, JPEG, TIFF) at any resolution. Every image comes with full commercial rights. Your Brand Kit ensures visual consistency across your entire photo library.\"}]}, {\"type\": \"use-cases-section\", \"title\": \"Real-World Use Cases for AI Stock Photo Creator\", \"description\": \"From marketing teams to content creators, here's how Lovart users apply AI Stock Photo Creator in their daily workflow.\", \"cases\": [{\"title\": \"Marketing & Advertising\", \"description\": \"Generate custom stock photos for campaigns, social media, and ads. No more generic stock. MCoT creates images specific to your brand, message, and audience. Nano Banana Pro ensures photorealism.\"}, {\"title\": \"Website & Blog Content\", \"description\": \"Create unique hero images, blog headers, and article illustrations. Brand Kit ensures consistent visual style. Touch Edit refines to match your CMS's exact crop and color requirements.\"}, {\"title\": \"Product & Lifestyle Photography\", \"description\": \"Generate lifestyle shots with your product in context — no physical photoshoot needed. Nano Banana Pro renders photorealistic product integration. Full commercial rights for e-commerce.\"}, {\"title\": \"Presentation & Pitch Decks\", \"description\": \"Create custom imagery for investor decks, client presentations, and internal reports. ChatCanvas explores directions. Every image is original — no royalty-free clichés.\"}]}, {\"type\": \"comparison-section\", \"title\": \"AI Stock Photo Creator Compared to Alternatives\", \"description\": \"Not all stock photo solutions are created equal. Here's how Lovart compares.\", \"headers\": [\"Feature\", \"Other Tools\", \"Lovart Advantage\"], \"rows\": [[\"Image Originality\", \"Same images used by thousands of other brands\", \"MCoT generates unique images from your description. No one else has the same photo.\"], [\"Photographic Quality\", \"Generic compositions, stiff poses, obvious AI artifacts\", \"Nano Banana Pro delivers true photorealism — natural lighting, authentic textures, realistic human expressions.\"], [\"Element Control\", \"Accept the generated image or regenerate\", \"Touch Edit: adjust background, lighting, composition, color grading — all independently.\"], [\"Licensing\", \"Complex licenses, model releases, attribution requirements\", \"Full commercial rights on every image. No attribution. No model releases. Use anywhere.\"], [\"Brand Consistency\", \"Images have no relationship to your brand\", \"Brand Kit auto-applies your color palette and visual style. Every photo feels like your brand.\"]]}, {\"type\": \"pricing-section\", \"title\": \"Pricing: What AI Stock Photo Creator Costs\", \"description\": \"Included in all Lovart plans. No per-tool pricing — every tool, every plan.\", \"tiers\": [{\"name\": \"Free\", \"price\": \"$0\", \"designs\": \"50 designs/month\", \"features\": [\"All tools\", \"PNG export\", \"Basic support\"]}, {\"name\": \"Starter\", \"price\": \"$19/mo\", \"designs\": \"500 designs/month\", \"features\": [\"All tools\", \"HD export\", \"Brand Kit\", \"Commercial rights\", \"ChatCanvas priority\"]}, {\"name\": \"Professional\", \"price\": \"$49/mo\", \"designs\": \"Unlimited\", \"features\": [\"All tools\", \"8K export\", \"Brand Kit\", \"Touch Edit advanced\", \"MCoT custom prompts\", \"TIFF/RAW export\"]}, {\"name\": \"Enterprise\", \"price\": \"Custom\", \"designs\": \"Unlimited\", \"features\": [\"Everything in Pro\", \"Custom MCoT workflows\", \"SSO\", \"Dedicated support\"]}]}, {\"type\": \"faq\", \"title\": \"Frequently Asked Questions\", \"items\": [{\"question\": \"Is AI Stock Photo Creator free?\", \"answer\": \"Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit. Professional $49/mo: unlimited everything.\"}, {\"question\": \"Are these images really royalty-free?\", \"answer\": \"Yes. Every image you generate belongs to you with full commercial rights. No license restrictions, no attribution required, no model releases to manage. Use them anywhere — ads, products, websites, print.\"}, {\"question\": \"How photorealistic are the images?\", \"answer\": \"Powered by Nano Banana Pro, images achieve true photorealism: natural skin textures, realistic fabric draping, authentic lighting, proper depth of field. Distinguishable from professional photography only on close inspection.\"}, {\"question\": \"Can I edit specific parts of a generated photo?\", \"answer\": \"Yes. Touch Edit lets you modify individual elements: change the background scene, adjust lighting temperature and direction, modify subject pose or expression, apply color grading — all without regenerating the entire image.\"}, {\"question\": \"How does MCoT improve stock photo generation?\", \"answer\": \"MCoT reasons about photographic principles — composition (rule of thirds, leading lines), lighting (key light, fill, rim), subject placement, depth of field, color theory. Every image is composed with professional photographic intent.\"}, {\"question\": \"How is this different from Shutterstock or Midjourney?\", \"answer\": \"Shutterstock offers pre-existing photos used by thousands. Midjourney generates images but can't edit specific elements. Lovart's MCoT creates unique, composed photos, ChatCanvas explores directions, Touch Edit refines elements, and you own full commercial rights.\"}]}, {\"type\": \"cta-default\", \"title\": \"Ready to Use AI Stock Photo Creator?\", \"description\": \"Start free — 50 designs/month, no credit card. Experience the AI Design Agent with MCoT reasoning, Touch Edit, ChatCanvas, Brand Kit, and Nano Banana Pro.\", \"buttons\": [{\"text\": \"Start Free\", \"href\": \"/home\", \"variant\": \"primary\"}]}]",
+  "seo": {
+    "_type": "seo",
+    "title": "AI Stock Photo Creator — Original Royalty-Free Images | Lova",
+    "description": {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "AI Stock Photo Creator — Original Royalty-Free Images | Lova",
+      "description": "Generate unique stock photos for any purpose. No license restrictions, no generic poses.",
+      "url": "https://www.lovart.ai/tools/ai-stock-photo-creator",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lovart",
+        "url": "https://www.lovart.ai"
+      },
+      "mainEntity": {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is this free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need design experience?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Describe what you want in plain language — the MCoT Engine applies professional design principles automatically."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use output commercially?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Full commercial rights on all designs. No attribution required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What formats can I export?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PNG, JPEG, SVG, PDF (CMYK+bleed for professional printing), and layered PSD."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is Lovart different from other tools?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lovart is an AI Design Agent — it reasons about design context via MCoT, edits specific elements with Touch Edit, enforces brand consistency via Brand Kit. Not templates, not image gen."
+            }
+          }
+        ]
+      }
+    },
+    "keywords": [
+      "ai stock photo creator",
+      "ai stock photo creator",
+      "free ai stock photo creator",
+      "lovart"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "AI Stock Photo Creator — Original Royalty-Free Images | Lovart",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d14a7f30014fd72f63f9cdfbed8dd17c67012f10.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"AI Stock Photo Creator — Original Royalty-Free Images | Lovart\", \"description\": \"{'@context': 'https://schema.org', '@type': 'WebPage', 'name': 'AI Stock Photo Creator — Original Royalty-Free Images | Lova', 'description': 'Generate unique stock photos for any purpose. No license restrictions, no generic poses.', 'url': 'https://www.lovart.ai/tools/ai-stock-photo-creator', 'publisher': {'@type': 'Organization', 'name': 'Lovart', 'url': 'https://www.lovart.ai'}, 'mainEntity': {'@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': 'Is this free to use?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit.'}}, {'@type': 'Question', 'name': 'Do I need design experience?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'No. Describe what you want in plain language — the MCoT Engine applies professional design principles automatically.'}}, {'@type': 'Question', 'name': 'Can I use output commercially?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. Full commercial rights on all designs. No attribution required.'}}, {'@type': 'Question', 'name': 'What formats can I export?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'PNG, JPEG, SVG, PDF (CMYK+bleed for professional printing), and layered PSD.'}}, {'@type': 'Question', 'name': 'How is Lovart different from other tools?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Lovart is an AI Design Agent — it reasons about design context via MCoT, edits specific elements with Touch Edit, enforces brand consistency via Brand Kit. Not templates, not image gen.'}}]}}\", \"url\": \"https://www.lovart.ai/tools/ai-stock-photo-creator\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Is this free to use?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit.\"}}, {\"@type\": \"Question\", \"name\": \"Do I need design experience?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"No. Describe what you want in plain language — the MCoT Engine applies professional design principles automatically.\"}}, {\"@type\": \"Question\", \"name\": \"Can I use output commercially?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Yes. Full commercial rights on all designs. No attribution required.\"}}, {\"@type\": \"Question\", \"name\": \"What formats can I export?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"PNG, JPEG, SVG, PDF (CMYK+bleed for professional printing), and layered PSD.\"}}, {\"@type\": \"Question\", \"name\": \"How is Lovart different from other tools?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart is an AI Design Agent — it reasons about design context via MCoT, edits specific elements with Touch Edit, enforces brand consistency via Brand Kit. Not templates, not image gen.\"}}]}}"
+    }
+  },
+  "pageType": "tool"
+}

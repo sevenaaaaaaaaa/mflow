@@ -1,0 +1,567 @@
+```json
+,
+  "section_fr": [
+  {
+    "type": "centeredInputSection",
+    "title": "Générateur de Menu de Boulangerie IA",
+    "subtitle": "Créez des menus de boulangerie alléchants en quelques secondes avec Lovart — le premier agent de design IA au monde. Direction créative MCoT et édition de précision ChatCanvas.",
+    "buttonText": "Créer mon menu",
+    "system_prompt": "Vous êtes MCoT, le Directeur Créatif chez Lovart, spécialisé dans le design de menus de boulangerie. Vous orchestrez un raisonnement en plusieurs étapes pour analyser l'identité de marque de la boulangerie, son public cible et ses offres. Avec ChatCanvas, vous affinez de manière collaborative les mises en page, la typographie, les palettes de couleurs et le stylisme des photos culinaires. Vous veillez à ce que chaque menu communique fraîcheur, savoir-faire et appétit visuel grâce aux principes de design professionnel. Description utilisateur : $input$",
+    "suggestion": [
+      "Menu de présentation de viennoiseries avec croissants dorés et danoises",
+      "Menu de pain artisanal rustique avec photographie farinée",
+      "Catalogue de gâteaux élégant avec pièces montées de mariage",
+      "Menu de boissons chaleureux avec latte art et spécialités de saison"
+    ],
+    "input_placeholder": ""
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "De l'inspiration au prêt-à-imprimer en un instant",
+    "columns": [
+      {
+        "title": "Mises en page générées par IA",
+        "description": "Décrivez le style de votre boulangerie et l'agent MCoT de Lovart génère instantanément des compositions de menu complètes avec des grilles, polices et palettes de couleurs harmonieuses adaptées à votre marque.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "Précision ChatCanvas",
+        "description": "Cliquez sur n'importe quel élément de votre menu — texte, image ou décoration — et dialoguez pour l'affiner. Ajustez les prix, remplacez les photos ou peaufinez la typographie en langage naturel.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "Export professionnel 8K",
+        "description": "Exportez des menus prêts à imprimer en résolution 8K aux formats PNG, JPG, SVG et PSD. Parfait pour les présentoirs en magasin, les réseaux sociaux et l'impression professionnelle.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Tout ce dont votre menu de boulangerie a besoin",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Amélioration des photos culinaires",
+        "description": "Améliorez automatiquement les photos de produits de boulangerie — renforcez la chaleur, affinez les textures et rendez les viennoiseries irrésistiblement fraîches sur votre menu."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Édition du texte des prix",
+        "description": "Mettez à jour les prix sur l'ensemble du menu instantanément avec Touch Edit et Text Edit. Changez les devises, ajoutez des descriptions ou mettez en avant les offres spéciales en un clic."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "Maquette intelligente",
+        "description": "Placez vos menus sur des tables de café, comptoirs et vitrines réalistes avec Smart Mockup — voyez exactement à quoi ils ressemblent dans votre espace."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Cohérence de marque",
+        "description": "Lovart préserve l'identité de marque de votre boulangerie sur chaque menu — polices, couleurs, emplacement du logo et style visuel cohérents pour une expérience client unifiée."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "Exportation d'impression 8K",
+        "description": "Exportez vos menus en résolution 8K époustouflante aux formats PNG, JPG, SVG et PSD. Prêt pour l'impression grand format, la signalétique et l'affichage numérique haute qualité."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Sortie multi-format",
+        "description": "Générez des menus optimisés pour l'impression (PSD, SVG), les réseaux sociaux (PNG, JPG) et le web — le tout à partir d'un seul design. Aucun outil supplémentaire ni reformatage nécessaire."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Approuvé par les professionnels de la boulangerie",
+    "testimonials": [
+      {
+        "name": "Marie Dubois",
+        "role": "Propriétaire, Sweet Hearth Bakery",
+        "quote": "Lovart a redessiné toute notre gamme de menus en un seul après-midi. L'engagement client a immédiatement bondi, et notre seul menu de viennoiseries a généré une augmentation de 30% des ventes de pâtisseries le premier mois. L'amélioration des photos a rendu nos produits irrésistibles.",
+        "metric": "+30% de ventes",
+        "avatar_url": ""
+      },
+      {
+        "name": "Julien Moreau",
+        "role": "Manager de café, Brew & Bake Co.",
+        "quote": "Avant, je passais 8 heures par menu avec des freelances, à faire des allers-retours sur les révisions. Avec ChatCanvas de Lovart, je crée et peaufine des menus pros en moins de 15 minutes. C'est 97% de temps gagné que je redirige vers le service client et les opérations.",
+        "metric": "15 minutes par menu",
+        "avatar_url": ""
+      },
+      {
+        "name": "Camille Petit",
+        "role": "Chef Pâtissière & Propriétaire, Fleur de Pâtisserie",
+        "quote": "En tant que chef pâtissière, la présentation est primordiale. Lovart comprend l'art de la présentation culinaire et le transpose dans le design du menu. Notre catalogue de gâteaux a maintenant l'allure professionnelle d'une pâtisserie de luxe, et les clients ne cessent de complimenter l'élégance de notre menu.",
+        "metric": "Look luxe professionnel",
+        "avatar_url": ""
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "Le générateur de menu de boulangerie IA est-il gratuit ?",
+        "answer": "Oui ! Nous offrons des crédits quotidiens gratuits pour créer et télécharger des menus de boulangerie générés par IA sans frais. Passez à un forfait payant lorsque vous avez besoin de téléchargements haute résolution et de droits commerciaux."
+      },
+      {
+        "question": "Quels sont les forfaits Lovart ?",
+        "answer": "Lovart propose trois forfaits mensuels : Starter (2 000 crédits/mois), Basic (3 500 crédits/mois) et Pro (11 000 crédits/mois). Tous les forfaits payants incluent les droits complets d'utilisation commerciale pour vos designs de menu."
+      },
+      {
+        "question": "Ai-je les droits commerciaux sur mes menus ?",
+        "answer": "Oui ! Tous les forfaits payants (Starter, Basic, Pro) incluent les droits complets d'utilisation commerciale. Vous êtes propriétaire de vos menus et pouvez les imprimer, distribuer et utiliser pour votre entreprise."
+      },
+      {
+        "question": "Quels formats puis-je exporter ?",
+        "answer": "Lovart prend en charge l'exportation en résolution 8K aux formats PNG, JPG, SVG et PSD. PNG et JPG sont parfaits pour les réseaux sociaux, SVG pour le web et PSD pour l'édition avancée et l'impression professionnelle."
+      },
+      {
+        "question": "Comment fonctionne Touch Edit pour les menus ?",
+        "answer": "Touch Edit vous permet de cliquer sur n'importe quel élément du menu directement sur ChatCanvas — une étiquette de prix, une photo, un titre de section — et de le modifier instantanément. Mettez à jour les prix, remplacez les images, redimensionnez les éléments."
+      },
+      {
+        "question": "Comment fonctionne Text Edit pour les articles du menu ?",
+        "answer": "Text Edit vous permet de modifier n'importe quel texte sur votre menu par simple clic et saisie. Mettez à jour les noms, prix, descriptions ou ajoutez des plats du jour. Les modifications sont instantanément visibles sur ChatCanvas."
+      },
+      {
+        "question": "Puis-je concevoir différents types de menus ?",
+        "answer": "Oui. L'agent MCoT de Lovart s'adapte à tout type de menu — présentoirs à pâtisseries, pains artisanaux, catalogues de gâteaux, cartes de boissons, offres saisonnières. Décrivez simplement ce que vous voulez."
+      },
+      {
+        "question": "Lovart maintient-il la cohérence de marque sur tous mes menus ?",
+        "answer": "Oui. Une fois que Lovart connaît l'identité de marque de votre boulangerie — couleurs, polices, logo, style visuel — il applique un branding cohérent à chaque menu que vous créez."
+      },
+      {
+        "question": "Proposez-vous un remboursement si je ne suis pas satisfait ?",
+        "answer": "Nous offrons une garantie de satisfaction. Si vous n'êtes pas satisfait, contactez notre équipe d'assistance dans les 7 jours suivant l'achat pour un remboursement complet."
+      }
+    ]
+  }
+],
+  "section_pt": [
+  {
+    "type": "centeredInputSection",
+    "title": "Criador de Menu de Padaria com IA",
+    "subtitle": "Crie menus de padaria de dar água na boca em segundos com a Lovart — o primeiro Agente de Design com IA do mundo. Direção criativa MCoT e edição de precisão ChatCanvas.",
+    "buttonText": "Criar meu menu",
+    "system_prompt": "Você é o MCoT, Diretor Criativo da Lovart, especializado em design de menus de padaria. Você orquestra raciocínio em várias etapas para analisar a identidade da marca da padaria, o público-alvo e as ofertas do menu. Usando o ChatCanvas, você refina colaborativamente layouts, tipografia, paletas de cores e estilização de fotografia de alimentos. Você garante que cada menu transmita frescor, habilidade artesanal e apelo ao apetite por meio de princípios de design profissional. Descrição do usuário: $input$",
+    "suggestion": [
+      "Menu de vitrine de confeitaria com croissants e dinamarqueses dourados",
+      "Menu rústico de pão artesanal com fotografia enfarinhada",
+      "Catálogo elegante de bolos com bolos de casamento em camadas",
+      "Menu de bebidas de café acolhedor com latte art e especiais sazonais"
+    ],
+    "input_placeholder": ""
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "Da inspiração ao pronto para imprimir em instantes",
+    "columns": [
+      {
+        "title": "Layouts gerados por IA",
+        "description": "Descreva o estilo da sua padaria e o agente MCoT da Lovart gera instantaneamente composições completas de menu com grades, fontes e esquemas de cores harmoniosos adaptados à sua marca.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "Precisão do ChatCanvas",
+        "description": "Clique em qualquer elemento do seu menu — texto, imagem ou decoração — e converse para refiná-lo. Ajuste preços, substitua fotos ou refine a tipografia em linguagem natural.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "Exportação profissional 8K",
+        "description": "Exporte menus prontos para impressão em resolução 8K nos formatos PNG, JPG, SVG e PSD. Perfeito para vitrines, redes sociais e impressão profissional.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Tudo o que seu menu de padaria precisa",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Aprimoramento de fotos de alimentos",
+        "description": "Aprimore automaticamente as fotos dos produtos de padaria — aumente o calor, aguce as texturas e faça os doces parecerem irresistivelmente frescos no seu menu."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Edição de texto de preços",
+        "description": "Atualize os preços em todo o menu instantaneamente com o Touch Edit e o Text Edit. Altere moedas, adicione descrições ou destaque ofertas especiais com um clique."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "Mockup inteligente",
+        "description": "Coloque seus menus em mesas de café, vitrines e quadros de vitrine realistas usando o Smart Mockup — veja exatamente como eles ficam no seu espaço."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Consistência de marca",
+        "description": "A Lovart mantém a identidade da marca da sua padaria em todos os menus — fontes, cores, posicionamento do logotipo e estilo visual consistentes para uma experiência do cliente coesa."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "Exportação para impressão 8K",
+        "description": "Exporte seus menus em impressionante resolução 8K nos formatos PNG, JPG, SVG e PSD. Pronto para impressão em grande formato, sinalização e exibição digital de alta qualidade."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Saída multi-formato",
+        "description": "Gere menus otimizados para impressão (PSD, SVG), redes sociais (PNG, JPG) e web — tudo a partir de um único design. Sem necessidade de ferramentas extras ou reformatação."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Confiável por profissionais de padaria",
+    "testimonials": [
+      {
+        "name": "Maria Souza",
+        "role": "Proprietária, Sweet Hearth Padaria",
+        "quote": "A Lovart redesenhou toda a nossa linha de menus em uma única tarde. O engajamento dos clientes disparou imediatamente, e apenas o menu de vitrine de confeitaria gerou um aumento de 30% nas vendas no primeiro mês. O aprimoramento das fotos tornou nossos produtos irresistíveis.",
+        "metric": "+30% em vendas",
+        "avatar_url": ""
+      },
+      {
+        "name": "João Oliveira",
+        "role": "Gerente de Cafeteria, Brew & Bake Co.",
+        "quote": "Antes eu gastava 8 horas por menu com freelancers, indo e voltando em revisões. Com o ChatCanvas da Lovart, crio e refino menus profissionais em menos de 15 minutos. É uma economia de 97% de tempo que redireciono para o atendimento ao cliente.",
+        "metric": "15 minutos por menu",
+        "avatar_url": ""
+      },
+      {
+        "name": "Ana Santos",
+        "role": "Chef Confeiteira & Proprietária, Fleur de Pâtisserie",
+        "quote": "Como chef confeiteira, apresentação é tudo. A Lovart entende a arte da apresentação culinária e a traduz para o design do menu. Nosso catálogo de bolos agora tem o visual profissional de uma confeitaria de luxo, e os clientes não param de elogiar a elegância do menu.",
+        "metric": "Visual de luxo profissional",
+        "avatar_url": ""
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "O criador de menu de padaria com IA é gratuito?",
+        "answer": "Sim! Oferecemos créditos diários gratuitos para criar e baixar menus de padaria gerados por IA sem custo. Faça upgrade para um plano pago quando precisar de downloads em alta resolução e direitos comerciais."
+      },
+      {
+        "question": "Quais são os planos da Lovart?",
+        "answer": "A Lovart oferece três planos mensais: Starter (2.000 créditos/mês), Basic (3.500 créditos/mês) e Pro (11.000 créditos/mês). Todos os planos pagos incluem direitos completos de uso comercial para seus designs de menu."
+      },
+      {
+        "question": "Tenho os direitos comerciais dos meus menus?",
+        "answer": "Sim! Todos os planos pagos (Starter, Basic, Pro) incluem direitos completos de uso comercial. Você é proprietário dos menus criados e pode imprimi-los, distribuí-los e usá-los para o seu negócio."
+      },
+      {
+        "question": "Quais formatos posso exportar?",
+        "answer": "A Lovart suporta exportação em resolução 8K nos formatos PNG, JPG, SVG e PSD. PNG e JPG são perfeitos para redes sociais, SVG para uso web escalável e PSD para edição avançada e impressão profissional."
+      },
+      {
+        "question": "Como o Touch Edit funciona para menus de padaria?",
+        "answer": "O Touch Edit permite clicar em qualquer elemento do menu diretamente no ChatCanvas — etiqueta de preço, foto, título de seção — e modificá-lo instantaneamente. Atualize preços, troque imagens, redimensione elementos."
+      },
+      {
+        "question": "Como o Text Edit funciona para itens do menu?",
+        "answer": "O Text Edit permite alterar qualquer texto no menu com um simples clique e digitação. Atualize nomes, preços, descrições ou adicione especiais do dia. As alterações são refletidas instantaneamente no ChatCanvas."
+      },
+      {
+        "question": "Posso criar diferentes tipos de menus de padaria?",
+        "answer": "Sim. O agente MCoT da Lovart se adapta a qualquer tipo de menu — vitrines de doces, pães artesanais, catálogos de bolos, menus de bebidas, especiais sazonais. Basta descrever o que você precisa."
+      },
+      {
+        "question": "A Lovart mantém a consistência da marca em todos os meus menus?",
+        "answer": "Sim. Quando a Lovart entende a identidade da sua marca — cores, fontes, logotipo, estilo visual — ela aplica uma marca consistente a cada menu que você cria."
+      },
+      {
+        "question": "Vocês oferecem reembolso se eu não ficar satisfeito?",
+        "answer": "Oferecemos garantia de satisfação. Se você não ficar satisfeito, entre em contato com nossa equipe de suporte em até 7 dias após a compra para um reembolso total."
+      }
+    ]
+  }
+],
+  "section_it": [
+  {
+    "type": "centeredInputSection",
+    "title": "Creatore di Menu per Panetteria AI",
+    "subtitle": "Crea menu da forno appetitosi in pochi secondi con Lovart — il primo Agente di Design AI al mondo. Direzione creativa MCoT ed editing di precisione ChatCanvas.",
+    "buttonText": "Crea il mio menu",
+    "system_prompt": "Sei MCoT, il Direttore Creativo di Lovart, specializzato nel design di menu per panetterie. Orchestri un ragionamento a più fasi per analizzare l'identità del marchio della panetteria, il pubblico target e le offerte del menu. Utilizzando ChatCanvas, perfezioni in modo collaborativo layout, tipografia, palette di colori e styling della fotografia alimentare. Garantisci che ogni menu comunichi freschezza, artigianalità e appeal appetitoso attraverso principi di design professionale. Descrizione dell'utente: $input$",
+    "suggestion": [
+      "Menu espositivo di pasticceria con croissant dorati e danesi",
+      "Menu rustico di pane artigianale con fotografia infarinata",
+      "Catalogo elegante di torte con torte nuziali a più piani",
+      "Menu accogliente di bevande da caffetteria con latte art e specialità stagionali"
+    ],
+    "input_placeholder": ""
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "Dall'ispirazione al pronto per la stampa in un attimo",
+    "columns": [
+      {
+        "title": "Layout generati dall'IA",
+        "description": "Descrivi lo stile della tua panetteria e l'agente MCoT di Lovart genera immediatamente composizioni complete del menu con griglie, font e combinazioni di colori armoniose su misura per il tuo marchio.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "Precisione ChatCanvas",
+        "description": "Clicca su qualsiasi elemento del menu — testo, immagine o decorazione — e chatta per perfezionarlo. Regola i prezzi, sostituisci le foto o ritocca la tipografia in linguaggio naturale.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "Export professionale 8K",
+        "description": "Esporta menu pronti per la stampa in risoluzione 8K nei formati PNG, JPG, SVG e PSD. Perfetto per espositori in negozio, social media e stampa professionale.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Tutto ciò di cui ha bisogno il menu della tua panetteria",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Miglioramento foto alimentari",
+        "description": "Migliora automaticamente le foto dei prodotti da forno — aumenta il calore, affina le texture e rendi i pasticcini irresistibilmente freschi sul tuo menu."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Modifica testo dei prezzi",
+        "description": "Aggiorna i prezzi sull'intero menu all'istante con Touch Edit e Text Edit. Cambia le valute, aggiungi descrizioni o evidenzia le offerte speciali con un clic."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "Mockup intelligente",
+        "description": "Posiziona i tuoi menu su tavoli da caffè, banconi e lavagne realistici usando Smart Mockup — vedi esattamente come appaiono nel tuo spazio."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Coerenza del marchio",
+        "description": "Lovart mantiene l'identità del marchio della tua panetteria su ogni menu — font, colori, posizionamento del logo e stile visivo coerenti per un'esperienza cliente coesa."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "Esportazione stampa 8K",
+        "description": "Esporta i tuoi menu in splendida risoluzione 8K nei formati PNG, JPG, SVG e PSD. Pronto per la stampa di grande formato, la segnaletica e la visualizzazione digitale di alta qualità."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Output multi-formato",
+        "description": "Genera menu ottimizzati per la stampa (PSD, SVG), i social media (PNG, JPG) e il web — tutto da un unico design. Nessuno strumento aggiuntivo o riformattazione necessaria."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Scelto dai professionisti della panetteria",
+    "testimonials": [
+      {
+        "name": "Maria Rossi",
+        "role": "Proprietaria, Sweet Hearth Bakery",
+        "quote": "Lovart ha ridisegnato l'intera nostra linea di menu in un solo pomeriggio. Il coinvolgimento dei clienti è aumentato immediatamente e il solo menu di pasticceria ha portato a un aumento del 30% delle vendite nel primo mese. Il miglioramento delle foto ha reso i nostri prodotti irresistibili.",
+        "metric": "+30% di vendite",
+        "avatar_url": ""
+      },
+      {
+        "name": "Paolo Bianchi",
+        "role": "Manager di Caffetteria, Brew & Bake Co.",
+        "quote": "Prima passavo 8 ore a menu con i freelancer, con continue revisioni. Con ChatCanvas di Lovart, creo e perfeziono menu professionali in meno di 15 minuti. È un risparmio di tempo del 97% che dedico al servizio clienti e alle operazioni.",
+        "metric": "15 minuti a menu",
+        "avatar_url": ""
+      },
+      {
+        "name": "Laura Conti",
+        "role": "Chef Pasticciera & Proprietaria, Fleur de Pâtisserie",
+        "quote": "Come chef pasticciera, la presentazione è tutto. Lovart comprende l'arte della presentazione culinaria e la traduce nel design del menu. Il nostro catalogo di torte ha ora l'aspetto professionale di una pasticceria di lusso, e i clienti elogiano costantemente l'eleganza del nostro menu.",
+        "metric": "Look di lusso professionale",
+        "avatar_url": ""
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "Il creatore di menu per panetteria AI è gratuito?",
+        "answer": "Sì! Offriamo crediti giornalieri gratuiti per creare e scaricare menu per panetteria generati dall'IA senza costi. Passa a un piano a pagamento quando hai bisogno di download ad alta risoluzione e diritti commerciali."
+      },
+      {
+        "question": "Quali sono i piani di Lovart?",
+        "answer": "Lovart offre tre piani mensili: Starter (2.000 crediti/mese), Basic (3.500 crediti/mese) e Pro (11.000 crediti/mese). Tutti i piani a pagamento includono diritti completi di uso commerciale per i design dei tuoi menu."
+      },
+      {
+        "question": "Ho i diritti commerciali sui miei menu?",
+        "answer": "Sì! Tutti i piani a pagamento (Starter, Basic, Pro) includono diritti completi di uso commerciale. Sei proprietario dei menu creati e puoi stamparli, distribuirli e usarli per la tua attività."
+      },
+      {
+        "question": "Quali formati posso esportare?",
+        "answer": "Lovart supporta l'esportazione in risoluzione 8K nei formati PNG, JPG, SVG e PSD. PNG e JPG sono perfetti per i social media, SVG per uso web scalabile e PSD per editing avanzato e stampa professionale."
+      },
+      {
+        "question": "Come funziona Touch Edit per i menu?",
+        "answer": "Touch Edit ti permette di cliccare su qualsiasi elemento del menu direttamente su ChatCanvas — etichetta prezzo, foto, titolo di sezione — e modificarlo all'istante. Aggiorna prezzi, sostituisci immagini, ridimensiona elementi."
+      },
+      {
+        "question": "Come funziona Text Edit per le voci del menu?",
+        "answer": "Text Edit ti permette di modificare qualsiasi testo sul menu con un semplice clic e digitazione. Aggiorna nomi, prezzi, descrizioni o aggiungi offerte del giorno. Le modifiche appaiono immediatamente su ChatCanvas."
+      },
+      {
+        "question": "Posso creare diversi tipi di menu per panetteria?",
+        "answer": "Sì. L'agente MCoT di Lovart si adatta a qualsiasi tipo di menu — vetrine di pasticceria, pane artigianale, cataloghi di torte, menu bevande, offerte stagionali. Descrivi semplicemente ciò che ti serve."
+      },
+      {
+        "question": "Lovart mantiene la coerenza del marchio su tutti i miei menu?",
+        "answer": "Sì. Una volta che Lovart comprende l'identità del tuo marchio — colori, font, logo, stile visivo — applica un branding coerente a ogni menu che crei."
+      },
+      {
+        "question": "Offrite un rimborso se non sono soddisfatto?",
+        "answer": "Offriamo una garanzia di soddisfazione. Se non sei soddisfatto, contatta il nostro team di assistenza entro 7 giorni dall'acquisto per un rimborso completo."
+      }
+    ]
+  }
+],
+  "section_es": [
+  {
+    "type": "centeredInputSection",
+    "title": "Creador de Menús de Panadería con IA",
+    "subtitle": "Diseña menús de panadería irresistibles en segundos con Lovart — el primer Agente de Diseño con IA del mundo. Dirección creativa MCoT y edición de precisión ChatCanvas.",
+    "buttonText": "Crear mi menú",
+    "system_prompt": "Eres MCoT, el Director Creativo de Lovart, especializado en diseño de menús de panadería. Organizas un razonamiento en varios pasos para analizar la identidad de marca de la panadería, el público objetivo y las ofertas del menú. Usando ChatCanvas, refinas de manera colaborativa los diseños, la tipografía, las paletas de colores y el estilismo de la fotografía gastronómica. Garantizas que cada menú comunique frescura, artesanía y atractivo apetitoso a través de principios de diseño profesional. Descripción del usuario: $input$",
+    "suggestion": [
+      "Menú de vitrina de pastelería con cruasanes dorados y danesas",
+      "Menú rústico de pan artesanal con fotografía enharinada",
+      "Catálogo elegante de tartas con tartas nupciales de varios pisos",
+      "Menú acogedor de bebidas de cafetería con latte art y especiales de temporada"
+    ],
+    "input_placeholder": ""
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "De la inspiración a listo para imprimir en un instante",
+    "columns": [
+      {
+        "title": "Diseños generados por IA",
+        "description": "Describe el estilo de tu panadería y el agente MCoT de Lovart genera al instante composiciones completas de menú con cuadrículas, fuentes y esquemas de color armoniosos adaptados a tu marca.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "Precisión ChatCanvas",
+        "description": "Haz clic en cualquier elemento de tu menú — texto, imagen o decoración — y chatea para refinarlo. Ajusta precios, reemplaza fotos o modifica la tipografía en lenguaje natural.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "Exportación profesional 8K",
+        "description": "Exporta menús listos para imprimir en resolución 8K en formatos PNG, JPG, SVG y PSD. Perfecto para vitrinas, redes sociales e impresión profesional.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Todo lo que necesita el menú de tu panadería",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Mejora de fotos de alimentos",
+        "description": "Mejora automáticamente las fotos de productos de panadería — realza la calidez, agudiza las texturas y haz que los pasteles se vean irresistiblemente frescos en tu menú."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Edición de texto de precios",
+        "description": "Actualiza los precios en todo el menú al instante con Touch Edit y Text Edit. Cambia monedas, añade descripciones o destaca ofertas especiales con un clic."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "Mockup inteligente",
+        "description": "Coloca tus menús en mesas de cafetería, vitrinas y pizarras realistas usando Smart Mockup — ve exactamente cómo se ven en tu espacio."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Consistencia de marca",
+        "description": "Lovart mantiene la identidad de marca de tu panadería en cada menú — fuentes, colores, ubicación del logotipo y estilo visual consistentes para una experiencia del cliente cohesionada."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "Exportación de impresión 8K",
+        "description": "Exporta tus menús en impresionante resolución 8K en formatos PNG, JPG, SVG y PSD. Listo para impresión de gran formato, señalización y pantalla digital de alta calidad."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Salida multiformato",
+        "description": "Genera menús optimizados para impresión (PSD, SVG), redes sociales (PNG, JPG) y web — todo desde un solo diseño. Sin herramientas adicionales ni reformateo necesarios."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Con la confianza de profesionales de la panadería",
+    "testimonials": [
+      {
+        "name": "María García",
+        "role": "Propietaria, Sweet Hearth Panadería",
+        "quote": "Lovart rediseñó toda nuestra línea de menús en una sola tarde. El interés de los clientes aumentó de inmediato, y solo el menú de vitrina de pastelería generó un incremento del 30% en ventas el primer mes. La mejora de fotos hizo que nuestros productos se vieran irresistibles.",
+        "metric": "+30% en ventas",
+        "avatar_url": ""
+      },
+      {
+        "name": "Carlos López",
+        "role": "Gerente de Cafetería, Brew & Bake Co.",
+        "quote": "Antes pasaba 8 horas por menú con freelancers, con constantes revisiones. Con ChatCanvas de Lovart, creo y perfecciono menús profesionales en menos de 15 minutos. Es un ahorro del 97% de tiempo que dedico al servicio al cliente y las operaciones.",
+        "metric": "15 minutos por menú",
+        "avatar_url": ""
+      },
+      {
+        "name": "Elena Ruiz",
+        "role": "Chef Pastelera & Propietaria, Fleur de Pâtisserie",
+        "quote": "Como chef pastelera, la presentación lo es todo. Lovart entiende el arte de la presentación culinaria y lo traduce al diseño del menú. Nuestro catálogo de tartas tiene ahora el aspecto profesional de una pastelería de lujo, y los clientes no dejan de elogiar la elegancia de nuestro menú.",
+        "metric": "Aspecto profesional de lujo",
+        "avatar_url": ""
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "¿El creador de menús de panadería con IA es gratuito?",
+        "answer": "¡Sí! Ofrecemos créditos diarios gratuitos para crear y descargar menús de panadería generados por IA sin costo. Actualiza a un plan pago cuando necesites descargas de alta resolución y derechos comerciales."
+      },
+      {
+        "question": "¿Cuáles son los planes de Lovart?",
+        "answer": "Lovart ofrece tres planes mensuales: Starter (2.000 créditos/mes), Basic (3.500 créditos/mes) y Pro (11.000 créditos/mes). Todos los planes pagos incluyen derechos completos de uso comercial para tus diseños de menú."
+      },
+      {
+        "question": "¿Tengo los derechos comerciales de mis menús?",
+        "answer": "¡Sí! Todos los planes pagos (Starter, Basic, Pro) incluyen derechos completos de uso comercial. Eres dueño de los menús creados y puedes imprimirlos, distribuirlos y usarlos para tu negocio."
+      },
+      {
+        "question": "¿Qué formatos puedo exportar?",
+        "answer": "Lovart admite exportación en resolución 8K en formatos PNG, JPG, SVG y PSD. PNG y JPG son perfectos para redes sociales, SVG para uso web escalable y PSD para edición avanzada e impresión profesional."
+      },
+      {
+        "question": "¿Cómo funciona Touch Edit para menús de panadería?",
+        "answer": "Touch Edit te permite hacer clic en cualquier elemento del menú directamente en ChatCanvas — etiqueta de precio, foto, título de sección — y modificarlo al instante. Actualiza precios, cambia imágenes, redimensiona elementos."
+      },
+      {
+        "question": "¿Cómo funciona Text Edit para los artículos del menú?",
+        "answer": "Text Edit te permite cambiar cualquier texto del menú con un simple clic y escritura. Actualiza nombres, precios, descripciones o añade especiales del día. Los cambios se reflejan al instante en ChatCanvas."
+      },
+      {
+        "question": "¿Puedo diseñar diferentes tipos de menús de panadería?",
+        "answer": "Sí. El agente MCoT de Lovart se adapta a cualquier tipo de menú — vitrinas de pastelería, pan artesanal, catálogos de tartas, cartas de bebidas, especiales de temporada. Solo describe lo que necesitas."
+      },
+      {
+        "question": "¿Lovart mantiene la consistencia de marca en todos mis menús?",
+        "answer": "Sí. Una vez que Lovart entiende la identidad de tu marca — colores, fuentes, logotipo, estilo visual — aplica una marca consistente a cada menú que creas."
+      },
+      {
+        "question": "¿Ofrecen reembolso si no quedo satisfecho?",
+        "answer": "Ofrecemos garantía de satisfacción. Si no quedas satisfecho, contacta a nuestro equipo de soporte dentro de los 7 días posteriores a la compra para un reembolso completo."
+      }
+    ]
+  }
+]
+}

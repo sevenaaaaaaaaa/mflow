@@ -1,0 +1,92 @@
+---
+title: "Call Center AI - 微软竟然开源了整套、能打电话的 AI 呼叫中心"
+source: "https://www.appinn.com/ms-call-center-ai/"
+author:
+  - "[[青小蛙]]"
+published: 2025-11-03
+created: 2025-11-03
+description: "摘要：微软这个项目，听起来的感觉，就很赞。比如客服中心、预约系统、售后支持，这些东西，以后可能一个人就能搞起来了...原文链接：https://www.appinn.com/ms-call-center-ai/"
+tags:
+  - "AI"
+  - "开源"
+---
+摘要：微软这个项目，听起来的感觉，就很赞。比如客服中心、预约系统、售后支持，这些东西，以后可能一个人就能搞起来了…  
+原文链接：https://www.appinn.com/ms-call-center-ai/
+
+微软这个开源项目 **Call Center AI** ，可以让 AI 真的能打电话、接电话，还能听懂人话。
+
+也是没想到微软还有这种项目。
+
+![Call Center AI - 微软竟然开源了整套、能打电话的 AI 呼叫中心 1](https://www.appinn.com/wp-content/uploads/2025/11/Copy-of-appinn-homework-2025-11-03T122412.039.jpg)
+
+Call Center AI - 微软竟然开源了整套、能打电话的 AI 呼叫中心 1
+
+## Call Center AI
+
+- [GitHub](https://github.com/microsoft/call-center-ai) （项目地址）
+
+这个项目本质上就是一个可自建的 AI 呼叫系统。它把电话接入、语音识别、语音合成、对话逻辑这些复杂环节都串在了一起，开发者只需要配置 Azure 服务和 OpenAI 模型，就能让 AI “开口说话”和“听懂你说什么”。
+
+换句话说，借助 Call Center AI，你可以：
+
+- • 搭建一个能 自动拨号、接听来电 的系统；
+- • 用 GPT 模型 生成自然对话逻辑
+- • 让 AI 在通话中 实时转录并存档；
+- • 根据业务场景 快速替换模板，不需要从零开始写逻辑。
+
+这意味着任何人都能像搭积木一样，组装出属于自己的“AI 电话客服中心”——无论是做个人助手、实验项目，还是企业原型验证，都非常实用。
+
+## 主要功能亮点
+
+1. 1\. AI 语音通话能力：能主动拨打或接听电话，像真人一样交流。
+2. 2\. 自然多语言对话：支持多语言和自然语气合成，沟通更流畅。
+3. 3\. 上下文记忆与断线续接：能保持对话连续性，即使中途断线也能接上。
+4. 4\. 实时通话记录：通话过程可转录、保存，方便回看与分析。
+5. 5\. 混合智能架构：结合 Azure 语音服务与 GPT 模型，理解与应答更精准。
+6. 6\. 可定制模板系统：内置任务模板，快速打造自己的 AI 客服或语音助手。
+
+关于这个项目：
+
+### @haitao 同学说
+
+这才是AI正经职业：取代现有的名智能实智障的智能客服  
+只是需要内部业务知识和数据，必须自行搭建 纯内网的系统
+
+### @L11 同学说：
+
+纳得拉搞这套，家乡的客服中心要感谢他了
+
+### 青小蛙说：
+
+虽然青小蛙一直觉得，电话系统，差不多该被替换掉了，但只要手机形态是这个样子的，还有听筒在，那么这个形式就会一直存在。
+
+虽然再也不需要用大拇指对着耳朵，用小拇指对着嘴巴来比划了，但我们可以用四个手指贴着耳朵呢。
+
+还有啊，这个项目，听起来的感觉，就很赞，比如客服中心、预约系统、售后支持，这些东西，以后可能一个人就能搞起来了…
+
+一个人 + AI…
+
+---
+
+原文：https://www.appinn.com/ms-call-center-ai/
+
+### 分享
+
+[![](https://www.appinn.com/8AAABVwtN+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAA+ElEQVRIic2UUY7EMAhDuYHvf0vfgLUh1cx+1vkZWlXJqxSBIa76tehuoords4wJvYOeImeXkia1BUWad6ThqGuij8rkHdGrRde/2t8Ty33iqxfvyYaSw2eXEJ0271EtJlbLC7VR+fGCaAkC+vOkmxBM9yQ76mSYErjIEWxFy8hsz0RtpRlRVpZKh/pXxWRO93DDuuVEd98mYrXwVJoQrmpz6fjcuIhoLDH+hjNQIVkXqa/aI8IaZ4MnfJ02Int6r51ckHESpTdOub2IyNpZz4izLsg6LGdAm3dkpkEtvCXunaehKydu4kylTTInVr4xNxifXrwnvxV/PO/Ddmj9ULQAAAAASUVORK5CYII=)](https://www.appinn.com/ms-call-center-ai/)
+
+### 相关
+
+- [![VLC 将使用本地 AI 为视频生成实时字幕，并翻译为 100 多种语言 2](https://www.appinn.com/wp-content/uploads/2025/01/appinn-homework-76-115x115.jpg "VLC 将使用本地 AI 为视频生成实时字幕，并翻译为 100 多种语言 2")](https://www.appinn.com/vlc-ai-subtitling-for-videos/ "VLC 将使用本地 AI 为视频生成实时字幕，并翻译为 100 多种语言")
+	[VLC 将使用本地 AI 为视频生成实时字幕，并翻译为 100 多种语言](https://www.appinn.com/vlc-ai-subtitling-for-videos/ "VLC 将使用本地 AI 为视频生成实时字幕，并翻译为 100 多种语言")
+	2025/01/11 [13](https://www.appinn.com/vlc-ai-subtitling-for-videos/#comments)
+- [![PingPongChat - 这可能是目前最易用的智能AI使用方式了[iOS/macOS] 3](https://www.appinn.com/wp-content/uploads/2023/03/PingPongChat.022-115x115.jpg "PingPongChat - 这可能是目前最易用的智能AI使用方式了[iOS/macOS] 3")](https://www.appinn.com/pingpongchat/ "PingPongChat – 这可能是目前最易用的智能AI使用方式了[iOS/macOS]")
+	[PingPongChat – 这可能是目前最易用的智能AI使用方式了\[iOS/macOS\]](https://www.appinn.com/pingpongchat/ "PingPongChat – 这可能是目前最易用的智能AI使用方式了[iOS/macOS]")
+	2023/03/21 [13](https://www.appinn.com/pingpongchat/#comments)
+- [![OOMOL Studio：一款全新的工作流 IDE，免费、底层开源 4](https://www.appinn.com/wp-content/uploads/2025/02/Copy-of-appinn-homework-58-115x115.jpg "OOMOL Studio：一款全新的工作流 IDE，免费、底层开源 4")](https://www.appinn.com/oomol-studio/ "OOMOL Studio：一款全新的工作流 IDE，免费、底层开源")
+	[OOMOL Studio：一款全新的工作流 IDE，免费、底层开源](https://www.appinn.com/oomol-studio/ "OOMOL Studio：一款全新的工作流 IDE，免费、底层开源")
+	2025/02/20 [2](https://www.appinn.com/oomol-studio/#comments)
+- [![OpenAI 发布新版 GPT-4、GPT-3.5，部分降价 25%，以及支持长达 20 页上下文的 GPT-3.5-16K ，旧版本今年 9 月份将被弃用 5](https://www.appinn.com/wp-content/uploads/2023/06/openai-gpt-0613.jpgo_-115x115.jpg "OpenAI 发布新版 GPT-4、GPT-3.5，部分降价 25%，以及支持长达 20 页上下文的 GPT-3.5-16K ，旧版本今年 9 月份将被弃用 5")](https://www.appinn.com/openai-api-updates/ "OpenAI  发布新版 GPT-4、GPT-3.5，部分降价 25%，以及支持长达 20 页上下文的  GPT-3.5-16K ，旧版本今年 9 月份将被弃用")
+	[OpenAI 发布新版 GPT-4、GPT-3.5，部分降价 25%，以及支持长达 20 页上下文的 GPT-3.5-16K ，旧版本今年 9 月份将被弃用](https://www.appinn.com/openai-api-updates/ "OpenAI  发布新版 GPT-4、GPT-3.5，部分降价 25%，以及支持长达 20 页上下文的  GPT-3.5-16K ，旧版本今年 9 月份将被弃用")
+	2023/06/14 [0](https://www.appinn.com/openai-api-updates/#respond)
+
+[7 条评论，点击查看](https://meta.appinn.net/t/topic/76758)

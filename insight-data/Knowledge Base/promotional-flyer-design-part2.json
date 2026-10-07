@@ -1,0 +1,606 @@
+```json
+,
+  "section_ja": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI プロモーションフライヤーメーカー — Lovart でコンバージョン率の高い販促フライヤーをデザイン",
+      "description": "集客と売上アップのためにプロモーションフライヤーを作るのに、デザイン品質やスピードを犠牲にする必要はありません。Lovart は世界初の AI デザインエージェントで、MCoT 推論エンジンがクリエイティブディレクターのように思考します — プロモーション内容、オーディエンス心理、ブランドコンテキストを分析し、シンプルなテキスト説明からコンバージョン最適化された完全なフライヤーを生成します。小売セール、サービス割引、ホリデーキャンペーン、期間限定オファーなど、Lovart は説得力のあるコピー階層、緊急性の演出、明確なコールトゥアクションを備えた注目を集めるフライヤーを数分で作成します。",
+      "input_placeholder": "作成したいプロモーションフライヤーを説明してください — オファー内容、割引率、ターゲットオーディエンス、イベント詳細、CTA を含めてください",
+      "system_prompt": "あなたは Lovart の MCoT 推論エンジンで、プロモーションマーケティングとフライヤーデザインを専門とする熟練のクリエイティブディレクターとして機能します。ユーザーの説明を分析し以下を判断します：1）プロモーションタイプとオファー構造、2）ターゲットオーディエンスと購買心理、3）緊急度とコンバージョン戦略、4）オファーの訴求力と CTA に最適なビジュアル階層。各フライヤーで：オファーが即座に伝わるビジュアル階層を確立し、興奮と緊急感を生むカラーパレットとタイポグラフィを選択し、スキャンしやすい情報（何が・いくら・いつ・どこで）の最適なレイアウトを決定し、最大のコンバージョンを実現するコールトゥアクションを配置します。特定のオファー、オーディエンス、チャネルに合わせたプロ品質の高コンバージョンフライヤーを生成してください。",
+      "button_text": "フライヤーをデザイン",
+      "tip": "プロのヒント：プロンプトに具体的な割引率やオファー、有効期限、ターゲットオーディエンス、希望するアクション（来店、コード使用、QR 読取）を含めると最も正確な結果が得られます。",
+      "suggestion": [
+        {
+          "value": "「最大70%オフ」の見出し、商品カテゴリー（衣類、靴、アクセサリー）、店舗住所、日付、活気のある赤と黄色の配色で「今すぐ買う」CTA を備えた大胆な小売セールフライヤーをデザイン",
+          "label": "小売セールフライヤー"
+        },
+        {
+          "value": "歯科医院向けに、ホワイトニング25%オフと新患特典を打ち出すクリーンなサービス割引フライヤー — 信頼感を醸成するプロフェッショナルな青と白のパレット、医院写真、「予約する」CTA",
+          "label": "サービス割引フライヤー"
+        },
+        {
+          "value": "クリスマスギフトセール向けのフェスティブなホリデープロモーションフライヤー — 雪の結晶のアクセント、温かみのあるゴールドと赤のパレット、ギフトカテゴリー、期間限定カウントダウン、「ホリデーコレクションを見る」CTA",
+          "label": "ホリデープロモフライヤー"
+        },
+        {
+          "value": "「48時間フラッシュセール」の見出し、カウントダウンタイマーグラフィック、商品ショーケース、元値とセール価格の比較、大胆なコントラストカラーで「なくなる前にゲット」CTA を備えた家電量販店向けの緊急限定オファーフライヤーを生成",
+          "label": "期間限定オファーフライヤー"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Lovart の AI エージェントで販促フライヤーをデザインする方法",
+      "columns": [
+        {
+          "title": "プロモーションを説明する",
+          "description": "まず Lovart の AI デザインエージェントに、あなたのプロモーション内容を正確に伝えましょう。オファーの種類、割引率、ターゲットオーディエンス、希望するビジュアルスタイルを説明します。MCoT 推論エンジンがあなたのプロモーション目標を分析し、オーディエンス心理と購買行動を考慮した上で、ピクセルを生成する前に完全なクリエイティブ戦略を立案します。ChatCanvas がブランドコンテキストをキャプチャし、すべてのフライヤーが最初からビジュアルアイデンティティと一致するようにします。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "生成と反復",
+          "description": "Lovart があなたのブリーフを数秒で複数のフライヤーバリエーションに変換する様子をご覧ください。エージェントは、コンバージョンに焦点を当てたコピー階層、Nano Banana Pro によるサポートビジュアル、戦略的に配置された CTA ボタンを含む完全なレイアウトを生成します。バリエーションを見比べ、バージョン間で要素を組み合わせ、自然言語コマンドで微調整を行います。手動のレイヤー操作やピクセル単位の調整は一切不要です。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "洗練とエクスポート",
+          "description": "Lovart 独自の編集ツールで細部まで磨き上げます。Touch Edit で任意のビジュアル要素をクリックして即座に変更 — 商品画像の差し替え、割引率の色調整、ロゴの再配置が手動マスキングなしで行えます。Text Edit でオファー文言や価格、日付をフライヤー上で直接編集しながら元のタイポグラフィスタイルを保持します。Smart Mockup で店頭や手に持った状態のフォトリアルなプレビューを確認。PNG、JPG、SVG、PSD、MP4 形式で最大 8K 解像度のプロ仕様エクスポートが可能です。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "販促フライヤーデザインのための究極の AI ツールキット",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "セマンティック Touch Edit",
+          "description": "フライヤー上の任意の要素 — 商品写真、ロゴ、背景テクスチャ — をクリックして、即座に形状変更、色変更、または置き換えができます。Touch Edit は視覚的コンテキストを理解し、照明、遠近法、周囲の要素にシームレスに適応します。手動マスキング不要、Photoshop レイヤー不要 — 販促フライヤーの調整を魔法のように感じさせる直感的なクリック編集精度です。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "完璧なタイポグラフィレンダリング",
+          "description": "構造化されたテキスト理解により、フライヤー画像上のオファー見出し、割引率、日付、CTA を直接編集できます。文字化けを生成する一般的な AI ツールとは異なり、Lovart の Text Edit は、インパクトのある太字見出しからエレガントなセリフ体まで、あらゆるスタイルで鮮明で読みやすいタイポグラフィをレンダリングし、影、グラデーション、遠近効果を保持します。割引率やプロモーション文言を数秒で変更でき、フライヤー全体を再設計する必要はありません。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "AI スマートモックアップエンジン",
+          "description": "ワンクリックで販促フライヤーを実世界の設定でプレビュー。デザインを店頭ウィンドウ、掲示板、カフェテーブル、手に持った状態で配置できます。Smart Mockup エンジンが遠近法、照明、表面テクスチャを自動的に適応させ、どのコンテキストでもフライヤーがフォトリアリスティックに見えます。クライアントプレゼンテーションや印刷前の検証に最適です。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "ブランド一貫性のロック",
+          "description": "Nano Banana Pro と ChatCanvas ブランドメモリにより、Lovart はキャンペーン全体のすべての販促フライヤーで一貫した色、タイポグラフィ、ロゴ配置、ビジュアルトーンを保証します。ブランドアセットを一度アップロードすれば、エージェントがすべての新規デザインに自動的に適用します。テンプレートベースのツールで発生するビジュアルのブレなしに、マルチチャネルプロモーションキャンペーンを実行できます。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "8K 印刷可能エクスポート",
+          "description": "プロの印刷仕様で販促フライヤーを納品。適切な塗り足しゾーン、CMYK 互換性、業界標準のカラープロファイルを備えた PNG、JPG、SVG ベクター、PSD、MP4 形式で最大 8K 解像度のエクスポートが可能です。100 枚の店頭配布用でも 10,000 枚のダイレクトメールキャンペーンでも、Lovart は毎回適切なフォーマットと解像度で出力します。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "マルチフォーマット適応エンジン",
+          "description": "一度のデザインで、全チャネルに展開。マスターフライヤーを作成すると、Lovart のエージェントが各チャネルに最適化されたバリアントを自動生成します：印刷用（A4、US レター、A5、DL）、Instagram ストーリー、Facebook 投稿、メールヘッダー、ウェブバナー — すべて視覚的階層とブランド一貫性を維持したまま。単一のデザインから完全なプロモーションキャンペーンを数分で立ち上げられます。"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Lovart で販促フライヤー制作を拡大するマーケターとビジネスオーナー",
+      "testimonials": [
+        {
+          "name": "高橋優子",
+          "role": "マーケティングマネージャー、BrightPath Agency",
+          "content": "以前は販促フライヤーデザインだけで毎月 10 万円以上を外部デザイナーに支払っていました — ブリーフィングを送り、修正に何日も待ち、それでも結果に妥協していました。Lovart の AI フライヤーメーカーのおかげで、今では自分一人で月 30 枚以上のプロモーションフライヤーを作成しています。ブランドの一貫性はすべてのデザインで完璧で、ビジュアル品質を改善してからキャンペーンのコンバージョン率が 35% 向上しました。デザイン予算は月 10 万円からゼロになりました。",
+          "avatar_url": ""
+        },
+        {
+          "name": "佐藤健太",
+          "role": "「ベーカリー佐藤」オーナー",
+          "content": "パン屋の経営者であってデザイナーではありません。Lovart 以前は Word のテンプレートを使っていましたが、素人っぽく見えていました。今では「週末限定クロワッサン 30% オフ」と入力するだけで、2 分でプロ品質の販促フライヤーが完成します。先月の週末キャンペーンでは、来店客数が前月比で 40% 増加しました。Smart Mockup 機能で店頭に掲示したときの実際の見え方を事前に確認できるのも大きな強みです。",
+          "avatar_url": ""
+        },
+        {
+          "name": "山本花子",
+          "role": "イベントオーガナイザー、東京クリエイティブフェス",
+          "content": "毎月 50 以上のイベントフライヤーを異なるアーティスト向けに制作しています。Lovart のマルチフォーマット適応機能で大幅な時間短縮 — 1 つのデザインが Instagram 投稿、ウェブバナー、大判ポスターに即座に変換されます。制作量は 300% 増加しましたが、どのフライヤーもプロが個別にデザインしたように見えます。Touch Edit で各アーティストの好みに合わせて背景や色を即座に調整できるのも気に入っています。",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart の AI プロモーションフライヤーメーカーとは何ですか？Canva や他のデザインツールとどう違いますか？",
+          "answer": "Lovart は世界初の AI デザインエージェントであり、単なるテンプレートエディタや画像生成ツールではありません。テンプレートを手動編集する必要がある Canva とは異なり、Lovart の MCoT 推論エンジンはクリエイティブディレクターのように考えます。あなたのプロモーション目的、ターゲットオーディエンス、ブランドコンテキストを分析し、コンバージョンに最適化されたレイアウト、適切なタイポグラフィ階層、緊急性を演出するビジュアル言語を備えた完全な販促フライヤーを統括します。自然言語でニーズを説明するだけで、Lovart はプロのエージェンシーにブリーフィングしたかのような完全で編集可能、印刷可能なデザインを納品します。"
+        },
+        {
+          "question": "デザイン経験がなくてもプロフェッショナルな販促フライヤーを作成できますか？",
+          "answer": "もちろんです。Lovart はプロの成果を必要とする非デザイナーのために作られました。レイアウトグリッド、色彩理論、タイポグラフィの組み合わせ、印刷仕様を理解する必要はありません。プロモーションの種類、割引率、ターゲットオーディエンスを簡単な日本語で説明するだけで、Lovart の AI デザインエージェントがすべてのクリエイティブおよび技術的決定を処理します。エージェントは自動的に適切なフォントを選択し、視覚的階層を構築し、コンバージョン最適化された CTA を配置し、正しい解像度でエクスポートします。"
+        },
+        {
+          "question": "作成した販促フライヤーは商業目的で使用できますか？",
+          "answer": "はい。有料プラン（Starter、Basic、Pro）のユーザーは、販促フライヤーデザインの完全な商業使用権を所有します。広告、クライアントワーク、店頭プロモーション、ダイレクトメールキャンペーンなど、あらゆる合法的な商業目的に使用できます。無料プランは個人使用および評価用です。Lovart のモデルはライセンス済みおよびパブリックドメインのデータでトレーニングされており、有料加入者には商業的補償を提供し、ビジネスクリティカルなクリエイティブ作業に安心をもたらします。"
+        },
+        {
+          "question": "無料プランはありますか？無料クレジットはどのように機能しますか？",
+          "answer": "はい、Lovart には毎日ログインすると 24 時間ごとに更新される無料クレジットが付与される無料プランがあります。1 円も支払わずに 1 日に複数の販促フライヤーを作成できます — プラットフォームを試したり、時折のプロモーションニーズに対応するのに最適です。有料プランは Starter（月額 2,000 クレジット）、Basic（3,500 クレジット）、Pro（11,000 クレジット）から始まり、すべて完全なエージェント機能、商業使用権、Nano Banana Pro などのプレミアムモデルへのアクセスを解放します。生成前に常にクレジットコストが表示されるため、予期しない請求は一切ありません。"
+        },
+        {
+          "question": "販促フライヤーはどのようなファイル形式と解像度でエクスポートできますか？",
+          "answer": "Lovart は PNG、JPG、SVG（ベクター）、PSD（レイヤー化）、MP4 形式でのプロフェッショナルエクスポートをサポートしています。ラスターエクスポートの解像度は最大 8K で、SNS グラフィックから大判看板印刷まであらゆる用途に対応します。ベクター SVG エクスポートはロゴやタイポグラフィ中心のデザインに最適です。PSD レイヤーファイルはデザイナーがさらに編集するためのものです。適切な塗り足しとトンボ付きのエクスポートも提供し、直接印刷ワークフローに対応します。"
+        },
+        {
+          "question": "Lovart は複数の販促フライヤー間でブランド一貫性をどのように維持しますか？",
+          "answer": "Lovart の ChatCanvas は永続的なブランドコンテキストを維持します — ロゴをアップロードし、ブランドカラーを定義し、タイポグラフィの好みを設定すると、エージェントが自動的にすべての新規販促フライヤーに適用します。Nano Banana Pro は、商品画像から装飾グラフィックまで、すべての生成要素の視覚的一貫性を確保します。ブランドシステムはセッションをまたいでアクティブなままなので、2 枚目、10 枚目、100 枚目のフライヤーすべてが紛れもなくあなたのブランドとして感じられます。"
+        },
+        {
+          "question": "販促フライヤー生成後、テキストを編集できますか？",
+          "answer": "はい、これは Lovart の代表的な機能の一つです。Text Edit を使用すると、オファー見出し、割引率、日付、CTA などの任意のテキスト要素をクリックして、フライヤー画像上で直接修正できます。AI はフォントの太さ、影、グラデーション、遠近効果を含む元のタイポグラフィスタイルを保持します。プロモーション文言の更新や特別オファーの変更が必要ですか？新しいテキストを入力すると、既存のデザインにシームレスに溶け込みます。再生成も一からの作り直しも不要です。"
+        },
+        {
+          "question": "Lovart でどのようなタイプの販促フライヤーを作成できますか？",
+          "answer": "Lovart の AI 販促フライヤーメーカーはほぼすべてのプロモーションカテゴリをカバーします：小売セールフライヤー、サービス割引フライヤー、ホリデーキャンペーンフライヤー、期間限定オファーフライヤー、開店記念フライヤー、レストランプロモーション、イベント告知フライヤー、季節クリアランスセール、BOGO キャンペーン、ロイヤルティプログラム告知 — さらに多数。MCoT エンジンが設計戦略をあなたの特定のプロモーションタイプ、オーディエンス、配信チャネルに自動的に適応させます。"
+        },
+        {
+          "question": "異なるマーケティングチャネル用の販促フライヤーバリアントを作成できますか？",
+          "answer": "はい。マルチフォーマット適応エンジンがマスターフライヤーデザインから各チャネルに最適化されたバリアントを自動生成します。各プラットフォームに適したサイズのバージョンが得られます：Instagram（1:1 フィード、9:16 ストーリー）、Facebook 広告、メールマーケティングヘッダー、ウェブバナー、印刷形式（A4、US レター、A5、DL）— すべて視覚的階層とブランド一貫性を維持したまま。単一のデザインを手動でサイズ変更する面倒で間違いやすいプロセスを完全に排除します。"
+        }
+      ]
+    }
+  ],
+  "section_ko": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI 프로모션 전단지 메이커 — Lovart로 전환율 높은 판촉 전단지 디자인",
+      "description": "집객과 매출 증대를 위한 프로모션 전단지 제작에 디자인 품질이나 속도를 희생할 필요가 없습니다. Lovart는 세계 최초의 AI 디자인 에이전트로, MCoT 추론 엔진이 크리에이티브 디렉터처럼 사고합니다 — 프로모션 내용, 고객 심리, 브랜드 컨텍스트를 분석하여 간단한 텍스트 설명만으로 전환 최적화된 완전한 전단지를 생성합니다. 소매 세일, 서비스 할인, 홀리데이 캠페인, 기간 한정 오퍼 등 무엇이든 Lovart는 설득력 있는 카피 계층, 긴박감을 주는 연출, 명확한 콜투액션을 갖춘 시선을 사로잡는 전단지를 몇 분 만에 만들어냅니다.",
+      "input_placeholder": "만들고 싶은 프로모션 전단지를 설명하세요 — 오퍼 내용, 할인율, 대상 고객, 이벤트 세부사항, CTA를 포함하세요",
+      "system_prompt": "당신은 Lovart의 MCoT 추론 엔진으로, 프로모션 마케팅과 전단지 디자인을 전문으로 하는 숙련된 크리에이티브 디렉터 역할을 합니다. 사용자의 설명을 분석하여 다음을 판단합니다: 1) 프로모션 유형과 오퍼 구조, 2) 대상 고객과 구매 심리, 3) 긴박감 수준과 전환 전략, 4) 오퍼 강조와 CTA를 위한 최적의 시각적 계층. 각 전단지마다: 오퍼가 즉시 전달되는 시각적 계층을 구축하고, 흥분과 긴박감을 불러일으키는 색상 팔레트와 타이포그래피를 선택하며, 쉽게 훑어볼 수 있는 정보(무엇을, 얼마에, 언제, 어디서)를 위한 최적의 레이아웃을 결정하고, 최대 전환을 위한 콜투액션을 배치하세요. 특정 오퍼, 고객, 채널에 맞춘 전문가 수준의 고전환 전단지를 생성하십시오.",
+      "button_text": "전단지 디자인",
+      "tip": "프로 팁: 구체적인 할인율이나 오퍼, 유효기간, 대상 고객, 원하는 행동(방문, 코드 사용, QR 스캔)을 프롬프트에 포함하면 가장 정확한 결과를 얻을 수 있습니다.",
+      "suggestion": [
+        {
+          "value": "「최대 70% 할인」 헤드라인, 상품 카테고리(의류, 신발, 액세서리), 매장 주소, 날짜, 활기찬 빨간색과 노란색 배색의 「지금 쇼핑하기」 CTA를 갖춘 대담한 소매 세일 전단지 디자인",
+          "label": "소매 세일 전단지"
+        },
+        {
+          "value": "치과 의원을 위한 미백 25% 할인과 신규 환자 특전을 강조하는 깔끔한 서비스 할인 전단지 — 신뢰감을 주는 전문적인 파란색과 흰색 팔레트, 의원 사진, 「예약하기」 CTA",
+          "label": "서비스 할인 전단지"
+        },
+        {
+          "value": "크리스마스 선물 세일을 위한 축제 분위기의 홀리데이 프로모션 전단지 — 눈꽃 악센트, 따뜻한 골드와 레드 팔레트, 선물 카테고리, 기간 한정 카운트다운, 「홀리데이 컬렉션 보기」 CTA",
+          "label": "홀리데이 프로모 전단지"
+        },
+        {
+          "value": "「48시간 플래시 세일」 헤드라인, 카운트다운 타이머 그래픽, 제품 쇼케이스, 원가 대비 세일 가격 비교, 대담한 대비 색상의 「품절 전에 겟하세요」 CTA를 갖춘 전자제품 매장용 긴급 한정 오퍼 전단지 생성",
+          "label": "기간 한정 오퍼 전단지"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Lovart의 AI 에이전트로 판촉 전단지를 디자인하는 방법",
+      "columns": [
+        {
+          "title": "프로모션 설명하기",
+          "description": "먼저 Lovart의 AI 디자인 에이전트에 프로모션 내용을 정확히 알려주세요. 오퍼 유형, 할인율, 대상 고객, 원하는 비주얼 스타일을 설명합니다. MCoT 추론 엔진이 프로모션 목표를 분석하고 고객 심리와 구매 행동을 고려하여 픽셀을 생성하기 전에 완전한 크리에이티브 전략을 수립합니다. ChatCanvas가 브랜드 컨텍스트를 캡처하여 모든 전단지가 처음부터 시각적 아이덴티티와 일치하도록 합니다.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "생성 및 반복",
+          "description": "Lovart가 당신의 브리프를 몇 초 만에 여러 전단지 변형으로 변환하는 모습을 지켜보세요. 에이전트는 전환 중심의 카피 계층, Nano Banana Pro의 지원 비주얼, 전략적으로 배치된 CTA 버튼을 포함한 완전한 레이아웃을 생성합니다. 변형을 비교하고, 버전 간 요소를 혼합하며, 자연어 명령으로 세부 조정하세요. 수동 레이어 조작이나 픽셀 단위 조정이 필요 없습니다.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "다듬기 및 내보내기",
+          "description": "Lovart의 독점 편집 도구로 모든 세부 사항을 정밀하게 다듬으세요. Touch Edit로 모든 비주얼 요소를 클릭하여 즉시 변경 — 제품 이미지 교체, 할인율 색상 조정, 로고 재배치를 수동 마스킹 없이 수행합니다. Text Edit로 오퍼 문구, 가격, 날짜를 전단지에서 직접 편집하면서 원본 타이포그래피 스타일을 유지합니다. Smart Mockup으로 매장 진열대나 손에 들고 있는 모습을 사실적으로 미리 보세요. PNG, JPG, SVG, PSD, MP4 형식으로 최대 8K 해상도의 전문가급 내보내기가 가능합니다.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "판촉 전단지 디자인을 위한 궁극의 AI 툴킷",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "시맨틱 Touch Edit",
+          "description": "전단지의 모든 요소 — 제품 사진, 로고, 배경 텍스처 — 를 클릭하여 즉시 모양 변경, 색상 변경 또는 교체하세요. Touch Edit는 시각적 컨텍스트를 이해하고 조명, 원근법, 주변 요소에 완벽하게 적응합니다. 수동 마스킹 불필요, Photoshop 레이어 불필요 — 판촉 전단지 조정을 마법처럼 느끼게 하는 직관적인 클릭 편집 정밀도입니다."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "완벽한 타이포그래피 렌더링",
+          "description": "구조화된 텍스트 이해를 통해 전단지 이미지의 오퍼 헤드라인, 할인율, 날짜, CTA를 직접 편집하세요. 깨진 텍스트를 생성하는 일반적인 AI 도구와 달리, Lovart의 Text Edit는 임팩트 있는 굵은 헤드라인부터 우아한 세리프체까지 모든 스타일로 선명하고 읽기 쉬운 타이포그래피를 렌더링하며 그림자, 그라데이션, 원근 효과를 유지합니다. 할인율이나 프로모션 문구를 몇 초 만에 변경할 수 있으며 전단지 전체를 재설계할 필요가 없습니다."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "AI 스마트 목업 엔진",
+          "description": "원클릭으로 판촉 전단지를 실제 환경에서 미리 보세요. 디자인을 매장 윈도우, 게시판, 카페 테이블, 손에 들고 있는 모습으로 배치하세요. Smart Mockup 엔진이 원근법, 조명, 표면 텍스처를 자동으로 조정하여 모든 컨텍스트에서 전단지가 사실적으로 보이게 합니다. 클라이언트 프레젠테이션이나 인쇄 전 검증에 완벽합니다."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "브랜드 일관성 락",
+          "description": "Nano Banana Pro와 ChatCanvas 브랜드 메모리로 구동되는 Lovart는 캠페인 전체의 모든 판촉 전단지가 일관된 색상, 타이포그래피, 로고 배치, 시각적 톤을 공유하도록 보장합니다. 브랜드 자산을 한 번 업로드하면 에이전트가 모든 새 디자인에 자동으로 적용합니다. 템플릿 기반 도구에서 발생하는 시각적 불일치 없이 멀티채널 프로모션 캠페인을 실행하세요."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "8K 인쇄 가능 내보내기",
+          "description": "전문 인쇄 사양으로 판촉 전단지를 전달하세요. 적절한 재단 여백, CMYK 호환성, 업계 표준 색상 프로필을 갖춘 PNG, JPG, SVG 벡터, PSD, MP4 형식으로 최대 8K 해상도 내보내기가 가능합니다. 100장의 매장 배포용이든 10,000장의 다이렉트 메일 캠페인이든, Lovart는 매번 올바른 형식과 해상도로 출력합니다."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "멀티 포맷 적응 엔진",
+          "description": "한 번 디자인하고 모든 채널에 배포하세요. 마스터 전단지를 만든 후 Lovart의 에이전트가 각 채널에 최적화된 변형을 자동 생성합니다: 인쇄용(A4, US 레터, A5, DL), Instagram 스토리, Facebook 게시물, 이메일 헤더, 웹 배너 — 모두 시각적 계층과 브랜드 일관성을 유지하면서. 단일 디자인에서 완전한 프로모션 캠페인을 몇 분 만에 출시할 수 있습니다."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Lovart로 판촉 전단지 제작을 확장하는 마케터와 비즈니스 오너",
+      "testimonials": [
+        {
+          "name": "박수진",
+          "role": "마케팅 매니저, BrightPath Agency",
+          "content": "예전에는 판촉 전단지 디자인에만 매달 100만 원 이상을 외부 디자이너에게 지불했습니다 — 브리핑을 보내고, 수정에 며칠을 기다리고, 그래도 결과에 타협해야 했죠. Lovart의 AI 전단지 메이커 덕분에 이제는 혼자서 월 30장 이상의 프로모션 전단지를 제작합니다. 브랜드 일관성은 모든 디자인에서 완벽하고, 비주얼 품질을 개선한 후 캠페인 전환율이 35% 향상되었습니다. 디자인 예산은 월 100만 원에서 0원이 되었습니다.",
+          "avatar_url": ""
+        },
+        {
+          "name": "김도윤",
+          "role": "'김과자 베이커리' 대표",
+          "content": "베이커리를 운영하는 사람이지 디자이너가 아닙니다. Lovart 이전에는 Word 템플릿을 사용했지만 아마추어처럼 보였어요. 지금은 「주말 한정 크루아상 30% 할인」이라고 입력하기만 하면 2분 만에 프로 수준의 판촉 전단지가 완성됩니다. 지난달 주말 캠페인에서는 방문 고객 수가 전월 대비 40% 증가했습니다. Smart Mockup 기능으로 매장에 게시했을 때의 실제 모습을 미리 확인할 수 있는 것도 큰 장점입니다.",
+          "avatar_url": ""
+        },
+        {
+          "name": "이하은",
+          "role": "이벤트 기획자, 서울 크리에이티브 페스티벌",
+          "content": "매월 다양한 아티스트를 위해 50개 이상의 이벤트 전단지를 제작합니다. Lovart의 멀티 포맷 적응 기능 덕분에 엄청난 시간을 절약하고 있습니다 — 하나의 디자인이 Instagram 게시물, 웹 배너, 대형 포스터로 즉시 변환됩니다. 제작량은 300% 증가했지만 모든 전단지가 전문가가 개별 디자인한 것처럼 보입니다. Touch Edit으로 각 아티스트의 취향에 맞게 배경과 색상을 즉시 조정할 수 있는 점도 마음에 듭니다.",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart의 AI 프로모션 전단지 메이커란 무엇인가요? Canva나 다른 디자인 도구와 어떻게 다른가요?",
+          "answer": "Lovart는 세계 최초의 AI 디자인 에이전트로, 단순한 템플릿 편집기나 이미지 생성기가 아닙니다. 템플릿을 수동 편집해야 하는 Canva와 달리, Lovart의 MCoT 추론 엔진은 크리에이티브 디렉터처럼 사고합니다. 프로모션 목적, 대상 고객, 브랜드 컨텍스트를 분석하여 전환 최적화된 레이아웃, 적절한 타이포그래피 계층, 긴박감을 주는 비주얼 랭귀지를 갖춘 완전한 판촉 전단지를 조율합니다. 자연어로 필요를 설명하면 Lovart가 전문 에이전시에 브리핑한 것처럼 완전하고 편집 가능하며 인쇄 가능한 디자인을 제공합니다."
+        },
+        {
+          "question": "디자인 경험 없이도 전문적인 판촉 전단지를 만들 수 있나요?",
+          "answer": "물론입니다. Lovart는 전문적 결과가 필요한 비디자이너를 위해 만들어졌습니다. 레이아웃 그리드, 색채 이론, 타이포그래피 조합, 인쇄 사양을 이해할 필요가 없습니다. 프로모션 유형, 할인율, 대상 고객을 간단한 한국어로 설명하면 Lovart의 AI 디자인 에이전트가 모든 창의적이고 기술적인 결정을 처리합니다. 에이전트는 자동으로 적절한 글꼴을 선택하고, 시각적 계층을 구축하며, 전환 최적화된 CTA를 배치하고, 올바른 해상도로 내보냅니다."
+        },
+        {
+          "question": "만든 판촉 전단지를 상업적으로 사용할 수 있나요?",
+          "answer": "네. 유료 플랜(Starter, Basic, Pro) 사용자는 판촉 전단지 디자인에 대한 완전한 상업적 사용 권리를 소유합니다. 광고, 클라이언트 작업, 매장 프로모션, 다이렉트 메일 캠페인 등 모든 합법적 상업 목적으로 사용할 수 있습니다. 무료 플랜은 개인 사용 및 평가용입니다. Lovart의 모델은 라이선스 및 퍼블릭 도메인 데이터로 훈련되었으며, 유료 구독자에게는 상업적 보상을 제공하여 비즈니스 크리티컬 창의적 작업에 안심을 제공합니다."
+        },
+        {
+          "question": "무료 플랜이 있나요? 무료 크레딧은 어떻게 작동하나요?",
+          "answer": "네, Lovart는 매일 로그인 시 24시간마다 갱신되는 무료 크레딧이 제공되는 무료 플랜을 제공합니다. 한 푼도 내지 않고 하루에 여러 개의 판촉 전단지를 만들 수 있습니다 — 플랫폼을 테스트하거나 가끔 필요한 프로모션 작업에 적합합니다. 유료 플랜은 Starter(월 2,000 크레딧), Basic(3,500 크레딧), Pro(11,000 크레딧)로 시작하며, 모두 전체 에이전트 기능, 상업적 사용 권리, Nano Banana Pro와 같은 프리미엄 모델에 대한 접근을 잠금 해제합니다. 생성 전에 항상 크레딧 비용이 표시되므로 예상치 못한 청구가 절대 없습니다."
+        },
+        {
+          "question": "판촉 전단지를 어떤 파일 형식과 해상도로 내보낼 수 있나요?",
+          "answer": "Lovart는 PNG, JPG, SVG(벡터), PSD(레이어드), MP4 형식의 전문가급 내보내기를 지원합니다. 래스터 내보내기 해상도는 최대 8K로, SNS 그래픽부터 대형 광고판 인쇄까지 모든 용도에 적합합니다. 벡터 SVG 내보내기는 로고와 타이포그래피 중심 디자인에 완벽합니다. PSD 레이어 파일은 디자이너가 추가 편집할 수 있도록 합니다. 적절한 재단 여백과 트림 마크가 있는 내보내기도 제공하여 직접 인쇄 워크플로우에 사용할 수 있습니다."
+        },
+        {
+          "question": "Lovart는 여러 판촉 전단지 간에 브랜드 일관성을 어떻게 유지하나요?",
+          "answer": "Lovart의 ChatCanvas는 지속적인 브랜드 컨텍스트를 유지합니다 — 로고를 업로드하고 브랜드 색상을 정의하며 타이포그래피 기본 설정을 지정하면, 에이전트가 모든 새 판촉 전단지에 자동으로 적용합니다. Nano Banana Pro는 제품 이미지부터 장식 그래픽까지 모든 생성 요소의 시각적 일관성을 보장합니다. 브랜드 시스템은 세션 간에도 활성 상태로 유지되어 두 번째, 열 번째, 백 번째 전단지 모두가 명확하게 당신의 브랜드로 느껴집니다."
+        },
+        {
+          "question": "판촉 전단지 생성 후 텍스트를 편집할 수 있나요?",
+          "answer": "네, 이것은 Lovart의 대표적인 기능 중 하나입니다. Text Edit를 사용하면 오퍼 헤드라인, 할인율, 날짜, CTA 등 모든 텍스트 요소를 클릭하여 전단지 이미지에서 직접 수정할 수 있습니다. AI는 글꼴 두께, 그림자, 그라데이션, 원근 효과를 포함한 원본 타이포그래피 스타일을 보존합니다. 프로모션 문구를 업데이트하거나 특별 오퍼를 변경해야 하나요? 새 텍스트를 입력하면 기존 디자인에 완벽하게 통합됩니다. 재생성도, 처음부터 다시 만들 필요도 없습니다."
+        },
+        {
+          "question": "Lovart로 어떤 유형의 판촉 전단지를 만들 수 있나요?",
+          "answer": "Lovart의 AI 판촉 전단지 메이커는 거의 모든 프로모션 카테고리를 다룹니다: 소매 세일 전단지, 서비스 할인 전단지, 홀리데이 캠페인 전단지, 기간 한정 오퍼 전단지, 오픈 기념 전단지, 레스토랑 프로모션, 이벤트 공지 전단지, 시즌 클리어런스 세일, BOGO 캠페인, 로열티 프로그램 공지 — 그 외 더 많습니다. MCoT 엔진이 디자인 전략을 특정 프로모션 유형, 대상 고객, 배포 채널에 자동으로 조정합니다."
+        },
+        {
+          "question": "다양한 마케팅 채널용 판촉 전단지 변형을 만들 수 있나요?",
+          "answer": "네. 멀티 포맷 적응 엔진이 마스터 전단지 디자인에서 각 채널에 최적화된 변형을 자동 생성합니다. 각 플랫폼에 적합한 크기의 버전을 얻을 수 있습니다: Instagram(1:1 피드, 9:16 스토리), Facebook 광고, 이메일 마케팅 헤더, 웹 배너, 인쇄 형식(A4, US 레터, A5, DL) — 모두 시각적 계층과 브랜드 일관성을 유지하면서. 단일 디자인을 각 플랫폼에 맞게 수동으로 크기 조정하는 지루하고 오류가 발생하기 쉬운 과정을 완전히 제거합니다."
+        }
+      ]
+    }
+  ],
+  "section_de": [
+    {
+      "type": "centeredInputSection",
+      "title": "KI-Werbeflyer-Generator — Konversionsstarke Aktionsflyer mit Lovart gestalten",
+      "description": "Kundenfrequenz und Verkäufe mit Werbeflyern zu steigern, sollte nicht bedeuten, Designqualität oder Geschwindigkeit zu opfern. Lovart ist der weltweit erste KI-Design-Agent, angetrieben von der MCoT-Engine, die wie ein Creative Director denkt — sie analysiert deine Aktion, die Publikumspsychologie und den Markenkontext und erstellt aus einer einfachen Textbeschreibung vollständige, konversionsoptimierte Flyer. Ob Einzelhandelsaktion, Service-Rabatt, Feiertagskampagne oder zeitlich begrenztes Angebot — Lovart liefert auffällige Flyer mit überzeugender Texthierarchie, Dringlichkeitssignalen und klaren Call-to-Actions, die aus Betrachtern Käufer machen.",
+      "input_placeholder": "Beschreibe den Werbeflyer, den du erstellen möchtest — inklusive Angebot, Rabatt, Zielgruppe, Event-Details und Call-to-Action",
+      "system_prompt": "Du bist die MCoT-Engine von Lovart und agierst als erfahrener Creative Director mit Spezialisierung auf Promotion-Marketing und Flyerdesign. Analysiere die Nutzerbeschreibung, um zu bestimmen: 1) Die Promotionsart und Angebotsstruktur, 2) Die Zielgruppe und Kaufpsychologie, 3) Das Dringlichkeitsniveau und die Konversionsstrategie, 4) Die optimale visuelle Hierarchie für Angebotspräsenz und CTA. Für jeden Flyer: etabliere eine visuelle Hierarchie, die das Angebot sofort klar macht, wähle eine Farbpalette und Typografie, die Aufregung und Dringlichkeit erzeugen, bestimme das optimale Layout für scannbare Informationen (was, wie viel, wann, wo) und platziere den Call-to-Action für maximale Konversion. Erstelle einen professionell komponierten, konversionsstarken Werbeflyer, zugeschnitten auf das spezifische Angebot, die Zielgruppe und den Kanal.",
+      "button_text": "Flyer gestalten",
+      "tip": "Profi-Tipp: Nenne den konkreten Rabatt oder das Angebot, das Ablaufdatum, die Zielgruppe und die gewünschte Aktion (Filialbesuch, Code-Nutzung, QR-Scan) im Prompt für die besten Ergebnisse.",
+      "suggestion": [
+        {
+          "value": "Gestalte einen auffälligen Einzelhandelsflyer mit der Schlagzeile 'BIS ZU 70 % RABATT', Produktkategoriesektionen (Kleidung, Schuhe, Accessoires), Filialadresse, Daten und einem 'Jetzt shoppen'-CTA mit lebendigem Rot-Gelb-Farbschema",
+          "label": "Einzelhandelsflyer"
+        },
+        {
+          "value": "Erstelle einen cleanen Service-Rabattflyer für eine Zahnklinik, der 25 % auf Bleaching und Neukunden-Specials bewirbt — professionelle Blau-Weiß-Palette mit vertrauensbildenden Elementen, Praxisfotos und 'Jetzt Termin buchen'-CTA",
+          "label": "Service-Rabattflyer"
+        },
+        {
+          "value": "Erstelle einen festlichen Weihnachts-Werbeflyer für einen Geschenkeverkauf mit Schneeflocken-Akzenten, warmer Gold-Rot-Palette, Geschenkkategorie-Sektionen, Countdown-Dringlichkeit und 'Jetzt die Weihnachtskollektion shoppen'-CTA für ein Kaufhaus",
+          "label": "Feiertagsflyer"
+        },
+        {
+          "value": "Generiere einen dringenden Flyer mit zeitlich begrenztem Angebot — '48-STUNDEN-BLITZANGEBOT'-Schlagzeile, Countdown-Timer-Grafik, Produktschaukasten, Vorher-Nachher-Preis-Durchstreichung und 'Angebot sichern, bevor es weg ist'-CTA mit starken Kontrastfarben — für einen Elektronikmarkt",
+          "label": "Limitierte-Angebot-Flyer"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "So gestaltest du Werbeflyer mit Lovarts KI-Agenten",
+      "columns": [
+        {
+          "title": "Beschreibe deine Aktion",
+          "description": "Beginne damit, Lovarts KI-Design-Agent genau mitzuteilen, was du bewirbst. Beschreibe die Angebotsart, den Rabatt, die Zielgruppe und den gewünschten visuellen Stil. Die MCoT-Engine analysiert deine Promotionsziele und entwirft eine vollständige Kreativstrategie unter Berücksichtigung von Zielgruppenpsychologie und Kaufverhalten, bevor ein Pixel generiert wird. ChatCanvas erfasst deinen Markenkontext, sodass jeder Flyer von Anfang an mit deiner visuellen Identität übereinstimmt.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Generieren & Iterieren",
+          "description": "Sieh zu, wie Lovart dein Briefing in Sekundenschnelle in mehrere Flyer-Varianten verwandelt. Der Agent generiert vollständige Layouts mit konversionsorientierter Texthierarchie, unterstützenden visuellen Elementen von Nano Banana Pro und strategisch platzierten CTA-Buttons. Durchstöbere Varianten, kombiniere Elemente versionsübergreifend und optimiere mit natürlichen Sprachbefehlen. Kein manuelles Layer-Jonglieren oder Pixel-Schieben erforderlich.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Verfeinern & Exportieren",
+          "description": "Feinabstimmung jedes Details mit Lovarts exklusiven Bearbeitungswerkzeugen. Nutze Touch Edit, um jedes visuelle Element per Klick umzuformen — Produktbilder tauschen, Rabattfarben anpassen, Logos neu positionieren, ganz ohne manuelles Maskieren. Mit Text Edit änderst du Angebotstexte, Preise oder Daten direkt auf dem Flyer, während der originale Typografiestil erhalten bleibt. Lass deinen Flyer mit Smart Mockup fotorealistisch in Schaufenstern oder Händen in der Vorschau sehen. Exportiere in bis zu 8K-Auflösung in PNG, JPG, SVG, PSD oder MP4 für die professionelle Produktion.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Das ultimative KI-Toolkit für Werbeflyer-Design",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Semantisches Touch Edit",
+          "description": "Klicke auf ein beliebiges Element deines Flyers — Produktfoto, Logo, Hintergrundtextur — und form es um, färb es neu oder ersetze es sofort. Touch Edit versteht den visuellen Kontext und passt sich nahtlos an Beleuchtung, Perspektive und umgebende Elemente an. Kein manuelles Maskieren, keine Photoshop-Ebenen — nur intuitive Klick-Bearbeitungspräzision, die die Flyer-Anpassung magisch macht."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Perfektes Typografie-Rendering",
+          "description": "Bearbeite Angebotsüberschriften, Rabattprozente, Daten und CTAs direkt auf deinem Flyer-Bild mit strukturiertem Textverständnis. Anders als KI-Tools, die verstümmelten Text produzieren, rendert Lovarts Text Edit gestochen scharfe Typografie in jedem Stil — von wirkungsvollen fetten Überschriften bis zu eleganten Serifen — und bewahrt dabei Schatten, Farbverläufe und Perspektiveffekte. Ändere einen Rabattprozentsatz oder einen Werbetext in Sekunden, ohne den gesamten Flyer neu zu gestalten."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "KI Smart Mockup Engine",
+          "description": "Sieh eine Vorschau deines Werbeflyers in realen Umgebungen mit einem Klick. Platziere dein Design in Schaufenstern, an schwarzen Brettern, auf Café-Tischen oder in Händen. Die Smart Mockup Engine passt automatisch Perspektive, Beleuchtung und Oberflächentexturen an, damit dein Flyer in jedem Kontext fotorealistisch wirkt. Perfekt für Kundenpräsentationen und Druckfreigabe."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Markenkonsistenz fixiert",
+          "description": "Mit Nano Banana Pro und ChatCanvas-Markenspeicher stellt Lovart sicher, dass jeder Werbeflyer deiner Kampagne konsistente Farben, Typografie, Logo-Platzierung und visuellen Ton teilt. Lade deine Marken-Assets einmal hoch, und der Agent wendet sie automatisch auf jedes neue Design an. Führe Multichannel-Promotion-Kampagnen ohne den visuellen Drift, der template-basierte Tools plagt."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "8K druckfertiger Export",
+          "description": "Liefere Werbeflyer mit professionellen Druckspezifikationen. Exportiere bis zu 8K-Auflösung in PNG, JPG, SVG-Vektor, PSD oder MP4 — mit korrekten Beschnittzugaben, CMYK-Kompatibilität und Standardfarbprofilen. Ob du 100 Stück für die Filialverteilung oder 10.000 für eine Postwurfsendung druckst, Lovart liefert jedes Mal das richtige Format in der richtigen Auflösung."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Multiformat-Anpassungs-Engine",
+          "description": "Ein Design, auf allen Kanälen ausgerollt. Nach der Erstellung deines Master-Flyers generiert Lovarts Agent automatisch optimierte Varianten für jeden Kanal: Druck (A4, US Letter, A5, DL), Instagram Stories, Facebook-Posts, E-Mail-Header, Web-Banner — alle unter Beibehaltung der visuellen Hierarchie und Markenkonsistenz. Starte eine komplette Promotion-Kampagne aus einem einzigen Design in Minuten."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Marketer und Unternehmen skalieren ihre Flyer-Produktion mit Lovart",
+      "testimonials": [
+        {
+          "name": "Sarah Meier",
+          "role": "Marketing Managerin, BrightPath Agentur",
+          "content": "Früher gaben wir über 1.000 € pro Monat für externe Flyer-Designer aus — Briefings verschicken, tagelang auf Revisionen warten und trotzdem Kompromisse machen. Mit Lovarts KI-Flyer-Generator erstelle ich jetzt über 30 Werbeflyer pro Monat selbst. Die Markenkonsistenz ist bei jedem Design perfekt, und unsere Kampagnen-Konversionsraten sind um 35 % gestiegen, seit wir unsere visuelle Qualität verbessert haben. Das Designbudget ging von 1.000 € auf null.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Marco Weber",
+          "role": "Inhaber, Bäckerei Weber",
+          "content": "Ich bin Bäckermeister, kein Designer. Vor Lovart benutzte ich Word-Vorlagen, die amateurhaft aussahen. Jetzt tippe ich einfach 'Wochenend-Croissant 30 % günstiger' und habe in 2 Minuten einen professionellen Werbeflyer. Letzten Monat stieg die Kundenfrequenz bei unserer Wochenendaktion um 40 % im Vergleich zum Vormonat. Und mit Smart Mockup kann ich sehen, wie der Flyer in unserem Schaufenster aussieht, bevor ich ihn drucke.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Lena Fischer",
+          "role": "Event-Organisatorin, Berlin Kreativ Festival",
+          "content": "Wir produzieren monatlich über 50 Event-Flyer für verschiedene Künstler. Lovarts Multiformat-Anpassung spart uns enorm Zeit — ein Design wird sofort in Instagram-Posts, Web-Banner und Großformatposter umgewandelt. Unser Output-Volumen ist um 300 % gestiegen, und jeder Flyer sieht aus, als wäre er individuell von einem Profi gestaltet worden. Mit Touch Edit kann ich Hintergründe und Farben sofort an die Präferenzen jedes Künstlers anpassen.",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Was ist Lovarts KI-Werbeflyer-Generator und wie unterscheidet er sich von Canva?",
+          "answer": "Lovart ist der weltweit erste KI-Design-Agent — nicht nur ein weiterer Vorlageneditor oder Bildgenerator. Anders als Canva, das manuelle Bearbeitung von Vorlagen erfordert, denkt Lovarts MCoT-Engine wie ein Creative Director. Sie analysiert deine Promotionsziele, Zielgruppe und Markenkontext, um komplette Werbeflyer mit konversionsoptimiertem Layout, korrekter Typografie-Hierarchie und dringlichkeitserzeugender Bildsprache zu orchestrieren. Beschreibe deine Anforderungen in natürlicher Sprache, und Lovart liefert ein komplettes, bearbeitbares, druckfertiges Design — als hättest du eine professionelle Agentur gebrieft."
+        },
+        {
+          "question": "Kann ich professionelle Werbeflyer ohne Designerfahrung erstellen?",
+          "answer": "Absolut. Lovart wurde für Nicht-Designer entwickelt, die professionelle Ergebnisse benötigen. Du musst keine Layout-Raster, Farbtheorie, Typografie-Kombinationen oder Druckspezifikationen verstehen. Beschreibe einfach deine Aktionsart, deinen Rabatt und deine Zielgruppe in einfachem Deutsch, und Lovarts KI-Design-Agent übernimmt alle kreativen und technischen Entscheidungen. Der Agent wählt automatisch geeignete Schriftarten aus, baut eine visuelle Hierarchie auf, platziert konversionsoptimierte CTAs und exportiert in der richtigen Auflösung."
+        },
+        {
+          "question": "Darf ich die Werbeflyer kommerziell nutzen?",
+          "answer": "Ja. Nutzer der kostenpflichtigen Pläne (Starter, Basic, Pro) besitzen die vollständigen kommerziellen Nutzungsrechte an ihren Flyer-Designs. Du kannst sie für Werbung, Kundenprojekte, Filialpromotionen, Postwurfsendungen und jeden legalen kommerziellen Zweck verwenden. Der kostenlose Plan ist für persönliche Nutzung und Evaluierung. Lovarts Modelle werden mit lizenzierten und gemeinfreien Daten trainiert, und wir bieten eine kommerzielle Garantie für zahlende Abonnenten."
+        },
+        {
+          "question": "Gibt es einen kostenlosen Plan und wie funktionieren die Gratis-Credits?",
+          "answer": "Ja, Lovart bietet einen kostenlosen Plan mit täglichen Login-Credits, die sich alle 24 Stunden erneuern. Du kannst mehrere Werbeflyer pro Tag kostenlos erstellen — perfekt zum Testen der Plattform oder für gelegentliche Promotionsbedürfnisse. Kostenpflichtige Pläne beginnen mit Starter (2.000 monatliche Credits), Basic (3.500 Credits) und Pro (11.000 Credits), die alle die vollen Agent-Funktionen, kommerzielle Nutzungsrechte und Zugang zu Premium-Modellen wie Nano Banana Pro freischalten. Die Credit-Kosten werden immer vor der Generierung angezeigt."
+        },
+        {
+          "question": "In welchen Dateiformaten und Auflösungen kann ich meine Werbeflyer exportieren?",
+          "answer": "Lovart unterstützt den professionellen Export in PNG, JPG, SVG (Vektor), PSD (mit Ebenen) und MP4. Rasterexporte erreichen bis zu 8K-Auflösung, geeignet für alles von Social-Media-Grafiken bis zu großformatigen Plakatwänden. Vektor-SVG-Exporte sind perfekt für Logos und typografiezentrierte Designs. PSD-Ebenendateien ermöglichen Designern die weitere Bearbeitung. Wir bieten auch Export mit korrekten Beschnittzugaben und Schnittmarken für Druck-Workflows."
+        },
+        {
+          "question": "Wie gewährleistet Lovart Markenkonsistenz über mehrere Werbeflyer hinweg?",
+          "answer": "Lovarts ChatCanvas pflegt einen persistenten Markenkontext — sobald du dein Logo hochlädst, deine Markenfarben definierst und Typografie-Präferenzen festlegst, wendet der Agent sie automatisch auf jeden neuen Werbeflyer an. Nano Banana Pro stellt die visuelle Konsistenz aller generierten Elemente sicher, von Produktbildern bis zu dekorativen Grafiken. Das Markensystem bleibt über Sitzungen hinweg aktiv, sodass dein zweiter, zehnter und hundertster Flyer alle unverkennbar als deine Marke erkennbar sind."
+        },
+        {
+          "question": "Kann ich den Text meines Werbeflyers nach der Generierung bearbeiten?",
+          "answer": "Ja, und das ist eine der Kernfähigkeiten von Lovart. Mit Text Edit kannst du auf jedes Textelement — Angebotsüberschrift, Rabattprozentsatz, Datum, CTA — klicken und es direkt auf dem Flyer-Bild bearbeiten. Die KI bewahrt den originalen Typografiestil, einschließlich Schriftstärke, Schatten, Farbverläufen und Perspektiveffekten. Musst du einen Werbetext aktualisieren oder ein Sonderangebot ändern? Tippe den neuen Text ein, und er fügt sich nahtlos ins bestehende Design ein. Keine Neugenerierung, kein Neuaufbau von Grund auf."
+        },
+        {
+          "question": "Welche Arten von Werbeflyern kann Lovart erstellen?",
+          "answer": "Lovarts KI-Werbeflyer-Generator deckt praktisch alle Promotionskategorien ab: Einzelhandelsflyer, Service-Rabattflyer, Feiertagskampagnen-Flyer, Flyer für zeitlich begrenzte Angebote, Neueröffnungsflyer, Restaurant-Promotions, Event-Ankündigungsflyer, saisonale Räumungsverkäufe, BOGO-Kampagnen, Treueprogramm-Ankündigungen — und vieles mehr. Die MCoT-Engine passt die Designstrategie automatisch an deine spezifische Aktionsart, Zielgruppe und Vertriebskanäle an."
+        },
+        {
+          "question": "Kann Lovart Flyer-Varianten für verschiedene Marketingkanäle erstellen?",
+          "answer": "Ja. Die Multiformat-Anpassungs-Engine generiert automatisch optimierte Varianten aus deinem Master-Flyer-Design. Du erhältst korrekt dimensionierte Versionen für jede Plattform: Instagram (1:1-Feed, 9:16-Story), Facebook-Werbung, E-Mail-Marketing-Header, Web-Banner und Druckformate (A4, US Letter, A5, DL) — alles unter Beibehaltung der visuellen Hierarchie und Markenkonsistenz. Das eliminiert den mühsamen und fehleranfälligen Prozess des manuellen Umformatierens."
+        }
+      ]
+    }
+  ],
+  "section_ru": [
+    {
+      "type": "centeredInputSection",
+      "title": "ИИ-конструктор промо-флаеров — Дизайн флаеров с высокой конверсией от Lovart",
+      "description": "Привлечение посетителей и увеличение продаж с помощью промо-флаеров не должно означать жертву качеством или скоростью дизайна. Lovart — первый в мире ИИ-дизайн-агент с системой рассуждений MCoT, которая мыслит как креативный директор — анализирует вашу акцию, психологию аудитории и контекст бренда, создавая из простого текстового описания полностью готовые, оптимизированные для конверсии флаеры. Будь то розничная распродажа, скидка на услуги, праздничная кампания или ограниченное по времени предложение, Lovart создаёт привлекающие внимание флаеры с убедительной иерархией текста, сигналами срочности и чёткими призывами к действию, превращающими зрителей в покупателей — за считанные минуты.",
+      "input_placeholder": "Опишите промо-флаер, который хотите создать — укажите предложение, скидку, целевую аудиторию, детали события и призыв к действию",
+      "system_prompt": "Вы — система рассуждений MCoT от Lovart, действующая как экспертный креативный директор, специализирующийся на промо-маркетинге и дизайне флаеров. Проанализируйте описание пользователя, чтобы определить: 1) Тип акции и структуру предложения, 2) Целевую аудиторию и психологию покупки, 3) Уровень срочности и стратегию конверсии, 4) Оптимальную визуальную иерархию для выделения предложения и CTA. Для каждого флаера: создайте визуальную иерархию, которая мгновенно доносит предложение, выберите цветовую палитру и типографику, создающие волнение и срочность, определите оптимальный макет для легкочитаемой информации (что, сколько, когда, где) и разместите призыв к действию для максимальной конверсии. Создайте профессионально скомпонованный, высококонверсионный промо-флаер для конкретного предложения, аудитории и канала.",
+      "button_text": "Создать флаер",
+      "tip": "Совет: Укажите в промпте конкретную скидку или предложение, дату окончания, целевую аудиторию и желаемое действие (посетить магазин, использовать код, сканировать QR) для наилучших результатов.",
+      "suggestion": [
+        {
+          "value": "Разработайте яркий флаер для розничной распродажи с заголовком «СКИДКИ ДО 70%», секциями категорий товаров (одежда, обувь, аксессуары), адресом магазина, датами и CTA «Купить сейчас» в энергичной красно-жёлтой цветовой гамме",
+          "label": "Флаер розничной распродажи"
+        },
+        {
+          "value": "Создайте чистый флаер со скидками на услуги для стоматологической клиники, предлагающей скидку 25% на отбеливание и спецпредложение для новых пациентов — профессиональная сине-белая палитра с элементами доверия, фото клиники и CTA «Записаться на приём»",
+          "label": "Флаер скидок на услуги"
+        },
+        {
+          "value": "Создайте праздничный новогодний промо-флаер для подарочной распродажи с акцентами снежинок, тёплой золотисто-красной палитрой, секциями подарочных категорий, срочностью обратного отсчёта и CTA «Смотреть праздничную коллекцию» для универмага",
+          "label": "Праздничный промо-флаер"
+        },
+        {
+          "value": "Сгенерируйте срочный флаер с ограниченным предложением — заголовок «48-ЧАСОВАЯ МГНОВЕННАЯ РАСПРОДАЖА», таймер обратного отсчёта, витрина товаров, зачёркнутые старые цены и CTA «Успей купить, пока не поздно» с яркими контрастными цветами для магазина электроники",
+          "label": "Флаер ограниченного предложения"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Как создавать промо-флаеры с ИИ-агентом Lovart",
+      "columns": [
+        {
+          "title": "Опишите вашу акцию",
+          "description": "Начните с того, что точно расскажите ИИ-дизайн-агенту Lovart о вашей акции. Опишите тип предложения, скидку, целевую аудиторию и желаемый визуальный стиль. Система MCoT анализирует ваши промо-цели и разрабатывает полную креативную стратегию, учитывая психологию аудитории и покупательское поведение, прежде чем сгенерировать хоть один пиксель. ChatCanvas фиксирует контекст вашего бренда, чтобы каждый флаер с самого начала соответствовал визуальной идентичности.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Генерация и итерация",
+          "description": "Смотрите, как Lovart превращает ваш бриф в несколько вариантов флаеров за секунды. Агент генерирует полноценные макеты с иерархией текста, ориентированной на конверсию, вспомогательными визуальными элементами от Nano Banana Pro и стратегически размещёнными кнопками CTA. Просматривайте варианты, смешивайте элементы между версиями и дорабатывайте с помощью команд на естественном языке. Никакого ручного управления слоями или попиксельной правки.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Доработка и экспорт",
+          "description": "Точно настройте каждую деталь с помощью эксклюзивных инструментов редактирования Lovart. Используйте Touch Edit, чтобы изменить любой визуальный элемент одним кликом — замена изображений товаров, корректировка цвета скидочных надписей, перемещение логотипов без ручного маскирования. С помощью Text Edit изменяйте текст предложений, цены или даты прямо на флаере, сохраняя исходный типографический стиль. Предварительно просмотрите флаер в реальных условиях с помощью Smart Mockup. Экспортируйте с разрешением до 8K в форматах PNG, JPG, SVG, PSD или MP4 для профессиональной печати.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Ультимативный ИИ-инструментарий для дизайна промо-флаеров",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Семантический Touch Edit",
+          "description": "Нажмите на любой элемент флаера — фото товара, логотип, текстуру фона — и мгновенно измените форму, цвет или замените его. Touch Edit понимает визуальный контекст и бесшовно адаптируется к освещению, перспективе и окружающим элементам. Без ручного маскирования, без слоёв Photoshop — только интуитивная точность редактирования в один клик, делающая настройку флаера волшебной."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Идеальный рендеринг типографики",
+          "description": "Редактируйте заголовки предложений, проценты скидок, даты и CTA прямо на изображении флаера со структурированным пониманием текста. В отличие от ИИ-инструментов, выдающих искажённый текст, Text Edit от Lovart рендерит чёткую, читаемую типографику в любом стиле — от эффектных жирных заголовков до элегантных шрифтов с засечками — сохраняя тени, градиенты и эффекты перспективы. Измените процент скидки или рекламный текст за секунды без перепроектирования всего флаера."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "ИИ-движок Smart Mockup",
+          "description": "Мгновенно просматривайте промо-флаер в реальных условиях. Разместите дизайн в витринах магазинов, на досках объявлений, столах кафе или в руках одним кликом. Движок Smart Mockup автоматически адаптирует перспективу, освещение и текстуры поверхностей, чтобы флаер выглядел фотореалистично в любом контексте. Идеально для презентаций клиентам и проверки перед печатью."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Фиксированная согласованность бренда",
+          "description": "На базе Nano Banana Pro и памяти бренда ChatCanvas, Lovart обеспечивает согласованность цветов, типографики, расположения логотипа и визуального тона всех промо-флаеров вашей кампании. Загрузите активы бренда один раз, и агент автоматически применяет их к каждому новому дизайну. Проводите многоканальные промо-кампании без визуального дрейфа, характерного для шаблонных инструментов."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Экспорт 8K для печати",
+          "description": "Предоставляйте промо-флаеры с профессиональными спецификациями печати. Экспортируйте с разрешением до 8K в форматах PNG, JPG, векторный SVG, PSD или MP4 — с правильными зонами под обрез, совместимостью CMYK и стандартными цветовыми профилями. Печатаете ли вы 100 экземпляров для раздачи в магазине или 10 000 для почтовой рассылки, Lovart выдаёт правильный формат в правильном разрешении каждый раз."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Движок мультиформатной адаптации",
+          "description": "Один дизайн — все каналы. После создания мастер-флаера агент Lovart автоматически генерирует оптимизированные варианты для каждого канала: печать (A4, US Letter, A5, DL), Instagram Stories, посты Facebook, заголовки писем, веб-баннеры — с сохранением визуальной иерархии и согласованности бренда. Запустите полную промо-кампанию из одного дизайна за минуты."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Маркетологи и владельцы бизнеса масштабируют создание флаеров с Lovart",
+      "testimonials": [
+        {
+          "name": "Анна Иванова",
+          "role": "Менеджер по маркетингу, BrightPath Agency",
+          "content": "Раньше мы тратили более 90 000 рублей в месяц на внешних дизайнеров флаеров — отправляли брифы, ждали днями правок и всё равно шли на компромиссы. С ИИ-конструктором флаеров Lovart я теперь самостоятельно создаю более 30 промо-флаеров в месяц. Согласованность бренда идеальна в каждом дизайне, а конверсия кампаний выросла на 35% с тех пор, как мы улучшили визуальное качество. Бюджет на дизайн сократился с 90 000 рублей до нуля.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Дмитрий Петров",
+          "role": "Владелец, пекарня «Петровская»",
+          "content": "Я пекарь, а не дизайнер. До Lovart я использовал шаблоны Word, которые выглядели по-любительски. Теперь я просто пишу «Круассаны выходного дня со скидкой 30%» и через 2 минуты получаю профессиональный промо-флаер. В прошлом месяце посещаемость во время нашей акции выходного дня выросла на 40% по сравнению с предыдущим месяцем. А Smart Mockup позволяет увидеть, как флаер будет выглядеть в витрине, ещё до печати.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Елена Соколова",
+          "role": "Организатор мероприятий, Московский творческий фестиваль",
+          "content": "Мы выпускаем более 50 флаеров мероприятий ежемесячно для разных артистов. Мультиформатная адаптация Lovart экономит нам массу времени — один дизайн мгновенно превращается в посты Instagram, веб-баннеры и крупноформатные постеры. Объём производства вырос на 300%, и каждый флаер выглядит так, будто его индивидуально разработал профессионал. Touch Edit позволяет мгновенно адаптировать фон и цвета под предпочтения каждого артиста.",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Что такое ИИ-конструктор промо-флаеров Lovart и чем он отличается от Canva?",
+          "answer": "Lovart — это первый в мире ИИ-дизайн-агент, а не просто очередной редактор шаблонов или генератор изображений. В отличие от Canva, требующей ручного редактирования шаблонов, система рассуждений MCoT от Lovart мыслит как креативный директор. Она анализирует ваши промо-цели, аудиторию и контекст бренда, чтобы создавать полноценные промо-флаеры с оптимизированным для конверсии макетом, правильной типографической иерархией и визуальным языком, создающим ощущение срочности. Опишите свои потребности на естественном языке, и Lovart предоставит готовый, редактируемый, пригодный для печати дизайн — как если бы вы провели бриф с профессиональным агентством."
+        },
+        {
+          "question": "Можно ли создавать профессиональные промо-флаеры без опыта в дизайне?",
+          "answer": "Безусловно. Lovart создан для не-дизайнеров, которым нужны профессиональные результаты. Вам не нужно разбираться в модульных сетках, теории цвета, типографических сочетаниях или спецификациях печати. Просто опишите тип акции, скидку и целевую аудиторию простым русским языком, и ИИ-дизайн-агент Lovart примет все креативные и технические решения. Агент автоматически подбирает подходящие шрифты, выстраивает визуальную иерархию, размещает оптимизированные для конверсии CTA и экспортирует в правильном разрешении."
+        },
+        {
+          "question": "Могу ли я использовать созданные промо-флаеры в коммерческих целях?",
+          "answer": "Да. Пользователи платных тарифов (Starter, Basic, Pro) обладают полными правами коммерческого использования своих дизайнов флаеров. Вы можете использовать их для рекламы, клиентских проектов, промо-акций в магазинах, почтовых рассылок и любых законных коммерческих целей. Бесплатный тариф предназначен для личного использования и ознакомления. Модели Lovart обучены на лицензионных и общедоступных данных, и мы предоставляем коммерческую гарантию платным подписчикам."
+        },
+        {
+          "question": "Есть ли бесплатный тариф и как работают бесплатные кредиты?",
+          "answer": "Да, Lovart предлагает бесплатный тариф с ежедневными кредитами за вход, которые обновляются каждые 24 часа. Вы можете создавать несколько промо-флаеров в день, не платя ничего — идеально для тестирования платформы или решения эпизодических промо-задач. Платные тарифы начинаются со Starter (2 000 кредитов в месяц), Basic (3 500 кредитов) и Pro (11 000 кредитов) — все открывают полные возможности агента, права коммерческого использования и доступ к премиум-моделям, таким как Nano Banana Pro. Стоимость в кредитах всегда отображается перед генерацией."
+        },
+        {
+          "question": "В каких форматах файлов и разрешениях можно экспортировать промо-флаеры?",
+          "answer": "Lovart поддерживает профессиональный экспорт в форматах PNG, JPG, SVG (вектор), PSD (со слоями) и MP4. Растровый экспорт достигает разрешения до 8K, что подходит для всего — от графики для соцсетей до крупноформатных рекламных щитов. Векторный экспорт SVG идеален для логотипов и дизайнов с акцентом на типографику. Файлы PSD со слоями позволяют дизайнерам выполнять дальнейшее редактирование. Мы также предлагаем экспорт с правильными выпусками под обрез и метками реза для полиграфических процессов."
+        },
+        {
+          "question": "Как Lovart обеспечивает согласованность бренда для разных промо-флаеров?",
+          "answer": "ChatCanvas от Lovart поддерживает постоянный контекст бренда — как только вы загрузите логотип, определите цвета бренда и зададите типографические предпочтения, агент автоматически применяет их к каждому новому промо-флаеру. Nano Banana Pro обеспечивает визуальную согласованность всех генерируемых элементов, от изображений товаров до декоративной графики. Система бренда остаётся активной между сессиями, так что ваш второй, десятый и сотый флаер будут безошибочно узнаваемы как продукт вашего бренда."
+        },
+        {
+          "question": "Можно ли редактировать текст промо-флаера после генерации?",
+          "answer": "Да, и это одна из ключевых возможностей Lovart. С помощью Text Edit вы можете кликнуть на любой текстовый элемент — заголовок предложения, процент скидки, дату, CTA — и изменить его прямо на изображении флаера. ИИ сохраняет исходный типографический стиль, включая насыщенность шрифта, тени, градиенты и эффекты перспективы. Нужно обновить рекламный текст или изменить спецпредложение? Просто введите новый текст, и он бесшовно интегрируется в существующий дизайн. Без перегенерации, без создания с нуля."
+        },
+        {
+          "question": "Какие типы промо-флаеров может создавать Lovart?",
+          "answer": "ИИ-конструктор промо-флаеров Lovart охватывает практически все категории промо-акций: флаеры розничных распродаж, флаеры скидок на услуги, флаеры праздничных кампаний, флаеры ограниченных по времени предложений, флаеры открытия, ресторанные промо-флаеры, флаеры анонсов мероприятий, флаеры сезонных распродаж, BOGO-кампании, анонсы программ лояльности — и многое другое. Система MCoT автоматически адаптирует стратегию дизайна под ваш конкретный тип акции, аудиторию и каналы распространения."
+        },
+        {
+          "question": "Может ли Lovart создавать варианты флаеров для разных маркетинговых каналов?",
+          "answer": "Да. Движок мультиформатной адаптации автоматически генерирует оптимизированные варианты из вашего мастер-дизайна флаера. Вы получаете корректно размеренные версии для каждой платформы: Instagram (лента 1:1, Stories 9:16), реклама Facebook, заголовки email-рассылок, веб-баннеры и печатные форматы (A4, US Letter, A5, DL) — всё с сохранением визуальной иерархии и согласованности бренда. Это полностью исключает утомительный и подверженный ошибкам процесс ручного изменения размеров."
+        }
+      ]
+    }
+  ]

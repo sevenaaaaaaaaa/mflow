@@ -1,0 +1,387 @@
+{
+  "_id": "features-ai-video-enhancer-remaster-veo3-ja",
+  "reflowSourceId": "features-ai-video-enhancer-remaster-veo3-ja",
+  "slug": "ai-video-enhancer-remaster-veo3",
+  "language": "ja",
+  "category": "feature",
+  "title": "Lovartで実現するAI動画高画質化とスタイル変換",
+  "description": "Instantly remaster low-quality footage into 4K cinematic videos. Lovart's AI Design Agent uses Veo 3 and Flux Kontext to upscale resolution, fix motion, and apply consistent artistic styles without glitches.",
+  "seo": {
+    "description": "低画質の映像を瞬時に4Kシネマティック動画にリマスター。LovartのAIデザインエージェントがVeo 3とFlux Kontextで解像度アップ、モーション補正、一貫したアートスタイルを適用。グリッチなし。",
+    "keywords": [
+      "AI動画エンハンサー",
+      "ビデオトゥビデオAI",
+      "Veo 3動画ジェネレーター",
+      "4K動画リマスター",
+      "AIスタイル転送動画",
+      "一貫性のあるAIキャラクター",
+      "Flux Kontext動画"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Veo 3 Powered Fidelity",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovartで実現するAI動画高画質化とスタイル変換\", \"description\": \"Instantly remaster low-quality footage into 4K cinematic videos. Lovart's AI Design Agent uses Veo 3 and Flux Kontext to upscale resolution, fix motion, and apply consistent artistic styles without glitches.\", \"url\": \"https://www.lovart.ai/features/ai-video-enhancer-remaster-veo3\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Lovartはぼやけたり手ブレした動画を修正できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。当社のAIエージェントは、高度な安定化およびアップスケーリングモデル（Veo 3の基盤技術など）を使用して詳細を解釈・再構築し、手ブレのあるHDクリップを滑らかな4Kビジュアルに変換します。\"}}, {\"@type\": \"Question\", \"name\": \"動画の最適化においてFlux Kontextが重要なのはなぜですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"標準的なAI動画ツールは、動くとキャラクターの見た目を「忘れて」しまうことがよくあります。Flux Kontextはアイデンティティの一貫性を維持するため、動画の途中で被写体が別人に変身することはありません。\"}}, {\"@type\": \"Question\", \"name\": \"静止画を最適化された動画に変えることはできますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"もちろんです。Image-to-Videoワークフローを使用してください。高品質なNano Banana画像をアップロードすると、エージェントがシネマティックな動きでアニメーション化し、スチール写真を動画アセットとして効果的に「最適化」します。\"}}, {\"@type\": \"Question\", \"name\": \"これはプロの放送に適していますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい、Lovartは高ビットレートのエクスポートと最大4Kのアップスケーリングをサポートしており、プロのプレゼンテーション、TVCM、高品質なソーシャルメディアコンテンツに適しています。\"}}, {\"@type\": \"Question\", \"name\": \"動画用のプロンプトの書き方を知っている必要がありますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"いいえ。それがデザインエージェントの素晴らしいところです。「これをもっと良く、SFっぽくして」と言うだけで、エージェントが必要な技術的プロンプトを推論してくれます。\"}}]}}"
+    },
+    "title": "Lovartで実現するAI動画高画質化とスタイル変換"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Lovartで実現するAI動画高画質化とスタイル変換\",\"description\":\"Instantly remaster low-quality footage into 4K cinematic videos. Lovart's AI Design Agent uses Veo 3 and Flux Kontext to upscale resolution, fix motion, and apply consistent artistic styles without glitches.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Veo 3 Powered Fidelity\"}},{\"type\":\"bento-6\",\"title\":\"Why Lovart is the Pro's Choice for AI Video\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Veo 3搭載の忠実度\",\"description\":\"最新の生成ビデオ技術を活用しましょう。Veo 3は複雑な照明と物理法則を理解し、最適化された動画が単なる「AI生成」ではなく、物理的に正確に見えるようにします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Veo 3搭載の忠実度\"}},{\"title\":\"Flux Kontextの一貫性\",\"description\":\"AI動画の最大の悩みは顔のちらつきです。LovartはFlux Kontextを使用してアイデンティティをロックし、最初のフレームから最後まで被写体が同じに見えるようにします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Flux Kontextの一貫性\"}},{\"title\":\"Video-to-Videoリスタイル\",\"description\":\"映像のルックを再定義します。Nano Bananaイラストの芸術的なスタイルをビデオクリップに転送し、実写をアニメ、油絵、または3Dレンダースタイルに変えます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Video-to-Videoリスタイル\"}},{\"title\":\"スマートアップスケーリング\",\"description\":\"古い映像を救出しましょう。当社のアップスケーリングパイプラインは、低解像度の入力にインテリジェントに詳細を追加し、1080pを大画面に適したネイティブ4Kのように見せます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"スマートアップスケーリング\"}},{\"title\":\"エージェントモーション制御\",\"description\":\"撮影後にカメラを指揮します。テキストプロンプトを使用してエージェントに「右にゆっくりパン」や「ズームイン」を指示し、静止画や動画アセットのストーリーテリングを洗練させます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"エージェントモーション制御\"}},{\"title\":\"商用利用権\",\"description\":\"自信を持って制作してください。クライアントの広告であれバイラルなTikTokであれ、Lovartでリマスターおよび生成されたすべての動画に対する商用権はあなたが所有します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"商用利用権\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Veo 3搭載の忠実度\",\"icon\":\"chat\",\"content\":{\"title\":\"Veo 3搭載の忠実度\",\"description\":\"最新の生成ビデオ技術を活用しましょう。Veo 3は複雑な照明と物理法則を理解し、最適化された動画が単なる「AI生成」ではなく、物理的に正確に見えるようにします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Veo 3搭載の忠実度\"}}},{\"label\":\"Flux Kontextの一貫性\",\"icon\":\"image\",\"content\":{\"title\":\"Flux Kontextの一貫性\",\"description\":\"AI動画の最大の悩みは顔のちらつきです。LovartはFlux Kontextを使用してアイデンティティをロックし、最初のフレームから最後まで被写体が同じに見えるようにします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Flux Kontextの一貫性\"}}},{\"label\":\"Video-to-Videoリスタイル\",\"icon\":\"flask\",\"content\":{\"title\":\"Video-to-Videoリスタイル\",\"description\":\"映像のルックを再定義します。Nano Bananaイラストの芸術的なスタイルをビデオクリップに転送し、実写をアニメ、油絵、または3Dレンダースタイルに変えます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Video-to-Videoリスタイル\"}}},{\"label\":\"スマートアップスケーリング\",\"icon\":\"brand\",\"content\":{\"title\":\"スマートアップスケーリング\",\"description\":\"古い映像を救出しましょう。当社のアップスケーリングパイプラインは、低解像度の入力にインテリジェントに詳細を追加し、1080pを大画面に適したネイティブ4Kのように見せます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"スマートアップスケーリング\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"エージェントモーション制御\",\"description\":\"撮影後にカメラを指揮します。テキストプロンプトを使用してエージェントに「右にゆっくりパン」や「ズームイン」を指示し、静止画や動画アセットのストーリーテリングを洗練させます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"エージェントモーション制御\"}},{\"title\":\"商用利用権\",\"description\":\"自信を持って制作してください。クライアントの広告であれバイラルなTikTokであれ、Lovartでリマスターおよび生成されたすべての動画に対する商用権はあなたが所有します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"商用利用権\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"AI Video Remastering: Upscale & Style Transfer with Veo 3 Agent プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"AIビデオリマスタリングエージェント：Veo 3で映像を変革＆強化\",\"description\":\"粒子の粗い映像や退屈な映像で妥協しないでください。LovartのAIデザインエージェントは、Veo 3とNano Bananaの力を組み合わせて動画をリマスターします。解像度を4Kにアップスケールしたり、動きを安定させたり、現実をアートに完全に作り変えたりする場合でも、エージェントがシネマティックな結果のために完璧なワークフローを調整します。\",\"input_placeholder\":\"動画をどのようにリマスターしますか？（例：4Kにアップスケール、サイバーパンク風にする）\",\"prompts\":[{\"label\":\"4Kアップスケール＆グレーディング\",\"prompt\":\"低解像度のスマホ映像をカラーグレーディング付きの4Kシネマティックビデオにリマスター\"},{\"label\":\"アニメスタイル変換\",\"prompt\":\"Flux Kontextを使用して実写ダンスビデオをネオンアニメスタイルに変換\"},{\"label\":\"スムーズスローモーション\",\"prompt\":\"手ブレのあるビデオを安定させ、滑らかな60fpsスローモーションに変換\"},{\"label\":\"製品ビデオ広告\",\"prompt\":\"未来的な3D背景で製品デモビデオを再構築\"}],\"tip\":\"ヒント：「3Dクレイメーションスタイルに変換」や「このヴィンテージクリップを4Kにアップスケール」を試してみてください。\",\"cta\":{\"text\":\"動画をリマスター\"}},{\"type\":\"workflow-horizontal\",\"title\":\"インテリジェントな動画最適化ワークフロー\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"アップロード & 意図\",\"description\":\"生のクリップまたはNano Banana画像シーケンスをアップロードします。「照明を直して」や「これを漫画にして」など、デザインエージェントに目標を伝えてください。エージェントが映像の文脈を即座に分析します。\"},{\"step\":2,\"title\":\"エージェント処理\",\"description\":\"Lovartは単にフィルターをかけるだけではありません。**Flux Kontext**を使用してキャラクターの一貫性を確保し、**Veo 3**を使用して現実的な物理法則を予測し、より高い忠実度と芸術的一貫性でフレームを再生成します。\"},{\"step\":3,\"title\":\"4Kエクスポート & モックアップ\",\"description\":\"ChatCanvasでリマスターされた動画を確認します。満足したら、AIアップスケーラーを使用して4K解像度に引き上げてエクスポートするか、デバイスのモックアップに配置してソーシャルメディアでの見え方を確認します。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Video Remastering: Upscale & Style Transfer with Veo 3 Agent：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"AI Video Remastering: Upscale & Style Transfer with Veo 3 Agent プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"AI Video Remastering: Upscale & Style Transfer with Veo 3 Agent が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから AI Video Remastering: Upscale & Style Transfer with Veo 3 Agent の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"LovartのVideo-to-Video機能を使って、ポッドキャストを漫画に変えました。Flux Kontextのおかげで、スタイルが完全に変わっても私の顔は一貫していました。アニメーション制作費を何千ドルも節約できました。\",\"author\":\"Leo C.\",\"role\":\"コンテンツクリエイター\"},{\"quote\":\"古いイベントの低解像度の映像がありました。Lovartのエージェントはそれを4Kにアップスケールし、照明を自動的に修正してくれました。まるで昨日撮影したかのようです。\",\"author\":\"Maria S.\",\"role\":\"ブランドデザイナー\"},{\"quote\":\"スタイル参照のためのNano Bananaと動きのためのVeo 3の組み合わせは無敵です。再撮影することなく、数秒でシーンの「バイブス」を最適化できます。\",\"author\":\"Jaxon T.\",\"role\":\"インディーズ映画製作者\"}],\"title\":\"Lovartでワークフローを最適化したクリエイターたち\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"Lovartはぼやけたり手ブレした動画を修正できますか？\",\"answer\":\"はい。当社のAIエージェントは、高度な安定化およびアップスケーリングモデル（Veo 3の基盤技術など）を使用して詳細を解釈・再構築し、手ブレのあるHDクリップを滑らかな4Kビジュアルに変換します。\"},{\"question\":\"動画の最適化においてFlux Kontextが重要なのはなぜですか？\",\"answer\":\"標準的なAI動画ツールは、動くとキャラクターの見た目を「忘れて」しまうことがよくあります。Flux Kontextはアイデンティティの一貫性を維持するため、動画の途中で被写体が別人に変身することはありません。\"},{\"question\":\"静止画を最適化された動画に変えることはできますか？\",\"answer\":\"もちろんです。Image-to-Videoワークフローを使用してください。高品質なNano Banana画像をアップロードすると、エージェントがシネマティックな動きでアニメーション化し、スチール写真を動画アセットとして効果的に「最適化」します。\"},{\"question\":\"これはプロの放送に適していますか？\",\"answer\":\"はい、Lovartは高ビットレートのエクスポートと最大4Kのアップスケーリングをサポートしており、プロのプレゼンテーション、TVCM、高品質なソーシャルメディアコンテンツに適しています。\"},{\"question\":\"動画用のプロンプトの書き方を知っている必要がありますか？\",\"answer\":\"いいえ。それがデザインエージェントの素晴らしいところです。「これをもっと良く、SFっぽくして」と言うだけで、エージェントが必要な技術的プロンプトを推論してくれます。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Lovartで実現するAI動画高画質化とスタイル変換",
+      "description": "Instantly remaster low-quality footage into 4K cinematic videos. Lovart's AI Design Agent uses Veo 3 and Flux Kontext to upscale resolution, fix motion, and apply consistent artistic styles without glitches.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Veo 3 Powered Fidelity"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Why Lovart is the Pro's Choice for AI Video",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Veo 3搭載の忠実度",
+          "description": "最新の生成ビデオ技術を活用しましょう。Veo 3は複雑な照明と物理法則を理解し、最適化された動画が単なる「AI生成」ではなく、物理的に正確に見えるようにします。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Veo 3搭載の忠実度"
+          }
+        },
+        {
+          "title": "Flux Kontextの一貫性",
+          "description": "AI動画の最大の悩みは顔のちらつきです。LovartはFlux Kontextを使用してアイデンティティをロックし、最初のフレームから最後まで被写体が同じに見えるようにします。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Flux Kontextの一貫性"
+          }
+        },
+        {
+          "title": "Video-to-Videoリスタイル",
+          "description": "映像のルックを再定義します。Nano Bananaイラストの芸術的なスタイルをビデオクリップに転送し、実写をアニメ、油絵、または3Dレンダースタイルに変えます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Video-to-Videoリスタイル"
+          }
+        },
+        {
+          "title": "スマートアップスケーリング",
+          "description": "古い映像を救出しましょう。当社のアップスケーリングパイプラインは、低解像度の入力にインテリジェントに詳細を追加し、1080pを大画面に適したネイティブ4Kのように見せます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "スマートアップスケーリング"
+          }
+        },
+        {
+          "title": "エージェントモーション制御",
+          "description": "撮影後にカメラを指揮します。テキストプロンプトを使用してエージェントに「右にゆっくりパン」や「ズームイン」を指示し、静止画や動画アセットのストーリーテリングを洗練させます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "エージェントモーション制御"
+          }
+        },
+        {
+          "title": "商用利用権",
+          "description": "自信を持って制作してください。クライアントの広告であれバイラルなTikTokであれ、Lovartでリマスターおよび生成されたすべての動画に対する商用権はあなたが所有します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "商用利用権"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Veo 3搭載の忠実度",
+          "icon": "chat",
+          "content": {
+            "title": "Veo 3搭載の忠実度",
+            "description": "最新の生成ビデオ技術を活用しましょう。Veo 3は複雑な照明と物理法則を理解し、最適化された動画が単なる「AI生成」ではなく、物理的に正確に見えるようにします。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Veo 3搭載の忠実度"
+            }
+          }
+        },
+        {
+          "label": "Flux Kontextの一貫性",
+          "icon": "image",
+          "content": {
+            "title": "Flux Kontextの一貫性",
+            "description": "AI動画の最大の悩みは顔のちらつきです。LovartはFlux Kontextを使用してアイデンティティをロックし、最初のフレームから最後まで被写体が同じに見えるようにします。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Flux Kontextの一貫性"
+            }
+          }
+        },
+        {
+          "label": "Video-to-Videoリスタイル",
+          "icon": "flask",
+          "content": {
+            "title": "Video-to-Videoリスタイル",
+            "description": "映像のルックを再定義します。Nano Bananaイラストの芸術的なスタイルをビデオクリップに転送し、実写をアニメ、油絵、または3Dレンダースタイルに変えます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Video-to-Videoリスタイル"
+            }
+          }
+        },
+        {
+          "label": "スマートアップスケーリング",
+          "icon": "brand",
+          "content": {
+            "title": "スマートアップスケーリング",
+            "description": "古い映像を救出しましょう。当社のアップスケーリングパイプラインは、低解像度の入力にインテリジェントに詳細を追加し、1080pを大画面に適したネイティブ4Kのように見せます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "スマートアップスケーリング"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "エージェントモーション制御",
+          "description": "撮影後にカメラを指揮します。テキストプロンプトを使用してエージェントに「右にゆっくりパン」や「ズームイン」を指示し、静止画や動画アセットのストーリーテリングを洗練させます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "エージェントモーション制御"
+          }
+        },
+        {
+          "title": "商用利用権",
+          "description": "自信を持って制作してください。クライアントの広告であれバイラルなTikTokであれ、Lovartでリマスターおよび生成されたすべての動画に対する商用権はあなたが所有します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "商用利用権"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "AI Video Remastering: Upscale & Style Transfer with Veo 3 Agent プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "AIビデオリマスタリングエージェント：Veo 3で映像を変革＆強化",
+      "description": "粒子の粗い映像や退屈な映像で妥協しないでください。LovartのAIデザインエージェントは、Veo 3とNano Bananaの力を組み合わせて動画をリマスターします。解像度を4Kにアップスケールしたり、動きを安定させたり、現実をアートに完全に作り変えたりする場合でも、エージェントがシネマティックな結果のために完璧なワークフローを調整します。",
+      "input_placeholder": "動画をどのようにリマスターしますか？（例：4Kにアップスケール、サイバーパンク風にする）",
+      "prompts": [
+        {
+          "label": "4Kアップスケール＆グレーディング",
+          "prompt": "低解像度のスマホ映像をカラーグレーディング付きの4Kシネマティックビデオにリマスター"
+        },
+        {
+          "label": "アニメスタイル変換",
+          "prompt": "Flux Kontextを使用して実写ダンスビデオをネオンアニメスタイルに変換"
+        },
+        {
+          "label": "スムーズスローモーション",
+          "prompt": "手ブレのあるビデオを安定させ、滑らかな60fpsスローモーションに変換"
+        },
+        {
+          "label": "製品ビデオ広告",
+          "prompt": "未来的な3D背景で製品デモビデオを再構築"
+        }
+      ],
+      "tip": "ヒント：「3Dクレイメーションスタイルに変換」や「このヴィンテージクリップを4Kにアップスケール」を試してみてください。",
+      "cta": {
+        "text": "動画をリマスター"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "インテリジェントな動画最適化ワークフロー",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "アップロード & 意図",
+          "description": "生のクリップまたはNano Banana画像シーケンスをアップロードします。「照明を直して」や「これを漫画にして」など、デザインエージェントに目標を伝えてください。エージェントが映像の文脈を即座に分析します。"
+        },
+        {
+          "step": 2,
+          "title": "エージェント処理",
+          "description": "Lovartは単にフィルターをかけるだけではありません。**Flux Kontext**を使用してキャラクターの一貫性を確保し、**Veo 3**を使用して現実的な物理法則を予測し、より高い忠実度と芸術的一貫性でフレームを再生成します。"
+        },
+        {
+          "step": 3,
+          "title": "4Kエクスポート & モックアップ",
+          "description": "ChatCanvasでリマスターされた動画を確認します。満足したら、AIアップスケーラーを使用して4K解像度に引き上げてエクスポートするか、デバイスのモックアップに配置してソーシャルメディアでの見え方を確認します。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Video Remastering: Upscale & Style Transfer with Veo 3 Agent：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "AI Video Remastering: Upscale & Style Transfer with Veo 3 Agent プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "AI Video Remastering: Upscale & Style Transfer with Veo 3 Agent が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから AI Video Remastering: Upscale & Style Transfer with Veo 3 Agent の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "LovartのVideo-to-Video機能を使って、ポッドキャストを漫画に変えました。Flux Kontextのおかげで、スタイルが完全に変わっても私の顔は一貫していました。アニメーション制作費を何千ドルも節約できました。",
+          "author": "Leo C.",
+          "role": "コンテンツクリエイター"
+        },
+        {
+          "quote": "古いイベントの低解像度の映像がありました。Lovartのエージェントはそれを4Kにアップスケールし、照明を自動的に修正してくれました。まるで昨日撮影したかのようです。",
+          "author": "Maria S.",
+          "role": "ブランドデザイナー"
+        },
+        {
+          "quote": "スタイル参照のためのNano Bananaと動きのためのVeo 3の組み合わせは無敵です。再撮影することなく、数秒でシーンの「バイブス」を最適化できます。",
+          "author": "Jaxon T.",
+          "role": "インディーズ映画製作者"
+        }
+      ],
+      "title": "Lovartでワークフローを最適化したクリエイターたち"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "Lovartはぼやけたり手ブレした動画を修正できますか？",
+          "answer": "はい。当社のAIエージェントは、高度な安定化およびアップスケーリングモデル（Veo 3の基盤技術など）を使用して詳細を解釈・再構築し、手ブレのあるHDクリップを滑らかな4Kビジュアルに変換します。"
+        },
+        {
+          "question": "動画の最適化においてFlux Kontextが重要なのはなぜですか？",
+          "answer": "標準的なAI動画ツールは、動くとキャラクターの見た目を「忘れて」しまうことがよくあります。Flux Kontextはアイデンティティの一貫性を維持するため、動画の途中で被写体が別人に変身することはありません。"
+        },
+        {
+          "question": "静止画を最適化された動画に変えることはできますか？",
+          "answer": "もちろんです。Image-to-Videoワークフローを使用してください。高品質なNano Banana画像をアップロードすると、エージェントがシネマティックな動きでアニメーション化し、スチール写真を動画アセットとして効果的に「最適化」します。"
+        },
+        {
+          "question": "これはプロの放送に適していますか？",
+          "answer": "はい、Lovartは高ビットレートのエクスポートと最大4Kのアップスケーリングをサポートしており、プロのプレゼンテーション、TVCM、高品質なソーシャルメディアコンテンツに適しています。"
+        },
+        {
+          "question": "動画用のプロンプトの書き方を知っている必要がありますか？",
+          "answer": "いいえ。それがデザインエージェントの素晴らしいところです。「これをもっと良く、SFっぽくして」と言うだけで、エージェントが必要な技術的プロンプトを推論してくれます。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

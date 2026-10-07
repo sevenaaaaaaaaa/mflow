@@ -1,0 +1,387 @@
+{
+  "_id": "infinite-chatcanvas-ai-collaboration-de",
+  "reflowSourceId": "infinite-chatcanvas-ai-collaboration-de",
+  "slug": "infinite-chatcanvas-ai-collaboration",
+  "language": "de",
+  "category": "feature",
+  "title": "Lovart: Die ultimative KI-Design-Leinwand für UI",
+  "description": "Step out of the chatbox. Discover ChatCanvas, Lovart's infinite workspace. Collaborate visually with your AI Design Agent, organize mood boards, and edit designs seamlessly.",
+  "seo": {
+    "description": "Verlasse die Chatbox. Entdecke ChatCanvas, Lovarts unendlichen Arbeitsbereich. Arbeite visuell mit deinem KI-Design-Agenten, organisiere Moodboards und bearbeite Designs nahtlos.",
+    "keywords": [
+      "unendliche KI-Leinwand",
+      "KI-UI-Design-Arbeitsbereich",
+      "visuelle KI-Zusammenarbeit",
+      "ChatCanvas",
+      "KI-Design-Agent",
+      "räumliches Computerddesign",
+      "Lovart KI"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Infinite ChatCanvas",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovart: Die ultimative KI-Design-Leinwand für UI\", \"description\": \"Step out of the chatbox. Discover ChatCanvas, Lovart's infinite workspace. Collaborate visually with your AI Design Agent, organize mood boards, and edit designs seamlessly.\", \"url\": \"https://www.lovart.ai/features/infinite-chatcanvas-ai-collaboration\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Was ist der Unterschied zwischen einer Chatbox-KI und dem ChatCanvas?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Herkömmliche KI-Generatoren verwenden eine lineare Chatbox (Prompt rein, Bild raus), wodurch Sie den Kontext verlieren und das Iterieren schwierig wird. ChatCanvas ist ein unendlicher räumlicher Arbeitsbereich, in dem Ihre Prompts, Referenzbilder und generierten Assets nebeneinander existieren, sodass die KI das große Ganze 'sehen' und natürlich mit Ihnen zusammenarbeiten kann.\"}}, {\"@type\": \"Question\", \"name\": \"Wie versteht der KI-Agent mein Layout auf der Leinwand?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart wird von der MCoT-Reasoning-Engine (Mind Chain of Thought) angetrieben. Wenn Sie Elemente gruppieren, Verbindungen zeichnen oder Referenzen auf der Leinwand nebeneinander platzieren, analysiert der Agent die räumlichen Beziehungen und den visuellen Kontext, um hochpräzise und kohärente Designs zu generieren.\"}}, {\"@type\": \"Question\", \"name\": \"Kann ich bestimmte Teile eines Bildes direkt auf der Leinwand bearbeiten?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Ja. Mit 'Touch Edit' und 'Elemente bearbeiten' müssen Sie keine langen Prompts schreiben, um kleinere Probleme zu beheben. Klicken Sie einfach auf ein bestimmtes Objekt oder einen Text innerhalb des Bildes auf Ihrer Leinwand und weisen Sie den Agenten an, es zu ändern. Es verhält sich wie ein semantischer Zero-Shot-Editor.\"}}, {\"@type\": \"Question\", \"name\": \"Unterstützt der unendliche Canvas hochauflösende Exporte?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Absolut. Sie können Konzepte frei entwickeln und arrangieren. Wenn Sie bereit sind, können Sie unsere Upscale-Funktion verwenden, um einzelne Assets in gestochen scharfer 4K- oder 8K-Auflösung zu exportieren, perfekt für professionelles UI/UX-, Print- oder digitales Marketing.\"}}, {\"@type\": \"Question\", \"name\": \"Sind die auf ChatCanvas erstellten Designs für die kommerzielle Nutzung sicher?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Ja. Wenn Sie einen der kostenpflichtigen Pläne von Lovart abonniert haben, behalten Sie die vollen kommerziellen Rechte an allen visuellen Assets, die Sie generieren, sodass Sie sie sicher für Kundenpräsentationen, Apps, Websites und Werbung verwenden können.\"}}]}}"
+    },
+    "title": "Lovart: Die ultimative KI-Design-Leinwand für UI"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Lovart: Die ultimative KI-Design-Leinwand für UI\",\"description\":\"Step out of the chatbox. Discover ChatCanvas, Lovart's infinite workspace. Collaborate visually with your AI Design Agent, organize mood boards, and edit designs seamlessly.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Infinite ChatCanvas\"}},{\"type\":\"bento-6\",\"title\":\"Why ChatCanvas Replaces Traditional AI Tools\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Unendlicher ChatCanvas\",\"description\":\"Befreien Sie sich von linearen Chat-Feeds. Organisieren Sie alle Ihre Entwürfe, Referenzbilder und finalen Bearbeitungen auf einem einzigen, unendlichen digitalen Schreibtisch, der für professionelle visuelle Workflows entwickelt wurde.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Unendlicher ChatCanvas\"}},{\"title\":\"Kontextuelles visuelles Gedächtnis\",\"description\":\"Die MCoT-Reasoning-Engine fungiert als Co-Designer und behält den Kontext Ihrer gesamten Leinwand bei. Sie merkt sich Ihre Farbpaletten und Stilentscheidungen über mehrere Generierungen hinweg.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Kontextuelles visuelles Gedächtnis\"}},{\"title\":\"Semantische Ebenentrennung\",\"description\":\"Verwenden Sie 'Elemente bearbeiten', um jedes generierte Bild direkt auf dem Canvas sofort in Vordergrund-, Hintergrund- und Textebenen zu trennen, was Ihnen die ultimative Layoutkontrolle verleiht.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Semantische Ebenentrennung\"}},{\"title\":\"Zero-Shot Touch Edit\",\"description\":\"Klicken Sie auf ein Objekt und sagen Sie dem Agenten, was er ändern soll. Das Ändern einer Schaltflächenfarbe in einem UI-Mockup oder das Wechseln der Jacke eines Models erfordert nur einen Klick – kein komplexes Maskieren erforderlich.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Zero-Shot Touch Edit\"}},{\"title\":\"Perfekte Typografie & Textbearbeitung\",\"description\":\"Generieren Sie UI-Screens, Poster und Web-Layouts mit lesbarem, makellosem Text. Korrigieren Sie Tippfehler direkt auf dem Canvas, ohne das gesamte Bild neu generieren zu müssen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Perfekte Typografie & Textbearbeitung\"}},{\"title\":\"Hochauflösender Export & Kommerzielle Rechte\",\"description\":\"Sobald Ihr Canvas perfekt ist, skalieren Sie wichtige Assets auf 4K- oder 8K-Auflösung hoch. Jedes Asset, das Sie generieren, ist kommerziell sicher und bereit für die Auslieferung an Kunden.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Hochauflösender Export & Kommerzielle Rechte\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Alle Funktionen in einem Agenten\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Unendlicher ChatCanvas\",\"icon\":\"chat\",\"content\":{\"title\":\"Unendlicher ChatCanvas\",\"description\":\"Befreien Sie sich von linearen Chat-Feeds. Organisieren Sie alle Ihre Entwürfe, Referenzbilder und finalen Bearbeitungen auf einem einzigen, unendlichen digitalen Schreibtisch, der für professionelle visuelle Workflows entwickelt wurde.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Unendlicher ChatCanvas\"}}},{\"label\":\"Kontextuelles visuelles Gedächtnis\",\"icon\":\"image\",\"content\":{\"title\":\"Kontextuelles visuelles Gedächtnis\",\"description\":\"Die MCoT-Reasoning-Engine fungiert als Co-Designer und behält den Kontext Ihrer gesamten Leinwand bei. Sie merkt sich Ihre Farbpaletten und Stilentscheidungen über mehrere Generierungen hinweg.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Kontextuelles visuelles Gedächtnis\"}}},{\"label\":\"Semantische Ebenentrennung\",\"icon\":\"flask\",\"content\":{\"title\":\"Semantische Ebenentrennung\",\"description\":\"Verwenden Sie 'Elemente bearbeiten', um jedes generierte Bild direkt auf dem Canvas sofort in Vordergrund-, Hintergrund- und Textebenen zu trennen, was Ihnen die ultimative Layoutkontrolle verleiht.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Semantische Ebenentrennung\"}}},{\"label\":\"Zero-Shot Touch Edit\",\"icon\":\"brand\",\"content\":{\"title\":\"Zero-Shot Touch Edit\",\"description\":\"Klicken Sie auf ein Objekt und sagen Sie dem Agenten, was er ändern soll. Das Ändern einer Schaltflächenfarbe in einem UI-Mockup oder das Wechseln der Jacke eines Models erfordert nur einen Klick – kein komplexes Maskieren erforderlich.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Zero-Shot Touch Edit\"}}}]},{\"type\":\"bento-2\",\"title\":\"Zwei Dinge, die besonders gut gelingen\",\"columns\":2,\"features\":[{\"title\":\"Perfekte Typografie & Textbearbeitung\",\"description\":\"Generieren Sie UI-Screens, Poster und Web-Layouts mit lesbarem, makellosem Text. Korrigieren Sie Tippfehler direkt auf dem Canvas, ohne das gesamte Bild neu generieren zu müssen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Perfekte Typografie & Textbearbeitung\"}},{\"title\":\"Hochauflösender Export & Kommerzielle Rechte\",\"description\":\"Sobald Ihr Canvas perfekt ist, skalieren Sie wichtige Assets auf 4K- oder 8K-Auflösung hoch. Jedes Asset, das Sie generieren, ist kommerziell sicher und bereit für die Auslieferung an Kunden.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Hochauflösender Export & Kommerzielle Rechte\"}}]},{\"type\":\"feature-detail\",\"title\":\"So funktioniert es im Detail\",\"items\":[{\"title\":\"Starte dein Infinite Canvas AI: The Ultimate UI Design Workspace-Projekt\",\"description\":\"Beschreibe das gewünschte Ergebnis und füge Referenzen hinzu.\"},{\"title\":\"Mit dem Agenten iterieren\",\"description\":\"Details anpassen und Varianten auf derselben Canvas erkunden.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Die UI-Revolution: Warum der unendliche Canvas die ultimative Form der KI-Zusammenarbeit ist\",\"description\":\"Treten Sie aus der restriktiven Chatbox heraus und in den ChatCanvas ein. Der unendliche Arbeitsbereich von Lovart verwandelt KI von einem einfachen Prompt-Generator in einen echten kollaborativen Design-Partner. Organisieren Sie Referenzen, brainstormen Sie visuell und wenden Sie chirurgische Bearbeitungen in einer räumlichen Umgebung an, die für die Co-Kreation von Mensch und KI entwickelt wurde.\",\"input_placeholder\":\"Beschreiben Sie das Layout des Arbeitsbereichs oder das Designkonzept, das Sie erstellen möchten...\",\"prompts\":[{\"label\":\"UI/UX-System\",\"prompt\":\"Generiere ein UI-Dashboard-Konzept für eine Fintech-App und platziere daneben eine stimmige Farbpalette\"},{\"label\":\"Kampagnen-Moodboard\",\"prompt\":\"Erstelle ein visuelles Moodboard für eine futuristische Sneaker-Kampagne mit 4 verschiedenen Poster-Variationen\"},{\"label\":\"Vollständiges Brand-Kit\",\"prompt\":\"Entwerfe ein komplettes Brand-Kit inklusive Logo, Typografie und 3D-Verpackungs-Mockups\"},{\"label\":\"Web-Layout\",\"prompt\":\"Generiere ein Landingpage-Layout und extrahiere das Haupt-Hero-Bild in eine separate bearbeitbare Ebene\"}],\"tip\":\"Tipp: Beschreiben Sie ein vollständiges Projekt wie 'Erstelle ein Moodboard und ein UI-Konzept für eine nachhaltige Modemarke'.\",\"cta\":{\"text\":\"Unendlichen Canvas öffnen\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Spatial Computing trifft auf KI-Design: Der ChatCanvas-Workflow\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"Visuelles Brainstorming\",\"description\":\"Ziehen Sie Ihre unordentlichen Skizzen, Markenrichtlinien und Referenzfotos direkt per Drag-and-Drop auf die unendliche Leinwand. Gruppieren Sie sie, um einen visuellen Kontext herzustellen, den der Lovart-Agent sofort versteht.\"},{\"step\":2,\"title\":\"Kontextbezogene Generierung\",\"description\":\"Da der Agent alles auf Ihrem ChatCanvas 'sieht', rät er nicht nur. Angetrieben von der MCoT-Engine generiert er Varianten, die perfekt zu Ihren verstreuten Referenzen und Ihrem räumlichen Layout passen.\"},{\"step\":3,\"title\":\"Chirurgische Bearbeitungen auf dem Canvas\",\"description\":\"Keine langen Prompts mehr tippen, um winzige Fehler zu beheben. Verwenden Sie Touch Edit, um direkt auf Elemente im Canvas zu klicken, um Farben zu ändern, Texturen zu tauschen oder Text sofort neu zu schreiben.\"}]},{\"type\":\"comparison-table\",\"title\":\"Infinite Canvas AI: The Ultimate UI Design Workspace: Lovart im Vergleich zu üblichen Workflows\",\"headers\":[\"Anforderung\",\"Generisches Tool\",\"Manueller Workflow\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Starte dein Infinite Canvas AI: The Ultimate UI Design Workspace-Projekt\",\"values\":[\"Ein Prompt\",\"Manuelles Briefing\",\"Briefing-gesteuertes Reasoning\"]},{\"feature\":\"Zeit bis zum ersten Ergebnis\",\"values\":[\"Minuten\",\"Tage\",\"Minuten\"]},{\"feature\":\"Bearbeitung nach der Generierung\",\"values\":[\"Begrenzt\",\"Korrekturschleifen\",\"Touch / Text / Elemente\"]},{\"feature\":\"Markenkonform bleiben\",\"values\":[\"Manuell\",\"Manuell\",\"Brand-Kit-fähig\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Wofür sich Infinite Canvas AI: The Ultimate UI Design Workspace eignet\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Schneller starten\",\"description\":\"Vom Briefing zu Infinite Canvas AI: The Ultimate UI Design Workspace-Assets in einer einzigen Session.\"},{\"icon\":\"brand\",\"title\":\"Konsistent bleiben\",\"description\":\"Das Brand Kit hält jedes Asset einheitlich.\"},{\"icon\":\"refresh\",\"title\":\"Schnell iterieren\",\"description\":\"Details bearbeiten, ohne das Projekt neu zu starten.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"Die standardmäßige Prompt-Box-KI fühlte sich an, als würde man mit einer Wand sprechen. Lovarts ChatCanvas fühlt sich wie ein echtes Designstudio an. Ich kann meine Wireframes ausbreiten, den Agenten UI-Varianten daneben generieren lassen und Elemente sofort optimieren.\",\"author\":\"Sarah M.\",\"role\":\"Lead UI/UX Designer\"},{\"quote\":\"Die Möglichkeit, die gesamte Kampagne – vom ersten Moodboard bis zu den finalen 4K-Postern – auf einer unendlichen Leinwand zu sehen, hat unsere Art, vor Kunden zu pitchen, komplett verändert. Der räumliche Kontext ist alles.\",\"author\":\"David K.\",\"role\":\"Gründer einer Kreativagentur\"},{\"quote\":\"Ich liebe es, dass der Agent meine Referenzen 'sieht'. Ich ziehe eine Farbpalette und die Anzeige eines Konkurrenten auf die Leinwand, und die MCoT-Engine von Lovart erarbeitet eine völlig frische, markenkonforme Richtung. Das ist echte Co-Kreation.\",\"author\":\"Elena R.\",\"role\":\"Brand Strategist\"}],\"title\":\"Designer revolutionieren Workflows auf dem unendlichen Canvas\"},{\"type\":\"pricing-block\",\"title\":\"Wähle den passenden Plan für dein Team\",\"description\":\"Kostenlos starten. Upgraden, sobald die Arbeit zum Kunden geht.\"},{\"type\":\"faq\",\"title\":\"Häufig gestellte Fragen\",\"items\":[{\"question\":\"Was ist der Unterschied zwischen einer Chatbox-KI und dem ChatCanvas?\",\"answer\":\"Herkömmliche KI-Generatoren verwenden eine lineare Chatbox (Prompt rein, Bild raus), wodurch Sie den Kontext verlieren und das Iterieren schwierig wird. ChatCanvas ist ein unendlicher räumlicher Arbeitsbereich, in dem Ihre Prompts, Referenzbilder und generierten Assets nebeneinander existieren, sodass die KI das große Ganze 'sehen' und natürlich mit Ihnen zusammenarbeiten kann.\"},{\"question\":\"Wie versteht der KI-Agent mein Layout auf der Leinwand?\",\"answer\":\"Lovart wird von der MCoT-Reasoning-Engine (Mind Chain of Thought) angetrieben. Wenn Sie Elemente gruppieren, Verbindungen zeichnen oder Referenzen auf der Leinwand nebeneinander platzieren, analysiert der Agent die räumlichen Beziehungen und den visuellen Kontext, um hochpräzise und kohärente Designs zu generieren.\"},{\"question\":\"Kann ich bestimmte Teile eines Bildes direkt auf der Leinwand bearbeiten?\",\"answer\":\"Ja. Mit 'Touch Edit' und 'Elemente bearbeiten' müssen Sie keine langen Prompts schreiben, um kleinere Probleme zu beheben. Klicken Sie einfach auf ein bestimmtes Objekt oder einen Text innerhalb des Bildes auf Ihrer Leinwand und weisen Sie den Agenten an, es zu ändern. Es verhält sich wie ein semantischer Zero-Shot-Editor.\"},{\"question\":\"Unterstützt der unendliche Canvas hochauflösende Exporte?\",\"answer\":\"Absolut. Sie können Konzepte frei entwickeln und arrangieren. Wenn Sie bereit sind, können Sie unsere Upscale-Funktion verwenden, um einzelne Assets in gestochen scharfer 4K- oder 8K-Auflösung zu exportieren, perfekt für professionelles UI/UX-, Print- oder digitales Marketing.\"},{\"question\":\"Sind die auf ChatCanvas erstellten Designs für die kommerzielle Nutzung sicher?\",\"answer\":\"Ja. Wenn Sie einen der kostenpflichtigen Pläne von Lovart abonniert haben, behalten Sie die vollen kommerziellen Rechte an allen visuellen Assets, die Sie generieren, sodass Sie sie sicher für Kundenpräsentationen, Apps, Websites und Werbung verwenden können.\"}]},{\"type\":\"cta-default\",\"title\":\"Starte deine Designs mit Lovart\",\"description\":\"Verwandle dein Briefing in wenigen Minuten in markengerechte Visuals.\",\"buttons\":[{\"text\":\"Kostenlos starten\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Lovart: Die ultimative KI-Design-Leinwand für UI",
+      "description": "Step out of the chatbox. Discover ChatCanvas, Lovart's infinite workspace. Collaborate visually with your AI Design Agent, organize mood boards, and edit designs seamlessly.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Infinite ChatCanvas"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Why ChatCanvas Replaces Traditional AI Tools",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Unendlicher ChatCanvas",
+          "description": "Befreien Sie sich von linearen Chat-Feeds. Organisieren Sie alle Ihre Entwürfe, Referenzbilder und finalen Bearbeitungen auf einem einzigen, unendlichen digitalen Schreibtisch, der für professionelle visuelle Workflows entwickelt wurde.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Unendlicher ChatCanvas"
+          }
+        },
+        {
+          "title": "Kontextuelles visuelles Gedächtnis",
+          "description": "Die MCoT-Reasoning-Engine fungiert als Co-Designer und behält den Kontext Ihrer gesamten Leinwand bei. Sie merkt sich Ihre Farbpaletten und Stilentscheidungen über mehrere Generierungen hinweg.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Kontextuelles visuelles Gedächtnis"
+          }
+        },
+        {
+          "title": "Semantische Ebenentrennung",
+          "description": "Verwenden Sie 'Elemente bearbeiten', um jedes generierte Bild direkt auf dem Canvas sofort in Vordergrund-, Hintergrund- und Textebenen zu trennen, was Ihnen die ultimative Layoutkontrolle verleiht.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Semantische Ebenentrennung"
+          }
+        },
+        {
+          "title": "Zero-Shot Touch Edit",
+          "description": "Klicken Sie auf ein Objekt und sagen Sie dem Agenten, was er ändern soll. Das Ändern einer Schaltflächenfarbe in einem UI-Mockup oder das Wechseln der Jacke eines Models erfordert nur einen Klick – kein komplexes Maskieren erforderlich.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "Zero-Shot Touch Edit"
+          }
+        },
+        {
+          "title": "Perfekte Typografie & Textbearbeitung",
+          "description": "Generieren Sie UI-Screens, Poster und Web-Layouts mit lesbarem, makellosem Text. Korrigieren Sie Tippfehler direkt auf dem Canvas, ohne das gesamte Bild neu generieren zu müssen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Perfekte Typografie & Textbearbeitung"
+          }
+        },
+        {
+          "title": "Hochauflösender Export & Kommerzielle Rechte",
+          "description": "Sobald Ihr Canvas perfekt ist, skalieren Sie wichtige Assets auf 4K- oder 8K-Auflösung hoch. Jedes Asset, das Sie generieren, ist kommerziell sicher und bereit für die Auslieferung an Kunden.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Hochauflösender Export & Kommerzielle Rechte"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Alle Funktionen in einem Agenten",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Unendlicher ChatCanvas",
+          "icon": "chat",
+          "content": {
+            "title": "Unendlicher ChatCanvas",
+            "description": "Befreien Sie sich von linearen Chat-Feeds. Organisieren Sie alle Ihre Entwürfe, Referenzbilder und finalen Bearbeitungen auf einem einzigen, unendlichen digitalen Schreibtisch, der für professionelle visuelle Workflows entwickelt wurde.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Unendlicher ChatCanvas"
+            }
+          }
+        },
+        {
+          "label": "Kontextuelles visuelles Gedächtnis",
+          "icon": "image",
+          "content": {
+            "title": "Kontextuelles visuelles Gedächtnis",
+            "description": "Die MCoT-Reasoning-Engine fungiert als Co-Designer und behält den Kontext Ihrer gesamten Leinwand bei. Sie merkt sich Ihre Farbpaletten und Stilentscheidungen über mehrere Generierungen hinweg.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Kontextuelles visuelles Gedächtnis"
+            }
+          }
+        },
+        {
+          "label": "Semantische Ebenentrennung",
+          "icon": "flask",
+          "content": {
+            "title": "Semantische Ebenentrennung",
+            "description": "Verwenden Sie 'Elemente bearbeiten', um jedes generierte Bild direkt auf dem Canvas sofort in Vordergrund-, Hintergrund- und Textebenen zu trennen, was Ihnen die ultimative Layoutkontrolle verleiht.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Semantische Ebenentrennung"
+            }
+          }
+        },
+        {
+          "label": "Zero-Shot Touch Edit",
+          "icon": "brand",
+          "content": {
+            "title": "Zero-Shot Touch Edit",
+            "description": "Klicken Sie auf ein Objekt und sagen Sie dem Agenten, was er ändern soll. Das Ändern einer Schaltflächenfarbe in einem UI-Mockup oder das Wechseln der Jacke eines Models erfordert nur einen Klick – kein komplexes Maskieren erforderlich.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "Zero-Shot Touch Edit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Zwei Dinge, die besonders gut gelingen",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Perfekte Typografie & Textbearbeitung",
+          "description": "Generieren Sie UI-Screens, Poster und Web-Layouts mit lesbarem, makellosem Text. Korrigieren Sie Tippfehler direkt auf dem Canvas, ohne das gesamte Bild neu generieren zu müssen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Perfekte Typografie & Textbearbeitung"
+          }
+        },
+        {
+          "title": "Hochauflösender Export & Kommerzielle Rechte",
+          "description": "Sobald Ihr Canvas perfekt ist, skalieren Sie wichtige Assets auf 4K- oder 8K-Auflösung hoch. Jedes Asset, das Sie generieren, ist kommerziell sicher und bereit für die Auslieferung an Kunden.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Hochauflösender Export & Kommerzielle Rechte"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "So funktioniert es im Detail",
+      "items": [
+        {
+          "title": "Starte dein Infinite Canvas AI: The Ultimate UI Design Workspace-Projekt",
+          "description": "Beschreibe das gewünschte Ergebnis und füge Referenzen hinzu."
+        },
+        {
+          "title": "Mit dem Agenten iterieren",
+          "description": "Details anpassen und Varianten auf derselben Canvas erkunden.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Die UI-Revolution: Warum der unendliche Canvas die ultimative Form der KI-Zusammenarbeit ist",
+      "description": "Treten Sie aus der restriktiven Chatbox heraus und in den ChatCanvas ein. Der unendliche Arbeitsbereich von Lovart verwandelt KI von einem einfachen Prompt-Generator in einen echten kollaborativen Design-Partner. Organisieren Sie Referenzen, brainstormen Sie visuell und wenden Sie chirurgische Bearbeitungen in einer räumlichen Umgebung an, die für die Co-Kreation von Mensch und KI entwickelt wurde.",
+      "input_placeholder": "Beschreiben Sie das Layout des Arbeitsbereichs oder das Designkonzept, das Sie erstellen möchten...",
+      "prompts": [
+        {
+          "label": "UI/UX-System",
+          "prompt": "Generiere ein UI-Dashboard-Konzept für eine Fintech-App und platziere daneben eine stimmige Farbpalette"
+        },
+        {
+          "label": "Kampagnen-Moodboard",
+          "prompt": "Erstelle ein visuelles Moodboard für eine futuristische Sneaker-Kampagne mit 4 verschiedenen Poster-Variationen"
+        },
+        {
+          "label": "Vollständiges Brand-Kit",
+          "prompt": "Entwerfe ein komplettes Brand-Kit inklusive Logo, Typografie und 3D-Verpackungs-Mockups"
+        },
+        {
+          "label": "Web-Layout",
+          "prompt": "Generiere ein Landingpage-Layout und extrahiere das Haupt-Hero-Bild in eine separate bearbeitbare Ebene"
+        }
+      ],
+      "tip": "Tipp: Beschreiben Sie ein vollständiges Projekt wie 'Erstelle ein Moodboard und ein UI-Konzept für eine nachhaltige Modemarke'.",
+      "cta": {
+        "text": "Unendlichen Canvas öffnen"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Spatial Computing trifft auf KI-Design: Der ChatCanvas-Workflow",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Visuelles Brainstorming",
+          "description": "Ziehen Sie Ihre unordentlichen Skizzen, Markenrichtlinien und Referenzfotos direkt per Drag-and-Drop auf die unendliche Leinwand. Gruppieren Sie sie, um einen visuellen Kontext herzustellen, den der Lovart-Agent sofort versteht."
+        },
+        {
+          "step": 2,
+          "title": "Kontextbezogene Generierung",
+          "description": "Da der Agent alles auf Ihrem ChatCanvas 'sieht', rät er nicht nur. Angetrieben von der MCoT-Engine generiert er Varianten, die perfekt zu Ihren verstreuten Referenzen und Ihrem räumlichen Layout passen."
+        },
+        {
+          "step": 3,
+          "title": "Chirurgische Bearbeitungen auf dem Canvas",
+          "description": "Keine langen Prompts mehr tippen, um winzige Fehler zu beheben. Verwenden Sie Touch Edit, um direkt auf Elemente im Canvas zu klicken, um Farben zu ändern, Texturen zu tauschen oder Text sofort neu zu schreiben."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Infinite Canvas AI: The Ultimate UI Design Workspace: Lovart im Vergleich zu üblichen Workflows",
+      "headers": [
+        "Anforderung",
+        "Generisches Tool",
+        "Manueller Workflow",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Starte dein Infinite Canvas AI: The Ultimate UI Design Workspace-Projekt",
+          "values": [
+            "Ein Prompt",
+            "Manuelles Briefing",
+            "Briefing-gesteuertes Reasoning"
+          ]
+        },
+        {
+          "feature": "Zeit bis zum ersten Ergebnis",
+          "values": [
+            "Minuten",
+            "Tage",
+            "Minuten"
+          ]
+        },
+        {
+          "feature": "Bearbeitung nach der Generierung",
+          "values": [
+            "Begrenzt",
+            "Korrekturschleifen",
+            "Touch / Text / Elemente"
+          ]
+        },
+        {
+          "feature": "Markenkonform bleiben",
+          "values": [
+            "Manuell",
+            "Manuell",
+            "Brand-Kit-fähig"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Wofür sich Infinite Canvas AI: The Ultimate UI Design Workspace eignet",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Schneller starten",
+          "description": "Vom Briefing zu Infinite Canvas AI: The Ultimate UI Design Workspace-Assets in einer einzigen Session."
+        },
+        {
+          "icon": "brand",
+          "title": "Konsistent bleiben",
+          "description": "Das Brand Kit hält jedes Asset einheitlich."
+        },
+        {
+          "icon": "refresh",
+          "title": "Schnell iterieren",
+          "description": "Details bearbeiten, ohne das Projekt neu zu starten."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "Die standardmäßige Prompt-Box-KI fühlte sich an, als würde man mit einer Wand sprechen. Lovarts ChatCanvas fühlt sich wie ein echtes Designstudio an. Ich kann meine Wireframes ausbreiten, den Agenten UI-Varianten daneben generieren lassen und Elemente sofort optimieren.",
+          "author": "Sarah M.",
+          "role": "Lead UI/UX Designer"
+        },
+        {
+          "quote": "Die Möglichkeit, die gesamte Kampagne – vom ersten Moodboard bis zu den finalen 4K-Postern – auf einer unendlichen Leinwand zu sehen, hat unsere Art, vor Kunden zu pitchen, komplett verändert. Der räumliche Kontext ist alles.",
+          "author": "David K.",
+          "role": "Gründer einer Kreativagentur"
+        },
+        {
+          "quote": "Ich liebe es, dass der Agent meine Referenzen 'sieht'. Ich ziehe eine Farbpalette und die Anzeige eines Konkurrenten auf die Leinwand, und die MCoT-Engine von Lovart erarbeitet eine völlig frische, markenkonforme Richtung. Das ist echte Co-Kreation.",
+          "author": "Elena R.",
+          "role": "Brand Strategist"
+        }
+      ],
+      "title": "Designer revolutionieren Workflows auf dem unendlichen Canvas"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Wähle den passenden Plan für dein Team",
+      "description": "Kostenlos starten. Upgraden, sobald die Arbeit zum Kunden geht."
+    },
+    {
+      "type": "faq",
+      "title": "Häufig gestellte Fragen",
+      "items": [
+        {
+          "question": "Was ist der Unterschied zwischen einer Chatbox-KI und dem ChatCanvas?",
+          "answer": "Herkömmliche KI-Generatoren verwenden eine lineare Chatbox (Prompt rein, Bild raus), wodurch Sie den Kontext verlieren und das Iterieren schwierig wird. ChatCanvas ist ein unendlicher räumlicher Arbeitsbereich, in dem Ihre Prompts, Referenzbilder und generierten Assets nebeneinander existieren, sodass die KI das große Ganze 'sehen' und natürlich mit Ihnen zusammenarbeiten kann."
+        },
+        {
+          "question": "Wie versteht der KI-Agent mein Layout auf der Leinwand?",
+          "answer": "Lovart wird von der MCoT-Reasoning-Engine (Mind Chain of Thought) angetrieben. Wenn Sie Elemente gruppieren, Verbindungen zeichnen oder Referenzen auf der Leinwand nebeneinander platzieren, analysiert der Agent die räumlichen Beziehungen und den visuellen Kontext, um hochpräzise und kohärente Designs zu generieren."
+        },
+        {
+          "question": "Kann ich bestimmte Teile eines Bildes direkt auf der Leinwand bearbeiten?",
+          "answer": "Ja. Mit 'Touch Edit' und 'Elemente bearbeiten' müssen Sie keine langen Prompts schreiben, um kleinere Probleme zu beheben. Klicken Sie einfach auf ein bestimmtes Objekt oder einen Text innerhalb des Bildes auf Ihrer Leinwand und weisen Sie den Agenten an, es zu ändern. Es verhält sich wie ein semantischer Zero-Shot-Editor."
+        },
+        {
+          "question": "Unterstützt der unendliche Canvas hochauflösende Exporte?",
+          "answer": "Absolut. Sie können Konzepte frei entwickeln und arrangieren. Wenn Sie bereit sind, können Sie unsere Upscale-Funktion verwenden, um einzelne Assets in gestochen scharfer 4K- oder 8K-Auflösung zu exportieren, perfekt für professionelles UI/UX-, Print- oder digitales Marketing."
+        },
+        {
+          "question": "Sind die auf ChatCanvas erstellten Designs für die kommerzielle Nutzung sicher?",
+          "answer": "Ja. Wenn Sie einen der kostenpflichtigen Pläne von Lovart abonniert haben, behalten Sie die vollen kommerziellen Rechte an allen visuellen Assets, die Sie generieren, sodass Sie sie sicher für Kundenpräsentationen, Apps, Websites und Werbung verwenden können."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Starte deine Designs mit Lovart",
+      "description": "Verwandle dein Briefing in wenigen Minuten in markengerechte Visuals.",
+      "buttons": [
+        {
+          "text": "Kostenlos starten",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

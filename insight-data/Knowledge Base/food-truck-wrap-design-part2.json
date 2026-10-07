@@ -1,0 +1,566 @@
+```json
+,
+  "section_ja": [
+  {
+    "type": "centeredInputSection",
+    "title": "AIフードトラックラップデザイナー",
+    "subtitle": "Lovart — 世界初のAIデザインエージェントで、目を引くフードトラックのラッピングデザインを数秒で作成。MCoTクリエイティブディレクションとChatCanvas精密編集が、あなたのトラックを走る広告塔に変えます。",
+    "buttonText": "トラックラップをデザイン",
+    "system_prompt": "あなたはLovartのクリエイティブディレクターMCoTで、フードトラックのラッピングデザインを専門としています。多段階推論を調整して、料理の種類、トラックモデル、ブランドカラー、デザインの好みを分析します。ChatCanvasを使用して、レイアウト、タイポグラフィ、カラーパレット、ビジュアルスタイルを協調的に洗練させます。車両の輪郭に合わせて自然にグラフィックを適合させ、8K解像度で印刷可能な状態に仕上げます。ユーザーの説明：$input$",
+    "suggestion": [
+      "グルメ料理を引き立てる、食欲をそそるビジュアルの高級フードトラックラップ",
+      "大胆な色彩でメニューをアピールするメキシカンタコストラックデザイン",
+      "ミニマルで洗練されたコーヒートラックのラッピング",
+      "遊び心あふれるデザートバンのスイート系ラップ"
+    ],
+    "input_placeholder": ""
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "構想から印刷準備まであっという間",
+    "columns": [
+      {
+        "title": "AIが生成するラップレイアウト",
+        "description": "トラックのタイプとスタイルを説明すると、LovartのMCoTエージェントが、調和のとれたグリッド、フォント、カラースキームでカスタムメイドの車両ラッピングデザインを即座に生成します。",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "ChatCanvas精密編集",
+        "description": "ラッピングデザインの任意の要素 — テキスト、画像、グラフィック — をクリックしてチャットで調整。自然言語で色の変更、写真の入れ替え、タイポグラフィの微調整が可能です。",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "8Kプロフェッショナルエクスポート",
+        "description": "8K解像度で車両パネルごとに分離されたファイルをPNG、JPG、SVG、PSD形式でエクスポート。プロのラッピング施工業者が求める正確な寸法とブリード領域を完備。",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "フードトラックラップに必要なすべて",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "大判デザイン対応",
+        "description": "Lovartのエンジンはフルサイズの車両グラフィック向けに構築。全長20フィートのトラックでもデザインがくっきり鮮明に保たれ、プロの施工に必要なブリードゾーンとパネルシームガイドを完備。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "車両輪郭適応",
+        "description": "MCoTがデザインを車両の輪郭に自動適応。グラフィックがホイールアーチ、ドアハンドル、ウィンドウ、サービスポートを自然に流れ、歪みや不自然な切り抜きは発生しません。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "3Dトラック スマートモックアップ",
+        "description": "Smart Mockupで実際のトラックの3Dモデル上にラップをプレビュー。360°回転、細部へのズームイン、あらゆる角度からの確認が可能 — 街角、サービス側、リアビューまで。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "耐候性カラー",
+        "description": "Lovartは屋外耐久性を考慮してカラープロファイルを最適化。5〜7年の耐UVカラーパレットで、日差し、雨、道路の汚れに負けず鮮やかさを維持します。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "8Kプリントエクスポート",
+        "description": "8K解像度でPNG、JPG、SVG、PSD形式のパネル分離ファイルをエクスポート。運転席側、助手席側、背面、前面の各パネルに分かれ、プロ施工用の正確な寸法付き。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "ブランド一貫性",
+        "description": "ロゴ、メニュー、ブランドカラー、フォントを一度アップロードすれば、Lovartが全車両ラッピングにブランドキットを適用 — メニューボードやSNSにも一貫して展開。"
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "フードトラックオーナーから信頼されています",
+    "testimonials": [
+      {
+        "name": "佐藤 健一",
+        "role": "Tokyo Street Eats オーナー",
+        "quote": "Lovartで45分でトラックラップをデザインしました。デザイン会社は2,800ドルで3週間かかると言われました。3Dスマートモックアップで隅々まで確認でき、新しいラップで初月の売上が47％増加しました。",
+        "metric": "売上47％増加",
+        "avatar_url": ""
+      },
+      {
+        "name": "山本 美咲",
+        "role": "Brew & Bloom コーヒーバン 共同創業者",
+        "quote": "車両輪郭適応機能がバンの曲線パネルを完璧に処理。デザインがスライド窓やホイールアーチの周りを自然に流れ、まるで手作業で採寸したかのよう。各地のマーケットでラップを褒められ、プライベートイベントの予約が3倍に。",
+        "metric": "予約3倍増",
+        "avatar_url": ""
+      },
+      {
+        "name": "高橋 大輔",
+        "role": "Spice Route グルメトラック オーナー",
+        "quote": "18ヶ月の日差しで以前のラップは色あせて剥がれていました。Lovartの耐候性カラーエンジンがUV最適化パレットで新ラップをデザインし、14ヶ月経っても新品同様。8Kエクスポートの精度に施工業者も10年で最高のデータと絶賛。",
+        "metric": "14ヶ月後も新品同様",
+        "avatar_url": ""
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "AIフードトラックラップデザイナーは無料で使えますか？",
+        "answer": "はい！毎日無料クレジットを提供しており、コストゼロでAIフードトラックラッピングデザインを試せます。高解像度ダウンロードと商用利用権が必要になったら、有料プランにアップグレードしてください。"
+      },
+      {
+        "question": "Lovartの料金プランは？",
+        "answer": "Lovartの月額プランはStarter（2,000クレジット/月）、Basic（3,500クレジット/月）、Pro（11,000クレジット/月）の3種類です。すべての有料プランにラッピングデザインの完全な商用利用権が含まれます。"
+      },
+      {
+        "question": "トラックラップの商用利用権はありますか？",
+        "answer": "はい！すべての有料プラン（Starter、Basic、Pro）に完全な商用利用権が含まれます。作成したラップデザインを商用目的で印刷・施工・使用する権利を所有します。"
+      },
+      {
+        "question": "どのようなファイル形式でエクスポートできますか？",
+        "answer": "Lovartは8K解像度でPNG、JPG、SVG、PSD形式のエクスポートに対応。ファイルは車両パネルごと（運転席側、助手席側、背面、前面）に自動分離され、プロ施工用の正確な寸法とトリムマーク付きです。"
+      },
+      {
+        "question": "Touch Editでトラックラップのデザインはどのように編集できますか？",
+        "answer": "Touch Editでは、ChatCanvas上のラップデザインの任意の要素 — テキスト、画像、グラフィック — をクリックして即座に変更できます。色の調整、画像の差し替え、要素のリサイズを直感的に行えます。"
+      },
+      {
+        "question": "あらゆるタイプのフードトラックに対応していますか？",
+        "answer": "はい。Lovartの車両輪郭適応は、フレイトライナー、フォードEシリーズ、メルセデススプリンター、いすゞエルフなど主要なトラックモデルすべてに対応。ライブラリにないカスタム車両も、寸法をアップロードすれば対応可能です。"
+      },
+      {
+        "question": "3Dモデルで印刷前にデザインをプレビューできますか？",
+        "answer": "はい！Smart Mockupモジュールで、実際のトラックのインタラクティブ3Dモデル上にラップを配置。360°回転、パネルシームやホイールアーチへのズーム、街角・サービス側・リアからの確認ができ、高額な印刷ミスを防ぎます。"
+      },
+      {
+        "question": "Lovartはすべてのデザインでブランド一貫性を維持しますか？",
+        "answer": "はい。Lovartがブランドアイデンティティ（色、フォント、ロゴ、ビジュアルスタイル）を理解すると、全車両ラップに一貫したブランディングを適用。メニューボード、SNS、印刷物にも展開します。"
+      },
+      {
+        "question": "デザインに満足できない場合の返金はありますか？",
+        "answer": "満足保証制度があります。生成されたラップデザインにご満足いただけない場合、購入から7日以内にサポートチームにご連絡いただければ全額返金いたします。"
+      }
+    ]
+  }
+],
+  "section_ko": [
+  {
+    "type": "centeredInputSection",
+    "title": "AI 푸드트럭 랩 디자이너",
+    "subtitle": "Lovart — 세계 최초의 AI 디자인 에이전트로, 눈길을 사로잡는 푸드트럭 래핑 디자인을 몇 초 만에 만드세요. MCoT 크리에이티브 디렉션과 ChatCanvas 정밀 편집이 트럭을 움직이는 광고판으로 바꿔줍니다.",
+    "buttonText": "푸드트럭 랩 디자인",
+    "system_prompt": "당신은 Lovart의 크리에이티브 디렉터 MCoT로, 푸드트럭 래핑 디자인을 전문으로 합니다. 다단계 추론을 조정하여 요리 유형, 트럭 모델, 브랜드 색상, 디자인 선호도를 분석합니다. ChatCanvas를 사용하여 레이아웃, 타이포그래피, 색상 팔레트, 비주얼 스타일을 협업적으로 다듬습니다. 차량 윤곽에 자연스럽게 그래픽을 맞추고, 8K 해상도로 인쇄 가능한 상태로 완성합니다. 사용자 설명: $input$",
+    "suggestion": [
+      "미식 요리를 돋보이게 하는 고급 푸드트럭 랩 디자인",
+      "대담한 색상으로 메뉴를 강조한 멕시칸 타코 트럭 디자인",
+      "미니멀하고 세련된 커피 트럭 래핑",
+      "발랄한 디저트 밴의 스위트 스타일 랩"
+    ],
+    "input_placeholder": ""
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "아이디어에서 인쇄 준비까지 순식간에",
+    "columns": [
+      {
+        "title": "AI 생성 랩 레이아웃",
+        "description": "트럭 유형과 스타일을 설명하면 Lovart의 MCoT 에이전트가 조화로운 그리드, 폰트, 색상 구성을 갖춘 맞춤형 차량 래핑 디자인을 즉시 생성합니다.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "ChatCanvas 정밀 편집",
+        "description": "랩 디자인의 모든 요소 — 텍스트, 이미지, 그래픽 — 를 클릭하고 채팅으로 조정하세요. 자연어로 색상 변경, 사진 교체, 타이포그래피 미세 조정이 가능합니다.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "8K 전문가 내보내기",
+        "description": "8K 해상도로 차량 패널별 분리 파일을 PNG, JPG, SVG, PSD 형식으로 내보내기. 전문 래핑 시공업자를 위한 정확한 치수와 블리드 영역을 완비했습니다.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "푸드트럭 랩에 필요한 모든 것",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "대형 디자인 대응",
+        "description": "Lovart 엔진은 풀사이즈 차량 그래픽을 위해 설계되었습니다. 20피트 트럭 길이에서도 디자인이 선명하게 유지되며, 전문 시공에 필요한 블리드 영역과 패널 심 가이드를 갖추고 있습니다."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "차량 윤곽 적응",
+        "description": "MCoT가 디자인을 차량 윤곽에 자동 적응. 그래픽이 휠 아치, 도어 핸들, 윈도우, 서비스 포트를 자연스럽게 따라 흐르며 왜곡이나 부자연스러운 잘림이 없습니다."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "3D 트럭 스마트 목업",
+        "description": "Smart Mockup으로 실제 트럭의 3D 모델에 랩을 배치해 미리보기. 360° 회전, 세부 확대, 모든 각도에서 확인 — 거리뷰, 서비스 측면, 후면까지 완벽하게."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "내후성 컬러",
+        "description": "Lovart는 실외 내구성을 위해 색상 프로필을 최적화. 5~7년 UV 저항 팔레트로 햇빛, 비, 도로 오염에도 선명함을 유지합니다."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "8K 인쇄 내보내기",
+        "description": "8K 해상도로 PNG, JPG, SVG, PSD 형식의 패널 분리 파일 내보내기. 운전석 측면, 조수석 측면, 후면, 전면 패널로 분리되며 전문 시공용 정확한 치수가 포함됩니다."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "브랜드 일관성",
+        "description": "로고, 메뉴, 브랜드 색상, 폰트를 한 번 업로드하면 Lovart가 전체 차량 랩에 브랜드 키트를 적용 — 메뉴 보드와 SNS에도 일관되게 확장됩니다."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "푸드트럭 오너들의 신뢰",
+    "testimonials": [
+      {
+        "name": "박준호",
+        "role": "Seoul Street Bites 오너",
+        "quote": "Lovart로 45분 만에 트럭 랩을 디자인했습니다. 디자인 에이전시에서는 2,800달러에 3주가 걸린다고 했어요. 3D 스마트 목업으로 구석구석 확인할 수 있었고, 새 랩으로 첫 달 매출이 47% 증가했습니다.",
+        "metric": "매출 47% 증가",
+        "avatar_url": ""
+      },
+      {
+        "name": "김은지",
+        "role": "Brew & Bloom 커피밴 공동 창업자",
+        "quote": "차량 윤곽 적응 기능이 밴의 곡면 패널을 완벽하게 처리했습니다. 디자인이 슬라이딩 창문과 휠 아치 주변을 자연스럽게 흐르며 수작업으로 측정한 듯 정확합니다. 모든 파머스 마켓에서 랩을 칭찬받고, 프라이빗 이벤트 예약이 3배로 늘었습니다.",
+        "metric": "예약 3배 증가",
+        "avatar_url": ""
+      },
+      {
+        "name": "이승우",
+        "role": "Spice Route 미식 트럭 오너",
+        "quote": "18개월 햇빛 노출로 예전 랩은 색이 바래고 벗겨졌습니다. Lovart의 내후성 컬러 엔진이 UV 최적화 팔레트로 새 랩을 디자인했고, 14개월이 지난 지금도 새것 같습니다. 8K 파일의 정밀함에 시공업자가 10년 만에 최고의 데이터라고 극찬했어요.",
+        "metric": "14개월 후에도 새것처럼",
+        "avatar_url": ""
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "AI 푸드트럭 랩 디자이너는 무료로 사용할 수 있나요?",
+        "answer": "네! 매일 무료 크레딧을 제공하여 비용 없이 AI 푸드트럭 래핑 디자인을 시도할 수 있습니다. 고해상도 다운로드와 상업적 사용 권한이 필요할 때 유료 플랜으로 업그레이드하세요."
+      },
+      {
+        "question": "Lovart의 요금제는 어떻게 되나요?",
+        "answer": "Lovart의 월간 요금제는 Starter(월 2,000크레딧), Basic(월 3,500크레딧), Pro(월 11,000크레딧) 세 가지입니다. 모든 유료 플랜에는 래핑 디자인의 완전한 상업적 사용 권한이 포함됩니다."
+      },
+      {
+        "question": "트럭 랩의 상업적 사용 권한이 있나요?",
+        "answer": "네! 모든 유료 플랜(Starter, Basic, Pro)에는 완전한 상업적 사용 권한이 포함됩니다. 생성한 랩 디자인을 상업적 목적으로 인쇄, 시공, 사용할 권리를 소유합니다."
+      },
+      {
+        "question": "어떤 파일 형식으로 내보낼 수 있나요?",
+        "answer": "Lovart는 8K 해상도로 PNG, JPG, SVG, PSD 형식 내보내기를 지원합니다. 파일은 차량 패널별(운전석 측면, 조수석 측면, 후면, 전면)로 자동 분리되며 전문 시공용 정확한 치수와 트림 마크가 포함됩니다."
+      },
+      {
+        "question": "Touch Edit로 트럭 랩 디자인을 어떻게 편집하나요?",
+        "answer": "Touch Edit를 사용하면 ChatCanvas에서 랩 디자인의 모든 요소 — 텍스트, 이미지, 그래픽 — 를 클릭하여 즉시 수정할 수 있습니다. 색상 조정, 이미지 교체, 요소 크기 조절을 직관적으로 수행할 수 있습니다."
+      },
+      {
+        "question": "모든 유형의 푸드트럭을 지원하나요?",
+        "answer": "네. Lovart의 차량 윤곽 적응은 프레이트라이너, 포드 E시리즈, 메르세데스 스프린터, 이스즈 NPR 등 모든 주요 트럭 모델을 지원합니다. 라이브러리에 없는 커스텀 차량도 치수를 업로드하면 대응 가능합니다."
+      },
+      {
+        "question": "3D 모델에서 인쇄 전에 디자인을 미리 볼 수 있나요?",
+        "answer": "네! Smart Mockup 모듈로 실제 트럭의 인터랙티브 3D 모델에 랩을 배치할 수 있습니다. 360° 회전, 패널 심과 휠 아치 확대, 거리뷰·서비스 측면·후면에서 확인이 가능해 값비싼 인쇄 오류를 방지합니다."
+      },
+      {
+        "question": "Lovart는 모든 디자인에서 브랜드 일관성을 유지하나요?",
+        "answer": "네. Lovart가 브랜드 아이덴티티(색상, 폰트, 로고, 비주얼 스타일)를 이해하면 모든 차량 랩에 일관된 브랜딩을 적용합니다. 메뉴 보드, SNS, 인쇄물까지 확장됩니다."
+      },
+      {
+        "question": "디자인이 만족스럽지 않으면 환불이 되나요?",
+        "answer": "만족 보장 제도를 운영합니다. 생성된 랩 디자인에 만족하지 못하실 경우, 구매 후 7일 이내에 지원팀에 연락하시면 전액 환불해 드립니다."
+      }
+    ]
+  }
+],
+  "section_de": [
+  {
+    "type": "centeredInputSection",
+    "title": "KI Foodtruck-Wrap-Designer",
+    "subtitle": "Gestalten Sie atemberaubende Foodtruck-Wraps in Sekunden mit Lovart — dem weltweit ersten KI-Design-Agenten. MCoT-Kreativdirektion und präzise ChatCanvas-Bearbeitung verwandeln Ihren Truck in eine rollende Werbefläche.",
+    "buttonText": "Foodtruck-Wrap gestalten",
+    "system_prompt": "Sie sind MCoT, der Kreativdirektor bei Lovart, spezialisiert auf Foodtruck-Wrapping-Design. Sie orchestrieren mehrstufiges Reasoning, um Küchenart, Truck-Modell, Markenfarben und Designpräferenzen zu analysieren. Mit ChatCanvas verfeinern Sie kollaborativ Layouts, Typografie, Farbpaletten und visuelle Stile. Sie passen Grafiken natürlich an Fahrzeugkonturen an und liefern druckfertige 8K-Ergebnisse. Nutzerbeschreibung: $input$",
+    "suggestion": [
+      "Hochwertiger Gourmet-Foodtruck-Wrap mit appetitanregenden Food-Visuals",
+      "Mutiges Taco-Truck-Design mit lebendigen mexikanischen Farben und Menü-Highlights",
+      "Minimalistischer, eleganter Kaffee-Truck-Wrap",
+      "Verspielter Dessert-Van-Wrap mit süßem Thema"
+    ],
+    "input_placeholder": ""
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "Von der Idee zur Druckreife im Handumdrehen",
+    "columns": [
+      {
+        "title": "KI-generierte Wrap-Layouts",
+        "description": "Beschreiben Sie Ihren Truck-Typ und -Stil, und der MCoT-Agent von Lovart generiert sofort maßgeschneiderte Fahrzeug-Wrapping-Designs mit harmonischen Rastern, Schriftarten und Farbschemata.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "ChatCanvas-Präzision",
+        "description": "Klicken Sie auf ein beliebiges Element Ihres Wrap-Designs — Text, Bild oder Grafik — und chatten Sie, um es zu verfeinern. Passen Sie Farben an, ersetzen Sie Fotos oder optimieren Sie die Typografie in natürlicher Sprache.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "8K Profi-Export",
+        "description": "Exportieren Sie fahrzeugpaneel-getrennte Dateien in 8K-Auflösung in den Formaten PNG, JPG, SVG und PSD. Mit präzisen Abmessungen und Beschnittbereichen für professionelle Folierer.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Alles, was Ihr Foodtruck-Wrap braucht",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Großformat-Design",
+        "description": "Lovarts Engine ist für Fahrzeuggrafiken in Originalgröße ausgelegt. Selbst bei 6-Meter-Trucks bleiben Designs gestochen scharf, inklusive Beschnittbereichen und Nahtführungen für die Profi-Montage."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Fahrzeugkontur-Anpassung",
+        "description": "MCoT passt Ihr Design automatisch an Fahrzeugkonturen an. Grafiken fließen natürlich um Radhäuser, Türgriffe, Fenster und Serviceklappen — keine Verzerrungen oder unnatürlichen Beschnitte."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "3D-Truck Smart Mockup",
+        "description": "Platzieren Sie Ihren Wrap auf dem interaktiven 3D-Modell Ihres echten Trucks mit Smart Mockup. 360° drehen, Details zoomen, aus jedem Winkel prüfen — Straßenansicht, Serviceseite und Heck."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Wetterfeste Farben",
+        "description": "Lovart optimiert Farbprofile für Außenbeständigkeit. UV-resistente Paletten für 5–7 Jahre Farbechtheit bei Sonne, Regen und Straßenschmutz nach Profi-Gussfolienstandard."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "8K Druck-Export",
+        "description": "Exportieren Sie in 8K-Auflösung als PNG, JPG, SVG oder PSD — fahrzeugpaneel-getrennt (Fahrerseite, Beifahrerseite, Heck, Front). Mit präzisen Maßen für professionelle Folierer."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Markenkonsistenz",
+        "description": "Logo, Menü, Markenfarben und Schriften einmal hochladen — Lovart wendet Ihr Brand-Kit auf den gesamten Fahrzeug-Wrap an und überträgt es konsistent auf Menütafeln und Social Media."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Von Foodtruck-Betreibern geschätzt",
+    "testimonials": [
+      {
+        "name": "Markus Bauer",
+        "role": "Inhaber, Berlin Street Eats",
+        "quote": "Mit Lovart habe ich unseren Truck-Wrap in 45 Minuten designt — die Agentur wollte 2.800 € und 3 Wochen. Das 3D Smart Mockup war der Gamechanger: Ich konnte aus jedem Blickwinkel prüfen, ob unsere Telefonnummer sichtbar ist. Der Umsatz stieg im ersten Monat um 47%.",
+        "metric": "47% Umsatzplus",
+        "avatar_url": ""
+      },
+      {
+        "name": "Sabine Vogel",
+        "role": "Mitgründerin, Brew & Bloom Coffee Van",
+        "quote": "Die Fahrzeugkontur-Anpassung hat die gewölbten Panels unseres Vans perfekt verarbeitet. Das Design fließt um Schiebefenster und Radhäuser wie handvermessen. Wir bekommen auf jedem Markt Komplimente, die Leute machen Fotos mit dem Van. Private Events haben sich verdreifacht.",
+        "metric": "3× mehr Buchungen",
+        "avatar_url": ""
+      },
+      {
+        "name": "Thomas Krüger",
+        "role": "Inhaber, Spice Route Gourmet-Truck",
+        "quote": "Nach 18 Monaten in der Sonne war der alte Wrap ausgeblichen und löste sich. Lovarts wetterfeste Farb-Engine entwarf mit UV-optimierten Paletten einen neuen Wrap — nach 14 Monaten sieht er immer noch neuwertig aus. Unser Folierer sagte, die 8K-Dateien seien die besten Druckdaten seit 10 Jahren.",
+        "metric": "Auch nach 14 Monaten neuwertig",
+        "avatar_url": ""
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "Ist der KI Foodtruck-Wrap-Designer kostenlos?",
+        "answer": "Ja! Wir bieten täglich kostenlose Credits, damit Sie KI-generierte Foodtruck-Wraps kostenlos testen können. Wenn Sie hochauflösende Downloads und kommerzielle Rechte benötigen, steigen Sie auf einen kostenpflichtigen Plan um."
+      },
+      {
+        "question": "Welche Preispläne bietet Lovart an?",
+        "answer": "Lovart bietet drei Monatspläne: Starter (2.000 Credits/Monat), Basic (3.500 Credits/Monat) und Pro (11.000 Credits/Monat). Alle kostenpflichtigen Pläne beinhalten vollständige kommerzielle Nutzungsrechte für Ihre Wrap-Designs."
+      },
+      {
+        "question": "Habe ich die kommerziellen Rechte an meinen Truck-Wraps?",
+        "answer": "Ja! Alle kostenpflichtigen Pläne (Starter, Basic, Pro) beinhalten vollständige kommerzielle Nutzungsrechte. Sie besitzen Ihre Wrap-Designs und können sie für kommerzielle Zwecke drucken, anbringen und nutzen."
+      },
+      {
+        "question": "Welche Dateiformate kann ich exportieren?",
+        "answer": "Lovart unterstützt 8K-Auflösungsexport in PNG, JPG, SVG und PSD. Dateien werden automatisch nach Fahrzeugpaneelen getrennt (Fahrerseite, Beifahrerseite, Heck, Front) mit präzisen Abmessungen und Schnittmarken für Profi-Folierer."
+      },
+      {
+        "question": "Wie funktioniert Touch Edit für Truck-Wraps?",
+        "answer": "Mit Touch Edit klicken Sie auf ein beliebiges Element Ihres Wrap-Designs direkt auf ChatCanvas — Text, Bild oder Grafik — und ändern es sofort. Farben anpassen, Bilder austauschen, Elemente skalieren mit präzisen, intuitiven Steuerelementen."
+      },
+      {
+        "question": "Unterstützt Lovart alle Foodtruck-Modelle?",
+        "answer": "Absolut. Lovarts Fahrzeugkontur-Anpassung unterstützt alle gängigen Modelle: Freightliner, Ford E-Serie, Mercedes Sprinter, Isuzu NPR und mehr. Für Custom-Fahrzeuge können Sie Abmessungen für individuelles Kontur-Mapping hochladen."
+      },
+      {
+        "question": "Kann ich mein Design vor dem Druck auf einem 3D-Modell sehen?",
+        "answer": "Ja! Das Smart-Mockup-Modul platziert Ihr Design auf einem interaktiven 3D-Modell Ihres Trucks. Sie können 360° drehen, Nahtstellen und Radhäuser zoomen und den Wrap aus Straßenperspektive, Serviceseite und Heckansicht prüfen — das verhindert teure Druckfehler."
+      },
+      {
+        "question": "Hält Lovart die Markenkonsistenz über alle meine Designs hinweg aufrecht?",
+        "answer": "Ja. Sobald Lovart Ihre Markenidentität kennt — Farben, Schriften, Logo, visueller Stil — wendet es konsistentes Branding auf jeden Fahrzeug-Wrap an. Das setzt sich auf Menütafeln, Social Media und Druckmaterialien fort."
+      },
+      {
+        "question": "Bieten Sie eine Rückerstattung an, wenn ich nicht zufrieden bin?",
+        "answer": "Wir bieten eine Zufriedenheitsgarantie. Wenn Sie mit Ihren generierten Wrap-Designs nicht zufrieden sind, kontaktieren Sie unser Support-Team innerhalb von 7 Tagen nach dem Kauf für eine vollständige Rückerstattung."
+      }
+    ]
+  }
+],
+  "section_ru": [
+  {
+    "type": "centeredInputSection",
+    "title": "AI Дизайнер Оклейки Фудтрака",
+    "subtitle": "Создавайте эффектную оклейку фудтрака за секунды с Lovart — первым в мире AI-дизайн-агентом. Творческое руководство MCoT и точное редактирование ChatCanvas превращают ваш грузовик в передвижную рекламу.",
+    "buttonText": "Создать оклейку фудтрака",
+    "system_prompt": "Вы — MCoT, креативный директор Lovart, специализирующийся на дизайне оклейки фудтраков. Вы организуете многоэтапное рассуждение для анализа типа кухни, модели грузовика, цветов бренда и дизайн-предпочтений. Используя ChatCanvas, вы совместно совершенствуете макеты, типографику, цветовые палитры и визуальный стиль. Вы адаптируете графику под контуры автомобиля и выдаёте результат в 8K, готовом к печати. Описание пользователя: $input$",
+    "suggestion": [
+      "Премиальная оклейка фудтрака высокой кухни с аппетитными изображениями",
+      "Смелый дизайн тако-трака с яркими мексиканскими цветами",
+      "Минималистичная элегантная оклейка кофейного фургона",
+      "Игривая оклейка десертного фургона в сладкой тематике"
+    ],
+    "input_placeholder": ""
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "От идеи до готовности к печати в мгновение",
+    "columns": [
+      {
+        "title": "AI-генерируемые макеты",
+        "description": "Опишите тип и стиль вашего грузовика, и MCoT-агент Lovart мгновенно создаст индивидуальный дизайн оклейки с гармоничными сетками, шрифтами и цветовыми схемами.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "Точность ChatCanvas",
+        "description": "Нажмите на любой элемент оклейки — текст, изображение или графику — и общайтесь, чтобы улучшить его. Корректируйте цвета, заменяйте фото или настраивайте типографику на естественном языке.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "Профессиональный экспорт 8K",
+        "description": "Экспортируйте файлы, разделённые по панелям автомобиля, в разрешении 8K в форматах PNG, JPG, SVG и PSD. С точными размерами и областями под обрез для профессиональных монтажников.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Всё, что нужно для оклейки фудтрака",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Крупноформатный дизайн",
+        "description": "Движок Lovart создан для графики в масштабе автомобиля. Даже на 6-метровых грузовиках дизайн остаётся кристально чётким, с зонами под обрез и направляющими швов для профессионального монтажа."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Адаптация к контурам",
+        "description": "MCoT автоматически подгоняет дизайн под контуры автомобиля. Графика естественно обтекает колёсные арки, дверные ручки, окна и сервисные люки — без искажений и неестественной обрезки."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "3D Smart Mockup",
+        "description": "Разместите оклейку на интерактивной 3D-модели вашего реального грузовика. Вращайте на 360°, приближайте детали, проверяйте с любого ракурса — улица, сервисная сторона, задний вид."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Погодоустойчивые цвета",
+        "description": "Lovart оптимизирует цветовые профили для наружной эксплуатации. УФ-стойкие палитры сохраняют яркость 5–7 лет под солнцем, дождём и дорожной грязью, соответствуя стандартам профессиональной литой плёнки."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "Экспорт для печати 8K",
+        "description": "Экспортируйте в 8K в форматах PNG, JPG, SVG, PSD — файлы разделены по панелям (сторона водителя, пассажира, задняя, передняя). Точные размеры для профессиональной оклейки."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Единый стиль бренда",
+        "description": "Загрузите логотип, меню, цвета и шрифты один раз — Lovart применит бренд-кит ко всей оклейке и сохранит единство стиля на меню-бордах и в соцсетях."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Доверяют владельцы фудтраков",
+    "testimonials": [
+      {
+        "name": "Андрей Соколов",
+        "role": "Владелец, Moscow Street Food",
+        "quote": "Я сделал оклейку в Lovart за 45 минут — дизайн-агентство просило $2,800 и 3 недели. 3D Smart Mockup перевернул всё: я проверил видимость телефона с каждого ракурса. Продажи выросли на 47% в первый же месяц.",
+        "metric": "Рост продаж 47%",
+        "avatar_url": ""
+      },
+      {
+        "name": "Екатерина Волкова",
+        "role": "Сооснователь, Brew & Bloom Кофе-Фургон",
+        "quote": "Адаптация к контурам идеально обработала изогнутые панели нашего фургона. Дизайн обтекает раздвижное окно и арки как влитой. На каждом рынке нас хвалят за оклейку, люди фотографируются с фургоном. Частных заказов стало в 3 раза больше.",
+        "metric": "В 3 раза больше заказов",
+        "avatar_url": ""
+      },
+      {
+        "name": "Дмитрий Петров",
+        "role": "Владелец, Spice Route Гастрогрузовик",
+        "quote": "После 18 месяцев на солнце старая оклейка выцвела и отслоилась. Погодоустойчивый движок Lovart создал новую оклейку с УФ-оптимизированной палитрой — спустя 14 месяцев выглядит как новая. Монтажник сказал, что это лучшие файлы за 10 лет работы.",
+        "metric": "Как новая через 14 месяцев",
+        "avatar_url": ""
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "AI-дизайнер оклейки фудтрака бесплатный?",
+        "answer": "Да! Мы предоставляем ежедневные бесплатные кредиты для тестирования AI-оклейки фудтраков без затрат. Когда понадобятся файлы в высоком разрешении и коммерческие права, перейдите на платный тариф."
+      },
+      {
+        "question": "Какие тарифы предлагает Lovart?",
+        "answer": "Lovart предлагает три месячных тарифа: Starter (2 000 кредитов/мес), Basic (3 500 кредитов/мес) и Pro (11 000 кредитов/мес). Все платные тарифы включают полные коммерческие права на дизайны оклейки."
+      },
+      {
+        "question": "Есть ли у меня коммерческие права на оклейку?",
+        "answer": "Да! Все платные тарифы (Starter, Basic, Pro) включают полные права коммерческого использования. Вы владеете дизайнами оклейки и можете печатать, устанавливать и использовать их в коммерческих целях."
+      },
+      {
+        "question": "В каких форматах можно экспортировать?",
+        "answer": "Lovart поддерживает экспорт в разрешении 8K в форматах PNG, JPG, SVG и PSD. Файлы автоматически разделяются по панелям автомобиля (сторона водителя, пассажира, задняя, передняя) с точными размерами и метками обреза."
+      },
+      {
+        "question": "Как Touch Edit работает с оклейкой фудтрака?",
+        "answer": "Touch Edit позволяет нажать на любой элемент оклейки прямо в ChatCanvas — текст, изображение или графику — и мгновенно изменить его. Корректируйте цвета, заменяйте изображения, меняйте размер элементов."
+      },
+      {
+        "question": "Поддерживает ли Lovart все модели фудтраков?",
+        "answer": "Да. Адаптация к контурам Lovart поддерживает все основные модели: Freightliner, Ford E-серия, Mercedes Sprinter, Isuzu NPR и другие. Для кастомных автомобилей можно загрузить размеры для индивидуального контурного мэппинга."
+      },
+      {
+        "question": "Можно ли увидеть дизайн на 3D-модели до печати?",
+        "answer": "Да! Модуль Smart Mockup размещает ваш дизайн на интерактивной 3D-модели реального грузовика. Вращайте на 360°, приближайте швы и арки, проверяйте с улицы, сервисной стороны и сзади — никаких дорогостоящих ошибок печати."
+      },
+      {
+        "question": "Сохраняет ли Lovart единый стиль бренда во всех дизайнах?",
+        "answer": "Да. Как только Lovart понимает ваш бренд — цвета, шрифты, логотип, визуальный стиль — он применяет единый брендинг ко всей оклейке. Это распространяется на меню-борды, соцсети и печатные материалы."
+      },
+      {
+        "question": "Есть ли возврат, если я недоволен?",
+        "answer": "Мы предоставляем гарантию удовлетворения. Если вы недовольны сгенерированными дизайнами оклейки, свяжитесь со службой поддержки в течение 7 дней после покупки для полного возврата."
+      }
+    ]
+  }
+]

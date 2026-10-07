@@ -1,0 +1,151 @@
+---
+title: "Craft-Agent：集AI深度研究助手与一键建站引擎于一体的开源智能体系统 - A姐分享"
+source: "https://www.ahhhhfs.com/78099/"
+author:
+  - "[[ahhhhfs]]"
+published: 2025-12-06
+created: 2025-12-08
+description: "Craft-Agent 是一个集 AI 深度研究助手与一键建站引擎于一体的开源智能体系统，基于 FastAPI、LangGraph/LangChain 与 Next.js 等现代技术栈构建，支持自动规划与整理资料、生成结构化研究报告，并将研究成果一键转化为可预览的网站代码，适合开发者与内容创作者使用。"
+tags:
+  - "AI"
+  - "Agent"
+  - "开源"
+---
+## Craft-Agent：集AI深度研究助手与一键建站引擎于一体的开源智能体系统
+
+2025-12-06 [AI工具](https://www.ahhhhfs.com/funny_site/ai-tool/) [GitHub项目](https://www.ahhhhfs.com/funny_site/github%e9%a1%b9%e7%9b%ae/) 0 0 [0](https://www.ahhhhfs.com/78099/#comments)
+
+- [详情介绍](https://www.ahhhhfs.com/78099/#pills-details)
+- [常见问题](https://www.ahhhhfs.com/78099/#pills-faq)
+- [评论建议](https://www.ahhhhfs.com/78099/#pills-comments)
+
+## Craft-Agent 是什么？
+
+Craft-Agent 是一个开源智能体系统，把「深度研究助手」与「网站生成引擎」打包在一起。基于大语言模型、多智能体编排与 FastAPI + LangGraph/LangChain、Next.js + TypeScript + shadcn/ui 等现代技术栈，支持自动规划研究步骤、检索与整理资料，并能将研究成果一键生成可预览的前端网站，适合开发者、内容创作者与独立站搭建者使用。
+
+项目开源地址：
+
+GitHub： [https://github.com/ipvoov/Craft-Agent](https://github.com/ipvoov/Craft-Agent)
+
+在线演示： [http://47.107.140.195:3001/](http://47.107.140.195:3001/)
+
+[![Craft-Agent：集AI深度研究助手与一键建站引擎于一体的开源智能体系统](https://www.ahhhhfs.com/wp-content/uploads/2025/12/Craft-Agent%EF%BC%9A%E9%9B%86AI%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E5%8A%A9%E6%89%8B%E4%B8%8E%E4%B8%80%E9%94%AE%E5%BB%BA%E7%AB%99%E5%BC%95%E6%93%8E%E4%BA%8E%E4%B8%80%E4%BD%93%E7%9A%84%E5%BC%80%E6%BA%90%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F-main.jpg "Craft-Agent：集AI深度研究助手与一键建站引擎于一体的开源智能体系统 1")](https://www.ahhhhfs.com/wp-content/uploads/2025/12/Craft-Agent%EF%BC%9A%E9%9B%86AI%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E5%8A%A9%E6%89%8B%E4%B8%8E%E4%B8%80%E9%94%AE%E5%BB%BA%E7%AB%99%E5%BC%95%E6%93%8E%E4%BA%8E%E4%B8%80%E4%BD%93%E7%9A%84%E5%BC%80%E6%BA%90%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F-main.jpg)
+
+## 现代技术栈与整体架构
+
+Craft-Agent 采用前后端分离的现代架构设计：
+
+- **后端技术栈** ：FastAPI + LangGraph / LangChain
+	- 承载多步研究工作流与智能体编排
+	- 负责指令解析、工具调用与研究过程管理
+- **前端技术栈** ：Next.js + React + TypeScript + shadcn/ui + TailwindCSS
+	- 提供现代化 Web 界面与交互体验
+	- 支持代码查看、预览与多语言界面切换
+
+系统内置中英文多语言支持（如 `web/messages/en.json` 、 `web/messages/zh.json` ），方便不同语言用户快速上手。
+
+## 深度研究助手：从搜索到结构化报告
+
+### 多步深度研究工作流
+
+Craft-Agent 内置多步研究流程，可以：
+
+- 自动规划研究步骤与任务拆分
+- 按步骤进行检索、阅读、筛选与汇总信息
+- 基于检索结果整理出结构化研究报告
+
+在研究过程中支持 **Human-in-the-loop（人类在环）** 交互，用户可对研究计划、关注重点与输出形式进行微调，让结果更贴近实际需求。
+
+[![Craft-Agent：集AI深度研究助手与一键建站引擎于一体的开源智能体系统](https://www.ahhhhfs.com/78099/www.w3.org/2000/svg'%20viewBox='0%200%203112%201678'%3E%3C/svg%3E "Craft-Agent：集AI深度研究助手与一键建站引擎于一体的开源智能体系统 2")](https://www.ahhhhfs.com/wp-content/uploads/2025/12/Craft-Agent%EF%BC%9A%E9%9B%86AI%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E5%8A%A9%E6%89%8B%E4%B8%8E%E4%B8%80%E9%94%AE%E5%BB%BA%E7%AB%99%E5%BC%95%E6%93%8E%E4%BA%8E%E4%B8%80%E4%BD%93%E7%9A%84%E5%BC%80%E6%BA%90%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F-01.jpg)
+
+### 适用场景
+
+- 新领域的系统性学习与调研
+- 产品/技术方案的对比分析
+- 内容创作者的选题研究与资料整理
+- 需要结构化输出的深度报告撰写
+
+[![Craft-Agent：集AI深度研究助手与一键建站引擎于一体的开源智能体系统](https://www.ahhhhfs.com/78099/www.w3.org/2000/svg'%20viewBox='0%200%203464%202032'%3E%3C/svg%3E "Craft-Agent：集AI深度研究助手与一键建站引擎于一体的开源智能体系统 3")](https://www.ahhhhfs.com/wp-content/uploads/2025/12/Craft-Agent%EF%BC%9A%E9%9B%86AI%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E5%8A%A9%E6%89%8B%E4%B8%8E%E4%B8%80%E9%94%AE%E5%BB%BA%E7%AB%99%E5%BC%95%E6%93%8E%E4%BA%8E%E4%B8%80%E4%BD%93%E7%9A%84%E5%BC%80%E6%BA%90%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F-05.jpg)
+
+## 一键网站生成：从想法到页面
+
+### Web Dev 页面描述即可生成网站
+
+在 Craft-Agent 的 Web Dev 页面中，用户只需用自然语言描述：
+
+- 想要的网站结构
+- 页面内容模块
+- 设计风格与交互需求
+
+系统会据此：
+
+- 在后端生成项目结构与源代码
+- 通过前端界面展示并支持代码查看
+- 提供本地预览集成，方便开发者调试与二次开发
+
+[![Craft-Agent：集AI深度研究助手与一键建站引擎于一体的开源智能体系统](https://www.ahhhhfs.com/78099/www.w3.org/2000/svg'%20viewBox='0%200%203464%202032'%3E%3C/svg%3E "Craft-Agent：集AI深度研究助手与一键建站引擎于一体的开源智能体系统 4")](https://www.ahhhhfs.com/wp-content/uploads/2025/12/Craft-Agent%EF%BC%9A%E9%9B%86AI%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E5%8A%A9%E6%89%8B%E4%B8%8E%E4%B8%80%E9%94%AE%E5%BB%BA%E7%AB%99%E5%BC%95%E6%93%8E%E4%BA%8E%E4%B8%80%E4%BD%93%E7%9A%84%E5%BC%80%E6%BA%90%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F-02.jpg)
+
+这类能力适合：
+
+- 想快速搭建展示页、Landing Page 的独立开发者
+- 需要将研究成果转化为可视化网页的创作者
+- 想用 AI 辅助完成原型站点或 Demo 的团队
+
+[![Craft-Agent：集AI深度研究助手与一键建站引擎于一体的开源智能体系统](https://www.ahhhhfs.com/78099/www.w3.org/2000/svg'%20viewBox='0%200%203464%202032'%3E%3C/svg%3E "Craft-Agent：集AI深度研究助手与一键建站引擎于一体的开源智能体系统 5")](https://www.ahhhhfs.com/wp-content/uploads/2025/12/Craft-Agent%EF%BC%9A%E9%9B%86AI%E6%B7%B1%E5%BA%A6%E7%A0%94%E7%A9%B6%E5%8A%A9%E6%89%8B%E4%B8%8E%E4%B8%80%E9%94%AE%E5%BB%BA%E7%AB%99%E5%BC%95%E6%93%8E%E4%BA%8E%E4%B8%80%E4%BD%93%E7%9A%84%E5%BC%80%E6%BA%90%E6%99%BA%E8%83%BD%E4%BD%93%E7%B3%BB%E7%BB%9F-03.jpg)
+
+## 工具能力与系统集成
+
+### 内置网页爬虫
+
+Craft-Agent 集成网页爬虫能力，用于支持深度研究：
+
+- 基于 Jina 与 Readability 的网页抓取与正文提取
+- 自动清洗页面噪音信息，保留核心内容
+- 为后续研究分析与报告生成提供更干净的数据源
+
+### Python 代码执行工具
+
+在研究或网站生成过程中，系统支持调用 Python 代码执行工具，用于：
+
+- 辅助数据处理与简单计算
+- 动态生成部分内容或配置
+- 为进阶用户提供更灵活的扩展能力
+
+## 现代 Web 使用体验
+
+Craft-Agent 的前端采用：
+
+- Next.js 15 + React 19 + TypeScript
+- TailwindCSS + shadcn/ui 组件
+- 动画效果与现代 UI 设计
+
+界面风格清爽，交互流畅，适合长时间使用与频繁操作，有利于研究与开发类工作流的沉浸体验。
+
+## 适合哪些人使用？
+
+- **开发者与工程师** ：希望用现代技术栈与多智能体能力搭建研究/建站工具
+- **内容创作者与产品经理** ：需要高效完成深度调研并将成果快速上线为网页
+- **独立黑客与开源爱好者** ：对 LangGraph/LangChain、FastAPI、Next.js 等技术栈感兴趣，想要二次开发或自建智能体系统
+- **团队与工作室** ：想将研究流程标准化、自动化，并沉淀为在线知识页面或项目介绍网站
+
+如果你在寻找一套「能做深度研究」又「能帮你把成果直接变成网站」的开源智能体系统，Craft-Agent 值得尝试。
+
+本文链接： [https://www.ahhhhfs.com/78099/](https://www.ahhhhfs.com/78099/ "Craft-Agent：集AI深度研究助手与一键建站引擎于一体的开源智能体系统")
+
+### 相关
+
+1. 转载请保留原文链接谢谢！
+- 本站所有资源文章出自互联网收集整理，本站不参与制作，如果侵犯了您的合法权益，请联系本站我们会及时删除。
+- 本站发布资源来源于互联网，可能存在水印或者引流等信息，请用户擦亮眼睛自行鉴别，做一个有主见和判断力的用户。
+- 本站资源仅供研究、学习交流之用，若使用商业用途，请购买正版授权，否则产生的一切后果将由下载用户自行承担。
+- 联系方式（#替换成@）：feedback#abskoop.com[上一篇
+
+无人机航拍运镜教程，0基础新手从入门到大师
+
+](https://www.ahhhhfs.com/78095/ "无人机航拍运镜教程，0基础新手从入门到大师")[下一篇
+
+简单科学健身（Simple Science Fitness）：基于 M³ 模型的极简训练与营养指南，用自然方式实现科学瘦身与长寿目标
+
+](https://www.ahhhhfs.com/78113/ "简单科学健身（Simple Science Fitness）：基于 M³ 模型的极简训练与营养指南，用自然方式实现科学瘦身与长寿目标")
+
+[![ahhhhfs](https://www.ahhhhfs.com/wp-content/uploads/2021/07/1625151571-d09ac3b546e87a2.webp)](https://www.ahhhhfs.com/)

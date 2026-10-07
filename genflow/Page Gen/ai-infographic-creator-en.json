@@ -1,0 +1,150 @@
+{
+  "id": "tools-ai-infographic-creator-en",
+  "slug": {
+    "_type": "slug",
+    "current": "ai-infographic-creator"
+  },
+  "language": "en",
+  "category": "tool",
+  "schemaVersion": "composite-v2",
+  "storylineTemplate": "T1",
+  "title": "AI Infographic Creator — Design Data Visualizations | Lovart",
+  "description": {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AI Infographic Creator — Design Data Visualizations | Lovart",
+    "description": "Transform data into beautiful infographics with AI. Charts, timelines, comparisons — all professionally designed.",
+    "url": "https://www.lovart.ai/tools/ai-infographic-creator",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lovart",
+      "url": "https://www.lovart.ai"
+    },
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need design experience?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Describe what you want in plain language — the MCoT Engine applies professional design principles automatically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use output commercially?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Full commercial rights on all designs. No attribution required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What formats can I export?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PNG, JPEG, SVG, PDF (CMYK+bleed for professional printing), and layered PSD."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Lovart different from other tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lovart is an AI Design Agent — it reasons about design context via MCoT, edits specific elements with Touch Edit, enforces brand consistency via Brand Kit. Not templates, not image gen."
+          }
+        }
+      ]
+    }
+  },
+  "bodyJson": "[{\"type\": \"hero-split\", \"badge\": \"AI Design Agent\", \"title\": \"AI Infographic Creator \\u2014 Design Data Visualizations That People Actually Read | Lovart\", \"description\": \"Transform data into beautiful infographics with AI. Charts, timelines, comparisons \\u2014 all professionally designed with visual hierarchy that guides the reader's eye.\", \"buttons\": [{\"text\": \"Start Free\", \"href\": \"/home\", \"variant\": \"primary\"}], \"media\": {\"src\": \"\", \"alt\": \"AI Infographic Creator \\u2014 Design Data Visualizations That People Actually Read | Lovart\"}}, {\"type\": \"feature-grid\", \"title\": \"Everything You Can Do\", \"columns\": 3, \"features\": [{\"title\": \"Data-to-Visual Intelligence\", \"description\": \"Paste your data or describe your numbers in plain language. MCoT reasons about the best visualization type \\u2014 bar chart, pie, timeline, flow diagram, comparison table \\u2014 and designs it with proper data-ink ratio.\"}, {\"title\": \"Visual Hierarchy Engine\", \"description\": \"MCoT applies information design principles: headline dominance, section weighting, color-coded categories, and strategic whitespace. Your audience reads what matters, in the right order.\"}, {\"title\": \"Chart & Graph Library\", \"description\": \"Generate bar charts, line graphs, pie charts, donut charts, area charts, scatter plots, radar charts, Sankey diagrams, and more. MCoT selects the statistically appropriate visualization for your data type.\"}, {\"title\": \"Timeline & Process Modes\", \"description\": \"Create horizontal and vertical timelines, process flows, funnel diagrams, and step-by-step journey maps. MCoT auto-spaces elements for readability at any length.\"}, {\"title\": \"Comparison Layouts\", \"description\": \"Side-by-side comparisons, versus tables, feature matrices, pros/cons layouts. MCoT structures comparison data for instant comprehension \\u2014 no cognitive load on your reader.\"}, {\"title\": \"Brand Kit Integration\", \"description\": \"Your brand colors, fonts, and logo auto-apply to every infographic. Data visualizations match your visual identity \\u2014 not generic template styling. Consistent across your entire content library.\"}]}, {\"type\": \"how-it-works-section\", \"title\": \"How AI Infographic Creator Works \\u2014 Powered by MCoT\", \"subtitle\": \"Multi-step Chain-of-Thought reasoning transforms raw data into professionally designed infographics in minutes.\", \"steps\": [{\"step\": 1, \"title\": \"Input Your Data\", \"description\": \"Paste data directly, describe your key numbers, or upload a spreadsheet. MCoT analyzes data types, relationships, magnitudes, and trends to determine the optimal visualization approach.\"}, {\"step\": 2, \"title\": \"MCoT Selects Visual Type\", \"description\": \"The AI reasons about your data structure: time series \\u2192 line chart, parts of a whole \\u2192 pie/donut, comparison \\u2192 bar chart, process \\u2192 flow diagram. MCoT can also combine multiple chart types in one infographic.\"}, {\"step\": 3, \"title\": \"Design & Layout Generation\", \"description\": \"MCoT generates multiple layout variations with reasoned information hierarchy. Headlines, subheads, data visualizations, annotations, and callouts are positioned for maximum comprehension and visual flow.\"}, {\"step\": 4, \"title\": \"Refine & Export\", \"description\": \"Use Touch Edit to adjust colors, swap chart types, reposition elements, or update data points. Export as PNG, SVG (editable vectors), or PDF (CMYK+bleed for print). Your infographic is ready to publish.\"}]}, {\"type\": \"use-cases-section\", \"title\": \"Real-World Use Cases for AI Infographic Creator\", \"description\": \"AI Infographic Creator turns complex information into clear visuals. Here's how professionals use it.\", \"cases\": [{\"title\": \"Content Marketing\", \"description\": \"Create shareable infographics for blog posts, newsletters, and social media. Data-driven visuals earn 3x more backlinks than text-only content. Generate infographics that drive SEO and engagement.\"}, {\"title\": \"Business Reports\", \"description\": \"Transform quarterly reports, annual reviews, and investor updates into visually compelling documents. MCoT ensures your data tells a clear story \\u2014 not just a wall of charts.\"}, {\"title\": \"Education & Training\", \"description\": \"Create educational infographics, process diagrams, and visual study guides. Break complex concepts into digestible visual sequences that improve learning retention.\"}, {\"title\": \"Sales & Proposal Decks\", \"description\": \"Turn product comparisons, ROI data, and market statistics into persuasive visuals for sales decks and proposals. Data-backed visuals close deals faster than bullet points.\"}]}, {\"type\": \"comparison-section\", \"title\": \"AI Infographic Creator Compared to Alternatives\", \"description\": \"See how Lovart's approach to infographic design compares to traditional tools.\", \"headers\": [\"Feature\", \"Other Tools\", \"Lovart Advantage\"], \"rows\": [[\"Design Intelligence\", \"Template-based \\u2014 you manually place every chart and text box\", \"MCoT reasons about data structure and auto-designs the optimal layout, chart type, and visual hierarchy for your specific data\"], [\"Chart Selection\", \"You choose the chart type \\u2014 even if it's statistically wrong for your data\", \"MCoT analyzes your data type (time series, categorical, proportional) and recommends or auto-selects the correct visualization\"], [\"Visual Hierarchy\", \"Manual layout decisions \\u2014 easy to create cluttered, hard-to-read infographics\", \"MCoT applies information design principles: headline dominance, section weighting, strategic whitespace, and guided reading flow\"], [\"Editing Control\", \"Static chart tools \\u2014 change data, rebuild the chart\", \"Touch Edit: adjust individual data points, swap chart types, reposition elements without rebuilding. Real-time data updates\"], [\"Brand Consistency\", \"Manual brand application across every infographic\", \"Brand Kit auto-applies colors, fonts, and styling. Generate 50 infographics \\u2014 all visually consistent with your brand identity\"]]}, {\"type\": \"pricing-section\", \"title\": \"Pricing: What AI Infographic Creator Costs\", \"description\": \"AI Infographic Creator is included in all Lovart plans. No per-tool pricing \\u2014 every tool, every plan.\", \"tiers\": [{\"name\": \"Free\", \"price\": \"$0\", \"designs\": \"50 designs/month\", \"features\": [\"All tools\", \"PNG export\", \"Basic support\"]}, {\"name\": \"Starter\", \"price\": \"$19/mo\", \"designs\": \"500 designs/month\", \"features\": [\"All tools\", \"HD export\", \"Brand Kit\", \"ChatCanvas priority\"]}, {\"name\": \"Professional\", \"price\": \"$49/mo\", \"designs\": \"Unlimited\", \"features\": [\"All tools\", \"8K export\", \"Brand Kit\", \"Touch Edit advanced\", \"MCoT custom prompts\", \"PSD/SVG layered\"]}, {\"name\": \"Enterprise\", \"price\": \"Custom\", \"designs\": \"Unlimited\", \"features\": [\"Everything in Pro\", \"Custom MCoT workflows\", \"SSO\", \"Dedicated support\"]}]}, {\"type\": \"faq\", \"title\": \"Frequently Asked Questions\", \"items\": [{\"question\": \"Is this free to use?\", \"answer\": \"Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit.\"}, {\"question\": \"Do I need design experience?\", \"answer\": \"No. Describe what you want in plain language \\u2014 the MCoT Engine applies professional design principles and information hierarchy automatically.\"}, {\"question\": \"Can I use output commercially?\", \"answer\": \"Yes. Full commercial rights on all designs. No attribution required. Use infographics in reports, on your website, in client deliverables.\"}, {\"question\": \"What data formats can I input?\", \"answer\": \"Paste text data directly, describe numbers in plain language, or upload CSV/Excel files. MCoT parses and structures your data automatically.\"}, {\"question\": \"How is Lovart different from Canva or Piktochart?\", \"answer\": \"Lovart is an AI Design Agent \\u2014 it reasons about data context via MCoT to select the right chart type and layout, edits specific elements with Touch Edit, and enforces brand consistency via Brand Kit. Not templates, not manual chart builders.\"}]}, {\"type\": \"cta-default\", \"title\": \"Create Data Visualizations Free\", \"description\": \"Transform data into infographics that people actually read. 50 free designs/month. No credit card.\", \"buttons\": [{\"text\": \"Start Free\", \"href\": \"/home\", \"variant\": \"primary\"}]}]",
+  "seo": {
+    "_type": "seo",
+    "title": "AI Infographic Creator — Design Data Visualizations | Lovart",
+    "description": {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "AI Infographic Creator — Design Data Visualizations | Lovart",
+      "description": "Transform data into beautiful infographics with AI. Charts, timelines, comparisons — all professionally designed.",
+      "url": "https://www.lovart.ai/tools/ai-infographic-creator",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lovart",
+        "url": "https://www.lovart.ai"
+      },
+      "mainEntity": {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is this free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need design experience?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Describe what you want in plain language — the MCoT Engine applies professional design principles automatically."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use output commercially?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Full commercial rights on all designs. No attribution required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What formats can I export?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PNG, JPEG, SVG, PDF (CMYK+bleed for professional printing), and layered PSD."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is Lovart different from other tools?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lovart is an AI Design Agent — it reasons about design context via MCoT, edits specific elements with Touch Edit, enforces brand consistency via Brand Kit. Not templates, not image gen."
+            }
+          }
+        ]
+      }
+    },
+    "keywords": [
+      "ai infographic creator",
+      "ai infographic creator",
+      "free ai infographic creator",
+      "lovart"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "AI Infographic Creator — Design Data Visualizations | Lovart",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d14a7f30014fd72f63f9cdfbed8dd17c67012f10.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"AI Infographic Creator — Design Data Visualizations | Lovart\", \"description\": \"{'@context': 'https://schema.org', '@type': 'WebPage', 'name': 'AI Infographic Creator — Design Data Visualizations | Lovart', 'description': 'Transform data into beautiful infographics with AI. Charts, timelines, comparisons — all professionally designed.', 'url': 'https://www.lovart.ai/tools/ai-infographic-creator', 'publisher': {'@type': 'Organization', 'name': 'Lovart', 'url': 'https://www.lovart.ai'}, 'mainEntity': {'@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': 'Is this free to use?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit.'}}, {'@type': 'Question', 'name': 'Do I need design experience?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'No. Describe what you want in plain language — the MCoT Engine applies professional design principles automatically.'}}, {'@type': 'Question', 'name': 'Can I use output commercially?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. Full commercial rights on all designs. No attribution required.'}}, {'@type': 'Question', 'name': 'What formats can I export?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'PNG, JPEG, SVG, PDF (CMYK+bleed for professional printing), and layered PSD.'}}, {'@type': 'Question', 'name': 'How is Lovart different from other tools?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Lovart is an AI Design Agent — it reasons about design context via MCoT, edits specific elements with Touch Edit, enforces brand consistency via Brand Kit. Not templates, not image gen.'}}]}}\", \"url\": \"https://www.lovart.ai/tools/ai-infographic-creator\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Is this free to use?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit.\"}}, {\"@type\": \"Question\", \"name\": \"Do I need design experience?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"No. Describe what you want in plain language — the MCoT Engine applies professional design principles automatically.\"}}, {\"@type\": \"Question\", \"name\": \"Can I use output commercially?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Yes. Full commercial rights on all designs. No attribution required.\"}}, {\"@type\": \"Question\", \"name\": \"What formats can I export?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"PNG, JPEG, SVG, PDF (CMYK+bleed for professional printing), and layered PSD.\"}}, {\"@type\": \"Question\", \"name\": \"How is Lovart different from other tools?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart is an AI Design Agent — it reasons about design context via MCoT, edits specific elements with Touch Edit, enforces brand consistency via Brand Kit. Not templates, not image gen.\"}}]}}"
+    }
+  },
+  "pageType": "tool"
+}

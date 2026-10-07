@@ -1,0 +1,386 @@
+{
+  "_id": "features-ai-text-to-image-generator-zh-TW",
+  "reflowSourceId": "features-ai-text-to-image-generator-zh-TW",
+  "slug": "ai-text-to-image-generator",
+  "language": "zh-TW",
+  "category": "feature",
+  "title": "Lovart AI文字轉圖像：生成可編輯4K藝術",
+  "description": "Transform text into stunning 4K images with Lovart's AI generator. Access Nano Banana Pro, Flux, and more. Editable layers, perfect text, and commercial rights.",
+  "seo": {
+    "description": "用Lovart的AI生成器，輕鬆將文字轉成驚豔4K影像！支援Nano Banana Pro、Flux等多種模型。可編輯圖層、完美文字，還附商業使用權限。",
+    "keywords": [
+      "AI圖片生成器",
+      "文字轉圖片",
+      "奈米香蕉專業版",
+      "AI藝術生成器",
+      "Flux AI",
+      "Lovart設計助手"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Nano Banana Pro",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovart AI文字轉圖像：生成可編輯4K藝術\", \"description\": \"Transform text into stunning 4K images with Lovart's AI generator. Access Nano Banana Pro, Flux, and more. Editable layers, perfect text, and commercial rights.\", \"url\": \"https://www.lovart.ai/features/ai-text-to-image-generator\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Lovart 和 Midjourney 有什麼區別？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"雖然 Midjourney 非常適合藝術探索，但 Lovart 是一個完整的設計 Agent。我們提供可編輯的圖層（元素編輯）、精準的局部編輯（Touch Edit）和更好的文字渲染，使其成為實際設計工作的專業工具。(section_zh-TW)\"}}, {\"@type\": \"Question\", \"name\": \"我可以將圖片用於商業用途嗎？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以。在 Lovart 付費方案中生成的所有圖像均附帶完整的商業許可，允許您將其用於廣告、商品和客戶項目。(section_zh-TW)\"}}, {\"@type\": \"Question\", \"name\": \"Lovart 使用哪些 AI 模型？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart 整合了包括 Nano Banana Pro、Flux、Seedream 4.5 等在內的頂級模型。您可以讓 Agent 選擇最佳模型或手動選擇您的偏好。(section_zh-TW)\"}}, {\"@type\": \"Question\", \"name\": \"生成的圖像解析度有多高？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart 預設生成高畫質圖像，我們內建的智慧放大 (Smart Upscale) 功能允許您將解析度提高至 4K 和 8K，以達到印刷級品質。(section_zh-TW)\"}}, {\"@type\": \"Question\", \"name\": \"我可以編輯生成圖像中的文字嗎？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以！與其他生成器不同，Lovart 的「文字編輯」功能允許您點擊生成的文字，並直接在畫布上修改內容、字體和樣式。(section_zh-TW)\"}}]}}"
+    },
+    "title": "Lovart AI文字轉圖像：生成可編輯4K藝術"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Lovart AI文字轉圖像：生成可編輯4K藝術\",\"description\":\"Transform text into stunning 4K images with Lovart's AI generator. Access Nano Banana Pro, Flux, and more. Editable layers, perfect text, and commercial rights.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Nano Banana Pro\"}},{\"type\":\"bento-6\",\"title\":\"The Most Powerful AI Art Studio\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Nano Banana Pro\",\"description\":\"使用 Google 最新模型，獲得業界領先的照片級真實感和卓越的文字渲染能力。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Nano Banana Pro\"}},{\"title\":\"元素編輯 (Edit Elements)\",\"description\":\"自動檢測並將主體從背景中分離，將生成的平面圖像轉變為多圖層設計文件。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"元素編輯 (Edit Elements)\"}},{\"title\":\"智慧放大 (Smart Upscale)\",\"description\":\"將圖像解析度提升至 8K 而不丟失細節。非常適合印刷品和大型顯示。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"智慧放大 (Smart Upscale)\"}},{\"title\":\"風格參考 (Style Reference)\",\"description\":\"上傳圖像以定義美學。Agent 將生成嚴格遵循您參考風格和配色方案的新視覺效果。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"風格參考 (Style Reference)\"}},{\"title\":\"觸控編輯 (Touch Edit)\",\"description\":\"使用自然語言修改圖像的特定部分。只需點擊一個區域並說「添加一副太陽鏡」或「讓光線變暖」。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"觸控編輯 (Touch Edit)\"}},{\"title\":\"品牌套件整合\",\"description\":\"確保生成的每張圖像都符合您的品牌。Agent 會記住您的 Logo、字體和顏色，以保持輸出一致性。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"品牌套件整合\"}}]},{\"type\":\"capability-tabs\",\"title\":\"一個智慧體，整合全部能力\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Nano Banana Pro\",\"icon\":\"chat\",\"content\":{\"title\":\"Nano Banana Pro\",\"description\":\"使用 Google 最新模型，獲得業界領先的照片級真實感和卓越的文字渲染能力。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Nano Banana Pro\"}}},{\"label\":\"元素編輯 (Edit Elements)\",\"icon\":\"image\",\"content\":{\"title\":\"元素編輯 (Edit Elements)\",\"description\":\"自動檢測並將主體從背景中分離，將生成的平面圖像轉變為多圖層設計文件。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"元素編輯 (Edit Elements)\"}}},{\"label\":\"智慧放大 (Smart Upscale)\",\"icon\":\"flask\",\"content\":{\"title\":\"智慧放大 (Smart Upscale)\",\"description\":\"將圖像解析度提升至 8K 而不丟失細節。非常適合印刷品和大型顯示。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"智慧放大 (Smart Upscale)\"}}},{\"label\":\"風格參考 (Style Reference)\",\"icon\":\"brand\",\"content\":{\"title\":\"風格參考 (Style Reference)\",\"description\":\"上傳圖像以定義美學。Agent 將生成嚴格遵循您參考風格和配色方案的新視覺效果。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"風格參考 (Style Reference)\"}}}]},{\"type\":\"bento-2\",\"title\":\"尤其擅長的兩件事\",\"columns\":2,\"features\":[{\"title\":\"觸控編輯 (Touch Edit)\",\"description\":\"使用自然語言修改圖像的特定部分。只需點擊一個區域並說「添加一副太陽鏡」或「讓光線變暖」。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"觸控編輯 (Touch Edit)\"}},{\"title\":\"品牌套件整合\",\"description\":\"確保生成的每張圖像都符合您的品牌。Agent 會記住您的 Logo、字體和顏色，以保持輸出一致性。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"品牌套件整合\"}}]},{\"type\":\"feature-detail\",\"title\":\"詳細了解使用方式\",\"items\":[{\"title\":\"開啟你的AI Text to Image Generator: Create Editable 4K Art專案\",\"description\":\"描述你想要的成果，並補充參考素材即可。\"},{\"title\":\"與智慧體一起迭代\",\"description\":\"在同一畫布上調整細節、探索不同方案。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"將文字轉化為可編輯的 4K 傑作\",\"description\":\"別再滿足於無法修改的靜態 JPG 了。Lovart 是唯一能將您的提示詞轉化為完全可編輯圖層的 AI 圖像生成器。在一個工作區內即可使用 Nano Banana Pro、Flux 等全球頂尖模型。創作逼真的廣告、超現實藝術和品牌視覺，並且真正能夠微調、調整大小和完美修飾。\",\"input_placeholder\":\"例如：「一雙未來主義的運動鞋設計，懸浮在零重力空間，霓虹藍光，蒸汽波美學，8k 解析度。」\",\"prompts\":[{\"label\":\"電影感人像\",\"prompt\":\"Hyper-realistic portrait of a cyborg woman with porcelain skin, golden cracks, studio lighting, bokeh background\"},{\"label\":\"3D 圖標設計\",\"prompt\":\"Isometric 3D icon of a cozy coffee shop, pastel colors, clay render style, soft shadows\"},{\"label\":\"復古海報藝術\",\"prompt\":\"Vintage travel poster for Mars, retro typography saying 'VISIT MARS', grainy texture, art deco style\"},{\"label\":\"產品展示攝影\",\"prompt\":\"Professional product photography of a glass perfume bottle on water surface, ripples, bright daylight\"}],\"tip\":\"專業提示：生成後使用「元素編輯 (Edit Elements)」將主體與背景分離，瞬間將平面圖像轉化為可編輯的圖層。\",\"cta\":{\"text\":\"生成並編輯\"}},{\"type\":\"workflow-horizontal\",\"title\":\"為什麼設計師選擇 Lovart 而非 Midjourney\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"從平面圖到圖層\",\"description\":\"Lovart 創造的不僅僅是像素。使用「元素編輯」智能地將生成的圖像拆分為前景、背景和文字圖層，實現完全控制。\"},{\"step\":2,\"title\":\"清晰可讀的文字\",\"description\":\"由 Nano Banana Pro 和 Seedream 4.5 驅動，Lovart 能在海報和包裝上渲染清晰、準確的文字。不再有亂碼。\"},{\"step\":3,\"title\":\"精準的局部編輯\",\"description\":\"無需重新生成整張圖片。只需使用 Touch Edit 指向一個物體並告訴 Agent「把這輛車變成紅色」或「移除眼鏡」。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Text to Image Generator: Create Editable 4K Art：Lovart 與一般工作流程比較\",\"headers\":[\"需求\",\"通用工具\",\"手動工作流程\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"開啟你的AI Text to Image Generator: Create Editable 4K Art專案\",\"values\":[\"一句提示詞\",\"手動撰寫需求\",\"需求驅動的推理\"]},{\"feature\":\"產出第一版的時間\",\"values\":[\"幾分鐘\",\"數天\",\"幾分鐘\"]},{\"feature\":\"生成後的編輯\",\"values\":[\"有限\",\"反覆修改\",\"塗抹 / 文字 / 元素編輯\"]},{\"feature\":\"維持品牌一致\",\"values\":[\"手動\",\"手動\",\"支援 Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"AI Text to Image Generator: Create Editable 4K Art的最佳應用場景\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"更快上線\",\"description\":\"從需求到AI Text to Image Generator: Create Editable 4K Art素材，一次工作階段即可完成。\"},{\"icon\":\"brand\",\"title\":\"維持一致\",\"description\":\"Brand Kit 讓每一份素材都保持統一。\"},{\"icon\":\"refresh\",\"title\":\"快速迭代\",\"description\":\"無需從頭開始，即可編輯細節。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"「元素編輯」功能簡直是救星。我可以生成一個角色，將其從背景中分離出來，然後在幾秒鐘內將其放入新場景中。這為我節省了數小時的遮罩時間。\",\"author\":\"Alex D.\",\"role\":\"遊戲概念藝術家\"},{\"quote\":\"終於有一個會拼寫的 AI 了！我們使用 Lovart 生成帶有文字的社群媒體貼文，它的排版準確率高達 99%。\",\"author\":\"Sarah Jenkins\",\"role\":\"行銷總監\"},{\"quote\":\"我們喜歡在一個地方就能使用 Flux、Nano Banana 和其他模型。這讓我們能夠靈活地為每個客戶項目選擇最佳風格。\",\"author\":\"PixelStudio\",\"role\":\"設計代理商\"}],\"title\":\"轉向 Lovart 的創作者\"},{\"type\":\"pricing-block\",\"title\":\"選擇適合團隊的方案\",\"description\":\"免費開始，當作品要交付客戶時再升級。\"},{\"type\":\"faq\",\"title\":\"常見問題\",\"items\":[{\"question\":\"Lovart 和 Midjourney 有什麼區別？\",\"answer\":\"雖然 Midjourney 非常適合藝術探索，但 Lovart 是一個完整的設計 Agent。我們提供可編輯的圖層（元素編輯）、精準的局部編輯（Touch Edit）和更好的文字渲染，使其成為實際設計工作的專業工具。\"},{\"question\":\"我可以將圖片用於商業用途嗎？\",\"answer\":\"可以。在 Lovart 付費方案中生成的所有圖像均附帶完整的商業許可，允許您將其用於廣告、商品和客戶項目。\"},{\"question\":\"Lovart 使用哪些 AI 模型？\",\"answer\":\"Lovart 整合了包括 Nano Banana Pro、Flux、Seedream 4.5 等在內的頂級模型。您可以讓 Agent 選擇最佳模型或手動選擇您的偏好。\"},{\"question\":\"生成的圖像解析度有多高？\",\"answer\":\"Lovart 預設生成高畫質圖像，我們內建的智慧放大 (Smart Upscale) 功能允許您將解析度提高至 4K 和 8K，以達到印刷級品質。\"},{\"question\":\"我可以編輯生成圖像中的文字嗎？\",\"answer\":\"可以！與其他生成器不同，Lovart 的「文字編輯」功能允許您點擊生成的文字，並直接在畫布上修改內容、字體和樣式。\"}]},{\"type\":\"cta-default\",\"title\":\"用 Lovart 開始創作\",\"description\":\"幾分鐘內，把你的需求變成符合品牌調性的視覺作品。\",\"buttons\":[{\"text\":\"免費開始\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Lovart AI文字轉圖像：生成可編輯4K藝術",
+      "description": "Transform text into stunning 4K images with Lovart's AI generator. Access Nano Banana Pro, Flux, and more. Editable layers, perfect text, and commercial rights.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Nano Banana Pro"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "The Most Powerful AI Art Studio",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Nano Banana Pro",
+          "description": "使用 Google 最新模型，獲得業界領先的照片級真實感和卓越的文字渲染能力。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Nano Banana Pro"
+          }
+        },
+        {
+          "title": "元素編輯 (Edit Elements)",
+          "description": "自動檢測並將主體從背景中分離，將生成的平面圖像轉變為多圖層設計文件。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "元素編輯 (Edit Elements)"
+          }
+        },
+        {
+          "title": "智慧放大 (Smart Upscale)",
+          "description": "將圖像解析度提升至 8K 而不丟失細節。非常適合印刷品和大型顯示。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "智慧放大 (Smart Upscale)"
+          }
+        },
+        {
+          "title": "風格參考 (Style Reference)",
+          "description": "上傳圖像以定義美學。Agent 將生成嚴格遵循您參考風格和配色方案的新視覺效果。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "風格參考 (Style Reference)"
+          }
+        },
+        {
+          "title": "觸控編輯 (Touch Edit)",
+          "description": "使用自然語言修改圖像的特定部分。只需點擊一個區域並說「添加一副太陽鏡」或「讓光線變暖」。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "觸控編輯 (Touch Edit)"
+          }
+        },
+        {
+          "title": "品牌套件整合",
+          "description": "確保生成的每張圖像都符合您的品牌。Agent 會記住您的 Logo、字體和顏色，以保持輸出一致性。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "品牌套件整合"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "一個智慧體，整合全部能力",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Nano Banana Pro",
+          "icon": "chat",
+          "content": {
+            "title": "Nano Banana Pro",
+            "description": "使用 Google 最新模型，獲得業界領先的照片級真實感和卓越的文字渲染能力。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "Nano Banana Pro"
+            }
+          }
+        },
+        {
+          "label": "元素編輯 (Edit Elements)",
+          "icon": "image",
+          "content": {
+            "title": "元素編輯 (Edit Elements)",
+            "description": "自動檢測並將主體從背景中分離，將生成的平面圖像轉變為多圖層設計文件。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "元素編輯 (Edit Elements)"
+            }
+          }
+        },
+        {
+          "label": "智慧放大 (Smart Upscale)",
+          "icon": "flask",
+          "content": {
+            "title": "智慧放大 (Smart Upscale)",
+            "description": "將圖像解析度提升至 8K 而不丟失細節。非常適合印刷品和大型顯示。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "智慧放大 (Smart Upscale)"
+            }
+          }
+        },
+        {
+          "label": "風格參考 (Style Reference)",
+          "icon": "brand",
+          "content": {
+            "title": "風格參考 (Style Reference)",
+            "description": "上傳圖像以定義美學。Agent 將生成嚴格遵循您參考風格和配色方案的新視覺效果。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "風格參考 (Style Reference)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "尤其擅長的兩件事",
+      "columns": 2,
+      "features": [
+        {
+          "title": "觸控編輯 (Touch Edit)",
+          "description": "使用自然語言修改圖像的特定部分。只需點擊一個區域並說「添加一副太陽鏡」或「讓光線變暖」。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "觸控編輯 (Touch Edit)"
+          }
+        },
+        {
+          "title": "品牌套件整合",
+          "description": "確保生成的每張圖像都符合您的品牌。Agent 會記住您的 Logo、字體和顏色，以保持輸出一致性。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "品牌套件整合"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "詳細了解使用方式",
+      "items": [
+        {
+          "title": "開啟你的AI Text to Image Generator: Create Editable 4K Art專案",
+          "description": "描述你想要的成果，並補充參考素材即可。"
+        },
+        {
+          "title": "與智慧體一起迭代",
+          "description": "在同一畫布上調整細節、探索不同方案。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "將文字轉化為可編輯的 4K 傑作",
+      "description": "別再滿足於無法修改的靜態 JPG 了。Lovart 是唯一能將您的提示詞轉化為完全可編輯圖層的 AI 圖像生成器。在一個工作區內即可使用 Nano Banana Pro、Flux 等全球頂尖模型。創作逼真的廣告、超現實藝術和品牌視覺，並且真正能夠微調、調整大小和完美修飾。",
+      "input_placeholder": "例如：「一雙未來主義的運動鞋設計，懸浮在零重力空間，霓虹藍光，蒸汽波美學，8k 解析度。」",
+      "prompts": [
+        {
+          "label": "電影感人像",
+          "prompt": "Hyper-realistic portrait of a cyborg woman with porcelain skin, golden cracks, studio lighting, bokeh background"
+        },
+        {
+          "label": "3D 圖標設計",
+          "prompt": "Isometric 3D icon of a cozy coffee shop, pastel colors, clay render style, soft shadows"
+        },
+        {
+          "label": "復古海報藝術",
+          "prompt": "Vintage travel poster for Mars, retro typography saying 'VISIT MARS', grainy texture, art deco style"
+        },
+        {
+          "label": "產品展示攝影",
+          "prompt": "Professional product photography of a glass perfume bottle on water surface, ripples, bright daylight"
+        }
+      ],
+      "tip": "專業提示：生成後使用「元素編輯 (Edit Elements)」將主體與背景分離，瞬間將平面圖像轉化為可編輯的圖層。",
+      "cta": {
+        "text": "生成並編輯"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "為什麼設計師選擇 Lovart 而非 Midjourney",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "從平面圖到圖層",
+          "description": "Lovart 創造的不僅僅是像素。使用「元素編輯」智能地將生成的圖像拆分為前景、背景和文字圖層，實現完全控制。"
+        },
+        {
+          "step": 2,
+          "title": "清晰可讀的文字",
+          "description": "由 Nano Banana Pro 和 Seedream 4.5 驅動，Lovart 能在海報和包裝上渲染清晰、準確的文字。不再有亂碼。"
+        },
+        {
+          "step": 3,
+          "title": "精準的局部編輯",
+          "description": "無需重新生成整張圖片。只需使用 Touch Edit 指向一個物體並告訴 Agent「把這輛車變成紅色」或「移除眼鏡」。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Text to Image Generator: Create Editable 4K Art：Lovart 與一般工作流程比較",
+      "headers": [
+        "需求",
+        "通用工具",
+        "手動工作流程",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "開啟你的AI Text to Image Generator: Create Editable 4K Art專案",
+          "values": [
+            "一句提示詞",
+            "手動撰寫需求",
+            "需求驅動的推理"
+          ]
+        },
+        {
+          "feature": "產出第一版的時間",
+          "values": [
+            "幾分鐘",
+            "數天",
+            "幾分鐘"
+          ]
+        },
+        {
+          "feature": "生成後的編輯",
+          "values": [
+            "有限",
+            "反覆修改",
+            "塗抹 / 文字 / 元素編輯"
+          ]
+        },
+        {
+          "feature": "維持品牌一致",
+          "values": [
+            "手動",
+            "手動",
+            "支援 Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "AI Text to Image Generator: Create Editable 4K Art的最佳應用場景",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "更快上線",
+          "description": "從需求到AI Text to Image Generator: Create Editable 4K Art素材，一次工作階段即可完成。"
+        },
+        {
+          "icon": "brand",
+          "title": "維持一致",
+          "description": "Brand Kit 讓每一份素材都保持統一。"
+        },
+        {
+          "icon": "refresh",
+          "title": "快速迭代",
+          "description": "無需從頭開始，即可編輯細節。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "「元素編輯」功能簡直是救星。我可以生成一個角色，將其從背景中分離出來，然後在幾秒鐘內將其放入新場景中。這為我節省了數小時的遮罩時間。",
+          "author": "Alex D.",
+          "role": "遊戲概念藝術家"
+        },
+        {
+          "quote": "終於有一個會拼寫的 AI 了！我們使用 Lovart 生成帶有文字的社群媒體貼文，它的排版準確率高達 99%。",
+          "author": "Sarah Jenkins",
+          "role": "行銷總監"
+        },
+        {
+          "quote": "我們喜歡在一個地方就能使用 Flux、Nano Banana 和其他模型。這讓我們能夠靈活地為每個客戶項目選擇最佳風格。",
+          "author": "PixelStudio",
+          "role": "設計代理商"
+        }
+      ],
+      "title": "轉向 Lovart 的創作者"
+    },
+    {
+      "type": "pricing-block",
+      "title": "選擇適合團隊的方案",
+      "description": "免費開始，當作品要交付客戶時再升級。"
+    },
+    {
+      "type": "faq",
+      "title": "常見問題",
+      "items": [
+        {
+          "question": "Lovart 和 Midjourney 有什麼區別？",
+          "answer": "雖然 Midjourney 非常適合藝術探索，但 Lovart 是一個完整的設計 Agent。我們提供可編輯的圖層（元素編輯）、精準的局部編輯（Touch Edit）和更好的文字渲染，使其成為實際設計工作的專業工具。"
+        },
+        {
+          "question": "我可以將圖片用於商業用途嗎？",
+          "answer": "可以。在 Lovart 付費方案中生成的所有圖像均附帶完整的商業許可，允許您將其用於廣告、商品和客戶項目。"
+        },
+        {
+          "question": "Lovart 使用哪些 AI 模型？",
+          "answer": "Lovart 整合了包括 Nano Banana Pro、Flux、Seedream 4.5 等在內的頂級模型。您可以讓 Agent 選擇最佳模型或手動選擇您的偏好。"
+        },
+        {
+          "question": "生成的圖像解析度有多高？",
+          "answer": "Lovart 預設生成高畫質圖像，我們內建的智慧放大 (Smart Upscale) 功能允許您將解析度提高至 4K 和 8K，以達到印刷級品質。"
+        },
+        {
+          "question": "我可以編輯生成圖像中的文字嗎？",
+          "answer": "可以！與其他生成器不同，Lovart 的「文字編輯」功能允許您點擊生成的文字，並直接在畫布上修改內容、字體和樣式。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "用 Lovart 開始創作",
+      "description": "幾分鐘內，把你的需求變成符合品牌調性的視覺作品。",
+      "buttons": [
+        {
+          "text": "免費開始",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

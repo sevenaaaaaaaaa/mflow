@@ -1,0 +1,387 @@
+{
+  "_id": "features-gpt-image-generator-ai-pt",
+  "reflowSourceId": "features-gpt-image-generator-ai-pt",
+  "slug": "gpt-image-generator-ai",
+  "language": "pt",
+  "category": "feature",
+  "title": "Gerador de Imagens com IA: Diagramas e Arte Lógica | Lovart",
+  "description": "Lovart's GPT Image integration delivers superior prompt adherence and logical composition for AI art. Create accurate diagrams, complex scenes, and editorial concepts that standard generators can't handle.",
+  "seo": {
+    "description": "A integração de IA da Lovart garante composições lógicas e precisão em prompts para arte. Crie diagramas, cenas e conceitos editoriais que geradores comuns não conseguem.",
+    "keywords": [
+      "gerador de imagens GPT",
+      "criador de diagramas com IA",
+      "geração de cenas complexas",
+      "IA de seguimento de instruções",
+      "alternativa ao DALL-E 3",
+      "arte com IA orientada por lógica",
+      "modelo GPT Lovart"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Semantic Understanding",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Gerador de Imagens com IA: Diagramas e Arte Lógica | Lovart\", \"description\": \"Lovart's GPT Image integration delivers superior prompt adherence and logical composition for AI art. Create accurate diagrams, complex scenes, and editorial concepts that standard generators can't handle.\", \"url\": \"https://www.lovart.ai/features/gpt-image-generator-ai\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Qual é a diferença entre o GPT Image e outros modelos como o Flux? (section_pt)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"O GPT Image (alimentado pela tecnologia DALL-E 3) se destaca na compreensão de prompts complexos e lógicos e no cumprimento de instruções específicas. Enquanto o Flux ou o Nano Banana podem oferecer fotorrealismo superior para retratos, o GPT Image é melhor para cenas complexas, diagramas e conceitos envolvendo múltiplos sujeitos interativos. (section_pt)\"}}, {\"@type\": \"Question\", \"name\": \"Posso editar imagens geradas pelo GPT Image? (section_pt)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sim! Uma vez que o GPT Image gera um visual no ChatCanvas do Lovart, você pode usar todas as nossas poderosas ferramentas como 'Touch Edit', 'Remover Fundo' ou 'Editar Texto' para refiná-lo ainda mais. (section_pt)\"}}, {\"@type\": \"Question\", \"name\": \"O GPT Image suporta texto dentro das imagens? (section_pt)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sim, o GPT Image é significativamente melhor na renderização de texto legível dentro das imagens em comparação com modelos mais antigos. Para um controle de texto ainda mais preciso, você pode usar o recurso dedicado 'Text Edit' do Lovart no resultado gerado. (section_pt)\"}}, {\"@type\": \"Question\", \"name\": \"Isso é adequado para uso comercial? (section_pt)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Absolutamente. Assinantes pagos no Lovart possuem plenos direitos comerciais sobre os ativos gerados pelo GPT Image, tornando-o perfeito para anúncios, blogs e mercadorias. (section_pt)\"}}, {\"@type\": \"Question\", \"name\": \"Como acesso o GPT Image no Lovart? (section_pt)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Basta selecionar 'GPT Image' no painel 'Seleção de Modelo' no lado direito da interface do Lovart, ou digitar '@GPT' no seu prompt de chat para invocar especificamente este modelo. (section_pt)\"}}]}}"
+    },
+    "title": "Gerador de Imagens com IA: Diagramas e Arte Lógica | Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Gerador de Imagens com IA: Diagramas e Arte Lógica | Lovart\",\"description\":\"Lovart's GPT Image integration delivers superior prompt adherence and logical composition for AI art. Create accurate diagrams, complex scenes, and editorial concepts that standard generators can't handle.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Semantic Understanding\"}},{\"type\":\"bento-6\",\"title\":\"The Intelligent Design Agent Advantage\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Compreensão Semântica\",\"description\":\"Alimentado por raciocínio avançado de LLM, este modelo entende nuances, expressões idiomáticas e estruturas de frases complexas que confundem modelos de difusão padrão.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Compreensão Semântica\"}},{\"title\":\"Geração de Diagramas e Infográficos\",\"description\":\"Capacidade única de gerar diagramas legíveis, cortes transversais e gráficos informativos adequados para apresentações e materiais educacionais.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Geração de Diagramas e Infográficos\"}},{\"title\":\"Ferramentas de Edição Integradas\",\"description\":\"Gere com o GPT Image e depois refine com o Lovart. Use o 'Touch Edit' para ajustar partes específicas ou o 'Upscale' para tornar seu conceito pronto para impressão em 4K.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Ferramentas de Edição Integradas\"}},{\"title\":\"Criação Consciente de Texto\",\"description\":\"Precisa de uma placa na sua imagem? O GPT Image possui capacidades superiores de renderização de texto, reduzindo a necessidade de trabalho de tipografia pós-produção.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Criação Consciente de Texto\"}},{\"title\":\"Suporte a Múltiplas Proporções\",\"description\":\"Não se limite a quadrados. Gere cenas cinematográficas em widescreen (16:9) ou posts altos para redes sociais (9:16) mantendo a composição logicamente sólida.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Suporte a Múltiplas Proporções\"}},{\"title\":\"Conversa para Canvas\",\"description\":\"Use o chat do Lovart para refinar sua imagem. Diga 'remova a árvore à esquerda' ou 'mude a hora para o pôr do sol', e o agente atualiza o visual de forma inteligente.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Conversa para Canvas\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Todos os recursos em um só agente\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Compreensão Semântica\",\"icon\":\"chat\",\"content\":{\"title\":\"Compreensão Semântica\",\"description\":\"Alimentado por raciocínio avançado de LLM, este modelo entende nuances, expressões idiomáticas e estruturas de frases complexas que confundem modelos de difusão padrão.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Compreensão Semântica\"}}},{\"label\":\"Geração de Diagramas e Infográficos\",\"icon\":\"image\",\"content\":{\"title\":\"Geração de Diagramas e Infográficos\",\"description\":\"Capacidade única de gerar diagramas legíveis, cortes transversais e gráficos informativos adequados para apresentações e materiais educacionais.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Geração de Diagramas e Infográficos\"}}},{\"label\":\"Ferramentas de Edição Integradas\",\"icon\":\"flask\",\"content\":{\"title\":\"Ferramentas de Edição Integradas\",\"description\":\"Gere com o GPT Image e depois refine com o Lovart. Use o 'Touch Edit' para ajustar partes específicas ou o 'Upscale' para tornar seu conceito pronto para impressão em 4K.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Ferramentas de Edição Integradas\"}}},{\"label\":\"Criação Consciente de Texto\",\"icon\":\"brand\",\"content\":{\"title\":\"Criação Consciente de Texto\",\"description\":\"Precisa de uma placa na sua imagem? O GPT Image possui capacidades superiores de renderização de texto, reduzindo a necessidade de trabalho de tipografia pós-produção.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Criação Consciente de Texto\"}}}]},{\"type\":\"bento-2\",\"title\":\"Duas coisas que ele faz muito bem\",\"columns\":2,\"features\":[{\"title\":\"Suporte a Múltiplas Proporções\",\"description\":\"Não se limite a quadrados. Gere cenas cinematográficas em widescreen (16:9) ou posts altos para redes sociais (9:16) mantendo a composição logicamente sólida.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Suporte a Múltiplas Proporções\"}},{\"title\":\"Conversa para Canvas\",\"description\":\"Use o chat do Lovart para refinar sua imagem. Diga 'remova a árvore à esquerda' ou 'mude a hora para o pôr do sol', e o agente atualiza o visual de forma inteligente.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Conversa para Canvas\"}}]},{\"type\":\"feature-detail\",\"title\":\"Como funciona em detalhes\",\"items\":[{\"title\":\"Inicie seu projeto de GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art\",\"description\":\"Descreva o resultado desejado e adicione referências.\"},{\"title\":\"Itere com o agente\",\"description\":\"Ajuste detalhes e explore variações no mesmo canvas.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Visualize a Lógica. Crie Arte Mais Inteligente com GPT Image.\",\"description\":\"Cansado de IA que ignora metade do seu prompt? A integração do GPT Image do Lovart traz uma adesão às instruções incomparável ao seu fluxo de trabalho de design. Perfeito para cenas complexas, conceitos editoriais e diagramas lógicos onde a precisão importa tanto quanto a estética.\",\"input_placeholder\":\"Ex: 'Um corte transversal de uma eco-casa futurista, mostrando painéis solares, reciclagem de água e jardins verticais, visão isométrica'\",\"prompts\":[{\"label\":\"Diagramas Técnicos\",\"prompt\":\"An isometric diagram of a coffee machine's internal heating mechanism with clearly defined parts\"},{\"label\":\"Conceitos Editoriais\",\"prompt\":\"A surreal editorial illustration of a businessman juggling clocks, representing time management, minimalist style\"},{\"label\":\"Relações Complexas entre Sujeitos\",\"prompt\":\"A cat wearing a blue hat and a dog wearing a red scarf shaking hands in a park\"},{\"label\":\"Design Consciente de Layout\",\"prompt\":\"A layout for a travel magazine cover with space left intentionally blank at the top for the title\"}],\"tip\":\"Dica Profissional: O GPT Image se destaca na 'lógica espacial'. Tente descrever exatamente onde as coisas devem estar (por exemplo, 'à esquerda', 'ao fundo') — ele realmente escuta.\",\"cta\":{\"text\":\"Gerar com Precisão\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Por que o GPT Image é o 'Cérebro' da Arte com IA\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"Adesão às Instruções Incomparável\",\"description\":\"Pare de jogar dados. Enquanto outros modelos priorizam 'vibes', o GPT Image prioriza suas instruções. Se você pedir uma bola vermelha em uma caixa azul ao lado de uma flor amarela, é exatamente isso que você obtém.\"},{\"step\":2,\"title\":\"Composição de Cena Lógica\",\"description\":\"Precisa de um layout específico? O GPT Image entende relações espaciais. É o motor ideal para gerar storyboards, diagramas e visuais de marketing onde a composição não é opcional.\"},{\"step\":3,\"title\":\"Raciocínio Conceitual\",\"description\":\"O GPT Image não renderiza apenas pixels; ele renderiza ideias. Peça conceitos abstratos como 'a interseção entre tecnologia e natureza', e ele interpreta a metáfora visualmente melhor do que qualquer outro modelo.\"}]},{\"type\":\"comparison-table\",\"title\":\"GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art: Lovart vs. fluxos de trabalho tradicionais\",\"headers\":[\"Necessidade\",\"Ferramenta genérica\",\"Fluxo manual\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Inicie seu projeto de GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art\",\"values\":[\"Um prompt\",\"Briefing manual\",\"Raciocínio guiado pelo briefing\"]},{\"feature\":\"Tempo até o primeiro resultado\",\"values\":[\"Minutos\",\"Dias\",\"Minutos\"]},{\"feature\":\"Edição após a geração\",\"values\":[\"Limitado\",\"Rodadas de revisão\",\"Touch / Texto / Elementos\"]},{\"feature\":\"Manter a identidade da marca\",\"values\":[\"Manual\",\"Manual\",\"Compatível com Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Onde GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art ajuda\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Lance mais rápido\",\"description\":\"Do briefing aos assets de GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art em uma única sessão.\"},{\"icon\":\"brand\",\"title\":\"Mantenha a consistência\",\"description\":\"O Brand Kit mantém cada asset alinhado.\"},{\"icon\":\"refresh\",\"title\":\"Itere rapidamente\",\"description\":\"Edite detalhes sem recomeçar o projeto.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"Eu precisava de uma ilustração específica de uma 'equipe escalando uma montanha de dados' para um pitch deck. O Midjourney continuava deixando estranho. O GPT Image no Lovart acertou o conceito na primeira tentativa.\",\"author\":\"Sarah J.\",\"role\":\"Diretora de Marketing\"},{\"quote\":\"Criar diagramas para meu blog de ciências costumava levar horas. Agora eu apenas descrevo o processo biológico para o Lovart, e o GPT Image gera um esquema quase perfeito que posso usar instantaneamente.\",\"author\":\"Mike T.\",\"role\":\"Criador de Conteúdo Educacional\"},{\"quote\":\"A capacidade de pedir uma composição específica — 'deixe o terço superior vazio para o texto do título' — é um divisor de águas. Isso me economiza muito tempo no Photoshop depois.\",\"author\":\"Elena R.\",\"role\":\"Designer de Capas de Livros\"}],\"title\":\"Criadores Resolvendo Problemas Reais com o GPT Image\"},{\"type\":\"pricing-block\",\"title\":\"Escolha o plano ideal para a sua equipe\",\"description\":\"Comece de graça. Faça upgrade quando o trabalho for para o cliente.\"},{\"type\":\"faq\",\"title\":\"Perguntas frequentes\",\"items\":[{\"question\":\"Qual é a diferença entre o GPT Image e outros modelos como o Flux?\",\"answer\":\"O GPT Image (alimentado pela tecnologia DALL-E 3) se destaca na compreensão de prompts complexos e lógicos e no cumprimento de instruções específicas. Enquanto o Flux ou o Nano Banana podem oferecer fotorrealismo superior para retratos, o GPT Image é melhor para cenas complexas, diagramas e conceitos envolvendo múltiplos sujeitos interativos.\"},{\"question\":\"Posso editar imagens geradas pelo GPT Image?\",\"answer\":\"Sim! Uma vez que o GPT Image gera um visual no ChatCanvas do Lovart, você pode usar todas as nossas poderosas ferramentas como 'Touch Edit', 'Remover Fundo' ou 'Editar Texto' para refiná-lo ainda mais.\"},{\"question\":\"O GPT Image suporta texto dentro das imagens?\",\"answer\":\"Sim, o GPT Image é significativamente melhor na renderização de texto legível dentro das imagens em comparação com modelos mais antigos. Para um controle de texto ainda mais preciso, você pode usar o recurso dedicado 'Text Edit' do Lovart no resultado gerado.\"},{\"question\":\"Isso é adequado para uso comercial?\",\"answer\":\"Absolutamente. Assinantes pagos no Lovart possuem plenos direitos comerciais sobre os ativos gerados pelo GPT Image, tornando-o perfeito para anúncios, blogs e mercadorias.\"},{\"question\":\"Como acesso o GPT Image no Lovart?\",\"answer\":\"Basta selecionar 'GPT Image' no painel 'Seleção de Modelo' no lado direito da interface do Lovart, ou digitar '@GPT' no seu prompt de chat para invocar especificamente este modelo.\"}]},{\"type\":\"cta-default\",\"title\":\"Comece a criar com a Lovart\",\"description\":\"Transforme seu briefing em visuais alinhados à marca em minutos.\",\"buttons\":[{\"text\":\"Começar grátis\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Gerador de Imagens com IA: Diagramas e Arte Lógica | Lovart",
+      "description": "Lovart's GPT Image integration delivers superior prompt adherence and logical composition for AI art. Create accurate diagrams, complex scenes, and editorial concepts that standard generators can't handle.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Semantic Understanding"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "The Intelligent Design Agent Advantage",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Compreensão Semântica",
+          "description": "Alimentado por raciocínio avançado de LLM, este modelo entende nuances, expressões idiomáticas e estruturas de frases complexas que confundem modelos de difusão padrão.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Compreensão Semântica"
+          }
+        },
+        {
+          "title": "Geração de Diagramas e Infográficos",
+          "description": "Capacidade única de gerar diagramas legíveis, cortes transversais e gráficos informativos adequados para apresentações e materiais educacionais.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Geração de Diagramas e Infográficos"
+          }
+        },
+        {
+          "title": "Ferramentas de Edição Integradas",
+          "description": "Gere com o GPT Image e depois refine com o Lovart. Use o 'Touch Edit' para ajustar partes específicas ou o 'Upscale' para tornar seu conceito pronto para impressão em 4K.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Ferramentas de Edição Integradas"
+          }
+        },
+        {
+          "title": "Criação Consciente de Texto",
+          "description": "Precisa de uma placa na sua imagem? O GPT Image possui capacidades superiores de renderização de texto, reduzindo a necessidade de trabalho de tipografia pós-produção.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Criação Consciente de Texto"
+          }
+        },
+        {
+          "title": "Suporte a Múltiplas Proporções",
+          "description": "Não se limite a quadrados. Gere cenas cinematográficas em widescreen (16:9) ou posts altos para redes sociais (9:16) mantendo a composição logicamente sólida.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Suporte a Múltiplas Proporções"
+          }
+        },
+        {
+          "title": "Conversa para Canvas",
+          "description": "Use o chat do Lovart para refinar sua imagem. Diga 'remova a árvore à esquerda' ou 'mude a hora para o pôr do sol', e o agente atualiza o visual de forma inteligente.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Conversa para Canvas"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Todos os recursos em um só agente",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Compreensão Semântica",
+          "icon": "chat",
+          "content": {
+            "title": "Compreensão Semântica",
+            "description": "Alimentado por raciocínio avançado de LLM, este modelo entende nuances, expressões idiomáticas e estruturas de frases complexas que confundem modelos de difusão padrão.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "Compreensão Semântica"
+            }
+          }
+        },
+        {
+          "label": "Geração de Diagramas e Infográficos",
+          "icon": "image",
+          "content": {
+            "title": "Geração de Diagramas e Infográficos",
+            "description": "Capacidade única de gerar diagramas legíveis, cortes transversais e gráficos informativos adequados para apresentações e materiais educacionais.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Geração de Diagramas e Infográficos"
+            }
+          }
+        },
+        {
+          "label": "Ferramentas de Edição Integradas",
+          "icon": "flask",
+          "content": {
+            "title": "Ferramentas de Edição Integradas",
+            "description": "Gere com o GPT Image e depois refine com o Lovart. Use o 'Touch Edit' para ajustar partes específicas ou o 'Upscale' para tornar seu conceito pronto para impressão em 4K.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Ferramentas de Edição Integradas"
+            }
+          }
+        },
+        {
+          "label": "Criação Consciente de Texto",
+          "icon": "brand",
+          "content": {
+            "title": "Criação Consciente de Texto",
+            "description": "Precisa de uma placa na sua imagem? O GPT Image possui capacidades superiores de renderização de texto, reduzindo a necessidade de trabalho de tipografia pós-produção.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Criação Consciente de Texto"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Duas coisas que ele faz muito bem",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Suporte a Múltiplas Proporções",
+          "description": "Não se limite a quadrados. Gere cenas cinematográficas em widescreen (16:9) ou posts altos para redes sociais (9:16) mantendo a composição logicamente sólida.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Suporte a Múltiplas Proporções"
+          }
+        },
+        {
+          "title": "Conversa para Canvas",
+          "description": "Use o chat do Lovart para refinar sua imagem. Diga 'remova a árvore à esquerda' ou 'mude a hora para o pôr do sol', e o agente atualiza o visual de forma inteligente.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Conversa para Canvas"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "Como funciona em detalhes",
+      "items": [
+        {
+          "title": "Inicie seu projeto de GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art",
+          "description": "Descreva o resultado desejado e adicione referências."
+        },
+        {
+          "title": "Itere com o agente",
+          "description": "Ajuste detalhes e explore variações no mesmo canvas.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Visualize a Lógica. Crie Arte Mais Inteligente com GPT Image.",
+      "description": "Cansado de IA que ignora metade do seu prompt? A integração do GPT Image do Lovart traz uma adesão às instruções incomparável ao seu fluxo de trabalho de design. Perfeito para cenas complexas, conceitos editoriais e diagramas lógicos onde a precisão importa tanto quanto a estética.",
+      "input_placeholder": "Ex: 'Um corte transversal de uma eco-casa futurista, mostrando painéis solares, reciclagem de água e jardins verticais, visão isométrica'",
+      "prompts": [
+        {
+          "label": "Diagramas Técnicos",
+          "prompt": "An isometric diagram of a coffee machine's internal heating mechanism with clearly defined parts"
+        },
+        {
+          "label": "Conceitos Editoriais",
+          "prompt": "A surreal editorial illustration of a businessman juggling clocks, representing time management, minimalist style"
+        },
+        {
+          "label": "Relações Complexas entre Sujeitos",
+          "prompt": "A cat wearing a blue hat and a dog wearing a red scarf shaking hands in a park"
+        },
+        {
+          "label": "Design Consciente de Layout",
+          "prompt": "A layout for a travel magazine cover with space left intentionally blank at the top for the title"
+        }
+      ],
+      "tip": "Dica Profissional: O GPT Image se destaca na 'lógica espacial'. Tente descrever exatamente onde as coisas devem estar (por exemplo, 'à esquerda', 'ao fundo') — ele realmente escuta.",
+      "cta": {
+        "text": "Gerar com Precisão"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Por que o GPT Image é o 'Cérebro' da Arte com IA",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Adesão às Instruções Incomparável",
+          "description": "Pare de jogar dados. Enquanto outros modelos priorizam 'vibes', o GPT Image prioriza suas instruções. Se você pedir uma bola vermelha em uma caixa azul ao lado de uma flor amarela, é exatamente isso que você obtém."
+        },
+        {
+          "step": 2,
+          "title": "Composição de Cena Lógica",
+          "description": "Precisa de um layout específico? O GPT Image entende relações espaciais. É o motor ideal para gerar storyboards, diagramas e visuais de marketing onde a composição não é opcional."
+        },
+        {
+          "step": 3,
+          "title": "Raciocínio Conceitual",
+          "description": "O GPT Image não renderiza apenas pixels; ele renderiza ideias. Peça conceitos abstratos como 'a interseção entre tecnologia e natureza', e ele interpreta a metáfora visualmente melhor do que qualquer outro modelo."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art: Lovart vs. fluxos de trabalho tradicionais",
+      "headers": [
+        "Necessidade",
+        "Ferramenta genérica",
+        "Fluxo manual",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Inicie seu projeto de GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art",
+          "values": [
+            "Um prompt",
+            "Briefing manual",
+            "Raciocínio guiado pelo briefing"
+          ]
+        },
+        {
+          "feature": "Tempo até o primeiro resultado",
+          "values": [
+            "Minutos",
+            "Dias",
+            "Minutos"
+          ]
+        },
+        {
+          "feature": "Edição após a geração",
+          "values": [
+            "Limitado",
+            "Rodadas de revisão",
+            "Touch / Texto / Elementos"
+          ]
+        },
+        {
+          "feature": "Manter a identidade da marca",
+          "values": [
+            "Manual",
+            "Manual",
+            "Compatível com Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Onde GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art ajuda",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Lance mais rápido",
+          "description": "Do briefing aos assets de GPT Image Generator: Create Complex Diagrams & Logic-Driven AI Art em uma única sessão."
+        },
+        {
+          "icon": "brand",
+          "title": "Mantenha a consistência",
+          "description": "O Brand Kit mantém cada asset alinhado."
+        },
+        {
+          "icon": "refresh",
+          "title": "Itere rapidamente",
+          "description": "Edite detalhes sem recomeçar o projeto."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "Eu precisava de uma ilustração específica de uma 'equipe escalando uma montanha de dados' para um pitch deck. O Midjourney continuava deixando estranho. O GPT Image no Lovart acertou o conceito na primeira tentativa.",
+          "author": "Sarah J.",
+          "role": "Diretora de Marketing"
+        },
+        {
+          "quote": "Criar diagramas para meu blog de ciências costumava levar horas. Agora eu apenas descrevo o processo biológico para o Lovart, e o GPT Image gera um esquema quase perfeito que posso usar instantaneamente.",
+          "author": "Mike T.",
+          "role": "Criador de Conteúdo Educacional"
+        },
+        {
+          "quote": "A capacidade de pedir uma composição específica — 'deixe o terço superior vazio para o texto do título' — é um divisor de águas. Isso me economiza muito tempo no Photoshop depois.",
+          "author": "Elena R.",
+          "role": "Designer de Capas de Livros"
+        }
+      ],
+      "title": "Criadores Resolvendo Problemas Reais com o GPT Image"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Escolha o plano ideal para a sua equipe",
+      "description": "Comece de graça. Faça upgrade quando o trabalho for para o cliente."
+    },
+    {
+      "type": "faq",
+      "title": "Perguntas frequentes",
+      "items": [
+        {
+          "question": "Qual é a diferença entre o GPT Image e outros modelos como o Flux?",
+          "answer": "O GPT Image (alimentado pela tecnologia DALL-E 3) se destaca na compreensão de prompts complexos e lógicos e no cumprimento de instruções específicas. Enquanto o Flux ou o Nano Banana podem oferecer fotorrealismo superior para retratos, o GPT Image é melhor para cenas complexas, diagramas e conceitos envolvendo múltiplos sujeitos interativos."
+        },
+        {
+          "question": "Posso editar imagens geradas pelo GPT Image?",
+          "answer": "Sim! Uma vez que o GPT Image gera um visual no ChatCanvas do Lovart, você pode usar todas as nossas poderosas ferramentas como 'Touch Edit', 'Remover Fundo' ou 'Editar Texto' para refiná-lo ainda mais."
+        },
+        {
+          "question": "O GPT Image suporta texto dentro das imagens?",
+          "answer": "Sim, o GPT Image é significativamente melhor na renderização de texto legível dentro das imagens em comparação com modelos mais antigos. Para um controle de texto ainda mais preciso, você pode usar o recurso dedicado 'Text Edit' do Lovart no resultado gerado."
+        },
+        {
+          "question": "Isso é adequado para uso comercial?",
+          "answer": "Absolutamente. Assinantes pagos no Lovart possuem plenos direitos comerciais sobre os ativos gerados pelo GPT Image, tornando-o perfeito para anúncios, blogs e mercadorias."
+        },
+        {
+          "question": "Como acesso o GPT Image no Lovart?",
+          "answer": "Basta selecionar 'GPT Image' no painel 'Seleção de Modelo' no lado direito da interface do Lovart, ou digitar '@GPT' no seu prompt de chat para invocar especificamente este modelo."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Comece a criar com a Lovart",
+      "description": "Transforme seu briefing em visuais alinhados à marca em minutos.",
+      "buttons": [
+        {
+          "text": "Começar grátis",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

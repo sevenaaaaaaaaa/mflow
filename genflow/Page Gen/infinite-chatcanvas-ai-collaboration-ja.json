@@ -1,0 +1,387 @@
+{
+  "_id": "features-infinite-chatcanvas-ai-collaboration-ja",
+  "reflowSourceId": "features-infinite-chatcanvas-ai-collaboration-ja",
+  "slug": "infinite-chatcanvas-ai-collaboration",
+  "language": "ja",
+  "category": "feature",
+  "title": "無限キャンバスAI：究極のUIデザイン作業場｜Lovart",
+  "description": "Step out of the chatbox. Discover ChatCanvas, Lovart's infinite workspace. Collaborate visually with your AI Design Agent, organize mood boards, and edit designs seamlessly.",
+  "seo": {
+    "description": "チャットボックスを飛び出そう。ChatCanvasはLovartが提供する無限のワークスペース。AIデザインエージェントとビジュアルでコラボし、ムードボードを整理、デザイン編集もシームレスに。",
+    "keywords": [
+      "無限キャンバスAI",
+      "AI UIデザインワークスペース",
+      "ビジュアルAIコラボレーション",
+      "ChatCanvas",
+      "AIデザインエージェント",
+      "空間コンピューティングデザイン",
+      "Lovart AI"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Infinite ChatCanvas",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"無限キャンバスAI：究極のUIデザイン作業場｜Lovart\", \"description\": \"Step out of the chatbox. Discover ChatCanvas, Lovart's infinite workspace. Collaborate visually with your AI Design Agent, organize mood boards, and edit designs seamlessly.\", \"url\": \"https://www.lovart.ai/features/infinite-chatcanvas-ai-collaboration\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"チャットボックスAIとChatCanvasの違いは何ですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"従来のAI生成器は線形なチャットボックス（プロンプトを入力して画像を出力）を使用するため、文脈が失われ、反復が困難になります。ChatCanvasは、プロンプト、参照画像、生成されたアセットが並んで存在する無限の空間ワークスペースであり、AIが全体像を「見て」、自然にコラボレーションできるようにします。\"}}, {\"@type\": \"Question\", \"name\": \"AIエージェントはキャンバス上のレイアウトをどのように理解しますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"LovartはMCoT（Mind Chain of Thought）推論エンジンを搭載しています。キャンバス上でアイテムをグループ化したり、接続を描いたり、参照を隣り合わせに配置したりすると、エージェントは空間的関係と視覚的文脈を分析して、非常に正確でまとまりのあるデザインを生成します。\"}}, {\"@type\": \"Question\", \"name\": \"キャンバス上で画像の特定の部分を直接編集できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。「Touch Edit」と「Edit Elements」を使用すると、小さな問題を修正するために長いプロンプトを書く必要はありません。キャンバス上の画像内の特定のオブジェクトやテキストをクリックし、エージェントに変更を指示するだけです。セマンティックなゼロショットエディターのように機能します。\"}}, {\"@type\": \"Question\", \"name\": \"無限キャンバスは高解像度のエクスポートをサポートしていますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"もちろんです。自由にアイデアを出し、コンセプトを配置し、準備ができたらUpscale機能を使用して、個々のアセットを鮮明な4Kまたは8K解像度でエクスポートできます。プロのUI/UX、印刷、デジタルマーケティングに最適です。\"}}, {\"@type\": \"Question\", \"name\": \"ChatCanvasで作成されたデザインは商用利用において安全ですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。Lovartの有料プランを購読している場合、生成したすべての視覚アセットに対する完全な商用利用権を保持するため、クライアントへのプレゼンテーション、アプリ、ウェブサイト、広告で完全に安全に使用できます。\"}}]}}"
+    },
+    "title": "無限キャンバスAI：究極のUIデザイン作業場｜Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"無限キャンバスAI：究極のUIデザイン作業場｜Lovart\",\"description\":\"Step out of the chatbox. Discover ChatCanvas, Lovart's infinite workspace. Collaborate visually with your AI Design Agent, organize mood boards, and edit designs seamlessly.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Infinite ChatCanvas\"}},{\"type\":\"bento-6\",\"title\":\"Why ChatCanvas Replaces Traditional AI Tools\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"無限のChatCanvas\",\"description\":\"線形なチャットフィードから解放されます。すべての下書き、参照画像、最終的な編集を、プロの視覚的ワークフロー向けに設計された単一の無限のデジタルデスクで整理します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"無限のChatCanvas\"}},{\"title\":\"文脈的な視覚記憶\",\"description\":\"MCoT推論エンジンは共同デザイナーとして機能し、キャンバス全体の文脈を保持します。複数の生成にわたって、カラーパレットとスタイルの選択を記憶します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"文脈的な視覚記憶\"}},{\"title\":\"セマンティックレイヤー分割\",\"description\":\"要素編集（Edit Elements）を使用して、生成された画像をキャンバス上で直接、前景、背景、テキストレイヤーに瞬時に分離し、究極のレイアウト制御を実現します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"セマンティックレイヤー分割\"}},{\"title\":\"ゼロショットのTouch Edit\",\"description\":\"オブジェクトをクリックして、エージェントに変更内容を指示します。UIモックアップのボタンの色を変更したり、モデルのジャケットを変更したりするのに必要なのは1クリックだけです。複雑なマスキングは必要ありません。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"ゼロショットのTouch Edit\"}},{\"title\":\"完璧なタイポグラフィとテキスト編集\",\"description\":\"読みやすく完璧なテキストでUI画面、ポスター、Webレイアウトを生成します。画像全体を再生成することなく、キャンバス上で直接誤字を修正できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"完璧なタイポグラフィとテキスト編集\"}},{\"title\":\"高解像度エクスポートと商用利用権\",\"description\":\"キャンバスが完璧になったら、主要なアセットを4Kまたは8K解像度にアップスケールします。生成するすべてのアセットは商用利用において安全であり、クライアントに納品する準備が整っています。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"高解像度エクスポートと商用利用権\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"無限のChatCanvas\",\"icon\":\"chat\",\"content\":{\"title\":\"無限のChatCanvas\",\"description\":\"線形なチャットフィードから解放されます。すべての下書き、参照画像、最終的な編集を、プロの視覚的ワークフロー向けに設計された単一の無限のデジタルデスクで整理します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"無限のChatCanvas\"}}},{\"label\":\"文脈的な視覚記憶\",\"icon\":\"image\",\"content\":{\"title\":\"文脈的な視覚記憶\",\"description\":\"MCoT推論エンジンは共同デザイナーとして機能し、キャンバス全体の文脈を保持します。複数の生成にわたって、カラーパレットとスタイルの選択を記憶します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"文脈的な視覚記憶\"}}},{\"label\":\"セマンティックレイヤー分割\",\"icon\":\"flask\",\"content\":{\"title\":\"セマンティックレイヤー分割\",\"description\":\"要素編集（Edit Elements）を使用して、生成された画像をキャンバス上で直接、前景、背景、テキストレイヤーに瞬時に分離し、究極のレイアウト制御を実現します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"セマンティックレイヤー分割\"}}},{\"label\":\"ゼロショットのTouch Edit\",\"icon\":\"brand\",\"content\":{\"title\":\"ゼロショットのTouch Edit\",\"description\":\"オブジェクトをクリックして、エージェントに変更内容を指示します。UIモックアップのボタンの色を変更したり、モデルのジャケットを変更したりするのに必要なのは1クリックだけです。複雑なマスキングは必要ありません。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"ゼロショットのTouch Edit\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"完璧なタイポグラフィとテキスト編集\",\"description\":\"読みやすく完璧なテキストでUI画面、ポスター、Webレイアウトを生成します。画像全体を再生成することなく、キャンバス上で直接誤字を修正できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"完璧なタイポグラフィとテキスト編集\"}},{\"title\":\"高解像度エクスポートと商用利用権\",\"description\":\"キャンバスが完璧になったら、主要なアセットを4Kまたは8K解像度にアップスケールします。生成するすべてのアセットは商用利用において安全であり、クライアントに納品する準備が整っています。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"高解像度エクスポートと商用利用権\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"Infinite Canvas AI: The Ultimate UI Design Workspace プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"UI革命：無限キャンバスがAIコラボレーションの究極の形である理由\",\"description\":\"制限の多いチャットボックスから抜け出し、ChatCanvasへ。Lovartの無限のワークスペースは、AIを基本的なプロンプト生成器から真の共同デザインパートナーへと変革します。人間とAIの共同制作のために構築された空間環境で、参照の整理、視覚的なブレインストーミング、外科的な編集をシームレスに行えます。\",\"input_placeholder\":\"構築したいワークスペースのレイアウトやデザインコンセプトを説明してください...\",\"prompts\":[{\"label\":\"UI/UXシステム\",\"prompt\":\"フィンテックアプリのUIダッシュボードコンセプトを生成し、その隣にまとまりのあるカラーパレットを配置して\"},{\"label\":\"キャンペーンムードボード\",\"prompt\":\"4つの異なるポスターバリエーションを持つ、未来的なスニーカーキャンペーンの視覚的なムードボードを作成して\"},{\"label\":\"フルブランドキット\",\"prompt\":\"ロゴ、タイポグラフィ、3Dパッケージモックアップを含む完全なブランドキットをデザインして\"},{\"label\":\"Webレイアウト\",\"prompt\":\"ランディングページのレイアウトを生成し、メインのヒーロー画像を個別の編集可能なレイヤーに抽出して\"}],\"tip\":\"ヒント：「サステナブルなファッションブランドのためのムードボードとUIコンセプトを作成して」のように、プロジェクト全体を説明してください。\",\"cta\":{\"text\":\"無限キャンバスを開く\"}},{\"type\":\"workflow-horizontal\",\"title\":\"空間コンピューティングとAIデザインの融合：ChatCanvasワークフロー\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"視覚的なブレインストーミング\",\"description\":\"乱雑なスケッチ、ブランドガイドライン、参照写真を無限キャンバスに直接ドラッグ＆ドロップします。それらをグループ化して、Lovartエージェントが瞬時に理解できる視覚的な文脈を確立します。\"},{\"step\":2,\"title\":\"文脈を認識した生成\",\"description\":\"エージェントはChatCanvas上のすべてを「見る」ため、単なる推測はしません。MCoTエンジンを搭載し、散在する参照や空間レイアウトと完全に一致するバリエーションを生成します。\"},{\"step\":3,\"title\":\"キャンバス上での外科的編集\",\"description\":\"小さなエラーを修正するために長いプロンプトを入力する必要はもうありません。Touch Editを使用して、キャンバス内の要素を直接クリックし、色を変更したり、テクスチャを交換したり、テキストを瞬時に書き直したりできます。\"}]},{\"type\":\"comparison-table\",\"title\":\"Infinite Canvas AI: The Ultimate UI Design Workspace：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Infinite Canvas AI: The Ultimate UI Design Workspace プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Infinite Canvas AI: The Ultimate UI Design Workspace が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから Infinite Canvas AI: The Ultimate UI Design Workspace の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"標準的なプロンプトボックスのAIは、壁に向かって話しているような気分でした。LovartのChatCanvasは、本物のデザインスタジオのように感じられます。ワイヤーフレームを広げ、エージェントにその隣にUIのバリエーションを生成させ、要素を瞬時に微調整できます。\",\"author\":\"サラ M.\",\"role\":\"リードUI/UXデザイナー\"},{\"quote\":\"最初のムードボードから最終的な4Kポスターまで、キャンペーン全体を1つの無限キャンバスで見ることができるようになり、クライアントへのプレゼンテーション方法が完全に変わりました。空間的な文脈がすべてです。\",\"author\":\"デビッド K.\",\"role\":\"クリエイティブエージェンシー創業者\"},{\"quote\":\"エージェントが私の参照を「見る」ことができるのが気に入っています。カラーパレットや競合他社の広告をキャンバスにドラッグすると、LovartのMCoTエンジンが完全に新鮮でブランドに合った方向性を推論してくれます。真の共同制作です。\",\"author\":\"エレナ R.\",\"role\":\"ブランドストラテジスト\"}],\"title\":\"無限キャンバスでワークフローを革命するデザイナーたち\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"チャットボックスAIとChatCanvasの違いは何ですか？\",\"answer\":\"従来のAI生成器は線形なチャットボックス（プロンプトを入力して画像を出力）を使用するため、文脈が失われ、反復が困難になります。ChatCanvasは、プロンプト、参照画像、生成されたアセットが並んで存在する無限の空間ワークスペースであり、AIが全体像を「見て」、自然にコラボレーションできるようにします。\"},{\"question\":\"AIエージェントはキャンバス上のレイアウトをどのように理解しますか？\",\"answer\":\"LovartはMCoT（Mind Chain of Thought）推論エンジンを搭載しています。キャンバス上でアイテムをグループ化したり、接続を描いたり、参照を隣り合わせに配置したりすると、エージェントは空間的関係と視覚的文脈を分析して、非常に正確でまとまりのあるデザインを生成します。\"},{\"question\":\"キャンバス上で画像の特定の部分を直接編集できますか？\",\"answer\":\"はい。「Touch Edit」と「Edit Elements」を使用すると、小さな問題を修正するために長いプロンプトを書く必要はありません。キャンバス上の画像内の特定のオブジェクトやテキストをクリックし、エージェントに変更を指示するだけです。セマンティックなゼロショットエディターのように機能します。\"},{\"question\":\"無限キャンバスは高解像度のエクスポートをサポートしていますか？\",\"answer\":\"もちろんです。自由にアイデアを出し、コンセプトを配置し、準備ができたらUpscale機能を使用して、個々のアセットを鮮明な4Kまたは8K解像度でエクスポートできます。プロのUI/UX、印刷、デジタルマーケティングに最適です。\"},{\"question\":\"ChatCanvasで作成されたデザインは商用利用において安全ですか？\",\"answer\":\"はい。Lovartの有料プランを購読している場合、生成したすべての視覚アセットに対する完全な商用利用権を保持するため、クライアントへのプレゼンテーション、アプリ、ウェブサイト、広告で完全に安全に使用できます。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "無限キャンバスAI：究極のUIデザイン作業場｜Lovart",
+      "description": "Step out of the chatbox. Discover ChatCanvas, Lovart's infinite workspace. Collaborate visually with your AI Design Agent, organize mood boards, and edit designs seamlessly.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Infinite ChatCanvas"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Why ChatCanvas Replaces Traditional AI Tools",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "無限のChatCanvas",
+          "description": "線形なチャットフィードから解放されます。すべての下書き、参照画像、最終的な編集を、プロの視覚的ワークフロー向けに設計された単一の無限のデジタルデスクで整理します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "無限のChatCanvas"
+          }
+        },
+        {
+          "title": "文脈的な視覚記憶",
+          "description": "MCoT推論エンジンは共同デザイナーとして機能し、キャンバス全体の文脈を保持します。複数の生成にわたって、カラーパレットとスタイルの選択を記憶します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "文脈的な視覚記憶"
+          }
+        },
+        {
+          "title": "セマンティックレイヤー分割",
+          "description": "要素編集（Edit Elements）を使用して、生成された画像をキャンバス上で直接、前景、背景、テキストレイヤーに瞬時に分離し、究極のレイアウト制御を実現します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "セマンティックレイヤー分割"
+          }
+        },
+        {
+          "title": "ゼロショットのTouch Edit",
+          "description": "オブジェクトをクリックして、エージェントに変更内容を指示します。UIモックアップのボタンの色を変更したり、モデルのジャケットを変更したりするのに必要なのは1クリックだけです。複雑なマスキングは必要ありません。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "ゼロショットのTouch Edit"
+          }
+        },
+        {
+          "title": "完璧なタイポグラフィとテキスト編集",
+          "description": "読みやすく完璧なテキストでUI画面、ポスター、Webレイアウトを生成します。画像全体を再生成することなく、キャンバス上で直接誤字を修正できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "完璧なタイポグラフィとテキスト編集"
+          }
+        },
+        {
+          "title": "高解像度エクスポートと商用利用権",
+          "description": "キャンバスが完璧になったら、主要なアセットを4Kまたは8K解像度にアップスケールします。生成するすべてのアセットは商用利用において安全であり、クライアントに納品する準備が整っています。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "高解像度エクスポートと商用利用権"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "無限のChatCanvas",
+          "icon": "chat",
+          "content": {
+            "title": "無限のChatCanvas",
+            "description": "線形なチャットフィードから解放されます。すべての下書き、参照画像、最終的な編集を、プロの視覚的ワークフロー向けに設計された単一の無限のデジタルデスクで整理します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "無限のChatCanvas"
+            }
+          }
+        },
+        {
+          "label": "文脈的な視覚記憶",
+          "icon": "image",
+          "content": {
+            "title": "文脈的な視覚記憶",
+            "description": "MCoT推論エンジンは共同デザイナーとして機能し、キャンバス全体の文脈を保持します。複数の生成にわたって、カラーパレットとスタイルの選択を記憶します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "文脈的な視覚記憶"
+            }
+          }
+        },
+        {
+          "label": "セマンティックレイヤー分割",
+          "icon": "flask",
+          "content": {
+            "title": "セマンティックレイヤー分割",
+            "description": "要素編集（Edit Elements）を使用して、生成された画像をキャンバス上で直接、前景、背景、テキストレイヤーに瞬時に分離し、究極のレイアウト制御を実現します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "セマンティックレイヤー分割"
+            }
+          }
+        },
+        {
+          "label": "ゼロショットのTouch Edit",
+          "icon": "brand",
+          "content": {
+            "title": "ゼロショットのTouch Edit",
+            "description": "オブジェクトをクリックして、エージェントに変更内容を指示します。UIモックアップのボタンの色を変更したり、モデルのジャケットを変更したりするのに必要なのは1クリックだけです。複雑なマスキングは必要ありません。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "ゼロショットのTouch Edit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "完璧なタイポグラフィとテキスト編集",
+          "description": "読みやすく完璧なテキストでUI画面、ポスター、Webレイアウトを生成します。画像全体を再生成することなく、キャンバス上で直接誤字を修正できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "完璧なタイポグラフィとテキスト編集"
+          }
+        },
+        {
+          "title": "高解像度エクスポートと商用利用権",
+          "description": "キャンバスが完璧になったら、主要なアセットを4Kまたは8K解像度にアップスケールします。生成するすべてのアセットは商用利用において安全であり、クライアントに納品する準備が整っています。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "高解像度エクスポートと商用利用権"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "Infinite Canvas AI: The Ultimate UI Design Workspace プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "UI革命：無限キャンバスがAIコラボレーションの究極の形である理由",
+      "description": "制限の多いチャットボックスから抜け出し、ChatCanvasへ。Lovartの無限のワークスペースは、AIを基本的なプロンプト生成器から真の共同デザインパートナーへと変革します。人間とAIの共同制作のために構築された空間環境で、参照の整理、視覚的なブレインストーミング、外科的な編集をシームレスに行えます。",
+      "input_placeholder": "構築したいワークスペースのレイアウトやデザインコンセプトを説明してください...",
+      "prompts": [
+        {
+          "label": "UI/UXシステム",
+          "prompt": "フィンテックアプリのUIダッシュボードコンセプトを生成し、その隣にまとまりのあるカラーパレットを配置して"
+        },
+        {
+          "label": "キャンペーンムードボード",
+          "prompt": "4つの異なるポスターバリエーションを持つ、未来的なスニーカーキャンペーンの視覚的なムードボードを作成して"
+        },
+        {
+          "label": "フルブランドキット",
+          "prompt": "ロゴ、タイポグラフィ、3Dパッケージモックアップを含む完全なブランドキットをデザインして"
+        },
+        {
+          "label": "Webレイアウト",
+          "prompt": "ランディングページのレイアウトを生成し、メインのヒーロー画像を個別の編集可能なレイヤーに抽出して"
+        }
+      ],
+      "tip": "ヒント：「サステナブルなファッションブランドのためのムードボードとUIコンセプトを作成して」のように、プロジェクト全体を説明してください。",
+      "cta": {
+        "text": "無限キャンバスを開く"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "空間コンピューティングとAIデザインの融合：ChatCanvasワークフロー",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "視覚的なブレインストーミング",
+          "description": "乱雑なスケッチ、ブランドガイドライン、参照写真を無限キャンバスに直接ドラッグ＆ドロップします。それらをグループ化して、Lovartエージェントが瞬時に理解できる視覚的な文脈を確立します。"
+        },
+        {
+          "step": 2,
+          "title": "文脈を認識した生成",
+          "description": "エージェントはChatCanvas上のすべてを「見る」ため、単なる推測はしません。MCoTエンジンを搭載し、散在する参照や空間レイアウトと完全に一致するバリエーションを生成します。"
+        },
+        {
+          "step": 3,
+          "title": "キャンバス上での外科的編集",
+          "description": "小さなエラーを修正するために長いプロンプトを入力する必要はもうありません。Touch Editを使用して、キャンバス内の要素を直接クリックし、色を変更したり、テクスチャを交換したり、テキストを瞬時に書き直したりできます。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Infinite Canvas AI: The Ultimate UI Design Workspace：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Infinite Canvas AI: The Ultimate UI Design Workspace プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Infinite Canvas AI: The Ultimate UI Design Workspace が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから Infinite Canvas AI: The Ultimate UI Design Workspace の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "標準的なプロンプトボックスのAIは、壁に向かって話しているような気分でした。LovartのChatCanvasは、本物のデザインスタジオのように感じられます。ワイヤーフレームを広げ、エージェントにその隣にUIのバリエーションを生成させ、要素を瞬時に微調整できます。",
+          "author": "サラ M.",
+          "role": "リードUI/UXデザイナー"
+        },
+        {
+          "quote": "最初のムードボードから最終的な4Kポスターまで、キャンペーン全体を1つの無限キャンバスで見ることができるようになり、クライアントへのプレゼンテーション方法が完全に変わりました。空間的な文脈がすべてです。",
+          "author": "デビッド K.",
+          "role": "クリエイティブエージェンシー創業者"
+        },
+        {
+          "quote": "エージェントが私の参照を「見る」ことができるのが気に入っています。カラーパレットや競合他社の広告をキャンバスにドラッグすると、LovartのMCoTエンジンが完全に新鮮でブランドに合った方向性を推論してくれます。真の共同制作です。",
+          "author": "エレナ R.",
+          "role": "ブランドストラテジスト"
+        }
+      ],
+      "title": "無限キャンバスでワークフローを革命するデザイナーたち"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "チャットボックスAIとChatCanvasの違いは何ですか？",
+          "answer": "従来のAI生成器は線形なチャットボックス（プロンプトを入力して画像を出力）を使用するため、文脈が失われ、反復が困難になります。ChatCanvasは、プロンプト、参照画像、生成されたアセットが並んで存在する無限の空間ワークスペースであり、AIが全体像を「見て」、自然にコラボレーションできるようにします。"
+        },
+        {
+          "question": "AIエージェントはキャンバス上のレイアウトをどのように理解しますか？",
+          "answer": "LovartはMCoT（Mind Chain of Thought）推論エンジンを搭載しています。キャンバス上でアイテムをグループ化したり、接続を描いたり、参照を隣り合わせに配置したりすると、エージェントは空間的関係と視覚的文脈を分析して、非常に正確でまとまりのあるデザインを生成します。"
+        },
+        {
+          "question": "キャンバス上で画像の特定の部分を直接編集できますか？",
+          "answer": "はい。「Touch Edit」と「Edit Elements」を使用すると、小さな問題を修正するために長いプロンプトを書く必要はありません。キャンバス上の画像内の特定のオブジェクトやテキストをクリックし、エージェントに変更を指示するだけです。セマンティックなゼロショットエディターのように機能します。"
+        },
+        {
+          "question": "無限キャンバスは高解像度のエクスポートをサポートしていますか？",
+          "answer": "もちろんです。自由にアイデアを出し、コンセプトを配置し、準備ができたらUpscale機能を使用して、個々のアセットを鮮明な4Kまたは8K解像度でエクスポートできます。プロのUI/UX、印刷、デジタルマーケティングに最適です。"
+        },
+        {
+          "question": "ChatCanvasで作成されたデザインは商用利用において安全ですか？",
+          "answer": "はい。Lovartの有料プランを購読している場合、生成したすべての視覚アセットに対する完全な商用利用権を保持するため、クライアントへのプレゼンテーション、アプリ、ウェブサイト、広告で完全に安全に使用できます。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

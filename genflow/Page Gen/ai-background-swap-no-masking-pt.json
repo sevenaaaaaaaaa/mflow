@@ -1,0 +1,387 @@
+{
+  "_id": "features-ai-background-swap-no-masking-pt",
+  "reflowSourceId": "features-ai-background-swap-no-masking-pt",
+  "slug": "ai-background-swap-no-masking",
+  "language": "pt",
+  "category": "feature",
+  "title": "Troca de fundo com IA: sem máscaras",
+  "description": "Teleport your products and portraits to any location without manual masking. Lovart's AI Design Agent automatically extracts subjects and syncs realistic lighting and shadows.",
+  "seo": {
+    "description": "Teleporte seus produtos e retratos para qualquer lugar sem mascaramento manual. O Agente de Design da Lovart extrai automaticamente os sujeitos e sincroniza iluminação e sombras realistas.",
+    "keywords": [
+      "Troca de fundo com IA",
+      "alterar fundo da imagem",
+      "substituição de fundo sem máscara",
+      "fotografia de produto com IA",
+      "editar elementos",
+      "teleporte de sujeito com IA",
+      "Lovart ChatCanvas"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Zero-Shot Semantic Masking",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Troca de fundo com IA: sem máscaras\", \"description\": \"Teleport your products and portraits to any location without manual masking. Lovart's AI Design Agent automatically extracts subjects and syncs realistic lighting and shadows.\", \"url\": \"https://www.lovart.ai/features/ai-background-swap-no-masking\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Preciso desenhar máscaras manualmente ou usar a ferramenta laço?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"De jeito nenhum. O Agente de Design IA do Lovart usa compreensão semântica avançada para identificar e isolar automaticamente o sujeito principal em sua imagem, poupando você de mascaramentos manuais tediosos.\"}}, {\"@type\": \"Question\", \"name\": \"O sujeito parecerá que está 'flutuando' no novo fundo?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Não. Ao contrário dos removedores de fundo básicos, o Lovart atua como um estúdio virtual. Ele calcula e gera automaticamente sombras de contato adequadas, ambient occlusion e reflexos de iluminação para que o sujeito se misture naturalmente ao novo ambiente.\"}}, {\"@type\": \"Question\", \"name\": \"Isso funciona em sujeitos difíceis como cabelo ou vidro transparente?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sim. Nossos modelos de ponta (incluindo o Nano Banana Pro) são treinados especificamente para lidar com detalhes de bordas complexas, preservando fios de cabelo, pelos e a transparência de garrafas de vidro de forma contínua.\"}}, {\"@type\": \"Question\", \"name\": \"Posso obter um PNG transparente em vez de um novo fundo?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Com certeza. Você pode usar a ferramenta 'Remover bg' para simplesmente extrair seu sujeito e exportá-lo como um PNG transparente de alta resolução para uso em outros softwares de design.\"}}, {\"@type\": \"Question\", \"name\": \"As trocas de fundo geradas são seguras para uso comercial?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sim. Se você estiver em qualquer um dos planos pagos do Lovart, você mantém plenos direitos comerciais sobre as composições geradas, tornando-as perfeitamente seguras para seus anúncios, sites e projetos de clientes.\"}}]}}"
+    },
+    "title": "Troca de fundo com IA: sem máscaras"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Troca de fundo com IA: sem máscaras\",\"description\":\"Teleport your products and portraits to any location without manual masking. Lovart's AI Design Agent automatically extracts subjects and syncs realistic lighting and shadows.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Zero-Shot Semantic Masking\"}},{\"type\":\"bento-6\",\"title\":\"Advanced Capabilities for Flawless Compositing\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Mascaramento Semântico Zero-Shot\",\"description\":\"Diga adeus às seleções manuais tediosas. Nossa IA extrai com precisão até os sujeitos mais complexos—como cabelos ao vento, vidro transparente ou pets peludos—com um clique.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Mascaramento Semântico Zero-Shot\"}},{\"title\":\"Geração Perfeita de Sombras\",\"description\":\"Os sujeitos nunca parecem 'copiados e colados'. O Lovart renderiza com precisão sombras de contato com o solo, ambient occlusion e iluminação direcional com base no novo ambiente.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Geração Perfeita de Sombras\"}},{\"title\":\"Sincronização de Reflexos e Materiais\",\"description\":\"Se você colocar um produto no asfalto molhado, a IA gera reflexos de água precisos. O agente entende a física dos materiais para garantir o fotorrealismo supremo.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Sincronização de Reflexos e Materiais\"}},{\"title\":\"Divisão de Camadas (Editar Elementos)\",\"description\":\"Precisa de mais controle? Use Editar Elementos para quebrar a imagem gerada em camadas distintas e móveis (sujeito, props, fundo) para ajustes de layout infinitos.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Divisão de Camadas (Editar Elementos)\"}},{\"title\":\"Exportação 4K em Alta Resolução\",\"description\":\"A troca de fundo não deve degradar sua imagem. Exporte suas composições finais em resolução 4K ultra-nítida, prontas para impressão, outdoors ou e-commerce de alto nível.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Exportação 4K em Alta Resolução\"}},{\"title\":\"Preservação de 100% do Sujeito\",\"description\":\"Enquanto o fundo muda inteiramente, o seu sujeito principal—seu logotipo de marca, dimensões exatas e textura original—permanece bloqueado e inalterado.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Preservação de 100% do Sujeito\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Todos os recursos em um só agente\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Mascaramento Semântico Zero-Shot\",\"icon\":\"chat\",\"content\":{\"title\":\"Mascaramento Semântico Zero-Shot\",\"description\":\"Diga adeus às seleções manuais tediosas. Nossa IA extrai com precisão até os sujeitos mais complexos—como cabelos ao vento, vidro transparente ou pets peludos—com um clique.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Mascaramento Semântico Zero-Shot\"}}},{\"label\":\"Geração Perfeita de Sombras\",\"icon\":\"image\",\"content\":{\"title\":\"Geração Perfeita de Sombras\",\"description\":\"Os sujeitos nunca parecem 'copiados e colados'. O Lovart renderiza com precisão sombras de contato com o solo, ambient occlusion e iluminação direcional com base no novo ambiente.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Geração Perfeita de Sombras\"}}},{\"label\":\"Sincronização de Reflexos e Materiais\",\"icon\":\"flask\",\"content\":{\"title\":\"Sincronização de Reflexos e Materiais\",\"description\":\"Se você colocar um produto no asfalto molhado, a IA gera reflexos de água precisos. O agente entende a física dos materiais para garantir o fotorrealismo supremo.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Sincronização de Reflexos e Materiais\"}}},{\"label\":\"Divisão de Camadas (Editar Elementos)\",\"icon\":\"brand\",\"content\":{\"title\":\"Divisão de Camadas (Editar Elementos)\",\"description\":\"Precisa de mais controle? Use Editar Elementos para quebrar a imagem gerada em camadas distintas e móveis (sujeito, props, fundo) para ajustes de layout infinitos.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Divisão de Camadas (Editar Elementos)\"}}}]},{\"type\":\"bento-2\",\"title\":\"Duas coisas que ele faz muito bem\",\"columns\":2,\"features\":[{\"title\":\"Exportação 4K em Alta Resolução\",\"description\":\"A troca de fundo não deve degradar sua imagem. Exporte suas composições finais em resolução 4K ultra-nítida, prontas para impressão, outdoors ou e-commerce de alto nível.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Exportação 4K em Alta Resolução\"}},{\"title\":\"Preservação de 100% do Sujeito\",\"description\":\"Enquanto o fundo muda inteiramente, o seu sujeito principal—seu logotipo de marca, dimensões exatas e textura original—permanece bloqueado e inalterado.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Preservação de 100% do Sujeito\"}}]},{\"type\":\"feature-detail\",\"title\":\"Como funciona em detalhes\",\"items\":[{\"title\":\"Inicie seu projeto de Instant AI Background Swap: Zero Masking Required\",\"description\":\"Descreva o resultado desejado e adicione referências.\"},{\"title\":\"Itere com o agente\",\"description\":\"Ajuste detalhes e explore variações no mesmo canvas.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Troca de Fundo com IA Instantânea: Sem Necessidade de Máscaras\",\"description\":\"Teleporte seus produtos ou retratos para qualquer lugar instantaneamente. O Agente de Design IA do Lovart isola automaticamente o seu sujeito com zero mascaramento manual, integrando-o perfeitamente a novos ambientes fotorrealistas com iluminação e sombras perfeitas.\",\"input_placeholder\":\"Descreva o novo fundo que você deseja para o seu sujeito...\",\"prompts\":[{\"label\":\"Lifestyle de Interiores\",\"prompt\":\"Mudar o fundo para uma sala de estar nórdica minimalista com luz natural suave da janela\"},{\"label\":\"Estúdio de Produto\",\"prompt\":\"Colocar este frasco de skincare em um pódio de mármore molhado com ondulações de água e iluminação cáustica\"},{\"label\":\"Retrato Cinematográfico\",\"prompt\":\"Teleportar este modelo de moda para uma rua cyberpunk iluminada por neon em Tóquio à noite\"},{\"label\":\"Foto Automotiva\",\"prompt\":\"Colocar este carro em uma rodovia costeira sinuosa ao pôr do sol com iluminação dramática de golden hour\"}],\"tip\":\"Dica: Mencione iluminação ou superfícies específicas, como 'colocado em um deck de madeira ensolarado com sombras matinais suaves'.\",\"cta\":{\"text\":\"Trocar Fundo\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Como Teleportar Seu Sujeito em 3 Passos Simples\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"Upload & Detecção Automática\",\"description\":\"Faça upload da sua foto no ChatCanvas. Jogue fora a pen tool—o motor semântico do Lovart detecta automaticamente o sujeito principal e o separa do fundo instantaneamente.\"},{\"step\":2,\"title\":\"Prompte o Novo Local\",\"description\":\"Simplesmente digite para onde você quer que seu sujeito vá. De 'um pico de montanha nevado' a 'um cenário de estúdio elegante', o motor MCoT entende a lógica espacial e constrói o ambiente.\"},{\"step\":3,\"title\":\"Sincronização de Luz & Sombra por IA\",\"description\":\"Sem objetos flutuantes. O agente calcula e aplica automaticamente reflexos ambientais, drop shadows realistas e color grading para que seu sujeito pertença naturalmente à nova cena.\"}]},{\"type\":\"comparison-table\",\"title\":\"Instant AI Background Swap: Zero Masking Required: Lovart vs. fluxos de trabalho tradicionais\",\"headers\":[\"Necessidade\",\"Ferramenta genérica\",\"Fluxo manual\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Inicie seu projeto de Instant AI Background Swap: Zero Masking Required\",\"values\":[\"Um prompt\",\"Briefing manual\",\"Raciocínio guiado pelo briefing\"]},{\"feature\":\"Tempo até o primeiro resultado\",\"values\":[\"Minutos\",\"Dias\",\"Minutos\"]},{\"feature\":\"Edição após a geração\",\"values\":[\"Limitado\",\"Rodadas de revisão\",\"Touch / Texto / Elementos\"]},{\"feature\":\"Manter a identidade da marca\",\"values\":[\"Manual\",\"Manual\",\"Compatível com Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Onde Instant AI Background Swap: Zero Masking Required ajuda\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Lance mais rápido\",\"description\":\"Do briefing aos assets de Instant AI Background Swap: Zero Masking Required em uma única sessão.\"},{\"icon\":\"brand\",\"title\":\"Mantenha a consistência\",\"description\":\"O Brand Kit mantém cada asset alinhado.\"},{\"icon\":\"refresh\",\"title\":\"Itere rapidamente\",\"description\":\"Edite detalhes sem recomeçar o projeto.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"Eu costumava pagar $5.000 a um estúdio por sessões de fotos de produtos lifestyle. Agora eu tiro uma foto na minha mesa, digo ao Lovart para 'colocá-lo em uma praia ao pôr do sol', e a IA lida com as sombras complexas e reflexos perfeitamente. É mágica.\",\"author\":\"Marcus L.\",\"role\":\"Dono de Negócio de E-commerce\"},{\"quote\":\"Recortar cabelos costumava me levar 20 minutos por foto no Photoshop. Com a abordagem de zero mascaramento do Lovart, o sujeito é isolado instantaneamente, e a sincronização da iluminação ambiental faz com que pareça incrivelmente natural.\",\"author\":\"Elena R.\",\"role\":\"Gerente de Redes Sociais\"},{\"quote\":\"A capacidade de teleportar um modelo de um estúdio em branco para uma rua cyberpunk—com as luzes de neon realmente refletindo em sua jaqueta—é um divisor de águas. O recurso de divisão de camadas nos dá flexibilidade máxima.\",\"author\":\"David K.\",\"role\":\"Diretor de Arte\"}],\"title\":\"Criadores Teleportando Seus Visuais com Lovart\"},{\"type\":\"pricing-block\",\"title\":\"Escolha o plano ideal para a sua equipe\",\"description\":\"Comece de graça. Faça upgrade quando o trabalho for para o cliente.\"},{\"type\":\"faq\",\"title\":\"Perguntas frequentes\",\"items\":[{\"question\":\"Preciso desenhar máscaras manualmente ou usar a ferramenta laço?\",\"answer\":\"De jeito nenhum. O Agente de Design IA do Lovart usa compreensão semântica avançada para identificar e isolar automaticamente o sujeito principal em sua imagem, poupando você de mascaramentos manuais tediosos.\"},{\"question\":\"O sujeito parecerá que está 'flutuando' no novo fundo?\",\"answer\":\"Não. Ao contrário dos removedores de fundo básicos, o Lovart atua como um estúdio virtual. Ele calcula e gera automaticamente sombras de contato adequadas, ambient occlusion e reflexos de iluminação para que o sujeito se misture naturalmente ao novo ambiente.\"},{\"question\":\"Isso funciona em sujeitos difíceis como cabelo ou vidro transparente?\",\"answer\":\"Sim. Nossos modelos de ponta (incluindo o Nano Banana Pro) são treinados especificamente para lidar com detalhes de bordas complexas, preservando fios de cabelo, pelos e a transparência de garrafas de vidro de forma contínua.\"},{\"question\":\"Posso obter um PNG transparente em vez de um novo fundo?\",\"answer\":\"Com certeza. Você pode usar a ferramenta 'Remover bg' para simplesmente extrair seu sujeito e exportá-lo como um PNG transparente de alta resolução para uso em outros softwares de design.\"},{\"question\":\"As trocas de fundo geradas são seguras para uso comercial?\",\"answer\":\"Sim. Se você estiver em qualquer um dos planos pagos do Lovart, você mantém plenos direitos comerciais sobre as composições geradas, tornando-as perfeitamente seguras para seus anúncios, sites e projetos de clientes.\"}]},{\"type\":\"cta-default\",\"title\":\"Comece a criar com a Lovart\",\"description\":\"Transforme seu briefing em visuais alinhados à marca em minutos.\",\"buttons\":[{\"text\":\"Começar grátis\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Troca de fundo com IA: sem máscaras",
+      "description": "Teleport your products and portraits to any location without manual masking. Lovart's AI Design Agent automatically extracts subjects and syncs realistic lighting and shadows.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Zero-Shot Semantic Masking"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Advanced Capabilities for Flawless Compositing",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Mascaramento Semântico Zero-Shot",
+          "description": "Diga adeus às seleções manuais tediosas. Nossa IA extrai com precisão até os sujeitos mais complexos—como cabelos ao vento, vidro transparente ou pets peludos—com um clique.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Mascaramento Semântico Zero-Shot"
+          }
+        },
+        {
+          "title": "Geração Perfeita de Sombras",
+          "description": "Os sujeitos nunca parecem 'copiados e colados'. O Lovart renderiza com precisão sombras de contato com o solo, ambient occlusion e iluminação direcional com base no novo ambiente.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Geração Perfeita de Sombras"
+          }
+        },
+        {
+          "title": "Sincronização de Reflexos e Materiais",
+          "description": "Se você colocar um produto no asfalto molhado, a IA gera reflexos de água precisos. O agente entende a física dos materiais para garantir o fotorrealismo supremo.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Sincronização de Reflexos e Materiais"
+          }
+        },
+        {
+          "title": "Divisão de Camadas (Editar Elementos)",
+          "description": "Precisa de mais controle? Use Editar Elementos para quebrar a imagem gerada em camadas distintas e móveis (sujeito, props, fundo) para ajustes de layout infinitos.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "Divisão de Camadas (Editar Elementos)"
+          }
+        },
+        {
+          "title": "Exportação 4K em Alta Resolução",
+          "description": "A troca de fundo não deve degradar sua imagem. Exporte suas composições finais em resolução 4K ultra-nítida, prontas para impressão, outdoors ou e-commerce de alto nível.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Exportação 4K em Alta Resolução"
+          }
+        },
+        {
+          "title": "Preservação de 100% do Sujeito",
+          "description": "Enquanto o fundo muda inteiramente, o seu sujeito principal—seu logotipo de marca, dimensões exatas e textura original—permanece bloqueado e inalterado.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Preservação de 100% do Sujeito"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Todos os recursos em um só agente",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Mascaramento Semântico Zero-Shot",
+          "icon": "chat",
+          "content": {
+            "title": "Mascaramento Semântico Zero-Shot",
+            "description": "Diga adeus às seleções manuais tediosas. Nossa IA extrai com precisão até os sujeitos mais complexos—como cabelos ao vento, vidro transparente ou pets peludos—com um clique.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Mascaramento Semântico Zero-Shot"
+            }
+          }
+        },
+        {
+          "label": "Geração Perfeita de Sombras",
+          "icon": "image",
+          "content": {
+            "title": "Geração Perfeita de Sombras",
+            "description": "Os sujeitos nunca parecem 'copiados e colados'. O Lovart renderiza com precisão sombras de contato com o solo, ambient occlusion e iluminação direcional com base no novo ambiente.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Geração Perfeita de Sombras"
+            }
+          }
+        },
+        {
+          "label": "Sincronização de Reflexos e Materiais",
+          "icon": "flask",
+          "content": {
+            "title": "Sincronização de Reflexos e Materiais",
+            "description": "Se você colocar um produto no asfalto molhado, a IA gera reflexos de água precisos. O agente entende a física dos materiais para garantir o fotorrealismo supremo.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Sincronização de Reflexos e Materiais"
+            }
+          }
+        },
+        {
+          "label": "Divisão de Camadas (Editar Elementos)",
+          "icon": "brand",
+          "content": {
+            "title": "Divisão de Camadas (Editar Elementos)",
+            "description": "Precisa de mais controle? Use Editar Elementos para quebrar a imagem gerada em camadas distintas e móveis (sujeito, props, fundo) para ajustes de layout infinitos.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "Divisão de Camadas (Editar Elementos)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Duas coisas que ele faz muito bem",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Exportação 4K em Alta Resolução",
+          "description": "A troca de fundo não deve degradar sua imagem. Exporte suas composições finais em resolução 4K ultra-nítida, prontas para impressão, outdoors ou e-commerce de alto nível.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Exportação 4K em Alta Resolução"
+          }
+        },
+        {
+          "title": "Preservação de 100% do Sujeito",
+          "description": "Enquanto o fundo muda inteiramente, o seu sujeito principal—seu logotipo de marca, dimensões exatas e textura original—permanece bloqueado e inalterado.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Preservação de 100% do Sujeito"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "Como funciona em detalhes",
+      "items": [
+        {
+          "title": "Inicie seu projeto de Instant AI Background Swap: Zero Masking Required",
+          "description": "Descreva o resultado desejado e adicione referências."
+        },
+        {
+          "title": "Itere com o agente",
+          "description": "Ajuste detalhes e explore variações no mesmo canvas.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Troca de Fundo com IA Instantânea: Sem Necessidade de Máscaras",
+      "description": "Teleporte seus produtos ou retratos para qualquer lugar instantaneamente. O Agente de Design IA do Lovart isola automaticamente o seu sujeito com zero mascaramento manual, integrando-o perfeitamente a novos ambientes fotorrealistas com iluminação e sombras perfeitas.",
+      "input_placeholder": "Descreva o novo fundo que você deseja para o seu sujeito...",
+      "prompts": [
+        {
+          "label": "Lifestyle de Interiores",
+          "prompt": "Mudar o fundo para uma sala de estar nórdica minimalista com luz natural suave da janela"
+        },
+        {
+          "label": "Estúdio de Produto",
+          "prompt": "Colocar este frasco de skincare em um pódio de mármore molhado com ondulações de água e iluminação cáustica"
+        },
+        {
+          "label": "Retrato Cinematográfico",
+          "prompt": "Teleportar este modelo de moda para uma rua cyberpunk iluminada por neon em Tóquio à noite"
+        },
+        {
+          "label": "Foto Automotiva",
+          "prompt": "Colocar este carro em uma rodovia costeira sinuosa ao pôr do sol com iluminação dramática de golden hour"
+        }
+      ],
+      "tip": "Dica: Mencione iluminação ou superfícies específicas, como 'colocado em um deck de madeira ensolarado com sombras matinais suaves'.",
+      "cta": {
+        "text": "Trocar Fundo"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Como Teleportar Seu Sujeito em 3 Passos Simples",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Upload & Detecção Automática",
+          "description": "Faça upload da sua foto no ChatCanvas. Jogue fora a pen tool—o motor semântico do Lovart detecta automaticamente o sujeito principal e o separa do fundo instantaneamente."
+        },
+        {
+          "step": 2,
+          "title": "Prompte o Novo Local",
+          "description": "Simplesmente digite para onde você quer que seu sujeito vá. De 'um pico de montanha nevado' a 'um cenário de estúdio elegante', o motor MCoT entende a lógica espacial e constrói o ambiente."
+        },
+        {
+          "step": 3,
+          "title": "Sincronização de Luz & Sombra por IA",
+          "description": "Sem objetos flutuantes. O agente calcula e aplica automaticamente reflexos ambientais, drop shadows realistas e color grading para que seu sujeito pertença naturalmente à nova cena."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Instant AI Background Swap: Zero Masking Required: Lovart vs. fluxos de trabalho tradicionais",
+      "headers": [
+        "Necessidade",
+        "Ferramenta genérica",
+        "Fluxo manual",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Inicie seu projeto de Instant AI Background Swap: Zero Masking Required",
+          "values": [
+            "Um prompt",
+            "Briefing manual",
+            "Raciocínio guiado pelo briefing"
+          ]
+        },
+        {
+          "feature": "Tempo até o primeiro resultado",
+          "values": [
+            "Minutos",
+            "Dias",
+            "Minutos"
+          ]
+        },
+        {
+          "feature": "Edição após a geração",
+          "values": [
+            "Limitado",
+            "Rodadas de revisão",
+            "Touch / Texto / Elementos"
+          ]
+        },
+        {
+          "feature": "Manter a identidade da marca",
+          "values": [
+            "Manual",
+            "Manual",
+            "Compatível com Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Onde Instant AI Background Swap: Zero Masking Required ajuda",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Lance mais rápido",
+          "description": "Do briefing aos assets de Instant AI Background Swap: Zero Masking Required em uma única sessão."
+        },
+        {
+          "icon": "brand",
+          "title": "Mantenha a consistência",
+          "description": "O Brand Kit mantém cada asset alinhado."
+        },
+        {
+          "icon": "refresh",
+          "title": "Itere rapidamente",
+          "description": "Edite detalhes sem recomeçar o projeto."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "Eu costumava pagar $5.000 a um estúdio por sessões de fotos de produtos lifestyle. Agora eu tiro uma foto na minha mesa, digo ao Lovart para 'colocá-lo em uma praia ao pôr do sol', e a IA lida com as sombras complexas e reflexos perfeitamente. É mágica.",
+          "author": "Marcus L.",
+          "role": "Dono de Negócio de E-commerce"
+        },
+        {
+          "quote": "Recortar cabelos costumava me levar 20 minutos por foto no Photoshop. Com a abordagem de zero mascaramento do Lovart, o sujeito é isolado instantaneamente, e a sincronização da iluminação ambiental faz com que pareça incrivelmente natural.",
+          "author": "Elena R.",
+          "role": "Gerente de Redes Sociais"
+        },
+        {
+          "quote": "A capacidade de teleportar um modelo de um estúdio em branco para uma rua cyberpunk—com as luzes de neon realmente refletindo em sua jaqueta—é um divisor de águas. O recurso de divisão de camadas nos dá flexibilidade máxima.",
+          "author": "David K.",
+          "role": "Diretor de Arte"
+        }
+      ],
+      "title": "Criadores Teleportando Seus Visuais com Lovart"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Escolha o plano ideal para a sua equipe",
+      "description": "Comece de graça. Faça upgrade quando o trabalho for para o cliente."
+    },
+    {
+      "type": "faq",
+      "title": "Perguntas frequentes",
+      "items": [
+        {
+          "question": "Preciso desenhar máscaras manualmente ou usar a ferramenta laço?",
+          "answer": "De jeito nenhum. O Agente de Design IA do Lovart usa compreensão semântica avançada para identificar e isolar automaticamente o sujeito principal em sua imagem, poupando você de mascaramentos manuais tediosos."
+        },
+        {
+          "question": "O sujeito parecerá que está 'flutuando' no novo fundo?",
+          "answer": "Não. Ao contrário dos removedores de fundo básicos, o Lovart atua como um estúdio virtual. Ele calcula e gera automaticamente sombras de contato adequadas, ambient occlusion e reflexos de iluminação para que o sujeito se misture naturalmente ao novo ambiente."
+        },
+        {
+          "question": "Isso funciona em sujeitos difíceis como cabelo ou vidro transparente?",
+          "answer": "Sim. Nossos modelos de ponta (incluindo o Nano Banana Pro) são treinados especificamente para lidar com detalhes de bordas complexas, preservando fios de cabelo, pelos e a transparência de garrafas de vidro de forma contínua."
+        },
+        {
+          "question": "Posso obter um PNG transparente em vez de um novo fundo?",
+          "answer": "Com certeza. Você pode usar a ferramenta 'Remover bg' para simplesmente extrair seu sujeito e exportá-lo como um PNG transparente de alta resolução para uso em outros softwares de design."
+        },
+        {
+          "question": "As trocas de fundo geradas são seguras para uso comercial?",
+          "answer": "Sim. Se você estiver em qualquer um dos planos pagos do Lovart, você mantém plenos direitos comerciais sobre as composições geradas, tornando-as perfeitamente seguras para seus anúncios, sites e projetos de clientes."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Comece a criar com a Lovart",
+      "description": "Transforme seu briefing em visuais alinhados à marca em minutos.",
+      "buttons": [
+        {
+          "text": "Começar grátis",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

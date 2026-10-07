@@ -1,0 +1,162 @@
+{
+  "version": "2026-06-08",
+  "policy_summary": "全文镜像到 Notion；排除开发环境、备份、重输出、过时文档；纳入确定 Skills、关键知识库、报告、Harness 文档层。",
+  "exclude": {
+    "path_prefixes": [
+      "1-8 Backup/",
+      "dev/lovart.sanity.studio/",
+      "dev/node_modules/",
+      "1-1 GEO Readme/sanity-studio-copies/",
+      "1-1 GEO Readme/故事线文档副本/",
+      "1-1 GEO Readme/Lovart-Automation/",
+      "1-1 GEO Readme/notion-sync/templates/",
+      "harness/Skills/00-core/",
+      "harness/Skills/10-lark/",
+      "insight-data/Lovart ORM/raw/",
+      "1-7 Output/",
+      "~/Documents/Lovart Local Dev/"
+    ],
+    "path_globs": [
+      "**/node_modules/**",
+      "**/credentials/**",
+      "**/gsc_credentials/**",
+      "**/ga4_credentials/**",
+      "**/bing_credentials/**",
+      "**/.git/**",
+      "**/.cursor/**",
+      "**/samples/**",
+      "**/_fixtures/**",
+      "**/feedback/**"
+    ],
+    "filename_patterns": [
+      "*审计*.md",
+      "*清理记录*.md",
+      "*闭环记录*.md",
+      "permissions-fix.md",
+      ".probe-replace",
+      "config.example.json",
+      "production-export.json",
+      "pull-tools-latest.json"
+    ],
+    "superseded_docs": [
+      "1-1 GEO Readme/PRD-部署上线方案.md",
+      "1-1 GEO Readme/文档/06-自动化状态.md",
+      "1-1 GEO Readme/文档/07-LifeOS-PARA-云端迁移实施方案.md"
+    ],
+    "notes": "开发环境=Sanity studio 副本与源码树；备份=1-8；重输出=1-7 与系统文稿目录 Lovart Local Dev；过时=被 08/09 蓝图取代的 PRD 与一次性审计稿。"
+  },
+  "include": {
+    "knowledge_base": {
+      "target_database": "Resources",
+      "paths": [
+        "1-1 GEO Readme/README.md",
+        "1-1 GEO Readme/首次运行环境安装清单.md",
+        "1-1 GEO Readme/AGENTS.md",
+        "1-1 GEO Readme/WORKFLOWS.md",
+        "1-1 GEO Readme/WORKFLOW_CHAIN.md",
+        "1-1 GEO Readme/Lovart-Local-Dev-路径契约.md",
+        "1-1 GEO Readme/SKILLS_INVENTORY.md",
+        "1-1 GEO Readme/ANTI-BUGS-REGISTRY.md",
+        "1-1 GEO Readme/GSC-Bing-API-Fields.md",
+        "1-1 GEO Readme/使用说明-各环节.md",
+        "1-1 GEO Readme/文档/",
+        "1-1 GEO Readme/定期任务/",
+        "1-3 Content Gen/CONTENT_LINK_INDEX.md"
+      ],
+      "exclude_under_paths": [
+        "1-1 GEO Readme/文档/06-自动化状态.md",
+        "1-1 GEO Readme/文档/07-LifeOS-PARA-云端迁移实施方案.md"
+      ]
+    },
+    "confirmed_agent_skills": {
+      "target_database": "Resources",
+      "skill_roots": [
+        "harness/Skills/lovart-trident-data-engine",
+        "harness/Skills/lovart-sanity-publish",
+        "harness/Skills/lovart-sanity-preflight",
+        "harness/Skills/lovart-sanity-content-publish",
+        "harness/Skills/lovart-features-sanity-publish",
+        "harness/Skills/lovart-tools-sanity-publish",
+        "harness/Skills/lovart-product-sanity-publish",
+        "harness/Skills/lovart-scenarios-sanity-publish",
+        "harness/Skills/lovart-blog-automation",
+        "harness/Skills/lovart-blog-serp-writer",
+        "harness/Skills/lovart-blog-signal-writer",
+        "harness/Skills/lovart-page-serp-writer",
+        "harness/Skills/lovart-content-creation-orchestrator",
+        "harness/Skills/lovart-content-quality-gates",
+        "harness/Skills/lovart-content-audit",
+        "harness/Skills/lovart-content-calendar",
+        "harness/Skills/lovart-data-ingestion",
+        "harness/Skills/lovart-image-generation",
+        "harness/Skills/lovart-landing-page",
+        "harness/Skills/lovart-sitemap-update",
+        "harness/Skills/lovart-multi-platform-push",
+        "harness/Skills/lovart-pipeline-orchestrator",
+        "harness/Skills/refresh-page-page-generator",
+        "harness/Skills/40-sentinel/lovart-sentinel"
+      ],
+      "skill_root_globs": ["**/SKILL.md", "**/SOP*.md", "**/references/**", "**/*.md"],
+      "skill_root_exclude_globs": ["**/scripts/**", "**/credentials/**", "**/samples/**", "**/_fixtures/**", "**/feedback/**"]
+    },
+    "harness_hub": {
+      "target_database": "Resources",
+      "paths": [
+        "harness/AGENTS.md",
+        "harness/WORKFLOWS.md",
+        "harness/automation/",
+        "harness/Skills/README.md",
+        "harness/Skills/README-Lovart-SEO-Toolkit.md",
+        "harness/Skills/LOVART-AUTOMATION-WORKFLOW.md",
+        "harness/Skills/lovart-content-writer.md",
+        "harness/Skills/lovart-data-flow-map.md",
+        "harness/Skills/lovart-gsc-api-setup-guide.md",
+        "harness/Skills/lovart-api-config.md",
+        "harness/Skills/lovart-notion-config.md",
+        "harness/Skills/sitemap-seo-ai-search-optimization.md"
+      ],
+      "exclude_patterns": ["multi-seo-*-2026-*.md", "multi-seo-*-2026-*.csv"]
+    },
+    "reports": {
+      "target_database": "Reports/Insights",
+      "paths": [
+        "insight-data/Trident Insights/reports/**/*.md",
+        "insight-data/Lovart ORM/daily/**/*.md",
+        "insight-data/Lovart ORM/weekly/**/*.md",
+        "insight-data/Lovart ORM/monthly/**/*.md",
+        "insight-data/Keywords Research/SEO Report/**/*.md",
+        "insight-data/Keywords Research/SERP Copy Intelligence/**/*.md",
+        "insight-data/Page Analytic/**/*.md"
+      ],
+      "exclude_globs": ["**/*.json"]
+    },
+    "automation_ops": {
+      "target_database": "Automations",
+      "paths": [
+        "dev/automation/**/*.md",
+        "dev/automation/**/*.sh",
+        "dev/automation/**/*.json",
+        "1-1 GEO Readme/文档/08-自动化总蓝图.md",
+        "1-1 GEO Readme/文档/09-自动化已执行清单.md"
+      ],
+      "exclude_paths": ["dev/automation/workflows/"],
+      "notes": "workflow JSON 属运行配置，进 Automations 库+正文页；不进 Content。"
+    }
+  },
+  "out_of_scope_explicit": [
+    "1-3 Content Gen/ 正文与草稿（非本次范围；轻量内容链接清单 CONTENT_LINK_INDEX.md 除外）",
+    "dev/scripts/ 源码",
+    "1-7 Output/ 与 ~/Documents/Lovart Local Dev/ 重输出目录（只同步摘要索引与 Ops Reports，不全文镜像重文件）",
+    "harness/Skills/00-core 通用平台 Skill",
+    "竞品 Notion 库 Lovart-Home/Reviews/Fake/2nd（独立体系）"
+  ],
+  "sync_batches_revised": [
+    {"id": "K1", "name": "关键知识库 GEO Readme", "scope": "knowledge_base", "priority": "P0"},
+    {"id": "S1", "name": "确定 Agent Skills 全文", "scope": "confirmed_agent_skills", "priority": "P0"},
+    {"id": "H1", "name": "Harness 枢纽文档", "scope": "harness_hub", "priority": "P0"},
+    {"id": "R1", "name": "Trident + Sentinel 报告", "scope": "reports", "paths_subset": ["insight-data/Trident Insights/reports/", "insight-data/Lovart ORM/"], "priority": "P0"},
+    {"id": "R2", "name": "Keywords + Page Analytic 报告", "scope": "reports", "paths_subset": ["insight-data/Keywords Research/", "insight-data/Page Analytic/"], "priority": "P1"},
+    {"id": "R3", "name": "Output 运行与审计摘要", "scope": "reports", "paths_subset": ["Lovart Local Dev/Output/automation-reports/INDEX.md", "Lovart Local Dev/Output/quality-audits/摘要"], "priority": "P0"},
+    {"id": "A1", "name": "自动化脚本与蓝图", "scope": "automation_ops", "priority": "P1"}
+  ]
+}

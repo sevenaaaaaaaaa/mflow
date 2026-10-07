@@ -1,0 +1,558 @@
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-05 (全月)
+  环比: 2025-04 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[3/4] 计算分层 + 匹配竞品词...
+Traceback (most recent call last):
+  File "/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/scripts/seo_monthly_v2.py", line 1515, in <module>
+    run_monthly_report(
+  File "/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/scripts/seo_monthly_v2.py", line 1445, in run_monthly_report
+    comp_prev = match_competitors(g_prev["nonbrand_kw"])
+  File "/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/scripts/seo_monthly_v2.py", line 626, in match_competitors
+    "click_share": round(sum(k["clicks"] for k in full_matched)/sum(k["clicks"] for k in nonbrand_kw)*100,1) if nonbrand_kw else 0,
+ZeroDivisionError: division by zero
+  ⚠️ 月报生成有警告，继续 Draft 后处理: 2025-05
+✅ tier=draft Lovart-SEO-2025-05.md
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-06 (全月)
+  环比: 2025-05 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[3/4] 计算分层 + 匹配竞品词...
+  品牌词: 160 → 360
+  非品牌词: 4840 → 1927
+  竞品 Core: 5/36 (13.9%)
+  页面目录: 5 groups
+
+[3b/4] DataWorks SEO/GEO 产品数据...
+  当月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+  对比月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+
+[4/4] 生成完整报告...
+
+  📄 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/Trident Insights/reports/monthly/Lovart-SEO-2025-06.md
+  📊 64,446 chars, 1463 lines
+
+  月报 V2 自检（AGENTS.md A0d / seo_report_standards）：
+    [ ] 固定顺序 一～十三、大/小编号连续不重复
+    [ ] §一 核心洞察：三段结论（全链路/关键词/执行）+（一）（二）展开；GEO 付费率对比、收录暴增、内容池；OKR 在 §二
+    [ ] 核心洞察为三层叙事（自然搜索产品→收录/关键词/页面→综合下一步）
+    [ ] §二 OKR 月达成看板（访问 UV 用 all_uv；Sessions 参考行）
+    [ ] §三 SEO Dashboard 为卡 A–F + C-Bing/D-Bing/E-Bing（F 含 Bing 竞品行）
+    [ ] §4.1 含曝光列与曝光/CTR 环比列；§4.4–4.7 Google movers + §4.12–4.15 Bing movers + §4.16 跨引擎词重叠
+    [ ] §四–§十一 分渠道：整体概览 + §4.8–4.16 + 5.4 + 6.4 + 7B + 8.6–8.11 + 9.4–9.6 + 10B + 11.10，每节带「💡 引擎差异」
+    [ ] §十一 Google=GSC 分地区 + §11.10 Bing GA4 近似（脚注口径诚实）
+    [ ] §四~九、十一节含「💡」
+    [ ] 含「年均对比」备注行
+    [ ] §11.0 大区最好/持平/最差总览存在
+    [ ] 每个大区含「分区月报（双月）」：CTR/占比有环比、Top15 双月表
+    [ ] 收录率约 40%+ 量级（非 1.43%）；lavort 不在非品牌 Top10
+    [ ] 全文约 1000 行（<600 行多为旧版缩水）
+    [ ] 含 §六 DataWorks 平台拆解 或月去重待产出提示
+    [ ] OKR 脚注：GA4 Sessions vs DataWorks UV 不可直接对比
+    [ ] i18n 内容生产：按 locale 给出查询证据、机会词、本地化页面覆盖与候选任务
+
+✅ Done!
+✅ tier=draft Lovart-SEO-2025-06.md
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-07 (全月)
+  环比: 2025-06 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[3/4] 计算分层 + 匹配竞品词...
+  品牌词: 360 → 850
+  非品牌词: 1927 → 4048
+  竞品 Core: 11/36 (30.6%)
+  页面目录: 9 groups
+
+[3b/4] DataWorks SEO/GEO 产品数据...
+  当月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+  对比月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+
+[4/4] 生成完整报告...
+
+  📄 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/Trident Insights/reports/monthly/Lovart-SEO-2025-07.md
+  📊 69,828 chars, 1526 lines
+
+  月报 V2 自检（AGENTS.md A0d / seo_report_standards）：
+    [ ] 固定顺序 一～十三、大/小编号连续不重复
+    [ ] §一 核心洞察：三段结论（全链路/关键词/执行）+（一）（二）展开；GEO 付费率对比、收录暴增、内容池；OKR 在 §二
+    [ ] 核心洞察为三层叙事（自然搜索产品→收录/关键词/页面→综合下一步）
+    [ ] §二 OKR 月达成看板（访问 UV 用 all_uv；Sessions 参考行）
+    [ ] §三 SEO Dashboard 为卡 A–F + C-Bing/D-Bing/E-Bing（F 含 Bing 竞品行）
+    [ ] §4.1 含曝光列与曝光/CTR 环比列；§4.4–4.7 Google movers + §4.12–4.15 Bing movers + §4.16 跨引擎词重叠
+    [ ] §四–§十一 分渠道：整体概览 + §4.8–4.16 + 5.4 + 6.4 + 7B + 8.6–8.11 + 9.4–9.6 + 10B + 11.10，每节带「💡 引擎差异」
+    [ ] §十一 Google=GSC 分地区 + §11.10 Bing GA4 近似（脚注口径诚实）
+    [ ] §四~九、十一节含「💡」
+    [ ] 含「年均对比」备注行
+    [ ] §11.0 大区最好/持平/最差总览存在
+    [ ] 每个大区含「分区月报（双月）」：CTR/占比有环比、Top15 双月表
+    [ ] 收录率约 40%+ 量级（非 1.43%）；lavort 不在非品牌 Top10
+    [ ] 全文约 1000 行（<600 行多为旧版缩水）
+    [ ] 含 §六 DataWorks 平台拆解 或月去重待产出提示
+    [ ] OKR 脚注：GA4 Sessions vs DataWorks UV 不可直接对比
+    [ ] i18n 内容生产：按 locale 给出查询证据、机会词、本地化页面覆盖与候选任务
+
+✅ Done!
+✅ tier=draft Lovart-SEO-2025-07.md
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-08 (全月)
+  环比: 2025-07 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[3/4] 计算分层 + 匹配竞品词...
+  品牌词: 850 → 647
+  非品牌词: 4048 → 4353
+  竞品 Core: 14/36 (38.9%)
+  页面目录: 29 groups
+
+[3b/4] DataWorks SEO/GEO 产品数据...
+  当月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+  对比月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+
+[4/4] 生成完整报告...
+
+  📄 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/Trident Insights/reports/monthly/Lovart-SEO-2025-08.md
+  📊 74,816 chars, 1589 lines
+
+  月报 V2 自检（AGENTS.md A0d / seo_report_standards）：
+    [ ] 固定顺序 一～十三、大/小编号连续不重复
+    [ ] §一 核心洞察：三段结论（全链路/关键词/执行）+（一）（二）展开；GEO 付费率对比、收录暴增、内容池；OKR 在 §二
+    [ ] 核心洞察为三层叙事（自然搜索产品→收录/关键词/页面→综合下一步）
+    [ ] §二 OKR 月达成看板（访问 UV 用 all_uv；Sessions 参考行）
+    [ ] §三 SEO Dashboard 为卡 A–F + C-Bing/D-Bing/E-Bing（F 含 Bing 竞品行）
+    [ ] §4.1 含曝光列与曝光/CTR 环比列；§4.4–4.7 Google movers + §4.12–4.15 Bing movers + §4.16 跨引擎词重叠
+    [ ] §四–§十一 分渠道：整体概览 + §4.8–4.16 + 5.4 + 6.4 + 7B + 8.6–8.11 + 9.4–9.6 + 10B + 11.10，每节带「💡 引擎差异」
+    [ ] §十一 Google=GSC 分地区 + §11.10 Bing GA4 近似（脚注口径诚实）
+    [ ] §四~九、十一节含「💡」
+    [ ] 含「年均对比」备注行
+    [ ] §11.0 大区最好/持平/最差总览存在
+    [ ] 每个大区含「分区月报（双月）」：CTR/占比有环比、Top15 双月表
+    [ ] 收录率约 40%+ 量级（非 1.43%）；lavort 不在非品牌 Top10
+    [ ] 全文约 1000 行（<600 行多为旧版缩水）
+    [ ] 含 §六 DataWorks 平台拆解 或月去重待产出提示
+    [ ] OKR 脚注：GA4 Sessions vs DataWorks UV 不可直接对比
+    [ ] i18n 内容生产：按 locale 给出查询证据、机会词、本地化页面覆盖与候选任务
+
+✅ Done!
+✅ tier=draft Lovart-SEO-2025-08.md
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-09 (全月)
+  环比: 2025-08 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[3/4] 计算分层 + 匹配竞品词...
+  品牌词: 647 → 1443
+  非品牌词: 4353 → 3557
+  竞品 Core: 15/36 (41.7%)
+  页面目录: 28 groups
+
+[3b/4] DataWorks SEO/GEO 产品数据...
+  当月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+  对比月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+
+[4/4] 生成完整报告...
+
+  📄 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/Trident Insights/reports/monthly/Lovart-SEO-2025-09.md
+  📊 76,055 chars, 1589 lines
+
+  月报 V2 自检（AGENTS.md A0d / seo_report_standards）：
+    [ ] 固定顺序 一～十三、大/小编号连续不重复
+    [ ] §一 核心洞察：三段结论（全链路/关键词/执行）+（一）（二）展开；GEO 付费率对比、收录暴增、内容池；OKR 在 §二
+    [ ] 核心洞察为三层叙事（自然搜索产品→收录/关键词/页面→综合下一步）
+    [ ] §二 OKR 月达成看板（访问 UV 用 all_uv；Sessions 参考行）
+    [ ] §三 SEO Dashboard 为卡 A–F + C-Bing/D-Bing/E-Bing（F 含 Bing 竞品行）
+    [ ] §4.1 含曝光列与曝光/CTR 环比列；§4.4–4.7 Google movers + §4.12–4.15 Bing movers + §4.16 跨引擎词重叠
+    [ ] §四–§十一 分渠道：整体概览 + §4.8–4.16 + 5.4 + 6.4 + 7B + 8.6–8.11 + 9.4–9.6 + 10B + 11.10，每节带「💡 引擎差异」
+    [ ] §十一 Google=GSC 分地区 + §11.10 Bing GA4 近似（脚注口径诚实）
+    [ ] §四~九、十一节含「💡」
+    [ ] 含「年均对比」备注行
+    [ ] §11.0 大区最好/持平/最差总览存在
+    [ ] 每个大区含「分区月报（双月）」：CTR/占比有环比、Top15 双月表
+    [ ] 收录率约 40%+ 量级（非 1.43%）；lavort 不在非品牌 Top10
+    [ ] 全文约 1000 行（<600 行多为旧版缩水）
+    [ ] 含 §六 DataWorks 平台拆解 或月去重待产出提示
+    [ ] OKR 脚注：GA4 Sessions vs DataWorks UV 不可直接对比
+    [ ] i18n 内容生产：按 locale 给出查询证据、机会词、本地化页面覆盖与候选任务
+
+✅ Done!
+✅ tier=draft Lovart-SEO-2025-09.md
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-10 (全月)
+  环比: 2025-09 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[3/4] 计算分层 + 匹配竞品词...
+  品牌词: 1443 → 1579
+  非品牌词: 3557 → 3421
+  竞品 Core: 20/36 (55.6%)
+  页面目录: 29 groups
+
+[3b/4] DataWorks SEO/GEO 产品数据...
+  当月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+  对比月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+
+[4/4] 生成完整报告...
+
+  📄 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/Trident Insights/reports/monthly/Lovart-SEO-2025-10.md
+  📊 76,242 chars, 1600 lines
+
+  月报 V2 自检（AGENTS.md A0d / seo_report_standards）：
+    [ ] 固定顺序 一～十三、大/小编号连续不重复
+    [ ] §一 核心洞察：三段结论（全链路/关键词/执行）+（一）（二）展开；GEO 付费率对比、收录暴增、内容池；OKR 在 §二
+    [ ] 核心洞察为三层叙事（自然搜索产品→收录/关键词/页面→综合下一步）
+    [ ] §二 OKR 月达成看板（访问 UV 用 all_uv；Sessions 参考行）
+    [ ] §三 SEO Dashboard 为卡 A–F + C-Bing/D-Bing/E-Bing（F 含 Bing 竞品行）
+    [ ] §4.1 含曝光列与曝光/CTR 环比列；§4.4–4.7 Google movers + §4.12–4.15 Bing movers + §4.16 跨引擎词重叠
+    [ ] §四–§十一 分渠道：整体概览 + §4.8–4.16 + 5.4 + 6.4 + 7B + 8.6–8.11 + 9.4–9.6 + 10B + 11.10，每节带「💡 引擎差异」
+    [ ] §十一 Google=GSC 分地区 + §11.10 Bing GA4 近似（脚注口径诚实）
+    [ ] §四~九、十一节含「💡」
+    [ ] 含「年均对比」备注行
+    [ ] §11.0 大区最好/持平/最差总览存在
+    [ ] 每个大区含「分区月报（双月）」：CTR/占比有环比、Top15 双月表
+    [ ] 收录率约 40%+ 量级（非 1.43%）；lavort 不在非品牌 Top10
+    [ ] 全文约 1000 行（<600 行多为旧版缩水）
+    [ ] 含 §六 DataWorks 平台拆解 或月去重待产出提示
+    [ ] OKR 脚注：GA4 Sessions vs DataWorks UV 不可直接对比
+    [ ] i18n 内容生产：按 locale 给出查询证据、机会词、本地化页面覆盖与候选任务
+
+✅ Done!
+✅ tier=draft Lovart-SEO-2025-10.md
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-11 (全月)
+  环比: 2025-10 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[3/4] 计算分层 + 匹配竞品词...
+  品牌词: 1579 → 2112
+  非品牌词: 3421 → 2888
+  竞品 Core: 20/36 (55.6%)
+  页面目录: 28 groups
+
+[3b/4] DataWorks SEO/GEO 产品数据...
+  当月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+  对比月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+
+[4/4] 生成完整报告...
+
+  📄 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/Trident Insights/reports/monthly/Lovart-SEO-2025-11.md
+  📊 77,279 chars, 1608 lines
+
+  月报 V2 自检（AGENTS.md A0d / seo_report_standards）：
+    [ ] 固定顺序 一～十三、大/小编号连续不重复
+    [ ] §一 核心洞察：三段结论（全链路/关键词/执行）+（一）（二）展开；GEO 付费率对比、收录暴增、内容池；OKR 在 §二
+    [ ] 核心洞察为三层叙事（自然搜索产品→收录/关键词/页面→综合下一步）
+    [ ] §二 OKR 月达成看板（访问 UV 用 all_uv；Sessions 参考行）
+    [ ] §三 SEO Dashboard 为卡 A–F + C-Bing/D-Bing/E-Bing（F 含 Bing 竞品行）
+    [ ] §4.1 含曝光列与曝光/CTR 环比列；§4.4–4.7 Google movers + §4.12–4.15 Bing movers + §4.16 跨引擎词重叠
+    [ ] §四–§十一 分渠道：整体概览 + §4.8–4.16 + 5.4 + 6.4 + 7B + 8.6–8.11 + 9.4–9.6 + 10B + 11.10，每节带「💡 引擎差异」
+    [ ] §十一 Google=GSC 分地区 + §11.10 Bing GA4 近似（脚注口径诚实）
+    [ ] §四~九、十一节含「💡」
+    [ ] 含「年均对比」备注行
+    [ ] §11.0 大区最好/持平/最差总览存在
+    [ ] 每个大区含「分区月报（双月）」：CTR/占比有环比、Top15 双月表
+    [ ] 收录率约 40%+ 量级（非 1.43%）；lavort 不在非品牌 Top10
+    [ ] 全文约 1000 行（<600 行多为旧版缩水）
+    [ ] 含 §六 DataWorks 平台拆解 或月去重待产出提示
+    [ ] OKR 脚注：GA4 Sessions vs DataWorks UV 不可直接对比
+    [ ] i18n 内容生产：按 locale 给出查询证据、机会词、本地化页面覆盖与候选任务
+
+✅ Done!
+✅ tier=draft Lovart-SEO-2025-11.md
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-12 (全月)
+  环比: 2025-11 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[3/4] 计算分层 + 匹配竞品词...
+  品牌词: 2112 → 2244
+  非品牌词: 2888 → 2756
+  竞品 Core: 20/36 (55.6%)
+  页面目录: 28 groups
+
+[3b/4] DataWorks SEO/GEO 产品数据...
+  当月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+  对比月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+
+[4/4] 生成完整报告...
+
+  📄 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/Trident Insights/reports/monthly/Lovart-SEO-2025-12.md
+  📊 77,596 chars, 1604 lines
+
+  月报 V2 自检（AGENTS.md A0d / seo_report_standards）：
+    [ ] 固定顺序 一～十三、大/小编号连续不重复
+    [ ] §一 核心洞察：三段结论（全链路/关键词/执行）+（一）（二）展开；GEO 付费率对比、收录暴增、内容池；OKR 在 §二
+    [ ] 核心洞察为三层叙事（自然搜索产品→收录/关键词/页面→综合下一步）
+    [ ] §二 OKR 月达成看板（访问 UV 用 all_uv；Sessions 参考行）
+    [ ] §三 SEO Dashboard 为卡 A–F + C-Bing/D-Bing/E-Bing（F 含 Bing 竞品行）
+    [ ] §4.1 含曝光列与曝光/CTR 环比列；§4.4–4.7 Google movers + §4.12–4.15 Bing movers + §4.16 跨引擎词重叠
+    [ ] §四–§十一 分渠道：整体概览 + §4.8–4.16 + 5.4 + 6.4 + 7B + 8.6–8.11 + 9.4–9.6 + 10B + 11.10，每节带「💡 引擎差异」
+    [ ] §十一 Google=GSC 分地区 + §11.10 Bing GA4 近似（脚注口径诚实）
+    [ ] §四~九、十一节含「💡」
+    [ ] 含「年均对比」备注行
+    [ ] §11.0 大区最好/持平/最差总览存在
+    [ ] 每个大区含「分区月报（双月）」：CTR/占比有环比、Top15 双月表
+    [ ] 收录率约 40%+ 量级（非 1.43%）；lavort 不在非品牌 Top10
+    [ ] 全文约 1000 行（<600 行多为旧版缩水）
+    [ ] 含 §六 DataWorks 平台拆解 或月去重待产出提示
+    [ ] OKR 脚注：GA4 Sessions vs DataWorks UV 不可直接对比
+    [ ] i18n 内容生产：按 locale 给出查询证据、机会词、本地化页面覆盖与候选任务
+
+✅ Done!
+✅ tier=draft Lovart-SEO-2025-12.md
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2026-01 (全月)
+  环比: 2025-12 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[3/4] 计算分层 + 匹配竞品词...
+  品牌词: 2244 → 2374
+  非品牌词: 2756 → 2626
+  竞品 Core: 21/36 (58.3%)
+  页面目录: 27 groups
+
+[3b/4] DataWorks SEO/GEO 产品数据...
+  当月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+  对比月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+
+[4/4] 生成完整报告...
+
+  📄 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/Trident Insights/reports/monthly/Lovart-SEO-2026-01.md
+  📊 76,956 chars, 1598 lines
+
+  月报 V2 自检（AGENTS.md A0d / seo_report_standards）：
+    [ ] 固定顺序 一～十三、大/小编号连续不重复
+    [ ] §一 核心洞察：三段结论（全链路/关键词/执行）+（一）（二）展开；GEO 付费率对比、收录暴增、内容池；OKR 在 §二
+    [ ] 核心洞察为三层叙事（自然搜索产品→收录/关键词/页面→综合下一步）
+    [ ] §二 OKR 月达成看板（访问 UV 用 all_uv；Sessions 参考行）
+    [ ] §三 SEO Dashboard 为卡 A–F + C-Bing/D-Bing/E-Bing（F 含 Bing 竞品行）
+    [ ] §4.1 含曝光列与曝光/CTR 环比列；§4.4–4.7 Google movers + §4.12–4.15 Bing movers + §4.16 跨引擎词重叠
+    [ ] §四–§十一 分渠道：整体概览 + §4.8–4.16 + 5.4 + 6.4 + 7B + 8.6–8.11 + 9.4–9.6 + 10B + 11.10，每节带「💡 引擎差异」
+    [ ] §十一 Google=GSC 分地区 + §11.10 Bing GA4 近似（脚注口径诚实）
+    [ ] §四~九、十一节含「💡」
+    [ ] 含「年均对比」备注行
+    [ ] §11.0 大区最好/持平/最差总览存在
+    [ ] 每个大区含「分区月报（双月）」：CTR/占比有环比、Top15 双月表
+    [ ] 收录率约 40%+ 量级（非 1.43%）；lavort 不在非品牌 Top10
+    [ ] 全文约 1000 行（<600 行多为旧版缩水）
+    [ ] 含 §六 DataWorks 平台拆解 或月去重待产出提示
+    [ ] OKR 脚注：GA4 Sessions vs DataWorks UV 不可直接对比
+    [ ] i18n 内容生产：按 locale 给出查询证据、机会词、本地化页面覆盖与候选任务
+
+✅ Done!
+✅ tier=draft Lovart-SEO-2026-01.md
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2026-02 (全月)
+  环比: 2026-01 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[3/4] 计算分层 + 匹配竞品词...
+  品牌词: 2374 → 2311
+  非品牌词: 2626 → 2689
+  竞品 Core: 23/36 (63.9%)
+  页面目录: 29 groups
+
+[3b/4] DataWorks SEO/GEO 产品数据...
+  当月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+  对比月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+
+[4/4] 生成完整报告...
+
+  📄 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/Trident Insights/reports/monthly/Lovart-SEO-2026-02.md
+  📊 77,544 chars, 1602 lines
+
+  月报 V2 自检（AGENTS.md A0d / seo_report_standards）：
+    [ ] 固定顺序 一～十三、大/小编号连续不重复
+    [ ] §一 核心洞察：三段结论（全链路/关键词/执行）+（一）（二）展开；GEO 付费率对比、收录暴增、内容池；OKR 在 §二
+    [ ] 核心洞察为三层叙事（自然搜索产品→收录/关键词/页面→综合下一步）
+    [ ] §二 OKR 月达成看板（访问 UV 用 all_uv；Sessions 参考行）
+    [ ] §三 SEO Dashboard 为卡 A–F + C-Bing/D-Bing/E-Bing（F 含 Bing 竞品行）
+    [ ] §4.1 含曝光列与曝光/CTR 环比列；§4.4–4.7 Google movers + §4.12–4.15 Bing movers + §4.16 跨引擎词重叠
+    [ ] §四–§十一 分渠道：整体概览 + §4.8–4.16 + 5.4 + 6.4 + 7B + 8.6–8.11 + 9.4–9.6 + 10B + 11.10，每节带「💡 引擎差异」
+    [ ] §十一 Google=GSC 分地区 + §11.10 Bing GA4 近似（脚注口径诚实）
+    [ ] §四~九、十一节含「💡」
+    [ ] 含「年均对比」备注行
+    [ ] §11.0 大区最好/持平/最差总览存在
+    [ ] 每个大区含「分区月报（双月）」：CTR/占比有环比、Top15 双月表
+    [ ] 收录率约 40%+ 量级（非 1.43%）；lavort 不在非品牌 Top10
+    [ ] 全文约 1000 行（<600 行多为旧版缩水）
+    [ ] 含 §六 DataWorks 平台拆解 或月去重待产出提示
+    [ ] OKR 脚注：GA4 Sessions vs DataWorks UV 不可直接对比
+    [ ] i18n 内容生产：按 locale 给出查询证据、机会词、本地化页面覆盖与候选任务
+
+✅ Done!
+✅ tier=draft Lovart-SEO-2026-02.md
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2026-03 (全月)
+  环比: 2026-02 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[3/4] 计算分层 + 匹配竞品词...
+  品牌词: 2311 → 2138
+  非品牌词: 2689 → 2862
+  竞品 Core: 25/36 (69.4%)
+  页面目录: 25 groups
+
+[3b/4] DataWorks SEO/GEO 产品数据...
+  当月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/Insight/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+  对比月: /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/From Datawork/2026 04 05 SEO GEO.xlsx | 月去重: False
+
+[4/4] 生成完整报告...
+
+  📄 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/insight-data/Trident Insights/reports/monthly/Lovart-SEO-2026-03.md
+  📊 73,909 chars, 1536 lines
+
+  月报 V2 自检（AGENTS.md A0d / seo_report_standards）：
+    [ ] 固定顺序 一～十三、大/小编号连续不重复
+    [ ] §一 核心洞察：三段结论（全链路/关键词/执行）+（一）（二）展开；GEO 付费率对比、收录暴增、内容池；OKR 在 §二
+    [ ] 核心洞察为三层叙事（自然搜索产品→收录/关键词/页面→综合下一步）
+    [ ] §二 OKR 月达成看板（访问 UV 用 all_uv；Sessions 参考行）
+    [ ] §三 SEO Dashboard 为卡 A–F + C-Bing/D-Bing/E-Bing（F 含 Bing 竞品行）
+    [ ] §4.1 含曝光列与曝光/CTR 环比列；§4.4–4.7 Google movers + §4.12–4.15 Bing movers + §4.16 跨引擎词重叠
+    [ ] §四–§十一 分渠道：整体概览 + §4.8–4.16 + 5.4 + 6.4 + 7B + 8.6–8.11 + 9.4–9.6 + 10B + 11.10，每节带「💡 引擎差异」
+    [ ] §十一 Google=GSC 分地区 + §11.10 Bing GA4 近似（脚注口径诚实）
+    [ ] §四~九、十一节含「💡」
+    [ ] 含「年均对比」备注行
+    [ ] §11.0 大区最好/持平/最差总览存在
+    [ ] 每个大区含「分区月报（双月）」：CTR/占比有环比、Top15 双月表
+    [ ] 收录率约 40%+ 量级（非 1.43%）；lavort 不在非品牌 Top10
+    [ ] 全文约 1000 行（<600 行多为旧版缩水）
+    [ ] 含 §六 DataWorks 平台拆解 或月去重待产出提示
+    [ ] OKR 脚注：GA4 Sessions vs DataWorks UV 不可直接对比
+    [ ] i18n 内容生产：按 locale 给出查询证据、机会词、本地化页面覆盖与候选任务
+
+✅ Done!
+✅ tier=draft Lovart-SEO-2026-03.md

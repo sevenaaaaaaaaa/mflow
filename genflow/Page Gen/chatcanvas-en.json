@@ -1,0 +1,495 @@
+{
+  "_type": "compositePage",
+  "category": "product",
+  "slug": "chatcanvas",
+  "title": "ChatCanvas",
+  "description": "Lovart ChatCanvas is the infinite spatial workspace where teams brief an AI design agent, compare variants, and ship channel-ready assets in one persistent session.",
+  "storyline": "product-标准",
+  "bodyJson": "[{\"type\":\"hero-cinematic\",\"tag\":\"Lovart Product\",\"title\":\"Meet ChatCanvas —\",\"highlightedText\":\"where every design conversation lives\",\"description\":\"ChatCanvas is Lovart's infinite spatial workspace. Brief, generate, compare, and refine every asset in one persistent canvas — not scattered across tabs, folders, or export folders.\",\"buttons\":[{\"text\":\"Open ChatCanvas\",\"href\":\"\",\"variant\":\"primary\"},{\"text\":\"See the workflow\",\"href\":\"\",\"variant\":\"secondary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/d92cfdbbb4c243d8a269dc6d1301540c/5049909fb1610fbc90ed8b25cfecc77ffc14fcee.png\",\"alt\":\"Lovart ChatCanvas workspace\"}},{\"type\":\"bento-4\",\"title\":\"Four reasons teams work inside ChatCanvas\",\"description\":\"The core product behaviors that separate an agent workspace from a single-output generator.\",\"columns\":4,\"features\":[{\"title\":\"Infinite spatial memory\",\"description\":\"Zoom out, pan, and keep every generation visible for side-by-side comparison.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/d92cfdbbb4c243d8a269dc6d1301540c/5049909fb1610fbc90ed8b25cfecc77ffc14fcee.png\",\"alt\":\"Infinite canvas\"}},{\"title\":\"Persistent sessions\",\"description\":\"Close the browser — your canvases, history, and context stay ready.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/55b94439550ff0fefec6a09ca160df2fe8d0f24f.png\",\"alt\":\"Persistent workspace\"}},{\"title\":\"Multi-canvas projects\",\"description\":\"Separate boards for exploration, client review, and final export without losing links.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png\",\"alt\":\"Multi-canvas projects\"}},{\"title\":\"Agent + canvas edits\",\"description\":\"Chat to generate; Touch Edit to refine — same surface, no handoffs.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/98dde485f8c6789596006f5ee601a445d6606b78.png\",\"alt\":\"Agent and canvas edits\"}}]},{\"type\":\"capability-tabs\",\"title\":\"What you do inside ChatCanvas\",\"description\":\"Four modes teams use daily — each tab maps to a real production job.\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Brief & plan\",\"icon\":\"search\",\"content\":{\"title\":\"Start from business context\",\"description\":\"Drop references, brand PDFs, SKU sheets, or competitor URLs. Lovart reasons before pixels move.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png\",\"alt\":\"Brief and plan in ChatCanvas\"},\"points\":[\"Channel specs and offer context\",\"Reference boards on canvas\",\"Thinking Mode for strategy\"]}},{\"label\":\"Generate\",\"icon\":\"sparkle\",\"content\":{\"title\":\"Generate beside the conversation\",\"description\":\"Images, layouts, mockups, and video keyframes appear on canvas as the agent works — not in a download queue.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/55b94439550ff0fefec6a09ca160df2fe8d0f24f.png\",\"alt\":\"Generate on canvas\"},\"points\":[\"Image and layout generation\",\"Video keyframes and motion\",\"Fast Mode for variant loops\"]}},{\"label\":\"Compare\",\"icon\":\"image\",\"content\":{\"title\":\"Compare directions spatially\",\"description\":\"Arrange hooks, hero options, and campaign territories side by side. Pick winners without re-briefing.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/d92cfdbbb4c243d8a269dc6d1301540c/5049909fb1610fbc90ed8b25cfecc77ffc14fcee.png\",\"alt\":\"Compare on canvas\"},\"points\":[\"Side-by-side variant boards\",\"Branch explorations\",\"Client-ready review layouts\"]}},{\"label\":\"Ship\",\"icon\":\"brand\",\"content\":{\"title\":\"Refine and export from canvas\",\"description\":\"Touch Edit, Text Edit, and Edit Elements polish the last mile — then export channel-ready files.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/98dde485f8c6789596006f5ee601a445d6606b78.png\",\"alt\":\"Refine and export\"},\"points\":[\"Touch Edit precision\",\"Multi-format export\",\"Brand Kit alignment\"]}}]},{\"type\":\"tool-grid\",\"title\":\"Tools that connect inside ChatCanvas\",\"description\":\"Every Lovart tool opens into the same workspace — start from the asset you need today.\",\"tools\":[{\"icon\":\"sparkle\",\"name\":\"Image Generator\",\"category\":\"Visuals\",\"description\":\"Hero shots, social crops, and campaign graphics from one brief.\",\"tags\":[\"Image\",\"Campaign\",\"Social\"],\"href\":\"\",\"rating\":4.9},{\"icon\":\"video\",\"name\":\"Video Generator\",\"category\":\"Motion\",\"description\":\"Keyframes, hooks, and vertical cuts without leaving canvas.\",\"tags\":[\"Video\",\"9:16\",\"Ads\"],\"href\":\"\",\"rating\":4.8},{\"icon\":\"brand\",\"name\":\"Brand Kit\",\"category\":\"Governance\",\"description\":\"Logo, color, and type rules travel with every canvas session.\",\"tags\":[\"Brand\",\"Consistency\"],\"href\":\"\",\"rating\":4.9},{\"icon\":\"pointer\",\"name\":\"Touch Edit\",\"category\":\"Editing\",\"description\":\"Click any element — regenerate, recolor, or reposition in place.\",\"tags\":[\"Edit\",\"Precision\"],\"href\":\"\",\"rating\":4.8},{\"icon\":\"image\",\"name\":\"Mockup\",\"category\":\"Product\",\"description\":\"Place flat art into photorealistic scenes from canvas.\",\"tags\":[\"Mockup\",\"PDP\"],\"href\":\"\",\"rating\":4.8},{\"icon\":\"social\",\"name\":\"Social Post Designer\",\"category\":\"Channels\",\"description\":\"Posts, stories, and covers that inherit canvas context.\",\"tags\":[\"Social\",\"Stories\"],\"href\":\"\",\"rating\":4.7}]},{\"type\":\"workflow-vertical\",\"title\":\"How ChatCanvas fits your week\",\"description\":\"A vertical walkthrough for teams adopting the workspace for the first time.\",\"layout\":\"vertical\",\"steps\":[{\"step\":1,\"title\":\"Create a canvas for the job\",\"description\":\"Name it for the campaign, client, or SKU. Upload references and set Brand Kit once.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png\",\"alt\":\"Create a canvas\"}},{\"step\":2,\"title\":\"Brief the agent in chat\",\"description\":\"Describe outcomes — channel, audience, formats. Generations land on canvas as the agent works.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/55b94439550ff0fefec6a09ca160df2fe8d0f24f.png\",\"alt\":\"Brief the agent\"}},{\"step\":3,\"title\":\"Compare, refine, export\",\"description\":\"Arrange winners, Touch Edit details, export every format from one session.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/98dde485f8c6789596006f5ee601a445d6606b78.png\",\"alt\":\"Refine and export\"}}]},{\"type\":\"comparison-table\",\"title\":\"ChatCanvas vs fragmented creative stacks\",\"description\":\"Why teams move from chat-only generators and folder sprawl to a spatial agent workspace.\",\"headers\":[\"Need\",\"Chat-only AI tool\",\"Figma + exports folder\",\"Lovart ChatCanvas\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Variant comparison\",\"values\":[\"Scroll chat history\",\"Manual boards and duplicates\",\"Spatial side-by-side on canvas\"]},{\"feature\":\"Session persistence\",\"values\":[\"Often lost between sessions\",\"Files scattered by tool\",\"Canvases persist with full history\"]},{\"feature\":\"Edit after generation\",\"values\":[\"Regenerate whole output\",\"Re-import and rework\",\"Touch Edit on canvas in place\"]},{\"feature\":\"Cross-tool context\",\"values\":[\"One modality per thread\",\"Manual handoffs\",\"Image, video, mockup in one workspace\"]},{\"feature\":\"Client review\",\"values\":[\"Screenshot exports\",\"Shared Figma links + exports\",\"Review layouts on canvas\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Teams that live in ChatCanvas\",\"description\":\"Common production loops the workspace is built for.\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Campaign exploration\",\"desc\":\"Hook boards, hero options, and ad territories in one session.\"},{\"icon\":\"brand\",\"title\":\"Brand system rollout\",\"desc\":\"Apply Brand Kit while exploring new visual directions.\"},{\"icon\":\"video\",\"title\":\"Video storyboards\",\"desc\":\"Keyframes, thumbnails, and cut variants beside the brief.\"},{\"icon\":\"image\",\"title\":\"Product launch walls\",\"desc\":\"PDP, ads, email, and social from one SKU context.\"},{\"icon\":\"pointer\",\"title\":\"Agency client boards\",\"desc\":\"Separate canvases per client with shared agent skills.\"},{\"icon\":\"refresh\",\"title\":\"Weekly test loops\",\"desc\":\"Fast Mode variants without losing last week's winners.\"}]},{\"type\":\"showcase-stacked\",\"title\":\"See ChatCanvas in action\",\"items\":[{\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/d92cfdbbb4c243d8a269dc6d1301540c/5049909fb1610fbc90ed8b25cfecc77ffc14fcee.png\",\"alt\":\"Spatial variant board\"},\"title\":\"Variant boards — Compare hooks without re-briefing\",\"description\":\"Arrange twelve ad directions on one canvas. Stakeholders pick winners in a single review.\",\"cta\":{\"text\":\"Try variant boards\",\"href\":\"\"}},{\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/98dde485f8c6789596006f5ee601a445d6606b78.png\",\"alt\":\"Touch Edit on canvas\"},\"title\":\"Touch Edit — Fix one element, keep the composition\",\"description\":\"Select a label, shadow, or product detail. Regenerate just that layer while the rest stays locked.\",\"cta\":{\"text\":\"See Touch Edit\",\"href\":\"\"}},{\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"Video keyframes on canvas\"},\"title\":\"Motion on canvas — Keyframes beside stills\",\"description\":\"Storyboard vertical hooks next to hero stills. Motion and static share one campaign context.\",\"cta\":{\"text\":\"Explore video on canvas\",\"href\":\"\"}}]},{\"type\":\"testimonial\",\"title\":\"What teams say about working in ChatCanvas\",\"testimonials\":[{\"quote\":\"We stopped exporting to Slack threads. Everything — brief, variants, approvals — lives on one canvas now.\",\"author\":\"Maya Lin\",\"role\":\"Creative Director, DTC brand\"},{\"quote\":\"The spatial layout changed how we run creative reviews. Clients pick from a board, not a zip file.\",\"author\":\"Jordan Ellis\",\"role\":\"Agency founder\"},{\"quote\":\"Persistent canvases mean Monday picks up where Friday left off. That alone saved us hours.\",\"author\":\"Priya Shah\",\"role\":\"Growth lead\"}]},{\"type\":\"pricing-block\",\"title\":\"Plans for solo creators and teams\",\"description\":\"Start free on ChatCanvas. Upgrade when you need more credits, premium models, and team seats.\"},{\"type\":\"faq\",\"title\":\"ChatCanvas FAQ\",\"items\":[{\"question\":\"What is ChatCanvas?\",\"answer\":\"ChatCanvas is Lovart's infinite spatial workspace where you brief an AI design agent, generate assets, compare variants, and refine output — all in one persistent canvas.\"},{\"question\":\"How is ChatCanvas different from Lovart chat?\",\"answer\":\"Chat is the conversation layer. ChatCanvas is where generations land spatially — arranged, compared, edited, and exported as a production surface.\"},{\"question\":\"Do my canvases persist?\",\"answer\":\"Yes. Canvases, generation history, and context persist across sessions. You can maintain multiple canvases per project or client.\"},{\"question\":\"Can I use Touch Edit on canvas?\",\"answer\":\"Yes. Touch Edit, Text Edit, and Edit Elements work directly on canvas elements — no re-export to another tool.\"},{\"question\":\"Does Brand Kit apply inside ChatCanvas?\",\"answer\":\"Yes. Active Brand Kit rules apply to new generations and edits within any canvas session.\"},{\"question\":\"Can teams share canvases?\",\"answer\":\"Team plans support shared workspaces so stakeholders can review variant boards and approved directions together.\"}]},{\"type\":\"cta-default\",\"title\":\"Ready to work in one canvas?\",\"description\":\"Start free — create your first ChatCanvas and brief the agent in minutes.\",\"buttons\":[{\"text\":\"Open ChatCanvas\",\"href\":\"\",\"variant\":\"primary\",\"action\":\"openLogin\"},{\"text\":\"See product lineup\",\"href\":\"\",\"variant\":\"secondary\"}]}]",
+  "seo": {
+    "title": "ChatCanvas | Lovart AI Design Workspace",
+    "description": "Brief, generate, compare, and refine every creative asset in Lovart ChatCanvas — the infinite agent workspace for design teams.",
+    "keywords": [
+      "chatcanvas",
+      "lovart workspace",
+      "ai design canvas",
+      "agent workspace",
+      "creative collaboration"
+    ],
+    "noIndex": true,
+    "ogImage": {
+      "_type": "imageSource",
+      "url": "https://assets-persist.lovart.ai/img/d92cfdbbb4c243d8a269dc6d1301540c/5049909fb1610fbc90ed8b25cfecc77ffc14fcee.png",
+      "alt": "ChatCanvas",
+      "sourceType": "external"
+    }
+  },
+  "language": "en",
+  "schemaVersion": "composite-v2",
+  "url_path": "/product/chatcanvas",
+  "section": [
+    {
+      "type": "hero-cinematic",
+      "tag": "Lovart Product",
+      "title": "Meet ChatCanvas —",
+      "highlightedText": "where every design conversation lives",
+      "description": "ChatCanvas is Lovart's infinite spatial workspace. Brief, generate, compare, and refine every asset in one persistent canvas — not scattered across tabs, folders, or export folders.",
+      "buttons": [
+        {
+          "text": "Open ChatCanvas",
+          "href": "",
+          "variant": "primary"
+        },
+        {
+          "text": "See the workflow",
+          "href": "",
+          "variant": "secondary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/img/d92cfdbbb4c243d8a269dc6d1301540c/5049909fb1610fbc90ed8b25cfecc77ffc14fcee.png",
+        "alt": "Lovart ChatCanvas workspace"
+      }
+    },
+    {
+      "type": "bento-4",
+      "title": "Four reasons teams work inside ChatCanvas",
+      "description": "The core product behaviors that separate an agent workspace from a single-output generator.",
+      "columns": 4,
+      "features": [
+        {
+          "title": "Infinite spatial memory",
+          "description": "Zoom out, pan, and keep every generation visible for side-by-side comparison.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/d92cfdbbb4c243d8a269dc6d1301540c/5049909fb1610fbc90ed8b25cfecc77ffc14fcee.png",
+            "alt": "Infinite canvas"
+          }
+        },
+        {
+          "title": "Persistent sessions",
+          "description": "Close the browser — your canvases, history, and context stay ready.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/55b94439550ff0fefec6a09ca160df2fe8d0f24f.png",
+            "alt": "Persistent workspace"
+          }
+        },
+        {
+          "title": "Multi-canvas projects",
+          "description": "Separate boards for exploration, client review, and final export without losing links.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png",
+            "alt": "Multi-canvas projects"
+          }
+        },
+        {
+          "title": "Agent + canvas edits",
+          "description": "Chat to generate; Touch Edit to refine — same surface, no handoffs.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/98dde485f8c6789596006f5ee601a445d6606b78.png",
+            "alt": "Agent and canvas edits"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "What you do inside ChatCanvas",
+      "description": "Four modes teams use daily — each tab maps to a real production job.",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Brief & plan",
+          "icon": "search",
+          "content": {
+            "title": "Start from business context",
+            "description": "Drop references, brand PDFs, SKU sheets, or competitor URLs. Lovart reasons before pixels move.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png",
+              "alt": "Brief and plan in ChatCanvas"
+            },
+            "points": [
+              "Channel specs and offer context",
+              "Reference boards on canvas",
+              "Thinking Mode for strategy"
+            ]
+          }
+        },
+        {
+          "label": "Generate",
+          "icon": "sparkle",
+          "content": {
+            "title": "Generate beside the conversation",
+            "description": "Images, layouts, mockups, and video keyframes appear on canvas as the agent works — not in a download queue.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/55b94439550ff0fefec6a09ca160df2fe8d0f24f.png",
+              "alt": "Generate on canvas"
+            },
+            "points": [
+              "Image and layout generation",
+              "Video keyframes and motion",
+              "Fast Mode for variant loops"
+            ]
+          }
+        },
+        {
+          "label": "Compare",
+          "icon": "image",
+          "content": {
+            "title": "Compare directions spatially",
+            "description": "Arrange hooks, hero options, and campaign territories side by side. Pick winners without re-briefing.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/d92cfdbbb4c243d8a269dc6d1301540c/5049909fb1610fbc90ed8b25cfecc77ffc14fcee.png",
+              "alt": "Compare on canvas"
+            },
+            "points": [
+              "Side-by-side variant boards",
+              "Branch explorations",
+              "Client-ready review layouts"
+            ]
+          }
+        },
+        {
+          "label": "Ship",
+          "icon": "brand",
+          "content": {
+            "title": "Refine and export from canvas",
+            "description": "Touch Edit, Text Edit, and Edit Elements polish the last mile — then export channel-ready files.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/98dde485f8c6789596006f5ee601a445d6606b78.png",
+              "alt": "Refine and export"
+            },
+            "points": [
+              "Touch Edit precision",
+              "Multi-format export",
+              "Brand Kit alignment"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "tool-grid",
+      "title": "Tools that connect inside ChatCanvas",
+      "description": "Every Lovart tool opens into the same workspace — start from the asset you need today.",
+      "tools": [
+        {
+          "icon": "sparkle",
+          "name": "Image Generator",
+          "category": "Visuals",
+          "description": "Hero shots, social crops, and campaign graphics from one brief.",
+          "tags": [
+            "Image",
+            "Campaign",
+            "Social"
+          ],
+          "href": "",
+          "rating": 4.9
+        },
+        {
+          "icon": "video",
+          "name": "Video Generator",
+          "category": "Motion",
+          "description": "Keyframes, hooks, and vertical cuts without leaving canvas.",
+          "tags": [
+            "Video",
+            "9:16",
+            "Ads"
+          ],
+          "href": "",
+          "rating": 4.8
+        },
+        {
+          "icon": "brand",
+          "name": "Brand Kit",
+          "category": "Governance",
+          "description": "Logo, color, and type rules travel with every canvas session.",
+          "tags": [
+            "Brand",
+            "Consistency"
+          ],
+          "href": "",
+          "rating": 4.9
+        },
+        {
+          "icon": "pointer",
+          "name": "Touch Edit",
+          "category": "Editing",
+          "description": "Click any element — regenerate, recolor, or reposition in place.",
+          "tags": [
+            "Edit",
+            "Precision"
+          ],
+          "href": "",
+          "rating": 4.8
+        },
+        {
+          "icon": "image",
+          "name": "Mockup",
+          "category": "Product",
+          "description": "Place flat art into photorealistic scenes from canvas.",
+          "tags": [
+            "Mockup",
+            "PDP"
+          ],
+          "href": "",
+          "rating": 4.8
+        },
+        {
+          "icon": "social",
+          "name": "Social Post Designer",
+          "category": "Channels",
+          "description": "Posts, stories, and covers that inherit canvas context.",
+          "tags": [
+            "Social",
+            "Stories"
+          ],
+          "href": "",
+          "rating": 4.7
+        }
+      ]
+    },
+    {
+      "type": "workflow-vertical",
+      "title": "How ChatCanvas fits your week",
+      "description": "A vertical walkthrough for teams adopting the workspace for the first time.",
+      "layout": "vertical",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Create a canvas for the job",
+          "description": "Name it for the campaign, client, or SKU. Upload references and set Brand Kit once.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png",
+            "alt": "Create a canvas"
+          }
+        },
+        {
+          "step": 2,
+          "title": "Brief the agent in chat",
+          "description": "Describe outcomes — channel, audience, formats. Generations land on canvas as the agent works.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/55b94439550ff0fefec6a09ca160df2fe8d0f24f.png",
+            "alt": "Brief the agent"
+          }
+        },
+        {
+          "step": 3,
+          "title": "Compare, refine, export",
+          "description": "Arrange winners, Touch Edit details, export every format from one session.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/98dde485f8c6789596006f5ee601a445d6606b78.png",
+            "alt": "Refine and export"
+          }
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "ChatCanvas vs fragmented creative stacks",
+      "description": "Why teams move from chat-only generators and folder sprawl to a spatial agent workspace.",
+      "headers": [
+        "Need",
+        "Chat-only AI tool",
+        "Figma + exports folder",
+        "Lovart ChatCanvas"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Variant comparison",
+          "values": [
+            "Scroll chat history",
+            "Manual boards and duplicates",
+            "Spatial side-by-side on canvas"
+          ]
+        },
+        {
+          "feature": "Session persistence",
+          "values": [
+            "Often lost between sessions",
+            "Files scattered by tool",
+            "Canvases persist with full history"
+          ]
+        },
+        {
+          "feature": "Edit after generation",
+          "values": [
+            "Regenerate whole output",
+            "Re-import and rework",
+            "Touch Edit on canvas in place"
+          ]
+        },
+        {
+          "feature": "Cross-tool context",
+          "values": [
+            "One modality per thread",
+            "Manual handoffs",
+            "Image, video, mockup in one workspace"
+          ]
+        },
+        {
+          "feature": "Client review",
+          "values": [
+            "Screenshot exports",
+            "Shared Figma links + exports",
+            "Review layouts on canvas"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Teams that live in ChatCanvas",
+      "description": "Common production loops the workspace is built for.",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Campaign exploration",
+          "desc": "Hook boards, hero options, and ad territories in one session."
+        },
+        {
+          "icon": "brand",
+          "title": "Brand system rollout",
+          "desc": "Apply Brand Kit while exploring new visual directions."
+        },
+        {
+          "icon": "video",
+          "title": "Video storyboards",
+          "desc": "Keyframes, thumbnails, and cut variants beside the brief."
+        },
+        {
+          "icon": "image",
+          "title": "Product launch walls",
+          "desc": "PDP, ads, email, and social from one SKU context."
+        },
+        {
+          "icon": "pointer",
+          "title": "Agency client boards",
+          "desc": "Separate canvases per client with shared agent skills."
+        },
+        {
+          "icon": "refresh",
+          "title": "Weekly test loops",
+          "desc": "Fast Mode variants without losing last week's winners."
+        }
+      ]
+    },
+    {
+      "type": "showcase-stacked",
+      "title": "See ChatCanvas in action",
+      "items": [
+        {
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/d92cfdbbb4c243d8a269dc6d1301540c/5049909fb1610fbc90ed8b25cfecc77ffc14fcee.png",
+            "alt": "Spatial variant board"
+          },
+          "title": "Variant boards — Compare hooks without re-briefing",
+          "description": "Arrange twelve ad directions on one canvas. Stakeholders pick winners in a single review.",
+          "cta": {
+            "text": "Try variant boards",
+            "href": ""
+          }
+        },
+        {
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/98dde485f8c6789596006f5ee601a445d6606b78.png",
+            "alt": "Touch Edit on canvas"
+          },
+          "title": "Touch Edit — Fix one element, keep the composition",
+          "description": "Select a label, shadow, or product detail. Regenerate just that layer while the rest stays locked.",
+          "cta": {
+            "text": "See Touch Edit",
+            "href": ""
+          }
+        },
+        {
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+            "alt": "Video keyframes on canvas"
+          },
+          "title": "Motion on canvas — Keyframes beside stills",
+          "description": "Storyboard vertical hooks next to hero stills. Motion and static share one campaign context.",
+          "cta": {
+            "text": "Explore video on canvas",
+            "href": ""
+          }
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "title": "What teams say about working in ChatCanvas",
+      "testimonials": [
+        {
+          "quote": "We stopped exporting to Slack threads. Everything — brief, variants, approvals — lives on one canvas now.",
+          "author": "Maya Lin",
+          "role": "Creative Director, DTC brand"
+        },
+        {
+          "quote": "The spatial layout changed how we run creative reviews. Clients pick from a board, not a zip file.",
+          "author": "Jordan Ellis",
+          "role": "Agency founder"
+        },
+        {
+          "quote": "Persistent canvases mean Monday picks up where Friday left off. That alone saved us hours.",
+          "author": "Priya Shah",
+          "role": "Growth lead"
+        }
+      ]
+    },
+    {
+      "type": "pricing-block",
+      "title": "Plans for solo creators and teams",
+      "description": "Start free on ChatCanvas. Upgrade when you need more credits, premium models, and team seats."
+    },
+    {
+      "type": "faq",
+      "title": "ChatCanvas FAQ",
+      "items": [
+        {
+          "question": "What is ChatCanvas?",
+          "answer": "ChatCanvas is Lovart's infinite spatial workspace where you brief an AI design agent, generate assets, compare variants, and refine output — all in one persistent canvas."
+        },
+        {
+          "question": "How is ChatCanvas different from Lovart chat?",
+          "answer": "Chat is the conversation layer. ChatCanvas is where generations land spatially — arranged, compared, edited, and exported as a production surface."
+        },
+        {
+          "question": "Do my canvases persist?",
+          "answer": "Yes. Canvases, generation history, and context persist across sessions. You can maintain multiple canvases per project or client."
+        },
+        {
+          "question": "Can I use Touch Edit on canvas?",
+          "answer": "Yes. Touch Edit, Text Edit, and Edit Elements work directly on canvas elements — no re-export to another tool."
+        },
+        {
+          "question": "Does Brand Kit apply inside ChatCanvas?",
+          "answer": "Yes. Active Brand Kit rules apply to new generations and edits within any canvas session."
+        },
+        {
+          "question": "Can teams share canvases?",
+          "answer": "Team plans support shared workspaces so stakeholders can review variant boards and approved directions together."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Ready to work in one canvas?",
+      "description": "Start free — create your first ChatCanvas and brief the agent in minutes.",
+      "buttons": [
+        {
+          "text": "Open ChatCanvas",
+          "href": "",
+          "variant": "primary",
+          "action": "openLogin"
+        },
+        {
+          "text": "See product lineup",
+          "href": "",
+          "variant": "secondary"
+        }
+      ]
+    }
+  ],
+  "pageType": "product"
+}

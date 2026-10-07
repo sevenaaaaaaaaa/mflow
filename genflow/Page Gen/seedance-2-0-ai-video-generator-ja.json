@@ -1,0 +1,387 @@
+{
+  "_id": "features-seedance-2-0-ai-video-generator-ja",
+  "reflowSourceId": "features-seedance-2-0-ai-video-generator-ja",
+  "slug": "seedance-2-0-ai-video-generator",
+  "language": "ja",
+  "category": "feature",
+  "title": "Lovartの新AI動画生成：ネイティブ音声とマルチショット一貫性",
+  "description": "Create cinematic AI videos with Seedance 2.0 on Lovart. Features native audio generation, character consistency across shots, and 2K resolution. The ultimate tool for AI storytelling.",
+  "seo": {
+    "description": "LovartのSeedance 2.0で映画のようなAI動画を制作。ネイティブ音声生成、ショット間のキャラクター一貫性、2K解像度を実現。AIストーリーテリングの決定版ツール。",
+    "keywords": [
+      "seedance 2.0",
+      "ai video generator with sound",
+      "multi-shot ai video",
+      "consistent character video ai",
+      "bytedance seedance model",
+      "lovart video features",
+      "native audio generation ai"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Multimodal Input (@Mention)",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovartの新AI動画生成：ネイティブ音声とマルチショット一貫性\", \"description\": \"Create cinematic AI videos with Seedance 2.0 on Lovart. Features native audio generation, character consistency across shots, and 2K resolution. The ultimate tool for AI storytelling.\", \"url\": \"https://www.lovart.ai/features/seedance-2-0-ai-video-generator\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Seedance 2.0はSeedance 1.0と何が違いますか？ (section_ja)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Seedance 2.0は、ネイティブオーディオ生成（音付きビデオ）、キャラクターのマルチショット一貫性の大幅な向上、より高い2K解像度出力を導入しています。また、重力や運動量などの物理法則をよりよく理解しています。(section_ja)\"}}, {\"@type\": \"Question\", \"name\": \"自分の声や音楽を使用できますか？ (section_ja)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。Seedance 2.0はゼロからオーディオを生成できますが、独自のオーディオトラックをアップロードしてビデオを駆動することもでき、キャラクターのリップシンクやミュージックビデオに最適です。(section_ja)\"}}, {\"@type\": \"Question\", \"name\": \"「マルチショット」機能はどのように機能しますか？ (section_ja)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"一連のイベントを記述する単一の複雑なプロンプト（例：「ショット1：男が部屋に入る。ショット2：彼が座る。」）を提供するか、参照画像機能を使用して、生成された別々のクリップに同じキャラクターが表示されるようにすることができます。(section_ja)\"}}, {\"@type\": \"Question\", \"name\": \"Seedance 2.0は商用利用可能ですか？ (section_ja)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい、Lovart ProおよびUltimateのサブスクライバーがSeedance 2.0を使用して生成したビデオには商用ライセンスが付属しており、広告、YouTube、その他の商用プロジェクトに適しています。(section_ja)\"}}, {\"@type\": \"Question\", \"name\": \"最大ビデオ長はどれくらいですか？ (section_ja)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"現在、1回の生成で最大15秒の高忠実度ビデオを作成できます。ただし、Lovartタイムラインの「拡張」機能を使用して、より長いシーケンスを無期限に作成できます。(section_ja)\"}}]}}"
+    },
+    "title": "Lovartの新AI動画生成：ネイティブ音声とマルチショット一貫性"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Lovartの新AI動画生成：ネイティブ音声とマルチショット一貫性\",\"description\":\"Create cinematic AI videos with Seedance 2.0 on Lovart. Features native audio generation, character consistency across shots, and 2K resolution. The ultimate tool for AI storytelling.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Multimodal Input (@Mention)\"}},{\"type\":\"bento-6\",\"title\":\"Production-Grade Features for Creators\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"マルチモーダル入力 (@Mention)\",\"description\":\"カオスを制御します。「@」を使用して、スタイル参照用の画像、動き参照用のビデオ、またはリップシンク用のオーディオを指定します。これらすべてを1つのプロンプトに組み合わせて、正確な指示を出します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"マルチモーダル入力 (@Mention)\"}},{\"title\":\"ネイティブ効果音 & BGM\",\"description\":\"「壮大なオーケストラのスコア」や「微かな街の騒音」をプロンプトで指示。Seedanceは、視覚的なタイミングに完全に一致するロイヤリティフリーのオーディオを生成します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"ネイティブ効果音 & BGM\"}},{\"title\":\"2K シネマティック解像度\",\"description\":\"最大2K解像度の鮮明なビデオを出力。YouTube、コマーシャル、または詳細が重要な高精細ソーシャルメディアコンテンツに最適です。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"2K シネマティック解像度\"}},{\"title\":\"長編ナラティブ (15秒+)\",\"description\":\"5秒の壁を破ります。より長く一貫したクリップを生成するか、既存のビデオをシームレスに拡張して、文脈を失うことなく長いシーケンスを構築します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"長編ナラティブ (15秒+)\"}},{\"title\":\"精密なカメラ制御\",\"description\":\"プロのように監督。「ドリーズーム」「左トラック」「アークショット」などの用語を使用します。Seedanceは映画言語を理解し、カメラの動きを完璧に実行します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"精密なカメラ制御\"}},{\"title\":\"あらゆるアスペクト比\",\"description\":\"映画用の16:9からTikTok用の9:16、さらにはウルトラワイドの21:9まで。Seedanceは選択したフレームに合わせて構図をインテリジェントに適応させます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"あらゆるアスペクト比\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"マルチモーダル入力 (@Mention)\",\"icon\":\"chat\",\"content\":{\"title\":\"マルチモーダル入力 (@Mention)\",\"description\":\"カオスを制御します。「@」を使用して、スタイル参照用の画像、動き参照用のビデオ、またはリップシンク用のオーディオを指定します。これらすべてを1つのプロンプトに組み合わせて、正確な指示を出します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"マルチモーダル入力 (@Mention)\"}}},{\"label\":\"ネイティブ効果音 & BGM\",\"icon\":\"image\",\"content\":{\"title\":\"ネイティブ効果音 & BGM\",\"description\":\"「壮大なオーケストラのスコア」や「微かな街の騒音」をプロンプトで指示。Seedanceは、視覚的なタイミングに完全に一致するロイヤリティフリーのオーディオを生成します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"ネイティブ効果音 & BGM\"}}},{\"label\":\"2K シネマティック解像度\",\"icon\":\"flask\",\"content\":{\"title\":\"2K シネマティック解像度\",\"description\":\"最大2K解像度の鮮明なビデオを出力。YouTube、コマーシャル、または詳細が重要な高精細ソーシャルメディアコンテンツに最適です。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"2K シネマティック解像度\"}}},{\"label\":\"長編ナラティブ (15秒+)\",\"icon\":\"brand\",\"content\":{\"title\":\"長編ナラティブ (15秒+)\",\"description\":\"5秒の壁を破ります。より長く一貫したクリップを生成するか、既存のビデオをシームレスに拡張して、文脈を失うことなく長いシーケンスを構築します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"長編ナラティブ (15秒+)\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"精密なカメラ制御\",\"description\":\"プロのように監督。「ドリーズーム」「左トラック」「アークショット」などの用語を使用します。Seedanceは映画言語を理解し、カメラの動きを完璧に実行します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"精密なカメラ制御\"}},{\"title\":\"あらゆるアスペクト比\",\"description\":\"映画用の16:9からTikTok用の9:16、さらにはウルトラワイドの21:9まで。Seedanceは選択したフレームに合わせて構図をインテリジェントに適応させます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"あらゆるアスペクト比\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Seedance 2.0：無音で崩れたAI動画の終わり。\",\"description\":\"生成ビデオの次なる飛躍を体験してください。Lovartに統合されたSeedance 2.0は、単に動く画像を生成するだけでなく、同期したネイティブオーディオを生成し、複数のショットにわたって完璧なキャラクターの一貫性を維持します。短編映画、ミュージックビデオ、製品CMなど、音と魂のある完全なストーリーを語りましょう。\",\"input_placeholder\":\"例：「シネマティックなシーケンス：1. 煙たいバーで演奏するジャズピアニストのクローズアップ、ピアノの音。2. 拍手する観客のワイドショット、周囲の雑音。」\",\"prompts\":[{\"label\":\"シネマティック + 効果音\",\"prompt\":\"A cyberpunk detective walking in heavy rain, neon lights reflecting, sound of footsteps splashing and distant thunder\"},{\"label\":\"キャラクターリップシンク\",\"prompt\":\"A cute 3D character explaining a concept, lip-syncing perfectly to the generated voiceover, bright studio lighting\"},{\"label\":\"ダイナミックFPVショット\",\"prompt\":\"A continuous shot following a drone flying through a canyon, wind whooshing sound, dynamic motion\"},{\"label\":\"モーショントランスファー\",\"prompt\":\"Replicate the dance moves from this uploaded reference video, but change the character to a robot in a sci-fi factory\"}],\"tip\":\"プロのヒント：Seedance 2.0はあなたの声を聞いています。「雨の音」「歓声」「柔らかなピアノ音楽」などのオーディオ記述をプロンプトに含めると、ネイティブオーディオ生成がトリガーされます。\",\"cta\":{\"text\":\"サウンド付き動画を生成\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Seedance 2.0がゲームを変える理由\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"ネイティブな音画同期\",\"description\":\"静寂は破られました。Seedance 2.0は、砕ける波が音を立て、話す口が声を発することを理解しています。比類のない没入感のために、ビデオとオーディオを同時に生成します。\"},{\"step\":2,\"title\":\"マルチショットの一貫性\",\"description\":\"本当の物語を語りましょう。キャラクターやスタイルを一度定義すれば、Seedance 2.0はクローズアップ、ワイドショット、様々な角度でそのアイデンティティを保持します。シーン間で「顔が変わる」不具合はもうありません。\"},{\"step\":3,\"title\":\"物理ベースのリアリズム\",\"description\":\"新しい拡散トランスフォーマーアーキテクチャに基づいて構築されたSeedance 2.0は、重力、摩擦、慣性を尊重します。キャラクターが歩くときに重みがあり、オブジェクトは浮くことなく自然に相互作用します。\"}]},{\"type\":\"comparison-table\",\"title\":\"Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"オーディオ生成は不気味なほど優れています。「鳥のさえずる静かな森」と入力したところ、ビデオは視覚効果と完全に一致する音とともに戻ってきました。サウンドデザインの時間を何時間も節約できました。\",\"author\":\"Jordan P.\",\"role\":\"短編映画監督\"},{\"quote\":\"ついに、私のデジタルアバターをさまざまなシーンに配置できるようになり、彼女は実際に同一人物に見えます！Seedance 2.0の一貫性は、私が見た中で最高です。\",\"author\":\"Li Wei\",\"role\":\"ソーシャルメディアインフルエンサー\"},{\"quote\":\"参照ビデオ機能を使用して、トレンドのダンスの動きをブランドのマスコットにコピーしました。完璧でした。マスコットのスーツが動く物理的効果は信じられないほどリアルに感じられました。\",\"author\":\"Sarah K.\",\"role\":\"広告クリエイティブリード\"}],\"title\":\"Seedance 2.0で自分の声を見つけたクリエイターたち\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"Seedance 2.0はSeedance 1.0と何が違いますか？\",\"answer\":\"Seedance 2.0は、ネイティブオーディオ生成（音付きビデオ）、キャラクターのマルチショット一貫性の大幅な向上、より高い2K解像度出力を導入しています。また、重力や運動量などの物理法則をよりよく理解しています。\"},{\"question\":\"自分の声や音楽を使用できますか？\",\"answer\":\"はい。Seedance 2.0はゼロからオーディオを生成できますが、独自のオーディオトラックをアップロードしてビデオを駆動することもでき、キャラクターのリップシンクやミュージックビデオに最適です。\"},{\"question\":\"「マルチショット」機能はどのように機能しますか？\",\"answer\":\"一連のイベントを記述する単一の複雑なプロンプト（例：「ショット1：男が部屋に入る。ショット2：彼が座る。」）を提供するか、参照画像機能を使用して、生成された別々のクリップに同じキャラクターが表示されるようにすることができます。\"},{\"question\":\"Seedance 2.0は商用利用可能ですか？\",\"answer\":\"はい、Lovart ProおよびUltimateのサブスクライバーがSeedance 2.0を使用して生成したビデオには商用ライセンスが付属しており、広告、YouTube、その他の商用プロジェクトに適しています。\"},{\"question\":\"最大ビデオ長はどれくらいですか？\",\"answer\":\"現在、1回の生成で最大15秒の高忠実度ビデオを作成できます。ただし、Lovartタイムラインの「拡張」機能を使用して、より長いシーケンスを無期限に作成できます。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Lovartの新AI動画生成：ネイティブ音声とマルチショット一貫性",
+      "description": "Create cinematic AI videos with Seedance 2.0 on Lovart. Features native audio generation, character consistency across shots, and 2K resolution. The ultimate tool for AI storytelling.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Multimodal Input (@Mention)"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Production-Grade Features for Creators",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "マルチモーダル入力 (@Mention)",
+          "description": "カオスを制御します。「@」を使用して、スタイル参照用の画像、動き参照用のビデオ、またはリップシンク用のオーディオを指定します。これらすべてを1つのプロンプトに組み合わせて、正確な指示を出します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "マルチモーダル入力 (@Mention)"
+          }
+        },
+        {
+          "title": "ネイティブ効果音 & BGM",
+          "description": "「壮大なオーケストラのスコア」や「微かな街の騒音」をプロンプトで指示。Seedanceは、視覚的なタイミングに完全に一致するロイヤリティフリーのオーディオを生成します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "ネイティブ効果音 & BGM"
+          }
+        },
+        {
+          "title": "2K シネマティック解像度",
+          "description": "最大2K解像度の鮮明なビデオを出力。YouTube、コマーシャル、または詳細が重要な高精細ソーシャルメディアコンテンツに最適です。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "2K シネマティック解像度"
+          }
+        },
+        {
+          "title": "長編ナラティブ (15秒+)",
+          "description": "5秒の壁を破ります。より長く一貫したクリップを生成するか、既存のビデオをシームレスに拡張して、文脈を失うことなく長いシーケンスを構築します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "長編ナラティブ (15秒+)"
+          }
+        },
+        {
+          "title": "精密なカメラ制御",
+          "description": "プロのように監督。「ドリーズーム」「左トラック」「アークショット」などの用語を使用します。Seedanceは映画言語を理解し、カメラの動きを完璧に実行します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "精密なカメラ制御"
+          }
+        },
+        {
+          "title": "あらゆるアスペクト比",
+          "description": "映画用の16:9からTikTok用の9:16、さらにはウルトラワイドの21:9まで。Seedanceは選択したフレームに合わせて構図をインテリジェントに適応させます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "あらゆるアスペクト比"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "マルチモーダル入力 (@Mention)",
+          "icon": "chat",
+          "content": {
+            "title": "マルチモーダル入力 (@Mention)",
+            "description": "カオスを制御します。「@」を使用して、スタイル参照用の画像、動き参照用のビデオ、またはリップシンク用のオーディオを指定します。これらすべてを1つのプロンプトに組み合わせて、正確な指示を出します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "マルチモーダル入力 (@Mention)"
+            }
+          }
+        },
+        {
+          "label": "ネイティブ効果音 & BGM",
+          "icon": "image",
+          "content": {
+            "title": "ネイティブ効果音 & BGM",
+            "description": "「壮大なオーケストラのスコア」や「微かな街の騒音」をプロンプトで指示。Seedanceは、視覚的なタイミングに完全に一致するロイヤリティフリーのオーディオを生成します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "ネイティブ効果音 & BGM"
+            }
+          }
+        },
+        {
+          "label": "2K シネマティック解像度",
+          "icon": "flask",
+          "content": {
+            "title": "2K シネマティック解像度",
+            "description": "最大2K解像度の鮮明なビデオを出力。YouTube、コマーシャル、または詳細が重要な高精細ソーシャルメディアコンテンツに最適です。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "2K シネマティック解像度"
+            }
+          }
+        },
+        {
+          "label": "長編ナラティブ (15秒+)",
+          "icon": "brand",
+          "content": {
+            "title": "長編ナラティブ (15秒+)",
+            "description": "5秒の壁を破ります。より長く一貫したクリップを生成するか、既存のビデオをシームレスに拡張して、文脈を失うことなく長いシーケンスを構築します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "長編ナラティブ (15秒+)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "精密なカメラ制御",
+          "description": "プロのように監督。「ドリーズーム」「左トラック」「アークショット」などの用語を使用します。Seedanceは映画言語を理解し、カメラの動きを完璧に実行します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "精密なカメラ制御"
+          }
+        },
+        {
+          "title": "あらゆるアスペクト比",
+          "description": "映画用の16:9からTikTok用の9:16、さらにはウルトラワイドの21:9まで。Seedanceは選択したフレームに合わせて構図をインテリジェントに適応させます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "あらゆるアスペクト比"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Seedance 2.0：無音で崩れたAI動画の終わり。",
+      "description": "生成ビデオの次なる飛躍を体験してください。Lovartに統合されたSeedance 2.0は、単に動く画像を生成するだけでなく、同期したネイティブオーディオを生成し、複数のショットにわたって完璧なキャラクターの一貫性を維持します。短編映画、ミュージックビデオ、製品CMなど、音と魂のある完全なストーリーを語りましょう。",
+      "input_placeholder": "例：「シネマティックなシーケンス：1. 煙たいバーで演奏するジャズピアニストのクローズアップ、ピアノの音。2. 拍手する観客のワイドショット、周囲の雑音。」",
+      "prompts": [
+        {
+          "label": "シネマティック + 効果音",
+          "prompt": "A cyberpunk detective walking in heavy rain, neon lights reflecting, sound of footsteps splashing and distant thunder"
+        },
+        {
+          "label": "キャラクターリップシンク",
+          "prompt": "A cute 3D character explaining a concept, lip-syncing perfectly to the generated voiceover, bright studio lighting"
+        },
+        {
+          "label": "ダイナミックFPVショット",
+          "prompt": "A continuous shot following a drone flying through a canyon, wind whooshing sound, dynamic motion"
+        },
+        {
+          "label": "モーショントランスファー",
+          "prompt": "Replicate the dance moves from this uploaded reference video, but change the character to a robot in a sci-fi factory"
+        }
+      ],
+      "tip": "プロのヒント：Seedance 2.0はあなたの声を聞いています。「雨の音」「歓声」「柔らかなピアノ音楽」などのオーディオ記述をプロンプトに含めると、ネイティブオーディオ生成がトリガーされます。",
+      "cta": {
+        "text": "サウンド付き動画を生成"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Seedance 2.0がゲームを変える理由",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "ネイティブな音画同期",
+          "description": "静寂は破られました。Seedance 2.0は、砕ける波が音を立て、話す口が声を発することを理解しています。比類のない没入感のために、ビデオとオーディオを同時に生成します。"
+        },
+        {
+          "step": 2,
+          "title": "マルチショットの一貫性",
+          "description": "本当の物語を語りましょう。キャラクターやスタイルを一度定義すれば、Seedance 2.0はクローズアップ、ワイドショット、様々な角度でそのアイデンティティを保持します。シーン間で「顔が変わる」不具合はもうありません。"
+        },
+        {
+          "step": 3,
+          "title": "物理ベースのリアリズム",
+          "description": "新しい拡散トランスフォーマーアーキテクチャに基づいて構築されたSeedance 2.0は、重力、摩擦、慣性を尊重します。キャラクターが歩くときに重みがあり、オブジェクトは浮くことなく自然に相互作用します。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "オーディオ生成は不気味なほど優れています。「鳥のさえずる静かな森」と入力したところ、ビデオは視覚効果と完全に一致する音とともに戻ってきました。サウンドデザインの時間を何時間も節約できました。",
+          "author": "Jordan P.",
+          "role": "短編映画監督"
+        },
+        {
+          "quote": "ついに、私のデジタルアバターをさまざまなシーンに配置できるようになり、彼女は実際に同一人物に見えます！Seedance 2.0の一貫性は、私が見た中で最高です。",
+          "author": "Li Wei",
+          "role": "ソーシャルメディアインフルエンサー"
+        },
+        {
+          "quote": "参照ビデオ機能を使用して、トレンドのダンスの動きをブランドのマスコットにコピーしました。完璧でした。マスコットのスーツが動く物理的効果は信じられないほどリアルに感じられました。",
+          "author": "Sarah K.",
+          "role": "広告クリエイティブリード"
+        }
+      ],
+      "title": "Seedance 2.0で自分の声を見つけたクリエイターたち"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "Seedance 2.0はSeedance 1.0と何が違いますか？",
+          "answer": "Seedance 2.0は、ネイティブオーディオ生成（音付きビデオ）、キャラクターのマルチショット一貫性の大幅な向上、より高い2K解像度出力を導入しています。また、重力や運動量などの物理法則をよりよく理解しています。"
+        },
+        {
+          "question": "自分の声や音楽を使用できますか？",
+          "answer": "はい。Seedance 2.0はゼロからオーディオを生成できますが、独自のオーディオトラックをアップロードしてビデオを駆動することもでき、キャラクターのリップシンクやミュージックビデオに最適です。"
+        },
+        {
+          "question": "「マルチショット」機能はどのように機能しますか？",
+          "answer": "一連のイベントを記述する単一の複雑なプロンプト（例：「ショット1：男が部屋に入る。ショット2：彼が座る。」）を提供するか、参照画像機能を使用して、生成された別々のクリップに同じキャラクターが表示されるようにすることができます。"
+        },
+        {
+          "question": "Seedance 2.0は商用利用可能ですか？",
+          "answer": "はい、Lovart ProおよびUltimateのサブスクライバーがSeedance 2.0を使用して生成したビデオには商用ライセンスが付属しており、広告、YouTube、その他の商用プロジェクトに適しています。"
+        },
+        {
+          "question": "最大ビデオ長はどれくらいですか？",
+          "answer": "現在、1回の生成で最大15秒の高忠実度ビデオを作成できます。ただし、Lovartタイムラインの「拡張」機能を使用して、より長いシーケンスを無期限に作成できます。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

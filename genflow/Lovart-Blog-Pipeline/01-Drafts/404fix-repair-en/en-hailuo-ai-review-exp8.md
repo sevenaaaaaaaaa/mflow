@@ -1,0 +1,3 @@
+## A note on reading this review
+
+I wrote this for the operator, not the evaluator. If you're comparing models on a leaderboard, most of this is irrelevant — go watch the highlight reels. If you're shipping a campaign Thursday with an offer that must land and a brand that must hold, the failure log and the workflow are the only parts that matter. I weighted the rubric toward shipping on purpose, because the demo economy already serves the other side. The honest read is boring: Hailuo makes good motion, leaves the job unfinished, and a design desk closes the gap. Keep that sentence and the rest is detail.

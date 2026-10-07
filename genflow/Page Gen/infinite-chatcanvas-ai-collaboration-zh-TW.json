@@ -1,0 +1,387 @@
+{
+  "_id": "features-infinite-chatcanvas-ai-collaboration-zh-TW",
+  "reflowSourceId": "features-infinite-chatcanvas-ai-collaboration-zh-TW",
+  "slug": "infinite-chatcanvas-ai-collaboration",
+  "language": "zh-TW",
+  "category": "feature",
+  "title": "Lovart無限畫布AI：終極UI設計工作區",
+  "description": "Step out of the chatbox. Discover ChatCanvas, Lovart's infinite workspace. Collaborate visually with your AI Design Agent, organize mood boards, and edit designs seamlessly.",
+  "seo": {
+    "description": "跳出聊天框，探索 ChatCanvas — Lovart 的無限工作空間。與你的 AI 設計助手視覺協作，輕鬆整理靈感板，無縫編輯設計。",
+    "keywords": [
+      "無限畫布AI",
+      "AI UI設計工作區",
+      "視覺AI協作",
+      "ChatCanvas",
+      "AI設計代理",
+      "空間運算設計",
+      "Lovart AI"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Infinite ChatCanvas",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovart無限畫布AI：終極UI設計工作區\", \"description\": \"Step out of the chatbox. Discover ChatCanvas, Lovart's infinite workspace. Collaborate visually with your AI Design Agent, organize mood boards, and edit designs seamlessly.\", \"url\": \"https://www.lovart.ai/features/infinite-chatcanvas-ai-collaboration\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"聊天框 AI 和 ChatCanvas 之間有什麼區別？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"傳統的 AI 生成器使用線性的聊天框（輸入提示詞，輸出圖像），這會導致您丟失上下文，並且難以進行迭代。ChatCanvas 是一個無限的空間工作區，您的提示詞、參考圖像和生成的資產並排存在，使 AI 能夠「看到」全局並自然地與您協作。\"}}, {\"@type\": \"Question\", \"name\": \"AI Agent 如何理解我在畫布上的佈局？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart 由 MCoT（思維思維鏈）推理引擎驅動。當您在畫布上對項目進行分組、繪製連接線或將參考圖彼此相鄰放置時，Agent 會分析這些空間關係和視覺上下文，以生成高度準確和有凝聚力的設計。\"}}, {\"@type\": \"Question\", \"name\": \"我可以直接在畫布上編輯圖像的特定部分嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"是的。藉助「Touch Edit」和「Edit Elements」，您無需編寫冗長的提示詞來修復小問題。只需點擊畫布上圖像內的特定對象或文字，然後指示 Agent 進行修改即可。它就像一個語義化的、零樣本的編輯器。\"}}, {\"@type\": \"Question\", \"name\": \"無限畫布支持高解析度匯出嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"絕對支持。您可以自由地構思和排列概念，當您準備好時，可以使用我們的 Upscale 功能將單個資產匯出為清晰的 4K 或 8K 解析度，非常適合專業的 UI/UX、印刷或數位行銷。\"}}, {\"@type\": \"Question\", \"name\": \"在 ChatCanvas 上創建的設計可安全商用嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"是的。如果您訂閱了 Lovart 的任何付費計劃，您就保留了您生成的所有視覺資產的完整商業權利，使它們完全可以安全地用於客戶演示、應用程式、網站和廣告中。\"}}]}}"
+    },
+    "title": "Lovart無限畫布AI：終極UI設計工作區"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Lovart無限畫布AI：終極UI設計工作區\",\"description\":\"Step out of the chatbox. Discover ChatCanvas, Lovart's infinite workspace. Collaborate visually with your AI Design Agent, organize mood boards, and edit designs seamlessly.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Infinite ChatCanvas\"}},{\"type\":\"bento-6\",\"title\":\"Why ChatCanvas Replaces Traditional AI Tools\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"無限的 ChatCanvas\",\"description\":\"擺脫線性的對話流。在專為專業視覺工作流設計的單一、無限大數位辦公桌上，整理您的所有草稿、參考圖和最終編輯結果。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"無限的 ChatCanvas\"}},{\"title\":\"上下文視覺記憶\",\"description\":\"MCoT 推理引擎充當您的聯合設計師，保留整個畫布的上下文。它能在多次生成中記住您的調色盤和風格偏好。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"上下文視覺記憶\"}},{\"title\":\"語義圖層拆分\",\"description\":\"使用 Edit Elements，直接在畫布上將任何生成的圖像瞬間分離為前景、背景和文字圖層，賦予您極致的排版控制權。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"語義圖層拆分\"}},{\"title\":\"零樣本 Touch Edit\",\"description\":\"點擊一個對象並告訴 Agent 需要修改什麼。修改 UI 樣機中的按鈕顏色或更換模特的夾克只需一鍵——無需複雜的遮罩操作。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"零樣本 Touch Edit\"}},{\"title\":\"完美的排版與文字編輯\",\"description\":\"生成帶有清晰、無錯文字的 UI 介面、海報和網頁佈局。直接在畫布上修正拼寫錯誤，而無需重新生成整張圖片。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"完美的排版與文字編輯\"}},{\"title\":\"高解析度匯出與商業版權\",\"description\":\"一旦您的畫布完美無瑕，即可將關鍵資產提升至 4K 或 8K 解析度。您生成的每個資產都安全且可商用，隨時可以交付給客戶。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"高解析度匯出與商業版權\"}}]},{\"type\":\"capability-tabs\",\"title\":\"一個智慧體，整合全部能力\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"無限的 ChatCanvas\",\"icon\":\"chat\",\"content\":{\"title\":\"無限的 ChatCanvas\",\"description\":\"擺脫線性的對話流。在專為專業視覺工作流設計的單一、無限大數位辦公桌上，整理您的所有草稿、參考圖和最終編輯結果。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"無限的 ChatCanvas\"}}},{\"label\":\"上下文視覺記憶\",\"icon\":\"image\",\"content\":{\"title\":\"上下文視覺記憶\",\"description\":\"MCoT 推理引擎充當您的聯合設計師，保留整個畫布的上下文。它能在多次生成中記住您的調色盤和風格偏好。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"上下文視覺記憶\"}}},{\"label\":\"語義圖層拆分\",\"icon\":\"flask\",\"content\":{\"title\":\"語義圖層拆分\",\"description\":\"使用 Edit Elements，直接在畫布上將任何生成的圖像瞬間分離為前景、背景和文字圖層，賦予您極致的排版控制權。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"語義圖層拆分\"}}},{\"label\":\"零樣本 Touch Edit\",\"icon\":\"brand\",\"content\":{\"title\":\"零樣本 Touch Edit\",\"description\":\"點擊一個對象並告訴 Agent 需要修改什麼。修改 UI 樣機中的按鈕顏色或更換模特的夾克只需一鍵——無需複雜的遮罩操作。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"零樣本 Touch Edit\"}}}]},{\"type\":\"bento-2\",\"title\":\"尤其擅長的兩件事\",\"columns\":2,\"features\":[{\"title\":\"完美的排版與文字編輯\",\"description\":\"生成帶有清晰、無錯文字的 UI 介面、海報和網頁佈局。直接在畫布上修正拼寫錯誤，而無需重新生成整張圖片。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"完美的排版與文字編輯\"}},{\"title\":\"高解析度匯出與商業版權\",\"description\":\"一旦您的畫布完美無瑕，即可將關鍵資產提升至 4K 或 8K 解析度。您生成的每個資產都安全且可商用，隨時可以交付給客戶。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"高解析度匯出與商業版權\"}}]},{\"type\":\"feature-detail\",\"title\":\"詳細了解使用方式\",\"items\":[{\"title\":\"開啟你的Infinite Canvas AI: The Ultimate UI Design Workspace專案\",\"description\":\"描述你想要的成果，並補充參考素材即可。\"},{\"title\":\"與智慧體一起迭代\",\"description\":\"在同一畫布上調整細節、探索不同方案。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"UI 革命：為什麼無限畫布是 AI 協作設計的終極型態\",\"description\":\"走出受限的對話框，進入 ChatCanvas 的世界。Lovart 的無限工作區將 AI 從基礎的提示詞生成器，轉化為真正的協同設計夥伴。在專為人機共創打造的空間環境中，自由整理參考圖、視覺化腦力激盪，並對元素進行手術刀般的精準編輯。\",\"input_placeholder\":\"描述您想要構建的工作區佈局或設計概念...\",\"prompts\":[{\"label\":\"UI/UX 系統\",\"prompt\":\"生成一個金融科技應用的 UI 儀表板概念，並在旁邊放置一個協調的調色盤\"},{\"label\":\"活動情緒板\",\"prompt\":\"為未來主義運動鞋活動創建一個視覺情緒板，包含 4 種截然不同的海報變體\"},{\"label\":\"完整品牌工具包\",\"prompt\":\"設計一個完整的品牌工具包，包括標誌、排版和 3D 包裝樣機\"},{\"label\":\"網頁佈局\",\"prompt\":\"生成一個落地頁佈局，並將主視覺圖提取到一個單獨的可編輯圖層中\"}],\"tip\":\"提示：描述一個完整的專案，例如「為永續時尚品牌創建一個情緒板和 UI 概念」。\",\"cta\":{\"text\":\"打開無限畫布\"}},{\"type\":\"workflow-horizontal\",\"title\":\"空間計算遇上 AI 設計：ChatCanvas 工作流\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"視覺化腦力激盪\",\"description\":\"將雜亂的草圖、品牌指南和參考照片直接拖放到無限畫布上。將它們分組，以建立一個 Lovart Agent 瞬間就能理解的視覺上下文。\"},{\"step\":2,\"title\":\"上下文感知的生成\",\"description\":\"因為 Agent 能「看到」您 ChatCanvas 上的所有內容，所以它不再是盲目猜測。由 MCoT 引擎驅動，它生成的變體能完美契合您散落的參考圖和空間佈局。\"},{\"step\":3,\"title\":\"畫布內的手術刀級編輯\",\"description\":\"再也不用為了修復微小的錯誤而輸入冗長的提示詞了。使用 Touch Edit，直接點擊畫布內的元素，瞬間改變顏色、替換材質或重寫文字。\"}]},{\"type\":\"comparison-table\",\"title\":\"Infinite Canvas AI: The Ultimate UI Design Workspace：Lovart 與一般工作流程比較\",\"headers\":[\"需求\",\"通用工具\",\"手動工作流程\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"開啟你的Infinite Canvas AI: The Ultimate UI Design Workspace專案\",\"values\":[\"一句提示詞\",\"手動撰寫需求\",\"需求驅動的推理\"]},{\"feature\":\"產出第一版的時間\",\"values\":[\"幾分鐘\",\"數天\",\"幾分鐘\"]},{\"feature\":\"生成後的編輯\",\"values\":[\"有限\",\"反覆修改\",\"塗抹 / 文字 / 元素編輯\"]},{\"feature\":\"維持品牌一致\",\"values\":[\"手動\",\"手動\",\"支援 Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Infinite Canvas AI: The Ultimate UI Design Workspace的最佳應用場景\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"更快上線\",\"description\":\"從需求到Infinite Canvas AI: The Ultimate UI Design Workspace素材，一次工作階段即可完成。\"},{\"icon\":\"brand\",\"title\":\"維持一致\",\"description\":\"Brand Kit 讓每一份素材都保持統一。\"},{\"icon\":\"refresh\",\"title\":\"快速迭代\",\"description\":\"無需從頭開始，即可編輯細節。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"傳統的對話框 AI 感覺就像在對牛彈琴。Lovart 的 ChatCanvas 感覺就像一個真正的設計工作室。我可以鋪開我的線框圖，讓 Agent 在旁邊生成 UI 變體，並立即調整元素。\",\"author\":\"Sarah M.\",\"role\":\"首席 UI/UX 設計師\"},{\"quote\":\"能夠在一個無限的畫布上看到整個活動——從最初的情緒板到最終的 4K 海報——徹底改變了我們向客戶提案的方式。空間上下文就是一切。\",\"author\":\"David K.\",\"role\":\"創意代理機構創辦人\"},{\"quote\":\"我喜歡 Agent 能夠「看到」我的參考資料。我將調色盤和競爭對手的廣告拖到畫布上，Lovart 的 MCoT 引擎就能推導出一個完全新穎、符合品牌調性的方向。這是真正的共同創作。\",\"author\":\"Elena R.\",\"role\":\"品牌策略師\"}],\"title\":\"在無限畫布上徹底改變工作流的設計師們\"},{\"type\":\"pricing-block\",\"title\":\"選擇適合團隊的方案\",\"description\":\"免費開始，當作品要交付客戶時再升級。\"},{\"type\":\"faq\",\"title\":\"常見問題\",\"items\":[{\"question\":\"聊天框 AI 和 ChatCanvas 之間有什麼區別？\",\"answer\":\"傳統的 AI 生成器使用線性的聊天框（輸入提示詞，輸出圖像），這會導致您丟失上下文，並且難以進行迭代。ChatCanvas 是一個無限的空間工作區，您的提示詞、參考圖像和生成的資產並排存在，使 AI 能夠「看到」全局並自然地與您協作。\"},{\"question\":\"AI Agent 如何理解我在畫布上的佈局？\",\"answer\":\"Lovart 由 MCoT（思維思維鏈）推理引擎驅動。當您在畫布上對項目進行分組、繪製連接線或將參考圖彼此相鄰放置時，Agent 會分析這些空間關係和視覺上下文，以生成高度準確和有凝聚力的設計。\"},{\"question\":\"我可以直接在畫布上編輯圖像的特定部分嗎？\",\"answer\":\"是的。藉助「Touch Edit」和「Edit Elements」，您無需編寫冗長的提示詞來修復小問題。只需點擊畫布上圖像內的特定對象或文字，然後指示 Agent 進行修改即可。它就像一個語義化的、零樣本的編輯器。\"},{\"question\":\"無限畫布支持高解析度匯出嗎？\",\"answer\":\"絕對支持。您可以自由地構思和排列概念，當您準備好時，可以使用我們的 Upscale 功能將單個資產匯出為清晰的 4K 或 8K 解析度，非常適合專業的 UI/UX、印刷或數位行銷。\"},{\"question\":\"在 ChatCanvas 上創建的設計可安全商用嗎？\",\"answer\":\"是的。如果您訂閱了 Lovart 的任何付費計劃，您就保留了您生成的所有視覺資產的完整商業權利，使它們完全可以安全地用於客戶演示、應用程式、網站和廣告中。\"}]},{\"type\":\"cta-default\",\"title\":\"用 Lovart 開始創作\",\"description\":\"幾分鐘內，把你的需求變成符合品牌調性的視覺作品。\",\"buttons\":[{\"text\":\"免費開始\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Lovart無限畫布AI：終極UI設計工作區",
+      "description": "Step out of the chatbox. Discover ChatCanvas, Lovart's infinite workspace. Collaborate visually with your AI Design Agent, organize mood boards, and edit designs seamlessly.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Infinite ChatCanvas"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Why ChatCanvas Replaces Traditional AI Tools",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "無限的 ChatCanvas",
+          "description": "擺脫線性的對話流。在專為專業視覺工作流設計的單一、無限大數位辦公桌上，整理您的所有草稿、參考圖和最終編輯結果。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "無限的 ChatCanvas"
+          }
+        },
+        {
+          "title": "上下文視覺記憶",
+          "description": "MCoT 推理引擎充當您的聯合設計師，保留整個畫布的上下文。它能在多次生成中記住您的調色盤和風格偏好。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "上下文視覺記憶"
+          }
+        },
+        {
+          "title": "語義圖層拆分",
+          "description": "使用 Edit Elements，直接在畫布上將任何生成的圖像瞬間分離為前景、背景和文字圖層，賦予您極致的排版控制權。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "語義圖層拆分"
+          }
+        },
+        {
+          "title": "零樣本 Touch Edit",
+          "description": "點擊一個對象並告訴 Agent 需要修改什麼。修改 UI 樣機中的按鈕顏色或更換模特的夾克只需一鍵——無需複雜的遮罩操作。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "零樣本 Touch Edit"
+          }
+        },
+        {
+          "title": "完美的排版與文字編輯",
+          "description": "生成帶有清晰、無錯文字的 UI 介面、海報和網頁佈局。直接在畫布上修正拼寫錯誤，而無需重新生成整張圖片。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "完美的排版與文字編輯"
+          }
+        },
+        {
+          "title": "高解析度匯出與商業版權",
+          "description": "一旦您的畫布完美無瑕，即可將關鍵資產提升至 4K 或 8K 解析度。您生成的每個資產都安全且可商用，隨時可以交付給客戶。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "高解析度匯出與商業版權"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "一個智慧體，整合全部能力",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "無限的 ChatCanvas",
+          "icon": "chat",
+          "content": {
+            "title": "無限的 ChatCanvas",
+            "description": "擺脫線性的對話流。在專為專業視覺工作流設計的單一、無限大數位辦公桌上，整理您的所有草稿、參考圖和最終編輯結果。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "無限的 ChatCanvas"
+            }
+          }
+        },
+        {
+          "label": "上下文視覺記憶",
+          "icon": "image",
+          "content": {
+            "title": "上下文視覺記憶",
+            "description": "MCoT 推理引擎充當您的聯合設計師，保留整個畫布的上下文。它能在多次生成中記住您的調色盤和風格偏好。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "上下文視覺記憶"
+            }
+          }
+        },
+        {
+          "label": "語義圖層拆分",
+          "icon": "flask",
+          "content": {
+            "title": "語義圖層拆分",
+            "description": "使用 Edit Elements，直接在畫布上將任何生成的圖像瞬間分離為前景、背景和文字圖層，賦予您極致的排版控制權。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "語義圖層拆分"
+            }
+          }
+        },
+        {
+          "label": "零樣本 Touch Edit",
+          "icon": "brand",
+          "content": {
+            "title": "零樣本 Touch Edit",
+            "description": "點擊一個對象並告訴 Agent 需要修改什麼。修改 UI 樣機中的按鈕顏色或更換模特的夾克只需一鍵——無需複雜的遮罩操作。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "零樣本 Touch Edit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "尤其擅長的兩件事",
+      "columns": 2,
+      "features": [
+        {
+          "title": "完美的排版與文字編輯",
+          "description": "生成帶有清晰、無錯文字的 UI 介面、海報和網頁佈局。直接在畫布上修正拼寫錯誤，而無需重新生成整張圖片。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "完美的排版與文字編輯"
+          }
+        },
+        {
+          "title": "高解析度匯出與商業版權",
+          "description": "一旦您的畫布完美無瑕，即可將關鍵資產提升至 4K 或 8K 解析度。您生成的每個資產都安全且可商用，隨時可以交付給客戶。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "高解析度匯出與商業版權"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "詳細了解使用方式",
+      "items": [
+        {
+          "title": "開啟你的Infinite Canvas AI: The Ultimate UI Design Workspace專案",
+          "description": "描述你想要的成果，並補充參考素材即可。"
+        },
+        {
+          "title": "與智慧體一起迭代",
+          "description": "在同一畫布上調整細節、探索不同方案。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "UI 革命：為什麼無限畫布是 AI 協作設計的終極型態",
+      "description": "走出受限的對話框，進入 ChatCanvas 的世界。Lovart 的無限工作區將 AI 從基礎的提示詞生成器，轉化為真正的協同設計夥伴。在專為人機共創打造的空間環境中，自由整理參考圖、視覺化腦力激盪，並對元素進行手術刀般的精準編輯。",
+      "input_placeholder": "描述您想要構建的工作區佈局或設計概念...",
+      "prompts": [
+        {
+          "label": "UI/UX 系統",
+          "prompt": "生成一個金融科技應用的 UI 儀表板概念，並在旁邊放置一個協調的調色盤"
+        },
+        {
+          "label": "活動情緒板",
+          "prompt": "為未來主義運動鞋活動創建一個視覺情緒板，包含 4 種截然不同的海報變體"
+        },
+        {
+          "label": "完整品牌工具包",
+          "prompt": "設計一個完整的品牌工具包，包括標誌、排版和 3D 包裝樣機"
+        },
+        {
+          "label": "網頁佈局",
+          "prompt": "生成一個落地頁佈局，並將主視覺圖提取到一個單獨的可編輯圖層中"
+        }
+      ],
+      "tip": "提示：描述一個完整的專案，例如「為永續時尚品牌創建一個情緒板和 UI 概念」。",
+      "cta": {
+        "text": "打開無限畫布"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "空間計算遇上 AI 設計：ChatCanvas 工作流",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "視覺化腦力激盪",
+          "description": "將雜亂的草圖、品牌指南和參考照片直接拖放到無限畫布上。將它們分組，以建立一個 Lovart Agent 瞬間就能理解的視覺上下文。"
+        },
+        {
+          "step": 2,
+          "title": "上下文感知的生成",
+          "description": "因為 Agent 能「看到」您 ChatCanvas 上的所有內容，所以它不再是盲目猜測。由 MCoT 引擎驅動，它生成的變體能完美契合您散落的參考圖和空間佈局。"
+        },
+        {
+          "step": 3,
+          "title": "畫布內的手術刀級編輯",
+          "description": "再也不用為了修復微小的錯誤而輸入冗長的提示詞了。使用 Touch Edit，直接點擊畫布內的元素，瞬間改變顏色、替換材質或重寫文字。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Infinite Canvas AI: The Ultimate UI Design Workspace：Lovart 與一般工作流程比較",
+      "headers": [
+        "需求",
+        "通用工具",
+        "手動工作流程",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "開啟你的Infinite Canvas AI: The Ultimate UI Design Workspace專案",
+          "values": [
+            "一句提示詞",
+            "手動撰寫需求",
+            "需求驅動的推理"
+          ]
+        },
+        {
+          "feature": "產出第一版的時間",
+          "values": [
+            "幾分鐘",
+            "數天",
+            "幾分鐘"
+          ]
+        },
+        {
+          "feature": "生成後的編輯",
+          "values": [
+            "有限",
+            "反覆修改",
+            "塗抹 / 文字 / 元素編輯"
+          ]
+        },
+        {
+          "feature": "維持品牌一致",
+          "values": [
+            "手動",
+            "手動",
+            "支援 Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Infinite Canvas AI: The Ultimate UI Design Workspace的最佳應用場景",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "更快上線",
+          "description": "從需求到Infinite Canvas AI: The Ultimate UI Design Workspace素材，一次工作階段即可完成。"
+        },
+        {
+          "icon": "brand",
+          "title": "維持一致",
+          "description": "Brand Kit 讓每一份素材都保持統一。"
+        },
+        {
+          "icon": "refresh",
+          "title": "快速迭代",
+          "description": "無需從頭開始，即可編輯細節。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "傳統的對話框 AI 感覺就像在對牛彈琴。Lovart 的 ChatCanvas 感覺就像一個真正的設計工作室。我可以鋪開我的線框圖，讓 Agent 在旁邊生成 UI 變體，並立即調整元素。",
+          "author": "Sarah M.",
+          "role": "首席 UI/UX 設計師"
+        },
+        {
+          "quote": "能夠在一個無限的畫布上看到整個活動——從最初的情緒板到最終的 4K 海報——徹底改變了我們向客戶提案的方式。空間上下文就是一切。",
+          "author": "David K.",
+          "role": "創意代理機構創辦人"
+        },
+        {
+          "quote": "我喜歡 Agent 能夠「看到」我的參考資料。我將調色盤和競爭對手的廣告拖到畫布上，Lovart 的 MCoT 引擎就能推導出一個完全新穎、符合品牌調性的方向。這是真正的共同創作。",
+          "author": "Elena R.",
+          "role": "品牌策略師"
+        }
+      ],
+      "title": "在無限畫布上徹底改變工作流的設計師們"
+    },
+    {
+      "type": "pricing-block",
+      "title": "選擇適合團隊的方案",
+      "description": "免費開始，當作品要交付客戶時再升級。"
+    },
+    {
+      "type": "faq",
+      "title": "常見問題",
+      "items": [
+        {
+          "question": "聊天框 AI 和 ChatCanvas 之間有什麼區別？",
+          "answer": "傳統的 AI 生成器使用線性的聊天框（輸入提示詞，輸出圖像），這會導致您丟失上下文，並且難以進行迭代。ChatCanvas 是一個無限的空間工作區，您的提示詞、參考圖像和生成的資產並排存在，使 AI 能夠「看到」全局並自然地與您協作。"
+        },
+        {
+          "question": "AI Agent 如何理解我在畫布上的佈局？",
+          "answer": "Lovart 由 MCoT（思維思維鏈）推理引擎驅動。當您在畫布上對項目進行分組、繪製連接線或將參考圖彼此相鄰放置時，Agent 會分析這些空間關係和視覺上下文，以生成高度準確和有凝聚力的設計。"
+        },
+        {
+          "question": "我可以直接在畫布上編輯圖像的特定部分嗎？",
+          "answer": "是的。藉助「Touch Edit」和「Edit Elements」，您無需編寫冗長的提示詞來修復小問題。只需點擊畫布上圖像內的特定對象或文字，然後指示 Agent 進行修改即可。它就像一個語義化的、零樣本的編輯器。"
+        },
+        {
+          "question": "無限畫布支持高解析度匯出嗎？",
+          "answer": "絕對支持。您可以自由地構思和排列概念，當您準備好時，可以使用我們的 Upscale 功能將單個資產匯出為清晰的 4K 或 8K 解析度，非常適合專業的 UI/UX、印刷或數位行銷。"
+        },
+        {
+          "question": "在 ChatCanvas 上創建的設計可安全商用嗎？",
+          "answer": "是的。如果您訂閱了 Lovart 的任何付費計劃，您就保留了您生成的所有視覺資產的完整商業權利，使它們完全可以安全地用於客戶演示、應用程式、網站和廣告中。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "用 Lovart 開始創作",
+      "description": "幾分鐘內，把你的需求變成符合品牌調性的視覺作品。",
+      "buttons": [
+        {
+          "text": "免費開始",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

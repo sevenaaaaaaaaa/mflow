@@ -1,0 +1,187 @@
+```json
+{
+  "section_en": [
+    {
+      "type": "centeredInputSection",
+      "title": "Nano Banana Educational Materials — AI-Powered Learning Resources with Lovart",
+      "description": "Create professional educational materials in minutes with Lovart's AI Design Agent. From classroom posters and infographics to worksheets and flashcards, the Nano Banana educational workflow transforms your teaching content into visually engaging learning resources. Powered by the MCoT reasoning engine, Lovart understands educational design principles — age-appropriate visuals, clear information hierarchy, and learning-focused layouts. Whether you're a K-12 teacher, university professor, corporate trainer, or educational content creator, Lovart delivers classroom-ready materials. Start creating with free daily credits.",
+      "input_placeholder": "Describe your educational material — include subject, grade level, learning objective, and preferred visual style",
+      "system_prompt": "You are a Senior Educational Design Specialist and AI Creative Director at Lovart. Using the MCoT engine, analyze: 1) The educational context — subject, grade level, learning objectives, 2) The target learner demographics and cognitive development stage, 3) The appropriate visual style, information hierarchy, and engagement strategy for the educational format, 4) Accessibility considerations including readability, color contrast, and clarity. Orchestrate Lovart's agentic design pipeline: design age-appropriate layouts in ChatCanvas, generate engaging educational visuals with Nano Banana Pro, apply clear readable typography, and deliver print-ready or digital-optimized materials. User requirements: $input$",
+      "button_text": "Design Materials",
+      "tip": "Pro tip: Include subject area, grade level or audience age, specific learning objective, and whether you need print or digital format",
+      "suggestion": [
+        { "value": "Create an engaging elementary science poster about the solar system with colorful planet illustrations, fun facts, clear labels, and child-friendly typography — for 3rd grade students", "label": "Classroom Poster" },
+        { "value": "Design a comprehensive educational infographic explaining the water cycle with labeled diagrams, process arrows, key vocabulary, and real-world examples — for middle school science", "label": "Educational Infographic" },
+        { "value": "Create a structured math practice worksheet with clear problem sections, workspace areas, progressive difficulty levels, and encouraging design elements — for elementary students", "label": "Worksheet Design" },
+        { "value": "Design a vocabulary flashcard set with word on front, definition and example sentence on back, visual mnemonics, and color-coded difficulty levels — for ESL learners", "label": "Flashcard Set" }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "How to Create Professional Educational Materials with Lovart's AI Agent",
+      "columns": [
+        { "title": "Define Your Learning Goals", "description": "Start by briefing Lovart's AI Design Agent on your educational context. Describe your subject, the grade level or audience, the specific learning objectives, and the format you need (poster, worksheet, infographic, flashcard). The MCoT engine analyzes pedagogical requirements — age-appropriate complexity, cognitive load management, visual engagement strategies — and plans the optimal educational design approach.", "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png" },
+        { "title": "Generate & Customize Content", "description": "Watch Lovart transform your educational brief into complete learning materials in minutes. The agent generates age-appropriate layouts with clear information hierarchy, engaging visuals from Nano Banana Pro, curriculum-aligned content structure, and readable typography optimized for learning. Browse different visual approaches — from playful elementary designs to professional academic formats — and customize with natural language refinements.", "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png" },
+        { "title": "Refine & Distribute", "description": "Perfect your materials with Lovart's editing tools. Use Touch Edit to adjust illustrations, diagrams, or decorative elements. Apply Text Edit to modify instructions, vocabulary, or learning content while maintaining typography consistency. Preview materials in classroom settings with Smart Mockup. Export at up to 8K for large-format classroom printing or optimized digital formats for learning management systems.", "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png" }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "The Ultimate AI Toolkit for Educational Material Design",
+      "features": [
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png", "title": "Age-Appropriate Visual Intelligence", "description": "Lovart's MCoT engine automatically adapts visual complexity and engagement style to the target age group — playful and colorful for elementary learners, structured and clear for middle school, sophisticated and detailed for high school and higher education. The agent understands cognitive development stages and designs materials that match learner readiness." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png", "title": "Clear Educational Typography", "description": "Apply perfectly readable typography optimized for learning with Text Edit. From large-print elementary worksheets to dense academic reference materials, Lovart ensures every word is crisp and readable. Edit instructions, vocabulary terms, questions, and learning content directly on your materials while preserving educational formatting and visual hierarchy." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png", "title": "Classroom Context Mockup Engine", "description": "Preview your educational materials in realistic classroom settings with Smart Mockup. See how your poster looks on a classroom wall, your worksheet on a student desk, or your flashcard set in a learning center. Validate readability, visual impact, and appropriateness before printing or distributing." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png", "title": "Curriculum-Aligned Consistency", "description": "Powered by ChatCanvas brand memory, Lovart maintains visual consistency across all your educational materials — from unit posters to daily worksheets. Define your classroom's visual identity once (colors, typography, illustration style), and every material you create throughout the school year maintains the same professional design quality." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png", "title": "Large-Format 8K Classroom Export", "description": "Export educational materials at up to 8K resolution for large-format classroom printing. Posters stay sharp at 24x36 inches. Worksheets print crisply at any quantity. Digital files are optimized for learning management systems. Every export meets professional educational publishing standards." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png", "title": "Multi-Format Distribution Engine", "description": "Create once, distribute everywhere. After designing your master educational material, Lovart generates optimized variants: large-format classroom poster, letter-size handout, digital display for smart boards, LMS-compatible file, and printable worksheet format — all preserving educational design integrity. Perfect for blended learning environments." }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Educators Transforming Their Classrooms with Lovart",
+      "testimonials": [
+        { "name": "Dr. Sarah Mitchell", "role": "5th Grade Science Teacher, Oakwood Elementary", "content": "I used to spend every Sunday evening creating materials for the upcoming week — posters, worksheets, lab instruction sheets. It consumed 4-5 hours weekly. With Lovart's Nano Banana educational workflow, I now create a full week's materials in 30 minutes. The solar system unit I designed last month got shared by the district curriculum office with 200+ teachers. My students are more engaged because the visuals are genuinely captivating, not clip art. Lovart gave me my weekends back.", "avatar_url": "" },
+        { "name": "Professor James Okonkwo", "role": "University Lecturer, Department of Biology", "content": "Creating clear, professional diagrams for complex biological processes was always a pain point — either I used simplistic textbook illustrations or spent hours in Illustrator. Lovart understands scientific accuracy while making it visually compelling. I now generate lecture diagrams, lab procedure infographics, and study guides in minutes. Student feedback scores on 'visual learning materials' improved from 3.4 to 4.7 out of 5 this semester.", "avatar_url": "" },
+        { "name": "Maria Fernandez", "role": "ESL Program Coordinator, Language Learning Center", "content": "Our center serves 300+ adult learners across 6 proficiency levels, each needing customized materials. Lovart has been transformative for our material production. I create vocabulary flashcards, grammar reference sheets, conversation prompt cards, and cultural infographics — all professionally designed and level-appropriate. We've reduced our material design budget by 70% while increasing the variety of resources available to each student. The visual quality makes our program stand out from competitors." }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        { "question": "What is Lovart and how can it help me create educational materials?", "answer": "Lovart is the world's first AI Design Agent, purpose-built to transform ideas into professional designs. For educators, this means describing your lesson topic, grade level, and material type in natural language, and receiving a complete, classroom-ready educational resource — poster, worksheet, infographic, or flashcard — with age-appropriate design, clear typography, and engaging visuals. Unlike Canva templates that require manual customization, Lovart designs each material intelligently from your educational goals." },
+        { "question": "Can I create professional educational materials without design experience?", "answer": "Absolutely. Lovart was built for educators, not designers. You don't need to understand layout principles, color theory, or educational publishing standards. Simply describe your subject, grade level, and what you want students to learn, and the agent handles all design decisions — choosing age-appropriate visual styles, creating clear information hierarchy, and ensuring readability. Thousands of teachers use Lovart to create professional classroom materials regardless of their design background." },
+        { "question": "Can I use the educational materials commercially or share them with other teachers?", "answer": "Yes. Users on paid plans (Starter, Basic, Pro) own full commercial rights to their educational materials. You can share them with colleagues, sell them on Teachers Pay Teachers, use them in your educational business, and distribute them for any lawful educational purpose. The free plan is for personal classroom use and evaluation. Lovart's models are trained on licensed and public domain data." },
+        { "question": "Is there a free plan for teachers, and how do credits work?", "answer": "Yes, Lovart offers a free plan with daily login credits that refresh every 24 hours. You can create multiple educational materials per day without paying — perfect for weekly lesson planning. Paid plans: Starter (2,000 monthly credits), Basic (3,500 credits), Pro (11,000 credits), all unlocking full agent capabilities, commercial rights, and premium features. Many teachers find the free plan sufficient for classroom needs." },
+        { "question": "What file formats and resolutions can I export educational materials in?", "answer": "Lovart supports professional export in PNG, JPG, SVG (vector), and PDF formats. Resolutions go up to 8K, making materials suitable for large-format classroom posters (up to 24x36 inches), crisp worksheet printing, and sharp digital display on smart boards and learning management systems. PDF exports include proper margins for professional printing services." },
+        { "question": "How does Lovart ensure materials are age-appropriate for different grade levels?", "answer": "Lovart's MCoT engine automatically evaluates the target age group you specify and adapts design complexity accordingly — simpler layouts, larger typography, and playful visuals for elementary; more structured layouts with detailed information for middle and high school; sophisticated academic formatting for higher education. The agent understands cognitive development stages and designs materials at the appropriate complexity level." },
+        { "question": "Can I edit the educational content after the material is generated?", "answer": "Yes, Text Edit is one of Lovart's signature capabilities. Click on any text element — instructions, vocabulary terms, questions, diagrams labels — and modify it directly while preserving typography, formatting, and educational hierarchy. Perfect for customizing materials for different classes, updating curriculum content, or creating differentiated versions for students at different learning levels." },
+        { "question": "What types of educational materials can I create with Lovart?", "answer": "Lovart's educational workflow supports every format: classroom posters and anchor charts, subject infographics and reference sheets, worksheets and practice exercises, flashcards and study cards, lab procedure guides, project instructions, classroom rule posters, educational game materials, assessment rubrics, and more. The MCoT engine adapts the design strategy to each educational format and audience." },
+        { "question": "Can Lovart create materials in different formats for print and digital learning?", "answer": "Yes. The Multi-Format Distribution Engine generates optimized variants from your master design: large-format poster (classroom wall), letter-size handout (student desks), digital display (smart board optimized), LMS-compatible file (Canvas, Google Classroom), and printable worksheet format — all maintaining educational clarity and visual quality. Perfect for blended and hybrid learning environments." }
+      ]
+    }
+  ],
+  "section_zh-CN": [
+    {
+      "type": "centeredInputSection",
+      "title": "Nano Banana 教育素材 — Lovart AI 驱动的教学资源生成器",
+      "description": "使用 Lovart 的 AI 设计师智能体，几分钟内即可创建专业级教育素材。从教室海报、信息图表到练习题和单词闪卡，Nano Banana 教育工作流能够将您的教学内容转化为视觉吸引力十足的学习资源。依托 MCoT 推理引擎，Lovart 深度理解教育设计原则——适配不同年龄段的视觉风格、清晰的信息层次和以学习为核心的版式编排。无论您是中小学教师、大学教授、企业培训师还是教育内容创作者，Lovart 都能交付可直接用于课堂的素材。现在就用每日免费额度开始创作。",
+      "input_placeholder": "描述您的教育素材——包括学科、年级、学习目标和偏好的视觉风格",
+      "system_prompt": "您是 Lovart 的高级教育设计专家兼 AI 创意总监。请使用 MCoT 引擎分析：1）教学背景——学科、年级、学习目标；2）目标学习者的群体特征和认知发展阶段；3）适合该教育形式的视觉风格、信息层次和互动策略；4）可访问性考量，包括可读性、色彩对比度和清晰度。调度 Lovart 的智能设计流程：在 ChatCanvas 中设计适配年龄的版式，使用 Nano Banana Pro 生成富有吸引力的教育视觉，应用清晰易读的排版，交付可打印或适配数字设备的教学素材。用户需求：$input$",
+      "button_text": "设计教材",
+      "tip": "专业提示：请包含学科领域、年级或受众年龄、具体学习目标，以及您需要打印版还是电子版",
+      "suggestion": [
+        { "value": "为三年级学生制作一张关于太阳系的趣味科学海报，包含色彩丰富的行星插图、趣味知识点、清晰的标注和适合儿童的排版风格", "label": "教室海报" },
+        { "value": "为中学科学课设计一张综合性的水循环教育信息图，包含带标注的示意图、流程箭头、关键词汇和真实案例", "label": "教育信息图" },
+        { "value": "为小学生创建结构清晰的数学练习卷，包含分明的题目区域、演算空间、渐进式难度和激励性设计元素", "label": "练习卷设计" },
+        { "value": "为 ESL 学习者设计一套单词闪卡，正面为单词，背面为释义和例句，配有视觉记忆法图示和按难度分色的卡片", "label": "闪卡套装" }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "使用 Lovart AI 智能体创建专业教育素材的步骤",
+      "columns": [
+        { "title": "明确您的教学目标", "description": "首先向 Lovart 的 AI 设计师智能体描述您的教学场景。说明学科、年级或受众、具体学习目标以及您需要的素材形式（海报、练习卷、信息图或闪卡）。MCoT 引擎会分析教学需求——适合年龄的复杂度、认知负荷管理、视觉互动策略——并规划最优的教育设计方案。", "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png" },
+        { "title": "生成并定制内容", "description": "见证 Lovart 在几分钟内将您的教学简报转化为完整的教学素材。智能体生成适配年龄的版式，具备清晰的信息层次、Nano Banana Pro 驱动的引人入胜的视觉内容、与课程体系对齐的内容结构，以及针对学习场景优化的可读排版。浏览不同的视觉方案——从活泼的小学风格到专业的学术风格——并用自然语言指令进行细化定制。", "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png" },
+        { "title": "精修与分发", "description": "使用 Lovart 的编辑工具完善您的素材。用 Touch Edit 调整插图、图表或装饰元素。用 Text Edit 修改说明、词汇或学习内容，同时保持排版风格一致。通过 Smart Mockup 在教室场景中预览素材效果。以最高 8K 分辨率导出，适配大幅面教室打印，或使用优化后的数字格式对接学习管理系统。", "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png" }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "教育素材设计的终极 AI 工具包",
+      "features": [
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png", "title": "适龄视觉智能引擎", "description": "Lovart 的 MCoT 引擎自动根据目标年龄段调整视觉复杂度和互动风格——小学阶段采用活泼多彩的设计，中学阶段注重结构清晰，高中和高等教育阶段则采用精致专业的学术排版。智能体理解认知发展阶段，设计出与学习者准备度相匹配的素材。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png", "title": "清晰教育排版系统", "description": "通过 Text Edit 应用针对学习场景优化的高度可读排版。从大字体小学练习卷到密集的学术参考资料，Lovart 确保每个字都清晰可读。直接在素材上编辑说明、词汇、题目和学习内容，同时保留教育排版格式和视觉层次。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png", "title": "课堂场景模拟引擎", "description": "通过 Smart Mockup 在真实的教室环境中预览您的教育素材。查看海报在教室墙上的效果、练习卷在课桌上的呈现，或闪卡在学习中心的使用场景。在打印或分发前验证可读性、视觉冲击力和适配性。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png", "title": "课程体系一致性管理", "description": "依托 ChatCanvas 品牌记忆系统，Lovart 确保您所有教育素材的视觉统一——从单元海报到日常练习卷。一次性定义课堂视觉风格（配色、排版、插图风格），整个学年中您创作的每一份素材都保持同等专业水准的设计质量。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png", "title": "大幅面 8K 教室导出", "description": "以最高 8K 分辨率导出教育素材，适用于大幅面教室打印。24×36 英寸海报依然清晰锐利。练习卷无论打印多少份都保持高品质。数字文件针对学习管理系统进行了优化。每次导出都符合专业教育出版标准。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png", "title": "多格式分发引擎", "description": "一次创作，全渠道分发。在完成原始教育素材设计后，Lovart 会生成优化变体：大幅面教室海报、信纸尺寸讲义、智能白板数字显示版、LMS 适配文件以及可打印练习卷格式——全程保持教育设计完整性。完美适配线上线下混合式教学环境。" }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "教育工作者用 Lovart 革新课堂的真实故事",
+      "testimonials": [
+        { "name": "Dr. Sarah Mitchell", "role": "Oakwood 小学五年级科学教师", "content": "我曾经每个周日晚都要花 4 到 5 个小时准备下一周的教学素材——海报、练习卷、实验指导单。自从用了 Lovart 的 Nano Banana 教育工作流，现在 30 分钟就能完成一整周的素材。我上个月设计的太阳系单元被学区课程办公室分享给了 200 多位老师。学生们的参与度明显提高了，因为视觉效果真的很吸引人，不再是廉价的剪贴画。Lovart 让我重新拥有了周末。", "avatar_url": "" },
+        { "name": "Professor James Okonkwo", "role": "大学生物系讲师", "content": "为复杂的生物过程制作清晰、专业的图解一直是我的痛点——要么用简单的教科书插图，要么在 Illustrator 里耗费数小时。Lovart 既保持了科学准确性，又让视觉效果引人入胜。现在我在几分钟内就能生成讲课图解、实验流程信息图和学习指南。本学期学生在「视觉学习材料」方面的满意度评分从 3.4 分提升到了 4.7 分（满分 5 分）。", "avatar_url": "" },
+        { "name": "Maria Fernandez", "role": "语言学习中心 ESL 课程协调员", "content": "我们中心服务 300 多位成人学员，跨越 6 个语言水平等级，每个等级都需要定制化的教材。Lovart 彻底改变了我们的教材制作流程。我制作单词闪卡、语法参考表、对话提示卡和文化信息图——全部经过专业设计且与语言水平匹配。我们的教材设计成本降低了 70%，同时每位学员可获得的资源种类大幅增加。出众的视觉品质让我们的课程在竞争中脱颖而出。" }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        { "question": "什么是 Lovart？它如何帮助我创建教育素材？", "answer": "Lovart 是全球首个 AI 设计师智能体，专为将创意转化为专业设计而生。对教育工作者而言，这意味着用自然语言描述您的课程主题、年级和素材类型，即可获得一份完整的、可直接用于课堂的教育资源——海报、练习卷、信息图或闪卡——具备适龄设计、清晰排版和引人入胜的视觉效果。与需要手动定制的 Canva 模板不同，Lovart 会根据您的教学目标智能地设计每一份素材。Lovart 提供免费套餐，每日登录即可获得刷新额度，您可以每天免费创建多份教育素材；付费套餐含 Starter（每月 2,000 额度）、Basic（3,500 额度）、Pro（11,000 额度），均解锁全部智能体功能、商用版权和高级特性。" },
+        { "question": "没有设计经验也能创建专业的教育素材吗？", "answer": "完全可以。Lovart 是为教育工作者而非设计师打造的。您无需了解版式原则、色彩理论或教育出版规范。只需描述学科、年级和您希望学生学到什么，智能体会处理所有设计决策——选择适合年龄的视觉风格、建立清晰的信息层次、确保可读性。成千上万的教师已经在使用 Lovart 创建专业的课堂素材，无论他们是否有设计背景。" },
+        { "question": "我可以将教育素材用于商业用途或分享给其他教师吗？", "answer": "可以。付费套餐（Starter、Basic、Pro）用户对其创作的教育素材拥有完整的商用版权。您可以与同事分享、在 Teachers Pay Teachers 上出售、在教育业务中使用，以及为任何合法的教育目的分发。免费套餐仅限个人课堂使用和体验。Lovart 的模型基于授权数据和公共领域数据训练。" },
+        { "question": "有教师的免费套餐吗？额度是如何运作的？", "answer": "有的，Lovart 提供免费套餐，每日登录额度每 24 小时刷新一次。您每天可以不花一分钱创建多份教育素材——非常适合每周课程规划。付费套餐方面：Starter 每月 2,000 额度、Basic 每月 3,500 额度、Pro 每月 11,000 额度，全部解锁完整的智能体能力、商用版权和高级功能。许多教师认为免费套餐已足够满足日常课堂需求。" },
+        { "question": "我可以将教育素材导出为哪些文件格式和分辨率？", "answer": "Lovart 支持 PNG、JPG、SVG（矢量）和 PDF 格式的专业导出。分辨率最高可达 8K，使素材适用于大幅面教室海报（最大 24×36 英寸）、清晰的练习卷打印以及智能白板和学习管理系统上的锐利数字显示。PDF 导出包含专业打印服务所需的适当边距。" },
+        { "question": "Lovart 如何确保素材适合不同年级的学生？", "answer": "Lovart 的 MCoT 引擎会自动评估您指定的目标年龄段，并相应调整设计复杂度——小学阶段采用更简单的版式、更大的字号和活泼的视觉风格；初高中阶段采用更结构化、信息更详尽的版式；高等教育阶段采用精致的学术排版。智能体理解认知发展阶段，会在适当的复杂层级上设计素材。" },
+        { "question": "素材生成后，我可以编辑教育内容吗？", "answer": "可以，Text Edit 是 Lovart 的标志性功能之一。点击任何文本元素——说明、词汇、题目、图表标注——直接修改，同时保留排版、格式和教育层次。非常适合为不同班级定制素材、更新课程内容或为不同学习水平的学生创建差异化版本。" },
+        { "question": "我可以使用 Lovart 创建哪些类型的教育素材？", "answer": "Lovart 的教育工作流支持所有形式：教室海报和锚点图、学科信息图和参考资料、练习卷和练习题、闪卡和学习卡片、实验流程指南、项目说明、教室规则海报、教育游戏材料、评估量规等。MCoT 引擎会根据每种教育形式和受众调整设计策略。" },
+        { "question": "Lovart 可以为打印和数字学习创建不同格式的素材吗？", "answer": "可以。多格式分发引擎会从您的原始设计中生成优化变体：大幅面海报（教室墙壁）、信纸尺寸讲义（学生课桌）、数字显示版（智能白板优化）、LMS 适配文件（Canvas、Google Classroom）以及可打印练习卷格式——全程保持教育清晰度和视觉品质。完美适配混合式和线上线下融合的教学环境。" }
+      ]
+    }
+  ],
+  "section_zh-TW": [
+    {
+      "type": "centeredInputSection",
+      "title": "Nano Banana 教育素材 — Lovart AI 驅動的教學資源生成器",
+      "description": "使用 Lovart 的 AI 設計師智能體，幾分鐘內即可建立專業級教育素材。從教室海報、資訊圖表到練習題和單字閃卡，Nano Banana 教育工作流程能夠將您的教學內容轉化為視覺吸引力十足的學習資源。依託 MCoT 推理引擎，Lovart 深度理解教育設計原則——適配不同年齡層的視覺風格、清晰的資訊層次和以學習為核心的版式編排。無論您是中小學教師、大學教授、企業培訓師還是教育內容創作者，Lovart 都能交付可直接用於課堂的素材。現在就用每日免費額度開始創作。",
+      "input_placeholder": "描述您的教育素材——包括學科、年級、學習目標和偏好的視覺風格",
+      "system_prompt": "您是 Lovart 的資深教育設計專家兼 AI 創意總監。請使用 MCoT 引擎分析：1）教學背景——學科、年級、學習目標；2）目標學習者的群體特徵和認知發展階段；3）適合該教育形式的視覺風格、資訊層次和互動策略；4）無障礙設計考量，包括可讀性、色彩對比度和清晰度。調度 Lovart 的智慧設計流程：在 ChatCanvas 中設計適配年齡的版式，使用 Nano Banana Pro 生成富有吸引力的教育視覺，應用清晰易讀的排版，交付可列印或適配數位裝置的教學素材。使用者需求：$input$",
+      "button_text": "設計教材",
+      "tip": "專業提示：請包含學科領域、年級或受眾年齡、具體學習目標，以及您需要列印版還是數位版",
+      "suggestion": [
+        { "value": "為三年級學生製作一張關於太陽系的趣味科學海報，包含色彩豐富的行星插圖、趣味知識點、清晰的標註和適合兒童的排版風格", "label": "教室海報" },
+        { "value": "為中學科學課設計一張綜合性的水循環教育資訊圖，包含帶標註的示意圖、流程箭頭、關鍵詞彙和真實案例", "label": "教育資訊圖" },
+        { "value": "為小學生建立結構清晰的數學練習卷，包含分明的題目區域、演算空間、漸進式難度和激勵性設計元素", "label": "練習卷設計" },
+        { "value": "為 ESL 學習者設計一套單字閃卡，正面為單字，背面為釋義和例句，配有視覺記憶法圖示和按難度分色的卡片", "label": "閃卡套裝" }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "使用 Lovart AI 智能體建立專業教育素材的步驟",
+      "columns": [
+        { "title": "明確您的教學目標", "description": "首先向 Lovart 的 AI 設計師智能體描述您的教學情境。說明學科、年級或受眾、具體學習目標以及您需要的素材形式（海報、練習卷、資訊圖或閃卡）。MCoT 引擎會分析教學需求——適合年齡的複雜度、認知負荷管理、視覺互動策略——並規劃最優的教育設計方案。", "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png" },
+        { "title": "生成並自訂內容", "description": "見證 Lovart 在幾分鐘內將您的教學簡報轉化為完整的教學素材。智能體生成適配年齡的版式，具備清晰的資訊層次、Nano Banana Pro 驅動的引人入勝的視覺內容、與課程體系對齊的內容結構，以及針對學習場景最佳化的可讀排版。瀏覽不同的視覺方案——從活潑的小學風格到專業的學術風格——並用自然語言指令進行細化自訂。", "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png" },
+        { "title": "精修與分發", "description": "使用 Lovart 的編輯工具完善您的素材。用 Touch Edit 調整插圖、圖表或裝飾元素。用 Text Edit 修改說明、詞彙或學習內容，同時保持排版風格一致。透過 Smart Mockup 在教室場景中預覽素材效果。以最高 8K 解析度匯出，適配大幅面教室列印，或使用最佳化後的數位格式對接學習管理系統。", "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png" }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "教育素材設計的終極 AI 工具包",
+      "features": [
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png", "title": "適齡視覺智慧引擎", "description": "Lovart 的 MCoT 引擎自動根據目標年齡層調整視覺複雜度和互動風格——小學階段採用活潑多彩的設計，中學階段注重結構清晰，高中和高等教育階段則採用精緻專業的學術排版。智能體理解認知發展階段，設計出與學習者準備度相匹配的素材。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png", "title": "清晰教育排版系統", "description": "透過 Text Edit 應用針對學習場景最佳化的高度可讀排版。從大字體小學練習卷到密集的學術參考資料，Lovart 確保每個字都清晰可讀。直接在素材上編輯說明、詞彙、題目和學習內容，同時保留教育排版格式和視覺層次。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png", "title": "課堂場景模擬引擎", "description": "透過 Smart Mockup 在真實的教室環境中預覽您的教育素材。檢視海報在教室牆上的效果、練習卷在課桌上的呈現，或閃卡在學習中心的使用場景。在列印或分發前驗證可讀性、視覺衝擊力和適配性。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png", "title": "課程體系一致性管理", "description": "依託 ChatCanvas 品牌記憶系統，Lovart 確保您所有教育素材的視覺統一——從單元海報到日常練習卷。一次性定義課堂視覺風格（配色、排版、插圖風格），整個學年中您創作的每一份素材都保持同等專業水準的設計品質。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png", "title": "大幅面 8K 教室匯出", "description": "以最高 8K 解析度匯出教育素材，適用於大幅面教室列印。24×36 英寸海報依然清晰銳利。練習卷無論列印多少份都保持高品質。數位檔案針對學習管理系統進行了最佳化。每次匯出都符合專業教育出版標準。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png", "title": "多格式分發引擎", "description": "一次創作，全通路分發。在完成原始教育素材設計後，Lovart 會生成最佳化變體：大幅面教室海報、信紙尺寸講義、智慧白板數位顯示版、LMS 適配檔案以及可列印練習卷格式——全程保持教育設計完整性。完美適配線上和線下混合式教學環境。" }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "教育工作者用 Lovart 革新課堂的真實故事",
+      "testimonials": [
+        { "name": "Dr. Sarah Mitchell", "role": "Oakwood 小學五年級科學教師", "content": "我曾經每個週日晚都要花 4 到 5 個小時準備下一週的教學素材——海報、練習卷、實驗指導單。自從用了 Lovart 的 Nano Banana 教育工作流程，現在 30 分鐘就能完成一整週的素材。我上個月設計的太陽系單元被學區課程辦公室分享給了 200 多位老師。學生們的參與度明顯提高了，因為視覺效果真的很吸引人，不再是廉價的剪貼畫。Lovart 讓我重新擁有了週末。", "avatar_url": "" },
+        { "name": "Professor James Okonkwo", "role": "大學生物系講師", "content": "為複雜的生物過程製作清晰、專業的圖解一直是我的痛點——要嘛用簡單的教科書插圖，要嘛在 Illustrator 裡耗費數小時。Lovart 既保持了科學準確性，又讓視覺效果引人入勝。現在我在幾分鐘內就能生成講課圖解、實驗流程資訊圖和學習指南。本學期學生在「視覺學習材料」方面的滿意度評分從 3.4 分提升到了 4.7 分（滿分 5 分）。", "avatar_url": "" },
+        { "name": "Maria Fernandez", "role": "語言學習中心 ESL 課程協調員", "content": "我們中心服務 300 多位成人學員，跨越 6 個語言水平等級，每個等級都需要自訂化的教材。Lovart 徹底改變了我們的教材製作流程。我製作單字閃卡、文法參考表、對話提示卡和文化資訊圖——全部經過專業設計且與語言水平匹配。我們的教材設計成本降低了 70%，同時每位學員可獲得的資源種類大幅增加。出眾的視覺品質讓我們的課程在競爭中脫穎而出。" }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        { "question": "什麼是 Lovart？它如何幫助我建立教育素材？", "answer": "Lovart 是全球首個 AI 設計師智能體，專為將創意轉化為專業設計而生。對教育工作者而言，這意味著用自然語言描述您的課程主題、年級和素材類型，即可獲得一份完整的、可直接用於課堂的教育資源——海報、練習卷、資訊圖或閃卡——具備適齡設計、清晰排版和引人入勝的視覺效果。與需要手動自訂的 Canva 範本不同，Lovart 會根據您的教學目標智慧地設計每一份素材。Lovart 提供免費方案，每日登入即可獲得刷新額度，您可以每天免費建立多份教育素材；付費方案含 Starter（每月 2,000 額度）、Basic（3,500 額度）、Pro（11,000 額度），均解鎖全部智能體功能、商用版權和進階特性。" },
+        { "question": "沒有設計經驗也能建立專業的教育素材嗎？", "answer": "完全可以。Lovart 是為教育工作者而非設計師打造的。您無需了解版式原則、色彩理論或教育出版規範。只需描述學科、年級和您希望學生學到什麼，智能體會處理所有設計決策——選擇適合年齡的視覺風格、建立清晰的資訊層次、確保可讀性。成千上萬的教師已經在使用 Lovart 建立專業的課堂素材，無論他們是否有設計背景。" },
+        { "question": "我可以將教育素材用於商業用途或分享給其他教師嗎？", "answer": "可以。付費方案（Starter、Basic、Pro）使用者對其創作的教育素材擁有完整的商用版權。您可以與同事分享、在 Teachers Pay Teachers 上出售、在教育業務中使用，以及為任何合法的教育目的分發。免費方案僅限個人課堂使用和體驗。Lovart 的模型基於授權資料和公共領域資料訓練。" },
+        { "question": "有教師的免費方案嗎？額度是如何運作的？", "answer": "有的，Lovart 提供免費方案，每日登入額度每 24 小時刷新一次。您每天可以不花一分錢建立多份教育素材——非常適合每週課程規劃。付費方案方面：Starter 每月 2,000 額度、Basic 每月 3,500 額度、Pro 每月 11,000 額度，全部解鎖完整的智能體能力、商用版權和進階功能。許多教師認為免費方案已足夠滿足日常課堂需求。" },
+        { "question": "我可以將教育素材匯出為哪些檔案格式和解析度？", "answer": "Lovart 支援 PNG、JPG、SVG（向量）和 PDF 格式的專業匯出。解析度最高可達 8K，使素材適用於大幅面教室海報（最大 24×36 英寸）、清晰的練習卷列印以及智慧白板和學習管理系統上的銳利數位顯示。PDF 匯出包含專業列印服務所需的適當邊距。" },
+        { "question": "Lovart 如何確保素材適合不同年級的學生？", "answer": "Lovart 的 MCoT 引擎會自動評估您指定的目標年齡層，並相應調整設計複雜度——小學階段採用更簡單的版式、更大的字號和活潑的視覺風格；國高中階段採用更結構化、資訊更詳盡的版式；高等教育階段採用精緻的學術排版。智能體理解認知發展階段，會在適當的複雜層級上設計素材。" },
+        { "question": "素材生成後，我可以編輯教育內容嗎？", "answer": "可以，Text Edit 是 Lovart 的標誌性功能之一。點擊任何文字元素——說明、詞彙、題目、圖表標註——直接修改，同時保留排版、格式和教育層次。非常適合為不同班級自訂素材、更新課程內容或為不同學習水平的學生建立差異化版本。" },
+        { "question": "我可以使用 Lovart 建立哪些類型的教育素材？", "answer": "Lovart 的教育工作流程支援所有形式：教室海報和錨點圖、學科資訊圖和參考資料、練習卷和練習題、閃卡和學習卡片、實驗流程指南、專案說明、教室規則海報、教育遊戲材料、評量規準等。MCoT 引擎會根據每種教育形式和受眾調整設計策略。" },
+        { "question": "Lovart 可以為列印和數位學習建立不同格式的素材嗎？", "answer": "可以。多格式分發引擎會從您的原始設計中生成最佳化變體：大幅面海報（教室牆壁）、信紙尺寸講義（學生課桌）、數位顯示版（智慧白板最佳化）、LMS 適配檔案（Canvas、Google Classroom）以及可列印練習卷格式——全程保持教育清晰度和視覺品質。完美適配混合式和線上線下融合的教學環境。" }
+      ]
+    }
+  ]
+}
+```

@@ -1,0 +1,150 @@
+{
+  "id": "tools-ai-poster-creator-en",
+  "slug": {
+    "_type": "slug",
+    "current": "ai-poster-creator"
+  },
+  "language": "en",
+  "category": "tool",
+  "schemaVersion": "composite-v2",
+  "storylineTemplate": "T2",
+  "title": "AI Poster Creator — Design Professional Posters | Lovart",
+  "description": {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AI Poster Creator — Design Professional Posters | Lovart",
+    "description": "Design eye-catching posters for events, promotions, and advertising with AI. Print-ready with bleed and CMYK.",
+    "url": "https://www.lovart.ai/tools/ai-poster-creator",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Lovart",
+      "url": "https://www.lovart.ai"
+    },
+    "mainEntity": {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is this free to use?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need design experience?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Describe what you want in plain language — the MCoT Engine applies professional design principles automatically."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use output commercially?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Full commercial rights on all designs. No attribution required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What formats can I export?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "PNG, JPEG, SVG, PDF (CMYK+bleed for professional printing), and layered PSD."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is Lovart different from other tools?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lovart is an AI Design Agent — it reasons about design context via MCoT, edits specific elements with Touch Edit, enforces brand consistency via Brand Kit. Not templates, not image gen."
+          }
+        }
+      ]
+    }
+  },
+  "bodyJson": "[{\"type\": \"hero-split\", \"badge\": \"AI Design Agent\", \"title\": \"AI Poster Creator \\u2014 Design Professional Posters That Command Attention | Lovart\", \"description\": \"Design eye-catching posters for events, promotions, and advertising with AI. Print-ready with bleed and CMYK \\u2014 from screen to wall in one workflow.\", \"buttons\": [{\"text\": \"Start Free\", \"href\": \"/home\", \"variant\": \"primary\"}], \"media\": {\"src\": \"\", \"alt\": \"AI Poster Creator \\u2014 Design Professional Posters That Command Attention | Lovart\"}}, {\"type\": \"feature-grid\", \"title\": \"Everything You Can Do\", \"columns\": 3, \"features\": [{\"title\": \"Print-Ready Export\", \"description\": \"Generate posters with proper CMYK color space, 3mm bleed, 300dpi resolution, and crop marks. MCoT ensures your design meets professional print standards \\u2014 no prepress fixes needed.\"}, {\"title\": \"Visual Hierarchy Design\", \"description\": \"MCoT applies poster-specific design principles: headline dominance, date/time prominence, supporting information flow, and CTA placement. Your poster communicates in the order viewers actually read.\"}, {\"title\": \"Size Presets & Custom\", \"description\": \"Pre-configured for standard poster sizes: A0, A1, A2, A3, 18\\u00d724, 24\\u00d736, 27\\u00d740 (movie poster). Or define custom dimensions. MCoT adapts composition to any aspect ratio.\"}, {\"title\": \"Typography Intelligence\", \"description\": \"MCoT pairs typefaces for impact and readability \\u2014 bold display faces for headlines, clean sans-serifs for body, proper kerning and leading. Typography choices that match your poster's mood and purpose.\"}, {\"title\": \"Event & Genre Awareness\", \"description\": \"MCoT understands poster genres: music event, film/movie, conference, product launch, real estate, motivational. Each genre has distinct design conventions \\u2014 MCoT applies them intelligently.\"}, {\"title\": \"Brand Kit Integration\", \"description\": \"Your brand colors, fonts, and logo auto-apply. Create a series of posters for a campaign \\u2014 Brand Kit ensures visual consistency across every piece while allowing creative variation.\"}]}, {\"type\": \"how-it-works-section\", \"title\": \"How AI Poster Creator Works \\u2014 MCoT Engine Inside\", \"subtitle\": \"Multi-step Chain-of-Thought reasoning guides every poster design from concept to print-ready export.\", \"steps\": [{\"step\": 1, \"title\": \"Describe Your Poster\", \"description\": \"Tell Lovart what you need in plain language. 'Jazz festival poster, vintage style, deep blue and gold, featuring a saxophone silhouette.' MCoT analyzes the event type, audience, and mood to inform design decisions.\"}, {\"step\": 2, \"title\": \"MCoT Designs the Layout\", \"description\": \"The AI generates multiple poster variations with reasoned composition. MCoT determines: headline placement and scale, visual focal point, information hierarchy, negative space balance, and color strategy.\"}, {\"step\": 3, \"title\": \"Edit with Touch Edit\", \"description\": \"Tap any element to refine. Adjust typography, swap the visual, reposition date/time blocks, change the color palette. Touch Edit preserves the poster's structural integrity while letting you customize every detail.\"}, {\"step\": 4, \"title\": \"Export Print-Ready\", \"description\": \"Export as PDF with CMYK color profile, 3mm bleed, crop marks, and 300dpi resolution. Or export PNG/JPEG for digital use. Your poster is production-ready \\u2014 send straight to the printer.\"}]}, {\"type\": \"use-cases-section\", \"title\": \"Real-World Use Cases for AI Poster Creator\", \"description\": \"AI Poster Creator handles everything from street posters to boardroom presentations. Here's how it's used.\", \"cases\": [{\"title\": \"Event Promotion\", \"description\": \"Design posters for concerts, festivals, conferences, workshops, and community events. MCoT captures the event's energy while ensuring all critical information (date, venue, ticket link) is instantly visible.\"}, {\"title\": \"Advertising & Promotions\", \"description\": \"Create retail sale posters, product launch announcements, and promotional displays. Generate A/B variants for different audiences or locations \\u2014 MCoT adapts composition while Brand Kit maintains consistency.\"}, {\"title\": \"Film & Entertainment\", \"description\": \"Design movie posters, theatrical one-sheets, and streaming promotional art. MCoT understands film poster conventions: title treatment, billing block, credit hierarchy, and genre-appropriate visual language.\"}, {\"title\": \"Corporate & Internal\", \"description\": \"Create motivational posters, safety signage, wayfinding displays, and internal campaign materials. Professional design that reflects your company's visual identity \\u2014 no design team required.\"}]}, {\"type\": \"comparison-section\", \"title\": \"AI Poster Creator Compared to Alternatives\", \"description\": \"See how Lovart's approach to poster design compares to traditional tools and methods.\", \"headers\": [\"Feature\", \"Other Methods\", \"Lovart Advantage\"], \"rows\": [[\"Print Readiness\", \"Design in RGB, manually convert to CMYK, add bleed and crop marks in separate software\", \"MCoT generates print-ready PDFs with CMYK, 3mm bleed, crop marks, and 300dpi \\u2014 no prepress workflow needed\"], [\"Design Originality\", \"Template posters \\u2014 recognizable, generic, limited customization\", \"MCoT generates original compositions from your description. Every poster is unique. Describe any style, any genre, any mood\"], [\"Typography Quality\", \"Manual font pairing \\u2014 requires typographic knowledge for professional results\", \"MCoT pairs display and body typefaces intelligently, with proper hierarchy, kerning, and leading \\u2014 professional typography without the learning curve\"], [\"Editing Control\", \"Template tools: change text and image only. Pro software: steep learning curve\", \"Touch Edit: granular control over every element. Change colors, adjust typography, reposition blocks \\u2014 all without starting over\"], [\"Campaign Consistency\", \"Manual replication of styling across poster series\", \"Brand Kit + ChatCanvas: create a campaign's worth of posters in one session. Consistent visual identity across every piece with creative variation\"]]}, {\"type\": \"pricing-section\", \"title\": \"Pricing: What AI Poster Creator Costs\", \"description\": \"AI Poster Creator is included in all Lovart plans. No per-tool pricing \\u2014 every tool, every plan.\", \"tiers\": [{\"name\": \"Free\", \"price\": \"$0\", \"designs\": \"50 designs/month\", \"features\": [\"All tools\", \"PNG export\", \"Basic support\"]}, {\"name\": \"Starter\", \"price\": \"$19/mo\", \"designs\": \"500 designs/month\", \"features\": [\"All tools\", \"HD export\", \"Brand Kit\", \"ChatCanvas priority\"]}, {\"name\": \"Professional\", \"price\": \"$49/mo\", \"designs\": \"Unlimited\", \"features\": [\"All tools\", \"8K export\", \"Brand Kit\", \"Touch Edit advanced\", \"MCoT custom prompts\", \"PSD/SVG layered\"]}, {\"name\": \"Enterprise\", \"price\": \"Custom\", \"designs\": \"Unlimited\", \"features\": [\"Everything in Pro\", \"Custom MCoT workflows\", \"SSO\", \"Dedicated support\"]}]}, {\"type\": \"faq\", \"title\": \"Frequently Asked Questions\", \"items\": [{\"question\": \"Is this free to use?\", \"answer\": \"Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit.\"}, {\"question\": \"Do I need design experience?\", \"answer\": \"No. Describe what you want in plain language \\u2014 the MCoT Engine applies professional poster design principles automatically, including typography, composition, and color theory.\"}, {\"question\": \"Can I use output commercially?\", \"answer\": \"Yes. Full commercial rights on all designs. No attribution required. Print, distribute, sell \\u2014 your posters belong to you.\"}, {\"question\": \"Is it really print-ready?\", \"answer\": \"Yes. Export PDFs with CMYK color profile, 3mm bleed, crop marks, and 300dpi resolution. Meets professional print shop requirements. Tested with major printing services.\"}, {\"question\": \"How is Lovart different from other poster makers?\", \"answer\": \"Lovart is an AI Design Agent \\u2014 it reasons about poster design context via MCoT (genre conventions, visual hierarchy, print specifications), edits specific elements with Touch Edit, and enforces brand consistency via Brand Kit. Not a template tool, not a basic image generator.\"}]}, {\"type\": \"cta-default\", \"title\": \"Design Professional Posters Free\", \"description\": \"Create posters that command attention \\u2014 from screen to print in one workflow. 50 free designs/month. No credit card.\", \"buttons\": [{\"text\": \"Start Free\", \"href\": \"/home\", \"variant\": \"primary\"}]}]",
+  "seo": {
+    "_type": "seo",
+    "title": "AI Poster Creator — Design Professional Posters | Lovart",
+    "description": {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "AI Poster Creator — Design Professional Posters | Lovart",
+      "description": "Design eye-catching posters for events, promotions, and advertising with AI. Print-ready with bleed and CMYK.",
+      "url": "https://www.lovart.ai/tools/ai-poster-creator",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Lovart",
+        "url": "https://www.lovart.ai"
+      },
+      "mainEntity": {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Is this free to use?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I need design experience?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Describe what you want in plain language — the MCoT Engine applies professional design principles automatically."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use output commercially?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Full commercial rights on all designs. No attribution required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What formats can I export?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "PNG, JPEG, SVG, PDF (CMYK+bleed for professional printing), and layered PSD."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How is Lovart different from other tools?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Lovart is an AI Design Agent — it reasons about design context via MCoT, edits specific elements with Touch Edit, enforces brand consistency via Brand Kit. Not templates, not image gen."
+            }
+          }
+        ]
+      }
+    },
+    "keywords": [
+      "ai poster creator",
+      "ai poster creator",
+      "free ai poster creator",
+      "lovart"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "AI Poster Creator — Design Professional Posters | Lovart",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d14a7f30014fd72f63f9cdfbed8dd17c67012f10.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"AI Poster Creator — Design Professional Posters | Lovart\", \"description\": \"{'@context': 'https://schema.org', '@type': 'WebPage', 'name': 'AI Poster Creator — Design Professional Posters | Lovart', 'description': 'Design eye-catching posters for events, promotions, and advertising with AI. Print-ready with bleed and CMYK.', 'url': 'https://www.lovart.ai/tools/ai-poster-creator', 'publisher': {'@type': 'Organization', 'name': 'Lovart', 'url': 'https://www.lovart.ai'}, 'mainEntity': {'@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': 'Is this free to use?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit.'}}, {'@type': 'Question', 'name': 'Do I need design experience?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'No. Describe what you want in plain language — the MCoT Engine applies professional design principles automatically.'}}, {'@type': 'Question', 'name': 'Can I use output commercially?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Yes. Full commercial rights on all designs. No attribution required.'}}, {'@type': 'Question', 'name': 'What formats can I export?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'PNG, JPEG, SVG, PDF (CMYK+bleed for professional printing), and layered PSD.'}}, {'@type': 'Question', 'name': 'How is Lovart different from other tools?', 'acceptedAnswer': {'@type': 'Answer', 'text': 'Lovart is an AI Design Agent — it reasons about design context via MCoT, edits specific elements with Touch Edit, enforces brand consistency via Brand Kit. Not templates, not image gen.'}}]}}\", \"url\": \"https://www.lovart.ai/tools/ai-poster-creator\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Is this free to use?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Yes. Free plan: 50 designs/month. No credit card. Starter $19/mo: 500 designs + HD export + Brand Kit.\"}}, {\"@type\": \"Question\", \"name\": \"Do I need design experience?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"No. Describe what you want in plain language — the MCoT Engine applies professional design principles automatically.\"}}, {\"@type\": \"Question\", \"name\": \"Can I use output commercially?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Yes. Full commercial rights on all designs. No attribution required.\"}}, {\"@type\": \"Question\", \"name\": \"What formats can I export?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"PNG, JPEG, SVG, PDF (CMYK+bleed for professional printing), and layered PSD.\"}}, {\"@type\": \"Question\", \"name\": \"How is Lovart different from other tools?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart is an AI Design Agent — it reasons about design context via MCoT, edits specific elements with Touch Edit, enforces brand consistency via Brand Kit. Not templates, not image gen.\"}}]}}"
+    }
+  },
+  "pageType": "tool"
+}

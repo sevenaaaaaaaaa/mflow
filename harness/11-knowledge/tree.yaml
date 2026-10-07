@@ -1,0 +1,153 @@
+# tree.yaml — Lovart MFlow Knowledge Tree (hierarchical view)
+# Schema: nodes + nested-tree view. Derived from entities.yaml + relationships.yaml
+# by dream/consolidate.sh nightly.
+#
+# Convention:
+#   id       : dash-case, unique across the entire tree
+#   type     : one of [tool, profile, rule, skill, workflow, cron, path-segment,
+#                       project, product, dataset, destination, concept]
+#   layer    : one of [0-tool, 1-harness, 2-vault, 3-delivery] (alignment w/ README)
+#   own      : which agent / profile owns truth for this node
+#   path     : filesystem path relative to vault root (1-Project/Lovart MFlow/)
+#
+# Status semantics:
+#   active    : in production use
+#   legacy    : kept for backward-compat, do NOT extend
+#   planned   : declared but not built yet
+#   archived  : moved to 1-8 Backup/archives/
+
+version: 1.0
+generated: 2026-07-05
+generator: dream/consolidate.sh
+schema_version: 1
+
+# ---------------------------------------------------------------------------
+# Top-level tree (3 visible roots)
+# ---------------------------------------------------------------------------
+roots: [layer-0-tools, layer-1-harness, layer-2-vault]
+
+# ---------------------------------------------------------------------------
+# Hierarchical map
+# ---------------------------------------------------------------------------
+tree:
+  layer-0-tools:
+    label: "Layer 0 — 5 AI agent entry points"
+    children:
+      tool-hermes:
+        label: "Hermes"
+        type: tool
+        own: hermes-binary-at-~/.hermes/bin/hermes-agent
+        path: ~/.hermes/
+        profiles: [lovart-reports, lovart-creation, lovart-quality, lovart-ops, lovart-distribution, lovart-management, lovart-seo-legacy, lovart-content-legacy]
+        notes: "6 active profiles + 2 legacy. MEMORY.md / USER.md project facts live at ~/.hermes/memories/."
+      tool-opencode:
+        label: "OpenCode"
+        type: tool
+        own: ~/.config/opencode/
+        path: opencode.jsonc (project-local)
+        profiles: [default]
+        notes: "Project-scoped config; skill paths list harness/Skills."
+      tool-cursor:
+        label: "Cursor"
+        type: tool
+        own: ~/.cursor/ -- project-local .cursor/
+        path: .cursor/rules/ + .cursor/skills/
+        profiles: [lovart-core, lovart-blog, lovart-landing-page, lovart-quality-gates, lovat-sanity-publish, ...]
+        notes: "Cursor Agent with 22+ skills + 3 root rules."
+      tool-claude:
+        label: "Claude (Claude Code / Cowork)"
+        type: tool
+        own: ~/.claude/
+        path: harness/CLAUDE.md + .claude/skills/ + .claude/agents/
+        profiles: [default + agents: lovart-intel, lovart-blog, lovart-page, lovart-qa, lovart-publisher, lovart-distributor, lovart-orchestrator]
+        notes: "auto-discovers .claude/skills/ + 7 named agents."
+      tool-codex:
+        label: "Codex"
+        type: tool
+        own: ~/.codex/
+        path: AGENTS.md (project-root) + uses Claude-skills-via-AGENTS.md
+        profiles: [default]
+        notes: "Reads AGENTS.md at vault root. Same skill catalog as Claude."
+
+  layer-1-harness:
+    label: "Layer 1 — harness/ (control panel)"
+    own: project-root (00-INDEX.md is taxonomy entry)
+    children:
+      segment-01-project:    { label: "01 — Project overview",         path: "harness/01-project/" }
+      segment-02-rules:      { label: "02 — Rules (00 + 10–60 + routing)", path: "harness/02-rules/" }
+      segment-03-workflows:  { label: "03 — Workflows",                 path: "harness/03-workflows/" }
+      segment-04-setup:      { label: "04 — Setup / 凭证",              path: "harness/04-setup/" }
+      segment-05-skills:     { label: "05 — Skills (Hermes SSOT only)", path: "harness/05-skills/" }
+      segment-06-cron:       { label: "06 — Cron jobs",                 path: "harness/06-cron/" }
+      segment-07-okr:        { label: "07 — Monthly OKR",               path: "harness/07-okr/" }
+      segment-08-storyline:  { label: "08 — Landing-page storylines",   path: "harness/08-storyline/" }
+      segment-09-scripts:    { label: "09 — Ops scripts",               path: "harness/09-scripts/" }
+      segment-10-config:     { label: "10 — Config / 凭证",              path: "harness/10-config/" }
+      segment-11-knowledge:  { label: "11 — Knowledge · Memory · Dream · Audit (this dir)", path: "harness/11-knowledge/" }
+      segment-docs:          { label: "Docs/ — S1-S6 stage SOP",        path: "harness/Docs/" }
+
+  layer-2-vault:
+    label: "Layer 2 — Obsidian vault layers beyond Harness"
+    own: project-root
+    children:
+      vault-1-project:
+        label: "1-Project/Lovart MFlow/ — source vault"
+        path: 1-Project/Lovart MFlow/
+      vault-2-insight:
+        label: "insight-data/ — 情报资源"
+        path: insight-data/
+        children:
+          insight-from-datawork:    { path: "insight-data/From Datawork/"     }
+          insight-keywords:         { path: "insight-data/Keywords Research/" }
+          insight-knowledge-base:   { path: "insight-data/Knowledge Base/"    }
+          insight-lovart-orm:       { path: "insight-data/Lovart ORM/"         }
+          insight-pm:               { path: "insight-data/PM/"                  }
+          insight-page-analytic:    { path: "insight-data/Page Analytic/"       }
+          insight-trident:          { path: "insight-data/Trident Insights/"    }
+          insight-audit-reports:    { path: "insight-data/审计报告/"             }
+      vault-3-genflow:
+        label: "genflow/ — content generation flow"
+        path: genflow/
+        children:
+          genflow-strategy:        { path: "genflow/Content Strategy/"      }
+          genflow-calendar:        { path: "genflow/Content Calendar/"      }
+          genflow-blog-pipeline:   { path: "genflow/Lovart-Blog-Pipeline/"  }
+          genflow-page-gen:        { path: "genflow/Page Gen/"              }
+          genflow-distribution:    { path: "genflow/Content Distribution/"  }
+          genflow-design:          { path: "genflow/Design Gen/"            }
+          genflow-bv-skill:        { path: "genflow/bv-skill-v01/"         }
+          genflow-content-link:    { path: "genflow/CONTENT_LINK_INDEX.md"  }
+      vault-4-dev:
+        label: "dev/ — scripts + automation + sanity studio"
+        path: dev/
+        children:
+          dev-cursor-local:        { path: "dev/.cursor/"                  }
+          dev-automation:          { path: "dev/automation/"               }
+          dev-scripts:             { path: "dev/scripts/"                  }
+          dev-notion-sync:         { path: "dev/notion-sync/"              }
+          dev-sanity-composite:    { path: "dev/Sanity Composite Page Section README.md" }
+
+# ---------------------------------------------------------------------------
+# Headline cross-layer edges (kept terse; full edges live in relationships.yaml)
+# ---------------------------------------------------------------------------
+headline_edges:
+  - from: tool-hermes
+    to:   segment-11-knowledge
+    type: bootstraps
+    note: "Every Hermes profile boot must read 11-knowledge/README.md."
+  - from: tool-opencode
+    to:   segment-11-knowledge
+    type: bootstraps
+    note: "opencode.jsonc instructions include 11-knowledge."
+  - from: tool-cursor
+    to:   segment-11-knowledge
+    type: bootstraps
+    note: "Cursor rule lovart-knowledge.mdc attached globally."
+  - from: tool-claude
+    to:   segment-11-knowledge
+    type: bootstraps
+    note: "CLAUDE.md top line points to 11-knowledge."
+  - from: tool-codex
+    to:   segment-11-knowledge
+    type: bootstraps
+    note: "AGENTS.md adds 11-knowledge entry."

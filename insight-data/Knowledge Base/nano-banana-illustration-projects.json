@@ -1,0 +1,1556 @@
+{
+  "section_en": [
+    {
+      "type": "centeredInputSection",
+      "title": "Nano Banana Illustration Projects — AI Art Creation & Professional Illustration with Lovart",
+      "description": "Bring your illustration projects to life with Lovart's AI Design Agent. The Nano Banana illustration workflow transforms creative briefs into professional illustrations — children's books, editorial art, pattern designs, and character sheets — with stunning visual quality and artistic consistency. Powered by the MCoT reasoning engine and Nano Banana Pro, Lovart handles composition, color theory, and stylistic coherence so you can focus on creative direction. From publishing-ready book illustrations to portfolio-worthy character designs, Lovart delivers professional results. Start illustrating with free daily credits.",
+      "input_placeholder": "Describe your illustration project — include style, subject matter, target audience, and artistic direction",
+      "system_prompt": "You are a Senior Illustrator and AI Creative Director at Lovart. Using MCoT and Nano Banana Pro, analyze: 1) The illustration project type and its artistic requirements, 2) Target audience and appropriate visual language, 3) The preferred artistic style and reference inspirations, 4) Technical requirements (print resolution, color profile, format). Orchestrate Lovart's pipeline: design compositions in ChatCanvas, generate illustrations with Nano Banana Pro maintaining artistic consistency, apply Touch Edit for precision refinement, and deliver production-ready illustrations. User requirements: $input$",
+      "button_text": "Start Illustrating",
+      "tip": "Pro tip: Include illustration type, preferred art style, target audience age group, and whether for print or digital publication",
+      "suggestion": [
+        {
+          "value": "Create a children's book illustration spread with warm watercolor style, expressive animal characters, whimsical forest setting, and narrative storytelling composition — for ages 3-6",
+          "label": "Children's Book"
+        },
+        {
+          "value": "Design an editorial illustration for a magazine article about climate innovation — conceptual art style blending data visualization with metaphorical imagery, sophisticated color palette",
+          "label": "Editorial Illustration"
+        },
+        {
+          "value": "Create a seamless pattern design collection with botanical motifs, art nouveau influences, rich jewel tones, and repeating tile structure — for fabric and surface design",
+          "label": "Pattern Design"
+        },
+        {
+          "value": "Design a comprehensive character sheet with front/side/back views, expression variations, costume options, and personality-driven poses — in a stylized animation art style",
+          "label": "Character Sheet"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "How Lovart's Nano Banana Accelerates Your Illustration Workflow",
+      "columns": [
+        {
+          "title": "Define Your Artistic Direction",
+          "description": "Begin by briefing Lovart's AI Design Agent on your illustration project. Describe the type of illustration, target audience, preferred art style, and creative vision. The MCoT engine analyzes your brief against artistic conventions for your chosen medium — whether children's book illustration, editorial art, or pattern design — and plans the illustration strategy.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Generate & Explore Visual Directions",
+          "description": "Watch Nano Banana Pro transform your brief into professional illustrations. Generate complete compositions, character illustrations, pattern tiles, or editorial visuals — with consistent artistic style maintained by ChatCanvas. Explore multiple visual directions simultaneously — different color palettes, composition approaches, and stylistic treatments — then select and iterate on the strongest directions.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Refine & Deliver Final Art",
+          "description": "Polish your illustrations with precision editing. Use Touch Edit to modify specific elements — adjust character expressions, change background details, or refine pattern elements. Apply Text Edit for any text integration in editorial illustrations. Export at up to 8K resolution in production-ready formats for publishing, printing, and digital distribution.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "The Ultimate AI Toolkit for Professional Illustration Projects",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Artistic Style Intelligence",
+          "description": "Lovart's MCoT engine understands and applies diverse illustration styles — from watercolor children's art to vector editorial graphics — with remarkable fidelity. Describe your desired style once, and ChatCanvas maintains it across every illustration in your project. Generate everything from loose conceptual sketches to polished final artwork."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Semantic Touch Edit for Illustrators",
+          "description": "Refine your illustrations with pixel-perfect precision using Touch Edit. Modify character expressions, adjust composition elements, change color treatments, or swap background details — all with semantic click-to-edit intelligence. No manual masking, no repainting. This is the capability that elevates AI-generated illustrations to professional, client-ready artwork."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Character Consistency Engine",
+          "description": "Nano Banana Pro maintains perfect character consistency across all illustrations in a project. Whether you need a character appearing across multiple book spreads, a design mascot in different poses, or pattern elements repeating seamlessly, the consistency engine ensures visual identity stays locked — no drift between illustrations."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Pattern & Surface Design Engine",
+          "description": "Generate seamless repeating patterns for fabric, wallpaper, packaging, and surface design. Lovart's agent understands pattern construction — tile edges that match perfectly, balanced repeat structures, and harmonious color distribution. Create complex pattern collections with coordinated colorways and scale variations in a single workflow."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Publishing-Ready 8K Export",
+          "description": "Export illustrations at up to 8K resolution in formats optimized for publishing — PNG/JPG for digital, SVG for vector illustrations, and layered PSD for further editing. Suitable for children's book printing (300 DPI minimum), magazine-quality editorial art, and high-resolution digital distribution. Every export meets professional publishing standards."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Portfolio & Client Presentation Engine",
+          "description": "Present your illustrations professionally with Smart Mockup. Preview children's books as open spreads, editorial illustrations in magazine layouts, patterns on fabric swatches, and character sheets as portfolio pages. Generate client-ready presentation formats that showcase your illustration work at its best."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Illustrators Transforming Their Creative Practice with Lovart",
+      "testimonials": [
+        {
+          "name": "Claire Beaumont",
+          "role": "Children's Book Illustrator",
+          "content": "I've illustrated 4 published children's books using traditional media, each taking 6-8 months. With Lovart's Nano Banana workflow, I completed my latest 32-page book in 6 weeks — and my publisher said it's my best work yet. The character consistency across spreads is flawless, something that always required tedious manual checking before. I still direct every creative decision, but the production time savings let me take on twice as many projects annually.",
+          "avatar_url": ""
+        },
+        {
+          "name": "David Chen",
+          "role": "Editorial Illustrator, The Atlantic & Wired",
+          "content": "Editorial deadlines are brutal — often 24-48 hours from brief to final art. Lovart has become my secret weapon for the concept exploration phase. I describe the article's theme and the agent generates 15-20 visual metaphors and composition directions in minutes. I select the strongest concepts and refine them to final art. My acceptance rate from art directors has improved because I can explore so many more creative directions before committing.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Amara Williams",
+          "role": "Surface Pattern Designer & Textile Artist",
+          "content": "I design fabric collections for 3 fashion brands, each requiring 20-30 coordinated patterns per season. Before Lovart, a full collection took 3 months of intensive design work. Now I create complete collections in 2 weeks — the pattern engine generates seamless repeats with automatic edge matching, and I focus on creative direction and color story development. My revenue has tripled because I can now serve 8 clients simultaneously. The pattern quality is indistinguishable from hand-designed work."
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "What is Lovart and how does it support professional illustration?",
+          "answer": "Lovart is the world's first AI Design Agent — a complete creative partner, not just an image generator. For illustrators, this means describing your illustration concept, style, and audience in natural language, and receiving professional-quality illustrations with consistent artistic style, proper composition, and editable elements. Unlike Midjourney or DALL-E, Lovart provides Director-level control through Touch Edit and Text Edit, character consistency via Nano Banana Pro, and persistent artistic memory through ChatCanvas."
+        },
+        {
+          "question": "Can I use Lovart illustrations commercially in published books and client work?",
+          "answer": "Yes. Users on paid plans (Starter, Basic, Pro) own full commercial rights to their illustrations. You can use them in published books, editorial work, commercial products, client projects, merchandise, and any lawful commercial purpose. The free plan is for personal and evaluation use. Lovart's models are trained on licensed and public domain data."
+        },
+        {
+          "question": "Is there a free plan to try the illustration workflow?",
+          "answer": "Yes, Lovart offers a free plan with daily login credits that refresh every 24 hours. Experiment with the illustration workflow risk-free. Paid plans: Starter (2,000 monthly credits), Basic (3,500 credits), Pro (11,000 credits), all unlocking full agent capabilities, commercial rights, and premium models like Nano Banana Pro."
+        },
+        {
+          "question": "What file formats can I export illustrations in for publishing?",
+          "answer": "Lovart supports professional export in PNG, JPG, SVG (vector), and layered PSD formats. Resolutions go up to 8K, meeting and exceeding the 300 DPI requirements for professional children's book printing, magazine-quality editorial publication, and high-resolution digital distribution."
+        },
+        {
+          "question": "How does Lovart maintain character consistency across a book or illustration series?",
+          "answer": "ChatCanvas maintains persistent character identity — define a character once (appearance, proportions, costume, color palette), and Nano Banana Pro keeps it perfectly consistent across every illustration. Whether the character appears in different poses, lighting conditions, or emotional states, the visual identity stays locked. This eliminates the character drift problem that makes traditional AI art generation unsuitable for multi-illustration projects."
+        },
+        {
+          "question": "Can I refine illustrations after generation instead of regenerating?",
+          "answer": "Yes, and this is Lovart's key differentiator. Touch Edit provides semantic click-to-edit precision — modify specific elements like expressions, colors, or composition elements without affecting the rest of the illustration. This editing capability means you can iterate toward perfection rather than settling for 'close enough' and regenerating."
+        },
+        {
+          "question": "What illustration styles and genres does Lovart support?",
+          "answer": "Lovart's illustration workflow supports every major style: watercolor, digital painting, vector/flat illustration, line art, mixed media, realistic rendering, cartoon/animation style, vintage/retro, collage, and more. Genres include children's book, editorial, pattern/surface design, character design, botanical/scientific illustration, fashion illustration, and concept art. The MCoT engine adapts to your specified style direction."
+        },
+        {
+          "question": "Can I create seamless repeating patterns for fabric and product design?",
+          "answer": "Yes. The Pattern Design Engine generates seamless repeating tiles with perfect edge matching, balanced repeat structures, and harmonious color distribution. Create pattern collections with coordinated colorways, scale variations, and motif arrangements. Export as seamless tiles or full-size pattern repeats. Suitable for fabric, wallpaper, gift wrap, packaging, and all surface design applications."
+        },
+        {
+          "question": "How does Lovart compare to hiring a human illustrator for book projects?",
+          "answer": "Lovart is a creative acceleration tool, not a replacement for artistic vision. Professional illustrators use Lovart to compress the production timeline from months to weeks while maintaining creative direction. Authors and publishers without illustration skills can now access professional-quality artwork. The workflow excels at production efficiency while keeping you in creative control — you direct, Lovart executes, and Touch Edit lets you refine to perfection."
+        }
+      ]
+    }
+  ],
+  "section_zh-CN": [
+    {
+      "type": "centeredInputSection",
+      "title": "Nano Banana 插画项目 — Lovart AI 专业插画创作",
+      "description": "使用 Lovart 的 AI 设计师智能体，让您的插画项目栩栩如生。Nano Banana 插画工作流将创意简报转化为专业级插画——儿童绘本、编辑插画、图案设计和角色设定——具备令人惊艳的视觉品质和艺术一致性。依托 MCoT 推理引擎和 Nano Banana Pro，Lovart 处理构图、色彩理论和风格统一，让您专注于创意指导。从出版级别的绘本插画到足以放入作品集的角色设计，Lovart 交付专业成果。现在就用每日免费额度开始创作。",
+      "input_placeholder": "描述您的插画项目——包括风格、主题、目标受众和艺术方向",
+      "system_prompt": "您是 Lovart 的资深插画师兼 AI 创意总监。请使用 MCoT 和 Nano Banana Pro 分析：1）插画项目类型及其艺术需求；2）目标受众和适用的视觉语言；3）偏好的艺术风格及参考灵感来源；4）技术要求（打印分辨率、色彩配置、格式）。调度 Lovart 的工作流程：在 ChatCanvas 中设计构图，使用 Nano Banana Pro 生成插画并保持艺术一致性，应用 Touch Edit 进行精确精修，交付可投产的插画。用户需求：$input$",
+      "button_text": "开始绘制",
+      "tip": "专业提示：请包含插画类型、偏好的艺术风格、目标受众年龄段，以及用于打印还是数字出版",
+      "suggestion": [
+        {
+          "value": "创作一幅暖色水彩风格的儿童绘本跨页插画，有生动的动物角色、奇幻的森林场景和叙事性构图——面向 3-6 岁儿童",
+          "label": "儿童绘本"
+        },
+        {
+          "value": "为一篇关于气候创新的杂志文章设计编辑插画——概念艺术风格，融合数据可视化与隐喻性图像，采用精致的配色方案",
+          "label": "编辑插画"
+        },
+        {
+          "value": "创建一套无缝图案设计系列，融入植物主题、新艺术风格影响、浓郁的宝石色调和循环拼接结构——适用于面料和表面设计",
+          "label": "图案设计"
+        },
+        {
+          "value": "设计一套完整的角色设定，包含正面/侧面/背面视角、表情变化、服装选项和个性驱动的姿态——采用风格化动画艺术风格",
+          "label": "角色设定"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Lovart Nano Banana 如何加速您的插画工作流",
+      "columns": [
+        {
+          "title": "明确艺术方向",
+          "description": "首先向 Lovart 的 AI 设计师智能体介绍您的插画项目。描述插画类型、目标受众、偏好的艺术风格和创意愿景。MCoT 引擎会依据您所选媒介——无论是儿童绘本插画、编辑艺术还是图案设计——的艺术惯例分析您的简报，并规划插画策略。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "生成并探索多种视觉方向",
+          "description": "见证 Nano Banana Pro 将您的简报转化为专业插画。生成完整构图、角色插画、图案拼接单元或编辑视觉——由 ChatCanvas 维护一致的艺术风格。同时探索多种视觉方向——不同的配色方案、构图方式和风格处理——然后选择最强方案进行迭代打磨。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "精修与交付最终成品",
+          "description": "使用精确编辑工具打磨您的插画。用 Touch Edit 修改特定元素——调整角色表情、更换背景细节或优化图案元素。对编辑插画中的文本集成使用 Text Edit。以最高 8K 分辨率导出，支持出版、打印和数字分发的投产格式。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "专业插画项目的终极 AI 工具包",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "艺术风格智能引擎",
+          "description": "Lovart 的 MCoT 引擎理解并精准应用多种插画风格——从水彩儿童艺术到矢量编辑图形——风格还原度极高。一次描述您想要的风格，ChatCanvas 就会在项目的每张插画中保持该风格。从松散的创意草图到精致的最终成品，一键生成。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "插画师专属语义 Touch Edit",
+          "description": "使用 Touch Edit 像素级精准优化您的插画。修改角色表情、调整构图元素、变更色彩处理或替换背景细节——全部通过语义化的点击编辑智能完成。无需手动遮罩，无需重绘。这项能力将 AI 生成的插画提升为专业、可直接交付客户的艺术品。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "角色一致性引擎",
+          "description": "Nano Banana Pro 确保项目中所有插画中角色的完美一致性。无论您需要角色出现在多个绘本跨页中、设计吉祥物在不同姿态下、还是图案元素无缝重复——一致性引擎确保视觉风格始终锁定，不会在不同插画间产生漂移。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "图案与表面设计引擎",
+          "description": "为面料、壁纸、包装和表面设计生成无缝循环图案。Lovart 的智能体理解图案结构——完美匹配的拼接边缘、平衡的重复结构和和谐的色彩分布。在一个工作流中即可创建包含协调配色和比例变化的复杂图案系列。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "出版级 8K 导出",
+          "description": "以最高 8K 分辨率导出插画，格式针对出版优化——PNG/JPG 用于数字端，SVG 用于矢量插画，PSD 分层文件用于进一步编辑。满足儿童绘本打印（最低 300 DPI）、杂志级编辑插画和高分辨率数字分发的需求。每次导出都符合专业出版标准。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "作品集与客户展示引擎",
+          "description": "使用 Smart Mockup 专业地展示您的插画。将儿童绘本预览为翻开跨页、将编辑插画呈现在杂志版式中、将图案呈现在面料样品上、将角色设定展示为作品集页面。生成可直接给客户看的展示格式，以最佳效果呈现您的插画作品。"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "插画师用 Lovart 革新创作实践的真实故事",
+      "testimonials": [
+        {
+          "name": "Claire Beaumont",
+          "role": "儿童绘本插画师",
+          "content": "我使用传统媒介为 4 本已出版儿童绘本绘制了插画，每本耗时 6 到 8 个月。使用 Lovart 的 Nano Banana 工作流后，我 6 周就完成了最新一本 32 页的绘本——出版商说这是我最好的作品。跨页间角色的一致性无懈可击，这在以前总是需要繁琐的手动检查。我依然主导每一个创意决定，但节省的制作时间让我每年能承接翻倍的项目。",
+          "avatar_url": ""
+        },
+        {
+          "name": "David Chen",
+          "role": "编辑插画师，合作方：《大西洋月刊》和《连线》",
+          "content": "编辑截稿日期非常紧张——通常从接到简报到交付成品只有 24 到 48 小时。Lovart 已成为我在创意探索阶段的秘密武器。我描述文章主题，智能体就能在几分钟内生成 15 到 20 个视觉隐喻和构图方向。我挑选最强的概念然后精修至成品。我的美术总监采纳率提高了，因为我在定稿前能探索如此多的创意方向。",
+          "avatar_url": ""
+        },
+        {
+          "name": "Amara Williams",
+          "role": "表面图案设计师兼面料艺术家",
+          "content": "我为 3 个时尚品牌设计面料系列，每个系列每季需要 20 到 30 个协调的图案。之前完成一个完整系列需要 3 个月的高强度设计工作。现在我 2 周就能完成完整系列——图案引擎生成无缝循环并自动匹配拼接边缘，我可以专注于创意方向和色彩故事开发。我的收入翻了三倍，因为我现在可以同时服务 8 个客户。图案品质与手工设计的作品难分伯仲。"
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "什么是 Lovart？它如何支持专业插画创作？",
+          "answer": "Lovart 是全球首个 AI 设计师智能体——一个完整的创意伙伴，而非简单的图像生成器。对插画师来说，这意味着用自然语言描述您的插画概念、风格和受众，即可获得专业品质的插画，具备一致的艺术风格、合理的构图和可编辑的元素。与 Midjourney 或 DALL-E 不同，Lovart 提供通过 Touch Edit 和 Text Edit 实现的导演级控制能力、通过 Nano Banana Pro 实现的角色一致性，以及通过 ChatCanvas 实现的持久化艺术记忆。Lovart 提供免费套餐，每日登录额度每 24 小时刷新；付费套餐：Starter（每月 2,000 额度）、Basic（3,500 额度）、Pro（11,000 额度），全部解锁完整智能体功能、商用版权和 Nano Banana Pro 等高级模型。"
+        },
+        {
+          "question": "我可以将 Lovart 插画用于出版书籍和客户项目的商业用途吗？",
+          "answer": "可以。付费套餐（Starter、Basic、Pro）用户对其插画拥有完整的商用版权。您可以将它们用于出版书籍、编辑作品、商业产品、客户项目、周边商品及任何合法的商业用途。免费套餐仅限个人使用和体验。Lovart 的模型基于授权数据和公共领域数据训练。"
+        },
+        {
+          "question": "有可以体验插画工作流的免费套餐吗？",
+          "answer": "有的，Lovart 提供免费套餐，每日登录额度每 24 小时刷新一次。您可以零风险体验插画工作流。付费套餐方面：Starter 每月 2,000 额度、Basic 每月 3,500 额度、Pro 每月 11,000 额度，全部解锁完整的智能体能力、商用版权和 Nano Banana Pro 等高级模型。"
+        },
+        {
+          "question": "我可以将插画导出为哪些适用于出版的文件格式？",
+          "answer": "Lovart 支持 PNG、JPG、SVG（矢量）和 PSD 分层文件格式的专业导出。分辨率最高可达 8K，满足甚至超过专业儿童绘本打印（300 DPI）、杂志级编辑出版和高分辨率数字分发的需求。"
+        },
+        {
+          "question": "Lovart 如何在一本绘本或插画系列中保持角色一致性？",
+          "answer": "ChatCanvas 维护持久化的角色身份——一次定义角色（外观、比例、服装、配色方案），Nano Banana Pro 就能确保在每张插画中保持完美一致。无论角色出现在不同姿态、不同光照条件还是不同情绪状态中，视觉身份始终保持锁定。这消除了一直困扰传统 AI 艺术生成的角色漂移问题，使其适用于多插画项目。"
+        },
+        {
+          "question": "生成后我还能优化插画，而不需要重新生成吗？",
+          "answer": "可以，这正是 Lovart 的核心差异化优势。Touch Edit 提供语义化的点击编辑精度——修改表情、色彩或构图元素等特定元素，而不影响插画的其他部分。这种编辑能力意味着您可以朝着完美迭代，而不是勉强接受「差不多」然后重新生成。"
+        },
+        {
+          "question": "Lovart 支持哪些插画风格和类型？",
+          "answer": "Lovart 的插画工作流支持所有主流风格：水彩、数字绘画、矢量/扁平插画、线描、混合媒介、写实渲染、卡通/动画风格、复古风格、拼贴等。类型涵盖儿童绘本、编辑插画、图案与表面设计、角色设计、植物/科学插画、时尚插画和概念艺术。MCoT 引擎会适配您指定的风格方向。"
+        },
+        {
+          "question": "我可以为面料和产品设计创建无缝循环图案吗？",
+          "answer": "可以。图案设计引擎生成无缝循环拼接单元，具有完美匹配的边缘、平衡的重复结构和和谐的色彩分布。可创建包含协调配色、比例变化和主题排列的图案系列。导出为无缝拼接单元或全幅图案重复。适用于面料、壁纸、礼品包装、包装设计及所有表面设计应用。"
+        },
+        {
+          "question": "Lovart 与聘请人类插画师完成绘本项目相比如何？",
+          "answer": "Lovart 是创意加速工具，而非艺术视野的替代品。专业插画师使用 Lovart 将制作周期从数月压缩到数周，同时保持创意主导权。缺乏插画技能的作家和出版商现在也能获得专业品质的艺术作品。该工作流在生产效率方面表现出色，同时让您保持创意控制——您主导方向，Lovart 执行，Touch Edit 让您精修至完美。"
+        }
+      ]
+    }
+  ],
+  "section_zh-TW": [
+    {
+      "type": "centeredInputSection",
+      "title": "Nano Banana 插畫專案 — Lovart AI 專業插畫創作",
+      "description": "使用 Lovart 的 AI 設計師智能體，讓您的插畫專案栩栩如生。Nano Banana 插畫工作流程將創意簡報轉化為專業級插畫——兒童繪本、編輯插畫、圖案設計和角色設定——具備令人驚豔的視覺品質和藝術一致性。依託 MCoT 推理引擎和 Nano Banana Pro，Lovart 處理構圖、色彩理論和風格統一，讓您專注於創意指導。從出版級別的繪本插畫到足以放入作品集的角色設計，Lovart 交付專業成果。現在就用每日免費額度開始創作。",
+      "input_placeholder": "描述您的插畫專案——包括風格、主題、目標受眾和藝術方向",
+      "system_prompt": "您是 Lovart 的資深插畫師兼 AI 創意總監。請使用 MCoT 和 Nano Banana Pro 分析：1）插畫專案類型及其藝術需求；2）目標受眾和適用的視覺語言；3）偏好的藝術風格及參考靈感來源；4）技術要求（列印解析度、色彩設定檔、格式）。調度 Lovart 的工作流程：在 ChatCanvas 中設計構圖，使用 Nano Banana Pro 生成插畫並保持藝術一致性，應用 Touch Edit 進行精確精修，交付可投產的插畫。使用者需求：$input$",
+      "button_text": "開始繪製",
+      "tip": "專業提示：請包含插畫類型、偏好的藝術風格、目標受眾年齡層，以及用於列印還是數位出版",
+      "suggestion": [
+        {
+          "value": "創作一幅暖色水彩風格的兒童繪本跨頁插畫，有生動的動物角色、奇幻的森林場景和敘事性構圖——面向 3-6 歲兒童",
+          "label": "兒童繪本"
+        },
+        {
+          "value": "為一篇關於氣候創新的雜誌文章設計編輯插畫——概念藝術風格，融合資料視覺化與隱喻性圖像，採用精緻的配色方案",
+          "label": "編輯插畫"
+        },
+        {
+          "value": "建立一套無縫圖案設計系列，融入植物主題、新藝術風格影響、濃郁的寶石色調和循環拼接結構——適用於布料和表面設計",
+          "label": "圖案設計"
+        },
+        {
+          "value": "設計一套完整的角色設定，包含正面/側面/背面視角、表情變化、服裝選項和個性驅動的姿態——採用風格化動畫藝術風格",
+          "label": "角色設定"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Lovart Nano Banana 如何加速您的插畫工作流程",
+      "columns": [
+        {
+          "title": "明確藝術方向",
+          "description": "首先向 Lovart 的 AI 設計師智能體介紹您的插畫專案。描述插畫類型、目標受眾、偏好的藝術風格和創意願景。MCoT 引擎會依據您所選媒介——無論是兒童繪本插畫、編輯藝術還是圖案設計——的藝術慣例分析您的簡報，並規劃插畫策略。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "生成並探索多種視覺方向",
+          "description": "見證 Nano Banana Pro 將您的簡報轉化為專業插畫。生成完整構圖、角色插畫、圖案拼接單元或編輯視覺——由 ChatCanvas 維護一致的藝術風格。同時探索多種視覺方向——不同的配色方案、構圖方式和風格處理——然後選擇最強方案進行迭代打磨。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "精修與交付最終成品",
+          "description": "使用精確編輯工具打磨您的插畫。用 Touch Edit 修改特定元素——調整角色表情、更換背景細節或最佳化圖案元素。對編輯插畫中的文字整合使用 Text Edit。以最高 8K 解析度匯出，支援出版、列印和數位分發的投產格式。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "專業插畫專案的終極 AI 工具包",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "藝術風格智慧引擎",
+          "description": "Lovart 的 MCoT 引擎理解並精準應用多種插畫風格——從水彩兒童藝術到向量編輯圖形——風格還原度極高。一次描述您想要的風格，ChatCanvas 就會在專案的每張插畫中保持該風格。從鬆散的創意草圖到精緻的最終成品，一鍵生成。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "插畫師專屬語義 Touch Edit",
+          "description": "使用 Touch Edit 像素級精準最佳化您的插畫。修改角色表情、調整構圖元素、變更色彩處理或替換背景細節——全部透過語義化的點擊編輯智慧完成。無需手動遮罩，無需重繪。這項能力將 AI 生成的插畫提升為專業、可直接交付客戶的藝術品。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "角色一致性引擎",
+          "description": "Nano Banana Pro 確保專案中所有插畫中角色的完美一致性。無論您需要角色出現在多個繪本跨頁中、設計吉祥物在不同姿態下、還是圖案元素無縫重複——一致性引擎確保視覺風格始終鎖定，不會在不同插畫間產生漂移。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "圖案與表面設計引擎",
+          "description": "為布料、壁紙、包裝和表面設計生成無縫循環圖案。Lovart 的智能體理解圖案結構——完美匹配的拼接邊緣、平衡的重複結構和和諧的色彩分佈。在一個工作流程中即可建立包含協調配色和比例變化的複雜圖案系列。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "出版級 8K 匯出",
+          "description": "以最高 8K 解析度匯出插畫，格式針對出版最佳化——PNG/JPG 用於數位端，SVG 用於向量插畫，PSD 分層檔案用於進一步編輯。滿足兒童繪本列印（最低 300 DPI）、雜誌級編輯插畫和高解析度數位分發的需求。每次匯出都符合專業出版標準。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "作品集與客戶展示引擎",
+          "description": "使用 Smart Mockup 專業地展示您的插畫。將兒童繪本預覽為翻開跨頁、將編輯插畫呈現在雜誌版式中、將圖案呈現在布料樣品上、將角色設定展示為作品集頁面。生成可直接給客戶看的展示格式，以最佳效果呈現您的插畫作品。"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "插畫師用 Lovart 革新創作實踐的真實故事",
+      "testimonials": [
+        {
+          "name": "Claire Beaumont",
+          "role": "兒童繪本插畫師",
+          "content": "我使用傳統媒介為 4 本已出版兒童繪本繪製了插畫，每本耗時 6 到 8 個月。使用 Lovart 的 Nano Banana 工作流程後，我 6 週就完成了最新一本 32 頁的繪本——出版商說這是我最好的作品。跨頁間角色的一致性無懈可擊，這在以前總是需要繁瑣的手動檢查。我依然主導每一個創意決定，但節省的製作時間讓我每年能承接翻倍的專案。",
+          "avatar_url": ""
+        },
+        {
+          "name": "David Chen",
+          "role": "編輯插畫師，合作方：《大西洋月刊》和《連線》",
+          "content": "編輯截稿日期非常緊張——通常從接到簡報到交付成品只有 24 到 48 小時。Lovart 已成為我在創意探索階段的秘密武器。我描述文章主題，智能體就能在幾分鐘內生成 15 到 20 個視覺隱喻和構圖方向。我挑選最強的概念然後精修至成品。我的美術總監採納率提高了，因為我在定稿前能探索如此多的創意方向。",
+          "avatar_url": ""
+        },
+        {
+          "name": "Amara Williams",
+          "role": "表面圖案設計師兼布料藝術家",
+          "content": "我為 3 個時尚品牌設計布料系列，每個系列每季需要 20 到 30 個協調的圖案。之前完成一個完整系列需要 3 個月的高強度設計工作。現在我 2 週就能完成完整系列——圖案引擎生成無縫循環並自動匹配拼接邊緣，我可以專注於創意方向和色彩故事開發。我的收入翻了三倍，因為我現在可以同時服務 8 個客戶。圖案品質與手工設計的作品難分軒輊。"
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "什麼是 Lovart？它如何支援專業插畫創作？",
+          "answer": "Lovart 是全球首個 AI 設計師智能體——一個完整的創意夥伴，而非簡單的圖像生成器。對插畫師來說，這意味著用自然語言描述您的插畫概念、風格和受眾，即可獲得專業品質的插畫，具備一致的藝術風格、合理的構圖和可編輯的元素。與 Midjourney 或 DALL-E 不同，Lovart 提供透過 Touch Edit 和 Text Edit 實現的導演級控制能力、透過 Nano Banana Pro 實現的角色一致性，以及透過 ChatCanvas 實現的持久化藝術記憶。Lovart 提供免費方案，每日登入額度每 24 小時刷新；付費方案：Starter（每月 2,000 額度）、Basic（3,500 額度）、Pro（11,000 額度），全部解鎖完整智能體功能、商用版權和 Nano Banana Pro 等進階模型。"
+        },
+        {
+          "question": "我可以將 Lovart 插畫用於出版書籍和客戶專案的商業用途嗎？",
+          "answer": "可以。付費方案（Starter、Basic、Pro）使用者對其插畫擁有完整的商用版權。您可以將它們用於出版書籍、編輯作品、商業產品、客戶專案、周邊商品及任何合法的商業用途。免費方案僅限個人使用和體驗。Lovart 的模型基於授權資料和公共領域資料訓練。"
+        },
+        {
+          "question": "有可以體驗插畫工作流程的免費方案嗎？",
+          "answer": "有的，Lovart 提供免費方案，每日登入額度每 24 小時刷新一次。您可以零風險體驗插畫工作流程。付費方案方面：Starter 每月 2,000 額度、Basic 每月 3,500 額度、Pro 每月 11,000 額度，全部解鎖完整的智能體能力、商用版權和 Nano Banana Pro 等進階模型。"
+        },
+        {
+          "question": "我可以將插畫匯出為哪些適用於出版的檔案格式？",
+          "answer": "Lovart 支援 PNG、JPG、SVG（向量）和 PSD 分層檔案格式的專業匯出。解析度最高可達 8K，滿足甚至超過專業兒童繪本列印（300 DPI）、雜誌級編輯出版和高解析度數位分發的需求。"
+        },
+        {
+          "question": "Lovart 如何在一本繪本或插畫系列中保持角色一致性？",
+          "answer": "ChatCanvas 維護持久化的角色身份——一次定義角色（外觀、比例、服裝、配色方案），Nano Banana Pro 就能確保在每張插畫中保持完美一致。無論角色出現在不同姿態、不同光照條件還是不同情緒狀態中，視覺身份始終保持鎖定。這消除了傳統 AI 藝術生成中一直困擾的角色漂移問題，使其適用於多插畫專案。"
+        },
+        {
+          "question": "生成後我還能最佳化插畫，而不需要重新生成嗎？",
+          "answer": "可以，這正是 Lovart 的核心差異化優勢。Touch Edit 提供語義化的點擊編輯精度——修改表情、色彩或構圖元素等特定元素，而不影響插畫的其他部分。這種編輯能力意味著您可以朝著完美迭代，而不是勉強接受「差不多」然後重新生成。"
+        },
+        {
+          "question": "Lovart 支援哪些插畫風格和類型？",
+          "answer": "Lovart 的插畫工作流程支援所有主流風格：水彩、數位繪畫、向量/扁平插畫、線描、混合媒介、寫實渲染、卡通/動畫風格、復古風格、拼貼等。類型涵蓋兒童繪本、編輯插畫、圖案與表面設計、角色設計、植物/科學插畫、時尚插畫和概念藝術。MCoT 引擎會適配您指定的風格方向。"
+        },
+        {
+          "question": "我可以為布料和產品設計建立無縫循環圖案嗎？",
+          "answer": "可以。圖案設計引擎生成無縫循環拼接單元，具有完美匹配的邊緣、平衡的重複結構和和諧的色彩分佈。可建立包含協調配色、比例變化和主題排列的圖案系列。匯出為無縫拼接單元或全幅圖案重複。適用於布料、壁紙、禮品包裝、包裝設計及所有表面設計應用。"
+        },
+        {
+          "question": "Lovart 與聘請人類插畫師完成繪本專案相比如何？",
+          "answer": "Lovart 是創意加速工具，而非藝術視野的替代品。專業插畫師使用 Lovart 將製作週期從數月壓縮到數週，同時保持創意主導權。缺乏插畫技能的作家和出版商現在也能獲得專業品質的藝術作品。該工作流程在生產效率方面表現出色，同時讓您保持創意控制——您主導方向，Lovart 執行，Touch Edit 讓您精修至完美。"
+        }
+      ]
+    }
+  ],
+  "section_ja": [
+    {
+      "centeredInputSection": {
+        "title": "Nano Banana イラスト制作 — LovartでプロフェッショナルなAIイラストを作成",
+        "subtitle": "クリエイティブブリーフをLovartのAIデザインエージェントでプロ品質のイラストに変換。児童書からエディトリアルアート、パターンデザインまで、Nano Banana ProとMCoTエンジンが芸術的一貫性と視覚的卓越性を実現します。",
+        "placeholder": "イラスト制作プロジェクトを説明してください——スタイル、題材、ターゲットオーディエンス、芸術的方向性を含めて",
+        "systemPrompt": "You are a Senior Illustrator and AI Creative Director at Lovart. Using MCoT and Nano Banana Pro, analyze: 1) The illustration project type and its artistic requirements, 2) Target audience and appropriate visual language, 3) The preferred artistic style and reference inspirations, 4) Technical requirements (print resolution, color profile, format). Orchestrate Lovart's pipeline: design compositions in ChatCanvas, generate illustrations with Nano Banana Pro maintaining artistic consistency, apply Touch Edit for precision refinement, and deliver production-ready illustrations. User requirements: $input$",
+        "buttonText": "イラスト作成",
+        "suggestions": [
+          "3〜6歳向けの暖かい水彩スタイルの児童書見開きイラスト——表情豊かな動物キャラクターと幻想的な森の舞台",
+          "気候イノベーションに関する雑誌記事のエディトリアルイラスト——データ可視化と比喩的イメージを融合したコンセプトアート",
+          "アールヌーボーの影響を受けた植物モチーフのシームレスパターンデザイン——ファブリックと表面デザイン向け",
+          "正面/側面/背面ビュー、表情バリエーション、衣装オプションを備えたアニメーションスタイルのキャラクターシート"
+        ]
+      },
+      "threeColumnSection": {
+        "title": "LovartのNano Bananaがイラスト制作ワークフローを加速する方法",
+        "subtitle": "芸術的方向性の定義から最終アートの納品まで——3つのシンプルなステップ",
+        "steps": [
+          {
+            "title": "芸術的方向性を定義",
+            "description": "LovartのAIデザインエージェントにイラストプロジェクトを説明します。イラストの種類、ターゲットオーディエンス、好みのアートスタイル、クリエイティブビジョンを伝えてください。MCoTエンジンが児童書、エディトリアルアート、パターンデザインのいずれであれ、選択したメディアの芸術的慣習に照らしてブリーフを分析し、イラスト戦略を立案します。",
+            "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+          },
+          {
+            "title": "複数のビジュアル方向性を生成・探索",
+            "description": "Nano Banana Proがあなたのブリーフをプロ品質のイラストに変換する様子をご覧ください。完全な構図、キャラクターイラスト、パターンタイル、エディトリアルビジュアルを、ChatCanvasが一貫した芸術的スタイルを維持しながら生成します。異なるカラーパレット、構図アプローチ、スタイル処理を同時に探索し、最適な方向性を選択して反復します。",
+            "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+          },
+          {
+            "title": "精緻化と最終アートの納品",
+            "description": "精密編集ツールでイラストを磨き上げます。Touch Editで特定の要素を修正——キャラクターの表情を調整し、背景の詳細を変更し、パターン要素を微調整します。エディトリアルイラスト内のテキスト統合にはText Editを適用。最大8K解像度で出版、印刷、デジタル配信用のプロダクション対応フォーマットでエクスポートします。",
+            "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+          }
+        ]
+      },
+      "featureGridSection": {
+        "title": "プロフェッショナルなイラスト制作のための究極のAIツールキット",
+        "subtitle": "イラスト制作プロジェクトに必要なすべての機能",
+        "features": [
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0",
+            "title": "芸術的スタイルインテリジェンス",
+            "description": "LovartのMCoTエンジンが多様なイラストスタイル——水彩児童アートからベクターエディトリアルグラフィックまで——を驚くべき忠実度で理解・適用します。希望のスタイルを一度説明すれば、ChatCanvasがプロジェクト内の全イラストでそれを維持します。ラフなコンセプトスケッチから洗練された最終アートワークまで生成可能です。"
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3",
+            "title": "イラストレーターのためのセマンティックTouch Edit",
+            "description": "Touch Editでピクセル単位の精度でイラストを調整。キャラクターの表情を変更し、構図要素を調整し、色彩処理を変え、背景の詳細を交換——すべてセマンティックなクリック編集の知能で実行。手動マスキングや再描画は不要です。これこそがAI生成イラストをプロフェッショナルでクライアント対応のアートワークに昇華させる機能です。"
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932",
+            "title": "キャラクター一貫性エンジン",
+            "description": "Nano Banana Proがプロジェクト内のすべてのイラストで完璧なキャラクター一貫性を維持。複数の本の見開きに登場するキャラクター、異なるポーズのデザインマスコット、シームレスに繰り返すパターン要素など、一貫性エンジンがビジュアルアイデンティティをロックし、イラスト間のドリフトを防ぎます。"
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6",
+            "title": "パターン・表面デザインエンジン",
+            "description": "ファブリック、壁紙、パッケージ、表面デザイン向けにシームレスな繰り返しパターンを生成。Lovartのエージェントがパターン構造——完全に一致するタイルエッジ、バランスの取れたリピート構造、調和のとれた色彩分布——を理解します。単一ワークフローで、コーディネートされたカラーバリエーションとスケールバリエーションを持つ複雑なパターンコレクションを作成できます。"
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7",
+            "title": "出版対応8Kエクスポート",
+            "description": "最大8K解像度でイラストをエクスポート。PNG/JPGはデジタル向け、SVGはベクターイラスト向け、レイヤー付きPSDはさらなる編集向け。児童書印刷（最小300 DPI）、雑誌品質のエディトリアルアート、高解像度デジタル配信に対応。すべてのエクスポートがプロフェッショナルな出版基準を満たします。"
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166",
+            "title": "ポートフォリオ・クライアントプレゼンエンジン",
+            "description": "Smart Mockupでイラストをプロフェッショナルにプレゼンテーション。児童書を見開きで、エディトリアルイラストを雑誌レイアウトで、パターンをファブリックスウォッチで、キャラクターシートをポートフォリオページとしてプレビュー。イラスト作品を最高の形で見せるクライアント対応のプレゼンテーション形式を生成します。"
+          }
+        ]
+      },
+      "testimonialSection": {
+        "title": "Lovartで創作活動を変革したイラストレーターたち",
+        "testimonials": [
+          {
+            "name": "Claire Beaumont",
+            "role": "児童書イラストレーター",
+            "quote": "伝統的な画材で4冊の児童書を手がけ、各6〜8ヶ月かかっていました。LovartのNano Bananaワークフローで、最新の32ページの本を6週間で完成——出版社からは「過去最高の作品」と評価されました。見開き間のキャラクター一貫性は完璧で、以前は面倒な手動チェックが必要だったものです。すべてのクリエイティブ判断は私が主導しますが、制作時間の節約により年間のプロジェクト数が倍増しました。",
+            "metric": "制作時間6ヶ月→6週間"
+          },
+          {
+            "name": "David Chen",
+            "role": "エディトリアルイラストレーター、The Atlantic & Wired",
+            "quote": "エディトリアルの締切は過酷です——多くの場合、ブリーフから最終アートまで24〜48時間。Lovartはコンセプト探索段階の秘密兵器となりました。記事のテーマを説明すると、エージェントが数分で15〜20の視覚的メタファーと構図の方向性を生成します。最強のコンセプトを選び、最終アートに磨き上げます。コミット前に多くのクリエイティブ方向性を探索できるため、アートディレクターからの採用率が向上しました。",
+            "metric": "採用率向上、15〜20の方向性を数分で探索"
+          },
+          {
+            "name": "Amara Williams",
+            "role": "サーフェスパターンデザイナー・テキスタイルアーティスト",
+            "quote": "3つのファッションブランド向けにファブリックコレクションをデザインしており、各コレクションはシーズンあたり20〜30のコーディネートパターンが必要です。以前は1コレクションに3ヶ月かかっていましたが、今では2週間で完了——パターンエンジンが自動エッジマッチングでシームレスリピートを生成し、私はクリエイティブディレクションとカラーストーリー開発に集中できます。8クライアントを同時に担当できるようになり、収入が3倍になりました。パターン品質は手作業のデザインと見分けがつきません。",
+            "metric": "収入3倍、8クライアント同時対応"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "よくある質問",
+        "faqs": [
+          {
+            "question": "Lovartとは何ですか？どのようにプロのイラスト制作をサポートしますか？",
+            "answer": "Lovartは世界初のAIデザインエージェントであり、単なる画像生成器ではありません。イラストレーターにとっては、イラストのコンセプト、スタイル、オーディエンスを自然言語で説明するだけで、一貫した芸術的スタイル、適切な構図、編集可能な要素を備えたプロ品質のイラストが得られることを意味します。MidjourneyやDALL-Eとは異なり、LovartはTouch EditとText Editによるディレクターレベルのコントロール、Nano Banana Proによるキャラクター一貫性、ChatCanvasによる永続的な芸術的記憶を提供します。"
+          },
+          {
+            "question": "Lovartのイラストを出版書籍やクライアントワークに商用利用できますか？",
+            "answer": "はい。有料プラン（Starter、Basic、Pro）のユーザーは、イラストに対する完全な商用利用権を保有します。出版書籍、エディトリアル作品、商業製品、クライアントプロジェクト、商品化など、あらゆる合法的な商業目的に使用できます。無料プランは個人利用と評価用です。"
+          },
+          {
+            "question": "イラスト制作ワークフローを試せる無料プランはありますか？",
+            "answer": "はい。Lovartは24時間ごとに更新されるデイリーログインクレジット付きの無料プランを提供しています。リスクなしでイラストワークフローを試せます。有料プラン：Starter（月2,000クレジット）、Basic（月3,500クレジット）、Pro（月11,000クレジット）、すべて完全なエージェント機能、商用利用権、Nano Banana Proなどのプレミアムモデルをアンロックします。"
+          },
+          {
+            "question": "イラストを出版用にどのようなファイル形式でエクスポートできますか？",
+            "answer": "LovartはPNG、JPG、SVG（ベクター）、レイヤー付きPSD形式のプロフェッショナルエクスポートに対応しています。解像度は最大8Kまで対応し、プロの児童書印刷（300 DPI）、雑誌品質のエディトリアル出版、高解像度デジタル配信の要件を満たし、それを上回ります。"
+          },
+          {
+            "question": "Lovartは本やイラストシリーズ全体でキャラクターの一貫性をどのように維持しますか？",
+            "answer": "ChatCanvasが永続的なキャラクターアイデンティティを維持——キャラクター（外見、プロポーション、衣装、カラーパレット）を一度定義すれば、Nano Banana Proがすべてのイラストで完璧な一貫性を保ちます。異なるポーズ、照明条件、感情状態で登場しても、ビジュアルアイデンティティはロックされたままです。これにより、従来のAIアート生成がマルチイラストプロジェクトに不向きだったキャラクタードリフト問題が解消されます。"
+          },
+          {
+            "question": "生成後にイラストを編集・調整できますか？再生成は必要ですか？",
+            "answer": "はい、再生成せずに広範な調整が可能です。Touch Editはセマンティックなクリック編集の精度で、表情、色彩、構図要素などの特定要素を変更できます。この編集機能により、「及第点」で妥協して再生成するのではなく、完璧に向かって反復できます。これこそがLovartの決定的な差別化要因です。"
+          },
+          {
+            "question": "Lovartはどのようなイラストスタイルとジャンルをサポートしていますか？",
+            "answer": "Lovartのイラストワークフローは、水彩、デジタルペインティング、ベクター/フラットイラスト、線画、ミクストメディア、リアルレンダリング、カートゥーン/アニメーションスタイル、ビンテージ/レトロ、コラージュなど、すべての主要スタイルをサポートします。ジャンルは児童書、エディトリアル、パターン/表面デザイン、キャラクターデザイン、植物/科学イラスト、ファッションイラスト、コンセプトアートをカバーします。MCoTエンジンが指定されたスタイル方向に適応します。"
+          },
+          {
+            "question": "ファブリックや製品デザイン用のシームレスな繰り返しパターンを作成できますか？",
+            "answer": "はい。パターンデザインエンジンが、完全なエッジマッチング、バランスの取れたリピート構造、調和のとれた色彩分布を備えたシームレスな繰り返しタイルを生成します。コーディネートされたカラーバリエーション、スケールバリエーション、モチーフ配置を持つパターンコレクションを作成できます。シームレスタイルまたはフルサイズのパターンリピートとしてエクスポート可能で、ファブリック、壁紙、ギフトラッピング、パッケージ、あらゆる表面デザイン用途に適しています。"
+          },
+          {
+            "question": "Lovartのイラスト制作は人間のイラストレーターを雇うのと比べてどうですか？",
+            "answer": "Lovartは創造的加速ツールであり、芸術的ビジョンの代替ではありません。プロのイラストレーターはLovartを使用して制作期間を数ヶ月から数週間に短縮しながら、クリエイティブディレクションを維持します。イラストスキルのない著者や出版社も、現在ではプロ品質のアートワークにアクセスできます。このワークフローは制作効率に優れながら、あなたがクリエイティブコントロールを維持——あなたが方向性を示し、Lovartが実行し、Touch Editで完璧に仕上げます。"
+          }
+        ]
+      }
+    }
+  ],
+  "section_ko": [
+    {
+      "centeredInputSection": {
+        "title": "Nano Banana 일러스트 제작 — Lovart로 전문적인 AI 일러스트를 만드세요",
+        "subtitle": "크리에이티브 브리프를 Lovart의 AI 디자인 에이전트로 전문가 수준의 일러스트로 변환하세요. 동화책부터 에디토리얼 아트, 패턴 디자인까지, Nano Banana Pro와 MCoT 엔진이 예술적 일관성과 시각적 탁월함을 실현합니다.",
+        "placeholder": "일러스트 제작 프로젝트를 설명해 주세요——스타일, 주제, 타겟 오디언스, 예술적 방향성을 포함하여",
+        "systemPrompt": "You are a Senior Illustrator and AI Creative Director at Lovart. Using MCoT and Nano Banana Pro, analyze: 1) The illustration project type and its artistic requirements, 2) Target audience and appropriate visual language, 3) The preferred artistic style and reference inspirations, 4) Technical requirements (print resolution, color profile, format). Orchestrate Lovart's pipeline: design compositions in ChatCanvas, generate illustrations with Nano Banana Pro maintaining artistic consistency, apply Touch Edit for precision refinement, and deliver production-ready illustrations. User requirements: $input$",
+        "buttonText": "일러스트 제작",
+        "suggestions": [
+          "3~6세 어린이를 위한 따뜻한 수채화 스타일 동화책 펼침면——표정이 풍부한 동물 캐릭터와 환상적인 숲 배경",
+          "기후 혁신에 관한 잡지 기사 에디토리얼 일러스트——데이터 시각화와 은유적 이미지를 융합한 컨셉 아트",
+          "아르누보의 영향을 받은 식물 모티브의 심리스 패턴 디자인——패브릭 및 표면 디자인용",
+          "정면/측면/후면 뷰, 표정 변화, 의상 옵션이 포함된 애니메이션 스타일 캐릭터 시트"
+        ]
+      },
+      "threeColumnSection": {
+        "title": "Lovart의 Nano Banana가 일러스트 워크플로우를 가속화하는 방법",
+        "subtitle": "예술적 방향성 정의부터 최종 아트 납품까지——간단한 3단계",
+        "steps": [
+          {
+            "title": "예술적 방향성 정의",
+            "description": "Lovart의 AI 디자인 에이전트에 일러스트 프로젝트를 설명합니다. 일러스트 유형, 타겟 오디언스, 선호하는 아트 스타일, 크리에이티브 비전을 전달하세요. MCoT 엔진이 동화책, 에디토리얼 아트, 패턴 디자인 등 선택한 매체의 예술적 관례에 비추어 브리프를 분석하고 일러스트 전략을 수립합니다.",
+            "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+          },
+          {
+            "title": "다양한 비주얼 방향 생성 및 탐색",
+            "description": "Nano Banana Pro가 브리프를 전문가 수준의 일러스트로 변환하는 모습을 확인하세요. 완전한 구도, 캐릭터 일러스트, 패턴 타일, 에디토리얼 비주얼을 ChatCanvas가 일관된 예술적 스타일을 유지하며 생성합니다. 다양한 컬러 팔레트, 구도 접근법, 스타일 처리를 동시에 탐색하고 가장 강력한 방향을 선택하여 반복합니다.",
+            "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+          },
+          {
+            "title": "다듬기 및 최종 아트 전달",
+            "description": "정밀 편집 도구로 일러스트를 다듬습니다. Touch Edit로 특정 요소 수정——캐릭터 표정 조정, 배경 디테일 변경, 패턴 요소 미세 조정. 에디토리얼 일러스트 내 텍스트 통합에는 Text Edit를 적용합니다. 최대 8K 해상도로 출판, 인쇄, 디지털 배포용 제작 가능한 포맷으로 내보냅니다.",
+            "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+          }
+        ]
+      },
+      "featureGridSection": {
+        "title": "전문적인 일러스트 제작을 위한 궁극의 AI 툴킷",
+        "subtitle": "일러스트 프로젝트에 필요한 모든 기능",
+        "features": [
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0",
+            "title": "예술적 스타일 인텔리전스",
+            "description": "Lovart의 MCoT 엔진이 다양한 일러스트 스타일——수채화 아동 아트부터 벡터 에디토리얼 그래픽까지——를 놀라운 충실도로 이해하고 적용합니다. 원하는 스타일을 한 번 설명하면 ChatCanvas가 프로젝트 내 모든 일러스트에서 유지합니다. 느슨한 컨셉 스케치부터 세련된 최종 아트워크까지 생성할 수 있습니다."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3",
+            "title": "일러스트레이터를 위한 시맨틱 Touch Edit",
+            "description": "Touch Edit로 픽셀 수준의 정밀도로 일러스트를 조정합니다. 캐릭터 표정을 변경하고 구도 요소를 조절하며 색상 처리를 바꾸고 배경 디테일을 교체——모두 시맨틱 클릭 편집 지능으로 실행합니다. 수동 마스킹이나 재드로잉이 필요 없습니다. 이것이 AI 생성 일러스트를 전문적이고 클라이언트에 바로 전달 가능한 아트워크로 승화시키는 기능입니다."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932",
+            "title": "캐릭터 일관성 엔진",
+            "description": "Nano Banana Pro가 프로젝트 내 모든 일러스트에서 완벽한 캐릭터 일관성을 유지합니다. 여러 책장에 걸쳐 등장하는 캐릭터, 다양한 포즈의 디자인 마스코트, 심리스하게 반복되는 패턴 요소까지——일관성 엔진이 비주얼 아이덴티티를 고정하여 일러스트 간 드리프트를 방지합니다."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6",
+            "title": "패턴 및 표면 디자인 엔진",
+            "description": "패브릭, 벽지, 패키징, 표면 디자인을 위한 심리스 반복 패턴을 생성합니다. Lovart 에이전트가 패턴 구조——완벽하게 일치하는 타일 엣지, 균형 잡힌 반복 구조, 조화로운 색상 분포——를 이해합니다. 단일 워크플로우에서 코디네이트된 컬러웨이와 스케일 변형을 가진 복잡한 패턴 컬렉션을 만들 수 있습니다."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7",
+            "title": "출판 대응 8K 내보내기",
+            "description": "최대 8K 해상도로 일러스트를 내보냅니다. PNG/JPG는 디지털용, SVG는 벡터 일러스트용, 레이어 PSD는 추가 편집용. 동화책 인쇄(최소 300 DPI), 잡지 품질의 에디토리얼 아트, 고해상도 디지털 배포에 대응합니다. 모든 내보내기가 전문 출판 기준을 충족합니다."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166",
+            "title": "포트폴리오 및 클라이언트 프레젠테이션 엔진",
+            "description": "Smart Mockup으로 일러스트를 전문적으로 프레젠테이션합니다. 동화책을 펼침면으로, 에디토리얼 일러스트를 잡지 레이아웃으로, 패턴을 패브릭 견본으로, 캐릭터 시트를 포트폴리오 페이지로 미리보기. 일러스트 작업을 최상의 형태로 보여주는 클라이언트 대응 프레젠테이션 형식을 생성합니다."
+          }
+        ]
+      },
+      "testimonialSection": {
+        "title": "Lovart로 창작 활동을 혁신한 일러스트레이터들",
+        "testimonials": [
+          {
+            "name": "Claire Beaumont",
+            "role": "아동 도서 일러스트레이터",
+            "quote": "전통 매체로 4권의 동화책을 작업했으며, 각각 6~8개월이 걸렸습니다. Lovart의 Nano Banana 워크플로우로 최신 32페이지 책을 6주 만에 완성——출판사는 제 최고의 작품이라고 평가했습니다. 페이지 간 캐릭터 일관성은 완벽하여, 이전에는 번거로운 수동 확인이 필요했던 부분입니다. 모든 크리에이티브 결정은 제가 주도하지만, 제작 시간 절약 덕분에 연간 프로젝트 수가 두 배로 늘었습니다.",
+            "metric": "제작 시간 6개월→6주"
+          },
+          {
+            "name": "David Chen",
+            "role": "에디토리얼 일러스트레이터, The Atlantic & Wired",
+            "quote": "에디토리얼 마감은 가혹합니다——흔히 브리프에서 최종 아트까지 24~48시간. Lovart는 컨셉 탐색 단계의 비밀 무기가 되었습니다. 기사 주제를 설명하면 에이전트가 몇 분 만에 15~20개의 시각적 메타포와 구도 방향을 생성합니다. 가장 강력한 컨셉을 선택하여 최종 아트로 다듬습니다. 커밋하기 전에 훨씬 더 많은 크리에이티브 방향을 탐색할 수 있어 아트 디렉터의 채택률이 향상되었습니다.",
+            "metric": "채택률 향상, 15~20개 방향을 수분 만에 탐색"
+          },
+          {
+            "name": "Amara Williams",
+            "role": "서피스 패턴 디자이너 겸 텍스타일 아티스트",
+            "quote": "3개 패션 브랜드의 원단 컬렉션을 디자인하며, 각 컬렉션은 시즌당 20~30개의 코디네이트 패턴이 필요합니다. 이전에는 전체 컬렉션에 3개월이 걸렸지만, 지금은 2주 만에 완료——패턴 엔진이 자동 엣지 매칭으로 심리스 반복을 생성하고 저는 크리에이티브 디렉션과 컬러 스토리 개발에 집중합니다. 8명의 클라이언트를 동시에 담당하게 되어 수입이 3배가 되었습니다. 패턴 품질은 수작업 디자인과 구별할 수 없습니다.",
+            "metric": "수입 3배, 8 클라이언트 동시 대응"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "자주 묻는 질문",
+        "faqs": [
+          {
+            "question": "Lovart란 무엇이며 어떻게 전문 일러스트 제작을 지원하나요?",
+            "answer": "Lovart는 세계 최초의 AI 디자인 에이전트로, 단순한 이미지 생성기가 아닙니다. 일러스트레이터에게는 일러스트 컨셉, 스타일, 오디언스를 자연어로 설명하는 것만으로 일관된 예술적 스타일, 적절한 구도, 편집 가능한 요소를 갖춘 전문가 수준의 일러스트를 얻을 수 있다는 의미입니다. Midjourney나 DALL-E와 달리, Lovart는 Touch Edit와 Text Edit를 통한 디렉터 수준의 컨트롤, Nano Banana Pro를 통한 캐릭터 일관성, ChatCanvas를 통한 지속적인 예술적 기억을 제공합니다."
+          },
+          {
+            "question": "Lovart 일러스트를 출판 서적이나 클라이언트 작업에 상업적으로 이용할 수 있나요?",
+            "answer": "네. 유료 플랜(Starter, Basic, Pro) 사용자는 일러스트에 대한 완전한 상업적 권리를 보유합니다. 출판 서적, 에디토리얼 작업, 상업 제품, 클라이언트 프로젝트, 상품화 등 모든 합법적 상업 목적으로 사용할 수 있습니다. 무료 플랜은 개인 사용 및 평가용입니다."
+          },
+          {
+            "question": "일러스트 워크플로우를 체험할 무료 플랜이 있나요?",
+            "answer": "네. Lovart는 24시간마다 갱신되는 데일리 로그인 크레딧이 포함된 무료 플랜을 제공합니다. 리스크 없이 일러스트 워크플로우를 시험해볼 수 있습니다. 유료 플랜: Starter(월 2,000 크레딧), Basic(월 3,500 크레딧), Pro(월 11,000 크레딧), 모두 완전한 에이전트 기능, 상업적 권리, Nano Banana Pro 등 프리미엄 모델을 잠금 해제합니다."
+          },
+          {
+            "question": "일러스트를 출판용으로 어떤 파일 형식으로 내보낼 수 있나요?",
+            "answer": "Lovart는 PNG, JPG, SVG(벡터), 레이어 PSD 형식의 전문 내보내기를 지원합니다. 해상도는 최대 8K까지, 전문 동화책 인쇄(300 DPI), 잡지 품질의 에디토리얼 출판, 고해상도 디지털 배포의 요구 사항을 충족하고 상회합니다."
+          },
+          {
+            "question": "Lovart는 책이나 일러스트 시리즈 전반에서 캐릭터 일관성을 어떻게 유지하나요?",
+            "answer": "ChatCanvas가 지속적 캐릭터 아이덴티티를 유지합니다——캐릭터(외관, 비율, 의상, 컬러 팔레트)를 한 번 정의하면 Nano Banana Pro가 모든 일러스트에서 완벽한 일관성을 유지합니다. 다양한 포즈, 조명 조건, 감정 상태에서 등장해도 비주얼 아이덴티티는 고정되어 있습니다. 이로써 전통적 AI 아트 생성이 다중 일러스트 프로젝트에 부적합했던 캐릭터 드리프트 문제가 해결됩니다."
+          },
+          {
+            "question": "생성 후에도 일러스트를 편집하고 조정할 수 있나요? 재생성이 필요한가요?",
+            "answer": "네, 재생성 없이 광범위한 조정이 가능합니다. Touch Edit는 시맨틱 클릭 편집 정밀도로 표정, 색상, 구도 요소 등 특정 요소를 변경할 수 있습니다. 이 편집 기능 덕분에 '적당히 괜찮은' 수준에서 타협하고 재생성하는 대신 완벽을 향해 반복할 수 있습니다. 이것이 바로 Lovart의 결정적 차별화 요소입니다."
+          },
+          {
+            "question": "Lovart는 어떤 일러스트 스타일과 장르를 지원하나요?",
+            "answer": "Lovart의 일러스트 워크플로우는 수채화, 디지털 페인팅, 벡터/플랫 일러스트, 라인 아트, 혼합 매체, 사실적 렌더링, 카툰/애니메이션 스타일, 빈티지/레트로, 콜라주 등 모든 주요 스타일을 지원합니다. 장르는 동화책, 에디토리얼, 패턴/표면 디자인, 캐릭터 디자인, 식물/과학 일러스트, 패션 일러스트, 컨셉 아트를 포괄합니다. MCoT 엔진이 지정된 스타일 방향에 적응합니다."
+          },
+          {
+            "question": "패브릭 및 제품 디자인용 심리스 반복 패턴을 만들 수 있나요?",
+            "answer": "네. 패턴 디자인 엔진이 완벽한 엣지 매칭, 균형 잡힌 반복 구조, 조화로운 색상 분포를 갖춘 심리스 반복 타일을 생성합니다. 코디네이트된 컬러웨이, 스케일 변형, 모티프 배열을 가진 패턴 컬렉션을 만들 수 있습니다. 심리스 타일 또는 전체 크기 패턴 반복으로 내보낼 수 있으며, 패브릭, 벽지, 선물 포장, 패키징 및 모든 표면 디자인 용도에 적합합니다."
+          },
+          {
+            "question": "Lovart 일러스트 제작은 인간 일러스트레이터 고용과 비교하여 어떤가요?",
+            "answer": "Lovart는 창의적 가속 도구이지, 예술적 비전의 대체물이 아닙니다. 전문 일러스트레이터는 Lovart를 사용하여 제작 기간을 수개월에서 수주로 단축하면서 크리에이티브 디렉션을 유지합니다. 일러스트 기술이 없는 작가와 출판사도 이제 전문가 품질의 아트워크에 접근할 수 있습니다. 이 워크플로우는 제작 효율성에서 탁월하면서도 당신이 크리에이티브 컨트롤을 유지——당신이 방향을 제시하고, Lovart가 실행하며, Touch Edit로 완벽하게 마무리합니다."
+          }
+        ]
+      }
+    }
+  ],
+  "section_de": [
+    {
+      "centeredInputSection": {
+        "title": "Nano Banana Illustrationen — Professionelle KI-Illustrationen mit Lovart erstellen",
+        "subtitle": "Verwandle kreative Briefings mit Lovarts KI-Design-Agent in Illustrationen in Profiqualität. Von Kinderbüchern über redaktionelle Kunst bis zu Musterdesigns — Nano Banana Pro und die MCoT-Engine liefern künstlerische Konsistenz und visuelle Exzellenz.",
+        "placeholder": "Beschreibe dein Illustrationsprojekt — einschließlich Stil, Thema, Zielgruppe und künstlerischer Ausrichtung",
+        "systemPrompt": "You are a Senior Illustrator and AI Creative Director at Lovart. Using MCoT and Nano Banana Pro, analyze: 1) The illustration project type and its artistic requirements, 2) Target audience and appropriate visual language, 3) The preferred artistic style and reference inspirations, 4) Technical requirements (print resolution, color profile, format). Orchestrate Lovart's pipeline: design compositions in ChatCanvas, generate illustrations with Nano Banana Pro maintaining artistic consistency, apply Touch Edit for precision refinement, and deliver production-ready illustrations. User requirements: $input$",
+        "buttonText": "Illustration starten",
+        "suggestions": [
+          "Eine warme Aquarell-Kinderbuch-Doppelseite für 3- bis 6-Jährige — mit ausdrucksstarken Tiercharakteren und einer zauberhaften Waldkulisse",
+          "Eine redaktionelle Illustration für einen Zeitschriftenartikel über Klimainnovation — Konzeptkunst-Stil, der Datenvisualisierung mit metaphorischer Bildsprache verbindet",
+          "Ein nahtloses Musterdesign mit botanischen Motiven im Jugendstil — für Stoff- und Oberflächendesign",
+          "Ein Charakterblatt im Animationsstil mit Vorder-/Seiten-/Rückansichten, Ausdrucksvariationen und Kostümoptionen"
+        ]
+      },
+      "threeColumnSection": {
+        "title": "Wie Lovarts Nano Banana deinen Illustrations-Workflow beschleunigt",
+        "subtitle": "Von der Definition der künstlerischen Ausrichtung bis zur finalen Kunstabgabe — in drei einfachen Schritten",
+        "steps": [
+          {
+            "title": "Künstlerische Ausrichtung definieren",
+            "description": "Beschreibe Lovarts KI-Design-Agent dein Illustrationsprojekt. Teile den Illustrationstyp, die Zielgruppe, den bevorzugten Kunststil und die kreative Vision mit. Die MCoT-Engine analysiert dein Briefing anhand der künstlerischen Konventionen deines gewählten Mediums — ob Kinderbuch, redaktionelle Kunst oder Musterdesign — und plant die Illustrationsstrategie.",
+            "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+          },
+          {
+            "title": "Visuelle Richtungen generieren & erkunden",
+            "description": "Sieh zu, wie Nano Banana Pro dein Briefing in professionelle Illustrationen verwandelt. Generiere vollständige Kompositionen, Charakterillustrationen, Musterkacheln oder redaktionelle Visuals — wobei ChatCanvas den konsistenten künstlerischen Stil bewahrt. Erkunde gleichzeitig verschiedene Farbpaletten, Kompositionsansätze und stilistische Behandlungen und iteriere dann an den stärksten Richtungen.",
+            "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+          },
+          {
+            "title": "Verfeinern & finale Kunst liefern",
+            "description": "Poliere deine Illustrationen mit den Präzisionswerkzeugen. Passe mit Touch Edit bestimmte Elemente an — ändere Charakterausdrücke, modifiziere Hintergrunddetails oder verfeinere Musterelemente. Wende Text Edit für jede Textintegration in redaktionellen Illustrationen an. Exportiere in bis zu 8K-Auflösung in produktionsreifen Formaten für Verlagswesen, Druck und digitale Distribution.",
+            "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+          }
+        ]
+      },
+      "featureGridSection": {
+        "title": "Das ultimative KI-Toolkit für professionelle Illustrationserstellung",
+        "subtitle": "Alles, was du für Illustrationsprojekte brauchst",
+        "features": [
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0",
+            "title": "Künstlerische Stilintelligenz",
+            "description": "Lovarts MCoT-Engine versteht und wendet diverse Illustrationsstile an — von Aquarell-Kinderkunst bis zu Vektor-Redaktionsgrafiken — mit bemerkenswerter Genauigkeit. Beschreibe deinen Wunschstil einmal, und ChatCanvas bewahrt ihn in jeder Illustration deines Projekts. Generiere alles von losen Konzeptskizzen bis zu polierten finalen Artworks."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3",
+            "title": "Semantisches Touch Edit für Illustratoren",
+            "description": "Verfeinere deine Illustrationen pixelgenau mit Touch Edit. Ändere Charakterausdrücke, passe Kompositionselemente an, ändere Farbbehandlungen oder tausche Hintergrunddetails aus — alles mit semantischer Klick-zum-Bearbeiten-Intelligenz. Kein manuelles Maskieren oder Neumalen nötig. Dies ist die Fähigkeit, die KI-generierte Illustrationen zu professioneller, kundenfertiger Kunst erhebt."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932",
+            "title": "Charakter-Konsistenz-Engine",
+            "description": "Nano Banana Pro bewahrt perfekte Charakterkonsistenz über alle Illustrationen deines Projekts hinweg. Ob ein Charakter über mehrere Buchseiten erscheint, ein Design-Maskottchen in verschiedenen Posen oder sich nahtlos wiederholende Musterelemente — die Konsistenz-Engine sorgt dafür, dass die visuelle Identität fixiert bleibt und nicht zwischen den Illustrationen abdriftet."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6",
+            "title": "Muster- & Oberflächendesign-Engine",
+            "description": "Generiere nahtlose wiederholbare Muster für Stoff, Tapeten, Verpackungen und Oberflächendesign. Lovarts Agent versteht Musterkonstruktion — perfekt passende Kachelkanten, ausgewogene Wiederholungsstrukturen und harmonische Farbverteilung. Erstelle komplexe Mustersammlungen mit koordinierten Farbvarianten und Skalierungsvariationen in einem einzigen Workflow."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7",
+            "title": "Verlagsfertiger 8K-Export",
+            "description": "Exportiere Illustrationen mit bis zu 8K-Auflösung. PNG/JPG für Digitales, SVG für Vektorillustrationen und Ebenen-PSD für weitere Bearbeitung. Geeignet für Kinderbuchdruck (mind. 300 DPI), redaktionelle Kunst in Zeitschriftenqualität und hochauflösende digitale Distribution. Jeder Export erfüllt professionelle Verlagsstandards."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166",
+            "title": "Portfolio- & Kundenpräsentations-Engine",
+            "description": "Präsentiere deine Illustrationen professionell mit Smart Mockup. Zeige Kinderbücher als aufgeschlagene Doppelseiten, redaktionelle Illustrationen in Zeitschriftenlayouts, Muster auf Stoffmustern und Charakterblätter als Portfolioseiten. Generiere kundenfertige Präsentationsformate, die deine Illustrationsarbeit optimal zur Geltung bringen."
+          }
+        ]
+      },
+      "testimonialSection": {
+        "title": "Illustratoren, die ihre kreative Praxis mit Lovart transformieren",
+        "testimonials": [
+          {
+            "name": "Claire Beaumont",
+            "role": "Kinderbuch-Illustratorin",
+            "quote": "Ich habe 4 veröffentlichte Kinderbücher mit traditionellen Medien illustriert, jedes dauerte 6–8 Monate. Mit Lovarts Nano Banana-Workflow habe ich mein neuestes 32-seitiges Buch in 6 Wochen fertiggestellt — und mein Verlag sagt, es sei meine bisher beste Arbeit. Die Charakterkonsistenz über die Doppelseiten hinweg ist makellos, etwas, das früher mühsame manuelle Überprüfungen erforderte. Ich treffe immer noch jede kreative Entscheidung, aber die Zeitersparnis bei der Produktion erlaubt mir, doppelt so viele Projekte pro Jahr anzunehmen.",
+            "metric": "Produktionszeit 6 Monate → 6 Wochen"
+          },
+          {
+            "name": "David Chen",
+            "role": "Redaktioneller Illustrator, The Atlantic & Wired",
+            "quote": "Redaktionelle Deadlines sind brutal — oft 24–48 Stunden vom Briefing bis zur finalen Kunst. Lovart ist meine Geheimwaffe für die Konzeptexplorationsphase geworden. Ich beschreibe das Thema des Artikels, und der Agent generiert 15–20 visuelle Metaphern und Kompositionsrichtungen in Minuten. Ich wähle die stärksten Konzepte aus und verfeinere sie zur finalen Kunst. Meine Annahmequote bei Art Directoren ist gestiegen, weil ich so viele weitere kreative Richtungen erkunden kann, bevor ich mich festlege.",
+            "metric": "Höhere Annahmequote, 15–20 Richtungen in Minuten"
+          },
+          {
+            "name": "Amara Williams",
+            "role": "Oberflächenmuster-Designerin & Textilkünstlerin",
+            "quote": "Ich entwerfe Stoffkollektionen für 3 Modemarken, jede erfordert 20–30 koordinierte Muster pro Saison. Vor Lovart dauerte eine vollständige Kollektion 3 Monate intensive Designarbeit. Jetzt erstelle ich komplette Kollektionen in 2 Wochen — die Muster-Engine generiert nahtlose Wiederholungen mit automatischem Kantenabgleich, und ich konzentriere mich auf kreative Ausrichtung und Farbgeschichten-Entwicklung. Mein Umsatz hat sich verdreifacht, da ich jetzt 8 Kunden gleichzeitig bedienen kann.",
+            "metric": "Umsatz verdreifacht, 8 Kunden gleichzeitig"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Häufig gestellte Fragen",
+        "faqs": [
+          {
+            "question": "Was ist Lovart und wie unterstützt es professionelle Illustration?",
+            "answer": "Lovart ist der weltweit erste KI-Design-Agent — ein vollständiger kreativer Partner, nicht nur ein Bildgenerator. Für Illustratoren bedeutet dies: Beschreibe dein Illustrationskonzept, deinen Stil und deine Zielgruppe in natürlicher Sprache und erhalte Illustrationen in Profiqualität mit konsistentem künstlerischem Stil, korrekter Komposition und bearbeitbaren Elementen. Anders als Midjourney oder DALL-E bietet Lovart Kontrolle auf Director-Niveau durch Touch Edit und Text Edit, Charakterkonsistenz durch Nano Banana Pro und persistentes künstlerisches Gedächtnis durch ChatCanvas."
+          },
+          {
+            "question": "Kann ich Lovart-Illustrationen kommerziell in veröffentlichten Büchern und Kundenprojekten nutzen?",
+            "answer": "Ja. Nutzer der kostenpflichtigen Pläne (Starter, Basic, Pro) besitzen die vollständigen kommerziellen Rechte an ihren Illustrationen. Du kannst sie in veröffentlichten Büchern, redaktionellen Arbeiten, kommerziellen Produkten, Kundenprojekten, Merchandise und jedem rechtmäßigen kommerziellen Zweck nutzen. Der Gratis-Plan ist für persönliche Nutzung und Evaluierung."
+          },
+          {
+            "question": "Gibt es einen kostenlosen Plan, um den Illustrations-Workflow zu testen?",
+            "answer": "Ja, Lovart bietet einen Gratis-Plan mit täglichen Login-Credits, die sich alle 24 Stunden erneuern. Experimentiere risikofrei mit dem Illustrations-Workflow. Kostenpflichtige Pläne: Starter (2.000 monatliche Credits), Basic (3.500 Credits), Pro (11.000 Credits) — alle schalten die vollen Agent-Funktionen, kommerzielle Rechte und Premium-Modelle wie Nano Banana Pro frei."
+          },
+          {
+            "question": "In welchen Dateiformaten kann ich Illustrationen für die Veröffentlichung exportieren?",
+            "answer": "Lovart unterstützt professionellen Export in PNG, JPG, SVG (Vektor) und Ebenen-PSD. Auflösungen reichen bis zu 8K und erfüllen bzw. übertreffen die 300-DPI-Anforderungen für professionellen Kinderbuchdruck, redaktionelle Veröffentlichung in Zeitschriftenqualität und hochauflösende digitale Distribution."
+          },
+          {
+            "question": "Wie bewahrt Lovart Charakterkonsistenz über ein Buch oder eine Illustrationsserie hinweg?",
+            "answer": "ChatCanvas pflegt eine persistente Charakteridentität — definiere einen Charakter einmal (Aussehen, Proportionen, Kostüm, Farbpalette), und Nano Banana Pro hält ihn in jeder Illustration perfekt konsistent. Ob der Charakter in verschiedenen Posen, Lichtverhältnissen oder emotionalen Zuständen erscheint — die visuelle Identität bleibt fixiert. Dies beseitigt das Charakter-Drift-Problem, das traditionelle KI-Kunstgenerierung für Mehrfachillustrationsprojekte ungeeignet machte."
+          },
+          {
+            "question": "Kann ich Illustrationen nach der Generierung verfeinern, statt neu zu generieren?",
+            "answer": "Ja, umfangreiche Verfeinerung ohne Neugenerierung ist möglich. Touch Edit ermöglicht semantische Klick-zum-Bearbeiten-Präzision — ändere Ausdrücke, Farben oder Kompositionselemente, ohne den Rest der Illustration zu beeinträchtigen. Diese Bearbeitungsfähigkeit erlaubt dir, dich zur Perfektion zu iterieren, statt dich mit „gut genug“ zufriedenzugeben und neu zu generieren. Dies ist Lovarts entscheidender Differenzierungsfaktor."
+          },
+          {
+            "question": "Welche Illustrationsstile und Genres unterstützt Lovart?",
+            "answer": "Lovarts Illustrations-Workflow unterstützt alle Hauptstile: Aquarell, digitales Malen, Vektor/Flat-Illustration, Strichzeichnung, Mischtechnik, realistische Darstellung, Cartoon/Animationsstil, Vintage/Retro, Collage und mehr. Genres umfassen Kinderbuch, redaktionelle Illustration, Muster-/Oberflächendesign, Charakterdesign, botanische/wissenschaftliche Illustration, Modeillustration und Konzeptkunst. Die MCoT-Engine passt sich deiner angegebenen Stilrichtung an."
+          },
+          {
+            "question": "Kann ich nahtlose wiederholbare Muster für Stoff- und Produktdesign erstellen?",
+            "answer": "Ja. Die Muster-Design-Engine generiert nahtlose wiederholbare Kacheln mit perfektem Kantenabgleich, ausgewogenen Wiederholungsstrukturen und harmonischer Farbverteilung. Erstelle Mustersammlungen mit koordinierten Farbvarianten, Skalierungsvariationen und Motivarrangements. Exportiere als nahtlose Kacheln oder vollformatige Musterwiederholungen. Geeignet für Stoff, Tapeten, Geschenkpapier, Verpackungen und alle Oberflächendesign-Anwendungen."
+          },
+          {
+            "question": "Wie schneidet Lovart im Vergleich zur Beauftragung eines menschlichen Illustrators für Buchprojekte ab?",
+            "answer": "Lovart ist ein kreatives Beschleunigungstool, kein Ersatz für künstlerische Vision. Professionelle Illustratoren nutzen Lovart, um die Produktionszeit von Monaten auf Wochen zu verkürzen und gleichzeitig die kreative Leitung zu behalten. Autoren und Verlage ohne Illustrationsfähigkeiten können jetzt auf professionelle Kunst zugreifen. Der Workflow glänzt durch Produktionseffizienz, während du die kreative Kontrolle behältst — du dirigierst, Lovart führt aus, und Touch Edit lässt dich zur Perfektion verfeinern."
+          }
+        ]
+      }
+    }
+  ],
+  "section_ru": [
+    {
+      "centeredInputSection": {
+        "title": "Nano Banana Иллюстрации — Создавайте профессиональные AI-иллюстрации с Lovart",
+        "subtitle": "Превращайте креативные брифы в иллюстрации профессионального качества с AI-дизайн-агентом Lovart. От детских книг до редакционного арта и паттерн-дизайна — Nano Banana Pro и движок MCoT обеспечивают художественную согласованность и визуальное совершенство.",
+        "placeholder": "Опишите ваш иллюстрационный проект — включая стиль, тематику, целевую аудиторию и художественное направление",
+        "systemPrompt": "You are a Senior Illustrator and AI Creative Director at Lovart. Using MCoT and Nano Banana Pro, analyze: 1) The illustration project type and its artistic requirements, 2) Target audience and appropriate visual language, 3) The preferred artistic style and reference inspirations, 4) Technical requirements (print resolution, color profile, format). Orchestrate Lovart's pipeline: design compositions in ChatCanvas, generate illustrations with Nano Banana Pro maintaining artistic consistency, apply Touch Edit for precision refinement, and deliver production-ready illustrations. User requirements: $input$",
+        "buttonText": "Начать иллюстрацию",
+        "suggestions": [
+          "Разворот детской книги в тёплом акварельном стиле для детей 3–6 лет — с выразительными персонажами-животными и сказочным лесом",
+          "Редакционная иллюстрация для журнальной статьи о климатических инновациях — концепт-арт, сочетающий визуализацию данных с метафорическими образами",
+          "Бесшовный паттерн-дизайн с ботаническими мотивами в стиле ар-нуво — для тканей и поверхностного дизайна",
+          "Лист персонажа в анимационном стиле с видами спереди/сбоку/сзади, вариациями выражений и опциями костюмов"
+        ]
+      },
+      "threeColumnSection": {
+        "title": "Как Lovart Nano Banana ускоряет ваш процесс создания иллюстраций",
+        "subtitle": "От определения художественного направления до финальной сдачи арта — три простых шага",
+        "steps": [
+          {
+            "title": "Определите художественное направление",
+            "description": "Опишите ваш иллюстрационный проект AI-дизайн-агенту Lovart. Сообщите тип иллюстрации, целевую аудиторию, предпочитаемый художественный стиль и творческое видение. Движок MCoT анализирует ваш бриф с учётом художественных конвенций выбранного медиума — будь то детская книга, редакционный арт или паттерн-дизайн — и планирует стратегию иллюстрирования.",
+            "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+          },
+          {
+            "title": "Генерируйте и исследуйте визуальные направления",
+            "description": "Наблюдайте, как Nano Banana Pro превращает ваш бриф в профессиональные иллюстрации. Генерируйте полные композиции, иллюстрации персонажей, паттерн-тайлы или редакционные визуалы — ChatCanvas сохраняет единый художественный стиль. Исследуйте одновременно разные цветовые палитры, композиционные подходы и стилистические решения, затем итерируйте наиболее сильные направления.",
+            "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+          },
+          {
+            "title": "Доработайте и сдайте финальный арт",
+            "description": "Отполируйте иллюстрации с помощью прецизионных инструментов. Используйте Touch Edit для корректировки отдельных элементов — измените выражения персонажей, модифицируйте детали фона или доработайте элементы паттерна. Примените Text Edit для интеграции текста в редакционных иллюстрациях. Экспортируйте с разрешением до 8K в форматах, готовых для издательства, печати и цифровой дистрибуции.",
+            "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+          }
+        ]
+      },
+      "featureGridSection": {
+        "title": "Ультимативный AI-инструментарий для профессионального создания иллюстраций",
+        "subtitle": "Всё необходимое для иллюстрационных проектов",
+        "features": [
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0",
+            "title": "Интеллект художественных стилей",
+            "description": "Движок MCoT от Lovart понимает и применяет разнообразные стили иллюстрации — от акварельного детского арта до векторной редакционной графики — с поразительной точностью. Опишите желаемый стиль один раз, и ChatCanvas сохранит его во всех иллюстрациях вашего проекта. Генерируйте всё — от свободных концептуальных набросков до отполированных финальных артворков."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3",
+            "title": "Семантический Touch Edit для иллюстраторов",
+            "description": "Дорабатывайте иллюстрации с попиксельной точностью с помощью Touch Edit. Изменяйте выражения персонажей, корректируйте элементы композиции, меняйте цветовые решения или заменяйте детали фона — всё с семантическим интеллектом «кликни-чтобы-отредактировать». Никакого ручного маскирования или перерисовки. Именно эта возможность поднимает AI-генерированные иллюстрации до уровня профессионального, готового для клиента артворка."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932",
+            "title": "Движок согласованности персонажей",
+            "description": "Nano Banana Pro поддерживает идеальную согласованность персонажей во всех иллюстрациях проекта. Будь то персонаж, появляющийся на нескольких книжных разворотах, дизайн-маскот в разных позах или бесшовно повторяющиеся элементы паттерна — движок согласованности обеспечивает фиксацию визуальной идентичности без дрейфа между иллюстрациями."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6",
+            "title": "Движок паттернов и поверхностного дизайна",
+            "description": "Генерируйте бесшовные повторяющиеся паттерны для ткани, обоев, упаковки и поверхностного дизайна. Агент Lovart понимает конструкцию паттерна — идеально совпадающие края тайлов, сбалансированные структуры повтора и гармоничное распределение цвета. Создавайте сложные коллекции паттернов с согласованными цветовыми решениями и вариациями масштаба в едином рабочем процессе."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7",
+            "title": "Готовый к публикации экспорт 8K",
+            "description": "Экспортируйте иллюстрации с разрешением до 8K. PNG/JPG для цифры, SVG для векторных иллюстраций и слоёный PSD для дальнейшего редактирования. Подходит для печати детских книг (минимум 300 DPI), редакционного арта журнального качества и цифровой дистрибуции высокого разрешения. Каждый экспорт соответствует профессиональным издательским стандартам."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166",
+            "title": "Движок портфолио и клиентских презентаций",
+            "description": "Профессионально презентуйте иллюстрации с помощью Smart Mockup. Предпросматривайте детские книги как открытые развороты, редакционные иллюстрации в журнальной вёрстке, паттерны на образцах ткани, а листы персонажей как страницы портфолио. Генерируйте готовые для клиента презентационные форматы, демонстрирующие ваши иллюстрации в наилучшем виде."
+          }
+        ]
+      },
+      "testimonialSection": {
+        "title": "Иллюстраторы, трансформирующие свою творческую практику с Lovart",
+        "testimonials": [
+          {
+            "name": "Клэр Бомон",
+            "role": "Иллюстратор детских книг",
+            "quote": "Я проиллюстрировала 4 опубликованные детские книги традиционными материалами, каждая занимала 6–8 месяцев. С рабочим процессом Lovart Nano Banana я завершила последнюю 32-страничную книгу за 6 недель — и мой издатель сказал, что это моя лучшая работа. Согласованность персонажей между разворотами безупречна — то, что раньше требовало утомительной ручной проверки. Я по-прежнему принимаю каждое творческое решение, но экономия времени позволяет брать вдвое больше проектов в год.",
+            "metric": "Время производства 6 месяцев → 6 недель"
+          },
+          {
+            "name": "Дэвид Чен",
+            "role": "Редакционный иллюстратор, The Atlantic и Wired",
+            "quote": "Редакционные дедлайны жестоки — часто 24–48 часов от брифа до финального арта. Lovart стал моим секретным оружием для фазы исследования концепций. Я описываю тему статьи, и агент генерирует 15–20 визуальных метафор и композиционных направлений за минуты. Я выбираю сильнейшие концепции и довожу их до финала. Моя доля принятых работ арт-директорами выросла, потому что я могу исследовать гораздо больше творческих направлений до фиксации на одном.",
+            "metric": "Выше принятие, 15–20 направлений за минуты"
+          },
+          {
+            "name": "Амара Уильямс",
+            "role": "Дизайнер поверхностных паттернов и художник по текстилю",
+            "quote": "Я разрабатываю коллекции тканей для 3 модных брендов, каждая требует 20–30 согласованных паттернов за сезон. До Lovart полная коллекция занимала 3 месяца интенсивной дизайн-работы. Теперь я создаю полные коллекции за 2 недели — движок паттернов генерирует бесшовные повторы с автоматическим совмещением краёв, а я фокусируюсь на креативном направлении и разработке цветовых историй. Мой доход утроился, так как теперь я могу одновременно обслуживать 8 клиентов.",
+            "metric": "Доход x3, 8 клиентов одновременно"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Часто задаваемые вопросы",
+        "faqs": [
+          {
+            "question": "Что такое Lovart и как он поддерживает профессиональную иллюстрацию?",
+            "answer": "Lovart — это первый в мире AI-дизайн-агент, полноценный креативный партнёр, а не просто генератор изображений. Для иллюстраторов это означает: опишите концепцию, стиль и аудиторию вашей иллюстрации на естественном языке и получите иллюстрации профессионального качества с согласованным художественным стилем, правильной композицией и редактируемыми элементами. В отличие от Midjourney или DALL-E, Lovart предлагает контроль уровня арт-директора через Touch Edit и Text Edit, согласованность персонажей через Nano Banana Pro и постоянную художественную память через ChatCanvas."
+          },
+          {
+            "question": "Могу ли я использовать иллюстрации Lovart коммерчески в опубликованных книгах и клиентских проектах?",
+            "answer": "Да. Пользователи платных тарифов (Starter, Basic, Pro) владеют полными коммерческими правами на свои иллюстрации. Вы можете использовать их в опубликованных книгах, редакционных работах, коммерческих продуктах, клиентских проектах, мерчандайзинге и любых законных коммерческих целях. Бесплатный тариф предназначен для личного использования и оценки."
+          },
+          {
+            "question": "Есть ли бесплатный тариф для тестирования рабочего процесса иллюстрирования?",
+            "answer": "Да, Lovart предлагает бесплатный тариф с ежедневными кредитами за вход, обновляемыми каждые 24 часа. Экспериментируйте с процессом иллюстрирования без риска. Платные тарифы: Starter (2 000 кредитов в месяц), Basic (3 500 кредитов), Pro (11 000 кредитов) — все открывают полные возможности агента, коммерческие права и премиум-модели, такие как Nano Banana Pro."
+          },
+          {
+            "question": "В каких форматах файлов я могу экспортировать иллюстрации для публикации?",
+            "answer": "Lovart поддерживает профессиональный экспорт в PNG, JPG, SVG (вектор) и слоёный PSD. Разрешение достигает 8K, что соответствует и превосходит требования к профессиональной печати детских книг (300 DPI), редакционной публикации журнального качества и цифровой дистрибуции высокого разрешения."
+          },
+          {
+            "question": "Как Lovart поддерживает согласованность персонажей в книге или серии иллюстраций?",
+            "answer": "ChatCanvas поддерживает постоянную идентичность персонажа — определите персонажа один раз (внешность, пропорции, костюм, цветовая палитра), и Nano Banana Pro сохраняет его идеально согласованным в каждой иллюстрации. Появляется ли персонаж в разных позах, условиях освещения или эмоциональных состояниях — визуальная идентичность остаётся зафиксированной. Это устраняет проблему дрейфа персонажа, которая делала традиционную AI-генерацию арта непригодной для мульти-иллюстрационных проектов."
+          },
+          {
+            "question": "Могу ли я дорабатывать иллюстрации после генерации, вместо повторной генерации?",
+            "answer": "Да, возможна обширная доработка без повторной генерации. Touch Edit обеспечивает семантическую точность «кликни-чтобы-отредактировать» — изменяйте выражения, цвета или элементы композиции, не затрагивая остальную иллюстрацию. Эта возможность редактирования позволяет итерировать к совершенству, а не довольствоваться «достаточно хорошо» и генерировать заново. Это ключевой дифференциатор Lovart."
+          },
+          {
+            "question": "Какие стили и жанры иллюстрации поддерживает Lovart?",
+            "answer": "Рабочий процесс иллюстрирования Lovart поддерживает все основные стили: акварель, цифровая живопись, векторная/плоская иллюстрация, штриховой рисунок, смешанная техника, реалистичный рендеринг, мультяшный/анимационный стиль, винтаж/ретро, коллаж и другие. Жанры включают детскую книгу, редакционную иллюстрацию, паттерн/дизайн поверхностей, дизайн персонажей, ботаническую/научную иллюстрацию, модную иллюстрацию и концепт-арт. Движок MCoT адаптируется к указанному вами стилевому направлению."
+          },
+          {
+            "question": "Могу ли я создавать бесшовные повторяющиеся паттерны для дизайна тканей и продуктов?",
+            "answer": "Да. Движок дизайна паттернов генерирует бесшовные повторяющиеся тайлы с идеальным совпадением краёв, сбалансированными структурами повтора и гармоничным распределением цвета. Создавайте коллекции паттернов с согласованными цветовыми решениями, вариациями масштаба и расположения мотивов. Экспортируйте как бесшовные тайлы или полноразмерные повторы паттернов. Подходит для тканей, обоев, подарочной упаковки, упаковки и всех применений поверхностного дизайна."
+          },
+          {
+            "question": "Как Lovart соотносится с наймом живого иллюстратора для книжных проектов?",
+            "answer": "Lovart — это инструмент творческого ускорения, а не замена художественного видения. Профессиональные иллюстраторы используют Lovart, чтобы сократить время производства с месяцев до недель, сохраняя творческое руководство. Авторы и издатели без навыков иллюстрирования теперь могут получить доступ к артворку профессионального качества. Рабочий процесс excels в эффективности производства, оставляя вам творческий контроль — вы режиссируете, Lovart исполняет, а Touch Edit позволяет доработать до совершенства."
+          }
+        ]
+      }
+    }
+  ],
+  "section_fr": [
+    {
+      "centeredInputSection": {
+        "title": "Nano Banana Projets d'illustration — Créez des illustrations IA professionnelles avec Lovart",
+        "subtitle": "Transformez vos briefs créatifs en illustrations de qualité professionnelle avec l'Agent Design IA de Lovart. Des livres pour enfants à l'art éditorial en passant par le design de motifs, Nano Banana Pro et le moteur MCoT offrent cohérence artistique et excellence visuelle.",
+        "placeholder": "Décrivez votre projet d'illustration — incluez le style, le sujet, le public cible et la direction artistique",
+        "systemPrompt": "You are a Senior Illustrator and AI Creative Director at Lovart. Using MCoT and Nano Banana Pro, analyze: 1) The illustration project type and its artistic requirements, 2) Target audience and appropriate visual language, 3) The preferred artistic style and reference inspirations, 4) Technical requirements (print resolution, color profile, format). Orchestrate Lovart's pipeline: design compositions in ChatCanvas, generate illustrations with Nano Banana Pro maintaining artistic consistency, apply Touch Edit for precision refinement, and deliver production-ready illustrations. User requirements: $input$",
+        "buttonText": "Commencer l'illustration",
+        "suggestions": [
+          "Une double page de livre pour enfants au style aquarelle chaleureux pour les 3-6 ans — avec des personnages animaux expressifs et un décor forestier enchanteur",
+          "Une illustration éditoriale pour un article de magazine sur l'innovation climatique — style concept art fusionnant visualisation de données et imagerie métaphorique",
+          "Un design de motif sans couture aux motifs botaniques d'influence art nouveau — pour le design textile et de surface",
+          "Une fiche personnage style animation avec vues avant/côté/arrière, variations d'expressions et options de costumes"
+        ]
+      },
+      "threeColumnSection": {
+        "title": "Comment le Nano Banana de Lovart accélère votre flux de travail d'illustration",
+        "subtitle": "De la définition de la direction artistique à la livraison de l'art final — en trois étapes simples",
+        "steps": [
+          {
+            "title": "Définissez votre direction artistique",
+            "description": "Décrivez votre projet d'illustration à l'Agent Design IA de Lovart. Communiquez le type d'illustration, le public cible, le style artistique préféré et la vision créative. Le moteur MCoT analyse votre brief par rapport aux conventions artistiques de votre médium choisi — qu'il s'agisse de livre pour enfants, d'art éditorial ou de design de motifs — et planifie la stratégie d'illustration.",
+            "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+          },
+          {
+            "title": "Générez et explorez des directions visuelles",
+            "description": "Regardez Nano Banana Pro transformer votre brief en illustrations professionnelles. Générez des compositions complètes, des illustrations de personnages, des tuiles de motifs ou des visuels éditoriaux — ChatCanvas maintenant un style artistique cohérent. Explorez simultanément différentes palettes de couleurs, approches de composition et traitements stylistiques, puis itérez sur les directions les plus fortes.",
+            "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+          },
+          {
+            "title": "Affinez et livrez l'art final",
+            "description": "Peaufinez vos illustrations avec les outils de précision. Utilisez Touch Edit pour ajuster des éléments spécifiques — modifiez les expressions des personnages, changez les détails d'arrière-plan ou affinez les éléments de motif. Appliquez Text Edit pour toute intégration de texte dans les illustrations éditoriales. Exportez jusqu'à une résolution 8K dans des formats prêts pour la production, l'impression et la distribution numérique.",
+            "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+          }
+        ]
+      },
+      "featureGridSection": {
+        "title": "La boîte à outils IA ultime pour la création d'illustrations professionnelles",
+        "subtitle": "Tout ce dont vous avez besoin pour vos projets d'illustration",
+        "features": [
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0",
+            "title": "Intelligence des styles artistiques",
+            "description": "Le moteur MCoT de Lovart comprend et applique divers styles d'illustration — de l'aquarelle pour enfants aux graphiques éditoriaux vectoriels — avec une fidélité remarquable. Décrivez votre style souhaité une fois, et ChatCanvas le maintient dans chaque illustration de votre projet. Générez tout, des esquisses conceptuelles libres aux œuvres finales polies."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3",
+            "title": "Touch Edit sémantique pour illustrateurs",
+            "description": "Affinez vos illustrations avec une précision au pixel près grâce à Touch Edit. Modifiez les expressions des personnages, ajustez les éléments de composition, changez les traitements de couleur ou échangez les détails d'arrière-plan — le tout avec l'intelligence sémantique cliquer-pour-modifier. Aucun masquage manuel ni repeinture requis. C'est la capacité qui élève les illustrations générées par IA au rang d'œuvres professionnelles prêtes pour le client."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932",
+            "title": "Moteur de cohérence des personnages",
+            "description": "Nano Banana Pro maintient une cohérence parfaite des personnages dans toutes les illustrations de votre projet. Qu'il s'agisse d'un personnage apparaissant sur plusieurs doubles pages, d'une mascotte de design dans différentes poses ou d'éléments de motif se répétant sans couture, le moteur de cohérence garantit que l'identité visuelle reste verrouillée — sans dérive entre les illustrations."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6",
+            "title": "Moteur de motifs et design de surface",
+            "description": "Générez des motifs répétitifs sans couture pour le tissu, le papier peint, l'emballage et le design de surface. L'agent de Lovart comprend la construction de motifs — bords de tuiles parfaitement assortis, structures de répétition équilibrées et distribution harmonieuse des couleurs. Créez des collections de motifs complexes avec des variations de couleurs et d'échelle coordonnées en un seul flux de travail."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7",
+            "title": "Export 8K prêt pour la publication",
+            "description": "Exportez des illustrations jusqu'à une résolution 8K. PNG/JPG pour le numérique, SVG pour les illustrations vectorielles et PSD avec calques pour une édition ultérieure. Adapté à l'impression de livres pour enfants (minimum 300 DPI), à l'art éditorial de qualité magazine et à la distribution numérique haute résolution. Chaque export répond aux normes professionnelles de l'édition."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166",
+            "title": "Moteur portfolio et présentation client",
+            "description": "Présentez vos illustrations de façon professionnelle avec Smart Mockup. Prévisualisez les livres pour enfants en doubles pages ouvertes, les illustrations éditoriales dans des mises en page de magazine, les motifs sur des échantillons de tissu et les fiches personnages comme pages de portfolio. Générez des formats de présentation prêts pour le client qui mettent en valeur votre travail d'illustration."
+          }
+        ]
+      },
+      "testimonialSection": {
+        "title": "Des illustrateurs qui transforment leur pratique créative avec Lovart",
+        "testimonials": [
+          {
+            "name": "Claire Beaumont",
+            "role": "Illustratrice de livres pour enfants",
+            "quote": "J'ai illustré 4 livres pour enfants publiés avec des médias traditionnels, chacun prenant 6 à 8 mois. Avec le flux de travail Nano Banana de Lovart, j'ai terminé mon dernier livre de 32 pages en 6 semaines — et mon éditeur dit que c'est mon meilleur travail. La cohérence des personnages entre les doubles pages est impeccable, ce qui nécessitait auparavant des vérifications manuelles fastidieuses. Je prends toujours chaque décision créative, mais le gain de temps de production me permet d'accepter deux fois plus de projets par an.",
+            "metric": "Temps de production 6 mois → 6 semaines"
+          },
+          {
+            "name": "David Chen",
+            "role": "Illustrateur éditorial, The Atlantic et Wired",
+            "quote": "Les délais éditoriaux sont brutaux — souvent 24 à 48 heures du brief à l'art final. Lovart est devenu mon arme secrète pour la phase d'exploration conceptuelle. Je décris le thème de l'article, et l'agent génère 15 à 20 métaphores visuelles et directions de composition en quelques minutes. Je sélectionne les concepts les plus forts et les affine jusqu'à l'art final. Mon taux d'acceptation par les directeurs artistiques s'est amélioré car je peux explorer tellement plus de directions créatives avant de m'engager.",
+            "metric": "Meilleur taux d'acceptation, 15–20 directions en minutes"
+          },
+          {
+            "name": "Amara Williams",
+            "role": "Designer de motifs de surface et artiste textile",
+            "quote": "Je conçois des collections de tissus pour 3 marques de mode, chacune nécessitant 20 à 30 motifs coordonnés par saison. Avant Lovart, une collection complète prenait 3 mois de travail de design intensif. Maintenant, je crée des collections complètes en 2 semaines — le moteur de motifs génère des répétitions sans couture avec correspondance automatique des bords, et je me concentre sur la direction créative et le développement des histoires de couleurs. Mes revenus ont triplé car je peux maintenant servir 8 clients simultanément.",
+            "metric": "Revenus x3, 8 clients simultanément"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Questions fréquentes",
+        "faqs": [
+          {
+            "question": "Qu'est-ce que Lovart et comment soutient-il l'illustration professionnelle ?",
+            "answer": "Lovart est le premier Agent Design IA au monde — un partenaire créatif complet, pas seulement un générateur d'images. Pour les illustrateurs, cela signifie décrire votre concept d'illustration, votre style et votre public en langage naturel, et recevoir des illustrations de qualité professionnelle avec un style artistique cohérent, une composition appropriée et des éléments modifiables. Contrairement à Midjourney ou DALL-E, Lovart offre un contrôle de niveau Directeur via Touch Edit et Text Edit, une cohérence des personnages via Nano Banana Pro et une mémoire artistique persistante via ChatCanvas."
+          },
+          {
+            "question": "Puis-je utiliser commercialement les illustrations Lovart dans des livres publiés et des projets clients ?",
+            "answer": "Oui. Les utilisateurs des forfaits payants (Starter, Basic, Pro) possèdent les droits commerciaux complets sur leurs illustrations. Vous pouvez les utiliser dans des livres publiés, des travaux éditoriaux, des produits commerciaux, des projets clients, des marchandises et toute fin commerciale légale. Le forfait gratuit est destiné à l'usage personnel et à l'évaluation."
+          },
+          {
+            "question": "Existe-t-il un forfait gratuit pour tester le flux de travail d'illustration ?",
+            "answer": "Oui, Lovart propose un forfait gratuit avec des crédits de connexion quotidiens renouvelés toutes les 24 heures. Expérimentez le flux d'illustration sans risque. Forfaits payants : Starter (2 000 crédits mensuels), Basic (3 500 crédits), Pro (11 000 crédits) — tous débloquent les capacités complètes de l'agent, les droits commerciaux et les modèles premium comme Nano Banana Pro."
+          },
+          {
+            "question": "Dans quels formats de fichier puis-je exporter les illustrations pour la publication ?",
+            "answer": "Lovart prend en charge l'export professionnel en PNG, JPG, SVG (vectoriel) et PSD avec calques. Les résolutions atteignent 8K, répondant et dépassant les exigences de 300 DPI pour l'impression professionnelle de livres pour enfants, la publication éditoriale de qualité magazine et la distribution numérique haute résolution."
+          },
+          {
+            "question": "Comment Lovart maintient-il la cohérence des personnages dans un livre ou une série d'illustrations ?",
+            "answer": "ChatCanvas maintient une identité de personnage persistante — définissez un personnage une fois (apparence, proportions, costume, palette de couleurs), et Nano Banana Pro le garde parfaitement cohérent dans chaque illustration. Que le personnage apparaisse dans différentes poses, conditions d'éclairage ou états émotionnels, l'identité visuelle reste verrouillée. Cela élimine le problème de dérive des personnages qui rendait la génération d'art IA traditionnelle inadaptée aux projets multi-illustrations."
+          },
+          {
+            "question": "Puis-je affiner les illustrations après la génération au lieu de régénérer ?",
+            "answer": "Oui, un affinage étendu est possible sans régénération. Touch Edit offre une précision sémantique cliquer-pour-modifier — modifiez les expressions, les couleurs ou les éléments de composition sans affecter le reste de l'illustration. Cette capacité d'édition vous permet d'itérer vers la perfection plutôt que de vous contenter d'un résultat « assez bon ». C'est le différenciateur clé de Lovart."
+          },
+          {
+            "question": "Quels styles et genres d'illustration Lovart prend-il en charge ?",
+            "answer": "Le flux de travail d'illustration de Lovart prend en charge tous les styles majeurs : aquarelle, peinture numérique, illustration vectorielle/à plat, dessin au trait, techniques mixtes, rendu réaliste, style dessin animé/animation, vintage/rétro, collage et plus. Les genres incluent le livre pour enfants, l'illustration éditoriale, le design de motifs/surfaces, le design de personnages, l'illustration botanique/scientifique, l'illustration de mode et l'art conceptuel. Le moteur MCoT s'adapte à votre direction stylistique."
+          },
+          {
+            "question": "Puis-je créer des motifs répétitifs sans couture pour le design textile et produit ?",
+            "answer": "Oui. Le moteur de design de motifs génère des tuiles répétitives sans couture avec une correspondance parfaite des bords, des structures de répétition équilibrées et une distribution harmonieuse des couleurs. Créez des collections de motifs avec des variations de couleurs et d'échelle coordonnées. Exportez en tuiles sans couture ou en répétitions de motifs pleine taille. Convient au tissu, au papier peint, à l'emballage cadeau, au packaging et à toutes les applications de design de surface."
+          },
+          {
+            "question": "Comment Lovart se compare-t-il à l'embauche d'un illustrateur humain pour des projets de livre ?",
+            "answer": "Lovart est un outil d'accélération créative, pas un remplacement de la vision artistique. Les illustrateurs professionnels utilisent Lovart pour compresser le calendrier de production de mois à semaines tout en maintenant la direction créative. Les auteurs et éditeurs sans compétences en illustration peuvent désormais accéder à des œuvres de qualité professionnelle. Le flux de travail excelle en efficacité de production tout en vous gardant le contrôle créatif — vous dirigez, Lovart exécute, et Touch Edit vous permet d'affiner jusqu'à la perfection."
+          }
+        ]
+      }
+    }
+  ],
+  "section_pt": [
+    {
+      "centeredInputSection": {
+        "title": "Nano Banana Projetos de Ilustração — Crie ilustrações IA profissionais com o Lovart",
+        "subtitle": "Transforme briefings criativos em ilustrações de qualidade profissional com o Agente de Design IA do Lovart. De livros infantis à arte editorial e design de padrões, o Nano Banana Pro e o motor MCoT proporcionam consistência artística e excelência visual.",
+        "placeholder": "Descreva seu projeto de ilustração — incluindo estilo, tema, público-alvo e direção artística",
+        "systemPrompt": "You are a Senior Illustrator and AI Creative Director at Lovart. Using MCoT and Nano Banana Pro, analyze: 1) The illustration project type and its artistic requirements, 2) Target audience and appropriate visual language, 3) The preferred artistic style and reference inspirations, 4) Technical requirements (print resolution, color profile, format). Orchestrate Lovart's pipeline: design compositions in ChatCanvas, generate illustrations with Nano Banana Pro maintaining artistic consistency, apply Touch Edit for precision refinement, and deliver production-ready illustrations. User requirements: $input$",
+        "buttonText": "Começar ilustração",
+        "suggestions": [
+          "Uma página dupla de livro infantil em estilo aquarela quente para crianças de 3 a 6 anos — com personagens animais expressivos e um cenário de floresta encantadora",
+          "Uma ilustração editorial para artigo de revista sobre inovação climática — estilo arte conceitual mesclando visualização de dados com imagética metafórica",
+          "Um design de padrão sem costura com motivos botânicos influenciados pela art nouveau — para design têxtil e de superfície",
+          "Uma ficha de personagem em estilo animação com vistas frontal/lateral/traseira, variações de expressão e opções de figurino"
+        ]
+      },
+      "threeColumnSection": {
+        "title": "Como o Nano Banana do Lovart acelera seu fluxo de trabalho de ilustração",
+        "subtitle": "Da definição da direção artística à entrega da arte final — em três etapas simples",
+        "steps": [
+          {
+            "title": "Defina sua direção artística",
+            "description": "Descreva seu projeto de ilustração ao Agente de Design IA do Lovart. Comunique o tipo de ilustração, público-alvo, estilo artístico preferido e visão criativa. O motor MCoT analisa seu briefing em relação às convenções artísticas do meio escolhido — seja livro infantil, arte editorial ou design de padrões — e planeja a estratégia de ilustração.",
+            "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+          },
+          {
+            "title": "Gere e explore direções visuais",
+            "description": "Veja o Nano Banana Pro transformar seu briefing em ilustrações profissionais. Gere composições completas, ilustrações de personagens, peças de padrão ou visuais editoriais — com o ChatCanvas mantendo o estilo artístico consistente. Explore simultaneamente diferentes paletas de cores, abordagens de composição e tratamentos estilísticos e, em seguida, itere nas direções mais fortes.",
+            "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+          },
+          {
+            "title": "Refine e entregue a arte final",
+            "description": "Aperfeiçoe suas ilustrações com as ferramentas de precisão. Use o Touch Edit para ajustar elementos específicos — modifique expressões de personagens, altere detalhes de fundo ou refine elementos de padrão. Aplique o Text Edit para qualquer integração de texto em ilustrações editoriais. Exporte em resolução de até 8K em formatos prontos para produção, impressão e distribuição digital.",
+            "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+          }
+        ]
+      },
+      "featureGridSection": {
+        "title": "O kit de ferramentas IA definitivo para criação profissional de ilustrações",
+        "subtitle": "Tudo o que você precisa para projetos de ilustração",
+        "features": [
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0",
+            "title": "Inteligência de estilos artísticos",
+            "description": "O motor MCoT do Lovart entende e aplica diversos estilos de ilustração — da aquarela infantil aos gráficos editoriais vetoriais — com notável fidelidade. Descreva o estilo desejado uma vez, e o ChatCanvas o mantém em cada ilustração do seu projeto. Gere de tudo, de esboços conceituais soltos a obras de arte finais polidas."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3",
+            "title": "Touch Edit semântico para ilustradores",
+            "description": "Refine suas ilustrações com precisão de pixel usando o Touch Edit. Modifique expressões de personagens, ajuste elementos de composição, altere tratamentos de cor ou troque detalhes de fundo — tudo com inteligência semântica de clicar-para-editar. Sem necessidade de máscara manual ou repintura. Esta é a capacidade que eleva as ilustrações geradas por IA a obras de arte profissionais prontas para o cliente."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932",
+            "title": "Motor de consistência de personagens",
+            "description": "O Nano Banana Pro mantém a consistência perfeita dos personagens em todas as ilustrações do seu projeto. Seja um personagem aparecendo em várias páginas duplas, uma mascote de design em poses diferentes ou elementos de padrão se repetindo perfeitamente, o motor de consistência garante que a identidade visual permaneça fixa — sem desvio entre ilustrações."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6",
+            "title": "Motor de padrões e design de superfície",
+            "description": "Gere padrões repetitivos sem costura para tecido, papel de parede, embalagem e design de superfície. O agente do Lovart entende a construção de padrões — bordas de peça perfeitamente combinadas, estruturas de repetição equilibradas e distribuição harmoniosa de cores. Crie coleções de padrões complexas com variações de cores e escala coordenadas em um único fluxo de trabalho."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7",
+            "title": "Exportação 8K pronta para publicação",
+            "description": "Exporte ilustrações com resolução de até 8K. PNG/JPG para digital, SVG para ilustrações vetoriais e PSD com camadas para edição adicional. Adequado para impressão de livros infantis (mínimo 300 DPI), arte editorial de qualidade de revista e distribuição digital de alta resolução. Cada exportação atende aos padrões profissionais de publicação."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166",
+            "title": "Motor de portfólio e apresentação ao cliente",
+            "description": "Apresente suas ilustrações profissionalmente com o Smart Mockup. Visualize livros infantis como páginas duplas abertas, ilustrações editoriais em layouts de revista, padrões em amostras de tecido e fichas de personagens como páginas de portfólio. Gere formatos de apresentação prontos para o cliente que mostram seu trabalho de ilustração da melhor forma."
+          }
+        ]
+      },
+      "testimonialSection": {
+        "title": "Ilustradores transformando sua prática criativa com o Lovart",
+        "testimonials": [
+          {
+            "name": "Claire Beaumont",
+            "role": "Ilustradora de livros infantis",
+            "quote": "Ilustrei 4 livros infantis publicados com mídia tradicional, cada um levando de 6 a 8 meses. Com o fluxo de trabalho Nano Banana do Lovart, terminei meu último livro de 32 páginas em 6 semanas — e meu editor diz que é meu melhor trabalho. A consistência dos personagens entre as páginas duplas é impecável, algo que antes exigia verificações manuais tediosas. Ainda tomo cada decisão criativa, mas a economia de tempo de produção me permite aceitar o dobro de projetos por ano.",
+            "metric": "Tempo de produção 6 meses → 6 semanas"
+          },
+          {
+            "name": "David Chen",
+            "role": "Ilustrador editorial, The Atlantic e Wired",
+            "quote": "Os prazos editoriais são brutais — muitas vezes 24 a 48 horas do briefing à arte final. O Lovart se tornou minha arma secreta para a fase de exploração conceitual. Descrevo o tema do artigo e o agente gera de 15 a 20 metáforas visuais e direções de composição em minutos. Seleciono os conceitos mais fortes e os refino até a arte final. Minha taxa de aceitação pelos diretores de arte melhorou porque posso explorar muito mais direções criativas antes de me comprometer.",
+            "metric": "Maior taxa de aceitação, 15–20 direções em minutos"
+          },
+          {
+            "name": "Amara Williams",
+            "role": "Designer de padrões de superfície e artista têxtil",
+            "quote": "Desenho coleções de tecidos para 3 marcas de moda, cada uma exigindo de 20 a 30 padrões coordenados por temporada. Antes do Lovart, uma coleção completa levava 3 meses de trabalho intenso de design. Agora crio coleções completas em 2 semanas — o motor de padrões gera repetições sem costura com correspondência automática de bordas, e eu me concentro na direção criativa e no desenvolvimento da história de cores. Minha receita triplicou porque agora posso atender 8 clientes simultaneamente.",
+            "metric": "Receita 3x, 8 clientes simultaneamente"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Perguntas frequentes",
+        "faqs": [
+          {
+            "question": "O que é o Lovart e como ele apoia a ilustração profissional?",
+            "answer": "O Lovart é o primeiro Agente de Design IA do mundo — um parceiro criativo completo, não apenas um gerador de imagens. Para ilustradores, isso significa descrever seu conceito de ilustração, estilo e público em linguagem natural e receber ilustrações de qualidade profissional com estilo artístico consistente, composição adequada e elementos editáveis. Diferente do Midjourney ou DALL-E, o Lovart oferece controle de nível de Diretor via Touch Edit e Text Edit, consistência de personagens via Nano Banana Pro e memória artística persistente via ChatCanvas."
+          },
+          {
+            "question": "Posso usar comercialmente as ilustrações do Lovart em livros publicados e projetos de clientes?",
+            "answer": "Sim. Usuários de planos pagos (Starter, Basic, Pro) possuem direitos comerciais completos sobre suas ilustrações. Você pode usá-las em livros publicados, trabalhos editoriais, produtos comerciais, projetos de clientes, mercadorias e qualquer fim comercial legal. O plano gratuito é para uso pessoal e avaliação."
+          },
+          {
+            "question": "Existe um plano gratuito para testar o fluxo de trabalho de ilustração?",
+            "answer": "Sim, o Lovart oferece um plano gratuito com créditos de login diários renovados a cada 24 horas. Experimente o fluxo de ilustração sem riscos. Planos pagos: Starter (2.000 créditos mensais), Basic (3.500 créditos), Pro (11.000 créditos) — todos desbloqueiam as capacidades completas do agente, direitos comerciais e modelos premium como o Nano Banana Pro."
+          },
+          {
+            "question": "Em quais formatos de arquivo posso exportar ilustrações para publicação?",
+            "answer": "O Lovart suporta exportação profissional em PNG, JPG, SVG (vetorial) e PSD com camadas. As resoluções chegam a 8K, atendendo e superando os requisitos de 300 DPI para impressão profissional de livros infantis, publicação editorial de qualidade de revista e distribuição digital de alta resolução."
+          },
+          {
+            "question": "Como o Lovart mantém a consistência dos personagens em um livro ou série de ilustrações?",
+            "answer": "O ChatCanvas mantém uma identidade de personagem persistente — defina um personagem uma vez (aparência, proporções, figurino, paleta de cores), e o Nano Banana Pro o mantém perfeitamente consistente em cada ilustração. Se o personagem aparece em poses, condições de iluminação ou estados emocionais diferentes, a identidade visual permanece fixa. Isso elimina o problema de desvio de personagem que tornava a geração de arte por IA tradicional inadequada para projetos com múltiplas ilustrações."
+          },
+          {
+            "question": "Posso refinar ilustrações após a geração em vez de regenerar?",
+            "answer": "Sim, é possível um refinamento extenso sem regeneração. O Touch Edit oferece precisão semântica de clicar-para-editar — modifique expressões, cores ou elementos de composição sem afetar o resto da ilustração. Essa capacidade de edição permite que você itere em direção à perfeição em vez de se contentar com 'bom o suficiente'. Este é o diferenciador chave do Lovart."
+          },
+          {
+            "question": "Quais estilos e gêneros de ilustração o Lovart suporta?",
+            "answer": "O fluxo de trabalho de ilustração do Lovart suporta todos os estilos principais: aquarela, pintura digital, ilustração vetorial/plana, arte linear, mídia mista, renderização realista, estilo cartoon/animação, vintage/retrô, colagem e mais. Os gêneros incluem livro infantil, ilustração editorial, design de padrões/superfícies, design de personagens, ilustração botânica/científica, ilustração de moda e arte conceitual. O motor MCoT se adapta à sua direção estilística."
+          },
+          {
+            "question": "Posso criar padrões repetitivos sem costura para design têxtil e de produto?",
+            "answer": "Sim. O motor de design de padrões gera peças repetitivas sem costura com correspondência perfeita de bordas, estruturas de repetição equilibradas e distribuição harmoniosa de cores. Crie coleções de padrões com variações de cores e escala coordenadas. Exporte como peças sem costura ou repetições de padrão em tamanho real. Adequado para tecido, papel de parede, embalagem para presente, embalagem e todas as aplicações de design de superfície."
+          },
+          {
+            "question": "Como o Lovart se compara à contratação de um ilustrador humano para projetos de livros?",
+            "answer": "O Lovart é uma ferramenta de aceleração criativa, não um substituto para a visão artística. Ilustradores profissionais usam o Lovart para comprimir o cronograma de produção de meses para semanas, mantendo a direção criativa. Autores e editoras sem habilidades de ilustração agora podem acessar obras de arte de qualidade profissional. O fluxo de trabalho se destaca pela eficiência de produção enquanto mantém você no controle criativo — você dirige, o Lovart executa e o Touch Edit permite refinar até a perfeição."
+          }
+        ]
+      }
+    }
+  ],
+  "section_it": [
+    {
+      "centeredInputSection": {
+        "title": "Nano Banana Progetti di illustrazione — Crea illustrazioni IA professionali con Lovart",
+        "subtitle": "Trasforma i brief creativi in illustrazioni di qualità professionale con l'Agente di Design IA di Lovart. Dai libri per bambini all'arte editoriale fino al design di pattern, Nano Banana Pro e il motore MCoT offrono coerenza artistica ed eccellenza visiva.",
+        "placeholder": "Descrivi il tuo progetto di illustrazione — includendo stile, soggetto, pubblico target e direzione artistica",
+        "systemPrompt": "You are a Senior Illustrator and AI Creative Director at Lovart. Using MCoT and Nano Banana Pro, analyze: 1) The illustration project type and its artistic requirements, 2) Target audience and appropriate visual language, 3) The preferred artistic style and reference inspirations, 4) Technical requirements (print resolution, color profile, format). Orchestrate Lovart's pipeline: design compositions in ChatCanvas, generate illustrations with Nano Banana Pro maintaining artistic consistency, apply Touch Edit for precision refinement, and deliver production-ready illustrations. User requirements: $input$",
+        "buttonText": "Inizia illustrazione",
+        "suggestions": [
+          "Una doppia pagina di libro per bambini in caldo stile acquerello per bambini di 3-6 anni — con personaggi animali espressivi e un'ambientazione boschiva incantata",
+          "Un'illustrazione editoriale per un articolo di rivista sull'innovazione climatica — stile concept art che fonde visualizzazione dati e immaginario metaforico",
+          "Un design di pattern senza cuciture con motivi botanici influenzati dall'art nouveau — per il design tessile e di superficie",
+          "Una scheda personaggio in stile animazione con viste frontale/laterale/posteriore, variazioni di espressione e opzioni di costume"
+        ]
+      },
+      "threeColumnSection": {
+        "title": "Come il Nano Banana di Lovart accelera il tuo flusso di lavoro di illustrazione",
+        "subtitle": "Dalla definizione della direzione artistica alla consegna dell'arte finale — in tre semplici passi",
+        "steps": [
+          {
+            "title": "Definisci la tua direzione artistica",
+            "description": "Descrivi il tuo progetto di illustrazione all'Agente di Design IA di Lovart. Comunica il tipo di illustrazione, il pubblico target, lo stile artistico preferito e la visione creativa. Il motore MCoT analizza il tuo brief rispetto alle convenzioni artistiche del mezzo scelto — che sia libro per bambini, arte editoriale o design di pattern — e pianifica la strategia illustrativa.",
+            "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+          },
+          {
+            "title": "Genera ed esplora direzioni visive",
+            "description": "Guarda Nano Banana Pro trasformare il tuo brief in illustrazioni professionali. Genera composizioni complete, illustrazioni di personaggi, tessere di pattern o visual editoriali — con ChatCanvas che mantiene lo stile artistico coerente. Esplora simultaneamente diverse palette di colori, approcci compositivi e trattamenti stilistici, quindi itera sulle direzioni più forti.",
+            "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+          },
+          {
+            "title": "Rifinisci e consegna l'arte finale",
+            "description": "Perfeziona le tue illustrazioni con gli strumenti di precisione. Usa Touch Edit per regolare elementi specifici — modifica le espressioni dei personaggi, cambia i dettagli dello sfondo o affina gli elementi del pattern. Applica Text Edit per qualsiasi integrazione di testo nelle illustrazioni editoriali. Esporta fino a una risoluzione 8K in formati pronti per la produzione, la stampa e la distribuzione digitale.",
+            "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+          }
+        ]
+      },
+      "featureGridSection": {
+        "title": "Il toolkit IA definitivo per la creazione professionale di illustrazioni",
+        "subtitle": "Tutto ciò che ti serve per i progetti di illustrazione",
+        "features": [
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0",
+            "title": "Intelligenza degli stili artistici",
+            "description": "Il motore MCoT di Lovart comprende e applica diversi stili di illustrazione — dall'acquerello per bambini alla grafica editoriale vettoriale — con notevole fedeltà. Descrivi lo stile desiderato una volta, e ChatCanvas lo mantiene in ogni illustrazione del tuo progetto. Genera di tutto, da schizzi concettuali liberi a opere d'arte finali rifinite."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3",
+            "title": "Touch Edit semantico per illustratori",
+            "description": "Rifinisci le tue illustrazioni con precisione al pixel usando Touch Edit. Modifica le espressioni dei personaggi, regola gli elementi della composizione, cambia i trattamenti cromatici o sostituisci i dettagli dello sfondo — il tutto con l'intelligenza semantica clicca-per-modificare. Nessun mascheramento manuale o ridipintura necessaria. Questa è la capacità che eleva le illustrazioni generate dall'IA a opere d'arte professionali pronte per il cliente."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932",
+            "title": "Motore di coerenza dei personaggi",
+            "description": "Nano Banana Pro mantiene la perfetta coerenza dei personaggi in tutte le illustrazioni del tuo progetto. Che si tratti di un personaggio che appare su più doppie pagine, una mascotte di design in pose diverse o elementi di pattern che si ripetono senza soluzione di continuità, il motore di coerenza garantisce che l'identità visiva rimanga bloccata — senza derive tra le illustrazioni."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6",
+            "title": "Motore di pattern e design di superficie",
+            "description": "Genera pattern ripetitivi senza cuciture per tessuto, carta da parati, imballaggi e design di superficie. L'agente di Lovart comprende la costruzione dei pattern — bordi delle tessere perfettamente corrispondenti, strutture di ripetizione equilibrate e distribuzione cromatica armoniosa. Crea collezioni di pattern complesse con variazioni di colore e scala coordinate in un unico flusso di lavoro."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7",
+            "title": "Esportazione 8K pronta per la pubblicazione",
+            "description": "Esporta illustrazioni fino a una risoluzione 8K. PNG/JPG per il digitale, SVG per illustrazioni vettoriali e PSD con livelli per ulteriori modifiche. Adatto alla stampa di libri per bambini (minimo 300 DPI), all'arte editoriale di qualità da rivista e alla distribuzione digitale ad alta risoluzione. Ogni esportazione soddisfa gli standard editoriali professionali."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166",
+            "title": "Motore portfolio e presentazione cliente",
+            "description": "Presenta le tue illustrazioni professionalmente con Smart Mockup. Visualizza l'anteprima dei libri per bambini come doppie pagine aperte, le illustrazioni editoriali in layout di rivista, i pattern su campioni di tessuto e le schede personaggio come pagine di portfolio. Genera formati di presentazione pronti per il cliente che mostrano il tuo lavoro di illustrazione al meglio."
+          }
+        ]
+      },
+      "testimonialSection": {
+        "title": "Illustratori che trasformano la loro pratica creativa con Lovart",
+        "testimonials": [
+          {
+            "name": "Claire Beaumont",
+            "role": "Illustratrice di libri per bambini",
+            "quote": "Ho illustrato 4 libri per bambini pubblicati con media tradizionali, ciascuno richiedendo 6-8 mesi. Con il flusso di lavoro Nano Banana di Lovart, ho completato il mio ultimo libro di 32 pagine in 6 settimane — e il mio editore dice che è il mio miglior lavoro. La coerenza dei personaggi tra le doppie pagine è impeccabile, cosa che prima richiedeva noiose verifiche manuali. Prendo ancora ogni decisione creativa, ma il risparmio di tempo nella produzione mi permette di accettare il doppio dei progetti all'anno.",
+            "metric": "Tempo di produzione 6 mesi → 6 settimane"
+          },
+          {
+            "name": "David Chen",
+            "role": "Illustratore editoriale, The Atlantic e Wired",
+            "quote": "Le scadenze editoriali sono brutali — spesso 24-48 ore dal brief all'arte finale. Lovart è diventato la mia arma segreta per la fase di esplorazione concettuale. Descrivo il tema dell'articolo e l'agente genera 15-20 metafore visive e direzioni compositive in pochi minuti. Seleziono i concetti più forti e li raffino fino all'arte finale. Il mio tasso di accettazione da parte dei direttori artistici è migliorato perché posso esplorare molte più direzioni creative prima di impegnarmi.",
+            "metric": "Migliore tasso di accettazione, 15–20 direzioni in minuti"
+          },
+          {
+            "name": "Amara Williams",
+            "role": "Designer di pattern di superficie e artista tessile",
+            "quote": "Disegno collezioni di tessuti per 3 marchi di moda, ciascuna richiedendo 20-30 pattern coordinati a stagione. Prima di Lovart, una collezione completa richiedeva 3 mesi di intenso lavoro di design. Ora creo collezioni complete in 2 settimane — il motore di pattern genera ripetizioni senza cuciture con corrispondenza automatica dei bordi, e io mi concentro sulla direzione creativa e sullo sviluppo della storia cromatica. Il mio reddito è triplicato perché ora posso servire 8 clienti contemporaneamente.",
+            "metric": "Reddito 3x, 8 clienti contemporaneamente"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Domande frequenti",
+        "faqs": [
+          {
+            "question": "Cos'è Lovart e come supporta l'illustrazione professionale?",
+            "answer": "Lovart è il primo Agente di Design IA al mondo — un partner creativo completo, non solo un generatore di immagini. Per gli illustratori, questo significa descrivere il concetto dell'illustrazione, lo stile e il pubblico in linguaggio naturale e ricevere illustrazioni di qualità professionale con stile artistico coerente, composizione appropriata ed elementi modificabili. A differenza di Midjourney o DALL-E, Lovart offre controllo a livello di Direttore tramite Touch Edit e Text Edit, coerenza dei personaggi tramite Nano Banana Pro e memoria artistica persistente tramite ChatCanvas."
+          },
+          {
+            "question": "Posso usare commercialmente le illustrazioni Lovart in libri pubblicati e progetti per clienti?",
+            "answer": "Sì. Gli utenti dei piani a pagamento (Starter, Basic, Pro) possiedono i diritti commerciali completi sulle loro illustrazioni. Puoi usarle in libri pubblicati, lavori editoriali, prodotti commerciali, progetti per clienti, merchandise e qualsiasi scopo commerciale legale. Il piano gratuito è per uso personale e valutazione."
+          },
+          {
+            "question": "Esiste un piano gratuito per testare il flusso di lavoro di illustrazione?",
+            "answer": "Sì, Lovart offre un piano gratuito con crediti di accesso giornalieri rinnovati ogni 24 ore. Sperimenta il flusso di illustrazione senza rischi. Piani a pagamento: Starter (2.000 crediti mensili), Basic (3.500 crediti), Pro (11.000 crediti) — tutti sbloccano le piene capacità dell'agente, i diritti commerciali e i modelli premium come Nano Banana Pro."
+          },
+          {
+            "question": "In quali formati di file posso esportare le illustrazioni per la pubblicazione?",
+            "answer": "Lovart supporta l'esportazione professionale in PNG, JPG, SVG (vettoriale) e PSD con livelli. Le risoluzioni arrivano fino a 8K, soddisfacendo e superando i requisiti di 300 DPI per la stampa professionale di libri per bambini, la pubblicazione editoriale di qualità da rivista e la distribuzione digitale ad alta risoluzione."
+          },
+          {
+            "question": "Come mantiene Lovart la coerenza dei personaggi in un libro o in una serie di illustrazioni?",
+            "answer": "ChatCanvas mantiene un'identità persistente del personaggio — definisci un personaggio una volta (aspetto, proporzioni, costume, palette di colori), e Nano Banana Pro lo mantiene perfettamente coerente in ogni illustrazione. Che il personaggio appaia in pose, condizioni di illuminazione o stati emotivi diversi, l'identità visiva rimane bloccata. Questo elimina il problema della deriva del personaggio che rendeva la generazione artistica IA tradizionale inadatta a progetti multi-illustrazione."
+          },
+          {
+            "question": "Posso rifinire le illustrazioni dopo la generazione invece di rigenerare?",
+            "answer": "Sì, è possibile un ampio perfezionamento senza rigenerazione. Touch Edit offre precisione semantica clicca-per-modificare — modifica espressioni, colori o elementi compositivi senza influire sul resto dell'illustrazione. Questa capacità di editing ti permette di iterare verso la perfezione invece di accontentarti di un risultato 'abbastanza buono'. Questo è il differenziatore chiave di Lovart."
+          },
+          {
+            "question": "Quali stili e generi di illustrazione supporta Lovart?",
+            "answer": "Il flusso di lavoro di illustrazione di Lovart supporta tutti gli stili principali: acquerello, pittura digitale, illustrazione vettoriale/piatta, disegno al tratto, tecnica mista, rendering realistico, stile cartone animato/animazione, vintage/retrò, collage e altro. I generi includono libro per bambini, illustrazione editoriale, design di pattern/superfici, design di personaggi, illustrazione botanica/scientifica, illustrazione di moda e concept art. Il motore MCoT si adatta alla tua direzione stilistica."
+          },
+          {
+            "question": "Posso creare pattern ripetitivi senza cuciture per il design tessile e di prodotto?",
+            "answer": "Sì. Il motore di design dei pattern genera tessere ripetitive senza cuciture con perfetta corrispondenza dei bordi, strutture di ripetizione equilibrate e distribuzione cromatica armoniosa. Crea collezioni di pattern con variazioni di colore e scala coordinate. Esporta come tessere senza cuciture o ripetizioni di pattern a grandezza naturale. Adatto a tessuto, carta da parati, confezioni regalo, imballaggi e tutte le applicazioni di design di superficie."
+          },
+          {
+            "question": "Come si confronta Lovart con l'assunzione di un illustratore umano per progetti di libri?",
+            "answer": "Lovart è uno strumento di accelerazione creativa, non un sostituto della visione artistica. Gli illustratori professionisti usano Lovart per comprimere la tempistica di produzione da mesi a settimane mantenendo la direzione creativa. Autori ed editori senza competenze di illustrazione possono ora accedere a opere d'arte di qualità professionale. Il flusso di lavoro eccelle nell'efficienza produttiva mantenendoti al controllo creativo — tu dirigi, Lovart esegue e Touch Edit ti permette di rifinire fino alla perfezione."
+          }
+        ]
+      }
+    }
+  ],
+  "section_es": [
+    {
+      "centeredInputSection": {
+        "title": "Nano Banana Proyectos de Ilustración — Crea ilustraciones IA profesionales con Lovart",
+        "subtitle": "Transforma briefs creativos en ilustraciones de calidad profesional con el Agente de Diseño IA de Lovart. Desde libros infantiles hasta arte editorial y diseño de patrones, Nano Banana Pro y el motor MCoT ofrecen consistencia artística y excelencia visual.",
+        "placeholder": "Describe tu proyecto de ilustración — incluyendo estilo, temática, público objetivo y dirección artística",
+        "systemPrompt": "You are a Senior Illustrator and AI Creative Director at Lovart. Using MCoT and Nano Banana Pro, analyze: 1) The illustration project type and its artistic requirements, 2) Target audience and appropriate visual language, 3) The preferred artistic style and reference inspirations, 4) Technical requirements (print resolution, color profile, format). Orchestrate Lovart's pipeline: design compositions in ChatCanvas, generate illustrations with Nano Banana Pro maintaining artistic consistency, apply Touch Edit for precision refinement, and deliver production-ready illustrations. User requirements: $input$",
+        "buttonText": "Comenzar ilustración",
+        "suggestions": [
+          "Una doble página de libro infantil en cálido estilo acuarela para niños de 3 a 6 años — con personajes animales expresivos y un encantador escenario boscoso",
+          "Una ilustración editorial para un artículo de revista sobre innovación climática — estilo arte conceptual fusionando visualización de datos con imaginería metafórica",
+          "Un diseño de patrón sin costuras con motivos botánicos de influencia art nouveau — para diseño textil y de superficies",
+          "Una hoja de personaje estilo animación con vistas frontal/lateral/trasera, variaciones de expresión y opciones de vestuario"
+        ]
+      },
+      "threeColumnSection": {
+        "title": "Cómo el Nano Banana de Lovart acelera tu flujo de trabajo de ilustración",
+        "subtitle": "Desde la definición de la dirección artística hasta la entrega del arte final — en tres simples pasos",
+        "steps": [
+          {
+            "title": "Define tu dirección artística",
+            "description": "Describe tu proyecto de ilustración al Agente de Diseño IA de Lovart. Comunica el tipo de ilustración, público objetivo, estilo artístico preferido y visión creativa. El motor MCoT analiza tu brief según las convenciones artísticas del medio elegido — ya sea libro infantil, arte editorial o diseño de patrones — y planifica la estrategia de ilustración.",
+            "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+          },
+          {
+            "title": "Genera y explora direcciones visuales",
+            "description": "Observa cómo Nano Banana Pro transforma tu brief en ilustraciones profesionales. Genera composiciones completas, ilustraciones de personajes, teselas de patrón o visuales editoriales — con ChatCanvas manteniendo el estilo artístico consistente. Explora simultáneamente diferentes paletas de colores, enfoques compositivos y tratamientos estilísticos, luego itera sobre las direcciones más fuertes.",
+            "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+          },
+          {
+            "title": "Refina y entrega el arte final",
+            "description": "Pule tus ilustraciones con las herramientas de precisión. Usa Touch Edit para ajustar elementos específicos — modifica expresiones de personajes, cambia detalles de fondo o refina elementos de patrón. Aplica Text Edit para cualquier integración de texto en ilustraciones editoriales. Exporta hasta resolución 8K en formatos listos para producción, impresión y distribución digital.",
+            "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+          }
+        ]
+      },
+      "featureGridSection": {
+        "title": "El kit de herramientas IA definitivo para la creación profesional de ilustraciones",
+        "subtitle": "Todo lo que necesitas para proyectos de ilustración",
+        "features": [
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0",
+            "title": "Inteligencia de estilos artísticos",
+            "description": "El motor MCoT de Lovart entiende y aplica diversos estilos de ilustración — desde acuarela infantil hasta gráficos editoriales vectoriales — con notable fidelidad. Describe el estilo deseado una vez, y ChatCanvas lo mantiene en cada ilustración de tu proyecto. Genera desde bocetos conceptuales sueltos hasta obras de arte finales pulidas."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3",
+            "title": "Touch Edit semántico para ilustradores",
+            "description": "Refina tus ilustraciones con precisión de píxel usando Touch Edit. Modifica expresiones de personajes, ajusta elementos de composición, cambia tratamientos de color o intercambia detalles de fondo — todo con inteligencia semántica de clic-para-editar. Sin necesidad de enmascarado manual ni repintado. Esta es la capacidad que eleva las ilustraciones generadas por IA a obras de arte profesionales listas para el cliente."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932",
+            "title": "Motor de consistencia de personajes",
+            "description": "Nano Banana Pro mantiene una consistencia perfecta de personajes en todas las ilustraciones de tu proyecto. Ya sea un personaje que aparece en múltiples páginas dobles, una mascota de diseño en diferentes poses o elementos de patrón que se repiten sin fisuras, el motor de consistencia garantiza que la identidad visual permanezca fija — sin deriva entre ilustraciones."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6",
+            "title": "Motor de patrones y diseño de superficies",
+            "description": "Genera patrones repetitivos sin costuras para tela, papel pintado, embalaje y diseño de superficies. El agente de Lovart entiende la construcción de patrones — bordes de tesela perfectamente coincidentes, estructuras de repetición equilibradas y distribución cromática armoniosa. Crea colecciones de patrones complejas con variaciones de color y escala coordinadas en un solo flujo de trabajo."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7",
+            "title": "Exportación 8K lista para publicación",
+            "description": "Exporta ilustraciones hasta resolución 8K. PNG/JPG para digital, SVG para ilustraciones vectoriales y PSD con capas para edición adicional. Adecuado para impresión de libros infantiles (mínimo 300 DPI), arte editorial de calidad revista y distribución digital de alta resolución. Cada exportación cumple con los estándares profesionales de publicación."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166",
+            "title": "Motor de portafolio y presentación al cliente",
+            "description": "Presenta tus ilustraciones profesionalmente con Smart Mockup. Previsualiza libros infantiles como páginas dobles abiertas, ilustraciones editoriales en maquetaciones de revista, patrones en muestras de tela y hojas de personajes como páginas de portafolio. Genera formatos de presentación listos para el cliente que muestran tu trabajo de ilustración en su mejor forma."
+          }
+        ]
+      },
+      "testimonialSection": {
+        "title": "Ilustradores transformando su práctica creativa con Lovart",
+        "testimonials": [
+          {
+            "name": "Claire Beaumont",
+            "role": "Ilustradora de libros infantiles",
+            "quote": "He ilustrado 4 libros infantiles publicados con medios tradicionales, cada uno llevando de 6 a 8 meses. Con el flujo de trabajo Nano Banana de Lovart, terminé mi último libro de 32 páginas en 6 semanas — y mi editor dice que es mi mejor trabajo. La consistencia de los personajes entre páginas dobles es impecable, algo que antes requería tediosas comprobaciones manuales. Sigo tomando cada decisión creativa, pero el ahorro de tiempo de producción me permite aceptar el doble de proyectos al año.",
+            "metric": "Tiempo de producción 6 meses → 6 semanas"
+          },
+          {
+            "name": "David Chen",
+            "role": "Ilustrador editorial, The Atlantic y Wired",
+            "quote": "Los plazos editoriales son brutales — a menudo 24-48 horas del brief al arte final. Lovart se ha convertido en mi arma secreta para la fase de exploración conceptual. Describo el tema del artículo y el agente genera 15-20 metáforas visuales y direcciones compositivas en minutos. Selecciono los conceptos más fuertes y los refino hasta el arte final. Mi tasa de aceptación por los directores de arte ha mejorado porque puedo explorar muchas más direcciones creativas antes de comprometerme.",
+            "metric": "Mayor tasa de aceptación, 15–20 direcciones en minutos"
+          },
+          {
+            "name": "Amara Williams",
+            "role": "Diseñadora de patrones de superficie y artista textil",
+            "quote": "Diseño colecciones de telas para 3 marcas de moda, cada una requiriendo 20-30 patrones coordinados por temporada. Antes de Lovart, una colección completa llevaba 3 meses de intenso trabajo de diseño. Ahora creo colecciones completas en 2 semanas — el motor de patrones genera repeticiones sin costuras con coincidencia automática de bordes, y yo me concentro en la dirección creativa y el desarrollo de historias de color. Mis ingresos se han triplicado porque ahora puedo atender a 8 clientes simultáneamente.",
+            "metric": "Ingresos x3, 8 clientes simultáneamente"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Preguntas frecuentes",
+        "faqs": [
+          {
+            "question": "¿Qué es Lovart y cómo apoya la ilustración profesional?",
+            "answer": "Lovart es el primer Agente de Diseño IA del mundo — un socio creativo completo, no solo un generador de imágenes. Para los ilustradores, esto significa describir tu concepto de ilustración, estilo y audiencia en lenguaje natural y recibir ilustraciones de calidad profesional con estilo artístico consistente, composición adecuada y elementos editables. A diferencia de Midjourney o DALL-E, Lovart ofrece control de nivel de Director a través de Touch Edit y Text Edit, consistencia de personajes a través de Nano Banana Pro y memoria artística persistente a través de ChatCanvas."
+          },
+          {
+            "question": "¿Puedo usar comercialmente las ilustraciones de Lovart en libros publicados y proyectos de clientes?",
+            "answer": "Sí. Los usuarios de planes de pago (Starter, Basic, Pro) poseen derechos comerciales completos sobre sus ilustraciones. Puedes usarlas en libros publicados, trabajos editoriales, productos comerciales, proyectos de clientes, mercancía y cualquier fin comercial legal. El plan gratuito es para uso personal y evaluación."
+          },
+          {
+            "question": "¿Hay un plan gratuito para probar el flujo de trabajo de ilustración?",
+            "answer": "Sí, Lovart ofrece un plan gratuito con créditos de inicio de sesión diarios renovados cada 24 horas. Experimenta con el flujo de ilustración sin riesgos. Planes de pago: Starter (2.000 créditos mensuales), Basic (3.500 créditos), Pro (11.000 créditos) — todos desbloquean las capacidades completas del agente, derechos comerciales y modelos premium como Nano Banana Pro."
+          },
+          {
+            "question": "¿En qué formatos de archivo puedo exportar ilustraciones para publicación?",
+            "answer": "Lovart admite exportación profesional en PNG, JPG, SVG (vectorial) y PSD con capas. Las resoluciones alcanzan 8K, cumpliendo y superando los requisitos de 300 DPI para impresión profesional de libros infantiles, publicación editorial de calidad revista y distribución digital de alta resolución."
+          },
+          {
+            "question": "¿Cómo mantiene Lovart la consistencia de los personajes en un libro o serie de ilustraciones?",
+            "answer": "ChatCanvas mantiene una identidad de personaje persistente — define un personaje una vez (apariencia, proporciones, vestuario, paleta de colores), y Nano Banana Pro lo mantiene perfectamente consistente en cada ilustración. Ya sea que el personaje aparezca en diferentes poses, condiciones de iluminación o estados emocionales, la identidad visual permanece fija. Esto elimina el problema de deriva de personajes que hacía que la generación de arte IA tradicional no fuera adecuada para proyectos de múltiples ilustraciones."
+          },
+          {
+            "question": "¿Puedo refinar ilustraciones después de la generación en lugar de regenerar?",
+            "answer": "Sí, es posible un refinamiento extenso sin regeneración. Touch Edit ofrece precisión semántica de clic-para-editar — modifica expresiones, colores o elementos compositivos sin afectar el resto de la ilustración. Esta capacidad de edición te permite iterar hacia la perfección en lugar de conformarte con 'suficientemente bueno'. Este es el diferenciador clave de Lovart."
+          },
+          {
+            "question": "¿Qué estilos y géneros de ilustración admite Lovart?",
+            "answer": "El flujo de trabajo de ilustración de Lovart admite todos los estilos principales: acuarela, pintura digital, ilustración vectorial/plana, dibujo lineal, técnica mixta, renderizado realista, estilo cartoon/animación, vintage/retro, collage y más. Los géneros incluyen libro infantil, ilustración editorial, diseño de patrones/superficies, diseño de personajes, ilustración botánica/científica, ilustración de moda y arte conceptual. El motor MCoT se adapta a tu dirección estilística."
+          },
+          {
+            "question": "¿Puedo crear patrones repetitivos sin costuras para diseño textil y de producto?",
+            "answer": "Sí. El motor de diseño de patrones genera teselas repetitivas sin costuras con coincidencia perfecta de bordes, estructuras de repetición equilibradas y distribución cromática armoniosa. Crea colecciones de patrones con variaciones de color y escala coordinadas. Exporta como teselas sin costuras o repeticiones de patrón a tamaño completo. Adecuado para tela, papel pintado, envoltorio de regalo, embalaje y todas las aplicaciones de diseño de superficies."
+          },
+          {
+            "question": "¿Cómo se compara Lovart con contratar a un ilustrador humano para proyectos de libros?",
+            "answer": "Lovart es una herramienta de aceleración creativa, no un sustituto de la visión artística. Los ilustradores profesionales usan Lovart para comprimir el cronograma de producción de meses a semanas manteniendo la dirección creativa. Autores y editores sin habilidades de ilustración ahora pueden acceder a obras de arte de calidad profesional. El flujo de trabajo destaca por su eficiencia de producción manteniéndote en control creativo — tú diriges, Lovart ejecuta y Touch Edit te permite refinar hasta la perfección."
+          }
+        ]
+      }
+    }
+  ]
+}

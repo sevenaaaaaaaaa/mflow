@@ -1,0 +1,387 @@
+{
+  "_id": "features-ai-video-prompt-generator-veo-sora-zh-TW",
+  "reflowSourceId": "features-ai-video-prompt-generator-veo-sora-zh-TW",
+  "slug": "ai-video-prompt-generator-veo-sora",
+  "language": "zh-TW",
+  "category": "feature",
+  "title": "AI影片提示詞產生器：打造電影級場景，支援Veo與Sora | Lovart",
+  "description": "Create professional AI video prompts effortlessly. Lovart's Agent turns simple ideas into technical, cinematic instructions for Veo 3, Sora, and Kling. Includes camera control and lighting.",
+  "seo": {
+    "description": "輕鬆打造專業AI影片提示詞！Lovart's Agent將簡單想法轉化為Veo 3、Sora、Kling的技術級電影指令，包含鏡頭控制與燈光設定。",
+    "keywords": [
+      "AI影片提示產生器",
+      "文字轉影片提示",
+      "Sora提示輔助工具",
+      "Veo 3提示",
+      "AI電影攝影",
+      "影片生成代理",
+      "Lovart影片工具"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Camera Logic",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"AI影片提示詞產生器：打造電影級場景，支援Veo與Sora | Lovart\", \"description\": \"Create professional AI video prompts effortlessly. Lovart's Agent turns simple ideas into technical, cinematic instructions for Veo 3, Sora, and Kling. Includes camera control and lighting.\", \"url\": \"https://www.lovart.ai/features/ai-video-prompt-generator-veo-sora\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"這適用於所有 AI 影片模型嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"是的，Lovart 的提示詞代理人接受過 Veo 3、Kling、Sora 和 Runway Gen-3 等主要模型語法的訓練。它會調整術語以適應您選擇的特定模型。\"}}, {\"@type\": \"Question\", \"name\": \"我需要了解攝影術語嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"完全不需要。您描述感覺（例如：「可怕」、「快速」、「夢幻」），代理人將其轉化為技術相機術語（例如：「荷蘭式鏡頭」、「動態模糊」、「柔焦」）。\"}}, {\"@type\": \"Question\", \"name\": \"我可以使用圖像作為影片的提示詞嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以！這是我們的「圖像轉影片」工作流程。上傳一張 Nano Banana 圖像，代理人將幫助您編寫動作提示詞，毫不費力地讓那張靜態圖像栩栩如生。\"}}, {\"@type\": \"Question\", \"name\": \"我的初步想法應該多詳細？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"它可以像三個字一樣簡單，也可以像一個段落一樣複雜。代理人旨在擴展簡單的想法或完善複雜的想法，以便 AI 更好地解讀。\"}}, {\"@type\": \"Question\", \"name\": \"提示詞生成器是免費的嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"基本提示詞增強功能對所有使用者開放。Flux Kontext 整合和無限提示詞迭代等進階功能是 Pro 計劃的一部分。\"}}]}}"
+    },
+    "title": "AI影片提示詞產生器：打造電影級場景，支援Veo與Sora | Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"AI影片提示詞產生器：打造電影級場景，支援Veo與Sora | Lovart\",\"description\":\"Create professional AI video prompts effortlessly. Lovart's Agent turns simple ideas into technical, cinematic instructions for Veo 3, Sora, and Kling. Includes camera control and lighting.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Camera Logic\"}},{\"type\":\"bento-6\",\"title\":\"Why You Need an AI Video Prompt Agent\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"相機邏輯\",\"description\":\"AI 影片模型沒有指導就會失敗。我們的代理人會自動添加運鏡指令，如「推軌前進（Dolly In）」、「左移（Truck Left）」或「FPV 無人機」，賦予您的影片電影般的動感。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"相機邏輯\"}},{\"title\":\"物理與動作\",\"description\":\"避免「AI 變形」效果。我們優化提示詞以定義清晰的物理動作（例如：「奔跑而不滑動」、「水自然飛濺」），以配合 Veo 3 的物理引擎。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"物理與動作\"}},{\"title\":\"風格鎖定\",\"description\":\"想要一致的外觀？代理人可以生成嚴格遵守特定藝術風格的提示詞，如「1980 年代 VHS」、「皮克斯 3D」或「Nano Banana 扁平插畫」。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"風格鎖定\"}},{\"title\":\"負向提示\",\"description\":\"不僅是您想要的，還有您不想要的。代理人會自動包含負向參數，以防止常見的影片故障，如多餘的肢體或模糊的背景。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"負向提示\"}},{\"title\":\"Flux Kontext 整合\",\"description\":\"超越文字。提示詞代理人與 Flux Kontext 無縫協作，將角色參考整合到影片提示詞中，確保您的主角在每個片段中看起來都一樣。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Flux Kontext 整合\"}},{\"title\":\"可商用\",\"description\":\"生成優化用於高解析度、無浮水印輸出的提示詞，適合廣告、YouTube 和專業演示。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"可商用\"}}]},{\"type\":\"capability-tabs\",\"title\":\"一個智慧體，整合全部能力\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"相機邏輯\",\"icon\":\"chat\",\"content\":{\"title\":\"相機邏輯\",\"description\":\"AI 影片模型沒有指導就會失敗。我們的代理人會自動添加運鏡指令，如「推軌前進（Dolly In）」、「左移（Truck Left）」或「FPV 無人機」，賦予您的影片電影般的動感。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"相機邏輯\"}}},{\"label\":\"物理與動作\",\"icon\":\"image\",\"content\":{\"title\":\"物理與動作\",\"description\":\"避免「AI 變形」效果。我們優化提示詞以定義清晰的物理動作（例如：「奔跑而不滑動」、「水自然飛濺」），以配合 Veo 3 的物理引擎。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"物理與動作\"}}},{\"label\":\"風格鎖定\",\"icon\":\"flask\",\"content\":{\"title\":\"風格鎖定\",\"description\":\"想要一致的外觀？代理人可以生成嚴格遵守特定藝術風格的提示詞，如「1980 年代 VHS」、「皮克斯 3D」或「Nano Banana 扁平插畫」。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"風格鎖定\"}}},{\"label\":\"負向提示\",\"icon\":\"brand\",\"content\":{\"title\":\"負向提示\",\"description\":\"不僅是您想要的，還有您不想要的。代理人會自動包含負向參數，以防止常見的影片故障，如多餘的肢體或模糊的背景。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"負向提示\"}}}]},{\"type\":\"bento-2\",\"title\":\"尤其擅長的兩件事\",\"columns\":2,\"features\":[{\"title\":\"Flux Kontext 整合\",\"description\":\"超越文字。提示詞代理人與 Flux Kontext 無縫協作，將角色參考整合到影片提示詞中，確保您的主角在每個片段中看起來都一樣。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Flux Kontext 整合\"}},{\"title\":\"可商用\",\"description\":\"生成優化用於高解析度、無浮水印輸出的提示詞，適合廣告、YouTube 和專業演示。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"可商用\"}}]},{\"type\":\"feature-detail\",\"title\":\"詳細了解使用方式\",\"items\":[{\"title\":\"開啟你的AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora專案\",\"description\":\"描述你想要的成果，並補充參考素材即可。\"},{\"title\":\"與智慧體一起迭代\",\"description\":\"在同一畫布上調整細節、探索不同方案。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"AI 影片提示詞生成器：為 Veo 3 和 Sora 製作電影級提示詞\",\"description\":\"停止在糟糕的影片生成上浪費額度。Lovart 的 AI 代理人充當您的個人電影攝影師，將簡單的想法轉化為高度詳細、技術優化的影片提示詞。透過精確的相機控制、燈光和動作指令，釋放 Veo 3 和 Kling 的全部潛力。\",\"input_placeholder\":\"描述您的影片想法（例如：一個賽博龐克偵探在雨中行走）\",\"prompts\":[{\"label\":\"科幻環境\",\"prompt\":\"電影級無人機鏡頭在夜間飛越未來感的生物發光叢林，4k\"},{\"label\":\"商業 B-Roll\",\"prompt\":\"廚師切鮮紅番茄的特寫，蒸汽升起，微距鏡頭，慢動作\"},{\"label\":\"動作場景\",\"prompt\":\"賽博龐克街頭追逐，霓虹燈反射在濕潤的路面上，快速相機追蹤\"},{\"label\":\"3D 角色\",\"prompt\":\"3D 黏土動畫風格的可愛兔子揮手打招呼，柔和的攝影棚燈光，可循環\"}],\"tip\":\"提示：提及氛圍、相機角度（例如：「無人機拍攝」）和具體動作（例如：「慢動作奔跑」）。\",\"cta\":{\"text\":\"生成專業提示詞\"}},{\"type\":\"workflow-horizontal\",\"title\":\"將模糊的想法轉化為好萊塢場景\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"描述您的願景\",\"description\":\"從一個粗略的概念開始。無論是「一輛車在開」還是「一場奇幻戰鬥」，只需輸入您腦海中看到的畫面。無需了解專業的電影術語。\"},{\"step\":2,\"title\":\"代理人增強\",\"description\":\"Lovart 代理人分析您的輸入並注入專業的電影攝影細節——相機鏡頭、燈光類型和動作物理學——專為 Veo 3 等模型優化。\"},{\"step\":3,\"title\":\"生成與迭代\",\"description\":\"使用增強後的提示詞在 Lovart 內立即生成令人驚嘆的影片。不滿意？要求代理人「讓它更可怕」或「拉近鏡頭」以完善結果。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora：Lovart 與一般工作流程比較\",\"headers\":[\"需求\",\"通用工具\",\"手動工作流程\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"開啟你的AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora專案\",\"values\":[\"一句提示詞\",\"手動撰寫需求\",\"需求驅動的推理\"]},{\"feature\":\"產出第一版的時間\",\"values\":[\"幾分鐘\",\"數天\",\"幾分鐘\"]},{\"feature\":\"生成後的編輯\",\"values\":[\"有限\",\"反覆修改\",\"塗抹 / 文字 / 元素編輯\"]},{\"feature\":\"維持品牌一致\",\"values\":[\"手動\",\"手動\",\"支援 Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora的最佳應用場景\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"更快上線\",\"description\":\"從需求到AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora素材，一次工作階段即可完成。\"},{\"icon\":\"brand\",\"title\":\"維持一致\",\"description\":\"Brand Kit 讓每一份素材都保持統一。\"},{\"icon\":\"refresh\",\"title\":\"快速迭代\",\"description\":\"無需從頭開始，即可編輯細節。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"我以前花幾個小時猜測 Veo 的提示詞。Lovart 的代理人將我的句子「雨中悲傷的機器人」變成了帶有燈光規格的 4 行傑作提示詞。結果堪稱奧斯卡級。\",\"author\":\"Marcus D.\",\"role\":\"獨立電影製作人\"},{\"quote\":\"相機控制提示詞改變了遊戲規則。我終於可以生成一致的產品影片，並準確縮放到我想要的位置。感覺就像我在指揮一個真正的攝製組。\",\"author\":\"Sarah L.\",\"role\":\"TikTok 行銷人員\"},{\"quote\":\"我使用提示詞生成器來創建動態分鏡腳本。在提示詞工作流程中使用 Nano Banana 參考來鎖定風格的能力是其他工具所沒有的。\",\"author\":\"Kenji T.\",\"role\":\"概念藝術家\"}],\"title\":\"創作者使用 Lovart 提示詞創造電影魔法\"},{\"type\":\"pricing-block\",\"title\":\"選擇適合團隊的方案\",\"description\":\"免費開始，當作品要交付客戶時再升級。\"},{\"type\":\"faq\",\"title\":\"常見問題\",\"items\":[{\"question\":\"這適用於所有 AI 影片模型嗎？\",\"answer\":\"是的，Lovart 的提示詞代理人接受過 Veo 3、Kling、Sora 和 Runway Gen-3 等主要模型語法的訓練。它會調整術語以適應您選擇的特定模型。\"},{\"question\":\"我需要了解攝影術語嗎？\",\"answer\":\"完全不需要。您描述感覺（例如：「可怕」、「快速」、「夢幻」），代理人將其轉化為技術相機術語（例如：「荷蘭式鏡頭」、「動態模糊」、「柔焦」）。\"},{\"question\":\"我可以使用圖像作為影片的提示詞嗎？\",\"answer\":\"可以！這是我們的「圖像轉影片」工作流程。上傳一張 Nano Banana 圖像，代理人將幫助您編寫動作提示詞，毫不費力地讓那張靜態圖像栩栩如生。\"},{\"question\":\"我的初步想法應該多詳細？\",\"answer\":\"它可以像三個字一樣簡單，也可以像一個段落一樣複雜。代理人旨在擴展簡單的想法或完善複雜的想法，以便 AI 更好地解讀。\"},{\"question\":\"提示詞生成器是免費的嗎？\",\"answer\":\"基本提示詞增強功能對所有使用者開放。Flux Kontext 整合和無限提示詞迭代等進階功能是 Pro 計劃的一部分。\"}]},{\"type\":\"cta-default\",\"title\":\"用 Lovart 開始創作\",\"description\":\"幾分鐘內，把你的需求變成符合品牌調性的視覺作品。\",\"buttons\":[{\"text\":\"免費開始\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "AI影片提示詞產生器：打造電影級場景，支援Veo與Sora | Lovart",
+      "description": "Create professional AI video prompts effortlessly. Lovart's Agent turns simple ideas into technical, cinematic instructions for Veo 3, Sora, and Kling. Includes camera control and lighting.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Camera Logic"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Why You Need an AI Video Prompt Agent",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "相機邏輯",
+          "description": "AI 影片模型沒有指導就會失敗。我們的代理人會自動添加運鏡指令，如「推軌前進（Dolly In）」、「左移（Truck Left）」或「FPV 無人機」，賦予您的影片電影般的動感。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "相機邏輯"
+          }
+        },
+        {
+          "title": "物理與動作",
+          "description": "避免「AI 變形」效果。我們優化提示詞以定義清晰的物理動作（例如：「奔跑而不滑動」、「水自然飛濺」），以配合 Veo 3 的物理引擎。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "物理與動作"
+          }
+        },
+        {
+          "title": "風格鎖定",
+          "description": "想要一致的外觀？代理人可以生成嚴格遵守特定藝術風格的提示詞，如「1980 年代 VHS」、「皮克斯 3D」或「Nano Banana 扁平插畫」。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "風格鎖定"
+          }
+        },
+        {
+          "title": "負向提示",
+          "description": "不僅是您想要的，還有您不想要的。代理人會自動包含負向參數，以防止常見的影片故障，如多餘的肢體或模糊的背景。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "負向提示"
+          }
+        },
+        {
+          "title": "Flux Kontext 整合",
+          "description": "超越文字。提示詞代理人與 Flux Kontext 無縫協作，將角色參考整合到影片提示詞中，確保您的主角在每個片段中看起來都一樣。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Flux Kontext 整合"
+          }
+        },
+        {
+          "title": "可商用",
+          "description": "生成優化用於高解析度、無浮水印輸出的提示詞，適合廣告、YouTube 和專業演示。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "可商用"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "一個智慧體，整合全部能力",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "相機邏輯",
+          "icon": "chat",
+          "content": {
+            "title": "相機邏輯",
+            "description": "AI 影片模型沒有指導就會失敗。我們的代理人會自動添加運鏡指令，如「推軌前進（Dolly In）」、「左移（Truck Left）」或「FPV 無人機」，賦予您的影片電影般的動感。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "相機邏輯"
+            }
+          }
+        },
+        {
+          "label": "物理與動作",
+          "icon": "image",
+          "content": {
+            "title": "物理與動作",
+            "description": "避免「AI 變形」效果。我們優化提示詞以定義清晰的物理動作（例如：「奔跑而不滑動」、「水自然飛濺」），以配合 Veo 3 的物理引擎。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "物理與動作"
+            }
+          }
+        },
+        {
+          "label": "風格鎖定",
+          "icon": "flask",
+          "content": {
+            "title": "風格鎖定",
+            "description": "想要一致的外觀？代理人可以生成嚴格遵守特定藝術風格的提示詞，如「1980 年代 VHS」、「皮克斯 3D」或「Nano Banana 扁平插畫」。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "風格鎖定"
+            }
+          }
+        },
+        {
+          "label": "負向提示",
+          "icon": "brand",
+          "content": {
+            "title": "負向提示",
+            "description": "不僅是您想要的，還有您不想要的。代理人會自動包含負向參數，以防止常見的影片故障，如多餘的肢體或模糊的背景。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "負向提示"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "尤其擅長的兩件事",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Flux Kontext 整合",
+          "description": "超越文字。提示詞代理人與 Flux Kontext 無縫協作，將角色參考整合到影片提示詞中，確保您的主角在每個片段中看起來都一樣。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Flux Kontext 整合"
+          }
+        },
+        {
+          "title": "可商用",
+          "description": "生成優化用於高解析度、無浮水印輸出的提示詞，適合廣告、YouTube 和專業演示。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "可商用"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "詳細了解使用方式",
+      "items": [
+        {
+          "title": "開啟你的AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora專案",
+          "description": "描述你想要的成果，並補充參考素材即可。"
+        },
+        {
+          "title": "與智慧體一起迭代",
+          "description": "在同一畫布上調整細節、探索不同方案。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "AI 影片提示詞生成器：為 Veo 3 和 Sora 製作電影級提示詞",
+      "description": "停止在糟糕的影片生成上浪費額度。Lovart 的 AI 代理人充當您的個人電影攝影師，將簡單的想法轉化為高度詳細、技術優化的影片提示詞。透過精確的相機控制、燈光和動作指令，釋放 Veo 3 和 Kling 的全部潛力。",
+      "input_placeholder": "描述您的影片想法（例如：一個賽博龐克偵探在雨中行走）",
+      "prompts": [
+        {
+          "label": "科幻環境",
+          "prompt": "電影級無人機鏡頭在夜間飛越未來感的生物發光叢林，4k"
+        },
+        {
+          "label": "商業 B-Roll",
+          "prompt": "廚師切鮮紅番茄的特寫，蒸汽升起，微距鏡頭，慢動作"
+        },
+        {
+          "label": "動作場景",
+          "prompt": "賽博龐克街頭追逐，霓虹燈反射在濕潤的路面上，快速相機追蹤"
+        },
+        {
+          "label": "3D 角色",
+          "prompt": "3D 黏土動畫風格的可愛兔子揮手打招呼，柔和的攝影棚燈光，可循環"
+        }
+      ],
+      "tip": "提示：提及氛圍、相機角度（例如：「無人機拍攝」）和具體動作（例如：「慢動作奔跑」）。",
+      "cta": {
+        "text": "生成專業提示詞"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "將模糊的想法轉化為好萊塢場景",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "描述您的願景",
+          "description": "從一個粗略的概念開始。無論是「一輛車在開」還是「一場奇幻戰鬥」，只需輸入您腦海中看到的畫面。無需了解專業的電影術語。"
+        },
+        {
+          "step": 2,
+          "title": "代理人增強",
+          "description": "Lovart 代理人分析您的輸入並注入專業的電影攝影細節——相機鏡頭、燈光類型和動作物理學——專為 Veo 3 等模型優化。"
+        },
+        {
+          "step": 3,
+          "title": "生成與迭代",
+          "description": "使用增強後的提示詞在 Lovart 內立即生成令人驚嘆的影片。不滿意？要求代理人「讓它更可怕」或「拉近鏡頭」以完善結果。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora：Lovart 與一般工作流程比較",
+      "headers": [
+        "需求",
+        "通用工具",
+        "手動工作流程",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "開啟你的AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora專案",
+          "values": [
+            "一句提示詞",
+            "手動撰寫需求",
+            "需求驅動的推理"
+          ]
+        },
+        {
+          "feature": "產出第一版的時間",
+          "values": [
+            "幾分鐘",
+            "數天",
+            "幾分鐘"
+          ]
+        },
+        {
+          "feature": "生成後的編輯",
+          "values": [
+            "有限",
+            "反覆修改",
+            "塗抹 / 文字 / 元素編輯"
+          ]
+        },
+        {
+          "feature": "維持品牌一致",
+          "values": [
+            "手動",
+            "手動",
+            "支援 Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora的最佳應用場景",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "更快上線",
+          "description": "從需求到AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora素材，一次工作階段即可完成。"
+        },
+        {
+          "icon": "brand",
+          "title": "維持一致",
+          "description": "Brand Kit 讓每一份素材都保持統一。"
+        },
+        {
+          "icon": "refresh",
+          "title": "快速迭代",
+          "description": "無需從頭開始，即可編輯細節。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "我以前花幾個小時猜測 Veo 的提示詞。Lovart 的代理人將我的句子「雨中悲傷的機器人」變成了帶有燈光規格的 4 行傑作提示詞。結果堪稱奧斯卡級。",
+          "author": "Marcus D.",
+          "role": "獨立電影製作人"
+        },
+        {
+          "quote": "相機控制提示詞改變了遊戲規則。我終於可以生成一致的產品影片，並準確縮放到我想要的位置。感覺就像我在指揮一個真正的攝製組。",
+          "author": "Sarah L.",
+          "role": "TikTok 行銷人員"
+        },
+        {
+          "quote": "我使用提示詞生成器來創建動態分鏡腳本。在提示詞工作流程中使用 Nano Banana 參考來鎖定風格的能力是其他工具所沒有的。",
+          "author": "Kenji T.",
+          "role": "概念藝術家"
+        }
+      ],
+      "title": "創作者使用 Lovart 提示詞創造電影魔法"
+    },
+    {
+      "type": "pricing-block",
+      "title": "選擇適合團隊的方案",
+      "description": "免費開始，當作品要交付客戶時再升級。"
+    },
+    {
+      "type": "faq",
+      "title": "常見問題",
+      "items": [
+        {
+          "question": "這適用於所有 AI 影片模型嗎？",
+          "answer": "是的，Lovart 的提示詞代理人接受過 Veo 3、Kling、Sora 和 Runway Gen-3 等主要模型語法的訓練。它會調整術語以適應您選擇的特定模型。"
+        },
+        {
+          "question": "我需要了解攝影術語嗎？",
+          "answer": "完全不需要。您描述感覺（例如：「可怕」、「快速」、「夢幻」），代理人將其轉化為技術相機術語（例如：「荷蘭式鏡頭」、「動態模糊」、「柔焦」）。"
+        },
+        {
+          "question": "我可以使用圖像作為影片的提示詞嗎？",
+          "answer": "可以！這是我們的「圖像轉影片」工作流程。上傳一張 Nano Banana 圖像，代理人將幫助您編寫動作提示詞，毫不費力地讓那張靜態圖像栩栩如生。"
+        },
+        {
+          "question": "我的初步想法應該多詳細？",
+          "answer": "它可以像三個字一樣簡單，也可以像一個段落一樣複雜。代理人旨在擴展簡單的想法或完善複雜的想法，以便 AI 更好地解讀。"
+        },
+        {
+          "question": "提示詞生成器是免費的嗎？",
+          "answer": "基本提示詞增強功能對所有使用者開放。Flux Kontext 整合和無限提示詞迭代等進階功能是 Pro 計劃的一部分。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "用 Lovart 開始創作",
+      "description": "幾分鐘內，把你的需求變成符合品牌調性的視覺作品。",
+      "buttons": [
+        {
+          "text": "免費開始",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

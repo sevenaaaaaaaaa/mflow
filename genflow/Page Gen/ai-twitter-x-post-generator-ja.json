@@ -1,0 +1,385 @@
+{
+  "_id": "features-ai-twitter-x-post-generator-ja",
+  "reflowSourceId": "features-ai-twitter-x-post-generator-ja",
+  "slug": "ai-twitter-x-post-generator",
+  "language": "ja",
+  "category": "feature",
+  "title": "AIで作る話題のX投稿画像＆ミーム - Lovart",
+  "description": "Boost engagement on X with Lovart's AI generator. Create thread visuals, memes, and banners with perfect text rendering and instant resizing.",
+  "seo": {
+    "description": "LovartのAIジェネレーターでXのエンゲージメントを向上。スレッドビジュアル、ミーム、バナーを完璧なテキスト表示と即時リサイズで作成。",
+    "keywords": [
+      "Twitter投稿ジェネレーター",
+      "AIミームメーカー",
+      "Xグラフィックスクリエーター",
+      "ソーシャルメディアビジュアル",
+      "ツイートから画像へのAI"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Smart Resizing",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"AIで作る話題のX投稿画像＆ミーム - Lovart\", \"description\": \"Boost engagement on X with Lovart's AI generator. Create thread visuals, memes, and banners with perfect text rendering and instant resizing.\", \"url\": \"https://www.lovart.ai/features/ai-twitter-x-post-generator\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"テキスト入りの画像を生成できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい！Lovartは、画像内で鮮明で正確なテキストをレンダリングするように特別に設計されたFluxやIdeogramなどの高度なモデルをサポートしています。\"}}, {\"@type\": \"Question\", \"name\": \"X/Twitter投稿に最適なアスペクト比は何ですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"単一画像の場合は16:9が標準です。複数画像のグリッド表示には1:1が最適です。Lovartでは、生成前に任意のアスペクト比を選択できます。\"}}, {\"@type\": \"Question\", \"name\": \"複数の画像で同じキャラクターを維持できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"もちろんです。「Nano Banana」モデルや「画像参照（Image Reference）」機能を使用して、スレッドやキャンペーン全体でキャラクターの一貫性を保つことができます。\"}}, {\"@type\": \"Question\", \"name\": \"これらの画像の著作権は所有できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい、有料プランの加入者は生成した画像に対する完全な商用利用権を持つため、ビジネス用途で安全に使用できます。\"}}, {\"@type\": \"Question\", \"name\": \"生成後に画像を編集できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。LovartのChatCanvasを使えば、「タッチ編集（Touch Edit）」で画像全体を再生成することなく、特定のオブジェクトを修正したり、色を変更したり、テキストを直したりできます。\"}}]}}"
+    },
+    "title": "AIで作る話題のX投稿画像＆ミーム - Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"AIで作る話題のX投稿画像＆ミーム - Lovart\",\"description\":\"Boost engagement on X with Lovart's AI generator. Create thread visuals, memes, and banners with perfect text rendering and instant resizing.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Smart Resizing\"}},{\"type\":\"bento-6\",\"title\":\"Why X Creators & Marketers Choose Lovart\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"スマートリサイズ\",\"description\":\"ワンクリックで、重要な詳細を失うことなく、単一投稿（16:9）からカルーセル形式（1:1）やストーリー（9:16）に画像サイズを変更できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"スマートリサイズ\"}},{\"title\":\"テキスト編集ツール\",\"description\":\"生成されたミームにタイプミスがありましたか？再生成は不要です。「テキスト編集（Edit Text）」をクリックして、画像上の文言を数秒で直接修正できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"テキスト編集ツール\"}},{\"title\":\"タッチ編集（Touch Edit）\",\"description\":\"鳥を青くしたいですか？クリックして「青に変更」と入力するだけ。タッチ編集は、グラフィックのあらゆる要素を細かく制御できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"タッチ編集（Touch Edit）\"}},{\"title\":\"マルチモデルアクセス\",\"description\":\"様々なニーズに対応する専門モデルにアクセス：一貫したキャラクターのためのNano Banana、テキストのためのFlux、芸術的センスのための標準モデルなど。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"マルチモデルアクセス\"}},{\"title\":\"高速イテレーション\",\"description\":\"Twitterはスピード勝負です。Lovartの「ファストモード」は即座にバリエーションを生成し、話題がトレンドになっている間に投稿できるようにします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"高速イテレーション\"}},{\"title\":\"商用ライセンス\",\"description\":\"有料プランで生成されたすべてのアセットには完全な商用利用権が付与され、ブランドアカウントやプロモーションキャンペーンで安全に使用できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"商用ライセンス\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"スマートリサイズ\",\"icon\":\"chat\",\"content\":{\"title\":\"スマートリサイズ\",\"description\":\"ワンクリックで、重要な詳細を失うことなく、単一投稿（16:9）からカルーセル形式（1:1）やストーリー（9:16）に画像サイズを変更できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"スマートリサイズ\"}}},{\"label\":\"テキスト編集ツール\",\"icon\":\"image\",\"content\":{\"title\":\"テキスト編集ツール\",\"description\":\"生成されたミームにタイプミスがありましたか？再生成は不要です。「テキスト編集（Edit Text）」をクリックして、画像上の文言を数秒で直接修正できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"テキスト編集ツール\"}}},{\"label\":\"タッチ編集（Touch Edit）\",\"icon\":\"flask\",\"content\":{\"title\":\"タッチ編集（Touch Edit）\",\"description\":\"鳥を青くしたいですか？クリックして「青に変更」と入力するだけ。タッチ編集は、グラフィックのあらゆる要素を細かく制御できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"タッチ編集（Touch Edit）\"}}},{\"label\":\"マルチモデルアクセス\",\"icon\":\"brand\",\"content\":{\"title\":\"マルチモデルアクセス\",\"description\":\"様々なニーズに対応する専門モデルにアクセス：一貫したキャラクターのためのNano Banana、テキストのためのFlux、芸術的センスのための標準モデルなど。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"マルチモデルアクセス\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"高速イテレーション\",\"description\":\"Twitterはスピード勝負です。Lovartの「ファストモード」は即座にバリエーションを生成し、話題がトレンドになっている間に投稿できるようにします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"高速イテレーション\"}},{\"title\":\"商用ライセンス\",\"description\":\"有料プランで生成されたすべてのアセットには完全な商用利用権が付与され、ブランドアカウントやプロモーションキャンペーンで安全に使用できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"商用ライセンス\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"AI Twitter Post Maker プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Xのタイムラインで目を引く：バイラルなTwitter画像を数秒で作成\",\"description\":\"Lovartでタイムラインを制覇しましょう。あなたのツイートを、目を引くビジュアル、ミーム、スレッドカバーへ即座に変換。速報ニュースのグラフィックから完璧なテキストオーバーレイまで、これまでにない方法でオーディエンスを惹きつけます。\",\"input_placeholder\":\"投稿を説明してください（例：AIトレンドに関するサイバーパンク風ミーム、ネオン文字で「FUTURE IS NOW」）\",\"prompts\":[{\"label\":\"スレッドヘッダー\",\"prompt\":\"Minimalist infographic header for a thread about productivity hacks, blue and white theme\"},{\"label\":\"リアクションミーム\",\"prompt\":\"Funny reaction meme style, a futuristic robot looking confused at a laptop, 16:9 aspect ratio\"},{\"label\":\"製品ローンチ告知\",\"prompt\":\"Tech product launch announcement, sleek 3D render of a gadget, dark mode background\"},{\"label\":\"格言グラフィック\",\"prompt\":\"Motivational quote on a sunset background, bold typography saying 'KEEP BUILDING'\"}],\"tip\":\"ヒント：文字が多いグラフィックやミームの場合、プロンプトに「clear text」と記載すると、最適なタイポグラフィモデルが有効になります。\",\"cta\":{\"text\":\"バズる画像を生成\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Lovart AIでXを攻略する方法\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"ツイートを視覚化\",\"description\":\"書くだけでなく、見せましょう。ツイートのコンセプトを説明すれば、Lovartが数秒でマッチするビジュアルを生成します。ニュースジャッキングやトレンドトピックに最適です。\"},{\"step\":2,\"title\":\"完璧なテキストレンダリング\",\"description\":\"画像にテキストが必要ですか？LovartはFluxやIdeogramなどのトップモデルを統合し、単語、数字、スローガンが鮮明で読みやすく、タイプミスがないことを保証します。\"},{\"step\":3,\"title\":\"一貫したスレッド\",\"description\":\"長いスレッドを作成中ですか？「スタイル参照（Style Reference）」を使用して、全く同じ美学を共有する複数の画像を生成し、まとまりのあるストーリーテリング体験を作りましょう。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Twitter Post Maker：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"AI Twitter Post Maker プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"AI Twitter Post Maker が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから AI Twitter Post Maker の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"スレッドにカスタムビジュアルを使い始めてから、エンゲージメントが急上昇しました。Lovartのおかげで、10以上のツイートで一貫したスタイルを保つのがとても簡単になりました。\",\"author\":\"Casey N.\",\"role\":\"テック系インフルエンサー\"},{\"quote\":\"AI画像の上に実際に読めるテキストを入れられる機能は、素早い告知やミーム作成において革新的です。LovartのFluxは魔法のようです。\",\"author\":\"Jordan L.\",\"role\":\"ソーシャルメディアマネージャー\"},{\"quote\":\"私はニュースジャッキングにLovartを使っています。トレンドを見つけたら、30秒で関連性の高い高品質な画像を生成して投稿します。スピードが命です。\",\"author\":\"Sam R.\",\"role\":\"グロースハッカー\"}],\"title\":\"Xインフルエンサーの成長を加速\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"テキスト入りの画像を生成できますか？\",\"answer\":\"はい！Lovartは、画像内で鮮明で正確なテキストをレンダリングするように特別に設計されたFluxやIdeogramなどの高度なモデルをサポートしています。\"},{\"question\":\"X/Twitter投稿に最適なアスペクト比は何ですか？\",\"answer\":\"単一画像の場合は16:9が標準です。複数画像のグリッド表示には1:1が最適です。Lovartでは、生成前に任意のアスペクト比を選択できます。\"},{\"question\":\"複数の画像で同じキャラクターを維持できますか？\",\"answer\":\"もちろんです。「Nano Banana」モデルや「画像参照（Image Reference）」機能を使用して、スレッドやキャンペーン全体でキャラクターの一貫性を保つことができます。\"},{\"question\":\"これらの画像の著作権は所有できますか？\",\"answer\":\"はい、有料プランの加入者は生成した画像に対する完全な商用利用権を持つため、ビジネス用途で安全に使用できます。\"},{\"question\":\"生成後に画像を編集できますか？\",\"answer\":\"はい。LovartのChatCanvasを使えば、「タッチ編集（Touch Edit）」で画像全体を再生成することなく、特定のオブジェクトを修正したり、色を変更したり、テキストを直したりできます。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "AIで作る話題のX投稿画像＆ミーム - Lovart",
+      "description": "Boost engagement on X with Lovart's AI generator. Create thread visuals, memes, and banners with perfect text rendering and instant resizing.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Smart Resizing"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Why X Creators & Marketers Choose Lovart",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "スマートリサイズ",
+          "description": "ワンクリックで、重要な詳細を失うことなく、単一投稿（16:9）からカルーセル形式（1:1）やストーリー（9:16）に画像サイズを変更できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "スマートリサイズ"
+          }
+        },
+        {
+          "title": "テキスト編集ツール",
+          "description": "生成されたミームにタイプミスがありましたか？再生成は不要です。「テキスト編集（Edit Text）」をクリックして、画像上の文言を数秒で直接修正できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "テキスト編集ツール"
+          }
+        },
+        {
+          "title": "タッチ編集（Touch Edit）",
+          "description": "鳥を青くしたいですか？クリックして「青に変更」と入力するだけ。タッチ編集は、グラフィックのあらゆる要素を細かく制御できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "タッチ編集（Touch Edit）"
+          }
+        },
+        {
+          "title": "マルチモデルアクセス",
+          "description": "様々なニーズに対応する専門モデルにアクセス：一貫したキャラクターのためのNano Banana、テキストのためのFlux、芸術的センスのための標準モデルなど。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "マルチモデルアクセス"
+          }
+        },
+        {
+          "title": "高速イテレーション",
+          "description": "Twitterはスピード勝負です。Lovartの「ファストモード」は即座にバリエーションを生成し、話題がトレンドになっている間に投稿できるようにします。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "高速イテレーション"
+          }
+        },
+        {
+          "title": "商用ライセンス",
+          "description": "有料プランで生成されたすべてのアセットには完全な商用利用権が付与され、ブランドアカウントやプロモーションキャンペーンで安全に使用できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "商用ライセンス"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "スマートリサイズ",
+          "icon": "chat",
+          "content": {
+            "title": "スマートリサイズ",
+            "description": "ワンクリックで、重要な詳細を失うことなく、単一投稿（16:9）からカルーセル形式（1:1）やストーリー（9:16）に画像サイズを変更できます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "スマートリサイズ"
+            }
+          }
+        },
+        {
+          "label": "テキスト編集ツール",
+          "icon": "image",
+          "content": {
+            "title": "テキスト編集ツール",
+            "description": "生成されたミームにタイプミスがありましたか？再生成は不要です。「テキスト編集（Edit Text）」をクリックして、画像上の文言を数秒で直接修正できます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "テキスト編集ツール"
+            }
+          }
+        },
+        {
+          "label": "タッチ編集（Touch Edit）",
+          "icon": "flask",
+          "content": {
+            "title": "タッチ編集（Touch Edit）",
+            "description": "鳥を青くしたいですか？クリックして「青に変更」と入力するだけ。タッチ編集は、グラフィックのあらゆる要素を細かく制御できます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "タッチ編集（Touch Edit）"
+            }
+          }
+        },
+        {
+          "label": "マルチモデルアクセス",
+          "icon": "brand",
+          "content": {
+            "title": "マルチモデルアクセス",
+            "description": "様々なニーズに対応する専門モデルにアクセス：一貫したキャラクターのためのNano Banana、テキストのためのFlux、芸術的センスのための標準モデルなど。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "マルチモデルアクセス"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "高速イテレーション",
+          "description": "Twitterはスピード勝負です。Lovartの「ファストモード」は即座にバリエーションを生成し、話題がトレンドになっている間に投稿できるようにします。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "高速イテレーション"
+          }
+        },
+        {
+          "title": "商用ライセンス",
+          "description": "有料プランで生成されたすべてのアセットには完全な商用利用権が付与され、ブランドアカウントやプロモーションキャンペーンで安全に使用できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "商用ライセンス"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "AI Twitter Post Maker プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Xのタイムラインで目を引く：バイラルなTwitter画像を数秒で作成",
+      "description": "Lovartでタイムラインを制覇しましょう。あなたのツイートを、目を引くビジュアル、ミーム、スレッドカバーへ即座に変換。速報ニュースのグラフィックから完璧なテキストオーバーレイまで、これまでにない方法でオーディエンスを惹きつけます。",
+      "input_placeholder": "投稿を説明してください（例：AIトレンドに関するサイバーパンク風ミーム、ネオン文字で「FUTURE IS NOW」）",
+      "prompts": [
+        {
+          "label": "スレッドヘッダー",
+          "prompt": "Minimalist infographic header for a thread about productivity hacks, blue and white theme"
+        },
+        {
+          "label": "リアクションミーム",
+          "prompt": "Funny reaction meme style, a futuristic robot looking confused at a laptop, 16:9 aspect ratio"
+        },
+        {
+          "label": "製品ローンチ告知",
+          "prompt": "Tech product launch announcement, sleek 3D render of a gadget, dark mode background"
+        },
+        {
+          "label": "格言グラフィック",
+          "prompt": "Motivational quote on a sunset background, bold typography saying 'KEEP BUILDING'"
+        }
+      ],
+      "tip": "ヒント：文字が多いグラフィックやミームの場合、プロンプトに「clear text」と記載すると、最適なタイポグラフィモデルが有効になります。",
+      "cta": {
+        "text": "バズる画像を生成"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Lovart AIでXを攻略する方法",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "ツイートを視覚化",
+          "description": "書くだけでなく、見せましょう。ツイートのコンセプトを説明すれば、Lovartが数秒でマッチするビジュアルを生成します。ニュースジャッキングやトレンドトピックに最適です。"
+        },
+        {
+          "step": 2,
+          "title": "完璧なテキストレンダリング",
+          "description": "画像にテキストが必要ですか？LovartはFluxやIdeogramなどのトップモデルを統合し、単語、数字、スローガンが鮮明で読みやすく、タイプミスがないことを保証します。"
+        },
+        {
+          "step": 3,
+          "title": "一貫したスレッド",
+          "description": "長いスレッドを作成中ですか？「スタイル参照（Style Reference）」を使用して、全く同じ美学を共有する複数の画像を生成し、まとまりのあるストーリーテリング体験を作りましょう。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Twitter Post Maker：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "AI Twitter Post Maker プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "AI Twitter Post Maker が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから AI Twitter Post Maker の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "スレッドにカスタムビジュアルを使い始めてから、エンゲージメントが急上昇しました。Lovartのおかげで、10以上のツイートで一貫したスタイルを保つのがとても簡単になりました。",
+          "author": "Casey N.",
+          "role": "テック系インフルエンサー"
+        },
+        {
+          "quote": "AI画像の上に実際に読めるテキストを入れられる機能は、素早い告知やミーム作成において革新的です。LovartのFluxは魔法のようです。",
+          "author": "Jordan L.",
+          "role": "ソーシャルメディアマネージャー"
+        },
+        {
+          "quote": "私はニュースジャッキングにLovartを使っています。トレンドを見つけたら、30秒で関連性の高い高品質な画像を生成して投稿します。スピードが命です。",
+          "author": "Sam R.",
+          "role": "グロースハッカー"
+        }
+      ],
+      "title": "Xインフルエンサーの成長を加速"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "テキスト入りの画像を生成できますか？",
+          "answer": "はい！Lovartは、画像内で鮮明で正確なテキストをレンダリングするように特別に設計されたFluxやIdeogramなどの高度なモデルをサポートしています。"
+        },
+        {
+          "question": "X/Twitter投稿に最適なアスペクト比は何ですか？",
+          "answer": "単一画像の場合は16:9が標準です。複数画像のグリッド表示には1:1が最適です。Lovartでは、生成前に任意のアスペクト比を選択できます。"
+        },
+        {
+          "question": "複数の画像で同じキャラクターを維持できますか？",
+          "answer": "もちろんです。「Nano Banana」モデルや「画像参照（Image Reference）」機能を使用して、スレッドやキャンペーン全体でキャラクターの一貫性を保つことができます。"
+        },
+        {
+          "question": "これらの画像の著作権は所有できますか？",
+          "answer": "はい、有料プランの加入者は生成した画像に対する完全な商用利用権を持つため、ビジネス用途で安全に使用できます。"
+        },
+        {
+          "question": "生成後に画像を編集できますか？",
+          "answer": "はい。LovartのChatCanvasを使えば、「タッチ編集（Touch Edit）」で画像全体を再生成することなく、特定のオブジェクトを修正したり、色を変更したり、テキストを直したりできます。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

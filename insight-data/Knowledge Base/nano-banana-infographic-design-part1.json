@@ -1,0 +1,186 @@
+```json
+{
+  "section_en": [
+    {
+      "type": "centeredInputSection",
+      "title": "Nano Banana Infographic Design — AI Data Visualization & Infographics with Lovart",
+      "description": "Transform complex data into stunning visual stories with Lovart's AI Design Agent. The Nano Banana infographic workflow converts your statistics, processes, and research findings into professional infographics that communicate clearly and engage audiences. Powered by the MCoT reasoning engine, Lovart understands data storytelling — automatically selecting the optimal chart types, visual hierarchy, and information flow for your content. From statistical reports to process flowcharts, comparison charts to timeline infographics, Lovart delivers presentation-ready data visualizations. Start creating with free daily credits.",
+      "input_placeholder": "Describe the data or information you want to visualize — include data type, key message, and target audience",
+      "system_prompt": "You are a Senior Data Visualization Designer and AI Creative Director at Lovart. Using MCoT and Nano Banana Pro, analyze: 1) The data type and its inherent structure (comparative, chronological, hierarchical, geographical), 2) The key insight or story the data should communicate, 3) The target audience and their data literacy level, 4) The optimal visualization approach — chart types, color encoding, information hierarchy, and narrative flow. Design infographics that balance visual appeal with data accuracy. User requirements: $input$",
+      "button_text": "Design Infographic",
+      "tip": "Pro tip: Describe your data clearly, specify the main insight you want viewers to understand, and indicate whether for print or digital presentation",
+      "suggestion": [
+        { "value": "Design a statistical report infographic showing annual market growth trends with bar charts, percentage highlights, year-over-year comparisons, and executive summary callouts — professional corporate style", "label": "Statistical Report" },
+        { "value": "Create a process flowchart infographic explaining a customer onboarding journey with sequential steps, decision points, iconography, and role responsibilities — clean SaaS/tech style", "label": "Process Flowchart" },
+        { "value": "Design a comparison chart infographic evaluating three software solutions across features, pricing, user ratings, and implementation time — with side-by-side visual comparisons and recommendation summary", "label": "Comparison Chart" },
+        { "value": "Create a timeline infographic chronicling a company's 10-year history with milestone markers, growth metrics, key leadership changes, and future roadmap — elegant corporate anniversary style", "label": "Timeline Infographic" }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "How to Design Professional Infographics with Lovart's AI Agent",
+      "columns": [
+        { "title": "Define Your Data Story", "description": "Begin by briefing Lovart's AI Design Agent on your data and the story it needs to tell. Describe your data type (statistics, processes, comparisons, timelines), the key insight, and your target audience. The MCoT engine analyzes your data structure and audience context, then plans the optimal visualization strategy — selecting chart types, color encoding, and narrative flow that make your data instantly understandable.", "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png" },
+        { "title": "Generate & Visualize Data", "description": "Watch Lovart transform your data brief into a professional infographic. The agent generates data visualizations with accurate chart rendering, clear information hierarchy, complementary color schemes from Nano Banana Pro, and readable typography — all working together as a cohesive visual story. Browse different layout approaches, color treatments, and visualization styles to find the most impactful presentation.", "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png" },
+        { "title": "Refine & Present Data", "description": "Perfect your infographic with precision editing. Use Touch Edit to adjust chart elements, modify color encoding, or refine visual elements. Apply Text Edit to update statistics, labels, and callouts with 100% accuracy. Preview infographics in presentation contexts with Smart Mockup. Export at up to 8K for large-format printing or optimized digital formats for reports and presentations.", "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png" }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "The Ultimate AI Toolkit for Professional Infographic Design",
+      "features": [
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png", "title": "Intelligent Chart Selection Engine", "description": "Lovart's MCoT engine automatically selects the optimal visualization format for your data — bar charts for comparisons, line graphs for trends, flowcharts for processes, pie charts for composition, timelines for chronology, and maps for geographic data. The system understands when to use which chart type, eliminating the guesswork and ensuring your data is always presented in the most understandable format." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png", "title": "Accurate Data Label Rendering", "description": "Edit statistics, percentages, data labels, and callout text with 100% accuracy using Text Edit. Unlike generic AI tools that hallucinate numbers, Lovart preserves your exact data while rendering it in visually compelling typography. Update figures, add annotations, or modify labels directly on your infographic while maintaining professional formatting and readability." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png", "title": "Smart Color Encoding Engine", "description": "Nano Banana Pro applies professional color theory to your data visualizations — using sequential palettes for ordered data, diverging palettes for comparisons, and qualitative palettes for categories. Color choices enhance data comprehension rather than distract from it. The system ensures accessibility compliance with proper contrast ratios for all data elements." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png", "title": "Information Hierarchy Designer", "description": "Lovart's agent automatically structures your infographic with clear visual hierarchy — headline grabs attention, key metrics are visually prominent, supporting data provides context, and source citations are unobtrusive. The system applies proven information design principles so viewers understand your data story in the intended sequence." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png", "title": "Presentation-Ready 8K Export", "description": "Export infographics at up to 8K resolution in formats optimized for every presentation need — high-res PNG for digital reports, vector SVG for editable chart elements, and print-ready PDF for large-format poster printing. Suitable for boardroom presentations, annual reports, academic publications, and social media sharing." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png", "title": "Multi-Format Infographic Engine", "description": "Design once, deploy everywhere. After creating your master infographic, Lovart generates optimized variants: vertical scroll format (mobile-optimized), presentation slide (16:9), print poster (large format), social media card (1:1), and report embed (A4/letter) — all preserving data accuracy and visual hierarchy. Perfect for multi-channel data communication." }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Data Communicators Transforming Information into Impact with Lovart",
+      "testimonials": [
+        { "name": "Dr. Naomi Williams", "role": "Research Director, Public Health Institute", "content": "Our research produces critical public health data, but our findings were buried in dense academic papers that policymakers rarely read. With Lovart's infographic workflow, we now translate every study into compelling visual summaries. Our latest policy brief — an infographic on vaccination rates — was shared by 3 government health agencies and reached 500K+ people on social media. We've influenced real policy changes because our data is finally being seen and understood.", "avatar_url": "" },
+        { "name": "Alex Rivera", "role": "VP of Marketing, SaaS Analytics Platform", "content": "Our quarterly industry benchmark reports were 40-page PDFs that nobody read. We now produce infographic summaries with Lovart — transforming complex market data into visual narratives that our audience actually engages with. Report downloads increased 340%, and our infographics generate 12x more social media engagement than text-based content. The chart selection engine alone saves me hours of decision-making on the best way to visualize each dataset.", "avatar_url": "" },
+        { "name": "Lena Bergström", "role": "Freelance Data Journalist & Content Creator", "content": "I build my entire data journalism business around Lovart's infographic capabilities. Complex stories that used to require a designer and 2 weeks of production now take me 4 hours from research to publication. My infographics on climate data and economic trends have been featured in major publications. I've grown from 2 clients to 15 because I can produce 5x more content while maintaining Pulitzer-level visual quality. The accurate text rendering is critical — my reputation depends on data accuracy." }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        { "question": "What is Lovart and how does it create data infographics differently from other tools?", "answer": "Lovart is the world's first AI Design Agent — a strategic design partner, not just a charting tool. Unlike Canva which requires you to manually build every element, or DALL-E which hallucinates inaccurate data, Lovart's MCoT engine analyzes your data structure and selects optimal visualization strategies, Nano Banana Pro renders visually compelling designs, and Text Edit ensures 100% data accuracy. You describe your data story, and Lovart delivers a professional, accurate infographic." },
+        { "question": "Can I ensure my data is accurately represented in AI-generated infographics?", "answer": "Yes, and this is a critical Lovart differentiator. While generic AI tools frequently hallucinate incorrect numbers, Lovart's Text Edit capability lets you input and verify every statistic, percentage, and data label with 100% precision. The agent designs the visualization structure, but you control the exact data. This accuracy-first approach makes Lovart suitable for professional, academic, and business data visualization." },
+        { "question": "Can I use infographics commercially in reports, publications, and client work?", "answer": "Yes. Users on paid plans (Starter, Basic, Pro) own full commercial rights to their infographics. You can use them in business reports, client deliverables, academic publications, marketing materials, and any lawful commercial purpose. The free plan is for personal and evaluation use. Lovart's models are trained on licensed and public domain data." },
+        { "question": "Is there a free plan for creating infographics?", "answer": "Yes, Lovart offers a free plan with daily login credits that refresh every 24 hours. Create multiple infographic designs daily without payment. Paid plans: Starter (2,000 monthly credits), Basic (3,500 credits), Pro (11,000 credits), all unlocking full agent capabilities, commercial rights, and premium features like Smart Mockup for presentation context previews." },
+        { "question": "What file formats can I export infographics in for different use cases?", "answer": "Lovart supports professional export in PNG, JPG, SVG (vector), and PDF formats. Resolutions go up to 8K, suitable for large-format poster printing, high-resolution digital reports, boardroom presentation slides, and social media sharing. SVG exports allow further editing of chart elements in vector editing software." },
+        { "question": "How does Lovart choose the right chart type for my data?", "answer": "The MCoT engine analyzes your data description and automatically selects the optimal visualization format — bar charts for categorical comparison, line graphs for temporal trends, pie/donut charts for composition, flowcharts for sequential processes, maps for geographic data, scatter plots for correlation, and timelines for chronological narratives. You can specify preferences or let the agent make intelligent selections based on data visualization best practices." },
+        { "question": "Can I edit data points and labels after the infographic is generated?", "answer": "Yes, Text Edit provides precise control over every data element. Click on any statistic, percentage, label, or annotation and modify it directly while preserving the infographic's typography, color encoding, and visual hierarchy. This is essential for data accuracy — you can input exact figures after the agent designs the visualization structure, ensuring 100% data fidelity." },
+        { "question": "What types of infographics can I create with Lovart?", "answer": "Lovart's infographic workflow supports every format: statistical reports and data dashboards, process flowcharts and decision trees, comparison tables and competitive analyses, timeline infographics and milestone maps, geographic data maps and location-based visualizations, hierarchical organizational charts, list-based informational infographics, and mixed-format comprehensive data stories. The MCoT engine adapts to your specific data type." },
+        { "question": "Can Lovart create different infographic formats for social media, presentations, and print?", "answer": "Yes. The Multi-Format Infographic Engine generates optimized variants from your master design: vertical scroll format for mobile readers, landscape presentation slide (16:9), square social media card, print poster (large format), report embed (A4/letter), and executive summary version — all preserving data accuracy and visual quality. Perfect for communicating the same data story across channels." }
+      ]
+    }
+  ],
+  "section_zh-CN": [
+    {
+      "type": "centeredInputSection",
+      "title": "Nano Banana 信息图设计 — Lovart AI 数据可视化与信息图制作",
+      "description": "使用 Lovart 的 AI 设计师智能体，将复杂数据转化为惊艳的视觉故事。Nano Banana 信息图工作流能将您的统计数据、流程说明和研究成果转化为专业信息图，清晰传达并吸引受众。依托 MCoT 推理引擎，Lovart 深谙数据叙事之道——自动选择最佳图表类型、视觉层次和信息流。从统计报告到流程流程图、对比图表到时间线信息图，Lovart 交付可直接用于演示的数据可视化作品。现在就用每日免费额度开始创作。",
+      "input_placeholder": "描述您想可视化的数据或信息——包括数据类型、核心信息和目标受众",
+      "system_prompt": "您是 Lovart 的资深数据可视化设计师兼 AI 创意总监。请使用 MCoT 和 Nano Banana Pro 分析：1）数据类型及其固有结构（对比性、时间性、层级性、地理性）；2）数据应传达的核心洞察或故事；3）目标受众及其数据素养水平；4）最佳可视化方案——图表类型、色彩编码、信息层次和叙事流程。设计在视觉吸引力和数据准确性之间取得平衡的信息图。用户需求：$input$",
+      "button_text": "设计信息图",
+      "tip": "专业提示：清晰描述您的数据，指明您希望观众理解的核心洞察，并说明用于打印还是数字演示",
+      "suggestion": [
+        { "value": "设计一份展示年度市场增长趋势的统计报告信息图，包含条形图、百分比高亮、同比对比和管理摘要要点——专业企业风格", "label": "统计报告" },
+        { "value": "创建一份说明客户入驻流程的流程图信息图，包含顺序步骤、决策节点、图标和角色职责——简洁的 SaaS/科技风格", "label": "流程流程图" },
+        { "value": "设计一份对比三种软件方案的信息图，涵盖功能、定价、用户评分和实施时间——并排可视化对比及推荐摘要", "label": "对比图表" },
+        { "value": "创建一份记录公司十年历程的时间线信息图，包含里程碑标记、增长指标、关键领导层变动和未来路线图——优雅的企业周年风格", "label": "时间线信息图" }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "使用 Lovart AI 智能体设计专业信息图的步骤",
+      "columns": [
+        { "title": "定义您的数据故事", "description": "首先向 Lovart 的 AI 设计师智能体介绍您的数据和它需要讲述的故事。描述您的数据类型（统计、流程、对比、时间线）、核心洞察和目标受众。MCoT 引擎分析您的数据结构和受众背景，然后规划最佳的可视化策略——选择图表类型、色彩编码和叙事流程，使您的数据一目了然。", "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png" },
+        { "title": "生成与可视化数据", "description": "见证 Lovart 将您的数据简报转化为专业信息图。智能体生成具有精确图表渲染、清晰信息层次、Nano Banana Pro 协调配色方案和可读排版的数据可视化——所有元素共同构成一个有凝聚力的视觉故事。浏览不同版式方案、色彩处理和可视化风格，找到最具冲击力的呈现方式。", "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png" },
+        { "title": "精修与呈现数据", "description": "通过精确编辑完善您的信息图。使用 Touch Edit 调整图表元素、修改色彩编码或优化视觉组件。使用 Text Edit 以 100% 准确率更新统计数据、标签和标注。通过 Smart Mockup 在演示场景中预览信息图。以最高 8K 分辨率导出，适用于大幅面打印或针对报告和演示优化的数字格式。", "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png" }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "专业信息图设计的终极 AI 工具包",
+      "features": [
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png", "title": "智能图表选择引擎", "description": "Lovart 的 MCoT 引擎自动为您的数据选择最佳可视化格式——用条形图做对比，用折线图展示趋势，用流程图说明流程，用饼图展示构成，用时间线记录时间顺序，用地图展示地理数据。系统懂得何时使用何种图表类型，消除人工猜测，确保您的数据始终以最易理解的形式呈现。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png", "title": "精准数据标签渲染", "description": "通过 Text Edit 以 100% 准确率编辑统计数据、百分比、数据标签和标注文本。与那些会虚构数字的通用 AI 工具不同，Lovart 在渲染数据时保留您的精确数据，同时以视觉吸引力十足的排版呈现。直接在信息图上更新数字、添加注释或修改标签，同时保持专业排版和可读性。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png", "title": "智能色彩编码引擎", "description": "Nano Banana Pro 将专业色彩理论应用于您的数据可视化——对有序数据使用顺序调色板，对对比数据使用发散调色板，对分类数据使用定性调色板。色彩选择增强而非干扰数据理解。系统确保所有数据元素的色彩对比度符合无障碍标准。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png", "title": "信息层次设计师", "description": "Lovart 的智能体自动构建信息图，具备清晰的视觉层次——标题吸引注意力，关键指标视觉突出，辅助数据提供背景信息，来源引用低调呈现。系统运用经过验证的信息设计原则，确保观众按预期顺序理解您的数据故事。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png", "title": "演示级 8K 导出", "description": "以最高 8K 分辨率导出信息图，格式针对各种演示需求优化——高清 PNG 用于数字报告，矢量 SVG 用于可编辑图表元素，打印级 PDF 用于大幅面海报打印。适用于会议室演示、年报、学术发表和社交媒体分享。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png", "title": "多格式信息图引擎", "description": "一次设计，全渠道部署。在完成原始信息图设计后，Lovart 会生成优化变体：纵向滚动格式（移动端优化）、演示文稿幻灯片（16:9）、打印海报（大幅面）、社交媒体卡片（1:1）和报告内嵌格式（A4/信纸）——全程保持数据准确性和视觉层次。完美适配多平台数据传播。" }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "数据传播者用 Lovart 将信息转化为影响力",
+      "testimonials": [
+        { "name": "Dr. Naomi Williams", "role": "公共卫生研究所研究总监", "content": "我们的研究产出关键的公共卫生数据，但研究成果总是埋没在决策者很少阅读的冗长学术论文中。使用 Lovart 的信息图工作流后，我们现在将每项研究都转化为引人入胜的视觉摘要。我们最新的一份政策简报——关于疫苗接种率的信息图——被 3 个政府卫生机构转发，在社交媒体上触达了 50 万以上的人。我们真正推动了政策变革，因为我们的数据终于被看到了、被理解了。", "avatar_url": "" },
+        { "name": "Alex Rivera", "role": "SaaS 分析平台营销副总裁", "content": "我们的季度行业基准报告是 40 页的 PDF，几乎没人读。现在我们用 Lovart 制作信息图摘要——将复杂的市场数据转化为受众真正愿意互动的视觉叙事。报告下载量增加了 340%，信息图在社交媒体上的互动量是基于文本内容的 12 倍。仅图表选择引擎一项，就为我节省了为每个数据集选择最佳可视化方式的数小时决策时间。", "avatar_url": "" },
+        { "name": "Lena Bergström", "role": "自由职业数据记者兼内容创作者", "content": "我将整个数据新闻业务建立在 Lovart 的信息图能力之上。以前需要设计师和 2 周制作时间的复杂故事，现在我从研究到发布只需 4 小时。我关于气候数据和经济趋势的信息图已经被主流出版物采用。我的客户从 2 个增长到 15 个，因为我产出的内容量是以前的 5 倍，同时保持普利策级别的视觉品质。精准的文本渲染至关重要——我的职业声誉建立在数据准确性之上。" }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        { "question": "什么是 Lovart？它创建数据信息图的方式与其它工具有何不同？", "answer": "Lovart 是全球首个 AI 设计师智能体——一个战略性的设计伙伴，而不仅仅是制图工具。与需要您手动构建每个元素的 Canva 不同，也与会虚构不准确数据的 DALL-E 不同，Lovart 的 MCoT 引擎分析您的数据结构并选择最佳可视化策略，Nano Banana Pro 渲染视觉出众的设计，Text Edit 确保 100% 的数据准确性。您描述数据故事，Lovart 交付专业、准确的信息图。Lovart 提供免费套餐，每日登录额度每 24 小时刷新，您可以每天免费创建多张信息图；付费套餐方面：Starter 每月 2,000 额度、Basic 每月 3,500 额度、Pro 每月 11,000 额度，全部解锁完整智能体功能、商用版权和 Smart Mockup 等高级特性。" },
+        { "question": "我能确保数据在 AI 生成的信息图中被准确呈现吗？", "answer": "可以，这正是 Lovart 的关键差异化优势。通用 AI 工具经常虚构不正确的数字，而 Lovart 的 Text Edit 功能让您能够以 100% 的精度输入和核验每个统计数据、百分比和数据标签。智能体设计可视化结构，但您控制精确的数据。这种准确性优先的方法使 Lovart 适用于专业、学术和商业数据可视化。" },
+        { "question": "我可以将信息图用于报告、出版物和客户项目的商业用途吗？", "answer": "可以。付费套餐（Starter、Basic、Pro）用户对其信息图拥有完整的商用版权。您可以将它们用于商业报告、客户交付物、学术出版物、营销材料及任何合法的商业用途。免费套餐仅限个人使用和体验。Lovart 的模型基于授权数据和公共领域数据训练。" },
+        { "question": "有用于创建信息图的免费套餐吗？", "answer": "有的，Lovart 提供免费套餐，每日登录额度每 24 小时刷新一次。您可以每天不付费用创建多张信息图设计。付费套餐方面：Starter 每月 2,000 额度、Basic 每月 3,500 额度、Pro 每月 11,000 额度，全部解锁完整的智能体能力、商用版权以及 Smart Mockup 等高级功能（用于演示场景预览）。" },
+        { "question": "我可以将信息图导出为哪些适用于不同使用场景的文件格式？", "answer": "Lovart 支持 PNG、JPG、SVG（矢量）和 PDF 格式的专业导出。分辨率最高可达 8K，适用于大幅面海报打印、高分辨率数字报告、会议室演示幻灯片和社交媒体分享。SVG 导出允许在矢量编辑软件中进一步编辑图表元素。" },
+        { "question": "Lovart 如何为我的数据选择合适的图表类型？", "answer": "MCoT 引擎分析您的数据描述，自动选择最佳的可视化格式——条形图用于类别对比，折线图用于时间趋势，饼图/环形图用于构成分析，流程图用于顺序流程，地图用于地理数据，散点图用于相关性分析，时间线用于时间序列叙事。您可以指定偏好，也可以让智能体根据数据可视化最佳实践做出智能选择。" },
+        { "question": "信息图生成后，我可以编辑数据点和标签吗？", "answer": "可以，Text Edit 提供对每个数据元素的精确控制。点击任意统计数据、百分比、标签或注释，直接修改，同时保留信息图的排版、色彩编码和视觉层次。这对数据准确性至关重要——您可以在智能体完成可视化结构设计后输入精确数据，确保 100% 的数据保真度。" },
+        { "question": "我可以使用 Lovart 创建哪些类型的信息图？", "answer": "Lovart 的信息图工作流支持所有格式：统计报告和数据看板、流程流程图和决策树、对比表格和竞争分析、时间线信息图和里程碑地图、地理数据地图和基于位置的可视化、层级组织架构图、基于列表的信息型信息图以及混合格式的综合数据故事。MCoT 引擎适配您特定的数据类型。" },
+        { "question": "Lovart 可以为社交媒体、演示和打印创建不同格式的信息图吗？", "answer": "可以。多格式信息图引擎会从您的原始设计中生成优化变体：纵向滚动格式（移动端读者）、横向演示幻灯片（16:9）、正方形社交媒体卡片、大幅面打印海报、报告内嵌格式（A4/信纸）以及管理层摘要版本——全程保持数据准确性和视觉品质。完美适配跨渠道传播同一数据故事。" }
+      ]
+    }
+  ],
+  "section_zh-TW": [
+    {
+      "type": "centeredInputSection",
+      "title": "Nano Banana 資訊圖設計 — Lovart AI 資料視覺化與資訊圖製作",
+      "description": "使用 Lovart 的 AI 設計師智能體，將複雜資料轉化為驚豔的視覺故事。Nano Banana 資訊圖工作流程能將您的統計資料、流程說明和研究成果轉化為專業資訊圖，清晰傳達並吸引受眾。依託 MCoT 推理引擎，Lovart 深諳資料敘事之道——自動選擇最佳圖表類型、視覺層次和資訊流。從統計報告到流程流程圖、對比圖表到時間線資訊圖，Lovart 交付可直接用於簡報的資料視覺化作品。現在就用每日免費額度開始創作。",
+      "input_placeholder": "描述您想視覺化的資料或資訊——包括資料類型、核心訊息和目標受眾",
+      "system_prompt": "您是 Lovart 的資深資料視覺化設計師兼 AI 創意總監。請使用 MCoT 和 Nano Banana Pro 分析：1）資料類型及其固有結構（對比性、時間性、層級性、地理性）；2）資料應傳達的核心洞察或故事；3）目標受眾及其資料素養水準；4）最佳視覺化方案——圖表類型、色彩編碼、資訊層次和敘事流程。設計在視覺吸引力和資料準確性之間取得平衡的資訊圖。使用者需求：$input$",
+      "button_text": "設計資訊圖",
+      "tip": "專業提示：清晰描述您的資料，指明您希望觀眾理解的核心洞察，並說明用於列印還是數位簡報",
+      "suggestion": [
+        { "value": "設計一份展示年度市場增長趨勢的統計報告資訊圖，包含長條圖、百分比高亮、年增率對比和管理摘要要點——專業企業風格", "label": "統計報告" },
+        { "value": "建立一份說明客戶入駐流程的流程圖資訊圖，包含順序步驟、決策節點、圖示和角色職責——簡潔的 SaaS/科技風格", "label": "流程流程圖" },
+        { "value": "設計一份對比三種軟體方案的資訊圖，涵蓋功能、定價、使用者評分和實施時間——並排視覺化對比及推薦摘要", "label": "對比圖表" },
+        { "value": "建立一份記錄公司十年歷程的時間線資訊圖，包含里程碑標記、增長指標、關鍵領導層變動和未來路線圖——優雅的企業週年風格", "label": "時間線資訊圖" }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "使用 Lovart AI 智能體設計專業資訊圖的步驟",
+      "columns": [
+        { "title": "定義您的資料故事", "description": "首先向 Lovart 的 AI 設計師智能體介紹您的資料和它需要講述的故事。描述您的資料類型（統計、流程、對比、時間線）、核心洞察和目標受眾。MCoT 引擎分析您的資料結構和受眾背景，然後規劃最佳的視覺化策略——選擇圖表類型、色彩編碼和敘事流程，使您的資料一目了然。", "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png" },
+        { "title": "生成與視覺化資料", "description": "見證 Lovart 將您的資料簡報轉化為專業資訊圖。智能體生成具有精確圖表渲染、清晰資訊層次、Nano Banana Pro 協調配色方案和可讀排版的資料視覺化——所有元素共同構成一個有凝聚力的視覺故事。瀏覽不同版式方案、色彩處理和視覺化風格，找到最具衝擊力的呈現方式。", "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png" },
+        { "title": "精修與呈現資料", "description": "透過精確編輯完善您的資訊圖。使用 Touch Edit 調整圖表元素、修改色彩編碼或最佳化視覺組件。使用 Text Edit 以 100% 準確率更新統計資料、標籤和標註。透過 Smart Mockup 在簡報場景中預覽資訊圖。以最高 8K 解析度匯出，適用於大幅面列印或針對報告和簡報最佳化的數位格式。", "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png" }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "專業資訊圖設計的終極 AI 工具包",
+      "features": [
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png", "title": "智慧圖表選擇引擎", "description": "Lovart 的 MCoT 引擎自動為您的資料選擇最佳視覺化格式——用長條圖做對比，用折線圖展示趨勢，用流程圖說明流程，用圓餅圖展示構成，用時間線記錄時間順序，用地圖展示地理資料。系統懂得何時使用何種圖表類型，消除人工猜測，確保您的資料始終以最易理解的形式呈現。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png", "title": "精準資料標籤渲染", "description": "透過 Text Edit 以 100% 準確率編輯統計資料、百分比、資料標籤和標註文字。與那些會虛構數字的通用 AI 工具不同，Lovart 在渲染資料時保留您的精確資料，同時以視覺吸引力十足的排版呈現。直接在資訊圖上更新數字、新增註解或修改標籤，同時保持專業排版和可讀性。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png", "title": "智慧色彩編碼引擎", "description": "Nano Banana Pro 將專業色彩理論應用於您的資料視覺化——對有序資料使用順序調色盤，對對比資料使用發散調色盤，對分類資料使用定性調色盤。色彩選擇增強而非干擾資料理解。系統確保所有資料元素的色彩對比度符合無障礙標準。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png", "title": "資訊層次設計師", "description": "Lovart 的智能體自動構建資訊圖，具備清晰的視覺層次——標題吸引注意力，關鍵指標視覺突出，輔助資料提供背景資訊，來源引用低調呈現。系統運用經過驗證的資訊設計原則，確保觀眾按預期順序理解您的資料故事。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png", "title": "簡報級 8K 匯出", "description": "以最高 8K 解析度匯出資訊圖，格式針對各種簡報需求最佳化——高畫質 PNG 用於數位報告，向量 SVG 用於可編輯圖表元素，列印級 PDF 用於大幅面海報列印。適用於會議室簡報、年報、學術發表和社群媒體分享。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png", "title": "多格式資訊圖引擎", "description": "一次設計，全通路部署。在完成原始資訊圖設計後，Lovart 會生成最佳化變體：縱向捲動格式（行動裝置最佳化）、簡報投影片（16:9）、列印海報（大幅面）、社群媒體卡片（1:1）和報告內嵌格式（A4/信紙）——全程保持資料準確性和視覺層次。完美適配多平台資料傳播。" }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "資料傳播者用 Lovart 將資訊轉化為影響力",
+      "testimonials": [
+        { "name": "Dr. Naomi Williams", "role": "公共衛生研究所研究總監", "content": "我們的研究產出關鍵的公共衛生資料，但研究成果總是埋沒在決策者很少閱讀的冗長學術論文中。使用 Lovart 的資訊圖工作流程後，我們現在將每項研究都轉化為引人入勝的視覺摘要。我們最新的一份政策簡報——關於疫苗接種率的資訊圖——被 3 個政府衛生機構轉發，在社群媒體上觸及了 50 萬以上的人。我們真正推動了政策變革，因為我們的資料終於被看到了、被理解了。", "avatar_url": "" },
+        { "name": "Alex Rivera", "role": "SaaS 分析平台行銷副總裁", "content": "我們的季度產業基準報告是 40 頁的 PDF，幾乎沒人讀。現在我們用 Lovart 製作資訊圖摘要——將複雜的市場資料轉化為受眾真正願意互動的視覺敘事。報告下載量增加了 340%，資訊圖在社群媒體上的互動量是基於文字內容的 12 倍。僅圖表選擇引擎一項，就為我節省了為每個資料集選擇最佳視覺化方式的數小時決策時間。", "avatar_url": "" },
+        { "name": "Lena Bergström", "role": "自由工作者資料記者兼內容創作者", "content": "我將整個資料新聞業務建立在 Lovart 的資訊圖能力之上。以前需要設計師和 2 週製作時間的複雜故事，現在我從研究到發布只需 4 小時。我關於氣候資料和經濟趨勢的資訊圖已經被主流出版物採用。我的客戶從 2 個增長到 15 個，因為我產出的內容量是以前的 5 倍，同時保持普立茲級別的視覺品質。精準的文字渲染至關重要——我的職業聲譽建立在資料準確性之上。" }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        { "question": "什麼是 Lovart？它建立資料資訊圖的方式與其他工具有何不同？", "answer": "Lovart 是全球首個 AI 設計師智能體——一個策略性的設計夥伴，而不僅僅是製圖工具。與需要您手動構建每個元素的 Canva 不同，也與會虛構不準確資料的 DALL-E 不同，Lovart 的 MCoT 引擎分析您的資料結構並選擇最佳視覺化策略，Nano Banana Pro 渲染視覺出眾的設計，Text Edit 確保 100% 的資料準確性。您描述資料故事，Lovart 交付專業、準確的資訊圖。Lovart 提供免費方案，每日登入額度每 24 小時刷新，您可以每天免費建立多張資訊圖；付費方案方面：Starter 每月 2,000 額度、Basic 每月 3,500 額度、Pro 每月 11,000 額度，全部解鎖完整智能體功能、商用版權和 Smart Mockup 等進階特性。" },
+        { "question": "我能確保資料在 AI 生成的資訊圖中被準確呈現嗎？", "answer": "可以，這正是 Lovart 的關鍵差異化優勢。通用 AI 工具經常虛構不正確的數字，而 Lovart 的 Text Edit 功能讓您能夠以 100% 的精準度輸入和核驗每個統計資料、百分比和資料標籤。智能體設計視覺化結構，但您控制精確的資料。這種準確性優先的方法使 Lovart 適用於專業、學術和商業資料視覺化。" },
+        { "question": "我可以將資訊圖用於報告、出版物和客戶專案的商業用途嗎？", "answer": "可以。付費方案（Starter、Basic、Pro）使用者對其資訊圖擁有完整的商用版權。您可以將它們用於商業報告、客戶交付物、學術出版物、行銷資料及任何合法的商業用途。免費方案僅限個人使用和體驗。Lovart 的模型基於授權資料和公共領域資料訓練。" },
+        { "question": "有用於建立資訊圖的免費方案嗎？", "answer": "有的，Lovart 提供免費方案，每日登入額度每 24 小時刷新一次。您可以每天不付費用建立多張資訊圖設計。付費方案方面：Starter 每月 2,000 額度、Basic 每月 3,500 額度、Pro 每月 11,000 額度，全部解鎖完整的智能體能力、商用版權以及 Smart Mockup 等進階功能（用於簡報場景預覽）。" },
+        { "question": "我可以將資訊圖匯出為哪些適用於不同使用場景的檔案格式？", "answer": "Lovart 支援 PNG、JPG、SVG（向量）和 PDF 格式的專業匯出。解析度最高可達 8K，適用於大幅面海報列印、高解析度數位報告、會議室簡報投影片和社群媒體分享。SVG 匯出允許在向量編輯軟體中進一步編輯圖表元素。" },
+        { "question": "Lovart 如何為我的資料選擇合適的圖表類型？", "answer": "MCoT 引擎分析您的資料描述，自動選擇最佳的視覺化格式——長條圖用於類別對比，折線圖用於時間趨勢，圓餅圖/環圈圖用於構成分析，流程圖用於順序流程，地圖用於地理資料，散佈圖用於相關性分析，時間線用於時間序列敘事。您可以指定偏好，也可以讓智能體根據資料視覺化最佳實踐做出智慧選擇。" },
+        { "question": "資訊圖生成後，我可以編輯資料點和標籤嗎？", "answer": "可以，Text Edit 提供對每個資料元素的精確控制。點擊任意統計資料、百分比、標籤或註解，直接修改，同時保留資訊圖的排版、色彩編碼和視覺層次。這對資料準確性至關重要——您可以在智能體完成視覺化結構設計後輸入精確資料，確保 100% 的資料保真度。" },
+        { "question": "我可以使用 Lovart 建立哪些類型的資訊圖？", "answer": "Lovart 的資訊圖工作流程支援所有格式：統計報告和資料看板、流程流程圖和決策樹、對比表格和競爭分析、時間線資訊圖和里程碑地圖、地理資料地圖和基於位置的視覺化、層級組織架構圖、基於清單的資訊型資訊圖以及混合格式的綜合資料故事。MCoT 引擎適配您特定的資料類型。" },
+        { "question": "Lovart 可以為社群媒體、簡報和列印建立不同格式的資訊圖嗎？", "answer": "可以。多格式資訊圖引擎會從您的原始設計中生成最佳化變體：縱向捲動格式（行動裝置讀者）、橫向簡報投影片（16:9）、正方形社群媒體卡片、大幅面列印海報、報告內嵌格式（A4/信紙）以及管理層摘要版本——全程保持資料準確性和視覺品質。完美適配跨通路傳播同一資料故事。" }
+      ]
+    }
+  ]
+}

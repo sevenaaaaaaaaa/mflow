@@ -1,0 +1,389 @@
+{
+  "_id": "features-ai-design-agent-zh-TW",
+  "reflowSourceId": "features-ai-design-agent-zh-TW",
+  "slug": "ai-design-agent",
+  "language": "zh-TW",
+  "category": "feature",
+  "title": "Lovart AI設計助手：自動品牌與創意流程",
+  "description": "Experience the world's first AI Design Agent. Lovart uses the MCoT reasoning engine to plan, design, and execute entire brand campaigns—from logos to videos—on a unified infinite canvas.",
+  "seo": {
+    "description": "體驗全球首款AI設計代理。Lovart運用MCoT推理引擎，在統一的無限畫布上規劃、設計並執行完整品牌活動——從Logo到影片一手包辦。",
+    "keywords": [
+      "AI設計代理",
+      "自主設計師",
+      "MCoT引擎",
+      "AI品牌工具",
+      "ChatCanvas",
+      "Lovart功能",
+      "多代理設計",
+      "自動化創意流程",
+      "生成式設計代理"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Mind Chain of Thought (MCoT)",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovart AI設計助手：自動品牌與創意流程\", \"description\": \"Experience the world's first AI Design Agent. Lovart uses the MCoT reasoning engine to plan, design, and execute entire brand campaigns—from logos to videos—on a unified infinite canvas.\", \"url\": \"https://www.lovart.ai/features/ai-design-agent\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"是什麼讓 Lovart 成為「Agent」而不僅僅是生成器？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"傳統生成器是被動的；你提示，它們輸出。Lovart 是主動的。它進行推理、規劃、分解任務，並協調多個模型以實現高層次的商業目標，並在整個專案中保持上下文。(section_zh-TW)\"}}, {\"@type\": \"Question\", \"name\": \"Agent 能保持品牌一致性嗎？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以。Lovart 的「設計上下文核心 (Design Context Core)」允許 Agent 記住您的品牌配色、字體和角色風格，並將其一致地應用於會話中生成的所有資產。(section_zh-TW)\"}}, {\"@type\": \"Question\", \"name\": \"Agent 支援影片創作嗎？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"當然。Design Agent 整合了 Veo 3 和 Kling 等頂級影片模型。您只需要求 Agent 「讓它動起來」，即可將任何靜態設計轉化為動態資產。(section_zh-TW)\"}}, {\"@type\": \"Question\", \"name\": \"內容可以用於商業用途嗎？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"是的，付費方案的用戶對 Agent 生成的設計擁有完整的商業權利，非常適合行銷活動、商品和客戶工作。(section_zh-TW)\"}}, {\"@type\": \"Question\", \"name\": \"使用 Agent 需要設計技能嗎？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"不需要。Agent 旨在彌合想法與執行之間的差距。您用自然語言提供願景，Agent 負責技術設計原則、排版和渲染。(section_zh-TW)\"}}]}}"
+    },
+    "title": "Lovart AI設計助手：自動品牌與創意流程"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Lovart AI設計助手：自動品牌與創意流程\",\"description\":\"Experience the world's first AI Design Agent. Lovart uses the MCoT reasoning engine to plan, design, and execute entire brand campaigns—from logos to videos—on a unified infinite canvas.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Mind Chain of Thought (MCoT)\"}},{\"type\":\"bento-6\",\"title\":\"Capabilities of Your AI Creative Team\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"思維鏈 (MCoT)\",\"description\":\"美麗背後的大腦。Agent 將複雜的簡報分解為邏輯創意步驟，確保 Logo、包裝和廣告之間的一致性。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"思維鏈 (MCoT)\"}},{\"title\":\"多模態生成\",\"description\":\"圖像、影片、3D 和向量圖——全部在一個地方。Agent 會為特定任務選擇最佳模型（如 Nano Banana Pro 或 Veo 3）。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"多模態生成\"}},{\"title\":\"上下文記憶\",\"description\":\"Agent 永遠不會忘記您的品牌準則。一旦確立，它會將您的特定顏色、字體和角色風格應用於它創建的每一個新資產。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"上下文記憶\"}},{\"title\":\"Touch Edit 協作\",\"description\":\"自然互動。無需複雜的圖層或遮罩——只需點擊元素並告訴 Agent 如何更改。它理解語義物件關係。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Touch Edit 協作\"}},{\"title\":\"自動樣機與排版\",\"description\":\"Agent 自動佈置您的設計。它理解透視和光線，立即將平面設計應用到 3D 產品或真實場景中。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"自動樣機與排版\"}},{\"title\":\"行業特定邏輯\",\"description\":\"無論是餐廳的「菜單工程」還是電子商務的「轉化優化」，Agent 都會應用經過驗證的行業設計原則。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"行業特定邏輯\"}}]},{\"type\":\"capability-tabs\",\"title\":\"一個智慧體，整合全部能力\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"思維鏈 (MCoT)\",\"icon\":\"chat\",\"content\":{\"title\":\"思維鏈 (MCoT)\",\"description\":\"美麗背後的大腦。Agent 將複雜的簡報分解為邏輯創意步驟，確保 Logo、包裝和廣告之間的一致性。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"思維鏈 (MCoT)\"}}},{\"label\":\"多模態生成\",\"icon\":\"image\",\"content\":{\"title\":\"多模態生成\",\"description\":\"圖像、影片、3D 和向量圖——全部在一個地方。Agent 會為特定任務選擇最佳模型（如 Nano Banana Pro 或 Veo 3）。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"多模態生成\"}}},{\"label\":\"上下文記憶\",\"icon\":\"flask\",\"content\":{\"title\":\"上下文記憶\",\"description\":\"Agent 永遠不會忘記您的品牌準則。一旦確立，它會將您的特定顏色、字體和角色風格應用於它創建的每一個新資產。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"上下文記憶\"}}},{\"label\":\"Touch Edit 協作\",\"icon\":\"brand\",\"content\":{\"title\":\"Touch Edit 協作\",\"description\":\"自然互動。無需複雜的圖層或遮罩——只需點擊元素並告訴 Agent 如何更改。它理解語義物件關係。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Touch Edit 協作\"}}}]},{\"type\":\"bento-2\",\"title\":\"尤其擅長的兩件事\",\"columns\":2,\"features\":[{\"title\":\"自動樣機與排版\",\"description\":\"Agent 自動佈置您的設計。它理解透視和光線，立即將平面設計應用到 3D 產品或真實場景中。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"自動樣機與排版\"}},{\"title\":\"行業特定邏輯\",\"description\":\"無論是餐廳的「菜單工程」還是電子商務的「轉化優化」，Agent 都會應用經過驗證的行業設計原則。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"行業特定邏輯\"}}]},{\"type\":\"feature-detail\",\"title\":\"詳細了解使用方式\",\"items\":[{\"title\":\"開啟你的AI Design Agent: Autonomous Branding & Creative Workflow專案\",\"description\":\"描述你想要的成果，並補充參考素材即可。\"},{\"title\":\"與智慧體一起迭代\",\"description\":\"在同一畫布上調整細節、探索不同方案。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"停止下指令，開始做導演。全球首個 AI 設計智能體 (Design Agent)。\",\"description\":\"Lovart 不僅僅是一個工具，它是您全新的自主創意夥伴。由我們專有的「思維鏈 (MCoT)」引擎驅動，這個 Agent 懂策略、會規劃工作流，並能在單一無限畫布上編排從 Logo 到影片的複雜行銷活動。不要只是生成圖片，而是建立品牌。\",\"input_placeholder\":\"例如：「為一個名為 Glow 的 Z 世代護膚品牌做首發，生成 Logo、包裝和 3 個社群貼文」\",\"prompts\":[{\"label\":\"全套品牌識別\",\"prompt\":\"Create a full visual identity for a cyberpunk coffee shop, including logo, cup mockup, and storefront\"},{\"label\":\"社群媒體行銷\",\"prompt\":\"Design a 3-slide carousel for a tech startup launch, focusing on minimalism and trust\"},{\"label\":\"影片廣告轉化\",\"prompt\":\"Turn this product photo into a cinematic video ad with dramatic lighting\"},{\"label\":\"風格分析與應用\",\"prompt\":\"Analyze this URL style and generate a matching landing page header\"}],\"tip\":\"專業提示：像對人一樣與 Agent 交談。解釋您的商業目標，看它如何推理出創意過程。\",\"cta\":{\"text\":\"聘請您的 AI Agent\"}},{\"type\":\"workflow-horizontal\",\"title\":\"設計智能體如何運作\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"它會思考 (推理能力)\",\"description\":\"與只預測像素的標準 AI 不同，Lovart 的 MCoT 引擎會分析您的意圖。在決定「怎麼做」之前，它會先問「為什麼」，確保設計符合您的市場策略。\"},{\"step\":2,\"title\":\"它會規劃 (多模態編排)\",\"description\":\"Agent 將您的請求分解為任務。它會自動指派 Logo Agent 進行品牌設計，Layout Agent 進行排版，並使用 Nano Banana 進行高保真渲染——全自動完成。\"},{\"step\":3,\"title\":\"它會協作 (ChatCanvas)\",\"description\":\"在一個具有上下文記憶的無限畫布上工作。指向一個物件並說「讓這個突出一点」，Agent 就會透過語義理解執行精準編輯。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Design Agent: Autonomous Branding & Creative Workflow：Lovart 與一般工作流程比較\",\"headers\":[\"需求\",\"通用工具\",\"手動工作流程\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"開啟你的AI Design Agent: Autonomous Branding & Creative Workflow專案\",\"values\":[\"一句提示詞\",\"手動撰寫需求\",\"需求驅動的推理\"]},{\"feature\":\"產出第一版的時間\",\"values\":[\"幾分鐘\",\"數天\",\"幾分鐘\"]},{\"feature\":\"生成後的編輯\",\"values\":[\"有限\",\"反覆修改\",\"塗抹 / 文字 / 元素編輯\"]},{\"feature\":\"維持品牌一致\",\"values\":[\"手動\",\"手動\",\"支援 Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"AI Design Agent: Autonomous Branding & Creative Workflow的最佳應用場景\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"更快上線\",\"description\":\"從需求到AI Design Agent: Autonomous Branding & Creative Workflow素材，一次工作階段即可完成。\"},{\"icon\":\"brand\",\"title\":\"維持一致\",\"description\":\"Brand Kit 讓每一份素材都保持統一。\"},{\"icon\":\"refresh\",\"title\":\"快速迭代\",\"description\":\"無需從頭開始，即可編輯細節。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"我用 Lovart 替代了 5000 美元的品牌代理預算。Agent 瞬間理解了我「極簡生態科技」的氛圍，並建立了從 Logo 到融資簡報的所有內容。\",\"author\":\"Melvin C.\",\"role\":\"新創創辦人\"},{\"quote\":\"一致性是最打動我的。Agent 在 50 個不同的貼文中記住了我的品牌角色。這就像擁有一個從不睡覺的設計師。\",\"author\":\"Sarah L.\",\"role\":\"社群媒體經理\"},{\"quote\":\"我使用 Lovart 來跳過空白頁階段。我給 Agent 一個創意簡報，幾分鐘內我就有 4 個可靠的方向可以細化。它是終極的效率倍增器。\",\"author\":\"David K.\",\"role\":\"創意總監\"}],\"title\":\"被 Agent 工作流賦能的創作者\"},{\"type\":\"pricing-block\",\"title\":\"選擇適合團隊的方案\",\"description\":\"免費開始，當作品要交付客戶時再升級。\"},{\"type\":\"faq\",\"title\":\"常見問題\",\"items\":[{\"question\":\"是什麼讓 Lovart 成為「Agent」而不僅僅是生成器？\",\"answer\":\"傳統生成器是被動的；你提示，它們輸出。Lovart 是主動的。它進行推理、規劃、分解任務，並協調多個模型以實現高層次的商業目標，並在整個專案中保持上下文。\"},{\"question\":\"Agent 能保持品牌一致性嗎？\",\"answer\":\"可以。Lovart 的「設計上下文核心 (Design Context Core)」允許 Agent 記住您的品牌配色、字體和角色風格，並將其一致地應用於會話中生成的所有資產。\"},{\"question\":\"Agent 支援影片創作嗎？\",\"answer\":\"當然。Design Agent 整合了 Veo 3 和 Kling 等頂級影片模型。您只需要求 Agent 「讓它動起來」，即可將任何靜態設計轉化為動態資產。\"},{\"question\":\"內容可以用於商業用途嗎？\",\"answer\":\"是的，付費方案的用戶對 Agent 生成的設計擁有完整的商業權利，非常適合行銷活動、商品和客戶工作。\"},{\"question\":\"使用 Agent 需要設計技能嗎？\",\"answer\":\"不需要。Agent 旨在彌合想法與執行之間的差距。您用自然語言提供願景，Agent 負責技術設計原則、排版和渲染。\"}]},{\"type\":\"cta-default\",\"title\":\"用 Lovart 開始創作\",\"description\":\"幾分鐘內，把你的需求變成符合品牌調性的視覺作品。\",\"buttons\":[{\"text\":\"免費開始\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Lovart AI設計助手：自動品牌與創意流程",
+      "description": "Experience the world's first AI Design Agent. Lovart uses the MCoT reasoning engine to plan, design, and execute entire brand campaigns—from logos to videos—on a unified infinite canvas.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Mind Chain of Thought (MCoT)"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Capabilities of Your AI Creative Team",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "思維鏈 (MCoT)",
+          "description": "美麗背後的大腦。Agent 將複雜的簡報分解為邏輯創意步驟，確保 Logo、包裝和廣告之間的一致性。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "思維鏈 (MCoT)"
+          }
+        },
+        {
+          "title": "多模態生成",
+          "description": "圖像、影片、3D 和向量圖——全部在一個地方。Agent 會為特定任務選擇最佳模型（如 Nano Banana Pro 或 Veo 3）。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "多模態生成"
+          }
+        },
+        {
+          "title": "上下文記憶",
+          "description": "Agent 永遠不會忘記您的品牌準則。一旦確立，它會將您的特定顏色、字體和角色風格應用於它創建的每一個新資產。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "上下文記憶"
+          }
+        },
+        {
+          "title": "Touch Edit 協作",
+          "description": "自然互動。無需複雜的圖層或遮罩——只需點擊元素並告訴 Agent 如何更改。它理解語義物件關係。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Touch Edit 協作"
+          }
+        },
+        {
+          "title": "自動樣機與排版",
+          "description": "Agent 自動佈置您的設計。它理解透視和光線，立即將平面設計應用到 3D 產品或真實場景中。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "自動樣機與排版"
+          }
+        },
+        {
+          "title": "行業特定邏輯",
+          "description": "無論是餐廳的「菜單工程」還是電子商務的「轉化優化」，Agent 都會應用經過驗證的行業設計原則。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "行業特定邏輯"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "一個智慧體，整合全部能力",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "思維鏈 (MCoT)",
+          "icon": "chat",
+          "content": {
+            "title": "思維鏈 (MCoT)",
+            "description": "美麗背後的大腦。Agent 將複雜的簡報分解為邏輯創意步驟，確保 Logo、包裝和廣告之間的一致性。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "思維鏈 (MCoT)"
+            }
+          }
+        },
+        {
+          "label": "多模態生成",
+          "icon": "image",
+          "content": {
+            "title": "多模態生成",
+            "description": "圖像、影片、3D 和向量圖——全部在一個地方。Agent 會為特定任務選擇最佳模型（如 Nano Banana Pro 或 Veo 3）。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "多模態生成"
+            }
+          }
+        },
+        {
+          "label": "上下文記憶",
+          "icon": "flask",
+          "content": {
+            "title": "上下文記憶",
+            "description": "Agent 永遠不會忘記您的品牌準則。一旦確立，它會將您的特定顏色、字體和角色風格應用於它創建的每一個新資產。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "上下文記憶"
+            }
+          }
+        },
+        {
+          "label": "Touch Edit 協作",
+          "icon": "brand",
+          "content": {
+            "title": "Touch Edit 協作",
+            "description": "自然互動。無需複雜的圖層或遮罩——只需點擊元素並告訴 Agent 如何更改。它理解語義物件關係。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Touch Edit 協作"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "尤其擅長的兩件事",
+      "columns": 2,
+      "features": [
+        {
+          "title": "自動樣機與排版",
+          "description": "Agent 自動佈置您的設計。它理解透視和光線，立即將平面設計應用到 3D 產品或真實場景中。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "自動樣機與排版"
+          }
+        },
+        {
+          "title": "行業特定邏輯",
+          "description": "無論是餐廳的「菜單工程」還是電子商務的「轉化優化」，Agent 都會應用經過驗證的行業設計原則。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "行業特定邏輯"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "詳細了解使用方式",
+      "items": [
+        {
+          "title": "開啟你的AI Design Agent: Autonomous Branding & Creative Workflow專案",
+          "description": "描述你想要的成果，並補充參考素材即可。"
+        },
+        {
+          "title": "與智慧體一起迭代",
+          "description": "在同一畫布上調整細節、探索不同方案。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "停止下指令，開始做導演。全球首個 AI 設計智能體 (Design Agent)。",
+      "description": "Lovart 不僅僅是一個工具，它是您全新的自主創意夥伴。由我們專有的「思維鏈 (MCoT)」引擎驅動，這個 Agent 懂策略、會規劃工作流，並能在單一無限畫布上編排從 Logo 到影片的複雜行銷活動。不要只是生成圖片，而是建立品牌。",
+      "input_placeholder": "例如：「為一個名為 Glow 的 Z 世代護膚品牌做首發，生成 Logo、包裝和 3 個社群貼文」",
+      "prompts": [
+        {
+          "label": "全套品牌識別",
+          "prompt": "Create a full visual identity for a cyberpunk coffee shop, including logo, cup mockup, and storefront"
+        },
+        {
+          "label": "社群媒體行銷",
+          "prompt": "Design a 3-slide carousel for a tech startup launch, focusing on minimalism and trust"
+        },
+        {
+          "label": "影片廣告轉化",
+          "prompt": "Turn this product photo into a cinematic video ad with dramatic lighting"
+        },
+        {
+          "label": "風格分析與應用",
+          "prompt": "Analyze this URL style and generate a matching landing page header"
+        }
+      ],
+      "tip": "專業提示：像對人一樣與 Agent 交談。解釋您的商業目標，看它如何推理出創意過程。",
+      "cta": {
+        "text": "聘請您的 AI Agent"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "設計智能體如何運作",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "它會思考 (推理能力)",
+          "description": "與只預測像素的標準 AI 不同，Lovart 的 MCoT 引擎會分析您的意圖。在決定「怎麼做」之前，它會先問「為什麼」，確保設計符合您的市場策略。"
+        },
+        {
+          "step": 2,
+          "title": "它會規劃 (多模態編排)",
+          "description": "Agent 將您的請求分解為任務。它會自動指派 Logo Agent 進行品牌設計，Layout Agent 進行排版，並使用 Nano Banana 進行高保真渲染——全自動完成。"
+        },
+        {
+          "step": 3,
+          "title": "它會協作 (ChatCanvas)",
+          "description": "在一個具有上下文記憶的無限畫布上工作。指向一個物件並說「讓這個突出一点」，Agent 就會透過語義理解執行精準編輯。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Design Agent: Autonomous Branding & Creative Workflow：Lovart 與一般工作流程比較",
+      "headers": [
+        "需求",
+        "通用工具",
+        "手動工作流程",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "開啟你的AI Design Agent: Autonomous Branding & Creative Workflow專案",
+          "values": [
+            "一句提示詞",
+            "手動撰寫需求",
+            "需求驅動的推理"
+          ]
+        },
+        {
+          "feature": "產出第一版的時間",
+          "values": [
+            "幾分鐘",
+            "數天",
+            "幾分鐘"
+          ]
+        },
+        {
+          "feature": "生成後的編輯",
+          "values": [
+            "有限",
+            "反覆修改",
+            "塗抹 / 文字 / 元素編輯"
+          ]
+        },
+        {
+          "feature": "維持品牌一致",
+          "values": [
+            "手動",
+            "手動",
+            "支援 Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "AI Design Agent: Autonomous Branding & Creative Workflow的最佳應用場景",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "更快上線",
+          "description": "從需求到AI Design Agent: Autonomous Branding & Creative Workflow素材，一次工作階段即可完成。"
+        },
+        {
+          "icon": "brand",
+          "title": "維持一致",
+          "description": "Brand Kit 讓每一份素材都保持統一。"
+        },
+        {
+          "icon": "refresh",
+          "title": "快速迭代",
+          "description": "無需從頭開始，即可編輯細節。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "我用 Lovart 替代了 5000 美元的品牌代理預算。Agent 瞬間理解了我「極簡生態科技」的氛圍，並建立了從 Logo 到融資簡報的所有內容。",
+          "author": "Melvin C.",
+          "role": "新創創辦人"
+        },
+        {
+          "quote": "一致性是最打動我的。Agent 在 50 個不同的貼文中記住了我的品牌角色。這就像擁有一個從不睡覺的設計師。",
+          "author": "Sarah L.",
+          "role": "社群媒體經理"
+        },
+        {
+          "quote": "我使用 Lovart 來跳過空白頁階段。我給 Agent 一個創意簡報，幾分鐘內我就有 4 個可靠的方向可以細化。它是終極的效率倍增器。",
+          "author": "David K.",
+          "role": "創意總監"
+        }
+      ],
+      "title": "被 Agent 工作流賦能的創作者"
+    },
+    {
+      "type": "pricing-block",
+      "title": "選擇適合團隊的方案",
+      "description": "免費開始，當作品要交付客戶時再升級。"
+    },
+    {
+      "type": "faq",
+      "title": "常見問題",
+      "items": [
+        {
+          "question": "是什麼讓 Lovart 成為「Agent」而不僅僅是生成器？",
+          "answer": "傳統生成器是被動的；你提示，它們輸出。Lovart 是主動的。它進行推理、規劃、分解任務，並協調多個模型以實現高層次的商業目標，並在整個專案中保持上下文。"
+        },
+        {
+          "question": "Agent 能保持品牌一致性嗎？",
+          "answer": "可以。Lovart 的「設計上下文核心 (Design Context Core)」允許 Agent 記住您的品牌配色、字體和角色風格，並將其一致地應用於會話中生成的所有資產。"
+        },
+        {
+          "question": "Agent 支援影片創作嗎？",
+          "answer": "當然。Design Agent 整合了 Veo 3 和 Kling 等頂級影片模型。您只需要求 Agent 「讓它動起來」，即可將任何靜態設計轉化為動態資產。"
+        },
+        {
+          "question": "內容可以用於商業用途嗎？",
+          "answer": "是的，付費方案的用戶對 Agent 生成的設計擁有完整的商業權利，非常適合行銷活動、商品和客戶工作。"
+        },
+        {
+          "question": "使用 Agent 需要設計技能嗎？",
+          "answer": "不需要。Agent 旨在彌合想法與執行之間的差距。您用自然語言提供願景，Agent 負責技術設計原則、排版和渲染。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "用 Lovart 開始創作",
+      "description": "幾分鐘內，把你的需求變成符合品牌調性的視覺作品。",
+      "buttons": [
+        {
+          "text": "免費開始",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

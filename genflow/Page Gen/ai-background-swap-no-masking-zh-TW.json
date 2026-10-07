@@ -1,0 +1,387 @@
+{
+  "_id": "features-ai-background-swap-no-masking-zh-TW",
+  "reflowSourceId": "features-ai-background-swap-no-masking-zh-TW",
+  "slug": "ai-background-swap-no-masking",
+  "language": "zh-TW",
+  "category": "feature",
+  "title": "AI即時去背，免遮罩超簡單",
+  "description": "Teleport your products and portraits to any location without manual masking. Lovart's AI Design Agent automatically extracts subjects and syncs realistic lighting and shadows.",
+  "seo": {
+    "description": "不用手動去背，就能把商品和人像瞬間放到任何場景！Lovart 的 AI 設計助手會自動抓取主體，並同步調整真實光影與陰影。",
+    "keywords": [
+      "AI背景替換",
+      "更換圖片背景",
+      "無遮罩背景更換",
+      "AI商品攝影",
+      "編輯元素",
+      "AI主體傳送",
+      "Lovart ChatCanvas"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Zero-Shot Semantic Masking",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"AI即時去背，免遮罩超簡單\", \"description\": \"Teleport your products and portraits to any location without manual masking. Lovart's AI Design Agent automatically extracts subjects and syncs realistic lighting and shadows.\", \"url\": \"https://www.lovart.ai/features/ai-background-swap-no-masking\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"我需要手動塗抹遮罩或使用套索工具嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"完全不需要。Lovart 的 AI 設計代理人擁有極強的語義理解能力，能自動識別並精確分離出圖像中的核心主體，讓您徹底告別繁瑣的手動去背。\"}}, {\"@type\": \"Question\", \"name\": \"主體換到新背景後，看起來會像「懸浮」在半空中嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"不會。與基礎的去背軟體不同，Lovart 相當於一個虛擬攝影棚。它會自動計算並生成合適的接觸陰影、環境光遮蔽 (AO) 以及反光，讓主體完美自然地融入新環境中。\"}}, {\"@type\": \"Question\", \"name\": \"對髮絲或透明玻璃等高難度主體有效嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"有效。我們整合的頂尖模型（包含 Nano Banana Pro 等）經過專門訓練，能夠極其精細地處理邊緣細節，無論是飄逸的髮絲、動物毛髮，還是玻璃瓶的透明質感，都能無縫保留。\"}}, {\"@type\": \"Question\", \"name\": \"我可以直接匯出一張透明背景的 PNG 圖片嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"絕對可以。您可以使用我們的「Remove bg（移除背景）」工具，一鍵提取主體，並匯出為高畫質的透明 PNG 格式，方便在其他設計軟體中使用。\"}}, {\"@type\": \"Question\", \"name\": \"生成的背景替換圖片可以用於商業用途嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以。只要您是 Lovart 的付費方案用戶，您就擁有所生成合成圖像的完整商業使用權，可以放心安全地用於廣告投放、品牌官網及客戶專案中。\"}}]}}"
+    },
+    "title": "AI即時去背，免遮罩超簡單"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"AI即時去背，免遮罩超簡單\",\"description\":\"Teleport your products and portraits to any location without manual masking. Lovart's AI Design Agent automatically extracts subjects and syncs realistic lighting and shadows.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Zero-Shot Semantic Masking\"}},{\"type\":\"bento-6\",\"title\":\"Advanced Capabilities for Flawless Compositing\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"零樣本語義去背\",\"description\":\"告別枯燥的手動選取。只需一鍵，我們的 AI 即可精準擷取最複雜的主體——如飛揚的髮絲、透明玻璃杯或毛茸茸的寵物。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"零樣本語義去背\"}},{\"title\":\"完美的物理陰影生成\",\"description\":\"拒絕「粗劣的合成感」。Lovart 會根據新環境的光源方向，準確渲染出真實的接觸陰影、環境光遮蔽 (AO) 和方向性投影。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"完美的物理陰影生成\"}},{\"title\":\"環境反射與材質同步\",\"description\":\"如果您將產品放在濕潤的柏油路面上，AI 會生成準確的水面反光。Agent 懂物理材質，確保成圖達到極致的照片級真實感。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"環境反射與材質同步\"}},{\"title\":\"圖層拆解 (Edit Elements)\",\"description\":\"需要更多控制權？使用「元素拆解」將生成的圖像打散為獨立的活動圖層（主體、道具、背景），實現無限的排版自由。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"圖層拆解 (Edit Elements)\"}},{\"title\":\"高畫質 4K 匯出\",\"description\":\"換背景絕不該犧牲畫質。將您的最終合成圖以超清晰的 4K 解析度匯出，直接可用於印刷、戶外看板或高階電商商品頁。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"高畫質 4K 匯出\"}},{\"title\":\"100% 保留主體特徵\",\"description\":\"在背景發生翻天覆地變化的同時，您的核心主體——它的品牌 Logo、確切的尺寸比例和原始紋理材質——將被嚴格鎖定，絲毫不變。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"100% 保留主體特徵\"}}]},{\"type\":\"capability-tabs\",\"title\":\"一個智慧體，整合全部能力\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"零樣本語義去背\",\"icon\":\"chat\",\"content\":{\"title\":\"零樣本語義去背\",\"description\":\"告別枯燥的手動選取。只需一鍵，我們的 AI 即可精準擷取最複雜的主體——如飛揚的髮絲、透明玻璃杯或毛茸茸的寵物。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"零樣本語義去背\"}}},{\"label\":\"完美的物理陰影生成\",\"icon\":\"image\",\"content\":{\"title\":\"完美的物理陰影生成\",\"description\":\"拒絕「粗劣的合成感」。Lovart 會根據新環境的光源方向，準確渲染出真實的接觸陰影、環境光遮蔽 (AO) 和方向性投影。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"完美的物理陰影生成\"}}},{\"label\":\"環境反射與材質同步\",\"icon\":\"flask\",\"content\":{\"title\":\"環境反射與材質同步\",\"description\":\"如果您將產品放在濕潤的柏油路面上，AI 會生成準確的水面反光。Agent 懂物理材質，確保成圖達到極致的照片級真實感。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"環境反射與材質同步\"}}},{\"label\":\"圖層拆解 (Edit Elements)\",\"icon\":\"brand\",\"content\":{\"title\":\"圖層拆解 (Edit Elements)\",\"description\":\"需要更多控制權？使用「元素拆解」將生成的圖像打散為獨立的活動圖層（主體、道具、背景），實現無限的排版自由。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"圖層拆解 (Edit Elements)\"}}}]},{\"type\":\"bento-2\",\"title\":\"尤其擅長的兩件事\",\"columns\":2,\"features\":[{\"title\":\"高畫質 4K 匯出\",\"description\":\"換背景絕不該犧牲畫質。將您的最終合成圖以超清晰的 4K 解析度匯出，直接可用於印刷、戶外看板或高階電商商品頁。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"高畫質 4K 匯出\"}},{\"title\":\"100% 保留主體特徵\",\"description\":\"在背景發生翻天覆地變化的同時，您的核心主體——它的品牌 Logo、確切的尺寸比例和原始紋理材質——將被嚴格鎖定，絲毫不變。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"100% 保留主體特徵\"}}]},{\"type\":\"feature-detail\",\"title\":\"詳細了解使用方式\",\"items\":[{\"title\":\"開啟你的Instant AI Background Swap: Zero Masking Required專案\",\"description\":\"描述你想要的成果，並補充參考素材即可。\"},{\"title\":\"與智慧體一起迭代\",\"description\":\"在同一畫布上調整細節、探索不同方案。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"AI 智慧背景替換：無須去背，一鍵瞬移\",\"description\":\"告別繁瑣的鋼筆工具與遮罩。Lovart 的 AI 設計代理人能自動識別主體，零手動去背即可將您的產品或人像瞬間傳送到任何場景。引擎會自動計算環境光、倒影與物理陰影，實現完美的商業級融合。\",\"input_placeholder\":\"描述您想要為拍攝主體更換的新背景...\",\"prompts\":[{\"label\":\"室內生活場景\",\"prompt\":\"將背景替換為帶有柔和自然窗光的極簡北歐風客廳\"},{\"label\":\"產品攝影棚大片\",\"prompt\":\"把這個保養品瓶子放在帶有水波紋和焦散光影的濕潤大理石展示台上\"},{\"label\":\"電影級人像\",\"prompt\":\"將這位時裝模特兒傳送到夜晚充滿霓虹燈光的賽博龐克東京街頭\"},{\"label\":\"汽車廣告視覺\",\"prompt\":\"把這輛車放在日落時分蜿蜒的海岸公路上，帶有極具張力的黃金時刻光線\"}],\"tip\":\"提示：請具體描述光線或材質，例如「放在灑滿清晨陽光的木質甲板上，帶有柔和陰影」。\",\"cta\":{\"text\":\"替換背景\"}},{\"type\":\"workflow-horizontal\",\"title\":\"只需 3 步，實現主體的完美「瞬移」\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"上傳與智能識別\",\"description\":\"將照片丟進 ChatCanvas。拋棄去背工具——Lovart 的語義引擎會自動檢測核心主體，並在瞬間將其與原背景乾淨俐落地剝離。\"},{\"step\":2,\"title\":\"輸入新場景提示詞\",\"description\":\"直接輸入您想讓主體去的地方。無論是「雪山之巔」還是「高級攝影棚」，MCoT 引擎都能理解空間邏輯並精準建構環境。\"},{\"step\":3,\"title\":\"光影與陰影自動同步\",\"description\":\"拒絕「懸浮感」。Agent 會自動計算並應用環境反射、真實的落地陰影以及色彩匹配，讓您的主體自然地融入新場景中。\"}]},{\"type\":\"comparison-table\",\"title\":\"Instant AI Background Swap: Zero Masking Required：Lovart 與一般工作流程比較\",\"headers\":[\"需求\",\"通用工具\",\"手動工作流程\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"開啟你的Instant AI Background Swap: Zero Masking Required專案\",\"values\":[\"一句提示詞\",\"手動撰寫需求\",\"需求驅動的推理\"]},{\"feature\":\"產出第一版的時間\",\"values\":[\"幾分鐘\",\"數天\",\"幾分鐘\"]},{\"feature\":\"生成後的編輯\",\"values\":[\"有限\",\"反覆修改\",\"塗抹 / 文字 / 元素編輯\"]},{\"feature\":\"維持品牌一致\",\"values\":[\"手動\",\"手動\",\"支援 Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Instant AI Background Swap: Zero Masking Required的最佳應用場景\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"更快上線\",\"description\":\"從需求到Instant AI Background Swap: Zero Masking Required素材，一次工作階段即可完成。\"},{\"icon\":\"brand\",\"title\":\"維持一致\",\"description\":\"Brand Kit 讓每一份素材都保持統一。\"},{\"icon\":\"refresh\",\"title\":\"快速迭代\",\"description\":\"無需從頭開始，即可編輯細節。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"我以前拍一組 Lifestyle 產品情境圖要花 5000 美金。現在我只需在辦公桌上拍張照，告訴 Lovart 『把它放在日落的海灘上』，AI 就能把複雜的陰影和反光處理得天衣無縫。簡直是魔法。\",\"author\":\"Marcus L.\",\"role\":\"跨境電商創辦人\"},{\"quote\":\"以前用 PS 幫頭髮去背，一張圖要耗我 20 分鐘。有了 Lovart 的零遮罩技術，主體瞬間就被分離出來，而且環境光的自動融合讓成圖看起來自然得不可思議。\",\"author\":\"Elena R.\",\"role\":\"社群媒體行銷經理\"},{\"quote\":\"能把模特兒從純色白底棚拍直接傳送到賽博龐克街頭，而且霓虹燈光還會真實地反射在她的皮衣上，這能力直接降維打擊。它的圖層拆解功能給了我們終極的排版彈性。\",\"author\":\"David K.\",\"role\":\"廣告藝術總監\"}],\"title\":\"他們正使用 Lovart 讓視覺創意瞬間「瞬移」\"},{\"type\":\"pricing-block\",\"title\":\"選擇適合團隊的方案\",\"description\":\"免費開始，當作品要交付客戶時再升級。\"},{\"type\":\"faq\",\"title\":\"常見問題\",\"items\":[{\"question\":\"我需要手動塗抹遮罩或使用套索工具嗎？\",\"answer\":\"完全不需要。Lovart 的 AI 設計代理人擁有極強的語義理解能力，能自動識別並精確分離出圖像中的核心主體，讓您徹底告別繁瑣的手動去背。\"},{\"question\":\"主體換到新背景後，看起來會像「懸浮」在半空中嗎？\",\"answer\":\"不會。與基礎的去背軟體不同，Lovart 相當於一個虛擬攝影棚。它會自動計算並生成合適的接觸陰影、環境光遮蔽 (AO) 以及反光，讓主體完美自然地融入新環境中。\"},{\"question\":\"對髮絲或透明玻璃等高難度主體有效嗎？\",\"answer\":\"有效。我們整合的頂尖模型（包含 Nano Banana Pro 等）經過專門訓練，能夠極其精細地處理邊緣細節，無論是飄逸的髮絲、動物毛髮，還是玻璃瓶的透明質感，都能無縫保留。\"},{\"question\":\"我可以直接匯出一張透明背景的 PNG 圖片嗎？\",\"answer\":\"絕對可以。您可以使用我們的「Remove bg（移除背景）」工具，一鍵提取主體，並匯出為高畫質的透明 PNG 格式，方便在其他設計軟體中使用。\"},{\"question\":\"生成的背景替換圖片可以用於商業用途嗎？\",\"answer\":\"可以。只要您是 Lovart 的付費方案用戶，您就擁有所生成合成圖像的完整商業使用權，可以放心安全地用於廣告投放、品牌官網及客戶專案中。\"}]},{\"type\":\"cta-default\",\"title\":\"用 Lovart 開始創作\",\"description\":\"幾分鐘內，把你的需求變成符合品牌調性的視覺作品。\",\"buttons\":[{\"text\":\"免費開始\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "AI即時去背，免遮罩超簡單",
+      "description": "Teleport your products and portraits to any location without manual masking. Lovart's AI Design Agent automatically extracts subjects and syncs realistic lighting and shadows.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Zero-Shot Semantic Masking"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Advanced Capabilities for Flawless Compositing",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "零樣本語義去背",
+          "description": "告別枯燥的手動選取。只需一鍵，我們的 AI 即可精準擷取最複雜的主體——如飛揚的髮絲、透明玻璃杯或毛茸茸的寵物。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "零樣本語義去背"
+          }
+        },
+        {
+          "title": "完美的物理陰影生成",
+          "description": "拒絕「粗劣的合成感」。Lovart 會根據新環境的光源方向，準確渲染出真實的接觸陰影、環境光遮蔽 (AO) 和方向性投影。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "完美的物理陰影生成"
+          }
+        },
+        {
+          "title": "環境反射與材質同步",
+          "description": "如果您將產品放在濕潤的柏油路面上，AI 會生成準確的水面反光。Agent 懂物理材質，確保成圖達到極致的照片級真實感。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "環境反射與材質同步"
+          }
+        },
+        {
+          "title": "圖層拆解 (Edit Elements)",
+          "description": "需要更多控制權？使用「元素拆解」將生成的圖像打散為獨立的活動圖層（主體、道具、背景），實現無限的排版自由。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "圖層拆解 (Edit Elements)"
+          }
+        },
+        {
+          "title": "高畫質 4K 匯出",
+          "description": "換背景絕不該犧牲畫質。將您的最終合成圖以超清晰的 4K 解析度匯出，直接可用於印刷、戶外看板或高階電商商品頁。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "高畫質 4K 匯出"
+          }
+        },
+        {
+          "title": "100% 保留主體特徵",
+          "description": "在背景發生翻天覆地變化的同時，您的核心主體——它的品牌 Logo、確切的尺寸比例和原始紋理材質——將被嚴格鎖定，絲毫不變。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "100% 保留主體特徵"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "一個智慧體，整合全部能力",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "零樣本語義去背",
+          "icon": "chat",
+          "content": {
+            "title": "零樣本語義去背",
+            "description": "告別枯燥的手動選取。只需一鍵，我們的 AI 即可精準擷取最複雜的主體——如飛揚的髮絲、透明玻璃杯或毛茸茸的寵物。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "零樣本語義去背"
+            }
+          }
+        },
+        {
+          "label": "完美的物理陰影生成",
+          "icon": "image",
+          "content": {
+            "title": "完美的物理陰影生成",
+            "description": "拒絕「粗劣的合成感」。Lovart 會根據新環境的光源方向，準確渲染出真實的接觸陰影、環境光遮蔽 (AO) 和方向性投影。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "完美的物理陰影生成"
+            }
+          }
+        },
+        {
+          "label": "環境反射與材質同步",
+          "icon": "flask",
+          "content": {
+            "title": "環境反射與材質同步",
+            "description": "如果您將產品放在濕潤的柏油路面上，AI 會生成準確的水面反光。Agent 懂物理材質，確保成圖達到極致的照片級真實感。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "環境反射與材質同步"
+            }
+          }
+        },
+        {
+          "label": "圖層拆解 (Edit Elements)",
+          "icon": "brand",
+          "content": {
+            "title": "圖層拆解 (Edit Elements)",
+            "description": "需要更多控制權？使用「元素拆解」將生成的圖像打散為獨立的活動圖層（主體、道具、背景），實現無限的排版自由。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "圖層拆解 (Edit Elements)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "尤其擅長的兩件事",
+      "columns": 2,
+      "features": [
+        {
+          "title": "高畫質 4K 匯出",
+          "description": "換背景絕不該犧牲畫質。將您的最終合成圖以超清晰的 4K 解析度匯出，直接可用於印刷、戶外看板或高階電商商品頁。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "高畫質 4K 匯出"
+          }
+        },
+        {
+          "title": "100% 保留主體特徵",
+          "description": "在背景發生翻天覆地變化的同時，您的核心主體——它的品牌 Logo、確切的尺寸比例和原始紋理材質——將被嚴格鎖定，絲毫不變。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "100% 保留主體特徵"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "詳細了解使用方式",
+      "items": [
+        {
+          "title": "開啟你的Instant AI Background Swap: Zero Masking Required專案",
+          "description": "描述你想要的成果，並補充參考素材即可。"
+        },
+        {
+          "title": "與智慧體一起迭代",
+          "description": "在同一畫布上調整細節、探索不同方案。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "AI 智慧背景替換：無須去背，一鍵瞬移",
+      "description": "告別繁瑣的鋼筆工具與遮罩。Lovart 的 AI 設計代理人能自動識別主體，零手動去背即可將您的產品或人像瞬間傳送到任何場景。引擎會自動計算環境光、倒影與物理陰影，實現完美的商業級融合。",
+      "input_placeholder": "描述您想要為拍攝主體更換的新背景...",
+      "prompts": [
+        {
+          "label": "室內生活場景",
+          "prompt": "將背景替換為帶有柔和自然窗光的極簡北歐風客廳"
+        },
+        {
+          "label": "產品攝影棚大片",
+          "prompt": "把這個保養品瓶子放在帶有水波紋和焦散光影的濕潤大理石展示台上"
+        },
+        {
+          "label": "電影級人像",
+          "prompt": "將這位時裝模特兒傳送到夜晚充滿霓虹燈光的賽博龐克東京街頭"
+        },
+        {
+          "label": "汽車廣告視覺",
+          "prompt": "把這輛車放在日落時分蜿蜒的海岸公路上，帶有極具張力的黃金時刻光線"
+        }
+      ],
+      "tip": "提示：請具體描述光線或材質，例如「放在灑滿清晨陽光的木質甲板上，帶有柔和陰影」。",
+      "cta": {
+        "text": "替換背景"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "只需 3 步，實現主體的完美「瞬移」",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "上傳與智能識別",
+          "description": "將照片丟進 ChatCanvas。拋棄去背工具——Lovart 的語義引擎會自動檢測核心主體，並在瞬間將其與原背景乾淨俐落地剝離。"
+        },
+        {
+          "step": 2,
+          "title": "輸入新場景提示詞",
+          "description": "直接輸入您想讓主體去的地方。無論是「雪山之巔」還是「高級攝影棚」，MCoT 引擎都能理解空間邏輯並精準建構環境。"
+        },
+        {
+          "step": 3,
+          "title": "光影與陰影自動同步",
+          "description": "拒絕「懸浮感」。Agent 會自動計算並應用環境反射、真實的落地陰影以及色彩匹配，讓您的主體自然地融入新場景中。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Instant AI Background Swap: Zero Masking Required：Lovart 與一般工作流程比較",
+      "headers": [
+        "需求",
+        "通用工具",
+        "手動工作流程",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "開啟你的Instant AI Background Swap: Zero Masking Required專案",
+          "values": [
+            "一句提示詞",
+            "手動撰寫需求",
+            "需求驅動的推理"
+          ]
+        },
+        {
+          "feature": "產出第一版的時間",
+          "values": [
+            "幾分鐘",
+            "數天",
+            "幾分鐘"
+          ]
+        },
+        {
+          "feature": "生成後的編輯",
+          "values": [
+            "有限",
+            "反覆修改",
+            "塗抹 / 文字 / 元素編輯"
+          ]
+        },
+        {
+          "feature": "維持品牌一致",
+          "values": [
+            "手動",
+            "手動",
+            "支援 Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Instant AI Background Swap: Zero Masking Required的最佳應用場景",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "更快上線",
+          "description": "從需求到Instant AI Background Swap: Zero Masking Required素材，一次工作階段即可完成。"
+        },
+        {
+          "icon": "brand",
+          "title": "維持一致",
+          "description": "Brand Kit 讓每一份素材都保持統一。"
+        },
+        {
+          "icon": "refresh",
+          "title": "快速迭代",
+          "description": "無需從頭開始，即可編輯細節。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "我以前拍一組 Lifestyle 產品情境圖要花 5000 美金。現在我只需在辦公桌上拍張照，告訴 Lovart 『把它放在日落的海灘上』，AI 就能把複雜的陰影和反光處理得天衣無縫。簡直是魔法。",
+          "author": "Marcus L.",
+          "role": "跨境電商創辦人"
+        },
+        {
+          "quote": "以前用 PS 幫頭髮去背，一張圖要耗我 20 分鐘。有了 Lovart 的零遮罩技術，主體瞬間就被分離出來，而且環境光的自動融合讓成圖看起來自然得不可思議。",
+          "author": "Elena R.",
+          "role": "社群媒體行銷經理"
+        },
+        {
+          "quote": "能把模特兒從純色白底棚拍直接傳送到賽博龐克街頭，而且霓虹燈光還會真實地反射在她的皮衣上，這能力直接降維打擊。它的圖層拆解功能給了我們終極的排版彈性。",
+          "author": "David K.",
+          "role": "廣告藝術總監"
+        }
+      ],
+      "title": "他們正使用 Lovart 讓視覺創意瞬間「瞬移」"
+    },
+    {
+      "type": "pricing-block",
+      "title": "選擇適合團隊的方案",
+      "description": "免費開始，當作品要交付客戶時再升級。"
+    },
+    {
+      "type": "faq",
+      "title": "常見問題",
+      "items": [
+        {
+          "question": "我需要手動塗抹遮罩或使用套索工具嗎？",
+          "answer": "完全不需要。Lovart 的 AI 設計代理人擁有極強的語義理解能力，能自動識別並精確分離出圖像中的核心主體，讓您徹底告別繁瑣的手動去背。"
+        },
+        {
+          "question": "主體換到新背景後，看起來會像「懸浮」在半空中嗎？",
+          "answer": "不會。與基礎的去背軟體不同，Lovart 相當於一個虛擬攝影棚。它會自動計算並生成合適的接觸陰影、環境光遮蔽 (AO) 以及反光，讓主體完美自然地融入新環境中。"
+        },
+        {
+          "question": "對髮絲或透明玻璃等高難度主體有效嗎？",
+          "answer": "有效。我們整合的頂尖模型（包含 Nano Banana Pro 等）經過專門訓練，能夠極其精細地處理邊緣細節，無論是飄逸的髮絲、動物毛髮，還是玻璃瓶的透明質感，都能無縫保留。"
+        },
+        {
+          "question": "我可以直接匯出一張透明背景的 PNG 圖片嗎？",
+          "answer": "絕對可以。您可以使用我們的「Remove bg（移除背景）」工具，一鍵提取主體，並匯出為高畫質的透明 PNG 格式，方便在其他設計軟體中使用。"
+        },
+        {
+          "question": "生成的背景替換圖片可以用於商業用途嗎？",
+          "answer": "可以。只要您是 Lovart 的付費方案用戶，您就擁有所生成合成圖像的完整商業使用權，可以放心安全地用於廣告投放、品牌官網及客戶專案中。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "用 Lovart 開始創作",
+      "description": "幾分鐘內，把你的需求變成符合品牌調性的視覺作品。",
+      "buttons": [
+        {
+          "text": "免費開始",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

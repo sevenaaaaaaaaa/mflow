@@ -1,0 +1,385 @@
+{
+  "_id": "features-rapid-poster-ai-creation-zh-TW",
+  "reflowSourceId": "features-rapid-poster-ai-creation-zh-TW",
+  "slug": "rapid-poster-ai-creation",
+  "language": "zh-TW",
+  "category": "feature",
+  "title": "Lovart AI海報產生器：秒速自訂專屬海報",
+  "description": "Stop struggling with blank canvases. Lovart's AI Design Agent generates professional, print-ready posters with flawless typography and editable layers in seconds.",
+  "seo": {
+    "description": "告別空白畫布的煩惱！Lovart AI 設計助手，秒速生成專業級印刷海報，完美字型與可編輯圖層一次到位。",
+    "keywords": [
+      "海報製作AI",
+      "文字轉海報AI",
+      "AI圖形設計助手",
+      "可編輯AI海報",
+      "行銷海報製作工具"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Flawless AI Typography (Text Edit)",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovart AI海報產生器：秒速自訂專屬海報\", \"description\": \"Stop struggling with blank canvases. Lovart's AI Design Agent generates professional, print-ready posters with flawless typography and editable layers in seconds.\", \"url\": \"https://www.lovart.ai/features/rapid-poster-ai-creation\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Lovart 真的能在海報上生成清晰、不亂碼的文字嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"絕對可以。傳統 AI 繪圖工具在生成文字時總是一團亂碼，但 Lovart 接入了 Seedream 等具備強大字元級渲染能力的模型，原生支援精準的中英文字體生成。更重要的是，我們獨家的文字編輯 (Text Edit) 功能，允許您直接在生成的圖上修改錯別字或替換文案。\"}}, {\"@type\": \"Question\", \"name\": \"如果我對海報很滿意，但想改掉裡面的一個小元素，需要重做嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"完全不需要。這就是 Lovart 作為「設計 Agent」的差別。使用精準編輯 (Touch Edit) 和圖層拆解 (Edit Elements) 功能，您可以單獨提取某個元素，換掉背景，或者把模特的衣服換個顏色，而絲毫不會破壞你原本滿意的完美構圖。\"}}, {\"@type\": \"Question\", \"name\": \"匯出的海報解析度夠高嗎？可以用於線下實體印刷嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"是的！Lovart 內建了高級 AI 畫質提升工具（Upscaler），能將您的海報無損放大至 4K 甚至 8K 解析度，確保列印出來後文字邊緣銳利、材質紋理纖毫畢現，完美滿足商業級大尺寸印刷的標準。\"}}, {\"@type\": \"Question\", \"name\": \"我完全不會用 Photoshop，也沒有設計基礎，能用它做海報嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"完全沒問題。Lovart 就是您的 AI 創意搭檔。您只需要在 ChatCanvas 中用日常對話說出你的想法，底層的 MCoT (Mind Chain of Thought) 創意推理引擎會自動為您處理排版、色彩心理學和字體搭配，全自動完成專業設計。\"}}, {\"@type\": \"Question\", \"name\": \"我生成的這些 AI 海報可以用於商業行銷嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以。任何訂閱了 Lovart 付費方案（Starter, Plus, Pro）的使用者，都將擁有其生成視覺資產的完整商業使用權。您可以極其放心地將它們用於社群媒體廣告投放、線下商業廣告牌以及客戶專案交付中。\"}}]}}"
+    },
+    "title": "Lovart AI海報產生器：秒速自訂專屬海報"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Lovart AI海報產生器：秒速自訂專屬海報\",\"description\":\"Stop struggling with blank canvases. Lovart's AI Design Agent generates professional, print-ready posters with flawless typography and editable layers in seconds.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Flawless AI Typography (Text Edit)\"}},{\"type\":\"bento-6\",\"title\":\"The Ultimate AI Toolkit for Poster Design\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"終結亂碼的排版神器 (Text Edit)\",\"description\":\"徹底告別 AI 生成「火星文」的時代。Lovart 原生支援清晰的中英文本渲染。結合強大的 Text Edit 功能，您可以直接在畫布上修改錯別字、更改字體或更新促銷日期，完美保留原有設計質感。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"終結亂碼的排版神器 (Text Edit)\"}},{\"title\":\"智能圖層拆解 (Edit Elements)\",\"description\":\"一鍵將 AI 生成的扁平圖像「炸開」成可獨立編輯的圖層。自動分離海報標題、前景主體和背景，讓您自由拖曳重新排版——就像擁有了全自動的 PSD 原始檔。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"智能圖層拆解 (Edit Elements)\"}},{\"title\":\"點選即改的語義微調 (Touch Edit)\",\"description\":\"覺得海報裡模特的衣服顏色不對？只需點擊襯衫，打字輸入您的修改需求。我們的語義引擎會進行精準局部修改，同時絕不破壞海報整體的絕佳構圖。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"點選即改的語義微調 (Touch Edit)\"}},{\"title\":\"跨平台多尺寸延展\",\"description\":\"做完一張 16:9 的數位大螢幕海報後，瞬間讓它裂變成 9:16 的 IG Reels 豎屏版或 A4 印刷版。AI 會智能擴展背景並重新分配構圖，確保絕對不會出現尷尬的畫面裁切。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"跨平台多尺寸延展\"}},{\"title\":\"接入最頂尖的視覺模型\",\"description\":\"底層聚合 Seedream 5.0 Lite、Nano Banana Pro 等行業最強模型，確保您的海報具備降維打擊的美學品質、完美的環境光影以及複雜的物理邏輯一致性。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"接入最頂尖的視覺模型\"}},{\"title\":\"4K/8K 印刷級畫質提升\",\"description\":\"線下海報對清晰度要求極高。使用 Lovart 內建的廣播級 AI 畫質增強工具，將您的設計無損放大至 4K 或 8K，保證用於巨幅商業印刷時材質紋理清晰銳利。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"4K/8K 印刷級畫質提升\"}}]},{\"type\":\"capability-tabs\",\"title\":\"一個智慧體，整合全部能力\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"終結亂碼的排版神器 (Text Edit)\",\"icon\":\"chat\",\"content\":{\"title\":\"終結亂碼的排版神器 (Text Edit)\",\"description\":\"徹底告別 AI 生成「火星文」的時代。Lovart 原生支援清晰的中英文本渲染。結合強大的 Text Edit 功能，您可以直接在畫布上修改錯別字、更改字體或更新促銷日期，完美保留原有設計質感。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"終結亂碼的排版神器 (Text Edit)\"}}},{\"label\":\"智能圖層拆解 (Edit Elements)\",\"icon\":\"image\",\"content\":{\"title\":\"智能圖層拆解 (Edit Elements)\",\"description\":\"一鍵將 AI 生成的扁平圖像「炸開」成可獨立編輯的圖層。自動分離海報標題、前景主體和背景，讓您自由拖曳重新排版——就像擁有了全自動的 PSD 原始檔。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"智能圖層拆解 (Edit Elements)\"}}},{\"label\":\"點選即改的語義微調 (Touch Edit)\",\"icon\":\"flask\",\"content\":{\"title\":\"點選即改的語義微調 (Touch Edit)\",\"description\":\"覺得海報裡模特的衣服顏色不對？只需點擊襯衫，打字輸入您的修改需求。我們的語義引擎會進行精準局部修改，同時絕不破壞海報整體的絕佳構圖。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"點選即改的語義微調 (Touch Edit)\"}}},{\"label\":\"跨平台多尺寸延展\",\"icon\":\"brand\",\"content\":{\"title\":\"跨平台多尺寸延展\",\"description\":\"做完一張 16:9 的數位大螢幕海報後，瞬間讓它裂變成 9:16 的 IG Reels 豎屏版或 A4 印刷版。AI 會智能擴展背景並重新分配構圖，確保絕對不會出現尷尬的畫面裁切。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"跨平台多尺寸延展\"}}}]},{\"type\":\"bento-2\",\"title\":\"尤其擅長的兩件事\",\"columns\":2,\"features\":[{\"title\":\"接入最頂尖的視覺模型\",\"description\":\"底層聚合 Seedream 5.0 Lite、Nano Banana Pro 等行業最強模型，確保您的海報具備降維打擊的美學品質、完美的環境光影以及複雜的物理邏輯一致性。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"接入最頂尖的視覺模型\"}},{\"title\":\"4K/8K 印刷級畫質提升\",\"description\":\"線下海報對清晰度要求極高。使用 Lovart 內建的廣播級 AI 畫質增強工具，將您的設計無損放大至 4K 或 8K，保證用於巨幅商業印刷時材質紋理清晰銳利。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"4K/8K 印刷級畫質提升\"}}]},{\"type\":\"feature-detail\",\"title\":\"詳細了解使用方式\",\"items\":[{\"title\":\"開啟你的Best AI Poster Generator & Maker: Create Custom Posters in Seconds專案\",\"description\":\"描述你想要的成果，並補充參考素材即可。\"},{\"title\":\"與智慧體一起迭代\",\"description\":\"在同一畫布上調整細節、探索不同方案。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"最佳 AI 海報產生器：幾秒鐘完成專業海報設計\",\"description\":\"告別對著空白畫布發呆和套用氾濫的範本。Lovart 的 AI 設計 Agent 能在幾秒鐘內將您的想法轉化為專業的商業級海報。這裡有不亂碼的精準排版、令人驚豔的視覺效果，以及讓圖層完全可編輯的黑科技。\",\"input_placeholder\":\"描述您的海報主題、受眾和想要的文案...\",\"prompts\":[{\"label\":\"音樂節海報\",\"prompt\":\"一張充滿活力的夏季音樂節海報，帶有醒目的 3D 字體、霓虹色彩和充滿能量的人群剪影。\"},{\"label\":\"房地產行銷海報\",\"prompt\":\"極簡主義的房地產開放日海報，現代建築背景，優雅的襯線字體，高級的米色調。\"},{\"label\":\"科技大會海報\",\"prompt\":\"標題為「AI IN 2026」的科技大會海報，包含抽象發光的數據流和充滿未來感的毛玻璃 UI 元素。\"},{\"label\":\"咖啡廳促銷海報\",\"prompt\":\"咖啡廳當季菜單海報，大理石桌面上冰抹茶拿鐵的平鋪俯拍，溫暖的陽光，極其清晰的英文價格標籤。\"}],\"tip\":\"提示：在描述中包含您的主標題、期望的視覺風格（例如：「極簡主義」、「賽博龐克」）以及活動細節，以獲得最佳效果。\",\"cta\":{\"text\":\"一鍵生成海報\"}},{\"type\":\"workflow-horizontal\",\"title\":\"只需 3 步，打造高轉換率商業海報\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"1. 告訴 Agent 您的需求\",\"description\":\"只需在 ChatCanvas 無限畫布中輸入您的概念。告訴 AI 活動名稱、品牌調性和核心訊息。Lovart 的 MCoT 引擎會像 4A 公司的藝術總監一樣，瞬間為您規劃創意方向。\"},{\"step\":2,\"title\":\"2. 智能生成與排版\",\"description\":\"見證 Lovart 為您生成多種專業海報方案。我們底層的頂尖模型原生支援中英雙語生成，文字清晰易讀，並與絕美的背景插畫無縫融合，拒絕生硬貼片感。\"},{\"step\":3,\"title\":\"3. 圖層編輯與高畫質匯出\",\"description\":\"使用「圖層拆解 (Edit Elements)」功能，瞬間將海報炸開為可編輯的文字和圖形圖層。用「文字編輯 (Text Edit)」修正文案，調整排版，最後匯出 4K 超清大圖，直接用於印刷或廣告投放。\"}]},{\"type\":\"comparison-table\",\"title\":\"Best AI Poster Generator & Maker: Create Custom Posters in Seconds：Lovart 與一般工作流程比較\",\"headers\":[\"需求\",\"通用工具\",\"手動工作流程\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"開啟你的Best AI Poster Generator & Maker: Create Custom Posters in Seconds專案\",\"values\":[\"一句提示詞\",\"手動撰寫需求\",\"需求驅動的推理\"]},{\"feature\":\"產出第一版的時間\",\"values\":[\"幾分鐘\",\"數天\",\"幾分鐘\"]},{\"feature\":\"生成後的編輯\",\"values\":[\"有限\",\"反覆修改\",\"塗抹 / 文字 / 元素編輯\"]},{\"feature\":\"維持品牌一致\",\"values\":[\"手動\",\"手動\",\"支援 Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Best AI Poster Generator & Maker: Create Custom Posters in Seconds的最佳應用場景\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"更快上線\",\"description\":\"從需求到Best AI Poster Generator & Maker: Create Custom Posters in Seconds素材，一次工作階段即可完成。\"},{\"icon\":\"brand\",\"title\":\"維持一致\",\"description\":\"Brand Kit 讓每一份素材都保持統一。\"},{\"icon\":\"refresh\",\"title\":\"快速迭代\",\"description\":\"無需從頭開始，即可編輯細節。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"\",\"author\":\"Sarah J.\",\"role\":\"DTC 品牌成長負責人\"},{\"quote\":\"\",\"author\":\"David K.\",\"role\":\"資深創意總監\"},{\"quote\":\"\",\"author\":\"Elena R.\",\"role\":\"活動企劃\"}],\"title\":\"品牌與設計師正使用 Lovart 提升轉換率\"},{\"type\":\"pricing-block\",\"title\":\"選擇適合團隊的方案\",\"description\":\"免費開始，當作品要交付客戶時再升級。\"},{\"type\":\"faq\",\"title\":\"常見問題\",\"items\":[{\"question\":\"Lovart 真的能在海報上生成清晰、不亂碼的文字嗎？\",\"answer\":\"絕對可以。傳統 AI 繪圖工具在生成文字時總是一團亂碼，但 Lovart 接入了 Seedream 等具備強大字元級渲染能力的模型，原生支援精準的中英文字體生成。更重要的是，我們獨家的文字編輯 (Text Edit) 功能，允許您直接在生成的圖上修改錯別字或替換文案。\"},{\"question\":\"如果我對海報很滿意，但想改掉裡面的一個小元素，需要重做嗎？\",\"answer\":\"完全不需要。這就是 Lovart 作為「設計 Agent」的差別。使用精準編輯 (Touch Edit) 和圖層拆解 (Edit Elements) 功能，您可以單獨提取某個元素，換掉背景，或者把模特的衣服換個顏色，而絲毫不會破壞你原本滿意的完美構圖。\"},{\"question\":\"匯出的海報解析度夠高嗎？可以用於線下實體印刷嗎？\",\"answer\":\"是的！Lovart 內建了高級 AI 畫質提升工具（Upscaler），能將您的海報無損放大至 4K 甚至 8K 解析度，確保列印出來後文字邊緣銳利、材質紋理纖毫畢現，完美滿足商業級大尺寸印刷的標準。\"},{\"question\":\"我完全不會用 Photoshop，也沒有設計基礎，能用它做海報嗎？\",\"answer\":\"完全沒問題。Lovart 就是您的 AI 創意搭檔。您只需要在 ChatCanvas 中用日常對話說出你的想法，底層的 MCoT (Mind Chain of Thought) 創意推理引擎會自動為您處理排版、色彩心理學和字體搭配，全自動完成專業設計。\"},{\"question\":\"我生成的這些 AI 海報可以用於商業行銷嗎？\",\"answer\":\"可以。任何訂閱了 Lovart 付費方案（Starter, Plus, Pro）的使用者，都將擁有其生成視覺資產的完整商業使用權。您可以極其放心地將它們用於社群媒體廣告投放、線下商業廣告牌以及客戶專案交付中。\"}]},{\"type\":\"cta-default\",\"title\":\"用 Lovart 開始創作\",\"description\":\"幾分鐘內，把你的需求變成符合品牌調性的視覺作品。\",\"buttons\":[{\"text\":\"免費開始\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Lovart AI海報產生器：秒速自訂專屬海報",
+      "description": "Stop struggling with blank canvases. Lovart's AI Design Agent generates professional, print-ready posters with flawless typography and editable layers in seconds.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "alt": "Flawless AI Typography (Text Edit)"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "The Ultimate AI Toolkit for Poster Design",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "終結亂碼的排版神器 (Text Edit)",
+          "description": "徹底告別 AI 生成「火星文」的時代。Lovart 原生支援清晰的中英文本渲染。結合強大的 Text Edit 功能，您可以直接在畫布上修改錯別字、更改字體或更新促銷日期，完美保留原有設計質感。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "終結亂碼的排版神器 (Text Edit)"
+          }
+        },
+        {
+          "title": "智能圖層拆解 (Edit Elements)",
+          "description": "一鍵將 AI 生成的扁平圖像「炸開」成可獨立編輯的圖層。自動分離海報標題、前景主體和背景，讓您自由拖曳重新排版——就像擁有了全自動的 PSD 原始檔。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "智能圖層拆解 (Edit Elements)"
+          }
+        },
+        {
+          "title": "點選即改的語義微調 (Touch Edit)",
+          "description": "覺得海報裡模特的衣服顏色不對？只需點擊襯衫，打字輸入您的修改需求。我們的語義引擎會進行精準局部修改，同時絕不破壞海報整體的絕佳構圖。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "點選即改的語義微調 (Touch Edit)"
+          }
+        },
+        {
+          "title": "跨平台多尺寸延展",
+          "description": "做完一張 16:9 的數位大螢幕海報後，瞬間讓它裂變成 9:16 的 IG Reels 豎屏版或 A4 印刷版。AI 會智能擴展背景並重新分配構圖，確保絕對不會出現尷尬的畫面裁切。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "跨平台多尺寸延展"
+          }
+        },
+        {
+          "title": "接入最頂尖的視覺模型",
+          "description": "底層聚合 Seedream 5.0 Lite、Nano Banana Pro 等行業最強模型，確保您的海報具備降維打擊的美學品質、完美的環境光影以及複雜的物理邏輯一致性。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "接入最頂尖的視覺模型"
+          }
+        },
+        {
+          "title": "4K/8K 印刷級畫質提升",
+          "description": "線下海報對清晰度要求極高。使用 Lovart 內建的廣播級 AI 畫質增強工具，將您的設計無損放大至 4K 或 8K，保證用於巨幅商業印刷時材質紋理清晰銳利。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "4K/8K 印刷級畫質提升"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "一個智慧體，整合全部能力",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "終結亂碼的排版神器 (Text Edit)",
+          "icon": "chat",
+          "content": {
+            "title": "終結亂碼的排版神器 (Text Edit)",
+            "description": "徹底告別 AI 生成「火星文」的時代。Lovart 原生支援清晰的中英文本渲染。結合強大的 Text Edit 功能，您可以直接在畫布上修改錯別字、更改字體或更新促銷日期，完美保留原有設計質感。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "終結亂碼的排版神器 (Text Edit)"
+            }
+          }
+        },
+        {
+          "label": "智能圖層拆解 (Edit Elements)",
+          "icon": "image",
+          "content": {
+            "title": "智能圖層拆解 (Edit Elements)",
+            "description": "一鍵將 AI 生成的扁平圖像「炸開」成可獨立編輯的圖層。自動分離海報標題、前景主體和背景，讓您自由拖曳重新排版——就像擁有了全自動的 PSD 原始檔。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "智能圖層拆解 (Edit Elements)"
+            }
+          }
+        },
+        {
+          "label": "點選即改的語義微調 (Touch Edit)",
+          "icon": "flask",
+          "content": {
+            "title": "點選即改的語義微調 (Touch Edit)",
+            "description": "覺得海報裡模特的衣服顏色不對？只需點擊襯衫，打字輸入您的修改需求。我們的語義引擎會進行精準局部修改，同時絕不破壞海報整體的絕佳構圖。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "點選即改的語義微調 (Touch Edit)"
+            }
+          }
+        },
+        {
+          "label": "跨平台多尺寸延展",
+          "icon": "brand",
+          "content": {
+            "title": "跨平台多尺寸延展",
+            "description": "做完一張 16:9 的數位大螢幕海報後，瞬間讓它裂變成 9:16 的 IG Reels 豎屏版或 A4 印刷版。AI 會智能擴展背景並重新分配構圖，確保絕對不會出現尷尬的畫面裁切。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+              "alt": "跨平台多尺寸延展"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "尤其擅長的兩件事",
+      "columns": 2,
+      "features": [
+        {
+          "title": "接入最頂尖的視覺模型",
+          "description": "底層聚合 Seedream 5.0 Lite、Nano Banana Pro 等行業最強模型，確保您的海報具備降維打擊的美學品質、完美的環境光影以及複雜的物理邏輯一致性。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "接入最頂尖的視覺模型"
+          }
+        },
+        {
+          "title": "4K/8K 印刷級畫質提升",
+          "description": "線下海報對清晰度要求極高。使用 Lovart 內建的廣播級 AI 畫質增強工具，將您的設計無損放大至 4K 或 8K，保證用於巨幅商業印刷時材質紋理清晰銳利。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "4K/8K 印刷級畫質提升"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "詳細了解使用方式",
+      "items": [
+        {
+          "title": "開啟你的Best AI Poster Generator & Maker: Create Custom Posters in Seconds專案",
+          "description": "描述你想要的成果，並補充參考素材即可。"
+        },
+        {
+          "title": "與智慧體一起迭代",
+          "description": "在同一畫布上調整細節、探索不同方案。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "最佳 AI 海報產生器：幾秒鐘完成專業海報設計",
+      "description": "告別對著空白畫布發呆和套用氾濫的範本。Lovart 的 AI 設計 Agent 能在幾秒鐘內將您的想法轉化為專業的商業級海報。這裡有不亂碼的精準排版、令人驚豔的視覺效果，以及讓圖層完全可編輯的黑科技。",
+      "input_placeholder": "描述您的海報主題、受眾和想要的文案...",
+      "prompts": [
+        {
+          "label": "音樂節海報",
+          "prompt": "一張充滿活力的夏季音樂節海報，帶有醒目的 3D 字體、霓虹色彩和充滿能量的人群剪影。"
+        },
+        {
+          "label": "房地產行銷海報",
+          "prompt": "極簡主義的房地產開放日海報，現代建築背景，優雅的襯線字體，高級的米色調。"
+        },
+        {
+          "label": "科技大會海報",
+          "prompt": "標題為「AI IN 2026」的科技大會海報，包含抽象發光的數據流和充滿未來感的毛玻璃 UI 元素。"
+        },
+        {
+          "label": "咖啡廳促銷海報",
+          "prompt": "咖啡廳當季菜單海報，大理石桌面上冰抹茶拿鐵的平鋪俯拍，溫暖的陽光，極其清晰的英文價格標籤。"
+        }
+      ],
+      "tip": "提示：在描述中包含您的主標題、期望的視覺風格（例如：「極簡主義」、「賽博龐克」）以及活動細節，以獲得最佳效果。",
+      "cta": {
+        "text": "一鍵生成海報"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "只需 3 步，打造高轉換率商業海報",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "1. 告訴 Agent 您的需求",
+          "description": "只需在 ChatCanvas 無限畫布中輸入您的概念。告訴 AI 活動名稱、品牌調性和核心訊息。Lovart 的 MCoT 引擎會像 4A 公司的藝術總監一樣，瞬間為您規劃創意方向。"
+        },
+        {
+          "step": 2,
+          "title": "2. 智能生成與排版",
+          "description": "見證 Lovart 為您生成多種專業海報方案。我們底層的頂尖模型原生支援中英雙語生成，文字清晰易讀，並與絕美的背景插畫無縫融合，拒絕生硬貼片感。"
+        },
+        {
+          "step": 3,
+          "title": "3. 圖層編輯與高畫質匯出",
+          "description": "使用「圖層拆解 (Edit Elements)」功能，瞬間將海報炸開為可編輯的文字和圖形圖層。用「文字編輯 (Text Edit)」修正文案，調整排版，最後匯出 4K 超清大圖，直接用於印刷或廣告投放。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Best AI Poster Generator & Maker: Create Custom Posters in Seconds：Lovart 與一般工作流程比較",
+      "headers": [
+        "需求",
+        "通用工具",
+        "手動工作流程",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "開啟你的Best AI Poster Generator & Maker: Create Custom Posters in Seconds專案",
+          "values": [
+            "一句提示詞",
+            "手動撰寫需求",
+            "需求驅動的推理"
+          ]
+        },
+        {
+          "feature": "產出第一版的時間",
+          "values": [
+            "幾分鐘",
+            "數天",
+            "幾分鐘"
+          ]
+        },
+        {
+          "feature": "生成後的編輯",
+          "values": [
+            "有限",
+            "反覆修改",
+            "塗抹 / 文字 / 元素編輯"
+          ]
+        },
+        {
+          "feature": "維持品牌一致",
+          "values": [
+            "手動",
+            "手動",
+            "支援 Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Best AI Poster Generator & Maker: Create Custom Posters in Seconds的最佳應用場景",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "更快上線",
+          "description": "從需求到Best AI Poster Generator & Maker: Create Custom Posters in Seconds素材，一次工作階段即可完成。"
+        },
+        {
+          "icon": "brand",
+          "title": "維持一致",
+          "description": "Brand Kit 讓每一份素材都保持統一。"
+        },
+        {
+          "icon": "refresh",
+          "title": "快速迭代",
+          "description": "無需從頭開始，即可編輯細節。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "",
+          "author": "Sarah J.",
+          "role": "DTC 品牌成長負責人"
+        },
+        {
+          "quote": "",
+          "author": "David K.",
+          "role": "資深創意總監"
+        },
+        {
+          "quote": "",
+          "author": "Elena R.",
+          "role": "活動企劃"
+        }
+      ],
+      "title": "品牌與設計師正使用 Lovart 提升轉換率"
+    },
+    {
+      "type": "pricing-block",
+      "title": "選擇適合團隊的方案",
+      "description": "免費開始，當作品要交付客戶時再升級。"
+    },
+    {
+      "type": "faq",
+      "title": "常見問題",
+      "items": [
+        {
+          "question": "Lovart 真的能在海報上生成清晰、不亂碼的文字嗎？",
+          "answer": "絕對可以。傳統 AI 繪圖工具在生成文字時總是一團亂碼，但 Lovart 接入了 Seedream 等具備強大字元級渲染能力的模型，原生支援精準的中英文字體生成。更重要的是，我們獨家的文字編輯 (Text Edit) 功能，允許您直接在生成的圖上修改錯別字或替換文案。"
+        },
+        {
+          "question": "如果我對海報很滿意，但想改掉裡面的一個小元素，需要重做嗎？",
+          "answer": "完全不需要。這就是 Lovart 作為「設計 Agent」的差別。使用精準編輯 (Touch Edit) 和圖層拆解 (Edit Elements) 功能，您可以單獨提取某個元素，換掉背景，或者把模特的衣服換個顏色，而絲毫不會破壞你原本滿意的完美構圖。"
+        },
+        {
+          "question": "匯出的海報解析度夠高嗎？可以用於線下實體印刷嗎？",
+          "answer": "是的！Lovart 內建了高級 AI 畫質提升工具（Upscaler），能將您的海報無損放大至 4K 甚至 8K 解析度，確保列印出來後文字邊緣銳利、材質紋理纖毫畢現，完美滿足商業級大尺寸印刷的標準。"
+        },
+        {
+          "question": "我完全不會用 Photoshop，也沒有設計基礎，能用它做海報嗎？",
+          "answer": "完全沒問題。Lovart 就是您的 AI 創意搭檔。您只需要在 ChatCanvas 中用日常對話說出你的想法，底層的 MCoT (Mind Chain of Thought) 創意推理引擎會自動為您處理排版、色彩心理學和字體搭配，全自動完成專業設計。"
+        },
+        {
+          "question": "我生成的這些 AI 海報可以用於商業行銷嗎？",
+          "answer": "可以。任何訂閱了 Lovart 付費方案（Starter, Plus, Pro）的使用者，都將擁有其生成視覺資產的完整商業使用權。您可以極其放心地將它們用於社群媒體廣告投放、線下商業廣告牌以及客戶專案交付中。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "用 Lovart 開始創作",
+      "description": "幾分鐘內，把你的需求變成符合品牌調性的視覺作品。",
+      "buttons": [
+        {
+          "text": "免費開始",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

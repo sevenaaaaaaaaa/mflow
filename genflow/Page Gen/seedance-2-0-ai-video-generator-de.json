@@ -1,0 +1,387 @@
+{
+  "_id": "seedance-2-0-ai-video-generator-de",
+  "reflowSourceId": "seedance-2-0-ai-video-generator-de",
+  "slug": "seedance-2-0-ai-video-generator",
+  "language": "de",
+  "category": "feature",
+  "title": "Lovart: Seedance 2.0 KI-Videogenerator mit Audio & Multi-Shot-Konsistenz",
+  "description": "Create cinematic AI videos with Seedance 2.0 on Lovart. Features native audio generation, character consistency across shots, and 2K resolution. The ultimate tool for AI storytelling.",
+  "seo": {
+    "description": "Erstelle KI-Kinovideos mit Seedance 2.0 auf Lovart. Inklusive Audio, konsistenter Charaktere & 2K-Auflösung. Das ultimative Tool für KI-Geschichten.",
+    "keywords": [
+      "seedance 2.0",
+      "KI-Videogenerator mit Ton",
+      "Multi-Shot-KI-Video",
+      "konsistentes Charakter-Video-KI",
+      "Bytedance Seedance-Modell",
+      "Lovart-Videofunktionen",
+      "native Audioerzeugung KI"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Multimodal Input (@Mention)",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovart: Seedance 2.0 KI-Videogenerator mit Audio & Multi-Shot-Konsistenz\", \"description\": \"Create cinematic AI videos with Seedance 2.0 on Lovart. Features native audio generation, character consistency across shots, and 2K resolution. The ultimate tool for AI storytelling.\", \"url\": \"https://www.lovart.ai/features/seedance-2-0-ai-video-generator\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Was unterscheidet Seedance 2.0 von Seedance 1.0? (section_de)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Seedance 2.0 führt native Audiogenerierung ein (Video kommt mit Ton), bietet eine deutlich verbesserte Multi-Shot-Konsistenz für Charaktere und eine höhere 2K-Auflösungsausgabe. Es hat auch ein besseres Verständnis für physikalische Gesetze wie Schwerkraft und Impuls. (section_de)\"}}, {\"@type\": \"Question\", \"name\": \"Kann ich meine eigene Stimme oder Musik verwenden? (section_de)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Ja. Während Seedance 2.0 Audio von Grund auf neu generieren kann, können Sie auch Ihre eigenen Audiospuren hochladen, um das Video zu steuern, perfekt für lippensynchrone Charaktere oder Musikvideos. (section_de)\"}}, {\"@type\": \"Question\", \"name\": \"Wie funktioniert die 'Multi-Shot'-Funktion? (section_de)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sie können einen einzigen komplexen Prompt bereitstellen, der eine Abfolge von Ereignissen beschreibt (z. B. 'Shot 1: Mann betritt Raum. Shot 2: Er setzt sich hin.'), oder die Referenzbildfunktion nutzen, um sicherzustellen, dass derselbe Charakter in separaten generierten Clips erscheint. (section_de)\"}}, {\"@type\": \"Question\", \"name\": \"Ist Seedance 2.0 für die kommerzielle Nutzung verfügbar? (section_de)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Ja, Videos, die von Lovart Pro- und Ultimate-Abonnenten mit Seedance 2.0 generiert wurden, verfügen über eine kommerzielle Lizenz, sodass sie für Werbung, YouTube und andere kommerzielle Projekte geeignet sind. (section_de)\"}}, {\"@type\": \"Question\", \"name\": \"Was ist die maximale Videolänge? (section_de)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Derzeit kann eine einzelne Generierung bis zu 15 Sekunden hochauflösendes Video produzieren. Sie können jedoch die 'Erweitern'-Funktion auf der Lovart-Timeline verwenden, um unbegrenzt längere Sequenzen zu erstellen. (section_de)\"}}]}}"
+    },
+    "title": "Lovart: Seedance 2.0 KI-Videogenerator mit Audio & Multi-Shot-Konsistenz"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Lovart: Seedance 2.0 KI-Videogenerator mit Audio & Multi-Shot-Konsistenz\",\"description\":\"Create cinematic AI videos with Seedance 2.0 on Lovart. Features native audio generation, character consistency across shots, and 2K resolution. The ultimate tool for AI storytelling.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Multimodal Input (@Mention)\"}},{\"type\":\"bento-6\",\"title\":\"Production-Grade Features for Creators\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Multimodale Eingabe (@Mention)\",\"description\":\"Kontrollieren Sie das Chaos. Verwenden Sie '@', um bestimmte Bilder für den Stil, Videos für die Bewegung oder Audio für die Lippensynchronisation zu referenzieren. Kombinieren Sie alles in einem Prompt für präzise Anweisungen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Multimodale Eingabe (@Mention)\"}},{\"title\":\"Native Soundeffekte & BGM\",\"description\":\"Fordern Sie 'epische Orchestermusik' oder 'subtile Straßengeräusche' an. Seedance generiert lizenzfreies Audio, das perfekt zum visuellen Timing passt.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Native Soundeffekte & BGM\"}},{\"title\":\"2K Kinoauflösung\",\"description\":\"Geben Sie kristallklares Video mit bis zu 2K Auflösung aus. Perfekt für YouTube, Werbespots oder hochauflösende Social-Media-Inhalte, bei denen Details zählen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"2K Kinoauflösung\"}},{\"title\":\"Langform-Narrative (15s+)\",\"description\":\"Durchbrechen Sie die 5-Sekunden-Grenze. Generieren Sie längere, kohärente Clips oder erweitern Sie bestehende Videos nahtlos, um längere Sequenzen ohne Kontextverlust zu erstellen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Langform-Narrative (15s+)\"}},{\"title\":\"Präzise Kamerasteuerung\",\"description\":\"Führen Sie Regie wie ein Profi. Verwenden Sie Begriffe wie 'Dolly Zoom', 'Truck Left' oder 'Arc Shot'. Seedance versteht die Filmsprache und führt Kamerabewegungen fehlerfrei aus.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Präzise Kamerasteuerung\"}},{\"title\":\"Jedes Seitenverhältnis\",\"description\":\"Von 16:9 für Kino bis 9:16 für TikTok und sogar ultrabreites 21:9. Seedance passt die Komposition intelligent an Ihren gewählten Rahmen an.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Jedes Seitenverhältnis\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Alle Funktionen in einem Agenten\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Multimodale Eingabe (@Mention)\",\"icon\":\"chat\",\"content\":{\"title\":\"Multimodale Eingabe (@Mention)\",\"description\":\"Kontrollieren Sie das Chaos. Verwenden Sie '@', um bestimmte Bilder für den Stil, Videos für die Bewegung oder Audio für die Lippensynchronisation zu referenzieren. Kombinieren Sie alles in einem Prompt für präzise Anweisungen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Multimodale Eingabe (@Mention)\"}}},{\"label\":\"Native Soundeffekte & BGM\",\"icon\":\"image\",\"content\":{\"title\":\"Native Soundeffekte & BGM\",\"description\":\"Fordern Sie 'epische Orchestermusik' oder 'subtile Straßengeräusche' an. Seedance generiert lizenzfreies Audio, das perfekt zum visuellen Timing passt.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Native Soundeffekte & BGM\"}}},{\"label\":\"2K Kinoauflösung\",\"icon\":\"flask\",\"content\":{\"title\":\"2K Kinoauflösung\",\"description\":\"Geben Sie kristallklares Video mit bis zu 2K Auflösung aus. Perfekt für YouTube, Werbespots oder hochauflösende Social-Media-Inhalte, bei denen Details zählen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"2K Kinoauflösung\"}}},{\"label\":\"Langform-Narrative (15s+)\",\"icon\":\"brand\",\"content\":{\"title\":\"Langform-Narrative (15s+)\",\"description\":\"Durchbrechen Sie die 5-Sekunden-Grenze. Generieren Sie längere, kohärente Clips oder erweitern Sie bestehende Videos nahtlos, um längere Sequenzen ohne Kontextverlust zu erstellen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Langform-Narrative (15s+)\"}}}]},{\"type\":\"bento-2\",\"title\":\"Zwei Dinge, die besonders gut gelingen\",\"columns\":2,\"features\":[{\"title\":\"Präzise Kamerasteuerung\",\"description\":\"Führen Sie Regie wie ein Profi. Verwenden Sie Begriffe wie 'Dolly Zoom', 'Truck Left' oder 'Arc Shot'. Seedance versteht die Filmsprache und führt Kamerabewegungen fehlerfrei aus.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Präzise Kamerasteuerung\"}},{\"title\":\"Jedes Seitenverhältnis\",\"description\":\"Von 16:9 für Kino bis 9:16 für TikTok und sogar ultrabreites 21:9. Seedance passt die Komposition intelligent an Ihren gewählten Rahmen an.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Jedes Seitenverhältnis\"}}]},{\"type\":\"feature-detail\",\"title\":\"So funktioniert es im Detail\",\"items\":[{\"title\":\"Starte dein Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency-Projekt\",\"description\":\"Beschreibe das gewünschte Ergebnis und füge Referenzen hinzu.\"},{\"title\":\"Mit dem Agenten iterieren\",\"description\":\"Details anpassen und Varianten auf derselben Canvas erkunden.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Seedance 2.0: Das Ende von stummen, inkonsistenten KI-Videos.\",\"description\":\"Erleben Sie den nächsten Sprung im Bereich generatives Video. Seedance 2.0 ist direkt in Lovart integriert und erstellt nicht nur bewegte Bilder – es generiert synchronisiertes natives Audio und behält eine perfekte Charakterkonsistenz über mehrere Aufnahmen hinweg bei. Egal, ob Sie einen Kurzfilm, ein Musikvideo oder einen Werbespot produzieren, erzählen Sie jetzt vollständige Geschichten mit Ton und Seele.\",\"input_placeholder\":\"Z. B.: 'Eine filmische Sequenz: 1. Nahaufnahme eines Jazzpianisten, der in einer verrauchten Bar spielt, Klavierklänge. 2. Totale des applaudierenden Publikums, Umgebungsgeräusche.'\",\"prompts\":[{\"label\":\"Kinoqualität + Soundeffekte\",\"prompt\":\"A cyberpunk detective walking in heavy rain, neon lights reflecting, sound of footsteps splashing and distant thunder\"},{\"label\":\"Charakter-Lippensynchronisation\",\"prompt\":\"A cute 3D character explaining a concept, lip-syncing perfectly to the generated voiceover, bright studio lighting\"},{\"label\":\"Dynamische FPV-Aufnahme\",\"prompt\":\"A continuous shot following a drone flying through a canyon, wind whooshing sound, dynamic motion\"},{\"label\":\"Bewegungsübertragung\",\"prompt\":\"Replicate the dance moves from this uploaded reference video, but change the character to a robot in a sci-fi factory\"}],\"tip\":\"Profi-Tipp: Seedance 2.0 hört Sie. Fügen Sie Audiobeschreibungen wie 'Regengeräusche', 'jubelnde Menge' oder 'sanfte Klaviermusik' in Ihren Prompt ein, um die native Audiogenerierung auszulösen.\",\"cta\":{\"text\":\"Video mit Ton generieren\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Warum Seedance 2.0 das Spiel verändert\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"Native Audio-Visuelle Synchronisation\",\"description\":\"Die Stille ist gebrochen. Seedance 2.0 versteht, dass eine brechende Welle ein Geräusch macht und ein sprechender Mund eine Stimme abgibt. Generieren Sie Video und Audio gleichzeitig für unvergleichliche Immersion.\"},{\"step\":2,\"title\":\"Multi-Shot-Konsistenz\",\"description\":\"Erzählen Sie eine echte Geschichte. Definieren Sie einen Charakter oder Stil einmal, und Seedance 2.0 bewahrt dessen Identität über Nahaufnahmen, Weitwinkelaufnahmen und verschiedene Winkel hinweg. Keine 'Gesichtswechsel'-Fehler mehr zwischen Szenen.\"},{\"step\":3,\"title\":\"Physikbasierter Realismus\",\"description\":\"Basierend auf einer neuen Diffusions-Transformer-Architektur respektiert Seedance 2.0 Schwerkraft, Reibung und Impuls. Charaktere haben Gewicht, wenn sie gehen; Objekte interagieren natürlich, ohne zu schweben.\"}]},{\"type\":\"comparison-table\",\"title\":\"Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency: Lovart im Vergleich zu üblichen Workflows\",\"headers\":[\"Anforderung\",\"Generisches Tool\",\"Manueller Workflow\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Starte dein Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency-Projekt\",\"values\":[\"Ein Prompt\",\"Manuelles Briefing\",\"Briefing-gesteuertes Reasoning\"]},{\"feature\":\"Zeit bis zum ersten Ergebnis\",\"values\":[\"Minuten\",\"Tage\",\"Minuten\"]},{\"feature\":\"Bearbeitung nach der Generierung\",\"values\":[\"Begrenzt\",\"Korrekturschleifen\",\"Touch / Text / Elemente\"]},{\"feature\":\"Markenkonform bleiben\",\"values\":[\"Manuell\",\"Manuell\",\"Brand-Kit-fähig\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Wofür sich Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency eignet\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Schneller starten\",\"description\":\"Vom Briefing zu Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency-Assets in einer einzigen Session.\"},{\"icon\":\"brand\",\"title\":\"Konsistent bleiben\",\"description\":\"Das Brand Kit hält jedes Asset einheitlich.\"},{\"icon\":\"refresh\",\"title\":\"Schnell iterieren\",\"description\":\"Details bearbeiten, ohne das Projekt neu zu starten.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"Die Audiogenerierung ist unheimlich gut. Ich tippte 'ein ruhiger Wald mit zwitschernden Vögeln' ein, und das Video kam mit Ton zurück, der perfekt zu den Bildern passte. Das hat mir Stunden an Sounddesign gespart.\",\"author\":\"Jordan P.\",\"role\":\"Kurzfilmregisseur\"},{\"quote\":\"Endlich kann ich meinen digitalen Avatar in verschiedene Szenen setzen, und sie sieht tatsächlich wie dieselbe Person aus! Die Konsistenz in Seedance 2.0 ist die beste, die ich je gesehen habe.\",\"author\":\"Li Wei\",\"role\":\"Social-Media-Influencerin\"},{\"quote\":\"Wir haben die Referenzvideo-Funktion genutzt, um einen trendigen Tanzschritt auf unser Markenmaskottchen zu übertragen. Es war makellos. Die Physik des sich bewegenden Maskottchenanzugs fühlte sich unglaublich echt an.\",\"author\":\"Sarah K.\",\"role\":\"Werbe-Kreativleiterin\"}],\"title\":\"Kreative, die ihre Stimme mit Seedance 2.0 gefunden haben\"},{\"type\":\"pricing-block\",\"title\":\"Wähle den passenden Plan für dein Team\",\"description\":\"Kostenlos starten. Upgraden, sobald die Arbeit zum Kunden geht.\"},{\"type\":\"faq\",\"title\":\"Häufig gestellte Fragen\",\"items\":[{\"question\":\"Was unterscheidet Seedance 2.0 von Seedance 1.0?\",\"answer\":\"Seedance 2.0 führt native Audiogenerierung ein (Video kommt mit Ton), bietet eine deutlich verbesserte Multi-Shot-Konsistenz für Charaktere und eine höhere 2K-Auflösungsausgabe. Es hat auch ein besseres Verständnis für physikalische Gesetze wie Schwerkraft und Impuls.\"},{\"question\":\"Kann ich meine eigene Stimme oder Musik verwenden?\",\"answer\":\"Ja. Während Seedance 2.0 Audio von Grund auf neu generieren kann, können Sie auch Ihre eigenen Audiospuren hochladen, um das Video zu steuern, perfekt für lippensynchrone Charaktere oder Musikvideos.\"},{\"question\":\"Wie funktioniert die 'Multi-Shot'-Funktion?\",\"answer\":\"Sie können einen einzigen komplexen Prompt bereitstellen, der eine Abfolge von Ereignissen beschreibt (z. B. 'Shot 1: Mann betritt Raum. Shot 2: Er setzt sich hin.'), oder die Referenzbildfunktion nutzen, um sicherzustellen, dass derselbe Charakter in separaten generierten Clips erscheint.\"},{\"question\":\"Ist Seedance 2.0 für die kommerzielle Nutzung verfügbar?\",\"answer\":\"Ja, Videos, die von Lovart Pro- und Ultimate-Abonnenten mit Seedance 2.0 generiert wurden, verfügen über eine kommerzielle Lizenz, sodass sie für Werbung, YouTube und andere kommerzielle Projekte geeignet sind.\"},{\"question\":\"Was ist die maximale Videolänge?\",\"answer\":\"Derzeit kann eine einzelne Generierung bis zu 15 Sekunden hochauflösendes Video produzieren. Sie können jedoch die 'Erweitern'-Funktion auf der Lovart-Timeline verwenden, um unbegrenzt längere Sequenzen zu erstellen.\"}]},{\"type\":\"cta-default\",\"title\":\"Starte deine Designs mit Lovart\",\"description\":\"Verwandle dein Briefing in wenigen Minuten in markengerechte Visuals.\",\"buttons\":[{\"text\":\"Kostenlos starten\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Lovart: Seedance 2.0 KI-Videogenerator mit Audio & Multi-Shot-Konsistenz",
+      "description": "Create cinematic AI videos with Seedance 2.0 on Lovart. Features native audio generation, character consistency across shots, and 2K resolution. The ultimate tool for AI storytelling.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Multimodal Input (@Mention)"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Production-Grade Features for Creators",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Multimodale Eingabe (@Mention)",
+          "description": "Kontrollieren Sie das Chaos. Verwenden Sie '@', um bestimmte Bilder für den Stil, Videos für die Bewegung oder Audio für die Lippensynchronisation zu referenzieren. Kombinieren Sie alles in einem Prompt für präzise Anweisungen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Multimodale Eingabe (@Mention)"
+          }
+        },
+        {
+          "title": "Native Soundeffekte & BGM",
+          "description": "Fordern Sie 'epische Orchestermusik' oder 'subtile Straßengeräusche' an. Seedance generiert lizenzfreies Audio, das perfekt zum visuellen Timing passt.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Native Soundeffekte & BGM"
+          }
+        },
+        {
+          "title": "2K Kinoauflösung",
+          "description": "Geben Sie kristallklares Video mit bis zu 2K Auflösung aus. Perfekt für YouTube, Werbespots oder hochauflösende Social-Media-Inhalte, bei denen Details zählen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "2K Kinoauflösung"
+          }
+        },
+        {
+          "title": "Langform-Narrative (15s+)",
+          "description": "Durchbrechen Sie die 5-Sekunden-Grenze. Generieren Sie längere, kohärente Clips oder erweitern Sie bestehende Videos nahtlos, um längere Sequenzen ohne Kontextverlust zu erstellen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Langform-Narrative (15s+)"
+          }
+        },
+        {
+          "title": "Präzise Kamerasteuerung",
+          "description": "Führen Sie Regie wie ein Profi. Verwenden Sie Begriffe wie 'Dolly Zoom', 'Truck Left' oder 'Arc Shot'. Seedance versteht die Filmsprache und führt Kamerabewegungen fehlerfrei aus.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Präzise Kamerasteuerung"
+          }
+        },
+        {
+          "title": "Jedes Seitenverhältnis",
+          "description": "Von 16:9 für Kino bis 9:16 für TikTok und sogar ultrabreites 21:9. Seedance passt die Komposition intelligent an Ihren gewählten Rahmen an.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Jedes Seitenverhältnis"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Alle Funktionen in einem Agenten",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Multimodale Eingabe (@Mention)",
+          "icon": "chat",
+          "content": {
+            "title": "Multimodale Eingabe (@Mention)",
+            "description": "Kontrollieren Sie das Chaos. Verwenden Sie '@', um bestimmte Bilder für den Stil, Videos für die Bewegung oder Audio für die Lippensynchronisation zu referenzieren. Kombinieren Sie alles in einem Prompt für präzise Anweisungen.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "Multimodale Eingabe (@Mention)"
+            }
+          }
+        },
+        {
+          "label": "Native Soundeffekte & BGM",
+          "icon": "image",
+          "content": {
+            "title": "Native Soundeffekte & BGM",
+            "description": "Fordern Sie 'epische Orchestermusik' oder 'subtile Straßengeräusche' an. Seedance generiert lizenzfreies Audio, das perfekt zum visuellen Timing passt.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Native Soundeffekte & BGM"
+            }
+          }
+        },
+        {
+          "label": "2K Kinoauflösung",
+          "icon": "flask",
+          "content": {
+            "title": "2K Kinoauflösung",
+            "description": "Geben Sie kristallklares Video mit bis zu 2K Auflösung aus. Perfekt für YouTube, Werbespots oder hochauflösende Social-Media-Inhalte, bei denen Details zählen.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "2K Kinoauflösung"
+            }
+          }
+        },
+        {
+          "label": "Langform-Narrative (15s+)",
+          "icon": "brand",
+          "content": {
+            "title": "Langform-Narrative (15s+)",
+            "description": "Durchbrechen Sie die 5-Sekunden-Grenze. Generieren Sie längere, kohärente Clips oder erweitern Sie bestehende Videos nahtlos, um längere Sequenzen ohne Kontextverlust zu erstellen.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Langform-Narrative (15s+)"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Zwei Dinge, die besonders gut gelingen",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Präzise Kamerasteuerung",
+          "description": "Führen Sie Regie wie ein Profi. Verwenden Sie Begriffe wie 'Dolly Zoom', 'Truck Left' oder 'Arc Shot'. Seedance versteht die Filmsprache und führt Kamerabewegungen fehlerfrei aus.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Präzise Kamerasteuerung"
+          }
+        },
+        {
+          "title": "Jedes Seitenverhältnis",
+          "description": "Von 16:9 für Kino bis 9:16 für TikTok und sogar ultrabreites 21:9. Seedance passt die Komposition intelligent an Ihren gewählten Rahmen an.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Jedes Seitenverhältnis"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "So funktioniert es im Detail",
+      "items": [
+        {
+          "title": "Starte dein Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency-Projekt",
+          "description": "Beschreibe das gewünschte Ergebnis und füge Referenzen hinzu."
+        },
+        {
+          "title": "Mit dem Agenten iterieren",
+          "description": "Details anpassen und Varianten auf derselben Canvas erkunden.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Seedance 2.0: Das Ende von stummen, inkonsistenten KI-Videos.",
+      "description": "Erleben Sie den nächsten Sprung im Bereich generatives Video. Seedance 2.0 ist direkt in Lovart integriert und erstellt nicht nur bewegte Bilder – es generiert synchronisiertes natives Audio und behält eine perfekte Charakterkonsistenz über mehrere Aufnahmen hinweg bei. Egal, ob Sie einen Kurzfilm, ein Musikvideo oder einen Werbespot produzieren, erzählen Sie jetzt vollständige Geschichten mit Ton und Seele.",
+      "input_placeholder": "Z. B.: 'Eine filmische Sequenz: 1. Nahaufnahme eines Jazzpianisten, der in einer verrauchten Bar spielt, Klavierklänge. 2. Totale des applaudierenden Publikums, Umgebungsgeräusche.'",
+      "prompts": [
+        {
+          "label": "Kinoqualität + Soundeffekte",
+          "prompt": "A cyberpunk detective walking in heavy rain, neon lights reflecting, sound of footsteps splashing and distant thunder"
+        },
+        {
+          "label": "Charakter-Lippensynchronisation",
+          "prompt": "A cute 3D character explaining a concept, lip-syncing perfectly to the generated voiceover, bright studio lighting"
+        },
+        {
+          "label": "Dynamische FPV-Aufnahme",
+          "prompt": "A continuous shot following a drone flying through a canyon, wind whooshing sound, dynamic motion"
+        },
+        {
+          "label": "Bewegungsübertragung",
+          "prompt": "Replicate the dance moves from this uploaded reference video, but change the character to a robot in a sci-fi factory"
+        }
+      ],
+      "tip": "Profi-Tipp: Seedance 2.0 hört Sie. Fügen Sie Audiobeschreibungen wie 'Regengeräusche', 'jubelnde Menge' oder 'sanfte Klaviermusik' in Ihren Prompt ein, um die native Audiogenerierung auszulösen.",
+      "cta": {
+        "text": "Video mit Ton generieren"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Warum Seedance 2.0 das Spiel verändert",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Native Audio-Visuelle Synchronisation",
+          "description": "Die Stille ist gebrochen. Seedance 2.0 versteht, dass eine brechende Welle ein Geräusch macht und ein sprechender Mund eine Stimme abgibt. Generieren Sie Video und Audio gleichzeitig für unvergleichliche Immersion."
+        },
+        {
+          "step": 2,
+          "title": "Multi-Shot-Konsistenz",
+          "description": "Erzählen Sie eine echte Geschichte. Definieren Sie einen Charakter oder Stil einmal, und Seedance 2.0 bewahrt dessen Identität über Nahaufnahmen, Weitwinkelaufnahmen und verschiedene Winkel hinweg. Keine 'Gesichtswechsel'-Fehler mehr zwischen Szenen."
+        },
+        {
+          "step": 3,
+          "title": "Physikbasierter Realismus",
+          "description": "Basierend auf einer neuen Diffusions-Transformer-Architektur respektiert Seedance 2.0 Schwerkraft, Reibung und Impuls. Charaktere haben Gewicht, wenn sie gehen; Objekte interagieren natürlich, ohne zu schweben."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency: Lovart im Vergleich zu üblichen Workflows",
+      "headers": [
+        "Anforderung",
+        "Generisches Tool",
+        "Manueller Workflow",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Starte dein Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency-Projekt",
+          "values": [
+            "Ein Prompt",
+            "Manuelles Briefing",
+            "Briefing-gesteuertes Reasoning"
+          ]
+        },
+        {
+          "feature": "Zeit bis zum ersten Ergebnis",
+          "values": [
+            "Minuten",
+            "Tage",
+            "Minuten"
+          ]
+        },
+        {
+          "feature": "Bearbeitung nach der Generierung",
+          "values": [
+            "Begrenzt",
+            "Korrekturschleifen",
+            "Touch / Text / Elemente"
+          ]
+        },
+        {
+          "feature": "Markenkonform bleiben",
+          "values": [
+            "Manuell",
+            "Manuell",
+            "Brand-Kit-fähig"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Wofür sich Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency eignet",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Schneller starten",
+          "description": "Vom Briefing zu Seedance 2.0 AI Video Generator: Native Audio & Multi-Shot Consistency-Assets in einer einzigen Session."
+        },
+        {
+          "icon": "brand",
+          "title": "Konsistent bleiben",
+          "description": "Das Brand Kit hält jedes Asset einheitlich."
+        },
+        {
+          "icon": "refresh",
+          "title": "Schnell iterieren",
+          "description": "Details bearbeiten, ohne das Projekt neu zu starten."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "Die Audiogenerierung ist unheimlich gut. Ich tippte 'ein ruhiger Wald mit zwitschernden Vögeln' ein, und das Video kam mit Ton zurück, der perfekt zu den Bildern passte. Das hat mir Stunden an Sounddesign gespart.",
+          "author": "Jordan P.",
+          "role": "Kurzfilmregisseur"
+        },
+        {
+          "quote": "Endlich kann ich meinen digitalen Avatar in verschiedene Szenen setzen, und sie sieht tatsächlich wie dieselbe Person aus! Die Konsistenz in Seedance 2.0 ist die beste, die ich je gesehen habe.",
+          "author": "Li Wei",
+          "role": "Social-Media-Influencerin"
+        },
+        {
+          "quote": "Wir haben die Referenzvideo-Funktion genutzt, um einen trendigen Tanzschritt auf unser Markenmaskottchen zu übertragen. Es war makellos. Die Physik des sich bewegenden Maskottchenanzugs fühlte sich unglaublich echt an.",
+          "author": "Sarah K.",
+          "role": "Werbe-Kreativleiterin"
+        }
+      ],
+      "title": "Kreative, die ihre Stimme mit Seedance 2.0 gefunden haben"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Wähle den passenden Plan für dein Team",
+      "description": "Kostenlos starten. Upgraden, sobald die Arbeit zum Kunden geht."
+    },
+    {
+      "type": "faq",
+      "title": "Häufig gestellte Fragen",
+      "items": [
+        {
+          "question": "Was unterscheidet Seedance 2.0 von Seedance 1.0?",
+          "answer": "Seedance 2.0 führt native Audiogenerierung ein (Video kommt mit Ton), bietet eine deutlich verbesserte Multi-Shot-Konsistenz für Charaktere und eine höhere 2K-Auflösungsausgabe. Es hat auch ein besseres Verständnis für physikalische Gesetze wie Schwerkraft und Impuls."
+        },
+        {
+          "question": "Kann ich meine eigene Stimme oder Musik verwenden?",
+          "answer": "Ja. Während Seedance 2.0 Audio von Grund auf neu generieren kann, können Sie auch Ihre eigenen Audiospuren hochladen, um das Video zu steuern, perfekt für lippensynchrone Charaktere oder Musikvideos."
+        },
+        {
+          "question": "Wie funktioniert die 'Multi-Shot'-Funktion?",
+          "answer": "Sie können einen einzigen komplexen Prompt bereitstellen, der eine Abfolge von Ereignissen beschreibt (z. B. 'Shot 1: Mann betritt Raum. Shot 2: Er setzt sich hin.'), oder die Referenzbildfunktion nutzen, um sicherzustellen, dass derselbe Charakter in separaten generierten Clips erscheint."
+        },
+        {
+          "question": "Ist Seedance 2.0 für die kommerzielle Nutzung verfügbar?",
+          "answer": "Ja, Videos, die von Lovart Pro- und Ultimate-Abonnenten mit Seedance 2.0 generiert wurden, verfügen über eine kommerzielle Lizenz, sodass sie für Werbung, YouTube und andere kommerzielle Projekte geeignet sind."
+        },
+        {
+          "question": "Was ist die maximale Videolänge?",
+          "answer": "Derzeit kann eine einzelne Generierung bis zu 15 Sekunden hochauflösendes Video produzieren. Sie können jedoch die 'Erweitern'-Funktion auf der Lovart-Timeline verwenden, um unbegrenzt längere Sequenzen zu erstellen."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Starte deine Designs mit Lovart",
+      "description": "Verwandle dein Briefing in wenigen Minuten in markengerechte Visuals.",
+      "buttons": [
+        {
+          "text": "Kostenlos starten",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

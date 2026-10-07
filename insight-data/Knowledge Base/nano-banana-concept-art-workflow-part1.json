@@ -1,0 +1,186 @@
+```json
+{
+  "section_en": [
+    {
+      "type": "centeredInputSection",
+      "title": "Nano Banana Concept Art Workflow — AI-Powered Creative Ideation on Lovart",
+      "description": "Transform rough ideas into polished concept art with Lovart's AI Design Agent. The Nano Banana concept art workflow combines MCoT strategic planning with Nano Banana Pro's visual generation to accelerate creative ideation from days to minutes. Whether you're designing characters, environments, props, or mood boards, Lovart's agentic pipeline generates professional concept art that captures your creative vision while maintaining stylistic consistency. Start exploring concepts with free daily credits — no artistic training required.",
+      "input_placeholder": "Describe your concept art project — include style references, subject matter, and creative direction",
+      "system_prompt": "You are a Senior Concept Artist and AI Creative Director at Lovart. Using the MCoT engine and Nano Banana Pro, analyze the creator's vision to: 1) Identify the appropriate concept art category (character, environment, prop, mood board), 2) Extract stylistic references and creative direction, 3) Plan the ideation sequence from rough sketch to polished concept, 4) Generate multiple concept variations that explore different creative directions while maintaining stylistic coherence. Leverage ChatCanvas for persistent style memory and Touch Edit for precision refinement. User requirements: $input$",
+      "button_text": "Start Creating",
+      "tip": "Pro tip: Describe your concept (character/environment/prop), preferred art style, mood, and reference inspirations for the most targeted results",
+      "suggestion": [
+        { "value": "Design a fantasy warrior character concept with detailed armor, multiple pose variations, expression sheets, and weapon options — rendered in a painterly digital art style", "label": "Character Design" },
+        { "value": "Create a sci-fi environment concept depicting a futuristic cityscape at dusk with floating structures, neon lighting, and atmospheric depth — cinematic wide-angle composition", "label": "Environment Art" },
+        { "value": "Generate weapon and gadget prop designs for a steampunk universe — detailed technical sketches with material callouts, mechanical articulation notes, and scale references", "label": "Prop Design" },
+        { "value": "Build a comprehensive mood board blending art nouveau elegance with cyberpunk aesthetics — exploring color palettes, texture studies, lighting scenarios, and compositional themes", "label": "Mood Board" }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "How Lovart's Nano Banana Accelerates Your Concept Art Workflow",
+      "columns": [
+        { "title": "Ideate & Explore", "description": "Begin by describing your creative vision to Lovart's AI Design Agent. The MCoT engine interprets your artistic direction, researches relevant style references, and plans a structured ideation sequence. Instead of starting from a blank canvas, you get multiple concept directions generated simultaneously — each exploring different creative possibilities while maintaining your core vision.", "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png" },
+        { "title": "Generate & Iterate Concepts", "description": "Watch Nano Banana Pro transform your vision into detailed concept art. Generate character turnarounds, environment keyframes, prop variations, and stylistic explorations in minutes — work that traditionally takes days. ChatCanvas maintains style consistency across all generations, and you can iterate endlessly with natural language refinements. Browse variations across different styles, compositions, and moods.", "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png" },
+        { "title": "Refine & Present", "description": "Polish your selected concepts with Lovart's precision tools. Use Touch Edit to adjust specific elements — modify a character's armor detail, change environment lighting, or swap prop materials. Apply Text Edit to add annotations and callouts. Present concepts in context with Smart Mockup — see characters in scene compositions or props in production-ready layouts. Export at up to 8K resolution for production handoff.", "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png" }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "The Ultimate AI Toolkit for Professional Concept Art Creation",
+      "features": [
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png", "title": "Multi-Directional Concept Explorer", "description": "Generate multiple concept variations from a single creative brief. Explore different art styles, compositions, color palettes, and mood directions simultaneously — the MCoT engine ensures each variation remains coherent with your core vision while pushing creative boundaries. What takes traditional concept artists a week of sketching, Lovart delivers in minutes." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png", "title": "Style Consistency Engine", "description": "Nano Banana Pro and ChatCanvas work together to lock artistic style across all concept variations. Whether you need a cohesive character lineup, consistent environment aesthetics, or unified prop language, the style engine ensures every concept in your project shares the same visual DNA — critical for production-ready concept art that creative directors can approve." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png", "title": "Semantic Touch Edit for Concepts", "description": "Precision-refine your concept art with Touch Edit. Modify specific elements — change a character's costume, adjust environment lighting, replace prop materials — while maintaining artistic coherence with the surrounding composition. No manual masking or repainting required. This is the capability that transforms AI-generated concepts into Director-approved production art." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png", "title": "Annotation & Callout Editor", "description": "Add production-ready annotations, material callouts, scale references, and design notes directly on your concept art with Text Edit. Unlike traditional tools that require separate annotation layers, Lovart renders clean, readable annotation text that integrates seamlessly with your concept's visual style." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png", "title": "Production-Ready 8K Export", "description": "Export concept art at up to 8K resolution in PNG, JPG, SVG, or layered PSD formats. Perfect for production handoff to 3D modelers, environment artists, and creative directors. Every export maintains the visual quality and detail level expected of professional concept art for game, film, and animation production." },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png", "title": "Concept-to-Presentation Pipeline", "description": "Transform raw concept explorations into polished client-ready presentations. Generate concept sheets with multiple views, style comparisons with annotation overlays, and contextual presentations using Smart Mockup — showing characters in scene, environments with scale reference, and props in production context. Streamline the concept approval workflow." }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Concept Artists Transforming Their Creative Process with Lovart",
+      "testimonials": [
+        { "name": "Rafael Costa", "role": "Lead Concept Artist, Indie Game Studio", "content": "Our studio produces concept art for 3 games simultaneously, and the bottleneck was always ideation speed. With Lovart's Nano Banana concept workflow, I now generate 20+ character concepts in an afternoon — work that previously took 2 weeks per character. The style consistency engine is incredible — every concept across all 3 games maintains distinct visual identities without me manually policing style guides. Our art director reviews and approves concepts 5x faster because the quality is production-ready from the first generation.", "avatar_url": "" },
+        { "name": "Yuki Tanaka", "role": "Freelance Concept Artist & Illustrator", "content": "Before Lovart, I could handle 2-3 client projects per month due to the time required for initial concept exploration. Now I deliver 8+ projects monthly because the Nano Banana workflow generates the exploratory phase — 15-20 concept directions — in under an hour. I focus my creative energy on refinement and client collaboration rather than grinding through initial sketches. My income has doubled while my working hours decreased. Touch Edit is the tool I never knew I needed.", "avatar_url": "" },
+        { "name": "Elena Volkov", "role": "Art Director, Animated Feature Studio", "content": "Our production pipeline requires hundreds of environment concepts per film. Lovart's MCoT engine and Nano Banana Pro have fundamentally changed how we approach pre-production. Instead of our team of 8 concept artists spending months on initial explorations, we now use Lovart for the broad ideation phase — generating thousands of concept directions — then have artists focus on the selected concepts for refinement. We're completing pre-production 40% faster while producing 3x more creative options for directors to choose from." }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        { "question": "What is Lovart and how is the Nano Banana concept art workflow different from other AI art tools?", "answer": "Lovart is the world's first AI Design Agent, not just an image generator. The Nano Banana concept art workflow combines MCoT reasoning (strategic planning like an Art Director) with Nano Banana Pro (visual generation) and exclusive editing tools (Touch Edit, Text Edit). Unlike Midjourney or DALL-E which produce single images, Lovart generates coherent concept art series — character turnarounds, environment keyframes, prop variations — with consistent style across all outputs." },
+        { "question": "Do I need to be a professional artist to use Lovart for concept art?", "answer": "No. Lovart was designed for creators at every level — from professional concept artists looking to accelerate their workflow to game designers and filmmakers who need professional concept art without traditional drawing skills. You describe your creative vision in natural language, and the agent handles the artistic execution. Professional artists use it to explore directions faster; non-artists use it to access professional-quality concept art for the first time." },
+        { "question": "Can I use concept art created with Lovart commercially for games, films, or client projects?", "answer": "Yes. Users on paid plans (Starter, Basic, Pro) own full commercial rights to their concept art. You can use it in game development, film pre-production, client presentations, pitch materials, and any lawful commercial purpose. The free plan is for personal use and evaluation. Lovart's models are trained on licensed and public domain data." },
+        { "question": "Is there a free plan to try the concept art workflow, and how do credits work?", "answer": "Yes, Lovart offers a free plan with daily login credits that refresh every 24 hours. You can generate multiple concept art pieces daily without paying — perfect for exploring the workflow. Paid plans: Starter (2,000 monthly credits), Basic (3,500 credits), Pro (11,000 credits), all unlocking full agent capabilities, commercial rights, and premium models. Credit cost is displayed before each generation." },
+        { "question": "What file formats and resolutions can I export concept art in?", "answer": "Lovart supports professional export in PNG, JPG, SVG (vector), and layered PSD formats. Resolutions go up to 8K, suitable for production handoff to 3D modeling, environment art, and creative direction. SVG exports are ideal for prop design sheets and technical concept drawings. All exports maintain production-grade quality." },
+        { "question": "How does Lovart maintain artistic style consistency across a concept art series?", "answer": "ChatCanvas provides persistent style memory — define your artistic direction once (art style, color palette, rendering technique, composition preferences), and Lovart maintains it across every concept in the series. Nano Banana Pro ensures visual coherence across character lineups, environment sets, and prop collections. This is fundamentally different from generating individual images where style drifts between generations." },
+        { "question": "Can I refine and edit concept art after generation, or do I need to regenerate?", "answer": "You can refine extensively without regenerating. Touch Edit lets you modify specific elements — costume details, lighting, materials — with semantic click-to-edit precision. Text Edit enables adding annotations and callouts. This editing capability is what separates Lovart from 'prompt-and-pray' tools — you have Director-level control over every concept after it's generated." },
+        { "question": "What types of concept art can I create with the Nano Banana workflow?", "answer": "The workflow supports every concept art category: character design (turnarounds, expression sheets, costume variations), environment art (keyframes, mood explorations, location studies), prop and vehicle design (technical sheets, material studies, scale references), creature design, weapon design, costume and fashion concepts, architectural visualization concepts, and comprehensive mood boards. The MCoT engine adapts the workflow to your specific concept art needs." },
+        { "question": "Can Lovart's concept art workflow integrate with my production pipeline (Unreal, Blender, Maya)?", "answer": "Yes. Export concept art in formats directly compatible with production tools — high-res PNG/JPG for reference boards, SVG for vector-based prop sheets, and layered PSD for integration with Photoshop-based production pipelines. 8K resolution ensures concept art has sufficient detail for 3D artists to work from. Smart Mockup can place concepts in engine-accurate scene contexts for director review." }
+      ]
+    }
+  ],
+  "section_zh-CN": [
+    {
+      "type": "centeredInputSection",
+      "title": "Nano Banana 概念艺术工作流 — Lovart 上的 AI 驱动创意构思",
+      "description": "用 Lovart 的 AI 设计智能体将粗糙的想法转化为精美的概念艺术。Nano Banana 概念艺术工作流将 MCoT 战略规划与 Nano Banana Pro 的视觉生成相结合，将创意构思从数天加速到数分钟。无论您是在设计角色、环境、道具还是情绪板，Lovart 的智能流程都能生成专业的概念艺术，捕捉您的创意愿景同时保持风格一致性。用免费每日积分开始探索概念——无需美术功底。",
+      "input_placeholder": "描述您的概念艺术项目——包括风格参考、主题内容和创意方向",
+      "system_prompt": "You are a Senior Concept Artist and AI Creative Director at Lovart. Using the MCoT engine and Nano Banana Pro, analyze the creator's vision to: 1) Identify the appropriate concept art category (character, environment, prop, mood board), 2) Extract stylistic references and creative direction, 3) Plan the ideation sequence from rough sketch to polished concept, 4) Generate multiple concept variations that explore different creative directions while maintaining stylistic coherence. Leverage ChatCanvas for persistent style memory and Touch Edit for precision refinement. User requirements: $input$",
+      "button_text": "开始创作",
+      "tip": "提示：描述您的概念（角色/环境/道具）、偏好的艺术风格、情绪和参考灵感，以获得最精准的结果",
+      "suggestion": [
+        { "value": "Design a fantasy warrior character concept with detailed armor, multiple pose variations, expression sheets, and weapon options — rendered in a painterly digital art style", "label": "角色设计" },
+        { "value": "Create a sci-fi environment concept depicting a futuristic cityscape at dusk with floating structures, neon lighting, and atmospheric depth — cinematic wide-angle composition", "label": "环境艺术" },
+        { "value": "Generate weapon and gadget prop designs for a steampunk universe — detailed technical sketches with material callouts, mechanical articulation notes, and scale references", "label": "道具设计" },
+        { "value": "Build a comprehensive mood board blending art nouveau elegance with cyberpunk aesthetics — exploring color palettes, texture studies, lighting scenarios, and compositional themes", "label": "情绪板" }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Lovart 的 Nano Banana 如何加速您的概念艺术工作流",
+      "columns": [
+        { "title": "构思与探索", "description": "首先向 Lovart 的 AI 设计智能体描述您的创意构想。MCoT 引擎会解读您的艺术方向，研究相关的风格参考，并规划结构化的构思序列。您不是从空白画布开始，而是同时获得多个概念方向——每个都在保持您核心愿景的同时探索不同的创意可能性。", "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png" },
+        { "title": "生成与迭代概念", "description": "看着 Nano Banana Pro 将您的构想转化为详细的概念艺术。在几分钟内生成角色转面图、环境关键帧、道具变体和风格探索——这些传统上需要数天的工作。ChatCanvas 在全部生成中保持风格一致性，您可以用自然语言进行无限迭代优化。浏览不同风格、构图和情绪下的变体。", "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png" },
+        { "title": "精修与呈现", "description": "使用 Lovart 的精准工具打磨您选中的概念。用触摸编辑调整特定元素——修改角色的盔甲细节、改变环境光照或更换道具材质。用文字编辑添加注释和标注。用智能样机在场景中呈现概念——查看角色在场景构图中的效果或道具在可制作布局中的状态。以最高 8K 分辨率导出，用于制作交接。", "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png" }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "专业概念艺术创作的终极 AI 工具包",
+      "features": [
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png", "title": "多方向概念探索器", "description": "从单个创意简报生成多个概念变体。同时探索不同的艺术风格、构图、色彩方案和情绪方向——MCoT 引擎确保每个变体与您的核心愿景保持一致，同时突破创意边界。传统概念艺术家需要一周的素描工作，Lovart 在几分钟内完成。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png", "title": "风格一致性引擎", "description": "Nano Banana Pro 和 ChatCanvas 协同工作，锁定所有概念变体中的艺术风格。无论您需要统一的角色阵容、一致的环境美学还是连贯的道具语言，风格引擎确保项目中每个概念共享相同的视觉基因——这对于创意总监可批准的可制作概念艺术至关重要。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png", "title": "概念语义触摸编辑", "description": "用触摸编辑精准优化您的概念艺术。修改特定元素——改变角色的服装、调整环境光照、更换道具材质——同时保持与周围构图的艺朡连贯性。无需手动遮罩或重绘。这是将 AI 生成概念转化为总监认可的制作级艺术的关键能力。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png", "title": "注释与标注编辑器", "description": "用文字编辑直接在概念艺术上添加可制作的注释、材质标注、比例参考和设计说明。与传统工具需要单独注释图层不同，Lovart 呈现干净、可读的注释文本，与概念的视觉风格无缝融合。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png", "title": "可制作 8K 导出", "description": "以最高 8K 分辨率导出概念艺术，支持 PNG、JPG、SVG 或分层 PSD 格式。非常适合向 3D 建模师、环境艺术家和创意总监的制作交接。每次导出都保持游戏、电影和动画制作所期望的专业概念艺术视觉质量和细节水平。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png", "title": "概念到演示流程", "description": "将原始的概念探索转化为精美的、客户就绪的演示。生成多视角概念表、带注释覆盖的风格比较，以及使用智能样机的场景化演示——展示角色在场景中、带比例参考的环境和制作背景中的道具效果。简化概念审批工作流。" }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "概念艺术家如何用 Lovart 变革创作流程",
+      "testimonials": [
+        { "name": "Rafael Costa", "role": "首席概念艺术家，独立游戏工作室", "content": "我们工作室同时为 3 款游戏制作概念艺术，瓶颈始终是构思速度。借助 Lovart 的 Nano Banana 概念工作流，我现在一个下午就能生成 20 多个角色概念——以前每个角色需要 2 周的工作。风格一致性引擎令人难以置信——所有 3 款游戏的每个概念都保持独特的视觉识别，无需我手动管理风格指南。我们的艺术总监审核和批准概念的速度提高了 5 倍，因为从第一次生成起质量就达到可制作水平。", "avatar_url": "" },
+        { "name": "Yuki Tanaka", "role": "自由概念艺术家与插画师", "content": "在 Lovart 之前，由于初始概念探索所需的时间，我每月只能处理 2-3 个客户项目。现在我每月交付 8 个以上项目，因为 Nano Banana 工作流在不到一小时内生成探索阶段——15-20 个概念方向。我将创意精力集中在精修和客户协作上，而不是苦于初始素描。我的收入翻倍，而工作时间减少。触摸编辑是我之前不知道自己需要的工具。", "avatar_url": "" },
+        { "name": "Elena Volkov", "role": "艺术总监，动画长片工作室", "content": "我们的制作流程每部电影需要数百个环境概念。Lovart 的 MCoT 引擎和 Nano Banana Pro 从根本上改变了我们对待前期制作的方式。我们不再让 8 位概念艺术家花费数月时间进行初始探索，而是用 Lovart 进行广泛的构思阶段——生成数千个概念方向——然后让艺术家专注于选中的概念进行精修。我们的前期制作速度提升了 40%，同时为导演提供了 3 倍的创意选项。", "avatar_url": "" }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        { "question": "Lovart 是什么，Nano Banana 概念艺术工作流与其他 AI 艺术工具有何不同？", "answer": "Lovart 是全球首个 AI 设计智能体，不仅仅是图像生成器。Nano Banana 概念艺术工作流将 MCoT 推理（像艺术总监一样的战略规划）与 Nano Banana Pro（视觉生成）和独有编辑工具（触摸编辑、文字编辑）相结合。与只生成单张图像的 Midjourney 或 DALL-E 不同，Lovart 生成连贯的概念艺术系列——角色转面图、环境关键帧、道具变体——所有输出保持一致的风格。" },
+        { "question": "我需要是专业艺术家才能用 Lovart 做概念艺术吗？", "answer": "不需要。Lovart 为各级创作者设计——从希望加速工作流的专业概念艺术家，到需要专业概念艺术但缺乏传统绘画技能的游戏设计师和电影制作人。您用自然语言描述创意愿景，智能体处理艺术执行。专业艺术家用它更快地探索方向；非艺术家用它首次获得专业品质的概念艺术。" },
+        { "question": "我可以将 Lovart 创建的概念艺术用于游戏、电影或客户项目的商业用途吗？", "answer": "可以。付费方案（Starter、Basic、Pro）的用户对其概念艺术拥有完整商业权利。您可将其用于游戏开发、电影前期制作、客户演示、提案材料和任何合法的商业目的。免费方案用于个人使用和评估。Lovart 的模型基于授权和公共领域数据训练。" },
+        { "question": "有免费方案可以尝试概念艺术工作流吗，积分如何运作？", "answer": "是的，Lovart 提供免费方案，每日登录积分每 24 小时刷新一次。您可以每天生成多个概念艺术作品而无需付费——非常适合探索工作流。付费方案：Starter（2,000 月积分）、Basic（3,500 积分）、Pro（11,000 积分），全部解锁完整智能体功能、商业权利和高级模型。每次生成前显示积分成本。" },
+        { "question": "我可以以哪些文件格式和分辨率导出概念艺术？", "answer": "Lovart 支持专业导出 PNG、JPG、SVG（矢量）和分层 PSD 格式。分辨率最高可达 8K，适用于向 3D 建模、环境艺术和创意指导的制作交接。SVG 导出非常适合道具设计表和技朡概念图纸。所有导出保持制作级别的品质。" },
+        { "question": "Lovart 如何在概念艺术系列中保持艺术风格一致性？", "answer": "ChatCanvas 提供持久风格记忆——一次定义您的艺术方向（艺术风格、色彩方案、渲染技术、构图偏好），Lovart 会在系列中的每个概念上保持不变。Nano Banana Pro 确保角色阵容、环境集和道具集之间视觉统一。这与生成单张图像（风格在各次生成间漂移）有着根本不同。" },
+        { "question": "生成后我可以优化和编辑概念艺术吗，还是需要重新生成？", "answer": "您可以广泛优化而无需重新生成。触摸编辑让您以语义化的点击即编辑精度修改特定元素——服装细节、光照、材质。文字编辑可实现添加注释和标注。这种编辑能力正是 Lovart 与「输入提示然后祈祷」式工具的区分所在——您在概念生成后对其拥有总监级别的控制权。" },
+        { "question": "我可以用 Nano Banana 工作流创建哪些类型的概念艺术？", "answer": "该工作流支持所有概念艺术类别：角色设计（转面图、表情表、服装变体）、环境艺术（关键帧、情绪探索、场景研究）、道具和载具设计（技术表、材质研究、比例参考）、生物设计、武器设计、服装与时尚概念、建筑可视化概念和综合情绪板。MCoT 引擎会根据您的具体概念艺术需求调整工作流。" },
+        { "question": "Lovart 的概念艺术工作流可以与我的制作流程（Unreal、Blender、Maya）集成吗？", "answer": "可以。以与制作工具直接兼容的格式导出概念艺术——高分辨率 PNG/JPG 用于参考板、SVG 用于基于矢量的道具表、分层 PSD 用于与基于 Photoshop 的制作流程集成。8K 分辨率确保概念艺术有足够细节供 3D 艺术家使用。智能样机可将概念放置在引擎精准的场景环境中供总监审阅。" }
+      ]
+    }
+  ],
+  "section_zh-TW": [
+    {
+      "type": "centeredInputSection",
+      "title": "Nano Banana 概念藝術工作流 — Lovart 上的 AI 驅動創意構思",
+      "description": "用 Lovart 的 AI 設計智能體將粗糙的想法轉化為精美的概念藝術。Nano Banana 概念藝術工作流將 MCoT 策略規劃與 Nano Banana Pro 的視覺生成相結合，將創意構思從數天加速到數分鐘。無論您是在設計角色、環境、道具還是情緒板，Lovart 的智慧流程都能生成專業的概念藝術，捕捉您的創意願景同時保持風格一致性。用免費每日積分開始探索概念——無需美術功底。",
+      "input_placeholder": "描述您的概念藝術專案——包括風格參考、主題內容和創意方向",
+      "system_prompt": "You are a Senior Concept Artist and AI Creative Director at Lovart. Using the MCoT engine and Nano Banana Pro, analyze the creator's vision to: 1) Identify the appropriate concept art category (character, environment, prop, mood board), 2) Extract stylistic references and creative direction, 3) Plan the ideation sequence from rough sketch to polished concept, 4) Generate multiple concept variations that explore different creative directions while maintaining stylistic coherence. Leverage ChatCanvas for persistent style memory and Touch Edit for precision refinement. User requirements: $input$",
+      "button_text": "開始創作",
+      "tip": "提示：描述您的概念（角色/環境/道具）、偏好的藝術風格、情緒和參考靈感，以獲得最精準的結果",
+      "suggestion": [
+        { "value": "Design a fantasy warrior character concept with detailed armor, multiple pose variations, expression sheets, and weapon options — rendered in a painterly digital art style", "label": "角色設計" },
+        { "value": "Create a sci-fi environment concept depicting a futuristic cityscape at dusk with floating structures, neon lighting, and atmospheric depth — cinematic wide-angle composition", "label": "環境藝術" },
+        { "value": "Generate weapon and gadget prop designs for a steampunk universe — detailed technical sketches with material callouts, mechanical articulation notes, and scale references", "label": "道具設計" },
+        { "value": "Build a comprehensive mood board blending art nouveau elegance with cyberpunk aesthetics — exploring color palettes, texture studies, lighting scenarios, and compositional themes", "label": "情緒板" }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Lovart 的 Nano Banana 如何加速您的概念藝術工作流",
+      "columns": [
+        { "title": "構思與探索", "description": "首先向 Lovart 的 AI 設計智能體描述您的創意構想。MCoT 引擎會解讀您的藝術方向，研究相關的風格參考，並規劃結構化的構思序列。您不是從空白畫布開始，而是同時獲得多個概念方向——每個都在保持您核心願景的同時探索不同的創意可能性。", "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png" },
+        { "title": "生成與迭代概念", "description": "看著 Nano Banana Pro 將您的構想轉化為詳細的概念藝術。在幾分鐘內生成角色轉面圖、環境關鍵幀、道具變體和風格探索——這些傳統上需要數天的工作。ChatCanvas 在全部生成中保持風格一致性，您可以用自然語言進行無限迭代最佳化。瀏覽不同風格、構圖和情緒下的變體。", "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png" },
+        { "title": "精修與呈現", "description": "使用 Lovart 的精準工具打磨您選中的概念。用觸控編輯調整特定元素——修改角色的盔甲細節、改變環境光照或更換道具材質。用文字編輯加入註釋和標註。用智慧型樣機在場景中呈現概念——查看角色在場景構圖中的效果或道具在可製作佈局中的狀態。以最高 8K 解析度匯出，用於製作交接。", "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png" }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "專業概念藝術創作的終極 AI 工具包",
+      "features": [
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png", "title": "多方向概念探索器", "description": "從單個創意簡報生成多個概念變體。同時探索不同的藝術風格、構圖、色彩方案和情緒方向——MCoT 引擎確保每個變體與您的核心願景保持一致，同時突破創意邊界。傳統概念藝術家需要一週的素描工作，Lovart 在幾分鐘內完成。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png", "title": "風格一致性引擎", "description": "Nano Banana Pro 和 ChatCanvas 協同工作，鎖定所有概念變體中的藝術風格。無論您需要統一的角色陣容、一致的環境美學還是連貫的道具語言，風格引擎確保專案中每個概念共享相同的視覺基因——這對於創意總監可批准的可製作概念藝術至關重要。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png", "title": "概念語義觸控編輯", "description": "用觸控編輯精準最佳化您的概念藝術。修改特定元素——改變角色的服裝、調整環境光照、更換道具材質——同時保持與周圍構圖的藝朡連貫性。無需手動遮罩或重繪。這是將 AI 生成概念轉化為總監認可的製作級藝術的關鍵能力。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png", "title": "註釋與標註編輯器", "description": "用文字編輯直接在概念藝術上加入可製作的註釋、材質標註、比例參考和設計說明。與傳統工具需要單獨註釋圖層不同，Lovart 呈現乾淨、可讀的註釋文字，與概念的視覺風格無縫融合。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png", "title": "可製作 8K 匯出", "description": "以最高 8K 解析度匯出概念藝術，支援 PNG、JPG、SVG 或分層 PSD 格式。非常適合向 3D 建模師、環境藝術家和創意總監的製作交接。每次匯出都保持遊戲、電影和動畫製作所期望的專業概念藝術視覺品質和細節水準。" },
+        { "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png", "title": "概念到簡報流程", "description": "將原始的概念探索轉化為精美的、客戶就緒的簡報。生成多視角概念表、帶註釋覆蓋的風格比較，以及使用智慧型樣機的場景化簡報——展示角色在場景中、帶比例參考的環境和製作背景中的道具效果。簡化概念審批工作流。" }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "概念藝術家如何用 Lovart 變革創作流程",
+      "testimonials": [
+        { "name": "Rafael Costa", "role": "首席概念藝術家，獨立遊戲工作室", "content": "我們工作室同時為 3 款遊戲製作概念藝術，瓶頸始終是構思速度。借助 Lovart 的 Nano Banana 概念工作流，我現在一個下午就能生成 20 多個角色概念——以前每個角色需要 2 週的工作。風格一致性引擎令人難以置信——所有 3 款遊戲的每個概念都保持獨特的視覺識別，無需我手動管理風格指南。我們的藝術總監審核和批准概念的速度提高了 5 倍，因為從第一次生成起品質就到達可製作水準。", "avatar_url": "" },
+        { "name": "Yuki Tanaka", "role": "自由概念藝術家與插畫師", "content": "在 Lovart 之前，由於初始概念探索所需的時間，我每月只能處理 2-3 個客戶專案。現在我每月交付 8 個以上專案，因為 Nano Banana 工作流在不到一小時內生成探索階段——15-20 個概念方向。我將創意精力集中在精修和客戶協作上，而不是苦於初始素描。我的收入翻倍，而工作時間減少。觸控編輯是我之前不知道自己需要的工具。", "avatar_url": "" },
+        { "name": "Elena Volkov", "role": "藝術總監，動畫長片工作室", "content": "我們的製作流程每部電影需要數百個環境概念。Lovart 的 MCoT 引擎和 Nano Banana Pro 從根本上改變了我們對待前期製作的方式。我們不再讓 8 位概念藝術家花費數月時間進行初始探索，而是用 Lovart 進行廣泛的構思階段——生成數千個概念方向——然後讓藝術家專注於選中的概念進行精修。我們的前期製作速度提升了 40%，同時為導演提供了 3 倍的創意選項。", "avatar_url": "" }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        { "question": "Lovart 是什麼，Nano Banana 概念藝術工作流與其他 AI 藝術工具有何不同？", "answer": "Lovart 是全球首個 AI 設計智能體，不僅僅是影像生成器。Nano Banana 概念藝術工作流將 MCoT 推理（像藝術總監一樣的策略規劃）與 Nano Banana Pro（視覺生成）和獨有編輯工具（觸控編輯、文字編輯）相結合。與只生成單張影像的 Midjourney 或 DALL-E 不同，Lovart 生成連貫的概念藝術系列——角色轉面圖、環境關鍵幀、道具變體——所有輸出保持一致的風格。" },
+        { "question": "我需要是專業藝術家才能用 Lovart 做概念藝術嗎？", "answer": "不需要。Lovart 為各級創作者設計——從希望加速工作流的專業概念藝術家，到需要專業概念藝術但缺乏傳統繪畫技能的遊戲設計師和電影製作人。您用自然語言描述創意願景，智能體處理藝術執行。專業藝術家用它更快地探索方向；非藝術家用它首次獲得專業品質的概念藝術。" },
+        { "question": "我可以將 Lovart 建立的概念藝術用於遊戲、電影或客戶專案的商業用途嗎？", "answer": "可以。付費方案（Starter、Basic、Pro）的使用者對其概念藝術擁有完整商業權利。您可將其用於遊戲開發、電影前期製作、客戶簡報、提案材料和任何合法的商業目的。免費方案用於個人使用和評估。Lovart 的模型基於授權和公共領域資料訓練。" },
+        { "question": "有免費方案可以嘗試概念藝術工作流嗎，積分如何運作？", "answer": "是的，Lovart 提供免費方案，每日登入積分每 24 小時刷新一次。您可以每天生成多個概念藝術作品而無需付費——非常適合探索工作流。付費方案：Starter（2,000 月積分）、Basic（3,500 積分）、Pro（11,000 積分），全部解鎖完整智能體功能、商業權利和高階模型。每次生成前顯示積分成本。" },
+        { "question": "我可以以哪些檔案格式和解析度匯出概念藝術？", "answer": "Lovart 支援專業匯出 PNG、JPG、SVG（向量）和分層 PSD 格式。解析度最高可達 8K，適用於向 3D 建模、環境藝術和創意指導的製作交接。SVG 匯出非常適合道具設計表和技朡概念圖紙。所有匯出保持製作級別的品質。" },
+        { "question": "Lovart 如何在概念藝術系列中保持藝術風格一致性？", "answer": "ChatCanvas 提供持久風格記憶——一次定義您的藝術方向（藝術風格、色彩方案、渲染技術、構圖偏好），Lovart 會在系列中的每個概念上保持不變。Nano Banana Pro 確保角色陣容、環境集和道具集之間視覺統一。這與生成單張影像（風格在各次生成間漂移）有著根本不同。" },
+        { "question": "生成後我可以最佳化和編輯概念藝術嗎，還是需要重新生成？", "answer": "您可以廣泛最佳化而無需重新生成。觸控編輯讓您以語義化的點擊即編輯精度修改特定元素——服裝細節、光照、材質。文字編輯可實現加入註釋和標註。這種編輯能力正是 Lovart 與「輸入提示然後祈禱」式工具的區分所在——您在概念生成後對其擁有總監級別的控制權。" },
+        { "question": "我可以用 Nano Banana 工作流建立哪些類型的概念藝術？", "answer": "該工作流支援所有概念藝術類別：角色設計（轉面圖、表情表、服裝變體）、環境藝術（關鍵幀、情緒探索、場景研究）、道具和載具設計（技術表、材質研究、比例參考）、生物設計、武器設計、服裝與時尚概念、建築視覺化概念和綜合情緒板。MCoT 引擎會根據您的具體概念藝術需求調整工作流。" },
+        { "question": "Lovart 的概念藝術工作流可以與我的製作流程（Unreal、Blender、Maya）整合嗎？", "answer": "可以。以與製作工具直接相容的格式匯出概念藝術——高解析度 PNG/JPG 用於參考板、SVG 用於基於向量的道具表、分層 PSD 用於與基於 Photoshop 的製作流程整合。8K 解析度確保概念藝術有足夠細節供 3D 藝術家使用。智慧型樣機可將概念放置在引擎精準的場景環境中供總監審閱。" }
+      ]
+    }
+  ]
+}

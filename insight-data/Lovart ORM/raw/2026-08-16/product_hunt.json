@@ -1,0 +1,10 @@
+{
+  "generated_at": "2026-08-16",
+  "generator": "Lovart Sentinel",
+  "title": "Product Hunt Monitor",
+  "ph_url": "https://www.producthunt.com/products/lovart",
+  "reviews_url": "https://www.producthunt.com/products/lovart/reviews",
+  "status": "delegated",
+  "instructions": "\n    1. 使用 webfetch 访问 Product Hunt Lovart 页面\n    2. 提取：rating, review_count, follower_count, upvotes, launch_date\n    3. 获取最新评价（内容、评分、日期）\n    4. 对比上次：新增评价数、评分变化\n    5. 告警阈值：60天无新评价\n    ",
+  "_note": "需 opencode agent 使用 webfetch 工具采集"
+}

@@ -1,0 +1,84 @@
+{
+  "key": "group_lovart_showcase_fields",
+  "title": "Showcase Custom Fields",
+  "fields": [
+    {
+      "key": "field_editor_recommendation",
+      "label": "Editor's Recommendation",
+      "name": "editor_recommendation",
+      "type": "wysiwyg",
+      "instructions": "Editorial recommendation / review text — auto-generated from description on import, editable for manual curation.",
+      "required": 0,
+      "tabs": "visual",
+      "media_upload": 0,
+      "default_value": ""
+    },
+    {
+      "key": "field_author_name",
+      "label": "Author Name",
+      "name": "author_name",
+      "type": "text",
+      "instructions": "Original author name from Lovart community.",
+      "required": 1
+    },
+    {
+      "key": "field_cover_url",
+      "label": "Cover Image URL",
+      "name": "cover_url",
+      "type": "url",
+      "instructions": "Direct URL to the cover/artwork image.",
+      "required": 0
+    },
+    {
+      "key": "field_view_count",
+      "label": "View Count",
+      "name": "view_count",
+      "type": "number",
+      "instructions": "Number of views (from CSV).",
+      "required": 0,
+      "default_value": 0
+    },
+    {
+      "key": "field_like_count",
+      "label": "Like Count",
+      "name": "like_count",
+      "type": "number",
+      "instructions": "Number of likes (from CSV).",
+      "required": 0,
+      "default_value": 0
+    },
+    {
+      "key": "field_lovart_url",
+      "label": "Lovart Original URL",
+      "name": "lovart_url",
+      "type": "url",
+      "instructions": "Original Lovart.ai community URL.",
+      "required": 0
+    },
+    {
+      "key": "field_ai_workflow",
+      "label": "AI Workflow",
+      "name": "ai_workflow",
+      "type": "text",
+      "instructions": "AI design agent workflow type (extracted from description).",
+      "required": 0
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "post_type",
+        "operator": "==",
+        "value": "showcase"
+      }
+    ]
+  ],
+  "menu_order": 0,
+  "position": "acf_after_title",
+  "style": "seamless",
+  "label_placement": "top",
+  "instruction_placement": "label",
+  "hide_on_screen": "",
+  "active": true,
+  "description": "Custom fields for Lovart Community Showcase CPT — includes editor recommendation, author metadata, stats, and source URL."
+}

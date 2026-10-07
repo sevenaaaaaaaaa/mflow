@@ -1,0 +1,554 @@
+{
+  "section_en": [
+    {
+      "section_en": "hero",
+      "title": "AI Instagram Highlight Cover Maker",
+      "subtitle": "Design Beautiful Highlight Covers with Lovart",
+      "description": "Transform your Instagram profile with stunning, on-brand highlight covers — designed by AI in seconds. Lovart's MCoT-powered Creative Director understands Instagram aesthetics: the perfect circular crop, the right color palette, and the typography that makes your highlights pop. Whether you are a lifestyle creator, a beauty brand, a travel blogger, or a business profile, Lovart creates covers that feel cohesive and professional. Start free with daily credits.",
+      "badge": "Instagram-Optimized — Circular Crop & Palette Ready",
+      "button_text": "Design My Covers",
+      "button_url": "/ai-instagram-highlight-cover-maker#start",
+      "hero_image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "hero_image_alt": "Lovart AI creating beautiful Instagram highlight covers with circular preview",
+      "type": "centeredInputSection",
+      "suggestion": [
+        "Free Daily Credits",
+        "Circle Crop Preview",
+        "Batch Generation",
+        "Batch Generation"
+      ]
+    },
+    {
+      "section_en": "suggestions",
+      "title": "Choose Your Highlight Vibe",
+      "subtitle": "Tap a style to get started — Lovart will design covers that match your aesthetic",
+      "type": "threeColumnSection",
+      "columns": [
+        {
+          "title": "Aesthetic Lifestyle",
+          "description": "Soft tones, minimalist icons, and elegant typography for lifestyle creators. Perfect for daily routines, wellness content, home decor, and personal branding highlights.",
+          "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+          "prompt": "Create aesthetic lifestyle highlight covers with soft beige tones and minimalist line icons for routine, wellness, home, and style",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Business Brand",
+          "description": "Clean, professional covers that reinforce your brand identity. Consistent color schemes, bold typography, and polished icons for products, services, testimonials, and FAQs.",
+          "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+          "prompt": "Design professional business highlight covers with clean corporate colors for products, services, reviews, and about us",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Travel Diaries",
+          "description": "Warm, adventurous covers that capture the wanderlust spirit. Earth tones, destination-inspired icons, and playful typography for city guides, tips, food, and itineraries.",
+          "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+          "prompt": "Create travel-themed highlight covers with warm earthy colors and adventure icons for destinations, tips, food, and itineraries",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "section_en": "features",
+      "title": "Covers That Make Your Profile Shine",
+      "subtitle": "Six Instagram-focused features that turn scattered highlights into a cohesive brand story",
+      "type": "featureGridSection",
+      "features": [
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c2b2d0e9.svg",
+          "title": "Circular Crop Preview",
+          "description": "Design with confidence — Lovart's real-time circular crop preview shows exactly how your cover will look as an Instagram highlight bubble. No more guessing, no more misaligned elements, just perfectly framed covers every time.",
+          "highlight": "Perfect Framing",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/f30b2cdc.svg",
+          "title": "Instagram Color Palette",
+          "description": "Choose from curated Instagram-optimized color palettes or let AI generate one that matches your feed aesthetic. Warm tones, cool tones, pastels, bold contrasts — every palette is tested for on-screen vibrancy and cohesion.",
+          "highlight": "Feed-Ready Colors",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c0a7bbac.svg",
+          "title": "Brand Consistency",
+          "description": "Maintain a flawless, matching look across all your highlight covers. Lovart's Brand Consistency engine ensures fonts, colors, icon styles, and spacing remain uniform — so your profile looks curated and professional from first glance.",
+          "highlight": "Cohesive Aesthetic",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/09928fa3.svg",
+          "title": "Touch Edit",
+          "description": "Fine-tune every element with precision. Adjust icon placement, resize text, tweak colors, and reposition graphics directly on the ChatCanvas. Intuitive touch controls give you pixel-level control without complex tools.",
+          "highlight": "Precision Control",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/a605b61b.svg",
+          "title": "Text Edit",
+          "description": "Add beautiful, readable text to your highlight covers. Choose from AI-recommended font pairings that match your aesthetic, adjust sizing for circular crop readability, and preview how text renders in the highlight bubble.",
+          "highlight": "Beautiful Typography",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c7f26357.svg",
+          "title": "Batch Cover Generation",
+          "description": "Generate an entire set of matching highlight covers at once. Define your aesthetic once, list your highlight categories, and Lovart creates 6, 8, or 12 perfectly coordinated covers in a single generation — saving you hours of manual design.",
+          "highlight": "Full Set in Seconds",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+        }
+      ]
+    },
+    {
+      "section_en": "testimonials",
+      "title": "Creators Who Elevated Their Profile",
+      "subtitle": "From micro-influencers to established brands — see the impact of beautiful highlight covers",
+      "type": "testimonialSection",
+      "testimonials": [
+        {
+          "name": "Mia Torres",
+          "role": "Lifestyle Influencer (85K Followers)",
+          "avatar": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+          "quote": "After redesigning my highlight covers with Lovart, my profile visits jumped 62% and story views increased by 28%. Brands started noticing the cohesive look — I landed 3 sponsorship deals in the first month after the refresh. Lovart literally leveled up my Instagram game.",
+          "rating": 4.9,
+          "stat_value": "62%",
+          "stat_label": "More Profile Visits",
+          "verified": true,
+          "avatar_url": ""
+        },
+        {
+          "name": "David Kim",
+          "role": "Brand Manager at Glow Cosmetics",
+          "avatar": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+          "quote": "We manage 4 brand accounts and keeping highlight covers consistent was a nightmare — until Lovart. Batch generation now gives us 48 on-brand covers in under 5 minutes. Our team saves 20 hours per month and every profile looks flawless. The Pro plan is a no-brainer for us.",
+          "rating": 4.8,
+          "stat_value": "20 hrs",
+          "stat_label": "Saved Monthly",
+          "verified": true,
+          "avatar_url": ""
+        },
+        {
+          "name": "Leila Abbasi",
+          "role": "Travel Content Creator (120K Followers)",
+          "avatar": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+          "quote": "I used to spend $300 a month on a designer just for highlight covers. Now I pay $20 for the Starter plan and my covers look even better. Created 36 covers for all my travel destinations — Bali, Tokyo, Paris, you name it — with perfectly matching aesthetics. My audience said my profile looks like a magazine.",
+          "rating": 4.9,
+          "stat_value": "$280",
+          "stat_label": "Saved Per Month",
+          "verified": true,
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "section_en": "faq",
+      "title": "Frequently Asked Questions",
+      "subtitle": "Everything about creating Instagram highlight covers with Lovart",
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "What makes Lovart's highlight cover maker different from Canva or templates?",
+          "answer": "Unlike template-based tools where you manually adjust elements, Lovart uses its MCoT (Multi-Chain of Thought) AI engine to design covers conversationally. You describe the aesthetic you want — 'soft beige lifestyle covers with minimalist line icons' — and Lovart reasons through color, composition, typography, and icon style to generate professional, on-brand covers. Plus, Lovart's circular crop preview shows exactly how covers render as Instagram highlight bubbles, which template tools do not offer."
+        },
+        {
+          "question": "Can I really design highlight covers for free?",
+          "answer": "Yes. Lovart's free plan includes daily credits that let you create and download highlight covers at no cost. You get access to all core features — circular crop preview, Instagram color palettes, Touch Edit, Text Edit, and batch generation — without entering a credit card. Free plan covers are for personal use. Paid plans (Starter $20/mo, Basic $35/mo, Pro $110/mo) unlock commercial usage, more credits, and priority rendering."
+        },
+        {
+          "question": "How does batch cover generation work?",
+          "answer": "Batch cover generation lets you create an entire set of highlight covers in one go. You define your aesthetic style (colors, fonts, icon style), list your highlight categories (e.g., 'Travel Tips', 'Food Guides', 'Hotel Reviews', 'Packing Lists'), and Lovart generates all covers simultaneously — maintaining perfect visual consistency across the set. You can generate 6, 8, or 12 covers in a single batch."
+        },
+        {
+          "question": "Does Lovart support Instagram's circular highlight crop?",
+          "answer": "Absolutely — and it is one of our signature features. Lovart's real-time circular crop preview shows you exactly how your cover will appear as an Instagram highlight bubble. You can adjust element placement, text positioning, and icon sizing while seeing the circular boundary, so nothing gets cropped out unexpectedly. The design canvas itself includes the circular guide overlay."
+        },
+        {
+          "question": "Can I match my highlight covers to my Instagram feed aesthetic?",
+          "answer": "Yes — and this is where Lovart's Brand Consistency engine shines. You can upload a reference image from your feed, describe your aesthetic in words, or select from curated Instagram color palettes. Lovart then generates highlight covers that visually match your feed's color scheme, mood, and typography — creating a seamless, professional profile look."
+        },
+        {
+          "question": "What are the paid plan options for highlight cover design?",
+          "answer": "Lovart offers three paid plans: Starter ($20/month, 2,000 credits) — ideal for individual creators needing regular cover updates; Basic ($35/month, 3,500 credits) — perfect for managing 2-3 Instagram accounts with frequent content; Pro ($110/month, 11,000 credits) — built for agencies and brands managing multiple profiles with high-volume cover generation. All paid plans include commercial usage rights."
+        },
+        {
+          "question": "What export formats are available for highlight covers?",
+          "answer": "Highlight covers can be exported in PNG, JPG, SVG, and PSD formats at up to 8K resolution. PNG is recommended for Instagram uploads (crisp, lossless quality). SVG is ideal if you want infinitely scalable vector covers. PSD files include layers for further editing in Photoshop. All formats are available on the free plan."
+        },
+        {
+          "question": "Can I edit my covers after generating them?",
+          "answer": "Yes — and this is a core strength of Lovart. After generating a cover, you can refine it conversationally using the ChatCanvas. Say things like 'make the icon smaller and centered', 'change the background to a warmer tone', or 'switch the font to something more elegant'. Touch Edit and Text Edit give you precise manual control, and MCoT understands natural language refinement commands."
+        },
+        {
+          "question": "How many highlight covers should I create for my profile?",
+          "answer": "Most creators use between 4 and 12 highlight covers. Lovart's batch generator can handle any quantity — from a minimal set of 4 core highlights (e.g., About, Products, Reviews, FAQ) to an extensive set of 12+ for content-heavy profiles (e.g., individual travel destinations, product categories, or tutorial series). The AI maintains visual consistency regardless of set size."
+        }
+      ]
+    }
+  ],
+  "section_zh-CN": [
+    {
+      "section_zh-CN": "hero",
+      "title": "AI Instagram 精选封面制作器",
+      "subtitle": "用 Lovart 设计精美精选封面",
+      "description": "用惊艳、品牌统一的精选封面改造你的 Instagram 主页——AI 几秒即可完成设计。Lovart 搭载 MCoT 创意总监引擎，深谙 Instagram 美学：完美的圆形裁切、恰到好处的配色方案、让精选脱颖而出的字体设计。无论你是生活方式博主、美妆品牌、旅行达人，还是商业账号，Lovart 都能为你打造协调统一的专业封面。每日免费额度，注册即可开始使用。",
+      "badge": "专为 Instagram 优化——圆形裁切预览 & 配色就绪",
+      "button_text": "设计我的封面",
+      "button_url": "/ai-instagram-highlight-cover-maker#start",
+      "hero_image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "hero_image_alt": "Lovart AI 正在创建精美的 Instagram 精选封面，并显示圆形预览",
+      "type": "centeredInputSection",
+      "suggestion": [
+        "每日免费额度",
+        "圆形裁切预览",
+        "批量生成",
+        "批量生成"
+      ]
+    },
+    {
+      "section_zh-CN": "suggestions",
+      "title": "选择你的精选风格",
+      "subtitle": "点击一种风格开始——Lovart 会设计贴合你审美的封面",
+      "type": "threeColumnSection",
+      "columns": [
+        {
+          "title": "极简生活方式",
+          "description": "柔和色调、简约图标和优雅字体，专为生活方式博主打造。非常适合日常记录、健康养生、家居装饰和个人品牌精选。",
+          "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+          "prompt": "创建极简生活美学精选封面，采用柔和的米色调和简约线条图标，适用于日常、健康、家居和风格类别",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "商业品牌",
+          "description": "简洁、专业的封面，强化品牌辨识度。统一的配色方案、醒目的字体和精致的图标，适用于产品、服务、客户评价和常见问题。",
+          "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+          "prompt": "设计专业商业品牌精选封面，采用干净的企业配色，适用于产品、服务、评价和关于我们",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "旅行日记",
+          "description": "温暖、充满探索感的封面，捕捉旅行的灵魂。大地色系、目的地主题图标和活泼的字体，适用于城市指南、旅行贴士、美食和行程。",
+          "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+          "prompt": "创建旅行主题精选封面，采用温暖大地色和冒险图标，适用于目的地、贴士、美食和行程",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "section_zh-CN": "features",
+      "title": "让主页闪耀的封面设计",
+      "subtitle": "六大 Instagram 专属功能，将散落的精选打造成统一的品牌故事",
+      "type": "featureGridSection",
+      "features": [
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c2b2d0e9.svg",
+          "title": "圆形裁切预览",
+          "description": "放心设计——Lovart 的实时圆形裁切预览能精确展示封面在 Instagram 精选气泡中的实际效果。无需猜测，不会出现元素错位，每次都能获得完美框住的封面。",
+          "highlight": "完美框定",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/f30b2cdc.svg",
+          "title": "Instagram 配色方案",
+          "description": "从精选的 Instagram 优化配色方案中选择，或让 AI 生成与你主页风格匹配的配色。暖色调、冷色调、粉彩色、高对比度——每种方案都经过屏幕显示效果测试，确保鲜艳且协调。",
+          "highlight": "主页适配配色",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c0a7bbac.svg",
+          "title": "品牌统一性",
+          "description": "在所有精选封面之间保持一致的外观。Lovart 的品牌统一性引擎确保字体、颜色、图标风格和间距保持统一——让你的主页一眼看上去就精心策划且专业。",
+          "highlight": "协调美感",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/09928fa3.svg",
+          "title": "触控编辑",
+          "description": "精准微调每一个元素。在 ChatCanvas 上直接调整图标位置、缩放文字、微调颜色和重新定位图形。直观的触控操作让你无需复杂工具即可实现像素级控制。",
+          "highlight": "精确控制",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/a605b61b.svg",
+          "title": "文字编辑",
+          "description": "为精选封面添加美观、可读性强的文字。从 AI 推荐的字体搭配中选择匹配你审美的方案，调整字号以确保圆形裁切下的可读性，并预览文字在精选气泡中的呈现效果。",
+          "highlight": "精美排版",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c7f26357.svg",
+          "title": "批量封面生成",
+          "description": "一次性生成整套风格匹配的精选封面。只需定义一次你的美学风格，列出精选类别，Lovart 就能在一次生成中为你创建 6、8 或 12 个完美协调的封面——节省数小时的手动设计时间。",
+          "highlight": "秒级生成全套",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+        }
+      ]
+    },
+    {
+      "section_zh-CN": "testimonials",
+      "title": "升级主页的创作者们",
+      "subtitle": "从微型博主到知名品牌——看看精美精选封面带来的改变",
+      "type": "testimonialSection",
+      "testimonials": [
+        {
+          "name": "Mia Torres",
+          "role": "生活方式博主（8.5万粉丝）",
+          "avatar": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+          "quote": "用 Lovart 重新设计精选封面后，我的主页访问量提升了62%，故事浏览量增加了28%。品牌开始注意到这种统一协调的视觉效果——我在更新后的第一个月就拿到了3个赞助合作。Lovart 实实在在地提升了我的 Instagram 水平。",
+          "rating": 4.9,
+          "stat_value": "62%",
+          "stat_label": "更多主页访问",
+          "verified": true,
+          "avatar_url": ""
+        },
+        {
+          "name": "David Kim",
+          "role": "Glow Cosmetics 品牌经理",
+          "avatar": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+          "quote": "我们管理着4个品牌账号，保持精选封面统一简直是一场噩梦——直到用了 Lovart。批量生成现在能在5分钟内给我们48个品牌统一的封面。团队每月节省20小时，每个主页都看起来完美无瑕。Pro 方案对我们来说是明智之选。",
+          "rating": 4.8,
+          "stat_value": "20 小时",
+          "stat_label": "每月节省",
+          "verified": true,
+          "avatar_url": ""
+        },
+        {
+          "name": "Leila Abbasi",
+          "role": "旅行内容创作者（12万粉丝）",
+          "avatar": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+          "quote": "我以前每个月要花300美元请设计师专门做精选封面。现在我用 Starter 方案每月只花$20，封面效果反而更好。为所有旅行目的地——巴厘岛、东京、巴黎，你能想到的——创建了36个封面，全部风格完美统一。观众说我的主页看起来像一本杂志。",
+          "rating": 4.9,
+          "stat_value": "$280",
+          "stat_label": "每月节省",
+          "verified": true,
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "section_zh-CN": "faq",
+      "title": "常见问题",
+      "subtitle": "关于使用 Lovart 创建 Instagram 精选封面的所有信息",
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart 的精选封面制作器与 Canva 或模板工具有何不同？",
+          "answer": "与需要手动调整元素的模板工具不同，Lovart 使用 MCoT（多链思维）AI 引擎以对话方式设计封面。你只需描述想要的风格——比如“柔和米色调的生活方式封面，搭配极简线条图标”——Lovart 就会从颜色、构图、字体和图标风格等方面进行推理，生成专业、品牌统一的封面。此外，Lovart 的圆形裁切预览能精确展示封面在 Instagram 精选气泡中的效果，这是模板工具不具备的功能。"
+        },
+        {
+          "question": "真的能免费设计精选封面吗？",
+          "answer": "是的。Lovart 的免费方案包含每日额度，让你可以免费创建和下载精选封面。你可以使用所有核心功能——圆形裁切预览、Instagram 配色方案、触控编辑、文字编辑和批量生成——无需绑定信用卡。免费方案适用于个人用途。付费方案（Starter $20/月、Basic $35/月、Pro $110/月）解锁商业用途、更多额度和优先渲染。"
+        },
+        {
+          "question": "批量封面生成是如何工作的？",
+          "answer": "批量封面生成让你一次性创建整套精选封面。你只需定义美学风格（颜色、字体、图标风格），列出精选类别（如{LQ}旅行贴士{RQ}{LQ}美食指南{RQ}{LQ}酒店评测{RQ}{LQ}打包清单{RQ}），Lovart 就会同时生成所有封面——在整个系列中保持完美的视觉一致性。你可以一次批量生成6、8或12个封面。"
+        },
+        {
+          "question": "Lovart 支持 Instagram 的圆形精选裁切吗？",
+          "answer": "绝对支持——这是我们的一大特色功能。Lovart 的实时圆形裁切预览能精确展示封面以 Instagram 精选气泡显示时的效果。你可以在看到圆形边界的同时调整元素位置、文字定位和图标大小，确保任何内容都不会意外被裁切掉。设计画布本身就包含圆形参考线叠加层。"
+        },
+        {
+          "question": "能让精选封面与我的 Instagram 主页风格匹配吗？",
+          "answer": "当然可以——这正是 Lovart 品牌统一性引擎大显身手的地方。你可以上传主页的参考图片，用文字描述你的风格，或从精选的 Instagram 配色方案中选择。Lovart 随后会生成与主页配色、氛围和字体风格视觉匹配的精选封面——打造无缝、专业的主页外观。"
+        },
+        {
+          "question": "精选封面设计有哪些付费方案选择？",
+          "answer": "Lovart 提供三种付费方案：Starter（$20/月，2,000 额度）——适合需要定期更新封面的个人创作者；Basic（$35/月，3,500 额度）——适合管理2-3个 Instagram 账号且需要频繁创作的场景；Pro（$110/月，11,000 额度）——为管理多个账号且需要大批量封面生成的机构和品牌设计。所有付费方案均包含商业使用授权。"
+        },
+        {
+          "question": "精选封面支持哪些导出格式？",
+          "answer": "精选封面支持导出为 PNG、JPG、SVG 和 PSD 格式，最高 8K 分辨率。推荐使用 PNG 上传到 Instagram（清晰、无损品质）。如果需要无限缩放的矢量封面，SVG 是理想选择。PSD 文件包含图层，便于在 Photoshop 中进一步编辑。所有格式均可在免费方案中使用。"
+        },
+        {
+          "question": "生成封面后还能编辑吗？",
+          "answer": "当然可以——这是 Lovart 的核心优势之一。生成封面后，你可以通过 ChatCanvas 进行对话式优化。说出诸如“把图标调小并居中”“把背景色调暖一些”或“换成更优雅的字体”之类的指令。触控编辑和文字编辑为你提供精确的手动控制，MCoT 则能理解自然语言优化指令。"
+        },
+        {
+          "question": "我的主页应该创建多少个精选封面？",
+          "answer": "大多数创作者使用4制12个精选封面。Lovart 的批量生成器可以处理任意数量——从最精简的4个核心精选（如关于、产品、评价、常见问题）到内容丰富的12个以上精选（如各个旅行目的地、产品类别或教程系列）。无论合集规模大小，AI 都能保持视觉一致性。"
+        }
+      ]
+    }
+  ],
+  "section_zh-TW": [
+    {
+      "section_zh-TW": "hero",
+      "title": "AI Instagram 精選封面製作器",
+      "subtitle": "用 Lovart 設計精美精選封面",
+      "description": "用驚豔、品牌統一的精選封面改造你的 Instagram 主頁——AI 幾秒即可完成設計。Lovart 搭載 MCoT 創意總監引擎，深諡 Instagram 美學：完美的圓形裁切、恰到好處的配色方案、讓精選脫穎而出的字體設計。無論你是生活風格部落客、美妝品牌、旅行達人，還是商業帳號，Lovart 都能為你打造協調統一的專業封面。每日免費額度，註冊即可開始使用。",
+      "badge": "專為 Instagram 優化——圓形裁切預覽 & 配色就緒",
+      "button_text": "設計我的封面",
+      "button_url": "/ai-instagram-highlight-cover-maker#start",
+      "hero_image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+      "hero_image_alt": "Lovart AI 正在建立精美的 Instagram 精選封面，並顯示圓形預覽",
+      "type": "centeredInputSection",
+      "suggestion": [
+        "每日免費額度",
+        "圓形裁切預覽",
+        "批量生成",
+        "批量生成"
+      ]
+    },
+    {
+      "section_zh-TW": "suggestions",
+      "title": "選擇你的精選風格",
+      "subtitle": "點擊一種風格開始——Lovart 會設計貼合你審美的封面",
+      "type": "threeColumnSection",
+      "columns": [
+        {
+          "title": "極簡生活風格",
+          "description": "柔和色調、簡約圖示和優雅字體，專為生活風格部落客打造。非常適合日常記錄、健康養生、居家裝飾和個人品牌精選。",
+          "image": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+          "prompt": "建立極簡生活美學精選封面，採用柔和的米色調和簡約線條圖示，適用於日常、健康、居家和風格類別",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "商業品牌",
+          "description": "簡潔、專業的封面，強化品牌辨識度。統一的配色方案、醒目的字體和精緻的圖示，適用於產品、服務、客戶評價和常見問題。",
+          "image": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+          "prompt": "設計專業商業品牌精選封面，採用乾淨的企業配色，適用於產品、服務、評價和關於我們",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "旅行日記",
+          "description": "溫暖、充滿探索感的封面，捕捉旅行的靈魂。大地色系、目的地主題圖示和活泼的字體，適用於城市指南、旅行貼士、美食和行程。",
+          "image": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+          "prompt": "建立旅行主題精選封面，採用溫暖大地色和冒險圖示，適用於目的地、貼士、美食和行程",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "section_zh-TW": "features",
+      "title": "讓主頁閃耀的封面設計",
+      "subtitle": "六大 Instagram 專屬功能，將散落的精選打造成統一的品牌故事",
+      "type": "featureGridSection",
+      "features": [
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c2b2d0e9.svg",
+          "title": "圓形裁切預覽",
+          "description": "放心設計——Lovart 的即時圓形裁切預覽能精確展示封面在 Instagram 精選氣泡中的實際效果。無需猜測，不會出現元素錯位，每次都能獲得完美框住的封面。",
+          "highlight": "完美框定",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/f30b2cdc.svg",
+          "title": "Instagram 配色方案",
+          "description": "從精選的 Instagram 最佳化配色方案中選擇，或讓 AI 生成與你主頁風格匹配的配色。暖色調、冷色調、粉彩色、高對比度——每種方案都經過螢幕顯示效果測試，確保鮮豔且協調。",
+          "highlight": "主頁適配配色",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c0a7bbac.svg",
+          "title": "品牌統一性",
+          "description": "在所有精選封面之間保持一致的外觀。Lovart 的品牌統一性引擎確保字體、顏色、圖示風格和間距保持統一——讓你的主頁一眼看上去就精心策劃且專業。",
+          "highlight": "協調美感",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/09928fa3.svg",
+          "title": "觸控編輯",
+          "description": "精準微調每一個元素。在 ChatCanvas 上直接調整圖示位置、縮放文字、微調顏色和重新定位圖形。直觀的觸控操作讓你無需複雜工具即可實現像素級控制。",
+          "highlight": "精確控制",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/a605b61b.svg",
+          "title": "文字編輯",
+          "description": "為精選封面加入美觀、可讀性強的文字。從 AI 推薦的字體搭配中選擇匹配你審美的方案，調整字號以確保圓形裁切下的可讀性，並預覽文字在精選氣泡中的呈現效果。",
+          "highlight": "精美排版",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png"
+        },
+        {
+          "icon": "https://cdn.lovart.ai/images/icons/c7f26357.svg",
+          "title": "批量封面生成",
+          "description": "一次性生成整套風格匹配的精選封面。只需定義一次你的美學風格，列出精選類別，Lovart 就能在一次生成中為你建立 6、8 或 12 個完美協調的封面——節省數小時的手動設計時間。",
+          "highlight": "秒級生成全套",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+        }
+      ]
+    },
+    {
+      "section_zh-TW": "testimonials",
+      "title": "升級主頁的創作者們",
+      "subtitle": "從微型部落客到知名品牌——看看精美精選封面帶來的改變",
+      "type": "testimonialSection",
+      "testimonials": [
+        {
+          "name": "Mia Torres",
+          "role": "生活風格部落客（8.5萬粉絲）",
+          "avatar": "https://cdn.lovart.ai/images/agents/da4b4705.png",
+          "quote": "用 Lovart 重新設計精選封面後，我的主頁訪問量提升了62%，限時動態瀏覽量增加了28%。品牌開始注意到這種統一協調的視覺效果——我在更新後的第一個月就拿到了3個贊助合作。Lovart 實實在在地提升了我的 Instagram 水準。",
+          "rating": 4.9,
+          "stat_value": "62%",
+          "stat_label": "更多主頁訪問",
+          "verified": true,
+          "avatar_url": ""
+        },
+        {
+          "name": "David Kim",
+          "role": "Glow Cosmetics 品牌經理",
+          "avatar": "https://cdn.lovart.ai/images/agents/98800dc8.png",
+          "quote": "我們管理著4個品牌帳號，保持精選封面統一簡直是一場噩夢——直到用了 Lovart。批量生成現在能在5分鐘內給我們48個品牌統一的封面。團隊每月節省20小時，每個主頁都看起來完美無瑕。Pro 方案對我們來說是明智之選。",
+          "rating": 4.8,
+          "stat_value": "20 小時",
+          "stat_label": "每月節省",
+          "verified": true,
+          "avatar_url": ""
+        },
+        {
+          "name": "Leila Abbasi",
+          "role": "旅行內容創作者（12萬粉絲）",
+          "avatar": "https://cdn.lovart.ai/images/agents/8f3f2384.png",
+          "quote": "我以前每個月要花300美元請設計師專門做精選封面。現在我用 Starter 方案每月只花$20，封面效果反而更好。為所有旅行目的地——峴里島、東京、巴黎，你想得到的——建立了36個封面，全部風格完美統一。觀眾說我的主頁看起來像一本雜誌。",
+          "rating": 4.9,
+          "stat_value": "$280",
+          "stat_label": "每月節省",
+          "verified": true,
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "section_zh-TW": "faq",
+      "title": "常見問題",
+      "subtitle": "關於使用 Lovart 建立 Instagram 精選封面的所有資訊",
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart 的精選封面製作器與 Canva 或範本工具有何不同？",
+          "answer": "與需要手動調整元素的範本工具不同，Lovart 使用 MCoT（多鏈思維）AI 引擎以對話方式設計封面。你只需描述想要的風格——比如“柔和米色調的生活風格封面，搭配極簡線條圖示”——Lovart 就會從顏色、構圖、字體和圖示風格等方面進行推理，生成專業、品牌統一的封面。此外，Lovart 的圓形裁切預覽能精確展示封面在 Instagram 精選氣泡中的效果，這是範本工具不具備的功能。"
+        },
+        {
+          "question": "真的能免費設計精選封面嗎？",
+          "answer": "是的。Lovart 的免費方案包含每日額度，讓你可以免費建立和下載精選封面。你可以使用所有核心功能——圓形裁切預覽、Instagram 配色方案、觸控編輯、文字編輯和批量生成——無需綁定信用卡。免費方案適用於個人用途。付費方案（Starter $20/月、Basic $35/月、Pro $110/月）解鎖商業用途、更多額度和優先渲染。"
+        },
+        {
+          "question": "批量封面生成是如何工作的？",
+          "answer": "批量封面生成讓你一次性建立整套精選封面。你只需定義美學風格（顏色、字體、圖示風格），列出精選類別（如“旅行貼士”“美食指南”“飯店評測”“打包清單”），Lovart 就會同時生成所有封面——在整個系列中保持完美的視覺一致性。你可以一次批量生成6、8或12個封面。"
+        },
+        {
+          "question": "Lovart 支援 Instagram 的圓形精選裁切嗎？",
+          "answer": "絕對支援——這是我們的一大特色功能。Lovart 的即時圓形裁切預覽能精確展示封面以 Instagram 精選氣泡顯示時的效果。你可以在看到圓形邊界的同時調整元素位置、文字定位和圖示大小，確保任何內容都不會意外被裁切掉。設計畫布本身就包含圓形參考線疊加層。"
+        },
+        {
+          "question": "能讓精選封面與我的 Instagram 主頁風格匹配嗎？",
+          "answer": "當然可以——這正是 Lovart 品牌統一性引擎大顯身手的地方。你可以上傳主頁的參考圖片，用文字描述你的風格，或從精選的 Instagram 配色方案中選擇。Lovart 隨後會生成與主頁配色、氛圍和字體風格視覺匹配的精選封面——打造無縫、專業的主頁外觀。"
+        },
+        {
+          "question": "精選封面設計有哪些付費方案選擇？",
+          "answer": "Lovart 提供三種付費方案：Starter（$20/月，2,000 額度）——適合需要定期更新封面的個人創作者；Basic（$35/月，3,500 額度）——適合管理2-3個 Instagram 帳號且需要頻繁創作的場景；Pro（$110/月，11,000 額度）——為管理多個帳號且需要大批量封面生成的機構和品牌設計。所有付費方案均包含商業使用授權。"
+        },
+        {
+          "question": "精選封面支援哪些匯出格式？",
+          "answer": "精選封面支援匯出為 PNG、JPG、SVG 和 PSD 格式，最高 8K 解析度。推薦使用 PNG 上傳到 Instagram（清晰、無損品質）。如果需要無限縮放的向量封面，SVG 是理想選擇。PSD 檔案包含圖層，便於在 Photoshop 中進一步編輯。所有格式均可在免費方案中使用。"
+        },
+        {
+          "question": "生成封面後還能編輯嗎？",
+          "answer": "當然可以——這是 Lovart 的核心優勢之一。生成封面後，你可以透過 ChatCanvas 進行對話式最佳化。說出諸如“把圖示調小並置中”“把背景色調暖一些”或“換成更優雅的字體”之類的指令。觸控編輯和文字編輯為你提供精確的手動控制，MCoT 則能理解自然語言最佳化指令。"
+        },
+        {
+          "question": "我的主頁應該建立多少個精選封面？",
+          "answer": "大多數創作者使用4制12個精選封面。Lovart 的批量生成器可以處理任意數量——從最精簡的4個核心精選（如關於、產品、評價、常見問題）到內容豐富的12個以上精選（如各個旅行目的地、產品類別或教學系列）。無論合集規模大小，AI 都能保持視覺一致性。"
+        }
+      ]
+    }
+  ]
+}

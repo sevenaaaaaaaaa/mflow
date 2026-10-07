@@ -1,0 +1,455 @@
+```json
+{
+  "section_en": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI Poster Maker — Design Professional Posters with Lovart's AI Design Agent",
+      "description": "Stop spending hours wrestling with clunky design tools or waiting days for agency revisions. Lovart's AI Design Agent transforms a simple text description into professional, print-ready posters in minutes. Powered by the MCoT reasoning engine, our agent thinks like a Creative Director — analyzing your event, audience, and brand context before generating layouts, typography, and visuals that convert. Whether you need event posters, marketing promotions, motivational prints, or educational displays, Lovart delivers studio-quality results with zero design experience required. Start creating with free daily credits and see your poster come to life in seconds.",
+      "input_placeholder": "Describe the poster you want to create — include event type, key message, target audience, and preferred style",
+      "system_prompt": "You are a Senior Creative Director and AI Poster Design Specialist at Lovart, with deep expertise in visual communication, marketing psychology, and print production. Using the MCoT (Mind Chain of Thought) reasoning engine, analyze the user's description to understand: 1) The event or campaign type and its communication goals, 2) The target audience demographics and psychographics, 3) The key message hierarchy (headline, subhead, CTA), 4) The appropriate visual style, color psychology, and typography pairing that maximizes attention and response. Then orchestrate Lovart's agentic design pipeline: select the optimal layout grid from ChatCanvas, generate on-brand visuals using Nano Banana Pro, apply precise typography with the Text tool, ensure print-ready resolution and bleed zones, and deliver a complete poster that looks like it was created by a professional design team. The user's requirements: $input$",
+      "button_text": "Design My Poster",
+      "tip": "Pro tip: Include event type, key message, target audience, preferred color palette, and whether you need print or digital format for best results",
+      "suggestion": [
+        {
+          "value": "Create an energetic summer music festival poster with bold neon typography, a crowd silhouette against a sunset gradient, date and venue details, and a 'Get Tickets Now' CTA — targeting Gen Z and millennial music lovers",
+          "label": "Festival Poster"
+        },
+        {
+          "value": "Design a professional corporate conference poster with minimalist layout, navy and gold color scheme, keynote speaker headshots, agenda highlights, and registration QR code — targeting C-suite executives",
+          "label": "Conference Poster"
+        },
+        {
+          "value": "Make a vibrant restaurant grand opening poster with mouth-watering food photography, handwritten-style headline, 50% off launch promotion, address and hours — targeting local foodies and families",
+          "label": "Promo Poster"
+        },
+        {
+          "value": "Create an inspiring motivational gym poster with a powerful fitness quote, dramatic lighting on an athlete silhouette, bold sans-serif typography, and the gym's brand colors — targeting fitness beginners",
+          "label": "Motivational Poster"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "How to Design Professional Posters with Lovart's AI Agent",
+      "columns": [
+        {
+          "title": "Describe Your Vision",
+          "description": "Start by telling Lovart's AI Design Agent exactly what you need. Describe your event type, key message, target audience, and preferred aesthetic — just like briefing a real designer. The MCoT reasoning engine analyzes your intent, researches relevant design trends, and maps out a complete creative strategy before generating a single pixel. ChatCanvas captures your brand context so every poster aligns with your visual identity from the start.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Generate & Iterate",
+          "description": "Watch as Lovart transforms your brief into multiple poster variants in seconds. The agent generates complete layouts with headline hierarchy, supporting visuals from Nano Banana Pro, and professionally paired typography — all working together as a unified design system. Browse variations, mix and match elements across versions, and refine with natural language commands. No manual layer juggling, no font hunting, no pixel pushing.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Refine & Export",
+          "description": "Fine-tune every detail with Lovart's exclusive editing tools. Use Touch Edit to click and reshape any visual element without manual masking. Apply Text Edit to modify headlines, dates, or pricing directly on the poster while preserving the original typography style. Need to see your poster on a bus shelter or storefront? Smart Mockup places your design onto real-world surfaces with automatic perspective adaptation. Export at up to 8K resolution in PNG, JPG, SVG, or print-ready PDF for professional production.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "The Ultimate AI Toolkit for Professional Poster Design",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Semantic Touch Edit",
+          "description": "Click any object on your poster — a product image, a decorative element, a background texture — and reshape, recolor, or replace it instantly. Touch Edit understands visual context and adapts seamlessly to lighting, perspective, and surrounding elements. No manual masking, no Photoshop layers, just intuitive click-to-edit precision that makes poster refinement feel like magic."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Flawless Typography Rendering",
+          "description": "Edit headlines, dates, pricing, and body copy directly on your poster image with structured text understanding. Unlike generic AI tools that produce garbled text, Lovart's Text Edit renders crisp, readable typography in any style — from elegant serif headlines to bold sans-serif CTAs — while preserving shadows, gradients, and perspective effects. Change a date or price in seconds without redesigning the entire poster."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "AI Smart Mockup Engine",
+          "description": "Instantly preview your poster in real-world settings. Place your design onto billboards, storefront windows, subway ads, bus shelters, and event signage with one click. Our Smart Mockup engine automatically adapts perspective, lighting, and surface textures so your poster looks photorealistic in every context. Perfect for client presentations, pitch decks, and pre-press validation."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Brand-Locked Visual Consistency",
+          "description": "Powered by Nano Banana Pro and ChatCanvas brand memory, Lovart ensures every poster across your campaign shares consistent colors, typography, logo placement, and visual tone. Upload your brand assets once, and the agent applies them to every new design automatically. Run multi-channel campaigns without the visual drift that plagues template-based tools."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Print-Ready 8K Export",
+          "description": "Deliver posters at professional print specifications. Export up to 8K resolution in PNG, JPG, SVG vector, or layered PSD formats with proper bleed zones, CMYK compatibility, and industry-standard color profiles. Whether you need a 24×36 inch event banner or a digital display for social media, Lovart outputs the right format at the right resolution every time."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Multi-Format Adaptation Engine",
+          "description": "Design once, deploy everywhere. After creating your master poster, Lovart's agent automatically generates optimized variants for every channel: Instagram story (9:16), Facebook event cover (16:9), LinkedIn feed (1.91:1), print flyer (A4), and large-format banner — all while preserving visual hierarchy and brand consistency. Launch a full campaign from a single design in minutes, not days."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Creators and Brands Scaling Poster Production with Lovart",
+      "testimonials": [
+        {
+          "name": "Marcus Chen",
+          "role": "Marketing Director, TechSummit Global",
+          "content": "We used to spend $5,000 per conference on poster design alone — briefing agencies, waiting 5-7 days for revisions, and still getting inconsistent results. With Lovart's AI Poster Maker, our team now produces 30+ professional event posters in a single afternoon. The brand consistency across keynote announcements, workshop schedules, and venue signage is flawless. We've cut our poster design budget by 80% while outputting 5x more creative. The Smart Mockup feature alone saved us countless hours of pre-press back-and-forth.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Priya Sharma",
+          "role": "Founder, Bloom Street Cafe & Bakery",
+          "content": "Before Lovart, I was using Canva templates that made every promotion look generic. I'm a baker, not a designer — I needed something that could actually understand my brand. Lovart's AI Design Agent generated my grand opening poster in 3 minutes, and it looked like a professional agency did it. The text on the poster was perfectly readable with my special offers clearly highlighted. I've since created 15+ seasonal promotion posters, each with a unique feel but unmistakably Bloom Street. My foot traffic increased 40% after the first campaign.",
+          "avatar_url": ""
+        },
+        {
+          "name": "David Okonkwo",
+          "role": "Student Organization President, Lagos University",
+          "content": "Running campus events means creating posters every other week with zero budget and zero design skills. Lovart completely changed the game for us. I described our 'AI & Future of Work' panel discussion, and within minutes I had a stunning poster with the speaker headshots properly placed, the university logo integrated, and a QR code for registration. We used to print blurry Canva exports that looked amateur — now our events look like professionally organized conferences. The free daily credits make it accessible for student budgets too.",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "What is Lovart, and how is it different from Canva or other AI image generators?",
+          "answer": "Lovart is the world's first AI Design Agent — not just another template editor or prompt-to-image tool. Unlike Canva, which requires manual template editing, or Midjourney, which generates single images from prompts, Lovart's MCoT reasoning engine thinks like a Creative Director. It analyzes your brief, audience, and brand context to orchestrate complete poster designs with intentional layouts, proper typography hierarchy, and consistent visual language. You describe your poster in natural language, and Lovart delivers a complete, editable, print-ready design — as if you briefed a professional agency."
+        },
+        {
+          "question": "Can I create professional posters without any design experience?",
+          "answer": "Absolutely. Lovart was built for non-designers who need professional results. You don't need to understand layout grids, color theory, typography pairing, or print specifications. Simply describe your event, message, and audience in plain English, and Lovart's AI Design Agent handles all the creative and technical decisions. The agent automatically selects appropriate fonts, creates visual hierarchy, ensures proper spacing, and exports at the correct resolution for your use case. Thousands of small business owners, event organizers, and marketers with zero design background create stunning posters on Lovart every day."
+        },
+        {
+          "question": "Can I use the posters I create for commercial purposes?",
+          "answer": "Yes. Users on paid plans (Starter, Basic, Pro) own full commercial rights to their poster designs. You can use them for advertising, client work, merchandise, event promotion, and any lawful commercial purpose. The free plan is for personal and evaluation use. Lovart's models are trained on licensed and public domain data, and we provide commercial indemnity for paid subscribers, giving you peace of mind for business-critical creative work."
+        },
+        {
+          "question": "Is there a free plan, and how do free credits work?",
+          "answer": "Yes, Lovart offers a free plan with daily login credits that refresh every 24 hours. You can create multiple posters per day without paying a cent — perfect for testing the platform or handling occasional design needs. Paid plans start with the Starter tier (2,000 monthly credits), Basic (3,500 credits), and Pro (11,000 credits), all unlocking full agent capabilities, commercial rights, and access to premium models like Nano Banana Pro. Every generation shows the credit cost before you confirm, so there are never surprise charges."
+        },
+        {
+          "question": "What file formats and resolutions can I export my posters in?",
+          "answer": "Lovart supports professional export in PNG, JPG, SVG (vector), and layered PSD formats. Resolutions go up to 8K for raster exports, making your posters suitable for everything from social media posts to large-format billboard printing. Vector SVG exports are perfect for logos, typography-heavy designs, and anything that needs to scale infinitely. We also provide PDF export with proper bleed and crop marks for direct-to-print workflows."
+        },
+        {
+          "question": "How does Lovart keep my brand consistent across multiple poster designs?",
+          "answer": "Lovart's ChatCanvas maintains persistent brand context — once you upload your logo, define your brand colors, and set typography preferences, the agent applies these to every new poster automatically. Nano Banana Pro ensures visual consistency across all generated elements, from product images to decorative graphics. The brand system stays active across sessions, so your second poster, tenth poster, and hundredth poster all feel unmistakably like your brand. This is fundamentally different from template-based tools where each design starts from scratch."
+        },
+        {
+          "question": "Can I edit text inside my poster after it's generated?",
+          "answer": "Yes, and this is one of Lovart's signature capabilities. With Text Edit, you can click on any text element — headlines, dates, pricing, venue information — and modify it directly on the poster image. The AI preserves the original typography style, including font weight, shadows, gradients, and perspective effects. Need to update an event date or change the discount percentage? Type the new text, and it renders seamlessly into the existing design. No need to regenerate or rebuild from scratch."
+        },
+        {
+          "question": "What types of posters can I create with Lovart?",
+          "answer": "Lovart's AI Poster Maker handles virtually every poster category: event posters (concerts, conferences, festivals, fundraisers), promotional posters (sales, grand openings, product launches), educational posters (classroom materials, scientific presentations, infographics), motivational and inspirational posters, movie and entertainment posters, political campaign posters, real estate listings, restaurant menus and specials — and many more. The MCoT engine adapts the design strategy to your specific use case, audience, and distribution channel automatically."
+        },
+        {
+          "question": "Can Lovart create poster variants for different social media platforms and print sizes?",
+          "answer": "Yes, the Multi-Format Adaptation Engine automatically generates optimized variants from your master poster design. You get properly sized versions for Instagram (1:1 feed, 9:16 story), Facebook (16:9 event cover), LinkedIn (1.91:1), Twitter/X (16:9), and print formats (A4, A3, letter, tabloid) — all maintaining visual hierarchy, brand consistency, and readability. This eliminates the tedious, error-prone process of manually resizing a single design across platforms."
+        }
+      ]
+    }
+  ],
+  "section_zh-CN": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI 海报生成器 — 用 Lovart AI 设计 Agent 制作专业海报",
+      "description": "别再用笨重的设计工具苦熬数小时，也别再等代理商几天才出一版修改。Lovart 的 AI 设计 Agent 能在几分钟内，将一段简单的文字描述转化为专业级、即印可用的海报。依托 MCoT 推理引擎，我们的 Agent 像创意总监一样思考——在生成布局、字体和视觉元素之前，先分析你的活动类型、受众画像和品牌语境。无论是活动海报、营销促销、励志海报还是教学展示，Lovart 都能在零设计经验的前提下，产出工作室级别的成品。用每日免费额度开始创作，几秒钟就能看到你的海报跃然眼前。",
+      "input_placeholder": "描述你想制作的海报——包括活动类型、核心信息、目标受众和偏好风格",
+      "system_prompt": "你是 Lovart 的资深创意总监兼 AI 海报设计专家，精通视觉传达、营销心理学和印刷制作。使用 MCoT（思维链）推理引擎，分析用户的描述以理解：1）活动或营销活动的类型及其传播目标，2）目标受众的人口统计学和心理特征，3）核心信息的层级结构（主标题、副标题、行动号召），4）能够最大化注意力和转化率的视觉风格、色彩心理学和字体搭配。然后协调 Lovart 的 Agent 设计流程：从 ChatCanvas 中选择最优布局网格，使用 Nano Banana Pro 生成品牌一致的视觉元素，用文字工具应用精确的排版，确保即印可用的分辨率和出血区域，最终交付一张仿佛出自专业设计团队之手的完整海报。用户需求：$input$",
+      "button_text": "设计我的海报",
+      "tip": "专业提示：为获得最佳效果，请包含活动类型、核心信息、目标受众、偏好配色以及需要打印版还是数字版",
+      "suggestion": [
+        {
+          "value": "设计一张充满活力的夏季音乐节海报，采用大胆的霓虹色字体，夕阳渐变背景上的人群剪影，包含日期和场地信息，以及「立即购票」的行动号召——面向 Z 世代和千禧一代音乐爱好者",
+          "label": "音乐节海报"
+        },
+        {
+          "value": "设计一张专业的企业会议海报，采用极简布局、藏蓝和金色配色、主讲人头像、议程亮点和报名二维码——面向企业高管",
+          "label": "会议海报"
+        },
+        {
+          "value": "设计一张引人注目的餐厅开业海报，配有令人垂涎的美食摄影、手写风格标题、开业五折优惠、地址和营业时间——面向本地美食爱好者和家庭客群",
+          "label": "促销海报"
+        },
+        {
+          "value": "设计一张鼓舞人心的健身房励志海报，配有有力的健身格言、运动员剪影上的戏剧性光影、粗体无衬线字体和健身房品牌色——面向健身初学者",
+          "label": "励志海报"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "如何使用 Lovart AI Agent 设计专业海报",
+      "columns": [
+        {
+          "title": "描述你的创意构想",
+          "description": "开始时，只需告诉 Lovart 的 AI 设计 Agent 你的需求。描述活动类型、核心信息、目标受众和偏好的美学风格——就像给真正的设计师下简报一样。MCoT 推理引擎会分析你的意图，研究相关设计趋势，在生成任何像素之前先规划出一套完整的创意策略。ChatCanvas 会捕捉你的品牌语境，让每张海报从一开始就与你的视觉形象保持一致。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "生成与迭代优化",
+          "description": "见证 Lovart 在几秒内将你的简报转化为多版海报变体。Agent 生成完整布局，包含标题层级、由 Nano Banana Pro 驱动的视觉素材和专业搭配的字体——一切作为统一的设计系统协同运作。浏览不同版本，跨版本混合搭配元素，用自然语言指令进行精细化调整。无需手动操作图层，无需搜寻字体，无需逐像素调整。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "精细调整与导出交付",
+          "description": "使用 Lovart 独有的编辑工具精细打磨每个细节。用 Touch Edit 点击并重塑任意视觉元素，无需手动抠图。用 Text Edit 直接在海报上修改标题、日期或价格，同时保留原始字体风格。想把海报放到公交站牌或店面橱窗上看效果？Smart Mockup 能将你的设计一键放置到真实场景中，自动适配透视、光影和材质。支持最高 8K 分辨率导出 PNG、JPG、SVG 或即印 PDF，满足专业制作需求。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "专业海报设计的终极 AI 工具集",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "语义级 Touch Edit",
+          "description": "点击海报上的任意对象——产品图片、装饰元素、背景纹理——即可即时重塑、重新着色或替换。Touch Edit 理解视觉语境，能无缝适配光影、透视和周围元素。无需手动遮罩，无需 Photoshop 图层，只需直观的点击编辑精度，让海报精修变得像魔法一样简单。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "完美文字渲染",
+          "description": "直接在海报图片上编辑标题、日期、价格和正文，实现结构化文字理解。与生成乱码文字的普通 AI 工具不同，Lovart 的 Text Edit 能渲染出清晰可读的各种风格字体——从优雅的衬线标题到粗体无衬线行动号召文字——同时保留阴影、渐变和透视效果。几秒内修改日期或价格，无需重新设计整张海报。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "AI 智能样机引擎",
+          "description": "一键将海报预览到真实场景中。把设计放到广告牌、店面橱窗、地铁广告、公交候车亭和活动现场标识上。Smart Mockup 引擎自动适配透视、光照和表面纹理，让你的海报在每个场景中都呈现照片级真实感。非常适合客户提案、路演展示和印前验证。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "品牌锁定视觉一致性",
+          "description": "由 Nano Banana Pro 和 ChatCanvas 品牌记忆驱动，Lovart 确保你整场活动中的所有海报在色彩、字体、Logo 位置和视觉调性上保持一致。上传一次品牌资产，Agent 就会自动应用到每一张新设计中。跨渠道运营活动再也不会出现模板工具那种视觉漂移的问题。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "即印 8K 导出",
+          "description": "以专业印刷规格交付海报。支持最高 8K 分辨率导出 PNG、JPG、SVG 矢量或分层 PSD 格式，带有合适的出血区域、CMYK 兼容性和行业标准色彩配置。无论你需要 60×90cm 的活动横幅还是社交媒体的数字展示，Lovart 每次都能以正确的格式和分辨率输出。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "多格式适配引擎",
+          "description": "一次设计，全渠道部署。创建完主海报后，Lovart 的 Agent 自动为每个渠道生成优化变体：Instagram 快拍（9:16）、Facebook 活动封面（16:9）、LinkedIn 信息流（1.91:1）、印刷传单（A4）和大尺寸横幅——全程保持视觉层次和品牌一致性。从单张设计到完整活动上线，只需几分钟而非数天。"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "创作者和品牌使用 Lovart 规模化海报制作的真实案例",
+      "testimonials": [
+        {
+          "name": "陈马库斯",
+          "role": "TechSummit Global 市场总监",
+          "content": "以前每场会议单海报设计就要花 5000 美元——给代理商下简报、等 5-7 天的修改周期，结果还常常风格不统一。用了 Lovart 的 AI 海报生成器，我们团队一个下午就能产出 30 多张专业活动海报。主题演讲公告、工作坊排期、场地指引的品牌一致性堪称完美。海报设计预算砍掉了 80%，产出却翻了 5 倍。光是 Smart Mockup 功能就省下了无数次印前来回沟通的时间。",
+          "avatar_url": ""
+        },
+        {
+          "name": "普里亚·夏尔马",
+          "role": "Bloom Street 咖啡馆创始人",
+          "content": "用 Lovart 之前，我一直用 Canva 模板，每张促销海报看起来都千篇一律。我是烘焙师，不是设计师——我需要一个真正理解我品牌的工具。Lovart 的 AI 设计 Agent 只用了 3 分钟就生成了我的开业海报，效果就像专业代理商做的。海报上的文字完美可读，特价优惠信息一目了然。到现在我已经做了 15 张以上的季节促销海报，每张都有独特感觉，但一看就是 Bloom Street。第一波活动后，店里客流量提升了 40%。",
+          "avatar_url": ""
+        },
+        {
+          "name": "大卫·奥孔科沃",
+          "role": "拉各斯大学学生组织主席",
+          "content": "运营校园活动意味着每隔一周就要做海报，预算为零，设计技能为零。Lovart 彻底改变了局面。我描述了我们的「AI 与工作的未来」座谈会，几分钟内就得到了一张令人惊艳的海报，演讲人头像恰当排列，校徽无缝融入，报名二维码清晰可见。以前我们只能打印模糊的 Canva 导出文件，看起来很业余——现在我们的活动看起来像是专业组织的会议。每日免费额度对学生预算也很友好。",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart 是什么，它和 Canva 或其他 AI 图像生成器有什么不同？",
+          "answer": "Lovart 是全球首个 AI 设计 Agent——不只是另一个模板编辑器或提示词生图工具。与需要手动编辑模板的 Canva 不同，也与仅根据提示生成单一图像的 Midjourney 不同，Lovart 的 MCoT 推理引擎像创意总监一样思考。它会分析你的需求、受众和品牌语境，策划出具有意图布局、合理字体层级和统一视觉语言的完整海报设计。你用自然语言描述海报需求，Lovart 就能交付一张完整、可编辑、即印可用的设计——就像你给专业代理商下了简报一样。"
+        },
+        {
+          "question": "没有设计经验，我能做出专业海报吗？",
+          "answer": "完全可以。Lovart 就是为需要专业效果的非设计人员打造的。你不需要理解布局网格、色彩理论、字体搭配或印刷规格。只需用简单的中文描述你的活动、信息和受众，Lovart 的 AI 设计 Agent 就会处理所有创意和技术决策。Agent 会自动选择合适的字体、建立视觉层次、确保合理的间距，并按你的使用场景输出正确分辨率。每天都有成千上万的小企业主、活动策划者和零设计背景的营销人员，在 Lovart 上创作出令人惊艳的海报。"
+        },
+        {
+          "question": "我做的海报可以商用吗？",
+          "answer": "可以。付费计划（Starter、Basic、Pro）的用户拥有其海报设计的完整商业使用权。你可以将海报用于广告、客户项目、周边商品、活动推广及任何合法的商业用途。免费计划仅供个人使用和体验评估。Lovart 的模型训练基于授权和公共领域数据，并为付费用户提供商业赔偿保障，让你在关键业务创意上安心使用。"
+        },
+        {
+          "question": "有免费计划吗？免费额度怎么用？",
+          "answer": "有的。Lovart 提供免费计划，每日登录即可获得额度，每 24 小时刷新一次。你可以每天制作多张海报而无需支付任何费用——非常适合试用平台或处理偶尔的设计需求。付费计划从 Starter 档（每月 2,000 额度）、Basic 档（3,500 额度）到 Pro 档（11,000 额度），全部解锁完整的 Agent 能力、商业使用权和 Nano Banana Pro 等高级模型的访问权限。每次生成前都会显示额度消耗明细，绝不会有意外的扣费。"
+        },
+        {
+          "question": "海报能导出哪些文件格式和分辨率？",
+          "answer": "Lovart 支持专业导出 PNG、JPG、SVG（矢量）和分层 PSD 格式。光栅导出分辨率最高可达 8K，让你的海报适用于从社交媒体帖子到大幅广告牌印刷的所有场景。矢量 SVG 导出非常适合 Logo、文字密集型设计以及任何需要无限缩放的内容。我们还提供带合适出血线和裁切标记的 PDF 导出，可直接用于印刷工作流程。"
+        },
+        {
+          "question": "Lovart 如何保持我多张海报的品牌一致性？",
+          "answer": "Lovart 的 ChatCanvas 维护着持久的品牌上下文——一旦你上传了 Logo、设定了品牌色和字体偏好，Agent 就会自动应用到每一张新海报中。Nano Banana Pro 确保所有生成元素（从产品图到装饰图形）的视觉一致性。品牌系统跨会话保持活跃，让你的第二张、第十张、第一百张海报都明显带有你的品牌印记。这与每次设计都从零开始的模板工具有本质区别。"
+        },
+        {
+          "question": "海报生成后，我能编辑上面的文字吗？",
+          "answer": "可以，这是 Lovart 的标志性能力之一。使用 Text Edit，你可以点击任意文字元素——标题、日期、价格、场地信息——直接在海报图片上进行修改。AI 会保留原始字体风格，包括字重、阴影、渐变和透视效果。需要更新活动日期或修改折扣百分比？输入新文字，它就能无缝融入现有设计。无需重新生成，也无需从头开始。"
+        },
+        {
+          "question": "用 Lovart 能做哪些类型的海报？",
+          "answer": "Lovart 的 AI 海报生成器几乎覆盖所有海报类别：活动海报（演唱会、会议、节日庆典、筹款活动）、促销海报（大促、开业、新品发布）、教育海报（教室材料、学术展示、信息图表）、励志和激励海报、电影和娱乐海报、政治活动海报、房产信息海报、餐厅菜单和特价信息——还有很多。MCoT 引擎会自动将设计策略适配到你的具体使用场景、受众和传播渠道。"
+        },
+        {
+          "question": "能做不同社交媒体平台和印刷尺寸的海报变体吗？",
+          "answer": "可以。多格式适配引擎会自动从你的主海报设计生成各渠道优化版本。你会得到适配各平台尺寸的版本：Instagram（1:1 信息流、9:16 快拍）、Facebook（16:9 活动封面）、LinkedIn（1.91:1）、Twitter/X（16:9）以及印刷格式（A4、A3、信纸、小报）——全程保持视觉层次、品牌一致性和可读性。这彻底告别了手动将单张设计逐一调整尺寸的低效且容易出错的流程。"
+        }
+      ]
+    }
+  ],
+  "section_zh-TW": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI 海報產生器 — 用 Lovart AI 設計 Agent 打造專業海報",
+      "description": "別再花費數小時與笨重的設計工具搏鬥，也別再等待代理商好幾天才給出一版修改。Lovart 的 AI 設計 Agent 能在幾分鐘內，將一段簡單的文字描述轉化為專業級、即可印刷的海報。搭載 MCoT 推理引擎，我們的 Agent 像創意總監一樣思考——在生成佈局、字體和視覺元素之前，先分析你的活動類型、目標受眾和品牌脈絡。無論是活動海報、行銷促銷、激勵海報還是教學展示，Lovart 都能在零設計經驗的前提下，產出工作室等級的成品。用每日免費額度開始創作，幾秒鐘就能看到你的海報躍然眼前。",
+      "input_placeholder": "描述你想製作的海報——包括活動類型、核心訊息、目標受眾和偏好風格",
+      "system_prompt": "你是 Lovart 的資深創意總監兼 AI 海報設計專家，精通視覺傳達、行銷心理學和印刷製作。使用 MCoT（思維鏈）推理引擎，分析用戶的描述以理解：1）活動或行銷活動的類型及其傳播目標，2）目標受眾的人口統計學和心理特徵，3）核心訊息的層級結構（主標題、副標題、行動呼籲），4）能夠最大化注意力和轉化率的視覺風格、色彩心理學和字體搭配。然後協調 Lovart 的 Agent 設計流程：從 ChatCanvas 中選擇最優佈局網格，使用 Nano Banana Pro 生成品牌一致的視覺元素，用文字工具應用精確的排版，確保即可印刷的解析度和出血區域，最終交付一張彷彿出自專業設計團隊之手的完整海報。用戶需求：$input$",
+      "button_text": "設計我的海報",
+      "tip": "專業提示：為獲得最佳效果，請包含活動類型、核心訊息、目標受眾、偏好配色以及需要印刷版還是數位版",
+      "suggestion": [
+        {
+          "value": "設計一張充滿活力的夏季音樂節海報，採用大膽的霓虹色字體，夕陽漸層背景上的人群剪影，包含日期和場地資訊，以及「立即購票」的行動呼籲——面向 Z 世代和千禧世代音樂愛好者",
+          "label": "音樂節海報"
+        },
+        {
+          "value": "設計一張專業的企業會議海報，採用極簡佈局、藏藍和金色配色、主講人頭像、議程亮點和報名 QR Code——面向企業高階主管",
+          "label": "會議海報"
+        },
+        {
+          "value": "設計一張引人注目的餐廳開幕海報，配有令人垂涎的美食攝影、手寫風格標題、開幕五折優惠、地址和營業時間——面向本地美食愛好者和家庭客群",
+          "label": "促銷海報"
+        },
+        {
+          "value": "設計一張鼓舞人心的健身房激勵海報，配有有力的健身格言、運動員剪影上的戲劇性光影、粗體無襯線字體和健身房品牌色——面向健身初學者",
+          "label": "激勵海報"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "如何使用 Lovart AI Agent 設計專業海報",
+      "columns": [
+        {
+          "title": "描述你的創意構想",
+          "description": "開始時，只需告訴 Lovart 的 AI 設計 Agent 你的需求。描述活動類型、核心訊息、目標受眾和偏好的美學風格——就像給真正的設計師下簡報一樣。MCoT 推理引擎會分析你的意圖，研究相關設計趨勢，在生成任何像素之前先規劃出一套完整的創意策略。ChatCanvas 會捕捉你的品牌脈絡，讓每張海報從一開始就與你的視覺形象保持一致。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "生成與迭代優化",
+          "description": "見證 Lovart 在幾秒內將你的簡報轉化為多版海報變體。Agent 生成完整佈局，包含標題層級、由 Nano Banana Pro 驅動的視覺素材和專業搭配的字體——一切作為統一的設計系統協同運作。瀏覽不同版本，跨版本混合搭配元素，用自然語言指令進行精細化調整。無需手動操作圖層，無需搜尋字體，無需逐像素調整。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "精細調整與匯出交付",
+          "description": "使用 Lovart 獨有的編輯工具精細打磨每個細節。用 Touch Edit 點擊並重塑任意視覺元素，無需手動去背。用 Text Edit 直接在海報上修改標題、日期或價格，同時保留原始字體風格。想把海報放到公車站牌或店面櫥窗上看效果？Smart Mockup 能將你的設計一鍵放置到真實場景中，自動適配透視、光影和材質。支援最高 8K 解析度匯出 PNG、JPG、SVG 或即可印刷 PDF，滿足專業製作需求。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "專業海報設計的終極 AI 工具集",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "語意級 Touch Edit",
+          "description": "點擊海報上的任意物件——產品圖片、裝飾元素、背景紋理——即可即時重塑、重新著色或替換。Touch Edit 理解視覺語境，能無縫適配光影、透視和周圍元素。無需手動遮罩，無需 Photoshop 圖層，只需直觀的點擊編輯精度，讓海報精修變得像魔法一樣簡單。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "完美文字渲染",
+          "description": "直接在海報圖片上編輯標題、日期、價格和正文，實現結構化文字理解。與生成亂碼文字的普通 AI 工具不同，Lovart 的 Text Edit 能渲染出清晰可讀的各種風格字體——從優雅的襯線標題到粗體無襯線行動呼籲文字——同時保留陰影、漸層和透視效果。幾秒內修改日期或價格，無需重新設計整張海報。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "AI 智能 Mockup 引擎",
+          "description": "一鍵將海報預覽到真實場景中。把設計放到廣告看板、店面櫥窗、捷運廣告、公車候車亭和活動現場標示上。Smart Mockup 引擎自動適配透視、光照和表面紋理，讓你的海報在每個場景中都呈現照片級真實感。非常適合客戶提案、路演展示和印前驗證。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "品牌鎖定視覺一致性",
+          "description": "由 Nano Banana Pro 和 ChatCanvas 品牌記憶驅動，Lovart 確保你整場活動中的所有海報在色彩、字體、Logo 位置和視覺調性上保持一致。上傳一次品牌資產，Agent 就會自動應用到每一張新設計中。跨通路行銷活動再也不會出現範本工具那種視覺漂移的問題。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "即可印刷 8K 匯出",
+          "description": "以專業印刷規格交付海報。支援最高 8K 解析度匯出 PNG、JPG、SVG 向量或分層 PSD 格式，帶有合適的出血區域、CMYK 相容性和業界標準色彩設定。無論你需要 60×90cm 的活動橫幅還是社群媒體的數位展示，Lovart 每次都能以正確的格式和解析度輸出。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "多格式適配引擎",
+          "description": "一次設計，全通路部署。建立完主海報後，Lovart 的 Agent 自動為每個通路生成最佳化變體：Instagram 限時動態（9:16）、Facebook 活動封面（16:9）、LinkedIn 動態消息（1.91:1）、印刷傳單（A4）和大尺寸橫幅——全程保持視覺層級和品牌一致性。從單張設計到完整行銷活動上線，只需幾分鐘而非數天。"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "創作者和品牌使用 Lovart 規模化海報製作的真實案例",
+      "testimonials": [
+        {
+          "name": "陳馬庫斯",
+          "role": "TechSummit Global 行銷總監",
+          "content": "以前每場會議單海報設計就要花費 5,000 美元——給代理商下簡報、等 5-7 天的修改週期，結果還常常風格不統一。用了 Lovart 的 AI 海報產生器，我們團隊一個下午就能產出 30 多張專業活動海報。主題演講公告、工作坊排程、場地指引的品牌一致性堪稱完美。海報設計預算砍掉了 80%，產出卻翻了 5 倍。光是 Smart Mockup 功能就省下了無數次印前來回溝通時間。",
+          "avatar_url": ""
+        },
+        {
+          "name": "普里亞·夏爾馬",
+          "role": "Bloom Street 咖啡館創辦人",
+          "content": "用 Lovart 之前，我一直用 Canva 範本，每張促銷海報看起來都千篇一律。我是烘焙師，不是設計師——我需要一個真正理解我品牌的工具。Lovart 的 AI 設計 Agent 只用了 3 分鐘就生成了我的開幕海報，效果就像專業代理商做的。海報上的文字完美可讀，特價優惠資訊一目了然。到現在我已經做了 15 張以上的季節促銷海報，每張都有獨特感覺，但一看就是 Bloom Street。第一波行銷活動後，店裡客流量提升了 40%。",
+          "avatar_url": ""
+        },
+        {
+          "name": "大衛·奧孔科沃",
+          "role": "拉哥斯大學學生組織主席",
+          "content": "經營校園活動意味著每隔一週就要做海報，預算為零，設計技能為零。Lovart 徹底改變了局面。我描述了我們的「AI 與工作的未來」座談會，幾分鐘內就得到了一張令人驚豔的海報，演講人頭像恰當排列，校徽無縫融入，報名 QR Code 清晰可見。以前我們只能列印模糊的 Canva 匯出檔案，看起來很業餘——現在我們的活動看起來像是專業組織的會議。每日免費額度對學生預算也很友善。",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart 是什麼，它和 Canva 或其他 AI 圖像產生器有什麼不同？",
+          "answer": "Lovart 是全球首個 AI 設計 Agent——不只是另一個範本編輯器或提示詞生圖工具。與需要手動編輯範本的 Canva 不同，也與僅根據提示生成單一圖像的 Midjourney 不同，Lovart 的 MCoT 推理引擎像創意總監一樣思考。它會分析你的需求、受眾和品牌脈絡，策劃出具有意圖佈局、合理字體層級和統一視覺語言的完整海報設計。你用自然語言描述海報需求，Lovart 就能交付一張完整、可編輯、即可印刷的設計——就像你給專業代理商下了簡報一樣。"
+        },
+        {
+          "question": "沒有設計經驗，我能做出專業海報嗎？",
+          "answer": "完全可以。Lovart 就是為需要專業效果的非設計人員打造的。你不需要理解佈局網格、色彩理論、字體搭配或印刷規格。只需用簡單的中文描述你的活動、訊息和受眾，Lovart 的 AI 設計 Agent 就會處理所有創意和技術決策。Agent 會自動選擇合適的字體、建立視覺層次、確保合理的間距，並按你的使用場景輸出正確解析度。每天都有成千上萬的小企業主、活動策劃者和零設計背景的行銷人員，在 Lovart 上創作出令人驚豔的海報。"
+        },
+        {
+          "question": "我做的海報可以商用嗎？",
+          "answer": "可以。付費方案（Starter、Basic、Pro）的用戶擁有其海報設計的完整商業使用權。你可以將海報用於廣告、客戶專案、周邊商品、活動推廣及任何合法的商業用途。免費方案僅供個人使用和體驗評估。Lovart 的模型訓練基於授權和公眾領域資料，並為付費用戶提供商業賠償保障，讓你在關鍵業務創意上安心使用。"
+        },
+        {
+          "question": "有免費方案嗎？免費額度怎麼用？",
+          "answer": "有的。Lovart 提供免費方案，每日登入即可獲得額度，每 24 小時刷新一次。你可以每天製作多張海報而無需支付任何費用——非常適合試用平台或處理偶爾的設計需求。付費方案從 Starter 檔（每月 2,000 額度）、Basic 檔（3,500 額度）到 Pro 檔（11,000 額度），全部解鎖完整的 Agent 能力、商業使用權和 Nano Banana Pro 等進階模型的存取權限。每次生成前都會顯示額度消耗明細，絕不會有意外扣費。"
+        },
+        {
+          "question": "海報能匯出哪些檔案格式和解析度？",
+          "answer": "Lovart 支援專業匯出 PNG、JPG、SVG（向量）和分層 PSD 格式。光柵匯出解析度最高可達 8K，讓你的海報適用於從社群媒體貼文到大幅廣告看板印刷的所有場景。向量 SVG 匯出非常適合 Logo、文字密集型設計以及任何需要無限縮放的內容。我們也提供帶合適出血線和裁切標記的 PDF 匯出，可直接用於印刷工作流程。"
+        },
+        {
+          "question": "Lovart 如何保持我多張海報的品牌一致性？",
+          "answer": "Lovart 的 ChatCanvas 維護著持久的品牌上下文——一旦你上傳了 Logo、設定了品牌色和字體偏好，Agent 就會自動應用到每一張新海報中。Nano Banana Pro 確保所有生成元素（從產品圖到裝飾圖形）的視覺一致性。品牌系統跨工作階段保持活躍，讓你的第二張、第十張、第一百張海報都明顯帶有你的品牌印記。這與每次設計都從零開始的範本工具有本質區別。"
+        },
+        {
+          "question": "海報生成後，我能編輯上面的文字嗎？",
+          "answer": "可以，這是 Lovart 的標誌性能力之一。使用 Text Edit，你可以點擊任意文字元素——標題、日期、價格、場地資訊——直接在海報圖片上進行修改。AI 會保留原始字體風格，包括字重、陰影、漸層和透視效果。需要更新活動日期或修改折扣百分比？輸入新文字，它就能無縫融入現有設計。無需重新生成，也無需從頭開始。"
+        },
+        {
+          "question": "用 Lovart 能做哪些類型的海報？",
+          "answer": "Lovart 的 AI 海報產生器幾乎覆蓋所有海報類別：活動海報（演唱會、會議、節日慶典、募款活動）、促銷海報（大促、開幕、新品上市）、教育海報（教室材料、學術展示、資訊圖表）、激勵和鼓舞海報、電影和娛樂海報、政治活動海報、不動產資訊海報、餐廳菜單和特價資訊——還有很多。MCoT 引擎會自動將設計策略適配到你的具體使用場景、受眾和傳播通路。"
+        },
+        {
+          "question": "能做不同社群媒體平台和印刷尺寸的海報變體嗎？",
+          "answer": "可以。多格式適配引擎會自動從你的主海報設計生成各通路最佳化版本。你會得到適配各平台尺寸的版本：Instagram（1:1 動態消息、9:16 限時動態）、Facebook（16:9 活動封面）、LinkedIn（1.91:1）、Twitter/X（16:9）以及印刷格式（A4、A3、信紙、小報）——全程保持視覺層級和品牌一致性。這徹底告別了手動將單張設計逐一調整尺寸的低效率且容易出錯的流程。"
+        }
+      ]
+    }
+  ]

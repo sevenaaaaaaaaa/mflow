@@ -1,0 +1,388 @@
+{
+  "_id": "features-edit-ai-generated-images-it",
+  "reflowSourceId": "features-edit-ai-generated-images-it",
+  "slug": "edit-ai-generated-images",
+  "language": "it",
+  "category": "feature",
+  "title": "Controllo preciso: modifica immagini IA con Lovart Agent",
+  "description": "Stop regenerating from scratch. Take control and edit AI-generated images with surgical precision using Lovart's ChatCanvas. Split layers, change backgrounds, fix text, and modify objects semantically without losing resolution.",
+  "seo": {
+    "description": "Modifica le immagini generate dall'IA con precisione chirurgica usando ChatCanvas di Lovart. Separa livelli, cambia sfondi, correggi testi e modifica oggetti senza perdere risoluzione.",
+    "keywords": [
+      "Modifica immagini IA",
+      "modifica immagini generate dall'IA",
+      "editor di immagini IA",
+      "modifica testo in immagini IA",
+      "editing semantico di immagini",
+      "Lovart ChatCanvas",
+      "suddivisione a livelli IA",
+      "editing di immagini con precisione chirurgica"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Semantic Layer Splitting (Edit Elements)",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Controllo preciso: modifica immagini IA con Lovart Agent\", \"description\": \"Stop regenerating from scratch. Take control and edit AI-generated images with surgical precision using Lovart's ChatCanvas. Split layers, change backgrounds, fix text, and modify objects semantically without losing resolution.\", \"url\": \"https://www.lovart.ai/features/edit-ai-generated-images\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"In che modo questo è diverso dall'IA 'in-painting' generica?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"L'in-painting standard si basa sulla casualità e sulle supposizioni, spesso fallendo nella logica spaziale complessa o nel rendering del testo di fascia alta. Lovart fornisce un editing di 'precisione chirurgica' utilizzando il nostro motore MCoT, consentendo la divisione semantica dei livelli ('Modifica Elementi') e modifiche zero-shot ('Touch Edit') che l'in-painting tradizionale non può eguagliare.\"}}, {\"@type\": \"Question\", \"name\": \"Posso modificare immagini non generate da Lovart?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sì. Carica qualsiasi immagine sul ChatCanvas come riferimento. L'Agente di Design Lovart può utilizzare le sue capacità di editing avanzate (come la divisione dei livelli e l'editing semantico) sulle foto caricate, proprio come fa sulle immagini generate dal nostro modello proprietario Nano Banana.\"}}, {\"@type\": \"Question\", \"name\": \"Cos'è la 'Divisione Semantica dei Livelli' o 'Modifica Elementi'?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Questa caratteristica unica analizza un'immagine e la divide automaticamente in livelli semantici modificabili basati su soggetti, primi piani e sfondi. Ad esempio, agisce come un'estrazione istantanea del green screen, permettendoti di modificare lo sfondo senza disturbare il soggetto.\"}}, {\"@type\": \"Question\", \"name\": \"Posso modificare il testo all'interno di un'immagine generata da IA?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sì. Abbiamo capacità specializzate per identificare e gestire i livelli di testo all'interno delle immagini. Puoi chiedere all'agente di correggere errori di battitura, cambiare i testi pubblicitari (es. da 'SUMMER' a 'AUTUMN'), o modificare la dicitura senza distruggere il contesto visivo circostante o lo sfondo.\"}}, {\"@type\": \"Question\", \"name\": \"L'editing abbassa la risoluzione dell'immagine?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"No. Lovart utilizza tecniche avanzate di preservazione della risoluzione e upscaling. Quando esegui un editing chirurgico, ci assicuriamo che l'immagine modificata preservi il 100% della risoluzione (incluso l'output 4K) e mantenga una perfetta coerenza del marchio e fedeltà visiva.\"}}]}}"
+    },
+    "title": "Controllo preciso: modifica immagini IA con Lovart Agent"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Controllo preciso: modifica immagini IA con Lovart Agent\",\"description\":\"Stop regenerating from scratch. Take control and edit AI-generated images with surgical precision using Lovart's ChatCanvas. Split layers, change backgrounds, fix text, and modify objects semantically without losing resolution.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Semantic Layer Splitting (Edit Elements)\"}},{\"type\":\"bento-6\",\"title\":\"Core Capabilities to Edit AI Images traditional workflows cannot touch\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Divisione Semantica dei Livelli (Modifica Elementi)\",\"description\":\"Oltre il mascheramento. Separa automaticamente soggetti, primi piani e sfondi in livelli semantici. Modifica ogni livello indipendentemente, agendo come un'estrazione semantica istantanea del green screen direttamente sul canvas.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Divisione Semantica dei Livelli (Modifica Elementi)\"}},{\"title\":\"Zero-Shot 'Touch Edit'\",\"description\":\"Modifica chirurgica senza le supposizioni dell'in-painting. Clicca su un oggetto e descrivi il cambiamento (es. 'cambiare questa texture di seta in velluto'). L'agente comprende la logica spaziale per modifiche sensibili al contesto.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Zero-Shot 'Touch Edit'\"}},{\"title\":\"Aggiunta/Rimozione Intelligente di Oggetti\",\"description\":\"Aggiungi o rimuovi elementi in modo trasparente mantenendo la coerenza atmosferica. Lo sfondo viene ricostruito con precisione al pixel, corrispondendo a illuminazione, prospettiva e profondità di campo.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Aggiunta/Rimozione Intelligente di Oggetti\"}},{\"title\":\"Testo Modificabile all'Interno delle Immagini\",\"description\":\"Correggi errori di battitura o cambia i testi pubblicitari istantaneamente. La nostra caratteristica unica identifica i livelli di testo all'interno delle immagini generate, permettendoti di modificare la dicitura senza distruggere il contesto visivo circostante o lo sfondo.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Testo Modificabile all'Interno delle Immagini\"}},{\"title\":\"Flusso di Lavoro Infinite ChatCanvas\",\"description\":\"Organizza tutte le tue bozze, immagini di riferimento e modifiche finali su un unico canvas infinito. Collabora visivamente con l'agente di design IA in tempo reale per perfezionare ogni dettaglio della tua composizione.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Flusso di Lavoro Infinite ChatCanvas\"}},{\"title\":\"Preservazione della Coerenza del Marchio\",\"description\":\"Mantieni i tuoi ID del marchio, le specifiche del prodotto e lo stile visivo. Quando modifichi immagini generate da IA, l'agente assicura che dettagli specifici come loghi o texture del prodotto rimangano bloccati e coerenti.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Preservazione della Coerenza del Marchio\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Tutte le funzionalità in un unico agente\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Divisione Semantica dei Livelli (Modifica Elementi)\",\"icon\":\"chat\",\"content\":{\"title\":\"Divisione Semantica dei Livelli (Modifica Elementi)\",\"description\":\"Oltre il mascheramento. Separa automaticamente soggetti, primi piani e sfondi in livelli semantici. Modifica ogni livello indipendentemente, agendo come un'estrazione semantica istantanea del green screen direttamente sul canvas.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Divisione Semantica dei Livelli (Modifica Elementi)\"}}},{\"label\":\"Zero-Shot 'Touch Edit'\",\"icon\":\"image\",\"content\":{\"title\":\"Zero-Shot 'Touch Edit'\",\"description\":\"Modifica chirurgica senza le supposizioni dell'in-painting. Clicca su un oggetto e descrivi il cambiamento (es. 'cambiare questa texture di seta in velluto'). L'agente comprende la logica spaziale per modifiche sensibili al contesto.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Zero-Shot 'Touch Edit'\"}}},{\"label\":\"Aggiunta/Rimozione Intelligente di Oggetti\",\"icon\":\"flask\",\"content\":{\"title\":\"Aggiunta/Rimozione Intelligente di Oggetti\",\"description\":\"Aggiungi o rimuovi elementi in modo trasparente mantenendo la coerenza atmosferica. Lo sfondo viene ricostruito con precisione al pixel, corrispondendo a illuminazione, prospettiva e profondità di campo.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Aggiunta/Rimozione Intelligente di Oggetti\"}}},{\"label\":\"Testo Modificabile all'Interno delle Immagini\",\"icon\":\"brand\",\"content\":{\"title\":\"Testo Modificabile all'Interno delle Immagini\",\"description\":\"Correggi errori di battitura o cambia i testi pubblicitari istantaneamente. La nostra caratteristica unica identifica i livelli di testo all'interno delle immagini generate, permettendoti di modificare la dicitura senza distruggere il contesto visivo circostante o lo sfondo.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Testo Modificabile all'Interno delle Immagini\"}}}]},{\"type\":\"bento-2\",\"title\":\"Due cose che riesce particolarmente bene\",\"columns\":2,\"features\":[{\"title\":\"Flusso di Lavoro Infinite ChatCanvas\",\"description\":\"Organizza tutte le tue bozze, immagini di riferimento e modifiche finali su un unico canvas infinito. Collabora visivamente con l'agente di design IA in tempo reale per perfezionare ogni dettaglio della tua composizione.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Flusso di Lavoro Infinite ChatCanvas\"}},{\"title\":\"Preservazione della Coerenza del Marchio\",\"description\":\"Mantieni i tuoi ID del marchio, le specifiche del prodotto e lo stile visivo. Quando modifichi immagini generate da IA, l'agente assicura che dettagli specifici come loghi o texture del prodotto rimangano bloccati e coerenti.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Preservazione della Coerenza del Marchio\"}}]},{\"type\":\"feature-detail\",\"title\":\"Come funziona nel dettaglio\",\"items\":[{\"title\":\"Avvia il tuo progetto Precise Control: Edit AI-Generated Images Instantly  Agent\",\"description\":\"Descrivi il risultato che vuoi e aggiungi i riferimenti.\"},{\"title\":\"Itera con l'agente\",\"description\":\"Regola i dettagli ed esplora le varianti sullo stesso canvas.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Controllo Preciso: Modifica Istantaneamente Immagini Generate da IA con l'Agente Lovart\",\"description\":\"Smetti di lottare con la casualità dell'IA, stile 'slot machine'. Prendi il comando e modifica le immagini generate da IA con precisione chirurgica sul ChatCanvas infinito di Lovart. Utilizzando il nostro motore proprietario MCoT, l'Agente di Design Lovart comprende il contesto semantico, permettendoti di dividere i livelli semantici come green screen, modificare oggetti specifici e persino correggere il testo all'interno delle immagini senza influenzare il resto della composizione.\",\"input_placeholder\":\"Descrivi cosa vuoi cambiare nella tua immagine...\",\"prompts\":[{\"label\":\"Cambia Sfondo\",\"prompt\":\"Cambia lo sfondo di questa foto prodotto con un soggiorno nordico minimalista con luce diurna morbida\"},{\"label\":\"Modifica Dettagli\",\"prompt\":\"Modifica il logo del marchio sulla tazza di caffè, sostituisci la stella rossa con un'icona di foglia verde, preserva il rendering 3D\"},{\"label\":\"Divisione Semantica dei Livelli\",\"prompt\":\"Separa il soggetto dallo sfondo, agisci come un green screen semantico per il compositing PS tradizionale\"},{\"label\":\"Modifica Testo nell'Immagine\",\"prompt\":\"Cambia il testo su questo poster pubblicitario da 'SALDI ESTIVI' a 'ARRIVI AUTUNNALI' senza rigenerare l'immagine\"}],\"tip\":\"Suggerimento: Usa termini semantici come 'cambiare il colore della *camicia*' o 'spostare la *bottiglia* a destra'. Carica un'immagine di riferimento per l'analisi dell'agente.\",\"cta\":{\"text\":\"Esegui Modifica\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Il Primo Vero Flusso di Lavoro per Modificare Immagini Generate da IA come un Pro\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"Analizza & Dividi i Livelli\",\"description\":\"Carica qualsiasi immagine — generata da Nano Banana o una fotografia di riferimento — sul ChatCanvas. Il nostro agente usa 'Modifica Elementi' per dividere automaticamente l'immagine in livelli semantici modificabili, agendo come una separazione istantanea del green screen per un controllo senza precedenti.\"},{\"step\":2,\"title\":\"Esegui Modifiche Precise\",\"description\":\"Dici all'Agente Lovart cosa cambiare. Usa 'Touch Edit' per modifiche semantiche zero-shot (es. cambiare texture o colori), scambia sfondi, aggiungi o rimuovi oggetti, o correggi errori di battitura nel testo dell'immagine esistente — tutto senza alterare i dettagli circostanti.\"},{\"step\":3,\"title\":\"Mantieni Risoluzione & Coerenza\",\"description\":\"La nostra 'In-context modification' preserva il 100% della risoluzione e della coerenza atmosferica. A differenza dell'in-painting standard che aggiunge casualità, Lovart garantisce che le tue modifiche sembrino naturali, professionalmente composte e coerenti con il marchio per l'output commerciale.\"}]},{\"type\":\"comparison-table\",\"title\":\"Precise Control: Edit AI-Generated Images Instantly  Agent: Lovart a confronto con i workflow tradizionali\",\"headers\":[\"Esigenza\",\"Strumento generico\",\"Workflow manuale\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Avvia il tuo progetto Precise Control: Edit AI-Generated Images Instantly  Agent\",\"values\":[\"Un solo prompt\",\"Brief manuale\",\"Ragionamento guidato dal brief\"]},{\"feature\":\"Tempo al primo risultato\",\"values\":[\"Minuti\",\"Giorni\",\"Minuti\"]},{\"feature\":\"Modifica dopo la generazione\",\"values\":[\"Limitato\",\"Cicli di revisione\",\"Touch / Testo / Elementi\"]},{\"feature\":\"Resta coerente col brand\",\"values\":[\"Manuale\",\"Manuale\",\"Compatibile con Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Dove Precise Control: Edit AI-Generated Images Instantly  Agent fa la differenza\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Lancia più in fretta\",\"description\":\"Dal brief agli asset Precise Control: Edit AI-Generated Images Instantly  Agent in un'unica sessione.\"},{\"icon\":\"brand\",\"title\":\"Resta coerente\",\"description\":\"Il Brand Kit mantiene ogni asset allineato.\"},{\"icon\":\"refresh\",\"title\":\"Itera rapidamente\",\"description\":\"Modifica i dettagli senza ricominciare il progetto.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"Odio l'IA generica perché non potevo controllare il risultato. Lovart è diverso. Essere in grado di usare Modifica Elementi per dividere i livelli semantici mi permette di applicare i principi di design tradizionali sopra la velocità dell'IA. Questo finalmente colma il divario.\",\"author\":\"Alex R.\",\"role\":\"Graphic Designer Tradizionale\"},{\"quote\":\"La funzione 'Touch Edit' è una svolta per la fotografia di prodotti. Generiamo il prodotto in una scena generica, poi scambiamo istantaneamente gli sfondi o cambiamo i colori del prodotto per diverse campagne senza perdere risoluzione o allestire uno shoot reale.\",\"author\":\"Jessica L.\",\"role\":\"Marketer E-commerce\"},{\"quote\":\"L'in-painting standard è troppo casuale per il lavoro professionale con i clienti. La capacità di Lovart di modificare il testo *all'interno* dell'immagine generata preservando il contesto visivo è sbalorditiva. Ci fa risparmiare ore in post-produzione.\",\"author\":\"David K.\",\"role\":\"Direttore Creativo\"}],\"title\":\"Designer che Guadagnano Vera Maestria per Modificare Immagini Generate da IA\"},{\"type\":\"pricing-block\",\"title\":\"Scegli il piano giusto per il tuo team\",\"description\":\"Inizia gratis. Passa a un piano superiore quando il lavoro va ai clienti.\"},{\"type\":\"faq\",\"title\":\"Domande frequenti\",\"items\":[{\"question\":\"In che modo questo è diverso dall'IA 'in-painting' generica?\",\"answer\":\"L'in-painting standard si basa sulla casualità e sulle supposizioni, spesso fallendo nella logica spaziale complessa o nel rendering del testo di fascia alta. Lovart fornisce un editing di 'precisione chirurgica' utilizzando il nostro motore MCoT, consentendo la divisione semantica dei livelli ('Modifica Elementi') e modifiche zero-shot ('Touch Edit') che l'in-painting tradizionale non può eguagliare.\"},{\"question\":\"Posso modificare immagini non generate da Lovart?\",\"answer\":\"Sì. Carica qualsiasi immagine sul ChatCanvas come riferimento. L'Agente di Design Lovart può utilizzare le sue capacità di editing avanzate (come la divisione dei livelli e l'editing semantico) sulle foto caricate, proprio come fa sulle immagini generate dal nostro modello proprietario Nano Banana.\"},{\"question\":\"Cos'è la 'Divisione Semantica dei Livelli' o 'Modifica Elementi'?\",\"answer\":\"Questa caratteristica unica analizza un'immagine e la divide automaticamente in livelli semantici modificabili basati su soggetti, primi piani e sfondi. Ad esempio, agisce come un'estrazione istantanea del green screen, permettendoti di modificare lo sfondo senza disturbare il soggetto.\"},{\"question\":\"Posso modificare il testo all'interno di un'immagine generata da IA?\",\"answer\":\"Sì. Abbiamo capacità specializzate per identificare e gestire i livelli di testo all'interno delle immagini. Puoi chiedere all'agente di correggere errori di battitura, cambiare i testi pubblicitari (es. da 'SUMMER' a 'AUTUMN'), o modificare la dicitura senza distruggere il contesto visivo circostante o lo sfondo.\"},{\"question\":\"L'editing abbassa la risoluzione dell'immagine?\",\"answer\":\"No. Lovart utilizza tecniche avanzate di preservazione della risoluzione e upscaling. Quando esegui un editing chirurgico, ci assicuriamo che l'immagine modificata preservi il 100% della risoluzione (incluso l'output 4K) e mantenga una perfetta coerenza del marchio e fedeltà visiva.\"}]},{\"type\":\"cta-default\",\"title\":\"Inizia a creare con Lovart\",\"description\":\"Trasforma il tuo brief in visual coerenti con il brand in pochi minuti.\",\"buttons\":[{\"text\":\"Inizia gratis\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Controllo preciso: modifica immagini IA con Lovart Agent",
+      "description": "Stop regenerating from scratch. Take control and edit AI-generated images with surgical precision using Lovart's ChatCanvas. Split layers, change backgrounds, fix text, and modify objects semantically without losing resolution.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Semantic Layer Splitting (Edit Elements)"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Core Capabilities to Edit AI Images traditional workflows cannot touch",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Divisione Semantica dei Livelli (Modifica Elementi)",
+          "description": "Oltre il mascheramento. Separa automaticamente soggetti, primi piani e sfondi in livelli semantici. Modifica ogni livello indipendentemente, agendo come un'estrazione semantica istantanea del green screen direttamente sul canvas.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Divisione Semantica dei Livelli (Modifica Elementi)"
+          }
+        },
+        {
+          "title": "Zero-Shot 'Touch Edit'",
+          "description": "Modifica chirurgica senza le supposizioni dell'in-painting. Clicca su un oggetto e descrivi il cambiamento (es. 'cambiare questa texture di seta in velluto'). L'agente comprende la logica spaziale per modifiche sensibili al contesto.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Zero-Shot 'Touch Edit'"
+          }
+        },
+        {
+          "title": "Aggiunta/Rimozione Intelligente di Oggetti",
+          "description": "Aggiungi o rimuovi elementi in modo trasparente mantenendo la coerenza atmosferica. Lo sfondo viene ricostruito con precisione al pixel, corrispondendo a illuminazione, prospettiva e profondità di campo.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Aggiunta/Rimozione Intelligente di Oggetti"
+          }
+        },
+        {
+          "title": "Testo Modificabile all'Interno delle Immagini",
+          "description": "Correggi errori di battitura o cambia i testi pubblicitari istantaneamente. La nostra caratteristica unica identifica i livelli di testo all'interno delle immagini generate, permettendoti di modificare la dicitura senza distruggere il contesto visivo circostante o lo sfondo.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "Testo Modificabile all'Interno delle Immagini"
+          }
+        },
+        {
+          "title": "Flusso di Lavoro Infinite ChatCanvas",
+          "description": "Organizza tutte le tue bozze, immagini di riferimento e modifiche finali su un unico canvas infinito. Collabora visivamente con l'agente di design IA in tempo reale per perfezionare ogni dettaglio della tua composizione.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Flusso di Lavoro Infinite ChatCanvas"
+          }
+        },
+        {
+          "title": "Preservazione della Coerenza del Marchio",
+          "description": "Mantieni i tuoi ID del marchio, le specifiche del prodotto e lo stile visivo. Quando modifichi immagini generate da IA, l'agente assicura che dettagli specifici come loghi o texture del prodotto rimangano bloccati e coerenti.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Preservazione della Coerenza del Marchio"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Tutte le funzionalità in un unico agente",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Divisione Semantica dei Livelli (Modifica Elementi)",
+          "icon": "chat",
+          "content": {
+            "title": "Divisione Semantica dei Livelli (Modifica Elementi)",
+            "description": "Oltre il mascheramento. Separa automaticamente soggetti, primi piani e sfondi in livelli semantici. Modifica ogni livello indipendentemente, agendo come un'estrazione semantica istantanea del green screen direttamente sul canvas.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Divisione Semantica dei Livelli (Modifica Elementi)"
+            }
+          }
+        },
+        {
+          "label": "Zero-Shot 'Touch Edit'",
+          "icon": "image",
+          "content": {
+            "title": "Zero-Shot 'Touch Edit'",
+            "description": "Modifica chirurgica senza le supposizioni dell'in-painting. Clicca su un oggetto e descrivi il cambiamento (es. 'cambiare questa texture di seta in velluto'). L'agente comprende la logica spaziale per modifiche sensibili al contesto.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Zero-Shot 'Touch Edit'"
+            }
+          }
+        },
+        {
+          "label": "Aggiunta/Rimozione Intelligente di Oggetti",
+          "icon": "flask",
+          "content": {
+            "title": "Aggiunta/Rimozione Intelligente di Oggetti",
+            "description": "Aggiungi o rimuovi elementi in modo trasparente mantenendo la coerenza atmosferica. Lo sfondo viene ricostruito con precisione al pixel, corrispondendo a illuminazione, prospettiva e profondità di campo.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Aggiunta/Rimozione Intelligente di Oggetti"
+            }
+          }
+        },
+        {
+          "label": "Testo Modificabile all'Interno delle Immagini",
+          "icon": "brand",
+          "content": {
+            "title": "Testo Modificabile all'Interno delle Immagini",
+            "description": "Correggi errori di battitura o cambia i testi pubblicitari istantaneamente. La nostra caratteristica unica identifica i livelli di testo all'interno delle immagini generate, permettendoti di modificare la dicitura senza distruggere il contesto visivo circostante o lo sfondo.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "Testo Modificabile all'Interno delle Immagini"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Due cose che riesce particolarmente bene",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Flusso di Lavoro Infinite ChatCanvas",
+          "description": "Organizza tutte le tue bozze, immagini di riferimento e modifiche finali su un unico canvas infinito. Collabora visivamente con l'agente di design IA in tempo reale per perfezionare ogni dettaglio della tua composizione.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Flusso di Lavoro Infinite ChatCanvas"
+          }
+        },
+        {
+          "title": "Preservazione della Coerenza del Marchio",
+          "description": "Mantieni i tuoi ID del marchio, le specifiche del prodotto e lo stile visivo. Quando modifichi immagini generate da IA, l'agente assicura che dettagli specifici come loghi o texture del prodotto rimangano bloccati e coerenti.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Preservazione della Coerenza del Marchio"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "Come funziona nel dettaglio",
+      "items": [
+        {
+          "title": "Avvia il tuo progetto Precise Control: Edit AI-Generated Images Instantly  Agent",
+          "description": "Descrivi il risultato che vuoi e aggiungi i riferimenti."
+        },
+        {
+          "title": "Itera con l'agente",
+          "description": "Regola i dettagli ed esplora le varianti sullo stesso canvas.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Controllo Preciso: Modifica Istantaneamente Immagini Generate da IA con l'Agente Lovart",
+      "description": "Smetti di lottare con la casualità dell'IA, stile 'slot machine'. Prendi il comando e modifica le immagini generate da IA con precisione chirurgica sul ChatCanvas infinito di Lovart. Utilizzando il nostro motore proprietario MCoT, l'Agente di Design Lovart comprende il contesto semantico, permettendoti di dividere i livelli semantici come green screen, modificare oggetti specifici e persino correggere il testo all'interno delle immagini senza influenzare il resto della composizione.",
+      "input_placeholder": "Descrivi cosa vuoi cambiare nella tua immagine...",
+      "prompts": [
+        {
+          "label": "Cambia Sfondo",
+          "prompt": "Cambia lo sfondo di questa foto prodotto con un soggiorno nordico minimalista con luce diurna morbida"
+        },
+        {
+          "label": "Modifica Dettagli",
+          "prompt": "Modifica il logo del marchio sulla tazza di caffè, sostituisci la stella rossa con un'icona di foglia verde, preserva il rendering 3D"
+        },
+        {
+          "label": "Divisione Semantica dei Livelli",
+          "prompt": "Separa il soggetto dallo sfondo, agisci come un green screen semantico per il compositing PS tradizionale"
+        },
+        {
+          "label": "Modifica Testo nell'Immagine",
+          "prompt": "Cambia il testo su questo poster pubblicitario da 'SALDI ESTIVI' a 'ARRIVI AUTUNNALI' senza rigenerare l'immagine"
+        }
+      ],
+      "tip": "Suggerimento: Usa termini semantici come 'cambiare il colore della *camicia*' o 'spostare la *bottiglia* a destra'. Carica un'immagine di riferimento per l'analisi dell'agente.",
+      "cta": {
+        "text": "Esegui Modifica"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Il Primo Vero Flusso di Lavoro per Modificare Immagini Generate da IA come un Pro",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Analizza & Dividi i Livelli",
+          "description": "Carica qualsiasi immagine — generata da Nano Banana o una fotografia di riferimento — sul ChatCanvas. Il nostro agente usa 'Modifica Elementi' per dividere automaticamente l'immagine in livelli semantici modificabili, agendo come una separazione istantanea del green screen per un controllo senza precedenti."
+        },
+        {
+          "step": 2,
+          "title": "Esegui Modifiche Precise",
+          "description": "Dici all'Agente Lovart cosa cambiare. Usa 'Touch Edit' per modifiche semantiche zero-shot (es. cambiare texture o colori), scambia sfondi, aggiungi o rimuovi oggetti, o correggi errori di battitura nel testo dell'immagine esistente — tutto senza alterare i dettagli circostanti."
+        },
+        {
+          "step": 3,
+          "title": "Mantieni Risoluzione & Coerenza",
+          "description": "La nostra 'In-context modification' preserva il 100% della risoluzione e della coerenza atmosferica. A differenza dell'in-painting standard che aggiunge casualità, Lovart garantisce che le tue modifiche sembrino naturali, professionalmente composte e coerenti con il marchio per l'output commerciale."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Precise Control: Edit AI-Generated Images Instantly  Agent: Lovart a confronto con i workflow tradizionali",
+      "headers": [
+        "Esigenza",
+        "Strumento generico",
+        "Workflow manuale",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Avvia il tuo progetto Precise Control: Edit AI-Generated Images Instantly  Agent",
+          "values": [
+            "Un solo prompt",
+            "Brief manuale",
+            "Ragionamento guidato dal brief"
+          ]
+        },
+        {
+          "feature": "Tempo al primo risultato",
+          "values": [
+            "Minuti",
+            "Giorni",
+            "Minuti"
+          ]
+        },
+        {
+          "feature": "Modifica dopo la generazione",
+          "values": [
+            "Limitato",
+            "Cicli di revisione",
+            "Touch / Testo / Elementi"
+          ]
+        },
+        {
+          "feature": "Resta coerente col brand",
+          "values": [
+            "Manuale",
+            "Manuale",
+            "Compatibile con Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Dove Precise Control: Edit AI-Generated Images Instantly  Agent fa la differenza",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Lancia più in fretta",
+          "description": "Dal brief agli asset Precise Control: Edit AI-Generated Images Instantly  Agent in un'unica sessione."
+        },
+        {
+          "icon": "brand",
+          "title": "Resta coerente",
+          "description": "Il Brand Kit mantiene ogni asset allineato."
+        },
+        {
+          "icon": "refresh",
+          "title": "Itera rapidamente",
+          "description": "Modifica i dettagli senza ricominciare il progetto."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "Odio l'IA generica perché non potevo controllare il risultato. Lovart è diverso. Essere in grado di usare Modifica Elementi per dividere i livelli semantici mi permette di applicare i principi di design tradizionali sopra la velocità dell'IA. Questo finalmente colma il divario.",
+          "author": "Alex R.",
+          "role": "Graphic Designer Tradizionale"
+        },
+        {
+          "quote": "La funzione 'Touch Edit' è una svolta per la fotografia di prodotti. Generiamo il prodotto in una scena generica, poi scambiamo istantaneamente gli sfondi o cambiamo i colori del prodotto per diverse campagne senza perdere risoluzione o allestire uno shoot reale.",
+          "author": "Jessica L.",
+          "role": "Marketer E-commerce"
+        },
+        {
+          "quote": "L'in-painting standard è troppo casuale per il lavoro professionale con i clienti. La capacità di Lovart di modificare il testo *all'interno* dell'immagine generata preservando il contesto visivo è sbalorditiva. Ci fa risparmiare ore in post-produzione.",
+          "author": "David K.",
+          "role": "Direttore Creativo"
+        }
+      ],
+      "title": "Designer che Guadagnano Vera Maestria per Modificare Immagini Generate da IA"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Scegli il piano giusto per il tuo team",
+      "description": "Inizia gratis. Passa a un piano superiore quando il lavoro va ai clienti."
+    },
+    {
+      "type": "faq",
+      "title": "Domande frequenti",
+      "items": [
+        {
+          "question": "In che modo questo è diverso dall'IA 'in-painting' generica?",
+          "answer": "L'in-painting standard si basa sulla casualità e sulle supposizioni, spesso fallendo nella logica spaziale complessa o nel rendering del testo di fascia alta. Lovart fornisce un editing di 'precisione chirurgica' utilizzando il nostro motore MCoT, consentendo la divisione semantica dei livelli ('Modifica Elementi') e modifiche zero-shot ('Touch Edit') che l'in-painting tradizionale non può eguagliare."
+        },
+        {
+          "question": "Posso modificare immagini non generate da Lovart?",
+          "answer": "Sì. Carica qualsiasi immagine sul ChatCanvas come riferimento. L'Agente di Design Lovart può utilizzare le sue capacità di editing avanzate (come la divisione dei livelli e l'editing semantico) sulle foto caricate, proprio come fa sulle immagini generate dal nostro modello proprietario Nano Banana."
+        },
+        {
+          "question": "Cos'è la 'Divisione Semantica dei Livelli' o 'Modifica Elementi'?",
+          "answer": "Questa caratteristica unica analizza un'immagine e la divide automaticamente in livelli semantici modificabili basati su soggetti, primi piani e sfondi. Ad esempio, agisce come un'estrazione istantanea del green screen, permettendoti di modificare lo sfondo senza disturbare il soggetto."
+        },
+        {
+          "question": "Posso modificare il testo all'interno di un'immagine generata da IA?",
+          "answer": "Sì. Abbiamo capacità specializzate per identificare e gestire i livelli di testo all'interno delle immagini. Puoi chiedere all'agente di correggere errori di battitura, cambiare i testi pubblicitari (es. da 'SUMMER' a 'AUTUMN'), o modificare la dicitura senza distruggere il contesto visivo circostante o lo sfondo."
+        },
+        {
+          "question": "L'editing abbassa la risoluzione dell'immagine?",
+          "answer": "No. Lovart utilizza tecniche avanzate di preservazione della risoluzione e upscaling. Quando esegui un editing chirurgico, ci assicuriamo che l'immagine modificata preservi il 100% della risoluzione (incluso l'output 4K) e mantenga una perfetta coerenza del marchio e fedeltà visiva."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Inizia a creare con Lovart",
+      "description": "Trasforma il tuo brief in visual coerenti con il brand in pochi minuti.",
+      "buttons": [
+        {
+          "text": "Inizia gratis",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

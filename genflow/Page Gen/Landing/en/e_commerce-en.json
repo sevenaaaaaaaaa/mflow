@@ -1,0 +1,619 @@
+{
+  "title": "Lovart for E-commerce — Store Creative Kits",
+  "description": "Drop in your product and logo. Get PDP photos, ads, videos, and packaging visuals ready for Amazon, Shopify, TikTok Shop, and Meta from one Lovart workflow.",
+  "language": "en",
+  "category": "landing",
+  "releaseDate": "2026-07-08T12:00:00.000Z",
+  "publishedAt": "2026-07-08T12:00:00.000Z",
+  "slug": "e_commerce",
+  "_id": "b003e9b2-740f-4259-881a-848a88076fe3",
+  "schemaVersion": "composite-v2",
+  "storylineId": "landing-gallery-detail",
+  "bodyJson": [
+    {
+      "type": "hero-gallery",
+      "badge": "For e-commerce teams",
+      "title": "One product brief.",
+      "highlightedText": "A channel-ready kit.",
+      "description": "Drop in product photos and logo rules. Lovart returns PDP images, Meta/TikTok ads, product video, and packaging visuals sized for Amazon, Shopify, and TikTok Shop — then you refine winners on ChatCanvas.",
+      "buttons": [
+        {
+          "text": "Build my store kit",
+          "action": "openLogin",
+          "variant": "primary"
+        },
+        {
+          "text": "See ecommerce examples",
+          "href": "/scenarios/ai-ecommerce-product-visuals",
+          "variant": "secondary"
+        }
+      ],
+      "toolTiles": [
+        {
+          "label": "PDP images",
+          "sublabel": "Hero + lifestyle",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": "Ecommerce PDP images"
+          }
+        },
+        {
+          "label": "Video ads",
+          "sublabel": "TikTok + Reels",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/afe09b54d518aacd6b7b96c5e9e22ba282abb81a.mp4",
+            "alt": "Ecommerce video ads"
+          }
+        },
+        {
+          "label": "Paid creatives",
+          "sublabel": "Meta + Google",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d14a7f30014fd72f63f9cdfbed8dd17c67012f10.png",
+            "alt": "Paid ecommerce creatives"
+          }
+        },
+        {
+          "label": "Brand Kit",
+          "sublabel": "Logo + type",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/6a1b14e8ddcde57b6e342560a00f494a46e13174.png",
+            "alt": "Brand Kit for store teams"
+          }
+        },
+        {
+          "label": "Packaging",
+          "sublabel": "Label + insert",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Packaging visuals"
+          }
+        },
+        {
+          "label": "Social posts",
+          "sublabel": "Launch calendar",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/eb6f103da589f07f425f2c736237e33f4d1719fa.png",
+            "alt": "Ecommerce social posts"
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-6",
+      "title": "Six store jobs Lovart handles from one SKU",
+      "description": "Stop bouncing between generators for every surface.",
+      "columns": 3,
+      "features": [
+        {
+          "title": "PDP photography",
+          "description": "Hero, detail, and lifestyle frames from the same product set.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": "PDP photography"
+          }
+        },
+        {
+          "title": "Ad variants",
+          "description": "Create testable 1:1 and 9:16 offers without a new shoot.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d14a7f30014fd72f63f9cdfbed8dd17c67012f10.png",
+            "alt": "Ad variants"
+          }
+        },
+        {
+          "title": "Product video",
+          "description": "Turn stills into motion for PDP and paid social.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/7cc07d1d40c0c9d31ddc7f3951072e20e11a216e.mp4",
+            "alt": "Product video"
+          }
+        },
+        {
+          "title": "Brand Kit lock-in",
+          "description": "Keep logo, palette, and type rules attached across assets.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/6a1b14e8ddcde57b6e342560a00f494a46e13174.png",
+            "alt": "Brand Kit lock-in"
+          }
+        },
+        {
+          "title": "Touch Edit fixes",
+          "description": "Correct edges, labels, and offer text without a full reroll.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png",
+            "alt": "Touch Edit fixes"
+          }
+        },
+        {
+          "title": "Channel exports",
+          "description": "Resize and crop for Amazon, Shopify, Meta, and TikTok Shop.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Channel exports"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "A store launch workflow on one canvas",
+      "description": "From catalog truth to paid creative without losing brand context.",
+      "tabs": [
+        {
+          "label": "Catalog",
+          "icon": "image",
+          "content": {
+            "title": "Start from product truth",
+            "description": "Upload SKU photos, packaging, and brand files before generation so every asset references the real product.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+              "alt": "Catalog intake"
+            },
+            "points": [
+              "SKU stills",
+              "Logo files",
+              "Offer rules"
+            ],
+            "cta": {
+              "text": "Upload product set",
+              "action": "openLogin"
+            }
+          }
+        },
+        {
+          "label": "Generate",
+          "icon": "sparkle",
+          "content": {
+            "title": "Build the kit in one pass",
+            "description": "Produce PDP, ads, video, and social frames from the same brief instead of starting four separate tools.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d14a7f30014fd72f63f9cdfbed8dd17c67012f10.png",
+              "alt": "Generate store kit"
+            },
+            "points": [
+              "PDP set",
+              "Ad crops",
+              "Motion clips"
+            ],
+            "cta": {
+              "text": "Generate kit",
+              "action": "openLogin"
+            }
+          }
+        },
+        {
+          "label": "Edit",
+          "icon": "pointer",
+          "content": {
+            "title": "Fix what buyers will notice",
+            "description": "Use Touch Edit and Text Edit for label accuracy, background cleanup, and offer copy changes.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png",
+              "alt": "Edit ecommerce assets"
+            },
+            "points": [
+              "Label fidelity",
+              "Offer text",
+              "Background cleanup"
+            ],
+            "cta": {
+              "text": "Refine assets",
+              "action": "openLogin"
+            }
+          }
+        },
+        {
+          "label": "Scale",
+          "icon": "brand",
+          "content": {
+            "title": "Extend winners across channels",
+            "description": "Take the best angle into email headers, retargeting cuts, and marketplace variants.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/eb6f103da589f07f425f2c736237e33f4d1719fa.png",
+              "alt": "Scale ecommerce winners"
+            },
+            "points": [
+              "Retarget cuts",
+              "Email headers",
+              "Marketplace sizes"
+            ],
+            "cta": {
+              "text": "Scale winners",
+              "action": "openLogin"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "tool-grid",
+      "title": "Start from the store surface you need today",
+      "description": "Every entry point shares the same Brand Kit and product context.",
+      "tools": [
+        {
+          "icon": "image",
+          "name": "AI Product Image Generator",
+          "category": "Catalog",
+          "description": "PDP and lifestyle frames from SKU photos.",
+          "tags": [
+            "PDP"
+          ],
+          "href": "/tools/ai-product-image-generator",
+          "rating": 4.9
+        },
+        {
+          "icon": "video",
+          "name": "AI Video Generator",
+          "category": "Paid social",
+          "description": "Product motion for PDP and ads.",
+          "tags": [
+            "Video"
+          ],
+          "href": "/tools/ai-video-generator",
+          "rating": 4.8
+        },
+        {
+          "icon": "sparkle",
+          "name": "AI Design Agent",
+          "category": "Workflow",
+          "description": "End-to-end store kits from one brief.",
+          "tags": [
+            "Agent"
+          ],
+          "href": "/",
+          "rating": 4.9
+        },
+        {
+          "icon": "brand",
+          "name": "Brand Kit",
+          "category": "Governance",
+          "description": "Keep logo and type consistent.",
+          "tags": [
+            "Brand"
+          ],
+          "href": "/product/brand-kit",
+          "rating": 4.8
+        },
+        {
+          "icon": "remove-bg",
+          "name": "Background cleanup",
+          "category": "Production",
+          "description": "Isolate products for clean catalog scenes.",
+          "tags": [
+            "Cleanup"
+          ],
+          "href": "",
+          "rating": 4.8
+        },
+        {
+          "icon": "social",
+          "name": "Social launch posts",
+          "category": "Retention",
+          "description": "Launch and promo posts for your calendar.",
+          "tags": [
+            "Social"
+          ],
+          "href": "",
+          "rating": 4.7
+        }
+      ]
+    },
+    {
+      "type": "bento-4",
+      "title": "Four controls store teams refuse to lose",
+      "description": "Generation is only useful if edits, brand rules, and exports stay attached.",
+      "columns": 4,
+      "features": [
+        {
+          "title": "Brand Kit",
+          "description": "Lock palette, logo, and type across the kit.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/6a1b14e8ddcde57b6e342560a00f494a46e13174.png",
+            "alt": "Brand Kit"
+          }
+        },
+        {
+          "title": "Touch Edit",
+          "description": "Fix product edges and props without restarting.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png",
+            "alt": "Touch Edit"
+          }
+        },
+        {
+          "title": "Text Edit",
+          "description": "Change offer copy in place before export.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Text Edit"
+          }
+        },
+        {
+          "title": "Mockup scenes",
+          "description": "Place the SKU into packaging and lifestyle contexts.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Mockup scenes"
+          }
+        }
+      ]
+    },
+    {
+      "type": "canvas-wall",
+      "title": "E-commerce examples made in Lovart",
+      "description": "PDP heroes, paid crops, packaging, and product motion from one product set.",
+      "cta": {
+        "text": "See more examples",
+        "href": "/scenarios/ai-ecommerce-product-visuals",
+        "variant": "secondary"
+      },
+      "columns": 4,
+      "items": [
+        {
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": "PDP hero"
+          },
+          "author": "pdp",
+          "likes": 264,
+          "caption": "PDP hero"
+        },
+        {
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d14a7f30014fd72f63f9cdfbed8dd17c67012f10.png",
+            "alt": "Meta ad"
+          },
+          "author": "ads",
+          "likes": 401,
+          "caption": "Meta ad"
+        },
+        {
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Packaging"
+          },
+          "author": "pack",
+          "likes": 188,
+          "caption": "Packaging"
+        },
+        {
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/afe09b54d518aacd6b7b96c5e9e22ba282abb81a.mp4",
+            "alt": "Product video"
+          },
+          "author": "video",
+          "likes": 337,
+          "caption": "Product video"
+        }
+      ]
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Three steps to a launch-ready kit",
+      "description": "Built for operators who need assets before the campaign clock runs out.",
+      "layout": "horizontal",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Upload product set",
+          "description": "Add SKU photos, logo, and the offer you need to push."
+        },
+        {
+          "step": 2,
+          "title": "Generate the kit",
+          "description": "Create PDP, ads, video, and packaging directions together."
+        },
+        {
+          "step": 3,
+          "title": "Edit and export",
+          "description": "Fix details, then export channel sizes for Amazon, Shopify, and paid social."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Store creative stacks compared",
+      "description": "What changes when catalog, ads, and video share one agent.",
+      "headers": [
+        "Need",
+        "Template tools",
+        "Agency queue",
+        "Lovart"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Time to first kit",
+          "values": [
+            "Hours of stitching",
+            "Days to weeks",
+            "Minutes to first draft"
+          ]
+        },
+        {
+          "feature": "Brand consistency",
+          "values": [
+            "Manual",
+            "Brief PDF",
+            "Brand Kit on canvas"
+          ]
+        },
+        {
+          "feature": "Post-gen edits",
+          "values": [
+            "Limited",
+            "Revision rounds",
+            "Touch Edit + Text Edit"
+          ]
+        },
+        {
+          "feature": "Cross-channel reuse",
+          "values": [
+            "Rebuild per surface",
+            "Siloed deliverables",
+            "One kit, many exports"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Where ecommerce creative breaks",
+      "description": "The failure modes operators recognize immediately.",
+      "cards": [
+        {
+          "icon": "image",
+          "title": "SKU drift",
+          "description": "Ads show a different product than the PDP."
+        },
+        {
+          "icon": "flask",
+          "title": "Slow tests",
+          "description": "Every new hook waits on design capacity."
+        },
+        {
+          "icon": "brand",
+          "title": "Marketplace mismatch",
+          "description": "Amazon, Shopify, and TikTok look like three brands."
+        },
+        {
+          "icon": "chat",
+          "title": "Brief translation loss",
+          "description": "The offer changes every handoff."
+        },
+        {
+          "icon": "globe",
+          "title": "Localization lag",
+          "description": "New markets rebuild the whole kit."
+        },
+        {
+          "icon": "refresh",
+          "title": "No retarget refresh",
+          "description": "Winners stay stale while spend continues."
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "From one SKU to coordinated store assets",
+      "description": "Each row ends in something you can publish or test.",
+      "items": [
+        {
+          "title": "Ground the kit in product truth",
+          "description": "Upload the real SKU set and Brand Kit before generation so ads and PDP share the same product identity.",
+          "points": [
+            "SKU photos",
+            "Logo rules",
+            "Offer constraints"
+          ],
+          "cta": {
+            "text": "Start from product set",
+            "action": "openLogin",
+            "variant": "primary"
+          },
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": "Product truth intake"
+          }
+        },
+        {
+          "title": "Ship channel-ready variants",
+          "description": "Produce PDP, paid, and motion outputs together, then refine only the weak parts.",
+          "reverse": true,
+          "points": [
+            "PDP + ads",
+            "Product video",
+            "Export sizes"
+          ],
+          "cta": {
+            "text": "Generate store kit",
+            "action": "openLogin",
+            "variant": "primary"
+          },
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d14a7f30014fd72f63f9cdfbed8dd17c67012f10.png",
+            "alt": "Channel-ready ecommerce kit"
+          }
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "title": "E-commerce FAQ",
+      "items": [
+        {
+          "question": "What do I need to start?",
+          "answer": "Product photos, your logo or Brand Kit, and the offer or launch message. That is enough for Lovart to draft a first store kit."
+        },
+        {
+          "question": "Which channels does this page cover?",
+          "answer": "Amazon, Shopify, TikTok Shop, Meta, and related social surfaces. The page focuses on store operators who need coordinated catalog and paid assets."
+        },
+        {
+          "question": "Can I fix product details after generation?",
+          "answer": "Yes. Use Touch Edit and Text Edit on ChatCanvas to correct labels, backgrounds, and offer copy without discarding the whole set."
+        },
+        {
+          "question": "How is this different from the marketers landing page?",
+          "answer": "This page is for store and catalog teams. The marketers page focuses on campaign funnel throughput for media and brand marketers."
+        },
+        {
+          "question": "Can Lovart make product video from stills?",
+          "answer": "Yes. Upload product stills and generate motion for PDP and paid social, then refine the cut in the same workspace."
+        },
+        {
+          "question": "Is this suitable for commercial store use?",
+          "answer": "Use Lovart for production workflows and follow your account plan for commercial usage terms. Do not invent rights claims beyond what your plan covers."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Build the next store kit from one product set",
+      "description": "Upload the SKU, generate PDP/ads/video together, then export the surfaces your launch needs.",
+      "buttons": [
+        {
+          "text": "Start free",
+          "action": "openLogin",
+          "variant": "primary"
+        },
+        {
+          "text": "View ecommerce scenario",
+          "href": "/scenarios/ai-ecommerce-product-visuals",
+          "variant": "secondary"
+        }
+      ]
+    }
+  ],
+  "seo": {
+    "_type": "seo",
+    "title": "Lovart for E-commerce — PDP, Ads & Product Video Kits",
+    "description": "Build channel-ready ecommerce kits from one product set: PDP images, paid creatives, product video, and packaging visuals for Amazon, Shopify, and TikTok Shop.",
+    "noIndex": false,
+    "keywords": [
+      "lovart ecommerce",
+      "ai product images",
+      "shopify creative",
+      "amazon product video"
+    ],
+    "ogImage": {
+      "_type": "imageSource",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+      "alt": "Lovart for e-commerce"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovart for E-commerce — PDP, Ads & Product Video Kits\", \"description\": \"Build channel-ready ecommerce kits from one product set: PDP images, paid creatives, product video, and packaging visuals for Amazon, Shopify, and TikTok Shop.\", \"url\": \"https://www.lovart.ai/e_commerce\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}}"
+    }
+  },
+  "cover": {
+    "_type": "imageSource",
+    "sourceType": "external",
+    "url": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+    "alt": "Lovart for e-commerce"
+  },
+  "url_path": "https://www.lovart.ai/e_commerce"
+}

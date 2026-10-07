@@ -1,0 +1,33 @@
+{
+  "slug": "draft-ai-sales-deck-ppt-generator-t2",
+  "language": "en",
+  "category": "tool",
+  "schemaVersion": "composite-v2",
+  "storylineTemplate": "T2",
+  "draftStatus": "local-only",
+  "draftTheme": "ai-sales-deck-ppt-generator",
+  "draftNotes": "Minimal tool path for high-intent searches.",
+  "url_path": "https://www.lovart.ai/tools/draft-ai-sales-deck-ppt-generator-t2",
+  "title": "AI Sales Deck Tool | Lovart",
+  "description": "Minimal tool path for high-intent searches.",
+  "bodyJson": "[{\"type\":\"hero-split\",\"title\":\"Sales deck generator\",\"highlightedText\":\"from outline to slides\",\"description\":\"Paste your talking points. Get a complete deck in minutes — refine, export, present.\",\"buttons\":[{\"text\":\"Generate now\",\"href\":\"\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/features/presentation-orchestrate.png\",\"alt\":\"Sales deck generator\"}},{\"type\":\"comparison-before-after\",\"title\":\"Default template vs Lovart deck\",\"aspect\":\"16:9\",\"before\":{\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/features/presentation-strategy.png\",\"alt\":\"Before\"},\"label\":\"Bullet soup template\"},\"after\":{\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/features/presentation-orchestrate.png\",\"alt\":\"After\"},\"label\":\"Agent-designed deck\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Three steps\",\"steps\":[{\"step\":1,\"title\":\"Outline\",\"description\":\"Problem, solution, proof, ask.\"},{\"step\":2,\"title\":\"Generate\",\"description\":\"Visual system applied automatically.\"},{\"step\":3,\"title\":\"Present\",\"description\":\"Export 4K slides for the room.\"}]},{\"type\":\"faq\",\"title\":\"AI sales deck & PPT FAQ\",\"items\":[{\"question\":\"Can Lovart generate readable slide text?\",\"answer\":\"Yes. Models like Seedream render structured headlines and bullets. Text Edit lets you change copy without breaking the layout.\"},{\"question\":\"Is this for sales decks or general presentations?\",\"answer\":\"Both. Use the same agent for investor pitches, sales enablement decks, QBRs, and training slides — each with brand-consistent visuals.\"},{\"question\":\"Can I move slides into PowerPoint or Google Slides?\",\"answer\":\"Export high-resolution slide images and drop them into PowerPoint, Keynote, or Google Slides as backgrounds or full slides.\"},{\"question\":\"How does Lovart keep slides on-brand?\",\"answer\":\"Brand Kit and ChatCanvas context carry colors, typography, and logo placement from slide one through the closing CTA.\"},{\"question\":\"Can sales teams reuse one master deck?\",\"answer\":\"Yes. Build a master narrative once, then generate rep-specific variants with localized proof points and vertical examples.\"}]},{\"type\":\"cta-default\",\"title\":\"Make your next deck in minutes\",\"description\":\"No slide formatting marathons.\",\"buttons\":[{\"text\":\"Get started\",\"action\":\"openLogin\",\"variant\":\"primary\",\"href\":\"/signup\"}]}]",
+  "seo": {
+    "_type": "seo",
+    "title": "AI Sales Deck Tool | Lovart",
+    "description": "Minimal tool path for high-intent searches.",
+    "keywords": [
+      "ai sales deck generator",
+      "ai ppt generator",
+      "sales presentation ai",
+      "pitch deck maker"
+    ],
+    "ogImage": {
+      "_type": "imageSource",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/features/presentation-orchestrate.png",
+      "alt": "AI Sales Deck Tool"
+    },
+    "noIndex": true
+  },
+  "pageType": "tool"
+}

@@ -1,0 +1,57 @@
+{
+  "id": "restart-2026-09-14-batch1",
+  "created": "2026-09-14",
+  "approved": false,
+  "note": "分发线重启首批。中文 5 篇走 wechatsync(知乎)人工通道；英文 2 篇待 DEVTO_API_KEY/BLOGGER 凭证配置后可 API 直发。发布前须用户授权 approved=true。",
+  "cn": [
+    {
+      "platform": "zhihu",
+      "draft": "drafts/Website-Ready/01-Daily-新稿/未分类/221-小猫影视/article.md",
+      "title": "小猫影视，全平台支持的开源影视软件，目前自带源",
+      "source": "https://www.appmiu.com/32804.html"
+    },
+    {
+      "platform": "zhihu",
+      "draft": "drafts/Website-Ready/01-Daily-新稿/未分类/220-万能视频下载器/article.md",
+      "title": "万能视频下载器｜粘贴链接即刻下载，支持多任务并发的轻量级工具 - A姐分享",
+      "source": "\"https://www.ahhhhfs.com/78027/\""
+    },
+    {
+      "platform": "zhihu",
+      "draft": "drafts/Website-Ready/01-Daily-新稿/未分类/219-一键生成户型图/article.md",
+      "title": "一键生成户型图与空间布局，3D 扫描测量与房间建模，iOS 内购终身限免",
+      "source": "\"https://www.appinn.com/lidar-room-scanner-floor-plan/\""
+    },
+    {
+      "platform": "zhihu",
+      "draft": "drafts/Website-Ready/01-Daily-新稿/未分类/218-ytDownloader/article.md",
+      "title": "ytDownloader：免费开源的跨平台视频/音频下载器（支持上百站点、4K、硬件加速压缩） - A姐分享",
+      "source": "\"https://www.ahhhhfs.com/45731/\""
+    },
+    {
+      "platform": "zhihu",
+      "draft": "drafts/Website-Ready/01-Daily-新稿/未分类/217-youhunwlTVAPP/article.md",
+      "title": "youhunwl/TVAPP: 收集全网 Android TV电视盒子应用，涵盖影视、直播、K歌、工具、游戏等类型，整理优质APK资源，支持便捷下载与自动更新。提供安全验证、分类索引与兼容性标注，助力用户打造家庭影音娱乐中心！              ✅ TVBox/影视仓等影音壳接口配置源。",
+      "source": "\"https://github.com/youhunwl/TVAPP\""
+    }
+  ],
+  "global": [
+    {
+      "platform": "devto",
+      "draft": "drafts/Website-Ready/01-Daily-新稿/未分类/171-Mac系统数据清理/article.md",
+      "title": "如果Mac系统数据过大如何一键清理",
+      "source": "\"\""
+    },
+    {
+      "platform": "blogger",
+      "draft": "drafts/Website-Ready/01-Daily-新稿/未分类/174-Nano Banana 2/article.md",
+      "title": "Nano Banana 2 is Here Supercharge Your 4K Design Workflow",
+      "source": "\"\""
+    }
+  ],
+  "pending_credentials": [
+    "DEVTO_API_KEY",
+    "BLOGGER_OAUTH(见 scripts/blogger-oauth.js)"
+  ],
+  "canonical_url": "https://www.lovart.ai"
+}

@@ -1,0 +1,387 @@
+{
+  "_id": "ai-video-prompt-generator-veo-sora-de",
+  "reflowSourceId": "ai-video-prompt-generator-veo-sora-de",
+  "slug": "ai-video-prompt-generator-veo-sora",
+  "language": "de",
+  "category": "feature",
+  "title": "KI-Video-Prompt-Generator: Erstelle filmische Szenen für Veo & Sora | Lovart",
+  "description": "Create professional AI video prompts effortlessly. Lovart's Agent turns simple ideas into technical, cinematic instructions for Veo 3, Sora, and Kling. Includes camera control and lighting.",
+  "seo": {
+    "description": "Erstelle KI-Videoprompts mühelos. Lovarts Agent wandelt einfache Ideen in technische, filmische Anweisungen für Veo 3, Sora und Kling um. Inklusive Kameraführung und Beleuchtung.",
+    "keywords": [
+      "KI-Video-Prompt-Generator",
+      "Text-zu-Video-Prompts",
+      "Sora-Prompt-Helfer",
+      "Veo-3-Prompts",
+      "KI-Kinematografie",
+      "Video-Generierungs-Agent",
+      "Lovart-Video-Tools"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Camera Logic",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"KI-Video-Prompt-Generator: Erstelle filmische Szenen für Veo & Sora | Lovart\", \"description\": \"Create professional AI video prompts effortlessly. Lovart's Agent turns simple ideas into technical, cinematic instructions for Veo 3, Sora, and Kling. Includes camera control and lighting.\", \"url\": \"https://www.lovart.ai/features/ai-video-prompt-generator-veo-sora\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Funktioniert das für alle KI-Videomodelle?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Ja, der Prompt-Agent von Lovart ist auf die Syntax der wichtigsten Modelle wie Veo 3, Kling, Sora und Runway Gen-3 trainiert. Er passt die Terminologie an das von Ihnen gewählte Modell an.\"}}, {\"@type\": \"Question\", \"name\": \"Muss ich mich mit Fotografiebegriffen auskennen?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Überhaupt nicht. Sie beschreiben das Gefühl (z. B. 'gruselig', 'schnell', 'verträumt'), und der Agent übersetzt das in technische Kamerabegriffe (z. B. 'Dutch Angle', 'Bewegungsunschärfe', 'Weichzeichner').\"}}, {\"@type\": \"Question\", \"name\": \"Kann ich Bilder als Prompts für Videos verwenden?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Ja! Das ist unser 'Image-to-Video'-Workflow. Laden Sie ein Nano Banana-Bild hoch, und der Agent hilft Ihnen, einen Bewegungs-Prompt zu schreiben, um dieses statische Bild mühelos zum Leben zu erwecken.\"}}, {\"@type\": \"Question\", \"name\": \"Wie detailliert sollte meine anfängliche Idee sein?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sie kann so einfach wie drei Wörter oder so komplex wie ein Absatz sein. Der Agent ist darauf ausgelegt, einfache Ideen zu erweitern oder komplexe Ideen für eine bessere KI-Interpretation zu verfeinern.\"}}, {\"@type\": \"Question\", \"name\": \"Ist der Prompt-Generator kostenlos?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Die grundlegende Prompt-Verbesserung steht allen Benutzern zur Verfügung. Erweiterte Funktionen wie die Flux Kontext-Integration und unbegrenzte Prompt-Iterationen sind Teil des Pro-Plans.\"}}]}}"
+    },
+    "title": "KI-Video-Prompt-Generator: Erstelle filmische Szenen für Veo & Sora | Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"KI-Video-Prompt-Generator: Erstelle filmische Szenen für Veo & Sora | Lovart\",\"description\":\"Create professional AI video prompts effortlessly. Lovart's Agent turns simple ideas into technical, cinematic instructions for Veo 3, Sora, and Kling. Includes camera control and lighting.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Camera Logic\"}},{\"type\":\"bento-6\",\"title\":\"Why You Need an AI Video Prompt Agent\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Kamera-Logik\",\"description\":\"KI-Videomodelle scheitern ohne Regie. Unser Agent fügt automatisch Kamerabewegungen wie 'Dolly In', 'Truck Left' oder 'FPV Drone' hinzu, um Ihrem Video filmische Dynamik zu verleihen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Kamera-Logik\"}},{\"title\":\"Physik & Bewegung\",\"description\":\"Vermeiden Sie den 'KI-Morphing'-Effekt. Wir optimieren Prompts, um klare physische Aktionen zu definieren (z. B. 'Laufen ohne Rutschen', 'natürlich spritzendes Wasser') für die Physik-Engine von Veo 3.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Physik & Bewegung\"}},{\"title\":\"Stil-Sperre\",\"description\":\"Wollen Sie einen konsistenten Look? Der Agent kann Prompts generieren, die sich strikt an bestimmte Kunststile wie '1980er VHS', 'Pixar 3D' oder 'Nano Banana Flache Illustration' halten.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Stil-Sperre\"}},{\"title\":\"Negatives Prompting\",\"description\":\"Es geht nicht nur darum, was Sie wollen, sondern auch darum, was Sie nicht wollen. Der Agent fügt automatisch negative Parameter hinzu, um häufige Videofehler wie zusätzliche Gliedmaßen oder verschwommene Hintergründe zu verhindern.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Negatives Prompting\"}},{\"title\":\"Flux Kontext Integration\",\"description\":\"Gehen Sie über Text hinaus. Der Prompt-Agent arbeitet nahtlos mit Flux Kontext zusammen, um Charakterreferenzen in den Video-Prompt zu integrieren und sicherzustellen, dass Ihr Protagonist in jedem Clip gleich aussieht.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Flux Kontext Integration\"}},{\"title\":\"Kommerziell bereit\",\"description\":\"Generieren Sie Prompts, die für hochauflösende, wasserzeichenfreie Ausgaben optimiert sind, die sich für Werbung, YouTube und professionelle Präsentationen eignen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Kommerziell bereit\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Alle Funktionen in einem Agenten\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Kamera-Logik\",\"icon\":\"chat\",\"content\":{\"title\":\"Kamera-Logik\",\"description\":\"KI-Videomodelle scheitern ohne Regie. Unser Agent fügt automatisch Kamerabewegungen wie 'Dolly In', 'Truck Left' oder 'FPV Drone' hinzu, um Ihrem Video filmische Dynamik zu verleihen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Kamera-Logik\"}}},{\"label\":\"Physik & Bewegung\",\"icon\":\"image\",\"content\":{\"title\":\"Physik & Bewegung\",\"description\":\"Vermeiden Sie den 'KI-Morphing'-Effekt. Wir optimieren Prompts, um klare physische Aktionen zu definieren (z. B. 'Laufen ohne Rutschen', 'natürlich spritzendes Wasser') für die Physik-Engine von Veo 3.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Physik & Bewegung\"}}},{\"label\":\"Stil-Sperre\",\"icon\":\"flask\",\"content\":{\"title\":\"Stil-Sperre\",\"description\":\"Wollen Sie einen konsistenten Look? Der Agent kann Prompts generieren, die sich strikt an bestimmte Kunststile wie '1980er VHS', 'Pixar 3D' oder 'Nano Banana Flache Illustration' halten.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Stil-Sperre\"}}},{\"label\":\"Negatives Prompting\",\"icon\":\"brand\",\"content\":{\"title\":\"Negatives Prompting\",\"description\":\"Es geht nicht nur darum, was Sie wollen, sondern auch darum, was Sie nicht wollen. Der Agent fügt automatisch negative Parameter hinzu, um häufige Videofehler wie zusätzliche Gliedmaßen oder verschwommene Hintergründe zu verhindern.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Negatives Prompting\"}}}]},{\"type\":\"bento-2\",\"title\":\"Zwei Dinge, die besonders gut gelingen\",\"columns\":2,\"features\":[{\"title\":\"Flux Kontext Integration\",\"description\":\"Gehen Sie über Text hinaus. Der Prompt-Agent arbeitet nahtlos mit Flux Kontext zusammen, um Charakterreferenzen in den Video-Prompt zu integrieren und sicherzustellen, dass Ihr Protagonist in jedem Clip gleich aussieht.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Flux Kontext Integration\"}},{\"title\":\"Kommerziell bereit\",\"description\":\"Generieren Sie Prompts, die für hochauflösende, wasserzeichenfreie Ausgaben optimiert sind, die sich für Werbung, YouTube und professionelle Präsentationen eignen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Kommerziell bereit\"}}]},{\"type\":\"feature-detail\",\"title\":\"So funktioniert es im Detail\",\"items\":[{\"title\":\"Starte dein AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora-Projekt\",\"description\":\"Beschreibe das gewünschte Ergebnis und füge Referenzen hinzu.\"},{\"title\":\"Mit dem Agenten iterieren\",\"description\":\"Details anpassen und Varianten auf derselben Canvas erkunden.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"KI-Video-Prompt-Generator: Erstellen Sie kinoreife Prompts für Veo 3 & Sora\",\"description\":\"Verschwenden Sie keine Credits mehr für schlechte Videogenerierungen. Der KI-Agent von Lovart fungiert als Ihr persönlicher Kameramann und verwandelt einfache Ideen in hochdetaillierte, technisch optimierte Video-Prompts. Erschließen Sie das volle Potenzial von Veo 3 und Kling mit präziser Kamerasteuerung, Beleuchtung und Bewegungsanweisungen.\",\"input_placeholder\":\"Beschreiben Sie Ihre Videoidee (z. B. Ein Cyberpunk-Detektiv, der im Regen läuft)\",\"prompts\":[{\"label\":\"Sci-Fi-Umgebung\",\"prompt\":\"Kinoreife Drohnenaufnahme, die nachts über einen futuristischen, biolumineszenten Dschungel fliegt, 4k\"},{\"label\":\"Werbe-B-Roll\",\"prompt\":\"Nahaufnahme eines Kochs, der leuchtend rote Tomaten schneidet, aufsteigender Dampf, Makroobjektiv, Zeitlupe\"},{\"label\":\"Action-Szene\",\"prompt\":\"Cyberpunk-Verfolgungsjagd auf der Straße, Neonlichter spiegeln sich auf nassem Pflaster, schnelle Kameraverfolgung\"},{\"label\":\"3D-Charakter\",\"prompt\":\"Niedliches Kaninchen im 3D-Knetanimationsstil winkt hallo, weiche Studiobeleuchtung, loopbar\"}],\"tip\":\"Tipp: Erwähnen Sie die Stimmung, den Kamerawinkel (z. B. 'Drohnenaufnahme') und die spezifische Bewegung (z. B. 'Rennen in Zeitlupe').\",\"cta\":{\"text\":\"Pro-Prompt generieren\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Verwandeln Sie vage Ideen in Hollywood-Szenen\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"Beschreiben Sie Ihre Vision\",\"description\":\"Beginnen Sie mit einem groben Konzept. Egal, ob 'ein fahrendes Auto' oder 'eine Fantasy-Schlacht', tippen Sie einfach ein, was Sie im Kopf haben. Sie müssen keinen technischen Filmjargon kennen.\"},{\"step\":2,\"title\":\"Agentische Verbesserung\",\"description\":\"Der Lovart-Agent analysiert Ihre Eingabe und fügt professionelle Details zur Kinematografie hinzu – Kameraobjektive, Beleuchtungsarten und Bewegungsphysik –, die speziell für Modelle wie Veo 3 optimiert sind.\"},{\"step\":3,\"title\":\"Generieren & Iterieren\",\"description\":\"Verwenden Sie den verbesserten Prompt, um sofort atemberaubende Videos in Lovart zu generieren. Nicht zufrieden? Bitten Sie den Agenten, es 'gruseliger zu machen' oder 'näher heranzuzoomen', um das Ergebnis zu verfeinern.\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora: Lovart im Vergleich zu üblichen Workflows\",\"headers\":[\"Anforderung\",\"Generisches Tool\",\"Manueller Workflow\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Starte dein AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora-Projekt\",\"values\":[\"Ein Prompt\",\"Manuelles Briefing\",\"Briefing-gesteuertes Reasoning\"]},{\"feature\":\"Zeit bis zum ersten Ergebnis\",\"values\":[\"Minuten\",\"Tage\",\"Minuten\"]},{\"feature\":\"Bearbeitung nach der Generierung\",\"values\":[\"Begrenzt\",\"Korrekturschleifen\",\"Touch / Text / Elemente\"]},{\"feature\":\"Markenkonform bleiben\",\"values\":[\"Manuell\",\"Manuell\",\"Brand-Kit-fähig\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Wofür sich AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora eignet\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Schneller starten\",\"description\":\"Vom Briefing zu AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora-Assets in einer einzigen Session.\"},{\"icon\":\"brand\",\"title\":\"Konsistent bleiben\",\"description\":\"Das Brand Kit hält jedes Asset einheitlich.\"},{\"icon\":\"refresh\",\"title\":\"Schnell iterieren\",\"description\":\"Details bearbeiten, ohne das Projekt neu zu starten.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"Früher habe ich Stunden damit verbracht, Prompts für Veo zu erraten. Der Agent von Lovart verwandelte meinen Satz 'Ein trauriger Roboter im Regen' in einen 4-zeiligen Meisterwerk-Prompt mit Beleuchtungsspezifikationen. Das Ergebnis war oscarverdächtig.\",\"author\":\"Marcus D.\",\"role\":\"Indie-Filmemacher\"},{\"quote\":\"Die Kamerasteuerungs-Prompts sind ein Game Changer. Ich kann endlich konsistente Produktvideos generieren, die genau dort hineinzoomen, wo ich es will. Es fühlt sich an, als würde ich eine echte Crew dirigieren.\",\"author\":\"Sarah L.\",\"role\":\"TikTok-Marketerin\"},{\"quote\":\"Ich benutze den Prompt-Generator, um dynamische Storyboards zu erstellen. Die Möglichkeit, den Stil mithilfe von Nano Banana-Referenzen innerhalb des Prompt-Workflows zu sperren, ist etwas, das kein anderes Tool hat.\",\"author\":\"Kenji T.\",\"role\":\"Konzeptkünstler\"}],\"title\":\"Creator, die mit Lovart-Prompts Filmmagie erschaffen\"},{\"type\":\"pricing-block\",\"title\":\"Wähle den passenden Plan für dein Team\",\"description\":\"Kostenlos starten. Upgraden, sobald die Arbeit zum Kunden geht.\"},{\"type\":\"faq\",\"title\":\"Häufig gestellte Fragen\",\"items\":[{\"question\":\"Funktioniert das für alle KI-Videomodelle?\",\"answer\":\"Ja, der Prompt-Agent von Lovart ist auf die Syntax der wichtigsten Modelle wie Veo 3, Kling, Sora und Runway Gen-3 trainiert. Er passt die Terminologie an das von Ihnen gewählte Modell an.\"},{\"question\":\"Muss ich mich mit Fotografiebegriffen auskennen?\",\"answer\":\"Überhaupt nicht. Sie beschreiben das Gefühl (z. B. 'gruselig', 'schnell', 'verträumt'), und der Agent übersetzt das in technische Kamerabegriffe (z. B. 'Dutch Angle', 'Bewegungsunschärfe', 'Weichzeichner').\"},{\"question\":\"Kann ich Bilder als Prompts für Videos verwenden?\",\"answer\":\"Ja! Das ist unser 'Image-to-Video'-Workflow. Laden Sie ein Nano Banana-Bild hoch, und der Agent hilft Ihnen, einen Bewegungs-Prompt zu schreiben, um dieses statische Bild mühelos zum Leben zu erwecken.\"},{\"question\":\"Wie detailliert sollte meine anfängliche Idee sein?\",\"answer\":\"Sie kann so einfach wie drei Wörter oder so komplex wie ein Absatz sein. Der Agent ist darauf ausgelegt, einfache Ideen zu erweitern oder komplexe Ideen für eine bessere KI-Interpretation zu verfeinern.\"},{\"question\":\"Ist der Prompt-Generator kostenlos?\",\"answer\":\"Die grundlegende Prompt-Verbesserung steht allen Benutzern zur Verfügung. Erweiterte Funktionen wie die Flux Kontext-Integration und unbegrenzte Prompt-Iterationen sind Teil des Pro-Plans.\"}]},{\"type\":\"cta-default\",\"title\":\"Starte deine Designs mit Lovart\",\"description\":\"Verwandle dein Briefing in wenigen Minuten in markengerechte Visuals.\",\"buttons\":[{\"text\":\"Kostenlos starten\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "KI-Video-Prompt-Generator: Erstelle filmische Szenen für Veo & Sora | Lovart",
+      "description": "Create professional AI video prompts effortlessly. Lovart's Agent turns simple ideas into technical, cinematic instructions for Veo 3, Sora, and Kling. Includes camera control and lighting.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Camera Logic"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Why You Need an AI Video Prompt Agent",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Kamera-Logik",
+          "description": "KI-Videomodelle scheitern ohne Regie. Unser Agent fügt automatisch Kamerabewegungen wie 'Dolly In', 'Truck Left' oder 'FPV Drone' hinzu, um Ihrem Video filmische Dynamik zu verleihen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Kamera-Logik"
+          }
+        },
+        {
+          "title": "Physik & Bewegung",
+          "description": "Vermeiden Sie den 'KI-Morphing'-Effekt. Wir optimieren Prompts, um klare physische Aktionen zu definieren (z. B. 'Laufen ohne Rutschen', 'natürlich spritzendes Wasser') für die Physik-Engine von Veo 3.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Physik & Bewegung"
+          }
+        },
+        {
+          "title": "Stil-Sperre",
+          "description": "Wollen Sie einen konsistenten Look? Der Agent kann Prompts generieren, die sich strikt an bestimmte Kunststile wie '1980er VHS', 'Pixar 3D' oder 'Nano Banana Flache Illustration' halten.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Stil-Sperre"
+          }
+        },
+        {
+          "title": "Negatives Prompting",
+          "description": "Es geht nicht nur darum, was Sie wollen, sondern auch darum, was Sie nicht wollen. Der Agent fügt automatisch negative Parameter hinzu, um häufige Videofehler wie zusätzliche Gliedmaßen oder verschwommene Hintergründe zu verhindern.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "Negatives Prompting"
+          }
+        },
+        {
+          "title": "Flux Kontext Integration",
+          "description": "Gehen Sie über Text hinaus. Der Prompt-Agent arbeitet nahtlos mit Flux Kontext zusammen, um Charakterreferenzen in den Video-Prompt zu integrieren und sicherzustellen, dass Ihr Protagonist in jedem Clip gleich aussieht.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Flux Kontext Integration"
+          }
+        },
+        {
+          "title": "Kommerziell bereit",
+          "description": "Generieren Sie Prompts, die für hochauflösende, wasserzeichenfreie Ausgaben optimiert sind, die sich für Werbung, YouTube und professionelle Präsentationen eignen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Kommerziell bereit"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Alle Funktionen in einem Agenten",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Kamera-Logik",
+          "icon": "chat",
+          "content": {
+            "title": "Kamera-Logik",
+            "description": "KI-Videomodelle scheitern ohne Regie. Unser Agent fügt automatisch Kamerabewegungen wie 'Dolly In', 'Truck Left' oder 'FPV Drone' hinzu, um Ihrem Video filmische Dynamik zu verleihen.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Kamera-Logik"
+            }
+          }
+        },
+        {
+          "label": "Physik & Bewegung",
+          "icon": "image",
+          "content": {
+            "title": "Physik & Bewegung",
+            "description": "Vermeiden Sie den 'KI-Morphing'-Effekt. Wir optimieren Prompts, um klare physische Aktionen zu definieren (z. B. 'Laufen ohne Rutschen', 'natürlich spritzendes Wasser') für die Physik-Engine von Veo 3.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Physik & Bewegung"
+            }
+          }
+        },
+        {
+          "label": "Stil-Sperre",
+          "icon": "flask",
+          "content": {
+            "title": "Stil-Sperre",
+            "description": "Wollen Sie einen konsistenten Look? Der Agent kann Prompts generieren, die sich strikt an bestimmte Kunststile wie '1980er VHS', 'Pixar 3D' oder 'Nano Banana Flache Illustration' halten.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Stil-Sperre"
+            }
+          }
+        },
+        {
+          "label": "Negatives Prompting",
+          "icon": "brand",
+          "content": {
+            "title": "Negatives Prompting",
+            "description": "Es geht nicht nur darum, was Sie wollen, sondern auch darum, was Sie nicht wollen. Der Agent fügt automatisch negative Parameter hinzu, um häufige Videofehler wie zusätzliche Gliedmaßen oder verschwommene Hintergründe zu verhindern.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "Negatives Prompting"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Zwei Dinge, die besonders gut gelingen",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Flux Kontext Integration",
+          "description": "Gehen Sie über Text hinaus. Der Prompt-Agent arbeitet nahtlos mit Flux Kontext zusammen, um Charakterreferenzen in den Video-Prompt zu integrieren und sicherzustellen, dass Ihr Protagonist in jedem Clip gleich aussieht.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Flux Kontext Integration"
+          }
+        },
+        {
+          "title": "Kommerziell bereit",
+          "description": "Generieren Sie Prompts, die für hochauflösende, wasserzeichenfreie Ausgaben optimiert sind, die sich für Werbung, YouTube und professionelle Präsentationen eignen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Kommerziell bereit"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "So funktioniert es im Detail",
+      "items": [
+        {
+          "title": "Starte dein AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora-Projekt",
+          "description": "Beschreibe das gewünschte Ergebnis und füge Referenzen hinzu."
+        },
+        {
+          "title": "Mit dem Agenten iterieren",
+          "description": "Details anpassen und Varianten auf derselben Canvas erkunden.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "KI-Video-Prompt-Generator: Erstellen Sie kinoreife Prompts für Veo 3 & Sora",
+      "description": "Verschwenden Sie keine Credits mehr für schlechte Videogenerierungen. Der KI-Agent von Lovart fungiert als Ihr persönlicher Kameramann und verwandelt einfache Ideen in hochdetaillierte, technisch optimierte Video-Prompts. Erschließen Sie das volle Potenzial von Veo 3 und Kling mit präziser Kamerasteuerung, Beleuchtung und Bewegungsanweisungen.",
+      "input_placeholder": "Beschreiben Sie Ihre Videoidee (z. B. Ein Cyberpunk-Detektiv, der im Regen läuft)",
+      "prompts": [
+        {
+          "label": "Sci-Fi-Umgebung",
+          "prompt": "Kinoreife Drohnenaufnahme, die nachts über einen futuristischen, biolumineszenten Dschungel fliegt, 4k"
+        },
+        {
+          "label": "Werbe-B-Roll",
+          "prompt": "Nahaufnahme eines Kochs, der leuchtend rote Tomaten schneidet, aufsteigender Dampf, Makroobjektiv, Zeitlupe"
+        },
+        {
+          "label": "Action-Szene",
+          "prompt": "Cyberpunk-Verfolgungsjagd auf der Straße, Neonlichter spiegeln sich auf nassem Pflaster, schnelle Kameraverfolgung"
+        },
+        {
+          "label": "3D-Charakter",
+          "prompt": "Niedliches Kaninchen im 3D-Knetanimationsstil winkt hallo, weiche Studiobeleuchtung, loopbar"
+        }
+      ],
+      "tip": "Tipp: Erwähnen Sie die Stimmung, den Kamerawinkel (z. B. 'Drohnenaufnahme') und die spezifische Bewegung (z. B. 'Rennen in Zeitlupe').",
+      "cta": {
+        "text": "Pro-Prompt generieren"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Verwandeln Sie vage Ideen in Hollywood-Szenen",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Beschreiben Sie Ihre Vision",
+          "description": "Beginnen Sie mit einem groben Konzept. Egal, ob 'ein fahrendes Auto' oder 'eine Fantasy-Schlacht', tippen Sie einfach ein, was Sie im Kopf haben. Sie müssen keinen technischen Filmjargon kennen."
+        },
+        {
+          "step": 2,
+          "title": "Agentische Verbesserung",
+          "description": "Der Lovart-Agent analysiert Ihre Eingabe und fügt professionelle Details zur Kinematografie hinzu – Kameraobjektive, Beleuchtungsarten und Bewegungsphysik –, die speziell für Modelle wie Veo 3 optimiert sind."
+        },
+        {
+          "step": 3,
+          "title": "Generieren & Iterieren",
+          "description": "Verwenden Sie den verbesserten Prompt, um sofort atemberaubende Videos in Lovart zu generieren. Nicht zufrieden? Bitten Sie den Agenten, es 'gruseliger zu machen' oder 'näher heranzuzoomen', um das Ergebnis zu verfeinern."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora: Lovart im Vergleich zu üblichen Workflows",
+      "headers": [
+        "Anforderung",
+        "Generisches Tool",
+        "Manueller Workflow",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Starte dein AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora-Projekt",
+          "values": [
+            "Ein Prompt",
+            "Manuelles Briefing",
+            "Briefing-gesteuertes Reasoning"
+          ]
+        },
+        {
+          "feature": "Zeit bis zum ersten Ergebnis",
+          "values": [
+            "Minuten",
+            "Tage",
+            "Minuten"
+          ]
+        },
+        {
+          "feature": "Bearbeitung nach der Generierung",
+          "values": [
+            "Begrenzt",
+            "Korrekturschleifen",
+            "Touch / Text / Elemente"
+          ]
+        },
+        {
+          "feature": "Markenkonform bleiben",
+          "values": [
+            "Manuell",
+            "Manuell",
+            "Brand-Kit-fähig"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Wofür sich AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora eignet",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Schneller starten",
+          "description": "Vom Briefing zu AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora-Assets in einer einzigen Session."
+        },
+        {
+          "icon": "brand",
+          "title": "Konsistent bleiben",
+          "description": "Das Brand Kit hält jedes Asset einheitlich."
+        },
+        {
+          "icon": "refresh",
+          "title": "Schnell iterieren",
+          "description": "Details bearbeiten, ohne das Projekt neu zu starten."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "Früher habe ich Stunden damit verbracht, Prompts für Veo zu erraten. Der Agent von Lovart verwandelte meinen Satz 'Ein trauriger Roboter im Regen' in einen 4-zeiligen Meisterwerk-Prompt mit Beleuchtungsspezifikationen. Das Ergebnis war oscarverdächtig.",
+          "author": "Marcus D.",
+          "role": "Indie-Filmemacher"
+        },
+        {
+          "quote": "Die Kamerasteuerungs-Prompts sind ein Game Changer. Ich kann endlich konsistente Produktvideos generieren, die genau dort hineinzoomen, wo ich es will. Es fühlt sich an, als würde ich eine echte Crew dirigieren.",
+          "author": "Sarah L.",
+          "role": "TikTok-Marketerin"
+        },
+        {
+          "quote": "Ich benutze den Prompt-Generator, um dynamische Storyboards zu erstellen. Die Möglichkeit, den Stil mithilfe von Nano Banana-Referenzen innerhalb des Prompt-Workflows zu sperren, ist etwas, das kein anderes Tool hat.",
+          "author": "Kenji T.",
+          "role": "Konzeptkünstler"
+        }
+      ],
+      "title": "Creator, die mit Lovart-Prompts Filmmagie erschaffen"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Wähle den passenden Plan für dein Team",
+      "description": "Kostenlos starten. Upgraden, sobald die Arbeit zum Kunden geht."
+    },
+    {
+      "type": "faq",
+      "title": "Häufig gestellte Fragen",
+      "items": [
+        {
+          "question": "Funktioniert das für alle KI-Videomodelle?",
+          "answer": "Ja, der Prompt-Agent von Lovart ist auf die Syntax der wichtigsten Modelle wie Veo 3, Kling, Sora und Runway Gen-3 trainiert. Er passt die Terminologie an das von Ihnen gewählte Modell an."
+        },
+        {
+          "question": "Muss ich mich mit Fotografiebegriffen auskennen?",
+          "answer": "Überhaupt nicht. Sie beschreiben das Gefühl (z. B. 'gruselig', 'schnell', 'verträumt'), und der Agent übersetzt das in technische Kamerabegriffe (z. B. 'Dutch Angle', 'Bewegungsunschärfe', 'Weichzeichner')."
+        },
+        {
+          "question": "Kann ich Bilder als Prompts für Videos verwenden?",
+          "answer": "Ja! Das ist unser 'Image-to-Video'-Workflow. Laden Sie ein Nano Banana-Bild hoch, und der Agent hilft Ihnen, einen Bewegungs-Prompt zu schreiben, um dieses statische Bild mühelos zum Leben zu erwecken."
+        },
+        {
+          "question": "Wie detailliert sollte meine anfängliche Idee sein?",
+          "answer": "Sie kann so einfach wie drei Wörter oder so komplex wie ein Absatz sein. Der Agent ist darauf ausgelegt, einfache Ideen zu erweitern oder komplexe Ideen für eine bessere KI-Interpretation zu verfeinern."
+        },
+        {
+          "question": "Ist der Prompt-Generator kostenlos?",
+          "answer": "Die grundlegende Prompt-Verbesserung steht allen Benutzern zur Verfügung. Erweiterte Funktionen wie die Flux Kontext-Integration und unbegrenzte Prompt-Iterationen sind Teil des Pro-Plans."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Starte deine Designs mit Lovart",
+      "description": "Verwandle dein Briefing in wenigen Minuten in markengerechte Visuals.",
+      "buttons": [
+        {
+          "text": "Kostenlos starten",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

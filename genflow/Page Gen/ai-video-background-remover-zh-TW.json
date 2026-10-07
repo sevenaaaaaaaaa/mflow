@@ -1,0 +1,387 @@
+{
+  "_id": "features-ai-video-background-remover-zh-TW",
+  "reflowSourceId": "features-ai-video-background-remover-zh-TW",
+  "slug": "ai-video-background-remover",
+  "language": "zh-TW",
+  "category": "feature",
+  "title": "Lovart AI影片去背神器：一秒變換背景",
+  "description": "Ditch the green screen. Lovart's AI Design Agent instantly removes video backgrounds and replaces them with cinematic 4K scenes. Fast, realistic, and commercial-safe.",
+  "seo": {
+    "description": "告別綠幕！Lovart的AI設計助手瞬間移除影片背景，換上電影級4K場景。快速、逼真，商用無憂。",
+    "keywords": [
+      "AI影片背景去背",
+      "AI更換影片背景",
+      "無需綠幕去背影片",
+      "AI影片動態遮罩",
+      "AI影片編輯器",
+      "替換影片背景",
+      "Seedance 2.0"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Zero Green Screen Required",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovart AI影片去背神器：一秒變換背景\", \"description\": \"Ditch the green screen. Lovart's AI Design Agent instantly removes video backgrounds and replaces them with cinematic 4K scenes. Fast, realistic, and commercial-safe.\", \"url\": \"https://www.lovart.ai/features/ai-video-background-remover\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"我必須使用綠幕背景拍攝才能去背嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"完全不需要！Lovart 強大的 AI 語義識別能力可以自動將您的拍攝主體從任何背景中分離出來，哪怕原影片的背景非常雜亂、光線昏暗，也無需使用物理綠幕或藍幕。\"}}, {\"@type\": \"Question\", \"name\": \"新生成的影片背景，光影看起來會和原來的人物融合嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"是的。Lovart 的 MCoT 創意推理引擎會自動分析您原影片主體的光源方向和對比度，並確保生成的新背景在曝光、色溫和陰影上與之完美協調，徹底消除「Key 板感」。\"}}, {\"@type\": \"Question\", \"name\": \"Lovart 是用什麼模型來生成影片背景的？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart 在底層聚合了包括 Seedance 2.0、Veo 3、Sora 2 和 Kling 在內的全球最頂尖影片大模型。系統 Agent 會根據您的提示詞，智能調用最適合的模型來渲染具備電影級質感和時間連貫性的背景。\"}}, {\"@type\": \"Question\", \"name\": \"我可以只去背，匯出透明背景的影片嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"當然可以。您可以在剝離背景後，選擇匯出帶有 Alpha 通道（透明底）的影片格式，方便您匯入到 Premiere、剪映或 After Effects 等其他專業軟體中進行二次創作。\"}}, {\"@type\": \"Question\", \"name\": \"生成的影片可以用於商業廣告投放嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以。所有訂閱了 Lovart 付費方案（Starter、Plus、Pro）的用戶，都將擁有其生成視覺資產的完整商業使用權，您可以放心將影片用於 YouTube 收益、社群廣告以及商業客戶交付中。\"}}]}}"
+    },
+    "title": "Lovart AI影片去背神器：一秒變換背景"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Lovart AI影片去背神器：一秒變換背景\",\"description\":\"Ditch the green screen. Lovart's AI Design Agent instantly removes video backgrounds and replaces them with cinematic 4K scenes. Fast, realistic, and commercial-safe.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Zero Green Screen Required\"}},{\"type\":\"bento-6\",\"title\":\"The Ultimate AI Video Compositing Toolkit\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"徹底告別綠幕\",\"description\":\"瞬間完成複雜主體、髮絲和透明物體的智能去背。利用強大的元素拆解功能，為您省下在 AE 或 PR 中手動繪製遮罩的數小時時間。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"徹底告別綠幕\"}},{\"title\":\"電影級光影融合\",\"description\":\"拒絕「一眼假」的貼片感。Lovart 自動分析原影片主體的光源方向，智能調整新背景的曝光和陰影，實現天衣無縫的視覺融合。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"電影級光影融合\"}},{\"title\":\"整合頂尖影片大模型\",\"description\":\"底層接入 Seedance 2.0、Veo 3 和 Kling 等行業領先的影片生成模型，確保背景畫面具備完美的物理規律、流暢動態與超寫實畫質。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"整合頂尖影片大模型\"}},{\"title\":\"主體後方無縫加字\",\"description\":\"透過 Text Edit 文字編輯引擎，輕鬆將動態標題、品牌 Logo 或特效文字插入到運動主體與背景之間，瞬間打造極具深度的包裝質感。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"主體後方無縫加字\"}},{\"title\":\"多平台智能裁切與擴圖\",\"description\":\"不管是 TikTok/IG Reels 的 9:16 豎屏，還是 YouTube 的 16:9 橫屏，AI 都能智能重構或延伸背景畫面，且始終保持主體居中不遺失。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"多平台智能裁切與擴圖\"}},{\"title\":\"高效 A/B 測試迭代\",\"description\":\"不確定哪種場景轉換率最高？開啟 Fast Mode（快速模式），幾秒鐘內裂變出幾十種不同的背景方案，讓您的廣告跑出最佳 ROI。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"高效 A/B 測試迭代\"}}]},{\"type\":\"capability-tabs\",\"title\":\"一個智慧體，整合全部能力\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"徹底告別綠幕\",\"icon\":\"chat\",\"content\":{\"title\":\"徹底告別綠幕\",\"description\":\"瞬間完成複雜主體、髮絲和透明物體的智能去背。利用強大的元素拆解功能，為您省下在 AE 或 PR 中手動繪製遮罩的數小時時間。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"徹底告別綠幕\"}}},{\"label\":\"電影級光影融合\",\"icon\":\"image\",\"content\":{\"title\":\"電影級光影融合\",\"description\":\"拒絕「一眼假」的貼片感。Lovart 自動分析原影片主體的光源方向，智能調整新背景的曝光和陰影，實現天衣無縫的視覺融合。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"電影級光影融合\"}}},{\"label\":\"整合頂尖影片大模型\",\"icon\":\"flask\",\"content\":{\"title\":\"整合頂尖影片大模型\",\"description\":\"底層接入 Seedance 2.0、Veo 3 和 Kling 等行業領先的影片生成模型，確保背景畫面具備完美的物理規律、流暢動態與超寫實畫質。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"整合頂尖影片大模型\"}}},{\"label\":\"主體後方無縫加字\",\"icon\":\"brand\",\"content\":{\"title\":\"主體後方無縫加字\",\"description\":\"透過 Text Edit 文字編輯引擎，輕鬆將動態標題、品牌 Logo 或特效文字插入到運動主體與背景之間，瞬間打造極具深度的包裝質感。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"主體後方無縫加字\"}}}]},{\"type\":\"bento-2\",\"title\":\"尤其擅長的兩件事\",\"columns\":2,\"features\":[{\"title\":\"多平台智能裁切與擴圖\",\"description\":\"不管是 TikTok/IG Reels 的 9:16 豎屏，還是 YouTube 的 16:9 橫屏，AI 都能智能重構或延伸背景畫面，且始終保持主體居中不遺失。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"多平台智能裁切與擴圖\"}},{\"title\":\"高效 A/B 測試迭代\",\"description\":\"不確定哪種場景轉換率最高？開啟 Fast Mode（快速模式），幾秒鐘內裂變出幾十種不同的背景方案，讓您的廣告跑出最佳 ROI。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"高效 A/B 測試迭代\"}}]},{\"type\":\"feature-detail\",\"title\":\"詳細了解使用方式\",\"items\":[{\"title\":\"開啟你的Best AI Video Background Remover: Instantly Change Backgrounds專案\",\"description\":\"描述你想要的成果，並補充參考素材即可。\"},{\"title\":\"與智慧體一起迭代\",\"description\":\"在同一畫布上調整細節、探索不同方案。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"最佳 AI 影片換背景與去背神器\",\"description\":\"告別綠幕和繁瑣的逐幀去背。Lovart AI 設計 Agent 能瞬間移除影片背景，並將您的主體傳送至令人驚嘆的電影級場景中。專為社群創作者、廣告投放和電商影片打造。\",\"input_placeholder\":\"描述您影片想要的新背景場景...\",\"prompts\":[{\"label\":\"賽博龐克都市\",\"prompt\":\"午夜霓虹閃爍的賽博龐克城市街道，帶有積水反光，電影級 4K 畫質。\"},{\"label\":\"溫馨起居室\",\"prompt\":\"溫馨極簡的起居室，清晨溫暖的陽光透過窗戶灑在書架上。\"},{\"label\":\"專業 Podcast 錄音室\",\"prompt\":\"專業的 Podcast 錄音室，深色吸音板牆面，配有紫色氛圍燈。\"},{\"label\":\"熱帶海灘風光\",\"prompt\":\"陽光明媚的热帶海灘，背景中有棕櫚樹在微風中輕輕搖曳。\"}],\"tip\":\"提示：在描述中提及光線和氛圍，可確保新背景與您的主體完美契合。\",\"cta\":{\"text\":\"一鍵影片換背景\"}},{\"type\":\"workflow-horizontal\",\"title\":\"只需3步，極速替換影片背景\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"1. 上傳您的原影片\",\"description\":\"將您的原始影片素材拖入 ChatCanvas 無限畫布。Lovart 會自動精準識別主體並進行像素級去背，完全不需要搭設綠幕。\"},{\"step\":2,\"title\":\"2. 描述全新的場景\",\"description\":\"告訴 AI Agent 您想讓主體身處何地。不管是高端實景棚還是奇幻異世界，我們的 MCoT 推理引擎都能精準理解您的創意意圖。\"},{\"step\":3,\"title\":\"3. 生成並匯出成品\",\"description\":\"Lovart 會調度頂尖影片大模型渲染新背景，並完美匹配透視與光影。一鍵匯出 4K 高畫質影片，直接用於社群發布。\"}]},{\"type\":\"comparison-table\",\"title\":\"Best AI Video Background Remover: Instantly Change Backgrounds：Lovart 與一般工作流程比較\",\"headers\":[\"需求\",\"通用工具\",\"手動工作流程\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"開啟你的Best AI Video Background Remover: Instantly Change Backgrounds專案\",\"values\":[\"一句提示詞\",\"手動撰寫需求\",\"需求驅動的推理\"]},{\"feature\":\"產出第一版的時間\",\"values\":[\"幾分鐘\",\"數天\",\"幾分鐘\"]},{\"feature\":\"生成後的編輯\",\"values\":[\"有限\",\"反覆修改\",\"塗抹 / 文字 / 元素編輯\"]},{\"feature\":\"維持品牌一致\",\"values\":[\"手動\",\"手動\",\"支援 Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Best AI Video Background Remover: Instantly Change Backgrounds的最佳應用場景\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"更快上線\",\"description\":\"從需求到Best AI Video Background Remover: Instantly Change Backgrounds素材，一次工作階段即可完成。\"},{\"icon\":\"brand\",\"title\":\"維持一致\",\"description\":\"Brand Kit 讓每一份素材都保持統一。\"},{\"icon\":\"refresh\",\"title\":\"快速迭代\",\"description\":\"無需從頭開始，即可編輯細節。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"\",\"author\":\"Alex P.\",\"role\":\"百萬訂閱 YouTube 創作者\"},{\"quote\":\"\",\"author\":\"Maria V.\",\"role\":\"DTC 電商品牌創辦人\"},{\"quote\":\"\",\"author\":\"David K.\",\"role\":\"資深創意總監\"}],\"title\":\"頂級團隊正使用 Lovart 實現降本增效\"},{\"type\":\"pricing-block\",\"title\":\"選擇適合團隊的方案\",\"description\":\"免費開始，當作品要交付客戶時再升級。\"},{\"type\":\"faq\",\"title\":\"常見問題\",\"items\":[{\"question\":\"我必須使用綠幕背景拍攝才能去背嗎？\",\"answer\":\"完全不需要！Lovart 強大的 AI 語義識別能力可以自動將您的拍攝主體從任何背景中分離出來，哪怕原影片的背景非常雜亂、光線昏暗，也無需使用物理綠幕或藍幕。\"},{\"question\":\"新生成的影片背景，光影看起來會和原來的人物融合嗎？\",\"answer\":\"是的。Lovart 的 MCoT 創意推理引擎會自動分析您原影片主體的光源方向和對比度，並確保生成的新背景在曝光、色溫和陰影上與之完美協調，徹底消除「Key 板感」。\"},{\"question\":\"Lovart 是用什麼模型來生成影片背景的？\",\"answer\":\"Lovart 在底層聚合了包括 Seedance 2.0、Veo 3、Sora 2 和 Kling 在內的全球最頂尖影片大模型。系統 Agent 會根據您的提示詞，智能調用最適合的模型來渲染具備電影級質感和時間連貫性的背景。\"},{\"question\":\"我可以只去背，匯出透明背景的影片嗎？\",\"answer\":\"當然可以。您可以在剝離背景後，選擇匯出帶有 Alpha 通道（透明底）的影片格式，方便您匯入到 Premiere、剪映或 After Effects 等其他專業軟體中進行二次創作。\"},{\"question\":\"生成的影片可以用於商業廣告投放嗎？\",\"answer\":\"可以。所有訂閱了 Lovart 付費方案（Starter、Plus、Pro）的用戶，都將擁有其生成視覺資產的完整商業使用權，您可以放心將影片用於 YouTube 收益、社群廣告以及商業客戶交付中。\"}]},{\"type\":\"cta-default\",\"title\":\"用 Lovart 開始創作\",\"description\":\"幾分鐘內，把你的需求變成符合品牌調性的視覺作品。\",\"buttons\":[{\"text\":\"免費開始\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Lovart AI影片去背神器：一秒變換背景",
+      "description": "Ditch the green screen. Lovart's AI Design Agent instantly removes video backgrounds and replaces them with cinematic 4K scenes. Fast, realistic, and commercial-safe.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Zero Green Screen Required"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "The Ultimate AI Video Compositing Toolkit",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "徹底告別綠幕",
+          "description": "瞬間完成複雜主體、髮絲和透明物體的智能去背。利用強大的元素拆解功能，為您省下在 AE 或 PR 中手動繪製遮罩的數小時時間。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "徹底告別綠幕"
+          }
+        },
+        {
+          "title": "電影級光影融合",
+          "description": "拒絕「一眼假」的貼片感。Lovart 自動分析原影片主體的光源方向，智能調整新背景的曝光和陰影，實現天衣無縫的視覺融合。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "電影級光影融合"
+          }
+        },
+        {
+          "title": "整合頂尖影片大模型",
+          "description": "底層接入 Seedance 2.0、Veo 3 和 Kling 等行業領先的影片生成模型，確保背景畫面具備完美的物理規律、流暢動態與超寫實畫質。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "整合頂尖影片大模型"
+          }
+        },
+        {
+          "title": "主體後方無縫加字",
+          "description": "透過 Text Edit 文字編輯引擎，輕鬆將動態標題、品牌 Logo 或特效文字插入到運動主體與背景之間，瞬間打造極具深度的包裝質感。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "主體後方無縫加字"
+          }
+        },
+        {
+          "title": "多平台智能裁切與擴圖",
+          "description": "不管是 TikTok/IG Reels 的 9:16 豎屏，還是 YouTube 的 16:9 橫屏，AI 都能智能重構或延伸背景畫面，且始終保持主體居中不遺失。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "多平台智能裁切與擴圖"
+          }
+        },
+        {
+          "title": "高效 A/B 測試迭代",
+          "description": "不確定哪種場景轉換率最高？開啟 Fast Mode（快速模式），幾秒鐘內裂變出幾十種不同的背景方案，讓您的廣告跑出最佳 ROI。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "高效 A/B 測試迭代"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "一個智慧體，整合全部能力",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "徹底告別綠幕",
+          "icon": "chat",
+          "content": {
+            "title": "徹底告別綠幕",
+            "description": "瞬間完成複雜主體、髮絲和透明物體的智能去背。利用強大的元素拆解功能，為您省下在 AE 或 PR 中手動繪製遮罩的數小時時間。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "徹底告別綠幕"
+            }
+          }
+        },
+        {
+          "label": "電影級光影融合",
+          "icon": "image",
+          "content": {
+            "title": "電影級光影融合",
+            "description": "拒絕「一眼假」的貼片感。Lovart 自動分析原影片主體的光源方向，智能調整新背景的曝光和陰影，實現天衣無縫的視覺融合。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "電影級光影融合"
+            }
+          }
+        },
+        {
+          "label": "整合頂尖影片大模型",
+          "icon": "flask",
+          "content": {
+            "title": "整合頂尖影片大模型",
+            "description": "底層接入 Seedance 2.0、Veo 3 和 Kling 等行業領先的影片生成模型，確保背景畫面具備完美的物理規律、流暢動態與超寫實畫質。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "整合頂尖影片大模型"
+            }
+          }
+        },
+        {
+          "label": "主體後方無縫加字",
+          "icon": "brand",
+          "content": {
+            "title": "主體後方無縫加字",
+            "description": "透過 Text Edit 文字編輯引擎，輕鬆將動態標題、品牌 Logo 或特效文字插入到運動主體與背景之間，瞬間打造極具深度的包裝質感。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "主體後方無縫加字"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "尤其擅長的兩件事",
+      "columns": 2,
+      "features": [
+        {
+          "title": "多平台智能裁切與擴圖",
+          "description": "不管是 TikTok/IG Reels 的 9:16 豎屏，還是 YouTube 的 16:9 橫屏，AI 都能智能重構或延伸背景畫面，且始終保持主體居中不遺失。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "多平台智能裁切與擴圖"
+          }
+        },
+        {
+          "title": "高效 A/B 測試迭代",
+          "description": "不確定哪種場景轉換率最高？開啟 Fast Mode（快速模式），幾秒鐘內裂變出幾十種不同的背景方案，讓您的廣告跑出最佳 ROI。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "高效 A/B 測試迭代"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "詳細了解使用方式",
+      "items": [
+        {
+          "title": "開啟你的Best AI Video Background Remover: Instantly Change Backgrounds專案",
+          "description": "描述你想要的成果，並補充參考素材即可。"
+        },
+        {
+          "title": "與智慧體一起迭代",
+          "description": "在同一畫布上調整細節、探索不同方案。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "最佳 AI 影片換背景與去背神器",
+      "description": "告別綠幕和繁瑣的逐幀去背。Lovart AI 設計 Agent 能瞬間移除影片背景，並將您的主體傳送至令人驚嘆的電影級場景中。專為社群創作者、廣告投放和電商影片打造。",
+      "input_placeholder": "描述您影片想要的新背景場景...",
+      "prompts": [
+        {
+          "label": "賽博龐克都市",
+          "prompt": "午夜霓虹閃爍的賽博龐克城市街道，帶有積水反光，電影級 4K 畫質。"
+        },
+        {
+          "label": "溫馨起居室",
+          "prompt": "溫馨極簡的起居室，清晨溫暖的陽光透過窗戶灑在書架上。"
+        },
+        {
+          "label": "專業 Podcast 錄音室",
+          "prompt": "專業的 Podcast 錄音室，深色吸音板牆面，配有紫色氛圍燈。"
+        },
+        {
+          "label": "熱帶海灘風光",
+          "prompt": "陽光明媚的热帶海灘，背景中有棕櫚樹在微風中輕輕搖曳。"
+        }
+      ],
+      "tip": "提示：在描述中提及光線和氛圍，可確保新背景與您的主體完美契合。",
+      "cta": {
+        "text": "一鍵影片換背景"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "只需3步，極速替換影片背景",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "1. 上傳您的原影片",
+          "description": "將您的原始影片素材拖入 ChatCanvas 無限畫布。Lovart 會自動精準識別主體並進行像素級去背，完全不需要搭設綠幕。"
+        },
+        {
+          "step": 2,
+          "title": "2. 描述全新的場景",
+          "description": "告訴 AI Agent 您想讓主體身處何地。不管是高端實景棚還是奇幻異世界，我們的 MCoT 推理引擎都能精準理解您的創意意圖。"
+        },
+        {
+          "step": 3,
+          "title": "3. 生成並匯出成品",
+          "description": "Lovart 會調度頂尖影片大模型渲染新背景，並完美匹配透視與光影。一鍵匯出 4K 高畫質影片，直接用於社群發布。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Best AI Video Background Remover: Instantly Change Backgrounds：Lovart 與一般工作流程比較",
+      "headers": [
+        "需求",
+        "通用工具",
+        "手動工作流程",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "開啟你的Best AI Video Background Remover: Instantly Change Backgrounds專案",
+          "values": [
+            "一句提示詞",
+            "手動撰寫需求",
+            "需求驅動的推理"
+          ]
+        },
+        {
+          "feature": "產出第一版的時間",
+          "values": [
+            "幾分鐘",
+            "數天",
+            "幾分鐘"
+          ]
+        },
+        {
+          "feature": "生成後的編輯",
+          "values": [
+            "有限",
+            "反覆修改",
+            "塗抹 / 文字 / 元素編輯"
+          ]
+        },
+        {
+          "feature": "維持品牌一致",
+          "values": [
+            "手動",
+            "手動",
+            "支援 Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Best AI Video Background Remover: Instantly Change Backgrounds的最佳應用場景",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "更快上線",
+          "description": "從需求到Best AI Video Background Remover: Instantly Change Backgrounds素材，一次工作階段即可完成。"
+        },
+        {
+          "icon": "brand",
+          "title": "維持一致",
+          "description": "Brand Kit 讓每一份素材都保持統一。"
+        },
+        {
+          "icon": "refresh",
+          "title": "快速迭代",
+          "description": "無需從頭開始，即可編輯細節。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "",
+          "author": "Alex P.",
+          "role": "百萬訂閱 YouTube 創作者"
+        },
+        {
+          "quote": "",
+          "author": "Maria V.",
+          "role": "DTC 電商品牌創辦人"
+        },
+        {
+          "quote": "",
+          "author": "David K.",
+          "role": "資深創意總監"
+        }
+      ],
+      "title": "頂級團隊正使用 Lovart 實現降本增效"
+    },
+    {
+      "type": "pricing-block",
+      "title": "選擇適合團隊的方案",
+      "description": "免費開始，當作品要交付客戶時再升級。"
+    },
+    {
+      "type": "faq",
+      "title": "常見問題",
+      "items": [
+        {
+          "question": "我必須使用綠幕背景拍攝才能去背嗎？",
+          "answer": "完全不需要！Lovart 強大的 AI 語義識別能力可以自動將您的拍攝主體從任何背景中分離出來，哪怕原影片的背景非常雜亂、光線昏暗，也無需使用物理綠幕或藍幕。"
+        },
+        {
+          "question": "新生成的影片背景，光影看起來會和原來的人物融合嗎？",
+          "answer": "是的。Lovart 的 MCoT 創意推理引擎會自動分析您原影片主體的光源方向和對比度，並確保生成的新背景在曝光、色溫和陰影上與之完美協調，徹底消除「Key 板感」。"
+        },
+        {
+          "question": "Lovart 是用什麼模型來生成影片背景的？",
+          "answer": "Lovart 在底層聚合了包括 Seedance 2.0、Veo 3、Sora 2 和 Kling 在內的全球最頂尖影片大模型。系統 Agent 會根據您的提示詞，智能調用最適合的模型來渲染具備電影級質感和時間連貫性的背景。"
+        },
+        {
+          "question": "我可以只去背，匯出透明背景的影片嗎？",
+          "answer": "當然可以。您可以在剝離背景後，選擇匯出帶有 Alpha 通道（透明底）的影片格式，方便您匯入到 Premiere、剪映或 After Effects 等其他專業軟體中進行二次創作。"
+        },
+        {
+          "question": "生成的影片可以用於商業廣告投放嗎？",
+          "answer": "可以。所有訂閱了 Lovart 付費方案（Starter、Plus、Pro）的用戶，都將擁有其生成視覺資產的完整商業使用權，您可以放心將影片用於 YouTube 收益、社群廣告以及商業客戶交付中。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "用 Lovart 開始創作",
+      "description": "幾分鐘內，把你的需求變成符合品牌調性的視覺作品。",
+      "buttons": [
+        {
+          "text": "免費開始",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

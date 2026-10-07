@@ -1,0 +1,25 @@
+{
+  "version": "2026-06-07",
+  "status": "relation_fields_added_and_seed_records_linked",
+  "relation_fields": {
+    "Projects": ["Area Link"],
+    "Content Pipeline": ["Project Link", "Area Link"],
+    "Resources": ["Area Link", "Project Link"],
+    "Automations": ["Area Link", "Project Link", "SOP Link"],
+    "Automation Runs": ["Automation Link"],
+    "Assets": ["Area Link", "Project Link", "Content Link"],
+    "Reports/Insights": ["Area Link", "Run Link"],
+    "Tasks": ["Project Link", "Area Link", "Run Link"]
+  },
+  "relation_views": [
+    "Content By Project",
+    "Automations By Project",
+    "Resources By Project"
+  ],
+  "compatibility_note": "Original text fields such as Area, Project, Related Project and SOP remain in place as readable fallback fields. Relation fields are now the preferred navigation layer.",
+  "next_steps": [
+    "Use relation fields for new records instead of text-only Area/Project fields.",
+    "Create rollups after there are enough records, such as project content count and automation risk summary.",
+    "Keep Backfill Queue as temporary intake only."
+  ]
+}

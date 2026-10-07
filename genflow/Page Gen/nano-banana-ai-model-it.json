@@ -1,0 +1,387 @@
+{
+  "_id": "features-nano-banana-ai-model-it",
+  "reflowSourceId": "features-nano-banana-ai-model-it",
+  "slug": "nano-banana-ai-model",
+  "language": "it",
+  "category": "feature",
+  "title": "Nano Banana Pro: personaggi IA coerenti e foto prodotto fotorealistiche | Lovart",
+  "description": "Stop struggling with inconsistent AI art. Lovart's Nano Banana Pro model locks character identities and generates photorealistic product photography with unmatched fidelity.",
+  "seo": {
+    "description": "Smetti di lottare con l'arte IA incoerente. Il modello Nano Banana Pro di Lovart blocca le identità dei personaggi e genera foto prodotto fotorealistiche con fedeltà senza pari.",
+    "keywords": [
+      "nano banana pro",
+      "coerenza dei personaggi IA",
+      "generatore di personaggi coerenti",
+      "fotografia di prodotto IA",
+      "modello IA fotorealistico",
+      "creatore di influencer virtuali",
+      "modelli IA lovart"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Identity Lock (Face & Object)",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Nano Banana Pro: personaggi IA coerenti e foto prodotto fotorealistiche | Lovart\", \"description\": \"Stop struggling with inconsistent AI art. Lovart's Nano Banana Pro model locks character identities and generates photorealistic product photography with unmatched fidelity.\", \"url\": \"https://www.lovart.ai/features/nano-banana-ai-model\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Cos'è Nano Banana Pro?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Nano Banana Pro è il modello AI ad alta fedeltà proprietario di Lovart. A differenza dei modelli generali (come SDXL o DALL-E), è specificamente ottimizzato per la coerenza dei personaggi, il rendering fotorealistico dei prodotti e la rigorosa aderenza ai vincoli del prompt.\"}}, {\"@type\": \"Question\", \"name\": \"Come faccio a garantire che il mio personaggio appaia uguale in ogni immagine?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Carica semplicemente un'immagine di riferimento del tuo personaggio (o generane una che ti piace) e usa la funzione di menzione '@' o lo slot 'Riferimento Immagine'. Nano Banana lo usa come ancora per mantenere l'identità faciale e lo stile di abbigliamento attraverso nuovi prompt.\"}}, {\"@type\": \"Question\", \"name\": \"Posso usare Nano Banana per prodotti commerciali?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sì. Nano Banana è il modello preferito per il lavoro commerciale su Lovart. Tutti gli asset generati dagli utenti paganti vengono forniti con una licenza commerciale completa, rendendolo perfetto per pubblicità, packaging e merchandising.\"}}, {\"@type\": \"Question\", \"name\": \"Nano Banana supporta il rendering del testo?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Mentre Nano Banana eccelle nel realismo, per layout di testo complessi, consigliamo di utilizzare il modello 'Seedream' di Lovart o lo strumento Text Edit integrato, che possono essere orchestrati insieme sulla stessa tela.\"}}, {\"@type\": \"Question\", \"name\": \"Nano Banana è incluso nel piano gratuito?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Gli utenti possono provare Nano Banana con crediti gratuiti giornalieri. Tuttavia, un utilizzo intenso e l'accesso alla versione 'Pro' (con generazione più veloce e risoluzione più alta) sono ottimizzati per i nostri livelli di abbonamento a pagamento.\"}}]}}"
+    },
+    "title": "Nano Banana Pro: personaggi IA coerenti e foto prodotto fotorealistiche | Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Nano Banana Pro: personaggi IA coerenti e foto prodotto fotorealistiche | Lovart\",\"description\":\"Stop struggling with inconsistent AI art. Lovart's Nano Banana Pro model locks character identities and generates photorealistic product photography with unmatched fidelity.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Identity Lock (Face & Object)\"}},{\"type\":\"bento-6\",\"title\":\"Features That Define the Next Gen Model\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Blocco Identità (Volto & Oggetto)\",\"description\":\"Carica un riferimento e Nano Banana congela l'identità. Cambia l'illuminazione, l'angolazione o l'outfit, ma l''Anima' del soggetto rimane intatta.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Blocco Identità (Volto & Oggetto)\"}},{\"title\":\"Fisica dei Materiali e Texture\",\"description\":\"Nano Banana non dipinge solo pixel; simula materiali. Sa come la pelle riflette la luce diversamente dalla seta, creando texture iperrealistiche per moda e retail.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Fisica dei Materiali e Texture\"}},{\"title\":\"Capacità di Modifica in Loco (Edit-in-Place)\",\"description\":\"Usa Touch Edit con Nano Banana per cambiare solo un elemento. Clicca su una camicia e digita 'cambia in felpa rossa'. Il modello fonde perfettamente il nuovo oggetto senza rigenerare il volto.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Capacità di Modifica in Loco (Edit-in-Place)\"}},{\"title\":\"Generazione Multi-Vista\",\"description\":\"Hai bisogno di un turnaround 3D? Chiedi a Nano Banana una 'scheda personaggio con vista frontale, laterale e posteriore'. Genera viste ortografiche essenziali per la modellazione 3D e il game design.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Generazione Multi-Vista\"}},{\"title\":\"Upscaling ad Alta Risoluzione\",\"description\":\"Generazione nativa 4K con opzioni per l'upscaling a 8K. Nano Banana assicura che anche a dimensioni da cartellone pubblicitario, le texture della pelle e le etichette dei prodotti rimangano nitide e chiare.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Upscaling ad Alta Risoluzione\"}},{\"title\":\"Movimento Integrato\",\"description\":\"Le immagini Nano Banana sono 'Pronte per il Video'. Genera un personaggio coerente, quindi animalo istantaneamente utilizzando i nostri modelli video integrati Veo 3 o Kling.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Movimento Integrato\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Tutte le funzionalità in un unico agente\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Blocco Identità (Volto & Oggetto)\",\"icon\":\"chat\",\"content\":{\"title\":\"Blocco Identità (Volto & Oggetto)\",\"description\":\"Carica un riferimento e Nano Banana congela l'identità. Cambia l'illuminazione, l'angolazione o l'outfit, ma l''Anima' del soggetto rimane intatta.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Blocco Identità (Volto & Oggetto)\"}}},{\"label\":\"Fisica dei Materiali e Texture\",\"icon\":\"image\",\"content\":{\"title\":\"Fisica dei Materiali e Texture\",\"description\":\"Nano Banana non dipinge solo pixel; simula materiali. Sa come la pelle riflette la luce diversamente dalla seta, creando texture iperrealistiche per moda e retail.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Fisica dei Materiali e Texture\"}}},{\"label\":\"Capacità di Modifica in Loco (Edit-in-Place)\",\"icon\":\"flask\",\"content\":{\"title\":\"Capacità di Modifica in Loco (Edit-in-Place)\",\"description\":\"Usa Touch Edit con Nano Banana per cambiare solo un elemento. Clicca su una camicia e digita 'cambia in felpa rossa'. Il modello fonde perfettamente il nuovo oggetto senza rigenerare il volto.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Capacità di Modifica in Loco (Edit-in-Place)\"}}},{\"label\":\"Generazione Multi-Vista\",\"icon\":\"brand\",\"content\":{\"title\":\"Generazione Multi-Vista\",\"description\":\"Hai bisogno di un turnaround 3D? Chiedi a Nano Banana una 'scheda personaggio con vista frontale, laterale e posteriore'. Genera viste ortografiche essenziali per la modellazione 3D e il game design.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Generazione Multi-Vista\"}}}]},{\"type\":\"bento-2\",\"title\":\"Due cose che riesce particolarmente bene\",\"columns\":2,\"features\":[{\"title\":\"Upscaling ad Alta Risoluzione\",\"description\":\"Generazione nativa 4K con opzioni per l'upscaling a 8K. Nano Banana assicura che anche a dimensioni da cartellone pubblicitario, le texture della pelle e le etichette dei prodotti rimangano nitide e chiare.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Upscaling ad Alta Risoluzione\"}},{\"title\":\"Movimento Integrato\",\"description\":\"Le immagini Nano Banana sono 'Pronte per il Video'. Genera un personaggio coerente, quindi animalo istantaneamente utilizzando i nostri modelli video integrati Veo 3 o Kling.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Movimento Integrato\"}}]},{\"type\":\"feature-detail\",\"title\":\"Come funziona nel dettaglio\",\"items\":[{\"title\":\"Avvia il tuo progetto Nano Banana Pro: Consistent AI Characters & Photorealistic Product Photos\",\"description\":\"Descrivi il risultato che vuoi e aggiungi i riferimenti.\"},{\"title\":\"Itera con l'agente\",\"description\":\"Regola i dettagli ed esplora le varianti sullo stesso canvas.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Smetti di Scommettere sulla Casualità. Incontra Nano Banana Pro.\",\"description\":\"Il problema più grande con l'arte AI è l'incoerenza. Nano Banana Pro lo risolve. Progettato da Lovart, questo modello proprietario offre una persistenza dei personaggi e un fotorealismo rivoluzionari. Che tu stia creando un influencer virtuale, illustrando una graphic novel o generando SKU per e-commerce, Nano Banana mantiene il tuo soggetto identico in ogni fotogramma.\",\"input_placeholder\":\"Es: 'Una scheda personaggio coerente di una ragazza cyberpunk, vista frontale, laterale e posteriore, stile iperrealistico'\",\"prompts\":[{\"label\":\"Coerenza Personaggio 3D\",\"prompt\":\"Create a consistent 3D blind box toy character of a cute tiger, showing 3 different poses\"},{\"label\":\"Fotografia E-commerce\",\"prompt\":\"Generate a photorealistic product shot of this perfume bottle on a luxury marble podium with water ripples\"},{\"label\":\"Creazione Influencer Virtuale / IP\",\"prompt\":\"A cinematic shot of a female detective in 1920s London, keeping the same face from my uploaded photo\"},{\"label\":\"Da Schizzo a Realismo\",\"prompt\":\"Transform this sketch into a high-fidelity render using Nano Banana Pro's material engine\"}],\"tip\":\"Suggerimento Pro: Carica una foto di riferimento di un volto o di un prodotto. Nano Banana si 'bloccherà' su di esso e ti permetterà di cambiare sfondo, vestito o posa senza cambiare l'identità.\",\"cta\":{\"text\":\"Genera Personaggi Coerenti\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Perché Nano Banana è il 'Motore di Coerenza'\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"Persistenza del Personaggio\",\"description\":\"Dimentica il semplice 'scambio di volto'. Nano Banana comprende la struttura sottostante dell'identità di un personaggio. Genera il tuo protagonista in 50 scenari diversi — cucinare, combattere, dormire — e apparirà esattamente lo stesso ogni volta.\"},{\"step\":2,\"title\":\"Fotorealismo Commerciale\",\"description\":\"I modelli AI standard allucinano i dettagli. Nano Banana li preserva. Rispetta la fisica della luce su vetro, metallo e pelle, rendendolo l'unica scelta per generare asset di prodotto che sembrano servizi fotografici da 10.000 dollari.\"},{\"step\":3,\"title\":\"Blocco Stile Senza Soluzione di Continuità\",\"description\":\"Definisci un 'DNA Visivo' — che sia 'stile Pixar' o 'Vintage Kodak' — e Nano Banana lo applicherà rigorosamente a ogni asset che generi, assicurando che la tua campagna di brand sia unificata, non caotica.\"}]},{\"type\":\"comparison-table\",\"title\":\"Nano Banana Pro: Consistent AI Characters & Photorealistic Product Photos: Lovart a confronto con i workflow tradizionali\",\"headers\":[\"Esigenza\",\"Strumento generico\",\"Workflow manuale\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Avvia il tuo progetto Nano Banana Pro: Consistent AI Characters & Photorealistic Product Photos\",\"values\":[\"Un solo prompt\",\"Brief manuale\",\"Ragionamento guidato dal brief\"]},{\"feature\":\"Tempo al primo risultato\",\"values\":[\"Minuti\",\"Giorni\",\"Minuti\"]},{\"feature\":\"Modifica dopo la generazione\",\"values\":[\"Limitato\",\"Cicli di revisione\",\"Touch / Testo / Elementi\"]},{\"feature\":\"Resta coerente col brand\",\"values\":[\"Manuale\",\"Manuale\",\"Compatibile con Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Dove Nano Banana Pro: Consistent AI Characters & Photorealistic Product Photos fa la differenza\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Lancia più in fretta\",\"description\":\"Dal brief agli asset Nano Banana Pro: Consistent AI Characters & Photorealistic Product Photos in un'unica sessione.\"},{\"icon\":\"brand\",\"title\":\"Resta coerente\",\"description\":\"Il Brand Kit mantiene ogni asset allineato.\"},{\"icon\":\"refresh\",\"title\":\"Itera rapidamente\",\"description\":\"Modifica i dettagli senza ricominciare il progetto.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"Prima di Nano Banana, non potevo usare l'AI perché il mio personaggio principale sembrava diverso in ogni vignetta. Ora, ho un attore coerente. Ho prodotto una graphic novel di 20 pagine in una settimana.\",\"author\":\"Leo K.\",\"role\":\"Fumettista\"},{\"quote\":\"Ho scattato una foto della mia candela con il telefono. Nano Banana l'ha trasformata in 50 scatti lifestyle diversi — su una spiaggia, in una stanza accogliente, su un tavolo di marmo. Mi ha fatto risparmiare 3.000 dollari in costi fotografici.\",\"author\":\"Maria S.\",\"role\":\"Fondatrice E-commerce\"},{\"quote\":\"Il realismo della texture è spaventosamente buono. Ho progettato un concetto di borsa in pelle e puoi vedere perfettamente la grana e i dettagli delle cuciture. I clienti pensano che abbia realizzato un prototipo fisico.\",\"author\":\"Jaxon T.\",\"role\":\"Brand Designer\"}],\"title\":\"Creatori Che Hanno Smesso di Combattere con l'AI e Hanno Iniziato a Creare\"},{\"type\":\"pricing-block\",\"title\":\"Scegli il piano giusto per il tuo team\",\"description\":\"Inizia gratis. Passa a un piano superiore quando il lavoro va ai clienti.\"},{\"type\":\"faq\",\"title\":\"Domande frequenti\",\"items\":[{\"question\":\"Cos'è Nano Banana Pro?\",\"answer\":\"Nano Banana Pro è il modello AI ad alta fedeltà proprietario di Lovart. A differenza dei modelli generali (come SDXL o DALL-E), è specificamente ottimizzato per la coerenza dei personaggi, il rendering fotorealistico dei prodotti e la rigorosa aderenza ai vincoli del prompt.\"},{\"question\":\"Come faccio a garantire che il mio personaggio appaia uguale in ogni immagine?\",\"answer\":\"Carica semplicemente un'immagine di riferimento del tuo personaggio (o generane una che ti piace) e usa la funzione di menzione '@' o lo slot 'Riferimento Immagine'. Nano Banana lo usa come ancora per mantenere l'identità faciale e lo stile di abbigliamento attraverso nuovi prompt.\"},{\"question\":\"Posso usare Nano Banana per prodotti commerciali?\",\"answer\":\"Sì. Nano Banana è il modello preferito per il lavoro commerciale su Lovart. Tutti gli asset generati dagli utenti paganti vengono forniti con una licenza commerciale completa, rendendolo perfetto per pubblicità, packaging e merchandising.\"},{\"question\":\"Nano Banana supporta il rendering del testo?\",\"answer\":\"Mentre Nano Banana eccelle nel realismo, per layout di testo complessi, consigliamo di utilizzare il modello 'Seedream' di Lovart o lo strumento Text Edit integrato, che possono essere orchestrati insieme sulla stessa tela.\"},{\"question\":\"Nano Banana è incluso nel piano gratuito?\",\"answer\":\"Gli utenti possono provare Nano Banana con crediti gratuiti giornalieri. Tuttavia, un utilizzo intenso e l'accesso alla versione 'Pro' (con generazione più veloce e risoluzione più alta) sono ottimizzati per i nostri livelli di abbonamento a pagamento.\"}]},{\"type\":\"cta-default\",\"title\":\"Inizia a creare con Lovart\",\"description\":\"Trasforma il tuo brief in visual coerenti con il brand in pochi minuti.\",\"buttons\":[{\"text\":\"Inizia gratis\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Nano Banana Pro: personaggi IA coerenti e foto prodotto fotorealistiche | Lovart",
+      "description": "Stop struggling with inconsistent AI art. Lovart's Nano Banana Pro model locks character identities and generates photorealistic product photography with unmatched fidelity.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Identity Lock (Face & Object)"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Features That Define the Next Gen Model",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Blocco Identità (Volto & Oggetto)",
+          "description": "Carica un riferimento e Nano Banana congela l'identità. Cambia l'illuminazione, l'angolazione o l'outfit, ma l''Anima' del soggetto rimane intatta.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Blocco Identità (Volto & Oggetto)"
+          }
+        },
+        {
+          "title": "Fisica dei Materiali e Texture",
+          "description": "Nano Banana non dipinge solo pixel; simula materiali. Sa come la pelle riflette la luce diversamente dalla seta, creando texture iperrealistiche per moda e retail.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Fisica dei Materiali e Texture"
+          }
+        },
+        {
+          "title": "Capacità di Modifica in Loco (Edit-in-Place)",
+          "description": "Usa Touch Edit con Nano Banana per cambiare solo un elemento. Clicca su una camicia e digita 'cambia in felpa rossa'. Il modello fonde perfettamente il nuovo oggetto senza rigenerare il volto.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Capacità di Modifica in Loco (Edit-in-Place)"
+          }
+        },
+        {
+          "title": "Generazione Multi-Vista",
+          "description": "Hai bisogno di un turnaround 3D? Chiedi a Nano Banana una 'scheda personaggio con vista frontale, laterale e posteriore'. Genera viste ortografiche essenziali per la modellazione 3D e il game design.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Generazione Multi-Vista"
+          }
+        },
+        {
+          "title": "Upscaling ad Alta Risoluzione",
+          "description": "Generazione nativa 4K con opzioni per l'upscaling a 8K. Nano Banana assicura che anche a dimensioni da cartellone pubblicitario, le texture della pelle e le etichette dei prodotti rimangano nitide e chiare.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Upscaling ad Alta Risoluzione"
+          }
+        },
+        {
+          "title": "Movimento Integrato",
+          "description": "Le immagini Nano Banana sono 'Pronte per il Video'. Genera un personaggio coerente, quindi animalo istantaneamente utilizzando i nostri modelli video integrati Veo 3 o Kling.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Movimento Integrato"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Tutte le funzionalità in un unico agente",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Blocco Identità (Volto & Oggetto)",
+          "icon": "chat",
+          "content": {
+            "title": "Blocco Identità (Volto & Oggetto)",
+            "description": "Carica un riferimento e Nano Banana congela l'identità. Cambia l'illuminazione, l'angolazione o l'outfit, ma l''Anima' del soggetto rimane intatta.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "Blocco Identità (Volto & Oggetto)"
+            }
+          }
+        },
+        {
+          "label": "Fisica dei Materiali e Texture",
+          "icon": "image",
+          "content": {
+            "title": "Fisica dei Materiali e Texture",
+            "description": "Nano Banana non dipinge solo pixel; simula materiali. Sa come la pelle riflette la luce diversamente dalla seta, creando texture iperrealistiche per moda e retail.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Fisica dei Materiali e Texture"
+            }
+          }
+        },
+        {
+          "label": "Capacità di Modifica in Loco (Edit-in-Place)",
+          "icon": "flask",
+          "content": {
+            "title": "Capacità di Modifica in Loco (Edit-in-Place)",
+            "description": "Usa Touch Edit con Nano Banana per cambiare solo un elemento. Clicca su una camicia e digita 'cambia in felpa rossa'. Il modello fonde perfettamente il nuovo oggetto senza rigenerare il volto.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Capacità di Modifica in Loco (Edit-in-Place)"
+            }
+          }
+        },
+        {
+          "label": "Generazione Multi-Vista",
+          "icon": "brand",
+          "content": {
+            "title": "Generazione Multi-Vista",
+            "description": "Hai bisogno di un turnaround 3D? Chiedi a Nano Banana una 'scheda personaggio con vista frontale, laterale e posteriore'. Genera viste ortografiche essenziali per la modellazione 3D e il game design.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Generazione Multi-Vista"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Due cose che riesce particolarmente bene",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Upscaling ad Alta Risoluzione",
+          "description": "Generazione nativa 4K con opzioni per l'upscaling a 8K. Nano Banana assicura che anche a dimensioni da cartellone pubblicitario, le texture della pelle e le etichette dei prodotti rimangano nitide e chiare.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Upscaling ad Alta Risoluzione"
+          }
+        },
+        {
+          "title": "Movimento Integrato",
+          "description": "Le immagini Nano Banana sono 'Pronte per il Video'. Genera un personaggio coerente, quindi animalo istantaneamente utilizzando i nostri modelli video integrati Veo 3 o Kling.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Movimento Integrato"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "Come funziona nel dettaglio",
+      "items": [
+        {
+          "title": "Avvia il tuo progetto Nano Banana Pro: Consistent AI Characters & Photorealistic Product Photos",
+          "description": "Descrivi il risultato che vuoi e aggiungi i riferimenti."
+        },
+        {
+          "title": "Itera con l'agente",
+          "description": "Regola i dettagli ed esplora le varianti sullo stesso canvas.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Smetti di Scommettere sulla Casualità. Incontra Nano Banana Pro.",
+      "description": "Il problema più grande con l'arte AI è l'incoerenza. Nano Banana Pro lo risolve. Progettato da Lovart, questo modello proprietario offre una persistenza dei personaggi e un fotorealismo rivoluzionari. Che tu stia creando un influencer virtuale, illustrando una graphic novel o generando SKU per e-commerce, Nano Banana mantiene il tuo soggetto identico in ogni fotogramma.",
+      "input_placeholder": "Es: 'Una scheda personaggio coerente di una ragazza cyberpunk, vista frontale, laterale e posteriore, stile iperrealistico'",
+      "prompts": [
+        {
+          "label": "Coerenza Personaggio 3D",
+          "prompt": "Create a consistent 3D blind box toy character of a cute tiger, showing 3 different poses"
+        },
+        {
+          "label": "Fotografia E-commerce",
+          "prompt": "Generate a photorealistic product shot of this perfume bottle on a luxury marble podium with water ripples"
+        },
+        {
+          "label": "Creazione Influencer Virtuale / IP",
+          "prompt": "A cinematic shot of a female detective in 1920s London, keeping the same face from my uploaded photo"
+        },
+        {
+          "label": "Da Schizzo a Realismo",
+          "prompt": "Transform this sketch into a high-fidelity render using Nano Banana Pro's material engine"
+        }
+      ],
+      "tip": "Suggerimento Pro: Carica una foto di riferimento di un volto o di un prodotto. Nano Banana si 'bloccherà' su di esso e ti permetterà di cambiare sfondo, vestito o posa senza cambiare l'identità.",
+      "cta": {
+        "text": "Genera Personaggi Coerenti"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Perché Nano Banana è il 'Motore di Coerenza'",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Persistenza del Personaggio",
+          "description": "Dimentica il semplice 'scambio di volto'. Nano Banana comprende la struttura sottostante dell'identità di un personaggio. Genera il tuo protagonista in 50 scenari diversi — cucinare, combattere, dormire — e apparirà esattamente lo stesso ogni volta."
+        },
+        {
+          "step": 2,
+          "title": "Fotorealismo Commerciale",
+          "description": "I modelli AI standard allucinano i dettagli. Nano Banana li preserva. Rispetta la fisica della luce su vetro, metallo e pelle, rendendolo l'unica scelta per generare asset di prodotto che sembrano servizi fotografici da 10.000 dollari."
+        },
+        {
+          "step": 3,
+          "title": "Blocco Stile Senza Soluzione di Continuità",
+          "description": "Definisci un 'DNA Visivo' — che sia 'stile Pixar' o 'Vintage Kodak' — e Nano Banana lo applicherà rigorosamente a ogni asset che generi, assicurando che la tua campagna di brand sia unificata, non caotica."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Nano Banana Pro: Consistent AI Characters & Photorealistic Product Photos: Lovart a confronto con i workflow tradizionali",
+      "headers": [
+        "Esigenza",
+        "Strumento generico",
+        "Workflow manuale",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Avvia il tuo progetto Nano Banana Pro: Consistent AI Characters & Photorealistic Product Photos",
+          "values": [
+            "Un solo prompt",
+            "Brief manuale",
+            "Ragionamento guidato dal brief"
+          ]
+        },
+        {
+          "feature": "Tempo al primo risultato",
+          "values": [
+            "Minuti",
+            "Giorni",
+            "Minuti"
+          ]
+        },
+        {
+          "feature": "Modifica dopo la generazione",
+          "values": [
+            "Limitato",
+            "Cicli di revisione",
+            "Touch / Testo / Elementi"
+          ]
+        },
+        {
+          "feature": "Resta coerente col brand",
+          "values": [
+            "Manuale",
+            "Manuale",
+            "Compatibile con Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Dove Nano Banana Pro: Consistent AI Characters & Photorealistic Product Photos fa la differenza",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Lancia più in fretta",
+          "description": "Dal brief agli asset Nano Banana Pro: Consistent AI Characters & Photorealistic Product Photos in un'unica sessione."
+        },
+        {
+          "icon": "brand",
+          "title": "Resta coerente",
+          "description": "Il Brand Kit mantiene ogni asset allineato."
+        },
+        {
+          "icon": "refresh",
+          "title": "Itera rapidamente",
+          "description": "Modifica i dettagli senza ricominciare il progetto."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "Prima di Nano Banana, non potevo usare l'AI perché il mio personaggio principale sembrava diverso in ogni vignetta. Ora, ho un attore coerente. Ho prodotto una graphic novel di 20 pagine in una settimana.",
+          "author": "Leo K.",
+          "role": "Fumettista"
+        },
+        {
+          "quote": "Ho scattato una foto della mia candela con il telefono. Nano Banana l'ha trasformata in 50 scatti lifestyle diversi — su una spiaggia, in una stanza accogliente, su un tavolo di marmo. Mi ha fatto risparmiare 3.000 dollari in costi fotografici.",
+          "author": "Maria S.",
+          "role": "Fondatrice E-commerce"
+        },
+        {
+          "quote": "Il realismo della texture è spaventosamente buono. Ho progettato un concetto di borsa in pelle e puoi vedere perfettamente la grana e i dettagli delle cuciture. I clienti pensano che abbia realizzato un prototipo fisico.",
+          "author": "Jaxon T.",
+          "role": "Brand Designer"
+        }
+      ],
+      "title": "Creatori Che Hanno Smesso di Combattere con l'AI e Hanno Iniziato a Creare"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Scegli il piano giusto per il tuo team",
+      "description": "Inizia gratis. Passa a un piano superiore quando il lavoro va ai clienti."
+    },
+    {
+      "type": "faq",
+      "title": "Domande frequenti",
+      "items": [
+        {
+          "question": "Cos'è Nano Banana Pro?",
+          "answer": "Nano Banana Pro è il modello AI ad alta fedeltà proprietario di Lovart. A differenza dei modelli generali (come SDXL o DALL-E), è specificamente ottimizzato per la coerenza dei personaggi, il rendering fotorealistico dei prodotti e la rigorosa aderenza ai vincoli del prompt."
+        },
+        {
+          "question": "Come faccio a garantire che il mio personaggio appaia uguale in ogni immagine?",
+          "answer": "Carica semplicemente un'immagine di riferimento del tuo personaggio (o generane una che ti piace) e usa la funzione di menzione '@' o lo slot 'Riferimento Immagine'. Nano Banana lo usa come ancora per mantenere l'identità faciale e lo stile di abbigliamento attraverso nuovi prompt."
+        },
+        {
+          "question": "Posso usare Nano Banana per prodotti commerciali?",
+          "answer": "Sì. Nano Banana è il modello preferito per il lavoro commerciale su Lovart. Tutti gli asset generati dagli utenti paganti vengono forniti con una licenza commerciale completa, rendendolo perfetto per pubblicità, packaging e merchandising."
+        },
+        {
+          "question": "Nano Banana supporta il rendering del testo?",
+          "answer": "Mentre Nano Banana eccelle nel realismo, per layout di testo complessi, consigliamo di utilizzare il modello 'Seedream' di Lovart o lo strumento Text Edit integrato, che possono essere orchestrati insieme sulla stessa tela."
+        },
+        {
+          "question": "Nano Banana è incluso nel piano gratuito?",
+          "answer": "Gli utenti possono provare Nano Banana con crediti gratuiti giornalieri. Tuttavia, un utilizzo intenso e l'accesso alla versione 'Pro' (con generazione più veloce e risoluzione più alta) sono ottimizzati per i nostri livelli di abbonamento a pagamento."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Inizia a creare con Lovart",
+      "description": "Trasforma il tuo brief in visual coerenti con il brand in pochi minuti.",
+      "buttons": [
+        {
+          "text": "Inizia gratis",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

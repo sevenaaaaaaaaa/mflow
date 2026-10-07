@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-09-14",
+  "generator": "Lovart Sentinel",
+  "title": "Media Library Polling",
+  "status": "delegated",
+  "media_groups": {
+    "international_tech": {
+      "sites": "techcrunch.com OR wired.com OR theverge.com OR venturebeat.com OR arstechnica.com",
+      "label": "国际科技媒体",
+      "query": "lovart ai design agent"
+    },
+    "international_design": {
+      "sites": "creativebloq.com OR designmodo.com OR smashingmagazine.com OR itsnicethat.com OR awwwards.com",
+      "label": "国际设计媒体",
+      "query": "lovart ai design tool"
+    },
+    "china_tech": {
+      "sites": "36kr.com OR geekpark.com OR ifanr.com OR pingwest.com OR sspai.com OR huxiu.com",
+      "label": "中文科技媒体",
+      "query": "lovart AI设计"
+    },
+    "china_design": {
+      "sites": "shejipi.com OR logonews.cn OR uisdc.com OR uiiiuiii.com OR zcool.com.cn",
+      "label": "中文设计媒体",
+      "query": "lovart AI设计工具"
+    },
+    "china_ai": {
+      "sites": "jiqizhixin.com OR liangziben.com OR qbitai.com OR aitechreview.com",
+      "label": "中文AI媒体",
+      "query": "lovart AI设计Agent"
+    },
+    "china_marketing": {
+      "sites": "socialbeta.com OR meihua.info OR adquan.com OR pangjing.cn",
+      "label": "中文营销媒体",
+      "query": "lovart AI设计"
+    }
+  },
+  "search_engine": "Bing (国际) / 百度 (中文)",
+  "_instructions": "\n    对每个media_group执行1条Bing/百度 webfetch：\n      Bing:  site:{sites} lovart ai\n      百度:  site:{sites} lovart AI设计\n    \n    对每条结果提取：\n    - 文章标题、发布日期、媒体名称、URL\n    - 情感倾向（正面/负面/中性）\n    - 是否为主动报道（vs 转载/提及）\n    - 文章核心角度（产品评测/行业分析/教程/新闻）\n    "
+}

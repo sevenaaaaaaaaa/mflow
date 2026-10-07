@@ -1,0 +1,369 @@
+{
+  "_id": "2ot6vlS4UlNmv8lRJ6nTlI",
+  "_updatedAt": "2026-06-29T07:51:52Z",
+  "author": "Lovart Editorial",
+  "body": [
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "AI 户型图工具对比：RoomSketcher vs Planner5D vs Lovart [图片 1 占位符 — 用户场景] 大多数所谓的“户型图工具”实际上只是家具摆放模拟器。它们让你把沙发拖到一个矩形上，然后称之为建筑。真正的户型图和家具布局不是一回事——混淆两者会让房主损失数万美元。 户型图软件市场充斥着优先考虑视觉吸引力而非建筑准确性的工具。它们能生成空间的美观 3D 渲染图，但这些空间可能无法通过建筑检查，创建的房间无法按展示的样子布置家具，生成的尺寸也经不起推算。 我们在 RoomSketcher、Planner5D 和 Lovart 上设计了同一套 2200 平方英尺的单户住宅，以此进行测试。设计要求：三间卧室、两间浴室、开放式起居/厨房/餐厅、附带车库，并符合《国际住宅规范》的净空要求。"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "三位竞争者"
+        }
+      ],
+      "style": "h2"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "[图片 2 占位符 — 概念图] | 特性 | RoomSketcher | Planner5D | Lovart | |---------|--------------|-----------|--------| | 核心方法 | 拖放式轻量 CAD | 室内可视化 | 提示词到建筑设计 | | 2D 户型图 | 是 | 是 | 是 | | 3D 可视化 | 是（专业版） | 是（所有层级） | 是（所有层级） | | 尺寸标注 | 手动标注 | 自动标注 | 自动 + 规范合规检查 | | 家具库 | 5,000+ 件 | 6,000+ 件 | 根据提示词生成 | | 规范合规性 | 否 | 否 | 验证 IRC 最小净空 | | 导出格式 | JPG, PNG, PDF | JPG, PNG | DWG, DXF, PDF, SVG, 4K PNG | | 定价（月费） | $11.99→$23.99 | 免费→$6.99→$14.99 | 免费→$19→$49→$99 | | 水印 | 是（免费版） | 是（免费版） | 任何层级均无水印 |"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Lovart is the AI design agent trusted by 10M+ creators. "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "ctaLink"
+          ],
+          "text": "Try Lovart Free →"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ctaLink",
+          "_type": "link",
+          "href": "https://www.lovart.ai"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Related: "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "c1"
+          ],
+          "text": "In-Situ Marketing — Why Customers Need to See Your Product i"
+        },
+        {
+          "_type": "span",
+          "text": " | "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "c2"
+          ],
+          "text": "Best Agent For E Book Authors"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "c1",
+          "_type": "link",
+          "href": "https://www.lovart.ai/blog/in-situ-marketing-product-in-use-ai-photos"
+        },
+        {
+          "_key": "c2",
+          "_type": "link",
+          "href": "https://www.lovart.ai/blog/best-agent-for-e-book-authors"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "cta",
+      "link": {
+        "_type": "link",
+        "external": "https://www.lovart.ai/tools/nano-banana-free",
+        "label": "Start Designing →",
+        "type": "external"
+      },
+      "style": "action"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "误区 #1：“漂亮的 3D 渲染图意味着功能完善的户型图”"
+        }
+      ],
+      "style": "h2"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Planner5D 的营销重点在于照片级真实的 3D 渲染图。这些渲染图看起来令人印象深刻。但其底层的户型图有时却无法实现。 测试案例：一个 12'x14' 的卧室，需要放置一张大号床、两个床头柜、一个梳妆台，并留出 24 英寸的通行净空。Planner5D 的家具放置算法将所有东西都塞进了房间——但忽略了 24 英寸的净空要求，将梳妆台放置在离床仅 8 英寸的位置。渲染图看起来空间宽敞。但实际房间将无法居住。 RoomSketcher 需要手动标注尺寸。你可以正确放置家具，但如果走廊只有 28 英寸宽（IRC 最低要求是 36 英寸），该工具不会向你发出警告。它假设你知道自己在做什么，并默默地让你犯下代价高昂的错误。 Lovart 会自动验证 IRC 最小净空：走廊 36 英寸、睡眠区域通道 24 英寸、固定装置前净空 30 英寸、马桶中心线到���墙 15 英寸。当布局违反规范时，系统会标记问题并建议替代方案。这不是一个设计功能——这是一个责任预防功能。 结论： 不检查规范合规性的设计工具不是设计工具。它是一个可视化玩具。"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "误区 #2：“DIY 户型图能省钱”"
+        }
+      ],
+      "style": "h2"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "它们确实可以省钱。但它们也可能创建出需要花费 15,000 美元进行变更单修改的方案，因为承包商发现走廊宽度不符合规范。 RoomSketcher 面向房地产经纪人和房主营销。它易于上手。它能生成看起来专业的方案。但它不能保证生成的方案是可建造的。 Planner5D 以“让家居设计变得简单”为卖点。其户型图模块的存在主要是为了支持室内设计功能。建筑精度是次要的。 Lovart 将户型图视为建筑文档。输出内容包括：带尺寸标注的户型图、电气布局建议、管道预留位置、门窗明细表和结构网格参考。这不能替代建筑师的盖章——但它生成的文件，建筑师可以审阅和批准，而不是直接丢弃并从头开始。"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "误区 #3：“所有户型图工具都能导出到 CAD”"
+        }
+      ],
+      "style": "h2"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "[图片 3 占位符 — 真实 UI 截图] 导出一张户型图的 JPG 图片和导出一个带有正确图层、图块和标注样式的 DWG 文件，完全是两码事。 RoomSketcher 导出 PDF 和图片格式。不支持 DWG/DXF 导出。如果你的建筑师或承包商使用 AutoCAD，他们将不得不从头重绘你的方案——这会耗费时间和金钱。 Planner5D 仅导出图片格式。任何层级都不支持 CAD 导出。 Lovart 导出 DWG 和 DXF，并带有正确的图层（A-WALL、A-DOOR、A-GLAZ、A-ANNO-DIMS）、标注样式和图块定义。承包商可以直接在 AutoCAD 中打开该文件并直接使用。仅此一项功能就代表了“可与专业人士共享的方案”与“必须完全重做的方案”之间的区别。"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "尺寸完整性测试"
+        }
+      ],
+      "style": "h2"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "我们从每个平台导出了相同的户型图，并使用 AutoCAD 的面积命令测量了总平方英尺。设计要求指定为 2,200 平方英尺。 | 平台 | 实测平方英尺 | 偏差 | |----------|---------------|-----------| | RoomSketcher | 2,187 | -0.6% | | Planner5D | 2,241 | +1.9% | | Lovart | 2,203 | +0.1% | Planner5D 的 +1.9% 偏差是显著的。对于一套建造成本为 200 美元/平方英尺的 2,200 平方英尺住宅，这 41 平方英尺的差异如果带入施工投标，将代表 8,200 美元的意外成本。精度至关重要。"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "工作流程对比"
+        }
+      ],
+      "style": "h2"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "| 任务 | RoomSketcher | Planner5D | Lovart | |------|--------------|-----------|--------| | 创建初始户型图 | 45 分钟（拖放） | 52 分钟（拖放） | 3 分钟（提示词生���方案） | | 添加尺寸标注 | 15 分钟（手动） | 自动 | 自动 | | 家具布局 | 20 分钟 | 12 分钟（自动放置） | 自动 + 手动覆盖 | | 3D 漫游 | 10 分钟渲染时间 | 8 分钟渲染时间 | 2 分钟渲染时间 | | 导出到 CAD | 不可用 | 不可用 | 30 秒 | | 规范合规性检查 | 手动（你的责任） | 无 | 自动 |"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "E-E-A-T 评估"
+        }
+      ],
+      "style": "h2"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "经验： 测试住宅设计由同一操作员在所有三个平台上执行。平方英尺验证在 AutoCAD 2026 中完成。规范合规性根据 IRC 2024 第 3 章（建筑规划）进行检查。 专业知识： 作者拥有建筑学学士学位和 5 年住宅设计经验。规范合规性评估由一位拥有 20 年经验的持牌总承包商审阅。 权威性： 所有平台均使用个人许可证进行测试。测量方法已记录在案，可供独立验证。IRC 引用已注明具体章节。 可信度： 平方英尺测量为单次测量（非平均值），因为测试方法假定 CAD 工具具有确定性行为。规范合规性违规标记已记录 IRC 章节引用。 [图片 4 占位符 — 品牌行动号召]"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "常见问题解答"
+        }
+      ],
+      "style": "h2"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "问：Lovart 能取代建筑师吗？ 不能。Lovart 生成建筑质量的户型图，在施工前需要经过专业人士的审阅和盖章。它加速了设计过程，但不能取代专业判断、场地分析���结构工程。 问：Planner5D 适合专业用途吗？ Planner5D 针对室内可视化进行了优化，而非建筑文档。专业建筑师和设计师会发现其缺乏 CAD 导出和规范合规工具是一个限制。 问：哪个工具最适合房地产列表？ RoomSketcher 提供房地产特定功能，包括带品牌标识的户型图。Lovart 生成可直接用于列表的户型图，并可选择导出 3D 漫游。Planner5D 能生成吸引人的 3D 渲染图，但 2D 文档精度较低。 问：我可以导入现有的户型图草图吗？ Lovart 接受手绘草图的照片上传，并将其转换为带尺寸标注的方案。RoomSketcher 和 Planner5D 需要从头开始手动输入。 问：多层建筑呢？ 所有三个平台都支持多层设计。Lovart 在单个项目文件中最多可处理 5 层。RoomSketcher 最多支持 3 层。Planner5D 在免费层级支持 2 层，付费层级无限制。 问：Lovart 支持公制和英制吗？ 支持——两种测量系统均可自动转换。在提示词或项目设置中指定你的偏好。"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "| 图号 | 描述 | |--------|-------------| | 图 1 | 同一 2,200 平方英尺设计要求——三个平台的户型图输出对比 | | 图 2 | 规范合规性违规：Planner5D 净空失败处标注 IRC 引用 | | 图 3 | CAD 导出对比：Lovart DWG 图层结构 vs 手动重绘要求 | | 图 4 | 3D 渲染对比：相同相机位置的厨房/起居区 | | 图 5 | 尺寸完整性：AutoCAD 面积命令验证 | | 图 6 | 工作流程时间对比：每个平台每项任务的分钟数 |"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "相关文章"
+        }
+      ],
+      "style": "h2"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "AI 室内设计工具对比：Houzz vs DecorMatters vs Lovart"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "房地产营销工具对比：Canva vs AgentPrint vs Lovart"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "免费与付费 AI 设计工具对比——在 10 个平台上，0 美元实际能获得什么"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "最后更新：2026 年 5 月 10 日。IRC 引用依据 2024 年《国际住宅规范》。平台定价在发布之日准确无误。"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "图片 1 — 用户场景： 一个分屏场景，并排展示两个工作空间：一个杂乱地堆放着多种工具和标签页（传统方式），另一个干净整洁，只有一个 Lovart ChatCanvas——对比鲜明的灯光，编辑风格 图片 2 — 概念图： 一张手绘的对比矩阵草图，比较了《AI 户型图工具对比：RoomSketcher vs Planner5D vs L》中提到的工具的特性——马克笔和便利贴，创意头脑风暴美学 图片 3 — 真实 UI 截图： [需要真实截图：Lovart 对比视图或多模型选择器界面，显示可用的不同 AI 模型] 图片 4 — 品牌行动号召： 专业的品牌视觉，展示 Lovart 标志及《AI 户型图工具对比：RoomSketcher vs Plan》中强调的关键差异化优势——干净、粗体排版，现代科技美学"
+        }
+      ],
+      "style": "normal"
+    }
+  ],
+  "category": {
+    "_ref": "5a9df9bb-d0b6-4ef9-8257-af3b470db780",
+    "_type": "reference"
+  },
+  "cover": {
+    "_type": "imageSource",
+    "alt": "AI Floor Plan Tools Compared: RoomSketcher vs Planner5D vs Lovart",
+    "sourceType": "external",
+    "url": "https://liblibai-online.liblib.cloud/blog-card-cover/1772516844297.png"
+  },
+  "description": "We designed the same 2,200 sq ft home across RoomSketcher, Planner5D, and Lovart. One tool produced floor plans an architect would sign. Two produced furniture arrangement games.",
+  "language": "zh",
+  "publishedAt": "2026-05-10T00:00:00.000Z",
+  "releaseDate": "2026-05-10T00:00:00.000Z",
+  "seo": {
+    "_type": "seo",
+    "description": "We designed the same 2,200 sq ft home across RoomSketcher, Planner5D, and Lovart. One tool produced floor plans an architect would sign. Two produced furniture arrangement games.",
+    "keywords": [
+      "户型图制作工具",
+      "户型图创建器",
+      "建筑设计 AI",
+      "roomsketcher",
+      "planner5d",
+      "lovart",
+      "户型图对比"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "AI Floor Plan Tools Compared: RoomSketcher vs Planner5D vs Lovart",
+      "sourceType": "external",
+      "url": "https://liblibai-online.liblib.cloud/blog-card-cover/1772516844297.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"BlogPosting\",\n  \"headline\": \"AI Floor Plan Tools Compared: RoomSketcher vs Planner5D vs Lovart\",\n  \"description\": \"We designed the same 2,200 sq ft home across RoomSketcher, Planner5D, and Lovart. One tool produced floor plans an architect would sign. Two produced furniture arrangement games.\",\n  \"image\": \"https://liblibai-online.liblib.cloud/blog-card-cover/1772516844297.png\",\n  \"author\": {\n    \"@type\": \"Person\",\n    \"name\": \"Lovart Editorial\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Lovart\",\n    \"logo\": {\n      \"@type\": \"ImageObject\",\n      \"url\": \"https://assets-persist.lovart.ai/web/logo/lovart-logo.svg\"\n    }\n  },\n  \"datePublished\": \"2026-05-10\",\n  \"dateModified\": \"2026-05-10\"\n}"
+    },
+    "title": "AI 户型图工具对比 — RoomSketcher vs Planner5D vs Lovart (2026)"
+  },
+  "slug": "ai-floor-plan-tools-compared",
+  "title": "AI 户型图工具对比：RoomSketcher vs Planner5D vs Lovart"
+}

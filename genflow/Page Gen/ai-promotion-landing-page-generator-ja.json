@@ -1,0 +1,387 @@
+{
+  "_id": "features-ai-promotion-landing-page-generator-ja",
+  "reflowSourceId": "features-ai-promotion-landing-page-generator-ja",
+  "slug": "ai-promotion-landing-page-generator",
+  "language": "ja",
+  "category": "feature",
+  "title": "LovartでAI販促ページ作成",
+  "description": "Launch campaign landing pages in minutes. Lovart's AI Agent designs layouts, writes copy, generates assets, and exports HTML code. No dev required.",
+  "seo": {
+    "description": "ランディングページを数分で公開。LovartのAIエージェントがレイアウト設計、コピー作成、アセット生成、HTMLコード出力まで対応。開発不要で、すぐにキャンペーンを始められます。",
+    "keywords": [
+      "AIランディングページビルダー",
+      "プロモーションページジェネレーター",
+      "AIウェブサイトデザイン",
+      "Lovartウェブエクスポート",
+      "セールスページメーカー",
+      "HTMLジェネレーター",
+      "レスポンシブランディングページAI"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Code Export Capability",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"LovartでAI販促ページ作成\", \"description\": \"Launch campaign landing pages in minutes. Lovart's AI Agent designs layouts, writes copy, generates assets, and exports HTML code. No dev required.\", \"url\": \"https://www.lovart.ai/features/ai-promotion-landing-page-generator\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"本当にウェブサイトのコードをエクスポートできますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい！Lovartは生成されたデザインをクリーンなHTMLおよびCSSコードとしてエクスポート可能にし、お好みのプラットフォームでホスティングできます。\"}}, {\"@type\": \"Question\", \"name\": \"コーディングスキルは必要ですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"全く必要ありません。欲しいランディングページを自然な言葉で説明すれば、LovartのAIデザインエージェントが構造、デザイン、コーディングをすべて処理します。\"}}, {\"@type\": \"Question\", \"name\": \"自分の製品画像を使用できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"もちろんです。製品写真をアップロードし、「背景削除（Remove BG）」や「Nano Banana」などの機能を使用して、生成されたLPデザインに完璧に統合できます。\"}}, {\"@type\": \"Question\", \"name\": \"モバイルレスポンシブデザインですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい、Lovartは最新のWeb標準に準拠したレイアウトを生成し、デスクトップとモバイル画面の両方でプロモーションページが美しく表示されるようにします。\"}}, {\"@type\": \"Question\", \"name\": \"どのようなプロモーションに最適ですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"製品ローンチ、季節のセール（ブラックフライデー、クリスマス）、イベント登録、そしてスピードと視覚的インパクトが重要なリード獲得キャンペーンに最適です。\"}}]}}"
+    },
+    "title": "LovartでAI販促ページ作成"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"LovartでAI販促ページ作成\",\"description\":\"Launch campaign landing pages in minutes. Lovart's AI Agent designs layouts, writes copy, generates assets, and exports HTML code. No dev required.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Code Export Capability\"}},{\"type\":\"bento-6\",\"title\":\"Why Marketers Choose Lovart for Landing Pages\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"コードエクスポート機能\",\"description\":\"デザインするだけでなく、構築しましょう。Lovartは使用可能なHTML/CSSコードを生成し、デザインと開発のギャップを埋め、市場投入を加速させます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"コードエクスポート機能\"}},{\"title\":\"Seedream 4.5 タイポグラフィ\",\"description\":\"完璧に読みやすく、スタイリッシュなテキストでヘッダーやバナーを作成。崩れたAI文字に別れを告げ、明確なキャンペーンメッセージを伝えましょう。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Seedream 4.5 タイポグラフィ\"}},{\"title\":\"レスポンシブレイアウト\",\"description\":\"AIはウェブ構造を理解しています。デスクトップとモバイルの両方で美しく見える論理的でレスポンシブなグリッドにコンテンツを自動配置します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"レスポンシブレイアウト\"}},{\"title\":\"一貫したブランディング\",\"description\":\"ブランドキットをアップロードしてください。Lovartは、生成されるすべてのボタン、背景、製品画像がブランドのカラーパレットや視覚的アイデンティティと一致することを保証します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"一貫したブランディング\"}},{\"title\":\"インタラクティブなプレビュー\",\"description\":\"ChatCanvas上でユーザーインタラクションを直接テスト。コードをエクスポートする前に、カスタムカーソルやホバー状態の使用感を確認できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"インタラクティブなプレビュー\"}},{\"title\":\"迅速なイテレーション\",\"description\":\"「Touch Edit」を使って、ページのどの部分でも即座に修正できます。ワンクリックとプロンプト入力で、見出しを変更したり、製品画像を差し替えたりできます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"迅速なイテレーション\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"コードエクスポート機能\",\"icon\":\"chat\",\"content\":{\"title\":\"コードエクスポート機能\",\"description\":\"デザインするだけでなく、構築しましょう。Lovartは使用可能なHTML/CSSコードを生成し、デザインと開発のギャップを埋め、市場投入を加速させます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"コードエクスポート機能\"}}},{\"label\":\"Seedream 4.5 タイポグラフィ\",\"icon\":\"image\",\"content\":{\"title\":\"Seedream 4.5 タイポグラフィ\",\"description\":\"完璧に読みやすく、スタイリッシュなテキストでヘッダーやバナーを作成。崩れたAI文字に別れを告げ、明確なキャンペーンメッセージを伝えましょう。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Seedream 4.5 タイポグラフィ\"}}},{\"label\":\"レスポンシブレイアウト\",\"icon\":\"flask\",\"content\":{\"title\":\"レスポンシブレイアウト\",\"description\":\"AIはウェブ構造を理解しています。デスクトップとモバイルの両方で美しく見える論理的でレスポンシブなグリッドにコンテンツを自動配置します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"レスポンシブレイアウト\"}}},{\"label\":\"一貫したブランディング\",\"icon\":\"brand\",\"content\":{\"title\":\"一貫したブランディング\",\"description\":\"ブランドキットをアップロードしてください。Lovartは、生成されるすべてのボタン、背景、製品画像がブランドのカラーパレットや視覚的アイデンティティと一致することを保証します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"一貫したブランディング\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"インタラクティブなプレビュー\",\"description\":\"ChatCanvas上でユーザーインタラクションを直接テスト。コードをエクスポートする前に、カスタムカーソルやホバー状態の使用感を確認できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"インタラクティブなプレビュー\"}},{\"title\":\"迅速なイテレーション\",\"description\":\"「Touch Edit」を使って、ページのどの部分でも即座に修正できます。ワンクリックとプロンプト入力で、見出しを変更したり、製品画像を差し替えたりできます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"迅速なイテレーション\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"AI Promotion Page Builder プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"ビジュアルからコードまで、数分で完成するプロモーションLP\",\"description\":\"開発者を待つ必要はありません。LovartのAIデザインエージェントが、あなたのプロモーション戦略を、デザインとコーディングが完了したランディングページへと変身させます。無限のChatCanvas上で、魅力的なビジュアル、説得力のあるコピー、レスポンシブなHTMLレイアウトを即座に生成しましょう。\",\"input_placeholder\":\"プロモーションを説明してください（例：ゲーミングギアのブラックフライデーセール、サイバーパンク風）\",\"prompts\":[{\"label\":\"美容セールページ\",\"prompt\":\"Minimalist skincare summer sale landing page, soft beige tones, interactive product cards, HTML export ready\"},{\"label\":\"テック製品ローンチ\",\"prompt\":\"Neon-themed tech gadget launch page, dark mode, glowing buttons, high-energy countdown timer layout\"},{\"label\":\"季節のメニュー紹介\",\"prompt\":\"Cozy illustrated coffee shop seasonal menu page, warm colors, scroll animations, mobile-responsive design\"},{\"label\":\"ファッションクリアランス\",\"prompt\":\"Bold fashion clearance sale landing page, magazine style layout, large typography, dynamic image grid\"}],\"tip\":\"ヒント：キャンペーンの目標（例：「リード獲得」「フラッシュセール」）、ターゲット層、キービジュアルの雰囲気を指定すると、最高の結果が得られます。\",\"cta\":{\"text\":\"LPを生成する\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Lovart AIでキャンペーンをより速くローンチする方法\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"レイアウトを視覚化\",\"description\":\"キャンペーンの目標を説明してください。Lovartのエージェントが、ブランドの美学に完全にマッチしたヒーローバナー、機能グリッド、CTAなど、ユーザー体験全体を計画し生成します。\"},{\"step\":2,\"title\":\"文脈に沿った素材生成\",\"description\":\"製品写真が必要ですか？「Nano Banana」を使って製品をシーンに配置しましょう。背景が必要ですか？「Flux」を使ってください。すべての素材がキャンバス上で生成され、スタイルの一貫性が保たれます。\"},{\"step\":3,\"title\":\"使えるコードをエクスポート\",\"description\":\"Lovartは画像だけではありません。インタラクティブなホバー効果やアニメーションでサイトをプレビューし、きれいなHTMLとCSSコードをエクスポートして、即座にドメインで公開できます。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Promotion Page Builder：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"AI Promotion Page Builder プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"AI Promotion Page Builder が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから AI Promotion Page Builder の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"24時間以内にフラッシュセール用のLPが必要でした。Lovartはデザインだけでなくコードまで提供してくれました。開発待ちをスキップして時間通りにローンチし、コンバージョン率を20%向上させました。\",\"author\":\"Sarah J.\",\"role\":\"マーケティングディレクター\"},{\"quote\":\"製品写真の生成とウェブサイトのレイアウト作成を1つのツールでできるのは革新的です。製品にはNano Bananaを、レイアウトにはWeb Generatorを使用しましたが、完全にシームレスでした。\",\"author\":\"Mike T.\",\"role\":\"Eコマース創業者\"},{\"quote\":\"Lovartでポップアップイベント用の完全にインタラクティブなサイトを作りました。生成されたカスタムカーソルのアニメーションは、私一人では絶対にコーディングできなかった素敵なディテールでした。\",\"author\":\"Elena R.\",\"role\":\"イベントオーガナイザー\"}],\"title\":\"急成長ブランドの成功事例\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"本当にウェブサイトのコードをエクスポートできますか？\",\"answer\":\"はい！Lovartは生成されたデザインをクリーンなHTMLおよびCSSコードとしてエクスポート可能にし、お好みのプラットフォームでホスティングできます。\"},{\"question\":\"コーディングスキルは必要ですか？\",\"answer\":\"全く必要ありません。欲しいランディングページを自然な言葉で説明すれば、LovartのAIデザインエージェントが構造、デザイン、コーディングをすべて処理します。\"},{\"question\":\"自分の製品画像を使用できますか？\",\"answer\":\"もちろんです。製品写真をアップロードし、「背景削除（Remove BG）」や「Nano Banana」などの機能を使用して、生成されたLPデザインに完璧に統合できます。\"},{\"question\":\"モバイルレスポンシブデザインですか？\",\"answer\":\"はい、Lovartは最新のWeb標準に準拠したレイアウトを生成し、デスクトップとモバイル画面の両方でプロモーションページが美しく表示されるようにします。\"},{\"question\":\"どのようなプロモーションに最適ですか？\",\"answer\":\"製品ローンチ、季節のセール（ブラックフライデー、クリスマス）、イベント登録、そしてスピードと視覚的インパクトが重要なリード獲得キャンペーンに最適です。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "LovartでAI販促ページ作成",
+      "description": "Launch campaign landing pages in minutes. Lovart's AI Agent designs layouts, writes copy, generates assets, and exports HTML code. No dev required.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Code Export Capability"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Why Marketers Choose Lovart for Landing Pages",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "コードエクスポート機能",
+          "description": "デザインするだけでなく、構築しましょう。Lovartは使用可能なHTML/CSSコードを生成し、デザインと開発のギャップを埋め、市場投入を加速させます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "コードエクスポート機能"
+          }
+        },
+        {
+          "title": "Seedream 4.5 タイポグラフィ",
+          "description": "完璧に読みやすく、スタイリッシュなテキストでヘッダーやバナーを作成。崩れたAI文字に別れを告げ、明確なキャンペーンメッセージを伝えましょう。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Seedream 4.5 タイポグラフィ"
+          }
+        },
+        {
+          "title": "レスポンシブレイアウト",
+          "description": "AIはウェブ構造を理解しています。デスクトップとモバイルの両方で美しく見える論理的でレスポンシブなグリッドにコンテンツを自動配置します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "レスポンシブレイアウト"
+          }
+        },
+        {
+          "title": "一貫したブランディング",
+          "description": "ブランドキットをアップロードしてください。Lovartは、生成されるすべてのボタン、背景、製品画像がブランドのカラーパレットや視覚的アイデンティティと一致することを保証します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "一貫したブランディング"
+          }
+        },
+        {
+          "title": "インタラクティブなプレビュー",
+          "description": "ChatCanvas上でユーザーインタラクションを直接テスト。コードをエクスポートする前に、カスタムカーソルやホバー状態の使用感を確認できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "インタラクティブなプレビュー"
+          }
+        },
+        {
+          "title": "迅速なイテレーション",
+          "description": "「Touch Edit」を使って、ページのどの部分でも即座に修正できます。ワンクリックとプロンプト入力で、見出しを変更したり、製品画像を差し替えたりできます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "迅速なイテレーション"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "コードエクスポート機能",
+          "icon": "chat",
+          "content": {
+            "title": "コードエクスポート機能",
+            "description": "デザインするだけでなく、構築しましょう。Lovartは使用可能なHTML/CSSコードを生成し、デザインと開発のギャップを埋め、市場投入を加速させます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "コードエクスポート機能"
+            }
+          }
+        },
+        {
+          "label": "Seedream 4.5 タイポグラフィ",
+          "icon": "image",
+          "content": {
+            "title": "Seedream 4.5 タイポグラフィ",
+            "description": "完璧に読みやすく、スタイリッシュなテキストでヘッダーやバナーを作成。崩れたAI文字に別れを告げ、明確なキャンペーンメッセージを伝えましょう。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Seedream 4.5 タイポグラフィ"
+            }
+          }
+        },
+        {
+          "label": "レスポンシブレイアウト",
+          "icon": "flask",
+          "content": {
+            "title": "レスポンシブレイアウト",
+            "description": "AIはウェブ構造を理解しています。デスクトップとモバイルの両方で美しく見える論理的でレスポンシブなグリッドにコンテンツを自動配置します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "レスポンシブレイアウト"
+            }
+          }
+        },
+        {
+          "label": "一貫したブランディング",
+          "icon": "brand",
+          "content": {
+            "title": "一貫したブランディング",
+            "description": "ブランドキットをアップロードしてください。Lovartは、生成されるすべてのボタン、背景、製品画像がブランドのカラーパレットや視覚的アイデンティティと一致することを保証します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "一貫したブランディング"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "インタラクティブなプレビュー",
+          "description": "ChatCanvas上でユーザーインタラクションを直接テスト。コードをエクスポートする前に、カスタムカーソルやホバー状態の使用感を確認できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "インタラクティブなプレビュー"
+          }
+        },
+        {
+          "title": "迅速なイテレーション",
+          "description": "「Touch Edit」を使って、ページのどの部分でも即座に修正できます。ワンクリックとプロンプト入力で、見出しを変更したり、製品画像を差し替えたりできます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "迅速なイテレーション"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "AI Promotion Page Builder プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "ビジュアルからコードまで、数分で完成するプロモーションLP",
+      "description": "開発者を待つ必要はありません。LovartのAIデザインエージェントが、あなたのプロモーション戦略を、デザインとコーディングが完了したランディングページへと変身させます。無限のChatCanvas上で、魅力的なビジュアル、説得力のあるコピー、レスポンシブなHTMLレイアウトを即座に生成しましょう。",
+      "input_placeholder": "プロモーションを説明してください（例：ゲーミングギアのブラックフライデーセール、サイバーパンク風）",
+      "prompts": [
+        {
+          "label": "美容セールページ",
+          "prompt": "Minimalist skincare summer sale landing page, soft beige tones, interactive product cards, HTML export ready"
+        },
+        {
+          "label": "テック製品ローンチ",
+          "prompt": "Neon-themed tech gadget launch page, dark mode, glowing buttons, high-energy countdown timer layout"
+        },
+        {
+          "label": "季節のメニュー紹介",
+          "prompt": "Cozy illustrated coffee shop seasonal menu page, warm colors, scroll animations, mobile-responsive design"
+        },
+        {
+          "label": "ファッションクリアランス",
+          "prompt": "Bold fashion clearance sale landing page, magazine style layout, large typography, dynamic image grid"
+        }
+      ],
+      "tip": "ヒント：キャンペーンの目標（例：「リード獲得」「フラッシュセール」）、ターゲット層、キービジュアルの雰囲気を指定すると、最高の結果が得られます。",
+      "cta": {
+        "text": "LPを生成する"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Lovart AIでキャンペーンをより速くローンチする方法",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "レイアウトを視覚化",
+          "description": "キャンペーンの目標を説明してください。Lovartのエージェントが、ブランドの美学に完全にマッチしたヒーローバナー、機能グリッド、CTAなど、ユーザー体験全体を計画し生成します。"
+        },
+        {
+          "step": 2,
+          "title": "文脈に沿った素材生成",
+          "description": "製品写真が必要ですか？「Nano Banana」を使って製品をシーンに配置しましょう。背景が必要ですか？「Flux」を使ってください。すべての素材がキャンバス上で生成され、スタイルの一貫性が保たれます。"
+        },
+        {
+          "step": 3,
+          "title": "使えるコードをエクスポート",
+          "description": "Lovartは画像だけではありません。インタラクティブなホバー効果やアニメーションでサイトをプレビューし、きれいなHTMLとCSSコードをエクスポートして、即座にドメインで公開できます。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Promotion Page Builder：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "AI Promotion Page Builder プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "AI Promotion Page Builder が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから AI Promotion Page Builder の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "24時間以内にフラッシュセール用のLPが必要でした。Lovartはデザインだけでなくコードまで提供してくれました。開発待ちをスキップして時間通りにローンチし、コンバージョン率を20%向上させました。",
+          "author": "Sarah J.",
+          "role": "マーケティングディレクター"
+        },
+        {
+          "quote": "製品写真の生成とウェブサイトのレイアウト作成を1つのツールでできるのは革新的です。製品にはNano Bananaを、レイアウトにはWeb Generatorを使用しましたが、完全にシームレスでした。",
+          "author": "Mike T.",
+          "role": "Eコマース創業者"
+        },
+        {
+          "quote": "Lovartでポップアップイベント用の完全にインタラクティブなサイトを作りました。生成されたカスタムカーソルのアニメーションは、私一人では絶対にコーディングできなかった素敵なディテールでした。",
+          "author": "Elena R.",
+          "role": "イベントオーガナイザー"
+        }
+      ],
+      "title": "急成長ブランドの成功事例"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "本当にウェブサイトのコードをエクスポートできますか？",
+          "answer": "はい！Lovartは生成されたデザインをクリーンなHTMLおよびCSSコードとしてエクスポート可能にし、お好みのプラットフォームでホスティングできます。"
+        },
+        {
+          "question": "コーディングスキルは必要ですか？",
+          "answer": "全く必要ありません。欲しいランディングページを自然な言葉で説明すれば、LovartのAIデザインエージェントが構造、デザイン、コーディングをすべて処理します。"
+        },
+        {
+          "question": "自分の製品画像を使用できますか？",
+          "answer": "もちろんです。製品写真をアップロードし、「背景削除（Remove BG）」や「Nano Banana」などの機能を使用して、生成されたLPデザインに完璧に統合できます。"
+        },
+        {
+          "question": "モバイルレスポンシブデザインですか？",
+          "answer": "はい、Lovartは最新のWeb標準に準拠したレイアウトを生成し、デスクトップとモバイル画面の両方でプロモーションページが美しく表示されるようにします。"
+        },
+        {
+          "question": "どのようなプロモーションに最適ですか？",
+          "answer": "製品ローンチ、季節のセール（ブラックフライデー、クリスマス）、イベント登録、そしてスピードと視覚的インパクトが重要なリード獲得キャンペーンに最適です。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

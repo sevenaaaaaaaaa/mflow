@@ -1,0 +1,389 @@
+{
+  "_id": "features-ai-design-agent-pt",
+  "reflowSourceId": "features-ai-design-agent-pt",
+  "slug": "ai-design-agent",
+  "language": "pt",
+  "category": "feature",
+  "title": "Agente de Design com IA: Fluxo Criativo e Marca Autônoma | Lovart",
+  "description": "Experience the world's first AI Design Agent. Lovart uses the MCoT reasoning engine to plan, design, and execute entire brand campaigns—from logos to videos—on a unified infinite canvas.",
+  "seo": {
+    "description": "Experimente o primeiro Agente de Design com IA do mundo. A Lovart usa o motor de raciocínio MCoT para planear, criar e executar campanhas de marca completas — de logótipos a vídeos — numa tela infinita unificada.",
+    "keywords": [
+      "Agente de design com IA",
+      "designer autônomo",
+      "mecanismo MCoT",
+      "ferramenta de branding com IA",
+      "ChatCanvas",
+      "recursos do Lovart",
+      "design multiagente",
+      "fluxo criativo automatizado",
+      "agente de design generativo"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Mind Chain of Thought (MCoT)",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Agente de Design com IA: Fluxo Criativo e Marca Autônoma | Lovart\", \"description\": \"Experience the world's first AI Design Agent. Lovart uses the MCoT reasoning engine to plan, design, and execute entire brand campaigns—from logos to videos—on a unified infinite canvas.\", \"url\": \"https://www.lovart.ai/features/ai-design-agent\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"O que torna o Lovart um 'Agente' e não apenas um gerador?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Geradores tradicionais são passivos; você digita o prompt, eles geram. O Lovart é ativo. Ele raciocina, planeja, divide tarefas e orquestra múltiplos modelos para alcançar um objetivo de negócios de alto nível, mantendo o contexto durante todo o projeto.\"}}, {\"@type\": \"Question\", \"name\": \"O Agente pode manter a consistência da marca?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sim. O 'Design Context Core' do Lovart permite que o Agente lembre a paleta de cores, tipografia e estilos de personagem da sua marca, aplicando-os consistentemente em todos os ativos gerados em uma sessão.\"}}, {\"@type\": \"Question\", \"name\": \"O Agente suporta criação de vídeo?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Com certeza. O Agente de Design integra os principais modelos de vídeo como Veo 3 e Kling. Você pode transformar qualquer design estático em um ativo em movimento simplesmente pedindo ao Agente para 'animar isso'.\"}}, {\"@type\": \"Question\", \"name\": \"O conteúdo é utilizável comercialmente?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sim, usuários em planos pagos têm direitos comerciais totais sobre os designs gerados pelo Agente, tornando-o perfeito para campanhas de marketing, mercadorias e trabalho para clientes.\"}}, {\"@type\": \"Question\", \"name\": \"Preciso de habilidades de design para usar o Agente?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Não. O Agente foi projetado para preencher a lacuna entre ideia e execução. Você fornece a visão em linguagem natural, e o Agente cuida dos princípios técnicos de design, layout e renderização.\"}}]}}"
+    },
+    "title": "Agente de Design com IA: Fluxo Criativo e Marca Autônoma | Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Agente de Design com IA: Fluxo Criativo e Marca Autônoma | Lovart\",\"description\":\"Experience the world's first AI Design Agent. Lovart uses the MCoT reasoning engine to plan, design, and execute entire brand campaigns—from logos to videos—on a unified infinite canvas.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Mind Chain of Thought (MCoT)\"}},{\"type\":\"bento-6\",\"title\":\"Capabilities of Your AI Creative Team\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Mind Chain of Thought (MCoT)\",\"description\":\"O cérebro por trás da beleza. O Agente divide briefings complexos em etapas criativas lógicas, garantindo consistência entre logotipos, embalagens e anúncios.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Mind Chain of Thought (MCoT)\"}},{\"title\":\"Geração Multimodal\",\"description\":\"Imagens, Vídeos, 3D e Gráficos Vetoriais — tudo em um só lugar. O Agente seleciona o melhor modelo (como Nano Banana Pro ou Veo 3) para a tarefa específica.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Geração Multimodal\"}},{\"title\":\"Memória Contextual\",\"description\":\"O Agente nunca esquece suas diretrizes de marca. Uma vez estabelecidas, ele aplica suas cores, fontes e estilos de personagem específicos a cada novo ativo que cria.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Memória Contextual\"}},{\"title\":\"Colaboração Touch Edit\",\"description\":\"Interaja naturalmente. Sem camadas ou máscaras complexas — basta clicar em um elemento e dizer ao Agente como alterá-lo. Ele entende as relações semânticas entre objetos.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Colaboração Touch Edit\"}},{\"title\":\"Auto-Mockup & Layout\",\"description\":\"O Agente encena seus designs automaticamente. Ele entende perspectiva e iluminação, aplicando instantaneamente designs planos a produtos 3D ou cenas do mundo real.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Auto-Mockup & Layout\"}},{\"title\":\"Lógica Específica da Indústria\",\"description\":\"Seja 'Engenharia de Menu' para restaurantes ou 'Otimização de Conversão' para e-commerce, o Agente aplica princípios de design comprovados da indústria.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Lógica Específica da Indústria\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Todos os recursos em um só agente\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Mind Chain of Thought (MCoT)\",\"icon\":\"chat\",\"content\":{\"title\":\"Mind Chain of Thought (MCoT)\",\"description\":\"O cérebro por trás da beleza. O Agente divide briefings complexos em etapas criativas lógicas, garantindo consistência entre logotipos, embalagens e anúncios.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Mind Chain of Thought (MCoT)\"}}},{\"label\":\"Geração Multimodal\",\"icon\":\"image\",\"content\":{\"title\":\"Geração Multimodal\",\"description\":\"Imagens, Vídeos, 3D e Gráficos Vetoriais — tudo em um só lugar. O Agente seleciona o melhor modelo (como Nano Banana Pro ou Veo 3) para a tarefa específica.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Geração Multimodal\"}}},{\"label\":\"Memória Contextual\",\"icon\":\"flask\",\"content\":{\"title\":\"Memória Contextual\",\"description\":\"O Agente nunca esquece suas diretrizes de marca. Uma vez estabelecidas, ele aplica suas cores, fontes e estilos de personagem específicos a cada novo ativo que cria.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Memória Contextual\"}}},{\"label\":\"Colaboração Touch Edit\",\"icon\":\"brand\",\"content\":{\"title\":\"Colaboração Touch Edit\",\"description\":\"Interaja naturalmente. Sem camadas ou máscaras complexas — basta clicar em um elemento e dizer ao Agente como alterá-lo. Ele entende as relações semânticas entre objetos.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Colaboração Touch Edit\"}}}]},{\"type\":\"bento-2\",\"title\":\"Duas coisas que ele faz muito bem\",\"columns\":2,\"features\":[{\"title\":\"Auto-Mockup & Layout\",\"description\":\"O Agente encena seus designs automaticamente. Ele entende perspectiva e iluminação, aplicando instantaneamente designs planos a produtos 3D ou cenas do mundo real.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Auto-Mockup & Layout\"}},{\"title\":\"Lógica Específica da Indústria\",\"description\":\"Seja 'Engenharia de Menu' para restaurantes ou 'Otimização de Conversão' para e-commerce, o Agente aplica princípios de design comprovados da indústria.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Lógica Específica da Indústria\"}}]},{\"type\":\"feature-detail\",\"title\":\"Como funciona em detalhes\",\"items\":[{\"title\":\"Inicie seu projeto de AI Design Agent: Autonomous Branding & Creative Workflow\",\"description\":\"Descreva o resultado desejado e adicione referências.\"},{\"title\":\"Itere com o agente\",\"description\":\"Ajuste detalhes e explore variações no mesmo canvas.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Pare de Digitar Prompts. Comece a Dirigir. O Primeiro Agente de Design com IA do Mundo.\",\"description\":\"O Lovart não é apenas uma ferramenta; é o seu novo parceiro criativo autônomo. Impulsionado pelo nosso mecanismo proprietário Mind Chain of Thought (MCoT), este agente entende estratégia, planeja fluxos de trabalho e orquestra campanhas complexas — de logotipos a vídeos — em uma única tela infinita. Não gere apenas imagens; construa marcas.\",\"input_placeholder\":\"Ex: 'Lance uma marca de cuidados com a pele da geração Z chamada Glow, visualize o logotipo, a embalagem e 3 posts sociais.'\",\"prompts\":[{\"label\":\"Identidade de Marca Completa\",\"prompt\":\"Create a full visual identity for a cyberpunk coffee shop, including logo, cup mockup, and storefront\"},{\"label\":\"Campanha de Mídia Social\",\"prompt\":\"Design a 3-slide carousel for a tech startup launch, focusing on minimalism and trust\"},{\"label\":\"Transformação em Vídeo\",\"prompt\":\"Turn this product photo into a cinematic video ad with dramatic lighting\"},{\"label\":\"Análise de Estilo\",\"prompt\":\"Analyze this URL style and generate a matching landing page header\"}],\"tip\":\"Dica Profissional: Fale com o agente como se fosse um humano. Explique seus objetivos de negócios e veja-o raciocinar através do processo criativo.\",\"cta\":{\"text\":\"Contrate Seu Agente de IA\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Como o Agente de Design Funciona\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"Ele Pensa (Raciocínio)\",\"description\":\"Ao contrário da IA padrão que apenas prevê pixels, o mecanismo MCoT do Lovart analisa sua intenção. Ele pergunta 'Por que?' antes de decidir 'Como?', garantindo que os designs se alinhem com sua estratégia de mercado.\"},{\"step\":2,\"title\":\"Ele Planeja (Orquestração)\",\"description\":\"O agente decompõe sua solicitação em tarefas. Ele atribui automaticamente um Agente de Logo para branding, um Agente de Layout para tipografia e o Nano Banana para renderização de alta fidelidade.\"},{\"step\":3,\"title\":\"Ele Colabora (ChatCanvas)\",\"description\":\"Trabalhe em uma tela infinita onde o agente lembra o contexto. Aponte para um objeto e diga 'faça isso se destacar', e o agente executa edições com compreensão semântica.\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Design Agent: Autonomous Branding & Creative Workflow: Lovart vs. fluxos de trabalho tradicionais\",\"headers\":[\"Necessidade\",\"Ferramenta genérica\",\"Fluxo manual\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Inicie seu projeto de AI Design Agent: Autonomous Branding & Creative Workflow\",\"values\":[\"Um prompt\",\"Briefing manual\",\"Raciocínio guiado pelo briefing\"]},{\"feature\":\"Tempo até o primeiro resultado\",\"values\":[\"Minutos\",\"Dias\",\"Minutos\"]},{\"feature\":\"Edição após a geração\",\"values\":[\"Limitado\",\"Rodadas de revisão\",\"Touch / Texto / Elementos\"]},{\"feature\":\"Manter a identidade da marca\",\"values\":[\"Manual\",\"Manual\",\"Compatível com Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Onde AI Design Agent: Autonomous Branding & Creative Workflow ajuda\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Lance mais rápido\",\"description\":\"Do briefing aos assets de AI Design Agent: Autonomous Branding & Creative Workflow em uma única sessão.\"},{\"icon\":\"brand\",\"title\":\"Mantenha a consistência\",\"description\":\"O Brand Kit mantém cada asset alinhado.\"},{\"icon\":\"refresh\",\"title\":\"Itere rapidamente\",\"description\":\"Edite detalhes sem recomeçar o projeto.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"Substituí meu orçamento de agência de branding de $5k pelo Lovart. O agente entendeu minha vibe 'eco-tech minimalista' instantaneamente e construiu tudo, do logotipo ao pitch deck.\",\"author\":\"Melvin C.\",\"role\":\"Fundador de Startup\"},{\"quote\":\"A consistência foi o que me convenceu. O Agente lembra do personagem da minha marca em 50 postagens diferentes. É como ter um designer que nunca dorme.\",\"author\":\"Sarah L.\",\"role\":\"Gerente de Mídias Sociais\"},{\"quote\":\"Uso o Lovart para pular a página em branco. Dou ao Agente um briefing criativo e em minutos tenho 4 direções sólidas para refinar. É o multiplicador de eficiência definitivo.\",\"author\":\"David K.\",\"role\":\"Diretor Criativo\"}],\"title\":\"Criadores Empoderados pelo Fluxo de Trabalho do Agente\"},{\"type\":\"pricing-block\",\"title\":\"Escolha o plano ideal para a sua equipe\",\"description\":\"Comece de graça. Faça upgrade quando o trabalho for para o cliente.\"},{\"type\":\"faq\",\"title\":\"Perguntas frequentes\",\"items\":[{\"question\":\"O que torna o Lovart um 'Agente' e não apenas um gerador?\",\"answer\":\"Geradores tradicionais são passivos; você digita o prompt, eles geram. O Lovart é ativo. Ele raciocina, planeja, divide tarefas e orquestra múltiplos modelos para alcançar um objetivo de negócios de alto nível, mantendo o contexto durante todo o projeto.\"},{\"question\":\"O Agente pode manter a consistência da marca?\",\"answer\":\"Sim. O 'Design Context Core' do Lovart permite que o Agente lembre a paleta de cores, tipografia e estilos de personagem da sua marca, aplicando-os consistentemente em todos os ativos gerados em uma sessão.\"},{\"question\":\"O Agente suporta criação de vídeo?\",\"answer\":\"Com certeza. O Agente de Design integra os principais modelos de vídeo como Veo 3 e Kling. Você pode transformar qualquer design estático em um ativo em movimento simplesmente pedindo ao Agente para 'animar isso'.\"},{\"question\":\"O conteúdo é utilizável comercialmente?\",\"answer\":\"Sim, usuários em planos pagos têm direitos comerciais totais sobre os designs gerados pelo Agente, tornando-o perfeito para campanhas de marketing, mercadorias e trabalho para clientes.\"},{\"question\":\"Preciso de habilidades de design para usar o Agente?\",\"answer\":\"Não. O Agente foi projetado para preencher a lacuna entre ideia e execução. Você fornece a visão em linguagem natural, e o Agente cuida dos princípios técnicos de design, layout e renderização.\"}]},{\"type\":\"cta-default\",\"title\":\"Comece a criar com a Lovart\",\"description\":\"Transforme seu briefing em visuais alinhados à marca em minutos.\",\"buttons\":[{\"text\":\"Começar grátis\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Agente de Design com IA: Fluxo Criativo e Marca Autônoma | Lovart",
+      "description": "Experience the world's first AI Design Agent. Lovart uses the MCoT reasoning engine to plan, design, and execute entire brand campaigns—from logos to videos—on a unified infinite canvas.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Mind Chain of Thought (MCoT)"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Capabilities of Your AI Creative Team",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Mind Chain of Thought (MCoT)",
+          "description": "O cérebro por trás da beleza. O Agente divide briefings complexos em etapas criativas lógicas, garantindo consistência entre logotipos, embalagens e anúncios.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Mind Chain of Thought (MCoT)"
+          }
+        },
+        {
+          "title": "Geração Multimodal",
+          "description": "Imagens, Vídeos, 3D e Gráficos Vetoriais — tudo em um só lugar. O Agente seleciona o melhor modelo (como Nano Banana Pro ou Veo 3) para a tarefa específica.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Geração Multimodal"
+          }
+        },
+        {
+          "title": "Memória Contextual",
+          "description": "O Agente nunca esquece suas diretrizes de marca. Uma vez estabelecidas, ele aplica suas cores, fontes e estilos de personagem específicos a cada novo ativo que cria.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Memória Contextual"
+          }
+        },
+        {
+          "title": "Colaboração Touch Edit",
+          "description": "Interaja naturalmente. Sem camadas ou máscaras complexas — basta clicar em um elemento e dizer ao Agente como alterá-lo. Ele entende as relações semânticas entre objetos.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Colaboração Touch Edit"
+          }
+        },
+        {
+          "title": "Auto-Mockup & Layout",
+          "description": "O Agente encena seus designs automaticamente. Ele entende perspectiva e iluminação, aplicando instantaneamente designs planos a produtos 3D ou cenas do mundo real.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Auto-Mockup & Layout"
+          }
+        },
+        {
+          "title": "Lógica Específica da Indústria",
+          "description": "Seja 'Engenharia de Menu' para restaurantes ou 'Otimização de Conversão' para e-commerce, o Agente aplica princípios de design comprovados da indústria.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Lógica Específica da Indústria"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Todos os recursos em um só agente",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Mind Chain of Thought (MCoT)",
+          "icon": "chat",
+          "content": {
+            "title": "Mind Chain of Thought (MCoT)",
+            "description": "O cérebro por trás da beleza. O Agente divide briefings complexos em etapas criativas lógicas, garantindo consistência entre logotipos, embalagens e anúncios.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "Mind Chain of Thought (MCoT)"
+            }
+          }
+        },
+        {
+          "label": "Geração Multimodal",
+          "icon": "image",
+          "content": {
+            "title": "Geração Multimodal",
+            "description": "Imagens, Vídeos, 3D e Gráficos Vetoriais — tudo em um só lugar. O Agente seleciona o melhor modelo (como Nano Banana Pro ou Veo 3) para a tarefa específica.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Geração Multimodal"
+            }
+          }
+        },
+        {
+          "label": "Memória Contextual",
+          "icon": "flask",
+          "content": {
+            "title": "Memória Contextual",
+            "description": "O Agente nunca esquece suas diretrizes de marca. Uma vez estabelecidas, ele aplica suas cores, fontes e estilos de personagem específicos a cada novo ativo que cria.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Memória Contextual"
+            }
+          }
+        },
+        {
+          "label": "Colaboração Touch Edit",
+          "icon": "brand",
+          "content": {
+            "title": "Colaboração Touch Edit",
+            "description": "Interaja naturalmente. Sem camadas ou máscaras complexas — basta clicar em um elemento e dizer ao Agente como alterá-lo. Ele entende as relações semânticas entre objetos.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Colaboração Touch Edit"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Duas coisas que ele faz muito bem",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Auto-Mockup & Layout",
+          "description": "O Agente encena seus designs automaticamente. Ele entende perspectiva e iluminação, aplicando instantaneamente designs planos a produtos 3D ou cenas do mundo real.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Auto-Mockup & Layout"
+          }
+        },
+        {
+          "title": "Lógica Específica da Indústria",
+          "description": "Seja 'Engenharia de Menu' para restaurantes ou 'Otimização de Conversão' para e-commerce, o Agente aplica princípios de design comprovados da indústria.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Lógica Específica da Indústria"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "Como funciona em detalhes",
+      "items": [
+        {
+          "title": "Inicie seu projeto de AI Design Agent: Autonomous Branding & Creative Workflow",
+          "description": "Descreva o resultado desejado e adicione referências."
+        },
+        {
+          "title": "Itere com o agente",
+          "description": "Ajuste detalhes e explore variações no mesmo canvas.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Pare de Digitar Prompts. Comece a Dirigir. O Primeiro Agente de Design com IA do Mundo.",
+      "description": "O Lovart não é apenas uma ferramenta; é o seu novo parceiro criativo autônomo. Impulsionado pelo nosso mecanismo proprietário Mind Chain of Thought (MCoT), este agente entende estratégia, planeja fluxos de trabalho e orquestra campanhas complexas — de logotipos a vídeos — em uma única tela infinita. Não gere apenas imagens; construa marcas.",
+      "input_placeholder": "Ex: 'Lance uma marca de cuidados com a pele da geração Z chamada Glow, visualize o logotipo, a embalagem e 3 posts sociais.'",
+      "prompts": [
+        {
+          "label": "Identidade de Marca Completa",
+          "prompt": "Create a full visual identity for a cyberpunk coffee shop, including logo, cup mockup, and storefront"
+        },
+        {
+          "label": "Campanha de Mídia Social",
+          "prompt": "Design a 3-slide carousel for a tech startup launch, focusing on minimalism and trust"
+        },
+        {
+          "label": "Transformação em Vídeo",
+          "prompt": "Turn this product photo into a cinematic video ad with dramatic lighting"
+        },
+        {
+          "label": "Análise de Estilo",
+          "prompt": "Analyze this URL style and generate a matching landing page header"
+        }
+      ],
+      "tip": "Dica Profissional: Fale com o agente como se fosse um humano. Explique seus objetivos de negócios e veja-o raciocinar através do processo criativo.",
+      "cta": {
+        "text": "Contrate Seu Agente de IA"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Como o Agente de Design Funciona",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Ele Pensa (Raciocínio)",
+          "description": "Ao contrário da IA padrão que apenas prevê pixels, o mecanismo MCoT do Lovart analisa sua intenção. Ele pergunta 'Por que?' antes de decidir 'Como?', garantindo que os designs se alinhem com sua estratégia de mercado."
+        },
+        {
+          "step": 2,
+          "title": "Ele Planeja (Orquestração)",
+          "description": "O agente decompõe sua solicitação em tarefas. Ele atribui automaticamente um Agente de Logo para branding, um Agente de Layout para tipografia e o Nano Banana para renderização de alta fidelidade."
+        },
+        {
+          "step": 3,
+          "title": "Ele Colabora (ChatCanvas)",
+          "description": "Trabalhe em uma tela infinita onde o agente lembra o contexto. Aponte para um objeto e diga 'faça isso se destacar', e o agente executa edições com compreensão semântica."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Design Agent: Autonomous Branding & Creative Workflow: Lovart vs. fluxos de trabalho tradicionais",
+      "headers": [
+        "Necessidade",
+        "Ferramenta genérica",
+        "Fluxo manual",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Inicie seu projeto de AI Design Agent: Autonomous Branding & Creative Workflow",
+          "values": [
+            "Um prompt",
+            "Briefing manual",
+            "Raciocínio guiado pelo briefing"
+          ]
+        },
+        {
+          "feature": "Tempo até o primeiro resultado",
+          "values": [
+            "Minutos",
+            "Dias",
+            "Minutos"
+          ]
+        },
+        {
+          "feature": "Edição após a geração",
+          "values": [
+            "Limitado",
+            "Rodadas de revisão",
+            "Touch / Texto / Elementos"
+          ]
+        },
+        {
+          "feature": "Manter a identidade da marca",
+          "values": [
+            "Manual",
+            "Manual",
+            "Compatível com Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Onde AI Design Agent: Autonomous Branding & Creative Workflow ajuda",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Lance mais rápido",
+          "description": "Do briefing aos assets de AI Design Agent: Autonomous Branding & Creative Workflow em uma única sessão."
+        },
+        {
+          "icon": "brand",
+          "title": "Mantenha a consistência",
+          "description": "O Brand Kit mantém cada asset alinhado."
+        },
+        {
+          "icon": "refresh",
+          "title": "Itere rapidamente",
+          "description": "Edite detalhes sem recomeçar o projeto."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "Substituí meu orçamento de agência de branding de $5k pelo Lovart. O agente entendeu minha vibe 'eco-tech minimalista' instantaneamente e construiu tudo, do logotipo ao pitch deck.",
+          "author": "Melvin C.",
+          "role": "Fundador de Startup"
+        },
+        {
+          "quote": "A consistência foi o que me convenceu. O Agente lembra do personagem da minha marca em 50 postagens diferentes. É como ter um designer que nunca dorme.",
+          "author": "Sarah L.",
+          "role": "Gerente de Mídias Sociais"
+        },
+        {
+          "quote": "Uso o Lovart para pular a página em branco. Dou ao Agente um briefing criativo e em minutos tenho 4 direções sólidas para refinar. É o multiplicador de eficiência definitivo.",
+          "author": "David K.",
+          "role": "Diretor Criativo"
+        }
+      ],
+      "title": "Criadores Empoderados pelo Fluxo de Trabalho do Agente"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Escolha o plano ideal para a sua equipe",
+      "description": "Comece de graça. Faça upgrade quando o trabalho for para o cliente."
+    },
+    {
+      "type": "faq",
+      "title": "Perguntas frequentes",
+      "items": [
+        {
+          "question": "O que torna o Lovart um 'Agente' e não apenas um gerador?",
+          "answer": "Geradores tradicionais são passivos; você digita o prompt, eles geram. O Lovart é ativo. Ele raciocina, planeja, divide tarefas e orquestra múltiplos modelos para alcançar um objetivo de negócios de alto nível, mantendo o contexto durante todo o projeto."
+        },
+        {
+          "question": "O Agente pode manter a consistência da marca?",
+          "answer": "Sim. O 'Design Context Core' do Lovart permite que o Agente lembre a paleta de cores, tipografia e estilos de personagem da sua marca, aplicando-os consistentemente em todos os ativos gerados em uma sessão."
+        },
+        {
+          "question": "O Agente suporta criação de vídeo?",
+          "answer": "Com certeza. O Agente de Design integra os principais modelos de vídeo como Veo 3 e Kling. Você pode transformar qualquer design estático em um ativo em movimento simplesmente pedindo ao Agente para 'animar isso'."
+        },
+        {
+          "question": "O conteúdo é utilizável comercialmente?",
+          "answer": "Sim, usuários em planos pagos têm direitos comerciais totais sobre os designs gerados pelo Agente, tornando-o perfeito para campanhas de marketing, mercadorias e trabalho para clientes."
+        },
+        {
+          "question": "Preciso de habilidades de design para usar o Agente?",
+          "answer": "Não. O Agente foi projetado para preencher a lacuna entre ideia e execução. Você fornece a visão em linguagem natural, e o Agente cuida dos princípios técnicos de design, layout e renderização."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Comece a criar com a Lovart",
+      "description": "Transforme seu briefing em visuais alinhados à marca em minutos.",
+      "buttons": [
+        {
+          "text": "Começar grátis",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

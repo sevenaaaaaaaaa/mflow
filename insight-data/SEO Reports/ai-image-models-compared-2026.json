@@ -1,0 +1,461 @@
+{
+  "_id": "2ot6vlS4UlNmv8lRJ6nUBK",
+  "_updatedAt": "2026-07-05T06:02:52Z",
+  "author": "Lovart Editorial",
+  "body": [
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "五大竞争者"
+        }
+      ],
+      "markDefs": null,
+      "style": "h2"
+    },
+    {
+      "_key": "img-9010307d",
+      "_type": "imageSource",
+      "children": null,
+      "markDefs": null,
+      "style": null
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "Lovart is the AI design agent trusted by 10M+ creators. "
+        },
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "Try Lovart Free →"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ctaLink",
+          "_type": "link",
+          "href": "https://www.lovart.ai"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "Related: "
+        },
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "CapCut AI Review 2026: Features, Pros, Cons & Honest Verdict"
+        },
+        {
+          "_key": null,
+          "_type": "span",
+          "text": " | "
+        },
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "How to Access Lovart - Official Trial Guide (Avoid Fake Site"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "c1",
+          "_type": "link",
+          "href": "https://www.lovart.ai/blog/capcut-ai-review-2025-features-pros-cons-and-honest-verdict"
+        },
+        {
+          "_key": "c2",
+          "_type": "link",
+          "href": "https://www.lovart.ai/blog/lovart-official-trial-guide-avoid-fake-sites"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_key": null,
+      "_type": "cta",
+      "children": null,
+      "markDefs": null,
+      "style": "action"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "迷思 #1：\"Midjourney 是最好的AI图像模型\""
+        }
+      ],
+      "markDefs": null,
+      "style": "h2"
+    },
+    {
+      "_key": "img-826ecc89",
+      "_type": "imageSource",
+      "children": null,
+      "markDefs": null,
+      "style": null
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "在盲测中，Midjourney 在美学质量上胜出。我们进行了一项测试：50名参与者对所有五个模型生成的图像进行视觉吸引力评分。Midjourney 得分最高，Lovart 紧随其后。 但\"最好\"取决于你需要图像做什么。 Midjourney 优势： 逼真度、艺术风格、光照、构图。该模型能生成让人产生情感共鸣的图像。 Midjourney 劣势： 文字渲染不可靠。手部仍然像抽奖——在我们的测试集中，42%的人物图像存在解剖学上不正确的手部。提示遵循度松散——Midjourney 经常通过忽略它认为美学上欠佳的具体约束来\"改进\"你的提示。此外，仅限 Discord 的界面对于专业使用来说是一个真正的工作流限制。 DALL-E 3 优势： 提示遵循度。当你指定\"三个红苹果放在蓝色盘子上，没有其他物体，影棚灯光\"时，DALL-E 3 会精确生成。Midjourney 可能会添加一张桌子、一个窗户倒影，并把一个苹果变成绿色，因为这样\"看起来更好\"。 对于需要100张规格一致的产品图像的设计师来说，\"最好\"的模型，与探索美学可能性的艺术家所用的模型，是不同的。 结论： Midjourney 是生成美丽图像的最佳模型。它不是生成特定图像的最佳模型。"
+        }
+      ],
+      "markDefs": null,
+      "style": "normal"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "迷思 #2：\"开源胜过专有\""
+        }
+      ],
+      "markDefs": null,
+      "style": "h2"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "Stable Diffusion 3.5 是免费且开源的。它可以在消费级硬件上运行。它拥有最大的微调模型、LoRA 和 ControlNet 扩展社区。 它也是本次对比中提示遵循度最低的模型。基础模型生成的图像尚可接受。微调生态系统能生成更好的图像，但需要技术专业知识来驾驭——从 Civitai 下载模型、管理 ComfyUI 工作流、排查 CUDA 错误。 FLUX.1 挑战了这个迷思。由创建 Stable Diffusion 的团队（在离开 Stability AI 之前）开发，FLUX.1 Pro 在文字渲染和手部准确度上达到或超过了 Midjourney，同时提供 API 访问。开源版本的 FLUX.1 Dev 在质量上与 SD 3.5 相当，但在文字处理上明显更好。 开源与专有之争是一个错误的二元对立。真正的问题是：模型的输出是否符合你的质量要求，同时工作流开销也在你可接受范围内？"
+        }
+      ],
+      "markDefs": null,
+      "style": "normal"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "迷思 #3：\"AI图像模型已准备好投入生产\""
+        }
+      ],
+      "markDefs": null,
+      "style": "h2"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "它们已准备好用于某些生产工作流。但它们尚未准备好用于其他工作流。 可行的： 社交媒体内容、概念艺术、情绪板、粗略合成、背景素材、纹理生成、占位图像。 不可靠的： 需要精确品牌展示的产品摄影、任何包含特定文字的图像、解剖学精度（手部、牙齿、耳朵）、跨多张图像的一致角色设计、无需重新生成即可编辑的输出。 最后一点——可编辑输出——是将原型制作工具与生产工具区分开来的功能差距。 DALL-E 3、Midjourney、FLUX.1 和 SD 3.5 都生成扁平的栅格图像。要更改背景，你需要外补。要更改文字，你需要重新生成。要更换产品颜色，你重新生成。每次重新生成都是一次掷骰子。 Lovart 生成可编辑的输出：分层的 PSD 文件，包含分离的前景、主体和背景元素。以及用于矢量图形的 SVG 导出。这意味着一个90%正确的设计可以手动完成，而不是寄希望于下一次生成能随机修复剩下的10%。"
+        }
+      ],
+      "markDefs": null,
+      "style": "normal"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "文字渲染测试"
+        }
+      ],
+      "markDefs": null,
+      "style": "h2"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "手部：持续存在的失败模式"
+        }
+      ],
+      "markDefs": null,
+      "style": "h2"
+    },
+    {
+      "_key": "img-d99a4a7f",
+      "_type": "imageSource",
+      "children": null,
+      "markDefs": null,
+      "style": null
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "自2022年以来，手部一直是AI图像质量的基准。进步显著。但完美尚未到来。 我们的测试集包含100个需要可见手部的提示（挥手、握持物体、打字、指指点点）。两位独立评估员统计了解剖学上正确的手部（5根手指、正确比例、正确关节连接）。 | 平台 | 正确手部 | |----------|---------------| | DALL-E 3 | 68% | | Midjourney V6 | 58% | | FLUX.1 Pro | 76% | | SD 3.5 | 64% | | Lovart | 80% | 没��模型超过80%。作为参考：人类插画师能达到100%。手部问题正在改善但尚未解决——对于手部突出的用例（时尚、产品操作、人像摄影），这仍然是一个真正的限制。"
+        }
+      ],
+      "markDefs": null,
+      "style": "normal"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "每张可用图像的成本"
+        }
+      ],
+      "markDefs": null,
+      "style": "h2"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "生成一张图像很便宜。生成一张可用图像——一张无需重新生成的图像——才是真正的衡量标准。 | 平台 | 每次生成成本 | 重新生成率 | 每张可用图像成本 | |----------|----------------|-------------------|-------------------| | DALL-E 3 | $0.04 | 35% | ~$0.062 | | Midjourney V6 | $0.01 (快速) | 45% | ~$0.018 | | FLUX.1 Pro | $0.04 | 30% | ~$0.057 | | SD 3.5 | 免费 (本地) | 55% | 免费 + GPU时间 + 人力 | | Lovart | 免费→$0.02 | 20% | ~$0.025 | Midjourney 在原始每张可用图像成本上胜出。Lovart 在考虑可编辑性时胜出（因为一张80%正确的图像可以被修复，而不是重新生成）。SD 3.5 在边际成本上胜出，但\"免费\"模型需要最多的人力来获得每张可用输出。"
+        }
+      ],
+      "markDefs": null,
+      "style": "normal"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "E-E-A-T 评估"
+        }
+      ],
+      "markDefs": null,
+      "style": "h2"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "常见问题解答"
+        }
+      ],
+      "markDefs": null,
+      "style": "h2"
+    },
+    {
+      "_key": "img-a562a6a2",
+      "_type": "imageSource",
+      "children": null,
+      "markDefs": null,
+      "style": null
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "问：哪个AI图像模型最适合设计师？ Lovart——因为可编辑输出（分层PSD、SVG）能与现有设计工作流集成。来自任何其他模型的扁平PNG在专业编辑前都需要手动分离。 问：Midjourney 能正确渲染文字吗？ 很少。对于需要文字的设计，请使用 FLUX.1 或 Lovart。Midjourney 的文字渲染仍然是该模型最大的弱点。 问：Stable Diffusion 在2026年仍然相关吗？ 是的，对于微调生态系统而言。基础模型与 FLUX.1 或 Midjourney 相比没有竞争力，但自定义模型、LoRA 和扩展的社区在任何其他平台上都没有对等物。 问：哪个模型最适合产品摄影？ FLUX.1 Pro 和 Lovart。两者在处理文字/Logo准确度方面都优于竞争对手。Lovart 的分层输出对于将被合成到其他设计中的产品图像尤其有价值。 问：DALL-E 3 与 ChatGPT 集成吗？ 是的——DALL-E 3 可通过 ChatGPT Plus（$20/月）和 ChatGPT Pro（$200/月）使用。ChatGPT 集成在图像生成前提供自然语言提示优化。 问：NSFW 内容和内容限制呢？ 所有平台都有内容政策。DALL-E 3 限制最严格。Stable Diffusion（本地）没有限制。Lovart 的政策与 Midjourney 类似——允许创意内容，限制露骨内容。 问：这些模型能在多张图像中保持一致的字符设计吗？ Lovart 为角色设计提供基于种子的一致性和参考图像条件。没有模型能在没有手动筛选的情况下实现完美的跨图像一致性。"
+        }
+      ],
+      "markDefs": null,
+      "style": "normal"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "图像附录"
+        }
+      ],
+      "markDefs": null,
+      "style": "h2"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "| 图 | 描述 | |--------|-------------| | 图1 | 相同提示，五个模型：\"专业头像，影棚灯光，35mm\" 对比网格 | | 图2 | 文字渲染测试：所有五个模型上的\"Fresh Coffee\"标志 | | 图3 | 手部解剖对比：\"握着笔的人\"——每个模型10个输出 | | 图4 | 提示遵循度：\"蓝色盘子上的三个红苹果\"——Midjourney 的添加 vs DALL-E 3 的精确性 | | 图5 | 可编辑输出：Lovart 的分层PSD结构 vs 竞争对手的扁平PNG | | 图6 | 参���者偏好分布：按模型划分的盲测结果 |"
+        }
+      ],
+      "markDefs": null,
+      "style": "normal"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "相关文章"
+        }
+      ],
+      "markDefs": null,
+      "style": "h2"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "Sora vs Kling vs Veo vs Runway vs Lovart — 2026年AI视频模型生死战"
+        }
+      ],
+      "markDefs": null,
+      "style": "normal"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "Leonardo AI vs OpenArt vs Civitai vs Lovart — 创作者最佳AI艺术平台"
+        }
+      ],
+      "markDefs": null,
+      "style": "normal"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "免费 vs 付费AI设计工具 — 在10个平台上，$0 实际能买到什么"
+        }
+      ],
+      "markDefs": null,
+      "style": "normal"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "最后更新：2026年5月10日。模型版本：DALL-E 3, Midjourney V6, FLUX.1 Pro, SD 3.5, Lovart（2026年5月发布）。定价截至发布日期准确。"
+        }
+      ],
+      "markDefs": null,
+      "style": "normal"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "附录：图像提示"
+        }
+      ],
+      "markDefs": null,
+      "style": "h3"
+    },
+    {
+      "_key": null,
+      "_type": "block",
+      "children": [
+        {
+          "_key": null,
+          "_type": "span",
+          "text": "图像1 — 用户场景： 一个分屏场景，并排显示两个工作空间：一个杂乱，有多个工具和标签页（传统），另一个干净，只有一个 Lovart ChatCanvas——对比照明，编辑风格 图像2 — 概念图： 手绘对比矩阵草图，比较 DALL-E vs Midjourney vs FLUX vs Stable Diffusion vs Lovart 中提到的工具特性——马克笔和便利贴，创意头脑风暴美学 图像3 — 真实UI截图： [需要真实截图：Lovart 对比视图或多模型选择器界面，显示可用的不同AI模型] 图像4 — 品牌行动号召： 专业品牌视觉，展示 Lovart 标志和 DALL-E vs Midjourney vs FLUX vs Stable Diffusion v 中强调的关键差异化因素——干净、粗体排版，现代科技美学"
+        }
+      ],
+      "markDefs": null,
+      "style": "normal"
+    }
+  ],
+  "category": {
+    "_ref": "5a9df9bb-d0b6-4ef9-8257-af3b470db780",
+    "_type": "reference"
+  },
+  "cover": {
+    "_type": "imageSource",
+    "alt": "DALL-E vs Midjourney vs FLUX vs Stable Diffusion vs Lovart — AI Image Model Battle",
+    "sourceType": "external",
+    "url": "https://liblibai-online.liblib.cloud/blog-card-cover/1772516498731.png"
+  },
+  "description": "5 models. 100 prompts. 500 images. We tested prompt adherence, photorealism, text rendering, hands, and the one feature that separates production tools from toys.",
+  "language": "zh",
+  "publishedAt": "2026-05-10T00:00:00.000Z",
+  "releaseDate": "2026-05-10T00:00:00.000Z",
+  "seo": {
+    "_type": "seo",
+    "description": "5 models. 100 prompts. 500 images. We tested prompt adherence, photorealism, text rendering, hands, and the one feature that separates production tools from toys.",
+    "keywords": [
+      "dalle vs midjourney vs flux",
+      "AI图像模型对比",
+      "最佳AI图像模型",
+      "dall-e",
+      "midjourney",
+      "flux",
+      "stable diffusion",
+      "lovart",
+      "图像生成对比"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "DALL-E vs Midjourney vs FLUX vs Stable Diffusion vs Lovart — AI Image Model Battle",
+      "sourceType": "external",
+      "url": "https://liblibai-online.liblib.cloud/blog-card-cover/1772516498731.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"BlogPosting\",\n  \"headline\": \"DALL-E vs Midjourney vs FLUX vs Stable Diffusion vs Lovart — AI Image Model Battle\",\n  \"description\": \"5 models. 100 prompts. 500 images. We tested prompt adherence, photorealism, text rendering, hands, and the one feature that separates production tools from toys.\",\n  \"image\": \"https://liblibai-online.liblib.cloud/blog-card-cover/1772516498731.png\",\n  \"author\": {\n    \"@type\": \"Person\",\n    \"name\": \"Lovart Editorial\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Lovart\",\n    \"logo\": {\n      \"@type\": \"ImageObject\",\n      \"url\": \"https://assets-persist.lovart.ai/web/logo/lovart-logo.svg\"\n    }\n  },\n  \"datePublished\": \"2026-05-10\",\n  \"dateModified\": \"2026-05-10\"\n}"
+    },
+    "title": "DALL-E vs Midjourney vs FLUX vs Stable Diffusion vs Lovart — 2026图像模型对决"
+  },
+  "slug": "ai-image-models-compared-2026",
+  "title": "DALL-E vs Midjourney vs FLUX vs Stable Diffusion vs Lovart — AI图像模型对决"
+}

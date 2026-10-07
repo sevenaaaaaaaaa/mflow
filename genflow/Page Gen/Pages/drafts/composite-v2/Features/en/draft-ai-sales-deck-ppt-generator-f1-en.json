@@ -1,0 +1,33 @@
+{
+  "slug": "draft-ai-sales-deck-ppt-generator-f1",
+  "language": "en",
+  "category": "feature",
+  "schemaVersion": "composite-v2",
+  "storylineTemplate": "F1",
+  "draftStatus": "local-only",
+  "draftTheme": "ai-sales-deck-ppt-generator",
+  "draftNotes": "Baseline sales deck feature page with full capability grid.",
+  "url_path": "https://www.lovart.ai/features/draft-ai-sales-deck-ppt-generator-f1",
+  "title": "AI Sales Deck PPT Generator | Lovart",
+  "description": "Baseline sales deck feature page with full capability grid.",
+  "bodyJson": "[{\"type\":\"prompt-launcher\",\"title\":\"Turn a sales brief into a deck\",\"description\":\"Paste your outline, ICP, and proof points. Lovart generates a visually consistent sales deck with readable typography and editable slides.\",\"input_placeholder\":\"8-slide enterprise sales deck for HR analytics platform…\",\"prompts\":[{\"label\":\"Seed pitch deck\",\"prompt\":\"12-slide investor deck for a climate SaaS startup, clean data visuals\"},{\"label\":\"Sales enablement\",\"prompt\":\"8-slide sales deck for enterprise HR software with case-study layout\"},{\"label\":\"Quarterly business review\",\"prompt\":\"6-slide QBR template with KPI charts and executive summary\"},{\"label\":\"Product launch\",\"prompt\":\"10-slide go-to-market deck for a mobile fintech app launch\"}],\"cta\":{\"text\":\"Generate deck\"},\"tip\":\"Export slides for PowerPoint, Keynote, or Google Slides.\"},{\"type\":\"workflow-horizontal\",\"title\":\"Pitch-ready in three steps\",\"steps\":[{\"step\":1,\"title\":\"Outline\",\"description\":\"Problem, solution, proof, pricing, CTA — agent structures the narrative.\"},{\"step\":2,\"title\":\"Design\",\"description\":\"Consistent layouts, charts, and brand colors across every slide.\"},{\"step\":3,\"title\":\"Edit & export\",\"description\":\"Text Edit for last-minute numbers; 4K export for the room.\"}]},{\"type\":\"feature-grid\",\"title\":\"Sales deck capabilities\",\"columns\":3,\"features\":[{\"title\":\"Readable slide text\",\"description\":\"Headlines and bullets that survive the projector test.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/features/presentation-strategy.png\",\"alt\":\"Typography\"}},{\"title\":\"Text Edit\",\"description\":\"Update metrics without rebuilding the slide.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/features/presentation-orchestrate.png\",\"alt\":\"Text edit\"}},{\"title\":\"Brand consistency\",\"description\":\"Logo and palette locked across 20+ slides.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/features/presentation-export.png\",\"alt\":\"Brand\"}},{\"title\":\"Edit Elements\",\"description\":\"Move charts and icons as layers.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/features/presentation-orchestrate.png\",\"alt\":\"Layers\"}},{\"title\":\"Data visuals\",\"description\":\"KPI blocks and comparison layouts for QBRs.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/features/presentation-strategy.png\",\"alt\":\"Charts\"}},{\"title\":\"4K export\",\"description\":\"Crisp on conference screens and PDF send-outs.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/features/presentation-export.png\",\"alt\":\"Export\"}}]},{\"type\":\"testimonial\",\"title\":\"Founders and sales teams winning the room\",\"testimonials\":[{\"quote\":\"Our seed deck looked agency-made. Fifteen slides in twenty minutes.\",\"author\":\"Michael T.\",\"role\":\"Startup founder\"},{\"quote\":\"Text Edit saved us when Q3 numbers landed an hour before the board meeting.\",\"author\":\"Sarah K.\",\"role\":\"Marketing director\"},{\"quote\":\"Every rep now runs the same high-end visual system — no off-brand PowerPoints.\",\"author\":\"David R.\",\"role\":\"Sales consultant\"}]},{\"type\":\"faq\",\"title\":\"AI sales deck & PPT FAQ\",\"items\":[{\"question\":\"Can Lovart generate readable slide text?\",\"answer\":\"Yes. Models like Seedream render structured headlines and bullets. Text Edit lets you change copy without breaking the layout.\"},{\"question\":\"Is this for sales decks or general presentations?\",\"answer\":\"Both. Use the same agent for investor pitches, sales enablement decks, QBRs, and training slides — each with brand-consistent visuals.\"},{\"question\":\"Can I move slides into PowerPoint or Google Slides?\",\"answer\":\"Export high-resolution slide images and drop them into PowerPoint, Keynote, or Google Slides as backgrounds or full slides.\"},{\"question\":\"How does Lovart keep slides on-brand?\",\"answer\":\"Brand Kit and ChatCanvas context carry colors, typography, and logo placement from slide one through the closing CTA.\"},{\"question\":\"Can sales teams reuse one master deck?\",\"answer\":\"Yes. Build a master narrative once, then generate rep-specific variants with localized proof points and vertical examples.\"}]},{\"type\":\"cta-default\",\"title\":\"Build your next sales deck\",\"description\":\"Free credits to test — upgrade for commercial delivery.\",\"buttons\":[{\"text\":\"Get started\",\"action\":\"openLogin\",\"variant\":\"primary\",\"href\":\"/signup\"}]}]",
+  "seo": {
+    "_type": "seo",
+    "title": "AI Sales Deck PPT Generator | Lovart",
+    "description": "Baseline sales deck feature page with full capability grid.",
+    "keywords": [
+      "ai sales deck generator",
+      "ai ppt generator",
+      "sales presentation ai",
+      "pitch deck maker"
+    ],
+    "ogImage": {
+      "_type": "imageSource",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/features/presentation-orchestrate.png",
+      "alt": "AI Sales Deck PPT Generator"
+    },
+    "noIndex": true
+  },
+  "pageType": "feature"
+}

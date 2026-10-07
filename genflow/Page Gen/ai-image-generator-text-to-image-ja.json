@@ -1,0 +1,388 @@
+{
+  "_id": "features-ai-image-generator-text-to-image-ja",
+  "reflowSourceId": "features-ai-image-generator-text-to-image-ja",
+  "slug": "ai-image-generator-text-to-image",
+  "language": "ja",
+  "category": "feature",
+  "title": "Lovartでテキストとスタイルからプロ級画像生成",
+  "description": "Create photorealistic images with perfect text rendering using Lovart's AI Design Agent. Powered by Nano Banana Pro, generate editable layers, mockups, and commercial-ready visuals in seconds.",
+  "seo": {
+    "description": "LovartのAIデザインエージェントで、完璧なテキスト描写のフォトリアル画像を生成。Nano Banana Pro搭載で、編集可能なレイヤーやモックアップ、商用利用可能なビジュアルを数秒で作成。",
+    "keywords": [
+      "人工知能画像生成",
+      "AI画像生成",
+      "テキストから画像へ",
+      "Nano Banana Pro",
+      "Seedream 4.5",
+      "AIグラフィックデザイン",
+      "編集可能なAI画像",
+      "フォトリアリスティックAI生成"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Nano Banana Pro",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovartでテキストとスタイルからプロ級画像生成\", \"description\": \"Create photorealistic images with perfect text rendering using Lovart's AI Design Agent. Powered by Nano Banana Pro, generate editable layers, mockups, and commercial-ready visuals in seconds.\", \"url\": \"https://www.lovart.ai/features/ai-image-generator-text-to-image\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"画像を商用利用できますか？ (section_ja)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい！Lovartの有料プランで生成された画像には完全な商用ライセンスが付帯しており、広告、ウェブサイト、商品に使用できます。(section_ja)\"}}, {\"@type\": \"Question\", \"name\": \"Nano Banana ProはMidjourneyと比べてどうですか？ (section_ja)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"どちらも高品質ですが、Nano Banana Proは指示の順守とテキストレンダリングに優れています。さらに、Lovartは他にはない編集可能なレイヤーとキャンバスツールを提供しています。(section_ja)\"}}, {\"@type\": \"Question\", \"name\": \"生成された画像内のテキストを編集できますか？ (section_ja)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"もちろんです。「テキスト編集」機能を使えば、AIがテキストレイヤーを識別し、キャンバス上で直接、言葉遣い、フォント、色を変更できます。(section_ja)\"}}, {\"@type\": \"Question\", \"name\": \"どのようなファイル形式でエクスポートできますか？ (section_ja)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"JPG、PNG、そしてイラスト用のSVG（ベクター）でエクスポートできます。また、Upscaleを通じて最大8Kの高解像度ダウンロードもサポートしています。(section_ja)\"}}, {\"@type\": \"Question\", \"name\": \"習得するのは難しいですか？ (section_ja)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"全く難しくありません。Lovartは自然言語を使用します。欲しいものを説明するか、「タッチ編集」でクリックして変更するだけです。非デザイナー向けに設計されています。(section_ja)\"}}]}}"
+    },
+    "title": "Lovartでテキストとスタイルからプロ級画像生成"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Lovartでテキストとスタイルからプロ級画像生成\",\"description\":\"Create photorealistic images with perfect text rendering using Lovart's AI Design Agent. Powered by Nano Banana Pro, generate editable layers, mockups, and commercial-ready visuals in seconds.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Nano Banana Pro\"}},{\"type\":\"bento-6\",\"title\":\"The Most Complete AI Creative Suite\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Nano Banana Pro\",\"description\":\"当社のフラッグシップモデルは、業界をリードするフォトリアリズムとテキストレンダリング機能を提供し、商用広告に最適です。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Nano Banana Pro\"}},{\"title\":\"要素編集 (Edit Elements)\",\"description\":\"前景の被写体、テキスト、背景レイヤーを自動的に検出して分離し、個別に編集できるようにします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"要素編集 (Edit Elements)\"}},{\"title\":\"タッチ編集 (Touch Edit)\",\"description\":\"画像の変更したい部分をクリックして指示を入力するだけ。残りはエージェントが処理します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"タッチ編集 (Touch Edit)\"}},{\"title\":\"8Kアップスケール\",\"description\":\"生成された画像の解像度を、詳細を失うことなく最大8Kまで向上させ、大判印刷に対応します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"8Kアップスケール\"}},{\"title\":\"スマートリサイズ\",\"description\":\"AIアウトペインティングを使用して、画像をあらゆるアスペクト比（例：正方形から16:9）に拡張し、新しいスペースをシームレスに埋めます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"スマートリサイズ\"}},{\"title\":\"ベクター化 (Vectorize)\",\"description\":\"AIで生成されたロゴやイラストを、プロのデザインで使用できるスケーラブルなベクターグラフィックス（SVG）に変換します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"ベクター化 (Vectorize)\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Nano Banana Pro\",\"icon\":\"chat\",\"content\":{\"title\":\"Nano Banana Pro\",\"description\":\"当社のフラッグシップモデルは、業界をリードするフォトリアリズムとテキストレンダリング機能を提供し、商用広告に最適です。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Nano Banana Pro\"}}},{\"label\":\"要素編集 (Edit Elements)\",\"icon\":\"image\",\"content\":{\"title\":\"要素編集 (Edit Elements)\",\"description\":\"前景の被写体、テキスト、背景レイヤーを自動的に検出して分離し、個別に編集できるようにします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"要素編集 (Edit Elements)\"}}},{\"label\":\"タッチ編集 (Touch Edit)\",\"icon\":\"flask\",\"content\":{\"title\":\"タッチ編集 (Touch Edit)\",\"description\":\"画像の変更したい部分をクリックして指示を入力するだけ。残りはエージェントが処理します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"タッチ編集 (Touch Edit)\"}}},{\"label\":\"8Kアップスケール\",\"icon\":\"brand\",\"content\":{\"title\":\"8Kアップスケール\",\"description\":\"生成された画像の解像度を、詳細を失うことなく最大8Kまで向上させ、大判印刷に対応します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"8Kアップスケール\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"スマートリサイズ\",\"description\":\"AIアウトペインティングを使用して、画像をあらゆるアスペクト比（例：正方形から16:9）に拡張し、新しいスペースをシームレスに埋めます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"スマートリサイズ\"}},{\"title\":\"ベクター化 (Vectorize)\",\"description\":\"AIで生成されたロゴやイラストを、プロのデザインで使用できるスケーラブルなベクターグラフィックス（SVG）に変換します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"ベクター化 (Vectorize)\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"AI Image Generator: Create Professional Visuals with Text & Style プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"デザインを本当に理解するAI画像生成ツール\",\"description\":\"ありきたりなAIアートは忘れましょう。Lovartは、Nano Banana ProやSeedream 4.5などの最先端モデルを搭載したAIデザインエージェントです。完璧なテキストレンダリング、編集可能なレイヤー、正確なスタイル制御を備えたフォトリアルな画像を生成します。マーケティングビジュアルから超現実的なアートまで、単なるインスピレーションではなく、ビジネスに使えるアセットを作成しましょう。\",\"input_placeholder\":\"例：「ネオン街にある未来的なスニーカーの広告、太字テキスト：RUN THE NIGHT」\",\"prompts\":[{\"label\":\"サイバーパンクな屋台\",\"prompt\":\"Cyberpunk street food stall, neon lights, smoke, sign saying 'NOODLES', 8k resolution\"},{\"label\":\"ミニマリストな商品撮影\",\"prompt\":\"Minimalist skincare product bottle on a rock, ocean background, soft sunlight, high-end photography\"},{\"label\":\"3Dキャラクターデザイン\",\"prompt\":\"Cute 3D avatar of a girl with headphones, working on a laptop, Pixar style, bright colors\"},{\"label\":\"レトロな旅行ポスター\",\"prompt\":\"Vintage travel poster for Mars, retro typography saying 'VISIT MARS', grain texture\"}],\"tip\":\"プロのヒント：生成後に「要素編集 (Edit Elements)」を使用して、被写体を背景から分離したり、画像全体を再生成せずにテキストを変更したりできます。\",\"cta\":{\"text\":\"画像を生成\"}},{\"type\":\"workflow-horizontal\",\"title\":\"単なる「プロンプトから画像へ」を超えて\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"読めるテキスト\",\"description\":\"Nano Banana Proを搭載したLovartは、AI最大の頭痛の種である「テキスト」を解決します。英語と中国語で、鮮明で読みやすいタイポグラフィを持つロゴ、ポスター、パッケージを生成します。\"},{\"step\":2,\"title\":\"生成したものを編集\",\"description\":\"Lovartはスロットマシンではありません。「要素編集」を使って、生成された画像をレイヤーに分解。オブジェクトの移動、背景の変更、詳細の修正が即座に行えます。\"},{\"step\":3,\"title\":\"プロフェッショナルなモックアップ\",\"description\":\"平面的なAI生成画像をリアルな製品写真に変身させます。ワンクリックで、デザインをボトル、看板、アパレルに適用し、遠近感を完璧にマッチさせます。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Image Generator: Create Professional Visuals with Text & Style：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"AI Image Generator: Create Professional Visuals with Text & Style プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"AI Image Generator: Create Professional Visuals with Text & Style が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから AI Image Generator: Create Professional Visuals with Text & Style の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"以前はAI画像の奇妙なテキストに苦労していました。Nano Banana Proはそれを完全に解決しました。今では完全なキャンペーンポスターを数分で生成できます。\",\"author\":\"Sarah Jenkins\",\"role\":\"ソーシャルメディアマネージャー\"},{\"quote\":\"「要素編集」機能は魔法です。商品写真を生成してから、Photoshopなしで商品の位置を動かしたり背景を変えたりできます。\",\"author\":\"David Chen\",\"role\":\"Eコマース創業者\"},{\"quote\":\"Lovartはただのおもちゃではなく、ワークフローです。8Kへのアップスケールやベクターエクスポート機能のおかげで、クライアントワークに実際に使用できます。\",\"author\":\"Creative Agency X\",\"role\":\"デザインチーム\"}],\"title\":\"Lovartを選ぶデザイナーとマーケター\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"画像を商用利用できますか？\",\"answer\":\"はい！Lovartの有料プランで生成された画像には完全な商用ライセンスが付帯しており、広告、ウェブサイト、商品に使用できます。\"},{\"question\":\"Nano Banana ProはMidjourneyと比べてどうですか？\",\"answer\":\"どちらも高品質ですが、Nano Banana Proは指示の順守とテキストレンダリングに優れています。さらに、Lovartは他にはない編集可能なレイヤーとキャンバスツールを提供しています。\"},{\"question\":\"生成された画像内のテキストを編集できますか？\",\"answer\":\"もちろんです。「テキスト編集」機能を使えば、AIがテキストレイヤーを識別し、キャンバス上で直接、言葉遣い、フォント、色を変更できます。\"},{\"question\":\"どのようなファイル形式でエクスポートできますか？\",\"answer\":\"JPG、PNG、そしてイラスト用のSVG（ベクター）でエクスポートできます。また、Upscaleを通じて最大8Kの高解像度ダウンロードもサポートしています。\"},{\"question\":\"習得するのは難しいですか？\",\"answer\":\"全く難しくありません。Lovartは自然言語を使用します。欲しいものを説明するか、「タッチ編集」でクリックして変更するだけです。非デザイナー向けに設計されています。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Lovartでテキストとスタイルからプロ級画像生成",
+      "description": "Create photorealistic images with perfect text rendering using Lovart's AI Design Agent. Powered by Nano Banana Pro, generate editable layers, mockups, and commercial-ready visuals in seconds.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Nano Banana Pro"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "The Most Complete AI Creative Suite",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Nano Banana Pro",
+          "description": "当社のフラッグシップモデルは、業界をリードするフォトリアリズムとテキストレンダリング機能を提供し、商用広告に最適です。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Nano Banana Pro"
+          }
+        },
+        {
+          "title": "要素編集 (Edit Elements)",
+          "description": "前景の被写体、テキスト、背景レイヤーを自動的に検出して分離し、個別に編集できるようにします。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "要素編集 (Edit Elements)"
+          }
+        },
+        {
+          "title": "タッチ編集 (Touch Edit)",
+          "description": "画像の変更したい部分をクリックして指示を入力するだけ。残りはエージェントが処理します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "タッチ編集 (Touch Edit)"
+          }
+        },
+        {
+          "title": "8Kアップスケール",
+          "description": "生成された画像の解像度を、詳細を失うことなく最大8Kまで向上させ、大判印刷に対応します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "8Kアップスケール"
+          }
+        },
+        {
+          "title": "スマートリサイズ",
+          "description": "AIアウトペインティングを使用して、画像をあらゆるアスペクト比（例：正方形から16:9）に拡張し、新しいスペースをシームレスに埋めます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "スマートリサイズ"
+          }
+        },
+        {
+          "title": "ベクター化 (Vectorize)",
+          "description": "AIで生成されたロゴやイラストを、プロのデザインで使用できるスケーラブルなベクターグラフィックス（SVG）に変換します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "ベクター化 (Vectorize)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Nano Banana Pro",
+          "icon": "chat",
+          "content": {
+            "title": "Nano Banana Pro",
+            "description": "当社のフラッグシップモデルは、業界をリードするフォトリアリズムとテキストレンダリング機能を提供し、商用広告に最適です。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "Nano Banana Pro"
+            }
+          }
+        },
+        {
+          "label": "要素編集 (Edit Elements)",
+          "icon": "image",
+          "content": {
+            "title": "要素編集 (Edit Elements)",
+            "description": "前景の被写体、テキスト、背景レイヤーを自動的に検出して分離し、個別に編集できるようにします。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "要素編集 (Edit Elements)"
+            }
+          }
+        },
+        {
+          "label": "タッチ編集 (Touch Edit)",
+          "icon": "flask",
+          "content": {
+            "title": "タッチ編集 (Touch Edit)",
+            "description": "画像の変更したい部分をクリックして指示を入力するだけ。残りはエージェントが処理します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "タッチ編集 (Touch Edit)"
+            }
+          }
+        },
+        {
+          "label": "8Kアップスケール",
+          "icon": "brand",
+          "content": {
+            "title": "8Kアップスケール",
+            "description": "生成された画像の解像度を、詳細を失うことなく最大8Kまで向上させ、大判印刷に対応します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "8Kアップスケール"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "スマートリサイズ",
+          "description": "AIアウトペインティングを使用して、画像をあらゆるアスペクト比（例：正方形から16:9）に拡張し、新しいスペースをシームレスに埋めます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "スマートリサイズ"
+          }
+        },
+        {
+          "title": "ベクター化 (Vectorize)",
+          "description": "AIで生成されたロゴやイラストを、プロのデザインで使用できるスケーラブルなベクターグラフィックス（SVG）に変換します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "ベクター化 (Vectorize)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "AI Image Generator: Create Professional Visuals with Text & Style プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "デザインを本当に理解するAI画像生成ツール",
+      "description": "ありきたりなAIアートは忘れましょう。Lovartは、Nano Banana ProやSeedream 4.5などの最先端モデルを搭載したAIデザインエージェントです。完璧なテキストレンダリング、編集可能なレイヤー、正確なスタイル制御を備えたフォトリアルな画像を生成します。マーケティングビジュアルから超現実的なアートまで、単なるインスピレーションではなく、ビジネスに使えるアセットを作成しましょう。",
+      "input_placeholder": "例：「ネオン街にある未来的なスニーカーの広告、太字テキスト：RUN THE NIGHT」",
+      "prompts": [
+        {
+          "label": "サイバーパンクな屋台",
+          "prompt": "Cyberpunk street food stall, neon lights, smoke, sign saying 'NOODLES', 8k resolution"
+        },
+        {
+          "label": "ミニマリストな商品撮影",
+          "prompt": "Minimalist skincare product bottle on a rock, ocean background, soft sunlight, high-end photography"
+        },
+        {
+          "label": "3Dキャラクターデザイン",
+          "prompt": "Cute 3D avatar of a girl with headphones, working on a laptop, Pixar style, bright colors"
+        },
+        {
+          "label": "レトロな旅行ポスター",
+          "prompt": "Vintage travel poster for Mars, retro typography saying 'VISIT MARS', grain texture"
+        }
+      ],
+      "tip": "プロのヒント：生成後に「要素編集 (Edit Elements)」を使用して、被写体を背景から分離したり、画像全体を再生成せずにテキストを変更したりできます。",
+      "cta": {
+        "text": "画像を生成"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "単なる「プロンプトから画像へ」を超えて",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "読めるテキスト",
+          "description": "Nano Banana Proを搭載したLovartは、AI最大の頭痛の種である「テキスト」を解決します。英語と中国語で、鮮明で読みやすいタイポグラフィを持つロゴ、ポスター、パッケージを生成します。"
+        },
+        {
+          "step": 2,
+          "title": "生成したものを編集",
+          "description": "Lovartはスロットマシンではありません。「要素編集」を使って、生成された画像をレイヤーに分解。オブジェクトの移動、背景の変更、詳細の修正が即座に行えます。"
+        },
+        {
+          "step": 3,
+          "title": "プロフェッショナルなモックアップ",
+          "description": "平面的なAI生成画像をリアルな製品写真に変身させます。ワンクリックで、デザインをボトル、看板、アパレルに適用し、遠近感を完璧にマッチさせます。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Image Generator: Create Professional Visuals with Text & Style：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "AI Image Generator: Create Professional Visuals with Text & Style プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "AI Image Generator: Create Professional Visuals with Text & Style が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから AI Image Generator: Create Professional Visuals with Text & Style の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "以前はAI画像の奇妙なテキストに苦労していました。Nano Banana Proはそれを完全に解決しました。今では完全なキャンペーンポスターを数分で生成できます。",
+          "author": "Sarah Jenkins",
+          "role": "ソーシャルメディアマネージャー"
+        },
+        {
+          "quote": "「要素編集」機能は魔法です。商品写真を生成してから、Photoshopなしで商品の位置を動かしたり背景を変えたりできます。",
+          "author": "David Chen",
+          "role": "Eコマース創業者"
+        },
+        {
+          "quote": "Lovartはただのおもちゃではなく、ワークフローです。8Kへのアップスケールやベクターエクスポート機能のおかげで、クライアントワークに実際に使用できます。",
+          "author": "Creative Agency X",
+          "role": "デザインチーム"
+        }
+      ],
+      "title": "Lovartを選ぶデザイナーとマーケター"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "画像を商用利用できますか？",
+          "answer": "はい！Lovartの有料プランで生成された画像には完全な商用ライセンスが付帯しており、広告、ウェブサイト、商品に使用できます。"
+        },
+        {
+          "question": "Nano Banana ProはMidjourneyと比べてどうですか？",
+          "answer": "どちらも高品質ですが、Nano Banana Proは指示の順守とテキストレンダリングに優れています。さらに、Lovartは他にはない編集可能なレイヤーとキャンバスツールを提供しています。"
+        },
+        {
+          "question": "生成された画像内のテキストを編集できますか？",
+          "answer": "もちろんです。「テキスト編集」機能を使えば、AIがテキストレイヤーを識別し、キャンバス上で直接、言葉遣い、フォント、色を変更できます。"
+        },
+        {
+          "question": "どのようなファイル形式でエクスポートできますか？",
+          "answer": "JPG、PNG、そしてイラスト用のSVG（ベクター）でエクスポートできます。また、Upscaleを通じて最大8Kの高解像度ダウンロードもサポートしています。"
+        },
+        {
+          "question": "習得するのは難しいですか？",
+          "answer": "全く難しくありません。Lovartは自然言語を使用します。欲しいものを説明するか、「タッチ編集」でクリックして変更するだけです。非デザイナー向けに設計されています。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

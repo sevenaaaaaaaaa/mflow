@@ -1,0 +1,460 @@
+{
+  "_id": "features-ai-video-agent-for-youtube-ja",
+  "schemaVersion": "composite-v2",
+  "draftStatus": "local-ja-new",
+  "reflowSourceId": "features-ai-video-agent-for-youtube-ja",
+  "language": "ja",
+  "category": "feature",
+  "slug": {
+    "_type": "slug",
+    "current": "ai-video-agent-for-youtube"
+  },
+  "storyline": "features-grid-bento6",
+  "title": "YouTube 向け AI 動画エージェント：B-roll や解説動画を即生成 | Lovart",
+  "description": "16:9 の B-roll・解説・チャプター冒頭を Lovart が生成。ストック素材を探さなくても、トーキングヘッドの A-roll に合う補助モーションが手に入ります。",
+  "seo": {
+    "_type": "seo",
+    "description": "16:9 の B-roll・解説・チャプター冒頭を Lovart が生成。ストック素材を探さなくても、トーキングヘッドの A-roll に合う補助モーションが手に入ります。",
+    "keywords": [
+      "ai video agent youtube",
+      "ai b-roll generator",
+      "youtube video ai agent",
+      "explainer video ai"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "AI Video Agent for YouTube",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png"
+    },
+    "title": "YouTube 向け AI 動画エージェント：B-roll や解説動画を即生成 | Lovart"
+  },
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Video Agent\",\"title\":\"YouTube ですぐ使えるクリップを\",\"highlightedText\":\"AI video agent\",\"description\":\"16:9 の B-roll・解説・チャプター冒頭——Lovart は、ストック素材を探し回らなくても、あなたのトーキングヘッド（A-roll）に合う補助的なモーションを生成します。\",\"buttons\":[{\"text\":\"制作を始める\",\"href\":\"\",\"variant\":\"primary\"},{\"text\":\"事例を見る\",\"href\":\"\",\"variant\":\"secondary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"AI Video Agent for YouTube\"}},{\"type\":\"bento-6\",\"title\":\"チームが動画エージェントに Lovart を選ぶ6つの理由\",\"description\":\"プロダクト／グロースチームがエージェント型動画スタックに求める機能群。\",\"columns\":3,\"features\":[{\"title\":\"マルチモーダル入力\",\"description\":\"テキスト・静止画・音声リファレンスを1つのブリーフにまとめて入力。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png\",\"alt\":\"Multimodal\"}},{\"title\":\"ディレクター級のコントロール\",\"description\":\"カメラワークやテンポを自然な言葉で指定。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/fdd595720454d37ebbc0927c96f9bf8e2bc23a84d72e640d0aad62eca8dd35b5.png\",\"alt\":\"Camera\"}},{\"title\":\"キャラクターの一貫性\",\"description\":\"被写体はカット間でも安定して保たれます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png\",\"alt\":\"Consistency\"}},{\"title\":\"クラウドレンダリング\",\"description\":\"4K のドラフトもローカル GPU 不要。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png\",\"alt\":\"Cloud\"}},{\"title\":\"各チャネル対応の書き出し\",\"description\":\"1つのプロジェクトから 9:16・16:9・1:1 を出力。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png\",\"alt\":\"Exports\"}},{\"title\":\"エージェント＋キャンバス編集\",\"description\":\"Touch Edit と反復編集を、作業フローを離れずに完結。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"Canvas\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"description\":\"\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"ブリーフと設計\",\"icon\":\"search\",\"content\":{\"title\":\"成果起点のプランニング\",\"description\":\"Lovart はピクセルを動かす前に、目標をショットの意図へと落とし込みます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png\",\"alt\":\"Plan\"},\"points\":[\"Channel specs\",\"Offer context\",\"Shot list\"]}},{\"label\":\"生成\",\"icon\":\"sparkle\",\"content\":{\"title\":\"テキスト・画像から動画へ\",\"description\":\"Seedance クラスのモーションを、Lovart のオーケストレーションで。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"生成\"},\"points\":[\"Text-to-video\",\"Image-to-video\",\"Audio sync\"]}},{\"label\":\"ディレクション\",\"icon\":\"pointer\",\"content\":{\"title\":\"自然言語によるディレクション\",\"description\":\"パン・ズーム・テンポをキーフレームなしで指示。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png\",\"alt\":\"ディレクション\"},\"points\":[\"Camera verbs\",\"Lighting notes\",\"Pacing\"]}},{\"label\":\"公開\",\"icon\":\"brand\",\"content\":{\"title\":\"ChatCanvas でレビュー\",\"description\":\"バリエーションを承認し、広告や SNS 向けに書き出し。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png\",\"alt\":\"公開\"},\"points\":[\"Touch Edit\",\"Brand Kit\",\"MP4 export\"]}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"より多くのバリエーションを出荷\",\"description\":\"本格的なポストプロダクションチームがなくても、フックやカットを量産。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png\",\"alt\":\"Variants\"}},{\"title\":\"ブランドを一貫させる\",\"description\":\"Brand Kit がブリーフから書き出しまで一貫して適用されます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png\",\"alt\":\"On-brand\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"description\":\"エージェントが生成からレビューまで文脈を引き継ぐ仕組み。\",\"items\":[{\"title\":\"YouTube 向け AI 動画エージェントのプロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png\",\"alt\":\"Brief\"},\"cta\":{\"text\":\"ブリーフを開始\",\"href\":\"\",\"variant\":\"primary\"}},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true,\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"Canvas\"},\"cta\":{\"text\":\"キャンバスを開く\",\"href\":\"\",\"variant\":\"primary\"}}]},{\"type\":\"prompt-launcher\",\"title\":\"YouTube 向け AI 動画エージェントを1つのプロンプトで試す\",\"description\":\"シーン・カメラ・アスペクト比・ブランドを伝えるだけで、Lovart がドラフトクリップを返し、キャンバス上で仕上げられます。\",\"input_placeholder\":\"例：9:16 のプロダクトフック、手持ちの躍動感、ゴールデンアワー、ロゴを下三分の一に…\",\"prompts\":[{\"label\":\"チャプターバンパー\",\"prompt\":\"3秒の動くタイトルカード、テックレビュー風、16:9\"},{\"label\":\"B-roll インサート\",\"prompt\":\"机上のガジェットのマクロショット、浅い被写界深度、クールなグレードに合わせる\"},{\"label\":\"解説図のモーション\",\"prompt\":\"ワークフローの手順を示すアニメーションの矢印、クリーンでミニマルな UI スタイル\"},{\"label\":\"終了画面の CTA\",\"prompt\":\"ブランドカラーを使ったチャンネル登録アニメーション、5秒のアウトロプレート\"}],\"cta\":{\"text\":\"動画を生成\"},\"tip\":\"Lovart AI デザインエージェント＋Seedance クラスのモーションモデルを搭載。\"},{\"type\":\"workflow-horizontal\",\"title\":\"動画エージェントで進める3ステップ\",\"steps\":[{\"step\":1,\"title\":\"成果を伝える\",\"description\":\"チャネル・尺・ムード、必要なら静止画やナレーションも。\"},{\"step\":2,\"title\":\"生成してディレクション\",\"description\":\"エージェントがクリップを下書きし、あなたはチャットでカメラとテンポを操作。\"},{\"step\":3,\"title\":\"仕上げて書き出し\",\"description\":\"Touch Edit で仕上げ、広告や SNS 用にダウンロード。\"}]},{\"type\":\"comparison-table\",\"title\":\"YouTube 向け AI 動画エージェント：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"YouTube-ready clips from an プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Lovart が動画スタックのどこにフィットするか\",\"description\":\"チームが今このエージェントで回しているユースケース。\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"有料広告のフック\",\"description\":\"1つのブリーフから 9:16 のバリエーションを。\"},{\"icon\":\"brand\",\"title\":\"新製品ローンチ\",\"description\":\"ティザーと解説動画を1セッションで。\"},{\"icon\":\"pointer\",\"title\":\"クリエイターの B-roll\",\"description\":\"ストック素材を探さずに A-roll を補完。\"},{\"icon\":\"globe\",\"title\":\"ローカライズ\",\"description\":\"市場ごとにコピーとカラーグレードを差し替え。\"},{\"icon\":\"image\",\"title\":\"EC 向けループ動画\",\"description\":\"商品詳細ページやマーケットプレイス向けのモーション。\"},{\"icon\":\"refresh\",\"title\":\"社内イネーブルメント\",\"description\":\"営業・カスタマーサクセス向けの短尺動画。\"}]},{\"type\":\"testimonial\",\"title\":\"タイムラインではなくエージェントで動画を出荷するチームたち\",\"testimonials\":[{\"quote\":\"3つのツールを Lovart の1セッションに置き換えました——フック、商品ループ、書き出しまで。\",\"author\":\"Maya L.\",\"role\":\"グロース責任者\"},{\"quote\":\"画像から動画への生成で SKU のラベルも正確に保てました。それだけで乗り換える価値がありました。\",\"author\":\"James K.\",\"role\":\"EC 事業ディレクター\"},{\"quote\":\"クリエイターはブリーフした当日に縦型カットを受け取れます。\",\"author\":\"Priya S.\",\"role\":\"クリエイターオペレーション\"}]},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"AI 動画エージェントとは？\",\"answer\":\"AI 動画エージェントは、テキスト・画像・音声から短尺クリップを計画し、生成し、仕上げまで支援します。単なるテキストから動画への1ボタンではありません。\"},{\"question\":\"Lovart は単体の動画ジェネレーターと何が違いますか？\",\"answer\":\"Lovart はマルチモーダル生成に ChatCanvas 編集・Brand Kit・キャンペーン文脈を組み合わせ、動画をチャネル横断でブランドに沿った状態に保ちます。\"},{\"question\":\"高性能な GPU は必要ですか？\",\"answer\":\"いいえ。レンダリングは Lovart のクラウドで実行されます。必要なのは最新のブラウザと明確なブリーフだけです。\"},{\"question\":\"生成したクリップを商用利用できますか？\",\"answer\":\"有料プランには Lovart で作成したアセットの商用利用権が含まれます。詳細はプランをご確認ください。\"},{\"question\":\"対応しているアスペクト比は？\",\"answer\":\"16:9（YouTube）、9:16（TikTok／Reels）、1:1（フィード）などに対応。プロンプトで比率を指定してください。\"},{\"question\":\"Lovart は画像から動画への生成に対応していますか？\",\"answer\":\"はい。リファレンスの静止画や商品写真をアップロードし、動きを記述するだけ——EC やブランドムービーに最適です。\"},{\"question\":\"マーケティングチームは A/B バリエーションを試せますか？\",\"answer\":\"はい。1つのマスターブリーフから複数のフックやカメラパスを生成し、成果を比較できます。\"},{\"question\":\"ドラフトはどれくらい速いですか？\",\"answer\":\"多くの短尺クリップは尺と待ち行列にもよりますが数秒〜1分でドラフトでき、その後キャンバスで反復できます。\"},{\"question\":\"これは Seedance と同じものですか？\",\"answer\":\"Lovart は Seedance クラスのモデルを、編集・ブランド・書き出しを備えたエージェントのワークフロー内でオーケストレーションします。別タブの単独ツールではありません。\"}]},{\"type\":\"cta-default\",\"title\":\"エージェントで動画をディレクションする準備はできましたか？\",\"description\":\"無料で始めましょう——最初のシーンを ChatCanvas で描写してください。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Video Agent",
+      "title": "YouTube ですぐ使えるクリップを",
+      "highlightedText": "AI video agent",
+      "description": "16:9 の B-roll・解説・チャプター冒頭——Lovart は、ストック素材を探し回らなくても、あなたのトーキングヘッド（A-roll）に合う補助的なモーションを生成します。",
+      "buttons": [
+        {
+          "text": "制作を始める",
+          "href": "",
+          "variant": "primary"
+        },
+        {
+          "text": "事例を見る",
+          "href": "",
+          "variant": "secondary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+        "alt": "AI Video Agent for YouTube"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "チームが動画エージェントに Lovart を選ぶ6つの理由",
+      "description": "プロダクト／グロースチームがエージェント型動画スタックに求める機能群。",
+      "columns": 3,
+      "features": [
+        {
+          "title": "マルチモーダル入力",
+          "description": "テキスト・静止画・音声リファレンスを1つのブリーフにまとめて入力。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png",
+            "alt": "Multimodal"
+          }
+        },
+        {
+          "title": "ディレクター級のコントロール",
+          "description": "カメラワークやテンポを自然な言葉で指定。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/fdd595720454d37ebbc0927c96f9bf8e2bc23a84d72e640d0aad62eca8dd35b5.png",
+            "alt": "Camera"
+          }
+        },
+        {
+          "title": "キャラクターの一貫性",
+          "description": "被写体はカット間でも安定して保たれます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png",
+            "alt": "Consistency"
+          }
+        },
+        {
+          "title": "クラウドレンダリング",
+          "description": "4K のドラフトもローカル GPU 不要。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png",
+            "alt": "Cloud"
+          }
+        },
+        {
+          "title": "各チャネル対応の書き出し",
+          "description": "1つのプロジェクトから 9:16・16:9・1:1 を出力。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png",
+            "alt": "Exports"
+          }
+        },
+        {
+          "title": "エージェント＋キャンバス編集",
+          "description": "Touch Edit と反復編集を、作業フローを離れずに完結。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+            "alt": "Canvas"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "description": "",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "ブリーフと設計",
+          "icon": "search",
+          "content": {
+            "title": "成果起点のプランニング",
+            "description": "Lovart はピクセルを動かす前に、目標をショットの意図へと落とし込みます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png",
+              "alt": "Plan"
+            },
+            "points": [
+              "Channel specs",
+              "Offer context",
+              "Shot list"
+            ]
+          }
+        },
+        {
+          "label": "生成",
+          "icon": "sparkle",
+          "content": {
+            "title": "テキスト・画像から動画へ",
+            "description": "Seedance クラスのモーションを、Lovart のオーケストレーションで。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+              "alt": "生成"
+            },
+            "points": [
+              "Text-to-video",
+              "Image-to-video",
+              "Audio sync"
+            ]
+          }
+        },
+        {
+          "label": "ディレクション",
+          "icon": "pointer",
+          "content": {
+            "title": "自然言語によるディレクション",
+            "description": "パン・ズーム・テンポをキーフレームなしで指示。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png",
+              "alt": "ディレクション"
+            },
+            "points": [
+              "Camera verbs",
+              "Lighting notes",
+              "Pacing"
+            ]
+          }
+        },
+        {
+          "label": "公開",
+          "icon": "brand",
+          "content": {
+            "title": "ChatCanvas でレビュー",
+            "description": "バリエーションを承認し、広告や SNS 向けに書き出し。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png",
+              "alt": "公開"
+            },
+            "points": [
+              "Touch Edit",
+              "Brand Kit",
+              "MP4 export"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "より多くのバリエーションを出荷",
+          "description": "本格的なポストプロダクションチームがなくても、フックやカットを量産。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png",
+            "alt": "Variants"
+          }
+        },
+        {
+          "title": "ブランドを一貫させる",
+          "description": "Brand Kit がブリーフから書き出しまで一貫して適用されます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png",
+            "alt": "On-brand"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "description": "エージェントが生成からレビューまで文脈を引き継ぐ仕組み。",
+      "items": [
+        {
+          "title": "YouTube 向け AI 動画エージェントのプロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png",
+            "alt": "Brief"
+          },
+          "cta": {
+            "text": "ブリーフを開始",
+            "href": "",
+            "variant": "primary"
+          }
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true,
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+            "alt": "Canvas"
+          },
+          "cta": {
+            "text": "キャンバスを開く",
+            "href": "",
+            "variant": "primary"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "YouTube 向け AI 動画エージェントを1つのプロンプトで試す",
+      "description": "シーン・カメラ・アスペクト比・ブランドを伝えるだけで、Lovart がドラフトクリップを返し、キャンバス上で仕上げられます。",
+      "input_placeholder": "例：9:16 のプロダクトフック、手持ちの躍動感、ゴールデンアワー、ロゴを下三分の一に…",
+      "prompts": [
+        {
+          "label": "チャプターバンパー",
+          "prompt": "3秒の動くタイトルカード、テックレビュー風、16:9"
+        },
+        {
+          "label": "B-roll インサート",
+          "prompt": "机上のガジェットのマクロショット、浅い被写界深度、クールなグレードに合わせる"
+        },
+        {
+          "label": "解説図のモーション",
+          "prompt": "ワークフローの手順を示すアニメーションの矢印、クリーンでミニマルな UI スタイル"
+        },
+        {
+          "label": "終了画面の CTA",
+          "prompt": "ブランドカラーを使ったチャンネル登録アニメーション、5秒のアウトロプレート"
+        }
+      ],
+      "cta": {
+        "text": "動画を生成"
+      },
+      "tip": "Lovart AI デザインエージェント＋Seedance クラスのモーションモデルを搭載。"
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "動画エージェントで進める3ステップ",
+      "steps": [
+        {
+          "step": 1,
+          "title": "成果を伝える",
+          "description": "チャネル・尺・ムード、必要なら静止画やナレーションも。"
+        },
+        {
+          "step": 2,
+          "title": "生成してディレクション",
+          "description": "エージェントがクリップを下書きし、あなたはチャットでカメラとテンポを操作。"
+        },
+        {
+          "step": 3,
+          "title": "仕上げて書き出し",
+          "description": "Touch Edit で仕上げ、広告や SNS 用にダウンロード。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "YouTube 向け AI 動画エージェント：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "YouTube-ready clips from an プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Lovart が動画スタックのどこにフィットするか",
+      "description": "チームが今このエージェントで回しているユースケース。",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "有料広告のフック",
+          "description": "1つのブリーフから 9:16 のバリエーションを。"
+        },
+        {
+          "icon": "brand",
+          "title": "新製品ローンチ",
+          "description": "ティザーと解説動画を1セッションで。"
+        },
+        {
+          "icon": "pointer",
+          "title": "クリエイターの B-roll",
+          "description": "ストック素材を探さずに A-roll を補完。"
+        },
+        {
+          "icon": "globe",
+          "title": "ローカライズ",
+          "description": "市場ごとにコピーとカラーグレードを差し替え。"
+        },
+        {
+          "icon": "image",
+          "title": "EC 向けループ動画",
+          "description": "商品詳細ページやマーケットプレイス向けのモーション。"
+        },
+        {
+          "icon": "refresh",
+          "title": "社内イネーブルメント",
+          "description": "営業・カスタマーサクセス向けの短尺動画。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "title": "タイムラインではなくエージェントで動画を出荷するチームたち",
+      "testimonials": [
+        {
+          "quote": "3つのツールを Lovart の1セッションに置き換えました——フック、商品ループ、書き出しまで。",
+          "author": "Maya L.",
+          "role": "グロース責任者"
+        },
+        {
+          "quote": "画像から動画への生成で SKU のラベルも正確に保てました。それだけで乗り換える価値がありました。",
+          "author": "James K.",
+          "role": "EC 事業ディレクター"
+        },
+        {
+          "quote": "クリエイターはブリーフした当日に縦型カットを受け取れます。",
+          "author": "Priya S.",
+          "role": "クリエイターオペレーション"
+        }
+      ]
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "AI 動画エージェントとは？",
+          "answer": "AI 動画エージェントは、テキスト・画像・音声から短尺クリップを計画し、生成し、仕上げまで支援します。単なるテキストから動画への1ボタンではありません。"
+        },
+        {
+          "question": "Lovart は単体の動画ジェネレーターと何が違いますか？",
+          "answer": "Lovart はマルチモーダル生成に ChatCanvas 編集・Brand Kit・キャンペーン文脈を組み合わせ、動画をチャネル横断でブランドに沿った状態に保ちます。"
+        },
+        {
+          "question": "高性能な GPU は必要ですか？",
+          "answer": "いいえ。レンダリングは Lovart のクラウドで実行されます。必要なのは最新のブラウザと明確なブリーフだけです。"
+        },
+        {
+          "question": "生成したクリップを商用利用できますか？",
+          "answer": "有料プランには Lovart で作成したアセットの商用利用権が含まれます。詳細はプランをご確認ください。"
+        },
+        {
+          "question": "対応しているアスペクト比は？",
+          "answer": "16:9（YouTube）、9:16（TikTok／Reels）、1:1（フィード）などに対応。プロンプトで比率を指定してください。"
+        },
+        {
+          "question": "Lovart は画像から動画への生成に対応していますか？",
+          "answer": "はい。リファレンスの静止画や商品写真をアップロードし、動きを記述するだけ——EC やブランドムービーに最適です。"
+        },
+        {
+          "question": "マーケティングチームは A/B バリエーションを試せますか？",
+          "answer": "はい。1つのマスターブリーフから複数のフックやカメラパスを生成し、成果を比較できます。"
+        },
+        {
+          "question": "ドラフトはどれくらい速いですか？",
+          "answer": "多くの短尺クリップは尺と待ち行列にもよりますが数秒〜1分でドラフトでき、その後キャンバスで反復できます。"
+        },
+        {
+          "question": "これは Seedance と同じものですか？",
+          "answer": "Lovart は Seedance クラスのモデルを、編集・ブランド・書き出しを備えたエージェントのワークフロー内でオーケストレーションします。別タブの単独ツールではありません。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "エージェントで動画をディレクションする準備はできましたか？",
+      "description": "無料で始めましょう——最初のシーンを ChatCanvas で描写してください。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "pageType": "feature"
+}

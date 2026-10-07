@@ -1,0 +1,1558 @@
+{
+  "section_en": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI Certificate Maker — Design Professional Certificates & Diplomas with Lovart's AI Design Agent",
+      "description": "Stop spending hours manually designing certificates in complex tools or paying designers for every batch. Lovart's AI Design Agent transforms a simple description into professional, print-ready certificates in minutes. Powered by the MCoT reasoning engine, our agent thinks like a Creative Director — analyzing your organization type, occasion, and audience before generating elegant layouts, formal typography, and authoritative visuals. From academic diplomas to corporate training certificates, achievement awards to participation recognitions, Lovart delivers results worthy of framing. Start creating with free daily credits.",
+      "input_placeholder": "Describe your certificate — include organization name, certificate type, recipient details format, and preferred style",
+      "system_prompt": "You are a Senior Creative Director and AI Certificate Design Specialist at Lovart. Using the MCoT engine, analyze: 1) The certificate type (academic, corporate, award, participation) and its formality level, 2) The issuing organization's brand identity, 3) The recipient and occasion context, 4) The visual style — from classic ornate to modern minimalist — that conveys appropriate prestige. Orchestrate Lovart's agentic design pipeline: select optimal certificate layout from ChatCanvas, generate elegant borders and seals with Nano Banana Pro, apply formal typography for recipient names and titles, ensure print-ready resolution with proper margins for framing, and deliver a complete certificate design. User requirements: $input$",
+      "button_text": "Design My Certificate",
+      "tip": "Pro tip: Include organization name, certificate purpose (graduation/award/training), color preferences, and whether you need print-ready or digital format",
+      "suggestion": [
+        {
+          "value": "Create an elegant academic diploma certificate with university seal, ornate gold border, classic serif typography, signature lines, and space for degree details — for a university graduation",
+          "label": "Academic Diploma"
+        },
+        {
+          "value": "Design a modern corporate training certificate with company logo placement, clean geometric border, professional sans-serif typography, completion date, and employee name — for HR departments",
+          "label": "Corporate Certificate"
+        },
+        {
+          "value": "Create a prestigious achievement award certificate with embossed gold foil effect, laurel wreath decorative elements, ceremonial typography, and formal recognition language — for annual awards",
+          "label": "Achievement Award"
+        },
+        {
+          "value": "Design a friendly participation certificate with colorful accents, playful yet professional border, approachable typography, and event details — for workshops and community events",
+          "label": "Participation Certificate"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "How to Design Professional Certificates with Lovart's AI Agent",
+      "columns": [
+        {
+          "title": "Define Your Certificate Type",
+          "description": "Start by telling Lovart's AI Design Agent exactly what you need. Describe your organization, the certificate purpose (graduation, training completion, award, participation), and your preferred style — from classic ornate to modern minimalist. The MCoT engine analyzes your context and maps out the appropriate level of formality, visual hierarchy, and design language before generating anything.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Generate & Preview Templates",
+          "description": "Watch Lovart transform your brief into professional certificate designs in seconds. The agent generates complete layouts with organization name, recipient name fields, date lines, signature areas, and appropriate decorative elements — all professionally composed as a unified design. Browse variations with different border styles, color schemes, and typography pairings to find the perfect fit for your organization.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Personalize & Export",
+          "description": "Fine-tune your certificate template with Lovart's exclusive editing tools. Use Touch Edit to adjust decorative elements or swap seals and logos. Apply Text Edit to modify organization names, recipient details, or achievement descriptions while preserving the formal typography. Preview on framed wall mockups with Smart Mockup. Export at up to 8K resolution in PNG, JPG, SVG, or print-ready PDF for professional printing and framing.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "The Ultimate AI Toolkit for Professional Certificate Design",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Semantic Touch Edit",
+          "description": "Click any element on your certificate — a seal, decorative border, logo, or ornamental detail — and reshape, recolor, or replace it instantly. Touch Edit understands context and adapts seamlessly while preserving the formal aesthetic. No manual masking required — just intuitive click-to-edit precision for professional certificate refinement."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Precise Recipient Text Rendering",
+          "description": "Edit recipient names, dates, organization titles, and achievement descriptions directly on the certificate with structured text understanding. Unlike generic AI tools that produce garbled text, Lovart's Text Edit renders crisp, formal typography while preserving the certificate's prestigious appearance. Perfect for batch-personalizing certificate templates with recipient details."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Framed Certificate Mockup Engine",
+          "description": "Instantly preview your certificate in realistic presentation contexts. Use Smart Mockup to see your design in elegant frames, on office walls, in graduation portfolios, and as digital credentials. The engine automatically adapts perspective, lighting, and surface reflections so your certificate looks authentic in every setting."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Organization Brand Consistency",
+          "description": "Powered by Nano Banana Pro and ChatCanvas memory, Lovart ensures every certificate from your organization maintains perfect brand consistency. Define your institution's visual identity once — colors, logo placement, typography, seal design — and the agent applies it automatically to every certificate type, from diplomas to training completions."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Print-Ready 8K Export",
+          "description": "Export certificates at up to 8K resolution in PNG, JPG, SVG vector, or print-ready PDF with proper margins and color profiles. Perfect for professional printing services, in-house certificate production, or digital distribution. Every export maintains the formal quality expected of official certificates and diplomas."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Batch Personalization Engine",
+          "description": "Design a master certificate template once, then rapidly personalize it for multiple recipients. Update names, dates, and achievement details while the design remains perfectly consistent. From graduating classes of 500 students to corporate training cohorts, Lovart streamlines mass certificate production without sacrificing quality."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Organizations Producing Professional Certificates with Lovart",
+      "testimonials": [
+        {
+          "name": "Dr. Patricia Okafor",
+          "role": "Dean of Academic Affairs, Westbrook University",
+          "content": "Our university produces over 2,000 certificates annually across diplomas, dean's list recognitions, and departmental awards. Before Lovart, we outsourced design at $45 per certificate template, and updating recipient names was a manual process. Now we create all certificate templates in-house and personalize them in batches. We've saved $90,000 annually while producing more beautiful certificates than any designer we've hired. The consistency across all certificate types reinforces our institutional brand perfectly.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Raj Patel",
+          "role": "Training Director, TechSkills Academy",
+          "content": "We issue 500+ course completion certificates every month. Before Lovart, I spent 15 hours per week designing and updating certificates in Canva. Now I describe the course and completion criteria, and Lovart generates professional certificates in seconds. We issue certificates immediately upon course completion instead of the old 3-day wait. Our student satisfaction scores for 'professional certification materials' jumped from 3.2 to 4.8 out of 5.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Maria Gonzalez",
+          "role": "Event Coordinator, Global Youth Leadership Summit",
+          "content": "Organizing our annual summit means producing certificates for 1,000+ young leaders across 20+ award categories, each requiring different designs. Lovart has been transformative. I create a master template per category, then batch-personalize all recipient certificates. What used to take 2 weeks of designer back-and-forth now takes 3 hours. The participants share photos of their framed certificates on social media — the professional quality makes them proud to display them."
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "What is Lovart and how is it different from certificate template tools?",
+          "answer": "Lovart is the world's first AI Design Agent, not a template editor. Unlike Canva or Microsoft Word templates that require manual customization of every element, Lovart's MCoT reasoning engine thinks like a Creative Director. It analyzes your organization type, certificate purpose, and audience to design complete certificates with appropriate formality, intentional layouts, and proper typography hierarchy. You describe what you need in natural language, and Lovart delivers a professional, editable, print-ready certificate."
+        },
+        {
+          "question": "Can I create professional certificates without design experience?",
+          "answer": "Absolutely. Lovart was built for administrators, educators, and HR professionals — not designers. You don't need to understand layout grids, border design, formal typography, or print specifications. Simply describe your organization, certificate type, and recipient context in plain English, and Lovart handles all creative and technical decisions. The agent automatically selects appropriate fonts, builds visual hierarchy, and exports at print-ready resolution."
+        },
+        {
+          "question": "Can I use the certificates commercially for my organization or business?",
+          "answer": "Yes. Users on paid plans (Starter, Basic, Pro) own full commercial rights to their certificate designs. You can use them for your educational institution, corporate training programs, professional certifications, event awards, and any lawful organizational purpose. The free plan is for personal and evaluation use. Lovart's models are trained on licensed and public domain data."
+        },
+        {
+          "question": "Is there a free plan, and how do credits work for certificate creation?",
+          "answer": "Yes, Lovart offers a free plan with daily login credits that refresh every 24 hours. You can create multiple certificate designs per day without paying — perfect for testing designs or occasional use. Paid plans: Starter (2,000 monthly credits), Basic (3,500 credits), Pro (11,000 credits), all unlocking full agent capabilities, commercial rights, and premium models. Credit cost is displayed before each generation."
+        },
+        {
+          "question": "What file formats and resolutions can I export certificates in?",
+          "answer": "Lovart supports professional export in PNG, JPG, SVG (vector), and print-ready PDF formats. Resolutions go up to 8K, providing sharp quality for professional printing and framing. SVG exports are perfect for certificates that need to scale across different paper sizes (letter, A4, legal). PDF exports include proper margins and color profiles for professional print services."
+        },
+        {
+          "question": "How does Lovart maintain brand consistency across different certificate types?",
+          "answer": "Lovart's ChatCanvas maintains persistent organization brand context — once you upload your logo, define your institution colors, and set typography preferences, the agent applies them automatically to every certificate type. Nano Banana Pro ensures visual consistency across all certificate designs. Whether it's a diploma, training completion, or achievement award, your organization's visual identity remains unmistakable."
+        },
+        {
+          "question": "Can I edit recipient names and details on certificates after generation?",
+          "answer": "Yes, this is one of Lovart's signature capabilities. With Text Edit, you can click on any text element — recipient name, date, achievement description, organization title — and modify it directly on the certificate while preserving the formal typography, including font weight, style, and decorative effects. Perfect for batch-personalizing a master certificate template for multiple recipients."
+        },
+        {
+          "question": "What types of certificates can I create with Lovart?",
+          "answer": "Lovart's AI Certificate Maker handles every certificate category: academic diplomas (high school, college, graduate degrees), professional certifications (IT, healthcare, trade), corporate training completions, achievement and excellence awards, participation and attendance certificates, employee recognition, sports and competition awards, community service, and many more. The MCoT engine automatically adapts design formality to your specific use case."
+        },
+        {
+          "question": "Can Lovart help me batch-produce certificates for large graduating classes or training cohorts?",
+          "answer": "Yes. The Batch Personalization Engine lets you design a master certificate template once, then rapidly personalize it for dozens or hundreds of recipients while maintaining perfect design consistency. Update individual names, dates, and details without affecting the professional layout. From graduating classes of hundreds to monthly training cohorts, Lovart makes mass certificate production efficient and professional."
+        }
+      ]
+    }
+  ],
+  "section_zh-CN": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI 证书制作工具 — 用 Lovart AI 设计助手打造专业证书与毕业文凭",
+      "description": "别再花大量时间在复杂软件里手动设计证书，也不用为每一批证书花钱请设计师。Lovart 的 AI 设计助手只需你简单描述需求，几分钟内就能生成专业级、可直接打印的证书。依托 MCoT 推理引擎，我们的助手如同创意总监般思考——分析你的机构类型、场合和受众，然后生成典雅的版式、庄重的字体和权威感十足的视觉效果。从学术毕业证书到企业培训证书，从成就奖状到参与证书，Lovart 出品的每一张证书都值得装裱珍藏。现在就用每日免费额度开始创作吧。",
+      "input_placeholder": "描述你想要的证书——包含机构名称、证书类型、获奖者信息格式及偏好风格",
+      "system_prompt": "你是一位资深创意总监兼 Lovart AI 证书设计专家。请运用 MCoT 引擎逐步分析：1）证书类型（学术类/企业类/奖项类/参与类）及其正式程度；2）颁发机构的品牌调性；3）获奖者与场合背景；4）视觉风格——从古典华丽到现代极简——以传达相应的尊贵感。随后调度 Lovart 的智能设计管线：从 ChatCanvas 中甄选最优证书版式，用 Nano Banana Pro 生成精致的边框与印章，为目标姓名和称号套用正式字体排版，确保打印分辨率并预留装裱边距，最终交付完整的证书设计。用户需求：$input$",
+      "button_text": "设计我的证书",
+      "tip": "专业提示：填入机构名称、证书用途（毕业/奖项/培训）、颜色偏好，以及需要打印稿还是数字格式",
+      "suggestion": [
+        {
+          "value": "生成一张典雅的学术毕业证书，带有大学印章、华丽金色边框、经典衬线字体、签名栏及学位信息区域——用于大学毕业典礼",
+          "label": "毕业证书"
+        },
+        {
+          "value": "设计一张现代企业培训证书，带有公司 Logo 位置、简洁几何边框、专业无衬线字体、完成日期及员工姓名——适合人力资源部门使用",
+          "label": "企业培训证书"
+        },
+        {
+          "value": "制作一张尊贵的成就奖状，带有烫金浮雕效果、桂冠装饰元素、仪式感字体和正式表彰用语——适合年度颁奖典礼",
+          "label": "成就奖状"
+        },
+        {
+          "value": "设计一张亲切的参与证书，搭配活泼色彩点缀、趣味而不失专业的边框、柔和易读的字体及活动详情——适合工作坊和社区活动",
+          "label": "参与证书"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "如何使用 Lovart AI 助手设计专业证书",
+      "columns": [
+        {
+          "title": "明确你的证书类型",
+          "description": "首先，直接告诉 Lovart AI 设计助手你具体需要什么。描述你的机构、证书用途（毕业、培训结业、奖项、参与）和你偏好的风格——从古典华丽到现代极简。MCoT 引擎会在生成任何内容之前，先行分析你的使用场景，规划出恰当的正式程度、视觉层级和设计语言。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "生成并预览模板",
+          "description": "看着 Lovart 在几秒内将你的需求转化为专业证书设计。助手会生成完整版式，包含机构名称、获奖者姓名栏、日期行、签名区域和得体的装饰元素——所有元素浑然一体，专业呈现。你还可以浏览不同边框风格、配色方案和字体搭配的变体，找到最契合你机构气质的那一款。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "个性化定制并导出",
+          "description": "借助 Lovart 独有的编辑工具精细调校你的证书模板。使用 Touch Edit 调整装饰元素或替换印章和 Logo。使用 Text Edit 修改机构名称、获奖者详情或成就描述，同时保留正式字体排版效果。通过 Smart Mockup 在装裱上墙的场景中预览。支持最高 8K 分辨率导出，格式涵盖 PNG、JPG、SVG 及可直接交付印刷的 PDF，满足专业打印和装裱需求。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "专业证书设计的终极 AI 工具集",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "语义触控编辑",
+          "description": "点击证书上的任意元素——印章、装饰边框、Logo 或纹饰细节——即可即时变形、换色或替换。Touch Edit 能理解上下文并无缝适配，始终保留正式美感。无需手动遮罩，仅凭直觉点击即可实现精准的专业级证书润饰。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "精准姓名文字渲染",
+          "description": "直接在证书上编辑获奖者姓名、日期、机构名称和成就描述，依托结构化文字理解能力。与市面上输出乱码的通用 AI 工具不同，Lovart 的 Text Edit 能渲染出清晰锐利的正式字体，同时保持证书的尊贵感。非常适合为证书模板批量填入获奖者信息。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "装裱证书场景引擎",
+          "description": "瞬间预览你的证书在真实场景中的呈现效果。使用 Smart Mockup 可以查看设计在精美相框中、办公室墙壁上、毕业作品集里以及数字凭证中的样子。引擎会自动调整透视、光线和表面反射，确保证书在每个场景中都真实可信。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "机构品牌一致性",
+          "description": "由 Nano Banana Pro 和 ChatCanvas 记忆能力驱动，Lovart 确保你机构出具的每一张证书都保持完美的品牌一致性。只需定义一次机构的视觉识别——颜色、Logo 位置、字体、印章设计——助手就会自动应用到每一种证书类型上，从毕业文凭到培训结业证书皆如此。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "打印级 8K 导出",
+          "description": "支持最高 8K 分辨率导出证书，格式包括 PNG、JPG、SVG 矢量图以及带有正确边距和色彩配置文件的打印级 PDF。完美适配专业印刷服务、内部证书制作或数字分发。每一次导出都能保持官方证书和文凭应有的正式品质。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "批量个性化引擎",
+          "description": "只需设计一次主证书模板，即可快速为多位获奖者逐一填入个性化信息。更新姓名、日期和成就详情的同时，设计保持完美一致。从 500 人的毕业班到企业培训批次，Lovart 能够高效、专业地完成大规模证书生产。"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "信赖 Lovart 制作专业证书的机构",
+      "testimonials": [
+        {
+          "name": "张明华 教授",
+          "role": "华东文理大学 学术事务副校长",
+          "content": "我们学校每年要制作超过 2,000 张证书，涵盖毕业文凭、院长嘉许名单表彰和各院系奖项。用 Lovart 之前，我们外包设计一张证书模板就要 300 多元，更新获奖者姓名还要人工操作。现在所有证书模板都在校内自主设计，还能批量个性化定制。我们每年节省了约 60 万元的设计开支，而且做出来的证书比之前请过的任何设计师都好。所有证书类型风格统一，有力地强化了我们的机构品牌形象。",
+          "avatar_url": ""
+        },
+        {
+          "name": "王建国",
+          "role": "新锐科技学院 培训总监",
+          "content": "我们每个月要发放 500 多张课程结业证书。以前用 Canva 在设计和更新证书上每周要花 15 小时。现在只需描述课程内容和结业标准，Lovart 几秒内就能生成专业证书。学员课程一结束就能立刻拿到证书，不用像以前那样等 3 天。我们学员对「专业认证材料」的满意度评分从 3.2 分跃升到 4.8 分（满分 5 分）。",
+          "avatar_url": ""
+        },
+        {
+          "name": "陈思涵",
+          "role": "全球青年领导力峰会 活动负责人",
+          "content": "筹办年度峰会意味着要为 1,000 多位青年领袖准备 20 多个奖项类别的证书，每个类别都需要不同的设计。Lovart 彻底改变了我们的工作方式。我只需要给每个类别建一个主模板，然后批量填入所有获奖者信息即可。以前需要和设计师反复沟通两周的事情，现在 3 小时就搞定了。参会者们纷纷在社交媒体上晒装裱好的证书——专业品质让他们由衷自豪地展示。",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart 是什么？和证书模板工具有什么区别？",
+          "answer": "Lovart 是全球首款 AI 设计助手，不是模板编辑器。与需要手动调整每个元素的 Canva 或 Word 模板不同，Lovart 的 MCoT 推理引擎能像创意总监一样思考。它会分析你的机构类型、证书用途和受众，设计出正式程度恰当、版式用心、字体层级合理的完整证书。你只需用自然语言描述需求，Lovart 就能交付一张专业、可编辑、可直接打印的证书。"
+        },
+        {
+          "question": "没有设计经验也能做出专业证书吗？",
+          "answer": "完全可以。Lovart 是为行政人员、教育工作者和 HR 从业者打造的，而非设计师。你不需要懂版式网格、边框设计、正式字体排版或印刷规格。只需用中文描述你的机构、证书类型和获奖者背景，Lovart 就会处理所有创意和技术决策。助手会自动选择合适的字体、构建视觉层级，并以打印级分辨率导出。"
+        },
+        {
+          "question": "我可以将证书用于机构或商业用途吗？",
+          "answer": "可以。付费方案（Starter、Basic、Pro）的用户拥有其证书设计的完整商业使用权。可用于教育机构、企业培训项目、职业认证、活动奖项和任何合法机构用途。免费方案仅供个人试用和评估使用。Lovart 的模型基于授权和公共领域数据训练。"
+        },
+        {
+          "question": "有免费方案吗？证书制作的额度是怎么算的？",
+          "answer": "有的。Lovart 提供免费方案，每日登录即赠送额度，每 24 小时刷新。你每天可以免费制作多张证书设计，非常适合测试效果或偶尔使用。付费方案：Starter（每月 2,000 额度）、Basic（每月 3,500 额度）、Pro（每月 11,000 额度），均解锁全部助手功能、商业使用权和高级模型。每次生成前会显示所需额度。"
+        },
+        {
+          "question": "证书可以导出哪些文件格式和分辨率？",
+          "answer": "Lovart 支持 PNG、JPG、SVG（矢量）和打印级 PDF 等专业导出格式。分辨率最高可达 8K，为专业印刷和装裱提供清晰锐利的品质。SVG 导出非常适合需要在不同纸张尺寸（信纸、A4、法律用纸）之间缩放的证书。PDF 导出包含正确的边距和色彩配置文件，可直接交付专业印刷服务。"
+        },
+        {
+          "question": "Lovart 如何在不同证书类型之间保持品牌一致性？",
+          "answer": "Lovart 的 ChatCanvas 具备持续的机构品牌记忆——一旦你上传 Logo、定义机构配色、设置字体偏好，助手就会自动将其应用到每一种证书类型上。Nano Banana Pro 确保所有证书设计保持视觉一致性。无论是毕业文凭、培训结业还是成就奖状，你机构的视觉识别始终鲜明统一。"
+        },
+        {
+          "question": "生成证书后还能编辑获奖者姓名和详细信息吗？",
+          "answer": "能，这也是 Lovart 的标志性功能之一。使用 Text Edit，你可以点击任意文字元素——获奖者姓名、日期、成就描述、机构名称——直接在证书上修改，同时保留正式字体排版效果，包括字重、样式和装饰效果。非常适合基于主模板批量定制多位获奖者证书。"
+        },
+        {
+          "question": "Lovart 可以制作哪些类型的证书？",
+          "answer": "Lovart 的 AI 证书制作工具覆盖所有证书类别：学术毕业证书（高中、大学、研究生学位）、职业资格认证（IT、医疗、技能工种）、企业培训结业证书、成就与卓越奖状、参与及出席证书、员工表彰、体育和竞赛奖项、社区服务等众多类型。MCoT 引擎会根据你的具体使用场景自动匹配设计正式程度。"
+        },
+        {
+          "question": "Lovart 能帮我为大型毕业班或培训批次批量制作证书吗？",
+          "answer": "可以。批量个性化引擎让你一次设计好主证书模板，然后快速为几十位乃至数百位获奖者逐一填入个性化信息，同时保持设计完美一致。单独更新姓名、日期和详情而不影响专业版式。从数百人的毕业班到每月的培训批次，Lovart 都能让大规模证书生产高效又专业。"
+        }
+      ]
+    }
+  ],
+  "section_zh-TW": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI 證書製作工具 — 用 Lovart AI 設計助手打造專業證書與畢業文憑",
+      "description": "別再花大把時間在複雜軟體裡手動設計證書，也不用為每一批證書花錢請設計師。Lovart 的 AI 設計助手只需你簡單描述需求，幾分鐘內就能生成專業級、可直接列印的證書。依託 MCoT 推理引擎，我們的助手如同創意總監般思考——分析你的機構類型、場合和受眾，然後生成典雅的版式、莊重的字型和權威感十足的視覺效果。從學術畢業證書到企業培訓證書，從成就獎狀到參與證書，Lovart 出品的每一張證書都值得裝裱珍藏。現在就用每日免費額度開始創作吧。",
+      "input_placeholder": "描述你想要的證書——包含機構名稱、證書類型、獲獎者資訊格式及偏好風格",
+      "system_prompt": "你是一位資深創意總監兼 Lovart AI 證書設計專家。請運用 MCoT 引擎逐步分析：1）證書類型（學術類／企業類／獎項類／參與類）及其正式程度；2）頒發機構的品牌調性；3）獲獎者與場合背景；4）視覺風格——從古典華麗到現代極簡——以傳達相應的尊貴感。隨後調度 Lovart 的智慧設計管線：從 ChatCanvas 中甄選最優證書版式，用 Nano Banana Pro 生成精緻的邊框與印章，為目標姓名和稱號套用正式字型排版，確保列印解析度並預留裝裱邊距，最終交付完整的證書設計。使用者需求：$input$",
+      "button_text": "設計我的證書",
+      "tip": "專業提示：填入機構名稱、證書用途（畢業／獎項／培訓）、顏色偏好，以及需要列印稿還是數位格式",
+      "suggestion": [
+        {
+          "value": "生成一張典雅的學術畢業證書，帶有大學印章、華麗金色邊框、經典襯線字型、簽名欄及學位資訊區域——用於大學畢業典禮",
+          "label": "畢業證書"
+        },
+        {
+          "value": "設計一張現代企業培訓證書，帶有公司 Logo 位置、簡潔幾何邊框、專業無襯線字型、完成日期及員工姓名——適合人力資源部門使用",
+          "label": "企業培訓證書"
+        },
+        {
+          "value": "製作一張尊貴的成就獎狀，帶有燙金浮雕效果、桂冠裝飾元素、儀式感字型和正式表揚用語——適合年度頒獎典禮",
+          "label": "成就獎狀"
+        },
+        {
+          "value": "設計一張親切的參與證書，搭配活潑色彩點綴、趣味而不失專業的邊框、柔和易讀的字型及活動詳情——適合工作坊和社區活動",
+          "label": "參與證書"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "如何使用 Lovart AI 助手設計專業證書",
+      "columns": [
+        {
+          "title": "明確你的證書類型",
+          "description": "首先，直接告訴 Lovart AI 設計助手你具體需要什麼。描述你的機構、證書用途（畢業、培訓結業、獎項、參與）和你偏好的風格——從古典華麗到現代極簡。MCoT 引擎會在生成任何內容之前，先行分析你的使用場景，規劃出恰當的正式程度、視覺層級和設計語言。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "生成並預覽範本",
+          "description": "看著 Lovart 在幾秒內將你的需求轉化為專業證書設計。助手會生成完整版式，包含機構名稱、獲獎者姓名欄、日期行、簽名區域和得體的裝飾元素——所有元素渾然一體，專業呈現。你還可以瀏覽不同邊框風格、配色方案和字型搭配的變體，找到最契合你機構氣質的那一款。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "個人化定製並匯出",
+          "description": "藉助 Lovart 獨有的編輯工具精細調校你的證書範本。使用 Touch Edit 調整裝飾元素或替換印章和 Logo。使用 Text Edit 修改機構名稱、獲獎者詳情或成就描述，同時保留正式字型排版效果。透過 Smart Mockup 在裝裱上牆的場景中預覽。支援最高 8K 解析度匯出，格式涵蓋 PNG、JPG、SVG 及可直接交付印刷的 PDF，滿足專業列印和裝裱需求。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "專業證書設計的終極 AI 工具集",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "語義觸控編輯",
+          "description": "點擊證書上的任意元素——印章、裝飾邊框、Logo 或紋飾細節——即可即時變形、換色或替換。Touch Edit 能理解上下文並無縫適配，始終保留正式美感。無需手動遮罩，僅憑直覺點擊即可實現精準的專業級證書潤飾。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "精準姓名文字渲染",
+          "description": "直接在證書上編輯獲獎者姓名、日期、機構名稱和成就描述，依託結構化文字理解能力。與市面上輸出亂碼的通用 AI 工具不同，Lovart 的 Text Edit 能渲染出清晰銳利的正式字型，同時保持證書的尊貴感。非常適合為證書範本批次填入獲獎者資訊。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "裝裱證書場景引擎",
+          "description": "瞬間預覽你的證書在真實場景中的呈現效果。使用 Smart Mockup 可以檢視設計在精美相框中、辦公室牆壁上、畢業作品集裡以及數位憑證中的樣子。引擎會自動調整透視、光線和表面反射，確保證書在每個場景中都真實可信。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "機構品牌一致性",
+          "description": "由 Nano Banana Pro 和 ChatCanvas 記憶能力驅動，Lovart 確保你機構出具的每一張證書都保持完美的品牌一致性。只需定義一次機構的視覺識別——顏色、Logo 位置、字型、印章設計——助手就會自動應用到每一種證書類型上，從畢業文憑到培訓結業證書皆如此。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "列印級 8K 匯出",
+          "description": "支援最高 8K 解析度匯出證書，格式包括 PNG、JPG、SVG 向量圖以及帶有正確邊距和色彩設定檔的列印級 PDF。完美適配專業印刷服務、內部證書製作或數位分發。每一次匯出都能保持官方證書和文憑應有的正式品質。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "批次個人化引擎",
+          "description": "只需設計一次主證書範本，即可快速為多位獲獎者逐一填入個人化資訊。更新姓名、日期和成就詳情的同時，設計保持完美一致。從 500 人的畢業班到企業培訓梯次，Lovart 能夠高效、專業地完成大規模證書生產。"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "信賴 Lovart 製作專業證書的機構",
+      "testimonials": [
+        {
+          "name": "張明華 教授",
+          "role": "華東文理大學 學術事務副校長",
+          "content": "我們學校每年要製作超過 2,000 張證書，涵蓋畢業文憑、院長嘉許名單表揚和各院系獎項。用 Lovart 之前，我們外包設計一張證書範本就要一兩千元，更新獲獎者姓名還要人工操作。現在所有證書範本都在校內自主設計，還能批次個人化定製。我們每年節省了約 60 萬元的設計開支，而且做出來的證書比之前請過的任何設計師都好。所有證書類型風格統一，有力地強化了我們的機構品牌形象。",
+          "avatar_url": ""
+        },
+        {
+          "name": "王建國",
+          "role": "新銳科技學院 培訓總監",
+          "content": "我們每個月要發放 500 多張課程結業證書。以前用 Canva 在設計和更新證書上每週要花 15 小時。現在只需描述課程內容和結業標準，Lovart 幾秒內就能生成專業證書。學員課程一結束就能立刻拿到證書，不用像以前那樣等 3 天。我們學員對「專業認證材料」的滿意度評分從 3.2 分躍升到 4.8 分（滿分 5 分）。",
+          "avatar_url": ""
+        },
+        {
+          "name": "陳思涵",
+          "role": "全球青年領導力峰會 活動負責人",
+          "content": "籌辦年度峰會意味著要為 1,000 多位青年領袖準備 20 多個獎項類別的證書，每個類別都需要不同的設計。Lovart 徹底改變了我們的工作方式。我只需要給每個類別建一個主範本，然後批次填入所有獲獎者資訊即可。以前需要和設計師反覆溝通兩週的事情，現在 3 小時就搞定了。與會者們紛紛在社群媒體上曬裝裱好的證書——專業品質讓他們由衷自豪地展示。",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart 是什麼？和證書範本工具有什麼區別？",
+          "answer": "Lovart 是全球首款 AI 設計助手，不是範本編輯器。與需要手動調整每個元素的 Canva 或 Word 範本不同，Lovart 的 MCoT 推理引擎能像創意總監一樣思考。它會分析你的機構類型、證書用途和受眾，設計出正式程度恰當、版式用心、字型層級合理的完整證書。你只需用自然語言描述需求，Lovart 就能交付一張專業、可編輯、可直接列印的證書。"
+        },
+        {
+          "question": "沒有設計經驗也能做出專業證書嗎？",
+          "answer": "完全可以。Lovart 是為行政人員、教育工作者和 HR 從業者打造的，而非設計師。你不需要懂版式格線、邊框設計、正式字型排版或印刷規格。只需用中文描述你的機構、證書類型和獲獎者背景，Lovart 就會處理所有創意和技術決策。助手會自動選擇合適的字型、構建視覺層級，並以列印級解析度匯出。"
+        },
+        {
+          "question": "我可以將證書用於機構或商業用途嗎？",
+          "answer": "可以。付費方案（Starter、Basic、Pro）的使用者擁有其證書設計的完整商業使用權。可用於教育機構、企業培訓專案、職業認證、活動獎項和任何合法機構用途。免費方案僅供個人試用和評估使用。Lovart 的模型基於授權和公共領域資料訓練。"
+        },
+        {
+          "question": "有免費方案嗎？證書製作的額度是怎麼算的？",
+          "answer": "有的。Lovart 提供免費方案，每日登入即贈送額度，每 24 小時重新整理。你每天可以免費製作多張證書設計，非常適合測試效果或偶爾使用。付費方案：Starter（每月 2,000 額度）、Basic（每月 3,500 額度）、Pro（每月 11,000 額度），均解鎖全部助手功能、商業使用權和高階模型。每次生成前會顯示所需額度。"
+        },
+        {
+          "question": "證書可以匯出哪些檔案格式和解析度？",
+          "answer": "Lovart 支援 PNG、JPG、SVG（向量）和列印級 PDF 等專業匯出格式。解析度最高可達 8K，為專業印刷和裝裱提供清晰銳利的品質。SVG 匯出非常適合需要在不同紙張尺寸（信紙、A4、法律用紙）之間縮放的證書。PDF 匯出包含正確的邊距和色彩設定檔，可直接交付專業印刷服務。"
+        },
+        {
+          "question": "Lovart 如何在不同證書類型之間保持品牌一致性？",
+          "answer": "Lovart 的 ChatCanvas 具備持續的機構品牌記憶——一旦你上傳 Logo、定義機構配色、設定字型偏好，助手就會自動將其應用到每一種證書類型上。Nano Banana Pro 確保所有證書設計保持視覺一致性。無論是畢業文憑、培訓結業還是成就獎狀，你機構的視覺識別始終鮮明統一。"
+        },
+        {
+          "question": "生成證書後還能編輯獲獎者姓名和詳細資訊嗎？",
+          "answer": "能，這也是 Lovart 的標誌性功能之一。使用 Text Edit，你可以點擊任意文字元素——獲獎者姓名、日期、成就描述、機構名稱——直接在證書上修改，同時保留正式字型排版效果，包括字重、樣式和裝飾效果。非常適合基於主範本批次定製多位獲獎者證書。"
+        },
+        {
+          "question": "Lovart 可以製作哪些類型的證書？",
+          "answer": "Lovart 的 AI 證書製作工具覆蓋所有證書類別：學術畢業證書（高中、大學、研究所學位）、職業資格認證（IT、醫療、技能工種）、企業培訓結業證書、成就與卓越獎狀、參與及出席證書、員工表揚、體育和競賽獎項、社區服務等眾多類型。MCoT 引擎會根據你的具體使用場景自動配對設計正式程度。"
+        },
+        {
+          "question": "Lovart 能幫我為大型畢業班或培訓梯次批次製作證書嗎？",
+          "answer": "可以。批次個人化引擎讓你一次設計好主證書範本，然後快速為幾十位乃至數百位獲獎者逐一填入個人化資訊，同時保持設計完美一致。單獨更新姓名、日期和詳情而不影響專業版式。從數百人的畢業班到每月的培訓梯次，Lovart 都能讓大規模證書生產高效又專業。"
+        }
+      ]
+    }
+  ],
+  "section_ja": [
+    {
+      "type": "centeredInputSection",
+      "badge": "AI証明書メーカー",
+      "title": "プロ品質の証明書を一瞬でデザイン",
+      "subtitle": "卒業証書、表彰状、研修修了証まで、AIが美しい証明書を自動生成",
+      "placeholder": "作りたい証明書のイメージを入力…",
+      "buttonText": "証明書をデザイン",
+      "suggestions": [
+        "金枠に明朝体の正統派卒業証書",
+        "会社ロゴ入り年間最優秀社員賞の表彰状",
+        "シンプルモダンな企業研修修了証",
+        "上品なデザインの学会参加証明書"
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "あらゆるシーンに対応",
+      "subtitle": "学位記・表彰・研修修了まで、用途に合わせたスタイルを選べます",
+      "columns": [
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png",
+          "title": "クラシック卒業証書",
+          "description": "格式ある装飾枠と正統派タイポグラフィで、伝統的な学位記にふさわしい重厚なデザイン"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png",
+          "title": "モダン企業証明書",
+          "description": "洗練されたレイアウトで研修修了書や社内表彰に最適。ブランドカラーも自由に設定可能"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png",
+          "title": "クリエイティブ表彰状",
+          "description": "色彩豊かで遊び心のあるデザイン。特別功労賞や社内イベントの表彰にぴったり"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "証明書作りのすべてがここに",
+      "subtitle": "人事・教育・イベント担当者のためのプロ仕様ツール",
+      "features": [
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b0d2e9c5e44ab2b3f1d8e7a6c4b2d0.png",
+          "title": "AIデザインエンジン",
+          "description": "簡単なテキスト入力だけで、プロ品質のレイアウトを即座に生成"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc8e9f4a1b8c7d6e5f4a3b2c1d.png",
+          "title": "ブランド自由設定",
+          "description": "ロゴアップロード・企業カラー・フォント選択で組織の個性を反映"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9d8e4f3a8b7c6d5e4f3a2b1c.png",
+          "title": "マルチ形式出力",
+          "description": "8K解像度のPNG、JPG、SVG、PSDで書き出し可能"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa3b8c7d6e5f4a3b2c1d0e9f8a7b.png",
+          "title": "スマートテンプレート",
+          "description": "用途別テンプレートを自由に編集。卒業から企業研修まで幅広く対応"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61bc7d6e5f4a3b2c1d0e9f8a7b6c5.png",
+          "title": "一括生成",
+          "description": "CSVファイル取込で数百枚の宛名入り証明書をワンクリックで発行"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357a6b5c4d3e2f1a0b9c8d7e6f5.png",
+          "title": "商用利用権",
+          "description": "有料プランは全デザインに完全な商用利用権が付与されます"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "世界中のプロが信頼",
+      "testimonials": [
+        {
+          "quote": "Lovartのおかげで人事部の証明書発行が劇的に効率化しました。200枚の研修修了証を10分で作成でき、デザインも完璧です。",
+          "name": "山田 太郎",
+          "role": "人事部長"
+        },
+        {
+          "quote": "AIの提案力に驚きました。卒業証書のクオリティが格段に上がり、プロのデザイナーに依頼したより美しく仕上がりました。",
+          "name": "田中 優子",
+          "role": "研修コーディネーター"
+        },
+        {
+          "quote": "毎日の無料クレジットでリスクなく試せたのが決め手でした。今はプロプランで、研修部門にとって最高の投資です。",
+          "name": "佐藤 健太",
+          "role": "企業研修マネージャー"
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "title": "よくある質問",
+      "faqs": [
+        {
+          "question": "Lovart AI証明書メーカーとは？",
+          "answer": "AIが証明書・卒業証書・表彰状を自動デザインするツールです。作りたいイメージを文章で入力するだけで、プロ品質のレイアウトを即座に生成します。"
+        },
+        {
+          "question": "無料で使えますか？",
+          "answer": "はい。毎日無料クレジットが付与され、費用をかけずに証明書を作成できます。本格的に使うなら、スターター（月2,000クレジット）、ベーシック（月3,500クレジット）、プロ（月11,000クレジット）の有料プランをご用意しています。"
+        },
+        {
+          "question": "どの形式で出力できますか？",
+          "answer": "8K解像度の高品質PNG、JPG、SVG、編集可能なPSDで出力できます。デジタル共有はもちろん、プロ印刷用データとしても最適です。"
+        },
+        {
+          "question": "会社のロゴを入れられますか？",
+          "answer": "はい、組織ロゴのアップロード、ブランドカラーの設定、高品質フォントの選択により、企業アイデンティティを完璧に反映した証明書が作れます。"
+        },
+        {
+          "question": "商用利用は可能ですか？",
+          "answer": "スターター、ベーシック、プロの全有料プランに完全な商用利用権が含まれます。作成した証明書を自由に販売・配布・商用利用いただけます。"
+        },
+        {
+          "question": "AIはどうやってデザインするのですか？",
+          "answer": "「金箔の縁取りと大学紋章が入ったエレガントな卒業証書」のように、理想の証明書を文章で説明してください。AIが複数のプロ品質レイアウトを即座に提案します。"
+        },
+        {
+          "question": "大量の証明書を一度に作れますか？",
+          "answer": "はい。受取人の名前や情報をCSVファイルでアップロードするだけで、数百枚の個別証明書を一括生成できます。卒業式や社内表彰に最適です。"
+        },
+        {
+          "question": "対応言語は？",
+          "answer": "インターフェースは多言語対応しており、証明書の本文はあらゆる言語で作成可能です。右から左に書く言語にも対応しています。"
+        },
+        {
+          "question": "クレジットの仕組みは？",
+          "answer": "1回のデザイン生成につき1クレジット消費します。無料クレジットは毎日リセット。有料プランはスターター（月2,000）、ベーシック（月3,500）、プロ（月11,000）の月額クレジット制で、未使用分の繰越はありません。"
+        }
+      ]
+    }
+  ],
+  "section_ko": [
+    {
+      "type": "centeredInputSection",
+      "badge": "AI 증명서 메이커",
+      "title": "전문가 수준의 증명서를 순식간에 디자인",
+      "subtitle": "졸업장, 표창장, 교육 수료증까지 AI가 아름다운 증명서를 자동 생성합니다",
+      "placeholder": "만들고 싶은 증명서의 이미지를 입력하세요…",
+      "buttonText": "증명서 디자인",
+      "suggestions": [
+        "금색 테두리의 정통파 졸업 증서",
+        "회사 로고가 들어간 올해의 사원 표창장",
+        "심플 모던한 기업 연수 수료증",
+        "우아한 디자인의 학회 참가 증명서"
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "모든 상황에 어울리는 스타일",
+      "subtitle": "학위증부터 기업 표창까지, 용도에 맞는 스타일을 선택하세요",
+      "columns": [
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png",
+          "title": "클래식 졸업 증서",
+          "description": "격식 있는 장식 테두리와 정통 타이포그래피로 전통적인 학위증에 어울리는 품격 있는 디자인"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png",
+          "title": "모던 기업 증명서",
+          "description": "세련된 레이아웃으로 교육 수료증과 사내 표창에 최적화. 브랜드 컬러도 자유롭게 설정 가능"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png",
+          "title": "크리에이티브 표창장",
+          "description": "다채로운 색감과 유쾌한 디자인. 특별 공로상이나 사내 이벤트 표창에 안성맞춤"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "증명서 제작의 모든 것",
+      "subtitle": "인사·교육·이벤트 담당자를 위한 전문가용 도구",
+      "features": [
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b0d2e9c5e44ab2b3f1d8e7a6c4b2d0.png",
+          "title": "AI 디자인 엔진",
+          "description": "간단한 텍스트 입력만으로 전문가 수준의 레이아웃을 즉시 생성"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc8e9f4a1b8c7d6e5f4a3b2c1d.png",
+          "title": "브랜드 맞춤 설정",
+          "description": "로고 업로드, 기업 색상, 폰트 선택으로 조직의 정체성을 완벽 반영"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9d8e4f3a8b7c6d5e4f3a2b1c.png",
+          "title": "다중 형식 출력",
+          "description": "8K 해상도의 PNG, JPG, SVG, PSD로 내보내기"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa3b8c7d6e5f4a3b2c1d0e9f8a7b.png",
+          "title": "스마트 템플릿",
+          "description": "용도별 템플릿을 자유롭게 편집. 졸업식부터 기업 연수까지 폭넓게 대응"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61bc7d6e5f4a3b2c1d0e9f8a7b6c5.png",
+          "title": "일괄 생성",
+          "description": "CSV 파일로 수백 장의 개인별 증명서를 원클릭으로 발행"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357a6b5c4d3e2f1a0b9c8d7e6f5.png",
+          "title": "상업적 이용권",
+          "description": "유료 플랜의 모든 디자인에 완전한 상업적 이용 권한이 부여됩니다"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "전 세계 전문가들이 신뢰합니다",
+      "testimonials": [
+        {
+          "quote": "Lovart 덕분에 인사팀의 증명서 발급 업무가 획기적으로 효율화되었습니다. 교육 수료증 200장을 10분 만에 작성했고 디자인도 완벽합니다.",
+          "name": "김민준",
+          "role": "인사팀장"
+        },
+        {
+          "quote": "AI의 디자인 제안 능력에 정말 놀랐습니다. 졸업 증서의 품질이 비약적으로 향상되어 전문 디자이너에게 의뢰한 것보다 더 아름답게 완성됐습니다.",
+          "name": "박지연",
+          "role": "교육 담당자"
+        },
+        {
+          "quote": "매일 무료 크레딧으로 부담 없이 테스트할 수 있었던 점이 결정적이었습니다. 지금은 프로 플랜으로, 교육 부서에 최고의 투자입니다.",
+          "name": "이서준",
+          "role": "기업 연수 매니저"
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "title": "자주 묻는 질문",
+      "faqs": [
+        {
+          "question": "Lovart AI 증명서 메이커란?",
+          "answer": "AI가 증명서, 졸업장, 표창장을 자동으로 디자인하는 도구입니다. 원하는 이미지를 텍스트로 입력하기만 하면 전문가 수준의 레이아웃을 즉시 생성합니다."
+        },
+        {
+          "question": "무료로 사용할 수 있나요?",
+          "answer": "네. 매일 무료 크레딧이 제공되어 비용 없이 증명서를 제작할 수 있습니다. 본격적인 사용을 위해 스타터(월 2,000크레딧), 베이직(월 3,500크레딧), 프로(월 11,000크레딧) 유료 플랜을 준비했습니다."
+        },
+        {
+          "question": "어떤 형식으로 출력할 수 있나요?",
+          "answer": "8K 해상도의 고품질 PNG, JPG, SVG, 편집 가능한 PSD로 출력 가능합니다. 디지털 공유는 물론 전문 인쇄용 데이터로도 최적입니다."
+        },
+        {
+          "question": "회사 로고를 넣을 수 있나요?",
+          "answer": "네, 조직 로고 업로드, 브랜드 색상 설정, 고품질 폰트 선택으로 기업 아이덴티티를 완벽하게 반영한 증명서를 만들 수 있습니다."
+        },
+        {
+          "question": "상업적 이용이 가능한가요?",
+          "answer": "스타터, 베이직, 프로 모든 유료 플랜에 완전한 상업적 이용권이 포함됩니다. 제작한 증명서를 자유롭게 판매, 배포, 상업적으로 이용할 수 있습니다."
+        },
+        {
+          "question": "AI는 어떻게 디자인하나요?",
+          "answer": "「금박 테두리와 대학 문장이 들어간 우아한 졸업 증서」처럼 이상적인 증명서를 텍스트로 설명해 주세요. AI가 여러 전문가 수준의 레이아웃을 즉시 제안합니다."
+        },
+        {
+          "question": "대량의 증명서를 한 번에 만들 수 있나요?",
+          "answer": "네. 수신자 이름과 정보를 CSV 파일로 업로드하기만 하면 수백 장의 개별 증명서를 일괄 생성할 수 있습니다. 졸업식이나 사내 표창에 최적입니다."
+        },
+        {
+          "question": "지원 언어는?",
+          "answer": "인터페이스는 다국어를 지원하며, 증명서 본문은 모든 언어로 작성 가능합니다. 오른쪽에서 왼쪽으로 쓰는 언어에도 대응합니다."
+        },
+        {
+          "question": "크레딧 시스템은 어떻게 작동하나요?",
+          "answer": "1회 디자인 생성에 1크레딧이 소비됩니다. 무료 크레딧은 매일 리셋됩니다. 유료 플랜은 스타터(월 2,000), 베이직(월 3,500), 프로(월 11,000) 월간 크레딧 방식이며, 미사용분은 이월되지 않습니다."
+        }
+      ]
+    }
+  ],
+  "section_de": [
+    {
+      "type": "centeredInputSection",
+      "badge": "KI-Zertifikaterstellung",
+      "title": "Professionelle Zertifikate in Sekunden gestalten",
+      "subtitle": "Diplome, Auszeichnungen und Teilnahmebescheinigungen per KI-Design automatisch erstellen",
+      "placeholder": "Beschreiben Sie Ihr gewünschtes Zertifikat…",
+      "buttonText": "Zertifikat gestalten",
+      "suggestions": [
+        "Klassisches Diplom mit Goldrahmen und Serifenschrift",
+        "Mitarbeiter-des-Jahres-Auszeichnung mit Firmenlogo",
+        "Moderne Schulungs-Teilnahmebescheinigung",
+        "Elegantes Konferenz-Teilnahmezertifikat"
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Für jeden Anlass der passende Stil",
+      "subtitle": "Von akademischen Diplomen bis zu Unternehmensauszeichnungen — wählen Sie Ihren Stil",
+      "columns": [
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png",
+          "title": "Klassische Diplomurkunde",
+          "description": "Traditionelles Design mit ornamentalen Rändern, Serifenschriften und formeller Urkundensprache"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png",
+          "title": "Modernes Firmenzertifikat",
+          "description": "Klares, elegantes Layout — optimal für Schulungsabschlüsse und betriebliche Auszeichnungen"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png",
+          "title": "Kreative Ehrenurkunde",
+          "description": "Farbenfrohe, ausdrucksstarke Designs für besondere Verdienste und kreative Leistungsanerkennung"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Alles für perfekte Zertifikate",
+      "subtitle": "Professionelle Werkzeuge für Personalabteilungen, Bildungseinrichtungen und Veranstalter",
+      "features": [
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b0d2e9c5e44ab2b3f1d8e7a6c4b2d0.png",
+          "title": "KI-Design-Engine",
+          "description": "Einfache Textbeschreibung genügt — die KI erzeugt sofort professionelle Layouts"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc8e9f4a1b8c7d6e5f4a3b2c1d.png",
+          "title": "Branding-Anpassung",
+          "description": "Logo-Upload, Markenfarben und Premium-Schriften für perfekte Corporate Identity"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9d8e4f3a8b7c6d5e4f3a2b1c.png",
+          "title": "Multi-Format-Export",
+          "description": "Download in 8K-Auflösung als PNG, JPG, SVG und PSD"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa3b8c7d6e5f4a3b2c1d0e9f8a7b.png",
+          "title": "Intelligente Vorlagen",
+          "description": "Frei editierbare Vorlagen für Diplome, Zertifikate und Auszeichnungen aller Art"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61bc7d6e5f4a3b2c1d0e9f8a7b6c5.png",
+          "title": "Stapelverarbeitung",
+          "description": "CSV-Datenimport zur Erstellung hunderter personalisierter Zertifikate auf einmal"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357a6b5c4d3e2f1a0b9c8d7e6f5.png",
+          "title": "Kommerzielle Nutzungsrechte",
+          "description": "Alle kostenpflichtigen Pläne beinhalten vollständige kommerzielle Nutzungsrechte"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Von Fachleuten weltweit geschätzt",
+      "testimonials": [
+        {
+          "quote": "Lovart hat unseren Arbeitsablauf revolutioniert. 200 Schulungszertifikate in unter 10 Minuten erstellt — jedes mit perfektem Branding und professionellem Design.",
+          "name": "Thomas Müller",
+          "role": "Personalleiter"
+        },
+        {
+          "quote": "Die KI-Vorschläge sind erstaunlich intuitiv. Unsere Abschlusszeugnisse sehen jetzt hochwertiger aus als die eines Profi-Designers.",
+          "name": "Anna Schmidt",
+          "role": "Weiterbildungsleitung"
+        },
+        {
+          "quote": "Die kostenlosen Tages-Credits ermöglichten einen risikofreien Test. Jetzt mit dem Pro-Tarif — die beste Investition für unsere Personalentwicklung.",
+          "name": "Lukas Weber",
+          "role": "Geschäftsführer"
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "title": "Häufig gestellte Fragen",
+      "faqs": [
+        {
+          "question": "Was ist der Lovart KI-Zertifikatersteller?",
+          "answer": "Ein KI-gestütztes Designtool, das Zertifikate, Diplome und Auszeichnungen automatisch erstellt. Geben Sie einfach eine Textbeschreibung ein und die KI generiert sofort professionelle Layouts."
+        },
+        {
+          "question": "Kann ich es kostenlos nutzen?",
+          "answer": "Ja! Täglich erhalten Sie kostenlose Credits, mit denen Sie Zertifikate ohne Kosten erstellen können. Für regelmäßige Nutzung gibt es Starter (2.000 Credits/Monat), Basic (3.500 Credits/Monat) und Pro (11.000 Credits/Monat)."
+        },
+        {
+          "question": "Welche Exportformate stehen zur Verfügung?",
+          "answer": "Export in 8K-Auflösung als hochwertige PNG-, JPG-, SVG- und editierbare PSD-Dateien — perfekt für digitale Nutzung und professionellen Druck."
+        },
+        {
+          "question": "Kann ich mein Firmenlogo einfügen?",
+          "answer": "Selbstverständlich. Laden Sie Ihr Organisationslogo hoch, definieren Sie Markenfarben und wählen Sie aus Premium-Schriften, um Ihre Corporate Identity perfekt abzubilden."
+        },
+        {
+          "question": "Habe ich kommerzielle Nutzungsrechte?",
+          "answer": "Ja — alle kostenpflichtigen Pläne (Starter, Basic, Pro) beinhalten vollständige kommerzielle Nutzungsrechte. Sie dürfen erstellte Zertifikate frei verkaufen, verteilen und kommerziell nutzen."
+        },
+        {
+          "question": "Wie funktioniert das KI-Design?",
+          "answer": "Beschreiben Sie Ihr Wunschzertifikat — z.B. «Elegantes Diplom mit Goldprägung und Universitätswappen» — und die KI erstellt sofort mehrere professionelle Layouts zur Auswahl."
+        },
+        {
+          "question": "Kann ich Zertifikate in großen Mengen erstellen?",
+          "answer": "Ja! Laden Sie eine CSV-Datei mit Empfängernamen und Details hoch, und Lovart generiert hunderte personalisierte Zertifikate in einem Durchgang — ideal für Abschlussfeiern und Firmenschulungen."
+        },
+        {
+          "question": "Welche Sprachen werden unterstützt?",
+          "answer": "Die Benutzeroberfläche ist mehrsprachig, und Zertifikatsinhalte können in jeder Sprache erstellt werden — einschließlich rechts-nach-links-Schriften."
+        },
+        {
+          "question": "Wie funktioniert das Credit-System?",
+          "answer": "Jede Designgenerierung verbraucht einen Credit. Kostenlose Credits werden täglich zurückgesetzt. Bezahlpläne: Starter (2.000/Monat), Basic (3.500/Monat), Pro (11.000/Monat) mit monatlichem Credit-Kontingent. Nicht genutzte Credits verfallen."
+        }
+      ]
+    }
+  ],
+  "section_ru": [
+    {
+      "type": "centeredInputSection",
+      "badge": "ИИ-конструктор сертификатов",
+      "title": "Создавайте профессиональные сертификаты за секунды",
+      "subtitle": "Дипломы, награды и свидетельства об обучении — ИИ создаёт дизайн автоматически",
+      "placeholder": "Опишите, какой сертификат вам нужен…",
+      "buttonText": "Создать сертификат",
+      "suggestions": [
+        "Классический диплом с золотой рамкой и антиквой",
+        "Награда «Сотрудник года» с корпоративной символикой",
+        "Современное свидетельство о прохождении обучения",
+        "Элегантный сертификат участника конференции"
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Стиль для любого события",
+      "subtitle": "От академических дипломов до корпоративных наград — выбирайте свой стиль",
+      "columns": [
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png",
+          "title": "Классический диплом",
+          "description": "Традиционный дизайн с орнаментальными рамками, антиквой и формальным языком диплома"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png",
+          "title": "Современный корпоративный",
+          "description": "Чистый элегантный макет — идеально для сертификатов об обучении и корпоративных наград"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png",
+          "title": "Креативная грамота",
+          "description": "Яркий выразительный дизайн для особых заслуг и творческих достижений"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Всё для создания идеальных сертификатов",
+      "subtitle": "Профессиональные инструменты для HR, образования и организаторов мероприятий",
+      "features": [
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b0d2e9c5e44ab2b3f1d8e7a6c4b2d0.png",
+          "title": "ИИ-движок дизайна",
+          "description": "Опишите сертификат словами — ИИ мгновенно создаст профессиональный макет"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc8e9f4a1b8c7d6e5f4a3b2c1d.png",
+          "title": "Фирменный стиль",
+          "description": "Загрузка логотипа, настройка цветов бренда и выбор премиум-шрифтов"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9d8e4f3a8b7c6d5e4f3a2b1c.png",
+          "title": "Мультиформатный экспорт",
+          "description": "Скачивание в 8K-разрешении: PNG, JPG, SVG и PSD"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa3b8c7d6e5f4a3b2c1d0e9f8a7b.png",
+          "title": "Умные шаблоны",
+          "description": "Полностью редактируемые шаблоны для дипломов, сертификатов и наград"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61bc7d6e5f4a3b2c1d0e9f8a7b6c5.png",
+          "title": "Пакетная генерация",
+          "description": "Импорт CSV для создания сотен персонализированных сертификатов за один раз"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357a6b5c4d3e2f1a0b9c8d7e6f5.png",
+          "title": "Коммерческие права",
+          "description": "Все платные тарифы включают полные права на коммерческое использование"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Нам доверяют профессионалы со всего мира",
+      "testimonials": [
+        {
+          "quote": "Lovart полностью преобразил наш документооборот. 200 сертификатов об обучении за 10 минут — каждый с идеальным брендированием и профессиональным дизайном.",
+          "name": "Анна Соколова",
+          "role": "Директор по персоналу"
+        },
+        {
+          "quote": "Подсказки ИИ поразительно точны. Наши дипломы теперь выглядят премиально — лучше, чем от профессионального дизайнера.",
+          "name": "Дмитрий Кузнецов",
+          "role": "Руководитель отдела обучения"
+        },
+        {
+          "quote": "Бесплатные дневные кредиты позволили протестировать всё без риска. Теперь на Pro-тарифе — лучшее вложение для нашего учебного центра.",
+          "name": "Елена Морозова",
+          "role": "HR-менеджер"
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "title": "Часто задаваемые вопросы",
+      "faqs": [
+        {
+          "question": "Что такое Lovart ИИ-конструктор сертификатов?",
+          "answer": "Это инструмент на базе ИИ для автоматического создания сертификатов, дипломов и наград. Опишите желаемый результат текстом — и ИИ мгновенно сгенерирует профессиональный макет."
+        },
+        {
+          "question": "Можно пользоваться бесплатно?",
+          "answer": "Да! Ежедневно вы получаете бесплатные кредиты, позволяющие создавать сертификаты без оплаты. Для регулярной работы доступны тарифы: Starter (2 000 кредитов/мес), Basic (3 500 кредитов/мес), Pro (11 000 кредитов/мес)."
+        },
+        {
+          "question": "В каких форматах можно экспортировать?",
+          "answer": "Экспорт в 8K-разрешении в форматах PNG, JPG, SVG и редактируемый PSD — идеально для цифрового использования и профессиональной печати."
+        },
+        {
+          "question": "Можно добавить логотип компании?",
+          "answer": "Разумеется. Загрузите логотип организации, настройте корпоративные цвета и выберите премиум-шрифты для полного соответствия вашему бренду."
+        },
+        {
+          "question": "Есть ли коммерческие права?",
+          "answer": "Да — все платные тарифы (Starter, Basic, Pro) включают полные права на коммерческое использование. Вы можете свободно продавать, распространять и использовать созданные сертификаты в коммерческих целях."
+        },
+        {
+          "question": "Как ИИ создаёт дизайн?",
+          "answer": "Опишите идеальный сертификат — например, «Элегантный диплом с золотым тиснением и гербом университета» — и ИИ мгновенно предложит несколько профессиональных макетов на выбор."
+        },
+        {
+          "question": "Можно ли создать много сертификатов сразу?",
+          "answer": "Да! Загрузите CSV-файл с именами получателей и данными, и Lovart сгенерирует сотни персонализированных сертификатов за один проход — идеально для выпускных и корпоративного обучения."
+        },
+        {
+          "question": "Какие языки поддерживаются?",
+          "answer": "Интерфейс многоязычный, содержимое сертификатов можно создавать на любом языке, включая языки с письмом справа налево."
+        },
+        {
+          "question": "Как работает система кредитов?",
+          "answer": "Одна генерация дизайна расходует один кредит. Бесплатные кредиты обновляются ежедневно. Тарифы: Starter (2 000/мес), Basic (3 500/мес), Pro (11 000/мес) с месячным лимитом. Неиспользованные кредиты не переносятся."
+        }
+      ]
+    }
+  ],
+  "section_fr": [
+    {
+      "type": "centeredInputSection",
+      "badge": "Créateur de certificats IA",
+      "title": "Créez des certificats professionnels en quelques secondes",
+      "subtitle": "Diplômes, attestations de formation et prix d'excellence générés automatiquement par l'IA",
+      "placeholder": "Décrivez le certificat que vous souhaitez créer…",
+      "buttonText": "Créer mon certificat",
+      "suggestions": [
+        "Diplôme classique avec bordure dorée et typographie élégante",
+        "Prix du meilleur employé avec logo d'entreprise",
+        "Attestation de formation professionnelle au design moderne",
+        "Certificat de participation à une conférence au style raffiné"
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Un style pour chaque occasion",
+      "subtitle": "Du diplôme académique à la distinction professionnelle, choisissez votre style",
+      "columns": [
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png",
+          "title": "Diplôme classique",
+          "description": "Design traditionnel avec bordures ornementales, polices à empattement et langage formel"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png",
+          "title": "Certificat corporate moderne",
+          "description": "Mise en page épurée et élégante, parfaite pour les attestations de formation et les reconnaissances internes"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png",
+          "title": "Prix créatif",
+          "description": "Design coloré et audacieux, idéal pour les distinctions spéciales et les réalisations créatives"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Tout pour des certificats parfaits",
+      "subtitle": "Des outils professionnels conçus pour les RH, l'éducation et l'événementiel",
+      "features": [
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b0d2e9c5e44ab2b3f1d8e7a6c4b2d0.png",
+          "title": "Moteur de design IA",
+          "description": "Décrivez votre certificat en langage naturel et obtenez des mises en page professionnelles instantanément"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc8e9f4a1b8c7d6e5f4a3b2c1d.png",
+          "title": "Personnalisation de marque",
+          "description": "Importez votre logo, définissez vos couleurs et choisissez parmi des centaines de polices premium"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9d8e4f3a8b7c6d5e4f3a2b1c.png",
+          "title": "Export multi-format",
+          "description": "Téléchargez en résolution 8K aux formats PNG, JPG, SVG et PSD modifiable"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa3b8c7d6e5f4a3b2c1d0e9f8a7b.png",
+          "title": "Modèles intelligents",
+          "description": "Des gabarits entièrement éditables pour diplômes, attestations et récompenses de tout type"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61bc7d6e5f4a3b2c1d0e9f8a7b6c5.png",
+          "title": "Génération par lot",
+          "description": "Importez un fichier CSV pour créer des centaines de certificats personnalisés en un clic"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357a6b5c4d3e2f1a0b9c8d7e6f5.png",
+          "title": "Droits commerciaux",
+          "description": "Tous les forfaits payants incluent des droits d'utilisation commerciale complets"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "La confiance des professionnels du monde entier",
+      "testimonials": [
+        {
+          "quote": "Lovart a transformé notre processus de certification. Nous avons généré 200 attestations de formation en moins de 10 minutes, chacune avec un branding parfait.",
+          "name": "Sophie Laurent",
+          "role": "Directrice RH"
+        },
+        {
+          "quote": "Les suggestions de l'IA sont remarquablement intuitives. Nos diplômes ont maintenant un rendu premium, bien supérieur à ce qu'un designer professionnel aurait pu faire.",
+          "name": "Thomas Moreau",
+          "role": "Responsable Formation"
+        },
+        {
+          "quote": "Les crédits quotidiens gratuits nous ont permis de tout tester sans risque. Aujourd'hui avec le forfait Pro, c'est le meilleur investissement pour notre service formation.",
+          "name": "Claire Petit",
+          "role": "Fondatrice"
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "title": "Questions fréquentes",
+      "faqs": [
+        {
+          "question": "Qu'est-ce que le Créateur de certificats IA Lovart ?",
+          "answer": "Un outil de design alimenté par l'IA qui crée automatiquement des certificats, diplômes et récompenses. Décrivez simplement ce que vous voulez et l'IA génère instantanément des mises en page professionnelles."
+        },
+        {
+          "question": "Est-ce gratuit ?",
+          "answer": "Oui ! Lovart offre des crédits quotidiens gratuits pour créer des certificats sans frais. Pour un usage régulier, les forfaits payants sont Starter (2 000 crédits/mois), Basic (3 500 crédits/mois) et Pro (11 000 crédits/mois)."
+        },
+        {
+          "question": "Quels formats d'export sont disponibles ?",
+          "answer": "Exportez vos certificats en résolution 8K aux formats PNG, JPG, SVG et PSD modifiable — parfait pour le partage numérique et l'impression professionnelle."
+        },
+        {
+          "question": "Puis-je ajouter mon logo d'entreprise ?",
+          "answer": "Absolument. Importez le logo de votre organisation, définissez vos couleurs de marque et choisissez parmi des polices premium pour refléter parfaitement votre identité."
+        },
+        {
+          "question": "Ai-je les droits d'utilisation commerciale ?",
+          "answer": "Oui — tous les forfaits payants (Starter, Basic, Pro) incluent des droits d'utilisation commerciale complets. Vous pouvez librement vendre, distribuer et utiliser vos certificats à des fins commerciales."
+        },
+        {
+          "question": "Comment l'IA crée-t-elle les designs ?",
+          "answer": "Décrivez votre certificat idéal — par exemple « Diplôme élégant avec dorure et blason universitaire » — et l'IA propose instantanément plusieurs mises en page professionnelles."
+        },
+        {
+          "question": "Puis-je créer des certificats en grande quantité ?",
+          "answer": "Oui ! Importez un fichier CSV avec les noms et détails des récipiendaires, et Lovart génère des centaines de certificats personnalisés en une seule fois — idéal pour les remises de diplômes et formations."
+        },
+        {
+          "question": "Quelles langues sont supportées ?",
+          "answer": "L'interface est multilingue et le contenu des certificats peut être créé dans n'importe quelle langue, y compris les écritures de droite à gauche."
+        },
+        {
+          "question": "Comment fonctionne le système de crédits ?",
+          "answer": "Chaque génération de design consomme un crédit. Les crédits gratuits sont renouvelés chaque jour. Forfaits : Starter (2 000/mois), Basic (3 500/mois), Pro (11 000/mois) avec quota mensuel. Les crédits non utilisés ne sont pas reportés."
+        }
+      ]
+    }
+  ],
+  "section_pt": [
+    {
+      "type": "centeredInputSection",
+      "badge": "Criador de Certificados com IA",
+      "title": "Crie certificados profissionais em segundos",
+      "subtitle": "Diplomas, certificados de treinamento e premiações gerados automaticamente pela IA",
+      "placeholder": "Descreva o certificado que você deseja criar…",
+      "buttonText": "Criar meu certificado",
+      "suggestions": [
+        "Diploma clássico com borda dourada e tipografia elegante",
+        "Prêmio de funcionário do ano com logotipo da empresa",
+        "Certificado de conclusão de treinamento corporativo moderno",
+        "Certificado de participação em conferência com design sofisticado"
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Um estilo para cada ocasião",
+      "subtitle": "De diplomas acadêmicos a reconhecimentos empresariais, escolha o seu estilo",
+      "columns": [
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png",
+          "title": "Diploma clássico",
+          "description": "Design tradicional com bordas ornamentais, fontes serifadas e linguagem formal de diploma"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png",
+          "title": "Certificado corporativo moderno",
+          "description": "Layout limpo e elegante, perfeito para certificados de conclusão e reconhecimento profissional"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png",
+          "title": "Certificado criativo",
+          "description": "Design colorido e expressivo, ideal para distinções especiais e conquistas criativas"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Tudo para criar certificados perfeitos",
+      "subtitle": "Ferramentas profissionais para RH, educação e organizadores de eventos",
+      "features": [
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b0d2e9c5e44ab2b3f1d8e7a6c4b2d0.png",
+          "title": "Motor de design com IA",
+          "description": "Descreva seu certificado em linguagem natural e receba layouts profissionais instantaneamente"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc8e9f4a1b8c7d6e5f4a3b2c1d.png",
+          "title": "Personalização de marca",
+          "description": "Carregue seu logotipo, defina as cores da marca e escolha entre fontes premium"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9d8e4f3a8b7c6d5e4f3a2b1c.png",
+          "title": "Exportação multi-formato",
+          "description": "Baixe em resolução 8K nos formatos PNG, JPG, SVG e PSD editável"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa3b8c7d6e5f4a3b2c1d0e9f8a7b.png",
+          "title": "Modelos inteligentes",
+          "description": "Gabaritos totalmente editáveis para diplomas, certificados e premiações de todos os tipos"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61bc7d6e5f4a3b2c1d0e9f8a7b6c5.png",
+          "title": "Geração em lote",
+          "description": "Importe um arquivo CSV para criar centenas de certificados personalizados de uma só vez"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357a6b5c4d3e2f1a0b9c8d7e6f5.png",
+          "title": "Direitos comerciais",
+          "description": "Todos os planos pagos incluem direitos completos de uso comercial"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Profissionais do mundo todo confiam",
+      "testimonials": [
+        {
+          "quote": "O Lovart revolucionou nosso fluxo de certificação. Geramos 200 certificados de treinamento em menos de 10 minutos, cada um com a identidade visual perfeita.",
+          "name": "Ana Oliveira",
+          "role": "Diretora de RH"
+        },
+        {
+          "quote": "As sugestões da IA são incrivelmente intuitivas. Nossos diplomas ficaram com aparência premium, muito melhores do que faria um designer profissional.",
+          "name": "João Santos",
+          "role": "Coordenador de Treinamento"
+        },
+        {
+          "quote": "Os créditos diários gratuitos nos permitiram testar tudo sem riscos. Hoje no plano Pro, é o melhor investimento do nosso departamento de capacitação.",
+          "name": "Maria Silva",
+          "role": "Gerente de Eventos"
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "title": "Perguntas frequentes",
+      "faqs": [
+        {
+          "question": "O que é o Criador de Certificados com IA Lovart?",
+          "answer": "Uma ferramenta de design com IA que cria certificados, diplomas e premiações automaticamente. Basta descrever o que você precisa e a IA gera layouts profissionais em segundos."
+        },
+        {
+          "question": "É gratuito?",
+          "answer": "Sim! O Lovart oferece créditos diários gratuitos para criar certificados sem custo. Para uso regular, os planos pagos são Starter (2.000 créditos/mês), Basic (3.500 créditos/mês) e Pro (11.000 créditos/mês)."
+        },
+        {
+          "question": "Quais formatos de exportação estão disponíveis?",
+          "answer": "Exporte seus certificados em resolução 8K nos formatos PNG, JPG, SVG e PSD editável — perfeito para compartilhamento digital e impressão profissional."
+        },
+        {
+          "question": "Posso adicionar o logotipo da minha empresa?",
+          "answer": "Com certeza. Carregue o logotipo da sua organização, defina as cores da marca e escolha entre fontes premium para refletir perfeitamente sua identidade visual."
+        },
+        {
+          "question": "Tenho direitos de uso comercial?",
+          "answer": "Sim — todos os planos pagos (Starter, Basic, Pro) incluem direitos completos de uso comercial. Você pode vender, distribuir e usar livremente os certificados para fins comerciais."
+        },
+        {
+          "question": "Como a IA cria os designs?",
+          "answer": "Descreva o certificado ideal — por exemplo «Diploma elegante com detalhes dourados e brasão universitário» — e a IA gera instantaneamente várias opções de layout profissional."
+        },
+        {
+          "question": "Posso criar certificados em massa?",
+          "answer": "Sim! Importe um arquivo CSV com nomes e dados dos destinatários, e o Lovart gera centenas de certificados personalizados de uma só vez — ideal para formaturas e treinamentos corporativos."
+        },
+        {
+          "question": "Quais idiomas são suportados?",
+          "answer": "A interface é multilíngue e o conteúdo dos certificados pode ser criado em qualquer idioma, incluindo escritas da direita para a esquerda."
+        },
+        {
+          "question": "Como funciona o sistema de créditos?",
+          "answer": "Cada geração de design consome um crédito. Créditos gratuitos são renovados diariamente. Planos: Starter (2.000/mês), Basic (3.500/mês), Pro (11.000/mês) com cota mensal. Créditos não utilizados não acumulam."
+        }
+      ]
+    }
+  ],
+  "section_it": [
+    {
+      "type": "centeredInputSection",
+      "badge": "Creatore di certificati IA",
+      "title": "Crea certificati professionali in pochi secondi",
+      "subtitle": "Diplomi, attestati di formazione e premi di eccellenza generati automaticamente dall'IA",
+      "placeholder": "Descrivi il certificato che vuoi creare…",
+      "buttonText": "Crea il mio certificato",
+      "suggestions": [
+        "Diploma classico con bordo dorato e tipografia elegante",
+        "Premio miglior dipendente con logo aziendale",
+        "Attestato di formazione aziendale dal design moderno",
+        "Certificato di partecipazione al convegno con stile raffinato"
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Uno stile per ogni occasione",
+      "subtitle": "Dai diplomi accademici ai riconoscimenti aziendali, scegli il tuo stile",
+      "columns": [
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png",
+          "title": "Diploma classico",
+          "description": "Design tradizionale con bordi ornamentali, caratteri con grazie e linguaggio formale"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png",
+          "title": "Certificato aziendale moderno",
+          "description": "Layout pulito ed elegante, perfetto per attestati di formazione e riconoscimenti professionali"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png",
+          "title": "Attestato creativo",
+          "description": "Design colorato e audace, ideale per riconoscimenti speciali e risultati creativi"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Tutto per certificati perfetti",
+      "subtitle": "Strumenti professionali per HR, istruzione e organizzazione eventi",
+      "features": [
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b0d2e9c5e44ab2b3f1d8e7a6c4b2d0.png",
+          "title": "Motore di design IA",
+          "description": "Descrivi il certificato a parole e ottieni layout professionali all'istante"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc8e9f4a1b8c7d6e5f4a3b2c1d.png",
+          "title": "Personalizzazione brand",
+          "description": "Carica il logo, imposta i colori aziendali e scegli tra font premium"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9d8e4f3a8b7c6d5e4f3a2b1c.png",
+          "title": "Export multi-formato",
+          "description": "Scarica in risoluzione 8K nei formati PNG, JPG, SVG e PSD modificabile"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa3b8c7d6e5f4a3b2c1d0e9f8a7b.png",
+          "title": "Modelli intelligenti",
+          "description": "Template completamente modificabili per diplomi, certificati e premi di ogni tipo"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61bc7d6e5f4a3b2c1d0e9f8a7b6c5.png",
+          "title": "Generazione in blocco",
+          "description": "Importa un file CSV per creare centinaia di certificati personalizzati in un clic"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357a6b5c4d3e2f1a0b9c8d7e6f5.png",
+          "title": "Diritti commerciali",
+          "description": "Tutti i piani a pagamento includono diritti completi di utilizzo commerciale"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "La fiducia dei professionisti di tutto il mondo",
+      "testimonials": [
+        {
+          "quote": "Lovart ha trasformato il nostro processo di certificazione. Abbiamo generato 200 attestati di formazione in meno di 10 minuti, ognuno con un branding impeccabile.",
+          "name": "Marco Esposito",
+          "role": "Direttore Risorse Umane"
+        },
+        {
+          "quote": "I suggerimenti dell'IA sono incredibilmente intuitivi. I nostri diplomi ora hanno un aspetto premium, migliore di quello che avrebbe fatto un designer professionista.",
+          "name": "Giulia Conti",
+          "role": "Responsabile Formazione"
+        },
+        {
+          "quote": "I crediti giornalieri gratuiti ci hanno permesso di testare tutto senza rischi. Ora con il piano Pro, è il miglior investimento per il nostro reparto formazione.",
+          "name": "Andrea Rinaldi",
+          "role": "Fondatore"
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "title": "Domande frequenti",
+      "faqs": [
+        {
+          "question": "Cos'è il Creatore di certificati IA Lovart?",
+          "answer": "Uno strumento di design basato sull'IA che crea automaticamente certificati, diplomi e premi. Descrivi ciò che desideri e l'IA genera immediatamente layout professionali."
+        },
+        {
+          "question": "È gratuito?",
+          "answer": "Sì! Lovart offre crediti giornalieri gratuiti per creare certificati senza costi. Per un uso regolare, i piani a pagamento sono Starter (2.000 crediti/mese), Basic (3.500 crediti/mese) e Pro (11.000 crediti/mese)."
+        },
+        {
+          "question": "Quali formati di export sono disponibili?",
+          "answer": "Esporta i tuoi certificati in risoluzione 8K nei formati PNG, JPG, SVG e PSD modificabile — perfetto per la condivisione digitale e la stampa professionale."
+        },
+        {
+          "question": "Posso aggiungere il logo della mia azienda?",
+          "answer": "Certamente. Carica il logo della tua organizzazione, definisci i colori del brand e scegli tra font premium per riflettere perfettamente la tua identità aziendale."
+        },
+        {
+          "question": "Ho i diritti di utilizzo commerciale?",
+          "answer": "Sì — tutti i piani a pagamento (Starter, Basic, Pro) includono diritti completi di utilizzo commerciale. Puoi vendere, distribuire e utilizzare liberamente i certificati per scopi commerciali."
+        },
+        {
+          "question": "Come fa l'IA a creare i design?",
+          "answer": "Descrivi il certificato ideale — ad esempio «Diploma elegante con dettagli dorati e stemma universitario» — e l'IA propone immediatamente diversi layout professionali."
+        },
+        {
+          "question": "Posso creare certificati in grandi quantità?",
+          "answer": "Sì! Importa un file CSV con i nomi e i dati dei destinatari, e Lovart genera centinaia di certificati personalizzati in un'unica soluzione — ideale per cerimonie di laurea e formazioni aziendali."
+        },
+        {
+          "question": "Quali lingue sono supportate?",
+          "answer": "L'interfaccia è multilingue e il contenuto dei certificati può essere creato in qualsiasi lingua, incluse le scritture da destra a sinistra."
+        },
+        {
+          "question": "Come funziona il sistema di crediti?",
+          "answer": "Ogni generazione di design consuma un credito. I crediti gratuiti vengono rinnovati ogni giorno. Piani: Starter (2.000/mese), Basic (3.500/mese), Pro (11.000/mese) con quota mensile. I crediti non utilizzati non vengono riportati."
+        }
+      ]
+    }
+  ],
+  "section_es": [
+    {
+      "type": "centeredInputSection",
+      "badge": "Creador de certificados con IA",
+      "title": "Crea certificados profesionales en segundos",
+      "subtitle": "Diplomas, certificados de formación y premios generados automáticamente por IA",
+      "placeholder": "Describe el certificado que quieres crear…",
+      "buttonText": "Crear mi certificado",
+      "suggestions": [
+        "Diploma clásico con borde dorado y tipografía elegante",
+        "Premio al empleado del año con logotipo corporativo",
+        "Certificado de formación empresarial con diseño moderno",
+        "Certificado de participación en conferencia con estilo refinado"
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Un estilo para cada ocasión",
+      "subtitle": "Desde diplomas académicos hasta reconocimientos empresariales, elige tu estilo",
+      "columns": [
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png",
+          "title": "Diploma clásico",
+          "description": "Diseño tradicional con bordes ornamentales, tipografía con serifa y lenguaje formal"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png",
+          "title": "Certificado corporativo moderno",
+          "description": "Diseño limpio y elegante, perfecto para certificados de formación y reconocimientos profesionales"
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png",
+          "title": "Certificado creativo",
+          "description": "Diseño colorido y audaz, ideal para distinciones especiales y logros creativos"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Todo para crear certificados perfectos",
+      "subtitle": "Herramientas profesionales para RRHH, educación y organizadores de eventos",
+      "features": [
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b0d2e9c5e44ab2b3f1d8e7a6c4b2d0.png",
+          "title": "Motor de diseño con IA",
+          "description": "Describe tu certificado en lenguaje natural y obtén diseños profesionales al instante"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc8e9f4a1b8c7d6e5f4a3b2c1d.png",
+          "title": "Personalización de marca",
+          "description": "Sube tu logotipo, define los colores corporativos y elige entre fuentes premium"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9d8e4f3a8b7c6d5e4f3a2b1c.png",
+          "title": "Exportación multi-formato",
+          "description": "Descarga en resolución 8K en formatos PNG, JPG, SVG y PSD editable"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa3b8c7d6e5f4a3b2c1d0e9f8a7b.png",
+          "title": "Plantillas inteligentes",
+          "description": "Plantillas totalmente editables para diplomas, certificados y premios de todo tipo"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61bc7d6e5f4a3b2c1d0e9f8a7b6c5.png",
+          "title": "Generación por lotes",
+          "description": "Importa un archivo CSV para crear cientos de certificados personalizados de una sola vez"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/agent_images/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357a6b5c4d3e2f1a0b9c8d7e6f5.png",
+          "title": "Derechos comerciales",
+          "description": "Todos los planes de pago incluyen derechos completos de uso comercial"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Profesionales de todo el mundo confían",
+      "testimonials": [
+        {
+          "quote": "Lovart transformó nuestro flujo de certificación. Generamos 200 certificados de formación en menos de 10 minutos, cada uno con una imagen de marca impecable.",
+          "name": "Carmen Rodríguez",
+          "role": "Directora de RRHH"
+        },
+        {
+          "quote": "Las sugerencias de la IA son increíblemente intuitivas. Nuestros diplomas ahora tienen un aspecto premium, mejor que lo que haría un diseñador profesional.",
+          "name": "Miguel Fernández",
+          "role": "Coordinador de Capacitación"
+        },
+        {
+          "quote": "Los créditos diarios gratuitos nos permitieron probar todo sin riesgos. Ahora con el plan Pro, es la mejor inversión de nuestro departamento de formación.",
+          "name": "Elena García",
+          "role": "Fundadora"
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "title": "Preguntas frecuentes",
+      "faqs": [
+        {
+          "question": "¿Qué es el Creador de certificados con IA Lovart?",
+          "answer": "Una herramienta de diseño con IA que crea certificados, diplomas y premios automáticamente. Solo describe lo que necesitas y la IA genera diseños profesionales al instante."
+        },
+        {
+          "question": "¿Es gratuito?",
+          "answer": "¡Sí! Lovart ofrece créditos diarios gratuitos para crear certificados sin costo. Para uso regular, los planes de pago son Starter (2.000 créditos/mes), Basic (3.500 créditos/mes) y Pro (11.000 créditos/mes)."
+        },
+        {
+          "question": "¿Qué formatos de exportación hay disponibles?",
+          "answer": "Exporta tus certificados en resolución 8K en formatos PNG, JPG, SVG y PSD editable — perfecto para compartir digitalmente e imprimir profesionalmente."
+        },
+        {
+          "question": "¿Puedo añadir el logotipo de mi empresa?",
+          "answer": "Por supuesto. Sube el logotipo de tu organización, define los colores corporativos y elige entre fuentes premium para reflejar perfectamente tu identidad de marca."
+        },
+        {
+          "question": "¿Tengo derechos de uso comercial?",
+          "answer": "Sí — todos los planes de pago (Starter, Basic, Pro) incluyen derechos completos de uso comercial. Puedes vender, distribuir y usar libremente los certificados con fines comerciales."
+        },
+        {
+          "question": "¿Cómo crea la IA los diseños?",
+          "answer": "Describe tu certificado ideal — por ejemplo «Diploma elegante con detalles dorados y escudo universitario» — y la IA genera al instante varias opciones de diseño profesional."
+        },
+        {
+          "question": "¿Puedo crear certificados en grandes cantidades?",
+          "answer": "¡Sí! Importa un archivo CSV con los nombres y datos de los destinatarios, y Lovart genera cientos de certificados personalizados de una sola vez — ideal para graduaciones y formaciones empresariales."
+        },
+        {
+          "question": "¿Qué idiomas son compatibles?",
+          "answer": "La interfaz es multilingüe y el contenido de los certificados puede crearse en cualquier idioma, incluidas las escrituras de derecha a izquierda."
+        },
+        {
+          "question": "¿Cómo funciona el sistema de créditos?",
+          "answer": "Cada generación de diseño consume un crédito. Los créditos gratuitos se renuevan cada día. Planes: Starter (2.000/mes), Basic (3.500/mes), Pro (11.000/mes) con cupo mensual. Los créditos no utilizados no se acumulan."
+        }
+      ]
+    }
+  ]
+}

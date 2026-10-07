@@ -1,0 +1,403 @@
+{
+  "_id": "features-online-multimodal-ai-creator-seedance-ja",
+  "reflowSourceId": "features-online-multimodal-ai-creator-seedance-ja",
+  "slug": "online-multimodal-ai-creator-seedance",
+  "language": "ja",
+  "category": "feature",
+  "title": "Lovartが実現する次世代マルチモーダル動画生成",
+  "description": "Create cinematic 4K videos instantly with Lovart's cloud-based Seedance 2.0 engine. No GPU required. Turn text, images, and audio into professional, structurally consistent videos with full commercial rights.",
+  "seo": {
+    "description": "Lovartのクラウド型Seedance 2.0エンジンで、即座に映画級の4K動画を生成。GPU不要で、テキスト・画像・音声からプロ仕様の構造的一貫性のある動画を作成。商用利用権も完全付与。",
+    "keywords": [
+      "multimodal AI video generator",
+      "Seedance 2.0",
+      "text to video AI",
+      "image to video AI",
+      "online video creator",
+      "cloud AI rendering",
+      "Lovart AI"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "True Multimodal Generation",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Lovartが実現する次世代マルチモーダル動画生成\", \"description\": \"Create cinematic 4K videos instantly with Lovart's cloud-based Seedance 2.0 engine. No GPU required. Turn text, images, and audio into professional, structurally consistent videos with full commercial rights.\", \"url\": \"https://www.lovart.ai/features/online-multimodal-ai-creator-seedance\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Seedance 2.0の「マルチモーダル」とはどういう意味ですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"マルチモーダルとは、AIがテキスト、画像、音声など異なる種類のデータを同時に理解・処理できる能力です。これにより、テキスト、参考画像、音声トラックを組み合わせて、最終的な動画を精密にコントロールできます。\"}}, {\"@type\": \"Question\", \"name\": \"このオンラインツールを使うには、ハイスペックなPCやGPUが必要ですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"全く必要ありません。Lovartは100%クラウドベースのプラットフォームであり、重いAI処理や4Kレンダリングはすべて当社のエンタープライズサーバーで行われます。安定したインターネットとブラウザさえあればOKです。\"}}, {\"@type\": \"Question\", \"name\": \"作成した動画は商用広告やプロジェクトに使用できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"もちろんです。テキストから生成されたものでも、あなた自身の画像から生成されたものでも、Lovart上のSeedance 2.0で作成されたすべての動画には完全な商用利用権が付与されています。\"}}, {\"@type\": \"Question\", \"name\": \"テキストからの生成（T2V）と画像からの生成（I2V）、どちらを使うべきですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"目的によります。ゼロから全く新しい想像の世界を作りたい場合はT2Vが最適です。一方、構図やキャラクターのデザイン、製品の配置を完璧にコントロールしたい場合はI2Vがお勧めです。\"}}, {\"@type\": \"Question\", \"name\": \"サポートされている書き出しフォーマットと解像度は何ですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"非常に滑らかなMP4形式で書き出されます。TikTok用の縦長（9:16）や横長（16:9）などのアスペクト比を選択でき、アップスケール機能を使用して鮮明な4K解像度でエクスポートすることも可能です。\"}}, {\"@type\": \"Question\", \"name\": \"クラウドレンダリングにはどのくらい時間がかかりますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"標準的な5秒間の動画クリップのほとんどは、サーバーの負荷にもよりますが、1分未満でレンダリングされます。当社のインフラは速度に最適化されているため、待ち時間が短く済みます。\"}}, {\"@type\": \"Question\", \"name\": \"キャラクターの一貫性はどのように維持されますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Seedance 2.0は「歪み」を排除するように特化してトレーニングされています。キャラクターの参照画像をアップロードすることで、AIが構造を理解し、顔の特徴や服装をアニメーション全体で正しく維持します。\"}}, {\"@type\": \"Question\", \"name\": \"音声に合わせてキャラクターの口を動かす（リップシンク）ことはできますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい、可能です。マルチモーダルエンジンにより、ナレーション音声をアップロードすると、AIがキャラクターの表情と口の動きを音声に合わせて自然に同期させます。\"}}, {\"@type\": \"Question\", \"name\": \"動画編集の知識がなくても使えますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。Lovartは複雑なタイムラインやキーフレームを自然言語処理に置き換えています。文章を打ち込んだり、画像をクリックしてアップロードしたりできる方なら、誰でもプロ級の動画を演出できます。\"}}]}}"
+    },
+    "title": "Lovartが実現する次世代マルチモーダル動画生成"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Lovartが実現する次世代マルチモーダル動画生成\",\"description\":\"Create cinematic 4K videos instantly with Lovart's cloud-based Seedance 2.0 engine. No GPU required. Turn text, images, and audio into professional, structurally consistent videos with full commercial rights.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"True Multimodal Generation\"}},{\"type\":\"bento-6\",\"title\":\"Why Creators Choose Lovart's Seedance 2.0 Engine\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"真のマルチモーダル生成\",\"description\":\"テキスト、画像、音声駆動のアニメーションを1つの場所で統合。これまでにない緻密な映像コントロールを実現します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"真のマルチモーダル生成\"}},{\"title\":\"ハードウェアの制限ゼロ\",\"description\":\"数十万円のグラフィックボードは不要です。一般的なノートPCやタブレットから、クラウドクラスターを使って4KのAI動画を出力できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png\",\"alt\":\"ハードウェアの制限ゼロ\"}},{\"title\":\"完璧な構造的一貫性\",\"description\":\"従来のAI動画に見られた「モーフィング（歪み）」を排除。キャラクターや背景が最初から最後まで正しく維持されます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/fdd595720454d37ebbc0927c96f9bf8e2bc23a84d72e640d0aad62eca8dd35b5.png\",\"alt\":\"完璧な構造的一貫性\"}},{\"title\":\"シネマティックなカメラ制御\",\"description\":\"ドローンショット、マクロズーム、トラッキングなど、プロのカメラワークをテキスト指示だけで自在に操れます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png\",\"alt\":\"シネマティックなカメラ制御\"}},{\"title\":\"商用利用可能なアウトプット\",\"description\":\"Lovartで生成されたすべての動画には、完全な商用利用権が含まれます。広告やクライアントワークに安心して使用できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png\",\"alt\":\"商用利用可能なアウトプット\"}},{\"title\":\"リアルタイム・クラウド作業\",\"description\":\"画像生成、動画化、音声追加を複数のツールで行き来する必要はありません。すべて統合されたオンラインキャンバスで完結します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png\",\"alt\":\"リアルタイム・クラウド作業\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"真のマルチモーダル生成\",\"icon\":\"chat\",\"content\":{\"title\":\"真のマルチモーダル生成\",\"description\":\"テキスト、画像、音声駆動のアニメーションを1つの場所で統合。これまでにない緻密な映像コントロールを実現します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"真のマルチモーダル生成\"}}},{\"label\":\"ハードウェアの制限ゼロ\",\"icon\":\"image\",\"content\":{\"title\":\"ハードウェアの制限ゼロ\",\"description\":\"数十万円のグラフィックボードは不要です。一般的なノートPCやタブレットから、クラウドクラスターを使って4KのAI動画を出力できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png\",\"alt\":\"ハードウェアの制限ゼロ\"}}},{\"label\":\"完璧な構造的一貫性\",\"icon\":\"flask\",\"content\":{\"title\":\"完璧な構造的一貫性\",\"description\":\"従来のAI動画に見られた「モーフィング（歪み）」を排除。キャラクターや背景が最初から最後まで正しく維持されます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/fdd595720454d37ebbc0927c96f9bf8e2bc23a84d72e640d0aad62eca8dd35b5.png\",\"alt\":\"完璧な構造的一貫性\"}}},{\"label\":\"シネマティックなカメラ制御\",\"icon\":\"brand\",\"content\":{\"title\":\"シネマティックなカメラ制御\",\"description\":\"ドローンショット、マクロズーム、トラッキングなど、プロのカメラワークをテキスト指示だけで自在に操れます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png\",\"alt\":\"シネマティックなカメラ制御\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"商用利用可能なアウトプット\",\"description\":\"Lovartで生成されたすべての動画には、完全な商用利用権が含まれます。広告やクライアントワークに安心して使用できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png\",\"alt\":\"商用利用可能なアウトプット\"}},{\"title\":\"リアルタイム・クラウド作業\",\"description\":\"画像生成、動画化、音声追加を複数のツールで行き来する必要はありません。すべて統合されたオンラインキャンバスで完結します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png\",\"alt\":\"リアルタイム・クラウド作業\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"Seedance 2.0: The Ultimate Multimodal AI Video Creator Online プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Lovart × Seedance 2.0: 究極のオンライン・マルチモーダルAI動画クリエイター\",\"description\":\"高価なGPUも、複雑な環境構築も不要です。ブラウザを開くだけで、最強のマルチモーダルエンジン「Seedance 2.0」をフル活用。テキスト、画像、音声をシームレスに連携させ、クラウド上で映画のような動画を即座に作成できます。\",\"input_placeholder\":\"動画のコンセプトを記述してください（例：音声トラックに完全に同期したサイバーパンク都市のドローン空撮）\",\"prompts\":[{\"label\":\"マルチモーダル・ドローンショット\",\"prompt\":\"Cinematic drone shot flying through a neon-lit cyberpunk city at night, perfectly synced to a synthwave audio track\"},{\"label\":\"画像から動画への製品広告\",\"prompt\":\"Slow motion close-up of a premium watch with gears moving intricately, using Image 1 as reference, professional studio lighting\"},{\"label\":\"スケッチからのアニメーション\",\"prompt\":\"A magical forest coming to life, golden fireflies glowing, seamless transition from original sketch, 4K resolution\"},{\"label\":\"音声駆動のプレゼンター\",\"prompt\":\"Professional corporate spokesperson presenting a new tech product, lip-syncing to the provided voiceover audio\"}],\"tip\":\"参考画像のアップロード、音声の追加、またはプロンプトの入力から始めましょう\",\"cta\":{\"text\":\"無料でオンライン制作を始める\"}},{\"type\":\"workflow-horizontal\",\"title\":\"すべてが完結するシームレスなクラウドワークフロー\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"1. 入力モーダル（形式）を選択\",\"description\":\"テキストプロンプト、参考画像、または音声ファイルから開始します。Seedance 2.0はあらゆる入力メディアに適応し、創造の壁を取り払います。\"},{\"step\":2,\"title\":\"2. カメラと動きをコントロール\",\"description\":\"Lovartの直感的なクラウドインターフェースでカメラの動きや照明を調整。複雑なソフトなしで、映画監督のように完全に演出を制御できます。\"},{\"step\":3,\"title\":\"3. クラウドレンダリング＆出力\",\"description\":\"生成ボタンを押せば、クラウドサーバーが重い処理を高速で実行。SNSや商用プロジェクトですぐに使える高品質なMP4をダウンロードできます。\"}]},{\"type\":\"comparison-table\",\"title\":\"Seedance 2.0: The Ultimate Multimodal AI Video Creator Online：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Seedance 2.0: The Ultimate Multimodal AI Video Creator Online プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Seedance 2.0: The Ultimate Multimodal AI Video Creator Online が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから Seedance 2.0: The Ultimate Multimodal AI Video Creator Online の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"プロモーション動画の制作には何週間もかかり、外注費も膨大でした。今ではSeedance 2.0エンジンを使い、静止画の製品写真をコンバージョンの高い動画広告に午後だけで変換できます。ワークフローが一変しました。\",\"author\":\"Sarah L.\",\"role\":\"マーケティングディレクター\"},{\"quote\":\"AI動画の最大のハードルはPCのスペックでした。私には高価なGPUはありませんが、Lovartのクラウドレンダリングが救世主になりました。マルチモーダル機能により、自作の絵コンテから一貫性のあるアニメーションが作れます。\",\"author\":\"Thomas R.\",\"role\":\"インディペンデント映像作家\"},{\"quote\":\"画像から動画への変換機能（I2V）には驚かされました。ECサイト用の普通の写真をアップロードして「滑らかなパンと柔らかな照明」と入力するだけで、プロ級のBロール映像が完成します。商用利用可能な点も安心です。\",\"author\":\"Elena J.\",\"role\":\"ECサイト創業者\"}],\"title\":\"Seedance 2.0 に対するクリエイターの声\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"Seedance 2.0の「マルチモーダル」とはどういう意味ですか？\",\"answer\":\"マルチモーダルとは、AIがテキスト、画像、音声など異なる種類のデータを同時に理解・処理できる能力です。これにより、テキスト、参考画像、音声トラックを組み合わせて、最終的な動画を精密にコントロールできます。\"},{\"question\":\"このオンラインツールを使うには、ハイスペックなPCやGPUが必要ですか？\",\"answer\":\"全く必要ありません。Lovartは100%クラウドベースのプラットフォームであり、重いAI処理や4Kレンダリングはすべて当社のエンタープライズサーバーで行われます。安定したインターネットとブラウザさえあればOKです。\"},{\"question\":\"作成した動画は商用広告やプロジェクトに使用できますか？\",\"answer\":\"もちろんです。テキストから生成されたものでも、あなた自身の画像から生成されたものでも、Lovart上のSeedance 2.0で作成されたすべての動画には完全な商用利用権が付与されています。\"},{\"question\":\"テキストからの生成（T2V）と画像からの生成（I2V）、どちらを使うべきですか？\",\"answer\":\"目的によります。ゼロから全く新しい想像の世界を作りたい場合はT2Vが最適です。一方、構図やキャラクターのデザイン、製品の配置を完璧にコントロールしたい場合はI2Vがお勧めです。\"},{\"question\":\"サポートされている書き出しフォーマットと解像度は何ですか？\",\"answer\":\"非常に滑らかなMP4形式で書き出されます。TikTok用の縦長（9:16）や横長（16:9）などのアスペクト比を選択でき、アップスケール機能を使用して鮮明な4K解像度でエクスポートすることも可能です。\"},{\"question\":\"クラウドレンダリングにはどのくらい時間がかかりますか？\",\"answer\":\"標準的な5秒間の動画クリップのほとんどは、サーバーの負荷にもよりますが、1分未満でレンダリングされます。当社のインフラは速度に最適化されているため、待ち時間が短く済みます。\"},{\"question\":\"キャラクターの一貫性はどのように維持されますか？\",\"answer\":\"Seedance 2.0は「歪み」を排除するように特化してトレーニングされています。キャラクターの参照画像をアップロードすることで、AIが構造を理解し、顔の特徴や服装をアニメーション全体で正しく維持します。\"},{\"question\":\"音声に合わせてキャラクターの口を動かす（リップシンク）ことはできますか？\",\"answer\":\"はい、可能です。マルチモーダルエンジンにより、ナレーション音声をアップロードすると、AIがキャラクターの表情と口の動きを音声に合わせて自然に同期させます。\"},{\"question\":\"動画編集の知識がなくても使えますか？\",\"answer\":\"はい。Lovartは複雑なタイムラインやキーフレームを自然言語処理に置き換えています。文章を打ち込んだり、画像をクリックしてアップロードしたりできる方なら、誰でもプロ級の動画を演出できます。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Lovartが実現する次世代マルチモーダル動画生成",
+      "description": "Create cinematic 4K videos instantly with Lovart's cloud-based Seedance 2.0 engine. No GPU required. Turn text, images, and audio into professional, structurally consistent videos with full commercial rights.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+        "alt": "True Multimodal Generation"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Why Creators Choose Lovart's Seedance 2.0 Engine",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "真のマルチモーダル生成",
+          "description": "テキスト、画像、音声駆動のアニメーションを1つの場所で統合。これまでにない緻密な映像コントロールを実現します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+            "alt": "真のマルチモーダル生成"
+          }
+        },
+        {
+          "title": "ハードウェアの制限ゼロ",
+          "description": "数十万円のグラフィックボードは不要です。一般的なノートPCやタブレットから、クラウドクラスターを使って4KのAI動画を出力できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png",
+            "alt": "ハードウェアの制限ゼロ"
+          }
+        },
+        {
+          "title": "完璧な構造的一貫性",
+          "description": "従来のAI動画に見られた「モーフィング（歪み）」を排除。キャラクターや背景が最初から最後まで正しく維持されます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/fdd595720454d37ebbc0927c96f9bf8e2bc23a84d72e640d0aad62eca8dd35b5.png",
+            "alt": "完璧な構造的一貫性"
+          }
+        },
+        {
+          "title": "シネマティックなカメラ制御",
+          "description": "ドローンショット、マクロズーム、トラッキングなど、プロのカメラワークをテキスト指示だけで自在に操れます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png",
+            "alt": "シネマティックなカメラ制御"
+          }
+        },
+        {
+          "title": "商用利用可能なアウトプット",
+          "description": "Lovartで生成されたすべての動画には、完全な商用利用権が含まれます。広告やクライアントワークに安心して使用できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png",
+            "alt": "商用利用可能なアウトプット"
+          }
+        },
+        {
+          "title": "リアルタイム・クラウド作業",
+          "description": "画像生成、動画化、音声追加を複数のツールで行き来する必要はありません。すべて統合されたオンラインキャンバスで完結します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png",
+            "alt": "リアルタイム・クラウド作業"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "真のマルチモーダル生成",
+          "icon": "chat",
+          "content": {
+            "title": "真のマルチモーダル生成",
+            "description": "テキスト、画像、音声駆動のアニメーションを1つの場所で統合。これまでにない緻密な映像コントロールを実現します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+              "alt": "真のマルチモーダル生成"
+            }
+          }
+        },
+        {
+          "label": "ハードウェアの制限ゼロ",
+          "icon": "image",
+          "content": {
+            "title": "ハードウェアの制限ゼロ",
+            "description": "数十万円のグラフィックボードは不要です。一般的なノートPCやタブレットから、クラウドクラスターを使って4KのAI動画を出力できます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png",
+              "alt": "ハードウェアの制限ゼロ"
+            }
+          }
+        },
+        {
+          "label": "完璧な構造的一貫性",
+          "icon": "flask",
+          "content": {
+            "title": "完璧な構造的一貫性",
+            "description": "従来のAI動画に見られた「モーフィング（歪み）」を排除。キャラクターや背景が最初から最後まで正しく維持されます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/fdd595720454d37ebbc0927c96f9bf8e2bc23a84d72e640d0aad62eca8dd35b5.png",
+              "alt": "完璧な構造的一貫性"
+            }
+          }
+        },
+        {
+          "label": "シネマティックなカメラ制御",
+          "icon": "brand",
+          "content": {
+            "title": "シネマティックなカメラ制御",
+            "description": "ドローンショット、マクロズーム、トラッキングなど、プロのカメラワークをテキスト指示だけで自在に操れます。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png",
+              "alt": "シネマティックなカメラ制御"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "商用利用可能なアウトプット",
+          "description": "Lovartで生成されたすべての動画には、完全な商用利用権が含まれます。広告やクライアントワークに安心して使用できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png",
+            "alt": "商用利用可能なアウトプット"
+          }
+        },
+        {
+          "title": "リアルタイム・クラウド作業",
+          "description": "画像生成、動画化、音声追加を複数のツールで行き来する必要はありません。すべて統合されたオンラインキャンバスで完結します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png",
+            "alt": "リアルタイム・クラウド作業"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "Seedance 2.0: The Ultimate Multimodal AI Video Creator Online プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Lovart × Seedance 2.0: 究極のオンライン・マルチモーダルAI動画クリエイター",
+      "description": "高価なGPUも、複雑な環境構築も不要です。ブラウザを開くだけで、最強のマルチモーダルエンジン「Seedance 2.0」をフル活用。テキスト、画像、音声をシームレスに連携させ、クラウド上で映画のような動画を即座に作成できます。",
+      "input_placeholder": "動画のコンセプトを記述してください（例：音声トラックに完全に同期したサイバーパンク都市のドローン空撮）",
+      "prompts": [
+        {
+          "label": "マルチモーダル・ドローンショット",
+          "prompt": "Cinematic drone shot flying through a neon-lit cyberpunk city at night, perfectly synced to a synthwave audio track"
+        },
+        {
+          "label": "画像から動画への製品広告",
+          "prompt": "Slow motion close-up of a premium watch with gears moving intricately, using Image 1 as reference, professional studio lighting"
+        },
+        {
+          "label": "スケッチからのアニメーション",
+          "prompt": "A magical forest coming to life, golden fireflies glowing, seamless transition from original sketch, 4K resolution"
+        },
+        {
+          "label": "音声駆動のプレゼンター",
+          "prompt": "Professional corporate spokesperson presenting a new tech product, lip-syncing to the provided voiceover audio"
+        }
+      ],
+      "tip": "参考画像のアップロード、音声の追加、またはプロンプトの入力から始めましょう",
+      "cta": {
+        "text": "無料でオンライン制作を始める"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "すべてが完結するシームレスなクラウドワークフロー",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "1. 入力モーダル（形式）を選択",
+          "description": "テキストプロンプト、参考画像、または音声ファイルから開始します。Seedance 2.0はあらゆる入力メディアに適応し、創造の壁を取り払います。"
+        },
+        {
+          "step": 2,
+          "title": "2. カメラと動きをコントロール",
+          "description": "Lovartの直感的なクラウドインターフェースでカメラの動きや照明を調整。複雑なソフトなしで、映画監督のように完全に演出を制御できます。"
+        },
+        {
+          "step": 3,
+          "title": "3. クラウドレンダリング＆出力",
+          "description": "生成ボタンを押せば、クラウドサーバーが重い処理を高速で実行。SNSや商用プロジェクトですぐに使える高品質なMP4をダウンロードできます。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Seedance 2.0: The Ultimate Multimodal AI Video Creator Online：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Seedance 2.0: The Ultimate Multimodal AI Video Creator Online プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Seedance 2.0: The Ultimate Multimodal AI Video Creator Online が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから Seedance 2.0: The Ultimate Multimodal AI Video Creator Online の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "プロモーション動画の制作には何週間もかかり、外注費も膨大でした。今ではSeedance 2.0エンジンを使い、静止画の製品写真をコンバージョンの高い動画広告に午後だけで変換できます。ワークフローが一変しました。",
+          "author": "Sarah L.",
+          "role": "マーケティングディレクター"
+        },
+        {
+          "quote": "AI動画の最大のハードルはPCのスペックでした。私には高価なGPUはありませんが、Lovartのクラウドレンダリングが救世主になりました。マルチモーダル機能により、自作の絵コンテから一貫性のあるアニメーションが作れます。",
+          "author": "Thomas R.",
+          "role": "インディペンデント映像作家"
+        },
+        {
+          "quote": "画像から動画への変換機能（I2V）には驚かされました。ECサイト用の普通の写真をアップロードして「滑らかなパンと柔らかな照明」と入力するだけで、プロ級のBロール映像が完成します。商用利用可能な点も安心です。",
+          "author": "Elena J.",
+          "role": "ECサイト創業者"
+        }
+      ],
+      "title": "Seedance 2.0 に対するクリエイターの声"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "Seedance 2.0の「マルチモーダル」とはどういう意味ですか？",
+          "answer": "マルチモーダルとは、AIがテキスト、画像、音声など異なる種類のデータを同時に理解・処理できる能力です。これにより、テキスト、参考画像、音声トラックを組み合わせて、最終的な動画を精密にコントロールできます。"
+        },
+        {
+          "question": "このオンラインツールを使うには、ハイスペックなPCやGPUが必要ですか？",
+          "answer": "全く必要ありません。Lovartは100%クラウドベースのプラットフォームであり、重いAI処理や4Kレンダリングはすべて当社のエンタープライズサーバーで行われます。安定したインターネットとブラウザさえあればOKです。"
+        },
+        {
+          "question": "作成した動画は商用広告やプロジェクトに使用できますか？",
+          "answer": "もちろんです。テキストから生成されたものでも、あなた自身の画像から生成されたものでも、Lovart上のSeedance 2.0で作成されたすべての動画には完全な商用利用権が付与されています。"
+        },
+        {
+          "question": "テキストからの生成（T2V）と画像からの生成（I2V）、どちらを使うべきですか？",
+          "answer": "目的によります。ゼロから全く新しい想像の世界を作りたい場合はT2Vが最適です。一方、構図やキャラクターのデザイン、製品の配置を完璧にコントロールしたい場合はI2Vがお勧めです。"
+        },
+        {
+          "question": "サポートされている書き出しフォーマットと解像度は何ですか？",
+          "answer": "非常に滑らかなMP4形式で書き出されます。TikTok用の縦長（9:16）や横長（16:9）などのアスペクト比を選択でき、アップスケール機能を使用して鮮明な4K解像度でエクスポートすることも可能です。"
+        },
+        {
+          "question": "クラウドレンダリングにはどのくらい時間がかかりますか？",
+          "answer": "標準的な5秒間の動画クリップのほとんどは、サーバーの負荷にもよりますが、1分未満でレンダリングされます。当社のインフラは速度に最適化されているため、待ち時間が短く済みます。"
+        },
+        {
+          "question": "キャラクターの一貫性はどのように維持されますか？",
+          "answer": "Seedance 2.0は「歪み」を排除するように特化してトレーニングされています。キャラクターの参照画像をアップロードすることで、AIが構造を理解し、顔の特徴や服装をアニメーション全体で正しく維持します。"
+        },
+        {
+          "question": "音声に合わせてキャラクターの口を動かす（リップシンク）ことはできますか？",
+          "answer": "はい、可能です。マルチモーダルエンジンにより、ナレーション音声をアップロードすると、AIがキャラクターの表情と口の動きを音声に合わせて自然に同期させます。"
+        },
+        {
+          "question": "動画編集の知識がなくても使えますか？",
+          "answer": "はい。Lovartは複雑なタイムラインやキーフレームを自然言語処理に置き換えています。文章を打ち込んだり、画像をクリックしてアップロードしたりできる方なら、誰でもプロ級の動画を演出できます。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

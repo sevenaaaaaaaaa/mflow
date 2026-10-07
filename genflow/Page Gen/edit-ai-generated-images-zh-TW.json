@@ -1,0 +1,388 @@
+{
+  "_id": "features-edit-ai-generated-images-zh-TW",
+  "reflowSourceId": "features-edit-ai-generated-images-zh-TW",
+  "slug": "edit-ai-generated-images",
+  "language": "zh-TW",
+  "category": "feature",
+  "title": "用Lovart Agent即時精準編輯AI圖片",
+  "description": "Stop regenerating from scratch. Take control and edit AI-generated images with surgical precision using Lovart's ChatCanvas. Split layers, change backgrounds, fix text, and modify objects semantically without losing resolution.",
+  "seo": {
+    "description": "別再從頭重來了！用 Lovart 的 ChatCanvas 精準編輯 AI 生成的圖片。輕鬆分割圖層、更換背景、修正文字、語意調整物件，畫質完全不流失。",
+    "keywords": [
+      "編輯AI圖片",
+      "修改AI生成的圖片",
+      "AI圖片編輯器",
+      "編輯AI圖片中的文字",
+      "語意圖片編輯",
+      "Lovart ChatCanvas",
+      "圖層分割AI",
+      "精準手術式圖片編輯"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Semantic Layer Splitting (Edit Elements)",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"用Lovart Agent即時精準編輯AI圖片\", \"description\": \"Stop regenerating from scratch. Take control and edit AI-generated images with surgical precision using Lovart's ChatCanvas. Split layers, change backgrounds, fix text, and modify objects semantically without losing resolution.\", \"url\": \"https://www.lovart.ai/features/edit-ai-generated-images\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"這與通用的 AI「修補（in-painting）」有何不同？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"標準修補依賴於隨機性和猜測，通常在複雜的空間邏輯或高級文字渲染上失敗。Lovart 使用我們的 MCoT 引擎提供「外科手術級精準」編輯，允許語義圖層拆分（「元素拆解」）和零樣本修改（「觸控編輯」），這是傳統修補無法企及的。\"}}, {\"@type\": \"Question\", \"name\": \"我可以編輯不是由 Lovart 生成的圖像嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以。將任何圖像上傳到 ChatCanvas 作為參考。Lovart 設計代理可以在上傳的照片上利用其高級編輯功能（如圖層拆分和語義編輯），就像對我們專有的 Nano Banana 模型生成的圖像所做的一樣。\"}}, {\"@type\": \"Question\", \"name\": \"什麼是「語義圖層拆分」或「元素拆解」？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"這個獨特的功能會分析圖像，並根據主體、前景和背景將其自動拆分為語義可編輯圖層。例如，它就像即時綠幕提取一樣，讓您能編輯背景而不會干擾主體。\"}}, {\"@type\": \"Question\", \"name\": \"我可以編輯 AI 生成圖像內的文字嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以。我們擁有專門的能力來識別和管理圖像內的文字圖層。您可以要求代理修正錯字、更改廣告文案（例如：從「夏季」更改為「秋季」），或修改用詞，而不會破壞周圍的視覺情境或背景。\"}}, {\"@type\": \"Question\", \"name\": \"編輯會降低圖像的解析度嗎？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"不會。Lovart 利用高級解析度保留和升頻技術。當您執行外科手術級編輯時，我們確保修改後的圖像保留 100% 解析度（包括 4K 輸出），並保持完美的品牌一致性和視覺保真度。\"}}]}}"
+    },
+    "title": "用Lovart Agent即時精準編輯AI圖片"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"用Lovart Agent即時精準編輯AI圖片\",\"description\":\"Stop regenerating from scratch. Take control and edit AI-generated images with surgical precision using Lovart's ChatCanvas. Split layers, change backgrounds, fix text, and modify objects semantically without losing resolution.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Semantic Layer Splitting (Edit Elements)\"}},{\"type\":\"bento-6\",\"title\":\"Core Capabilities to Edit AI Images traditional workflows cannot touch\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"語義圖層拆分（元素拆解）\",\"description\":\"超越遮罩。自動將主體、前景和背景分離為語義圖層。獨立編輯每個圖層，就像直接在畫布上進行即時語義綠幕提取一樣。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"語義圖層拆分（元素拆解）\"}},{\"title\":\"零樣本「觸控編輯」\",\"description\":\"無需修補猜測的外科手術級修改。單擊物件並描述更改（例如：「將此絲綢紋理更改為天鵝絨」）。代理了解空間邏輯以進行情境感知編輯。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"零樣本「觸控編輯」\"}},{\"title\":\"智慧物件添加/刪除\",\"description\":\"無縫添加或刪除元素，同時保持氛圍一致性。背景以像素級完美的準確度重建，匹配光照、透視和景深。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"智慧物件添加/刪除\"}},{\"title\":\"圖像內的可編輯文字\",\"description\":\"修正錯字或立即更改廣告文案。我們獨特的功能可識別生成圖像內的文字圖層，讓您能編輯用詞，而不會破壞周圍的視覺情境或背景。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"圖像內的可編輯文字\"}},{\"title\":\"無限 ChatCanvas 工作流\",\"description\":\"在單個無限畫布上整理您的所有草稿、參考圖像和最終編輯。與 AI 設計代理即時進行視覺協作，完美打磨構圖的每個細節。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"無限 ChatCanvas 工作流\"}},{\"title\":\"品牌一致性保留\",\"description\":\"保持您的品牌 ID、產品規格和視覺風格。編輯 AI 生成的圖像時，代理會確保特定細節（如 Logo 或產品紋理）保持鎖定和一致。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"品牌一致性保留\"}}]},{\"type\":\"capability-tabs\",\"title\":\"一個智慧體，整合全部能力\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"語義圖層拆分（元素拆解）\",\"icon\":\"chat\",\"content\":{\"title\":\"語義圖層拆分（元素拆解）\",\"description\":\"超越遮罩。自動將主體、前景和背景分離為語義圖層。獨立編輯每個圖層，就像直接在畫布上進行即時語義綠幕提取一樣。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"語義圖層拆分（元素拆解）\"}}},{\"label\":\"零樣本「觸控編輯」\",\"icon\":\"image\",\"content\":{\"title\":\"零樣本「觸控編輯」\",\"description\":\"無需修補猜測的外科手術級修改。單擊物件並描述更改（例如：「將此絲綢紋理更改為天鵝絨」）。代理了解空間邏輯以進行情境感知編輯。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"零樣本「觸控編輯」\"}}},{\"label\":\"智慧物件添加/刪除\",\"icon\":\"flask\",\"content\":{\"title\":\"智慧物件添加/刪除\",\"description\":\"無縫添加或刪除元素，同時保持氛圍一致性。背景以像素級完美的準確度重建，匹配光照、透視和景深。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"智慧物件添加/刪除\"}}},{\"label\":\"圖像內的可編輯文字\",\"icon\":\"brand\",\"content\":{\"title\":\"圖像內的可編輯文字\",\"description\":\"修正錯字或立即更改廣告文案。我們獨特的功能可識別生成圖像內的文字圖層，讓您能編輯用詞，而不會破壞周圍的視覺情境或背景。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"圖像內的可編輯文字\"}}}]},{\"type\":\"bento-2\",\"title\":\"尤其擅長的兩件事\",\"columns\":2,\"features\":[{\"title\":\"無限 ChatCanvas 工作流\",\"description\":\"在單個無限畫布上整理您的所有草稿、參考圖像和最終編輯。與 AI 設計代理即時進行視覺協作，完美打磨構圖的每個細節。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"無限 ChatCanvas 工作流\"}},{\"title\":\"品牌一致性保留\",\"description\":\"保持您的品牌 ID、產品規格和視覺風格。編輯 AI 生成的圖像時，代理會確保特定細節（如 Logo 或產品紋理）保持鎖定和一致。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"品牌一致性保留\"}}]},{\"type\":\"feature-detail\",\"title\":\"詳細了解使用方式\",\"items\":[{\"title\":\"開啟你的Precise Control: Edit AI-Generated Images Instantly  Agent專案\",\"description\":\"描述你想要的成果，並補充參考素材即可。\"},{\"title\":\"與智慧體一起迭代\",\"description\":\"在同一畫布上調整細節、探索不同方案。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"精準控制：使用 Lovart 代理立即編輯 AI 生成的圖像\",\"description\":\"別再與 AI 生成圖像的「老虎機」隨機性搏鬥了。在 Lovart 的無限 ChatCanvas 上，以外科手術般的精準度掌控並編輯 AI 生成的圖像。利用我們專有的 MCoT 引擎，Lovart 設計代理了解語義上下文，讓您能像綠幕一樣拆分語義圖層、修改特定物件，甚至修正圖像內的文字，而不會影響構圖的其餘部分。\",\"input_placeholder\":\"描述您想在圖像中更改的內容...\",\"prompts\":[{\"label\":\"更改背景\",\"prompt\":\"將此產品照片的背景更改為帶有柔和日光的極簡北歐客廳\"},{\"label\":\"修改細節\",\"prompt\":\"將咖啡杯上的品牌 Logo 從紅星修改為綠葉圖示，保留 3D 包裝效果\"},{\"label\":\"語義圖層拆分\",\"prompt\":\"將主體與背景分離，像語義綠幕一樣運作，用於傳統的 PS 合成\"},{\"label\":\"編輯圖像內的文字\",\"prompt\":\"將此廣告海報上的文字從「夏季特賣」更改為「秋季新品」，不重新生成圖像\"}],\"tip\":\"提示：使用語義術語，如「更改*襯衫*的顏色」或「將*瓶子*移到右側」。上傳參考圖像供代理分析。\",\"cta\":{\"text\":\"執行編輯\"}},{\"type\":\"workflow-horizontal\",\"title\":\"第一個能像專業人士一樣編輯 AI 生成圖像的真實工作流\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"分析並拆分圖層\",\"description\":\"將任何圖像 — 無論是由 Nano Banana 生成還是參考照片 — 上傳到 ChatCanvas。我們的代理利用「元素拆解」自動將圖像拆分為語義可編輯圖層，就像即時綠幕分離一樣，提供前所未有的控制力。\"},{\"step\":2,\"title\":\"執行精準修改\",\"description\":\"告訴 Lovart 代理要更改什麼。使用「觸控編輯」進行零樣本語義修改（例如：更改紋理或顏色）、更換背景、添加或刪除物件，或修正現有圖像文字內的錯字 — 所有這些都不會改變周圍的細節。\"},{\"step\":3,\"title\":\"保持解析度與一致性\",\"description\":\"我們的「情境內修改（In-context modification）」保留 100% 的解析度和氛圍一致性。與增加隨機性的標準修補不同，Lovart 確保您的編輯看起來自然、專業構圖，並且符合品牌的商業輸出要求。\"}]},{\"type\":\"comparison-table\",\"title\":\"Precise Control: Edit AI-Generated Images Instantly  Agent：Lovart 與一般工作流程比較\",\"headers\":[\"需求\",\"通用工具\",\"手動工作流程\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"開啟你的Precise Control: Edit AI-Generated Images Instantly  Agent專案\",\"values\":[\"一句提示詞\",\"手動撰寫需求\",\"需求驅動的推理\"]},{\"feature\":\"產出第一版的時間\",\"values\":[\"幾分鐘\",\"數天\",\"幾分鐘\"]},{\"feature\":\"生成後的編輯\",\"values\":[\"有限\",\"反覆修改\",\"塗抹 / 文字 / 元素編輯\"]},{\"feature\":\"維持品牌一致\",\"values\":[\"手動\",\"手動\",\"支援 Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Precise Control: Edit AI-Generated Images Instantly  Agent的最佳應用場景\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"更快上線\",\"description\":\"從需求到Precise Control: Edit AI-Generated Images Instantly  Agent素材，一次工作階段即可完成。\"},{\"icon\":\"brand\",\"title\":\"維持一致\",\"description\":\"Brand Kit 讓每一份素材都保持統一。\"},{\"icon\":\"refresh\",\"title\":\"快速迭代\",\"description\":\"無需從頭開始，即可編輯細節。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"我以前討厭通用的 AI，因為我無法控制結果。Lovart 不同。能夠使用「元素拆解」來拆分語義圖層，讓我能在 AI 速度之上應用傳統設計原則。這終於填補了鴻溝。\",\"author\":\"Alex R.\",\"role\":\"傳統圖形設計師\"},{\"quote\":\"「觸控編輯」功能是產品攝影的遊戲規則改變者。我們在通用場景中生成產品，然後立即更換背景或更改產品顏色，用於不同的行銷活動，而不會失去解析度或安排真實的拍攝。\",\"author\":\"Jessica L.\",\"role\":\"電商行銷人員\"},{\"quote\":\"標準修補對於專業的客戶工作來說太隨機了。Lovart 在保留視覺情境的同時編輯生成圖像*內部*文字的能力令人驚嘆。它為我們節省了數小時的後期製作時間。\",\"author\":\"David K.\",\"role\":\"創意總監\"}],\"title\":\"設計師獲得真正的精通能力來編輯 AI 生成的圖像\"},{\"type\":\"pricing-block\",\"title\":\"選擇適合團隊的方案\",\"description\":\"免費開始，當作品要交付客戶時再升級。\"},{\"type\":\"faq\",\"title\":\"常見問題\",\"items\":[{\"question\":\"這與通用的 AI「修補（in-painting）」有何不同？\",\"answer\":\"標準修補依賴於隨機性和猜測，通常在複雜的空間邏輯或高級文字渲染上失敗。Lovart 使用我們的 MCoT 引擎提供「外科手術級精準」編輯，允許語義圖層拆分（「元素拆解」）和零樣本修改（「觸控編輯」），這是傳統修補無法企及的。\"},{\"question\":\"我可以編輯不是由 Lovart 生成的圖像嗎？\",\"answer\":\"可以。將任何圖像上傳到 ChatCanvas 作為參考。Lovart 設計代理可以在上傳的照片上利用其高級編輯功能（如圖層拆分和語義編輯），就像對我們專有的 Nano Banana 模型生成的圖像所做的一樣。\"},{\"question\":\"什麼是「語義圖層拆分」或「元素拆解」？\",\"answer\":\"這個獨特的功能會分析圖像，並根據主體、前景和背景將其自動拆分為語義可編輯圖層。例如，它就像即時綠幕提取一樣，讓您能編輯背景而不會干擾主體。\"},{\"question\":\"我可以編輯 AI 生成圖像內的文字嗎？\",\"answer\":\"可以。我們擁有專門的能力來識別和管理圖像內的文字圖層。您可以要求代理修正錯字、更改廣告文案（例如：從「夏季」更改為「秋季」），或修改用詞，而不會破壞周圍的視覺情境或背景。\"},{\"question\":\"編輯會降低圖像的解析度嗎？\",\"answer\":\"不會。Lovart 利用高級解析度保留和升頻技術。當您執行外科手術級編輯時，我們確保修改後的圖像保留 100% 解析度（包括 4K 輸出），並保持完美的品牌一致性和視覺保真度。\"}]},{\"type\":\"cta-default\",\"title\":\"用 Lovart 開始創作\",\"description\":\"幾分鐘內，把你的需求變成符合品牌調性的視覺作品。\",\"buttons\":[{\"text\":\"免費開始\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "用Lovart Agent即時精準編輯AI圖片",
+      "description": "Stop regenerating from scratch. Take control and edit AI-generated images with surgical precision using Lovart's ChatCanvas. Split layers, change backgrounds, fix text, and modify objects semantically without losing resolution.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Semantic Layer Splitting (Edit Elements)"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Core Capabilities to Edit AI Images traditional workflows cannot touch",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "語義圖層拆分（元素拆解）",
+          "description": "超越遮罩。自動將主體、前景和背景分離為語義圖層。獨立編輯每個圖層，就像直接在畫布上進行即時語義綠幕提取一樣。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "語義圖層拆分（元素拆解）"
+          }
+        },
+        {
+          "title": "零樣本「觸控編輯」",
+          "description": "無需修補猜測的外科手術級修改。單擊物件並描述更改（例如：「將此絲綢紋理更改為天鵝絨」）。代理了解空間邏輯以進行情境感知編輯。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "零樣本「觸控編輯」"
+          }
+        },
+        {
+          "title": "智慧物件添加/刪除",
+          "description": "無縫添加或刪除元素，同時保持氛圍一致性。背景以像素級完美的準確度重建，匹配光照、透視和景深。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "智慧物件添加/刪除"
+          }
+        },
+        {
+          "title": "圖像內的可編輯文字",
+          "description": "修正錯字或立即更改廣告文案。我們獨特的功能可識別生成圖像內的文字圖層，讓您能編輯用詞，而不會破壞周圍的視覺情境或背景。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "圖像內的可編輯文字"
+          }
+        },
+        {
+          "title": "無限 ChatCanvas 工作流",
+          "description": "在單個無限畫布上整理您的所有草稿、參考圖像和最終編輯。與 AI 設計代理即時進行視覺協作，完美打磨構圖的每個細節。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "無限 ChatCanvas 工作流"
+          }
+        },
+        {
+          "title": "品牌一致性保留",
+          "description": "保持您的品牌 ID、產品規格和視覺風格。編輯 AI 生成的圖像時，代理會確保特定細節（如 Logo 或產品紋理）保持鎖定和一致。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "品牌一致性保留"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "一個智慧體，整合全部能力",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "語義圖層拆分（元素拆解）",
+          "icon": "chat",
+          "content": {
+            "title": "語義圖層拆分（元素拆解）",
+            "description": "超越遮罩。自動將主體、前景和背景分離為語義圖層。獨立編輯每個圖層，就像直接在畫布上進行即時語義綠幕提取一樣。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "語義圖層拆分（元素拆解）"
+            }
+          }
+        },
+        {
+          "label": "零樣本「觸控編輯」",
+          "icon": "image",
+          "content": {
+            "title": "零樣本「觸控編輯」",
+            "description": "無需修補猜測的外科手術級修改。單擊物件並描述更改（例如：「將此絲綢紋理更改為天鵝絨」）。代理了解空間邏輯以進行情境感知編輯。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "零樣本「觸控編輯」"
+            }
+          }
+        },
+        {
+          "label": "智慧物件添加/刪除",
+          "icon": "flask",
+          "content": {
+            "title": "智慧物件添加/刪除",
+            "description": "無縫添加或刪除元素，同時保持氛圍一致性。背景以像素級完美的準確度重建，匹配光照、透視和景深。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "智慧物件添加/刪除"
+            }
+          }
+        },
+        {
+          "label": "圖像內的可編輯文字",
+          "icon": "brand",
+          "content": {
+            "title": "圖像內的可編輯文字",
+            "description": "修正錯字或立即更改廣告文案。我們獨特的功能可識別生成圖像內的文字圖層，讓您能編輯用詞，而不會破壞周圍的視覺情境或背景。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "圖像內的可編輯文字"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "尤其擅長的兩件事",
+      "columns": 2,
+      "features": [
+        {
+          "title": "無限 ChatCanvas 工作流",
+          "description": "在單個無限畫布上整理您的所有草稿、參考圖像和最終編輯。與 AI 設計代理即時進行視覺協作，完美打磨構圖的每個細節。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "無限 ChatCanvas 工作流"
+          }
+        },
+        {
+          "title": "品牌一致性保留",
+          "description": "保持您的品牌 ID、產品規格和視覺風格。編輯 AI 生成的圖像時，代理會確保特定細節（如 Logo 或產品紋理）保持鎖定和一致。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "品牌一致性保留"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "詳細了解使用方式",
+      "items": [
+        {
+          "title": "開啟你的Precise Control: Edit AI-Generated Images Instantly  Agent專案",
+          "description": "描述你想要的成果，並補充參考素材即可。"
+        },
+        {
+          "title": "與智慧體一起迭代",
+          "description": "在同一畫布上調整細節、探索不同方案。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "精準控制：使用 Lovart 代理立即編輯 AI 生成的圖像",
+      "description": "別再與 AI 生成圖像的「老虎機」隨機性搏鬥了。在 Lovart 的無限 ChatCanvas 上，以外科手術般的精準度掌控並編輯 AI 生成的圖像。利用我們專有的 MCoT 引擎，Lovart 設計代理了解語義上下文，讓您能像綠幕一樣拆分語義圖層、修改特定物件，甚至修正圖像內的文字，而不會影響構圖的其餘部分。",
+      "input_placeholder": "描述您想在圖像中更改的內容...",
+      "prompts": [
+        {
+          "label": "更改背景",
+          "prompt": "將此產品照片的背景更改為帶有柔和日光的極簡北歐客廳"
+        },
+        {
+          "label": "修改細節",
+          "prompt": "將咖啡杯上的品牌 Logo 從紅星修改為綠葉圖示，保留 3D 包裝效果"
+        },
+        {
+          "label": "語義圖層拆分",
+          "prompt": "將主體與背景分離，像語義綠幕一樣運作，用於傳統的 PS 合成"
+        },
+        {
+          "label": "編輯圖像內的文字",
+          "prompt": "將此廣告海報上的文字從「夏季特賣」更改為「秋季新品」，不重新生成圖像"
+        }
+      ],
+      "tip": "提示：使用語義術語，如「更改*襯衫*的顏色」或「將*瓶子*移到右側」。上傳參考圖像供代理分析。",
+      "cta": {
+        "text": "執行編輯"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "第一個能像專業人士一樣編輯 AI 生成圖像的真實工作流",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "分析並拆分圖層",
+          "description": "將任何圖像 — 無論是由 Nano Banana 生成還是參考照片 — 上傳到 ChatCanvas。我們的代理利用「元素拆解」自動將圖像拆分為語義可編輯圖層，就像即時綠幕分離一樣，提供前所未有的控制力。"
+        },
+        {
+          "step": 2,
+          "title": "執行精準修改",
+          "description": "告訴 Lovart 代理要更改什麼。使用「觸控編輯」進行零樣本語義修改（例如：更改紋理或顏色）、更換背景、添加或刪除物件，或修正現有圖像文字內的錯字 — 所有這些都不會改變周圍的細節。"
+        },
+        {
+          "step": 3,
+          "title": "保持解析度與一致性",
+          "description": "我們的「情境內修改（In-context modification）」保留 100% 的解析度和氛圍一致性。與增加隨機性的標準修補不同，Lovart 確保您的編輯看起來自然、專業構圖，並且符合品牌的商業輸出要求。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Precise Control: Edit AI-Generated Images Instantly  Agent：Lovart 與一般工作流程比較",
+      "headers": [
+        "需求",
+        "通用工具",
+        "手動工作流程",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "開啟你的Precise Control: Edit AI-Generated Images Instantly  Agent專案",
+          "values": [
+            "一句提示詞",
+            "手動撰寫需求",
+            "需求驅動的推理"
+          ]
+        },
+        {
+          "feature": "產出第一版的時間",
+          "values": [
+            "幾分鐘",
+            "數天",
+            "幾分鐘"
+          ]
+        },
+        {
+          "feature": "生成後的編輯",
+          "values": [
+            "有限",
+            "反覆修改",
+            "塗抹 / 文字 / 元素編輯"
+          ]
+        },
+        {
+          "feature": "維持品牌一致",
+          "values": [
+            "手動",
+            "手動",
+            "支援 Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Precise Control: Edit AI-Generated Images Instantly  Agent的最佳應用場景",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "更快上線",
+          "description": "從需求到Precise Control: Edit AI-Generated Images Instantly  Agent素材，一次工作階段即可完成。"
+        },
+        {
+          "icon": "brand",
+          "title": "維持一致",
+          "description": "Brand Kit 讓每一份素材都保持統一。"
+        },
+        {
+          "icon": "refresh",
+          "title": "快速迭代",
+          "description": "無需從頭開始，即可編輯細節。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "我以前討厭通用的 AI，因為我無法控制結果。Lovart 不同。能夠使用「元素拆解」來拆分語義圖層，讓我能在 AI 速度之上應用傳統設計原則。這終於填補了鴻溝。",
+          "author": "Alex R.",
+          "role": "傳統圖形設計師"
+        },
+        {
+          "quote": "「觸控編輯」功能是產品攝影的遊戲規則改變者。我們在通用場景中生成產品，然後立即更換背景或更改產品顏色，用於不同的行銷活動，而不會失去解析度或安排真實的拍攝。",
+          "author": "Jessica L.",
+          "role": "電商行銷人員"
+        },
+        {
+          "quote": "標準修補對於專業的客戶工作來說太隨機了。Lovart 在保留視覺情境的同時編輯生成圖像*內部*文字的能力令人驚嘆。它為我們節省了數小時的後期製作時間。",
+          "author": "David K.",
+          "role": "創意總監"
+        }
+      ],
+      "title": "設計師獲得真正的精通能力來編輯 AI 生成的圖像"
+    },
+    {
+      "type": "pricing-block",
+      "title": "選擇適合團隊的方案",
+      "description": "免費開始，當作品要交付客戶時再升級。"
+    },
+    {
+      "type": "faq",
+      "title": "常見問題",
+      "items": [
+        {
+          "question": "這與通用的 AI「修補（in-painting）」有何不同？",
+          "answer": "標準修補依賴於隨機性和猜測，通常在複雜的空間邏輯或高級文字渲染上失敗。Lovart 使用我們的 MCoT 引擎提供「外科手術級精準」編輯，允許語義圖層拆分（「元素拆解」）和零樣本修改（「觸控編輯」），這是傳統修補無法企及的。"
+        },
+        {
+          "question": "我可以編輯不是由 Lovart 生成的圖像嗎？",
+          "answer": "可以。將任何圖像上傳到 ChatCanvas 作為參考。Lovart 設計代理可以在上傳的照片上利用其高級編輯功能（如圖層拆分和語義編輯），就像對我們專有的 Nano Banana 模型生成的圖像所做的一樣。"
+        },
+        {
+          "question": "什麼是「語義圖層拆分」或「元素拆解」？",
+          "answer": "這個獨特的功能會分析圖像，並根據主體、前景和背景將其自動拆分為語義可編輯圖層。例如，它就像即時綠幕提取一樣，讓您能編輯背景而不會干擾主體。"
+        },
+        {
+          "question": "我可以編輯 AI 生成圖像內的文字嗎？",
+          "answer": "可以。我們擁有專門的能力來識別和管理圖像內的文字圖層。您可以要求代理修正錯字、更改廣告文案（例如：從「夏季」更改為「秋季」），或修改用詞，而不會破壞周圍的視覺情境或背景。"
+        },
+        {
+          "question": "編輯會降低圖像的解析度嗎？",
+          "answer": "不會。Lovart 利用高級解析度保留和升頻技術。當您執行外科手術級編輯時，我們確保修改後的圖像保留 100% 解析度（包括 4K 輸出），並保持完美的品牌一致性和視覺保真度。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "用 Lovart 開始創作",
+      "description": "幾分鐘內，把你的需求變成符合品牌調性的視覺作品。",
+      "buttons": [
+        {
+          "text": "免費開始",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

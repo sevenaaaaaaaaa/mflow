@@ -1,0 +1,623 @@
+```json
+,
+  "section_fr": [
+  {
+    "type": "centeredInputSection",
+    "title": "Générateur de Logo IA",
+    "description": "Créez des logos professionnels pour votre entreprise en quelques secondes avec notre générateur de logo IA. Que vous soyez une startup tech, une marque retail, un restaurant ou une agence créative — concevez des logos saisissants et redimensionnables qui définissent votre identité de marque. Export SVG vectoriel, multiples variations et kits de marque complets. Commencez avec des crédits quotidiens gratuits.",
+    "input_placeholder": "Entrez le nom de votre marque et décrivez votre entreprise...",
+    "system_prompt": "Vous êtes un designer expert en identité de marque et spécialiste du logo. Analysez la description de l'entreprise de l'utilisateur pour comprendre son secteur, la personnalité de sa marque, son public cible et ses préférences visuelles. Générez un logo professionnel avec une typographie, une palette de couleurs et une mise en page appropriées. Créez un système de logo complet avec marque principale, variante icône, logotype et versions pour réseaux sociaux. Assurez-vous que les designs sont évolutifs, mémorables et communiquent l'identité fondamentale de la marque en un coup d'œil. Exigences de l'utilisateur : $input$",
+    "button_text": "Générer le logo",
+    "tip": "Conseil : précisez votre secteur, la personnalité de votre marque (moderne, ludique, luxueuse, etc.), vos couleurs préférées et si vous avez besoin d'une icône, d'un logotype ou d'un logo combiné.",
+    "suggestion": [
+      {
+        "value": "Concevez un logo élégant et minimaliste pour startup tech avec une marque abstraite géométrique en bleu électrique et dégradé foncé, un logotype sans empattement épuré et une variante icône compacte pour les app stores — ciblant les développeurs et les early adopters",
+        "label": "Logo Startup Tech"
+      },
+      {
+        "value": "Créez un logo de marque retail audacieux avec une palette corail chaud et crème, une marque picturale distinctive alliant modernité et accessibilité, un logotype élégant avec espacement des lettres et des variantes pour profils sociaux — ciblant les millennials branchés",
+        "label": "Marque Retail"
+      },
+      {
+        "value": "Concevez un charmant logo de restaurant avec des éléments organiques dessinés à la main, des tons riches terre cuite et vert sauge, une marque combinée mémorable fonctionnant sur les enseignes et les menus, et une version badge compacte pour les réseaux sociaux et autocollants — ciblant les foodies locaux et les familles",
+        "label": "Restaurant & Food"
+      },
+      {
+        "value": "Créez un logo distinctif d'agence créative avec une typographie expérimentale audacieuse, un dégradé vibrant magenta à violet, une marque abstraite évoquant l'innovation et des variantes monochromes pour les contextes professionnels — ciblant les directeurs marketing et chefs de marque",
+        "label": "Agence Créative"
+      }
+    ]
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "Comment créer votre logo d'entreprise en 3 étapes",
+    "columns": [
+      {
+        "title": "Décrivez votre marque",
+        "description": "Saisissez le nom de votre entreprise, choisissez votre secteur et décrivez la personnalité de votre marque. Notre IA analyse votre brief comme un directeur créatif, comprenant votre positionnement et vos préférences visuelles avant de générer le moindre signe. Plus vous fournissez de détails, plus les concepts de logo seront adaptés.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "L'IA génère des concepts de logo",
+        "description": "Regardez l'IA transformer votre brief en dizaines de concepts de logo professionnels en quelques secondes. Parcourez différentes directions créatives — des logotypes minimalistes aux marques picturales audacieuses. Comparez les variantes côte à côte, mélangez des éléments entre concepts et affinez en langage naturel. Chaque design est créé de façon unique pour votre marque.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "Personnalisez et exportez",
+        "description": "Affinez le logo choisi avec les outils d'édition tactile et textuelle. Prévisualisez-le sur des cartes de visite, des enseignes et des plateformes numériques avec Smart Mockup. Exportez un système de logo complet — primaire en couleur, monochrome, icône seule et variantes pour réseaux sociaux. Téléchargez en SVG vectoriel, PNG, JPG et PSD jusqu'à une résolution 8K.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Fonctionnalités puissantes de conception de logo",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Édition tactile",
+        "description": "Affinez les formes de votre logo avec des commandes intuitives de clic-édition. Sélectionnez n'importe quelle partie de votre marque — ajustez les courbes de Bézier, redimensionnez les éléments, recolorez des formes spécifiques ou repositionnez les composants. L'édition tactile comprend la géométrie du logo et adapte automatiquement les éléments environnants."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Édition de texte",
+        "description": "Perfectionnez la typographie du nom de votre marque avec des contrôles textuels précis. Modifiez le nom de l'entreprise, le slogan ou l'espacement des lettres directement sur le logo tout en préservant le style, la graisse et le traitement couleur de la police. Changez le libellé ou ajustez la mise en page du logotype en quelques secondes sans régénérer l'ensemble du design."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "Maquettes intelligentes",
+        "description": "Prévisualisez instantanément votre logo dans des applications réelles. Placez votre design sur des cartes de visite, des enseignes, des emballages, des vêtements, des en-têtes de site web et des profils sociaux en un clic. Smart Mockup adapte automatiquement la perspective, l'éclairage et la texture de surface pour un rendu photoréaliste sur tout support."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Cohérence de marque",
+        "description": "Générez une famille complète de variantes de logo pour chaque point de contact. Obtenez la version primaire en couleur, horizontale, verticale, icône seule, logotype seul, monochrome et inversée — toutes avec une cohérence visuelle parfaite. Votre système de logo s'adapte à toute surface tout en restant indéniablement le vôtre."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "Export vectoriel SVG",
+        "description": "Exportez de véritables fichiers vectoriels SVG avec des tracés propres et une structure de calques correcte. Votre logo reste parfaitement net, du favicon 16×16 au panneau d'affichage de 15 mètres — sans pixellisation ni perte de qualité. Export également en PNG, JPG et PSD avec calques jusqu'à une résolution 8K."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Multi-format",
+        "description": "Obtenez tous les assets de logo dont vous avez besoin en un seul export. Téléchargez la version icône seule pour les app stores et favicons, le logo horizontal complet pour les en-têtes de site, la version verticale empilée pour les enseignes et les versions optimisées pour les réseaux sociaux. Un seul design fournit tous les formats nécessaires au lancement de votre marque."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Approuvé par des entreprises du monde entier",
+    "testimonials": [
+      {
+        "name": "Marc Dubois",
+        "role": "Fondateur, TechVantage",
+        "content": "Notre logo généré par IA était si professionnel que nos investisseurs pensaient que nous avions engagé une agence coûteuse. L'édition tactile nous a permis d'affiner la marque abstraite jusqu'à ce qu'elle représente parfaitement notre plateforme IA. Nous avons lancé avec un système de logo complet — icône, logotype, variantes sociales — le tout en vecteurs SVG. Notre identité de marque soignée nous a réellement aidés à boucler notre levée de fonds d'amorçage.",
+        "avatar_url": "",
+        "metrics": "12 concepts en 5 min | Système de logo complet"
+      },
+      {
+        "name": "Sophie Laurent",
+        "role": "Propriétaire, Bloom Boutique",
+        "content": "En moins d'une heure, j'avais une identité de marque complète. Une agence de design me demandait 5 000 € et 4 semaines — avec ce générateur de logo IA, j'ai décrit la personnalité de ma boutique et reçu instantanément de magnifiques concepts. Les fichiers SVG vectoriels étaient parfaits pour mon enseigne. La fonction Smart Mockup m'a permis de tout prévisualiser avant l'impression.",
+        "avatar_url": "",
+        "metrics": "5 000 € économisés | Prête en moins d'1 heure"
+      },
+      {
+        "name": "Thomas Moreau",
+        "role": "PDG, Fusion Kitchen",
+        "content": "Du menu du restaurant à l'application de livraison, les déclinaisons du logo ont fonctionné partout. Nous avions besoin d'une image de marque cohérente sur tous les points de contact physiques et numériques, et l'export multi-format a tout fourni en un clic. La cohérence de marque entre toutes les variantes est impressionnante — on dirait un rebranding d'agence à 10 000 €, mais nous l'avons fait en un après-midi.",
+        "avatar_url": "",
+        "metrics": "Système de marque complet | Prêt multi-plateforme"
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "title": "Tout savoir sur notre générateur de logo IA",
+    "faq": [
+      {
+        "question": "Le générateur de logo IA est-il gratuit ?",
+        "answer": "Oui ! Nous offrons des crédits quotidiens gratuits pour que vous puissiez explorer et prévisualiser des logos générés par IA sans frais. Lorsque vous êtes prêt à télécharger des fichiers haute résolution et à débloquer les droits d'utilisation commerciale, passez à un forfait payant. La version gratuite est parfaite pour expérimenter des concepts de logo."
+      },
+      {
+        "question": "Quels formats de logo puis-je télécharger ?",
+        "answer": "Tous les forfaits payants incluent l'export en résolution 8K aux formats PNG, JPG, SVG et PSD. Le fichier vectoriel SVG est la référence absolue pour les logos — il se redimensionne à l'infini sans perte de qualité, parfait pour les écrans numériques comme pour l'impression grand format."
+      },
+      {
+        "question": "Combien de logos puis-je générer par mois ?",
+        "answer": "Le forfait Starter inclut 2 000 générations de logo par mois, Basic en offre 3 500 et Pro vous donne 11 000 générations mensuelles. Tous les forfaits incluent l'accès complet aux fonctionnalités — même les utilisateurs Starter bénéficient de l'export SVG vectoriel, Smart Mockup et tous les outils d'édition."
+      },
+      {
+        "question": "Ai-je les droits commerciaux sur mon logo ?",
+        "answer": "Oui ! Tous les forfaits payants incluent les droits complets d'utilisation commerciale. Vous êtes propriétaire de votre logo et pouvez l'utiliser pour tout usage commercial — dépôt de marque, merchandising, marketing, site web, réseaux sociaux et plus encore. Votre identité de marque vous appartient légalement."
+      },
+      {
+        "question": "Puis-je modifier mon logo après l'avoir téléchargé ?",
+        "answer": "Absolument ! Vous pouvez à tout moment utiliser les outils d'édition tactile et textuelle pour affiner votre logo, puis le réexporter dans n'importe quel format. Changez les couleurs, ajustez les formes, mettez à jour votre nom de marque ou peaufinez la typographie — sans jamais repartir de zéro."
+      },
+      {
+        "question": "Quels secteurs sont pris en charge par le générateur ?",
+        "answer": "Notre IA est entraînée sur l'esthétique de divers secteurs : startups tech, marques retail, restaurants et food, mode, immobilier, agences créatives, santé et bien-être, et bien d'autres. Quel que soit votre secteur, l'IA génère des logos authentiques et adaptés à votre marché."
+      },
+      {
+        "question": "Combien de temps faut-il pour générer un logo ?",
+        "answer": "La génération de logo par IA ne prend que quelques secondes. Vous recevrez plusieurs variantes de design dans les 10 à 15 secondes suivant la saisie du nom de votre marque. Parcourez les concepts, choisissez votre favori et affinez-le — l'ensemble du processus, de l'idée à l'export final, prend souvent moins de 10 minutes."
+      },
+      {
+        "question": "Puis-je créer des déclinaisons pour différentes plateformes ?",
+        "answer": "Oui ! La fonction multi-format vous permet de télécharger la version icône seule, le logo horizontal complet, la version verticale empilée et les versions optimisées pour les réseaux sociaux en un seul export. Votre logo s'adapte parfaitement aux app stores, en-têtes de site, profils sociaux, supports imprimés et merchandising."
+      },
+      {
+        "question": "Proposez-vous un remboursement si je ne suis pas satisfait ?",
+        "answer": "Nous offrons une garantie de satisfaction. Si vous n'êtes pas satisfait de vos logos générés, contactez notre équipe d'assistance dans les 7 jours suivant l'achat pour un remboursement complet. Nous sommes confiants dans la qualité de notre générateur et souhaitons que vous aimiez votre identité de marque."
+      }
+    ]
+  }
+],
+  "section_pt": [
+  {
+    "type": "centeredInputSection",
+    "title": "Gerador de Logotipo com IA",
+    "description": "Crie logotipos profissionais para sua empresa em segundos com nosso gerador de logotipo com IA. Seja uma startup tech, marca de varejo, restaurante ou agência criativa — crie logotipos impressionantes e escaláveis que definem sua identidade de marca. Exportação SVG vetorial, múltiplas variações e kits de marca completos. Comece com créditos diários gratuitos.",
+    "input_placeholder": "Digite o nome da sua marca e descreva sua empresa...",
+    "system_prompt": "Você é um designer especialista em identidade de marca e logotipos. Analise a descrição da empresa do usuário para entender seu setor, personalidade da marca, público-alvo e preferências visuais. Gere um logotipo profissional com tipografia, paleta de cores e layout adequados. Crie um sistema completo de logotipo com marca principal, variante de ícone, logotipo textual e versões para redes sociais. Garanta que os designs sejam escaláveis, memoráveis e comuniquem a identidade central da marca em um relance. Requisitos do usuário: $input$",
+    "button_text": "Gerar Logotipo",
+    "tip": "Dica: inclua seu setor, personalidade da marca (moderna, divertida, luxuosa, etc.), cores preferidas e se precisa de um ícone, logotipo textual ou combinação.",
+    "suggestion": [
+      {
+        "value": "Crie um logotipo elegante e minimalista para startup tech com uma marca abstrata geométrica em azul elétrico e degradê escuro, logotipo textual limpo sem serifa e variante de ícone compacto para lojas de aplicativos — para desenvolvedores e early adopters",
+        "label": "Logotipo Startup Tech"
+      },
+      {
+        "value": "Crie um logotipo ousado de marca varejista com paleta coral quente e creme, uma marca pictórica distinta que mescla modernidade e acessibilidade, logotipo textual elegante com espaçamento de letras e variantes para perfis sociais — para millennials antenados em moda",
+        "label": "Marca de Varejo"
+      },
+      {
+        "value": "Crie um charmoso logotipo de restaurante com elementos orgânicos desenhados à mão, tons ricos de terracota e verde sálvia, uma marca combinada memorável que funciona em placas e cardápios, e uma versão de distintivo compacta para redes sociais e adesivos — para foodies locais e famílias",
+        "label": "Restaurante & Food"
+      },
+      {
+        "value": "Crie um logotipo distinto de agência criativa com tipografia experimental ousada, um degradê vibrante de magenta a roxo, uma marca abstrata que transmite inovação e variantes monocromáticas para contextos profissionais — para CMOs e gerentes de marca",
+        "label": "Agência Criativa"
+      }
+    ]
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "Como criar o logotipo da sua empresa em 3 etapas",
+    "columns": [
+      {
+        "title": "Descreva sua marca",
+        "description": "Digite o nome da sua empresa, escolha seu setor e descreva a personalidade da sua marca. Nossa IA analisa seu briefing como um diretor criativo, entendendo seu posicionamento e preferências visuais antes de gerar qualquer marca. Quanto mais detalhes você fornecer, mais personalizados serão os conceitos de logotipo.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "A IA gera conceitos de logotipo",
+        "description": "Veja a IA transformar seu briefing em dezenas de conceitos profissionais de logotipo em segundos. Explore diferentes direções de design — de logotipos textuais minimalistas a marcas pictóricas ousadas. Compare variantes lado a lado, misture elementos entre conceitos e refine com linguagem natural. Cada design é criado de forma única para sua marca.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "Personalize e exporte",
+        "description": "Refine o logotipo escolhido com as ferramentas de edição por toque e texto. Visualize em cartões de visita, placas e plataformas digitais com Smart Mockup. Exporte um sistema completo de logotipo — principal colorido, monocromático, somente ícone e variantes para redes sociais. Baixe em SVG vetorial, PNG, JPG e PSD com resolução de até 8K.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Recursos poderosos de design de logotipo",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Edição por toque",
+        "description": "Refine as formas do seu logotipo com controles intuitivos de clique e edição. Selecione qualquer parte da sua marca — ajuste curvas de Bézier, redimensione elementos, recolorize formas específicas ou reposicione componentes. A edição por toque entende a geometria do logotipo e adapta automaticamente os elementos ao redor."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Edição de texto",
+        "description": "Aperfeiçoe a tipografia do nome da sua marca com controles de texto precisos. Edite o nome da empresa, slogan ou espaçamento de letras diretamente no logotipo preservando o estilo, peso e cor da fonte. Altere o texto ou ajuste o layout do logotipo textual em segundos sem precisar gerar todo o design novamente."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "Mockups inteligentes",
+        "description": "Visualize seu logotipo em aplicações reais instantaneamente. Coloque seu design em cartões de visita, placas de loja, embalagens, roupas, cabeçalhos de sites e perfis sociais com um clique. O Smart Mockup adapta automaticamente perspectiva, iluminação e textura da superfície para um resultado fotorrealista em qualquer meio."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Consistência de marca",
+        "description": "Gere uma família completa de variações de logotipo para cada ponto de contato. Obtenha versão principal colorida, horizontal, vertical, somente ícone, somente texto, monocromática e invertida — todas com perfeita consistência visual. Seu sistema de logotipo se adapta a qualquer superfície, permanecendo inconfundível."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "Exportação SVG vetorial",
+        "description": "Exporte verdadeiros arquivos SVG vetoriais com traçados limpos e estrutura de camadas adequada. Seu logotipo permanece nítido de um favicon 16×16 a um outdoor de 15 metros — sem pixelização ou perda de qualidade. Também exporta em PNG, JPG e PSD com camadas em resolução de até 8K."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Multi-formato",
+        "description": "Obtenha todos os assets de logotipo que você precisa em uma única exportação. Baixe a versão somente ícone para lojas de apps e favicons, o logotipo horizontal completo para cabeçalhos de site, a versão vertical empilhada para placas e versões otimizadas para redes sociais. Um único design fornece todos os formatos que sua marca precisa para lançar."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Confiável por empresas em todo o mundo",
+    "testimonials": [
+      {
+        "name": "Marcos Silva",
+        "role": "Fundador, TechVantage",
+        "content": "Nosso logotipo gerado por IA ficou tão profissional que os investidores acharam que contratamos uma agência cara. A edição por toque nos permitiu refinar a marca abstrata até que representasse perfeitamente nossa plataforma de IA. Lançamos com um sistema de logotipo completo — ícone, logotipo textual, variantes sociais — tudo em vetores SVG. Nossa identidade de marca refinada realmente nos ajudou a fechar nossa rodada seed.",
+        "avatar_url": "",
+        "metrics": "12 conceitos em 5 min | Sistema completo de logotipo"
+      },
+      {
+        "name": "Fernanda Oliveira",
+        "role": "Proprietária, Bloom Boutique",
+        "content": "Em menos de uma hora eu tinha uma identidade de marca completa. Uma agência de design me orçou R$ 25.000 e 4 semanas — com este gerador de logotipo com IA, descrevi a personalidade da minha boutique e recebi instantaneamente conceitos lindos. Os arquivos SVG vetoriais ficaram perfeitos para a fachada da loja. O Smart Mockup me permitiu visualizar tudo antes de imprimir.",
+        "avatar_url": "",
+        "metrics": "Economia de R$ 25.000 | Pronta em menos de 1 hora"
+      },
+      {
+        "name": "Ricardo Santos",
+        "role": "CEO, Fusion Kitchen",
+        "content": "Do cardápio do restaurante ao app de delivery, as variações do logotipo funcionaram em todos os lugares. Precisávamos de uma marca consistente em todos os pontos de contato físicos e digitais, e a exportação multi-formato nos deu tudo com um clique. A consistência da marca em todas as variantes é impressionante — parece um rebranding de agência de R$ 50.000, mas fizemos em uma tarde.",
+        "avatar_url": "",
+        "metrics": "Sistema de marca completo | Pronto para múltiplas plataformas"
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "title": "Tudo sobre nosso gerador de logotipo com IA",
+    "faq": [
+      {
+        "question": "O gerador de logotipo com IA é gratuito?",
+        "answer": "Sim! Oferecemos créditos diários gratuitos para você explorar e visualizar logotipos gerados por IA sem custo. Quando estiver pronto para baixar arquivos em alta resolução e desbloquear os direitos de uso comercial, faça upgrade para um plano pago. A versão gratuita é perfeita para experimentar conceitos de logotipo."
+      },
+      {
+        "question": "Quais formatos de logotipo posso baixar?",
+        "answer": "Todos os planos pagos incluem exportação em resolução 8K nos formatos PNG, JPG, SVG e PSD. O arquivo SVG vetorial é o padrão ouro para logotipos — ele escala para qualquer tamanho sem perda de qualidade, perfeito para telas digitais e impressão em grande formato."
+      },
+      {
+        "question": "Quantos logotipos posso gerar por mês?",
+        "answer": "O plano Starter inclui 2.000 gerações de logotipo por mês, o Basic oferece 3.500 e o Pro oferece 11.000 gerações mensais. Todos os planos incluem acesso completo aos recursos — mesmo usuários Starter têm exportação SVG vetorial, Smart Mockup e todas as ferramentas de edição."
+      },
+      {
+        "question": "Tenho os direitos comerciais do meu logotipo?",
+        "answer": "Sim! Todos os planos pagos incluem direitos completos de uso comercial. Você é proprietário do seu logotipo e pode usá-lo para qualquer finalidade comercial — registro de marca, merchandising, marketing, site, redes sociais e muito mais. Sua identidade de marca é legalmente sua."
+      },
+      {
+        "question": "Posso editar meu logotipo depois de baixá-lo?",
+        "answer": "Com certeza! Você pode usar as ferramentas de edição por toque e texto a qualquer momento para refinar seu logotipo e reexportá-lo em qualquer formato. Altere cores, ajuste formas, atualize o nome da sua marca ou refine a tipografia — tudo sem começar do zero."
+      },
+      {
+        "question": "Quais setores o gerador de logotipo com IA suporta?",
+        "answer": "Nossa IA é treinada na estética de diversos setores: startups tech, marcas de varejo, restaurantes e food, moda, imobiliário, agências criativas, saúde e bem-estar, e muitos outros. Em qualquer setor, a IA gera logotipos que parecem autênticos para o seu mercado."
+      },
+      {
+        "question": "Quanto tempo leva para gerar um logotipo?",
+        "answer": "A geração de logotipo por IA leva apenas alguns segundos. Você receberá várias variações de design dentro de 10 a 15 segundos após inserir o nome da sua marca. Explore conceitos, escolha seu favorito e refine — todo o processo, da ideia à exportação final, geralmente leva menos de 10 minutos."
+      },
+      {
+        "question": "Posso criar variações de logotipo para diferentes plataformas?",
+        "answer": "Sim! O recurso multi-formato permite baixar a versão somente ícone, o logotipo horizontal completo, a versão vertical empilhada e as versões otimizadas para redes sociais em uma única exportação. Seu logotipo se adapta perfeitamente a lojas de apps, cabeçalhos de sites, perfis sociais, materiais impressos e merchandising."
+      },
+      {
+        "question": "Vocês oferecem reembolso se eu não ficar satisfeito?",
+        "answer": "Oferecemos garantia de satisfação. Se você não ficar satisfeito com seus logotipos gerados, entre em contato com nossa equipe de suporte em até 7 dias após a compra para um reembolso total. Temos confiança na qualidade do nosso gerador e queremos que você ame sua identidade de marca."
+      }
+    ]
+  }
+],
+  "section_it": [
+  {
+    "type": "centeredInputSection",
+    "title": "Generatore di Logo AI",
+    "description": "Crea loghi professionali per la tua azienda in pochi secondi con il nostro generatore di logo AI. Che tu sia una startup tech, un marchio retail, un ristorante o un'agenzia creativa — realizza loghi straordinari e scalabili che definiscono la tua identità di marca. Esportazione SVG vettoriale, molteplici varianti e kit di marca completi. Inizia con crediti giornalieri gratuiti.",
+    "input_placeholder": "Inserisci il nome del tuo brand e descrivi la tua azienda...",
+    "system_prompt": "Sei un designer esperto di identità di marca e specialista di loghi. Analizza la descrizione dell'azienda dell'utente per comprenderne il settore, la personalità del brand, il pubblico target e le preferenze visive. Genera un logo professionale con tipografia, palette di colori e layout appropriati. Crea un sistema di logo completo con marchio principale, variante icona, logotipo e versioni per social media. Assicurati che i design siano scalabili, memorabili e comunichino l'identità fondamentale del brand a colpo d'occhio. Requisiti dell'utente: $input$",
+    "button_text": "Genera Logo",
+    "tip": "Consiglio: indica il tuo settore, la personalità del brand (moderno, giocoso, lussuoso, ecc.), i colori preferiti e se hai bisogno di un'icona, un logotipo o un logo combinato.",
+    "suggestion": [
+      {
+        "value": "Crea un logo elegante e minimalista per startup tech con un marchio astratto geometrico in blu elettrico e gradiente scuro, un logotipo pulito senza grazie e una variante icona compatta per app store — rivolto a sviluppatori e early adopter",
+        "label": "Logo Startup Tech"
+      },
+      {
+        "value": "Crea un logo audace per marchio retail con palette corallo caldo e crema, un marchio pittorico distintivo che unisce modernità e accessibilità, un logotipo elegante con spaziatura delle lettere e varianti per profili social — rivolto ai millennial attenti alla moda",
+        "label": "Marchio Retail"
+      },
+      {
+        "value": "Crea un affascinante logo per ristorante con elementi organici disegnati a mano, ricchi toni terracotta e verde salvia, un marchio combinato memorabile che funziona su insegne e menu, e una versione badge compatta per social media e adesivi — rivolto ai foodie locali e alle famiglie",
+        "label": "Ristorante & Food"
+      },
+      {
+        "value": "Crea un logo distintivo per agenzia creativa con tipografia sperimentale audace, un vivace gradiente magenta-viola, un marchio astratto che trasmette innovazione e varianti monocromatiche per contesti professionali — rivolto a CMO e brand manager",
+        "label": "Agenzia Creativa"
+      }
+    ]
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "Come creare il logo della tua azienda in 3 passaggi",
+    "columns": [
+      {
+        "title": "Descrivi il tuo brand",
+        "description": "Inserisci il nome della tua azienda, scegli il settore e descrivi la personalità del tuo brand. La nostra IA analizza il tuo brief come un direttore creativo, comprendendo il tuo posizionamento e le tue preferenze visive prima di generare qualsiasi marchio. Più dettagli fornisci, più i concetti di logo saranno personalizzati.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "L'IA genera i concetti di logo",
+        "description": "Guarda l'IA trasformare il tuo brief in decine di concetti di logo professionali in pochi secondi. Sfoglia diverse direzioni di design — dai logotipi minimalisti ai marchi pittorici audaci. Confronta le varianti fianco a fianco, mescola elementi tra i concetti e perfeziona con il linguaggio naturale. Ogni design è creato in modo unico per il tuo brand.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "Personalizza ed esporta",
+        "description": "Perfeziona il logo scelto con gli strumenti di modifica touch e testo. Visualizzalo in anteprima su biglietti da visita, insegne e piattaforme digitali con Smart Mockup. Esporta un sistema di logo completo — principale a colori, monocromatico, solo icona e varianti per social media. Scarica in SVG vettoriale, PNG, JPG e PSD fino a risoluzione 8K.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Potenti funzionalità di design del logo",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Modifica touch",
+        "description": "Perfeziona le forme del tuo logo con controlli intuitivi clicca-e-modifica. Seleziona qualsiasi parte del tuo marchio — regola le curve di Bézier, ridimensiona gli elementi, ricolora forme specifiche o riposiziona i componenti. La modifica touch comprende la geometria del logo e adatta automaticamente gli elementi circostanti."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Modifica testo",
+        "description": "Perfeziona la tipografia del nome del tuo brand con controlli testuali precisi. Modifica il nome dell'azienda, lo slogan o la spaziatura delle lettere direttamente sul logo preservando lo stile, il peso e il trattamento cromatico del font. Cambia il testo o regola il layout del logotipo in pochi secondi senza rigenerare l'intero design."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "Mockup intelligenti",
+        "description": "Visualizza in anteprima il tuo logo in applicazioni reali all'istante. Posiziona il tuo design su biglietti da visita, insegne, imballaggi, abbigliamento, intestazioni di siti web e profili social con un clic. Smart Mockup adatta automaticamente prospettiva, illuminazione e texture superficiale per un risultato fotorealistico su qualsiasi supporto."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Coerenza del brand",
+        "description": "Genera una famiglia completa di varianti di logo per ogni punto di contatto. Ottieni versione principale a colori, orizzontale, verticale, solo icona, solo logotipo, monocromatica e invertita — tutte con perfetta coerenza visiva. Il tuo sistema di logo si adatta a qualsiasi superficie rimanendo inconfondibilmente tuo."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "Esportazione SVG vettoriale",
+        "description": "Esporta veri file SVG vettoriali con tracciati puliti e struttura a livelli corretta. Il tuo logo rimane nitidissimo da una favicon 16×16 a un cartellone di 15 metri — senza pixelizzazione né perdita di qualità. Esporta anche in PNG, JPG e PSD con livelli fino a risoluzione 8K."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Multi-formato",
+        "description": "Ottieni tutti gli asset di logo di cui hai bisogno in un'unica esportazione. Scarica la versione solo icona per app store e favicon, il logo orizzontale completo per intestazioni di siti, la versione verticale impilata per insegne e le versioni ottimizzate per i social media. Un solo design fornisce tutti i formati necessari per il lancio del tuo brand."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Scelto da aziende in tutto il mondo",
+    "testimonials": [
+      {
+        "name": "Marco Rossi",
+        "role": "Fondatore, TechVantage",
+        "content": "Il nostro logo generato dall'IA era così professionale che gli investitori pensavano avessimo ingaggiato un'agenzia costosa. La modifica touch ci ha permesso di rifinire il marchio astratto finché non ha rappresentato perfettamente la nostra piattaforma IA. Abbiamo lanciato con un sistema di logo completo — icona, logotipo, varianti social — tutto in vettori SVG. La nostra identità di marca curata ci ha davvero aiutato a chiudere il round seed.",
+        "avatar_url": "",
+        "metrics": "12 concetti in 5 min | Sistema logo completo"
+      },
+      {
+        "name": "Francesca Bianchi",
+        "role": "Proprietaria, Bloom Boutique",
+        "content": "In meno di un'ora avevo un'identità di marca completa. Un'agenzia di design mi aveva chiesto 5.000 € e 4 settimane — con questo generatore di logo AI, ho descritto la personalità della mia boutique e ho ricevuto subito splendidi concetti. I file SVG vettoriali erano perfetti per la mia insegna. La funzione Smart Mockup mi ha permesso di vedere tutto in anteprima prima di stampare.",
+        "avatar_url": "",
+        "metrics": "5.000 € risparmiati | Pronta in meno di 1 ora"
+      },
+      {
+        "name": "Luca Ferrara",
+        "role": "CEO, Fusion Kitchen",
+        "content": "Dal menu del ristorante all'app di delivery, le varianti del logo hanno funzionato ovunque. Avevamo bisogno di un branding coerente su tutti i punti di contatto fisici e digitali, e l'esportazione multi-formato ci ha dato tutto con un clic. La coerenza del brand tra tutte le varianti è impressionante — sembra un rebranding da agenzia da 10.000 €, ma l'abbiamo fatto in un pomeriggio.",
+        "avatar_url": "",
+        "metrics": "Sistema di marca completo | Pronto multi-piattaforma"
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "title": "Tutto ciò che devi sapere sul nostro generatore di logo AI",
+    "faq": [
+      {
+        "question": "Il generatore di logo AI è gratuito?",
+        "answer": "Sì! Offriamo crediti giornalieri gratuiti per esplorare e visualizzare in anteprima i loghi generati dall'IA senza costi. Quando sei pronto a scaricare file ad alta risoluzione e sbloccare i diritti di uso commerciale, passa a un piano a pagamento. La versione gratuita è perfetta per sperimentare con i concetti di logo."
+      },
+      {
+        "question": "Quali formati di logo posso scaricare?",
+        "answer": "Tutti i piani a pagamento includono l'esportazione in risoluzione 8K nei formati PNG, JPG, SVG e PSD. Il file SVG vettoriale è lo standard di riferimento per i loghi — si ridimensiona all'infinito senza perdita di qualità, perfetto per schermi digitali e stampa di grande formato."
+      },
+      {
+        "question": "Quanti loghi posso generare al mese?",
+        "answer": "Il piano Starter include 2.000 generazioni di logo al mese, Basic ne offre 3.500 e Pro ti dà 11.000 generazioni mensili. Tutti i piani includono l'accesso completo alle funzionalità — anche gli utenti Starter hanno esportazione SVG vettoriale, Smart Mockup e tutti gli strumenti di modifica."
+      },
+      {
+        "question": "Ho i diritti commerciali sul mio logo?",
+        "answer": "Sì! Tutti i piani a pagamento includono i diritti completi di uso commerciale. Sei proprietario del tuo logo e puoi utilizzarlo per qualsiasi scopo commerciale — registrazione del marchio, merchandising, marketing, sito web, social media e altro. La tua identità di marca ti appartiene legalmente."
+      },
+      {
+        "question": "Posso modificare il mio logo dopo averlo scaricato?",
+        "answer": "Certamente! Puoi utilizzare gli strumenti di modifica touch e testo in qualsiasi momento per perfezionare il tuo logo e riesportarlo in qualsiasi formato. Cambia i colori, regola le forme, aggiorna il nome del tuo brand o rifinisci la tipografia — senza mai ricominciare da capo."
+      },
+      {
+        "question": "Quali settori supporta il generatore di logo AI?",
+        "answer": "La nostra IA è addestrata sull'estetica di diversi settori: startup tech, marchi retail, ristoranti e food, moda, immobiliare, agenzie creative, salute e benessere, e molti altri. In qualsiasi settore, l'IA genera loghi che risultano autentici per il tuo mercato."
+      },
+      {
+        "question": "Quanto tempo ci vuole per generare un logo?",
+        "answer": "La generazione di logo con IA richiede solo pochi secondi. Riceverai diverse varianti di design entro 10-15 secondi dall'inserimento del nome del tuo brand. Sfoglia i concetti, scegli il tuo preferito e perfezionalo — l'intero processo, dall'idea all'esportazione finale, spesso richiede meno di 10 minuti."
+      },
+      {
+        "question": "Posso creare varianti di logo per diverse piattaforme?",
+        "answer": "Sì! La funzione multi-formato ti permette di scaricare la versione solo icona, il logo orizzontale completo, la versione verticale impilata e le versioni ottimizzate per i social media in un'unica esportazione. Il tuo logo si adatta perfettamente ad app store, intestazioni di siti, profili social, materiali stampati e merchandising."
+      },
+      {
+        "question": "Offrite un rimborso se non sono soddisfatto?",
+        "answer": "Offriamo una garanzia di soddisfazione. Se non sei soddisfatto dei tuoi loghi generati, contatta il nostro team di assistenza entro 7 giorni dall'acquisto per un rimborso completo. Siamo fiduciosi nella qualità del nostro generatore e vogliamo che tu ami la tua identità di marca."
+      }
+    ]
+  }
+],
+  "section_es": [
+  {
+    "type": "centeredInputSection",
+    "title": "Generador de Logos con IA",
+    "description": "Crea logotipos profesionales para tu empresa en segundos con nuestro generador de logos con IA. Seas una startup tech, una marca retail, un restaurante o una agencia creativa — diseña logotipos impactantes y escalables que definan tu identidad de marca. Exportación SVG vectorial, múltiples variaciones y kits de marca completos. Comienza con créditos diarios gratuitos.",
+    "input_placeholder": "Ingresa el nombre de tu marca y describe tu empresa...",
+    "system_prompt": "Eres un diseñador experto en identidad de marca y especialista en logotipos. Analiza la descripción de la empresa del usuario para comprender su sector, personalidad de marca, público objetivo y preferencias visuales. Genera un logotipo profesional con tipografía, paleta de colores y composición adecuados. Crea un sistema completo de logotipo con marca principal, variante de icono, logotipo textual y versiones para redes sociales. Asegúrate de que los diseños sean escalables, memorables y comuniquen la identidad fundamental de la marca a simple vista. Requisitos del usuario: $input$",
+    "button_text": "Generar Logo",
+    "tip": "Consejo: indica tu sector, la personalidad de tu marca (moderna, divertida, lujosa, etc.), tus colores preferidos y si necesitas un icono, un logotipo textual o un logo combinado.",
+    "suggestion": [
+      {
+        "value": "Diseña un logotipo elegante y minimalista para startup tech con una marca abstracta geométrica en azul eléctrico y degradado oscuro, un logotipo textual limpio sin serifa y una variante de icono compacto para tiendas de apps — dirigido a desarrolladores y early adopters",
+        "label": "Logo Startup Tech"
+      },
+      {
+        "value": "Crea un logotipo audaz de marca retail con paleta coral cálido y crema, una marca pictórica distintiva que fusiona modernidad y accesibilidad, un logotipo textual elegante con espaciado de letras y variantes para perfiles sociales — dirigido a millennials a la moda",
+        "label": "Marca Retail"
+      },
+      {
+        "value": "Diseña un encantador logotipo de restaurante con elementos orgánicos dibujados a mano, ricos tonos terracota y verde salvia, una marca combinada memorable que funciona en letreros y menús, y una versión de insignia compacta para redes sociales y pegatinas — dirigido a foodies locales y familias",
+        "label": "Restaurante & Food"
+      },
+      {
+        "value": "Crea un logotipo distintivo de agencia creativa con tipografía experimental audaz, un vibrante degradado de magenta a púrpura, una marca abstracta que transmite innovación y variantes monocromáticas para contextos profesionales — dirigido a CMOs y gerentes de marca",
+        "label": "Agencia Creativa"
+      }
+    ]
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "Cómo crear el logotipo de tu empresa en 3 pasos",
+    "columns": [
+      {
+        "title": "Describe tu marca",
+        "description": "Ingresa el nombre de tu empresa, elige tu sector y describe la personalidad de tu marca. Nuestra IA analiza tu brief como un director creativo, comprendiendo tu posicionamiento y preferencias visuales antes de generar cualquier marca. Cuantos más detalles proporciones, más personalizados serán los conceptos de logotipo.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "La IA genera conceptos de logotipo",
+        "description": "Observa cómo la IA transforma tu brief en decenas de conceptos profesionales de logotipo en segundos. Explora diferentes direcciones de diseño — desde logotipos textuales minimalistas hasta marcas pictóricas audaces. Compara variantes lado a lado, mezcla elementos entre conceptos y perfecciona con lenguaje natural. Cada diseño se crea de forma única para tu marca.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "Personaliza y exporta",
+        "description": "Perfecciona el logotipo elegido con las herramientas de edición táctil y de texto. Previsualízalo en tarjetas de visita, letreros y plataformas digitales con Smart Mockup. Exporta un sistema completo de logotipo — principal a color, monocromático, solo icono y variantes para redes sociales. Descarga en SVG vectorial, PNG, JPG y PSD con resolución de hasta 8K.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Potentes funciones de diseño de logotipos",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Edición táctil",
+        "description": "Perfecciona las formas de tu logotipo con controles intuitivos de clic y edición. Selecciona cualquier parte de tu marca — ajusta curvas de Bézier, redimensiona elementos, recolorea formas específicas o reposiciona componentes. La edición táctil comprende la geometría del logotipo y adapta automáticamente los elementos circundantes."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Edición de texto",
+        "description": "Perfecciona la tipografía del nombre de tu marca con controles de texto precisos. Edita el nombre de la empresa, el eslogan o el espaciado de letras directamente en el logotipo preservando el estilo, el peso y el tratamiento de color de la fuente. Cambia el texto o ajusta la composición del logotipo textual en segundos sin regenerar todo el diseño."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "Mockups inteligentes",
+        "description": "Previsualiza tu logotipo en aplicaciones reales al instante. Coloca tu diseño en tarjetas de visita, letreros de tienda, embalajes, ropa, cabeceras de sitios web y perfiles sociales con un clic. Smart Mockup adapta automáticamente la perspectiva, iluminación y textura superficial para un resultado fotorrealista en cualquier medio."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Consistencia de marca",
+        "description": "Genera una familia completa de variaciones de logotipo para cada punto de contacto. Obtén versión principal a color, horizontal, vertical, solo icono, solo texto, monocromática e invertida — todas con perfecta consistencia visual. Tu sistema de logotipo se adapta a cualquier superficie manteniéndose inconfundible."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "Exportación SVG vectorial",
+        "description": "Exporta auténticos archivos SVG vectoriales con trazados limpios y estructura de capas correcta. Tu logotipo se mantiene nítido desde un favicon de 16×16 hasta una valla publicitaria de 15 metros — sin pixelación ni pérdida de calidad. También exporta en PNG, JPG y PSD con capas en resolución de hasta 8K."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Multiformato",
+        "description": "Obtén todos los assets de logotipo que necesitas en una sola exportación. Descarga la versión solo icono para tiendas de apps y favicons, el logotipo horizontal completo para cabeceras web, la versión vertical apilada para letreros y las versiones optimizadas para redes sociales. Un solo diseño proporciona todos los formatos que tu marca necesita para lanzarse."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Con la confianza de empresas de todo el mundo",
+    "testimonials": [
+      {
+        "name": "Carlos García",
+        "role": "Fundador, TechVantage",
+        "content": "Nuestro logotipo generado por IA quedó tan profesional que los inversores pensaron que habíamos contratado una agencia costosa. La edición táctil nos permitió perfeccionar la marca abstracta hasta que representó perfectamente nuestra plataforma de IA. Lanzamos con un sistema de logotipo completo — icono, logotipo textual, variantes sociales — todo en vectores SVG. Nuestra identidad de marca pulida realmente nos ayudó a cerrar la ronda seed.",
+        "avatar_url": "",
+        "metrics": "12 conceptos en 5 min | Sistema de logo completo"
+      },
+      {
+        "name": "María López",
+        "role": "Propietaria, Bloom Boutique",
+        "content": "En menos de una hora tenía una identidad de marca completa. Una agencia de diseño me presupuestó 5.000 € y 4 semanas — con este generador de logos con IA, describí la personalidad de mi boutique y recibí al instante conceptos preciosos. Los archivos SVG vectoriales quedaron perfectos para el letrero de mi tienda. La función Smart Mockup me permitió previsualizarlo todo antes de imprimir.",
+        "avatar_url": "",
+        "metrics": "5.000 € ahorrados | Lista en menos de 1 hora"
+      },
+      {
+        "name": "Javier Martínez",
+        "role": "CEO, Fusion Kitchen",
+        "content": "Del menú del restaurante a la app de delivery, las variaciones del logotipo funcionaron en todas partes. Necesitábamos una marca coherente en todos los puntos de contacto físicos y digitales, y la exportación multiformato nos dio todo con un solo clic. La consistencia de marca entre todas las variantes es impresionante — parece un rebranding de agencia de 10.000 €, pero lo hicimos en una tarde.",
+        "avatar_url": "",
+        "metrics": "Sistema de marca completo | Listo para múltiples plataformas"
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "title": "Todo sobre nuestro generador de logos con IA",
+    "faq": [
+      {
+        "question": "¿El generador de logos con IA es gratuito?",
+        "answer": "¡Sí! Ofrecemos créditos diarios gratuitos para que explores y previsualices logotipos generados por IA sin costo. Cuando estés listo para descargar archivos en alta resolución y desbloquear los derechos de uso comercial, actualízate a un plan de pago. La versión gratuita es perfecta para experimentar con conceptos de logotipo."
+      },
+      {
+        "question": "¿Qué formatos de logotipo puedo descargar?",
+        "answer": "Todos los planes de pago incluyen exportación en resolución 8K en formatos PNG, JPG, SVG y PSD. El archivo SVG vectorial es el estándar de referencia para logotipos — se escala a cualquier tamaño sin pérdida de calidad, perfecto para pantallas digitales e impresión en gran formato."
+      },
+      {
+        "question": "¿Cuántos logotipos puedo generar al mes?",
+        "answer": "El plan Starter incluye 2.000 generaciones de logotipo al mes, Basic ofrece 3.500 y Pro te da 11.000 generaciones mensuales. Todos los planes incluyen acceso completo a las funciones — incluso los usuarios Starter tienen exportación SVG vectorial, Smart Mockup y todas las herramientas de edición."
+      },
+      {
+        "question": "¿Tengo los derechos comerciales de mi logotipo?",
+        "answer": "¡Sí! Todos los planes de pago incluyen derechos completos de uso comercial. Eres dueño de tu logotipo y puedes usarlo para cualquier propósito comercial — registro de marca, merchandising, marketing, sitio web, redes sociales y más. Tu identidad de marca te pertenece legalmente."
+      },
+      {
+        "question": "¿Puedo editar mi logotipo después de descargarlo?",
+        "answer": "¡Por supuesto! Puedes usar las herramientas de edición táctil y de texto en cualquier momento para perfeccionar tu logotipo y reexportarlo en cualquier formato. Cambia colores, ajusta formas, actualiza el nombre de tu marca o perfecciona la tipografía — sin tener que empezar de cero."
+      },
+      {
+        "question": "¿Qué sectores admite el generador de logos con IA?",
+        "answer": "Nuestra IA está entrenada en la estética de diversos sectores: startups tech, marcas retail, restaurantes y food, moda, inmobiliario, agencias creativas, salud y bienestar, y muchos más. En cualquier sector, la IA genera logotipos que resultan auténticos para tu mercado."
+      },
+      {
+        "question": "¿Cuánto tarda en generarse un logotipo?",
+        "answer": "La generación de logotipos con IA toma apenas unos segundos. Recibirás múltiples variaciones de diseño entre 10 y 15 segundos después de ingresar el nombre de tu marca. Explora conceptos, elige tu favorito y perfecciónalo — todo el proceso, desde la idea hasta la exportación final, suele llevar menos de 10 minutos."
+      },
+      {
+        "question": "¿Puedo crear variaciones de logotipo para diferentes plataformas?",
+        "answer": "¡Sí! La función multiformato te permite descargar la versión solo icono, el logotipo horizontal completo, la versión vertical apilada y las versiones optimizadas para redes sociales en una sola exportación. Tu logotipo se adapta perfectamente a tiendas de apps, cabeceras web, perfiles sociales, materiales impresos y merchandising."
+      },
+      {
+        "question": "¿Ofrecen reembolso si no quedo satisfecho?",
+        "answer": "Ofrecemos garantía de satisfacción. Si no quedas satisfecho con tus logotipos generados, contacta a nuestro equipo de soporte dentro de los 7 días posteriores a la compra para un reembolso completo. Confiamos en la calidad de nuestro generador y queremos que te enamores de tu identidad de marca."
+      }
+    ]
+  }
+]
+}

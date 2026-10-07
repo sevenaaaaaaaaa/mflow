@@ -1,0 +1,461 @@
+{
+  "_id": "features-ai-video-agent-zh-TW",
+  "schemaVersion": "composite-v2",
+  "draftStatus": "local-zhTW-s2t",
+  "reflowSourceId": "features-ai-video-agent-zh",
+  "language": "zh-TW",
+  "category": "feature",
+  "slug": {
+    "_type": "slug",
+    "current": "ai-video-agent"
+  },
+  "storyline": "features-grid-bento6",
+  "title": "AI 影片智慧體：規劃、生成並打磨短片與電影感片段 | Lovart",
+  "description": "Lovart 是一個 AI 設計智慧體，在一塊 ChatCanvas 上規劃、生成並打磨短影片與電影感片段——無需折騰時間軸，也不用 GPU 叢集。",
+  "seo": {
+    "_type": "seo",
+    "description": "Lovart 是一個 AI 設計智慧體，在一塊 ChatCanvas 上規劃、生成並打磨短影片與電影感片段——無需折騰時間軸，也不用 GPU 叢集。",
+    "keywords": [
+      "ai video agent",
+      "ai video generator agent",
+      "multimodal video ai",
+      "lovart ai video",
+      "agentic video creation"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "AI Video Agent",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png"
+    },
+    "title": "AI 影片智慧體：規劃、生成並打磨短片與電影感片段 | Lovart"
+  },
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Video Agent\",\"title\":\"你的 AI 影片智慧體\",\"highlightedText\":\"text, image, and audio to video\",\"description\":\"Lovart 是一個 AI 設計智慧體，在一塊 ChatCanvas 上規劃、生成並打磨短影片與電影感片段——無需折騰時間軸，也不用 GPU 叢集。\",\"buttons\":[{\"text\":\"開始創作\",\"href\":\"\",\"variant\":\"primary\"},{\"text\":\"檢視示例\",\"href\":\"\",\"variant\":\"secondary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"AI Video Agent\"}},{\"type\":\"bento-6\",\"title\":\"團隊選擇 Lovart 作為影片智慧體的六個理由\",\"description\":\"產品與增長團隊對一套智慧體影片系統的期待，這裡都有。\",\"columns\":3,\"features\":[{\"title\":\"多模態輸入\",\"description\":\"文字、靜幀和音訊參考，一份 brief 全收。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png\",\"alt\":\"Multimodal\"}},{\"title\":\"導演級掌控\",\"description\":\"用大白話指揮運鏡和節奏。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/fdd595720454d37ebbc0927c96f9bf8e2bc23a84d72e640d0aad62eca8dd35b5.png\",\"alt\":\"Camera\"}},{\"title\":\"角色一致性\",\"description\":\"主體在不同鏡頭間保持穩定。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png\",\"alt\":\"Consistency\"}},{\"title\":\"雲端渲染\",\"description\":\"出 4K 草稿無需本地 GPU。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png\",\"alt\":\"Cloud\"}},{\"title\":\"即投各渠道的匯出\",\"description\":\"一個專案同時產出 9:16、16:9 和 1:1。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png\",\"alt\":\"Exports\"}},{\"title\":\"智慧體 + 畫布編輯\",\"description\":\"觸控編輯、隨手迭代，不打斷心流。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"Canvas\"}}]},{\"type\":\"capability-tabs\",\"title\":\"一個智慧體，整合全部能力\",\"description\":\"\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"需求與規劃\",\"icon\":\"search\",\"content\":{\"title\":\"以結果為先的規劃\",\"description\":\"在動一個畫素之前，Lovart 先把目標轉化為鏡頭意圖。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png\",\"alt\":\"Plan\"},\"points\":[\"Channel specs\",\"Offer context\",\"Shot list\"]}},{\"label\":\"生成\",\"icon\":\"sparkle\",\"content\":{\"title\":\"文/圖生影片\",\"description\":\"Seedance 級別的運動表現，加上 Lovart 的編排。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"生成\"},\"points\":[\"Text-to-video\",\"Image-to-video\",\"Audio sync\"]}},{\"label\":\"執導\",\"icon\":\"pointer\",\"content\":{\"title\":\"自然語言執導\",\"description\":\"無需關鍵幀即可控制平移、推拉和節奏。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png\",\"alt\":\"執導\"},\"points\":[\"Camera verbs\",\"Lighting notes\",\"Pacing\"]}},{\"label\":\"交付\",\"icon\":\"brand\",\"content\":{\"title\":\"在 ChatCanvas 上審閱\",\"description\":\"確認各版本，匯出用於廣告或社媒。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png\",\"alt\":\"交付\"},\"points\":[\"Touch Edit\",\"Brand Kit\",\"MP4 export\"]}}]},{\"type\":\"bento-2\",\"title\":\"尤其擅長的兩件事\",\"columns\":2,\"features\":[{\"title\":\"產出更多版本\",\"description\":\"無需完整後期團隊，也能做出鉤子和剪輯。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png\",\"alt\":\"Variants\"}},{\"title\":\"保持品牌一致\",\"description\":\"Brand Kit 從需求一路貫穿到匯出。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png\",\"alt\":\"On-brand\"}}]},{\"type\":\"feature-detail\",\"title\":\"詳細瞭解使用方式\",\"description\":\"看智慧體如何把上下文貫穿生成與審閱全程。\",\"items\":[{\"title\":\"開啟你的Your AI Video Agent for專案\",\"description\":\"描述你想要的成果，並補充參考素材即可。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png\",\"alt\":\"Brief\"},\"cta\":{\"text\":\"開始填寫需求\",\"href\":\"\",\"variant\":\"primary\"}},{\"title\":\"與智慧體一起迭代\",\"description\":\"在同一畫布上調整細節、探索不同方案。\",\"reverse\":true,\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"Canvas\"},\"cta\":{\"text\":\"開啟畫布\",\"href\":\"\",\"variant\":\"primary\"}}]},{\"type\":\"prompt-launcher\",\"title\":\"一句提示詞，試用 AI 影片智慧體\",\"description\":\"描述場景、運鏡、畫幅比例和品牌——Lovart 返回草稿片段，你在畫布上打磨。\",\"input_placeholder\":\"例如：9:16 產品鉤子，手持質感，黃金時刻光線，Logo 置於下三分之一…\",\"prompts\":[{\"label\":\"產品釋出預告片\",\"prompt\":\"15 秒電影感產品揭曉，緩慢推軌，高階布光，9:16\"},{\"label\":\"品牌故事蒙太奇\",\"prompt\":\"用三張參考靜幀生成 30 秒品牌短片，暖色調，16:9\"},{\"label\":\"口播出鏡 B-roll\",\"prompt\":\"主講人風格片段，輕微推鏡，辦公室背景，便於對口型\"},{\"label\":\"社媒鉤子短片\",\"prompt\":\"3 秒打斷注意力的 TikTok 開場，醒目動態字型，豎版\"}],\"cta\":{\"text\":\"生成影片\"},\"tip\":\"由 Lovart AI 設計智慧體 + Seedance 級別運動模型驅動。\"},{\"type\":\"workflow-horizontal\",\"title\":\"用你的影片智慧體，三步搞定\",\"steps\":[{\"step\":1,\"title\":\"描述想要的成果\",\"description\":\"渠道、時長、調性，以及任何靜幀或配音。\"},{\"step\":2,\"title\":\"生成並執導\",\"description\":\"智慧體起草片段，你在對話裡掌控運鏡和節奏。\"},{\"step\":3,\"title\":\"打磨並匯出\",\"description\":\"用觸控編輯精修，再下載用於廣告或社媒。\"}]},{\"type\":\"comparison-table\",\"title\":\"Your AI Video Agent for：Lovart 與常規工作流對比\",\"headers\":[\"需求\",\"通用工具\",\"手工工作流\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"開啟你的Your AI Video Agent for專案\",\"values\":[\"一句提示詞\",\"手動寫需求\",\"需求驅動的推理\"]},{\"feature\":\"出第一版的耗時\",\"values\":[\"幾分鐘\",\"數天\",\"幾分鐘\"]},{\"feature\":\"生成後的編輯\",\"values\":[\"有限\",\"反覆修改\",\"塗抹 / 文字 / 元素編輯\"]},{\"feature\":\"保持品牌一致\",\"values\":[\"手動\",\"手動\",\"支援 Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Lovart 在你的影片工作流中的位置\",\"description\":\"團隊當下正用這個智慧體跑的場景。\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"付費社媒鉤子\",\"description\":\"一份 brief 產出多個 9:16 版本。\"},{\"icon\":\"brand\",\"title\":\"產品釋出\",\"description\":\"預告片和講解片，一次會話完成。\"},{\"icon\":\"pointer\",\"title\":\"創作者 B-roll 素材\",\"description\":\"無需翻找素材庫即可補足 A-roll。\"},{\"icon\":\"globe\",\"title\":\"本地化\",\"description\":\"按市場更換文案與調色。\"},{\"icon\":\"image\",\"title\":\"電商迴圈影片\",\"description\":\"商品詳情頁和電商平臺用的動態影片。\"},{\"icon\":\"refresh\",\"title\":\"內部賦能\",\"description\":\"銷售與客戶成功用的短影片片段。\"}]},{\"type\":\"testimonial\",\"title\":\"用智慧體而非時間軸交付影片的團隊\",\"testimonials\":[{\"quote\":\"我們用一個 Lovart 會話替掉了三款工具——鉤子、產品迴圈影片和匯出全包了。\",\"author\":\"Maya L.\",\"role\":\"增長負責人\"},{\"quote\":\"圖生影片讓我們的 SKU 標籤保持準確，光這一點就值回了切換成本。\",\"author\":\"James K.\",\"role\":\"電商總監\"},{\"quote\":\"我們的創作者在交代需求當天就能拿到豎版剪輯。\",\"author\":\"Priya S.\",\"role\":\"創作者運營\"}]},{\"type\":\"pricing-block\",\"title\":\"選擇適合團隊的方案\",\"description\":\"免費開始，當作品要交付客戶時再升級。\"},{\"type\":\"faq\",\"title\":\"常見問題\",\"items\":[{\"question\":\"什麼是 AI 影片智慧體？\",\"answer\":\"AI 影片智慧體會從文字、影像和音訊出發，規劃、生成並幫你打磨短影片片段——而不只是一個「文生影片」按鈕。\"},{\"question\":\"Lovart 和單獨的影片生成器有什麼不同？\",\"answer\":\"Lovart 把多模態生成與 ChatCanvas 編輯、Brand Kit 和行銷上下文結合，讓影片在各渠道都保持品牌一致。\"},{\"question\":\"我需要高效能 GPU 嗎？\",\"answer\":\"不需要。渲染在 Lovart 的雲端進行。你只需要一個現代瀏覽器和一份清晰的 brief。\"},{\"question\":\"片段可以商用嗎？\",\"answer\":\"付費方案包含你在 Lovart 上創作素材的商用權。具體請檢視你的方案。\"},{\"question\":\"支援哪些畫幅比例？\",\"answer\":\"常用比例包括 16:9（YouTube）、9:16（TikTok/Reels）和 1:1（資訊流）。在提示詞裡指明比例即可。\"},{\"question\":\"Lovart 支援圖生影片嗎？\",\"answer\":\"支援。上傳參考靜幀或產品圖並描述運動方式——非常適合電商和品牌短片。\"},{\"question\":\"行銷團隊能跑 A/B 版本嗎？\",\"answer\":\"可以。從一份主 brief 生成多個鉤子或運鏡路徑，比較表現。\"},{\"question\":\"草稿出得有多快？\",\"answer\":\"多數短片視長度和排隊情況，幾秒到一分鐘即可出草稿——之後在畫布上迭代。\"},{\"question\":\"這和 Seedance 是一回事嗎？\",\"answer\":\"Lovart 在一套智慧體工作流中編排 Seedance 級別的模型，集編輯、品牌和匯出於一體——而不是一個獨立的工具標籤頁。\"}]},{\"type\":\"cta-default\",\"title\":\"準備好用智慧體來執導影片了嗎？\",\"description\":\"免費開始——在 ChatCanvas 上描述你的第一個場景。\",\"buttons\":[{\"text\":\"免費開始\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Video Agent",
+      "title": "你的 AI 影片智慧體",
+      "highlightedText": "text, image, and audio to video",
+      "description": "Lovart 是一個 AI 設計智慧體，在一塊 ChatCanvas 上規劃、生成並打磨短影片與電影感片段——無需折騰時間軸，也不用 GPU 叢集。",
+      "buttons": [
+        {
+          "text": "開始創作",
+          "href": "",
+          "variant": "primary"
+        },
+        {
+          "text": "檢視示例",
+          "href": "",
+          "variant": "secondary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+        "alt": "AI Video Agent"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "團隊選擇 Lovart 作為影片智慧體的六個理由",
+      "description": "產品與增長團隊對一套智慧體影片系統的期待，這裡都有。",
+      "columns": 3,
+      "features": [
+        {
+          "title": "多模態輸入",
+          "description": "文字、靜幀和音訊參考，一份 brief 全收。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png",
+            "alt": "Multimodal"
+          }
+        },
+        {
+          "title": "導演級掌控",
+          "description": "用大白話指揮運鏡和節奏。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/fdd595720454d37ebbc0927c96f9bf8e2bc23a84d72e640d0aad62eca8dd35b5.png",
+            "alt": "Camera"
+          }
+        },
+        {
+          "title": "角色一致性",
+          "description": "主體在不同鏡頭間保持穩定。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png",
+            "alt": "Consistency"
+          }
+        },
+        {
+          "title": "雲端渲染",
+          "description": "出 4K 草稿無需本地 GPU。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png",
+            "alt": "Cloud"
+          }
+        },
+        {
+          "title": "即投各渠道的匯出",
+          "description": "一個專案同時產出 9:16、16:9 和 1:1。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png",
+            "alt": "Exports"
+          }
+        },
+        {
+          "title": "智慧體 + 畫布編輯",
+          "description": "觸控編輯、隨手迭代，不打斷心流。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+            "alt": "Canvas"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "一個智慧體，整合全部能力",
+      "description": "",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "需求與規劃",
+          "icon": "search",
+          "content": {
+            "title": "以結果為先的規劃",
+            "description": "在動一個畫素之前，Lovart 先把目標轉化為鏡頭意圖。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png",
+              "alt": "Plan"
+            },
+            "points": [
+              "Channel specs",
+              "Offer context",
+              "Shot list"
+            ]
+          }
+        },
+        {
+          "label": "生成",
+          "icon": "sparkle",
+          "content": {
+            "title": "文/圖生影片",
+            "description": "Seedance 級別的運動表現，加上 Lovart 的編排。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+              "alt": "生成"
+            },
+            "points": [
+              "Text-to-video",
+              "Image-to-video",
+              "Audio sync"
+            ]
+          }
+        },
+        {
+          "label": "執導",
+          "icon": "pointer",
+          "content": {
+            "title": "自然語言執導",
+            "description": "無需關鍵幀即可控制平移、推拉和節奏。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png",
+              "alt": "執導"
+            },
+            "points": [
+              "Camera verbs",
+              "Lighting notes",
+              "Pacing"
+            ]
+          }
+        },
+        {
+          "label": "交付",
+          "icon": "brand",
+          "content": {
+            "title": "在 ChatCanvas 上審閱",
+            "description": "確認各版本，匯出用於廣告或社媒。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png",
+              "alt": "交付"
+            },
+            "points": [
+              "Touch Edit",
+              "Brand Kit",
+              "MP4 export"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "尤其擅長的兩件事",
+      "columns": 2,
+      "features": [
+        {
+          "title": "產出更多版本",
+          "description": "無需完整後期團隊，也能做出鉤子和剪輯。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png",
+            "alt": "Variants"
+          }
+        },
+        {
+          "title": "保持品牌一致",
+          "description": "Brand Kit 從需求一路貫穿到匯出。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png",
+            "alt": "On-brand"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "詳細瞭解使用方式",
+      "description": "看智慧體如何把上下文貫穿生成與審閱全程。",
+      "items": [
+        {
+          "title": "開啟你的Your AI Video Agent for專案",
+          "description": "描述你想要的成果，並補充參考素材即可。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png",
+            "alt": "Brief"
+          },
+          "cta": {
+            "text": "開始填寫需求",
+            "href": "",
+            "variant": "primary"
+          }
+        },
+        {
+          "title": "與智慧體一起迭代",
+          "description": "在同一畫布上調整細節、探索不同方案。",
+          "reverse": true,
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+            "alt": "Canvas"
+          },
+          "cta": {
+            "text": "開啟畫布",
+            "href": "",
+            "variant": "primary"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "一句提示詞，試用 AI 影片智慧體",
+      "description": "描述場景、運鏡、畫幅比例和品牌——Lovart 返回草稿片段，你在畫布上打磨。",
+      "input_placeholder": "例如：9:16 產品鉤子，手持質感，黃金時刻光線，Logo 置於下三分之一…",
+      "prompts": [
+        {
+          "label": "產品釋出預告片",
+          "prompt": "15 秒電影感產品揭曉，緩慢推軌，高階布光，9:16"
+        },
+        {
+          "label": "品牌故事蒙太奇",
+          "prompt": "用三張參考靜幀生成 30 秒品牌短片，暖色調，16:9"
+        },
+        {
+          "label": "口播出鏡 B-roll",
+          "prompt": "主講人風格片段，輕微推鏡，辦公室背景，便於對口型"
+        },
+        {
+          "label": "社媒鉤子短片",
+          "prompt": "3 秒打斷注意力的 TikTok 開場，醒目動態字型，豎版"
+        }
+      ],
+      "cta": {
+        "text": "生成影片"
+      },
+      "tip": "由 Lovart AI 設計智慧體 + Seedance 級別運動模型驅動。"
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "用你的影片智慧體，三步搞定",
+      "steps": [
+        {
+          "step": 1,
+          "title": "描述想要的成果",
+          "description": "渠道、時長、調性，以及任何靜幀或配音。"
+        },
+        {
+          "step": 2,
+          "title": "生成並執導",
+          "description": "智慧體起草片段，你在對話裡掌控運鏡和節奏。"
+        },
+        {
+          "step": 3,
+          "title": "打磨並匯出",
+          "description": "用觸控編輯精修，再下載用於廣告或社媒。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Your AI Video Agent for：Lovart 與常規工作流對比",
+      "headers": [
+        "需求",
+        "通用工具",
+        "手工工作流",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "開啟你的Your AI Video Agent for專案",
+          "values": [
+            "一句提示詞",
+            "手動寫需求",
+            "需求驅動的推理"
+          ]
+        },
+        {
+          "feature": "出第一版的耗時",
+          "values": [
+            "幾分鐘",
+            "數天",
+            "幾分鐘"
+          ]
+        },
+        {
+          "feature": "生成後的編輯",
+          "values": [
+            "有限",
+            "反覆修改",
+            "塗抹 / 文字 / 元素編輯"
+          ]
+        },
+        {
+          "feature": "保持品牌一致",
+          "values": [
+            "手動",
+            "手動",
+            "支援 Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Lovart 在你的影片工作流中的位置",
+      "description": "團隊當下正用這個智慧體跑的場景。",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "付費社媒鉤子",
+          "description": "一份 brief 產出多個 9:16 版本。"
+        },
+        {
+          "icon": "brand",
+          "title": "產品釋出",
+          "description": "預告片和講解片，一次會話完成。"
+        },
+        {
+          "icon": "pointer",
+          "title": "創作者 B-roll 素材",
+          "description": "無需翻找素材庫即可補足 A-roll。"
+        },
+        {
+          "icon": "globe",
+          "title": "本地化",
+          "description": "按市場更換文案與調色。"
+        },
+        {
+          "icon": "image",
+          "title": "電商迴圈影片",
+          "description": "商品詳情頁和電商平臺用的動態影片。"
+        },
+        {
+          "icon": "refresh",
+          "title": "內部賦能",
+          "description": "銷售與客戶成功用的短影片片段。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "title": "用智慧體而非時間軸交付影片的團隊",
+      "testimonials": [
+        {
+          "quote": "我們用一個 Lovart 會話替掉了三款工具——鉤子、產品迴圈影片和匯出全包了。",
+          "author": "Maya L.",
+          "role": "增長負責人"
+        },
+        {
+          "quote": "圖生影片讓我們的 SKU 標籤保持準確，光這一點就值回了切換成本。",
+          "author": "James K.",
+          "role": "電商總監"
+        },
+        {
+          "quote": "我們的創作者在交代需求當天就能拿到豎版剪輯。",
+          "author": "Priya S.",
+          "role": "創作者運營"
+        }
+      ]
+    },
+    {
+      "type": "pricing-block",
+      "title": "選擇適合團隊的方案",
+      "description": "免費開始，當作品要交付客戶時再升級。"
+    },
+    {
+      "type": "faq",
+      "title": "常見問題",
+      "items": [
+        {
+          "question": "什麼是 AI 影片智慧體？",
+          "answer": "AI 影片智慧體會從文字、影像和音訊出發，規劃、生成並幫你打磨短影片片段——而不只是一個「文生影片」按鈕。"
+        },
+        {
+          "question": "Lovart 和單獨的影片生成器有什麼不同？",
+          "answer": "Lovart 把多模態生成與 ChatCanvas 編輯、Brand Kit 和行銷上下文結合，讓影片在各渠道都保持品牌一致。"
+        },
+        {
+          "question": "我需要高效能 GPU 嗎？",
+          "answer": "不需要。渲染在 Lovart 的雲端進行。你只需要一個現代瀏覽器和一份清晰的 brief。"
+        },
+        {
+          "question": "片段可以商用嗎？",
+          "answer": "付費方案包含你在 Lovart 上創作素材的商用權。具體請檢視你的方案。"
+        },
+        {
+          "question": "支援哪些畫幅比例？",
+          "answer": "常用比例包括 16:9（YouTube）、9:16（TikTok/Reels）和 1:1（資訊流）。在提示詞裡指明比例即可。"
+        },
+        {
+          "question": "Lovart 支援圖生影片嗎？",
+          "answer": "支援。上傳參考靜幀或產品圖並描述運動方式——非常適合電商和品牌短片。"
+        },
+        {
+          "question": "行銷團隊能跑 A/B 版本嗎？",
+          "answer": "可以。從一份主 brief 生成多個鉤子或運鏡路徑，比較表現。"
+        },
+        {
+          "question": "草稿出得有多快？",
+          "answer": "多數短片視長度和排隊情況，幾秒到一分鐘即可出草稿——之後在畫布上迭代。"
+        },
+        {
+          "question": "這和 Seedance 是一回事嗎？",
+          "answer": "Lovart 在一套智慧體工作流中編排 Seedance 級別的模型，集編輯、品牌和匯出於一體——而不是一個獨立的工具標籤頁。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "準備好用智慧體來執導影片了嗎？",
+      "description": "免費開始——在 ChatCanvas 上描述你的第一個場景。",
+      "buttons": [
+        {
+          "text": "免費開始",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "pageType": "feature"
+}

@@ -1,0 +1,388 @@
+{
+  "_id": "features-touch-edit-ai-zh-TW",
+  "reflowSourceId": "features-touch-edit-ai-zh-TW",
+  "slug": "touch-edit-ai",
+  "language": "zh-TW",
+  "category": "feature",
+  "title": "觸控編輯：AI物件編輯與生成填補工具 | Lovart",
+  "description": "Edit images instantly with Lovart's Touch Edit. Click to select objects without masking and use AI to replace, modify, or remove elements using simple text prompts.",
+  "seo": {
+    "description": "立即用 Lovart 的 Touch Edit 編輯圖片！點選物件免去遮罩麻煩，透過 AI 以簡單文字指令，快速替換、修改或移除元素。",
+    "keywords": [
+      "AI圖片編輯器",
+      "觸控編輯",
+      "生成式填補",
+      "物件替換",
+      "AI修補",
+      "AI照片編輯",
+      "AI移除物件",
+      "Lovart功能"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Semantic Recognition",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"觸控編輯：AI物件編輯與生成填補工具 | Lovart\", \"description\": \"Edit images instantly with Lovart's Touch Edit. Click to select objects without masking and use AI to replace, modify, or remove elements using simple text prompts.\", \"url\": \"https://www.lovart.ai/features/touch-edit-ai\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Touch Edit 與傳統選擇工具有何不同？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Touch Edit 使用 AI 語義分割來「理解」您點擊的物件。與基於顏色對比度選擇像素的套索工具不同，Touch Edit 可以識別整個物件（例如貓、汽車）的結構，即使邊緣很複雜。(section_zh-TW)\"}}, {\"@type\": \"Question\", \"name\": \"我可以在自己上傳的照片上使用 Touch Edit 嗎？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以！Touch Edit 適用於畫布上的任何圖像，無論是由 Lovart 生成的還是從您的設備上傳的。您可以編輯產品照片、個人快照或圖庫圖片。(section_zh-TW)\"}}, {\"@type\": \"Question\", \"name\": \"Touch Edit 會自動處理光線和陰影嗎？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"當然。Lovart 的生成式 AI 會分析場景的光照方向、色溫和透視，以確保任何修改或添加的元素都能呈現照片級的真實融合。(section_zh-TW)\"}}, {\"@type\": \"Question\", \"name\": \"如果 AI 選錯了部分怎麼辦？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart 的標記模式非常精確，但您可以透過多次點擊來擴展區域，或使用負向提示詞來排除特定部分，從而優化您的選擇。(section_zh-TW)\"}}, {\"@type\": \"Question\", \"name\": \"Touch Edit 包含在免費方案中嗎？ (section_zh-TW)\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Touch Edit 是 Lovart 平台的核心功能。雖然所有用戶都可以使用基本功能，但高解析度處理和無限編輯功能針對 Pro 方案用戶進行了優化。(section_zh-TW)\"}}]}}"
+    },
+    "title": "觸控編輯：AI物件編輯與生成填補工具 | Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"觸控編輯：AI物件編輯與生成填補工具 | Lovart\",\"description\":\"Edit images instantly with Lovart's Touch Edit. Click to select objects without masking and use AI to replace, modify, or remove elements using simple text prompts.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Semantic Recognition\"}},{\"type\":\"bento-6\",\"title\":\"Why Touch Edit Changes the Game\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"語義識別\",\"description\":\"Lovart 不僅看到像素；它能看見物體。它知道「頭髮」和「帽子」的區別，無需您畫任何一條線。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"語義識別\"}},{\"title\":\"上下文感知修復\",\"description\":\"編輯不是貼上去的；它們是生成到場景中的。光線、陰影和反射會自動更新以匹配新物件。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"上下文感知修復\"}},{\"title\":\"無需遮罩\",\"description\":\"告別鋼筆工具。只需點擊一下即可立即進行精確的物件選擇，節省數小時的手工勞動。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"無需遮罩\"}},{\"title\":\"多物件編輯\",\"description\":\"一次選擇多個項目（Shift + 點擊）以應用批量更改，例如重新為所有花朵著色或移除多個背景人物。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"多物件編輯\"}},{\"title\":\"快速編輯整合\",\"description\":\"選擇物件後按下「Tab」鍵，即可立即存取常用的 AI 調整工具，如重新著色、調整大小或生成變體。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"快速編輯整合\"}},{\"title\":\"非破壞性工作流\",\"description\":\"大膽嘗試。所有 Touch Edit 編輯都會生成為新的變體，因此您可以隨時恢復到原始狀態或並排比較選項。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"非破壞性工作流\"}}]},{\"type\":\"capability-tabs\",\"title\":\"一個智慧體，整合全部能力\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"語義識別\",\"icon\":\"chat\",\"content\":{\"title\":\"語義識別\",\"description\":\"Lovart 不僅看到像素；它能看見物體。它知道「頭髮」和「帽子」的區別，無需您畫任何一條線。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"語義識別\"}}},{\"label\":\"上下文感知修復\",\"icon\":\"image\",\"content\":{\"title\":\"上下文感知修復\",\"description\":\"編輯不是貼上去的；它們是生成到場景中的。光線、陰影和反射會自動更新以匹配新物件。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"上下文感知修復\"}}},{\"label\":\"無需遮罩\",\"icon\":\"flask\",\"content\":{\"title\":\"無需遮罩\",\"description\":\"告別鋼筆工具。只需點擊一下即可立即進行精確的物件選擇，節省數小時的手工勞動。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"無需遮罩\"}}},{\"label\":\"多物件編輯\",\"icon\":\"brand\",\"content\":{\"title\":\"多物件編輯\",\"description\":\"一次選擇多個項目（Shift + 點擊）以應用批量更改，例如重新為所有花朵著色或移除多個背景人物。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"多物件編輯\"}}}]},{\"type\":\"bento-2\",\"title\":\"尤其擅長的兩件事\",\"columns\":2,\"features\":[{\"title\":\"快速編輯整合\",\"description\":\"選擇物件後按下「Tab」鍵，即可立即存取常用的 AI 調整工具，如重新著色、調整大小或生成變體。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"快速編輯整合\"}},{\"title\":\"非破壞性工作流\",\"description\":\"大膽嘗試。所有 Touch Edit 編輯都會生成為新的變體，因此您可以隨時恢復到原始狀態或並排比較選項。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"非破壞性工作流\"}}]},{\"type\":\"feature-detail\",\"title\":\"詳細了解使用方式\",\"items\":[{\"title\":\"開啟你的Touch Edit: AI Object Editing & Generative Fill Tool專案\",\"description\":\"描述你想要的成果，並補充參考素材即可。\"},{\"title\":\"與智慧體一起迭代\",\"description\":\"在同一畫布上調整細節、探索不同方案。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"別再手動框選。用點的就行。AI 編輯的未來：Touch Edit。\",\"description\":\"別再把時間浪費在套索工具和圖層遮罩上了。使用 Lovart 的 Touch Edit，只需點擊任何物件——無論是人物、背景還是產品——我們的 AI 就能準確理解您的意圖。使用自然語言即時修改、替換或移除元素。這不僅僅是編輯；這是與您的畫布進行對話。\",\"input_placeholder\":\"例如：「將這輛紅色汽車變成復古藍色敞篷車」\",\"prompts\":[{\"label\":\"更換服裝\",\"prompt\":\"Change the model's outfit to a summer floral dress, maintaining the pose\"},{\"label\":\"場景更換\",\"prompt\":\"Replace the background city with a lush forest at golden hour\"},{\"label\":\"材質替換\",\"prompt\":\"Turn this wooden chair into a modern glass design\"},{\"label\":\"移除物件\",\"prompt\":\"Remove this person from the crowd and fill the space naturally\"}],\"tip\":\"專業提示：使用「標記模式 (Mark Mode)」(快速鍵：M) 在點擊之前預覽 AI 識別的區塊。\",\"cta\":{\"text\":\"開始 Touch Edit\"}},{\"type\":\"workflow-horizontal\",\"title\":\"簡單三步驟，編輯任何內容\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"指向與點擊\",\"description\":\"啟動 Touch Edit 模式。游標懸停在任何元素上——Lovart 的語義 AI 會立即高亮顯示物件、圖層和結構。只需點擊即可鎖定目標，無需遮罩。\"},{\"step\":2,\"title\":\"描述變更\",\"description\":\"用白話告訴 AI 您想要什麼。「放大一點」、「換個顏色」或「換成一隻貓」。AI 會理解您選擇的上下文。\"},{\"step\":3,\"title\":\"無縫融合\",\"description\":\"看著 AI 重建像素。編輯後的元素會與原始圖像的現有光線、陰影和透視完美融合。\"}]},{\"type\":\"comparison-table\",\"title\":\"Touch Edit: AI Object Editing & Generative Fill Tool：Lovart 與一般工作流程比較\",\"headers\":[\"需求\",\"通用工具\",\"手動工作流程\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"開啟你的Touch Edit: AI Object Editing & Generative Fill Tool專案\",\"values\":[\"一句提示詞\",\"手動撰寫需求\",\"需求驅動的推理\"]},{\"feature\":\"產出第一版的時間\",\"values\":[\"幾分鐘\",\"數天\",\"幾分鐘\"]},{\"feature\":\"生成後的編輯\",\"values\":[\"有限\",\"反覆修改\",\"塗抹 / 文字 / 元素編輯\"]},{\"feature\":\"維持品牌一致\",\"values\":[\"手動\",\"手動\",\"支援 Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Touch Edit: AI Object Editing & Generative Fill Tool的最佳應用場景\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"更快上線\",\"description\":\"從需求到Touch Edit: AI Object Editing & Generative Fill Tool素材，一次工作階段即可完成。\"},{\"icon\":\"brand\",\"title\":\"維持一致\",\"description\":\"Brand Kit 讓每一份素材都保持統一。\"},{\"icon\":\"refresh\",\"title\":\"快速迭代\",\"description\":\"無需從頭開始，即可編輯細節。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"我以前花很多時間遮罩產品照片來改變顏色。使用 Touch Edit，我只需點擊襯衫並說「變成紅色」。這簡直是魔法。\",\"author\":\"Alex R.\",\"role\":\"電商經理\"},{\"quote\":\"語義識別能力好得嚇人。它能立即識別像「復古檯燈」這樣複雜的物件，讓場景構圖變得非常快。\",\"author\":\"Jessica M.\",\"role\":\"藝術總監\"},{\"quote\":\"Touch Edit 把我「近乎完美」的 AI 生成圖變成了我真正想要的樣子。只需點擊一下就能修復奇怪的手或眼睛，真是救星。\",\"author\":\"David K.\",\"role\":\"內容創作者\"}],\"title\":\"利用 Touch Edit 節省數小時的設計師\"},{\"type\":\"pricing-block\",\"title\":\"選擇適合團隊的方案\",\"description\":\"免費開始，當作品要交付客戶時再升級。\"},{\"type\":\"faq\",\"title\":\"常見問題\",\"items\":[{\"question\":\"Touch Edit 與傳統選擇工具有何不同？\",\"answer\":\"Touch Edit 使用 AI 語義分割來「理解」您點擊的物件。與基於顏色對比度選擇像素的套索工具不同，Touch Edit 可以識別整個物件（例如貓、汽車）的結構，即使邊緣很複雜。\"},{\"question\":\"我可以在自己上傳的照片上使用 Touch Edit 嗎？\",\"answer\":\"可以！Touch Edit 適用於畫布上的任何圖像，無論是由 Lovart 生成的還是從您的設備上傳的。您可以編輯產品照片、個人快照或圖庫圖片。\"},{\"question\":\"Touch Edit 會自動處理光線和陰影嗎？\",\"answer\":\"當然。Lovart 的生成式 AI 會分析場景的光照方向、色溫和透視，以確保任何修改或添加的元素都能呈現照片級的真實融合。\"},{\"question\":\"如果 AI 選錯了部分怎麼辦？\",\"answer\":\"Lovart 的標記模式非常精確，但您可以透過多次點擊來擴展區域，或使用負向提示詞來排除特定部分，從而優化您的選擇。\"},{\"question\":\"Touch Edit 包含在免費方案中嗎？\",\"answer\":\"Touch Edit 是 Lovart 平台的核心功能。雖然所有用戶都可以使用基本功能，但高解析度處理和無限編輯功能針對 Pro 方案用戶進行了優化。\"}]},{\"type\":\"cta-default\",\"title\":\"用 Lovart 開始創作\",\"description\":\"幾分鐘內，把你的需求變成符合品牌調性的視覺作品。\",\"buttons\":[{\"text\":\"免費開始\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "觸控編輯：AI物件編輯與生成填補工具 | Lovart",
+      "description": "Edit images instantly with Lovart's Touch Edit. Click to select objects without masking and use AI to replace, modify, or remove elements using simple text prompts.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Semantic Recognition"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Why Touch Edit Changes the Game",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "語義識別",
+          "description": "Lovart 不僅看到像素；它能看見物體。它知道「頭髮」和「帽子」的區別，無需您畫任何一條線。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "語義識別"
+          }
+        },
+        {
+          "title": "上下文感知修復",
+          "description": "編輯不是貼上去的；它們是生成到場景中的。光線、陰影和反射會自動更新以匹配新物件。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "上下文感知修復"
+          }
+        },
+        {
+          "title": "無需遮罩",
+          "description": "告別鋼筆工具。只需點擊一下即可立即進行精確的物件選擇，節省數小時的手工勞動。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "無需遮罩"
+          }
+        },
+        {
+          "title": "多物件編輯",
+          "description": "一次選擇多個項目（Shift + 點擊）以應用批量更改，例如重新為所有花朵著色或移除多個背景人物。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "多物件編輯"
+          }
+        },
+        {
+          "title": "快速編輯整合",
+          "description": "選擇物件後按下「Tab」鍵，即可立即存取常用的 AI 調整工具，如重新著色、調整大小或生成變體。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "快速編輯整合"
+          }
+        },
+        {
+          "title": "非破壞性工作流",
+          "description": "大膽嘗試。所有 Touch Edit 編輯都會生成為新的變體，因此您可以隨時恢復到原始狀態或並排比較選項。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "非破壞性工作流"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "一個智慧體，整合全部能力",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "語義識別",
+          "icon": "chat",
+          "content": {
+            "title": "語義識別",
+            "description": "Lovart 不僅看到像素；它能看見物體。它知道「頭髮」和「帽子」的區別，無需您畫任何一條線。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "語義識別"
+            }
+          }
+        },
+        {
+          "label": "上下文感知修復",
+          "icon": "image",
+          "content": {
+            "title": "上下文感知修復",
+            "description": "編輯不是貼上去的；它們是生成到場景中的。光線、陰影和反射會自動更新以匹配新物件。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "上下文感知修復"
+            }
+          }
+        },
+        {
+          "label": "無需遮罩",
+          "icon": "flask",
+          "content": {
+            "title": "無需遮罩",
+            "description": "告別鋼筆工具。只需點擊一下即可立即進行精確的物件選擇，節省數小時的手工勞動。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "無需遮罩"
+            }
+          }
+        },
+        {
+          "label": "多物件編輯",
+          "icon": "brand",
+          "content": {
+            "title": "多物件編輯",
+            "description": "一次選擇多個項目（Shift + 點擊）以應用批量更改，例如重新為所有花朵著色或移除多個背景人物。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "多物件編輯"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "尤其擅長的兩件事",
+      "columns": 2,
+      "features": [
+        {
+          "title": "快速編輯整合",
+          "description": "選擇物件後按下「Tab」鍵，即可立即存取常用的 AI 調整工具，如重新著色、調整大小或生成變體。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "快速編輯整合"
+          }
+        },
+        {
+          "title": "非破壞性工作流",
+          "description": "大膽嘗試。所有 Touch Edit 編輯都會生成為新的變體，因此您可以隨時恢復到原始狀態或並排比較選項。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "非破壞性工作流"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "詳細了解使用方式",
+      "items": [
+        {
+          "title": "開啟你的Touch Edit: AI Object Editing & Generative Fill Tool專案",
+          "description": "描述你想要的成果，並補充參考素材即可。"
+        },
+        {
+          "title": "與智慧體一起迭代",
+          "description": "在同一畫布上調整細節、探索不同方案。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "別再手動框選。用點的就行。AI 編輯的未來：Touch Edit。",
+      "description": "別再把時間浪費在套索工具和圖層遮罩上了。使用 Lovart 的 Touch Edit，只需點擊任何物件——無論是人物、背景還是產品——我們的 AI 就能準確理解您的意圖。使用自然語言即時修改、替換或移除元素。這不僅僅是編輯；這是與您的畫布進行對話。",
+      "input_placeholder": "例如：「將這輛紅色汽車變成復古藍色敞篷車」",
+      "prompts": [
+        {
+          "label": "更換服裝",
+          "prompt": "Change the model's outfit to a summer floral dress, maintaining the pose"
+        },
+        {
+          "label": "場景更換",
+          "prompt": "Replace the background city with a lush forest at golden hour"
+        },
+        {
+          "label": "材質替換",
+          "prompt": "Turn this wooden chair into a modern glass design"
+        },
+        {
+          "label": "移除物件",
+          "prompt": "Remove this person from the crowd and fill the space naturally"
+        }
+      ],
+      "tip": "專業提示：使用「標記模式 (Mark Mode)」(快速鍵：M) 在點擊之前預覽 AI 識別的區塊。",
+      "cta": {
+        "text": "開始 Touch Edit"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "簡單三步驟，編輯任何內容",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "指向與點擊",
+          "description": "啟動 Touch Edit 模式。游標懸停在任何元素上——Lovart 的語義 AI 會立即高亮顯示物件、圖層和結構。只需點擊即可鎖定目標，無需遮罩。"
+        },
+        {
+          "step": 2,
+          "title": "描述變更",
+          "description": "用白話告訴 AI 您想要什麼。「放大一點」、「換個顏色」或「換成一隻貓」。AI 會理解您選擇的上下文。"
+        },
+        {
+          "step": 3,
+          "title": "無縫融合",
+          "description": "看著 AI 重建像素。編輯後的元素會與原始圖像的現有光線、陰影和透視完美融合。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Touch Edit: AI Object Editing & Generative Fill Tool：Lovart 與一般工作流程比較",
+      "headers": [
+        "需求",
+        "通用工具",
+        "手動工作流程",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "開啟你的Touch Edit: AI Object Editing & Generative Fill Tool專案",
+          "values": [
+            "一句提示詞",
+            "手動撰寫需求",
+            "需求驅動的推理"
+          ]
+        },
+        {
+          "feature": "產出第一版的時間",
+          "values": [
+            "幾分鐘",
+            "數天",
+            "幾分鐘"
+          ]
+        },
+        {
+          "feature": "生成後的編輯",
+          "values": [
+            "有限",
+            "反覆修改",
+            "塗抹 / 文字 / 元素編輯"
+          ]
+        },
+        {
+          "feature": "維持品牌一致",
+          "values": [
+            "手動",
+            "手動",
+            "支援 Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Touch Edit: AI Object Editing & Generative Fill Tool的最佳應用場景",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "更快上線",
+          "description": "從需求到Touch Edit: AI Object Editing & Generative Fill Tool素材，一次工作階段即可完成。"
+        },
+        {
+          "icon": "brand",
+          "title": "維持一致",
+          "description": "Brand Kit 讓每一份素材都保持統一。"
+        },
+        {
+          "icon": "refresh",
+          "title": "快速迭代",
+          "description": "無需從頭開始，即可編輯細節。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "我以前花很多時間遮罩產品照片來改變顏色。使用 Touch Edit，我只需點擊襯衫並說「變成紅色」。這簡直是魔法。",
+          "author": "Alex R.",
+          "role": "電商經理"
+        },
+        {
+          "quote": "語義識別能力好得嚇人。它能立即識別像「復古檯燈」這樣複雜的物件，讓場景構圖變得非常快。",
+          "author": "Jessica M.",
+          "role": "藝術總監"
+        },
+        {
+          "quote": "Touch Edit 把我「近乎完美」的 AI 生成圖變成了我真正想要的樣子。只需點擊一下就能修復奇怪的手或眼睛，真是救星。",
+          "author": "David K.",
+          "role": "內容創作者"
+        }
+      ],
+      "title": "利用 Touch Edit 節省數小時的設計師"
+    },
+    {
+      "type": "pricing-block",
+      "title": "選擇適合團隊的方案",
+      "description": "免費開始，當作品要交付客戶時再升級。"
+    },
+    {
+      "type": "faq",
+      "title": "常見問題",
+      "items": [
+        {
+          "question": "Touch Edit 與傳統選擇工具有何不同？",
+          "answer": "Touch Edit 使用 AI 語義分割來「理解」您點擊的物件。與基於顏色對比度選擇像素的套索工具不同，Touch Edit 可以識別整個物件（例如貓、汽車）的結構，即使邊緣很複雜。"
+        },
+        {
+          "question": "我可以在自己上傳的照片上使用 Touch Edit 嗎？",
+          "answer": "可以！Touch Edit 適用於畫布上的任何圖像，無論是由 Lovart 生成的還是從您的設備上傳的。您可以編輯產品照片、個人快照或圖庫圖片。"
+        },
+        {
+          "question": "Touch Edit 會自動處理光線和陰影嗎？",
+          "answer": "當然。Lovart 的生成式 AI 會分析場景的光照方向、色溫和透視，以確保任何修改或添加的元素都能呈現照片級的真實融合。"
+        },
+        {
+          "question": "如果 AI 選錯了部分怎麼辦？",
+          "answer": "Lovart 的標記模式非常精確，但您可以透過多次點擊來擴展區域，或使用負向提示詞來排除特定部分，從而優化您的選擇。"
+        },
+        {
+          "question": "Touch Edit 包含在免費方案中嗎？",
+          "answer": "Touch Edit 是 Lovart 平台的核心功能。雖然所有用戶都可以使用基本功能，但高解析度處理和無限編輯功能針對 Pro 方案用戶進行了優化。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "用 Lovart 開始創作",
+      "description": "幾分鐘內，把你的需求變成符合品牌調性的視覺作品。",
+      "buttons": [
+        {
+          "text": "免費開始",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

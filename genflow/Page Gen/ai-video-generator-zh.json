@@ -1,0 +1,490 @@
+{
+  "_id": "ai-video-generator-v2-zh",
+  "reflowSourceId": "ai-video-generator-v2-zh",
+  "slug": "ai-video-generator",
+  "language": "zh",
+  "category": "feature",
+  "title": "AI 视频生成器 | 多模型视频广告创作 | Lovart",
+  "description": "从一个产品brief生成脚本、关键帧和全渠道视频广告。整合 Seedance 2.0、Sora、Veo 3、Kling 四大引擎，保持创意上下文不中断。",
+  "seo": {
+    "description": "从一个产品brief生成脚本、关键帧和全渠道视频广告。整合 Seedance 2.0、Sora、Veo 3、Kling 四大引擎，保持创意上下文不中断。",
+    "keywords": [
+      "AI视频生成",
+      "视频广告生成",
+      "文生视频",
+      "AI视频制作",
+      "视频生成工具",
+      "多模型视频"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Lovart AI Video Generator workspace",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/8efdfd8318084a8c88bb72c706bb33c7f2564b8b.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"AI 视频生成器 | 多模型视频广告创作 | Lovart\", \"description\": \"从一个产品brief生成脚本、关键帧和全渠道视频广告。整合 Seedance 2.0、Sora、Veo 3、Kling 四大引擎，保持创意上下文不中断。\", \"url\": \"https://www.lovart.ai/features/ai-video-generator\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www-pre.lovart.vip\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Lovart 支持哪些视频模型？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart 视频生成器支持 Seedance 2.0、Sora、Veo 3 和 Kling。你可以按镜头切换模型，根据目标效果选择——电影级写实、动态图形、产品演示或UGC风格。Thinking Mode 会帮你为每一段选择最优引擎。\"}}, {\"@type\": \"Question\", \"name\": \"我可以控制每个画面的内容吗？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以。你为每个视频段落定义起始关键帧、结束关键帧和文本提示，另外还有动效强度、镜头方向、节奏和画幅比例等控制参数，实现帧级精度，同时 Lovart 负责保持画面连续性。\"}}, {\"@type\": \"Question\", \"name\": \"视频生成后怎么编辑？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart 提供三种编辑方式：Touch Edit（点击修改某帧中的产品位置、背景或标签）、Text Edit（原地更新促销文案、折扣或多语言版本，保持动效节奏不变）、Edit Elements（不改动效的前提下调整图层级画面构图）。\"}}, {\"@type\": \"Question\", \"name\": \"能从一个brief生成多个广告变体吗？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以。Fast Mode 让你并行探索 hook 角度、offer 框架和平台专属样式。一旦验证有效方向，Thinking Mode 会构建跨渠道协同的投放体系。你可以从一个创意方向派生抖音、Reels、YouTube Shorts 和 Meta 的变体。\"}}, {\"@type\": \"Question\", \"name\": \"支持哪些视频格式和画幅比例？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart 支持 9:16（竖版——抖音/Reels/Shorts）、1:1（方形——Meta信息流/LinkedIn）、16:9（横版——YouTube/OTT）和 4:5（竖版——Meta信息流）。同一brief可生成全部格式。\"}}, {\"@type\": \"Question\", \"name\": \"Brand Kit 能用于视频生成吗？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以。上传 Logo、品牌色、字体和视觉规范一次，Lovart 会自动应用到所有视频输出——Logo 位置、配色方案、字体使用和产品渲染在每段视频中保持一致。\"}}, {\"@type\": \"Question\", \"name\": \"视频生成器如何收费？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"视频生成器包含在所有 Lovart 套餐中。免费套餐：100 credits/月（含视频生成）。付费套餐 $10/月起，含更多 credits、高级模型访问和商用授权。详见上方定价区。\"}}, {\"@type\": \"Question\", \"name\": \"生成的视频可以商用吗？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"可以。付费套餐包含所有生成视频内容的完整商用授权。你拥有输出成果，可用于广告投放、社媒内容、产品页面、邮件和电视广告。免费套餐产出仅供个人/非商业用途。\"}}]}}"
+    },
+    "title": "AI 视频生成器 | 多模型视频广告创作 | Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-main",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI 视频生成器\",\"title\":\"AI 视频生成器 | 多模型视频广告创作 | Lovart\",\"description\":\"从一个产品brief生成脚本、关键帧和全渠道视频广告。整合 Seedance 2.0、Sora、Veo 3、Kling 四大引擎，保持创意上下文不中断。\",\"buttons\":[{\"text\":\"生成第一条视频\",\"href\":\"\",\"variant\":\"primary\"},{\"text\":\"对比视频模型\",\"href\":\"\",\"variant\":\"secondary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/8efdfd8318084a8c88bb72c706bb33c7f2564b8b.png\",\"alt\":\"Lovart AI Video Generator workspace\"}},{\"type\":\"cluster-block-dense\",\"title\":\"What you can do\",\"description\":\"\",\"cards\":[{\"icon\":\"chat\",\"title\":\"多工具割裂\",\"description\":\"脚本用一个工具，生成用另一个，剪辑再用第三个——每次交接都丢失上下文。\"},{\"icon\":\"image\",\"title\":\"模型间风格不一致\",\"description\":\"不同视频模型输出的角色外观、动效风格、光影质感各不相同，无法共享视觉记忆。\"},{\"icon\":\"flask\",\"title\":\"A/B 测试太慢\",\"description\":\"测试一个新的hook角度、offer话术或片尾设计，每次都要从零重建，周期以周计。\"},{\"icon\":\"brand\",\"title\":\"关键帧靠猜\",\"description\":\"不同模型的起止帧控制能力差异巨大，无法保证故事连续性，只能靠反复生成碰运气。\"},{\"icon\":\"globe\",\"title\":\"没有变体循环\",\"description\":\"一旦验证某个方向有效，团队无法快速衍生出渠道专属、人群专属的变体。\"},{\"icon\":\"refresh\",\"title\":\"品牌视觉漂移\",\"description\":\"产品外观、Logo位置、配色方案在每一次重新生成时都会发生偏移。\"}]},{\"type\":\"capability-tabs\",\"title\":\"Four capabilities that turn video production into a repeatable system\",\"tabs\":[{\"label\":\"Multi-model research\",\"content\":{\"title\":\"Pick the right engine for the job before generating\",\"description\":\"Lovart supports Seedance 2.0, Sora, Veo 3 and Kling. Use Web Search and Thinking Mode to analyze product materials, competitor video ads and platform specs before selecting the optimal engine per shot.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png\",\"alt\":\"Multi-model video research in Lovart\"},\"cta\":{\"text\":\"Research video angles\",\"href\":\"\"},\"points\":[\"Analyze competitor ad structures frame-by-frame\",\"Match engine to use case: motion realism vs stylized output\",\"Use product specs and brand guidelines as generation context\"]}},{\"label\":\"Keyframe + motion control\",\"content\":{\"title\":\"Control start, end and motion direction for every clip\",\"description\":\"Define start keyframes, end keyframes and motion references. Lovart preserves character and product consistency between frames while letting you adjust pacing, camera angle and action intensity.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/55b94439550ff0fefec6a09ca160df2fe8d0f24f.png\",\"alt\":\"Keyframe and motion control in Lovart Video Generator\"},\"cta\":{\"text\":\"Control your video motion\",\"href\":\"\"},\"points\":[\"Start/end keyframe + text prompt per shot\",\"Motion intensity, camera direction and pace controls\",\"Character consistency preserved across clips\"]}},{\"label\":\"Editable after generation\",\"content\":{\"title\":\"Edit frames, copy and visuals without restarting the whole video\",\"description\":\"Use Touch Edit to fix product placement, Text Edit to update offer copy and Edit Elements to adjust layouts — all inside the generated video frames while preserving the motion direction.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/eb6f103da589f07f425f2c736237e33f4d1719fa.png\",\"alt\":\"Editable video frames in Lovart\"},\"cta\":{\"text\":\"Refine your video\",\"href\":\"\"},\"points\":[\"Point-and-edit product details or backgrounds\",\"Rewrite offer copy and localized text in place\",\"Adjust layout without regeneration\"]}},{\"label\":\"Variant loop + scaling\",\"content\":{\"title\":\"Spin 30 platform variants from one creative direction\",\"description\":\"Once a winning video structure is validated, use Fast Mode to explore hook angles, offer framing and aspect ratios for TikTok, Reels, YouTube Shorts and Meta ads. Switch to Thinking Mode to build the full campaign system.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/7eb9d35ed6aaf819fbe425badb3310b77bdc38a7.png\",\"alt\":\"Video variant scaling in Lovart\"},\"cta\":{\"text\":\"Scale your ad variants\",\"href\":\"\"},\"points\":[\"Fast Mode: explore many hooks quickly\",\"Thinking Mode: build coordinated campaign systems\",\"9:16, 1:1, 16:9 and 4:5 aspect ratios\"]}}]},{\"type\":\"bento-2\",\"title\":\"Two video jobs Lovart handles from one brief\",\"description\":\"The 2-column grid for the highest-leverage video production outcomes.\",\"columns\":2,\"features\":[{\"title\":\"Product launch video system\",\"description\":\"From one SKU brief, generate the product reveal, feature demo, social proof cut, offer reminder and retargeting loop — all in consistent brand voice and visual style.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/4c90f673629d0bbd5fce85ad374352d4e40deb3e.png\",\"alt\":\"Product launch video system\"}},{\"title\":\"Paid social creative testing\",\"description\":\"Test 12 ad angles in one session: benefits-led, problem-first, UGC-style, founder-story, comparison, seasonal, urgency, authority, social-proof, tutorial, unboxing and lifestyle.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/5d48ca781dea8ab12d0c93fc32e3ad8afa815631.png\",\"alt\":\"Paid social creative testing\"}}]},{\"type\":\"feature-detail\",\"title\":\"详细了解使用方式\",\"description\":\"每一行将一个能力集群映射到增长和创意团队可以实际交付的具体成果。\",\"items\":[{\"title\":\"开启你的AI Video Generator项目\",\"description\":\"描述你想要的成果，并补充参考素材即可。\",\"points\":[\"Upload MP4 references, brand guide PDFs and SKU sheets\",\"Analyze competitor video structures and hook patterns\",\"Extract product benefits, audience segments and platform requirements\"],\"cta\":{\"text\":\"Build the video brief\",\"href\":\"\",\"variant\":\"primary\"},\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/5d48ca781dea8ab12d0c93fc32e3ad8afa815631.png\",\"alt\":\"Video research and brief context\"}},{\"title\":\"与智能体一起迭代\",\"description\":\"在同一画布上调整细节、探索不同方案。\",\"reverse\":true,\"points\":[\"Script + keyframe + motion spec per video segment\",\"Multiple model support: Seedance 2.0, Sora, Veo 3, Kling\",\"9:16 vertical, 1:1 square, 16:9 landscape formats\"],\"cta\":{\"text\":\"Generate video ads\",\"href\":\"\",\"variant\":\"primary\"},\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/b6ac2200d8f883894a7f18ee1da19d7d7aab2a7f.png\",\"alt\":\"Video generation workflow\"}},{\"title\":\"与智能体一起迭代\",\"description\":\"在同一画布上调整细节、探索不同方案。\",\"points\":[\"Touch Edit: adjust product, background or label in one frame\",\"Text Edit: update offer, discount or localized copy in place\",\"Edit Elements: rearrange visual layers without regeneration\"],\"cta\":{\"text\":\"Refine the video\",\"href\":\"\",\"variant\":\"primary\"},\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/d11411bc15e95312819272bf39a65a3cbdf230b2.png\",\"alt\":\"Video editing capabilities\"}},{\"title\":\"与智能体一起迭代\",\"description\":\"在同一画布上调整细节、探索不同方案。\",\"reverse\":true,\"points\":[\"Fast Mode: explore 10+ ad angles in minutes\",\"Thinking Mode: build cross-platform campaign architecture\",\"Brand Kit + Style Consistency across every variant\"],\"cta\":{\"text\":\"Scale the campaign\",\"href\":\"\",\"variant\":\"primary\"},\"media\":{\"src\":\"https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/7eb9d35ed6aaf819fbe425badb3310b77bdc38a7.png\",\"alt\":\"Full campaign video scaling\"}}]},{\"type\":\"prompt-launcher\",\"title\":\"从一个真实的视频制作需求开始\",\"description\":\"选一个和你接下来需要的视频资产最匹配的prompt。记得包含产品上下文、目标受众、投放平台和输出规格。\",\"prompts\":[{\"label\":\"产品上市视频\",\"prompt\":\"为一款DTC护肤精华液制作30秒产品上市视频。包含：产品亮相、成分功效展示、前后对比、创始人寄语、CTA。受众：25-40岁女性。平台：抖音 + 小红书。品牌色和Logo已上传。\"},{\"label\":\"UGC风格广告测试\",\"prompt\":\"为一个咖啡器具品牌生成6个UGC风格广告变体。角度：开箱、晨间流程、口味测试、vs竞品、价格说明、送礼场景。输出：9:16竖版，前2秒必须有吸睛hook。\"},{\"label\":\"大促活动视频体系\",\"prompt\":\"为一个家居DTC品牌构建双十一视频投放体系。包含：预热（5s）、爆发（15s）、提醒（10s）、最后机会（15s）、感谢（5s）。统一品牌声音，叠加促销信息和倒计时。\"}],\"cta\":{\"text\":\"生成\"}},{\"type\":\"workflow-horizontal\",\"title\":\"如何从brief到视频投放体系\",\"description\":\"三句话讲清流程，让团队在几秒内理解整体工作方式。\",\"layout\":\"horizontal\",\"steps\":[{\"step\":1,\"title\":\"上传上下文\",\"description\":\"上传产品图、品牌指南、竞品链接和平台参数。\"},{\"step\":2,\"title\":\"生成视频体系\",\"description\":\"Lovart 产出脚本、关键帧、动效参数和渠道适配成片。\"},{\"step\":3,\"title\":\"编辑与规模化\",\"description\":\"用 Touch Edit 精修画面，用 Fast Mode 批量派生平台变体。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Video Generator：Lovart 与常规工作流对比\",\"description\":\"高亮 Lovart 列展示 Agent 工作流 vs 碎片化生产的本质差异。\",\"headers\":[\"Need\",\"Single-purpose AI video tool\",\"Agency / in-house production\",\"Lovart AI Video Generator\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Start from business context\",\"values\":[\"Prompts only, no research\",\"Brief → strategy → storyboard cycle\",\"Uploads, URLs, brand rules and Thinking Mode analysis\"]},{\"feature\":\"Multi-model support\",\"values\":[\"One engine locked in\",\"Manual outsourcing per need\",\"Seedance 2.0, Sora, Veo 3, Kling — switch per shot\"]},{\"feature\":\"Keyframe + motion control\",\"values\":[\"Text-to-video only, no frame control\",\"Storyboard artist + animator handoff\",\"Start/end keyframes + motion intensity per segment\"]},{\"feature\":\"Edit after generation\",\"values\":[\"Regenerate whole clip to fix one detail\",\"Back to editor for revisions\",\"Touch Edit, Text Edit, Edit Elements — fix in place\"]},{\"feature\":\"Scale to full campaign\",\"values\":[\"Single video, no variant system\",\"Brief per variant, slow cycle\",\"Fast Mode for hooks, Thinking Mode for campaign architecture\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Where AI Video Generator helps\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Launch faster\",\"description\":\"Go from brief to AI Video Generator assets in one session.\"},{\"icon\":\"brand\",\"title\":\"Stay consistent\",\"description\":\"Brand Kit keeps every asset aligned.\"},{\"icon\":\"refresh\",\"title\":\"Iterate quickly\",\"description\":\"Edit details without restarting the project.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"过去一条产品上市视频要花5万、等三周。用 Lovart 之后，一个下午就能生成完整上市视频体系——亮相、演示、社会证明、再营销。我们Meta的ROAS提升了40%，因为终于可以真正测角度了。\",\"author\":\"陈思远\",\"role\":\"增长负责人，DTC美妆品牌\"},{\"quote\":\"多模型支持是真正的杀手锏。有的产品用 Seedance 写实感更好，有的用 Sora 的电影感更出彩。Lovart 让我们按镜头切换引擎而不重建上下文，直接砍掉70%的制作周期。\",\"author\":\"李浩然\",\"role\":\"创意总监，Shopify Plus 服务商\"},{\"quote\":\"Fast Mode 改变了我们做双十一的方式。不再只拍一条主视频，而是两天内测了8个hook角度。优胜方向的付费社媒转化率是去年的3.2倍。\",\"author\":\"田中明\",\"role\":\"效果营销经理，家居品牌\"}]},{\"type\":\"pricing-block\",\"title\":\"选择适合团队的方案\",\"description\":\"免费开始，当作品要交付客户时再升级。\"},{\"type\":\"faq\",\"title\":\"常见问题\",\"items\":[{\"question\":\"Lovart 支持哪些视频模型？\",\"answer\":\"Lovart 视频生成器支持 Seedance 2.0、Sora、Veo 3 和 Kling。你可以按镜头切换模型，根据目标效果选择——电影级写实、动态图形、产品演示或UGC风格。Thinking Mode 会帮你为每一段选择最优引擎。\"},{\"question\":\"我可以控制每个画面的内容吗？\",\"answer\":\"可以。你为每个视频段落定义起始关键帧、结束关键帧和文本提示，另外还有动效强度、镜头方向、节奏和画幅比例等控制参数，实现帧级精度，同时 Lovart 负责保持画面连续性。\"},{\"question\":\"视频生成后怎么编辑？\",\"answer\":\"Lovart 提供三种编辑方式：Touch Edit（点击修改某帧中的产品位置、背景或标签）、Text Edit（原地更新促销文案、折扣或多语言版本，保持动效节奏不变）、Edit Elements（不改动效的前提下调整图层级画面构图）。\"},{\"question\":\"能从一个brief生成多个广告变体吗？\",\"answer\":\"可以。Fast Mode 让你并行探索 hook 角度、offer 框架和平台专属样式。一旦验证有效方向，Thinking Mode 会构建跨渠道协同的投放体系。你可以从一个创意方向派生抖音、Reels、YouTube Shorts 和 Meta 的变体。\"},{\"question\":\"支持哪些视频格式和画幅比例？\",\"answer\":\"Lovart 支持 9:16（竖版——抖音/Reels/Shorts）、1:1（方形——Meta信息流/LinkedIn）、16:9（横版——YouTube/OTT）和 4:5（竖版——Meta信息流）。同一brief可生成全部格式。\"},{\"question\":\"Brand Kit 能用于视频生成吗？\",\"answer\":\"可以。上传 Logo、品牌色、字体和视觉规范一次，Lovart 会自动应用到所有视频输出——Logo 位置、配色方案、字体使用和产品渲染在每段视频中保持一致。\"},{\"question\":\"视频生成器如何收费？\",\"answer\":\"视频生成器包含在所有 Lovart 套餐中。免费套餐：100 credits/月（含视频生成）。付费套餐 $10/月起，含更多 credits、高级模型访问和商用授权。详见上方定价区。\"},{\"question\":\"生成的视频可以商用吗？\",\"answer\":\"可以。付费套餐包含所有生成视频内容的完整商用授权。你拥有输出成果，可用于广告投放、社媒内容、产品页面、邮件和电视广告。免费套餐产出仅供个人/非商业用途。\"}]},{\"type\":\"cta-default\",\"title\":\"准备好从一个brief生成完整的视频投放体系了吗？\",\"description\":\"不再在工具、模型、渠道之间反复重建上下文。从一个 Agent 工作流开始，生成一致、可编辑、可规模化的视频广告。\",\"buttons\":[{\"text\":\"生成第一条视频\",\"href\":\"\",\"variant\":\"primary\"},{\"text\":\"查看工作流程\",\"href\":\"\",\"variant\":\"secondary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI 视频生成器",
+      "title": "AI 视频生成器 | 多模型视频广告创作 | Lovart",
+      "description": "从一个产品brief生成脚本、关键帧和全渠道视频广告。整合 Seedance 2.0、Sora、Veo 3、Kling 四大引擎，保持创意上下文不中断。",
+      "buttons": [
+        {
+          "text": "生成第一条视频",
+          "href": "",
+          "variant": "primary"
+        },
+        {
+          "text": "对比视频模型",
+          "href": "",
+          "variant": "secondary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/8efdfd8318084a8c88bb72c706bb33c7f2564b8b.png",
+        "alt": "Lovart AI Video Generator workspace"
+      }
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "What you can do",
+      "description": "",
+      "cards": [
+        {
+          "icon": "chat",
+          "title": "多工具割裂",
+          "description": "脚本用一个工具，生成用另一个，剪辑再用第三个——每次交接都丢失上下文。"
+        },
+        {
+          "icon": "image",
+          "title": "模型间风格不一致",
+          "description": "不同视频模型输出的角色外观、动效风格、光影质感各不相同，无法共享视觉记忆。"
+        },
+        {
+          "icon": "flask",
+          "title": "A/B 测试太慢",
+          "description": "测试一个新的hook角度、offer话术或片尾设计，每次都要从零重建，周期以周计。"
+        },
+        {
+          "icon": "brand",
+          "title": "关键帧靠猜",
+          "description": "不同模型的起止帧控制能力差异巨大，无法保证故事连续性，只能靠反复生成碰运气。"
+        },
+        {
+          "icon": "globe",
+          "title": "没有变体循环",
+          "description": "一旦验证某个方向有效，团队无法快速衍生出渠道专属、人群专属的变体。"
+        },
+        {
+          "icon": "refresh",
+          "title": "品牌视觉漂移",
+          "description": "产品外观、Logo位置、配色方案在每一次重新生成时都会发生偏移。"
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Four capabilities that turn video production into a repeatable system",
+      "tabs": [
+        {
+          "label": "Multi-model research",
+          "content": {
+            "title": "Pick the right engine for the job before generating",
+            "description": "Lovart supports Seedance 2.0, Sora, Veo 3 and Kling. Use Web Search and Thinking Mode to analyze product materials, competitor video ads and platform specs before selecting the optimal engine per shot.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png",
+              "alt": "Multi-model video research in Lovart"
+            },
+            "cta": {
+              "text": "Research video angles",
+              "href": ""
+            },
+            "points": [
+              "Analyze competitor ad structures frame-by-frame",
+              "Match engine to use case: motion realism vs stylized output",
+              "Use product specs and brand guidelines as generation context"
+            ]
+          }
+        },
+        {
+          "label": "Keyframe + motion control",
+          "content": {
+            "title": "Control start, end and motion direction for every clip",
+            "description": "Define start keyframes, end keyframes and motion references. Lovart preserves character and product consistency between frames while letting you adjust pacing, camera angle and action intensity.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/55b94439550ff0fefec6a09ca160df2fe8d0f24f.png",
+              "alt": "Keyframe and motion control in Lovart Video Generator"
+            },
+            "cta": {
+              "text": "Control your video motion",
+              "href": ""
+            },
+            "points": [
+              "Start/end keyframe + text prompt per shot",
+              "Motion intensity, camera direction and pace controls",
+              "Character consistency preserved across clips"
+            ]
+          }
+        },
+        {
+          "label": "Editable after generation",
+          "content": {
+            "title": "Edit frames, copy and visuals without restarting the whole video",
+            "description": "Use Touch Edit to fix product placement, Text Edit to update offer copy and Edit Elements to adjust layouts — all inside the generated video frames while preserving the motion direction.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/eb6f103da589f07f425f2c736237e33f4d1719fa.png",
+              "alt": "Editable video frames in Lovart"
+            },
+            "cta": {
+              "text": "Refine your video",
+              "href": ""
+            },
+            "points": [
+              "Point-and-edit product details or backgrounds",
+              "Rewrite offer copy and localized text in place",
+              "Adjust layout without regeneration"
+            ]
+          }
+        },
+        {
+          "label": "Variant loop + scaling",
+          "content": {
+            "title": "Spin 30 platform variants from one creative direction",
+            "description": "Once a winning video structure is validated, use Fast Mode to explore hook angles, offer framing and aspect ratios for TikTok, Reels, YouTube Shorts and Meta ads. Switch to Thinking Mode to build the full campaign system.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/7eb9d35ed6aaf819fbe425badb3310b77bdc38a7.png",
+              "alt": "Video variant scaling in Lovart"
+            },
+            "cta": {
+              "text": "Scale your ad variants",
+              "href": ""
+            },
+            "points": [
+              "Fast Mode: explore many hooks quickly",
+              "Thinking Mode: build coordinated campaign systems",
+              "9:16, 1:1, 16:9 and 4:5 aspect ratios"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Two video jobs Lovart handles from one brief",
+      "description": "The 2-column grid for the highest-leverage video production outcomes.",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Product launch video system",
+          "description": "From one SKU brief, generate the product reveal, feature demo, social proof cut, offer reminder and retargeting loop — all in consistent brand voice and visual style.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/4c90f673629d0bbd5fce85ad374352d4e40deb3e.png",
+            "alt": "Product launch video system"
+          }
+        },
+        {
+          "title": "Paid social creative testing",
+          "description": "Test 12 ad angles in one session: benefits-led, problem-first, UGC-style, founder-story, comparison, seasonal, urgency, authority, social-proof, tutorial, unboxing and lifestyle.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/5d48ca781dea8ab12d0c93fc32e3ad8afa815631.png",
+            "alt": "Paid social creative testing"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "详细了解使用方式",
+      "description": "每一行将一个能力集群映射到增长和创意团队可以实际交付的具体成果。",
+      "items": [
+        {
+          "title": "开启你的AI Video Generator项目",
+          "description": "描述你想要的成果，并补充参考素材即可。",
+          "points": [
+            "Upload MP4 references, brand guide PDFs and SKU sheets",
+            "Analyze competitor video structures and hook patterns",
+            "Extract product benefits, audience segments and platform requirements"
+          ],
+          "cta": {
+            "text": "Build the video brief",
+            "href": "",
+            "variant": "primary"
+          },
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/5d48ca781dea8ab12d0c93fc32e3ad8afa815631.png",
+            "alt": "Video research and brief context"
+          }
+        },
+        {
+          "title": "与智能体一起迭代",
+          "description": "在同一画布上调整细节、探索不同方案。",
+          "reverse": true,
+          "points": [
+            "Script + keyframe + motion spec per video segment",
+            "Multiple model support: Seedance 2.0, Sora, Veo 3, Kling",
+            "9:16 vertical, 1:1 square, 16:9 landscape formats"
+          ],
+          "cta": {
+            "text": "Generate video ads",
+            "href": "",
+            "variant": "primary"
+          },
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/b6ac2200d8f883894a7f18ee1da19d7d7aab2a7f.png",
+            "alt": "Video generation workflow"
+          }
+        },
+        {
+          "title": "与智能体一起迭代",
+          "description": "在同一画布上调整细节、探索不同方案。",
+          "points": [
+            "Touch Edit: adjust product, background or label in one frame",
+            "Text Edit: update offer, discount or localized copy in place",
+            "Edit Elements: rearrange visual layers without regeneration"
+          ],
+          "cta": {
+            "text": "Refine the video",
+            "href": "",
+            "variant": "primary"
+          },
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/d11411bc15e95312819272bf39a65a3cbdf230b2.png",
+            "alt": "Video editing capabilities"
+          }
+        },
+        {
+          "title": "与智能体一起迭代",
+          "description": "在同一画布上调整细节、探索不同方案。",
+          "reverse": true,
+          "points": [
+            "Fast Mode: explore 10+ ad angles in minutes",
+            "Thinking Mode: build cross-platform campaign architecture",
+            "Brand Kit + Style Consistency across every variant"
+          ],
+          "cta": {
+            "text": "Scale the campaign",
+            "href": "",
+            "variant": "primary"
+          },
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/7eb9d35ed6aaf819fbe425badb3310b77bdc38a7.png",
+            "alt": "Full campaign video scaling"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "从一个真实的视频制作需求开始",
+      "description": "选一个和你接下来需要的视频资产最匹配的prompt。记得包含产品上下文、目标受众、投放平台和输出规格。",
+      "prompts": [
+        {
+          "label": "产品上市视频",
+          "prompt": "为一款DTC护肤精华液制作30秒产品上市视频。包含：产品亮相、成分功效展示、前后对比、创始人寄语、CTA。受众：25-40岁女性。平台：抖音 + 小红书。品牌色和Logo已上传。"
+        },
+        {
+          "label": "UGC风格广告测试",
+          "prompt": "为一个咖啡器具品牌生成6个UGC风格广告变体。角度：开箱、晨间流程、口味测试、vs竞品、价格说明、送礼场景。输出：9:16竖版，前2秒必须有吸睛hook。"
+        },
+        {
+          "label": "大促活动视频体系",
+          "prompt": "为一个家居DTC品牌构建双十一视频投放体系。包含：预热（5s）、爆发（15s）、提醒（10s）、最后机会（15s）、感谢（5s）。统一品牌声音，叠加促销信息和倒计时。"
+        }
+      ],
+      "cta": {
+        "text": "生成"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "如何从brief到视频投放体系",
+      "description": "三句话讲清流程，让团队在几秒内理解整体工作方式。",
+      "layout": "horizontal",
+      "steps": [
+        {
+          "step": 1,
+          "title": "上传上下文",
+          "description": "上传产品图、品牌指南、竞品链接和平台参数。"
+        },
+        {
+          "step": 2,
+          "title": "生成视频体系",
+          "description": "Lovart 产出脚本、关键帧、动效参数和渠道适配成片。"
+        },
+        {
+          "step": 3,
+          "title": "编辑与规模化",
+          "description": "用 Touch Edit 精修画面，用 Fast Mode 批量派生平台变体。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Video Generator：Lovart 与常规工作流对比",
+      "description": "高亮 Lovart 列展示 Agent 工作流 vs 碎片化生产的本质差异。",
+      "headers": [
+        "Need",
+        "Single-purpose AI video tool",
+        "Agency / in-house production",
+        "Lovart AI Video Generator"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Start from business context",
+          "values": [
+            "Prompts only, no research",
+            "Brief → strategy → storyboard cycle",
+            "Uploads, URLs, brand rules and Thinking Mode analysis"
+          ]
+        },
+        {
+          "feature": "Multi-model support",
+          "values": [
+            "One engine locked in",
+            "Manual outsourcing per need",
+            "Seedance 2.0, Sora, Veo 3, Kling — switch per shot"
+          ]
+        },
+        {
+          "feature": "Keyframe + motion control",
+          "values": [
+            "Text-to-video only, no frame control",
+            "Storyboard artist + animator handoff",
+            "Start/end keyframes + motion intensity per segment"
+          ]
+        },
+        {
+          "feature": "Edit after generation",
+          "values": [
+            "Regenerate whole clip to fix one detail",
+            "Back to editor for revisions",
+            "Touch Edit, Text Edit, Edit Elements — fix in place"
+          ]
+        },
+        {
+          "feature": "Scale to full campaign",
+          "values": [
+            "Single video, no variant system",
+            "Brief per variant, slow cycle",
+            "Fast Mode for hooks, Thinking Mode for campaign architecture"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Where AI Video Generator helps",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Launch faster",
+          "description": "Go from brief to AI Video Generator assets in one session."
+        },
+        {
+          "icon": "brand",
+          "title": "Stay consistent",
+          "description": "Brand Kit keeps every asset aligned."
+        },
+        {
+          "icon": "refresh",
+          "title": "Iterate quickly",
+          "description": "Edit details without restarting the project."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "过去一条产品上市视频要花5万、等三周。用 Lovart 之后，一个下午就能生成完整上市视频体系——亮相、演示、社会证明、再营销。我们Meta的ROAS提升了40%，因为终于可以真正测角度了。",
+          "author": "陈思远",
+          "role": "增长负责人，DTC美妆品牌"
+        },
+        {
+          "quote": "多模型支持是真正的杀手锏。有的产品用 Seedance 写实感更好，有的用 Sora 的电影感更出彩。Lovart 让我们按镜头切换引擎而不重建上下文，直接砍掉70%的制作周期。",
+          "author": "李浩然",
+          "role": "创意总监，Shopify Plus 服务商"
+        },
+        {
+          "quote": "Fast Mode 改变了我们做双十一的方式。不再只拍一条主视频，而是两天内测了8个hook角度。优胜方向的付费社媒转化率是去年的3.2倍。",
+          "author": "田中明",
+          "role": "效果营销经理，家居品牌"
+        }
+      ]
+    },
+    {
+      "type": "pricing-block",
+      "title": "选择适合团队的方案",
+      "description": "免费开始，当作品要交付客户时再升级。"
+    },
+    {
+      "type": "faq",
+      "title": "常见问题",
+      "items": [
+        {
+          "question": "Lovart 支持哪些视频模型？",
+          "answer": "Lovart 视频生成器支持 Seedance 2.0、Sora、Veo 3 和 Kling。你可以按镜头切换模型，根据目标效果选择——电影级写实、动态图形、产品演示或UGC风格。Thinking Mode 会帮你为每一段选择最优引擎。"
+        },
+        {
+          "question": "我可以控制每个画面的内容吗？",
+          "answer": "可以。你为每个视频段落定义起始关键帧、结束关键帧和文本提示，另外还有动效强度、镜头方向、节奏和画幅比例等控制参数，实现帧级精度，同时 Lovart 负责保持画面连续性。"
+        },
+        {
+          "question": "视频生成后怎么编辑？",
+          "answer": "Lovart 提供三种编辑方式：Touch Edit（点击修改某帧中的产品位置、背景或标签）、Text Edit（原地更新促销文案、折扣或多语言版本，保持动效节奏不变）、Edit Elements（不改动效的前提下调整图层级画面构图）。"
+        },
+        {
+          "question": "能从一个brief生成多个广告变体吗？",
+          "answer": "可以。Fast Mode 让你并行探索 hook 角度、offer 框架和平台专属样式。一旦验证有效方向，Thinking Mode 会构建跨渠道协同的投放体系。你可以从一个创意方向派生抖音、Reels、YouTube Shorts 和 Meta 的变体。"
+        },
+        {
+          "question": "支持哪些视频格式和画幅比例？",
+          "answer": "Lovart 支持 9:16（竖版——抖音/Reels/Shorts）、1:1（方形——Meta信息流/LinkedIn）、16:9（横版——YouTube/OTT）和 4:5（竖版——Meta信息流）。同一brief可生成全部格式。"
+        },
+        {
+          "question": "Brand Kit 能用于视频生成吗？",
+          "answer": "可以。上传 Logo、品牌色、字体和视觉规范一次，Lovart 会自动应用到所有视频输出——Logo 位置、配色方案、字体使用和产品渲染在每段视频中保持一致。"
+        },
+        {
+          "question": "视频生成器如何收费？",
+          "answer": "视频生成器包含在所有 Lovart 套餐中。免费套餐：100 credits/月（含视频生成）。付费套餐 $10/月起，含更多 credits、高级模型访问和商用授权。详见上方定价区。"
+        },
+        {
+          "question": "生成的视频可以商用吗？",
+          "answer": "可以。付费套餐包含所有生成视频内容的完整商用授权。你拥有输出成果，可用于广告投放、社媒内容、产品页面、邮件和电视广告。免费套餐产出仅供个人/非商业用途。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "准备好从一个brief生成完整的视频投放体系了吗？",
+      "description": "不再在工具、模型、渠道之间反复重建上下文。从一个 Agent 工作流开始，生成一致、可编辑、可规模化的视频广告。",
+      "buttons": [
+        {
+          "text": "生成第一条视频",
+          "href": "",
+          "variant": "primary"
+        },
+        {
+          "text": "查看工作流程",
+          "href": "",
+          "variant": "secondary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

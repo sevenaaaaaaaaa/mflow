@@ -1,0 +1,533 @@
+,
+  "section_ja": [
+    {
+      "type": "centeredInput",
+      "title": "AIバーメニューメーカー",
+      "placeholder": "作りたいメニューのスタイルを入力してください...",
+      "button": "バーメニューをデザイン",
+      "suggestions": [
+        "クラフトカクテルメニュー（モダン＆ミニマル）",
+        "日本酒・焼酎リスト（和風エレガント）",
+        "ウイスキーバー価格表（クラシック調）",
+        "季節限定ドリンクメニュー（華やかデザイン）"
+      ]
+    },
+    {
+      "type": "threeColumn",
+      "columns": [
+        {
+          "title": "テンプレートを選ぶ",
+          "description": "バーやパブ向けにプロがデザインした数百種類のテンプレートから、お店の雰囲気にぴったりのスタイルを見つけましょう。クラシックなウッド調からネオン輝くモダンデザインまで。",
+          "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600"
+        },
+        {
+          "title": "AIで自動生成",
+          "description": "お店の名前とスタイルの好みを入力するだけで、AIが数秒でプロ品質のメニューを生成。ドリンク名、説明文、価格レイアウトを自動で最適化します。",
+          "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600"
+        },
+        {
+          "title": "簡単カスタマイズ",
+          "description": "ドラッグ＆ドロップでロゴや画像を追加し、フォントやカラーを自由に変更。スマホからでも編集可能で、その場ですぐにメニューを更新できます。",
+          "image": "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600"
+        }
+      ]
+    },
+    {
+      "type": "featureGrid",
+      "features": [
+        {
+          "title": "300種類以上のテンプレート",
+          "description": "和風、洋風、カジュアル、高級感など、バーの業態に合わせた多彩なデザインテンプレート。すべて商用利用可能。",
+          "icon": "template"
+        },
+        {
+          "title": "AIドリンク名生成",
+          "description": "ベース酒と雰囲気を指定するだけで、創造的なカクテル名と魅力的な説明文をAIが自動提案します。",
+          "icon": "sparkles"
+        },
+        {
+          "title": "多言語対応",
+          "description": "日本語・英語・中国語・韓国語に対応。インバウンド需要にも安心の多言語メニューをワンクリックで生成。",
+          "icon": "globe"
+        },
+        {
+          "title": "価格計算機能",
+          "description": "原価率から適正販売価格を自動計算。利益率シミュレーションで収益性の高いメニュー作りをサポート。",
+          "icon": "calculator"
+        },
+        {
+          "title": "QRコード連携",
+          "description": "生成したメニューをQRコード化してテーブルに設置。非接触オーダーシステムとの連携も簡単。",
+          "icon": "qr-code"
+        },
+        {
+          "title": "高解像度エクスポート",
+          "description": "8K対応のPNG/JPG/SVG/PSD形式で出力。印刷用（300dpi）からSNS用まで、あらゆる用途に対応。",
+          "icon": "download"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "items": [
+        {
+          "name": "佐藤 健太",
+          "role": "オーナーバーテンダー / Bar Kagerou 六本木",
+          "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+          "text": "開店準備でメニュー制作に悩んでいたところ、このAIメニューメーカーに出会いました。和モダンのテンプレートが豊富で、日本酒リストも美しく仕上がり大満足。お客様からも『メニューがおしゃれ』と好評です。"
+        },
+        {
+          "name": "田中 美咲",
+          "role": "飲食店プロデューサー / 株式会社グルーブ",
+          "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
+          "text": "クライアント案件で毎回メニューデザインを外注していましたが、これで内製化できてコストも納期も大幅に改善。英語・中国語メニューも同時生成できるのが本当に便利です。"
+        },
+        {
+          "name": "山田 隆",
+          "role": "ガストロパブ経営 / Craft & Co. 中目黒",
+          "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+          "text": "クラフトビールのラインナップが頻繁に変わるので、その都度メニューを更新できる手軽さが最高です。スマホから操作できるので、仕込み中でもサッと修正できて助かっています。"
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "items": [
+        {
+          "question": "無料で使えますか？",
+          "answer": "はい、毎日無料クレジットを付与しており、機能をお試しいただけます。本格的にご利用の場合は有料プランをご検討ください。"
+        },
+        {
+          "question": "有料プランの料金体系を教えてください",
+          "answer": "Starterプランは月額2,000円、Basicプランは月額3,500円、Proプランは月額11,000円です。いずれも年払いで割引がございます。"
+        },
+        {
+          "question": "有料プランで商用利用は可能ですか？",
+          "answer": "はい、有料プランではすべての生成物に対して商用利用権が付与されます。実際の店舗メニューや販促物としてご自由にお使いいただけます。"
+        },
+        {
+          "question": "どのようなファイル形式で出力できますか？",
+          "answer": "8K解像度のPNG、JPG、SVG、PSD形式に対応しています。印刷用の高解像度からWeb/SNS用の最適化サイズまで柔軟に出力可能です。"
+        },
+        {
+          "question": "メニューにQRコードを追加できますか？",
+          "answer": "はい、生成したメニューに自動でQRコードを埋め込むことができます。モバイルオーダーシステムやSNSアカウントへのリンク設定も可能です。"
+        },
+        {
+          "question": "デザインのカスタマイズはどの程度可能ですか？",
+          "answer": "フォント、カラー、レイアウト、画像配置まで細かく調整できます。ドラッグ＆ドロップの直感的なエディターで、デザイン経験がなくても思い通りの仕上がりに。"
+        },
+        {
+          "question": "複数店舗で利用できますか？",
+          "answer": "Proプランでは複数店舗でのご利用が可能です。店舗ごとに異なるメニューデザインを一元管理でき、チェーン展開されている企業様に最適です。"
+        },
+        {
+          "question": "アレルギー表示やカロリー表記はできますか？",
+          "answer": "はい、各ドリンクにアレルギー情報やカロリー、アルコール度数などの補足情報を表示できます。飲食店表示ガイドラインにも対応した表記が可能です。"
+        },
+        {
+          "question": "データの保存とバックアップはどうなっていますか？",
+          "answer": "作成したメニューはクラウドに自動保存され、いつでも過去のバージョンに戻せます。万が一のデータ消失に備えた定期バックアップも完備しています。"
+        }
+      ]
+    }
+  ],
+  "section_ko": [
+    {
+      "type": "centeredInput",
+      "title": "AI 바 메뉴 메이커",
+      "placeholder": "원하는 메뉴 스타일을 입력하세요...",
+      "button": "바 메뉴 디자인",
+      "suggestions": [
+        "크래프트 칵테일 메뉴 (모던 & 미니멀)",
+        "전통주·소주 리스트 (한국적 감성)",
+        "위스키바 가격표 (클래식 무드)",
+        "시즌 한정 시그니처 음료 메뉴"
+      ]
+    },
+    {
+      "type": "threeColumn",
+      "columns": [
+        {
+          "title": "템플릿 선택하기",
+          "description": "바와 펍을 위해 전문 디자이너가 제작한 수백 가지 템플릿 중에서 매장 분위기에 꼭 맞는 스타일을 골라보세요. 클래식 우드부터 트렌디한 네온까지 다양하게 준비되어 있습니다.",
+          "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600"
+        },
+        {
+          "title": "AI 자동 생성",
+          "description": "가게 이름과 원하는 분위기만 입력하면 AI가 몇 초 만에 완성도 높은 메뉴를 만들어줍니다. 음료명, 설명, 가격 레이아웃까지 자동으로 최적화해 드려요.",
+          "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600"
+        },
+        {
+          "title": "간편 커스터마이징",
+          "description": "드래그 앤 드롭으로 로고와 이미지를 추가하고 폰트와 색상을 자유롭게 변경할 수 있습니다. 모바일에서도 편집 가능해 현장에서 바로 업데이트할 수 있어요.",
+          "image": "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600"
+        }
+      ]
+    },
+    {
+      "type": "featureGrid",
+      "features": [
+        {
+          "title": "300개 이상의 템플릿",
+          "description": "한식 주점, 칵테일바, 와인바 등 업종별 맞춤 템플릿. 모든 템플릿은 상업적 이용이 가능합니다.",
+          "icon": "template"
+        },
+        {
+          "title": "AI 음료명 생성",
+          "description": "베이스 주류와 콘셉트만 알려주면 창의적인 칵테일 이름과 매력적인 설명문을 AI가 자동으로 제안합니다.",
+          "icon": "sparkles"
+        },
+        {
+          "title": "다국어 지원",
+          "description": "한국어·영어·일본어·중국어 메뉴를 클릭 한 번으로 생성. 외국인 관광객이 많은 매장에 특히 유용합니다.",
+          "icon": "globe"
+        },
+        {
+          "title": "가격 계산 기능",
+          "description": "원가율 기반 적정 판매가 자동 산출. 수익성 시뮬레이션으로 장사 잘되는 메뉴 구성을 도와드립니다.",
+          "icon": "calculator"
+        },
+        {
+          "title": "QR 코드 연동",
+          "description": "제작한 메뉴를 QR 코드로 변환해 테이블에 비치. 비대면 주문 시스템과의 연동도 간편하게 설정할 수 있습니다.",
+          "icon": "qr-code"
+        },
+        {
+          "title": "고해상도 내보내기",
+          "description": "8K 해상도의 PNG/JPG/SVG/PSD 형식으로 출력. 인쇄용(300dpi)부터 SNS 업로드까지 모든 용도에 완벽 대응합니다.",
+          "icon": "download"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "items": [
+        {
+          "name": "김민준",
+          "role": "오너 바텐더 / 포시즌스 바 강남",
+          "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
+          "text": "오픈 준비하면서 메뉴판 제작에 가장 고민이 많았는데, 이 AI 메뉴 메이커 덕분에 정말 세련되게 뽑았어요. 템플릿 퀄리티가 높아서 디자이너 없이도 브랜딩이 완성되는 느낌입니다."
+        },
+        {
+          "name": "이서연",
+          "role": "F&B 컨설턴트 / 테이스트랩",
+          "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150",
+          "text": "고객사 메뉴 디자인을 매번 외주 맡겼는데 이제 자체 제작이 가능해져서 비용과 시간을 크게 절감했어요. 영문·중문 메뉴 동시 생성 기능이 특히 실무에서 빛을 발합니다."
+        },
+        {
+          "name": "박지호",
+          "role": "크래프트 맥주 펍 대표 / 홉스테이션 연남",
+          "avatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150",
+          "text": "수시로 바뀌는 맥주 라인업을 그때그때 메뉴판에 반영할 수 있어 정말 편리해요. 모바일로 바로 수정 가능해서 영업 중에도 대응이 빠르고, 직원들도 쉽게 익혀서 씁니다."
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "items": [
+        {
+          "question": "무료로 사용할 수 있나요?",
+          "answer": "네, 매일 무료 크레딧을 제공하여 모든 기능을 체험하실 수 있습니다. 본격적인 이용을 원하시면 유료 플랜을 고려해 주세요."
+        },
+        {
+          "question": "유료 플랜 요금은 어떻게 되나요?",
+          "answer": "Starter 플랜은 월 2,000엔, Basic 플랜은 월 3,500엔, Pro 플랜은 월 11,000엔입니다. 연간 결제 시 추가 할인이 적용됩니다."
+        },
+        {
+          "question": "유료 플랜에서 상업적 이용이 가능한가요?",
+          "answer": "네, 유료 플랜 가입 시 모든 생성물에 대한 상업적 이용 권한이 부여됩니다. 실제 매장 메뉴판이나 판촉물로 자유롭게 사용하실 수 있습니다."
+        },
+        {
+          "question": "어떤 파일 형식으로 내보낼 수 있나요?",
+          "answer": "8K 해상도의 PNG, JPG, SVG, PSD 형식을 지원합니다. 인쇄용 고해상도부터 웹·SNS 최적화 사이즈까지 상황에 맞게 출력 가능합니다."
+        },
+        {
+          "question": "메뉴에 QR 코드를 넣을 수 있나요?",
+          "answer": "네, 제작된 메뉴에 자동으로 QR 코드를 삽입할 수 있습니다. 모바일 주문 시스템이나 SNS 계정 연동도 설정 가능합니다."
+        },
+        {
+          "question": "디자인 커스터마이징은 어느 정도까지 가능한가요?",
+          "answer": "폰트, 색상, 레이아웃, 이미지 배치까지 세밀하게 조정 가능합니다. 드래그 앤 드롭 방식의 직관적인 에디터로 디자인 경험이 없어도 원하는 대로 완성할 수 있습니다."
+        },
+        {
+          "question": "여러 지점에서 함께 사용할 수 있나요?",
+          "answer": "Pro 플랜에서는 다중 매장 이용이 가능합니다. 지점별로 다른 메뉴 디자인을 통합 관리할 수 있어 프랜차이즈 운영에 최적화되어 있습니다."
+        },
+        {
+          "question": "알레르기 정보나 칼로리 표기가 가능한가요?",
+          "answer": "네, 각 음료에 알레르기 유발 성분, 칼로리, 도수 등 보조 정보를 표시할 수 있습니다. 식품위생법 표시 기준에도 부합하는 표기가 가능합니다."
+        },
+        {
+          "question": "데이터 저장과 백업은 어떻게 이루어지나요?",
+          "answer": "제작한 메뉴는 클라우드에 자동 저장되며 언제든 이전 버전으로 복원할 수 있습니다. 정기적인 자동 백업으로 데이터 유실 위험을 방지합니다."
+        }
+      ]
+    }
+  ],
+  "section_de": [
+    {
+      "type": "centeredInput",
+      "title": "KI-Barkarten-Gestalter",
+      "placeholder": "Beschreiben Sie den Stil Ihrer Barkarte...",
+      "button": "Barmenü gestalten",
+      "suggestions": [
+        "Craft-Cocktail-Karte (modern & minimalistisch)",
+        "Weinkarte mit Jahrgangsangaben (elegant)",
+        "Whisky-Verkostungsmenü (rustikal & edel)",
+        "Saisonale Signature-Drinks-Karte (farbenfroh)"
+      ]
+    },
+    {
+      "type": "threeColumn",
+      "columns": [
+        {
+          "title": "Vorlage wählen",
+          "description": "Durchstöbern Sie Hunderte professionell gestalteter Vorlagen, die speziell für Bars und Pubs entwickelt wurden. Vom klassischen Holz-Look bis zum modernen Neon-Design — für jedes Ambiente die passende Optik.",
+          "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600"
+        },
+        {
+          "title": "KI-gestützte Erstellung",
+          "description": "Geben Sie einfach den Namen Ihrer Bar und Ihre Stilvorlieben ein — die KI erstellt in Sekunden eine druckreife Karte. Getränkenamen, Beschreibungen und Preis-Layouts werden automatisch optimiert.",
+          "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600"
+        },
+        {
+          "title": "Einfache Anpassung",
+          "description": "Fügen Sie per Drag & Drop Ihr Logo und Bilder hinzu, ändern Sie Schriftarten und Farben. Auch mobil bearbeitbar — so können Sie Ihre Karte jederzeit direkt vor Ort aktualisieren.",
+          "image": "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600"
+        }
+      ]
+    },
+    {
+      "type": "featureGrid",
+      "features": [
+        {
+          "title": "Über 300 Vorlagen",
+          "description": "Ob Cocktailbar, Weinstube oder Craft-Beer-Pub — für jeden Bartyp die passende Vorlage. Alle Designs mit uneingeschränkter Nutzungslizenz.",
+          "icon": "template"
+        },
+        {
+          "title": "KI-Getränkenamen",
+          "description": "Basis-Spirituose und Konzept reichen aus — die KI generiert kreative Cocktailnamen und ansprechende Beschreibungen vollautomatisch.",
+          "icon": "sparkles"
+        },
+        {
+          "title": "Mehrsprachig",
+          "description": "Deutsch, Englisch, Französisch, Italienisch — erstellen Sie mehrsprachige Karten mit einem Klick. Perfekt für touristisch geprägte Standorte.",
+          "icon": "globe"
+        },
+        {
+          "title": "Preiskalkulation",
+          "description": "Automatische Berechnung des Verkaufspreises basierend auf Wareneinsatz und Marge. Rentabilitäts-Simulationen helfen bei der optimalen Menüzusammenstellung.",
+          "icon": "calculator"
+        },
+        {
+          "title": "QR-Code-Integration",
+          "description": "Wandeln Sie Ihre Karte in einen QR-Code um, platzieren Sie ihn auf Tischen. Nahtlose Anbindung an kontaktlose Bestellsysteme möglich.",
+          "icon": "qr-code"
+        },
+        {
+          "title": "Hochauflösender Export",
+          "description": "Export in 8K-Auflösung als PNG, JPG, SVG oder PSD. Für Druck (300 dpi) ebenso optimiert wie für Social Media.",
+          "icon": "download"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "items": [
+        {
+          "name": "Lukas Hoffmann",
+          "role": "Inhaber & Barkeeper / Die Goldene Bar, Berlin",
+          "avatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150",
+          "text": "Bei der Neueröffnung stand ich vor der Herausforderung, eine hochwertige Karte zu gestalten. Die KI hat mir in Minuten geholfen, ein Design zu finden, das perfekt zum Art-déco-Ambiente unserer Bar passt. Einfach fantastisch."
+        },
+        {
+          "name": "Sophie Wagner",
+          "role": "Gastronomie-Beraterin / KONZEPT&CO München",
+          "avatar": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150",
+          "text": "Früher haben wir Kundenmenüs extern designen lassen, jetzt machen wir es selbst. Die Zeitersparnis ist enorm, und die Qualität der Vorlagen überzeugt selbst anspruchsvollste Gastronomen. Mehrsprachige Ausgabe ist ein Gamechanger."
+        },
+        {
+          "name": "Felix Schreiber",
+          "role": "Betreiber / Brauwerk Köln",
+          "avatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150",
+          "text": "Unser Bierangebot wechselt ständig — dank der mobilen Bearbeitung kann ich die Karte sogar während der Schicht anpassen. Kein Druckstress mehr beim Aktualisieren. Das Tool hat unseren Arbeitsablauf revolutioniert."
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "items": [
+        {
+          "question": "Kann ich das Tool kostenlos nutzen?",
+          "answer": "Ja, täglich erhalten Sie kostenlose Credits zum Ausprobieren aller Funktionen. Für den dauerhaften Einsatz empfehlen wir einen kostenpflichtigen Tarif."
+        },
+        {
+          "question": "Was kosten die Premium-Tarife?",
+          "answer": "Der Starter-Tarif kostet 2.000 ¥/Monat, der Basic-Tarif 3.500 ¥/Monat und der Pro-Tarif 11.000 ¥/Monat. Bei jährlicher Zahlung gewähren wir zusätzliche Rabatte."
+        },
+        {
+          "question": "Erhalte ich mit einem Premium-Tarif kommerzielle Nutzungsrechte?",
+          "answer": "Ja, alle Premium-Tarife beinhalten die uneingeschränkte kommerzielle Nutzung sämtlicher erstellter Designs. Verwenden Sie die Menüs frei für Ihr Geschäft."
+        },
+        {
+          "question": "In welchen Dateiformaten kann ich exportieren?",
+          "answer": "Unterstützt werden PNG, JPG, SVG und PSD — alle in 8K-Auflösung. Optimierte Ausgabe für Druck (300 dpi), Web und soziale Medien."
+        },
+        {
+          "question": "Kann ich QR-Codes in die Karte einfügen?",
+          "answer": "Ja, QR-Codes lassen sich automatisch in Ihr Design einbetten. Sie können diese mit mobilen Bestellsystemen oder Ihren Social-Media-Profilen verknüpfen."
+        },
+        {
+          "question": "Wie umfangreich sind die Anpassungsmöglichkeiten?",
+          "answer": "Sie können Schriften, Farben, Layouts und Bildplatzierungen detailliert anpassen. Der Drag&Drop-Editor ist so intuitiv, dass keine Designerfahrung nötig ist."
+        },
+        {
+          "question": "Kann ich das Tool für mehrere Standorte nutzen?",
+          "answer": "Der Pro-Tarif erlaubt die Nutzung für mehrere Filialen. Verwalten Sie verschiedene Kartendesigns zentral — ideal für Gastronomieketten."
+        },
+        {
+          "question": "Sind Allergen- und Kalorienangaben möglich?",
+          "answer": "Ja, Sie können zu jedem Getränk Allergene, Kalorien, Alkoholgehalt und weitere Zusatzinformationen anzeigen. Die Darstellung entspricht den EU-Lebensmittelinformationsstandards."
+        },
+        {
+          "question": "Wie werden meine Daten gesichert?",
+          "answer": "Alle Designs werden automatisch in der Cloud gespeichert. Sie können jederzeit frühere Versionen wiederherstellen. Regelmäßige Backups schützen vor Datenverlust."
+        }
+      ]
+    }
+  ],
+  "section_ru": [
+    {
+      "type": "centeredInput",
+      "title": "ИИ-конструктор барного меню",
+      "placeholder": "Опишите стиль вашего барного меню...",
+      "button": "Создать барное меню",
+      "suggestions": [
+        "Меню авторских коктейлей (современный минимализм)",
+        "Винная карта с описанием сортов (элегантный стиль)",
+        "Виски-бар: дегустационный лист (классика)",
+        "Сезонное меню сигнатурных напитков (яркий дизайн)"
+      ]
+    },
+    {
+      "type": "threeColumn",
+      "columns": [
+        {
+          "title": "Выберите шаблон",
+          "description": "Сотни профессионально разработанных шаблонов для баров и пабов — от классического дерева до неонового модерна. Найдите стиль, идеально отражающий атмосферу вашего заведения.",
+          "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600"
+        },
+        {
+          "title": "Создание с помощью ИИ",
+          "description": "Просто укажите название бара и желаемый стиль — искусственный интеллект за секунды сгенерирует готовое к печати меню с оптимизированными названиями, описаниями и структурой цен.",
+          "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=600"
+        },
+        {
+          "title": "Гибкая настройка",
+          "description": "Добавляйте логотипы и фото перетаскиванием, меняйте шрифты и цвета. Редактируйте меню прямо со смартфона — обновляйте карту напитков на месте в любой момент.",
+          "image": "https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?w=600"
+        }
+      ]
+    },
+    {
+      "type": "featureGrid",
+      "features": [
+        {
+          "title": "Более 300 шаблонов",
+          "description": "От коктейль-баров до пивных пабов — шаблоны на любой вкус и формат. Все дизайны доступны для коммерческого использования.",
+          "icon": "template"
+        },
+        {
+          "title": "ИИ-генерация названий",
+          "description": "Укажите базовый алкоголь и концепцию — нейросеть автоматически предложит креативные названия коктейлей и привлекательные описания.",
+          "icon": "sparkles"
+        },
+        {
+          "title": "Многоязычная поддержка",
+          "description": "Русский, английский, китайский, итальянский — создавайте многоязычные меню одним кликом. Идеально для ресторанов в туристических зонах.",
+          "icon": "globe"
+        },
+        {
+          "title": "Расчёт стоимости",
+          "description": "Автоматический расчёт цены продажи на основе себестоимости и наценки. Симуляция рентабельности помогает собрать максимально прибыльное меню.",
+          "icon": "calculator"
+        },
+        {
+          "title": "QR-коды",
+          "description": "Превратите меню в QR-код и разместите на столах. Бесшовная интеграция с системами бесконтактного приёма заказов.",
+          "icon": "qr-code"
+        },
+        {
+          "title": "Экспорт в высоком разрешении",
+          "description": "Вывод в 8K: PNG, JPG, SVG, PSD. Подходит как для типографской печати (300 dpi), так и для публикации в социальных сетях.",
+          "icon": "download"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "items": [
+        {
+          "name": "Алексей Смирнов",
+          "role": "Владелец бара / «Рюмочная No1», Москва",
+          "avatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150",
+          "text": "При запуске бара меню было головной болью. ИИ-конструктор сэкономил мне недели времени и десятки тысяч рублей на дизайнере. Результат превзошёл ожидания — гости часто фотографируют меню для Instagram."
+        },
+        {
+          "name": "Екатерина Волкова",
+          "role": "Ресторанный консультант / HoReCa Solutions",
+          "avatar": "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150",
+          "text": "Раньше мы заказывали дизайн меню на фрилансе, теперь справляемся сами. Качество шаблонов на высоте, а скорость работы позволяет запускать проекты в два раза быстрее."
+        },
+        {
+          "name": "Дмитрий Козлов",
+          "role": "Управляющий / Craft Beer Pub, Санкт-Петербург",
+          "avatar": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150",
+          "text": "Ассортимент пива обновляется каждую неделю — мобильное редактирование просто спасает. Могу поменять позиции прямо во время смены, без дизайнера и вёрстки. Штука незаменимая."
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "items": [
+        {
+          "question": "Можно ли пользоваться бесплатно?",
+          "answer": "Да, мы ежедневно начисляем бесплатные кредиты, позволяющие протестировать все функции. Для постоянного использования предусмотрены платные тарифы."
+        },
+        {
+          "question": "Сколько стоят платные тарифы?",
+          "answer": "Starter — 2 000 ¥/мес, Basic — 3 500 ¥/мес, Pro — 11 000 ¥/мес. При годовой оплате действуют дополнительные скидки."
+        },
+        {
+          "question": "Дают ли платные тарифы право коммерческого использования?",
+          "answer": "Да, все платные тарифы включают полное право коммерческого использования созданных дизайнов. Используйте меню в своём заведении без ограничений."
+        },
+        {
+          "question": "В каких форматах можно скачать результат?",
+          "answer": "Поддерживаются форматы PNG, JPG, SVG и PSD в разрешении 8K. Вывод оптимизирован как для типографской печати (300 dpi), так и для веба и соцсетей."
+        },
+        {
+          "question": "Можно ли добавить QR-код в меню?",
+          "answer": "Да, QR-коды встраиваются в дизайн автоматически. Настройте ссылку на мобильное меню, систему заказа или социальные сети."
+        },
+        {
+          "question": "Насколько глубоко можно кастомизировать дизайн?",
+          "answer": "Доступна тонкая настройка шрифтов, цвета, компоновки и расположения изображений. Интуитивный редактор не требует специальных навыков — справится любой."
+        },
+        {
+          "question": "Можно ли использовать для сети заведений?",
+          "answer": "Тариф Pro поддерживает неограниченное количество точек. Централизованное управление дизайном меню для всех филиалов — идеально для сетевых проектов."
+        },
+        {
+          "question": "Есть ли возможность указать аллергены и калорийность?",
+          "answer": "Да, для каждого напитка можно добавить информацию об аллергенах, калорийности, крепости и других характеристиках. Разметка соответствует требованиям Роспотребнадзора."
+        },
+        {
+          "question": "Как обеспечивается сохранность данных?",
+          "answer": "Все проекты автоматически сохраняются в облаке с историей версий. В любой момент можно откатиться к предыдущему варианту. Регулярное резервное копирование исключает потерю данных."
+        }
+      ]
+    }
+  ]

@@ -1,0 +1,387 @@
+{
+  "_id": "features-ai-video-prompt-generator-veo-sora-zh",
+  "_type": "compositePage",
+  "language": "zh",
+  "category": "feature",
+  "slug": {
+    "_type": "slug",
+    "current": "ai-video-prompt-generator-veo-sora"
+  },
+  "storyline": "features-grid-bento6",
+  "title": "AI 视频提示词生成器：为 Veo 和 Sora 打造电影级场景 | Lovart",
+  "description": "轻松写出专业的 AI 视频提示词。Lovart 的智能体把简单想法变成面向 Veo 3、Sora 和 Kling 的技术化、电影级指令，含运镜和光线控制。",
+  "seo": {
+    "description": "轻松写出专业的 AI 视频提示词。Lovart 的智能体把简单想法变成面向 Veo 3、Sora 和 Kling 的技术化、电影级指令，含运镜和光线控制。",
+    "keywords": [
+      "ai video prompt generator",
+      "text to video prompts",
+      "sora prompt helper",
+      "veo 3 prompts",
+      "ai cinematography",
+      "video generation agent",
+      "lovart video tools."
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "运镜逻辑",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"AI 视频提示词生成器：为 Veo 和 Sora 打造电影级场景 | Lovart\", \"description\": \"轻松写出专业的 AI 视频提示词。Lovart 的智能体把简单想法变成面向 Veo 3、Sora 和 Kling 的技术化、电影级指令，含运镜和光线控制。\", \"url\": \"https://www.lovart.ai/features/ai-video-prompt-generator-veo-sora\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Does this work for all AI video models?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Yes, Lovart's Prompt Agent is trained on the syntax of major models like Veo 3, Kling, Sora, and Runway Gen-3. It adjusts the terminology to fit the specific model you choose.\"}}, {\"@type\": \"Question\", \"name\": \"Do I need to know photography terms?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Not at all. You describe the feeling (e.g., 'scary', 'fast', 'dreamy'), and the Agent translates that into technical camera terms (e.g., 'Dutch angle', 'Motion blur', 'Soft focus').\"}}, {\"@type\": \"Question\", \"name\": \"Can I use images as prompts for video?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Yes! This is our 'Image-to-Video' workflow. Upload a Nano Banana image, and the Agent will help you write a motion prompt to bring that static image to life effortlessly.\"}}, {\"@type\": \"Question\", \"name\": \"How detailed should my initial idea be?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"It can be as simple as three words or as complex as a paragraph. The Agent is designed to expand on simple ideas or refine complex ones for better AI interpretation.\"}}, {\"@type\": \"Question\", \"name\": \"Is the Prompt Generator free?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Basic prompt enhancement is available to all users. Advanced features like Flux Kontext integration and unlimited prompt iterations are part of the Pro plan.\"}}]}}"
+    },
+    "title": "AI 视频提示词生成器：为 Veo 和 Sora 打造电影级场景 | Lovart"
+  },
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"AI 视频提示词生成器：为 Veo 和 Sora 打造电影级场景\",\"description\":\"轻松写出专业的 AI 视频提示词。Lovart 的智能体把简单想法变成面向 Veo 3、Sora 和 Kling 的技术化、电影级指令，含运镜和光线控制。\",\"buttons\":[{\"text\":\"立即开始\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"运镜逻辑\"}},{\"type\":\"bento-6\",\"title\":\"为什么你需要一个 AI 视频提示词智能体\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"运镜逻辑\",\"description\":\"没有执导，AI 视频模型就会翻车。我们的智能体自动加入「推近」「向左横移」或「FPV 无人机」等运镜，赋予你的视频电影般的动感。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"运镜逻辑\"}},{\"title\":\"物理与运动\",\"description\":\"避免「AI 变形」效应。我们优化提示词，为 Veo 3 的物理引擎定义清晰的物理动作（例如「奔跑而不打滑」「水自然飞溅」）。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"物理与运动\"}},{\"title\":\"风格锁定\",\"description\":\"想要一致的观感？智能体能生成严格遵循特定艺术风格的提示词，如「1980 年代 VHS」「皮克斯 3D」或「Nano Banana 扁平插画」。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"风格锁定\"}},{\"title\":\"负向提示词\",\"description\":\"重要的不只是你想要什么，还有你不想要什么。智能体自动加入负向参数，防止多出肢体或背景模糊等常见视频瑕疵。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"负向提示词\"}},{\"title\":\"Flux Kontext 集成\",\"description\":\"不止于文字。提示词智能体与 Flux Kontext 无缝协作，把角色参考融入视频提示词，确保你的主角在每个片段里都是同一个样子。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Flux Kontext 集成\"}},{\"title\":\"即用即商用\",\"description\":\"生成为高分辨率、无水印输出而优化的提示词，适用于广告、YouTube 和专业演示。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"即用即商用\"}}]},{\"type\":\"capability-tabs\",\"title\":\"一个智能体，集成全部能力\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"运镜逻辑\",\"icon\":\"chat\",\"content\":{\"title\":\"运镜逻辑\",\"description\":\"没有执导，AI 视频模型就会翻车。我们的智能体自动加入「推近」「向左横移」或「FPV 无人机」等运镜，赋予你的视频电影般的动感。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"运镜逻辑\"}}},{\"label\":\"物理与运动\",\"icon\":\"image\",\"content\":{\"title\":\"物理与运动\",\"description\":\"避免「AI 变形」效应。我们优化提示词，为 Veo 3 的物理引擎定义清晰的物理动作（例如「奔跑而不打滑」「水自然飞溅」）。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"物理与运动\"}}},{\"label\":\"风格锁定\",\"icon\":\"flask\",\"content\":{\"title\":\"风格锁定\",\"description\":\"想要一致的观感？智能体能生成严格遵循特定艺术风格的提示词，如「1980 年代 VHS」「皮克斯 3D」或「Nano Banana 扁平插画」。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"风格锁定\"}}},{\"label\":\"负向提示词\",\"icon\":\"brand\",\"content\":{\"title\":\"负向提示词\",\"description\":\"重要的不只是你想要什么，还有你不想要什么。智能体自动加入负向参数，防止多出肢体或背景模糊等常见视频瑕疵。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"负向提示词\"}}}]},{\"type\":\"bento-2\",\"title\":\"尤其擅长的两件事\",\"columns\":2,\"features\":[{\"title\":\"Flux Kontext 集成\",\"description\":\"不止于文字。提示词智能体与 Flux Kontext 无缝协作，把角色参考融入视频提示词，确保你的主角在每个片段里都是同一个样子。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Flux Kontext 集成\"}},{\"title\":\"即用即商用\",\"description\":\"生成为高分辨率、无水印输出而优化的提示词，适用于广告、YouTube 和专业演示。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"即用即商用\"}}]},{\"type\":\"feature-detail\",\"title\":\"详细了解使用方式\",\"items\":[{\"title\":\"开启你的AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora项目\",\"description\":\"描述你想要的成果，并补充参考素材即可。\"},{\"title\":\"与智能体一起迭代\",\"description\":\"在同一画布上调整细节、探索不同方案。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"AI 视频提示词生成器：为 Veo 3 和 Sora 打造电影级提示词\",\"description\":\"别再把额度浪费在糟糕的视频生成上。Lovart 的 AI 智能体充当你的私人摄影指导，把简单想法变成高度详尽、经过技术优化的视频提示词。用精确的运镜、光线和运动指令，释放 Veo 3 和 Kling 的全部潜力。\",\"input_placeholder\":\"描述你的视频创意（例如：一名赛博朋克侦探在雨中行走）\",\"prompts\":[{\"label\":\"科幻环境\",\"prompt\":\"夜晚飞越未来生物荧光丛林的电影感无人机镜头，4K\"},{\"label\":\"商业 B-roll\",\"prompt\":\"厨师切鲜红番茄的特写，热气升腾，微距镜头，慢动作\"},{\"label\":\"动作场面\",\"prompt\":\"赛博朋克街头追逐，霓虹灯倒映在湿路面上，快速跟踪镜头\"},{\"label\":\"3D 角色\",\"prompt\":\"3D 黏土动画风格的可爱兔子挥手打招呼，柔和影棚光，可循环\"}],\"tip\":\"小技巧：写明氛围、镜头角度（例如「无人机镜头」）和具体运动（例如「慢动作奔跑」）。\",\"cta\":{\"text\":\"生成专业提示词\"}},{\"type\":\"workflow-horizontal\",\"title\":\"把模糊的想法变成好莱坞场景\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"描述你的构想\",\"description\":\"从一个粗略概念开始。无论是「一辆车在行驶」还是「一场奇幻大战」，把脑海中的画面打出来即可。无需懂专业的影视术语。\"},{\"step\":2,\"title\":\"智能体增强\",\"description\":\"Lovart 智能体分析你的输入，注入专业的摄影细节——镜头、光线类型和运动物理——并专门为 Veo 3 等模型优化。\"},{\"step\":3,\"title\":\"生成与迭代\",\"description\":\"用增强后的提示词在 Lovart 内即时生成惊艳视频。不满意？让智能体「做得更吓人」或「再推近一点」来精修结果。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora：Lovart 与常规工作流对比\",\"headers\":[\"需求\",\"通用工具\",\"手工工作流\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"开启你的AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora项目\",\"values\":[\"一句提示词\",\"手动写需求\",\"需求驱动的推理\"]},{\"feature\":\"出第一版的耗时\",\"values\":[\"几分钟\",\"数天\",\"几分钟\"]},{\"feature\":\"生成后的编辑\",\"values\":[\"有限\",\"反复修改\",\"涂抹 / 文字 / 元素编辑\"]},{\"feature\":\"保持品牌一致\",\"values\":[\"手动\",\"手动\",\"支持 Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora的用武之地\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"更快上线\",\"description\":\"从需求到AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora素材，一次会话即可完成。\"},{\"icon\":\"brand\",\"title\":\"保持一致\",\"description\":\"Brand Kit 让每一份素材都保持统一。\"},{\"icon\":\"refresh\",\"title\":\"快速迭代\",\"description\":\"无需重头开始，即可编辑细节。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"以前我要花几个小时去猜 Veo 的提示词。Lovart 的智能体把我那句「雨中一个悲伤的机器人」变成了一段带光线参数的四行精品提示词，结果堪称奥斯卡级别。\",\"author\":\"Marcus D.\",\"role\":\"独立电影人\"},{\"quote\":\"运镜控制提示词是颠覆性的。我终于能生成一致的产品视频，精确地推近到我想要的地方。感觉就像在指挥一支真实的团队。\",\"author\":\"Sarah L.\",\"role\":\"TikTok 营销人\"},{\"quote\":\"我用提示词生成器制作动态分镜。能在提示词流程里用 Nano Banana 参考锁定风格，这是其他工具都没有的。\",\"author\":\"Kenji T.\",\"role\":\"概念艺术家\"}]},{\"type\":\"pricing-block\",\"title\":\"选择适合团队的方案\",\"description\":\"免费开始，当作品要交付客户时再升级。\"},{\"type\":\"faq\",\"title\":\"常见问题\",\"items\":[{\"question\":\"这适用于所有 AI 视频模型吗？\",\"answer\":\"是的，Lovart 的提示词智能体基于 Veo 3、Kling、Sora 和 Runway Gen-3 等主流模型的语法训练。它会调整术语以适配你选择的具体模型。\"},{\"question\":\"我需要懂摄影术语吗？\",\"answer\":\"完全不用。你描述感觉（例如「吓人」「快」「梦幻」），智能体会把它转化为专业的镜头术语（例如「荷兰角」「运动模糊」「柔焦」）。\"},{\"question\":\"我能用图片作为视频的提示吗？\",\"answer\":\"可以！这就是我们的「图生视频」流程。上传一张 Nano Banana 图片，智能体会帮你写一条运动提示词，轻松让那张静图活起来。\"},{\"question\":\"我最初的想法该多详细？\",\"answer\":\"可以简单到三个词，也可以复杂到一整段。智能体既能扩展简单想法，也能精炼复杂内容，让 AI 更好地理解。\"},{\"question\":\"提示词生成器免费吗？\",\"answer\":\"基础的提示词增强对所有用户开放。Flux Kontext 集成和无限提示词迭代等进阶功能属于 Pro 方案。\"}]},{\"type\":\"cta-default\",\"title\":\"用 Lovart 开始创作\",\"description\":\"几分钟内，把你的需求变成符合品牌调性的视觉作品。\",\"buttons\":[{\"text\":\"免费开始\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "AI 视频提示词生成器：为 Veo 和 Sora 打造电影级场景",
+      "description": "轻松写出专业的 AI 视频提示词。Lovart 的智能体把简单想法变成面向 Veo 3、Sora 和 Kling 的技术化、电影级指令，含运镜和光线控制。",
+      "buttons": [
+        {
+          "text": "立即开始",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "运镜逻辑"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "为什么你需要一个 AI 视频提示词智能体",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "运镜逻辑",
+          "description": "没有执导，AI 视频模型就会翻车。我们的智能体自动加入「推近」「向左横移」或「FPV 无人机」等运镜，赋予你的视频电影般的动感。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "运镜逻辑"
+          }
+        },
+        {
+          "title": "物理与运动",
+          "description": "避免「AI 变形」效应。我们优化提示词，为 Veo 3 的物理引擎定义清晰的物理动作（例如「奔跑而不打滑」「水自然飞溅」）。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "物理与运动"
+          }
+        },
+        {
+          "title": "风格锁定",
+          "description": "想要一致的观感？智能体能生成严格遵循特定艺术风格的提示词，如「1980 年代 VHS」「皮克斯 3D」或「Nano Banana 扁平插画」。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "风格锁定"
+          }
+        },
+        {
+          "title": "负向提示词",
+          "description": "重要的不只是你想要什么，还有你不想要什么。智能体自动加入负向参数，防止多出肢体或背景模糊等常见视频瑕疵。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "负向提示词"
+          }
+        },
+        {
+          "title": "Flux Kontext 集成",
+          "description": "不止于文字。提示词智能体与 Flux Kontext 无缝协作，把角色参考融入视频提示词，确保你的主角在每个片段里都是同一个样子。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Flux Kontext 集成"
+          }
+        },
+        {
+          "title": "即用即商用",
+          "description": "生成为高分辨率、无水印输出而优化的提示词，适用于广告、YouTube 和专业演示。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "即用即商用"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "一个智能体，集成全部能力",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "运镜逻辑",
+          "icon": "chat",
+          "content": {
+            "title": "运镜逻辑",
+            "description": "没有执导，AI 视频模型就会翻车。我们的智能体自动加入「推近」「向左横移」或「FPV 无人机」等运镜，赋予你的视频电影般的动感。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "运镜逻辑"
+            }
+          }
+        },
+        {
+          "label": "物理与运动",
+          "icon": "image",
+          "content": {
+            "title": "物理与运动",
+            "description": "避免「AI 变形」效应。我们优化提示词，为 Veo 3 的物理引擎定义清晰的物理动作（例如「奔跑而不打滑」「水自然飞溅」）。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "物理与运动"
+            }
+          }
+        },
+        {
+          "label": "风格锁定",
+          "icon": "flask",
+          "content": {
+            "title": "风格锁定",
+            "description": "想要一致的观感？智能体能生成严格遵循特定艺术风格的提示词，如「1980 年代 VHS」「皮克斯 3D」或「Nano Banana 扁平插画」。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "风格锁定"
+            }
+          }
+        },
+        {
+          "label": "负向提示词",
+          "icon": "brand",
+          "content": {
+            "title": "负向提示词",
+            "description": "重要的不只是你想要什么，还有你不想要什么。智能体自动加入负向参数，防止多出肢体或背景模糊等常见视频瑕疵。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "负向提示词"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "尤其擅长的两件事",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Flux Kontext 集成",
+          "description": "不止于文字。提示词智能体与 Flux Kontext 无缝协作，把角色参考融入视频提示词，确保你的主角在每个片段里都是同一个样子。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Flux Kontext 集成"
+          }
+        },
+        {
+          "title": "即用即商用",
+          "description": "生成为高分辨率、无水印输出而优化的提示词，适用于广告、YouTube 和专业演示。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "即用即商用"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "详细了解使用方式",
+      "items": [
+        {
+          "title": "开启你的AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora项目",
+          "description": "描述你想要的成果，并补充参考素材即可。"
+        },
+        {
+          "title": "与智能体一起迭代",
+          "description": "在同一画布上调整细节、探索不同方案。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "AI 视频提示词生成器：为 Veo 3 和 Sora 打造电影级提示词",
+      "description": "别再把额度浪费在糟糕的视频生成上。Lovart 的 AI 智能体充当你的私人摄影指导，把简单想法变成高度详尽、经过技术优化的视频提示词。用精确的运镜、光线和运动指令，释放 Veo 3 和 Kling 的全部潜力。",
+      "input_placeholder": "描述你的视频创意（例如：一名赛博朋克侦探在雨中行走）",
+      "prompts": [
+        {
+          "label": "科幻环境",
+          "prompt": "夜晚飞越未来生物荧光丛林的电影感无人机镜头，4K"
+        },
+        {
+          "label": "商业 B-roll",
+          "prompt": "厨师切鲜红番茄的特写，热气升腾，微距镜头，慢动作"
+        },
+        {
+          "label": "动作场面",
+          "prompt": "赛博朋克街头追逐，霓虹灯倒映在湿路面上，快速跟踪镜头"
+        },
+        {
+          "label": "3D 角色",
+          "prompt": "3D 黏土动画风格的可爱兔子挥手打招呼，柔和影棚光，可循环"
+        }
+      ],
+      "tip": "小技巧：写明氛围、镜头角度（例如「无人机镜头」）和具体运动（例如「慢动作奔跑」）。",
+      "cta": {
+        "text": "生成专业提示词"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "把模糊的想法变成好莱坞场景",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "描述你的构想",
+          "description": "从一个粗略概念开始。无论是「一辆车在行驶」还是「一场奇幻大战」，把脑海中的画面打出来即可。无需懂专业的影视术语。"
+        },
+        {
+          "step": 2,
+          "title": "智能体增强",
+          "description": "Lovart 智能体分析你的输入，注入专业的摄影细节——镜头、光线类型和运动物理——并专门为 Veo 3 等模型优化。"
+        },
+        {
+          "step": 3,
+          "title": "生成与迭代",
+          "description": "用增强后的提示词在 Lovart 内即时生成惊艳视频。不满意？让智能体「做得更吓人」或「再推近一点」来精修结果。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora：Lovart 与常规工作流对比",
+      "headers": [
+        "需求",
+        "通用工具",
+        "手工工作流",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "开启你的AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora项目",
+          "values": [
+            "一句提示词",
+            "手动写需求",
+            "需求驱动的推理"
+          ]
+        },
+        {
+          "feature": "出第一版的耗时",
+          "values": [
+            "几分钟",
+            "数天",
+            "几分钟"
+          ]
+        },
+        {
+          "feature": "生成后的编辑",
+          "values": [
+            "有限",
+            "反复修改",
+            "涂抹 / 文字 / 元素编辑"
+          ]
+        },
+        {
+          "feature": "保持品牌一致",
+          "values": [
+            "手动",
+            "手动",
+            "支持 Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora的用武之地",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "更快上线",
+          "description": "从需求到AI Video Prompt Generator: Craft Cinematic Scenes for Veo & Sora素材，一次会话即可完成。"
+        },
+        {
+          "icon": "brand",
+          "title": "保持一致",
+          "description": "Brand Kit 让每一份素材都保持统一。"
+        },
+        {
+          "icon": "refresh",
+          "title": "快速迭代",
+          "description": "无需重头开始，即可编辑细节。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "以前我要花几个小时去猜 Veo 的提示词。Lovart 的智能体把我那句「雨中一个悲伤的机器人」变成了一段带光线参数的四行精品提示词，结果堪称奥斯卡级别。",
+          "author": "Marcus D.",
+          "role": "独立电影人"
+        },
+        {
+          "quote": "运镜控制提示词是颠覆性的。我终于能生成一致的产品视频，精确地推近到我想要的地方。感觉就像在指挥一支真实的团队。",
+          "author": "Sarah L.",
+          "role": "TikTok 营销人"
+        },
+        {
+          "quote": "我用提示词生成器制作动态分镜。能在提示词流程里用 Nano Banana 参考锁定风格，这是其他工具都没有的。",
+          "author": "Kenji T.",
+          "role": "概念艺术家"
+        }
+      ]
+    },
+    {
+      "type": "pricing-block",
+      "title": "选择适合团队的方案",
+      "description": "免费开始，当作品要交付客户时再升级。"
+    },
+    {
+      "type": "faq",
+      "title": "常见问题",
+      "items": [
+        {
+          "question": "这适用于所有 AI 视频模型吗？",
+          "answer": "是的，Lovart 的提示词智能体基于 Veo 3、Kling、Sora 和 Runway Gen-3 等主流模型的语法训练。它会调整术语以适配你选择的具体模型。"
+        },
+        {
+          "question": "我需要懂摄影术语吗？",
+          "answer": "完全不用。你描述感觉（例如「吓人」「快」「梦幻」），智能体会把它转化为专业的镜头术语（例如「荷兰角」「运动模糊」「柔焦」）。"
+        },
+        {
+          "question": "我能用图片作为视频的提示吗？",
+          "answer": "可以！这就是我们的「图生视频」流程。上传一张 Nano Banana 图片，智能体会帮你写一条运动提示词，轻松让那张静图活起来。"
+        },
+        {
+          "question": "我最初的想法该多详细？",
+          "answer": "可以简单到三个词，也可以复杂到一整段。智能体既能扩展简单想法，也能精炼复杂内容，让 AI 更好地理解。"
+        },
+        {
+          "question": "提示词生成器免费吗？",
+          "answer": "基础的提示词增强对所有用户开放。Flux Kontext 集成和无限提示词迭代等进阶功能属于 Pro 方案。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "用 Lovart 开始创作",
+      "description": "几分钟内，把你的需求变成符合品牌调性的视觉作品。",
+      "buttons": [
+        {
+          "text": "免费开始",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "pageType": "feature"
+}

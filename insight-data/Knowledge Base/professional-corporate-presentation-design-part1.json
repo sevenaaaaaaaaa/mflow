@@ -1,0 +1,457 @@
+```json
+{
+  "section_en": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI Corporate Presentation Maker — Design Professional Presentations with Lovart's AI Design Agent",
+      "description": "Building a compelling corporate presentation shouldn't take weeks of slide-by-slide design work. Lovart is the world's first AI Design Agent, powered by the MCoT reasoning engine that thinks like a Creative Director — analyzing your company, audience, and narrative goals before generating complete, visually cohesive presentation decks from a simple text description. Whether you need an investor pitch deck, a quarterly earnings report, a sales proposal, or a company overview, Lovart delivers slide designs with proper narrative flow, data visualization, and brand consistency that command attention in the boardroom — in minutes, not weeks.",
+      "input_placeholder": "Describe the presentation you want to create — include the presentation type, audience, key message, and number of slides needed",
+      "system_prompt": "You are Lovart's MCoT reasoning engine acting as an expert Creative Director specializing in corporate presentation design. Analyze the user's description to determine: 1) The presentation purpose and communication goals, 2) The target audience and expected tone (formal, conversational, visionary), 3) The narrative arc across slides (opening, body, closing), 4) The optimal slide structure for data, storytelling, and persuasion. For each presentation: establish clear narrative flow from opening hook to closing CTA, select a color palette and typography that reinforce corporate identity and readability, determine the optimal layout for data visualization and key message delivery, and position calls-to-action for investor commitment, client buy-in, or stakeholder alignment. Produce a professionally designed, boardroom-ready presentation tailored to the specific use case.",
+      "button_text": "Design My Presentation",
+      "tip": "Pro tip: Mention your industry, audience type, presentation goal (pitch/report/proposal), and preferred visual style (corporate, modern, creative) in your prompt for the best results.",
+      "suggestion": [
+        {
+          "value": "Design a compelling investor pitch deck with problem statement, market opportunity, product demo slides, traction metrics, team introduction, and financial projections — clean professional aesthetic with bold data callouts targeting venture capital investors",
+          "label": "Investor Pitch Deck"
+        },
+        {
+          "value": "Create a polished quarterly earnings report presentation with executive summary, revenue breakdown, KPI dashboards, segment performance, outlook guidance, and appendix — corporate blue and white palette with clear data visualization for shareholders and analysts",
+          "label": "Quarterly Report"
+        },
+        {
+          "value": "Make a persuasive sales proposal presentation with client challenge analysis, proposed solution, implementation timeline, pricing, case studies, and ROI projections — consultative tone with trust-building visuals targeting enterprise decision makers",
+          "label": "Sales Proposal"
+        },
+        {
+          "value": "Generate a comprehensive company overview presentation with mission and vision, leadership team, product portfolio, market presence, competitive advantages, and growth roadmap — inspiring brand-forward design for partners, recruits, and media",
+          "label": "Company Overview"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "How to Design Professional Presentations with Lovart's AI Agent",
+      "columns": [
+        {
+          "title": "Describe Your Vision",
+          "description": "Start by telling Lovart's AI Design Agent exactly what you need. Describe your presentation type, audience, key messages, and preferred visual style — just like briefing a professional presentation design agency. The MCoT reasoning engine analyzes your narrative goals, maps out the slide-by-slide flow, and develops a complete creative strategy including data visualization approach before generating a single slide. ChatCanvas captures your brand context so every slide aligns with your corporate identity from the start.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Generate & Iterate",
+          "description": "Watch as Lovart transforms your brief into complete slide decks in seconds. The agent generates fully formatted slides with proper title hierarchy, body content, data charts, and on-brand visuals from Nano Banana Pro. Browse slide variations, reorder sections, and refine with natural language commands. Switch between Thinking Mode for deep strategic reasoning on narrative flow and Fast Mode for rapid output when you need quick deck iterations for internal reviews.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Refine & Export",
+          "description": "Polish every slide with Lovart's exclusive editing tools. Use Touch Edit to click and reshape any visual element — charts, icons, images — without manual masking. Apply Text Edit to modify headlines, bullet points, and data labels directly on slides while preserving typography. Preview your deck in Smart Mockups — on a conference room screen, tablet, or printed handout. Export at up to 8K resolution in PNG, JPG, SVG, or layered PSD — presentation-ready for any format.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Presentation Design Features Powered by Lovart's AI Agent",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Touch Edit",
+          "description": "Click any element on your slide — a chart, an icon, a background graphic — and reshape, recolor, or replace it instantly. Touch Edit understands visual context and adapts seamlessly to surrounding elements. Swap a bar chart for a pie chart, adjust icon colors to match your brand palette, or remove unnecessary visual clutter without touching a single layer manually. Slide refinement that feels like having a design team on standby."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Text Edit",
+          "description": "Edit slide titles, bullet points, data labels, speaker notes, and CTAs with structured text control across your entire deck. Change messaging, adjust font sizes and weights, realign text blocks, or swap typefaces — all while the surrounding slide layout stays perfectly intact. Update financial figures, refine value propositions, or localize presentation content for different markets in seconds without rebuilding slides. Ideal for creating investor vs. client versions of the same deck."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Smart Mockup",
+          "description": "Preview your presentation in photorealistic 3D mockups before delivering. See how slides look projected on a boardroom screen, displayed on a tablet during a one-on-one pitch, or printed as leave-behind handouts. Validate slide readability, data visualization clarity, and visual impact in every real-world presentation context. Ensure your key messages land with maximum impact before you walk into the room."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Brand Consistency",
+          "description": "Powered by Nano Banana Pro, Lovart locks in your corporate brand's color palette, typography system, and logo placement across every slide. Once you define your brand identity, every presentation deck automatically maintains visual consistency — from the title slide to the appendix. Multiple team members can create presentations independently for different departments, and every deck stays perfectly on-brand. No more off-brand slides slipping through to clients or investors."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "8K Ultra-HD Export",
+          "description": "Export presentation slides at up to 8K resolution — pixel-perfect for large-format projection, high-resolution print handouts, and digital distribution. Supported formats include PNG, JPG, SVG, PSD, and MP4 — giving you slide images, editable source files for further refinement in PowerPoint or Keynote, and video formats for animated presentations. Every export maintains sharp typography, vibrant colors, and professional polish at any scale."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Multi-Format Adaptation",
+          "description": "One presentation deck, every delivery format. Lovart automatically adapts your slides into optimized formats for live projection, printed handouts, PDF email attachments, tablet presentations, web-based pitch decks, and social media teasers — while preserving brand consistency and visual impact across every format. Impress in the boardroom, follow up by email, and promote on LinkedIn — all from a single deck created in minutes."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "What Presentation Creators Are Saying About Lovart",
+      "testimonials": [
+        {
+          "name": "David Chen",
+          "role": "CEO & Co-Founder, Nexus AI Ventures",
+          "content": "We're a startup raising our Series A, and investor pitch decks are make-or-break for us. Before Lovart, we spent $5,000 per deck with a presentation agency — $15,000 across three investor meetings. Lovart generated a stunning 15-slide pitch deck in under 8 minutes that our lead investor called 'one of the most polished decks I've seen from a seed-stage company.' We closed our $8M round and I credit the professional presentation quality as a key factor. Now we use Lovart for all investor updates and board meeting decks. We've saved over $40,000 in design costs this year alone.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Sarah Mitchell",
+          "role": "VP of Sales, CloudScale Enterprise",
+          "content": "My team delivers 60+ sales proposals per month to Fortune 500 clients. Before Lovart, our proposals were built from a stale PowerPoint template that looked dated and didn't convert. Lovart generated a fresh, consultative sales proposal deck that our team now customizes per prospect. Our proposal-to-close conversion rate jumped from 18% to 31% within two quarters. The Text Edit feature is brilliant — reps can personalize client names, pricing, and case studies in seconds while the professional design stays intact. We've standardized all 40+ sales reps on Lovart and couldn't be happier.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Michael Torres",
+          "role": "Head of Investor Relations, GreenPeak Energy Corp",
+          "content": "I produce 4 quarterly earnings presentations and 12+ investor update decks per year for a publicly traded company. Our old design agency charged $3,500 per deck and took 2 weeks turnaround — always stressful during earnings season. Lovart cut our presentation production time to 15 minutes per deck while delivering design quality that our CFO says is 'better than the agency ever produced.' The MCoT engine's approach to data visualization is exceptional — it automatically selects the right chart type, highlights key metrics, and maintains visual consistency across 30+ slides. We've redirected $56,000 in annual design spend to other investor relations initiatives.",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "What is Lovart, and how is it different from Canva or other AI image generators?",
+          "answer": "Lovart is the world's first AI Design Agent — not just another template editor or prompt-to-image tool. Unlike Canva, which requires manual template editing and slide-by-slide assembly, or Midjourney, which generates single images without narrative structure, Lovart's MCoT reasoning engine thinks like a Creative Director. It analyzes your brief, audience, and brand context to orchestrate complete presentation decks with intentional slide flow, proper data visualization, and consistent visual language. You describe your presentation in natural language, and Lovart delivers a complete, editable, boardroom-ready deck — as if you briefed a professional presentation design agency."
+        },
+        {
+          "question": "Do I need design skills to create professional presentations with Lovart?",
+          "answer": "Not at all. Lovart was built for non-designers who need professional results. You don't need to understand slide layouts, color theory, typography pairing, or data visualization best practices. Simply describe your presentation type, audience, key messages, and preferred style in plain English, and Lovart's AI Design Agent handles all the creative and technical decisions. The agent automatically selects appropriate chart types for your data, creates proper visual hierarchy, ensures readability at projection distance, and exports at the correct resolution. Thousands of executives, sales leaders, and startup founders with zero design background create boardroom-ready presentations on Lovart every day."
+        },
+        {
+          "question": "Can I use the presentations I create for commercial purposes?",
+          "answer": "Yes. All paid plans — Starter (2,000 credits/month), Basic (3,500 credits/month), and Pro (11,000 credits/month) — include full commercial usage rights. You own and can freely use every presentation you generate for investor pitches, client proposals, board meetings, and any lawful commercial purpose. The free plan with daily credits is perfect for trying Lovart out and internal personal projects. Lovart's models are trained on licensed and public domain data, and we provide commercial indemnity for paid subscribers."
+        },
+        {
+          "question": "Is there a free plan available?",
+          "answer": "Absolutely. Lovart offers a free plan with daily login credits that refresh every 24 hours, so you can experience AI-powered presentation design at no cost. When you need more volume and full commercial rights, upgrade to Starter (2,000 credits/month), Basic (3,500 credits/month), or Pro (11,000 credits/month). Every plan gives you access to all features including Touch Edit, Text Edit, Smart Mockup for boardroom previews, and 8K export. Every generation shows the credit cost before you confirm, so there are never surprise charges."
+        },
+        {
+          "question": "What export formats and resolutions are supported for presentation designs?",
+          "answer": "Lovart exports presentations in PNG, JPG, SVG, PSD, and MP4 formats at up to 8K resolution — suitable for large-format projection, high-resolution print handouts, and digital distribution. SVG and PSD provide layered, editable files for further refinement in tools like Photoshop, Illustrator, or importing into PowerPoint and Keynote. Exports maintain sharp typography and vibrant colors at any projection size, ensuring your slides look professional whether displayed on a laptop or a 20-foot conference room screen."
+        },
+        {
+          "question": "How does Lovart maintain brand consistency across multiple presentations?",
+          "answer": "Lovart's ChatCanvas features built-in brand memory powered by Nano Banana Pro. Once you define your corporate brand's color palette, typography, logo placement, and visual style, every presentation automatically adheres to those rules. The brand system stays active across sessions, so your investor deck, quarterly report, sales proposal, and company overview all feel unmistakably like your company. Multiple team members can create presentations independently, and every deck maintains perfect brand consistency. This is fundamentally different from template-based tools where each deck starts from scratch."
+        },
+        {
+          "question": "Can I edit the text directly on my slides after they're generated?",
+          "answer": "Yes, and this is one of Lovart's signature capabilities. With Text Edit, you can click on any text element across your entire deck — slide titles, bullet points, data labels, speaker notes, CTAs — and modify it directly on the slide image. The AI preserves the original typography style, including font weight, color, shadows, and alignment. Need to update quarterly numbers, refine value propositions, or create a client-specific version of your deck? Type the new text and it renders seamlessly. No need to regenerate or rebuild slides from scratch."
+        },
+        {
+          "question": "What types of presentations can Lovart create?",
+          "answer": "Lovart handles virtually any presentation type across industries: investor pitch decks, quarterly earnings reports, sales proposals, company overviews, product launch presentations, board meeting decks, conference keynotes, training and onboarding decks, strategic planning presentations, partnership proposals, webinar slide decks, and many more. The MCoT engine analyzes your presentation type, audience, and goals, then adapts the design strategy — slide structure, data visualization, narrative flow, visual style, and typography — to each specific use case automatically."
+        },
+        {
+          "question": "Can Lovart adapt my presentation for different platforms and delivery formats?",
+          "answer": "Yes. Lovart's Multi-Format Adaptation Engine automatically converts your presentation slides into optimized formats for every delivery context: full-screen projection, printed handouts, PDF email attachments, tablet-friendly one-on-one presentations, web-based pitch decks, and social media teasers for LinkedIn and Twitter. You get properly optimized versions for every format while preserving brand consistency and visual impact. Follow up after the meeting with a polished email PDF, post key slides on social media, and impress in the boardroom — all from a single deck created in minutes."
+        }
+      ]
+    }
+  ],
+  "section_zh-CN": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI 企业演示文稿设计工具 — 使用 Lovart AI 设计代理制作专业演示文稿",
+      "description": "制作一份引人入胜的企业演示文稿，不应该需要耗费数周逐页设计。Lovart 是全球首款 AI 设计代理，搭载 MCoT 推理引擎，像创意总监一样思考——先分析您的公司、受众和叙事目标，再根据简单的文字描述生成完整、视觉统一的演示文稿。无论您需要投资人路演文稿、季度财报报告、销售提案还是公司介绍，Lovart 都能在几分钟内（而非数周）交付具备合理叙事流程、数据可视化和品牌一致性的演示文稿，在会议室中赢得关注。",
+      "input_placeholder": "描述您想创建的演示文稿——包括演示类型、受众、核心信息和所需页数",
+      "system_prompt": "你是 Lovart 的 MCoT 推理引擎，扮演一位专精于企业演示文稿设计的资深创意总监。分析用户的描述以确定：1) 演示目的和沟通目标，2) 目标受众和预期基调（正式、对话式、愿景式），3) 各页之间的叙事弧线（开篇、主体、结尾），4) 最优的页面结构，服务于数据呈现、故事讲述和说服力。对每个演示文稿：建立从开篇钩子到结尾行动号召的清晰叙事流；选择强化企业形象和可读性的色彩方案与字体；确定数据可视化和关键信息传达的最佳布局；为投资人承诺、客户认可或利益相关方共识设置行动号召。输出一份针对具体使用场景量身定制的专业设计、可直接用于会议的演示文稿。",
+      "button_text": "设计我的演示文稿",
+      "tip": "提示：在提示词中提及您的行业、受众类型、演示目标（路演/报告/提案）和偏好的视觉风格（企业风、现代风、创意风），可获得最佳效果。",
+      "suggestion": [
+        {
+          "value": "设计一份引人注目的投资人路演文稿，包含问题陈述、市场机会、产品演示页、增长数据、团队介绍和财务预测——简洁专业的美学风格，醒目的数据标注，面向风投机构",
+          "label": "投资人路演文稿"
+        },
+        {
+          "value": "制作一份精良的季度财报演示，包含执行摘要、收入拆解、KPI 仪表盘、各板块表现、展望指引和附录——企业蓝白配色，清晰的数据可视化，面向股东和分析师",
+          "label": "季度财报"
+        },
+        {
+          "value": "制作一份有说服力的销售提案演示，包含客户挑战分析、解决方案、实施时间表、定价、案例研究和 ROI 预测——顾问式语气，建立信任感的视觉呈现，面向企业决策者",
+          "label": "销售提案"
+        },
+        {
+          "value": "生成一份全面的公司介绍演示，包含使命愿景、领导团队、产品组合、市场版图、竞争优势和增长路线图——鼓舞人心的品牌主导设计，面向合作伙伴、求职者和媒体",
+          "label": "公司介绍"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "如何使用 Lovart AI 代理设计专业演示文稿",
+      "columns": [
+        {
+          "title": "描述您的构想",
+          "description": "首先，告诉 Lovart AI 设计代理您的确切需求。描述您的演示类型、受众、核心信息和偏好的视觉风格——就像向专业演示设计机构做简报一样。MCoT 推理引擎分析您的叙事目标，规划逐页流程，在生成任何页面之前制定包含数据可视化方案的完整创意策略。ChatCanvas 捕获您的品牌背景，让每一页演示文稿从一开始就与企业形象保持一致。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "生成与迭代",
+          "description": "见证 Lovart 在几秒内将您的简报转化为完整的演示文稿。代理生成格式完整的页面，包含合理的标题层次、正文内容、数据图表和来自 Nano Banana Pro 的品牌一致视觉内容。浏览多种页面方案、调整章节顺序，用自然语言指令进行优化。在深度战略推理叙事流程的思考模式和快速输出的快速模式之间切换，满足内部评审的快速迭代需求。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "完善与导出",
+          "description": "使用 Lovart 独家的编辑工具精修每一页。使用触摸编辑点击任意视觉元素——图表、图标、图片——进行重塑，无需手动蒙版。使用文字编辑直接在页面上修改标题、要点和数据标签，同时保留字体样式。在智能样机中预览您的文稿——投影在会议室屏幕、平板展示或印刷资料中的效果。支持最高 8K 分辨率导出为 PNG、JPG、SVG 或分层 PSD——适用于任何格式的演示场景。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Lovart AI 代理驱动的演示文稿设计功能",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "触摸编辑",
+          "description": "点击页面上的任意元素——图表、图标、背景图形——即可立即重塑、换色或替换。触摸编辑理解视觉上下文，与周围元素无缝适配。将柱状图替换为饼图，调整图标颜色以匹配品牌配色，或移除不必要的视觉杂乱，无需手动操作任何图层。页面精修就像有一个设计团队随时待命。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "文字编辑",
+          "description": "以结构化文本控制编辑整个文稿的页面标题、要点、数据标签、演讲备注和行动号召。更改文案、调整字体大小和粗细、重新对齐文本块，或更换字体——周围的页面布局完美保持不变。更新财务数据、优化价值主张，或为不同市场本地化演示内容，几秒完成，无需重建页面。非常适合制作同一文稿的投资人版和客户版。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "智能样机",
+          "description": "在交付之前，以照片级 3D 样机预览您的演示文稿。查看页面投影在会议室屏幕、在一对一推介时平板显示或作为印刷资料分发的效果。验证页面可读性、数据可视化清晰度和每种真实演示场景中的视觉冲击力。确保在您走进会议室之前，核心信息就能以最大力度传达。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "品牌一致性",
+          "description": "由 Nano Banana Pro 驱动，Lovart 锁定您企业品牌的色彩方案、字体系统和 logo 位置，应用到每一页。一旦定义好品牌形象，每个演示文稿都自动保持视觉一致性——从封面到附录。多个团队成员可独立为不同部门制作演示文稿，每个文稿都完美符合品牌标准。再也不会出现不合规范的页面流向客户或投资人。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "8K 超高清导出",
+          "description": "支持最高 8K 分辨率导出演示文稿页面——像素完美的大幅投影、高分辨率印刷资料和数字分发。支持的格式包括 PNG、JPG、SVG、PSD 和 MP4——提供页面图像、可在 PowerPoint 或 Keynote 中进一步编辑的分层源文件，以及动态演示的视频格式。每次导出在任何比例下都保持清晰字体、鲜艳色彩和专业质感。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "多格式适配",
+          "description": "一份演示文稿，全场景交付。Lovart 自动将您的页面适配为各交付场景的优化格式：全屏投影、印刷资料、PDF 邮件附件、平板演示、网页路演文稿和社交媒体预告——同时保持各格式的品牌一致性和视觉冲击力。在会议室中令人印象深刻，邮件跟进，LinkedIn 推广——全部来自一份几分钟内创建的文稿。"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "演示文稿创作者对 Lovart 的评价",
+      "testimonials": [
+        {
+          "name": "David Chen",
+          "role": "Nexus AI Ventures CEO 兼联合创始人",
+          "content": "我们是一家正在进行 A 轮融资的初创公司，投资人路演文稿对我们来说生死攸关。在 Lovart 之前，我们每份文稿花 5,000 美元请演示设计机构——三场投资人会议就花了 15,000 美元。Lovart 在不到 8 分钟内生成了一份惊艳的 15 页路演文稿，我们的领投人称其为'我在种子轮公司中见过最精良的文稿之一'。我们完成了 800 万美元的融资，我确信专业的演示质量是关键因素。现在我们使用 Lovart 制作所有投资人更新和董事会会议文稿，仅今年一年就节省了超过 40,000 美元的设计成本。",
+          "avatar_url": ""
+        },
+        {
+          "name": "Sarah Mitchell",
+          "role": "CloudScale Enterprise 销售副总裁",
+          "content": "我的团队每月向财富 500 强客户提交 60 多份销售提案。在 Lovart 之前，我们的提案基于一套老旧的 PowerPoint 模板，看起来很过时，转化率低。Lovart 生成了一份全新的顾问式销售提案文稿，团队现在针对每个客户进行定制。我们的提案到成交转化率在两个季度内从 18% 跃升至 31%。文字编辑功能非常出色——销售代表可以在几秒内个性化客户名称、定价和案例研究，同时专业设计保持不变。我们已将全部 40 多名销售代表统一使用 Lovart，效果令人满意。",
+          "avatar_url": ""
+        },
+        {
+          "name": "Michael Torres",
+          "role": "GreenPeak Energy Corp 投资者关系负责人",
+          "content": "我每年为一家上市公司制作 4 份季度财报演示和 12 份以上的投资者更新文稿。我们之前的设计机构每份文稿收费 3,500 美元，需要 2 周交稿——在财报季总是压力巨大。Lovart 将我们的演示制作时间缩短至每份 15 分钟，同时交付的设计质量，我们的 CFO 评价为'比机构做的好太多了'。MCoT 引擎在数据可视化方面的表现尤为出色——它自动选择合适的图表类型、突出关键指标，并在 30 多页中保持视觉一致性。我们已将每年 56,000 美元的设计支出重新分配到其他投资者关系项目中。",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart 是什么？它和 Canva 或其他 AI 图像生成工具有何不同？",
+          "answer": "Lovart 是全球首款 AI 设计代理——不仅仅是又一个模板编辑器或文字生图工具。不同于需要手动编辑模板、逐页拼装的 Canva，也不同于仅生成单张图像而无叙事结构的 Midjourney，Lovart 的 MCoT 推理引擎像创意总监一样思考。它分析您的需求、受众和品牌背景，协调出完整的演示文稿，具备有意的页面流程、合理的数据可视化和一致的视觉语言。您用自然语言描述演示文稿，Lovart 交付完整、可编辑、可直接用于会议的文稿——就像您给专业演示设计机构做了简报一样。"
+        },
+        {
+          "question": "使用 Lovart 制作专业演示文稿需要设计技能吗？",
+          "answer": "完全不需要。Lovart 专为需要专业效果的非设计人员打造。您无需了解页面布局、色彩理论、字体搭配或数据可视化最佳实践。只需用简单的语言描述您的演示类型、受众、核心信息和偏好的风格，Lovart 的 AI 设计代理会处理所有创意和技术决策。代理自动为您的数据选择合适的图表类型、创建合理的视觉层次、确保投影距离下的可读性，并以正确的分辨率导出。每天有数千名毫无设计背景的高管、销售负责人和初创创始人在 Lovart 上创作可直接用于会议的演示文稿。"
+        },
+        {
+          "question": "我在 Lovart 上制作的演示文稿可以用于商业用途吗？",
+          "answer": "可以。所有付费方案——Starter（2,000 积分/月）、Basic（3,500 积分/月）和 Pro（11,000 积分/月）——都包含完整的商业使用权。您拥有并可自由使用您生成的每份演示文稿，用于投资人路演、客户提案、董事会会议以及任何合法的商业目的。免费方案提供每日登录积分，非常适合试用 Lovart 和内部个人项目。Lovart 的模型基于授权和公共领域数据训练，我们为付费用户提供商业赔偿保障。"
+        },
+        {
+          "question": "有免费方案吗？",
+          "answer": "当然有。Lovart 提供免费方案，包含每日登录积分，每 24 小时刷新一次，您可以零成本体验 AI 驱动的演示文稿设计。当您需要更大用量和完整商业权限时，可升级到 Starter（2,000 积分/月）、Basic（3,500 积分/月）或 Pro（11,000 积分/月）。每个方案均可使用所有功能，包括触摸编辑、文字编辑、智能样机（会议室预览）和 8K 导出。每次生成前都会显示所需积分，从不会有意外扣费。"
+        },
+        {
+          "question": "演示文稿设计支持哪些导出格式和分辨率？",
+          "answer": "Lovart 支持以 PNG、JPG、SVG、PSD 和 MP4 格式导出演示文稿，最高可达 8K 分辨率——适用于大幅投影、高分辨率印刷资料和数字分发。SVG 和 PSD 提供分层可编辑文件，可在 Photoshop、Illustrator 中进一步加工，或导入 PowerPoint 和 Keynote。导出文件在任何投影尺寸下都保持清晰字体和鲜艳色彩，确保页面无论是在笔记本电脑还是 20 英尺会议室屏幕上显示都同样专业。"
+        },
+        {
+          "question": "Lovart 如何在多份演示文稿之间保持品牌一致性？",
+          "answer": "Lovart 的 ChatCanvas 内置品牌记忆功能，由 Nano Banana Pro 驱动。一旦您定义好企业品牌的色彩方案、字体、logo 位置和视觉风格，每份演示文稿都会自动遵循这些规则。品牌系统在多次使用中持续生效，因此您的投资人文稿、季度报告、销售提案和公司介绍都毫无疑问地具有贵司的品牌特征。多个团队成员可独立制作演示文稿，每个文稿都完美保持品牌一致性。这与模板类工具每次从零开始设计有根本区别。"
+        },
+        {
+          "question": "生成演示文稿后，我可以直接在页面上编辑文字吗？",
+          "answer": "可以，这也是 Lovart 的标志性功能之一。通过文字编辑，您可以点击整个文稿中的任意文字元素——页面标题、要点、数据标签、演讲备注、行动号召——直接在页面图像上修改。AI 保留原有的字体样式，包括字重、颜色、阴影和对齐方式。需要更新季度数据、优化价值主张或制作面向特定客户的版本？输入新的文字，它会无缝渲染。无需重新生成或从头重建页面。"
+        },
+        {
+          "question": "Lovart 能制作哪些类型的演示文稿？",
+          "answer": "Lovart 可处理几乎所有行业的演示文稿类型：投资人路演文稿、季度财报报告、销售提案、公司介绍、产品发布演示、董事会会议文稿、大会主题演讲、培训与入职文稿、战略规划演示、合作伙伴提案、网络研讨会文稿等。MCoT 引擎分析您的演示类型、受众和目标，自动调整设计策略——页面结构、数据可视化、叙事流程、视觉风格和字体——以适应每个具体的使用场景。"
+        },
+        {
+          "question": "Lovart 能将我的演示文稿适配到不同平台和交付格式吗？",
+          "answer": "可以。Lovart 的多格式适配引擎自动将您的演示文稿页面转换为适合各交付场景的优化格式：全屏投影、印刷资料、PDF 邮件附件、适合平板的一对一演示、网页路演文稿，以及 LinkedIn 和 Twitter 的社交媒体预告。您获得针对每个格式优化的版本，同时保持品牌一致性和视觉冲击力。会后用精美的邮件 PDF 跟进，在社交媒体发布关键页面，在会议室中令人印象深刻——全部来自一份几分钟内创建的文稿。"
+        }
+      ]
+    }
+  ],
+  "section_zh-TW": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI 企業簡報設計工具 — 使用 Lovart AI 設計代理製作專業簡報",
+      "description": "製作一份引人入勝的企業簡報，不應該需要耗費數週逐頁設計。Lovart 是全球首款 AI 設計代理，搭載 MCoT 推理引擎，像創意總監一樣思考——先分析您的公司、受眾和敘事目標，再根據簡單的文字描述生成完整、視覺統一的簡報。無論您需要投資人路演簡報、季度財報報告、銷售提案還是公司介紹，Lovart 都能在幾分鐘內（而非數週）交付具備合理敘事流程、資料視覺化和品牌一致性的簡報，在會議室中贏得關注。",
+      "input_placeholder": "描述您想建立的簡報——包括簡報類型、受眾、核心訊息和所需頁數",
+      "system_prompt": "你是 Lovart 的 MCoT 推理引擎，扮演一位專精於企業簡報設計的資深創意總監。分析用戶的描述以確定：1) 簡報目的和溝通目標，2) 目標受眾和預期基調（正式、對話式、願景式），3) 各頁之間的敘事弧線（開篇、主體、結尾），4) 最優的頁面結構，服務於資料呈現、故事講述和說服力。對每個簡報：建立從開篇鉤子到結尾行動號召的清晰敘事流；選擇強化企業形象和可讀性的色彩方案與字體；確定資料視覺化和關鍵訊息傳達的最佳佈局；為投資人承諾、客戶認可或利益相關方共識設定行動號召。輸出一個針對具體使用場景量身定製的專業設計、可直接用於會議的簡報。",
+      "button_text": "設計我的演示文稿",
+      "tip": "提示：在提示詞中提及您的行業、受眾類型、簡報目標（路演/報告/提案）和偏好的視覺風格（企業風、現代風、創意風），可獲得最佳效果。",
+      "suggestion": [
+        {
+          "value": "設計一份引人注目的投資人路演簡報，包含問題陳述、市場機會、產品演示頁、增長資料、團隊介紹和財務預測——簡潔專業的美學風格，醒目的資料標註，面向風投機構",
+          "label": "投資人路演簡報"
+        },
+        {
+          "value": "製作一份精良的季度財報簡報，包含執行摘要、收入拆解、KPI 儀表板、各板塊表現、展望指引和附錄——企業藍白配色，清晰的資料視覺化，面向股東和分析師",
+          "label": "季度財報"
+        },
+        {
+          "value": "製作一份有說服力的銷售提案簡報，包含客戶挑戰分析、解決方案、實施時間表、定價、案例研究和 ROI 預測——顧問式語氣，建立信任感的視覺呈現，面向企業決策者",
+          "label": "銷售提案"
+        },
+        {
+          "value": "生成一份全面的公司介紹簡報，包含使命願景、領導團隊、產品組合、市場版圖、競爭優勢和增長路線圖——鼓舞人心的品牌主導設計，面向合作夥伴、求職者和媒體",
+          "label": "公司介紹"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "如何使用 Lovart AI 代理設計專業簡報",
+      "columns": [
+        {
+          "title": "描述您的構想",
+          "description": "首先，告訴 Lovart AI 設計代理您的確切需求。描述您的簡報類型、受眾、核心訊息和偏好的視覺風格——就像向專業簡報設計機構做簡報一樣。MCoT 推理引擎分析您的敘事目標，規劃逐頁流程，在生成任何頁面之前制定包含資料視覺化方案的完整創意策略。ChatCanvas 捕獲您的品牌背景，讓每一頁簡報從一開始就與企業形象保持一致。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "生成與迭代",
+          "description": "見證 Lovart 在幾秒內將您的簡報轉化為完整的簡報。代理生成格式完整的頁面，包含合理的標題層次、正文內容、資料圖表和來自 Nano Banana Pro 的品牌一致視覺內容。瀏覽多種頁面方案、調整章節順序，用自然語言指令進行優化。在深度戰略推理敘事流程的思考模式和快速輸出的快速模式之間切換，滿足內部評審的快速迭代需求。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "完善與匯出",
+          "description": "使用 Lovart 獨家的編輯工具精修每一頁。使用觸摸編輯點擊任意視覺元素——圖表、圖示、圖片——進行重塑，無需手動遮罩。使用文字編輯直接在頁面上修改標題、要點和資料標籤，同時保留字體樣式。在智慧樣機中預覽您的簡報——投影在會議室螢幕、平板展示或印刷資料中的效果。支援最高 8K 解析度匯出為 PNG、JPG、SVG 或分層 PSD——適用於任何格式的簡報場景。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Lovart AI 代理驅動的簡報設計功能",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "觸摸編輯",
+          "description": "點擊頁面上的任意元素——圖表、圖示、背景圖形——即可立即重塑、換色或替換。觸摸編輯理解視覺上下文，與周圍元素無縫適配。將長條圖替換為圓餅圖，調整圖示顏色以匹配品牌配色，或移除不必要的視覺雜亂，無需手動操作任何圖層。頁面精修就像有一個設計團隊隨時待命。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "文字編輯",
+          "description": "以結構化文字控制編輯整個簡報的頁面標題、要點、資料標籤、演講備註和行動號召。更改文案、調整字體大小和粗細、重新對齊文字塊，或更換字體——周圍的頁面佈局完美保持不變。更新財務資料、優化價值主張，或為不同市場在地化簡報內容，幾秒完成，無需重建頁面。非常適合製作同一簡報的投資人版和客戶版。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "智慧樣機",
+          "description": "在交付之前，以照片級 3D 樣機預覽您的簡報。查看頁面投影在會議室螢幕、在一對一推介時平板顯示或作為印刷資料分發的效果。驗證頁面可讀性、資料視覺化清晰度和每種真實簡報場景中的視覺衝擊力。確保在您走進會議室之前，核心訊息就能以最大力度傳達。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "品牌一致性",
+          "description": "由 Nano Banana Pro 驅動，Lovart 鎖定您企業品牌的色彩方案、字體系統和 logo 位置，應用到每一頁。一旦定義好品牌形象，每個簡報都自動保持視覺一致性——從封面到附錄。多個團隊成員可獨立為不同部門製作簡報，每個簡報都完美符合品牌標準。再也不會出現不合規範的頁面流向客戶或投資人。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "8K 超高畫質匯出",
+          "description": "支援最高 8K 解析度匯出簡報頁面——像素完美的大幅投影、高解析度印刷資料和數位分發。支援的格式包括 PNG、JPG、SVG、PSD 和 MP4——提供頁面圖像、可在 PowerPoint 或 Keynote 中進一步編輯的分層原始檔案，以及動態簡報的影片格式。每次匯出在任何比例下都保持清晰字體、鮮豔色彩和專業質感。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "多格式適配",
+          "description": "一份簡報，全場景交付。Lovart 自動將您的頁面適配為各交付場景的優化格式：全螢幕投影、印刷資料、PDF 郵件附件、平板簡報、網頁路演簡報和社群媒體預告——同時保持各格式的品牌一致性和視覺衝擊力。在會議室中令人印象深刻，郵件跟進，LinkedIn 推廣——全部來自一份幾分鐘內建立的簡報。"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "簡報創作者對 Lovart 的評價",
+      "testimonials": [
+        {
+          "name": "David Chen",
+          "role": "Nexus AI Ventures CEO 暨共同創辦人",
+          "content": "我們是一家正在進行 A 輪募資的新創公司，投資人路演簡報對我們來說生死攸關。在 Lovart 之前，我們每份簡報花 5,000 美元請簡報設計機構——三場投資人會議就花了 15,000 美元。Lovart 在不到 8 分鐘內生成了一份驚豔的 15 頁路演簡報，我們的領投人稱其為『我在種子輪公司中見過最精良的簡報之一』。我們完成了 800 萬美元的募資，我確信專業的簡報品質是關鍵因素。現在我們使用 Lovart 製作所有投資人更新和董事會會議簡報，僅今年一年就節省了超過 40,000 美元的設計成本。",
+          "avatar_url": ""
+        },
+        {
+          "name": "Sarah Mitchell",
+          "role": "CloudScale Enterprise 銷售副總裁",
+          "content": "我的團隊每月向 Fortune 500 大客戶提交 60 多份銷售提案。在 Lovart 之前，我們的提案基於一套老舊的 PowerPoint 範本，看起來很過時，轉換率低。Lovart 生成了一份全新的顧問式銷售提案簡報，團隊現在針對每個客戶進行定製。我們的提案到成交轉換率在兩個季度內從 18% 躍升至 31%。文字編輯功能非常出色——銷售代表可以在幾秒內個人化客戶名稱、定價和案例研究，同時專業設計保持不變。我們已將全部 40 多名銷售代表統一使用 Lovart，效果令人滿意。",
+          "avatar_url": ""
+        },
+        {
+          "name": "Michael Torres",
+          "role": "GreenPeak Energy Corp 投資人關係負責人",
+          "content": "我每年為一家上市公司製作 4 份季度財報簡報和 12 份以上的投資人更新簡報。我們之前的設計機構每份簡報收費 3,500 美元，需要 2 週交稿——在財報季總是壓力巨大。Lovart 將我們的簡報製作時間縮短至每份 15 分鐘，同時交付的設計品質，我們的 CFO 評價為『比機構做的好太多了』。MCoT 引擎在資料視覺化方面的表現尤為出色——它自動選擇合適的圖表類型、突顯關鍵指標，並在 30 多頁中保持視覺一致性。我們已將每年 56,000 美元的設計支出重新分配到其他投資人關係專案中。",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart 是什麼？它和 Canva 或其他 AI 圖像生成工具有何不同？",
+          "answer": "Lovart 是全球首款 AI 設計代理——不僅僅是又一個範本編輯器或文字生圖工具。不同於需要手動編輯範本、逐頁拼裝的 Canva，也不同於僅生成單張圖像而無敘事結構的 Midjourney，Lovart 的 MCoT 推理引擎像創意總監一樣思考。它分析您的需求、受眾和品牌背景，協調出完整的簡報，具備有意的頁面流程、合理的資料視覺化和一致的視覺語言。您用自然語言描述簡報，Lovart 交付完整、可編輯、可直接用於會議的簡報——就像您給專業簡報設計機構做了簡報一樣。"
+        },
+        {
+          "question": "使用 Lovart 製作專業簡報需要設計技能嗎？",
+          "answer": "完全不需要。Lovart 專為需要專業效果的非設計人員打造。您無需了解頁面佈局、色彩理論、字體搭配或資料視覺化最佳實踐。只需用簡單的語言描述您的簡報類型、受眾、核心訊息和偏好的風格，Lovart 的 AI 設計代理會處理所有創意和技術決策。代理自動為您的資料選擇合適的圖表類型、建立合理的視覺層次、確保投影距離下的可讀性，並以正確的解析度匯出。每天有數千名毫無設計背景的高階主管、銷售負責人和新創創辦人在 Lovart 上創作可直接用於會議的簡報。"
+        },
+        {
+          "question": "我在 Lovart 上製作的簡報可以用於商業用途嗎？",
+          "answer": "可以。所有付費方案——Starter（2,000 積分/月）、Basic（3,500 積分/月）和 Pro（11,000 積分/月）——都包含完整的商業使用權。您擁有並可自由使用您生成的每份簡報，用於投資人路演、客戶提案、董事會會議以及任何合法的商業目的。免費方案提供每日登入積分，非常適合試用 Lovart 和內部個人專案。Lovart 的模型基於授權和公共領域資料訓練，我們為付費用戶提供商業賠償保障。"
+        },
+        {
+          "question": "有免費方案嗎？",
+          "answer": "當然有。Lovart 提供免費方案，包含每日登入積分，每 24 小時刷新一次，您可以零成本體驗 AI 驅動的簡報設計。當您需要更大用量和完整商業權限時，可升級到 Starter（2,000 積分/月）、Basic（3,500 積分/月）或 Pro（11,000 積分/月）。每個方案均可使用所有功能，包括觸摸編輯、文字編輯、智慧樣機（會議室預覽）和 8K 匯出。每次生成前都會顯示所需積分，從不會有意外扣費。"
+        },
+        {
+          "question": "簡報設計支援哪些匯出格式和解析度？",
+          "answer": "Lovart 支援以 PNG、JPG、SVG、PSD 和 MP4 格式匯出簡報，最高可達 8K 解析度——適用於大幅投影、高解析度印刷資料和數位分發。SVG 和 PSD 提供分層可編輯檔案，可在 Photoshop、Illustrator 中進一步加工，或匯入 PowerPoint 和 Keynote。匯出檔案在任何投影尺寸下都保持清晰字體和鮮豔色彩，確保頁面無論是在筆記型電腦還是 20 英尺會議室螢幕上顯示都同樣專業。"
+        },
+        {
+          "question": "Lovart 如何在多份簡報之間保持品牌一致性？",
+          "answer": "Lovart 的 ChatCanvas 內建品牌記憶功能，由 Nano Banana Pro 驅動。一旦您定義好企業品牌的色彩方案、字體、logo 位置和視覺風格，每份簡報都會自動遵循這些規則。品牌系統在多次使用中持續生效，因此您的投資人簡報、季度報告、銷售提案和公司介紹都毫無疑問地具有貴司的品牌特徵。多個團隊成員可獨立製作簡報，每個簡報都完美保持品牌一致性。這與範本類工具每次從零開始設計有根本區別。"
+        },
+        {
+          "question": "生成簡報後，我可以直接在頁面上編輯文字嗎？",
+          "answer": "可以，這也是 Lovart 的標誌性功能之一。透過文字編輯，您可以點擊整個簡報中的任意文字元素——頁面標題、要點、資料標籤、演講備註、行動號召——直接在頁面圖像上修改。AI 保留原有的字體樣式，包括字重、顏色、陰影和對齊方式。需要更新季度資料、優化價值主張或製作面向特定客戶的版本？輸入新的文字，它會無縫渲染。無需重新生成或從頭重建頁面。"
+        },
+        {
+          "question": "Lovart 能製作哪些類型的簡報？",
+          "answer": "Lovart 可處理幾乎所有行業的簡報類型：投資人路演簡報、季度財報報告、銷售提案、公司介紹、產品發佈簡報、董事會會議簡報、大會主題演講、培訓與入職簡報、戰略規劃簡報、合作夥伴提案、線上研討會簡報等。MCoT 引擎分析您的簡報類型、受眾和目標，自動調整設計策略——頁面結構、資料視覺化、敘事流程、視覺風格和字體——以適應每個具體的使用場景。"
+        },
+        {
+          "question": "Lovart 能將我的簡報適配到不同平台和交付格式嗎？",
+          "answer": "可以。Lovart 的多格式適配引擎自動將您的簡報頁面轉換為適合各交付場景的優化格式：全螢幕投影、印刷資料、PDF 郵件附件、適合平板的一對一簡報、網頁路演簡報，以及 LinkedIn 和 Twitter 的社群媒體預告。您獲得針對每個格式優化的版本，同時保持品牌一致性和視覺衝擊力。會後用精美的郵件 PDF 跟進，在社群媒體發佈關鍵頁面，在會議室中令人印象深刻——全部來自一份幾分鐘內建立的簡報。"
+        }
+      ]
+    }
+  ]
+}
+```

@@ -1,0 +1,666 @@
+,
+  "section_fr": [
+    {
+      "type": "centeredInputSection",
+      "label": "Créateur de couvertures de livres IA",
+      "title": "Créez des couvertures de livres professionnelles avec l'IA",
+      "subtitle": "Réalisez en quelques minutes des couvertures époustouflantes et parfaitement adaptées à votre genre littéraire. Aucune compétence en design requise — décrivez simplement votre livre et laissez l'agent créatif IA de Lovart concevoir des couvertures qui captivent les lecteurs et font vendre.",
+      "placeholder": "Décrivez le genre, l'ambiance et le style visuel de votre livre…",
+      "button_text": "Créer ma couverture de livre",
+      "system_prompt": "Vous êtes le Directeur Créatif MCoT de Lovart, un expert en conception de couvertures de livres doté d'une connaissance approfondie des normes de l'industrie de l'édition, des conventions par genre et de la psychologie du lecteur. Vous maîtrisez les exigences d'Amazon KDP, les spécifications IngramSpark et ce qui pousse les lecteurs à cliquer. Analysez la description du livre par l'auteur pour identifier le genre, le public cible, l'ambiance et les thèmes visuels clés. Concevez des couvertures qui communiquent instantanément l'essence du livre, respectent le langage visuel propre à chaque genre, optimisent la visibilité en vignette sur Amazon et les librairies en ligne, et séduisent le lectorat visé.",
+      "suggestion": [
+        {
+          "value": "Créez une couverture de thriller saisissante avec une imagerie sombre et atmosphérique, une typographie audacieuse et une tension visuelle palpable — pour les auteurs de polars et thrillers",
+          "label": "Couverture Thriller"
+        },
+        {
+          "value": "Concevez une couverture de roman d'amour chaleureuse avec des couleurs douces, une image de couple intime, une typographie élégante en script et une profonde émotion — pour les auteurs de romance",
+          "label": "Couverture Romance"
+        },
+        {
+          "value": "Créez une couverture professionnelle pour essai avec une mise en page épurée, une typographie affirmée, une imagerie conceptuelle et un emplacement pour sous-titre — pour les auteurs de livres pratiques et d'entreprise",
+          "label": "Couverture Essai & Business"
+        },
+        {
+          "value": "Imaginez une couverture de fantasy épique avec des paysages grandioses, des éléments magiques, une typographie ornée et des visuels immersifs — pour les auteurs de fantasy et de science-fiction",
+          "label": "Couverture Fantasy & SF"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "label": "COMMENT ÇA MARCHE",
+      "title": "Votre couverture de livre — conçue en 3 étapes simples",
+      "columns": [
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png",
+          "title": "Décrivez votre livre",
+          "description": "Parlez à Lovart du genre, de l'intrigue, de l'ambiance et du public cible de votre livre. Notre Directeur Créatif MCoT interprète votre vision à travers le prisme de l'expertise du marché de l'édition."
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png",
+          "title": "L'IA génère, vous peaufinez",
+          "description": "Lovart génère des couvertures parfaitement adaptées à votre genre. Utilisez Touch Edit pour ajuster les images, Text Edit pour peaufiner la typographie de votre titre et Éditer les éléments pour régler chaque détail."
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png",
+          "title": "Exportez et publiez partout",
+          "description": "Téléchargez des fichiers prêts pour l'impression jusqu'à une résolution 8K. Obtenez des variantes pour livre broché, relié, ebook et livre audio — prêtes pour Amazon KDP, IngramSpark et toutes les plateformes majeures."
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "label": "FONCTIONNALITÉS PUISSANTES",
+      "title": "Tout ce dont vous avez besoin pour créer des couvertures qui se vendent",
+      "features": [
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Touch Edit",
+          "description": "Sélectionnez n'importe quelle zone de votre couverture — remplacez l'arrière-plan, modifiez les couleurs ou substituez des éléments visuels tout en préservant la composition globale. Montrez ce que vous voulez modifier et Lovart s'occupe du reste.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Text Edit — Typographie",
+          "description": "Peaufinez votre titre, sous-titre et nom d'auteur grâce à l'édition de texte assistée par IA qui préserve l'harmonie typographique. Ajustez polices, tailles et positionnement sans perturber votre design.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Aperçu intelligent sur maquettes 3D",
+          "description": "Prévisualisez instantanément votre couverture sur des maquettes 3D réalistes — format broché, relié et liseuses. Voyez exactement à quoi ressemblera votre design en librairie et sur les écrans avant de l'exporter.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Cohérence de marque pour les séries",
+          "description": "Créez des couvertures visuellement cohérentes sur l'ensemble de votre série littéraire. Lovart mémorise votre identité visuelle et garantit que chaque tome conserve une typographie, une palette de couleurs et un style de marque homogènes.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Export 8K prêt pour l'impression",
+          "description": "Exportez vos couvertures jusqu'à une résolution 8K aux formats PNG, JPG, SVG et PSD. Chaque fichier respecte les spécifications d'impression Amazon KDP et IngramSpark pour une publication professionnelle.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Variantes multi-formats",
+          "description": "Générez des déclinaisons pour chaque format à partir d'un seul design — couverture complète pour broché, jaquette pour relié, couverture avant pour ebook et format carré pour livre audio. Un seul design, tous les formats dont vous avez besoin.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "label": "ADORÉ PAR LES AUTEURS ET ÉDITEURS",
+      "title": "Découvrez ce que disent les créateurs",
+      "testimonials": [
+        {
+          "name": "Antoine Dubois",
+          "role": "Auteur de thrillers auto-édité",
+          "quote": "J'ai passé des mois à faire des allers-retours avec des designers freelance, en dépensant plus de 2 000 € par couverture. Avec Lovart, j'ai créé une couverture de thriller professionnelle en 20 minutes, plus réussie que tout ce que j'avais payé. Le taux de clics de mon dernier livre sur Amazon a bondi de 40 % avec cette nouvelle couverture.",
+          "metrics": "Plus de 2 000 € économisés | +40 % de clics",
+          "avatar_url": ""
+        },
+        {
+          "name": "Camille Lefèvre",
+          "role": "Directrice éditoriale, Éditions du Méridien",
+          "quote": "Nous devions faire passer notre production de couvertures de 12 à plus de 50 titres par an sans embaucher de designers. Lovart est devenu notre arme secrète — notre équipe produit désormais des couvertures parfaitement ciblées 5 fois plus vite, et nos auteurs adorent les fonctions d'édition collaborative.",
+          "metrics": "+50 couvertures/an | Production 5× plus rapide",
+          "avatar_url": ""
+        },
+        {
+          "name": "Léa Moreau",
+          "role": "Première autrice de romance",
+          "quote": "Je n'avais aucune expérience en design et un tout petit budget pour mon premier roman. Lovart a parfaitement compris à quoi devait ressembler une couverture de romance contemporaine. J'ai décrit mon livre, choisi un style qui me plaisait, et j'avais une couverture magnifique en moins d'une heure. On dirait vraiment qu'elle a été conçue par une grande maison d'édition.",
+          "metrics": "Zéro compétence en design | Publié en 1 heure",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "label": "QUESTIONS FRÉQUENTES",
+      "title": "Tout ce que vous devez savoir sur la création de couvertures de livres par IA",
+      "subtitle": "Des questions ? Nous avons les réponses. Vous ne trouvez pas ce que vous cherchez ? Contactez notre équipe d'assistance.",
+      "faq": [
+        {
+          "question": "Qu'est-ce que Lovart et comment crée-t-il des couvertures de livres ?",
+          "answer": "Lovart est le premier agent de design IA au monde, propulsé par le raisonnement MCoT (Multi-Chain of Thought) et la mémoire de marque ChatCanvas. Contrairement aux générateurs d'images IA génériques, Lovart pense comme un directeur créatif — il comprend le genre, le public cible et le positionnement marketing de votre livre pour concevoir des couvertures à la fois esthétiques et stratégiquement pensées pour la vente. Vous décrivez votre vision, et Lovart gère tout : de la composition à la typographie, jusqu'à l'export prêt pour l'impression."
+        },
+        {
+          "question": "Je n'ai aucune expérience en design — puis-je vraiment créer une couverture professionnelle ?",
+          "answer": "Absolument. Lovart a été conçu spécifiquement pour les créateurs qui ne sont pas designers. Nos fonctionnalités Touch Edit, Text Edit et l'aperçu sur maquettes 3D rendent le processus intuitif — il suffit de pointer, cliquer et décrire ce que vous voulez. Le moteur MCoT gère toutes les décisions techniques de design. Des milliers d'auteurs sans aucune expérience en design ont déjà publié avec des couvertures Lovart."
+        },
+        {
+          "question": "Puis-je utiliser les couvertures Lovart commercialement ? Qu'en est-il des droits pour Amazon KDP ?",
+          "answer": "Oui. Tous les abonnements payants (Starter, Basic, Pro) incluent les droits d'utilisation commerciale complets. Vous êtes propriétaire des couvertures que vous créez et pouvez les utiliser pour Amazon KDP, IngramSpark, la promotion de vos livres, les réseaux sociaux, les produits dérivés — tout ce qui concerne la vente et la promotion de votre livre. Les utilisateurs gratuits conservent un droit d'usage personnel ; les droits commerciaux nécessitent un abonnement payant."
+        },
+        {
+          "question": "Existe-t-il une offre gratuite ?",
+          "answer": "Oui. Lovart propose une offre gratuite avec des crédits quotidiens qui vous permettent d'explorer toutes les fonctionnalités et de créer des maquettes de couverture. Pour les auteurs souhaitant publier régulièrement, nos abonnements payants offrent davantage de crédits et les droits commerciaux : Starter (2 000 crédits/mois), Basic (3 500 crédits/mois) et Pro (11 000 crédits/mois)."
+        },
+        {
+          "question": "Dans quels formats et résolutions puis-je exporter ma couverture ?",
+          "answer": "Vous pouvez exporter aux formats PNG, JPG, SVG et PSD jusqu'à une résolution de 8K. Pour l'impression, Lovart génère des couvertures conformes aux spécifications d'Amazon KDP et d'IngramSpark, incluant la largeur de dos correcte, les fonds perdus et les exigences de DPI pour les formats brochés et reliés."
+        },
+        {
+          "question": "Lovart peut-il créer des couvertures cohérentes pour toute une série ?",
+          "answer": "Oui. La mémoire de marque ChatCanvas de Lovart mémorise votre style graphique, votre palette de couleurs, vos choix typographiques et vos conventions de mise en page. Lorsque vous créez les couvertures suivantes d'une série, Lovart applique votre identité de marque établie, garantissant une cohérence visuelle sur tous les titres — un facteur clé pour la reconnaissance de la série et la fidélité des lecteurs."
+        },
+        {
+          "question": "Puis-je modifier le texte de ma couverture après sa génération ?",
+          "answer": "Oui. La fonction Text Edit vous permet de modifier le titre, le sous-titre, le nom d'auteur, les accroches et tout autre texte sur votre couverture tout en préservant le style typographique sous-jacent. Changez la formulation, ajustez la taille des polices ou repositionnez le texte sans avoir à régénérer l'intégralité du design."
+        },
+        {
+          "question": "Quels genres de livres Lovart prend-il en charge ?",
+          "answer": "Le moteur MCoT de Lovart a été entraîné sur les conventions visuelles de tous les principaux genres : thriller, roman policier, romance, fantasy, science-fiction, fiction littéraire, essais, business, développement personnel, mémoires, young adult, horreur, roman historique et littérature jeunesse. L'IA comprend les palettes de couleurs, les tendances typographiques et les styles de composition propres à chaque genre."
+        },
+        {
+          "question": "Puis-je créer à la fois la version imprimée et la version ebook de ma couverture ?",
+          "answer": "Oui. La fonctionnalité Multi-Formats de Lovart génère des déclinaisons spécifiques à partir d'un seul design. Vous obtenez une couverture complète pour broché (recto, dos, verso), une jaquette pour relié, une couverture avant pour ebook et un format carré pour livre audio — le tout avec une cohérence visuelle parfaite et optimisé selon les exigences uniques de chaque format."
+        }
+      ]
+    }
+  ],
+  "section_pt": [
+    {
+      "type": "centeredInputSection",
+      "label": "Criador de capas de livros com IA",
+      "title": "Crie capas de livros profissionais com IA",
+      "subtitle": "Produza em minutos capas impressionantes e perfeitamente adequadas ao seu gênero literário. Nenhuma habilidade de design é necessária — apenas descreva o seu livro e deixe o agente criativo IA da Lovart criar capas que cativam os leitores e vendem mais.",
+      "placeholder": "Descreva o gênero, o clima e o estilo visual do seu livro…",
+      "button_text": "Criar minha capa de livro",
+      "system_prompt": "Você é o Diretor Criativo MCoT da Lovart, um especialista em design de capas de livros com profundo conhecimento das normas do mercado editorial, convenções de gênero e psicologia do leitor. Você entende os requisitos da Amazon KDP, as especificações do IngramSpark e o que faz os leitores clicarem. Analise a descrição do livro do autor para identificar o gênero, o público-alvo, o clima e os temas visuais principais. Crie capas que comuniquem instantaneamente a essência do livro, sigam a linguagem visual específica de cada gênero, otimizem a visibilidade em miniatura na Amazon e nas livrarias online e atraiam o público leitor pretendido.",
+      "suggestion": [
+        {
+          "value": "Crie uma capa de suspense impactante com imagens sombrias e atmosféricas, tipografia imponente e tensão visual — para autores de thrillers e mistério",
+          "label": "Capa de Suspense"
+        },
+        {
+          "value": "Desenhe uma capa de romance envolvente com cores suaves, imagens de casais, tipografia elegante em script e profunda emoção — para autores de romance",
+          "label": "Capa de Romance"
+        },
+        {
+          "value": "Crie uma capa profissional para não-ficção com layout limpo, tipografia autoritária, imagem conceitual e espaço para subtítulo — para autores de negócios e ensaios",
+          "label": "Capa de Não-Ficção"
+        },
+        {
+          "value": "Desenhe uma capa de fantasia épica com paisagens dramáticas, elementos mágicos, tipografia ornamentada e visuais de construção de mundos — para autores de fantasia e ficção científica",
+          "label": "Capa de Fantasia"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "label": "COMO FUNCIONA",
+      "title": "Sua capa de livro — criada em 3 passos simples",
+      "columns": [
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png",
+          "title": "Descreva o seu livro",
+          "description": "Conte à Lovart sobre o gênero, enredo, clima e leitores-alvo do seu livro. Nosso Diretor Criativo MCoT interpreta sua visão através das lentes da experiência do mercado editorial."
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png",
+          "title": "IA gera e você refina",
+          "description": "A Lovart gera capas com precisão de gênero. Use o Touch Edit para ajustar imagens, o Text Edit para aperfeiçoar a tipografia do título e o Editar Elementos para refinar cada detalhe."
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png",
+          "title": "Exporte e publique em qualquer lugar",
+          "description": "Baixe arquivos prontos para impressão com resolução de até 8K. Obtenha variantes para brochura, capa dura, ebook e audiolivro — prontas para Amazon KDP, IngramSpark e todas as principais plataformas."
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "label": "FUNCIONALIDADES PODEROSAS",
+      "title": "Tudo o que você precisa para criar capas que vendem",
+      "features": [
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Touch Edit",
+          "description": "Selecione qualquer área da sua capa — troque fundos, mude cores ou substitua imagens preservando a composição geral. Aponte para o que deseja alterar e a Lovart cuida do resto.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Text Edit — Tipografia",
+          "description": "Aperfeiçoe seu título, subtítulo e nome do autor com a edição de texto alimentada por IA que mantém a harmonia tipográfica. Ajuste fontes, tamanhos e posicionamento sem prejudicar seu design.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Pré-visualização inteligente em mockups 3D",
+          "description": "Visualize instantaneamente sua capa em mockups 3D realistas — brochura, capa dura e dispositivos de leitura digital. Veja exatamente como seu design ficará nas prateleiras e nas telas antes de exportar.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Consistência de marca para séries",
+          "description": "Crie capas visualmente coesas em toda a sua série literária. A Lovart memoriza seu estilo de marca, garantindo que cada volume mantenha tipografia, paleta de cores e identidade visual consistentes.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Exportação 8K pronta para impressão",
+          "description": "Exporte capas com resolução de até 8K nos formatos PNG, JPG, SVG e PSD. Cada arquivo atende às especificações de impressão da Amazon KDP e do IngramSpark para publicação profissional.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Variantes em múltiplos formatos",
+          "description": "Gere variantes específicas para cada formato a partir de um único design — capa completa para brochura, sobrecapa para capa dura, capa frontal para ebook e capa quadrada para audiolivro. Um design, todos os formatos que você precisa.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "label": "ADORADO POR AUTORES E EDITORAS",
+      "title": "Veja o que os criadores estão dizendo",
+      "testimonials": [
+        {
+          "name": "Thiago Oliveira",
+          "role": "Escritor de thrillers independente",
+          "quote": "Passei meses trocando e-mails com designers freelancers, gastando mais de R$ 10.000 por capa. Com a Lovart, criei uma capa de thriller profissional em 20 minutos que ficou melhor do que qualquer uma que eu havia pago. Com a nova capa, a taxa de cliques do meu último livro na Amazon aumentou 40%.",
+          "metrics": "Mais de R$ 10.000 economizados | +40% de CTR",
+          "avatar_url": ""
+        },
+        {
+          "name": "Juliana Santos",
+          "role": "Editora Sênior, Editora Meridiano",
+          "quote": "Precisávamos aumentar nossa produção de capas de 12 para mais de 50 títulos por ano sem contratar novos designers. A Lovart se tornou nossa arma secreta — nossa equipe agora produz capas perfeitamente alinhadas ao gênero 5 vezes mais rápido, e nossos autores adoram os recursos de edição colaborativa.",
+          "metrics": "+50 capas/ano | Produção 5× mais rápida",
+          "avatar_url": ""
+        },
+        {
+          "name": "Rafaela Costa",
+          "role": "Autora estreante de romance",
+          "quote": "Eu não tinha absolutamente nenhuma experiência em design e um orçamento minúsculo para meu primeiro romance. A Lovart entendeu exatamente como deveria ser a capa de um romance contemporâneo. Descrevi meu livro, escolhi um estilo que gostei e tive uma capa maravilhosa em menos de uma hora. Parece mesmo que foi criada por uma grande editora.",
+          "metrics": "Zero habilidade em design | Publicado em 1 hora",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "label": "PERGUNTAS FREQUENTES",
+      "title": "Tudo o que você precisa saber sobre design de capas de livros com IA",
+      "subtitle": "Tem dúvidas? Nós temos respostas. Não encontrou o que procura? Entre em contato com nossa equipe de suporte.",
+      "faq": [
+        {
+          "question": "O que é a Lovart e como ela cria capas de livros?",
+          "answer": "A Lovart é o primeiro agente de design IA do mundo, alimentado pelo raciocínio MCoT (Multi-Chain of Thought) e pela memória de marca ChatCanvas. Diferente dos geradores de imagens IA genéricos, a Lovart pensa como um diretor criativo — entendendo o gênero, o público-alvo e o posicionamento de mercado do seu livro para criar capas que são ao mesmo tempo bonitas e estrategicamente desenvolvidas para vender. Você descreve sua visão, e a Lovart cuida de tudo: da composição à tipografia, até a exportação pronta para impressão."
+        },
+        {
+          "question": "Não tenho experiência em design — posso realmente criar uma capa de livro profissional?",
+          "answer": "Com certeza. A Lovart foi criada especificamente para criadores que não são designers. Nossos recursos Touch Edit, Text Edit e pré-visualização em mockups 3D tornam o processo intuitivo — basta apontar, clicar e descrever o que você quer. O motor MCoT lida com todas as decisões técnicas de design. Milhares de autores sem qualquer experiência em design já publicaram com capas da Lovart."
+        },
+        {
+          "question": "Posso usar as capas da Lovart comercialmente? E quanto aos direitos para Amazon KDP?",
+          "answer": "Sim. Todos os planos pagos (Starter, Basic, Pro) incluem direitos completos de uso comercial. Você é o proprietário das capas que cria e pode usá-las para Amazon KDP, IngramSpark, promoção de livros, redes sociais, produtos — tudo relacionado à venda e ao marketing do seu livro. Usuários do plano gratuito mantêm direitos de uso pessoal; os direitos comerciais exigem uma assinatura paga."
+        },
+        {
+          "question": "Existe um plano gratuito?",
+          "answer": "Sim. A Lovart oferece um plano gratuito com créditos diários que permitem explorar todos os recursos e criar capas de amostra. Para autores sérios que planejam publicações regulares, nossos planos pagos oferecem mais créditos e direitos comerciais: Starter (2.000 créditos/mês), Basic (3.500 créditos/mês) e Pro (11.000 créditos/mês)."
+        },
+        {
+          "question": "Em quais formatos e resoluções posso exportar minha capa?",
+          "answer": "Você pode exportar nos formatos PNG, JPG, SVG e PSD com resolução de até 8K. Para publicação impressa, a Lovart gera capas que atendem às especificações da Amazon KDP e do IngramSpark, incluindo largura correta da lombada, margens de sangria e requisitos de DPI para formatos brochura e capa dura."
+        },
+        {
+          "question": "A Lovart pode criar capas consistentes para uma série de livros?",
+          "answer": "Sim. A memória de marca ChatCanvas da Lovart memoriza seu estilo de design, paleta de cores, escolhas tipográficas e convenções de layout. Quando você cria capas subsequentes para uma série, a Lovart aplica sua identidade de marca estabelecida, garantindo consistência visual em todos os títulos — um fator essencial para o reconhecimento da série e a fidelidade dos leitores."
+        },
+        {
+          "question": "Posso editar o texto da minha capa depois de gerada?",
+          "answer": "Sim. O recurso Text Edit permite modificar título, subtítulo, nome do autor, slogans e qualquer outro texto na sua capa preservando o estilo tipográfico subjacente. Altere a redação, ajuste o tamanho das fontes ou reposicione o texto sem precisar regenerar todo o design."
+        },
+        {
+          "question": "Quais gêneros literários a Lovart suporta?",
+          "answer": "O motor MCoT da Lovart foi treinado nas convenções visuais de todos os principais gêneros, incluindo thriller, mistério, romance, fantasia, ficção científica, ficção literária, não-ficção, negócios, autoajuda, memórias, young adult, terror, romance histórico e livros infantis. A IA compreende as paletas de cores, tendências tipográficas e estilos de composição específicos de cada gênero."
+        },
+        {
+          "question": "Posso criar tanto a versão impressa quanto a digital da minha capa?",
+          "answer": "Sim. O recurso Multi-Formato da Lovart gera variantes específicas para cada formato a partir de um único design. Você recebe uma capa completa para brochura (frente, lombada, verso), uma sobrecapa para capa dura, uma capa frontal para ebook e um formato quadrado para audiolivro — tudo com estilo consistente, otimizado para os requisitos únicos de cada formato."
+        }
+      ]
+    }
+  ],
+  "section_it": [
+    {
+      "type": "centeredInputSection",
+      "label": "Creatore di copertine per libri con IA",
+      "title": "Crea copertine per libri professionali con l'IA",
+      "subtitle": "Realizza in pochi minuti copertine straordinarie e perfettamente calibrate sul tuo genere letterario. Nessuna competenza di design richiesta — descrivi semplicemente il tuo libro e lascia che l'agente creativo IA di Lovart realizzi copertine che catturano i lettori e fanno vendere.",
+      "placeholder": "Descrivi il genere, l'atmosfera e lo stile visivo del tuo libro…",
+      "button_text": "Crea la mia copertina del libro",
+      "system_prompt": "Sei il Direttore Creativo MCoT di Lovart, un esperto di design di copertine di libri con una profonda conoscenza degli standard dell'industria editoriale, delle convenzioni di genere e della psicologia del lettore. Conosci i requisiti di Amazon KDP, le specifiche IngramSpark e cosa spinge i lettori a cliccare. Analizza la descrizione del libro dell'autore per identificare genere, pubblico target, atmosfera e temi visivi chiave. Progetta copertine che comunichino all'istante l'essenza del libro, seguano il linguaggio visivo specifico del genere, ottimizzino la visibilità delle miniature su Amazon e nei negozi online e attraggano il pubblico di lettori desiderato.",
+      "suggestion": [
+        {
+          "value": "Crea una copertina thriller avvincente con immagini cupe e atmosferiche, tipografia audace e una palpabile tensione visiva — per autori di thriller e mistery",
+          "label": "Copertina Thriller"
+        },
+        {
+          "value": "Disegna una copertina romance coinvolgente con colori tenui, immagini di coppia intima, elegante tipografia corsiva e calore emotivo — per autori di romanzi rosa",
+          "label": "Copertina Romance"
+        },
+        {
+          "value": "Crea una copertina saggistica professionale con layout pulito, tipografia autorevole, immagine concettuale e spazio per il sottotitolo — per autori di saggi e business",
+          "label": "Copertina Saggistica"
+        },
+        {
+          "value": "Disegna una copertina fantasy epica con paesaggi spettacolari, elementi magici, tipografia decorata e ambientazioni immersive — per autori di fantasy e fantascienza",
+          "label": "Copertina Fantasy"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "label": "COME FUNZIONA",
+      "title": "La tua copertina — realizzata in 3 semplici passaggi",
+      "columns": [
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png",
+          "title": "Descrivi il tuo libro",
+          "description": "Parla a Lovart del genere, della trama, dell'atmosfera e dei lettori target del tuo libro. Il nostro Direttore Creativo MCoT interpreta la tua visione attraverso la lente dell'esperienza del mercato editoriale."
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png",
+          "title": "L'IA genera, tu perfezioni",
+          "description": "Lovart genera copertine precise per genere. Usa Touch Edit per regolare le immagini, Text Edit per perfezionare la tipografia del titolo e Modifica Elementi per rifinire ogni dettaglio."
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png",
+          "title": "Esporta e pubblica ovunque",
+          "description": "Scarica file pronti per la stampa fino a risoluzione 8K. Ottieni varianti per brossura, copertina rigida, ebook e audiolibro — pronte per Amazon KDP, IngramSpark e tutte le principali piattaforme."
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "label": "FUNZIONALITÀ POTENTI",
+      "title": "Tutto ciò che ti serve per creare copertine che vendono",
+      "features": [
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Touch Edit",
+          "description": "Seleziona qualsiasi area della tua copertina — sostituisci sfondi, modifica colori o cambia immagini preservando la composizione complessiva. Indica cosa vuoi modificare e Lovart fa il resto.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Text Edit — Tipografia",
+          "description": "Perfeziona titolo, sottotitolo e nome dell'autore con l'editing testuale basato su IA che preserva l'armonia tipografica. Regola font, dimensioni e posizionamento senza alterare il design.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Anteprima smart su mockup 3D",
+          "description": "Visualizza all'istante la tua copertina su mockup 3D realistici — brossura, copertina rigida e dispositivi di lettura. Guarda esattamente come apparirà il tuo design sugli scaffali e sugli schermi prima di esportare.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Coerenza di brand per le serie",
+          "description": "Crea copertine visivamente coerenti in tutta la tua serie letteraria. Lovart memorizza il tuo stile di brand, garantendo che ogni volume mantenga una tipografia, una palette cromatica e un'identità visiva uniformi.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Esportazione 8K pronta per la stampa",
+          "description": "Esporta copertine fino a risoluzione 8K nei formati PNG, JPG, SVG e PSD. Ogni file soddisfa le specifiche di stampa di Amazon KDP e IngramSpark per una pubblicazione professionale.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Varianti multi-formato",
+          "description": "Genera varianti specifiche per ogni formato da un unico design — copertina completa per brossura, sovraccoperta per rigida, copertina frontale per ebook e formato quadrato per audiolibro. Un solo design, tutti i formati che ti servono.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "label": "AMATO DA AUTORI ED EDITORI",
+      "title": "Scopri cosa dicono i creatori",
+      "testimonials": [
+        {
+          "name": "Marco Rossi",
+          "role": "Autore thriller autopubblicato",
+          "quote": "Ho passato mesi avanti e indietro con designer freelance, spendendo oltre 2.000 € a copertina. Con Lovart ho creato una copertina thriller professionale in 20 minuti che è più bella di qualsiasi cosa per cui abbia pagato. Con la nuova copertina, il tasso di clic del mio ultimo libro su Amazon è aumentato del 40%.",
+          "metrics": "Oltre 2.000 € risparmiati | +40% di CTR",
+          "avatar_url": ""
+        },
+        {
+          "name": "Chiara Bianchi",
+          "role": "Senior Editor, Meridian Press Italia",
+          "quote": "Dovevamo scalare la produzione di copertine da 12 a oltre 50 titoli all'anno senza assumere nuovi designer. Lovart è diventata la nostra arma segreta — il nostro team ora produce copertine perfettamente allineate al genere 5 volte più velocemente, e i nostri autori adorano le funzionalità di editing collaborativo.",
+          "metrics": "+50 copertine/anno | Produzione 5× più veloce",
+          "avatar_url": ""
+        },
+        {
+          "name": "Sofia Esposito",
+          "role": "Autrice esordiente di romanzi rosa",
+          "quote": "Non avevo alcuna esperienza di design e un budget minuscolo per il mio primo romanzo. Lovart ha capito esattamente come doveva apparire la copertina di un romance contemporaneo. Ho descritto il mio libro, scelto uno stile che mi piaceva e in meno di un'ora avevo una copertina splendida. Sembra davvero progettata da una grande casa editrice.",
+          "metrics": "Zero competenze di design | Pubblicato in 1 ora",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "label": "DOMANDE FREQUENTI",
+      "title": "Tutto ciò che devi sapere sul design di copertine per libri con IA",
+      "subtitle": "Hai domande? Abbiamo le risposte. Non trovi ciò che cerchi? Contatta il nostro team di supporto.",
+      "faq": [
+        {
+          "question": "Cos'è Lovart e come crea le copertine dei libri?",
+          "answer": "Lovart è il primo agente di design IA al mondo, alimentato dal ragionamento MCoT (Multi-Chain of Thought) e dalla memoria di brand ChatCanvas. A differenza dei generici generatori di immagini IA, Lovart pensa come un direttore creativo — comprende il genere, il pubblico target e il posizionamento di mercato del tuo libro per creare copertine che sono sia belle che strategicamente concepite per vendere. Tu descrivi la tua visione e Lovart si occupa di tutto: dalla composizione alla tipografia, fino all'esportazione pronta per la stampa."
+        },
+        {
+          "question": "Non ho esperienza di design — posso davvero creare una copertina professionale?",
+          "answer": "Assolutamente sì. Lovart è stata costruita appositamente per i creatori che non sono designer. Le nostre funzionalità Touch Edit, Text Edit e anteprima su mockup 3D rendono il processo intuitivo — ti basta indicare, cliccare e descrivere ciò che desideri. Il motore MCoT gestisce tutte le decisioni tecniche di design. Migliaia di autori senza alcuna esperienza di design hanno già pubblicato con le copertine Lovart."
+        },
+        {
+          "question": "Posso utilizzare le copertine Lovart a fini commerciali? E i diritti per Amazon KDP?",
+          "answer": "Sì. Tutti i piani a pagamento (Starter, Basic, Pro) includono diritti completi di utilizzo commerciale. Sei il proprietario delle copertine che crei e puoi utilizzarle per Amazon KDP, IngramSpark, promozione dei libri, social media, merchandising — tutto ciò che riguarda la vendita e il marketing del tuo libro. Gli utenti del piano gratuito mantengono i diritti di uso personale; i diritti commerciali richiedono un abbonamento a pagamento."
+        },
+        {
+          "question": "È disponibile un piano gratuito?",
+          "answer": "Sì. Lovart offre un piano gratuito con crediti giornalieri che ti permettono di esplorare tutte le funzionalità e creare copertine di prova. Per gli autori seri che pianificano pubblicazioni regolari, i nostri piani a pagamento offrono più crediti e diritti commerciali: Starter (2.000 crediti/mese), Basic (3.500 crediti/mese) e Pro (11.000 crediti/mese)."
+        },
+        {
+          "question": "In quali formati e risoluzioni posso esportare la mia copertina?",
+          "answer": "Puoi esportare nei formati PNG, JPG, SVG e PSD con risoluzione fino a 8K. Per la pubblicazione a stampa, Lovart genera copertine conformi alle specifiche di Amazon KDP e IngramSpark, inclusi la corretta larghezza del dorso, i margini al vivo e i requisiti DPI per i formati brossura e copertina rigida."
+        },
+        {
+          "question": "Lovart può creare copertine coerenti per un'intera serie?",
+          "answer": "Sì. La memoria di brand ChatCanvas di Lovart memorizza il tuo stile di design, la palette cromatica, le scelte tipografiche e le convenzioni di layout. Quando crei le copertine successive di una serie, Lovart applica la tua identità di brand consolidata, garantendo coerenza visiva su tutti i titoli — un fattore cruciale per il riconoscimento della serie e la fedeltà dei lettori."
+        },
+        {
+          "question": "Posso modificare il testo della copertina dopo che è stata generata?",
+          "answer": "Sì. La funzionalità Text Edit ti consente di modificare titolo, sottotitolo, nome dell'autore, slogan e qualsiasi altro testo sulla tua copertina preservando lo stile tipografico sottostante. Cambia la formulazione, regola le dimensioni dei caratteri o riposiziona il testo senza dover rigenerare l'intero design."
+        },
+        {
+          "question": "Quali generi letterari supporta Lovart?",
+          "answer": "Il motore MCoT di Lovart è stato addestrato sulle convenzioni visive di tutti i principali generi, tra cui thriller, mistery, romance, fantasy, fantascienza, narrativa letteraria, saggistica, business, self-help, memorie, young adult, horror, romanzo storico e libri per bambini. L'IA comprende le palette cromatiche, le tendenze tipografiche e gli stili compositivi specifici di ogni genere."
+        },
+        {
+          "question": "Posso creare sia la versione stampata che quella ebook della mia copertina?",
+          "answer": "Sì. La funzionalità Multi-Formato di Lovart genera varianti specifiche per ciascun formato a partire da un unico design. Ottieni una copertina completa per brossura (fronte, dorso, retro), una sovraccoperta per rigida, una copertina frontale per ebook e un formato quadrato per audiolibro — tutto in uno stile coerente, ottimizzato per i requisiti specifici di ciascun formato."
+        }
+      ]
+    }
+  ],
+  "section_es": [
+    {
+      "type": "centeredInputSection",
+      "label": "Creador de portadas de libros con IA",
+      "title": "Diseña portadas de libros profesionales con IA",
+      "subtitle": "Crea en minutos portadas impresionantes y perfectamente adaptadas a tu género literario. No necesitas saber diseño — solo describe tu libro y deja que el agente creativo de IA de Lovart cree portadas que cautiven a los lectores y vendan más.",
+      "placeholder": "Describe el género, el ambiente y el estilo visual de tu libro…",
+      "button_text": "Diseñar la portada de mi libro",
+      "system_prompt": "Eres el Director Creativo MCoT de Lovart, un experto en diseño de portadas de libros con un profundo conocimiento de los estándares de la industria editorial, las convenciones de género y la psicología del lector. Conoces los requisitos de Amazon KDP, las especificaciones de IngramSpark y lo que impulsa a los lectores a hacer clic. Analiza la descripción del libro del autor para identificar el género, el público objetivo, el ambiente y los temas visuales clave. Diseña portadas que comuniquen al instante la esencia del libro, sigan el lenguaje visual específico del género, optimicen la visibilidad en miniatura en Amazon y las librerías en línea, y atraigan al público lector deseado.",
+      "suggestion": [
+        {
+          "value": "Crea una portada de thriller impactante con imágenes oscuras y atmosféricas, tipografía audaz y tensión visual palpable — para autores de thrillers y misterio",
+          "label": "Portada de Thriller"
+        },
+        {
+          "value": "Diseña una portada de novela romántica envolvente con colores suaves, imágenes de parejas, tipografía elegante en cursiva y calidez emocional — para autores de romance",
+          "label": "Portada de Romance"
+        },
+        {
+          "value": "Crea una portada profesional de no ficción con diseño limpio, tipografía autoritativa, imagen conceptual y espacio para subtítulo — para autores de ensayo y negocios",
+          "label": "Portada de No Ficción"
+        },
+        {
+          "value": "Diseña una portada de fantasía épica con paisajes espectaculares, elementos mágicos, tipografía ornamentada y ambientaciones inmersivas — para autores de fantasía y ciencia ficción",
+          "label": "Portada de Fantasía"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "label": "CÓMO FUNCIONA",
+      "title": "Tu portada de libro — diseñada en 3 simples pasos",
+      "columns": [
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png",
+          "title": "Describe tu libro",
+          "description": "Cuéntale a Lovart sobre el género, la trama, la atmósfera y los lectores objetivo de tu libro. Nuestro Director Creativo MCoT interpreta tu visión a través de la lente de la experiencia del mercado editorial."
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png",
+          "title": "La IA genera, tú perfeccionas",
+          "description": "Lovart genera portadas precisas por género. Usa Touch Edit para ajustar las imágenes, Text Edit para perfeccionar la tipografía del título y Editar Elementos para refinar cada detalle."
+        },
+        {
+          "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png",
+          "title": "Exporta y publica en cualquier lugar",
+          "description": "Descarga archivos listos para impresión con resolución de hasta 8K. Obtén variantes para tapa blanda, tapa dura, ebook y audiolibro — listas para Amazon KDP, IngramSpark y todas las plataformas principales."
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "label": "FUNCIONES POTENTES",
+      "title": "Todo lo que necesitas para diseñar portadas que venden",
+      "features": [
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Touch Edit",
+          "description": "Selecciona cualquier área de tu portada — cambia fondos, modifica colores o sustituye imágenes conservando la composición general. Señala lo que quieres modificar y Lovart se encarga del resto.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Text Edit — Tipografía",
+          "description": "Perfecciona tu título, subtítulo y nombre de autor con la edición de texto impulsada por IA que mantiene la armonía tipográfica. Ajusta fuentes, tamaños y posición sin alterar tu diseño.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Vista previa inteligente en mockups 3D",
+          "description": "Previsualiza al instante tu portada en mockups 3D realistas — tapa blanda, tapa dura y dispositivos de lectura. Observa exactamente cómo se verá tu diseño en estanterías y pantallas antes de exportar.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Consistencia de marca para series",
+          "description": "Crea portadas visualmente coherentes en toda tu serie literaria. Lovart memoriza tu estilo de marca, asegurando que cada entrega mantenga una tipografía, paleta de colores e identidad visual uniformes.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Exportación 8K lista para impresión",
+          "description": "Exporta portadas con resolución de hasta 8K en formatos PNG, JPG, SVG y PSD. Cada archivo cumple con las especificaciones de impresión de Amazon KDP e IngramSpark para publicación profesional.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png"
+        },
+        {
+          "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Variantes en múltiples formatos",
+          "description": "Genera variantes para cada formato a partir de un único diseño — cubierta completa para tapa blanda, sobrecubierta para tapa dura, portada frontal para ebook y formato cuadrado para audiolibro. Un solo diseño, todos los formatos que necesitas.",
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "label": "ADORADO POR AUTORES Y EDITORIALES",
+      "title": "Mira lo que dicen los creadores",
+      "testimonials": [
+        {
+          "name": "Alejandro García",
+          "role": "Escritor de thrillers autopublicado",
+          "quote": "Pasé meses de idas y venidas con diseñadores freelance, gastando más de 2.000 € por portada. Con Lovart creé una portada de thriller profesional en 20 minutos que supera cualquier cosa por la que haya pagado. Con la nueva portada, la tasa de clics de mi último libro en Amazon aumentó un 40%.",
+          "metrics": "Más de 2.000 € ahorrados | +40% de CTR",
+          "avatar_url": ""
+        },
+        {
+          "name": "Carmen López",
+          "role": "Editora Sénior, Editorial Meridiano",
+          "quote": "Necesitábamos escalar nuestra producción de portadas de 12 a más de 50 títulos al año sin contratar más diseñadores. Lovart se convirtió en nuestra arma secreta — nuestro equipo ahora produce portadas perfectamente alineadas con el género 5 veces más rápido, y nuestros autores adoran las funciones de edición colaborativa.",
+          "metrics": "+50 portadas/año | Producción 5× más rápida",
+          "avatar_url": ""
+        },
+        {
+          "name": "Lucía Fernández",
+          "role": "Autora novel de novela romántica",
+          "quote": "No tenía absolutamente nada de experiencia en diseño y un presupuesto muy ajustado para mi primera novela. Lovart entendió exactamente cómo debía verse la portada de una novela romántica contemporánea. Describí mi libro, elegí un estilo que me gustó y en menos de una hora tenía una portada preciosa. De verdad parece diseñada por una gran editorial.",
+          "metrics": "Cero habilidades de diseño | Publicado en 1 hora",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "label": "PREGUNTAS FRECUENTES",
+      "title": "Todo lo que necesitas saber sobre el diseño de portadas de libros con IA",
+      "subtitle": "¿Tienes preguntas? Tenemos respuestas. Si no encuentras lo que buscas, ponte en contacto con nuestro equipo de soporte.",
+      "faq": [
+        {
+          "question": "¿Qué es Lovart y cómo crea portadas de libros?",
+          "answer": "Lovart es el primer agente de diseño IA del mundo, impulsado por el razonamiento MCoT (Multi-Chain of Thought) y la memoria de marca ChatCanvas. A diferencia de los generadores de imágenes IA genéricos, Lovart piensa como un director creativo — entiende el género, el público objetivo y el posicionamiento de mercado de tu libro para crear portadas que son a la vez hermosas y estratégicamente concebidas para vender. Tú describes tu visión y Lovart se encarga de todo: desde la composición y la tipografía hasta la exportación lista para impresión."
+        },
+        {
+          "question": "No tengo experiencia en diseño — ¿de verdad puedo crear una portada profesional?",
+          "answer": "Totalmente. Lovart se creó específicamente para creadores que no son diseñadores. Nuestras funciones Touch Edit, Text Edit y vista previa en mockups 3D hacen que el proceso sea intuitivo — solo tienes que señalar, hacer clic y describir lo que quieres. El motor MCoT se encarga de todas las decisiones técnicas de diseño. Miles de autores sin ninguna experiencia en diseño ya han publicado con portadas de Lovart."
+        },
+        {
+          "question": "¿Puedo usar las portadas de Lovart con fines comerciales? ¿Y los derechos para Amazon KDP?",
+          "answer": "Sí. Todos los planes de pago (Starter, Basic, Pro) incluyen derechos completos de uso comercial. Eres el propietario de las portadas que creas y puedes utilizarlas para Amazon KDP, IngramSpark, promoción de libros, redes sociales, merchandising — todo lo relacionado con la venta y el marketing de tu libro. Los usuarios del plan gratuito conservan los derechos de uso personal; los derechos comerciales requieren una suscripción de pago."
+        },
+        {
+          "question": "¿Hay un plan gratuito disponible?",
+          "answer": "Sí. Lovart ofrece un plan gratuito con créditos diarios que te permiten explorar todas las funciones y crear portadas de muestra. Para autores serios que planean publicaciones regulares, nuestros planes de pago ofrecen más créditos y derechos comerciales: Starter (2.000 créditos/mes), Basic (3.500 créditos/mes) y Pro (11.000 créditos/mes)."
+        },
+        {
+          "question": "¿En qué formatos y resoluciones puedo exportar mi portada?",
+          "answer": "Puedes exportar en formatos PNG, JPG, SVG y PSD con resoluciones de hasta 8K. Para publicación impresa, Lovart genera portadas que cumplen con las especificaciones de Amazon KDP e IngramSpark, incluyendo el ancho de lomo correcto, los márgenes de sangrado y los requisitos de DPI para formatos de tapa blanda y tapa dura."
+        },
+        {
+          "question": "¿Puede Lovart crear portadas coherentes para toda una serie de libros?",
+          "answer": "Sí. La memoria de marca ChatCanvas de Lovart memoriza tu estilo de diseño, paleta de colores, elecciones tipográficas y convenciones de maquetación. Cuando creas las siguientes portadas de una serie, Lovart aplica tu identidad de marca establecida, garantizando coherencia visual en todos los títulos — un factor crítico para el reconocimiento de la serie y la fidelidad de los lectores."
+        },
+        {
+          "question": "¿Puedo editar el texto de mi portada después de generarla?",
+          "answer": "Sí. La función Text Edit te permite modificar el título, el subtítulo, el nombre del autor, los eslóganes y cualquier otro texto de tu portada conservando el estilo tipográfico subyacente. Cambia la redacción, ajusta el tamaño de la fuente o reposiciona el texto sin tener que regenerar todo el diseño."
+        },
+        {
+          "question": "¿Qué géneros literarios admite Lovart?",
+          "answer": "El motor MCoT de Lovart ha sido entrenado en las convenciones visuales de todos los géneros principales, incluyendo thriller, misterio, romance, fantasía, ciencia ficción, ficción literaria, no ficción, negocios, autoayuda, memorias, literatura juvenil, terror, novela histórica y libros infantiles. La IA comprende las paletas de colores, las tendencias tipográficas y los estilos de composición específicos de cada género."
+        },
+        {
+          "question": "¿Puedo crear tanto la versión impresa como la digital de mi portada?",
+          "answer": "Sí. La función Multi-Formato de Lovart genera variantes específicas para cada formato a partir de un único diseño. Obtienes una cubierta completa para tapa blanda (portada, lomo, contraportada), una sobrecubierta para tapa dura, una portada frontal para ebook y un formato cuadrado para audiolibro — todo con un estilo coherente y optimizado para los requisitos únicos de cada formato."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1608 @@
+{
+  "section_en": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI Album Cover Maker — Design Professional Album Art with Lovart's AI Design Agent",
+      "description": "Stop settling for generic album art or paying thousands for custom cover design. Lovart's AI Design Agent transforms a description of your music, mood, and genre into professional, streaming-ready album covers in minutes. Powered by the MCoT reasoning engine, our agent thinks like a Creative Director — analyzing your musical genre, lyrical themes, and target audience before generating layouts, typography, and visuals that capture your sound visually. From Spotify canvas art to vinyl sleeve designs, Lovart delivers studio-quality album covers for musicians of every genre. Start creating with free daily credits.",
+      "input_placeholder": "Describe your album — include genre, mood, title, artist name, and visual style you envision",
+      "system_prompt": "You are a Senior Creative Director and AI Album Cover Design Specialist at Lovart. Using the MCoT (Mind Chain of Thought) engine, analyze the artist's description to understand: 1) The musical genre and its visual conventions, 2) The album's emotional tone and lyrical themes, 3) The target listener demographics, 4) The appropriate visual style, color psychology, and typography that represent the music authentically while standing out on streaming platforms. Orchestrate Lovart's agentic design pipeline: select optimal composition from ChatCanvas, generate genre-appropriate visuals with Nano Banana Pro, apply artist name and album title with perfect typography, ensure Spotify/Apple Music dimension compliance, and deliver a complete album cover. The user's requirements: $input$",
+      "button_text": "Design My Album Cover",
+      "tip": "Pro tip: Include your music genre, album mood, artist name, and whether you need square format (streaming) or vinyl sleeve dimensions",
+      "suggestion": [
+        {
+          "value": "Create a dark atmospheric rock album cover with moody lighting, band silhouette against a stormy sky, bold gothic typography for band name and album title — for an alternative rock band",
+          "label": "Rock Album Cover"
+        },
+        {
+          "value": "Design a vibrant electronic/EDM album cover with neon geometry, abstract waveforms, futuristic gradient colors, and sleek modern typography — for an electronic music producer",
+          "label": "Electronic Album Cover"
+        },
+        {
+          "value": "Create a warm acoustic folk album cover with natural textures, sunlit forest imagery, hand-drawn illustration elements, and organic serif typography — for a singer-songwriter",
+          "label": "Folk Album Cover"
+        },
+        {
+          "value": "Design a bold hip-hop album cover with urban photography aesthetic, high-contrast portrait, graffiti-inspired typography, and street culture visual elements — for a rap artist",
+          "label": "Hip-Hop Album Cover"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "How to Design Professional Album Covers with Lovart's AI Agent",
+      "columns": [
+        {
+          "title": "Describe Your Sound",
+          "description": "Start by telling Lovart's AI Design Agent about your music. Describe your genre, the album's mood and themes, your artist name, and the visual style you envision. The MCoT reasoning engine analyzes your musical identity, researches genre-specific cover art conventions, and maps out a complete creative strategy before generating a single pixel. ChatCanvas captures your artist brand so every cover aligns with your musical identity.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Generate & Explore Variations",
+          "description": "Watch as Lovart transforms your musical brief into multiple album cover variants in seconds. The agent generates complete layouts with artist name, album title, genre-appropriate imagery from Nano Banana Pro, and professionally paired typography — all working as a unified design system. Browse different visual directions, from photo-based covers to abstract art, and select the one that best captures your sound.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Refine & Export for Streaming",
+          "description": "Fine-tune every detail with Lovart's exclusive editing tools. Use Touch Edit to adjust cover imagery or replace elements with a click. Apply Text Edit to modify artist name or album title directly on the cover while preserving the original typography style. Preview your cover on Spotify and Apple Music mockups with Smart Mockup. Export at up to 8K resolution in PNG, JPG, or SVG for streaming platforms, vinyl printing, and digital distribution.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "The Ultimate AI Toolkit for Professional Album Cover Design",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Semantic Touch Edit",
+          "description": "Click any object on your album cover — a background element, decorative texture, or visual motif — and reshape, recolor, or replace it instantly. Touch Edit understands visual context and adapts seamlessly to lighting and perspective. No manual masking required — just intuitive click-to-edit precision that makes refining your album art feel effortless."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Perfect Artist Name & Title Rendering",
+          "description": "Render your artist name and album title with flawless, readable typography directly on the cover. Unlike generic AI tools that produce garbled text, Lovart's Text Edit delivers crisp typography in any style — from elegant serif artist names to bold display album titles — while preserving shadows, gradients, and perspective effects. Your music deserves cover text that looks professional."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Streaming Platform Mockup Engine",
+          "description": "Instantly preview your album cover in real streaming contexts. Use Smart Mockup to see your design on Spotify playlists, Apple Music browse pages, and vinyl record sleeves. The engine automatically adapts perspective and lighting so your cover looks authentic in every context. Perfect for pre-release social media teasers and digital distributor submissions."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Artist Brand Consistency",
+          "description": "Powered by Nano Banana Pro and ChatCanvas brand memory, Lovart ensures every release from an artist maintains visual consistency. Define your artist visual identity once — color palette, typography preferences, logo placement — and the agent applies it to every album cover, single art, and EP design automatically. Build a recognizable visual brand across your entire discography."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Streaming-Ready 8K Export",
+          "description": "Export album covers at up to 8K resolution in PNG, JPG, or SVG formats — exceeding the 3000x3000 pixel requirement for all major streaming platforms. Your cover art looks crisp on every screen, from smartphone displays to billboard advertisements. All exports comply with Spotify, Apple Music, Amazon Music, and Tidal technical specifications automatically."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Multi-Format Release Package",
+          "description": "Design once, distribute everywhere. After creating your master album cover, Lovart generates optimized variants for every format: square cover (streaming), vertical canvas (Spotify Canvas video dimensions), banner (YouTube Music/artist profile), CD jewel case, and vinyl sleeve — all preserving visual hierarchy and artistic integrity. Launch a complete visual release package from a single design in minutes."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Musicians and Labels Creating Professional Album Art with Lovart",
+      "testimonials": [
+        {
+          "name": "Jasmine Reyes",
+          "role": "Independent Singer-Songwriter",
+          "content": "Before Lovart, I spent $1,500 on a single album cover that took 3 weeks to deliver — and I still wasn't happy with the result. With Lovart's AI Album Cover Maker, I created 10 cover concepts for my debut EP in one evening, and my fans voted on their favorite on Instagram. The winner looks better than what the agency delivered. I've since used Lovart for all 3 of my single releases, spending $0 extra beyond my subscription. My streaming numbers increased 60% after the visual rebrand.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Marcus 'Wave' Thompson",
+          "role": "Electronic Music Producer & DJ",
+          "content": "As an electronic artist, my visual identity is as important as the music. Lovart understands genre aesthetics better than any human designer I've worked with. I describe my track's vibe — 'dark warehouse techno with industrial textures' — and the AI generates cover art that perfectly captures the sonic atmosphere. I've released 8 tracks this year with Lovart covers, and my Spotify algorithmic placements have doubled. The streaming mockup feature is genius for social media promotion.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Sarah Chen",
+          "role": "Creative Director, Indie Record Label",
+          "content": "Our label manages 12 artists across rock, folk, and alternative genres. Before Lovart, we spent $24,000 annually on cover art design across our roster. Now we produce all single and EP covers in-house using Lovart, saving $18,000 per year while releasing 3x more music. Each artist maintains their unique visual brand thanks to ChatCanvas memory. Our latest folk artist's album cover went semi-viral on design inspiration accounts — nobody believed it was AI-generated."
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "What is Lovart and how is it different from other AI art generators for album covers?",
+          "answer": "Lovart is the world's first AI Design Agent, not just an image generator. Unlike Midjourney or DALL-E which produce single images from prompts, Lovart's MCoT reasoning engine thinks like a Creative Director — analyzing your music genre, lyrical themes, and target audience before designing covers with intentional typography, proper artist name placement, and genre-appropriate visual language. It delivers a complete, editable, streaming-ready album cover, not just a generated image you need to add text to separately."
+        },
+        {
+          "question": "Can I create professional album covers without any design experience?",
+          "answer": "Absolutely. Lovart was built for musicians, not designers. You don't need to understand layout, color theory, typography, or streaming platform specifications. Simply describe your music — genre, mood, album title, artist name — in plain language, and Lovart handles all creative and technical decisions. The agent automatically places your artist name and album title with proper typography, selects genre-appropriate visual styles, and exports at streaming-compliant resolution."
+        },
+        {
+          "question": "Can I use the album covers commercially on Spotify, Apple Music, and other platforms?",
+          "answer": "Yes. Users on paid plans (Starter, Basic, Pro) own full commercial rights to their album cover designs. You can use them for streaming platforms, digital distribution, merchandise, physical releases (CD, vinyl), promotional materials, and any lawful commercial purpose. The free plan is for personal and evaluation use. Lovart's models are trained on licensed and public domain data."
+        },
+        {
+          "question": "Is there a free plan for creating album covers, and how do credits work?",
+          "answer": "Yes, Lovart offers a free plan with daily login credits that refresh every 24 hours. You can create multiple album cover concepts per day without paying — perfect for experimenting with visual directions for your music. Paid plans start with Starter (2,000 monthly credits), Basic (3,500 credits), and Pro (11,000 credits), all unlocking full agent capabilities, commercial rights, and access to premium models like Nano Banana Pro. Every generation shows the credit cost before you confirm."
+        },
+        {
+          "question": "What file formats and resolutions can I export my album covers in?",
+          "answer": "Lovart supports professional export in PNG, JPG, SVG (vector), and PSD with layers. Resolutions go up to 8K, exceeding the 3000x3000 pixel requirement for Spotify, Apple Music, Amazon Music, and all major streaming platforms. Your cover art will look sharp on any display — from smartphone screens to vinyl record printing. We also provide proper color profiles for digital distribution requirements."
+        },
+        {
+          "question": "How does Lovart maintain visual consistency across an artist's multiple releases?",
+          "answer": "Lovart's ChatCanvas maintains persistent artist brand context — once you define your artist visual identity (color palette, typography preferences, logo placement), the agent applies it automatically to every new album cover, single art, and EP design. Nano Banana Pro ensures visual consistency across all generated elements. This creates a recognizable visual brand across your entire discography, which is critical for building a loyal fanbase on streaming platforms."
+        },
+        {
+          "question": "Can I edit the artist name or album title on the cover after it's generated?",
+          "answer": "Yes, and this is one of Lovart's signature capabilities. With Text Edit, you can click on your artist name or album title on the cover and modify it directly while preserving the original typography style — including font weight, shadows, gradients, and perspective effects. Need to update a release date or change the album title? Type the new text and it renders seamlessly into the existing design. No need to regenerate the entire cover."
+        },
+        {
+          "question": "What music genres can I create album covers for with Lovart?",
+          "answer": "Lovart's AI Album Cover Maker handles every music genre brilliantly: rock, pop, hip-hop/rap, electronic/EDM, folk/acoustic, R&B, jazz, classical, metal, country, indie/alternative, Latin, K-pop, reggae, ambient, and more. The MCoT engine analyzes your genre description and automatically adapts the design strategy — color psychology, typography style, visual motifs, and composition — to match genre conventions while ensuring your cover stands out uniquely."
+        },
+        {
+          "question": "Can Lovart create different album cover formats for Spotify Canvas, vinyl, and CD?",
+          "answer": "Yes. The Multi-Format Release Package engine generates optimized variants from your master album cover: square (streaming standard), vertical video canvas (Spotify Canvas), wide banner (YouTube Music, artist profiles), CD jewel case dimensions, and vinyl sleeve layouts — all preserving visual hierarchy and artistic integrity. This eliminates the tedious manual resizing process and ensures your visual release package is distribution-ready."
+        }
+      ]
+    }
+  ],
+  "section_zh-CN": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI 专辑封面制作工具 — 用 Lovart AI 设计代理打造专业音乐封面",
+      "description": "别再满足于千篇一律的专辑封面，也别再为定制设计花上大几千块。Lovart 的 AI 设计代理能将你对音乐风格、情绪和流派的描述，在几分钟内转化为可以直接上架流媒体的专业专辑封面。基于 MCoT 推理引擎，我们的代理像创意总监一样思考——在生成任何画面之前，先分析你的音乐流派、歌词主题和目标听众，再规划构图、字体和视觉风格，让封面精准传达你的音乐灵魂。从 Spotify Canvas 动态封面到黑胶封套设计，Lovart 为所有流派的音乐人提供录音室级品质的专辑封面。用每日免费额度开启你的创作。",
+      "input_placeholder": "描述你的专辑——包含音乐流派、氛围、专辑标题、艺人名称，以及你设想的视觉风格",
+      "system_prompt": "你是 Lovart 的资深创意总监兼 AI 专辑封面设计专家。借助 MCoT（思维链）引擎，深入分析艺人描述以理解：1）音乐流派及其视觉设计惯例，2）专辑的情感基调和歌词主题，3）目标听众的年龄、审美和消费习惯，4）最适合的视觉风格、色彩心理学及字体设计——既要忠实表现音乐内核，又要在流媒体平台上一眼抓住听众。编排 Lovart 的智能设计全流程：在 ChatCanvas 中锁定最佳构图，调用 Nano Banana Pro 生成符合流派的视觉素材，精准排版艺人名称和专辑标题，确保所有输出符合 Spotify/Apple Music 尺寸规范，最终交付完整可用的专辑封面。用户需求：$input$",
+      "button_text": "设计我的专辑封面",
+      "tip": "专业提示：请说明你的音乐流派、专辑情绪、艺人名称，以及需要方形格式（流媒体用）还是黑胶封套尺寸",
+      "suggestion": [
+        {
+          "value": "为独立摇滚乐队设计一张暗黑氛围的专辑封面：阴郁光影、暴风雨天空下的乐队剪影、粗犷的哥特风字体呈现乐队名和专辑标题——适合另类摇滚/金属风格",
+          "label": "摇滚/金属专辑封面"
+        },
+        {
+          "value": "为电子音乐制作人设计一张充满未来感的电子专辑封面：霓虹几何图形、抽象音波可视化、赛博朋克渐变配色和极简现代字体——适合电子/EDM 舞曲风格",
+          "label": "电子/EDM 专辑封面"
+        },
+        {
+          "value": "为民谣唱作人设计一张温暖质朴的原声专辑封面：自然材质纹理、阳光穿透森林的画面、手绘插画元素和典雅衬线字体——适合民谣/原声音乐风格",
+          "label": "民谣/原声专辑封面"
+        },
+        {
+          "value": "为嘻哈说唱歌手设计一张街头感十足的专辑封面：城市摄影美学、高对比度人物肖像、涂鸦风格字体和街头文化视觉符号——适合嘻哈/都市音乐风格",
+          "label": "嘻哈/都市专辑封面"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "如何使用 Lovart AI 代理设计专业专辑封面",
+      "columns": [
+        {
+          "title": "描述你的音乐",
+          "description": "向 Lovart 的 AI 设计代理介绍你的音乐。描述流派、专辑氛围与主题、艺人名称，以及你设想的视觉风格。MCoT 推理引擎会分析你的音乐身份，研究该流派的封面设计规律，并在动笔之前制定完整创意策略。ChatCanvas 会记住你的艺人品牌，确保每张封面都与你的音乐形象一脉相承。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "生成并探索多种方案",
+          "description": "看 Lovart 如何在几秒内将你的音乐需求转化为多个专辑封面方案。代理生成完整排版——包含艺人名称、专辑标题、Nano Banana Pro 提供的流派适配视觉元素和精心搭配的字体——所有元素构成统一设计系统。浏览从写实摄影到抽象艺术的多种视觉方向，选出最能代表你音乐的那一张。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "精细调整并导出上架",
+          "description": "用 Lovart 独有编辑工具打磨每个细节。Touch Edit 让你点击调整封面图像或替换任意元素。Text Edit 让你直接修改封面上的艺人名称或专辑标题，同时完整保留原有字体风格。Smart Mockup 让你预览封面在 Spotify 和 Apple Music 界面的真实效果。支持最高 8K 分辨率的 PNG、JPG、SVG 格式导出，满足流媒体上架、黑胶印刷和数字发行的全部需求。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "专业专辑封面设计的终极 AI 工具箱",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "语义触控编辑",
+          "description": "点击专辑封面上的任意对象——背景元素、装饰纹理或视觉图案——即可即时调整形状、颜色或替换。Touch Edit 能理解视觉上下文，自动适配光影和透视效果。无需手动抠图遮罩——凭直觉点击编辑，精修专辑封面从未如此轻松。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "艺人名称与标题完美渲染",
+          "description": "将艺人名称和专辑标题以清晰可读的专业字体直接渲染在封面上。不同于生成乱码文字的普通 AI 工具，Lovart 的 Text Edit 能在任何风格中输出清晰锐利的字体——从优雅衬线艺人名到醒目粗体专辑标题——并完整保留阴影、渐变和透视效果。你的音乐值得拥有专业的封面文字。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "流媒体平台样机引擎",
+          "description": "即时预览你的专辑封面在真实流媒体场景中的效果。使用 Smart Mockup 查看你的设计在 Spotify 歌单、Apple Music 浏览页和黑胶封套上的呈现。引擎自动适配透视和光照，让封面在每个场景中都真实自然。非常适合发布前的社交媒体预热和数字发行平台提交。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "艺人品牌一致性",
+          "description": "基于 Nano Banana Pro 和 ChatCanvas 品牌记忆，Lovart 确保每位艺人的所有发行保持视觉统一。只需定义一次你的视觉标识——色彩体系、字体偏好、Logo 位置——代理就会自动将其应用到每一张专辑封面、单曲封面和 EP 设计中。在整部音乐作品集中建立起一眼可辨的视觉品牌。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "8K 流媒体级导出",
+          "description": "以最高 8K 分辨率导出专辑封面，支持 PNG、JPG 或 SVG 格式——远超所有主流流媒体平台 3000x3000 像素的门槛。你的封面在任何屏幕上都能保持锐利清晰，从手机小屏到户外广告大牌。所有导出自动符合 Spotify、Apple Music、QQ 音乐、网易云音乐和抖音的技术规范。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "多格式发行套装",
+          "description": "一次设计，全平台分发。创建完主专辑封面后，Lovart 自动生成各场景优化版本：方形封面（流媒体标准）、竖版动态画布（Spotify Canvas）、宽幅横幅（YouTube Music/艺人主页）、CD 盒装尺寸和黑胶封套——所有版本保持视觉层次和艺术完整性。几分钟内从一个设计完成全套视觉发行包。"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "使用 Lovart 打造专业专辑封面的音乐人与厂牌",
+      "testimonials": [
+        {
+          "name": "林悦",
+          "role": "独立唱作人",
+          "content": "在用 Lovart 之前，我花了一万五请设计师做一张专辑封面，等了三个星期拿到成品还不满意。用了 Lovart 的 AI 专辑封面制作工具后，我一个晚上就给首张 EP 做了 10 个封面方案，发到小红书上让粉丝投票。最后选出来那张比设计公司交的还好看。后来我发的三首单曲封面全用 Lovart 做，除了订阅费没多花一分钱。视觉全面升级之后，我的流媒体播放量涨了 60%。",
+          "avatar_url": ""
+        },
+        {
+          "name": "张海洋",
+          "role": "电子音乐制作人 & DJ",
+          "content": "做电子音乐的，视觉形象跟音乐本身几乎是同等重要的。Lovart 对流派审美的理解比我合作过的任何设计师都到位。我只要描述曲子的氛围——'工业质感的暗黑仓库 Techno'——AI 就能生成一张完美捕捉声音情绪的封面。今年我用 Lovart 发了 8 首单曲，Spotify 算法推荐量翻了一倍。那个流媒体样机功能，拿来做社交媒体宣传预热简直绝了。",
+          "avatar_url": ""
+        },
+        {
+          "name": "陈思远",
+          "role": "独立唱片公司创意总监",
+          "content": "我们厂牌签了 12 组音乐人，横跨摇滚、民谣和另类风格。以前每年光专辑封面设计费就要花掉十八万。现在全公司的单曲和 EP 封面全部用 Lovart 内部制作，一年省了近十四万，发歌量还翻了三倍。多亏 ChatCanvas 的记忆功能，每位艺人的视觉风格都保持得非常统一。我们最新签的那位民谣艺人的专辑封面还在小红书上被设计号转发了一波——评论区没人信那是 AI 生成的。"
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart 是什么？它与其他 AI 艺术生成器有什么不同？",
+          "answer": "Lovart 是全球首个 AI 设计代理，而非普通的图像生成器。不同于 Midjourney 或 DALL-E 那样仅凭文字提示生成单张图片，Lovart 的 MCoT 推理引擎像创意总监一样思考——分析你的音乐流派、歌词主题和目标听众，然后设计出带有精心排版、正确的艺人名称位置和流派适配视觉语言的封面。它交付的是一个完整、可编辑、可直接上架流媒体的专辑封面，而不是一张需要你自己后期加文字的图。"
+        },
+        {
+          "question": "我没有设计经验，能做出专业的专辑封面吗？",
+          "answer": "完全没问题。Lovart 是为音乐人而非设计师打造的。你不需要懂构图、色彩理论、字体设计或流媒体平台规范。只需用大白话描述你的音乐——流派、氛围、专辑标题、艺人名称——Lovart 会处理所有创意和技术决策。代理会自动以合适的字体排版你的艺人名称和专辑标题，选择符合流派的视觉风格，并以流媒体合规的分辨率导出。"
+        },
+        {
+          "question": "可以在 Spotify、Apple Music、QQ 音乐等平台商用这些封面吗？",
+          "answer": "可以。付费方案（Starter、Basic、Pro）用户拥有其专辑封面设计的完整商用权利。你可以将封面用于流媒体平台、数字发行、周边商品、实体发行（CD、黑胶）、宣传物料和任何合法商业用途。免费方案仅供个人试用和评估。Lovart 的模型训练基于授权数据和公共领域素材。"
+        },
+        {
+          "question": "有免费方案吗？额度和积分怎么算？",
+          "answer": "有的，Lovart 提供免费方案，每日登录即可领取积分，每 24 小时刷新一次。你每天可以免费创建多个专辑封面方案——非常适合为你的音乐探索不同的视觉方向。付费方案从 Starter（2000 积分/月）起步，往上依次为 Basic（3500 积分/月）和 Pro（11000 积分/月），全部解锁完整代理功能、商用权利和 Nano Banana Pro 等高级模型。每次生成前都会显示本次将消耗的积分。"
+        },
+        {
+          "question": "可以导出哪些文件格式和分辨率？",
+          "answer": "Lovart 支持专业级导出：PNG、JPG、SVG（矢量）和带图层的 PSD 格式。分辨率最高可达 8K，远超 Spotify、Apple Music、QQ 音乐、网易云音乐等主流平台的 3000x3000 像素要求。你的封面在任何显示设备上都清晰锐利——从手机屏幕到黑胶唱片印刷。我们还提供符合数字发行要求的色彩配置文件。"
+        },
+        {
+          "question": "Lovart 如何保证艺人多次发行的视觉一致性？",
+          "answer": "Lovart 的 ChatCanvas 会保持艺人品牌上下文的持久记忆——一旦你定义了艺人视觉标识（色彩体系、字体偏好、Logo 位置），代理会自动将其应用到每一张新专辑封面、单曲封面和 EP 设计中。Nano Banana Pro 确保所有生成元素的视觉一致性。这能在你的整部音乐作品集中建立起一眼可辨的视觉品牌，对在流媒体平台积累忠实粉丝至关重要。"
+        },
+        {
+          "question": "封面生成后还能修改艺人名称或专辑标题吗？",
+          "answer": "当然可以，而且这正是 Lovart 的标志性功能之一。使用 Text Edit，你可以在封面上直接点击艺人名称或专辑标题进行修改，同时完整保留原有字体风格——包括字重、阴影、渐变和透视效果。需要更新发行日期或改专辑标题？直接输入新文字，它会无缝融入已有设计。无需从头重新生成整张封面。"
+        },
+        {
+          "question": "Lovart 能为哪些音乐流派制作专辑封面？",
+          "answer": "Lovart 的 AI 专辑封面制作工具能出色处理所有音乐流派：摇滚、流行、嘻哈/说唱、电子/EDM、民谣/原声、R&B、爵士、古典、金属、乡村、独立/另类、拉丁、K-pop、雷鬼、氛围音乐等。MCoT 引擎会分析你的流派描述，自动适配设计策略——色彩心理学、字体风格、视觉符号和构图——既遵循流派惯例，又确保你的封面独树一帜。"
+        },
+        {
+          "question": "Lovart 能制作 Spotify Canvas、黑胶和 CD 等不同格式的封面吗？",
+          "answer": "完全可以。多格式发行套装引擎会根据你的主专辑封面自动生成优化变体：方形封面（流媒体标准）、竖版视频画布（Spotify Canvas）、宽幅横幅（YouTube Music、艺人主页）、CD 盒尺寸和黑胶封套——所有版本保持视觉层次和艺术完整性。这省去了繁琐的手动缩放裁切流程，确保你的视觉发行包一键就绪。"
+        }
+      ]
+    }
+  ],
+  "section_zh-TW": [
+    {
+      "type": "centeredInputSection",
+      "title": "AI 專輯封面製作工具 — 用 Lovart AI 設計代理打造專業音樂封面",
+      "description": "別再將就千篇一律的專輯封面，也別再為客製設計花上大筆預算。Lovart 的 AI 設計代理能將你對音樂風格、情緒和類型的描述，在幾分鐘內轉化為可直接上架串流平台的專業專輯封面。基於 MCoT 推理引擎，我們的代理像創意總監一樣思考——在生成任何畫面之前，先分析你的音樂類型、歌詞主題和目標聽眾，再規劃構圖、字型和視覺風格，讓封面精準傳達你的音樂靈魂。從 Spotify Canvas 動態封面到黑膠封套設計，Lovart 為所有類型的音樂人提供錄音室級品質的專輯封面。用每日免費額度開啟你的創作。",
+      "input_placeholder": "描述你的專輯——包含音樂類型、氛圍、專輯標題、藝人名稱，以及你設想的視覺風格",
+      "system_prompt": "你是 Lovart 的資深創意總監兼 AI 專輯封面設計專家。藉助 MCoT（思維鏈）引擎，深入分析藝人描述以理解：1）音樂類型及其視覺設計慣例，2）專輯的情感基調和歌詞主題，3）目標聽眾的年齡、審美和消費習慣，4）最適合的視覺風格、色彩心理學及字型設計——既要忠實表現音樂核心，又要在串流平台上一眼抓住聽眾。編排 Lovart 的智慧設計全流程：在 ChatCanvas 中鎖定最佳構圖，調用 Nano Banana Pro 生成符合類型的視覺素材，精準排版藝人名稱和專輯標題，確保所有輸出符合 Spotify/Apple Music 尺寸規範，最終交付完整可用的專輯封面。使用者需求：$input$",
+      "button_text": "設計我的專輯封面",
+      "tip": "專業提示：請說明你的音樂類型、專輯情緒、藝人名稱，以及需要方形格式（串流平台用）還是黑膠封套尺寸",
+      "suggestion": [
+        {
+          "value": "為獨立搖滾樂團設計一張暗黑氛圍的專輯封面：陰鬱光影、暴風雨天空下的樂團剪影、粗獷的哥德風字型呈現樂團名和專輯標題——適合另類搖滾/金屬風格",
+          "label": "搖滾/金屬專輯封面"
+        },
+        {
+          "value": "為電子音樂製作人設計一張充滿未來感的電子專輯封面：霓虹幾何圖形、抽象音波可視化、賽博龐克漸層配色和極簡現代字型——適合電子/EDM 舞曲風格",
+          "label": "電子/EDM 專輯封面"
+        },
+        {
+          "value": "為民謠唱作人設計一張溫暖質樸的原聲專輯封面：自然材質紋理、陽光穿透森林的畫面、手繪插畫元素和典雅襯線字型——適合唱作/原聲音樂風格",
+          "label": "民謠/原聲專輯封面"
+        },
+        {
+          "value": "為嘻哈饒舌歌手設計一張街頭感十足的專輯封面：城市攝影美學、高對比度人物肖像、塗鴉風格字型和街頭文化視覺符號——適合嘻哈/都會音樂風格",
+          "label": "嘻哈/都會專輯封面"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "如何使用 Lovart AI 代理設計專業專輯封面",
+      "columns": [
+        {
+          "title": "描述你的音樂",
+          "description": "向 Lovart 的 AI 設計代理介紹你的音樂。描述類型、專輯氛圍與主題、藝人名稱，以及你設想的視覺風格。MCoT 推理引擎會分析你的音樂身份，研究該類型的封面設計規律，並在動筆之前制定完整創意策略。ChatCanvas 會記住你的藝人品牌，確保每張封面都與你的音樂形象一脈相承。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "生成並探索多種方案",
+          "description": "看 Lovart 如何在幾秒內將你的音樂需求轉化為多個專輯封面方案。代理生成完整排版——包含藝人名稱、專輯標題、Nano Banana Pro 提供的類型適配視覺元素和精心搭配的字型——所有元素構成統一設計系統。瀏覽從寫實攝影到抽象藝術的多種視覺方向，選出最能代表你音樂的那一張。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "精細調整並匯出上架",
+          "description": "用 Lovart 獨有編輯工具打磨每個細節。Touch Edit 讓你點擊調整封面圖像或替換任意元素。Text Edit 讓你直接修改封面上的藝人名稱或專輯標題，同時完整保留原有字型風格。Smart Mockup 讓你預覽封面在 Spotify 和 Apple Music 介面的真實效果。支援最高 8K 解析度的 PNG、JPG、SVG 格式匯出，滿足串流平台上架、黑膠印刷和數位發行的全部需求。",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "專業專輯封面設計的終極 AI 工具箱",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "語義觸控編輯",
+          "description": "點擊專輯封面上的任意物件——背景元素、裝飾紋理或視覺圖案——即可即時調整形狀、顏色或替換。Touch Edit 能理解視覺上下文，自動適配光影和透視效果。無需手動去背遮罩——憑直覺點擊編輯，精修專輯封面從未如此輕鬆。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "藝人名稱與標題完美呈現",
+          "description": "將藝人名稱和專輯標題以清晰可讀的專業字型直接呈現在封面上。不同於生成亂碼文字的普通 AI 工具，Lovart 的 Text Edit 能在任何風格中輸出清晰銳利的字型——從優雅襯線藝人名到醒目粗體專輯標題——並完整保留陰影、漸層和透視效果。你的音樂值得擁有專業的封面文字。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "串流平台樣機引擎",
+          "description": "即時預覽你的專輯封面在真實串流場景中的效果。使用 Smart Mockup 查看你的設計在 Spotify 歌單、Apple Music 瀏覽頁和黑膠封套上的呈現。引擎自動適配透視和光照，讓封面在每個場景中都真實自然。非常適合發布前的社群媒體預熱和數位發行平台提交。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "藝人品牌一致性",
+          "description": "基於 Nano Banana Pro 和 ChatCanvas 品牌記憶，Lovart 確保每位藝人的所有發行保持視覺統一。只需定義一次你的視覺標識——色彩體系、字型偏好、Logo 位置——代理就會自動將其應用到每一張專輯封面、單曲封面和 EP 設計中。在整部音樂作品集中建立起一眼可辨的視覺品牌。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "8K 串流級匯出",
+          "description": "以最高 8K 解析度匯出專輯封面，支援 PNG、JPG 或 SVG 格式——遠超所有主流串流平台 3000x3000 像素的門檻。你的封面在任何螢幕上都能保持銳利清晰，從手機小螢幕到戶外廣告大牌。所有匯出自動符合 Spotify、Apple Music、KKBOX、LINE MUSIC 和 TikTok 的技術規範。"
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "多格式發行套裝",
+          "description": "一次設計，全平台分發。建立完主專輯封面後，Lovart 自動生成各場景最佳化版本：方形封面（串流標準）、直式動態畫布（Spotify Canvas）、寬幅橫幅（YouTube Music/藝人主頁）、CD 盒裝尺寸和黑膠封套——所有版本保持視覺層次和藝術完整性。幾分鐘內從一個設計完成全套視覺發行包。"
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "使用 Lovart 打造專業專輯封面的音樂人與廠牌",
+      "testimonials": [
+        {
+          "name": "林悅",
+          "role": "獨立唱作人",
+          "content": "在用 Lovart 之前，我花了六萬請設計師做一張專輯封面，等了三個禮拜拿到成品還不滿意。用了 Lovart 的 AI 專輯封面製作工具後，我一個晚上就幫首張 EP 做了 10 個封面方案，發到 IG 上讓粉絲投票。最後選出來那張比設計公司交的還好看。後來我發的三首單曲封面全用 Lovart 做，除了訂閱費沒多花一毛錢。視覺全面升級之後，我的串流播放量漲了 60%。",
+          "avatar_url": ""
+        },
+        {
+          "name": "張海洋",
+          "role": "電子音樂製作人 & DJ",
+          "content": "做電子音樂的，視覺形象跟音樂本身幾乎是同等重要的。Lovart 對類型審美的理解比我合作過的任何設計師都到位。我只要描述曲子的氛圍——'工業質感的暗黑倉庫 Techno'——AI 就能生成一張完美捕捉聲音情緒的封面。今年我用 Lovart 發了 8 首單曲，Spotify 演算法推薦量翻了一倍。那個串流樣機功能，拿來做社群媒體宣傳預熱簡直絕了。",
+          "avatar_url": ""
+        },
+        {
+          "name": "陳思遠",
+          "role": "獨立唱片公司創意總監",
+          "content": "我們廠牌簽了 12 組音樂人，橫跨搖滾、民謠和另類風格。以前每年光專輯封面設計費就要花掉八十萬。現在全公司的單曲和 EP 封面全部用 Lovart 內部製作，一年省了近六十萬，發歌量還翻了三倍。多虧 ChatCanvas 的記憶功能，每位藝人的視覺風格都保持得非常統一。我們最新簽的那位民謠藝人的專輯封面還在 IG 上被設計帳號轉發了一波——留言區沒人信那是 AI 生成的。"
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Lovart 是什麼？它與其他 AI 藝術生成器有什麼不同？",
+          "answer": "Lovart 是全球首個 AI 設計代理，而非普通的圖像生成器。不同於 Midjourney 或 DALL-E 那樣僅憑文字提示生成單張圖片，Lovart 的 MCoT 推理引擎像創意總監一樣思考——分析你的音樂類型、歌詞主題和目標聽眾，然後設計出帶有精心排版、正確的藝人名稱位置和類型適配視覺語言的封面。它交付的是一個完整、可編輯、可直接上架串流平台的專輯封面，而不是一張需要你自己後期加文字的圖。"
+        },
+        {
+          "question": "我沒有設計經驗，能做出專業的專輯封面嗎？",
+          "answer": "完全沒問題。Lovart 是為音樂人而非設計師打造的。你不需要懂構圖、色彩理論、字型設計或串流平台規範。只需用白話描述你的音樂——類型、氛圍、專輯標題、藝人名稱——Lovart 會處理所有創意和技術決策。代理會自動以合適的字型排版你的藝人名稱和專輯標題，選擇符合類型的視覺風格，並以串流合規的解析度匯出。"
+        },
+        {
+          "question": "可以在 Spotify、Apple Music、KKBOX 等平台商用這些封面嗎？",
+          "answer": "可以。付費方案（Starter、Basic、Pro）使用者擁有其專輯封面設計的完整商用權利。你可以將封面用於串流平台、數位發行、周邊商品、實體發行（CD、黑膠）、宣傳物料和任何合法商業用途。免費方案僅供個人試用和評估。Lovart 的模型訓練基於授權資料和公共領域素材。"
+        },
+        {
+          "question": "有免費方案嗎？額度和積分怎麼算？",
+          "answer": "有的，Lovart 提供免費方案，每日登入即可領取積分，每 24 小時刷新一次。你每天可以免費建立多個專輯封面方案——非常適合為你的音樂探索不同的視覺方向。付費方案從 Starter（2000 積分/月）起步，往上依序為 Basic（3500 積分/月）和 Pro（11000 積分/月），全部解鎖完整代理功能、商用權利和 Nano Banana Pro 等高階模型。每次生成前都會顯示本次將消耗的積分。"
+        },
+        {
+          "question": "可以匯出哪些檔案格式和解析度？",
+          "answer": "Lovart 支援專業級匯出：PNG、JPG、SVG（向量）和帶圖層的 PSD 格式。解析度最高可達 8K，遠超 Spotify、Apple Music、KKBOX、LINE MUSIC 等主流平台的 3000x3000 像素要求。你的封面在任何顯示裝置上都清晰銳利——從手機螢幕到黑膠唱片印刷。我們還提供符合數位發行要求的色彩設定檔。"
+        },
+        {
+          "question": "Lovart 如何保證藝人多次發行的視覺一致性？",
+          "answer": "Lovart 的 ChatCanvas 會保持藝人品牌上下文的持久記憶——一旦你定義了藝人視覺標識（色彩體系、字型偏好、Logo 位置），代理會自動將其應用到每一張新專輯封面、單曲封面和 EP 設計中。Nano Banana Pro 確保所有生成元素的視覺一致性。這能在你的整部音樂作品集中建立起一眼可辨的視覺品牌，對在串流平台累積忠實粉絲至關重要。"
+        },
+        {
+          "question": "封面生成後還能修改藝人名稱或專輯標題嗎？",
+          "answer": "當然可以，而且這正是 Lovart 的標誌性功能之一。使用 Text Edit，你可以在封面上直接點擊藝人名稱或專輯標題進行修改，同時完整保留原有字型風格——包括字重、陰影、漸層和透視效果。需要更新發行日期或改專輯標題？直接輸入新文字，它會無縫融入既有設計。無需從頭重新生成整張封面。"
+        },
+        {
+          "question": "Lovart 能為哪些音樂類型製作專輯封面？",
+          "answer": "Lovart 的 AI 專輯封面製作工具能出色處理所有音樂類型：搖滾、流行、嘻哈/饒舌、電子/EDM、民謠/原聲、R&B、爵士、古典、金屬、鄉村、獨立/另類、拉丁、K-pop、雷鬼、氛圍音樂等。MCoT 引擎會分析你的類型描述，自動適配設計策略——色彩心理學、字型風格、視覺符號和構圖——既遵循類型慣例，又確保你的封面獨樹一格。"
+        },
+        {
+          "question": "Lovart 能製作 Spotify Canvas、黑膠和 CD 等不同格式的封面嗎？",
+          "answer": "完全可以。多格式發行套裝引擎會根據你的主專輯封面自動生成最佳化變體：方形封面（串流標準）、直式影片畫布（Spotify Canvas）、寬幅橫幅（YouTube Music、藝人主頁）、CD 盒尺寸和黑膠封套——所有版本保持視覺層次和藝術完整性。這省去了繁瑣的手動縮放裁切流程，確保你的視覺發行包一鍵就緒。"
+        }
+      ]
+    }
+  ],
+  "section_ja": [
+    {
+      "centeredInputSection": {
+        "title": "AIでアルバムカバーをデザイン",
+        "subtitle": "あなたの音楽的ビジョンを言葉で伝えるだけで、世界初のAIデザインエージェント「Lovart」がリリースに最適なアートワークを作成します。クリエイティブディレクターのように思考するMCoT推論エンジンを搭載。",
+        "placeholder": "黄昏時のネオンシティスケープが広がる夢想的なシンセウェーブのアルバムカバー、レトロ80年代の美学...",
+        "systemPrompt": "あなたはLovartのMCoT推論エンジンであり、アルバムカバーデザインを専門とするクリエイティブディレクターとして機能します。ユーザーの音楽スタイル、ジャンル、ムード、芸術的リファレンスを分析し、そのサウンドの本質を捉えたプロフェッショナルなアルバムアートワークを生成します。タイポグラフィの階層性、音楽ジャンルにおける色彩心理学、ストリーミングプラットフォーム向けの構図バランス、ターゲットオーディエンスとつながるビジュアルストーリーテリングを考慮します。多段階推論を適用：まずジャンルとムードを特定し、次に適切な視覚要素とカラーパレットを選択し、最後にテキストオーバーレイのための適切な焦点と余白を備えたレイアウトを構成します。",
+        "buttonText": "アルバムカバーを生成",
+        "suggestions": [
+          "ロック / メタル アルバムカバー",
+          "エレクトロニック / EDM カバーアート",
+          "アコースティック / フォーク アルバムデザイン",
+          "ヒップホップ / アーバン カバーアート"
+        ]
+      },
+      "threeColumnSection": {
+        "title": "AIでアルバムカバーを作成する方法",
+        "subtitle": "コンセプトから完成アートワークまで、簡単3ステップ——デザインスキル不要",
+        "steps": [
+          {
+            "title": "ビジョンを言葉で伝える",
+            "description": "音楽ジャンル、アルバムのテーマ、ムード、アイデアをLovartに伝えてください。AIデザインエージェントが音楽的概念を理解し、ビジュアルディレクションに変換します。",
+            "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+          },
+          {
+            "title": "AIがアートワークを生成",
+            "description": "LovartのMCoTエンジンがあなたのビジョンを段階的に推論し、サウンドの本質を捉えた魅力的なアルバムカバーデザインを生成します。複数のバリエーションを瞬時に作成。",
+            "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+          },
+          {
+            "title": "調整して書き出し",
+            "description": "タッチ編集、テキスト編集、スマートモックアップでアートワークを完璧に仕上げ、最大8K解像度で書き出します。Spotify、Apple Music、レコードなどに対応。",
+            "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+          }
+        ]
+      },
+      "featureGridSection": {
+        "title": "強力なアルバムカバーデザイン機能",
+        "subtitle": "プロ品質の音楽アートワークを作るために必要なすべて",
+        "features": [
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0",
+            "title": "タッチ編集",
+            "description": "直感的なタッチ操作でアルバムカバーの細部を微調整。照明の調整、背景の変更、特定要素のリファインにより、アートワークを音楽的ビジョンに完璧に一致させます。"
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3",
+            "title": "テキスト編集",
+            "description": "アルバムタイトル、アーティスト名、トラックリストを精密に追加・カスタマイズ。数百種類のフォントから選択し、大胆なメタルレタリングからエレガントなセリフ体まで、ジャンルに合ったタイポグラフィを実現。"
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932",
+            "title": "スマートモックアップ",
+            "description": "ストリーミングプラットフォーム、レコード盤、CDケース、デジタルバナー上でのアルバムカバーの見え方を即座にプレビュー。SpotifyやApple Music、物理フォーマットでの表示を正確に確認できます。"
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6",
+            "title": "ブランド一貫性",
+            "description": "全リリースで統一されたビジュアルアイデンティティを維持。アルバム、EP、シングル、プレイリストで一貫したスタイリング、カラースキーム、タイポグラフィのカバーを作成します。"
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7",
+            "title": "8K書き出し",
+            "description": "最大8K解像度（7680×4320）でアルバムカバーを書き出し。大判印刷、ビルボード、ポスター、高DPIデジタルディスプレイにも画質劣化なく対応します。"
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166",
+            "title": "マルチフォーマット出力",
+            "description": "PNG、JPG、SVG、PSD形式で書き出し。レイヤー保持のPSDファイルでPhotoshop編集が可能、SVGベクターで無限拡大対応——すべてワンクリック。"
+          }
+        ]
+      },
+      "testimonialSection": {
+        "title": "ミュージシャンの声",
+        "testimonials": [
+          {
+            "name": "Marcus Rivera",
+            "role": "Neon Circuit リードボーカル",
+            "quote": "EPリリースのためにアートワークが必要でしたが、デザイナーを雇う予算が全くありませんでした。Lovartは1時間足らずでプロ品質のカバーを4枚も生成してくれました。デザイン費用として2,000ドル以上を節約でき、ファンからも大好評です。",
+            "metric": "デザイン費用2,000ドル以上節約"
+          },
+          {
+            "name": "Yuki Tanaka",
+            "role": "インディペンデント シンガーソングライター",
+            "quote": "デザインの経験は全くゼロですが、Lovartなら驚くほど簡単でした。フォークアルバムのムードを言葉にしたら、数分でアコースティックな温かさを見事に表現したカバーが完成。インディーアーティストにとって真のゲームチェンジャーです。",
+            "metric": "初めてのアルバムカバー、デザイン経験ゼロ"
+          },
+          {
+            "name": "Sarah Chen",
+            "role": "Horizon Records A&Rマネージャー",
+            "quote": "年間30件以上のアートワーク管理は持続不可能でした。Lovartがワークフローを根本から変革——アーティスト自身が初期コンセプトを生成し、社内で最終仕上げを行います。制作時間が70%短縮され、年間50件以上のリリースに対応できるようになりました。",
+            "metric": "制作時間70%短縮、年間50件以上のリリース"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "よくある質問",
+        "faqs": [
+          {
+            "question": "Lovartとは何ですか？",
+            "answer": "Lovartは、独自のMCoT（多段階思考連鎖）推論エンジンを搭載した世界初のAIデザインエージェントです。単なる画像ジェネレーターとは異なり、Lovartはプロのデザイナーのように思考し——ニーズを分析し、デザイン判断を推論し、インタラクティブなChatCanvasインターフェースを通じて本番利用可能なアートワークを提供します。"
+          },
+          {
+            "question": "デザインスキルがなくてもアルバムカバーは作れますか？",
+            "answer": "もちろんです。Lovartはデザイン経験ゼロの方のために特別に構築されています。音楽、ジャンル、ビジョンを平易な言葉で説明するだけで——AIデザインエージェントが構図、色彩理論、タイポグラフィ、レイアウトを自動的に処理します。自分の音楽を言葉にできれば、魅力的なアルバムカバーを作成できます。"
+          },
+          {
+            "question": "Lovartのアルバムカバーは商業リリースに使用できますか？",
+            "answer": "はい、すべての有料プラン（スターター、ベーシック、プロ）に完全な商用利用権が含まれています。アルバムカバーはストリーミングプラットフォーム、物理メディア、グッズ、販促素材に制限なく使用できます。無料プランユーザーも個人および非商用プロジェクトに使用できます。"
+          },
+          {
+            "question": "無料プランはありますか？",
+            "answer": "はい、Lovartは毎日のクレジット付き無料プランを提供しており、費用をかけずにアルバムカバー作成をお試しいただけます。より多くのクレジットや8K書き出し、PSDダウンロード、商用権などの高度な機能が必要な場合は、スターター（月2,000クレジット）、ベーシック（月3,500クレジット）、プロ（月11,000クレジット）にアップグレードしてください。"
+          },
+          {
+            "question": "対応している書き出し形式は？",
+            "answer": "LovartはPNG、JPG、SVG、PSD形式に対応しています。PSDファイルはレイヤーが保持され、Photoshopでの追加編集が可能です。SVG書き出しでは無限に拡大縮小可能なベクターグラフィックを提供します。有料プランではすべての書き出しが最大8K解像度（7680×4320）で利用可能です。"
+          },
+          {
+            "question": "複数のリリースでブランドの一貫性を保つには？",
+            "answer": "Lovartの要素編集とブランド一貫性機能により、スタイルプリセット、カラーパレット、タイポグラフィ設定を保存できます。新しいアルバムカバーにワンクリックで適用し、全リリースで統一感のあるビジュアルアイデンティティを維持しながら、各作品の個性も保てます。"
+          },
+          {
+            "question": "生成後にアルバムカバーのテキストを編集できますか？",
+            "answer": "はい、テキスト編集機能によりタイポグラフィを完全にコントロールできます。アルバムタイトル、アーティスト名、トラックリスト、クレジットを追加・編集・スタイリング可能。フォント、サイズ、色、間隔、位置をLovartインターフェースから離れることなくカスタマイズできます。"
+          },
+          {
+            "question": "どのような種類のアルバムカバーを作成できますか？",
+            "answer": "Lovartはフルアルバム、EP、シングル、ミックステープ、コンピレーション、販促アートワークのカバーを、ロック、ポップ、エレクトロニック、ヒップホップ、クラシック、ジャズ、メタル、フォーク、R&B、カントリー、実験音楽など全ジャンル対応でデザインできます。"
+          },
+          {
+            "question": "ストリーミングプラットフォーム用に異なるバリエーションを作れますか？",
+            "answer": "はい、スマートモックアップでプラットフォーム最適化バージョンをプレビュー・生成できます。アルバム用正方形カバー（1:1）、Spotify CanvasやApple Musicヘッダー用の長方形バナー、SNSプロモーション用のストーリー形式アートワークを、同一デザインセッションから作成可能です。"
+          }
+        ]
+      }
+    }
+  ],
+  "section_ko": [
+    {
+      "centeredInputSection": {
+        "title": "AI로 앨범 커버 디자인하기",
+        "subtitle": "음악적 비전을 말로 설명하기만 하면, 세계 최초의 AI 디자인 에이전트 Lovart가 당신의 작품에 완벽한 아트워크를 만들어 드립니다. 크리에이티브 디렉터처럼 사고하는 MCoT 추론 엔진을 탑재했습니다.",
+        "placeholder": "황혼의 네온 도시 풍경이 펼쳐진 몽환적인 신스웨이브 앨범 커버, 레트로 80년대 미학...",
+        "systemPrompt": "당신은 Lovart의 MCoT 추론 엔진으로, 앨범 커버 디자인을 전문으로 하는 크리에이티브 디렉터 역할을 합니다. 사용자의 음악 스타일, 장르, 분위기, 예술적 레퍼런스를 분석하여 사운드의 본질을 포착하는 전문적인 앨범 아트워크를 생성하세요. 타이포그래피 계층 구조, 음악 장르별 색채 심리학, 스트리밍 플랫폼을 위한 구도 균형, 타겟 청중과 연결되는 시각적 스토리텔링을 고려하세요. 다단계 추론을 적용하세요: 먼저 장르와 분위기를 파악하고, 적절한 시각적 요소와 컬러 팔레트를 선택한 다음, 텍스트 오버레이를 위한 적절한 초점과 여백을 갖춘 레이아웃을 구성하세요.",
+        "buttonText": "앨범 커버 생성하기",
+        "suggestions": [
+          "록 / 메탈 앨범 커버",
+          "일렉트로닉 / EDM 커버 아트",
+          "어쿠스틱 / 포크 앨범 디자인",
+          "힙합 / 어반 커버 아트"
+        ]
+      },
+      "threeColumnSection": {
+        "title": "AI로 앨범 커버 만드는 방법",
+        "subtitle": "컨셉부터 최종 아트워크까지, 단 세 단계로——디자인 기술 불필요",
+        "steps": [
+          {
+            "title": "비전 설명하기",
+            "description": "음악 장르, 앨범 테마, 분위기, 그리고 떠오르는 시각적 아이디어를 Lovart에 알려주세요. AI 디자인 에이전트가 음악적 개념을 이해하고 시각적 방향으로 전환합니다.",
+            "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+          },
+          {
+            "title": "AI가 아트워크 생성",
+            "description": "Lovart의 MCoT 엔진이 당신의 비전을 단계별로 추론하고 사운드의 본질을 담은 놀라운 앨범 커버 디자인을 생성합니다. 여러 버전을 즉시 생성합니다.",
+            "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+          },
+          {
+            "title": "다듬고 내보내기",
+            "description": "터치 편집, 텍스트 편집, 스마트 목업으로 아트워크를 완벽하게 마무리하고 최대 8K 해상도로 내보냅니다. Spotify, Apple Music, 바이닐 등에 바로 사용 가능합니다.",
+            "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+          }
+        ]
+      },
+      "featureGridSection": {
+        "title": "강력한 앨범 커버 디자인 기능",
+        "subtitle": "전문적인 음악 아트워크 제작에 필요한 모든 것",
+        "features": [
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0",
+            "title": "터치 편집",
+            "description": "직관적인 터치 컨트롤로 앨범 커버의 모든 디테일을 미세 조정하세요. 조명 조정, 배경 교체, 특정 요소 리파인을 통해 아트워크를 음악적 비전과 완벽하게 일치시킵니다."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3",
+            "title": "텍스트 편집",
+            "description": "앨범 타이틀, 아티스트명, 트랙리스트를 정밀하게 추가하고 커스터마이즈하세요. 수백 가지 폰트 스타일 중에서 선택하여 대담한 메탈 레터링부터 우아한 세리프체까지 장르에 맞는 타이포그래피를 구현합니다."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932",
+            "title": "스마트 목업",
+            "description": "스트리밍 플랫폼, 바이닐 레코드, CD 케이스, 디지털 배너에서 앨범 커버의 모습을 즉시 미리보기하세요. Spotify와 Apple Music, 실물 포맷에서의 실제 표시를 정확히 확인할 수 있습니다."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6",
+            "title": "브랜드 일관성",
+            "description": "모든 발매작에서 통일된 비주얼 아이덴티티를 유지하세요. 앨범, EP, 싱글, 플레이리스트에 걸쳐 일관된 스타일링, 컬러 스킴, 타이포그래피로 매칭 커버를 제작합니다."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7",
+            "title": "8K 내보내기",
+            "description": "최대 8K 해상도(7680×4320)로 앨범 커버를 내보냅니다. 대형 인쇄, 빌보드, 포스터, 고DPI 디지털 디스플레이에도 품질 손실 없이 완벽 대응합니다."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166",
+            "title": "멀티 포맷 출력",
+            "description": "PNG, JPG, SVG, PSD 형식으로 내보냅니다. 레이어가 보존된 PSD 파일로 Photoshop 추가 편집이 가능하며, SVG 벡터로 무한 확대 지원——모두 원클릭으로 완료됩니다."
+          }
+        ]
+      },
+      "testimonialSection": {
+        "title": "뮤지션들이 말하는 Lovart",
+        "testimonials": [
+          {
+            "name": "Marcus Rivera",
+            "role": "Neon Circuit 리드 보컬",
+            "quote": "EP 발매를 위해 아트워크가 필요했지만 디자이너를 고용할 예산이 전혀 없었습니다. Lovart는 한 시간도 안 되어 전문가 수준의 커버 4장을 만들어 냈습니다. 디자인 비용 2,000달러 이상을 절약했고 팬들도 아트워크를 정말 좋아합니다.",
+            "metric": "디자인 비용 2,000달러 이상 절감"
+          },
+          {
+            "name": "Yuki Tanaka",
+            "role": "인디펜던트 싱어송라이터",
+            "quote": "디자인 경험이 전혀 없지만 Lovart 덕분에 믿기 어려울 정도로 쉬웠습니다. 포크 앨범의 분위기를 설명하자 몇 분 만에 제가 원하던 어쿠스틱한 따뜻함을 완벽하게 담아낸 커버가 완성되었습니다. 인디 아티스트에게 진정한 게임 체인저입니다.",
+            "metric": "첫 앨범 커버, 디자인 경험 제로"
+          },
+          {
+            "name": "Sarah Chen",
+            "role": "Horizon Records A&R 매니저",
+            "quote": "연간 30건 이상의 아트워크를 관리하는 것은 지속 불가능했습니다. Lovart가 워크플로우를 근본적으로 변화시켰습니다——아티스트들이 직접 초기 컨셉을 생성하고, 사내에서 최종 마무리를 합니다. 제작 시간이 70% 단축되었고 연간 50건 이상의 릴리스도 소화할 수 있게 되었습니다.",
+            "metric": "제작 시간 70% 단축, 연간 50건 이상 릴리스"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "자주 묻는 질문",
+        "faqs": [
+          {
+            "question": "Lovart란 무엇인가요?",
+            "answer": "Lovart는 자체 개발한 MCoT(다단계 사고 연쇄) 추론 엔진을 탑재한 세계 최초의 AI 디자인 에이전트입니다. 단순한 이미지 생성기가 아닌, Lovart는 전문 디자이너처럼 사고하며——당신의 니즈를 분석하고 디자인 결정을 추론하며, 인터랙티브 ChatCanvas 인터페이스를 통해 실무 투입이 가능한 아트워크를 제공합니다."
+          },
+          {
+            "question": "디자인 기술 없이도 앨범 커버를 만들 수 있나요?",
+            "answer": "물론입니다. Lovart는 디자인 경험이 전혀 없는 분들을 위해 특별히 제작되었습니다. 음악, 장르, 비전을 평이한 언어로 설명하기만 하면——AI 디자인 에이전트가 구도, 색채 이론, 타이포그래피, 레이아웃을 자동으로 처리합니다. 음악을 말로 설명할 수 있다면 멋진 앨범 커버를 만들 수 있습니다."
+          },
+          {
+            "question": "Lovart 앨범 커버를 상업적 릴리스에 사용할 수 있나요?",
+            "answer": "네, 모든 유료 플랜(스타터, 베이직, 프로)에는 완전한 상업적 사용 권한이 포함됩니다. 앨범 커버는 스트리밍 플랫폼, 실물 미디어, 머천다이즈, 프로모션 자료에 제한 없이 사용할 수 있습니다. 무료 플랜 사용자도 개인 및 비상업적 프로젝트에 사용할 수 있습니다."
+          },
+          {
+            "question": "무료 플랜이 있나요?",
+            "answer": "네, Lovart는 매일 크레딧이 제공되는 무료 플랜을 통해 비용 부담 없이 앨범 커버 제작을 체험하실 수 있습니다. 더 많은 크레딧과 8K 내보내기, PSD 다운로드, 상업적 권한 등 고급 기능이 필요하시다면 스타터(월 2,000크레딧), 베이직(월 3,500크레딧), 프로(월 11,000크레딧)로 업그레이드하세요."
+          },
+          {
+            "question": "어떤 내보내기 형식을 지원하나요?",
+            "answer": "Lovart는 PNG, JPG, SVG, PSD 형식을 지원합니다. PSD 파일은 레이어가 보존되어 Photoshop에서 추가 편집이 가능합니다. SVG 내보내기는 무한히 확대 가능한 벡터 그래픽을 제공합니다. 유료 플랜에서는 모든 내보내기가 최대 8K 해상도(7680×4320)로 제공됩니다."
+          },
+          {
+            "question": "여러 릴리스에서 브랜드 일관성을 유지하려면?",
+            "answer": "Lovart의 요소 편집과 브랜드 일관성 기능으로 스타일 프리셋, 컬러 팔레트, 타이포그래피 설정을 저장할 수 있습니다. 새 앨범 커버에 원클릭으로 적용하여 모든 릴리스가 통일된 비주얼 아이덴티티를 유지하면서도 각 작품의 개성을 살릴 수 있습니다."
+          },
+          {
+            "question": "생성 후에도 앨범 커버의 텍스트를 편집할 수 있나요?",
+            "answer": "네, 텍스트 편집 기능으로 타이포그래피를 완전히 컨트롤할 수 있습니다. 앨범 타이틀, 아티스트명, 트랙리스트, 크레딧을 추가·편집·스타일링할 수 있습니다. 폰트, 크기, 색상, 간격, 위치를 Lovart 인터페이스를 벗어나지 않고 커스터마이즈하세요."
+          },
+          {
+            "question": "어떤 유형의 앨범 커버를 만들 수 있나요?",
+            "answer": "Lovart는 정규 앨범, EP, 싱글, 믹스테이프, 컴필레이션, 프로모션 아트워크 커버를 록, 팝, 일렉트로닉, 힙합, 클래식, 재즈, 메탈, 포크, R&B, 컨트리, 실험 음악 등 모든 장르에 걸쳐 디자인할 수 있습니다."
+          },
+          {
+            "question": "스트리밍 플랫폼별로 다른 배리에이션을 만들 수 있나요?",
+            "answer": "네, 스마트 목업으로 플랫폼 최적화 버전을 미리보고 생성할 수 있습니다. 앨범용 정사각형 커버(1:1), Spotify Canvas 및 Apple Music 헤더용 직사각형 배너, SNS 프로모션용 스토리 형식 아트워크를 동일한 디자인 세션에서 만들 수 있습니다."
+          }
+        ]
+      }
+    }
+  ],
+  "section_de": [
+    {
+      "centeredInputSection": {
+        "title": "Gestalte dein Albumcover mit KI",
+        "subtitle": "Beschreibe deine musikalische Vision und lass Lovart – den weltweit ersten KI-Design-Agenten – das perfekte Artwork für deine Veröffentlichung erschaffen. Angetrieben von der MCoT-Engine, die wie ein Creative Director denkt.",
+        "placeholder": "Ein verträumtes Synthwave-Albumcover mit Neon-Stadtbild in der Abenddämmerung, Retro-80er-Ästhetik...",
+        "systemPrompt": "Du bist Lovarts MCoT-Engine, die als Creative Director für Albumcover-Design fungiert. Analysiere den Musikstil, das Genre, die Stimmung und die künstlerischen Referenzen des Nutzers, um ein professionelles Albumartwork zu generieren, das die Essenz seines Sounds einfängt. Berücksichtige Typografie-Hierarchie, Farbpsychologie für Musikgenres, Kompositionsbalance für Streaming-Plattformen und visuelles Storytelling, das die Zielgruppe anspricht. Wende mehrstufiges Reasoning an: Identifiziere zuerst Genre und Stimmung, wähle dann passende visuelle Elemente und Farbpaletten aus, und komponiere schließlich das Layout mit geeigneten Blickpunkten und Freiräumen für Textüberlagerungen.",
+        "buttonText": "Albumcover generieren",
+        "suggestions": [
+          "Rock / Metal Albumcover",
+          "Electronic / EDM Cover Art",
+          "Akustik / Folk Album Design",
+          "Hip-Hop / Urban Cover Art"
+        ]
+      },
+      "threeColumnSection": {
+        "title": "So erstellst du ein Albumcover mit KI",
+        "subtitle": "Vom Konzept zum finalen Artwork in drei einfachen Schritten – keine Designkenntnisse nötig",
+        "steps": [
+          {
+            "title": "Beschreibe deine Vision",
+            "description": "Erzähle Lovart von deinem Musikgenre, deinem Albumthema, der Stimmung und allen visuellen Ideen, die dir vorschweben. Unser KI-Design-Agent versteht musikalische Konzepte und setzt sie in visuelle Richtungen um.",
+            "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+          },
+          {
+            "title": "KI generiert das Artwork",
+            "description": "Lovarts MCoT-Engine durchdenkt deine Vision Schritt für Schritt und generiert beeindruckende Albumcover-Designs, die die Essenz deines Sounds einfangen. Mehrere Varianten werden sofort erstellt.",
+            "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+          },
+          {
+            "title": "Verfeinern & Exportieren",
+            "description": "Nutze Touch Edit, Text Edit und Smart Mockup, um dein Artwork zu perfektionieren, und exportiere es in bis zu 8K Auflösung. Bereit für Spotify, Apple Music, Vinyl und mehr.",
+            "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+          }
+        ]
+      },
+      "featureGridSection": {
+        "title": "Leistungsstarke Albumcover-Design-Features",
+        "subtitle": "Alles, was du für professionelles Musik-Artwork brauchst",
+        "features": [
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0",
+            "title": "Touch Edit",
+            "description": "Passe jedes Detail deines Albumcovers mit intuitiven Touch-Steuerelementen an. Ändere Beleuchtung, tausche Hintergründe aus oder verfeinere einzelne Elemente, bis das Artwork perfekt zu deiner musikalischen Vision passt."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3",
+            "title": "Text Edit",
+            "description": "Füge Alben-Titel, Künstlernamen und Tracklists präzise hinzu und passe sie an. Wähle aus Hunderten von Schriftarten, um Typografie zu gestalten, die zu deinem Genre passt – von markanter Metal-Schrift bis zu eleganten Serifen."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932",
+            "title": "Smart Mockup",
+            "description": "Sieh sofort eine Vorschau deines Albumcovers auf Streaming-Plattformen, Vinyl, CD-Hüllen und digitalen Bannern. Erkenne genau, wie dein Artwork auf Spotify, Apple Music und physischen Formaten aussieht."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6",
+            "title": "Markenkonsistenz",
+            "description": "Bewahre eine einheitliche visuelle Identität über alle deine Veröffentlichungen hinweg. Erstelle passende Cover für Alben, EPs, Singles und Playlists mit konsistentem Styling, Farbschemata und Typografie."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7",
+            "title": "8K Export",
+            "description": "Exportiere dein Albumcover mit bis zu 8K Auflösung (7680×4320). Perfekt für Großformatdruck, Plakate, Poster und hochauflösende digitale Displays – ohne Qualitätsverlust."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166",
+            "title": "Multi-Format Export",
+            "description": "Exportiere in PNG, JPG, SVG und PSD. Erhalte produktionsbereite PSD-Dateien mit erhaltenen Ebenen für die Photoshop-Bearbeitung oder Vektor-SVG für unbegrenzt skalierbare Designs – alles mit einem Klick."
+          }
+        ]
+      },
+      "testimonialSection": {
+        "title": "Was Musiker über Lovart sagen",
+        "testimonials": [
+          {
+            "name": "Marcus Rivera",
+            "role": "Lead-Sänger, Neon Circuit",
+            "quote": "Wir brauchten Artwork für unsere EP-Veröffentlichung und hatten null Budget für einen Designer. Lovart lieferte vier Cover in Profiqualität in unter einer Stunde. Über 2.000 Dollar an Designkosten gespart und die Fans lieben das Artwork.",
+            "metric": "Über 2.000 $ Designkosten gespart"
+          },
+          {
+            "name": "Yuki Tanaka",
+            "role": "Unabhängiger Singer-Songwriter",
+            "quote": "Ich habe absolut keinen Design-Hintergrund, aber Lovart machte es mühelos. Ich beschrieb die Stimmung meines Folk-Albums und innerhalb von Minuten hatte ich ein Cover, das die akustische Wärme perfekt einfing. Ein echter Game-Changer für Indie-Künstler.",
+            "metric": "Erstes Albumcover – null Designerfahrung"
+          },
+          {
+            "name": "Sarah Chen",
+            "role": "A&R Managerin, Horizon Records",
+            "quote": "Über 30 Artworks pro Jahr zu managen war nicht tragbar. Lovart hat unseren Workflow transformiert – unsere Künstler generieren jetzt selbst erste Konzepte, und wir finalisieren intern. Die Produktionszeit sank um 70 % und wir skalieren auf über 50 Veröffentlichungen jährlich.",
+            "metric": "70 % schnellere Produktion, 50+ Veröffentlichungen/Jahr"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Häufig gestellte Fragen",
+        "faqs": [
+          {
+            "question": "Was ist Lovart?",
+            "answer": "Lovart ist der weltweit erste KI-Design-Agent, angetrieben von unserer proprietären MCoT-Engine (Multi-step Chain of Thought). Anders als einfache Bildgeneratoren denkt Lovart wie ein professioneller Designer – analysiert deine Bedürfnisse, durchdenkt Designentscheidungen und liefert produktionsreifes Artwork über das interaktive ChatCanvas-Interface."
+          },
+          {
+            "question": "Kann ich ein Albumcover ohne Designkenntnisse erstellen?",
+            "answer": "Absolut. Lovart wurde speziell für Menschen ohne Designerfahrung entwickelt. Beschreibe einfach deine Musik, dein Genre und deine Vision in einfacher Sprache – unser KI-Design-Agent übernimmt automatisch Komposition, Farbtheorie, Typografie und Layout. Wenn du deine Musik beschreiben kannst, kannst du beeindruckende Albumcover erstellen."
+          },
+          {
+            "question": "Kann ich Lovart-Albumcover für kommerzielle Veröffentlichungen nutzen?",
+            "answer": "Ja, alle kostenpflichtigen Pläne (Starter, Basic, Pro) beinhalten vollständige kommerzielle Nutzungsrechte. Deine Albumcover können ohne Einschränkungen auf Streaming-Plattformen, physischen Medien, Merchandise und Werbematerialien verwendet werden. Nutzer des Gratis-Plans können Artwork für persönliche und nicht-kommerzielle Projekte nutzen."
+          },
+          {
+            "question": "Gibt es einen kostenlosen Plan?",
+            "answer": "Ja, Lovart bietet einen Gratis-Plan mit täglichen Credits, damit du die Albumcover-Erstellung kostenlos ausprobieren kannst. Für mehr Credits und erweiterte Funktionen wie 8K-Export, PSD-Downloads und kommerzielle Rechte kannst du auf Starter (2.000 Credits/Monat), Basic (3.500 Credits/Monat) oder Pro (11.000 Credits/Monat) upgraden."
+          },
+          {
+            "question": "Welche Exportformate werden unterstützt?",
+            "answer": "Lovart unterstützt PNG, JPG, SVG und PSD. PSD-Dateien enthalten erhaltene Ebenen für die weitere Bearbeitung in Photoshop. SVG-Export liefert unbegrenzt skalierbare Vektorgrafiken. Alle Exporte sind in den Bezahlplänen mit bis zu 8K Auflösung (7680×4320) verfügbar."
+          },
+          {
+            "question": "Wie stellt Lovart Markenkonsistenz über mehrere Veröffentlichungen sicher?",
+            "answer": "Mit Lovarts Edit Elements und Markenkonsistenz-Funktionen kannst du Stil-Presets, Farbpaletten und Typografie-Einstellungen speichern. Wende sie mit einem Klick auf neue Albumcover an, sodass alle deine Veröffentlichungen eine einheitliche visuelle Identität teilen und dennoch individuell bleiben."
+          },
+          {
+            "question": "Kann ich Text auf meinem Albumcover nach der Generierung bearbeiten?",
+            "answer": "Ja, Text Edit gibt dir volle kreative Kontrolle über die Typografie. Füge Albumtitel, Künstlernamen, Tracklists und Credits hinzu, bearbeite und gestalte sie. Passe Schriftart, Größe, Farbe, Abstände und Positionierung an – alles ohne die Lovart-Oberfläche zu verlassen."
+          },
+          {
+            "question": "Welche Arten von Albumcovern kann Lovart erstellen?",
+            "answer": "Lovart kann Cover für ganze Alben, EPs, Singles, Mixtapes, Compilations und Werbeartworks über alle Musikgenres hinweg gestalten – Rock, Pop, Electronic, Hip-Hop, Klassik, Jazz, Metal, Folk, R&B, Country, experimentelle Musik und mehr."
+          },
+          {
+            "question": "Kann ich verschiedene Varianten für Streaming-Plattformen erstellen?",
+            "answer": "Ja, mit Smart Mockup kannst du plattformoptimierte Varianten vorschauen und generieren. Erstelle quadratische Cover für Alben (1:1), rechteckige Banner für Spotify Canvas und Apple Music Header sowie Story-formatige Artworks für Social-Media-Promotion – alles aus derselben Design-Session."
+          }
+        ]
+      }
+    }
+  ],
+  "section_ru": [
+    {
+      "centeredInputSection": {
+        "title": "Создайте обложку альбома с помощью ИИ",
+        "subtitle": "Опишите своё музыкальное видение, и Lovart — первый в мире ИИ-дизайн-агент — создаст идеальный артворк для вашего релиза. На базе MCoT-движка, который мыслит как креативный директор.",
+        "placeholder": "Мечтательная обложка для синтвейв-альбома с неоновым городским пейзажем в сумерках, эстетика ретро 80-х...",
+        "systemPrompt": "Вы — MCoT-движок Lovart, выступающий в роли креативного директора по дизайну обложек альбомов. Проанализируйте музыкальный стиль, жанр, настроение и художественные референсы пользователя, чтобы создать профессиональный альбомный артворк, передающий суть его звучания. Учитывайте иерархию типографики, психологию цвета для музыкальных жанров, баланс композиции для стриминговых платформ и визуальное повествование, резонирующее с целевой аудиторией. Применяйте многошаговое рассуждение: сначала определите жанр и настроение, затем выберите подходящие визуальные элементы и цветовые палитры, после чего скомпонуйте макет с правильными фокусными точками и негативным пространством для наложения текста.",
+        "buttonText": "Создать обложку альбома",
+        "suggestions": [
+          "Рок / Метал обложка",
+          "Электронная / EDM обложка",
+          "Акустика / Фолк дизайн",
+          "Хип-хоп / Урбан обложка"
+        ]
+      },
+      "threeColumnSection": {
+        "title": "Как создать обложку альбома с ИИ",
+        "subtitle": "От концепции до готового артворка за три простых шага — навыки дизайна не требуются",
+        "steps": [
+          {
+            "title": "Опишите своё видение",
+            "description": "Расскажите Lovart о вашем музыкальном жанре, теме альбома, настроении и любых визуальных идеях. Наш ИИ-дизайн-агент понимает музыкальные концепции и переводит их в визуальное направление.",
+            "image": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+          },
+          {
+            "title": "ИИ генерирует артворк",
+            "description": "MCoT-движок Lovart пошагово осмысливает ваше видение и генерирует потрясающие дизайны обложек, передающие суть вашего звучания. Множество вариантов создаётся мгновенно.",
+            "image": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+          },
+          {
+            "title": "Доработка и экспорт",
+            "description": "Используйте Touch Edit, Text Edit и Smart Mockup для финальной доработки и экспортируйте в разрешении до 8K. Готово для Spotify, Apple Music, винила и других форматов.",
+            "image": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+          }
+        ]
+      },
+      "featureGridSection": {
+        "title": "Мощные инструменты для дизайна обложек",
+        "subtitle": "Всё необходимое для создания профессионального музыкального артворка",
+        "features": [
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0",
+            "title": "Touch Edit",
+            "description": "Точно настраивайте каждую деталь обложки с помощью интуитивных сенсорных элементов. Регулируйте освещение, меняйте фон, дорабатывайте отдельные элементы, пока артворк идеально не совпадёт с вашим музыкальным видением."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3",
+            "title": "Text Edit",
+            "description": "Добавляйте и настраивайте названия альбомов, имена исполнителей и списки треков с высокой точностью. Выбирайте из сотен шрифтов, чтобы создать типографику, дополняющую ваш жанр — от смелых металлических надписей до элегантных серифов."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932",
+            "title": "Smart Mockup",
+            "description": "Мгновенно просматривайте обложку на стриминговых платформах, виниле, CD-боксах и цифровых баннерах. Видите, как ваш артворк будет выглядеть в Spotify, Apple Music и на физических носителях."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6",
+            "title": "Единый стиль",
+            "description": "Поддерживайте целостную визуальную идентичность всех ваших релизов. Создавайте согласованные обложки для альбомов, EP, синглов и плейлистов с единым стилем, цветовыми схемами и типографикой."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7",
+            "title": "Экспорт в 8K",
+            "description": "Экспортируйте обложку альбома с разрешением до 8K (7680×4320). Идеально для широкоформатной печати, билбордов, плакатов и дисплеев с высоким DPI без потери качества."
+          },
+          {
+            "icon": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166",
+            "title": "Мультиформатный экспорт",
+            "description": "Экспорт в PNG, JPG, SVG и PSD. Получайте готовые к работе PSD-файлы с сохранёнными слоями для редактирования в Photoshop или векторный SVG для бесконечно масштабируемого дизайна — всё в один клик."
+          }
+        ]
+      },
+      "testimonialSection": {
+        "title": "Что музыканты говорят о Lovart",
+        "testimonials": [
+          {
+            "name": "Маркус Ривера",
+            "role": "Вокалист, Neon Circuit",
+            "quote": "Нам нужно было оформить EP-релиз, а бюджета на дизайнера не было совсем. Lovart выдал четыре обложки профессионального качества меньше чем за час. Сэкономили более $2 000 на дизайне, и фанаты в восторге от артворка.",
+            "metric": "Сэкономлено $2 000+ на дизайне"
+          },
+          {
+            "name": "Юки Танака",
+            "role": "Независимый автор-исполнитель",
+            "quote": "У меня совсем нет дизайнерского опыта, но Lovart сделал всё невероятно просто. Описал настроение своего фолк-альбома, и через пару минут получил обложку, идеально передающую акустическое тепло, к которому я стремился. Настоящий прорыв для инди-артистов.",
+            "metric": "Первая обложка — нулевой опыт в дизайне"
+          },
+          {
+            "name": "Сара Чен",
+            "role": "A&R-менеджер, Horizon Records",
+            "quote": "Управлять артворком для 30+ релизов в год было невозможно. Lovart преобразил наш рабочий процесс — артисты сами генерируют начальные концепции, а мы дорабатываем внутри компании. Время производства сократилось на 70%, и мы вышли на 50+ релизов ежегодно.",
+            "metric": "70% быстрее, 50+ релизов в год"
+          }
+        ]
+      },
+      "faqSection": {
+        "title": "Часто задаваемые вопросы",
+        "faqs": [
+          {
+            "question": "Что такое Lovart?",
+            "answer": "Lovart — это первый в мире ИИ-дизайн-агент на базе нашего фирменного MCoT-движка (многошаговая цепочка рассуждений). В отличие от простых генераторов изображений, Lovart мыслит как профессиональный дизайнер — анализирует ваши потребности, просчитывает дизайн-решения и выдаёт готовый к использованию артворк через интерактивный интерфейс ChatCanvas."
+          },
+          {
+            "question": "Можно ли создать обложку без навыков дизайна?",
+            "answer": "Безусловно. Lovart специально создан для людей без дизайнерского опыта. Просто опишите свою музыку, жанр и видение простыми словами — наш ИИ-дизайн-агент автоматически отработает композицию, теорию цвета, типографику и макет. Если вы можете описать свою музыку, вы можете создать потрясающую обложку."
+          },
+          {
+            "question": "Можно ли использовать обложки Lovart для коммерческих релизов?",
+            "answer": "Да, все платные тарифы (Starter, Basic, Pro) включают полные права коммерческого использования. Обложки можно без ограничений использовать на стриминговых платформах, физических носителях, мерчандайзе и в рекламных материалах. Пользователи бесплатного тарифа также могут использовать артворк для личных и некоммерческих проектов."
+          },
+          {
+            "question": "Есть ли бесплатный тариф?",
+            "answer": "Да, Lovart предлагает бесплатный тариф с ежедневными кредитами, чтобы вы могли попробовать создание обложек без затрат. Для большего количества кредитов и продвинутых функций, таких как экспорт 8K, скачивание PSD и коммерческие права, переходите на Starter (2 000 кредитов/мес), Basic (3 500 кредитов/мес) или Pro (11 000 кредитов/мес)."
+          },
+          {
+            "question": "Какие форматы экспорта поддерживаются?",
+            "answer": "Lovart поддерживает экспорт в PNG, JPG, SVG и PSD. PSD-файлы сохраняют слои для дальнейшего редактирования в Photoshop. Экспорт SVG предоставляет бесконечно масштабируемую векторную графику. На платных тарифах все форматы доступны в разрешении до 8K (7680×4320)."
+          },
+          {
+            "question": "Как Lovart обеспечивает единый стиль для нескольких релизов?",
+            "answer": "Функции Edit Elements и Brand Consistency позволяют сохранять пресеты стилей, цветовые палитры и настройки типографики. Применяйте их к новым обложкам в один клик, обеспечивая единую визуальную идентичность всех релизов при сохранении уникальности каждого."
+          },
+          {
+            "question": "Можно ли редактировать текст на обложке после генерации?",
+            "answer": "Да, Text Edit даёт полный творческий контроль над типографикой. Добавляйте, редактируйте и оформляйте названия альбомов, имена исполнителей, списки треков и выходные данные. Настраивайте шрифт, размер, цвет, интервалы и позиционирование — не покидая интерфейс Lovart."
+          },
+          {
+            "question": "Какие типы обложек может создавать Lovart?",
+            "answer": "Lovart может создавать обложки для полноформатных альбомов, EP, синглов, микстейпов, сборников и промо-материалов во всех музыкальных жанрах — рок, поп, электроника, хип-хоп, классика, джаз, метал, фолк, R&B, кантри, экспериментальная музыка и другие."
+          },
+          {
+            "question": "Можно ли создавать варианты для разных стриминговых платформ?",
+            "answer": "Да, Smart Mockup позволяет просматривать и генерировать оптимизированные под платформы варианты. Создавайте квадратные обложки для альбомов (1:1), прямоугольные баннеры для Spotify Canvas и Apple Music, а также артворк в формате Stories для продвижения в соцсетях — всё в рамках одной дизайн-сессии."
+          }
+        ]
+      }
+    }
+  ],
+  "section_fr": [
+    {
+      "type": "centeredInputSection",
+      "title": "Créateur de Covers d'Album IA — Concevez des artworks musicaux professionnels avec l'Agent Design IA de Lovart",
+      "description": "Ne perdez plus des heures sur Photoshop ni des milliers d'euros en agences de design musical. L'Agent Design IA de Lovart transforme votre vision artistique en covers d'album prêtes pour le streaming en quelques minutes. Propulsé par le moteur de raisonnement MCoT, notre agent pense comme un Directeur Artistique musical — analysant votre genre, l'ambiance de votre album et votre identité d'artiste avant de générer des visuels qui captent l'essence de votre son. Que vous soyez un groupe de rock, un producteur électro, un artiste folk ou un rappeur, Lovart crée des artworks spécifiques à votre genre qui se démarquent sur Spotify, Apple Music et les vinyles. Commencez à créer avec des crédits quotidiens gratuits et regardez votre cover prendre vie en quelques secondes.",
+      "input_placeholder": "Décrivez la cover d'album que vous souhaitez créer — incluez le genre musical, le titre de l'album, l'ambiance souhaitée et le style visuel préféré",
+      "system_prompt": "Vous êtes un Directeur Artistique Senior et Spécialiste en Design de Covers d'Album IA chez Lovart, avec une expertise approfondie en direction artistique musicale, culture visuelle par genre et standards des plateformes de streaming. En utilisant le moteur MCoT (Mind Chain of Thought), analysez la description de l'utilisateur pour comprendre : 1) Le genre musical et ses codes visuels établis, 2) L'ambiance et le thème de l'album, 3) L'identité de l'artiste et le public cible, 4) La stratégie visuelle qui maximise l'impact sur les plateformes de streaming et les pochettes physiques. Orchestrez ensuite le pipeline de design agentique de Lovart : sélectionnez la direction visuelle optimale dans ChatCanvas, générez des visuels évocateurs avec Nano Banana Pro, appliquez une typographie percutante avec l'outil Texte pour le nom d'artiste et le titre, et livrez une cover complète prête pour Spotify, Apple Music, vinyles et CD. Exigences de l'utilisateur : $input$",
+      "button_text": "Créer ma cover d'album",
+      "tip": "Conseil pro : incluez le genre musical, le titre de l'album, l'ambiance souhaitée et si vous avez besoin du format streaming, vinyle ou CD",
+      "suggestion": [
+        {
+          "value": "Créez une cover d'album rock/metal puissante avec une typographie gothique audacieuse, une palette de couleurs sombres et tamisées, des textures grunge et l'énergie brute d'un groupe de rock — pour un album qui doit marquer les esprits sur les playlists Spotify",
+          "label": "Cover Rock / Metal"
+        },
+        {
+          "value": "Concevez une cover d'album électronique/EDM futuriste avec des néons cyan et magenta sur fond noir profond, des formes géométriques abstraites et une sensation de festival nocturne — pour un DJ set ou un album de musique électronique",
+          "label": "Cover Électronique / EDM"
+        },
+        {
+          "value": "Créez une cover d'album folk/acoustique chaleureuse avec des tons terreux, une typographie manuscrite élégante, des textures naturelles et une ambiance intime de feu de camp — pour un album indie folk ou un EP acoustique",
+          "label": "Cover Folk / Acoustique"
+        },
+        {
+          "value": "Concevez une cover d'album hip-hop/urbain percutante avec une typographie street art, des couleurs vives et contrastées, une photographie portrait stylisée et une attitude authentique — pour un projet rap, trap ou R&B contemporain",
+          "label": "Cover Hip-Hop / Urbain"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Comment créer des covers d'album professionnelles avec l'Agent IA de Lovart",
+      "columns": [
+        {
+          "title": "Décrivez votre vision musicale",
+          "description": "Commencez par dire à l'Agent Design IA de Lovart exactement ce que représente votre musique. Décrivez votre genre, le titre de votre album, l'ambiance et l'esthétique recherchée — comme si vous briefiez un directeur artistique de label. Le moteur MCoT analyse votre univers sonore et conçoit une direction visuelle qui traduit votre musique en image, en respectant les codes de votre genre tout en créant quelque chose d'unique.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Générez et comparez",
+          "description": "Regardez Lovart transformer votre brief en plusieurs variantes de cover d'album en quelques secondes. L'agent génère des compositions complètes avec une direction artistique cohérente, des visuels évocateurs de Nano Banana Pro, le nom de l'artiste et le titre parfaitement intégrés. Comparez les versions côte à côte et choisissez celle qui raconte le mieux votre histoire musicale.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Affinez et exportez",
+          "description": "Perfectionnez chaque détail avec les outils d'édition exclusifs de Lovart. Utilisez Touch Edit pour remplacer des éléments visuels en un clic. Modifiez le nom d'artiste ou le titre directement sur la cover avec Text Edit. Prévisualisez votre cover sur l'interface Spotify avec Smart Mockup pour voir l'impact réel en playlist. Exportez en résolution 8K en PNG, JPG, SVG ou PSD pour le streaming, les vinyles et les CD.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "La boîte à outils IA ultime pour le design de covers d'album professionnelles",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Touch Edit sémantique",
+          "description": "Cliquez sur n'importe quel élément de votre cover — un élément graphique, une texture d'arrière-plan, un détail visuel — et remodelez, recolorez ou remplacez-le instantanément. Touch Edit comprend le contexte visuel et s'adapte parfaitement à l'éclairage et à la composition. Pas de masquage manuel — juste une édition intuitive qui rend la personnalisation de covers magique."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Édition de texte parfaite",
+          "description": "Modifiez le nom d'artiste, le titre de l'album et les crédits directement sur l'image de votre cover avec une compréhension textuelle structurée. Contrairement aux outils IA qui produisent du texte déformé, Text Edit de Lovart rend une typographie nette et lisible tout en préservant les ombres, dégradés et effets de perspective. Changez un titre d'album ou ajustez le nom d'artiste en quelques secondes sans reconcevoir toute la cover."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Moteur Smart Mockup IA",
+          "description": "Prévisualisez instantanément votre cover dans des contextes réels de streaming. Placez votre design sur l'interface Spotify, Apple Music, une playlist et même une pochette vinyle physique avec un clic. Le moteur Smart Mockup adapte automatiquement la perspective et l'éclairage pour que votre cover ait l'air photoréaliste dans chaque contexte. Parfait pour teaser votre sortie sur les réseaux sociaux et valider l'impact visuel avant le mastering."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Cohérence de marque verrouillée",
+          "description": "Propulsé par Nano Banana Pro et ChatCanvas, Lovart garantit une identité visuelle cohérente sur toute votre discographie. Téléchargez votre logo d'artiste, définissez votre palette de couleurs signature et vos préférences typographiques une fois, et l'agent les applique automatiquement à chaque cover. Créez une série d'albums, d'EPs et de singles visuellement connectés qui renforcent votre marque d'artiste."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Export 8K prêt pour le streaming",
+          "description": "Livrez des covers d'album aux spécifications professionnelles des plateformes. Exportez jusqu'à une résolution 8K en PNG, JPG, SVG vectoriel ou PSD avec calques, parfaitement adapté aux exigences de Spotify (3000×3000 px), Apple Music, Deezer, et aux impressions physiques. Vos covers sont nettes sur tous les écrans, des smartphones aux vinyles 33 tours."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Moteur d'adaptation multiformat",
+          "description": "Un seul design, déployé partout. Après avoir créé votre cover maîtresse, l'agent de Lovart génère automatiquement des variantes optimisées pour chaque format : carré streaming (1:1), Spotify Canvas (9:16 vertical), bannière artiste, pochette vinyle 33 tours et jaquette CD — tout en préservant la direction artistique et la cohérence de marque. Passez du studio au streaming en quelques minutes."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Des artistes et labels qui élèvent leur identité visuelle avec Lovart",
+      "testimonials": [
+        {
+          "name": "Léa Dubois",
+          "role": "Artiste Indie Rock, Marseille",
+          "content": "Je dépensais 600 € par cover chez un graphiste freelance — avec des délais de 2 semaines et des résultats qui ne captaient jamais vraiment l'énergie de ma musique. Avec le Créateur de Covers de Lovart, j'ai réalisé la cover de mon dernier EP en 4 minutes, et elle a généré 3 200 écoutes le premier jour sur Spotify. Mes fans ont adoré l'esthétique — certains m'ont même demandé quel studio de design j'avais utilisé. Depuis, j'ai créé 8 covers pour mes singles et mon album, avec une cohérence visuelle parfaite qui construit enfin une vraie identité d'artiste.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Théo Martin",
+          "role": "Producteur Électro & DJ, Lyon",
+          "content": "Dans la scène électronique, ta cover fait 50 % de la première impression sur les playlists. Avant Lovart, je bricolais des visuels sur Canva qui faisaient amateur. Maintenant, je décris simplement l'ambiance de mon track — 'néons cyberpunk, foule en transe, bleu électrique et magenta' — et en 2 minutes j'ai une cover qui rivalise avec les sorties de labels majeurs. Mon dernier single a été playlisté sur 3 playlists éditoriales Spotify, et je suis convaincu que la qualité visuelle a joué un rôle énorme. 15 covers créées, 0 € dépensés en design.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Amina Bensalem",
+          "role": "Rappeuse & Auteure, Bruxelles",
+          "content": "Je prépare mon premier album et je voulais une identité visuelle forte qui traverse tous les singles. Lovart a été une révélation — j'ai créé une cover pour chaque single et elles sont toutes connectées visuellement, comme une série. La fonction Smart Mockup m'a permis de teaser mes sorties sur Instagram avec des rendus réalistes sur Spotify, et l'engagement a explosé : +230 % d'interactions sur mes posts de teasing. Pour mon album, j'ai pu itérer 12 versions différentes en une soirée avant de trouver LA cover parfaite. Un outil qui comprend vraiment les besoins des artistes indépendants.",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Qu'est-ce que Lovart et en quoi diffère-t-il de Canva ou d'autres outils de design ?",
+          "answer": "Lovart est le premier Agent Design IA au monde — pas simplement un autre éditeur de modèles. Contrairement à Canva, qui nécessite une édition manuelle de chaque élément, le moteur MCoT de Lovart pense comme un Directeur Artistique musical, analysant votre genre, l'ambiance de votre album et votre identité d'artiste pour orchestrer des covers complètes avec une direction visuelle intentionnelle. Vous décrivez votre musique en langage naturel, et Lovart livre une cover complète, éditable et prête pour le streaming — comme si vous aviez briefé un directeur artistique de label."
+        },
+        {
+          "question": "Puis-je créer des covers d'album professionnelles sans expérience en design ?",
+          "answer": "Absolument. Lovart a été conçu pour les musiciens et artistes qui n'ont aucune formation en design. Vous n'avez pas besoin de comprendre la composition visuelle, la théorie des couleurs ou la typographie. Décrivez simplement votre genre musical, le titre de votre album et l'ambiance que vous souhaitez, et l'Agent Design IA de Lovart prend toutes les décisions créatives et techniques. L'agent sélectionne automatiquement les directions visuelles appropriées à votre genre, intègre la typographie et exporte à la bonne résolution pour les plateformes de streaming."
+        },
+        {
+          "question": "Puis-je utiliser les covers que je crée à des fins commerciales ?",
+          "answer": "Oui. Les utilisateurs des forfaits payants (Starter, Basic, Pro) possèdent les droits commerciaux complets sur leurs designs de covers d'album. Vous pouvez les utiliser pour vos sorties musicales, votre merchandising, votre promotion et toute fin commerciale légale. Le forfait gratuit est destiné à un usage personnel et à l'évaluation. Les modèles de Lovart sont entraînés sur des données sous licence et du domaine public."
+        },
+        {
+          "question": "Existe-t-il un forfait gratuit et comment fonctionnent les crédits gratuits ?",
+          "answer": "Oui, Lovart propose un forfait gratuit avec des crédits quotidiens de connexion qui se renouvellent toutes les 24 heures. Vous pouvez créer plusieurs covers par jour sans rien payer — parfait pour tester la plateforme ou sortir des singles indépendants. Les forfaits payants commencent avec Starter (2 000 crédits mensuels), Basic (3 500 crédits) et Pro (11 000 crédits), tous débloquant les capacités complètes de l'agent, les droits commerciaux et l'accès aux modèles premium comme Nano Banana Pro. Le coût en crédits est affiché avant chaque génération."
+        },
+        {
+          "question": "Dans quels formats de fichiers et résolutions puis-je exporter mes covers ?",
+          "answer": "Lovart prend en charge l'export professionnel en PNG, JPG, SVG (vectoriel) et PSD avec calques. Les résolutions atteignent jusqu'à 8K pour les exports raster, rendant vos covers adaptées à toutes les plateformes de streaming (Spotify recommande 3000×3000 px), aux impressions vinyle, aux pochettes CD et aux visuels promotionnels. Les exports vectoriels SVG sont parfaits pour les logos d'artiste et les designs qui doivent être redimensionnés pour le merchandising."
+        },
+        {
+          "question": "Comment Lovart maintient-il la cohérence visuelle sur toute ma discographie ?",
+          "answer": "ChatCanvas de Lovart maintient un contexte de marque d'artiste persistant — une fois que vous avez téléchargé votre logo, défini vos couleurs signature et vos préférences typographiques, l'agent les applique automatiquement à chaque nouvelle cover. Nano Banana Pro garantit la cohérence visuelle de tous les éléments générés. Le système de marque reste actif entre les sessions, de sorte que votre EP, votre album et vos singles forment une discographie visuellement cohérente qui renforce votre identité d'artiste."
+        },
+        {
+          "question": "Puis-je modifier le texte de ma cover (nom d'artiste, titre) après sa génération ?",
+          "answer": "Oui, et c'est l'une des capacités signatures de Lovart. Avec Text Edit, vous pouvez cliquer sur n'importe quel élément textuel — nom d'artiste, titre de l'album, featuring, crédits — et le modifier directement sur l'image de la cover. L'IA préserve le style typographique original, y compris la graisse de la police, les ombres, les dégradés et les effets de perspective. Besoin de changer un titre de piste ou d'ajouter un featuring ? Tapez le nouveau texte et il s'intègre parfaitement."
+        },
+        {
+          "question": "Quels genres musicaux puis-je couvrir avec le Créateur de Covers de Lovart ?",
+          "answer": "Le Créateur de Covers d'Album IA de Lovart couvre tous les genres musicaux majeurs et leurs sous-genres : rock, metal, punk, indie ; électronique, EDM, house, techno, ambient ; folk, acoustique, country, singer-songwriter ; hip-hop, rap, trap, R&B ; jazz, classique, world music ; pop, K-pop, latino — et bien plus encore. Le moteur MCoT adapte automatiquement la direction visuelle aux codes esthétiques de chaque genre tout en créant quelque chose d'original et distinctif."
+        },
+        {
+          "question": "Lovart peut-il créer des variantes de ma cover pour Spotify Canvas, vinyles et CD ?",
+          "answer": "Oui. Le moteur d'adaptation multiformat génère automatiquement des variantes optimisées à partir de votre cover maîtresse. Vous obtenez des versions correctement dimensionnées pour le streaming (format carré 1:1 standard), Spotify Canvas (vidéo verticale 9:16), les pochettes vinyle 33 tours, les jaquettes CD, les bannières d'artiste sur les plateformes et les visuels pour les réseaux sociaux — tout en préservant la direction artistique et la cohérence de marque."
+        }
+      ]
+    }
+  ],
+  "section_pt": [
+    {
+      "type": "centeredInputSection",
+      "title": "Criador de Capas de Álbum IA — Crie artworks musicais profissionais com o Agente de Design IA da Lovart",
+      "description": "Não perca mais horas no Photoshop ou milhares de reais em agências de design musical. O Agente de Design IA da Lovart transforma sua visão artística em capas de álbum prontas para streaming em minutos. Alimentado pelo motor de raciocínio MCoT, nosso agente pensa como um Diretor de Arte musical — analisando seu gênero, a atmosfera do seu álbum e sua identidade artística antes de gerar visuais que capturam a essência do seu som. Seja você uma banda de rock, um produtor de eletrônica, um artista folk ou um rapper, a Lovart cria artworks específicas para o seu gênero que se destacam no Spotify, Apple Music e nos vinis. Comece a criar com créditos diários gratuitos e veja sua capa ganhar vida em segundos.",
+      "input_placeholder": "Descreva a capa de álbum que deseja criar — inclua o gênero musical, título do álbum, atmosfera desejada e estilo visual preferido",
+      "system_prompt": "Você é um Diretor de Arte Sênior e Especialista em Design de Capas de Álbum IA na Lovart, com profundo conhecimento em direção de arte musical, cultura visual por gênero e padrões de plataformas de streaming. Usando o motor MCoT (Mind Chain of Thought), analise a descrição do usuário para entender: 1) O gênero musical e seus códigos visuais estabelecidos, 2) A atmosfera e o tema do álbum, 3) A identidade do artista e o público-alvo, 4) A estratégia visual que maximiza o impacto nas plataformas de streaming e nas capas físicas. Em seguida, orquestre o pipeline de design agentivo da Lovart: selecione a direção visual ideal do ChatCanvas, gere visuais evocativos com o Nano Banana Pro, aplique tipografia impactante com a ferramenta de Texto para nome do artista e título, e entregue uma capa completa pronta para Spotify, Apple Music, vinis e CDs. Requisitos do usuário: $input$",
+      "button_text": "Criar minha capa de álbum",
+      "tip": "Dica profissional: inclua o gênero musical, título do álbum, atmosfera desejada e se precisa de formato streaming, vinil ou CD",
+      "suggestion": [
+        {
+          "value": "Crie uma capa de álbum de rock/metal impactante com tipografia gótica ousada, paleta de cores escuras e sombrias, texturas grunge e a energia bruta de uma banda de rock — para um álbum que precisa marcar presença nas playlists do Spotify",
+          "label": "Capa Rock / Metal"
+        },
+        {
+          "value": "Crie uma capa de álbum eletrônico/EDM futurista com néons ciano e magenta sobre fundo preto profundo, formas geométricas abstratas e sensação de festival noturno — para um set de DJ ou um álbum de música eletrônica",
+          "label": "Capa Eletrônica / EDM"
+        },
+        {
+          "value": "Crie uma capa de álbum folk/acústico acolhedora com tons terrosos, tipografia manuscrita elegante, texturas naturais e atmosfera intimista de fogueira — para um álbum indie folk ou EP acústico",
+          "label": "Capa Folk / Acústico"
+        },
+        {
+          "value": "Crie uma capa de álbum hip-hop/urbano impactante com tipografia street art, cores vibrantes e contrastantes, retrato estilizado e atitude autêntica — para um projeto de rap, trap ou R&B contemporâneo",
+          "label": "Capa Hip-Hop / Urbano"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Como criar capas de álbum profissionais com o Agente IA da Lovart",
+      "columns": [
+        {
+          "title": "Descreva sua visão musical",
+          "description": "Comece dizendo ao Agente de Design IA da Lovart exatamente o que sua música representa. Descreva seu gênero, o título do álbum, a atmosfera e a estética desejada — como se estivesse fazendo um briefing para um diretor de arte de gravadora. O motor MCoT analisa seu universo sonoro e cria uma direção visual que traduz sua música em imagem, respeitando os códigos do seu gênero enquanto cria algo único.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Gere e compare",
+          "description": "Veja a Lovart transformar seu briefing em múltiplas variantes de capa de álbum em segundos. O agente gera composições completas com direção de arte coerente, visuais evocativos do Nano Banana Pro, nome do artista e título perfeitamente integrados. Compare versões lado a lado e escolha a que melhor conta sua história musical.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Refine e exporte",
+          "description": "Aperfeiçoe cada detalhe com as ferramentas de edição exclusivas da Lovart. Use o Touch Edit para trocar elementos visuais com um clique. Edite o nome do artista ou o título diretamente na capa com o Text Edit. Visualize sua capa na interface do Spotify com o Smart Mockup para ver o impacto real em playlist. Exporte em resolução 8K nos formatos PNG, JPG, SVG ou PSD para streaming, vinis e CDs.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "O kit de ferramentas IA definitivo para design profissional de capas de álbum",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Touch Edit semântico",
+          "description": "Clique em qualquer elemento da sua capa — um gráfico, uma textura de fundo, um detalhe visual — e remodele, recolor ou substitua instantaneamente. O Touch Edit entende o contexto visual e se adapta perfeitamente à iluminação e à composição. Sem máscara manual — apenas edição intuitiva que torna a personalização de capas mágica."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Edição de texto impecável",
+          "description": "Edite o nome do artista, título do álbum e créditos diretamente na imagem da sua capa com compreensão textual estruturada. Diferente de ferramentas IA que produzem texto distorcido, o Text Edit da Lovart renderiza tipografia nítida e legível preservando sombras, gradientes e efeitos de perspectiva. Altere um título de álbum ou ajuste o nome do artista em segundos sem redesenhar toda a capa."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Motor Smart Mockup IA",
+          "description": "Visualize instantaneamente sua capa em contextos reais de streaming. Coloque seu design na interface do Spotify, Apple Music, uma playlist e até em uma capa de vinil físico com um clique. O motor Smart Mockup adapta automaticamente a perspectiva e iluminação para que sua capa pareça fotorrealista em cada contexto. Perfeito para teasers de lançamento nas redes sociais e validação do impacto visual antes da masterização."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Consistência de marca vinculada",
+          "description": "Impulsionado pelo Nano Banana Pro e ChatCanvas, a Lovart garante uma identidade visual consistente em toda a sua discografia. Faça upload do seu logo de artista, defina sua paleta de cores exclusiva e preferências tipográficas uma vez, e o agente as aplica automaticamente a cada nova capa. Crie uma série de álbuns, EPs e singles visualmente conectados que fortalecem sua marca artística."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Exportação 8K pronta para streaming",
+          "description": "Entregue capas de álbum com especificações profissionais das plataformas. Exporte em até 8K de resolução nos formatos PNG, JPG, SVG vetorial ou PSD com camadas, perfeitamente adequado aos requisitos do Spotify (3000×3000 px), Apple Music, Deezer e impressões físicas. Suas capas ficam nítidas em todas as telas, de smartphones a vinis de 12 polegadas."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Motor de adaptação multiformato",
+          "description": "Um design, implantado em todos os canais. Após criar sua capa mestre, o agente da Lovart gera automaticamente variantes otimizadas para cada formato: quadrado de streaming (1:1), Spotify Canvas (9:16 vertical), banner de artista, capa de vinil 12 polegadas e encarte de CD — tudo preservando a direção de arte e a consistência da marca. Vá do estúdio ao streaming em minutos."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Artistas e selos elevando sua identidade visual com a Lovart",
+      "testimonials": [
+        {
+          "name": "Rafael Oliveira",
+          "role": "Artista de Indie Rock, São Paulo",
+          "content": "Eu gastava R$ 800 por capa com um designer freelancer — com prazos de 2 semanas e resultados que nunca capturavam a energia da minha música. Com o Criador de Capas da Lovart, fiz a capa do meu último EP em 4 minutos, e ela gerou 3.200 streams no primeiro dia no Spotify. Meus fãs amaram a estética — alguns até perguntaram qual estúdio de design eu usei. Desde então, criei 8 capas para meus singles e álbum, com consistência visual perfeita que finalmente constrói uma identidade artística de verdade.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Mariana Costa",
+          "role": "Produtora de Eletrônica & DJ, Rio de Janeiro",
+          "content": "Na cena eletrônica, sua capa faz 50% da primeira impressão nas playlists. Antes da Lovart, eu improvisava visuais no Canva que pareciam amadores. Agora, simplesmente descrevo a atmosfera da minha track — 'néons cyberpunk, multidão em transe, azul elétrico e magenta' — e em 2 minutos tenho uma capa que compete com lançamentos de grandes selos. Meu último single entrou em 3 playlists editoriais do Spotify, e estou convencida de que a qualidade visual teve um papel enorme. 15 capas criadas, R$ 0 gastos em design.",
+          "avatar_url": ""
+        },
+        {
+          "name": "João Silva",
+          "role": "Rapper & Compositor, Lisboa",
+          "content": "Estou preparando meu primeiro álbum e queria uma identidade visual forte que atravessasse todos os singles. A Lovart foi uma revelação — criei uma capa para cada single e todas estão visualmente conectadas, como uma série. O recurso Smart Mockup me permitiu fazer teasers dos meus lançamentos no Instagram com renders realistas no Spotify, e o engajamento explodiu: +230% de interações nos meus posts de teasing. Para o álbum, consegui iterar 12 versões diferentes em uma noite até encontrar A capa perfeita. Uma ferramenta que realmente entende as necessidades dos artistas independentes.",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "O que é a Lovart e como ela se diferencia do Canva ou de outras ferramentas de design?",
+          "answer": "A Lovart é o primeiro Agente de Design IA do mundo — não apenas mais um editor de modelos. Diferente do Canva, que exige edição manual de cada elemento, o motor MCoT da Lovart pensa como um Diretor de Arte musical, analisando seu gênero, a atmosfera do seu álbum e sua identidade artística para orquestrar capas completas com direção visual intencional. Você descreve sua música em linguagem natural, e a Lovart entrega uma capa completa, editável e pronta para streaming — como se você tivesse feito um briefing com um diretor de arte de gravadora."
+        },
+        {
+          "question": "Posso criar capas de álbum profissionais sem nenhuma experiência em design?",
+          "answer": "Absolutamente. A Lovart foi criada para músicos e artistas sem formação em design. Você não precisa entender composição visual, teoria das cores ou tipografia. Basta descrever seu gênero musical, o título do álbum e a atmosfera desejada, e o Agente de Design IA da Lovart toma todas as decisões criativas e técnicas. O agente seleciona automaticamente as direções visuais adequadas ao seu gênero, integra a tipografia e exporta na resolução certa para as plataformas de streaming."
+        },
+        {
+          "question": "Posso usar as capas que crio para fins comerciais?",
+          "answer": "Sim. Usuários de planos pagos (Starter, Basic, Pro) possuem direitos comerciais completos sobre seus designs de capas de álbum. Você pode usá-los para seus lançamentos musicais, merchandising, promoção e qualquer finalidade comercial legal. O plano gratuito é para uso pessoal e avaliação. Os modelos da Lovart são treinados com dados licenciados e de domínio público."
+        },
+        {
+          "question": "Existe um plano gratuito e como funcionam os créditos gratuitos?",
+          "answer": "Sim, a Lovart oferece um plano gratuito com créditos diários de login que se renovam a cada 24 horas. Você pode criar várias capas por dia sem pagar nada — perfeito para testar a plataforma ou lançar singles independentes. Os planos pagos começam com o nível Starter (2.000 créditos mensais), Basic (3.500 créditos) e Pro (11.000 créditos), todos desbloqueando as capacidades completas do agente, direitos comerciais e acesso a modelos premium como o Nano Banana Pro. O custo em créditos é exibido antes de cada geração."
+        },
+        {
+          "question": "Em quais formatos de arquivo e resoluções posso exportar minhas capas?",
+          "answer": "A Lovart suporta exportação profissional nos formatos PNG, JPG, SVG (vetorial) e PSD com camadas. As resoluções chegam a até 8K para exportações raster, tornando suas capas adequadas para todas as plataformas de streaming (Spotify recomenda 3000×3000 px), impressões em vinil, encartes de CD e visuais promocionais. Exportações vetoriais SVG são perfeitas para logos de artista e designs que precisam ser redimensionados para merchandising."
+        },
+        {
+          "question": "Como a Lovart mantém a consistência visual em toda a minha discografia?",
+          "answer": "O ChatCanvas da Lovart mantém um contexto de marca artística persistente — uma vez que você faz upload do seu logo, define suas cores exclusivas e preferências tipográficas, o agente as aplica automaticamente a cada nova capa. O Nano Banana Pro garante consistência visual em todos os elementos gerados. O sistema de marca permanece ativo entre sessões, para que seu EP, álbum e singles formem uma discografia visualmente coerente que fortalece sua identidade artística."
+        },
+        {
+          "question": "Posso editar o texto da minha capa (nome do artista, título) depois de gerada?",
+          "answer": "Sim, e esta é uma das capacidades exclusivas da Lovart. Com o Text Edit, você pode clicar em qualquer elemento textual — nome do artista, título do álbum, participações, créditos — e modificá-lo diretamente na imagem da capa. A IA preserva o estilo tipográfico original, incluindo peso da fonte, sombras, gradientes e efeitos de perspectiva. Precisa alterar o título de uma faixa ou adicionar uma participação? Digite o novo texto e ele se integra perfeitamente."
+        },
+        {
+          "question": "Quais gêneros musicais posso atender com o Criador de Capas da Lovart?",
+          "answer": "O Criador de Capas de Álbum IA da Lovart cobre todos os gêneros musicais principais e seus subgêneros: rock, metal, punk, indie; eletrônica, EDM, house, techno, ambient; folk, acústico, country, singer-songwriter; hip-hop, rap, trap, R&B; jazz, clássico, world music; pop, K-pop, latino — e muito mais. O motor MCoT adapta automaticamente a direção visual aos códigos estéticos de cada gênero enquanto cria algo original e distintivo."
+        },
+        {
+          "question": "A Lovart pode criar variantes da minha capa para Spotify Canvas, vinis e CD?",
+          "answer": "Sim. O motor de adaptação multiformato gera automaticamente variantes otimizadas a partir da sua capa mestre. Você obtém versões corretamente dimensionadas para streaming (formato quadrado 1:1 padrão), Spotify Canvas (vídeo vertical 9:16), capas de vinil 12 polegadas, encartes de CD, banners de artista nas plataformas e visuais para redes sociais — tudo preservando a direção de arte e a consistência da marca."
+        }
+      ]
+    }
+  ],
+  "section_it": [
+    {
+      "type": "centeredInputSection",
+      "title": "Creatore di Cover per Album IA — Crea artwork musicali professionali con l'Agente di Design IA di Lovart",
+      "description": "Non perdere più ore su Photoshop né migliaia di euro in agenzie di design musicale. L'Agente di Design IA di Lovart trasforma la tua visione artistica in cover per album pronte per lo streaming in pochi minuti. Alimentato dal motore di ragionamento MCoT, il nostro agente pensa come un Direttore Artistico musicale — analizzando il tuo genere, l'atmosfera del tuo album e la tua identità d'artista prima di generare visual che catturano l'essenza del tuo suono. Che tu sia una band rock, un produttore elettronico, un artista folk o un rapper, Lovart crea artwork specifici per genere che si distinguono su Spotify, Apple Music e vinili. Inizia a creare con crediti giornalieri gratuiti e guarda la tua cover prendere vita in pochi secondi.",
+      "input_placeholder": "Descrivi la cover dell'album che vuoi creare — includi il genere musicale, il titolo dell'album, l'atmosfera desiderata e lo stile visivo preferito",
+      "system_prompt": "Sei un Direttore Artistico Senior e Specialista in Design di Cover per Album IA presso Lovart, con profonda esperienza in direzione artistica musicale, cultura visiva per genere e standard delle piattaforme di streaming. Utilizzando il motore MCoT (Mind Chain of Thought), analizza la descrizione dell'utente per comprendere: 1) Il genere musicale e i suoi codici visivi consolidati, 2) L'atmosfera e il tema dell'album, 3) L'identità dell'artista e il pubblico di riferimento, 4) La strategia visiva che massimizza l'impatto sulle piattaforme di streaming e sulle copertine fisiche. Quindi orchestra la pipeline di design agentico di Lovart: seleziona la direzione visiva ottimale da ChatCanvas, genera visual evocativi con Nano Banana Pro, applica una tipografia d'impatto con lo strumento Testo per nome artista e titolo, e consegna una cover completa pronta per Spotify, Apple Music, vinili e CD. Requisiti dell'utente: $input$",
+      "button_text": "Crea la mia cover album",
+      "tip": "Consiglio pro: includi il genere musicale, il titolo dell'album, l'atmosfera desiderata e se ti serve il formato streaming, vinile o CD",
+      "suggestion": [
+        {
+          "value": "Crea una cover per album rock/metal potente con tipografia gotica audace, palette di colori scuri e cupi, texture grunge e l'energia grezza di una band rock — per un album che deve lasciare il segno nelle playlist Spotify",
+          "label": "Cover Rock / Metal"
+        },
+        {
+          "value": "Crea una cover per album elettronica/EDM futuristica con neon ciano e magenta su sfondo nero profondo, forme geometriche astratte e atmosfera da festival notturno — per un DJ set o un album di musica elettronica",
+          "label": "Cover Elettronica / EDM"
+        },
+        {
+          "value": "Crea una cover per album folk/acustico calda con toni terrosi, elegante tipografia calligrafica, texture naturali e atmosfera intima da falò — per un album indie folk o un EP acustico",
+          "label": "Cover Folk / Acustico"
+        },
+        {
+          "value": "Crea una cover per album hip-hop/urbano d'impatto con tipografia street art, colori vivaci e contrastanti, ritratto fotografico stilizzato e attitudine autentica — per un progetto rap, trap o R&B contemporaneo",
+          "label": "Cover Hip-Hop / Urbano"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Come creare cover per album professionali con l'Agente IA di Lovart",
+      "columns": [
+        {
+          "title": "Descrivi la tua visione musicale",
+          "description": "Inizia dicendo all'Agente di Design IA di Lovart esattamente cosa rappresenta la tua musica. Descrivi il tuo genere, il titolo dell'album, l'atmosfera e l'estetica desiderata — come se stessi facendo un briefing a un direttore artistico di un'etichetta. Il motore MCoT analizza il tuo universo sonoro e progetta una direzione visiva che traduce la tua musica in immagine, rispettando i codici del tuo genere ma creando qualcosa di unico.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Genera e confronta",
+          "description": "Guarda Lovart trasformare il tuo briefing in molteplici varianti di cover per album in pochi secondi. L'agente genera composizioni complete con direzione artistica coerente, visual evocativi di Nano Banana Pro, nome artista e titolo perfettamente integrati. Confronta le versioni fianco a fianco e scegli quella che racconta meglio la tua storia musicale.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Rifinisci ed esporta",
+          "description": "Perfeziona ogni dettaglio con gli strumenti di editing esclusivi di Lovart. Usa Touch Edit per sostituire elementi visivi con un clic. Modifica il nome dell'artista o il titolo direttamente sulla cover con Text Edit. Visualizza la tua cover sull'interfaccia Spotify con Smart Mockup per vedere l'impatto reale in playlist. Esporta in risoluzione 8K in PNG, JPG, SVG o PSD per streaming, vinili e CD.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Il toolkit IA definitivo per il design professionale di cover per album",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Touch Edit semantico",
+          "description": "Clicca su qualsiasi elemento della tua cover — un elemento grafico, una texture di sfondo, un dettaglio visivo — e rimodella, ricolora o sostituisci istantaneamente. Touch Edit comprende il contesto visivo e si adatta perfettamente a illuminazione e composizione. Nessun mascheramento manuale — solo editing intuitivo che rende magica la personalizzazione delle cover."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Editing testuale perfetto",
+          "description": "Modifica il nome dell'artista, il titolo dell'album e i crediti direttamente sull'immagine della tua cover con comprensione testuale strutturata. A differenza degli strumenti IA che producono testo distorto, Text Edit di Lovart riproduce una tipografia nitida e leggibile preservando ombre, gradienti ed effetti di prospettiva. Cambia il titolo di un album o regola il nome dell'artista in pochi secondi senza ridisegnare l'intera cover."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Motore Smart Mockup IA",
+          "description": "Visualizza all'istante la tua cover in contesti reali di streaming. Posiziona il tuo design sull'interfaccia Spotify, Apple Music, una playlist e persino una copertina vinile fisica con un clic. Il motore Smart Mockup adatta automaticamente prospettiva e illuminazione per far sembrare la tua cover fotorealistica in ogni contesto. Perfetto per teaser di lancio sui social e validazione dell'impatto visivo prima del mastering."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Coerenza del marchio garantita",
+          "description": "Alimentato da Nano Banana Pro e ChatCanvas, Lovart garantisce un'identità visiva coerente in tutta la tua discografia. Carica il tuo logo d'artista, definisci la tua palette di colori distintiva e le preferenze tipografiche una volta sola, e l'agente le applica automaticamente a ogni nuova cover. Crea una serie di album, EP e singoli visivamente connessi che rafforzano il tuo marchio d'artista."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Esportazione 8K pronta per lo streaming",
+          "description": "Consegna cover per album con specifiche professionali delle piattaforme. Esporta fino a una risoluzione 8K in PNG, JPG, SVG vettoriale o PSD con livelli, perfettamente adatto ai requisiti di Spotify (3000×3000 px), Apple Music, Deezer e stampe fisiche. Le tue cover sono nitide su tutti gli schermi, dagli smartphone ai vinili 12 pollici."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Motore di adattamento multiformato",
+          "description": "Un design, distribuito ovunque. Dopo aver creato la tua cover principale, l'agente di Lovart genera automaticamente varianti ottimizzate per ogni formato: quadrato streaming (1:1), Spotify Canvas (9:16 verticale), banner artista, copertina vinile 12 pollici e booklet CD — preservando la direzione artistica e la coerenza del marchio. Passa dallo studio allo streaming in pochi minuti."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Artisti ed etichette che elevano la propria identità visiva con Lovart",
+      "testimonials": [
+        {
+          "name": "Marco Rossi",
+          "role": "Artista Indie Rock, Milano",
+          "content": "Spendevo 600 € a cover da un grafico freelance — con tempi di attesa di 2 settimane e risultati che non catturavano mai davvero l'energia della mia musica. Con il Creatore di Cover di Lovart, ho realizzato la cover del mio ultimo EP in 4 minuti, e ha generato 3.200 ascolti il primo giorno su Spotify. I miei fan hanno adorato l'estetica — alcuni mi hanno persino chiesto quale studio di design avessi usato. Da allora ho creato 8 cover per i miei singoli e l'album, con una coerenza visiva perfetta che finalmente costruisce una vera identità d'artista.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Giulia Conti",
+          "role": "Produttrice Elettronica & DJ, Bologna",
+          "content": "Nella scena elettronica, la tua cover fa il 50% della prima impressione sulle playlist. Prima di Lovart, arrangiavo visual su Canva che sembravano amatoriali. Ora descrivo semplicemente l'atmosfera della mia traccia — 'neon cyberpunk, folla in trance, blu elettrico e magenta' — e in 2 minuti ho una cover che compete con le uscite delle major. Il mio ultimo singolo è entrato in 3 playlist editoriali Spotify, e sono convinta che la qualità visiva abbia giocato un ruolo enorme. 15 cover create, 0 € spesi in design.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Alessandro Ferrari",
+          "role": "Rapper & Autore, Napoli",
+          "content": "Sto preparando il mio primo album e volevo un'identità visiva forte che attraversasse tutti i singoli. Lovart è stata una rivelazione — ho creato una cover per ogni singolo e sono tutte visivamente connesse, come una serie. La funzione Smart Mockup mi ha permesso di fare teaser delle mie uscite su Instagram con render realistici su Spotify, e l'engagement è esploso: +230% di interazioni sui miei post di teasing. Per l'album, ho potuto iterare 12 versioni diverse in una sera prima di trovare LA cover perfetta. Uno strumento che capisce davvero le esigenze degli artisti indipendenti.",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Cos'è Lovart e in cosa si differenzia da Canva o altri strumenti di design?",
+          "answer": "Lovart è il primo Agente di Design IA al mondo — non solo un altro editor di modelli. A differenza di Canva, che richiede l'editing manuale di ogni elemento, il motore MCoT di Lovart pensa come un Direttore Artistico musicale, analizzando il tuo genere, l'atmosfera del tuo album e la tua identità d'artista per orchestrare cover complete con una direzione visiva intenzionale. Descrivi la tua musica in linguaggio naturale, e Lovart consegna una cover completa, modificabile e pronta per lo streaming — come se avessi fatto un briefing a un direttore artistico di un'etichetta."
+        },
+        {
+          "question": "Posso creare cover per album professionali senza esperienza di design?",
+          "answer": "Assolutamente. Lovart è stato progettato per musicisti e artisti senza alcuna formazione in design. Non devi capire la composizione visiva, la teoria del colore o la tipografia. Descrivi semplicemente il tuo genere musicale, il titolo dell'album e l'atmosfera che desideri, e l'Agente di Design IA di Lovart prende tutte le decisioni creative e tecniche. L'agente seleziona automaticamente le direzioni visive appropriate al tuo genere, integra la tipografia ed esporta alla giusta risoluzione per le piattaforme di streaming."
+        },
+        {
+          "question": "Posso utilizzare le cover che creo per scopi commerciali?",
+          "answer": "Sì. Gli utenti dei piani a pagamento (Starter, Basic, Pro) possiedono i diritti commerciali completi sui loro design di cover per album. Puoi usarli per le tue uscite musicali, merchandising, promozione e qualsiasi scopo commerciale legale. Il piano gratuito è destinato all'uso personale e alla valutazione. I modelli di Lovart sono addestrati su dati con licenza e di pubblico dominio."
+        },
+        {
+          "question": "Esiste un piano gratuito e come funzionano i crediti gratuiti?",
+          "answer": "Sì, Lovart offre un piano gratuito con crediti giornalieri di accesso che si rinnovano ogni 24 ore. Puoi creare più cover al giorno senza pagare nulla — perfetto per testare la piattaforma o pubblicare singoli indipendenti. I piani a pagamento partono dal livello Starter (2.000 crediti mensili), Basic (3.500 crediti) e Pro (11.000 crediti), tutti sbloccano le piene capacità dell'agente, i diritti commerciali e l'accesso ai modelli premium come Nano Banana Pro. Il costo in crediti viene visualizzato prima di ogni generazione."
+        },
+        {
+          "question": "In quali formati di file e risoluzioni posso esportare le mie cover?",
+          "answer": "Lovart supporta l'esportazione professionale in PNG, JPG, SVG (vettoriale) e PSD con livelli. Le risoluzioni arrivano fino a 8K per le esportazioni raster, rendendo le tue cover adatte a tutte le piattaforme di streaming (Spotify raccomanda 3000×3000 px), stampe su vinile, booklet CD e visual promozionali. Le esportazioni vettoriali SVG sono perfette per i loghi d'artista e i design che devono essere ridimensionati per il merchandising."
+        },
+        {
+          "question": "Come mantiene Lovart la coerenza visiva su tutta la mia discografia?",
+          "answer": "ChatCanvas di Lovart mantiene un contesto di marchio d'artista persistente — una volta caricato il tuo logo, definiti i tuoi colori distintivi e le preferenze tipografiche, l'agente le applica automaticamente a ogni nuova cover. Nano Banana Pro garantisce coerenza visiva in tutti gli elementi generati. Il sistema di marca rimane attivo tra le sessioni, così che il tuo EP, album e singoli formino una discografia visivamente coerente che rafforza la tua identità d'artista."
+        },
+        {
+          "question": "Posso modificare il testo della mia cover (nome artista, titolo) dopo la generazione?",
+          "answer": "Sì, e questa è una delle capacità distintive di Lovart. Con Text Edit, puoi cliccare su qualsiasi elemento testuale — nome dell'artista, titolo dell'album, featuring, crediti — e modificarlo direttamente sull'immagine della cover. L'IA preserva lo stile tipografico originale, inclusi peso del font, ombre, gradienti ed effetti di prospettiva. Devi cambiare il titolo di una traccia o aggiungere un featuring? Digita il nuovo testo e si integra perfettamente."
+        },
+        {
+          "question": "Quali generi musicali posso coprire con il Creatore di Cover di Lovart?",
+          "answer": "Il Creatore di Cover per Album IA di Lovart copre tutti i principali generi musicali e i loro sottogeneri: rock, metal, punk, indie; elettronica, EDM, house, techno, ambient; folk, acustico, country, cantautorato; hip-hop, rap, trap, R&B; jazz, classica, world music; pop, K-pop, latino — e molti altri. Il motore MCoT adatta automaticamente la direzione visiva ai codici estetici di ogni genere, creando allo stesso tempo qualcosa di originale e distintivo."
+        },
+        {
+          "question": "Lovart può creare varianti della mia cover per Spotify Canvas, vinili e CD?",
+          "answer": "Sì. Il motore di adattamento multiformato genera automaticamente varianti ottimizzate a partire dalla tua cover principale. Ottieni versioni correttamente dimensionate per lo streaming (formato quadrato 1:1 standard), Spotify Canvas (video verticale 9:16), copertine vinile 12 pollici, booklet CD, banner artista sulle piattaforme e visual per i social media — preservando la direzione artistica e la coerenza del marchio."
+        }
+      ]
+    }
+  ],
+  "section_es": [
+    {
+      "type": "centeredInputSection",
+      "title": "Creador de Portadas de Álbum IA — Diseña artwork musical profesional con el Agente de Diseño IA de Lovart",
+      "description": "No pierdas más horas en Photoshop ni miles de euros en agencias de diseño musical. El Agente de Diseño IA de Lovart transforma tu visión artística en portadas de álbum listas para streaming en minutos. Impulsado por el motor de razonamiento MCoT, nuestro agente piensa como un Director de Arte musical — analizando tu género, la atmósfera de tu álbum y tu identidad artística antes de generar visuales que capturan la esencia de tu sonido. Ya seas una banda de rock, un productor electrónico, un artista folk o un rapero, Lovart crea artworks específicos por género que destacan en Spotify, Apple Music y vinilos. Comienza a crear con créditos diarios gratuitos y mira cómo tu portada cobra vida en segundos.",
+      "input_placeholder": "Describe la portada de álbum que deseas crear — incluye el género musical, el título del álbum, la atmósfera deseada y el estilo visual preferido",
+      "system_prompt": "Eres un Director de Arte Senior y Especialista en Diseño de Portadas de Álbum IA en Lovart, con profunda experiencia en dirección de arte musical, cultura visual por género y estándares de plataformas de streaming. Utilizando el motor MCoT (Mind Chain of Thought), analiza la descripción del usuario para comprender: 1) El género musical y sus códigos visuales establecidos, 2) La atmósfera y el tema del álbum, 3) La identidad del artista y el público objetivo, 4) La estrategia visual que maximiza el impacto en las plataformas de streaming y en las carátulas físicas. Luego orquesta el pipeline de diseño agéntico de Lovart: selecciona la dirección visual óptima de ChatCanvas, genera visuales evocadores con Nano Banana Pro, aplica tipografía impactante con la herramienta de Texto para nombre de artista y título, y entrega una portada completa lista para Spotify, Apple Music, vinilos y CD. Requisitos del usuario: $input$",
+      "button_text": "Crear mi portada de álbum",
+      "tip": "Consejo pro: incluye el género musical, el título del álbum, la atmósfera deseada y si necesitas formato streaming, vinilo o CD",
+      "suggestion": [
+        {
+          "value": "Crea una portada de álbum rock/metal potente con tipografía gótica audaz, paleta de colores oscuros y sombríos, texturas grunge y la energía cruda de una banda de rock — para un álbum que debe marcar presencia en las playlists de Spotify",
+          "label": "Portada Rock / Metal"
+        },
+        {
+          "value": "Crea una portada de álbum electrónica/EDM futurista con neones cian y magenta sobre fondo negro profundo, formas geométricas abstractas y sensación de festival nocturno — para un DJ set o un álbum de música electrónica",
+          "label": "Portada Electrónica / EDM"
+        },
+        {
+          "value": "Crea una portada de álbum folk/acústico cálida con tonos terrosos, tipografía manuscrita elegante, texturas naturales y atmósfera íntima de fogata — para un álbum indie folk o EP acústico",
+          "label": "Portada Folk / Acústico"
+        },
+        {
+          "value": "Crea una portada de álbum hip-hop/urbano impactante con tipografía street art, colores vibrantes y contrastados, retrato fotográfico estilizado y actitud auténtica — para un proyecto de rap, trap o R&B contemporáneo",
+          "label": "Portada Hip-Hop / Urbano"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Cómo crear portadas de álbum profesionales con el Agente IA de Lovart",
+      "columns": [
+        {
+          "title": "Describe tu visión musical",
+          "description": "Comienza diciéndole al Agente de Diseño IA de Lovart exactamente lo que representa tu música. Describe tu género, el título del álbum, la atmósfera y la estética deseada — como si estuvieras haciendo un briefing a un director de arte de un sello discográfico. El motor MCoT analiza tu universo sonoro y diseña una dirección visual que traduce tu música en imagen, respetando los códigos de tu género mientras crea algo único.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Genera y compara",
+          "description": "Mira cómo Lovart transforma tu briefing en múltiples variantes de portada de álbum en segundos. El agente genera composiciones completas con dirección de arte coherente, visuales evocadores de Nano Banana Pro, nombre del artista y título perfectamente integrados. Compara versiones lado a lado y elige la que mejor cuente tu historia musical.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Refina y exporta",
+          "description": "Perfecciona cada detalle con las herramientas de edición exclusivas de Lovart. Usa Touch Edit para reemplazar elementos visuales con un clic. Modifica el nombre del artista o el título directamente en la portada con Text Edit. Visualiza tu portada en la interfaz de Spotify con Smart Mockup para ver el impacto real en playlist. Exporta en resolución 8K en PNG, JPG, SVG o PSD para streaming, vinilos y CD.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "El kit de herramientas IA definitivo para el diseño profesional de portadas de álbum",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Touch Edit semántico",
+          "description": "Haz clic en cualquier elemento de tu portada — un gráfico, una textura de fondo, un detalle visual — y remodela, recolorea o reemplaza al instante. Touch Edit entiende el contexto visual y se adapta perfectamente a la iluminación y composición. Sin enmascaramiento manual — solo edición intuitiva que hace mágica la personalización de portadas."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Edición de texto perfecta",
+          "description": "Modifica el nombre del artista, el título del álbum y los créditos directamente en la imagen de tu portada con comprensión textual estructurada. A diferencia de las herramientas IA que producen texto distorsionado, Text Edit de Lovart renderiza tipografía nítida y legible preservando sombras, degradados y efectos de perspectiva. Cambia el título de un álbum o ajusta el nombre del artista en segundos sin rediseñar toda la portada."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Motor Smart Mockup IA",
+          "description": "Visualiza al instante tu portada en contextos reales de streaming. Coloca tu diseño en la interfaz de Spotify, Apple Music, una playlist e incluso una funda de vinilo físico con un clic. El motor Smart Mockup adapta automáticamente la perspectiva e iluminación para que tu portada se vea fotorrealista en cada contexto. Perfecto para teasers de lanzamiento en redes sociales y validación del impacto visual antes del mastering."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Consistencia de marca garantizada",
+          "description": "Impulsado por Nano Banana Pro y ChatCanvas, Lovart garantiza una identidad visual consistente en toda tu discografía. Sube tu logo de artista, define tu paleta de colores distintiva y preferencias tipográficas una sola vez, y el agente las aplica automáticamente a cada nueva portada. Crea una serie de álbumes, EPs y singles visualmente conectados que refuerzan tu marca como artista."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Exportación 8K lista para streaming",
+          "description": "Entrega portadas de álbum con especificaciones profesionales de las plataformas. Exporta hasta una resolución 8K en PNG, JPG, SVG vectorial o PSD con capas, perfectamente adaptado a los requisitos de Spotify (3000×3000 px), Apple Music, Deezer e impresiones físicas. Tus portadas se ven nítidas en todas las pantallas, desde smartphones hasta vinilos de 12 pulgadas."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Motor de adaptación multiformato",
+          "description": "Un diseño, desplegado en todas partes. Tras crear tu portada maestra, el agente de Lovart genera automáticamente variantes optimizadas para cada formato: cuadrado streaming (1:1), Spotify Canvas (9:16 vertical), banner de artista, funda de vinilo 12 pulgadas y carátula de CD — todo preservando la dirección de arte y la consistencia de marca. Pasa del estudio al streaming en minutos."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Artistas y sellos que elevan su identidad visual con Lovart",
+      "testimonials": [
+        {
+          "name": "Carlos García",
+          "role": "Artista de Indie Rock, Madrid",
+          "content": "Gastaba 600 € por portada con un diseñador freelance — con plazos de 2 semanas y resultados que nunca capturaban realmente la energía de mi música. Con el Creador de Portadas de Lovart, hice la portada de mi último EP en 4 minutos, y generó 3.200 reproducciones el primer día en Spotify. Mis fans amaron la estética — algunos incluso me preguntaron qué estudio de diseño había usado. Desde entonces, he creado 8 portadas para mis singles y álbum, con una consistencia visual perfecta que por fin construye una verdadera identidad artística.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Lucía Fernández",
+          "role": "Productora Electrónica & DJ, Barcelona",
+          "content": "En la escena electrónica, tu portada hace el 50% de la primera impresión en las playlists. Antes de Lovart, improvisaba visuales en Canva que parecían amateur. Ahora simplemente describo la atmósfera de mi track — 'neones cyberpunk, multitud en trance, azul eléctrico y magenta' — y en 2 minutos tengo una portada que compite con lanzamientos de grandes sellos. Mi último single entró en 3 playlists editoriales de Spotify, y estoy convencida de que la calidad visual jugó un papel enorme. 15 portadas creadas, 0 € gastados en diseño.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Diego Martínez",
+          "role": "Rapero & Compositor, Ciudad de México",
+          "content": "Estoy preparando mi primer álbum y quería una identidad visual fuerte que atravesara todos los singles. Lovart fue una revelación — creé una portada para cada single y todas están visualmente conectadas, como una serie. La función Smart Mockup me permitió hacer teasers de mis lanzamientos en Instagram con renders realistas en Spotify, y el engagement explotó: +230% de interacciones en mis posts de teasing. Para el álbum, pude iterar 12 versiones diferentes en una noche hasta encontrar LA portada perfecta. Una herramienta que realmente entiende las necesidades de los artistas independientes.",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "¿Qué es Lovart y en qué se diferencia de Canva u otras herramientas de diseño?",
+          "answer": "Lovart es el primer Agente de Diseño IA del mundo — no solo otro editor de plantillas. A diferencia de Canva, que requiere edición manual de cada elemento, el motor MCoT de Lovart piensa como un Director de Arte musical, analizando tu género, la atmósfera de tu álbum y tu identidad artística para orquestar portadas completas con dirección visual intencional. Describes tu música en lenguaje natural, y Lovart entrega una portada completa, editable y lista para streaming — como si hubieras hecho un briefing a un director de arte de un sello discográfico."
+        },
+        {
+          "question": "¿Puedo crear portadas de álbum profesionales sin experiencia en diseño?",
+          "answer": "Absolutamente. Lovart fue diseñado para músicos y artistas sin formación en diseño. No necesitas entender composición visual, teoría del color o tipografía. Simplemente describe tu género musical, el título del álbum y la atmósfera que deseas, y el Agente de Diseño IA de Lovart toma todas las decisiones creativas y técnicas. El agente selecciona automáticamente las direcciones visuales apropiadas para tu género, integra la tipografía y exporta a la resolución correcta para las plataformas de streaming."
+        },
+        {
+          "question": "¿Puedo usar las portadas que creo con fines comerciales?",
+          "answer": "Sí. Los usuarios de planes de pago (Starter, Basic, Pro) poseen los derechos comerciales completos sobre sus diseños de portadas de álbum. Puedes usarlas para tus lanzamientos musicales, merchandising, promoción y cualquier fin comercial legal. El plan gratuito es para uso personal y evaluación. Los modelos de Lovart están entrenados con datos con licencia y de dominio público."
+        },
+        {
+          "question": "¿Hay un plan gratuito y cómo funcionan los créditos gratuitos?",
+          "answer": "Sí, Lovart ofrece un plan gratuito con créditos diarios de inicio de sesión que se renuevan cada 24 horas. Puedes crear múltiples portadas al día sin pagar nada — perfecto para probar la plataforma o lanzar singles independientes. Los planes de pago comienzan con el nivel Starter (2.000 créditos mensuales), Basic (3.500 créditos) y Pro (11.000 créditos), todos desbloqueando las capacidades completas del agente, derechos comerciales y acceso a modelos premium como Nano Banana Pro. El costo en créditos se muestra antes de cada generación."
+        },
+        {
+          "question": "¿En qué formatos de archivo y resoluciones puedo exportar mis portadas?",
+          "answer": "Lovart admite exportación profesional en formatos PNG, JPG, SVG (vectorial) y PSD con capas. Las resoluciones alcanzan hasta 8K para exportaciones rasterizadas, lo que hace que tus portadas sean adecuadas para todas las plataformas de streaming (Spotify recomienda 3000×3000 px), impresiones en vinilo, carátulas de CD y visuales promocionales. Las exportaciones vectoriales SVG son perfectas para logos de artista y diseños que necesitan escalarse para merchandising."
+        },
+        {
+          "question": "¿Cómo mantiene Lovart la consistencia visual en toda mi discografía?",
+          "answer": "ChatCanvas de Lovart mantiene un contexto de marca de artista persistente — una vez que subes tu logo, defines tus colores distintivos y preferencias tipográficas, el agente las aplica automáticamente a cada nueva portada. Nano Banana Pro garantiza consistencia visual en todos los elementos generados. El sistema de marca permanece activo entre sesiones, de modo que tu EP, álbum y singles formen una discografía visualmente coherente que refuerza tu identidad artística."
+        },
+        {
+          "question": "¿Puedo editar el texto de mi portada (nombre del artista, título) después de generarla?",
+          "answer": "Sí, y esta es una de las capacidades distintivas de Lovart. Con Text Edit, puedes hacer clic en cualquier elemento textual — nombre del artista, título del álbum, colaboraciones, créditos — y modificarlo directamente en la imagen de la portada. La IA preserva el estilo tipográfico original, incluido el peso de la fuente, sombras, degradados y efectos de perspectiva. ¿Necesitas cambiar el título de una pista o añadir una colaboración? Escribe el nuevo texto y se integra perfectamente."
+        },
+        {
+          "question": "¿Qué géneros musicales puedo cubrir con el Creador de Portadas de Lovart?",
+          "answer": "El Creador de Portadas de Álbum IA de Lovart cubre todos los géneros musicales principales y sus subgéneros: rock, metal, punk, indie; electrónica, EDM, house, techno, ambient; folk, acústico, country, cantautor; hip-hop, rap, trap, R&B; jazz, clásica, world music; pop, K-pop, latino — y muchos más. El motor MCoT adapta automáticamente la dirección visual a los códigos estéticos de cada género mientras crea algo original y distintivo."
+        },
+        {
+          "question": "¿Puede Lovart crear variantes de mi portada para Spotify Canvas, vinilos y CD?",
+          "answer": "Sí. El motor de adaptación multiformato genera automáticamente variantes optimizadas a partir de tu portada maestra. Obtienes versiones correctamente dimensionadas para streaming (formato cuadrado 1:1 estándar), Spotify Canvas (video vertical 9:16), fundas de vinilo 12 pulgadas, carátulas de CD, banners de artista en las plataformas y visuales para redes sociales — todo preservando la dirección de arte y la consistencia de marca."
+        }
+      ]
+    }
+  ]
+}

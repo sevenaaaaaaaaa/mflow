@@ -1,0 +1,188 @@
+{
+  "version": "2026-06-08",
+  "system": "LifeOS/PARA Notion Sync",
+  "content_storage": {
+    "policy": "full_mirror_to_notion_page_body",
+    "note": "数据库属性存元数据；Markdown/报告/Skill 正文写在每条记录对应 Notion 页的 page content，不是只填 Summary 字段。",
+    "required_sync_fields": ["Local ID", "Source Path", "Last Synced At", "Content Hash"]
+  },
+  "databases": [
+    {
+      "name": "Areas",
+      "canonical_location": "notion",
+      "properties": {
+        "Name": "title",
+        "Status": ["Active", "Paused", "Archived"],
+        "Owner": "person_or_text",
+        "Operating Cadence": ["Daily", "Weekly", "Monthly", "Ad hoc"],
+        "Related Projects": "relation:Projects",
+        "Related Resources": "relation:Resources",
+        "Success Metrics": "text",
+        "Source Path": "text_or_url",
+        "Local ID": "text",
+        "Last Synced At": "date"
+      }
+    },
+    {
+      "name": "Projects",
+      "canonical_location": "notion",
+      "properties": {
+        "Name": "title",
+        "Area": "relation:Areas",
+        "Status": ["Planning", "Active", "Waiting", "Done", "Archived"],
+        "Priority": ["P0", "P1", "P2", "P3"],
+        "Outcome": "text",
+        "Owner": "person_or_text",
+        "Start Date": "date",
+        "Due Date": "date",
+        "Tasks": "relation:Tasks",
+        "Content Items": "relation:Content Pipeline",
+        "Resources": "relation:Resources",
+        "Automations": "relation:Automations",
+        "Source Path": "text_or_url",
+        "Local ID": "text",
+        "Archive Policy": ["Keep in Notion", "Markdown archive", "Do not migrate"],
+        "Last Synced At": "date"
+      }
+    },
+    {
+      "name": "Tasks",
+      "canonical_location": "notion",
+      "properties": {
+        "Name": "title",
+        "Status": ["Inbox", "Next", "Doing", "Blocked", "Review", "Done", "Archived"],
+        "Project": "relation:Projects",
+        "Area": "relation_or_rollup:Areas",
+        "Priority": ["P0", "P1", "P2", "P3"],
+        "Due Date": "date",
+        "Context": ["Cursor", "Sanity", "SEO", "Writing", "Review", "Ops"],
+        "Definition of Done": "text",
+        "Source": "text_or_url",
+        "Run Required": "checkbox",
+        "Related Run": "relation:Automation Runs",
+        "Local ID": "text",
+        "Last Synced At": "date"
+      }
+    },
+    {
+      "name": "Resources",
+      "canonical_location": "mixed",
+      "properties": {
+        "Name": "title",
+        "Type": ["SOP", "Rule", "Prompt", "Research", "Reference", "Template", "Decision"],
+        "Area": "relation:Areas",
+        "Status": ["Current", "Needs Review", "Deprecated", "Archived"],
+        "Source Path": "text_or_url",
+        "Canonical Location": ["Notion", "Markdown", "Git", "External"],
+        "Related Projects": "relation:Projects",
+        "Tags": "multi_select",
+        "Last Reviewed": "date",
+        "Summary": "text",
+        "Content Hash": "text",
+        "Body Synced": "checkbox",
+        "Local ID": "text",
+        "Last Synced At": "date"
+      }
+    },
+    {
+      "name": "Content Pipeline",
+      "canonical_location": "mixed",
+      "properties": {
+        "Title": "title",
+        "Content Type": ["Blog", "Tool", "Feature", "Page", "Brief", "Refresh", "Programmatic"],
+        "Status": ["Idea", "Brief", "Draft", "Review", "Ready", "Published", "Refresh Needed", "Archived"],
+        "Priority": ["P0", "P1", "P2", "P3"],
+        "Target Keyword": "text",
+        "Slug": "text",
+        "Language": ["en", "de", "zh", "zh-TW", "ja", "ko", "fr", "ru", "pt", "it"],
+        "Project": "relation:Projects",
+        "Owner": "person_or_text",
+        "Quality Gate": "relation:Tasks",
+        "Publish Target": ["Sanity", "WordPress", "Static", "Other"],
+        "Published URL": "url",
+        "Source Path": "text_or_url",
+        "Sanity ID": "text",
+        "Last Performance Review": "date",
+        "Content Hash": "text",
+        "Body Synced": "checkbox",
+        "Local ID": "text",
+        "Last Synced At": "date"
+      }
+    },
+    {
+      "name": "Automations",
+      "canonical_location": "notion",
+      "properties": {
+        "Name": "title",
+        "Status": ["Active", "Paused", "Needs Setup", "Deprecated"],
+        "Runtime": ["launchd", "Cursor Automation", "CLI", "Manual", "External"],
+        "Cadence": "text",
+        "Entry Command": "text",
+        "Owner": "person_or_text",
+        "Related Project": "relation:Projects",
+        "Related Area": "relation:Areas",
+        "Output Path": "text",
+        "Risk Level": ["Low", "Medium", "High"],
+        "SOP": "relation:Resources",
+        "Local ID": "text",
+        "Last Synced At": "date"
+      }
+    },
+    {
+      "name": "Automation Runs",
+      "canonical_location": "notion",
+      "properties": {
+        "Name": "title",
+        "Automation": "relation:Automations",
+        "Status": ["Queued", "Running", "Succeeded", "Failed", "Partial", "Skipped"],
+        "Started At": "date",
+        "Finished At": "date",
+        "Trigger": ["Schedule", "Manual", "Agent", "Webhook"],
+        "Input": "text",
+        "Output Summary": "text",
+        "Output Path": "text_or_url",
+        "Error": "text",
+        "Follow-up Tasks": "relation:Tasks",
+        "Local ID": "text",
+        "Last Synced At": "date"
+      }
+    },
+    {
+      "name": "Assets",
+      "canonical_location": "mixed",
+      "properties": {
+        "Name": "title",
+        "Asset Type": ["Image", "Design", "Code Snippet", "Credential Pointer", "Dataset", "Template", "External Link"],
+        "Status": ["Active", "Needs Review", "Deprecated", "Archived"],
+        "Area": "relation:Areas",
+        "Project": "relation:Projects",
+        "Content Items": "relation:Content Pipeline",
+        "Storage Location": ["Local", "Git", "Sanity", "Figma", "Notion", "Cloud Drive", "External"],
+        "Source Path": "text_or_url",
+        "Usage Notes": "text",
+        "Last Verified": "date",
+        "Local ID": "text",
+        "Last Synced At": "date"
+      }
+    },
+    {
+      "name": "Reports/Insights",
+      "canonical_location": "mixed",
+      "properties": {
+        "Name": "title",
+        "Report Type": ["SEO Daily", "SEO Weekly", "SEO Monthly", "Sentinel", "Audit", "Research"],
+        "Period": "date_or_text",
+        "Area": "relation:Areas",
+        "Status": ["Draft", "Published", "Archived"],
+        "Key Insight": "text",
+        "Content Hash": "text",
+        "Body Synced": "checkbox",
+        "Source Path": "text_or_url",
+        "Related Run": "relation:Automation Runs",
+        "Follow-up Tasks": "relation:Tasks",
+        "Local ID": "text",
+        "Last Synced At": "date"
+      }
+    }
+  ]
+}

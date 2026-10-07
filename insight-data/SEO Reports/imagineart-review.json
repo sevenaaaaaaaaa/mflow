@@ -1,0 +1,1385 @@
+{
+  "_id": "2ot6vlS4UlNmv8lRJ6o8Q5",
+  "_updatedAt": "2026-06-29T07:52:04Z",
+  "author": "Seven",
+  "body": [
+    {
+      "_key": "owxmejfw",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "3atu1q4y",
+          "_type": "span",
+          "marks": [],
+          "text": "ImagineArt is a playful, powerful all-in-one creative studio that’s great for social creators, product mockups, and character concepts — especially if you like lots of presets and one-click helpers. Pros: realistic portraits, strong product shots, handy “Imagine You” personalization. Cons: occasional artifacting, strict filters, and some iteration controls feel basic."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "hdrdfrp2",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "l3ygb6n9",
+          "_type": "span",
+          "marks": [],
+          "text": "Why I tested ImagineArt"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "fg0izm34",
+      "_type": "bodyImage",
+      "alt": "",
+      "children": [],
+      "image": {
+        "_type": "image"
+      },
+      "sourceType": "external"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Lovart is the AI design agent trusted by 10M+ creators. "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "ctaLink"
+          ],
+          "text": "Try Lovart Free →"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "ctaLink",
+          "_type": "link",
+          "href": "https://www.lovart.ai"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "block",
+      "children": [
+        {
+          "_type": "span",
+          "text": "Related: "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "c1"
+          ],
+          "text": "返校季AI设计工具包——学生海报、演示文稿与项目设计指南"
+        },
+        {
+          "_type": "span",
+          "text": " | "
+        },
+        {
+          "_type": "span",
+          "marks": [
+            "c2"
+          ],
+          "text": "皮肤科医生品牌套件：深入肌肤的品牌设计，转化咨询需求"
+        }
+      ],
+      "markDefs": [
+        {
+          "_key": "c1",
+          "_type": "link",
+          "href": "https://www.lovart.ai/blog/back-to-school-student-ai-toolkit-2026"
+        },
+        {
+          "_key": "c2",
+          "_type": "link",
+          "href": "https://www.lovart.ai/blog/brand-kit-dermatologist-lovart"
+        }
+      ],
+      "style": "normal"
+    },
+    {
+      "_type": "cta",
+      "link": {
+        "_type": "link",
+        "external": "https://www.lovart.ai/pricing",
+        "label": "View Pricing →",
+        "type": "external"
+      },
+      "style": "ghost"
+    },
+    {
+      "_key": "8esmms0f",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "kz1ufxcq",
+          "_type": "span",
+          "marks": [],
+          "text": "There’s a lot of hype around new image models that promise photorealism plus easy pipelines for creators — and ImagineArt advertises a full suite: Image Studio, the prompt-enhancer (“Imagine Bot”), the Imagine You personalization model, and freshly released ImagineArt 1.5 as their newest realistic image model. I wanted to see whether these promises hold up in real prompts and everyday workflows.\n"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "bu4dlm5q",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "mo2b3bus",
+          "_type": "span",
+          "marks": [],
+          "text": "What I tested"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "wjxqsaiu",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "hisjl203",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Text → Image:"
+        },
+        {
+          "_key": "d2pf1yu9",
+          "_type": "span",
+          "marks": [],
+          "text": " styles, aspect ratios, camera tokens, lighting presets."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "aurwkblk",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ourp9ice",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Prompt enhancer / Imagine Bot:"
+        },
+        {
+          "_key": "0k565371",
+          "_type": "span",
+          "marks": [],
+          "text": " one-click prompt expansion for lazy-but-picky creators."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ziwwc0j3",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "uv1xlbbi",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Imagine You / Personalize:"
+        },
+        {
+          "_key": "ogxa6dy0",
+          "_type": "span",
+          "marks": [],
+          "text": " keep facial identity across stylizations."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "vk87osmt",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "hovisuo9",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Presets & styles:"
+        },
+        {
+          "_key": "g3b6klw6",
+          "_type": "span",
+          "marks": [],
+          "text": " photorealism, watercolor, anime, product shot templates."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "q8pk2s61",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "97lgb4f4",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Extras:"
+        },
+        {
+          "_key": "9hzat50h",
+          "_type": "span",
+          "marks": [],
+          "text": " upscaler, simple in-app editors, export options, and an apps/workflows canvas."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "tqjihdku",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "dvlbknrg",
+          "_type": "span",
+          "marks": [],
+          "text": "How I tested"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "qat1mz7u",
+      "_type": "bodyImage",
+      "alt": "",
+      "children": [],
+      "image": {
+        "_type": "image"
+      },
+      "sourceType": "external"
+    },
+    {
+      "_key": "0lodvilf",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "09uy7wsb",
+          "_type": "span",
+          "marks": [],
+          "text": "I ran "
+        },
+        {
+          "_key": "ue7jg7p6",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "8–10 generation runs"
+        },
+        {
+          "_key": "k6i6dxx0",
+          "_type": "span",
+          "marks": [],
+          "text": " across five common use cases: headshot, product shot, fantasy landscape, character design, and a stylized poster. For each: I kept aspect ratios consistent, toggled Imagine Bot on/off to compare raw vs. enhanced prompts, and noted artifacts, composition, and whether minor edits were needed.\n"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "mzsj3mct",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "zdtetdik",
+          "_type": "span",
+          "marks": [],
+          "text": "Hands-on examples — prompts I used and what I got"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "y205gjlo",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "vo5zsqhm",
+          "_type": "span",
+          "marks": [],
+          "text": "Photorealistic headshot"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "belvjiu3",
+      "_type": "bodyImage",
+      "alt": "",
+      "children": [],
+      "image": {
+        "_type": "image"
+      },
+      "sourceType": "external"
+    },
+    {
+      "_key": "mpmi9id5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "whyatg7j",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Prompt:"
+        },
+        {
+          "_key": "50n2yb5y",
+          "_type": "span",
+          "marks": [],
+          "text": " Headshot of a confident young Asian woman, studio lighting, shallow depth of field, 85mm portrait, soft rim light, neutral gray background, ultra-realistic skin detail, film grain\n"
+        },
+        {
+          "_key": "shp28tm9",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Settings:"
+        },
+        {
+          "_key": "hcsi2gec",
+          "_type": "span",
+          "marks": [],
+          "text": " Photorealism style, aspect "
+        },
+        {
+          "_key": "t1ie7fer",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "4:5"
+        },
+        {
+          "_key": "vsx993ws",
+          "_type": "span",
+          "marks": [],
+          "text": ", camera: eye-level, "
+        },
+        {
+          "_key": "b4nsdv6r",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Imagine Bot OFF"
+        },
+        {
+          "_key": "xyr3l7jv",
+          "_type": "span",
+          "marks": [],
+          "text": " (raw). "
+        },
+        {
+          "_key": "dg7dbr2g",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Observed outcome:"
+        },
+        {
+          "_key": "dilu3pv6",
+          "_type": "span",
+          "marks": [],
+          "text": " Clean, professional headshot with realistic skin textures and natural lighting. First-pass sometimes had minor asymmetry or slightly off teeth — not unusual for generative models; re-running or using the Personalize mode improved identity consistency. "
+        },
+        {
+          "_key": "c3aokl9h",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Tip:"
+        },
+        {
+          "_key": "tt2jmjvt",
+          "_type": "span",
+          "marks": [],
+          "text": " Add --seed 1234 (or the app’s equivalent) to reproduce a favorite variant. If you have a reference, use Imagine You/Personalize to lock facial features.\n"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "6nwy5aip",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "47z9dnt7",
+          "_type": "span",
+          "marks": [],
+          "text": "E-commerce product shot"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "0mhqpvcx",
+      "_type": "bodyImage",
+      "alt": "",
+      "children": [],
+      "image": {
+        "_type": "image"
+      },
+      "sourceType": "external"
+    },
+    {
+      "_key": "ptgc0l67",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "qs6x3h5p",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Prompt:"
+        },
+        {
+          "_key": "j7213vrg",
+          "_type": "span",
+          "marks": [],
+          "text": " Minimalist product photo of matte-black ceramic mug on white seamless background, top-left softbox, drop shadow, 45° angle, 4k detail, studio retouching\n"
+        },
+        {
+          "_key": "os5t5da4",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Settings:"
+        },
+        {
+          "_key": "lblnxkqz",
+          "_type": "span",
+          "marks": [],
+          "text": " Product / mockup preset, aspect "
+        },
+        {
+          "_key": "8gizjilq",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "1:1"
+        },
+        {
+          "_key": "kc6h7wgp",
+          "_type": "span",
+          "marks": [],
+          "text": " (square) or "
+        },
+        {
+          "_key": "3hqxi0o3",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "4:5"
+        },
+        {
+          "_key": "8jqwnu5u",
+          "_type": "span",
+          "marks": [],
+          "text": ". "
+        },
+        {
+          "_key": "i8x0anu8",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Observed outcome:"
+        },
+        {
+          "_key": "z62fxwk9",
+          "_type": "span",
+          "marks": [],
+          "text": " Very sharp object edges and realistic shadows — ideal for thumbnails. Sometimes the handle or reflected highlights need one quick in-app touch-up. Upscaling after generation gives print-quality results.\n"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "xmfvjqwb",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "0df1yni3",
+          "_type": "span",
+          "marks": [],
+          "text": "Fantasy landscape / cover art"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "l3jp2oj1",
+      "_type": "bodyImage",
+      "alt": "",
+      "children": [],
+      "image": {
+        "_type": "image"
+      },
+      "sourceType": "external"
+    },
+    {
+      "_key": "djly04pp",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "87g05zq3",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Prompt:"
+        },
+        {
+          "_key": "zybnrsog",
+          "_type": "span",
+          "marks": [],
+          "text": " Epic twilight fantasy landscape, floating islands, bioluminescent flora, cinematic wide shot, dramatic rim light, volumetric fog, 35mm, ultra-detailed, painterly concept art\n"
+        },
+        {
+          "_key": "xeren8vn",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Settings:"
+        },
+        {
+          "_key": "pcnuq8dv",
+          "_type": "span",
+          "marks": [],
+          "text": " Concept Art / Surreal style, aspect "
+        },
+        {
+          "_key": "u1bsx1k9",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "16:9"
+        },
+        {
+          "_key": "fuj5rbte",
+          "_type": "span",
+          "marks": [],
+          "text": ". "
+        },
+        {
+          "_key": "rb4gk8wa",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Observed outcome:"
+        },
+        {
+          "_key": "96ucls9g",
+          "_type": "span",
+          "marks": [],
+          "text": " Cinematic, painterly renders with gorgeous color grading. Occasionally the model invents incongruous objects (random buildings, stray text), so use negative prompts like "
+        },
+        {
+          "_key": "m5bkjbus",
+          "_type": "span",
+          "marks": [
+            "code"
+          ],
+          "text": "no text, no watermark"
+        },
+        {
+          "_key": "v31qfrqp",
+          "_type": "span",
+          "marks": [],
+          "text": " and iterate. Imagine Bot can expand vague tokens (e.g., turn “floating islands” into layered descriptions) if you want more specificity.\n"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "9gslp2fz",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6egwy7gj",
+          "_type": "span",
+          "marks": [],
+          "text": "Character design"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "tczk2oog",
+      "_type": "bodyImage",
+      "alt": "",
+      "children": [],
+      "image": {
+        "_type": "image"
+      },
+      "sourceType": "external"
+    },
+    {
+      "_key": "dq57ezef",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "86zlzcl0",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Prompt:"
+        },
+        {
+          "_key": "d00jhxjf",
+          "_type": "span",
+          "marks": [],
+          "text": " Anime character — energetic teen pilot, short spiky teal hair, flight jacket with gold trim, confident grin, dynamic three-quarter pose, cel-shaded, crisp line art, studio lighting\n"
+        },
+        {
+          "_key": "qncezq61",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Settings:"
+        },
+        {
+          "_key": "7mw1uxpa",
+          "_type": "span",
+          "marks": [],
+          "text": " Anime / Illustration style, aspect "
+        },
+        {
+          "_key": "8zdt15h5",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "2:3"
+        },
+        {
+          "_key": "j95ezsdo",
+          "_type": "span",
+          "marks": [],
+          "text": ". "
+        },
+        {
+          "_key": "ao72s7kf",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Observed outcome:"
+        },
+        {
+          "_key": "1j2tcfra",
+          "_type": "span",
+          "marks": [],
+          "text": " Strong silhouettes and expressive faces. Small details like hands, tiny accessories, or clipped jacket edges sometimes misrender — best fixed with a quick image-to-image edit inside the app. For iterative costume changes, generate a base and then use image-to-image to refine.\n"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "0sq7ssd5",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "jfa5hk7w",
+          "_type": "span",
+          "marks": [],
+          "text": "Artistic / stylized poster"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "5bhl4kzk",
+      "_type": "bodyImage",
+      "alt": "",
+      "children": [],
+      "image": {
+        "_type": "image"
+      },
+      "sourceType": "external"
+    },
+    {
+      "_key": "rlvmtn3k",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "85u4yygf",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Prompt:"
+        },
+        {
+          "_key": "8lu71lbj",
+          "_type": "span",
+          "marks": [],
+          "text": " Watercolor poster of a city skyline at dusk, loose brush strokes, pastel palette, paper texture visible, soft edges, high stylization\n"
+        },
+        {
+          "_key": "0x3tuslr",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Observed outcome:"
+        },
+        {
+          "_key": "1w3q0sfa",
+          "_type": "span",
+          "marks": [],
+          "text": " Great for backgrounds and mood art. To avoid accidental photorealism, emphasize art words (watercolor, paper texture, wet-on-wet brushwork) and lower realism tokens in the style picker.\n"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "opb1cz2q",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "fjm3cxsp",
+          "_type": "span",
+          "marks": [],
+          "text": "Image → Image personalization"
+        }
+      ],
+      "markDefs": [],
+      "style": "h3"
+    },
+    {
+      "_key": "8dl10vep",
+      "_type": "bodyImage",
+      "alt": "",
+      "children": [],
+      "image": {
+        "_type": "image"
+      },
+      "sourceType": "external"
+    },
+    {
+      "_key": "5vy58eef",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "tylpdzdd",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Template prompt (image→image):"
+        },
+        {
+          "_key": "8tmz6g2x",
+          "_type": "span",
+          "marks": [],
+          "text": " Upload the portrait, then: Turn this into a cinematic 1970s film still, Kodak Portra colors, grain, soft vignette\n"
+        },
+        {
+          "_key": "o5epcufa",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Observed outcome:"
+        },
+        {
+          "_key": "my650157",
+          "_type": "span",
+          "marks": [],
+          "text": " Keeps the subject recognizable while convincingly applying film color, grain and framing. Imagine You is especially useful when you want consistent character assets across marketing or comics.\n"
+        },
+        {
+          "_key": "0audqo5k",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Before / after example:"
+        },
+        {
+          "_key": "j1al182j",
+          "_type": "span",
+          "marks": [],
+          "text": " Run the raw short prompt “futuristic city” and then run it through Imagine Bot to see the expanded two-sentence prompt it generates — the enhanced prompt will usually add lighting, scale, and material cues that result in cleaner, more cinematic images.\n"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "lsk17tdl",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "0jphpfd7",
+          "_type": "span",
+          "marks": [],
+          "text": "What I liked"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "rqoc5ezi",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "q9a195ay",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Lots of built-in helpers:"
+        },
+        {
+          "_key": "a9euo87v",
+          "_type": "span",
+          "marks": [],
+          "text": " Imagine Bot and many presets make it fast to get usable results even if you don’t love prompt engineering."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "iajp26v7",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "71l74duw",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Strong photoreal outputs:"
+        },
+        {
+          "_key": "zkwuer22",
+          "_type": "span",
+          "marks": [],
+          "text": " Portraits and product shots look impressively detailed when camera and lighting tokens are tuned. Users on review sites also highlight ease of use and output quality."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ag6konps",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "5csj0i35",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Imagine You / personalization:"
+        },
+        {
+          "_key": "vqye5r1m",
+          "_type": "span",
+          "marks": [],
+          "text": " Great for consistent characters, avatars, or keeping likeness across stylizations."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "5pf0oe36",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "ddus1cc1",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "All-in-one ecosystem:"
+        },
+        {
+          "_key": "0fara4eq",
+          "_type": "span",
+          "marks": [],
+          "text": " Image, video, and creative “apps” plus workflow nodes are handy for makers who want everything in one place."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "s4vd72jr",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "oilura45",
+          "_type": "span",
+          "marks": [],
+          "text": "What could be better"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "dy8zsdnt",
+      "_type": "bodyImage",
+      "alt": "",
+      "children": [],
+      "image": {
+        "_type": "image"
+      },
+      "sourceType": "external"
+    },
+    {
+      "_key": "4n0pw3sq",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "pqdpmli9",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Model artifacting:"
+        },
+        {
+          "_key": "btb9fjb0",
+          "_type": "span",
+          "marks": [],
+          "text": " Hands, tiny text, and occasionally facial oddities still crop up — the usual caveats for current image models. Reviewers who tested v1.5 also noted workflow fit questions for pro artists."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "0xhemije",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "tj1a4scr",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Strict filtering:"
+        },
+        {
+          "_key": "mfd82gor",
+          "_type": "span",
+          "marks": [],
+          "text": " Some users report strict content filtering on certain themes — good for safety but sometimes frustrating for creative work."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "yqn30ofv",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "3dzok96g",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Iteration controls:"
+        },
+        {
+          "_key": "7srcddfj",
+          "_type": "span",
+          "marks": [],
+          "text": " Seed control, timesteps, and negative-prompt exposure could be more granular for power users. A couple of community reviewers suggested more advanced iteration options would help integrate ImagineArt into a professional pipeline."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "xhfvtq1d",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "x8klb8zt",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Pricing & export caps:"
+        },
+        {
+          "_key": "sj0raiog",
+          "_type": "span",
+          "marks": [],
+          "text": " Always check current plan details — ImagineArt runs promotions (e.g., seasonal sales) and tiered model access like “Nano Banana PRO” or creator-level unlimited access.\n"
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "yvw8nxo7",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "j40apo82",
+          "_type": "span",
+          "marks": [],
+          "text": "Verdict & recommended workflows"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "j6jmvo2o",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "bsmbuxku",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Who should use it:"
+        },
+        {
+          "_key": "1z9kjl1i",
+          "_type": "span",
+          "marks": [],
+          "text": " marketers doing product mockups, social creators who need quick polished assets, indie devs and concept artists who benefit from one-click styles and personalization. "
+        },
+        {
+          "_key": "o6m2047d",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Not perfect"
+        },
+        {
+          "_key": "c62b99b9",
+          "_type": "span",
+          "marks": [],
+          "text": " for ultra-fine-grained pipeline work where absolute control of sampling parameters is mandatory.\n"
+        },
+        {
+          "_key": "m8qbp5s5",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Suggested workflow:"
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "u1bfe562",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4mvezgrk",
+          "_type": "span",
+          "marks": [],
+          "text": "Draft a simple prompt."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "eogg174f",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "fkmjccji",
+          "_type": "span",
+          "marks": [],
+          "text": "Run Imagine Bot to expand if you’re lazy or unsure."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "3u6thv56",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "dk7h7k6c",
+          "_type": "span",
+          "marks": [],
+          "text": "Select style + aspect ratio → generate 3 variants."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "d8nsg7h0",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "6odcxf4k",
+          "_type": "span",
+          "marks": [],
+          "text": "Choose the best → upscale → minor in-app edit (crop, clone, clean)."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "k6t3gube",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "r66f9usd",
+          "_type": "span",
+          "marks": [],
+          "text": "If identity matters: use Imagine You / Personalize."
+        }
+      ],
+      "level": 1,
+      "listItem": "bullet",
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "6x0l4j5g",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "v2dhrk4d",
+          "_type": "span",
+          "marks": [],
+          "text": "See It For Yourself"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "h4985pfc",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "nwdmlnli",
+          "_type": "span",
+          "marks": [],
+          "text": "Try the prompts above in ImagineArt’s "
+        },
+        {
+          "_key": "cc6bsttw",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Image Studio"
+        },
+        {
+          "_key": "6slkajwy",
+          "_type": "span",
+          "marks": [],
+          "text": " and paste your favorite outputs in the comments — I’m curious what variations people get! For the official docs, prompt guide, and pricing, check ImagineArt’s site and Help Center."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    },
+    {
+      "_key": "ew7cf53k",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "luwa0vlc",
+          "_type": "span",
+          "marks": [],
+          "text": "Final notes"
+        }
+      ],
+      "markDefs": [],
+      "style": "h2"
+    },
+    {
+      "_key": "p8e525rk",
+      "_type": "bodyImage",
+      "alt": "",
+      "children": [],
+      "image": {
+        "_type": "image"
+      },
+      "sourceType": "external"
+    },
+    {
+      "_key": "670cr1ee",
+      "_type": "block",
+      "children": [
+        {
+          "_key": "4n31qzu3",
+          "_type": "span",
+          "marks": [],
+          "text": "ImagineArt feels like a friendly creative Swiss Army knife: approachable presets for quick wins, plus personalization and advanced models if you want to go deeper. If you value speed and variety, it’s a lovely tool to sketch ideas, produce polished marketing assets, or experiment with character design — just bring a bit of patience for the usual generative oddities. Happy prompting!\nP. S. If you're looking for an alternative for content creation, try Lovart! It's a perfect all-in-one platform of AI driven content generator.\n"
+        },
+        {
+          "_key": "nsm3zv0v",
+          "_type": "span",
+          "marks": [],
+          "text": "\n"
+        },
+        {
+          "_key": "qw4gotyu",
+          "_type": "span",
+          "marks": [
+            "strong"
+          ],
+          "text": "Sources & further reading:"
+        },
+        {
+          "_key": "co2zvztc",
+          "_type": "span",
+          "marks": [],
+          "text": " ImagineArt official site and feature pages; user reviews on G2; hands-on commentary from independent reviewers."
+        }
+      ],
+      "markDefs": [],
+      "style": "normal"
+    }
+  ],
+  "category": {
+    "_ref": "5a9df9bb-d0b6-4ef9-8257-af3b470db780",
+    "_type": "reference"
+  },
+  "cover": {
+    "_type": "imageSource",
+    "alt": "Why I tested ImagineArt",
+    "sourceType": "external",
+    "url": "https://liblibai-online.liblib.cloud/blog-card-cover/1772516141272.png"
+  },
+  "description": "ImagineArt is a playful, powerful all-in-one creative studio that’s great for social creators, product mockups, and character concepts — especially if you like lots of presets and one-click helpers. P...",
+  "language": "zh",
+  "publishedAt": "2026-05-12T00:00:00.000Z",
+  "releaseDate": "2026-05-12T00:00:00.000Z",
+  "seo": {
+    "_type": "seo",
+    "description": "ImagineArt is a playful, powerful all-in-one creative studio that’s great for social creators, product mockups, and character concepts — especially if you like lots of presets and one-click helpers. P...",
+    "keywords": [
+      "i tested imagineart",
+      "i tested",
+      "tested imagineart",
+      "tested",
+      "imagineart",
+      "honest",
+      "comparison"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Why I tested ImagineArt",
+      "sourceType": "external",
+      "url": "https://liblibai-online.liblib.cloud/blog-card-cover/1772516141272.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"BlogPosting\",\n  \"headline\": \"Why I Tested ImagineArt: An Honest AI Art Generator Review & Comparison\",\n  \"description\": \"ImagineArt is a playful, powerful all-in-one creative studio that’s great for social creators, product mockups, and character concepts — especially if you like lots of presets and one-click helpers. P\",\n  \"image\": \"https://liblibai-online.liblib.cloud/blog-card-cover/1772516141272.png\",\n  \"author\": {\n    \"@type\": \"Person\",\n    \"name\": \"Lovart Editorial\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"Lovart\",\n    \"logo\": {\n      \"@type\": \"ImageObject\",\n      \"url\": \"https://assets-persist.lovart.ai/web/logo/lovart-logo.svg\"\n    }\n  },\n  \"datePublished\": \"2026-05-12\",\n  \"dateModified\": \"2026-05-12\"\n}"
+    },
+    "title": "Why I Tested ImagineArt: An Honest AI Art Generator Review & Comparison | AI Design Guide by Lovart"
+  },
+  "slug": "imagineart-review",
+  "title": "Why I Tested ImagineArt: An Honest AI Art Generator Review & Comparison"
+}

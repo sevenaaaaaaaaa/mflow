@@ -1,0 +1,311 @@
+# Daily 未编号目录整理记录（2026-08-05）
+
+- 继续编号：91 个单品目录（从 132 开始）
+- 空目录归档：208 个
+- 保留未编号：41 个（专题、工作流、已有派生稿或多文件素材池）
+
+## 继续编号
+- `3DCellForge` → `132-3DCellForge`
+- `91` → `133-91`
+- `AI Short Video Factory` → `134-AI Short Video Factory`
+- `AIMedia` → `135-AIMedia`
+- `AnyToCopy` → `136-AnyToCopy`
+- `AppAdvice` → `137-AppAdvice`
+- `AudioVisual` → `138-AudioVisual`
+- `Aye` → `139-Aye`
+- `Brat Generator` → `140-Brat Generator`
+- `Buzz` → `141-Buzz`
+- `Caesium Image Compressor` → `142-Caesium Image Compressor`
+- `Call Center AI` → `143-Call Center AI`
+- `CattoPic` → `144-CattoPic`
+- `Chinese Days` → `145-Chinese Days`
+- `ClashMac` → `146-ClashMac`
+- `Claudian × opencode` → `147-Claudian × opencode`
+- `ComeCut` → `148-ComeCut`
+- `Compare2Word` → `149-Compare2Word`
+- `Craft-Agent` → `150-Craft-Agent`
+- `DeepSeek GUI` → `151-DeepSeek GUI`
+- `Docmd` → `152-Docmd`
+- `DroidDock` → `153-DroidDock`
+- `E-Ink` → `154-E-Ink`
+- `Flowershow` → `155-Flowershow`
+- `FreeSubStats` → `156-FreeSubStats`
+- `GBrain` → `157-GBrain`
+- `Galaxy Downloader` → `158-Galaxy Downloader`
+- `GeekAI` → `159-GeekAI`
+- `Ghost Downloader 3` → `160-Ghost Downloader 3`
+- `Helio` → `161-Helio`
+- `Hermes Slate Desk` → `162-Hermes Slate Desk`
+- `How to Sketch` → `163-How to Sketch`
+- `Inkeys` → `164-Inkeys`
+- `KuekHaoYangKVideo` → `165-KuekHaoYangKVideo`
+- `LLM Wiki` → `166-LLM Wiki`
+- `ListSec` → `167-ListSec`
+- `LiteParse` → `168-LiteParse`
+- `Lucida` → `169-Lucida`
+- `M3U8 Player` → `170-M3U8 Player`
+- `Mac系统数据清理` → `171-Mac系统数据清理`
+- `Moovie` → `172-Moovie`
+- `MyTube` → `173-MyTube`
+- `Nano Banana 2` → `174-Nano Banana 2`
+- `NekoGAL` → `175-NekoGAL`
+- `Next AI Draw.io` → `176-Next AI Draw.io`
+- `Open-XiaoAI` → `177-Open-XiaoAI`
+- `OpenNana` → `178-OpenNana`
+- `OtterHub` → `179-OtterHub`
+- `PigeonPod` → `180-PigeonPod`
+- `PixTrim` → `181-PixTrim`
+- `PoPo` → `182-PoPo`
+- `Portfolio Audit` → `183-Portfolio Audit`
+- `Q.Link` → `184-Q.Link`
+- `QuantAgent` → `185-QuantAgent`
+- `Reasonix` → `186-Reasonix`
+- `Recorder Online` → `187-Recorder Online`
+- `Rotato` → `188-Rotato`
+- `Seedream AI` → `189-Seedream AI`
+- `SkidHomework` → `190-SkidHomework`
+- `Stacks` → `191-Stacks`
+- `TI-84 Calculator Online` → `192-TI-84 Calculator Online`
+- `TLDW` → `193-TLDW`
+- `The Agency` → `194-The Agency`
+- `VibeDoc` → `195-VibeDoc`
+- `VibeSurf` → `196-VibeSurf`
+- `WX Channel Downloader` → `197-WX Channel Downloader`
+- `WeChat Multi-Instance Manager` → `198-WeChat Multi-Instance Manager`
+- `WeChat Selkies` → `199-WeChat Selkies`
+- `Xget` → `200-Xget`
+- `XiaoMusic` → `201-XiaoMusic`
+- `YARN` → `202-YARN`
+- `YTB2BILI` → `203-YTB2BILI`
+- `Zread.AI` → `204-Zread.AI`
+- `beautiful-mermaid` → `205-beautiful-mermaid`
+- `bilibili-block-extension` → `206-bilibili-block-extension`
+- `codex-plusplus` → `207-codex-plusplus`
+- `codex-ppt-skill` → `208-codex-ppt-skill`
+- `enableAppleAI` → `209-enableAppleAI`
+- `iPhone去广告` → `210-iPhone去广告`
+- `pi-web` → `211-pi-web`
+- `pyVideoTrans` → `212-pyVideoTrans`
+- `ts1BLEUnlock` → `213-ts1BLEUnlock`
+- `twitter-to-bsky` → `214-twitter-to-bsky`
+- `voicss` → `215-voicss`
+- `x-cli` → `216-x-cli`
+- `youhunwlTVAPP` → `217-youhunwlTVAPP`
+- `ytDownloader` → `218-ytDownloader`
+- `一键生成户型图` → `219-一键生成户型图`
+- `万能视频下载器` → `220-万能视频下载器`
+- `小猫影视` → `221-小猫影视`
+- `流光卡片` → `222-流光卡片`
+
+## 空目录归档
+- `ACE-Step` → `_Archive-Empty-Daily/ACE-Step`
+- `AI Marketing Suite` → `_Archive-Empty-Daily/AI Marketing Suite`
+- `AI NovelGenerator` → `_Archive-Empty-Daily/AI NovelGenerator`
+- `AI 短剧工作台` → `_Archive-Empty-Daily/AI 短剧工作台`
+- `AI-ContentCraft` → `_Archive-Empty-Daily/AI-ContentCraft`
+- `AIDrama Studio` → `_Archive-Empty-Daily/AIDrama Studio`
+- `Activepieces` → `_Archive-Empty-Daily/Activepieces`
+- `AnimateAnyone` → `_Archive-Empty-Daily/AnimateAnyone`
+- `AudioCraft` → `_Archive-Empty-Daily/AudioCraft`
+- `Auto-Editor` → `_Archive-Empty-Daily/Auto-Editor`
+- `AutoCut` → `_Archive-Empty-Daily/AutoCut`
+- `Automatisch` → `_Archive-Empty-Daily/Automatisch`
+- `BackgroundRemover` → `_Archive-Empty-Daily/BackgroundRemover`
+- `Bark` → `_Archive-Empty-Daily/Bark`
+- `BetterShot` → `_Archive-Empty-Daily/BetterShot`
+- `BiRefNet` → `_Archive-Empty-Daily/BiRefNet`
+- `Botpress` → `_Archive-Empty-Daily/Botpress`
+- `BuildingAI` → `_Archive-Empty-Daily/BuildingAI`
+- `CADAM` → `_Archive-Empty-Daily/CADAM`
+- `CC Switch` → `_Archive-Empty-Daily/CC Switch`
+- `CharForge` → `_Archive-Empty-Daily/CharForge`
+- `ChatGPT` → `_Archive-Empty-Daily/ChatGPT`
+- `ChatTTS` → `_Archive-Empty-Daily/ChatTTS`
+- `Civitai` → `_Archive-Empty-Daily/Civitai`
+- `Clapper` → `_Archive-Empty-Daily/Clapper`
+- `Claude` → `_Archive-Empty-Daily/Claude`
+- `ClickVote` → `_Archive-Empty-Daily/ClickVote`
+- `ClipClap` → `_Archive-Empty-Daily/ClipClap`
+- `ComfyUI` → `_Archive-Empty-Daily/ComfyUI`
+- `ComfyUI-Copilot` → `_Archive-Empty-Daily/ComfyUI-Copilot`
+- `ComfyUI-HunyuanVideoWrapper` → `_Archive-Empty-Daily/ComfyUI-HunyuanVideoWrapper`
+- `ComfyUI-Llama` → `_Archive-Empty-Daily/ComfyUI-Llama`
+- `ComfyUI-PainterNodes` → `_Archive-Empty-Daily/ComfyUI-PainterNodes`
+- `Comfyui-LayerForge` → `_Archive-Empty-Daily/Comfyui-LayerForge`
+- `ControlNet` → `_Archive-Empty-Daily/ControlNet`
+- `CopilotKit` → `_Archive-Empty-Daily/CopilotKit`
+- `Coqui TTS` → `_Archive-Empty-Daily/Coqui TTS`
+- `Coze(扣子)` → `_Archive-Empty-Daily/Coze(扣子)`
+- `CrewAI` → `_Archive-Empty-Daily/CrewAI`
+- `Cursor` → `_Archive-Empty-Daily/Cursor`
+- `CutClaw` → `_Archive-Empty-Daily/CutClaw`
+- `DeepDiagram` → `_Archive-Empty-Daily/DeepDiagram`
+- `DeepSeek V3-R1` → `_Archive-Empty-Daily/DeepSeek V3-R1`
+- `Dify` → `_Archive-Empty-Daily/Dify`
+- `Draw Things` → `_Archive-Empty-Daily/Draw Things`
+- `Drawnix` → `_Archive-Empty-Daily/Drawnix`
+- `Edge-TTS` → `_Archive-Empty-Daily/Edge-TTS`
+- `F5-TTS` → `_Archive-Empty-Daily/F5-TTS`
+- `FAY` → `_Archive-Empty-Daily/FAY`
+- `FLUX.1` → `_Archive-Empty-Daily/FLUX.1`
+- `FastMovieAI` → `_Archive-Empty-Daily/FastMovieAI`
+- `Faster-Whisper` → `_Archive-Empty-Daily/Faster-Whisper`
+- `Firecrawl` → `_Archive-Empty-Daily/Firecrawl`
+- `Fish-Speech` → `_Archive-Empty-Daily/Fish-Speech`
+- `Flowise` → `_Archive-Empty-Daily/Flowise`
+- `Fooocus` → `_Archive-Empty-Daily/Fooocus`
+- `Free-AI-Social-Media-Scheduler` → `_Archive-Empty-Daily/Free-AI-Social-Media-Scheduler`
+- `FreeAI` → `_Archive-Empty-Daily/FreeAI`
+- `FunASR` → `_Archive-Empty-Daily/FunASR`
+- `GLM-5.1(智谱)` → `_Archive-Empty-Daily/GLM-5.1(智谱)`
+- `GPT-SoVITS` → `_Archive-Empty-Daily/GPT-SoVITS`
+- `Gemini` → `_Archive-Empty-Daily/Gemini`
+- `GitHub Copilot` → `_Archive-Empty-Daily/GitHub Copilot`
+- `Helios` → `_Archive-Empty-Daily/Helios`
+- `Higgs Audio` → `_Archive-Empty-Daily/Higgs Audio`
+- `HunyuanImage-3.0` → `_Archive-Empty-Daily/HunyuanImage-3.0`
+- `HunyuanVideo` → `_Archive-Empty-Daily/HunyuanVideo`
+- `HyperFrames` → `_Archive-Empty-Daily/HyperFrames`
+- `IOPaint` → `_Archive-Empty-Daily/IOPaint`
+- `Index-TTS` → `_Archive-Empty-Daily/Index-TTS`
+- `Infinite Canvas` → `_Archive-Empty-Daily/Infinite Canvas`
+- `InvokeAI` → `_Archive-Empty-Daily/InvokeAI`
+- `Jan.ai` → `_Archive-Empty-Daily/Jan.ai`
+- `Kimi(月之暗面)` → `_Archive-Empty-Daily/Kimi(月之暗面)`
+- `Kling(可灵)` → `_Archive-Empty-Daily/Kling(可灵)`
+- `Kokoro TTS` → `_Archive-Empty-Daily/Kokoro TTS`
+- `KrillinAI` → `_Archive-Empty-Daily/KrillinAI`
+- `LAM Audio2Expression` → `_Archive-Empty-Daily/LAM Audio2Expression`
+- `LM Studio` → `_Archive-Empty-Daily/LM Studio`
+- `LMFlow` → `_Archive-Empty-Daily/LMFlow`
+- `LTX-2` → `_Archive-Empty-Daily/LTX-2`
+- `Lama Cleaner` → `_Archive-Empty-Daily/Lama Cleaner`
+- `LangChain` → `_Archive-Empty-Daily/LangChain`
+- `LangFlow` → `_Archive-Empty-Daily/LangFlow`
+- `LibTV` → `_Archive-Empty-Daily/LibTV`
+- `Liblib(哩布哩布)` → `_Archive-Empty-Daily/Liblib(哩布哩布)`
+- `LightRAG` → `_Archive-Empty-Daily/LightRAG`
+- `Lingo.dev` → `_Archive-Empty-Daily/Lingo.dev`
+- `Linly-Dubbing` → `_Archive-Empty-Daily/Linly-Dubbing`
+- `Linly-Talker` → `_Archive-Empty-Daily/Linly-Talker`
+- `LiteAvatar` → `_Archive-Empty-Daily/LiteAvatar`
+- `LiteLLM` → `_Archive-Empty-Daily/LiteLLM`
+- `LlamaFactory` → `_Archive-Empty-Daily/LlamaFactory`
+- `LocalAI` → `_Archive-Empty-Daily/LocalAI`
+- `Lovart` → `_Archive-Empty-Daily/Lovart`
+- `MODNet` → `_Archive-Empty-Daily/MODNet`
+- `MOSS-TTS` → `_Archive-Empty-Daily/MOSS-TTS`
+- `MarkItDown` → `_Archive-Empty-Daily/MarkItDown`
+- `Marker` → `_Archive-Empty-Daily/Marker`
+- `MarketingSkills` → `_Archive-Empty-Daily/MarketingSkills`
+- `Mem0` → `_Archive-Empty-Daily/Mem0`
+- `MetaGPT` → `_Archive-Empty-Daily/MetaGPT`
+- `MiMo Code(小米)` → `_Archive-Empty-Daily/MiMo Code(小米)`
+- `Midjourney V7` → `_Archive-Empty-Daily/Midjourney V7`
+- `MikMok` → `_Archive-Empty-Daily/MikMok`
+- `MinerU` → `_Archive-Empty-Daily/MinerU`
+- `MiniMax M3` → `_Archive-Empty-Daily/MiniMax M3`
+- `Modly` → `_Archive-Empty-Daily/Modly`
+- `MoneyPrinterTurbo` → `_Archive-Empty-Daily/MoneyPrinterTurbo`
+- `MoneyPrinterV2` → `_Archive-Empty-Daily/MoneyPrinterV2`
+- `MuseTalk` → `_Archive-Empty-Daily/MuseTalk`
+- `NVIDIA Parakeet` → `_Archive-Empty-Daily/NVIDIA Parakeet`
+- `NanoBananaEditor` → `_Archive-Empty-Daily/NanoBananaEditor`
+- `NarratoAI` → `_Archive-Empty-Daily/NarratoAI`
+- `Nika Character Studio` → `_Archive-Empty-Daily/Nika Character Studio`
+- `NocoBase` → `_Archive-Empty-Daily/NocoBase`
+- `Node-RED` → `_Archive-Empty-Daily/Node-RED`
+- `Notion AI` → `_Archive-Empty-Daily/Notion AI`
+- `OiiOii` → `_Archive-Empty-Daily/OiiOii`
+- `Ollama` → `_Archive-Empty-Daily/Ollama`
+- `OmniGen2` → `_Archive-Empty-Daily/OmniGen2`
+- `OmniSVG` → `_Archive-Empty-Daily/OmniSVG`
+- `OneTrainer` → `_Archive-Empty-Daily/OneTrainer`
+- `Onlook` → `_Archive-Empty-Daily/Onlook`
+- `Open WebUI` → `_Archive-Empty-Daily/Open WebUI`
+- `Open-Generative-AI` → `_Archive-Empty-Daily/Open-Generative-AI`
+- `OpenAvatarChat` → `_Archive-Empty-Daily/OpenAvatarChat`
+- `OpenManus` → `_Archive-Empty-Daily/OpenManus`
+- `PaddleGAN` → `_Archive-Empty-Daily/PaddleGAN`
+- `PaddleOCR` → `_Archive-Empty-Daily/PaddleOCR`
+- `Perplexity` → `_Archive-Empty-Daily/Perplexity`
+- `Pika` → `_Archive-Empty-Daily/Pika`
+- `Piper TTS` → `_Archive-Empty-Daily/Piper TTS`
+- `Pixal3D` → `_Archive-Empty-Daily/Pixal3D`
+- `Pixelle-MCP` → `_Archive-Empty-Daily/Pixelle-MCP`
+- `Pixelle-Video` → `_Archive-Empty-Daily/Pixelle-Video`
+- `PosterCraft` → `_Archive-Empty-Daily/PosterCraft`
+- `ProPainter` → `_Archive-Empty-Daily/ProPainter`
+- `Qodo Cover` → `_Archive-Empty-Daily/Qodo Cover`
+- `Qwen-Image` → `_Archive-Empty-Daily/Qwen-Image`
+- `Qwen3` → `_Archive-Empty-Daily/Qwen3`
+- `RAGFlow` → `_Archive-Empty-Daily/RAGFlow`
+- `RMBG` → `_Archive-Empty-Daily/RMBG`
+- `RMBG-2.0(BRIA)` → `_Archive-Empty-Daily/RMBG-2.0(BRIA)`
+- `RapidCanvas` → `_Archive-Empty-Daily/RapidCanvas`
+- `Read Frog(陪读蛙)` → `_Archive-Empty-Daily/Read Frog(陪读蛙)`
+- `Real-CUGAN` → `_Archive-Empty-Daily/Real-CUGAN`
+- `Recordly` → `_Archive-Empty-Daily/Recordly`
+- `Remotion` → `_Archive-Empty-Daily/Remotion`
+- `Runway` → `_Archive-Empty-Daily/Runway`
+- `SAM 2` → `_Archive-Empty-Daily/SAM 2`
+- `SD-Trainer(bmaltais)` → `_Archive-Empty-Daily/SD-Trainer(bmaltais)`
+- `SD.Next` → `_Archive-Empty-Daily/SD.Next`
+- `Screenshot-to-Code` → `_Archive-Empty-Daily/Screenshot-to-Code`
+- `SenseVoice` → `_Archive-Empty-Daily/SenseVoice`
+- `Shorty Video Analysis` → `_Archive-Empty-Daily/Shorty Video Analysis`
+- `Sora` → `_Archive-Empty-Daily/Sora`
+- `Stable Diffusion 3.5` → `_Archive-Empty-Daily/Stable Diffusion 3.5`
+- `Stable Diffusion Inpainting` → `_Archive-Empty-Daily/Stable Diffusion Inpainting`
+- `Stable Diffusion WebUI` → `_Archive-Empty-Daily/Stable Diffusion WebUI`
+- `StoryDiffusion` → `_Archive-Empty-Daily/StoryDiffusion`
+- `Suno-api` → `_Archive-Empty-Daily/Suno-api`
+- `Surya` → `_Archive-Empty-Daily/Surya`
+- `SwarmUI` → `_Archive-Empty-Daily/SwarmUI`
+- `SwinIR` → `_Archive-Empty-Daily/SwinIR`
+- `TTS-WebUI` → `_Archive-Empty-Daily/TTS-WebUI`
+- `TTSMaker` → `_Archive-Empty-Daily/TTSMaker`
+- `Temporal` → `_Archive-Empty-Daily/Temporal`
+- `TikHub SDK` → `_Archive-Empty-Daily/TikHub SDK`
+- `Trae(字节)` → `_Archive-Empty-Daily/Trae(字节)`
+- `TrendFinder` → `_Archive-Empty-Daily/TrendFinder`
+- `TrendPublish` → `_Archive-Empty-Daily/TrendPublish`
+- `TrendRadar` → `_Archive-Empty-Daily/TrendRadar`
+- `Twenty` → `_Archive-Empty-Daily/Twenty`
+- `Ultimate Vocal Remover` → `_Archive-Empty-Daily/Ultimate Vocal Remover`
+- `Unopim DAM` → `_Archive-Empty-Daily/Unopim DAM`
+- `Unsloth` → `_Archive-Empty-Daily/Unsloth`
+- `Uploadgram` → `_Archive-Empty-Daily/Uploadgram`
+- `Upscayl` → `_Archive-Empty-Daily/Upscayl`
+- `VACE` → `_Archive-Empty-Daily/VACE`
+- `VITS` → `_Archive-Empty-Daily/VITS`
+- `ViMax` → `_Archive-Empty-Daily/ViMax`
+- `VibeVoice` → `_Archive-Empty-Daily/VibeVoice`
+- `VideoLingo` → `_Archive-Empty-Daily/VideoLingo`
+- `VideoTranslation` → `_Archive-Empty-Daily/VideoTranslation`
+- `WanGP` → `_Archive-Empty-Daily/WanGP`
+- `Whisper.cpp` → `_Archive-Empty-Daily/Whisper.cpp`
+- `Windmill` → `_Archive-Empty-Daily/Windmill`
+- `YumCut` → `_Archive-Empty-Daily/YumCut`
+- `Z-Image` → `_Archive-Empty-Daily/Z-Image`
+- `ai-subtitle-generator` → `_Archive-Empty-Daily/ai-subtitle-generator`
+- `awesome-ai-painting` → `_Archive-Empty-Daily/awesome-ai-painting`
+- `awesome-ai-voice` → `_Archive-Empty-Daily/awesome-ai-voice`
+- `consistent-character` → `_Archive-Empty-Daily/consistent-character`
+- `deer-flow` → `_Archive-Empty-Daily/deer-flow`
+- `kohya_ss` → `_Archive-Empty-Daily/kohya_ss`
+- `ktransformers` → `_Archive-Empty-Daily/ktransformers`
+- `llamafile` → `_Archive-Empty-Daily/llamafile`
+- `open-design` → `_Archive-Empty-Daily/open-design`
+- `sherpa-onnx` → `_Archive-Empty-Daily/sherpa-onnx`
+- `social-auto-upload` → `_Archive-Empty-Daily/social-auto-upload`
+- `vLLM` → `_Archive-Empty-Daily/vLLM`
+- `waifu2x` → `_Archive-Empty-Daily/waifu2x`
+- `yt-dlp` → `_Archive-Empty-Daily/yt-dlp`
+- `星流 Agent` → `_Archive-Empty-Daily/星流 Agent`
+- `火包短剧(huobao-drama)` → `_Archive-Empty-Daily/火包短剧(huobao-drama)`
+- `秋叶整合包` → `_Archive-Empty-Daily/秋叶整合包`
+- `通义灵码(阿里)` → `_Archive-Empty-Daily/通义灵码(阿里)`
+
+## 保留未编号原因
+含专题/工作流/T1/T2/T3 派生稿、多文件素材集合，或名称不满足单品自动编号条件。

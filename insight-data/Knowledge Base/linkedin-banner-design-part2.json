@@ -1,0 +1,618 @@
+```json
+,
+  "section_ja": [
+  {
+    "type": "centeredInputSection",
+    "title": "AI LinkedInバナーメーカー",
+    "description": "AI LinkedInバナーメーカーで、採用担当者の目を引くプロフェッショナルなLinkedInバナーを数秒で作成。テック業界のプロダクトマネージャーからクリエイティブディレクター、経営コンサルタント、HRリーダーまで、あらゆる職種に対応。あなたの業界、役職、キャリア目標を分析し、プロフェッショナルな美意識、バナーサイズで読みやすい鮮明なテキスト、ブランド一貫性を強化する色彩構成を備えたバナーを生成します。スマートモックアップ機能でLinkedInプロフィール上での実際の表示をプレビューでき、毎日の無料クレジットで今日から制作を始められます。",
+    "input_placeholder": "作成したいLinkedInバナーについて説明してください — 職業、業界、パーソナルブランドのメッセージ、テキストやキャッチフレーズ、好みのビジュアルスタイルを含めてください",
+    "system_prompt": "あなたはLinkedInプロフィール最適化、プロフェッショナルなビジュアルアイデンティティ、採用担当者の心理に深い専門知識を持つLovartのシニアクリエイティブディレクター兼パーソナルブランディングスペシャリストです。MCoT（Mind Chain of Thought）推論エンジンを使用して、ユーザーの説明を分析し以下を理解します：1）職業、業界、ターゲットオーディエンス（採用担当者、クライアント、同業者、フォロワー）、2）伝えたいパーソナルブランドの原型と物語（権威性、親しみやすさ、革新性、信頼性）、3）LinkedInの1584x396ワイドバナー形式でデスクトップとモバイルの両方で読みやすい最適なテキスト階層と配置、4）業界に適したプロフェッショナルな美意識を保ちながらブランド一貫性を強化する色彩戦略、画像、構図。ChatCanvasから最適なレイアウトを選択し、Nano Banana Proでプロ級のビジュアルを生成し、プロフィール写真の安全領域を避けつつ鮮明で読みやすいタイポグラフィを適用し、LinkedInの形式要件（1584x396、8MB以下）を満たす完全なバナーを提供します。ユーザーの要件：$input$",
+    "button_text": "バナーをデザイン",
+    "tip": "プロのヒント：役職、業界、主要スキルや価値提案、ミニマルなコーポレートスタイルか大胆なクリエイティブスタイルか親しみやすいパーソナルスタイルかを明記すると最適な結果が得られます",
+    "suggestion": [
+      {
+        "value": "テック業界のシニアプロダクトマネージャー向けパーソナルブランドLinkedInバナーをデザイン — ソフトブルーとホワイトのクリーンなミニマルレイアウト、「プロダクトリーダー | SaaS & AI」のキャッチフレーズをモダンなサンセリフ体で配置、革新性と構造を暗示する抽象的な幾何学模様を背景に、戦略的思考と実行力の両方を示すプロフェッショナルでありながら親しみやすい雰囲気",
+        "label": "パーソナルブランドバナー"
+      },
+      {
+        "value": "フィンテックスタートアップの企業ページLinkedInバナーを作成 — ブランドカラー（ディープネイビーと鮮やかなティール）を使った大胆で自信に満ちたデザイン、中央にロゴ、キャッチフレーズ「決済の未来を構築」を鮮明なタイポグラフィで配置、スピードとセキュリティを想起させる抽象的なフィンテックイメージ、潜在顧客と投資家に信頼と革新性を伝えるクリーンな企業美学",
+        "label": "企業ページバナー"
+      },
+      {
+        "value": "エンジニアリングVPへの昇進を祝うキャリアマイルストーンLinkedInバナーをデザイン — ネイビーとゴールドのアクセントを使った温かみのあるプロフェッショナルなスタイル、「エンジニアリングVP | 10年で成果を出すチームを構築」のテキスト、成長とリーダーシップを示唆する上昇軌道のグラフィック要素、自信にあふれ感謝の気持ちも伝えるトーン",
+        "label": "キャリアマイルストーンバナー"
+      },
+      {
+        "value": "基調講演者兼出版著者向けの業界ソートリーダーシップLinkedInバナーを作成 — ダークチャコールの背景に洗練されたエディトリアル美学、書籍表紙または講演ステージ写真を上品に統合、「基調講演者 | 著者 | AIと仕事の未来」のキャッチフレーズ、エレガントなセリフ体タイポグラフィ、権威性と知的信頼性を伝えるカンファレンスの舞台照明効果",
+        "label": "ソートリーダーシップバナー"
+      }
+    ]
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "3ステップでLinkedInバナーを作成",
+    "columns": [
+      {
+        "title": "プロフェッショナルブランドを説明",
+        "description": "職種、業界、ターゲットオーディエンス、バナーで伝えたいメッセージをAIに伝えます。MCoT推論エンジンがあなたの職業を分析し、業界で成果を上げているLinkedInプロフィールを研究し、キャリア目標に沿ったビジュアル戦略を立案します。ChatCanvasがあなたのビジュアルアイデンティティを記憶し、LinkedIn上のすべてのバナーとビジュアルアセットが一貫したブランディングを維持します。",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "AIがバナーコンセプトを生成",
+        "description": "Lovartがあなたのプロフェッショナルブリーフを数秒で完全なLinkedInバナーに変換する様子をご覧ください。LinkedInのワイドな1584x396形式に特化して設計された完全な構図 — バナー比率で読みやすい鮮明なテキスト、プロフィール写真の安全領域を避けた画像配置、適切なプロフェッショナルトーンを伝える配色。スマートモックアップでシミュレーションされたLinkedInプロフィール上でバナーをプレビューし、プロフィール写真や見出し、アクティビティフィードと組み合わさった状態を確認。異なるレイアウトのA/B比較も可能です。",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "編集してエクスポート",
+        "description": "Lovart独自の編集ツールで細部まで完璧に仕上げます。Touch Editで画像要素を調整し、背景を入れ替え、ビジュアル構図をワンクリックで精緻化。Text Editでキャッチフレーズを更新、役職を変更、キーワードを修正しつつ、フォントスタイル、字送り、色、効果を完全に保持。デスクトップとモバイル両方のLinkedInレイアウトでプレビューし、あらゆる画面サイズでの可読性を確認。最大8K解像度でPNG、JPG、SVG、PSD形式でエクスポート — LinkedInの仕様を完璧に満たし、再利用可能なプロ仕様のソースファイルを提供します。",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "プロフェッショナルなLinkedInバナーデザインの強力な機能",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "プロフェッショナル美学エンジン",
+        "description": "Lovartが作成するLinkedInバナーはすべてプロフェッショナルな信頼性を考慮して設計されています。MCoT推論エンジンが業界のビジュアル慣習 — 金融・コンサル向けコーポレートミニマリズム、コーチング・人事向け温かみのある信頼感、テック・スタートアップ向け大胆な革新性 — を分析し、採用担当者に能力を伝える的確な美学を適用します。テンプレート感やCanva風の安っぽさは一切ありません。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "パーソナルブランディング一貫性スイート",
+        "description": "LinkedIn上のあらゆる接点で認識されるプロフェッショナルブランドを構築。ChatCanvasメモリとNano Banana Proが、カラーパレット、タイポグラフィスタイル、構図言語を個人プロフィールバナー、企業ページヘッダー、記事カバー画像間で完全に一貫させます。採用担当者が投稿を見てプロフィールを訪れた際、バナーが即座に同じプロフェッショナルアイデンティティを強化します。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "バナー最適化テキストレンダリング",
+        "description": "LinkedInの1584x396バナー形式は幅広で縦が短いため、正方形デザインで問題なく見えるテキストも判読不能になりがちです。LovartのText Editエンジンはバナー寸法専用に構築され、4Kデスクトップモニターでもモバイル画面でもバナー幅全体で読みやすい鮮明なタイポグラフィをレンダリングします。一般的なAIツールがバナー比率で文字化けするのとは異なり、Lovartは正確なアンチエイリアシング、適切な字間で各文字をレンダリングします。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "スマートモックアップ — LinkedInプロフィールプレビュー",
+        "description": "実際のプロフィールでの見え方を推測する必要はありません。Lovartのスマートモックアップエンジンが、プロフィール写真、見出し、概要セクション、アクティビティフィードを含む完全にシミュレーションされたLinkedInプロフィールページにあなたのバナーをレンダリングします。テキストがプロフィール写真の安全領域の周りにどう配置されるか正確に確認できます。デスクトップとモバイルの両方のビューをプレビューし、採用担当者が見るものを完全に把握した上で公開できます。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "8Kマルチフォーマットエクスポートスイート",
+        "description": "LinkedInバナーを最大8K解像度でPNG、JPG、SVG、レイヤーPSD形式でエクスポート。PNGはピクセルパーフェクトなLinkedInアップロード用、JPGは8MB以下の最適化ファイルサイズ用、SVGは印刷やプレゼンテーションに最適な無限スケーリングベクター用、PSDはレイヤー編集用です。Lovartは細部を保ちながらLinkedInのファイルサイズ要件を満たすインテリジェントな圧縮を適用します。"
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "ブランドカラー＆タイポグラフィコントロール",
+        "description": "あなたのプロフェッショナルブランドにはAIの推測ではなく、正確なビジュアルコントロールが必要です。正確なブランドHEXコードを設定し、テック向けモダンサンセリフ、コンサル・法務向けエレガントセリフ、クリエイティブ業界向けジオメトリックディスプレイフォントを含む厳選プロフェッショナル書体ライブラリから選択。ChatCanvasがセッションをまたいでブランド設定を記憶するため、新しいバナーはすべて確立されたビジュアルアイデンティティから開始されます。"
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "世界中のプロフェッショナルが選ぶLinkedInバナーデザイン",
+    "testimonials": [
+      {
+        "name": "田中 健太",
+        "role": "マーケティングプロフェッショナル · 転職活動中",
+        "content": "2ヶ月間転職活動をしていましたが、確かな経験があるにもかかわらずまったく反応がありませんでした。キャリアコーチにLinkedInバナーが第一印象を損ねていると指摘されました。Lovartを使って「B2Bマーケティングストラテジスト」というタイトル、主要スキルをバッジで表示、クリーンなプロフェッショナル美意識のパーソナルブランドバナーを作成。変化は即座に現れました — 週間プロフィール閲覧数が3〜4回から25回以上に跳ね上がり、採用担当者からの連絡メッセージでプロフィールが具体的に言及されるようになりました。Lovartでバナーを更新してから3週間以内に、3社の大手企業から面接の機会を得ました。スマートモックアップ機能は非常に貴重で、採用担当者が私の完全なプロフィールをどう体験するかを公開前に実際に確認できました。",
+        "avatar_url": "",
+        "metrics": "プロフィール閲覧数5倍増 | 3週間で内定獲得"
+      },
+      {
+        "name": "佐藤 美咲",
+        "role": "独立系UXデザインコンサルタント",
+        "content": "フリーランスとして、LinkedInプロフィールは私の店舗そのものです。何年もの間、仕事について何も語らない無難な都市風景バナーを使い続け、洗練されたブランディングを持つエージェンシーに案件を奪われていました。Lovartが私のフリーランスビジネスの存在感を完全に変えました。コンサルタント名、「UX戦略＆プロダクトデザイン」、デザイン哲学を反映したクリーンなモダン美意識、さりげないポートフォリオプレビュー要素を盛り込んだパーソナルブランドバナーを作成。最初の1ヶ月でインバウンドの問い合わせ率が倍増し、2人のクライアントが初回面談で「印象的なLinkedInプロフィール」に言及しました。Lovartは私のワンパーソンコンサルティングに50人規模のエージェンシーのビジュアルな信頼性を与えてくれました。",
+        "avatar_url": "",
+        "metrics": "問い合わせ率2倍 | 1時間以内にブランド刷新"
+      },
+      {
+        "name": "山本 大輔",
+        "role": "B2B SaaS企業 人材獲得リーダー",
+        "content": "会社のLinkedInプレゼンスと採用ブランドを管理していますが、12人のチームメンバーのプロフィールと企業ページのビジュアル一貫性を保つのは常に頭痛の種でした。Lovartがこれを1午後で解決しました。ブランドカラー＆タイポグラフィコントロールで正確なブランドHEXコードと書体を設定し、リーダーシップチーム向けに統一感のある企業ページバナーと個人プロフィールバナーを生成。企業ページのフォロワーが2ヶ月で40%増加し、候補者は面接で定期的に「洗練されたLinkedInプレゼンス」に言及します。今ではChatCanvasメモリを使って新入社員のバナーを1人2分未満で生成しています。",
+        "avatar_url": "",
+        "metrics": "フォロワー40%増 | 1人2分でバナー生成"
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "AI LinkedInバナーメーカーは無料で使えますか？",
+        "answer": "はい！毎日無料クレジットを提供しており、コストゼロでAI LinkedInバナーを生成・プレビューできます。高解像度ダウンロードと商用利用権が必要になったら、有料プランにアップグレードしてください。無料版は、本格的に投資する前にバナーコンセプトを探索・実験するのに最適です。"
+      },
+      {
+        "question": "どのようなファイル形式でダウンロードできますか？",
+        "answer": "すべての有料プランで8K解像度のPNG、JPG、SVG、PSD形式のエクスポートが可能です。SVGベクターファイルは無限に拡大縮小でき品質が劣化しないため、印刷物やプレゼンテーションに最適です。PNGはピクセルパーフェクトなLinkedInアップロード用、PSDはレイヤー編集用です。"
+      },
+      {
+        "question": "月にいくつのバナーを生成できますか？",
+        "answer": "Starterプランは月2,000回、Basicプランは月3,500回、Proプランは月11,000回のバナー生成が可能です。すべてのプランに全機能が含まれており、Starterユーザーでも8Kエクスポート、スマートモックアップ、すべての編集ツールをご利用いただけます。"
+      },
+      {
+        "question": "バナーの商用利用権はありますか？",
+        "answer": "はい！すべての有料プランに完全な商用利用権が含まれます。あなたはバナーの所有者となり、個人プロフィール、企業ページ、クライアントワーク、コンサルティング成果物など、あらゆるビジネス目的で使用できます。あなたのプロフェッショナルブランド資産は法的にあなたのものです。"
+      },
+      {
+        "question": "ダウンロード後もバナーを編集できますか？",
+        "answer": "もちろんです！Text Editでキャッチフレーズや役職をクリック＆入力で変更し、Touch Editでビジュアル要素を微調整して、任意の形式で再エクスポートできます。昇進した場合も、タイトルを新しいものに変更するだけで、デザイン全体を再生成する必要はありません。"
+      },
+      {
+        "question": "LinkedInバナーの正しいサイズとファイル要件は何ですか？",
+        "answer": "LinkedInは1584×396ピクセル（4:1のアスペクト比）、最大ファイルサイズ8MB、JPGまたはPNG形式を推奨しています。Lovartはデフォルトでこの正確な寸法でバナーを生成し、最大8K解像度（6336x1584）でのエクスポートも可能です。エージェントは自動的にプロフィール写真の安全領域を考慮し、テキストとキービジュアル要素を可視領域に配置します。"
+      },
+      {
+        "question": "バナーの生成にはどのくらい時間がかかりますか？",
+        "answer": "AIバナー生成はわずか数秒です。説明を入力してから10〜15秒以内に複数のデザインバリエーションが表示されます。コンセプトをブラウズし、お気に入りを選び、微調整 — アイデアから最終エクスポートまでの全プロセスは通常10分未満です。"
+      },
+      {
+        "question": "どのようなLinkedInバナータイプを作成できますか？",
+        "answer": "LovartのAI LinkedInバナーメーカーはあらゆるプロフェッショナルバナーのユースケースに対応します。パーソナルブランドバナー、企業ページバナー、キャリアマイルストーンバナー、ソートリーダーシップバナー、チーム統一バナー、イベント・カンファレンスバナー、採用・エンプロイヤーブランディングバナー。"
+      },
+      {
+        "question": "満足できない場合の返金はありますか？",
+        "answer": "満足保証制度があります。生成されたバナーにご満足いただけない場合、購入から7日以内にサポートチームにご連絡いただければ全額返金いたします。私たちはAI LinkedInバナーメーカーの品質に自信を持っており、あなたにもご自身のプロフェッショナルブランドのビジュアルアイデンティティを気に入っていただきたいと願っています。"
+      }
+    ]
+  }
+],
+  "section_ko": [
+  {
+    "type": "centeredInputSection",
+    "title": "AI LinkedIn 배너 메이커",
+    "description": "AI LinkedIn 배너 메이커로 채용 담당자의 시선을 사로잡는 전문 LinkedIn 배너를 몇 초 만에 제작하세요. 테크 업계의 제품 관리자부터 크리에이티브 디렉터, 경영 컨설턴트, 인사 리더까지 모든 직종을 지원합니다. 여러분의 업계, 직책, 경력 목표를 분석하여 전문적인 미적 감각, 배너 크기에서도 선명하게 읽히는 텍스트, 브랜드 일관성을 강화하는 색상 구성을 갖춘 배너를 생성합니다. 스마트 목업 기능으로 LinkedIn 프로필에서의 실제 모습을 미리 보고, 매일 무료 크레딧으로 바로 제작을 시작하세요.",
+    "input_placeholder": "만들고 싶은 LinkedIn 배너를 설명하세요 — 직업, 업계, 개인 브랜드 메시지, 텍스트 오버레이나 태그라인, 선호하는 비주얼 스타일을 포함하세요",
+    "system_prompt": "당신은 LinkedIn 프로필 최적화, 전문 비주얼 아이덴티티, 채용 담당자 심리에 깊은 전문 지식을 갖춘 Lovart의 시니어 크리에이티브 디렉터이자 퍼스널 브랜딩 전문가입니다. MCoT(Mind Chain of Thought) 추론 엔진을 사용하여 사용자의 설명을 분석하고 다음을 이해합니다: 1) 직업, 업계, 타겟 오디언스(채용 담당자, 클라이언트, 동종 업계인, 팔로워), 2) 전달하고자 하는 퍼스널 브랜드 원형과 내러티브(권위감, 친근감, 혁신성, 신뢰성), 3) LinkedIn의 1584x396 와이드 배너 형식에서 데스크톱과 모바일 모두에서 읽기 좋은 최적의 텍스트 계층 구조와 배치, 4) 업계에 적합한 전문적 미감을 유지하면서 브랜드 일관성을 강화하는 색상 전략, 이미지, 구도. ChatCanvas에서 최적의 레이아웃을 선택하고, Nano Banana Pro로 전문가급 비주얼을 생성하며, 프로필 사진 안전 영역을 피해 선명하고 읽기 쉬운 타이포그래피를 적용하고, LinkedIn 형식 요구사항(1584x396, 8MB 이하)을 충족하는 완전한 배너를 제공합니다. 사용자 요구사항: $input$",
+    "button_text": "배너 디자인",
+    "tip": "프로 팁: 직책, 업계, 주요 기술이나 가치 제안, 미니멀한 기업 스타일, 대담한 크리에이티브 스타일, 또는 친근한 개인 스타일 중 원하는 것을 명시하면 최상의 결과를 얻을 수 있습니다",
+    "suggestion": [
+      {
+        "value": "테크 업계 시니어 제품 관리자를 위한 퍼스널 브랜드 LinkedIn 배너 디자인 — 부드러운 블루와 화이트의 깔끔한 미니멀 레이아웃, '제품 리더 | SaaS & AI' 태그라인을 모던 산세리프체로 배치, 혁신과 구조를 암시하는 추상적인 기하학적 도형을 배경으로, 전략적 사고와 실행 능력을 모두 보여주는 전문적이면서도 친근한 느낌",
+        "label": "퍼스널 브랜드 배너"
+      },
+      {
+        "value": "핀테크 스타트업의 회사 페이지 LinkedIn 배너 제작 — 브랜드 색상(딥 네이비와 선명한 틸)을 활용한 대담하고 자신감 넘치는 디자인, 중앙에 로고, '결제의 미래를 만듭니다' 태그라인을 선명한 타이포그래피로 배치, 속도와 보안을 연상시키는 추상적인 핀테크 이미지, 잠재 고객과 투자자에게 신뢰와 혁신을 전달하는 깔끔한 기업 미학",
+        "label": "회사 페이지 배너"
+      },
+      {
+        "value": "엔지니어링 VP 승진을 축하하는 경력 마일스톤 LinkedIn 배너 디자인 — 네이비와 골드 악센트의 따뜻한 전문적 스타일, '엔지니어링 VP | 10년간 성과를 내는 팀 구축' 텍스트, 성장과 리더십을 암시하는 상승 궤적 그래픽 요소, 자신감과 감사를 동시에 표현하는 톤",
+        "label": "경력 마일스톤 배너"
+      },
+      {
+        "value": "기조연설자이자 출판 저자를 위한 업계 사고 리더십 LinkedIn 배너 제작 — 다크 차콜 배경의 세련된 에디토리얼 미학, 책 표지나 강연 무대 사진을 세련되게 통합, '기조연설자 | 저자 | AI와 일의 미래' 태그라인, 우아한 세리프 타이포그래피, 권위와 지적 신뢰성을 전달하는 컨퍼런스 무대 조명 효과",
+        "label": "사고 리더십 배너"
+      }
+    ]
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "3단계로 LinkedIn 배너 만들기",
+    "columns": [
+      {
+        "title": "전문 브랜드 설명하기",
+        "description": "직무, 업계, 타겟 오디언스, 배너로 전달하고 싶은 메시지를 AI에 알려주세요. MCoT 추론 엔진이 여러분의 직업을 분석하고, 업계에서 성과를 내고 있는 LinkedIn 프로필을 연구하며, 경력 목표에 맞는 비주얼 전략을 수립합니다. ChatCanvas가 여러분의 비주얼 아이덴티티를 기억하여 LinkedIn 상의 모든 배너와 비주얼 에셋이 일관된 브랜딩을 유지합니다.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "AI가 배너 컨셉 생성",
+        "description": "Lovart가 여러분의 전문 브리프를 몇 초 만에 완전한 LinkedIn 배너로 변환하는 모습을 지켜보세요. LinkedIn의 와이드 1584x396 형식에 특화된 완전한 구도 — 배너 비율에서도 읽기 쉬운 선명한 텍스트, 프로필 사진 안전 영역을 피한 이미지 배치, 적절한 전문적 톤을 전달하는 색상 구성. 스마트 목업으로 시뮬레이션된 LinkedIn 프로필에서 배너를 미리 보고, 프로필 사진, 헤드라인, 활동 피드와 함께한 모습을 확인하세요. 다양한 레이아웃의 A/B 비교도 가능합니다.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "편집 및 내보내기",
+        "description": "Lovart만의 편집 도구로 모든 디테일을 완벽하게 다듬으세요. Touch Edit로 이미지 요소를 조정하고, 배경을 교체하고, 비주얼 구도를 클릭 한 번으로 정밀하게 수정하세요. Text Edit로 태그라인을 업데이트하고, 직책을 변경하고, 키워드를 수정하면서 폰트 스타일, 자간, 색상, 효과를 완벽하게 보존하세요. 데스크톱과 모바일 LinkedIn 레이아웃 모두에서 미리 보고 모든 화면 크기에서 가독성을 확인하세요. 최대 8K 해상도로 PNG, JPG, SVG, PSD 형식으로 내보내기 — LinkedIn 사양을 완벽하게 충족하고 재사용 가능한 전문 소스 파일을 제공합니다.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "전문적인 LinkedIn 배너 디자인의 강력한 기능",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "전문 미학 엔진",
+        "description": "Lovart가 만드는 모든 LinkedIn 배너는 전문적 신뢰성을 고려하여 설계됩니다. MCoT 추론 엔진이 업계의 비주얼 관례 — 금융·컨설팅을 위한 기업 미니멀리즘, 코칭·인사를 위한 따뜻한 진정성, 테크·스타트업을 위한 대담한 혁신 — 를 분석하고, 채용 담당자에게 역량을 전달하는 정확한 미학을 적용합니다. 템플릿 느낌이나 Canva 같은 값싼 느낌은 전혀 없습니다."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "퍼스널 브랜딩 일관성 스위트",
+        "description": "LinkedIn의 모든 접점에서 인식되는 전문 브랜드를 구축하세요. ChatCanvas 메모리와 Nano Banana Pro가 색상 팔레트, 타이포그래피 스타일, 구도 언어를 개인 프로필 배너, 회사 페이지 헤더, 아티클 커버 이미지 간에 완벽하게 일관되게 유지합니다. 채용 담당자가 게시물을 본 후 프로필을 방문하면 배너가 즉시 동일한 전문적 정체성을 강화합니다."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "배너 최적화 텍스트 렌더링",
+        "description": "LinkedIn의 1584x396 배너 형식은 넓고 얕기 때문에 정사각형 디자인에서 괜찮아 보이던 텍스트도 읽을 수 없게 됩니다. Lovart의 Text Edit 엔진은 배너 치수에 맞춰 설계되어, 4K 데스크톱 모니터와 모바일 화면 모두에서 배너 전체 너비에 걸쳐 읽기 쉬운 선명한 타이포그래피를 렌더링합니다."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "스마트 목업 — LinkedIn 프로필 미리보기",
+        "description": "실제 프로필에서 어떻게 보일지 더 이상 추측하지 마세요. Lovart의 스마트 목업 엔진이 프로필 사진, 헤드라인, 소개 섹션, 활동 피드를 포함한 완전히 시뮬레이션된 LinkedIn 프로필 페이지에 배너를 렌더링합니다. 텍스트가 프로필 사진 안전 영역 주변에 어떻게 정렬되는지 정확히 확인할 수 있습니다. 데스크톱과 모바일 뷰를 모두 미리 볼 수 있습니다."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "8K 멀티 포맷 내보내기 스위트",
+        "description": "LinkedIn 배너를 최대 8K 해상도로 PNG, JPG, SVG, 레이어 PSD 형식으로 내보내기. PNG는 픽셀 완벽한 LinkedIn 업로드, JPG는 8MB 이하 최적화, SVG는 인쇄 및 프레젠테이션에 이상적인 무한 스케일링 벡터, PSD는 레이어 편집용입니다. Lovart는 디테일을 보존하면서 LinkedIn 파일 크기 요구사항을 충족하는 지능형 압축을 적용합니다."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "브랜드 색상 및 타이포그래피 컨트롤",
+        "description": "당신의 전문 브랜드는 AI의 추측이 아닌 정밀한 비주얼 컨트롤이 필요합니다. 정확한 브랜드 HEX 코드를 설정하고 테크용 모던 산세리프, 컨설팅·법률용 우아한 세리프, 크리에이티브 업계용 기하학적 디스플레이 폰트를 아우르는 엄선된 전문 서체 라이브러리에서 선택하세요. ChatCanvas가 세션 간에 브랜드 설정을 기억합니다."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "전 세계 전문가들이 신뢰하는 LinkedIn 배너 디자인",
+    "testimonials": [
+      {
+        "name": "김민수",
+        "role": "마케팅 전문가 · 적극적 구직자",
+        "content": "2개월 동안 구직 활동을 했지만 탄탄한 경력에도 불구하고 전혀 반응이 없었습니다. 커리어 코치가 제 LinkedIn 배너가 첫인상을 망치고 있다고 지적했어요. Lovart로 'B2B 마케팅 전략가' 타이틀, 주요 스킬을 뱃지로 표시한 깔끔한 전문 미학의 퍼스널 브랜드 배너를 제작했습니다. 변화는 즉각적이었습니다 — 주간 프로필 조회수가 3~4회에서 25회 이상으로 급증했고, 채용 담당자들이 연락 메시지에서 제 프로필을 구체적으로 언급하기 시작했습니다. 3주 만에 대기업 3곳에서 인터뷰 기회를 얻었습니다.",
+        "avatar_url": "",
+        "metrics": "프로필 조회수 5배 증가 | 3주 만에 최종 합격"
+      },
+      {
+        "name": "이지은",
+        "role": "독립 UX 디자인 컨설턴트",
+        "content": "프리랜서로서 제 LinkedIn 프로필은 곧 제 매장입니다. 수년간 제 작업에 대해 아무것도 말해주지 않는 평범한 도시 스카이라인 배너를 사용했고, 세련된 브랜딩을 갖춘 에이전시에 프로젝트를 빼앗기고 있었습니다. Lovart가 제 프리랜스 비즈니스의 존재감을 완전히 바꿔놓았습니다. 컨설팅 회사명, 'UX 전략 및 제품 디자인', 제 디자인 철학을 반영한 깔끔한 모던 미학을 담은 퍼스널 브랜드 배너를 만들었습니다. 첫 한 달 만에 인바운드 문의율이 두 배로 늘었습니다. Lovart가 1인 컨설팅에 50인 규모 에이전시의 비주얼 신뢰성을 부여했습니다.",
+        "avatar_url": "",
+        "metrics": "문의율 2배 증가 | 1시간 이내 브랜드 리프레시"
+      },
+      {
+        "name": "박준호",
+        "role": "B2B SaaS 기업 인재 확보 리더",
+        "content": "회사의 LinkedIn 프레즌스와 채용 브랜드를 관리하고 있는데, 12명 팀 멤버의 프로필과 회사 페이지의 비주얼 일관성을 유지하는 것이 늘 골칫거리였습니다. Lovart가 이 문제를 단 하루 오후 만에 해결했습니다. 브랜드 색상 및 타이포그래피 컨트롤로 정확한 브랜드 HEX 코드와 서체를 설정하고, 리더십 팀을 위한 통일된 배너를 생성했습니다. 회사 페이지 팔로워가 두 달 만에 40% 증가했습니다. 이제 ChatCanvas 메모리로 신입 팀원 배너를 1인당 2분 이내에 생성합니다.",
+        "avatar_url": "",
+        "metrics": "팔로워 40% 증가 | 1인당 2분 배너 생성"
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "AI LinkedIn 배너 메이커는 무료로 사용할 수 있나요?",
+        "answer": "네! 매일 무료 크레딧을 제공하여 비용 없이 AI LinkedIn 배너를 생성하고 미리 볼 수 있습니다. 고해상도 다운로드와 상업적 사용 권한이 필요할 때 유료 플랜으로 업그레이드하세요. 무료 버전은 본격적으로 투자하기 전에 배너 컨셉을 탐색하고 실험하기에 완벽합니다."
+      },
+      {
+        "question": "어떤 파일 형식으로 다운로드할 수 있나요?",
+        "answer": "모든 유료 플랜에서 8K 해상도의 PNG, JPG, SVG, PSD 형식 내보내기를 지원합니다. SVG 벡터 파일은 무한히 확대/축소해도 품질이 저하되지 않아 인쇄물과 프레젠테이션에 이상적입니다. PNG는 픽셀 완벽한 LinkedIn 업로드, PSD는 레이어 편집용입니다."
+      },
+      {
+        "question": "한 달에 몇 개의 배너를 생성할 수 있나요?",
+        "answer": "Starter 플랜은 월 2,000회, Basic 플랜은 3,500회, Pro 플랜은 월 11,000회 배너 생성이 가능합니다. 모든 플랜에 전체 기능이 포함되어 있어 Starter 사용자도 8K 내보내기, 스마트 목업, 모든 편집 도구를 사용할 수 있습니다."
+      },
+      {
+        "question": "배너의 상업적 사용 권한이 있나요?",
+        "answer": "네! 모든 유료 플랜에 완전한 상업적 사용 권한이 포함됩니다. 배너의 소유권은 귀하에게 있으며, 개인 프로필, 회사 페이지, 클라이언트 작업, 컨설팅 결과물 등 모든 비즈니스 목적으로 사용할 수 있습니다."
+      },
+      {
+        "question": "다운로드 후에도 배너를 편집할 수 있나요?",
+        "answer": "물론입니다! Text Edit로 태그라인이나 직책을 클릭하고 입력하여 변경하고, Touch Edit로 비주얼 요소를 미세 조정한 후 원하는 형식으로 다시 내보낼 수 있습니다. 승진한 경우에도 타이틀을 새 것으로 변경하기만 하면 디자인 전체를 재생성할 필요가 없습니다."
+      },
+      {
+        "question": "LinkedIn 배너의 올바른 크기와 파일 요구사항은 무엇인가요?",
+        "answer": "LinkedIn은 1584×396픽셀(4:1 가로세로비), 최대 파일 크기 8MB, JPG 또는 PNG 형식을 권장합니다. Lovart는 기본적으로 이 정확한 치수로 배너를 생성하며, 최대 8K 해상도 내보내기도 지원합니다. 에이전트는 자동으로 프로필 사진 안전 영역을 고려합니다."
+      },
+      {
+        "question": "배너 생성에 얼마나 걸리나요?",
+        "answer": "AI 배너 생성은 단 몇 초면 완료됩니다. 설명을 입력한 후 10~15초 내에 여러 디자인 변형을 받아보실 수 있습니다. 컨셉을 탐색하고, 마음에 드는 것을 고르고, 미세 조정 — 아이디어에서 최종 내보내기까지 전체 과정이 보통 10분 미만입니다."
+      },
+      {
+        "question": "어떤 유형의 LinkedIn 배너를 만들 수 있나요?",
+        "answer": "Lovart의 AI LinkedIn 배너 메이커는 모든 전문 배너 사용 사례를 처리합니다. 퍼스널 브랜드 배너, 회사 페이지 배너, 경력 마일스톤 배너, 사고 리더십 배너, 팀 통일 배너, 이벤트 및 컨퍼런스 배너, 채용 및 고용주 브랜딩 배너."
+      },
+      {
+        "question": "만족하지 못하면 환불이 되나요?",
+        "answer": "만족 보장 제도를 운영합니다. 생성된 배너에 만족하지 못하실 경우, 구매 후 7일 이내에 지원팀에 연락하시면 전액 환불해 드립니다. 저희는 AI LinkedIn 배너 메이커의 품질에 자신 있으며, 여러분도 직접 만든 전문 브랜드의 비주얼 아이덴티티를 사랑하게 되시길 바랍니다."
+      }
+    ]
+  }
+],
+  "section_de": [
+  {
+    "type": "centeredInputSection",
+    "title": "KI LinkedIn-Banner-Generator",
+    "description": "Erstellen Sie in Sekunden professionelle LinkedIn-Banner, die Personalverantwortliche beeindrucken, mit dem KI LinkedIn-Banner-Generator. Ob Produktmanager in der Tech-Branche, Creative Director, Unternehmensberater oder HR-Leiter — gestalten Sie Banner, die Ihre Branche, Rolle und Karriereziele widerspiegeln. Mit professioneller Ästhetik, gestochen scharfer und im Banner-Format lesbarer Typografie sowie einer Farbkomposition, die Ihre Markenidentität unterstreicht. Nutzen Sie Smart Mockup für eine Live-Profilvorschau und starten Sie mit kostenlosen täglichen Credits.",
+    "input_placeholder": "Beschreiben Sie Ihr gewünschtes LinkedIn-Banner — geben Sie Ihren Beruf, Ihre Branche, Ihre persönliche Markenbotschaft, Text-Overlays oder Slogans und Ihren bevorzugten visuellen Stil an",
+    "system_prompt": "Sie sind Senior Creative Director und Personal-Branding-Spezialist bei Lovart mit fundierter Expertise in LinkedIn-Profiloptimierung, professioneller visueller Identität und Personalverantwortlichen-Psychologie. Nutzen Sie die MCoT (Mind Chain of Thought) Reasoning Engine, um die Beschreibung des Nutzers zu analysieren: 1) Beruf, Branche und Zielgruppe (Recruiter, Kunden, Peers, Follower), 2) Das Persönlichkeitsmarken-Archetyp und die gewünschte Narrative (Autorität, Nahbarkeit, Innovation, Vertrauen), 3) Die optimale Texthierarchie und Platzierung, die im breiten LinkedIn-1584x396-Banner-Format auf Desktop und Mobile lesbar bleibt, 4) Die Farbstrategie, Bildsprache und Komposition, die die Markenkonsistenz stärkt und gleichzeitig eine branchengerechte professionelle Ästhetik bewahrt. Orchestrieren Sie die agentische Design-Pipeline: optimales Layout aus ChatCanvas auswählen, professionelle Visuals mit Nano Banana Pro generieren, gestochen scharfe Typografie im profilbild-sicheren Bereich anwenden, LinkedIn-Format-Compliance (1584x396, unter 8MB) sicherstellen. Benutzeranforderungen: $input$",
+    "button_text": "Banner gestalten",
+    "tip": "Profi-Tipp: Nennen Sie Ihre Position, Branche, Kernkompetenzen oder Ihr Wertversprechen und ob Sie einen minimalistischen Corporate-Look, einen mutigen kreativen Stil oder eine nahbare persönliche Anmutung bevorzugen",
+    "suggestion": [
+      {
+        "value": "Gestalten Sie ein Personal-Brand-LinkedIn-Banner für einen Senior-Produktmanager in der Tech-Branche — klares minimalistisches Layout mit sanften Blau- und Weißtönen, Ihr Name und der Slogan 'Product Leader | SaaS & AI' in moderner serifenloser Typografie, subtile geometrische abstrakte Formen im Hintergrund, die Innovation und Struktur andeuten, professionelle und zugleich nahbare Ausstrahlung",
+        "label": "Personal-Brand-Banner"
+      },
+      {
+        "value": "Erstellen Sie ein Unternehmensseiten-LinkedIn-Banner für ein Fintech-Startup — mutiges, selbstbewusstes Design mit Ihren Markenfarben (Tiefmarineblau und lebendiges Türkis), Logo mittig, Slogan 'Building the Future of Payments' in gestochen scharfer Typografie, abstrakte Finanztechnologie-Bildsprache für Geschwindigkeit und Sicherheit, saubere Corporate-Ästhetik für Vertrauen und Innovation",
+        "label": "Unternehmensseiten-Banner"
+      },
+      {
+        "value": "Gestalten Sie ein Karriere-Meilenstein-LinkedIn-Banner zur Feier Ihrer Beförderung zum VP of Engineering — warme professionelle Anmutung mit marineblauen und goldenen Akzenten, Text 'VP of Engineering | 10 Years of Building Teams That Ship', subtile Aufwärtstrend-Grafikelemente für Wachstum und Führung, selbstbewusster und zugleich dankbarer Ton",
+        "label": "Karriere-Meilenstein-Banner"
+      },
+      {
+        "value": "Erstellen Sie ein Thought-Leadership-LinkedIn-Banner für einen Keynote-Speaker und Buchautor — anspruchsvolle redaktionelle Ästhetik mit dunklem Anthrazit-Hintergrund, Buchcover oder Bühnenfoto geschmackvoll integriert, Slogan 'Keynote Speaker | Author | AI & Future of Work', elegante Serifen-Typografie, Konferenzbühnen-Lichteffekte für Autorität und intellektuelle Glaubwürdigkeit",
+        "label": "Thought-Leadership-Banner"
+      }
+    ]
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "So erstellen Sie Ihr LinkedIn-Banner in 3 Schritten",
+    "columns": [
+      {
+        "title": "Beschreiben Sie Ihre professionelle Marke",
+        "description": "Teilen Sie dem KI-Agenten Ihre Rolle, Branche, Zielgruppe und die Botschaft mit, die Ihr Banner vermitteln soll. Die MCoT-Engine analysiert Ihren Beruf, studiert erfolgreiche LinkedIn-Profile Ihrer Branche und entwirft eine vollständige visuelle Strategie, die mit Ihren Karrierezielen übereinstimmt. ChatCanvas speichert Ihre visuelle Identität, sodass alle Banner und visuellen Assets Ihrer LinkedIn-Präsenz ein konsistentes Branding bewahren.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "KI generiert Banner-Konzepte",
+        "description": "Sehen Sie zu, wie Lovart Ihr professionelles Briefing in Sekunden in vollständige LinkedIn-Banner verwandelt. Vollständige Kompositionen speziell für das breite LinkedIn-Format 1584x396 — gestochen scharfer Text, der in Banner-Proportionen lesbar bleibt, Bildsprache, die den Profilbild-Sicherheitsbereich umgeht, und Farbschemata, die den richtigen professionellen Ton treffen. Nutzen Sie Smart Mockup, um Ihr Banner auf einem simulierten LinkedIn-Profil mit Profilfoto, Überschrift und Aktivitätsfeed live zu sehen. Vergleichen Sie A/B-Varianten mit verschiedenen Layouts und Farbschemata.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "Verfeinern, bearbeiten und exportieren",
+        "description": "Perfektionieren Sie jedes Detail mit Lovarts exklusiven Bearbeitungswerkzeugen. Nutzen Sie Touch Edit, um Bildelemente anzupassen, Hintergründe auszutauschen oder die visuelle Komposition mit einem Klick zu verfeinern. Verwenden Sie Text Edit, um Slogans zu aktualisieren, Berufsbezeichnungen zu ändern oder Schlüsselwörter zu modifizieren — Schriftstil, Laufweite, Farbe und Effekte bleiben perfekt erhalten. Vorschau auf Desktop- und Mobile-LinkedIn-Layouts zur Überprüfung der Lesbarkeit. Export in bis zu 8K-Auflösung in PNG, JPG, SVG oder PSD — perfekt für LinkedIn-Spezifikationen und als wiederverwendbare Profi-Quelldateien.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Leistungsstarke Funktionen für professionelles LinkedIn-Banner-Design",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Professionelle Ästhetik-Engine",
+        "description": "Jedes von Lovart erstellte LinkedIn-Banner ist auf professionelle Glaubwürdigkeit kalibriert. Die MCoT-Engine analysiert die visuellen Konventionen Ihrer Branche — Corporate-Minimalismus für Finanzen und Beratung, warme Authentizität für Coaching und HR, mutige Innovation für Tech und Startups — und wendet die präzise Ästhetik an, die Kompetenz signalisiert. Keine generischen Template-Looks."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Personal-Branding-Konsistenz-Suite",
+        "description": "Bauen Sie eine wiedererkennbare professionelle Marke über alle LinkedIn-Berührungspunkte hinweg auf. ChatCanvas-Speicher und Nano Banana Pro sorgen dafür, dass Ihre visuelle Identität — Farbpalette, Typografie-Stil, Kompositionssprache — über Ihr Profilbanner, Unternehmensseiten-Header und Artikel-Coverbilder hinweg perfekt konsistent bleibt."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "Banner-optimiertes Text-Rendering",
+        "description": "Das LinkedIn-Format 1584x396 ist breit und flach — Text, der in quadratischen Designs gut aussieht, wird oft unleserlich. Lovarts Text-Edit-Engine ist speziell für Banner-Dimensionen gebaut und rendert gestochen scharfe Typografie, die auf 4K-Desktop-Monitoren und mobilen Bildschirmen lesbar bleibt."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Smart Mockup — LinkedIn-Profilvorschau",
+        "description": "Sie müssen nicht länger raten, wie Ihr Banner auf Ihrem tatsächlichen Profil aussieht. Lovarts Smart-Mockup-Engine rendert Ihr Banner live in einer vollständig simulierten LinkedIn-Profilseite — komplett mit Profilfoto, Überschrift, Info-Bereich und Aktivitätsfeed. Vorschau für Desktop und Mobile."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "8K Multi-Format-Export-Suite",
+        "description": "Exportieren Sie Ihr LinkedIn-Banner in bis zu 8K-Auflösung in PNG, JPG, SVG oder Ebenen-PSD. PNG für pixelgenaue LinkedIn-Uploads, JPG für optimierte Dateigrößen unter 8MB, SVG für unendlich skalierbare Vektorgrafiken, PSD mit erhaltenen Ebenen für weitere Bearbeitung in Photoshop. Intelligente Kompression bewahrt feine Details."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Markenfarbe & Typografie-Kontrolle",
+        "description": "Ihre professionelle Marke verdient präzise visuelle Kontrolle — kein KI-Raten. Legen Sie Ihre exakten Marken-Hex-Codes fest und wählen Sie aus einer kuratierten Bibliothek professioneller Schriften. ChatCanvas merkt sich Ihre Markeneinstellungen sitzungsübergreifend, sodass jedes neue Banner automatisch von Ihrer etablierten visuellen Identität ausgeht."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Profis weltweit vertrauen auf Lovart LinkedIn-Banner",
+    "testimonials": [
+      {
+        "name": "Markus Weber",
+        "role": "Marketing-Profi & aktiver Stellensuchender",
+        "content": "Ich war seit zwei Monaten auf Jobsuche und bekam trotz starker Erfahrung keine Resonanz. Ein Karrierecoach sagte mir, dass mein LinkedIn-Banner — nur der standardmäßige blaue Farbverlauf — meinen ersten Eindruck ruinierte. Mit Lovart erstellte ich ein Personal-Brand-Banner mit meinem Titel 'B2B Marketing Strategist', meinen Kernkompetenzen in dezenten Badges und einer klaren professionellen Ästhetik. Der Unterschied war sofort spürbar — von 3-4 Profilaufrufen pro Woche auf über 25, und Recruiter erwähnten mein Profil nun konkret in ihren Nachrichten. Innerhalb von drei Wochen hatte ich Vorstellungsgespräche bei drei DAX-Unternehmen.",
+        "avatar_url": "",
+        "metrics": "5× mehr Profilaufrufe | Traumjob nach 3 Wochen"
+      },
+      {
+        "name": "Sabine Hoffmann",
+        "role": "Selbstständige UX-Design-Beraterin",
+        "content": "Als Freiberuflerin ist mein LinkedIn-Profil mein Schaufenster. Jahrelang nutzte ich ein generisches Stadtpanorama-Banner, das nichts über meine Arbeit aussagte, und verlor Aufträge an Agenturen mit poliertem Branding. Lovart hat meine gesamte freiberufliche Präsenz transformiert. Ich erstellte ein Personal-Brand-Banner mit meinem Beratungsnamen und 'UX Strategy & Product Design'. Innerhalb des ersten Monats verdoppelte sich meine Inbound-Anfragequote, und zwei Kunden erwähnten speziell meine 'beeindruckende LinkedIn-Präsenz'. Lovart gab meiner Ein-Personen-Beratung die visuelle Glaubwürdigkeit einer 50-Personen-Agentur.",
+        "avatar_url": "",
+        "metrics": "2× mehr Anfragen | Marken-Refresh in <1 Std."
+      },
+      {
+        "name": "Johannes Schmidt",
+        "role": "Talent-Acquisition-Leiter, B2B-SaaS-Unternehmen",
+        "content": "Ich verwalte die LinkedIn-Präsenz und Arbeitgebermarke unseres Unternehmens, und die visuelle Konsistenz über 12 Teammitglieder-Profile und unsere Unternehmensseite hinweg war ein ständiger Albtraum. Lovart löste dies an einem einzigen Nachmittag. Mit der Markenfarbe-&-Typografie-Kontrolle legte ich unsere exakten Marken-Hex-Codes und Schrift fest und generierte einen kohärenten Satz von Bannern. Unsere Unternehmensseiten-Follower wuchsen in zwei Monaten um 40%. Jetzt generiere ich neue Teammitglieder-Banner in unter 2 Minuten pro Person.",
+        "avatar_url": "",
+        "metrics": "40% mehr Follower | 2 Min. pro Banner"
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "Ist der KI LinkedIn-Banner-Generator kostenlos?",
+        "answer": "Ja! Wir bieten täglich kostenlose Credits, damit Sie KI-generierte LinkedIn-Banner kostenlos erkunden und in der Vorschau ansehen können. Wenn Sie bereit sind, hochauflösende Dateien herunterzuladen und kommerzielle Nutzungsrechte freizuschalten, steigen Sie auf einen kostenpflichtigen Plan um."
+      },
+      {
+        "question": "Welche Banner-Formate kann ich herunterladen?",
+        "answer": "Alle kostenpflichtigen Pläne umfassen 8K-Auflösung in den Formaten PNG, JPG, SVG und PSD. Die SVG-Vektordatei skaliert unendlich ohne Qualitätsverlust — ideal für Druck und Präsentationen. PNG ist perfekt für pixelgenaue LinkedIn-Uploads, PSD für die Ebenenbearbeitung."
+      },
+      {
+        "question": "Wie viele Banner kann ich pro Monat generieren?",
+        "answer": "Der Starter-Plan umfasst 2.000 Banner-Generierungen pro Monat, Basic bietet 3.500 und Pro ermöglicht 11.000 monatliche Generierungen. Alle Pläne beinhalten vollen Funktionszugriff — selbst Starter-Nutzer erhalten 8K-Export, Smart Mockup und alle Bearbeitungswerkzeuge."
+      },
+      {
+        "question": "Habe ich die kommerziellen Rechte an meinem Banner?",
+        "answer": "Ja! Alle kostenpflichtigen Pläne beinhalten vollständige kommerzielle Nutzungsrechte. Sie besitzen Ihr Banner und können es für jeden Geschäftszweck nutzen — persönliches Profil, Unternehmensseite, Kundenarbeit, Beratungsleistungen."
+      },
+      {
+        "question": "Kann ich mein Banner nach dem Download bearbeiten?",
+        "answer": "Absolut! Mit Text Edit können Sie Slogans und Berufsbezeichnungen per Klick-und-Tipp ändern, mit Touch Edit visuelle Elemente verfeinern und dann in jedem Format erneut exportieren. Wurden Sie befördert? Ändern Sie einfach den Titel."
+      },
+      {
+        "question": "Welche sind die korrekten LinkedIn-Banner-Dimensionen und Dateianforderungen?",
+        "answer": "LinkedIn empfiehlt 1584 × 396 Pixel (4:1-Seitenverhältnis), maximal 8MB Dateigröße, JPG- oder PNG-Format. Lovart generiert Banner standardmäßig in genau diesen Dimensionen und unterstützt Export bis zu 8K-Auflösung (6336x1584)."
+      },
+      {
+        "question": "Wie lange dauert die Banner-Generierung?",
+        "answer": "Die KI-Banner-Generierung dauert nur wenige Sekunden. Sie erhalten mehrere Design-Varianten innerhalb von 10–15 Sekunden nach Eingabe Ihrer Beschreibung. Der gesamte Prozess von der Idee bis zum finalen Export dauert oft unter 10 Minuten."
+      },
+      {
+        "question": "Welche Arten von LinkedIn-Bannern kann ich erstellen?",
+        "answer": "Lovarts KI LinkedIn-Banner-Generator bewältigt jeden professionellen Banner-Anwendungsfall. Personal-Brand-Banner, Unternehmensseiten-Banner, Karriere-Meilenstein-Banner, Thought-Leadership-Banner, Team-Vereinheitlichungs-Banner, Event- und Konferenz-Banner sowie Recruiting-Banner."
+      },
+      {
+        "question": "Bieten Sie eine Rückerstattung an, wenn ich nicht zufrieden bin?",
+        "answer": "Wir bieten eine Zufriedenheitsgarantie. Wenn Sie mit Ihren generierten Bannern nicht zufrieden sind, kontaktieren Sie unser Support-Team innerhalb von 7 Tagen nach dem Kauf für eine vollständige Rückerstattung."
+      }
+    ]
+  }
+],
+  "section_ru": [
+  {
+    "type": "centeredInputSection",
+    "title": "AI Генератор LinkedIn Баннеров",
+    "description": "Создавайте профессиональные LinkedIn баннеры, привлекающие внимание рекрутеров, за секунды с помощью AI-генератора. Будь вы продакт-менеджер в тех-сфере, креативный директор, бизнес-консультант или HR-руководитель — создавайте баннеры, отражающие вашу отрасль, должность и карьерные цели. С профессиональной эстетикой, чёткой читаемой типографикой в формате баннера и цветовой композицией, усиливающей ваш бренд. Используйте Smart Mockup для предпросмотра в реальном профиле и начните с бесплатных ежедневных кредитов.",
+    "input_placeholder": "Опишите желаемый LinkedIn баннер — укажите профессию, отрасль, сообщение личного бренда, текстовые наложения или слоган, а также предпочитаемый визуальный стиль",
+    "system_prompt": "Вы — старший креативный директор и специалист по личному брендингу в Lovart с глубокой экспертизой в оптимизации LinkedIn-профилей, профессиональной визуальной идентичности и психологии рекрутеров. Используйте MCoT (Mind Chain of Thought) для анализа описания пользователя: 1) Профессия, отрасль и целевая аудитория (рекрутеры, клиенты, коллеги, подписчики), 2) Архетип личного бренда и нарратив (авторитетность, доступность, инновационность, надёжность), 3) Оптимальная текстовая иерархия и расположение, читаемые в широком формате LinkedIn 1584x396 на десктопе и мобильных устройствах, 4) Цветовая стратегия, изображения и композиция, усиливающие консистентность бренда при сохранении профессиональной эстетики, соответствующей отрасли. Организуйте агентный дизайн-пайплайн: выберите оптимальный макет из ChatCanvas, создайте визуалы профессионального уровня с Nano Banana Pro, примените чёткую типографику в безопасной зоне фото профиля, обеспечьте соответствие требованиям LinkedIn (1584x396, до 8 МБ). Запрос пользователя: $input$",
+    "button_text": "Создать баннер",
+    "tip": "Совет: укажите должность, отрасль, ключевые навыки или ценностное предложение, а также предпочитаете ли вы минималистичный корпоративный стиль, смелый креативный или дружелюбный персональный стиль",
+    "suggestion": [
+      {
+        "value": "Создайте персональный LinkedIn баннер для старшего продакт-менеджера в IT — чистый минималистичный дизайн с мягкими синими и белыми тонами, ваше имя и слоган «Product Leader | SaaS & AI» современным шрифтом без засечек, тонкие геометрические абстрактные формы на фоне, намекающие на инновации и структуру, профессиональный и одновременно располагающий стиль",
+        "label": "Персональный бренд-баннер"
+      },
+      {
+        "value": "Создайте баннер для страницы компании финтех-стартапа — смелый уверенный дизайн с вашими брендовыми цветами (глубокий navy и яркий бирюзовый), логотип по центру, слоган «Строим будущее платежей» чёткой типографикой, абстрактные финтех-изображения, передающие скорость и безопасность, чистая корпоративная эстетика для доверия и инноваций",
+        "label": "Баннер страницы компании"
+      },
+      {
+        "value": "Создайте LinkedIn баннер в честь карьерного достижения — повышения до VP of Engineering — тёплый профессиональный стиль с акцентами navy и золота, текст «VP of Engineering | 10 лет создания команд, которые достигают результатов», графические элементы восходящей траектории, символизирующие рост и лидерство, уверенный и благодарный тон",
+        "label": "Баннер карьерного достижения"
+      },
+      {
+        "value": "Создайте LinkedIn баннер для лидера мнений — keynote-спикера и автора книг — изысканная редакционная эстетика с тёмно-угольным фоном, обложка книги или фото со сцены со вкусом интегрированы, слоган «Keynote Speaker | Автор | AI и будущее работы», элегантный шрифт с засечками, эффекты сценического освещения для авторитетности и интеллектуальной убедительности",
+        "label": "Баннер лидера мнений"
+      }
+    ]
+  },
+  {
+    "type": "threeColumnSection",
+    "title": "Как создать LinkedIn баннер за 3 шага",
+    "columns": [
+      {
+        "title": "Опишите свой профессиональный бренд",
+        "description": "Расскажите AI-агенту о своей роли, отрасли, целевой аудитории и сообщении, которое должен передавать баннер. Движок MCoT анализирует вашу профессию, изучает успешные LinkedIn-профили в вашей отрасли и разрабатывает полную визуальную стратегию, соответствующую вашим карьерным целям. ChatCanvas запоминает вашу визуальную идентичность, обеспечивая согласованный брендинг всех баннеров и визуальных активов в вашем LinkedIn-присутствии.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+      },
+      {
+        "title": "AI генерирует концепции баннеров",
+        "description": "Наблюдайте, как Lovart за секунды превращает ваш профессиональный бриф в готовые LinkedIn баннеры. Полноценные композиции, разработанные специально для широкого формата LinkedIn 1584x396 — чёткий текст, остающийся читаемым в пропорциях баннера, изображения, обходящие безопасную зону фото профиля, и цветовые схемы, задающие правильный профессиональный тон. Используйте Smart Mockup для предпросмотра баннера на симулированной странице LinkedIn с вашим фото профиля, заголовком и лентой активности. Сравнивайте A/B варианты с разными макетами.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+      },
+      {
+        "title": "Доработайте и экспортируйте",
+        "description": "Доведите каждую деталь до совершенства с эксклюзивными инструментами редактирования Lovart. Touch Edit позволяет корректировать элементы изображения, менять фон и уточнять визуальную композицию одним кликом. Text Edit обновляет слоганы, меняет должности и ключевые слова, полностью сохраняя стиль шрифта, кернинг, цвет и эффекты. Предпросмотр в десктопной и мобильной версиях LinkedIn. Экспорт в разрешении до 8K в форматах PNG, JPG, SVG, PSD — идеальное соответствие спецификациям LinkedIn и многоразовые профессиональные исходные файлы.",
+        "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+      }
+    ]
+  },
+  {
+    "type": "featureGridSection",
+    "title": "Мощные функции дизайна профессиональных LinkedIn баннеров",
+    "features": [
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "title": "Движок профессиональной эстетики",
+        "description": "Каждый LinkedIn баннер от Lovart калиброван под профессиональную убедительность. Движок MCoT анализирует визуальные стандарты вашей отрасли — корпоративный минимализм для финансов и консалтинга, тёплая аутентичность для коучинга и HR, смелые инновации для тех-сектора и стартапов — и применяет точную эстетику, сигнализирующую о компетентности рекрутерам."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+        "title": "Система консистентности личного бренда",
+        "description": "Создайте узнаваемый профессиональный бренд во всех точках контакта LinkedIn. Память ChatCanvas и Nano Banana Pro обеспечивают идеальную согласованность вашей визуальной идентичности на всех баннерах профиля, хедерах страницы компании и обложках статей."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+        "title": "Оптимизированный рендеринг текста для баннеров",
+        "description": "Формат LinkedIn 1584x396 — широкий и невысокий, и текст, хорошо выглядящий в квадратном дизайне, становится нечитаемым. Движок Text Edit от Lovart создан специально для размеров баннеров, рендеря четчайшую типографику, читаемую на 4K-мониторах и мобильных экранах."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+        "title": "Smart Mockup — предпросмотр профиля LinkedIn",
+        "description": "Больше не гадайте, как баннер будет выглядеть в реальном профиле. Движок Smart Mockup от Lovart рендерит ваш баннер на полностью симулированной странице профиля LinkedIn с вашим фото, заголовком и лентой активности. Предпросмотр для десктопа и мобильных устройств."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+        "title": "Экспорт в 8K и мультиформатность",
+        "description": "Экспортируйте LinkedIn баннер в разрешении до 8K в форматах PNG, JPG, SVG и слоёном PSD. PNG для попиксельно точной загрузки в LinkedIn, JPG с оптимизированным размером до 8 МБ, SVG для бесконечного масштабирования, PSD с сохранением слоёв. Интеллектуальное сжатие сохраняет мелкие детали."
+      },
+      {
+        "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "title": "Контроль брендовых цветов и типографики",
+        "description": "Ваш профессиональный бренд заслуживает точного визуального контроля, а не догадок AI. Задайте точные HEX-коды бренда и выберите из тщательно подобранной библиотеки шрифтов. ChatCanvas запоминает настройки бренда между сессиями, чтобы каждый новый баннер стартовал от вашей устоявшейся визуальной идентичности."
+      }
+    ]
+  },
+  {
+    "type": "testimonialSection",
+    "title": "Профессионалы по всему миру доверяют Lovart",
+    "testimonials": [
+      {
+        "name": "Алексей Иванов",
+        "role": "Маркетолог · Активный соискатель",
+        "content": "Я искал работу два месяца, и несмотря на солидный опыт, не получал отклика. Карьерный коуч сказал, что мой LinkedIn-баннер — просто стандартный синий градиент — портит первое впечатление. С помощью Lovart я создал персональный бренд-баннер с моей должностью «B2B Marketing Strategist», ключевыми навыками в виде аккуратных бейджей и чистым профессиональным стилем. Разница была мгновенной — с 3-4 просмотров профиля в неделю до 25+, и рекрутеры стали конкретно упоминать мой профиль в своих сообщениях. Через три недели у меня были собеседования в трёх крупных компаниях.",
+        "avatar_url": "",
+        "metrics": "×5 просмотров профиля | Оффер за 3 недели"
+      },
+      {
+        "name": "Екатерина Петрова",
+        "role": "Независимый UX-дизайн консультант",
+        "content": "Как фрилансер, мой LinkedIn-профиль — это моя витрина. Годами я использовала стандартный баннер с городским пейзажем, который ничего не говорил о моей работе, и теряла проекты в пользу агентств с polished брендингом. Lovart полностью преобразил моё фриланс-присутствие. Я создала персональный бренд-баннер с названием консалтинга и «UX Strategy & Product Design». За первый месяц поток входящих запросов удвоился. Lovart дал моему соло-консалтингу визуальную убедительность агентства из 50 человек.",
+        "avatar_url": "",
+        "metrics": "×2 входящих запросов | Ребрендинг за <1 час"
+      },
+      {
+        "name": "Дмитрий Соколов",
+        "role": "Руководитель по подбору персонала, B2B SaaS",
+        "content": "Я отвечаю за LinkedIn-присутствие и HR-бренд компании, и поддержание визуальной согласованности профилей 12 сотрудников и страницы компании было постоянной головной болью. Lovart решил это за один день. С помощью Brand Color & Typography Control я задал точные HEX-коды и шрифт бренда и сгенерировал единый набор баннеров. Подписчики страницы компании выросли на 40% за два месяца. Теперь я генерирую баннеры новым сотрудникам менее чем за 2 минуты с помощью памяти ChatCanvas.",
+        "avatar_url": "",
+        "metrics": "+40% подписчиков | 2 мин. на баннер"
+      }
+    ]
+  },
+  {
+    "type": "faqSection",
+    "faq": [
+      {
+        "question": "AI-генератор LinkedIn баннеров бесплатный?",
+        "answer": "Да! Мы предоставляем ежедневные бесплатные кредиты для создания и предпросмотра AI-баннеров без затрат. Когда вам понадобятся файлы в высоком разрешении и коммерческие права, перейдите на платный тариф. Бесплатная версия отлично подходит для экспериментов с концепциями баннеров."
+      },
+      {
+        "question": "В каких форматах можно скачать баннер?",
+        "answer": "Все платные тарифы включают экспорт в разрешении 8K в форматах PNG, JPG, SVG и PSD. SVG-векторный файл бесконечно масштабируется без потери качества — идеален для печати и презентаций. PNG для попиксельно точной загрузки в LinkedIn, PSD для послойного редактирования."
+      },
+      {
+        "question": "Сколько баннеров можно создать в месяц?",
+        "answer": "Тариф Starter включает 2 000 генераций баннеров в месяц, Basic — 3 500, Pro — 11 000 ежемесячных генераций. Все тарифы включают полный доступ к функциям — даже пользователи Starter получают экспорт в 8K, Smart Mockup и все инструменты редактирования."
+      },
+      {
+        "question": "Есть ли у меня коммерческие права на баннер?",
+        "answer": "Да! Все платные тарифы включают полные права коммерческого использования. Вы владеете своим баннером и можете использовать его для любых бизнес-целей."
+      },
+      {
+        "question": "Можно ли редактировать баннер после скачивания?",
+        "answer": "Разумеется! Text Edit позволяет менять слоганы и должности кликом и вводом текста, Touch Edit — дорабатывать визуальные элементы, после чего вы можете снова экспортировать в любом формате. Получили повышение? Просто измените должность."
+      },
+      {
+        "question": "Какие правильные размеры и требования к файлам LinkedIn баннеров?",
+        "answer": "LinkedIn рекомендует 1584 × 396 пикселей (соотношение 4:1), максимальный размер файла 8 МБ, формат JPG или PNG. Lovart по умолчанию генерирует баннеры точно этих размеров и поддерживает экспорт до 8K (6336x1584)."
+      },
+      {
+        "question": "Сколько времени занимает генерация баннера?",
+        "answer": "AI-генерация баннера занимает всего несколько секунд. Вы получите несколько вариантов дизайна в течение 10–15 секунд после ввода описания. Весь процесс от идеи до финального экспорта обычно занимает менее 10 минут."
+      },
+      {
+        "question": "Какие типы LinkedIn баннеров можно создавать?",
+        "answer": "AI-генератор LinkedIn баннеров Lovart справляется с любыми профессиональными задачами. Персональные бренд-баннеры, баннеры страниц компаний, баннеры карьерных достижений, баннеры для лидеров мнений, унифицированные командные баннеры, баннеры для мероприятий и рекрутинга."
+      },
+      {
+        "question": "Есть ли возврат средств, если я недоволен?",
+        "answer": "Мы предоставляем гарантию удовлетворения. Если вы недовольны сгенерированными баннерами, свяжитесь с нашей службой поддержки в течение 7 дней после покупки для полного возврата."
+      }
+    ]
+  }
+]

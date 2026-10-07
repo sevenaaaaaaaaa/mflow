@@ -1,0 +1,390 @@
+{
+  "_id": "ai-video-generator-workflow-de",
+  "reflowSourceId": "ai-video-generator-workflow-de",
+  "slug": "ai-video-generator-workflow",
+  "language": "de",
+  "category": "feature",
+  "title": "KI-Video-Generator: Erstelle Kinofilme mit Sora 2, Veo 3 & Kling | Lovart",
+  "description": "Create stunning AI videos with Lovart's multi-model generator featuring Sora 2, Gemini Veo 3, and Kling. Control motion with start/end frames and upscale to 4K instantly.",
+  "seo": {
+    "description": "Erstelle beeindruckende KI-Videos mit Lovarts Multi-Modell-Generator: Sora 2, Gemini Veo 3 & Kling. Steuere Bewegungen per Start-/Endbild & skaliere sofort auf 4K.",
+    "keywords": [
+      "KI-Videogenerator",
+      "Text-zu-Video-KI",
+      "Bild-zu-Video-KI",
+      "Sora 2",
+      "Gemini Veo 3",
+      "Kling KI",
+      "Kinovideo-Ersteller",
+      "KI-Bewegungssteuerung",
+      "4K-Video-Upscaler",
+      "KI-Filmgenerator"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Multi-Model Access",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"KI-Video-Generator: Erstelle Kinofilme mit Sora 2, Veo 3 & Kling | Lovart\", \"description\": \"Create stunning AI videos with Lovart's multi-model generator featuring Sora 2, Gemini Veo 3, and Kling. Control motion with start/end frames and upscale to 4K instantly.\", \"url\": \"https://www.lovart.ai/features/ai-video-generator-workflow\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Welche Videomodelle sind in Lovart verfügbar?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart integriert die besten Modelle der Branche, darunter Sora 2, Sora 2 Pro, Google Gemini Veo 3 (und 3.1), Kling 2.6, Kling O1, Hailuo 2.3, Wan 2.6 und mehr. Wir aktualisieren ständig, um die neuesten State-of-the-Art-Modelle hinzuzufügen.\"}}, {\"@type\": \"Question\", \"name\": \"Kann ich die Kamerabewegung im Video steuern?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Ja! Lovart bietet erweiterte 'Motion Control'-Einstellungen. Sie können Kamerabewegungen wie Schwenken, Neigen, Rollen und Zoomen festlegen, um genau die filmische Aufnahme zu erhalten, die Sie sich vorstellen.\"}}, {\"@type\": \"Question\", \"name\": \"Wie lang können die generierten Videos sein?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Die Standardgenerierungsdauer beträgt in der Regel 5 Sekunden, was für hochwertige KI-Videomodelle Standard ist. Sie können Clips jedoch verlängern oder die Multi-Frame-Funktion verwenden, um Sequenzen für längere Erzählungen aneinanderzureihen.\"}}, {\"@type\": \"Question\", \"name\": \"Ist die Videoqualität für den professionellen Einsatz geeignet?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Absolut. Lovart unterstützt die Generierung im 'Pro'-Modus und verfügt über eine integrierte 'Upscale'-Funktion, die die Videoauflösung auf bis zu 4K erhöhen kann, wodurch sie für YouTube, Social-Media-Werbung und Broadcast geeignet ist.\"}}, {\"@type\": \"Question\", \"name\": \"Kann ich meine eigenen Bilder animieren?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Ja, mit der Funktion 'Image-to-Video'. Laden Sie einfach Ihr Bild (oder wählen Sie eines aus, das auf der Leinwand generiert wurde) als 'Startbild' hoch, und Lovart animiert es basierend auf Ihrem Text-Prompt oder Ihren Bewegungseinstellungen.\"}}]}}"
+    },
+    "title": "KI-Video-Generator: Erstelle Kinofilme mit Sora 2, Veo 3 & Kling | Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"KI-Video-Generator: Erstelle Kinofilme mit Sora 2, Veo 3 & Kling | Lovart\",\"description\":\"Create stunning AI videos with Lovart's multi-model generator featuring Sora 2, Gemini Veo 3, and Kling. Control motion with start/end frames and upscale to 4K instantly.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Multi-Model Access\"}},{\"type\":\"bento-6\",\"title\":\"The Ultimate AI Video Production Suite\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Zugriff auf mehrere Modelle\",\"description\":\"Warum sich mit einem zufrieden geben? Greifen Sie direkt in Lovart auf Sora 2, Sora 2 Pro, Veo 3.1, Kling 2.6, Hailuo 2.3 und Wan 2.6 zu, ohne separate Abonnements.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Zugriff auf mehrere Modelle\"}},{\"title\":\"Start- & End-Keyframes\",\"description\":\"Erzielen Sie konsistentes Storytelling. Laden Sie zwei Bilder hoch, und die KI generiert die nahtlose Transformation dazwischen – perfekt für Übergänge und Charakterschauspiel.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Start- & End-Keyframes\"}},{\"title\":\"Image-to-Video\",\"description\":\"Erwecken Sie Ihre statischen Designs zum Leben. Verwandeln Sie ein Produktfoto in ein rotierendes Showcase oder ein Landschaftsgemälde sofort in eine fließende Animation.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Image-to-Video\"}},{\"title\":\"Filmische Kamerasteuerung\",\"description\":\"Führen Sie Regie. Definieren Sie Kamerabewegungen wie Schwenken nach links, Neigen nach oben oder Heranzoomen, um dynamisches, professionell aussehendes Filmmaterial zu erstellen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Filmische Kamerasteuerung\"}},{\"title\":\"4K Upscaling\",\"description\":\"Liefern Sie gestochen scharfe Bilder. Erhöhen Sie die Videoauflösung von Standard-HD auf 4K, während Texturen erhalten bleiben und Artefakte reduziert werden.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"4K Upscaling\"}},{\"title\":\"Nahtlose Loop-Generierung\",\"description\":\"Erstellen Sie perfekte Hintergrund-Assets. Generieren Sie Videos, die nahtlos loopen, ideal für Website-Header, Social-Media-Hintergründe und VJ-Visuals.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Nahtlose Loop-Generierung\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Alle Funktionen in einem Agenten\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Zugriff auf mehrere Modelle\",\"icon\":\"chat\",\"content\":{\"title\":\"Zugriff auf mehrere Modelle\",\"description\":\"Warum sich mit einem zufrieden geben? Greifen Sie direkt in Lovart auf Sora 2, Sora 2 Pro, Veo 3.1, Kling 2.6, Hailuo 2.3 und Wan 2.6 zu, ohne separate Abonnements.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Zugriff auf mehrere Modelle\"}}},{\"label\":\"Start- & End-Keyframes\",\"icon\":\"image\",\"content\":{\"title\":\"Start- & End-Keyframes\",\"description\":\"Erzielen Sie konsistentes Storytelling. Laden Sie zwei Bilder hoch, und die KI generiert die nahtlose Transformation dazwischen – perfekt für Übergänge und Charakterschauspiel.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Start- & End-Keyframes\"}}},{\"label\":\"Image-to-Video\",\"icon\":\"flask\",\"content\":{\"title\":\"Image-to-Video\",\"description\":\"Erwecken Sie Ihre statischen Designs zum Leben. Verwandeln Sie ein Produktfoto in ein rotierendes Showcase oder ein Landschaftsgemälde sofort in eine fließende Animation.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Image-to-Video\"}}},{\"label\":\"Filmische Kamerasteuerung\",\"icon\":\"brand\",\"content\":{\"title\":\"Filmische Kamerasteuerung\",\"description\":\"Führen Sie Regie. Definieren Sie Kamerabewegungen wie Schwenken nach links, Neigen nach oben oder Heranzoomen, um dynamisches, professionell aussehendes Filmmaterial zu erstellen.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Filmische Kamerasteuerung\"}}}]},{\"type\":\"bento-2\",\"title\":\"Zwei Dinge, die besonders gut gelingen\",\"columns\":2,\"features\":[{\"title\":\"4K Upscaling\",\"description\":\"Liefern Sie gestochen scharfe Bilder. Erhöhen Sie die Videoauflösung von Standard-HD auf 4K, während Texturen erhalten bleiben und Artefakte reduziert werden.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"4K Upscaling\"}},{\"title\":\"Nahtlose Loop-Generierung\",\"description\":\"Erstellen Sie perfekte Hintergrund-Assets. Generieren Sie Videos, die nahtlos loopen, ideal für Website-Header, Social-Media-Hintergründe und VJ-Visuals.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Nahtlose Loop-Generierung\"}}]},{\"type\":\"feature-detail\",\"title\":\"So funktioniert es im Detail\",\"items\":[{\"title\":\"Starte dein AI Video Generator: Create Cinematic Videos with Sora 2, Veo 3 & Kling-Projekt\",\"description\":\"Beschreibe das gewünschte Ergebnis und füge Referenzen hinzu.\"},{\"title\":\"Mit dem Agenten iterieren\",\"description\":\"Details anpassen und Varianten auf derselben Canvas erkunden.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Führen Sie Regie bei Ihrem Traumfilm. Erstellen Sie filmreife KI-Videos mit Sora 2 & Veo 3.\",\"description\":\"Hören Sie auf, zwischen Abonnements zu wechseln. Lovart gibt Ihnen Zugriff auf die leistungsstärksten Videomodelle der Welt – Sora 2, Gemini Veo 3, Kling 2.6 und Hailuo – alles in einem Arbeitsbereich. Von Text-zu-Video bis hin zu präziser Bildanimation mit Start-/Endbildsteuerung: Verwandeln Sie Ihre Vision in 4K-Realität.\",\"input_placeholder\":\"Z. B. 'Filmische Drohnenaufnahme einer Cyberpunk-Stadt bei Nacht, Neonlichter spiegeln sich im Regen, hyperrealistisch, 4k'\",\"prompts\":[{\"label\":\"Fantasiewelt\",\"prompt\":\"Drone shot flying through a bioluminescent forest, glowing plants, mysterious atmosphere, 4k\"},{\"label\":\"Werbespot\",\"prompt\":\"Close-up of a chef cooking a steak, sizzling sound, steam rising, professional food commercial style\"},{\"label\":\"Sci-Fi-Trailer\",\"prompt\":\"Cyberpunk character walking in rain, neon reflections, slow motion, movie trailer vibe\"},{\"label\":\"3D-Animation\",\"prompt\":\"Cute fluffy cat playing with a yarn ball, bright lighting, Pixar style animation\"}],\"tip\":\"Tipp: Verwenden Sie 'Frames', um ein Start- und Endbild hochzuladen. Lovart generiert den Übergang und gibt Ihnen die perfekte Kontrolle über den erzählerischen Fluss.\",\"cta\":{\"text\":\"KI-Video generieren\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Hollywood-reifer Workflow in 3 Schritten\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"Wählen Sie Top-Modelle\",\"description\":\"Wählen Sie die perfekte Engine für Ihre Aufnahme. Nutzen Sie Sora 2 für Realismus, Gemini Veo 3 für Kohärenz oder Kling 2.6 für komplexe Bewegungen. Wechseln Sie Modelle sofort, um den besten Look zu finden.\"},{\"step\":2,\"title\":\"Steuern Sie die Bewegung\",\"description\":\"Überlassen Sie nichts dem Zufall. Laden Sie ein 'Startbild' und 'Endbild' hoch, um genau zu definieren, wie Ihre Szene beginnt und endet. Passen Sie Kameraschwenks, Zooms und Neigungen präzise an.\"},{\"step\":3,\"title\":\"Auf 4K hochskalieren\",\"description\":\"Exportieren Sie in Broadcast-Qualität. Nutzen Sie den integrierten Upscaler von Lovart, um Ihre KI-Videoauflösung auf 4K zu erhöhen und Details für große Bildschirme und professionelle Bearbeitungen zu schärfen.\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Video Generator: Create Cinematic Videos with Sora 2, Veo 3 & Kling: Lovart im Vergleich zu üblichen Workflows\",\"headers\":[\"Anforderung\",\"Generisches Tool\",\"Manueller Workflow\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Starte dein AI Video Generator: Create Cinematic Videos with Sora 2, Veo 3 & Kling-Projekt\",\"values\":[\"Ein Prompt\",\"Manuelles Briefing\",\"Briefing-gesteuertes Reasoning\"]},{\"feature\":\"Zeit bis zum ersten Ergebnis\",\"values\":[\"Minuten\",\"Tage\",\"Minuten\"]},{\"feature\":\"Bearbeitung nach der Generierung\",\"values\":[\"Begrenzt\",\"Korrekturschleifen\",\"Touch / Text / Elemente\"]},{\"feature\":\"Markenkonform bleiben\",\"values\":[\"Manuell\",\"Manuell\",\"Brand-Kit-fähig\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Wofür sich AI Video Generator: Create Cinematic Videos with Sora 2, Veo 3 & Kling eignet\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Schneller starten\",\"description\":\"Vom Briefing zu AI Video Generator: Create Cinematic Videos with Sora 2, Veo 3 & Kling-Assets in einer einzigen Session.\"},{\"icon\":\"brand\",\"title\":\"Konsistent bleiben\",\"description\":\"Das Brand Kit hält jedes Asset einheitlich.\"},{\"icon\":\"refresh\",\"title\":\"Schnell iterieren\",\"description\":\"Details bearbeiten, ohne das Projekt neu zu starten.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"Früher habe ich Tausende für Stock-Footage ausgegeben. Jetzt nutze ich Lovart mit Sora 2, um genau das B-Roll-Material zu generieren, das ich für meine Dokumentationen brauche. Das 4K-Upscaling ist ein Lebensretter.\",\"author\":\"Alex D.\",\"role\":\"Indie-Filmemacher\"},{\"quote\":\"Die 'Start- und Endbild'-Funktion ist Magie. Ich kann ein Produkt sanft in seine Verpackung verwandeln lassen. Das hat den Produktionswert unserer TikToks immens gesteigert.\",\"author\":\"Sarah K.\",\"role\":\"Social Media Managerin\"},{\"quote\":\"Veo 3 und Kling in einer App zu haben, ändert alles. Ich kann verschiedene Bewegungsstile in Minuten testen, ohne die Plattform zu wechseln. Es ist der effizienteste Workflow, den ich gefunden habe.\",\"author\":\"Davide R.\",\"role\":\"Motion Designer\"}],\"title\":\"Creator machen Filme mit Lovart\"},{\"type\":\"pricing-block\",\"title\":\"Wähle den passenden Plan für dein Team\",\"description\":\"Kostenlos starten. Upgraden, sobald die Arbeit zum Kunden geht.\"},{\"type\":\"faq\",\"title\":\"Häufig gestellte Fragen\",\"items\":[{\"question\":\"Welche Videomodelle sind in Lovart verfügbar?\",\"answer\":\"Lovart integriert die besten Modelle der Branche, darunter Sora 2, Sora 2 Pro, Google Gemini Veo 3 (und 3.1), Kling 2.6, Kling O1, Hailuo 2.3, Wan 2.6 und mehr. Wir aktualisieren ständig, um die neuesten State-of-the-Art-Modelle hinzuzufügen.\"},{\"question\":\"Kann ich die Kamerabewegung im Video steuern?\",\"answer\":\"Ja! Lovart bietet erweiterte 'Motion Control'-Einstellungen. Sie können Kamerabewegungen wie Schwenken, Neigen, Rollen und Zoomen festlegen, um genau die filmische Aufnahme zu erhalten, die Sie sich vorstellen.\"},{\"question\":\"Wie lang können die generierten Videos sein?\",\"answer\":\"Die Standardgenerierungsdauer beträgt in der Regel 5 Sekunden, was für hochwertige KI-Videomodelle Standard ist. Sie können Clips jedoch verlängern oder die Multi-Frame-Funktion verwenden, um Sequenzen für längere Erzählungen aneinanderzureihen.\"},{\"question\":\"Ist die Videoqualität für den professionellen Einsatz geeignet?\",\"answer\":\"Absolut. Lovart unterstützt die Generierung im 'Pro'-Modus und verfügt über eine integrierte 'Upscale'-Funktion, die die Videoauflösung auf bis zu 4K erhöhen kann, wodurch sie für YouTube, Social-Media-Werbung und Broadcast geeignet ist.\"},{\"question\":\"Kann ich meine eigenen Bilder animieren?\",\"answer\":\"Ja, mit der Funktion 'Image-to-Video'. Laden Sie einfach Ihr Bild (oder wählen Sie eines aus, das auf der Leinwand generiert wurde) als 'Startbild' hoch, und Lovart animiert es basierend auf Ihrem Text-Prompt oder Ihren Bewegungseinstellungen.\"}]},{\"type\":\"cta-default\",\"title\":\"Starte deine Designs mit Lovart\",\"description\":\"Verwandle dein Briefing in wenigen Minuten in markengerechte Visuals.\",\"buttons\":[{\"text\":\"Kostenlos starten\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "KI-Video-Generator: Erstelle Kinofilme mit Sora 2, Veo 3 & Kling | Lovart",
+      "description": "Create stunning AI videos with Lovart's multi-model generator featuring Sora 2, Gemini Veo 3, and Kling. Control motion with start/end frames and upscale to 4K instantly.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Multi-Model Access"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "The Ultimate AI Video Production Suite",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Zugriff auf mehrere Modelle",
+          "description": "Warum sich mit einem zufrieden geben? Greifen Sie direkt in Lovart auf Sora 2, Sora 2 Pro, Veo 3.1, Kling 2.6, Hailuo 2.3 und Wan 2.6 zu, ohne separate Abonnements.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Zugriff auf mehrere Modelle"
+          }
+        },
+        {
+          "title": "Start- & End-Keyframes",
+          "description": "Erzielen Sie konsistentes Storytelling. Laden Sie zwei Bilder hoch, und die KI generiert die nahtlose Transformation dazwischen – perfekt für Übergänge und Charakterschauspiel.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Start- & End-Keyframes"
+          }
+        },
+        {
+          "title": "Image-to-Video",
+          "description": "Erwecken Sie Ihre statischen Designs zum Leben. Verwandeln Sie ein Produktfoto in ein rotierendes Showcase oder ein Landschaftsgemälde sofort in eine fließende Animation.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Image-to-Video"
+          }
+        },
+        {
+          "title": "Filmische Kamerasteuerung",
+          "description": "Führen Sie Regie. Definieren Sie Kamerabewegungen wie Schwenken nach links, Neigen nach oben oder Heranzoomen, um dynamisches, professionell aussehendes Filmmaterial zu erstellen.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Filmische Kamerasteuerung"
+          }
+        },
+        {
+          "title": "4K Upscaling",
+          "description": "Liefern Sie gestochen scharfe Bilder. Erhöhen Sie die Videoauflösung von Standard-HD auf 4K, während Texturen erhalten bleiben und Artefakte reduziert werden.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "4K Upscaling"
+          }
+        },
+        {
+          "title": "Nahtlose Loop-Generierung",
+          "description": "Erstellen Sie perfekte Hintergrund-Assets. Generieren Sie Videos, die nahtlos loopen, ideal für Website-Header, Social-Media-Hintergründe und VJ-Visuals.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Nahtlose Loop-Generierung"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Alle Funktionen in einem Agenten",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Zugriff auf mehrere Modelle",
+          "icon": "chat",
+          "content": {
+            "title": "Zugriff auf mehrere Modelle",
+            "description": "Warum sich mit einem zufrieden geben? Greifen Sie direkt in Lovart auf Sora 2, Sora 2 Pro, Veo 3.1, Kling 2.6, Hailuo 2.3 und Wan 2.6 zu, ohne separate Abonnements.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "Zugriff auf mehrere Modelle"
+            }
+          }
+        },
+        {
+          "label": "Start- & End-Keyframes",
+          "icon": "image",
+          "content": {
+            "title": "Start- & End-Keyframes",
+            "description": "Erzielen Sie konsistentes Storytelling. Laden Sie zwei Bilder hoch, und die KI generiert die nahtlose Transformation dazwischen – perfekt für Übergänge und Charakterschauspiel.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Start- & End-Keyframes"
+            }
+          }
+        },
+        {
+          "label": "Image-to-Video",
+          "icon": "flask",
+          "content": {
+            "title": "Image-to-Video",
+            "description": "Erwecken Sie Ihre statischen Designs zum Leben. Verwandeln Sie ein Produktfoto in ein rotierendes Showcase oder ein Landschaftsgemälde sofort in eine fließende Animation.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Image-to-Video"
+            }
+          }
+        },
+        {
+          "label": "Filmische Kamerasteuerung",
+          "icon": "brand",
+          "content": {
+            "title": "Filmische Kamerasteuerung",
+            "description": "Führen Sie Regie. Definieren Sie Kamerabewegungen wie Schwenken nach links, Neigen nach oben oder Heranzoomen, um dynamisches, professionell aussehendes Filmmaterial zu erstellen.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Filmische Kamerasteuerung"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Zwei Dinge, die besonders gut gelingen",
+      "columns": 2,
+      "features": [
+        {
+          "title": "4K Upscaling",
+          "description": "Liefern Sie gestochen scharfe Bilder. Erhöhen Sie die Videoauflösung von Standard-HD auf 4K, während Texturen erhalten bleiben und Artefakte reduziert werden.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "4K Upscaling"
+          }
+        },
+        {
+          "title": "Nahtlose Loop-Generierung",
+          "description": "Erstellen Sie perfekte Hintergrund-Assets. Generieren Sie Videos, die nahtlos loopen, ideal für Website-Header, Social-Media-Hintergründe und VJ-Visuals.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Nahtlose Loop-Generierung"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "So funktioniert es im Detail",
+      "items": [
+        {
+          "title": "Starte dein AI Video Generator: Create Cinematic Videos with Sora 2, Veo 3 & Kling-Projekt",
+          "description": "Beschreibe das gewünschte Ergebnis und füge Referenzen hinzu."
+        },
+        {
+          "title": "Mit dem Agenten iterieren",
+          "description": "Details anpassen und Varianten auf derselben Canvas erkunden.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Führen Sie Regie bei Ihrem Traumfilm. Erstellen Sie filmreife KI-Videos mit Sora 2 & Veo 3.",
+      "description": "Hören Sie auf, zwischen Abonnements zu wechseln. Lovart gibt Ihnen Zugriff auf die leistungsstärksten Videomodelle der Welt – Sora 2, Gemini Veo 3, Kling 2.6 und Hailuo – alles in einem Arbeitsbereich. Von Text-zu-Video bis hin zu präziser Bildanimation mit Start-/Endbildsteuerung: Verwandeln Sie Ihre Vision in 4K-Realität.",
+      "input_placeholder": "Z. B. 'Filmische Drohnenaufnahme einer Cyberpunk-Stadt bei Nacht, Neonlichter spiegeln sich im Regen, hyperrealistisch, 4k'",
+      "prompts": [
+        {
+          "label": "Fantasiewelt",
+          "prompt": "Drone shot flying through a bioluminescent forest, glowing plants, mysterious atmosphere, 4k"
+        },
+        {
+          "label": "Werbespot",
+          "prompt": "Close-up of a chef cooking a steak, sizzling sound, steam rising, professional food commercial style"
+        },
+        {
+          "label": "Sci-Fi-Trailer",
+          "prompt": "Cyberpunk character walking in rain, neon reflections, slow motion, movie trailer vibe"
+        },
+        {
+          "label": "3D-Animation",
+          "prompt": "Cute fluffy cat playing with a yarn ball, bright lighting, Pixar style animation"
+        }
+      ],
+      "tip": "Tipp: Verwenden Sie 'Frames', um ein Start- und Endbild hochzuladen. Lovart generiert den Übergang und gibt Ihnen die perfekte Kontrolle über den erzählerischen Fluss.",
+      "cta": {
+        "text": "KI-Video generieren"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Hollywood-reifer Workflow in 3 Schritten",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Wählen Sie Top-Modelle",
+          "description": "Wählen Sie die perfekte Engine für Ihre Aufnahme. Nutzen Sie Sora 2 für Realismus, Gemini Veo 3 für Kohärenz oder Kling 2.6 für komplexe Bewegungen. Wechseln Sie Modelle sofort, um den besten Look zu finden."
+        },
+        {
+          "step": 2,
+          "title": "Steuern Sie die Bewegung",
+          "description": "Überlassen Sie nichts dem Zufall. Laden Sie ein 'Startbild' und 'Endbild' hoch, um genau zu definieren, wie Ihre Szene beginnt und endet. Passen Sie Kameraschwenks, Zooms und Neigungen präzise an."
+        },
+        {
+          "step": 3,
+          "title": "Auf 4K hochskalieren",
+          "description": "Exportieren Sie in Broadcast-Qualität. Nutzen Sie den integrierten Upscaler von Lovart, um Ihre KI-Videoauflösung auf 4K zu erhöhen und Details für große Bildschirme und professionelle Bearbeitungen zu schärfen."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Video Generator: Create Cinematic Videos with Sora 2, Veo 3 & Kling: Lovart im Vergleich zu üblichen Workflows",
+      "headers": [
+        "Anforderung",
+        "Generisches Tool",
+        "Manueller Workflow",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Starte dein AI Video Generator: Create Cinematic Videos with Sora 2, Veo 3 & Kling-Projekt",
+          "values": [
+            "Ein Prompt",
+            "Manuelles Briefing",
+            "Briefing-gesteuertes Reasoning"
+          ]
+        },
+        {
+          "feature": "Zeit bis zum ersten Ergebnis",
+          "values": [
+            "Minuten",
+            "Tage",
+            "Minuten"
+          ]
+        },
+        {
+          "feature": "Bearbeitung nach der Generierung",
+          "values": [
+            "Begrenzt",
+            "Korrekturschleifen",
+            "Touch / Text / Elemente"
+          ]
+        },
+        {
+          "feature": "Markenkonform bleiben",
+          "values": [
+            "Manuell",
+            "Manuell",
+            "Brand-Kit-fähig"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Wofür sich AI Video Generator: Create Cinematic Videos with Sora 2, Veo 3 & Kling eignet",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Schneller starten",
+          "description": "Vom Briefing zu AI Video Generator: Create Cinematic Videos with Sora 2, Veo 3 & Kling-Assets in einer einzigen Session."
+        },
+        {
+          "icon": "brand",
+          "title": "Konsistent bleiben",
+          "description": "Das Brand Kit hält jedes Asset einheitlich."
+        },
+        {
+          "icon": "refresh",
+          "title": "Schnell iterieren",
+          "description": "Details bearbeiten, ohne das Projekt neu zu starten."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "Früher habe ich Tausende für Stock-Footage ausgegeben. Jetzt nutze ich Lovart mit Sora 2, um genau das B-Roll-Material zu generieren, das ich für meine Dokumentationen brauche. Das 4K-Upscaling ist ein Lebensretter.",
+          "author": "Alex D.",
+          "role": "Indie-Filmemacher"
+        },
+        {
+          "quote": "Die 'Start- und Endbild'-Funktion ist Magie. Ich kann ein Produkt sanft in seine Verpackung verwandeln lassen. Das hat den Produktionswert unserer TikToks immens gesteigert.",
+          "author": "Sarah K.",
+          "role": "Social Media Managerin"
+        },
+        {
+          "quote": "Veo 3 und Kling in einer App zu haben, ändert alles. Ich kann verschiedene Bewegungsstile in Minuten testen, ohne die Plattform zu wechseln. Es ist der effizienteste Workflow, den ich gefunden habe.",
+          "author": "Davide R.",
+          "role": "Motion Designer"
+        }
+      ],
+      "title": "Creator machen Filme mit Lovart"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Wähle den passenden Plan für dein Team",
+      "description": "Kostenlos starten. Upgraden, sobald die Arbeit zum Kunden geht."
+    },
+    {
+      "type": "faq",
+      "title": "Häufig gestellte Fragen",
+      "items": [
+        {
+          "question": "Welche Videomodelle sind in Lovart verfügbar?",
+          "answer": "Lovart integriert die besten Modelle der Branche, darunter Sora 2, Sora 2 Pro, Google Gemini Veo 3 (und 3.1), Kling 2.6, Kling O1, Hailuo 2.3, Wan 2.6 und mehr. Wir aktualisieren ständig, um die neuesten State-of-the-Art-Modelle hinzuzufügen."
+        },
+        {
+          "question": "Kann ich die Kamerabewegung im Video steuern?",
+          "answer": "Ja! Lovart bietet erweiterte 'Motion Control'-Einstellungen. Sie können Kamerabewegungen wie Schwenken, Neigen, Rollen und Zoomen festlegen, um genau die filmische Aufnahme zu erhalten, die Sie sich vorstellen."
+        },
+        {
+          "question": "Wie lang können die generierten Videos sein?",
+          "answer": "Die Standardgenerierungsdauer beträgt in der Regel 5 Sekunden, was für hochwertige KI-Videomodelle Standard ist. Sie können Clips jedoch verlängern oder die Multi-Frame-Funktion verwenden, um Sequenzen für längere Erzählungen aneinanderzureihen."
+        },
+        {
+          "question": "Ist die Videoqualität für den professionellen Einsatz geeignet?",
+          "answer": "Absolut. Lovart unterstützt die Generierung im 'Pro'-Modus und verfügt über eine integrierte 'Upscale'-Funktion, die die Videoauflösung auf bis zu 4K erhöhen kann, wodurch sie für YouTube, Social-Media-Werbung und Broadcast geeignet ist."
+        },
+        {
+          "question": "Kann ich meine eigenen Bilder animieren?",
+          "answer": "Ja, mit der Funktion 'Image-to-Video'. Laden Sie einfach Ihr Bild (oder wählen Sie eines aus, das auf der Leinwand generiert wurde) als 'Startbild' hoch, und Lovart animiert es basierend auf Ihrem Text-Prompt oder Ihren Bewegungseinstellungen."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Starte deine Designs mit Lovart",
+      "description": "Verwandle dein Briefing in wenigen Minuten in markengerechte Visuals.",
+      "buttons": [
+        {
+          "text": "Kostenlos starten",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

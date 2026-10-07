@@ -1,0 +1,46 @@
+{
+  "version": "2026-06-08",
+  "root": "1-Project",
+  "scope_file": "sync-scope.json",
+  "ssot_roadmap": {
+    "current_phase": "P1_full_mirror_scoped",
+    "authoring_today": "local",
+    "backup_today": "notion",
+    "target_primary": "notion",
+    "cutover_gate": "K1+S1+H1+R1+R3 全文已在 Notion + hash 对账通过"
+  },
+  "default_policy": {
+    "mode": "full_mirror",
+    "content_sync": "page_body",
+    "conflict_strategy": "local_wins_until_cutover_then_notion_wins",
+    "full_text_sync": true,
+    "apply_scope_from": "sync-scope.json",
+    "notes": "只同步 scope 内路径；开发环境/备份/过时文档默认排除。"
+  },
+  "sync_batches": [
+    {"id": "K1", "scope_ref": "knowledge_base", "priority": "P0", "status": "in_progress", "count": 50},
+    {"id": "S1", "scope_ref": "confirmed_agent_skills", "priority": "P0", "status": "in_progress", "count": 69},
+    {"id": "H1", "scope_ref": "harness_hub", "priority": "P0", "status": "in_progress", "count": 12},
+    {"id": "R1", "scope_ref": "reports", "subset": ["Trident", "Lovart ORM"], "priority": "P0", "status": "in_progress", "count": 150},
+    {"id": "R2", "scope_ref": "reports", "subset": ["Keywords Research", "Page Analytic"], "priority": "P1", "status": "in_progress", "count": 26},
+    {"id": "R3", "scope_ref": "reports", "subset": ["automation-reports", "quality-audits"], "priority": "P0", "status": "in_progress", "count": 5},
+    {"id": "A1", "scope_ref": "automation_ops", "priority": "P1", "status": "in_progress", "count": 16}
+  ],
+  "identity": {
+    "local_id_format": "lifeos:{database}:{slug_or_path_hash}",
+    "required_fields": ["local_id", "source_path", "content_hash", "last_synced_at"]
+  },
+  "content_rules": {
+    "mirror_as_notion_page_body": [".md", ".mdc"],
+    "mirror_with_code_fence": [".sh", ".json", ".yaml", ".yml"],
+    "never_sync": [".env", "credentials", "node_modules", "raw/*.json", "production-export.json"],
+    "size_limit_mb": 5
+  },
+  "frontmatter_template": {
+    "sync_status": "pending_full_mirror",
+    "content_hash": "",
+    "notion_id": "",
+    "notion_url": "",
+    "last_synced_at": ""
+  }
+}

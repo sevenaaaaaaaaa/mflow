@@ -1,0 +1,387 @@
+{
+  "_id": "features-ai-background-swap-no-masking-ja",
+  "reflowSourceId": "features-ai-background-swap-no-masking-ja",
+  "slug": "ai-background-swap-no-masking",
+  "language": "ja",
+  "category": "feature",
+  "title": "AI背景を瞬時に差し替え、マスク不要",
+  "description": "Teleport your products and portraits to any location without manual masking. Lovart's AI Design Agent automatically extracts subjects and syncs realistic lighting and shadows.",
+  "seo": {
+    "description": "手動マスキング不要で、商品やポートレートをあらゆる場所に瞬時に配置。LovartのAIデザインエージェントが被写体を自動抽出し、リアルな照明と影をシンクロさせます。",
+    "keywords": [
+      "AI背景交換",
+      "画像背景変更",
+      "マスキング不要の背景置換",
+      "AI商品撮影",
+      "要素編集",
+      "被写体テレポートAI",
+      "Lovart ChatCanvas"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Zero-Shot Semantic Masking",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"AI背景を瞬時に差し替え、マスク不要\", \"description\": \"Teleport your products and portraits to any location without manual masking. Lovart's AI Design Agent automatically extracts subjects and syncs realistic lighting and shadows.\", \"url\": \"https://www.lovart.ai/features/ai-background-swap-no-masking\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"手動でマスクを描いたり、なげなわツールを使用したりする必要がありますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"まったく必要ありません。LovartのAIデザインエージェントは、高度なセマンティック理解を使用して画像の主要な被写体を自動的に識別して分離するため、面倒な手動マスキングから解放されます。\"}}, {\"@type\": \"Question\", \"name\": \"被写体が新しい背景で「浮いている」ように見えませんか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"いいえ。基本的な背景削除ツールとは異なり、Lovartは仮想スタジオとして機能します。適切な接触影、アンビエントオクルージョン、照明の反射を自動的に計算して生成するため、被写体は新しい環境に自然に溶け込みます。\"}}, {\"@type\": \"Question\", \"name\": \"髪の毛や透明なガラスなどの難しい被写体でも機能しますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。Nano Banana Proを含む当社の最先端のモデルは、複雑なエッジの詳細を処理するように特別にトレーニングされており、髪の毛の束、毛皮、ガラス瓶の透明度をシームレスに保持します。\"}}, {\"@type\": \"Question\", \"name\": \"新しい背景の代わりに透明なPNGを取得できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"もちろんです。「背景を削除」ツールを使用して被写体を抽出し、他のデザインソフトウェアで使用するための高解像度の透明PNGとしてエクスポートすることができます。\"}}, {\"@type\": \"Question\", \"name\": \"生成された背景置き換えは商用利用しても安全ですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。Lovartの有料プランをご利用の場合、生成された合成写真に対する完全な商用利用権を保持するため、広告、ウェブサイト、クライアントプロジェクトで完全に安全に使用できます。\"}}]}}"
+    },
+    "title": "AI背景を瞬時に差し替え、マスク不要"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"AI背景を瞬時に差し替え、マスク不要\",\"description\":\"Teleport your products and portraits to any location without manual masking. Lovart's AI Design Agent automatically extracts subjects and syncs realistic lighting and shadows.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Zero-Shot Semantic Masking\"}},{\"type\":\"bento-6\",\"title\":\"Advanced Capabilities for Flawless Compositing\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"ゼロショット・セマンティックマスキング\",\"description\":\"面倒な手動選択に別れを告げましょう。当社のAIは、なびく髪、透明なガラス、毛皮で覆われたペットなどの最も複雑な被写体でさえ、ワンクリックで正確に抽出します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"ゼロショット・セマンティックマスキング\"}},{\"title\":\"完璧な影の生成\",\"description\":\"被写体が「コピー＆ペースト」されたように見えることはありません。Lovartは、新しい環境に基づいて、地面の接地影、アンビエントオクルージョン、および指向性照明を正確にレンダリングします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"完璧な影の生成\"}},{\"title\":\"反射と素材の同期\",\"description\":\"濡れたアスファルトに製品を置くと、AIは正確な水の反射を生成します。エージェントは素材の物理特性を理解し、究極のフォトリアリズムを保証します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"反射と素材の同期\"}},{\"title\":\"レイヤー分割（要素編集）\",\"description\":\"より多くの制御が必要ですか？要素編集を使用して、生成された画像を個別の移動可能なレイヤー（被写体、小道具、背景）に分割し、無限のレイアウト調整を行います。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"レイヤー分割（要素編集）\"}},{\"title\":\"高解像度4Kエクスポート\",\"description\":\"背景の置き換えによって画像が劣化することはありません。最終的な合成画像を非常に鮮明な4K解像度でエクスポートし、印刷、看板、またはハイエンドのEコマースですぐに使用できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"高解像度4Kエクスポート\"}},{\"title\":\"被写体の100%保持\",\"description\":\"背景が完全に変わっても、コアとなる被写体（ブランドロゴ、正確な寸法、元のテクスチャ）はロックされ、変更されません。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"被写体の100%保持\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"ゼロショット・セマンティックマスキング\",\"icon\":\"chat\",\"content\":{\"title\":\"ゼロショット・セマンティックマスキング\",\"description\":\"面倒な手動選択に別れを告げましょう。当社のAIは、なびく髪、透明なガラス、毛皮で覆われたペットなどの最も複雑な被写体でさえ、ワンクリックで正確に抽出します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"ゼロショット・セマンティックマスキング\"}}},{\"label\":\"完璧な影の生成\",\"icon\":\"image\",\"content\":{\"title\":\"完璧な影の生成\",\"description\":\"被写体が「コピー＆ペースト」されたように見えることはありません。Lovartは、新しい環境に基づいて、地面の接地影、アンビエントオクルージョン、および指向性照明を正確にレンダリングします。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"完璧な影の生成\"}}},{\"label\":\"反射と素材の同期\",\"icon\":\"flask\",\"content\":{\"title\":\"反射と素材の同期\",\"description\":\"濡れたアスファルトに製品を置くと、AIは正確な水の反射を生成します。エージェントは素材の物理特性を理解し、究極のフォトリアリズムを保証します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"反射と素材の同期\"}}},{\"label\":\"レイヤー分割（要素編集）\",\"icon\":\"brand\",\"content\":{\"title\":\"レイヤー分割（要素編集）\",\"description\":\"より多くの制御が必要ですか？要素編集を使用して、生成された画像を個別の移動可能なレイヤー（被写体、小道具、背景）に分割し、無限のレイアウト調整を行います。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"レイヤー分割（要素編集）\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"高解像度4Kエクスポート\",\"description\":\"背景の置き換えによって画像が劣化することはありません。最終的な合成画像を非常に鮮明な4K解像度でエクスポートし、印刷、看板、またはハイエンドのEコマースですぐに使用できます。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"高解像度4Kエクスポート\"}},{\"title\":\"被写体の100%保持\",\"description\":\"背景が完全に変わっても、コアとなる被写体（ブランドロゴ、正確な寸法、元のテクスチャ）はロックされ、変更されません。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"被写体の100%保持\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"Instant AI Background Swap: Zero Masking Required プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"瞬時のAI背景置き換え：マスキングは一切不要\",\"description\":\"製品やポートレートをあらゆる場所に瞬時にテレポートさせます。LovartのAIデザインエージェントは、手動でのマスキングなしに被写体を自動的に分離し、完璧な照明と影を備えた、写真のようにリアルな新しい環境にシームレスに合成します。\",\"input_placeholder\":\"被写体のための新しい背景を説明してください...\",\"prompts\":[{\"label\":\"インテリア・ライフスタイル\",\"prompt\":\"背景を、柔らかい自然な窓の光が入るミニマルな北欧風のリビングルームに変更する\"},{\"label\":\"製品スタジオ\",\"prompt\":\"このスキンケアボトルを、水面の波紋とコースティクス照明のある濡れた大理石の台座に置く\"},{\"label\":\"シネマティックポートレート\",\"prompt\":\"このファッションモデルを、夜のネオンに照らされたサイバーパンクな東京の街にテレポートさせる\"},{\"label\":\"自動車の撮影\",\"prompt\":\"この車を、ドラマチックなゴールデンアワーの照明で、日没時の曲がりくねった海岸沿いの高速道路に置く\"}],\"tip\":\"ヒント：「柔らかい朝の影がある、日当たりの良い木製のデッキの上」など、具体的な照明や表面を記載してください。\",\"cta\":{\"text\":\"背景を置き換える\"}},{\"type\":\"workflow-horizontal\",\"title\":\"3つの簡単なステップで被写体をテレポートする方法\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"アップロードと自動検出\",\"description\":\"ChatCanvasに写真をアップロードします。ペンツールは捨ててください。Lovartのセマンティックエンジンは自動的にメインの被写体を検出し、瞬時に背景から分離します。\"},{\"step\":2,\"title\":\"新しい場所をプロンプト入力\",\"description\":\"被写体をどこに配置したいかを入力するだけです。「雪山の山頂」から「洗練されたスタジオの背景」まで、MCoTエンジンは空間ロジックを理解して環境を構築します。\"},{\"step\":3,\"title\":\"AIの照明と影の同期\",\"description\":\"浮いている物体はありません。エージェントは環境の反射、リアルなドロップシャドウ、カラーグレーディングを自動的に計算して適用し、被写体が新しいシーンに自然に溶け込むようにします。\"}]},{\"type\":\"comparison-table\",\"title\":\"Instant AI Background Swap: Zero Masking Required：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Instant AI Background Swap: Zero Masking Required プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Instant AI Background Swap: Zero Masking Required が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから Instant AI Background Swap: Zero Masking Required の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"以前はライフスタイル製品の撮影のためにスタジオに5,000ドル払っていました。今では机の上で写真を撮り、Lovartに「日没のビーチに置いて」と指示するだけで、AIが複雑な影や反射を完璧に処理してくれます。魔法のようです。\",\"author\":\"マーカス L.\",\"role\":\"Eコマース事業主\"},{\"quote\":\"以前はPhotoshopで髪の毛を切り抜くのに1枚20分かかっていました。Lovartのゼロマスキングアプローチを使用すると、被写体が瞬時に分離され、環境照明の同期により信じられないほど自然に見えます。\",\"author\":\"エレナ R.\",\"role\":\"ソーシャルメディアマネージャー\"},{\"quote\":\"何もないスタジオからサイバーパンクな通りにモデルをテレポートさせ、ネオンの光が実際にジャケットに反射している機能は画期的です。レイヤー分割機能は私たちに究極の柔軟性を与えてくれます。\",\"author\":\"デビッド K.\",\"role\":\"アートディレクター\"}],\"title\":\"Lovartでビジュアルをテレポートさせているクリエイターたち\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"手動でマスクを描いたり、なげなわツールを使用したりする必要がありますか？\",\"answer\":\"まったく必要ありません。LovartのAIデザインエージェントは、高度なセマンティック理解を使用して画像の主要な被写体を自動的に識別して分離するため、面倒な手動マスキングから解放されます。\"},{\"question\":\"被写体が新しい背景で「浮いている」ように見えませんか？\",\"answer\":\"いいえ。基本的な背景削除ツールとは異なり、Lovartは仮想スタジオとして機能します。適切な接触影、アンビエントオクルージョン、照明の反射を自動的に計算して生成するため、被写体は新しい環境に自然に溶け込みます。\"},{\"question\":\"髪の毛や透明なガラスなどの難しい被写体でも機能しますか？\",\"answer\":\"はい。Nano Banana Proを含む当社の最先端のモデルは、複雑なエッジの詳細を処理するように特別にトレーニングされており、髪の毛の束、毛皮、ガラス瓶の透明度をシームレスに保持します。\"},{\"question\":\"新しい背景の代わりに透明なPNGを取得できますか？\",\"answer\":\"もちろんです。「背景を削除」ツールを使用して被写体を抽出し、他のデザインソフトウェアで使用するための高解像度の透明PNGとしてエクスポートすることができます。\"},{\"question\":\"生成された背景置き換えは商用利用しても安全ですか？\",\"answer\":\"はい。Lovartの有料プランをご利用の場合、生成された合成写真に対する完全な商用利用権を保持するため、広告、ウェブサイト、クライアントプロジェクトで完全に安全に使用できます。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "AI背景を瞬時に差し替え、マスク不要",
+      "description": "Teleport your products and portraits to any location without manual masking. Lovart's AI Design Agent automatically extracts subjects and syncs realistic lighting and shadows.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Zero-Shot Semantic Masking"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Advanced Capabilities for Flawless Compositing",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "ゼロショット・セマンティックマスキング",
+          "description": "面倒な手動選択に別れを告げましょう。当社のAIは、なびく髪、透明なガラス、毛皮で覆われたペットなどの最も複雑な被写体でさえ、ワンクリックで正確に抽出します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "ゼロショット・セマンティックマスキング"
+          }
+        },
+        {
+          "title": "完璧な影の生成",
+          "description": "被写体が「コピー＆ペースト」されたように見えることはありません。Lovartは、新しい環境に基づいて、地面の接地影、アンビエントオクルージョン、および指向性照明を正確にレンダリングします。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "完璧な影の生成"
+          }
+        },
+        {
+          "title": "反射と素材の同期",
+          "description": "濡れたアスファルトに製品を置くと、AIは正確な水の反射を生成します。エージェントは素材の物理特性を理解し、究極のフォトリアリズムを保証します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "反射と素材の同期"
+          }
+        },
+        {
+          "title": "レイヤー分割（要素編集）",
+          "description": "より多くの制御が必要ですか？要素編集を使用して、生成された画像を個別の移動可能なレイヤー（被写体、小道具、背景）に分割し、無限のレイアウト調整を行います。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "レイヤー分割（要素編集）"
+          }
+        },
+        {
+          "title": "高解像度4Kエクスポート",
+          "description": "背景の置き換えによって画像が劣化することはありません。最終的な合成画像を非常に鮮明な4K解像度でエクスポートし、印刷、看板、またはハイエンドのEコマースですぐに使用できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "高解像度4Kエクスポート"
+          }
+        },
+        {
+          "title": "被写体の100%保持",
+          "description": "背景が完全に変わっても、コアとなる被写体（ブランドロゴ、正確な寸法、元のテクスチャ）はロックされ、変更されません。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "被写体の100%保持"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "ゼロショット・セマンティックマスキング",
+          "icon": "chat",
+          "content": {
+            "title": "ゼロショット・セマンティックマスキング",
+            "description": "面倒な手動選択に別れを告げましょう。当社のAIは、なびく髪、透明なガラス、毛皮で覆われたペットなどの最も複雑な被写体でさえ、ワンクリックで正確に抽出します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "ゼロショット・セマンティックマスキング"
+            }
+          }
+        },
+        {
+          "label": "完璧な影の生成",
+          "icon": "image",
+          "content": {
+            "title": "完璧な影の生成",
+            "description": "被写体が「コピー＆ペースト」されたように見えることはありません。Lovartは、新しい環境に基づいて、地面の接地影、アンビエントオクルージョン、および指向性照明を正確にレンダリングします。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "完璧な影の生成"
+            }
+          }
+        },
+        {
+          "label": "反射と素材の同期",
+          "icon": "flask",
+          "content": {
+            "title": "反射と素材の同期",
+            "description": "濡れたアスファルトに製品を置くと、AIは正確な水の反射を生成します。エージェントは素材の物理特性を理解し、究極のフォトリアリズムを保証します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "反射と素材の同期"
+            }
+          }
+        },
+        {
+          "label": "レイヤー分割（要素編集）",
+          "icon": "brand",
+          "content": {
+            "title": "レイヤー分割（要素編集）",
+            "description": "より多くの制御が必要ですか？要素編集を使用して、生成された画像を個別の移動可能なレイヤー（被写体、小道具、背景）に分割し、無限のレイアウト調整を行います。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "レイヤー分割（要素編集）"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "高解像度4Kエクスポート",
+          "description": "背景の置き換えによって画像が劣化することはありません。最終的な合成画像を非常に鮮明な4K解像度でエクスポートし、印刷、看板、またはハイエンドのEコマースですぐに使用できます。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "高解像度4Kエクスポート"
+          }
+        },
+        {
+          "title": "被写体の100%保持",
+          "description": "背景が完全に変わっても、コアとなる被写体（ブランドロゴ、正確な寸法、元のテクスチャ）はロックされ、変更されません。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "被写体の100%保持"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "Instant AI Background Swap: Zero Masking Required プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "瞬時のAI背景置き換え：マスキングは一切不要",
+      "description": "製品やポートレートをあらゆる場所に瞬時にテレポートさせます。LovartのAIデザインエージェントは、手動でのマスキングなしに被写体を自動的に分離し、完璧な照明と影を備えた、写真のようにリアルな新しい環境にシームレスに合成します。",
+      "input_placeholder": "被写体のための新しい背景を説明してください...",
+      "prompts": [
+        {
+          "label": "インテリア・ライフスタイル",
+          "prompt": "背景を、柔らかい自然な窓の光が入るミニマルな北欧風のリビングルームに変更する"
+        },
+        {
+          "label": "製品スタジオ",
+          "prompt": "このスキンケアボトルを、水面の波紋とコースティクス照明のある濡れた大理石の台座に置く"
+        },
+        {
+          "label": "シネマティックポートレート",
+          "prompt": "このファッションモデルを、夜のネオンに照らされたサイバーパンクな東京の街にテレポートさせる"
+        },
+        {
+          "label": "自動車の撮影",
+          "prompt": "この車を、ドラマチックなゴールデンアワーの照明で、日没時の曲がりくねった海岸沿いの高速道路に置く"
+        }
+      ],
+      "tip": "ヒント：「柔らかい朝の影がある、日当たりの良い木製のデッキの上」など、具体的な照明や表面を記載してください。",
+      "cta": {
+        "text": "背景を置き換える"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "3つの簡単なステップで被写体をテレポートする方法",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "アップロードと自動検出",
+          "description": "ChatCanvasに写真をアップロードします。ペンツールは捨ててください。Lovartのセマンティックエンジンは自動的にメインの被写体を検出し、瞬時に背景から分離します。"
+        },
+        {
+          "step": 2,
+          "title": "新しい場所をプロンプト入力",
+          "description": "被写体をどこに配置したいかを入力するだけです。「雪山の山頂」から「洗練されたスタジオの背景」まで、MCoTエンジンは空間ロジックを理解して環境を構築します。"
+        },
+        {
+          "step": 3,
+          "title": "AIの照明と影の同期",
+          "description": "浮いている物体はありません。エージェントは環境の反射、リアルなドロップシャドウ、カラーグレーディングを自動的に計算して適用し、被写体が新しいシーンに自然に溶け込むようにします。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Instant AI Background Swap: Zero Masking Required：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Instant AI Background Swap: Zero Masking Required プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Instant AI Background Swap: Zero Masking Required が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから Instant AI Background Swap: Zero Masking Required の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "以前はライフスタイル製品の撮影のためにスタジオに5,000ドル払っていました。今では机の上で写真を撮り、Lovartに「日没のビーチに置いて」と指示するだけで、AIが複雑な影や反射を完璧に処理してくれます。魔法のようです。",
+          "author": "マーカス L.",
+          "role": "Eコマース事業主"
+        },
+        {
+          "quote": "以前はPhotoshopで髪の毛を切り抜くのに1枚20分かかっていました。Lovartのゼロマスキングアプローチを使用すると、被写体が瞬時に分離され、環境照明の同期により信じられないほど自然に見えます。",
+          "author": "エレナ R.",
+          "role": "ソーシャルメディアマネージャー"
+        },
+        {
+          "quote": "何もないスタジオからサイバーパンクな通りにモデルをテレポートさせ、ネオンの光が実際にジャケットに反射している機能は画期的です。レイヤー分割機能は私たちに究極の柔軟性を与えてくれます。",
+          "author": "デビッド K.",
+          "role": "アートディレクター"
+        }
+      ],
+      "title": "Lovartでビジュアルをテレポートさせているクリエイターたち"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "手動でマスクを描いたり、なげなわツールを使用したりする必要がありますか？",
+          "answer": "まったく必要ありません。LovartのAIデザインエージェントは、高度なセマンティック理解を使用して画像の主要な被写体を自動的に識別して分離するため、面倒な手動マスキングから解放されます。"
+        },
+        {
+          "question": "被写体が新しい背景で「浮いている」ように見えませんか？",
+          "answer": "いいえ。基本的な背景削除ツールとは異なり、Lovartは仮想スタジオとして機能します。適切な接触影、アンビエントオクルージョン、照明の反射を自動的に計算して生成するため、被写体は新しい環境に自然に溶け込みます。"
+        },
+        {
+          "question": "髪の毛や透明なガラスなどの難しい被写体でも機能しますか？",
+          "answer": "はい。Nano Banana Proを含む当社の最先端のモデルは、複雑なエッジの詳細を処理するように特別にトレーニングされており、髪の毛の束、毛皮、ガラス瓶の透明度をシームレスに保持します。"
+        },
+        {
+          "question": "新しい背景の代わりに透明なPNGを取得できますか？",
+          "answer": "もちろんです。「背景を削除」ツールを使用して被写体を抽出し、他のデザインソフトウェアで使用するための高解像度の透明PNGとしてエクスポートすることができます。"
+        },
+        {
+          "question": "生成された背景置き換えは商用利用しても安全ですか？",
+          "answer": "はい。Lovartの有料プランをご利用の場合、生成された合成写真に対する完全な商用利用権を保持するため、広告、ウェブサイト、クライアントプロジェクトで完全に安全に使用できます。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

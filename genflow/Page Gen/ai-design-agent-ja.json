@@ -1,0 +1,389 @@
+{
+  "_id": "features-ai-design-agent-ja",
+  "reflowSourceId": "features-ai-design-agent-ja",
+  "slug": "ai-design-agent",
+  "language": "ja",
+  "category": "feature",
+  "title": "AIデザインエージェント：自律ブランディングと創造的ワークフロー",
+  "description": "Experience the world's first AI Design Agent. Lovart uses the MCoT reasoning engine to plan, design, and execute entire brand campaigns—from logos to videos—on a unified infinite canvas.",
+  "seo": {
+    "description": "世界初のAIデザインエージェントを体験。LovartはMCoT推論エンジンでロゴから動画までブランドキャンペーン全体を計画・設計・実行。統合型無限キャンバスで実現。",
+    "keywords": [
+      "AIデザインエージェント",
+      "自律型デザイナー",
+      "MCoTエンジン",
+      "AIブランディングツール",
+      "ChatCanvas",
+      "Lovartの機能",
+      "マルチエージェントデザイン",
+      "自動化クリエイティブワークフロー",
+      "生成型デザインエージェント"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Mind Chain of Thought (MCoT)",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"AIデザインエージェント：自律ブランディングと創造的ワークフロー\", \"description\": \"Experience the world's first AI Design Agent. Lovart uses the MCoT reasoning engine to plan, design, and execute entire brand campaigns—from logos to videos—on a unified infinite canvas.\", \"url\": \"https://www.lovart.ai/features/ai-design-agent\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Lovartが単なるジェネレーターではなく「エージェント」である理由は何ですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"従来のジェネレーターは受動的です。プロンプトを入力し、出力するだけです。Lovartは能動的です。推論し、計画し、タスクを分解し、複数のモデルを調整して高レベルのビジネス目標を達成し、プロジェクト全体を通して文脈を維持します。\"}}, {\"@type\": \"Question\", \"name\": \"エージェントはブランドの一貫性を維持できますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい。Lovartの「Design Context Core」により、エージェントはブランドのカラーパレット、タイポグラフィ、キャラクタースタイルを記憶し、セッションで生成されるすべての新しいアセットに一貫して適用できます。\"}}, {\"@type\": \"Question\", \"name\": \"エージェントは動画作成をサポートしていますか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"もちろんです。Design Agentは、Veo 3やKlingなどのトップクラスの動画モデルを統合しています。エージェントに「これをアニメーション化して」と頼むだけで、静的なデザインを動的なアセットに変えることができます。\"}}, {\"@type\": \"Question\", \"name\": \"コンテンツは商用利用可能ですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"はい、有料プランのユーザーは、エージェントによって生成されたデザインに対する完全な商用権を持っており、マーケティングキャンペーン、商品、クライアントワークに最適です。\"}}, {\"@type\": \"Question\", \"name\": \"エージェントを使用するにはデザインスキルが必要ですか？\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"いいえ。エージェントは、アイデアと実行の間のギャップを埋めるように設計されています。自然言語でビジョンを提供すれば、エージェントが技術的なデザイン原則、レイアウト、レンダリングを処理します。\"}}]}}"
+    },
+    "title": "AIデザインエージェント：自律ブランディングと創造的ワークフロー"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"AIデザインエージェント：自律ブランディングと創造的ワークフロー\",\"description\":\"Experience the world's first AI Design Agent. Lovart uses the MCoT reasoning engine to plan, design, and execute entire brand campaigns—from logos to videos—on a unified infinite canvas.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Mind Chain of Thought (MCoT)\"}},{\"type\":\"bento-6\",\"title\":\"Capabilities of Your AI Creative Team\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"思考の連鎖（MCoT）\",\"description\":\"美しさの背後にある頭脳。エージェントは複雑なブリーフを論理的なクリエイティブステップに分解し、ロゴ、パッケージ、広告全体の一貫性を保証します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"思考の連鎖（MCoT）\"}},{\"title\":\"マルチモーダル生成\",\"description\":\"画像、動画、3D、ベクターグラフィックスをすべて一箇所で。エージェントは、目の前のタスクに最適なモデル（Nano Banana ProやVeo 3など）を選択します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"マルチモーダル生成\"}},{\"title\":\"文脈記憶\",\"description\":\"エージェントはあなたのブランドガイドラインを決して忘れません。一度確立されると、特定の配色、フォント、キャラクタースタイルを作成するすべての新しいアセットに適用します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"文脈記憶\"}},{\"title\":\"Touch Editコラボレーション\",\"description\":\"自然に対話できます。複雑なレイヤーやマスクは不要です。要素をクリックしてエージェントに変更方法を伝えるだけです。意味的なオブジェクト関係を理解します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Touch Editコラボレーション\"}},{\"title\":\"自動モックアップ＆レイアウト\",\"description\":\"エージェントがデザインを自動的に配置します。遠近感と照明を理解し、平面デザインを3D製品や現実世界のシーンに即座に適用します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"自動モックアップ＆レイアウト\"}},{\"title\":\"業界固有のロジック\",\"description\":\"レストランの「メニューエンジニアリング」でも、Eコマースの「コンバージョン最適化」でも、エージェントは実証済みの業界デザイン原則を適用します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"業界固有のロジック\"}}]},{\"type\":\"capability-tabs\",\"title\":\"ひとつのエージェントに、すべての機能を\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"思考の連鎖（MCoT）\",\"icon\":\"chat\",\"content\":{\"title\":\"思考の連鎖（MCoT）\",\"description\":\"美しさの背後にある頭脳。エージェントは複雑なブリーフを論理的なクリエイティブステップに分解し、ロゴ、パッケージ、広告全体の一貫性を保証します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"思考の連鎖（MCoT）\"}}},{\"label\":\"マルチモーダル生成\",\"icon\":\"image\",\"content\":{\"title\":\"マルチモーダル生成\",\"description\":\"画像、動画、3D、ベクターグラフィックスをすべて一箇所で。エージェントは、目の前のタスクに最適なモデル（Nano Banana ProやVeo 3など）を選択します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"マルチモーダル生成\"}}},{\"label\":\"文脈記憶\",\"icon\":\"flask\",\"content\":{\"title\":\"文脈記憶\",\"description\":\"エージェントはあなたのブランドガイドラインを決して忘れません。一度確立されると、特定の配色、フォント、キャラクタースタイルを作成するすべての新しいアセットに適用します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"文脈記憶\"}}},{\"label\":\"Touch Editコラボレーション\",\"icon\":\"brand\",\"content\":{\"title\":\"Touch Editコラボレーション\",\"description\":\"自然に対話できます。複雑なレイヤーやマスクは不要です。要素をクリックしてエージェントに変更方法を伝えるだけです。意味的なオブジェクト関係を理解します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Touch Editコラボレーション\"}}}]},{\"type\":\"bento-2\",\"title\":\"とくに得意な2つのこと\",\"columns\":2,\"features\":[{\"title\":\"自動モックアップ＆レイアウト\",\"description\":\"エージェントがデザインを自動的に配置します。遠近感と照明を理解し、平面デザインを3D製品や現実世界のシーンに即座に適用します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"自動モックアップ＆レイアウト\"}},{\"title\":\"業界固有のロジック\",\"description\":\"レストランの「メニューエンジニアリング」でも、Eコマースの「コンバージョン最適化」でも、エージェントは実証済みの業界デザイン原則を適用します。\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"業界固有のロジック\"}}]},{\"type\":\"feature-detail\",\"title\":\"使い方をくわしく解説\",\"items\":[{\"title\":\"AI Design Agent: Autonomous Branding & Creative Workflow プロジェクトを開始\",\"description\":\"実現したい成果を伝え、参考素材を追加するだけ。\"},{\"title\":\"エージェントと一緒に磨き込む\",\"description\":\"同じキャンバス上で細部を調整し、バリエーションを探求できます。\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"プロンプトはもう終わり。監督を始めよう。世界初のAIデザインエージェント。\",\"description\":\"Lovartは単なるツールではありません。あなたの新しい自律型クリエイティブパートナーです。独自の思考連鎖（MCoT）エンジンを搭載したこのエージェントは、戦略を理解し、ワークフローを計画し、ロゴから動画まで、複雑なキャンペーンを単一の無限キャンバス上でオーケストレーションします。単に画像を生成するのではなく、ブランドを構築しましょう。\",\"input_placeholder\":\"例：「GlowというZ世代向けスキンケアブランドを立ち上げ、ロゴ、パッケージ、SNS投稿3件を視覚化して」\",\"prompts\":[{\"label\":\"完全なブランドアイデンティティ\",\"prompt\":\"Create a full visual identity for a cyberpunk coffee shop, including logo, cup mockup, and storefront\"},{\"label\":\"ソーシャルメディアキャンペーン\",\"prompt\":\"Design a 3-slide carousel for a tech startup launch, focusing on minimalism and trust\"},{\"label\":\"動画変換\",\"prompt\":\"Turn this product photo into a cinematic video ad with dramatic lighting\"},{\"label\":\"スタイル分析\",\"prompt\":\"Analyze this URL style and generate a matching landing page header\"}],\"tip\":\"プロのヒント：人間と同じようにエージェントに話しかけてください。ビジネスの目標を説明し、創造的なプロセスを推論する様子を見てみましょう。\",\"cta\":{\"text\":\"AIエージェントを雇う\"}},{\"type\":\"workflow-horizontal\",\"title\":\"デザインエージェントの仕組み\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"考える（推論）\",\"description\":\"ピクセルを予測するだけの標準的なAIとは異なり、LovartのMCoTエンジンはあなたの意図を分析します。「どうやるか」を決める前に「なぜ」を問いかけ、デザインが市場戦略に沿うようにします。\"},{\"step\":2,\"title\":\"計画する（オーケストレーション）\",\"description\":\"エージェントはリクエストをタスクに分解します。ブランディングにはLogo Agent、タイポグラフィにはLayout Agent、高忠実度レンダリングにはNano Bananaを自動的に割り当てます。\"},{\"step\":3,\"title\":\"協力する（ChatCanvas）\",\"description\":\"文脈を記憶する無限のキャンバスで作業します。オブジェクトを指して「これを目立たせて」と言うだけで、エージェントは意味的理解を持って編集を実行します。\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Design Agent: Autonomous Branding & Creative Workflow：Lovart と一般的なワークフローの比較\",\"headers\":[\"ニーズ\",\"汎用ツール\",\"手作業のワークフロー\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"AI Design Agent: Autonomous Branding & Creative Workflow プロジェクトを開始\",\"values\":[\"プロンプト1つ\",\"手動でのブリーフ作成\",\"ブリーフ起点の推論\"]},{\"feature\":\"最初の成果物までの時間\",\"values\":[\"数分\",\"数日\",\"数分\"]},{\"feature\":\"生成後の編集\",\"values\":[\"限定的\",\"修正の往復\",\"タッチ / テキスト / 要素編集\"]},{\"feature\":\"ブランドの統一\",\"values\":[\"手作業\",\"手作業\",\"Brand Kit対応\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"AI Design Agent: Autonomous Branding & Creative Workflow が活躍する場面\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"立ち上げを高速化\",\"description\":\"ブリーフから AI Design Agent: Autonomous Branding & Creative Workflow の素材まで、1セッションで完結。\"},{\"icon\":\"brand\",\"title\":\"一貫性を保つ\",\"description\":\"Brand Kit がすべての素材を統一感のある仕上がりに。\"},{\"icon\":\"refresh\",\"title\":\"すばやく反復\",\"description\":\"プロジェクトを最初からやり直すことなく、細部を編集。\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"私は5,000ドルのブランディング代理店予算をLovartに置き換えました。エージェントは私の「ミニマリスト・エコテック」の雰囲気を即座に理解し、ロゴからピッチデッキまですべてを構築しました。\",\"author\":\"Melvin C.\",\"role\":\"スタートアップ創設者\"},{\"quote\":\"私を納得させたのは一貫性でした。エージェントは50の異なる投稿にわたって私のブランドキャラクターを記憶しています。まるで眠らないデザイナーがいるようです。\",\"author\":\"Sarah L.\",\"role\":\"ソーシャルメディアマネージャー\"},{\"quote\":\"白紙の状態をスキップするためにLovartを使っています。エージェントにクリエイティブブリーフを与えれば、数分で洗練すべき4つの確かな方向性が得られます。究極の効率化ツールです。\",\"author\":\"David K.\",\"role\":\"クリエイティブディレクター\"}],\"title\":\"エージェントワークフローによって力を得たクリエイターたち\"},{\"type\":\"pricing-block\",\"title\":\"チームに合ったプランを選ぶ\",\"description\":\"無料で始めて、クライアント向けの本番作業になったらアップグレード。\"},{\"type\":\"faq\",\"title\":\"よくある質問\",\"items\":[{\"question\":\"Lovartが単なるジェネレーターではなく「エージェント」である理由は何ですか？\",\"answer\":\"従来のジェネレーターは受動的です。プロンプトを入力し、出力するだけです。Lovartは能動的です。推論し、計画し、タスクを分解し、複数のモデルを調整して高レベルのビジネス目標を達成し、プロジェクト全体を通して文脈を維持します。\"},{\"question\":\"エージェントはブランドの一貫性を維持できますか？\",\"answer\":\"はい。Lovartの「Design Context Core」により、エージェントはブランドのカラーパレット、タイポグラフィ、キャラクタースタイルを記憶し、セッションで生成されるすべての新しいアセットに一貫して適用できます。\"},{\"question\":\"エージェントは動画作成をサポートしていますか？\",\"answer\":\"もちろんです。Design Agentは、Veo 3やKlingなどのトップクラスの動画モデルを統合しています。エージェントに「これをアニメーション化して」と頼むだけで、静的なデザインを動的なアセットに変えることができます。\"},{\"question\":\"コンテンツは商用利用可能ですか？\",\"answer\":\"はい、有料プランのユーザーは、エージェントによって生成されたデザインに対する完全な商用権を持っており、マーケティングキャンペーン、商品、クライアントワークに最適です。\"},{\"question\":\"エージェントを使用するにはデザインスキルが必要ですか？\",\"answer\":\"いいえ。エージェントは、アイデアと実行の間のギャップを埋めるように設計されています。自然言語でビジョンを提供すれば、エージェントが技術的なデザイン原則、レイアウト、レンダリングを処理します。\"}]},{\"type\":\"cta-default\",\"title\":\"Lovartでデザインを始めよう\",\"description\":\"アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。\",\"buttons\":[{\"text\":\"無料で始める\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "AIデザインエージェント：自律ブランディングと創造的ワークフロー",
+      "description": "Experience the world's first AI Design Agent. Lovart uses the MCoT reasoning engine to plan, design, and execute entire brand campaigns—from logos to videos—on a unified infinite canvas.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Mind Chain of Thought (MCoT)"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Capabilities of Your AI Creative Team",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "思考の連鎖（MCoT）",
+          "description": "美しさの背後にある頭脳。エージェントは複雑なブリーフを論理的なクリエイティブステップに分解し、ロゴ、パッケージ、広告全体の一貫性を保証します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "思考の連鎖（MCoT）"
+          }
+        },
+        {
+          "title": "マルチモーダル生成",
+          "description": "画像、動画、3D、ベクターグラフィックスをすべて一箇所で。エージェントは、目の前のタスクに最適なモデル（Nano Banana ProやVeo 3など）を選択します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "マルチモーダル生成"
+          }
+        },
+        {
+          "title": "文脈記憶",
+          "description": "エージェントはあなたのブランドガイドラインを決して忘れません。一度確立されると、特定の配色、フォント、キャラクタースタイルを作成するすべての新しいアセットに適用します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "文脈記憶"
+          }
+        },
+        {
+          "title": "Touch Editコラボレーション",
+          "description": "自然に対話できます。複雑なレイヤーやマスクは不要です。要素をクリックしてエージェントに変更方法を伝えるだけです。意味的なオブジェクト関係を理解します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Touch Editコラボレーション"
+          }
+        },
+        {
+          "title": "自動モックアップ＆レイアウト",
+          "description": "エージェントがデザインを自動的に配置します。遠近感と照明を理解し、平面デザインを3D製品や現実世界のシーンに即座に適用します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "自動モックアップ＆レイアウト"
+          }
+        },
+        {
+          "title": "業界固有のロジック",
+          "description": "レストランの「メニューエンジニアリング」でも、Eコマースの「コンバージョン最適化」でも、エージェントは実証済みの業界デザイン原則を適用します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "業界固有のロジック"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "ひとつのエージェントに、すべての機能を",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "思考の連鎖（MCoT）",
+          "icon": "chat",
+          "content": {
+            "title": "思考の連鎖（MCoT）",
+            "description": "美しさの背後にある頭脳。エージェントは複雑なブリーフを論理的なクリエイティブステップに分解し、ロゴ、パッケージ、広告全体の一貫性を保証します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "思考の連鎖（MCoT）"
+            }
+          }
+        },
+        {
+          "label": "マルチモーダル生成",
+          "icon": "image",
+          "content": {
+            "title": "マルチモーダル生成",
+            "description": "画像、動画、3D、ベクターグラフィックスをすべて一箇所で。エージェントは、目の前のタスクに最適なモデル（Nano Banana ProやVeo 3など）を選択します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "マルチモーダル生成"
+            }
+          }
+        },
+        {
+          "label": "文脈記憶",
+          "icon": "flask",
+          "content": {
+            "title": "文脈記憶",
+            "description": "エージェントはあなたのブランドガイドラインを決して忘れません。一度確立されると、特定の配色、フォント、キャラクタースタイルを作成するすべての新しいアセットに適用します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "文脈記憶"
+            }
+          }
+        },
+        {
+          "label": "Touch Editコラボレーション",
+          "icon": "brand",
+          "content": {
+            "title": "Touch Editコラボレーション",
+            "description": "自然に対話できます。複雑なレイヤーやマスクは不要です。要素をクリックしてエージェントに変更方法を伝えるだけです。意味的なオブジェクト関係を理解します。",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Touch Editコラボレーション"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "とくに得意な2つのこと",
+      "columns": 2,
+      "features": [
+        {
+          "title": "自動モックアップ＆レイアウト",
+          "description": "エージェントがデザインを自動的に配置します。遠近感と照明を理解し、平面デザインを3D製品や現実世界のシーンに即座に適用します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "自動モックアップ＆レイアウト"
+          }
+        },
+        {
+          "title": "業界固有のロジック",
+          "description": "レストランの「メニューエンジニアリング」でも、Eコマースの「コンバージョン最適化」でも、エージェントは実証済みの業界デザイン原則を適用します。",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "業界固有のロジック"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "使い方をくわしく解説",
+      "items": [
+        {
+          "title": "AI Design Agent: Autonomous Branding & Creative Workflow プロジェクトを開始",
+          "description": "実現したい成果を伝え、参考素材を追加するだけ。"
+        },
+        {
+          "title": "エージェントと一緒に磨き込む",
+          "description": "同じキャンバス上で細部を調整し、バリエーションを探求できます。",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "プロンプトはもう終わり。監督を始めよう。世界初のAIデザインエージェント。",
+      "description": "Lovartは単なるツールではありません。あなたの新しい自律型クリエイティブパートナーです。独自の思考連鎖（MCoT）エンジンを搭載したこのエージェントは、戦略を理解し、ワークフローを計画し、ロゴから動画まで、複雑なキャンペーンを単一の無限キャンバス上でオーケストレーションします。単に画像を生成するのではなく、ブランドを構築しましょう。",
+      "input_placeholder": "例：「GlowというZ世代向けスキンケアブランドを立ち上げ、ロゴ、パッケージ、SNS投稿3件を視覚化して」",
+      "prompts": [
+        {
+          "label": "完全なブランドアイデンティティ",
+          "prompt": "Create a full visual identity for a cyberpunk coffee shop, including logo, cup mockup, and storefront"
+        },
+        {
+          "label": "ソーシャルメディアキャンペーン",
+          "prompt": "Design a 3-slide carousel for a tech startup launch, focusing on minimalism and trust"
+        },
+        {
+          "label": "動画変換",
+          "prompt": "Turn this product photo into a cinematic video ad with dramatic lighting"
+        },
+        {
+          "label": "スタイル分析",
+          "prompt": "Analyze this URL style and generate a matching landing page header"
+        }
+      ],
+      "tip": "プロのヒント：人間と同じようにエージェントに話しかけてください。ビジネスの目標を説明し、創造的なプロセスを推論する様子を見てみましょう。",
+      "cta": {
+        "text": "AIエージェントを雇う"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "デザインエージェントの仕組み",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "考える（推論）",
+          "description": "ピクセルを予測するだけの標準的なAIとは異なり、LovartのMCoTエンジンはあなたの意図を分析します。「どうやるか」を決める前に「なぜ」を問いかけ、デザインが市場戦略に沿うようにします。"
+        },
+        {
+          "step": 2,
+          "title": "計画する（オーケストレーション）",
+          "description": "エージェントはリクエストをタスクに分解します。ブランディングにはLogo Agent、タイポグラフィにはLayout Agent、高忠実度レンダリングにはNano Bananaを自動的に割り当てます。"
+        },
+        {
+          "step": 3,
+          "title": "協力する（ChatCanvas）",
+          "description": "文脈を記憶する無限のキャンバスで作業します。オブジェクトを指して「これを目立たせて」と言うだけで、エージェントは意味的理解を持って編集を実行します。"
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Design Agent: Autonomous Branding & Creative Workflow：Lovart と一般的なワークフローの比較",
+      "headers": [
+        "ニーズ",
+        "汎用ツール",
+        "手作業のワークフロー",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "AI Design Agent: Autonomous Branding & Creative Workflow プロジェクトを開始",
+          "values": [
+            "プロンプト1つ",
+            "手動でのブリーフ作成",
+            "ブリーフ起点の推論"
+          ]
+        },
+        {
+          "feature": "最初の成果物までの時間",
+          "values": [
+            "数分",
+            "数日",
+            "数分"
+          ]
+        },
+        {
+          "feature": "生成後の編集",
+          "values": [
+            "限定的",
+            "修正の往復",
+            "タッチ / テキスト / 要素編集"
+          ]
+        },
+        {
+          "feature": "ブランドの統一",
+          "values": [
+            "手作業",
+            "手作業",
+            "Brand Kit対応"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "AI Design Agent: Autonomous Branding & Creative Workflow が活躍する場面",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "立ち上げを高速化",
+          "description": "ブリーフから AI Design Agent: Autonomous Branding & Creative Workflow の素材まで、1セッションで完結。"
+        },
+        {
+          "icon": "brand",
+          "title": "一貫性を保つ",
+          "description": "Brand Kit がすべての素材を統一感のある仕上がりに。"
+        },
+        {
+          "icon": "refresh",
+          "title": "すばやく反復",
+          "description": "プロジェクトを最初からやり直すことなく、細部を編集。"
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "私は5,000ドルのブランディング代理店予算をLovartに置き換えました。エージェントは私の「ミニマリスト・エコテック」の雰囲気を即座に理解し、ロゴからピッチデッキまですべてを構築しました。",
+          "author": "Melvin C.",
+          "role": "スタートアップ創設者"
+        },
+        {
+          "quote": "私を納得させたのは一貫性でした。エージェントは50の異なる投稿にわたって私のブランドキャラクターを記憶しています。まるで眠らないデザイナーがいるようです。",
+          "author": "Sarah L.",
+          "role": "ソーシャルメディアマネージャー"
+        },
+        {
+          "quote": "白紙の状態をスキップするためにLovartを使っています。エージェントにクリエイティブブリーフを与えれば、数分で洗練すべき4つの確かな方向性が得られます。究極の効率化ツールです。",
+          "author": "David K.",
+          "role": "クリエイティブディレクター"
+        }
+      ],
+      "title": "エージェントワークフローによって力を得たクリエイターたち"
+    },
+    {
+      "type": "pricing-block",
+      "title": "チームに合ったプランを選ぶ",
+      "description": "無料で始めて、クライアント向けの本番作業になったらアップグレード。"
+    },
+    {
+      "type": "faq",
+      "title": "よくある質問",
+      "items": [
+        {
+          "question": "Lovartが単なるジェネレーターではなく「エージェント」である理由は何ですか？",
+          "answer": "従来のジェネレーターは受動的です。プロンプトを入力し、出力するだけです。Lovartは能動的です。推論し、計画し、タスクを分解し、複数のモデルを調整して高レベルのビジネス目標を達成し、プロジェクト全体を通して文脈を維持します。"
+        },
+        {
+          "question": "エージェントはブランドの一貫性を維持できますか？",
+          "answer": "はい。Lovartの「Design Context Core」により、エージェントはブランドのカラーパレット、タイポグラフィ、キャラクタースタイルを記憶し、セッションで生成されるすべての新しいアセットに一貫して適用できます。"
+        },
+        {
+          "question": "エージェントは動画作成をサポートしていますか？",
+          "answer": "もちろんです。Design Agentは、Veo 3やKlingなどのトップクラスの動画モデルを統合しています。エージェントに「これをアニメーション化して」と頼むだけで、静的なデザインを動的なアセットに変えることができます。"
+        },
+        {
+          "question": "コンテンツは商用利用可能ですか？",
+          "answer": "はい、有料プランのユーザーは、エージェントによって生成されたデザインに対する完全な商用権を持っており、マーケティングキャンペーン、商品、クライアントワークに最適です。"
+        },
+        {
+          "question": "エージェントを使用するにはデザインスキルが必要ですか？",
+          "answer": "いいえ。エージェントは、アイデアと実行の間のギャップを埋めるように設計されています。自然言語でビジョンを提供すれば、エージェントが技術的なデザイン原則、レイアウト、レンダリングを処理します。"
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lovartでデザインを始めよう",
+      "description": "アイデアやbrief（要望）を、数分でブランドに沿ったビジュアルに。",
+      "buttons": [
+        {
+          "text": "無料で始める",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

@@ -1,0 +1,739 @@
+```json
+,
+  "section_fr": [
+    {
+      "type": "centeredInputSection",
+      "heading": "Créateur de cartes d'anniversaire IA",
+      "subheading": "Créez des cartes d'anniversaire sincères et uniques avec Lovart — le premier agent de design IA au monde. Des élégants designs de mariage aux célébrations d'entreprise, Nano Banana Pro génère des cartes 8K personnalisées qui immortalisent chaque occasion.",
+      "cta": "Créer ma carte",
+      "url": "/ai-anniversary-card-maker",
+      "image": "https://cdn.lovart.ai/hero/anniversary-card-maker.webp",
+      "badge": "Propulsé par Nano Banana Pro",
+      "suggestion": [
+        {
+          "icon": "💍",
+          "label": "Anniversaire de mariage",
+          "prompt": "Design élégant de carte d'anniversaire de mariage, accents dorure, bordure florale aquarelle romantique, typographie calligraphique 'Joyeux anniversaire', palette douce blush et crème, style carte de vœux luxueuse"
+        },
+        {
+          "icon": "🏢",
+          "label": "Jalon d'entreprise",
+          "prompt": "Design professionnel de carte d'anniversaire d'entreprise, célébration d'étape clé, palette marine et or, motif géométrique moderne, typographie audacieuse '10 ans de succès', élément badge de réussite"
+        },
+        {
+          "icon": "💕",
+          "label": "Anniversaire de couple",
+          "prompt": "Carte chaleureuse d'anniversaire de relation, style illustration dessinée à la main, motif silhouette de couple, fond dégradé coucher de soleil, espace pour message sincère, esthétique intime et personnelle"
+        },
+        {
+          "icon": "👨‍👩‍👧",
+          "label": "Anniversaire des parents",
+          "prompt": "Design touchant de carte d'anniversaire pour les parents, esthétique photo de famille vintage, palette chaude tons terre, typographie élégante 'Aux meilleurs parents', bordure botanique délicate, ambiance nostalgique et aimante"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "heading": "Pourquoi choisir Lovart pour vos cartes d'anniversaire",
+      "badge": "6 fonctionnalités puissantes",
+      "columns": [
+        {
+          "step": 1,
+          "title": "Choisissez votre occasion et style",
+          "description": "Sélectionnez le type d'anniversaire — mariage, jalon d'entreprise, relation ou parents — et décrivez votre esthétique préférée. Précisez les couleurs, le style typographique, les éléments décoratifs et les détails personnels. La chaîne sensible aux émotions de MCoT assure un ton adapté à l'occasion.",
+          "image": "https://cdn.lovart.ai/how-it-works/card-step1-choose.webp"
+        },
+        {
+          "step": 2,
+          "title": "Personnalisez avec ChatCanvas",
+          "description": "Affinez votre carte par la conversation. Ajoutez des noms, dates, messages personnels ou images personnalisées. Changez les couleurs, échangez les éléments décoratifs, ajustez la typographie — ChatCanvas applique chaque modification avec précision tout en préservant la composition.",
+          "image": "https://cdn.lovart.ai/how-it-works/card-step2-refine.webp"
+        },
+        {
+          "step": 3,
+          "title": "Exportez et partagez votre carte",
+          "description": "Téléchargez votre carte terminée au format de votre choix. Envoyez-la numériquement par email ou messagerie, publiez-la sur les réseaux sociaux, ou exportez en PSD prêt à imprimer (forfait Pro) pour une impression professionnelle et un cadeau physique.",
+          "image": "https://cdn.lovart.ai/how-it-works/card-step3-export.webp"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "heading": "Comment fonctionne le créateur de cartes d'anniversaire IA de Lovart",
+      "badge": "3 étapes simples",
+      "features": [
+        {
+          "icon": "https://cdn.lovart.ai/icons/mcot.svg",
+          "title": "MCoT — Design de cartes sensible aux émotions",
+          "description": "Le moteur MCoT exclusif de Lovart traite votre concept de carte via 5 chaînes de raisonnement parallèles — analysant le sentiment de l'occasion, la pertinence culturelle, l'harmonie typographique, la psychologie des couleurs et l'équilibre de la composition. Chaque carte est conçue avec intelligence émotionnelle."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/chatcanvas.svg",
+          "title": "ChatCanvas — Personnalisez chaque détail",
+          "description": "Rendez chaque carte vraiment personnelle avec ChatCanvas. « Change le message pour notre 25e anniversaire », « Ajoute notre date de mariage — 14 juin 1999 », « Remplace les roses par des tournesols » — les modifications conversationnelles personnalisent les cartes dans les moindres détails."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/resolution.svg",
+          "title": "Résolution 8K pour une qualité d'impression",
+          "description": "Chaque carte est générée en résolution native 8K (7680×4320) — assurant une impression magnifique à toute taille. Envoyez comme e-card haute résolution ou imprimez en qualité professionnelle pour encadrer et offrir."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/formats.svg",
+          "title": "Export multi-format : PNG / JPG / SVG / PSD",
+          "description": "Exportez les cartes en PNG (partage numérique), JPG (email et messagerie), SVG (vecteur évolutif idéal pour l'impression) et fichiers PSD avec calques (forfait Pro à 11 000 $/mois, avec calques de texte modifiables)."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/commercial.svg",
+          "title": "Licence commerciale pour votre business de cartes",
+          "description": "Les forfaits payants — Starter (2 000 $/mois), Basic (3 500 $/mois), Pro (11 000 $/mois) — incluent les droits commerciaux complets. Vendez vos cartes sur Etsy, Shopify, les marketplaces de cartes de vœux ou dans le cadre de vos services de design, sans frais de licence supplémentaires."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/free.svg",
+          "title": "Crédits quotidiens gratuits — des cartes pour chaque occasion",
+          "description": "Créez des cartes d'anniversaire avec des crédits quotidiens gratuits. Expérimentez différents styles — du classique élégant au minimalisme moderne — et trouvez le langage visuel parfait avant de passer à un forfait payant pour un usage commercial."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "heading": "Adoré par les créateurs de cartes du monde entier",
+      "badge": "Témoignages clients",
+      "testimonials": [
+        {
+          "name": "Sophie Dubois",
+          "role": "Propriétaire, boutique Etsy HeartfeltGreetings",
+          "avatar": "https://cdn.lovart.ai/testimonials/rebecca-hartwell.webp",
+          "quote": "Ma boutique Etsy vend des cartes d'anniversaire personnalisées. Avant Lovart, je concevais environ 15 nouveaux modèles par mois manuellement — c'était épuisant. Avec le forfait Starter (2 000 $/mois), je publie maintenant plus de 140 designs uniques par mois. Mon chiffre d'affaires est passé de 4 200 $ à 17 800 $ par mois, et mes clients donnent constamment 5 étoiles.",
+          "stats": [
+            { "label": "Designs/mois", "value": "140+" },
+            { "label": "Croissance du CA", "value": "4,2K$ → 17,8K$" },
+            { "label": "Note clients", "value": "4,9★" },
+            { "label": "Forfait", "value": "Starter 2 000 $/mois" }
+          ],
+          "avatar_url": ""
+        },
+        {
+          "name": "Antoine Laurent",
+          "role": "Directeur créatif, CelebrateCo Events",
+          "avatar": "https://cdn.lovart.ai/testimonials/michael-torres.webp",
+          "quote": "Nous organisons plus de 300 événements d'entreprise par an, et chaque client veut des cartes personnalisées. Le forfait Pro de Lovart (11 000 $/mois) a remplacé une équipe de 4 designers juniors. Nous produisons maintenant plus de 2 200 cartes par an — chacune conçue pour l'entreprise et l'année spécifique. La satisfaction client sur la personnalisation est passée de 78 % à 96 %.",
+          "stats": [
+            { "label": "Cartes/an", "value": "2 200+" },
+            { "label": "Événements/an", "value": "300+" },
+            { "label": "Équipe remplacée", "value": "4 designers" },
+            { "label": "Satisfaction", "value": "78 % → 96 %" }
+          ],
+          "avatar_url": ""
+        },
+        {
+          "name": "Léa Moreau",
+          "role": "Maman & blogueuse lifestyle, 850K abonnés",
+          "avatar": "https://cdn.lovart.ai/testimonials/linda-zhang.webp",
+          "quote": "Je partage les traditions familiales avec mes 850 000 abonnés. Nano Banana Pro de Lovart m'aide à créer les plus belles cartes pour mes parents — chaque année complètement différente et profondément personnelle. La carte de cette année a reçu 127 000 likes et 3 400 commentaires. Plus de 500 abonnés m'ont dit avoir commencé à utiliser Lovart. C'est devenu un outil précieux de notre communauté.",
+          "stats": [
+            { "label": "Abonnés", "value": "850K" },
+            { "label": "Likes de la carte", "value": "127 000" },
+            { "label": "Commentaires", "value": "3 400" },
+            { "label": "Abonnés convertis", "value": "500+" }
+          ],
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "heading": "Questions fréquentes",
+      "badge": "9 questions courantes",
+      "faq": [
+        {
+          "question": "Quels types de cartes d'anniversaire Lovart peut-il créer ?",
+          "answer": "Le créateur de cartes IA de Lovart conçoit des cartes pour chaque occasion : anniversaires de mariage (de la 1ère à la 75e et plus), jalons d'entreprise, anniversaires de couple, anniversaires des parents, anniversaires d'amitié et tout jalon personnalisé. Le moteur MCoT sensible aux émotions de Nano Banana Pro adapte le ton, la palette et les éléments décoratifs à chaque occasion."
+        },
+        {
+          "question": "Combien coûte Lovart pour la création de cartes d'anniversaire ?",
+          "answer": "Lovart propose Gratuit (crédits quotidiens pour usage personnel), Starter (2 000 $/mois avec licence commerciale), Basic (3 500 $/mois avec rendu prioritaire et génération par lots) et Pro (11 000 $/mois avec générations illimitées, export PSD en calques et rendu dédié). Tous les forfaits payants incluent les droits commerciaux complets."
+        },
+        {
+          "question": "Puis-je ajouter des noms, dates et messages personnels à mes cartes ?",
+          "answer": "Absolument. ChatCanvas vous permet de personnaliser chaque élément par la conversation : « Ajoute le texte Joyeux 25e anniversaire, Sarah & James », « Inclus la date 14 juin 1999 sous le titre » ou « Ajoute un message sincère : 25 ans d'amour, de rires et d'aventures ensemble ». Les noms du destinataire et de l'expéditeur peuvent également être personnalisés."
+        },
+        {
+          "question": "Puis-je utiliser les cartes Lovart à des fins commerciales — pour ma boutique ou mon entreprise ?",
+          "answer": "Oui — tous les forfaits payants incluent les droits d'utilisation commerciale complets. Les designs créés avec Starter (2 000 $/mois), Basic (3 500 $/mois) ou Pro (11 000 $/mois) peuvent être vendus sur Etsy, Shopify, Creative Market et les marketplaces de cartes. Aucune attribution, redevance ou frais de licence supplémentaires. Les designs du niveau gratuit sont réservés à l'usage personnel."
+        },
+        {
+          "question": "Qu'est-ce que ChatCanvas et comment aide-t-il à personnaliser les cartes ?",
+          "answer": "ChatCanvas est l'interface d'édition conversationnelle de Lovart — l'innovation centrale du premier agent de design IA au monde. Pour les cartes d'anniversaire, ajoutez des touches personnelles en les décrivant simplement : « Change l'arrière-plan pour un coucher de soleil sur l'océan », « Ajoute deux cœurs enlacés en or », « Rend la typographie plus moderne et minimaliste ». ChatCanvas applique chaque modification avec précision."
+        },
+        {
+          "question": "Combien de crédits quotidiens gratuits ai-je pour la création de cartes ?",
+          "answer": "Chaque compte Lovart reçoit des crédits quotidiens gratuits renouvelés toutes les 24 heures, permettant généralement 5 à 10 générations de cartes par jour. Les crédits gratuits donnent accès au traitement MCoT de Nano Banana Pro, à la personnalisation ChatCanvas et à l'export 8K — parfait pour évaluer la qualité avant de passer à Starter (2 000 $/mois), Basic (3 500 $/mois) ou Pro (11 000 $/mois)."
+        },
+        {
+          "question": "Puis-je imprimer professionnellement mes cartes conçues avec Lovart ?",
+          "answer": "Oui. Toutes les cartes sont générées en résolution native 8K (7680×4320), offrant une densité de pixels suffisante pour une impression professionnelle jusqu'au format affiche. Exportez en PSD (forfait Pro à 11 000 $/mois) pour des fichiers en calques exploitables par les imprimeurs, ou en PNG/JPG/SVG haute résolution."
+        },
+        {
+          "question": "Quels styles et esthétiques sont disponibles pour les cartes d'anniversaire ?",
+          "answer": "Nano Banana Pro peut concevoir dans tous les styles visuels : classique élégant (dorure, calligraphie, floral), moderne minimaliste (lignes épurées, typographie audacieuse, espace négatif), aquarelle romantique (lavis doux, botanique, onirique), vintage rétro (textures nostalgiques, tons sépia), corporate professionnel (marine et or, géométrique), illustré fantaisiste (dessiné main, lumineux) et tout style personnalisé. La chaîne de cohérence stylistique de MCoT assure l'harmonie visuelle."
+        },
+        {
+          "question": "En quoi le créateur de cartes IA de Lovart diffère-t-il des modèles Canva ou Adobe Express ?",
+          "answer": "Canva et Adobe Express proposent des modèles préconçus à remplir — ce qui signifie que des milliers d'autres personnes ont le même design. Lovart est le premier agent de design IA au monde : vous décrivez votre vision et le moteur MCoT de Nano Banana Pro génère un design complètement original et personnalisé. Chaque carte est unique, pas un modèle modifié. ChatCanvas permet l'affinage conversationnel. Forfaits payants à partir de Starter 2 000 $/mois, Basic 3 500 $/mois et Pro 11 000 $/mois avec droits commerciaux complets."
+        }
+      ]
+    }
+  ],
+  "section_pt": [
+    {
+      "type": "centeredInputSection",
+      "heading": "Criador de Cartões de Aniversário com IA",
+      "subheading": "Crie cartões de aniversário sinceros e únicos com o Lovart — o primeiro Agente de Design com IA do mundo. De designs elegantes de bodas a celebrações de marcos empresariais, o Nano Banana Pro gera cartões 8K personalizados que capturam cada ocasião.",
+      "cta": "Criar meu cartão",
+      "url": "/ai-anniversary-card-maker",
+      "image": "https://cdn.lovart.ai/hero/anniversary-card-maker.webp",
+      "badge": "Desenvolvido com Nano Banana Pro",
+      "suggestion": [
+        {
+          "icon": "💍",
+          "label": "Bodas de casamento",
+          "prompt": "Design elegante de cartão de bodas, detalhes em folha dourada, borda floral em aquarela romântica, tipografia caligráfica 'Feliz Aniversário', paleta suave blush e creme, estilo cartão de felicitações de luxo"
+        },
+        {
+          "icon": "🏢",
+          "label": "Marco empresarial",
+          "prompt": "Design profissional de cartão de aniversário empresarial, celebração de marco corporativo, esquema azul marinho e dourado, padrão geométrico moderno, tipografia marcante 'Celebrando 10 anos', elemento de distintivo de conquista"
+        },
+        {
+          "icon": "💕",
+          "label": "Aniversário de namoro",
+          "prompt": "Cartão caloroso de aniversário de relacionamento, estilo ilustração desenhada à mão, motivo silhueta de casal, fundo degradê pôr do sol, espaço para mensagem sincera, estética íntima e pessoal"
+        },
+        {
+          "icon": "👨‍👩‍👧",
+          "label": "Bodas dos pais",
+          "prompt": "Design comovente de cartão para bodas dos pais, estética foto de família vintage, paleta quente tons terrosos, tipografia elegante 'Aos Melhores Pais', borda botânica delicada, clima nostálgico e amoroso"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "heading": "Por que escolher o Lovart para cartões de aniversário",
+      "badge": "6 recursos poderosos",
+      "columns": [
+        {
+          "step": 1,
+          "title": "Escolha sua ocasião e estilo",
+          "description": "Selecione o tipo de aniversário — casamento, marco empresarial, relacionamento ou pais — e descreva sua estética preferida. Especifique cores, estilo de tipografia, elementos decorativos e detalhes pessoais. A cadeia sensível a emoções do MCoT garante o tom adequado.",
+          "image": "https://cdn.lovart.ai/how-it-works/card-step1-choose.webp"
+        },
+        {
+          "step": 2,
+          "title": "Personalize com o ChatCanvas",
+          "description": "Refine seu design de cartão por meio de conversas. Adicione nomes, datas, mensagens pessoais ou imagens personalizadas. Mude cores, troque elementos decorativos, ajuste a tipografia — o ChatCanvas aplica cada edição com precisão preservando a composição geral.",
+          "image": "https://cdn.lovart.ai/how-it-works/card-step2-refine.webp"
+        },
+        {
+          "step": 3,
+          "title": "Exporte e compartilhe seu cartão",
+          "description": "Baixe seu cartão finalizado no formato de sua preferência. Envie digitalmente por e-mail ou mensagem, publique nas redes sociais ou exporte como PSD pronto para impressão (plano Pro) para impressão profissional e presente físico.",
+          "image": "https://cdn.lovart.ai/how-it-works/card-step3-export.webp"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "heading": "Como funciona o criador de cartões de aniversário com IA do Lovart",
+      "badge": "3 etapas simples",
+      "features": [
+        {
+          "icon": "https://cdn.lovart.ai/icons/mcot.svg",
+          "title": "MCoT — Design de cartões com sensibilidade emocional",
+          "description": "O motor MCoT proprietário do Lovart processa seu conceito de cartão através de 5 cadeias de raciocínio paralelas — analisando o sentimento da ocasião, adequação cultural, harmonia tipográfica, psicologia das cores e equilíbrio da composição. Cada cartão é projetado com inteligência emocional."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/chatcanvas.svg",
+          "title": "ChatCanvas — Personalize cada detalhe",
+          "description": "Torne cada cartão verdadeiramente pessoal com o ChatCanvas. 'Mude a mensagem para nosso 25º aniversário', 'Adicione nossa data de casamento — 14 de junho de 1999', 'Substitua rosas por girassóis' — edições conversacionais personalizam cartões nos mínimos detalhes."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/resolution.svg",
+          "title": "Resolução 8K para qualidade de impressão",
+          "description": "Cada cartão é gerado em resolução nativa 8K (7680×4320) — garantindo impressões belíssimas em qualquer tamanho. Envie como cartão digital de alta resolução ou imprima com qualidade profissional para emoldurar e presentear."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/formats.svg",
+          "title": "Exportação multi-formato: PNG / JPG / SVG / PSD",
+          "description": "Exporte cartões como PNG (compartilhamento digital), JPG (e-mail e mensagens), SVG (vetor escalável ideal para gráficas) e arquivos PSD em camadas (plano Pro a $11.000/mês, com camadas de texto editáveis)."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/commercial.svg",
+          "title": "Licença comercial para negócios de cartões",
+          "description": "Planos pagos — Starter ($2.000/mês), Basic ($3.500/mês), Pro ($11.000/mês) — incluem direitos comerciais completos. Venda seus cartões no Etsy, Shopify, marketplaces de cartões ou como parte de seus serviços de design, sem taxas adicionais de licenciamento."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/free.svg",
+          "title": "Créditos diários gratuitos — cartões para cada ocasião",
+          "description": "Crie cartões de aniversário com créditos diários gratuitos. Experimente diferentes estilos — do clássico elegante ao minimalismo moderno — e encontre a linguagem visual perfeita antes de fazer upgrade para um plano pago para uso comercial."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "heading": "Amado por criadores de cartões no mundo todo",
+      "badge": "Histórias de clientes",
+      "testimonials": [
+        {
+          "name": "Ana Oliveira",
+          "role": "Proprietária, loja Etsy HeartfeltGreetings",
+          "avatar": "https://cdn.lovart.ai/testimonials/rebecca-hartwell.webp",
+          "quote": "Minha loja Etsy vende cartões de aniversário personalizados. Antes do Lovart, eu criava manualmente cerca de 15 designs por mês — era exaustivo. Agora no plano Starter ($2.000/mês), publico mais de 140 designs únicos por mês. Minha receita cresceu de $4.200 para $17.800 mensais, e os clientes sempre dão 5 estrelas pelos designs personalizados e únicos.",
+          "stats": [
+            { "label": "Designs/mês", "value": "140+" },
+            { "label": "Crescimento de receita", "value": "$4,2K → $17,8K" },
+            { "label": "Avaliação", "value": "4,9★" },
+            { "label": "Plano", "value": "Starter $2.000/mês" }
+          ],
+          "avatar_url": ""
+        },
+        {
+          "name": "João Santos",
+          "role": "Diretor Criativo, CelebrateCo Events",
+          "avatar": "https://cdn.lovart.ai/testimonials/michael-torres.webp",
+          "quote": "Realizamos mais de 300 eventos corporativos anuais e cada cliente quer cartões personalizados. O plano Pro do Lovart ($11.000/mês) substituiu uma equipe de 4 designers juniores. Agora produzimos mais de 2.200 cartões por ano — cada um com design único para a empresa e ano específicos. A satisfação dos clientes com a personalização subiu de 78% para 96%.",
+          "stats": [
+            { "label": "Cartões/ano", "value": "2.200+" },
+            { "label": "Eventos/ano", "value": "300+" },
+            { "label": "Equipe substituída", "value": "4 designers" },
+            { "label": "Satisfação", "value": "78% → 96%" }
+          ],
+          "avatar_url": ""
+        },
+        {
+          "name": "Maria Silva",
+          "role": "Mãe & blogueira de lifestyle, 850K seguidores",
+          "avatar": "https://cdn.lovart.ai/testimonials/linda-zhang.webp",
+          "quote": "Compartilho as tradições familiares com meus 850 mil seguidores. O Nano Banana Pro do Lovart me ajuda a criar os cartões mais bonitos para meus pais — cada ano completamente diferente e profundamente pessoal. O cartão deste ano recebeu 127.000 curtidas e 3.400 comentários. Mais de 500 seguidores me disseram que começaram a usar o Lovart. Tornou-se uma parte valiosa de como nossa comunidade celebra o amor.",
+          "stats": [
+            { "label": "Seguidores", "value": "850K" },
+            { "label": "Curtidas do cartão", "value": "127.000" },
+            { "label": "Comentários", "value": "3.400" },
+            { "label": "Seguidores convertidos", "value": "500+" }
+          ],
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "heading": "Perguntas frequentes",
+      "badge": "9 perguntas comuns",
+      "faq": [
+        {
+          "question": "Que tipos de cartões de aniversário o Lovart pode criar?",
+          "answer": "O criador de cartões com IA do Lovart cria designs para cada ocasião: bodas de casamento (1º a 75º+), marcos empresariais, aniversários de namoro, bodas dos pais, aniversários de amizade e qualquer marco personalizado. O motor MCoT sensível a emoções do Nano Banana Pro adapta o tom emocional, a paleta de cores e os elementos decorativos a cada ocasião e relacionamento específicos."
+        },
+        {
+          "question": "Quanto custa o Lovart para design de cartões de aniversário?",
+          "answer": "O Lovart oferece Gratuito (créditos diários para uso pessoal), Starter ($2.000/mês com licença comercial), Basic ($3.500/mês com renderização prioritária e geração em lote) e Pro ($11.000/mês com gerações ilimitadas, exportação PSD em camadas e renderização dedicada). Todos os planos pagos incluem direitos comerciais completos."
+        },
+        {
+          "question": "Posso adicionar nomes, datas e mensagens pessoais aos meus cartões?",
+          "answer": "Com certeza. O ChatCanvas permite personalizar cada elemento de forma conversacional: 'Adicione o texto Feliz 25º Aniversário, Sarah & James', 'Inclua a data 14 de junho de 1999 abaixo do título' ou 'Adicione uma mensagem sincera: 25 anos de amor, risadas e aventuras juntos'. Os nomes do destinatário e remetente também podem ser personalizados."
+        },
+        {
+          "question": "Posso usar os cartões do Lovart comercialmente — para minha loja ou negócio de design?",
+          "answer": "Sim — todos os planos pagos incluem direitos completos de uso comercial. Designs criados no Starter ($2.000/mês), Basic ($3.500/mês) ou Pro ($11.000/mês) podem ser vendidos no Etsy, Shopify, Creative Market e marketplaces de cartões. Sem necessidade de atribuição, royalties ou taxas adicionais de licenciamento. Designs do nível gratuito são apenas para uso pessoal."
+        },
+        {
+          "question": "O que é o ChatCanvas e como ele ajuda a personalizar cartões?",
+          "answer": "O ChatCanvas é a interface de edição conversacional do Lovart — a inovação central do primeiro Agente de Design com IA do mundo. Para cartões de aniversário, você adiciona toques pessoais simplesmente descrevendo: 'Mude o fundo para um pôr do sol sobre o oceano', 'Adicione dois corações entrelaçados em dourado', 'Deixe a tipografia mais moderna e minimalista'. O ChatCanvas aplica cada edição preservando todo o resto."
+        },
+        {
+          "question": "Quantos créditos diários gratuitos recebo para criar cartões?",
+          "answer": "Cada conta Lovart recebe créditos diários gratuitos renovados a cada 24 horas, geralmente permitindo 5 a 10 gerações de cartões por dia. Os créditos gratuitos dão acesso completo ao processamento MCoT do Nano Banana Pro, personalização ChatCanvas e exportação em 8K — perfeito para criar cartões pessoais ou avaliar a qualidade antes de fazer upgrade para Starter ($2.000/mês), Basic ($3.500/mês) ou Pro ($11.000/mês)."
+        },
+        {
+          "question": "Posso imprimir profissionalmente os cartões criados no Lovart?",
+          "answer": "Sim. Todos os cartões são gerados em resolução nativa 8K (7680×4320), fornecendo densidade de pixels suficiente para impressão profissional em tamanho de pôster. Exporte como PSD (plano Pro a $11.000/mês) para arquivos em camadas que gráficas podem usar diretamente, ou como PNG/JPG/SVG de alta resolução."
+        },
+        {
+          "question": "Quais estilos e estéticas estão disponíveis para cartões de aniversário?",
+          "answer": "O Nano Banana Pro pode projetar em qualquer estilo visual: clássico elegante (folha dourada, caligrafia, floral), moderno minimalista (linhas limpas, tipografia marcante, espaço negativo), aquarela romântica (lavagens suaves, botânico, sonhador), vintage retrô (texturas nostálgicas, tons sépia), corporativo profissional (azul marinho e dourado, geométrico), ilustrado caprichoso (desenhado à mão, vibrante) e qualquer estilo personalizado. A cadeia de coerência estilística do MCoT garante harmonia visual."
+        },
+        {
+          "question": "Como o criador de cartões IA do Lovart se compara aos modelos do Canva ou Adobe Express?",
+          "answer": "O Canva e o Adobe Express oferecem modelos prontos para preencher — ou seja, milhares de pessoas têm o mesmo design. O Lovart é o primeiro Agente de Design com IA do mundo: você descreve sua visão e o motor MCoT do Nano Banana Pro gera um design completamente original e personalizado. Cada cartão é único, não um modelo modificado. O ChatCanvas permite refinamento conversacional. Planos pagos a partir de Starter $2.000/mês, Basic $3.500/mês e Pro $11.000/mês com direitos comerciais completos."
+        }
+      ]
+    }
+  ],
+  "section_it": [
+    {
+      "type": "centeredInputSection",
+      "heading": "Creatore di biglietti d'anniversario IA",
+      "subheading": "Crea biglietti d'anniversario sentiti e unici con Lovart — il primo Agente di Design IA al mondo. Dagli eleganti design per anniversari di matrimonio alle celebrazioni aziendali, Nano Banana Pro genera biglietti 8K personalizzati che catturano ogni occasione.",
+      "cta": "Crea il mio biglietto",
+      "url": "/ai-anniversary-card-maker",
+      "image": "https://cdn.lovart.ai/hero/anniversary-card-maker.webp",
+      "badge": "Alimentato da Nano Banana Pro",
+      "suggestion": [
+        {
+          "icon": "💍",
+          "label": "Anniversario di matrimonio",
+          "prompt": "Elegante design per biglietto d'anniversario di matrimonio, accenti in lamina d'oro, bordo floreale ad acquerello romantico, tipografia calligrafica 'Buon Anniversario', palette delicata blush e crema, stile biglietto d'auguri di lusso"
+        },
+        {
+          "icon": "🏢",
+          "label": "Traguardo aziendale",
+          "prompt": "Design professionale per biglietto d'anniversario aziendale, celebrazione di un traguardo, schema blu navy e oro, pattern geometrico moderno, tipografia marcata '10 Anni di Successi', elemento distintivo di realizzazione"
+        },
+        {
+          "icon": "💕",
+          "label": "Anniversario di coppia",
+          "prompt": "Caloroso biglietto per anniversario di relazione, stile illustrazione disegnata a mano, motivo silhouette di coppia, sfondo sfumato tramonto, spazio per messaggio sentito, estetica intima e personale"
+        },
+        {
+          "icon": "👨‍👩‍👧",
+          "label": "Anniversario dei genitori",
+          "prompt": "Toccante design per biglietto d'anniversario dei genitori, estetica foto di famiglia vintage, palette calda toni terra, elegante tipografia corsiva 'Ai Migliori Genitori', delicato bordo botanico, atmosfera nostalgica e amorevole"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "heading": "Perché scegliere Lovart per i biglietti d'anniversario",
+      "badge": "6 potenti funzionalità",
+      "columns": [
+        {
+          "step": 1,
+          "title": "Scegli occasione e stile",
+          "description": "Seleziona il tipo di anniversario — matrimonio, traguardo aziendale, relazione o genitori — e descrivi l'estetica desiderata. Specifica colori, stile tipografico, elementi decorativi e dettagli personali. La catena sensibile alle emozioni di MCoT assicura il tono giusto per l'occasione.",
+          "image": "https://cdn.lovart.ai/how-it-works/card-step1-choose.webp"
+        },
+        {
+          "step": 2,
+          "title": "Personalizza con ChatCanvas",
+          "description": "Perfeziona il design del tuo biglietto in modo conversazionale. Aggiungi nomi, date, messaggi personali o immagini personalizzate. Cambia colori, sostituisci elementi decorativi, regola la tipografia — ChatCanvas applica ogni modifica con precisione preservando la composizione.",
+          "image": "https://cdn.lovart.ai/how-it-works/card-step2-refine.webp"
+        },
+        {
+          "step": 3,
+          "title": "Esporta e condividi il tuo biglietto",
+          "description": "Scarica il biglietto finito nel formato che preferisci. Invia digitalmente via email o messaggistica, pubblica sui social o esporta come PSD pronto per la stampa (piano Pro) per la stampa professionale e il regalo fisico.",
+          "image": "https://cdn.lovart.ai/how-it-works/card-step3-export.webp"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "heading": "Come funziona il creatore di biglietti IA di Lovart",
+      "badge": "3 semplici passaggi",
+      "features": [
+        {
+          "icon": "https://cdn.lovart.ai/icons/mcot.svg",
+          "title": "MCoT — Design di biglietti con intelligenza emotiva",
+          "description": "Il motore MCoT proprietario di Lovart elabora il tuo concetto attraverso 5 catene di ragionamento parallele — analizzando il sentimento dell'occasione, l'adeguatezza culturale, l'armonia tipografica, la psicologia del colore e l'equilibrio compositivo. Ogni biglietto è progettato con intelligenza emotiva."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/chatcanvas.svg",
+          "title": "ChatCanvas — Personalizza ogni dettaglio",
+          "description": "Rendi ogni biglietto veramente personale con ChatCanvas. 'Cambia il messaggio in nostro 25° anniversario', 'Aggiungi la data del nostro matrimonio — 14 giugno 1999', 'Sostituisci le rose con i girasoli' — le modifiche conversazionali personalizzano i biglietti nei minimi dettagli."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/resolution.svg",
+          "title": "Risoluzione 8K per qualità di stampa",
+          "description": "Ogni biglietto è generato in risoluzione nativa 8K (7680×4320) — garantendo stampe bellissime a qualsiasi dimensione. Invia come e-card ad alta risoluzione o stampa con qualità professionale per incorniciare e regalare."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/formats.svg",
+          "title": "Export multi-formato: PNG / JPG / SVG / PSD",
+          "description": "Esporta biglietti come PNG (condivisione digitale), JPG (email e messaggistica), SVG (vettore scalabile ideale per tipografie) e file PSD con livelli (piano Pro a $11.000/mese, con livelli di testo modificabili)."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/commercial.svg",
+          "title": "Licenza commerciale per attività di biglietteria",
+          "description": "I piani a pagamento — Starter ($2.000/mese), Basic ($3.500/mese), Pro ($11.000/mese) — includono diritti commerciali completi. Vendi i tuoi biglietti su Etsy, Shopify, marketplace di biglietti d'auguri o come parte dei tuoi servizi di design, senza costi di licenza aggiuntivi."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/free.svg",
+          "title": "Crediti giornalieri gratuiti — biglietti per ogni occasione",
+          "description": "Crea biglietti d'anniversario con crediti giornalieri gratuiti. Sperimenta diversi stili — dal classico elegante al minimalismo moderno — e trova il linguaggio visivo perfetto prima di passare a un piano a pagamento per uso commerciale."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "heading": "Amato dai creatori di biglietti in tutto il mondo",
+      "badge": "Storie dei clienti",
+      "testimonials": [
+        {
+          "name": "Francesca Romano",
+          "role": "Proprietaria, negozio Etsy HeartfeltGreetings",
+          "avatar": "https://cdn.lovart.ai/testimonials/rebecca-hartwell.webp",
+          "quote": "Il mio negozio Etsy vende biglietti d'anniversario personalizzati. Prima di Lovart, creavo manualmente circa 15 nuovi design al mese — era estenuante. Ora con il piano Starter ($2.000/mese), pubblico oltre 140 design unici al mese. Il fatturato è cresciuto da $4.200 a $17.800 mensili, e i clienti danno costantemente 5 stelle.",
+          "stats": [
+            { "label": "Design/mese", "value": "140+" },
+            { "label": "Crescita fatturato", "value": "$4,2K → $17,8K" },
+            { "label": "Valutazione", "value": "4,9★" },
+            { "label": "Piano", "value": "Starter $2.000/mese" }
+          ],
+          "avatar_url": ""
+        },
+        {
+          "name": "Marco Bianchi",
+          "role": "Direttore Creativo, CelebrateCo Events",
+          "avatar": "https://cdn.lovart.ai/testimonials/michael-torres.webp",
+          "quote": "Organizziamo oltre 300 eventi aziendali all'anno e ogni cliente vuole biglietti personalizzati. Il piano Pro di Lovart ($11.000/mese) ha sostituito un team di 4 designer junior. Ora produciamo oltre 2.200 biglietti all'anno — ognuno dal design unico per l'azienda e l'anno specifici. La soddisfazione dei clienti per la personalizzazione è salita dal 78% al 96%.",
+          "stats": [
+            { "label": "Biglietti/anno", "value": "2.200+" },
+            { "label": "Eventi/anno", "value": "300+" },
+            { "label": "Team sostituito", "value": "4 designer" },
+            { "label": "Soddisfazione", "value": "78% → 96%" }
+          ],
+          "avatar_url": ""
+        },
+        {
+          "name": "Giulia Ferrara",
+          "role": "Mamma & blogger lifestyle, 850K follower",
+          "avatar": "https://cdn.lovart.ai/testimonials/linda-zhang.webp",
+          "quote": "Condivido le tradizioni familiari con i miei 850.000 follower. Nano Banana Pro di Lovart mi aiuta a creare i biglietti più belli per i miei genitori — ogni anno completamente diversi e profondamente personali. Il biglietto di quest'anno ha ricevuto 127.000 like e 3.400 commenti. Oltre 500 follower mi hanno detto di aver iniziato a usare Lovart. È diventato un prezioso strumento per come la nostra comunità celebra l'amore.",
+          "stats": [
+            { "label": "Follower", "value": "850K" },
+            { "label": "Like al biglietto", "value": "127.000" },
+            { "label": "Commenti", "value": "3.400" },
+            { "label": "Follower convertiti", "value": "500+" }
+          ],
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "heading": "Domande frequenti",
+      "badge": "9 domande comuni",
+      "faq": [
+        {
+          "question": "Che tipi di biglietti d'anniversario può creare Lovart?",
+          "answer": "Il creatore di biglietti IA di Lovart progetta biglietti per ogni occasione: anniversari di matrimonio (dal 1° al 75° e oltre), traguardi aziendali, anniversari di coppia, anniversari dei genitori, anniversari di amicizia e qualsiasi traguardo personalizzato. Il motore MCoT sensibile alle emozioni di Nano Banana Pro adatta il tono, la palette e gli elementi decorativi a ogni specifica occasione."
+        },
+        {
+          "question": "Quanto costa Lovart per il design di biglietti d'anniversario?",
+          "answer": "Lovart offre Gratuito (crediti giornalieri per uso personale), Starter ($2.000/mese con licenza commerciale), Basic ($3.500/mese con rendering prioritario e generazione in blocco) e Pro ($11.000/mese con generazioni illimitate, export PSD a livelli e rendering dedicato). Tutti i piani a pagamento includono diritti commerciali completi."
+        },
+        {
+          "question": "Posso aggiungere nomi, date e messaggi personali ai miei biglietti?",
+          "answer": "Assolutamente sì. ChatCanvas permette di personalizzare ogni elemento in modo conversazionale: 'Aggiungi il testo Buon 25° Anniversario, Sarah & James', 'Includi la data 14 giugno 1999 sotto il titolo' o 'Aggiungi un messaggio sentito: 25 anni di amore, risate e avventure insieme'. Anche i nomi di destinatario e mittente possono essere personalizzati."
+        },
+        {
+          "question": "Posso usare i biglietti Lovart a fini commerciali — per il mio negozio o attività?",
+          "answer": "Sì — tutti i piani a pagamento includono diritti completi di uso commerciale. I design creati con Starter ($2.000/mese), Basic ($3.500/mese) o Pro ($11.000/mese) possono essere venduti su Etsy, Shopify, Creative Market e marketplace di biglietti. Nessuna attribuzione, royalty o costi di licenza aggiuntivi. I design del livello gratuito sono solo per uso personale."
+        },
+        {
+          "question": "Cos'è ChatCanvas e come aiuta a personalizzare i biglietti?",
+          "answer": "ChatCanvas è l'interfaccia di editing conversazionale di Lovart — l'innovazione centrale del primo Agente di Design IA al mondo. Per i biglietti d'anniversario, puoi aggiungere tocchi personali semplicemente descrivendoli: 'Cambia lo sfondo in un tramonto sull'oceano', 'Aggiungi due cuori intrecciati in oro', 'Rendi la tipografia più moderna e minimalista'. ChatCanvas applica ogni modifica con precisione preservando tutto il resto."
+        },
+        {
+          "question": "Quanti crediti giornalieri gratuiti ricevo per il design dei biglietti?",
+          "answer": "Ogni account Lovart riceve crediti giornalieri gratuiti rinnovati ogni 24 ore, che generalmente consentono 5-10 generazioni di biglietti al giorno. I crediti gratuiti danno pieno accesso all'elaborazione MCoT di Nano Banana Pro, alla personalizzazione ChatCanvas e all'export 8K — perfetti per creare biglietti personali o valutare la qualità prima di passare a Starter ($2.000/mese), Basic ($3.500/mese) o Pro ($11.000/mese)."
+        },
+        {
+          "question": "Posso stampare professionalmente i biglietti creati con Lovart?",
+          "answer": "Sì. Tutti i biglietti sono generati in risoluzione nativa 8K (7680×4320), offrendo densità di pixel sufficiente per la stampa professionale fino al formato poster. Esporta come PSD (piano Pro a $11.000/mese) per file a livelli utilizzabili direttamente dalle tipografie, o come PNG/JPG/SVG ad alta risoluzione."
+        },
+        {
+          "question": "Quali stili ed estetiche sono disponibili per i biglietti d'anniversario?",
+          "answer": "Nano Banana Pro può progettare in qualsiasi stile visivo: classico elegante (lamina d'oro, calligrafia, floreale), moderno minimalista (linee pulite, tipografia marcata, spazio negativo), acquerello romantico (lavaggi morbidi, botanico, onirico), vintage retrò (texture nostalgiche, toni seppia), corporate professionale (blu navy e oro, geometrico), illustrato fantasioso (disegnato a mano, vivace) e qualsiasi stile personalizzato. La catena di coerenza stilistica di MCoT garantisce armonia visiva."
+        },
+        {
+          "question": "In cosa si differenzia il creatore di biglietti IA di Lovart dai modelli Canva o Adobe Express?",
+          "answer": "Canva e Adobe Express offrono modelli predefiniti da compilare — il che significa che migliaia di altre persone hanno lo stesso design. Lovart è il primo Agente di Design IA al mondo: descrivi la tua visione e il motore MCoT di Nano Banana Pro genera un design completamente originale e personalizzato. Ogni biglietto è unico, non un modello modificato. ChatCanvas consente il perfezionamento conversazionale. Piani a pagamento a partire da Starter $2.000/mese, Basic $3.500/mese e Pro $11.000/mese con diritti commerciali completi."
+        }
+      ]
+    }
+  ],
+  "section_es": [
+    {
+      "type": "centeredInputSection",
+      "heading": "Creador de tarjetas de aniversario con IA",
+      "subheading": "Diseña tarjetas de aniversario únicas y llenas de sentimiento con Lovart — el primer Agente de Diseño con IA del mundo. Desde elegantes diseños de bodas hasta celebraciones de hitos empresariales, Nano Banana Pro genera tarjetas 8K personalizadas que capturan cada ocasión.",
+      "cta": "Crear mi tarjeta",
+      "url": "/ai-anniversary-card-maker",
+      "image": "https://cdn.lovart.ai/hero/anniversary-card-maker.webp",
+      "badge": "Impulsado por Nano Banana Pro",
+      "suggestion": [
+        {
+          "icon": "💍",
+          "label": "Aniversario de bodas",
+          "prompt": "Elegante diseño de tarjeta de aniversario de bodas, detalles en lámina dorada, borde floral en acuarela romántica, tipografía caligráfica 'Feliz Aniversario', paleta suave rubor y crema, estilo tarjeta de felicitación de lujo"
+        },
+        {
+          "icon": "🏢",
+          "label": "Hito empresarial",
+          "prompt": "Diseño profesional de tarjeta de aniversario empresarial, celebración de hito corporativo, esquema azul marino y dorado, patrón geométrico moderno, tipografía destacada 'Celebrando 10 Años', elemento de insignia de logro"
+        },
+        {
+          "icon": "💕",
+          "label": "Aniversario de pareja",
+          "prompt": "Cálida tarjeta de aniversario de relación, estilo ilustración dibujada a mano, motivo de silueta de pareja, fondo degradado atardecer, espacio para mensaje sincero, estética íntima y personal"
+        },
+        {
+          "icon": "👨‍👩‍👧",
+          "label": "Aniversario de los padres",
+          "prompt": "Conmovedor diseño de tarjeta de aniversario para los padres, estética foto familiar vintage, paleta cálida tonos tierra, elegante tipografía manuscrita 'A los Mejores Padres', delicado borde botánico, atmósfera nostálgica y amorosa"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "heading": "Por qué elegir Lovart para tus tarjetas de aniversario",
+      "badge": "6 funciones potentes",
+      "columns": [
+        {
+          "step": 1,
+          "title": "Elige tu ocasión y estilo",
+          "description": "Selecciona el tipo de aniversario — bodas, hito empresarial, relación o padres — y describe tu estética preferida. Especifica colores, estilo tipográfico, elementos decorativos y detalles personales. La cadena sensible a las emociones de MCoT asegura el tono adecuado.",
+          "image": "https://cdn.lovart.ai/how-it-works/card-step1-choose.webp"
+        },
+        {
+          "step": 2,
+          "title": "Personaliza con ChatCanvas",
+          "description": "Perfecciona el diseño de tu tarjeta de forma conversacional. Añade nombres, fechas, mensajes personales o imágenes personalizadas. Cambia colores, sustituye elementos decorativos, ajusta la tipografía — ChatCanvas aplica cada edición con precisión preservando la composición.",
+          "image": "https://cdn.lovart.ai/how-it-works/card-step2-refine.webp"
+        },
+        {
+          "step": 3,
+          "title": "Exporta y comparte tu tarjeta",
+          "description": "Descarga tu tarjeta terminada en el formato que prefieras. Envíala digitalmente por correo o mensajería, publica en redes sociales o exporta como PSD listo para imprimir (plan Pro) para impresión profesional y regalo físico.",
+          "image": "https://cdn.lovart.ai/how-it-works/card-step3-export.webp"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "heading": "Cómo funciona el creador de tarjetas de aniversario con IA de Lovart",
+      "badge": "3 pasos sencillos",
+      "features": [
+        {
+          "icon": "https://cdn.lovart.ai/icons/mcot.svg",
+          "title": "MCoT — Diseño de tarjetas con inteligencia emocional",
+          "description": "El motor MCoT propietario de Lovart procesa tu concepto de tarjeta mediante 5 cadenas de razonamiento paralelas — analizando el sentimiento de la ocasión, la adecuación cultural, la armonía tipográfica, la psicología del color y el equilibrio compositivo. Cada tarjeta se diseña con inteligencia emocional."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/chatcanvas.svg",
+          "title": "ChatCanvas — Personaliza cada detalle",
+          "description": "Haz que cada tarjeta sea verdaderamente personal con ChatCanvas. «Cambia el mensaje a nuestro 25º aniversario», «Añade nuestra fecha de boda — 14 de junio de 1999», «Sustituye las rosas por girasoles» — las ediciones conversacionales personalizan las tarjetas hasta el más mínimo detalle."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/resolution.svg",
+          "title": "Resolución 8K para calidad de impresión",
+          "description": "Cada tarjeta se genera en resolución nativa 8K (7680×4320) — asegurando impresiones hermosas a cualquier tamaño. Envía como tarjeta digital de alta resolución o imprime con calidad profesional para enmarcar y regalar."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/formats.svg",
+          "title": "Exportación multi-formato: PNG / JPG / SVG / PSD",
+          "description": "Exporta tarjetas como PNG (compartir digital), JPG (correo y mensajería), SVG (vector escalable ideal para imprentas) y archivos PSD con capas (plan Pro a $11.000/mes, con capas de texto editables)."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/commercial.svg",
+          "title": "Licencia comercial para negocios de tarjetas",
+          "description": "Los planes de pago — Starter ($2.000/mes), Basic ($3.500/mes), Pro ($11.000/mes) — incluyen derechos comerciales completos. Vende tus tarjetas en Etsy, Shopify, marketplaces de tarjetas de felicitación o como parte de tus servicios de diseño, sin costes adicionales de licencia."
+        },
+        {
+          "icon": "https://cdn.lovart.ai/icons/free.svg",
+          "title": "Créditos diarios gratuitos — tarjetas para cada ocasión",
+          "description": "Crea tarjetas de aniversario con créditos diarios gratuitos. Experimenta con diferentes estilos — del clásico elegante al minimalismo moderno — y encuentra el lenguaje visual perfecto antes de pasar a un plan de pago para uso comercial."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "heading": "Adorado por creadores de tarjetas de todo el mundo",
+      "badge": "Historias de clientes",
+      "testimonials": [
+        {
+          "name": "Carmen García",
+          "role": "Propietaria, tienda Etsy HeartfeltGreetings",
+          "avatar": "https://cdn.lovart.ai/testimonials/rebecca-hartwell.webp",
+          "quote": "Mi tienda Etsy vende tarjetas de aniversario personalizadas. Antes de Lovart, creaba manualmente unos 15 diseños nuevos al mes — era agotador. Ahora con el plan Starter ($2.000/mes), publico más de 140 diseños únicos al mes. Mis ingresos crecieron de $4.200 a $17.800 mensuales, y los clientes siempre dan 5 estrellas por los diseños únicos y personalizados.",
+          "stats": [
+            { "label": "Diseños/mes", "value": "140+" },
+            { "label": "Crecimiento ingresos", "value": "$4,2K → $17,8K" },
+            { "label": "Valoración", "value": "4,9★" },
+            { "label": "Plan", "value": "Starter $2.000/mes" }
+          ],
+          "avatar_url": ""
+        },
+        {
+          "name": "Miguel Fernández",
+          "role": "Director Creativo, CelebrateCo Events",
+          "avatar": "https://cdn.lovart.ai/testimonials/michael-torres.webp",
+          "quote": "Realizamos más de 300 eventos corporativos al año y cada cliente quiere tarjetas personalizadas. El plan Pro de Lovart ($11.000/mes) reemplazó a un equipo de 4 diseñadores junior. Ahora producimos más de 2.200 tarjetas al año — cada una con diseño único para la empresa y año específicos. La satisfacción del cliente con la personalización subió del 78% al 96%.",
+          "stats": [
+            { "label": "Tarjetas/año", "value": "2.200+" },
+            { "label": "Eventos/año", "value": "300+" },
+            { "label": "Equipo reemplazado", "value": "4 diseñadores" },
+            { "label": "Satisfacción", "value": "78% → 96%" }
+          ],
+          "avatar_url": ""
+        },
+        {
+          "name": "Elena López",
+          "role": "Mamá & blogger de estilo de vida, 850K seguidores",
+          "avatar": "https://cdn.lovart.ai/testimonials/linda-zhang.webp",
+          "quote": "Comparto las tradiciones familiares con mis 850.000 seguidores. Nano Banana Pro de Lovart me ayuda a crear las tarjetas más bonitas para mis padres — cada año completamente diferentes y profundamente personales. La tarjeta de este año recibió 127.000 me gusta y 3.400 comentarios. Más de 500 seguidores me dijeron que empezaron a usar Lovart. Se ha convertido en una parte valiosa de cómo nuestra comunidad celebra el amor.",
+          "stats": [
+            { "label": "Seguidores", "value": "850K" },
+            { "label": "Me gusta tarjeta", "value": "127.000" },
+            { "label": "Comentarios", "value": "3.400" },
+            { "label": "Seguidores convertidos", "value": "500+" }
+          ],
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "heading": "Preguntas frecuentes",
+      "badge": "9 preguntas comunes",
+      "faq": [
+        {
+          "question": "¿Qué tipos de tarjetas de aniversario puede crear Lovart?",
+          "answer": "El creador de tarjetas con IA de Lovart diseña tarjetas para cada ocasión: aniversarios de boda (del 1º al 75º y más), hitos empresariales, aniversarios de pareja, aniversarios de los padres, aniversarios de amistad y cualquier hito personalizado. El motor MCoT sensible a las emociones de Nano Banana Pro adapta el tono, la paleta y los elementos decorativos a cada ocasión específica."
+        },
+        {
+          "question": "¿Cuánto cuesta Lovart para diseñar tarjetas de aniversario?",
+          "answer": "Lovart ofrece Gratuito (créditos diarios para uso personal), Starter ($2.000/mes con licencia comercial), Basic ($3.500/mes con renderizado prioritario y generación por lotes) y Pro ($11.000/mes con generaciones ilimitadas, exportación PSD en capas y renderizado dedicado). Todos los planes de pago incluyen derechos comerciales completos."
+        },
+        {
+          "question": "¿Puedo añadir nombres, fechas y mensajes personales a mis tarjetas?",
+          "answer": "Por supuesto. ChatCanvas permite personalizar cada elemento de forma conversacional: «Añade el texto Feliz 25º Aniversario, Sarah y James», «Incluye la fecha 14 de junio de 1999 bajo el título» o «Añade un mensaje sincero: 25 años de amor, risas y aventuras juntos». También se pueden personalizar los nombres del destinatario y remitente."
+        },
+        {
+          "question": "¿Puedo usar las tarjetas de Lovart con fines comerciales — para mi tienda o negocio de diseño?",
+          "answer": "Sí — todos los planes de pago incluyen derechos completos de uso comercial. Los diseños creados con Starter ($2.000/mes), Basic ($3.500/mes) o Pro ($11.000/mes) pueden venderse en Etsy, Shopify, Creative Market y marketplaces de tarjetas. Sin necesidad de atribución, regalías ni costes adicionales de licencia. Los diseños del nivel gratuito son solo para uso personal."
+        },
+        {
+          "question": "¿Qué es ChatCanvas y cómo ayuda a personalizar las tarjetas?",
+          "answer": "ChatCanvas es la interfaz de edición conversacional de Lovart — la innovación central del primer Agente de Diseño con IA del mundo. Para las tarjetas de aniversario, puedes añadir toques personales simplemente describiéndolos: «Cambia el fondo a un atardecer sobre el océano», «Añade dos corazones entrelazados en dorado», «Haz la tipografía más moderna y minimalista». ChatCanvas aplica cada edición con precisión conservando todo lo demás."
+        },
+        {
+          "question": "¿Cuántos créditos diarios gratuitos recibo para diseñar tarjetas?",
+          "answer": "Cada cuenta de Lovart recibe créditos diarios gratuitos que se renuevan cada 24 horas, permitiendo generalmente de 5 a 10 generaciones de tarjetas al día. Los créditos gratuitos dan acceso completo al procesamiento MCoT de Nano Banana Pro, la personalización ChatCanvas y la exportación en 8K — perfecto para crear tarjetas personales o evaluar la calidad antes de pasar a Starter ($2.000/mes), Basic ($3.500/mes) o Pro ($11.000/mes)."
+        },
+        {
+          "question": "¿Puedo imprimir profesionalmente las tarjetas creadas con Lovart?",
+          "answer": "Sí. Todas las tarjetas se generan en resolución nativa 8K (7680×4320), proporcionando densidad de píxeles suficiente para impresión profesional hasta tamaño póster. Exporta como PSD (plan Pro a $11.000/mes) para archivos en capas que las imprentas pueden usar directamente, o como PNG/JPG/SVG de alta resolución."
+        },
+        {
+          "question": "¿Qué estilos y estéticas están disponibles para las tarjetas de aniversario?",
+          "answer": "Nano Banana Pro puede diseñar en cualquier estilo visual: clásico elegante (lámina dorada, caligrafía, floral), moderno minimalista (líneas limpias, tipografía destacada, espacio negativo), acuarela romántica (lavados suaves, botánico, onírico), vintage retro (texturas nostálgicas, tonos sepia), corporativo profesional (azul marino y dorado, geométrico), ilustrado caprichoso (dibujado a mano, vibrante) y cualquier estilo personalizado. La cadena de coherencia estilística de MCoT garantiza la armonía visual."
+        },
+        {
+          "question": "¿En qué se diferencia el creador de tarjetas IA de Lovart de las plantillas de Canva o Adobe Express?",
+          "answer": "Canva y Adobe Express ofrecen plantillas prediseñadas para rellenar — lo que significa que miles de personas tienen el mismo diseño. Lovart es el primer Agente de Diseño con IA del mundo: describes tu visión y el motor MCoT de Nano Banana Pro genera un diseño completamente original y personalizado. Cada tarjeta es única, no una plantilla modificada. ChatCanvas permite el refinamiento conversacional. Planes de pago desde Starter $2.000/mes, Basic $3.500/mes y Pro $11.000/mes con derechos comerciales completos."
+        }
+      ]
+    }
+  ]
+}

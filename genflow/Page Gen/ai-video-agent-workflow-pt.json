@@ -1,0 +1,460 @@
+{
+  "_id": "features-ai-video-agent-workflow-pt",
+  "schemaVersion": "composite-v2",
+  "draftStatus": "local-pt-new",
+  "reflowSourceId": "features-ai-video-agent-workflow-pt",
+  "language": "pt",
+  "category": "feature",
+  "slug": {
+    "_type": "slug",
+    "current": "ai-video-agent-workflow"
+  },
+  "storyline": "features-grid-bento6",
+  "title": "Fluxo do Agente de Vídeo com IA: padronize uma produção repetível | Lovart",
+  "description": "Padronize entrada → storyboard → geração → revisão → exportação por canal. O Lovart mantém Brand Kit, ativos e histórico de revisões em um só canvas para as equipes.",
+  "seo": {
+    "_type": "seo",
+    "description": "Padronize entrada → storyboard → geração → revisão → exportação por canal. O Lovart mantém Brand Kit, ativos e histórico de revisões em um só canvas para as equipes.",
+    "keywords": [
+      "ai video agent workflow",
+      "video production agent",
+      "creative ops ai video",
+      "lovart workflow"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "AI Video Agent Workflow",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png"
+    },
+    "title": "Fluxo do Agente de Vídeo com IA: padronize uma produção repetível | Lovart"
+  },
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Video Agent\",\"title\":\"Um fluxo repetível de Agente de Vídeo com IA\",\"highlightedText\":\"from brief to export\",\"description\":\"Padronize entrada → storyboard → geração → revisão → exportação por canal. O Lovart mantém Brand Kit, ativos e histórico de revisões em um só canvas para as equipes.\",\"buttons\":[{\"text\":\"Comece a criar\",\"href\":\"\",\"variant\":\"primary\"},{\"text\":\"Ver exemplos\",\"href\":\"\",\"variant\":\"secondary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"AI Video Agent Workflow\"}},{\"type\":\"bento-6\",\"title\":\"Seis motivos para equipes escolherem o Lovart como agente de vídeo\",\"description\":\"Recursos que equipes de produto e growth esperam de uma stack de vídeo com agente.\",\"columns\":3,\"features\":[{\"title\":\"Entrada multimodal\",\"description\":\"Texto, imagens e referências de áudio em um único briefing.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png\",\"alt\":\"Multimodal\"}},{\"title\":\"Controle de nível diretor\",\"description\":\"Movimentos de câmera e ritmo em linguagem natural.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/fdd595720454d37ebbc0927c96f9bf8e2bc23a84d72e640d0aad62eca8dd35b5.png\",\"alt\":\"Camera\"}},{\"title\":\"Consistência de personagem\",\"description\":\"Os personagens permanecem estáveis entre as cenas.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png\",\"alt\":\"Consistency\"}},{\"title\":\"Renderização na nuvem\",\"description\":\"Sem GPU local para rascunhos em 4K.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png\",\"alt\":\"Cloud\"}},{\"title\":\"Exportações prontas para cada canal\",\"description\":\"9:16, 16:9 e 1:1 a partir de um só projeto.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png\",\"alt\":\"Exports\"}},{\"title\":\"Edições no agente + canvas\",\"description\":\"Touch Edit e iteração sem sair do fluxo.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"Canvas\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Todos os recursos em um só agente\",\"description\":\"\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Briefing e planejamento\",\"icon\":\"search\",\"content\":{\"title\":\"Planejamento focado em resultados\",\"description\":\"O Lovart transforma objetivos em intenção de cena antes de mover qualquer pixel.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png\",\"alt\":\"Plan\"},\"points\":[\"Channel specs\",\"Offer context\",\"Shot list\"]}},{\"label\":\"Gerar\",\"icon\":\"sparkle\",\"content\":{\"title\":\"De texto e imagem para vídeo\",\"description\":\"Movimento de nível Seedance com a orquestração do Lovart.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"Gerar\"},\"points\":[\"Text-to-video\",\"Image-to-video\",\"Audio sync\"]}},{\"label\":\"Dirigir\",\"icon\":\"pointer\",\"content\":{\"title\":\"Direção em linguagem natural\",\"description\":\"Pan, zoom e ritmo sem keyframes.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png\",\"alt\":\"Dirigir\"},\"points\":[\"Camera verbs\",\"Lighting notes\",\"Pacing\"]}},{\"label\":\"Publicar\",\"icon\":\"brand\",\"content\":{\"title\":\"Revise no ChatCanvas\",\"description\":\"Aprove variações e exporte para anúncios ou redes sociais.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png\",\"alt\":\"Publicar\"},\"points\":[\"Touch Edit\",\"Brand Kit\",\"MP4 export\"]}}]},{\"type\":\"bento-2\",\"title\":\"Duas coisas que ele faz muito bem\",\"columns\":2,\"features\":[{\"title\":\"Publique mais variações\",\"description\":\"Ganchos e cortes sem uma equipe completa de pós-produção.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png\",\"alt\":\"Variants\"}},{\"title\":\"Mantenha a identidade da marca\",\"description\":\"O Brand Kit acompanha do briefing à exportação.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png\",\"alt\":\"On-brand\"}}]},{\"type\":\"feature-detail\",\"title\":\"Como funciona em detalhes\",\"description\":\"Como o agente mantém o contexto da geração à revisão.\",\"items\":[{\"title\":\"Inicie seu projeto de Fluxo de trabalho do Agente de Vídeo com IA\",\"description\":\"Descreva o resultado desejado e adicione referências.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png\",\"alt\":\"Brief\"},\"cta\":{\"text\":\"Iniciar briefing\",\"href\":\"\",\"variant\":\"primary\"}},{\"title\":\"Itere com o agente\",\"description\":\"Ajuste detalhes e explore variações no mesmo canvas.\",\"reverse\":true,\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png\",\"alt\":\"Canvas\"},\"cta\":{\"text\":\"Abrir canvas\",\"href\":\"\",\"variant\":\"primary\"}}]},{\"type\":\"prompt-launcher\",\"title\":\"Experimente o Fluxo do Agente de Vídeo com IA em um único prompt\",\"description\":\"Descreva a cena, a câmera, a proporção e a marca — o Lovart devolve clipes de rascunho que você refina no canvas.\",\"input_placeholder\":\"ex.: gancho de produto 9:16, energia de câmera na mão, golden hour, logo no terço inferior…\",\"prompts\":[{\"label\":\"Lote semanal para redes sociais\",\"prompt\":\"Quatro clipes verticais a partir de uma linha do calendário de conteúdo, coloração consistente\"},{\"label\":\"Ciclo de revisão com o cliente\",\"prompt\":\"Versões A/B/C da cena principal com comentários de feedback com marcação de tempo\"},{\"label\":\"Entrega de ativos\",\"prompt\":\"Exporte masters em 9:16 e 16:9 além de imagens para thumbnail do mesmo projeto\"},{\"label\":\"Limites de modelo (guardrails)\",\"prompt\":\"Garanta as cores da marca e o estilo do terço inferior em cinco cenas\"}],\"cta\":{\"text\":\"Gerar vídeo\"},\"tip\":\"Com a tecnologia do Lovart AI Design Agent + modelos de movimento de nível Seedance.\"},{\"type\":\"workflow-horizontal\",\"title\":\"Três passos com seu agente de vídeo\",\"steps\":[{\"step\":1,\"title\":\"Descreva o resultado\",\"description\":\"Canal, duração, clima e eventuais imagens ou locução.\"},{\"step\":2,\"title\":\"Gere e dirija\",\"description\":\"O agente cria os rascunhos; você comanda câmera e ritmo no chat.\"},{\"step\":3,\"title\":\"Refine e exporte\",\"description\":\"Ajuste fino com o Touch Edit e baixe para anúncios ou redes sociais.\"}]},{\"type\":\"comparison-table\",\"title\":\"Fluxo de trabalho do Agente de Vídeo com IA: Lovart vs. fluxos de trabalho tradicionais\",\"headers\":[\"Necessidade\",\"Ferramenta genérica\",\"Fluxo manual\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Inicie seu projeto de Fluxo de trabalho do Agente de Vídeo com IA\",\"values\":[\"Um prompt\",\"Briefing manual\",\"Raciocínio guiado pelo briefing\"]},{\"feature\":\"Tempo até o primeiro resultado\",\"values\":[\"Minutos\",\"Dias\",\"Minutos\"]},{\"feature\":\"Edição após a geração\",\"values\":[\"Limitado\",\"Rodadas de revisão\",\"Touch / Texto / Elementos\"]},{\"feature\":\"Manter a identidade da marca\",\"values\":[\"Manual\",\"Manual\",\"Compatível com Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Onde o Lovart se encaixa na sua stack de vídeo\",\"description\":\"Casos de uso que as equipes já rodam no agente hoje.\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Ganchos para mídia paga\",\"description\":\"Variações 9:16 a partir de um único briefing.\"},{\"icon\":\"brand\",\"title\":\"Lançamentos de produto\",\"description\":\"Teasers e vídeos explicativos em uma só sessão.\"},{\"icon\":\"pointer\",\"title\":\"B-roll para creators\",\"description\":\"Complemente o A-roll sem caçar bancos de imagens.\"},{\"icon\":\"globe\",\"title\":\"Localização\",\"description\":\"Troque o texto e a coloração por mercado.\"},{\"icon\":\"image\",\"title\":\"Loops para e-commerce\",\"description\":\"Movimento para páginas de produto e marketplaces.\"},{\"icon\":\"refresh\",\"title\":\"Capacitação interna\",\"description\":\"Trechos de vídeo para vendas e sucesso do cliente.\"}]},{\"type\":\"testimonial\",\"title\":\"Equipes que entregam vídeo com um agente, não com uma timeline\",\"testimonials\":[{\"quote\":\"Substituímos três ferramentas por uma sessão do Lovart — ganchos, loops de produto e exportações.\",\"author\":\"Maya L.\",\"role\":\"Líder de growth\"},{\"quote\":\"O recurso de imagem para vídeo manteve os rótulos dos nossos SKUs precisos. Só isso já justificou a mudança.\",\"author\":\"James K.\",\"role\":\"Diretor de e-commerce\"},{\"quote\":\"Nossos creators recebem os cortes verticais no mesmo dia em que passamos o briefing.\",\"author\":\"Priya S.\",\"role\":\"Operações de creators\"}]},{\"type\":\"pricing-block\",\"title\":\"Escolha o plano ideal para a sua equipe\",\"description\":\"Comece de graça. Faça upgrade quando o trabalho for para o cliente.\"},{\"type\":\"faq\",\"title\":\"Perguntas frequentes\",\"items\":[{\"question\":\"O que é um agente de vídeo com IA?\",\"answer\":\"Um agente de vídeo com IA planeja, gera e ajuda você a refinar clipes curtos a partir de texto, imagens e áudio — não é apenas um botão de texto para vídeo.\"},{\"question\":\"Como o Lovart se diferencia de um gerador de vídeo isolado?\",\"answer\":\"O Lovart combina geração multimodal com a edição no ChatCanvas, o Brand Kit e o contexto da campanha, para que o vídeo se mantenha alinhado à marca em todos os canais.\"},{\"question\":\"Preciso de uma GPU potente?\",\"answer\":\"Não. A renderização acontece na nuvem do Lovart. Você só precisa de um navegador moderno e um briefing claro.\"},{\"question\":\"Posso usar os clipes comercialmente?\",\"answer\":\"Os planos pagos incluem direitos de uso comercial para os ativos que você cria no Lovart. Consulte seu plano para mais detalhes.\"},{\"question\":\"Quais proporções de tela são suportadas?\",\"answer\":\"As proporções comuns incluem 16:9 (YouTube), 9:16 (TikTok/Reels) e 1:1 (feeds). Especifique a proporção no seu prompt.\"},{\"question\":\"O Lovart oferece imagem para vídeo?\",\"answer\":\"Sim. Envie imagens de referência ou fotos de produto e descreva o movimento — ideal para e-commerce e filmes de marca.\"},{\"question\":\"As equipes de marketing podem testar variações A/B?\",\"answer\":\"Sim. Gere vários ganchos ou trajetórias de câmera a partir de um briefing mestre e compare o desempenho.\"},{\"question\":\"Quão rápidos são os rascunhos?\",\"answer\":\"A maioria dos clipes curtos fica pronta em segundos a um minuto, dependendo da duração e da fila — depois você itera no canvas.\"},{\"question\":\"Isso é o mesmo que o Seedance?\",\"answer\":\"O Lovart orquestra modelos de nível Seedance dentro de um fluxo com agente, com edição, marca e exportação — e não em uma aba de ferramenta separada.\"}]},{\"type\":\"cta-default\",\"title\":\"Pronto para dirigir vídeo com um agente?\",\"description\":\"Comece grátis — descreva sua primeira cena no ChatCanvas.\",\"buttons\":[{\"text\":\"Começar grátis\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Video Agent",
+      "title": "Um fluxo repetível de Agente de Vídeo com IA",
+      "highlightedText": "from brief to export",
+      "description": "Padronize entrada → storyboard → geração → revisão → exportação por canal. O Lovart mantém Brand Kit, ativos e histórico de revisões em um só canvas para as equipes.",
+      "buttons": [
+        {
+          "text": "Comece a criar",
+          "href": "",
+          "variant": "primary"
+        },
+        {
+          "text": "Ver exemplos",
+          "href": "",
+          "variant": "secondary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+        "alt": "AI Video Agent Workflow"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Seis motivos para equipes escolherem o Lovart como agente de vídeo",
+      "description": "Recursos que equipes de produto e growth esperam de uma stack de vídeo com agente.",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Entrada multimodal",
+          "description": "Texto, imagens e referências de áudio em um único briefing.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png",
+            "alt": "Multimodal"
+          }
+        },
+        {
+          "title": "Controle de nível diretor",
+          "description": "Movimentos de câmera e ritmo em linguagem natural.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/fdd595720454d37ebbc0927c96f9bf8e2bc23a84d72e640d0aad62eca8dd35b5.png",
+            "alt": "Camera"
+          }
+        },
+        {
+          "title": "Consistência de personagem",
+          "description": "Os personagens permanecem estáveis entre as cenas.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png",
+            "alt": "Consistency"
+          }
+        },
+        {
+          "title": "Renderização na nuvem",
+          "description": "Sem GPU local para rascunhos em 4K.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png",
+            "alt": "Cloud"
+          }
+        },
+        {
+          "title": "Exportações prontas para cada canal",
+          "description": "9:16, 16:9 e 1:1 a partir de um só projeto.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png",
+            "alt": "Exports"
+          }
+        },
+        {
+          "title": "Edições no agente + canvas",
+          "description": "Touch Edit e iteração sem sair do fluxo.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+            "alt": "Canvas"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Todos os recursos em um só agente",
+      "description": "",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Briefing e planejamento",
+          "icon": "search",
+          "content": {
+            "title": "Planejamento focado em resultados",
+            "description": "O Lovart transforma objetivos em intenção de cena antes de mover qualquer pixel.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png",
+              "alt": "Plan"
+            },
+            "points": [
+              "Channel specs",
+              "Offer context",
+              "Shot list"
+            ]
+          }
+        },
+        {
+          "label": "Gerar",
+          "icon": "sparkle",
+          "content": {
+            "title": "De texto e imagem para vídeo",
+            "description": "Movimento de nível Seedance com a orquestração do Lovart.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+              "alt": "Gerar"
+            },
+            "points": [
+              "Text-to-video",
+              "Image-to-video",
+              "Audio sync"
+            ]
+          }
+        },
+        {
+          "label": "Dirigir",
+          "icon": "pointer",
+          "content": {
+            "title": "Direção em linguagem natural",
+            "description": "Pan, zoom e ritmo sem keyframes.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/181f2cd3e3b8744401ef85904d63f0c07c492887604dcacd369ea3e807183bc6.png",
+              "alt": "Dirigir"
+            },
+            "points": [
+              "Camera verbs",
+              "Lighting notes",
+              "Pacing"
+            ]
+          }
+        },
+        {
+          "label": "Publicar",
+          "icon": "brand",
+          "content": {
+            "title": "Revise no ChatCanvas",
+            "description": "Aprove variações e exporte para anúncios ou redes sociais.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png",
+              "alt": "Publicar"
+            },
+            "points": [
+              "Touch Edit",
+              "Brand Kit",
+              "MP4 export"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Duas coisas que ele faz muito bem",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Publique mais variações",
+          "description": "Ganchos e cortes sem uma equipe completa de pós-produção.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a5b053a156c28e87940cd226a93c311a07f437b5c0c48635f6b3240fe57b6de8.png",
+            "alt": "Variants"
+          }
+        },
+        {
+          "title": "Mantenha a identidade da marca",
+          "description": "O Brand Kit acompanha do briefing à exportação.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/23baa922486b6ebd84c24d0f0af8b451e1792f3565221b27ceff84b20b125669.png",
+            "alt": "On-brand"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "Como funciona em detalhes",
+      "description": "Como o agente mantém o contexto da geração à revisão.",
+      "items": [
+        {
+          "title": "Inicie seu projeto de Fluxo de trabalho do Agente de Vídeo com IA",
+          "description": "Descreva o resultado desejado e adicione referências.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/76f6f16db402baffa46024261bf5603e63fe763833b01f497731603a2495a346.png",
+            "alt": "Brief"
+          },
+          "cta": {
+            "text": "Iniciar briefing",
+            "href": "",
+            "variant": "primary"
+          }
+        },
+        {
+          "title": "Itere com o agente",
+          "description": "Ajuste detalhes e explore variações no mesmo canvas.",
+          "reverse": true,
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/437351775c82f2d4aa7628eccd1ffa393a8d8010d3b448678901622628cc95cf.png",
+            "alt": "Canvas"
+          },
+          "cta": {
+            "text": "Abrir canvas",
+            "href": "",
+            "variant": "primary"
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Experimente o Fluxo do Agente de Vídeo com IA em um único prompt",
+      "description": "Descreva a cena, a câmera, a proporção e a marca — o Lovart devolve clipes de rascunho que você refina no canvas.",
+      "input_placeholder": "ex.: gancho de produto 9:16, energia de câmera na mão, golden hour, logo no terço inferior…",
+      "prompts": [
+        {
+          "label": "Lote semanal para redes sociais",
+          "prompt": "Quatro clipes verticais a partir de uma linha do calendário de conteúdo, coloração consistente"
+        },
+        {
+          "label": "Ciclo de revisão com o cliente",
+          "prompt": "Versões A/B/C da cena principal com comentários de feedback com marcação de tempo"
+        },
+        {
+          "label": "Entrega de ativos",
+          "prompt": "Exporte masters em 9:16 e 16:9 além de imagens para thumbnail do mesmo projeto"
+        },
+        {
+          "label": "Limites de modelo (guardrails)",
+          "prompt": "Garanta as cores da marca e o estilo do terço inferior em cinco cenas"
+        }
+      ],
+      "cta": {
+        "text": "Gerar vídeo"
+      },
+      "tip": "Com a tecnologia do Lovart AI Design Agent + modelos de movimento de nível Seedance."
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Três passos com seu agente de vídeo",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Descreva o resultado",
+          "description": "Canal, duração, clima e eventuais imagens ou locução."
+        },
+        {
+          "step": 2,
+          "title": "Gere e dirija",
+          "description": "O agente cria os rascunhos; você comanda câmera e ritmo no chat."
+        },
+        {
+          "step": 3,
+          "title": "Refine e exporte",
+          "description": "Ajuste fino com o Touch Edit e baixe para anúncios ou redes sociais."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Fluxo de trabalho do Agente de Vídeo com IA: Lovart vs. fluxos de trabalho tradicionais",
+      "headers": [
+        "Necessidade",
+        "Ferramenta genérica",
+        "Fluxo manual",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Inicie seu projeto de Fluxo de trabalho do Agente de Vídeo com IA",
+          "values": [
+            "Um prompt",
+            "Briefing manual",
+            "Raciocínio guiado pelo briefing"
+          ]
+        },
+        {
+          "feature": "Tempo até o primeiro resultado",
+          "values": [
+            "Minutos",
+            "Dias",
+            "Minutos"
+          ]
+        },
+        {
+          "feature": "Edição após a geração",
+          "values": [
+            "Limitado",
+            "Rodadas de revisão",
+            "Touch / Texto / Elementos"
+          ]
+        },
+        {
+          "feature": "Manter a identidade da marca",
+          "values": [
+            "Manual",
+            "Manual",
+            "Compatível com Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Onde o Lovart se encaixa na sua stack de vídeo",
+      "description": "Casos de uso que as equipes já rodam no agente hoje.",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Ganchos para mídia paga",
+          "description": "Variações 9:16 a partir de um único briefing."
+        },
+        {
+          "icon": "brand",
+          "title": "Lançamentos de produto",
+          "description": "Teasers e vídeos explicativos em uma só sessão."
+        },
+        {
+          "icon": "pointer",
+          "title": "B-roll para creators",
+          "description": "Complemente o A-roll sem caçar bancos de imagens."
+        },
+        {
+          "icon": "globe",
+          "title": "Localização",
+          "description": "Troque o texto e a coloração por mercado."
+        },
+        {
+          "icon": "image",
+          "title": "Loops para e-commerce",
+          "description": "Movimento para páginas de produto e marketplaces."
+        },
+        {
+          "icon": "refresh",
+          "title": "Capacitação interna",
+          "description": "Trechos de vídeo para vendas e sucesso do cliente."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "title": "Equipes que entregam vídeo com um agente, não com uma timeline",
+      "testimonials": [
+        {
+          "quote": "Substituímos três ferramentas por uma sessão do Lovart — ganchos, loops de produto e exportações.",
+          "author": "Maya L.",
+          "role": "Líder de growth"
+        },
+        {
+          "quote": "O recurso de imagem para vídeo manteve os rótulos dos nossos SKUs precisos. Só isso já justificou a mudança.",
+          "author": "James K.",
+          "role": "Diretor de e-commerce"
+        },
+        {
+          "quote": "Nossos creators recebem os cortes verticais no mesmo dia em que passamos o briefing.",
+          "author": "Priya S.",
+          "role": "Operações de creators"
+        }
+      ]
+    },
+    {
+      "type": "pricing-block",
+      "title": "Escolha o plano ideal para a sua equipe",
+      "description": "Comece de graça. Faça upgrade quando o trabalho for para o cliente."
+    },
+    {
+      "type": "faq",
+      "title": "Perguntas frequentes",
+      "items": [
+        {
+          "question": "O que é um agente de vídeo com IA?",
+          "answer": "Um agente de vídeo com IA planeja, gera e ajuda você a refinar clipes curtos a partir de texto, imagens e áudio — não é apenas um botão de texto para vídeo."
+        },
+        {
+          "question": "Como o Lovart se diferencia de um gerador de vídeo isolado?",
+          "answer": "O Lovart combina geração multimodal com a edição no ChatCanvas, o Brand Kit e o contexto da campanha, para que o vídeo se mantenha alinhado à marca em todos os canais."
+        },
+        {
+          "question": "Preciso de uma GPU potente?",
+          "answer": "Não. A renderização acontece na nuvem do Lovart. Você só precisa de um navegador moderno e um briefing claro."
+        },
+        {
+          "question": "Posso usar os clipes comercialmente?",
+          "answer": "Os planos pagos incluem direitos de uso comercial para os ativos que você cria no Lovart. Consulte seu plano para mais detalhes."
+        },
+        {
+          "question": "Quais proporções de tela são suportadas?",
+          "answer": "As proporções comuns incluem 16:9 (YouTube), 9:16 (TikTok/Reels) e 1:1 (feeds). Especifique a proporção no seu prompt."
+        },
+        {
+          "question": "O Lovart oferece imagem para vídeo?",
+          "answer": "Sim. Envie imagens de referência ou fotos de produto e descreva o movimento — ideal para e-commerce e filmes de marca."
+        },
+        {
+          "question": "As equipes de marketing podem testar variações A/B?",
+          "answer": "Sim. Gere vários ganchos ou trajetórias de câmera a partir de um briefing mestre e compare o desempenho."
+        },
+        {
+          "question": "Quão rápidos são os rascunhos?",
+          "answer": "A maioria dos clipes curtos fica pronta em segundos a um minuto, dependendo da duração e da fila — depois você itera no canvas."
+        },
+        {
+          "question": "Isso é o mesmo que o Seedance?",
+          "answer": "O Lovart orquestra modelos de nível Seedance dentro de um fluxo com agente, com edição, marca e exportação — e não em uma aba de ferramenta separada."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Pronto para dirigir vídeo com um agente?",
+      "description": "Comece grátis — descreva sua primeira cena no ChatCanvas.",
+      "buttons": [
+        {
+          "text": "Começar grátis",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "pageType": "feature"
+}

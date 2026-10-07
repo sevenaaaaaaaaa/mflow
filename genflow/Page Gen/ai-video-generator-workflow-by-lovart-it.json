@@ -1,0 +1,386 @@
+{
+  "_id": "features-ai-video-generator-workflow-by-lovart-it",
+  "reflowSourceId": "features-ai-video-generator-workflow-by-lovart-it",
+  "slug": "ai-video-generator-workflow-by-lovart",
+  "language": "it",
+  "category": "feature",
+  "title": "Padroneggia il flusso IA video: dalla sceneggiatura allo schermo",
+  "description": "Master the Ultimate AI Video Generator Workflow: From Script to Screen",
+  "seo": {
+    "description": "Padroneggia il flusso di lavoro definitivo con IA video: dalla sceneggiatura allo schermo.",
+    "keywords": [
+      "flusso di lavoro video IA",
+      "video con personaggio coerente",
+      "generatore video Veo 3",
+      "IA da immagine a video",
+      "produzione video cinematografica",
+      "storyboard IA"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Character Consistency",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Padroneggia il flusso IA video: dalla sceneggiatura allo schermo\", \"description\": \"Master the Ultimate AI Video Generator Workflow: From Script to Screen\", \"url\": \"https://www.lovart.ai/features/ai-video-generator-workflow-by-lovart\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Cosa rende il flusso di lavoro video di Lovart diverso dagli altri strumenti?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart non è solo un generatore; è uno spazio di lavoro completo. Combiniamo Generazione Immagini (per la coerenza), Tela Infinita (per lo storyboard) e Generazione Video (Veo 3) in un'unica esperienza fluida di 'Agente di Design', eliminando la necessità di passare da un'app all'altra.\"}}, {\"@type\": \"Question\", \"name\": \"Come mantengo la coerenza del personaggio nei miei video?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Raccomandiamo un flusso di lavoro in due fasi: Primo, usa i nostri modelli Nano Banana o Flux Context per generare una 'Scheda Personaggio' perfetta o un'immagine di riferimento. Poi, usa la funzione 'Immagine-a-Video' con quel riferimento per generare le tue clip. Questo blocca l'identità del personaggio.\"}}, {\"@type\": \"Question\", \"name\": \"Qual è la risoluzione massima per i video generati?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Le generazioni standard sono tipicamente 720p o 1080p, ma con la nostra funzione integrata AI Upscaler, puoi migliorare qualsiasi clip video alla risoluzione 4K con dettagli e nitidezza migliorati.\"}}, {\"@type\": \"Question\", \"name\": \"Posso controllare il movimento della telecamera?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sì. Quando usi Testo-a-Video, puoi specificare movimenti della telecamera come 'panoramica a sinistra', 'zoom in' o 'ripresa drone' nel tuo prompt. Il modello Veo 3 è molto reattivo a queste istruzioni cinematografiche.\"}}, {\"@type\": \"Question\", \"name\": \"Questo flusso di lavoro è adatto per contenuti lunghi?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Sì. Sebbene l'IA generi clip brevi (tipicamente 4-10 secondi), il flusso di lavoro di Lovart ti consente di generare clip sequenziali sulla tela. Puoi usare l'ultimo fotogramma della clip A come fotogramma iniziale della clip B per creare sequenze più lunghe e continue.\"}}]}}"
+    },
+    "title": "Padroneggia il flusso IA video: dalla sceneggiatura allo schermo"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Padroneggia il flusso IA video: dalla sceneggiatura allo schermo\",\"description\":\"Master the Ultimate AI Video Generator Workflow: From Script to Screen\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Character Consistency\"}},{\"type\":\"bento-6\",\"title\":\"Features That Power Your Video Workflow\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Coerenza del Personaggio\",\"description\":\"Il santo graal dei video IA. Definisci un personaggio con i nostri modelli Flux Context o Nano Banana, e l'Agente assicura che rimangano riconoscibili attraverso più clip video.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Coerenza del Personaggio\"}},{\"title\":\"Orchestrazione Multi-Modello\",\"description\":\"Lovart non è limitato a un solo modello. Seleziona intelligentemente il motore migliore (Veo 3, Kling o altri) per la tua ripresa specifica—che sia fisica realistica o animazione stilizzata.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Orchestrazione Multi-Modello\"}},{\"title\":\"Controllo Fotogramma Iniziale & Finale\",\"description\":\"Dirigi il flusso del tempo. Carica un'immagine iniziale e una finale, e lascia che l'IA generi la transizione fluida tra di esse. Perfetto per effetti di morphing o specifici ritmi narrativi.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Controllo Fotogramma Iniziale & Finale\"}},{\"title\":\"Storyboard su Tela\",\"description\":\"Visualizza l'intera timeline spazialmente. Posiziona le clip generate fianco a fianco sulla Tela Infinita per controllare il color grading e la continuità prima di esportare.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Storyboard su Tela\"}},{\"title\":\"Pennello di Movimento (Beta)\",\"description\":\"In arrivo: Usa un pennello per dipingere esattamente quali parti di un'immagine dovrebbero muoversi (es. 'sventola la bandiera' ma 'tieni fermo il palo'), dandoti un controllo granulare da regista.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Pennello di Movimento (Beta)\"}},{\"title\":\"Upscaling Cinematografico 4K\",\"description\":\"Fornisci risultati professionali. Il nostro upscaler video dedicato rimuove gli artefatti e rende più nitidi i dettagli, rendendo i tuoi video IA pronti per YouTube 4K o grandi schermi.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Upscaling Cinematografico 4K\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Tutte le funzionalità in un unico agente\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Coerenza del Personaggio\",\"icon\":\"chat\",\"content\":{\"title\":\"Coerenza del Personaggio\",\"description\":\"Il santo graal dei video IA. Definisci un personaggio con i nostri modelli Flux Context o Nano Banana, e l'Agente assicura che rimangano riconoscibili attraverso più clip video.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Coerenza del Personaggio\"}}},{\"label\":\"Orchestrazione Multi-Modello\",\"icon\":\"image\",\"content\":{\"title\":\"Orchestrazione Multi-Modello\",\"description\":\"Lovart non è limitato a un solo modello. Seleziona intelligentemente il motore migliore (Veo 3, Kling o altri) per la tua ripresa specifica—che sia fisica realistica o animazione stilizzata.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Orchestrazione Multi-Modello\"}}},{\"label\":\"Controllo Fotogramma Iniziale & Finale\",\"icon\":\"flask\",\"content\":{\"title\":\"Controllo Fotogramma Iniziale & Finale\",\"description\":\"Dirigi il flusso del tempo. Carica un'immagine iniziale e una finale, e lascia che l'IA generi la transizione fluida tra di esse. Perfetto per effetti di morphing o specifici ritmi narrativi.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Controllo Fotogramma Iniziale & Finale\"}}},{\"label\":\"Storyboard su Tela\",\"icon\":\"brand\",\"content\":{\"title\":\"Storyboard su Tela\",\"description\":\"Visualizza l'intera timeline spazialmente. Posiziona le clip generate fianco a fianco sulla Tela Infinita per controllare il color grading e la continuità prima di esportare.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Storyboard su Tela\"}}}]},{\"type\":\"bento-2\",\"title\":\"Due cose che riesce particolarmente bene\",\"columns\":2,\"features\":[{\"title\":\"Pennello di Movimento (Beta)\",\"description\":\"In arrivo: Usa un pennello per dipingere esattamente quali parti di un'immagine dovrebbero muoversi (es. 'sventola la bandiera' ma 'tieni fermo il palo'), dandoti un controllo granulare da regista.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Pennello di Movimento (Beta)\"}},{\"title\":\"Upscaling Cinematografico 4K\",\"description\":\"Fornisci risultati professionali. Il nostro upscaler video dedicato rimuove gli artefatti e rende più nitidi i dettagli, rendendo i tuoi video IA pronti per YouTube 4K o grandi schermi.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Upscaling Cinematografico 4K\"}}]},{\"type\":\"feature-detail\",\"title\":\"Come funziona nel dettaglio\",\"items\":[{\"title\":\"Avvia il tuo progetto Master the Ultimate AI Video Generator Workflow: From Script to Screen\",\"description\":\"Descrivi il risultato che vuoi e aggiungi i riferimenti.\"},{\"title\":\"Itera con l'agente\",\"description\":\"Regola i dettagli ed esplora le varianti sullo stesso canvas.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Padroneggia il Flusso di Lavoro Definitivo del Generatore di Video IA\",\"description\":\"Smetti di destreggiarti tra strumenti frammentati. L'Agente di Design IA di Lovart orchestra l'intero processo di produzione video su un'unica tela. Dal design coerente dei personaggi con Nano Banana alla generazione di movimenti cinematografici con Veo 3, sperimenta un flusso di lavoro senza soluzione di continuità che trasforma gli script in narrazioni visive coerenti.\",\"input_placeholder\":\"Descrivi la tua scena video o carica un riferimento del personaggio...\",\"prompts\":[{\"label\":\"Narrazione Cinematografica\",\"prompt\":\"Detective cyberpunk che cammina attraverso la pioggia al neon, ripresa drone tracking, personaggio coerente\"},{\"label\":\"Spot Prodotto\",\"prompt\":\"Rivelazione prodotto: Sneaker fluttuante che si assembla a mezz'aria, illuminazione da studio, slow motion\"},{\"label\":\"Visual Video Musicale\",\"prompt\":\"Sorvolo di paesaggio fantasy, transizione da giorno a notte, sfondo in loop\"},{\"label\":\"Animazione Personaggio\",\"prompt\":\"Personaggio animato stile Pixar che esegue una danza felice, angolo di ripresa fisso\"}],\"tip\":\"Suggerimento: Per la migliore coerenza, descrivi prima il tuo personaggio principale, poi l'azione.\",\"cta\":{\"text\":\"Avvia Flusso Video\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Un Flusso di Lavoro Unificato per Video IA Coerenti\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"Design & Storyboard\",\"description\":\"Non iniziare con rumore casuale. Usa Nano Banana per progettare prima i tuoi personaggi e scene. Disponili sulla Tela Infinita di Lovart per costruire uno storyboard coeso prima di generare il movimento.\"},{\"step\":2,\"title\":\"Anima con Veo 3\",\"description\":\"Trasforma i tuoi storyboard statici in video ad alta fedeltà utilizzando il modello Veo 3 di Google. Usa 'Immagine-a-Video' per assicurarti che i tuoi personaggi appaiano esattamente uguali in ogni ripresa.\"},{\"step\":3,\"title\":\"Rifinisci & Upscale\",\"description\":\"Rifinisci le tue clip direttamente sulla tela. Estendi le clip per una durata maggiore, correggi i difetti con 'Region Repaint' e fai l'upscale automatico alla risoluzione 4K per una qualità pronta per la trasmissione.\"}]},{\"type\":\"comparison-table\",\"title\":\"Master the Ultimate AI Video Generator Workflow: From Script to Screen: Lovart a confronto con i workflow tradizionali\",\"headers\":[\"Esigenza\",\"Strumento generico\",\"Workflow manuale\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Avvia il tuo progetto Master the Ultimate AI Video Generator Workflow: From Script to Screen\",\"values\":[\"Un solo prompt\",\"Brief manuale\",\"Ragionamento guidato dal brief\"]},{\"feature\":\"Tempo al primo risultato\",\"values\":[\"Minuti\",\"Giorni\",\"Minuti\"]},{\"feature\":\"Modifica dopo la generazione\",\"values\":[\"Limitato\",\"Cicli di revisione\",\"Touch / Testo / Elementi\"]},{\"feature\":\"Resta coerente col brand\",\"values\":[\"Manuale\",\"Manuale\",\"Compatibile con Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Dove Master the Ultimate AI Video Generator Workflow: From Script to Screen fa la differenza\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Lancia più in fretta\",\"description\":\"Dal brief agli asset Master the Ultimate AI Video Generator Workflow: From Script to Screen in un'unica sessione.\"},{\"icon\":\"brand\",\"title\":\"Resta coerente\",\"description\":\"Il Brand Kit mantiene ogni asset allineato.\"},{\"icon\":\"refresh\",\"title\":\"Itera rapidamente\",\"description\":\"Modifica i dettagli senza ricominciare il progetto.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"La coerenza era il mio più grande incubo con i video IA. Il flusso di lavoro di Lovart ha cambiato tutto. Posso generare il mio personaggio in Nano Banana e usare Veo 3 per animarlo. Sembra una vera pipeline di produzione ora.\",\"author\":\"Chris Nolan (Indie)\",\"role\":\"Regista di Cortometraggi\"},{\"quote\":\"Creiamo oltre 50 annunci video a settimana. La capacità di generare in batch sulla tela e scegliere le riprese migliori istantaneamente ci ha fatto risparmiare centinaia di ore. La qualità di Veo 3 è pazzesca.\",\"author\":\"Anita L.\",\"role\":\"Responsabile Digital Marketing\"},{\"quote\":\"Il controllo 'Fotogramma Iniziale e Finale' consente transizioni che non potevo ottenere con After Effects in questo lasso di tempo. È uno strumento potente per la prototipazione rapida e la consegna finale.\",\"author\":\"Kenji Sato\",\"role\":\"Motion Designer\"}],\"title\":\"Cineasti & Marketer che ottimizzano la produzione con Lovart\"},{\"type\":\"pricing-block\",\"title\":\"Scegli il piano giusto per il tuo team\",\"description\":\"Inizia gratis. Passa a un piano superiore quando il lavoro va ai clienti.\"},{\"type\":\"faq\",\"title\":\"Domande frequenti\",\"items\":[{\"question\":\"Cosa rende il flusso di lavoro video di Lovart diverso dagli altri strumenti?\",\"answer\":\"Lovart non è solo un generatore; è uno spazio di lavoro completo. Combiniamo Generazione Immagini (per la coerenza), Tela Infinita (per lo storyboard) e Generazione Video (Veo 3) in un'unica esperienza fluida di 'Agente di Design', eliminando la necessità di passare da un'app all'altra.\"},{\"question\":\"Come mantengo la coerenza del personaggio nei miei video?\",\"answer\":\"Raccomandiamo un flusso di lavoro in due fasi: Primo, usa i nostri modelli Nano Banana o Flux Context per generare una 'Scheda Personaggio' perfetta o un'immagine di riferimento. Poi, usa la funzione 'Immagine-a-Video' con quel riferimento per generare le tue clip. Questo blocca l'identità del personaggio.\"},{\"question\":\"Qual è la risoluzione massima per i video generati?\",\"answer\":\"Le generazioni standard sono tipicamente 720p o 1080p, ma con la nostra funzione integrata AI Upscaler, puoi migliorare qualsiasi clip video alla risoluzione 4K con dettagli e nitidezza migliorati.\"},{\"question\":\"Posso controllare il movimento della telecamera?\",\"answer\":\"Sì. Quando usi Testo-a-Video, puoi specificare movimenti della telecamera come 'panoramica a sinistra', 'zoom in' o 'ripresa drone' nel tuo prompt. Il modello Veo 3 è molto reattivo a queste istruzioni cinematografiche.\"},{\"question\":\"Questo flusso di lavoro è adatto per contenuti lunghi?\",\"answer\":\"Sì. Sebbene l'IA generi clip brevi (tipicamente 4-10 secondi), il flusso di lavoro di Lovart ti consente di generare clip sequenziali sulla tela. Puoi usare l'ultimo fotogramma della clip A come fotogramma iniziale della clip B per creare sequenze più lunghe e continue.\"}]},{\"type\":\"cta-default\",\"title\":\"Inizia a creare con Lovart\",\"description\":\"Trasforma il tuo brief in visual coerenti con il brand in pochi minuti.\",\"buttons\":[{\"text\":\"Inizia gratis\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Padroneggia il flusso IA video: dalla sceneggiatura allo schermo",
+      "description": "Master the Ultimate AI Video Generator Workflow: From Script to Screen",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Character Consistency"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "Features That Power Your Video Workflow",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Coerenza del Personaggio",
+          "description": "Il santo graal dei video IA. Definisci un personaggio con i nostri modelli Flux Context o Nano Banana, e l'Agente assicura che rimangano riconoscibili attraverso più clip video.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Coerenza del Personaggio"
+          }
+        },
+        {
+          "title": "Orchestrazione Multi-Modello",
+          "description": "Lovart non è limitato a un solo modello. Seleziona intelligentemente il motore migliore (Veo 3, Kling o altri) per la tua ripresa specifica—che sia fisica realistica o animazione stilizzata.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Orchestrazione Multi-Modello"
+          }
+        },
+        {
+          "title": "Controllo Fotogramma Iniziale & Finale",
+          "description": "Dirigi il flusso del tempo. Carica un'immagine iniziale e una finale, e lascia che l'IA generi la transizione fluida tra di esse. Perfetto per effetti di morphing o specifici ritmi narrativi.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Controllo Fotogramma Iniziale & Finale"
+          }
+        },
+        {
+          "title": "Storyboard su Tela",
+          "description": "Visualizza l'intera timeline spazialmente. Posiziona le clip generate fianco a fianco sulla Tela Infinita per controllare il color grading e la continuità prima di esportare.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "Storyboard su Tela"
+          }
+        },
+        {
+          "title": "Pennello di Movimento (Beta)",
+          "description": "In arrivo: Usa un pennello per dipingere esattamente quali parti di un'immagine dovrebbero muoversi (es. 'sventola la bandiera' ma 'tieni fermo il palo'), dandoti un controllo granulare da regista.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Pennello di Movimento (Beta)"
+          }
+        },
+        {
+          "title": "Upscaling Cinematografico 4K",
+          "description": "Fornisci risultati professionali. Il nostro upscaler video dedicato rimuove gli artefatti e rende più nitidi i dettagli, rendendo i tuoi video IA pronti per YouTube 4K o grandi schermi.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Upscaling Cinematografico 4K"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Tutte le funzionalità in un unico agente",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Coerenza del Personaggio",
+          "icon": "chat",
+          "content": {
+            "title": "Coerenza del Personaggio",
+            "description": "Il santo graal dei video IA. Definisci un personaggio con i nostri modelli Flux Context o Nano Banana, e l'Agente assicura che rimangano riconoscibili attraverso più clip video.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Coerenza del Personaggio"
+            }
+          }
+        },
+        {
+          "label": "Orchestrazione Multi-Modello",
+          "icon": "image",
+          "content": {
+            "title": "Orchestrazione Multi-Modello",
+            "description": "Lovart non è limitato a un solo modello. Seleziona intelligentemente il motore migliore (Veo 3, Kling o altri) per la tua ripresa specifica—che sia fisica realistica o animazione stilizzata.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Orchestrazione Multi-Modello"
+            }
+          }
+        },
+        {
+          "label": "Controllo Fotogramma Iniziale & Finale",
+          "icon": "flask",
+          "content": {
+            "title": "Controllo Fotogramma Iniziale & Finale",
+            "description": "Dirigi il flusso del tempo. Carica un'immagine iniziale e una finale, e lascia che l'IA generi la transizione fluida tra di esse. Perfetto per effetti di morphing o specifici ritmi narrativi.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Controllo Fotogramma Iniziale & Finale"
+            }
+          }
+        },
+        {
+          "label": "Storyboard su Tela",
+          "icon": "brand",
+          "content": {
+            "title": "Storyboard su Tela",
+            "description": "Visualizza l'intera timeline spazialmente. Posiziona le clip generate fianco a fianco sulla Tela Infinita per controllare il color grading e la continuità prima di esportare.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "Storyboard su Tela"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Due cose che riesce particolarmente bene",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Pennello di Movimento (Beta)",
+          "description": "In arrivo: Usa un pennello per dipingere esattamente quali parti di un'immagine dovrebbero muoversi (es. 'sventola la bandiera' ma 'tieni fermo il palo'), dandoti un controllo granulare da regista.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Pennello di Movimento (Beta)"
+          }
+        },
+        {
+          "title": "Upscaling Cinematografico 4K",
+          "description": "Fornisci risultati professionali. Il nostro upscaler video dedicato rimuove gli artefatti e rende più nitidi i dettagli, rendendo i tuoi video IA pronti per YouTube 4K o grandi schermi.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Upscaling Cinematografico 4K"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "Come funziona nel dettaglio",
+      "items": [
+        {
+          "title": "Avvia il tuo progetto Master the Ultimate AI Video Generator Workflow: From Script to Screen",
+          "description": "Descrivi il risultato che vuoi e aggiungi i riferimenti."
+        },
+        {
+          "title": "Itera con l'agente",
+          "description": "Regola i dettagli ed esplora le varianti sullo stesso canvas.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Padroneggia il Flusso di Lavoro Definitivo del Generatore di Video IA",
+      "description": "Smetti di destreggiarti tra strumenti frammentati. L'Agente di Design IA di Lovart orchestra l'intero processo di produzione video su un'unica tela. Dal design coerente dei personaggi con Nano Banana alla generazione di movimenti cinematografici con Veo 3, sperimenta un flusso di lavoro senza soluzione di continuità che trasforma gli script in narrazioni visive coerenti.",
+      "input_placeholder": "Descrivi la tua scena video o carica un riferimento del personaggio...",
+      "prompts": [
+        {
+          "label": "Narrazione Cinematografica",
+          "prompt": "Detective cyberpunk che cammina attraverso la pioggia al neon, ripresa drone tracking, personaggio coerente"
+        },
+        {
+          "label": "Spot Prodotto",
+          "prompt": "Rivelazione prodotto: Sneaker fluttuante che si assembla a mezz'aria, illuminazione da studio, slow motion"
+        },
+        {
+          "label": "Visual Video Musicale",
+          "prompt": "Sorvolo di paesaggio fantasy, transizione da giorno a notte, sfondo in loop"
+        },
+        {
+          "label": "Animazione Personaggio",
+          "prompt": "Personaggio animato stile Pixar che esegue una danza felice, angolo di ripresa fisso"
+        }
+      ],
+      "tip": "Suggerimento: Per la migliore coerenza, descrivi prima il tuo personaggio principale, poi l'azione.",
+      "cta": {
+        "text": "Avvia Flusso Video"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Un Flusso di Lavoro Unificato per Video IA Coerenti",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Design & Storyboard",
+          "description": "Non iniziare con rumore casuale. Usa Nano Banana per progettare prima i tuoi personaggi e scene. Disponili sulla Tela Infinita di Lovart per costruire uno storyboard coeso prima di generare il movimento."
+        },
+        {
+          "step": 2,
+          "title": "Anima con Veo 3",
+          "description": "Trasforma i tuoi storyboard statici in video ad alta fedeltà utilizzando il modello Veo 3 di Google. Usa 'Immagine-a-Video' per assicurarti che i tuoi personaggi appaiano esattamente uguali in ogni ripresa."
+        },
+        {
+          "step": 3,
+          "title": "Rifinisci & Upscale",
+          "description": "Rifinisci le tue clip direttamente sulla tela. Estendi le clip per una durata maggiore, correggi i difetti con 'Region Repaint' e fai l'upscale automatico alla risoluzione 4K per una qualità pronta per la trasmissione."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Master the Ultimate AI Video Generator Workflow: From Script to Screen: Lovart a confronto con i workflow tradizionali",
+      "headers": [
+        "Esigenza",
+        "Strumento generico",
+        "Workflow manuale",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Avvia il tuo progetto Master the Ultimate AI Video Generator Workflow: From Script to Screen",
+          "values": [
+            "Un solo prompt",
+            "Brief manuale",
+            "Ragionamento guidato dal brief"
+          ]
+        },
+        {
+          "feature": "Tempo al primo risultato",
+          "values": [
+            "Minuti",
+            "Giorni",
+            "Minuti"
+          ]
+        },
+        {
+          "feature": "Modifica dopo la generazione",
+          "values": [
+            "Limitato",
+            "Cicli di revisione",
+            "Touch / Testo / Elementi"
+          ]
+        },
+        {
+          "feature": "Resta coerente col brand",
+          "values": [
+            "Manuale",
+            "Manuale",
+            "Compatibile con Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Dove Master the Ultimate AI Video Generator Workflow: From Script to Screen fa la differenza",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Lancia più in fretta",
+          "description": "Dal brief agli asset Master the Ultimate AI Video Generator Workflow: From Script to Screen in un'unica sessione."
+        },
+        {
+          "icon": "brand",
+          "title": "Resta coerente",
+          "description": "Il Brand Kit mantiene ogni asset allineato."
+        },
+        {
+          "icon": "refresh",
+          "title": "Itera rapidamente",
+          "description": "Modifica i dettagli senza ricominciare il progetto."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "La coerenza era il mio più grande incubo con i video IA. Il flusso di lavoro di Lovart ha cambiato tutto. Posso generare il mio personaggio in Nano Banana e usare Veo 3 per animarlo. Sembra una vera pipeline di produzione ora.",
+          "author": "Chris Nolan (Indie)",
+          "role": "Regista di Cortometraggi"
+        },
+        {
+          "quote": "Creiamo oltre 50 annunci video a settimana. La capacità di generare in batch sulla tela e scegliere le riprese migliori istantaneamente ci ha fatto risparmiare centinaia di ore. La qualità di Veo 3 è pazzesca.",
+          "author": "Anita L.",
+          "role": "Responsabile Digital Marketing"
+        },
+        {
+          "quote": "Il controllo 'Fotogramma Iniziale e Finale' consente transizioni che non potevo ottenere con After Effects in questo lasso di tempo. È uno strumento potente per la prototipazione rapida e la consegna finale.",
+          "author": "Kenji Sato",
+          "role": "Motion Designer"
+        }
+      ],
+      "title": "Cineasti & Marketer che ottimizzano la produzione con Lovart"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Scegli il piano giusto per il tuo team",
+      "description": "Inizia gratis. Passa a un piano superiore quando il lavoro va ai clienti."
+    },
+    {
+      "type": "faq",
+      "title": "Domande frequenti",
+      "items": [
+        {
+          "question": "Cosa rende il flusso di lavoro video di Lovart diverso dagli altri strumenti?",
+          "answer": "Lovart non è solo un generatore; è uno spazio di lavoro completo. Combiniamo Generazione Immagini (per la coerenza), Tela Infinita (per lo storyboard) e Generazione Video (Veo 3) in un'unica esperienza fluida di 'Agente di Design', eliminando la necessità di passare da un'app all'altra."
+        },
+        {
+          "question": "Come mantengo la coerenza del personaggio nei miei video?",
+          "answer": "Raccomandiamo un flusso di lavoro in due fasi: Primo, usa i nostri modelli Nano Banana o Flux Context per generare una 'Scheda Personaggio' perfetta o un'immagine di riferimento. Poi, usa la funzione 'Immagine-a-Video' con quel riferimento per generare le tue clip. Questo blocca l'identità del personaggio."
+        },
+        {
+          "question": "Qual è la risoluzione massima per i video generati?",
+          "answer": "Le generazioni standard sono tipicamente 720p o 1080p, ma con la nostra funzione integrata AI Upscaler, puoi migliorare qualsiasi clip video alla risoluzione 4K con dettagli e nitidezza migliorati."
+        },
+        {
+          "question": "Posso controllare il movimento della telecamera?",
+          "answer": "Sì. Quando usi Testo-a-Video, puoi specificare movimenti della telecamera come 'panoramica a sinistra', 'zoom in' o 'ripresa drone' nel tuo prompt. Il modello Veo 3 è molto reattivo a queste istruzioni cinematografiche."
+        },
+        {
+          "question": "Questo flusso di lavoro è adatto per contenuti lunghi?",
+          "answer": "Sì. Sebbene l'IA generi clip brevi (tipicamente 4-10 secondi), il flusso di lavoro di Lovart ti consente di generare clip sequenziali sulla tela. Puoi usare l'ultimo fotogramma della clip A come fotogramma iniziale della clip B per creare sequenze più lunghe e continue."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Inizia a creare con Lovart",
+      "description": "Trasforma il tuo brief in visual coerenti con il brand in pochi minuti.",
+      "buttons": [
+        {
+          "text": "Inizia gratis",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

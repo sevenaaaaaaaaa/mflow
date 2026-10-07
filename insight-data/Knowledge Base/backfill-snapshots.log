@@ -1,0 +1,342 @@
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-05 (全月)
+  环比: 2025-04 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[1/4] GSC 5K 拉取（当月）...
+📊 GSC 5月: 5,000 keywords, 57,546 clicks, 129,604 impr | 有曝光URL=42 收录率=0.21% (语料库20,000)
+[1/4] GSC 对比月 — 使用快照 2025-04
+
+[2/4] GA4 拉取（当月）...
+📊 GA4 5月: sessions=109,286 users=91,943 new=66,895 dur=343s pages=2.01 bounce=31.1% | organic share=21.4%
+[2/4] GA4 对比月 — 使用快照 2025-04
+
+✅ 快照已写入 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/Output/Data Ingestion/monthly-snapshots（--snapshots-only，跳过报告生成）
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-06 (全月)
+  环比: 2025-05 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[1/4] GSC 5K 拉取（当月）...
+📊 GSC 6月: 2,287 keywords, 70,913 clicks, 115,516 impr | 有曝光URL=72 收录率=0.36% (语料库20,000)
+[1/4] GSC 对比月 — 使用快照 2025-05
+
+[2/4] GA4 拉取（当月）...
+📊 GA4 6月: sessions=142,549 users=116,084 new=68,853 dur=282s pages=1.89 bounce=38.5% | organic share=25.1%
+[2/4] GA4 对比月 — 使用快照 2025-05
+
+✅ 快照已写入 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/Output/Data Ingestion/monthly-snapshots（--snapshots-only，跳过报告生成）
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-07 (全月)
+  环比: 2025-06 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[1/4] GSC 5K 拉取（当月）...
+📊 GSC 7月: 4,898 keywords, 218,643 clicks, 322,018 impr | 有曝光URL=258 收录率=1.29% (语料库20,000)
+[1/4] GSC 对比月 — 使用快照 2025-06
+
+[2/4] GA4 拉取（当月）...
+📊 GA4 7月: sessions=337,500 users=266,692 new=175,838 dur=330s pages=2.32 bounce=34.0% | organic share=24.9%
+[2/4] GA4 对比月 — 使用快照 2025-06
+
+✅ 快照已写入 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/Output/Data Ingestion/monthly-snapshots（--snapshots-only，跳过报告生成）
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-08 (全月)
+  环比: 2025-07 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[1/4] GSC 5K 拉取（当月）...
+📊 GSC 8月: 5,000 keywords, 233,070 clicks, 430,385 impr | 有曝光URL=1,424 收录率=7.12% (语料库20,000)
+[1/4] GSC 对比月 — 使用快照 2025-07
+
+[2/4] GA4 拉取（当月）...
+📊 GA4 8月: sessions=412,934 users=308,310 new=158,457 dur=405s pages=5.19 bounce=13.0% | organic share=18.3%
+[2/4] GA4 对比月 — 使用快照 2025-07
+
+✅ 快照已写入 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/Output/Data Ingestion/monthly-snapshots（--snapshots-only，跳过报告生成）
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-09 (全月)
+  环比: 2025-08 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[1/4] GSC 5K 拉取（当月）...
+📊 GSC 9月: 5,000 keywords, 725,014 clicks, 2,207,947 impr | 有曝光URL=1,453 收录率=7.27% (语料库20,000)
+[1/4] GSC 对比月 — 使用快照 2025-08
+
+[2/4] GA4 拉取（当月）...
+📊 GA4 9月: sessions=1,026,631 users=776,979 new=483,286 dur=483s pages=7.21 bounce=7.3% | organic share=19.3%
+[2/4] GA4 对比月 — 使用快照 2025-08
+
+✅ 快照已写入 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/Output/Data Ingestion/monthly-snapshots（--snapshots-only，跳过报告生成）
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-10 (全月)
+  环比: 2025-09 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[1/4] GSC 5K 拉取（当月）...
+📊 GSC 10月: 5,000 keywords, 473,791 clicks, 1,457,870 impr | 有曝光URL=1,708 收录率=8.54% (语料库20,000)
+[1/4] GSC 对比月 — 使用快照 2025-09
+
+[2/4] GA4 拉取（当月）...
+📊 GA4 10月: sessions=689,372 users=521,019 new=267,644 dur=476s pages=7.8 bounce=6.7% | organic share=15.1%
+[2/4] GA4 对比月 — 使用快照 2025-09
+
+✅ 快照已写入 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/Output/Data Ingestion/monthly-snapshots（--snapshots-only，跳过报告生成）
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-11 (全月)
+  环比: 2025-10 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[1/4] GSC 5K 拉取（当月）...
+📊 GSC 11月: 5,000 keywords, 426,290 clicks, 1,904,775 impr | 有曝光URL=2,119 收录率=10.6% (语料库20,000)
+[1/4] GSC 对比月 — 使用快照 2025-10
+
+[2/4] GA4 拉取（当月）...
+📊 GA4 11月: sessions=732,318 users=548,002 new=276,840 dur=480s pages=8.0 bounce=7.8% | organic share=13.3%
+[2/4] GA4 对比月 — 使用快照 2025-10
+
+✅ 快照已写入 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/Output/Data Ingestion/monthly-snapshots（--snapshots-only，跳过报告生成）
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2025-12 (全月)
+  环比: 2025-11 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[1/4] GSC 5K 拉取（当月）...
+📊 GSC 12月: 5,000 keywords, 1,060,914 clicks, 2,914,947 impr | 有曝光URL=2,268 收录率=11.34% (语料库20,000)
+[1/4] GSC 对比月 — 使用快照 2025-11
+
+[2/4] GA4 拉取（当月）...
+📊 GA4 12月: sessions=1,733,359 users=1,208,944 new=549,208 dur=526s pages=8.67 bounce=9.6% | organic share=23.9%
+[2/4] GA4 对比月 — 使用快照 2025-11
+
+✅ 快照已写入 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/Output/Data Ingestion/monthly-snapshots（--snapshots-only，跳过报告生成）
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2026-01 (全月)
+  环比: 2025-12 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[1/4] GSC 5K 拉取（当月）...
+📊 GSC 1月: 5,000 keywords, 2,364,123 clicks, 4,388,589 impr | 有曝光URL=2,551 收录率=12.75% (语料库20,000)
+[1/4] GSC 对比月 — 使用快照 2025-12
+
+[2/4] GA4 拉取（当月）...
+📊 GA4 1月: sessions=2,855,410 users=2,074,185 new=1,085,891 dur=523s pages=9.34 bounce=7.5% | organic share=30.1%
+[2/4] GA4 对比月 — 使用快照 2025-12
+
+✅ 快照已写入 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/Output/Data Ingestion/monthly-snapshots（--snapshots-only，跳过报告生成）
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2026-02 (全月)
+  环比: 2026-01 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  i18n: 日报必须含 locale 查询雷达与内容生产候选，不能只优化英语主工作流
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+  月报 V2: 固定顺序 一核心洞察→二OKR→三Dashboard→…→十三Bing；编号不重复（见 AGENTS.md A0d）
+  脚本: 1-4 Geo Dev/scripts/seo_monthly_v2.py [--resume | --render-only | --refresh-indexing]
+  DataWorks: insight-data/From Datawork/{YYYY-MM} SEO GEO.xlsx + sheet monthly_dedup
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[1/4] GSC 5K 拉取（当月）...
+📊 GSC 2月: 5,000 keywords, 907,348 clicks, 2,110,415 impr | 有曝光URL=2,787 收录率=13.94% (语料库20,000)
+[1/4] GSC 对比月 — 使用快照 2026-01
+
+[2/4] GA4 拉取（当月）...
+📊 GA4 2月: sessions=1,540,676 users=1,069,023 new=403,645 dur=479s pages=8.0 bounce=10.3% | organic share=25.1%
+[2/4] GA4 对比月 — 使用快照 2026-01
+
+✅ 快照已写入 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/Output/Data Ingestion/monthly-snapshots（--snapshots-only，跳过报告生成）
+  skip 2025-03 (gsc snapshot exists)
+  skip 2025-04 (gsc snapshot exists)
+$ /Library/Developer/CommandLineTools/usr/bin/python3 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/scripts/seo_monthly_v2.py --month 2025-05 --resume --snapshots-only
+  bing snapshot bing-2025-05.json
+$ /Library/Developer/CommandLineTools/usr/bin/python3 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/scripts/seo_monthly_v2.py --month 2025-06 --resume --snapshots-only
+  bing snapshot bing-2025-06.json
+$ /Library/Developer/CommandLineTools/usr/bin/python3 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/scripts/seo_monthly_v2.py --month 2025-07 --resume --snapshots-only
+  bing snapshot bing-2025-07.json
+$ /Library/Developer/CommandLineTools/usr/bin/python3 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/scripts/seo_monthly_v2.py --month 2025-08 --resume --snapshots-only
+  bing snapshot bing-2025-08.json
+$ /Library/Developer/CommandLineTools/usr/bin/python3 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/scripts/seo_monthly_v2.py --month 2025-09 --resume --snapshots-only
+  bing snapshot bing-2025-09.json
+$ /Library/Developer/CommandLineTools/usr/bin/python3 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/scripts/seo_monthly_v2.py --month 2025-10 --resume --snapshots-only
+  bing snapshot bing-2025-10.json
+$ /Library/Developer/CommandLineTools/usr/bin/python3 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/scripts/seo_monthly_v2.py --month 2025-11 --resume --snapshots-only
+  bing snapshot bing-2025-11.json
+$ /Library/Developer/CommandLineTools/usr/bin/python3 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/scripts/seo_monthly_v2.py --month 2025-12 --resume --snapshots-only
+  bing snapshot bing-2025-12.json
+$ /Library/Developer/CommandLineTools/usr/bin/python3 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/scripts/seo_monthly_v2.py --month 2026-01 --resume --snapshots-only
+  bing snapshot bing-2026-01.json
+$ /Library/Developer/CommandLineTools/usr/bin/python3 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-4 Geo Dev/scripts/seo_monthly_v2.py --month 2026-02 --resume --snapshots-only
+  bing snapshot bing-2026-02.json

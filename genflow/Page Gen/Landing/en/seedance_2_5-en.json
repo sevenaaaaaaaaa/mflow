@@ -1,0 +1,487 @@
+{
+  "title": "Seedance 2.5 on Lovart — AI Video Generator",
+  "description": "Create videos with Seedance 2.5 on Lovart. Use up to 32 reference inputs, generate up to 30-second clips, and refine editable video workflows for ads, product demos, and social storytelling.",
+  "language": "en",
+  "category": "landing",
+  "releaseDate": "2026-05-10T12:00:00.000Z",
+  "publishedAt": "2026-05-10T12:00:00.000Z",
+  "slug": "seedance_2_5",
+  "_id": "6cef07a9-c41e-4ee1-81b9-9e9bb70f4acc",
+  "schemaVersion": "composite-v2",
+  "storylineId": "landing-trial-now",
+  "bodyJson": [
+    {
+      "type": "hero-split",
+      "badge": "Seedance 2.5 on Lovart",
+      "title": "Create cinematic videos with",
+      "highlightedText": "Seedance 2.5",
+      "description": "Upload references and a clear brief. Lovart runs Seedance 2.5 to generate up to 30-second clips with up to 32 multimodal inputs, then you refine motion, copy, and framing on ChatCanvas with Touch Edit and Text Edit.",
+      "buttons": [
+        {
+          "text": "Try Seedance 2.5",
+          "action": "openLogin",
+          "variant": "primary"
+        },
+        {
+          "text": "See video workflows",
+          "href": "/features/seedance-2-0-ai-video-generator",
+          "variant": "secondary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/afe09b54d518aacd6b7b96c5e9e22ba282abb81a.mp4",
+        "alt": "Seedance 2.5 video generation on Lovart"
+      }
+    },
+    {
+      "type": "bento-4",
+      "title": "What Seedance 2.5 adds to your video workflow",
+      "description": "Four practical upgrades teams use when they need longer clips, tighter consistency, and edit-after-generate control.",
+      "columns": 4,
+      "features": [
+        {
+          "title": "Up to 32 reference inputs",
+          "description": "Combine images, audio, and video references so characters, products, and scenes stay aligned.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/7cc07d1d40c0c9d31ddc7f3951072e20e11a216e.mp4",
+            "alt": "Reference-driven video consistency"
+          }
+        },
+        {
+          "title": "Up to 30-second outputs",
+          "description": "Generate longer clips for multi-shot product stories, ads, and social sequences.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/b8e426f9e953bfae1680101d7e231f374538c243.mp4",
+            "alt": "30-second Seedance video output"
+          }
+        },
+        {
+          "title": "Video edit path",
+          "description": "Modify, extend, reconstruct, and restyle clips instead of regenerating from zero.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": "Video editing workflow on Lovart"
+          }
+        },
+        {
+          "title": "Agent + ChatCanvas control",
+          "description": "Lovart helps shape prompts from your canvas context, then you finish with Touch Edit and Text Edit.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d14a7f30014fd72f63f9cdfbed8dd17c67012f10.png",
+            "alt": "ChatCanvas editing after generation"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Four Seedance 2.5 workflows teams ship weekly",
+      "description": "Start from the job you need today. Keep the same agent context across every cut.",
+      "tabs": [
+        {
+          "label": "Product video",
+          "icon": "image",
+          "content": {
+            "title": "Turn product stills into shop-ready motion",
+            "description": "Drop SKU photos and brand cues into Lovart. Seedance 2.5 builds showcase clips for PDP, Amazon, and paid social.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/afe09b54d518aacd6b7b96c5e9e22ba282abb81a.mp4",
+              "alt": "E-commerce product video with Seedance 2.5"
+            },
+            "points": [
+              "Product loops",
+              "UGC-style ads",
+              "Multi-ratio exports"
+            ],
+            "cta": {
+              "text": "Start product video",
+              "action": "openLogin"
+            }
+          }
+        },
+        {
+          "label": "Marketing ads",
+          "icon": "social",
+          "content": {
+            "title": "Ship campaign video variants faster",
+            "description": "Generate hooks, offer cuts, and launch spots from one brief, then refine the winning angle on canvas.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/7cc07d1d40c0c9d31ddc7f3951072e20e11a216e.mp4",
+              "alt": "Marketing ad video variants"
+            },
+            "points": [
+              "Launch films",
+              "Offer cuts",
+              "Platform crops"
+            ],
+            "cta": {
+              "text": "Start ad video",
+              "action": "openLogin"
+            }
+          }
+        },
+        {
+          "label": "Cinematic clips",
+          "icon": "video",
+          "content": {
+            "title": "Direct multi-shot scenes with stronger continuity",
+            "description": "Use references and shot intent so characters and environments hold together across connected clips.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/b8e426f9e953bfae1680101d7e231f374538c243.mp4",
+              "alt": "Cinematic multi-shot Seedance clips"
+            },
+            "points": [
+              "Camera moves",
+              "Scene continuity",
+              "Story beats"
+            ],
+            "cta": {
+              "text": "Start cinematic clip",
+              "action": "openLogin"
+            }
+          }
+        },
+        {
+          "label": "Social shorts",
+          "icon": "sparkle",
+          "content": {
+            "title": "Turn one idea into Reels, TikTok, and Shorts",
+            "description": "Generate vertical-first motion from a still or prompt, then adjust captions and framing without leaving Lovart.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/6a1b14e8ddcde57b6e342560a00f494a46e13174.png",
+              "alt": "Social short-form video workflow"
+            },
+            "points": [
+              "9:16 hooks",
+              "Caption-ready frames",
+              "Batch variants"
+            ],
+            "cta": {
+              "text": "Start social video",
+              "action": "openLogin"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Try a Seedance 2.5 brief now",
+      "description": "Start with a prompt plus references. Generate the first clip, refine on ChatCanvas, then export the cut you want to test.",
+      "prompts": [
+        {
+          "label": "Product demo",
+          "prompt": "Create a 20-second Seedance 2.5 product video for a matte black wireless earbud: hero spin, lifestyle insert, and end card with offer text."
+        },
+        {
+          "label": "Meta hook",
+          "prompt": "Generate 3 vertical Seedance 2.5 ad hooks for a DTC coffee brand. Keep the same cup and barista, change only the opening line and camera move."
+        },
+        {
+          "label": "Story beat",
+          "prompt": "Build a 3-shot cinematic clip: wide establishing, medium character walk, close-up product handoff. Keep wardrobe and lighting consistent."
+        }
+      ],
+      "cta": {
+        "text": "Try Seedance 2.5 now",
+        "action": "openLogin"
+      },
+      "tip": "Upload references first — images, audio, and short video clips help consistency."
+    },
+    {
+      "type": "bento-2",
+      "title": "Two ways to start with Seedance 2.5",
+      "description": "Autonomous drafting when you need speed, guided refinement when the first cut is close.",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Autonomous draft",
+          "description": "Give Lovart the brief and references. Get a first cut you can critique immediately.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/afe09b54d518aacd6b7b96c5e9e22ba282abb81a.mp4",
+            "alt": "Autonomous Seedance draft"
+          }
+        },
+        {
+          "title": "Guided refine",
+          "description": "Keep the good frames. Fix motion, text, and product fidelity with Touch Edit and Text Edit.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Guided video refinement"
+          }
+        }
+      ]
+    },
+    {
+      "type": "canvas-wall",
+      "title": "Video outputs teams produce on Lovart",
+      "description": "Product demos, paid hooks, cinematic inserts, and social cuts from one Seedance 2.5 workflow.",
+      "cta": {
+        "text": "Open canvas",
+        "action": "openLogin",
+        "variant": "secondary"
+      },
+      "columns": 4,
+      "items": [
+        {
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/afe09b54d518aacd6b7b96c5e9e22ba282abb81a.mp4",
+            "alt": "Product demo clip"
+          },
+          "author": "product",
+          "likes": 312,
+          "caption": "Product demo"
+        },
+        {
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/7cc07d1d40c0c9d31ddc7f3951072e20e11a216e.mp4",
+            "alt": "Paid social hook"
+          },
+          "author": "ads",
+          "likes": 448,
+          "caption": "Paid hook"
+        },
+        {
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/eb6f103da589f07f425f2c736237e33f4d1719fa.png",
+            "alt": "Cinematic insert"
+          },
+          "author": "film",
+          "likes": 276,
+          "caption": "Cinematic insert"
+        },
+        {
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/1f66f7b0726f0b3f59645d6b3a471691818a07f2.png",
+            "alt": "Social short"
+          },
+          "author": "social",
+          "likes": 391,
+          "caption": "Social short"
+        }
+      ]
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Three steps from brief to exportable clip",
+      "description": "Keep generation and revision in one place.",
+      "layout": "horizontal",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Brief + references",
+          "description": "Add up to 32 inputs: product stills, audio, and reference clips."
+        },
+        {
+          "step": 2,
+          "title": "Generate with Seedance 2.5",
+          "description": "Create up to 30-second drafts with stronger multi-shot continuity."
+        },
+        {
+          "step": 3,
+          "title": "Edit and export",
+          "description": "Refine on ChatCanvas, then export the ratios your channels need."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Why run Seedance 2.5 inside Lovart",
+      "description": "A model tab alone is not a production workflow.",
+      "headers": [
+        "Need",
+        "Standalone video tool",
+        "Lovart + Seedance 2.5"
+      ],
+      "highlightColumn": 2,
+      "rows": [
+        {
+          "feature": "Brief understanding",
+          "values": [
+            "You write every prompt detail",
+            "Agent helps interpret brief + canvas context"
+          ]
+        },
+        {
+          "feature": "After generation",
+          "values": [
+            "Often restart for small fixes",
+            "Touch Edit and Text Edit on ChatCanvas"
+          ]
+        },
+        {
+          "feature": "Asset stack",
+          "values": [
+            "Video silo",
+            "Image, video, and brand assets in one workspace"
+          ]
+        },
+        {
+          "feature": "Consistency loop",
+          "values": [
+            "Manual re-upload each try",
+            "References and Brand Kit stay attached"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Where video production usually stalls",
+      "description": "Problems Seedance 2.5 on Lovart is built to reduce.",
+      "cards": [
+        {
+          "icon": "image",
+          "title": "Character drift",
+          "description": "Faces and products change every regenerate."
+        },
+        {
+          "icon": "video",
+          "title": "Too-short clips",
+          "description": "Hooks end before the story beat lands."
+        },
+        {
+          "icon": "flask",
+          "title": "No edit path",
+          "description": "One wrong frame forces a full reroll."
+        },
+        {
+          "icon": "chat",
+          "title": "Prompt overload",
+          "description": "Teams rewrite the same brief in every tool."
+        },
+        {
+          "icon": "brand",
+          "title": "Brand mismatch",
+          "description": "Video looks unrelated to static ads and PDP."
+        },
+        {
+          "icon": "refresh",
+          "title": "Slow variant loops",
+          "description": "Testing 5 hooks becomes a full production day."
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "From references to a cut you can ship",
+      "description": "Each stage ends in a concrete deliverable.",
+      "items": [
+        {
+          "title": "Load multimodal references",
+          "description": "Combine up to 20 images, 9 audio files, and 3 videos inside the 32-input budget, then write the shot intent.",
+          "points": [
+            "Product stills",
+            "Voice or music cues",
+            "Style references"
+          ],
+          "cta": {
+            "text": "Upload references",
+            "action": "openLogin",
+            "variant": "primary"
+          },
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
+            "alt": "Multimodal references for Seedance 2.5"
+          }
+        },
+        {
+          "title": "Generate, then surgically revise",
+          "description": "Keep the motion that works. Fix text, product edges, and framing without discarding the whole clip.",
+          "reverse": true,
+          "points": [
+            "Touch Edit",
+            "Text Edit",
+            "Export ratios"
+          ],
+          "cta": {
+            "text": "Refine on ChatCanvas",
+            "action": "openLogin",
+            "variant": "primary"
+          },
+          "media": {
+            "src": "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d14a7f30014fd72f63f9cdfbed8dd17c67012f10.png",
+            "alt": "Refine Seedance output on ChatCanvas"
+          }
+        }
+      ]
+    },
+    {
+      "type": "faq",
+      "title": "Seedance 2.5 FAQ",
+      "items": [
+        {
+          "question": "What is Seedance 2.5 on Lovart?",
+          "answer": "Seedance 2.5 is a video generation model available inside Lovart. You provide references and a brief; Lovart helps generate and edit clips on ChatCanvas instead of leaving you in a disconnected model tab."
+        },
+        {
+          "question": "How many references can I use?",
+          "answer": "You can use up to 32 multimodal references in total, including a mix such as up to 20 images, 9 audio files, and 3 videos, then add your prompt."
+        },
+        {
+          "question": "How long can a Seedance 2.5 clip be?",
+          "answer": "Seedance 2.5 can generate videos up to 30 seconds. For longer stories, generate connected clips and assemble the sequence in your workflow."
+        },
+        {
+          "question": "Can I edit after generation?",
+          "answer": "Yes. Lovart keeps generation and revision together. Use ChatCanvas with Touch Edit and Text Edit to fix specific areas without restarting from a blank prompt."
+        },
+        {
+          "question": "What should I create first?",
+          "answer": "Start with a product demo, a paid social hook, or a three-shot story beat. Those jobs show reference consistency and editability quickly."
+        },
+        {
+          "question": "Is this the same as using Seedance alone?",
+          "answer": "No. Lovart adds agent brief handling, canvas context, Brand Kit continuity, and post-generation editing around Seedance 2.5."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Start your next video with Seedance 2.5",
+      "description": "Load references, generate the first cut, and refine on ChatCanvas before you export.",
+      "buttons": [
+        {
+          "text": "Try Seedance 2.5",
+          "action": "openLogin",
+          "variant": "primary"
+        },
+        {
+          "text": "Explore Seedance workflows",
+          "href": "/features/seedance-2-0-ai-video-generator",
+          "variant": "secondary"
+        }
+      ]
+    }
+  ],
+  "seo": {
+    "_type": "seo",
+    "title": "Seedance 2.5 on Lovart — AI Video Generator | Lovart",
+    "description": "Generate up to 30-second videos with Seedance 2.5 on Lovart. Use up to 32 references, then refine clips on ChatCanvas with Touch Edit and Text Edit.",
+    "noIndex": false,
+    "keywords": [
+      "seedance 2.5",
+      "seedance lovart",
+      "ai video generator",
+      "seedance video"
+    ],
+    "ogImage": {
+      "_type": "imageSource",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/eb6f103da589f07f425f2c736237e33f4d1719fa.png",
+      "alt": "Seedance 2.5 on Lovart"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Seedance 2.5 on Lovart — AI Video Generator | Lovart\", \"description\": \"Generate up to 30-second videos with Seedance 2.5 on Lovart. Use up to 32 references, then refine clips on ChatCanvas with Touch Edit and Text Edit.\", \"url\": \"https://www.lovart.ai/seedance_2_5\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}}"
+    }
+  },
+  "cover": {
+    "_type": "imageSource",
+    "sourceType": "external",
+    "url": "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/eb6f103da589f07f425f2c736237e33f4d1719fa.png",
+    "alt": "Seedance 2.5 on Lovart"
+  },
+  "url_path": "https://www.lovart.ai/seedance_2_5"
+}

@@ -1,0 +1,387 @@
+{
+  "_id": "features-ai-video-background-remover-fr",
+  "reflowSourceId": "features-ai-video-background-remover-fr",
+  "slug": "ai-video-background-remover",
+  "language": "fr",
+  "category": "feature",
+  "title": "Supprimez l’arrière-plan vidéo avec IA | Lovart",
+  "description": "Ditch the green screen. Lovart's AI Design Agent instantly removes video backgrounds and replaces them with cinematic 4K scenes. Fast, realistic, and commercial-safe.",
+  "seo": {
+    "description": "Supprimez les fonds verts. L'IA Lovart retire les arrière-plans vidéo et les remplace par des scènes 4K cinématiques. Rapide, réaliste et sans risque commercial.",
+    "keywords": [
+      "suppresseur d'arrière-plan vidéo IA",
+      "changer l'arrière-plan vidéo IA",
+      "supprimer l'arrière-plan vidéo sans fond vert",
+      "rotoscopie vidéo IA",
+      "éditeur vidéo IA",
+      "échanger l'arrière-plan vidéo",
+      "Seedance 2.0"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Zero Green Screen Required",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Supprimez l’arrière-plan vidéo avec IA | Lovart\", \"description\": \"Ditch the green screen. Lovart's AI Design Agent instantly removes video backgrounds and replaces them with cinematic 4K scenes. Fast, realistic, and commercial-safe.\", \"url\": \"https://www.lovart.ai/features/ai-video-background-remover\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Ai-je besoin d'un fond vert pour supprimer l'arrière-plan de la vidéo ?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Non ! L'IA avancée de Lovart utilise la détection sémantique pour séparer automatiquement votre sujet de n'importe quel arrière-plan, même dans des environnements complexes, sombres ou encombrés. Aucun incrustation ou fond vert physique n'est requis.\"}}, {\"@type\": \"Question\", \"name\": \"Le nouvel arrière-plan correspondra-t-il à l'éclairage de ma vidéo d'origine ?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Oui. Le moteur de raisonnement MCoT de Lovart analyse les sources de lumière et les ombres sur votre sujet d'origine, garantissant que le nouvel arrière-plan généré s'harmonise parfaitement en termes d'exposition et d'ombres pour un rendu hyper-réaliste et naturel.\"}}, {\"@type\": \"Question\", \"name\": \"Quels modèles vidéo IA Lovart utilise-t-il pour cela ?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart intègre des modèles de premier plan comme Seedance 2.0, Veo 3, Sora 2 et Kling sous un même toit. L'Agent sélectionne automatiquement le meilleur modèle pour rendre des arrière-plans cinématographiques et temporellement cohérents en fonction de votre prompt.\"}}, {\"@type\": \"Question\", \"name\": \"Puis-je exporter la vidéo avec un arrière-plan transparent ?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Absolument. Vous pouvez choisir de simplement supprimer l'arrière-plan et d'exporter votre vidéo avec un canal alpha (arrière-plan transparent) pour l'utiliser dans un autre logiciel de montage, ou de générer le nouvel arrière-plan directement dans le ChatCanvas.\"}}, {\"@type\": \"Question\", \"name\": \"Les vidéos sont-elles sûres pour un usage commercial ?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Oui, les utilisateurs abonnés à nos plans payants (Starter, Plus, Pro) bénéficient de l'intégralité des droits commerciaux sur les vidéos qu'ils génèrent, ce qui les rend parfaites pour la monétisation YouTube, les campagnes publicitaires sur les réseaux sociaux et les projets clients.\"}}]}}"
+    },
+    "title": "Supprimez l’arrière-plan vidéo avec IA | Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Supprimez l’arrière-plan vidéo avec IA | Lovart\",\"description\":\"Ditch the green screen. Lovart's AI Design Agent instantly removes video backgrounds and replaces them with cinematic 4K scenes. Fast, realistic, and commercial-safe.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Zero Green Screen Required\"}},{\"type\":\"bento-6\",\"title\":\"The Ultimate AI Video Compositing Toolkit\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Aucun Fond Vert Requis\",\"description\":\"Rotoscopez instantanément des sujets complexes, des cheveux et des objets transparents. Économisez des heures de masquage manuel dans Premiere Pro ou After Effects grâce à notre Extraction d'Éléments intelligente.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Aucun Fond Vert Requis\"}},{\"title\":\"Matching d'Éclairage Cinématographique\",\"description\":\"Ne craignez plus que les sujets aient l'air 'collés'. Lovart analyse la source de lumière du sujet d'origine et harmonise automatiquement l'exposition et les ombres du nouvel arrière-plan.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Matching d'Éclairage Cinématographique\"}},{\"title\":\"Modèles Vidéo Premium\",\"description\":\"Propulsé par des générateurs vidéo IA de pointe comme Seedance 2.0, Veo 3 et Kling. Assure des mouvements fluides, une précision physique et un rendu d'arrière-plan hyper-réaliste.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Modèles Vidéo Premium\"}},{\"title\":\"Texte Fluide Derrière le Sujet\",\"description\":\"Utilisez Text Edit pour ajouter des légendes dynamiques, des logos de marque ou du texte 3D directement derrière votre sujet en mouvement, créant instantanément une profondeur visuelle époustouflante et des animations graphiques professionnelles.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Texte Fluide Derrière le Sujet\"}},{\"title\":\"Redimensionnement Multi-Plateforme\",\"description\":\"Recadrez et agrandissez (outpainting) facilement le nouvel arrière-plan vidéo généré pour l'adapter au format 9:16 pour TikTok/Reels ou 16:9 pour YouTube, en gardant votre sujet parfaitement centré.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Redimensionnement Multi-Plateforme\"}},{\"title\":\"Itération Rapide (Fast Mode)\",\"description\":\"Vous ne savez pas quel arrière-plan convertit le mieux ? Utilisez le mode rapide (Fast Mode) pour générer des dizaines de variations d'environnement en quelques secondes et testez facilement vos publicités vidéo (A/B testing).\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Itération Rapide (Fast Mode)\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Toutes les capacités dans un seul agent\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Aucun Fond Vert Requis\",\"icon\":\"chat\",\"content\":{\"title\":\"Aucun Fond Vert Requis\",\"description\":\"Rotoscopez instantanément des sujets complexes, des cheveux et des objets transparents. Économisez des heures de masquage manuel dans Premiere Pro ou After Effects grâce à notre Extraction d'Éléments intelligente.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Aucun Fond Vert Requis\"}}},{\"label\":\"Matching d'Éclairage Cinématographique\",\"icon\":\"image\",\"content\":{\"title\":\"Matching d'Éclairage Cinématographique\",\"description\":\"Ne craignez plus que les sujets aient l'air 'collés'. Lovart analyse la source de lumière du sujet d'origine et harmonise automatiquement l'exposition et les ombres du nouvel arrière-plan.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Matching d'Éclairage Cinématographique\"}}},{\"label\":\"Modèles Vidéo Premium\",\"icon\":\"flask\",\"content\":{\"title\":\"Modèles Vidéo Premium\",\"description\":\"Propulsé par des générateurs vidéo IA de pointe comme Seedance 2.0, Veo 3 et Kling. Assure des mouvements fluides, une précision physique et un rendu d'arrière-plan hyper-réaliste.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Modèles Vidéo Premium\"}}},{\"label\":\"Texte Fluide Derrière le Sujet\",\"icon\":\"brand\",\"content\":{\"title\":\"Texte Fluide Derrière le Sujet\",\"description\":\"Utilisez Text Edit pour ajouter des légendes dynamiques, des logos de marque ou du texte 3D directement derrière votre sujet en mouvement, créant instantanément une profondeur visuelle époustouflante et des animations graphiques professionnelles.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Texte Fluide Derrière le Sujet\"}}}]},{\"type\":\"bento-2\",\"title\":\"Deux choses qu'il fait particulièrement bien\",\"columns\":2,\"features\":[{\"title\":\"Redimensionnement Multi-Plateforme\",\"description\":\"Recadrez et agrandissez (outpainting) facilement le nouvel arrière-plan vidéo généré pour l'adapter au format 9:16 pour TikTok/Reels ou 16:9 pour YouTube, en gardant votre sujet parfaitement centré.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Redimensionnement Multi-Plateforme\"}},{\"title\":\"Itération Rapide (Fast Mode)\",\"description\":\"Vous ne savez pas quel arrière-plan convertit le mieux ? Utilisez le mode rapide (Fast Mode) pour générer des dizaines de variations d'environnement en quelques secondes et testez facilement vos publicités vidéo (A/B testing).\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Itération Rapide (Fast Mode)\"}}]},{\"type\":\"feature-detail\",\"title\":\"Comment ça marche en détail\",\"items\":[{\"title\":\"Lancez votre projet Best AI Video Background Remover: Instantly Change Backgrounds\",\"description\":\"Décrivez le résultat souhaité et ajoutez vos références.\"},{\"title\":\"Itérez avec l'agent\",\"description\":\"Ajustez les détails et explorez des variantes sur le même canvas.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Meilleur Outil IA de Suppression et Remplacement d'Arrière-plan Vidéo\",\"description\":\"Oubliez le fond vert et le rotoscoping fastidieux. L'Agent de Design IA de Lovart supprime instantanément les arrière-plans vidéo et téléporte votre sujet dans des environnements cinématographiques époustouflants. Idéal pour les réseaux sociaux, les publicités et les vidéos de produits.\",\"input_placeholder\":\"Décrivez la nouvelle scène pour l'arrière-plan de votre vidéo...\",\"prompts\":[{\"label\":\"Ville Cyberpunk\",\"prompt\":\"Rue cyberpunk éclairée aux néons à minuit, reflets de pluie, 4K cinématographique.\"},{\"label\":\"Salon Chaleureux\",\"prompt\":\"Salon minimaliste et chaleureux avec la lumière du soleil matinal et une bibliothèque.\"},{\"label\":\"Studio de Podcast\",\"prompt\":\"Studio de podcast professionnel avec panneaux acoustiques sombres et lumières LED violettes.\"},{\"label\":\"Plage Tropicale\",\"prompt\":\"Plage tropicale ensoleillée avec des palmiers se balançant doucement en arrière-plan.\"}],\"tip\":\"Astuce : Mentionnez l'éclairage et l'atmosphère pour vous assurer que le nouvel arrière-plan correspond parfaitement à votre sujet.\",\"cta\":{\"text\":\"Changer l'Arrière-plan Vidéo\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Comment Remplacer les Arrière-plans Vidéo en 3 Étapes Faciles\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"1. Téléchargez Votre Vidéo\",\"description\":\"Téléchargez vos images brutes sur le ChatCanvas. Lovart détecte automatiquement le sujet et supprime l'arrière-plan avec une précision au pixel près, sans fond vert nécessaire.\"},{\"step\":2,\"title\":\"2. Décrivez la Nouvelle Scène\",\"description\":\"Indiquez à l'Agent IA où vous souhaitez que votre sujet se trouve. Qu'il s'agisse d'un studio professionnel ou d'un monde fantastique, notre moteur MCoT comprend parfaitement votre intention créative.\"},{\"step\":3,\"title\":\"3. Générez et Exportez\",\"description\":\"Lovart orchestre des modèles vidéo de premier plan pour rendre le nouvel arrière-plan avec un éclairage et une perspective assortis. Exportez votre vidéo cinématographique en 4K, prête pour les réseaux sociaux.\"}]},{\"type\":\"comparison-table\",\"title\":\"Best AI Video Background Remover: Instantly Change Backgrounds : Lovart face aux workflows classiques\",\"headers\":[\"Besoin\",\"Outil générique\",\"Workflow manuel\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Lancez votre projet Best AI Video Background Remover: Instantly Change Backgrounds\",\"values\":[\"Un seul prompt\",\"Brief manuel\",\"Raisonnement guidé par le brief\"]},{\"feature\":\"Délai avant le premier résultat\",\"values\":[\"Quelques minutes\",\"Plusieurs jours\",\"Quelques minutes\"]},{\"feature\":\"Édition après génération\",\"values\":[\"Limité\",\"Cycles de révision\",\"Touch / Texte / Éléments\"]},{\"feature\":\"Rester fidèle à la marque\",\"values\":[\"Manuel\",\"Manuel\",\"Compatible Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Où Best AI Video Background Remover: Instantly Change Backgrounds fait la différence\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Lancez plus vite\",\"description\":\"Du brief aux assets Best AI Video Background Remover: Instantly Change Backgrounds en une seule session.\"},{\"icon\":\"brand\",\"title\":\"Restez cohérent\",\"description\":\"Le Brand Kit garde chaque asset aligné.\"},{\"icon\":\"refresh\",\"title\":\"Itérez rapidement\",\"description\":\"Modifiez les détails sans recommencer le projet.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"\",\"author\":\"Alex P.\",\"role\":\"Créateur YouTube\"},{\"quote\":\"\",\"author\":\"Maria V.\",\"role\":\"Fondatrice E-commerce\"},{\"quote\":\"\",\"author\":\"David K.\",\"role\":\"Directeur Créatif\"}],\"title\":\"Des Créateurs qui Développent leur Contenu avec Lovart\"},{\"type\":\"pricing-block\",\"title\":\"Choisissez l'offre adaptée à votre équipe\",\"description\":\"Commencez gratuitement. Passez à l'offre supérieure dès que le travail s'adresse aux clients.\"},{\"type\":\"faq\",\"title\":\"Questions fréquentes\",\"items\":[{\"question\":\"Ai-je besoin d'un fond vert pour supprimer l'arrière-plan de la vidéo ?\",\"answer\":\"Non ! L'IA avancée de Lovart utilise la détection sémantique pour séparer automatiquement votre sujet de n'importe quel arrière-plan, même dans des environnements complexes, sombres ou encombrés. Aucun incrustation ou fond vert physique n'est requis.\"},{\"question\":\"Le nouvel arrière-plan correspondra-t-il à l'éclairage de ma vidéo d'origine ?\",\"answer\":\"Oui. Le moteur de raisonnement MCoT de Lovart analyse les sources de lumière et les ombres sur votre sujet d'origine, garantissant que le nouvel arrière-plan généré s'harmonise parfaitement en termes d'exposition et d'ombres pour un rendu hyper-réaliste et naturel.\"},{\"question\":\"Quels modèles vidéo IA Lovart utilise-t-il pour cela ?\",\"answer\":\"Lovart intègre des modèles de premier plan comme Seedance 2.0, Veo 3, Sora 2 et Kling sous un même toit. L'Agent sélectionne automatiquement le meilleur modèle pour rendre des arrière-plans cinématographiques et temporellement cohérents en fonction de votre prompt.\"},{\"question\":\"Puis-je exporter la vidéo avec un arrière-plan transparent ?\",\"answer\":\"Absolument. Vous pouvez choisir de simplement supprimer l'arrière-plan et d'exporter votre vidéo avec un canal alpha (arrière-plan transparent) pour l'utiliser dans un autre logiciel de montage, ou de générer le nouvel arrière-plan directement dans le ChatCanvas.\"},{\"question\":\"Les vidéos sont-elles sûres pour un usage commercial ?\",\"answer\":\"Oui, les utilisateurs abonnés à nos plans payants (Starter, Plus, Pro) bénéficient de l'intégralité des droits commerciaux sur les vidéos qu'ils génèrent, ce qui les rend parfaites pour la monétisation YouTube, les campagnes publicitaires sur les réseaux sociaux et les projets clients.\"}]},{\"type\":\"cta-default\",\"title\":\"Lancez vos créations avec Lovart\",\"description\":\"Transformez votre brief en visuels fidèles à votre marque en quelques minutes.\",\"buttons\":[{\"text\":\"Commencer gratuitement\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Supprimez l’arrière-plan vidéo avec IA | Lovart",
+      "description": "Ditch the green screen. Lovart's AI Design Agent instantly removes video backgrounds and replaces them with cinematic 4K scenes. Fast, realistic, and commercial-safe.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+        "alt": "Zero Green Screen Required"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "The Ultimate AI Video Compositing Toolkit",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Aucun Fond Vert Requis",
+          "description": "Rotoscopez instantanément des sujets complexes, des cheveux et des objets transparents. Économisez des heures de masquage manuel dans Premiere Pro ou After Effects grâce à notre Extraction d'Éléments intelligente.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Aucun Fond Vert Requis"
+          }
+        },
+        {
+          "title": "Matching d'Éclairage Cinématographique",
+          "description": "Ne craignez plus que les sujets aient l'air 'collés'. Lovart analyse la source de lumière du sujet d'origine et harmonise automatiquement l'exposition et les ombres du nouvel arrière-plan.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Matching d'Éclairage Cinématographique"
+          }
+        },
+        {
+          "title": "Modèles Vidéo Premium",
+          "description": "Propulsé par des générateurs vidéo IA de pointe comme Seedance 2.0, Veo 3 et Kling. Assure des mouvements fluides, une précision physique et un rendu d'arrière-plan hyper-réaliste.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Modèles Vidéo Premium"
+          }
+        },
+        {
+          "title": "Texte Fluide Derrière le Sujet",
+          "description": "Utilisez Text Edit pour ajouter des légendes dynamiques, des logos de marque ou du texte 3D directement derrière votre sujet en mouvement, créant instantanément une profondeur visuelle époustouflante et des animations graphiques professionnelles.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "Texte Fluide Derrière le Sujet"
+          }
+        },
+        {
+          "title": "Redimensionnement Multi-Plateforme",
+          "description": "Recadrez et agrandissez (outpainting) facilement le nouvel arrière-plan vidéo généré pour l'adapter au format 9:16 pour TikTok/Reels ou 16:9 pour YouTube, en gardant votre sujet parfaitement centré.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Redimensionnement Multi-Plateforme"
+          }
+        },
+        {
+          "title": "Itération Rapide (Fast Mode)",
+          "description": "Vous ne savez pas quel arrière-plan convertit le mieux ? Utilisez le mode rapide (Fast Mode) pour générer des dizaines de variations d'environnement en quelques secondes et testez facilement vos publicités vidéo (A/B testing).",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Itération Rapide (Fast Mode)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Toutes les capacités dans un seul agent",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Aucun Fond Vert Requis",
+          "icon": "chat",
+          "content": {
+            "title": "Aucun Fond Vert Requis",
+            "description": "Rotoscopez instantanément des sujets complexes, des cheveux et des objets transparents. Économisez des heures de masquage manuel dans Premiere Pro ou After Effects grâce à notre Extraction d'Éléments intelligente.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+              "alt": "Aucun Fond Vert Requis"
+            }
+          }
+        },
+        {
+          "label": "Matching d'Éclairage Cinématographique",
+          "icon": "image",
+          "content": {
+            "title": "Matching d'Éclairage Cinématographique",
+            "description": "Ne craignez plus que les sujets aient l'air 'collés'. Lovart analyse la source de lumière du sujet d'origine et harmonise automatiquement l'exposition et les ombres du nouvel arrière-plan.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Matching d'Éclairage Cinématographique"
+            }
+          }
+        },
+        {
+          "label": "Modèles Vidéo Premium",
+          "icon": "flask",
+          "content": {
+            "title": "Modèles Vidéo Premium",
+            "description": "Propulsé par des générateurs vidéo IA de pointe comme Seedance 2.0, Veo 3 et Kling. Assure des mouvements fluides, une précision physique et un rendu d'arrière-plan hyper-réaliste.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Modèles Vidéo Premium"
+            }
+          }
+        },
+        {
+          "label": "Texte Fluide Derrière le Sujet",
+          "icon": "brand",
+          "content": {
+            "title": "Texte Fluide Derrière le Sujet",
+            "description": "Utilisez Text Edit pour ajouter des légendes dynamiques, des logos de marque ou du texte 3D directement derrière votre sujet en mouvement, créant instantanément une profondeur visuelle époustouflante et des animations graphiques professionnelles.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+              "alt": "Texte Fluide Derrière le Sujet"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Deux choses qu'il fait particulièrement bien",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Redimensionnement Multi-Plateforme",
+          "description": "Recadrez et agrandissez (outpainting) facilement le nouvel arrière-plan vidéo généré pour l'adapter au format 9:16 pour TikTok/Reels ou 16:9 pour YouTube, en gardant votre sujet parfaitement centré.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Redimensionnement Multi-Plateforme"
+          }
+        },
+        {
+          "title": "Itération Rapide (Fast Mode)",
+          "description": "Vous ne savez pas quel arrière-plan convertit le mieux ? Utilisez le mode rapide (Fast Mode) pour générer des dizaines de variations d'environnement en quelques secondes et testez facilement vos publicités vidéo (A/B testing).",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Itération Rapide (Fast Mode)"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "Comment ça marche en détail",
+      "items": [
+        {
+          "title": "Lancez votre projet Best AI Video Background Remover: Instantly Change Backgrounds",
+          "description": "Décrivez le résultat souhaité et ajoutez vos références."
+        },
+        {
+          "title": "Itérez avec l'agent",
+          "description": "Ajustez les détails et explorez des variantes sur le même canvas.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Meilleur Outil IA de Suppression et Remplacement d'Arrière-plan Vidéo",
+      "description": "Oubliez le fond vert et le rotoscoping fastidieux. L'Agent de Design IA de Lovart supprime instantanément les arrière-plans vidéo et téléporte votre sujet dans des environnements cinématographiques époustouflants. Idéal pour les réseaux sociaux, les publicités et les vidéos de produits.",
+      "input_placeholder": "Décrivez la nouvelle scène pour l'arrière-plan de votre vidéo...",
+      "prompts": [
+        {
+          "label": "Ville Cyberpunk",
+          "prompt": "Rue cyberpunk éclairée aux néons à minuit, reflets de pluie, 4K cinématographique."
+        },
+        {
+          "label": "Salon Chaleureux",
+          "prompt": "Salon minimaliste et chaleureux avec la lumière du soleil matinal et une bibliothèque."
+        },
+        {
+          "label": "Studio de Podcast",
+          "prompt": "Studio de podcast professionnel avec panneaux acoustiques sombres et lumières LED violettes."
+        },
+        {
+          "label": "Plage Tropicale",
+          "prompt": "Plage tropicale ensoleillée avec des palmiers se balançant doucement en arrière-plan."
+        }
+      ],
+      "tip": "Astuce : Mentionnez l'éclairage et l'atmosphère pour vous assurer que le nouvel arrière-plan correspond parfaitement à votre sujet.",
+      "cta": {
+        "text": "Changer l'Arrière-plan Vidéo"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Comment Remplacer les Arrière-plans Vidéo en 3 Étapes Faciles",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "1. Téléchargez Votre Vidéo",
+          "description": "Téléchargez vos images brutes sur le ChatCanvas. Lovart détecte automatiquement le sujet et supprime l'arrière-plan avec une précision au pixel près, sans fond vert nécessaire."
+        },
+        {
+          "step": 2,
+          "title": "2. Décrivez la Nouvelle Scène",
+          "description": "Indiquez à l'Agent IA où vous souhaitez que votre sujet se trouve. Qu'il s'agisse d'un studio professionnel ou d'un monde fantastique, notre moteur MCoT comprend parfaitement votre intention créative."
+        },
+        {
+          "step": 3,
+          "title": "3. Générez et Exportez",
+          "description": "Lovart orchestre des modèles vidéo de premier plan pour rendre le nouvel arrière-plan avec un éclairage et une perspective assortis. Exportez votre vidéo cinématographique en 4K, prête pour les réseaux sociaux."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "Best AI Video Background Remover: Instantly Change Backgrounds : Lovart face aux workflows classiques",
+      "headers": [
+        "Besoin",
+        "Outil générique",
+        "Workflow manuel",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Lancez votre projet Best AI Video Background Remover: Instantly Change Backgrounds",
+          "values": [
+            "Un seul prompt",
+            "Brief manuel",
+            "Raisonnement guidé par le brief"
+          ]
+        },
+        {
+          "feature": "Délai avant le premier résultat",
+          "values": [
+            "Quelques minutes",
+            "Plusieurs jours",
+            "Quelques minutes"
+          ]
+        },
+        {
+          "feature": "Édition après génération",
+          "values": [
+            "Limité",
+            "Cycles de révision",
+            "Touch / Texte / Éléments"
+          ]
+        },
+        {
+          "feature": "Rester fidèle à la marque",
+          "values": [
+            "Manuel",
+            "Manuel",
+            "Compatible Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Où Best AI Video Background Remover: Instantly Change Backgrounds fait la différence",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Lancez plus vite",
+          "description": "Du brief aux assets Best AI Video Background Remover: Instantly Change Backgrounds en une seule session."
+        },
+        {
+          "icon": "brand",
+          "title": "Restez cohérent",
+          "description": "Le Brand Kit garde chaque asset aligné."
+        },
+        {
+          "icon": "refresh",
+          "title": "Itérez rapidement",
+          "description": "Modifiez les détails sans recommencer le projet."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "",
+          "author": "Alex P.",
+          "role": "Créateur YouTube"
+        },
+        {
+          "quote": "",
+          "author": "Maria V.",
+          "role": "Fondatrice E-commerce"
+        },
+        {
+          "quote": "",
+          "author": "David K.",
+          "role": "Directeur Créatif"
+        }
+      ],
+      "title": "Des Créateurs qui Développent leur Contenu avec Lovart"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Choisissez l'offre adaptée à votre équipe",
+      "description": "Commencez gratuitement. Passez à l'offre supérieure dès que le travail s'adresse aux clients."
+    },
+    {
+      "type": "faq",
+      "title": "Questions fréquentes",
+      "items": [
+        {
+          "question": "Ai-je besoin d'un fond vert pour supprimer l'arrière-plan de la vidéo ?",
+          "answer": "Non ! L'IA avancée de Lovart utilise la détection sémantique pour séparer automatiquement votre sujet de n'importe quel arrière-plan, même dans des environnements complexes, sombres ou encombrés. Aucun incrustation ou fond vert physique n'est requis."
+        },
+        {
+          "question": "Le nouvel arrière-plan correspondra-t-il à l'éclairage de ma vidéo d'origine ?",
+          "answer": "Oui. Le moteur de raisonnement MCoT de Lovart analyse les sources de lumière et les ombres sur votre sujet d'origine, garantissant que le nouvel arrière-plan généré s'harmonise parfaitement en termes d'exposition et d'ombres pour un rendu hyper-réaliste et naturel."
+        },
+        {
+          "question": "Quels modèles vidéo IA Lovart utilise-t-il pour cela ?",
+          "answer": "Lovart intègre des modèles de premier plan comme Seedance 2.0, Veo 3, Sora 2 et Kling sous un même toit. L'Agent sélectionne automatiquement le meilleur modèle pour rendre des arrière-plans cinématographiques et temporellement cohérents en fonction de votre prompt."
+        },
+        {
+          "question": "Puis-je exporter la vidéo avec un arrière-plan transparent ?",
+          "answer": "Absolument. Vous pouvez choisir de simplement supprimer l'arrière-plan et d'exporter votre vidéo avec un canal alpha (arrière-plan transparent) pour l'utiliser dans un autre logiciel de montage, ou de générer le nouvel arrière-plan directement dans le ChatCanvas."
+        },
+        {
+          "question": "Les vidéos sont-elles sûres pour un usage commercial ?",
+          "answer": "Oui, les utilisateurs abonnés à nos plans payants (Starter, Plus, Pro) bénéficient de l'intégralité des droits commerciaux sur les vidéos qu'ils génèrent, ce qui les rend parfaites pour la monétisation YouTube, les campagnes publicitaires sur les réseaux sociaux et les projets clients."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lancez vos créations avec Lovart",
+      "description": "Transformez votre brief en visuels fidèles à votre marque en quelques minutes.",
+      "buttons": [
+        {
+          "text": "Commencer gratuitement",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

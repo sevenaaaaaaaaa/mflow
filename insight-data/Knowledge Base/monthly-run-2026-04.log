@@ -1,0 +1,39 @@
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/oauth2/__init__.py:40: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/auth/__init__.py:54: FutureWarning: You are using a Python version 3.9 past its end of life. Google will update google-auth with critical bug fixes on a best-effort basis, but not with any other fixes or features. Please upgrade your Python version, and then update google-auth.
+  warnings.warn(eol_message.format("3.9"), FutureWarning)
+/Users/seveno/Library/Python/3.9/lib/python/site-packages/google/api_core/_python_version_support.py:242: FutureWarning: You are using a non-supported Python version (3.9.6). Google will not post any further updates to google.api_core supporting this Python version. Please upgrade to the latest Python version, or at least Python 3.10, and then update google.api_core.
+  warnings.warn(message, FutureWarning)
+────────────────────────────────────────────────────────────
+  SEO 报告标准检查（强制）
+  类型: monthly
+  当前: 2026-04 (全月)
+  环比: 2026-03 (全月)
+  规则: 报告月 YYYY-MM 全月 vs 上一自然月全月（例：2026-05 月报 vs 2026-04）
+  关键词: 每段必须含 点击+曝光+CTR + 三者环比
+  细分: Top/地区/目录/品牌拆分 必须含 点击占比+曝光占比
+  OKR: 当前脚本默认生效月 2026-05（Agent 跑前须问用户是否更新）
+────────────────────────────────────────────────────────────
+  ℹ️  OKR 目标默认沿用 2026-05 版本（见 AGENTS.md A4）。 生成报告前请向用户确认：OKR 是否要更新？
+
+
+[1/4] GSC 当月 — 使用快照 2026-04
+[1/4] GSC 5K 拉取（对比月）...
+📊 GSC 3月: 5,000 keywords, 783,782 clicks, 2,084,493 impr | indexed=1000 pages
+
+[2/4] GA4 当月 — 使用快照 2026-04
+[2/4] GA4 拉取（对比月）...
+📊 GA4 3月: sessions=1,869,869 users=1,191,675 new=370,257 dur=486s pages=7.12 bounce=12.5% | organic share=22.3%
+
+[3/4] 计算分层 + 匹配竞品词...
+  品牌词: 1824 → 1704
+  非品牌词: 3176 → 3296
+  竞品 Core: 24/36 (66.7%)
+  页面目录: 23 groups
+
+[4/4] 生成完整报告...
+
+  📄 /Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/Lovart Knowledge Base/Trident Insights/reports/monthly/Lovart-SEO-2026-04.md
+  📊 43,958 chars, 1087 lines
+
+✅ Done!

@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-10-02",
+  "generator": "Lovart Sentinel",
+  "title": "Weibo/Douyin/Kuaishou Monitor",
+  "status": "delegated",
+  "method": "Bing + 搜狗 (微博) / Bing (抖音/快手)",
+  "queries": {
+    "weibo_bing": "lovart site:weibo.com",
+    "weibo_sogou": "https://www.sogou.com/web?query=lovart+site:weibo.com",
+    "douyin": "lovart ai site:douyin.com",
+    "kuaishou": "lovart ai site:kuaishou.com",
+    "weibo_hot": "lovart AI设计 site:weibo.com"
+  },
+  "_instructions": "\n    1. 搜狗搜索 lovart site:weibo.com（搜狗对中文站点收录优于Bing）\n    2. Bing搜索 lovart site:douyin.com\n    3. 提取：提及数量、是否有热门话题、头部内容互动量\n    4. 微博特定：是否有#话题标签、热搜相关、是否有KOL转发\n    5. 抖音特定：视频标题、创作者、是否有UGC内容\n    "
+}

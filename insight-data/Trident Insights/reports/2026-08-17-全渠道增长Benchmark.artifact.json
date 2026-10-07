@@ -1,0 +1,1396 @@
+{
+  "surface": "report",
+  "manifest": {
+    "version": 1,
+    "surface": "report",
+    "title": "Lovart 1—7 月全投放渠道增长 Benchmark",
+    "description": "仅覆盖付费投放渠道的全盘增长Benchmark。",
+    "generatedAt": "2026-08-18T00:00:00+08:00",
+    "charts": [
+      {
+        "id": "visit-uv",
+        "title": "1—5月新用户访问UV",
+        "subtitle": "同口径阶段平均为362.6k。",
+        "intent": "trend",
+        "type": "line",
+        "dataset": "visit",
+        "sourceId": "feishu-growth-reports",
+        "encodings": {
+          "x": {
+            "field": "month",
+            "type": "ordinal",
+            "label": "月份"
+          },
+          "y": {
+            "field": "uv",
+            "type": "quantitative",
+            "label": "UV",
+            "format": "number",
+            "unit": ""
+          }
+        },
+        "xAxisTitle": "月份",
+        "yAxisTitle": "UV",
+        "valueFormat": "number",
+        "unit": "",
+        "layout": "full",
+        "referenceLines": [
+          {
+            "axis": "y",
+            "value": 362615,
+            "label": "阶段平均",
+            "color": "neutral",
+            "lineStyle": "dashed"
+          }
+        ],
+        "surface": {
+          "surface": "export",
+          "interactiveLegend": true,
+          "viewMode": "visualization"
+        }
+      },
+      {
+        "id": "behavior-uv",
+        "title": "6—7月有行为新用户",
+        "subtitle": "口径自6月起变更；阶段平均为70.4k。",
+        "intent": "trend",
+        "type": "line",
+        "dataset": "behavior",
+        "sourceId": "feishu-growth-reports",
+        "encodings": {
+          "x": {
+            "field": "month",
+            "type": "ordinal",
+            "label": "月份"
+          },
+          "y": {
+            "field": "uv",
+            "type": "quantitative",
+            "label": "UV",
+            "format": "number",
+            "unit": ""
+          }
+        },
+        "xAxisTitle": "月份",
+        "yAxisTitle": "UV",
+        "valueFormat": "number",
+        "unit": "",
+        "layout": "full",
+        "referenceLines": [
+          {
+            "axis": "y",
+            "value": 70364,
+            "label": "阶段平均",
+            "color": "neutral",
+            "lineStyle": "dashed"
+          }
+        ],
+        "surface": {
+          "surface": "export",
+          "interactiveLegend": true,
+          "viewMode": "visualization"
+        }
+      },
+      {
+        "id": "registrations",
+        "title": "1—7月BI注册UV",
+        "subtitle": "7个月历史平均为144.8k。",
+        "intent": "trend",
+        "type": "line",
+        "dataset": "monthly",
+        "sourceId": "feishu-growth-reports",
+        "encodings": {
+          "x": {
+            "field": "month",
+            "type": "ordinal",
+            "label": "月份"
+          },
+          "y": {
+            "field": "registrations",
+            "type": "quantitative",
+            "label": "BI注册UV",
+            "format": "number",
+            "unit": ""
+          }
+        },
+        "xAxisTitle": "月份",
+        "yAxisTitle": "BI注册UV",
+        "valueFormat": "number",
+        "unit": "",
+        "layout": "full",
+        "referenceLines": [
+          {
+            "axis": "y",
+            "value": 144773,
+            "label": "历史平均",
+            "color": "neutral",
+            "lineStyle": "dashed"
+          }
+        ],
+        "surface": {
+          "surface": "export",
+          "interactiveLegend": true,
+          "viewMode": "visualization"
+        }
+      },
+      {
+        "id": "payers",
+        "title": "1—7月MTD付费UV",
+        "subtitle": "7个月历史平均为3,851。",
+        "intent": "trend",
+        "type": "line",
+        "dataset": "monthly",
+        "sourceId": "feishu-growth-reports",
+        "encodings": {
+          "x": {
+            "field": "month",
+            "type": "ordinal",
+            "label": "月份"
+          },
+          "y": {
+            "field": "payers",
+            "type": "quantitative",
+            "label": "MTD付费UV",
+            "format": "number",
+            "unit": ""
+          }
+        },
+        "xAxisTitle": "月份",
+        "yAxisTitle": "MTD付费UV",
+        "valueFormat": "number",
+        "unit": "",
+        "layout": "full",
+        "referenceLines": [
+          {
+            "axis": "y",
+            "value": 3851,
+            "label": "历史平均",
+            "color": "neutral",
+            "lineStyle": "dashed"
+          }
+        ],
+        "surface": {
+          "surface": "export",
+          "interactiveLegend": true,
+          "viewMode": "visualization"
+        }
+      },
+      {
+        "id": "visit-rate",
+        "title": "3—5月访问到注册率",
+        "subtitle": "仅展示报告明确披露的同口径月份；阶段平均37.3%。",
+        "intent": "trend",
+        "type": "line",
+        "dataset": "visitRate",
+        "sourceId": "feishu-growth-reports",
+        "encodings": {
+          "x": {
+            "field": "month",
+            "type": "ordinal",
+            "label": "月份"
+          },
+          "y": {
+            "field": "rate",
+            "type": "quantitative",
+            "label": "访问到注册率",
+            "format": "number",
+            "unit": "%"
+          }
+        },
+        "xAxisTitle": "月份",
+        "yAxisTitle": "访问到注册率（%）",
+        "valueFormat": "number",
+        "unit": "%",
+        "layout": "full",
+        "referenceLines": [
+          {
+            "axis": "y",
+            "value": 37.33,
+            "label": "阶段平均",
+            "color": "neutral",
+            "lineStyle": "dashed"
+          }
+        ],
+        "surface": {
+          "surface": "export",
+          "interactiveLegend": true,
+          "viewMode": "visualization"
+        }
+      },
+      {
+        "id": "payment-rate",
+        "title": "1—7月注册到MTD付费率",
+        "subtitle": "7个月历史平均2.71%。",
+        "intent": "trend",
+        "type": "line",
+        "dataset": "monthly",
+        "sourceId": "feishu-growth-reports",
+        "encodings": {
+          "x": {
+            "field": "month",
+            "type": "ordinal",
+            "label": "月份"
+          },
+          "y": {
+            "field": "payment_rate",
+            "type": "quantitative",
+            "label": "MTD付费率",
+            "format": "number",
+            "unit": "%"
+          }
+        },
+        "xAxisTitle": "月份",
+        "yAxisTitle": "MTD付费率（%）",
+        "valueFormat": "number",
+        "unit": "%",
+        "layout": "full",
+        "referenceLines": [
+          {
+            "axis": "y",
+            "value": 2.71,
+            "label": "历史平均",
+            "color": "neutral",
+            "lineStyle": "dashed"
+          }
+        ],
+        "surface": {
+          "surface": "export",
+          "interactiveLegend": true,
+          "viewMode": "visualization"
+        }
+      },
+      {
+        "id": "arppu",
+        "title": "1—7月ARPPU",
+        "subtitle": "7个月历史平均90.59美元。",
+        "intent": "trend",
+        "type": "line",
+        "dataset": "monthly",
+        "sourceId": "feishu-growth-reports",
+        "encodings": {
+          "x": {
+            "field": "month",
+            "type": "ordinal",
+            "label": "月份"
+          },
+          "y": {
+            "field": "arppu",
+            "type": "quantitative",
+            "label": "ARPPU",
+            "format": "currency",
+            "unit": ""
+          }
+        },
+        "xAxisTitle": "月份",
+        "yAxisTitle": "ARPPU",
+        "valueFormat": "currency",
+        "unit": "",
+        "layout": "full",
+        "referenceLines": [
+          {
+            "axis": "y",
+            "value": 90.59,
+            "label": "历史平均",
+            "color": "neutral",
+            "lineStyle": "dashed"
+          }
+        ],
+        "surface": {
+          "surface": "export",
+          "interactiveLegend": true,
+          "viewMode": "visualization"
+        }
+      },
+      {
+        "id": "roi",
+        "title": "1—7月MTD ROI",
+        "subtitle": "同时对比97.18%历史平均和143%经营目标。",
+        "intent": "trend",
+        "type": "line",
+        "dataset": "monthly",
+        "sourceId": "feishu-growth-reports",
+        "encodings": {
+          "x": {
+            "field": "month",
+            "type": "ordinal",
+            "label": "月份"
+          },
+          "y": {
+            "field": "roi",
+            "type": "quantitative",
+            "label": "MTD ROI",
+            "format": "number",
+            "unit": "%"
+          }
+        },
+        "xAxisTitle": "月份",
+        "yAxisTitle": "MTD ROI（%）",
+        "valueFormat": "number",
+        "unit": "%",
+        "layout": "full",
+        "referenceLines": [
+          {
+            "axis": "y",
+            "value": 97.18,
+            "label": "历史平均 97.18%",
+            "color": "neutral",
+            "lineStyle": "dashed"
+          },
+          {
+            "axis": "y",
+            "value": 143,
+            "label": "经营目标 143%",
+            "color": "orange",
+            "lineStyle": "dashed"
+          }
+        ],
+        "surface": {
+          "surface": "export",
+          "interactiveLegend": true,
+          "viewMode": "visualization"
+        }
+      },
+      {
+        "id": "spend",
+        "title": "1—7月投放消耗",
+        "subtitle": "7个月历史平均381.0k美元。",
+        "intent": "trend",
+        "type": "line",
+        "dataset": "monthly",
+        "sourceId": "feishu-growth-reports",
+        "encodings": {
+          "x": {
+            "field": "month",
+            "type": "ordinal",
+            "label": "月份"
+          },
+          "y": {
+            "field": "spend",
+            "type": "quantitative",
+            "label": "消耗",
+            "format": "currency",
+            "unit": ""
+          }
+        },
+        "xAxisTitle": "月份",
+        "yAxisTitle": "消耗",
+        "valueFormat": "currency",
+        "unit": "",
+        "layout": "full",
+        "referenceLines": [
+          {
+            "axis": "y",
+            "value": 380975,
+            "label": "历史平均",
+            "color": "neutral",
+            "lineStyle": "dashed"
+          }
+        ],
+        "surface": {
+          "surface": "export",
+          "interactiveLegend": true,
+          "viewMode": "visualization"
+        }
+      },
+      {
+        "id": "revenue",
+        "title": "1—7月D0与MTD收入",
+        "subtitle": "分别对比各自7个月历史平均。",
+        "intent": "trend",
+        "type": "line",
+        "dataset": "revenueRows",
+        "sourceId": "feishu-growth-reports",
+        "encodings": {
+          "x": {
+            "field": "month",
+            "type": "ordinal",
+            "label": "月份"
+          },
+          "y": {
+            "field": "value",
+            "type": "quantitative",
+            "label": "收入",
+            "format": "currency"
+          },
+          "color": {
+            "field": "series",
+            "type": "nominal",
+            "label": "收入指标"
+          },
+          "lineStyle": {
+            "field": "role",
+            "type": "nominal",
+            "label": "类型"
+          }
+        },
+        "xAxisTitle": "月份",
+        "yAxisTitle": "收入（美元）",
+        "valueFormat": "currency",
+        "layout": "full",
+        "surface": {
+          "surface": "export",
+          "interactiveLegend": true,
+          "viewMode": "visualization"
+        }
+      },
+      {
+        "id": "brand-mix",
+        "title": "Google Search品牌与非品牌消耗结构",
+        "subtitle": "1—2月付费搜索预算结构。",
+        "intent": "composition",
+        "type": "stackedBar100",
+        "dataset": "brandMixRows",
+        "sourceId": "feishu-growth-reports",
+        "encodings": {
+          "x": {
+            "field": "period",
+            "type": "ordinal",
+            "label": "月份"
+          },
+          "y": {
+            "field": "share",
+            "type": "quantitative",
+            "label": "消耗占比",
+            "unit": "%"
+          },
+          "color": {
+            "field": "keyword_type",
+            "type": "nominal",
+            "label": "关键词类型"
+          }
+        },
+        "xAxisTitle": "月份",
+        "yAxisTitle": "消耗占比",
+        "valueFormat": "number",
+        "unit": "%",
+        "layout": "full",
+        "surface": {
+          "surface": "export",
+          "interactiveLegend": true,
+          "viewMode": "visualization"
+        }
+      }
+    ],
+    "tables": [
+      {
+        "id": "kpi-table",
+        "title": "1—7月全盘KPI速查",
+        "subtitle": "最后一行为历史平均基准；UV字段按源报告口径标注。",
+        "dataset": "kpiRows",
+        "sourceId": "feishu-growth-reports",
+        "layout": "full",
+        "density": "dense",
+        "defaultSort": {
+          "field": "month",
+          "direction": "asc"
+        },
+        "columns": [
+          {
+            "field": "month",
+            "label": "月份",
+            "type": "text"
+          },
+          {
+            "field": "uv",
+            "label": "访问/行为UV",
+            "format": "number"
+          },
+          {
+            "field": "uv_definition",
+            "label": "UV口径",
+            "type": "text"
+          },
+          {
+            "field": "registrations",
+            "label": "BI注册UV",
+            "format": "number"
+          },
+          {
+            "field": "payers",
+            "label": "MTD付费UV",
+            "format": "number"
+          },
+          {
+            "field": "visit_registration_rate",
+            "label": "访问→注册",
+            "format": "number"
+          },
+          {
+            "field": "payment_rate",
+            "label": "注册→MTD付费",
+            "format": "number"
+          },
+          {
+            "field": "arppu",
+            "label": "ARPPU",
+            "format": "currency"
+          },
+          {
+            "field": "spend",
+            "label": "消耗",
+            "format": "currency"
+          },
+          {
+            "field": "d0_revenue",
+            "label": "D0收入",
+            "format": "currency"
+          },
+          {
+            "field": "mtd_revenue",
+            "label": "MTD收入",
+            "format": "currency"
+          },
+          {
+            "field": "roi",
+            "label": "MTD ROI",
+            "format": "number"
+          },
+          {
+            "field": "day30",
+            "label": "Day30收入/ROI",
+            "type": "text"
+          }
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": "feishu-growth-reports",
+        "label": "Lovart 2026年1—7月投放增长月报（飞书）",
+        "href": "https://resonate.feishu.cn/docx/HtoydBkmIoQDp1xxS8mc8Yzansg",
+        "query": {
+          "engine": "ANSI SQL over reviewed Feishu snapshot",
+          "sql": "SELECT * FROM (VALUES\n      ('1月',661737,NULL,246893,4852,NULL,1.97,112.84,564840,246376,547479,96.93),\n      ('2月',269728,NULL,156424,3496,NULL,2.23,85.07,427581,153686,297402,69.55),\n      ('3月',231099,NULL,141527,5278,47.00,3.73,99.65,356274,254935,525944,147.62),\n      ('4月',313448,NULL,154355,5194,40.00,3.36,80.05,502062,222524,415776,82.81),\n      ('5月',337062,NULL,147742,4016,25.00,2.72,76.61,457494,191313,307685,67.25),\n      ('6月',NULL,77292,90295,2111,NULL,2.34,86.27,215528,101427,182112,84.50),\n      ('7月',NULL,63435,76178,2010,NULL,2.64,93.66,143047,108064,188250,131.60)\n    ) AS t(month, visit_uv, behavior_uv, registrations, payers, visit_registration_rate, payment_rate, arppu, spend, d0_revenue, mtd_revenue, roi)",
+          "description": "由1—7月六份月报主表与7月对6月的成熟回填总计整合；仅包含付费投放渠道。",
+          "executed_at": "2026-08-18T00:00:00+08:00",
+          "filters": [
+            "period=2026-01..2026-07",
+            "scope=paid channels only",
+            "June uses July report restatement"
+          ],
+          "metric_definitions": [
+            "BI注册UV：月报主表中的BI新注册UV或总BI注册次数。",
+            "MTD付费率：MTD付费UV除以BI注册UV，采用源表披露值。",
+            "MTD ROI：MTD回收除以投放消耗。",
+            "访问到注册率：仅使用报告明确披露的同口径值，不以其他字段自行替代。"
+          ],
+          "tables_used": [
+            "BB8jweYTIiV1YhkakOScmX92neg",
+            "RYeowZCq7i1KyMkgdFEcxrJGnse",
+            "WRuKdhTeToOSxPx7ZWucZyIHn6f",
+            "Cl6pdDK63oi3iVxKErtcDvsQnFg",
+            "R3xCddNWWorPQpxcTLvcM5dxnDc",
+            "HtoydBkmIoQDp1xxS8mc8Yzansg"
+          ]
+        }
+      }
+    ],
+    "blocks": [
+      {
+        "id": "title",
+        "type": "markdown",
+        "body": "# Lovart 1—7 月全投放渠道增长 Benchmark"
+      },
+      {
+        "id": "text-1",
+        "type": "markdown",
+        "body": "## Executive Summary\n\n**全盘经营基准应采用“历史中位数 + 盈利线 + 优秀线”，不能只对比上月。** 1—7 月投放消耗中位数约 42.76 万美元，MTD收入中位数约 30.77 万美元，ROI中位数 84.5%。历史优秀状态出现在 3 月：ROI 147.62%、MTD付费率 3.73%、ARPPU 99.65美元；这比单纯追求最大 UV或注册规模更适合作为增长质量标杆。\n\n**渠道Benchmark只覆盖付费投放。** Google Search是主投放渠道；Meta、Twitter和TikTok保留为实验渠道。现有材料没有完整披露后三者的UV—注册—付费—收入—成本链路，因此它们不会被自然搜索或GEO数据补位，而是明确标为“数据不足，暂不进入常规扩量池”。\n\n**投放品牌词和非品牌词必须使用两套Benchmark。** 品牌词负责防守已有需求，核心看增量注册、增量付费、竞品截流和成熟ROI；非品牌词负责拓新，核心看注册成本、注册到付费率、付费成本、ARPPU、MTD和Day30 ROI。7月非品牌整体ROI约33.5%，仍远低于全盘85%的止损线，所以只能按模型词、竞品词、场景词和行业词分别管理。\n\n**Day30目前不能形成历史实绩 Benchmark。** 现有“DataWorks 30天”是滚动30天渠道汇总，不是注册或获客 cohort的 Day30累计收入。Benchmark中把 Day30列为必采指标，但不填造数；预算扩量前必须补齐 `cohort_day30_revenue / cohort_cost`。\n\n## Benchmark的使用方式\n\n这套基准分为三个状态：低于底线为红色，表示需要停止扩量或立即诊断；进入正常区间为黄色，表示可以维持和优化；达到优秀线为绿色，表示允许在边际效率可控的前提下扩量。\n\n基准优先使用同口径投放实绩。月度大盘采用1—7月投放漏斗、收入与消耗数据；其中1—5月使用月报主表，6—7月使用7月报告对6月的回填版总计表。品牌/非品牌结构采用1—2月Google Search消耗结构；词类ROI和优化事件采用7月SEM数据。自然搜索、SEO和GEO来源全部排除。\n\n## 全盘月度规模与漏斗 Benchmark",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "text-2",
+        "type": "markdown",
+        "body": "### UV与注册规模\n\n1 月新用户访问 UV为 66.17万、注册 UV为 24.69万，是全期最大规模，但不代表最优效率。2—5月新用户访问UV分别为26.97万、23.11万、31.34万、33.71万；BI注册UV分别为15.64万、14.15万、15.44万、14.77万。6—7月报告改用“有行为新用户”口径，分别为7.73万、6.34万；同期BI注册分别为9.03万、7.62万。1—7月BI注册中位数为14.77万。\n\n因此，月注册 UV的全盘基准建议设为：低于14万为规模预警；14万—17万为正常区；17万—20万为扩量区；超过20万时必须同时满足付费率和ARPPU门槛，否则视为低质量放量。\n\n访问到注册率必须使用报告定义，不能用 `BI注册UV / 新用户访问UV`自行替代。月报明确披露的整体访问→注册率为3月47%、4月40%、5月25%；6—7月总计表未提供同口径访问UV与访问→注册率，因此不跨口径续接。建议暂以低于30%为红色、30%—40%为恢复区、40%—50%为健康区；待统一埋点后再重算历史分位。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "text-3",
+        "type": "markdown",
+        "body": "### 付费人数与付费率\n\n1—7 月 MTD付费 UV分别为4,852、3,496、5,278、5,194、4,016、2,111和2,010，中位数4,016。月付费 UV低于2,500为红色；2,500—4,000为恢复区；4,000—5,200为正常健康；超过5,200为历史优秀。\n\n注册到MTD付费率1—7月分别为1.97%、2.23%、3.73%、3.36%、2.72%、2.34%和2.64%。建议把低于2.2%定义为红色，2.2%—3.2%定义为正常，3.2%—3.7%定义为良好，达到或超过3.7%视为历史优秀线。规模扩张时，付费率不得跌破2.2%。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "text-4",
+        "type": "markdown",
+        "body": "### ARPPU\n\n1—7 月 ARPPU分别为112.84、85.07、99.65、80.05、76.61、86.27和93.66美元，中位数86.27美元、均值约90.59美元。建议把低于80美元定义为红色，80—95美元为正常区，95—105美元为良好，超过105美元为优秀。\n\nARPPU与付费率必须组合判断。付费率高但ARPPU低，可能只是低价套餐占比上升；ARPPU高但付费人数低，则可能是少数大额用户造成。允许扩量的最低组合建议为：MTD付费率不低于2.5%，ARPPU不低于85美元。\n\n## 收入、成本与ROI Benchmark",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "text-5",
+        "type": "markdown",
+        "body": "### MTD收入和消耗\n\n1—7 月投放消耗分别约为56.48万、42.76万、35.63万、50.21万、45.75万、21.55万和14.30万美元，中位数约42.76万美元。\n\n同期可核验MTD收入分别约为54.75万、29.74万、52.59万、41.58万、30.77万、18.21万和18.83万美元，中位数约30.77万美元。\n\n月MTD收入低于20万美元定义为规模红线；20万—35万美元为恢复区；35万—50万美元为健康区；超过50万美元为历史高位。需要注意，收入高位只有在ROI同步合格时才可评价为优秀：1月收入最高但ROI仅96.93%，3月收入52.59万美元且ROI147.62%，后者才是质量标杆。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "text-6",
+        "type": "markdown",
+        "body": "### ROI分层\n\n1—7 月ROI分别为96.93%、69.55%、147.62%、82.81%、67.25%、84.5%和131.6%，历史中位数84.5%，均值约97.2%。公司7月目标为143%。\n\n经营基准建议设为：低于85%为红色，表示收入无法覆盖足够获客成本；85%—100%为止损恢复区；100%—120%为可持续观察区；120%—143%为健康区；达到143%以上为目标达成和扩量候选。扩量不能只看当月ROI，至少还需满足Day30预测不下降、付费率不低于2.5%、ARPPU不低于85美元。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "text-7",
+        "type": "markdown",
+        "body": "### D0、MTD与Day30\n\n1—7 月D0收入分别为246,376、153,686、254,935、222,524、191,313、101,427和108,064美元。D0用于快速预警，不用于最终预算判断。5月D0收入环比下降14%，MTD收入却下降26%，说明D1之后的留存和追加付费会显著改变最终结果；7月D0收入环比增长6.54%，MTD收入增长3.37%。\n\nMTD是当月运营观察口径。6月月末快照收入约23.5万美元、ROI约106%，次月回填后收入变成18.21万美元、ROI84.5%，差异达到约5.29万美元和21.5个百分点。因此，MTD只能在明确数据版本后使用。\n\nDay30必须定义为“同一获客或注册 cohort在第0—30天产生的累计收入”。Day30 ROI等于该cohort Day30收入除以相应获客成本。目前没有可核验的Day30实绩，状态为缺失。正式基准建议在积累至少3个成熟月后设定：Day30 ROI低于100%停止扩量；100%—120%观察；120%—143%健康；达到143%以上扩量。这个阈值是经营规则，不是已观测历史分布。\n\n## 投放渠道 Benchmark",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "text-8",
+        "type": "markdown",
+        "body": "### Google Search / SEM\n\nGoogle Search是1—7月最主要的付费搜索承载渠道。1月搜索消耗结构约为品牌词71%、非品牌29%；2月调整到品牌51%、非品牌49%。非品牌占比迅速扩大后，2月整体收入和ROI明显承压，说明Google Search不能以注册量或非品牌预算占比作为扩量标准。\n\nGoogle Search的健康基准沿用全盘投放门槛：注册到付费率不低于2.5%、ARPPU不低于85美元、MTD ROI不低于120%，Day30 ROI达到143%后才进入强扩量。品牌与非品牌必须分campaign、国家、词类、落地页和优化事件评价。\n\n7月tROAS和AI Max落地页匹配是Google Search当前最可靠的优化标杆。相对浅层事件，tROAS显著提高MTD回收并降低付费成本；相对普通关键词，AI Max落地页匹配使收入增长42%、ROI提升193%、注册成本下降25%、付费成本下降30%。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "text-9",
+        "type": "markdown",
+        "body": "### Meta、Twitter与TikTok\n\nMeta、Twitter和TikTok在4—5月均未形成稳定的后端回收。现有材料显示Meta归因较弱，Twitter规模小且付费差，TikTok存在大量访问后不注册流量，但没有完整、同口径的渠道UV、注册、付费、ARPPU、MTD、Day30和成本序列。\n\n因此，这三类渠道当前状态统一标记为“数据不足，不进入常规扩量池”。重新进入测试的最低数据合同是：渠道UV、注册UV、付费UV、访问到注册率、注册到付费率、D0/MTD/Day30收入、ARPPU、消耗、注册成本、付费成本和D0/MTD/Day30 ROI全部可按campaign与国家拆分。\n\n实验渠道的临时门槛建议为：访问到注册率不低于全盘同落地页基线的80%，注册到付费率不低于1.5%，ARPPU不低于80美元，Day30 ROI预测不低于100%。任一指标连续两周低于门槛即暂停。\n\n## SEM品牌词 Benchmark\n\n1月Google Search消耗中品牌词约占71%、非品牌29%；2月调整为51%/49%。品牌消耗占比下降后，整体收入和ROI也下降，但同时受到地区、ARPPU和非品牌质量影响，不能把变化全部归因于品牌占比。\n\nSEM品牌词的基准不应是固定预算占比，而应是增量防守效率。建议要求品牌搜索印象份额、绝对顶部份额、自然与付费重复率、增量注册和增量Day30收入。缺少增量实验前，不以品牌ROI表面值决定无限加预算。运营上把品牌消耗占搜索预算40%—60%作为观察区，超过60%需证明竞品截流或自然损失，低于40%需检查品牌覆盖和竞品抢占。\n\n## SEM非品牌词与词类ROI Benchmark\n\n7月同范围非品牌ROI从26.4%提升到33.5%，注册成本从8.51美元升至10.03美元。说明收入质量有所改善，但整体ROI仍远低于全盘85%的止损线；非品牌不能作为一个整体扩量，只能按词类和优化方式筛选。\n\n模型词ROI约44%，贡献约64.5%的非品牌收入，是当前非品牌词类的相对标杆，但仍未达到全盘盈利线。模型词的下一阶段合格线建议为ROI不低于45%，向60%以上推进；同时必须观察Day30是否能把回收提升至100%以上。\n\n竞品词注册成本下降22.2%、注册量增长111.8%，是扩量效率最明确的词类。但现有材料没有给出完整的付费率、ARPPU和ROI绝对值，因此先以注册成本不高于10美元、注册到付费率不低于2.5%、Day30 ROI不低于100%作为准入门槛。\n\n场景词ROI约39%，但注册成本翻倍、注册量下降76.2%。场景词Benchmark建议为ROI不低于40%、注册成本不高于12美元；未达到前只使用精准匹配和高匹配落地页。\n\n行业词ROI仅15%、注册成本20.18美元，属于明确红色。只有当注册成本降到12美元以内、ROI超过30%且Day30预测超过80%时才恢复小规模测试，否则暂停该词类预算。\n\n优化方式方面，tROAS相对浅层事件表现显著更好：相对`image_generated`，MTD回收增长1,336%、ROI提升94%、付费成本下降34%；相对`export_success`，回收增长773%、ROI提升33%。AI Max落地页匹配相对普通关键词使注册成本下降25%、收入增长42%、ROI提升193%、付费成本下降30%。因此所有非品牌Benchmark都应以收入优化事件和匹配落地页为默认配置，浅层事件只能作冷启动对照组。\n\n## 可直接用于月报的红黄绿规则\n\n全盘ROI：低于85%红色；85%—120%黄色；120%—143%绿色观察；达到143%以上为目标达成。\n\nMTD收入：低于20万美元红色；20万—35万美元黄色；35万—50万美元绿色；超过50万美元为高规模，但仍需ROI合格。\n\n注册UV：低于14万红色；14万—17万黄色；17万以上绿色，但付费率低于2.2%时降级。\n\nMTD付费UV：低于4,000红色；4,000—4,800黄色；4,800—5,200绿色；超过5,200优秀。\n\n注册到付费率：低于2.2%红色；2.2%—3.2%黄色；3.2%—3.7%绿色；3.7%以上优秀。\n\nARPPU：低于80美元红色；80—95美元黄色；95—105美元绿色；105美元以上优秀。\n\nGoogle Search注册到付费率：低于2.2%红色；2.2%—3.2%黄色；3.2%—3.7%绿色；3.7%以上优秀。必须与ARPPU和ROI联合判断。\n\nSEM非品牌ROI：低于30%红色；30%—45%黄色；45%—60%为相对健康；超过60%才进入下一阶段扩量验证，最终仍以Day30 ROI为准。\n\nDay30 ROI：当前无历史实绩；临时经营规则为低于100%红色、100%—120%黄色、120%—143%绿色观察、143%以上允许扩量。\n\n## 下一步：把Benchmark从报告变成数据合同\n\n第一，建立统一投放事实表，最小粒度为“日期 × 国家 × 投放渠道 × 广告平台 × 品牌类型 × 词类 × campaign × ad group × creative × landing page × cohort”。\n\n第二，每个粒度固定输出UV、注册UV、付费UV、访问到注册率、注册到付费率、消耗、注册成本、付费成本、D0收入、MTD收入、Day30收入、ARPPU、D0/MTD/Day30 ROI。\n\n第三，收入保存月末快照、次月回填和Day30最终值，不覆盖历史版本。6月ROI从106%回填为84.5%的偏差必须成为质量告警。\n\n第四，SEM查询统一使用项目品牌识别脚本分类，并把query class回写到campaign、landing page和DataWorks cohort，确保品牌/非品牌都能追到注册、付费、ARPPU和Day30收入。\n\n第五，月报默认同时展示实际值、历史中位数、经营目标和红黄绿状态；没有数据的指标显示“缺失”，不显示0。\n\n## 待补问题与解释边界\n\n现有材料没有完整提供Google Search、Meta、Twitter和TikTok各自的月度UV、注册、付费、ARPPU、消耗和Day30序列，因此渠道间无法形成同口径精确排名。缺失项不会用SEO、自然搜索或GEO数据替代。\n\nSEM品牌/非品牌有消耗结构和部分词类ROI，但缺少完整的品牌/非品牌UV、付费人数、ARPPU和Day30收入。后续必须补充投放平台到DataWorks cohort的归因后才能形成全漏斗Benchmark。\n\n6月收入同时存在月末快照和次月修订值，本Benchmark经营判断采用修订后的182,112美元和84.5% ROI。\n\n“注册率”在源材料中存在访问到注册、有行为用户到注册、注册到付费等多种口径。本报告分别命名，不把不同分母的比例直接比较。\n\n## 附录：快速看板（表格与趋势图版）",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "text-10",
+        "type": "markdown",
+        "body": "### 1—7月全盘KPI速查\n\n最后一行是后续月报默认使用的历史平均基准。“—”表示源材料没有同口径实绩。表内数值均来自月报主表或后续报告的回填总计，不再用环比反推。Day30没有用滚动30天数据代替。\n",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "kpi-table-block",
+        "type": "table",
+        "tableId": "kpi-table",
+        "layout": "full"
+      },
+      {
+        "id": "text-11",
+        "type": "markdown",
+        "body": "### 新增UV趋势与口径断点\n\n1—5月为“新用户访问UV”，历史平均362,615；6—7月改为“有行为新用户”，平均70,364。两段分别用于各自口径的Benchmark，不把绝对值直接比较。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "visit-uv-block",
+        "type": "chart",
+        "chartId": "visit-uv",
+        "layout": "full"
+      },
+      {
+        "id": "behavior-uv-block",
+        "type": "chart",
+        "chartId": "behavior-uv",
+        "layout": "full"
+      },
+      {
+        "id": "text-12",
+        "type": "markdown",
+        "body": "### BI注册UV趋势与历史平均基准\n\n7个月BI注册UV平均为144,773。6—7月已连续低于该基准，7月只有平均值的52.6%。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "registrations-block",
+        "type": "chart",
+        "chartId": "registrations",
+        "layout": "full"
+      },
+      {
+        "id": "text-13",
+        "type": "markdown",
+        "body": "### MTD付费UV趋势与历史平均基准\n\n7个月MTD付费UV平均为3,851。3—4月高于5,000，6—7月约为平均基准的一半。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "payers-block",
+        "type": "chart",
+        "chartId": "payers",
+        "layout": "full"
+      },
+      {
+        "id": "text-14",
+        "type": "markdown",
+        "body": "### 访问注册率趋势与阶段平均基准\n\n源报告仅明确披露3—5月同口径访问→注册率，阶段平均37.3%。5月25%比阶段平均低12.3个百分点。1—2月及6—7月不补算、不跨口径连线。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "visit-rate-block",
+        "type": "chart",
+        "chartId": "visit-rate",
+        "layout": "full"
+      },
+      {
+        "id": "text-15",
+        "type": "markdown",
+        "body": "### 注册到MTD付费率趋势与历史平均基准\n\n7个月平均付费率为2.71%。3—4月高于基准，5—7月连续低于基准；7月虽环比恢复，仍低0.07个百分点。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "payment-rate-block",
+        "type": "chart",
+        "chartId": "payment-rate",
+        "layout": "full"
+      },
+      {
+        "id": "text-16",
+        "type": "markdown",
+        "body": "### ARPPU趋势与历史平均基准\n\n7个月ARPPU平均为90.59美元。7月已修复至93.66美元，但仍低于1月和3月的高质量月份。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "arppu-block",
+        "type": "chart",
+        "chartId": "arppu",
+        "layout": "full"
+      },
+      {
+        "id": "text-17",
+        "type": "markdown",
+        "body": "### ROI趋势与历史平均、经营目标\n\n月度ROI的7个月历史平均为97.18%，经营目标为143%。7月高于历史平均34.4个百分点，但仍比目标低11.4个百分点。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "roi-block",
+        "type": "chart",
+        "chartId": "roi",
+        "layout": "full"
+      },
+      {
+        "id": "text-18",
+        "type": "markdown",
+        "body": "### 投放消耗趋势与历史平均基准\n\n7个月月均消耗为380,975美元。6—7月连续大幅低于平均，7月只相当于历史平均的37.5%。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "spend-block",
+        "type": "chart",
+        "chartId": "spend",
+        "layout": "full"
+      },
+      {
+        "id": "text-19",
+        "type": "markdown",
+        "body": "### D0与MTD收入趋势及历史平均基准\n\n7个月D0收入平均为182,618美元，MTD收入平均为352,093美元。7月D0收入和MTD收入分别只有历史平均的59.2%和53.5%，因此ROI修复不能替代收入规模Benchmark。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "revenue-block",
+        "type": "chart",
+        "chartId": "revenue",
+        "layout": "full"
+      },
+      {
+        "id": "text-20",
+        "type": "markdown",
+        "body": "### 全投放渠道状态速查\n\n现有材料只有Google Search能够下钻到品牌/非品牌、词类和优化事件；Meta、Twitter和TikTok缺少完整的同口径UV—注册—付费—收入—成本序列，因此只呈现已验证状态，不补入任何自然搜索或GEO数据。\n\n| 投放渠道 | 1—7月已验证表现 | 数据完整度 | Benchmark状态 | 下一步 |\n|---|---|---|---|---|\n| Google Search / SEM | 主投放渠道；4—5月扩量后付费与回收恶化；7月tROAS和AI Max显著改善效率 | 中：有大盘、词类、区域和实验数据，但缺完整月度渠道漏斗 | 黄：可优化，不可按注册量盲目扩量 | 按国家×品牌属性×词类×落地页×收入事件管理 |\n| Meta | 4—5月未形成稳定后端回收，归因偏弱 | 低 | 红黄：实验渠道 | 补齐campaign级Day30收入和成本后复测 |\n| Twitter / X | 规模小、付费表现弱 | 低 | 红 | 暂停常规扩量，仅保留小预算实验 |\n| TikTok | 存在大量访问后不注册流量 | 低 | 红 | 先修复素材—受众—落地页匹配，再验证注册和付费 |",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "text-21",
+        "type": "markdown",
+        "body": "### Google Search品牌/非品牌预算结构\n\n1月品牌词约占Google Search消耗71%、非品牌29%；2月调整为51%/49%。非品牌占比快速增加的同时，全盘ROI从96.93%降至69.55%。这不是严格因果分解，但足以说明预算结构不能脱离后端收入独立优化。",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "brand-mix-block",
+        "type": "chart",
+        "chartId": "brand-mix",
+        "layout": "full"
+      },
+      {
+        "id": "text-22",
+        "type": "markdown",
+        "body": "### SEM非品牌词类速查\n\n| 词类 / 策略 | 当前数据 | Benchmark状态 | 快速动作 |\n|---|---|---|---|\n| 非品牌整体 | ROI 33.5%；前期26.4%；注册成本$10.03 | 红：远低于全盘85%止损线 | 不整体扩量，按词类筛选 |\n| 模型词 | ROI约44%；贡献约64.5%非品牌收入 | 黄：相对最好，绝对仍未盈利 | P0，收入优化下继续验证 |\n| 竞品词 | 注册成本下降22.2%；注册量增长111.8% | 绿：扩量信号最明确 | 补齐付费率、ARPPU和Day30后放量 |\n| 场景词 | ROI约39%；注册成本翻倍；注册量下降76.2% | 红黄：有效但成本失控 | 精确匹配、限价、高匹配落地页 |\n| 行业词 | ROI约15%；注册成本$20.18 | 红 | 暂停该词类预算 |\n| tROAS vs image_generated | MTD回收+1,336%；ROI+94%；付费成本-34% | 绿 | 以收入事件作为默认优化目标 |\n| tROAS vs export_success | MTD回收+773%；ROI+33% | 绿 | 停止把浅层事件当最终目标 |\n| AI Max落地页匹配 | 收入+42%；ROI+193%；注册成本-25%；付费成本-30% | 绿 | 查询、页面和收入目标三者对齐 |",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "text-23",
+        "type": "markdown",
+        "body": "### 红黄绿Benchmark总表\n\n| 指标 | 红色：停止/诊断 | 黄色：维持/优化 | 绿色：健康/扩量候选 | 优秀/目标 |\n|---|---|---|---|---|\n| 全盘MTD ROI | <85% | 85%—120% | 120%—143% | ≥143% |\n| MTD收入 | <$200k | $200k—$350k | $350k—$500k | >$500k且ROI合格 |\n| 月注册UV | <140k | 140k—170k | >170k且付费率合格 | >200k且不稀释质量 |\n| MTD付费UV | <2,500 | 2,500—4,000 | 4,000—5,200 | >5,200 |\n| 注册→MTD付费 | <2.2% | 2.2%—3.2% | 3.2%—3.7% | ≥3.7% |\n| ARPPU | <$80 | $80—$95 | $95—$105 | >$105 |\n| Google Search注册→付费 | <2.2% | 2.2%—3.2% | 3.2%—3.7% | ≥3.7%且ARPPU合格 |\n| SEM非品牌ROI | <30% | 30%—45% | 45%—60% | >60%，再以Day30验证 |\n| Day30 ROI | <100% | 100%—120% | 120%—143% | ≥143%；当前无历史实绩 |",
+        "sourceId": "feishu-growth-reports"
+      },
+      {
+        "id": "text-24",
+        "type": "markdown",
+        "body": "### 快速决策顺序\n\n1. 先看Day30是否成熟；未成熟时只用MTD做预警，不做最终扩量决定。\n2. 再看ROI是否达到120%，并检查是否以大幅牺牲收入规模换来。\n3. 同时检查注册到付费率是否高于2.5%、ARPPU是否高于85美元。\n4. 渠道层以Google Search为主；Meta、Twitter和TikTok在完整Day30链路建立前只做实验。\n5. 非品牌优先模型词和竞品词，场景词限价，行业词暂停。\n6. 品牌词负责守住需求和入口；非品牌词必须用注册、付费和Day30收入证明新增价值。",
+        "sourceId": "feishu-growth-reports"
+      }
+    ]
+  },
+  "snapshot": {
+    "version": 1,
+    "generatedAt": "2026-08-18T00:00:00+08:00",
+    "status": "ready",
+    "datasets": {
+      "monthly": [
+        {
+          "month": "1月",
+          "visit_uv": 661737,
+          "behavior_uv": null,
+          "registrations": 246893,
+          "payers": 4852,
+          "visit_registration_rate": null,
+          "payment_rate": 1.97,
+          "arppu": 112.84,
+          "spend": 564840,
+          "d0_revenue": 246376,
+          "mtd_revenue": 547479,
+          "roi": 96.93,
+          "reg_avg": 144773,
+          "payer_avg": 3851,
+          "payment_rate_avg": 2.71,
+          "arppu_avg": 90.59,
+          "spend_avg": 380975,
+          "d0_avg": 182618,
+          "mtd_avg": 352093,
+          "roi_avg": 97.18,
+          "roi_target": 143
+        },
+        {
+          "month": "2月",
+          "visit_uv": 269728,
+          "behavior_uv": null,
+          "registrations": 156424,
+          "payers": 3496,
+          "visit_registration_rate": null,
+          "payment_rate": 2.23,
+          "arppu": 85.07,
+          "spend": 427581,
+          "d0_revenue": 153686,
+          "mtd_revenue": 297402,
+          "roi": 69.55,
+          "reg_avg": 144773,
+          "payer_avg": 3851,
+          "payment_rate_avg": 2.71,
+          "arppu_avg": 90.59,
+          "spend_avg": 380975,
+          "d0_avg": 182618,
+          "mtd_avg": 352093,
+          "roi_avg": 97.18,
+          "roi_target": 143
+        },
+        {
+          "month": "3月",
+          "visit_uv": 231099,
+          "behavior_uv": null,
+          "registrations": 141527,
+          "payers": 5278,
+          "visit_registration_rate": 47,
+          "payment_rate": 3.73,
+          "arppu": 99.65,
+          "spend": 356274,
+          "d0_revenue": 254935,
+          "mtd_revenue": 525944,
+          "roi": 147.62,
+          "reg_avg": 144773,
+          "payer_avg": 3851,
+          "payment_rate_avg": 2.71,
+          "arppu_avg": 90.59,
+          "spend_avg": 380975,
+          "d0_avg": 182618,
+          "mtd_avg": 352093,
+          "roi_avg": 97.18,
+          "roi_target": 143
+        },
+        {
+          "month": "4月",
+          "visit_uv": 313448,
+          "behavior_uv": null,
+          "registrations": 154355,
+          "payers": 5194,
+          "visit_registration_rate": 40,
+          "payment_rate": 3.36,
+          "arppu": 80.05,
+          "spend": 502062,
+          "d0_revenue": 222524,
+          "mtd_revenue": 415776,
+          "roi": 82.81,
+          "reg_avg": 144773,
+          "payer_avg": 3851,
+          "payment_rate_avg": 2.71,
+          "arppu_avg": 90.59,
+          "spend_avg": 380975,
+          "d0_avg": 182618,
+          "mtd_avg": 352093,
+          "roi_avg": 97.18,
+          "roi_target": 143
+        },
+        {
+          "month": "5月",
+          "visit_uv": 337062,
+          "behavior_uv": null,
+          "registrations": 147742,
+          "payers": 4016,
+          "visit_registration_rate": 25,
+          "payment_rate": 2.72,
+          "arppu": 76.61,
+          "spend": 457494,
+          "d0_revenue": 191313,
+          "mtd_revenue": 307685,
+          "roi": 67.25,
+          "reg_avg": 144773,
+          "payer_avg": 3851,
+          "payment_rate_avg": 2.71,
+          "arppu_avg": 90.59,
+          "spend_avg": 380975,
+          "d0_avg": 182618,
+          "mtd_avg": 352093,
+          "roi_avg": 97.18,
+          "roi_target": 143
+        },
+        {
+          "month": "6月",
+          "visit_uv": null,
+          "behavior_uv": 77292,
+          "registrations": 90295,
+          "payers": 2111,
+          "visit_registration_rate": null,
+          "payment_rate": 2.34,
+          "arppu": 86.27,
+          "spend": 215528,
+          "d0_revenue": 101427,
+          "mtd_revenue": 182112,
+          "roi": 84.5,
+          "reg_avg": 144773,
+          "payer_avg": 3851,
+          "payment_rate_avg": 2.71,
+          "arppu_avg": 90.59,
+          "spend_avg": 380975,
+          "d0_avg": 182618,
+          "mtd_avg": 352093,
+          "roi_avg": 97.18,
+          "roi_target": 143
+        },
+        {
+          "month": "7月",
+          "visit_uv": null,
+          "behavior_uv": 63435,
+          "registrations": 76178,
+          "payers": 2010,
+          "visit_registration_rate": null,
+          "payment_rate": 2.64,
+          "arppu": 93.66,
+          "spend": 143047,
+          "d0_revenue": 108064,
+          "mtd_revenue": 188250,
+          "roi": 131.6,
+          "reg_avg": 144773,
+          "payer_avg": 3851,
+          "payment_rate_avg": 2.71,
+          "arppu_avg": 90.59,
+          "spend_avg": 380975,
+          "d0_avg": 182618,
+          "mtd_avg": 352093,
+          "roi_avg": 97.18,
+          "roi_target": 143
+        }
+      ],
+      "visit": [
+        {
+          "month": "1月",
+          "uv": 661737,
+          "average": 362615
+        },
+        {
+          "month": "2月",
+          "uv": 269728,
+          "average": 362615
+        },
+        {
+          "month": "3月",
+          "uv": 231099,
+          "average": 362615
+        },
+        {
+          "month": "4月",
+          "uv": 313448,
+          "average": 362615
+        },
+        {
+          "month": "5月",
+          "uv": 337062,
+          "average": 362615
+        }
+      ],
+      "behavior": [
+        {
+          "month": "6月",
+          "uv": 77292,
+          "average": 70364
+        },
+        {
+          "month": "7月",
+          "uv": 63435,
+          "average": 70364
+        }
+      ],
+      "visitRate": [
+        {
+          "month": "3月",
+          "rate": 47,
+          "average": 37.33
+        },
+        {
+          "month": "4月",
+          "rate": 40,
+          "average": 37.33
+        },
+        {
+          "month": "5月",
+          "rate": 25,
+          "average": 37.33
+        }
+      ],
+      "brandMix": [
+        {
+          "period": "1月",
+          "brand": 71,
+          "nonbrand": 29
+        },
+        {
+          "period": "2月",
+          "brand": 51,
+          "nonbrand": 49
+        }
+      ],
+      "revenueRows": [
+        {
+          "month": "1月",
+          "series": "D0收入",
+          "value": 246376,
+          "role": "actual"
+        },
+        {
+          "month": "1月",
+          "series": "MTD收入",
+          "value": 547479,
+          "role": "actual"
+        },
+        {
+          "month": "1月",
+          "series": "D0历史平均",
+          "value": 182618,
+          "role": "baseline"
+        },
+        {
+          "month": "1月",
+          "series": "MTD历史平均",
+          "value": 352093,
+          "role": "baseline"
+        },
+        {
+          "month": "2月",
+          "series": "D0收入",
+          "value": 153686,
+          "role": "actual"
+        },
+        {
+          "month": "2月",
+          "series": "MTD收入",
+          "value": 297402,
+          "role": "actual"
+        },
+        {
+          "month": "2月",
+          "series": "D0历史平均",
+          "value": 182618,
+          "role": "baseline"
+        },
+        {
+          "month": "2月",
+          "series": "MTD历史平均",
+          "value": 352093,
+          "role": "baseline"
+        },
+        {
+          "month": "3月",
+          "series": "D0收入",
+          "value": 254935,
+          "role": "actual"
+        },
+        {
+          "month": "3月",
+          "series": "MTD收入",
+          "value": 525944,
+          "role": "actual"
+        },
+        {
+          "month": "3月",
+          "series": "D0历史平均",
+          "value": 182618,
+          "role": "baseline"
+        },
+        {
+          "month": "3月",
+          "series": "MTD历史平均",
+          "value": 352093,
+          "role": "baseline"
+        },
+        {
+          "month": "4月",
+          "series": "D0收入",
+          "value": 222524,
+          "role": "actual"
+        },
+        {
+          "month": "4月",
+          "series": "MTD收入",
+          "value": 415776,
+          "role": "actual"
+        },
+        {
+          "month": "4月",
+          "series": "D0历史平均",
+          "value": 182618,
+          "role": "baseline"
+        },
+        {
+          "month": "4月",
+          "series": "MTD历史平均",
+          "value": 352093,
+          "role": "baseline"
+        },
+        {
+          "month": "5月",
+          "series": "D0收入",
+          "value": 191313,
+          "role": "actual"
+        },
+        {
+          "month": "5月",
+          "series": "MTD收入",
+          "value": 307685,
+          "role": "actual"
+        },
+        {
+          "month": "5月",
+          "series": "D0历史平均",
+          "value": 182618,
+          "role": "baseline"
+        },
+        {
+          "month": "5月",
+          "series": "MTD历史平均",
+          "value": 352093,
+          "role": "baseline"
+        },
+        {
+          "month": "6月",
+          "series": "D0收入",
+          "value": 101427,
+          "role": "actual"
+        },
+        {
+          "month": "6月",
+          "series": "MTD收入",
+          "value": 182112,
+          "role": "actual"
+        },
+        {
+          "month": "6月",
+          "series": "D0历史平均",
+          "value": 182618,
+          "role": "baseline"
+        },
+        {
+          "month": "6月",
+          "series": "MTD历史平均",
+          "value": 352093,
+          "role": "baseline"
+        },
+        {
+          "month": "7月",
+          "series": "D0收入",
+          "value": 108064,
+          "role": "actual"
+        },
+        {
+          "month": "7月",
+          "series": "MTD收入",
+          "value": 188250,
+          "role": "actual"
+        },
+        {
+          "month": "7月",
+          "series": "D0历史平均",
+          "value": 182618,
+          "role": "baseline"
+        },
+        {
+          "month": "7月",
+          "series": "MTD历史平均",
+          "value": 352093,
+          "role": "baseline"
+        }
+      ],
+      "brandMixRows": [
+        {
+          "period": "1月",
+          "keyword_type": "品牌词",
+          "share": 71
+        },
+        {
+          "period": "1月",
+          "keyword_type": "非品牌词",
+          "share": 29
+        },
+        {
+          "period": "2月",
+          "keyword_type": "品牌词",
+          "share": 51
+        },
+        {
+          "period": "2月",
+          "keyword_type": "非品牌词",
+          "share": 49
+        }
+      ],
+      "kpiRows": [
+        {
+          "month": "1月",
+          "uv": 661737,
+          "uv_definition": "新用户访问UV",
+          "registrations": 246893,
+          "payers": 4852,
+          "visit_registration_rate": null,
+          "payment_rate": 1.97,
+          "arppu": 112.84,
+          "spend": 564840,
+          "d0_revenue": 246376,
+          "mtd_revenue": 547479,
+          "roi": 96.93,
+          "day30": "缺失"
+        },
+        {
+          "month": "2月",
+          "uv": 269728,
+          "uv_definition": "新用户访问UV",
+          "registrations": 156424,
+          "payers": 3496,
+          "visit_registration_rate": null,
+          "payment_rate": 2.23,
+          "arppu": 85.07,
+          "spend": 427581,
+          "d0_revenue": 153686,
+          "mtd_revenue": 297402,
+          "roi": 69.55,
+          "day30": "缺失"
+        },
+        {
+          "month": "3月",
+          "uv": 231099,
+          "uv_definition": "新用户访问UV",
+          "registrations": 141527,
+          "payers": 5278,
+          "visit_registration_rate": 47,
+          "payment_rate": 3.73,
+          "arppu": 99.65,
+          "spend": 356274,
+          "d0_revenue": 254935,
+          "mtd_revenue": 525944,
+          "roi": 147.62,
+          "day30": "缺失"
+        },
+        {
+          "month": "4月",
+          "uv": 313448,
+          "uv_definition": "新用户访问UV",
+          "registrations": 154355,
+          "payers": 5194,
+          "visit_registration_rate": 40,
+          "payment_rate": 3.36,
+          "arppu": 80.05,
+          "spend": 502062,
+          "d0_revenue": 222524,
+          "mtd_revenue": 415776,
+          "roi": 82.81,
+          "day30": "缺失"
+        },
+        {
+          "month": "5月",
+          "uv": 337062,
+          "uv_definition": "新用户访问UV",
+          "registrations": 147742,
+          "payers": 4016,
+          "visit_registration_rate": 25,
+          "payment_rate": 2.72,
+          "arppu": 76.61,
+          "spend": 457494,
+          "d0_revenue": 191313,
+          "mtd_revenue": 307685,
+          "roi": 67.25,
+          "day30": "缺失"
+        },
+        {
+          "month": "6月",
+          "uv": 77292,
+          "uv_definition": "有行为新用户",
+          "registrations": 90295,
+          "payers": 2111,
+          "visit_registration_rate": null,
+          "payment_rate": 2.34,
+          "arppu": 86.27,
+          "spend": 215528,
+          "d0_revenue": 101427,
+          "mtd_revenue": 182112,
+          "roi": 84.5,
+          "day30": "缺失"
+        },
+        {
+          "month": "7月",
+          "uv": 63435,
+          "uv_definition": "有行为新用户",
+          "registrations": 76178,
+          "payers": 2010,
+          "visit_registration_rate": null,
+          "payment_rate": 2.64,
+          "arppu": 93.66,
+          "spend": 143047,
+          "d0_revenue": 108064,
+          "mtd_revenue": 188250,
+          "roi": 131.6,
+          "day30": "缺失"
+        },
+        {
+          "month": "历史平均基准",
+          "uv": 362615,
+          "uv_definition": "1—5月访问UV均值；6—7月行为UV均值70,364",
+          "registrations": 144773,
+          "payers": 3851,
+          "visit_registration_rate": 37.33,
+          "payment_rate": 2.71,
+          "arppu": 90.59,
+          "spend": 380975,
+          "d0_revenue": 182618,
+          "mtd_revenue": 352093,
+          "roi": 97.18,
+          "day30": "缺失"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "id": "feishu-growth-reports",
+      "label": "Lovart 2026年1—7月投放增长月报（飞书）",
+      "href": "https://resonate.feishu.cn/docx/HtoydBkmIoQDp1xxS8mc8Yzansg",
+      "query": {
+        "engine": "ANSI SQL over reviewed Feishu snapshot",
+        "sql": "SELECT * FROM (VALUES\n      ('1月',661737,NULL,246893,4852,NULL,1.97,112.84,564840,246376,547479,96.93),\n      ('2月',269728,NULL,156424,3496,NULL,2.23,85.07,427581,153686,297402,69.55),\n      ('3月',231099,NULL,141527,5278,47.00,3.73,99.65,356274,254935,525944,147.62),\n      ('4月',313448,NULL,154355,5194,40.00,3.36,80.05,502062,222524,415776,82.81),\n      ('5月',337062,NULL,147742,4016,25.00,2.72,76.61,457494,191313,307685,67.25),\n      ('6月',NULL,77292,90295,2111,NULL,2.34,86.27,215528,101427,182112,84.50),\n      ('7月',NULL,63435,76178,2010,NULL,2.64,93.66,143047,108064,188250,131.60)\n    ) AS t(month, visit_uv, behavior_uv, registrations, payers, visit_registration_rate, payment_rate, arppu, spend, d0_revenue, mtd_revenue, roi)",
+        "description": "由1—7月六份月报主表与7月对6月的成熟回填总计整合；仅包含付费投放渠道。",
+        "executed_at": "2026-08-18T00:00:00+08:00",
+        "filters": [
+          "period=2026-01..2026-07",
+          "scope=paid channels only",
+          "June uses July report restatement"
+        ],
+        "metric_definitions": [
+          "BI注册UV：月报主表中的BI新注册UV或总BI注册次数。",
+          "MTD付费率：MTD付费UV除以BI注册UV，采用源表披露值。",
+          "MTD ROI：MTD回收除以投放消耗。",
+          "访问到注册率：仅使用报告明确披露的同口径值，不以其他字段自行替代。"
+        ],
+        "tables_used": [
+          "BB8jweYTIiV1YhkakOScmX92neg",
+          "RYeowZCq7i1KyMkgdFEcxrJGnse",
+          "WRuKdhTeToOSxPx7ZWucZyIHn6f",
+          "Cl6pdDK63oi3iVxKErtcDvsQnFg",
+          "R3xCddNWWorPQpxcTLvcM5dxnDc",
+          "HtoydBkmIoQDp1xxS8mc8Yzansg"
+        ]
+      }
+    }
+  ]
+}

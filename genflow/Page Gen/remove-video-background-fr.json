@@ -1,0 +1,386 @@
+{
+  "_id": "features-remove-video-background-fr",
+  "reflowSourceId": "features-remove-video-background-fr",
+  "slug": "remove-video-background",
+  "language": "fr",
+  "category": "feature",
+  "title": "Supprimez l’arrière-plan vidéo avec IA | Lovart",
+  "description": "Instantly remove backgrounds from videos with Lovart's AI Design Agent. No green screen needed. Extract subjects and add custom AI backgrounds in seconds.",
+  "seo": {
+    "description": "Supprimez instantanément les fonds de vidéos avec l'Agent Design IA de Lovart. Pas d'écran vert. Extrayez les sujets et ajoutez des arrière-plans IA en quelques secondes.",
+    "keywords": [
+      "supprimer l'arrière-plan vidéo avec IA",
+      "créateur de vidéo transparente",
+      "rotoscopie vidéo IA",
+      "changer l'arrière-plan vidéo",
+      "alternative au fond vert",
+      "agent vidéo Lovart"
+    ],
+    "noIndex": false,
+    "ogImage": {
+      "_type": "imageSource",
+      "alt": "Frame-by-Frame Matting",
+      "sourceType": "external",
+      "url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png"
+    },
+    "structuredData": {
+      "_type": "structuredData",
+      "enabled": true,
+      "json": "{\"@context\": \"https://schema.org\", \"@type\": \"WebPage\", \"name\": \"Supprimez l’arrière-plan vidéo avec IA | Lovart\", \"description\": \"Instantly remove backgrounds from videos with Lovart's AI Design Agent. No green screen needed. Extract subjects and add custom AI backgrounds in seconds.\", \"url\": \"https://www.lovart.ai/features/remove-video-background\", \"publisher\": {\"@type\": \"Organization\", \"name\": \"Lovart\", \"url\": \"https://www.lovart.ai\"}, \"mainEntity\": {\"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Qu'est-ce que Lovart, et en quoi son suppresseur d'arrière-plan vidéo est-il différent ?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Lovart est un agent de design IA, pas seulement un outil à fonction unique. Alors que les suppresseurs traditionnels vous donnent simplement un fichier transparent, Lovart fonctionne sur un ChatCanvas infini. Cela signifie que vous pouvez supprimer l'arrière-plan et demander immédiatement à l'IA de générer un tout nouvel environnement hyper-réaliste pour placer votre sujet vidéo, créant ainsi un flux de travail complet.\"}}, {\"@type\": \"Question\", \"name\": \"Ai-je besoin d'un fond vert pour que cela fonctionne ?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Aucun fond vert n'est nécessaire ! Les modèles d'IA avancés de Lovart analysent la profondeur, le mouvement et la sémantique pour séparer intelligemment le sujet principal des arrière-plans complexes, encombrés ou en mouvement avec une précision incroyable.\"}}, {\"@type\": \"Question\", \"name\": \"Puis-je exporter la vidéo avec un fond transparent ?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Oui. Vous pouvez exporter votre vidéo traitée avec un canal alpha transparent, ce qui facilite son intégration dans vos timelines existantes dans Adobe Premiere Pro, After Effects ou CapCut.\"}}, {\"@type\": \"Question\", \"name\": \"Quels formats de fichiers et résolutions sont pris en charge ?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Vous pouvez télécharger des formats vidéo standard tels que MP4 et MOV. Lovart vous permet d'exporter des vidéos composées de haute qualité, et notre fonction Upscale intégrée peut améliorer votre sortie finale jusqu'à une résolution 4K nette.\"}}, {\"@type\": \"Question\", \"name\": \"Puis-je utiliser les vidéos modifiées à des fins commerciales ?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Oui. Les utilisateurs abonnés à l'un de nos forfaits payants (Starter, Plus, Pro) conservent l'intégralité des droits commerciaux sur les ressources qu'ils génèrent et modifient sur Lovart. Vous pouvez utiliser vos vidéos composées pour des publicités, des projets clients et la monétisation sur les réseaux sociaux.\"}}]}}"
+    },
+    "title": "Supprimez l’arrière-plan vidéo avec IA | Lovart"
+  },
+  "schemaVersion": "composite-v2",
+  "storyline": "features-grid-bento6",
+  "bodyJson": "[{\"type\":\"hero-split\",\"badge\":\"AI Design Agent\",\"title\":\"Supprimez l’arrière-plan vidéo avec IA | Lovart\",\"description\":\"Instantly remove backgrounds from videos with Lovart's AI Design Agent. No green screen needed. Extract subjects and add custom AI backgrounds in seconds.\",\"buttons\":[{\"text\":\"Get started\",\"href\":\"/home\",\"variant\":\"primary\"}],\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Frame-by-Frame Matting\"}},{\"type\":\"bento-6\",\"title\":\"The Ultimate AI Toolkit for Video Compositing\",\"description\":\"\",\"columns\":3,\"features\":[{\"title\":\"Matting image par image\",\"description\":\"Obtenez des extractions impeccables même avec des mouvements complexes, des cheveux au vent ou du flou de mouvement. Lovart suit intelligemment les sujets sur toutes les images, offrant instantanément des canaux alpha propres.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Matting image par image\"}},{\"title\":\"Édition Touch sémantique pour la vidéo\",\"description\":\"Besoin d'ajuster l'éclairage de votre sujet extrait pour correspondre au nouvel arrière-plan ? Utilisez le ChatCanvas pour commander les ajustements naturellement, en veillant à ce que votre composition soit 100 % authentique.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Édition Touch sémantique pour la vidéo\"}},{\"title\":\"Remplacement de scène instantané\",\"description\":\"Comblez le fossé entre le montage vidéo et la génération d'images. Extrayez vos acteurs et déposez-les immédiatement dans un studio rendu en 3D ou un paysage fantastique généré par Lovart au sein du même espace de travail.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Remplacement de scène instantané\"}},{\"title\":\"Intégration Seedance 2.0\",\"description\":\"Allez plus loin avec vos vidéos transparentes. Utilisez-les comme références multimodales pour diriger des générations vidéo entièrement nouvelles, avec un son synchronisé et des mouvements de caméra cinématographiques.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Intégration Seedance 2.0\"}},{\"title\":\"Upscale vidéo 4K\",\"description\":\"Images sources basse résolution ? Pas de problème. Après avoir supprimé l'arrière-plan, utilisez la fonction Upscale de Lovart pour améliorer votre vidéo en une résolution 4K cristalline, parfaite pour les diffusions commerciales haut de gamme.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Upscale vidéo 4K\"}},{\"title\":\"Exportation multiformat\",\"description\":\"Exportez vos créations exactement comme vous en avez besoin. Téléchargez des vidéos transparentes (MP4/MOV avec alpha) pour Premiere Pro, ou exportez la scène entièrement composée formatée pour TikTok, Reels ou YouTube.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Exportation multiformat\"}}]},{\"type\":\"capability-tabs\",\"title\":\"Toutes les capacités dans un seul agent\",\"autoplayIntervalMs\":0,\"tabs\":[{\"label\":\"Matting image par image\",\"icon\":\"chat\",\"content\":{\"title\":\"Matting image par image\",\"description\":\"Obtenez des extractions impeccables même avec des mouvements complexes, des cheveux au vent ou du flou de mouvement. Lovart suit intelligemment les sujets sur toutes les images, offrant instantanément des canaux alpha propres.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png\",\"alt\":\"Matting image par image\"}}},{\"label\":\"Édition Touch sémantique pour la vidéo\",\"icon\":\"image\",\"content\":{\"title\":\"Édition Touch sémantique pour la vidéo\",\"description\":\"Besoin d'ajuster l'éclairage de votre sujet extrait pour correspondre au nouvel arrière-plan ? Utilisez le ChatCanvas pour commander les ajustements naturellement, en veillant à ce que votre composition soit 100 % authentique.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png\",\"alt\":\"Édition Touch sémantique pour la vidéo\"}}},{\"label\":\"Remplacement de scène instantané\",\"icon\":\"flask\",\"content\":{\"title\":\"Remplacement de scène instantané\",\"description\":\"Comblez le fossé entre le montage vidéo et la génération d'images. Extrayez vos acteurs et déposez-les immédiatement dans un studio rendu en 3D ou un paysage fantastique généré par Lovart au sein du même espace de travail.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png\",\"alt\":\"Remplacement de scène instantané\"}}},{\"label\":\"Intégration Seedance 2.0\",\"icon\":\"brand\",\"content\":{\"title\":\"Intégration Seedance 2.0\",\"description\":\"Allez plus loin avec vos vidéos transparentes. Utilisez-les comme références multimodales pour diriger des générations vidéo entièrement nouvelles, avec un son synchronisé et des mouvements de caméra cinématographiques.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png\",\"alt\":\"Intégration Seedance 2.0\"}}}]},{\"type\":\"bento-2\",\"title\":\"Deux choses qu'il fait particulièrement bien\",\"columns\":2,\"features\":[{\"title\":\"Upscale vidéo 4K\",\"description\":\"Images sources basse résolution ? Pas de problème. Après avoir supprimé l'arrière-plan, utilisez la fonction Upscale de Lovart pour améliorer votre vidéo en une résolution 4K cristalline, parfaite pour les diffusions commerciales haut de gamme.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png\",\"alt\":\"Upscale vidéo 4K\"}},{\"title\":\"Exportation multiformat\",\"description\":\"Exportez vos créations exactement comme vous en avez besoin. Téléchargez des vidéos transparentes (MP4/MOV avec alpha) pour Premiere Pro, ou exportez la scène entièrement composée formatée pour TikTok, Reels ou YouTube.\",\"media\":{\"src\":\"https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png\",\"alt\":\"Exportation multiformat\"}}]},{\"type\":\"feature-detail\",\"title\":\"Comment ça marche en détail\",\"items\":[{\"title\":\"Lancez votre projet AI Video Background Remover\",\"description\":\"Décrivez le résultat souhaité et ajoutez vos références.\"},{\"title\":\"Itérez avec l'agent\",\"description\":\"Ajustez les détails et explorez des variantes sur le même canvas.\",\"reverse\":true}]},{\"type\":\"prompt-launcher\",\"title\":\"Suppresseur d'arrière-plan vidéo IA et Agent de design\",\"description\":\"Arrêtez de perdre des heures sur la rotoscopie manuelle et les fonds verts. L'agent de design IA de Lovart supprime instantanément les arrière-plans de vos vidéos avec une précision image par image. Propulsé par le moteur MCoT, extrayez sans effort les sujets en mouvement, remplacez les environnements en désordre par des mondes cinématographiques générés par l'IA, et orchestrez des campagnes vidéo entières directement sur notre ChatCanvas infini.\",\"input_placeholder\":\"Ex. : 'Supprime l'arrière-plan de cette vidéo de marche et place le sujet dans une rue de ville cyberpunk éclairée aux néons.'\",\"prompts\":[{\"label\":\"E-commerce & Publicité\",\"prompt\":\"E-commerce Ad: Remove the living room background and place the model wearing our jacket against a pure seamless studio white backdrop.\"},{\"label\":\"Créateur Réseaux Sociaux\",\"prompt\":\"Social Media Hook: Extract the dancing subject and put them in front of a dynamic, colorful abstract motion background for TikTok.\"},{\"label\":\"Présentation Professionnelle\",\"prompt\":\"Professional Presentation: Remove my messy home office background and place me in a high-end corporate boardroom with soft natural light.\"},{\"label\":\"Cinématique & VFX\",\"prompt\":\"Cinematic VFX: Isolate the running car and composite it onto a futuristic sci-fi desert highway at sunset.\"}],\"tip\":\"Conseil de pro : Téléchargez des clips vidéo clairs. Une fois l'arrière-plan supprimé sur le ChatCanvas, utilisez 'Édition Touch' pour superposer de manière transparente votre calque vidéo sur n'importe quel arrière-plan 4K généré par l'IA.\",\"cta\":{\"text\":\"Supprimer l'arrière-plan vidéo\"}},{\"type\":\"workflow-horizontal\",\"title\":\"Comment construire un flux de travail vidéo fluide avec Lovart\",\"description\":\"\",\"steps\":[{\"step\":1,\"title\":\"Analyser et extraire\",\"description\":\"Téléchargez n'importe quel fichier vidéo sur le ChatCanvas. Le moteur MCoT de Lovart analyse le mouvement et la profondeur, séparant instantanément votre sujet de l'arrière-plan, sans aucun masquage manuel ni fond vert requis.\"},{\"step\":2,\"title\":\"Générer et orchestrer\",\"description\":\"Ne le laissez pas simplement transparent. Demandez à Lovart de générer des arrière-plans époustouflants et photoréalistes à l'aide de modèles d'élite comme Nano Banana Pro, et regardez votre sujet vidéo s'intégrer parfaitement dans la nouvelle scène.\"},{\"step\":3,\"title\":\"Affiner et exporter\",\"description\":\"Peaufinez la composition à l'aide de l'Édition Touch sémantique. Ajustez les couleurs, ajoutez du texte ou améliorez (Upscale) la vidéo finale en résolution 4K, en exportant des fichiers MP4 prêts pour la production pour vos campagnes publicitaires.\"}]},{\"type\":\"comparison-table\",\"title\":\"AI Video Background Remover : Lovart face aux workflows classiques\",\"headers\":[\"Besoin\",\"Outil générique\",\"Workflow manuel\",\"Lovart AI Design Agent\"],\"highlightColumn\":3,\"rows\":[{\"feature\":\"Lancez votre projet AI Video Background Remover\",\"values\":[\"Un seul prompt\",\"Brief manuel\",\"Raisonnement guidé par le brief\"]},{\"feature\":\"Délai avant le premier résultat\",\"values\":[\"Quelques minutes\",\"Plusieurs jours\",\"Quelques minutes\"]},{\"feature\":\"Édition après génération\",\"values\":[\"Limité\",\"Cycles de révision\",\"Touch / Texte / Éléments\"]},{\"feature\":\"Rester fidèle à la marque\",\"values\":[\"Manuel\",\"Manuel\",\"Compatible Brand Kit\"]}]},{\"type\":\"cluster-block-dense\",\"title\":\"Où AI Video Background Remover fait la différence\",\"cards\":[{\"icon\":\"sparkle\",\"title\":\"Lancez plus vite\",\"description\":\"Du brief aux assets AI Video Background Remover en une seule session.\"},{\"icon\":\"brand\",\"title\":\"Restez cohérent\",\"description\":\"Le Brand Kit garde chaque asset aligné.\"},{\"icon\":\"refresh\",\"title\":\"Itérez rapidement\",\"description\":\"Modifiez les détails sans recommencer le projet.\"}]},{\"type\":\"testimonial\",\"testimonials\":[{\"quote\":\"Nous passions des heures à masquer les arrière-plans pour les publicités TikTok de nos clients. Avec Lovart, nous faisons glisser la vidéo dans le ChatCanvas, cliquons sur 'Supprimer BG', et plaçons le créateur dans un studio 3D personnalisé. Cela a littéralement réduit notre temps de post-production de 80 %.\",\"author\":\"Marcus T.\",\"role\":\"Fondateur d'une agence de réseaux sociaux\"},{\"quote\":\"Nous tournons des vidéos de vêtements dans un entrepôt en désordre. Le suppresseur d'arrière-plan vidéo de Lovart extrait parfaitement les modèles, préservant même le mouvement du tissu. Je demande ensuite à l'agent de les placer sur un podium minimaliste. On dirait un shooting à 10 000 $.\",\"author\":\"Elena R.\",\"role\":\"Monteuse vidéo E-commerce\"},{\"quote\":\"L'intégration du matting vidéo et de l'IA générative est incroyable. J'ai extrait un acteur filmé dans mon salon et je l'ai composé sur une planète extraterrestre générée par Seedream. Le moteur MCoT a même aidé à faire correspondre l'éclairage. Cela change absolument la donne.\",\"author\":\"David L.\",\"role\":\"Cinéaste indépendant\"}],\"title\":\"Les créateurs qui développent leur production avec Lovart\"},{\"type\":\"pricing-block\",\"title\":\"Choisissez l'offre adaptée à votre équipe\",\"description\":\"Commencez gratuitement. Passez à l'offre supérieure dès que le travail s'adresse aux clients.\"},{\"type\":\"faq\",\"title\":\"Questions fréquentes\",\"items\":[{\"question\":\"Qu'est-ce que Lovart, et en quoi son suppresseur d'arrière-plan vidéo est-il différent ?\",\"answer\":\"Lovart est un agent de design IA, pas seulement un outil à fonction unique. Alors que les suppresseurs traditionnels vous donnent simplement un fichier transparent, Lovart fonctionne sur un ChatCanvas infini. Cela signifie que vous pouvez supprimer l'arrière-plan et demander immédiatement à l'IA de générer un tout nouvel environnement hyper-réaliste pour placer votre sujet vidéo, créant ainsi un flux de travail complet.\"},{\"question\":\"Ai-je besoin d'un fond vert pour que cela fonctionne ?\",\"answer\":\"Aucun fond vert n'est nécessaire ! Les modèles d'IA avancés de Lovart analysent la profondeur, le mouvement et la sémantique pour séparer intelligemment le sujet principal des arrière-plans complexes, encombrés ou en mouvement avec une précision incroyable.\"},{\"question\":\"Puis-je exporter la vidéo avec un fond transparent ?\",\"answer\":\"Oui. Vous pouvez exporter votre vidéo traitée avec un canal alpha transparent, ce qui facilite son intégration dans vos timelines existantes dans Adobe Premiere Pro, After Effects ou CapCut.\"},{\"question\":\"Quels formats de fichiers et résolutions sont pris en charge ?\",\"answer\":\"Vous pouvez télécharger des formats vidéo standard tels que MP4 et MOV. Lovart vous permet d'exporter des vidéos composées de haute qualité, et notre fonction Upscale intégrée peut améliorer votre sortie finale jusqu'à une résolution 4K nette.\"},{\"question\":\"Puis-je utiliser les vidéos modifiées à des fins commerciales ?\",\"answer\":\"Oui. Les utilisateurs abonnés à l'un de nos forfaits payants (Starter, Plus, Pro) conservent l'intégralité des droits commerciaux sur les ressources qu'ils génèrent et modifient sur Lovart. Vous pouvez utiliser vos vidéos composées pour des publicités, des projets clients et la monétisation sur les réseaux sociaux.\"}]},{\"type\":\"cta-default\",\"title\":\"Lancez vos créations avec Lovart\",\"description\":\"Transformez votre brief en visuels fidèles à votre marque en quelques minutes.\",\"buttons\":[{\"text\":\"Commencer gratuitement\",\"action\":\"openLogin\",\"variant\":\"primary\"}]}]",
+  "section": [
+    {
+      "type": "hero-split",
+      "badge": "AI Design Agent",
+      "title": "Supprimez l’arrière-plan vidéo avec IA | Lovart",
+      "description": "Instantly remove backgrounds from videos with Lovart's AI Design Agent. No green screen needed. Extract subjects and add custom AI backgrounds in seconds.",
+      "buttons": [
+        {
+          "text": "Get started",
+          "href": "/home",
+          "variant": "primary"
+        }
+      ],
+      "media": {
+        "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+        "alt": "Frame-by-Frame Matting"
+      }
+    },
+    {
+      "type": "bento-6",
+      "title": "The Ultimate AI Toolkit for Video Compositing",
+      "description": "",
+      "columns": 3,
+      "features": [
+        {
+          "title": "Matting image par image",
+          "description": "Obtenez des extractions impeccables même avec des mouvements complexes, des cheveux au vent ou du flou de mouvement. Lovart suit intelligemment les sujets sur toutes les images, offrant instantanément des canaux alpha propres.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+            "alt": "Matting image par image"
+          }
+        },
+        {
+          "title": "Édition Touch sémantique pour la vidéo",
+          "description": "Besoin d'ajuster l'éclairage de votre sujet extrait pour correspondre au nouvel arrière-plan ? Utilisez le ChatCanvas pour commander les ajustements naturellement, en veillant à ce que votre composition soit 100 % authentique.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+            "alt": "Édition Touch sémantique pour la vidéo"
+          }
+        },
+        {
+          "title": "Remplacement de scène instantané",
+          "description": "Comblez le fossé entre le montage vidéo et la génération d'images. Extrayez vos acteurs et déposez-les immédiatement dans un studio rendu en 3D ou un paysage fantastique généré par Lovart au sein du même espace de travail.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+            "alt": "Remplacement de scène instantané"
+          }
+        },
+        {
+          "title": "Intégration Seedance 2.0",
+          "description": "Allez plus loin avec vos vidéos transparentes. Utilisez-les comme références multimodales pour diriger des générations vidéo entièrement nouvelles, avec un son synchronisé et des mouvements de caméra cinématographiques.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+            "alt": "Intégration Seedance 2.0"
+          }
+        },
+        {
+          "title": "Upscale vidéo 4K",
+          "description": "Images sources basse résolution ? Pas de problème. Après avoir supprimé l'arrière-plan, utilisez la fonction Upscale de Lovart pour améliorer votre vidéo en une résolution 4K cristalline, parfaite pour les diffusions commerciales haut de gamme.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "Upscale vidéo 4K"
+          }
+        },
+        {
+          "title": "Exportation multiformat",
+          "description": "Exportez vos créations exactement comme vous en avez besoin. Téléchargez des vidéos transparentes (MP4/MOV avec alpha) pour Premiere Pro, ou exportez la scène entièrement composée formatée pour TikTok, Reels ou YouTube.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Exportation multiformat"
+          }
+        }
+      ]
+    },
+    {
+      "type": "capability-tabs",
+      "title": "Toutes les capacités dans un seul agent",
+      "autoplayIntervalMs": 0,
+      "tabs": [
+        {
+          "label": "Matting image par image",
+          "icon": "chat",
+          "content": {
+            "title": "Matting image par image",
+            "description": "Obtenez des extractions impeccables même avec des mouvements complexes, des cheveux au vent ou du flou de mouvement. Lovart suit intelligemment les sujets sur toutes les images, offrant instantanément des canaux alpha propres.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+              "alt": "Matting image par image"
+            }
+          }
+        },
+        {
+          "label": "Édition Touch sémantique pour la vidéo",
+          "icon": "image",
+          "content": {
+            "title": "Édition Touch sémantique pour la vidéo",
+            "description": "Besoin d'ajuster l'éclairage de votre sujet extrait pour correspondre au nouvel arrière-plan ? Utilisez le ChatCanvas pour commander les ajustements naturellement, en veillant à ce que votre composition soit 100 % authentique.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+              "alt": "Édition Touch sémantique pour la vidéo"
+            }
+          }
+        },
+        {
+          "label": "Remplacement de scène instantané",
+          "icon": "flask",
+          "content": {
+            "title": "Remplacement de scène instantané",
+            "description": "Comblez le fossé entre le montage vidéo et la génération d'images. Extrayez vos acteurs et déposez-les immédiatement dans un studio rendu en 3D ou un paysage fantastique généré par Lovart au sein du même espace de travail.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+              "alt": "Remplacement de scène instantané"
+            }
+          }
+        },
+        {
+          "label": "Intégration Seedance 2.0",
+          "icon": "brand",
+          "content": {
+            "title": "Intégration Seedance 2.0",
+            "description": "Allez plus loin avec vos vidéos transparentes. Utilisez-les comme références multimodales pour diriger des générations vidéo entièrement nouvelles, avec un son synchronisé et des mouvements de caméra cinématographiques.",
+            "media": {
+              "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+              "alt": "Intégration Seedance 2.0"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "bento-2",
+      "title": "Deux choses qu'il fait particulièrement bien",
+      "columns": 2,
+      "features": [
+        {
+          "title": "Upscale vidéo 4K",
+          "description": "Images sources basse résolution ? Pas de problème. Après avoir supprimé l'arrière-plan, utilisez la fonction Upscale de Lovart pour améliorer votre vidéo en une résolution 4K cristalline, parfaite pour les diffusions commerciales haut de gamme.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+            "alt": "Upscale vidéo 4K"
+          }
+        },
+        {
+          "title": "Exportation multiformat",
+          "description": "Exportez vos créations exactement comme vous en avez besoin. Téléchargez des vidéos transparentes (MP4/MOV avec alpha) pour Premiere Pro, ou exportez la scène entièrement composée formatée pour TikTok, Reels ou YouTube.",
+          "media": {
+            "src": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+            "alt": "Exportation multiformat"
+          }
+        }
+      ]
+    },
+    {
+      "type": "feature-detail",
+      "title": "Comment ça marche en détail",
+      "items": [
+        {
+          "title": "Lancez votre projet AI Video Background Remover",
+          "description": "Décrivez le résultat souhaité et ajoutez vos références."
+        },
+        {
+          "title": "Itérez avec l'agent",
+          "description": "Ajustez les détails et explorez des variantes sur le même canvas.",
+          "reverse": true
+        }
+      ]
+    },
+    {
+      "type": "prompt-launcher",
+      "title": "Suppresseur d'arrière-plan vidéo IA et Agent de design",
+      "description": "Arrêtez de perdre des heures sur la rotoscopie manuelle et les fonds verts. L'agent de design IA de Lovart supprime instantanément les arrière-plans de vos vidéos avec une précision image par image. Propulsé par le moteur MCoT, extrayez sans effort les sujets en mouvement, remplacez les environnements en désordre par des mondes cinématographiques générés par l'IA, et orchestrez des campagnes vidéo entières directement sur notre ChatCanvas infini.",
+      "input_placeholder": "Ex. : 'Supprime l'arrière-plan de cette vidéo de marche et place le sujet dans une rue de ville cyberpunk éclairée aux néons.'",
+      "prompts": [
+        {
+          "label": "E-commerce & Publicité",
+          "prompt": "E-commerce Ad: Remove the living room background and place the model wearing our jacket against a pure seamless studio white backdrop."
+        },
+        {
+          "label": "Créateur Réseaux Sociaux",
+          "prompt": "Social Media Hook: Extract the dancing subject and put them in front of a dynamic, colorful abstract motion background for TikTok."
+        },
+        {
+          "label": "Présentation Professionnelle",
+          "prompt": "Professional Presentation: Remove my messy home office background and place me in a high-end corporate boardroom with soft natural light."
+        },
+        {
+          "label": "Cinématique & VFX",
+          "prompt": "Cinematic VFX: Isolate the running car and composite it onto a futuristic sci-fi desert highway at sunset."
+        }
+      ],
+      "tip": "Conseil de pro : Téléchargez des clips vidéo clairs. Une fois l'arrière-plan supprimé sur le ChatCanvas, utilisez 'Édition Touch' pour superposer de manière transparente votre calque vidéo sur n'importe quel arrière-plan 4K généré par l'IA.",
+      "cta": {
+        "text": "Supprimer l'arrière-plan vidéo"
+      }
+    },
+    {
+      "type": "workflow-horizontal",
+      "title": "Comment construire un flux de travail vidéo fluide avec Lovart",
+      "description": "",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Analyser et extraire",
+          "description": "Téléchargez n'importe quel fichier vidéo sur le ChatCanvas. Le moteur MCoT de Lovart analyse le mouvement et la profondeur, séparant instantanément votre sujet de l'arrière-plan, sans aucun masquage manuel ni fond vert requis."
+        },
+        {
+          "step": 2,
+          "title": "Générer et orchestrer",
+          "description": "Ne le laissez pas simplement transparent. Demandez à Lovart de générer des arrière-plans époustouflants et photoréalistes à l'aide de modèles d'élite comme Nano Banana Pro, et regardez votre sujet vidéo s'intégrer parfaitement dans la nouvelle scène."
+        },
+        {
+          "step": 3,
+          "title": "Affiner et exporter",
+          "description": "Peaufinez la composition à l'aide de l'Édition Touch sémantique. Ajustez les couleurs, ajoutez du texte ou améliorez (Upscale) la vidéo finale en résolution 4K, en exportant des fichiers MP4 prêts pour la production pour vos campagnes publicitaires."
+        }
+      ]
+    },
+    {
+      "type": "comparison-table",
+      "title": "AI Video Background Remover : Lovart face aux workflows classiques",
+      "headers": [
+        "Besoin",
+        "Outil générique",
+        "Workflow manuel",
+        "Lovart AI Design Agent"
+      ],
+      "highlightColumn": 3,
+      "rows": [
+        {
+          "feature": "Lancez votre projet AI Video Background Remover",
+          "values": [
+            "Un seul prompt",
+            "Brief manuel",
+            "Raisonnement guidé par le brief"
+          ]
+        },
+        {
+          "feature": "Délai avant le premier résultat",
+          "values": [
+            "Quelques minutes",
+            "Plusieurs jours",
+            "Quelques minutes"
+          ]
+        },
+        {
+          "feature": "Édition après génération",
+          "values": [
+            "Limité",
+            "Cycles de révision",
+            "Touch / Texte / Éléments"
+          ]
+        },
+        {
+          "feature": "Rester fidèle à la marque",
+          "values": [
+            "Manuel",
+            "Manuel",
+            "Compatible Brand Kit"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "cluster-block-dense",
+      "title": "Où AI Video Background Remover fait la différence",
+      "cards": [
+        {
+          "icon": "sparkle",
+          "title": "Lancez plus vite",
+          "description": "Du brief aux assets AI Video Background Remover en une seule session."
+        },
+        {
+          "icon": "brand",
+          "title": "Restez cohérent",
+          "description": "Le Brand Kit garde chaque asset aligné."
+        },
+        {
+          "icon": "refresh",
+          "title": "Itérez rapidement",
+          "description": "Modifiez les détails sans recommencer le projet."
+        }
+      ]
+    },
+    {
+      "type": "testimonial",
+      "testimonials": [
+        {
+          "quote": "Nous passions des heures à masquer les arrière-plans pour les publicités TikTok de nos clients. Avec Lovart, nous faisons glisser la vidéo dans le ChatCanvas, cliquons sur 'Supprimer BG', et plaçons le créateur dans un studio 3D personnalisé. Cela a littéralement réduit notre temps de post-production de 80 %.",
+          "author": "Marcus T.",
+          "role": "Fondateur d'une agence de réseaux sociaux"
+        },
+        {
+          "quote": "Nous tournons des vidéos de vêtements dans un entrepôt en désordre. Le suppresseur d'arrière-plan vidéo de Lovart extrait parfaitement les modèles, préservant même le mouvement du tissu. Je demande ensuite à l'agent de les placer sur un podium minimaliste. On dirait un shooting à 10 000 $.",
+          "author": "Elena R.",
+          "role": "Monteuse vidéo E-commerce"
+        },
+        {
+          "quote": "L'intégration du matting vidéo et de l'IA générative est incroyable. J'ai extrait un acteur filmé dans mon salon et je l'ai composé sur une planète extraterrestre générée par Seedream. Le moteur MCoT a même aidé à faire correspondre l'éclairage. Cela change absolument la donne.",
+          "author": "David L.",
+          "role": "Cinéaste indépendant"
+        }
+      ],
+      "title": "Les créateurs qui développent leur production avec Lovart"
+    },
+    {
+      "type": "pricing-block",
+      "title": "Choisissez l'offre adaptée à votre équipe",
+      "description": "Commencez gratuitement. Passez à l'offre supérieure dès que le travail s'adresse aux clients."
+    },
+    {
+      "type": "faq",
+      "title": "Questions fréquentes",
+      "items": [
+        {
+          "question": "Qu'est-ce que Lovart, et en quoi son suppresseur d'arrière-plan vidéo est-il différent ?",
+          "answer": "Lovart est un agent de design IA, pas seulement un outil à fonction unique. Alors que les suppresseurs traditionnels vous donnent simplement un fichier transparent, Lovart fonctionne sur un ChatCanvas infini. Cela signifie que vous pouvez supprimer l'arrière-plan et demander immédiatement à l'IA de générer un tout nouvel environnement hyper-réaliste pour placer votre sujet vidéo, créant ainsi un flux de travail complet."
+        },
+        {
+          "question": "Ai-je besoin d'un fond vert pour que cela fonctionne ?",
+          "answer": "Aucun fond vert n'est nécessaire ! Les modèles d'IA avancés de Lovart analysent la profondeur, le mouvement et la sémantique pour séparer intelligemment le sujet principal des arrière-plans complexes, encombrés ou en mouvement avec une précision incroyable."
+        },
+        {
+          "question": "Puis-je exporter la vidéo avec un fond transparent ?",
+          "answer": "Oui. Vous pouvez exporter votre vidéo traitée avec un canal alpha transparent, ce qui facilite son intégration dans vos timelines existantes dans Adobe Premiere Pro, After Effects ou CapCut."
+        },
+        {
+          "question": "Quels formats de fichiers et résolutions sont pris en charge ?",
+          "answer": "Vous pouvez télécharger des formats vidéo standard tels que MP4 et MOV. Lovart vous permet d'exporter des vidéos composées de haute qualité, et notre fonction Upscale intégrée peut améliorer votre sortie finale jusqu'à une résolution 4K nette."
+        },
+        {
+          "question": "Puis-je utiliser les vidéos modifiées à des fins commerciales ?",
+          "answer": "Oui. Les utilisateurs abonnés à l'un de nos forfaits payants (Starter, Plus, Pro) conservent l'intégralité des droits commerciaux sur les ressources qu'ils génèrent et modifient sur Lovart. Vous pouvez utiliser vos vidéos composées pour des publicités, des projets clients et la monétisation sur les réseaux sociaux."
+        }
+      ]
+    },
+    {
+      "type": "cta-default",
+      "title": "Lancez vos créations avec Lovart",
+      "description": "Transformez votre brief en visuels fidèles à votre marque en quelques minutes.",
+      "buttons": [
+        {
+          "text": "Commencer gratuitement",
+          "action": "openLogin",
+          "variant": "primary"
+        }
+      ]
+    }
+  ],
+  "draftStatus": "local-i18n-reflow",
+  "pageType": "feature"
+}

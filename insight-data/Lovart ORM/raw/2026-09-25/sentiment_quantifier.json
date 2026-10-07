@@ -1,0 +1,7 @@
+{
+  "generated_at": "2026-09-25",
+  "generator": "Lovart Sentinel",
+  "title": "Advanced Sentiment Engine",
+  "status": "delegated",
+  "_instructions": "\n    对每个渠道的每条提及内容，执行以下分析：\n\n    1. 规则引擎打分：\n       - 扫描正面/负面词典匹配\n       - 检测否定词翻转（\"not good\" = 负面）\n       - 检测程度词缩放（\"very good\" > \"good\"）\n       - 计算情感强度分数 (-100 到 +100)\n\n    2. 平台原生信号提取：\n       - PH: 评分4.9/5, pros/cons标签, 评价人身份\n       - Reddit: 帖子评分, 评论树情感\n       - 社媒: 互动率作为情感代理（低互动=冷漠≈隐性负面）\n       - 搜索: CTR/排名作为意图匹配代理\n\n    3. 竞品基准对比：\n       - 同渠道Lovart vs Canva vs Midjourney情感分布\n       - 识别Lovart在哪些维度优于/劣于竞品\n\n    4. 多维标签归类：\n       - 每条提及打上维度标签（功能/价格/服务/对比/信任/易用）\n       - 计算各维度情感占比\n\n    5. 情感漂移检测：\n       - 对比本周期vs上周期情感分布变化\n       - 标记情感拐点（如正面从80%→65%）\n    "
+}

@@ -1,0 +1,607 @@
+```json
+,
+  "section_fr": [
+    {
+      "type": "centeredInputSection",
+      "title": "Créateur de brochures immobilières IA — Des brochures immobilières époustouflantes avec l'Agent Design IA de Lovart",
+      "description": "Présenter des biens avec impact ne devrait pas signifier attendre des semaines pour une agence et dépenser des milliers par annonce. Lovart est le premier Agent Design IA au monde, propulsé par le moteur de raisonnement MCoT qui pense comme un Directeur Créatif — analysant votre type de bien, vos acheteurs cibles et votre positionnement de marque avant de générer des brochures immobilières complètes et visuellement convaincantes à partir d'une simple description textuelle. Que vous commercialisiez une maison de luxe, un bien commercial, un appartement en location ou une location de vacances, Lovart crée des brochures avec des photos époustouflantes, une hiérarchie de contenu appropriée et un attrait émotionnel qui transforme les annonces en contrats signés — en quelques minutes.",
+      "input_placeholder": "Décrivez la brochure immobilière que vous souhaitez créer — incluez le type de bien, les caractéristiques clés, l'acheteur/locataire cible, les atouts de l'emplacement et le style visuel préféré",
+      "system_prompt": "Vous êtes le moteur de raisonnement MCoT de Lovart agissant en tant que Directeur Créatif expert spécialisé en design marketing immobilier. Analysez la description de l'utilisateur pour déterminer : 1) Le type de bien et le positionnement sur le marché, 2) La démographie des acheteurs ou locataires cibles et leurs aspirations, 3) Les arguments de vente uniques et le récit de style de vie, 4) Le style visuel optimal qui maximise la valeur perçue. Pour chaque brochure : établissez une hiérarchie visuelle qui met d'abord en avant les meilleurs atouts du bien, sélectionnez une palette de couleurs et une typographie adaptées au segment de prix et à la cible démographique, déterminez la mise en page optimale pour les photos, les plans et les spécifications, et positionnez les contacts de l'agent et le CTA pour une conversion maximale. Créez une brochure immobilière professionnellement composée et émotionnellement convaincante qui vend le style de vie, pas seulement les mètres carrés.",
+      "button_text": "Créer ma brochure immo",
+      "tip": "Conseil pro : Mentionnez le type de bien, la fourchette de prix, la cible démographique, les atouts remarquables (vue, équipements, emplacement) et le style visuel préféré (luxe, moderne, côtier) dans votre prompt pour les meilleurs résultats.",
+      "suggestion": [
+        {
+          "value": "Concevez une brochure de maison ultra-luxe avec des photos en pleine page, une élégante palette or et anthracite, des sections architecture, intérieurs, équipements et prestige du quartier — typographie avec empattement sophistiquée ciblant les acheteurs fortunés",
+          "label": "Brochure maison de luxe"
+        },
+        {
+          "value": "Créez une brochure professionnelle pour bien commercial avec plans visuels, détails de zonage, données de fréquentation, composition des locataires et prévisions de ROI — esthétique corporate bleu et blanc ciblant les chefs d'entreprise et investisseurs",
+          "label": "Brochure bien commercial"
+        },
+        {
+          "value": "Réalisez une brochure moderne d'appartement en location avec photos lifestyle des équipements (salle de sport, piscine, coworking), plans des logements, lieux tendance du quartier et atouts acceptant les animaux — design jeune et dynamique pour professionnels urbains et jeunes familles",
+          "label": "Brochure location appartement"
+        },
+        {
+          "value": "Générez une brochure accueillante pour location de vacances avec photos époustouflantes de la destination, atouts du bien (piscine, accès plage, vue montagne), attractions locales, tarifs saisonniers et un CTA de réservation directe — style tropical chaleureux ou alpin pour les vacanciers",
+          "label": "Brochure location vacances"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Comment créer des brochures immobilières époustouflantes avec l'Agent IA de Lovart",
+      "columns": [
+        {
+          "title": "Décrivez votre vision",
+          "description": "Commencez par décrire votre bien à l'Agent Design IA de Lovart. Décrivez le type de bien, les caractéristiques clés, les acheteurs ou locataires cibles, la fourchette de prix et le style visuel préféré — comme pour briefer une agence marketing immobilier de luxe. Le moteur de raisonnement MCoT analyse les arguments de vente uniques de votre bien, élabore le récit émotionnel du premier coup d'œil à la signature et développe une stratégie créative complète qui vend le style de vie avant de générer le moindre pixel. ChatCanvas capture la marque de votre agence pour que chaque brochure renforce votre positionnement sur le marché.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Générez et itérez",
+          "description": "Regardez Lovart transformer votre brief immobilier en brochures complètes et émotionnellement convaincantes en quelques secondes. L'agent génère des mises en page entièrement formatées avec photos principales du bien, caractéristiques en vedette, images lifestyle, plans intégrés et sections de contact agent stratégiquement placées — le tout propulsé par Nano Banana Pro pour une qualité visuelle époustouflante. Parcourez des variations avec différentes approches visuelles (minimalisme moderne, luxe classique, chic côtier) et affinez en langage naturel. Alternez entre le Mode Réflexion pour une stratégie de marque approfondie et le Mode Rapide quand la rapidité de mise sur le marché est cruciale.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Peaufinez et exportez",
+          "description": "Polissez chaque détail avec les outils d'édition exclusifs de Lovart. Utilisez Touch Edit pour cliquer et améliorer les photos du bien, ajuster les accents de couleur ou échanger les images lifestyle sans masquage manuel. Text Edit permet de modifier les descriptions, les listes de caractéristiques et les coordonnées de l'agent tout en préservant la typographie. Prévisualisez votre brochure en maquettes intelligentes photoréalistes — sur les tables des journées portes ouvertes, dans les dossiers de présentation et sur les écrans numériques. Exportez jusqu'à une résolution 8K en PNG, JPG, SVG ou PSD avec calques — prêt pour l'impression premium.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Fonctionnalités de conception de brochures immobilières propulsées par l'Agent IA de Lovart",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Touch Edit",
+          "description": "Cliquez sur n'importe quel élément de votre brochure — une image principale, un graphique de carte du quartier, un accent décoratif — et remodelez, recolorez ou remplacez-le instantanément. Touch Edit comprend le contexte visuel et s'adapte de façon transparente. Échangez la photo principale pour un autre angle, améliorez le ciel, ajustez les accents de couleur à votre charte d'agence ou supprimez les éléments gênants de l'arrière-plan sans toucher manuellement à aucun calque."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Text Edit",
+          "description": "Modifiez les descriptions de biens, les listes de caractéristiques, les dimensions des pièces, les prix, les coordonnées des agents et les CTA avec des contrôles de texte structurés sur toute la brochure. Changez le prix demandé, mettez à jour la superficie, ajoutez de nouveaux équipements ou créez des versions localisées pour différents marchés — le design environnant reste parfaitement intact."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Smart Mockup",
+          "description": "Prévisualisez votre brochure en maquettes 3D photoréalistes avant impression. Voyez son rendu sur une table d'accueil de journée portes ouvertes, dans un dossier de présentation de luxe, sur l'iPad d'un agent lors d'une visite ou en vitrine d'agence. Validez l'impact des photos, la lisibilité des caractéristiques et l'attrait émotionnel dans chaque contexte réel."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Cohérence de marque",
+          "description": "Propulsé par Nano Banana Pro, Lovart verrouille la marque de votre agence immobilière — palette de couleurs, système typographique, emplacement du logo et style visuel — sur chaque brochure. Une fois la marque de votre agence définie, chaque brochure de chaque agent conserve automatiquement une cohérence visuelle. D'un appartement à 200 000 $ à une propriété à 5 M$, chaque brochure est indéniablement identifiable comme la vôtre."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Export 8K Ultra-HD",
+          "description": "Exportez des brochures immobilières jusqu'à une résolution 8K pour une impression premium — présentations de luxe, documents de portes ouvertes, campagnes de publipostage et supports d'exposition d'agence. Formats supportés : PNG, JPG, SVG, PSD et MP4 — offrant des fichiers prêts à imprimer, des documents source en calques pour Photoshop et des formats numériques pour les annonces MLS, les campagnes email et les réseaux sociaux."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Adaptation multi-format",
+          "description": "Un seul design de brochure, tous les canaux marketing. Lovart adapte automatiquement votre brochure en formats optimisés pour les pages d'annonces MLS, Zillow et Realtor.com, les publicités Instagram et Facebook, les campagnes email, les présentations numériques, les brochures virtuelles liées par QR code et l'impression premium — en préservant la cohérence de marque et l'attrait émotionnel. Lancez une campagne marketing multicanal complète en quelques minutes."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Ce que disent les professionnels de l'immobilier sur Lovart",
+      "testimonials": [
+        {
+          "name": "Robert Hargrove",
+          "role": "Courtier gestionnaire, Hargrove Luxury Estates",
+          "content": "Nous listons plus de 80 propriétés de luxe par an avec un prix moyen de 2,4 M$. Avant Lovart, chaque brochure coûtait 1 200 $ via notre agence de design avec un délai de 10 jours — freinant constamment notre délai de mise sur le marché. Lovart génère des brochures époustouflantes de qualité professionnelle en moins de 10 minutes. Nos agents créent désormais leurs propres brochures avec une cohérence de marque parfaite sur chaque bien. Nous avons réduit les coûts de brochure de 92 % tout en diminuant le délai moyen de vente de 15 jours — les acheteurs commentent systématiquement la « présentation impressionnante ». La fonction Smart Mockup change la donne pour montrer aux vendeurs comment leur bien sera commercialisé.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Linda Okonkwo",
+          "role": "Directrice Immobilier Commercial, MetroProp Partners",
+          "content": "Je gère un portefeuille de 45 biens commerciaux — immeubles de bureaux, centres commerciaux et entrepôts industriels. Chaque bien nécessite une brochure unique ciblant différents profils d'acheteurs/investisseurs. Avant Lovart, nous produisions 5 à 6 brochures par mois via une agence à 900 $ pièce. Aujourd'hui, je crée des brochures complètes avec données démographiques, analyses de trafic, plans et projections de ROI en 8 minutes. Nous avons augmenté notre production de brochures de 400 % tout en réduisant les coûts de 88 %. Notre taux de demandes d'investisseurs a doublé depuis la mise en place des brochures conçues avec Lovart.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Marco et Elena Vasquez",
+          "role": "Propriétaires, Coastal Dreams Vacances",
+          "content": "Nous gérons 28 locations de vacances sur trois destinations balnéaires. Avant Lovart, nous utilisions des brochures génériques qui faisaient ressembler une villa à 600 $/nuit à un studio à 150 $/nuit. L'IA de Lovart a immédiatement compris la différence — elle a créé des brochures premium pour nos propriétés de luxe avec une esthétique côtière élégante et des designs chaleureux et accueillants pour nos locations familiales. Notre taux de réservation directe a augmenté de 34 % après le déploiement des brochures Lovart. Nous créons maintenant des brochures saisonnières pour chaque bien en moins d'une heure au total.",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Qu'est-ce que Lovart et en quoi diffère-t-il de Canva ou d'autres générateurs d'images IA ?",
+          "answer": "Lovart est le premier Agent Design IA au monde — pas simplement un autre éditeur de modèles ou un outil texte-vers-image. Contrairement à Canva, qui nécessite l'édition manuelle de modèles, ou Midjourney, qui génère des images uniques sans intelligence marketing immobilier, le moteur MCoT de Lovart pense comme un Directeur Créatif spécialisé dans l'immobilier de luxe. Il analyse votre type de bien, votre cible démographique, votre segment de prix et votre positionnement de marque pour orchestrer des brochures immobilières complètes avec des mises en page intentionnelles, une narration émotionnelle, une hiérarchie appropriée des caractéristiques et un langage visuel cohérent. Vous décrivez votre bien en langage naturel et Lovart livre une brochure complète, éditable et prête à imprimer qui vend le style de vie."
+        },
+        {
+          "question": "Ai-je besoin de compétences en design pour créer des brochures immobilières professionnelles avec Lovart ?",
+          "answer": "Pas du tout. Lovart a été conçu pour les agents immobiliers, les courtiers, les gestionnaires de biens et les propriétaires de locations de vacances qui ont besoin de résultats professionnels sans expérience en design. Pas besoin de comprendre la mise en page, la théorie des couleurs, la typographie ou la psychologie du marketing immobilier. Décrivez simplement votre bien, vos acheteurs cibles, vos caractéristiques clés et votre style préféré en français courant, et l'Agent Design IA de Lovart prend toutes les décisions créatives et marketing. Des milliers de professionnels de l'immobilier sans aucune formation en design créent chaque jour des brochures époustouflantes avec Lovart."
+        },
+        {
+          "question": "Puis-je utiliser les brochures que je crée à des fins commerciales ?",
+          "answer": "Oui. Tous les forfaits payants — Starter (2 000 crédits/mois), Basic (3 500 crédits/mois) et Pro (11 000 crédits/mois) — incluent les droits complets d'utilisation commerciale. Vous possédez et pouvez utiliser librement chaque brochure générée pour le marketing d'annonces, les journées portes ouvertes, le publipostage, la publicité numérique, les annonces MLS et toute utilisation commerciale légale. Le forfait gratuit avec crédits quotidiens est parfait pour essayer Lovart et pour des projets personnels."
+        },
+        {
+          "question": "Existe-t-il un forfait gratuit ?",
+          "answer": "Absolument. Lovart propose un forfait gratuit avec des crédits quotidiens renouvelés toutes les 24 heures, vous permettant de découvrir la conception de brochures immobilières par IA sans frais. Quand vous avez besoin de plus de volume et de droits commerciaux complets, passez à Starter (2 000 crédits/mois), Basic (3 500 crédits/mois) ou Pro (11 000 crédits/mois). Chaque forfait vous donne accès à toutes les fonctionnalités, y compris Touch Edit, Text Edit, Smart Mockup et l'export 8K."
+        },
+        {
+          "question": "Quels formats d'export et résolutions sont supportés pour les brochures immobilières ?",
+          "answer": "Lovart exporte les brochures immobilières aux formats PNG, JPG, SVG, PSD et MP4 jusqu'à une résolution 8K — adapté à l'impression premium, aux présentations de luxe, aux campagnes de publipostage et à la distribution numérique. SVG et PSD fournissent des fichiers en calques modifiables pour l'affinage dans Photoshop ou Illustrator. Les exports conservent des fonds perdus corrects, la compatibilité CMYK et des profils colorimétriques professionnels."
+        },
+        {
+          "question": "Comment Lovart maintient-il la cohérence de marque entre plusieurs brochures ?",
+          "answer": "ChatCanvas de Lovart dispose d'une mémoire de marque intégrée propulsée par Nano Banana Pro. Une fois la marque de votre agence immobilière définie — palette de couleurs, typographie, emplacement du logo et style visuel — chaque brochure adhère automatiquement à ces règles. Le système de marque reste actif entre les sessions, de sorte que votre annonce pour un appartement à 200 000 $ et votre propriété à 5 M$ soient toutes deux indéniablement identifiables comme votre agence. Plusieurs agents peuvent créer des brochures indépendamment et chaque résultat conserve une cohérence de marque parfaite."
+        },
+        {
+          "question": "Puis-je modifier le texte et les détails du bien directement sur ma brochure après sa génération ?",
+          "answer": "Oui, et c'est l'une des capacités signatures de Lovart. Avec Text Edit, vous pouvez cliquer sur n'importe quel élément de texte — descriptions, listes de caractéristiques, dimensions des pièces, prix demandé, coordonnées de l'agent, CTA — et le modifier directement sur l'image de la brochure. L'IA préserve le style typographique d'origine, y compris la graisse, la couleur, les ombres et l'alignement. Besoin de mettre à jour le prix ou de localiser la brochure pour des acheteurs internationaux ? Tapez le nouveau texte et il s'affiche de façon transparente."
+        },
+        {
+          "question": "Quels types de brochures immobilières Lovart peut-il créer ?",
+          "answer": "Lovart gère pratiquement tous les types de brochures immobilières : annonces résidentielles de luxe, bureaux et commerces, locations d'appartements, locations de vacances et Airbnb, brochures de prévente de programmes neufs, annonces de terrains, biens industriels et entrepôts, immeubles de placement multifamiliaux, propriétés de villégiature et hôtelières, résidences seniors, logements étudiants et bien d'autres. Le moteur MCoT analyse votre type de bien et adapte automatiquement la stratégie de design à chaque cas d'usage."
+        },
+        {
+          "question": "Lovart peut-il adapter ma brochure immobilière à différents canaux marketing ?",
+          "answer": "Oui. Le moteur d'adaptation multi-format de Lovart convertit automatiquement votre brochure en formats optimisés pour chaque canal marketing : annonces MLS et portails immobiliers (Zillow, Realtor.com), publicités Instagram et Facebook, campagnes email, présentations numériques pour rendez-vous acheteurs, brochures virtuelles par QR code pour les portes ouvertes, cartes postales de publipostage et impression premium. Vous obtenez des versions correctement optimisées pour chaque canal tout en préservant la cohérence de marque et l'attrait émotionnel."
+        }
+      ]
+    }
+  ],
+  "section_pt": [
+    {
+      "type": "centeredInputSection",
+      "title": "Criador de Folhetos Imobiliários com IA — Folhetos imobiliários impressionantes com o Agente de Design IA da Lovart",
+      "description": "Apresentar imóveis com impacto não deveria significar esperar semanas por uma agência e gastar milhares por anúncio. A Lovart é o primeiro Agente de Design IA do mundo, alimentado pelo motor de raciocínio MCoT que pensa como um Diretor Criativo — analisando o tipo do seu imóvel, os compradores-alvo e o posicionamento da marca antes de gerar folhetos imobiliários completos e visualmente atraentes a partir de uma simples descrição em texto. Quer esteja a promover uma casa de luxo, um imóvel comercial, um apartamento para arrendar ou um alojamento de férias, a Lovart cria folhetos com fotografia impressionante, hierarquia de conteúdo adequada e apelo emocional que transforma anúncios em contratos assinados — em minutos.",
+      "input_placeholder": "Descreva o folheto imobiliário que pretende criar — inclua o tipo de imóvel, características principais, comprador/arrendatário-alvo, destaques da localização e estilo visual preferido",
+      "system_prompt": "Você é o motor de raciocínio MCoT da Lovart atuando como um Diretor Criativo especialista em design de marketing imobiliário. Analise a descrição do utilizador para determinar: 1) O tipo de imóvel e posicionamento no mercado, 2) O perfil demográfico do comprador ou arrendatário-alvo e as suas aspirações, 3) Os argumentos de venda únicos e a narrativa de estilo de vida, 4) O estilo visual ideal que maximiza o valor percebido. Para cada folheto: estabeleça uma hierarquia visual que mostre primeiro as melhores características do imóvel, selecione uma paleta de cores e tipografia adequadas ao escalão de preço e ao público-alvo, determine o layout ideal para as fotografias, plantas e especificações, e posicione o contacto do agente e o CTA para a máxima conversão de leads. Crie um folheto imobiliário profissionalmente composto e emocionalmente convincente que venda o estilo de vida, não apenas a metragem quadrada.",
+      "button_text": "Criar meu folheto imobiliário",
+      "tip": "Dica profissional: Mencione o tipo de imóvel, faixa de preço, perfil do comprador-alvo, características de destaque (vista, comodidades, localização) e estilo visual preferido (luxo, moderno, costeiro) no seu prompt para obter os melhores resultados.",
+      "suggestion": [
+        {
+          "value": "Desenhe um folheto de casa de ultraluxo com fotografia de página inteira, paleta elegante de dourado e carvão, secções de arquitetura, interiores, comodidades e prestígio do bairro — tipografia com serifa sofisticada para compradores de alto património",
+          "label": "Folheto de casa de luxo"
+        },
+        {
+          "value": "Crie um folheto profissional de imóvel comercial com plantas visuais, detalhes de zoneamento, dados de tráfego, mix de inquilinos e projeções de ROI — estética corporativa limpa azul e branca para empresários e investidores",
+          "label": "Folheto de imóvel comercial"
+        },
+        {
+          "value": "Faça um folheto moderno de apartamento para arrendamento com fotografia lifestyle das comodidades (ginásio, piscina, coworking), layouts das unidades, pontos de interesse do bairro e destaques pet-friendly — design jovem e vibrante para profissionais urbanos e jovens famílias",
+          "label": "Folheto de arrendamento"
+        },
+        {
+          "value": "Gere um folheto convidativo de alojamento de férias com fotografia deslumbrante do destino, destaques do imóvel (piscina, acesso à praia, vista de montanha), atrações locais, tarifas sazonais e CTA de reserva direta — estilo tropical acolhedor ou alpino para viajantes de férias",
+          "label": "Folheto de alojamento de férias"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Como criar folhetos imobiliários impressionantes com o Agente IA da Lovart",
+      "columns": [
+        {
+          "title": "Descreva a sua visão",
+          "description": "Comece por descrever o seu imóvel ao Agente de Design IA da Lovart. Descreva o tipo de imóvel, as características principais, os compradores ou arrendatários-alvo, a faixa de preço e o estilo visual preferido — exatamente como faria num briefing para uma agência de marketing imobiliário de luxo. O motor de raciocínio MCoT analisa os argumentos de venda únicos do seu imóvel, mapeia a narrativa emocional desde o primeiro impacto até ao fecho e desenvolve uma estratégia criativa completa que vende o estilo de vida antes de gerar um único pixel. O ChatCanvas captura a marca da sua agência para que cada folheto reforce o seu posicionamento no mercado.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Gere e itere",
+          "description": "Veja a Lovart transformar o seu briefing imobiliário em folhetos completos e emocionalmente convincentes em segundos. O agente gera layouts totalmente formatados com fotos principais do imóvel, destaques de características, imagens lifestyle, integração de plantas e secções de contacto do agente estrategicamente posicionadas — tudo alimentado pelo Nano Banana Pro para uma qualidade visual deslumbrante. Navegue por variações com diferentes abordagens visuais (minimalista moderno, luxo clássico, chique costeiro) e refine com linguagem natural. Alterne entre o Modo Reflexão para estratégia de marca profunda e o Modo Rápido quando a velocidade de entrada no mercado é crucial.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Refine e exporte",
+          "description": "Aprimore cada detalhe com as ferramentas de edição exclusivas da Lovart. Use o Touch Edit para clicar e melhorar fotos do imóvel, ajustar acentos de cor ou trocar imagens lifestyle sem máscaras manuais. O Text Edit permite modificar descrições, listas de características e contactos do agente preservando a tipografia. Pré-visualize o seu folheto em Smart Mockups fotorrealistas — em mesas de open house, pastas de apresentação de luxo e ecrãs digitais. Exporte com resolução até 8K em PNG, JPG, SVG ou PSD com camadas — pronto para impressão premium.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Funcionalidades de design de folhetos imobiliários com o Agente IA da Lovart",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Touch Edit",
+          "description": "Clique em qualquer elemento do seu folheto — uma imagem principal, um gráfico do mapa do bairro, um acento decorativo — e remodele, recoloque ou substitua instantaneamente. O Touch Edit compreende o contexto visual e adapta-se perfeitamente. Troque a foto principal por outro ângulo, melhore o céu na foto de destaque, ajuste os acentos de cor para combinar com a marca da sua agência ou remova elementos de fundo que distraem sem tocar manualmente numa única camada."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Text Edit",
+          "description": "Edite descrições de imóveis, listas de características, dimensões de divisões, preços, contactos de agentes e CTAs com controlos de texto estruturados em todo o folheto. Altere o preço pedido, atualize a metragem quadrada, adicione novas comodidades ou crie versões localizadas para diferentes mercados — enquanto o design circundante permanece perfeitamente intacto."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Smart Mockup",
+          "description": "Pré-visualize o seu folheto imobiliário em mockups 3D fotorrealistas antes de imprimir. Veja como fica exposto numa mesa de registo de open house, numa pasta de apresentação de luxo, no iPad de um agente durante uma visita ou na montra de uma imobiliária. Valide o impacto das fotos do imóvel, a legibilidade das características e o apelo emocional em cada contexto do mundo real."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Consistência de marca",
+          "description": "Alimentado pelo Nano Banana Pro, o Lovart fixa a marca da sua agência imobiliária — paleta de cores, sistema tipográfico, posicionamento do logotipo e estilo visual — em cada folheto imobiliário. Uma vez definida a marca da sua corretora, cada folheto de cada agente mantém automaticamente a consistência visual. De um apartamento de 200 mil a uma propriedade de 5 milhões, cada folheto é inconfundivelmente da sua agência."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Exportação 8K Ultra-HD",
+          "description": "Exporte folhetos imobiliários com resolução até 8K para impressão premium — apresentações de luxo, materiais de open house, campanhas de marketing direto e materiais de exposição de imobiliárias. Formatos suportados: PNG, JPG, SVG, PSD e MP4 — fornecendo ficheiros prontos para impressão, documentos fonte em camadas para o Photoshop e formatos digitais para anúncios MLS, campanhas de email e redes sociais."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Adaptação multi-formato",
+          "description": "Um design de folheto, todos os canais de marketing. O Lovart adapta automaticamente o seu folheto para formatos otimizados para páginas de anúncios MLS, Zillow e Realtor.com, anúncios no Instagram e Facebook, campanhas de email marketing, apresentações digitais, folhetos virtuais por QR code e impressão premium — preservando a consistência da marca e o apelo emocional. Lance uma campanha de marketing imobiliário multicanal completa a partir de um único folheto em minutos."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "O que os profissionais do imobiliário dizem sobre o Lovart",
+      "testimonials": [
+        {
+          "name": "Roberto Albuquerque",
+          "role": "Corretor-Gerente, Hargrove Imóveis de Luxo",
+          "content": "Listamos mais de 80 imóveis de luxo anualmente com um preço médio de $2,4M. Antes do Lovart, cada folheto custava $1.200 através da nossa agência de design com um prazo de 10 dias — constantemente a atrasar o nosso tempo de entrada no mercado. O Lovart gera folhetos deslumbrantes com qualidade de agência em menos de 10 minutos. Os nossos agentes agora criam os seus próprios folhetos de listagem com consistência de marca perfeita em todos os imóveis. Reduzimos os custos com folhetos em 92% enquanto diminuímos o tempo médio de mercado em 15 dias — os compradores comentam consistentemente a 'apresentação impressionante'. A funcionalidade Smart Mockup é revolucionária para mostrar aos vendedores como o seu imóvel será comercializado.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Linda Okonkwo",
+          "role": "Diretora de Imobiliário Comercial, MetroProp Partners",
+          "content": "Giro uma carteira de 45 imóveis comerciais — edifícios de escritórios, centros comerciais e armazéns industriais. Cada imóvel precisa de um folheto único direcionado a diferentes perfis de comprador/investidor. Antes do Lovart, produzíamos 5 a 6 folhetos por mês através de uma agência a $900 cada. Agora crio folhetos imobiliários completos com dados demográficos, análises de tráfego, plantas e projeções de ROI em apenas 8 minutos. Aumentámos a produção de folhetos em 400% enquanto reduzimos os custos em 88%. A nossa taxa de consultas de investidores duplicou desde a implementação dos folhetos desenhados pelo Lovart.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Marco e Elena Vasquez",
+          "role": "Proprietários, Coastal Dreams Alojamentos de Férias",
+          "content": "Gerimos 28 alojamentos de férias em três destinos de praia. Antes do Lovart, usávamos folhetos de templates genéricos que faziam uma casa de praia de $600/noite parecer igual a um estúdio de $150/noite. A IA do Lovart entendeu imediatamente a diferença — criou folhetos premium para os nossos imóveis de luxo com estética costeira elegante e designs acolhedores para os nossos alojamentos familiares. A nossa taxa de reserva direta aumentou 34% após implementarmos os folhetos desenhados pelo Lovart. Agora criamos folhetos sazonais para cada imóvel em menos de uma hora no total.",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "O que é o Lovart e como se diferencia do Canva ou de outros geradores de imagem IA?",
+          "answer": "O Lovart é o primeiro Agente de Design IA do mundo — não apenas mais um editor de templates ou ferramenta de texto-para-imagem. Ao contrário do Canva, que exige edição manual de templates e montagem elemento a elemento, ou do Midjourney, que gera imagens únicas sem inteligência de marketing imobiliário, o motor MCoT do Lovart pensa como um Diretor Criativo de imobiliário de luxo. Analisa o seu tipo de imóvel, demografia do comprador-alvo, escalão de preço e posicionamento de marca para orquestrar folhetos imobiliários completos com layouts intencionais, narrativa emocional, hierarquia adequada de características e linguagem visual consistente. Descreve o seu imóvel em linguagem natural e o Lovart entrega um folheto completo, editável e pronto a imprimir que vende o estilo de vida."
+        },
+        {
+          "question": "Preciso de competências de design para criar folhetos imobiliários profissionais com o Lovart?",
+          "answer": "De todo. O Lovart foi criado para agentes imobiliários, corretores, gestores de propriedades e proprietários de alojamentos de férias que precisam de resultados profissionais sem experiência em design. Não precisa de entender design de layout, teoria das cores, tipografia ou psicologia de marketing imobiliário. Basta descrever o seu imóvel, compradores-alvo, características principais e estilo preferido em linguagem simples, e o Agente de Design IA do Lovart trata de todas as decisões criativas e de marketing. Milhares de profissionais do imobiliário sem qualquer formação em design criam folhetos deslumbrantes no Lovart todos os dias."
+        },
+        {
+          "question": "Posso usar os folhetos que crio para fins comerciais?",
+          "answer": "Sim. Todos os planos pagos — Starter (2.000 créditos/mês), Basic (3.500 créditos/mês) e Pro (11.000 créditos/mês) — incluem direitos completos de utilização comercial. Você possui e pode usar livremente cada folheto gerado para marketing de listagens, open houses, marketing direto, publicidade digital, anúncios MLS e qualquer finalidade comercial legal. O plano gratuito com créditos diários é perfeito para experimentar o Lovart e para projetos pessoais."
+        },
+        {
+          "question": "Existe um plano gratuito?",
+          "answer": "Com certeza. O Lovart oferece um plano gratuito com créditos de login diários que se renovam a cada 24 horas, para que possa experimentar o design de folhetos imobiliários com IA sem custos. Quando precisar de mais volume e direitos comerciais completos, faça upgrade para Starter (2.000 créditos/mês), Basic (3.500 créditos/mês) ou Pro (11.000 créditos/mês). Cada plano dá-lhe acesso a todas as funcionalidades, incluindo Touch Edit, Text Edit, Smart Mockup e exportação 8K."
+        },
+        {
+          "question": "Que formatos de exportação e resoluções são suportados para folhetos imobiliários?",
+          "answer": "O Lovart exporta folhetos imobiliários nos formatos PNG, JPG, SVG, PSD e MP4 com resolução até 8K — adequado para impressão premium, apresentações de luxo, campanhas de marketing direto e distribuição digital. SVG e PSD fornecem ficheiros com camadas editáveis para aperfeiçoamento no Photoshop ou Illustrator. As exportações mantêm margens de sangria corretas, compatibilidade CMYK e perfis de cor profissionais."
+        },
+        {
+          "question": "Como é que o Lovart mantém a consistência da marca entre vários folhetos?",
+          "answer": "O ChatCanvas do Lovart possui memória de marca integrada alimentada pelo Nano Banana Pro. Uma vez definida a marca da sua agência imobiliária — paleta de cores, tipografia, posicionamento do logotipo e estilo visual — cada folheto adere automaticamente a essas regras. O sistema de marca permanece ativo entre sessões, para que tanto o seu anúncio de apartamento de $200K como a sua propriedade de $5M sejam inconfundivelmente da sua agência. Vários agentes podem criar folhetos de forma independente e todos os resultados mantêm uma consistência de marca perfeita."
+        },
+        {
+          "question": "Posso editar o texto e os detalhes do imóvel diretamente no meu folheto depois de gerado?",
+          "answer": "Sim, e esta é uma das capacidades exclusivas do Lovart. Com o Text Edit, pode clicar em qualquer elemento de texto — descrições, listas de características, dimensões de divisões, preço pedido, informações de contacto do agente, CTAs — e modificá-lo diretamente na imagem do folheto. A IA preserva o estilo tipográfico original, incluindo peso da fonte, cor, sombras e alinhamento. Precisa de atualizar o preço pedido ou localizar o folheto para compradores internacionais? Digite o novo texto e este é renderizado de forma perfeita."
+        },
+        {
+          "question": "Que tipos de folhetos imobiliários o Lovart pode criar?",
+          "answer": "O Lovart lida com praticamente qualquer tipo de folheto imobiliário: listagens residenciais de luxo, escritórios comerciais e propriedades de retalho, apartamentos para arrendamento, alojamentos de férias e Airbnb, folhetos de pré-venda de novos empreendimentos, terrenos e lotes, propriedades industriais e armazéns, imóveis de investimento multifamiliar, propriedades de resort e hotelaria, comunidades sénior, alojamento para estudantes e muitos mais. O motor MCoT analisa o seu tipo de imóvel e adapta automaticamente a estratégia de design a cada caso de uso."
+        },
+        {
+          "question": "O Lovart pode adaptar o meu folheto imobiliário para diferentes canais de marketing?",
+          "answer": "Sim. O motor de adaptação multi-formato do Lovart converte automaticamente o seu folheto em formatos otimizados para todos os canais de marketing: páginas de anúncios MLS e portais imobiliários (Zillow, Realtor.com), anúncios no Instagram e Facebook, campanhas de email marketing, apresentações digitais para reuniões com compradores, folhetos virtuais por QR code para open houses, postais de marketing direto e impressão premium. Obtém versões corretamente otimizadas para cada canal, preservando a consistência da marca e o apelo emocional."
+        }
+      ]
+    }
+  ],
+  "section_it": [
+    {
+      "type": "centeredInputSection",
+      "title": "Creatore di brochure immobiliari IA — Brochure immobiliari straordinarie con l'Agente di Design IA di Lovart",
+      "description": "Presentare immobili con impatto non dovrebbe significare aspettare settimane per un'agenzia e spendere migliaia per ogni annuncio. Lovart è il primo Agente di Design IA al mondo, alimentato dal motore di ragionamento MCoT che pensa come un Direttore Creativo — analizzando il tipo di immobile, gli acquirenti target e il posizionamento del marchio prima di generare brochure immobiliari complete e visivamente convincenti da una semplice descrizione testuale. Che tu stia commercializzando una casa di lusso, un immobile commerciale, un appartamento in affitto o una casa vacanza, Lovart crea brochure con fotografie straordinarie, una corretta gerarchia dei contenuti e un fascino emotivo che trasforma gli annunci in contratti firmati — in pochi minuti.",
+      "input_placeholder": "Descrivi la brochure immobiliare che vuoi creare — includi il tipo di immobile, le caratteristiche principali, l'acquirente/affittuario target, i punti di forza della posizione e lo stile visivo preferito",
+      "system_prompt": "Sei il motore di ragionamento MCoT di Lovart che agisce come Direttore Creativo esperto specializzato in design di marketing immobiliare. Analizza la descrizione dell'utente per determinare: 1) Il tipo di immobile e il posizionamento sul mercato, 2) Il profilo demografico dell'acquirente o affittuario target e le sue aspirazioni, 3) Gli argomenti di vendita unici e la narrazione dello stile di vita, 4) Lo stile visivo ottimale che massimizza il valore percepito. Per ogni brochure: stabilisci una gerarchia visiva che mostri prima le migliori caratteristiche dell'immobile, seleziona una palette di colori e una tipografia adatte alla fascia di prezzo e al target demografico, determina il layout ottimale per foto, planimetrie e specifiche, e posiziona il contatto dell'agente e il CTA per la massima conversione dei lead. Crea una brochure immobiliare composta professionalmente ed emotivamente convincente che venda lo stile di vita, non solo i metri quadri.",
+      "button_text": "Crea la mia brochure",
+      "tip": "Consiglio dell'esperto: menziona il tipo di immobile, la fascia di prezzo, il profilo dell'acquirente target, le caratteristiche di spicco (vista, servizi, posizione) e lo stile visivo preferito (lusso, moderno, costiero) nel tuo prompt per ottenere i risultati migliori.",
+      "suggestion": [
+        {
+          "value": "Progetta una brochure per una casa ultra-lusso con foto a piena pagina, elegante palette oro e antracite, sezioni dedicate ad architettura, interni, servizi e prestigio del quartiere — tipografia con grazie sofisticata per acquirenti facoltosi",
+          "label": "Brochure casa di lusso"
+        },
+        {
+          "value": "Crea una brochure professionale per immobile commerciale con planimetrie visive, dettagli di zonizzazione, dati sul traffico, mix di inquilini e proiezioni di ROI — estetica aziendale pulita blu e bianca per imprenditori e investitori",
+          "label": "Brochure immobile commerciale"
+        },
+        {
+          "value": "Realizza una brochure moderna per appartamento in affitto con fotografia lifestyle dei servizi (palestra, piscina, coworking), planimetrie delle unità, luoghi di tendenza del quartiere e punti di forza pet-friendly — design giovane e vivace per professionisti urbani e giovani famiglie",
+          "label": "Brochure affitto appartamento"
+        },
+        {
+          "value": "Genera una brochure invitante per casa vacanza con splendide foto della destinazione, punti di forza dell'immobile (piscina, accesso alla spiaggia, vista montagna), attrazioni locali, tariffe stagionali e CTA per la prenotazione diretta — stile tropicale caldo o alpino per viaggiatori in vacanza",
+          "label": "Brochure casa vacanza"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Come creare brochure immobiliari straordinarie con l'Agente IA di Lovart",
+      "columns": [
+        {
+          "title": "Descrivi la tua visione",
+          "description": "Inizia raccontando all'Agente di Design IA di Lovart del tuo immobile. Descrivi il tipo di immobile, le caratteristiche principali, gli acquirenti o affittuari target, la fascia di prezzo e lo stile visivo preferito — proprio come faresti in un briefing per un'agenzia di marketing immobiliare di lusso. Il motore di ragionamento MCoT analizza gli argomenti di vendita unici del tuo immobile, traccia la narrazione emotiva dal primo impatto alla chiusura e sviluppa una strategia creativa completa che vende lo stile di vita prima di generare un singolo pixel. ChatCanvas cattura il marchio della tua agenzia in modo che ogni brochure rafforzi il tuo posizionamento sul mercato.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Genera e itera",
+          "description": "Guarda Lovart trasformare il tuo brief immobiliare in brochure complete ed emotivamente convincenti in pochi secondi. L'agente genera layout completamente formattati con foto principali dell'immobile, caratteristiche in evidenza, immagini lifestyle, planimetrie integrate e sezioni di contatto dell'agente posizionate strategicamente — il tutto alimentato da Nano Banana Pro per una qualità visiva straordinaria. Sfoglia le varianti con diversi approcci visivi (minimalista moderno, lusso classico, chic costiero) e perfeziona con il linguaggio naturale. Passa dalla Modalità Riflessione per una strategia di marca approfondita alla Modalità Veloce quando la rapidità di immissione sul mercato è fondamentale.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Perfeziona ed esporta",
+          "description": "Rifinisci ogni dettaglio con gli strumenti di editing esclusivi di Lovart. Usa Touch Edit per cliccare e migliorare le foto dell'immobile, regolare gli accenti di colore o sostituire le immagini lifestyle senza mascherature manuali. Text Edit ti consente di modificare descrizioni, elenchi di caratteristiche e contatti dell'agente preservando la tipografia. Visualizza l'anteprima della tua brochure in Smart Mockup fotorealistici — sui tavoli degli open house, nelle cartelle di presentazione di lusso e sugli schermi digitali. Esporta fino a una risoluzione 8K in PNG, JPG, SVG o PSD con livelli — pronto per la stampa premium.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Funzionalità di design per brochure immobiliari con l'Agente IA di Lovart",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Touch Edit",
+          "description": "Clicca su qualsiasi elemento della tua brochure — un'immagine principale, un grafico della mappa del quartiere, un accento decorativo — e rimodella, ricolora o sostituisci all'istante. Touch Edit comprende il contesto visivo e si adatta perfettamente. Sostituisci la foto principale dell'immobile con un'altra angolazione, migliora il cielo nella foto hero, regola gli accenti di colore per adattarli al branding della tua agenzia o rimuovi elementi di sfondo che distraggono senza toccare manualmente un singolo livello."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Text Edit",
+          "description": "Modifica descrizioni di immobili, elenchi di caratteristiche, dimensioni delle stanze, prezzi, contatti degli agenti e CTA con controlli di testo strutturati su tutta la brochure. Cambia il prezzo richiesto, aggiorna la metratura, aggiungi nuovi servizi o crea versioni localizzate per mercati diversi — mentre il design circostante rimane perfettamente intatto."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Smart Mockup",
+          "description": "Visualizza l'anteprima della tua brochure immobiliare in mockup 3D fotorealistici prima di stampare. Guarda come appare esposta su un tavolo di registrazione di un open house, in una cartella di presentazione di lusso, sull'iPad di un agente durante una visita o nella vetrina di un'agenzia. Convalida l'impatto delle foto, la leggibilità delle caratteristiche e il fascino emotivo in ogni contesto reale."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Coerenza del marchio",
+          "description": "Alimentato da Nano Banana Pro, Lovart fissa il marchio della tua agenzia immobiliare — palette di colori, sistema tipografico, posizionamento del logo e stile visivo — su ogni brochure. Una volta definito il marchio della tua agenzia, ogni brochure di ogni agente mantiene automaticamente la coerenza visiva. Da un appartamento da $200K a una tenuta da $5M, ogni brochure è inconfondibilmente tua."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Esportazione 8K Ultra-HD",
+          "description": "Esporta brochure immobiliari con risoluzione fino a 8K per la stampa premium — presentazioni di lusso, materiali per open house, campagne di direct mail e materiali espositivi per agenzie. Formati supportati: PNG, JPG, SVG, PSD e MP4 — fornendo file pronti per la stampa, documenti sorgente con livelli per Photoshop e formati digitali per annunci MLS, campagne email e social media."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Adattamento multi-formato",
+          "description": "Un unico design di brochure, tutti i canali di marketing. Lovart adatta automaticamente la tua brochure in formati ottimizzati per pagine di annunci MLS, Zillow e Realtor.com, pubblicità su Instagram e Facebook, campagne email marketing, presentazioni digitali, brochure virtuali collegate tramite QR code e stampa premium — preservando la coerenza del marchio e il fascino emotivo. Lancia una campagna di marketing immobiliare multicanale completa da un'unica brochure in pochi minuti."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Cosa dicono i professionisti del settore immobiliare su Lovart",
+      "testimonials": [
+        {
+          "name": "Roberto Marchetti",
+          "role": "Broker Gestore, Hargrove Immobili di Lusso",
+          "content": "Mettiamo in vendita oltre 80 immobili di lusso all'anno con un prezzo medio di $2,4M. Prima di Lovart, ogni brochure costava $1.200 tramite la nostra agenzia di design con tempi di consegna di 10 giorni — un collo di bottiglia costante per il nostro time-to-market. Lovart genera splendide brochure di qualità da agenzia in meno di 10 minuti. I nostri agenti ora creano le proprie brochure di vendita con una perfetta coerenza del marchio su ogni immobile. Abbiamo ridotto i costi delle brochure del 92% riducendo al contempo i giorni medi sul mercato di 15 giorni — gli acquirenti commentano costantemente la 'presentazione impressionante'. La funzione Smart Mockup è rivoluzionaria per mostrare ai venditori come il loro immobile sarà commercializzato.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Linda Okonkwo",
+          "role": "Direttrice Immobiliare Commerciale, MetroProp Partners",
+          "content": "Gestisco un portafoglio di 45 immobili commerciali — edifici per uffici, centri commerciali e magazzini industriali. Ogni immobile ha bisogno di una brochure unica mirata a diversi profili di acquirenti/investitori. Prima di Lovart, producevamo 5-6 brochure al mese tramite un'agenzia a $900 ciascuna. Ora creo brochure immobiliari complete con dati demografici, analisi del traffico, planimetrie e proiezioni di ROI in 8 minuti netti. Abbiamo aumentato la produzione di brochure del 400% riducendo i costi dell'88%. Il nostro tasso di richieste da parte di investitori è raddoppiato da quando abbiamo implementato le brochure progettate con Lovart.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Marco e Elena Vasquez",
+          "role": "Proprietari, Coastal Dreams Case Vacanza",
+          "content": "Gestiamo 28 case vacanza in tre destinazioni balneari. Prima di Lovart, usavamo brochure generiche con modelli che facevano sembrare una villa da $600/notte uguale a un monolocale da $150/notte. L'IA di Lovart ha immediatamente capito la differenza — ha creato brochure premium per i nostri immobili di lusso con un'estetica costiera elegante e design caldi e invitanti per le nostre proprietà per famiglie. Il nostro tasso di prenotazione diretta è aumentato del 34% dopo l'implementazione delle brochure progettate con Lovart. Ora creiamo brochure stagionali per ogni immobile in meno di un'ora in totale.",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "Cos'è Lovart e come si differenzia da Canva o altri generatori di immagini IA?",
+          "answer": "Lovart è il primo Agente di Design IA al mondo — non solo un altro editor di modelli o uno strumento testo-immagine. A differenza di Canva, che richiede la modifica manuale dei modelli e l'assemblaggio elemento per elemento, o di Midjourney, che genera singole immagini senza intelligenza di marketing immobiliare, il motore MCoT di Lovart pensa come un Direttore Creativo specializzato in immobili di lusso. Analizza il tuo tipo di immobile, il target demografico degli acquirenti, la fascia di prezzo e il posizionamento del marchio per orchestrare brochure immobiliari complete con layout intenzionali, narrazione emotiva, corretta gerarchia delle caratteristiche e un linguaggio visivo coerente. Descrivi il tuo immobile in linguaggio naturale e Lovart ti consegna una brochure completa, modificabile e pronta per la stampa che vende lo stile di vita."
+        },
+        {
+          "question": "Ho bisogno di competenze di design per creare brochure immobiliari professionali con Lovart?",
+          "answer": "Assolutamente no. Lovart è stato creato per agenti immobiliari, broker, gestori di proprietà e proprietari di case vacanza che hanno bisogno di risultati professionali senza esperienza di design. Non devi capire il design del layout, la teoria dei colori, la tipografia o la psicologia del marketing immobiliare. Descrivi semplicemente il tuo immobile, gli acquirenti target, le caratteristiche principali e lo stile preferito in un italiano semplice, e l'Agente di Design IA di Lovart prende tutte le decisioni creative e di marketing. Migliaia di professionisti immobiliari senza alcuna formazione in design creano splendide brochure con Lovart ogni giorno."
+        },
+        {
+          "question": "Posso utilizzare le brochure che creo per scopi commerciali?",
+          "answer": "Sì. Tutti i piani a pagamento — Starter (2.000 crediti/mese), Basic (3.500 crediti/mese) e Pro (11.000 crediti/mese) — includono diritti completi di utilizzo commerciale. Possiedi e puoi utilizzare liberamente ogni brochure generata per il marketing degli annunci, open house, direct mail, pubblicità digitale, annunci MLS e qualsiasi scopo commerciale lecito. Il piano gratuito con crediti giornalieri è perfetto per provare Lovart e per progetti personali."
+        },
+        {
+          "question": "Esiste un piano gratuito?",
+          "answer": "Assolutamente sì. Lovart offre un piano gratuito con crediti di accesso giornalieri che si rinnovano ogni 24 ore, così puoi sperimentare la progettazione di brochure immobiliari basata sull'IA senza alcun costo. Quando hai bisogno di più volume e diritti commerciali completi, passa a Starter (2.000 crediti/mese), Basic (3.500 crediti/mese) o Pro (11.000 crediti/mese). Ogni piano ti dà accesso a tutte le funzionalità, tra cui Touch Edit, Text Edit, Smart Mockup ed esportazione 8K."
+        },
+        {
+          "question": "Quali formati di esportazione e risoluzioni sono supportati per le brochure immobiliari?",
+          "answer": "Lovart esporta brochure immobiliari nei formati PNG, JPG, SVG, PSD e MP4 con risoluzione fino a 8K — adatto alla stampa premium, alle presentazioni di lusso, alle campagne di direct mail e alla distribuzione digitale. SVG e PSD forniscono file con livelli modificabili per ulteriori perfezionamenti in Photoshop o Illustrator. Le esportazioni mantengono margini di rifilo corretti, compatibilità CMYK e profili colore professionali."
+        },
+        {
+          "question": "Come fa Lovart a mantenere la coerenza del marchio tra più brochure?",
+          "answer": "ChatCanvas di Lovart dispone di una memoria del marchio integrata alimentata da Nano Banana Pro. Una volta definito il marchio della tua agenzia immobiliare — palette di colori, tipografia, posizionamento del logo e stile visivo — ogni brochure aderisce automaticamente a queste regole. Il sistema del marchio rimane attivo tra le sessioni, così sia il tuo annuncio per un appartamento da $200K che la tua tenuta da $5M risultano inconfondibilmente della tua agenzia. Più agenti possono creare brochure in modo indipendente e ogni risultato mantiene una perfetta coerenza del marchio."
+        },
+        {
+          "question": "Posso modificare il testo e i dettagli dell'immobile direttamente sulla mia brochure dopo averla generata?",
+          "answer": "Sì, e questa è una delle capacità distintive di Lovart. Con Text Edit, puoi cliccare su qualsiasi elemento di testo — descrizioni, elenchi di caratteristiche, dimensioni delle stanze, prezzo richiesto, informazioni di contatto dell'agente, CTA — e modificarlo direttamente sull'immagine della brochure. L'IA preserva lo stile tipografico originale, inclusi spessore del carattere, colore, ombre e allineamento. Hai bisogno di aggiornare il prezzo richiesto o localizzare la brochure per acquirenti internazionali? Digita il nuovo testo e viene renderizzato in modo impeccabile."
+        },
+        {
+          "question": "Quali tipi di brochure immobiliari può creare Lovart?",
+          "answer": "Lovart gestisce praticamente qualsiasi tipo di brochure immobiliare: annunci residenziali di lusso, uffici commerciali e proprietà al dettaglio, appartamenti in affitto, case vacanza e Airbnb, brochure di prevendita di nuovi sviluppi, terreni e lotti, proprietà industriali e magazzini, immobili di investimento multifamiliari, proprietà di resort e ospitalità, comunità per anziani, alloggi per studenti e molti altri. Il motore MCoT analizza il tuo tipo di immobile e adatta automaticamente la strategia di design a ogni caso d'uso specifico."
+        },
+        {
+          "question": "Lovart può adattare la mia brochure immobiliare a diversi canali di marketing?",
+          "answer": "Sì. Il motore di adattamento multi-formato di Lovart converte automaticamente la tua brochure in formati ottimizzati per ogni canale di marketing: pagine di annunci MLS e portali immobiliari (Zillow, Realtor.com), pubblicità su Instagram e Facebook, campagne email marketing, presentazioni digitali per incontri con acquirenti, brochure virtuali collegate tramite QR code per open house, cartoline di direct mail e stampa premium. Ottieni versioni correttamente ottimizzate per ogni canale preservando la coerenza del marchio e il fascino emotivo."
+        }
+      ]
+    }
+  ],
+  "section_es": [
+    {
+      "type": "centeredInputSection",
+      "title": "Creador de folletos inmobiliarios con IA — Folletos inmobiliarios impresionantes con el Agente de Diseño IA de Lovart",
+      "description": "Presentar inmuebles con impacto no debería significar esperar semanas a una agencia y gastar miles por anuncio. Lovart es el primer Agente de Diseño IA del mundo, impulsado por el motor de razonamiento MCoT que piensa como un Director Creativo — analizando el tipo de inmueble, los compradores objetivo y el posicionamiento de marca antes de generar folletos inmobiliarios completos y visualmente atractivos a partir de una simple descripción de texto. Tanto si comercializas una vivienda de lujo, un inmueble comercial, un apartamento en alquiler o un alquiler vacacional, Lovart crea folletos con fotografías impresionantes, una jerarquía de contenido adecuada y un atractivo emocional que convierte los anuncios en contratos firmados — en minutos.",
+      "input_placeholder": "Describe el folleto inmobiliario que quieres crear — incluye el tipo de inmueble, características clave, comprador/inquilino objetivo, ventajas de la ubicación y estilo visual preferido",
+      "system_prompt": "Eres el motor de razonamiento MCoT de Lovart actuando como Director Creativo experto especializado en diseño de marketing inmobiliario. Analiza la descripción del usuario para determinar: 1) El tipo de inmueble y el posicionamiento en el mercado, 2) La demografía del comprador o inquilino objetivo y sus aspiraciones, 3) Los argumentos de venta únicos y la narrativa de estilo de vida, 4) El estilo visual óptimo que maximiza el valor percibido. Para cada folleto: establece una jerarquía visual que muestre primero las mejores características del inmueble, selecciona una paleta de colores y tipografía acordes al segmento de precio y al público objetivo, determina la maquetación óptima para las fotos, los planos y las especificaciones, y posiciona el contacto del agente y el CTA para la máxima conversión de clientes potenciales. Crea un folleto inmobiliario compuesto profesionalmente y emocionalmente convincente que venda el estilo de vida, no solo los metros cuadrados.",
+      "button_text": "Crear mi folleto inmobiliario",
+      "tip": "Consejo profesional: Menciona el tipo de inmueble, rango de precio, perfil del comprador objetivo, características destacadas (vistas, servicios, ubicación) y estilo visual preferido (lujo, moderno, costero) en tu prompt para obtener los mejores resultados.",
+      "suggestion": [
+        {
+          "value": "Diseña un folleto de vivienda de ultralujo con fotografías a toda página, elegante paleta dorado y carbón, secciones de arquitectura, interiores, servicios y prestigio del vecindario — tipografía con serifa sofisticada para compradores de alto poder adquisitivo",
+          "label": "Folleto de vivienda de lujo"
+        },
+        {
+          "value": "Crea un folleto profesional de inmueble comercial con planos visuales, detalles de zonificación, datos de tráfico, combinación de inquilinos y proyecciones de ROI — estética corporativa limpia azul y blanco para empresarios e inversores",
+          "label": "Folleto de inmueble comercial"
+        },
+        {
+          "value": "Haz un folleto moderno de apartamento en alquiler con fotografía lifestyle de los servicios (gimnasio, piscina, coworking), planos de las unidades, lugares de moda del barrio y ventajas para mascotas — diseño juvenil y vibrante para profesionales urbanos y familias jóvenes",
+          "label": "Folleto de alquiler de apartamento"
+        },
+        {
+          "value": "Genera un folleto atractivo de alquiler vacacional con impresionantes fotografías del destino, ventajas del inmueble (piscina, acceso a la playa, vistas a la montaña), atracciones locales, tarifas de temporada y un CTA de reserva directa — estilo tropical cálido o alpino para viajeros de vacaciones",
+          "label": "Folleto de alquiler vacacional"
+        }
+      ]
+    },
+    {
+      "type": "threeColumnSection",
+      "title": "Cómo crear folletos inmobiliarios impresionantes con el Agente IA de Lovart",
+      "columns": [
+        {
+          "title": "Describe tu visión",
+          "description": "Empieza contándole al Agente de Diseño IA de Lovart acerca de tu inmueble. Describe el tipo de inmueble, las características clave, los compradores o inquilinos objetivo, el rango de precio y el estilo visual preferido — como si estuvieras haciendo un briefing a una agencia de marketing inmobiliario de lujo. El motor de razonamiento MCoT analiza los argumentos de venta únicos de tu inmueble, traza la narrativa emocional desde el primer impacto hasta el cierre y desarrolla una estrategia creativa completa que vende el estilo de vida antes de generar un solo píxel. ChatCanvas captura la marca de tu agencia para que cada folleto refuerce tu posicionamiento en el mercado.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png"
+        },
+        {
+          "title": "Genera e itera",
+          "description": "Observa cómo Lovart transforma tu briefing inmobiliario en folletos completos y emocionalmente atractivos en segundos. El agente genera maquetaciones completamente formateadas con fotos principales del inmueble, características destacadas, imágenes de estilo de vida, planos integrados y secciones de contacto del agente situadas estratégicamente — todo impulsado por Nano Banana Pro para una calidad visual impresionante. Explora variaciones con diferentes enfoques visuales (minimalista moderno, lujo clásico, chic costero) y perfecciona con lenguaje natural. Alterna entre el Modo Reflexión para una estrategia de marca profunda y el Modo Rápido cuando la velocidad de salida al mercado es clave.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png"
+        },
+        {
+          "title": "Perfecciona y exporta",
+          "description": "Pule cada detalle con las herramientas de edición exclusivas de Lovart. Usa Touch Edit para hacer clic y mejorar las fotos del inmueble, ajustar los acentos de color o intercambiar imágenes de estilo de vida sin enmascaramiento manual. Text Edit te permite modificar descripciones, listas de características y datos de contacto del agente conservando la tipografía. Previsualiza tu folleto en Smart Mockups fotorrealistas — en mesas de jornadas de puertas abiertas, en carpetas de presentación de lujo y en pantallas digitales. Exporta con resolución de hasta 8K en PNG, JPG, SVG o PSD con capas — listo para impresión premium.",
+          "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png"
+        }
+      ]
+    },
+    {
+      "type": "featureGridSection",
+      "title": "Funciones de diseño de folletos inmobiliarios impulsadas por el Agente IA de Lovart",
+      "features": [
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c2b2d0e9e17df4ca706d030cf8d1d6256b43b3f15a9f846701a78f6177bde6b0.png",
+          "title": "Touch Edit",
+          "description": "Haz clic en cualquier elemento de tu folleto — una imagen principal, un gráfico del mapa del barrio, un acento decorativo — y remodela, recolorea o reemplázalo al instante. Touch Edit entiende el contexto visual y se adapta a la perfección. Cambia la foto principal por otro ángulo, mejora el cielo en la toma principal, ajusta los acentos de color para que coincidan con la identidad de tu agencia o elimina elementos de fondo que distraigan sin tocar manualmente ni una sola capa."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/f30b2cdc84a69127e78f8259f020b870d701284b136cf317b5191210e2804ab3.png",
+          "title": "Text Edit",
+          "description": "Edita descripciones de inmuebles, listas de características, dimensiones de habitaciones, precios, datos de contacto del agente y CTAs con controles de texto estructurados en todo el folleto. Cambia el precio de venta, actualiza los metros cuadrados, añade nuevos servicios o crea versiones localizadas para diferentes mercados — mientras el diseño circundante permanece perfectamente intacto."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c0a7bbac9b50aa6e722a10968eb84425268fc05144d69222af892acb9b1d5932.png",
+          "title": "Smart Mockup",
+          "description": "Previsualiza tu folleto inmobiliario en mockups 3D fotorrealistas antes de imprimir. Mira cómo se ve expuesto en una mesa de registro de jornada de puertas abiertas, en una carpeta de presentación de lujo, en el iPad de un agente durante una visita o en el escaparate de una agencia. Valida el impacto de las fotos del inmueble, la legibilidad de las características y el atractivo emocional en cada contexto del mundo real."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/09928fa343e91c59008a2e00c6528969f41fb1559d444c633e46c9da63d11dd6.png",
+          "title": "Consistencia de marca",
+          "description": "Impulsado por Nano Banana Pro, Lovart fija la marca de tu agencia inmobiliaria — paleta de colores, sistema tipográfico, ubicación del logotipo y estilo visual — en cada folleto. Una vez que defines la marca de tu agencia, cada folleto de cada agente mantiene automáticamente la consistencia visual. Desde un apartamento de $200K hasta una propiedad de $5M, cada folleto es inconfundiblemente tuyo."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/a605b61b07e767af7c70d858c27756f7e15f56b99a389980fba298cba1b8ffa7.png",
+          "title": "Exportación 8K Ultra-HD",
+          "description": "Exporta folletos inmobiliarios con resolución de hasta 8K para impresión premium — presentaciones de lujo, materiales para jornadas de puertas abiertas, campañas de mailing directo y materiales de exposición para agencias. Formatos admitidos: PNG, JPG, SVG, PSD y MP4 — proporcionando archivos listos para imprimir, documentos fuente en capas para Photoshop y formatos digitales para anuncios MLS, campañas de email y redes sociales."
+        },
+        {
+          "icon_url": "https://assets-persist.lovart.ai/web/model/28e251feadfb49ba8a81eb86bd81f2e2/c7f26357d97de99927ed994806f34aa7110314fc4ac8204733bb8339825cb166.png",
+          "title": "Adaptación multiformato",
+          "description": "Un solo diseño de folleto, todos los canales de marketing. Lovart adapta automáticamente tu folleto a formatos optimizados para páginas de anuncios MLS, Zillow y Realtor.com, anuncios de Instagram y Facebook, campañas de email marketing, presentaciones digitales, folletos virtuales vinculados por código QR y impresión premium — preservando la consistencia de marca y el atractivo emocional. Lanza una campaña de marketing inmobiliario multicanal completa desde un solo folleto en minutos."
+        }
+      ]
+    },
+    {
+      "type": "testimonialSection",
+      "title": "Lo que dicen los profesionales inmobiliarios sobre Lovart",
+      "testimonials": [
+        {
+          "name": "Roberto Hargrove",
+          "role": "Corredor Gerente, Hargrove Inmuebles de Lujo",
+          "content": "Anunciamos más de 80 inmuebles de lujo al año con un precio medio de $2,4M. Antes de Lovart, cada folleto costaba $1.200 a través de nuestra agencia de diseño con un plazo de 10 días — frenando constantemente nuestro tiempo de salida al mercado. Lovart genera folletos impresionantes con calidad de agencia en menos de 10 minutos. Nuestros agentes ahora crean sus propios folletos de anuncio con una consistencia de marca perfecta en cada inmueble. Hemos reducido los costes de folletos en un 92% mientras acortamos el tiempo medio en el mercado en 15 días — los compradores comentan constantemente la «presentación impresionante». La función Smart Mockup cambia las reglas del juego para mostrar a los vendedores cómo se comercializará su inmueble.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Linda Okonkwo",
+          "role": "Directora de Inmuebles Comerciales, MetroProp Partners",
+          "content": "Gestiono una cartera de 45 inmuebles comerciales — edificios de oficinas, centros comerciales y naves industriales. Cada inmueble necesita un folleto único dirigido a diferentes perfiles de comprador/inversor. Antes de Lovart, producíamos 5-6 folletos al mes a través de una agencia a $900 cada uno. Ahora creo folletos inmobiliarios completos con datos demográficos, análisis de tráfico, planos y proyecciones de ROI en 8 minutos. Hemos aumentado la producción de folletos un 400% mientras reducimos los costes un 88%. Nuestra tasa de consultas de inversores se ha duplicado desde que implementamos los folletos diseñados con Lovart.",
+          "avatar_url": ""
+        },
+        {
+          "name": "Marco y Elena Vázquez",
+          "role": "Propietarios, Coastal Dreams Alquileres Vacacionales",
+          "content": "Gestionamos 28 alquileres vacacionales en tres destinos de playa. Antes de Lovart, usábamos folletos de plantillas genéricas que hacían que una casa de playa de $600/noche se viera igual que un estudio de $150/noche. La IA de Lovart entendió inmediatamente la diferencia — creó folletos premium para nuestros inmuebles de lujo con estética costera elegante y diseños cálidos y acogedores para nuestros alojamientos familiares. Nuestra tasa de reserva directa aumentó un 34% tras implementar los folletos diseñados con Lovart. Ahora creamos folletos de temporada para cada inmueble en menos de una hora en total.",
+          "avatar_url": ""
+        }
+      ]
+    },
+    {
+      "type": "faqSection",
+      "faq": [
+        {
+          "question": "¿Qué es Lovart y en qué se diferencia de Canva u otros generadores de imágenes con IA?",
+          "answer": "Lovart es el primer Agente de Diseño IA del mundo — no es simplemente otro editor de plantillas o una herramienta de texto a imagen. A diferencia de Canva, que requiere edición manual de plantillas y ensamblaje elemento por elemento, o de Midjourney, que genera imágenes únicas sin inteligencia de marketing inmobiliario, el motor MCoT de Lovart piensa como un Director Creativo especializado en inmuebles de lujo. Analiza el tipo de inmueble, la demografía del comprador objetivo, el segmento de precio y el posicionamiento de marca para orquestar folletos inmobiliarios completos con maquetaciones intencionadas, narrativa emocional, jerarquía adecuada de características y un lenguaje visual coherente. Describes tu inmueble en lenguaje natural y Lovart te entrega un folleto completo, editable y listo para imprimir que vende el estilo de vida."
+        },
+        {
+          "question": "¿Necesito habilidades de diseño para crear folletos inmobiliarios profesionales con Lovart?",
+          "answer": "En absoluto. Lovart se creó para agentes inmobiliarios, corredores, administradores de propiedades y propietarios de alquileres vacacionales que necesitan resultados profesionales sin experiencia en diseño. No necesitas entender diseño de maquetación, teoría del color, tipografía o psicología del marketing inmobiliario. Simplemente describe tu inmueble, los compradores objetivo, las características clave y el estilo preferido en un español sencillo, y el Agente de Diseño IA de Lovart toma todas las decisiones creativas y de marketing. Miles de profesionales inmobiliarios sin ninguna formación en diseño crean folletos impresionantes con Lovart cada día."
+        },
+        {
+          "question": "¿Puedo usar los folletos que creo con fines comerciales?",
+          "answer": "Sí. Todos los planes de pago — Starter (2.000 créditos/mes), Basic (3.500 créditos/mes) y Pro (11.000 créditos/mes) — incluyen derechos completos de uso comercial. Eres propietario y puedes usar libremente cada folleto generado para el marketing de anuncios, jornadas de puertas abiertas, mailing directo, publicidad digital, anuncios MLS y cualquier propósito comercial legal. El plan gratuito con créditos diarios es perfecto para probar Lovart y para proyectos personales."
+        },
+        {
+          "question": "¿Hay un plan gratuito?",
+          "answer": "Por supuesto. Lovart ofrece un plan gratuito con créditos de inicio de sesión diarios que se renuevan cada 24 horas, para que puedas experimentar el diseño de folletos inmobiliarios con IA sin coste alguno. Cuando necesites más volumen y derechos comerciales completos, actualízate a Starter (2.000 créditos/mes), Basic (3.500 créditos/mes) o Pro (11.000 créditos/mes). Cada plan te da acceso a todas las funciones, incluyendo Touch Edit, Text Edit, Smart Mockup y exportación 8K."
+        },
+        {
+          "question": "¿Qué formatos de exportación y resoluciones se admiten para los folletos inmobiliarios?",
+          "answer": "Lovart exporta folletos inmobiliarios en formatos PNG, JPG, SVG, PSD y MP4 con resolución de hasta 8K — adecuado para impresión premium, presentaciones de lujo, campañas de mailing directo y distribución digital. SVG y PSD proporcionan archivos con capas editables para su perfeccionamiento en Photoshop o Illustrator. Las exportaciones mantienen sangrados correctos, compatibilidad CMYK y perfiles de color profesionales."
+        },
+        {
+          "question": "¿Cómo mantiene Lovart la consistencia de marca entre varios folletos?",
+          "answer": "ChatCanvas de Lovart cuenta con memoria de marca integrada impulsada por Nano Banana Pro. Una vez que defines la marca de tu agencia inmobiliaria — paleta de colores, tipografía, ubicación del logotipo y estilo visual — cada folleto se adhiere automáticamente a esas reglas. El sistema de marca permanece activo entre sesiones, de modo que tanto tu anuncio de un apartamento de $200K como tu propiedad de $5M sean inconfundiblemente de tu agencia. Varios agentes pueden crear folletos de forma independiente y todos los resultados mantienen una consistencia de marca perfecta."
+        },
+        {
+          "question": "¿Puedo editar el texto y los detalles del inmueble directamente en mi folleto después de generarlo?",
+          "answer": "Sí, y esta es una de las capacidades distintivas de Lovart. Con Text Edit, puedes hacer clic en cualquier elemento de texto — descripciones, listas de características, dimensiones de habitaciones, precio de venta, datos de contacto del agente, CTAs — y modificarlo directamente en la imagen del folleto. La IA conserva el estilo tipográfico original, incluyendo el grosor de la fuente, el color, las sombras y la alineación. ¿Necesitas actualizar el precio de venta o localizar el folleto para compradores internacionales? Escribe el nuevo texto y se renderiza de forma impecable."
+        },
+        {
+          "question": "¿Qué tipos de folletos inmobiliarios puede crear Lovart?",
+          "answer": "Lovart maneja prácticamente cualquier tipo de folleto inmobiliario: anuncios residenciales de lujo, oficinas comerciales y locales minoristas, apartamentos en alquiler, alquileres vacacionales y Airbnb, folletos de preventa de nuevas promociones, solares y parcelas, inmuebles industriales y naves, inmuebles de inversión multifamiliares, propiedades de complejos turísticos y hostelería, comunidades para mayores, alojamiento para estudiantes y muchos más. El motor MCoT analiza tu tipo de inmueble y adapta automáticamente la estrategia de diseño a cada caso de uso específico."
+        },
+        {
+          "question": "¿Puede Lovart adaptar mi folleto inmobiliario a diferentes canales de marketing?",
+          "answer": "Sí. El motor de adaptación multiformato de Lovart convierte automáticamente tu folleto en formatos optimizados para cada canal de marketing: páginas de anuncios MLS y portales inmobiliarios (Zillow, Realtor.com), anuncios de Instagram y Facebook, campañas de email marketing, presentaciones digitales para reuniones con compradores, folletos virtuales vinculados por código QR para jornadas de puertas abiertas, postales de mailing directo e impresión premium. Obtienes versiones correctamente optimizadas para cada canal preservando la consistencia de marca y el atractivo emocional."
+        }
+      ]
+    }
+  ]
+}
