@@ -146,5 +146,18 @@ class TestLoopTokenCap(unittest.TestCase):
         self.assertGreater(C.LOOP_TOKEN_CAP, 0)
 
 
+class TestDryRunSkipsLLM(unittest.TestCase):
+    """gen/rewrite 的 dry_run = 预演不烧 LLM（token 质检 2026-10-07）。"""
+
+    def test_gen_dry_run_skipped(self):
+        r = C._bh_gen({"item_id": "x"}, {"dry_run": True}, "main")
+        self.assertTrue(r.get("skipped"))
+        self.assertIn("dry-run", r.get("reason", ""))
+
+    def test_rewrite_dry_run_skipped(self):
+        r = C._bh_rewrite({"item_id": "x"}, {"dry_run": True}, "main")
+        self.assertTrue(r.get("skipped"))
+
+
 if __name__ == "__main__":
     unittest.main()

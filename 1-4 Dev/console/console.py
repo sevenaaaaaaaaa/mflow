@@ -4032,7 +4032,17 @@ def run_generation(proj, item_id, ctype="blog", lang="zh", topic="", brief="", t
             "blocked": [k for k, v in gates.items() if v["rc"] != 0]}
 
 
+def _dry_llm_skip(task, kind="生成"):
+    """gen/rewrite 的 dry-run 语义（2026-10-07 token 质检）：
+    dry_run 只挡发布写入不够——LLM 生成本身就是主要消耗，预演也不该烧钱。
+    返回 skipped 结果：worker 会标 skipped，用户确认后重跑同批并转真实执行。"""
+    return {"skipped": True, "dry_run": True,
+            "reason": f"dry-run 预演：未调 LLM（{kind}只为预览条目；确认后把任务转真实执行再生成）"}
+
+
 def _bh_gen(item, task, proj):
+    if bool(task.get("dry_run")):
+        return _dry_llm_skip(task, "生成")
     return run_generation(proj, item["item_id"], ctype=item.get("type", "blog"), lang=item.get("lang", "zh"),
                           topic=item.get("topic", ""), brief=item.get("brief", ""),
                           template_id=item.get("template_id", ""), prior_context=task.get("ctx_digest", ""),
@@ -4041,6 +4051,8 @@ def _bh_gen(item, task, proj):
 
 
 def _bh_rewrite(item, task, proj):
+    if bool(task.get("dry_run")):
+        return _dry_llm_skip(task, "改稿")
     src = ""
     if item.get("source_path"):
         sp = safe_path(item["source_path"])
@@ -4248,8 +4260,10 @@ def batch_worker():
                 done_chunk = [c for c in chunk if c["status"] in ("done", "skipped")]
                 digest = ""
                 if handoff and done_chunk:
-                    if task["type"] in ("gen", "rewrite") and len(task["batches"]) > 0 or task["type"] in ("gen", "rewrite"):
-                        digest = _batch_digest_llm(task, done_chunk, proj)
+                    real_done = [c for c in done_chunk if not (c.get("result") or {}).get("dry_run")]
+                    if task["type"] in ("gen", "rewrite") and real_done and not task.get("dry_run"):
+                        # LLM 批次摘要只对真实生成内容做（dry-run/skip 项不值得烧 token）
+                        digest = _batch_digest_llm(task, real_done, proj)
                     else:
                         digest = "；".join(
                             f"{(c.get('doc_id') or c.get('item_id') or c.get('path') or '')[:40]} "
