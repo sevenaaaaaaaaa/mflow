@@ -202,3 +202,39 @@ h1, h2, h3 { font-family: var(--lovart-font-serif); font-weight: 400; letter-spa
   --special-invert:#fff
   --status-danger-default:#e74d3c
 }
+
+
+/* ── 复刻页深色作用域：套用 .dark 全套 token 值（主站 composite-page-all 深色渲染）── */
+.page-template-page-composite-replica-all {
+  --bg-base-default:#100f09;
+  --bg-base-secondary:#171612;
+  --bg-base-tertiary:#1d1b16;
+  --bg-overlay-l1:#f5f4ef0f;
+  --bg-overlay-l2:#f5f4ef1f;
+  --bg-overlay-l3:#f5f4ef2e;
+  --bg-invert:#f5f4ef;
+  --bg-invert-hover:#fff;
+  --bg-input:#f5f4ef0f;
+  --text-default:#f5f4ef;
+  --text-secondary:#c9c8c5;
+  --text-tertiary:#929290;
+  --text-disabled:#ffffff4d;
+  --text-invert:#100f09;
+  --icon-default:var(--text-default);
+  --icon-secondary:var(--text-secondary);
+  --icon-tertiary:var(--text-tertiary);
+  --icon-disabled:var(--text-disabled);
+  --icon-invert:var(--text-invert);
+  --border-neutral-l1:#f5f4ef0f;
+  --border-neutral-l2:#f5f4ef1f;
+  --border-neutral-l3:#f5f4ef2e;
+  --border-contrast:#f5f4ef;
+  --ui-bg-canvas:#191815;
+  --ui-foreground:#fff;
+  --ui-bg-panel:#201f1d;
+  --ui-border-highlight:#147eff;
+  --special-white:#fff;
+  --special-black:#000;
+  --special-invert:#fff;
+  --status-danger-default:#e74d3c;
+}
