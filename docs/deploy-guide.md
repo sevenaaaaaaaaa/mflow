@@ -12,7 +12,7 @@ uv venv .venv
 uv pip install --python .venv/bin/python markdown pyyaml requests google-auth google-auth-httplib2 google-api-python-client
 mkdir -p run/logs
 printf 'export MFLOW_CONSOLE_PASSWORD=change-me\nexport MFLOW_PYTHON=%s/.venv/bin/python\nexport MFLOW_LOCAL_DEV_ROOT=%s/run/local-dev\n' "$PWD" "$PWD" > run/env.sh
-source run/env.sh && .venv/bin/python "1-4 Dev/console/console.py"
+source run/env.sh && .venv/bin/python "dev/console/console.py"
 # http://127.0.0.1:8088
 ```
 
@@ -47,7 +47,7 @@ After=network-online.target
 [Service]
 Type=simple
 WorkingDirectory=/var/www/mflow
-ExecStart=/bin/bash -c "source /var/www/mflow/run/env.sh && exec /var/www/mflow/.venv/bin/python \"/var/www/mflow/1-4 Dev/console/console.py\""
+ExecStart=/bin/bash -c "source /var/www/mflow/run/env.sh && exec /var/www/mflow/.venv/bin/python \"/var/www/mflow/dev/console/console.py\""
 Restart=always
 RestartSec=3
 [Install]
@@ -63,7 +63,7 @@ After=network-online.target
 [Service]
 Type=oneshot
 WorkingDirectory=/var/www/mflow
-ExecStart=/bin/bash -c "source /var/www/mflow/run/env.sh && exec bash '/var/www/mflow/1-4 Dev/automation/run-$j-pipeline.sh'"
+ExecStart=/bin/bash -c "source /var/www/mflow/run/env.sh && exec bash '/var/www/mflow/dev/automation/run-$j-pipeline.sh'"
 EOF
 cat > /etc/systemd/system/mflow-$j.timer <<EOF
 [Unit]
@@ -90,7 +90,7 @@ COPY . .
 RUN pip install --no-cache-dir markdown pyyaml requests google-auth google-auth-httplib2 google-api-python-client
 ENV MFLOW_CONSOLE_PORT=8088
 EXPOSE 8088
-CMD ["python", "1-4 Dev/console/console.py"]
+CMD ["python", "dev/console/console.py"]
 ```
 
 ```bash
@@ -103,7 +103,7 @@ docker build -t mflow . && docker run -d -p 8088:8088 \
 - 全部凭证不入 git：`.gitignore` 覆盖 `secrets/`、各 credentials 目录、`run/llm.json`
 - 控制台密码：`MFLOW_CONSOLE_PASSWORD`；**未设置时 fail-closed 全拒绝**
 - 外网暴露建议：加反向代理 TLS（Caddy 一行即可）或限公司 IP
-- 备份：状态即文件——备份 `run/`、`secrets/`、`1-1 Harness/`、`1-3 GenFlow/.pipeline/` 四处即可整机恢复
+- 备份：状态即文件——备份 `run/`、`secrets/`、`harness/`、`genflow/.pipeline/` 四处即可整机恢复
 
 ## 五、路径契约
 

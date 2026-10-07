@@ -59,11 +59,11 @@ say "=== MFlow sync · $(date '+%F %T') ==="
 # ── 1) 本地测试 ─────────────────────────────────────────────
 if [[ "$DO_TESTS" -eq 1 ]]; then
     say "① 本地测试：session-init（含 GATE5 语法门禁）"
-    bash "1-4 Dev/scripts/session-init.sh" >/dev/null 2>&1 \
+    bash "dev/scripts/session-init.sh" >/dev/null 2>&1 \
         || fail 1 "session-init 门禁未过——先修再发布"
 
     say "    hook smoketest（16 断言）"
-    bash "1-4 Dev/scripts/hooks/tests/smoketest_hooks.sh" >/dev/null 2>&1 \
+    bash "dev/scripts/hooks/tests/smoketest_hooks.sh" >/dev/null 2>&1 \
         || fail 1 "hook smoketest 未过"
     say "  ✓ 测试全绿"
 else
@@ -119,22 +119,22 @@ fi
 say "④ rsync → ${REMOTE}:${REMOTE_ROOT}"
 ssh -p "$REMOTE_PORT" "$REMOTE" "true" 2>/dev/null || fail 4 "SSH 连不上 ${REMOTE}:${REMOTE_PORT}"
 SYNC_ITEMS=(
-    "./1-4 Dev/console/|${REMOTE_ROOT}/1-4 Dev/console/"
-    "./1-4 Dev/scripts/hooks/|${REMOTE_ROOT}/1-4 Dev/scripts/hooks/"
-    "./1-4 Dev/scripts/session-init.sh|${REMOTE_ROOT}/1-4 Dev/scripts/session-init.sh"
-    "./1-4 Dev/scripts/run-tests.sh|${REMOTE_ROOT}/1-4 Dev/scripts/run-tests.sh"
-    "./1-4 Dev/scripts/mcp_server.py|${REMOTE_ROOT}/1-4 Dev/scripts/mcp_server.py"
-    "./1-4 Dev/scripts/warmup.py|${REMOTE_ROOT}/1-4 Dev/scripts/warmup.py"
-    "./1-4 Dev/scripts/warmup.sh|${REMOTE_ROOT}/1-4 Dev/scripts/warmup.sh"
-    "./1-4 Dev/scripts/publish_adapters/|${REMOTE_ROOT}/1-4 Dev/scripts/publish_adapters/"
-    "./1-4 Dev/scripts/trident/|${REMOTE_ROOT}/1-4 Dev/scripts/trident/"
-    "./1-4 Dev/scripts/library/|${REMOTE_ROOT}/1-4 Dev/scripts/library/"
-    "./1-4 Dev/tests/|${REMOTE_ROOT}/1-4 Dev/tests/"
+    "./dev/console/|${REMOTE_ROOT}/dev/console/"
+    "./dev/scripts/hooks/|${REMOTE_ROOT}/dev/scripts/hooks/"
+    "./dev/scripts/session-init.sh|${REMOTE_ROOT}/dev/scripts/session-init.sh"
+    "./dev/scripts/run-tests.sh|${REMOTE_ROOT}/dev/scripts/run-tests.sh"
+    "./dev/scripts/mcp_server.py|${REMOTE_ROOT}/dev/scripts/mcp_server.py"
+    "./dev/scripts/warmup.py|${REMOTE_ROOT}/dev/scripts/warmup.py"
+    "./dev/scripts/warmup.sh|${REMOTE_ROOT}/dev/scripts/warmup.sh"
+    "./dev/scripts/publish_adapters/|${REMOTE_ROOT}/dev/scripts/publish_adapters/"
+    "./dev/scripts/trident/|${REMOTE_ROOT}/dev/scripts/trident/"
+    "./dev/scripts/library/|${REMOTE_ROOT}/dev/scripts/library/"
+    "./dev/tests/|${REMOTE_ROOT}/dev/tests/"
     "run/sites/|${REMOTE_ROOT}/run/sites/"
-    "./1-1 Harness/02-rules/|${REMOTE_ROOT}/1-1 Harness/02-rules/"
-    "./1-1 Harness/Skills/|${REMOTE_ROOT}/1-1 Harness/Skills/"
-    "./1-1 Harness/03-workflows/|${REMOTE_ROOT}/1-1 Harness/03-workflows/"
-    "./1-1 Harness/10-config/|${REMOTE_ROOT}/1-1 Harness/10-config/"
+    "./harness/02-rules/|${REMOTE_ROOT}/harness/02-rules/"
+    "./harness/Skills/|${REMOTE_ROOT}/harness/Skills/"
+    "./harness/03-workflows/|${REMOTE_ROOT}/harness/03-workflows/"
+    "./harness/10-config/|${REMOTE_ROOT}/harness/10-config/"
     "plugins/|${REMOTE_ROOT}/plugins/"
     "templates/|${REMOTE_ROOT}/templates/"
     "deploy/|${REMOTE_ROOT}/deploy/"
@@ -147,7 +147,7 @@ for entry in "${SYNC_ITEMS[@]}"; do
     # openrsync 规则：引号只能包 host: 之后的路径部分（包住 user@ 会被当非法用户名字符）
     spec="${REMOTE}:\"${dst}\""
     DEL_FLAG=""
-    case "$dst" in *"/1-1 Harness/02-rules/"*|*"/1-1 Harness/Skills/"*|*"/1-1 Harness/08-storyline/"*) DEL_FLAG="--delete"; esac
+    case "$dst" in *"/harness/02-rules/"*|*"/harness/Skills/"*|*"/harness/08-storyline/"*) DEL_FLAG="--delete"; esac
     # 每组重试：22 组各自建 SSH 连接，服务器抖动时随机掉一两组（2026-09-30 实测连坑三轮）
     ok=""
     for attempt in 1 2 3; do
@@ -164,7 +164,7 @@ say "  ✓ ${#SYNC_ITEMS[@]} 组已同步"
 say "⑤ 重启 ${CONSOLE_SVC} + 服务端门禁"
 ssh -p "$REMOTE_PORT" "$REMOTE" "systemctl restart ${CONSOLE_SVC} && sleep 2 && systemctl is-active --quiet ${CONSOLE_SVC}" \
     || fail 5 "服务重启失败"
-ssh -p "$REMOTE_PORT" "$REMOTE" "bash '${REMOTE_ROOT}/1-4 Dev/scripts/session-init.sh'" >/dev/null 2>&1 \
+ssh -p "$REMOTE_PORT" "$REMOTE" "bash '${REMOTE_ROOT}/dev/scripts/session-init.sh'" >/dev/null 2>&1 \
     || fail 5 "服务端 session-init 门禁未过"
 say "  ✓ 服务 active · 服务端门禁全部通过（含 GATE6 单元测试）"
 

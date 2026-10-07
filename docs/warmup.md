@@ -32,16 +32,16 @@
 
 ```bash
 # 在服务器上（密码自动从 run/env.sh 读）
-bash "1-4 Dev/scripts/warmup.sh"
+bash "dev/scripts/warmup.sh"
 
 # 只跑某几个板块
-bash "1-4 Dev/scripts/warmup.sh" --only A,B
+bash "dev/scripts/warmup.sh" --only A,B
 
 # 含内容库全量同步（17.5k 篇，约 3 分钟）
-bash "1-4 Dev/scripts/warmup.sh" --sync-library
+bash "dev/scripts/warmup.sh" --sync-library
 
 # 从别的机器指向线上
-python3 "1-4 Dev/scripts/warmup.py" --base https://nownexts.com/mflow --password ...
+python3 "dev/scripts/warmup.py" --base https://nownexts.com/mflow --password ...
 ```
 
 常用参数：`--limit`（每个 dry-run 预设的条数上限，默认 30）·

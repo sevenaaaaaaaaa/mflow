@@ -38,9 +38,9 @@ URL 由档案规则自动生成（含本地化前缀），例：`https://www.exa
 ## 同步（CMS → 库）
 
 ```bash
-python3 "1-4 Dev/scripts/library/sanity_pull.py" --site main --dry-run
-python3 "1-4 Dev/scripts/library/sanity_pull.py" --site main --sections blog --max 20   # 试跑
-python3 "1-4 Dev/scripts/library/sanity_pull.py" --site main                            # 全量
+python3 "dev/scripts/library/sanity_pull.py" --site main --dry-run
+python3 "dev/scripts/library/sanity_pull.py" --site main --sections blog --max 20   # 试跑
+python3 "dev/scripts/library/sanity_pull.py" --site main                            # 全量
 ```
 - 分页 100/批，剔除 `drafts.**`
 - 正文转换：`pt_to_md.py`（Portable Text → Markdown，支持标题/列表/链接/图片/代码/表格）+ `bodyjson_to_md`（落地页版块 JSON → 可读文本）

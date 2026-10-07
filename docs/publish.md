@@ -5,7 +5,7 @@
 
 ## 一、Sanity（已上线，纯 Python + HTTP API，无需 Node）
 
-- 实现：`1-4 Dev/scripts/publish_adapters/sanity_publisher.py`（stdlib only）+ `md_to_portable_text.py`（598 行 MD→PortableText 转换器，已入仓库）
+- 实现：`dev/scripts/publish_adapters/sanity_publisher.py`（stdlib only）+ `md_to_portable_text.py`（598 行 MD→PortableText 转换器，已入仓库）
 - 项目：`your-project-id` / dataset `production`
 - 写入方式：`createIfNotExists`（**不覆盖既有文档**，`_id = slug`）+ 原生 `dryRun` 支持
 - 文档结构：`_type=blog`、`slug`、`language`、`category`（reference，映射既有 taxonomy UUID）、`seo.structuredData`（HowTo/Article JSON-LD）、`body`=portable text、`status=draft`
@@ -28,9 +28,9 @@
 
 **CLI（服务器/本机均可）**
 ```bash
-python3 "1-4 Dev/scripts/publish_adapters/sanity_publisher.py" ping
-python3 "1-4 Dev/scripts/publish_adapters/sanity_publisher.py" dry-run --file x.md --slug s --lang zh
-python3 "1-4 Dev/scripts/publish_adapters/sanity_publisher.py" publish  --file x.md --slug s --lang zh --yes
+python3 "dev/scripts/publish_adapters/sanity_publisher.py" ping
+python3 "dev/scripts/publish_adapters/sanity_publisher.py" dry-run --file x.md --slug s --lang zh
+python3 "dev/scripts/publish_adapters/sanity_publisher.py" publish  --file x.md --slug s --lang zh --yes
 ```
 
 ## 一之二、落地页（compositePage，T1 已上线）
@@ -48,7 +48,7 @@ python3 "1-4 Dev/scripts/publish_adapters/sanity_publisher.py" publish  --file x
 
 CLI：
 ```bash
-python3 "1-4 Dev/scripts/publish_adapters/sanity_publisher.py" ...   # 见 publish_landing()/build_composite_doc()
+python3 "dev/scripts/publish_adapters/sanity_publisher.py" ...   # 见 publish_landing()/build_composite_doc()
 ```
 API：`POST /api/publish/sanity {doctype:"composite", page_type, mode, cover_url, confirm_public, dry_run}`
 

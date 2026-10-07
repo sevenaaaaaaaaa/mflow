@@ -5,8 +5,8 @@
 ## 运行
 
 ```bash
-bash "1-4 Dev/scripts/run-tests.sh"       # 本地
-# 或服务器：cd /www/wwwroot/mflow && bash "1-4 Dev/scripts/run-tests.sh"
+bash "dev/scripts/run-tests.sh"       # 本地
+# 或服务器：cd /www/wwwroot/mflow && bash "dev/scripts/run-tests.sh"
 ```
 
 - 纯标准库 `unittest`（21 用例，~3 秒，无网络/无外部依赖）

@@ -60,13 +60,13 @@ Myth-Buster / Journey / Economist / Visionary / Field Guide / Co-Host / Cookbook
 **给同事的决策路径一句话**：先查词群（打哪个词）→ 查选题计划（给谁写、在哪条线）→ 定类型和框架（12 型 × 11 框架配对）→ 按漏斗配比排产 → 信号决定投入档位 → 止步 ready 等授权。
 
 **文档索引**（同事自查用）：
-- `1-1 Harness/Skills/02-creation/blog-writer/SKILL.md` — 六步链路与铁律
+- `harness/Skills/02-creation/blog-writer/SKILL.md` — 六步链路与铁律
 - `.../references/methodology-content-writer.md` — 12 类型矩阵 + 11 框架库 + Anti-AI Rules v4
 - `.../references/strategy-content.md` — 内容选题计划 SSOT（漏斗配比/五轴/条目矩阵）
 - `.../references/keyword-clusters.json` — 词群作战地图
 - `.../references/signals-and-phases.md` — 信号→选题映射 + Lane 分档
 - `.../references/types/{type}/GUIDE.md` — 8 个类型骨架（101/best-practice/better-design/complete-guide/insight-trend/review/stack-by-stack/thought-leadership）
-- `1-3 GenFlow/Content Strategy/00-09-*.md` — 五轴历史策略文档
+- `genflow/Content Strategy/00-09-*.md` — 五轴历史策略文档
 - 相邻入口：`landing-writer`（落地页）、`hub-writer`（聚合页）、`moodio-film-content`（Moodio 品牌路由）
 
 ---
@@ -127,10 +127,10 @@ Myth-Buster / Journey / Economist / Visionary / Field Guide / Co-Host / Cookbook
 
 ## 七、SSOT 索引
 
-- 架构总控：`1-1 Harness/00-INDEX.md`（v6 四层模型）
-- 全局铁律：`1-1 Harness/02-rules/RULES-00-iron.md`；创作类 `RULES-20-creation.md`；质量类 `RULES-30-quality.md`
-- 状态机：`1-1 Harness/Skills/06-orchestrate/pipeline-state/`；路由：`.../router/`
-- 能力承载矩阵（品牌接入抽象）：`1-1 Harness/Skills/infra/CAPABILITY-MATRIX.md`
-- 博客入口：`1-1 Harness/Skills/02-creation/blog-writer/`
+- 架构总控：`harness/00-INDEX.md`（v6 四层模型）
+- 全局铁律：`harness/02-rules/RULES-00-iron.md`；创作类 `RULES-20-creation.md`；质量类 `RULES-30-quality.md`
+- 状态机：`harness/Skills/06-orchestrate/pipeline-state/`；路由：`.../router/`
+- 能力承载矩阵（品牌接入抽象）：`harness/Skills/infra/CAPABILITY-MATRIX.md`
+- 博客入口：`harness/Skills/02-creation/blog-writer/`
 - 设计复刻产品化：`docs/PRODUCTIZATION-REPLICATION.md`
-- 项目记忆：`1-1 Harness/11-knowledge/MEMORY-PROJECT.md`
+- 项目记忆：`harness/11-knowledge/MEMORY-PROJECT.md`

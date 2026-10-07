@@ -1,6 +1,6 @@
 # MFlow 帮助中心
 
-> 面向日常操作者（人类）与 agent。每节都可直接执行；深水区链接指向 `1-1 Harness/` 内部 SSOT。
+> 面向日常操作者（人类）与 agent。每节都可直接执行；深水区链接指向 `harness/` 内部 SSOT。
 
 ---
 
@@ -26,13 +26,13 @@
 **首次检查清单**：
 
 ```bash
-bash "1-4 Dev/scripts/session-init.sh"     # 4 道门禁全过 = 环境健康
-python3 "1-4 Dev/scripts/harness_sync.py"  # 从 vault 真相同步规则到各 agent 运行时
+bash "dev/scripts/session-init.sh"     # 4 道门禁全过 = 环境健康
+python3 "dev/scripts/harness_sync.py"  # 从 vault 真相同步规则到各 agent 运行时
 ```
 
 **路径契约**：所有脚本按自身位置推导路径；两个可选环境变量：`MFLOW_LOCAL_DEV_ROOT`（运行时输出，默认 `~/Documents/MFlow Local Dev`）、`MFLOW_PYTHON`（数据拉取用 venv 解释器）。禁止硬编码绝对路径。
 
-**凭证**：`secrets/`（CMS/Notion token）、`1-1 Harness/Skills/01-strategy/trident-data-engine/credentials/`（GSC/GA4/飞书）、`1-4 Dev/scripts/sentinel/*_credentials/`。全部 git-ignore，丢失时参照 `secrets/README.md` 恢复。
+**凭证**：`secrets/`（CMS/Notion token）、`harness/Skills/01-strategy/trident-data-engine/credentials/`（GSC/GA4/飞书）、`dev/scripts/sentinel/*_credentials/`。全部 git-ignore，丢失时参照 `secrets/README.md` 恢复。
 
 ## 2. 会话协议
 
@@ -41,7 +41,7 @@ python3 "1-4 Dev/scripts/harness_sync.py"  # 从 vault 真相同步规则到各 
 **启动（必做）**：
 
 ```bash
-bash "1-4 Dev/scripts/session-init.sh"
+bash "dev/scripts/session-init.sh"
 ```
 
 GATE 1 pipeline-state 存在 / GATE 2 路由器合法 / GATE 3 下一步建议 / GATE 4 治理（手动）。任何一门失败先修复再开工。
@@ -49,11 +49,11 @@ GATE 1 pipeline-state 存在 / GATE 2 路由器合法 / GATE 3 下一步建议 /
 **接任务先问路由器**：
 
 ```bash
-python3 "1-1 Harness/Skills/06-orchestrate/router/router.py" decide --stage S3 --scenario blog
+python3 "harness/Skills/06-orchestrate/router/router.py" decide --stage S3 --scenario blog
 # 返回：该用哪个 profile、加载哪些 skill、下一步动作
 ```
 
-**收尾（必做）**：触发条件 = 用户说"收尾/log this"，或触碰 ≥5 文件 / ≥1 schema 改动 / ≥1 新 skill。写结构化 log 到 `1-1 Harness/11-knowledge/sessions/{YYYY-MM-DD}-{slug}.md`（frontmatter 带 `session_date`/`session_slug`），status: draft → 用户确认 → ready。**不写日志 = silent loss，不允许跳过。**
+**收尾（必做）**：触发条件 = 用户说"收尾/log this"，或触碰 ≥5 文件 / ≥1 schema 改动 / ≥1 新 skill。写结构化 log 到 `harness/11-knowledge/sessions/{YYYY-MM-DD}-{slug}.md`（frontmatter 带 `session_date`/`session_slug`），status: draft → 用户确认 → ready。**不写日志 = silent loss，不允许跳过。**
 
 ## 3. 内容创作 SOP
 
@@ -86,7 +86,7 @@ python3 ".../pipeline_state.py" next      # 我下一步该干什么
 
 ## 4. 质量门禁
 
-四道 bash 钩子（`1-4 Dev/scripts/hooks/`），BLOCK 即停：
+四道 bash 钩子（`dev/scripts/hooks/`），BLOCK 即停：
 
 | 钩子 | 时机 | 查什么 |
 |------|------|--------|
@@ -113,11 +113,11 @@ python3 ".../pipeline_state.py" next      # 我下一步该干什么
 
 **发布原则**：发布类动作停在 ready 等人工授权，不做无人值守自动发布。
 
-**CMS ID 对账**：`1-3 GenFlow/CONTENT_LINK_INDEX.md` 是 SSOT（注意：当前实际覆盖有限，Blog 对账以 `blog-pipeline/BLOG_PUBLISHED_INDEX.md` 为准——两账合一在路线图上）。
+**CMS ID 对账**：`genflow/CONTENT_LINK_INDEX.md` 是 SSOT（注意：当前实际覆盖有限，Blog 对账以 `blog-pipeline/BLOG_PUBLISHED_INDEX.md` 为准——两账合一在路线图上）。
 
 ## 6. 分发（四轨道）
 
-轨道定义在 RULES-50，平台注册表 `1-3 GenFlow/Content Distribution/config/platforms.json`：
+轨道定义在 RULES-50，平台注册表 `genflow/Content Distribution/config/platforms.json`：
 
 - **国内 Wechatsync**（知乎/百家号等）：浏览器扩展人工通道，不上服务器
 - **海外 API**（DEV.to / GitHub Discussions / Blogger）：`scripts/publish-*.js`，需对应 API key 在 `.env`
@@ -126,38 +126,38 @@ python3 ".../pipeline_state.py" next      # 我下一步该干什么
 
 **标准流程**：组 dispatch 单（`queue/dispatch-*.json`，参考 `dispatch-restart-2026-09-14-batch1.json`）→ `node scripts/dispatch-publish.js --manifest ... --dry-run` 干跑 → preflight 全过 → 用户把 `approved` 设 true → 去 `--dry-run` 真发。
 
-**preflight 会拦什么**：正文缺 `utm_source={platform}` 追踪链接（AD-Tracking SSOT 要求）、缺 canonical、字数异常。稿件 UTM 化是发布前最后一公里，批量加工工具在 `1-3 GenFlow/AD-Tracking/url-builder/`。
+**preflight 会拦什么**：正文缺 `utm_source={platform}` 追踪链接（AD-Tracking SSOT 要求）、缺 canonical、字数异常。稿件 UTM 化是发布前最后一公里，批量加工工具在 `genflow/AD-Tracking/url-builder/`。
 
 ## 7. 数据报告与监控
 
-- **Trident**（`1-4 Dev/scripts/trident/`）：GSC/GA4/Bing 拉数。日拉 `gsc_fetch.py --daily`；数据落 `$MFLOW_LOCAL_DEV_ROOT/Output/Data Ingestion/`
-- **Sentinel**（`1-4 Dev/scripts/sentinel/`）：每日 22 源舆情采集 + 日报，产出 `1-2 Insight/ORM/`
+- **Trident**（`dev/scripts/trident/`）：GSC/GA4/Bing 拉数。日拉 `gsc_fetch.py --daily`；数据落 `$MFLOW_LOCAL_DEV_ROOT/Output/Data Ingestion/`
+- **Sentinel**（`dev/scripts/sentinel/`）：每日 22 源舆情采集 + 日报，产出 `insight-data/ORM/`
 - **报告铁律**（RULES-10）：任何报告任何维度**必须有环比**（绝对变化+百分比）；不等长窗口用日均值；品牌词用品牌词分类器（`brand_match.is_brand()`） 精确分类；每节必须有 💡 洞察（问题/根源/缓解）
-- **SSOT 归属**：SEO 月报 → `1-2 Insight/Trident Insights/reports/monthly/`；舆情 → `ORM/`；关键词 → `Keywords Research/`
+- **SSOT 归属**：SEO 月报 → `insight-data/Trident Insights/reports/monthly/`；舆情 → `ORM/`；关键词 → `Keywords Research/`
 
 ## 8. 调度与运维
 
-**macOS launchd**（当前生产）：`com.mflow.daily-pipeline`（08:00）/ `com.mflow.weekly-pipeline`（周一 07:00）/ `com.mflow.dream`（02:30）。plist 源在 `1-4 Dev/automation/plists/`，安装：
+**macOS launchd**（当前生产）：`com.mflow.daily-pipeline`（08:00）/ `com.mflow.weekly-pipeline`（周一 07:00）/ `com.mflow.dream`（02:30）。plist 源在 `dev/automation/plists/`，安装：
 
 ```bash
-cp "1-4 Dev/automation/plists/com.mflow.daily-pipeline.plist" ~/Library/LaunchAgents/ && launchctl load ~/Library/LaunchAgents/com.mflow.daily-pipeline.plist
+cp "dev/automation/plists/com.mflow.daily-pipeline.plist" ~/Library/LaunchAgents/ && launchctl load ~/Library/LaunchAgents/com.mflow.daily-pipeline.plist
 ```
 
 **每日管线步骤**（`run-daily-pipeline.sh`）：GSC 日拉 → Sentinel 采集+日报 → 飞书摘要（需凭据，可选）→ harness 学习报告 → 规则跨工具同步。
 
 **Linux 服务器**：systemd timer 同一张时间表；MFlow 必须独立目录（`/var/www/mflow`）+ 独立 URL/server block，与 XMP/OpenFlow 完全隔离——详见 `deploy/server.md`。部署需用户明示授权。
 
-**梦境（dream）**：每夜 consolidate（事实入记忆）+ audit（六维一致性审计，A1-A6）。手动跑：`bash "1-1 Harness/11-knowledge/dream/audit.sh" --no-write-today`。
+**梦境（dream）**：每夜 consolidate（事实入记忆）+ audit（六维一致性审计，A1-A6）。手动跑：`bash "harness/11-knowledge/dream/audit.sh" --no-write-today`。
 
 ## 9. 治理
 
-**加新脚本（强制流程）**：先搜 `1-1 Harness/09-scripts/TOOLS-REGISTRY.md` 防重复 → 走 `new-tool-governance` skill → governance_check 6 门（命名/shebang/位置/docstring/无违规/smoke）→ 注册。不注册的脚本会在下次治理清理中归档。
+**加新脚本（强制流程）**：先搜 `harness/09-scripts/TOOLS-REGISTRY.md` 防重复 → 走 `new-tool-governance` skill → governance_check 6 门（命名/shebang/位置/docstring/无违规/smoke）→ 注册。不注册的脚本会在下次治理清理中归档。
 
-**加/改技能**：改 `1-1 Harness/Skills/`（真相源）→ 跑 `harness_sync.py` 再生各工具运行时副本（.cursor/rules、~/.hermes 等）。每场景只有一个父入口，support-only 子技能标 `disable-model-invocation`。
+**加/改技能**：改 `harness/Skills/`（真相源）→ 跑 `harness_sync.py` 再生各工具运行时副本（.cursor/rules、~/.hermes 等）。每场景只有一个父入口，support-only 子技能标 `disable-model-invocation`。
 
 **改规则**：RULES-00 是全局铁律，任何会话必载；工作线规则 RULES-10~60 按路由器指示加载。改规则后跑一次 audit 确认五个工具入口不打架。
 
-**知识固化**：重要事实写 `11-knowledge/MEMORY-PROJECT.md`（带 ⚙️/✋/📌 来源标注）；会话结束写 session log；每夜 dream 自动整理。图查询：`bash "1-1 Harness/11-knowledge/scripts/kg" stats`。
+**知识固化**：重要事实写 `11-knowledge/MEMORY-PROJECT.md`（带 ⚙️/✋/📌 来源标注）；会话结束写 session log；每夜 dream 自动整理。图查询：`bash "harness/11-knowledge/scripts/kg" stats`。
 
 ## 10. 故障排查 FAQ
 
@@ -168,7 +168,7 @@ GATE 1 挂 = `.pipeline/pipeline-state.json` 丢失 → `pipeline_state.py init`
 数据拉取必须用 trident-venv：`export MFLOW_PYTHON=$MFLOW_LOCAL_DEV_ROOT/trident-venv/bin/python`，管线脚本会自动消费。
 
 **Q：Sentinel 采集失败？**
-看 `1-2 Insight/ORM/raw/{当日}/` 缺哪个源；个别源失败不阻塞其他源；凭证在 `sentinel/*_credentials/`。
+看 `insight-data/ORM/raw/{当日}/` 缺哪个源；个别源失败不阻塞其他源；凭证在 `sentinel/*_credentials/`。
 
 **Q：launchd 任务没跑？**
 `launchctl list | grep 品牌` 看在册与上次退出码；日志 `$MFLOW_LOCAL_DEV_ROOT/Logs/com.mflow.*.log` 或 /tmp 对应 plist 的 StandardOutPath。

@@ -124,7 +124,7 @@ pip install markdown
 export MFLOW_CONSOLE_PASSWORD=你的密码
 
 # 3) 启动工作台
-python3 "1-4 Dev/console/console.py"
+python3 "dev/console/console.py"
 # → http://127.0.0.1:8088/
 ```
 
@@ -134,13 +134,13 @@ python3 "1-4 Dev/console/console.py"
 
 ```bash
 # 看管线状态
-python3 "1-1 Harness/Skills/06-orchestrate/pipeline-state/pipeline_state.py" summary
+python3 "harness/Skills/06-orchestrate/pipeline-state/pipeline_state.py" summary
 
 # 问路由器：这个任务该谁干、加载什么技能
-python3 "1-1 Harness/Skills/06-orchestrate/router/router.py" decide --stage S3 --scenario blog
+python3 "harness/Skills/06-orchestrate/router/router.py" decide --stage S3 --scenario blog
 
 # 跑每日信号管线（搜索控制台 + 舆情采集 + 规则同步）
-bash "1-4 Dev/automation/run-daily-pipeline.sh"
+bash "dev/automation/run-daily-pipeline.sh"
 ```
 
 所有脚本按自身位置推导路径，clone 到任意平铺目录即可运行。服务器部署（systemd timer）与 Docker 路径见 [部署指南](docs/deploy-guide.md)；调度时间表（每日 08:00 信号管线 / 每周管线 / 记忆整理 02:30）见「系统 → 调度与日志」。
@@ -229,7 +229,7 @@ bash "1-4 Dev/automation/run-daily-pipeline.sh"
 ![创作中心](docs/screenshots/08-create.png)
 
 **功能**：Blog + 6 类落地页（Tools / Features / Product / Scenario / Solution / Topic）的生成入口。行业模板（广告法禁例 / SaaS 禁无出处 ROI 承诺等）、选题灵感 chips、10 语言选择；Loop 模式自动循环质检，单次生成走节点步。全部内置 Anti-Slop 硬规则：四问自检 / 禁 AI 腔 / 不可验证数字标 [待考证] / 语义分段。
-**使用**：选类型 + 语言 + 主题（不确定让 Agent 从搜索数据/知识库推荐选题）→ 「发起 Loop」自动生成→质检→迭代；生成物落 `1-3 GenFlow/Console-Gen/{id}.md`，过质检后入 S4-qa 等人工审；**发布仍需人工授权**。
+**使用**：选类型 + 语言 + 主题（不确定让 Agent 从搜索数据/知识库推荐选题）→ 「发起 Loop」自动生成→质检→迭代；生成物落 `genflow/Console-Gen/{id}.md`，过质检后入 S4-qa 等人工审；**发布仍需人工授权**。
 
 ### 9. 任务看板（tasks）
 

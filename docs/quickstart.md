@@ -22,7 +22,7 @@ echo 'export MFLOW_PYTHON=$PWD/.venv/bin/python' >> run/env.sh
 ## 第 3 步 · 启动工作台
 
 ```bash
-source run/env.sh && .venv/bin/python "1-4 Dev/console/console.py"
+source run/env.sh && .venv/bin/python "dev/console/console.py"
 # 浏览器打开 http://127.0.0.1:8088，输入密码
 ```
 
@@ -48,7 +48,7 @@ source run/env.sh && .venv/bin/python "1-4 Dev/console/console.py"
 
 ## 第 8 步 · 接入自己的数据
 
-- 知识库：把公司文档 md 放入 `1-2 Insight/Knowledge Base/`（或注册新知识源，见 modules.md）
+- 知识库：把公司文档 md 放入 `insight-data/Knowledge Base/`（或注册新知识源，见 modules.md）
 - 数据源（GSC/GA4/Bing 已内置）：`deploy`/凭证目录放对应 token，见 modules.md 的数据源扩展指南
 - CMS：见 modules.md 的 CMS 适配器章节
 

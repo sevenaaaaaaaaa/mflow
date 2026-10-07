@@ -10,13 +10,13 @@
 
 | 注册点 | 位置 | 作用 |
 |--------|------|------|
-| Skill | `1-1 Harness/Skills/<组>/<名>/SKILL.md` | 该模块的 SOP、提示词、检查清单（agent 与工作台共用） |
-| 知识源 | `1-1 Harness/11-knowledge` 或工作台 `console.py KNOWLEDGE_SOURCES` | 模块依赖的参考知识，进知识中台索引 |
-| 质量钩子 | `1-4 Dev/scripts/hooks/*.sh` | 模块产出前的硬约束检查 |
+| Skill | `harness/Skills/<组>/<名>/SKILL.md` | 该模块的 SOP、提示词、检查清单（agent 与工作台共用） |
+| 知识源 | `harness/11-knowledge` 或工作台 `console.py KNOWLEDGE_SOURCES` | 模块依赖的参考知识，进知识中台索引 |
+| 质量钩子 | `dev/scripts/hooks/*.sh` | 模块产出前的硬约束检查 |
 | 工作流定义 | 工作台 `console.py WORKFLOW_MAP` | 阶段链 / 角色 / Skills / 知识源的可视化地图 |
 
-新增后跑 `python3 1-4 Dev/scripts/harness_sync.py` 同步到各 agent 运行时，并在
-`1-1 Harness/09-scripts/TOOLS-REGISTRY.md` 注册新脚本（防重复创建）。
+新增后跑 `python3 dev/scripts/harness_sync.py` 同步到各 agent 运行时，并在
+`harness/09-scripts/TOOLS-REGISTRY.md` 注册新脚本（防重复创建）。
 
 ## 二、如何接入新的媒体 / 线上数据源（检验内容效果）
 
@@ -27,13 +27,13 @@
 ```python
 {"id": "gsc", "name": "GSC 日拉", "cmd": [PYTHON, ".../gsc_fetch.py", "--daily"], "desc": "..."},
 # 新增一个源 = 加一行 + 写一个拉数脚本（OAuth 凭证放 credentials/，git-ignore）
-{"id": "reddit-ads", "name": "Reddit 广告效果", "cmd": [PYTHON, "1-4 Dev/scripts/sources/reddit_ads.py"], "desc": "..."},
+{"id": "reddit-ads", "name": "Reddit 广告效果", "cmd": [PYTHON, "dev/scripts/sources/reddit_ads.py"], "desc": "..."},
 ```
 
 脚本约定：输出 JSON 到 `$MFLOW_LOCAL_DEV_ROOT/Output/Data Ingestion/`，文件名含日期。
 工作台「数据管线 Trident」页会自动出现新步骤与产出健康度。
 
-**舆情类（发布前监测）**——参考 `1-4 Dev/scripts/sentinel/sources/*.py` 的 collect() 协议：
+**舆情类（发布前监测）**——参考 `dev/scripts/sentinel/sources/*.py` 的 collect() 协议：
 返回 dict、单源失败不阻塞其他源，加入 `collect.py` 的 source 列表即被每日 22 源管线带动。
 
 效果检验的标准问法："这条外链/这篇文章带来了多少点击？"——把发布外链表
@@ -44,7 +44,7 @@
 发布环节做成适配器接口（与内置无头 CMS 参考实现解耦）：
 
 ```python
-# 1-4 Dev/scripts/publish_adapters/my_cms.py
+# dev/scripts/publish_adapters/my_cms.py
 def publish(item: dict, cfg: dict) -> dict:
     """item 含 id/title/body_md/lang/meta；返回 {ok, url, cms_id}"""
     ...
@@ -70,6 +70,6 @@ OpenFlow 的迭代飞轮 = 版本化交付 + 使用数据回流。MFlow 对应�
 ## 五、看板与内容日历（协作模型）
 
 - 看板 = 执行视图（`run/tasks.json`，支持拖拽、负责人、截止日、操作者署名）
-- 日历 = 资产视图（`1-3 GenFlow/Content Calendar/`）
+- 日历 = 资产视图（`genflow/Content Calendar/`）
 - 打通：日历页「→ 加入看板」把文章变成卡片（卡片带 🔗 关联），卡片流转即内容生产进度；
   多人协作 MVP = 共享密码 + 卡片署名，正式账号体系在 ROADMAP Phase 3

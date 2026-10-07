@@ -1,0 +1,244 @@
+{
+ "_readme": "Lovart 品牌差异配置（infra/gates brand profile）。v1.1：加入 subSites 子站模型——五项能力（策略/站点/体验/GEO/编排）支持【继承主项目 + 勾选覆盖 + 新增独立内容】；WP 子站线已按品牌裁定移除出发布方案（blogs.lovart.ai 重新规划为子项目，发布目标待定），WordPress 管线冻结保留。",
+ "brand": "lovart",
+ "deploy": {
+  "tree": "vault（生产）+ sandbox（开源镜像）",
+  "consoleProjectId": "main"
+ },
+ "contentBudget": {
+  "blog": [
+   1200,
+   1800
+  ],
+  "blogLongform": 7500,
+  "blogMax": 2160,
+  "landing": [
+   600,
+   1000
+  ],
+  "summary": 600
+ },
+ "languages": {
+  "primary": "en",
+  "supported": [
+   "en",
+   "zh",
+   "ja",
+   "zh-TW",
+   "pt",
+   "ru"
+  ],
+  "landingLanguages": 10
+ },
+ "visual": {
+  "coverPool": "2-Area/Content Archive/Cover Url 随机调取.md（56 URL）+ pick-cover.py",
+  "imageLibrary": "landing-page/references/image-library.md + landing-ssot/image_pool.py（43 图 7 分类）",
+  "blogCoverSpec": "methodology §Cover Image Spec",
+  "landingSpec": "33 组件库 preview-data.json（组件尺寸/规格 SSOT）",
+  "note": "尺寸/规格以组件库与封面规范为准"
+ },
+ "kb": {
+  "dir": "insight-data/Knowledge Base",
+  "kbIntent": [],
+  "capabilityGlossary": "（散落：help center/docs archive/KB-Index——Lovart 历史结构）",
+  "factRules": "Q3 计划 + 官网核实；未验证标 [待考证]",
+  "messagingRules": "1-1 GEO Readme/文档/04-质量治理/Anti-Slop.md"
+ },
+ "strategy": {
+  "keywordClusters": "Skills/02-creation/lovart-blog-writer/references/keyword-clusters.json",
+  "contentStrategy": "Skills/02-creation/lovart-blog-writer/references/strategy-content.md",
+  "paidStrategy": "Skills/02-creation/lovart-landing-writer/references/paid-strategy.md",
+  "croAudit": "Skills/02-creation/lovart-landing-writer/references/cro-audit.md"
+ },
+ "cta": {
+  "style": "free-trial",
+  "primary": "Try Free",
+  "url": "lovart.ai/signup",
+  "secondary": "lovart.ai/pricing"
+ },
+ "templates": {
+  "default": null,
+  "note": "Lovart 走原生 prompt（RULES-20），不走 console 行业模板"
+ },
+ "publishTarget": {
+  "cms": "sanity",
+  "project": "o11tm2qe（生产 dataset）",
+  "note": "blogs 子站 = WordPress 现役（存量运行）；长期方向统一 Sanity+MFlow"
+ },
+ "quality": {
+  "gates": [
+   "post-write-check",
+   "geo-check",
+   "quota-check",
+   "lang-check"
+  ],
+  "gatesVersion": "infra/gates v1.0"
+ },
+ "subSites": [
+  {
+   "id": "blogs",
+   "name": "Lovart Blog 子站",
+   "status": "active",
+   "domain": "blogs.lovart.ai",
+   "techStack": "WordPress（现役——存量已发布内容运行中；长期方向统一 Sanity+MFlow，WP 按 capability 维护）",
+   "projectId": "main",
+   "langs": [
+    "en"
+   ],
+   "sections": [
+    "blog"
+   ],
+   "publishTarget": {
+    "cms": "wordpress",
+    "url": "blogs.lovart.ai",
+    "auth": "WP_USER/WP_PASS 或 scripts/wp-auth.local.env（gitignore）",
+    "gate": "blocked-until-dry-run-verified（发布前必须 --dry-run）"
+   },
+   "capabilities": {
+    "kb": {
+     "mode": "inherit",
+     "note": "品牌知识库全量共享（含 capability/facts/messaging）"
+    },
+    "strategy": {
+     "mode": "inherit+override",
+     "inherit": [
+      "keywordClusters",
+      "contentStrategy"
+     ],
+     "override": {
+      "contentStrategy": "blogs 线专属：7500 词长文条目从主线策略中单列（Drip/排期不同步主站）"
+     },
+     "independent": []
+    },
+    "site": {
+     "mode": "independent",
+     "site": {
+      "id": "blogs",
+      "domain": "blogs.lovart.ai",
+      "sections": [
+       "blog"
+      ],
+      "source": null
+     }
+    },
+    "experience": {
+     "mode": "override",
+     "lists": [
+      "weekly",
+      "monthly"
+     ],
+     "overrides": {
+      "longformCheck": true,
+      "wpLegacyUrls": "存量 URL 存活监控保留"
+     }
+    },
+    "geo": {
+     "mode": "inherit",
+     "note": "共享主站 GEO 查询与探针；子站引用页面计入 citations 归因"
+    },
+    "orchestration": {
+     "mode": "inherit+override",
+     "inherit": [
+      "session-init",
+      "router",
+      "hooks",
+      "S0-S6"
+     ],
+     "override": {
+      "schedule": {
+       "weeklyDrip": "blogs 长文线独立排期（PRODUCTION-PLAN）"
+      },
+      "gates": {
+       "postWriteTargetWords": 7500
+      },
+      "publish": "publish-to-wp.py 现役（dry-run 前置）"
+     }
+    }
+   }
+  },
+  {
+   "id": "main-site",
+   "name": "Lovart 主站",
+   "status": "active",
+   "domain": "www.lovart.ai",
+   "techStack": "Next.js + Sanity",
+   "projectId": "main",
+   "langs": [
+    "en",
+    "zh",
+    "ja",
+    "zh-TW",
+    "pt",
+    "ru"
+   ],
+   "sections": [
+    "blog",
+    "features",
+    "tools",
+    "topics",
+    "scenarios",
+    "solutions",
+    "products",
+    "news"
+   ],
+   "publishTarget": {
+    "cms": "sanity",
+    "project": "o11tm2qe",
+    "dataset": "production"
+   },
+   "capabilities": {
+    "kb": {
+     "mode": "inherit",
+     "note": "主站即品牌默认"
+    },
+    "strategy": {
+     "mode": "inherit",
+     "inherit": [
+      "keywordClusters",
+      "contentStrategy",
+      "paidStrategy",
+      "croAudit"
+     ]
+    },
+    "site": {
+     "mode": "independent",
+     "site": {
+      "id": "lovart-main",
+      "domain": "www.lovart.ai",
+      "sections": 8,
+      "source": {
+       "type": "sanity",
+       "project": "o11tm2qe",
+       "dataset": "production"
+      }
+     }
+    },
+    "experience": {
+     "mode": "override",
+     "lists": [
+      "weekly",
+      "monthly",
+      "quarterly"
+     ],
+     "overrides": {
+      "hreflang": "6 语种"
+     }
+    },
+    "geo": {
+     "mode": "override",
+     "queries": "见 keyword-clusters.geoTargetQueries"
+    },
+    "orchestration": {
+     "mode": "inherit",
+     "inherit": [
+      "session-init",
+      "router",
+      "hooks",
+      "S0-S6",
+      "schedule"
+     ]
+    }
+   }
+  }
+ ]
+}
