@@ -1,0 +1,50 @@
+# 品牌方 品牌配置
+brand:
+  name: "品牌方"
+  domain: "example.com"
+  tagline: "World's First AI Design Agent"
+  positioning: ["ai design agent", "ai design tool", "ai creative suite", "brand identity ai", "logo maker ai", "ai video ad generator"]
+  industry: "ai_design_tool"
+
+keywords:
+  primary: ["品牌", "品牌 ai", "example.com"]
+  misspellings: ["loveart", "loveart ai", "lovert", "lavart", "lovaart", "louvart", "lovard", "lovort", "loveai"]
+  multilingual:
+    arabic: "لوفارت"
+    russian: "ловарт"
+    japanese: "ラブアート"
+    korean: "러바트"
+  product_terms: ["nano banana", "nano banana pro", "nano banana 2", "nanobanana", "chatcanvas", "touch edit 品牌", "mcot engine", "品牌 brand kit", "品牌 logo generator"]
+
+social:
+  x_twitter: "品牌_ai"
+  instagram: "example.com"
+  linkedin: "company/mflow-ai"
+  tiktok: "品牌_ai"
+  youtube: "@品牌_ai"
+  discord: "https://discord.gg/9rmVYDHD6W"
+
+reviews:
+  product_hunt: "/products/品牌"
+  g2: "/products/品牌/reviews"
+  trustpilot: "/review/example.com"
+  capterra: "/p/品牌/"
+
+parasite_domains:
+  - domain: "mflow-ai.com"
+    redirects_to: "aggiii.com"
+    risk: critical
+  - domain: "品牌.pro"
+    risk: high
+  - domain: "品牌.io"
+    risk: high
+  - domain: "品牌.info"
+    risk: high
+  - domain: "品牌.me"
+    risk: high
+  - domain: "品牌.fyi"
+    risk: medium
+
+monitoring:
+  benchmark_against: ""   # 自身品牌，不对标
+  campaign: ""

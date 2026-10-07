@@ -16,17 +16,17 @@
 
 ```bash
 # ① 扫描：生成台账 run/library/{site}/assets.json
-python3 "1-4 Dev/scripts/library/asset_tools.py" scan --site main [--sections tools,features] [--max 100]
+python3 "dev/scripts/library/asset_tools.py" scan --site main [--sections tools,features] [--max 100]
 
 # ② 计划：按规则匹配 + 过滤（不改任何东西）
-python3 "1-4 Dev/scripts/library/asset_tools.py" plan --site main \
+python3 "dev/scripts/library/asset_tools.py" plan --site main \
   --mode exact|prefix|regex --match "<URL 或前缀/正则>" \
   --new-url "https://新的图.png" --new-alt "新 alt" \
   [--section tools --lang zh --page-type feature --slugs a,b,c] \
   [--url-map map.json]        # 逐页映射：{"旧URL": "新URL"}
 
 # ③ 应用：默认 dry-run（CMS 原生 dryRun，返回 transactionId 不落库）
-python3 "1-4 Dev/scripts/library/asset_tools.py" apply --site main --plan <plan.json> [--yes] [--max-docs 500]
+python3 "dev/scripts/library/asset_tools.py" apply --site main --plan <plan.json> [--yes] [--max-docs 500]
 ```
 
 ## 台账结构（assets.json）

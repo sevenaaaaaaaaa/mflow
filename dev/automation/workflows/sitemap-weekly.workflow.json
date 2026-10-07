@@ -1,0 +1,14 @@
+{
+  "name": "the brand Sitemap Weekly",
+  "description": "Refresh sitemap via sitemap-update skill (Monday 02:00).",
+  "workflow": {
+    "triggers": [{"cron": {"cron": "0 2 * * 1"}}],
+    "actions": [],
+    "prompts": [{
+      "prompt": "Update the brand sitemap (read Skill sitemap-update in harness/Skills/).\n\n1. Follow skill steps to regenerate sitemap from Sanity production URLs\n2. Validate no broken routes; compare vs last week diff\n3. bash \"dev/automation/report-notify/report-notify.sh\" --type sitemap-weekly --status ok|fail --summary \"<url count, delta>\" --artifact \"<sitemap output path>\"\n4. Notion data_source_id 61514ed3-39e2-4d84-b860-8334d740823e\n\nDo NOT deploy or change production CMS without approval."
+    }],
+    "model": "",
+    "agentOptions": {"skipInstall": false},
+    "memoryEnabled": false
+  }
+}

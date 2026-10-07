@@ -1,0 +1,17 @@
+{
+ "$schema": "https://schemas.wp.org/trunk/block.json",
+ "apiVersion": 3,
+ "name": "lovart/pricing-block",
+ "version": "1.0.0",
+ "title": "Lovart pricing-block",
+ "category": "lovart",
+ "icon": "layout",
+ "description": "1:1 replica of lovart.ai pricing-block section (composite-page-all source).",
+ "supports": {
+  "align": [
+   "full",
+   "wide"
+  ],
+  "html": false
+ }
+}

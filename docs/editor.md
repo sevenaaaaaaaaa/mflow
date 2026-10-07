@@ -20,9 +20,9 @@
 
 | 可编辑 | 只读 |
 |---|---|
-| `run/projects/{id}/content/**.md`（生成稿） | `1-1 Harness/02-rules/**`（RULES 是 SSOT） |
+| `run/projects/{id}/content/**.md`（生成稿） | `harness/02-rules/**`（RULES 是 SSOT） |
 | `run/library/{site}/**.md`（内容库镜像） | `docs/**`、`ROADMAP.md` |
-| `1-3 GenFlow/**.md`（草稿池） | `1-2 Insight/**`（报告由脚本生成） |
+| `genflow/**.md`（草稿池） | `insight-data/**`（报告由脚本生成） |
 
 非 `.md`、路径穿越（`..`）、白名单之外的一律拒绝。这几条有单测护着
 （`TestContentEditor`），放宽它就是放宽整个系统的写入边界。

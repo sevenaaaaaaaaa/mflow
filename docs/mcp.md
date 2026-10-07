@@ -13,7 +13,7 @@
   "mcpServers": {
     "mflow": {
       "command": "python3",
-      "args": ["/www/wwwroot/mflow/1-4 Dev/scripts/mcp_server.py"],
+      "args": ["/www/wwwroot/mflow/dev/scripts/mcp_server.py"],
       "env": {
         "MFLOW_URL": "http://127.0.0.1:8088",
         "MFLOW_API_TOKEN": "<你的 token>"
@@ -36,7 +36,7 @@
 
 ## 5. 自测
 ```bash
-echo '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | MFLOW_API_TOKEN=<token> python3 "1-4 Dev/scripts/mcp_server.py"
+echo '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | MFLOW_API_TOKEN=<token> python3 "dev/scripts/mcp_server.py"
 ```
 
 ## 6. 与 OpenFlow / 其他系统

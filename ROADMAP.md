@@ -2,7 +2,7 @@
 
 > 目标：让任何公司 clone 下来 30 分钟跑通第一个内容工作流，并随使用深度逐步扩展。
 > 状态标记：✅ 已交付 · 🔄 进行中 · 📋 规划
-> 更新：2026-09-20（覆盖至 Phase 22）。进行中的细粒度计划见 `docs/p1-plan.md`；能力现状与缺口见 `docs/capability-matrix.md`；一手记录见 `1-1 Harness/11-knowledge/sessions/`。
+> 更新：2026-09-20（覆盖至 Phase 22）。进行中的细粒度计划见 `docs/p1-plan.md`；能力现状与缺口见 `docs/capability-matrix.md`；一手记录见 `harness/11-knowledge/sessions/`。
 
 ## Phase 0 · 产品化基座（2026-09-15 ✅）
 
@@ -24,7 +24,7 @@
 - ✅ CJK 分词修复：post-write-check 词当量 = ASCII 词 + CJK 字符/2（perl unicode），680 汉字不再被记为 21 词，16/16 回归绿
 - ✅ 质检可视化：hook 输出 ✓/✗/WARN 分项着色渲染（Loop 日志/质量钩子页复用 fmtHook）
 - ✅ 媒体效果检验：分发页「效果归因」——已发布外链 canonical × GSC Top20 页面点击/曝光关联表（数据源可扩全量）
-- ✅ CMS 适配器接口：`1-4 Dev/scripts/publish_adapters/`（接口约定 README + webhook 完整实现 + wordpress REST 骨架 + sanity 参考说明 + 统一 CLI）
+- ✅ CMS 适配器接口：`dev/scripts/publish_adapters/`（接口约定 README + webhook 完整实现 + wordpress REST 骨架 + sanity 参考说明 + 统一 CLI）
 - ✅ 报告可视化 R1 MVP：阅读器自动解析报告首个数值表 → 顶部指标卡仪表视图（月报即生效）
 - ✅ Loop 并发与队列：移除单跑限制 → queued 状态 + 调度线程（并发上限 2）+ 每 Loop token 记账
 
@@ -144,7 +144,7 @@
 ## Phase 11 · 多站点内容库（2026-09-17 ✅）
 
 - ✅ 站点档案机制：`run/sites/{site}.json`（domain/默认语言/数据源/sections: docType·pageType·dir·route）——**换站点只换档案，不改代码**
-- ✅ CMS → 库同步器：`1-4 Dev/scripts/library/sanity_pull.py`（分页/剔草稿/两种正文引擎）+ `pt_to_md.py`（Portable Text → Markdown）
+- ✅ CMS → 库同步器：`dev/scripts/library/sanity_pull.py`（分页/剔草稿/两种正文引擎）+ `pt_to_md.py`（Portable Text → Markdown）
 - ✅ 首次全量镜像：17,535 篇 / 215MB（blog 8,864 · features 6,400 · tools 1,661 · topics 409 · solutions 120 · products 41 · scenarios 23 · news 17），3 分钟
 - ✅ 工作台「内容库」页：站点/段落（计数）/语言/搜索/阅读/后台同步+进度（admin，审计）
 - ✅ 默认项目定名 **My Site**（id `main`，含存量管线/任务/Loop/GEO 数据迁移）
@@ -221,7 +221,7 @@
 ## Phase 16 · 预警与测试（2026-09-17 ✅）
 
 - ✅ T6 配额预警：用量记账时 80% ⚠ / 100% ⛔ 飞书通知（每用户×指标×每月去重）；健康报告 `quota_alerts` → 总览健康卡；设置页配额表 80%/100% 标黄标红
-- ✅ T4 自动化测试：`1-4 Dev/tests/test_console_units.py` 21 用例（护栏/熔断/配额/降噪/上下文/预设），纯 stdlib 离线 3 秒；`run-tests.sh` 一键跑；接入 **GATE 6**（失败挡发布）
+- ✅ T4 自动化测试：`dev/tests/test_console_units.py` 21 用例（护栏/熔断/配额/降噪/上下文/预设），纯 stdlib 离线 3 秒；`run-tests.sh` 一键跑；接入 **GATE 6**（失败挡发布）
 
 ## Phase 17 · 落地页整页发布（T1，2026-09-17 ✅）
 
@@ -319,7 +319,7 @@
 - ⚠→✅ **系统配额自锁**：系统执行者按普通用户计配额被 500 条上限打满 → health=bad 且自动化被自己的配额拒绝。修复 `SYSTEM_ACTORS` 豁免
 
 **P21.3 开放接入（MCP）**
-- ✅ `1-4 Dev/scripts/mcp_server.py` 纯标准库 stdio JSON-RPC，**17 个工具**；动作类工具**强制 dry-run**
+- ✅ `dev/scripts/mcp_server.py` 纯标准库 stdio JSON-RPC，**17 个工具**；动作类工具**强制 dry-run**
 - ✅ HTTP 传输 `POST /api/mcp`（JSON-RPC，协议 2025-06-18）+ `GET /api/mcp/sse`（有界心跳）——远程客户端无需本地进程
 - ✅ 设置页「开放接入」卡 + `docs/mcp.md`；安全边界：**只读 + dry-run，写生产库必须真人会话**
 
@@ -335,7 +335,7 @@
 
 ## Phase 22 · 开工预热（2026-09-20 ✅）
 
-- ✅ `1-4 Dev/scripts/warmup.py`（纯标准库）：用**真实只读 / dry-run** 动作，把 默认项目 六个板块的历史记录、findings、缺口清单、报告一次性跑出来，让后台开箱即有内容而非满屏空状态
+- ✅ `dev/scripts/warmup.py`（纯标准库）：用**真实只读 / dry-run** 动作，把 默认项目 六个板块的历史记录、findings、缺口清单、报告一次性跑出来，让后台开箱即有内容而非满屏空状态
 - ✅ 安全边界：**不提供 `--real` 开关**，写生产库仍走人工授权；幂等；skip/fail 如实记录，**不补数**
 - ✅ 报告落 `run/logs/warmup-*.md`；文档 `docs/warmup.md`；已纳入 `deploy/sync.sh`
 - ✅ 顺修：**单测污染生产审计日志**——`import console` 即写 `run/approvals.log`（实测一天 92 条噪音）。`RUN_DIR` 改为可由 `MFLOW_RUN_DIR` 覆盖，`run-tests.sh` 强制指向临时目录，并补 3 个隔离用例（**42/42 绿**）

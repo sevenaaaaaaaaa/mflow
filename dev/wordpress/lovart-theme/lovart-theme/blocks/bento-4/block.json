@@ -1,0 +1,17 @@
+{
+ "$schema": "https://schemas.wp.org/trunk/block.json",
+ "apiVersion": 3,
+ "name": "lovart/bento-4",
+ "version": "1.0.0",
+ "title": "Lovart bento-4",
+ "category": "lovart",
+ "icon": "layout",
+ "description": "1:1 replica of lovart.ai bento-4 section (composite-page-all source).",
+ "supports": {
+  "align": [
+   "full",
+   "wide"
+  ],
+  "html": false
+ }
+}

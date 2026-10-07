@@ -1,0 +1,17 @@
+{
+ "$schema": "https://schemas.wp.org/trunk/block.json",
+ "apiVersion": 3,
+ "name": "lovart/workflow-vertical",
+ "version": "1.0.0",
+ "title": "Lovart workflow-vertical",
+ "category": "lovart",
+ "icon": "layout",
+ "description": "1:1 replica of lovart.ai workflow-vertical section (composite-page-all source).",
+ "supports": {
+  "align": [
+   "full",
+   "wide"
+  ],
+  "html": false
+ }
+}

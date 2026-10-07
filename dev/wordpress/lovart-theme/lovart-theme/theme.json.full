@@ -1,0 +1,282 @@
+{
+ "$schema": "https://schemas.wp.org/trunk/theme.json",
+ "version": 3,
+ "settings": {
+  "appearanceTools": true,
+  "layout": {
+   "contentSize": "800px",
+   "wideSize": "1480px"
+  },
+  "color": {
+   "defaultPalette": false,
+   "defaultGradients": false,
+   "palette": [
+    {
+     "slug": "base",
+     "color": "#f9f8f6",
+     "name": "Base"
+    },
+    {
+     "slug": "base-secondary",
+     "color": "#f2f1ee",
+     "name": "Base Secondary"
+    },
+    {
+     "slug": "base-tertiary",
+     "color": "#eae9e6",
+     "name": "Base Tertiary"
+    },
+    {
+     "slug": "text",
+     "color": "#100f09",
+     "name": "Text"
+    },
+    {
+     "slug": "text-secondary",
+     "color": "#525251",
+     "name": "Text Secondary"
+    },
+    {
+     "slug": "text-tertiary",
+     "color": "#7c7c79",
+     "name": "Text Tertiary"
+    },
+    {
+     "slug": "brand",
+     "color": "#147dff",
+     "name": "Brand"
+    },
+    {
+     "slug": "brand-light",
+     "color": "#66b5ff",
+     "name": "Brand Light"
+    },
+    {
+     "slug": "brand-dark",
+     "color": "#075ed9",
+     "name": "Brand Dark"
+    }
+   ],
+   "custom": true
+  },
+  "typography": {
+   "defaultFontSizes": false,
+   "fontFamilies": [
+    {
+     "slug": "sans",
+     "name": "Sans",
+     "fontFamily": "var(--font-sans), var(--font-Noto-Sans-SC), var(--font-Noto-Sans-TC), var(--font-Noto-Sans-JP), ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\""
+    },
+    {
+     "slug": "mono",
+     "name": "Mono",
+     "fontFamily": "var(--font-sans-Mono), ui-monospace, SFMono-Regular, \"SF Mono\", Menlo, Consolas, \"Liberation Mono\", monospace"
+    }
+   ],
+   "fontSizes": [
+    {
+     "slug": "s",
+     "size": "14px",
+     "name": "14px"
+    },
+    {
+     "slug": "m",
+     "size": "16px",
+     "name": "16px"
+    },
+    {
+     "slug": "l",
+     "size": "18px",
+     "name": "18px"
+    },
+    {
+     "slug": "xl",
+     "size": "24px",
+     "name": "24px"
+    },
+    {
+     "slug": "2xl",
+     "size": "30px",
+     "name": "30px"
+    },
+    {
+     "slug": "3xl",
+     "size": "42px",
+     "name": "42px"
+    },
+    {
+     "slug": "4xl",
+     "size": "56px",
+     "name": "56px"
+    }
+   ],
+   "customFontSize": true
+  },
+  "spacing": {
+   "units": [
+    "px",
+    "rem",
+    "%",
+    "vw"
+   ],
+   "spacingSizes": [
+    {
+     "slug": "20",
+     "size": "12px",
+     "name": "1"
+    },
+    {
+     "slug": "30",
+     "size": "20px",
+     "name": "2"
+    },
+    {
+     "slug": "40",
+     "size": "32px",
+     "name": "3"
+    },
+    {
+     "slug": "50",
+     "size": "48px",
+     "name": "4"
+    },
+    {
+     "slug": "60",
+     "size": "80px",
+     "name": "5"
+    },
+    {
+     "slug": "70",
+     "size": "120px",
+     "name": "6"
+    },
+    {
+     "slug": "80",
+     "size": "160px",
+     "name": "7"
+    }
+   ]
+  },
+  "custom": {
+   "font_sans": "var(--font-sans), var(--font-Noto-Sans-SC), var(--font-Noto-Sans-TC), var(--font-Noto-Sans-JP), ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+   "font_mono": "var(--font-sans-Mono), ui-monospace, SFMono-Regular, \"SF Mono\", Menlo, Consolas, \"Liberation Mono\", monospace",
+   "text_xs": ".75rem",
+   "text_xs__line_height": "calc(1 / .75)",
+   "text_sm": ".875rem",
+   "text_sm__line_height": "calc(1.25 / .875)",
+   "text_base": "1rem",
+   "text_base__line_height": "calc(1.5 / 1)",
+   "text_lg": "1.125rem",
+   "text_lg__line_height": "calc(1.75 / 1.125)",
+   "text_xl": "1.25rem",
+   "text_xl__line_height": "calc(1.75 / 1.25)",
+   "text_2xl": "1.5rem",
+   "text_2xl__line_height": "calc(2 / 1.5)",
+   "font_weight_normal": "400",
+   "font_weight_medium": "500",
+   "font_weight_semibold": "600",
+   "font_weight_bold": "700",
+   "text_lo_heading_lg": "18px",
+   "text_lo_heading_lg__line_height": "26px",
+   "text_lo_heading_lg__font_weight": "500",
+   "text_lo_heading_md": "16px",
+   "text_lo_heading_md__line_height": "24px",
+   "text_lo_heading_md__font_weight": "500",
+   "text_lo_heading_sm": "14px",
+   "text_lo_heading_sm__line_height": "22px",
+   "text_lo_heading_sm__font_weight": "500",
+   "text_lo_heading_xs": "13px",
+   "text_lo_heading_xs__line_height": "20px",
+   "text_lo_heading_xs__font_weight": "500",
+   "text_lo_body_lg": "14px",
+   "text_lo_body_lg__line_height": "22px",
+   "text_lo_body_lg__font_weight": "400",
+   "text_lo_body_lg_strong": "14px",
+   "text_lo_body_lg_strong__line_height": "22px",
+   "text_lo_body_lg_strong__font_weight": "500",
+   "text_lo_body_md": "13px",
+   "text_lo_body_md__line_height": "20px",
+   "text_lo_body_md__font_weight": "400",
+   "text_lo_body_md_strong": "13px",
+   "text_lo_body_md_strong__line_height": "20px",
+   "text_lo_body_md_strong__font_weight": "500",
+   "text_lo_body_sm": "12px",
+   "text_lo_body_sm__line_height": "18px",
+   "text_lo_body_sm__font_weight": "400",
+   "text_lo_body_sm_strong": "12px",
+   "text_lo_body_sm_strong__line_height": "18px",
+   "text_lo_body_sm_strong__font_weight": "500",
+   "text_lo_body_xs": "11px",
+   "text_lo_body_xs__line_height": "16px",
+   "text_lo_body_xs__font_weight": "400",
+   "text_lo_body_xs_strong": "11px",
+   "text_lo_body_xs_strong__line_height": "16px",
+   "text_lo_body_xs_strong__font_weight": "500",
+   "text_lo_markdown_body_md": "14px",
+   "text_lo_markdown_body_md__line_height": "25px",
+   "text_lo_markdown_body_md__font_weight": "400",
+   "text_lo_markdown_body_md_strong": "14px",
+   "text_lo_markdown_body_md_strong__line_height": "25px",
+   "text_lo_markdown_body_md_strong__font_weight": "500",
+   "text_lo_markdown_body_sm": "13px",
+   "text_lo_markdown_body_sm__line_height": "23px",
+   "text_lo_markdown_body_sm__font_weight": "400",
+   "text_lo_markdown_body_sm_strong": "13px",
+   "text_lo_markdown_body_sm_strong__line_height": "23px",
+   "text_lo_markdown_body_sm_strong__font_weight": "500",
+   "color_brand_400": "#66b5ff",
+   "color_brand_500": "#3d9bff",
+   "color_brand_600": "#147dff",
+   "color_brand_700": "#075ed9",
+   "font_serif_deck": "var(--font-Feature-Deck), var(--font-Noto-Serif-SC), var(--font-Noto-Serif-TC), var(--font-Noto-Serif-JP), var(--font-Noto-Serif-KR), ui-serif, Georgia, \"Times New Roman\", serif",
+   "font_title_latin": "var(--font-Barlow-Condensed), ui-sans-serif, -apple-system, system-ui, \"Segoe UI\", Helvetica, \"Apple Color Emoji\", Arial, sans-serif, \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+   "font_title_cjk": "var(--font-Inter), ui-sans-serif, -apple-system, system-ui, \"Segoe UI\", Helvetica, \"Apple Color Emoji\", Arial, sans-serif, \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+   "font_sub_title_latin": "var(--font-Poppins), ui-sans-serif, -apple-system, system-ui, \"Segoe UI\", Helvetica, \"Apple Color Emoji\", Arial, sans-serif, \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+   "font_sub_title_cjk": "var(--font-Inter), ui-sans-serif, -apple-system, system-ui, \"Segoe UI\", Helvetica, \"Apple Color Emoji\", Arial, sans-serif, \"Segoe UI Emoji\", \"Segoe UI Symbol\"",
+   "border_width_hairline": ".5px",
+   "text_mini": "10px",
+   "border": "var(--color-grey-opacity-400)",
+   "bg_base_default": "#f9f8f6",
+   "bg_base_secondary": "#f2f1ee",
+   "bg_base_tertiary": "#eae9e6",
+   "bg_overlay_l1": "#100f090d",
+   "bg_overlay_l2": "#100f091a",
+   "bg_overlay_l3": "#100f0926",
+   "bg_invert": "#100f09",
+   "bg_invert_hover": "#000",
+   "bg_input": "#fff",
+   "text_default": "#100f09",
+   "text_secondary": "#525251",
+   "text_tertiary": "#7c7c79",
+   "text_disabled": "#0000004d",
+   "text_invert": "#f5f4ef",
+   "border_neutral_l1": "#1a1a190f",
+   "border_neutral_l2": "#1a1a191f",
+   "border_neutral_l3": "#1a1a192e",
+   "border_contrast": "#1a1a19"
+  }
+ },
+ "styles": {
+  "color": {
+   "background": "var(--bg-base-default)",
+   "text": "var(--text-default)"
+  },
+  "typography": {
+   "fontFamily": "var(--font-sans), var(--font-Noto-Sans-SC), var(--font-Noto-Sans-TC), var(--font-Noto-Sans-JP), ui-sans-serif, system-ui, sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"",
+   "fontSize": "16px",
+   "lineHeight": "1.6"
+  }
+ },
+ "templateParts": [
+  {
+   "name": "header",
+   "title": "Header",
+   "area": "header"
+  },
+  {
+   "name": "footer",
+   "title": "Footer",
+   "area": "footer"
+  }
+ ]
+}

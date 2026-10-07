@@ -31,15 +31,15 @@ cd /www/wwwroot/mflow   # 按实际 checkout 目录
 
 # 1) 备份本地数据（pull 会删除这些已追踪文件）
 mkdir -p ~/mflow-data-backup
-cp -a "1-2 Insight" "1-3 GenFlow" "1-1 Harness/11-knowledge" ~/mflow-data-backup/ 2>/dev/null || true
+cp -a "insight-data" "genflow" "harness/11-knowledge" ~/mflow-data-backup/ 2>/dev/null || true
 
 # 2) 拉取开源化后的代码
 git pull
 
 # 3) 把本地数据移回（这些目录已在 .gitignore，不会再被追踪/删除）
-mv ~/mflow-data-backup/"1-2 Insight" ~/mflow-data-backup/"1-3 GenFlow" .
-mkdir -p "1-1 Harness/11-knowledge"
-cp -a ~/mflow-data-backup/"1-1 Harness/11-knowledge/." "1-1 Harness/11-knowledge/" 2>/dev/null || true
+mv ~/mflow-data-backup/"insight-data" ~/mflow-data-backup/"genflow" .
+mkdir -p "harness/11-knowledge"
+cp -a ~/mflow-data-backup/"harness/11-knowledge/." "harness/11-knowledge/" 2>/dev/null || true
 
 # 4) 默认项目目录对齐新命名（工作台默认项目 id 已改为 main）：
 #    若 run/projects/ 下存在旧默认项目目录（不带 main 名），整体改名为 main
@@ -59,5 +59,5 @@ curl -fsS http://127.0.0.1:8088/ >/dev/null && echo console OK
 ## 状态
 
 - 服务器现状约定以运维私有文档为准（不入库）
-- 迁移完成后在服务器本地跑一次 `bash "1-4 Dev/scripts/session-init.sh"` 与
-  `bash "1-4 Dev/scripts/run-tests.sh"` 验证
+- 迁移完成后在服务器本地跑一次 `bash "dev/scripts/session-init.sh"` 与
+  `bash "dev/scripts/run-tests.sh"` 验证

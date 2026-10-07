@@ -26,7 +26,7 @@
 - 数量约束覆盖不足：字数 2 / H2 5 / FAQ 7 / 上限词 5（共 45）
 
 ### 故事线 / 参考样式
-- 08-storyline 仅 4 文件，其中 `FEATURES-PRODUCTION 2.md` 是 **iCloud 冲突副本**（噪音）→ 已归档 `1-1 Harness/_archive/`
+- 08-storyline 仅 4 文件，其中 `FEATURES-PRODUCTION 2.md` 是 **iCloud 冲突副本**（噪音）→ 已归档 `harness/_archive/`
 - 参考样式分散在 skills/references 与 Docs/S3-创作，未统一索引（列为遗留）
 
 ## 二、本轮修复（已交付）
@@ -45,7 +45,7 @@
 |---|----|------|
 | A1 | RULES-30 补硬条款 | ✅ 重构为 **15 条硬条款**（含阈值/禁止项）+ 机器检查映射（4 钩子同源）+ 参数表 |
 | A2 | RULES-10/50 瘦身 | ✅ RULES-10：5 条款 → **10 硬条款** + 参数表；RULES-50：1 硬条款 → **10 硬条款** + 参数表（信息未删，只重排为规则+表） |
-| A3 | 参考样式统一索引 | ✅ 新增 `1-1 Harness/03-workflows/REFERENCE-INDEX.md`（故事线/模板/方法论/策略/规则 六类，含维护规则） |
+| A3 | 参考样式统一索引 | ✅ 新增 `harness/03-workflows/REFERENCE-INDEX.md`（故事线/模板/方法论/策略/规则 六类，含维护规则） |
 | A4 | 页面生成 skill 加预算段 | ✅ **16 个 skill** 统一加「预算（RULES-70 强制）」段（含交付前必过四钩子） |
 | A5 | 长文 budget 豁免 | ✅ `quota-check.sh --profile longform --max-words N`；`budget_profile` 贯通 item/params → prompt+门禁；skill frontmatter 声明（signal-writer / ai-self-media-article 已声明）；RULES-70 §五 三条豁免纪律 |
 
