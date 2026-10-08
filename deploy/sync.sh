@@ -126,6 +126,7 @@ SYNC_ITEMS=(
     "./dev/scripts/mcp_server.py|${REMOTE_ROOT}/dev/scripts/mcp_server.py"
     "./dev/scripts/warmup.py|${REMOTE_ROOT}/dev/scripts/warmup.py"
     "./dev/scripts/warmup.sh|${REMOTE_ROOT}/dev/scripts/warmup.sh"
+    "./dev/scripts/r2_backup.sh|${REMOTE_ROOT}/dev/scripts/r2_backup.sh"
     "./dev/scripts/publish_adapters/|${REMOTE_ROOT}/dev/scripts/publish_adapters/"
     "./dev/scripts/trident/|${REMOTE_ROOT}/dev/scripts/trident/"
     "./dev/scripts/library/|${REMOTE_ROOT}/dev/scripts/library/"
