@@ -8211,8 +8211,15 @@ def playbook_limits_check(pb):
 
 
 def playbook_run(pb, by="playbook", proj=None, force=False, _internal=False):
-    """执行剧本 → 创建 Run（步骤：preset/spec/verify/guard）。带硬闸。"""
+    """执行剧本 → 创建 Run（步骤：preset/spec/verify/guard）。带硬闸。
+    force 只豁免单剧本限额（max_runs/cooldown/concurrency/steps），**永不豁免全局熔断**。"""
     proj = proj or pb.get("proj") or DEFAULT_PROJECT
+    try:
+        _bblk, _bst = breaker_check()
+    except Exception:
+        _bblk = False
+    if _bblk:
+        return {"error": "已被全局熔断拦截：" + str((_bst or {}).get("reason", ""))[:60], "blocked": True}
     if not force:
         ok, reason = playbook_limits_check(pb)
         if not ok:

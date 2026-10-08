@@ -182,5 +182,17 @@ class TestDryRunSkipsLLM(unittest.TestCase):
         self.assertTrue(r.get("skipped"))
 
 
+class TestBreakerBeatsForce(unittest.TestCase):
+    """全局熔断 ≥ force：kill switch 不可被单剧本 force 豁免（demo1 实测发现的 bug，2026-10-08 修复）。"""
+
+    def test_force_blocked_when_breaker_tripped(self):
+        st = C.breaker_trip("unit: force 不豁免熔断", cooldown_min=0)
+        self.addCleanup(C.breaker_reset)
+        pb = {"id": "unit-f", "name": "t", "steps": [], "limits": {}}
+        r = C.playbook_run(pb, by="unit", force=True)
+        self.assertTrue(isinstance(r, dict) and r.get("blocked"))
+        self.assertIn("全局熔断", r.get("error", ""))
+
+
 if __name__ == "__main__":
     unittest.main()
