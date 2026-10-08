@@ -87,6 +87,8 @@ Myth-Buster / Journey / Economist / Visionary / Field Guide / Co-Host / Cookbook
 
 **长文生产方式**：禁止单次灌出全文，走 multi-turn 状态机——OUTLINE（列立场、反方观点、场景数据，等确认）→ 分 Part 写作（单次输出硬顶 3,000 词）→ INTEGRATE_QA（全文 banned phrase + 段落 unique 度 + frontmatter 15 字段）。重要文章再加 cascade 互评：writer 写 → critic 按 7 项评 → 不过带理由回炉，最多 3 轮。
 
+**正面质量机检（2026-10-07 新增，GATE6）**：post-write 第六门已把「好内容」的标准变成机器可查——首人称真实视角、翻车/踩坑段落、可引用金句（反共识对照句式 proxy）、数据点密度（≥1/千词）、外部权威来源 ≥2 条完整 URL、FAQ 块。草稿阶段只告警（不触发重试烧 token），在「标 ready」前用 `--ready` 终检缺一即 BLOCK。两个品牌共用（Moodio/Lovart 同一钩子）。
+
 ---
 
 ## 五、个性化体系
@@ -107,11 +109,11 @@ Myth-Buster / Journey / Economist / Visionary / Field Guide / Co-Host / Cookbook
 - 每周/每月定时管线从未实跑过 → 需要一次人工触发验证
 
 **P0 · 批量生产质量薄弱点（必须解决）**
-- 质检全是「负面清单」（禁什么），缺「好内容」的正面量化标准 → 建立金句密度/观点原创度等正向指标
-- 极限铺量模式（50+ 篇）官方容忍「仅 top5 全量质量」→ 逐步取消双标
-- i18n P2 队列积压约 1,500 篇变体 → 按信号分层排产
-- cascade 互评成本高（3 轮 token 翻倍）→ 批量场景容易跳过，需纳入机器门禁
-- 发布后只有 28 天后置 GSC 信号 → 补 72 小时早期信号（收录/首曝/初始 CTR）
+- ✅ 负面清单式质检 → 2026-10-07 post-write 新增 GATE6 正面指标机检（首人称/翻车段/金句/数据点密度/外部来源/FAQ）：草稿档 warn、`--ready` 终检档 BLOCK，已部署
+- 极限铺量模式（50+ 篇）官方容忍「仅 top5 全量质量」→ 逐步取消双标（未完）
+- i18n P2 队列积压约 1,500 篇变体 → 按信号分层排产（未完）
+- cascade 互评成本高（3 轮 token 翻倍）→ 已缓解：dry-run 零 LLM；正稿 cascade 保持
+- 发布后只有 28 天后置 GSC 信号 → 补 72 小时早期信号（未完）
 
 **P1 · 个性化深化**
 - persona 目前是写作口径，不是读者数据驱动 → 接 GA4 分人群行为回流
