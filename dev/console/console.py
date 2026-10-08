@@ -7539,6 +7539,78 @@ def multilang_fill(site, section, target_lang, base_lang="en", limit=10, proj=No
             "note": f"基准 {base_lang} 共 {cov['base_total']} 篇，缺 {target_lang} {cov['missing'].get(target_lang,0)} 篇，本次取 {len(items)}"}
 
 
+DEFAULT_I18N_POLICY = {"P0": ["zh", "zh-TW"], "P1": ["ja", "ko", "de", "fr"], "P2": ["pt", "ru", "it", "es"],
+                       "weekly_quota": 10, "min_coverage_gap": 5}
+
+
+def _i18n_policy(site):
+    """站点 i18n 排产策略：run/sites/<site>.json 的 i18nPolicy 覆盖默认档。
+    排产铁律：per-language signal-driven——policy 只是档位权重，真实信号（GSC 上线后）由 weekly 复盘改写本策略。"""
+    prof = read_json(SITES_DIR / f"{site}.json", {}) or {}
+    pol = dict(DEFAULT_I18N_POLICY)
+    pol.update({k: v for k, v in (prof.get("i18nPolicy") or {}).items() if v is not None})
+    out = {"P0": [x for x in pol["P0"]], "P1": [x for x in pol["P1"]], "P2": [x for x in pol["P2"]],
+           "weekly_quota": int(pol.get("weekly_quota", 10) or 0),
+           "min_coverage_gap": int(pol.get("min_coverage_gap", 5) or 0)}
+    return out
+
+
+def multilang_plan(site, section="", base_lang="en", enqueue=0, limit_per_lang=10, proj=None):
+    """i18n 信号分层排产：库覆盖率 → P0/P1/P2 队列（site i18nPolicy 权重，min_coverage_gap 挡零星补缺）。
+    enqueue=1 时把 top 条目落成 dry-run 批量改稿任务（零 LLM 预演，用户在后台确认后转真实执行）。"""
+    base = LIB_ROOT / site
+    if not base.exists():
+        return {"error": f"站点内容库不存在：{site}（server run/library/）"}
+    pol = _i18n_policy(site)
+    sections = [s for s in sorted(base.iterdir()) if s.is_dir()] if not section else [section]
+    plan = {"site": site, "generated": datetime.now().strftime("%Y-%m-%d %H:%M"),
+            "policy": pol, "statuses": [], "P0": [], "P1": [], "P2": [], "enqueue_batches": []}
+    for sec_dir in sections:
+        if (sec_dir / "_meta").exists():  # 非语言目录豁略
+            continue
+        langs_found = sorted([d.name for d in sec_dir.iterdir() if d.is_dir()])
+        if base_lang not in langs_found:
+            plan["statuses"].append({"section": sec_dir.name, "status": "skip", "reason": f"基准语言 {base_lang} 不存在"})
+            continue
+        cov = multilang_coverage(site, sec_dir.name, base_lang)
+        if cov.get("error"):
+            continue
+        sec_rows = []
+        for tier in ("P0", "P1", "P2"):
+            for lg in cov.get("langs", []):
+                if lg == base_lang or lg not in pol.get(tier, []):
+                    continue
+                missing = int((cov.get("missing") or {}).get(lg, 0) or 0)
+                if missing < pol["min_coverage_gap"] and tier == "P2":
+                    tier_note = "低于 min_coverage_gap，不入队"
+                    sec_rows.append({"lang": lg, "tier": tier, "missing": missing, "note": tier_note})
+                    continue
+                take = min(missing, limit_per_lang, max(0, pol["weekly_quota"] - sum(
+                    len(x["items"]) for x in plan["enqueue_batches"] if x.get("lang") == lg)))
+                items = []
+                if take > 0 and int(enqueue):
+                    r = multilang_fill(site, sec_dir.name, lg, base_lang, limit=take, proj=proj)
+                    if not r.get("error"):
+                        items = r.get("items") or []
+                        bt = batch_create("rewrite", r["title"], items,
+                                          params={**(r.get("params") or {}), "context_handoff": False,
+                                                  "i18n_tier": tier, "source": "multilang-plan"},
+                                          dry_run=True, by="i18n-plan")
+                        plan["enqueue_batches"].append({"id": bt.get("id"), "section": sec_dir.name,
+                                                        "lang": lg, "tier": tier, "items": len(items),
+                                                        "title": r["title"], "dry_run": True})
+                sec_rows.append({"lang": lg, "tier": tier, "missing": missing,
+                                 "planned": len(items), "note": "" if take > 0 else "周配额用尽"})
+        # 排序：缺得多的在前
+        sec_rows.sort(key=lambda x: (x["tier"], -x["missing"]))
+        plan["statuses"].append({"section": sec_dir.name, "base_total": cov.get("base_total"),
+                                 "coverage": cov.get("coverage"), "rows": sec_rows,
+                                 "tier": {"P0": [r for r in sec_rows if r["tier"] == "P0" and r["missing"] >= pol["min_coverage_gap"]],
+                                          "P1": [r for r in sec_rows if r["tier"] == "P1" and r["missing"] >= pol["min_coverage_gap"]],
+                                          "P2": [r for r in sec_rows if r["tier"] == "P2" and r["missing"] >= pol["min_coverage_gap"]]}})
+    return plan
+
+
 # ===================== 自动化注册表（自动化任务 = 一等公民）=====================
 AUTOMATIONS_FILE = RUN_DIR / "automations.json"
 _AUTO_LOCK = threading.Lock()
@@ -9416,6 +9488,13 @@ class Handler(BaseHTTPRequestHandler):
             if parsed.path == "/api/multilang/coverage":
                 return self._send(200, multilang_coverage(site_of(self._proj()),
                                   qs.get("section", ["tools"])[0], qs.get("base_lang", ["en"])[0]))
+            if parsed.path == "/api/multilang/plan":
+                if self._role() != "admin":
+                    return self._send(403, {"error": "需要 admin 权限"})
+                return self._send(200, multilang_plan(site_of(self._proj()),
+                                  section=qs.get("section", [""])[0], base_lang=qs.get("base_lang", ["en"])[0],
+                                  enqueue=int(qs.get("enqueue", [0])[0] or 0),
+                                  limit_per_lang=int(qs.get("limit", [10])[0] or 10), proj=self._proj()))
             if parsed.path == "/api/playbooks":
                 return self._send(200, {"playbooks": playbooks_list(), "templates": playbooks_templates()})
             if parsed.path == "/api/automations":
