@@ -128,6 +128,9 @@ expect_ok "clean 159-word draft passes target=150" bash "$HOOKS_DIR/post-write-c
 # Test word-count shrinkage
 expect_fail "159-word draft fails target=7500" bash "$HOOKS_DIR/post-write-check.sh" --file "$TMP/draft.md" --target-words 7500
 
+# --ready mode: positive markers (pitfall/quote/ext-urls) become BLOCK (2026-10-07 GATE6)
+expect_fail "ready mode blocks on missing positive markers" bash "$HOOKS_DIR/post-write-check.sh" --file "$TMP/draft.md" --target-words 7500 --ready
+
 # Test fluff detection
 cat > "$TMP/fluff-draft.md" <<'EOF'
 # Cutting-Edge Solutions
