@@ -7562,11 +7562,16 @@ def multilang_plan(site, section="", base_lang="en", enqueue=0, limit_per_lang=1
     if not base.exists():
         return {"error": f"站点内容库不存在：{site}（server run/library/）"}
     pol = _i18n_policy(site)
-    sections = [s for s in sorted(base.iterdir()) if s.is_dir()] if not section else [section]
+    if section:
+        if not (base / section).is_dir():
+            return {"error": f"栏目不存在：{site}/{section}"}
+        sections = [base / section]
+    else:
+        sections = sorted([s for s in base.iterdir() if s.is_dir()])
     plan = {"site": site, "generated": datetime.now().strftime("%Y-%m-%d %H:%M"),
             "policy": pol, "statuses": [], "P0": [], "P1": [], "P2": [], "enqueue_batches": []}
     for sec_dir in sections:
-        if (sec_dir / "_meta").exists():  # 非语言目录豁略
+        if not sec_dir.is_dir():
             continue
         langs_found = sorted([d.name for d in sec_dir.iterdir() if d.is_dir()])
         if base_lang not in langs_found:
