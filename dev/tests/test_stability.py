@@ -146,6 +146,29 @@ class TestLoopTokenCap(unittest.TestCase):
         self.assertGreater(C.LOOP_TOKEN_CAP, 0)
 
 
+class TestI18nPlan(unittest.TestCase):
+    """i18n 信号分层排产：策略档读取 + 覆盖率 plan 骨架（offline）。"""
+
+    def test_policy_default_and_override(self):
+        f = Path(C.SITES_DIR) / "t1.json"
+        f.parent.mkdir(parents=True, exist_ok=True)
+        f.write_text(json.dumps({"i18nPolicy": {"P0": ["ja"], "weekly_quota": 3}}))
+        self.addCleanup(f.unlink)
+        pol = C._i18n_policy("t1")
+        self.assertEqual(pol["P0"], ["ja"])
+        self.assertEqual(pol["weekly_quota"], 3)
+        self.assertEqual(pol["P1"], C.DEFAULT_I18N_POLICY["P1"])
+
+    def test_plan_missing_library_errors(self):
+        old = C.LIB_ROOT
+        C.LIB_ROOT = Path(C.RUN_DIR) / "nonexistent-lib"
+        try:
+            r = C.multilang_plan("nosite")
+        finally:
+            C.LIB_ROOT = old
+        self.assertIn("error", r)
+
+
 class TestDryRunSkipsLLM(unittest.TestCase):
     """gen/rewrite 的 dry_run = 预演不烧 LLM（token 质检 2026-10-07）。"""
 
