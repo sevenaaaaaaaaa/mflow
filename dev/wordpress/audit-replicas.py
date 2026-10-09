@@ -3,7 +3,7 @@
 """audit-replicas.py — blogs.lovart.ai 复刻页审计（Elementor 原生架构版）。
 
 背景架构（Round 35 起）：
-  复刻页 = 真正的 Elementor 文档：_elementor_data（每 section 一个 container + HTML 微件），
+  复刻页 = 真正的 Elementor 文档：_elementor_data（原生微件优先，复杂区块保留 HTML 回退），
   模板 elementor_header_footer（主题在渲染链上），作用域资产由 Code Snippets
   在 _lr_replica 标记页 enqueue（CSS v2 / JS defer+data-cfasync）。
   post_content 保留 Round 34 共享格式仅作 SEO/数据源，不参与前端渲染。
@@ -11,7 +11,7 @@
 审计项：
   A. 复刻页（18 页）公开 HTML 深检：
      - template=elementor_header_footer；data-elementor-type="wp-page"；
-       elementor-widget-html 微件 ≥2；.lr 包裹；lovart-replica.css?v=2；
+       原生容器 + HTML 回退总数 >0；.lr 包裹；所需作用域资产；
        lr-replica-js 带 data-cfasync；lr-replica-page body class；单 doctype。
   B. 历史页零泄漏（全量 500+ 页，8 线程并发）：不加载复刻资产、无 .lr 包裹、
      无 lr-replica-page body class。
@@ -67,12 +67,15 @@ def check_replica(p):
     if 'data-elementor-type="wp-page"' not in h:
         fails.append("非 Elementor 原生渲染")
     n_widgets = len(re.findall(r'class="[^"]*elementor-widget elementor-widget-html"', h))
-    if n_widgets < 2:
-        fails.append("HTML微件=%d" % n_widgets)
-    if not re.search(r'class="lr(?: dark)?"', h):
+    n_native = len(re.findall(r'class="[^"]*\blr-native(?:\s|")', h))
+    if n_widgets + n_native < 1:
+        fails.append("无 Native 容器或 HTML 回退")
+    if not re.search(r'class="[^"]*\blr(?:\s|")', h):
         fails.append("缺 .lr 包裹")
     if "lovart-replica.css?v=2" not in h:
         fails.append("缺作用域 CSS v2")
+    if n_native and "lovart-native.css?v=1" not in h:
+        fails.append("缺 Native CSS v1")
     if not re.search(r'<script[^>]*lr-replica[^>]*data-cfasync="false"', h):
         fails.append("JS 缺 data-cfasync")
     if "lr-replica-page" not in h:
@@ -80,7 +83,9 @@ def check_replica(p):
     if len(re.findall(r"<!doctype", h, re.I)) != 1:
         fails.append("doctype 异常")
     return p["slug"], p["id"], not fails, (
-        "%s（%d 字节，%d 微件）" % ("OK" if not fails else "FAIL " + "、".join(fails), len(h), n_widgets))
+        "%s（%d 字节，Native=%d，HTML=%d）" % (
+            "OK" if not fails else "FAIL " + "、".join(fails),
+            len(h), n_native, n_widgets))
 
 
 def check_historical(p):
@@ -90,10 +95,13 @@ def check_historical(p):
     except Exception as e:
         return p["slug"], p["id"], "error", "拉取异常 %s（跳过）" % e
     fails = []
-    if "lovart-replica.css" in h or "lovart-replica.js" in h:
-        fails.append("加载了复刻资产")
-    if re.search(r'class="lr(?: dark)?"', h):
+    if ("lovart-replica.css" in h or "lovart-replica.js" in h
+            or "lovart-native.css" in h):
+        fails.append("加载了复刻/Native 资产")
+    if re.search(r'class="[^"]*\blr(?:\s|")', h):
         fails.append(".lr 包裹泄漏")
+    if re.search(r'class="[^"]*\blr-native(?:\s|")', h):
+        fails.append(".lr-native 泄漏")
     if "lr-replica-page" in h:
         fails.append("lr-replica-page body class 泄漏")
     return p["slug"], p["id"], "leak" if fails else "ok", "、".join(fails)
@@ -146,7 +154,7 @@ def main():
             elif status == "error":
                 errors += 1
                 lines.append("- `%s` (id=%s): %s" % (slug, pid, detail))
-    lines.append("- 其余 %d 页 OK（无复刻资产加载、无 .lr 包裹、无 lr-replica-page）"
+    lines.append("- 其余 %d 页 OK（无复刻/Native 资产加载、无 .lr 包裹、无 lr-replica-page）"
                  % (done - leaks - errors))
     lines.append("")
 

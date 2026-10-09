@@ -1,0 +1,324 @@
+{
+  "composite-replica-all": {
+    "fallback": 23,
+    "kinds": {
+      "bento-2": 1,
+      "bento-4": 1,
+      "bento-6": 1,
+      "blog-grid": 1,
+      "canvas-wall": 1,
+      "capability-tabs": 1,
+      "cluster-block-dense": 1,
+      "comparison-before-after": 1,
+      "comparison-table": 1,
+      "cta-default": 1,
+      "faq": 1,
+      "feature-detail": 1,
+      "hero-cinematic": 1,
+      "hero-gallery": 1,
+      "hero-journey": 1,
+      "hero-mosaic": 1,
+      "hero-split": 1,
+      "logo-loop": 1,
+      "media-marquee": 1,
+      "portrait-grid-3": 1,
+      "portrait-grid-4": 1,
+      "pricing-block": 1,
+      "prompt-launcher": 1,
+      "proof-block": 1,
+      "review-grid-3col": 1,
+      "review-grid-4col": 1,
+      "showcase-horizontal": 1,
+      "showcase-stacked": 1,
+      "stats": 1,
+      "testimonial": 1,
+      "tool-grid": 1,
+      "workflow-horizontal": 1,
+      "workflow-vertical": 1
+    },
+    "native": 10,
+    "unchanged": 0
+  },
+  "replica-comparison-hub": {
+    "fallback": 2,
+    "kinds": {
+      "comparison-before-after": 1,
+      "comparison-table": 1,
+      "cta-default": 1,
+      "faq": 1,
+      "hero-split": 1,
+      "proof-block": 1,
+      "stats": 1
+    },
+    "native": 5,
+    "unchanged": 0
+  },
+  "replica-content-hub": {
+    "fallback": 4,
+    "kinds": {
+      "blog-grid": 1,
+      "cluster-block-dense": 1,
+      "cta-default": 1,
+      "hero-journey": 1,
+      "workflow-vertical": 1
+    },
+    "native": 1,
+    "unchanged": 0
+  },
+  "replica-homepage": {
+    "fallback": 10,
+    "kinds": {},
+    "native": 0,
+    "unchanged": 0
+  },
+  "replica-people-reviews": {
+    "fallback": 0,
+    "kinds": {
+      "cta-default": 1,
+      "portrait-grid-3": 1,
+      "portrait-grid-4": 1,
+      "review-grid-3col": 1,
+      "review-grid-4col": 1,
+      "stats": 1
+    },
+    "native": 6,
+    "unchanged": 0
+  },
+  "replica-product-launch": {
+    "fallback": 4,
+    "kinds": {
+      "bento-6": 1,
+      "cta-default": 1,
+      "faq": 1,
+      "feature-detail": 1,
+      "hero-cinematic": 1,
+      "pricing-block": 1
+    },
+    "native": 2,
+    "unchanged": 0
+  },
+  "replica-showcase-gallery": {
+    "fallback": 4,
+    "kinds": {
+      "canvas-wall": 1,
+      "cta-default": 1,
+      "hero-gallery": 1,
+      "media-marquee": 1,
+      "showcase-stacked": 1,
+      "testimonial": 1
+    },
+    "native": 2,
+    "unchanged": 0
+  },
+  "replica-solution-ai-design-for-fitness-wellness-hub": {
+    "fallback": 10,
+    "kinds": {
+      "bento-2": 1,
+      "bento-4": 1,
+      "capability-tabs": 1,
+      "cluster-block-dense": 1,
+      "comparison-before-after": 1,
+      "cta-default": 1,
+      "faq": 1,
+      "hero-split": 1,
+      "pricing-block": 1,
+      "proof-block": 1,
+      "showcase-stacked": 1,
+      "testimonial": 1,
+      "workflow-horizontal": 1
+    },
+    "native": 5,
+    "unchanged": 0
+  },
+  "replica-solution-ai-design-for-small-business-hub": {
+    "fallback": 11,
+    "kinds": {
+      "bento-2": 1,
+      "bento-4": 1,
+      "capability-tabs": 1,
+      "cluster-block-dense": 1,
+      "comparison-table": 1,
+      "cta-default": 1,
+      "faq": 1,
+      "hero-journey": 1,
+      "pricing-block": 1,
+      "proof-block": 1,
+      "showcase-stacked": 1,
+      "testimonial": 1,
+      "workflow-horizontal": 1
+    },
+    "native": 4,
+    "unchanged": 0
+  },
+  "replica-solution-ai-design-solution-for-agencies": {
+    "fallback": 11,
+    "kinds": {
+      "bento-4": 1,
+      "canvas-wall": 1,
+      "capability-tabs": 1,
+      "cluster-block-dense": 1,
+      "comparison-table": 1,
+      "cta-default": 1,
+      "faq": 1,
+      "feature-detail": 1,
+      "hero-mosaic": 1,
+      "pricing-block": 1,
+      "proof-block": 1,
+      "review-grid-4col": 1,
+      "workflow-horizontal": 1
+    },
+    "native": 4,
+    "unchanged": 0
+  },
+  "replica-solution-ai-design-solution-for-creators": {
+    "fallback": 10,
+    "kinds": {
+      "bento-2": 1,
+      "bento-4": 1,
+      "capability-tabs": 1,
+      "cluster-block-dense": 1,
+      "comparison-before-after": 1,
+      "cta-default": 1,
+      "faq": 1,
+      "hero-split": 1,
+      "pricing-block": 1,
+      "proof-block": 1,
+      "showcase-stacked": 1,
+      "testimonial": 1,
+      "workflow-horizontal": 1
+    },
+    "native": 5,
+    "unchanged": 0
+  },
+  "replica-solution-ai-design-solution-for-marketing-teams": {
+    "fallback": 11,
+    "kinds": {
+      "bento-2": 1,
+      "bento-4": 1,
+      "capability-tabs": 1,
+      "cluster-block-dense": 1,
+      "comparison-table": 1,
+      "cta-default": 1,
+      "faq": 1,
+      "hero-cinematic": 1,
+      "pricing-block": 1,
+      "proof-block": 1,
+      "showcase-stacked": 1,
+      "testimonial": 1,
+      "workflow-vertical": 1
+    },
+    "native": 4,
+    "unchanged": 0
+  },
+  "replica-solution-ai-design-solution-for-nonprofits": {
+    "fallback": 11,
+    "kinds": {
+      "bento-2": 1,
+      "bento-4": 1,
+      "capability-tabs": 1,
+      "cluster-block-dense": 1,
+      "comparison-table": 1,
+      "cta-default": 1,
+      "faq": 1,
+      "hero-journey": 1,
+      "pricing-block": 1,
+      "proof-block": 1,
+      "showcase-stacked": 1,
+      "testimonial": 1,
+      "workflow-vertical": 1
+    },
+    "native": 4,
+    "unchanged": 0
+  },
+  "replica-solution-ai-design-solution-for-saas": {
+    "fallback": 11,
+    "kinds": {
+      "bento-2": 1,
+      "bento-4": 1,
+      "capability-tabs": 1,
+      "cluster-block-dense": 1,
+      "comparison-table": 1,
+      "cta-default": 1,
+      "faq": 1,
+      "hero-cinematic": 1,
+      "pricing-block": 1,
+      "proof-block": 1,
+      "showcase-stacked": 1,
+      "testimonial": 1,
+      "workflow-vertical": 1
+    },
+    "native": 4,
+    "unchanged": 0
+  },
+  "replica-solution-ai-design-solution-for-shopify": {
+    "fallback": 11,
+    "kinds": {
+      "bento-2": 1,
+      "bento-4": 1,
+      "capability-tabs": 1,
+      "cluster-block-dense": 1,
+      "comparison-table": 1,
+      "cta-default": 1,
+      "faq": 1,
+      "hero-journey": 1,
+      "pricing-block": 1,
+      "proof-block": 1,
+      "review-grid-3col": 1,
+      "showcase-stacked": 1,
+      "workflow-vertical": 1
+    },
+    "native": 4,
+    "unchanged": 0
+  },
+  "replica-solution-good-design-for-business-owners": {
+    "fallback": 10,
+    "kinds": {
+      "bento-2": 1,
+      "bento-4": 1,
+      "capability-tabs": 1,
+      "cluster-block-dense": 1,
+      "comparison-before-after": 1,
+      "cta-default": 1,
+      "faq": 1,
+      "hero-split": 1,
+      "pricing-block": 1,
+      "showcase-stacked": 1,
+      "testimonial": 1,
+      "workflow-horizontal": 1
+    },
+    "native": 4,
+    "unchanged": 0
+  },
+  "replica-solution-good-design-for-marketers": {
+    "fallback": 11,
+    "kinds": {
+      "bento-2": 1,
+      "bento-4": 1,
+      "capability-tabs": 1,
+      "cluster-block-dense": 1,
+      "comparison-table": 1,
+      "cta-default": 1,
+      "faq": 1,
+      "hero-cinematic": 1,
+      "pricing-block": 1,
+      "showcase-stacked": 1,
+      "testimonial": 1,
+      "workflow-vertical": 1
+    },
+    "native": 3,
+    "unchanged": 0
+  },
+  "replica-tool-directory": {
+    "fallback": 5,
+    "kinds": {
+      "capability-tabs": 1,
+      "cta-default": 1,
+      "hero-mosaic": 1,
+      "logo-loop": 1,
+      "tool-grid": 1,
+      "workflow-horizontal": 1
+    },
+    "native": 1,
+    "unchanged": 0
+  }
+}
