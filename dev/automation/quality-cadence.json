@@ -1,0 +1,42 @@
+{
+  "_doc": "主站内容质量治理 · 节奏与阈值配置（用户在后台调整节奏改这里即可）",
+  "mainContentAudit": {
+    "enabled": true,
+    "daily": { "enabled": true, "hour": 8, "mode": "light", "langs": ["en"], "maxDocs": 2000 },
+    "weekly": { "enabled": true, "dayOfWeek": 1, "hour": 7, "mode": "full", "langs": [], "shingle": true },
+    "langsNote": "空数组 = 全部 12 种语言（en/zh/zh-TW/ja/ko/de/fr/pt/ru/it）"
+  },
+  "thresholds": {
+    "blogMinWordsEn": 800,
+    "compMinWordsEn": 300,
+    "seoDescMaxChars": 170,
+    "dupSimMin": 0.6,
+    "seqTemplateMinPages": 5,
+    "coverReuseMinPages": 5,
+    "heroReuseMinPages": 5,
+    "asciiRatioZh": 0.18,
+    "asciiRatioJa": 0.15,
+    "asciiRatioKo": 0.12,
+    "asciiRatioRu": 0.30,
+    "enFuncRatioOther": 0.18
+  },
+  "mainContentFix": {
+    "enabled": true,
+    "cadence": "weekly",
+    "dayOfWeek": 2,
+    "hour": 9,
+    "dryRunDefault": true,
+    "autoFix": ["seo-fill-from-title", "cover-og-fallback"],
+    "queueRewrite": ["thin", "slop", "seq-template", "untranslated", "lang-garbage"],
+    "publishGate": "ready-await-human",
+    "notifyOnPlan": true
+  },
+  "rewriteQueue": {
+    "laneSource": "GSC",
+    "deepImpression": 1000,
+    "mediumImpression": 500,
+    "minWordsDeep": 7500,
+    "minWordsMedium": 7500,
+    "skill": "lovart-blog-signal-writer"
+  }
+}

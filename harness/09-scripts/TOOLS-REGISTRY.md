@@ -44,6 +44,8 @@
 | `report_week_dates.py` | 周报日期计算 | 2026-06-12 | mflow-reports | active | G1-G5 |
 | `comprehensive_may_report.py` | 5月综合报告 | 2026-07-05 | mflow-reports | active | G1-G5 |
 | `report_batch_runner.py` | 批量报告运行器 | 2026-06-12 | mflow-reports | active | G1-G5 |
+| `dev/scripts/audit-main-content.py` | www.lovart.ai 主站全语言内容审计（blog+compositePage：bug/质量/模板化/翻译垃圾/图片错配） | 2026-10-09 | mflow-quality | active | 首跑 18k docs |
+| `dev/scripts/fix-main-content.py` | 主站内容机械修复计划 + sanity patch + 重写队列（dry-run 默认，发布停 ready） | 2026-10-09 | mflow-quality | active | 语法+门禁通过 |
 | `audit_p3_quality.py` | P3 质量审计 | 2026-07-06 | mflow-quality | active | G1-G5 |
 | `dev/wordpress/audit-content-quality.py` | blogs.lovart.ai 全站内容质量/模板化审计（slop/薄内容/占位残留/跨页重复/坏图） | 2026-10-09 | mflow-quality | active | 首跑 744 页成功 |
 | `audit_pillar_fleet.py` | Pillar 内容审计 | 2026-07-17 | mflow-quality | active | G1-G5 |

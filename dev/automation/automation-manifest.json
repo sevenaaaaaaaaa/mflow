@@ -34,6 +34,21 @@
       "script": "run-monthly-pipeline.sh"
     },
     {
+      "file": "automation/workflows/main-content-audit-daily.workflow.json",
+      "cron": "15 8 * * *",
+      "note": "主站内容轻量审计（EN）— 节奏在 dev/automation/quality-cadence.json"
+    },
+    {
+      "file": "automation/workflows/main-content-audit-weekly.workflow.json",
+      "cron": "30 7 * * 1",
+      "note": "主站内容全语言审计（bug/质量/模板化/翻译垃圾/图片错配）— 节奏在 quality-cadence.json"
+    },
+    {
+      "file": "automation/workflows/main-content-fix.workflow.json",
+      "cron": "0 9 * * 2",
+      "note": "主站内容修复（dry-run patch + 重写队列）— 发布停 ready 等人审"
+    },
+    {
       "file": "automation/workflows/mflow-sitemap-weekly.workflow.json",
       "cron": "0 2 * * 1"
     },
