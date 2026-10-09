@@ -15,6 +15,10 @@
 #   0 = ok
 #   1 = BLOCK (must fix before publish)
 #   2 = engine error
+#
+# 2026-10-09 用户裁定增量（Moodio/Lovart 共用）：
+#   GATE6 增补两条：开场模板轮换（6.7，openers.log 连续同型 ready 拦截）+ 证据类型多样性（6.8）
+#   前因：场景冷开场连续复用=新模板 AI 味（Lovart/Moodio 生成侧都出现过）
 
 set -euo pipefail
 
@@ -208,6 +212,27 @@ if [[ "$WORD_COUNT" -ge 1000 ]]; then
         if [[ "$READY" -eq 1 ]]; then err "$DROW"; else warn "$DROW (ready 终检将拦截)"; fi
     fi
 fi
+
+# 6.7 开场模板轮换（2026-10-09 用户裁定：场景冷开场已成新模板 AI 味——Lovart/Moodio 都踩过，机器轮换制）
+# 开场型指纹：scene-anecdote（"It was <时间>…" / "The <星期> I…" / "Last <季节>…"）
+# 机制：run/openers.log 记录 (日期|文件|开场型)；--ready 时若最近 2 篇同型 → BLOCK；草稿档仅提示。
+if [[ -n "${MFLOW_OPENERS_LOG:-}" ]]; then OPENER_LOG="$MFLOW_OPENERS_LOG"; else OPENER_LOG="openers.log"; fi
+SCENE_OPEN="$( { head -c 400 "$FILE" 2>/dev/null | grep -iE '^(it was (on )?(a |an )?(monday|tuesday|wednesday|thursday|friday|saturday|sunday|summer|winter|night|morning)|the (monday|tuesday|wednesday|thursday|friday|saturday|sunday) i |last (summer|winter|year|month|week))' || true; } | wc -l | tr -d ' ')"
+OPENER_CLASS="other"
+[[ "$SCENE_OPEN" -ge 1 ]] && OPENER_CLASS="scene-anecdote"
+RECENT="$( { tail -2 "$OPENER_LOG" 2>/dev/null | grep "|$OPENER_CLASS" || true; } | wc -l | tr -d ' ')"
+if [[ "$OPENER_CLASS" == "scene-anecdote" && "$RECENT" -ge 2 && "$READY" -eq 1 ]]; then
+    err "opening repeats the last 2 pieces (scene-anecdote cold open) — rotate opener class"
+elif [[ "$OPENER_CLASS" == "scene-anecdote" ]]; then
+    warn "scene cold-open detected — 若上一篇同款请换开场型（轮换制，用户裁定 2026-10-09）"
+fi
+echo "$(date +%F)|$(basename "$FILE")|$OPENER_CLASS" >> "$OPENER_LOG" 2>/dev/null || true
+
+# 6.8 证据类型多样性（用户裁定：专栏声音 = 我实测 + 我听说/转述 + 产品侧发现 + 外部数据 的混合，不是永远第一人称场景）
+REPORTED="$(grep -cE 'a DP I|a producer I|one of (our|the) (engineers|producers|editors)|I heard|colleague|friend|我听说|据.{0,8}(说|讲)|同事|业内朋友' "$FILE" 2>/dev/null || true)"
+INSIDER="$(grep -cE 'when we built|our (team|product|engineers)|in our product|we shipped|我们做产品时|我们内部' "$FILE" 2>/dev/null || true)"
+EV_OK=$([[ "$REPORTED" -ge 1 || "$INSIDER" -ge 1 ]] && echo 1 || echo 0)
+quant "$EV_OK" "evidence-mix" "evidence-type mix: reported=${REPORTED} insider=${INSIDER} (只有第一人称场景=声音单一)"
 
 # 6.5 外部权威来源 ≥2 条完整 URL（RULES-20 #14）— 分阶段取值（set -e 安全）
 set +e
