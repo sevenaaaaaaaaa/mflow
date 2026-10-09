@@ -57,21 +57,50 @@ def latest_audit(explicit=None):
     return Path(cands[0])
 
 
+BOILERPLATE = re.compile(
+    r"Template-based tools like (Canva|Adobe)|Start (free|creating)|no design skill required|"
+    r"In today's (fast-paced|digital)|landscape, (creators|businesses)|"
+    r"look no further|In the ever-evolving|game-changer that|revolutioniz", re.I)
+
+
 def safe_seo_title(title):
-    t = re.sub(r"\s+", " ", title or "").strip()
-    return t[:70] if t else None
+    """截到 ≤70 字符，词边界断句（禁止断词截断如 '...2026 G'）。"""
+    t = re.sub(r"\s+", " ", (title or "").strip()).rstrip(" ,;:—-")
+    if len(t) <= 70:
+        return t or None
+    cut = t[:70]
+    if not cut.endswith((" ",)) and len(t) > 70:
+        # 回退到最后一个词边界
+        sp = cut.rfind(" ")
+        if sp > 35:
+            cut = cut[:sp]
+    return cut.rstrip(" ,;:—-") or None
 
 
 def safe_seo_desc(text):
+    """从正文取 1-2 句拼 description（≤160 字符）。模板句/营销腔句子直接剔除；
+    剔完不足 40 字符返回 None（该页改道重写队列，不机械 patch）。"""
     t = re.sub(r"\s+", " ", text or "").strip()
-    # 截到 ≤170 字符，尽量在句号断句
-    if len(t) <= 170:
-        return t or None
-    cut = t[:170]
-    dot = max(cut.rfind("."), cut.rfind("。"), cut.rfind("！"), cut.rfind("？"))
-    if dot > 60:
-        cut = cut[:dot + 1]
-    return cut.strip()
+    if not t:
+        return None
+    sents = re.split(r"(?<=[.!?。！？])\s+", t)
+    keep = []
+    for s in sents:
+        s = s.strip()
+        if not s or BOILERPLATE.search(s):
+            continue
+        keep.append(s)
+        if sum(len(x) for x in keep) > 200:
+            break
+    out = ""
+    for s in keep:
+        if out and len(out) + len(s) + 1 > 160:
+            break
+        out = (out + " " + s).strip() if out else s
+    out = out[:160].rstrip()
+    if len(out) < 40 or BOILERPLATE.search(out):
+        return None
+    return out
 
 
 def main():
@@ -166,8 +195,13 @@ def main():
             continue
         if p["action"] == "seo-fill-from-title":
             st, sd = safe_seo_title(d.get("title")), safe_seo_desc(d.get("text"))
-            if st and sd:
-                patches.append({"id": p["id"], "patch": {"set": {"seo.title": st, "seo.description": sd}}})
+            sets = {}
+            if st:
+                sets["seo.title"] = st
+            if sd:
+                sets["seo.description"] = sd
+            if sets:
+                patches.append({"id": p["id"], "patch": {"set": sets}})
         elif p["action"] == "cover-og-fallback":
             if d.get("og"):
                 patches.append({"id": p["id"], "patch": {"set": {
