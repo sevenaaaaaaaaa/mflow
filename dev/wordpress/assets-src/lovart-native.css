@@ -23,6 +23,11 @@
   padding: 0;
   margin: 0;
 }
+/* Elementor Kit 全局排版会给 h1-h6 注入 text-transform:capitalize（未分层规则，
+   源 HTML 无此设置且所有标题均未使用 uppercase/capitalize 工具类），在此复位。 */
+.lr .e-con.lr-faithful :is(h1, h2, h3, h4, h5, h6) {
+  text-transform: none;
+}
 /* 忠实模式不用 e-con-inner（转换器根容器为 full 宽），兜底复位以防编辑器改动 */
 .lr .e-con.lr-faithful > .e-con-inner {
   display: block;
