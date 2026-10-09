@@ -49,6 +49,7 @@ add_action( 'wp_ajax_lr_elem_import', function () {
 		update_post_meta( $pid, '_lr_replica', 1 );
 	}
 	delete_post_meta( $pid, '_elementor_css' );
+	delete_post_meta( $pid, '_elementor_element_cache' );
 
 	// 重生成该页的 Elementor CSS 文件（post-{id}.css + meta 版本号）
 	if ( class_exists( '\Elementor\Core\Files\CSS\Post' ) ) {
@@ -96,6 +97,7 @@ add_action( 'wp_ajax_lr_elem_template', function () {
 	$name = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
 	$slug = isset( $_POST['slug'] ) ? sanitize_title( wp_unslash( $_POST['slug'] ) ) : '';
 	$type = isset( $_POST['template_type'] ) ? sanitize_key( wp_unslash( $_POST['template_type'] ) ) : 'container';
+	$category = isset( $_POST['category'] ) ? sanitize_text_field( wp_unslash( $_POST['category'] ) ) : '';
 	$url  = isset( $_POST['url'] ) ? esc_url_raw( wp_unslash( $_POST['url'] ) ) : '';
 	if ( ! $name || ! $slug || ! in_array( $type, array( 'page', 'container', 'section' ), true )
 		|| 0 !== strpos( $url, 'https://nownexts.com/lr-assets/' ) ) {
@@ -137,5 +139,15 @@ add_action( 'wp_ajax_lr_elem_template', function () {
 	update_post_meta( $pid, '_elementor_template_type', $type );
 	update_post_meta( $pid, '_elementor_version', isset( $payload['version'] ) ? $payload['version'] : '3.35.7' );
 	update_post_meta( $pid, '_elementor_data', wp_slash( wp_json_encode( $payload['data'] ) ) );
-	wp_send_json_success( array( 'template' => $pid, 'slug' => $slug, 'created' => $created, 'elements' => count( $payload['data'] ) ) );
+	delete_post_meta( $pid, '_elementor_element_cache' );
+	if ( $category && taxonomy_exists( 'elementor_library_category' ) ) {
+		wp_set_object_terms( $pid, array( $category ), 'elementor_library_category', false );
+	}
+	wp_send_json_success( array(
+		'template' => $pid,
+		'slug' => $slug,
+		'created' => $created,
+		'elements' => count( $payload['data'] ),
+		'category' => $category,
+	) );
 } );

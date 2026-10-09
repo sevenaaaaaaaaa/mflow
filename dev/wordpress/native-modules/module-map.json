@@ -1,0 +1,43 @@
+{
+  "version": 1,
+  "principle": "Prefer installed Elementor/core widgets; use LR HTML only for decorations or unsupported interactions.",
+  "native": {
+    "hero-split": ["container", "heading", "text-editor", "button", "video"],
+    "stats": ["container", "heading", "text-editor"],
+    "proof-block": ["container", "heading", "text-editor", "icon"],
+    "review-grid-3col": ["container", "heading", "text-editor"],
+    "review-grid-4col": ["container", "heading", "text-editor"],
+    "testimonial": ["container", "heading", "text-editor", "image"],
+    "cta-default": ["container", "heading", "text-editor", "button"],
+    "portrait-grid-3": ["container", "heading", "text-editor", "image", "video", "button"],
+    "portrait-grid-4": ["container", "heading", "text-editor", "image", "video", "button"],
+    "faq": ["container", "heading", "accordion"]
+  },
+  "mixed": {
+    "hero-cinematic": ["container", "heading", "text-editor", "button", "video", "html-decoration"],
+    "hero-gallery": ["container", "heading", "text-editor", "button", "image", "html-decoration"],
+    "hero-journey": ["container", "heading", "text-editor", "button", "image", "html-decoration"],
+    "hero-mosaic": ["container", "heading", "text-editor", "button", "image", "html-decoration"],
+    "bento-2": ["container", "heading", "text-editor", "image", "video", "html-decoration"],
+    "bento-4": ["container", "heading", "text-editor", "image", "video", "html-decoration"],
+    "bento-6": ["container", "heading", "text-editor", "image", "video", "html-decoration"],
+    "comparison-table": ["container", "heading", "text-editor", "html-table"],
+    "feature-detail": ["container", "heading", "text-editor", "image", "video"],
+    "showcase-horizontal": ["container", "heading", "text-editor", "image", "video"],
+    "showcase-stacked": ["container", "heading", "text-editor", "image", "video"],
+    "tool-grid": ["container", "heading", "text-editor", "image", "button"],
+    "blog-grid": ["container", "heading", "posts"],
+    "cluster-block-dense": ["container", "heading", "text-editor", "image", "button"],
+    "pricing-block": ["container", "heading", "text-editor", "button"],
+    "workflow-horizontal": ["container", "heading", "text-editor", "image", "html-decoration"],
+    "workflow-vertical": ["container", "heading", "text-editor", "image", "html-decoration"]
+  },
+  "legacy": {
+    "capability-tabs": "Keep HTML until an installed tabs widget matches behavior.",
+    "comparison-before-after": "Keep HTML until before/after widget mapping is verified.",
+    "canvas-wall": "Keep HTML because layout is animation/canvas driven.",
+    "logo-loop": "Keep HTML because marquee behavior is custom.",
+    "media-marquee": "Keep HTML because marquee behavior is custom.",
+    "prompt-launcher": "Keep HTML because interaction is custom."
+  }
+}

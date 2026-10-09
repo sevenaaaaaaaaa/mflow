@@ -1,0 +1,56 @@
+/* LR Native: small scoped bridge between Lovart tokens and Elementor widgets. */
+.lr-native {
+  --lr-bg: #100f09;
+  --lr-card: #1b1a15;
+  --lr-text: #f7f6f2;
+  --lr-muted: #a6a49d;
+  --lr-border: #39372f;
+  color: var(--lr-text);
+  box-sizing: border-box;
+}
+.lr-native,
+.lr-native * { box-sizing: border-box; }
+.lr-native > .e-con-inner,
+.lr-native.e-con { width: 100%; }
+.lr-native .elementor-heading-title { color: var(--lr-text); }
+.lr-native .elementor-widget-text-editor { color: var(--lr-muted); }
+.lr-native .lr-native-columns,
+.lr-native .lr-native-grid,
+.lr-native .lr-native-buttons {
+  display: flex;
+  width: 100%;
+}
+.lr-native .lr-native-columns { align-items: center; gap: clamp(28px, 6vw, 80px); }
+.lr-native .lr-native-copy,
+.lr-native .lr-native-media { flex: 1 1 0; min-width: 0; }
+.lr-native .lr-native-grid { align-items: stretch; gap: 24px; flex-wrap: wrap; }
+.lr-native .lr-native-grid-3 > .e-con { flex: 1 1 calc(33.333% - 24px); }
+.lr-native .lr-native-grid-4 > .e-con { flex: 1 1 calc(25% - 24px); }
+.lr-native .lr-native-card,
+.lr-native .lr-native-cta-card {
+  background: var(--lr-card);
+  border: 1px solid var(--lr-border);
+  border-radius: 16px;
+  padding: clamp(20px, 3vw, 36px);
+}
+.lr-native .lr-native-cta-card { align-items: center; text-align: center; }
+.lr-native .lr-native-buttons { gap: 12px; flex-wrap: wrap; }
+.lr-native .elementor-button { border-radius: 999px; }
+.lr-native .elementor-widget-image img,
+.lr-native .elementor-widget-video { border-radius: 16px; overflow: hidden; }
+.lr-native .elementor-accordion-item { border-color: var(--lr-border); }
+.lr-native .elementor-tab-title,
+.lr-native .elementor-tab-content { color: var(--lr-text); }
+
+@media (max-width: 1024px) {
+  .lr-native { padding-left: 32px !important; padding-right: 32px !important; }
+  .lr-native .lr-native-columns { flex-direction: column; }
+  .lr-native .lr-native-grid-4 > .e-con { flex-basis: calc(50% - 24px); }
+}
+@media (max-width: 767px) {
+  .lr-native {
+    padding: 56px 20px !important;
+  }
+  .lr-native .lr-native-grid-3 > .e-con,
+  .lr-native .lr-native-grid-4 > .e-con { flex-basis: 100%; }
+}

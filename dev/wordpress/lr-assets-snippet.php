@@ -19,6 +19,9 @@ add_action( 'wp_enqueue_scripts', function () {
 		return;
 	}
 	wp_enqueue_style( 'lr-replica', 'https://nownexts.com/lr-assets/lovart-replica.css?v=2', array(), null );
+	if ( lr_replica_has_native_module( $pid ) ) {
+		wp_enqueue_style( 'lr-native', 'https://nownexts.com/lr-assets/lovart-native.css?v=1', array( 'lr-replica' ), null );
+	}
 	wp_enqueue_script( 'lr-replica', 'https://nownexts.com/lr-assets/lovart-replica.js?v=2', array(), null, true );
 	// 隐藏主题构建器头尾仅限 _lr_replica 整页（插入单模块的页面保留自身主题头尾）
 	if ( get_post_meta( $pid, '_lr_replica', true ) ) {
@@ -42,7 +45,16 @@ function lr_replica_has_module( $pid ) {
 		return false;
 	}
 	$data = (string) get_post_meta( $pid, '_elementor_data', true );
-	return false !== strpos( $data, 'class=\"lr' ) || false !== strpos( $data, 'class=&quot;lr' );
+	return false !== strpos( $data, 'class=\"lr' )
+		|| false !== strpos( $data, 'class=&quot;lr' )
+		|| false !== strpos( $data, 'lr-native' );
+}
+
+function lr_replica_has_native_module( $pid ) {
+	if ( ! $pid || 'builder' !== (string) get_post_meta( $pid, '_elementor_edit_mode', true ) ) {
+		return false;
+	}
+	return false !== strpos( (string) get_post_meta( $pid, '_elementor_data', true ), 'lr-native' );
 }
 
 add_filter( 'script_loader_tag', function ( $tag, $handle ) {

@@ -54,7 +54,12 @@ TITLE = {
 
 
 def section_tag(container):
-    """从容器 HTML 微件内容提取短名：首个标题文本，否则结构标签。"""
+    """原生容器优先读 lr-native-*，Legacy 再从 HTML 标题推断。"""
+    settings = container.get("settings", {}) or {}
+    classes = settings.get("_css_classes", "") or settings.get("css_classes", "")
+    m = re.search(r"\blr-native-([a-z0-9-]+)", classes)
+    if m:
+        return m.group(1)
     html = ""
     for w in container.get("elements", []):
         s = w.get("settings", {}) or {}
@@ -80,6 +85,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--src", default="elem-src")
     ap.add_argument("--out", default="elem-templates")
+    ap.add_argument("--prefix", default="lr")
+    ap.add_argument("--name-prefix", default="LR")
+    ap.add_argument("--native-only", action="store_true",
+                    help="单区块只输出含 lr-native 类的原生模板；整页仍输出混合模板")
     args = ap.parse_args()
     os.makedirs(args.out, exist_ok=True)
 
@@ -94,24 +103,33 @@ def main():
         version = d.get("version", "3.35.7")
 
         # 整页模板
-        full_slug = "lr-%s-full" % short
+        full_slug = "%s-%s-full" % (args.prefix, short)
         io.open(os.path.join(args.out, full_slug + ".json"), "w", encoding="utf-8").write(
             json.dumps({"version": version, "data": d["data"]}, ensure_ascii=False))
         manifest.append({
-            "name": "LR %s \u2014 Full Page" % TITLE[short],
+            "name": "%s %s \u2014 Full Page" % (args.name_prefix, TITLE[short]),
             "slug": full_slug, "type": "page", "file": full_slug + ".json",
+            "mode": "mixed" if args.native_only else "legacy",
         })
 
         # 单区块模板
         for i, c in enumerate(d["data"]):
+            csettings = c.get("settings", {}) or {}
+            classes = csettings.get("css_classes", "") or csettings.get("_css_classes", "")
+            is_native = "lr-native" in classes.split()
+            if args.native_only and not is_native:
+                continue
             nn = "%02d" % (i + 1)
             ts = section_tag(c)
-            cslug = "lr-%s-%s" % (short, nn)
+            cslug = "%s-%s-%s" % (args.prefix, short, nn)
             io.open(os.path.join(args.out, cslug + ".json"), "w", encoding="utf-8").write(
                 json.dumps({"version": version, "data": [c]}, ensure_ascii=False))
             manifest.append({
-                "name": "LR %s %s \u2014 %s" % (TITLE[short], nn, ts.replace("-", " ").title()),
+                "name": "%s %s %s \u2014 %s" % (
+                    args.name_prefix, TITLE[short], nn,
+                    ts.replace("-", " ").title()),
                 "slug": cslug, "type": "container", "file": cslug + ".json",
+                "mode": "native" if is_native else "legacy",
             })
 
     io.open(os.path.join(args.out, "manifest.json"), "w", encoding="utf-8").write(
