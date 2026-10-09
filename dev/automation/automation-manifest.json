@@ -49,6 +49,11 @@
       "note": "主站内容修复（dry-run patch + 重写队列）— 发布停 ready 等人审"
     },
     {
+      "file": "automation/workflows/main-content-rewrite-batch.workflow.json",
+      "cron": "0 10 * * 2,4",
+      "note": "重写队列批量消费（blog→blog-writer，落地页→landing-writer）— 产出 ready 止步"
+    },
+    {
       "file": "automation/workflows/mflow-sitemap-weekly.workflow.json",
       "cron": "0 2 * * 1"
     },

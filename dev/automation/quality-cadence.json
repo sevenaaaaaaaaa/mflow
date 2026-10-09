@@ -32,6 +32,8 @@
     "notifyOnPlan": true
   },
   "rewriteQueue": {
+    "batchSize": 10,
+    "cadence": "每周二/周四 10:00 消费一批（main-content-rewrite-batch 工作流）",
     "laneSource": "GSC",
     "deepImpression": 1000,
     "mediumImpression": 500,
