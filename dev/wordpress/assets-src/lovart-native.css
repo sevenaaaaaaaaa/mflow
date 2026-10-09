@@ -1,3 +1,39 @@
+/* LR Faithful: 中和 e-con chrome 对忠实容器的干扰。
+   Elementor 核心 frontend.min.css 与作用域副本里，e-con 的
+   width: var(--width)=100%、border-radius: var(--border-radius)=0、
+   gap: var(--row-gap) var(--column-gap)=20px、flex-wrap=wrap、
+   display: var(--display)=flex 等均为未分层规则——按级联规则恒压过
+   @layer utilities 里的 Tailwind 工具类，导致忠实容器排版全乱。
+   这里把忠实容器(lr-faithful)的这些属性复位到原始 div 默认值；
+   原始工具类由 lovart-faithful-mirror.css 的未分层镜像
+   (.lr .e-con.lr-faithful.X，特异性 0,4,0)覆盖恢复。 */
+.lr .e-con.lr-faithful {
+  display: block;
+  width: auto;
+  border-radius: 0;
+  gap: normal;
+  row-gap: normal;
+  column-gap: normal;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: normal;
+  justify-content: normal;
+  align-content: normal;
+  text-align: inherit;
+  padding: 0;
+  margin: 0;
+}
+/* 忠实模式不用 e-con-inner（转换器根容器为 full 宽），兜底复位以防编辑器改动 */
+.lr .e-con.lr-faithful > .e-con-inner {
+  display: block;
+  gap: normal;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  padding: 0;
+}
+
 /* LR Native: small scoped bridge between Lovart tokens and Elementor widgets. */
 .lr-native {
   --lr-bg: #100f09;
