@@ -1,0 +1,14 @@
+{
+  "name": "MFlow 主站重写队列·批量消费",
+  "description": "从 rewrite-queue.ndjson 取一批（quality-cadence.json rewriteQueue.batchSize）交给对应创作 skill 重写：blog → blog-writer 信号链，tool/feature/topic 等 → landing-writer。产出 status: ready 草稿止步等人工授权。每周二/周四 10:00。",
+  "workflow": {
+    "triggers": [{ "cron": { "cron": "0 10 * * 2,4" } }],
+    "actions": [],
+    "prompts": [{
+      "prompt": "主站内容重写批次（一次一批，默认 10 页）。\n\n1. 读配置 dev/automation/quality-cadence.json（rewriteQueue）确认 enabled 与 batchSize；若 enabled=false 直接结束。\n2. 读队列 insight-data/Page Analytic/fix-2026-10-09/rewrite-queue.ndjson，取 batch 计数内未消费的条目（优先级：seq-template zh-TW tool > lang-garbage ja/ko > slop > thin；已消费条目在 rewrite-queue-consumed.ndjson 登记，幂等跳过）。\n3. 按 kind 路由创作 skill：kind=blog → lovart-blog-writer（signal 信号链）；kind=tool/feature/topic/scenario/solution → lovart-landing-writer。lane 按 impression 分级（>1k Deep，500-1k Medium）。\n4. 禁止翻译管线、禁止脚本扩字数；产出为 Markdown 草稿（status: ready 止步），落 1-3 Content Gen/ 对应目录，并在 pipeline-state upsert 对应 item。\n5. 完成后把本批条目追加到 rewrite-queue-consumed.ndjson，报告产出清单，等发布授权后由 sanity-publish 管道导入。\n6. 通知: bash dev/automation/report-notify/report-notify.sh --type main-content-rewrite --status ok|fail --summary \"<本批 n 页，ready m>\" --artifact \"<批次草稿目录>\""
+    }],
+    "model": "",
+    "agentOptions": { "skipInstall": false },
+    "memoryEnabled": false
+  }
+}
