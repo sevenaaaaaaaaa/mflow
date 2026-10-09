@@ -1,0 +1,14 @@
+{
+  "name": "MFlow 主站内容修复·每周",
+  "description": "消费每周审计结果，生成机械修复 patch 与 signal-writer 重写队列；patch 停在 ready 等人审授权。每周二 09:00。节奏在 dev/automation/quality-cadence.json 调整。",
+  "workflow": {
+    "triggers": [{ "cron": { "cron": "0 9 * * 2" } }],
+    "actions": [],
+    "prompts": [{
+      "prompt": "主站内容修复流程（默认 dry-run，绝不直接写 Sanity production）。\n\n1. 读配置 dev/automation/quality-cadence.json（mainContentFix）确认 enabled 与 autoFix 范围；若 enabled=false 直接结束。\n2. 运行: PYTHONIOENCODING=utf-8 python3 dev/scripts/fix-main-content.py --audit <最新 main-audit-weekly-*.json> --write-patch\n3. 检查产物：fix-plan.md（修复计划）、rewrite-queue.ndjson（重写队列）、safe-fixes.ndjson（待导入 patch）。\n4. 把 fix-plan.md 摘要与 patch 数量报告给用户，patch 保持 ready 状态等人工授权；用户明确授权后才允许走 lovart-sanity-publish 的导入流程（每次导入前 preflight BLOCK=0）。\n5. 重写队列按 lane 分级（quality-cadence.json rewriteQueue）：impression>1k 走 Deep、500-1k 走 Medium，一律走 lovart-blog-signal-writer，禁止翻译管线、禁止脚本扩字数。\n6. 通知: bash dev/automation/report-notify/report-notify.sh --type main-content-fix --status ok|fail --summary \"<patch 数/队列数>\" --artifact \"<fix-plan.md 路径>\""
+    }],
+    "model": "",
+    "agentOptions": { "skipInstall": false },
+    "memoryEnabled": false
+  }
+}

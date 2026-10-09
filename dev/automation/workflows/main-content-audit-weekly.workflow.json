@@ -1,0 +1,14 @@
+{
+  "name": "MFlow 主站内容审计·每周全量",
+  "description": "www.lovart.ai 主站全语言内容审计（bug/质量/模板化/翻译垃圾/图片错配），每周一 07:30。节奏在 dev/automation/quality-cadence.json 调整。",
+  "workflow": {
+    "triggers": [{ "cron": { "cron": "30 7 * * 1" } }],
+    "actions": [],
+    "prompts": [{
+      "prompt": "主站内容每周全量审计（mode=full，全语言，含跨页近重复）。\n\n1. 读配置 dev/automation/quality-cadence.json（mainContentAudit.weekly）确认 enabled/dayOfWeek/hour；若 enabled=false 直接结束。\n2. 运行: PYTHONIOENCODING=utf-8 python3 dev/scripts/audit-main-content.py --out \"$MFLOW_LOCAL_TEMP_DIR/mflow/pull/main-audit-weekly-$(date +%F).json\" --md \"$MFLOW_LOCAL_TEMP_DIR/mflow/pull/main-audit-weekly-$(date +%F).md\"（不加 --langs 与 --no-shingle，全量）\n3. 汇总 6 维结果：bug（缺封面/SEO/坏链）、质量（薄内容/slop/占位）、模板化（同序列 ≥5 页组 + 近重复对）、翻译垃圾（语言残留率/未翻译页）、图片错配（封面复用/hero 复用）。\n4. 与上周 JSON 对比，输出趋势；将新增问题项 upsert 进 pipeline-state（fix-*/rewrite-* 条目，stage S0-todo）。\n5. 归档 JSON+MD 到 insight-data/Page Analytic/，覆盖 latest 链接。\n6. 通知: bash dev/automation/report-notify/report-notify.sh --type main-audit-weekly --status ok|fail --summary \"<各维度计数>\" --artifact \"<md 路径>\"\n\n禁止直接改 Sanity production；修复走 main-content-fix 工作流，内容重写走 signal-writer lane。"
+    }],
+    "model": "",
+    "agentOptions": { "skipInstall": false },
+    "memoryEnabled": false
+  }
+}

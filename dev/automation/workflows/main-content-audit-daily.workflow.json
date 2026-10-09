@@ -1,0 +1,14 @@
+{
+  "name": "MFlow 主站内容审计·每日",
+  "description": "www.lovart.ai 主站（Sanity）EN 内容轻量审计，每日 08:15。节奏在 dev/automation/quality-cadence.json 调整。",
+  "workflow": {
+    "triggers": [{ "cron": { "cron": "15 8 * * *" } }],
+    "actions": [],
+    "prompts": [{
+      "prompt": "主站内容每日轻量审计（mode=light，只跑 EN，控制 API 用量）。\n\n1. 读配置 dev/automation/quality-cadence.json（mainContentAudit.daily）确认 enabled、langs、maxDocs；若 enabled=false 直接结束。\n2. 运行: PYTHONIOENCODING=utf-8 python3 dev/scripts/audit-main-content.py --out \"$MFLOW_LOCAL_TEMP_DIR/mflow/pull/main-audit-daily-$(date +%F).json\" --md \"$MFLOW_LOCAL_TEMP_DIR/mflow/pull/main-audit-daily-$(date +%F).md\" --langs en --no-shingle\n3. 对比前一日 JSON 的 counts 与 issue 总数，摘要增量（新增问题页 ID 列表）。\n4. 通知: bash dev/automation/report-notify/report-notify.sh --type main-audit-daily --status ok|fail --summary \"<问题页数/增量>\" --artifact \"<md 路径>\"\n\n禁止直接改 Sanity production；发现问题只登记，修复走 main-content-fix 工作流。"
+    }],
+    "model": "",
+    "agentOptions": { "skipInstall": false },
+    "memoryEnabled": false
+  }
+}
