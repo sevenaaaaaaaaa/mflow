@@ -40,7 +40,10 @@
 .lr-native .elementor-widget-video { border-radius: 16px; overflow: hidden; }
 .lr-native .elementor-accordion-item { border-color: var(--lr-border); }
 .lr-native .elementor-tab-title,
-.lr-native .elementor-tab-content { color: var(--lr-text); }
+.lr-native .elementor-tab-title a,
+.lr-native .elementor-tab-title.elementor-active,
+.lr-native .elementor-tab-content { color: var(--lr-text) !important; }
+.lr-native .elementor-tab-title .elementor-accordion-icon { color: var(--lr-muted) !important; }
 
 @media (max-width: 1024px) {
   .lr-native { padding-left: 32px !important; padding-right: 32px !important; }

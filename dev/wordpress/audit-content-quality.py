@@ -49,7 +49,7 @@ PLACEHOLDER_PATTERNS = [
     (r"\[TBD\]", "[TBD]"),
     (r"\[待补充\]", "[待补充]"),
     (r"lorem ipsum", "lorem ipsum"),
-    (r"\{[a-z_]+\}", "LPagery 占位符未替换"),
+    (r"\{[a-z_0-9]+\}", "LPagery 占位符未替换"),
     (r"\(section_\w+\)", "(section_xx)"),
 ]
 TAG_RE = re.compile(r"<[^>]+>")
