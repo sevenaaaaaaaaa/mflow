@@ -249,14 +249,16 @@ def build_cta(ids, soup):
 def build_faq(ids, soup):
     headings = unique_texts(soup.find_all(["h1", "h2"]))
     questions = unique_texts(soup.find_all(["h3", "h4"]))
-    # The captured SSR source often omits collapsed answers. Keep editable
-    # placeholders rather than inventing content.
+    # The captured SSR source often omits collapsed answers. Ship a neutral
+    # editable prompt instead of raw tokens — tokens are reserved for the
+    # LPagery seed builder, which assembles its own tabs.
     tabs = []
     for i, question in enumerate(questions[:8]):
         tabs.append({
             "_id": ids.next(),
             "tab_title": question,
-            "tab_content": "<p>{faq_%d_answer}</p>" % (i + 1),
+            "tab_content": "<p>Answer this question here — every word stays "
+                           "editable in Elementor.</p>",
         })
     children = []
     if headings:
