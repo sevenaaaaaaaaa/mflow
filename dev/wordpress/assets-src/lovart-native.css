@@ -20,12 +20,28 @@
   display: flex;
   width: 100%;
 }
+/* Elementor 核心的 .e-con.e-flex{--flex-direction:column} 会压掉 post CSS 里的
+   --flex-direction:row（级联实测被覆盖），行方向容器在此强制恢复。 */
+.lr-native .lr-native-columns,
+.lr-native .lr-native-grid,
+.lr-native .lr-native-buttons {
+  --flex-direction: row !important;
+  flex-direction: row !important;
+}
+.lr-native .lr-native-buttons { gap: 12px; flex-wrap: wrap; align-items: center; }
 .lr-native .lr-native-columns { align-items: center; gap: clamp(28px, 6vw, 80px); }
 .lr-native .lr-native-copy,
 .lr-native .lr-native-media { flex: 1 1 0; min-width: 0; }
 .lr-native .lr-native-grid { align-items: stretch; gap: 24px; flex-wrap: wrap; }
 .lr-native .lr-native-grid-3 > .e-con { flex: 1 1 calc(33.333% - 24px); }
 .lr-native .lr-native-grid-4 > .e-con { flex: 1 1 calc(25% - 24px); }
+.lr-native .elementor-widget-image img,
+.lr-native .elementor-widget-video video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.lr-native img { max-width: 100%; height: auto; }
 .lr-native .lr-native-card,
 .lr-native .lr-native-cta-card {
   background: var(--lr-card);
@@ -34,7 +50,6 @@
   padding: clamp(20px, 3vw, 36px);
 }
 .lr-native .lr-native-cta-card { align-items: center; text-align: center; }
-.lr-native .lr-native-buttons { gap: 12px; flex-wrap: wrap; }
 .lr-native .elementor-button { border-radius: 999px; }
 .lr-native .elementor-widget-image img,
 .lr-native .elementor-widget-video { border-radius: 16px; overflow: hidden; }
@@ -47,7 +62,7 @@
 
 @media (max-width: 1024px) {
   .lr-native { padding-left: 32px !important; padding-right: 32px !important; }
-  .lr-native .lr-native-columns { flex-direction: column; }
+  .lr-native .lr-native-columns { flex-direction: column !important; --flex-direction: column !important; }
   .lr-native .lr-native-grid-4 > .e-con { flex-basis: calc(50% - 24px); }
 }
 @media (max-width: 767px) {
