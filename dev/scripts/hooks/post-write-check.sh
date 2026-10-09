@@ -234,7 +234,18 @@ INSIDER="$(grep -cE 'when we built|our (team|product|engineers)|in our product|w
 EV_OK=$([[ "$REPORTED" -ge 1 || "$INSIDER" -ge 1 ]] && echo 1 || echo 0)
 quant "$EV_OK" "evidence-mix" "evidence-type mix: reported=${REPORTED} insider=${INSIDER} (只有第一人称场景=声音单一)"
 
-# 6.5 外部权威来源 ≥2 条完整 URL（RULES-20 #14）— 分阶段取值（set -e 安全）
+# 6.9 图文并茂机检（2026-10-09 用户裁定：正文必须有可见图，briefs/附表不算图）
+# 视为"有图"：Markdown 内联图 ![alt](https://...) 或 HTML <img src="https://...">
+if [[ "$TARGET_TYPE" == "blog" && "$WORD_COUNT" -ge 1500 ]]; then
+    INLINE_IMG="$(grep -cE '!\[[^]]*\]\(https://[^)]+\)|<img[^>]+src="https://' "$FILE" 2>/dev/null || true)"
+    INLINE_IMG="${INLINE_IMG:-0}"
+    if [[ "$INLINE_IMG" -eq 0 ]]; then
+        IROW="no inline image in body (图文并茂：正文需≥1张可见图，仅 Image Appendix/briefs 不算)"
+        if [[ "$READY" -eq 1 ]]; then err "$IROW"; else warn "$IROW (ready 终检将拦截)"; fi
+    else
+        ok "inline images present ($INLINE_IMG)"
+    fi
+fi
 set +e
 _URLS_RAW="$(grep -oE 'https://[a-zA-Z0-9.-]+[/A-Za-z0-9?=&._-]*' "$FILE" 2>/dev/null)"
 if [[ -n "$_URLS_RAW" ]]; then
