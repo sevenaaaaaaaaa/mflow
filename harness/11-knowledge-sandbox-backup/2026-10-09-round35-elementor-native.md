@@ -40,6 +40,9 @@ status: ready
 - 全站审计（升级版 audit-replicas.py，8 线程）：A 节 18/18 复刻页深检 OK（微件数
   5~33 与设计吻合）、B 节 566 历史页零泄漏（无复刻资产/无 .lr/无 lr-replica-page）、
   C 节无旧渲染模板依赖。**结论：通过（问题数 0）**。
+- 随机抽查（saas/showcase-gallery）暴露 sticky 假阳性 → 修复：资产 snippet 内联
+  兜底脚本 window load 后重建 Elementor sticky 引擎；三页复验站头全部钉顶
+  （fixed + spacer + 管理条偏移），匿名访客 top:0。
 - 通道清理：废弃 snippets 13/14/15/17/19/20/21/22 全删（REST DELETE 需 cookie+nonce），
   WPCode Lite 停用，遗留重复页 composite-replica-all-2（id 18217，旧架构 727KB 原始
   HTML）转草稿。ACTIVE snippet 仅剩 27（Assets）+ 29（Bridge，保留备未来重导入）。
@@ -69,6 +72,15 @@ status: ready
 - P1: **Code Snippets REST 在 Basic Auth 下有 id 映射 bug**（PUT/DELETE 命中错行、
   DELETE 假成功）；用浏览器登录态 + `X-WP-Nonce`（admin-ajax?action=rest-nonce）调
   REST 则完全正常——管理操作一律走 cookie+nonce
+- P8: **Elementor Pro 容器 sticky 假激活（本轮实测踩坑）**：handler 会给容器挂上
+  `elementor-sticky` 基类并创建引擎实例（data("sticky") 存在、window scroll 监听在），
+  但滚动永远不激活（无 `--active`、无内联样式、无 spacer）——疑似容器懒加载
+  （e-lazyloaded）时序 bug。手动 `jQuery(el).sticky({to,offset,classes:{elementor 系类名}})`
+  重建引擎后一切正常 → 已在 lr-assets-snippet.php 加 window load 兜底重建（仅复刻页，
+  编辑器预览跳过，管理条 fixed 时 offset 补偿）。**教训：早期"sticky 验证通过"是假
+  阳性**——当时测的 headerTop=0 实为隐藏主题头的 display:none 零矩形/fixed 残影；
+  sticky 类验证必须锚定 `.lr header` 的 closest 容器并查 `elementor-sticky--active`
+  + getComputedStyle(position)==fixed 双证据
 - P2: Elementor 微件 class 是 `elementor-element elementor-element-xxx
   elementor-widget elementor-widget-html`（elementor-widget 不在开头），正则统计
   必须用 `class="[^"]*elementor-widget elementor-widget-html"`

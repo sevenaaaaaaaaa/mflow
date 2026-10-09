@@ -34,3 +34,60 @@ add_filter( 'body_class', function ( $classes ) {
 	}
 	return $classes;
 } );
+
+/**
+ * Sticky 兜底重建：Elementor Pro 的 sticky handler 在容器懒加载时序下创建的引擎
+ * 实例不生效（有 data-settings、有 .elementor-sticky 基类，但滚动永不激活）。
+ * 这里在 window load 后对所有带 sticky 配置的元素销毁重建引擎（手动重建实测可激活）。
+ * 仅复刻页加载；Elementor 编辑器/预览模式跳过（编辑态交给 Pro 原生 handler）。
+ */
+add_action( 'wp_footer', function () {
+	if ( ! is_singular() || ! get_post_meta( get_queried_object_id(), '_lr_replica', true ) ) {
+		return;
+	}
+	?>
+	<script data-cfasync="false">
+	/* LR sticky rebuild (replica pages only) */
+	( function () {
+		function run() {
+			if ( ! window.jQuery || ! jQuery.fn.sticky ) { return; }
+			if ( /elementor-preview|elementor-iframed/.test( location.search ) ) { return; }
+			var ef = window.elementorFrontend;
+			if ( ef && ef.config && ef.config.environmentMode && ef.config.environmentMode.edit ) { return; }
+			var dev = ( ef && ef.getCurrentDeviceMode ) ? ef.getCurrentDeviceMode() : 'desktop';
+			jQuery( '.elementor-element[data-settings*="sticky"]' ).each( function () {
+				var $el = jQuery( this );
+				var s = $el.data( 'settings' ) || {};
+				if ( ! s.sticky || 'none' === s.sticky ) { return; }
+				var on = s.sticky_on || [ 'desktop', 'tablet', 'mobile' ];
+				if ( on.indexOf( dev ) === -1 ) { return; }
+				var offset = parseInt( s.sticky_offset, 10 ) || 0;
+				var adminBar = document.getElementById( 'wpadminbar' );
+				if ( adminBar && 'fixed' === getComputedStyle( adminBar ).position ) {
+					offset += adminBar.offsetHeight;
+				}
+				try { if ( $el.data( 'sticky' ) ) { $el.sticky( 'destroy' ); } } catch ( e ) {}
+				$el.sticky( {
+					to: s.sticky,
+					offset: offset,
+					effectsOffset: parseInt( s.sticky_effects_offset, 10 ) || 0,
+					classes: {
+						sticky: 'elementor-sticky',
+						stickyActive: 'elementor-sticky--active elementor-section--handles-inside',
+						stickyEffects: 'elementor-sticky--effects',
+						spacer: 'elementor-sticky__spacer'
+					},
+					isRTL: ! ! ( ef && ef.config && ef.config.is_rtl )
+				} );
+			} );
+		}
+		function tryRun( left ) {
+			if ( window.jQuery && jQuery.fn.sticky ) { run(); return; }
+			if ( left > 0 ) { setTimeout( function () { tryRun( left - 1 ); }, 200 ); }
+		}
+		if ( document.readyState === 'complete' ) { tryRun( 10 ); }
+		else { window.addEventListener( 'load', function () { tryRun( 10 ); } ); }
+	} )();
+	</script>
+	<?php
+}, 99 );
