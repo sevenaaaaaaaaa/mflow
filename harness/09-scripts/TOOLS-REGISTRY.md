@@ -45,6 +45,7 @@
 | `comprehensive_may_report.py` | 5月综合报告 | 2026-07-05 | mflow-reports | active | G1-G5 |
 | `report_batch_runner.py` | 批量报告运行器 | 2026-06-12 | mflow-reports | active | G1-G5 |
 | `audit_p3_quality.py` | P3 质量审计 | 2026-07-06 | mflow-quality | active | G1-G5 |
+| `dev/wordpress/audit-content-quality.py` | blogs.lovart.ai 全站内容质量/模板化审计（slop/薄内容/占位残留/跨页重复/坏图） | 2026-10-09 | mflow-quality | active | 首跑 744 页成功 |
 | `audit_pillar_fleet.py` | Pillar 内容审计 | 2026-07-17 | mflow-quality | active | G1-G5 |
 | `generate_pillar_battle_cards.py` | Pillar 竞品卡片生成 | 2026-07-17 | mflow-creation | active | G1-G5 |
 | `backdate_landing_categories.py` | 落地页分类回填 | 2026-07-17 | mflow-ops | active | G1-G5 |
