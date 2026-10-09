@@ -20,6 +20,7 @@ from __future__ import annotations
 import argparse
 import glob
 import json
+import os
 import re
 import sys
 import time
@@ -31,6 +32,20 @@ PROJECT = "o11tm2qe"
 DATASET = "production"
 API = f"https://{PROJECT}.api.sanity.io/v2024-01-01/data/query/{DATASET}"
 CADENCE = Path(__file__).resolve().parents[1] / "automation" / "quality-cadence.json"
+
+
+def sanity_token():
+    """token 取数：env SANITY_TOKEN → run/secrets/sanity.json（服务器）→ /tmp/sanitytoken.txt（开发机）。"""
+    tok = os.environ.get("SANITY_TOKEN", "").strip()
+    if tok:
+        return tok
+    sec = Path(__file__).resolve().parents[2] / "run" / "secrets" / "sanity.json"
+    if sec.exists():
+        try:
+            return json.loads(sec.read_text()).get("token", "").strip()
+        except Exception:
+            pass
+    return Path("/tmp/sanitytoken.txt").read_text().strip()
 
 
 def q_one(query, token, tries=3):
@@ -115,7 +130,7 @@ def main():
     fix_cfg = cfg.get("mainContentFix", {})
     auto = set(fix_cfg.get("autoFix", []))
     queue_classes = set(fix_cfg.get("queueRewrite", []))
-    token = Path("/tmp/sanitytoken.txt").read_text().strip()
+    token = sanity_token()
 
     audit_path = latest_audit(args.audit)
     A = json.loads(audit_path.read_text())

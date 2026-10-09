@@ -53,11 +53,21 @@ run_step "content-health" bash "$SCRIPT_DIR/content-health/weekly-health-check.s
   || notify content-health fail "Weekly health check failed $STAMP" "$MFLOW_LOCAL_TEMP_DIR/mflow/pull/"
 
 # 3.5 主站内容全语言审计（节奏/开关在 dev/automation/quality-cadence.json mainContentAudit.weekly）
+MAIN_AUDIT_DIR="$PROJECT_ROOT/run/main-audit"
+mkdir -p "$MAIN_AUDIT_DIR"
 if [[ "$(python3 -c "import json;print(json.load(open('$PROJECT_ROOT/dev/automation/quality-cadence.json'))['mainContentAudit']['weekly']['enabled'])" 2>/dev/null)" == "True" ]]; then
+  AUDIT_JSON="$MAIN_AUDIT_DIR/main-audit-weekly-$STAMP.json"
   run_step "main-content-audit" env PYTHONIOENCODING=utf-8 "$PYTHON" "$PROJECT_ROOT/dev/scripts/audit-main-content.py" \
-    --out "$MFLOW_LOCAL_TEMP_DIR/mflow/pull/main-audit-weekly-$STAMP.json" --md "$MFLOW_LOCAL_TEMP_DIR/mflow/pull/main-audit-weekly-$STAMP.md" \
-    && notify main-content-audit ok "Main-site content audit done $STAMP" "$MFLOW_LOCAL_TEMP_DIR/mflow/pull/" \
+    --out "$AUDIT_JSON" --md "$MAIN_AUDIT_DIR/main-audit-weekly-$STAMP.md" \
+    && notify main-content-audit ok "Main-site content audit done $STAMP" "$MAIN_AUDIT_DIR" \
     || notify main-content-audit fail "Main-site content audit failed $STAMP" ""
+  # 3.6 主站修复计划：机械 patch（field_patch 批量用）+ 重写队列（后台 preset 消费）
+  if [[ -f "$AUDIT_JSON" ]] && [[ "$(python3 -c "import json;print(json.load(open('$PROJECT_ROOT/dev/automation/quality-cadence.json'))['mainContentFix']['enabled'])" 2>/dev/null)" == "True" ]]; then
+    run_step "main-content-fixplan" env PYTHONIOENCODING=utf-8 "$PYTHON" "$PROJECT_ROOT/dev/scripts/fix-main-content.py" \
+      --audit "$AUDIT_JSON" --outdir "$MAIN_AUDIT_DIR" --write-patch \
+      && notify main-content-fixplan ok "Main-site fix plan + rewrite queue refreshed $STAMP" "$MAIN_AUDIT_DIR" \
+      || notify main-content-fixplan fail "Main-site fix plan failed $STAMP" ""
+  fi
 else
   echo "SKIP main-content-audit (quality-cadence weekly disabled)"
 fi

@@ -1370,6 +1370,9 @@ def loop_engine(loop_id, proj):
             log(loop, f"LLM 调用失败：{e}")
             _loop_save(loop, proj)
             notify_loop_end(loop, proj, "failed")
+            # 致命错误（余额/鉴权类）→ 全局熔断 12h：防止 auto_loop 排程烧空选题队列
+            if _is_fatal_error(str(e)):
+                breaker_trip(f"Loop {loop.get('id', '')} LLM 致命错误：{str(e)[:100]}", cooldown_min=720)
             return
         with _usage_lock:
             loop["tokens_used"] = loop.get("tokens_used", 0) + LAST_USAGE.get("total_tokens", 0)
@@ -2817,7 +2820,8 @@ def _bh_field_patch(item, task, proj):
     sets = item.get("set") or {}
     if not sets:
         raise RuntimeError("缺 set 字段")
-    proj_fields = ",".join(sorted(sets.keys()))
+    # 点路径（如 seo.title）投影必须带引号别名，否则 GROQ 把键名拆开导致 before 记录错位
+    proj_fields = ",".join(f'"{k}": {k}' if "." in str(k) else str(k) for k in sorted(sets.keys()))
     fresh = _sanity_req("query", {"query": f'*[_id=="{did}"][0]{{_id,_rev,{proj_fields}}}'})["result"]
     if not fresh:
         raise RuntimeError("文档不存在")
@@ -6963,6 +6967,147 @@ def preset_expand(pid, opt, proj):
             return {"error": "扫描后没有可自动修复的字段问题（可用「例行 QA 扫描」看明细）"}
         return {"type": "field_patch", "title": f"QA 字段修复（{len(items)} 项）", "items": items,
                 "params": {"batch_size": 10}, "note": f"扫描 {len(ids)} 篇，{len(items)} 篇有可修问题"}
+
+    if pid == "main-content-rewrite-queue":
+        # 主站（www.lovart.ai）审计重写队列 → rewrite 批量任务。
+        # 队列来源：audit-main-content.py / fix-main-content.py 产出，同步到服务器 run/main-audit/。
+        qf = RUN_DIR / "main-audit" / "rewrite-queue.ndjson"
+        if not qf.exists():
+            return {"error": "run/main-audit/rewrite-queue.ndjson 不存在（先在开发机跑主站审计并同步产出）"}
+        seen = set()
+        cf = RUN_DIR / "main-audit" / "rewrite-queue-consumed.ndjson"
+        if cf.exists():
+            for ln in cf.read_text(errors="ignore").splitlines():
+                try:
+                    seen.add(str(json.loads(ln).get("key")))
+                except Exception:
+                    pass
+        prio = {"seq-template": 0, "lang-garbage": 1, "untranslated": 1, "slop": 2, "thin": 3}
+        rows = []
+        for ln in qf.read_text(errors="ignore").splitlines():
+            try:
+                rows.append(json.loads(ln))
+            except Exception:
+                pass
+        # seq-template 行 id=None（只有 slug），用 slug+lang 定位；有 id 的行按 _id
+        rows = [r for r in rows
+                if (r.get("id") or (r.get("slug") and r.get("lang")))
+                and (f"{r.get('kind')}:{r.get('id') or r.get('slug')}" not in seen)]
+        if not rows:
+            return {"error": "队列已全部消费（或无有效条目）"}
+        rows.sort(key=lambda r: (min(prio.get(str(i), 9) for i in (r.get("issues") or ["other"])),
+                                 0 if r.get("lang") == "zh-TW" else 1))
+        rows = rows[:limit]
+        src_dir = RUN_DIR / "main-audit" / "sources"
+        src_dir.mkdir(parents=True, exist_ok=True)
+        INSTR = {
+            "seq-template": "重写该落地页：打破与其他页完全相同的 section 序列（该页属于同序列模板组），"
+                            "按落地页结构重排（hero → 差异化内容段 → FAQ → CTA），文案具体到本页功能与目标人群，"
+                            "禁止与其他页复用句子与段落。",
+            "lang-garbage": None,  # 按语言动态生成
+            "untranslated": None,
+            "slop": "重写并清除 AI slop（unlock/seamless/game-changer/revolutionary 等营销腔），"
+                    "改为具体可验证的事实、步骤、数据点；每句都要有信息量。",
+            "thin": "扩写为完整内容：每个 H2 ≥2 子节，补数据点、案例与 FAQ；禁止灌字，扩的必须是有效信息。",
+        }
+        items = []
+        skipped = []
+        for r in rows:
+            iss = [str(i) for i in (r.get("issues") or ["other"])]
+            lang = str(r.get("lang") or "en")
+            parts = []
+            for i in iss:
+                if i in ("lang-garbage", "untranslated"):
+                    parts.append(f"该页正文当前几乎全是英文（目标语言 {lang}）。把它本地化为 {lang}"
+                                 f"（不是直译：保留事实与结构，标题/描述/FAQ 用地道 {lang}，术语遵循 i18n 词表）。")
+                else:
+                    if INSTR.get(i):
+                        parts.append(INSTR[i])
+            instr = " ".join(parts) or "按内容质量标准重写该页。"
+            key = (f"{r.get('kind')}:{r['id']}" if r.get("id")
+                   else f"{r.get('kind')}:{r.get('slug')}@{r.get('lang') or 'en'}")
+            sp = src_dir / (re.sub(r"[^A-Za-z0-9_.-]", "_", str(r.get('id') or r.get('slug')))[:80] + ".md")
+            if not sp.exists():
+                try:
+                    if r.get("id"):
+                        got = _sanity_req("query", {"query": (
+                            f'*[_id=="{r["id"]}"][0]{{"t": pt::text(body), "bj": bodyJson}}')})["result"]
+                    else:
+                        got = _sanity_req("query", {"query": (
+                            '*[_type=="compositePage" && slug.current==$s && language==$l][0]'
+                            '{"t": pt::text(body), "bj": bodyJson}'),
+                            "params": {"s": r["slug"], "l": r.get("lang") or "en"}})["result"]
+                    d = (got or {}) if isinstance(got, dict) else (got or [{}])[0]
+                    text = d.get("t") or ""
+                    if not text and d.get("bj"):
+                        try:
+                            bj = json.loads(d["bj"])
+                            buf = []
+
+                            def _w(o):
+                                if isinstance(o, str):
+                                    buf.append(o)
+                                elif isinstance(o, dict):
+                                    for k in ("title", "description", "body", "answer", "question",
+                                              "label", "quote", "name", "subtitle"):
+                                        if isinstance(o.get(k), str):
+                                            buf.append(o[k])
+                                    for v in o.values():
+                                        _w(v)
+                                elif isinstance(o, list):
+                                    for x in o:
+                                        _w(x)
+                            _w(bj)
+                            text = "\n".join(buf)
+                        except Exception:
+                            pass
+                    if not text:
+                        skipped.append(r["id"])
+                        continue
+                    sp.write_text(text, encoding="utf-8")
+                except Exception:
+                    skipped.append(r["id"])
+                    continue
+            items.append({"item_id": key, "lang": lang, "topic": r.get("slug") or r["id"],
+                          "source_path": rel_of(sp), "instruction": instr,
+                          "budget_profile": ("deep" if (r.get("words") or 0) > 4000 else "default")})
+        if not items:
+            return {"error": f"首批 {len(rows)} 条均无法导出源内容（源文档缺失或拉取失败）"}
+        # 展开即登记 consumed（幂等：同一批不会被重复展开；失败重试走批量任务的 retry，不走重新展开）
+        try:
+            with cf.open("a", encoding="utf-8") as f:
+                now = time.strftime("%Y-%m-%d %H:%M")
+                for it in items:
+                    f.write(json.dumps({"key": it["item_id"], "at": now}, ensure_ascii=False) + "\n")
+        except Exception:
+            pass
+        return {"type": "rewrite", "title": f"主站重写队列·一批（{len(items)} 页）", "items": items,
+                "params": {"batch_size": 3},
+                "note": ("优先级 seq-template > lang-garbage/untranslated > slop > thin；"
+                         f"导出失败跳过 {len(skipped)} 条。" if skipped else
+                         "优先级 seq-template > lang-garbage/untranslated > slop > thin。"
+                         "dry-run 预演不调 LLM，确认后转真实执行；完成后在队列 consumed 台账登记。")}
+
+    if pid == "main-content-field-patch":
+        # 主站机械修复（seo-fill-from-title / cover-og-fallback 等）→ field_patch 批量。
+        # patch 来源：fix-main-content.py 产出 safe-fixes.ndjson，同步到 run/main-audit/。
+        pf = RUN_DIR / "main-audit" / "safe-fixes.ndjson"
+        if not pf.exists():
+            return {"error": "run/main-audit/safe-fixes.ndjson 不存在（先在开发机生成修复计划并同步）"}
+        items = []
+        for ln in pf.read_text(errors="ignore").splitlines():
+            try:
+                row = json.loads(ln)
+            except Exception:
+                continue
+            sets = (row.get("patch") or {}).get("set") or {}
+            if row.get("id") and sets:
+                items.append({"doc_id": row["id"], "set": sets})
+        items = items[:limit]
+        if not items:
+            return {"error": "safe-fixes.ndjson 无有效 patch 条目"}
+        return {"type": "field_patch", "title": f"主站机械修复（{len(items)} 项）", "items": items,
+                "params": {"batch_size": 10}, "note": "ifRevisionID 保护 + 变更审计可回滚；dry-run 预演后人工确认转真实执行"}
 
     if pid == "landing-refresh-publish":
         # 闭环：落地页改稿 → 结构校验 → patch 发布（链式，默认 dry-run）

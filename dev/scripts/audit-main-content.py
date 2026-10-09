@@ -21,6 +21,7 @@ import collections
 import gzip
 import io
 import json
+import os
 import re
 import sys
 import time
@@ -312,6 +313,20 @@ def load_or_pull(args, token, lang_f):
     return blogs, comps
 
 
+def sanity_token():
+    """token 取数：env SANITY_TOKEN → run/secrets/sanity.json（服务器）→ /tmp/sanitytoken.txt（开发机）。"""
+    tok = os.environ.get("SANITY_TOKEN", "").strip()
+    if tok:
+        return tok
+    sec = Path(__file__).resolve().parents[2] / "run" / "secrets" / "sanity.json"
+    if sec.exists():
+        try:
+            return json.loads(sec.read_text()).get("token", "").strip()
+        except Exception:
+            pass
+    return Path("/tmp/sanitytoken.txt").read_text().strip()
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="/tmp/main-audit.json")
@@ -320,7 +335,7 @@ def main():
     ap.add_argument("--no-shingle", action="store_true", help="跳过跨页近重复（省时）")
     ap.add_argument("--use-cache", action="store_true", help="复用 /tmp/main-audit-cache.json 原始数据")
     args = ap.parse_args()
-    token = Path("/tmp/sanitytoken.txt").read_text().strip()
+    token = sanity_token()
     langs = [x.strip() for x in args.langs.split(",") if x.strip()]
     lang_f = f' && language in {json.dumps(langs)}' if langs else ""
 
