@@ -52,6 +52,16 @@ run_step "content-health" bash "$SCRIPT_DIR/content-health/weekly-health-check.s
   && notify content-health ok "Weekly health check passed $STAMP" "$MFLOW_LOCAL_TEMP_DIR/mflow/pull/" \
   || notify content-health fail "Weekly health check failed $STAMP" "$MFLOW_LOCAL_TEMP_DIR/mflow/pull/"
 
+# 3.5 主站内容全语言审计（节奏/开关在 dev/automation/quality-cadence.json mainContentAudit.weekly）
+if [[ "$(python3 -c "import json;print(json.load(open('$PROJECT_ROOT/dev/automation/quality-cadence.json'))['mainContentAudit']['weekly']['enabled'])" 2>/dev/null)" == "True" ]]; then
+  run_step "main-content-audit" env PYTHONIOENCODING=utf-8 "$PYTHON" "$PROJECT_ROOT/dev/scripts/audit-main-content.py" \
+    --out "$MFLOW_LOCAL_TEMP_DIR/mflow/pull/main-audit-weekly-$STAMP.json" --md "$MFLOW_LOCAL_TEMP_DIR/mflow/pull/main-audit-weekly-$STAMP.md" \
+    && notify main-content-audit ok "Main-site content audit done $STAMP" "$MFLOW_LOCAL_TEMP_DIR/mflow/pull/" \
+    || notify main-content-audit fail "Main-site content audit failed $STAMP" ""
+else
+  echo "SKIP main-content-audit (quality-cadence weekly disabled)"
+fi
+
 # 4 SEO weekly
 if [[ -f "$PROJECT_ROOT/dev/scripts/weekly_review_v3.py" ]]; then
   run_step "seo-weekly" "$PYTHON" "$PROJECT_ROOT/dev/scripts/weekly_review_v3.py" \
