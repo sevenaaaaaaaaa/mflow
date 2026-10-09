@@ -136,7 +136,8 @@ def main():
         for w in c.get("elements", []):
             if w.get("widgetType") == "html":
                 sections_html.append(w["settings"]["html"])
-    want = [int(x) for x in args.sections.split(",")]
+    want = list(range(len(sections_html))) if args.sections.strip().lower() == "all" \
+        else [int(x) for x in args.sections.split(",")]
     ids = N.IdFactory("lr-faithful")
     data = [convert_section(sections_html[i], ids) for i in want]
     out = {"version": "3.35.7", "data": data}
