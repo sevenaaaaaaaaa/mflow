@@ -156,6 +156,9 @@ def comp_text(sections):
     parts = []
 
     def walk(o):
+        if isinstance(o, str):
+            parts.append(o)
+            return
         if isinstance(o, dict):
             for k in ("title", "description", "body", "answer", "question", "label", "quote", "name", "subtitle"):
                 v = o.get(k)
@@ -218,16 +221,23 @@ def audit_comp(c, stats):
             issues.append(f"slop:{name}x{hits}")
     if not c.get("seoTitle") or not c.get("seoDesc"):
         issues.append("seo-missing")
+    # sections 元素可能是 dict / str / 其他，统一取类型
+    def sec_type(s):
+        if isinstance(s, dict):
+            t = s.get("type")
+            return t if isinstance(t, str) else None
+        return "raw" if isinstance(s, str) else None
+
     # FAQ/CTA 完备性（EN 才强制）
     if lang == "en":
-        types = [s.get("type") for s in sections]
+        types = [sec_type(s) for s in sections]
         if "faq" not in types:
             issues.append("no-faq")
         if not any(t and t.startswith("cta") for t in types):
             issues.append("no-cta")
     if not (c.get("cover") if "cover" in c else True):
         issues.append("no-cover")
-    return issues, text, [s.get("type") for s in sections], comp_images(sections)
+    return issues, text, [sec_type(s) for s in sections], comp_images(sections)
 
 
 def lang_ratio_flags(text, lang):
@@ -282,21 +292,39 @@ def near_dup(items, key_fn, min_words=200):
     return out
 
 
+CACHE = Path("/tmp/main-audit-cache.json")
+
+
+def load_or_pull(args, token, lang_f):
+    """拉取 + 磁盘缓存：--use-cache 直接复用上次原始数据，避免重复 10 分钟拉取。"""
+    if args.use_cache and CACHE.exists():
+        raw = json.loads(CACHE.read_text())
+        print(f"[cache] blog={len(raw['blogs'])} comp={len(raw['comps'])} (cached {raw.get('pulled_at','?')})", file=sys.stderr)
+        return raw["blogs"], raw["comps"]
+    print("== pulling blog ==", file=sys.stderr)
+    blogs = pull_paged(f'*[_type=="blog"{lang_f}] | order(_id) [$O...$O+300] {{{BLOG_FIELDS}}}', 300, token, "blog")
+    print("== pulling compositePage ==", file=sys.stderr)
+    comps = pull_paged(f'*[_type=="compositePage"{lang_f}] | order(_id) [$O...$O+100] {{{COMP_FIELDS}}}', 100, token, "comp")
+    if not lang_f:
+        CACHE.write_text(json.dumps({"pulled_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+                                     "blogs": blogs, "comps": comps}))
+        print(f"[cache] saved {CACHE}", file=sys.stderr)
+    return blogs, comps
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default="/tmp/main-audit.json")
     ap.add_argument("--md", default="/tmp/main-audit.md")
     ap.add_argument("--langs", default="", help="逗号分隔语言过滤，空=全部")
     ap.add_argument("--no-shingle", action="store_true", help="跳过跨页近重复（省时）")
+    ap.add_argument("--use-cache", action="store_true", help="复用 /tmp/main-audit-cache.json 原始数据")
     args = ap.parse_args()
     token = Path("/tmp/sanitytoken.txt").read_text().strip()
     langs = [x.strip() for x in args.langs.split(",") if x.strip()]
     lang_f = f' && language in {json.dumps(langs)}' if langs else ""
 
-    print("== pulling blog ==", file=sys.stderr)
-    blogs = pull_paged(f'*[_type=="blog"{lang_f}] | order(_id) [$O...$O+300] {{{BLOG_FIELDS}}}', 300, token, "blog")
-    print("== pulling compositePage ==", file=sys.stderr)
-    comps = pull_paged(f'*[_type=="compositePage"{lang_f}] | order(_id) [$O...$O+100] {{{COMP_FIELDS}}}', 100, token, "comp")
+    blogs, comps = load_or_pull(args, token, lang_f)
     print(f"blog={len(blogs)} comp={len(comps)}", file=sys.stderr)
 
     report = {"generated": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
@@ -353,7 +381,7 @@ def main():
     report["seq_templates"] = {
         f"{k[0]}|{k[1]}": {"n": len(v), "slugs": [r["slug"] for r in v[:30]]}
         for k, v in seq_counter.items() if len(v) >= 5}
-    report["hero_reuse"] = {f"{k[0]}|{k[1]}|{k[2].split('/')[-1][:60]}": {"n": len(v), "slugs": sorted(v)[:20]}
+    report["hero_reuse"] = {f"{k[0]}|{k[1]}|{(k[2] or '').split('/')[-1][:60]}": {"n": len(v), "slugs": sorted((s for s in v if s), key=str)[:20]}
                             for k, v in hero_seen.items() if len(v) >= 5}
 
     # --- 封面跨主题复用（blog） ---
