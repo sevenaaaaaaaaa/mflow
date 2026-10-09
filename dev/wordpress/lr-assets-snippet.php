@@ -1,25 +1,49 @@
 /**
  * Lovart Replica — Assets（常驻）
  *
- * 复刻页作用域化资产的正规 enqueue 通道：
- *   - 仅 _lr_replica 标记的 Elementor 页面加载（历史页面零影响，反向亦然）
+ * 复刻页/LR 模块作用域化资产的正规 enqueue 通道：
+ *   - _lr_replica 整页复刻，或 _elementor_data 含 class="lr 模块（模板库插入）时加载
+ *   - 历史页面零影响，反向亦然
  *   - CSS: lovart-replica.css（已作用域化到 .lr / .lr.dark，明暗由包裹类决定）
  *   - JS:  lovart-replica.js（footer + defer + data-cfasync="false"，
  *          规避 Cloudflare Rocket Loader 劫持导致的交互失效）
- *   - body class lr-replica-page；隐藏 Elementor Pro 主题构建器的站点页头/页脚
- *     （历史页用 elementor_canvas 不含该位置；复刻页自带 lovart.ai 站头，叠层会重复）
+ *   - body class lr-replica-page + 隐藏 Elementor Pro 主题构建器站点头尾，
+ *     仅限 _lr_replica 整页（插入单模块的页面保留自身主题头尾）
  *
  * _lr_replica 由迁移通道（lr-elem-bridge）写入，Elementor 编辑器保存不会清除该标记。
+ * LR 模板库（lr-* 共 245 个）经 lr_elem_template 端点导入 elementor_library。
  */
 add_action( 'wp_enqueue_scripts', function () {
 	$pid = get_queried_object_id();
-	if ( ! $pid || ! get_post_meta( $pid, '_lr_replica', true ) ) {
+	if ( ! $pid || ! lr_replica_has_module( $pid ) ) {
 		return;
 	}
 	wp_enqueue_style( 'lr-replica', 'https://nownexts.com/lr-assets/lovart-replica.css?v=2', array(), null );
 	wp_enqueue_script( 'lr-replica', 'https://nownexts.com/lr-assets/lovart-replica.js?v=2', array(), null, true );
-	wp_add_inline_style( 'lr-replica', '.lr-replica-page [data-elementor-type="header"],.lr-replica-page [data-elementor-type="footer"]{display:none !important}' );
+	// 隐藏主题构建器头尾仅限 _lr_replica 整页（插入单模块的页面保留自身主题头尾）
+	if ( get_post_meta( $pid, '_lr_replica', true ) ) {
+		wp_add_inline_style( 'lr-replica', '.lr-replica-page [data-elementor-type="header"],.lr-replica-page [data-elementor-type="footer"]{display:none !important}' );
+	}
 }, 20 );
+
+/**
+ * 模块级资产检测：页面/文章/LPagery 生成页只要 _elementor_data 里含有 LR 模块
+ * （class="lr 包裹），就按需 enqueue 作用域资产——模板可插入任意 Elementor 文档。
+ * 历史页（无 LR 内容）不受影响。
+ */
+function lr_replica_has_module( $pid ) {
+	if ( ! $pid ) {
+		return false;
+	}
+	if ( get_post_meta( $pid, '_lr_replica', true ) ) {
+		return true;
+	}
+	if ( 'builder' !== (string) get_post_meta( $pid, '_elementor_edit_mode', true ) ) {
+		return false;
+	}
+	$data = (string) get_post_meta( $pid, '_elementor_data', true );
+	return false !== strpos( $data, 'class=\"lr' ) || false !== strpos( $data, 'class=&quot;lr' );
+}
 
 add_filter( 'script_loader_tag', function ( $tag, $handle ) {
 	if ( 'lr-replica' === $handle ) {
@@ -42,7 +66,7 @@ add_filter( 'body_class', function ( $classes ) {
  * 仅复刻页加载；Elementor 编辑器/预览模式跳过（编辑态交给 Pro 原生 handler）。
  */
 add_action( 'wp_footer', function () {
-	if ( ! is_singular() || ! get_post_meta( get_queried_object_id(), '_lr_replica', true ) ) {
+	if ( ! is_singular() || ! lr_replica_has_module( get_queried_object_id() ) ) {
 		return;
 	}
 	?>

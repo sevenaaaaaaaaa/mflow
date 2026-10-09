@@ -29,6 +29,7 @@ add_action( 'wp_ajax_lr_elem_import', function () {
 	if ( ! $pid || 0 !== strpos( $url, 'https://nownexts.com/lr-assets/' ) ) {
 		wp_send_json_error( 'args' );
 	}
+	$nomark = ! empty( $_POST['nomark'] );
 	$r = wp_remote_get( $url, array( 'timeout' => 90 ) );
 	if ( is_wp_error( $r ) || 200 !== (int) wp_remote_retrieve_response_code( $r ) ) {
 		wp_send_json_error( 'fetch:' . wp_remote_retrieve_response_code( $r ) );
@@ -42,7 +43,11 @@ add_action( 'wp_ajax_lr_elem_import', function () {
 	update_post_meta( $pid, '_elementor_template_type', 'wp-page' );
 	update_post_meta( $pid, '_elementor_version', isset( $payload['version'] ) ? $payload['version'] : '3.35.7' );
 	update_post_meta( $pid, '_elementor_data', wp_slash( wp_json_encode( $payload['data'] ) ) );
-	update_post_meta( $pid, '_lr_replica', 1 );
+	if ( $nomark ) {
+		delete_post_meta( $pid, '_lr_replica' );
+	} else {
+		update_post_meta( $pid, '_lr_replica', 1 );
+	}
 	delete_post_meta( $pid, '_elementor_css' );
 
 	// 重生成该页的 Elementor CSS 文件（post-{id}.css + meta 版本号）
@@ -73,4 +78,64 @@ add_action( 'wp_ajax_lr_elem_read', function () {
 		'lr_replica'    => get_post_meta( $pid, '_lr_replica', true ),
 		'data'          => $data,
 	) );
+} );
+
+/**
+ * action=lr_elem_template  name=<模板标题>  slug=<post_name>  template_type=page|container
+ *                          url=<https://nownexts.com/lr-assets/elem/templates/*.json>  secret=...
+ *   → upsert elementor_library 帖子（按 post_name 去重），写 Elementor 模板 meta。
+ *     模板 JSON 格式同页面：{"version":"3.35.7","data":[...]}
+ */
+add_action( 'wp_ajax_lr_elem_template', function () {
+	if ( ! current_user_can( 'edit_pages' ) ) {
+		wp_send_json_error( 'perm' );
+	}
+	if ( ! isset( $_POST['secret'] ) || LR_BRIDGE_SECRET !== $_POST['secret'] ) {
+		wp_send_json_error( 'secret' );
+	}
+	$name = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
+	$slug = isset( $_POST['slug'] ) ? sanitize_title( wp_unslash( $_POST['slug'] ) ) : '';
+	$type = isset( $_POST['template_type'] ) ? sanitize_key( wp_unslash( $_POST['template_type'] ) ) : 'container';
+	$url  = isset( $_POST['url'] ) ? esc_url_raw( wp_unslash( $_POST['url'] ) ) : '';
+	if ( ! $name || ! $slug || ! in_array( $type, array( 'page', 'container', 'section' ), true )
+		|| 0 !== strpos( $url, 'https://nownexts.com/lr-assets/' ) ) {
+		wp_send_json_error( 'args' );
+	}
+	$r = wp_remote_get( $url, array( 'timeout' => 90 ) );
+	if ( is_wp_error( $r ) || 200 !== (int) wp_remote_retrieve_response_code( $r ) ) {
+		wp_send_json_error( 'fetch:' . wp_remote_retrieve_response_code( $r ) );
+	}
+	$payload = json_decode( wp_remote_retrieve_body( $r ), true );
+	if ( empty( $payload['data'] ) || ! is_array( $payload['data'] ) ) {
+		wp_send_json_error( 'payload' );
+	}
+
+	$existing = get_posts( array(
+		'post_type'      => 'elementor_library',
+		'name'           => $slug,
+		'post_status'    => array( 'publish', 'draft', 'trash' ),
+		'posts_per_page' => 1,
+		'fields'         => 'ids',
+	) );
+	$pid = $existing ? (int) $existing[0] : 0;
+	if ( $pid ) {
+		wp_update_post( array( 'ID' => $pid, 'post_title' => $name, 'post_status' => 'publish' ) );
+		$created = false;
+	} else {
+		$pid = wp_insert_post( array(
+			'post_title'  => $name,
+			'post_name'   => $slug,
+			'post_type'   => 'elementor_library',
+			'post_status' => 'publish',
+		) );
+		if ( ! $pid || is_wp_error( $pid ) ) {
+			wp_send_json_error( 'insert' );
+		}
+		$created = true;
+	}
+	update_post_meta( $pid, '_elementor_edit_mode', 'builder' );
+	update_post_meta( $pid, '_elementor_template_type', $type );
+	update_post_meta( $pid, '_elementor_version', isset( $payload['version'] ) ? $payload['version'] : '3.35.7' );
+	update_post_meta( $pid, '_elementor_data', wp_slash( wp_json_encode( $payload['data'] ) ) );
+	wp_send_json_success( array( 'template' => $pid, 'slug' => $slug, 'created' => $created, 'elements' => count( $payload['data'] ) ) );
 } );
