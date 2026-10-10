@@ -641,6 +641,67 @@ window.LR_COMPARE = {
     });
   }
 
+  /* ---------- 链接与 CTA 生产化 ----------
+     1) 无跳转的 CTA button（Get started / Get X now / Try Lovart today）→ 跳 lovart.ai/canvas
+     2) href="#" 死链：试用意图跳 /canvas；指引意图滚动到工作流/能力展示区块
+     3) 外链清理：?cb= 缓存参数移除；真站 404 死链改道
+     4) 源模板设计说明文字泄漏（"cta · bgStyle: ..."）藏除 */
+  var LR_CANVAS = "https://www.lovart.ai/canvas";
+  var LR_LINK_REDIRECT = {
+    "https://www.lovart.ai/blog/shopify-ai-design-agent-vs-generator": "https://www.lovart.ai/blog",
+    "https://www.lovart.ai/blog/shopify-pdp-creative-refresh-plan": "https://www.lovart.ai/blog",
+    "https://www.lovart.ai/blog/shopify-brand-kit-consistency": "https://www.lovart.ai/blog",
+    "https://www.lovart.ai/nonprofit": "https://www.lovart.ai/solutions/ai-design-solution-for-nonprofits"
+  };
+  function initLinkFix(root) {
+    // 只处理复刻内容（scope 或 .lr 容器内），不动 WordPress 界面元素
+    var scopes = qa(".lovart-replica-scope, .lr", root);
+    scopes.forEach(function (scope) {
+      // 1) CTA button
+      qa("button", scope).forEach(function (b) {
+        if (b.dataset.lovartCta) return;
+        var t = (b.textContent || "").trim();
+        if (!/^(get started|get started for free|get [\w ]+ now|try lovart today|start free)$/i.test(t)) return;
+        b.dataset.lovartCta = "1";
+        b.style.cursor = "pointer";
+        b.addEventListener("click", function (e) { e.preventDefault(); window.location.href = LR_CANVAS; });
+      });
+      // 2) 死链 #
+      qa('a[href="#"], a[href=""]', scope).forEach(function (a) {
+        if (a.dataset.lovartLink) return;
+        a.dataset.lovartLink = "1";
+        var t = (a.textContent || "").trim();
+        if (/try|pick a|start/i.test(t)) {
+          a.setAttribute("href", LR_CANVAS);
+        } else {
+          a.style.cursor = "pointer";
+          a.addEventListener("click", function (e) {
+            e.preventDefault();
+            var target = q('[data-lp-section="workflow-horizontal"], [data-lp-section="workflow-vertical"], [data-lp-section="capability-tabs"], [data-lp-section="showcase-stacked"]', document);
+            if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+            else window.location.href = LR_CANVAS;
+          });
+        }
+      });
+      // 3) 外链清理与改道
+      qa("a[href]", scope).forEach(function (a) {
+        if (a.dataset.lovartLink) return;
+        var raw = a.getAttribute("href") || "";
+        if (LR_LINK_REDIRECT[raw]) { a.setAttribute("href", LR_LINK_REDIRECT[raw]); a.dataset.lovartLink = "1"; return; }
+        if (/[?&]cb=\d+/.test(raw)) { a.setAttribute("href", raw.replace(/[?&]cb=\d+/g, "")); a.dataset.lovartLink = "1"; }
+      });
+      // 4) 设计说明文字泄漏
+      qa("p, span, div", scope).forEach(function (p) {
+        if (p.dataset.lovartLeak || p.children.length) return;
+        var t = (p.textContent || "").trim();
+        if (/^(cta|section|block|hero|card)\s*[·・:\-]\s*(bgStyle|bg|style|layout)\s*:/i.test(t)) {
+          p.dataset.lovartLeak = "1";
+          p.style.display = "none";
+        }
+      });
+    });
+  }
+
   /* ---------- 锚点防跳顶 + 横向拖拽（保留原有） ---------- */
   function initNoJump(root) {
     (root || document).addEventListener("click", function (e) {
@@ -700,6 +761,7 @@ window.LR_COMPARE = {
   function initAll() {
     initCssHeal();
     initLazyFix();
+    initLinkFix(document);
     // before/after：role="slider" 即滑块本体，直接初始化
     qa('[role="slider"]').forEach(initSlider);
     initAccordion(document);
