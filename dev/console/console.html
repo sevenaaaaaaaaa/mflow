@@ -448,7 +448,7 @@ body.sb-open #sb-mask{display:block}
     <button class="mini" onclick="newProject()" title="新建项目" style="height:34px;padding:0 10px">＋</button>
   </div>
   <div class="sb-quick">
-    <button onclick="setTab('tasks')" title="任务看板"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>任务看板</span></button>
+    <button onclick="setTab('taskhub')" title="任务中心"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>任务看板</span></button>
     <button onclick="setTab('agent')" title="Agent 任务台"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4v1a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3h1v3M12 3a4 4 0 0 1 4 4v1a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-1v3"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/></svg><span>Agent</span></button>
     <button onclick="setTab('calt')" title="内容日历"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>日历</span></button>
   </div>
@@ -460,9 +460,7 @@ body.sb-open #sb-mask{display:block}
   <button class="s-item" data-t="inbox" onclick="setTab('inbox')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg><span>收件箱</span><span class="sbad" id="nav-inbox" style="display:none">0</span></button>
   <button class="s-item" data-t="onboard" onclick="setTab('onboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3.5"/></svg><span>开工向导</span></button>
   <button class="s-item" data-t="run" onclick="setTab('run')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><circle cx="8" cy="16" r="2"/><circle cx="15" cy="9" r="2"/><path d="M9.5 14.5 13.5 10.5"/></svg><span>执行画布</span><span class="sbad mutb" id="nav-run">0</span></button>
-  <button class="s-item" data-t="batch" onclick="setTab('batch')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/><circle cx="20" cy="18" r="2"/></svg><span>批量任务</span><span class="sbad mutb" id="nav-batch">0</span></button>
   <button class="s-item" data-t="create" onclick="setTab('create')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg><span>创作中心</span></button>
-  <button class="s-item" data-t="tasks" onclick="setTab('tasks')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>任务看板</span><span class="sbad" id="nav-tasks">0</span></button>
   <div class="sec-title">质量与发布</div>
   <button class="s-item" data-t="qa" onclick="setTab('qa')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>QA 编排</span></button>
   <button class="s-item" data-t="dist" onclick="setTab('dist')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><span>分发队列</span><span class="sbad mutb" id="nav-dist">0</span></button>
@@ -509,7 +507,7 @@ body.sb-open #sb-mask{display:block}
     </div>
     <div class="metrics" id="home-pulse" style="margin-bottom:14px"></div>
     <div class="ov-grid" style="margin-bottom:14px">
-      <div class="card"><div class="card-head"><h3>🟠 等你确认 <span class="mut tnum" id="home-confirm-n"></span></h3><button class="more" onclick="setTab('batch')">全部批量 →</button></div><div id="home-confirm" class="qlist ql"></div></div>
+      <div class="card"><div class="card-head"><h3>🟠 等你确认 <span class="mut tnum" id="home-confirm-n"></span></h3><button class="more" onclick="setTab('taskhub')">任务中心 →</button></div><div id="home-confirm" class="qlist ql"></div></div>
       <div class="card"><div class="card-head"><h3>我要……</h3></div><div class="qlist ql" id="home-goto"></div></div>
     </div>
     <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>工作模式 <span class="badge" id="mode-badge" style="margin-left:6px"></span></h3>
@@ -568,7 +566,7 @@ body.sb-open #sb-mask{display:block}
       <div class="card tcol"><div class="card-head"><h3>进行中 <span class="mut tnum" id="cnt-doing"></span></h3></div><div id="col-doing" class="kcol"></div></div>
       <div class="card tcol"><div class="card-head"><h3>已完成 <span class="mut tnum" id="cnt-done"></span></h3></div><div id="col-done" class="kcol"></div></div>
     </div>
-    <div class="card" style="margin-top:14px"><div class="card-head"><h3>批量任务进度</h3><button class="more" onclick="setTab('batch')">全部 →</button></div><div id="task-batches"></div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>批量任务进度</h3><button class="more" onclick="setTab('taskhub')">任务中心 →</button></div><div id="task-batches"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>自动同步队列（只读）</h3></div><div id="autoq"></div></div>
   </section>
 
@@ -1174,14 +1172,21 @@ body.sb-open #sb-mask{display:block}
 
   <!-- ============ 内容日历 ============ -->
   <section class="page" id="pg-calt">
-    <div class="pg-head"><div><div class="kick">我的工作</div><h1>内容<em class="sf">日历</em></h1>
-      <p class="pg-sub" id="calt-sub">多语言成品文章库：按日期浏览、按语言过滤、全文搜索、在线阅读。</p></div>
-      <div class="head-actions"><input id="calt-q" placeholder="搜标题/slug…" style="width:220px" onkeydown="if(event.key==='Enter')caltLoad()">
-      <select id="calt-lang" onchange="caltLoad()"><option value="">全部语言</option><option value="en">en</option><option value="zh">zh</option><option value="zhtw">zhtw</option><option value="ja">ja</option><option value="ko">ko</option><option value="de">de</option><option value="fr">fr</option><option value="pt">pt</option><option value="ru">ru</option><option value="it">it</option></select>
-      <button class="btn primary" onclick="caltLoad()">查询</button></div></div>
-    <div class="stats" id="calt-stats"></div>
-    <div class="card"><div class="card-head"><h3>近 12 个月发文分布</h3></div><div class="chart-bars" id="calt-chart" style="height:90px"></div></div>
-    <div class="card"><div class="card-head"><h3>文章列表 <span class="mut" id="calt-n"></span></h3></div><div id="calt-list" class="flist"></div></div>
+    <div class="pg-head"><div><div class="kick">排期</div><h1>内容<em class="sf">日历</em></h1>
+      <p class="pg-sub" id="cal-sub">主站日历：成品文章按发布日期排期，拖动文章改日期；任务产出的文章自动落位批次完成日。</p></div>
+      <div class="head-actions">
+        <span class="chip cal-v on" id="calv-main" onclick="calView('main')">主站日历</span>
+        <span class="chip cal-v" id="calv-dist" onclick="calView('dist')">分发日历</span>
+        <button class="btn ghost" onclick="calMonth(-1)">‹</button>
+        <b class="tnum" id="cal-title" style="min-width:96px;text-align:center">—</b>
+        <button class="btn ghost" onclick="calMonth(1)">›</button>
+        <button class="btn ghost" onclick="calToday()">本月</button></div></div>
+    <div class="row" style="margin-bottom:12px">
+      <input id="cal-q" placeholder="搜标题/slug…" style="flex:1;min-width:180px" onkeydown="if(event.key==='Enter')calRender()">
+      <select id="cal-lang" onchange="calRender()" style="width:110px"><option value="">全部语言</option><option value="en">en</option><option value="zh">zh</option><option value="zhtw">zhtw</option><option value="ja">ja</option><option value="ko">ko</option><option value="de">de</option><option value="fr">fr</option><option value="pt">pt</option><option value="ru">ru</option><option value="it">it</option></select>
+      <span class="mut" style="font-size:11.5px;align-self:center">🟩 主站文档 · 🟧 分发排队 · ⬜ 任务产出（只读）</span></div>
+    <div class="card" style="margin-bottom:14px"><div id="cal-grid"></div></div>
+    <div class="card"><div class="card-head"><h3>明细列表 <span class="mut" id="cal-n"></span></h3></div><div id="cal-list" class="flist"></div></div>
   </section>
 
   <!-- ============ 工作流地图 ============ -->
@@ -2279,7 +2284,7 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
  $('pg-'+t).classList.add('on');
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
-   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,taskhub:loadHub,agent:agLoad,qa:qaLoad,run:runLoad,onboard:loadOnboard,auto:loadAuto,mem:memLoad,audit:auditLoad,inbox:inboxLoad}[t]||(()=>{}))()}
+   calt:calLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,taskhub:loadHub,agent:agLoad,qa:qaLoad,run:runLoad,onboard:loadOnboard,auto:loadAuto,mem:memLoad,audit:auditLoad,inbox:inboxLoad}[t]||(()=>{}))()}
 /* ---- 阅读器 + 正文编辑器 + 改动对照（P2-1）----
    此前阅读器全只读：AI 出稿后人只能「通过/打回重跑」，改一个词都要回 CMS。
    编辑与门禁强绑定——保存即重跑四道门禁，BLOCK 不给「可发布」。 */
@@ -2458,7 +2463,7 @@ function loadHome(){modeLoad();loadSelfcheck();loadStart();loadNextActions();inb
   o.seo_weekly&&['SEO 周报',o.seo_weekly.name,o.seo_weekly.path],
   o.sentinel_latest&&['舆情日报',o.sentinel_latest.name,o.sentinel_latest.path]
  ].filter(Boolean).map(([t,n,p])=>`<a onclick="openReader('${esc(p)}')"><span class="act-ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><span class="qt"><span class="badge" style="margin-right:8px">${t}</span>${esc(n)}</span><span class="qd">阅读 →</span></a>`).join('');
- $('nav-tasks').textContent=o.open_tasks;$('nav-dist').textContent=o.dist_open;$('nav-pipe').textContent=o.pipeline_inflight;
+ if($('nav-tasks'))$('nav-tasks').textContent=o.open_tasks;$('nav-dist').textContent=o.dist_open;$('nav-pipe').textContent=o.pipeline_inflight;
  const lines=(o.daily.tail||'').split('\n').filter(l=>/OK|FAIL|SKIP|✅|❌/.test(l)).slice(-4);
  $('home-acts').innerHTML=(lines.length?lines.map(l=>{const ok=/OK|✅/.test(l);
   return `<div class="act-item"><span class="act-ic ${ok?'ok':'wn'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><div class="act-tx"><div class="act-t">${esc(l.replace(/^(OK|FAIL|SKIP):?\s*/,''))}</div><div class="act-m">每日管线</div></div></div>`}).join(''):emptyBox('🌙','暂无活动','看调度与日志',"setTab('sys')"))+
@@ -2479,10 +2484,10 @@ function homePulse(){
   const ts=Array.isArray(r[0])?r[0]:((r[0]&&r[0].tasks)||[]);
   const pbs=Array.isArray(r[1])?r[1]:((r[1]&&r[1].playbooks)||[]);
   const ov=r[2]||{};
-  const runB=ts.filter(t=>t.status==='running'||t.status==='queued').length;
+  const runB=ts.filter(t=>t.type!=='qa'&&(t.status==='running'||t.status==='queued')).length;
   const inflight=ov.pipeline_inflight||0;
   const enabled=(pbs||[]).filter(x=>x.enabled).length;
-  const waitB=ts.filter(t=>t.dry_run&&t.status==='done'&&t.stats&&t.stats.done===0&&t.stats.skipped>0);
+  const waitB=ts.filter(t=>t.type!=='qa'&&t.dry_run&&t.status==='done'&&t.stats&&t.stats.done===0&&t.stats.skipped>0);
   const open=ov.open_tasks||0;
   const nh=$('nav-hub');if(nh){const n=waitB.length+runB;nh.textContent=n||'';nh.style.display=n?'':'none'}
   $('home-pulse').innerHTML=[
@@ -2511,11 +2516,12 @@ function gscDecayBatch(ev){if(ev)ev.stopPropagation();if(!confirm('把 GSC 里�
  api('api/gsc/decay_batch',{limit:10}).then(r=>{if(r.error)return toast(r.error,'bad');
   toast('已建预演批 '+r.id+'（'+r.total+' 页，不写库）','ok');if((r.pages||[]).length)console.log('GSC 命中页',r.pages);setTab('batch');setTimeout(()=>btDetail(r.id),500)}).catch(e=>toast('失败：'+e,'bad'))}
 /* ---- 任务中心：后台所有执行任务的统一视图 ---- */
-let HUB_F='all',HUB_TMR=null,HUB_B=[],HUB_R=[];
+let HUB_F='all',HUB_MODE='list',HUB_TYPE='all',HUB_TMR=null,HUB_B=[],HUB_R=[],HUB_T=[];
 function loadHub(){if(HUB_TMR)clearInterval(HUB_TMR);hubLoad();HUB_TMR=setInterval(()=>{if(TAB==='taskhub')hubLoad(true)},30000)}
-function hubLoad(silent){Promise.all([api('api/batch/list'),api('api/runs')]).then(r=>{
-  HUB_B=Array.isArray(r[0])?r[0]:((r[0]&&r[0].tasks)||[]);
+function hubLoad(silent){Promise.all([api('api/batch/list'),api('api/runs'),api('api/tasks')]).then(r=>{
+  HUB_B=(Array.isArray(r[0])?r[0]:((r[0]&&r[0].tasks)||[])).filter(t=>t.type!=='qa');
   HUB_R=Array.isArray(r[1])?r[1]:((r[1]&&r[1].runs)||[]);
+  HUB_T=(r[2]&&r[2].manual)||[];
   hubRender();const nh=$('nav-hub');if(nh){const n=HUB_B.filter(t=>(t.dry_run&&t.status==='done'&&t.stats&&t.stats.done===0&&t.stats.skipped>0)||t.status==='running'||t.status==='queued').length;nh.textContent=n||'';nh.style.display=n?'':'none'}
  }).catch(()=>{})}
 function hubGrp(t){return (t.dry_run&&t.status==='done'&&t.stats&&t.stats.done===0&&t.stats.skipped>0)?'confirm':(t.status==='running'||t.status==='queued')?'run':(t.status==='failed'||(t.stats&&t.stats.failed>0))?'fail':t.status==='paused'?'pause':'done'}
@@ -2523,37 +2529,90 @@ function hubAct(id,act,msg){api('api/batch/action',{id:id,action:act}).then(r=>{
 function hubOpen(id){setTab('batch');setTimeout(()=>btDetail(id),400)}
 function hubRender(){
  const G={confirm:'需我确认',run:'执行中',pause:'已暂停',fail:'失败',done:'已完成'};
- const cnt={};HUB_B.forEach(t=>{const g=hubGrp(t);cnt[g]=(cnt[g]||0)+1});
- cnt.all=HUB_B.length;
- $('hub-filter').innerHTML=[['all','全部'],['confirm','需我确认'],['run','执行中'],['pause','已暂停'],['fail','失败'],['done','已完成']]
-  .map(([k,l])=>`<span class="chip ${HUB_F===k?'on':''}" onclick="HUB_F='${k}';hubRender()">${l}${cnt[k]?' · '+cnt[k]:''}</span>`).join('');
- const list=HUB_B.filter(t=>HUB_F==='all'||hubGrp(t)===HUB_F)
-  .sort((a,b)=>{const o={confirm:0,run:1,pause:2,fail:3,done:4};return o[hubGrp(a)]-o[hubGrp(b)]||(b.created||'').localeCompare(a.created||'')});
- const rows=list.map(t=>{const g=hubGrp(t);const s=t.stats||{};const pct=s.total?Math.round((s.done+s.skipped+s.failed)/s.total*100):0;
-  const badge=g==='confirm'?'<span class="badge" style="background:var(--warn,#e6a23c)">预演通过·待确认</span>'
-   :`<span class="badge ${g==='done'?'pipe':(g==='fail'?'':'dist')}" style="${g==='done'?'background:var(--ok)':(g==='fail'?'background:var(--bad)':'')}">${esc(btStatus(t.status))}</span>`;
-  const acts=[g==='confirm'?'<button class="mini" style="background:var(--accent);color:#fff" onclick="hubAct(\''+esc(t.id)+'\',\'go_real\',\'已转真实执行\')">▶ 确认执行</button>':'',
-   t.status==='running'||t.status==='queued'?'<button class="mini" onclick="hubAct(\''+esc(t.id)+'\',\'pause\',\'已暂停\')">⏸ 暂停</button>':'',
-   t.status==='paused'?'<button class="mini" onclick="hubAct(\''+esc(t.id)+'\',\'resume\',\'已继续\')">▶ 继续</button>':'',
-   s.failed?'<button class="mini" onclick="hubAct(\''+esc(t.id)+'\',\'retry_failed\',\'已重试失败项\')">↻ 重试失败</button>':'',
-   !['done','cancelled'].includes(t.status)?'<button class="mini" onclick="hubAct(\''+esc(t.id)+'\',\'cancel\',\'已取消\')">✕ 取消</button>':'',
-   '<button class="mini" onclick="hubOpen(\''+esc(t.id)+'\')">详情</button>'].filter(Boolean).join(' ');
-  return `<tr><td><b style="font-size:12.5px">${esc(t.title||t.id)}</b><div class="mut" style="font-size:10.5px">${esc(t.id)}${t.dry_run?' · 预演（不写库）':''}</div></td>
-   <td><span class="badge dist">${esc(btType(t.type))}</span></td>
-   <td style="min-width:120px"><div class="mut tnum" style="font-size:11px">${s.done||0} done · ${s.skipped||0} skip · ${s.failed||0} fail</div><div style="height:4px;background:var(--border);border-radius:2px;margin-top:4px"><div style="height:4px;border-radius:2px;background:var(--accent);width:${pct}%"></div></div></td>
-   <td>${badge}</td><td class="mut" style="font-size:11px">${esc(t.created||'')}</td><td style="white-space:nowrap">${acts}</td></tr>`}).join('');
- const runs=HUB_R.filter(r=>r.kind==='playbook'||r.playbook).slice(0,5);
- $('hub-body').innerHTML=
-  '<div class="card" style="margin-bottom:14px"><div class="card-head"><h3>执行任务 '+list.length+' 个</h3></div>'
-  +(list.length?'<table><tr><th>任务</th><th>类型</th><th>进度</th><th>状态</th><th>创建</th><th>操作</th></tr>'+rows+'</table>'
-    :emptyBox('✅','该筛选下暂无任务','看全部',"HUB_F='all';hubRender()"))+'</div>'
-  +'<div class="card"><div class="card-head"><h3>剧本执行记录（自动托管）</h3><button class="more" onclick="setTab(&quot;auto&quot;)">全部 →</button></div>'
-  +(runs.length?'<table><tr><th>执行</th><th>剧本</th><th>状态</th><th>创建</th><th></th></tr>'+runs.map(r=>`<tr><td class="mut" style="font-size:11px">${esc(r.id)}</td><td>${esc(r.title||'')}</td><td><span class="badge ${r.status==='done'?'pipe':''}" style="${r.status==='done'?'background:var(--ok)':(r.status==='failed'?'background:var(--bad)':'')}">${esc(r.status==='done'?'已完成':r.status==='failed'?'失败':'执行中')}</span></td><td class="mut" style="font-size:11px">${esc(r.created||'')}</td><td><button class="mini" onclick="setTab('run');setTimeout(()=>runDetail('${esc(r.id)}'),600)">画布 →</button></td></tr>`).join('')+'</table>'
+ const cnt={all:HUB_B.length};HUB_B.forEach(t2=>{const g=hubGrp(t2);cnt[g]=(cnt[g]||0)+1});
+ const mcnt={batch:HUB_B.length,manual:HUB_T.filter(x=>x.status!=='done').length,runs:HUB_R.length};
+ $('hub-filter').innerHTML=
+  `<span class="chip ${HUB_MODE==='list'?'on':''}" onclick="HUB_MODE='list';hubRender()">☰ 清单</span>`+
+  `<span class="chip ${HUB_MODE==='board'?'on':''}" onclick="HUB_MODE='board';hubRender()">▦ 看板</span><span class="mut" style="margin:0 4px">·</span>`+
+  [['all','全部'],['manual','手动任务 '+mcnt.manual],['batch','批量任务 '+mcnt.batch],['runs','剧本 '+mcnt.runs]]
+   .map(([k,l])=>`<span class="chip ${HUB_TYPE===k?'on':''}" onclick="HUB_TYPE='${k}';hubRender()">${l}</span>`).join('');
+ if(HUB_MODE==='board')return hubBoard();
+ let html='';
+ if(HUB_TYPE!=='manual'&&HUB_TYPE!=='runs'){
+  const st=HUB_TYPE==='manual'?null:HUB_F;
+  const list=HUB_B.filter(t2=>st==='all'||hubGrp(t2)===st)
+   .sort((a,b)=>{const o={confirm:0,run:1,pause:2,fail:3,done:4};return o[hubGrp(a)]-o[hubGrp(b)]||(b.created||'').localeCompare(a.created||'')});
+  html+='<div class="card" style="margin-bottom:14px"><div class="card-head"><h3>批量任务 '+list.length+'</h3>'+
+   (['all','confirm','run','pause','fail','done'].map(k=>`<span class="chip ${HUB_F===k?'on':''}" onclick="HUB_F='${k}';hubRender()" style="margin-left:4px">${k==='all'?'全部':G[k]||k}${cnt[k]&&k!=='all'?'·'+cnt[k]:''}</span>`).join(''))+'</div>'
+   +(list.length?'<table><tr><th>任务</th><th>类型</th><th>进度</th><th>状态</th><th>创建</th><th>操作</th></tr>'+list.map(t2=>{
+    const g=hubGrp(t2);const s=t2.stats||{};const pct=s.total?Math.round((s.done+s.skipped+s.failed)/s.total*100):0;
+    const badge=g==='confirm'?'<span class="badge" style="background:var(--warn,#e6a23c)">预演通过·待确认</span>'
+     :`<span class="badge ${g==='done'?'pipe':''}" style="${g==='done'?'background:var(--ok)':(g==='fail'?'background:var(--bad)':'')}">${esc(btStatus(t2.status))}</span>`;
+    const acts=[g==='confirm'?`<button class="mini" style="background:var(--accent);color:#fff" onclick="hubAct('${esc(t2.id)}','go_real','已转真实执行')">▶ 确认执行</button>`:'',
+     (t2.status==='running'||t2.status==='queued')?`<button class="mini" onclick="hubAct('${esc(t2.id)}','pause','已暂停')">⏸ 暂停</button>`:'',
+     t2.status==='paused'?`<button class="mini" onclick="hubAct('${esc(t2.id)}','resume','已继续')">▶ 继续</button>`:'',
+     s.failed?`<button class="mini" onclick="hubAct('${esc(t2.id)}','retry_failed','已重试失败项')">↻ 重试失败</button>`:'',
+     !['done','cancelled'].includes(t2.status)?`<button class="mini" onclick="hubAct('${esc(t2.id)}','cancel','已取消')">✕ 取消</button>`:'',
+     `<button class="mini" onclick="hubOpen('${esc(t2.id)}')">详情</button>`].filter(Boolean).join(' ');
+    return `<tr><td><b style="font-size:12.5px">${esc(t2.title||t2.id)}</b><div class="mut" style="font-size:10.5px">${esc(t2.id)}${t2.dry_run?' · 预演（不写库）':''}</div></td>
+     <td><span class="badge dist">${esc(btType(t2.type))}</span></td>
+     <td style="min-width:120px"><div class="mut tnum" style="font-size:11px">${s.done||0} 完成 · ${s.skipped||0} 预演 · ${s.failed||0} 失败</div><div style="height:4px;background:var(--border);border-radius:2px;margin-top:4px"><div style="height:4px;border-radius:2px;background:var(--accent);width:${pct}%"></div></div></td>
+     <td>${badge}</td><td class="mut" style="font-size:11px">${esc(t2.created||'')}</td><td style="white-space:nowrap">${acts}</td></tr>`}).join('')+'</table>'
+    :emptyBox('✅','该筛选下暂无批量任务','看全部',"HUB_F='all';hubRender()"))+'</div>';
+ }
+ if(HUB_TYPE==='all'||HUB_TYPE==='manual'){
+  const open=HUB_T.filter(x=>x.status!=='done');
+  html+='<div class="card" style="margin-bottom:14px"><div class="card-head"><h3>手动任务（待办 '+open.length+'）</h3>'+
+   '<span class="row" style="margin-left:8px"><input id="ttitle" placeholder="记一条待办，回车添加" style="width:200px;font-size:12px" onkeydown="if(event.key===\'Enter\')addTask()"><button class="mini" onclick="addTask(event)">＋</button></span></div>'
+   +(open.length?'<table><tr><th>任务</th><th>状态</th><th>截止</th><th></th></tr>'+open.map(x=>
+    `<tr><td style="font-size:12.5px">${esc(x.title||x.id)}${x.due?'<div class="mut" style="font-size:10.5px">⏰ '+esc(x.due)+'</div>':''}</td>
+     <td>${[['todo','待办'],['doing','进行中'],['done','完成']].map(([k,l])=>`<span class="chip ${x.status===k?'on':''}" onclick="hubManual('${esc(x.id)}','${k}')" style="margin-right:4px">${l}</span>`).join('')}</td>
+     <td class="mut" style="font-size:11px">${esc(x.assignee||'')}</td>
+     <td><button class="mini" onclick="hubManualDel('${esc(x.id)}')">✕</button></td></tr>`).join('')+'</table>'
+    :'<span class="mut" style="padding:8px 12px;display:block">无待办——上面输入框可以直接记一条</span>')+'</div>';
+ }
+ if(HUB_TYPE==='all'||HUB_TYPE==='runs'){
+  const runs=HUB_R.filter(r=>r.kind==='playbook'||r.playbook).slice(0,8);
+  html+='<div class="card"><div class="card-head"><h3>剧本执行记录（自动托管）</h3><button class="more" onclick="setTab(&quot;auto&quot;)">全部 →</button></div>'
+   +(runs.length?'<table><tr><th>执行</th><th>剧本</th><th>状态</th><th>创建</th><th></th></tr>'+runs.map(r=>`<tr><td class="mut" style="font-size:11px">${esc(r.id)}</td><td>${esc(r.title||'')}</td><td><span class="badge ${r.status==='done'?'pipe':''}" style="${r.status==='done'?'background:var(--ok)':(r.status==='failed'?'background:var(--bad)':'')}">${esc(r.status==='done'?'已完成':r.status==='failed'?'失败':'执行中')}</span></td><td class="mut" style="font-size:11px">${esc(r.created||'')}</td><td><button class="mini" onclick="setTab('run');setTimeout(()=>runDetail('${esc(r.id)}'),600)">画布 →</button></td></tr>`).join('')+'</table>'
     :emptyBox('📘','暂无剧本执行记录','去自动化',"setTab('auto')"))+'</div>';
+ }
+ $('hub-body').innerHTML=html;
 }
+function hubManual(id,st){api('api/tasks/set',{id:id,status:st}).then(()=>{toast('已更新','ok');hubLoad(true)}).catch(e=>toast('失败','bad'))}
+function hubManualDel(id){if(!confirm('删除这条待办？'))return;api('api/tasks/del',{id:id}).then(()=>{toast('已删除','ok');hubLoad(true)}).catch(e=>toast('失败','bad'))}
+function hubBoard(){
+ const cols=[
+  {k:'todo',n:'待办（手动）',cards:HUB_T.filter(x=>x.status==='todo').map(x=>({kind:'manual',id:x.id,t:x.title||x.id,sub:x.due||''}))},
+  {k:'confirm',n:'需我确认（批量）',cards:HUB_B.filter(t2=>hubGrp(t2)==='confirm').map(t2=>({kind:'batch',id:t2.id,t:t2.title||t2.id,sub:(t2.stats||{}).skipped+' 项预演通过'}))},
+  {k:'run',n:'执行中',cards:HUB_T.filter(x=>x.status==='doing').map(x=>({kind:'manual',id:x.id,t:x.title||x.id,sub:''}))
+    .concat(HUB_B.filter(t2=>hubGrp(t2)==='run').map(t2=>({kind:'batch',id:t2.id,t:t2.title||t2.id,sub:btType(t2.type)})))},
+  {k:'pause',n:'已暂停',cards:HUB_B.filter(t2=>hubGrp(t2)==='pause').map(t2=>({kind:'batch',id:t2.id,t:t2.title||t2.id,sub:btType(t2.type)}))},
+  {k:'fail',n:'失败',cards:HUB_B.filter(t2=>hubGrp(t2)==='fail').map(t2=>({kind:'batch',id:t2.id,t:t2.title||t2.id,sub:(t2.stats||{}).failed+' 项失败'}))},
+  {k:'done',n:'已完成',cards:HUB_T.filter(x=>x.status==='done').slice(0,8).map(x=>({kind:'manual',id:x.id,t:x.title||x.id,sub:''}))
+    .concat(HUB_B.filter(t2=>hubGrp(t2)==='done').slice(0,8).map(t2=>({kind:'batch',id:t2.id,t:t2.title||t2.id,sub:btType(t2.type)})))}];
+ $('hub-body').innerHTML='<div style="display:grid;grid-template-columns:repeat(6,minmax(150px,1fr));gap:10px;overflow-x:auto;padding-bottom:8px">'+
+  cols.map(c=>`<div class="card" style="margin:0"><div class="card-head" style="padding:8px 10px"><h3 style="font-size:12.5px">${c.n} <span class="mut tnum">${c.cards.length}</span></h3></div>
+   <div style="padding:8px;min-height:200px" ondragover="event.preventDefault()" ondrop="hubDrop(event,'${c.k}')">
+   ${c.cards.map(x=>`<div draggable="true" ondragstart="hubDrag(event,'${x.kind}','${esc(x.id)}')" style="cursor:grab;border:1px solid var(--border);border-radius:8px;padding:6px 8px;margin-bottom:6px;background:var(--surface-strong)">
+     <b style="font-size:11.5px">${esc(x.t)}</b><div class="mut" style="font-size:10px">${x.kind==='manual'?'✋ 手动':'⚙ 批量'}${x.sub?' · '+esc(x.sub):''}</div></div>`).join('')||'<span class="mut" style="font-size:11px">空</span>'}</div></div>`).join('')+'</div>'+
+  '<div class="mut" style="font-size:11.5px;margin-top:8px">拖动卡片改状态：手动任务任意列可拖；批量任务拖到「已暂停」=暂停、拖到「执行中」=继续、拖到「失败」=重试失败项、拖到「需我确认」=确认执行（仅限预演通过批）。</div>';
+}
+function hubDrag(ev,kind,id){ev.dataTransfer.setData('text/plain',kind+':'+id);window.__HUBD={kind,id}}
+function hubDrop(ev,col){ev.preventDefault();const d=window.__HUBD;if(!d)return;window.__HUBD=null;
+ if(d.kind==='manual'){const map={todo:'todo',confirm:'todo',run:'doing',pause:'doing',done:'done',fail:'doing'};
+  const st=map[col];if(!st)return toast('手动任务不能放到该列','bad');
+  return api('api/tasks/set',{id:d.id,status:st}).then(()=>{toast('已移动','ok');hubLoad(true)}).catch(e=>toast('失败','bad'))}
+ if(col==='pause')return hubAct(d.id,'pause','已暂停');
+ if(col==='run')return hubAct(d.id,'resume','已继续执行');
+ if(col==='fail')return hubAct(d.id,'retry_failed','已重试失败项');
+ if(col==='confirm'){const t2=HUB_B.find(x=>x.id===d.id);
+  if(t2&&t2.dry_run&&t2.status==='done'&&t2.stats&&t2.stats.done===0&&t2.stats.skipped>0)return hubAct(d.id,'go_real','已转真实执行');
+  return toast('该任务无需确认','bad')}
+ toast('该列不支持批量任务拖入','bad')}
 function hubBatchMini(){api('api/batch/list').then(ts=>{
  const el=$('task-batches');if(!el)return;
- const show=(Array.isArray(ts)?ts:[]).slice(0,6);
+ const show=(Array.isArray(ts)?ts:[]).filter(x=>x.type!=='qa').slice(0,6);
  el.innerHTML=show.length?'<table><tr><th>任务</th><th>状态</th><th>进度</th><th></th></tr>'+show.map(t=>{const s=t.stats||{};
   const pct=s.total?Math.round((s.done+s.skipped+s.failed)/s.total*100):0;
   const g=hubGrp(t);
@@ -3124,17 +3183,61 @@ function llmTest(){$('llm-test').textContent='测试中…';api('api/llm/test',{
  $('llm-test').innerHTML=r.ok?'<span class="ok">连通 ✓ '+esc(r.reply)+'</span>':'<span class="bad">失败：'+esc(r.error)+'</span>'})}
 
 /* ---- 内容日历 ---- */
-function caltLoad(){const q=$('calt-q').value.trim(),lang=$('calt-lang').value;
- api('api/calendar?q='+encodeURIComponent(q)+'&lang='+encodeURIComponent(lang)).then(d=>{
-  $('nav-calt').textContent=d.total;
-  $('calt-sub').textContent=`多语言成品文章库：共 ${d.total} 篇。按日期浏览、按语言过滤、搜索后在线阅读。`;
-  $('calt-stats').innerHTML=`<div class="stat"><div class="n tnum">${d.total}</div><div class="t">成品文章</div></div>`+
-   Object.entries(d.langs).sort((a,b)=>b[1]-a[1]).map(([l,n])=>`<div class="stat"><div class="n tnum">${n}</div><div class="t">${l}</div></div>`).join('');
-  const ms=Object.entries(d.months),mx=Math.max(1,...ms.map(x=>x[1]));
-  $('calt-chart').innerHTML=ms.map(([m,n])=>`<div class="cb"><span class="vl tnum">${n||''}</span><div class="bar" style="height:${Math.max(4,n/mx*100)}%"></div><span class="lb">${m.slice(2)}</span></div>`).join('');
-  $('calt-n').textContent=`（显示前 ${d.files.length} 篇${q||lang?' · 已过滤':''}）`;
-  $('calt-list').innerHTML=d.files.map(f=>`<a onclick="openReader('${esc(f.path)}')"><span class="d">${esc(f.date||'—')} · ${esc(f.lang)}</span><b>${esc(f.title)}</b><div class="mt mut">${esc(f.name)}${f.cat?' · '+esc(f.cat):''}</div>
-   <button class="mini" style="margin-top:4px" onclick="event.stopPropagation();calToTask('${esc(f.path)}')">→ 加入看板</button></a>`).join('')||'<span class="mut">无匹配</span>'})}
+/* ---- 内容日历：主站/分发双视图 + 月历网格 + 拖拽改期 ---- */
+let CALD=null,CAL_VIEW='main',CB_Y=0,CB_M=0,CB_DRAG=null;
+function calView(v){CAL_VIEW=v;
+ document.querySelectorAll('.cal-v').forEach(c=>c.classList.remove('on'));
+ $('calv-'+v).classList.add('on');
+ $('cal-sub').textContent=v==='main'?'主站日历：成品文章按发布日期排期，拖动文章到某一天即改期；任务产出的文章自动落位批次完成日（只读）。'
+  :'分发日历：外部分发（blogger/devto/medium…）的待发与已发记录；拖动待发项改期。';
+ calRender()}
+function calMonth(d){CB_M+=d;if(CB_M<0){CB_M=11;CB_Y--}if(CB_M>11){CB_M=0;CB_Y++}calRender()}
+function calToday(){const n=new Date();CB_Y=n.getFullYear();CB_M=n.getMonth();calRender()}
+function calLoad(){api('api/calendar/board').then(d=>{
+  CALD=d;if(!CB_Y){const n=new Date();CB_Y=n.getFullYear();CB_M=n.getMonth()}
+  if($('nav-calt'))$('nav-calt').textContent=(d.docs||[]).length;
+  calRender()}).catch(()=>{})}
+function calDrag(ev,k,ref){CB_DRAG={k,ref:decodeURIComponent(ref)};ev.dataTransfer.effectAllowed='move'}
+function calDrop(ev,ds){ev.preventDefault();if(!CB_DRAG)return;
+ const {k,ref}=CB_DRAG;CB_DRAG=null;
+ if(CAL_VIEW==='main'){
+  if(k!=='doc')return toast('主站日历仅成品文档可拖动改期（任务产出的文章日期跟批次走）','bad');
+  return api('api/calendar/date',{path:ref,date:ds}).then(r=>{if(r.error)return toast(r.error,'bad');toast('已改期至 '+ds,'ok');calLoad()}).catch(e=>toast('失败','bad'))}
+ if(k!=='dist')return toast('已发布记录不可改期（历史事实）','bad');
+ return api('api/dist/reschedule',{id:ref,date:ds}).then(r=>{if(r.error)return toast(r.error,'bad');toast('已改期至 '+ds,'ok');calLoad()}).catch(e=>toast('失败','bad'))}
+function calRender(){if(!CALD)return;
+ const q=($('cal-q')||{}).value||'',lang=($('cal-lang')||{}).value||'';
+ $('cal-title').textContent=`${CB_Y}-${String(CB_M+1).padStart(2,'0')}`;
+ const items=CAL_VIEW==='main'
+  ?(CALD.docs||[]).filter(x=>(!q||x.title.toLowerCase().includes(q.toLowerCase())||x.path.toLowerCase().includes(q.toLowerCase()))&&(!lang||x.lang===lang)&&x.date)
+    .map(x=>({d:x.date,t:x.title,k:'doc',ref:x.path,lang:x.lang}))
+  :(CALD.pending||[]).filter(x=>x.date).map(x=>({d:x.date,t:x.slug||x.id,k:'dist',ref:x.id,lang:x.platforms}))
+    .concat((CALD.published||[]).filter(x=>x.date).map(x=>({d:x.date,t:'✅ '+(x.slug||x.id),k:'distp',ref:'',lang:x.platform})))
+    .concat((CALD.batch_articles||[]).map(x=>({d:x.date,t:x.topic,k:'art',ref:x.batch||'',lang:x.lang})));
+ const n2=new Date(CB_Y,CB_M+1,0).getDate(),first=new Date(CB_Y,CB_M,1),dow=(first.getDay()+6)%7;
+ const today=new Date(),tds=`${today.getFullYear()}-${String(today.getMonth()+1).padStart(2,'0')}-${String(today.getDate()).padStart(2,'0')}`;
+ let g='<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px">';
+ ['一','二','三','四','五','六','日'].forEach(w=>g+=`<div class="mut" style="text-align:center;font-size:11px">${w}</div>`);
+ for(let i=0;i<dow;i++)g+='<div></div>';
+ for(let day=1;day<=n2;day++){
+  const ds=`${CB_Y}-${String(CB_M+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+  const its=items.filter(x=>x.d===ds);
+  g+=`<div ondragover="event.preventDefault()" ondrop="calDrop(event,'${ds}')" style="min-height:92px;border:1px solid ${ds===tds?'var(--accent)':'var(--border)'};border-radius:8px;padding:6px;background:${ds===tds?'var(--surface-strong)':'var(--surface)'}">
+   <div class="mut tnum" style="font-size:10.5px">${day}</div>`+
+   its.slice(0,4).map(x=>`<div draggable="${x.k==='art'?'false':'true'}" ondragstart="${x.k==='art'?'':`calDrag(event,'${x.k}','${encodeURIComponent(x.ref)}')`}" title="${esc(x.t)}" style="font-size:10.5px;cursor:${x.k==='art'?'default':'grab'};overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-radius:4px;padding:1px 4px;margin-top:3px;background:${x.k==='doc'?'rgba(90,170,90,.16)':(x.k==='dist'?'rgba(220,150,60,.18)':(x.k==='art'?'rgba(140,140,150,.14)':'rgba(90,140,200,.14)'))}">${x.lang?'['+x.lang+'] ':''}${esc(x.t)}</div>`).join('')+
+   (its.length>4?`<div class="mut" style="font-size:10px">+${its.length-4} 更多</div>`:'')+'</div>';
+ }
+ g+='</div>';
+ $('cal-grid').innerHTML=g;
+ const mon=items.filter(x=>x.d&&x.d.startsWith(`${CB_Y}-${String(CB_M+1).padStart(2,'0')}`));
+ $('cal-n').textContent=`本月 ${mon.length} 条（拖动可改期）`;
+ const list=mon.slice(0,80);
+ $('cal-list').innerHTML=list.length?list.map(x=>{
+  if(x.k==='doc')return `<a onclick="openReader('${esc(x.ref)}')"><span class="d">${esc(x.d)} · ${esc(x.lang)}</span><b>${esc(x.t)}</b><div class="mt mut">主站文档 · 拖到月历可改期</div></a>`;
+  if(x.k==='art')return `<div class="ql" style="padding:8px 12px;border-bottom:1px solid var(--border)"><span class="d">${esc(x.d)} · ${esc(x.lang)}</span><b>${esc(x.t)}</b><div class="mt mut">⚙ 任务产出 · 批次 ${esc(x.ref)}（日期跟批次走，只读）</div></div>`;
+  return `<div class="ql" style="padding:8px 12px;border-bottom:1px solid var(--border)"><span class="d">${esc(x.d)} · ${esc(x.lang||'')}</span><b>${esc(x.t)}</b><div class="mt mut">${x.k==='dist'?'🟧 待发（可拖动改期）':'已发布'}</div></div>`}).join('')
+  :'<span class="mut" style="padding:10px 12px;display:block">本月暂无条目——用 ‹ › 切换月份</span>';
+}
 
 /* ---- 工作流地图 ---- */
 function loadWfmap(){api('api/workflows').then(ws=>{
@@ -3697,7 +3800,8 @@ const BT_STATUS_LABELS={pending:'待执行',queued:'排队中',running:'执行�
  paused:'已暂停',cancelled:'已取消',skipped:'预演通过待确认'};
 const btType=t=>BT_TYPE_LABELS[t]||t, btStatus=s=>BT_STATUS_LABELS[s]||s;
 function loadBatch(){loadPresets();brkLoad();api('api/batch/list').then(ts=>{
- $('nav-batch').textContent=(ts||[]).filter(t=>t.status==='running'||t.status==='queued').length;
+ ts=(ts||[]).filter(t=>t.type!=='qa');
+ if($('nav-batch'))$('nav-batch').textContent=(ts||[]).filter(t=>t.status==='running'||t.status==='queued').length;
  $('bt-list').innerHTML=(ts||[]).length?'<table><tr><th>任务</th><th>类型</th><th>进度</th><th>状态</th><th>创建</th><th></th></tr>'+
   ts.map(t=>{const s=t.stats||{};const pct=s.total?Math.round((s.done+s.skipped+s.failed)/s.total*100):0;
    return `<tr><td><b>${esc(t.title||t.id)}</b><div class="mut" style="font-size:10.5px">${esc(t.id)}${t.dry_run?' · 预演（不写库）':''}</div></td>
