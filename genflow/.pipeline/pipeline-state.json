@@ -1,4 +1,253 @@
 {
- "version": 1,
- "items": {}
+  "version": 1,
+  "items": {
+    "fix-lpagery-seed-placeholder-20261009": {
+      "id": "fix-lpagery-seed-placeholder-20261009",
+      "category": "bugfix",
+      "target_type": "page",
+      "stage": "S0-skip",
+      "phase": "QUEUE",
+      "agent": "cursor",
+      "skill": null,
+      "artifact_path": "/tmp/content-quality.md",
+      "qa": {
+        "l1_block": null,
+        "l2_block": null,
+        "l7_block": null,
+        "last_run": null,
+        "fix_count": 0
+      },
+      "publish": {
+        "sanity_id": null,
+        "imported_at": null,
+        "status": null
+      },
+      "fix_count": 0,
+      "created_at": "2026-10-09T13:37:31+00:00",
+      "updated_at": "2026-10-09T13:55:52+00:00",
+      "history": [
+        {
+          "ts": "2026-10-09T13:55:52+00:00",
+          "from": "S0-todo",
+          "to": "S0-skip",
+          "reason": "修复完成闭环，无需发布管线",
+          "agent": "cursor"
+        }
+      ]
+    },
+    "fix-broken-images-20261009": {
+      "id": "fix-broken-images-20261009",
+      "category": "bugfix",
+      "target_type": "page",
+      "stage": "S0-skip",
+      "phase": "QUEUE",
+      "agent": "cursor",
+      "skill": null,
+      "artifact_path": "/tmp/content-quality.md",
+      "qa": {
+        "l1_block": null,
+        "l2_block": null,
+        "l7_block": null,
+        "last_run": null,
+        "fix_count": 0
+      },
+      "publish": {
+        "sanity_id": null,
+        "imported_at": null,
+        "status": null
+      },
+      "fix_count": 0,
+      "created_at": "2026-10-09T13:37:31+00:00",
+      "updated_at": "2026-10-09T13:55:52+00:00",
+      "history": [
+        {
+          "ts": "2026-10-09T13:55:52+00:00",
+          "from": "S0-todo",
+          "to": "S0-skip",
+          "reason": "修复完成闭环，无需发布管线",
+          "agent": "cursor"
+        }
+      ]
+    },
+    "rewrite-thin-blogs-28-20261009": {
+      "id": "rewrite-thin-blogs-28-20261009",
+      "category": "content",
+      "target_type": "blog",
+      "stage": "S0-todo",
+      "phase": "QUEUE",
+      "agent": "cursor",
+      "skill": null,
+      "artifact_path": "/tmp/content-quality.md",
+      "qa": {
+        "l1_block": null,
+        "l2_block": null,
+        "l7_block": null,
+        "last_run": null,
+        "fix_count": 0
+      },
+      "publish": {
+        "sanity_id": null,
+        "imported_at": null,
+        "status": null
+      },
+      "fix_count": 0,
+      "created_at": "2026-10-09T13:37:31+00:00",
+      "updated_at": "2026-10-09T13:37:31+00:00",
+      "history": []
+    },
+    "de-templating-industry-pages-20261009": {
+      "id": "de-templating-industry-pages-20261009",
+      "category": "refactor",
+      "target_type": "landing",
+      "stage": "S0-todo",
+      "phase": "QUEUE",
+      "agent": "cursor",
+      "skill": null,
+      "artifact_path": "/tmp/content-quality.md",
+      "qa": {
+        "l1_block": null,
+        "l2_block": null,
+        "l7_block": null,
+        "last_run": null,
+        "fix_count": 0
+      },
+      "publish": {
+        "sanity_id": null,
+        "imported_at": null,
+        "status": null
+      },
+      "fix_count": 0,
+      "created_at": "2026-10-09T13:37:31+00:00",
+      "updated_at": "2026-10-09T13:37:31+00:00",
+      "history": []
+    },
+    "rewrite-main-site-tool-zhtw-146": {
+      "id": "rewrite-main-site-tool-zhtw-146",
+      "category": "main-site-quality",
+      "target_type": "compositePage",
+      "stage": "S0-todo",
+      "phase": "QUEUE",
+      "agent": "cursor",
+      "skill": "landing-writer",
+      "artifact_path": "insight-data/Page Analytic/fix-2026-10-09/rewrite-queue.ndjson",
+      "qa": {
+        "l1_block": null,
+        "l2_block": null,
+        "l7_block": null,
+        "last_run": null,
+        "fix_count": 0
+      },
+      "publish": {
+        "sanity_id": null,
+        "imported_at": null,
+        "status": null
+      },
+      "fix_count": 0,
+      "created_at": "2026-10-09T15:23:50+00:00",
+      "updated_at": "2026-10-09T15:23:50+00:00",
+      "history": []
+    },
+    "rewrite-main-site-queue-3500": {
+      "id": "rewrite-main-site-queue-3500",
+      "category": "main-site-quality",
+      "target_type": "mixed",
+      "stage": "S0-todo",
+      "phase": "QUEUE",
+      "agent": "cursor",
+      "skill": "blog-writer",
+      "artifact_path": "insight-data/Page Analytic/fix-2026-10-09/rewrite-queue.ndjson",
+      "qa": {
+        "l1_block": null,
+        "l2_block": null,
+        "l7_block": null,
+        "last_run": null,
+        "fix_count": 0
+      },
+      "publish": {
+        "sanity_id": null,
+        "imported_at": null,
+        "status": null
+      },
+      "fix_count": 0,
+      "created_at": "2026-10-09T15:23:50+00:00",
+      "updated_at": "2026-10-09T15:23:50+00:00",
+      "history": []
+    },
+    "fix-main-site-seo-backfill-312": {
+      "id": "fix-main-site-seo-backfill-312",
+      "category": "main-site-quality",
+      "target_type": "blog",
+      "stage": "S5-published",
+      "phase": "SHIP",
+      "agent": "cursor",
+      "skill": "sanity-publish",
+      "artifact_path": "insight-data/Page Analytic/fix-2026-10-09/safe-fixes-applied.json",
+      "qa": {
+        "l1_block": null,
+        "l2_block": null,
+        "l7_block": null,
+        "last_run": null,
+        "fix_count": 0
+      },
+      "publish": {
+        "sanity_id": null,
+        "imported_at": null,
+        "status": null
+      },
+      "fix_count": 0,
+      "created_at": "2026-10-09T15:23:50+00:00",
+      "updated_at": "2026-10-09T15:23:58+00:00",
+      "history": [
+        {
+          "ts": "2026-10-09T15:23:54+00:00",
+          "from": "S0-todo",
+          "to": "S3-creating",
+          "reason": "312 patch 预演+导入+回读验证全通过",
+          "agent": "cursor"
+        },
+        {
+          "ts": "2026-10-09T15:23:58+00:00",
+          "from": "S3-creating",
+          "to": "S3-draft",
+          "reason": "patch 生成（fix-main-content）",
+          "agent": "cursor"
+        },
+        {
+          "ts": "2026-10-09T15:23:58+00:00",
+          "from": "S3-draft",
+          "to": "S3-done",
+          "reason": "312 条生成并分拣（模板句 0 残留）",
+          "agent": "cursor"
+        },
+        {
+          "ts": "2026-10-09T15:23:58+00:00",
+          "from": "S3-done",
+          "to": "S4-qa",
+          "reason": "dry-run 312/312 + GROQ 回读 312/312",
+          "agent": "cursor"
+        },
+        {
+          "ts": "2026-10-09T15:23:58+00:00",
+          "from": "S4-qa",
+          "to": "S4-ready",
+          "reason": "用户授权（11:15 消息）",
+          "agent": "cursor"
+        },
+        {
+          "ts": "2026-10-09T15:23:58+00:00",
+          "from": "S4-ready",
+          "to": "S5-importing",
+          "reason": "apply-main-fixes --yes",
+          "agent": "cursor"
+        },
+        {
+          "ts": "2026-10-09T15:23:58+00:00",
+          "from": "S5-importing",
+          "to": "S5-published",
+          "reason": "312/312 落库验证",
+          "agent": "cursor"
+        }
+      ]
+    }
+  }
 }
