@@ -746,6 +746,104 @@ def impact_report(proj=None):
             "note": "归因范围 = GSC Top20 页面；全量归因需扩展 gsc_fetch 行数上限"}
 
 
+def gsc_decay_batch(limit=10, by=""):
+    """数据反哺闭环：GSC Top20 里高曝光低 CTR 的主站页 → 导出 compositePage 源稿 → rewrite 预演批。
+    选页条件：曝光 ≥500、CTR <1.2%、排除首页/语言根路径/login。导出失败逐条跳过。"""
+    gsc = read_json(RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json", {})
+    pages = ((gsc.get("pages") or {}).get("top20_pages")) or []
+    langs = {"zh", "ja", "ko", "de", "fr", "pt", "es", "it", "ru", "zh-tw"}
+    rows, seen = [], set()
+    for pg in pages:
+        try:
+            u = urllib.parse.urlparse(pg.get("url", ""))
+            parts = [p for p in u.path.split("/") if p]
+        except Exception:
+            continue
+        if not parts or pg.get("impr", 0) < 500:
+            continue
+        if (pg.get("clicks", 0) or 0) / max(1, pg.get("impr", 1)) >= 0.012:
+            continue
+        lang = "en"
+        segs = list(parts)
+        if segs[0].lower() in langs:
+            lang = segs.pop(0)
+        if not segs or segs[0] in ("login", "signup", "pricing"):
+            continue
+        slug = segs[-1]
+        if slug in seen:
+            continue
+        seen.add(slug)
+        rows.append({"slug": slug, "lang": lang,
+                     "url": f"https://www.lovart.ai{u.path}",
+                     "clicks": pg.get("clicks", 0), "impr": pg.get("impr", 0)})
+    if not rows:
+        return {"error": "GSC Top20 中暂无「高曝光低 CTR」页面（条件：曝光 ≥500 且 CTR <1.2%）"}
+    rows = rows[:max(1, int(limit or 10))]
+    src_dir = RUN_DIR / "main-audit" / "sources"
+    src_dir.mkdir(parents=True, exist_ok=True)
+    INSTR = ("该页在 Google 高曝光但点击率低（用户看了标题摘要没点进来）。重写该页的 SEO 门面："
+             "标题含具体数字/人群/结果承诺，meta description 给出独特价值点与行动理由，"
+             "首屏 H1 与 H2 的钩子重写；保持事实准确，不堆砌关键词。")
+    items, skipped = [], []
+    for r in rows:
+        try:
+            got = _sanity_req("query", {"query": (
+                '*[_type=="compositePage" && slug.current==$s && language==$l][0]'
+                '{"t": pt::text(body), "bj": bodyJson}'),
+                "params": {"s": r["slug"], "l": r["lang"]}}).get("result") or {}
+            d = got if isinstance(got, dict) else (got or [{}])[0]
+            text = d.get("t") or ""
+            if not text and d.get("bj"):
+                try:
+                    bj = json.loads(d["bj"]) if isinstance(d["bj"], str) else d["bj"]
+                    buf = []
+
+                    def _w(o):
+                        if isinstance(o, str):
+                            buf.append(o)
+                        elif isinstance(o, dict):
+                            for k in ("title", "description", "body", "answer", "question",
+                                      "label", "quote", "name", "subtitle", "heading", "intro"):
+                                if isinstance(o.get(k), str):
+                                    buf.append(o[k])
+                            for v in o.values():
+                                _w(v)
+                        elif isinstance(o, list):
+                            for x in o:
+                                _w(x)
+                    _w(bj)
+                    text = "\n".join(buf)
+                except Exception:
+                    pass
+            if not text:
+                got = _sanity_req("query", {"query": (
+                    '*[_type=="blog" && slug.current==$s && language==$l][0]'
+                    '{"t": pt::text(body)}'),
+                    "params": {"s": r["slug"], "l": r["lang"]}}).get("result") or {}
+                d = got if isinstance(got, dict) else (got or [{}])[0]
+                text = d.get("t") or ""
+        except Exception:
+            text = ""
+        if not text:
+            skipped.append(r["slug"]); continue
+        sp = src_dir / (re.sub(r"[^A-Za-z0-9_.-]", "_", r["slug"])[:80] + ".md")
+        sp.write_text(text, encoding="utf-8")
+        items.append({"item_id": f"gsc-ctr:{r['slug']}@{r['lang']}", "lang": r["lang"], "topic": r["slug"],
+                      "source_path": rel_of(sp), "instruction": INSTR, "budget_profile": "default"})
+    if not items:
+        return {"error": f"命中 {len(rows)} 页均无法导出源内容（Sanity slug 未命中）",
+                "hint": "这些页可能不是 compositePage；把页面 URL 发给管理员核对", "urls": [r["url"] for r in rows]}
+    task = batch_create("rewrite", f"GSC 反哺·低 CTR 页改稿（{len(items)} 页）", items,
+                        params={"batch_size": 3}, dry_run=True, by=by or "system")
+    with open(RUN_DIR / "approvals.log", "a") as f2:
+        f2.write(f"{datetime.now().isoformat(timespec='seconds')} GSC-CTR-BATCH {task['id']} "
+                 f"pages={len(items)} skipped={len(skipped)} by={by or 'system'}\n")
+    return {"ok": True, "id": task["id"], "total": task["stats"]["total"],
+            "pages": [{"url": r["url"], "clicks": r["clicks"], "impr": r["impr"]} for r in rows
+                      if f"gsc-ctr:{r['slug']}@{r['lang']}" in [i["item_id"] for i in items]],
+            "skipped": skipped,
+            "note": "已建预演批（不写库）；到首页「等你确认」一键转真实执行"}
+
 def _cited_paths_all():
     """全部项目 citations.jsonl 中出现过的引用路径（B5/B1 共用）。"""
     cited = set()
@@ -3214,6 +3312,10 @@ def selfheal_tick():
         safe = [c for c in (sc.get("checks") or []) if str((c.get("fix") or {}).get("action", "")).startswith("api:")]
         # 只自动处理"熔断/卡住/维护/索引"这类确定安全的
         allow = {"/api/breaker/reset", "/api/batch/revive_stale", "/api/housekeeping/run", "/api/rag/build"}
+        # LLM 致命错误（余额/鉴权）触发的熔断不允许 selfheal 自动复位——否则 auto_loop 会继续烧空选题队列
+        _bst = breaker_state()
+        if _bst.get("tripped") and _is_fatal_error(str(_bst.get("reason", ""))):
+            allow = set(list(allow)) - {"/api/breaker/reset"}
         for c in safe:
             if (c.get("fix") or {}).get("action", "").split(":", 1)[1] in allow:
                 ok, msg = _selfcheck_apply_fix(c.get("fix"))
@@ -4391,6 +4493,13 @@ def batch_worker():
                 task["status"] = "done"
                 task["finished"] = datetime.now().strftime("%Y-%m-%d %H:%M")
                 _batch_log(task, f"完成：done={st['done']} skipped={st['skipped']}")
+                if task.get("dry_run") and st["skipped"] > 0 and st["done"] == 0:
+                    try:
+                        notify_send("MFlow · 预演批待确认",
+                                    f"「{task.get('title')}」预演完成（{st['skipped']} 项，未写库）\n"
+                                    "→ 后台首页「🟠 等你确认」一键转真实执行")
+                    except Exception:
+                        pass
                 try:
                     chain_next_task(task, proj)
                 except Exception as ce:
@@ -9981,6 +10090,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/pay/order/redeliver", "/api/pay/order/cancel", "/api/pay/voucher/save",
                       "/api/pay/voucher/delete", "/api/pay/config/save", "/api/pay/verify",
                       "/api/publish/sanity", "/api/publish/wordpress", "/api/library/sync",
+                      "/api/gsc/decay_batch",
                       "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
                       "/api/batch/create", "/api/batch/action",
                       "/api/agent/chat", "/api/agent/execute", "/api/agent/run", "/api/agent/profile",
@@ -10345,6 +10455,31 @@ class Handler(BaseHTTPRequestHandler):
                 if r.get("ok") and not dry:
                     with open(RUN_DIR / "approvals.log", "a") as f:
                         f.write(f"{datetime.now().isoformat(timespec='seconds')} SANITY-PUBLISH {item_id} doc={r.get('doc_id')} by={self._me()}\n")
+                    # 发布后回读校验（尽力而为：失败不阻塞发布，只留痕+提醒）
+                    try:
+                        _lang = str(body.get("lang", "")).strip()
+                        _slug = str(body.get("slug", "")).strip() or item_id
+                        _pre = "https://www.lovart.ai" + (f"/{_lang}" if _lang and _lang != "en" else "")
+                        _tries = [f"{_pre}/{_slug}", f"{_pre}/tool/{_slug}", f"{_pre}/blog/{_slug}"]
+                        _live = ""
+                        for _u in _tries:
+                            try:
+                                _rq = urllib.request.Request(_u, headers={"User-Agent": "Mozilla/5.0 (MFlow verify)"})
+                                with urllib.request.urlopen(_rq, timeout=8) as _rp:
+                                    if _rp.status == 200:
+                                        _live = _u
+                                        break
+                            except Exception:
+                                continue
+                        with open(RUN_DIR / "approvals.log", "a") as _fv:
+                            _fv.write(f"{datetime.now().isoformat(timespec='seconds')} PUBLISH-VERIFY {item_id} "
+                                      + (f"live_ok={_live}\n" if _live else "live_miss=线上页暂未读到（CDN 延迟或 slug 变体）\n"))
+                        if not _live:
+                            notify_send("MFlow · 发布回读未命中",
+                                        f"{item_id} 已发布（doc={r.get('doc_id')}），但线上页暂未读到"
+                                        f"（slug={_slug} lang={_lang}）——可能 CDN 延迟，也可能 slug/路径不对，请人工确认")
+                    except Exception:
+                        pass
                 return self._send(200 if r.get("ok") else 400, r)
             if self.path == "/api/publish/wordpress":
                 path = str(body.get("path", ""))
@@ -10354,6 +10489,12 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(400, {"error": why})
                 r = publish_wordpress(path, item_id, str(body.get("title", "")))
                 return self._send(200 if r.get("ok") else 400, r)
+            if self.path == "/api/gsc/decay_batch":
+                try:
+                    rr = gsc_decay_batch(limit=int(body.get("limit", 10)), by=self._me())
+                except Exception as e:
+                    return self._send(500, {"error": f"建批失败：{e}"[:200]})
+                return self._send(200 if rr.get("ok") else 400, rr)
             if self.path == "/api/library/sync":
                 site = str(body.get("site", "main"))
                 if not (SITES_DIR / f"{site}.json").exists():

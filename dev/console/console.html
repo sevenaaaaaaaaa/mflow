@@ -2493,9 +2493,13 @@ function homePulse(){
    ['查看 / 审核稿件','内容管线 · 阅读器内审稿改稿',"setTab('pipe')"],
    ['快速发布','主站发布面板 · 一键上线',"setTab('lib')"],
    ['跑一次质检','QA 编排 · 预演起步',"setTab('qa')"],
+   ['GSC 低 CTR 页改稿','高曝光低点击 · 一键建预演批','gscDecayBatch(event)'],
   ].map(([t2,s,go])=>`<a onclick="${go}"><span class="act-ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="qt">${t2}<span class="mut" style="font-size:11px;margin-left:6px">${s}</span></span><span class="qd">前往 →</span></a>`).join('');
  }).catch(()=>{})}
 function homeJumpConfirm(){const el=$('home-confirm');if(el)el.scrollIntoView({behavior:'smooth',block:'center'})}
+function gscDecayBatch(ev){if(ev)ev.stopPropagation();if(!confirm('把 GSC 里高曝光低 CTR 的主站页（最多 10 页）导出源稿并建改稿预演批？'))return;
+ api('api/gsc/decay_batch',{limit:10}).then(r=>{if(r.error)return toast(r.error,'bad');
+  toast('已建预演批 '+r.id+'（'+r.total+' 页，不写库）','ok');if((r.pages||[]).length)console.log('GSC 命中页',r.pages);setTab('batch');setTimeout(()=>btDetail(r.id),500)}).catch(e=>toast('失败：'+e,'bad'))}
 
 /* ---- 任务看板（Trello 式：拖拽跨列 + 卡片编辑 + 日历关联 + 归属人过滤）---- */
 let TM_ID=null,TASK_MINE=false;
