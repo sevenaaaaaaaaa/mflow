@@ -2579,7 +2579,7 @@ function hubRender(){
      s.failed?`<button class="mini" onclick="hubAct('${esc(t2.id)}','retry_failed','已重试失败项')">↻ 重试失败</button>`:'',
      !['done','cancelled'].includes(t2.status)?`<button class="mini" onclick="hubAct('${esc(t2.id)}','cancel','已取消')">✕ 取消</button>`:'',
      `<button class="mini" onclick="hubOpen('${esc(t2.id)}')">详情</button>`].filter(Boolean).join(' ');
-    return `<tr><td><b style="font-size:12.5px">${esc(t2.title||t2.id)}</b><div class="mut" style="font-size:10.5px">${esc(t2.id)}${t2.dry_run?' · 预演（不写库）':''}</div></td>
+    return `<tr><td><b style="font-size:12.5px">${esc(t2.title||t2.id)}</b><div class="mut" style="font-size:10.5px">${esc(t2.id)}${t2.dry_run?' · 预演（不写库）':''}${(!t2.dry_run&&t2.status==='queued')?' · ⏰ 等待执行窗口（工作日 00:00-06:00）':''}</div></td>
      <td><span class="badge dist">${esc(btType(t2.type))}</span></td>
      <td style="min-width:120px"><div class="mut tnum" style="font-size:11px">${s.done||0} 完成 · ${s.skipped||0} 预演 · ${s.failed||0} 失败</div><div style="height:4px;background:var(--border);border-radius:2px;margin-top:4px"><div style="height:4px;border-radius:2px;background:var(--accent);width:${pct}%"></div></div></td>
      <td>${badge}</td><td class="mut" style="font-size:11px">${esc(t2.created||'')}</td><td style="white-space:nowrap">${acts}</td></tr>`}).join('')+'</table>'

@@ -431,6 +431,7 @@ BUDGET_FILE = RUN_DIR / "budget.json"
 HOLIDAYS_FILE = RUN_DIR / "holidays.json"
 PRICES_FILE = RUN_DIR / "llm-prices.json"
 _BUDGET_ALERT_DATE = {"d": ""}
+selfheal_batch_window_note = type("_N", (), {"d": ""})()
 
 
 def budget_cfg():
@@ -4738,6 +4739,18 @@ def batch_worker():
             task = next((t for t in cands if t and t.get("status") in ("queued", "running")), None)
             if not task:
                 continue
+            # 执行窗口闸：非重要任务仅工作日 00:00-06:00 执行；周六日/节假日/白天不领取
+            # （important 批或手动确认时勾选的除外）。QA 类自动化批不受限（纯脚本无 LLM 消耗）。
+            _imp = bool(task.get("important") or (task.get("params") or {}).get("important"))
+            if not _imp and task.get("type") != "qa":
+                _now = datetime.now()
+                if not is_workday(_now) or not (0 <= _now.hour < 6):
+                    task["status"] = "queued"  # 保持排队，不领取
+                    _wl = getattr(selfheal_batch_window_note, "d", "")
+                    if _wl != _now.strftime("%Y%m%d%H"):
+                        selfheal_batch_window_note.d = _now.strftime("%Y%m%d%H")
+                        print(f"[batch] 非执行窗口（仅工作日 00:00-06:00），任务 {task['id']} 保持排队", file=sys.stderr)
+                    continue
             with BATCH_LOCK:
                 task["status"] = "running"
                 task.setdefault("started", datetime.now().strftime("%Y-%m-%d %H:%M"))
@@ -4770,6 +4783,22 @@ def batch_worker():
             handoff = bool((task.get("params") or {}).get("context_handoff", True))
             task.setdefault("batches", [])
             for bi in range(0, len(pending), batch_size):
+                # 预算闸（任务级优雅暂停）：LLM 密集型任务在每批开始前检查日预算，
+                # 超限即暂停整任务并通知（次日加预算后可在任务中心「▶ 继续」），避免逐项失败烧重试。
+                if task["type"] in ("gen", "rewrite") and not task.get("dry_run"):
+                    try:
+                        budget_gate()
+                    except RuntimeError as be:
+                        task["status"] = "paused"
+                        _batch_log(task, f"日预算不足，任务已暂停：{str(be)[:140]}")
+                        batch_save(task)
+                        try:
+                            notify_send("MFlow · 预算暂停任务",
+                                        f"「{task.get('title')}」因日预算不足已暂停（剩余 {len(pending) - bi} 项）。"
+                                        "\n管理员单日加预算后，到任务中心该任务点「▶ 继续」即恢复。")
+                        except Exception:
+                            pass
+                        break
                 chunk = pending[bi:bi + batch_size]
                 if task.get("status") in ("paused", "cancelled"):
                     break
