@@ -506,6 +506,11 @@ body.sb-open #sb-mask{display:block}
         <button class="btn primary" onclick="runDaily(event)">立即跑今日管线</button>
       </div>
     </div>
+    <div class="metrics" id="home-pulse" style="margin-bottom:14px"></div>
+    <div class="ov-grid" style="margin-bottom:14px">
+      <div class="card"><div class="card-head"><h3>🟠 等你确认 <span class="mut tnum" id="home-confirm-n"></span></h3><button class="more" onclick="setTab('batch')">全部批量 →</button></div><div id="home-confirm" class="qlist ql"></div></div>
+      <div class="card"><div class="card-head"><h3>我要……</h3></div><div class="qlist ql" id="home-goto"></div></div>
+    </div>
     <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>工作模式 <span class="badge" id="mode-badge" style="margin-left:6px"></span></h3>
       <div class="row"><select id="mode-select" onchange="modeSwitch(this.value)" style="width:150px">
         <option value="pipeline">Pipeline · 手动</option>
@@ -2429,7 +2434,7 @@ function fmtHook(out){return String(out||'').split('\n').map(l=>{
  return esc(l)}).join('\n')}
 
 /* ---- 总览 ---- */
-function loadHome(){modeLoad();loadSelfcheck();loadStart();loadNextActions();inboxMini();api('api/overview').then(o=>{
+function loadHome(){modeLoad();loadSelfcheck();loadStart();loadNextActions();inboxMini();homePulse();api('api/overview').then(o=>{
  const h=new Date().getHours();const hi=h<6?'夜深了':h<12?'早上好':h<18?'下午好':'晚上好';
  $('greet').innerHTML=`${hi}，<em class="sf">${esc(window.__ME||'运营')}</em>`;
  $('greet-sub').textContent=`待办 ${o.open_tasks} · 管线 ${o.pipeline_inflight} · 分发待发 ${o.dist_open} · 最近一次每日管线 ${o.daily.running?'运行中':'已完成'}`;
@@ -2458,6 +2463,39 @@ $('home-timers').innerHTML=esc((o.timers||'').split('\n').filter(l=>/mflow/.test
  $('chart7').innerHTML=c.map(x=>`<div class="cb"><span class="vl tnum">${x.n||''}</span><div class="bar" style="height:${Math.max(4,x.n/mx*100)}%"></div><span class="lb">${x.label}</span></div>`).join('');
  $('chart7-meta').innerHTML=`近 7 日共 <b class="tnum">${c.reduce((a,b)=>a+b.n,0)}</b> 次推进`;
 })}
+
+/* ---- 运营一览：回答「在跑多少/自动多少/等确认多少/去哪看/去哪审/怎么发」---- */
+function homePulse(){
+ Promise.all([api('api/batch/list'),api('api/playbooks'),api('api/overview')]).then(r=>{
+  const ts=Array.isArray(r[0])?r[0]:((r[0]&&r[0].tasks)||[]);
+  const pbs=Array.isArray(r[1])?r[1]:((r[1]&&r[1].playbooks)||[]);
+  const ov=r[2]||{};
+  const runB=ts.filter(t=>t.status==='running'||t.status==='queued').length;
+  const inflight=ov.pipeline_inflight||0;
+  const enabled=(pbs||[]).filter(x=>x.enabled).length;
+  const waitB=ts.filter(t=>t.dry_run&&t.status==='done'&&t.stats&&t.stats.done===0&&t.stats.skipped>0);
+  const open=ov.open_tasks||0;
+  $('home-pulse').innerHTML=[
+   ['正在跑',runB+inflight,'批量 '+runB+' · 管线 '+inflight,"setTab('batch')",''],
+   ['自动托管',enabled+' 个剧本','含每日 08:00 内容管线',"setTab('auto')",''],
+   ['等你确认',waitB.length+open,'预演批 '+waitB.length+' · 待办 '+open,'homeJumpConfirm()',''],
+  ].map(([t2,n,s,go])=>`<div class="card metric" style="cursor:pointer" onclick="${go}"><div class="m-label">${t2}</div><div class="m-val tnum">${n}</div><div class="m-delta"><span class="m-hint">${s} →</span></div></div>`).join('')+
+   `<div class="card metric" style="cursor:pointer;border-color:var(--accent)" onclick="setTab('lib')"><div class="m-label">快速发布</div><div class="m-val" style="font-size:20px">发布 →</div><div class="m-delta"><span class="m-hint">内容库底部 · 选类型填 slug 一键上线</span></div></div>`;
+  $('home-confirm-n').textContent=waitB.length?('('+waitB.length+')'):'';
+  $('home-confirm').innerHTML=waitB.length?waitB.slice(0,5).map(b=>
+   `<div class="act-item"><span class="act-ic wn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg></span>
+    <div class="act-tx"><div class="act-t">${esc(b.title||b.id)}</div><div class="act-m">预演通过 · ${((b.stats||{}).total)||'—'} 项 · <a style="cursor:pointer;color:var(--accent)" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(b.id)}'),400)">详情</a></div></div>
+    <button class="mini" style="background:var(--accent);color:#fff" onclick="api('api/batch/action',{id:'${esc(b.id)}',action:'go_real'}).then(()=>{toast('已转真实执行','ok');homePulse()})">▶ 确认执行</button></div>`).join('')+
+   (open?`<div class="act-item" style="cursor:pointer" onclick="setTab('tasks')"><span class="act-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><div class="act-tx"><div class="act-t">另有 ${open} 条手动待办</div><div class="act-m">任务看板</div></div></div>`:'')
+   :emptyBox('✅','没有等你确认的事项','自动化照常运行',"setTab('auto')");
+  $('home-goto').innerHTML=[
+   ['查看运行状态','剧本执行记录 · 调度 · 日志',"setTab('auto')"],
+   ['查看 / 审核稿件','内容管线 · 阅读器内审稿改稿',"setTab('pipe')"],
+   ['快速发布','主站发布面板 · 一键上线',"setTab('lib')"],
+   ['跑一次质检','QA 编排 · 预演起步',"setTab('qa')"],
+  ].map(([t2,s,go])=>`<a onclick="${go}"><span class="act-ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="qt">${t2}<span class="mut" style="font-size:11px;margin-left:6px">${s}</span></span><span class="qd">前往 →</span></a>`).join('');
+ }).catch(()=>{})}
+function homeJumpConfirm(){const el=$('home-confirm');if(el)el.scrollIntoView({behavior:'smooth',block:'center'})}
 
 /* ---- 任务看板（Trello 式：拖拽跨列 + 卡片编辑 + 日历关联 + 归属人过滤）---- */
 let TM_ID=null,TASK_MINE=false;
@@ -3600,7 +3638,7 @@ function loadBatch(){loadPresets();brkLoad();api('api/batch/list').then(ts=>{
     <td><b style="font-size:12px">${esc(btType(t.type))}</b><div class="mut" style="font-size:10.5px">${esc(t.type)}</div></td>
     <td style="min-width:130px"><div style="height:8px;border-radius:99px;background:var(--hover);overflow:hidden"><div style="height:100%;width:${pct}%;background:${s.failed?'var(--warn)':'var(--accent)'}"></div></div>
      <span class="mut" style="font-size:11px">${s.done||0}/${s.total||0}${s.failed?' · 失败'+s.failed:''}${s.skipped?' · 预演跳过'+s.skipped:''}</span></td>
-    <td><span class="badge ${t.status==='done'?'pipe':(t.status==='running'?'dist':'')}" style="${t.status==='done'?'background:var(--ok)':''}">${esc(btStatus(t.status))}</span></td>
+    <td><span class="badge ${t.status==='done'?'pipe':(t.status==='running'?'dist':'')}" style="${t.status==='done'?'background:var(--ok)':''}">${esc(btStatusOf(t))}</span></td>
     <td class="mut" style="font-size:11px">${esc(t.created||'')}</td>
     <td style="white-space:nowrap"><button class="mini" onclick="btDetail('${esc(t.id)}')">详情</button>
      ${t.status==='running'||t.status==='queued'?`<button class="mini" onclick="btAct('${esc(t.id)}','pause')">暂停</button>`:''}
@@ -3624,10 +3662,11 @@ function btFromPlan(){api('api/batch/create',{type:'asset_replace',title:'图片
  if(r.error)return alert(r.error);alert(`已按物料计划建任务：${r.id}（${r.total} 项）`);$('bt-type').value='asset_replace';loadBatch()})}
 function btAct(id,action){if(action==='cancel'&&!confirm('取消任务 '+id+'？'))return;
  api('api/batch/action',{id,action}).then(r=>{if(r.error)return alert(r.error);loadBatch();btDetail(id)})}
+function btStatusOf(t){return (t.dry_run&&t.status==='done'&&t.stats&&t.stats.done===0&&t.stats.skipped>0)?'预演通过·待确认':btStatus(t.status)}
 function btDetail(id){api('api/batch/detail?id='+encodeURIComponent(id)).then(t=>{if(t.error)return toast(t.error,'bad');
  $('bt-detail-card').style.display='block';
  const sm=t.summary||{};
- $('bt-detail-t').innerHTML=`任务详情 · ${esc(t.title||t.id)} <span class="badge ${sm.ok?'pipe':'dist'}" style="${sm.ok?'background:var(--ok)':''}">${esc(btStatus(t.status))}</span> ${t.dry_run?'<span class="badge dist">预演（不写库）</span>':''} <button class="mini" onclick='openConvert({kind:"batch",id:"${esc(t.id)}",title:${JSON.stringify(t.title||t.id)}},event)'>⇄ 执行方式</button>${t.dry_run?` <button class="mini" style="background:var(--accent);color:#fff" onclick='btAct("${esc(t.id)}","go_real")'>▶ 确认执行（转真实）</button>`:''}`;
+ $('bt-detail-t').innerHTML=`任务详情 · ${esc(t.title||t.id)} <span class="badge ${sm.ok?'pipe':'dist'}" style="${sm.ok?'background:var(--ok)':''}">${esc(btStatusOf(t))}</span> ${t.dry_run?'<span class="badge dist">预演（不写库）</span>':''} <button class="mini" onclick='openConvert({kind:"batch",id:"${esc(t.id)}",title:${JSON.stringify(t.title||t.id)}},event)'>⇄ 执行方式</button>${t.dry_run?` <button class="mini" style="background:var(--accent);color:#fff" onclick='btAct("${esc(t.id)}","go_real")'>▶ 确认执行（转真实）</button>`:''}`;
  const links=(i)=>(i.links||[]).map(l=>l.url
    ?`<a href="${esc(l.url)}" target="_blank" class="mini" style="text-decoration:none;display:inline-block">${esc(l.label)} ↗</a>`
    :`<button class="mini" onclick="openReader('${esc(l.reader)}')">${esc(l.label)}</button>`).join(' ');
