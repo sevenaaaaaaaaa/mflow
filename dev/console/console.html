@@ -657,7 +657,7 @@ body.sb-open #sb-mask{display:block}
         <option value="sanity-filter">CMS 文档（按类型/语言批量）</option>
         <option value="drafts">本项目草稿（md 钩子）</option>
         <option value="custom">自定义 items（JSON）</option></select>
-        <select id="qa-ptype" style="width:140px"><option value="">全部类型</option><option>feature</option><option>tool</option><option>topic</option><option>scenario</option><option>solution</option><option>product</option></select>
+        <select id="qa-ptype" style="width:140px"><option value="">全部类型</option><option value="feature">案例 feature</option><option value="tool">工具 tool</option><option value="topic">主题 topic</option><option value="scenario">场景 scenario</option><option value="solution">方案 solution</option><option value="product">产品 product</option></select>
         <select id="qa-lang" style="width:110px"><option value="">全部语言</option><option>en</option><option>zh</option><option>ja</option><option>ko</option><option>zh-TW</option><option>de</option><option>fr</option><option>pt</option><option>ru</option><option>it</option></select>
         <input id="qa-max" type="number" value="200" min="1" max="2000" style="width:90px" title="条数上限">
         <button class="btn primary" onclick="qaCreate(event)">创建扫描任务</button></div>
@@ -732,12 +732,12 @@ body.sb-open #sb-mask{display:block}
       <div id="bt-opt" style="display:none;margin-top:10px"></div></div>
     <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>新建任务（高级）</h3><span class="mut">items 为 JSON 数组</span></div>
       <div class="row"><select id="bt-type" style="width:180px" onchange="btHint()">
-        <option value="asset_replace">物料替换 asset_replace</option>
-        <option value="field_patch">字段改写 field_patch</option>
-        <option value="gen">批量生成 gen</option>
-        <option value="rewrite">批量改稿 rewrite</option></select>
+        <option value="asset_replace">图片物料替换</option>
+        <option value="field_patch">字段修复</option>
+        <option value="gen">批量生成</option>
+        <option value="rewrite">批量改稿</option></select>
         <input id="bt-title" placeholder="任务标题" style="flex:1;min-width:180px">
-        <label style="font-size:13px;white-space:nowrap"><input id="bt-dry" type="checkbox" checked style="margin-right:5px">dry-run（只预览不写库）</label>
+        <label style="font-size:13px;white-space:nowrap"><input id="bt-dry" type="checkbox" checked style="margin-right:5px">预演（只预览不写库）</label>
         <button class="btn primary" onclick="btCreate(event)">创建任务</button></div>
       <textarea id="bt-items" placeholder='items JSON，例如：
 物料替换（从内容库计划一键带入则留空）：[{"doc_id":"xxx","kind":"cover","old":"https://…","new_url":"https://…","new_alt":"…"}]
@@ -787,7 +787,7 @@ body.sb-open #sb-mask{display:block}
         <input id="as-newalt" placeholder="新 alt（可空）" style="width:180px"></div>
       <div class="row" style="margin-top:8px"><select id="as-section" style="width:130px"></select>
         <select id="as-lang" style="width:100px"><option value="">全部语言</option><option>en</option><option>zh</option><option>ja</option><option>ko</option><option>zh-TW</option><option>de</option><option>fr</option><option>pt</option><option>ru</option><option>it</option></select>
-        <select id="as-ptype" style="width:130px"><option value="">全部类型</option><option>feature</option><option>tool</option><option>topic</option><option>scenario</option><option>solution</option><option>product</option><option>blog</option></select>
+        <select id="as-ptype" style="width:130px"><option value="">全部类型</option><option value="feature">案例 feature</option><option value="tool">工具 tool</option><option value="topic">主题 topic</option><option value="scenario">场景 scenario</option><option value="solution">方案 solution</option><option value="product">产品 product</option><option>blog</option></select>
         <input id="as-slugs" placeholder="限定 slug（逗号分隔，可空）" style="flex:1;min-width:180px">
         <button class="btn ghost" onclick="asPlan()">① 生成计划</button>
         <button class="btn ghost" onclick="asApply(true)">② Dry-run 预览</button>
@@ -819,7 +819,7 @@ body.sb-open #sb-mask{display:block}
         <select id="pub-lang" style="width:100px"><option value="zh">zh</option><option value="en">en</option><option value="ja">ja</option><option value="ko">ko</option><option value="zh-TW">zh-TW</option><option value="ru">ru</option><option value="pt">pt</option><option value="de">de</option><option value="fr">fr</option><option value="it">it</option></select>
         <select id="pub-cat" style="width:150px"><option>How-To</option><option>Best Practice</option><option>Industry Solution</option><option>Comparison</option><option>Branding</option></select></div>
       <div class="row" id="pub-landing-row" style="margin-top:8px;display:none">
-        <select id="pub-ptype" style="width:130px"><option>tool</option><option>feature</option><option>topic</option><option>scenario</option><option>solution</option><option>product</option><option>landing</option></select>
+        <select id="pub-ptype" style="width:130px"><option value="tool">工具 tool</option><option value="feature">案例 feature</option><option value="topic">主题 topic</option><option value="scenario">场景 scenario</option><option value="solution">方案 solution</option><option value="product">产品 product</option><option>landing</option></select>
         <select id="pub-mode" style="width:150px"><option value="patch">patch（更新既有页·安全）</option><option value="create">create（新建页）</option></select>
         <input id="pub-cover" placeholder="封面 URL（留空=frontmatter cover_url）" style="flex:1;min-width:200px">
         <label style="font-size:12.5px;white-space:nowrap"><input id="pub-confirm" type="checkbox" style="margin-right:5px">确认公开可见（写入即上线）</label></div>
@@ -840,7 +840,7 @@ body.sb-open #sb-mask{display:block}
     <div class="pg-head"><div><div class="kick">我的工作</div><h1>内容<em class="sf">管线</em></h1>
       <p class="pg-sub">12 阶段状态机。非法跳步会被后端直接拒绝——这是质量保障的一部分。</p></div>
       <div class="head-actions"><input id="nid" placeholder="条目 id（如 blog-xxx）" style="width:220px">
-      <select id="ncat"><option>blog</option><option>landing</option><option>feature</option><option>tool</option><option>topic</option></select>
+      <select id="ncat"><option>blog</option><option>landing</option><option value="feature">案例 feature</option><option value="tool">工具 tool</option><option value="topic">主题 topic</option></select>
       <button class="btn primary" onclick="upsert()">创建条目</button></div></div>
     <div class="pgrid" id="board"></div>
   </section>
@@ -1352,7 +1352,7 @@ function modeSwitch(mode){if(!confirm(`确认切换工作模式为 ${mode.toUppe
 
 function presetPick(id){PRESET_SEL=id;loadPresets();
  const p=PRESETS.find(x=>x.id===id);if(!p)return;
- const labels={limit:'条数上限',lang:'语言（如 zh / en / ja）',dry_run:'dry-run',min_impr:'最小曝光',page_type:'页面类型（可空）',topic:'主题',langs:'语言列表（逗号分隔）'};
+ const labels={limit:'条数上限',lang:'语言（如 zh / en / ja）',dry_run:'预演模式',min_impr:'最小曝光',page_type:'页面类型（可空）',topic:'主题',langs:'语言列表（逗号分隔）'};
  $('bt-opt').style.display='block';
  $('bt-opt').innerHTML=`<b style="font-size:13px">${esc(p.icon||'')} ${esc(p.name)}</b><div class="mut" style="font-size:12px;margin:4px 0 8px">${esc(p.desc)}</div>
   <div class="row">${(p.options||[]).map(o=>o==='dry_run'
@@ -1367,7 +1367,7 @@ function presetRun(ev){const p=PRESETS.find(x=>x.id===PRESET_SEL);if(!p)return t
   const r=await api('api/presets/run',{id:PRESET_SEL,options:opt});
   if(r.error)throw new Error(r.error);
   loadBatch();
-  toast(`已创建任务 ${r.task_id}（${r.total} 项，${r.dry_run?'dry-run':'真实执行'}），即将跳转详情`,'ok');
+  toast(`已创建任务 ${r.task_id}（${r.total} 项，${r.dry_run?'预演':'真实执行'}），即将跳转详情`,'ok');
   goBatchDetail(r.task_id);
   return r;
  },{busyText:'创建中…',okText:'已创建'});}
@@ -1810,7 +1810,7 @@ function mcLoad(){
    const tr=p.trigger||{};
    const when=tr.every==='weekly'?`每周${['日','一','二','三','四','五','六'][(tr.weekday||1)-1]} ${tr.at||''}`:`每天 ${tr.at||''}`;
    h+=`<div style="border:1px solid var(--line);border-radius:10px;padding:10px">
-     <b style="font-size:13px">${esc(p.name)}</b> ${p.dry_run?pill(false,'dry-run'):pill(true,'真实')} ${p.enabled?'':'<span class="badge dist">已停用</span>'}
+     <b style="font-size:13px">${esc(p.name)}</b> ${p.dry_run?pill(false,'预演'):pill(true,'真实')} ${p.enabled?'':'<span class="badge dist">已停用</span>'}
      <div class="mut" style="font-size:11.5px;margin-top:4px">节奏：${esc(when)} · 上次：${esc(p.last_run||'未运行')}</div>
      <div class="row" style="margin-top:8px;gap:6px">
       <button class="mini" onclick="pbRun('${esc(p.playbook_id)}',event)">▶ 立即跑一次（预演）</button>
@@ -1818,7 +1818,7 @@ function mcLoad(){
   }
   for(const b of bts){
    h+=`<div style="border:1px solid var(--line);border-radius:10px;padding:10px">
-     <b style="font-size:13px">${esc(b.title||b.id)}</b> ${b.dry_run?pill(false,'dry-run'):pill(true,'真实')}
+     <b style="font-size:13px">${esc(b.title||b.id)}</b> ${b.dry_run?pill(false,'预演'):pill(true,'真实')}
      <div class="mut" style="font-size:11.5px;margin-top:4px">${esc(b.created||'')} · ${(b.stats||{}).total||0} 项 · ${esc(b.status||'')}</div>
      <div class="row" style="margin-top:8px;gap:6px">
       <button class="mini" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(b.id)}'),400)">查看详情</button>
@@ -3261,7 +3261,7 @@ function asPollPlan(){setTimeout(()=>{api('api/assets/plan?site='+encodeURICompo
   if(p.items&&p.items.length)$('as-out').textContent=p.items.slice(0,20).map(i=>i.slug+' · '+i.kind+(i.idx!==null?`[${i.idx}]`:'')+' · '+i.old.slice(0,80)).join('\n')}
  },2500)})}
 function asApply(dry){api('api/assets/apply',{site:LIB_SITE,dry_run:dry}).then(r=>{if(r.error)return alert(r.error);
- $('as-out').textContent='已提交（'+(dry?'dry-run':'真写库')+'），等待结果…';asPollApply(0,dry)})}
+ $('as-out').textContent='已提交（'+(dry?'预演':'真实写库')+'），等待结果…';asPollApply(0,dry)})}
 function asPollApply(n,dry){n=n||0;api('api/assets/result?site='+encodeURIComponent(LIB_SITE)+'&cmd=apply').then(r=>{
  if(r.out&&r.at){$('as-out').textContent=r.out.slice(-2000);if(!dry)alert('已应用——注意：MFlow 库台账需重扫以更新（CMS 侧已变更）');return}
  if(n<30)setTimeout(()=>asPollApply(n+1,dry),4000)})}
@@ -3436,7 +3436,7 @@ function agRender(ms){const th=$('ag-thread');if(!th)return;
    const itms=isExp?`<span class="mut">将按预设「${esc(sp.expand.preset)}」用真实数据展开${sp.expand.opt?'（'+esc(JSON.stringify(sp.expand.opt))+'）':''}</span>`:(sp.items||[]).slice(0,3).map(i=>esc(JSON.stringify(i)).slice(0,120)).join('<br>');
    spec=`<div class="card" style="margin-top:8px;padding:12px;border-left:3px solid ${sp.dry_run?'var(--accent)':'var(--ok)'}">
     <div style="display:flex;align-items:center;gap:6px"><b style="font-size:13px">${esc(sp.type)}</b>
-    <span class="badge ${sp.dry_run?'dist':'pipe'}" style="${sp.dry_run?'':'background:var(--ok)'}">${sp.dry_run?'dry-run':'真实'}</span>
+    <span class="badge ${sp.dry_run?'dist':'pipe'}" style="${sp.dry_run?'':'background:var(--ok)'}">${sp.dry_run?'预演':'真实'}</span>
     <span class="mut" style="font-size:11px">${isExp?'范围展开':((sp.items||[]).length+' 项')}</span></div>
     <div class="mut" style="font-size:11.5px;margin-top:4px">${esc(sp.rationale||'')}</div>
     <div style="font-size:10.5px;font-family:var(--font-mono);margin-top:6px;max-height:100px;overflow:auto;background:var(--bg);padding:6px;border-radius:8px">${itms}</div>
@@ -3586,15 +3586,21 @@ const BATCH_HINTS={asset_replace:"items 可留空 → 用「从图片物料计�
  gen:'每项：{"item_id":"slug","type":"blog","lang":"zh","topic":"…","brief":"…"}',
  rewrite:'每项：{"item_id":"refresh-x","lang":"zh","topic":"…","instruction":"改写要求","source_path":"run/library/…"}'};
 function btHint(){$('bt-hint').textContent=BATCH_HINTS[$('bt-type').value]||''}
+/* ---- 批量任务类型/状态通用中文（代号保留为小字备注） ---- */
+const BT_TYPE_LABELS={gen:'新建生成',rewrite:'改稿重写',qa:'质检扫描',publish_sanity:'发布上线',verify:'线上验证',
+ field_patch:'字段修复',asset_replace:'图片物料替换',internal_link:'内链体检',landing_refresh:'落地页刷新'};
+const BT_STATUS_LABELS={pending:'待执行',queued:'排队中',running:'执行中',done:'已完成',failed:'失败',
+ paused:'已暂停',cancelled:'已取消',skipped:'预演通过待确认'};
+const btType=t=>BT_TYPE_LABELS[t]||t, btStatus=s=>BT_STATUS_LABELS[s]||s;
 function loadBatch(){loadPresets();brkLoad();api('api/batch/list').then(ts=>{
  $('nav-batch').textContent=(ts||[]).filter(t=>t.status==='running'||t.status==='queued').length;
  $('bt-list').innerHTML=(ts||[]).length?'<table><tr><th>任务</th><th>类型</th><th>进度</th><th>状态</th><th>创建</th><th></th></tr>'+
   ts.map(t=>{const s=t.stats||{};const pct=s.total?Math.round((s.done+s.skipped+s.failed)/s.total*100):0;
-   return `<tr><td><b>${esc(t.title||t.id)}</b><div class="mut" style="font-size:10.5px">${esc(t.id)}${t.dry_run?' · dry-run':''}</div></td>
-    <td>${esc(t.type)}</td>
+   return `<tr><td><b>${esc(t.title||t.id)}</b><div class="mut" style="font-size:10.5px">${esc(t.id)}${t.dry_run?' · 预演（不写库）':''}</div></td>
+    <td><b style="font-size:12px">${esc(btType(t.type))}</b><div class="mut" style="font-size:10.5px">${esc(t.type)}</div></td>
     <td style="min-width:130px"><div style="height:8px;border-radius:99px;background:var(--hover);overflow:hidden"><div style="height:100%;width:${pct}%;background:${s.failed?'var(--warn)':'var(--accent)'}"></div></div>
-     <span class="mut" style="font-size:11px">${s.done||0}/${s.total||0}${s.failed?' · 失败'+s.failed:''}${s.skipped?' · 跳过'+s.skipped:''}</span></td>
-    <td><span class="badge ${t.status==='done'?'pipe':(t.status==='running'?'dist':'')}" style="${t.status==='done'?'background:var(--ok)':''}">${esc(t.status)}</span></td>
+     <span class="mut" style="font-size:11px">${s.done||0}/${s.total||0}${s.failed?' · 失败'+s.failed:''}${s.skipped?' · 预演跳过'+s.skipped:''}</span></td>
+    <td><span class="badge ${t.status==='done'?'pipe':(t.status==='running'?'dist':'')}" style="${t.status==='done'?'background:var(--ok)':''}">${esc(btStatus(t.status))}</span></td>
     <td class="mut" style="font-size:11px">${esc(t.created||'')}</td>
     <td style="white-space:nowrap"><button class="mini" onclick="btDetail('${esc(t.id)}')">详情</button>
      ${t.status==='running'||t.status==='queued'?`<button class="mini" onclick="btAct('${esc(t.id)}','pause')">暂停</button>`:''}
@@ -3621,7 +3627,7 @@ function btAct(id,action){if(action==='cancel'&&!confirm('取消任务 '+id+'？
 function btDetail(id){api('api/batch/detail?id='+encodeURIComponent(id)).then(t=>{if(t.error)return toast(t.error,'bad');
  $('bt-detail-card').style.display='block';
  const sm=t.summary||{};
- $('bt-detail-t').innerHTML=`任务详情 · ${esc(t.title||t.id)} <span class="badge ${sm.ok?'pipe':'dist'}" style="${sm.ok?'background:var(--ok)':''}">${esc(t.status)}</span> ${t.dry_run?'<span class="badge dist">dry-run</span>':''} <button class="mini" onclick='openConvert({kind:"batch",id:"${esc(t.id)}",title:${JSON.stringify(t.title||t.id)}},event)'>⇄ 执行方式</button>${t.dry_run?` <button class="mini" style="background:var(--accent);color:#fff" onclick='btAct("${esc(t.id)}","go_real")'>▶ 确认执行（转真实）</button>`:''}`;
+ $('bt-detail-t').innerHTML=`任务详情 · ${esc(t.title||t.id)} <span class="badge ${sm.ok?'pipe':'dist'}" style="${sm.ok?'background:var(--ok)':''}">${esc(btStatus(t.status))}</span> ${t.dry_run?'<span class="badge dist">预演（不写库）</span>':''} <button class="mini" onclick='openConvert({kind:"batch",id:"${esc(t.id)}",title:${JSON.stringify(t.title||t.id)}},event)'>⇄ 执行方式</button>${t.dry_run?` <button class="mini" style="background:var(--accent);color:#fff" onclick='btAct("${esc(t.id)}","go_real")'>▶ 确认执行（转真实）</button>`:''}`;
  const links=(i)=>(i.links||[]).map(l=>l.url
    ?`<a href="${esc(l.url)}" target="_blank" class="mini" style="text-decoration:none;display:inline-block">${esc(l.label)} ↗</a>`
    :`<button class="mini" onclick="openReader('${esc(l.reader)}')">${esc(l.label)}</button>`).join(' ');
