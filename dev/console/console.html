@@ -448,24 +448,19 @@ body.sb-open #sb-mask{display:block}
     <button class="mini" onclick="newProject()" title="新建项目" style="height:34px;padding:0 10px">＋</button>
   </div>
   <div class="sb-quick">
-    <button onclick="setTab('taskhub')" title="任务中心"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>任务看板</span></button>
-    <button onclick="setTab('agent')" title="Agent 任务台"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4v1a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3h1v3M12 3a4 4 0 0 1 4 4v1a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-1v3"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/></svg><span>Agent</span></button>
+    <button onclick="goHub()" title="任务中心（总览内）"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>任务</span></button>
     <button onclick="setTab('calt')" title="内容日历"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>日历</span></button>
   </div>
-  <button class="s-item on" data-t="home" onclick="setTab('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>总览</span></button>
-  <button class="s-item" data-t="taskhub" onclick="setTab('taskhub')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg><span>任务中心</span><span class="sbad" id="nav-hub" style="display:none">0</span></button>
+  <button class="s-item on" data-t="home" onclick="setTab('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>总览</span><span class="sbad" id="nav-hub" style="display:none">0</span></button>
   <div class="sec-title">工作台</div>
   <button class="s-item" data-t="agent" onclick="setTab('agent')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4v1a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3h1v3M12 3a4 4 0 0 1 4 4v1a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-1v3"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/></svg><span>Agent 任务台</span></button>
   <button class="s-item" data-t="auto" onclick="setTab('auto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg><span>自动化</span><span class="sbad mutb" id="nav-auto">0</span></button>
-  <button class="s-item" data-t="inbox" onclick="setTab('inbox')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg><span>收件箱</span><span class="sbad" id="nav-inbox" style="display:none">0</span></button>
   <button class="s-item" data-t="onboard" onclick="setTab('onboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3.5"/></svg><span>开工向导</span></button>
   <button class="s-item" data-t="run" onclick="setTab('run')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><circle cx="8" cy="16" r="2"/><circle cx="15" cy="9" r="2"/><path d="M9.5 14.5 13.5 10.5"/></svg><span>执行画布</span><span class="sbad mutb" id="nav-run">0</span></button>
   <button class="s-item" data-t="create" onclick="setTab('create')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg><span>创作中心</span></button>
   <div class="sec-title">质量与发布</div>
-  <button class="s-item" data-t="qa" onclick="setTab('qa')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg><span>QA 编排</span></button>
   <button class="s-item" data-t="dist" onclick="setTab('dist')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg><span>分发队列</span><span class="sbad mutb" id="nav-dist">0</span></button>
   <button class="s-item" data-t="calt" onclick="setTab('calt')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>内容日历</span><span class="sbad mutb" id="nav-calt">0</span></button>
-  <button class="s-item" data-t="pipe" onclick="setTab('pipe')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/><path d="M10 6.5h7a1 1 0 0 1 1 1V14M14 17.5H7a1 1 0 0 1-1-1V10"/></svg><span>内容管线</span><span class="sbad mutb" id="nav-pipe">0</span></button>
   <div class="sec-title">内容资产</div>
   <button class="s-item" data-t="lib" onclick="setTab('lib')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M9 7h7M9 11h7"/></svg><span>内容库</span><span class="sbad mutb" id="nav-lib">0</span></button>
   <button class="s-item" data-t="kb" onclick="setTab('kb')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span>知识库</span></button>
@@ -507,8 +502,24 @@ body.sb-open #sb-mask{display:block}
     </div>
     <div class="metrics" id="home-pulse" style="margin-bottom:14px"></div>
     <div class="ov-grid" style="margin-bottom:14px">
-      <div class="card"><div class="card-head"><h3>🟠 等你确认 <span class="mut tnum" id="home-confirm-n"></span></h3><button class="more" onclick="setTab('taskhub')">任务中心 →</button></div><div id="home-confirm" class="qlist ql"></div></div>
+      <div class="card"><div class="card-head"><h3>🟠 等你确认 <span class="mut tnum" id="home-confirm-n"></span></h3><button class="more" onclick="goHub()">任务中心 →</button></div><div id="home-confirm" class="qlist ql"></div></div>
       <div class="card"><div class="card-head"><h3>我要……</h3></div><div class="qlist ql" id="home-goto"></div></div>
+    </div>
+    <!-- 任务中心（已并入总览：批量 / 待办 / 剧本 / 管线 一屏管理） -->
+    <div id="hub-anchor" style="margin-bottom:14px">
+      <div class="card">
+        <div class="card-head"><h3>🗂 任务中心 <span class="mut" style="font-size:11.5px;font-weight:400">查看 · 管理 · 调整任务与文章页面，30 秒自动刷新</span></h3>
+          <div class="chips" id="hub-filter"></div></div>
+        <div id="hub-body" style="margin-top:10px"><div class="mut" style="padding:8px 12px">加载中…</div></div>
+        <div id="pipe-extra" style="display:none">
+          <div class="row" style="margin:2px 0 8px">
+            <input id="nid" placeholder="条目 id（如 blog-xxx）" style="width:220px">
+            <select id="ncat"><option>blog</option><option>landing</option><option value="feature">案例 feature</option><option value="tool">工具 tool</option><option value="topic">主题 topic</option></select>
+            <button class="btn primary" onclick="upsert()">创建条目</button>
+            <span class="mut" style="font-size:11.5px">12 阶段状态机 · 非法跳步会被后端拒绝（质量保障的一部分）</span></div>
+          <div class="pgrid" id="board"><div class="mut">加载中…</div></div>
+        </div>
+      </div>
     </div>
     <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>工作模式 <span class="badge" id="mode-badge" style="margin-left:6px"></span></h3>
       <div class="row"><select id="mode-select" onchange="modeSwitch(this.value)" style="width:150px">
@@ -525,7 +536,7 @@ body.sb-open #sb-mask{display:block}
     <div class="metrics" id="metrics"></div>
     <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>⚙ 运行与消耗 <span class="mut" id="ops-sum" style="font-size:12px"></span></h3>
       <div class="row"><button class="mini" id="ops-budget-btn" style="display:none" onclick="opsBudget()">＋ 单日加预算</button>
-      <button class="more" onclick="setTab('taskhub')">任务中心 →</button></div></div>
+      <button class="more" onclick="goHub()">任务中心 →</button></div></div>
       <div id="home-ops" class="mut" style="font-size:12.5px">加载中…</div></div>
     <div id="home-health"></div>
     <div class="ov-grid">
@@ -539,14 +550,6 @@ body.sb-open #sb-mask{display:block}
       <div class="card"><div class="card-head"><h3>调度状态</h3><button class="more" onclick="setTab('sys')">详情 →</button></div><div id="home-timers" style="font-size:12.5px;line-height:1.9;color:var(--muted)"></div></div>
       <div class="card"><div class="card-head"><h3>最近活动</h3></div><div id="home-acts"></div></div>
     </div>
-  </section>
-
-  <!-- ============ 任务中心（统一视图） ============ -->
-  <section class="page" id="pg-taskhub">
-    <div class="pg-head"><div><div class="kick">统一视图</div><h1>任务<em class="sf">中心</em></h1>
-      <p class="pg-sub">后台新建的所有执行任务都在这里：改稿、质检、字段修复、发布……以及剧本执行记录（30 秒自动刷新）。任务产出的稿件在内容管线与内容库管理。</p></div>
-      <div class="head-actions"><div class="chips" id="hub-filter"></div></div></div>
-    <div id="hub-body"></div>
   </section>
 
   <!-- ============ 任务 ============ -->
@@ -570,7 +573,7 @@ body.sb-open #sb-mask{display:block}
       <div class="card tcol"><div class="card-head"><h3>进行中 <span class="mut tnum" id="cnt-doing"></span></h3></div><div id="col-doing" class="kcol"></div></div>
       <div class="card tcol"><div class="card-head"><h3>已完成 <span class="mut tnum" id="cnt-done"></span></h3></div><div id="col-done" class="kcol"></div></div>
     </div>
-    <div class="card" style="margin-top:14px"><div class="card-head"><h3>批量任务进度</h3><button class="more" onclick="setTab('taskhub')">任务中心 →</button></div><div id="task-batches"></div></div>
+    <div class="card" style="margin-top:14px"><div class="card-head"><h3>批量任务进度</h3><button class="more" onclick="goHub()">任务中心 →</button></div><div id="task-batches"></div></div>
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>自动同步队列（只读）</h3></div><div id="autoq"></div></div>
   </section>
 
@@ -592,16 +595,6 @@ body.sb-open #sb-mask{display:block}
       <div id="auto-body"><div class="mut">加载中…</div></div></div>
   </section>
 
-  <!-- ============ 收件箱 ============ -->
-  <section class="page" id="pg-inbox">
-    <div class="pg-head"><div><div class="kick">工作台</div><h1>收<em class="sf">件箱</em></h1>
-      <p class="pg-sub">所有「需要我处理的」集中一屏：系统阻断、待办、失败任务、待授权发布、待执行方案。点右侧动作即可处理。</p></div>
-      <div class="head-actions"><button class="btn ghost" onclick="inboxLoad()">刷新 ↻</button>
-        <button class="btn primary" onclick="setTab('agent')">让 Agent 帮我处理</button></div></div>
-    <div class="card"><div class="card-head"><h3>待处理 <span class="mut" id="inbox-n"></span></h3></div>
-      <div id="inbox-body"><div class="mut">加载中…</div></div></div>
-  </section>
-
   <!-- ============ 开工向导 ============ -->
   <section class="page" id="pg-onboard">
     <div class="pg-head"><div><div class="kick">首次引导</div><h1>开工<em class="sf">向导</em></h1>
@@ -611,19 +604,26 @@ body.sb-open #sb-mask{display:block}
     <div id="onboard-body"><div class="mut">加载中…</div></div>
   </section>
 
-  <!-- ============ 执行画布 ============ -->
+  <!-- ============ 执行画布（含 QA 编排子视图） ============ -->
   <section class="page" id="pg-run">
     <div class="pg-head"><div><div class="kick">工作台</div><h1>执行<em class="sf">画布</em></h1>
-      <p class="pg-sub">后台运行中的任务在这里实时可视化：每步状态、当前动作、整体进度一目了然。</p></div>
-      <div class="head-actions"><button class="btn ghost" onclick="loadRuns()">刷新 ↻</button></div></div>
-    <div class="cols" style="grid-template-columns:280px 1fr">
-      <div class="card" style="height:fit-content"><div class="card-head"><h3>执行记录</h3></div>
-        <div id="run-list" class="flist"></div></div>
-      <div class="card"><div class="card-head"><h3 id="run-title">选择一个执行查看画布</h3>
-        <span id="run-badge"></span></div>
-        <div id="run-canvas"><div class="mut">左侧选一条执行记录，或用 Agent 下达任务自动生成。</div></div>
+      <p class="pg-sub">后台运行中的任务在这里实时可视化：每步状态、当前动作、整体进度一目了然。QA 编排（扫描 → 修复 → 复检闭环）也已并入本页。</p></div>
+      <div class="head-actions">
+        <div class="chips" style="margin-right:6px">
+          <span class="chip on" id="rv-chip-run" onclick="runView('run')">执行</span>
+          <span class="chip" id="rv-chip-qa" onclick="runView('qa')">QA 编排</span></div>
+        <button class="btn ghost" onclick="RUN_VIEW==='qa'?qaLoad():runLoad()">刷新 ↻</button></div></div>
+    <div id="run-view">
+      <div class="cols" style="grid-template-columns:280px 1fr">
+        <div class="card" style="height:fit-content"><div class="card-head"><h3>执行记录</h3></div>
+          <div id="run-list" class="flist"></div></div>
+        <div class="card"><div class="card-head"><h3 id="run-title">选择一个执行查看画布</h3>
+          <span id="run-badge"></span></div>
+          <div id="run-canvas"><div class="mut">左侧选一条执行记录，或用 Agent 下达任务自动生成。</div></div>
+        </div>
       </div>
     </div>
+    <div id="qa-view" style="display:none"></div>
   </section>
 
   <!-- ============ 报告 ============ -->
@@ -663,32 +663,7 @@ body.sb-open #sb-mask{display:block}
     </div>
   </section>
 
-  <!-- ============ QA 编排 ============ -->
-  <section class="page" id="pg-qa">
-    <div class="pg-head"><div><div class="kick">我的工作</div><h1>QA <em class="sf">编排</em></h1>
-      <p class="pg-sub">批量质检 → findings → 一键编排修复任务（字段/物料/改稿）→ 复检对比。确定性规则不需要 LLM，可执行的修复建议自动带出。</p></div>
-      <div class="head-actions"><button class="btn ghost" onclick="qaLoad()">刷新 ↻</button></div></div>
-    <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>新建 QA 扫描</h3><span class="mut">CMS 文档查字段规则；md 草稿跑门禁钩子</span></div>
-      <div class="row"><select id="qa-scope" style="width:220px" onchange="qaScope()">
-        <option value="sanity-filter">CMS 文档（按类型/语言批量）</option>
-        <option value="drafts">本项目草稿（md 钩子）</option>
-        <option value="custom">自定义 items（JSON）</option></select>
-        <select id="qa-ptype" style="width:140px"><option value="">全部类型</option><option value="feature">案例 feature</option><option value="tool">工具 tool</option><option value="topic">主题 topic</option><option value="scenario">场景 scenario</option><option value="solution">方案 solution</option><option value="product">产品 product</option></select>
-        <select id="qa-lang" style="width:110px"><option value="">全部语言</option><option>en</option><option>zh</option><option>ja</option><option>ko</option><option>zh-TW</option><option>de</option><option>fr</option><option>pt</option><option>ru</option><option>it</option></select>
-        <input id="qa-max" type="number" value="200" min="1" max="2000" style="width:90px" title="条数上限">
-        <button class="btn primary" onclick="qaCreate(event)">创建扫描任务</button></div>
-      <textarea id="qa-items" placeholder='自定义 items JSON：[{"kind":"sanity","doc_id":"xxx"},{"kind":"md","path":"run/projects/main/content/x.md"}]' style="display:none;width:100%;min-height:80px;margin-top:8px;border:1px solid var(--border);border-radius:12px;padding:10px;font-family:var(--font-mono);font-size:12px;background:var(--surface-strong);color:var(--fg)"></textarea>
-      <div class="mut" id="qa-hint" style="font-size:11.5px;margin-top:6px"></div></div>
-    <div class="cols">
-      <div class="card" style="height:fit-content"><div class="card-head"><h3>扫描任务</h3></div><div id="qa-tasks" style="display:flex;flex-direction:column;gap:6px"></div></div>
-      <div class="card"><div class="card-head"><h3 id="qa-f-t">findings</h3><span class="mut" id="qa-f-s"></span></div>
-        <div class="row" style="margin-bottom:8px"><button class="btn ghost" onclick="qaOrch(true)">编排修复（dry-run）</button>
-        <button class="btn ghost" onclick="qaOrch(false)">编排修复（真实，含确认）</button>
-        <button class="btn ghost" onclick="qaRecheck()">复检</button></div>
-        <div id="qa-findings" style="max-height:420px;overflow:auto"></div></div>
-    </div>
-    <div class="card" style="margin-top:14px"><div class="card-head"><h3>QA 闭环历史</h3></div><div id="qa-cycles"></div></div>
-  </section>
+  <!-- QA 编排已并入执行画布（#qa-view），见 pg-run -->
 
   <!-- ============ Agent 任务台 ============ -->
   <section class="page" id="pg-agent">
@@ -851,15 +826,7 @@ body.sb-open #sb-mask{display:block}
     <div class="card" style="margin-top:14px"><div class="card-head"><h3>发布后复测窗口 <span class="mut">（P7-B5 · 发布 ≤7 天，开「每日自动探测」后自动复测）</span></h3></div><div id="dist-recheck"></div></div>
   </section>
 
-  <!-- ============ 管线 ============ -->
-  <section class="page" id="pg-pipe">
-    <div class="pg-head"><div><div class="kick">我的工作</div><h1>内容<em class="sf">管线</em></h1>
-      <p class="pg-sub">12 阶段状态机。非法跳步会被后端直接拒绝——这是质量保障的一部分。</p></div>
-      <div class="head-actions"><input id="nid" placeholder="条目 id（如 blog-xxx）" style="width:220px">
-      <select id="ncat"><option>blog</option><option>landing</option><option value="feature">案例 feature</option><option value="tool">工具 tool</option><option value="topic">主题 topic</option></select>
-      <button class="btn primary" onclick="upsert()">创建条目</button></div></div>
-    <div class="pgrid" id="board"></div>
-  </section>
+  <!-- ============ 管线已并入总览任务中心（#pipe-extra 视图） ============ -->
 
   <!-- ============ 工程 ============ -->
   <section class="page" id="pg-eng">
@@ -1524,13 +1491,13 @@ function openItemDetail(tid, i){
   const links=((d.links||[]).map(l=>l.url?`<a class="mini" style="text-decoration:none;display:inline-block;margin-right:6px" href="${esc(l.url)}" target="_blank">${esc(l.label)} ↗</a>`:`<button class="mini" onclick="openReader('${esc(l.reader)}')">${esc(l.label)}</button>`).join(' ')+' '+editBtns).trim()||'<span class="mut">无</span>';
   // 每个失败门禁给出可执行修复建议
   const GATE_FIX={
-   'post-write':'内容未过写作规则 → 让 Agent 按规则改稿，或到 QA 编排查看规则明细',
+   'post-write':'内容未过写作规则 → 让 Agent 按规则改稿，或到执行画布的 QA 编排查看规则明细',
    'geo':'缺少数据点/来源 URL → 用「GEO 缺口改稿」预设刷新本页',
    'quota':'字数超出预算 → 让 Agent 精简到目标字数',
    'language':'语言/标点不符 → 用「语言校验」修复，或指定正确语言重写',
    '落地页结构':'版块不足/结构不符 → 用「落地页闭环（改稿→发布）」预设按结构重改',
    '结构问题':'段落结构异常 → 让 Agent 按落地页结构重排',
-   'QA-阻断':'存在阻断级问题 → 到「QA 编排」一键生成修复任务',
+   'QA-阻断':'存在阻断级问题 → 到「执行画布 · QA 编排」一键生成修复任务',
    'QA-告警':'存在告警项 → 可选择性修复'
   };
   const fails=Object.entries(g).filter(([k,val])=>val==='fail'||val==='warn').filter(([k])=>k!=='blocked');
@@ -1642,7 +1609,7 @@ function inboxRun(a,ev){if(!a)return;
 /* ---- 命令面板 ⌘K ---- */
 const PAL_CMDS=[
  ['总览','home'],['开工向导','onboard'],['自动化','auto'],['Agent 任务台','agent'],['执行画布','run'],['批量任务','batch'],
- ['创作中心','create'],['任务看板','tasks'],['QA 编排','qa'],['分发队列','dist'],['内容日历','calt'],['内容管线','pipe'],
+ ['创作中心','create'],['任务看板','tasks'],['分发队列','dist'],['内容日历','calt'],
  ['内容库','lib'],['知识库','kb'],['模板市场','mkt'],['数据管线','trident'],['报告中心','reports'],['报告仪表','rdash'],
  ['自我迭代','iter'],['工作流地图','wfmap'],['记忆审阅','mem'],['节点流水线','flow'],['Loop 模式','loops'],['路由·门禁','eng'],
  ['支付·发卡','pay'],['调度与日志','sys'],['设置','set'],['用量与成本','usage'],['首次引导','setup']
@@ -1734,7 +1701,7 @@ function palSections(){const q=($('pal-q').value||'').trim();
  return [...favs.map(x=>({...x,type:'★ '+x.type})),...rec.filter(r=>!favs.some(f=>f.label===r.label)).map(x=>({...x,type:'最近'}))]}
 
 /* ---- 帮助 ---- */
-const SHORTCUTS=[['⌘K / Ctrl+K','打开搜索与执行面板'],['/','聚焦搜索面板'],['g h','总览'],['g i','收件箱'],['g a','Agent 任务台'],
+const SHORTCUTS=[['⌘K / Ctrl+K','打开搜索与执行面板'],['/','聚焦搜索面板'],['g h','总览'],['g a','Agent 任务台'],
  ['g r','执行画布'],['g b','批量任务'],['g t','任务看板'],['g m','记忆审阅'],['g s','设置'],['?','显示/隐藏本帮助'],['Esc','关闭浮层']];
 function helpToggle(){const el=$('helpbox');if(!el)return;
  if(el.classList.contains('on')){el.classList.remove('on');return}
@@ -1750,7 +1717,7 @@ document.addEventListener('keydown',e=>{
  if(e.key==='Escape'){const h=$('helpbox');if(h)h.classList.remove('on')}
  if(typing)return;
  if(e.key==='g'){_gPending=true;setTimeout(()=>{_gPending=false},900);return}
- if(_gPending){const map={h:'home',i:'inbox',a:'agent',r:'run',b:'batch',t:'tasks',m:'mem',s:'set',c:'create',q:'qa',l:'lib',k:'kb',d:'dist'};
+ if(_gPending){const map={h:'home',a:'agent',r:'run',b:'batch',t:'tasks',m:'mem',s:'set',c:'create',l:'lib',k:'kb',d:'dist'};
   if(map[e.key]){e.preventDefault();setTab(map[e.key]);_gPending=false}}
 });
 /* ---- 记忆审阅 ---- */
@@ -2198,17 +2165,16 @@ function loadStart(){api('api/start').then(d=>{
 function resumeSession(id){AG_ID=id;setTab('agent');setTimeout(()=>agOpen(id),400)}
 /* ---- 逐页 onboarding（首次进入自动展示，可关闭，可重开）---- */
 const PAGE_GUIDES={
- home:{icon:'🏠',title:'总览：先看这里',steps:['看<b>推荐下一步</b>按提示操作','用<b>工作模式</b>切换手动/自动/自治','右侧看报告与近 7 日活动'],hint:'不确定做什么？点右下角「小 M」问一句。'},
+ home:{icon:'🏠',title:'总览：先看这里',steps:['看<b>推荐下一步</b>按提示操作','任务中心就在本页：批量 / 待办 / 剧本 / 管线一屏管理','点任务<b>详情</b>抽屉即可看结果、读稿、确认执行'],hint:'创建批量任务走开工向导 / Agent 任务台 / 执行画布；日常管理都在总览完成。'},
  agent:{icon:'🤖',title:'Agent 任务台：一句话搞定',steps:['用自然语言说需求（不用给路径）','Agent 自动调用 skills/知识库/harness','确认 dry-run 结果后即可真实执行'],hint:'Ctrl+Enter 发送。「真实执行」会写生产库，务必先看 dry-run。'},
  batch:{icon:'📦',title:'批量任务：一次处理很多条',steps:['从<b>预设工作流</b>点一下就开跑','在<b>任务列表</b>看进度条','点<b>详情</b>看人话结果 + 前台预览'],hint:'dry-run=只校验不写库；确认无误后再关掉它跑真实。'},
  tasks:{icon:'📋',title:'任务看板',steps:['录入手动任务并指派/设截止','点卡片上的 <b>🤖</b> 交给 Agent 执行','下方看<b>批量任务进度</b>'],hint:'拖动卡片可跨列流转（待办/进行中/完成）。'},
  create:{icon:'✍️',title:'创作中心：生成一篇内容',steps:['选类型/语言/主题（或点选题灵感）','点<b>发起 Loop</b> 自动生成→质检→迭代','到任务看板看进度'],hint:'长文（7500 词级）走本地 signal-writer 完整流程。'},
  loops:{icon:'⚡',title:'Loop 模式：自主循环',steps:['点<b>快速开始</b>一键发起','系统自动生成→过质检→带反馈重写','通过即止，失败熔断保护'],hint:'每个 Loop 计 token，可在「用量与成本」查看。'},
  flow:{icon:'🔗',title:'节点流水线：手动逐步',steps:['选<b>预设流程</b>或手填条目','依次执行：生成 → 质检 → 推进状态机','每步都是真实动作'],hint:'想要全自动请用 Loop 模式或批量任务。'},
- qa:{icon:'🔍',title:'QA 编排',steps:['先<b>扫描</b>发现质量问题','一键把问题<b>生成修复任务</b>','修复后自动<b>复检</b>看 delta'],hint:'扫描范围可选 md 草稿或线上 CMS 内容。'},
+ run:{icon:'🗺️',title:'执行画布：看着任务在跑',steps:['左边选一条执行记录','看每一步的状态与进度条','页头切到 <b>QA 编排</b>：扫描→修复→复检'],hint:'执行可后台运行；画布实时刷新。失败步骤可一键重试。'},
  dist:{icon:'🚚',title:'分发队列',steps:['查看四轨道待发内容','人工<b>审批</b>后才真正发出','—'],hint:'发布永远需要人工授权。'},
- calt:{icon:'📅',title:'内容日历',steps:['查看/新增排期','到期自动进入管线','—'],hint:''}, 
- pipe:{icon:'🧭',title:'内容管线',steps:['每个条目按状态机推进','S3 生成 → S4 质检 → S5 发布','—'],hint:''},
+ calt:{icon:'📅',title:'内容日历',steps:['查看/新增排期','到期自动进入管线','—'],hint:''},
  lib:{icon:'📚',title:'内容库',steps:['浏览已发布的 17.5k 篇','按站点/栏目/语言筛选','生成时会自动参考同类页'],hint:''},
  kb:{icon:'📖',title:'知识库',steps:['存放品牌事实/竞品/画像/案例','生成内容时被检索作为真实来源','—'],hint:'知识库越准，AI 越不容易编造。'},
  reports:{icon:'📊',title:'报告中心',steps:['按分类浏览 SEO/GEO/审计报告','点击在线阅读','表格会自动转指标卡'],hint:''},
@@ -2218,7 +2184,6 @@ const PAGE_GUIDES={
  usage:{icon:'💰',title:'用量与成本',steps:['查看 token/调用/写入统计','按用户与天数聚合','—'],hint:''},
  iter:{icon:'🔄',title:'自我迭代',steps:['系统从历史任务提炼改进','可采纳为提示词/禁用词','—'],hint:''},
  sys:{icon:'🛠️',title:'调度与日志',steps:['查看定时任务与运行日志','排查异常','—'],hint:''},
- run:{icon:'🗺️',title:'执行画布：看着任务在跑',steps:['左边选一条执行记录','看每一步的状态与进度条','点「查看任务」下钻到条目详情'],hint:'执行可后台运行；画布实时刷新。失败步骤可一键重试。'},
  eng:{icon:'🚦',title:'路由·门禁',steps:['查看生成/发布的门禁规则','每条内容的通过情况','—'],hint:''},
  default:{icon:'💡',title:'提示',steps:['看页面标题下的说明','右下角「小 M」可随时提问'],hint:''}
 };
@@ -2249,8 +2214,8 @@ function guideShow(t){try{const d=JSON.parse(localStorage.getItem('mflow-guides'
 /* ---- 顶部导航（分组 mega menu）---- */
 const NAV_GROUPS=[
  {id:'home',label:'总览',items:[['home','总览']]},
- {id:'work',label:'工作台',items:[['inbox','收件箱'],['onboard','开工向导'],['auto','自动化'],['agent','Agent 任务台'],['run','执行画布'],['batch','批量任务'],['create','创作中心'],['tasks','任务看板']]},
- {id:'quality',label:'质量与发布',items:[['qa','QA 编排'],['dist','分发队列'],['calt','内容日历'],['pipe','内容管线']]},
+ {id:'work',label:'工作台',items:[['onboard','开工向导'],['auto','自动化'],['agent','Agent 任务台'],['run','执行画布'],['batch','批量任务'],['create','创作中心'],['tasks','任务看板']]},
+ {id:'quality',label:'质量与发布',items:[['dist','分发队列'],['calt','内容日历']]},
  {id:'assets',label:'内容资产',items:[['lib','内容库'],['kb','知识库'],['mkt','模板市场'],['trident','数据管线']]},
  {id:'reports',label:'报告与迭代',items:[['reports','报告中心'],['rdash','报告仪表'],['iter','自我迭代'],['wfmap','工作流地图']]},
  {id:'system',label:'系统',items:[['audit','变更审计'],['mem','记忆审阅'],['flow','节点流水线'],['loops','Loop 模式'],['eng','路由·门禁'],['pay','支付·发卡'],['sys','调度与日志'],['set','设置'],['usage','用量与成本'],['setup','首次引导']]}
@@ -2282,15 +2247,55 @@ function topnavSync(){
 }
 document.addEventListener('click',e=>{if(!e.target.closest('#topnav'))topnavClose()});
 
-function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
+function goHub(type){if(type)HUB_TYPE=type;setTab('home');
+ setTimeout(()=>{const el=$('hub-anchor');if(el)el.scrollIntoView({behavior:'smooth',block:'start'})},150)}
+let RUN_VIEW='run';
+/* QA 编排面板（并入执行画布，首次切换时注入） */
+const QA_VIEW_HTML=`
+  <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>新建 QA 扫描</h3><span class="mut">CMS 文档查字段规则；md 草稿跑门禁钩子 · 批量质检 → findings → 一键编排修复 → 复检对比</span></div>
+    <div class="row"><select id="qa-scope" style="width:220px" onchange="qaScope()">
+      <option value="sanity-filter">CMS 文档（按类型/语言批量）</option>
+      <option value="drafts">本项目草稿（md 钩子）</option>
+      <option value="custom">自定义 items（JSON）</option></select>
+      <select id="qa-ptype" style="width:140px"><option value="">全部类型</option><option value="feature">案例 feature</option><option value="tool">工具 tool</option><option value="topic">主题 topic</option><option value="scenario">场景 scenario</option><option value="solution">方案 solution</option><option value="product">产品 product</option></select>
+      <select id="qa-lang" style="width:110px"><option value="">全部语言</option><option>en</option><option>zh</option><option>ja</option><option>ko</option><option>zh-TW</option><option>de</option><option>fr</option><option>pt</option><option>ru</option><option>it</option></select>
+      <input id="qa-max" type="number" value="200" min="1" max="2000" style="width:90px" title="条数上限">
+      <button class="btn primary" onclick="qaCreate(event)">创建扫描任务</button></div>
+    <textarea id="qa-items" placeholder='自定义 items JSON：[{"kind":"sanity","doc_id":"xxx"},{"kind":"md","path":"run/projects/main/content/x.md"}]' style="display:none;width:100%;min-height:80px;margin-top:8px;border:1px solid var(--border);border-radius:12px;padding:10px;font-family:var(--font-mono);font-size:12px;background:var(--surface-strong);color:var(--fg)"></textarea>
+    <div class="mut" id="qa-hint" style="font-size:11.5px;margin-top:6px"></div></div>
+  <div class="cols">
+    <div class="card" style="height:fit-content"><div class="card-head"><h3>扫描任务</h3></div><div id="qa-tasks" style="display:flex;flex-direction:column;gap:6px"></div></div>
+    <div class="card"><div class="card-head"><h3 id="qa-f-t">findings</h3><span class="mut" id="qa-f-s"></span></div>
+      <div class="row" style="margin-bottom:8px"><button class="btn ghost" onclick="qaOrch(true)">编排修复（dry-run）</button>
+      <button class="btn ghost" onclick="qaOrch(false)">编排修复（真实，含确认）</button>
+      <button class="btn ghost" onclick="qaRecheck()">复检</button></div>
+      <div id="qa-findings" style="max-height:420px;overflow:auto"></div></div>
+  </div>
+  <div class="card" style="margin-top:14px"><div class="card-head"><h3>QA 闭环历史</h3></div><div id="qa-cycles"></div></div>`;
+function runView(v){RUN_VIEW=v;const qv=$('qa-view');
+ if(qv){if(v==='qa'&&!qv.dataset.built){qv.innerHTML=QA_VIEW_HTML;qv.dataset.built='1'}
+  qv.style.display=v==='qa'?'':'none'}
+ const rv=$('run-view');if(rv)rv.style.display=v==='run'?'':'none';
+ const c1=$('rv-chip-run'),c2=$('rv-chip-qa');
+ if(c1)c1.classList.toggle('on',v==='run');if(c2)c2.classList.toggle('on',v==='qa');
+ if(v==='qa')qaLoad();else if(TAB==='run')runLoad()}
+function goRun(view){setTab('run');if(view)setTimeout(()=>runView(view),60)}
+function setTab(t){
+ // 旧入口兼容：任务中心/内容管线 → 总览；QA 编排 → 执行画布；收件箱 → 总览
+ if(t==='taskhub'){t='home';setTimeout(()=>{const el=$('hub-anchor');if(el)el.scrollIntoView({behavior:'smooth',block:'start'})},150)}
+ if(t==='pipe'){t='home';HUB_TYPE='pipe';setTimeout(()=>{const el=$('hub-anchor');if(el)el.scrollIntoView({behavior:'smooth',block:'start'})},150)}
+ if(t==='qa'){t='run';setTimeout(()=>runView('qa'),60)}
+ if(t==='inbox')t='home';
+ TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.classList.toggle('on',b.dataset.t===t));
  if(typeof topnavSync==='function')topnavSync();
  if(typeof MC_OPEN!=='undefined'&&MC_OPEN)mascotRender();
  if(typeof mountGuide==='function')mountGuide(t);
  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
  $('pg-'+t).classList.add('on');
- ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
+ ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
-   calt:calLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,taskhub:loadHub,agent:agLoad,qa:qaLoad,run:runLoad,onboard:loadOnboard,auto:loadAuto,mem:memLoad,audit:auditLoad,inbox:inboxLoad}[t]||(()=>{}))()}
+   calt:calLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,agent:agLoad,run:runLoad,onboard:loadOnboard,auto:loadAuto,mem:memLoad,audit:auditLoad}[t]||(()=>{}))();
+ if(t==='home')loadHub()}
 /* ---- 阅读器 + 正文编辑器 + 改动对照（P2-1）----
    此前阅读器全只读：AI 出稿后人只能「通过/打回重跑」，改一个词都要回 CMS。
    编辑与门禁强绑定——保存即重跑四道门禁，BLOCK 不给「可发布」。 */
@@ -2454,7 +2459,7 @@ function fmtHook(out){return String(out||'').split('\n').map(l=>{
  return esc(l)}).join('\n')}
 
 /* ---- 总览 ---- */
-function loadHome(){modeLoad();loadSelfcheck();loadStart();loadNextActions();inboxMini();homePulse();api('api/overview').then(o=>{
+function loadHome(){modeLoad();loadSelfcheck();loadStart();loadNextActions();loadHub();homePulse();api('api/overview').then(o=>{
  const h=new Date().getHours();const hi=h<6?'夜深了':h<12?'早上好':h<18?'下午好':'晚上好';
  $('greet').innerHTML=`${hi}，<em class="sf">${esc(window.__ME||'运营')}</em>`;
  $('greet-sub').textContent=`待办 ${o.open_tasks} · 管线 ${o.pipeline_inflight} · 分发待发 ${o.dist_open} · 最近一次每日管线 ${o.daily.running?'运行中':'已完成'}`;
@@ -2469,7 +2474,7 @@ function loadHome(){modeLoad();loadSelfcheck();loadStart();loadNextActions();inb
   o.seo_weekly&&['SEO 周报',o.seo_weekly.name,o.seo_weekly.path],
   o.sentinel_latest&&['舆情日报',o.sentinel_latest.name,o.sentinel_latest.path]
  ].filter(Boolean).map(([t,n,p])=>`<a onclick="openReader('${esc(p)}')"><span class="act-ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></span><span class="qt"><span class="badge" style="margin-right:8px">${t}</span>${esc(n)}</span><span class="qd">阅读 →</span></a>`).join('');
- if($('nav-tasks'))$('nav-tasks').textContent=o.open_tasks;$('nav-dist').textContent=o.dist_open;$('nav-pipe').textContent=o.pipeline_inflight;
+ if($('nav-tasks'))$('nav-tasks').textContent=o.open_tasks;const nd=$('nav-dist');if(nd)nd.textContent=o.dist_open;
  const lines=(o.daily.tail||'').split('\n').filter(l=>/OK|FAIL|SKIP|✅|❌/.test(l)).slice(-4);
  $('home-acts').innerHTML=(lines.length?lines.map(l=>{const ok=/OK|✅/.test(l);
   return `<div class="act-item"><span class="act-ic ${ok?'ok':'wn'}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><div class="act-tx"><div class="act-t">${esc(l.replace(/^(OK|FAIL|SKIP):?\s*/,''))}</div><div class="act-m">每日管线</div></div></div>`}).join(''):emptyBox('🌙','暂无活动','看调度与日志',"setTab('sys')"))+
@@ -2511,9 +2516,9 @@ function homePulse(){
    :emptyBox('✅','没有等你确认的事项','自动化照常运行',"setTab('auto')");
   $('home-goto').innerHTML=[
    ['查看运行状态','剧本执行记录 · 调度 · 日志',"setTab('auto')"],
-   ['查看 / 审核稿件','内容管线 · 阅读器内审稿改稿',"setTab('pipe')"],
+   ['查看 / 审核稿件','任务中心 · 管线视图 · 阅读器内审稿改稿',"goHub('pipe')"],
    ['快速发布','主站发布面板 · 一键上线',"setTab('lib')"],
-   ['跑一次质检','QA 编排 · 预演起步',"setTab('qa')"],
+   ['跑一次质检','执行画布 · QA 编排 · 预演起步',"goRun('qa')"],
    ['GSC 低 CTR 页改稿','高曝光低点击 · 一键建预演批','gscDecayBatch(event)'],
   ].map(([t2,s,go])=>`<a onclick="${go}"><span class="act-ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="qt">${t2}<span class="mut" style="font-size:11px;margin-left:6px">${s}</span></span><span class="qd">前往 →</span></a>`).join('');
   const ops=r[3]||{};
@@ -2542,7 +2547,7 @@ function gscDecayBatch(ev){if(ev)ev.stopPropagation();if(!confirm('把 GSC 里�
   toast('已建预演批 '+r.id+'（'+r.total+' 页，不写库）','ok');if((r.pages||[]).length)console.log('GSC 命中页',r.pages);setTab('batch');setTimeout(()=>btDetail(r.id),500)}).catch(e=>toast('失败：'+e,'bad'))}
 /* ---- 任务中心：后台所有执行任务的统一视图 ---- */
 let HUB_F='all',HUB_MODE='list',HUB_TYPE='all',HUB_TMR=null,HUB_B=[],HUB_R=[],HUB_T=[];
-function loadHub(){if(HUB_TMR)clearInterval(HUB_TMR);hubLoad();HUB_TMR=setInterval(()=>{if(TAB==='taskhub')hubLoad(true)},30000)}
+function loadHub(){if(HUB_TMR)clearInterval(HUB_TMR);hubLoad();HUB_TMR=setInterval(()=>{if(TAB==='home')hubLoad(true)},30000)}
 function hubLoad(silent){Promise.all([api('api/batch/list'),api('api/runs'),api('api/tasks')]).then(r=>{
   HUB_B=(Array.isArray(r[0])?r[0]:((r[0]&&r[0].tasks)||[])).filter(t=>t.type!=='qa');
   HUB_R=Array.isArray(r[1])?r[1]:((r[1]&&r[1].runs)||[]);
@@ -2552,15 +2557,44 @@ function hubLoad(silent){Promise.all([api('api/batch/list'),api('api/runs'),api(
 function hubGrp(t){return (t.dry_run&&t.status==='done'&&t.stats&&t.stats.done===0&&t.stats.skipped>0)?'confirm':(t.status==='running'||t.status==='queued')?'run':(t.status==='failed'||(t.stats&&t.stats.failed>0))?'fail':t.status==='paused'?'pause':'done'}
 function hubAct(id,act,msg){api('api/batch/action',{id:id,action:act}).then(r=>{if(r.error)return toast(r.error,'bad');toast(msg||'已执行 '+act,'ok');hubLoad(true)}).catch(e=>toast('失败：'+e,'bad'))}
 function hubOpen(id){setTab('batch');setTimeout(()=>btDetail(id),400)}
+/* 详情抽屉：不离开总览即可看进度/条目结果/读稿，解决 80% 的查看与操作 */
+function hubDetail(id,ev){return withBtn(ev,async()=>{
+ const t=await api('api/batch/detail?id='+encodeURIComponent(id));
+ if(t.error)throw new Error(t.error);
+ const s=t.stats||{};const sm=t.summary||{};
+ const links=i=>(i.links||[]).map(l=>l.url
+   ?`<a href="${esc(l.url)}" target="_blank" class="mini" style="text-decoration:none">${esc(l.label)} ↗</a>`
+   :(l.reader?`<button class="mini" onclick="closeDrawer();openReader('${esc(l.reader)}')">${esc(l.label)}</button>`:'')).join(' ');
+ const rows=(t.items||[]).slice(0,200).map(i=>{
+  const v=i.view||{};const okc=v.ok===true?'var(--ok)':v.ok===false?'var(--bad)':'var(--faint)';
+  return `<div style="display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border)">
+   <span style="color:${okc};font-weight:700;width:14px">${v.ok===true?'✓':v.ok===false?'✕':'…'}</span>
+   <div style="flex:1;min-width:0"><b style="font-size:12px">${esc(i.doc_id||i.item_id||i.slug||('#'+(i.i+1)))}</b>
+    <div class="mut" style="font-size:11px">${esc(v.status_text||i.status||'')}${v.detail?' · '+esc(v.detail):''}${i.error?' · '+esc(i.error):''}</div></div>
+   <div style="white-space:nowrap">${links(i)}</div></div>`}).join('');
+ const needConfirm=t.dry_run&&t.status==='done'&&s.done===0&&s.skipped>0;
+ openDrawer('任务 · '+(t.title||t.id),`
+  <div class="row" style="gap:8px;flex-wrap:wrap;margin-bottom:8px">
+   <span class="badge ${sm.ok?'pipe':'dist'}" style="${sm.ok?'background:var(--ok)':''}">${esc(btStatusOf(t))}</span>
+   ${t.dry_run?'<span class="badge dist">预演（不写库）</span>':''}
+   <span class="mut" style="font-size:12px">${s.done||0} 完成 · ${s.skipped||0} 预演 · ${s.failed||0} 失败 / 共 ${s.total||0}</span></div>
+  ${needConfirm?`<button class="btn primary" style="margin-bottom:8px" onclick="closeDrawer();hubAct('${esc(t.id)}','go_real','已转真实执行')">▶ 确认执行（转真实）</button>`:''}
+  ${s.failed?`<button class="btn ghost" style="margin-bottom:8px" onclick="closeDrawer();hubAct('${esc(t.id)}','retry_failed','已重试失败项')">↻ 重试失败项</button>`:''}
+  <div style="max-height:420px;overflow:auto">${rows||'<span class="mut">暂无条目</span>'}</div>`,
+  [['⇄ 执行方式',`closeDrawer();openConvert({kind:"batch",id:"${esc(t.id)}",title:${JSON.stringify(t.title||t.id)}},event)`],
+   ['在批量任务页打开',`closeDrawer();setTab('batch');setTimeout(()=>btDetail('${esc(t.id)}'),400)`]]);
+ return t;},{busyText:'加载中…',okText:'已打开'})}
 function hubRender(){
+ const pe=$('pipe-extra');if(pe)pe.style.display=HUB_TYPE==='pipe'?'':'none';
  const G={confirm:'需我确认',run:'执行中',pause:'已暂停',fail:'失败',done:'已完成'};
  const cnt={all:HUB_B.length};HUB_B.forEach(t2=>{const g=hubGrp(t2);cnt[g]=(cnt[g]||0)+1});
  const mcnt={batch:HUB_B.length,manual:HUB_T.filter(x=>x.status!=='done').length,runs:HUB_R.length};
  $('hub-filter').innerHTML=
   `<span class="chip ${HUB_MODE==='list'?'on':''}" onclick="HUB_MODE='list';hubRender()">☰ 清单</span>`+
   `<span class="chip ${HUB_MODE==='board'?'on':''}" onclick="HUB_MODE='board';hubRender()">▦ 看板</span><span class="mut" style="margin:0 4px">·</span>`+
-  [['all','全部'],['manual','手动任务 '+mcnt.manual],['batch','批量任务 '+mcnt.batch],['runs','剧本 '+mcnt.runs]]
+  [['all','全部'],['manual','手动任务 '+mcnt.manual],['batch','批量任务 '+mcnt.batch],['runs','剧本 '+mcnt.runs],['pipe','内容管线 '+(window.__PIPE_N||'')]]
    .map(([k,l])=>`<span class="chip ${HUB_TYPE===k?'on':''}" onclick="HUB_TYPE='${k}';hubRender()">${l}</span>`).join('');
+ if(HUB_TYPE==='pipe'){$('hub-body').innerHTML='';loadPipe();return}
  if(HUB_MODE==='board')return hubBoard();
  let html='';
  if(HUB_TYPE!=='manual'&&HUB_TYPE!=='runs'){
@@ -2578,7 +2612,7 @@ function hubRender(){
      t2.status==='paused'?`<button class="mini" onclick="hubAct('${esc(t2.id)}','resume','已继续')">▶ 继续</button>`:'',
      s.failed?`<button class="mini" onclick="hubAct('${esc(t2.id)}','retry_failed','已重试失败项')">↻ 重试失败</button>`:'',
      !['done','cancelled'].includes(t2.status)?`<button class="mini" onclick="hubAct('${esc(t2.id)}','cancel','已取消')">✕ 取消</button>`:'',
-     `<button class="mini" onclick="hubOpen('${esc(t2.id)}')">详情</button>`].filter(Boolean).join(' ');
+     `<button class="mini" onclick="hubDetail('${esc(t2.id)}',event)">详情</button>`].filter(Boolean).join(' ');
     return `<tr><td><b style="font-size:12.5px">${esc(t2.title||t2.id)}</b><div class="mut" style="font-size:10.5px">${esc(t2.id)}${t2.dry_run?' · 预演（不写库）':''}${(!t2.dry_run&&t2.status==='queued')?' · ⏰ 等待执行窗口（工作日 00:00-06:00）':''}</div></td>
      <td><span class="badge dist">${esc(btType(t2.type))}</span></td>
      <td style="min-width:120px"><div class="mut tnum" style="font-size:11px">${s.done||0} 完成 · ${s.skipped||0} 预演 · ${s.failed||0} 失败</div><div style="height:4px;background:var(--border);border-radius:2px;margin-top:4px"><div style="height:4px;border-radius:2px;background:var(--accent);width:${pct}%"></div></div></td>
@@ -2644,8 +2678,8 @@ function hubBatchMini(){api('api/batch/list').then(ts=>{
   return `<tr><td><b style="font-size:12px">${esc(t.title||t.id)}</b></td>
    <td>${g==='confirm'?'<span class="badge" style="background:var(--warn,#e6a23c)">待确认</span>':`<span class="badge ${g==='done'?'pipe':''}" style="${g==='done'?'background:var(--ok)':''}">${esc(btStatus(t.status))}</span>`}</td>
    <td class="mut tnum" style="font-size:11px">${pct}%</td>
-   <td><button class="mini" onclick="hubOpen('${esc(t.id)}')">详情</button></td></tr>`}).join('')+'</table>'
-  :emptyBox('📭','暂无批量任务','去任务中心',"setTab('taskhub')")}).catch(()=>{})}
+   <td><button class="mini" onclick="hubDetail('${esc(t.id)}',event)">详情</button></td></tr>`}).join('')+'</table>'
+  :emptyBox('📭','暂无批量任务','去总览任务中心',"goHub()")}).catch(()=>{})}
 
 /* ---- 任务看板（Trello 式：拖拽跨列 + 卡片编辑 + 日历关联 + 归属人过滤）---- */
 let TM_ID=null,TASK_MINE=false;
@@ -2683,7 +2717,7 @@ function loadTasks(){hubBatchMini();if(DRAGGING)return;taskFilterRender();api('a
  };
  col('todo','col-todo');col('doing','col-doing');col('done','col-done');
  refreshColCounts();
- $('autoq').innerHTML=(t.pipeline||[]).map(x=>`<div class="task" style="cursor:pointer" onclick="setTab('pipe')"><span class="tt">${esc(x.id)}</span><span class="badge pipe">管线·${esc(x.stage)}</span></div>`).join('')+
+ $('autoq').innerHTML=(t.pipeline||[]).map(x=>`<div class="task" style="cursor:pointer" onclick="goHub('pipe')"><span class="tt">${esc(x.id)}</span><span class="badge pipe">管线·${esc(x.stage)}</span></div>`).join('')+
   (t.distribution||[]).map(x=>`<div class="task" style="cursor:pointer" onclick="setTab('dist')"><span class="tt">${esc(x.id)} <span class="mut">${esc(x.platforms||'')}</span></span><span class="badge dist">分发·${esc(x.status||'')}</span></div>`).join('')||emptyBox('🚚','分发队列为空','去分发队列',"setTab('dist')");
  loadTaskBatches();
  updateNavTasks();
@@ -2814,16 +2848,16 @@ function decayToRefresh(slug){const id='refresh-'+slugify(slug).slice(0,40);
 
 function approveDispatch(id){if(!confirm('确认以 admin 身份批准 '+id+' 的发布授权？将记入审批日志。'))return;
  api('api/dispatch/approve',{id}).then(r=>{if(r.error)alert(r.error);loadDist()})}
-/* ---- 管线 ---- */
+/* ---- 管线（已并入总览任务中心）---- */
 function loadPipe(){api('api/state').then(S=>{
- window.__PROJ=S.project||'main';
- $('nav-pipe').textContent=S.items.filter(i=>!['done','failed','escalated'].includes(i.stage)).length;
+ window.__PROJ=S.project||'main';window.__PIPE_N=S.items.filter(i=>!['done','failed','escalated'].includes(i.stage)).length;
+ const np=$('nav-pipe');if(np)np.textContent=window.__PIPE_N;
  const by={};S.phases.forEach(p=>by[p]=[]);S.items.forEach(i=>{const k=i.phase;if(!by[k])by[k]=[];by[k].push(i)});
  $('board').innerHTML=S.phases.map(p=>`<div class="phase"><b>${p}（${by[p].length}）</b>${by[p].map(i=>{
   const tos=S.legal_transitions[i.stage]||[];
   return `<div class="pitem"><div class="id">${esc(i.id)}</div><div class="st">${esc(i.stage)}</div>
    <button class="more" onclick="readDraft('${esc(i.id)}','${esc(i.artifact_path||'')}')">读草稿</button>
-   ${tos.length?`<select onchange="advance('${esc(i.id)}',this.value)"><option value="">→ 推进…</option>${tos.map(t=>`<option>${t}</option>`).join('')}</select>`:''}</div>`}).join('')||emptyBox('🧭','该阶段暂无条目','去内容管线',"setTab('pipe')")}</div>`).join('')})}
+   ${tos.length?`<select onchange="advance('${esc(i.id)}',this.value)"><option value="">→ 推进…</option>${tos.map(t=>`<option>${t}</option>`).join('')}</select>`:''}</div>`}).join('')||emptyBox('🧭','该阶段暂无条目','刷新',"loadPipe()")}</div>`).join('')})}
 function readDraft(id,artifact){const p=artifact||`run/projects/${window.__PROJ||'main'}/content/${id}.md`;
  api('api/read?path='+encodeURIComponent(p)).then(r=>{if(r.error||!r.html){if(confirm('按约定路径没找到草稿：\\n'+p+'\\n\\n去「Loop · Agent 模式」用日志核对实际路径。要在报告中心找找吗？'))setTab('reports');return}openReader(p)}).catch(()=>alert('读取失败：'+p))}
 function advance(id,to){if(!to)return;api('api/item/advance',{id,to,reason:'console'}).then(r=>{if(r.rc!==0)alert('状态机拒绝：\n'+r.out);loadPipe()})}
@@ -3513,7 +3547,7 @@ function qaLoad(){api('api/qa/tasks').then(ts=>{
    <b style="font-size:12.5px">${esc(t.title||t.id)}</b><div class="mut" style="font-size:10.5px">${esc(t.id)} · ${esc(t.status)} · ${s.done||0}/${s.total||0}${t.dry_run?' · dry-run':''}</div></a>`}).join('')||emptyBox('🔍','还没有 QA 任务','创建一次扫描',"qaCreate(event)")});
  api('api/qa/cycles').then(cs=>{$('qa-cycles').innerHTML=(cs||[]).length?'<table><tr><th>QA 任务</th><th>修复任务</th><th>修复前</th><th>时间</th></tr>'+
   cs.map(c=>`<tr><td class="mut">${esc(c.qa_task)}</td><td>${esc(JSON.stringify(c.fix_tasks||{}))}</td>
-   <td class="tnum">${((c.before||{}).by_severity)?(JSON.stringify(c.before.by_severity)):''}</td><td class="mut">${esc(c.at)}</td></tr>`).join('')+'</table>':emptyBox('🔁','还没有闭环记录','先做一次 QA 扫描',"setTab('qa')")});qaScope()}
+   <td class="tnum">${((c.before||{}).by_severity)?(JSON.stringify(c.before.by_severity)):''}</td><td class="mut">${esc(c.at)}</td></tr>`).join('')+'</table>':emptyBox('🔁','还没有闭环记录','先做一次 QA 扫描',"qaCreate(event)")});qaScope()}
 function qaPick(id){QA_SEL=id;qaLoad();api('api/qa/findings?task='+encodeURIComponent(id)).then(d=>{
  if(d.error)return $('qa-findings').innerHTML='<span class="mut">'+esc(d.error)+'</span>';
  $('qa-f-t').textContent='findings · '+id;$('qa-f-s').textContent=`共 ${d.total} · ${JSON.stringify(d.by_severity||{})} · 可自动修复 ${d.fixable}${d.fix_task_id?' · 修复任务 '+d.fix_task_id:''}${d.recheck_task_id?' · 复检 '+d.recheck_task_id:''}`;

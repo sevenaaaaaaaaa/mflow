@@ -431,6 +431,7 @@ BUDGET_FILE = RUN_DIR / "budget.json"
 HOLIDAYS_FILE = RUN_DIR / "holidays.json"
 PRICES_FILE = RUN_DIR / "llm-prices.json"
 _BUDGET_ALERT_DATE = {"d": ""}
+_BUDGET_PAUSE_DAY = {"d": ""}  # 当日预算耗尽后停止领取 gen/rewrite 真实批（加预算即恢复）
 selfheal_batch_window_note = type("_N", (), {"d": ""})()
 
 
@@ -672,6 +673,8 @@ def night_window_enforce():
         if t.get("important") or (t.get("params") or {}).get("important"):
             continue
         t["status"] = "paused"
+        t["pause_reason"] = "night_cutoff"
+        t["pause_date"] = now.strftime("%Y-%m-%d")
         _batch_log(t, "到达 06:00 夜间窗口截止，已自动暂停（非重要任务）")
         batch_save(t)
         stopped.append(t["id"])
@@ -681,6 +684,29 @@ def night_window_enforce():
         except Exception:
             pass
     flag.write_text("1")
+
+def _autoresume_paused():
+    """工作日 00:00-06:00 执行窗口：把前一日因预算/夜间截止自动暂停的批量任务恢复排队。
+    只恢复带 pause_reason（budget/night_cutoff）的批；人工手动暂停（无标记）不受影响。"""
+    now = datetime.now()
+    if not is_workday(now) or not (0 <= now.hour < 6):
+        return
+    for f2 in BATCH_DIR.glob("batch-*.json"):
+        t = read_json(f2, {})
+        if not t or t.get("status") != "paused":
+            continue
+        if t.get("pause_reason") not in ("budget", "night_cutoff"):
+            continue
+        if (t.get("pause_date") or "") >= now.strftime("%Y-%m-%d"):
+            continue  # 今日刚暂停的不动（预算耗尽当日恢复无意义）
+        for it in t.get("items") or []:
+            if it.get("status") == "running":
+                it["status"] = "pending"
+        t["status"] = "queued"
+        t["pause_reason"] = ""
+        _batch_log(t, "跨日自动恢复（进入执行窗口）")
+        batch_save(t)
+
 
 def user_email(username):
     cfg = email_cfg()
@@ -4735,11 +4761,27 @@ def batch_worker():
             except Exception as _e:
                 print(f"[console] selfheal: {_e}", file=sys.stderr)
         try:
+            _autoresume_paused()
+        except Exception as _e:
+            print(f"[console] autoresume: {_e}", file=sys.stderr)
+        try:
             BATCH_DIR.mkdir(parents=True, exist_ok=True)
             blocked, bst = breaker_check()
             if blocked:
                 continue  # 熔断中：不领取任何任务
-            cands = [batch_load(f.stem) for f in sorted(BATCH_DIR.glob("batch-*.json"), key=lambda x: x.stat().st_mtime)]
+            cands = [batch_load(f.stem) for f in BATCH_DIR.glob("batch-*.json")]
+            # FIFO 按 created 排序（mtime 会因暂停/恢复回写而乱序）
+            cands.sort(key=lambda t: ((t or {}).get("created") or "", str((t or {}).get("id") or "")))
+            # 预算耗尽当日：不再逐个领取 gen/rewrite 真实批（否则全部连环 paused+通知轰炸），
+            # QA/重要批/预演不受限；管理员单日加预算后 budget_gate 通过即自动恢复领取。
+            if _BUDGET_PAUSE_DAY.get("d") == datetime.now().strftime("%Y-%m-%d"):
+                try:
+                    budget_gate()
+                    _BUDGET_PAUSE_DAY["d"] = ""
+                except RuntimeError:
+                    cands = [t for t in cands if t and not (
+                        t.get("type") in ("gen", "rewrite") and not t.get("dry_run")
+                        and not (t.get("important") or (t.get("params") or {}).get("important")))]
             task = next((t for t in cands if t and t.get("status") in ("queued", "running")), None)
             if not task:
                 continue
@@ -4794,6 +4836,9 @@ def batch_worker():
                         budget_gate()
                     except RuntimeError as be:
                         task["status"] = "paused"
+                        task["pause_reason"] = "budget"
+                        task["pause_date"] = datetime.now().strftime("%Y-%m-%d")
+                        _BUDGET_PAUSE_DAY["d"] = datetime.now().strftime("%Y-%m-%d")
                         _batch_log(task, f"日预算不足，任务已暂停：{str(be)[:140]}")
                         batch_save(task)
                         try:
@@ -7543,11 +7588,32 @@ def preset_expand(pid, opt, proj):
             except Exception:
                 pass
         # seq-template 行 id=None（只有 slug），用 slug+lang 定位；有 id 的行按 _id
+        def _rkey(r):
+            # 消费台账键：必须与下方 item_id 公式完全一致（曾因 slug 行漏 @lang 导致同页重复派发）
+            return (f"{r.get('kind')}:{r['id']}" if r.get("id")
+                    else f"{r.get('kind')}:{r.get('slug')}@{r.get('lang') or 'en'}")
+
+        def _pkey(r):
+            # 页面级键：同页多个问题合并为一次改写（避免同页重复消耗 LLM）
+            return (str(r.get("id")) if r.get("id")
+                    else f"{r.get('slug')}@{r.get('lang') or 'en'}")
+
         rows = [r for r in rows
-                if (r.get("id") or (r.get("slug") and r.get("lang")))
-                and (f"{r.get('kind')}:{r.get('id') or r.get('slug')}" not in seen)]
+                if (r.get("id") or (r.get("slug") and r.get("lang"))) and (_rkey(r) not in seen)]
         if not rows:
             return {"error": "队列已全部消费（或无有效条目）"}
+        # 同页多问题合并：issues 取并集
+        pages, order = {}, []
+        for r in rows:
+            k = _pkey(r)
+            if k in pages:
+                pages[k]["issues"] = sorted(set((pages[k].get("issues") or []) + (r.get("issues") or [])))
+                if r.get("id") and not pages[k].get("id"):
+                    pages[k]["id"] = r["id"]
+            else:
+                pages[k] = dict(r)
+                order.append(k)
+        rows = [pages[k] for k in order]
         rows.sort(key=lambda r: (min(prio.get(str(i), 9) for i in (r.get("issues") or ["other"])),
                                  0 if r.get("lang") == "zh-TW" else 1))
         rows = rows[:limit]
@@ -7579,7 +7645,8 @@ def preset_expand(pid, opt, proj):
             instr = " ".join(parts) or "按内容质量标准重写该页。"
             key = (f"{r.get('kind')}:{r['id']}" if r.get("id")
                    else f"{r.get('kind')}:{r.get('slug')}@{r.get('lang') or 'en'}")
-            sp = src_dir / (re.sub(r"[^A-Za-z0-9_.-]", "_", str(r.get('id') or r.get('slug')))[:80] + ".md")
+            sp = src_dir / (re.sub(r"[^A-Za-z0-9_.-]", "_",
+                               str(r.get('id') or (str(r.get('slug')) + '@' + str(r.get('lang') or 'en'))))[:80] + ".md")
             if not sp.exists():
                 try:
                     if r.get("id"):
@@ -7594,7 +7661,7 @@ def preset_expand(pid, opt, proj):
                     text = d.get("t") or ""
                     if not text and d.get("bj"):
                         try:
-                            bj = json.loads(d["bj"])
+                            bj = d["bj"] if isinstance(d["bj"], dict) else json.loads(d["bj"])
                             buf = []
 
                             def _w(o):
