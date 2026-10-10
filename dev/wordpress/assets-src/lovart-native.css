@@ -28,6 +28,40 @@
 .lr .e-con.lr-faithful :is(h1, h2, h3, h4, h5, h6) {
   text-transform: none;
 }
+
+/* 对比滑块：源站 role="slider" 带 touch-none（只针对触屏手势库），
+   静态复刻用 Pointer 事件实现拖动，需放开 touch-action 让水平拖动生效。 */
+.lr [role="slider"] {
+  touch-action: pan-y;
+}
+
+/* tab 激活态（lovart-replica.js 切换时加 .lr-tab-active）：
+   源站 tab 选中靠 aria-selected 的内联类切换，静态化后统一用此类保证可见选中。 */
+.lr [role="tab"].lr-tab-active {
+  background: var(--bg-bg-overlay-l1, rgba(128, 128, 128, 0.12));
+}
+
+/* 价格区月/年切换激活态 */
+.lr button.lr-paywall-active {
+  background: var(--bg-bg-float, #fff);
+  color: var(--text-text-default, inherit);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+.lr.dark button.lr-paywall-active {
+  background: var(--bg-bg-overlay-l2, rgba(255, 255, 255, 0.14));
+}
+
+/* 对话面板用户消息气泡（lovart-replica.js 发送时插入） */
+.lr .lr-chat-user-msg {
+  align-self: flex-end;
+  max-width: 80%;
+  margin: 6px 0;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: var(--bg-bg-overlay-l1, rgba(128, 128, 128, 0.14));
+  font-size: 14px;
+  line-height: 1.5;
+}
 /* 忠实模式不用 e-con-inner（转换器根容器为 full 宽），兜底复位以防编辑器改动 */
 .lr .e-con.lr-faithful > .e-con-inner {
   display: block;
