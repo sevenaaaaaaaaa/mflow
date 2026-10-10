@@ -2834,6 +2834,67 @@ def _bh_field_patch(item, task, proj):
             "change_id": cid}
 
 
+# ===================== 主站内容治理（聚合视图） =====================
+def main_content_status():
+    """「主站治理」聚合数据：队列统计 + 最近审计 + 两条剧本状态 + 最近预演批。"""
+    out = {"queue": {}, "audit": None, "playbooks": [], "batches": [], "consumed": 0}
+    qf = RUN_DIR / "main-audit" / "rewrite-queue.ndjson"
+    cf = RUN_DIR / "main-audit" / "rewrite-queue-consumed.ndjson"
+    prio = {"seq-template": 0, "lang-garbage": 1, "untranslated": 1, "slop": 2, "thin": 3}
+    if qf.exists():
+        rows, by_issue = [], {}
+        for ln in qf.read_text(errors="ignore").splitlines():
+            try:
+                r = json.loads(ln)
+            except Exception:
+                continue
+            if not (r.get("id") or (r.get("slug") and r.get("lang"))):
+                continue
+            rows.append(r)
+            for i in (r.get("issues") or ["other"]):
+                by_issue[str(i)] = by_issue.get(str(i), 0) + 1
+        seen = set()
+        if cf.exists():
+            for ln in cf.read_text(errors="ignore").splitlines():
+                try:
+                    seen.add(str(json.loads(ln).get("key")))
+                except Exception:
+                    pass
+        unconsumed = [r for r in rows
+                      if f"{r.get('kind')}:{r.get('id') or r.get('slug')}" not in seen
+                      and f"{r.get('kind')}:{r.get('slug')}@{r.get('lang')}" not in seen]
+        out["queue"] = {"total": len(rows), "consumed": len(rows) - len(unconsumed),
+                        "pending": len(unconsumed),
+                        "by_issue": dict(sorted(by_issue.items(), key=lambda x: -x[1])[:8])}
+        out["consumed"] = len(rows) - len(unconsumed)
+    audits = sorted((RUN_DIR / "main-audit").glob("main-audit-weekly-*.json")) if (RUN_DIR / "main-audit").exists() else []
+    if audits:
+        try:
+            a = json.loads(audits[-1].read_text(errors="ignore"))
+            out["audit"] = {"file": audits[-1].name,
+                            "generated": a.get("generated", ""),
+                            "counts": a.get("counts", {}),
+                            "blog_bad": sum(1 for r in a.get("blog_issues", []) if r.get("issues")),
+                            "comp_bad": sum(1 for r in a.get("comp_issues", []) if r.get("issues")),
+                            "lang_garbage": len(a.get("lang_garbage", []))}
+        except Exception:
+            pass
+    for pb in playbooks_list():
+        if "主站" in (pb.get("name") or ""):
+            out["playbooks"].append({"id": pb.get("legacy_automation"), "playbook_id": pb.get("id"),
+                                     "name": pb.get("name"), "enabled": pb.get("enabled"),
+                                     "dry_run": pb.get("dry_run"), "trigger": pb.get("trigger"),
+                                     "last_run": pb.get("last_run", "")})
+    try:
+        out["batches"] = [{"id": b.get("id"), "title": b.get("title"), "status": b.get("status"),
+                           "dry_run": b.get("dry_run"), "stats": b.get("stats", {}),
+                           "created": b.get("created", "")}
+                          for b in batch_list() if "主站" in (b.get("title") or "")][:5]
+    except Exception:
+        pass
+    return out
+
+
 # ===================== 统一 AI 上下文构建器（v1）=====================
 # 原则：所有调用 LLM 的路径（生成/Loop/批量/Agent）都必须：
 #   ① 检索相关 skills  ② 检索知识库  ③ 检索内容库范例  ④ 注入 harness 规则  ⑤ 注入 GEO/GSC 事实
@@ -9575,6 +9636,8 @@ class Handler(BaseHTTPRequestHandler):
                 if not t:
                     return self._send(200, {"error": "任务不存在"})
                 return self._send(200, batch_view(t, self._proj()))
+            if parsed.path == "/api/main-content/status":
+                return self._send(200, main_content_status())
             # ── Agent 任务台 ──
             if parsed.path == "/api/agent/sessions":
                 return self._send(200, agent_sessions())
@@ -10372,6 +10435,18 @@ class Handler(BaseHTTPRequestHandler):
                         if it["status"] in ("failed", "pending"):
                             it["status"] = "pending"; it["attempts"] = 0; it["error"] = ""; n += 1
                     t["status"] = "queued"; _batch_log(t, f"重试 {n} 项 by {self._me()}")
+                elif act == "go_real":
+                    # dry-run 预演批一键转真实执行：skipped/failed 项重置为 pending，dry_run 关闭
+                    if not t.get("dry_run"):
+                        return self._send(400, {"error": "该任务已是真实执行模式"})
+                    n = 0
+                    for it in t["items"]:
+                        if it["status"] in ("skipped", "pending", "failed"):
+                            it["status"] = "pending"; it["attempts"] = 0; it["error"] = ""
+                            n += 1
+                    t["dry_run"] = False
+                    t["status"] = "queued"
+                    _batch_log(t, f"dry-run 预演确认转真实执行（{n} 项）by {self._me()}")
                 else:
                     return self._send(400, {"error": "action 可选 pause/resume/cancel/retry_failed"})
                 batch_save(t)
