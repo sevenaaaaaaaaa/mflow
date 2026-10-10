@@ -564,6 +564,9 @@ body.sb-open #sb-mask{display:block}
       <p class="pg-sub">把任何工作（预设 / 计划 / 批量 / Loop）存成定时自动化，后台按计划自动执行。默认 dry-run，确认后关掉即真实生效。</p></div>
       <div class="head-actions"><button class="btn ghost" onclick="loadAuto()">刷新 ↻</button>
         <button class="btn primary" onclick="openConvert({kind:'blank',title:'新建自动化'},event)">＋ 新建自动化</button></div></div>
+    <div class="card" style="margin-bottom:14px" id="mc-card"><div class="card-head"><h3>主站内容治理 <span class="mut">www.lovart.ai 审计 → 修复 → 重写闭环</span></h3>
+      <div class="row"><button class="mini" onclick="mcLoad()">刷新 ↻</button></div></div>
+      <div id="mc-body"><div class="mut">加载中…</div></div></div>
     <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>自动化剧本 Playbook <span class="mut">多步 + 条件 + 触发器</span></h3>
       <div class="row"><button class="mini" onclick="pbEnableRecommended(event)">⚡ 一键启用推荐剧本（OPC）</button>
         <button class="mini" onclick="pbNew()">＋ 新建剧本</button></div></div>
@@ -1779,7 +1782,7 @@ function memFactEdit(id){
 function memEntEdit(id,name,notes){const n=prompt('更新「'+name+'」的说明/备注：',notes);if(n===null)return;
  api('api/memory/entity',{id,note:n}).then(r=>{if(r.error)return toast(r.error,'bad');toast('已更新实体','ok');memLoad()})}
 /* ---- 自动化 ---- */
-function loadAuto(){pbLoad();api('api/runs').then(rr=>{
+function loadAuto(){pbLoad();mcLoad();api('api/runs').then(rr=>{
  const runs=Array.isArray(rr)?rr:((rr&&rr.runs)||[]);
  const nav=$('nav-auto');const n=(PB_DATA.playbooks||[]).filter(x=>x.enabled).length;if(nav)nav.textContent=n||'';
  const el=$('auto-body');if(el){
@@ -1792,6 +1795,40 @@ function loadAuto(){pbLoad();api('api/runs').then(rr=>{
    :emptyBox('📘','还没有剧本触发记录','运行一个剧本','setTab("auto")');
  }
 }).catch(()=>{})}
+/* ---- 主站内容治理聚合卡 ---- */
+function mcLoad(){
+ const el=$('mc-body'); if(!el)return;
+ api('api/main-content/status').then(d=>{
+  if(d&&d.error){el.innerHTML='<span class="bad">'+esc(d.error)+'</span>';return}
+  const q=d.queue||{},a=d.audit,pbs=d.playbooks||[],bts=d.batches||[];
+  const pill=(ok,txt)=>`<span class="badge" style="background:${ok?'var(--ok)':'var(--dist)'};color:#fff">${esc(txt)}</span>`;
+  let h='';
+  if(a){h+=`<div class="mut" style="font-size:12.5px;margin-bottom:8px">最近审计：<b>${esc(a.file||'')}</b> · blog 有问题 <b>${a.blog_bad}</b> / 落地页有问题 <b>${a.comp_bad}</b> · 翻译垃圾嫌疑 <b>${a.lang_garbage}</b></div>`}
+  h+=`<div class="mut" style="font-size:12.5px;margin-bottom:8px">重写队列：待处理 <b style="color:var(--accent)">${q.pending||0}</b> / 已消费 ${q.consumed||0} / 共 ${q.total||0}${q.by_issue?'（'+Object.entries(q.by_issue).map(([k,v])=>esc(k)+' '+v).join(' · ')+'）':''}</div>`;
+  h+=`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:10px">`;
+  for(const p of pbs){
+   const tr=p.trigger||{};
+   const when=tr.every==='weekly'?`每周${['日','一','二','三','四','五','六'][(tr.weekday||1)-1]} ${tr.at||''}`:`每天 ${tr.at||''}`;
+   h+=`<div style="border:1px solid var(--line);border-radius:10px;padding:10px">
+     <b style="font-size:13px">${esc(p.name)}</b> ${p.dry_run?pill(false,'dry-run'):pill(true,'真实')} ${p.enabled?'':'<span class="badge dist">已停用</span>'}
+     <div class="mut" style="font-size:11.5px;margin-top:4px">节奏：${esc(when)} · 上次：${esc(p.last_run||'未运行')}</div>
+     <div class="row" style="margin-top:8px;gap:6px">
+      <button class="mini" onclick="pbRun('${esc(p.playbook_id)}',event)">▶ 立即跑一次（预演）</button>
+      <button class="mini" onclick="pbEdit('${esc(p.playbook_id)}')">✎ 改节奏/条数</button></div></div>`;
+  }
+  for(const b of bts){
+   h+=`<div style="border:1px solid var(--line);border-radius:10px;padding:10px">
+     <b style="font-size:13px">${esc(b.title||b.id)}</b> ${b.dry_run?pill(false,'dry-run'):pill(true,'真实')}
+     <div class="mut" style="font-size:11.5px;margin-top:4px">${esc(b.created||'')} · ${(b.stats||{}).total||0} 项 · ${esc(b.status||'')}</div>
+     <div class="row" style="margin-top:8px;gap:6px">
+      <button class="mini" onclick="setTab('batch');setTimeout(()=>btDetail('${esc(b.id)}'),400)">查看详情</button>
+      ${b.dry_run?`<button class="mini" style="background:var(--accent);color:#fff" onclick="api('api/batch/action',{id:'${esc(b.id)}',action:'go_real'}).then(()=>{mcLoad();toast('已转真实执行','ok')})">▶ 确认执行</button>`:''}</div></div>`;
+  }
+  h+='</div>';
+  if(!pbs.length&&!bts.length)h+='<div class="mut" style="font-size:12px">暂无主站剧本/批次（等待周一审计或手动跑一次剧本）</div>';
+  el.innerHTML=h;
+ }).catch(()=>{el.innerHTML='<span class="bad">加载失败</span>'});
+}
 function loadAutoOld(){pbLoad();api('api/automations').then(arr=>{
  const el=$('auto-body');if(!el)return;
  const nb=arr.filter(a=>a.enabled).length;const nav=$('nav-auto');if(nav)nav.textContent=arr.length||'';
@@ -3584,7 +3621,7 @@ function btAct(id,action){if(action==='cancel'&&!confirm('取消任务 '+id+'？
 function btDetail(id){api('api/batch/detail?id='+encodeURIComponent(id)).then(t=>{if(t.error)return toast(t.error,'bad');
  $('bt-detail-card').style.display='block';
  const sm=t.summary||{};
- $('bt-detail-t').innerHTML=`任务详情 · ${esc(t.title||t.id)} <span class="badge ${sm.ok?'pipe':'dist'}" style="${sm.ok?'background:var(--ok)':''}">${esc(t.status)}</span> ${t.dry_run?'<span class="badge dist">dry-run</span>':''} <button class="mini" onclick='openConvert({kind:"batch",id:"${esc(t.id)}",title:${JSON.stringify(t.title||t.id)}},event)'>⇄ 执行方式</button>`;
+ $('bt-detail-t').innerHTML=`任务详情 · ${esc(t.title||t.id)} <span class="badge ${sm.ok?'pipe':'dist'}" style="${sm.ok?'background:var(--ok)':''}">${esc(t.status)}</span> ${t.dry_run?'<span class="badge dist">dry-run</span>':''} <button class="mini" onclick='openConvert({kind:"batch",id:"${esc(t.id)}",title:${JSON.stringify(t.title||t.id)}},event)'>⇄ 执行方式</button>${t.dry_run?` <button class="mini" style="background:var(--accent);color:#fff" onclick='btAct("${esc(t.id)}","go_real")'>▶ 确认执行（转真实）</button>`:''}`;
  const links=(i)=>(i.links||[]).map(l=>l.url
    ?`<a href="${esc(l.url)}" target="_blank" class="mini" style="text-decoration:none;display:inline-block">${esc(l.label)} ↗</a>`
    :`<button class="mini" onclick="openReader('${esc(l.reader)}')">${esc(l.label)}</button>`).join(' ');
