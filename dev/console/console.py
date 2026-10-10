@@ -702,12 +702,16 @@ def user_online(username):
 
 
 def _sendmail_send(to, subject, body, sender="mflow@nownexts.com"):
-    """本机 postfix/sendmail 直发（无需凭证）。"""
+    """本机 postfix/sendmail 直发（无需凭证）。头走 RFC2047，避免 SMTPUTF8 被远端 MX 拒收。"""
     try:
-        msg = ("From: " + sender + "\nTo: " + to + "\nSubject: " + subject +
-               "\nMIME-Version: 1.0\nContent-Type: text/plain; charset=utf-8\n\n" + body)
+        from email.mime.text import MIMEText
+        from email.header import Header
+        msg = MIMEText(body, "plain", "utf-8")
+        msg["Subject"] = Header(subject, "utf-8")
+        msg["From"] = sender
+        msg["To"] = to
         pr = subprocess.run(["/usr/sbin/sendmail", "-t", "-i", "-f", sender],
-                            input=msg.encode("utf-8"), capture_output=True, timeout=30)
+                            input=msg.as_bytes(), capture_output=True, timeout=30)
         if pr.returncode == 0:
             return True, "已通过本机 sendmail 投递"
         return False, ("sendmail 失败：" + pr.stderr.decode(errors="ignore")[:160])
