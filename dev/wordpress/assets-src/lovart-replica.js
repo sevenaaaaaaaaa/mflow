@@ -565,12 +565,28 @@ window.LR_COMPARE = {
      源站 pricing-block 是 animate-pulse 骨架屏（客户端 hydrate 时才填真实卡片），
      静态抓取拿不到 → 这里用内嵌的真实定价数据（4 档 × 月/年）替换骨架网格，
      并接月/年切换联动重渲染。 */
-  var LR_PRICING = {"monthly":[{"name":"Starter","price":19,"original":19,"feats":["2000 Credits monthly","2000 extra credits first month","~40 Agent conversations","~500 GPT images","~8000 Flux images","~111 Kling videos","Unlimited Trial Models","Commercial license"]},{"name":"Basic","price":32,"original":32,"feats":["3500 Credits monthly","3500 extra credits first month","~35 Agent conversations","~438 GPT images","~7000 Flux images","~51 Kling videos","Unlimited Trial Models","Commercial license"]},{"name":"Pro","price":90,"original":90,"feats":["11000 Credits monthly","11000 extra credits first month","~110 Agent conversations","~1375 GPT images","~22000 Flux images","~162 Kling videos","Unlimited Trial Models","Commercial license"]},{"name":"Ultimate","price":199,"original":199,"feats":["22000 Credits monthly","22000 extra credits first month","~220 Agent conversations","~2750 GPT images","~44000 Flux images","~324 Kling videos","Unlimited Trial Models","Commercial license","Priority generation queue","Dedicated support"]}],"yearly":[{"name":"Starter","price":192,"original":228,"feats":["2000 Credits monthly","2000 extra credits first month","~40 Agent conversations","~500 GPT images","~8000 Flux images","~111 Kling videos","Unlimited Trial Models","Commercial license"]},{"name":"Basic","price":324,"original":384,"feats":["3500 Credits monthly","3500 extra credits first month","~35 Agent conversations","~438 GPT images","~7000 Flux images","~51 Kling videos","Unlimited Trial Models","Commercial license"]},{"name":"Pro","price":888,"original":1080,"feats":["11000 Credits monthly","11000 extra credits first month","~110 Agent conversations","~1375 GPT images","~22000 Flux images","~162 Kling videos","Unlimited Trial Models","Commercial license"]},{"name":"Ultimate","price":1992,"original":2388,"feats":["22000 Credits monthly","22000 extra credits first month","~220 Agent conversations","~2750 GPT images","~44000 Flux images","~324 Kling videos","Unlimited Trial Models","Commercial license","Priority generation queue","Dedicated support"]}]};
+  var LR_PRICING = {
+    "monthly": [
+      {"name":"Starter","price":19,"original":19,"off":"","bill":"Billed monthly","save":"Save $36 with annual billing","feats":["2000 Credits monthly","2000 extra credits first month","~40 Agent conversations","~500 GPT images","~8000 Flux images","~111 Kling videos","Unlimited Trial Models","Commercial license"]},
+      {"name":"Basic","price":32,"original":32,"off":"","bill":"Billed monthly","save":"Save $60 with annual billing","feats":["3500 Credits monthly","3500 extra credits first month","~35 Agent conversations","~438 GPT images","~7000 Flux images","~51 Kling videos","Unlimited Trial Models","Commercial license"]},
+      {"name":"Pro","price":79,"original":90,"off":"12% off","bill":"Billed monthly, renews at $90/month next month","save":"Save $529 with annual billing","hot":true,"feats":["11000 Credits monthly","11000 extra credits first month","~110 Agent conversations","~1375 GPT images","~22000 Flux images","~162 Kling videos","Unlimited Trial Models","Commercial license"]},
+      {"name":"Ultimate","price":169,"original":199,"off":"15% off","bill":"Billed monthly, renews at $199/month next month","save":"Save $1,050 with annual billing","feats":["22000 Credits monthly","22000 extra credits first month","~220 Agent conversations","~2750 GPT images","~44000 Flux images","~324 Kling videos","Unlimited Trial Models","Commercial license","Priority generation queue","Dedicated support"]}
+    ],
+    "yearly": [
+      {"name":"Starter","price":16,"original":19,"off":"16% off","bill":"Billed annually, $192/year","save":"Save $36 compared to monthly","feats":["2000 Credits monthly","2000 extra credits first month","~40 Agent conversations","~500 GPT images","~8000 Flux images","~111 Kling videos","Unlimited Trial Models","Commercial license"]},
+      {"name":"Basic","price":27,"original":32,"off":"16% off","bill":"Billed annually, $324/year","save":"Save $60 compared to monthly","feats":["3500 Credits monthly","3500 extra credits first month","~35 Agent conversations","~438 GPT images","~7000 Flux images","~51 Kling videos","Unlimited Trial Models","Commercial license"]},
+      {"name":"Pro","price":45,"original":90,"off":"50% off","bill":"Billed annually, $540 first year, then $888/year","save":"Save $529 compared to monthly","hot":true,"feats":["11000 Credits monthly","11000 extra credits first month","~110 Agent conversations","~1375 GPT images","~22000 Flux images","~162 Kling videos","Unlimited Trial Models","Commercial license"]},
+      {"name":"Ultimate","price":109,"original":199,"off":"45% off","bill":"Billed annually, $1,308 first year, then $1,992/year","save":"Save $1,050 compared to monthly","feats":["22000 Credits monthly","22000 extra credits first month","~220 Agent conversations","~2750 GPT images","~44000 Flux images","~324 Kling videos","Unlimited Trial Models","Commercial license","Priority generation queue","Dedicated support"]}
+    ]
+  };
 
   function pricingCard(plan, period) {
-    var per = period === "yearly" ? "/yr" : "/mo";
+    var per = period === "yearly" ? "/mo" : "/month";
     var card = document.createElement("div");
-    card.className = "border-lo-border-neutral-l2 mt-[30px] flex w-full flex-col gap-6 rounded-[16px] border pb-6 bg-transparent";
+    // 对齐真站：普通卡米白底；Pro 卡（hot）lime 高亮边框 + Most popular 徽章
+    card.className = "relative mt-[30px] flex w-full flex-col gap-6 rounded-[16px] border pb-6 bg-bg-base-default " +
+      (plan.hot ? "border-[#def479]" : "border-lo-border-neutral-l2");
+    card.style.borderColor = plan.hot ? "rgb(222, 244, 121)" : "";
     var feats = plan.feats.map(function (f) {
       return '<div class="flex items-center gap-2">' +
         '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0 text-text-default"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
@@ -578,12 +594,19 @@ window.LR_COMPARE = {
     }).join("");
     card.innerHTML =
       '<div class="border-lo-border-neutral-l2 flex flex-col gap-4 border-b p-6">' +
-        '<div class="flex h-6 items-center gap-1"><span class="font-sans text-[16px] font-medium text-text-default">' + plan.name + '</span></div>' +
-        '<div class="flex items-baseline gap-1"><span class="font-sans text-[32px] leading-none font-semibold text-text-default">$' + plan.price + '</span><span class="font-sans text-[13px] text-text-tertiary">' + per + '</span></div>' +
-        (plan.original > plan.price ? '<div class="font-sans text-[12px] text-text-tertiary line-through">$' + plan.original + per + '</div>' : '') +
-        '<button type="button" class="mt-2 inline-flex h-10 w-full cursor-pointer items-center justify-center rounded-full bg-bg-invert font-sans text-[14px] font-medium text-text-invert transition-opacity hover:opacity-90">Get started</button>' +
+        '<div class="flex h-6 items-center gap-2"><span class="font-sans text-[16px] font-medium text-text-default">' + plan.name + '</span>' +
+          (plan.off ? '<span class="font-sans text-[12px] font-medium text-text-secondary">' + plan.off + '</span>' : '') +
+        '</div>' +
+        '<div class="flex items-baseline gap-2"><span class="font-sans text-[32px] leading-none font-semibold text-text-default">$' + plan.price + '</span>' +
+          (plan.original > plan.price ? '<span class="font-sans text-[16px] text-text-tertiary line-through">$' + plan.original + '</span>' : '') +
+          '<span class="font-sans text-[13px] text-text-tertiary">' + per + '</span></div>' +
+        '<div class="font-sans text-[12px] leading-[1.5] text-text-tertiary">' + plan.bill + '</div>' +
+        (plan.hot ? '<span class="absolute left-1/2 -top-3 -translate-x-1/2 whitespace-nowrap rounded-full px-3 py-1 font-sans text-[12px] font-medium" style="background:rgb(222, 244, 121);color:#111">Most popular</span>' : '') +
+        '<button type="button" class="mt-2 inline-flex h-10 w-full cursor-pointer items-center justify-center rounded-full border border-lo-border-neutral-l2 bg-bg-special-white font-sans text-[14px] font-medium text-text-default transition-colors hover:bg-lo-bg-overlay-hover">Get ' + plan.name + ' now</button>' +
       '</div>' +
-      '<div class="flex flex-col gap-3 px-6">' + feats + '</div>';
+      '<div class="flex flex-col gap-3 px-6">' +
+        '<div class="font-sans text-[13px] font-medium text-text-default">' + plan.save + '</div>' + feats +
+      '</div>';
     return card;
   }
 
@@ -603,7 +626,8 @@ window.LR_COMPARE = {
       if (!grid) return;
       if (!isSkeleton && grid.children.length > 0) return;
       sec.dataset.lovartPricingRender = "1";
-      renderPricing(sec, "monthly");
+      // 真站默认 annual（折扣展示态）
+      renderPricing(sec, "yearly");
       // 月/年切换联动
       var monBtn = q("[data-testid='paywall-tab-monthly']", sec);
       var yrBtn = q("[data-testid='paywall-tab-annually']", sec);
@@ -613,7 +637,7 @@ window.LR_COMPARE = {
       }
       if (monBtn) monBtn.addEventListener("click", function (e) { e.preventDefault(); setActive(monBtn, yrBtn); renderPricing(sec, "monthly"); });
       if (yrBtn) yrBtn.addEventListener("click", function (e) { e.preventDefault(); setActive(yrBtn, monBtn); renderPricing(sec, "yearly"); });
-      if (monBtn) monBtn.classList.add("lr-paywall-active");
+      if (yrBtn) yrBtn.classList.add("lr-paywall-active");
     });
   }
 

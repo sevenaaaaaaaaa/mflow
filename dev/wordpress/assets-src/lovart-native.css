@@ -186,8 +186,10 @@
   font-family: var(--font-sans-Mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
 }
 
-/* v11: 横向工作流展开面板描述文字恢复换行（strip 的 nowrap 污染了内容层） */
-.lr [data-lp-section="workflow-horizontal"] .overflow-hidden > * {
+/* v11: 工作流展开面板描述文字恢复换行（strip 的 nowrap 污染了内容层）
+   v13: 覆盖 horizontal 与 vertical 两种区块 */
+.lr [data-lp-section="workflow-horizontal"] .overflow-hidden > *,
+.lr [data-lp-section="workflow-vertical"] .overflow-hidden > * {
   white-space: normal;
 }
 
@@ -203,3 +205,11 @@
 .lr .font-mono { font-family: var(--font-sans-Mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important; }
 .lr .font-sans { font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif !important; }
 .lr .lovart-replica-scope { font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif !important; }
+
+/* v14: 定价分段切换器 —— annually 按钮被未知来源规则 display:none 吞掉、
+   monthly 被改 block，强制恢复 inline-flex 与正确显隐 */
+.lr [data-lp-section="pricing-block"] [data-testid="paywall-tab-annually"],
+.lr [data-lp-section="pricing-block"] [data-testid="paywall-tab-monthly"] {
+  display: inline-flex !important;
+}
+.lr [data-lp-section="pricing-block"] .bg-lo-special-white { display: none !important; }
