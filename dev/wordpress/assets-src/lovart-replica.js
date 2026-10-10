@@ -269,30 +269,77 @@ window.LR_COMPARE = {
     return btn.parentElement ? btn.parentElement.nextElementSibling : null;
   }
   function initAccordion(root) {
+    /* 静态 HTML 的 panel 全部 hidden（radix 服务端渲染的收起态），脚本必须负责：
+       1) 初始同步——把 aria-expanded=true 的项展开；全关时展开第一项（对齐设计稿）
+       2) 点击切换——单开互斥 + JS 高度动画（源站 animate-accordion-down/up 依赖
+          radix CSS 变量，镜像层没有，必须自己驱动高度过渡） */
+    function setState(btn, panel, open, animate) {
+      btn.setAttribute("aria-expanded", String(open));
+      var item = btn.closest("[data-state]");
+      if (item) item.setAttribute("data-state", open ? "open" : "closed");
+      if (btn.hasAttribute("data-state")) btn.setAttribute("data-state", open ? "open" : "closed");
+      if (!panel) return;
+      if (panel.hasAttribute("data-state")) panel.setAttribute("data-state", open ? "open" : "closed");
+      var svg = btn.querySelector("svg");
+      if (svg) svg.style.transform = open ? "rotate(180deg)" : "";
+      if (!open) {
+        if (animate && !panel.hasAttribute("hidden")) {
+          panel.style.height = panel.scrollHeight + "px";
+          void panel.offsetHeight;
+          panel.style.transition = "height 0.25s ease";
+          panel.style.height = "0px";
+          var close = function () { panel.setAttribute("hidden", ""); panel.style.display = ""; panel.style.height = ""; panel.style.transition = ""; };
+          panel.addEventListener("transitionend", close, { once: true });
+          setTimeout(close, 350);
+        } else {
+          panel.setAttribute("hidden", "");
+          panel.style.height = ""; panel.style.transition = "";
+        }
+      } else {
+        panel.removeAttribute("hidden");
+        if (animate) {
+          panel.style.height = "0px";
+          void panel.offsetHeight;
+          panel.style.transition = "height 0.25s ease";
+          panel.style.height = panel.scrollHeight + "px";
+          var done = function () { panel.style.height = "auto"; panel.style.transition = ""; };
+          panel.addEventListener("transitionend", done, { once: true });
+          setTimeout(done, 350);
+        } else {
+          panel.style.height = ""; panel.style.transition = "";
+        }
+      }
+    }
+    var groups = [];
     qa("[aria-expanded]", root).forEach(function (btn) {
       if (btn.dataset.lovartAcc) return;
+      var p0 = findPanel(btn);
+      if (!p0 || p0.getAttribute && p0.getAttribute("role") !== "region") return; // 只接管真手风琴
       btn.dataset.lovartAcc = "1";
+      var grp = btn.closest("[data-lp-section]") || btn.parentElement;
+      if (groups.indexOf(grp) === -1) groups.push(grp);
       btn.addEventListener("click", function (e) {
         e.preventDefault();
-        var expanded = btn.getAttribute("aria-expanded") === "true";
-        var nowOpen = !expanded;
-        btn.setAttribute("aria-expanded", String(nowOpen));
-        if (btn.hasAttribute("data-state")) btn.setAttribute("data-state", nowOpen ? "open" : "closed");
-        var item = btn.closest("[data-state]");
-        if (item) item.setAttribute("data-state", nowOpen ? "open" : "closed");
-        var panel = findPanel(btn);
-        if (panel) {
-          if (nowOpen) {
-            panel.removeAttribute("hidden");
-            panel.style.display = "";
-          } else {
-            panel.setAttribute("hidden", "");
-            panel.style.display = "none";
-          }
-          if (panel.hasAttribute("data-state")) panel.setAttribute("data-state", nowOpen ? "open" : "closed");
+        var open = btn.getAttribute("aria-expanded") !== "true";
+        // 单开互斥：同组内其它展开项收起
+        if (open) {
+          qa('[aria-expanded="true"]', grp).forEach(function (other) {
+            if (other !== btn) setState(other, findPanel(other), false, true);
+          });
         }
-        var svg = btn.querySelector("svg"); if (svg) svg.style.transform = nowOpen ? "rotate(180deg)" : "";
+        setState(btn, findPanel(btn), open, true);
       });
+    });
+    // 初始同步（无动画）
+    groups.forEach(function (grp) {
+      var btns = qa('[aria-expanded]', grp).filter(function (b) { return b.dataset.lovartAcc; });
+      if (!btns.length) return;
+      var opened = false;
+      btns.forEach(function (b) {
+        if (b.getAttribute("aria-expanded") === "true") { setState(b, findPanel(b), true, false); opened = true; }
+        else setState(b, findPanel(b), false, false);
+      });
+      if (!opened) setState(btns[0], findPanel(btns[0]), true, false); // 设计稿默认展开第一项
     });
   }
 
@@ -596,7 +643,39 @@ window.LR_COMPARE = {
     });
   }
 
+  /* ---------- 懒加载兜底 ----------
+     站点懒加载插件把真实 URL 挪进 data-lazy-src（src 留 0 尺寸 SVG 占位），
+     但其替换 JS 在复刻页不执行 → 图片全部塌成 0 高。这里启动时直接还原。 */
+  function initLazyFix() {
+    qa("img[data-lazy-src]").forEach(function (img) {
+      var real = img.getAttribute("data-lazy-src");
+      if (real) { img.src = real; img.removeAttribute("data-lazy-src"); }
+    });
+    qa("img[data-lazy-srcset]").forEach(function (img) {
+      img.setAttribute("srcset", img.getAttribute("data-lazy-srcset"));
+      img.removeAttribute("data-lazy-srcset");
+    });
+  }
+
+  /* ---------- CSS 链接自愈 ----------
+     跨域大 CSS（replica/mirror）在 no-cors 模式下若命中 CDN 的损坏缓存条目，
+     渲染引擎会静默弃用整份样式表（无报错、无兜底），页面退化为裸文本。
+     统一升级为 crossorigin=anonymous 模式并加 nonce 绕过边缘坏缓存；
+     服务器已返回 ACAO:*，CORS 模式下响应健康且 CSSOM 可读。 */
+  function initCssHeal() {
+    document.querySelectorAll('link[rel="stylesheet"]').forEach(function (l) {
+      if (!/lovart-(replica|faithful-mirror)\.css/.test(l.href)) return;
+      if (l.crossorigin) return; // HTML 已是 CORS 模式，无需处理
+      var u = new URL(l.href, location.href);
+      u.searchParams.set("r", Date.now().toString(36));
+      l.crossorigin = "anonymous";
+      l.href = u.toString();
+    });
+  }
+
   function initAll() {
+    initCssHeal();
+    initLazyFix();
     // before/after：role="slider" 即滑块本体，直接初始化
     qa('[role="slider"]').forEach(initSlider);
     initAccordion(document);

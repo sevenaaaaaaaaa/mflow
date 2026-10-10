@@ -163,3 +163,43 @@
   .lr-native .lr-native-grid-3 > .e-con,
   .lr-native .lr-native-grid-4 > .e-con { flex-basis: 100%; }
 }
+
+/* v10: 字体对齐 —— replica.css 字体工具类被 cascade layer 压制（Elementor reset 无层胜出），
+   配合字体本地化（fonts/ 目录 + CORS），按源站语义强制还原字族 */
+.lr .e-con.lr-faithful, .lr section.lr-faithful, .lr div.lr-faithful {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif !important;
+}
+.lr .e-con.lr-faithful .font-serif-display, .lr .e-con.lr-faithful.font-serif-display,
+.lr section.lr-faithful .font-serif-display, .lr section.lr-faithful.font-serif-display,
+.lr div.lr-faithful .font-serif-display, .lr div.lr-faithful.font-serif-display,
+.lr .e-con.lr-faithful .font-serif-deck, .lr .e-con.lr-faithful.font-serif-deck {
+  font-family: var(--font-Feature-Display), ui-serif, Georgia, "Times New Roman", serif !important;
+}
+.lr .e-con.lr-faithful .font-poppins, .lr .e-con.lr-faithful.font-poppins {
+  font-family: var(--font-Poppins), ui-sans-serif, system-ui, sans-serif !important;
+}
+.lr .e-con.lr-faithful .font-inter, .lr .e-con.lr-faithful.font-inter,
+.lr .e-con.lr-faithful .font-text, .lr .e-con.lr-faithful.font-text {
+  font-family: var(--font-Inter), ui-sans-serif, system-ui, sans-serif !important;
+}
+.lr .e-con.lr-faithful .font-mono, .lr .e-con.lr-faithful.font-mono {
+  font-family: var(--font-sans-Mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+}
+
+/* v11: 横向工作流展开面板描述文字恢复换行（strip 的 nowrap 污染了内容层） */
+.lr [data-lp-section="workflow-horizontal"] .overflow-hidden > * {
+  white-space: normal;
+}
+
+/* v12: 拓扑修正 —— 真实结构是 .lr-faithful > .lr(lovart-replica-scope) > 内容，
+   旧 .lr .e-con.lr-faithful 选择器方向反了全部落空；改用 .lr 直接作用域。
+   且 replica.css 的工具类在 cascade layer 内，被无层 Elementor reset 压制，故加 !important */
+.lr .font-serif-display, .lr .font-serif-deck {
+  font-family: var(--font-Feature-Display), ui-serif, Georgia, "Times New Roman", serif !important;
+}
+.lr button.flex, .lr [role="button"].flex, .lr [data-lp-section] a.flex { display: flex !important; }
+.lr .font-poppins { font-family: var(--font-Poppins), ui-sans-serif, system-ui, sans-serif !important; }
+.lr .font-inter, .lr .font-text { font-family: var(--font-Inter), ui-sans-serif, system-ui, sans-serif !important; }
+.lr .font-mono { font-family: var(--font-sans-Mono), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important; }
+.lr .font-sans { font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif !important; }
+.lr .lovart-replica-scope { font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif !important; }
