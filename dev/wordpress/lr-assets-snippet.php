@@ -18,14 +18,14 @@ add_action( 'wp_enqueue_scripts', function () {
 	if ( ! $pid || ! lr_replica_has_module( $pid ) ) {
 		return;
 	}
-	wp_enqueue_style( 'lr-replica', 'https://nownexts.com/lr-assets/lovart-replica.css?v=2', array(), null );
+	wp_enqueue_style( 'lr-replica', 'https://nownexts.com/lr-assets/lovart-replica.css?v=3', array(), null );
 	// 忠实模式（原始类名 e-con）与 LR Native 都需要 shim，故所有 LR 页加载
-	wp_enqueue_style( 'lr-native', 'https://nownexts.com/lr-assets/lovart-native.css?v=9', array( 'lr-replica' ), null );
+	wp_enqueue_style( 'lr-native', 'https://nownexts.com/lr-assets/lovart-native.css?v=11', array( 'lr-replica' ), null );
 	// 忠实容器（lr-faithful）需要未分层工具类镜像压过 e-con chrome
 	if ( false !== strpos( (string) get_post_meta( $pid, '_elementor_data', true ), 'lr-faithful' ) ) {
 		wp_enqueue_style( 'lr-faithful', 'https://nownexts.com/lr-assets/lovart-faithful-mirror.css?v=1', array( 'lr-native' ), null );
 	}
-	wp_enqueue_script( 'lr-replica', 'https://nownexts.com/lr-assets/lovart-replica.js?v=9', array(), null, true );
+	wp_enqueue_script( 'lr-replica', 'https://nownexts.com/lr-assets/lovart-replica.js?v=10', array(), null, true );
 	// 隐藏主题构建器头尾仅限 _lr_replica 整页（插入单模块的页面保留自身主题头尾）
 	if ( get_post_meta( $pid, '_lr_replica', true ) ) {
 		wp_add_inline_style( 'lr-replica', '.lr-replica-page [data-elementor-type="header"],.lr-replica-page [data-elementor-type="footer"]{display:none !important}' );
@@ -131,3 +131,12 @@ add_action( 'wp_footer', function () {
 	</script>
 	<?php
 }, 99 );
+
+
+// 样式表 crossorigin=anonymous：让跨域 CSS 的 CSSOM 可读（调试+运行时探测用）
+add_filter( 'style_loader_tag', function ( $tag, $handle ) {
+	if ( in_array( $handle, array( 'lr-replica', 'lr-native', 'lr-faithful' ), true ) ) {
+		$tag = str_replace( '<link ', '<link crossorigin="anonymous" ', $tag );
+	}
+	return $tag;
+}, 10, 2 );
