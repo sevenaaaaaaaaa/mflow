@@ -710,6 +710,99 @@ def calendar_view(q="", lang=""):
             "files": files[:250]}
 
 
+def calendar_board():
+    """内容日历数据：成品文档（内容库 + 项目产出文章）+ 分发队列 + 批量任务产出（按批次日期落位）。"""
+    docs = [{"path": f["path"], "title": f["title"], "date": f.get("date", ""),
+             "lang": f["lang"], "cat": f.get("cat", "")}
+            for f in calendar_index()]
+    seen_p = {d["path"] for d in docs}
+    # 项目产出文章（run/projects/*/content/*.md）：标题取 front-matter，无则文件名
+    for cpf in sorted(PROJECT.glob("run/projects/*/content/*.md"),
+                      key=lambda x: x.stat().st_mtime, reverse=True)[:400]:
+        rel = rel_of(cpf)
+        if rel in seen_p:
+            continue
+        head = cpf.read_text(errors="ignore")[:600]
+        title_m = re.search(r'title:\s*"?([^"\n]+)"?', head)
+        date_m = re.search(r'^date:\s*(\d{4}-\d{2}-\d{2})', head, re.M)
+        lm = re.search(r"-(ja|zh|zhtw|ko|de|fr|pt|ru|it)\.md$", cpf.name)
+        lang = lm.group(1) if lm else "en"
+        try:
+            d0 = date_m.group(1) if date_m else time.strftime("%Y-%m-%d", time.localtime(cpf.stat().st_mtime))
+        except Exception:
+            d0 = ""
+        docs.append({"path": rel, "title": (title_m.group(1).strip() if title_m else cpf.stem),
+                     "date": d0, "lang": lang, "cat": "任务产出"})
+    docs = docs[:600]
+    base = PROJECT / "genflow/Content Distribution/queue"
+    pend = [{"id": (x.get("id") or x.get("slug") or ""), "slug": x.get("slug") or "",
+             "platforms": x.get("platforms") or "", "date": (x.get("date") or "")[:10],
+             "status": x.get("status") or "pending"} for x in
+            (read_json(base / "pending.json", {}).get("items", []) or [])][:120]
+    pub = [{"id": (x.get("id") or x.get("slug") or ""), "slug": x.get("slug") or "",
+            "platform": x.get("platform") or "", "date": (x.get("date") or "")[:10],
+            "status": "published"} for x in
+           (read_json(base / "published.json", {}).get("items", []) or [])[-60:]]
+    arts = []
+    n_art = 0
+    for f2 in sorted(BATCH_DIR.glob("batch-*.json"), key=lambda x: x.stat().st_mtime, reverse=True):
+        if n_art >= 300:
+            break
+        t = read_json(f2, {})
+        if not t or t.get("type") == "qa":
+            continue
+        d = (t.get("finished") or t.get("created") or "")[:10]
+        if not d:
+            continue
+        for it in (t.get("items") or []):
+            topic = str(it.get("topic") or it.get("item_id") or "").strip()
+            if not topic or topic.startswith("("):
+                continue
+            arts.append({"topic": topic.split("/")[-1][:60], "lang": str(it.get("lang") or "en"),
+                         "date": d, "batch": t.get("id"), "title": t.get("title") or ""})
+            n_art += 1
+    seen = set()
+    arts = [x for x in arts if (x["topic"], x["date"]) not in seen and not seen.add((x["topic"], x["date"]))]
+    arts.sort(key=lambda x: x["date"], reverse=True)
+    return {"docs": docs, "pending": pend, "published": pub, "batch_articles": arts[:300]}
+
+
+def calendar_set_date(path, date):
+    """拖拽改期：改写 md front-matter 的 date 行（无则插在 title 后）。"""
+    p = safe_path(path)
+    if not p:
+        return {"error": "路径不可读"}
+    if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(date or "")):
+        return {"error": "日期格式应为 YYYY-MM-DD"}
+    txt = p.read_text(errors="ignore")
+    if re.search(r"^date:", txt, re.M):
+        txt = re.sub(r"^date:.*$", f"date: {date}", txt, count=1, flags=re.M)
+    else:
+        txt = re.sub(r"^(title:.*\n)", r"\1" + f"date: {date}\n", txt, count=1, flags=re.M)
+    p.write_text(txt, encoding="utf-8")
+    _CAL_CACHE["files"] = None
+    _CAL_CACHE["ts"] = 0
+    return {"ok": True}
+
+
+def dist_reschedule(item_id, date):
+    """分发队列改期（仅待发项）。"""
+    if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(date or "")):
+        return {"error": "日期格式应为 YYYY-MM-DD"}
+    base = PROJECT / "genflow/Content Distribution/queue"
+    f = base / "pending.json"
+    q = read_json(f, {})
+    n = 0
+    for x in (q.get("items") or []):
+        if (x.get("id") or x.get("slug") or "") == item_id:
+            x["date"] = date
+            n += 1
+    if not n:
+        return {"error": f"待发队列未找到 {item_id}"}
+    f.write_text(json.dumps(q, ensure_ascii=False, indent=1), encoding="utf-8")
+    return {"ok": True, "updated": n}
+
+
 def _norm_url_path(u):
     """归一化 URL → 路径（协议/域/query/尾斜杠容错），用于 canonical 匹配。"""
     u = (u or "").split("?")[0].split("#")[0].rstrip("/")
@@ -9875,6 +9968,8 @@ class Handler(BaseHTTPRequestHandler):
                         {"name": s, "path": sk[s]["path"], "desc": sk[s]["desc"]}
                         for s in w["skills"] if s in sk]})
                 return self._send(200, wfs)
+            if parsed.path == "/api/calendar/board":
+                return self._send(200, calendar_board())
             if parsed.path == "/api/calendar":
                 return self._send(200, calendar_view(qs.get("q", [""])[0].strip(), qs.get("lang", [""])[0]))
             if parsed.path == "/api/trident":
@@ -10090,7 +10185,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/pay/order/redeliver", "/api/pay/order/cancel", "/api/pay/voucher/save",
                       "/api/pay/voucher/delete", "/api/pay/config/save", "/api/pay/verify",
                       "/api/publish/sanity", "/api/publish/wordpress", "/api/library/sync",
-                      "/api/gsc/decay_batch",
+                      "/api/gsc/decay_batch", "/api/calendar/date", "/api/dist/reschedule",
                       "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
                       "/api/batch/create", "/api/batch/action",
                       "/api/agent/chat", "/api/agent/execute", "/api/agent/run", "/api/agent/profile",
@@ -10489,6 +10584,10 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(400, {"error": why})
                 r = publish_wordpress(path, item_id, str(body.get("title", "")))
                 return self._send(200 if r.get("ok") else 400, r)
+            if self.path == "/api/calendar/date":
+                return self._send(200, calendar_set_date(str(body.get("path", "")), str(body.get("date", ""))))
+            if self.path == "/api/dist/reschedule":
+                return self._send(200, dist_reschedule(str(body.get("id", "")), str(body.get("date", ""))))
             if self.path == "/api/gsc/decay_batch":
                 try:
                     rr = gsc_decay_batch(limit=int(body.get("limit", 10)), by=self._me())
