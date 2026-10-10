@@ -219,3 +219,34 @@
    native.css 仅由 snippet 注入到复刻页与 demo 页，不影响站内其它页面 */
 header.elementor-location-header { display: none !important; }
 body.admin-bar header.elementor-location-header + * { margin-top: 0 !important; }
+
+/* v16: native 微件页独立容器修复 ——
+   native 转换区块是无 .lr 祖先的 Elementor 顶层容器：
+   a) tailwind 工具类在 cascade layer 内被 Elementor reset 压制 → w-full 失效，
+      区块缩成 1280 boxed 居中，两侧/间隙露出白色 body（"模块之间白色条"）
+   b) 设计变量缺 .lr/.lr.dark 定义 → bg-bg-base-default 等解析成 light 色值
+   作用域限定 body.lr-native-page（snippet 27 仅对 _elementor_data 含 lr-native 的页面注入），
+   faithful 页与 17 个线上页零影响；内部 .lr / .lr.dark 容器自定义变量优先，不受覆盖 */
+.lr-native-page .w-full { width: 100% !important; }
+.lr-native-page .mx-auto { margin-left: auto !important; margin-right: auto !important; }
+.lr-native-page .overflow-hidden { overflow: hidden !important; }
+.lr-native-page {
+  --bg-base-default: #100f09; --bg-base-secondary: #171612; --bg-base-tertiary: #1d1b16;
+  --bg-overlay-l1: #f5f4ef0f; --bg-overlay-l2: #f5f4ef1f; --bg-overlay-l3: #f5f4ef2e;
+  --bg-invert: #f5f4ef; --bg-invert-hover: #fff; --bg-input: #f5f4ef0f;
+  --text-default: #f5f4ef; --text-secondary: #c9c8c5; --text-tertiary: #929290; --text-disabled: #ffffff4d;
+  --text-invert: #100f09; --border-neutral-l1: #f5f4ef0f; --border-neutral-l2: #f5f4ef1f;
+  --border-neutral-l3: #f5f4ef2e; --border-contrast: #f5f4ef;
+  --ui-bg-canvas: #191815; --ui-foreground: #fff; --ui-bg-panel: #201f1d;
+  --special-white: #fff; --special-black: #000; --special-invert: #fff;
+  --border: #f5f4ef1f; --ring: #929290; --input: #f5f4ef1f; --accent: #1d1b16;
+  --background: #100f09; --card: #171612; --popover: #201f1d;
+}
+.lr-native-page .bg-bg-base-default { background-color: var(--bg-base-default) !important; }
+.lr-native-page .bg-bg-base-secondary { background-color: var(--bg-base-secondary) !important; }
+.lr-native-page .bg-bg-base-tertiary { background-color: var(--bg-base-tertiary) !important; }
+.lr-native-page .text-text-default { color: var(--text-default) !important; }
+.lr-native-page .text-text-secondary { color: var(--text-secondary) !important; }
+.lr-native-page .text-text-tertiary { color: var(--text-tertiary) !important; }
+.lr-native-page .border-border-neutral-l1 { border-color: var(--border-neutral-l1) !important; }
+.lr-native-page .border-border-neutral-l2 { border-color: var(--border-neutral-l2) !important; }
