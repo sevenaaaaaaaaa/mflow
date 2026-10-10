@@ -51,6 +51,22 @@
   background: var(--bg-bg-overlay-l2, rgba(255, 255, 255, 0.14));
 }
 
+/* 价格卡（lovart-replica.js 渲染）：标题/价格用默认前景色，功能项次要色，
+   CTA 反色按钮，hover 提亮。变量沿用源站 .lr 作用域已注入的 --text-*/--bg-*。 */
+.lr [data-lp-section="pricing-block"] .rounded-\[16px\] .text-text-default {
+  color: var(--text-text-default, currentColor);
+}
+.lr [data-lp-section="pricing-block"] .rounded-\[16px\] .text-text-secondary {
+  color: var(--text-text-secondary, rgba(128, 128, 128, 0.85));
+}
+.lr [data-lp-section="pricing-block"] .rounded-\[16px\] .text-text-tertiary {
+  color: var(--text-text-tertiary, rgba(128, 128, 128, 0.6));
+}
+.lr [data-lp-section="pricing-block"] .rounded-\[16px\] button.bg-bg-invert {
+  background: var(--bg-bg-invert, #fff);
+  color: var(--text-text-invert, #100f09);
+}
+
 /* 对话面板用户消息气泡（lovart-replica.js 发送时插入） */
 .lr .lr-chat-user-msg {
   align-self: flex-end;
