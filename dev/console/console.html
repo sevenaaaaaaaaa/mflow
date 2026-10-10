@@ -453,6 +453,7 @@ body.sb-open #sb-mask{display:block}
     <button onclick="setTab('calt')" title="内容日历"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg><span>日历</span></button>
   </div>
   <button class="s-item on" data-t="home" onclick="setTab('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>总览</span></button>
+  <button class="s-item" data-t="taskhub" onclick="setTab('taskhub')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13"/><path d="M3 6h.01M3 12h.01M3 18h.01"/></svg><span>任务中心</span><span class="sbad" id="nav-hub" style="display:none">0</span></button>
   <div class="sec-title">工作台</div>
   <button class="s-item" data-t="agent" onclick="setTab('agent')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4v1a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3h1v3M12 3a4 4 0 0 1 4 4v1a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-1v3"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/></svg><span>Agent 任务台</span></button>
   <button class="s-item" data-t="auto" onclick="setTab('auto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg><span>自动化</span><span class="sbad mutb" id="nav-auto">0</span></button>
@@ -536,6 +537,14 @@ body.sb-open #sb-mask{display:block}
       <div class="card"><div class="card-head"><h3>调度状态</h3><button class="more" onclick="setTab('sys')">详情 →</button></div><div id="home-timers" style="font-size:12.5px;line-height:1.9;color:var(--muted)"></div></div>
       <div class="card"><div class="card-head"><h3>最近活动</h3></div><div id="home-acts"></div></div>
     </div>
+  </section>
+
+  <!-- ============ 任务中心（统一视图） ============ -->
+  <section class="page" id="pg-taskhub">
+    <div class="pg-head"><div><div class="kick">统一视图</div><h1>任务<em class="sf">中心</em></h1>
+      <p class="pg-sub">后台新建的所有执行任务都在这里：改稿、质检、字段修复、发布……以及剧本执行记录（30 秒自动刷新）。任务产出的稿件在内容管线与内容库管理。</p></div>
+      <div class="head-actions"><div class="chips" id="hub-filter"></div></div></div>
+    <div id="hub-body"></div>
   </section>
 
   <!-- ============ 任务 ============ -->
@@ -2270,7 +2279,7 @@ function setTab(t){TAB=t;document.querySelectorAll('.s-item').forEach(b=>b.class
  $('pg-'+t).classList.add('on');
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,pipe:loadPipe,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
-   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,agent:agLoad,qa:qaLoad,run:runLoad,onboard:loadOnboard,auto:loadAuto,mem:memLoad,audit:auditLoad,inbox:inboxLoad}[t]||(()=>{}))()}
+   calt:caltLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,taskhub:loadHub,agent:agLoad,qa:qaLoad,run:runLoad,onboard:loadOnboard,auto:loadAuto,mem:memLoad,audit:auditLoad,inbox:inboxLoad}[t]||(()=>{}))()}
 /* ---- 阅读器 + 正文编辑器 + 改动对照（P2-1）----
    此前阅读器全只读：AI 出稿后人只能「通过/打回重跑」，改一个词都要回 CMS。
    编辑与门禁强绑定——保存即重跑四道门禁，BLOCK 不给「可发布」。 */
@@ -2475,6 +2484,7 @@ function homePulse(){
   const enabled=(pbs||[]).filter(x=>x.enabled).length;
   const waitB=ts.filter(t=>t.dry_run&&t.status==='done'&&t.stats&&t.stats.done===0&&t.stats.skipped>0);
   const open=ov.open_tasks||0;
+  const nh=$('nav-hub');if(nh){const n=waitB.length+runB;nh.textContent=n||'';nh.style.display=n?'':'none'}
   $('home-pulse').innerHTML=[
    ['正在跑',runB+inflight,'批量 '+runB+' · 管线 '+inflight,"setTab('batch')",''],
    ['自动托管',enabled+' 个剧本','含每日 08:00 内容管线',"setTab('auto')",''],
@@ -2500,6 +2510,58 @@ function homeJumpConfirm(){const el=$('home-confirm');if(el)el.scrollIntoView({b
 function gscDecayBatch(ev){if(ev)ev.stopPropagation();if(!confirm('把 GSC 里高曝光低 CTR 的主站页（最多 10 页）导出源稿并建改稿预演批？'))return;
  api('api/gsc/decay_batch',{limit:10}).then(r=>{if(r.error)return toast(r.error,'bad');
   toast('已建预演批 '+r.id+'（'+r.total+' 页，不写库）','ok');if((r.pages||[]).length)console.log('GSC 命中页',r.pages);setTab('batch');setTimeout(()=>btDetail(r.id),500)}).catch(e=>toast('失败：'+e,'bad'))}
+/* ---- 任务中心：后台所有执行任务的统一视图 ---- */
+let HUB_F='all',HUB_TMR=null,HUB_B=[],HUB_R=[];
+function loadHub(){if(HUB_TMR)clearInterval(HUB_TMR);hubLoad();HUB_TMR=setInterval(()=>{if(TAB==='taskhub')hubLoad(true)},30000)}
+function hubLoad(silent){Promise.all([api('api/batch/list'),api('api/runs')]).then(r=>{
+  HUB_B=Array.isArray(r[0])?r[0]:((r[0]&&r[0].tasks)||[]);
+  HUB_R=Array.isArray(r[1])?r[1]:((r[1]&&r[1].runs)||[]);
+  hubRender();const nh=$('nav-hub');if(nh){const n=HUB_B.filter(t=>(t.dry_run&&t.status==='done'&&t.stats&&t.stats.done===0&&t.stats.skipped>0)||t.status==='running'||t.status==='queued').length;nh.textContent=n||'';nh.style.display=n?'':'none'}
+ }).catch(()=>{})}
+function hubGrp(t){return (t.dry_run&&t.status==='done'&&t.stats&&t.stats.done===0&&t.stats.skipped>0)?'confirm':(t.status==='running'||t.status==='queued')?'run':(t.status==='failed'||(t.stats&&t.stats.failed>0))?'fail':t.status==='paused'?'pause':'done'}
+function hubAct(id,act,msg){api('api/batch/action',{id:id,action:act}).then(r=>{if(r.error)return toast(r.error,'bad');toast(msg||'已执行 '+act,'ok');hubLoad(true)}).catch(e=>toast('失败：'+e,'bad'))}
+function hubOpen(id){setTab('batch');setTimeout(()=>btDetail(id),400)}
+function hubRender(){
+ const G={confirm:'需我确认',run:'执行中',pause:'已暂停',fail:'失败',done:'已完成'};
+ const cnt={};HUB_B.forEach(t=>{const g=hubGrp(t);cnt[g]=(cnt[g]||0)+1});
+ cnt.all=HUB_B.length;
+ $('hub-filter').innerHTML=[['all','全部'],['confirm','需我确认'],['run','执行中'],['pause','已暂停'],['fail','失败'],['done','已完成']]
+  .map(([k,l])=>`<span class="chip ${HUB_F===k?'on':''}" onclick="HUB_F='${k}';hubRender()">${l}${cnt[k]?' · '+cnt[k]:''}</span>`).join('');
+ const list=HUB_B.filter(t=>HUB_F==='all'||hubGrp(t)===HUB_F)
+  .sort((a,b)=>{const o={confirm:0,run:1,pause:2,fail:3,done:4};return o[hubGrp(a)]-o[hubGrp(b)]||(b.created||'').localeCompare(a.created||'')});
+ const rows=list.map(t=>{const g=hubGrp(t);const s=t.stats||{};const pct=s.total?Math.round((s.done+s.skipped+s.failed)/s.total*100):0;
+  const badge=g==='confirm'?'<span class="badge" style="background:var(--warn,#e6a23c)">预演通过·待确认</span>'
+   :`<span class="badge ${g==='done'?'pipe':(g==='fail'?'':'dist')}" style="${g==='done'?'background:var(--ok)':(g==='fail'?'background:var(--bad)':'')}">${esc(btStatus(t.status))}</span>`;
+  const acts=[g==='confirm'?'<button class="mini" style="background:var(--accent);color:#fff" onclick="hubAct(\''+esc(t.id)+'\',\'go_real\',\'已转真实执行\')">▶ 确认执行</button>':'',
+   t.status==='running'||t.status==='queued'?'<button class="mini" onclick="hubAct(\''+esc(t.id)+'\',\'pause\',\'已暂停\')">⏸ 暂停</button>':'',
+   t.status==='paused'?'<button class="mini" onclick="hubAct(\''+esc(t.id)+'\',\'resume\',\'已继续\')">▶ 继续</button>':'',
+   s.failed?'<button class="mini" onclick="hubAct(\''+esc(t.id)+'\',\'retry_failed\',\'已重试失败项\')">↻ 重试失败</button>':'',
+   !['done','cancelled'].includes(t.status)?'<button class="mini" onclick="hubAct(\''+esc(t.id)+'\',\'cancel\',\'已取消\')">✕ 取消</button>':'',
+   '<button class="mini" onclick="hubOpen(\''+esc(t.id)+'\')">详情</button>'].filter(Boolean).join(' ');
+  return `<tr><td><b style="font-size:12.5px">${esc(t.title||t.id)}</b><div class="mut" style="font-size:10.5px">${esc(t.id)}${t.dry_run?' · 预演（不写库）':''}</div></td>
+   <td><span class="badge dist">${esc(btType(t.type))}</span></td>
+   <td style="min-width:120px"><div class="mut tnum" style="font-size:11px">${s.done||0} done · ${s.skipped||0} skip · ${s.failed||0} fail</div><div style="height:4px;background:var(--border);border-radius:2px;margin-top:4px"><div style="height:4px;border-radius:2px;background:var(--accent);width:${pct}%"></div></div></td>
+   <td>${badge}</td><td class="mut" style="font-size:11px">${esc(t.created||'')}</td><td style="white-space:nowrap">${acts}</td></tr>`}).join('');
+ const runs=HUB_R.filter(r=>r.kind==='playbook'||r.playbook).slice(0,5);
+ $('hub-body').innerHTML=
+  '<div class="card" style="margin-bottom:14px"><div class="card-head"><h3>执行任务 '+list.length+' 个</h3></div>'
+  +(list.length?'<table><tr><th>任务</th><th>类型</th><th>进度</th><th>状态</th><th>创建</th><th>操作</th></tr>'+rows+'</table>'
+    :emptyBox('✅','该筛选下暂无任务','看全部',"HUB_F='all';hubRender()"))+'</div>'
+  +'<div class="card"><div class="card-head"><h3>剧本执行记录（自动托管）</h3><button class="more" onclick="setTab(&quot;auto&quot;)">全部 →</button></div>'
+  +(runs.length?'<table><tr><th>执行</th><th>剧本</th><th>状态</th><th>创建</th><th></th></tr>'+runs.map(r=>`<tr><td class="mut" style="font-size:11px">${esc(r.id)}</td><td>${esc(r.title||'')}</td><td><span class="badge ${r.status==='done'?'pipe':''}" style="${r.status==='done'?'background:var(--ok)':(r.status==='failed'?'background:var(--bad)':'')}">${esc(r.status==='done'?'已完成':r.status==='failed'?'失败':'执行中')}</span></td><td class="mut" style="font-size:11px">${esc(r.created||'')}</td><td><button class="mini" onclick="setTab('run');setTimeout(()=>runDetail('${esc(r.id)}'),600)">画布 →</button></td></tr>`).join('')+'</table>'
+    :emptyBox('📘','暂无剧本执行记录','去自动化',"setTab('auto')"))+'</div>';
+}
+function hubBatchMini(){api('api/batch/list').then(ts=>{
+ const el=$('task-batches');if(!el)return;
+ const show=(Array.isArray(ts)?ts:[]).slice(0,6);
+ el.innerHTML=show.length?'<table><tr><th>任务</th><th>状态</th><th>进度</th><th></th></tr>'+show.map(t=>{const s=t.stats||{};
+  const pct=s.total?Math.round((s.done+s.skipped+s.failed)/s.total*100):0;
+  const g=hubGrp(t);
+  return `<tr><td><b style="font-size:12px">${esc(t.title||t.id)}</b></td>
+   <td>${g==='confirm'?'<span class="badge" style="background:var(--warn,#e6a23c)">待确认</span>':`<span class="badge ${g==='done'?'pipe':''}" style="${g==='done'?'background:var(--ok)':''}">${esc(btStatus(t.status))}</span>`}</td>
+   <td class="mut tnum" style="font-size:11px">${pct}%</td>
+   <td><button class="mini" onclick="hubOpen('${esc(t.id)}')">详情</button></td></tr>`}).join('')+'</table>'
+  :emptyBox('📭','暂无批量任务','去任务中心',"setTab('taskhub')")}).catch(()=>{})}
 
 /* ---- 任务看板（Trello 式：拖拽跨列 + 卡片编辑 + 日历关联 + 归属人过滤）---- */
 let TM_ID=null,TASK_MINE=false;
@@ -2507,7 +2569,7 @@ function taskFilterRender(){$('task-filter').innerHTML=[
  ['全部任务',false],['我的任务',true]].map(([t,v])=>
  `<button class="chip ${TASK_MINE===v?'on':''}" style="border-radius:12px" onclick="TASK_MINE=${v};loadTasks()">${t}</button>`).join('')}
 let DRAGGING=false, dragId=null;
-function loadTasks(){if(DRAGGING)return;taskFilterRender();api('api/tasks').then(t=>{
+function loadTasks(){hubBatchMini();if(DRAGGING)return;taskFilterRender();api('api/tasks').then(t=>{
  const me=window.__ME||'';
  const all=t.manual||[];__TASKS_CACHE=all;
  const m=TASK_MINE?all.filter(x=>(x.assignee||'').trim()===me&&me):all;
