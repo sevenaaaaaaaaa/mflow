@@ -32,6 +32,34 @@ CONTAINER_TAGS = {"div", "section", "header", "footer", "nav", "ul", "ol",
 MEDIA_TAGS = {"svg", "canvas", "iframe", "video", "button", "input",
               "select", "textarea", "marquee", "blockquote", "a", "span"}
 
+# 交互区块：内部靠 lovart-replica.js 以 data-lp-section / aria-* / data-state /
+# role 等语义属性驱动（对比滑块、FAQ 手风琴、tabs/轮播、对话、锚点）。
+# 拆成容器树会丢这些属性、JS 找不到目标 → 全部失效。故此类区块在忠实模式下
+# 保持整区块单个 HTML 微件（原样 DOM + 全属性），不做容器化。
+INTERACTIVE_SECTIONS = {
+    "comparison-before-after",   # 对比滑块（拖动）
+    "faq",                       # FAQ 手风琴
+    "capability-tabs",           # 多 tab 切换/轮播
+    "workflow-vertical",         # howto/workflow 折叠展开
+    "workflow-horizontal",
+    "comparison-table",          # 对比表（含折叠/高亮）
+    "prompt-launcher",           # 对话式启动器（可互动输入）
+    "hero-cinematic",            # 含对话面板/轮播
+    "hero-journey",              # 含步骤轮播
+    "media-marquee",             # 跑马灯（拖动/自动）
+    "showcase-stacked",          # 层叠轮播
+    "showcase-horizontal",       # 横向轮播（拖拽）
+    "canvas-wall",               # 画布墙（拖拽）
+    "logo-loop",                 # logo 循环（自动轮播）
+    "testimonial",               # 评价轮播
+    "pricing-block",             # 价格区（月/年切换）
+}
+
+
+def is_interactive_section(html):
+    m = re.search(r'data-lp-section="([^"]+)"', html or "")
+    return (m.group(1) in INTERACTIVE_SECTIONS) if m else False
+
 
 def classes_of(node):
     return " ".join(node.get("class", []))
@@ -102,7 +130,20 @@ def convert_tag(node, ids, depth=0):
 
 
 def convert_section(html, ids):
-    """区块 HTML → 根容器（携带 .lr.dark 环境层类）。"""
+    """区块 HTML → 根容器（携带 .lr.dark 环境层类）。
+
+    交互区块（data-lp-section ∈ INTERACTIVE_SECTIONS）整区块保留为 HTML 微件，
+    完整保留 data-lp-section/aria-*/data-state/role 等语义属性，让
+    lovart-replica.js 能正常初始化；外层仅套一个 .lr-faithful 根容器承接镜像 CSS。
+    结构区块照常容器化（像素级排版），因其不依赖 JS 属性。
+    """
+    if is_interactive_section(html):
+        root_settings = {"content_width": "full", "css_classes": "lr-faithful"}
+        widget = N.widget(ids, "html", {"html": html}, "Interactive section")
+        return {
+            "id": ids.next(), "elType": "container", "settings": root_settings,
+            "elements": [widget], "isInner": False,
+        }
     soup = BeautifulSoup(html, "html.parser")
     wrapper = soup.find(True)
     root_classes = classes_of(wrapper)
