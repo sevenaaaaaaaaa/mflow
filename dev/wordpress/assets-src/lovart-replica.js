@@ -502,20 +502,42 @@ window.LR_COMPARE = {
      LR_FAQ_ANSWERS 提供按页面 slug 定制的答案，initFaqFill 在检测到手风琴时
      按序把答案填入对应 panel（保留原 DOM 结构与开闭交互）。 */
   function pageSlug() {
-    var m = location.pathname.match(/replica-(?:solution-)?([a-z0-9-]+)\/?$/i);
-    return m ? m[1] : null;
+    // 支持 17 页（replica- / replica-solution-）与 demo 页（lr-demo-native- / lr-demo-faithful-）
+    var m = location.pathname.match(/(?:replica-(?:solution-)?|lr-demo-(?:native|faithful)-)([a-z0-9-]+)\/?$/i);
+    var slug = m ? m[1] : null;
+    if (!slug) return null;
+    // demo 页短别名 → 定制内容键
+    if (window.LR_FAQ_ANSWERS && window.LR_FAQ_ANSWERS[slug]) return slug;
+    var ALIAS = {
+      "fitness": "ai-design-for-fitness-wellness-hub",
+      "wellness": "ai-design-for-fitness-wellness-hub",
+      "small-biz": "ai-design-for-small-business-hub",
+      "small-business": "ai-design-for-small-business-hub",
+      "shopify": "ai-design-solution-for-shopify",
+      "saas": "ai-design-solution-for-saas",
+      "agencies": "ai-design-solution-for-agencies",
+      "creators": "ai-design-solution-for-creators",
+      "marketing-teams": "ai-design-solution-for-marketing-teams",
+      "nonprofits": "ai-design-solution-for-nonprofits",
+      "business-owners": "good-design-for-business-owners",
+      "marketers": "good-design-for-marketers"
+    };
+    return ALIAS[slug] || slug;
   }
   function initFaqFill(root) {
     var answers = (window.LR_FAQ_ANSWERS || {})[pageSlug()];
     if (!answers || !answers.length) return;
-    var sec = q('[data-lp-section="faq"]', root);
+    // faithful 版用 data-lp-section 标记；native 微件版用 lr-native-faq 容器类
+    var sec = q('[data-lp-section="faq"]', root) || q(".lr-native-faq", root);
     if (!sec || sec.dataset.lovartFaqFill) return;
     var panels = qa('[role="region"]', sec);
     if (!panels.length) return;
     sec.dataset.lovartFaqFill = "1";
     panels.forEach(function (panel, i) {
       if (i >= answers.length) return;
-      if ((panel.textContent || "").trim().length > 0) return; // 已有内容则不动
+      var isPlaceholder = /every word stays editable/i.test(panel.textContent || "");
+      if (!isPlaceholder && (panel.textContent || "").trim().length > 0) return; // 已有真实内容则不动
+      panel.textContent = ""; // 清掉占位答案
       var body = document.createElement("div");
       body.className = "lr-faq-answer pb-4 font-sans text-[14px] leading-[1.65] text-text-secondary";
       body.textContent = answers[i];
@@ -531,7 +553,7 @@ window.LR_COMPARE = {
   function initCompareFill(root) {
     var data = (window.LR_COMPARE || {})[pageSlug()];
     if (!data || !data.rows || !data.rows.length) return;
-    var sec = q('[data-lp-section="comparison-table"]', root);
+    var sec = q('[data-lp-section="comparison-table"]', root) || q(".lr-native-comparison-table", root);
     if (!sec || sec.dataset.lovartCompareFill) return;
     var rows = qa("tbody tr", sec);
     if (!rows.length) return;

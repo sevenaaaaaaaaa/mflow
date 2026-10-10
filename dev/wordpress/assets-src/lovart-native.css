@@ -213,3 +213,9 @@
   display: inline-flex !important;
 }
 .lr [data-lp-section="pricing-block"] .bg-lo-special-white { display: none !important; }
+
+/* v15: demo/native 页隐藏 WordPress 主题 header（白条来源）——
+   17 页由主题显示条件已隐藏，手工新建页面未覆盖到该条件；此处统一兜底。
+   native.css 仅由 snippet 注入到复刻页与 demo 页，不影响站内其它页面 */
+header.elementor-location-header { display: none !important; }
+body.admin-bar header.elementor-location-header + * { margin-top: 0 !important; }
