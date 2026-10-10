@@ -287,6 +287,7 @@ def llm_chat(messages, profile="default", max_tokens=4000, timeout=180, project=
             m = re.search(r"主题：(.+?)。", prompt)
             return demo_draft("blog", "zh", m.group(1) if m else "工作流演示")
         raise RuntimeError(f"LLM 未配置：provider={pr['provider']} 缺 base/key（去 设置 页填写，或先在引导页导入 Demo 数据体验演示模式）")
+    budget_gate()
     req = json.dumps({"model": model, "messages": messages,
                       "temperature": 0.7, "max_tokens": max_tokens}).encode()
     import urllib.request
@@ -360,6 +361,7 @@ def llm_chat_full(messages, profile="default", max_tokens=4000, timeout=180, pro
             base, key, model = ov["base"].rstrip("/"), ov["key"], (ov.get("model") or model)
     if not base or not key:
         raise RuntimeError("LLM 未配置（geo 探测需要真实引擎，不走 demo 回退）")
+    budget_gate()
     req = json.dumps({"model": model, "messages": messages,
                       "temperature": temperature, "max_tokens": max_tokens}).encode()
     import urllib.request
@@ -423,6 +425,261 @@ def email_cfg():
                                   "sender": "mflow@nownexts.com", "tls": "sendmail",
                                   "recipients": {}, "default_to": ""})
 
+
+# ---- 运营约束：日预算 / 工作日 / 夜间窗口 / 日报 ----
+BUDGET_FILE = RUN_DIR / "budget.json"
+HOLIDAYS_FILE = RUN_DIR / "holidays.json"
+PRICES_FILE = RUN_DIR / "llm-prices.json"
+_BUDGET_ALERT_DATE = {"d": ""}
+
+
+def budget_cfg():
+    return read_json(BUDGET_FILE, {"daily_limit": 5.0, "override": {}})
+
+
+def llm_prices():
+    """每百万 token 价格（元），可由 run/llm-prices.json 覆盖。"""
+    d = read_json(PRICES_FILE, {})
+    d.setdefault("deepseek-chat", {"in": 2.0, "out": 8.0})
+    d.setdefault("deepseek-reasoner", {"in": 4.0, "out": 16.0})
+    return d
+
+
+def holidays_set():
+    return set(read_json(HOLIDAYS_FILE, [
+        "2026-01-01", "2026-01-02", "2026-01-03",
+        "2026-02-15", "2026-02-16", "2026-02-17", "2026-02-18", "2026-02-19", "2026-02-20", "2026-02-21",
+        "2026-04-04", "2026-04-05", "2026-04-06",
+        "2026-05-01", "2026-05-02", "2026-05-03", "2026-05-04", "2026-05-05",
+        "2026-06-19", "2026-06-20", "2026-06-21",
+        "2026-09-25", "2026-09-26", "2026-09-27",
+        "2026-10-01", "2026-10-02", "2026-10-03", "2026-10-04",
+        "2026-10-05", "2026-10-06", "2026-10-07", "2026-10-08"]))
+
+
+def is_workday(dt=None):
+    dt = dt or datetime.now()
+    return dt.weekday() < 5 and dt.strftime("%Y-%m-%d") not in holidays_set()
+
+
+def usage_money_stats(day=None):
+    """按日/小时聚合 token 与费用（元）。价格表可覆盖。"""
+    day = day or datetime.now().strftime("%Y-%m-%d")
+    prices = llm_prices()
+    out = {"tokens": 0, "cost": 0.0, "hourly": {}, "profiles": {}, "daily": {}}
+    if USAGE_FILE.exists():
+        for ln in USAGE_FILE.read_text(errors="ignore").strip().split("\n"):
+            try:
+                r = json.loads(ln)
+            except Exception:
+                continue
+            ts = str(r.get("ts") or "")
+            d0, h = ts[:10], ts[11:13]
+            try:
+                pr = prices.get(str(r.get("model") or "default"), {})
+                cost = (r.get("prompt_tokens", 0) / 1e6 * float(pr.get("in", 2.0))
+                        + r.get("completion_tokens", 0) / 1e6 * float(pr.get("out", 8.0)))
+            except Exception:
+                cost = 0.0
+            if d0 == day:
+                out["tokens"] += r.get("total_tokens", 0) or 0
+                out["cost"] += cost
+                if h:
+                    out["hourly"][h] = round(out["hourly"].get(h, 0) + cost, 4)
+                p = str(r.get("profile") or "default")
+                out["profiles"][p] = round(out["profiles"].get(p, 0) + cost, 4)
+            dd = out["daily"].setdefault(d0, {"tokens": 0, "cost": 0.0})
+            dd["tokens"] += r.get("total_tokens", 0) or 0
+            dd["cost"] += cost
+    out["cost"] = round(out["cost"], 4)
+    for k in out["daily"]:
+        out["daily"][k]["cost"] = round(out["daily"][k]["cost"], 4)
+    return out
+
+
+def budget_limit(day=None):
+    day = day or datetime.now().strftime("%Y-%m-%d")
+    cfg = budget_cfg()
+    ov = cfg.get("override") or {}
+    if ov.get("date") == day and ov.get("limit"):
+        return float(ov["limit"])
+    return float(cfg.get("daily_limit") or 5.0)
+
+
+def admin_emails():
+    cfg = email_cfg()
+    out = [cfg["default_to"]] if cfg.get("default_to") else []
+    for u in read_json(AUTH_FILE, []):
+        if (u.get("role") == "admin") and u.get("email"):
+            out.append(u["email"])
+    return sorted(set(x for x in out if x))
+
+
+def budget_alert_once(spent, limit):
+    """超预算提醒：每自然日最多一次（邮件 + 飞书）。"""
+    global _BUDGET_ALERT_DATE
+    today = datetime.now().strftime("%Y-%m-%d")
+    if _BUDGET_ALERT_DATE.get("d") == today:
+        return
+    _BUDGET_ALERT_DATE["d"] = today
+    msg = (f"今日 LLM 消耗 ¥{spent:.2f} 已达/超过预算 ¥{limit:.2f}，后续 LLM 调用将被拒绝。\n"
+           "如需继续，请在后台首页「运行与消耗」单日加预算（次日自动回调）。")
+    try:
+        notify_send("MFlow · 日预算告警", msg)
+    except Exception:
+        pass
+    for to in admin_emails():
+        try:
+            email_send(to, f"[MFlow] 日预算告警 ¥{spent:.2f}/¥{limit:.2f}", msg)
+        except Exception:
+            pass
+
+
+def budget_gate():
+    """LLM 调用前的预算闸：超限抛错（批量项以失败落账，提醒邮件每自然日最多一次）。"""
+    lim = budget_limit()
+    if not lim:
+        return
+    spent = usage_money_stats()["cost"]
+    if spent >= lim:
+        budget_alert_once(spent, lim)
+        raise RuntimeError(f"已达当日 LLM 预算 ¥{lim:.2f}（已消耗 ¥{spent:.2f}）——"
+                           "管理员可在后台首页单日加预算，次日自动回调")
+
+
+def ops_pulse():
+    """首页「运行与消耗」数据。"""
+    st = usage_money_stats()
+    lim = budget_limit()
+    running = [{"id": t["id"], "title": t.get("title") or t["id"], "kind": "batch",
+                "status": t.get("status"), "dry_run": t.get("dry_run")}
+               for t in batch_list() if t.get("status") in ("running", "queued")]
+    running += [{"id": r["id"], "title": r.get("title") or r["id"], "kind": "playbook",
+                 "status": r.get("status"), "dry_run": False}
+                for r in run_list(20) if r.get("status") in ("running", "queued")]
+    daily = sorted((st.get("daily") or {}).items())[-14:]
+    wait = sum(1 for t in batch_list()
+               if t.get("type") != "qa" and t.get("dry_run") and t.get("status") == "done"
+               and (t.get("stats") or {}).get("done") == 0 and (t.get("stats") or {}).get("skipped", 0) > 0)
+    return {"running": running, "wait_confirm": wait,
+            "today": {"tokens": st["tokens"], "cost": round(st["cost"], 2), "limit": lim,
+                      "profiles": st["profiles"], "is_workday": is_workday()},
+            "mail_to": admin_emails(),
+            "mail_tip": "每天 08:30 晨报 / 18:30 晚报自动发送（含执行、流量、转化、任务、token 消耗）",
+            "hourly": sorted((st.get("hourly") or {}).items()),
+            "daily": [{"date": d, **v} for d, v in daily]}
+
+
+def ops_report_email(morning=True):
+    """清晨/傍晚日报：执行、流量、转化、任务、token 消耗。"""
+    st = usage_money_stats()
+    lim = budget_limit()
+    today = datetime.now().strftime("%Y-%m-%d")
+    bl = batch_list()
+    my = [t for t in bl if (t.get("created") or "").startswith(today)]
+    done_n = sum(1 for t in my if t.get("status") == "done")
+    fail_n = sum(1 for t in my if t.get("status") == "failed")
+    running_b = [t for t in bl if t.get("status") in ("running", "queued")]
+    running_p = [r for r in run_list(40) if r.get("status") in ("running", "queued")]
+    wait = [t for t in bl if t.get("dry_run") and t.get("status") == "done"
+            and (t.get("stats") or {}).get("done") == 0 and (t.get("stats") or {}).get("skipped", 0) > 0]
+    gsc = read_json(RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json", {})
+    pages = ((gsc.get("pages") or {}).get("top20_pages")) or []
+    g_clicks = sum((p.get("clicks") or 0) for p in pages)
+    g_impr = sum((p.get("impr") or 0) for p in pages)
+    top3 = sorted(pages, key=lambda p: -(p.get("clicks") or 0))[:3]
+    orders = [o for o in pay_orders() if (o.get("created") or "").startswith(today)]
+    conv_n = sum(1 for o in orders if o.get("status") in ("paid", "delivered"))
+    conv_amt = sum(float(o.get("amount") or 0) for o in orders if o.get("status") in ("paid", "delivered"))
+    L = [f"MFlow {'晨报' if morning else '晚报'} · {today} {datetime.now().strftime('%H:%M')}", ""]
+    L.append("【正在执行】")
+    L.append(f"批量任务 {len(running_b)} 个")
+    for t in running_b[:5]:
+        L.append("  · " + (t.get("title") or t.get("id") or ""))
+    L.append(f"剧本执行 {len(running_p)} 个")
+    for r in running_p[:5]:
+        L.append("  · " + (r.get("title") or r.get("id") or ""))
+    L.append("")
+    L.append(f"【今日任务】新建 {len(my)} 个 · 完成 {done_n} · 失败 {fail_n} · 待确认 {len(wait)} 个")
+    for t in my[:8]:
+        L.append(f"  · [{t.get('status')}] {(t.get('title') or t.get('id') or '')}")
+    for t in wait[:5]:
+        L.append(f"  · ⏳ 待确认：{(t.get('title') or t.get('id') or '')}（{((t.get('stats') or {}).get('skipped') or 0)} 项）")
+    L.append("")
+    L.append(f"【Token 消耗】今日 {st['tokens']:,} tokens · ¥{st['cost']:.2f} / 预算 ¥{lim:.2f}"
+             + (f"（单日加额中）" if budget_cfg().get("override", {}).get("date") == today else ""))
+    for p, c in sorted((st.get("profiles") or {}).items(), key=lambda kv: -kv[1]):
+        L.append(f"  · {p}: ¥{c:.2f}")
+    L.append("")
+    L.append(f"【流量（GSC Top20 · 数据日期 {gsc.get('_date') or '—'}）】点击 {g_clicks:,} · 曝光 {g_impr:,}")
+    for p in top3:
+        L.append(f"  · {p.get('clicks', 0)} clicks · {p.get('impr', 0)} impr · {p.get('url', '')[:70]}")
+    L.append("")
+    L.append(f"【转化】今日订单 {len(orders)} 笔 · 成交 {conv_n} 笔 · 金额 {conv_amt:.2f}")
+    for o in orders[:5]:
+        L.append(f"  · [{o.get('status')}] {o.get('product_id')} ¥{o.get('amount')} @ {o.get('created', '')[:16]}")
+    if not is_workday():
+        L.append("")
+        L.append("（今日为周末/节假日，定时任务已停跑；本邮件照常发送）")
+    subject = f"[MFlow] {'晨报' if morning else '晚报'} {today} · 任务 {len(my)} · 消耗 ¥{st['cost']:.2f}"
+    body = "\n".join(L)
+    sent = []
+    for to in admin_emails():
+        try:
+            email_send(to, subject, body)
+            sent.append(to)
+        except Exception as e:
+            print(f"[ops-report] email {to} failed: {e}", file=sys.stderr)
+    try:
+        notify_send(subject, body[:1500])
+    except Exception:
+        pass
+    return {"ok": bool(sent), "sent": sent, "subject": subject}
+
+
+def _ops_report_triggers():
+    """晨报 08:30 / 晚报 18:30；每自然日各一次，周末节假日照发。"""
+    now = datetime.now()
+    for morning, hhmm in ((True, "08:30"), (False, "18:30")):
+        hh, mm = hhmm.split(":")
+        tgt = now.replace(hour=int(hh), minute=int(mm), second=0, microsecond=0)
+        if now < tgt:
+            continue
+        flag = RUN_DIR / f".ops-report-{'am' if morning else 'pm'}-{now:%Y%m%d}.flag"
+        if flag.exists():
+            continue
+        flag.write_text("1")
+        try:
+            ops_report_email(morning=morning)
+        except Exception as e:
+            print(f"[ops-report] send failed: {e}", file=sys.stderr)
+
+
+def night_window_enforce():
+    """06:00 截止：暂停仍在跑的非重要批量任务（每自然日最多执行一次）。"""
+    now = datetime.now()
+    if now.hour != 6 or now.minute >= 10:
+        return
+    flag = RUN_DIR / f".cutoff-{now:%Y%m%d}.flag"
+    if flag.exists():
+        return
+    stopped = []
+    for f2 in BATCH_DIR.glob("batch-*.json"):
+        t = read_json(f2, {})
+        if not t or t.get("status") not in ("running", "queued"):
+            continue
+        if t.get("important") or (t.get("params") or {}).get("important"):
+            continue
+        t["status"] = "paused"
+        _batch_log(t, "到达 06:00 夜间窗口截止，已自动暂停（非重要任务）")
+        batch_save(t)
+        stopped.append(t["id"])
+    if stopped:
+        try:
+            notify_send("MFlow · 夜间窗口截止", "已暂停非重要任务：" + "、".join(stopped))
+        except Exception:
+            pass
+    flag.write_text("1")
 
 def user_email(username):
     cfg = email_cfg()
@@ -8741,6 +8998,17 @@ def playbook_tick():
     if blocked:
         print("[playbook] 熔断中，跳过本轮定时触发", file=sys.stderr)
         return
+    try:
+        _ops_report_triggers()
+    except Exception as _e:
+        print(f"[ops-report] {_e}", file=sys.stderr)
+    if not is_workday():
+        print("[playbook] 周末/节假日：定时任务停跑（日报照发）", file=sys.stderr)
+        return
+    try:
+        night_window_enforce()
+    except Exception as _e:
+        print(f"[night-window] {_e}", file=sys.stderr)
     now = time.time()
     for pb in playbooks_list():
         try:
@@ -8757,6 +9025,8 @@ def playbook_tick():
                 last_ts = 0
             typ = sc.get("every", "daily")
             at = sc.get("at", "08:30")
+            if not pb.get("important"):
+                at = "00:00"  # 非重要任务统一凌晨执行，06:00 强制截止
             hh, mm = (at.split(":") + ["0"])[:2]
             today = datetime.now().strftime("%Y-%m-%d")
             try:
@@ -9968,6 +10238,8 @@ class Handler(BaseHTTPRequestHandler):
                         {"name": s, "path": sk[s]["path"], "desc": sk[s]["desc"]}
                         for s in w["skills"] if s in sk]})
                 return self._send(200, wfs)
+            if parsed.path == "/api/ops/pulse":
+                return self._send(200, ops_pulse())
             if parsed.path == "/api/calendar/board":
                 return self._send(200, calendar_board())
             if parsed.path == "/api/calendar":
@@ -10185,7 +10457,7 @@ class Handler(BaseHTTPRequestHandler):
                       "/api/pay/order/redeliver", "/api/pay/order/cancel", "/api/pay/voucher/save",
                       "/api/pay/voucher/delete", "/api/pay/config/save", "/api/pay/verify",
                       "/api/publish/sanity", "/api/publish/wordpress", "/api/library/sync",
-                      "/api/gsc/decay_batch", "/api/calendar/date", "/api/dist/reschedule",
+                      "/api/gsc/decay_batch", "/api/calendar/date", "/api/dist/reschedule", "/api/budget/override",
                       "/api/assets/scan", "/api/assets/plan", "/api/assets/apply",
                       "/api/batch/create", "/api/batch/action",
                       "/api/agent/chat", "/api/agent/execute", "/api/agent/run", "/api/agent/profile",
@@ -10584,6 +10856,21 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(400, {"error": why})
                 r = publish_wordpress(path, item_id, str(body.get("title", "")))
                 return self._send(200 if r.get("ok") else 400, r)
+            if self.path == "/api/budget/override":
+                try:
+                    lim = float(body.get("limit", 0))
+                except Exception:
+                    return self._send(400, {"error": "limit 需为数字"})
+                if lim <= 0:
+                    return self._send(400, {"error": "limit 需大于 0"})
+                cfg = budget_cfg()
+                cfg["override"] = {"date": datetime.now().strftime("%Y-%m-%d"), "limit": lim}
+                BUDGET_FILE.write_text(json.dumps(cfg, ensure_ascii=False, indent=1))
+                with open(RUN_DIR / "approvals.log", "a") as _f:
+                    _f.write(f"{datetime.now().isoformat(timespec='seconds')} BUDGET-OVERRIDE "
+                             f"limit={lim} by={self._me()}\n")
+                return self._send(200, {"ok": True, "limit": lim,
+                                        "note": f"今日预算已临时调至 ¥{lim:.2f}，次日自动回调默认值"})
             if self.path == "/api/calendar/date":
                 return self._send(200, calendar_set_date(str(body.get("path", "")), str(body.get("date", ""))))
             if self.path == "/api/dist/reschedule":
