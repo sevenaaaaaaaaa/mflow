@@ -523,6 +523,10 @@ body.sb-open #sb-mask{display:block}
     <div id="start-brief"></div>
     <div id="next-actions"></div>
     <div class="metrics" id="metrics"></div>
+    <div class="card" style="margin-bottom:14px"><div class="card-head"><h3>⚙ 运行与消耗 <span class="mut" id="ops-sum" style="font-size:12px"></span></h3>
+      <div class="row"><button class="mini" id="ops-budget-btn" style="display:none" onclick="opsBudget()">＋ 单日加预算</button>
+      <button class="more" onclick="setTab('taskhub')">任务中心 →</button></div></div>
+      <div id="home-ops" class="mut" style="font-size:12.5px">加载中…</div></div>
     <div id="home-health"></div>
     <div class="ov-grid">
       <div class="card"><div class="card-head"><h3>最新成果 · 点击阅读</h3><button class="more" onclick="setTab('reports')">全部报告 →</button></div>
@@ -1888,6 +1892,7 @@ function pbLoad(){api('api/playbooks').then(d=>{
    <div style="display:flex;align-items:center;gap:8px"><b style="font-size:13px">${esc(pb.icon||'🧭')} ${esc(pb.name)}</b>
     <span class="badge" style="background:${pb.enabled?'var(--ok)':'var(--muted)'}">${pb.enabled?'启用':'停用'}</span>
     <span class="badge dist">${tr(pb.trigger)}</span>
+    <span class="badge" style="background:${pb.important?'var(--accent)':'var(--muted)'};cursor:pointer" onclick="pbImportant('${esc(pb.id)}',${pb.important?'false':'true'})" title="重要任务不受夜间窗口/凌晨时间约束；常规任务统一 00:00 执行、06:00 截止">${pb.important?'⭐ 重要':'🌙 常规'}</span>
     <span class="mut" style="font-size:11px;margin-left:auto">上次 ${esc(pb.last_run||'—')}</span></div>
    <div class="mut" style="font-size:11.5px;margin-top:4px">${esc(pb.desc||'')}</div>
    <div class="mut" style="font-size:11px;margin-top:4px">步骤：${(pb.steps||[]).map(x=>esc(x.name||x.preset||x.type)).join(' → ')}</div>
@@ -1919,6 +1924,7 @@ function pbInstall(id,ev){return withBtn(ev,async()=>{const r=await api('api/pla
 function pbToggle(id,en){const pb=(PB_DATA.playbooks||[]).find(x=>x.id===id);if(!pb)return;
  api('api/playbooks/save',{...pb,enabled:en}).then(()=>pbLoad())}
 function pbDel(id){if(!confirm('删除该剧本？'))return;api('api/playbooks/delete',{id}).then(()=>pbLoad())}
+function pbImportant(id,imp){api('api/playbooks/save',{id:id,important:imp}).then(r=>{if(r.error)return toast(r.error,'bad');toast(imp?'已标记为重要任务（按原时刻执行）':'已设为常规任务（00:00 执行、06:00 截止）','ok');pbLoad()})}
 /* ---- 剧本可视化编辑器 ---- */
 let PB_EDIT=null, PB_DRAG=null, PB_PRESETS=[];
 function pbTplDefault(){return {id:'',name:'新剧本',icon:'🧭',desc:'',dry_run:true,enabled:false,
@@ -2480,7 +2486,7 @@ $('home-timers').innerHTML=esc((o.timers||'').split('\n').filter(l=>/mflow/.test
 
 /* ---- 运营一览：回答「在跑多少/自动多少/等确认多少/去哪看/去哪审/怎么发」---- */
 function homePulse(){
- Promise.all([api('api/batch/list'),api('api/playbooks'),api('api/overview')]).then(r=>{
+ Promise.all([api('api/batch/list'),api('api/playbooks'),api('api/overview'),api('api/ops/pulse')]).then(r=>{
   const ts=Array.isArray(r[0])?r[0]:((r[0]&&r[0].tasks)||[]);
   const pbs=Array.isArray(r[1])?r[1]:((r[1]&&r[1].playbooks)||[]);
   const ov=r[2]||{};
@@ -2510,7 +2516,26 @@ function homePulse(){
    ['跑一次质检','QA 编排 · 预演起步',"setTab('qa')"],
    ['GSC 低 CTR 页改稿','高曝光低点击 · 一键建预演批','gscDecayBatch(event)'],
   ].map(([t2,s,go])=>`<a onclick="${go}"><span class="act-ic ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg></span><span class="qt">${t2}<span class="mut" style="font-size:11px;margin-left:6px">${s}</span></span><span class="qd">前往 →</span></a>`).join('');
+  const ops=r[3]||{};
+  const ol=$('home-ops');if(ol){const tk=ops.today||{};const rb=(ops.running||[]);
+   const hourly=(ops.hourly||[]);const mx=Math.max(0.01,...hourly.map(x=>x[1]));
+   const hb=hourly.map(([h,c])=>`<div class="cb" style="min-width:18px"><span class="vl tnum" style="font-size:9px">${c?'¥'+c.toFixed(2):''}</span><div class="bar" style="width:14px;height:${Math.max(3,c/mx*46)}px;background:var(--accent)"></div><span class="lb">${h}</span></div>`).join('');
+   const daily=(ops.daily||[]);const dmx=Math.max(0.01,...daily.map(x=>x.cost));
+   const db=daily.map(x=>`<div class="cb" style="min-width:24px"><span class="vl tnum" style="font-size:9px">${x.cost?'¥'+x.cost.toFixed(1):''}</span><div class="bar" style="width:18px;height:${Math.max(3,x.cost/dmx*46)}px;background:var(--muted)"></div><span class="lb">${x.date.slice(5)}</span></div>`).join('');
+   const pct=tk.limit?Math.min(100,tk.cost/tk.limit*100):0;
+   ol.innerHTML=`<div style="display:flex;gap:18px;flex-wrap:wrap;align-items:flex-start">
+    <div style="min-width:180px"><b>${rb.length}</b> 个任务正在跑${ops.wait_confirm?` · <b style="color:var(--accent)">${ops.wait_confirm}</b> 个等你确认`:''}
+     <div class="mut" style="font-size:11px;margin-top:3px">${tk.is_workday?'今日工作日，任务照常':'周末/节假日，定时任务已停'}</div></div>
+    <div style="min-width:200px">今日 <b class="tnum">${(tk.tokens||0).toLocaleString()}</b> tokens · <b class="tnum">¥${(tk.cost||0).toFixed(2)}</b> / 预算 ¥${(tk.limit||0).toFixed(2)}
+     <div style="height:6px;background:var(--border);border-radius:3px;margin-top:4px"><div style="height:6px;border-radius:3px;background:${pct>=100?'var(--bad)':'var(--ok)'};width:${pct}%"></div></div></div></div>
+    <div style="margin-top:8px"><div class="mut" style="font-size:10.5px;margin-bottom:2px">今日按小时（元）</div><div class="chart-bars" style="height:64px">${hb||'<span class=mut>今日暂无调用</span>'}</div></div>
+    <div style="margin-top:8px"><div class="mut" style="font-size:10.5px;margin-bottom:2px">近 14 天（元/日）</div><div class="chart-bars" style="height:64px">${db||''}</div></div>`;
+   if(!(ops.mail_to||[]).length)ol.insertAdjacentHTML('beforeend','<div class="mut" style="font-size:11px;margin-top:6px;color:var(--warn,#e6a23c)">✉ 邮件日报未配置收件人——去「设置」页填写邮箱（'+(ops.mail_tip||'')+'）</div>');
+   const btn=$('ops-budget-btn');if(btn)btn.style.display=(window.__ROLE==='admin')?'':'none';}
  }).catch(()=>{})}
+function opsBudget(){const v=prompt('管理员单日加预算（元）：今日生效，次日自动回调默认值。','20');
+ if(v===null)return;const n=parseFloat(v);if(!n||n<=0)return toast('需为正数','bad');
+ api('api/budget/override',{limit:n}).then(r=>{if(r.error)return toast(r.error,'bad');toast(r.note||'已生效','ok');homePulse()})}
 function homeJumpConfirm(){const el=$('home-confirm');if(el)el.scrollIntoView({behavior:'smooth',block:'center'})}
 function gscDecayBatch(ev){if(ev)ev.stopPropagation();if(!confirm('把 GSC 里高曝光低 CTR 的主站页（最多 10 页）导出源稿并建改稿预演批？'))return;
  api('api/gsc/decay_batch',{limit:10}).then(r=>{if(r.error)return toast(r.error,'bad');
