@@ -1,13 +1,82 @@
 # Lovart 复刻项目交接文档（方案 + 进度）
 
 > 交接对象：Claude Code（接续开发）
-> 交接时间：2026-10-10
+> 交接时间：2026-10-10 · **方案变更 2026-10-11（见 §零）**
 > 仓库：`/Users/seveno/MFlow Dev/mflow`（main 分支）
 > 工作目录：`mflow/dev/wordpress/`
 
 ---
 
+## 零、方案变更（2026-10-11）——**先读这一节，它推翻了 §一 和 §八**
+
+### 结论
+
+`widget-html` 整块嵌入是这个项目所有问题的根因，而**不是**需要靠「Native 转换器」慢慢优化的权宜之计。
+Elementor 生态里已经有现成微件覆盖绝大多数模块，而且**全在已安装的插件的免费层里**。
+
+### 三个实测数字
+
+1. **仓库里 1089 个微件实例，840 个是 `widget-html`（77%）。**
+   其余只有 text-editor 108 / heading 75 / button 34 / image 15 / accordion 13 / video 4，全是 Elementor 核心微件。
+   → `widget-html` 只有一个 `html` 字段装整块 DOM 字符串，**不可寻址**。这就是「不能批量改 JSON」
+   「编辑器里不能编辑」「内容只能靠 replica.js 运行时注入」三件事的同一个根因。
+
+2. **装了 7 个 Elementor 插件包，零个微件在用。**
+   Essential Addons / ElementsKit Lite / HT Mega / HT Menu Lite / PowerPack Lite / Royal / UAE / Unlimited Elements
+   —— 全部模板 JSON 里找不到任何一个它们的 widgetType。它们现在纯粹在前台加载 CSS/JS。
+   **§六 第 2 条记的「40+ 主题/插件 CSS 污染」，大概率主要就是它们。**
+   你为此发明了 `_lr_replica` 标记 + `faithful-mirror.css` 去对抗，而对抗的东西有一大半是自己装的、且没用的。
+
+3. **33 个区块里：约 19 个有现成微件，12 个是纯布局（容器 + 核心微件即可），真正要自己做的 1–2 个。**
+   而且真实 17 页只用到 31 种，其中 8 种只用过一次，`prompt-launcher` 和 `showcase-horizontal` 从没用过。
+
+### 确定版映射（全部免费，不用再买插件）
+
+| 模块 | 频次 | 用哪个微件 | 来自 |
+|---|--:|---|---|
+| cta-default | 16× | Call to Action | Essential Addons |
+| faq | 12× | Advanced Accordion | Essential Addons |
+| workflow-vertical / horizontal | 12× | Vertical Timeline | HT Mega |
+| pricing-block | 11× | **Flip Switcher Pricing Table**（自带月/年切换） | HT Mega |
+| capability-tabs | 11× | Advanced Tabs | Essential Addons |
+| testimonial | 9× | Testimonials | Essential Addons |
+| comparison-table | 8× | Advanced Data Table | Essential Addons |
+| review-grid-3col / 4col | 4× | Testimonial Carousel | HT Mega |
+| comparison-before-after | 4× | Image Comparison | HT Mega |
+| stats | 2× | Counter | HT Mega |
+| blog-grid / tool-grid | 2× | Post Grid | Essential Addons |
+| portrait-grid-3/4、canvas-wall | 4× | Filterable Gallery | Essential Addons |
+| logo-loop | 1× | Brand | HT Mega |
+| media-marquee | 1× | Content Ticker / Scroll Image | EA / HT Mega |
+
+EA 收费的那几个（Image Comparison / Counter / Logo Carousel / Content Timeline），**HT Mega 免费全有**。
+主力只用 EA + HT Mega 两个包；其余 5 个可以先全停（反正零使用）。
+
+纯布局的 12 个（5 个 hero 变体、proof-block、feature-detail、showcase ×2、cluster-block-dense、bento ×3）
+用 Elementor 容器 + 核心微件拼，不需要任何插件，天生可编辑、天生可批量改。
+
+### 版本提醒：**不要升 Elementor v4**
+
+线上是 **Elementor Pro 3.35.0，属 v3 线**。
+v4（2026-04）的 Variables / Global Classes 需要升大版本 + 手动开启 Atomic Editor，
+且官方明确：Classes/Variables **不作用于 v3 微件**，Grid/Loop 还不是原子元素。
+**现阶段用 v3 的 Global Colors / Fonts 就够**——它存在 Kit post 里，微件通过 `__globals__`
+引用 `globals/colors?id=...`，本来就可批量改。把 lovart.ai 的色板与字体阶梯灌进去，
+就是「全局主题复刻」该有的形态（而不是 29k 条 `.lr` 作用域规则 + 2.9MB 下载）。
+等模块替换完、页面不再依赖那份巨型 CSS，再在 staging 评估 v4。
+
+### 视觉统一的正确做法
+
+与主站保持视觉统一**没有任何问题，是正确目标**。错的是把还原做在 **DOM 层**而不是 **token 层**。
+抽 lovart.ai 的设计 token（颜色/字号/间距/圆角/阴影）→ 落进 Elementor Global Colors/Fonts
+→ 所有微件引用 token。改一次品牌色全站跟着变，且不跟主题打架、不需要 mirror.css 压制、
+不会被 CDN 坏缓存整页搞崩。
+
+---
 ## 一、项目目标
+
+> ⚠️ **本节的「Faithful / Native 双生产线」框架已于 2026-10-11 废弃，见 §零。**
+> 下文保留作立项背景，不再是执行方案。
 
 在 WordPress（`blogs.lovart.ai`，外部托管，**不在资产服务器上**）复刻 Lovart 官方 17 个落地页，
 并在此之上建立两条可规模化的页面生产线：
@@ -87,6 +156,10 @@
 ---
 
 ## 四、replica.js 运行时行为清单（v15）
+
+> ⚠️ **这张表应当持续变短。** 表里的 `initFaqFill` / `initCompareFill` / `initPricingRender`
+> 是在运行时把内容塞回空壳——模块换成原生微件后要逐个删掉（见 §八 P1）。
+> 剩下的 `initCssHeal` / `initLazyFix` / `initLinkFix` 等是真正的运行时行为，保留。
 
 | 模块 | 作用 |
 |---|---|
@@ -173,30 +246,55 @@ Node 侧 fetch 测外链（页面内跨域 fetch 会 ERR）；`page.screenshot` 
 
 ---
 
-## 八、遗留事项（按优先级）
+## 八、遗留事项（2026-10-11 重排）
 
-### P1 — Native 转换器内容增强（下一阶段主线）
-现状：转换器只把 **FAQ、CTA** 等简单区块转成真原生微件（带 `lr-native-*` 类），
-**hero/bento/stats/pricing 等复杂区块全部 fallback**（widget-html 整块 HTML，前端视觉一致但编辑器内不可逐元素编辑）。
-- 转换报告：`elem-native/conversion-report.json`（17 页 native/fallback 统计）
-- 转换器：`build-elementor-native.py`（区块级 build_hero/build_stats/build_faq/build_cards；
-  HTML 解析用 BeautifulSoup；语义 IR 见 `native-modules/module-map.json`）
-- 验收：转换后区块在 Elementor 编辑器中可编辑 + 前端截图与 faithful 版逐区块对照
-- 批量转换命令：`python3 build-elementor-native.py --src elem-src --out elem-native`
+### ⛔ 已取消：原 P1「Native 转换器内容增强」
 
-### P2 — LPagery 批量生产线
-- 契约：`native-modules/csv-contract.md`（LPagery 单花括号占位符；一行一页；先生草稿后发布）
-- 种子：`lp-lr-native-v1-pro.json` / `lp-lr-native-v1-free.json`（含占位符的 Elementor 模板）
-- 样本：`lp-lr-native-v1-sample.csv`（bakery/saas/wellness 3 行边界样本，含超长文案边界）
-- 待做：用真实行业内容批量生成页（demo 页的 lr_set_replica_flag 流程需并入 LPagery 生成后处理）
+**不要做。** 原计划是把 fallback 的 hero/bento/stats/pricing 逐块转成 Elementor 原生微件。
+但自动转换只能把 HTML 拆成「能点的 div」，**不会凭空长出内容模型**——转完依然没有
+可寻址的字段，CSV 批量线依然无从映射。生态里现成的微件才是答案（见 §零）。
 
-### P3 — 小项
-- 定价卡内 "Hot Models" 模型价格小字表（真站卡内有，目前省略）
-- people-reviews 页无 `.lovart-replica-scope`（另一种导出形态，渲染正常仅结构不一致）
-- replica.js 里 initCssHeal 的 `?r=` nonce 每次刷新变化——观察 CDN 坏缓存轮换情况，稳定后可简化
-- 源 HTML 里 6 页的设计说明文字泄漏已在 DOM 层隐藏，根治可在 export-replica-pages.py 导出时过滤
+`build-elementor-native.py` 与 `elem-native/` 保留作历史记录，不再演进。
 
----
+### P1 — 按频次把 widget-html 换成生态微件（新主线）
+
+工具已就绪：**`migrate-widgets.py`**（见 §十）。顺序按频次，一次一个模块：
+
+```
+cta-default(16×) → faq(12×) → workflow(12×) → pricing-block(11×)
+→ capability-tabs(11×) → testimonial(9×) → comparison-table(8×) → 其余
+```
+
+**每替换一个模块，必须同步删掉 replica.js 里对应的运行时注入**
+（faq → `initFaqFill`，comparison-table → `initCompareFill`，pricing-block → `initPricingRender`）。
+
+> **验收硬指标：`lovart-replica.js` 的行数单调下降。**
+> 现在 803 行。它不降，说明只是换了个壳，内容还在运行时注入 —— 那就没走对。
+
+每替换一轮还要确认：对应的硬编码数据表（`LR_FAQ_ANSWERS` / `LR_COMPARE` / `LR_PRICING`）可以删掉。
+内容应该在 Elementor 里，不在 JS 里。
+
+### P1.5 — 停掉没用的插件包
+
+7 个包零使用。保留 Essential Addons + HT Mega，其余在 staging 先停、截图回归、再上生产。
+预期收益：前台 CSS/JS 大幅减少，`faithful-mirror.css` 这类压制层可能直接不再需要。
+
+### P2 — 建 token 层
+
+抽 lovart.ai 设计 token → Elementor Global Colors / Fonts（v3，立即可用）。
+替换后的原生微件全部引用全局色/字，而不是依赖 `.lr` 作用域规则。
+
+### P3 — LPagery 批量线（依赖 P1）
+
+有了原生微件的具名 settings key，CSV 一列 → 一个字段才真正成立。
+契约 `native-modules/csv-contract.md` 需要按新的微件字段重写。
+
+### P4 — 小项（原 P3 保留）
+
+- 定价卡内 "Hot Models" 小字表
+- people-reviews 页无 `.lovart-replica-scope`
+- `initCssHeal` 的 `?r=` nonce 稳定后可简化
+- 源 HTML 的设计说明泄漏，根治在 `export-replica-pages.py` 导出时过滤
 
 ## 九、环境备忘
 
@@ -206,3 +304,68 @@ Node 侧 fetch 测外链（页面内跨域 fetch 会 ERR）；`page.screenshot` 
 - 用户验收标准（四维）：①功能完整 ②标题文案/图片美观 ③动效完整 ④点击跳转正常
 - git：仓库根 `mflow/`（注意不是 MFlow Dev 根）；commit 风格 `fix(replica): ...`
 - 本机直连 nownexts.com 会 DNS 污染 404，验证走浏览器或 `--resolve`
+
+---
+
+## 十、migrate-widgets.py（widget-html → 原生微件）
+
+### 零猜测原则
+
+脚本**不猜任何插件的 settings key**。你在 Elementor 编辑器里手搭一个目标微件，
+用哨兵文本填两行，导出那段 JSON 当 sample，脚本靠哨兵反查真实字段路径。
+对 EA / HT Mega / 任何第三方包通用，也不会因为键名记错而产出废数据。
+
+**哨兵约定**（手搭 sample 时照填）：
+
+```
+第 1 行标题 → __T1__      第 1 行正文 → __C1__
+第 2 行标题 → __T2__      第 2 行正文 → __C2__
+```
+
+### 用法
+
+```bash
+# 1) 看 sample 被解析成什么（不产出文件）
+python3 migrate-widgets.py --module faq --sample samples/faq-sample.json --inspect
+
+# 2) 预演：报告将替换多少块、内容从哪来
+python3 migrate-widgets.py --module faq --sample samples/faq-sample.json
+
+# 3) 真产出到 elem-migrated/（不碰 elem-src，不碰线上）
+python3 migrate-widgets.py --module faq --sample samples/faq-sample.json --write
+```
+
+产出仍走既有 `lr_elem_import` 流程导入。**脚本不连任何站点。**
+
+### 安全设计
+
+- 默认预演，`--write` 才落盘；只写真替换过的页面（out 目录里的文件 = 已迁移的文件）
+- 数量不一致（问题数 ≠ 答案数）**直接跳过并报原因**，不做截断配对——宁可不迁，不产出错配内容
+- `--write` 后自动自检：哨兵残留 / 原 html 块未清除 / 微件 id 重复 / 重复器 _id 重复 / 空行
+  —— 任一不过即非零退出
+- 每次产出 `migration-report-<module>.md`
+
+### FAQ 模块已验证（2026-10-11）
+
+实测 12 个页面的问题数与 `LR_FAQ_ANSWERS` 的答案数**完全一致**（8/8、6/6、5/5、7/7…），
+按序配对安全。预演结果：**命中 13 页 · 替换 12 块 · 跳过 1 块**
+（跳过的是 `composite-replica-all`，大杂烩页在 LR_FAQ_ANSWERS 里没有对应条目，属正确行为）。
+合计迁移 **76 条问答**，自检全过。
+
+`samples/faq-sample.EXAMPLE.json` 是**测试夹具**，用来验证脚本机制，
+**不是真实的 EA 字段结构**——真跑之前必须用编辑器手搭的真 sample 替换它。
+
+### 扩展到别的模块
+
+在 `MODULES` 字典里加一个抽取器即可：
+
+```python
+def extract_comparison(html, page_file):
+    """返回 [(左, 右), ...] 或 (None, "跳过原因")"""
+    ...
+MODULES["comparison-table"] = extract_comparison
+```
+
+注意内容来源各不相同：FAQ 的问题在 HTML、答案在 `LR_FAQ_ANSWERS`；
+对比表整个在 `LR_COMPARE`；定价整个在 `LR_PRICING`（源 HTML 里是 `animate-pulse` 骨架，
+抓取时未 hydrate，**一个价格数字都没有**）。
