@@ -312,15 +312,18 @@ cta-default(16×) → faq(12×) → workflow(12×) → pricing-block(11×)
 ### 零猜测原则
 
 脚本**不猜任何插件的 settings key**。你在 Elementor 编辑器里手搭一个目标微件，
-用哨兵文本填两行，导出那段 JSON 当 sample，脚本靠哨兵反查真实字段路径。
+用哨兵文本填前两行，导出那段 JSON 当 sample，脚本靠哨兵反查真实字段路径。
 对 EA / HT Mega / 任何第三方包通用，也不会因为键名记错而产出废数据。
 
-**哨兵约定**（手搭 sample 时照填）：
+**哨兵格式**：`__<组><行>_<列>__`
 
 ```
-第 1 行标题 → __T1__      第 1 行正文 → __C1__
-第 2 行标题 → __T2__      第 2 行正文 → __C2__
+__A1_1__  __A1_2__  __A1_3__ …     ← A 组第 1 行的第 1、2、3 列
+__A2_1__  __A2_2__  …              ← A 组第 2 行（填两行才能确认是重复器）
+__B1_1__  …                        ← B 组（第二个重复器，如年付价格表 / 表头）
 ```
+
+一个微件最多两个重复器（A / B）。FAQ 那种两列的旧写法 `__T1__/__C1__/__T2__/__C2__` 仍然兼容。
 
 ### 用法
 
@@ -328,44 +331,81 @@ cta-default(16×) → faq(12×) → workflow(12×) → pricing-block(11×)
 # 1) 看 sample 被解析成什么（不产出文件）
 python3 migrate-widgets.py --module faq --sample samples/faq-sample.json --inspect
 
-# 2) 预演：报告将替换多少块、内容从哪来
+# 2) 预演：报告将替换多少块 + 首页内容预览（核对列是否对齐）
 python3 migrate-widgets.py --module faq --sample samples/faq-sample.json
 
 # 3) 真产出到 elem-migrated/（不碰 elem-src，不碰线上）
 python3 migrate-widgets.py --module faq --sample samples/faq-sample.json --write
+
+# 4) 链式：同一个 --out 连跑多个模块，自动接续上一轮成果
+python3 migrate-widgets.py --module comparison-table --sample samples/cmp.json --write
+python3 migrate-widgets.py --module pricing-block     --sample samples/pri.json --write
 ```
 
 产出仍走既有 `lr_elem_import` 流程导入。**脚本不连任何站点。**
 
+其他开关：`--only-group A|B`（目标微件只有一个重复器时用）、
+`--allow-truncate`（抽取列数多于 sample 字段槽时，明确接受丢列）、`--src` / `--out`。
+
+### 已实现的三个抽取器
+
+| 模块 | 内容从哪来 | 产出 |
+|---|---|---|
+| `faq` | 问题在 HTML 的 `<h3>`，答案在 `LR_FAQ_ANSWERS` | A 组 2 列（问题/答案） |
+| `comparison-table` | **表头**在 HTML 的 `<th>`，**表体**在 `LR_COMPARE` | A 组=表头 1 列，B 组=表体 4 列 |
+| `pricing-block` | **整份都在 `LR_PRICING`**（源 HTML 是 `animate-pulse` 骨架，一个价格数字都没有） | A 组=月付 8 列，B 组=年付 8 列 |
+
+定价的 8 列：档名 / 现价 / 原价(划线) / 折扣 / 计费说明 / 省钱说明 / 功能清单(换行分隔) / 推荐徽章。
+**定价是全站共用一份（非按页），12 页会填成同样内容**——与真站一致。
+
+### 实测结果（2026-10-11，用测试夹具跑通）
+
+| 模块 | 命中 | 替换 | 跳过 | 行数 |
+|---|--:|--:|--:|--:|
+| faq | 13 页 | 12 | 1 | 76 |
+| comparison-table | 9 页 | 6 | 3 | 54 |
+| pricing-block | 12 页 | 12 | 0 | 96 |
+
+跳过的都是**真的没数据**，不是故障：
+- faq 跳过 `composite-replica-all`（大杂烩页在 `LR_FAQ_ANSWERS` 里无条目）
+- comparison-table 跳过 3 页（`comparison-hub` / `small-business-hub` / `composite`
+  在 `LR_COMPARE` 里无条目 —— **这三页的对比表线上就是空壳，需要先补数据**）
+
+三模块叠加后，这 13 页的 `widget-html` 从 **194 个降到 164 个**（100% → 84%），
+消灭 30 个 blob，换上 12 个 accordion + 12 个 pricing + 6 个 data-table。
+
 ### 安全设计
 
-- 默认预演，`--write` 才落盘；只写真替换过的页面（out 目录里的文件 = 已迁移的文件）
-- 数量不一致（问题数 ≠ 答案数）**直接跳过并报原因**，不做截断配对——宁可不迁，不产出错配内容
-- `--write` 后自动自检：哨兵残留 / 原 html 块未清除 / 微件 id 重复 / 重复器 _id 重复 / 空行
-  —— 任一不过即非零退出
-- 每次产出 `migration-report-<module>.md`
+- 默认预演；`--write` 才落盘；只写真替换过的页面（out 目录里的文件 = 已迁移的文件）
+- **预览**：预演会打印首个成功页面的逐列内容——N 列很容易错位，写盘前必须肉眼能核
+- 数量不一致（问题数≠答案数、表头列数≠表体列数）**直接跳过并报原因**，不截断配对
+- `--write` 后自动自检：哨兵残留 / 原 html 块未清除 / 微件 id 重复 / 重复器 `_id` 重复 / 空首列，
+  任一不过即非零退出。**自检只检查本轮替换过的页面**（链式迁移时全目录扫会误报）
+- 幂等：已迁完的模块再跑一次是「命中 0 页」
 
-### FAQ 模块已验证（2026-10-11）
+### 踩过的三个坑（都在代码注释里标了）
 
-实测 12 个页面的问题数与 `LR_FAQ_ANSWERS` 的答案数**完全一致**（8/8、6/6、5/5、7/7…），
-按序配对安全。预演结果：**命中 13 页 · 替换 12 块 · 跳过 1 块**
-（跳过的是 `composite-replica-all`，大杂烩页在 LR_FAQ_ANSWERS 里没有对应条目，属正确行为）。
-合计迁移 **76 条问答**，自检全过。
-
-`samples/faq-sample.EXAMPLE.json` 是**测试夹具**，用来验证脚本机制，
-**不是真实的 EA 字段结构**——真跑之前必须用编辑器手搭的真 sample 替换它。
+1. 自检曾用 `json.dumps` 后的字符串匹配 `data-lp-section="faq"` —— JSON 里引号被转义成 `\"`，
+   **永远不中，静默报通过**。改为匹配原始 html 字符串。
+2. 链式迁移时第二个模块从 `elem-src` 读，会用源文件**覆盖掉第一个模块的成果**。
+   改为：`out/<同名文件>` 存在就接着改它。
+3. 自检扫 out 全目录，会把「上一轮迁过、本轮跳过」的页面误报成失败。改为只检查本轮替换过的。
 
 ### 扩展到别的模块
 
-在 `MODULES` 字典里加一个抽取器即可：
+在 `MODULES` 字典里加一个抽取器：
 
 ```python
-def extract_comparison(html, page_file):
-    """返回 [(左, 右), ...] 或 (None, "跳过原因")"""
+def extract_xxx(html, page_file):
+    """返回 ({"reps": {"A": [[列1, 列2, …], …]}, "labels": {"A": ["列名1", …]}}, "")
+       或 (None, "跳过原因")"""
     ...
-MODULES["comparison-table"] = extract_comparison
+MODULES["xxx"] = extract_xxx
 ```
 
-注意内容来源各不相同：FAQ 的问题在 HTML、答案在 `LR_FAQ_ANSWERS`；
-对比表整个在 `LR_COMPARE`；定价整个在 `LR_PRICING`（源 HTML 里是 `animate-pulse` 骨架，
-抓取时未 hydrate，**一个价格数字都没有**）。
+注意每个模块的内容来源都不一样，先查清楚再写——别假设内容在 HTML 里。
+
+### 测试夹具
+
+`samples/*.EXAMPLE.json` 是**测试夹具**，用来验证脚本机制，**不是真实的插件字段结构**。
+真跑之前必须用编辑器手搭的真 sample 替换它。
