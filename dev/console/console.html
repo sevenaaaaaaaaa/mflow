@@ -418,6 +418,61 @@ body.sb-open #sb-mask{display:block}
 :root{--z-base:0;--z-panel:50;--z-chrome:60;--z-reader:80;--z-toast:99}
 
 </style>
+<style>
+/* ===== 任务全景 Mission Control ===== */
+.msn-chain{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px;margin-top:12px}
+.msn-ring{position:relative;padding:10px 12px;border:1px solid var(--border);border-radius:14px;background:var(--surface-strong);cursor:pointer;transition:border-color .15s}
+.msn-ring:hover{border-color:var(--accent)}
+.msn-ring b{display:block;font-size:13px}.msn-ring .d{font-size:11.5px;color:var(--muted);line-height:1.5;margin-top:3px}
+.msn-ring .s{font-size:11px;color:var(--accent);margin-top:6px;font-family:var(--font-mono)}
+.msn-ring:not(:last-child)::after{content:'→';position:absolute;right:-9px;top:50%;transform:translateY(-50%);color:var(--faint);font-size:12px}
+.msn-terms{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:12px;color:var(--muted);line-height:1.6}
+.msn-terms b{color:var(--fg)}
+.msn-kpi{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:8px;margin-bottom:14px}
+.msn-kpi .k{padding:10px 12px;border:1px solid var(--border);border-radius:14px;background:var(--surface);cursor:pointer}
+.msn-kpi .k .v{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums}
+.msn-kpi .k .l{font-size:11.5px;color:var(--muted)}
+.msn-kpi .k.hot .v{color:var(--danger)}.msn-kpi .k.run .v{color:var(--accent)}.msn-kpi .k.wait .v{color:var(--warn)}
+.msn-bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:12px}
+.msn-bar input{flex:1;min-width:180px;padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:var(--surface-strong)}
+.msn-card{border:1px solid var(--border);border-radius:18px;background:var(--surface);margin-bottom:10px;overflow:hidden}
+.msn-card.st-running{border-left:3px solid var(--accent)}.msn-card.st-failed,.msn-card.st-blocked,.msn-card.st-tripped{border-left:3px solid var(--danger)}
+.msn-card.st-waiting{border-left:3px solid var(--warn)}.msn-card.st-done{border-left:3px solid var(--ok)}
+.msn-top{display:flex;gap:10px;align-items:center;padding:12px 14px;cursor:pointer}
+.msn-top .t{flex:1;min-width:0}.msn-top .t b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.msn-top .t .m{font-size:11.5px;color:var(--muted);margin-top:2px}
+.msn-pill{font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;white-space:nowrap;background:var(--hover)}
+.msn-pill.running{background:var(--accent-soft);color:var(--accent)}.msn-pill.failed,.msn-pill.blocked,.msn-pill.tripped{background:var(--danger-soft);color:var(--danger)}
+.msn-pill.waiting{background:var(--warn-soft);color:var(--warn)}.msn-pill.done{background:var(--ok-soft);color:var(--ok)}
+.msn-prog{width:150px;flex-shrink:0;text-align:right;font-size:11px;color:var(--muted)}
+.msn-prog .tr{height:6px;border-radius:9px;background:var(--hover);overflow:hidden;margin-bottom:4px}
+.msn-prog .tr i{display:block;height:100%;background:var(--grad);border-radius:9px}
+.msn-q{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--border);border-top:1px solid var(--border)}
+.msn-q>div{background:var(--surface-strong);padding:10px 14px;font-size:12.5px;line-height:1.6}
+.msn-q .h{font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--faint);margin-bottom:3px}
+.msn-q .sub{color:var(--muted);font-size:11.5px}
+.msn-more{display:none;border-top:1px solid var(--border);padding:12px 14px;background:var(--surface-strong)}
+.msn-card.open .msn-more{display:block}
+.msn-sec{margin-bottom:12px}.msn-sec>.h{font-size:12px;font-weight:700;margin-bottom:6px}
+.msn-steps{display:flex;flex-direction:column;gap:4px}
+.msn-step{display:flex;gap:8px;align-items:flex-start;font-size:12.5px}
+.msn-step .dot{width:18px;height:18px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;font-size:10px;background:var(--hover);color:var(--muted)}
+.msn-step.done .dot,.msn-step.warn .dot{background:var(--ok-soft);color:var(--ok)}.msn-step.running .dot{background:var(--accent-soft);color:var(--accent)}
+.msn-step.failed .dot,.msn-step.blocked .dot{background:var(--danger-soft);color:var(--danger)}
+.msn-log{font-family:var(--font-mono);font-size:11px;color:var(--muted);background:var(--hover);border-radius:10px;padding:8px 10px;white-space:pre-wrap;max-height:160px;overflow:auto}
+.msn-tbl{width:100%;border-collapse:collapse;font-size:12px}
+.msn-tbl th{text-align:left;font-weight:600;color:var(--muted);padding:6px 8px;border-bottom:1px solid var(--border);white-space:nowrap}
+.msn-tbl td{padding:6px 8px;border-bottom:1px solid var(--border);vertical-align:top}
+.msn-tbl td.n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.msn-tbl a{color:var(--accent);text-decoration:none;word-break:break-all}
+.msn-card.st-failed .msn-prog i,.msn-card.st-blocked .msn-prog i,.msn-card.st-tripped .msn-prog i{background:var(--danger)}.msn-card.st-waiting .msn-prog i{background:var(--warn)}.msn-card.st-done .msn-prog i{background:var(--ok)}
+.msn-qa{white-space:nowrap;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:99px}
+.msn-qa.pass{background:var(--ok-soft);color:var(--ok)}.msn-qa.warn{background:var(--warn-soft);color:var(--warn)}.msn-qa.fail{background:var(--danger-soft);color:var(--danger)}
+.msn-warn{padding:10px 14px;border-radius:14px;background:var(--danger-soft);color:var(--danger);font-size:12.5px;margin-bottom:12px}
+.msn-empty{padding:28px;text-align:center;color:var(--muted);font-size:13px}
+@media (max-width:1100px){.msn-chain{grid-template-columns:repeat(3,minmax(0,1fr))}.msn-ring::after{display:none}.msn-kpi{grid-template-columns:repeat(4,minmax(0,1fr))}.msn-q{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.msn-chain{grid-template-columns:1fr 1fr}.msn-kpi{grid-template-columns:repeat(2,minmax(0,1fr))}.msn-q{grid-template-columns:1fr}.msn-prog{width:90px}.msn-tbl-wrap{overflow-x:auto}.msn-tbl{min-width:600px}}
+</style>
 </head>
 <body>
 <div class="ambient"><div class="blob blob-a"></div><div class="blob blob-b"></div><div class="blob blob-c"></div></div>
@@ -453,6 +508,7 @@ body.sb-open #sb-mask{display:block}
   </div>
   <button class="s-item on" data-t="home" onclick="setTab('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg><span>总览</span><span class="sbad" id="nav-hub" style="display:none">0</span></button>
   <div class="sec-title">工作台</div>
+  <button class="s-item" data-t="mission" onclick="setTab('mission')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg><span>任务全景</span><span class="sbad" id="nav-mission" style="display:none">0</span></button>
   <button class="s-item" data-t="agent" onclick="setTab('agent')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a4 4 0 0 0-4 4v1a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3h1v3M12 3a4 4 0 0 1 4 4v1a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3h-1v3"/><circle cx="9" cy="11" r="1"/><circle cx="15" cy="11" r="1"/></svg><span>Agent 任务台</span></button>
   <button class="s-item" data-t="auto" onclick="setTab('auto')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg><span>自动化</span><span class="sbad mutb" id="nav-auto">0</span></button>
   <button class="s-item" data-t="onboard" onclick="setTab('onboard')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3.5"/></svg><span>开工向导</span></button>
@@ -496,6 +552,7 @@ body.sb-open #sb-mask{display:block}
       <div><div class="kick">工作台</div><h1 id="greet">你好，<em class="sf">站</em>长</h1>
       <p class="pg-sub" id="greet-sub">正在加载今日概况…</p></div>
       <div class="head-actions">
+        <button class="btn ghost" onclick="setTab('mission')">任务全景</button>
         <button class="btn ghost" onclick="setTab('reports')">看报告</button>
         <button class="btn primary" onclick="runDaily(event)">立即跑今日管线</button>
       </div>
@@ -604,6 +661,35 @@ body.sb-open #sb-mask{display:block}
     <div id="onboard-body"><div class="mut">加载中…</div></div>
   </section>
 
+  <!-- ============ 任务全景（新人入口）============ -->
+  <section class="page" id="pg-mission">
+    <div class="pg-head"><div><div class="kick">工作台 · 新人从这里开始</div><h1>任务<em class="sf">全景</em></h1>
+      <p class="pg-sub">系统正在做什么、为什么做、要多久、产出了什么、质量和流量怎么样——都在这一页。</p></div>
+      <div class="head-actions"><button class="btn ghost" onclick="msnIntroToggle()">系统说明</button>
+        <button class="btn ghost" onclick="msnLoad()">刷新 ↻</button></div></div>
+    <div id="msn-alert"></div>
+    <div class="card" id="msn-intro" style="margin-bottom:14px">
+      <div class="card-head"><h3>30 秒读懂 MFlow</h3><button class="mini" onclick="msnIntroToggle(false)">收起 ×</button></div>
+      <div style="font-size:13px;line-height:1.7">MFlow 是 Lovart 海外站的<b>内容工厂</b>：从搜索数据里找机会 → 让 AI 批量写/改页面 → 用硬门禁挡住低质量 → 人工授权后上线 → 用 GSC 流量回测效果，再决定下一轮。下面 6 环就是一条完整链路，点任一环跳到对应页面。</div>
+      <div class="msn-chain" id="msn-chain"></div>
+      <div class="msn-terms">
+        <span><b>dry-run / 预演</b>：只校验不写库，零风险</span>
+        <span><b>待授权</b>：预演通过，等人确认后才真正生效</span>
+        <span><b>门禁</b>：写后质检 / GEO / 配额 / 语言，任一不过就拦截</span>
+        <span><b>多步执行</b>：Agent 或自动化剧本拆出的多个步骤</span>
+        <span><b>批量任务</b>：同一动作作用于很多页面</span>
+        <span><b>Loop</b>：生成→质检→重写，自动循环到通过</span>
+      </div>
+    </div>
+    <div class="msn-kpi" id="msn-kpi"></div>
+    <div class="msn-bar">
+      <div class="chips" id="msn-filter"></div>
+      <input id="msn-q" placeholder="搜索任务标题 / URL / 任务 ID" oninput="msnRender()">
+      <div class="chips"><button class="chip on" data-v="cards" onclick="msnView('cards')">任务</button><button class="chip" data-v="urls" onclick="msnView('urls')">产出 URL 汇总</button></div>
+    </div>
+    <div id="msn-body"><div class="msn-empty">加载中…</div></div>
+    <div class="mut" id="msn-notes" style="font-size:11.5px;line-height:1.7;margin-top:10px"></div>
+  </section>
   <!-- ============ 执行画布（含 QA 编排子视图） ============ -->
   <section class="page" id="pg-run">
     <div class="pg-head"><div><div class="kick">工作台</div><h1>执行<em class="sf">画布</em></h1>
@@ -2195,7 +2281,7 @@ function mountGuide(t){
  let box=pg.querySelector('.page-guide');
  if(!box){box=document.createElement('div');box.className='page-guide';head.insertAdjacentElement('afterend',box)}
  // 若页面已有专属引导（create/flow/loops），不重复
- if(pg.querySelector('#create-guide,#flow-guide,#loop-guide')){box.remove();return}
+ if(pg.querySelector('#create-guide,#flow-guide,#loop-guide,#msn-intro')){box.remove();return}
  const g=PAGE_GUIDES[t]||PAGE_GUIDES.default;
  const seen=guideSeen(t);
  box.innerHTML=seen?`<div style="text-align:right;margin-bottom:8px"><button class="mini" onclick="guideShow('${t}')">? 本页说明</button></div>`
@@ -2214,7 +2300,7 @@ function guideShow(t){try{const d=JSON.parse(localStorage.getItem('mflow-guides'
 /* ---- 顶部导航（分组 mega menu）---- */
 const NAV_GROUPS=[
  {id:'home',label:'总览',items:[['home','总览']]},
- {id:'work',label:'工作台',items:[['onboard','开工向导'],['auto','自动化'],['agent','Agent 任务台'],['run','执行画布'],['batch','批量任务'],['create','创作中心'],['tasks','任务看板']]},
+ {id:'work',label:'工作台',items:[['mission','任务全景'],['onboard','开工向导'],['auto','自动化'],['agent','Agent 任务台'],['run','执行画布'],['batch','批量任务'],['create','创作中心'],['tasks','任务看板']]},
  {id:'quality',label:'质量与发布',items:[['dist','分发队列'],['calt','内容日历']]},
  {id:'assets',label:'内容资产',items:[['lib','内容库'],['kb','知识库'],['mkt','模板市场'],['trident','数据管线']]},
  {id:'reports',label:'报告与迭代',items:[['reports','报告中心'],['rdash','报告仪表'],['iter','自我迭代'],['wfmap','工作流地图']]},
@@ -2294,7 +2380,7 @@ function setTab(t){
  $('pg-'+t).classList.add('on');
  ({home:loadHome,tasks:loadTasks,reports:loadReports,kb:loadKb,dist:loadDist,eng:renderEng,sys:loadSys,
    create:loadCreate,loops:loadLoops,flow:loadFlow,set:loadSet,
-   calt:calLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,agent:agLoad,run:runLoad,onboard:loadOnboard,auto:loadAuto,mem:memLoad,audit:auditLoad}[t]||(()=>{}))();
+   calt:calLoad,wfmap:loadWfmap,trident:loadTrident,usage:loadUsage,setup:loadSetup,mkt:loadMkt,rdash:loadRdash,iter:loadIter,pay:loadPay,lib:loadLib,batch:loadBatch,agent:agLoad,run:runLoad,onboard:loadOnboard,auto:loadAuto,mem:memLoad,audit:auditLoad,mission:()=>msnLoad()}[t]||(()=>{}))();
  if(t==='home')loadHub()}
 /* ---- 阅读器 + 正文编辑器 + 改动对照（P2-1）----
    此前阅读器全只读：AI 出稿后人只能「通过/打回重跑」，改一个词都要回 CMS。
@@ -4073,5 +4159,87 @@ api('api/setup/status').then(items=>{const done=items.filter(x=>x.ok).length;
   <div id="pal-res" class="pal-res"></div>
   <div class="pal-foot"><span class="mut">↑↓ 选择 · Enter 执行 · Esc 关闭</span><span class="mut" id="pal-hint"></span></div>
 </div></div>
+<script>
+/* ===== 任务全景：把 Run / 批量 / Loop 统一成一张卡，回答 7 个问题 ===== */
+let MSN={data:null,filter:'all',view:'cards',open:{},tmr:null};
+const msnA=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+const msnU=s=>encodeURIComponent(String(s??'')).replace(/'/g,'%27');
+const msnD=s=>decodeURIComponent(s);
+function msnLoad(){
+ api('api/mission').then(d=>{MSN.data=d;msnRenderHead();msnRender();msnBadge();
+  clearTimeout(MSN.tmr);
+  if(TAB==='mission'&&d.kpi&&(d.kpi.running||d.kpi.queued))MSN.tmr=setTimeout(()=>{if(TAB==='mission')msnLoad()},15000);
+ }).catch(()=>{$('msn-body').innerHTML='<div class="msn-empty">加载失败，请刷新</div>'})}
+function msnBadge(){const b=$('nav-mission');if(!b||!MSN.data)return;const k=MSN.data.kpi||{};const n=(k.running||0)+(k.failed||0);
+ b.textContent=n;b.style.display=n?'':'none'}
+function msnIntroToggle(force){let hide;try{hide=localStorage.getItem('mflow-msn-intro')==='hide'}catch(e){hide=false}
+ const show=force===undefined?hide:force;try{localStorage.setItem('mflow-msn-intro',show?'show':'hide')}catch(e){}
+ $('msn-intro').style.display=show?'':'none'}
+function msnRenderHead(){const d=MSN.data;if(!d)return;
+ try{$('msn-intro').style.display=localStorage.getItem('mflow-msn-intro')==='hide'?'none':''}catch(e){}
+ const al=[];if(!d.worker.alive)al.push('⚠ '+msnA(d.worker.text));if(d.breaker.on)al.push('⛔ 全局熔断中：'+msnA(d.breaker.reason||'')+'——所有任务暂停领取');
+ $('msn-alert').innerHTML=al.length?`<div class="msn-warn">${al.join('<br>')}</div>`:'';
+ $('msn-chain').innerHTML=(d.chain||[]).map((c,i)=>`<div class="msn-ring" onclick="setTab('${msnU(c.tab)}')"><b>${i+1}. ${msnA(c.name)}</b><div class="d">${msnA(c.desc)}</div><div class="s">${msnA(c.stat)}</div></div>`).join('');
+ const k=d.kpi;const qr=k.qa_checked?Math.round(100*k.qa_pass/k.qa_checked)+'%':'—';
+ const K=[['run','running','执行中','running'],['','queued','排队中','queued'],['hot','failed','失败待处理','failed'],['wait','waiting','预演完成·待授权','waiting'],
+  ['','done_today','今日完成','done'],['','urls','产出 URL','@urls'],['','qa','QA 通过率','@urls'],['','with_traffic','有流量的产出','@urls']];
+ $('msn-kpi').innerHTML=K.map(([c,key,l,f])=>`<div class="k ${c}" onclick="${f[0]==='@'?"msnView('urls')":`msnFilter('${f}')`}"><div class="v">${key==='qa'?qr:(k[key]||0)}</div><div class="l">${l}</div></div>`).join('');
+ const F=[['all','全部'],['active','进行中'],['todo','需要处理'],['done','已完成']];
+ $('msn-filter').innerHTML=F.map(([v,l])=>`<button class="chip ${MSN.filter===v?'on':''}" onclick="msnFilter('${v}')">${l}</button>`).join('');
+ $('msn-notes').innerHTML=(d.notes||[]).map(x=>'· '+msnA(x)).join('<br>')+`<br>· 数据生成于 ${msnA(d.generated)}${d.kpi.running||d.kpi.queued?'，有任务在跑时每 15 秒自动刷新':''}`}
+function msnFilter(f){const m={running:'active',queued:'active',failed:'todo',waiting:'todo'};MSN.filter=m[f]||f;MSN.view='cards';
+ document.querySelectorAll('#pg-mission [data-v]').forEach(b=>b.classList.toggle('on',b.dataset.v==='cards'));msnRenderHead();msnRender()}
+function msnView(v){MSN.view=v;document.querySelectorAll('#pg-mission [data-v]').forEach(b=>b.classList.toggle('on',b.dataset.v===v));msnRender()}
+function msnMatch(c,q){if(!q)return true;q=q.toLowerCase();return [c.title,c.id,c.type_text,...(c.outputs||[]).map(o=>o.url||o.draft)].some(x=>String(x||'').toLowerCase().includes(q))}
+function msnCards(){const d=MSN.data;const q=($('msn-q').value||'').trim();
+ const S={all:()=>true,active:c=>['running','queued'].includes(c.status),todo:c=>['failed','blocked','tripped','waiting','paused'].includes(c.status),done:c=>['done','cancelled'].includes(c.status)};
+ return (d.cards||[]).filter(S[MSN.filter]||S.all).filter(c=>msnMatch(c,q))}
+function msnRender(){const d=MSN.data;if(!d)return;const el=$('msn-body');
+ if(MSN.view==='urls')return msnRenderUrls(el);
+ const cs=msnCards();
+ if(!cs.length){el.innerHTML=`<div class="card msn-empty">${(d.cards||[]).length?'没有符合筛选的任务':'还没有任何执行记录。<br>去 <a href="#" onclick="setTab(\'auto\');return false">自动化</a> 一键装启推荐剧本，或在 <a href="#" onclick="setTab(\'agent\');return false">Agent 任务台</a> 说一句需求。'}</div>`;return}
+ el.innerHTML=cs.map(msnCardHtml).join('')}
+function msnTr(t){if(!t)return '<span class="mut">暂无</span>';return `点击 <b>${(+t.clicks||0).toLocaleString()}</b> · 展示 ${(+t.impr||0).toLocaleString()}${t.pos!=null?' · 排名 '+t.pos:''}`}
+function msnCardHtml(c){const o=MSN.open[c.id];const p=c.progress||{};const tm=c.timing||{};
+ const prog=c.kind==='run'?`${p.done}/${p.total} 步${p.items_total?` · ${p.items_done}/${p.items_total} 条`:''}`:(c.kind==='loop'?`第 ${p.done}/${p.total} 轮`:`${p.done+p.failed}/${p.total} 条${p.failed?` · 失败 ${p.failed}`:''}`);
+ const steps=(c.steps||[]).length?`<div class="msn-sec"><div class="h">过程 · ${c.steps.length} 个步骤</div><div class="msn-steps">${c.steps.map((s,i)=>`<div class="msn-step ${msnA(s.status)}"><span class="dot">${s.status==='done'||s.status==='warn'?'✓':(s.status==='failed'||s.status==='blocked'?'✕':i+1)}</span><div><b>${msnA(s.name)}</b> <span class="mut">${msnA(s.status)}${s.progress!=null&&s.status==='running'?' '+s.progress+'%':''}${s.started?' · '+msnA(s.started)+(s.ended?'→'+msnA(s.ended):''):''}</span>${s.detail?`<div class="mut" style="font-size:11.5px">${msnA(s.detail)}</div>`:''}</div></div>`).join('')}</div></div>`:'';
+ const log=(c.log||[]).length?`<div class="msn-sec"><div class="h">最近日志</div><div class="msn-log">${c.log.map(esc).join('\n')}</div></div>`:'';
+ const outs=(c.outputs||[]).length?`<div class="msn-sec"><div class="h">产出预览 · ${c.outputs_total} 个${c.outputs_total>c.outputs.length?'（显示前 '+c.outputs.length+'）':''}</div><div class="msn-tbl-wrap">${msnTable(c.outputs,false)}</div></div>`:'<div class="msn-sec mut" style="font-size:12px">还没有产出物（任务未开始，或本类型不产生页面）。</div>';
+ const qa=c.qa||{};const issues=(qa.top_issues||[]).length?`<div class="msn-sec"><div class="h">QA 反馈 · 主要问题</div>${qa.top_issues.map(x=>`<div style="font-size:12px;color:var(--danger)">· ${msnA(x)}</div>`).join('')}</div>`:'';
+ return `<div class="msn-card st-${msnA(c.status)} ${o?'open':''}" id="msn-${msnU(c.id)}">
+  <div class="msn-top" onclick="msnToggle(msnD('${msnU(c.id)}'))">
+   <span class="msn-pill ${msnA(c.status)}">${msnA(c.status_text)}</span>
+   <div class="t"><b>${msnA(c.title)}</b><div class="m">${msnA(c.kind_text)} · ${msnA(c.type_text||'')} · ${msnA(c.created||'')}${c.dry_run?' · <span style="color:var(--warn)">dry-run</span>':''} · <span class="tnum">${msnA(c.id)}</span></div></div>
+   <div class="msn-prog"><div class="tr"><i style="width:${p.pct||0}%"></i></div>${prog}</div>
+   <span class="mut" style="font-size:12px">${o?'▴':'▾'}</span></div>
+  <div class="msn-q">
+   <div><div class="h">为什么做</div>${msnA(c.why.reason||'—')}<div class="sub">触发：${msnA(c.why.trigger)}</div></div>
+   <div><div class="h">在做什么</div>${msnA(c.what||'—')}</div>
+   <div><div class="h">要多久</div>已用 <b>${msnA(tm.elapsed_text)}</b> · 剩余 <b>${msnA(tm.eta_text)}</b><div class="sub">${msnA(tm.typical_text||'')}</div></div>
+   <div><div class="h">收益 / 反馈</div>${msnA(c.benefit.expected||'—')}<div class="sub">QA：${msnA(qa.line||'—')}</div><div class="sub">流量：${msnA((c.traffic||{}).line||'—')}</div>${c.benefit.note?`<div class="sub" style="color:var(--warn)">${msnA(c.benefit.note)}</div>`:''}</div>
+  </div>
+  <div class="msn-more">${steps}${issues}${outs}${log}
+   <div class="row" style="gap:8px"><button class="btn ghost" onclick="msnDrill('${msnU(c.drill.tab)}',msnD('${msnU(c.drill.id||'')}'))">去「${msnA(c.drill.text)}」看完整详情 →</button>
+   ${(c.outputs||[]).some(x=>x.url)?`<button class="btn ghost" onclick="msnCopy(msnD('${msnU(c.id)}'))">复制本任务全部 URL</button>`:''}</div></div>
+ </div>`}
+function msnTable(rows,withTask){return `<table class="msn-tbl"><thead><tr><th>产出</th><th>状态</th><th>QA</th><th class="n">点击</th><th class="n">展示</th><th class="n">排名</th>${withTask?'<th>来源任务</th>':''}</tr></thead><tbody>${rows.map(o=>{const t=o.traffic;
+  return `<tr><td><div>${msnA(o.title)}</div>${o.url?`<a href="${msnA(o.url)}" target="_blank" rel="noopener">${msnA(o.url)}</a>`:''}${o.draft?`<div><a href="#" onclick="openReader(msnD('${msnU(o.draft)}'));return false">📄 打开草稿</a></div>`:''}${o.error?`<div style="color:var(--danger);font-size:11px">${msnA(o.error)}</div>`:''}</td>
+  <td style="white-space:nowrap">${msnA(o.state)}</td><td>${o.qa?`<span class="msn-qa ${msnA(o.qa)}" title="${msnA(Object.entries(o.gates||{}).map(([k,v])=>k+':'+v).join(' / '))}">${{pass:'通过',warn:'告警',fail:'未过'}[o.qa]||msnA(o.qa)}</span>`:'<span class="mut">—</span>'}</td>
+  <td class="n">${t?(+t.clicks||0).toLocaleString():'<span class="mut">暂无</span>'}</td><td class="n">${t?(+t.impr||0).toLocaleString():''}</td><td class="n">${t&&t.pos!=null?t.pos:''}</td>
+  ${withTask?`<td><a href="#" onclick="msnJump(msnD('${msnU(o.task_id)}'));return false">${msnA((o.task_title||o.task_id||'').slice(0,40))}</a></td>`:''}</tr>`}).join('')}</tbody></table>`}
+function msnRenderUrls(el){const q=($('msn-q').value||'').trim().toLowerCase();
+ const rows=(MSN.data.outputs||[]).filter(o=>!q||[o.title,o.url,o.draft,o.task_id,o.task_title].some(x=>String(x||'').toLowerCase().includes(q)));
+ el.innerHTML=`<div class="card"><div class="card-head"><h3>产出 URL 汇总 · ${rows.length} 项</h3><div class="row" style="gap:6px">
+  <button class="mini" onclick="msnCopy()">复制全部 URL</button><button class="mini" onclick="location.href='api/mission/export'">导出 CSV</button></div></div>
+  ${rows.length?`<div class="msn-tbl-wrap">${msnTable(rows,true)}</div>`:'<div class="msn-empty">还没有产出物。</div>'}</div>`}
+function msnToggle(id){MSN.open[id]=!MSN.open[id];const c=(MSN.data.cards||[]).find(x=>x.id===id);const el=$('msn-'+msnU(id));if(c&&el)el.outerHTML=msnCardHtml(c)}
+function msnJump(id){MSN.view='cards';MSN.filter='all';$('msn-q').value='';const c=(MSN.data.cards||[]).find(x=>x.id===id||(x.children||[]).includes(id));
+ if(c)MSN.open[c.id]=true;msnRenderHead();msnView('cards');setTimeout(()=>{const el=c&&$('msn-'+msnU(c.id));if(el)el.scrollIntoView({behavior:'smooth',block:'center'})},50)}
+function msnDrill(tab,id){setTab(tab);if(!id)return;setTimeout(()=>{try{
+ if(tab==='run'&&typeof runDetail==='function')runDetail(id);else if(tab==='batch'&&typeof btDetail==='function')btDetail(id)}catch(e){}},400)}
+function msnCopy(id){const src=id?((MSN.data.cards||[]).find(x=>x.id===id)||{}).outputs||[]:(MSN.data.outputs||[]);
+ const urls=[...new Set(src.map(o=>o.url).filter(Boolean))];if(!urls.length){toast('没有可复制的 URL','warn');return}
+ navigator.clipboard.writeText(urls.join('\n')).then(()=>toast(`已复制 ${urls.length} 个 URL`)).catch(()=>toast('复制失败，请用导出 CSV','warn'))}
+</script>
 </body>
 </html>

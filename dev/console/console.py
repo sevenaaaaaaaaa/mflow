@@ -2089,6 +2089,11 @@ def load_module(name, path):
 
 PS = load_module("mflow_pipeline_state", PS_PATH)
 try:
+    MISSION = load_module("mflow_mission", CONSOLE_DIR / "mission.py")  # 任务全景（新人入口）：只读聚合，独立模块
+except Exception as e:
+    MISSION = None
+    print(f"[console] mission import failed: {e}", file=sys.stderr)
+try:
     ROUTER = load_module("mflow_router", ROUTER_PATH)
 except Exception as e:
     ROUTER = None
@@ -10197,6 +10202,22 @@ class Handler(BaseHTTPRequestHandler):
             # ── 批量任务 ──
             if parsed.path == "/api/batch/list":
                 return self._send(200, batch_list())
+            if parsed.path == "/api/mission":
+                if not MISSION:
+                    return self._send(500, {"error": "任务全景模块未加载"})
+                return self._send(200, MISSION.build(globals(), self._proj()))
+            if parsed.path == "/api/mission/export":
+                if not MISSION:
+                    return self._send(500, {"error": "任务全景模块未加载"})
+                data = MISSION.outputs_csv(MISSION.build(globals(), self._proj(), limit=200)).encode("utf-8")
+                self.send_response(200)
+                self.send_header("Content-Type", "text/csv; charset=utf-8")
+                self.send_header("Content-Disposition",
+                                 f"attachment; filename=mflow-outputs-{datetime.now().strftime('%Y%m%d-%H%M')}.csv")
+                self.send_header("Content-Length", str(len(data)))
+                self.end_headers()
+                self.wfile.write(data)
+                return
             if parsed.path == "/api/runs":
                 return self._send(200, run_list())
             if parsed.path == "/api/run/detail":

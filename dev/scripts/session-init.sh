@@ -109,7 +109,7 @@ done
 # GATE 6: 单元测试（T4：执行器/配额/熔断/预设/护栏）
 echo "[GATE 6] unit tests"
 if bash "$MFLOW_ROOT/dev/scripts/run-tests.sh" >/tmp/mflow-tests.log 2>&1; then
-  N=$(grep -oE "Ran [0-9]+ tests" /tmp/mflow-tests.log | grep -oE "[0-9]+" | head -1)
+  N=$(grep -oE "Ran [0-9]+ tests" /tmp/mflow-tests.log | awk '{s+=$2}END{print s}')
   gate_pass 6 "单元测试通过（$N 用例）"
 else
   echo "  ✗ GATE 6: 单元测试失败——tail -30 /tmp/mflow-tests.log"
