@@ -3,7 +3,7 @@
 - 目标微件：`eael-adv-accordion`
 - 字段映射：
 ```
-  A 组 · 重复器 settings['settings']['eael_adv_accordion_tab'] · 2 个字段槽
+  A 组 · 重复器 ['settings']['eael_adv_accordion_tab'] · 2 个字段槽
       第1列 → eael_adv_accordion_tab_title
       第2列 → eael_adv_accordion_tab_content
 ```

@@ -3,9 +3,9 @@
 - 目标微件：`eael-adv-data-table`
 - 字段映射：
 ```
-  A 组 · 重复器 settings['settings']['ea_adv_data_table_header'] · 1 个字段槽
+  A 组 · 重复器 ['settings']['ea_adv_data_table_header'] · 1 个字段槽
       第1列 → ea_adv_data_table_header_col
-  B 组 · 重复器 settings['settings']['ea_adv_data_table_rows'] · 4 个字段槽
+  B 组 · 重复器 ['settings']['ea_adv_data_table_rows'] · 4 个字段槽
       第1列 → col_1
       第2列 → col_2
       第3列 → col_3

@@ -325,6 +325,9 @@ __B1_1__  …                        ← B 组（第二个重复器，如年付�
 
 一个微件最多两个重复器（A / B）。FAQ 那种两列的旧写法 `__T1__/__C1__/__T2__/__C2__` 仍然兼容。
 
+**平铺字段**（CTA 这类一块只有一组字段、没有重复器的微件）：哨兵只填第 1 行
+（`__A1_1__` `__A1_2__` …），脚本自动识别为平铺组，直接写字段而不造重复器行。
+
 ### 用法
 
 ```bash
@@ -354,6 +357,11 @@ python3 migrate-widgets.py --module pricing-block     --sample samples/pri.json 
 | `faq` | 问题在 HTML 的 `<h3>`，答案在 `LR_FAQ_ANSWERS` | A 组 2 列（问题/答案） |
 | `comparison-table` | **表头**在 HTML 的 `<th>`，**表体**在 `LR_COMPARE` | A 组=表头 1 列，B 组=表体 4 列 |
 | `pricing-block` | **整份都在 `LR_PRICING`**（源 HTML 是 `animate-pulse` 骨架，一个价格数字都没有） | A 组=月付 8 列，B 组=年付 8 列 |
+| `cta-default` | 全在 HTML 里，但**主按钮没有 href** —— 目标由 `LR_CANVAS` 给 | A 组=平铺 5 列 |
+
+CTA 的 5 列：标题 / 主按钮文案 / 主按钮链接 / 次链接文案 / 次链接链接。
+抽取时会固化 `replica.js` 做过的链接处理（`LR_LINK_REDIRECT` 重定向 + 清 `?cb=`），
+否则那段 JS 删掉后链接会退回抓取时的旧值。
 
 定价的 8 列：档名 / 现价 / 原价(划线) / 折扣 / 计费说明 / 省钱说明 / 功能清单(换行分隔) / 推荐徽章。
 **定价是全站共用一份（非按页），12 页会填成同样内容**——与真站一致。
@@ -365,14 +373,17 @@ python3 migrate-widgets.py --module pricing-block     --sample samples/pri.json 
 | faq | 13 页 | 12 | 1 | 76 |
 | comparison-table | 9 页 | 6 | 3 | 54 |
 | pricing-block | 12 页 | 12 | 0 | 96 |
+| cta-default | 17 页 | 10 | 7 | 10 |
 
 跳过的都是**真的没数据**，不是故障：
 - faq 跳过 `composite-replica-all`（大杂烩页在 `LR_FAQ_ANSWERS` 里无条目）
 - comparison-table 跳过 3 页（`comparison-hub` / `small-business-hub` / `composite`
   在 `LR_COMPARE` 里无条目 —— **这三页的对比表线上就是空壳，需要先补数据**）
 
-三模块叠加后，这 13 页的 `widget-html` 从 **194 个降到 164 个**（100% → 84%），
-消灭 30 个 blob，换上 12 个 accordion + 12 个 pricing + 6 个 data-table。
+cta-default 跳过的 7 页全是**真实的线上缺陷**，不是迁移问题（见 §十一）。
+
+四模块叠加后，这 13 页的 `widget-html` 从 **194 个降到 154 个**（消灭 40 个，20%），
+换上 12 个 accordion + 12 个 pricing + 10 个 cta + 6 个 data-table。
 
 ### 安全设计
 
@@ -409,3 +420,74 @@ MODULES["xxx"] = extract_xxx
 
 `samples/*.EXAMPLE.json` 是**测试夹具**，用来验证脚本机制，**不是真实的插件字段结构**。
 真跑之前必须用编辑器手搭的真 sample 替换它。
+
+---
+
+## 十一、线上内容缺陷清单（2026-10-12 实测发现）
+
+做 cta-default / capability-tabs 抽取器时查出来的，**都是线上真实问题，迁移解决不了，需要人工补内容或改配置**。
+
+### C1 — 5 个页面的 CTA 块吞进了整个站点页脚　🔴
+
+`comparison-hub` · `content-hub` · `product-launch` · `showcase-gallery` · `tool-directory`
+
+这些页的 `data-lp-section="cta-default"` 块有 **23.5KB、19 个链接**，除 CTA 本身还包含：
+
+```
+Pricing · Changelog · Docs · News · Terms of Use · Privacy Policy
+Explore · Blog · Tools · Features · Solutions · Topics
+X · YouTube · LinkedIn · Instagram · TikTok
+```
+
+抓取时块边界切错了。**直接把这块换成 CTA 微件 = 这 5 页的页脚整个消失。**
+
+**建议**：页脚本来就不该是页面内容的一部分。用 **Elementor Pro 的 Theme Builder**
+做一个全站 footer 模板，这 5 页和以后所有新页的页脚一次解决。拆出来后 CTA 即可正常迁移。
+
+### C2 — 7 个页面的 CTA 文案跑错主题，且链接是死的　🔴
+
+`composite` · `comparison-hub` · `content-hub` · `people-reviews` · `product-launch` ·
+`showcase-gallery` · `tool-directory`
+
+全都是同一段 Shopify 文案：
+
+> **Ready to turn one SKU into a full Shopify launch system?**
+> [Design a Shopify launch] → `#`　[See the workflow] → `#`
+
+Shopify 的 CTA 出现在**工具目录页、人物评价页、内容中心页**上。
+两个链接都是 `#`，`replica.js` 的死链规则把它们变成「滚动到某个区块」，**点了不跳转**。
+
+这是转化漏洞。**需要定这 7 页各自该写什么文案和目标**，之后抽取器会自动放行。
+
+### C3 — capability-tabs 在 12 个页面上 3/4 是空的，且 tab 点不动　🔴
+
+| | 全 12 页一致 |
+|---|---|
+| tab 标签 | 4 个（`agencies` / `nonprofits` 这两页 0 个，整块只有标题） |
+| hidden 面板 | 5 个 |
+| **hidden 面板里的字符数** | **全部 0** |
+| `role="tab"` / `role="tablist"` 属性 | **一个都没有** |
+
+两个独立问题：
+
+1. **只有第 1 个 tab 的内容存在**，另外 3 个面板是空的。
+   又是 React 没 hydrate —— tab 2–4 点击才渲染，抓取时不在 DOM 里。和 pricing 骨架同一个病因。
+2. **`initTabs` 根本不触发**。它查 `[role="tablist"]`，而这些块里没有任何 role 属性。
+
+所以线上现状：**4 个点不动的标签 + 1 屏固定内容**。
+而且不像 FAQ / 对比表 / 定价，`replica.js` 里**没有给 tabs 写兜底数据表**，什么都没有。
+
+**结论：capability-tabs 不进迁移清单，进内容缺口清单。**
+要迁必须先补 11 页 × 3 个面板 = **33 段内容**。这是内容生产任务。
+
+### C4 — 3 个页面的对比表是空壳
+
+`comparison-hub` · `ai-design-for-small-business-hub` · `composite`
+在 `LR_COMPARE` 里没有条目，线上就是空表。同 C3，需先补内容。
+
+### 一个贯穿始终的模式
+
+C3、C4 和定价骨架是**同一个根因**：抓的是未 hydrate 的 SPA DOM。
+区别只在于 FAQ / 对比表 / 定价后来有人用 JS 兜底把内容补回去了，capability-tabs 没有。
+
+**每迁一个模块前先问：这个模块的内容到底存在吗？** 别假设它在 HTML 里。

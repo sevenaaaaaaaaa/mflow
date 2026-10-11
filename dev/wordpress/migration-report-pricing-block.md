@@ -3,22 +3,28 @@
 - 目标微件：`htmega-flip-switcher-pricing`
 - 字段映射：
 ```
-  A 组 · 重复器 settings['settings']['monthly_plans'] · 5 个字段槽
+  A 组 · 重复器 ['settings']['monthly_plans'] · 8 个字段槽
       第1列 → title
       第2列 → price
       第3列 → old_price
       第4列 → badge_off
       第5列 → bill_note
-  B 组 · 重复器 settings['settings']['yearly_plans'] · 5 个字段槽
+      第6列 → save_note
+      第7列 → features
+      第8列 → ribbon
+  B 组 · 重复器 ['settings']['yearly_plans'] · 8 个字段槽
       第1列 → title
       第2列 → price
       第3列 → old_price
       第4列 → badge_off
       第5列 → bill_note
+      第6列 → save_note
+      第7列 → features
+      第8列 → ribbon
 ```
 - 注意：定价是全站共用一份（非按页），12 页会填成同样内容
 - 命中 12 页 / 替换 12 块 / 跳过 0 块 / 共 96 行
-- 模式：预演（未写文件）
+- 模式：写出到 elem-migrated
 
 | 页面 | 结果 | 说明 |
 |---|:--:|---|

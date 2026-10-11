@@ -120,11 +120,24 @@ def load_sample(path):
     for grp in sorted({g for g, _, _ in marks}):
         cells = {(r, c): pth for (g, r, c), pth in marks.items() if g == grp}
         # 行下标 = 路径里第一个 int；它之前是重复器路径，之后是字段路径
+        # 路径里没有 int 下标 = 平铺字段（CTA 这类一块只有一组字段的微件），不是重复器
+        if not any(isinstance(seg, int) for pth in cells.values() for seg in pth):
+            rows = {r for (r, _) in cells}
+            if rows != {1}:
+                raise SystemExit(f"✗ {grp} 组是平铺字段，只能有第 1 行，实际有 {sorted(rows)}")
+            cols = sorted(c for (_, c) in cells)
+            if cols != list(range(1, len(cols) + 1)):
+                raise SystemExit(f"✗ {grp} 组列号不连续：{cols}（应为 1,2,3…）")
+            reps[grp] = {"flat": True, "rep_path": [], "item_tpl": None,
+                         "field_paths": [list(cells[(1, c)]) for c in cols]}
+            continue
+
         rep_paths, rows_seen = set(), {}
         for (r, c), pth in cells.items():
             k = next((ix for ix, seg in enumerate(pth) if isinstance(seg, int)), None)
             if k is None:
-                raise SystemExit(f"✗ {grp} 组的哨兵不在重复器里，这个微件需要单独适配。")
+                raise SystemExit(
+                    f"✗ {grp} 组的哨兵一部分在重复器里、一部分不在，无法判定结构。")
             rep_paths.add(pth[:k])
             rows_seen.setdefault(r, pth[k])
         if len(rep_paths) != 1:
@@ -136,6 +149,7 @@ def load_sample(path):
             raise SystemExit(f"✗ {grp} 组第 {first_row} 行的列号不连续：{cols}（应为 1,2,3…）")
         field_paths = [list(cells[(first_row, c)][len(rep_path) + 1:]) for c in cols]
         reps[grp] = {
+            "flat": False,
             "rep_path": list(rep_path),
             "item_tpl": json.loads(json.dumps(dig(w, list(rep_path))[rows_seen[first_row]])),
             "field_paths": field_paths,
@@ -162,6 +176,18 @@ def build_node(sample, payload, allow_truncate=False):
                 f"（sample 现有：{', '.join(sample['reps']) or '无'}；"
                 f"若目标微件确实只有一个重复器，用 --only-group 指定要迁的那一组）")
         slots = len(rep["field_paths"])
+        if rep.get("flat"):
+            if len(rows) != 1:
+                raise ValueError(f"{grp} 组是平铺字段，只接受 1 行，抽取器给了 {len(rows)} 行")
+            row = rows[0]
+            if len(row) > slots and not allow_truncate:
+                raise ValueError(
+                    f"{grp} 组：抽取器给了 {len(row)} 列，sample 只有 {slots} 个字段槽。"
+                    f"在 sample 里多填几个哨兵（__{grp}1_{slots + 1}__ …），"
+                    f"或加 --allow-truncate 明确接受丢列。")
+            for ix, path in enumerate(rep["field_paths"]):
+                set_in(node, path, row[ix] if ix < len(row) else "")
+            continue
         out = []
         for row in rows:
             if len(row) > slots and not allow_truncate:
@@ -311,11 +337,78 @@ def extract_pricing(html, page_file):
             "note": "定价是全站共用一份（非按页），12 页会填成同样内容"}, ""
 
 
+def _js_const(name, default=""):
+    m = re.search(r"var\s+%s\s*=\s*\"([^\"]*)\"" % re.escape(name), _js_blob())
+    return m.group(1) if m else default
+
+
+def _fix_href(raw):
+    """复刻 replica.js 的链接处理：重定向表 + 清掉 ?cb= 缓存参数。
+
+    迁移后那段 JS 要删掉，所以必须在这里把它做过的事固化进数据，
+    否则链接会退回成抓取时的旧值。
+    """
+    raw = (raw or "").strip()
+    red = _js_object("LR_LINK_REDIRECT")
+    if raw in red:
+        return red[raw]
+    return re.sub(r"[?&]cb=\d+", "", raw)
+
+
+def extract_cta(html, page_file):
+    """CTA：内容在 HTML 里，但**主按钮没有 href** —— 目标由 replica.js 给（LR_CANVAS）。
+
+    5 列：标题 / 主按钮文案 / 主按钮链接 / 次链接文案 / 次链接链接
+
+    两道跳过闸（实测出来的真实问题，不是防御性编程）：
+    1. 5 个页面的 cta 块把整个站点页脚吞进去了（19 个链接含 Pricing/Docs/Terms/社交）。
+       直接换成 CTA 微件会让这些页的页脚消失 —— 页脚该用 Theme Builder 单独做。
+    2. composite / people-reviews 两页的 CTA 全是死链 #，文案还是别页的
+       （Shopify 文案出现在人物评价页上）。需人工定文案后再迁。
+    """
+    links = [(u, strip_tags(t)) for u, t in
+             re.findall(r"<a[^>]*href=\"([^\"]*)\"[^>]*>(.*?)</a>", html, re.S)]
+    links = [(u, t) for u, t in links if t]
+    btns = [strip_tags(x) for x in re.findall(r"<button[^>]*>(.*?)</button>", html, re.S)]
+    btns = [b for b in btns if 3 < len(b) < 60]
+
+    if "statement/privacy-policy" in html or len(links) > 4:
+        return None, (f"该页 CTA 块吞进了站点页脚（{len(links)} 个链接）——"
+                      f"换成微件会让页脚消失。页脚请用 Elementor Theme Builder 单独做，拆出来后再迁")
+
+    heads = [strip_tags(x) for x in re.findall(r"<h2[^>]*>(.*?)</h2>", html, re.S)]
+    heads = [h for h in heads if h]
+    if not heads:
+        return None, "没抓到标题（<h2>）"
+
+    if not btns and all((u or "#") in ("#", "") for u, _ in links):
+        return None, ("CTA 全是死链 #，且文案疑似跑错主题（见交接文档 §零）——"
+                      "需人工确认文案与目标后再迁")
+
+    canvas = _js_const("LR_CANVAS", "https://www.lovart.ai/canvas")
+    if btns:
+        # 主按钮无 href，线上靠 JS 跳 canvas；迁移后 JS 会删，所以这里写死目标
+        prim_t, prim_u = btns[0], canvas
+        sec_t, sec_u = (links[0][1], _fix_href(links[0][0])) if links else ("", "")
+    else:
+        prim_t, prim_u = links[0][1], _fix_href(links[0][0])
+        sec_t, sec_u = (links[1][1], _fix_href(links[1][0])) if len(links) > 1 else ("", "")
+
+    note = ""
+    if sec_t and sec_u in ("#", ""):   # 本来就没有次链接时不该报警
+        note = f"次链接「{sec_t}」原本是死链 #，迁移后需补目标"
+        sec_u = ""
+    return {"reps": {"A": [[heads[0], prim_t, prim_u, sec_t, sec_u]]},
+            "labels": {"A": ["标题", "主按钮文案", "主按钮链接", "次链接文案", "次链接链接"]},
+            "page_note": note}, ""
+
+
 MODULES = {
     # data-lp-section 的值 → 内容抽取函数
     "faq": extract_faq,
     "comparison-table": extract_comparison,
     "pricing-block": extract_pricing,
+    "cta-default": extract_cta,
 }
 
 
@@ -323,8 +416,9 @@ MODULES = {
 def _fmt_reps(sample):
     out = []
     for grp, rep in sample["reps"].items():
-        out.append(f"  {grp} 组 · 重复器 settings{''.join(repr([x]) for x in rep['rep_path'])}"
-                   f" · {len(rep['field_paths'])} 个字段槽")
+        kind = ("平铺字段" if rep.get("flat")
+                else f"重复器 {''.join(repr([x]) for x in rep['rep_path'])}")
+        out.append(f"  {grp} 组 · {kind} · {len(rep['field_paths'])} 个字段槽")
         for ix, fp in enumerate(rep["field_paths"], 1):
             out.append(f"      第{ix}列 → {'.'.join(map(str, fp))}")
     return "\n".join(out)
@@ -336,8 +430,9 @@ def migrate(args):
         print("sample 解析结果：")
         print(f"  widgetType : {sample['widget_type']}")
         print(_fmt_reps(sample))
-        print(f"  行模板键   : "
-              f"{ {g: list(r['item_tpl'].keys()) for g, r in sample['reps'].items()} }")
+        tpl = {g: (list(r["item_tpl"].keys()) if r.get("item_tpl") else "（平铺，无行模板）")
+               for g, r in sample["reps"].items()}
+        print(f"  行模板键   : {tpl}")
         return 0
 
     extractor = MODULES.get(args.module)
@@ -400,7 +495,10 @@ def migrate(args):
             changed += 1
             totals["replaced"] += 1
             totals["rows"] += n
-            report.append((f.name, "ok", " + ".join(f"{g}组{len(v)}行" for g, v in reps.items())))
+            msg = " + ".join(f"{g}组{len(v)}行" for g, v in reps.items())
+            if payload.get("page_note"):
+                msg += f" ⚠ {payload['page_note']}"
+            report.append((f.name, "ok", msg))
             if preview is None:
                 preview = (payload.get("labels") or {}, reps)
                 note = payload.get("note", "")
@@ -514,6 +612,15 @@ def self_check(out_dir, sample, module="faq", only=None):
             bad.append(f"{f.name}: 微件 id 有重复（Elementor 会渲染异常）")
         for t in targets:
             for grp, rep in sample["reps"].items():
+                if rep.get("flat"):
+                    v = t
+                    try:
+                        v = dig(t, rep["field_paths"][0])
+                    except Exception:
+                        v = ""
+                    if not str(v).strip():
+                        bad.append(f"{f.name}: {grp} 组首个字段为空")
+                    continue
                 try:
                     rows = dig(t, rep["rep_path"])
                 except Exception:
