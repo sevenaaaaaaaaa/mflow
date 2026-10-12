@@ -347,6 +347,9 @@ python3 migrate-widgets.py --module pricing-block     --sample samples/pri.json 
 
 产出仍走既有 `lr_elem_import` 流程导入。**脚本不连任何站点。**
 
+**前置步骤**：那 5 个 cta 块吞了页脚的页面，先跑一次 `split-footer.py --write`
+（同一个 `elem-migrated/` 目录，链式衔接），再跑 `--module cta-default`。
+
 其他开关：`--only-group A|B`（目标微件只有一个重复器时用）、
 `--allow-truncate`（抽取列数多于 sample 字段槽时，明确接受丢列）、`--src` / `--out`。
 
@@ -441,8 +444,27 @@ X · YouTube · LinkedIn · Instagram · TikTok
 
 抓取时块边界切错了。**直接把这块换成 CTA 微件 = 这 5 页的页脚整个消失。**
 
-**建议**：页脚本来就不该是页面内容的一部分。用 **Elementor Pro 的 Theme Builder**
-做一个全站 footer 模板，这 5 页和以后所有新页的页脚一次解决。拆出来后 CTA 即可正常迁移。
+**工具已就位**（2026-10-12）：`split-footer.py`
+
+```bash
+python3 split-footer.py            # 预演
+python3 split-footer.py --write    # 写出到 elem-migrated/（与迁移脚本同目录，可链式）
+```
+
+它用 **解析器**（BeautifulSoup）摘掉 `<footer>`，不是字符串切 ——
+实测朴素按 `html[:index]` 切会留下 3 个不闭合的 `<div>`。
+
+同时产出：
+- `footer-spec.md` —— 3 栏 / 17 个链接 / 版权 的完整内容规格，Theme Builder 照着搭，不用人肉重抄
+- `footer-raw.html` —— 原始页脚（12,337 字符），作视觉比对基准
+
+实测 5 页页脚 **md5 完全一致**，一份全站模板即可。
+
+**顺带记一笔**：原始 cta 块本身 `<div>` 就比 `</div>` 多 1 个（抓取产物自带的不平衡），
+摘页脚后这个差值原样保留 —— 不是拆分引入的。页脚内部自身是平衡的。
+
+**拆完页脚 ≠ 这 5 页能迁 CTA 了。** 实测跳过原因从 C1 变成了 C2（见下），
+两道闸是独立的，C2 还得人工定文案。
 
 ### C2 — 7 个页面的 CTA 文案跑错主题，且链接是死的　🔴
 
@@ -458,6 +480,22 @@ Shopify 的 CTA 出现在**工具目录页、人物评价页、内容中心页**
 两个链接都是 `#`，`replica.js` 的死链规则把它们变成「滚动到某个区块」，**点了不跳转**。
 
 这是转化漏洞。**需要定这 7 页各自该写什么文案和目标**，之后抽取器会自动放行。
+
+**C1 处理完后，这是 CTA 迁移唯一剩余的阻塞**（实测：5 个页脚页摘掉页脚后，
+跳过原因全部从 C1 转为 C2）。各页主题供定文案参考：
+
+| 页面 | 页面主题（hero 标题） |
+|---|---|
+| `comparison-hub` | Turn one product brief into… |
+| `content-hub` | Design for every step… |
+| `product-launch` | From product drop to… |
+| `showcase-gallery` | Start anywhere in the stack… |
+| `tool-directory` | Fix the creative leaks… |
+| `people-reviews` | （无 hero h1） |
+| `composite` | 大杂烩页，可不管 |
+
+定好文案后直接改 `elem-src` 里对应块的 `<h2>` 与链接，或在 `extract_cta` 里加一张
+按页覆盖表 —— 后者更干净，不污染源。
 
 ### C3 — capability-tabs 在 12 个页面上 3/4 是空的，且 tab 点不动　🔴
 
