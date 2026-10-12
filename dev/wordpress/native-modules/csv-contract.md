@@ -8,11 +8,18 @@ LPagery placeholders use single braces: `{column_name}`. One CSV row creates one
 page. Column headers must exactly match the placeholders used by the Elementor
 seed page（`lp-lr-native-v1`）。
 
+> **通道变更（2026-10-13 线上实测）**：LPagery free 版占位符上限 = 3 列
+> （`get_placeholder_counts()` 熔断，超出列直接丢弃），本契约 126 列走不通。
+> 量产走自建通道 `lr-batch-run.py`：CSV 行 → 本地替换 {col} 进种子 JSON
+> → 上传资产服务器 `batch/<slug>.json` → snippet 29 `lr_batch_page` 建页
+> （slug/status/SEO meta 由 payload 控制）。LPagery 仅保留作 Page Set 记账备用。
+
 ## 0. 端到端链路
 
 ```
-CSV 一行 → LPagery 复制种子模板（lp-lr-native-v1）→ {column} 占位符替换
-→ 生成 draft 页 → 人工/自动 publish
+CSV 一行 → 本地替换种子模板（lp-lr-native-v1）{column} 占位符
+→ batch/<slug>.json 上传资产服务器 → lr_batch_page 建 draft 页
+→ SSR 渲染探针 + 截图验收 → publish
 ```
 
 种子模板里的微件全部是**原生具名 settings**（本轮迁移后的形态），没有 `widget-html`
@@ -26,6 +33,8 @@ CSV 一行 → LPagery 复制种子模板（lp-lr-native-v1）→ {column} 占�
 - `primary_cta_label`, `primary_cta_url`
 - `secondary_cta_label`, `secondary_cta_url`
 - `seo_title`, `meta_description`, `canonical_url`
+  （`canonical_url` 建议留空——空值不写 meta，Rank Math 默认 canonical = 实际 permalink；
+  自建通道的页面 slug = `slug` 列，填 canonical 时必须与之一致）
 
 ## 2. 模块级列（按种子模板实际微件）
 

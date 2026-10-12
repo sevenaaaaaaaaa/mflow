@@ -681,3 +681,60 @@ is_featured 落 `no` 而非空串——模板判 `!== 'no'` 即高亮）；LR_PR
 ### 版本
 
 replica.css **v4** / replica.js **v19**（snippet 27 已 bump，前台已引用新版）
+
+## 十五、批量建页产线线上验证（2026-10-13）✅
+
+目标：CSV 一行 → 一页，页面可直接用于投放。端到端打通并发布 3 页样本。
+
+### LPagery free 版结论（不可用于本契约）
+
+线上实测两处硬伤（`lpagery-batch-run.py` 已标注弃用，保留作记录）：
+1. **占位符列数上限 = 3**：`InputParamProvider` 按 `get_placeholder_counts()` 熔断，
+   超出列直接 `break` 丢弃 → 126 列契约只有 page_title/slug/industry 进替换引擎，
+   meta 占位符全残留。
+2. **slug 由模板页标题派生**（`PostFieldProvider::get_slug` 读 `template_post->post_title`），
+   process config 的 slug 模式是 premium 路径。
+
+### 自建通道（量产正路）
+
+`lr-batch-run.py` + snippet 29 新 action **`lr_batch_page`**：
+```
+CSV 行 → 本地递归替换 {col} 进种子 JSON（native-modules/lp-lr-native-v1-pro.json）
+→ native-modules/batch/<slug>.json → scp 资产服务器 batch/ 
+→ admin-ajax lr_batch_page（WP 服务器间拉取，绕 WAF）
+→ 按 slug 查重（有则更新/无则新建），写 _elementor_* + _lr_replica + _wp_page_template
+  + Rank Math 三键（rank_math_title/description/canonical），重生成 post-<id>.css
+→ draft 上线 → SSR 探针 + 截图验收 → --publish
+```
+snippet 29 部署方式变更：**直接 PUT `/wp-json/code-snippets/v1/snippets/29`** 更新 code
+（deploy-elem-snippets.py 的 delete+import 路径会新建 id 且 activate 失效，弃用）；
+本地源 `lr-elem-bridge.php` 全量 action 集：lr_elem_import / lr_elem_read（+seo 回读）/
+lr_elem_template / **lr_lpagery_nonce** / **lr_batch_page**，secret=lrb-2026-x7k9。
+
+### 首批验证结果
+
+- 种子模板页 `lp-lr-native-v1`（id=18889，draft，不入发布）；Page Set id=16（LPagery 记账）
+- 3 页样本发布：`lr-native-bakery-short`(18896) / `lr-native-saas-long`(18898) /
+  `lr-native-wellness-full`(18899)
+- SSR 探针 3/3 全绿：12/12 sections、占位符 0 残留、双价定价 4 卡（Billed annually ×4 +
+  Most popular 徽章 + 划线价）、对比表 Lovart 列高亮、SEO title 生效
+  （`<title>` = seo_title 列）
+- 视觉截图验收：hero 双 CTA + 产品图、pricing toggle/徽章/高亮、testimonial 卡、
+  页脚全部与主站同款
+
+### 量产 SOP
+
+1. 排版页：改 `native-modules/lp-lr-native-v1-sample.csv`（或另起 CSV，列口径 =
+   csv-contract.md v2；`slug` 列 = 最终 URL、`canonical_url` 建议留空）
+2. `python3 -u lr-batch-run.py --run`（可 `--limit N` 试跑）
+3. 验证：SSR 探针（照 §十五探针矩阵）+ 截图
+4. `python3 -u lr-batch-run.py --publish`（可 `--slugs a,b` 逐页）
+5. 回滚：`python3 -u lr-batch-run.py --clean slug1 slug2`（彻底删除）
+
+### 教训
+
+- **新插件先读源码再上**：LPagery free 的 tier 熔断（占位符 3 列）在 wp.org trunk 源码
+  `src/service/preparation/InputParamProvider.php` 里一目了然
+- code-snippets 部署后必须**回读验证内容**（`dump-snippet29.py` / 列表 API），
+  否则 delete+import 静默失败会造成「改了没生效」的假象
+- REST `pages?slug=` 默认只返回 publish；draft 必须显式 `status=draft,…`
