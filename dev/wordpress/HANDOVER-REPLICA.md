@@ -101,7 +101,7 @@ v4（2026-04）的 Variables / Global Classes 需要升大版本 + 手动开启 
 │      ├── lovart-replica.css?v=3       # 2.9MB tailwind + 源站样式（作用域化到 .lr）
 │      ├── lovart-native.css?v=16       # shim：修 e-con chrome / 工具类解压制 / dark 变量注入
 │      ├── lovart-faithful-mirror.css?v=1  # 未分层工具类镜像（压过 e-con chrome）
-│      ├── lovart-replica.js?v=15       # 全部运行时行为（见 §四）
+│      ├── lovart-replica.js?v=16       # 全部运行时行为（见 §四）
 │      ├── elem/faithful/*.json         # faithful 模板（widget-html 嵌入）
 │      ├── elem/native/*.json           # native 转换模板
 │      └── elem/native-templates/*      # lr-native-*-full.json（LR Native 模板分类）
@@ -224,7 +224,19 @@ scp -P 28766 <file> root@172.96.253.73:/www/wwwroot/nownexts_com/lr-assets/<file
 ### bump 版本号（snippet 27 内的 URL query）
 经浏览器运行 /tmp/snippet-update.js 模式：GET/PUT `/wp-json/code-snippets/v1/snippets/27`（字段 `code`），
 nonce 从 wp-admin 页面 script 抓 `"nonce":"..."` 或 `admin-ajax?action=rest-nonce`。
-当前线上版本：replica.css v3 / native.css v16 / mirror.css v1 / replica.js v15。
+当前线上版本：replica.css v3 / native.css v16 / mirror.css v1 / replica.js v16。
+
+### v16（2026-10-12）— P1 首批迁移落地
+- **cta-default 10 块 → `eael-cta-box`**（10 页：10 个 solution 页）；comparison-hub / product-launch
+  等 7 块被 C1/C2 闸挡住（页脚未拆 / 文案未定），迁完 C2 后补
+- **faq 12 块 → `eael-adv-accordion`**（12 页，76 行问答全部服务端固化，HTML 直出）
+- **4 个 native demo 页 FAQ 占位答案服务端写入** accordion `tab_content`（`fill-demo-faq.py`），
+  消除 `initFaqFill` 的最后依赖
+- **replica.js v16：删除 `initFaqFill` + `LR_FAQ_ANSWERS`（-126 行，803 → 677）**，
+  `pageSlug` 保留（对比表注入仍用）；snippet 27 缓存参数 bump `?v=16`
+- 部署通道：`deploy-migrated.py`（备份 → scp → lr_elem_import，全程幂等可重跑；
+  已知坑：Cloudflare 对首次 404 的 URL 负缓存，换文件名绕开）
+- **剩余运行时注入**：`initLinkFix` ①（6 页 CTA 还是 html 块，等 C2）、`initCompareFill`、`initPricingRender`
 
 ### 建新 demo 页（单页一个脚本，规避 evaluate 15s 超时；env 变量不传入 ego-browser，需内联）
 1. REST 建页（title/slug/status=publish/template=elementor_header_footer）
@@ -269,7 +281,9 @@ cta-default(16×) → faq(12×) → workflow(12×) → pricing-block(11×)
 （faq → `initFaqFill`，comparison-table → `initCompareFill`，pricing-block → `initPricingRender`）。
 
 > **验收硬指标：`lovart-replica.js` 的行数单调下降。**
-> 现在 803 行。它不降，说明只是换了个壳，内容还在运行时注入 —— 那就没走对。
+> v16（2026-10-12）已从 803 → **677 行**（删 `initFaqFill` + `LR_FAQ_ANSWERS`）。
+> 下一轮该删的：C2 放行后 `initLinkFix` ①，comparison-table 迁完删 `initCompareFill`，
+> pricing-block 迁完删 `initPricingRender`。它不降，说明只是换了个壳，内容还在运行时注入 —— 那就没走对。
 
 每替换一轮还要确认：对应的硬编码数据表（`LR_FAQ_ANSWERS` / `LR_COMPARE` / `LR_PRICING`）可以删掉。
 内容应该在 Elementor 里，不在 JS 里。

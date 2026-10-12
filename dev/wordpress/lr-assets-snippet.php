@@ -25,7 +25,7 @@ add_action( 'wp_enqueue_scripts', function () {
 	if ( false !== strpos( (string) get_post_meta( $pid, '_elementor_data', true ), 'lr-faithful' ) ) {
 		wp_enqueue_style( 'lr-faithful', 'https://nownexts.com/lr-assets/lovart-faithful-mirror.css?v=1', array( 'lr-native' ), null );
 	}
-	wp_enqueue_script( 'lr-replica', 'https://nownexts.com/lr-assets/lovart-replica.js?v=10', array(), null, true );
+	wp_enqueue_script( 'lr-replica', 'https://nownexts.com/lr-assets/lovart-replica.js?v=16', array(), null, true );
 	// 隐藏主题构建器头尾仅限 _lr_replica 整页（插入单模块的页面保留自身主题头尾）
 	if ( get_post_meta( $pid, '_lr_replica', true ) ) {
 		wp_add_inline_style( 'lr-replica', '.lr-replica-page [data-elementor-type="header"],.lr-replica-page [data-elementor-type="footer"]{display:none !important}' );
