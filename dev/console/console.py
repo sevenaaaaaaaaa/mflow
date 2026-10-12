@@ -831,7 +831,8 @@ def notify_task_end(task):
 WEBHOOKS_FILE = RUN_DIR / "webhooks.json"
 WEBHOOK_LOG = RUN_DIR / "webhooks.log"
 WEBHOOK_EVENTS = ["task.done", "task.failed", "task.tripped", "run.done", "run.failed",
-                  "publish.done", "automation.run", "loop.done", "audit.rollback"]
+                  "publish.done", "automation.run", "loop.done", "audit.rollback",
+                  "content.published", "content.failed"]  # 三方契约 v1.1
 
 
 def webhooks_cfg():
@@ -912,6 +913,100 @@ def webhook_emit(event, payload):
     except Exception:
         pass
     return len(targets)
+
+
+# ===================== 三方契约 v1.1：MFlow → InsightFlow 回流 =====================
+INSFLOW_OUTBOX_FAILED = RUN_DIR / "insightflow-outbox-failed.jsonl"
+_IF_EVENT_SHORT = {"content.published": "pub", "content.failed": "fail"}
+_IF_BACKOFF = (1.0, 3.0)  # 第 1/2 次失败后的等待秒数（共 3 次尝试）；单测可置 0
+
+
+def _if_utc(epoch):
+    return time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime(int(epoch)))
+
+
+def insightflow_envelope(event, data, epoch=None):
+    """按契约 v1.1 §1 组装信封。event_id 由 (事件, item_id, epoch) 决定 → 重试不变。"""
+    epoch = int(epoch if epoch is not None else time.time())
+    short = _IF_EVENT_SHORT.get(event, re.sub(r"[^a-z0-9]+", "-", str(event).lower()))
+    return {"schema_version": "1.1", "event": event,
+            "event_id": f"mflow-{short}-{data.get('item_id', '')}-{epoch}",
+            "occurred_at": _if_utc(epoch), "source": "mflow",
+            "workspace_id": os.environ.get("INSFLOW_WORKSPACE_ID", "").strip() or "default",
+            "data": data}
+
+
+def emit_to_insightflow(event, data, epoch=None, sync=False):
+    """回流 InsightFlow：仅当 INSFLOW_INGEST_URL + INSFLOW_INGEST_SECRET 都配置时发送。
+    签名 X-IF-Signature = hex(HMAC-SHA256(raw_body, secret))，带 X-IF-Timestamp；
+    超时 5s，最多 3 次（退避），终败写 run/insightflow-outbox-failed.jsonl。永不抛异常。
+    默认后台线程发送（不阻塞发布请求）；sync=True 时同步执行并返回 True/False。"""
+    url = os.environ.get("INSFLOW_INGEST_URL", "").strip()
+    secret = os.environ.get("INSFLOW_INGEST_SECRET", "").strip()
+    if not url or not secret:
+        return None
+    try:
+        env = insightflow_envelope(event, data, epoch)
+        raw = json.dumps(env, ensure_ascii=False, separators=(",", ":")).encode("utf-8")
+        sig = hmac.new(secret.encode(), raw, hashlib.sha256).hexdigest()
+    except Exception as e:
+        print(f"[console] insightflow envelope failed: {e}", file=sys.stderr)
+        return False
+
+    def _log(line):
+        try:
+            with open(WEBHOOK_LOG, "a") as f:
+                f.write(f"{datetime.now().isoformat(timespec='seconds')} {event} -> insightflow {line}\n")
+        except Exception:
+            pass
+
+    def _do():
+        import urllib.error
+        import urllib.request
+        last = ""
+        for attempt in range(3):
+            try:
+                req = urllib.request.Request(url, data=raw, method="POST", headers={
+                    "Content-Type": "application/json", "X-IF-Signature": sig,
+                    "X-IF-Timestamp": str(int(time.time()))})
+                with urllib.request.urlopen(req, timeout=5) as r:
+                    code = getattr(r, "status", None) or r.getcode()
+                    if 200 <= int(code) < 300:
+                        _log(f"HTTP {code} {env['event_id']}")
+                        return True
+                    last = f"HTTP {code}"
+            except urllib.error.HTTPError as e:
+                last = f"HTTP {e.code}"
+                if 400 <= e.code < 500 and e.code not in (408, 429):
+                    break  # 签名/字段错：重试无意义，直接进死信
+            except Exception as e:
+                last = str(e)[:200]
+            if attempt < 2:
+                time.sleep(_IF_BACKOFF[min(attempt, len(_IF_BACKOFF) - 1)])
+        _log(f"FAIL {last} {env['event_id']}")
+        try:
+            INSFLOW_OUTBOX_FAILED.parent.mkdir(parents=True, exist_ok=True)
+            with open(INSFLOW_OUTBOX_FAILED, "a", encoding="utf-8") as f:
+                f.write(json.dumps({"at": datetime.now().isoformat(timespec="seconds"), "url": url,
+                                    "error": last, "envelope": env}, ensure_ascii=False) + "\n")
+        except Exception:
+            pass
+        return False
+
+    def _safe():
+        try:
+            return _do()
+        except Exception as e:
+            print(f"[console] insightflow emit failed: {e}", file=sys.stderr)
+            return False
+
+    if sync:
+        return _safe()
+    try:
+        threading.Thread(target=_safe, daemon=True).start()
+    except Exception:
+        return False
+    return True
 
 
 def webhook_test(wid):
@@ -4686,7 +4781,11 @@ def _bh_publish_sanity(item, task, proj):
                                     category=item.get("category", ""), title=item.get("title", ""),
                                     dry_run=dry)
     if not r.get("ok"):
-        raise RuntimeError(r.get("error") or f"发布失败：{r.get('validation_errors')}")
+        _err = r.get("error") or f"发布失败：{r.get('validation_errors')}"
+        if not dry:
+            publish_record_failure(proj, str(item.get("item_id") or ""), "sanity", _err,
+                                   actor=task.get("created_by", ""))
+        raise RuntimeError(_err)
     if not dry:
         usage_add(task.get("created_by", ""), writes=1)
         try:
@@ -4702,6 +4801,13 @@ def _bh_publish_sanity(item, task, proj):
                              extra={"slug": item.get("slug", ""), "mode": mode, "no_rollback": True})
         except Exception as _e:
             print(f"[console] audit publish failed: {_e}", file=sys.stderr)
+        # 三方契约 v1.1：管线内条目 → 回执 + S5-published + content.published（非管线条目自动跳过）
+        _iid = str(item.get("item_id") or "")
+        if _iid:
+            publish_record_success(proj, _iid, "sanity",
+                                   external_id=str(r.get("doc_id") or r.get("documentId") or item.get("doc_id") or ""),
+                                   url=_sanity_public_url(item.get("slug") or _iid, item.get("lang", "")),
+                                   title=item.get("title", ""), actor=task.get("created_by", ""))
     return r
 
 
@@ -8267,14 +8373,18 @@ def onboard_seed(limit=3, proj=None):
 
 
 
-def loop_new(proj, item_id, ctype="blog", lang="zh", topic="", brief="", template_id=""):
-    """创建 Loop 并入队（供 /api/loop/create 与自动化复用）。"""
-    if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,78}", item_id):
+def loop_new(proj, item_id, ctype="blog", lang="zh", topic="", brief="", template_id="",
+             goal="", insight_id="", source=""):
+    """创建 Loop 并入队（供 /api/loop/create 与自动化复用）。
+    insight_id / source（三方契约 v1.1）随 loop 落盘，并同步写入条目 origin 便于发布回流时追溯。"""
+    if not re.fullmatch(r"[a-z0-9][a-z0-9-]{2,79}", item_id):
         raise ValueError("id 不合法")
     pp = proj_paths(proj)
-    loop = {"id": secrets.token_hex(4), "item_id": item_id, "goal": topic[:200],
+    insight_id, source = str(insight_id or "")[:128], str(source or "")[:64]
+    loop = {"id": secrets.token_hex(4), "item_id": item_id, "goal": (goal or topic)[:200],
             "template_id": template_id, "type": ctype, "lang": lang,
             "topic": topic[:300], "brief": brief[:800],
+            "insight_id": insight_id, "source": source,
             "status": "queued", "round": 0, "max_rounds": 3, "tokens_used": 0,
             "created": datetime.now().strftime("%Y-%m-%d %H:%M"), "log": []}
     with LOOP_LOCK:
@@ -8282,9 +8392,167 @@ def loop_new(proj, item_id, ctype="blog", lang="zh", topic="", brief="", templat
         loops.append(loop)
         pp["loops"].parent.mkdir(parents=True, exist_ok=True)
         pp["loops"].write_text(json.dumps(loops, ensure_ascii=False, indent=1))
-    ps_run([sys.executable, str(PS_PATH), "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
-            "upsert", "--id", item_id, "--category", ctype])
+    up = [sys.executable, str(PS_PATH), "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
+          "upsert", "--id", item_id, "--category", ctype]
+    if insight_id:
+        up.append(f"--insight-id={insight_id}")
+    if source:
+        up.append(f"--source={source}")
+    ps_run(up)
     return loop["id"]
+
+
+# ===================== 三方契约 v1.1：条目/Loop 写接口（人工会话与机器 token 共用）=====================
+MACHINE_WRITE_PATHS = ("/api/item/upsert", "/api/item/advance", "/api/loop/create")
+_UPSERT_ORIGIN_KEYS = ("topic", "brief", "source", "insight_id", "keyword", "target_url")
+
+
+def machine_write_enabled():
+    return os.environ.get("MFLOW_MACHINE_WRITE", "").strip() == "1"
+
+
+def api_item_upsert(proj, body):
+    """→ (http_code, {"ok", "id", "rc", "out"})。来源字段落在 item["origin"]。"""
+    item_id = str(body.get("id", "")).strip()
+    if not PS.ID_RE.fullmatch(item_id):
+        msg = "id 必须是小写字母/数字/连字符（3-80 位，^[a-z0-9][a-z0-9-]{2,79}$）"
+        return 400, {"ok": False, "id": item_id, "rc": 2, "out": msg, "error": msg}
+    pp = proj_paths(proj)
+    args = [sys.executable, str(PS_PATH), "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
+            "upsert", "--id", item_id,
+            "--category", str(body.get("category", "blog")),
+            "--target-type", str(body.get("target_type", "blog"))]
+    for k in _UPSERT_ORIGIN_KEYS:  # 用 --k=v 形式，值以 - 开头也不会被 argparse 误判
+        v = body.get(k)
+        if v not in (None, ""):
+            args.append(f"--{k.replace('_', '-')}={str(v)[:4000]}")
+    ev = body.get("evidence")
+    if ev not in (None, "", []):
+        ev_s = ev if isinstance(ev, str) else json.dumps(ev, ensure_ascii=False)
+        args.append(f"--evidence={ev_s[:20000]}")
+    r = ps_run(args)
+    ok = r["rc"] == 0
+    return (200 if ok else 400), {"ok": ok, "id": item_id, **r}
+
+
+def api_item_advance(proj, body, default_reason="console"):
+    item_id = str(body.get("id") or body.get("item_id") or "").strip()  # item_id 为兼容别名
+    to = str(body.get("to", "")).strip()
+    if not item_id or not to:
+        msg = "id（或 item_id）与 to 必填"
+        return 400, {"ok": False, "id": item_id, "rc": 2, "out": msg, "error": msg}
+    pp = proj_paths(proj)
+    r = ps_run([sys.executable, str(PS_PATH), "--state-path", str(pp["state"]), "--events-path", str(pp["events"]),
+                "advance", "--id", item_id, "--to", to,
+                f"--reason={str(body.get('reason', default_reason))[:200]}"])
+    ok = r["rc"] == 0
+    return (200 if ok else 400), {"ok": ok, "id": item_id, **r}
+
+
+def api_loop_create(proj, body):
+    item_id = str(body.get("item_id", "")).strip()
+    try:
+        lid = loop_new(proj, item_id, ctype=str(body.get("type", "blog")),
+                       lang=str(body.get("lang", "zh")), topic=str(body.get("topic", "")),
+                       brief=str(body.get("brief", "")), template_id=str(body.get("template_id", "")),
+                       goal=str(body.get("goal", "") or ""), insight_id=str(body.get("insight_id", "") or ""),
+                       source=str(body.get("source", "") or ""))
+    except ValueError as e:
+        return 400, {"ok": False, "item_id": item_id, "error": str(e)}
+    return 200, {"ok": True, "loop_id": lid, "id": lid, "item_id": item_id, "queued": True}
+
+
+API_WRITE_HANDLERS = {"/api/item/upsert": api_item_upsert, "/api/item/advance": api_item_advance,
+                      "/api/loop/create": api_loop_create}
+
+
+# ===================== 三方契约 v1.1：发布回执 → 状态机 → 回流 =====================
+_PUBLISH_ROUTE = ["S4-qa", "S4-ready", "S5-importing", "S5-published"]
+
+
+def _sanity_public_url(slug, lang=""):
+    lang = str(lang or "").strip()
+    return "https://www.lovart.ai" + (f"/{lang}" if lang and lang != "en" else "") + f"/{slug}"
+
+
+def _pipeline_item(proj, item_id):
+    return ((read_json(proj_paths(proj)["state"], {}) or {}).get("items") or {}).get(item_id)
+
+
+def _item_links(proj, item_id, item=None):
+    """→ (loop_id, insight_id)：insight_id 优先取条目 origin，其次取该条目最近一个 loop。"""
+    item = item or _pipeline_item(proj, item_id) or {}
+    insight_id = str((item.get("origin") or {}).get("insight_id") or "")
+    loop_id = ""
+    for lp in reversed(read_json(proj_paths(proj)["loops"], []) or []):
+        if isinstance(lp, dict) and lp.get("item_id") == item_id:
+            loop_id = str(lp.get("id", ""))
+            insight_id = insight_id or str(lp.get("insight_id") or "")
+            break
+    return loop_id, insight_id
+
+
+def publish_record_success(proj, item_id, target, external_id="", url="", title="", actor=""):
+    """发布成功收尾：写 publish 回执 → 按转移表推进到 S5-published → 发 content.published。
+    只处理管线中存在的条目；全程吞异常，绝不影响发布结果。"""
+    out = {"tracked": False, "advanced": [], "emitted": False}
+    try:
+        it = _pipeline_item(proj, item_id) if item_id else None
+        if not it:
+            return out
+        out["tracked"] = True
+        pp = proj_paths(proj)
+        base = [sys.executable, str(PS_PATH), "--state-path", str(pp["state"]), "--events-path", str(pp["events"])]
+        epoch = int(time.time())
+        now_z = _if_utc(epoch)
+        pub = {"url": url or "", "target": target, "external_id": str(external_id or ""),
+               "imported_at": now_z, "published_at": now_z, "status": "published"}
+        if target == "sanity" and external_id:
+            pub["sanity_id"] = str(external_id)  # 兼容 check：S5-published 要求 publish.sanity_id
+        r = ps_run(base + ["set-publish", "--id", item_id, "--json", json.dumps(pub, ensure_ascii=False)])
+        if r["rc"] != 0:
+            out["publish_error"] = r["out"][-300:]
+        cur = it.get("stage", "")
+        if cur in _PUBLISH_ROUTE:
+            for nxt in _PUBLISH_ROUTE[_PUBLISH_ROUTE.index(cur) + 1:]:
+                r = ps_run(base + ["advance", "--id", item_id, "--to", nxt,
+                                   f"--reason=publish:{target} by {actor or 'system'}"])
+                if r["rc"] != 0:
+                    out["advance_error"] = r["out"][-300:]
+                    break
+                out["advanced"].append(nxt)
+        else:
+            out["advance_skipped"] = f"stage={cur} 不在发布路由 {_PUBLISH_ROUTE} 上，未推进"
+        loop_id, insight_id = _item_links(proj, item_id, it)
+        data = {"item_id": item_id, "loop_id": loop_id, "insight_id": insight_id, "url": url or "",
+                "title": title or str((it.get("origin") or {}).get("topic") or item_id),
+                "target": target, "published_at": now_z, "project": proj}
+        webhook_emit("content.published", data)
+        emit_to_insightflow("content.published", data, epoch=epoch)
+        out["emitted"] = True
+    except Exception as e:
+        out["error"] = str(e)[:200]
+        print(f"[console] publish_record_success failed: {e}", file=sys.stderr)
+    return out
+
+
+def publish_record_failure(proj, item_id, target, error, actor=""):
+    """发布失败：发 content.failed（stage=条目当前管线阶段）。不改状态，不抛异常。"""
+    try:
+        it = _pipeline_item(proj, item_id) if item_id else None
+        if not it:
+            return False
+        epoch = int(time.time())
+        loop_id, insight_id = _item_links(proj, item_id, it)
+        data = {"item_id": item_id, "loop_id": loop_id, "insight_id": insight_id,
+                "stage": it.get("stage", ""), "step": f"publish:{target}", "target": target,
+                "error": str(error or "unknown")[:500], "failed_at": _if_utc(epoch), "project": proj}
+        webhook_emit("content.failed", data)
+        emit_to_insightflow("content.failed", data, epoch=epoch)
+        return True
+    except Exception as e:
+        print(f"[console] publish_record_failure failed: {e}", file=sys.stderr)
+        return False
 
 
 # ===================== P1-1 多语言覆盖盘点 =====================
@@ -9903,6 +10171,26 @@ class Handler(BaseHTTPRequestHandler):
         tok = self.headers.get("X-MFlow-Token", "")
         return bool(tok) and secrets.compare_digest(tok, API_TOKEN)
 
+    def _machine_write(self):
+        """机器 token 写入（仅 MACHINE_WRITE_PATHS）。项目取 body.project，缺省 DEFAULT_PROJECT。"""
+        body = self._body()
+        proj = str(body.get("project", "") or DEFAULT_PROJECT).strip()
+        if not re.fullmatch(r"[A-Za-z0-9_-]{1,64}", proj):
+            return self._send(400, {"ok": False, "error": "project 不合法"})
+        if proj == DEFAULT_PROJECT:
+            ensure_project(proj)
+        elif not (PROJECTS_DIR / proj).is_dir():
+            return self._send(400, {"ok": False, "error": f"项目不存在：{proj}"})
+        h = API_WRITE_HANDLERS[self.path]
+        code, resp = h(proj, body, default_reason="machine") if h is api_item_advance else h(proj, body)
+        try:
+            with open(RUN_DIR / "approvals.log", "a") as f:
+                f.write(f"{datetime.now().isoformat(timespec='seconds')} MACHINE-WRITE {self.path} "
+                        f"proj={proj} id={resp.get('id') or resp.get('item_id', '')} ok={resp.get('ok')}\n")
+        except Exception:
+            pass
+        return self._send(code, resp)
+
     def _me(self):
         sess = SESSIONS.get(self._sid(), "")
         return sess.get("username", "") if isinstance(sess, dict) else str(sess)
@@ -9915,6 +10203,13 @@ class Handler(BaseHTTPRequestHandler):
 
     def _visible_projects(self):
         return user_projects(self._me(), self._role())
+
+    def _proj_for(self, body):
+        """契约 v1.1 §3：写接口可在 body.project 指定已存在的项目；否则用会话项目。"""
+        proj = str((body or {}).get("project", "") or "").strip()
+        if proj and re.fullmatch(r"[A-Za-z0-9_-]{1,64}", proj) and (PROJECTS_DIR / proj).is_dir():
+            return proj
+        return self._proj()
 
     def _proj(self):
         sess = SESSIONS.get(self._sid(), {})
@@ -10486,6 +10781,9 @@ class Handler(BaseHTTPRequestHandler):
             return self._send(200, {"ok": True, "tool": body.get("name"),
                                     "result": mcp_tool(str(body.get("name", "")), body.get("args") or {}, self._proj())})
         if self._machine() and not self._me():  # 机器联动 token：只读，写动作必须真人会话
+            # 三方契约 v1.1：MFLOW_MACHINE_WRITE=1 时仅放行 3 个条目/Loop 写接口
+            if machine_write_enabled() and self.path in MACHINE_WRITE_PATHS:
+                return self._machine_write()
             return self._send(403, {"error": "机器 token 仅限 GET；写操作请以用户身份登录"})
         # ── 公开：买家提交交易哈希 / 外部支付 webhook（无会话）──
         if self.path == "/api/pay/claim":
@@ -10627,22 +10925,11 @@ class Handler(BaseHTTPRequestHandler):
                     pass
                 return self._send(200, {"ok": True})
             if self.path == "/api/item/upsert":
-                item_id = str(body.get("id", "")).strip()
-                if not re.fullmatch(r"[a-z0-9][a-z0-9-]{1,78}", item_id):
-                    return self._send(400, {"error": "id 必须是小写字母/数字/连字符"})
-                r = ps_run([sys.executable, str(PS_PATH),
-                              "--state-path", str(self._st()), "--events-path", str(self._ev()),
-                              "upsert", "--id", item_id,
-                              "--category", str(body.get("category", "blog")),
-                              "--target-type", str(body.get("target_type", "blog"))])
-                return self._send(200 if r["rc"] == 0 else 400, r)
+                code, resp = api_item_upsert(self._proj_for(body), body)
+                return self._send(code, resp)
             if self.path == "/api/item/advance":
-                r = ps_run([sys.executable, str(PS_PATH),
-                              "--state-path", str(self._st()), "--events-path", str(self._ev()),
-                              "advance", "--id", str(body.get("id", "")),
-                              "--to", str(body.get("to", "")),
-                              "--reason", str(body.get("reason", "console"))[:200]])
-                return self._send(200 if r["rc"] == 0 else 400, r)
+                code, resp = api_item_advance(self._proj_for(body), body)
+                return self._send(code, resp)
             if self.path == "/api/router/decide":
                 if not ROUTER:
                     return self._send(500, {"error": "router unavailable"})
@@ -10963,6 +11250,7 @@ class Handler(BaseHTTPRequestHandler):
                     with open(RUN_DIR / "approvals.log", "a") as f:
                         f.write(f"{datetime.now().isoformat(timespec='seconds')} SANITY-PUBLISH {item_id} doc={r.get('doc_id')} by={self._me()}\n")
                     # 发布后回读校验（尽力而为：失败不阻塞发布，只留痕+提醒）
+                    _live, _tries = "", []
                     try:
                         _lang = str(body.get("lang", "")).strip()
                         _slug = str(body.get("slug", "")).strip() or item_id
@@ -10987,6 +11275,14 @@ class Handler(BaseHTTPRequestHandler):
                                         f"（slug={_slug} lang={_lang}）——可能 CDN 延迟，也可能 slug/路径不对，请人工确认")
                     except Exception:
                         pass
+                    # 三方契约 v1.1：回执 → S5-published → content.published
+                    r["pipeline"] = publish_record_success(
+                        self._proj(), item_id, "sanity", external_id=str(r.get("doc_id") or ""),
+                        url=_live or (_tries[0] if _tries else ""), title=str(body.get("title", "")),
+                        actor=self._me())
+                elif not r.get("ok") and not dry:
+                    publish_record_failure(self._proj(), item_id, "sanity",
+                                           r.get("error") or f"发布失败：{r.get('validation_errors')}", actor=self._me())
                 return self._send(200 if r.get("ok") else 400, r)
             if self.path == "/api/publish/wordpress":
                 path = str(body.get("path", ""))
@@ -10995,6 +11291,13 @@ class Handler(BaseHTTPRequestHandler):
                 if not ok:
                     return self._send(400, {"error": why})
                 r = publish_wordpress(path, item_id, str(body.get("title", "")))
+                if r.get("ok"):
+                    r["pipeline"] = publish_record_success(
+                        self._proj(), item_id, "wordpress", external_id=str(r.get("cms_id") or ""),
+                        url=str(r.get("url") or ""), title=str(body.get("title", "")), actor=self._me())
+                else:
+                    publish_record_failure(self._proj(), item_id, "wordpress", r.get("error") or "发布失败",
+                                           actor=self._me())
                 return self._send(200 if r.get("ok") else 400, r)
             if self.path == "/api/budget/override":
                 try:
@@ -11589,14 +11892,8 @@ class Handler(BaseHTTPRequestHandler):
                                         "quota_rc": quota["rc"], "quota_out": quota["out"][-1500:],
                                         "lang_rc": langc["rc"], "lang_out": langc["out"][-1500:]})
             if self.path == "/api/loop/create":
-                item_id = str(body.get("item_id", "")).strip()
-                try:
-                    lid = loop_new(self._proj(), item_id, ctype=str(body.get("type", "blog")),
-                                   lang=str(body.get("lang", "zh")), topic=str(body.get("topic", "")),
-                                   brief=str(body.get("brief", "")), template_id=str(body.get("template_id", "")))
-                except ValueError as e:
-                    return self._send(400, {"error": str(e)})
-                return self._send(200, {"ok": True, "id": lid, "queued": True})
+                code, resp = api_loop_create(self._proj_for(body), body)
+                return self._send(code, resp)
             if self.path == "/api/loop/stop":
                 loops = read_json(self._lp(), [])
                 for x in loops:

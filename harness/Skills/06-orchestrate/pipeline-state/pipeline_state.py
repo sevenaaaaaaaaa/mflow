@@ -46,6 +46,7 @@ Usage:
     pipeline_state.py advance --id ID --to STAGE [--reason R]
     pipeline_state.py run --id ID [--qa-result JSON]  # QA result patch
     pipeline_state.py check --id ID                   # is it ready for next stage?
+    pipeline_state.py set-publish --id ID --json OBJ  # merge publish receipt (url/target/external_id)
     pipeline_state.py summary                        # dashboard counters
 
 Default state file: genflow/.pipeline/pipeline-state.json
@@ -247,6 +248,13 @@ def cmd_upsert(args) -> int:
         v = getattr(args, k, None)
         if v is not None:
             item[k] = v
+    # 三方契约 v1.1：来源字段（InFlow 洞察 → MFlow 条目）统一收在 item["origin"]，
+    # 旧条目没有该键 → 读取方一律 item.get("origin") or {}，向后兼容。
+    origin_patch = _origin_from_args(args)
+    if origin_patch:
+        origin = dict(item.get("origin") or {})
+        origin.update(origin_patch)
+        item["origin"] = origin
     item["updated_at"] = _now()
 
     state["items"][item_id] = item
@@ -261,6 +269,67 @@ def cmd_upsert(args) -> int:
         "skill": item["skill"],
     })
     print(f"[upsert] {item_id} → stage={item['stage']} (exists={existing is not None})")
+    return 0
+
+
+ORIGIN_FIELDS = {
+    # 字段 → 长度上限（字符）
+    "topic": 300, "brief": 2000, "source": 64, "insight_id": 128,
+    "keyword": 200, "target_url": 1000,
+}
+
+
+def _parse_evidence(raw: str) -> list:
+    """evidence 接受 JSON 数组或纯字符串；统一存为数组（最多 20 条）。"""
+    try:
+        v = json.loads(raw)
+    except (TypeError, ValueError):
+        v = raw
+    if isinstance(v, list):
+        out = v
+    elif v in (None, ""):
+        out = []
+    else:
+        out = [v if isinstance(v, (dict, str)) else str(v)]
+    return out[:20]
+
+
+def _origin_from_args(args) -> dict:
+    patch: dict[str, Any] = {}
+    for k, cap in ORIGIN_FIELDS.items():
+        v = getattr(args, k, None)
+        if v is not None and str(v) != "":
+            patch[k] = str(v)[:cap]
+    ev = getattr(args, "evidence", None)
+    if ev is not None and str(ev) != "":
+        patch["evidence"] = _parse_evidence(ev)
+    return patch
+
+
+def cmd_set_publish(args) -> int:
+    """合并发布回执到 item["publish"]（url / target / external_id / imported_at …）。
+    不改 stage——推进仍走 advance，保证转移表是唯一闸门。"""
+    state_path = Path(args.state_path).expanduser()
+    state = _load_state(state_path)
+    item = state["items"].get(args.id)
+    if item is None:
+        raise NotFoundError(f"id not found: {args.id}")
+    try:
+        patch = json.loads(args.json)
+    except json.JSONDecodeError as e:
+        raise StateError(f"--json not valid JSON: {e}") from e
+    if not isinstance(patch, dict):
+        raise StateError("--json must be an object")
+    pub = dict(item.get("publish") or {})
+    pub.update(patch)
+    item["publish"] = pub
+    item["updated_at"] = _now()
+    state["items"][args.id] = item
+    _atomic_write_json(state_path, state)
+    _append_event(Path(args.events_path).expanduser(), {
+        "ts": _now(), "event": "publish", "id": args.id, "publish": pub,
+    })
+    print(f"[set-publish] {args.id}: {sorted(patch)}")
     return 0
 
 
@@ -493,6 +562,9 @@ def _print_item_human(item: dict) -> None:
     print(f"agent:        {item.get('agent')}")
     print(f"skill:        {item.get('skill')}")
     print(f"artifact:     {item.get('artifact_path')}")
+    origin = item.get("origin") or {}
+    if origin:
+        print(f"origin:       {json.dumps(origin, ensure_ascii=False)[:300]}")
     print(f"fix_count:    {item.get('fix_count', 0)}")
     qa = item.get("qa", {})
     print(f"qa.l1_block:  {qa.get('l1_block')}")
@@ -537,7 +609,20 @@ def build_parser() -> argparse.ArgumentParser:
     s.add_argument("--artifact-path")
     s.add_argument("--agent")
     s.add_argument("--skill")
+    # 三方契约 v1.1 来源字段（存于 item["origin"]）
+    s.add_argument("--topic")
+    s.add_argument("--brief")
+    s.add_argument("--source")
+    s.add_argument("--insight-id", dest="insight_id")
+    s.add_argument("--evidence", help="JSON array or plain string")
+    s.add_argument("--keyword")
+    s.add_argument("--target-url", dest="target_url")
     s.set_defaults(func=cmd_upsert)
+
+    s = sub.add_parser("set-publish", help="merge publish receipt fields into item.publish")
+    s.add_argument("--id", required=True)
+    s.add_argument("--json", required=True, help='JSON object, e.g. {"url":"...","target":"sanity"}')
+    s.set_defaults(func=cmd_set_publish)
 
     s = sub.add_parser("get", help="show one item")
     s.add_argument("--id", required=True)
