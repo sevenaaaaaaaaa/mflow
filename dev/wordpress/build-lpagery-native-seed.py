@@ -245,8 +245,6 @@ FIELDNAMES = [
          for i in range(1, 5)), []) \
   + ["tabs_title"] \
   + sum((["tabs_%d_title" % i, "tabs_%d_html" % i] for i in range(1, 5)), []) \
-  + sum((["review_%d_quote" % i, "review_%d_name" % i, "review_%d_role" % i]
-         for i in range(1, 4)), []) \
   + ["pricing_title"] \
   + sum((["pricing_%s_name" % p, "pricing_%s_monthly" % p, "pricing_%s_annual" % p,
           "pricing_%s_tagline" % p, "pricing_%s_features" % p]
