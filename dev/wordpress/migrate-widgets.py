@@ -398,7 +398,8 @@ def extract_pricing(html, page_file):
     P = _js_object("LR_PRICING")
     M, Y = P.get("monthly") or [], P.get("yearly") or []
     if not M or not Y:
-        return None, "LR_PRICING 缺 monthly/yearly 组（replica.js 结构变了？）"
+        return None, ("LR_PRICING 已随 replica.js v18 删除（定价内容定稿于 Elementor，"
+                      "重迁请从 elem-migrated 复制 plan_items；值序铁律见本函数 docstring）")
     ymap = {y.get("name"): y for y in Y}
     rows = []
     for x in M:
@@ -416,22 +417,27 @@ def extract_pricing(html, page_file):
         if y.get("bill"):
             feats.insert(0, y["bill"])   # 功能清单首行 = 年付计费说明（默认态）
         hot = bool(x.get("hot"))
+        # 槽序铁律：值序必须与模板 add_control 定义序一致
+        # （plan_name → is_featured → featured_badge → currency → price_monthly →
+        #   price_annual → period → tagline → features → cta_text → cta_url → cta_variant）
+        # 曾因自创序导致全列错位（currency=16 / tagline='yes'），见 HANDOVER §十二
         rows.append([
             str(x.get("name", "")),
+            "yes" if hot else "no",
+            "Most popular" if hot else "",
             "$",
             str(x.get("price", "")),
             str(y.get("price", "")),
             "/month",
             tagline,
             "\n".join(feats),
-            "yes" if hot else "",
-            "Most popular" if hot else "",
             "Get started",
             "https://www.lovart.ai/canvas",
             "primary",
         ])
-    labels = ["档名", "货币", "月价", "年价", "计价周期", "tagline(划线/省钱)",
-              "功能清单(首行计费说明)", "推荐", "徽章", "按钮文案", "按钮链接", "按钮样式"]
+    labels = ["档名", "推荐", "徽章", "货币", "月价", "年价", "计价周期",
+              "tagline(划线/省钱)", "功能清单(首行计费说明)",
+              "按钮文案", "按钮链接", "按钮样式"]
     return {"reps": {"A": rows}, "labels": {"A": labels},
             "prepend": _head_prepend(html),
             "note": "定价全站共用一份（LR_PRICING），12 页填同样内容；月年切换由微件原生支持"}, ""

@@ -422,7 +422,7 @@
       if (!/lovart-(replica|faithful-mirror)\.css/.test(l.href)) return;
       if (l.crossorigin) return; // HTML 已是 CORS 模式，无需处理
       var u = new URL(l.href, location.href);
-      u.searchParams.set("r", Date.now().toString(36));
+      u.searchParams.set("r", "stable"); // 固定键：CDN 可缓存，坏缓存条目仍被绕开
       l.crossorigin = "anonymous";
       l.href = u.toString();
     });

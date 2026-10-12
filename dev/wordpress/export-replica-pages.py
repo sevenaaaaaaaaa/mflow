@@ -88,6 +88,10 @@ def main():
         full = get_json(op, "%s/wp-json/wp/v2/pages/%d?_fields=slug,template,content" % (BASE, p["id"]))
         html = full["content"]["rendered"]
         html = re.sub(r"<!--\s*/?wp:html\s*-->", "", html).strip()
+        # 设计说明泄漏根治（HANDOVER P4）：整段清除"cta · bgStyle: …"类说明 <p>
+        html = re.sub(
+            r'<(p|span|div)[^>]*>\\s*(?:cta|section|block|hero|card)\\s*[·・:\\-]\\s*'
+            r'(?:bgStyle|bg|style|layout)\\s*:[^<]*</\\1>\\s*', "", html)
         out = os.path.join(ASSET_DIR, "%s.html" % p["slug"])
         io.open(out, "w", encoding="utf-8").write(html + "\n")
         os.chmod(out, 0o644)

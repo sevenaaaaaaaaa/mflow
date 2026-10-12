@@ -65897,13 +65897,13 @@
   0% { height: var(--radix-collapsible-content-height,var(--bits-collapsible-content-height,var(--reka-collapsible-content-height,var(--kb-collapsible-content-height,auto)))); }
   100% { height: 0px; }
 }
-.lr .lovart-replica-scope {
+.lr .lovart-replica-scope, .lr.lovart-replica-scope {
   background: var(--bg-base-default); color: var(--text-default);
 }
-.lr .lovart-replica-scope button, .lr .lovart-replica-scope [role="button"], .lr .lovart-replica-scope summary {
+.lr .lovart-replica-scope, .lr.lovart-replica-scope button, .lr .lovart-replica-scope, .lr.lovart-replica-scope [role="button"], .lr .lovart-replica-scope, .lr.lovart-replica-scope summary {
   background-color: transparent; box-shadow: none; color: var(--text-default); border: none !important;
 }
-.lr .lovart-replica-scope a {
+.lr .lovart-replica-scope, .lr.lovart-replica-scope a {
   color: inherit; text-decoration: none;
 }
 .lr .lovart-site-header .lovart-header__inner {
@@ -65915,14 +65915,14 @@
 .lr .lovart-site-header.is-scrolled .lovart-header__inner {
   height: 44px;
 }
-.lr .lovart-replica-scope [data-lp-section] {
+.lr .lovart-replica-scope, .lr.lovart-replica-scope [data-lp-section] {
   overflow: visible;
 }
 @keyframes lovart-marquee { 
   0% { transform: translateX(0px); }
   100% { transform: translateX(-50%); }
 }
-.lr .lovart-replica-scope .lovart-marquee-track {
+.lr .lovart-replica-scope, .lr.lovart-replica-scope .lovart-marquee-track {
   display: flex; width: max-content; animation: 40s linear 0s infinite normal none running lovart-marquee;
 }
 .lr .unlimited-elements-background-overlay {

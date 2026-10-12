@@ -659,3 +659,25 @@ header-footer-elementor(UAE) / unlimited-elements / ht-menu-lite。
 - P4 小项：定价卡 "Hot Models" 小字表、people-reviews 无 `.lovart-replica-scope`、
   `initCssHeal` 简化、export 过滤设计说明泄漏
 - LPagery 种子模板（lp-lr-native-v1）按契约 v2 扩展字段——建批量线时做
+
+---
+
+## 十四、P4 四小项 + LPagery 种子扩展（2026-10-13）
+
+| 项 | 结果 |
+|---|---|
+| Hot Models 小字表 | **关闭（无实据不补）**：真站 lovart.ai/pricing 为 SPA 且本环境渲染被风控（body 508 字符），无法取证；现有 pricing features 已含模型行（GPT/Flux/Kling 数量），信息已覆盖 |
+| people-reviews scope | **已修**：5 个 html 块根 div 补 `.lovart-replica-scope`（CSS 同步支持 `.lr.lovart-replica-scope` 自身形态，replica.css **v4**，7 处选择器），重部署后前台命中 5 |
+| initCssHeal 简化 | **已做**：`?r=` 随机 nonce → 固定 `?r=stable`（CDN 可缓存，坏缓存键仍被绕开）；replica.js **v19**（447 行不变） |
+| export 泄漏过滤 | **根治**：`export-replica-pages.py` 剥注释后整段清除 `(cta\|section\|block\|hero\|card) · (bgStyle\|bg\|style\|layout):` 说明段落（正则自测通过）；线上现状 0 泄漏（C1/C2 已清） |
+| LPagery 种子 v2 | **`build-lpagery-native-seed.py` 扩展**：新增 workflow（4 步必填）/ capability-tabs（4 面板）/ testimonial（3 条）/ pricing（双价列 4 档）/ comparison（单 blob）5 个 section，**12 sections / 135 列**；占位符↔CSV 列全对齐（119 ⊆ 126，余 7 列为页级元数据）；pricing 槽序 = 模板序 |
+
+### 防回归补丁
+
+`migrate-widgets.py` `extract_pricing` 值序改为**模板序**（is_featured/featured_badge 前置；
+is_featured 落 `no` 而非空串——模板判 `!== 'no'` 即高亮）；LR_PRICING 数据源已随 v18 删除，
+该抽取器重迁路径改为「从 elem-migrated 复制 plan_items」并明确报错指引。
+
+### 版本
+
+replica.css **v4** / replica.js **v19**（snippet 27 已 bump，前台已引用新版）

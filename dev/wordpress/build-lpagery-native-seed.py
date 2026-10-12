@@ -113,6 +113,101 @@ def build_seed():
         }, "FAQ accordion"),
     ], "LPagery FAQ")
 
+    # ---- v2 扩展（契约 native-modules/csv-contract.md v2）----
+    # workflow：HT Mega Vertical Timeline，repeater custom_content_list
+    wf_rows = []
+    for i in range(1, 5):
+        wf_rows.append({
+            "_id": ids.next(),
+            "content_date": "{workflow_%d_step}" % i,
+            "content_title": "{workflow_%d_title}" % i,
+            "content_text": "{workflow_%d_desc}" % i,
+        })
+    workflow = native_section(ids, "workflow-vertical", [
+        N.heading(ids, "{workflow_title}", "h2", "Workflow title"),
+        N.widget(ids, "htmega-verticletimeline-addons", {
+            "custom_content_list": wf_rows,
+            "verticle_timeline_layout": "1",
+        }, "Workflow timeline"),
+    ], "LPagery Workflow")
+
+    # capability-tabs：EA Advanced Tabs，repeater eael_adv_tabs_tab（4 面板必填）
+    tab_rows = []
+    for i in range(1, 5):
+        tab_rows.append({
+            "_id": ids.next(),
+            "eael_adv_tabs_tab_title": "{tabs_%d_title}" % i,
+            "eael_adv_tabs_tab_content": "{tabs_%d_html}" % i,
+            "eael_adv_tabs_tab_id": "eael-tab-%d" % i,
+            "eael_adv_tabs_tab_show_as_default":
+                "active-default" if i == 1 else "inactive",
+            "eael_adv_tabs_text_type": "content",
+            "eael_adv_tabs_tab_title_html_tag": "span",
+        })
+    cap_tabs = native_section(ids, "capability-tabs", [
+        N.heading(ids, "{tabs_title}", "h2", "Capability tabs title"),
+        N.widget(ids, "eael-adv-tabs", {
+            "eael_adv_tabs_tab": tab_rows,
+        }, "Capability tabs"),
+    ], "LPagery Capability Tabs")
+
+    # testimonial：HT Mega 2026 Testimonials，repeater testimonial_items（3 条/页）
+    tm_rows = []
+    for i in range(1, 4):
+        tm_rows.append({
+            "_id": ids.next(),
+            "quote_text": "{review_%d_quote}" % i,
+            "rating": "5",
+            "author_name": "{review_%d_name}" % i,
+            "author_role": "{review_%d_role}" % i,
+            "author_company": "",
+        })
+    testimonial = native_section(ids, "testimonial", [
+        N.widget(ids, "htmega-2026-testimonials", {
+            "testimonial_items": tm_rows,
+        }, "Testimonials"),
+    ], "LPagery Testimonials")
+
+    # pricing：HT Mega 2026 Pricing，repeater plan_items —— 双价列（月/年同行）
+    PLANS = ["starter", "basic", "pro", "ultimate"]
+    plan_rows = []
+    for plan in PLANS:
+        featured = plan == "pro"
+        plan_rows.append({
+            "_id": ids.next(),
+            "plan_name": "{pricing_%s_name}" % plan,
+            "is_featured": "yes" if featured else "no",
+            "featured_badge": "Most popular" if featured else "",
+            "currency": "$",
+            "price_monthly": "{pricing_%s_monthly}" % plan,
+            "price_annual": "{pricing_%s_annual}" % plan,
+            "period": "/month",
+            "tagline": "{pricing_%s_tagline}" % plan,
+            "features": "{pricing_%s_features}" % plan,
+            "cta_text": "Get started",
+            "cta_url": {"url": "https://www.lovart.ai/canvas",
+                        "is_external": "", "nofollow": ""},
+            "cta_variant": "primary",
+        })
+    pricing = native_section(ids, "pricing-block", [
+        N.heading(ids, "{pricing_title}", "h2", "Pricing title"),
+        N.widget(ids, "htmega-2026-pricing", {
+            "plan_items": plan_rows,
+        }, "Pricing"),
+    ], "LPagery Pricing")
+
+    # comparison-table：EA Advanced Data Table —— 单 blob（无行列级字段）
+    comparison = native_section(ids, "comparison-table", [
+        N.heading(ids, "{compare_title}", "h2", "Comparison title"),
+        N.widget(ids, "eael-advanced-data-table", {
+            "ea_adv_data_table_source": "static",
+            "ea_adv_data_table_static_html": "{compare_rows_html}",
+            "ea_adv_data_table_body_highlight": "last-col",
+            "ea_adv_data_table_body_l_col_highlight_background": "#f2f1ee",
+            "ea_adv_data_table_body_l_col_highlight_color": "#171612",
+        }, "Comparison table"),
+    ], "LPagery Comparison")
+
     cta = native_section(ids, "cta-default", [
         N.container(ids, [
             N.heading(ids, "{final_cta_title}", "h2", "Final CTA title"),
@@ -123,7 +218,8 @@ def build_seed():
     ], "LPagery Final CTA")
 
     return {"version": "3.35.7",
-            "data": [hero, stats, proof, reviews, portraits, faq, cta]}
+            "data": [hero, stats, proof, reviews, portraits, faq, workflow,
+                     cap_tabs, testimonial, pricing, comparison, cta]}
 
 
 FIELDNAMES = [
@@ -143,7 +239,19 @@ FIELDNAMES = [
           "portrait_%d_title" % i, "portrait_%d_body" % i]
          for i in range(1, 5)), []) \
   + sum((["faq_%d_question" % i, "faq_%d_answer" % i]
-         for i in range(1, 7)), [])
+         for i in range(1, 7)), []) \
+  + ["workflow_title"] \
+  + sum((["workflow_%d_step" % i, "workflow_%d_title" % i, "workflow_%d_desc" % i]
+         for i in range(1, 5)), []) \
+  + ["tabs_title"] \
+  + sum((["tabs_%d_title" % i, "tabs_%d_html" % i] for i in range(1, 5)), []) \
+  + sum((["review_%d_quote" % i, "review_%d_name" % i, "review_%d_role" % i]
+         for i in range(1, 4)), []) \
+  + ["pricing_title"] \
+  + sum((["pricing_%s_name" % p, "pricing_%s_monthly" % p, "pricing_%s_annual" % p,
+          "pricing_%s_tagline" % p, "pricing_%s_features" % p]
+         for p in ("starter", "basic", "pro", "ultimate")), []) \
+  + ["compare_title", "compare_rows_html"]  # v2（csv-contract.md v2）
 
 
 def row(name, audience, slug, long=False):
@@ -191,6 +299,42 @@ def row(name, audience, slug, long=False):
     for i in range(1, 7):
         r["faq_%d_question" % i] = "How does workflow %d help %s?" % (i, audience)
         r["faq_%d_answer" % i] = "It keeps content editable and reusable."
+    # ---- v2 默认值 ----
+    r["workflow_title"] = "How %s teams ship with Lovart" % name
+    for i in range(1, 5):
+        r["workflow_%d_step" % i] = str(i)
+        r["workflow_%d_title" % i] = "Step %d" % i
+        r["workflow_%d_desc" % i] = ("Describe step %d for %s — short noun phrases, "
+                                     "Touch/Edit terms." % (i, name))
+    r["tabs_title"] = "What %s teams make" % name
+    for i in range(1, 5):
+        r["tabs_%d_title" % i] = "Capability %d" % i
+        r["tabs_%d_html" % i] = ('<div class="lr dark"><h3>Capability %d</h3>'
+                                 '<p>Editable panel HTML for %s.</p></div>' % (i, name))
+    for i in range(1, 4):
+        r["review_%d_quote" % i] = "Lovart shortened our %s creative cycle." % name
+        r["review_%d_name" % i] = "Customer %d" % i
+        r["review_%d_role" % i] = "%s team" % name
+    r["pricing_title"] = "Simple pricing for %s" % name
+    plans = {"starter": ("19", "16", "Save $36 compared to monthly",
+                         "Billed annually, $192/year\n2000 Credits monthly"),
+             "basic": ("32", "27", "Save $60 compared to monthly",
+                       "Billed annually, $324/year\n3500 Credits monthly"),
+             "pro": ("79", "45", "<s>$90</s> 12% off \u00b7 Save $529 compared to monthly",
+                     "Billed annually, $540 first year\n11000 Credits monthly"),
+             "ultimate": ("169", "99", "<s>$199</s> \u00b7 Save $1,059 compared to monthly",
+                          "Billed annually, $1,188 first year\n26000 Credits monthly")}
+    for p_, (mo, an, tg, ft) in plans.items():
+        r["pricing_%s_name" % p_] = p_.capitalize()
+        r["pricing_%s_monthly" % p_] = mo
+        r["pricing_%s_annual" % p_] = an
+        r["pricing_%s_tagline" % p_] = tg
+        r["pricing_%s_features" % p_] = ft
+    r["compare_title"] = "Lovart vs common ways to produce %s creative" % name
+    r["compare_rows_html"] = ("<thead><tr><th>Need</th><th>Old way</th><th>Tools</th>"
+                              "<th>Lovart</th></tr></thead><tbody>"
+                              "<tr><td>Brief to draft</td><td>Days</td><td>Manual</td>"
+                              "<td>Minutes</td></tr></tbody>")
     return r
 
 
