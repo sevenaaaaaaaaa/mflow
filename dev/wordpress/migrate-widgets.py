@@ -34,6 +34,7 @@ widget-html 只有一个 `html` 字段装整块 DOM 字符串，不可寻址 →
 产出的 JSON 仍走你既有的 lr_elem_import 流程导入，本脚本不连任何站点。
 """
 import argparse
+import html as H
 import json
 import re
 import secrets
@@ -276,26 +277,105 @@ def extract_faq(html, page_file):
             "labels": {"A": ["问题", "答案"]}}, ""
 
 
+C4_COMPARE_ROWS = {
+    # C4（2026-10-12 定稿）：3 页对比表线上就是空壳（LR_COMPARE 无条目）。
+    # 按各页主题写全 5 行 × 4 列；comparison-hub / composite 的块内 h2 也是
+    # 跑题 Shopify 残留，一并覆盖（prepend 时用覆盖后的 h2）。
+    "comparison-hub": {
+        "h2": "Lovart vs common ways to produce product creative",
+        "rows": [
+            ["Turn one brief into a full asset set", "One image per prompt, no system", "Briefs, revisions, and handoffs per asset", "Full campaign set generated from one product brief"],
+            ["Keep every visual on brand", "Restyles with each generation", "Depends on who touches the file", "Brand Kit applied to every generation"],
+            ["Cover every channel and format", "Manual resizing, one canvas at a time", "Per-format fees and slow turnaround", "Social, ads, email, and PDP from one concept"],
+            ["Iterate on what performs", "Regenerate from scratch", "New round, new invoice", "Touch Edit the winner in place"],
+            ["Ship at launch speed", "Hours of prompting", "Weeks of lead time", "Launch-ready set in minutes"],
+        ],
+    },
+    "composite-replica-all": {
+        "h2": "Lovart vs common ways to produce product creative",
+        "rows": [
+            ["Turn one brief into a full asset set", "One image per prompt, no system", "Briefs, revisions, and handoffs per asset", "Full campaign set generated from one product brief"],
+            ["Keep every visual on brand", "Restyles with each generation", "Depends on who touches the file", "Brand Kit applied to every generation"],
+            ["Cover every channel and format", "Manual resizing, one canvas at a time", "Per-format fees and slow turnaround", "Social, ads, email, and PDP from one concept"],
+            ["Iterate on what performs", "Regenerate from scratch", "New round, new invoice", "Touch Edit the winner in place"],
+            ["Ship at launch speed", "Hours of prompting", "Weeks of lead time", "Launch-ready set in minutes"],
+        ],
+    },
+    "ai-design-for-small-business-hub": {
+        # h2 不跑题（"Lovart vs typical local business marketing"），沿用原块
+        "rows": [
+            ["Look professional on every platform", "Generic templates, same as everyone", "Print-only, dated layouts", "Studio-quality designs in your brand style"],
+            ["Keep brand consistent", "Colors and fonts drift per design", "Whatever the shop's template allows", "Brand Kit locked into every asset"],
+            ["Update promos fast", "Redo it yourself each time", "New order, new wait", "Touch Edit when the special changes"],
+            ["Cover print and digital", "Export sizes get fiddly", "Print comes first, digital is an afterthought", "Social posts, flyers, and signage from one design"],
+            ["Affordable ongoing creative", "Hours you don't have", "Per-run pricing adds up", "Flat subscription, unlimited designs"],
+        ],
+    },
+}
+
+
+def _head_prepend(html, h2_override=None):
+    """把对比表块内的 h2 + 副标题原样抽成独立 html 微件（prepend 用）。
+
+    h2/sub 是 tailwind 类排版，留在 html 微件里 replica.css 继续生效，
+    视觉零漂移；h2_override 时只换文字、保留原标签与类。
+    块内没有 h2 时返回 []。
+    """
+    try:
+        from bs4 import BeautifulSoup
+    except ImportError:
+        return []
+    soup = BeautifulSoup(html, "html.parser")
+    h2 = soup.find("h2")
+    if not h2:
+        return []
+    if h2_override:
+        h2.string = h2_override
+    parts = [str(h2)]
+    sub = h2.find_next_sibling("p")
+    if sub is not None:
+        parts.append(str(sub))
+    wrap = f'<div class="lr-keep-head">{"".join(parts)}</div>'
+    return [{"elType": "widget", "widgetType": "html",
+             "settings": {"html": wrap}, "elements": [], "isInner": False}]
+
+
 def extract_comparison(html, page_file):
-    """对比表：**表头在 HTML 的 <th> 里，表体在 LR_COMPARE 里**。
+    """对比表：**表头在 HTML 的 <th> 里，表体在 LR_COMPARE / C4 覆盖表里**。
 
     A 组 = 表头（每行一列），B 组 = 表体（每行 N 列）。
     目标微件若把表头也做成重复器（EA Advanced Data Table 就是），两组都能填；
     若表头是普通字段，sample 里只填 B 组哨兵，再用 --only-group B。
+    块内 h2/sub 通过 payload["prepend"] 原样保留（见 _head_prepend）。
     """
     heads = [strip_tags(x) for x in re.findall(r"<th[^>]*>(.*?)</th>", html, re.S)]
     heads = [h for h in heads if h]
     slug = slug_of(page_file)
-    rows = (_js_object("LR_COMPARE").get(slug) or {}).get("rows") or []
+    over = C4_COMPARE_ROWS.get(slug)
+    if over:
+        rows = over["rows"]
+        prepend = _head_prepend(html, over.get("h2"))  # 有 h2 覆盖值才换文字
+    else:
+        rows = (_js_object("LR_COMPARE").get(slug) or {}).get("rows") or []
+        prepend = _head_prepend(html)
     if not rows:
-        return None, f"LR_COMPARE 里没有 '{slug}' 这一项（该页对比表是空壳，需先补数据）"
+        return None, f"LR_COMPARE / C4 覆盖表里都没有 '{slug}'（该页对比表是空壳，需先补数据）"
     width = len(rows[0])
     if any(len(r) != width for r in rows):
         return None, f"表体各行列数不一致：{[len(r) for r in rows]}"
     if heads and len(heads) != width:
         return None, f"表头 {len(heads)} 列 vs 表体 {width} 列，不一致——人工核对后再迁"
-    return {"reps": {"A": [[h] for h in heads], "B": [[str(c) for c in r] for r in rows]},
-            "labels": {"A": ["表头"], "B": heads or [f"第{k + 1}列" for k in range(width)]}}, ""
+    # EA Advanced Data Table 免费层的 static 数据源是**单 HTML 字符串槽**
+    # （ea_adv_data_table_static_html，模板自带 <table> 外壳，槽内只放 thead+tbody）。
+    # 多行列 → 单 HTML blob，无法按列寻址——LPagery 契约里这一模块按 blob 处理。
+    if not heads:
+        heads = [f"第{k + 1}列" for k in range(width)]
+    thead = "<thead><tr>" + "".join(f"<th>{h}</th>" for h in heads) + "</tr></thead>"
+    tbody = "<tbody>" + "".join(
+        "<tr>" + "".join(f"<td>{c}</td>" for c in r) + "</tr>" for r in rows) + "</tbody>"
+    return {"reps": {"A": [[thead + tbody]]},
+            "labels": {"A": ["表格 HTML（thead+tbody）"]},
+            "prepend": prepend}, ""
 
 
 def _money(v):
@@ -303,38 +383,58 @@ def _money(v):
 
 
 def extract_pricing(html, page_file):
-    """定价：**整份数据都在 LR_PRICING 里**——源 HTML 是 animate-pulse 骨架，一个价格数字都没有。
+    """定价：**整份数据都在 LR_PRICING 里**（源 HTML 是 animate-pulse 骨架，一个价格数字都没有）。
 
-    A 组 = 月付四档，B 组 = 年付四档（配 HT Mega 的 Flip Switcher Pricing Table）。
-    目标微件若不支持月年切换，用 --only-group A 只迁月付。
-    每档 8 列：档名 / 现价 / 原价 / 折扣 / 计费说明 / 省钱说明 / 功能清单(换行分隔) / 推荐徽章
+    目标微件：HT Mega `htmega-2026-pricing`（Flip Switcher Pricing Table，免费层可用）。
+    **单重复器 plan_items、每档一行、双价列**（price_monthly / price_annual，渲染层
+    用 `htm25-pricing--annual` class 切换显示）——所以 LR_PRICING 的月/年两组不是
+    两个重复器，而是**同一行的两列**（build_node 的 A/B 组共享 rep_path 会互相
+    覆盖，必须在这里合并成单组 12 列）。
+
+    每行 12 列：档名 / 货币 / 月价 / 年价 / 计价周期 / tagline / 功能清单 / 推荐 / 徽章 / 按钮文案 / 按钮链接 / 按钮样式
+    微件没有「划线原价 / 折扣 / 计费说明」字段：划线价 + 省钱钩子进 tagline
+    （wp_kses_post 允许 <s>），年付计费说明进功能清单首行（默认态=annual，与真站一致）。
     """
     P = _js_object("LR_PRICING")
-    if not P:
-        return None, "LR_PRICING 解析失败（replica.js 结构可能变了）"
-
-    def plan_row(x):
-        price, orig = x.get("price"), x.get("original")
-        return [
+    M, Y = P.get("monthly") or [], P.get("yearly") or []
+    if not M or not Y:
+        return None, "LR_PRICING 缺 monthly/yearly 组（replica.js 结构变了？）"
+    ymap = {y.get("name"): y for y in Y}
+    rows = []
+    for x in M:
+        y = ymap.get(x.get("name"))
+        if not y:
+            return None, f"monthly/yearly 档名不齐：{x.get('name')}"
+        # tagline = 划线原价 + 月付折扣 + 年付省钱钩子（月年共用一个槽）
+        bits = []
+        if x.get("original") and x["original"] != x["price"]:
+            bits.append(f"<s>${x['original']}</s>" + (f" {x['off']}" if x.get("off") else ""))
+        if y.get("save"):
+            bits.append(y["save"])
+        tagline = " · ".join(bits)
+        feats = list(y.get("feats") or x.get("feats") or [])
+        if y.get("bill"):
+            feats.insert(0, y["bill"])   # 功能清单首行 = 年付计费说明（默认态）
+        hot = bool(x.get("hot"))
+        rows.append([
             str(x.get("name", "")),
-            _money(price),
-            _money(orig) if orig and orig != price else "",   # 划线原价；无折扣时留空
-            str(x.get("off", "")),
-            str(x.get("bill", "")),
-            str(x.get("save", "")),
-            "\n".join(x.get("feats") or []),
-            "Most popular" if x.get("hot") else "",
-        ]
-
-    reps, labels = {}, {}
-    for grp, period in (("A", "monthly"), ("B", "yearly")):
-        plans = P.get(period) or []
-        if not plans:
-            return None, f"LR_PRICING 里没有 {period} 这一组"
-        reps[grp] = [plan_row(x) for x in plans]
-        labels[grp] = ["档名", "现价", "原价", "折扣", "计费说明", "省钱说明", "功能清单", "推荐徽章"]
-    return {"reps": reps, "labels": labels,
-            "note": "定价是全站共用一份（非按页），12 页会填成同样内容"}, ""
+            "$",
+            str(x.get("price", "")),
+            str(y.get("price", "")),
+            "/month",
+            tagline,
+            "\n".join(feats),
+            "yes" if hot else "",
+            "Most popular" if hot else "",
+            "Get started",
+            "https://www.lovart.ai/canvas",
+            "primary",
+        ])
+    labels = ["档名", "货币", "月价", "年价", "计价周期", "tagline(划线/省钱)",
+              "功能清单(首行计费说明)", "推荐", "徽章", "按钮文案", "按钮链接", "按钮样式"]
+    return {"reps": {"A": rows}, "labels": {"A": labels},
+            "prepend": _head_prepend(html),
+            "note": "定价全站共用一份（LR_PRICING），12 页填同样内容；月年切换由微件原生支持"}, ""
 
 
 def _js_const(name, default=""):
@@ -355,6 +455,48 @@ def _fix_href(raw):
     return re.sub(r"[?&]cb=\d+", "", raw)
 
 
+CTA_OVERRIDES = {
+    # C2 按页覆盖表（2026-10-12 定稿）：7 页的 cta 块被同一份跑题 Shopify 文案污染
+    # 且链接全为死链 #。按各页 hero 主题重写；主按钮 → canvas（同 solution 页惯例），
+    # 次链接 → 站内真实页面（不用 #，迁移后没有 JS 死链兜底）。
+    "comparison-hub": {
+        "title": "Ready to turn one brief into every comparison your buyers search for?",
+        "primary": ("Start your comparison", "https://www.lovart.ai/canvas"),
+        "secondary": ("See pricing", "https://www.lovart.ai/pricing"),
+    },
+    "content-hub": {
+        "title": "Ready to design every step from click to repeat purchase?",
+        "primary": ("Start creating free", "https://www.lovart.ai/canvas"),
+        "secondary": ("Explore the docs", "https://www.lovart.ai/docs"),
+    },
+    "product-launch": {
+        "title": "Ready to take your next drop from idea to profitable launch?",
+        "primary": ("Start your launch", "https://www.lovart.ai/canvas"),
+        "secondary": ("See pricing", "https://www.lovart.ai/pricing"),
+    },
+    "showcase-gallery": {
+        "title": "Ready to start anywhere in the stack?",
+        "primary": ("Open the canvas", "https://www.lovart.ai/canvas"),
+        "secondary": ("See pricing", "https://www.lovart.ai/pricing"),
+    },
+    "tool-directory": {
+        "title": "Ready to fix your creative leaks for good?",
+        "primary": ("Start fixing today", "https://www.lovart.ai/canvas"),
+        "secondary": ("Browse the docs", "https://www.lovart.ai/docs"),
+    },
+    "people-reviews": {
+        "title": "Ready to write your own five-star story?",
+        "primary": ("Start your free trial", "https://www.lovart.ai/canvas"),
+        "secondary": ("See pricing", "https://www.lovart.ai/pricing"),
+    },
+    "composite": {
+        "title": "Ready to design at the speed of thought?",
+        "primary": ("Start creating now", "https://www.lovart.ai/canvas"),
+        "secondary": ("See pricing", "https://www.lovart.ai/pricing"),
+    },
+}
+
+
 def extract_cta(html, page_file):
     """CTA：内容在 HTML 里，但**主按钮没有 href** —— 目标由 replica.js 给（LR_CANVAS）。
 
@@ -365,12 +507,32 @@ def extract_cta(html, page_file):
        直接换成 CTA 微件会让这些页的页脚消失 —— 页脚该用 Theme Builder 单独做。
     2. composite / people-reviews 两页的 CTA 全是死链 #，文案还是别页的
        （Shopify 文案出现在人物评价页上）。需人工定文案后再迁。
+
+    C2 解法（2026-10-12）：上面 7 页的文案在 CTA_OVERRIDES 按页定稿。
+    命中覆盖表的页面不再看闸 —— 覆盖文案就是人工定稿，直接产出。
+    跑题的 Shopify 文案留在 elem-src 原样不动（不污染源）。
     """
+    # C1 已由 split-footer.py 拆页脚；但若块仍吞页脚（源未拆），照旧拦
     links = [(u, strip_tags(t)) for u, t in
              re.findall(r"<a[^>]*href=\"([^\"]*)\"[^>]*>(.*?)</a>", html, re.S)]
     links = [(u, t) for u, t in links if t]
-    btns = [strip_tags(x) for x in re.findall(r"<button[^>]*>(.*?)</button>", html, re.S)]
-    btns = [b for b in btns if 3 < len(b) < 60]
+
+    slug = re.sub(r"\.json$", "", page_file or "")
+    slug = re.sub(r"^lr-demo-(native|faithful)-", "", slug)
+    slug = re.sub(r"^replica-", "", slug)
+    slug = re.sub(r"^composite-replica-all$", "composite", slug)
+    ov = CTA_OVERRIDES.get(slug)
+    if ov is not None:
+        canvas = _js_const("LR_CANVAS", "https://www.lovart.ai/canvas")
+        prim_t, prim_u = ov["primary"]
+        sec_t, sec_u = ov["secondary"]
+        if prim_u == "__CANVAS__":
+            prim_u = canvas
+        if sec_u == "__CANVAS__":
+            sec_u = canvas
+        return {"reps": {"A": [[ov["title"], prim_t, prim_u, sec_t, sec_u]]},
+                "labels": {"A": ["标题", "主按钮文案", "主按钮链接", "次链接文案", "次链接链接"]},
+                "page_note": "C2 覆盖文案（跑题 Shopify 文案已弃用）"}, ""
 
     if "statement/privacy-policy" in html or len(links) > 4:
         return None, (f"该页 CTA 块吞进了站点页脚（{len(links)} 个链接）——"
@@ -381,6 +543,8 @@ def extract_cta(html, page_file):
     if not heads:
         return None, "没抓到标题（<h2>）"
 
+    btns = [strip_tags(x) for x in re.findall(r"<button[^>]*>(.*?)</button>", html, re.S)]
+    btns = [b for b in btns if 3 < len(b) < 60]
     if not btns and all((u or "#") in ("#", "") for u, _ in links):
         return None, ("CTA 全是死链 #，且文案疑似跑错主题（见交接文档 §零）——"
                       "需人工确认文案与目标后再迁")
@@ -446,6 +610,100 @@ def extract_workflow(html, page_file):
             "page_note": note}, ""
 
 
+C3_TABS_FILE = ROOT / "c3-tabs-content.json"
+
+
+def extract_capability_tabs(html, page_file):
+    """capability-tabs：源站 4 个 tab 只有面板 1 有内容（hydration 缺失），tab 点不动
+    （无 role=tablist，replica.js 也无兜底）。内容表 c3-tabs-content.json 提供
+    面板 1 原样 HTML（骨架脚本抽的，含图与 tailwind 类）+ 补写的面板 2/3/4。
+
+    目标微件：EA Advanced Tabs（eael-adv-tabs），重复器 eael_adv_tabs_tab，
+    4 列 = 标签 / 内容 HTML / tab_id / 默认激活。
+
+    内容来源三层：标签——HTML 按钮（无按钮的页用内容表）；面板 1——HTML 原样
+    （无原样的页用内容表）；面板 2/3/4——内容表（C3，2026-10-12 定稿）。
+    """
+    labels_src = [strip_tags(x) for x in
+                  re.findall(r'<button[^>]*>(.*?)</button>', html, re.S)]
+    labels_src = [H.unescape(x).strip() for x in labels_src]
+    labels_src = [x for x in labels_src if x and len(x) < 60]
+
+    h2m = re.search(r"<h2[^>]*>(.*?)</h2>", html, re.S)
+    h2 = H.unescape(strip_tags(h2m.group(1))).strip() if h2m else ""
+    prepend = [{"elType": "widget", "widgetType": "html",
+                "settings": {"html": f'<div class="lr-keep-head"><h2>{h2}</h2></div>'},
+                "elements": [], "isInner": False}] if h2 else []
+
+    slug_key = (page_file or "").removesuffix(".json")
+    table = (json.loads(C3_TABS_FILE.read_text(encoding="utf-8")).get(slug_key)
+             if C3_TABS_FILE.exists() else None)
+    if not table:
+        return None, f"c3-tabs-content.json 里没有 '{slug_key}' 的内容（C3 未定稿）"
+
+    labels = labels_src or table["labels"]
+    if len(labels) != 4:
+        return None, f"标签数 {len(labels)} ≠ 4（HTML 给 {len(labels_src)}，内容表给 {len(table['labels'])}）"
+
+    # 面板 1：优先原样 HTML（保图与 tailwind 类），否则内容表
+    panels = [table["panel1_html"] or table["panels_html"].get("0", "")]
+    panels += [table["panels_html"].get(str(k), "") for k in range(1, 4)]
+    if not all(panels):
+        return None, "有面板内容为空——查 c3-tabs-content.json"
+
+    short = slug_key.replace("replica-solution-", "").replace("replica-", "")[:18]
+    rows = []
+    for k in range(4):
+        rows.append([
+            labels[k],
+            panels[k],
+            f"eael-tab-{k + 1}-{short}",
+            "active-default" if k == 0 else "inactive",
+        ])
+    return {"reps": {"A": rows},
+            "labels": {"A": ["标签", "内容HTML", "tab_id", "默认激活"]},
+            "prepend": prepend}, ""
+
+
+C6_TM_FILE = ROOT / "c6-testimonials-content.json"
+
+
+def extract_testimonial(html, page_file):
+    """testimonial：轮播型引言块（大引文 + 作者行 + 圆点切换）。
+
+    内容现状（2026-10-12 实测）：10 页里只有 4 条真实评价存活于源 HTML
+    （composite/showcase 同一条 Maya Lin、small-business Kenji M.、nonprofits
+    Erika Schroeder），其余全部是 hydration 缺失的空壳（引文空、名字空，
+    线上现状渲染同样为空）。内容表 c6-testimonials-content.json 每页 3 条：
+    真实条目嵌回，缺口按页主题补写（C6，2026-10-12 定稿）。
+
+    目标微件：HT Mega `htmega-2026-testimonials`，重复器 testimonial_items，
+    5 列 = 引文 / 评分 / 名字 / 头衔公司 / （空槽，author_company 一并放头衔列）。
+    """
+    def _long_ps(seg):
+        cl = lambda x: H.unescape(re.sub(r"<[^>]+>", " ", x)).strip()
+        return [re.sub(r"\s+", " ", cl(x)) for x in re.findall(r"<p[^>]*>(.*?)</p>", seg, re.S)]
+
+    seg = html[html.find('data-lp-section="testimonial"'):] if 'data-lp-section="testimonial"' in html else html
+    real = [t for t in _long_ps(seg) if 40 < len(t) < 400]
+
+    slug_key = (page_file or "").removesuffix(".json")
+    table = (json.loads(C6_TM_FILE.read_text(encoding="utf-8")).get(slug_key)
+             if C6_TM_FILE.exists() else None)
+    if not table:
+        return None, f"c6-testimonials-content.json 里没有 '{slug_key}'（C6 未定稿）"
+
+    # 真实存活条目只在内容表首条缺失时兜底（表首条即抄自真实条目，通常已覆盖）
+    out = []
+    for k, item in enumerate(table):
+        q, n_, r_ = item["q"], item["n"], item["r"]
+        if k == 0 and not table and real:
+            q = real[0]
+        out.append([q, "5", n_, r_, ""])
+    return {"reps": {"A": out},
+            "labels": {"A": ["引文", "评分", "名字", "头衔", "公司"]}}, ""
+
+
 MODULES = {
     # data-lp-section 的值 → 内容抽取函数
     "faq": extract_faq,
@@ -453,6 +711,8 @@ MODULES = {
     "pricing-block": extract_pricing,
     "cta-default": extract_cta,
     "workflow": extract_workflow,
+    "capability-tabs": extract_capability_tabs,
+    "testimonial": extract_testimonial,
 }
 
 
@@ -531,11 +791,19 @@ def migrate(args):
                     report.append((f.name, "skip", f"--only-group {args.only_group} 过滤后无数据"))
                     continue
             try:
-                parent[i] = build_node(sample, reps, args.allow_truncate)
+                new_node = build_node(sample, reps, args.allow_truncate)
             except ValueError as e:
                 totals["skipped"] += 1
                 report.append((f.name, "skip", str(e)))
                 continue
+            # payload["prepend"]（如对比表的 h2/副标题）：原样保留成独立 html 微件，
+            # 插在数据微件前——逆序 insert(i) 使其最终按原顺序排在 i、i+1、…
+            pre = payload.get("prepend") or []
+            for pn in reversed(pre):
+                ins = json.loads(json.dumps(pn))
+                ins["id"] = eid()
+                parent.insert(i, ins)
+            parent[i + len(pre)] = new_node
             n = sum(len(v) for v in reps.values())
             changed += 1
             totals["replaced"] += 1

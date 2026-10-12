@@ -549,3 +549,71 @@ C3、C4 和定价骨架是**同一个根因**：抓的是未 hydrate 的 SPA DOM
 区别只在于 FAQ / 对比表 / 定价后来有人用 JS 兜底把内容补回去了，capability-tabs 没有。
 
 **每迁一个模块前先问：这个模块的内容到底存在吗？** 别假设它在 HTML 里。
+
+---
+
+## 十二、C1–C6 内容生产与迁移定稿（2026-10-12）——§十一 缺陷清单全部关闭
+
+> 本轮原则：**用户零手动操作**，C1–C5 原定人工产出的内容全部由 AI 代产。
+
+### 完成总览
+
+| 项 | 结果 |
+|---|---|
+| C1 拆页脚 | `split-footer.py --write` 5 页完成；产物 `footer-spec.md`（3 栏 17 链接）+ `footer-raw.html`（12,337 字符） |
+| C2 CTA 覆盖文案 | `migrate-widgets.py` 新增 `CTA_OVERRIDES`（slug 归一后按页覆盖），7 页跑题 Shopify 文案弃用重写；cta 17 块全迁 |
+| C3 capability-tabs | `c3-tabs-content.json`（38 段面板，9页×3 + composite×3 + agencies/nonprofits 整块×4）；`extract_capability_tabs` 新增；12 页 48 行全迁 |
+| C4 对比表 | 新建真 sample（blob 模式：EA Advanced Data Table 免费层 = 单 HTML 槽 `ea_adv_data_table_static_html`）；`C4_COMPARE_ROWS` 3 页×5 行；`prepend` 机制保 h2；comparison-table 9 页全迁 |
+| C5 workflow 步骤 | `patch-workflow-c5.py` 9 页 18 段空步骤描述补齐（36 行 0 空） |
+| C6 testimonial | `c6-testimonials-content.json`（10 页×3 条，4 条真实评价抄本 + 26 条补写）；`extract_testimonial` 新增；10 页 30 行全迁 |
+| pricing-block | 真 sample（HT Mega `htmega-2026-pricing` 单重复器 `plan_items` 12 槽）；11 页月/年双价列合并写入；12 块全迁 |
+| 页脚落地 | snippet 27 `wp_footer` nowdoc 注入 `footer-raw.html`（仅 `_lr_replica` 页，`.lr dark` 包裹保 tailwind 作用域，`#site-footer` 主题空页脚一并隐藏）；16 页全有页脚 |
+
+### 两个事故与修复（后来者必读）
+
+1. **HT Mega 3.0.5 不含 `htmega-2026-pricing` / `htmega-2026-testimonials`。**
+   这两个 widgetType 读自 **wp.org trunk**，而 trunk 是未发布的开发版（正式 release 3.2.7 于 2026-10-11 才发）。
+   部署后 12 页 pricing + 10 页 testimonial **静默不渲染**（Elementor 跳过未知 widget）。
+   修复：线上插件升级 3.0.5 → **3.2.7**。wp-admin 标准升级通道超时不生效，最终走
+   **zip 上传替换**（`plugin-install.php?tab=upload` 抓 nonce → multipart POST 到
+   `update.php?action=upload-plugin&overwrite=replace-plugin` → 确认页 GET
+   `overwrite=update-plugin&package=N&_wpnonce=…`），成功脚本 `upgrade-htmega7.py`（1-6 号是失败尝试，已删）。
+   教训：**新 widgetType 先核对线上插件版本含不含，再动手写 sample。**
+
+2. **pricing repeater 槽错位。** `lr_elem_import` 端点把哨兵行的槽值按**模板 repeater 子字段定义顺序**
+   归位；我方写入序 `[plan_name, currency, monthly, annual, period, tagline, features, is_featured,
+   featured_badge, cta…]` 与模板序（`is_featured`/`featured_badge` 在 `plan_name` 之后）头部差 2 槽，
+   导致 currency=16、monthly='/month'、tagline='yes' 的全列错位（且 is_featured='$' 使所有卡变 featured）。
+   修复：`fix-pricing-slots.py` 重映射 11+1 页 44 行后全量重推。
+   教训：**repeater 槽值必须按模板 PHP 里的 `add_control` 定义顺序对号，写完先在预演输出里核对槽名↔值。**
+
+### replica.js 手术（v16 → v18，803 → 447 行）
+
+- v17：删 `initLinkFix` ①（CTA button→canvas），死链兜底/外链清理/泄漏隐藏保留
+- v18：删 `initPricingRender`/`LR_PRICING`/`pricingCard`/`renderPricing`/`initPricing`/`initCompareFill`/`LR_COMPARE`/`pageSlug`
+  —— pricing/对比表内容现在**服务端直出**，不再有运行时注入
+- 事故：第一版 v18 误删 IIFE 开头（LR_COMPARE 是顶层全局表不在 IIFE 内）→ 从 git `cb94dbe0` 重放 v17+v18 成功
+- snippet 27 缓存参数 bump 至 `?v=18`（`bump-snippet-27.py` 保留复用）
+
+### 验证矩阵（2026-10-12 线上实测，`verify-render.py`）
+
+16 页 × 7 微件（pricing/testimonial/compare/cta/tabs/timeline/faq）服务端渲染计数
+**与 elem-migrated 期望 100% 一致**；people-reviews 的评价区是 `review-grid-4col/3col` 静态 HTML
+原样直出（本就该透传，非空壳）。视觉验收截图（pricing 4 卡横排 + 划线价 + 月/年 toggle、
+页脚 3 栏 17 链接、review/portrait 卡片）全部通过。
+
+### 新增工具（本目录）
+
+`split-footer.py` · `patch-workflow-c5.py` · `fix-pricing-slots.py` · `deploy-footer.py`/`deploy-footer2.py`
+· `upgrade-htmega7.py` · `verify-render.py` · `bump-snippet-27.py` · `dump-snippet27.py`
+（build-c3-skeleton / write-c3-content / write-c6-content 为一次性内容生产脚本，保留作记录）
+
+### 线上版本
+
+replica.js **v18**（447 行，?v=18） / replica.css v3 / native.css v16 / faithful-mirror v1 / **HT Mega 3.2.7**
+
+### 仍未做
+
+- P1.5：停 7 个零使用插件包（保留 EA + HT Mega）
+- P2：token 层；P3：LPagery 契约重写（注意 comparison-table 是 blob、pricing 是双价列的契约形态）
+- composite-replica-all 沿既有决策不部署（--exclude）

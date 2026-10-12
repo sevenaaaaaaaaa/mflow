@@ -7,7 +7,12 @@
  * v16（2026-10-12）：FAQ 答案固化为真实数据——12 复刻页换 eael-adv-accordion、
  *     4 个 native demo 页答案服务端写入 accordion tab_content；
  *     据此删除运行时注入 initFaqFill 及数据表 LR_FAQ_ANSWERS。
- *     pageSlug 保留（initCompareFill 仍用）。
+ *     pageSlug 一并删除（最后使用者 initCompareFill 已删）。
+ * v18（2026-10-12）：对比表 9 页迁 eael-advanced-data-table（static blob + last-col
+ *     高亮；C4 3 页空壳补数据；块内 h2/sub 以 prepend html 微件原样保留）——
+ *     删 initCompareFill + LR_COMPARE。定价 12 页迁 htmega-2026-pricing（单重复器
+ *     双价列，月年切换原生支持，LR_PRICING 数据固化进重复器）——删 initPricingRender
+ *     + LR_PRICING + pricingCard + renderPricing + initPricing（tab 高亮）。
  *   - capability-tabs：多 tab 点击切换（按钮 role=tab 按索引对应 tabpanel），
  *     并支持自动轮播（每 5s 前进，hover/聚焦/手动点击暂停）
  *   - before/after 对比滑块：保留原有拖动；无 data-lp-section 包裹时也按
@@ -26,73 +31,6 @@
  */
 
 
-
-/* ---------- 对比表各页定制内容 ----------
-   6 个 solution 页的 comparison-table 表体在源站就是空壳（客户端 hydration 注入），
-   且每行缺第 4 列（Lovart 高亮列）。initCompareFill 按 slug 注入 5 行 × 4 列内容，
-   并补建缺失的 Lovart 列单元格；h2/sub 仅用于订正源站张冠李戴的健身文案。 */
-window.LR_COMPARE = {
-  "ai-design-solution-for-agencies": {
-    "rows": [
-      ["Handle overflow briefs", "Booked out for weeks", "Quality varies by vendor", "On-demand capacity in minutes"],
-      ["Protect margins", "Senior rates on junior tasks", "Markup on markup", "Flat subscription, unlimited variants"],
-      ["Keep every client's brand straight", "Relies on briefs and memory", "Style drifts between vendors", "Brand Kit per client, applied automatically"],
-      ["Turn revisions around fast", "New round, new day", "Async back-and-forth across time zones", "Touch Edit and Text Edit in place"],
-      ["Pitch with speculative creative", "Too costly before the win", "Not worth outsourcing", "Concept boards and mockups before the pitch"]
-    ]
-  },
-  "ai-design-solution-for-marketing-teams": {
-    "h2": "How marketing team creative production compares",
-    "sub": "Three models. One that keeps pace with the campaign calendar.",
-    "rows": [
-      ["Campaign assets at launch speed", "Weeks per campaign round", "Fast but generic", "Full campaign set from one brief"],
-      ["On-brand every time", "Depends on the brief", "Templates drift off-brand", "Brand Kit + Style Consistency"],
-      ["Every channel and format", "Per-deliverable fees", "Manual resizing per channel", "Social, email, ads, landing from one concept"],
-      ["Iterate on performance data", "New PO per iteration", "Start over each time", "Touch Edit variants in minutes"],
-      ["Scale testing volume", "Costly per variant", "One template, one look", "Fast Mode for hooks, offers and markets"]
-    ]
-  },
-  "ai-design-solution-for-nonprofits": {
-    "rows": [
-      ["Stretch every dollar", "Agency fees compete with programs", "Free but uneven", "Flat subscription, unlimited campaigns"],
-      ["Look credible to donors", "Great, when budget allows", "Amateur look hurts trust", "Studio-quality output every time"],
-      ["Launch appeals fast", "Weeks of lead time", "Depends on volunteer time", "Appeal assets in minutes"],
-      ["Stay on-brand across chapters", "Guidelines in a PDF", "Everyone improvises", "Brand Kit enforced on every asset"],
-      ["Report impact beautifully", "Annual-report project pricing", "Charts in a Word doc", "Impact reports, infographics and social from your data"]
-    ]
-  },
-  "ai-design-solution-for-saas": {
-    "h2": "How SaaS GTM creative production compares",
-    "sub": "Three models. One that ships at release cadence.",
-    "rows": [
-      ["Ship at release cadence", "Sprint-cycle mismatch", "Queue behind product work", "Assets at the speed of shipping"],
-      ["Full-funnel GTM creative", "Per-deliverable scoping", "Bandwidth caps at launch", "Ads, landing, email, social from one brief"],
-      ["Product-accurate visuals", "Rounds of screenshot corrections", "Depends on designer context", "Reads your product, docs and URLs"],
-      ["Iterate on conversion data", "Change orders and delays", "Competes with roadmap work", "Touch Edit variants in minutes"],
-      ["Scale without headcount", "Retainers grow with scope", "Hiring takes quarters", "Flat subscription, unlimited variants"]
-    ]
-  },
-  "ai-design-solution-for-shopify": {
-    "rows": [
-      ["Launch SKUs fast", "Shoot scheduling per product", "Fast but off-brand", "PDP and lifestyle images from your product"],
-      ["Refresh seasonal campaigns", "Reshoots every season", "Same templates as competitors", "New scenes without new shoots"],
-      ["Cover every placement", "Per-asset pricing", "Manual resizing", "PDP, ads, email, social in one flow"],
-      ["Brand consistency at scale", "Depends on the retoucher", "Drifts across templates", "Brand Kit on every asset"],
-      ["Test creative variants", "Too costly to test", "Limited variation", "Fast Mode for hooks, offers and formats"]
-    ]
-  },
-  "good-design-for-marketers": {
-    "h2": "How marketer creative production compares",
-    "sub": "Three models. One built for deadline-driven marketers.",
-    "rows": [
-      ["Campaign assets on deadline", "Availability lottery", "Fast but generic", "Minutes from brief to full set"],
-      ["On-brand output", "Varies by freelancer", "Templates drift", "Brand Kit + Style Consistency"],
-      ["Multi-format deliverables", "Per-asset fees", "Resize by hand", "Social, ads, email, decks from one brief"],
-      ["Quick edits and variants", "Billable revision rounds", "Rebuild from scratch", "Touch Edit and Text Edit in place"],
-      ["More testing, less budget", "Cost per variant adds up", "One look per template", "Fast Mode for hooks, offers and audiences"]
-    ]
-  }
-};
 
 (function () {
   function q(sel, root) { return (root || document).querySelector(sel); }
@@ -381,165 +319,9 @@ window.LR_COMPARE = {
     });
   }
 
-  /* ---------- 价格区：月/年切换高亮（静态占位，真实价格源抓取时即缺失） ---------- */
-  function initPricing(root) {
-    qa("[data-testid^='paywall-tab-'], [data-lp-section='pricing-block'] button", root).forEach(function (btn) {
-      if (btn.dataset.lovartPricing) return;
-      var grp = btn.closest("[role='tablist'], [class*='rounded-full'], div");
-      btn.dataset.lovartPricing = "1";
-      btn.addEventListener("click", function (e) {
-        e.preventDefault();
-        if (!grp) return;
-        qa("button", grp).forEach(function (b) { b.classList.remove("lr-paywall-active"); });
-        btn.classList.add("lr-paywall-active");
-      });
-    });
-  }
-
-  /* ---------- 页面 slug（剥 replica- / lr-demo- 前缀，供 initCompareFill 取数据键） ---------- */
-  function pageSlug() {
-    // 支持 17 页（replica- / replica-solution-）与 demo 页（lr-demo-native- / lr-demo-faithful-）
-    var m = location.pathname.match(/(?:replica-(?:solution-)?|lr-demo-(?:native|faithful)-)([a-z0-9-]+)\/?$/i);
-    var slug = m ? m[1] : null;
-    if (!slug) return null;
-    // demo 页短别名 → 定制内容键
-    var ALIAS = {
-      "fitness": "ai-design-for-fitness-wellness-hub",
-      "wellness": "ai-design-for-fitness-wellness-hub",
-      "small-biz": "ai-design-for-small-business-hub",
-      "small-business": "ai-design-for-small-business-hub",
-      "shopify": "ai-design-solution-for-shopify",
-      "saas": "ai-design-solution-for-saas",
-      "agencies": "ai-design-solution-for-agencies",
-      "creators": "ai-design-solution-for-creators",
-      "marketing-teams": "ai-design-solution-for-marketing-teams",
-      "nonprofits": "ai-design-solution-for-nonprofits",
-      "business-owners": "good-design-for-business-owners",
-      "marketers": "good-design-for-marketers"
-    };
-    return ALIAS[slug] || slug;
-  }
-
-  /* ---------- 对比表内容注入 ----------
-     6 个 solution 页的 comparison-table 表体为空壳且每行缺 Lovart 高亮列。
-     按 slug 注入 LR_COMPARE 内容；td 不足 4 个时补建 Lovart 列（沿用满表的
-     高亮类名）；data 提供 h2/sub 时订正源站张冠李戴的标题文案。 */
-  var LOVART_TD_CLASS = "h-[72px] px-3 align-middle font-sans text-[13px] md:px-6 md:text-[14px] bg-bg-base-secondary text-text-default font-medium border-border-neutral-l2 border-l border-b";
-  function initCompareFill(root) {
-    var data = (window.LR_COMPARE || {})[pageSlug()];
-    if (!data || !data.rows || !data.rows.length) return;
-    var sec = q('[data-lp-section="comparison-table"]', root) || q(".lr-native-comparison-table", root);
-    if (!sec || sec.dataset.lovartCompareFill) return;
-    var rows = qa("tbody tr", sec);
-    if (!rows.length) return;
-    sec.dataset.lovartCompareFill = "1";
-    rows.forEach(function (tr, i) {
-      if (i >= data.rows.length) return;
-      var want = data.rows[i];
-      var tds = qa("td", tr);
-      var allEmpty = tds.every(function (td) { return !(td.textContent || "").trim(); });
-      if (!allEmpty) return; // 已有内容则不动
-      tds.forEach(function (td, j) { if (j < want.length && j < 3) td.textContent = want[j]; });
-      if (tds.length < 4 && want.length >= 4) {
-        var td = document.createElement("td");
-        td.className = LOVART_TD_CLASS;
-        td.textContent = want[3];
-        tr.appendChild(td);
-      } else if (tds.length >= 4 && want.length >= 4) {
-        tds[3].textContent = want[3];
-      }
-    });
-    if (data.h2) { var h2 = q("h2", sec); if (h2) h2.textContent = data.h2; }
-    if (data.sub) {
-      var h2el = q("h2", sec);
-      var wrap = h2el && h2el.parentElement && h2el.parentElement.parentElement;
-      var p = wrap ? q("p", wrap) : q("p", sec);
-      if (p) p.textContent = data.sub;
-    }
-  }
-
-  /* ---------- 价格区：真实定价渲染（Lovart 官方 member/packages 数据） ----------
-     源站 pricing-block 是 animate-pulse 骨架屏（客户端 hydrate 时才填真实卡片），
-     静态抓取拿不到 → 这里用内嵌的真实定价数据（4 档 × 月/年）替换骨架网格，
-     并接月/年切换联动重渲染。 */
-  var LR_PRICING = {
-    "monthly": [
-      {"name":"Starter","price":19,"original":19,"off":"","bill":"Billed monthly","save":"Save $36 with annual billing","feats":["2000 Credits monthly","2000 extra credits first month","~40 Agent conversations","~500 GPT images","~8000 Flux images","~111 Kling videos","Unlimited Trial Models","Commercial license"]},
-      {"name":"Basic","price":32,"original":32,"off":"","bill":"Billed monthly","save":"Save $60 with annual billing","feats":["3500 Credits monthly","3500 extra credits first month","~35 Agent conversations","~438 GPT images","~7000 Flux images","~51 Kling videos","Unlimited Trial Models","Commercial license"]},
-      {"name":"Pro","price":79,"original":90,"off":"12% off","bill":"Billed monthly, renews at $90/month next month","save":"Save $529 with annual billing","hot":true,"feats":["11000 Credits monthly","11000 extra credits first month","~110 Agent conversations","~1375 GPT images","~22000 Flux images","~162 Kling videos","Unlimited Trial Models","Commercial license"]},
-      {"name":"Ultimate","price":169,"original":199,"off":"15% off","bill":"Billed monthly, renews at $199/month next month","save":"Save $1,050 with annual billing","feats":["22000 Credits monthly","22000 extra credits first month","~220 Agent conversations","~2750 GPT images","~44000 Flux images","~324 Kling videos","Unlimited Trial Models","Commercial license","Priority generation queue","Dedicated support"]}
-    ],
-    "yearly": [
-      {"name":"Starter","price":16,"original":19,"off":"16% off","bill":"Billed annually, $192/year","save":"Save $36 compared to monthly","feats":["2000 Credits monthly","2000 extra credits first month","~40 Agent conversations","~500 GPT images","~8000 Flux images","~111 Kling videos","Unlimited Trial Models","Commercial license"]},
-      {"name":"Basic","price":27,"original":32,"off":"16% off","bill":"Billed annually, $324/year","save":"Save $60 compared to monthly","feats":["3500 Credits monthly","3500 extra credits first month","~35 Agent conversations","~438 GPT images","~7000 Flux images","~51 Kling videos","Unlimited Trial Models","Commercial license"]},
-      {"name":"Pro","price":45,"original":90,"off":"50% off","bill":"Billed annually, $540 first year, then $888/year","save":"Save $529 compared to monthly","hot":true,"feats":["11000 Credits monthly","11000 extra credits first month","~110 Agent conversations","~1375 GPT images","~22000 Flux images","~162 Kling videos","Unlimited Trial Models","Commercial license"]},
-      {"name":"Ultimate","price":109,"original":199,"off":"45% off","bill":"Billed annually, $1,308 first year, then $1,992/year","save":"Save $1,050 compared to monthly","feats":["22000 Credits monthly","22000 extra credits first month","~220 Agent conversations","~2750 GPT images","~44000 Flux images","~324 Kling videos","Unlimited Trial Models","Commercial license","Priority generation queue","Dedicated support"]}
-    ]
-  };
-
-  function pricingCard(plan, period) {
-    var per = period === "yearly" ? "/mo" : "/month";
-    var card = document.createElement("div");
-    // 对齐真站：普通卡米白底；Pro 卡（hot）lime 高亮边框 + Most popular 徽章
-    card.className = "relative mt-[30px] flex w-full flex-col gap-6 rounded-[16px] border pb-6 bg-bg-base-default " +
-      (plan.hot ? "border-[#def479]" : "border-lo-border-neutral-l2");
-    card.style.borderColor = plan.hot ? "rgb(222, 244, 121)" : "";
-    var feats = plan.feats.map(function (f) {
-      return '<div class="flex items-center gap-2">' +
-        '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="shrink-0 text-text-default"><path d="M3 8.5l3.2 3L13 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
-        '<span class="font-sans text-[13px] leading-[1.5] text-text-secondary">' + f + '</span></div>';
-    }).join("");
-    card.innerHTML =
-      '<div class="border-lo-border-neutral-l2 flex flex-col gap-4 border-b p-6">' +
-        '<div class="flex h-6 items-center gap-2"><span class="font-sans text-[16px] font-medium text-text-default">' + plan.name + '</span>' +
-          (plan.off ? '<span class="font-sans text-[12px] font-medium text-text-secondary">' + plan.off + '</span>' : '') +
-        '</div>' +
-        '<div class="flex items-baseline gap-2"><span class="font-sans text-[32px] leading-none font-semibold text-text-default">$' + plan.price + '</span>' +
-          (plan.original > plan.price ? '<span class="font-sans text-[16px] text-text-tertiary line-through">$' + plan.original + '</span>' : '') +
-          '<span class="font-sans text-[13px] text-text-tertiary">' + per + '</span></div>' +
-        '<div class="font-sans text-[12px] leading-[1.5] text-text-tertiary">' + plan.bill + '</div>' +
-        (plan.hot ? '<span class="absolute left-1/2 -top-3 -translate-x-1/2 whitespace-nowrap rounded-full px-3 py-1 font-sans text-[12px] font-medium" style="background:rgb(222, 244, 121);color:#111">Most popular</span>' : '') +
-        '<button type="button" class="mt-2 inline-flex h-10 w-full cursor-pointer items-center justify-center rounded-full border border-lo-border-neutral-l2 bg-bg-special-white font-sans text-[14px] font-medium text-text-default transition-colors hover:bg-lo-bg-overlay-hover">Get ' + plan.name + ' now</button>' +
-      '</div>' +
-      '<div class="flex flex-col gap-3 px-6">' +
-        '<div class="font-sans text-[13px] font-medium text-text-default">' + plan.save + '</div>' + feats +
-      '</div>';
-    return card;
-  }
-
-  function renderPricing(sec, period) {
-    var grid = q(".grid", sec);
-    if (!grid) return;
-    grid.innerHTML = "";
-    LR_PRICING[period].forEach(function (plan) { grid.appendChild(pricingCard(plan, period)); });
-  }
-
-  function initPricingRender(root) {
-    qa('[data-lp-section="pricing-block"]', root).forEach(function (sec) {
-      if (sec.dataset.lovartPricingRender) return;
-      // 只替换骨架（animate-pulse）或空网格；若已有真实卡片则不动
-      var isSkeleton = !!q(".animate-pulse", sec);
-      var grid = q(".grid", sec);
-      if (!grid) return;
-      if (!isSkeleton && grid.children.length > 0) return;
-      sec.dataset.lovartPricingRender = "1";
-      // 真站默认 annual（折扣展示态）
-      renderPricing(sec, "yearly");
-      // 月/年切换联动
-      var monBtn = q("[data-testid='paywall-tab-monthly']", sec);
-      var yrBtn = q("[data-testid='paywall-tab-annually']", sec);
-      function setActive(btn, other) {
-        if (btn) btn.classList.add("lr-paywall-active");
-        if (other) other.classList.remove("lr-paywall-active");
-      }
-      if (monBtn) monBtn.addEventListener("click", function (e) { e.preventDefault(); setActive(monBtn, yrBtn); renderPricing(sec, "monthly"); });
-      if (yrBtn) yrBtn.addEventListener("click", function (e) { e.preventDefault(); setActive(yrBtn, monBtn); renderPricing(sec, "yearly"); });
-      if (yrBtn) yrBtn.classList.add("lr-paywall-active");
-    });
-  }
-
-  /* ---------- 链接与 CTA 生产化 ----------
-     1) 无跳转的 CTA button（Get started / Get X now / Try Lovart today）→ 跳 lovart.ai/canvas
+  /* ---------- 链接与死链兜底 ----------
+     v17：1) CTA button 跳 canvas 已删 —— 17 页 CTA 全部迁成 eael-cta-box 微件，
+     目标链接固化在 settings 里，不再需要运行时兜底。
      2) href="#" 死链：试用意图跳 /canvas；指引意图滚动到工作流/能力展示区块
      3) 外链清理：?cb= 缓存参数移除；真站 404 死链改道
      4) 源模板设计说明文字泄漏（"cta · bgStyle: ..."）藏除 */
@@ -554,15 +336,6 @@ window.LR_COMPARE = {
     // 只处理复刻内容（scope 或 .lr 容器内），不动 WordPress 界面元素
     var scopes = qa(".lovart-replica-scope, .lr", root);
     scopes.forEach(function (scope) {
-      // 1) CTA button
-      qa("button", scope).forEach(function (b) {
-        if (b.dataset.lovartCta) return;
-        var t = (b.textContent || "").trim();
-        if (!/^(get started|get started for free|get [\w ]+ now|try lovart today|start free)$/i.test(t)) return;
-        b.dataset.lovartCta = "1";
-        b.style.cursor = "pointer";
-        b.addEventListener("click", function (e) { e.preventDefault(); window.location.href = LR_CANVAS; });
-      });
       // 2) 死链 #
       qa('a[href="#"], a[href=""]', scope).forEach(function (a) {
         if (a.dataset.lovartLink) return;
@@ -666,9 +439,6 @@ window.LR_COMPARE = {
     initChat(document);
     initTheme(document);
     initLang(document);
-    initPricing(document);
-    initPricingRender(document);
-    initCompareFill(document);
     initNoJump(document);
     initDragScroll(document);
   }
