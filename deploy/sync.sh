@@ -103,7 +103,8 @@ if [[ "$DO_PUSH" -eq 1 ]]; then
         LOCAL_SHA=$(git rev-parse HEAD)
         ORIGIN_SHA=$(git rev-parse origin/main 2>/dev/null || echo "")
         if [[ "$LOCAL_SHA" != "$ORIGIN_SHA" ]]; then
-            git push origin main >/dev/null 2>&1 || fail 3 "git push 失败"
+            # 保留 stderr：push 被拒时能看到真实报错（stdout 丢弃即可，进度走 stderr）
+            git push origin main >/dev/null || fail 3 "git push 失败"
             say "  ✓ 已推送 GitHub"
         else
             say "③ GitHub 已是最新"
