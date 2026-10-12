@@ -129,11 +129,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--write", action="store_true")
     ap.add_argument("--batch", default="elem-migrated")
+    ap.add_argument("--exclude", default="", help="逗号分隔的文件名，跳过不部署")
     args = ap.parse_args()
 
     files = sorted((ROOT / args.batch).glob("*.json"))
     if not files:
         sys.exit(f"✗ {args.batch}/ 里没有文件")
+    excl = {e.strip() for e in args.exclude.split(",") if e.strip()}
+    files = [f for f in files if f.name not in excl]
     slugs = [f.stem for f in files]
 
     op = build_opener()

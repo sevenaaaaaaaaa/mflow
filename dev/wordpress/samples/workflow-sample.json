@@ -1,0 +1,36 @@
+{
+  "version": "3.35.7",
+  "title": "workflow sample — HT Mega Vertical Timeline（字段名取自 htmega_verticle_time_line.php，非猜测）",
+  "data": [
+    {
+      "id": "a1b2c30",
+      "elType": "widget",
+      "widgetType": "htmega-verticletimeline-addons",
+      "settings": {
+        "verticle_timeline_layout": "1",
+        "custom_content_list": [
+          {
+            "_id": "b1c2d30",
+            "content_date": "__A1_1__",
+            "content_title": "__A1_2__",
+            "content_text": "__A1_3__"
+          },
+          {
+            "_id": "b2c2d30",
+            "content_date": "__A2_1__",
+            "content_title": "__A2_2__",
+            "content_text": "__A2_3__"
+          },
+          {
+            "_id": "b3c2d30",
+            "content_date": "__A3_1__",
+            "content_title": "__A3_2__",
+            "content_text": "__A3_3__"
+          }
+        ]
+      },
+      "elements": [],
+      "isInner": false
+    }
+  ]
+}

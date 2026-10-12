@@ -230,11 +230,17 @@ nonce 从 wp-admin 页面 script 抓 `"nonce":"..."` 或 `admin-ajax?action=rest
 - **cta-default 10 块 → `eael-cta-box`**（10 页：10 个 solution 页）；comparison-hub / product-launch
   等 7 块被 C1/C2 闸挡住（页脚未拆 / 文案未定），迁完 C2 后补
 - **faq 12 块 → `eael-adv-accordion`**（12 页，76 行问答全部服务端固化，HTML 直出）
+- **workflow 12 块 → `htmega-verticletimeline-addons`**（`custom_content_list`：`content_date`=步骤号 /
+  `content_title` / `content_text`，字段名取自 `htmega_verticle_time_line.php`；sample=samples/workflow-sample.json）。
+  marker 匹配升级为前缀匹配（workflow-vertical/horizontal 变体通吃）。
+  ⚠ 9 块步骤 2/3 描述缺失（源站 hydration 缺失，现状渲染同样为空）——**新内容项 C5**。
+  tool-directory / composite 的横向 how-to 块是跑题 Shopify 文案（C2 同类），闸已拦。
+  comparison-hub / product-launch 无独立 workflow 块，无需迁。
 - **4 个 native demo 页 FAQ 占位答案服务端写入** accordion `tab_content`（`fill-demo-faq.py`），
   消除 `initFaqFill` 的最后依赖
 - **replica.js v16：删除 `initFaqFill` + `LR_FAQ_ANSWERS`（-126 行，803 → 677）**，
   `pageSlug` 保留（对比表注入仍用）；snippet 27 缓存参数 bump `?v=16`
-- 部署通道：`deploy-migrated.py`（备份 → scp → lr_elem_import，全程幂等可重跑；
+- 部署通道：`deploy-migrated.py`（备份 → scp → lr_elem_import，全程幂等可重跑；支持 `--exclude`；
   已知坑：Cloudflare 对首次 404 的 URL 负缓存，换文件名绕开）
 - **剩余运行时注入**：`initLinkFix` ①（6 页 CTA 还是 html 块，等 C2）、`initCompareFill`、`initPricingRender`
 

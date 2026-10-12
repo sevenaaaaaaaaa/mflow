@@ -403,12 +403,56 @@ def extract_cta(html, page_file):
             "page_note": note}, ""
 
 
+def extract_workflow(html, page_file):
+    """Workflow：步骤（序号/标题/描述）就在 HTML 里；横向纵向都按步骤序列抽。
+
+    目标微件：HT Mega Vertical Timeline（htmega-verticletimeline-addons），
+    重复器 custom_content_list，三列 = content_date（步骤号）/ content_title / content_text。
+
+    两道闸与一个如实原则：
+    1. 跑题闸：tool-directory / composite 横向块整段是 Shopify 通用 how-to 文案
+       （C2 同类问题），如实迁移会把错文案固化进微件，拦下等人工定稿。
+    2. 描述缺失不算错配：源站 hydration 缺失导致 9 个块的步骤 2/3 没有描述，
+       但**线上现状渲染出来也是空的**——如实迁移留空，不劣化（C5 补内容后再编辑）。
+    """
+    joined = re.sub(r"\s+", " ", html)
+    if "How-to workflow" in joined or "merchants who want" in joined:
+        return None, ("该块是跑题的 Shopify 通用 how-to 文案（C2 同类）——"
+                      "如实迁移会固化错文案，需人工定稿后再迁")
+
+    plain = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "|", html))
+    parts = [p.strip() for p in plain.split("|") if p.strip()]
+    steps, cur = [], None
+    for p in parts:
+        if re.fullmatch(r"[1-9]", p):
+            cur = [p, "", ""]
+            steps.append(cur)
+        elif cur is not None:
+            if not cur[1]:
+                cur[1] = p
+            else:
+                cur[2] = (cur[2] + " " + p).strip()
+    if not steps:
+        return None, "没抽到步骤（HTML 里没有 1/2/3 序号标记）"
+    for s in steps:
+        s[2] = re.sub(r"&#x27;", "'", s[2]).replace("&amp;", "&")
+        s[1] = s[1].replace("&amp;", "&")
+    empty_desc = sum(1 for s in steps if not s[2])
+    note = (f"{empty_desc}/{len(steps)} 个步骤描述缺失（源站 hydration 缺失，现状渲染同样为空，C5 补）"
+            if empty_desc else "")
+    rows = [s[:] for s in steps]
+    return {"reps": {"A": rows},
+            "labels": {"A": ["步骤号", "步骤标题", "步骤描述"]},
+            "page_note": note}, ""
+
+
 MODULES = {
     # data-lp-section 的值 → 内容抽取函数
     "faq": extract_faq,
     "comparison-table": extract_comparison,
     "pricing-block": extract_pricing,
     "cta-default": extract_cta,
+    "workflow": extract_workflow,
 }
 
 
@@ -440,7 +484,8 @@ def migrate(args):
         raise SystemExit(f"✗ 未支持的模块 '{args.module}'，已支持：{', '.join(MODULES)}")
 
     src, out = ROOT / args.src, ROOT / args.out
-    marker = f'data-lp-section="{args.module}"'
+    # 模块名允许带布局变体（如 workflow → workflow-vertical/horizontal）
+    marker_re = re.compile(r'data-lp-section="%s(?:-[a-z0-9-]+)?"' % re.escape(args.module))
     report, totals = [], {"pages": 0, "replaced": 0, "skipped": 0, "rows": 0}
     preview, note, done = None, "", set()
 
@@ -463,7 +508,7 @@ def migrate(args):
             if node.get("widgetType") != "html":
                 return
             html = (node.get("settings") or {}).get("html", "")
-            if marker in html:
+            if marker_re.search(html):
                 hits.append((node, parent, i, html))
 
         walk_widgets(data, visit)
@@ -584,7 +629,7 @@ def self_check(out_dir, sample, module="faq", only=None):
     上一轮迁的、本轮跳过的页面，它们当然还留着本模块的 html 块，全目录扫会误报。
     """
     bad = []
-    marker = f'data-lp-section="{module}"'
+    marker_re = re.compile(r'data-lp-section="%s(?:-[a-z0-9-]+)?"' % re.escape(module))
     for f in sorted(Path(out_dir).glob("*.json")):
         if only is not None and f.name not in only:
             continue
@@ -606,7 +651,10 @@ def self_check(out_dir, sample, module="faq", only=None):
         walk_widgets(data, visit)
         if SENTINEL_RE.search(blob) or any(v in blob for v in LEGACY_ALIAS):
             bad.append(f"{f.name}: 哨兵文本泄漏到产出里")
-        if any(marker in h for h in html_blobs):
+        if not targets and any(marker_re.search(h) for h in html_blobs):
+            # 一个该模块微件都没换成、却还留着原块 = 替换失败。
+            # 注意不能按整页判：同页同模块多块时（如 composite 的横/纵两个 workflow），
+            # 部分块被 C2 闸刻意跳过是预期状态，不算失败。
             bad.append(f"{f.name}: 原 widget-html 块没被清除")
         if len(ids) != len(set(ids)):
             bad.append(f"{f.name}: 微件 id 有重复（Elementor 会渲染异常）")
