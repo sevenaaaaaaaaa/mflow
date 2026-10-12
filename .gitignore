@@ -77,3 +77,10 @@ run/sites/lovart-global.json
 
 # 审计运行数据：本地/服务器保留，不入公开仓库
 run/main-audit/
+
+# 迁移脚本的产出与报告：由 dev/wordpress/migrate-widgets.py 随时重生成，
+# 且在拿到真 sample 之前，产出里的微件字段结构是测试夹具的（假的），
+# 一旦被误导入线上会生成坏微件。不入库。
+dev/wordpress/elem-migrated/
+dev/wordpress/elem-cta/
+dev/wordpress/migration-report-*.md
