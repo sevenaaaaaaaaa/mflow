@@ -617,3 +617,45 @@ replica.js **v18**（447 行，?v=18） / replica.css v3 / native.css v16 / fait
 - P1.5：停 7 个零使用插件包（保留 EA + HT Mega）
 - P2：token 层；P3：LPagery 契约重写（注意 comparison-table 是 blob、pricing 是双价列的契约形态）
 - composite-replica-all 沿既有决策不部署（--exclude）
+
+---
+
+## 十三、P1.5 / P2 / P3 落地（2026-10-13）
+
+### P1.5 — 停 7 个零使用插件包 ✅
+
+`p15-stop-plugins.py`：逐个停用 + 每步渲染探针（shopify 页 6 微件 + 页脚），7/7 成功：
+advanced-animation / elementskit-lite / powerpack-lite / royal-elementor-addons /
+header-footer-elementor(UAE) / unlimited-elements / ht-menu-lite。
+保留：Elementor / Elementor Pro / EA / HT Mega / code-snippets / LPagery / Rank Math 等。
+视觉回归（hero + 中段 + 页脚 17 链接）通过，无样式塌方。
+
+### P2 — token 层 ✅
+
+- Token 源：`lovart-replica.css` 的 Tailwind 主题变量（亮/暗双值：bg-base 三级、
+  text-default/invert、border-contrast + neutral-l1/l2/l3、accent）+ 主字体
+  **Montserrat**（正文）/ **Poppins**（展示）
+- 落地：`p2-tokens3.py` 给 snippet 29（lr-elem-bridge）追加 **`lr_kit_tokens`** action
+  （token JSON 走资产服务器间拉取，同 WAF 规避模式；写 active kit meta + `files_manager->clear_cache()`）
+- 已写入 **kit 70**：system_colors 4（Ink/Paper/Text/Accent）+ custom_colors 13
+  （LR BG Base/Secondary/Tertiary、BG Dark×3、Text Default/Invert、Border×4、Accent Light）
+  + system_fonts 4（Montserrat 主/Poppins 次）
+- 硬验证：`uploads/elementor/css/post-70.css` 已生成 `lr_bg_*` 等 CSS 变量；
+  编辑器与未来微件即可 `globals.colors` 引用；前台探针无回归
+- 教训：**code-snippets v1 API 的顶层 echo snippet（scope global/active）在前台不执行**——
+  别再用临时 snippet 执行代码，扩 snippet 29 的 admin-ajax action 才是可靠通道
+
+### P3 — LPagery 契约 v2 ✅
+
+`native-modules/csv-contract.md` 重写为 **v2**：
+- 新增 workflow（4 步必填）、capability-tabs（4 面板必填）、testimonial（3 条/页）
+- **pricing 双价列**：`pricing_{plan}_monthly/annual` 两列共一行，`featured` 空串即高亮的坑、
+  年付 bill 进 features 首行、**槽序铁律**（按 add_control 定义序）
+- **comparison-table 单 blob**：`compare_rows_html` 整块 HTML，无行列级字段
+- 新增教训映射表（blob/双价列/槽序/空槽禁令 ← C2/C3/C4/C5/§十二 事故）
+
+### 尚余
+
+- P4 小项：定价卡 "Hot Models" 小字表、people-reviews 无 `.lovart-replica-scope`、
+  `initCssHeal` 简化、export 过滤设计说明泄漏
+- LPagery 种子模板（lp-lr-native-v1）按契约 v2 扩展字段——建批量线时做
