@@ -1,0 +1,75 @@
+{
+ "_readme": "Example brand profile (fictional brand Acme, acme.example). Copy to ops/brands/<brand>/brand-profile.json for a real brand — real profiles never live in the public repo.",
+ "brand": "acme",
+ "deploy": {
+  "consoleProjectId": "main"
+ },
+ "contentBudget": {
+  "blog": [
+   1200,
+   1800
+  ],
+  "blogLongform": 7500,
+  "blogMax": 2160,
+  "landing": [
+   600,
+   1000
+  ],
+  "summary": 600
+ },
+ "languages": {
+  "primary": "en",
+  "supported": [
+   "en",
+   "zh",
+   "ja",
+   "zh-TW",
+   "pt",
+   "ru"
+  ],
+  "landingLanguages": 10
+ },
+ "visual": {
+  "coverPool": "ops/image_pool.json (see landing-ssot/image_pool.py)",
+  "landingSpec": "component library preview-data.json",
+  "note": "sizes/specs follow the component library"
+ },
+ "kb": {
+  "dir": "insight-data/Knowledge Base",
+  "kbIntent": [],
+  "capabilityGlossary": "insight-data/Knowledge Base/Acme/01-capabilities.md",
+  "factRules": "verify against the official site; mark unverified facts [待考证]",
+  "messagingRules": "harness/Docs/S4-质量审核/Anti-Slop.md"
+ },
+ "strategy": {
+  "keywordClusters": "Skills/02-creation/blog-writer/references/keyword-clusters.json",
+  "contentStrategy": "Skills/02-creation/blog-writer/references/strategy-content.md",
+  "paidStrategy": "Skills/02-creation/landing-writer/references/paid-strategy.md",
+  "croAudit": "Skills/02-creation/landing-writer/references/cro-audit.md"
+ },
+ "cta": {
+  "primary": "Start for free",
+  "url": "acme.example/signup",
+  "secondary": "acme.example/pricing"
+ },
+ "templates": {
+  "default": null,
+  "note": "native prompt (RULES-20); set a console template id to use a template"
+ },
+ "publishTarget": {
+  "cms": "sanity",
+  "project": "<sanity-project-id>",
+  "dataset": "production",
+  "mode": "import --missing only"
+ },
+ "quality": {
+  "gates": [
+   "post-write-check",
+   "geo-check",
+   "quota-check",
+   "lang-check"
+  ],
+  "gatesVersion": "infra/gates v1.0"
+ },
+ "subSites": []
+}

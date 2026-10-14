@@ -1,4 +1,5 @@
-# 本地 WP 测试环境：docker compose up -d → http://localhost:8090（主题热挂载）
+# Local WordPress test environment: docker compose up -d → http://localhost:8090
+# Optional theme hot-mount: WP_THEME_DIR=/path/to/theme WP_THEME_SLUG=my-theme docker compose up -d
 services:
   wp:
     image: docker.m.daocloud.io/library/wordpress:6.7-php8.3-apache
@@ -10,7 +11,7 @@ services:
       WORDPRESS_DB_NAME: wp
     volumes:
       - wp_data:/var/www/html
-      - ./lovart-theme/lovart-theme:/var/www/html/wp-content/themes/lovart
+      - ${WP_THEME_DIR:-./theme}:/var/www/html/wp-content/themes/${WP_THEME_SLUG:-mflow-theme}
   db:
     image: docker.m.daocloud.io/library/mysql:8.0
     environment:
