@@ -16,6 +16,8 @@
 #   bash deploy/sync.sh --skip-tests     # 跳过本地测试（紧急热修，不推荐）
 #   bash deploy/sync.sh --cf-purge-all   # CF 全站缓存刷新
 #
+# 分支约束：正式发布（含 --server-only）只允许在 main 上进行；--dry-run 任意分支可跑（仅告警）
+#
 # 前置：
 #   - SSH 免密可达 root@172.96.253.73:28766
 #   - CF 刷新（可选）：deploy/cf.env 填 CF_API_TOKEN / CF_ZONE_ID / CF_DOMAIN
@@ -68,6 +70,17 @@ say()  { echo "[sync] $*"; }
 fail() { echo "[sync] ✗ $* (exit $1×10)" >&2; exit $(( $1 * 10 )); }
 
 say "=== MFlow sync · $(date '+%F %T') ==="
+
+# Deploy only from main (dry-run: warn only)
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+if [[ "$BRANCH" != "main" ]]; then
+    if [[ "$DRY_RUN" -eq 1 ]]; then
+        say "⚠ 当前分支 ${BRANCH}，部署只允许从 main 进行；功能分支请先合并（--dry-run 仅预览，继续）"
+    else
+        echo "[sync] ✗ 当前分支 ${BRANCH}，部署只允许从 main 进行；功能分支请先合并" >&2
+        exit 20
+    fi
+fi
 
 # ── 1) 本地测试 ─────────────────────────────────────────────
 if [[ "$DO_TESTS" -eq 1 ]]; then

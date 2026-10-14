@@ -64,6 +64,7 @@ bash deploy/push.sh                      # 只推 GitHub
 ```
 
 - 分支：`main`；无 GitHub Actions；默认提交信息 `chore(sync): auto-deploy <时间>`
+- 只允许从 `main` 部署：`sync.sh`（含 `--server-only`）与 `push.sh` 在其他分支直接拒绝，`--dry-run` 仅告警
 - 本地 `.git/hooks/pre-commit` 跑 `gitleaks git --pre-commit --staged`，任何提交含密钥都会被拦下
 - 密钥一律走环境变量或 gitignored 本地文件（变量名见 `.env.example`），如飞书 Base token：`FEISHU_BASE_TOKEN` 或 `harness/Skills/01-strategy/trident-data-engine/credentials/feishu_base_token`
 - 服务器目录**不要再 `git pull`**：大量内容已出库，pull 会删掉服务器上的同名文件；更新一律走 `deploy/sync.sh`
@@ -81,6 +82,7 @@ MFlow 既是在开发的工具，也是每天在用的生产工具。两类产�
 - 用 MFlow 干活时新写的脚本一律放 `ops/`；`/ops/` 与根目录的 `*.py/*.sh/*.js/*.mjs/*.ts` 已 gitignore，`deploy/sync.sh` 只把它们送到服务器（`--update`，不覆盖服务器上更新的版本）。
 - 公开仓库「零 Lovart」（2026-09-28 开源化 P2）：任何含 Lovart / 客户站点 / Sanity 项目信息的东西都属于第二类。
 - 拿不准时按第二类处理（不进 GitHub），再问用户。
+- 与其他 flow 项目（统一放 web 根之外的 `/www/ops/<project>/`）不同，MFlow 的 ops 刻意放在应用目录内 `/www/wwwroot/mflow/ops/`——服务器工作台直接就地读取，属设计如此，不要迁走。
 
 ## 注意事项
 
