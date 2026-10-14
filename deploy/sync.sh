@@ -1,13 +1,20 @@
 #!/usr/bin/env bash
-# sync.sh — MFlow 一键发布：测试 → 提交 → 推送 → 服务器同步 → 重启 → 验证 → 刷新 CF 缓存
+# sync.sh — MFlow 一键发布（双轨）：测试 → gitleaks → 提交 → 推送 GitHub（仅代码）
+#           → rsync 服务器（工作区全量，含 gitignored 内容数据）→ 重启 → 验证 → 刷新 CF 缓存
+#
+# 双轨：GitHub 是公开仓库，只收代码（内容/数据/凭据由 .gitignore 挡住）；
+#       服务器从本地工作区 rsync，gitignored 的内容数据照样送达。
 #
 # Usage:
-#   bash deploy/sync.sh                  # 全流程（测试→提交→推送→同步→重启→验证→CF）
-#   bash deploy/sync.sh --msg "说明"     # 指定本次提交说明
-#   bash deploy/sync.sh --no-push        # 不同步到 GitHub（仅本地测试+服务器）
-#   bash deploy/sync.sh --no-commit      # 有未提交改动则中止（不自动提交）
-#   bash deploy/sync.sh --dry-run        # 只跑测试与校验，不推送不同步
+#   bash deploy/sync.sh                  # 全流程
+#   bash deploy/sync.sh -m "feat: ..."   # 指定提交说明（同 --msg；建议 Conventional Commits）
+#   bash deploy/sync.sh --server-only    # 跳过 git（不扫描/不提交/不推送），只同步服务器+重启+验证
+#   bash deploy/sync.sh --dry-run        # 测试 + gitleaks + 预览提交 + rsync -n；不提交不推送不重启
+#   bash deploy/sync.sh --no-push        # 提交但不推 GitHub
+#   bash deploy/sync.sh --no-commit      # 不自动提交（保留未提交改动）
+#   bash deploy/sync.sh --no-content     # 不同步 gitignored 内容数据（insight-data/genflow/…）
 #   bash deploy/sync.sh --skip-tests     # 跳过本地测试（紧急热修，不推荐）
+#   bash deploy/sync.sh --cf-purge-all   # CF 全站缓存刷新
 #
 # 前置：
 #   - SSH 免密可达 root@172.96.253.73:28766
@@ -37,16 +44,22 @@ DO_PUSH=1
 DO_TESTS=1
 DRY_RUN=0
 CF_PURGE_ALL=0
+SERVER_ONLY=0
+DO_CONTENT=1
+GITLEAKS="${GITLEAKS:-$HOME/.local/bin/gitleaks}"
+[[ -x "$GITLEAKS" ]] || GITLEAKS="$(command -v gitleaks || true)"
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        --msg) MSG="$2"; shift 2;;
+        --msg|-m) MSG="$2"; shift 2;;
+        --server-only) SERVER_ONLY=1; shift;;
+        --no-content) DO_CONTENT=0; shift;;
         --no-push) DO_PUSH=0; shift;;
         --no-commit) DO_COMMIT=0; shift;;
         --skip-tests) DO_TESTS=0; shift;;
         --dry-run) DRY_RUN=1; shift;;
         --cf-purge-all) CF_PURGE_ALL=1; shift;;
-        -h|--help) sed -n '2,20p' "$0"; exit 0;;
+        -h|--help) sed -n '2,26p' "$0"; exit 0;;
         *) echo "未知参数: $1" >&2; exit 20;;
     esac
 done
@@ -70,6 +83,22 @@ else
     say "① 跳过本地测试（--skip-tests）"
 fi
 
+# ── 1.5) gitleaks：扫描「将要提交」的全部改动（临时 index，不碰真实暂存区）──
+if [[ "$SERVER_ONLY" -eq 1 ]]; then
+    say "②③ --server-only：跳过 gitleaks / 提交 / 推送"
+    DO_COMMIT=0; DO_PUSH=0
+else
+    [[ -n "$GITLEAKS" ]] || fail 2 "未找到 gitleaks（~/.local/bin/gitleaks）——拒绝在无扫描的情况下提交公开仓库"
+    TMP_INDEX="$(mktemp "${TMPDIR:-/tmp}/mflow-index.XXXXXX")"
+    trap 'rm -f "$TMP_INDEX"' EXIT
+    cp "$(git rev-parse --git-path index)" "$TMP_INDEX"
+    GIT_INDEX_FILE="$TMP_INDEX" git add -A
+    if ! GIT_INDEX_FILE="$TMP_INDEX" "$GITLEAKS" git --pre-commit --staged --redact --no-banner -v; then
+        fail 2 "gitleaks 发现疑似密钥——已中止（改为读环境变量/本地 gitignored 文件，或误报加 .gitleaksignore）"
+    fi
+    say "  ✓ gitleaks：待提交改动无密钥"
+fi
+
 # ── 2) 提交 ─────────────────────────────────────────────
 if [[ "$DO_COMMIT" -eq 1 ]]; then
     if [[ -n "$(git status --porcelain)" ]]; then
@@ -77,7 +106,7 @@ if [[ "$DO_COMMIT" -eq 1 ]]; then
             say "② [dry-run] 有未提交改动，提交内容如下："
             git status --short
         else
-            DEFAULT_MSG="sync: auto-deploy $(date '+%F %H:%M')"
+            DEFAULT_MSG="chore(sync): auto-deploy $(date '+%F %H:%M')"
             git add -A
             git commit -m "${MSG:-$DEFAULT_MSG}" --quiet || fail 2 "git commit 失败"
             say "  ✓ 已提交：${MSG:-$DEFAULT_MSG}"
@@ -85,7 +114,7 @@ if [[ "$DO_COMMIT" -eq 1 ]]; then
     else
         say "② 工作区干净，无需提交"
     fi
-else
+elif [[ "$SERVER_ONLY" -eq 0 ]]; then
     if [[ -n "$(git status --porcelain)" ]]; then
         say "⚠ 未提交改动被保留（--no-commit）："
         git status --short
@@ -94,11 +123,8 @@ fi
 
 # ── 3) 推送 GitHub ────────────────────────────────────────
 if [[ "$DRY_RUN" -eq 1 ]]; then
-    say "③ [dry-run] 跳过推送与同步"
-    echo "[sync] dry-run 结束"
-    exit 0
-fi
-if [[ "$DO_PUSH" -eq 1 ]]; then
+    say "③ [dry-run] 跳过推送"
+elif [[ "$DO_PUSH" -eq 1 ]]; then
     if git rev-parse --abbrev-ref --symbolic-full-name @{u} >/dev/null 2>&1; then
         LOCAL_SHA=$(git rev-parse HEAD)
         ORIGIN_SHA=$(git rev-parse origin/main 2>/dev/null || echo "")
@@ -112,12 +138,13 @@ if [[ "$DO_PUSH" -eq 1 ]]; then
     else
         say "⚠ 无 upstream，跳过推送"
     fi
-else
+elif [[ "$SERVER_ONLY" -eq 0 ]]; then
     say "③ 跳过推送（--no-push）"
 fi
 
 # ── 4) rsync 同步（远端路径含空格必须引号——踩过两次的坑）───
-say "④ rsync → ${REMOTE}:${REMOTE_ROOT}"
+RSYNC_DRY=""; [[ "$DRY_RUN" -eq 1 ]] && RSYNC_DRY="-n -i"
+say "④ rsync → ${REMOTE}:${REMOTE_ROOT}$([[ $DRY_RUN -eq 1 ]] && echo '（dry-run：rsync -n）')"
 ssh -p "$REMOTE_PORT" "$REMOTE" "true" 2>/dev/null || fail 4 "SSH 连不上 ${REMOTE}:${REMOTE_PORT}"
 SYNC_ITEMS=(
     "./dev/console/|${REMOTE_ROOT}/dev/console/"
@@ -153,7 +180,10 @@ for entry in "${SYNC_ITEMS[@]}"; do
     # 每组重试：22 组各自建 SSH 连接，服务器抖动时随机掉一两组（2026-09-30 实测连坑三轮）
     ok=""
     for attempt in 1 2 3; do
-        if rsync -az $DEL_FLAG -e "ssh -p $REMOTE_PORT" "$src" "$spec" >/dev/null 2>&1; then
+        if [[ "$DRY_RUN" -eq 1 ]]; then
+            echo "    --- $src"
+            rsync -az $RSYNC_DRY $DEL_FLAG -e "ssh -p $REMOTE_PORT" "$src" "$spec" 2>&1 | sed 's/^/      /' && { ok=1; break; }
+        elif rsync -az $DEL_FLAG -e "ssh -p $REMOTE_PORT" "$src" "$spec" >/dev/null 2>&1; then
             ok=1; break
         fi
         [[ $attempt -lt 3 ]] && sleep 3
@@ -161,6 +191,46 @@ for entry in "${SYNC_ITEMS[@]}"; do
     [[ -n "$ok" ]] || fail 4 "rsync $src → $dst 失败（重试 3 次仍失败）"
 done
 say "  ✓ ${#SYNC_ITEMS[@]} 组已同步"
+
+# ── 4b) gitignored 内容数据（不进 GitHub，但服务器工作台要读）──
+# 只增不删（无 --delete）+ --update（服务器上更新的文件不被本地旧版覆盖：
+# 每日/每周管线、dream 在服务器端也会写这些目录）
+if [[ "$DO_CONTENT" -eq 1 ]]; then
+    CONTENT_ITEMS=(
+        "./insight-data/|${REMOTE_ROOT}/insight-data/"
+        "./genflow/|${REMOTE_ROOT}/genflow/"
+        "./harness/11-knowledge/|${REMOTE_ROOT}/harness/11-knowledge/"
+        "./dev/Output/|${REMOTE_ROOT}/dev/Output/"
+    )
+    CONTENT_EXCLUDES=(--exclude=.DS_Store --exclude=__pycache__/ --exclude=/.pipeline/events.jsonl)
+    n=0
+    for entry in "${CONTENT_ITEMS[@]}"; do
+        src="${entry%%|*}"; dst="${entry#*|}"
+        [[ -d "$src" ]] || continue
+        spec="${REMOTE}:\"${dst}\""
+        ok=""
+        for attempt in 1 2 3; do
+            if [[ "$DRY_RUN" -eq 1 ]]; then
+                echo "    --- $src (content)"
+                rsync -az --update $RSYNC_DRY "${CONTENT_EXCLUDES[@]}" -e "ssh -p $REMOTE_PORT" "$src" "$spec" 2>&1 | sed 's/^/      /' && { ok=1; break; }
+            elif rsync -az --update "${CONTENT_EXCLUDES[@]}" -e "ssh -p $REMOTE_PORT" "$src" "$spec" >/dev/null 2>&1; then
+                ok=1; break
+            fi
+            [[ $attempt -lt 3 ]] && sleep 3
+        done
+        [[ -n "$ok" ]] || fail 4 "rsync(content) $src → $dst 失败（重试 3 次仍失败）"
+        n=$((n + 1))
+    done
+    say "  ✓ 内容数据 ${n} 组已同步（--update，只增不删）"
+else
+    say "  · 跳过内容数据同步（--no-content）"
+fi
+
+if [[ "$DRY_RUN" -eq 1 ]]; then
+    say "⑤⑥⑦ [dry-run] 跳过重启 / 验证 / CF 刷新"
+    echo "[sync] dry-run 结束"
+    exit 0
+fi
 
 # ── 5) 重启 + 服务端门禁 ─────────────────────────────────
 say "⑤ 重启 ${CONSOLE_SVC} + 服务端门禁"

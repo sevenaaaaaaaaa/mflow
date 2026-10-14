@@ -20,13 +20,30 @@ CRED_DIR = SCRIPT_DIR.parent / "credentials"
 OUT_DIR = DATA_INGESTION_DIR
 
 # ── 飞书配置 ──────────────────────────────────────────────
-BASE_TOKEN = os.getenv("FEISHU_BASE_TOKEN", "REDACTED")
+from credential_paths import credential_file
+
+# Bitable app token：环境变量 FEISHU_BASE_TOKEN，或本地 gitignored 文件
+# credentials/feishu_base_token（路径可用 MFLOW_FEISHU_BASE_TOKEN_FILE 覆盖）
+def _load_base_token() -> str:
+    tok = os.getenv("FEISHU_BASE_TOKEN", "").strip()
+    if tok:
+        return tok
+    try:
+        return credential_file("feishu_base_token", "MFLOW_FEISHU_BASE_TOKEN_FILE").read_text().strip()
+    except FileNotFoundError:
+        return ""
+
+BASE_TOKEN = _load_base_token()
 APP_ID = os.getenv("FEISHU_APP_ID")
 APP_SECRET = os.getenv("FEISHU_APP_SECRET")
 
 def load_feishu_credentials():
     """优先环境变量，fallback 到 credentials/feishu.json"""
     global APP_ID, APP_SECRET
+    if not BASE_TOKEN:
+        print("❌ 缺少飞书 Base token：export FEISHU_BASE_TOKEN=... ，"
+              "或写入 credentials/feishu_base_token（gitignored）")
+        sys.exit(1)
     if APP_ID and APP_SECRET:
         return
     cred_file = CRED_DIR / "feishu.json"

@@ -84,3 +84,20 @@ run/main-audit/
 dev/wordpress/elem-migrated/
 dev/wordpress/elem-cta/
 dev/wordpress/migration-report-*.md
+
+# ===== 双轨同步（2026-10-14）：GitHub 只放代码；以下仅本地 + rsync 到服务器 =====
+# Skill 内凭据目录（Bing api_key、feishu_base_token、feishu.json…），只保留 *.example
+harness/Skills/**/credentials/*
+!harness/Skills/**/credentials/*.example
+# 知识库代码保留入库（其余 11-knowledge 内容见上方规则，已出库）
+!harness/11-knowledge/scripts/
+harness/11-knowledge-sandbox-backup/
+dev/wordpress/native-rollout-backups/
+openers.log
+*.log
+*.sqlite
+*.sqlite3
+*.db
+cloudflare.json
+secrets-local.md
+.deploy-ssh/
