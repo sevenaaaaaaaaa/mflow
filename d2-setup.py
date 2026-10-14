@@ -67,7 +67,7 @@ def doc_from_url(url):
     if not m: return None, None
     segs = [s for s in m.group(1).strip("/").split("/") if s]
     lang = "en"
-    if segs and segs[0] in ("zh", "pt", "ru", "fr", "ja", "ko", "de", "es", "it"):
+    if segs and segs[0] in ("zh", "pt", "ru", "fr", "ja", "ko", "de", "es", "it", "zh-TW"):
         lang = segs[0]; segs = segs[1:]
     if not segs: return None, None
     kind, slug = segs[0], "/".join(segs[1:])
@@ -96,36 +96,47 @@ try:
     _creds = Credentials.from_authorized_user_info(json.loads(TOK.read_text()),
                                                    ["https://www.googleapis.com/auth/webmasters.readonly"])
     _svc = build("searchconsole", "v1", credentials=_creds)
-    _res = _svc.searchanalytics().query(siteUrl="https://www.lovart.ai/", body={
-        "startDate": "2026-09-16", "endDate": "2026-10-14",
-        "dimensions": ["query", "page"], "rowLimit": 500,
-        "dimensionFilterGroups": [{"filters": [{"dimension": "query", "operator": "EQUALS_LIST",
-                                                "expressions": GSC_EXTRA}]}]}).execute()
-    for row in (_res.get("rows") or []):
-        keys = row.get("keys") or []
-        if len(keys) < 2: continue
-        q, page = keys[0].strip(), keys[1]
-        gap.setdefault(q, []).append({"page": page, "clicks": row.get("clicks", 0),
-                                      "impr": row.get("impressions", 0), "pos": round(row.get("position", 0), 1)})
-    print(f"[2] GSC 补拉 ok（{len(GSC_EXTRA)} 词）")
+    n_rows = 0
+    for q in GSC_EXTRA:
+        try:
+            _res = _svc.searchanalytics().query(siteUrl="https://www.lovart.ai/", body={
+                "startDate": "2026-09-16", "endDate": "2026-10-14",
+                "dimensions": ["query", "page"], "rowLimit": 50,
+                "dimensionFilterGroups": [{"filters": [{"dimension": "query", "operator": "EQUALS",
+                                                         "expression": q}]}]}).execute()
+        except Exception:
+            continue
+        for row in (_res.get("rows") or []):
+            keys = row.get("keys") or []
+            if len(keys) < 2: continue
+            page = keys[1]
+            gap.setdefault(q, []).append({"page": page, "clicks": row.get("clicks", 0),
+                                          "impr": row.get("impressions", 0), "pos": round(row.get("position", 0), 1)})
+            n_rows += 1
+        time.sleep(0.3)
+    print(f"[2] GSC 补拉 ok（{n_rows} 行）")
 except Exception as e:
     print(f"[2] GSC 补拉失败（回退 regex）: {str(e)[:120]}")
 
 def best_page(key, exclude_slugs=()):
-    """取该查询下曝光最大的承接页"""
-    best = None
-    for e in gap.get(key, []):
-        slug = (e.get("page") or "").rstrip("/").rsplit("/", 1)[-1]
-        if slug in exclude_slugs: continue
-        if best is None or (e.get("impr") or 0) > (best.get("impr") or 0): best = e
-    return best
+    """该查询的映射页列表（按曝光降序）"""
+    rows = sorted(gap.get(key, []), key=lambda e: -(e.get("impr") or 0))
+    return [e for e in rows if (e.get("page") or "").rstrip("/").rsplit("/", 1)[-1] not in exclude_slugs]
 
-def resolve_query(key, exclude_slugs=(), fb_fn=None, fb_kind=None, fb_stats=None):
-    """GSC 映射优先；fb_fn 回退函数返回 doc，fb_kind/fb_stats 供指令模板"""
-    e = best_page(key, exclude_slugs)
-    if e:
+def resolve_query(key, exclude_slugs=(), fb_fn=None, fb_kind=None, fb_stats=None, prefer_lang=None):
+    """GSC 映射优先（按曝光降序逐个尝试落档）；prefer_lang 时优先该语言承接页；fb_fn 回退"""
+    langs = ("zh", "pt", "ru", "fr", "ja", "ko", "de", "es", "it", "zh-TW")
+    def url_lang(u):
+        m = re.match(r"https://www\.lovart\.ai/([^/]+)/", u or "")
+        return m.group(1) if (m and m.group(1) in langs) else "en"
+    rows = best_page(key, exclude_slugs)
+    if prefer_lang:
+        rows = sorted(rows, key=lambda e: 0 if url_lang(e.get("page")) == prefer_lang else 1)
+    for e in rows:
         d, kind = doc_from_url(e.get("page"))
         if d:
+            if prefer_lang and (d.get("language") or "en") != prefer_lang:
+                continue
             return {"doc": d, "kind": kind, "entry": e}
     if fb_fn:
         d = fb_fn()
@@ -226,7 +237,7 @@ A5_DEFS = [
     ("cinematic video", "", r"cinematic", (), "comp"),
 ]
 for kw, g, pat, excl, dt in A5_DEFS:
-    r = resolve_query(kw, fb_fn=lambda p=pat, e2=excl, k2=kw: find_by_regex("en", p, e2, kw=k2),
+    r = resolve_query(kw, prefer_lang="en", fb_fn=lambda p=pat, e2=excl, k2=kw: find_by_regex("en", p, e2, kw=k2),
                       fb_kind=("comp", "feature"), fb_stats={"impr": "", "pos": ""})
     if r:
         e = r["entry"]
@@ -265,7 +276,8 @@ for kw, key, g in A7_DEFS:
 
 # --- A8 被超越页整页改写① ---
 new_lane("A8", "冲刺D2·A8 整页改写①（ai thumbnail maker）")
-r8 = resolve_query("ai thumbnail maker", fb_fn=lambda: find_by_regex("en", r"thumbnail", (), kw="ai thumbnail maker"),
+r8 = resolve_query("ai thumbnail maker", prefer_lang="en",
+                   fb_fn=lambda: find_by_regex("en", r"thumbnail", (), kw="ai thumbnail maker"),
                    fb_kind=("comp", "feature"))
 if r8:
     add_item("A8", r8["doc"], r8["kind"], "ai thumbnail maker",
@@ -280,7 +292,7 @@ C1_DEFS = [("Graphic Design", r"graphic.design", ()),
            ("Motion Control", r"motion.control", ()),
            ("AI Design Generator", r"design.generator|design.agent", ())]
 for kw, pat, excl in C1_DEFS:
-    r = resolve_query(kw, fb_fn=lambda p=pat, e2=excl, k2=kw: find_by_regex("en", p, e2, kw=k2),
+    r = resolve_query(kw, prefer_lang="en", fb_fn=lambda p=pat, e2=excl, k2=kw: find_by_regex("en", p, e2, kw=k2),
                       fb_kind=("comp", "feature"), fb_stats={"impr": "1.1k", "pos": "4-20"})
     if r:
         e = r["entry"]
@@ -290,7 +302,8 @@ for kw, pat, excl in C1_DEFS:
 
 # --- C2 被超越页整页改写② ---
 new_lane("C2", "冲刺D2·C2 整页改写②（ai mockup generator）")
-r2m = resolve_query("ai mockup generator", fb_fn=lambda: find_by_regex("en", r"mockup", (), kw="ai mockup generator"),
+r2m = resolve_query("ai mockup generator", prefer_lang="en",
+                    fb_fn=lambda: find_by_regex("en", r"mockup", (), kw="ai mockup generator"),
                     fb_kind=("comp", "tool"))
 if r2m:
     add_item("C2", r2m["doc"], r2m["kind"], "ai mockup generator",
