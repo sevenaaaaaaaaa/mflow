@@ -114,3 +114,7 @@ genflow/bv-skill-v01/*-test.md
 /*.js
 /*.mjs
 /*.ts
+
+# Notion sync audit logs (runtime data, contain content paths)
+dev/scripts/sync-pulled.jsonl
+dev/scripts/sync-pushed.jsonl

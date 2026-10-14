@@ -41,8 +41,31 @@ if not NOTION_API_KEY:
 NOTION_VERSION = "2022-06-28"
 NOTION_BASE = "https://api.notion.com/v1"
 
-VAULT = Path(os.environ.get("MFLOW_RESOURCE_ROOT", Path(__file__).resolve().parents[4]))
-MFLOW = VAULT / "1-Project" / "品牌方 MFlow"
+# Project root = this checkout (dev/scripts/ -> ../..); MFLOW_ROOT overrides.
+MFLOW = Path(os.environ.get("MFLOW_ROOT") or Path(__file__).resolve().parents[2])
+
+# Notion "Content Path" values written before the 2026-10-07 directory rename
+# still use the old numbered prefixes; map them onto the current layout.
+# Brand-prefixed legacy subfolders ("<Brand> ORM", "<Brand>-Blog-Pipeline") are
+# matched generically so no brand name lives in the public repo.
+LEGACY_PREFIXES = [
+    (re.compile(r"^1-1 Harness/"), "harness/"),
+    (re.compile(r"^1-2 Insight/[^/]+ ORM/"), "insight-data/ORM/"),
+    (re.compile(r"^1-2 Insight/"), "insight-data/"),
+    (re.compile(r"^1-3 GenFlow/[^/]+-Blog-Pipeline/"), "genflow/blog-pipeline/"),
+    (re.compile(r"^1-3 GenFlow/"), "genflow/"),
+    (re.compile(r"^1-4 Dev/"), "dev/"),
+]
+
+
+def resolve_content_path(rel: str) -> Path:
+    """Map a Notion Content Path (current or legacy layout) to a file under MFLOW."""
+    rel = rel.strip().lstrip("/")
+    for pattern, new in LEGACY_PREFIXES:
+        if pattern.match(rel):
+            rel = pattern.sub(new, rel, count=1)
+            break
+    return MFLOW / rel
 
 DATABASES = {
     "content-calendar": {
@@ -199,7 +222,7 @@ def sync_database(db_name: str, config: dict, apply: bool) -> int:
         if not path_val:
             continue
 
-        md_path = MFLOW / path_val
+        md_path = resolve_content_path(path_val)
         if not md_path.exists():
             continue
 

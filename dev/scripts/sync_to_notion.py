@@ -47,8 +47,8 @@ if not NOTION_API_KEY:
 NOTION_VERSION = "2022-06-28"
 NOTION_BASE = "https://api.notion.com/v1"
 
-VAULT = Path(os.environ.get("MFLOW_RESOURCE_ROOT", Path(__file__).resolve().parents[4]))
-MFLOW = VAULT / "1-Project" / "品牌方 MFlow"
+# Project root = this checkout (dev/scripts/ -> ../..); MFLOW_ROOT overrides.
+MFLOW = Path(os.environ.get("MFLOW_ROOT") or Path(__file__).resolve().parents[2])
 
 # Database ID mapping (from mflow-notion-config.md)
 DATABASES = {
