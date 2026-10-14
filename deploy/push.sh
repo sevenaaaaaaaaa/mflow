@@ -2,7 +2,7 @@
 # push.sh — 只做 git push，凭据优先用 deploy/gh.env（给无家目录访问权的环境用）
 #
 #   bash deploy/push.sh              # 推当前分支到 GitHub（不碰服务器，功能分支也可推，用于开 PR）
-#   bash deploy/push.sh --dry-run    # 只预演（任意分支可跑，非 main 仅告警）
+#   bash deploy/push.sh --dry-run    # 只预演
 #
 # 与 deploy/sync.sh 的区别：sync.sh 是全流程（测试→提交→推送→服务器→CF），
 # 需要 SSH 到服务器；push.sh 只碰 GitHub，任何能走 HTTPS 的环境都能跑。
