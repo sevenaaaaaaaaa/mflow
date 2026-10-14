@@ -6,7 +6,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-2563eb.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-7c5cff.svg)](#快速开始)
-[![Tests](https://img.shields.io/badge/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-28%20passed-16a34a.svg)](1-4%20Dev/tests/)
+[![Tests](https://img.shields.io/badge/%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-28%20passed-16a34a.svg)](dev/tests/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-059669.svg)](#完全开源)
 
 [快速开始](#快速开始) · [功能总附录](#附录功能总清单每个模块截图--介绍--使用说明) · [部署指南](docs/deploy-guide.md) · [在线体验](https://nownexts.com/mflow/)
@@ -147,7 +147,7 @@ bash "dev/automation/run-daily-pipeline.sh"
 
 ## 文档
 
-[快速上手](docs/quickstart.md) · [使用指南](docs/USAGE-GUIDE.md) · [产品介绍](docs/product.md) · [帮助中心](docs/help-center.md) · [模块扩展](docs/modules.md) · [部署指南](docs/deploy-guide.md) · [插件开发](docs/plugins.md) · [产品路线图](ROADMAP.md)
+[快速上手](docs/quickstart.md) · [使用指南](docs/USAGE-GUIDE.md) · [产品介绍](docs/product.md) · [帮助中心](docs/help-center.md) · [模块扩展](docs/modules.md) · [部署指南](docs/deploy-guide.md) · [插件开发](docs/plugins.md) · [更新日志](CHANGELOG.md)
 
 ## 当前边界（诚实声明）
 

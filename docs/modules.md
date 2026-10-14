@@ -62,7 +62,7 @@ def publish(item: dict, cfg: dict) -> dict:
 
 OpenFlow 的迭代飞轮 = 版本化交付 + 使用数据回流。MFlow 对应四件事：
 
-1. **VERSION + 变更日志**：根 `VERSION` 一行版本号；每轮功能在 `CHANGELOG.md` 追加（含动机与效果数字）
+1. **VERSION + 变更日志**：根 `VERSION` 一行版本号；面向用户的版本说明写在 `CHANGELOG.md`（未发布的改动记在顶部 `## Unreleased`）
 2. **运行数据回流**：`run/llm-usage.jsonl`（成本）、`events.jsonl`（吞吐）、质检 BLOCK 率（质量）——月度回顾这三条曲线，找到该优化的环节
 3. **Lessons 机制**：每轮会话写 session log（`11-knowledge/sessions/`），踩坑沉淀为 RULES 或 hook 新增检查项——自我迭代的本质是"错误只犯一次"
 4. **Demo 驱动的验收**：每个新能力必须让"未配置的新用户"也能在 5 分钟内看到效果（本工作台的 onboarding 即按此标准迭代）
@@ -72,4 +72,4 @@ OpenFlow 的迭代飞轮 = 版本化交付 + 使用数据回流。MFlow 对应�
 - 看板 = 执行视图（`run/tasks.json`，支持拖拽、负责人、截止日、操作者署名）
 - 日历 = 资产视图（`genflow/Content Calendar/`）
 - 打通：日历页「→ 加入看板」把文章变成卡片（卡片带 🔗 关联），卡片流转即内容生产进度；
-  多人协作 MVP = 共享密码 + 卡片署名，正式账号体系在 ROADMAP Phase 3
+  多人协作 MVP = 共享密码 + 卡片署名，正式账号体系见 1.0.0 起的多账号与角色权限

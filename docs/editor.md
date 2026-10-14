@@ -21,7 +21,7 @@
 | 可编辑 | 只读 |
 |---|---|
 | `run/projects/{id}/content/**.md`（生成稿） | `harness/02-rules/**`（RULES 是 SSOT） |
-| `run/library/{site}/**.md`（内容库镜像） | `docs/**`、`ROADMAP.md` |
+| `run/library/{site}/**.md`（内容库镜像） | `docs/**`、`CHANGELOG.md` |
 | `genflow/**.md`（草稿池） | `insight-data/**`（报告由脚本生成） |
 
 非 `.md`、路径穿越（`..`）、白名单之外的一律拒绝。这几条有单测护着

@@ -182,7 +182,7 @@ SYNC_ITEMS=(
     "deploy/|${REMOTE_ROOT}/deploy/"
     "docs/|${REMOTE_ROOT}/docs/"
     "VERSION|${REMOTE_ROOT}/VERSION"
-    "ROADMAP.md|${REMOTE_ROOT}/ROADMAP.md"
+    "CHANGELOG.md|${REMOTE_ROOT}/CHANGELOG.md"
 )
 for entry in "${SYNC_ITEMS[@]}"; do
     src="${entry%%|*}"; dst="${entry#*|}"
