@@ -12,6 +12,10 @@ from pathlib import Path
 from datetime import date, timedelta
 
 import requests
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[5] / "dev" / "scripts" / "library"))
+import env_guard  # noqa: E402  dev/prod separation: no Feishu writes from development
+env_guard.install()
 from trident_paths import DATA_INGESTION_DIR, WAREHOUSE_DIR
 
 # ── 路径 ──────────────────────────────────────────────────
@@ -293,6 +297,10 @@ def build_records():
 
 # ── main ──────────────────────────────────────────────────
 def main():
+    if not env_guard.require_live_write("飞书 Base 推送（SEO 数据看板）"):
+        records = build_records()
+        print(f"[dry-run] 将写入 {len(records)} 条记录到飞书「SEO 数据看板」（开发环境未写入）")
+        return None
     load_feishu_credentials()
     print("🔑 获取飞书 access token...")
     token = get_tenant_token()

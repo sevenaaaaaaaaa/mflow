@@ -24,6 +24,12 @@ from xml.etree import ElementTree as ET
 
 import requests
 
+import sys as _sys  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[1] / "library"))
+import env_guard  # noqa: E402  dev/prod separation (development: external writes become dry-run)
+env_guard.install()
+
 
 HOST = "www.example.com"
 BASE_URL = f"https://{HOST}"

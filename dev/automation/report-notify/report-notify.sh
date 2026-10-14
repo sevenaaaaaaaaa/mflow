@@ -95,6 +95,15 @@ if [[ -z "$WEBHOOK" && -f "$FEISHU_JSON" ]]; then
   WEBHOOK="$(python3 -c "import json; print(json.load(open('$FEISHU_JSON')).get('webhook_url',''))" 2>/dev/null || true)"
 fi
 
+# dev/prod separation: development (local Mac) does not send IM/email unless opted in
+ENV_GUARD="$PROJECT_ROOT/dev/scripts/library/env_guard.py"
+if [[ -n "$WEBHOOK" ]] && ! python3 "$ENV_GUARD" check "飞书通知 [$TYPE]"; then
+  WEBHOOK=""
+fi
+if [[ -n "${MFLOW_REPORT_EMAIL:-}" ]] && ! python3 "$ENV_GUARD" check "邮件通知 → $MFLOW_REPORT_EMAIL"; then
+  MFLOW_REPORT_EMAIL=""
+fi
+
 if [[ -n "$WEBHOOK" ]]; then
   ICON="✅"
   [[ "$STATUS" != "ok" ]] && ICON="🚨"

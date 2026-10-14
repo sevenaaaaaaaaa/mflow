@@ -41,6 +41,9 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "library"))
+import env_guard  # noqa: E402  dev/prod separation: development runs never write production Sanity
+env_guard.install()
 try:
     from md_to_portable_text import md_to_portable_text as md_to_pt
 except Exception as e:  # pragma: no cover
@@ -240,6 +243,7 @@ def build_blog_doc(md_path, slug="", lang="", category="", title="", description
     }
 
 
+@env_guard.dry_run_in_development("Sanity upsert")
 def upsert(doc, dry_run=True, mode="createIfNotExists"):
     """写库。dry_run=True 走 Sanity 原生 dryRun（返回 transactionId，不落库）。"""
     cfg = sanity_cfg()
@@ -297,6 +301,7 @@ def _mutate_retry(cfg, mutations, dry_run, attempts=3, timeout=90):
     return {"ok": False, "error": str(last)[:300]}
 
 
+@env_guard.dry_run_in_development("Sanity 分段 patch")
 def patch_body_chunked(patches, doc_id, dry_run=True):
     """分段 patch 执行器：每个 mutation 单独一个 HTTP 事务（堵 b20 单事务 hang）。
     中断 safety：已完成段的状态是合法前缀（set/insert 均幂等替换或追加），重跑从断点续传需重查 _rev 后重放。"""
@@ -327,6 +332,7 @@ def find_by_slug_lang(doc_type, slug, lang):
         return None
 
 
+@env_guard.dry_run_in_development("Sanity 发布 blog")
 def publish_blog(doc, dry_run=True, mode="create"):
     """blog 写入。mode=create：同（slug,language）已存在则拒绝并提示（不再静默跳过/重复建号）；
     mode=patch：按 slug+language 定位，ifRevisionID 保护，仅更新内容字段（slug/_id 不动）。"""
@@ -638,6 +644,7 @@ def build_composite_doc(md_path="", slug="", lang="en", page_type="tool", title=
     }
 
 
+@env_guard.dry_run_in_development("Sanity 发布 compositePage")
 def publish_composite(doc, dry_run=True, mode="create"):
     """写入 compositePage。mode=create → createIfNotExists；mode=patch → 只更新指定字段（ifRevisionID）。
     patch 定位按（slug, language）GROQ 查询（手册 §2.4），与 _id 方案解耦，旧 _id 文档也可 patch。

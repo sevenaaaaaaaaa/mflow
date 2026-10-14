@@ -17,11 +17,13 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from sanity_publisher import sanity_cfg, _req  # noqa: E402
+import env_guard  # noqa: E402  (path added by sanity_publisher)
 
 QUERY = ('*[_type=="blog" && status=="scheduled" && defined(publishedAt) && publishedAt <= now()]'
          '{_id,_rev,slug,language,publishedAt}')
 
 
+@env_guard.dry_run_in_development("定时发布翻转 scheduled→published")
 def flip(dry_run=True):
     cfg = sanity_cfg()
     if not cfg["token"]:

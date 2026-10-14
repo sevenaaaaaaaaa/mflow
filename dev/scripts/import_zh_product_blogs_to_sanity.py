@@ -9,6 +9,12 @@ import urllib.request
 import urllib.error
 from datetime import datetime
 from pathlib import Path
+
+import sys as _sys  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+_sys.path.insert(0, str(_Path(__file__).resolve().parent / "library"))
+import env_guard  # noqa: E402  dev/prod separation (development: external writes become dry-run)
+env_guard.install()
 import sys
 
 _SSOT_DIR = str(Path.home() / "Documents/MFlow Local Dev/scripts")

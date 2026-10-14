@@ -33,6 +33,9 @@ import markdown as md_lib
 
 PROJECT = Path(__file__).resolve().parents[2]
 CONSOLE_DIR = Path(__file__).resolve().parent
+sys.path.insert(0, str(PROJECT / "dev" / "scripts" / "library"))
+import env_guard  # noqa: E402  dev/prod separation: development never writes production systems
+env_guard.install()
 # RUN_DIR 可被 MFLOW_RUN_DIR 覆盖——单测/预演必须指向临时目录，
 # 否则 import console 就会往生产的 run/approvals.log 写审计噪音（2026-09-20 实测污染 92 条/天）。
 RUN_DIR = Path(os.environ["MFLOW_RUN_DIR"]).resolve() if os.environ.get("MFLOW_RUN_DIR") else PROJECT / "run"
@@ -729,6 +732,8 @@ def user_online(username):
 
 def _sendmail_send(to, subject, body, sender="mflow@nownexts.com"):
     """本机 postfix/sendmail 直发（无需凭证）。头走 RFC2047，避免 SMTPUTF8 被远端 MX 拒收。"""
+    if not env_guard.require_live_write(f"sendmail 发信 → {to}"):
+        return True, "开发环境：已跳过发送（dry-run）"
     try:
         from email.mime.text import MIMEText
         from email.header import Header
@@ -871,6 +876,8 @@ def webhook_delete(wid):
 
 
 def _webhook_deliver(url, body, secret="", headers=None):
+    if not env_guard.require_live_write(f"Webhook 推送 → {url}"):
+        return "SKIPPED(development)"
     data = json.dumps(body, ensure_ascii=False).encode()
     hdr = {"Content-Type": "application/json", **(headers or {})}
     if secret:
@@ -3122,6 +3129,8 @@ def batch_create(btype, title, items, params=None, dry_run=True, by=""):
     if not ok:
         raise PermissionError(msg)
     tid = f"batch-{datetime.now().strftime('%y%m%d')}-{secrets.token_hex(3)}"
+    if not dry_run and not env_guard.require_live_write(f"批量任务 {btype} 写入线上"):
+        dry_run = True  # development: the whole task runs as dry-run (keeps audit log consistent)
     task = {"id": tid, "type": btype, "title": title or btype,
             "created": datetime.now().strftime("%Y-%m-%d %H:%M"),
             "created_by": by, "dry_run": bool(dry_run),
@@ -3146,13 +3155,20 @@ def _batch_log(task, msg):
 
 def _sanity_req(path, payload, timeout=60):
     cfg = SANITY_PUB.sanity_cfg()
+    skipped = False
+    if path == "mutate" and not (payload or {}).get("dryRun") \
+            and not env_guard.require_live_write("Sanity mutate（工作台）"):
+        payload, skipped = dict(payload, dryRun=True), True
     url = f"https://{cfg['project']}.api.sanity.io/v2024-01-01/data/{path}/{cfg['dataset']}"
     req = urllib.request.Request(url, data=json.dumps(payload).encode(),
                                  headers={"Authorization": f"Bearer {cfg['token']}",
                                           "Content-Type": "application/json"})
     import urllib.request as _u
     with _u.urlopen(req, timeout=timeout) as r:
-        return json.loads(r.read())
+        out = json.loads(r.read())
+    if skipped and isinstance(out, dict):
+        out["skipped"] = env_guard.SKIPPED
+    return out
 
 
 AUDIT_FILE = RUN_DIR / "audit-changes.jsonl"
@@ -3237,6 +3253,9 @@ def audit_rollback(cid, by=""):
                                      "dryRun": False})
     except Exception as e:
         return {"error": f"回滚失败：{str(e)[:180]}"}
+    if (res or {}).get("skipped"):
+        return {"ok": True, "skipped": env_guard.SKIPPED, "id": cid, "dry_run": True,
+                "note": "开发环境：回滚仅 dry-run 预演，未写入线上"}
     _audit_update(cid, {"rolled_back": True, "rolled_back_at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
                         "rolled_back_by": by, "rollback_tx": res.get("transactionId", "")})
     try:
@@ -10940,7 +10959,7 @@ class Handler(BaseHTTPRequestHandler):
                     r = SANITY_PUB.publish_file(str(p), slug=str(body.get("slug", "")), lang=str(body.get("lang", "")),
                                                 category=str(body.get("category", "")), title=str(body.get("title", "")),
                                                 cluster=str(body.get("cluster", "")), dry_run=dry)
-                if r.get("ok") and not dry:
+                if r.get("ok") and not dry and not r.get("skipped"):
                     with open(RUN_DIR / "approvals.log", "a") as f:
                         f.write(f"{datetime.now().isoformat(timespec='seconds')} SANITY-PUBLISH {item_id} doc={r.get('doc_id')} by={self._me()}\n")
                     # 发布后回读校验（尽力而为：失败不阻塞发布，只留痕+提醒）

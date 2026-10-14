@@ -19,6 +19,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from publish_adapters.sanity_publisher import sanity_cfg, _req  # noqa: E402
+import env_guard  # noqa: E402  (path added by sanity_publisher)
 
 BATCH = 20
 
@@ -37,6 +38,7 @@ def load_revs(ids):
     return out
 
 
+@env_guard.dry_run_in_development("主站 safe-fixes 写库", param="dry")
 def run(patches, dry, batch=BATCH):
     cfg = sanity_cfg()
     if not cfg.get("token"):
@@ -74,7 +76,7 @@ def main():
     print(f"{len(patches)} patches; mode={'APPLY' if a.yes else 'DRY-RUN'}", file=sys.stderr)
     res = run(patches, dry=not a.yes)
     outp = Path(a.out) if a.out else Path(a.file).with_name(
-        Path(a.file).stem + ("-applied" if a.yes else "-dryrun") + ".json")
+        Path(a.file).stem + ("-applied" if a.yes and not res.get("skipped") else "-dryrun") + ".json")
     outp.write_text(json.dumps(res, ensure_ascii=False, indent=1))
     print(f"ok={len(res.get('ok', []))} fail={len(res.get('fail', []))} -> {outp}", file=sys.stderr)
     sys.exit(0 if res.get("ok") else 1)

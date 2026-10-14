@@ -29,6 +29,10 @@ from pathlib import Path
 
 import requests
 
+sys.path.insert(0, str(Path(__file__).resolve().parent / "library"))
+import env_guard  # noqa: E402  dev/prod separation: no Notion writes from development
+env_guard.install()
+
 # --- Config ---
 NOTION_API_KEY = ""
 for p in [Path.home() / ".config" / "notion" / "api_key",
@@ -301,6 +305,8 @@ def main():
         print("[err] No Notion API key found. Set NOTION_API_KEY or create ~/.config/notion/api_key")
         sys.exit(2)
 
+    if args.apply and not env_guard.require_live_write("Notion 推送"):
+        args.apply = False
     print(f"=== Obsidian → Notion sync ===")
     print(f"Mode: {'APPLY' if args.apply else 'DRY-RUN'}")
     print(f"Vault: {MFLOW}")

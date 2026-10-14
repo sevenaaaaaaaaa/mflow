@@ -21,6 +21,10 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import env_guard  # noqa: E402  dev/prod separation for Sanity asset patches
+env_guard.install()
+
 HERE = Path(__file__).resolve().parent
 ROOT = HERE.parents[2]
 LIB_ROOT = ROOT / "run" / "library"
@@ -192,6 +196,7 @@ def plan(site, mode="prefix", match="", url_map_path="", new_url="", new_alt="",
 
 
 # ─────────────────────────── apply ───────────────────────────
+@env_guard.dry_run_in_development("Sanity 资产 URL 批量替换")
 def apply(site, plan_path, dry_run=True, max_docs=500):
     prof = site_of(site)
     proj, ds = prof["source"]["project"], prof["source"]["dataset"]

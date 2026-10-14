@@ -92,7 +92,8 @@ else
 fi
 
 # Optional: chain post-SEO content webhook when weekly SEO ok
-if [[ "$FAIL" -eq 0 && -n "${MFLOW_POST_SEO_WEBHOOK:-}" ]]; then
+if [[ "$FAIL" -eq 0 && -n "${MFLOW_POST_SEO_WEBHOOK:-}" ]] \
+  && python3 "$PROJECT_ROOT/dev/scripts/library/env_guard.py" check "post-SEO webhook"; then
   echo ""
   echo "========== post-seo-webhook =========="
   if curl -sf -X POST "$MFLOW_POST_SEO_WEBHOOK" -H "Content-Type: application/json" \

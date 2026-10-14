@@ -18,6 +18,12 @@ from typing import Any
 
 import requests
 
+import sys as _sys  # noqa: E402
+from pathlib import Path as _Path  # noqa: E402
+_sys.path.insert(0, str(_Path(__file__).resolve().parent / "library"))
+import env_guard  # noqa: E402  dev/prod separation (development: external writes become dry-run)
+env_guard.install()
+
 PROJECT_ID = "your-project-id"
 DATASET = "production"
 API_VERSION = "2024-01-01"

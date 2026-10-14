@@ -1,4 +1,11 @@
 """WordPress REST adapter (Application Passwords). Requires requests."""
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[1] / "library"))
+import env_guard  # noqa: E402  dev/prod separation (development: no WordPress writes)
+env_guard.install()
+
+
 def publish(item, cfg):
     try:
         import requests
@@ -7,6 +14,8 @@ def publish(item, cfg):
     base, user, pw = (cfg or {}).get("base", "").rstrip("/"), (cfg or {}).get("user", ""), (cfg or {}).get("app_password", "")
     if not base or not pw:
         return {"ok": False, "error": "wordpress base/user/app_password 未配置"}
+    if not env_guard.require_live_write(f"WordPress 发布 → {base}"):
+        return env_guard.skipped_result(f"wordpress POST {base}/wp-json/wp/v2/posts", url="", cms_id="")
     r = requests.post(f"{base}/wp-json/wp/v2/posts",
                       json={"title": item.get("title"), "content": item.get("body_md"), "status": "draft"},
                       auth=(user, pw), timeout=60)
