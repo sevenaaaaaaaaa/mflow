@@ -80,13 +80,13 @@ MFlow 既是在开发的工具，也是每天在用的生产工具。两类产�
 | 使用工具的产物 | 运营/SEO 批处理脚本（如 `d2-setup.py`）、批次文件、一次性修复脚本、导出数据 | **`ops/`**（根目录随手脚本也算） | ❌ | ✅（内容同步，只增不删） |
 
 - 用 MFlow 干活时新写的脚本一律放 `ops/`；`/ops/` 与根目录的 `*.py/*.sh/*.js/*.mjs/*.ts` 已 gitignore，`deploy/sync.sh` 只把它们送到服务器（`--update`，不覆盖服务器上更新的版本）。
-- 公开仓库「零 Lovart」（2026-09-28 开源化 P2）：任何含 Lovart / 客户站点 / Sanity 项目信息的东西都属于第二类。
+- 公开仓库「零品牌方」（2026-09-28 开源化 P2）：任何含品牌方 / 客户站点 / CMS 项目信息的东西都属于第二类。
 - 拿不准时按第二类处理（不进 GitHub），再问用户。
 - 与其他 flow 项目（统一放 web 根之外的 `/www/ops/<project>/`）不同，MFlow 的 ops 刻意放在应用目录内 `/www/wwwroot/mflow/ops/`——服务器工作台直接就地读取，属设计如此，不要迁走。
 
 ## 开发 / 生产环境
 
-本机（Mac）= **development**，服务器（`/www/wwwroot/mflow`，Linux）= **production**。开发环境默认不允许改动外部线上系统（Sanity/Lovart 站点内容、WordPress、飞书 Base/机器人、Notion、IndexNow、Cloudflare、邮件/IM、Webhook）。实现：`dev/scripts/library/env_guard.py`（纯标准库）。
+本机（Mac）= **development**，服务器（`/www/wwwroot/mflow`，Linux）= **production**。开发环境默认不允许改动外部线上系统（Sanity/品牌方站点内容、WordPress、飞书 Base/机器人、Notion、IndexNow、Cloudflare、邮件/IM、Webhook）。实现：`dev/scripts/library/env_guard.py`（纯标准库）。
 
 - **环境判定**：只认 `MFLOW_ENV`（通用 `APP_ENV` 故意不认，防止别的工具把线上改成开发）（`production`/`prod` → 生产，其余 → 开发）；未设置时按平台：Linux → production，macOS/其他 → development。服务器无需任何配置。
 - **开发环境的行为**：外部写入自动降级为 dry-run——Sanity mutate 被强制改为原生 `dryRun`（照常校验、不落库），其他写请求不发出、返回带 `"skipped": "development"` 的结果，并打印中文提示；读取（GET、GROQ query、Notion query 等）不受影响。设 `MFLOW_LIVE_WRITE_STRICT=1` 则改为直接报错。
@@ -94,6 +94,10 @@ MFlow 既是在开发的工具，也是每天在用的生产工具。两类产�
 - **接入点**：传输层 `env_guard.install()`（urllib `OpenerDirector.open`、`requests.Session.request`、`smtplib.SMTP.sendmail`，按目标 host/路径识别线上写入）+ 带 dry_run 开关的函数用 `@env_guard.dry_run_in_development(...)`；已接入 sanity_publisher / scheduled_flip / asset_tools / apply-main-fixes / publish_adapters(webhook、wordpress) / push_to_feishu / sync_to_notion / indexnow / console.py（批量任务、回滚、Webhook、sendmail）。新写的会写线上的脚本：开头 `import env_guard; env_guard.install()`（或 `env_guard.require_live_write("动作")`）；shell 用 `python3 dev/scripts/library/env_guard.py check "动作"`（0=可写，3=跳过）。
 - **`ops/` 与根目录脚本**不在仓库内、未自动接入：做线上写入的一律**到服务器上跑**，或本机显式 `MFLOW_ALLOW_LIVE_WRITES=1` 并自担确认。`deploy/sync.sh` 的发布/CF 刷新属于部署流程，不受此守卫约束。
 - 本机 launchd 管线（每日/每周）同样是 development：飞书/邮件通知、post-SEO webhook 等在本机默认跳过，线上推送以服务器 systemd timer 为准。
+
+## 本机定时任务
+
+本机 launchd 任务清单（含品牌相关路径与任务名）放在 gitignored 的 `ops/LOCAL-JOBS.md`，不进公开仓库。原则：MFlow 相关任务一律指向本仓库；服务器 timer 已覆盖的不在本机重复跑；需要真实外部写入的任务在 plist 里显式设 `MFLOW_ALLOW_LIVE_WRITES=1`。
 
 ## 注意事项
 
