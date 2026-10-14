@@ -69,6 +69,19 @@ bash deploy/push.sh                      # 只推 GitHub
 - 服务器目录**不要再 `git pull`**：大量内容已出库，pull 会删掉服务器上的同名文件；更新一律走 `deploy/sync.sh`
 - 其他路径（本地 / Docker）见 `docs/deploy-guide.md`，服务器约定见 `deploy/server.md`
 
+## 开发工具 vs 使用工具（硬性规则）
+
+MFlow 既是在开发的工具，也是每天在用的生产工具。两类产物必须分开：
+
+| 类别 | 例子 | 放哪 | GitHub | 服务器 |
+|---|---|---|---|---|
+| 开发工具（产品代码） | `dev/`、`harness/Skills`、`plugins/`、`templates/` | 原目录 | ✅ | ✅（代码清单） |
+| 使用工具的产物 | 运营/SEO 批处理脚本（如 `d2-setup.py`）、批次文件、一次性修复脚本、导出数据 | **`ops/`**（根目录随手脚本也算） | ❌ | ✅（内容同步，只增不删） |
+
+- 用 MFlow 干活时新写的脚本一律放 `ops/`；`/ops/` 与根目录的 `*.py/*.sh/*.js/*.mjs/*.ts` 已 gitignore，`deploy/sync.sh` 只把它们送到服务器（`--update`，不覆盖服务器上更新的版本）。
+- 公开仓库「零 Lovart」（2026-09-28 开源化 P2）：任何含 Lovart / 客户站点 / Sanity 项目信息的东西都属于第二类。
+- 拿不准时按第二类处理（不进 GitHub），再问用户。
+
 ## 注意事项
 
 - 环境变量：`MFLOW_CONSOLE_PASSWORD`、`MFLOW_API_TOKEN`、`MFLOW_CONSOLE_PORT`、`MFLOW_PYTHON`、`MFLOW_LOCAL_DEV_ROOT`、`MFLOW_RUN_DIR`、`MFLOW_ROOT`、`MFLOW_RESOURCE_ROOT`、`MFLOW_LOOP_TOKEN_CAP`、`MFLOW_REMOTE_HOST`、`MFLOW_REMOTE_PORT`、`MFLOW_SITE_URL`（服务器经 `run/env.sh` 注入）

@@ -201,6 +201,7 @@ if [[ "$DO_CONTENT" -eq 1 ]]; then
         "./genflow/|${REMOTE_ROOT}/genflow/"
         "./harness/11-knowledge/|${REMOTE_ROOT}/harness/11-knowledge/"
         "./dev/Output/|${REMOTE_ROOT}/dev/Output/"
+        "./ops/|${REMOTE_ROOT}/ops/"   # tool-usage workspace: scripts/batches made while *using* MFlow
     )
     CONTENT_EXCLUDES=(--exclude=.DS_Store --exclude=__pycache__/ --exclude=/.pipeline/events.jsonl)
     n=0
@@ -221,6 +222,19 @@ if [[ "$DO_CONTENT" -eq 1 ]]; then
         [[ -n "$ok" ]] || fail 4 "rsync(content) $src → $dst 失败（重试 3 次仍失败）"
         n=$((n + 1))
     done
+    # Ad-hoc scripts dropped in the repo root while using the tool (gitignored as /*.py etc.):
+    # server-only, same --update / no-delete semantics. Only top-level files match.
+    ROOT_SCRIPT_FILTER=(--include='/*.py' --include='/*.sh' --include='/*.js' --include='/*.mjs' --include='/*.ts' --exclude='*')
+    if ls ./*.py ./*.sh ./*.js ./*.mjs ./*.ts >/dev/null 2>&1; then
+        if [[ "$DRY_RUN" -eq 1 ]]; then
+            echo "    --- ./ root scripts (content)"
+            rsync -az --update $RSYNC_DRY "${ROOT_SCRIPT_FILTER[@]}" -e "ssh -p $REMOTE_PORT" ./ "${REMOTE}:\"${REMOTE_ROOT}/\"" 2>&1 | sed 's/^/      /' || true
+        else
+            rsync -az --update "${ROOT_SCRIPT_FILTER[@]}" -e "ssh -p $REMOTE_PORT" ./ "${REMOTE}:\"${REMOTE_ROOT}/\"" >/dev/null 2>&1 \
+                || fail 4 "rsync(content) 根目录脚本 → ${REMOTE_ROOT}/ 失败"
+        fi
+        n=$((n + 1))
+    fi
     say "  ✓ 内容数据 ${n} 组已同步（--update，只增不删）"
 else
     say "  · 跳过内容数据同步（--no-content）"

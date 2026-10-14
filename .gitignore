@@ -105,3 +105,12 @@ secrets-local.md
 # Pipeline runtime state and skill test outputs are data, not code
 genflow/.pipeline/
 genflow/bv-skill-v01/*-test.md
+
+# Tool-usage workspace: scripts/batches/data produced while *using* MFlow.
+# Never on GitHub; deploy/sync.sh pushes them to the server only.
+/ops/
+/*.py
+/*.sh
+/*.js
+/*.mjs
+/*.ts
