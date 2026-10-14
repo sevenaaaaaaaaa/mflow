@@ -2,8 +2,8 @@
 
 > **这是什么**：一页「内容选题计划」——回答四个问题：**给谁写**（人群×阶段配比）、**写什么**（五条选题线的具体条目）、**怎么互链**（集群结构）、**按什么节奏**（发布与复用）。动笔前查这里，选题从这来。
 
-> **lineage**：2026-10-04 由 lovart-content-strategist + lovart-audience-ops 撤编并入；维度继承 `Content Strategy/00-09-*.md` 十份历史策略文档（每节标注来源）。本文件 = 博客选题策略 SSOT。
-> **v1.0 首轮策略会（2026-10-04 · Moodio 轮）**：骨架值已按 Moodio 现状填充（内测期），值出处 = KB Moodio（02-personas/05-competitors v2.0/06-seo-keywords v1.1/08-team）+ 竞品实测调研。词群见 keyword-clusters.json v1.0（12 词群/4 KR）。品牌事实只出自 KB Moodio 目录。
+> **lineage**：2026-10-04 由 content-strategist + audience-ops 撤编并入；维度继承 `Content Strategy/00-09-*.md` 十份历史策略文档（每节标注来源）。本文件 = 博客选题策略 SSOT。
+> **v1.0 首轮策略会（2026-10-04 · Globex 轮）**：骨架值已按 Globex 现状填充（内测期），值出处 = KB Globex（02-personas/05-competitors v2.0/06-seo-keywords v1.1/08-team）+ 竞品实测调研。词群见 keyword-clusters.json v1.0（12 词群/4 KR）。品牌事实只出自 KB Globex 目录。
 > **铁律**：选题三重 trace = 词群（keyword-clusters.json）∩ 人群格（本文件 §漏斗）∩ 集群位置（§Silo）。缺一不写。
 
 ## 一、漏斗配比（← 01-漏斗内容矩阵）
@@ -31,9 +31,9 @@
 | 企业级 | 05-企业级内容规划 | 采购决策链谁在看？安全合规懂不懂？ | 安全合规/团队协作/ROI 框架文 |
 | 伦理与法律 | 07-AI 伦理法律 | 版权/伦理焦虑是否被回应？ | 权威回应文（E-E-A-T 强信号） |
 
-### 五轴当前值（v1.0 · Moodio 内测期）
+### 五轴当前值（v1.0 · Globex 内测期）
 
-### 具体选题系列（v1.0 · 词群 → 条目，仿 Lovart 条目矩阵风格）
+### 具体选题系列（v1.0 · 词群 → 条目，仿 Acme 条目矩阵风格）
 
 **SD 短剧系列（P0 楔子 · cluster-shortdrama）**
 | ID | 条目 | 形态 | 优先级 |
@@ -62,7 +62,7 @@
 DEF1 What Is an AI-Native Film Set（GEO 定义锚）· DEF2 AI Filmmaking Terms Glossary · DEF3 What Is FDX and Why It Matters · DEF4 Previz Explained（P1）
 
 **VS 对比系列（P1 BOFU · cluster-vs）**
-VS1 Moodio vs Runway · VS2 vs Sora/Kling/LTX（场景化判断框架；遵守 05-competitors 实测数据规则）
+VS1 Globex vs Runway · VS2 vs Sora/Kling/LTX（场景化判断框架；遵守 05-competitors 实测数据规则）
 
 **EX 交付系列（P2 · cluster-export）**
 EX1 Export to DaVinci Resolve · EX2 FDX → Final Draft · EX3 Final Cut 工程交接
@@ -79,7 +79,7 @@ EX1 Export to DaVinci Resolve · EX2 FDX → Final Draft · EX3 Final Cut 工程
 
 长文发布即触发衍生计划：长文 → 摘要稿（≤600）→ 社媒卡 → newsletter 段。分发执行走 content-distribution / multi-platform-push（UTM 按 AD-Tracking SSOT）。渠道优先级按 06 §渠道矩阵。
 
-## 五、用户运营触点（← lovart-audience-ops 撤编并入）
+## 五、用户运营触点（← audience-ops 撤编并入）
 
 内容在生命周期里的位置 = 运营视角的同一张图：
 
@@ -94,9 +94,9 @@ EX1 Export to DaVinci Resolve · EX2 FDX → Final Draft · EX3 Final Cut 工程
 
 北极星 = **周回访做项目的用户数**（不是注册数）。用户高频问题/流失原因回流 §一 作为新选题（反馈回路）。
 
-### 触点当前值（v1.0 · Moodio 内测期）
+### 触点当前值（v1.0 · Globex 内测期）
 
-- 唯一转化出口 = **申请内测码**（app.moodio.art；全站 CTA 统一口径，禁写免费注册/购买）
+- 唯一转化出口 = **申请内测码**（app.globex.example；全站 CTA 统一口径，禁写免费注册/购买）
 - Onboarding 北极星 = **首作完成率**（带想法进来 → 完成第一部短片）——激活序列内容：D0 灵感检索上手、D3 剧本→分镜、D7 资产一致性、D14 导出交付
 - 用户之声回流：内测创作者高频问题 → 词群评审（keyword-clusters.json 月度修订）
 

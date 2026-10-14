@@ -1,5 +1,5 @@
 {
- "_readme": "【这是什么】「词群作战地图」：我们决定打哪些搜索词、每个词群用什么内容形态接、优先级、成功的标准（里程碑）、以及绝不碰的词（黑名单）。生成前查这里定选题。 —— Moodio 词群地图（blog-writer 内联版，三入口共享）。v1.0 首轮策略会填充（2026-10-04）：值全部来自既有实测资产——五层词矩阵与空档标记继承 KB Moodio/06-seo-keywords v1.1（Semrush US 2026-08/09 实测校准）；竞品战场继承 05-competitors v2.0（工作台层为正面战场，模型层是供应商）；不碰清单继承竞品调研实测（Flora/OiiOii 反面教材）。GEO 12 查询与 run/projects/moodioglobal/meta.json 同源。landing-writer / hub-writer 直接引用本文件。",
+ "_readme": "【这是什么】「词群作战地图」：我们决定打哪些搜索词、每个词群用什么内容形态接、优先级、成功的标准（里程碑）、以及绝不碰的词（黑名单）。生成前查这里定选题。 —— Globex 词群地图（blog-writer 内联版，三入口共享）。v1.0 首轮策略会填充（2026-10-04）：值全部来自既有实测资产——五层词矩阵与空档标记继承 KB Globex/06-seo-keywords v1.1（Semrush US 2026-08/09 实测校准）；竞品战场继承 05-competitors v2.0（工作台层为正面战场，模型层是供应商）；不碰清单继承竞品调研实测（Flora/OiiOii 反面教材）。GEO 12 查询与 run/projects/globex/meta.json 同源。landing-writer / hub-writer 直接引用本文件。",
  "version": "1.0",
  "updated": "2026-10-04",
  "baseline": {
@@ -86,7 +86,7 @@
     "Top10"
    ],
    "hub": null,
-   "note": "需求已被 Higgsfield 广告教育（Consistent AI Characters）；Moodio 模卡资产是直接答案"
+   "note": "需求已被 Higgsfield 广告教育（Consistent AI Characters）；Globex 模卡资产是直接答案"
   },
   {
    "id": "cluster-shortdrama",
@@ -135,9 +135,9 @@
   {
    "id": "cluster-vs-competitors",
    "queries": [
-    "moodio vs runway",
-    "moodio vs sora",
-    "moodio vs ltx studio",
+    "globex vs runway",
+    "globex vs sora",
+    "globex vs ltx studio",
     "runway alternative for filmmakers"
    ],
    "intent": "commercial",
@@ -279,7 +279,7 @@
   "What is the best AI filmmaking platform?",
   "What is an AI-native film set?",
   "Best AI film studio tools 2026",
-  "Moodio vs Runway: which is better for filmmakers?",
+  "Globex vs Runway: which is better for filmmakers?",
   "How do I keep characters consistent across AI video shots?",
   "How to turn a script into a storyboard with AI?",
   "Best AI tools for short drama production",

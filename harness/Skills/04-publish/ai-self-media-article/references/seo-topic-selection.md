@@ -2,10 +2,10 @@
 
 ## 数据源位置
 
-所有 SEO 数据在 Obsidian vault（iCloud 同步）：
+所有 SEO 数据在仓库 insight-data/（gitignored，随 deploy/sync.sh 同步）：
 
 ```
-~/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/
+$MFLOW_ROOT/
 ├── insight-data/
 │   ├── Keywords Research/
 │   │   ├── SEO Report/
@@ -24,7 +24,7 @@
 │   │       ├── monthly/品牌方-SEO-YYYY-MM.md                 ← 月度 SEO 报告
 │   │       └── weekly/品牌方-SEO-review-*.md                 ← 周报
 │   └── From Datawork/seo_geo_daily_report_YYYYMMDD.csv   ← DataWorks 日报
-├── 1-3 Content Gen/
+├── genflow/
 │   └── Content Strategy/
 │       ├── 品牌方-内容策略-内容日历与关键词布局方案.md     ← 内容策略全景
 │       └── 12-公式化变体程序化SEO落地计划.md               ← 程序化 SEO

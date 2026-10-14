@@ -339,7 +339,7 @@
 
 ```bash
 # _pull 已外置到运行层，通过 MFLOW_PULL_DIR 环境变量引用
-source "$(cd ../.. && pwd)/1-Project/品牌方 MFlow/dev/automation/local-dev-env.sh"
+source "$(cd ../.. && pwd)/dev/automation/local-dev-env.sh"
 PULL="$MFLOW_PULL_DIR"
 
 # 1) 只读拉取线上全量英文 Features 页（含 bodyJson + seo）
@@ -417,12 +417,12 @@ MFLOW_PULL_DIR="$PULL" node scripts/reflow-feature-pages.js
 
 ## 七、相关文档
 
-- [STORYLINE-BY-DIRECTION.md](../1-3 Content Gen/Page Gen/Refresh-Page/STORYLINE-BY-DIRECTION.md) - 权威故事线文档
-- [LANDING-PRODUCTION-2026-06-07.md](../1-3 Content Gen/Page Gen/Refresh-Page/LANDING-PRODUCTION-2026-06-07.md) - Landing Page 7 条故事线生产指南
-- [landing-storylines.json](../1-3 Content Gen/Page Gen/Refresh-Page/landing-storylines.json) - Landing Page 故事线 SSOT
-- [landing-examples/MANIFEST.md](../1-3 Content Gen/Page Gen/Refresh-Page/landing-examples/MANIFEST.md) - 7 个参考案例清单
-- [FEATURES-PRODUCTION.md](../1-3 Content Gen/Page Gen/Refresh-Page/FEATURES-PRODUCTION.md) - Features 页面生产指南
-- [STORYLINES.md](../1-3 Content Gen/Page Gen/Refresh-Page/STORYLINES.md) - 情景×组件组合菜谱
+- [STORYLINE-BY-DIRECTION.md](../genflow/Page Gen/Refresh-Page/STORYLINE-BY-DIRECTION.md) - 权威故事线文档
+- [LANDING-PRODUCTION-2026-06-07.md](../genflow/Page Gen/Refresh-Page/LANDING-PRODUCTION-2026-06-07.md) - Landing Page 7 条故事线生产指南
+- [landing-storylines.json](../genflow/Page Gen/Refresh-Page/landing-storylines.json) - Landing Page 故事线 SSOT
+- [landing-examples/MANIFEST.md](../genflow/Page Gen/Refresh-Page/landing-examples/MANIFEST.md) - 7 个参考案例清单
+- [FEATURES-PRODUCTION.md](../genflow/Page Gen/Refresh-Page/FEATURES-PRODUCTION.md) - Features 页面生产指南
+- [STORYLINES.md](../genflow/Page Gen/Refresh-Page/STORYLINES.md) - 情景×组件组合菜谱
 - [AGENTS.md](./AGENTS.md) - 项目规则和标准
 - [WORKFLOWS.md](./WORKFLOWS.md) - 运维手册
 

@@ -13,7 +13,7 @@ generator: harness/11-knowledge/scripts/fm-fix.py
 | 项 | 内容 |
 |----|------|
 | **适用角色** | 内容策略、SEO、编辑 |
-| **内容源** | `1-3 Content Gen/Content Calendar/`、`blog-pipeline/` |
+| **内容源** | `genflow/Content Calendar/`、`blog-pipeline/` |
 | **脚本 SSOT** | `convert.js`、`verify-blog-publish.js`、`patch-blog-*.js` |
 | **Skill** | `blog-writer`、`sanity-publish` |
 
@@ -48,7 +48,7 @@ node scripts/audit-content-quality.js
 ## 验收
 
 - `releaseDate` 无未来日期（AB-S07，`clampReleaseDate`）
-- 封面非 liblib 或已 `--only-broken` patch（AB-I08）
+- 封面非 initech 或已 `--only-broken` patch（AB-I08）
 - 无 IMAGE PLACEHOLDER 进正文（AB-S01）
 
 ---

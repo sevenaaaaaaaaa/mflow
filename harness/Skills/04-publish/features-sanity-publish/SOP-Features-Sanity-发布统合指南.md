@@ -2,7 +2,7 @@
 
 > **单一事实来源（SSOT）**：本地 Features 页面 JSON 同步到 Sanity `production` 的完整流程、安全规则、脚本与排障。  
 > 统合自：`SOP-PageJSON导入指南.md`、`SOP-Sanity同步指南.md`、`mflow-sanity-content-pipeline.mdc`、`landing-writer`、Features Page Generator v2.3.0、`convert-features.js` / `import-page.js` / `translate-features.py` 及线上实践经验。  
-> **本文件位置**：`1-Project/harness/Skills/features-sanity-publish/`（与 `SKILL.md` 同目录）。镜像副本：`dev/品牌.sanity.studio/SOP-品牌方-Features-Sanity-发布统合指南.md`。
+> **本文件位置**：`harness/Skills/features-sanity-publish/`（与 `SKILL.md` 同目录）。镜像副本：`dev/品牌.sanity.studio/SOP-品牌方-Features-Sanity-发布统合指南.md`。
 
 ---
 
@@ -65,7 +65,7 @@
 
 | 项 | Features |
 |----|----------|
-| 本地路径 | `1-3 Content Gen/Page Gen/Pages/Features/{lang}/{slug}-{lang}.json` |
+| 本地路径 | `genflow/Page Gen/Pages/Features/{lang}/{slug}-{lang}.json` |
 | 索引 | `Pages/Features/_index.json` |
 | 线上 URL | 总指南 §7 compositePage URL 表 |
 | Sanity `_type` | `compositePage` |

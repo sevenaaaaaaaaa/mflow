@@ -1,4 +1,4 @@
-# Lovart Insight and Trend Benchmark Seed V3
+# Acme Insight and Trend Benchmark Seed V3
 
 Purpose: close the remaining Insight & Trend gaps by adding more primary-style governance sources, business framing, and source provenance.
 

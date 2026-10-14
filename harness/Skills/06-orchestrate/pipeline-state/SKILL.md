@@ -55,7 +55,7 @@ FINAL  : done, failed, escalated
 ## Required state file location
 
 默认: `genflow/.pipeline/pipeline-state.json`
-（即 vault 根 → 品牌方 MFlow → genflow → .pipeline/pipeline-state.json）
+（即 仓库根 → 品牌方 MFlow → genflow → .pipeline/pipeline-state.json）
 
 用 `--state-path` 可 override。
 

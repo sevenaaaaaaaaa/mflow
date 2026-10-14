@@ -2,7 +2,7 @@
 
 > **单一事实来源（SSOT）**：本地 Product 页面 JSON（composite-v2）同步到 Sanity `production`。  
 > **Skills 目录副本**：`harness/Skills/product-sanity-publish/SOP-品牌方-Product-Sanity-发布统合指南.md`  
-> **内容生产**：[`PRODUCT-PRODUCTION.md`](../../../../1-3 Content Gen/Page Gen/Refresh-Page/PRODUCT-PRODUCTION.md)
+> **内容生产**：[`PRODUCT-PRODUCTION.md`](../../../../genflow/Page Gen/Refresh-Page/PRODUCT-PRODUCTION.md)
 
 ---
 
@@ -13,7 +13,7 @@
 | 三条+管道总索引 | `sanity-content-publish/SOP-品牌方-Sanity-内容发布总指南.md` |
 | **本指南（Product SSOT）** | 本文 |
 | Agent Skill | 同目录 `SKILL.md` |
-| 参考 JSON | `1-3 Content Gen/Page Gen/Pages/Products/en/` |
+| 参考 JSON | `genflow/Page Gen/Pages/Products/en/` |
 | 单篇导入 | `sanity-studio/scripts/import-page.js` |
 | 批量（未来） | `convert-products.js`（待建；当前用单篇 `import-page.js`） |
 | 全局红线 | `.cursor/rules/mflow-sanity-content-pipeline.mdc` |
@@ -68,7 +68,7 @@ git status   # 无 schema 误改
 ### Gate 2 — 预检
 
 ```bash
-PRODUCTS="../../1-3 Content Gen/Page Gen/Pages/Products/en"
+PRODUCTS="../../genflow/Page Gen/Pages/Products/en"
 
 node scripts/preflight-content.js --type composite-v2 --dir "$PRODUCTS"
 ```
@@ -117,7 +117,7 @@ https://品牌.sanity.studio → Content → Products → 检查 Hero / Tab / pr
 重新生成本地 JSON：
 
 ```bash
-node "1-3 Content Gen/Page Gen/Pages/Products/en/_build-examples.js"
+node "genflow/Page Gen/Pages/Products/en/_build-examples.js"
 ```
 
 ---
@@ -147,6 +147,6 @@ node "1-3 Content Gen/Page Gen/Pages/Products/en/_build-examples.js"
 
 | 文档 | 用途 |
 |------|------|
-| [PAGE-BRIEF.md](../../../../1-3 Content Gen/Page Gen/Refresh-Page/PAGE-BRIEF.md) | Step 0 立场 |
-| [PRODUCT-PRODUCTION.md](../../../../1-3 Content Gen/Page Gen/Refresh-Page/PRODUCT-PRODUCTION.md) | 选型 + 案例 |
-| [STORYLINE-BY-DIRECTION.md](../../../../1-3 Content Gen/Page Gen/Refresh-Page/STORYLINE-BY-DIRECTION.md) §4.3 | 故事线 SSOT |
+| [PAGE-BRIEF.md](../../../../genflow/Page Gen/Refresh-Page/PAGE-BRIEF.md) | Step 0 立场 |
+| [PRODUCT-PRODUCTION.md](../../../../genflow/Page Gen/Refresh-Page/PRODUCT-PRODUCTION.md) | 选型 + 案例 |
+| [STORYLINE-BY-DIRECTION.md](../../../../genflow/Page Gen/Refresh-Page/STORYLINE-BY-DIRECTION.md) §4.3 | 故事线 SSOT |

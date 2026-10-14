@@ -1,6 +1,6 @@
 # Preflight Anti-Slop Gates (Skill Reference)
 
-SSOT: `1-1 GEO Readme/文档/04-质量治理/Preflight-Anti-Slop-Gates.md`
+SSOT: `harness/Docs/S4-质量审核/Preflight-Anti-Slop-Gates.md`
 
 ## Quick commands
 

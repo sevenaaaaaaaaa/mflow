@@ -1,4 +1,4 @@
-# Lovart Stack by Stack Benchmark Seed V2
+# Acme Stack by Stack Benchmark Seed V2
 
 Purpose: broaden Stack × Stack into creator, marketing, and automation-stack scenarios that go beyond software listicles.
 

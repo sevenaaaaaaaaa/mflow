@@ -1,6 +1,6 @@
-# Lovart 图片资产库
+# Acme 图片资产库
 
-> 共 87 张已验证的 `assets-persist.lovart.ai` 图片，分门别类列示。
+> 共 87 张已验证的 `assets.acme.example` 图片，分门别类列示。
 > **选取规则**：严禁编造图片 URL，必须从本库中根据区块主题选取。
 
 ---
@@ -11,9 +11,9 @@
 
 | 标签 | image_url |
 |------|-----------|
-| Describe（描述需求） | `https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png` |
-| Generate（生成） | `https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png` |
-| Export（导出） | `https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png` |
+| Describe（描述需求） | `https://assets.acme.example/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png` |
+| Generate（生成） | `https://assets.acme.example/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png` |
+| Export（导出） | `https://assets.acme.example/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png` |
 
 ---
 

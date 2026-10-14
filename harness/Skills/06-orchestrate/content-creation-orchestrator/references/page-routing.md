@@ -6,12 +6,12 @@ Use this before writing the brand landing/page copy or generating composite-v2 J
 
 | Source | Purpose |
 |---|---|
-| `1-3 Content Gen/Page Gen/Refresh-Page/STORYLINES.md` | F/T/P/S/C/K/N storylines and module recipes. |
-| `1-3 Content Gen/Page Gen/Refresh-Page/scenarios-storylines.json` | Scenarios 14 storylines (`scenarios-*`). |
-| `1-3 Content Gen/Page Gen/Refresh-Page/solution-storylines.json` | Solution 6 storylines. |
-| `1-3 Content Gen/Page Gen/Refresh-Page/SCENARIOS-PRODUCTION.md` | Scenarios production guide. |
+| `genflow/Page Gen/Refresh-Page/STORYLINES.md` | F/T/P/S/C/K/N storylines and module recipes. |
+| `genflow/Page Gen/Refresh-Page/scenarios-storylines.json` | Scenarios 14 storylines (`scenarios-*`). |
+| `genflow/Page Gen/Refresh-Page/solution-storylines.json` | Solution 6 storylines. |
+| `genflow/Page Gen/Refresh-Page/SCENARIOS-PRODUCTION.md` | Scenarios production guide. |
 | `references/scenarios-routing.md` | Scenarios theme + storyline selection. |
-| `1-3 Content Gen/Page Gen/Refresh-Page/PAGE-MODULE-MATRIX.md` | Component matrix and module direction. |
+| `genflow/Page Gen/Refresh-Page/PAGE-MODULE-MATRIX.md` | Component matrix and module direction. |
 | `harness/Skills/landing-writer/SKILL.md`（细节 references/landing-master.md） | Persona, PMF, source verification, CTA, social proof. |
 | `harness/Skills/landing-writer/references/tools-v2-template.md` | Tools composite-v2 JSON template and language batches. |
 | `dev/mflow.sanity.studio/schemaTypes/compositePageType.ts` | Sanity `compositePage` category source. |
@@ -76,7 +76,7 @@ URL patterns:
 
 ## Tools Composite-v2 Rules
 
-- Formal source: `1-3 Content Gen/Page Gen/Pages/Tools/{lang}/{slug}-{lang}.json`.
+- Formal source: `genflow/Page Gen/Pages/Tools/{lang}/{slug}-{lang}.json`.
 - Languages: `en`, `zh`, `zh-TW`, `de`, `fr`, `it`, `ja`, `ko`, `pt`, `ru`.
 - Required top-level fields: `slug`, `language`, `category`, `schemaVersion`, `storylineTemplate`, `title`, `description`, `bodyJson`, `seo`.
 - `bodyJson` must be a stringified JSON array.

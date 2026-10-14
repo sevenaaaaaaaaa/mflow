@@ -2,7 +2,7 @@
 
 > **单一事实来源（SSOT）**：本地 Tools 页面 JSON 同步到 Sanity `production` 的完整流程、安全规则、脚本与排障。  
 > 统合自：`SOP-PageJSON导入指南.md`、`sanity-publish`、`mflow-sanity-content-pipeline.mdc`、`landing-writer`、`convert-features.js` 及线上实践经验。  
-> **本文件位置**：`1-Project/harness/Skills/tools-sanity-publish/`（与 `SKILL.md` 同目录）。镜像副本：`dev/品牌.sanity.studio/SOP-品牌方-Tools-Sanity-发布统合指南.md`。
+> **本文件位置**：`harness/Skills/tools-sanity-publish/`（与 `SKILL.md` 同目录）。镜像副本：`dev/品牌.sanity.studio/SOP-品牌方-Tools-Sanity-发布统合指南.md`。
 
 ---
 
@@ -56,8 +56,8 @@
 
 | 项 | Tools |
 |----|-------|
-| **正式源路径** | `1-3 Content Gen/Page Gen/Pages/Tools/{lang}/{slug}-{lang}.json` |
-| 故事线 SSOT | `1-3 Content Gen/Page Gen/Refresh-Page/STORYLINES.md`（T1–T5、N5） |
+| **正式源路径** | `genflow/Page Gen/Pages/Tools/{lang}/{slug}-{lang}.json` |
+| 故事线 SSOT | `genflow/Page Gen/Refresh-Page/STORYLINES.md`（T1–T5、N5） |
 | 线上 → 本地 | **`pull-tools-from-production.sh`** 或 `node scripts/pull-tools-from-production.js`（**发布后 + 每周**） |
 | draft 测试页 | 6 篇 `en` `draft-*`（noIndex）；sync 默认跳过，见 `DRAFT-TOOLS-PRODUCTION.md` |
 | 索引 | `Pages/Tools/_index.json`（`id` + slug + language，迁移期保留现网 _id） |
@@ -74,8 +74,8 @@
 ### 2.4 单篇导入 `import-page.js`
 
 ```bash
-node scripts/import-page.js "../1-3 Content Gen/Page Gen/Pages/Tools/en/{slug}-en.json" --dry-run
-node scripts/import-page.js "../1-3 Content Gen/Page Gen/Pages/Tools/en/{slug}-en.json" --import
+node scripts/import-page.js "../genflow/Page Gen/Pages/Tools/en/{slug}-en.json" --dry-run
+node scripts/import-page.js "../genflow/Page Gen/Pages/Tools/en/{slug}-en.json" --import
 ```
 
 **`_id` 要求**（满足其一即可）：
@@ -132,7 +132,7 @@ npx sanity debug --secrets
 
 ### Gate 1 — 确认本地 JSON（composite-v2）
 
-- [ ] 文件在 `1-3 Content Gen/Page Gen/Pages/Tools/{lang}/`，命名 `{slug}-{lang}.json`
+- [ ] 文件在 `genflow/Page Gen/Pages/Tools/{lang}/`，命名 `{slug}-{lang}.json`
 - [ ] 必填：`schemaVersion: "composite-v2"`、`storylineTemplate`（T1–T5 / N5）、`slug`、`language`、`title`、`bodyJson`
 - [ ] `category` 为 `tool`；图片优先 `media.src` → `https://assets-persist.example.com/`
 - [ ] 多语言：**同一 slug**，**不同 `_id`**（`{id}-{lang}`）
@@ -150,7 +150,7 @@ npx sanity debug --secrets
 ```bash
 cd "…/dev/品牌.sanity.studio"
 node scripts/preflight-content.js --type tools --strict
-# 或单篇：--file "../1-3 Content Gen/Page Gen/Pages/Tools/en/{slug}-en.json"
+# 或单篇：--file "../genflow/Page Gen/Pages/Tools/en/{slug}-en.json"
 ```
 
 Skill：[`content-quality-gates`](../../content-quality-gates/SKILL.md)。BLOCK > 0 则不得进入 convert/import。

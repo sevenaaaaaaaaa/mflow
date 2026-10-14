@@ -1,4 +1,4 @@
-# Lovart Best Practice Benchmark Seed V1
+# Acme Best Practice Benchmark Seed V1
 
 Purpose: establish a first benchmark base for `Best Practice` blogs without overfitting to generic how-to posts.
 
@@ -55,7 +55,7 @@ Best Practice is for readers who already believe the workflow works and now want
 
 ## What to avoid
 
-- generic productivity advice with no Lovart-specific mechanics
+- generic productivity advice with no brand-specific mechanics
 - "10 tips" listicles with no process spine
 - broad trend commentary disguised as best practice
 - tool marketing copy that never names tradeoffs, review burden, or team risk

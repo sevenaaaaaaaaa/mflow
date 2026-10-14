@@ -4,9 +4,9 @@
 
 ## Canonical SOP
 
-SSOT 文档（Obsidian，需本机可读）：
+SSOT 文档：
 
-`LifeOS Pro PARA Vault/2-Area/Product Project Management/全渠道内容分发自动化SOP.md`
+`harness/Docs/分发自动化/RUNBOOK.md`
 
 本目录为**可执行工作副本**。iCloud 权限恢复后，将 `content-distribution/` 同步到上述路径旁。
 

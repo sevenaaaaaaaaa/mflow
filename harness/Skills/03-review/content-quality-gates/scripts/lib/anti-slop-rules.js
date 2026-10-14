@@ -1,6 +1,6 @@
 /**
  * Anti-Slop preflight rules — SSOT for banned phrases, placeholders, shrinkage heuristics.
- * Pair with: 1-1 GEO Readme/文档/04-质量治理/Preflight-Anti-Slop-Gates.md
+ * Pair with: harness/Docs/S4-质量审核/Preflight-Anti-Slop-Gates.md
  *
  * Integrate into 品牌.sanity.studio/scripts/preflight-content.js via:
  *   const antiSlop = require('.../anti-slop-rules.js')

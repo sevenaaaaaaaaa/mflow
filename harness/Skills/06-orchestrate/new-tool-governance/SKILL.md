@@ -18,7 +18,7 @@ description: 新工具治理 skill。注册新工具到 TOOLS-REGISTRY。
 
 不加载：
 - 修改现有脚本 (用 patch)
-- 一次性临时脚本 (写到 /tmp/ 不入 vault)
+- 一次性临时脚本 (写到 /tmp/ 不入仓库)
 - 读取/查询现有脚本
 
 ## 5 步强制流程
@@ -47,7 +47,7 @@ search_files(pattern="关键词", target="content", path="harness/Skills/")
 - 任意路径写脚本 (如 ~/tmp/test.py)
 - CamelCase 命名
 - 无扩展名的脚本
-- 直接在 vault 根目录写文件
+- 直接在 仓库根目录写文件
 
 ### Step 3: 写脚本
 

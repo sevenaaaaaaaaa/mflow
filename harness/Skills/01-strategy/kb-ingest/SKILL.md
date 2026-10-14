@@ -30,7 +30,7 @@ description: 知识库采集 skill。从外部来源拉取内容并结构化入�
 ### Step 1 — 读 URL list
 
 ```
-python3 insight-data/Knowledge Base/scripts/kb-ingest.py --root <vault>
+python3 insight-data/Knowledge Base/scripts/kb-ingest.py --root $MFLOW_ROOT
 ```
 
 默认 dry-run：harvest all URLs from both `URL-LIST.md` files, 与 `.ingested.json` cache diff，告诉你**会**抓多少。
@@ -38,7 +38,7 @@ python3 insight-data/Knowledge Base/scripts/kb-ingest.py --root <vault>
 ### Step 2 — 走 fetch
 
 ```
-python3 .../kb-ingest.py --root <vault> --allow-fetch --max-per-run 10
+python3 .../kb-ingest.py --root $MFLOW_ROOT --allow-fetch --max-per-run 10
 ```
 
 落地：
@@ -50,8 +50,8 @@ python3 .../kb-ingest.py --root <vault> --allow-fetch --max-per-run 10
 ### Step 3 — frontmatter + index 重 build
 
 ```
-python3 .../kb-frontmatter.py --root <vault>
-python3 .../build-index.py --root <vault> --write
+python3 .../kb-frontmatter.py --root $MFLOW_ROOT
+python3 .../build-index.py --root $MFLOW_ROOT --write
 ```
 
 新文件立刻有 KB schema frontmatter（origin=official-crawl-derived, authority=4-5, capabilities 自动 token-match），
@@ -83,7 +83,7 @@ KB-Index/{by-topic, citations, capability-glossary}.md 全部重生成。
 
 ## Failure modes (NEVER)
 
-- 「ingest 把 production URL 写入 Sanity」→ ingest 仅写 vault KB；publish 走另外的 sanity pipeline。
+- 「ingest 把 production URL 写入 Sanity」→ ingest 仅写本地 KB；publish 走另外的 sanity pipeline。
 - 「把 URL 直接贴到 品牌方 主站」→ ingest 仅写 KB，不 publish。
 - 「自动覆盖原 KB entry」→ `kb-frontmatter.py` 默认 partial；ingest → KB 后老 entry 保留，重复 URL 才覆盖（带版本 bump）。
 - 「每天 fetch 100+ URL」→ 站点拥塞 + 限速 + audit 失败；保证 max-per-run=10。

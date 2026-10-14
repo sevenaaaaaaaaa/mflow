@@ -1,6 +1,6 @@
 # Content Sample Library (Skill Reference)
 
-SSOT: `1-1 GEO Readme/文档/04-质量治理/Content-Sample-Library.md`  
+SSOT: `harness/Docs/S4-质量审核/Content-Sample-Library.md`  
 Samples: `../samples/` · Index: `../samples/index.json`
 
 ## CLI

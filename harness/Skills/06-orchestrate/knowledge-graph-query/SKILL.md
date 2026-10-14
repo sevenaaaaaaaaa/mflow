@@ -70,7 +70,7 @@ description: 知识图谱查询 skill。查询项目知识与依赖关系。
 
 ## Failure modes (NEVER)
 
-- 用 `grep` 全文扫 vault 找答案（慢，瞎）
+- 用 `grep` 全文扫仓库 找答案（慢，瞎）
 - 默认假设 `kg orphan` 是 junk → 不，它是要被记录的实体
 
 ---

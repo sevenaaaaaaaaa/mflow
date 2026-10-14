@@ -1,4 +1,4 @@
-# Lovart Insight and Trend Benchmark Seed V1
+# Acme Insight and Trend Benchmark Seed V1
 
 Purpose: ground `Insight & Trend` in a balanced benchmark set that includes authority data, platform signals, and real-search trend framing.
 
@@ -45,5 +45,5 @@ Insight & Trend articles explain what is changing, why it matters now, and what 
 
 - recycled AI future talk
 - no operational implication
-- no Lovart-specific relevance
+- no brand-specific relevance
 - one-source trend claims

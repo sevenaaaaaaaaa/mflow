@@ -1,6 +1,6 @@
 # CRO 审计（cro-audit — landing-writer 内联版）
 
-> **lineage**：2026-10-04 由 lovart-cro-optimizer 撤编并入；O2 框架继承 Q3 战术计划；BOFU 形态继承 01-漏斗矩阵；CRO 术语（Hero 四件套/强 proof/CTA 语气表）与本 SKILL 四层决策共享——审计结论直接变成下一次生成的默认值。
+> **lineage**：2026-10-04 由 cro-optimizer 撤编并入；O2 框架继承 Q3 战术计划；BOFU 形态继承 01-漏斗矩阵；CRO 术语（Hero 四件套/强 proof/CTA 语气表）与本 SKILL 四层决策共享——审计结论直接变成下一次生成的默认值。
 
 ## CRO 的定义
 

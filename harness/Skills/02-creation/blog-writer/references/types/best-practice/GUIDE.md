@@ -1,12 +1,12 @@
-# lovart-best-practice
+# best-practice
 
 Best Practice 子技能，用于写 workflow best practices、creative ops 规范、协作与 handoff 规范、参数使用习惯、团队级操作守则。
 
 先加载：
 
-- `lovart-core`
-- `lovart-blog`
-- `lovart-content-quality-gates`
+- `core`
+- `blog`
+- `content-quality-gates`
 
 并遵守共享治理文件：
 
@@ -34,6 +34,6 @@ Read [references/benchmark-seed-v2.md](references/benchmark-seed-v2.md) to exten
 
 Read [references/benchmark-seed-v3.md](references/benchmark-seed-v3.md) to close gaps around follow-up discipline, maintenance loops, and long-lived team operating quality.
 
-Read [references/lovart-best-practice-playbook.md](references/lovart-best-practice-playbook.md) for structure, required moves, and Lovart-specific operating angles.
+Read [references/<brand>-best-practice-playbook.md](references/<brand>-best-practice-playbook.md) for structure, required moves, and brand-specific operating angles.
 
-Read [references/lovart-best-practice-review-checklist.md](references/lovart-best-practice-review-checklist.md) before treating a draft as category-ready.
+Read [references/<brand>-best-practice-review-checklist.md](references/<brand>-best-practice-review-checklist.md) before treating a draft as category-ready.

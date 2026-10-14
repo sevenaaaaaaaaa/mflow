@@ -18,7 +18,7 @@ description: 为 Blog 封面、Features/Tools 页面横幅、分发配图和产�
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
+| 文档 SSOT | `harness/Docs/` |
 | Sanity 脚本 | `dev/品牌.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |
@@ -61,16 +61,16 @@ description: 为 Blog 封面、Features/Tools 页面横幅、分发配图和产�
 
 ```bash
 # Blog：检查 frontmatter cover_url 是否已有
-grep "cover_url" "1-3 Content Gen/Content Calendar/{category}/{slug}.md"
+grep "cover_url" "genflow/Content Calendar/{category}/{slug}.md"
 
 # Features legacy：检查 heroSection.image
 # Tools v2：检查 bodyJson 内 media.src（正式源 Page Gen/Pages/Tools/）
-python3 -c "import json; d=json.load(open('1-3 Content Gen/Page Gen/Pages/Tools/en/{slug}-en.json')); import json as J; s=J.loads(d['bodyJson']); print(next((x.get('media',{}).get('src') for x in s if x.get('media')), 'MISSING'))"
+python3 -c "import json; d=json.load(open('genflow/Page Gen/Pages/Tools/en/{slug}-en.json')); import json as J; s=J.loads(d['bodyJson']); print(next((x.get('media',{}).get('src') for x in s if x.get('media')), 'MISSING'))"
 ```
 
 **跳过**：cover_url 已存在且以 `assets-persist.example.com` 开头、且非占位符。
 
-**封面池兜底**：存量文章使用 `1-3 Content Gen/blog-pipeline/品牌方-Blogs/Cover Url 随机调取.md`（46 个 liblib CDN URL）。Stable hash 算法（`pick-cover.py`）确保同 slug → 同封面。
+**封面池兜底**：存量文章使用 `genflow/blog-pipeline/品牌方-Blogs/Cover Url 随机调取.md`（46 个 initech CDN URL）。Stable hash 算法（`pick-cover.py`）确保同 slug → 同封面。
 
 ### Phase 2: 生成图片
 
@@ -102,7 +102,7 @@ python3 -c "import json; d=json.load(open('1-3 Content Gen/Page Gen/Pages/Tools/
 ```bash
 # 更新 frontmatter cover_url
 sed -i '' 's/cover_url:.*/cover_url: {new_cdn_url}/' \
-  "1-3 Content Gen/Content Calendar/{category}/{slug}.md"
+  "genflow/Content Calendar/{category}/{slug}.md"
 ```
 
 **Features/Tools JSON**：
@@ -133,7 +133,7 @@ json.dump(d, open(path, 'w'), indent=2)
 
 ## 存量封面策略
 
-已有封面池（`1-3 Content Gen/blog-pipeline/品牌方-Blogs/Cover Url 随机调取.md`，46 个 URL）。不重新生成封面时使用 Stable hash 分配。
+已有封面池（`genflow/blog-pipeline/品牌方-Blogs/Cover Url 随机调取.md`，46 个 URL）。不重新生成封面时使用 Stable hash 分配。
 
 ```bash
 python3 scripts/pick-cover.py {slug}
@@ -161,5 +161,5 @@ Output/Images/
 
 - 品牌方 API: `Skills/30-clawx/clawx-openclaw-skills-mflow-skill/SKILL.md`
 - Prompt 库（仅供参考，非自动化模板）: `dev/品牌.sanity.studio/Sanity Blog/Awsome Prompt/`
-- 封面池: `1-3 Content Gen/blog-pipeline/品牌方-Blogs/Cover Url 随机调取.md`
+- 封面池: `genflow/blog-pipeline/品牌方-Blogs/Cover Url 随机调取.md`
 - 图片 CDN 规范: `sanity-publish/Sanity-Blog-发布统合指南.md` §4.7

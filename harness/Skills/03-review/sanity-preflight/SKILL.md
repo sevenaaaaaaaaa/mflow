@@ -5,7 +5,7 @@ description: Sanity 发布前检查。兼容别名，指向 content-quality-gate
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
+| 文档 SSOT | `harness/Docs/` |
 | Sanity 脚本 | `dev/品牌.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |

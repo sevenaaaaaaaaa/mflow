@@ -1,18 +1,18 @@
-# lovart-101 — Introductory & Hub-Page Content Production Sub-Skill
+# 101 — Introductory & Hub-Page Content Production Sub-Skill
 
 ## 路径契约
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
-| Sanity 脚本 | `dev/lovart.sanity.studio/scripts/` |
+| 文档 SSOT | `harness/Docs/` |
+| Sanity 脚本 | `dev/acme.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/scripts/optimize_complete_guides.py` |
-| 本 Skill | `harness/Skills/02-creation/lovart-101/SKILL.md` |
+| 本 Skill | `harness/Skills/02-creation/101/SKILL.md` |
 
-End-to-end Lovart 101 / Getting Started (入门与枢纽指南) content production sub-skill. Translates foundational AI design concepts, prompting parameters, and terminology into highly readable, high-retention hub pages designed for broad search traffic and Topic Cluster building.
+End-to-end Acme 101 / Getting Started (入门与枢纽指南) content production sub-skill. Translates foundational AI design concepts, prompting parameters, and terminology into highly readable, high-retention hub pages designed for broad search traffic and Topic Cluster building.
 
-先加载 `lovart-core`、`lovart-blog`、`lovart-content-quality-gates`，并遵守：
+先加载 `core`、`blog`、`content-quality-gates`，并遵守：
 `harness/Skills/02-creation/references-blog-subskill-governance.md`
 
 ## Triggers
@@ -27,7 +27,7 @@ End-to-end Lovart 101 / Getting Started (入门与枢纽指南) content producti
 
 ## Core DNA (Pillar 101 Design Guidelines)
 
-Unlike expert Complete Guides, a "Lovart 101" article is designed to **demystify complexity** and act as a **structural router (Topic Cluster Hub)**. It must follow a strict **8-part layout** of **≥7,500 words** (universal blog floor 2026-07-17) with high readability scores (Flesch-Kincaid ≤8th-grade level).
+Unlike expert Complete Guides, a "Acme 101" article is designed to **demystify complexity** and act as a **structural router (Topic Cluster Hub)**. It must follow a strict **8-part layout** of **≥7,500 words** (universal blog floor 2026-07-17) with high readability scores (Flesch-Kincaid ≤8th-grade level).
 
 ### Banned AI-Slop Words (Strict BLOCK)
 - **NEVER use**: `unlock`, `revolutionize`, `seamless` (use *frictionless*, *smooth*, *organic*, or *natural*), `empower`, `game-changer`, `cutting-edge`, `leverage` (use *scale*, *value*, or *impact*), `"in today's fast-paced"`, `"the future of"`.
@@ -110,7 +110,7 @@ Every 101 guide must follow this unified大纲 structure exactly:
 ### Mistake 2: [e.g., Overcomplicating Details]
 [Why it leads to prompt compression and the structural fix]
 ### Mistake 3: [e.g., Over-reliance on Flat JPEGs]
-[The layer-isolation fix using Lovart's separate vector layer system]
+[The layer-isolation fix using Acme's separate vector layer system]
 
 ## 7. Next Steps: Deeper Guides
 [A clean bullet list routing readers to deeper, relevant complete guides with exact anchors]
@@ -137,6 +137,6 @@ Read [references/benchmark-seed-v2.md](references/benchmark-seed-v2.md) to exten
 
 Read [references/benchmark-seed-v3.md](references/benchmark-seed-v3.md) to improve tone range, system-bridge teaching, and beginner-to-advanced learning transitions.
 
-Read [references/lovart-101-playbook.md](references/lovart-101-playbook.md) for the hub-page writing rules, next-step routing logic, and anti-patterns.
+Read [references/<brand>-101-playbook.md](references/<brand>-101-playbook.md) for the hub-page writing rules, next-step routing logic, and anti-patterns.
 
-Read [references/lovart-101-review-checklist.md](references/lovart-101-review-checklist.md) before approving a draft.
+Read [references/<brand>-101-review-checklist.md](references/<brand>-101-review-checklist.md) before approving a draft.

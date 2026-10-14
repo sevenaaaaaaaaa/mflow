@@ -5,17 +5,17 @@
 ## 工作目录
 
 ```bash
-cd "/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project"
+cd "$MFLOW_ROOT"
 claude   # 或 Claude Code IDE 打开该文件夹
 ```
 
-## CLAUDE.md（建议放在 `1-Project/CLAUDE.md`）
+## CLAUDE.md（建议放在 `CLAUDE.md`）
 
 ```markdown
 # 品牌方 — Claude Code
 
 ## 规则
-- 读 `harness/AGENTS.md` 与 `1-1 GEO Readme/AGENTS.md`
+- 读 `harness/AGENTS.md` 与 `harness/Docs/AGENTS.md`
 - Sanity：仅 `import --missing`；禁止 deploy / --replace / 删 production
 
 ## 常用命令
@@ -25,12 +25,12 @@ claude   # 或 Claude Code IDE 打开该文件夹
 
 ## 路径
 - Studio scripts: `dev/品牌.sanity.studio/scripts/`
-- Tools SSOT: `1-3 Content Gen/Page Gen/Pages/Tools/`
+- Tools SSOT: `genflow/Page Gen/Pages/Tools/`
 ```
 
 ## settings（可选）
 
-`1-Project/.claude/settings.json` 示例：
+`.claude/settings.json` 示例：
 
 ```json
 {

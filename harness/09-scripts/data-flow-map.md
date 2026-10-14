@@ -27,7 +27,7 @@
 │  │  Sentinel 舆情报告     │    SEO 周报                    │   │
 │  │  (外部生成后落地)      │    (手动撰写)                  │   │
 │  │                       │                               │   │
-│  │  品牌方 Knowledge     │    1-6 Knowledge Base/     │   │
+│  │  品牌方 Knowledge     │    insight-data/Knowledge Base/     │   │
 │  │  Base/ORM/     │    Insight/Keywords Research/ │   │
 │  │  Sentinel Reports/    │    SEO Report/                │   │
 │  │  ┌─ daily.md          │    ┌─ SEO周报_*.md            │   │
@@ -69,11 +69,11 @@
 | 3️⃣ Notion 品牌方-Home | Token `ntn_...` | ✅ `mflow-notion-config.md` |
 | 4️⃣ | 本地 CSV | 磁盘文件 | ✅ `Daily Raw Data/` + `Weekly Raw Data/` |
 | 2️⃣ | Notion 品牌方-Home | DB: `36ffc0c7-1bd5-80b3-b8f1-e1ec200104cc` | ✅ Token 已配置 (`mflow-notion-config.md`) |
-| 3️⃣ | 本地 CSV | `1-6 Knowledge Base/Insight/Keywords Research/Daily Raw Data/` | ✅ 可用 |
+| 3️⃣ | 本地 CSV | `insight-data/Knowledge Base/Insight/Keywords Research/Daily Raw Data/` | ✅ 可用 |
 
 **本地 CSV 目录结构**：
 ```
-1-6 Knowledge Base/Insight/Keywords Research/
+insight-data/Knowledge Base/Insight/Keywords Research/
 ├── Daily Raw Data/                              ← GSC 日度
 ├── Weekly Raw Data/
 │   ├── 谷歌 SEO 数据/                           ← GSC 周度
@@ -89,25 +89,25 @@
 
 | 来源 | 路径 | 触发 |
 |------|------|------|
-| 外部生成 | `1-6 Knowledge Base/Sentinel Insights/reports/` | 落地后自动触发 Pipeline |
+| 外部生成 | `insight-data/Knowledge Base/Sentinel Insights/reports/` | 落地后自动触发 Pipeline |
 | 日报 | `品牌方-Sentinel-YYYY-MM-DD-daily.md` | 每日 |
 | 周报 | `品牌方-Sentinel-YYYY-MM-DD-weekly.md` | 每周 |
 | 原始数据 | `raw/YYYY-MM-DD/` (.json) | 随日报生成 |
 
 **Sentinel 配置**: `dev/scripts/sentinel/config.yaml`
-- `base_path`: `1-Project/品牌方` (通过 `__file__` 相对解析，换电脑自动适配)
-- `report_output`: `../1-6 Knowledge Base/Sentinel Insights/reports`
-- `internal_sources.gsc_daily`: `../1-6 Knowledge Base/Insight/Keywords Research/Daily Raw Data/`
+- `base_path`: `品牌方` (通过 `__file__` 相对解析，换电脑自动适配)
+- `report_output`: `../insight-data/Knowledge Base/Sentinel Insights/reports`
+- `internal_sources.gsc_daily`: `../insight-data/Knowledge Base/Insight/Keywords Research/Daily Raw Data/`
 
 ### 内容日历
 
 | 路径 | 说明 |
 |------|------|
-| `1-6 Knowledge Base/Content Calendar/` | 14 品类, 3,221 篇 Markdown |
-| `1-6 Knowledge Base/Content Archive/品牌方 Fake/` | 新文章 |
-| `1-6 Knowledge Base/Content Archive/Original/` | 已发布 |
-| `1-6 Knowledge Base/Content Archive/pages-legacy/Features/` | Features JSON（1,914 条目, 9 语言） |
-| `1-3 Content Gen/Page Gen/Pages/Tools/` | Tools JSON（composite-v2 正式源，与 production 对齐） |
+| `insight-data/Knowledge Base/Content Calendar/` | 14 品类, 3,221 篇 Markdown |
+| `insight-data/Knowledge Base/Content Archive/品牌方 Fake/` | 新文章 |
+| `insight-data/Knowledge Base/Content Archive/Original/` | 已发布 |
+| `insight-data/Knowledge Base/Content Archive/pages-legacy/Features/` | Features JSON（1,914 条目, 9 语言） |
+| `genflow/Page Gen/Pages/Tools/` | Tools JSON（composite-v2 正式源，与 production 对齐） |
 | ~~`pages-legacy/Tools/`~~ | **已弃用**（历史 heroSection 归档） |
 
 ### 邮件数据
@@ -145,7 +145,7 @@ dev/Output/
 | `Output/Push Reports/` | 飞书写入状态报告 |
 | `Output/Push Reports/manual-platforms-YYYY-MM-DD.md` | 手动平台操作清单 |
 | 飞书 Bitable | Base: `ZLWgbi6VIaCRiNsb22jcNpPRnfh`, Table: `tblfYkNiq83rotAh` |
-| content-distributor 引擎 | `~/content-distributor/`（独立于 vault 安装） |
+| content-distributor 引擎 | `~/content-distributor/`（独立于仓库 安装） |
 
 ---
 
@@ -160,7 +160,7 @@ dev/Output/
 | GA4 凭证 | `dev/scripts/sentinel/ga4_credentials/` | service-account.json + ga4-token.json |
 | SEO 配置 | `Skills/config.example.json` | 品牌方 站点配置 |
 | Sanity .env | `dev/品牌.sanity.studio/.env` | PROJECT_ID + API Token |
-| WP 发布脚本 | `1-3 Content Gen/blog-pipeline/品牌方-Blogs/scripts/publish-to-wp.py`（TODO/GAP: 重构中删除待恢复） | WordPress API 凭证 |
+| WP 发布脚本 | `genflow/blog-pipeline/品牌方-Blogs/scripts/publish-to-wp.py`（TODO/GAP: 重构中删除待恢复） | WordPress API 凭证 |
 
 ---
 
@@ -171,8 +171,8 @@ dev/Output/
 whoami → 应为 "seveno"（否则改 config.yaml）
 
 # 2. 确认数据输入路径存在
-ls "1-6 Knowledge Base/Insight/Keywords Research/Daily Raw Data/"
-ls "1-6 Knowledge Base/Sentinel Insights/reports/"
+ls "insight-data/Knowledge Base/Insight/Keywords Research/Daily Raw Data/"
+ls "insight-data/Knowledge Base/Sentinel Insights/reports/"
 
 # 3. 确认 Notion token 生效
 curl -H "Authorization: Bearer $(cat ~/.config/notion/api_key)" \

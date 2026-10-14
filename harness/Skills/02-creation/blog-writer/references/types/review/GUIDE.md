@@ -1,12 +1,12 @@
-# lovart-review
+# review
 
 Review 子技能，用于写单品评测、best-of roundups、versus pages、tested-and-compared 类型博客。
 
 先加载：
 
-- `lovart-core`
-- `lovart-blog`
-- `lovart-content-quality-gates`
+- `core`
+- `blog`
+- `content-quality-gates`
 
 并遵守共享治理文件：
 
@@ -14,7 +14,7 @@ Review 子技能，用于写单品评测、best-of roundups、versus pages、tes
 
 研究参考：
 
-- `.cursor/skills/lovart-review-benchmark-research/`
+- `.cursor/skills/review-benchmark-research/`
 
 ## Triggers
 

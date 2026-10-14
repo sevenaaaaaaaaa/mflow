@@ -4,7 +4,7 @@ Shared governance reference for the brand blog subskills across Cursor / Hermes 
 
 Every blog skill must inherit:
 
-- `mflow-core`（= RULES-00-iron 全文，经 harness_sync 编译为 .cursor 规则；引用悬空历史见 HARNESS-SKILLS-AUDIT）
+- `mflow-core`（= RULES-00-iron 全文，经 harness_sync 编译为 .cursor 规则）
 - blog production rules
 - quality-gate rules
 

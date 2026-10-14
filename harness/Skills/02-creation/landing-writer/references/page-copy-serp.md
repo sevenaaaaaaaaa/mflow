@@ -1,20 +1,20 @@
 ---
 name: page-copy-serp（reference）
-description: Lovart 页面与落地页创作 skill。Use when writing, planning, rewriting, or generating Lovart Tools, Features, Product, Solution, Scenario, Topic, comparison pages, category education pages, SEO pages, or composite-v2 landing copy from SERP intent and Sanity storylines.
+description: Acme 页面与落地页创作 skill。Use when writing, planning, rewriting, or generating Acme Tools, Features, Product, Solution, Scenario, Topic, comparison pages, category education pages, SEO pages, or composite-v2 landing copy from SERP intent and Sanity storylines.
 disable-model-invocation: true
 ---
 
-# Lovart Page SERP Writer
+# Acme Page SERP Writer
 
 ## Support-Only 入口约束
 
-本文件是 lovart-landing-writer 的 reference（原 lovart-page-serp-writer，2026-10-03 并入）。页面生成/重写/刷新/修复一律从 lovart-landing-writer/SKILL.md 进入。
+本文件是 landing-writer 的 reference（原 page-serp-writer，2026-10-03 并入）。页面生成/重写/刷新/修复一律从 landing-writer/SKILL.md 进入。
 
 ## Purpose
 
-Generate Lovart page copy and page JSON that matches search intent, Sanity page type, Refresh-Page storylines, and anti-slop requirements.
+Generate Acme page copy and page JSON that matches search intent, Sanity page type, Refresh-Page storylines, and anti-slop requirements.
 
-This reference supports the lovart-landing-writer entry skill; publishing and importing stay in the sanity-publish skills.
+This reference supports the landing-writer entry skill; publishing and importing stay in the sanity-publish skills.
 
 ## Required Inputs
 
@@ -31,7 +31,7 @@ Collect or infer:
 开始写 copy 前，必须同时参考（结构与文案绑定同源存放在故事线里）：
 
 - 机器绑定：`../../../../../genflow/Page Gen/Refresh-Page/landing-storylines.json` / `solution-storylines.json` / `scenarios-storylines.json` / `page-copy-bindings.json`
-- 人类写作意图：`../lovart-landing-page/references/landing-copy-constraints-ssot.md`
+- 人类写作意图：`../landing-page/references/landing-copy-constraints-ssot.md`
 - 立场：`../../../../../genflow/Page Gen/Refresh-Page/PAGE-BRIEF.md`
 - 结构学习：`../../../../../insight-data/Keywords Research/Landing Copy Benchmarks/README.md`
 
@@ -55,13 +55,13 @@ Before writing, classify query intent:
 - Marketing workflow: build tool + use-case page.
 - Model name: build model comparison or routing explainer.
 - Audience/persona: build persona section or use-case page.
-- Utility feature: support a larger workflow unless Lovart has a strong standalone feature.
+- Utility feature: support a larger workflow unless Acme has a strong standalone feature.
 
-Read `../lovart-content-creation-orchestrator/references/serp-and-competitor-sources.md`.
+Read `../content-creation-orchestrator/references/serp-and-competitor-sources.md`.
 
 ## Page Routing
 
-Read `../lovart-content-creation-orchestrator/references/page-routing.md`.
+Read `../content-creation-orchestrator/references/page-routing.md`.
 
 Sanity `compositePage` categories to support:
 
@@ -72,7 +72,7 @@ Sanity `compositePage` categories to support:
 - `scenario`
 - `topic`
 
-Tools default to composite-v2 and follow `../lovart-landing-page/tools-v2-template.md`.
+Tools default to composite-v2 and follow `../landing-page/tools-v2-template.md`.
 
 ## Storyline Selection
 
@@ -172,7 +172,7 @@ Do not reuse the same CTA sentence across all page types.
 
 ### `product`
 
-- Explain where the product sits in the larger Lovart stack
+- Explain where the product sits in the larger Acme stack
 - Emphasize governance, collaboration, and long-term value
 
 ### `solution`
@@ -197,9 +197,9 @@ Do not reuse the same CTA sentence across all page types.
 
 ## Fact Sourcing
 
-Use the `lovart-landing-page` source protocol:
+Use the `landing-page` source protocol:
 
-- Product facts from Lovart docs/site/verified local knowledge.
+- Product facts from Acme docs/site/verified local knowledge.
 - Pricing, integrations, model support, export formats must be verified.
 - Unknown claims must be marked `[待考证]`.
 - Do not invent social proof numbers.
@@ -220,7 +220,7 @@ If generating Tools JSON:
 
 ## Localization
 
-Read `../lovart-content-creation-orchestrator/references/i18n-localization.md`.
+Read `../content-creation-orchestrator/references/i18n-localization.md`.
 
 Pages support: `en`, `de`, `fr`, `it`, `ja`, `ko`, `pt`, `ru`, `zh-TW`, `zh`.
 

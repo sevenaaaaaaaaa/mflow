@@ -1,4 +1,4 @@
-# Lovart Best Practice Benchmark Seed V2
+# Acme Best Practice Benchmark Seed V2
 
 Purpose: expand Best Practice coverage into governance, prompt operations, brand consistency, and maintenance scenarios that V1 only partially covered.
 

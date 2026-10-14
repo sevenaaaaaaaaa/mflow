@@ -9,7 +9,7 @@ description: 品牌方 三引擎 SEO 数据采集与 OKR 对标报告系统。�
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
+| 文档 SSOT | `harness/Docs/` |
 | Sanity 脚本 | `dev/品牌.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |

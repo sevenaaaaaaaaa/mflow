@@ -72,7 +72,7 @@ Token 在 [manage.sanity.io](https://www.sanity.io/manage) → 项目 `your-proj
 
 ```bash
 # vault 不在默认 iCloud 路径时
-export MFLOW_ROOT="/你的路径/1-Project/品牌方"
+export MFLOW_ROOT="/你的路径品牌方"
 export MFLOW_OUT_DIR="$HOME/品牌"
 node scripts/check-publish-deps.js
 ```

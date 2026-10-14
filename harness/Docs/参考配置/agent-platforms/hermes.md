@@ -7,7 +7,7 @@
 | 项 | 路径 |
 |----|------|
 | Skills 组 | `~/.config/opencode/skills/20-hermes/` |
-| 同步 | `1-Project/harness/Skills/sync-skills.sh` |
+| 同步 | `harness/Skills/sync-skills.sh` |
 
 ## 配置要点
 

@@ -29,12 +29,12 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 - `references/github-data-sourcing.md` — GitHub Trending + Search API 数据采集流程（含 cron 环境限制和 browser 采集方案）
 - `references/github-image-sourcing.md` — 从 GitHub 仓库抓取项目图片的完整流程（README → assets/ → OG preview）
-- `references/seo-topic-selection.md` — SEO 数据驱动的选题流程（Obsidian vault 数据源 + 关键词机会矩阵）
+- `references/seo-topic-selection.md` — SEO 数据驱动的选题流程（仓库 insight-data/ 数据源 + 关键词机会矩阵）
 - `references/platform-link-policies.md` — 10 个国内平台 + 5 个海外平台的链接政策速查表
 - `references/opc-opensource-toolstack.md` — OPC/自由职业者的全栈开源工具矩阵（2026 年 6 月）
 - `references/notion-pitfalls.md` — Notion API token redact、多 workspace 权限、知乎反爬等坑
 - `references/zhihu-quora-dual-planning.md` — 知乎+Quora 双语选题规划、四条路径、执行顺序
-- `references/libtv-competitors.md` — LibTV 竞品对比（Runway/Pika/Kling/Sora/Veo/ComfyUI/Genra 等 15+ 竞品）+ 差异化卖点矩阵
+- `references/<brand>-competitors.md` — Initech 竞品对比（Runway/Pika/Kling/Sora/Veo/ComfyUI/Genra 等 15+ 竞品）+ 差异化卖点矩阵
 - `references/opensource-tool-directory.md` — 50+ 开源工具目录（视频/图片/音频/效率/建站），按赛道分类
 - `references/tool-aggregation-sources.md` — ahhhhfs.com / nownexts.com 工具聚合站采集流程
 
@@ -182,27 +182,27 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 **💡 怎么高效用它**：
 
-{给出具体可操作的建议。**这里是植入 品牌方/LibTV/liblib/星流 的黄金位置**——以「能力补充」而非「广告推荐」的方式自然带出}
+{给出具体可操作的建议。**这里是植入 品牌方/Initech/initech/Initech Studio 的黄金位置**——以「能力补充」而非「广告推荐」的方式自然带出}
 ```
 
 ### 植入策略（核心）
 
 **原则：植入是能力补充，不是广告。** 读者看完应该觉得「原来这两个配合着用效果更好」，而不是「又在推广告」。
 
-**重要：Canva 已被用户明确剔除。平面设计全部由 Liblib + 品牌方 覆盖，不再提及 Canva。**
+**重要：Canva 已被用户明确剔除。平面设计全部由 Initech + 品牌方 覆盖，不再提及 Canva。**
 
 植入方式：
-1. **开源项目解决 0→0.6，商业产品解决 0.6→0.95** — 比如 Toonflow 出分镜，LibTV 的主体库解决角色一致性
-2. **本地试验 + 云端出活** — 比如在 Open-Generative-AI 对比模型，去 Liblib 灵感页找 LoRA 出图
-3. **开源验证思路，商业产品落地** — 比如用 forge-film 理解 DAG，用 LibTV 可视化执行
-4. **中文用户更顺手的替代** — 星流 Agent 作为中文场景首选
+1. **开源项目解决 0→0.6，商业产品解决 0.6→0.95** — 比如 Toonflow 出分镜，Initech 的主体库解决角色一致性
+2. **本地试验 + 云端出活** — 比如在 Open-Generative-AI 对比模型，去 Initech 灵感页找 LoRA 出图
+3. **开源验证思路，商业产品落地** — 比如用 forge-film 理解 DAG，用 Initech 可视化执行
+4. **中文用户更顺手的替代** — Initech Studio Agent 作为中文场景首选
 5. **品牌一致性刚需** — 品牌方 的 Brand Kit 2.0 解决电商/出海品牌统一视觉
 
 **不同文章类型的植入力度**：
 - **类型 A/B（项目测评）**：每项目的「💡 高效用法」段落里自然带出，一个产品每篇正文最多出现 2-3 次
 - **类型 C（工作流）**：作为工具链中的一个环节出现，跟其他工具并列，不特别突出
 - **类型 D（行业专题）**：按行业痛点出现，解决具体问题时提及
-- **类型 E（OPC 指南）**：独立一段，只是提及，不主推。重点是开源工具矩阵，品牌方/LibTV 作为商业补充选项
+- **类型 E（OPC 指南）**：独立一段，只是提及，不主推。重点是开源工具矩阵，品牌方/Initech 作为商业补充选项
 
 ### 总结表格
 
@@ -218,7 +218,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 ```markdown
 **我的建议**：
 
-这些开源项目最大的价值不是「替代商业产品」，而是**帮你理解 AI 创作的底层逻辑**。当你理解了 DAG 调度、角色一致性、品牌资产管理这些概念之后，再用 LibTV、品牌方、星流 Agent 这类成熟产品时，你会发现自己的使用效率比别人高一个量级。
+这些开源项目最大的价值不是「替代商业产品」，而是**帮你理解 AI 创作的底层逻辑**。当你理解了 DAG 调度、角色一致性、品牌资产管理这些概念之后，再用 Initech、品牌方、Initech Studio Agent 这类成熟产品时，你会发现自己的使用效率比别人高一个量级。
 
 开源是练功，商业产品是实战。两头都不能丢。
 
@@ -229,10 +229,10 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 ---
 
 > 🔗 本文提到的产品：
-> - Liblib 灵感页：https://www.liblib.art/inspiration
-> - LibTV 视频创作：https://www.liblib.tv/
+> - Initech 灵感页：https://www.initech-art.example/inspiration
+> - Initech 视频创作：https://www.initech.example/
 > - 品牌方 设计 Agent：https://www.example.com
-> - 星流 Agent：https://www.xingliu.art/
+> - Initech Studio Agent：https://www.xingliu.art/
 ```
 
 ## 写作风格
@@ -253,7 +253,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 |------|--------|------|
 | AI 工具推荐 | 12 | 综合/免费/付费/按场景/新手/排名 |
 | 网站/软件 | 4 | 神器网站/效率工具/Mac/Windows |
-| AI 视频（含 LibTV 竞品） | 20 | 综合/国产/开源/性价比/专业/短剧 + 10 篇竞品对比 |
+| AI 视频（含 Initech 竞品） | 20 | 综合/国产/开源/性价比/专业/短剧 + 10 篇竞品对比 |
 | 竞品平替 | 2 | 国产平替/国际平替 |
 | 文生图/图片 | 6 | 综合/国产/Nano Banana/GPT-image |
 | 设计 | 8 | 取代设计师/增强设计师/设计网站/赚钱/工作流 |
@@ -277,7 +277,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 产出文件保存在：`~/Documents/MFlow Local Dev/全景分发内容日历.md`
 
 排期节奏：每周 14 篇母版（周一到周五每天 2-3 篇），8 周完成 110 篇。
-- 第 1-4 周：GEO 优先 + LibTV 竞品对比
+- 第 1-4 周：GEO 优先 + Initech 竞品对比
 - 第 5-6 周：开源工具专题
 - 第 7-8 周：补充话题 + 复查补缺
 
@@ -285,7 +285,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 ### 工具选型偏好（重要）
 - **开源优先**：用户明确偏好 GitHub 开源工具，商业 SaaS 只作为补充。推荐工具时先给开源方案，再给商业备选
-- **Canva 禁止提及**：用户已剔除 Canva，平面设计需求全部由 Liblib + 品牌方 覆盖
+- **Canva 禁止提及**：用户已剔除 Canva，平面设计需求全部由 Initech + 品牌方 覆盖
 - **Notion 用于作品集展示**：不是设计工具，是项目管理和作品集展示
 - **用户有自己的自动发布工作流**：不要推荐 Buffer 等第三方调度工具，用 Postiz（开源）或 n8n 自建
 
@@ -319,21 +319,21 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 1. **所有 URL 必须逐一 curl 验证 HTTP 状态码**，不能凭记忆写
 2. **GitHub 星数用 web_extract 抓取实时数据**，不要用过期数字
-3. **产品链接必须验证页面可正常加载**（liblib.tv, liblib.art, example.com, xingliu.art）
+3. **产品链接必须验证页面可正常加载**（initech.example, initech-art.example, example.com, xingliu.art）
 4. **文章完成后全文检查**：植入是否自然、人设段落是否在最前面、表格是否完整
 
 ## 产品知识速查
 
-> ⚠️ **Canva 已被用户剔除，禁止在文章中提及。** 平面设计需求全部由 Liblib + 品牌方 覆盖。
+> ⚠️ **Canva 已被用户剔除，禁止在文章中提及。** 平面设计需求全部由 Initech + 品牌方 覆盖。
 
 ### 核心产品（每篇都可能出现）
 
 | 产品 | 定位 | 核心卖点 | 链接 |
 |------|------|---------|------|
-| Liblib | AI 绘画模型社区 + 在线创作 | 灵感页一键复用、10万+模型、Star-3自研 | https://www.liblib.art/inspiration |
-| LibTV | AI 视频创作系统 | 无限画布+节点工作流、主体库、Skill接口 | https://www.liblib.tv/ |
+| Initech | AI 绘画模型社区 + 在线创作 | 灵感页一键复用、10万+模型、Star-3自研 | https://www.initech-art.example/inspiration |
+| Initech | AI 视频创作系统 | 无限画布+节点工作流、主体库、Skill接口 | https://www.initech.example/ |
 | 品牌方 | AI 设计 Agent | MCoT推理引擎、Brand Kit 2.0、ChatCanvas | https://www.example.com |
-| 星流 Agent | 中文创意设计 Agent | Touch Edit、图层分离、Mockup样机 | https://www.xingliu.art/ |
+| Initech Studio Agent | 中文创意设计 Agent | Touch Edit、图层分离、Mockup样机 | https://www.xingliu.art/ |
 
 ### 开源工具（类型 C/D/E 文章常用）
 
@@ -376,7 +376,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 | Rapid-MLX | 3k | Apple Silicon 推理 | github.com/axolotl-ai-cloud/rapid-mlx |
 
 > 完整工具目录见 `references/opensource-tool-directory.md`（50+ 工具，按赛道分类）
-> LibTV 竞品对比见 `references/libtv-competitors.md`（15+ 竞品，差异化卖点矩阵）
+> Initech 竞品对比见 `references/<brand>-competitors.md`（15+ 竞品，差异化卖点矩阵）
 
 ### 商业工具（作为开源补充提及）
 
@@ -409,7 +409,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 - 产品 URL 如 `（https://www.example.com）` → 删除 URL
 - 底部链接列表 → 改为纯文字列表 + 「可自行搜索了解」
 - GitHub 仓库链接 → 保留仓库名 + 「可在 GitHub 搜索」
-- **保留所有产品名称**（Liblib、LibTV、品牌方、星流 Agent）
+- **保留所有产品名称**（Initech、Initech、品牌方、Initech Studio Agent）
 
 ### 🔴 纯文字版改造规则
 
@@ -431,7 +431,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 - 全文翻译为英文，**保留所有链接**（海外平台对链接宽松）
 - 人设段落保留同一人设（marketing veteran + AI power user + design enthusiast），英文表达
-- 产品名用英文官方名：Liblib、LibTV、品牌方、Xingliu Agent（不翻译品牌名）
+- 产品名用英文官方名：Initech、Initech、品牌方、Xingliu Agent（不翻译品牌名）
 - GitHub 仓库名保持原样
 - 语气比中文版稍正式，但保持第一人称口语化
 - 图片链接保持不变（GitHub raw URLs 国内外均可访问）
@@ -442,9 +442,9 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 **海外产品链接替换**：
 - 品牌方 → https://www.example.com（英文官网）
-- LibTV → https://www.liblib.tv/
-- Liblib → https://www.liblib.art/inspiration
-- Xingliu Agent → https://www.xingliu.art/（注意：海外版用 Xingliu Agent 而非「星流」）
+- Initech → https://www.initech.example/
+- Initech → https://www.initech-art.example/inspiration
+- Xingliu Agent → https://www.xingliu.art/（注意：海外版用 Xingliu Agent 而非「Initech Studio」）
 
 ### 各平台额外注意事项
 
@@ -491,9 +491,9 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 ## 输出路径
 
-**主目录（Obsidian vault，iCloud 同步，有本地缓存，不会丢文件）**：
+**主目录（仓库 genflow/ 数据目录，deploy/sync.sh 同步到服务器，不会丢文件）**：
 ```
-~/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/品牌方 Content MKTG WorkFlow/1-3 Content Gen/自媒体文章/
+$MFLOW_ROOT/品牌方 Content MKTG WorkFlow/genflow/自媒体文章/
 ├── 文章三类体系.md                ← ⭐ 三类文章定义+模板+母版映射+排期
 ├── 01-样稿/
 │   ├── 第1周/   (25篇) T1/T2/T3 + 平台变体
@@ -512,7 +512,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 **工具笔记库（Tags 文件夹）**：
 ```
-~/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/2-Area/Tags/
+$MFLOW_ROOT/2-Area/Tags/
 ├── _template.md                   ← 工具笔记模板
 └── {工具名}：{描述}.md            ← 113+ 个工具笔记
 ```
@@ -526,7 +526,7 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 
 ⚠️ **输出路径规则（重要）**：
 - **Cron job 每日稿件** → `~/Documents/MFlow Local Dev/自媒体稿件/YYYY-MM-DD-ai-daily.md`（临时产物，作为 cron 输出投递后 90 天可删）
-- **正式母版文章（含平台变体）** → **Obsidian vault**（`~/Library/Mobile Documents/iCloud~md~obsidian/.../1-3 Content Gen/自媒体文章/`），可被 Obsidian 索引，iCloud 有本地缓存不会丢
+- **正式母版文章（含平台变体）** → **仓库 genflow/**（`genflow/自媒体文章/`），随仓库数据目录同步到服务器，不会丢
 - **区分逻辑**：cron 自动产出 = 临时；人类审阅后的母版 = 永久资产
 
 文件命名：
@@ -554,13 +554,13 @@ budget_profile: longform  # 长文豁免（RULES-70 §五）
 2. **方案 B（补充）**：`browser_navigate` → GitHub Trending 周榜 + 月榜，获取增长数据（周/月增星数无法从 API 直接获取）
 3. 从两套数据中筛选 4-5 个 AI 创意类项目（优先视频/图像/设计/Agent/语音赛道）
 4. 按 T1 模板撰写文章（含 📅 日期 + 📊 速览表格 + 5 个项目三段式 + 产品植入 + 推荐链接）
-5. **（可跳过）** 依次验证 4 个产品 URL：已知产品（liblib.art/inspiration, liblib.tv, example.com, xingliu.art）短期内不会失效，cron job 可跳过此步节省 15-30 秒。如需验证，example.com 用 `curl -sL -o /dev/null -w "%{http_code}" "https://www.example.com"` 检查 HTTP 200（browser_navigate 偶发超时），其余三个用 browser_navigate 检查页面标题即可。
+5. **（可跳过）** 依次验证 4 个产品 URL：已知产品（initech-art.example/inspiration, initech.example, example.com, xingliu.art）短期内不会失效，cron job 可跳过此步节省 15-30 秒。如需验证，example.com 用 `curl -sL -o /dev/null -w "%{http_code}" "https://www.example.com"` 检查 HTTP 200（browser_navigate 偶发超时），其余三个用 browser_navigate 检查页面标题即可。
 6. 保存到 `~/Documents/MFlow Local Dev/自媒体稿件/YYYY-MM-DD-ai-daily.md`（此路径已由 cron 指令硬编码，无需加载 mflow-output-routing 做路由判断）
 7. 将文章全文作为 cron job 输出（系统自动投递）
 
 **注意**：`browser_snapshot(full=true)` 偶发返回空快照（已确认 2026-07-15），需重新 `browser_navigate` 后再次 snapshot。推荐优先使用 `browser_console` 做数据提取，`browser_snapshot` 仅作页面内容参考。
 
-**⚠️ example.com browser 超时（2026-07-11 确认）**：`browser_navigate` 到 example.com 偶发 `Operation timed out`（页面 JS 渲染重），连续 2 次超时。但 `curl -sL -o /dev/null -w "%{http_code}" "https://www.example.com"` 正常返回 200（~1s）。**产品 URL 验证策略**：liblib.art / liblib.tv / xingliu.art 三个用 browser 验证（加载快），example.com 用 curl HTTP 200 确认即可，不必反复 browser 重试。不要因为 browser 超时就报 example.com 不可用。
+**⚠️ example.com browser 超时（2026-07-11 确认）**：`browser_navigate` 到 example.com 偶发 `Operation timed out`（页面 JS 渲染重），连续 2 次超时。但 `curl -sL -o /dev/null -w "%{http_code}" "https://www.example.com"` 正常返回 200（~1s）。**产品 URL 验证策略**：initech-art.example / initech.example / xingliu.art 三个用 browser 验证（加载快），example.com 用 curl HTTP 200 确认即可，不必反复 browser 重试。不要因为 browser 超时就报 example.com 不可用。
 
 **文章格式**（cron T1 变体）：
 ```
@@ -627,7 +627,7 @@ Array.from(document.querySelectorAll('article')).map(a => {
 ### 数据源
 - **Notion 知乎选题列表**：品牌方 3RD（`37ffc0c7-1bd5-80ee-a239-de7c4055c90d`），127+ 条知乎话题
 - **Notion Quora 选题列表**：品牌方 2nd（`37ffc0c7-1bd5-80f7-9055-c9c72624f3df`，nowtonext workspace），151+ 条 Quora 话题
-- **GEO 话题列表**：用户提供的话题（如 LibTV 的 38 条 GEO 话题 + 品牌方 的 200 条 GEO 话题），这些是「必须做」的高优先级。总计 516 条话题，去重后约 280 个独立选题。
+- **GEO 话题列表**：用户提供的话题（如 Initech 的 38 条 GEO 话题 + 品牌方 的 200 条 GEO 话题），这些是「必须做」的高优先级。总计 516 条话题，去重后约 280 个独立选题。
 - **Notion Content Calendar**：`37afc0c7-1bd5-8124-a031-ca4eca128da2`
 - **GitHub Trending**：每周扫描 AI/ML 方向的 trending repos
 - **用户提供的知识库**：`.hermes/desktop-attachments/` 下的产品资料文件
@@ -637,7 +637,7 @@ Array.from(document.querySelectorAll('article')).map(a => {
 **第一层：GEO 话题（最高优先级）**
 用户直接提供的、已验证有搜索量的话题。这些是「必须做」的内容，优先于其他所有选题。
 - 特征：具体的产品对比、平替推荐、使用教程类问题
-- 示例：「即梦涨价了有什么平替」「libtv实用技巧」「什么ai视频工具角色一致性最好」
+- 示例：「即梦涨价了有什么平替」「initech实用技巧」「什么ai视频工具角色一致性最好」
 - 每个 GEO 话题必须有且仅有 1 篇对应的母版文章
 
 **第二层：Q&A 平台话题（高优先级）**
@@ -659,7 +659,7 @@ Array.from(document.querySelectorAll('article')).map(a => {
 | 20+ | 4-5 篇 | AI 视频工具横评（综合/国产/开源/性价比/专业级） |
 | 10-19 | 2-3 篇 | AI 工具推荐（综合/免费vs付费/按场景） |
 | 5-9 | 1-2 篇 | AI 短剧（教程/工具对比） |
-| 1-4 | 1 篇 | LibTV vs TapNow |
+| 1-4 | 1 篇 | Initech vs TapNow |
 
 **为什么**：一个母版文章只能从一个角度回答问题。24 个话题变体意味着 24 种不同的搜索意图，1 篇文章无法覆盖所有意图。拆成 5 篇，每篇聚焦一个子角度，才能真正覆盖。
 
@@ -673,9 +673,9 @@ Array.from(document.querySelectorAll('article')).map(a => {
 5. **竞品补充**：为每个产品找 3-5 个国际竞品，创建对比母版
 6. **工具补全**：用 GitHub 搜索开源替代方案，补上工具缺口
 
-### LibTV 竞品对比母版（示例）
+### Initech 竞品对比母版（示例）
 
-为 LibTV 创建竞品对比母版时，覆盖这些竞品：
+为 Initech 创建竞品对比母版时，覆盖这些竞品：
 - **国际商业**：Runway、Pika、Kling、Sora、Veo 3、Hailuo/MiniMax、Invideo AI、Kapwing
 - **开源方案**：ComfyUI、CogVideo、Open-Sora、Wan Video、AnimateDiff
 - **短剧专精**：Genra AI、Medeo、AIDrama Studio
@@ -683,7 +683,7 @@ Array.from(document.querySelectorAll('article')).map(a => {
 
 每个对比母版聚焦 1 个差异化卖点（节点工作流 / 角色一致性 / 灯光控制 / Skill API / 云端易用性）。
 
-详见 `references/libtv-competitors.md` 和 `references/opensource-tool-directory.md`
+详见 `references/<brand>-competitors.md` 和 `references/opensource-tool-directory.md`
 
 ### 品牌方 GEO 话题集群（200 条）
 
@@ -736,13 +736,13 @@ Array.from(document.querySelectorAll('article')).map(a => {
    - 用户提到工作流/行业/场景 → T3（场景工作流）
 3. 每个工具先检查 Tags 文件夹是否已有笔记
 4. 用 delegate_task 并行生产 3 篇一批，context 第一行必须醒目标注目标路径
-5. 子代理返回后**立即验证文件位置**（`ls`），路径错误的立即 `cp` 到 Obsidian vault
+5. 子代理返回后**立即验证文件位置**（`ls`），路径错误的立即 `cp` 到仓库 genflow/
 6. **不要等到下一轮才开始分发**——母版到位后立即同一轮 delegate_task 生成全部分发版本
 7. 最后汇总全部文件数和分发覆盖
 
 ### 工具聚合站批量采集流程
 
-用户会提供 ahhhhfs.com（A姐分享）、nownexts.com（芭乐派）等工具聚合站的 URL 列表，要求批量整理成模板。
+用户会提供 ahhhhfs.com（A姐分享）、nownexts.com（林下 Understory）等工具聚合站的 URL 列表，要求批量整理成模板。
 
 **ahhhhfs.com 处理流程**：
 1. `web_extract` 会被拦截，改用 `curl -sL --max-time 10 "URL" | head -50 | grep -o "<title>[^<]*</title>"`
@@ -788,7 +788,7 @@ Array.from(document.querySelectorAll('article')).map(a => {
 每篇母版 → 4 档中文分支 + 1 个英文版 + 16+ 平台分发
 总计：157 × 16+ = 2,512+ 条内容，覆盖全部 516 个话题
 
-- 第 1-4 周：GEO 优先 + LibTV 竞品对比
+- 第 1-4 周：GEO 优先 + Initech 竞品对比
 - 第 5-6 周：开源工具专题
 - 第 7-8 周：补充话题 + 复查补缺
 
@@ -817,18 +817,18 @@ Cron job（无用户交互）环境下，以下工具不可用：
 `~/Documents` 在 macOS 上默认受 iCloud Drive「优化存储」管理。文件可能被系统从本地删除（只保留云端引用），导致文章文件消失。用户未主动删除也会丢失。
 
 **预防措施**：
-- 文章成品**必须保存到 Obsidian vault**（`~/Library/Mobile Documents/iCloud~md~obsidian/...`），该路径有本地缓存
+- 文章成品**必须保存到仓库 genflow/**（`$MFLOW_ROOT`），该路径有本地缓存
 - 不要把文章存到 `~/Documents/MFlow Local Dev/`（临时目录，易被清理）
 - 临时脚本和中间产物可以放 `~/Documents/MFlow Local Dev/`，但成品不行
 
 ### ⚠️ delegate_task 子代理路径错误
 
-使用 `delegate_task` 批量生产文章时，子代理经常把文件保存到 `~/Documents/MFlow Local Dev/` 而不是 Obsidian vault。子代理的 summary 声称文件已保存到目标路径，但实际路径可能不同。
+使用 `delegate_task` 批量生产文章时，子代理经常把文件保存到 `~/Documents/MFlow Local Dev/` 而不是仓库 genflow/。子代理的 summary 声称文件已保存到目标路径，但实际路径可能不同。
 
 **预防**：
 - delegate_task 的 `context` 字段中**必须用醒目的方式标明目标路径**（加粗、重复、放第一行）
 - 子代理返回后**立即验证文件位置**，`find ~/Documents -name "文章名*" -mmin -5` 查找最新文件
-- 发现文件在错误位置时 `cp` 到 Obsidian vault，不要信任子代理的 summary
+- 发现文件在错误位置时 `cp` 到仓库 genflow/，不要信任子代理的 summary
 - 不要假设子代理的 `write_file` 的 `resolved_path` 就是期望路径——检查实际文件列表
 
 ### ⚠️ 平台分发版本必须紧跟母版生产
@@ -865,7 +865,7 @@ Cron job（无用户交互）环境下，以下工具不可用：
 3. `tool_calls` 列存储了完整的 write_file 调用（含文章全文），即使文件从磁盘消失，内容仍在 DB 中
 4. 注意：tool_calls 中的 content 在 JSON 中是 Unicode-escaped（`\uXXXX`），但 `json.loads()` 会自动解码
 5. 子代理（delegate_task）创建的文件也在同一个 session 的 tool_calls 中
-6. 恢复后存到 Obsidian vault（不是 `~/Documents`）
+6. 恢复后存到仓库 genflow/（不是 `~/Documents`）
 
 ### Notion API + execute_code token 红线
 系统会自动 redact `NOTION_API_KEY` 的值。当在 execute_code 中用 `os.environ.get("NOTION_API_KEY")` 拼接 curl 命令时，token 会被替换为 `***` 导致 401 错误。
@@ -898,15 +898,15 @@ Cron job（无用户交互）环境下，以下工具不可用：
 4. 页面标题格式固定为 `{工具名}：{描述} - A姐分享`，用 `split("：")[0]` 提取工具名
 
 ### Tags 文件夹工具笔记
-用户在 Obsidian vault 的 `2-Area/Tags/` 目录维护工具笔记库（78 个），每个文件按 `_template.md` 格式：
+用户在 `insight-data/Tags/` 目录维护工具笔记库（78 个），每个文件按 `_template.md` 格式：
 - frontmatter：title/slug/date/tags/categories/summary/focus_keyword/source/author/status
-- 结构化章节：这是什么 → 适合谁 → 安装 → 核心用法 → 注意事项 → 与 品牌方/LibTV 的关系 → 相关链接
+- 结构化章节：这是什么 → 适合谁 → 安装 → 核心用法 → 注意事项 → 与 品牌方/Initech 的关系 → 相关链接
 
 新增工具时先检查 Tags 文件夹是否已有对应笔记，避免重复创建。
 
 ### 用户对工具选型的明确偏好
-- **Canva 禁止提及** — 用户明确剔除，Liblib + 品牌方 覆盖全部平面设计需求
+- **Canva 禁止提及** — 用户明确剔除，Initech + 品牌方 覆盖全部平面设计需求
 - **开源优先** — 推荐工具时先给 GitHub 开源方案，商业工具只作为补充
 - **Notion 用于作品集** — 不是设计工具
 - **用户有自己的发布工作流** — 不推荐 Buffer 等第三方调度工具
-- **品牌方/LibTV 的植入方式**：类型 C/D/E 文章中独立段落只是提及，不主推；类型 A/B 中作为能力补充自然带出
+- **品牌方/Initech 的植入方式**：类型 C/D/E 文章中独立段落只是提及，不主推；类型 A/B 中作为能力补充自然带出

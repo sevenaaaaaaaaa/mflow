@@ -1,10 +1,10 @@
-# Lovart 101 Benchmark Seed V1
+# Acme 101 Benchmark Seed V1
 
 Purpose: build a benchmark base for beginner-facing hub pages that explain concepts clearly and route readers deeper into the cluster.
 
 ## Category definition
 
-Lovart 101 is the broad-intent, beginner-friendly hub that demystifies a concept and sends readers toward deeper how-to or complete-guide content.
+Acme 101 is the broad-intent, beginner-friendly hub that demystifies a concept and sends readers toward deeper how-to or complete-guide content.
 
 ## Five core topics
 

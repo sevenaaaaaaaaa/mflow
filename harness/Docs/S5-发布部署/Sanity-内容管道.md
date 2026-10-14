@@ -12,7 +12,7 @@
 ## 工作目录
 
 ```bash
-cd "/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/dev/品牌.sanity.studio"
+cd "$MFLOW_ROOT/dev/品牌.sanity.studio"
 ```
 
 ---

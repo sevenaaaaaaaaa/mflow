@@ -5,14 +5,14 @@
 
 ---
 
-## 1. 必须复制的目录（相对 vault `1-Project/`）
+## 1. 必须复制的目录（相对 vault ``）
 
 ```
-1-Project/
+
 ├── dev/品牌.sanity.studio/          ← 脚本（勿复制 .env / node_modules）
 ├── dev/品牌.sanity.studio/Sanity Blog/            ← Blog MD
 ├── dev/Pages/Features/         ← Features JSON
-├── 1-3 Content Gen/Page Gen/Pages/Tools/  ← Tools JSON（composite-v2 唯一正式源）
+├── genflow/Page Gen/Pages/Tools/  ← Tools JSON（composite-v2 唯一正式源）
 ├── harness/Skills/sanity-publish/
 ├── harness/Skills/sanity-content-publish/
 ├── harness/Skills/sanity-preflight/          （兼容触发词）
@@ -46,7 +46,7 @@ npm install
 npx sanity login
 
 # vault 不在默认 iCloud 路径时先 export：
-# export MFLOW_ROOT="/你的路径/1-Project/品牌方"
+# export MFLOW_ROOT="/你的路径品牌方"
 
 node scripts/check-publish-deps.js
 npx sanity exec scripts/sync-blog-taxonomy.js --with-user-token

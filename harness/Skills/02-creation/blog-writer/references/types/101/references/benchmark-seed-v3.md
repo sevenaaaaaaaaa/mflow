@@ -1,4 +1,4 @@
-# Lovart 101 Benchmark Seed V3
+# Acme 101 Benchmark Seed V3
 
 Purpose: close the remaining 101 gaps around readability, beginner tone range, and bridge-writing from basics to systems.
 

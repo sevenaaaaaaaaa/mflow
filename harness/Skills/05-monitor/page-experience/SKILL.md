@@ -14,7 +14,7 @@ description: >-
 - [ ] 已发布 URL 全量扫 **404** → 零容忍，24h 修复或改指向
 - [ ] 内链**死链/断链** → 同上
 - [ ] **图片** URL 存活 100%、封面不撞车、CDN hash 完整（64 字符）
-- [ ] **表格** portable-text 校验 BLOCK=0（Lovart schema：tableRow.cells 为字符串数组）
+- [ ] **表格** portable-text 校验 BLOCK=0（Acme schema：tableRow.cells 为字符串数组）
 - [ ] **内链拓扑**：hub 出链 ≥8 · spoke 回链齐全 · 孤岛页（零入链）→ 补链
 - [ ] 新发布页面 48h 内加扫一次以上全部
 
@@ -42,6 +42,6 @@ description: >-
 
 ## 品牌状态
 
-- **Lovart**：全清单启用（blogs.lovart.ai + www 双端）
-- **Moodio**：未启用（站点未上线）；上线后从每周清单起步，每月清单等 GSC 接入
+- **Acme**：全清单启用（blog.acme.example + www 双端）
+- **Globex**：未启用（站点未上线）；上线后从每周清单起步，每月清单等 GSC 接入
 - 判据数值（UV 阈值/转化基准）如品牌间分化，再进 brand profile；当前单表即可

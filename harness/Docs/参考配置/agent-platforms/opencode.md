@@ -8,8 +8,8 @@
 |----|------|
 | 配置 | `~/.config/opencode/opencode.jsonc` |
 | Skills | `~/.config/opencode/skills/`（软链到 vault `skills/`） |
-| Harness Skills 实体 | `1-Project/harness/Skills/` |
-| 同步脚本 | `1-Project/harness/Skills/sync-skills.sh` |
+| Harness Skills 实体 | `harness/Skills/` |
+| 同步脚本 | `harness/Skills/sync-skills.sh` |
 
 ## opencode.jsonc 模板
 
@@ -19,8 +19,8 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "instructions": [
-    "/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/harness/AGENTS.md",
-    "/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/1-1 GEO Readme/AGENTS.md"
+    "$MFLOW_ROOT/harness/AGENTS.md",
+    "$MFLOW_ROOT/harness/Docs/AGENTS.md"
   ],
   "skills": {
     "paths": [
@@ -36,7 +36,7 @@
 ## Skills 同步
 
 ```bash
-cd "/Users/seveno/.../1-Project/harness/Skills"
+cd "$HOME/...harness/Skills"
 bash sync-skills.sh              # opencode → vault
 bash sync-skills.sh --to-opencode  # vault → opencode（覆盖原始 vault skills）
 ```
@@ -59,7 +59,7 @@ OpenCode **无** Cron Automations → 用 **Cursor Automations** 或 launchd/cro
 ## 工作目录
 
 ```bash
-cd "/Users/seveno/.../1-Project/dev/品牌.sanity.studio"
+cd "$HOME/...dev/品牌.sanity.studio"
 # 或 sanity-studio-copies/品牌方PM-sanity-studio（若你 cwd 在那）
 ```
 

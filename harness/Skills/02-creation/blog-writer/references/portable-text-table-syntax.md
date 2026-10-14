@@ -1,7 +1,7 @@
-# Portable Text 表格语法（Lovart SSOT）
+# Portable Text 表格语法（Acme SSOT）
 
-> 2026-08-03 对照 `o11tm2qe` / `production` 已部署 schema 纠正。
-> 转换入口：`~/Documents/Lovart Local Dev/scripts/md_to_portable_text.py`
+> 2026-08-03 对照 `<sanity-project-id>` / `production` 已部署 schema 纠正。
+> 转换入口：`~/Documents/Acme Local Dev/scripts/md_to_portable_text.py`
 
 ## Schema 真相
 
@@ -56,9 +56,9 @@ assert result["ok"], result["issues"]
 CLI：
 
 ```bash
-python3 ~/Documents/Lovart\ Local\ Dev/scripts/validate_pt_body.py path/to/body.json
+python3 ~/Documents/Acme\ Local\ Dev/scripts/validate_pt_body.py path/to/body.json
 # 或对 NDJSON 每行 body 字段：
-python3 ~/Documents/Lovart\ Local\ Dev/scripts/validate_pt_body.py --ndjson import.ndjson
+python3 ~/Documents/Acme\ Local\ Dev/scripts/validate_pt_body.py --ndjson import.ndjson
 ```
 
 ## 脚本铁律
@@ -68,7 +68,7 @@ python3 ~/Documents/Lovart\ Local\ Dev/scripts/validate_pt_body.py --ndjson impo
 ```python
 import sys
 from pathlib import Path
-sys.path.insert(0, str(Path.home() / "Documents/Lovart Local Dev/scripts"))
+sys.path.insert(0, str(Path.home() / "Documents/Acme Local Dev/scripts"))
 from md_to_portable_text import md_to_portable_text
 ```
 

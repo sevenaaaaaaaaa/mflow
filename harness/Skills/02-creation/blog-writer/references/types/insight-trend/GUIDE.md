@@ -1,14 +1,14 @@
 ---
-name: lovart-insight-trend
+name: insight-trend
 description: >-
-  Lovart 行业洞察与趋势（Insight & Trend）博客长文创作技能。
+  Acme 行业洞察与趋势（Insight & Trend）博客长文创作技能。
   基于 2026 最新行业数据、C2PA 标准、认知科学画布范式及企业级 ROI 框架，撰写思想领导力（Thought Leadership）长文。
   Use for "write an insight & trend post", "行业洞察文章", "AIGC 趋势报告", "write an industry trend report", "AI design trend".
 ---
 
-# Lovart Insight & Trend — 行业洞察与趋势长文创作技能
+# Acme Insight & Trend — 行业洞察与趋势长文创作技能
 
-先加载 `lovart-core`、`lovart-blog`、`lovart-content-quality-gates`。本技能专门用于生成具备极高思想领导力（Thought Leadership）、数据支撑、且符合 2026 最新技术与合规标准的**行业洞察（Insight & Trend）**长文。
+先加载 `core`、`blog`、`content-quality-gates`。本技能专门用于生成具备极高思想领导力（Thought Leadership）、数据支撑、且符合 2026 最新技术与合规标准的**行业洞察（Insight & Trend）**长文。
 
 并遵守：
 `harness/Skills/02-creation/references-blog-subskill-governance.md`
@@ -37,7 +37,7 @@ description: >-
 *   **“Vibe Design”（氛围设计）闭环**：设计过程演变为“生成资产 -> 浏览器渲染 -> 自动检测错误 -> 智能修补源码”的确定性反馈循环。设计师的角色从手动拼贴像素升格为管理这个智能闭环的“创意总监”。
 
 ### 2. 认知科学与无限画布范式 (The "Infinite Canvas" Playbook)
-当探讨 AI 协作界面（如 Lovart 的 ChatCanvas）时，必须引入认知科学框架，批判传统聊天框（Chatbot）的局限性：
+当探讨 AI 协作界面（如 Acme 的 ChatCanvas）时，必须引入认知科学框架，批判传统聊天框（Chatbot）的局限性：
 *   **钥匙孔效应（The Keyhole Effect）**：传统的线性聊天 feed 会因为信息不断被顶替而导致严重的认知过载。
 *   **空间记忆（Spatial Memory）**：无限画布（Infinite Canvas）提供了一个二维空间，将内容、参考、历史草稿和 AI 智能体空间化排列。这种“视觉备料（Mise en Place）”机制作为人类的外部记忆，能够支持多任务、非线性的并行协作。
 *   **双向状态同步（AG-UI 协议）**：AI 智能体与画布 UI 之间通过结构化快照（如 AG-UI 协议）保持实时双向同步，使 AI 能够真正“看见”并理解画布上的节点关系。
@@ -67,7 +67,7 @@ description: >-
 每篇行业洞察与趋势文章必须严格遵循以下逻辑框架：
 
 ```markdown
-# [Title: 核心趋势/技术范式转移 + 商业/设计影响限定词 + Lovart 品牌权威 (2026)]
+# [Title: 核心趋势/技术范式转移 + 商业/设计影响限定词 + Acme 品牌权威 (2026)]
 
 ## 1. The Death of the Baseline: Why Over-Polished Design Fails in 2026
 - 引入视觉或技术冲突：为什么过去“完美、高光、标准”的设计在 2026 年变得廉价且同质化。
@@ -85,13 +85,13 @@ description: >-
 - 将抽象趋势转化为具体的设计执行规则。
 - 详细规范：版式（Layout）、字体（Typography）、质感（Texture）、光影（Light）或代码架构（AST/Tokens）。
 
-## 5. Step-by-Step Walkthrough: Implementing the Trend in Lovart
+## 5. Step-by-Step Walkthrough: Implementing the Trend in Acme
 - 第一人称（“I tested...”、“My team...”）的真实实操演示。
-- 详细展示在 Lovart 中如何配置特定的参数（如 Detail Density、Color Sync、AST 节点或 Canvas 协作流）来实现该设计。
+- 详细展示在 Acme 中如何配置特定的参数（如 Detail Density、Color Sync、AST 节点或 Canvas 协作流）来实现该设计。
 
 ## 6. Common Pitfalls and Creative Governance
 - 批判性地指出该趋势在执行中的 3 个常见误区。
-- 为每个误区提供在 Lovart 参数级、设计系统级或画布协作级的具体解决方案。
+- 为每个误区提供在 Acme 参数级、设计系统级或画布协作级的具体解决方案。
 
 ## 7. The New Creative Business Case: Hard ROI & TCO Calculations
 - 论证该趋势对企业生产利润率、交付周期和客户转化率的真实商业价值。
@@ -111,9 +111,9 @@ description: >-
 
 再读 [references/benchmark-seed-v3.md](references/benchmark-seed-v3.md) 以补足 Gartner / primary-policy / digital-trust 方向的完整版样本。
 
-再读 [references/lovart-insight-trend-playbook.md](references/lovart-insight-trend-playbook.md) 以获取本分类的写作框架与反模式。
+再读 [references/<brand>-insight-trend-playbook.md](references/<brand>-insight-trend-playbook.md) 以获取本分类的写作框架与反模式。
 
-审稿时使用 [references/lovart-insight-trend-review-checklist.md](references/lovart-insight-trend-review-checklist.md)。
+审稿时使用 [references/<brand>-insight-trend-review-checklist.md](references/<brand>-insight-trend-review-checklist.md)。
 
 研究时同时参考 [references/source-map-v1.md](references/source-map-v1.md)，不要把不同类型来源混成同一权重。
 

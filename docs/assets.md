@@ -10,7 +10,7 @@
 | `compositePage.bodyJson[].media` | 版块内 `{src, alt}`（另有 `image`/`backgroundImage` 兼容） | 9,265 页 |
 | `blog.coverUrl` | 字符串 URL | 2,087 篇 |
 
-**重要事实（首次全量扫描）**：17,538 个页面只引用 **208 个素材 URL** —— 最高复用的单张图被用 **7,204 次**（cover 1,654 + media 5,550），是默认占位图；另有 blog 封面集中在 `liblibai-online.liblib.cloud`（213/173 次复用）。→ 批量替换正是针对这种"占位图泛滥"的场景。
+**重要事实（首次全量扫描）**：17,538 个页面只引用 **208 个素材 URL** —— 最高复用的单张图被用 **7,204 次**（cover 1,654 + media 5,550），是默认占位图；另有 blog 封面集中在 `cdn.initech.example`（213/173 次复用）。→ 批量替换正是针对这种"占位图泛滥"的场景。
 
 ## 三步流程
 

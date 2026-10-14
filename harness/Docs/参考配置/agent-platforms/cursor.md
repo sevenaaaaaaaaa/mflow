@@ -4,13 +4,13 @@
 
 | 文件 | 作用 |
 |------|------|
-| `1-Project/harness/AGENTS.md` | 运维规则（Harness） |
-| `1-Project/1-1 GEO Readme/AGENTS.md` | GEO / Sanity 规则 |
-| `1-Project/dev/.cursor/rules/mflow-sanity-content-pipeline.mdc` | Sanity 管道红线（alwaysApply） |
+| `harness/AGENTS.md` | 运维规则（Harness） |
+| `harness/Docs/AGENTS.md` | GEO / Sanity 规则 |
+| `dev/.cursor/rules/mflow-sanity-content-pipeline.mdc` | Sanity 管道红线（alwaysApply） |
 
 ## Automations（定时）
 
-草稿目录：`1-Project/.cursor/automations/`
+草稿目录：`.cursor/automations/`
 
 | JSON | 状态 |
 |------|------|
@@ -20,7 +20,7 @@
 | `mflow-seo-weekly.workflow.json` | 待 Save |
 | `mflow-sentinel-daily.workflow.json` | 待 Save |
 
-**工作区**：Automations 环境选 vault 根 `LifeOS Pro PARA Vault`，分支 `main`。
+**工作区**：Automations 环境选 仓库根 `仓库根`，分支 `main`。
 
 **创建**：Cursor → Automations → New；或 Agent 调用 `open_automation` + `prefillWorkflowData`（`name` + `workflow` 字段）。
 

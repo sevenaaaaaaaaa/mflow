@@ -26,7 +26,7 @@
 
 ## 输出路径
 
-所有输出到 `1-6 Knowledge Base/Insight/Keywords Research/SEO Report/`：
+所有输出到 `insight-data/Knowledge Base/Insight/Keywords Research/SEO Report/`：
 
 | 文件 | 来源 | 大小 (典型) |
 |------|------|-----------|

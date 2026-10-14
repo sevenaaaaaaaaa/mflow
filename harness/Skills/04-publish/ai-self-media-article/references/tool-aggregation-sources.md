@@ -16,7 +16,7 @@
 - 页面内容较长 → 只用 `head -50` 取头部即可
 - 星数/平台信息需要从标题推理（如 「开源」「macOS」「免费」等关键词）
 
-## nownexts.com（芭乐派 / NowX实验室）
+## nownexts.com（林下 Understory / NowX实验室）
 
 **特点**：用户自有的 WordPress 站点，452 篇文章
 **访问方式**：
@@ -37,5 +37,5 @@
 
 所有工具笔记统一使用 `_template.md` 格式：
 - YAML frontmatter：title, slug, date, tags, categories, summary, focus_keyword, source, author, status
-- 结构化章节：这是什么 → 适合谁 → 安装 → 核心用法 → 注意事项 → 与 品牌方/LibTV 的关系 → 相关链接
+- 结构化章节：这是什么 → 适合谁 → 安装 → 核心用法 → 注意事项 → 与 品牌方/Initech 的关系 → 相关链接
 - 新工具 `status: draft`，待后续深测时填充

@@ -13,7 +13,7 @@ Daily SEO data ingestion skill. Scans `Keywords Research/Daily Raw/` for GSC and
 **Name**: 品牌方 Keywords Intake
 **Version**: 1.0.0
 **Dependencies**: `mflow-academy-content-calendar-v1.md`, Sanity MCP (project `your-project-id`)
-**Input Path**: `1-Project/Insight/Keywords Research/Daily Raw Data/`
+**Input Path**: `Insight/Keywords Research/Daily Raw Data/`
 **Output**: Prioritized keyword list + auto-updated `mflow-academy-content-calendar-v1.md`
 
 ---

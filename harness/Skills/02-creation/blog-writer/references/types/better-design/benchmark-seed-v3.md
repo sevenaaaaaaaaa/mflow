@@ -1,4 +1,4 @@
-# Lovart Better Design Benchmark Seed V3
+# Acme Better Design Benchmark Seed V3
 
 Purpose: close the remaining Better Design gaps around visual taste language, critique voice, and concrete craft diagnosis.
 

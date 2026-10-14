@@ -1,11 +1,11 @@
-# blogs.lovart.ai 设计复刻规划（lovart.ai 首页 + 模块化页面 → WordPress）
+# blog.acme.example 设计复刻规划（acme.example 首页 + 模块化页面 → WordPress）
 
 > **目标**：让 blogs 子站获得主站同款设计语言与模块化能力——但走**设计系统复刻**（tokens + 组件规范 + 数据对接），不是像素搬运。
 > **系统化的兑现点**：MFlow 内容契约层产出 composite-v2 JSON → WP 侧适配器转成区块 → 同一份 JSON 在主站（Next.js）与子站（WordPress）渲染出同构设计。子站不再手排页面。
 > **状态**：规划稿 v1.0（2026-10-04），待品牌方拍板技术路线后进入阶段 1。
 >
 > **⚠️ 进展快照（2026-10-09，Round 35）**：在品牌方拍板前，已先行落地一条**过渡实现**并全量上线：
-> lovart.ai 18 个复刻页已转为 **Elementor 原生文档**（每 section 一个 container + HTML 微件，
+> acme.example 18 个复刻页已转为 **Elementor 原生文档**（每 section 一个 container + HTML 微件，
 > 模板 `elementor_header_footer`，可在编辑器内模块化编辑；作用域资产经 Code Snippets
 > 按页标记 enqueue；585 页全站审计通过：复刻 18 页深检 OK、历史 566 页零泄漏）。
 > 即规划中"否决"的 R3 路线被用作**像素级保真的过渡层**——它解决"立即可用 + 可编辑 + 不动历史页"，
@@ -19,7 +19,7 @@
 | `Refresh-Page/preview-data.json` | **33 组件完整定义**（结构/内容/媒体） | 组件规范的唯一 SSOT |
 | `Refresh-Page/landing-examples/en/` | 4+ 份完整页面 JSON（brand-trust / vs-competitor / gallery-funnel / full） | 页面级组装样例 |
 | `FULL-STORYLINE-ORDERS.md` + `landing-storylines.json` | 模块顺序逻辑（O1-O4 + 7 故事线） | 页面骨架复刻 |
-| lovart.ai 线上 | 设计 tokens（色/字/间距/断点/动效）+ 组件视觉细节 | **需从前端 CSS/设计稿提取一次**（唯一需要设计方配合的动作） |
+| acme.example 线上 | 设计 tokens（色/字/间距/断点/动效）+ 组件视觉细节 | **需从前端 CSS/设计稿提取一次**（唯一需要设计方配合的动作） |
 
 ## 二、技术路线（待拍板的唯一大决策）
 
@@ -58,7 +58,7 @@ MFlow 内容契约层（composite-v2 JSON，34 型注册表已验证）
 
 brand profile `subSites[blogs]` 更新：
 ```json
-{"techStack": "WordPress + Gutenberg 自定义区块（设计系统复刻自 lovart.ai）",
+{"techStack": "WordPress + Gutenberg 自定义区块（设计系统复刻自 acme.example）",
  "designSystem": {"source": "preview-data.json + 主站 tokens", "components": "P0 骨架 + P1 12 组件起步", "adapter": "publish_adapters/wp_blocks.py"},
  "capabilities.site": {"mode": "independent", "site": {"id": "blogs", "sections": ["home", "blog", "article", "archive"]}}}
 ```

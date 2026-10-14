@@ -87,7 +87,7 @@ for a in articles:
 - `tool_calls` 列只在 `role=assistant` 的消息中有
 - 每个 write_file 调用的 content 是完整的文件内容（不是 diff）
 - 如果 JSON 解析失败（invalid escape），用正则提取：`re.findall(r'"content"\s*:\s*"(.*?)(?:"\s*})', tc_raw, re.DOTALL)`
-- 恢复后**必须存到 Obsidian vault**，不要存回 `~/Documents/`
+- 恢复后**必须存到仓库 genflow/**，不要存回 `~/Documents/`
 
 ## 实战案例
 

@@ -19,8 +19,8 @@
 | # | 源文件 | 目标位置 | 平台 | 操作 |
 |---|--------|---------|------|------|
 | 1 | `deploy/opencode.jsonc` | `~/.config/opencode/opencode.jsonc` | OpenCode + Hermes | **替换**现有文件（已备份为 .bak） |
-| 2 | `deploy/CLAUDE.md` | `1-Project/CLAUDE.md` | Claude Code | **新建** |
-| 3 | `deploy/trae-project-rules.md` | `1-Project/.trae/rules/project_rules.md` | Trae Work | **新建**（需先创建 `.trae/rules/` 目录） |
+| 2 | `deploy/CLAUDE.md` | `CLAUDE.md` | Claude Code | **新建** |
+| 3 | `deploy/trae-project-rules.md` | `.trae/rules/project_rules.md` | Trae Work | **新建**（需先创建 `.trae/rules/` 目录） |
 
 ### 📋 无需文件部署（应用内配置）
 
@@ -55,7 +55,7 @@ cat ~/.config/opencode/opencode.jsonc
 
 ```bash
 # 复制到项目根目录
-cp deploy/CLAUDE.md "/Users/seveno/Knowledge/Obsidian/MindRe/1-Project/CLAUDE.md"
+cp deploy/CLAUDE.md "$MFLOW_ROOT/CLAUDE.md"
 ```
 
 **变更内容**：
@@ -66,10 +66,10 @@ cp deploy/CLAUDE.md "/Users/seveno/Knowledge/Obsidian/MindRe/1-Project/CLAUDE.md
 
 ```bash
 # 创建规则目录
-mkdir -p "/Users/seveno/Knowledge/Obsidian/MindRe/1-Project/.trae/rules"
+mkdir -p "$MFLOW_ROOT/.trae/rules"
 
 # 复制规则文件
-cp deploy/trae-project-rules.md "/Users/seveno/Knowledge/Obsidian/MindRe/1-Project/.trae/rules/project_rules.md"
+cp deploy/trae-project-rules.md "$MFLOW_ROOT/.trae/rules/project_rules.md"
 ```
 
 ### 4. DeepSeek GUI
@@ -119,7 +119,7 @@ OpenClaw 会自动读取工作区中的 `AGENTS.md`，无需额外配置。
 
 ```bash
 # 进入项目目录
-cd "/Users/seveno/Knowledge/Obsidian/MindRe/1-Project"
+cd "$MFLOW_ROOT"
 
 # 初始化（自动生成 AGENTS.md + MEMORY.md）
 mimo

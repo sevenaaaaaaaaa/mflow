@@ -9,13 +9,13 @@ description: 品牌方 内容自动化 Pipeline 主编排器 v2.0 — Sentinel �
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
+| 文档 SSOT | `harness/Docs/` |
 | Sanity 脚本 | `dev/品牌.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |
 | 本 Skill | `harness/Skills/pipeline-orchestrator/SKILL.md` |
 
-> **Current structure note（2026-06-07）**：本文件是 pipeline 历史总控和编排心智模型，保留旧结构信息用于自动化排障与迁移追溯。当前执行入口以 `1-1 GEO Readme/README.md`、`WORKFLOWS.md`、`dev/scripts/`、`dev/品牌.sanity.studio/`、`harness/Skills/` 为准。
+> **Current structure note（2026-06-07）**：本文件是 pipeline 历史总控和编排心智模型，保留旧结构信息用于自动化排障与迁移追溯。当前执行入口以 `harness/Docs/README.md`、`WORKFLOWS.md`、`dev/scripts/`、`dev/品牌.sanity.studio/`、`harness/Skills/` 为准。
 >
 > **Legacy structure note**：下文出现的旧 `Skills/`、`品牌方/`、`sanity-studio/`、`Wordpress/品牌方-Blogs/` 等路径是迁移前快照，不代表可直接删除或废弃；涉及自动化、Skill、SOP、production import 的内容必须先审计依赖。
 
@@ -169,17 +169,17 @@ cd harness/Skills/trident-data-engine && bash scripts/run_all.sh
 ### 当前结构映射（2026-06）
 
 ```text
-1-Project/
-├── 1-1 GEO Readme/                  ← 文档中枢、治理记录、命令索引
+mflow/
+├── harness/Docs/                  ← 文档中枢、治理记录、命令索引
 ├── insight-data/                     ← Sentinel / Trident / Keywords 报告产出
-├── 1-3 Content Gen/                 ← Blog Pipeline、Content Calendar、Page Gen
+├── genflow/                 ← Blog Pipeline、Content Calendar、Page Gen
 ├── dev/                     ← 脚本 SSOT、Sanity Studio、自动化、Output
 │   ├── scripts/trident/             ← GSC / GA4 / Bing 可执行入口
 │   ├── scripts/sentinel/            ← 舆情采集与 fallback plist
 │   ├── automation/                  ← tools-pull 等自动化脚本
 │   └── 品牌.sanity.studio/        ← 当前 Sanity schema + convert/import 脚本
 ├── harness/Skills/              ← Agent Skill、SOP、历史兼容入口
-├── 1-6 Knowledge Base/              ← 语料库
+├── insight-data/Knowledge Base/              ← 语料库
 ├── 1-7 Output/                      ← 历史输出索引（新重输出默认外置）
 └── 1-8 Backup/                      ← 历史副本归档索引（新重备份默认外置）
 ```
@@ -189,15 +189,15 @@ cd harness/Skills/trident-data-engine && bash scripts/run_all.sh
 ### Legacy 快照（迁移前结构，保留用于追溯）
 
 ```
-1-Project/
+mflow/
 ├── Skills/
 │   ├── trident-data-engine/      ← 三引擎 Skill (Step 1)
 │   ├── MFLOW-AUTOMATION-WORKFLOW.md     ← 完全体文档 SSOT
 │   └── mflow-data-flow-map.md          ← 数据流 SSOT
 ├── 品牌方/
-│   ├── 1-6 Knowledge Base/
+│   ├── insight-data/Knowledge Base/
 │   │   └── Sentinel Insights/reports/  ← 监控触发
-│   ├── 1-3 Content Gen/Content Calendar/     ← 3,221 篇 Blog MD
+│   ├── genflow/Content Calendar/     ← 3,221 篇 Blog MD
 │   ├── Pages/                            ← Features/Tools JSON
 │   ├── sanity-studio/                    ← convert.js / scripts
 │   ├── insight-data/Trident Insights/reports/            ← 三引擎 JSON 输出
@@ -208,7 +208,7 @@ cd harness/Skills/trident-data-engine && bash scripts/run_all.sh
 
 ## Onboarding (新人接手指南)
 
-当前新人入口：先读 `1-1 GEO Readme/README.md` → `WORKFLOWS.md` → `SETUP_CHECKLIST.md`。下面 1–6 是迁移前 orchestration 快照，执行命令前需映射到当前结构。
+当前新人入口：先读 `harness/Docs/README.md` → `WORKFLOWS.md` → `SETUP_CHECKLIST.md`。下面 1–6 是迁移前 orchestration 快照，执行命令前需映射到当前结构。
 
 1. 读 `Skills/MFLOW-AUTOMATION-WORKFLOW.md` — 完全体文档
 2. `bash Skills/check-deps.sh`
@@ -221,7 +221,7 @@ cd harness/Skills/trident-data-engine && bash scripts/run_all.sh
 
 ## 参考索引
 
-当前路径优先；表内 `Skills/...`、`品牌方/...` 属 legacy 相对路径时，映射到 `harness/Skills/...`、`dev/...` 或 `1-3 Content Gen/...` 后再执行。
+当前路径优先；表内 `Skills/...`、`品牌方/...` 属 legacy 相对路径时，映射到 `harness/Skills/...`、`dev/...` 或 `genflow/...` 后再执行。
 
 | 文档 | 路径 |
 |------|------|
@@ -235,7 +235,7 @@ cd harness/Skills/trident-data-engine && bash scripts/run_all.sh
 | GSC API 引导 | `Skills/gsc-api-setup-guide.md` |
 | 内容管道 Cursor 规则 | `品牌方/.cursor/rules/mflow-sanity-content-pipeline.mdc` |
 | Sentinel 配置 | `dev/scripts/sentinel/config.yaml` |
-| **Anti-Bugs SSOT** | `1-1 GEO Readme/ANTI-BUGS-REGISTRY.md` |
+| **Anti-Bugs SSOT** | `harness/Docs/ANTI-BUGS-REGISTRY.md` |
 
 ---
 

@@ -13,7 +13,7 @@ generator: harness/11-knowledge/scripts/fm-fix.py
 | 项 | 内容 |
 |----|------|
 | **适用角色** | 落地页制作、SEO、内容工程 |
-| **内容源** | `1-3 Content Gen/Page Gen/Pages/Tools/`、`Pages/Features/` |
+| **内容源** | `genflow/Page Gen/Pages/Tools/`、`Pages/Features/` |
 | **线上真相源** | Tools：**production**（每周 pull 到本地） |
 | **Skill** | `tools-sanity-publish`、`features-sanity-publish` |
 

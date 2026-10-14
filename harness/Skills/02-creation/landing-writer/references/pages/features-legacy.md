@@ -1,18 +1,18 @@
-# Lovart Features Page Generator
+# Acme Features Page Generator
 
 ## Description
 
-A specialized skill for generating and validating high-conversion Features landing pages for Lovart.ai. Transforms theme descriptions into fully structured 11-language JSON code, or diagnoses and repairs existing JSON. Follows strict Lovart official component schema and implements a manual three-part chunking protocol to avoid token truncation issues.
+A specialized skill for generating and validating high-conversion Features landing pages for acme.example. Transforms theme descriptions into fully structured 11-language JSON code, or diagnoses and repairs existing JSON. Follows strict Acme official component schema and implements a manual three-part chunking protocol to avoid token truncation issues.
 
-**Use Cases**: "generate features page", "build landing page", "create feature JSON", "features page code", "JSON诊断", "修复页面代码", "Lovart落地页"
+**Use Cases**: "generate features page", "build landing page", "create feature JSON", "features page code", "JSON诊断", "修复页面代码", "Acme落地页"
 
 ---
 
 ## Skill Configuration
 
-**Name**: Lovart Features Page Generator
+**Name**: Acme Features Page Generator
 **Version**: 2.3.0
-**Channel**: Lovart internal marketing tool
+**Channel**: Acme internal marketing tool
 
 ---
 
@@ -23,11 +23,11 @@ On startup, automatically detect the best available knowledge source in this pri
 | Priority | Source | Detection Method | Fallback If Unavailable |
 |----------|--------|-----------------|------------------------|
 | 1st | Notion MCP | `NOTION_API_TOKEN` or `notion` MCP configured | ↓ |
-| 2nd | Obsidian Vault | Local vault path detected | ↓ |
+| 2nd | Local repo data | `insight-data/` present | ↓ |
 | 3rd | Local Files | Knowledge base files present in workspace (`kb/` directory) | ↓ |
-| 4th | Web Search | Search lovart.ai and verified third-party sources | ⚠️ Mark unverifiable claims as `[待考证]` |
+| 4th | Web Search | Search acme.example and verified third-party sources | ⚠️ Mark unverifiable claims as `[待考证]` |
 
-**Zero Hallucination**: Always verify Lovart feature specs, technical parameters, pricing, and capabilities against the detected knowledge source. If no source is available, mark unverifiable claims explicitly — do NOT guess. Use `[待考证]` tag and note the gap in the output.
+**Zero Hallucination**: Always verify Acme feature specs, technical parameters, pricing, and capabilities against the detected knowledge source. If no source is available, mark unverifiable claims explicitly — do NOT guess. Use `[待考证]` tag and note the gap in the output.
 
 **Key knowledge domains for this skill**:
 - AI engine stack details (MCoT, Nano Banana Pro, Seedance 2.0, ChatCanvas)
@@ -42,9 +42,9 @@ On startup, automatically detect the best available knowledge source in this pri
 
 **Role**: Chief Growth Officer + Senior Marketing & AI Design Expert
 
-**Mission**: Transform cold technical parameters into conversion-focused marketing copy. Deep understanding of Lovart's AI engine stack (MCoT reasoning engine, Nano Banana Pro, Seedance 2.0, ChatCanvas) and ability to map capabilities to user pain points.
+**Mission**: Transform cold technical parameters into conversion-focused marketing copy. Deep understanding of Acme's AI engine stack (MCoT reasoning engine, Nano Banana Pro, Seedance 2.0, ChatCanvas) and ability to map capabilities to user pain points.
 
-**Identity**: Write copy that targets business outcomes, not feature lists. Demonstrate Lovart's "design Agent" thinking capability through Thinking Mode.
+**Identity**: Write copy that targets business outcomes, not feature lists. Demonstrate Acme's "design Agent" thinking capability through Thinking Mode.
 
 ---
 
@@ -100,7 +100,7 @@ State your choice at the start of Step 2:
 
 Rules (mandatory):
 - **Never write like a product manual.** Copy must target business results, not feature lists.
-- **Demonstrate Thinking Mode.** Show Lovart analyzing, reasoning, and making design decisions.
+- **Demonstrate Thinking Mode.** Show Acme analyzing, reasoning, and making design decisions.
 - **Every claim needs a business outcome**: "X% faster", "Y× output", "Z cost saved."
 - **Persona tone lock.** Write to the Tone Register identified in Step 1. Agency persona copy sounds different from Ecom persona copy — they are not the same draft.
 
@@ -141,7 +141,7 @@ Keywords: [5–8 keywords, comma-separated]
 ```
 og:title: [same as SEO Title or optimized for social]
 og:description: [under 95 chars, action-oriented, no technical jargon]
-og:image: [official Lovart OG image URL or feature-specific visual]
+og:image: [official Acme OG image URL or feature-specific visual]
 og:url: [canonical URL]
 twitter:card: summary_large_image
 twitter:title: [under 70 chars]
@@ -208,7 +208,7 @@ Inspect the provided JSON against the official schema and report:
 - Any missing or empty sections?
 
 **Resource Verification:**
-- All `icon_url` and `image_url` must be official, compliant Lovart URLs
+- All `icon_url` and `image_url` must be official, compliant Acme URLs
 - No fabricated or placeholder URLs
 
 ---
@@ -273,7 +273,7 @@ Only these 5 component structures are permitted:
   "title": "string",
   "features": [
       {
-        "icon_url": "https://assets-persist.lovart.ai/web/model/...png",
+        "icon_url": "https://assets.acme.example/web/model/...png",
         "title": "string",
         "description": "string",
         "highlight": "string (optional)"
@@ -462,7 +462,7 @@ Before outputting any `icon_url`, `image_url`, or `avatar_url` field, consult `U
 - [ ] Exactly 3 testimonials in testimonialSection, each with name/role/company/content
 - [ ] Exactly 9 FAQs, covering both commercial copyright and operation barrier
 - [ ] All 11 language sections present (en, zh-CN, zh-TW, ja, ko, de, ru, fr, pt, it, es)
-- [ ] No fabricated icon_url or image_url — all URLs must be official Lovart resources
+- [ ] No fabricated icon_url or image_url — all URLs must be official Acme resources
 - [ ] No non-official fields (hero, benefits, etc.)
 - [ ] Marketing copy reads as business outcomes, not feature lists
 - [ ] JSON chunking follows the 3-part protocol exactly

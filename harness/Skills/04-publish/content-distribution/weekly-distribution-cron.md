@@ -26,7 +26,7 @@
   <key>ProgramArguments</key>
   <array>
     <string>/usr/bin/python3</string>
-    <string>/Users/seveno/Projects/content-distribution/scripts/score-pages-for-distribution.py</string>
+    <string>$HOME/Projects/content-distribution/scripts/score-pages-for-distribution.py</string>
     <string>--days</string>
     <string>28</string>
   </array>
@@ -40,9 +40,9 @@
     <integer>0</integer>
   </dict>
   <key>StandardOutPath</key>
-  <string>/Users/seveno/Projects/content-distribution/logs/cron-score.log</string>
+  <string>$HOME/Projects/content-distribution/logs/cron-score.log</string>
   <key>StandardErrorPath</key>
-  <string>/Users/seveno/Projects/content-distribution/logs/cron-score.err</string>
+  <string>$HOME/Projects/content-distribution/logs/cron-score.err</string>
 </dict>
 </plist>
 ```
@@ -71,7 +71,7 @@ launchctl load ~/Library/LaunchAgents/com.mflow.content-distribution.score.plist
 ## 方式 C — 手动 cron
 
 ```cron
-0 9 * * 1 cd /Users/seveno/Projects/content-distribution && /usr/bin/python3 scripts/score-pages-for-distribution.py --days 28 >> logs/cron-score.log 2>&1
+0 9 * * 1 cd $HOME/Projects/content-distribution && /usr/bin/python3 scripts/score-pages-for-distribution.py --days 28 >> logs/cron-score.log 2>&1
 ```
 
 ## 告警

@@ -1,18 +1,18 @@
-# lovart-thought-leadership — Better Design & Insight Blog Sub-Skill
+# thought-leadership — Better Design & Insight Blog Sub-Skill
 
 ## 路径契约
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
-| Sanity 脚本 | `dev/lovart.sanity.studio/scripts/` |
+| 文档 SSOT | `harness/Docs/` |
+| Sanity 脚本 | `dev/acme.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/scripts/optimize_complete_guides.py` |
-| 本 Skill | `harness/Skills/02-creation/lovart-thought-leadership/SKILL.md` |
+| 本 Skill | `harness/Skills/02-creation/thought-leadership/SKILL.md` |
 
-Sub-skill for generating high-impact Better Design (设计重构) and Insight & Trend (行业洞察) blog posts. Codifies the thought leadership positioning strategies of Canva ("Imperfect by Design"), Figma ("The Messy Middle"), and Adobe ("All the Feels") to establish Lovart as an industry authority.
+Sub-skill for generating high-impact Better Design (设计重构) and Insight & Trend (行业洞察) blog posts. Codifies the thought leadership positioning strategies of Canva ("Imperfect by Design"), Figma ("The Messy Middle"), and Adobe ("All the Feels") to establish Acme as an industry authority.
 
-先加载 `lovart-core`、`lovart-blog`、`lovart-content-quality-gates`，并遵守：
+先加载 `core`、`blog`、`content-quality-gates`，并遵守：
 `harness/Skills/02-creation/references-blog-subskill-governance.md`
 
 ## Triggers
@@ -41,11 +41,11 @@ To establish genuine authority, every post must avoid generic AI summaries and u
 When writing for the **Better Design** category, emphasize the rebellion against over-polished, homogenous AI visuals:
 - **Notes-App Chic & Scrapbook Aesthetics**: Highlight the rise of hand-drawn elements, raw sketches, messy compositions, and loose layouts (+90% search surge).
 - **The Opt-Out Era**: Highlight the minimal design reset, using quiet color palettes, clean spacing (+54% search), and classic serif fonts to cut through digital noise.
-- **The "Evidence of Thought" Concept**: Argue that "if perfection is easy, then intention and friction are where creative value moves next." Show how Lovart's layered workspace preserves the creative draft history.
+- **The "Evidence of Thought" Concept**: Argue that "if perfection is easy, then intention and friction are where creative value moves next." Show how Acme's layered workspace preserves the creative draft history.
 
 ### 2. Figma Playbook: "The Living Design System Play" (Craft at Scale)
 When writing for the **SaaS / Tech / Design System** topics, focus on how corporate teams maintain design quality:
-- **Design Systems as Living Frameworks**: Frame design systems (such as Lovart's Brand Kit) not as static libraries, but as dynamic rule-engines that scale taste, brand consistency, and customer retention.
+- **Design Systems as Living Frameworks**: Frame design systems (such as Acme's Brand Kit) not as static libraries, but as dynamic rule-engines that scale taste, brand consistency, and customer retention.
 - **The Non-Designer Collaboration Challenge**: Explain how AI allows non-designers to participate in product design. Argue that teams need *clear, standardized design rules* and *shared visual bounds* as "anchors and compasses" to prevent visual drift.
 
 ### 3. Adobe Playbook: "The Multisensory Connection Play" (All the Feels)
@@ -79,16 +79,16 @@ Every post in these categories must follow this logical flow:
 [How the emerging trend translates to strict design rules: layout, typography, texture, and light]
 
 ## 5. Step-by-Step Walkthrough: Redesigning [Specific Niche Campaign/Asset]
-[First-person "I tested..." real-world walkthrough using Lovart's specialized settings]
+[First-person "I tested..." real-world walkthrough using Acme's specialized settings]
 [Showcasing parameters: e.g., Detail Density: 1.8, Color Sync, or Aspect Ratio Outpainting]
 
 ## 6. Common Pitfalls and Creative Governance
 ### Pitfall 1: [Specific Trend Misfire (e.g., Over-Stretching Absurdity)]
-[Surgical parameter-level fix using Lovart settings]
+[Surgical parameter-level fix using Acme settings]
 ### Pitfall 2: [Specific Tech Misfire (e.g., Mismatched Color Temperatures)]
-[Surgical parameter-level fix using Lovart's Brand Kit]
+[Surgical parameter-level fix using Acme's Brand Kit]
 ### Pitfall 3: [Specific Handoff Misfire (e.g., Team Workflow Fragmentation)]
-[How to lock design rules using Lovart's shared canvases]
+[How to lock design rules using Acme's shared canvases]
 
 ## 7. The New Creative Business Case: Cost vs. Craft ROI
 [How this design trend compounds production margins and client conversion rates]

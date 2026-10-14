@@ -5,7 +5,7 @@
 单次 `run_all.sh` 产出 4 个文件：
 
 ```
-1-6 Knowledge Base/Insight/Keywords Research/SEO Report/
+insight-data/Knowledge Base/Insight/Keywords Research/SEO Report/
 ├── gsc-full.json          ← GSC 全维度结构化数据
 ├── ga4-full.json          ← GA4 全维度结构化数据
 ├── bing-full.json          ← Bing 全维度结构化数据

@@ -6,8 +6,8 @@ Use this to choose the right Blog type before writing.
 
 | Source | Purpose |
 |---|---|
-| `1-6 Knowledge Base/博客分类.md` | 8 strategy categories: Topics, 品牌方101, How-To, Segment, Best Practice, Better Design, Insight&Trend, 品牌方 Digest. |
-| `1-3 Content Gen/Content Calendar/` | Production calendar folders with 14 practical columns. |
+| `insight-data/Knowledge Base/博客分类.md` | 8 strategy categories: Topics, 品牌方101, How-To, Segment, Best Practice, Better Design, Insight&Trend, 品牌方 Digest. |
+| `genflow/Content Calendar/` | Production calendar folders with 14 practical columns. |
 | `harness/Skills/blog-writer（方法论 references/methodology-content-writer.md）` | 12 content types and 11 narrative frameworks. |
 | `harness/Skills/blog-writer/SKILL.md` | Phase 0 research and writing sequence. |
 | `harness/Skills/blog-writer/references/writing-spec.md` | Frontmatter, category mapping, word count, FAQ, image_briefs, links. |

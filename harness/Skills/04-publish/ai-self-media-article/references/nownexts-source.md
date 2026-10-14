@@ -1,4 +1,4 @@
-# nownexts.com (芭乐派/NowX实验室) 素材源
+# nownexts.com (林下 Understory/NowX实验室) 素材源
 
 > 用户自有的 WordPress 站点，452 篇文章
 

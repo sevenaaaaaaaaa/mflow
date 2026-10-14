@@ -30,7 +30,7 @@ Rubric 人工/Agent 评分 → content-audit（DEEP QA）
 
 ## 核心文件清单
 
-### 文档 SSOT（1-1 GEO Readme/文档/04-质量治理/）
+### 文档 SSOT（harness/Docs/S4-质量审核/）
 
 | 文件 | 大小 | 用途 |
 |------|------|------|

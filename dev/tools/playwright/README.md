@@ -22,7 +22,7 @@
 ~/Library/Caches/mflow-tools-venv/bin/playwright install chromium
 ```
 
-**为什么不装到 Hermes 自带 venv**:`/Users/seveno/.hermes/hermes-agent/venv/lib/python3.11/site-packages/greenlet` 的 C 扩展坏掉了,任何 import `playwright.sync_api` 都会 ModuleNotFoundError。独立 venv 完全隔离。
+**为什么不装到 Hermes 自带 venv**:`$HOME/.hermes/hermes-agent/venv/lib/python3.11/site-packages/greenlet` 的 C 扩展坏掉了,任何 import `playwright.sync_api` 都会 ModuleNotFoundError。独立 venv 完全隔离。
 
 ## 用法
 

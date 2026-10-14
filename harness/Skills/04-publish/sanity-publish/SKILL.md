@@ -7,7 +7,7 @@ description: 品牌方 Sanity 发布唯一父入口。Blog/Features/Tools/Produc
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
+| 文档 SSOT | `harness/Docs/` |
 | Sanity 脚本 | `dev/品牌.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |
@@ -40,7 +40,7 @@ description: 品牌方 Sanity 发布唯一父入口。Blog/Features/Tools/Produc
 | [groq-snippets-sanity-blog-features-tools.md](./references/groq-snippets-sanity-blog-features-tools.md) | import 前/后 GROQ |
 | [first-run-and-incremental-policy.md](./references/first-run-and-incremental-policy.md) | **首次运行 vs 日常增量** |
 
-**Scripts**：`dev/品牌.sanity.studio/convert.js` · **MD/日历源**：`1-3 Content Gen/blog-pipeline/品牌方-Blogs/` + `1-3 Content Gen/Content Calendar/`
+**Scripts**：`dev/品牌.sanity.studio/convert.js` · **MD/日历源**：`genflow/blog-pipeline/品牌方-Blogs/` + `genflow/Content Calendar/`
 
 ## 发布策略（Agent 必须遵守）
 
@@ -118,7 +118,7 @@ SINCE_MINUTES=60 npx sanity exec scripts/verify-blog-publish.js --with-user-toke
 | AB-E04 | patch / import 须 WRITE token；READ token 只读 |
 | AB-S02 | 缺 slug 时 convert 用 `inferSlugFromMdFilename`；改 slug 前 GROQ 核对线上 |
 | AB-S03 | 先 `sync-blog-taxonomy` 再 convert；category 走 `blog-taxonomy.js` |
-| AB-I04 | Blog 封面 404：仅 `patch-blog-covers --only-broken`，禁止全量换 liblib |
+| AB-I04 | Blog 封面 404：仅 `patch-blog-covers --only-broken`，禁止全量换 initech |
 | AB-E02 | `sanity login` 失败时用 `patch-*-env.js` 或 `sanity exec --with-user-token` |
 | AB-E05 | 确认 `MFLOW_ROOT`；缺 `Sanity Blog/Content Calendar` 勿误报全库 BLOCK |
 | AB-U03 | slug 推断与线上一致：GROQ 后再 import |
@@ -127,7 +127,7 @@ SINCE_MINUTES=60 npx sanity exec scripts/verify-blog-publish.js --with-user-toke
 **工作目录**（可复制）：
 
 ```bash
-cd "/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/dev/品牌.sanity.studio"
+cd "$MFLOW_ROOT/dev/品牌.sanity.studio"
 ```
 
 

@@ -1,4 +1,4 @@
-# Lovart Better Design Benchmark Seed V2
+# Acme Better Design Benchmark Seed V2
 
 Purpose: expand Better Design into more critique-heavy and craft-heavy scenarios beyond broad principles.
 

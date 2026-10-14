@@ -1,6 +1,6 @@
-# Lovart Skills & 规范汇总
+# Acme Skills & 规范汇总
 
-> 生成日期：2026-05-28 | 汇总所有与 Lovart.ai 相关的本地 Skills、项目规范、知识资产和配置
+> 生成日期：2026-05-28 | 汇总所有与 acme.example 相关的本地 Skills、项目规范、知识资产和配置
 
 ---
 
@@ -8,12 +8,12 @@
 
 | Skill                       | 版本    | 位置                                                   | 职责                                                    |
 | --------------------------- | ----- | ---------------------------------------------------- | ----------------------------------------------------- |
-| **Keywords Intake**         | 1.0.0 | `4-Archive/Skills/lovart-keywords-intake.md`         | 扫描 Daily Raw/ 中 GSC/Bing CSV → 解析评分 P0/P1/P2 → 自动更新日历 |
-| **Content Writer**          | 4.0.0 | `4-Archive/Skills/lovart-content-writer.md`          | 12 种内容类型 × 11 种叙事框架 → 写作 → SEO → Sanity 导出            |
-| **Production Orchestrator** | 1.0.0 | `4-Archive/Skills/lovart-production-orchestrator.md` | 薄编排层，串联 3 个子 Skill，输出链接汇总                             |
-| **Sanity Publish**          | 3.0.0 | `Skills/lovart-sanity-publish/`                      | Blog MD → Sanity；7 步门控；增量 import --missing                       |
+| **Keywords Intake**         | 1.0.0 | `4-Archive/Skills/keywords-intake.md`         | 扫描 Daily Raw/ 中 GSC/Bing CSV → 解析评分 P0/P1/P2 → 自动更新日历 |
+| **Content Writer**          | 4.0.0 | `4-Archive/Skills/content-writer.md`          | 12 种内容类型 × 11 种叙事框架 → 写作 → SEO → Sanity 导出            |
+| **Production Orchestrator** | 1.0.0 | `4-Archive/Skills/production-orchestrator.md` | 薄编排层，串联 3 个子 Skill，输出链接汇总                             |
+| **Sanity Publish**          | 3.0.0 | `Skills/sanity-publish/`                      | Blog MD → Sanity；7 步门控；增量 import --missing                       |
 
-**已弃用**：`lovart-blog-production-workflow.md`（旧版单体 v1.3.0 → 被 Orchestrator + 子 Skills 取代）
+**已弃用**：`blog-production-workflow.md`（旧版单体 v1.3.0 → 被 Orchestrator + 子 Skills 取代）
 
 ### 生产流水线
 
@@ -34,7 +34,7 @@ Daily Raw/ CSV → ① keywords-intake (评分 P0/P1/P2 → 更新日历)
 
 ### 附带资产库
 
-- `image-library.md` — 87 张已验证 Lovart CDN 图片
+- `image-library.md` — 87 张已验证 Acme CDN 图片
 - `URL_REGISTRY.md` — 44+ 图标 + 3 通用流程图片
 
 ### Landing Page 6 区块架构
@@ -60,16 +60,16 @@ Daily Raw/ CSV → ① keywords-intake (评分 P0/P1/P2 → 更新日历)
 
 ---
 
-## 三、API 调用 Skill（Lovart 官方 API）
+## 三、API 调用 Skill（Acme 官方 API）
 
 | Skill | 位置 | 用途 |
 |---|---|---|
-| **lovart-api** (clawx-openclaw) | `skills/clawx-openclaw/skills/lovart-skill/SKILL.md` | 图片/视频/音频/音乐生成，项目管理 |
-| **lovart-api** (mavis-skill-full) | `skills/opencode/mavis-skills/lovart-skill-full/skills/lovart-skill/SKILL.md` | 同上（完整版） |
-| `lovart-agent_skill.py` | `skills/opencode/mavis-skills/wechat-mp-workflow/scripts/` | Python 客户端（AK/SK HMAC-SHA256） |
-| `generate-cover-lovart.sh` | `skills/opencode/mavis-skills/wechat-mp-workflow/scripts/` | 微信封面生成脚本 |
+| **api** (clawx-openclaw) | `skills/clawx-openclaw/skills/skill/SKILL.md` | 图片/视频/音频/音乐生成，项目管理 |
+| **api** (mavis-skill-full) | `skills/opencode/mavis-skills/skill-full/skills/skill/SKILL.md` | 同上（完整版） |
+| `agent_skill.py` | `skills/opencode/mavis-skills/wechat-mp-workflow/scripts/` | Python 客户端（AK/SK HMAC-SHA256） |
+| `generate-cover-acme.sh` | `skills/opencode/mavis-skills/wechat-mp-workflow/scripts/` | 微信封面生成脚本 |
 
-**环境变量**：`LOVART_ACCESS_KEY` + `LOVART_SECRET_KEY`
+**环境变量**：`ACME_ACCESS_KEY` + `ACME_SECRET_KEY`
 
 ### 可用命令
 
@@ -81,12 +81,12 @@ Daily Raw/ CSV → ① keywords-intake (评分 P0/P1/P2 → 更新日历)
 
 | 层级 | 文件 | 用途 |
 |---|---|---|
-| **L0 总索引** | `Skills/lovart-sanity-content-publish/SOP-Lovart-Sanity-内容发布总指南.md` | Blog / Features / Tools 三条管道入口 |
-| **L0.5 质量门禁** | `Skills/lovart-content-quality-gates/` + `scripts/preflight-content.js` | SEO/URL/i18n/JSON·MD 创建·翻译·发布前预检 |
-| **L1 Features SSOT** | `Skills/lovart-features-sanity-publish/SOP-Lovart-Features-Sanity-发布统合指南.md` | 功能页发布完整流程 |
-| **L1 Tools SSOT** | `Skills/lovart-tools-sanity-publish/SOP-Lovart-Tools-Sanity-发布统合指南.md` | 工具页发布完整流程 |
+| **L0 总索引** | `Skills/sanity-content-publish/SOP-Acme-Sanity-内容发布总指南.md` | Blog / Features / Tools 三条管道入口 |
+| **L0.5 质量门禁** | `Skills/content-quality-gates/` + `scripts/preflight-content.js` | SEO/URL/i18n/JSON·MD 创建·翻译·发布前预检 |
+| **L1 Features SSOT** | `Skills/features-sanity-publish/SOP-Acme-Features-Sanity-发布统合指南.md` | 功能页发布完整流程 |
+| **L1 Tools SSOT** | `Skills/tools-sanity-publish/SOP-Acme-Tools-Sanity-发布统合指南.md` | 工具页发布完整流程 |
 | **L1 Blog SSOT** | `sanity-studio/SOP-Sanity同步指南.md` | 博客 Markdown 发布 |
-| Agent Skills | `lovart-features-sanity-publish` / `lovart-tools-sanity-publish` | 触发词 + 门禁 |
+| Agent Skills | `features-sanity-publish` / `tools-sanity-publish` | 触发词 + 门禁 |
 | 历史简版 | `SOP-PageJSON导入指南.md` | 已并入 L1，仅作跳转 |
 
 ### 同步流程
@@ -103,7 +103,7 @@ Daily Raw/ CSV → ① keywords-intake (评分 P0/P1/P2 → 更新日历)
 
 | 文件 | 内容 |
 |---|---|
-| `skills/project-notes/lovart-sanity-content-pipeline.mdc` | Sanity 内容管道约束 |
+| `skills/project-notes/sanity-content-pipeline.mdc` | Sanity 内容管道约束 |
 
 ### 安全规则
 
@@ -120,10 +120,10 @@ Daily Raw/ CSV → ① keywords-intake (评分 P0/P1/P2 → 更新日历)
 
 | 项目 | 值 |
 |---|---|
-| Project ID | `o11tm2qe` |
+| Project ID | `<sanity-project-id>` |
 | 数据集 | `production` |
-| 账号 | `sevena@lovart.ai` |
-| 在线 Studio | `https://lovart.sanity.studio` |
+| 账号 | `sevena@acme.example` |
+| 在线 Studio | `https://acme.sanity.studio` |
 
 ---
 
@@ -131,9 +131,9 @@ Daily Raw/ CSV → ① keywords-intake (评分 P0/P1/P2 → 更新日历)
 
 | 文件 | 内容 |
 |---|---|
-| `lovart-academy-选题计划（strategy-content.md）+ 自动排程-v1.md` | 统一内容日历（12 类型 × 4 漏斗 × 8 行业 × 多语言） |
-| `lovart-skills-and-norms-index.md` | 全量索引（537 行，统合 9 大板块） |
-| `Lovart-Content-Production-Skills.md` | 团队操作手册（374 行，935 篇内容运营规范） |
+| `academy-选题计划（strategy-content.md）+ 自动排程-v1.md` | 统一内容日历（12 类型 × 4 漏斗 × 8 行业 × 多语言） |
+| `skills-and-norms-index.md` | 全量索引（537 行，统合 9 大板块） |
+| `Acme-Content-Production-Skills.md` | 团队操作手册（374 行，935 篇内容运营规范） |
 
 ### 内容类型矩阵（12 种）
 
@@ -145,11 +145,11 @@ Daily Raw/ CSV → ① keywords-intake (评分 P0/P1/P2 → 更新日历)
 | 4 | Comparison / Alternative | How-To | MOFU-BOFU | 2000-3500w | EN+CN+JA+zh-TW |
 | 5 | Case Study | Segment | BOFU | 1500-2500w | EN+CN |
 | 6 | Best Practice | Best Practice | Post-Purchase | 800-1500w | EN+CN+JA |
-| 7 | Pillar Page / 101 | Lovart 101 | TOFU-MOFU | 3000-5000w | EN+CN+JA+zh-TW |
+| 7 | Pillar Page / 101 | Acme 101 | TOFU-MOFU | 3000-5000w | EN+CN+JA+zh-TW |
 | 8 | Better Design | Better Design | TOFU | 1500-3000w | EN+CN |
 | 9 | Segment Deep-Dive | Segment | MOFU | 2000-3500w | EN+CN+JA |
 | 10 | Podcast Show Notes | Podcast | TOFU | 800-1500w | EN+CN |
-| 11 | Lovart Digest | Digest | Post-Purchase | 1000-2000w | EN+CN |
+| 11 | Acme Digest | Digest | Post-Purchase | 1000-2000w | EN+CN |
 | 12 | Glossary Entry | Glossary | TOFU | 300-800w | EN+CN+JA |
 
 ---
@@ -176,7 +176,7 @@ Daily Raw/ CSV → ① keywords-intake (评分 P0/P1/P2 → 更新日历)
 
 ### 图片 URL 强制规则
 
-- 必须以 `https://assets-persist.lovart.ai/` 开头
+- 必须以 `https://assets.acme.example/` 开头
 - 必须从 `image-library.md` 或 `URL_REGISTRY.md` 中选取
 - **严禁编造 URL**
 - threeColumnSection 的三张流程图片固定不可替换
@@ -219,9 +219,9 @@ Daily Raw/ CSV → ① keywords-intake (评分 P0/P1/P2 → 更新日历)
 
 | 文件 | 用途 |
 |---|---|
-| `references/lovart-covers.md` | 公众号封面使用 Lovart OpenAPI 替代方案 |
-| `scripts/generate-cover-lovart.sh` | 从文章 MD + STYLE 生成公众号封面 prompt 并调用 Lovart OpenAPI |
-| `scripts/lovart-agent_skill.py` | Lovart Agent OpenAPI Python 客户端（1009 行） |
+| `references/covers.md` | 公众号封面使用 Acme OpenAPI 替代方案 |
+| `scripts/generate-cover-acme.sh` | 从文章 MD + STYLE 生成公众号封面 prompt 并调用 Acme OpenAPI |
+| `scripts/agent_skill.py` | Acme Agent OpenAPI Python 客户端（1009 行） |
 
 ---
 
@@ -229,13 +229,13 @@ Daily Raw/ CSV → ① keywords-intake (评分 P0/P1/P2 → 更新日历)
 
 | Skill | 用途 |
 |---|---|
-| `lovart-api` | Lovart AI 图片/视频/音频/音乐生成（官方 API） |
+| `api` | Acme AI 图片/视频/音频/音乐生成（官方 API） |
 
 ---
 
 ## 十、维护约定
 
-- Lovart 写作/生成 Skills 位于 `4-Archive/Skills/lovart-*.md`
-- Sanity 备份备忘位于 `1-Project/Lovart/灾备备忘.md` <!-- TODO: 该文件在重构中已删除，如仍需请确认新落点 -->
-- 新发现的 Lovart 相关 AI 规范/总结应补充到汇总文档
+- Acme 写作/生成 Skills 位于 `4-Archive/Skills/acme-*.md`
+- Sanity 备份备忘位于 `Acme/灾备备忘.md` <!-- TODO: 该文件在重构中已删除，如仍需请确认新落点 -->
+- 新发现的 Acme 相关 AI 规范/总结应补充到汇总文档
 - 图片库和 URL 注册表按新增图片增量

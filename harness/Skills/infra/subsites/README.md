@@ -1,7 +1,7 @@
 # infra/subsites · 子站（子项目）机制契约（v1.0 规划定稿）
 
-> **背景决策**（品牌裁定 2026-10-04，v1.1 修正）：① WordPress 子站线**保留现役**——blogs.lovart.ai 有已发布存量运行中，WP 是 blogs 子站的现役发布目标（dry-run 前置的安全闸不变）；长期方向仍是统一 Sanity+MFlow，WP 按 capability 维护、不新增投入。② 子站模型：与主项目共享知识库，其余能力按"继承 + 勾选覆盖 + 独立新增"配置。
-> **首批对象**：Lovart blogs 子站（blogs.lovart.ai，WP 现役）。Moodio 侧暂不启用。
+> **背景决策**（品牌裁定 2026-10-04，v1.1 修正）：① WordPress 子站线**保留现役**——blog.acme.example 有已发布存量运行中，WP 是 blogs 子站的现役发布目标（dry-run 前置的安全闸不变）；长期方向仍是统一 Sanity+MFlow，WP 按 capability 维护、不新增投入。② 子站模型：与主项目共享知识库，其余能力按"继承 + 勾选覆盖 + 独立新增"配置。
+> **首批对象**：Acme blogs 子站（blog.acme.example，WP 现役）。Globex 侧暂不启用。
 
 ## 一、继承模型（五项能力 × 三种模式）
 
@@ -19,7 +19,7 @@
 3. 共享资产（词群/知识库）修订在主文件进行，子站自动跟随；子站专属覆盖修订在子站声明内进行。
 4. 新增独立内容（如子站专属选题线）走 `strategy.independent[]` 或子站 contentStrategy 增补节，主站策略文件不膨胀。
 
-## 二、各能力子站化要点（Lovart blogs 为参照实现）
+## 二、各能力子站化要点（Acme blogs 为参照实现）
 
 | 能力 | 子站化方式 |
 |---|---|

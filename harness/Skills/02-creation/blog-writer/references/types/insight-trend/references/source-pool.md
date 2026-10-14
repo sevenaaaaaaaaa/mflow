@@ -1,6 +1,6 @@
 # 行业洞察（Insight & Trend）真实搜索文献与实证数据库 (2026 最新版)
 
-本文件是 Lovart 行业洞察与趋势（Insight & Trend）博客长文创作的**官方 SSOT 事实与文献数据库**。在撰写任何思想领导力（Thought Leadership）长文时，必须直接引用本文件中的真实文献、数据和案例，禁止编造。
+本文件是 Acme 行业洞察与趋势（Insight & Trend）博客长文创作的**官方 SSOT 事实与文献数据库**。在撰写任何思想领导力（Thought Leadership）长文时，必须直接引用本文件中的真实文献、数据和案例，禁止编造。
 
 ---
 

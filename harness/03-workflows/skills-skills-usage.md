@@ -66,7 +66,7 @@ S1-数据采集 → S2-内容策略 → S3-内容创作 → S4-质量审核 → 
 ```
 harness/
 ├── 00-INDEX.md                  ← 主索引（v3.1）
-├── 01-project/ ~ 10-config/     ← 见 00-INDEX 编号体系
+├── 02-rules/ ~ 10-config/     ← 见 00-INDEX 编号体系
 ├── 05-skills/                   ← 本目录（使用指南 + 入口治理）
 ├── Skills/                      ← 45 个 skill 实体（真相源）
 │   ├── 01-strategy/  02-creation/  03-review/

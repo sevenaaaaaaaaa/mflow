@@ -44,11 +44,11 @@
 | `report_week_dates.py` | 周报日期计算 | 2026-06-12 | mflow-reports | active | G1-G5 |
 | `comprehensive_may_report.py` | 5月综合报告 | 2026-07-05 | mflow-reports | active | G1-G5 |
 | `report_batch_runner.py` | 批量报告运行器 | 2026-06-12 | mflow-reports | active | G1-G5 |
-| `dev/scripts/audit-main-content.py` | www.lovart.ai 主站全语言内容审计（blog+compositePage：bug/质量/模板化/翻译垃圾/图片错配） | 2026-10-09 | mflow-quality | active | 首跑 18k docs |
+| `dev/scripts/audit-main-content.py` | www.acme.example 主站全语言内容审计（blog+compositePage：bug/质量/模板化/翻译垃圾/图片错配） | 2026-10-09 | mflow-quality | active | 首跑 18k docs |
 | `dev/scripts/fix-main-content.py` | 主站内容机械修复计划 + sanity patch + 重写队列（dry-run 默认，发布停 ready） | 2026-10-09 | mflow-quality | active | 语法+门禁通过 |
 | `dev/scripts/apply-main-fixes.py` | safe-fixes patch 批量导入器（ifRevisionID 保护；默认 dry-run，--yes 真实写库） | 2026-10-09 | mflow-quality | active | 312/312 已验证 |
 | `audit_p3_quality.py` | P3 质量审计 | 2026-07-06 | mflow-quality | active | G1-G5 |
-| `dev/wordpress/audit-content-quality.py` | blogs.lovart.ai 全站内容质量/模板化审计（slop/薄内容/占位残留/跨页重复/坏图） | 2026-10-09 | mflow-quality | active | 首跑 744 页成功 |
+| `dev/wordpress/audit-content-quality.py` | blog.acme.example 全站内容质量/模板化审计（slop/薄内容/占位残留/跨页重复/坏图） | 2026-10-09 | mflow-quality | active | 首跑 744 页成功 |
 | `audit_pillar_fleet.py` | Pillar 内容审计 | 2026-07-17 | mflow-quality | active | G1-G5 |
 | `generate_pillar_battle_cards.py` | Pillar 竞品卡片生成 | 2026-07-17 | mflow-creation | active | G1-G5 |
 | `backdate_landing_categories.py` | 落地页分类回填 | 2026-07-17 | mflow-ops | active | G1-G5 |
@@ -110,7 +110,7 @@
 
 ## 归档记录
 
-2026-07-20 归档 51 个一次性脚本（原计划路径 `dev/scripts/.archive/2026-07-20/`；实测该目录已不在 vault，推测随 2026-08-01 大归档移至 Local Dev Backup——查重时以本文件为准，不必再找归档实体）
+2026-07-20 归档 51 个一次性脚本（原计划路径 `dev/scripts/.archive/2026-07-20/`；实测该目录已不在仓库，推测随 2026-08-01 大归档移至 Local Dev Backup——查重时以本文件为准，不必再找归档实体）
 - wave/patch/cleanup 一次性脚本: 36 个
 - batch/gen 脚本: 4 个
 - legacy/残留: 11 个

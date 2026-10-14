@@ -69,4 +69,4 @@ bash install.sh
 |------|------|
 | `~/Documents/MFlow Local Dev/Output/composite-v2-audit/production-export.json` | 线上快照 |
 | `~/Documents/MFlow Local Dev/Output/composite-v2-audit/pull-tools-latest.json` | 最近一次 pull 摘要 |
-| `1-3 Content Gen/Page Gen/Pages/Tools/` | 本地正式源（含 `_syncedFromProduction`） |
+| `genflow/Page Gen/Pages/Tools/` | 本地正式源（含 `_syncedFromProduction`） |

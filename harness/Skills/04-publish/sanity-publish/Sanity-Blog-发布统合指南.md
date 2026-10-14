@@ -57,8 +57,8 @@ example.com 前端渲染
 | Project ID | `your-project-id` |
 | Dataset | `production`（当前无 staging，测试需单独创建） |
 | Studio | https://品牌.sanity.studio |
-| 本地代码 | `1-Project/dev/品牌.sanity.studio/`（或 `~/品牌`） |
-| MD 源目录 | `1-Project/dev/品牌.sanity.studio/Sanity Blog/`（重构后从旧 `品牌方/Sanity Blog/` 迁移；如缺失需确认源稿落点） |
+| 本地代码 | `dev/品牌.sanity.studio/`（或 `~/品牌`） |
+| MD 源目录 | `dev/品牌.sanity.studio/Sanity Blog/`（重构后从旧 `品牌方/Sanity Blog/` 迁移；如缺失需确认源稿落点） |
 | 转换脚本 | `sanity-studio/convert.js` |
 | NDJSON 输出 | `sanity-studio/import.ndjson` |
 | 分类修复 | `sanity-studio/fix-category-refs.js` |
@@ -278,7 +278,7 @@ MD (YAML frontmatter 或 📋 配置信息)
 | `tags` | 写入 `reference[]`；NDJSON 先写 `tag-{slug}` 文档，再写 blog |
 | `seo.keywords` | 写入字符串数组（无则 `[]`） |
 | `seo.structuredData.json` | 默认空字符串 |
-| 无 `cover_url` | liblib CDN 池轮询（**优先** MD 内 `assets-persist.example.com`） |
+| 无 `cover_url` | initech CDN 池轮询（**优先** MD 内 `assets-persist.example.com`） |
 | 输出路径 | `~/品牌/import-blog-{lang}-batch*.ndjson` + manifest |
 
 ### 5.2.3 convert.js 分批（避免 OOM）
@@ -596,7 +596,7 @@ npx sanity documents query "*[_type=='blog']" --dataset production > blogs.json
 
 ## 16. 代码库比对审计（2026-05-29）
 
-> 对照 `品牌.sanity.studio/` + `sanity-studio/` schema/脚本 与 Skills 文档。前端 `apps/品牌` **不在本 vault**，以下前端部分来自 Studio 配置与 CLAUDE.md。
+> 对照 `品牌.sanity.studio/` + `sanity-studio/` schema/脚本 与 Skills 文档。前端 `apps/品牌` **不在本仓库**，以下前端部分来自 Studio 配置与 CLAUDE.md。
 
 ### 16.1 代码库双副本
 
@@ -628,7 +628,7 @@ Settings（Categories / Tags）
 | **P0** | page-generation blogPost | ✅ SKILL 为 `blog` | — |
 | **P1** | Archive seoTitle/featuredImage | 未改 | BACKLOG |
 | **P1** | convert 字段 + OOM | ✅ sync + 分批 | — |
-| **P1** | liblib 默认封面 | 策略未改 | MD 写 cover_url |
+| **P1** | initech 默认封面 | 策略未改 | MD 写 cover_url |
 | **P2** | 前端 / Presentation | 待办 | BACKLOG 阶段 4 |
 
 排期：`dev/品牌.sanity.studio/MFLOW-SANITY-BACKLOG.md`
@@ -650,7 +650,7 @@ Settings（Categories / Tags）
 - `TOFU` → `How-To`
 - `MOFU` → `Insight & Trend`
 
-### 16.6 前端集成（apps/品牌，vault 外）
+### 16.6 前端集成（apps/品牌，仓库外）
 
 | 模块 | 路径 |
 |------|------|

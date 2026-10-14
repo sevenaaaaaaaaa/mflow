@@ -1,4 +1,4 @@
-# Lovart Stack by Stack Benchmark Seed V3
+# Acme Stack by Stack Benchmark Seed V3
 
 Purpose: close the remaining Stack × Stack gaps around orchestration ownership, system roles, and team operating-model comparisons.
 

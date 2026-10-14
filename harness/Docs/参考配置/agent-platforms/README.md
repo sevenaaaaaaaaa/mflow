@@ -14,7 +14,7 @@
 **工作区路径（统一）**：
 
 ```
-/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault
+$MFLOW_ROOT
 ```
 
-日常命令相对路径以 **`1-Project/`** 为前缀。
+日常命令相对路径以 **``** 为前缀。

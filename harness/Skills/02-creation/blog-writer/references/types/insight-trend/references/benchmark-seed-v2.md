@@ -1,4 +1,4 @@
-# Lovart Insight and Trend Benchmark Seed V2
+# Acme Insight and Trend Benchmark Seed V2
 
 Purpose: extend Insight & Trend into governance, regulation, and trust themes so the category does not collapse into aesthetics-only trend writing.
 

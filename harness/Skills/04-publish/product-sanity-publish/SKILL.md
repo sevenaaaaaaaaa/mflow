@@ -18,13 +18,13 @@ disable-model-invocation: true
 
 执行细节只读同目录：**[`SOP-品牌方-Product-Sanity-发布统合指南.md`](./SOP-品牌方-Product-Sanity-发布统合指南.md)**
 
-内容生产 SSOT：**[`PRODUCT-PRODUCTION.md`](../../../../1-3 Content Gen/Page Gen/Refresh-Page/PRODUCT-PRODUCTION.md)** · Step 0 **[`PAGE-BRIEF.md`](../../../../1-3 Content Gen/Page Gen/Refresh-Page/PAGE-BRIEF.md)**
+内容生产 SSOT：**[`PRODUCT-PRODUCTION.md`](../../../../genflow/Page Gen/Refresh-Page/PRODUCT-PRODUCTION.md)** · Step 0 **[`PAGE-BRIEF.md`](../../../../genflow/Page Gen/Refresh-Page/PAGE-BRIEF.md)**
 
 ## 快速流程
 
 ```bash
 cd "dev/品牌.sanity.studio"
-PRODUCTS="../../1-3 Content Gen/Page Gen/Pages/Products/en"
+PRODUCTS="../../genflow/Page Gen/Pages/Products/en"
 
 # 1. 结构 + 内容预检
 node scripts/preflight-content.js --type composite-v2 --dir "$PRODUCTS"

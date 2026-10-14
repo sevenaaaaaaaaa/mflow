@@ -1,7 +1,7 @@
 /**
  * Content Sample Library loader
  * SSOT index: ../samples/index.json
- * Doc: 1-1 GEO Readme/文档/04-质量治理/Content-Sample-Library.md
+ * Doc: harness/Docs/S4-质量审核/Content-Sample-Library.md
  */
 
 const fs = require('fs')

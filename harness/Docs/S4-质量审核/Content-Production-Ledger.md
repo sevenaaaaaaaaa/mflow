@@ -192,7 +192,7 @@ Landing / Tools composite-v2 按 **section / module** 记账，不按 H2。
 | `F7` | hero → agent workflow → capabilities → proof → faq → cta |
 | `P1-P3` | hero → value prop → workflow → proof → pricing path → faq |
 
-完整 storyline 定义见 `1-3 Content Gen/Page Gen/Refresh-Page/STORYLINES.md`。
+完整 storyline 定义见 `genflow/Page Gen/Refresh-Page/STORYLINES.md`。
 
 ---
 

@@ -91,13 +91,13 @@ L1b 不替代 L3；它挡住最明显的 AI slop 与结构缩水，再交人工/
 cd "harness/Skills/content-quality-gates/scripts"
 
 # 单篇 Blog
-node anti-slop-preflight.js --file "../../../1-3 Content Gen/Content Calendar/01-How-To/example.md"
+node anti-slop-preflight.js --file "../../../genflow/Content Calendar/01-How-To/example.md"
 
 # 单篇 Tools JSON
-node anti-slop-preflight.js --file "../../../1-3 Content Gen/Page Gen/Pages/Tools/en/example-en.json"
+node anti-slop-preflight.js --file "../../../genflow/Page Gen/Pages/Tools/en/example-en.json"
 
 # 目录批量
-node anti-slop-preflight.js --dir "../../../1-3 Content Gen/Content Calendar/01-How-To" --glob "*.md"
+node anti-slop-preflight.js --dir "../../../genflow/Content Calendar/01-How-To" --glob "*.md"
 
 # CI 严格模式（WARN 也算失败）
 node anti-slop-preflight.js --file article.md --strict --report "../../Output/Quality Reports/$(date +%Y-%m-%d)/anti-slop.json"
@@ -112,7 +112,7 @@ cd "dev/品牌.sanity.studio"
 
 node scripts/preflight-content.js --type blog-md --strict
 node ../1-5\ Harness/Skills/content-quality-gates/scripts/anti-slop-preflight.js \
-  --dir "../../1-3 Content Gen/Content Calendar" --glob "*.md" --strict
+  --dir "../../genflow/Content Calendar" --glob "*.md" --strict
 ```
 
 ### 5.3 合并到 preflight-content.js（待办）

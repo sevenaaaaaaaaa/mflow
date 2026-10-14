@@ -1,16 +1,16 @@
 # Sanity 内容管道 ↔ 前端 `apps/品牌` 边界
 
-> **Canonical**：说明本 vault **不包含**主站前端 repo，接手人应如何理解发布与渲染的关系。
+> **Canonical**：说明本仓库 **不包含**主站前端 repo，接手人应如何理解发布与渲染的关系。
 
 ---
 
 ## 三个目录，三种角色
 
-| 目录 | 在 vault 内？ | 角色 | 内容 Agent |
+| 目录 | 在 仓库内？ | 角色 | 内容 Agent |
 |------|--------------|------|------------|
 | **`dev/品牌.sanity.studio/`** | ✅ | Blog/Features/Tools **convert · import** cwd | ✅ 在此跑脚本 |
 | **`dev/品牌.sanity.studio/`** | ✅（schema 镜像） | 线上 Studio **schema / deskStructure** 参照 | ❌ 勿 `sanity deploy`（除非 schema 团队授权） |
-| **`apps/品牌/`**（monorepo） | ❌ **不在本 vault** | **example.com 主站** Next.js 渲染、GROQ、Portable Text | ❌ 无法在本交接包内改前端 |
+| **`apps/品牌/`**（monorepo） | ❌ **不在本仓库** | **example.com 主站** Next.js 渲染、GROQ、Portable Text | ❌ 无法在本交接包内改前端 |
 
 ---
 
@@ -44,16 +44,16 @@
    - Blog 列表/详情 GROQ  
    - `PortableText` / `compositePage` 渲染  
    - `i18n/locales.ts` 与路由中间件  
-3. **不要**假设 vault 内 `CLAUDE.md` 与线上一致 — 以 clone 后的 repo 为准
+3. **不要**假设 仓库内 `CLAUDE.md` 与线上一致 — 以 clone 后的 repo 为准
 
 ---
 
 ## 与 Sanity 发布的关系
 
 ```
-本 vault：MD/JSON → convert → import --missing → production
+本仓库：MD/JSON → convert → import --missing → production
                                     ↓
-前端 repo：production → GROQ → example.com 页面（vault 外）
+前端 repo：production → GROQ → example.com 页面（仓库外）
 ```
 
 内容管道 **只写 production 数据**；页面样式、路由 bug、locale 404 需在前端 repo 排查。

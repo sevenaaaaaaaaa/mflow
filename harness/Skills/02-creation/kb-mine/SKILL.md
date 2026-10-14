@@ -38,7 +38,7 @@ description: 知识库挖掘 skill。从已有 KB 文档中提取洞察、关联
 ```
 1. 解析用户/上下文给的 topic + capability hint
 2. bash insight-data/Knowledge Base/scripts/kb-mine.py \\
-      --root <vault> \\
+      --root $MFLOW_ROOT \\
       --topic "<topic>" \\
       [--capability-mode] \\
       [--json]

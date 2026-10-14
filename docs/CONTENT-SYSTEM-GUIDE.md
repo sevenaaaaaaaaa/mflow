@@ -7,7 +7,7 @@
 
 ## 一、这是一套什么系统
 
-MFlow 是 GEO（生成式引擎优化）自动内容生产系统：**信号监测 → 策略选题 → 内容生产 → 质检 → 止步待授权 → 发布 → 体验回流**。当前服务两个品牌站点：Lovart Global（www.lovart.ai，Sanity + WordPress 子站）与 Moodio Global（moodio.art，CMS 接入中）。
+MFlow 是 GEO（生成式引擎优化）自动内容生产系统：**信号监测 → 策略选题 → 内容生产 → 质检 → 止步待授权 → 发布 → 体验回流**。当前服务两个品牌站点：Acme Global（www.acme.example，Sanity + WordPress 子站）与 Globex Global（globex.example，CMS 接入中）。
 
 最重要的一条工作约定：**自动化止步 `status: ready`，发布永远由人工授权**。机器负责把内容做到「可发布」，人负责按下发布键。
 
@@ -19,7 +19,7 @@ MFlow 是 GEO（生成式引擎优化）自动内容生产系统：**信号监�
 规则分层加载（RULES-00 全局铁律 + 各工作线 RULES-10~60）；会话启动六门禁（session-init）；pipeline-state 状态机（12 个 stage / 4 个 phase，原子写入，非法状态转换直接拒绝）；router 路由器（23 条决策，把任务路由到 6 个 Profile，省 87-92% token 且零漏失）；四钩子机器检查（pre-write / post-write / pre-import / post-generation）；内容契约层（34 型 section 注册表 + 故事线顺序门禁，87 项测试）。
 
 **② 品牌层** —— 一个品牌一份的差异资产。
-brand profile（10 组字段）、品牌知识库 KB（Lovart 750+ 份 / Moodio 9 份）、两份策略真值（词群作战地图 + 内容选题计划）、子站继承机制（subsites：新品牌/子站继承五项能力后按需覆盖）。
+brand profile（10 组字段）、品牌知识库 KB（Acme 750+ 份 / Globex 9 份）、两份策略真值（词群作战地图 + 内容选题计划）、子站继承机制（subsites：新品牌/子站继承五项能力后按需覆盖）。
 
 **③ 执行层** —— 三个创作入口。
 blog-writer（博客唯一入口）、landing-writer（落地页唯一入口）、hub-writer（聚合页唯一入口）。每个入口内置「策略对齐钩子」：选题必须过**三重 trace**——词群 ∩ 人群格 ∩ 集群位置，缺一不写。
@@ -48,7 +48,7 @@ TOFU 50%（抢词占位）/ MOFU 30%（工作流）/ BOFU 20%（对比与转化�
 Myth-Buster / Journey / Economist / Visionary / Field Guide / Co-Host / Cookbook / Duel / Proof / Encyclopedia / Curator。每种内容类型有主框架 + 备选框架（如 Comparison → The Duel），禁止全程默认一个框架。动笔前必须输出一行路由声明：`Content type | Category | Funnel | Framework | Because`。
 
 **维度 4：词群归属（词群作战地图）**
-每篇必须落在某个词群（Lovart 10 词群/3 KR；Moodio 12 词群/4 KR），写进 frontmatter 的 `content_cluster`；命中黑名单词的选题不写。
+每篇必须落在某个词群（Acme 10 词群/3 KR；Globex 12 词群/4 KR），写进 frontmatter 的 `content_cluster`；命中黑名单词的选题不写。
 
 **在此之上还有两个横切分级：**
 
@@ -67,7 +67,7 @@ Myth-Buster / Journey / Economist / Visionary / Field Guide / Co-Host / Cookbook
 - `.../references/signals-and-phases.md` — 信号→选题映射 + Lane 分档
 - `.../references/types/{type}/GUIDE.md` — 8 个类型骨架（101/best-practice/better-design/complete-guide/insight-trend/review/stack-by-stack/thought-leadership）
 - `genflow/Content Strategy/00-09-*.md` — 五轴历史策略文档
-- 相邻入口：`landing-writer`（落地页）、`hub-writer`（聚合页）、`moodio-film-content`（Moodio 品牌路由）
+- 相邻入口：`landing-writer`（落地页）、`hub-writer`（聚合页）、`<brand>-film-content`（Globex 品牌路由）
 
 ---
 
@@ -87,7 +87,7 @@ Myth-Buster / Journey / Economist / Visionary / Field Guide / Co-Host / Cookbook
 
 **长文生产方式**：禁止单次灌出全文，走 multi-turn 状态机——OUTLINE（列立场、反方观点、场景数据，等确认）→ 分 Part 写作（单次输出硬顶 3,000 词）→ INTEGRATE_QA（全文 banned phrase + 段落 unique 度 + frontmatter 15 字段）。重要文章再加 cascade 互评：writer 写 → critic 按 7 项评 → 不过带理由回炉，最多 3 轮。
 
-**正面质量机检（2026-10-07 新增，GATE6）**：post-write 第六门已把「好内容」的标准变成机器可查——首人称真实视角、翻车/踩坑段落、可引用金句（反共识对照句式 proxy）、数据点密度（≥1/千词）、外部权威来源 ≥2 条完整 URL、FAQ 块。草稿阶段只告警（不触发重试烧 token），在「标 ready」前用 `--ready` 终检缺一即 BLOCK。两个品牌共用（Moodio/Lovart 同一钩子）。
+**正面质量机检（2026-10-07 新增，GATE6）**：post-write 第六门已把「好内容」的标准变成机器可查——首人称真实视角、翻车/踩坑段落、可引用金句（反共识对照句式 proxy）、数据点密度（≥1/千词）、外部权威来源 ≥2 条完整 URL、FAQ 块。草稿阶段只告警（不触发重试烧 token），在「标 ready」前用 `--ready` 终检缺一即 BLOCK。两个品牌共用（Globex/Acme 同一钩子）。
 
 ---
 
@@ -95,8 +95,8 @@ Myth-Buster / Journey / Economist / Visionary / Field Guide / Co-Host / Cookbook
 
 - **Persona Matrix**：人群 × 漏斗阶段定位每篇文章的目标读者。
 - **Angle Engine**：微观人群切片 → 摩擦点 → 反共识角度 → 5 标题法。
-- **品牌隔离**：KB 按品牌隔离 + kb_intent 项目级加权（防止多品牌上下文互相污染）；品牌术语按项目路由（Lovart 术语绝不进 Moodio 稿）。
-- **Moodio KB 加强方向（已拍板）**：参考 Lovart KB 的厚度与结构补强，但内容面向**视频、影视、传媒行业从业者**（Moodio 的目标人群），不是照搬 Lovart 面向全体创意工作者的口径——补齐能力词表、人群画像、行业工作流、竞品实测等维度。
+- **品牌隔离**：KB 按品牌隔离 + kb_intent 项目级加权（防止多品牌上下文互相污染）；品牌术语按项目路由（Acme 术语绝不进 Globex 稿）。
+- **Globex KB 加强方向（已拍板）**：参考 Acme KB 的厚度与结构补强，但内容面向**视频、影视、传媒行业从业者**（Globex 的目标人群），不是照搬 Acme 面向全体创意工作者的口径——补齐能力词表、人群画像、行业工作流、竞品实测等维度。
 
 ---
 
@@ -122,7 +122,7 @@ Myth-Buster / Journey / Economist / Visionary / Field Guide / Co-Host / Cookbook
 
 **P1 · 平台与基建**
 - 服务器单点无异地备份 → 建立数据异地备份
-- Moodio 四个数据源未接（CMS 项目 ID / GSC / 素材包 / 线上扫描器）→ CMS 接入后后台全自动生产即通
+- Globex 四个数据源未接（CMS 项目 ID / GSC / 素材包 / 线上扫描器）→ CMS 接入后后台全自动生产即通
 - replication-core 未抽独立仓；WebFlow 适配器等三个场景答案
 
 ---
@@ -134,5 +134,4 @@ Myth-Buster / Journey / Economist / Visionary / Field Guide / Co-Host / Cookbook
 - 状态机：`harness/Skills/06-orchestrate/pipeline-state/`；路由：`.../router/`
 - 能力承载矩阵（品牌接入抽象）：`harness/Skills/infra/CAPABILITY-MATRIX.md`
 - 博客入口：`harness/Skills/02-creation/blog-writer/`
-- 设计复刻产品化：`docs/PRODUCTIZATION-REPLICATION.md`
 - 项目记忆：`harness/11-knowledge/MEMORY-PROJECT.md`

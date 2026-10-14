@@ -8,7 +8,7 @@ Use this before returning or publishing Blog Markdown, Tools JSON, Features JSON
 |---|---|
 | `harness/Skills/content-quality-gates/SKILL.md` | Preflight commands and lifecycle gates. |
 | `harness/Skills/content-audit/SKILL.md` | Blog deep audit for quality, compliance, culture, and brand consistency. |
-| `1-1 GEO Readme/文档/04-质量治理/Anti-Slop.md` | Anti-slop writing standards. |
+| `harness/Docs/S4-质量审核/Anti-Slop.md` | Anti-slop writing standards. |
 | `insight-data/Keywords Research/SERP Copy Intelligence/global-en-serp-copy-research-2026-06.md` | SERP page patterns and anti-slop lessons. |
 | `insight-data/Keywords Research/SERP Copy Intelligence/global-en-competitor-landscape-2026-06.md` | Real competitors and competition dimensions. |
 

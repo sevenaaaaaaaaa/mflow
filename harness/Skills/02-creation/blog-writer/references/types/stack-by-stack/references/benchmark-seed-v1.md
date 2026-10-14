@@ -1,4 +1,4 @@
-# Lovart Stack by Stack Benchmark Seed V1
+# Acme Stack by Stack Benchmark Seed V1
 
 Purpose: build a benchmark base for articles comparing workflows made of multiple tools rather than single-tool reviews.
 
@@ -9,9 +9,9 @@ Stack × Stack compares one workflow stack against another by stage, friction, h
 ## Five core topics
 
 1. Solo creator stack vs all-in-one AI stack
-2. Marketing content stack vs Lovart-centered stack
+2. Marketing content stack vs brand-centered stack
 3. Brand design stack vs prompt-native design stack
-4. Video ad production stack vs Lovart hybrid stack
+4. Video ad production stack vs Acme hybrid stack
 5. Agency delivery stack vs lean in-house stack
 
 ## Representative benchmark pool

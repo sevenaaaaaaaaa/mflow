@@ -18,9 +18,9 @@ disable-model-invocation: true
 
 ## SSOT
 
-- 生产指南：[`SCENARIOS-PRODUCTION.md`](../../../../1-3 Content Gen/Page Gen/Refresh-Page/SCENARIOS-PRODUCTION.md)
-- 故事线：[`scenarios-storylines.json`](../../../../1-3 Content Gen/Page Gen/Refresh-Page/scenarios-storylines.json)
-- Step 0：[`PAGE-BRIEF.md`](../../../../1-3 Content Gen/Page Gen/Refresh-Page/PAGE-BRIEF.md)
+- 生产指南：[`SCENARIOS-PRODUCTION.md`](../../../../genflow/Page Gen/Refresh-Page/SCENARIOS-PRODUCTION.md)
+- 故事线：[`scenarios-storylines.json`](../../../../genflow/Page Gen/Refresh-Page/scenarios-storylines.json)
+- Step 0：[`PAGE-BRIEF.md`](../../../../genflow/Page Gen/Refresh-Page/PAGE-BRIEF.md)
 - 路由：[`scenarios-routing.md`](../content-creation-orchestrator/references/scenarios-routing.md)
 
 ## 试点范围
@@ -32,7 +32,7 @@ disable-model-invocation: true
 
 ```bash
 cd "dev/品牌.sanity.studio"
-DRAFTS="../../1-3 Content Gen/Page Gen/Pages/drafts/scenarios-storyline/Scenarios"
+DRAFTS="../../genflow/Page Gen/Pages/drafts/scenarios-storyline/Scenarios"
 DRAFTS_EN="$DRAFTS/en"
 
 # 1. 批量预检（试点稿需 --include-drafts）

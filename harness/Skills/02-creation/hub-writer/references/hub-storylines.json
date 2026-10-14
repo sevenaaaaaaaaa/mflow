@@ -1,6 +1,6 @@
 {
   "version": "2026-10-04",
-  "note": "聚合页故事线 SSOT（lovart-hub-writer 专属）。独立于 landing-storylines.json——生成逻辑不同：聚合页=拓扑+分发+类目词 SEO，落地页=转化。本文件不进 landing 治理机器（validator/copy preflight 不感知），由 hub-writer 技能自洽消费。",
+  "note": "聚合页故事线 SSOT（hub-writer 专属）。独立于 landing-storylines.json——生成逻辑不同：聚合页=拓扑+分发+类目词 SEO，落地页=转化。本文件不进 landing 治理机器（validator/copy preflight 不感知），由 hub-writer 技能自洽消费。",
   "blockTypes": {
     "matrix": {
       "label": "全量矩阵",

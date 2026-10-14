@@ -12,14 +12,14 @@ disable-model-invocation: true
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
+| 文档 SSOT | `harness/Docs/` |
 | Sanity 脚本 | `dev/品牌.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |
 | 本 Skill | `harness/Skills/sanity-content-publish/SKILL.md` |
 
 > **三条管道的唯一入口索引**。各管道均有独立统合指南（SSOT），本文不重复细节，只做路由与全局规则汇总。  
-> **本文件位置**：`1-Project/harness/Skills/sanity-content-publish/`（与 `SKILL.md` 同目录）。镜像副本：`dev/品牌.sanity.studio/SOP-品牌方-Sanity-内容发布总指南.md`。
+> **本文件位置**：`harness/Skills/sanity-content-publish/`（与 `SKILL.md` 同目录）。镜像副本：`dev/品牌.sanity.studio/SOP-品牌方-Sanity-内容发布总指南.md`。
 
 ---
 
@@ -29,7 +29,7 @@ disable-model-invocation: true
 | ---------------- | ------------------------------ | --------------- | ---------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | **Blog 博客**      | `Sanity Blog/**/*.md`          | `blog`          | [`Sanity-Blog-发布统合指南.md`](../sanity-publish/Sanity-Blog-发布统合指南.md)                                        | [`sanity-publish/`](../sanity-publish/)                   |
 | **Features 功能页** | `Pages/Features/{lang}/*.json` | `compositePage` | [`SOP-品牌方-Features-Sanity-发布统合指南.md`](../features-sanity-publish/SOP-品牌方-Features-Sanity-发布统合指南.md) | [`features-sanity-publish/`](../features-sanity-publish/) |
-| **Tools 工具页**    | `1-3 Content Gen/Page Gen/Pages/Tools/{lang}/*.json`（**composite-v2 only**） | `compositePage` | [`SOP-品牌方-Tools-Sanity-发布统合指南.md`](../tools-sanity-publish/SOP-品牌方-Tools-Sanity-发布统合指南.md)          | [`tools-sanity-publish/`](../tools-sanity-publish/)       |
+| **Tools 工具页**    | `genflow/Page Gen/Pages/Tools/{lang}/*.json`（**composite-v2 only**） | `compositePage` | [`SOP-品牌方-Tools-Sanity-发布统合指南.md`](../tools-sanity-publish/SOP-品牌方-Tools-Sanity-发布统合指南.md)          | [`tools-sanity-publish/`](../tools-sanity-publish/)       |
 
 **线上地址**
 
@@ -116,8 +116,8 @@ disable-model-invocation: true
 cd "…/dev/品牌.sanity.studio"
 
 node scripts/check-publish-deps.js
-# 可选：export PROJECT_ROOT="/你的路径/1-Project"
-# 旧脚本兼容：如单独覆盖内容根，可 export MFLOW_ROOT="/你的路径/1-Project/1-3 Content Gen"
+# 可选：export PROJECT_ROOT="/你的路径/仓库根"
+# 旧脚本兼容：如单独覆盖内容根，可 export MFLOW_ROOT="/你的路径/genflow"
 
 grep -E "SANITY_STUDIO_PROJECT|SANITY_STUDIO_DATASET" .env
 # your-project-id / production
@@ -176,7 +176,7 @@ node scripts/preflight-content.js --type features|tools|blog-md
 
 ```bash
 # 排查本地是否还有非法 slug
-rg '"slug": "[^"]*_[^"]*"' "../Pages/Features" "../1-3 Content Gen/Page Gen/Pages/Tools"
+rg '"slug": "[^"]*_[^"]*"' "../Pages/Features" "../genflow/Page Gen/Pages/Tools"
 node scripts/preflight-content.js --type features --lang en
 ```
 
@@ -206,7 +206,7 @@ npx sanity dataset import ~/品牌/import-features.ndjson --dataset production -
 
 ### Tools（composite-v2 · 正式源已启用）
 
-正式源：`1-3 Content Gen/Page Gen/Pages/Tools/`（线上 526/528 已 v2）。换设备：`sync-tools-from-production.js`。
+正式源：`genflow/Page Gen/Pages/Tools/`（线上 526/528 已 v2）。换设备：`sync-tools-from-production.js`。
 
 ```bash
 node scripts/export-composite-production.js

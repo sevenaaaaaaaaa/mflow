@@ -50,6 +50,6 @@
 ## 一键生成（本地）
 
 ```bash
-cd "dev/lovart.sanity.studio"
+cd "dev/acme.sanity.studio"
 node scripts/generate-landing-storyline-drafts.js
 ```

@@ -1,6 +1,6 @@
 # 全渠道内容分发 SOP — 拆解步骤表
 
-> 源自 GA 驱动全渠道规划 + 平台清单。Canonical SOP 在 Obsidian `2-Area/Product Project Management/全渠道内容分发自动化SOP.md`。
+> 源自 GA 驱动全渠道规划 + 平台清单。Canonical SOP = 本目录 `RUNBOOK.md`。
 
 ## 步骤总览
 
@@ -52,6 +52,6 @@
 
 默认 `TRIDENT_ROOT`：
 
-`~/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault/1-Project/品牌方 Dev`
+`$MFLOW_ROOT/品牌方 Dev`
 
 或 `dev`（若已迁移）。

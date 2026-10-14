@@ -16,11 +16,11 @@
 
 ### 1.1 必须复制
 
-| 路径（相对 vault `1-Project/`） | 说明 |
+| 路径（相对 vault ``） | 说明 |
 |--------------------------------|------|
 | `dev/品牌.sanity.studio/` | Blog/Features/Tools 脚本、`.env.example`；**勿复制他人 `.env`** |
 | `dev/品牌.sanity.studio/Sanity Blog/` | Blog MD 源 |
-| `1-3 Content Gen/Page Gen/Pages/Features/`、`1-3 Content Gen/Page Gen/Pages/Tools/` | Features / Tools JSON（Tools：**composite-v2 正式源**） |
+| `genflow/Page Gen/Pages/Features/`、`genflow/Page Gen/Pages/Tools/` | Features / Tools JSON（Tools：**composite-v2 正式源**） |
 | `harness/Skills/mflow-sanity-*`、`harness/Skills/content-quality-gates/` | Agent Skills |
 | `harness/Skills/features-sanity-publish/`、`harness/Skills/tools-sanity-publish/` | |
 | `品牌方/.cursor/rules/mflow-sanity-content-pipeline.mdc` | Cursor 规则（强烈建议） |
@@ -69,7 +69,7 @@ node scripts/check-publish-deps.js
 **vault 不在默认 iCloud 路径时**（见 §3）：
 
 ```bash
-export MFLOW_ROOT="/你的路径/1-Project/品牌方"
+export MFLOW_ROOT="/你的路径品牌方"
 export MFLOW_OUT_DIR="$HOME/品牌"   # 可选
 node scripts/check-publish-deps.js
 ```
@@ -84,8 +84,8 @@ node scripts/check-publish-deps.js
 
 | 变量 | 默认 | 作用 |
 |------|------|------|
-| `MFLOW_ROOT` | `…/1-Project/品牌方 Dev` | Blog MD（`Sanity Blog/`） |
-| Tools 正式源 | `…/1-Project/1-3 Content Gen/Page Gen/Pages/Tools/` | composite-v2；`mflow-paths.pagesTools()`；换设备后跑 `sync-tools-from-production.js` |
+| `MFLOW_ROOT` | `…品牌方 Dev` | Blog MD（`Sanity Blog/`） |
+| Tools 正式源 | `…/genflow/Page Gen/Pages/Tools/` | composite-v2；`mflow-paths.pagesTools()`；换设备后跑 `sync-tools-from-production.js` |
 | ~~pages-legacy/Tools~~ | **已弃用** | 勿再作发布输入 |
 | `MFLOW_OUT_DIR` | `~/品牌` | NDJSON、manifest、report |
 
@@ -154,7 +154,7 @@ import 前可用 [GROQ](./groq-snippets-sanity-blog-features-tools.md) 查线上
 
 - 数据集唯一目标：**`production` @ `your-project-id`**
 - Studio 列表导航以 **`category`** 为准（`feature` / `tool` …）；`sourceType` 为 legacy 字段
-- 前端 `apps/品牌` **不在本 vault**；主站渲染契约需另取前端仓库
+- 前端 `apps/品牌` **不在本仓库**；主站渲染契约需另取前端仓库
 
 ---
 
@@ -163,7 +163,7 @@ import 前可用 [GROQ](./groq-snippets-sanity-blog-features-tools.md) 查线上
 若使用 OpenCode 软链同步 Skills：
 
 ```bash
-cd "…/1-Project/Skills"
+cd "…Skills"
 bash sync-skills.sh --dry-run
 bash sync-skills.sh              # vault → opencode
 # bash sync-skills.sh --to-opencode  # 按脚本注释方向调整

@@ -1,8 +1,8 @@
 # Tools 落地页 JSON 模板（composite-v2）
 
-> **适用**：`category: tool` 的 Lovart Tools 页。  
-> **正式源**：`1-3 Content Gen/Page Gen/Pages/Tools/{lang}/{slug}-{lang}.json`  
-> **故事线**：[`STORYLINES.md`](../../../1-3 Content Gen/Page Gen/Refresh-Page/STORYLINES.md)（T1–T5、N5；线上 reflow 长链用 **T-long**）  
+> **适用**：`category: tool` 的 Acme Tools 页。  
+> **正式源**：`genflow/Page Gen/Pages/Tools/{lang}/{slug}-{lang}.json`  
+> **故事线**：[`STORYLINES.md`](../../../genflow/Page Gen/Refresh-Page/STORYLINES.md)（T1–T5、N5；线上 reflow 长链用 **T-long**）  
 > **发布**：`convert-tools.js` → `sanity dataset import --missing`
 
 ## 与 legacy 模板的区别
@@ -107,7 +107,7 @@ Pages/Tools/zh/ai-logo-generator-zh.json
 }
 ```
 
-完整模块字典见 [`Refresh-Page/README.md`](../../../1-3 Content Gen/Page Gen/Refresh-Page/README.md)。
+完整模块字典见 [`Refresh-Page/README.md`](../../../genflow/Page Gen/Refresh-Page/README.md)。
 
 ## 图片规则
 

@@ -1,4 +1,4 @@
-# Lovart Better Design Benchmark Seed V1
+# Acme Better Design Benchmark Seed V1
 
 Purpose: benchmark posts that teach judgment, redesign logic, and visual quality upgrades rather than generic inspiration.
 

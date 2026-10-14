@@ -1,4 +1,4 @@
-# Lovart Landing Page JSON 模板参考（legacy 六区块）
+# Acme Landing Page JSON 模板参考（legacy 六区块）
 
 > **适用范围**：Features 等仍使用 `heroSection` 多语言 key 的页面。  
 > **Tools 页勿用本文档** → 见 [`tools-v2-template.md`](./tools-v2-template.md)（composite-v2，每语言单文件）。  
@@ -65,7 +65,7 @@
   "input_placeholder": "...",
   "system_prompt": "...",
   "button_text": "...",
-  "image_url": "https://assets-persist.lovart.ai/...",
+  "image_url": "https://assets.acme.example/...",
   "suggestion": [{ "value": "...", "label": "..." }],
   "tip": "..."
 }
@@ -81,7 +81,7 @@
       "description": "...",
       "button_text": "...",
       "button_link": "...",
-      "image_url": "https://assets-persist.lovart.ai/..."
+      "image_url": "https://assets.acme.example/..."
     }
   ]
 }
@@ -95,7 +95,7 @@
   "description": "...",
   "button_text": "...",
   "button_link": "...",
-  "image_url": "https://assets-persist.lovart.ai/..."
+  "image_url": "https://assets.acme.example/..."
 }
 ```
 
@@ -105,9 +105,9 @@
   "type": "threeColumnSection",
   "title": "...",
   "columns": [
-    { "title": "描述", "description": "...", "image_url": "https://assets-persist.lovart.ai/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png" },
-    { "title": "生成",  "description": "...", "image_url": "https://assets-persist.lovart.ai/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png" },
-    { "title": "导出",  "description": "...", "image_url": "https://assets-persist.lovart.ai/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png" }
+    { "title": "描述", "description": "...", "image_url": "https://assets.acme.example/agent_images/98800dc8-d644-40b1-8442-3865137b6ecc.png" },
+    { "title": "生成",  "description": "...", "image_url": "https://assets.acme.example/agent_images/da4b4705-9802-4e60-b637-ffed65818da1.png" },
+    { "title": "导出",  "description": "...", "image_url": "https://assets.acme.example/agent_images/8f3f2384-8495-4075-b6d6-b90dd0cc6373.png" }
   ]
 }
 ```
@@ -118,7 +118,7 @@
   "type": "testimonialSection",
   "title": "...",
   "description": "...",
-  "image_url": "https://assets-persist.lovart.ai/...",
+  "image_url": "https://assets.acme.example/...",
   "button_link": "...",
   "button_text": "..."
 }
@@ -136,7 +136,7 @@
 
 ## image_url 规则
 
-- 必须使用 `https://assets-persist.lovart.ai/...` 前缀
+- 必须使用 `https://assets.acme.example/...` 前缀
 - 严禁编造图片 URL，必须从 `references/image-library.md` 中选取
 - threeColumnSection 的三张图片固定为通用流程图（Describe/Generate/Export），不可替换
 - 无本地化素材的语种 → 降级使用对应主题的英文版图片

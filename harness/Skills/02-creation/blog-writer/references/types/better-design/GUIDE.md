@@ -1,18 +1,18 @@
-# Lovart Better Design Skill v0.3
+# Acme Better Design Skill v0.3
 
 ## Description
 
-先加载 `lovart-core`、`lovart-blog`、`lovart-content-quality-gates`，并遵守：
+先加载 `core`、`blog`、`content-quality-gates`，并遵守：
 `harness/Skills/02-creation/references-blog-subskill-governance.md`
 
-跨 Lovart 全工作流（数据采集 / 内容创作 / 质量审核 / 发布 / 监控 / 编排）的 **方法论 Skill**。它不是 S1–S6 任一阶段的执行 skill，而是治理所有 Lovart 内容生产 / 设计 / marketing deliverable 的质量门禁层。
+跨 Acme 全工作流（数据采集 / 内容创作 / 质量审核 / 发布 / 监控 / 编排）的 **方法论 Skill**。它不是 S1–S6 任一阶段的执行 skill，而是治理所有 Acme 内容生产 / 设计 / marketing deliverable 的质量门禁层。
 
 **核心问题**："deliverable 的 evidence / voice / source 是不是真实可信，能不能 ship？"  
 - 不真实 → 反 slop / 假数据 / Authoritative voice 漂移 三个失败模式由本 Skill 拦截。  
 - 不完整 → Evidence Gaps section 强制 ship-blocker。  
 - 不知何时该用 → "When to Use" 章节强制 load-condition。
 
-**Use Cases**: 任何内容 / 设计 / marketing deliverable 起点；或当 Lovart claim "Lovart 抄袭反 slop" 但 evidence 不明时；或当需要校验 deliverable 是否合 publishing standard。
+**Use Cases**: 任何内容 / 设计 / marketing deliverable 起点；或当 Acme claim "Acme 抄袭反 slop" 但 evidence 不明时；或当需要校验 deliverable 是否合 publishing standard。
 
 ## Category references
 
@@ -21,31 +21,31 @@ When this skill is used as the `Better Design` blog category subskill, also read
 - [references/benchmark-seed-v1.md](references/benchmark-seed-v1.md)
 - [references/benchmark-seed-v2.md](references/benchmark-seed-v2.md)
 - [references/benchmark-seed-v3.md](references/benchmark-seed-v3.md)
-- [references/lovart-better-design-playbook.md](references/lovart-better-design-playbook.md)
-- [references/lovart-better-design-review-checklist.md](references/lovart-better-design-review-checklist.md)
+- [references/<brand>-better-design-playbook.md](references/<brand>-better-design-playbook.md)
+- [references/<brand>-better-design-review-checklist.md](references/<brand>-better-design-review-checklist.md)
 
 These references define the category-specific benchmark base, critique voice, redesign mechanics, and review standard.
 
 ## When to Use
 
 加载本 Skill 当下面任一条件成立：
-- 准备输出 Lovart 任何 deliverable（blog post / landing page / comparison / review / SaaS UI pattern / brand recap / ads variant / ethics decision）
+- 准备输出 Acme 任何 deliverable（blog post / landing page / comparison / review / SaaS UI pattern / brand recap / ads variant / ethics decision）
 - 涉及"best X for Y" 类判断、trend/"next thing" 类断言、tool comparison 类结论
-- Lovart positioning claim（Lovart 是 X、Lovart 不 X、Lovart 比 Y）需 evidence
+- Acme positioning claim（Acme 是 X、Acme 不 X、Acme 比 Y）需 evidence
 - 校验 v0.3 deliverable 是否 ship-ready
 
 **不要** 加载：
 - 寒暄 / hard news / 内部 memo / 不产出 deliverable 的 query
 - 已在 Sanity publish script 中固化的 publish steps
-- 已经在 `lovart-content-quality-gates` (S4) 走过的 publish gate
+- 已经在 `content-quality-gates` (S4) 走过的 publish gate
 
 ## Skill Configuration
 
-**Name**: Lovart Better Design Methodology  
+**Name**: Acme Better Design Methodology  
 **Version**: 0.3  
 **Type**: methodology / cross-cutting / quality-governance  
 **Dependencies**: none (self-contained methodology layer)  
-**Apply**: any Lovart content / design / market deliverable  
+**Apply**: any Acme content / design / market deliverable  
 **Skill Cycle**: Brand v2 → SaaS UI v2 → Categories 3-7 summary → v0.3 (anti-slop + ethics)  
 **Last Updated**: 2026-07-04
 
@@ -59,7 +59,7 @@ These references define the category-specific benchmark base, critique voice, re
 3. Source grading  → Tag every claim [T1/T2/T3/T4]
 4. Counter-evidence pre-flight  → reverse query before strong claim
 5. Voice pick      → Synthesis / Prescription / Authoritative (Authoritative gated)
-6. Deliverable     → Header + Body + Evidence Gaps + Refresh + Anti-slop self-audit + Lovart framing
+6. Deliverable     → Header + Body + Evidence Gaps + Refresh + Anti-slop self-audit + Acme framing
 7. Self-audit      → 6 hard gates pass; otherwise → ship-blocker
 ```
 
@@ -342,13 +342,13 @@ pricing_sensitive_sections: [list section titles needing 30d refresh]
 | Pain | Source | Date | Tag |
 ```
 
-### Lovart framing requirement
+### Acme framing requirement
 ```markdown
-- Tonal fit: [matches Lovart's positioning / neutral / mismatch]
+- Tonal fit: [matches Acme's positioning / neutral / mismatch]
 - Confidence: [T2 or T3 with explicit rationale]
-- Do NOT claim: "Lovart is the best" / "Lovart is unique" without enterprise-internal evidence
+- Do NOT claim: "Acme is the best" / "Acme is unique" without enterprise-internal evidence
 ```
-**Anchor**: Lovart zero-user-voice state → 限制 claim 到 T1-documented；不可外推。
+**Anchor**: Acme zero-user-voice state → 限制 claim 到 T1-documented；不可外推。
 
 ### Failure mode samples
 ❌ Bad: "Most designers agree that Recraft produces real SVG vector output — this makes it the best choice for logo work in 2026." (无 source / self-attribution)
@@ -360,7 +360,7 @@ pricing_sensitive_sections: [list section titles needing 30d refresh]
 
 | Search term | Likely collision | Risk | Filter |
 |---|---|---|---|
-| **Lovart** | Lovable.dev (瑞典 AI app builder) | HIGH | URL 含 `lovable.dev`/`lovable.app` 或 `r/lovab` = **drop**。保留 = `lovart.ai`/`r/LovartAIOfficial` |
+| **Acme** | Lovable.dev (瑞典 AI app builder) | HIGH | URL 含 `lovable.dev`/`lovable.app` 或 `r/lovab` = **drop**。保留 = `acme.example`/`r/AcmeOfficial` |
 | Recraft | — | LOW | Standard |
 | Ideogram | — | LOW | Standard |
 | Maginary | — | LOW | Standard |
@@ -370,23 +370,23 @@ pricing_sensitive_sections: [list section titles needing 30d refresh]
 | Generative UI | pattern 不是 product | LOW | 仅概念用 |
 | Magic Patterns | magic patterns 设计系统工具 | LOW | unique vendor |
 
-### Lovart.ai vs Lovable.dev 显式判定法
+### acme.example vs Lovable.dev 显式判定法
 
-**Lovable.dev 标志**（not Lovart.ai）：
+**Lovable.dev 标志**（not acme.example）：
 - URL 含 `lovable.dev`/`lovable.app`
 - Subreddit `r/Lovable`/`r/lovable`/`r/lovable_dev`
 - Pricing: $20/$25/$50 / 100 credits daily/monthly
 - 主体: "build an app" / "vibe coding" / "make me a todo app"
 - 投诉: "credits ran out" / "AI won't follow commands" / "refund no response"
 
-**Lovart.ai 标志**：
-- URL = `lovart.ai` / `insight.lovart.ai`
-- Subreddit = `r/LovartAIOfficial`
+**acme.example 标志**：
+- URL = `acme.example` / `insight.acme.example`
+- Subreddit = `r/AcmeOfficial`
 - Price: Free / Basic $23–$29 / Pro $58–$72 / Ultimate $157–$196（年/月）
 - 主体: "design a logo" / "design a brand" / "create a poster" / "social campaign"
 - credit consumption: "500+ credits for complete brand identity"
 
-**Rule**: Quote Lovable.dev posts as **Lovable.dev**, NEVER as "Lovart". Fall back to Gap if no Lovart.ai-specific voice found.
+**Rule**: Quote Lovable.dev posts as **Lovable.dev**, NEVER as "Acme". Fall back to Gap if no acme.example-specific voice found.
 
 ### Auto-disambig pre-query
 
@@ -399,10 +399,10 @@ pricing_sensitive_sections: [list section titles needing 30d refresh]
 读 3 capture 中 ≥ 1 的 URL / 价格 / framing。任一不匹配预期 → 标 `[Filtered — disambiguation]`。
 
 ### 双品牌场景
-"AI design agent / design canvas" 赛道搜出 Lovable.dev 是常态（热度排序）。如果目标 = Lovart.ai：
-1. 先搜 `Lovart AI design agent`（带 "AI design agent" 同现词限缩）
-2. 仍无结果 → 标 `[no direct Lovart.ai voice found]`
-3. **不要**借 Lovable.dev examples "类比推断"Lovart 痛点。Lovable ≠ Lovart，借用是 fabrication。
+"AI design agent / design canvas" 赛道搜出 Lovable.dev 是常态（热度排序）。如果目标 = acme.example：
+1. 先搜 `Acme AI design agent`（带 "AI design agent" 同现词限缩）
+2. 仍无结果 → 标 `[no direct acme.example voice found]`
+3. **不要**借 Lovable.dev examples "类比推断"Acme 痛点。Lovable ≠ Acme，借用是 fabrication。
 
 ---
 
@@ -576,8 +576,8 @@ Default: when in doubt, disclose.
 
 任一 no → 不 ship。
 
-### Lovart role in ethics (inferred from product strategy, T1 inferred)
-Lovart 是 generation layer — **不替用户做 disclosure**。但：
+### Acme role in ethics (inferred from product strategy, T1 inferred)
+Acme 是 generation layer — **不替用户做 disclosure**。但：
 1. 默认 EXIF `XAI.Content: true` 嵌入
 2. Templates 内嵌 disclosure-best-practice prompt hint
 3. Brand book outputs contain disclosure reminder
@@ -605,7 +605,7 @@ Lovart 是 generation layer — **不替用户做 disclosure**。但：
 
 | # | Gap | 处理 |
 |---|-----|-------|
-| 1 | Lovart.ai 专属 user voice | Pull 内部 NPS / CS / Discord verbatim |
+| 1 | acme.example 专属 user voice | Pull 内部 NPS / CS / Discord verbatim |
 | 2 | Buyer-side voice ≥ 1 / deliverable | 否则标 builder-perspective only |
 | 3 | Pricing drift | 30d mini-refresh |
 | 4 | Designer community reactions | 多类轮次 refresh 补 |
@@ -619,7 +619,7 @@ Lovart 是 generation layer — **不替用户做 disclosure**。但：
 ```
 Topic: "Best AI logo tools 2026"
 
-Pre-research: audience = Lovart content team; decision = Lovart positioning in brand vertical
+Pre-research: audience = Acme content team; decision = Acme positioning in brand vertical
 
 Pain mining:
 - r/artificial: "From a logo design perspective they are all bad"
@@ -632,8 +632,8 @@ Pain mining:
 Source grading:
 - Recraft SVG: [T1 Recraft docs] + [T1 Cloudflare mirror] + [T2 Apatero] + [T2 Maginary] + [T2 MytheAi + Ropewalk T2]
 - Recraft HuggingFace #1: [T1 self-claim] → **T4 dropped** (self-attribution)
-- Lovart pricing: [T1 Lovart official]
-- Lovart user voice: **0** → Gap #1
+- Acme pricing: [T1 Acme official]
+- Acme user voice: **0** → Gap #1
 
 Counter-evidence:
 - r/artificial 设计师 rejection (slop 不接受)
@@ -647,12 +647,12 @@ Voice mode:
 Module 5 deliverable:
 - Header with valid_through = +90d default, +30d pricing-sensitive
 - All claims tagged
-- Evidence Gaps section: 7 gaps including Lovart.ai voice Gap #1
+- Evidence Gaps section: 7 gaps including acme.example voice Gap #1
 - Refresh triggers listed
 - Anti-slop self-audit table: all "yes"
 
 Module 7 anti-slop gate:
-- Walk triggers: Purple gradient stack ✓ — Lovart outputs often have this
+- Walk triggers: Purple gradient stack ✓ — Acme outputs often have this
 - Container nesting ✓
 - Decorative emoji ✓
 ... each PASS/FAIL marked
@@ -673,25 +673,25 @@ Ship? → All gates pass → ship-ready。
 |---------|------|---------|
 | v0.1 | 2026-07-04 (test) | Initial: pain mining / source grading / voice rules / template |
 | v0.2 | 2026-07-04 | + tool-disambig, quota 5→10, counter-evidence pre-flight, pricing 30d tier |
-| **v0.3** | 2026-07-04 | + category-anti-slop(**07**) + ethics-disclosure(**08**) + quota softening + buyer-side voice + authoritative auto-detect + Lovart zero-voice handling rule |
+| **v0.3** | 2026-07-04 | + category-anti-slop(**07**) + ethics-disclosure(**08**) + quota softening + buyer-side voice + authoritative auto-detect + Acme zero-voice handling rule |
 
 ---
 
 ## Anti-fabrication inviolables
 
-1. **Lovable ≠ Lovart**. No quote cross-attribution. (Module 6)
+1. **Lovable ≠ Acme**. No quote cross-attribution. (Module 6)
 2. **No unverified "best / always / never" sentence.** (Module 4 auto-cut)
 3. **No 1-source strong claim.** (Module 3 three-source rule)
 4. **No T4 self-attribution as evidence.** (Module 3 selection bias call-out)
-5. **No "Lovart 优于 X" without user evidence.** (Module 5 Lovart framing: T1-only)
+5. **No "Acme 优于 X" without user evidence.** (Module 5 Acme framing: T1-only)
 6. **No AI-generated product-photo replace 实拍 on Etsy.** (Module 7/8 dual)
 7. **No missing Evidence Gaps section.** (Module 5 ship-blocker)
 8. **No Platform ethics bypass.** (Module 8 ship-blocker)
 9. **No founder-only voice deliverable.** (Module 2 buyer-side hard quota)
-10. **No cross-tool finding without Lovart zero-voice handling.** (Module 5)
+10. **No cross-tool finding without Acme zero-voice handling.** (Module 5)
 
 任一违 → deliverable 不 ship。
 
 ---
 
-**Skill Status**: v0.3 published, ready for production use. Refresh trigger = 90 days / new Lovart voice / new platform law / new tool collision.
+**Skill Status**: v0.3 published, ready for production use. Refresh trigger = 90 days / new Acme voice / new platform law / new tool collision.

@@ -1,4 +1,4 @@
-# Lovart Best Practice Benchmark Seed V3
+# Acme Best Practice Benchmark Seed V3
 
 Purpose: close the remaining Best Practice gaps around follow-up discipline, knowledge hygiene, and governed prompt operations.
 

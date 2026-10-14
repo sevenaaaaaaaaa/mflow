@@ -125,7 +125,7 @@ generator: harness/11-knowledge/scripts/fm-fix.py
 | AB-S01 | IMAGE PLACEHOLDER 入正文 | image_briefs 提取 + strip 正文 |
 | AB-C02 | zh/zh-TW 机翻低质量 | translate-zh-rewrite.py pilot |
 | AB-U01 | Features URL 写成 /tools/ | convert 时 composite-seo-url.js |
-| AB-I04 | liblib 封面 404 | blogcover-011~065 池 + `--only-broken` |
+| AB-I04 | initech 封面 404 | blogcover-011~065 池 + `--only-broken` |
 | AB-LP22 | Blog body Markdown 字符串 | 检测 `body[0]._type==null`；修 Portable Text |
 | AB-LP23 | 结构化数据类型错/空壳 | Blog @type→Article；compositePage json 非 null |
 

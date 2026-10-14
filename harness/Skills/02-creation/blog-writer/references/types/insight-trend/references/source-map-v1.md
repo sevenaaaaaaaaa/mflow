@@ -1,4 +1,4 @@
-# Lovart Insight and Trend Source Map V1
+# Acme Insight and Trend Source Map V1
 
 Purpose: record what each major source is useful for, so future research does not treat all sources as interchangeable.
 

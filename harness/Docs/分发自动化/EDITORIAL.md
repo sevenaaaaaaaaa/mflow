@@ -16,11 +16,11 @@
 1. **screenshot-to-code** — https://github.com/abi/screenshot-to-code
 2. **Open Design** — https://github.com/nexu-io/open-design
 3. **Open CoDesign** — https://github.com/OpenCoworkAI/open-codesign
-4. **libtv-skills** — https://github.com/libtv-labs/libtv-skills
+4. **initech-skills** — https://github.com/initech-labs/initech-skills
 
 ### 文风参考
 
-`content/github-ai-design-tools-kb.md` 及用户提供的 Liblib 宣发合集：
+`content/github-ai-design-tools-kb.md` 及用户提供的 Initech 宣发合集：
 
 - **开篇**：痛点 / 身份代入（「很多程序员第一反应是…」）
 - **每款工具独立小节**：机制解释（2–3 段）+ **具体场景** + 仓库/体验链接

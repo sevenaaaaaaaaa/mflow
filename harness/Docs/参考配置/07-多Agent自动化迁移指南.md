@@ -1,7 +1,7 @@
 # 多 Agent 自动化迁移指南
 
 > **目标**：以 **项目级 shell 脚本** 为 SSOT，把 launchd 定时任务迁到 Cursor / Codex / Claude Code / OpenCode / Hermes / DeepSeek GUI。  
-> **工作区根**：`LifeOS Pro PARA Vault`（git 根），日常 cwd 为子目录 `1-Project/`。
+> **工作区根**：`仓库根`（git 根），日常 cwd 为子目录 ``。
 > **运行看板**：[../定期任务/自动化运行看板.md](../定期任务/自动化运行看板.md)
 
 ---
@@ -33,7 +33,7 @@ bash "dev/automation/unload-all-launchd.sh"
 | SEO 月报 | 每月 3 日 06:00 | `scripts/seo_monthly_v2.py` | 待建 | PRD |
 | Sitemap 周更 | 周一 02:00 | Skill `sitemap-update` | 待建 | 归档 v2 plist |
 
-**Cursor 导入**：Automations → New → 用 `open_automation` 预填各 JSON，或复制 `workflow.prompts[0].prompt` + cron。工作区选 **vault 根**。
+**Cursor 导入**：Automations → New → 用 `open_automation` 预填各 JSON，或复制 `workflow.prompts[0].prompt` + cron。工作区选 **仓库根**。
 
 ---
 
@@ -108,5 +108,5 @@ Cloud Agent **无法**直接读本机 `~/.zshrc` 与 iCloud 路径 — Cursor Au
 ## 七、限制说明
 
 - **DeepSeek GUI / Hermes**：无等价 Cursor Automations cron；用「复制提示词 + 手动 Run」或继续 shell cron 只跑脚本、Agent 只看 log。
-- **Obsidian + iCloud**：Cloud Agent 克隆仓库时确保含 `1-Project`；敏感 token 勿提交 git。
+- **仓库与数据**：Cloud Agent 只能拿到 GitHub 上的代码，gitignored 数据（insight-data/ genflow/ ops/）需在本机或服务器跑；敏感 token 勿提交 git。
 - **费用**：Cursor 定时 = Cloud Agent Max Mode；纯 shell 的 launchd 零 Agent 费。

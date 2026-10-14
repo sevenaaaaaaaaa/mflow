@@ -5,7 +5,7 @@ description: 内容质量门禁系统（三层 L1/L2/L3）。质检唯一父入�
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
+| 文档 SSOT | `harness/Docs/` |
 | Sanity 脚本 | `dev/品牌.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |
@@ -59,7 +59,7 @@ node scripts/preflight-content.js --type features --lang en,ja
 
 # Features v2 / 其他 composite 草稿目录
 node scripts/preflight-content.js --type composite-v2 --dir "../Pages/drafts/composite-v2/Features/en"
-node scripts/preflight-content.js --file "../1-3 Content Gen/Page Gen/Pages/Tools/en/{slug}-en.json"
+node scripts/preflight-content.js --file "../genflow/Page Gen/Pages/Tools/en/{slug}-en.json"
 
 # 单篇 Features（自动识别 legacy / v2）
 node scripts/preflight-content.js --file "../Pages/Features/en/foo-en.json" --composite-v2
@@ -127,7 +127,7 @@ BLOCK 码：`TDK_I18N_TITLE` / `TDK_I18N_DESC` / `TDK_I18N_EMPTY`。**import 前
 - **Legacy 重复页**：若同主题已有 kebab slug，**删除**下划线版本地文件 + `_index` 条目，勿改 slug 留两篇；线上旧 URL 需 **301** 到 canonical（见 [`SOP-品牌方-Sanity-内容发布总指南` §4.5](../sanity-content-publish/SOP-品牌方-Sanity-内容发布总指南.md)）
 
 ```bash
-rg '"slug": "[^"]*_[^"]*"' "../Pages/Features" "../1-3 Content Gen/Page Gen/Pages/Tools"
+rg '"slug": "[^"]*_[^"]*"' "../Pages/Features" "../genflow/Page Gen/Pages/Tools"
 ```
 
 ### compositePage bodyJson：legacy vs v2
@@ -177,7 +177,7 @@ rg '"slug": "[^"]*_[^"]*"' "../Pages/Features" "../1-3 Content Gen/Page Gen/Page
 
 ## L3b — Anti-Slop（内容质量）
 
-> 写作规范 SSOT：[1-1 GEO Readme/文档/04-质量治理/Anti-Slop.md](../../../1-1%20GEO%20Readme/文档/04-质量治理/Anti-Slop.md)
+> 写作规范 SSOT：[harness/Docs/S4-质量审核/Anti-Slop.md](../../../1-1%20GEO%20Readme/文档/04-质量治理/Anti-Slop.md)
 
 发布前自问：读者是谁、为什么现在读、读完改变什么、下一步是什么（四问）。
 

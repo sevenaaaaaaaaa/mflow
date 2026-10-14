@@ -5,19 +5,19 @@
 ## 工作目录
 
 ```bash
-export MFLOW_ROOT="/Users/seveno/Library/Mobile Documents/iCloud~md~obsidian/Documents/LifeOS Pro PARA Vault"
-cd "$MFLOW_ROOT/1-Project"
+export MFLOW_ROOT="$MFLOW_ROOT"
+cd "$MFLOW_ROOT"
 ```
 
 ## 项目指令文件
 
-在 **`1-Project/AGENTS.md`** 或 vault 根 **`AGENTS.md`** 中引用（若 Codex 从 vault 根打开，链到 Harness）：
+在 **`AGENTS.md`** 或 仓库根 **`AGENTS.md`** 中引用（若 Codex 从 仓库根打开，链到 Harness）：
 
 ```markdown
 # 品牌方 Codex
 
-- Rules: 1-Project/harness/AGENTS.md
-- Sanity pipeline: 1-Project/dev/.cursor/rules/mflow-sanity-content-pipeline.mdc
+- Rules: harness/AGENTS.md
+- Sanity pipeline: dev/.cursor/rules/mflow-sanity-content-pipeline.mdc
 - Weekly Tools pull: bash dev/automation/tools-pull/pull-tools-from-production.sh
 - Never: sanity deploy, import --replace, delete production docs
 ```
@@ -27,13 +27,13 @@ cd "$MFLOW_ROOT/1-Project"
 **macOS cron**（示例：周一 08:00 Tools pull，仅 shell、无 Agent 费）：
 
 ```cron
-0 8 * * 1 cd "/Users/seveno/.../LifeOS Pro PARA Vault/1-Project" && bash "dev/automation/tools-pull/pull-tools-from-production.sh" >> ~/Library/Logs/品牌方/codex-cron-tools-pull.log 2>&1
+0 8 * * 1 cd "$MFLOW_ROOT/仓库根" && bash "dev/automation/tools-pull/pull-tools-from-production.sh" >> ~/Library/Logs/品牌方/codex-cron-tools-pull.log 2>&1
 ```
 
 **Codex exec 单次**（需本机 API key）：
 
 ```bash
-cd "$MFLOW_ROOT/1-Project"
+cd "$MFLOW_ROOT"
 codex exec "Run bash dev/automation/tools-pull/pull-tools-from-production.sh and summarize pull-tools-latest.json"
 ```
 

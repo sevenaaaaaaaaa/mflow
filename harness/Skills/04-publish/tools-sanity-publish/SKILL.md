@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
+| 文档 SSOT | `harness/Docs/` |
 | Sanity 脚本 | `dev/品牌.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |
@@ -30,11 +30,11 @@ disable-model-invocation: true
 |------|------|
 | 线上→本地 | `bash "dev/automation/tools-pull/pull-tools-from-production.sh"` 或 `node scripts/pull-tools-from-production.js` |
 | 批量 | `node scripts/convert-tools.js`（→ `feature-to-composite-page.js`） |
-| 单篇 | `node scripts/import-page.js "../1-3 Content Gen/Page Gen/Pages/Tools/{lang}/{slug}-{lang}.json" --import` |
+| 单篇 | `node scripts/import-page.js "../genflow/Page Gen/Pages/Tools/{lang}/{slug}-{lang}.json" --import` |
 | 补翻译 | `python3 scripts/translate-tools.py`（读 `import-tools-report.json`） |
 | 导入后校验 | `npx sanity exec scripts/verify-composite.js --with-user-token -- --type tools --sample 20` |
 
-**正式源**：`1-3 Content Gen/Page Gen/Pages/Tools/`（线上 528/528 v2）。对齐：**pull-tools-from-production**（见 `dev/automation/tools-pull/README.md`）。`pages-legacy/Tools/` **已弃用**。
+**正式源**：`genflow/Page Gen/Pages/Tools/`（线上 528/528 v2）。对齐：**pull-tools-from-production**（见 `dev/automation/tools-pull/README.md`）。`pages-legacy/Tools/` **已弃用**。
 
 单篇 `_id`：JSON 内 `id` 或 `Pages/Tools/_index.json`；否则回退 `tools-{slug}-{lang}`（可能冲突）。
 

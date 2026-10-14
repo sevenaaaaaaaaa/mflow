@@ -1,7 +1,7 @@
-# Lovart Blog 自动化部署手册
+# Acme Blog 自动化部署手册
 
-> 适用站点：`blogs.lovart.ai`  
-> 本地目录：`1-Project/1-3 Content Gen/Lovart-Blog-Pipeline/Lovart-Blogs/`  
+> 适用站点：`blog.acme.example`  
+> 本地目录：`genflow/Acme-Blog-Pipeline/Acme-Blogs/`  
 > 前置要求：WordPress 管理员账号 + 服务器 SSH 访问
 > 当前状态（2026-06-07）：`publish-to-wp.py` 已恢复到规范落点；生产发布前仍需 `--dry-run` 验证。Feishu wiki integration 仍为 `blocked-by-missing-source`。
 
@@ -27,14 +27,14 @@
 ### 1.1 目录结构
 
 ```
-1-Project/1-3 Content Gen/Lovart-Blog-Pipeline/Lovart-Blogs/
+genflow/Acme-Blog-Pipeline/Acme-Blogs/
 ├── 01-Drafts/                          ← 新文章撰写区
 ├── 03-Published/                       ← 已发布文章备份（含 wp_post_id）
-├── LOVART-BLOG-LOCAL-SPEC.md           ← 写作规范（frontmatter、category 映射）
+├── ACME-BLOG-LOCAL-SPEC.md           ← 写作规范（frontmatter、category 映射）
 ├── PRODUCTION-PLAN.md                  ← 内容日历（93 篇清单）
 ├── BATCH-WORKFLOW.md                   ← 批量生产规则
-├── plugins/lovart-showcase/            ← Showcase CPT 插件
-│   ├── lovart-showcase.php             ← 插件入口
+├── plugins/showcase/            ← Showcase CPT 插件
+│   ├── showcase.php             ← 插件入口
 │   ├── includes/cpt-taxonomy.php       ← CPT + Taxonomy 注册
 │   ├── includes/shortcodes.php         ← [showcase_grid] 等短代码
 │   ├── includes/rest-api.php           ← REST API 接口
@@ -47,10 +47,10 @@
     └── frontmatter.example.yaml        ← frontmatter 模板
 
 # 发布脚本规范落点（TODO/GAP 2026-06-03）
-1-Project/1-3 Content Gen/Lovart-Blog-Pipeline/Lovart-Blogs/scripts/
+genflow/Acme-Blog-Pipeline/Acme-Blogs/scripts/
 └── publish-to-wp.py                    ← Markdown → WordPress 发布脚本
 # 注：publish-to-wp.py 已恢复；发布前必须先 dry-run。
-#     sync-wp-to-obsidian.py / sync-wp-xmlrpc.py 未在当前 Blog Pipeline 中恢复，如需请确认新落点。
+#     sync-wp-to-local.py / sync-wp-xmlrpc.py 未在当前 Blog Pipeline 中恢复，如需请确认新落点。
 ```
 
 ### 1.2 Python 依赖
@@ -63,7 +63,7 @@ pip3 install markdown
 
 ### 1.3 服务器安装 wp-cli（用于 CSV 导入）
 
-SSH 到 blogs.lovart.ai 服务器：
+SSH 到 blog.acme.example 服务器：
 
 ```bash
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -76,7 +76,7 @@ wp --info   # 验证
 
 ## 2. WordPress 插件安装
 
-在 `https://blogs.lovart.ai/wp-admin` 后台安装：
+在 `https://blog.acme.example/wp-admin` 后台安装：
 
 | 插件 | 用途 | 是否必需 |
 |------|------|---------|
@@ -92,13 +92,13 @@ wp --info   # 验证
 
 ### 3.1 上传插件
 
-将 `plugins/lovart-showcase/` 整个目录上传到服务器：
+将 `plugins/showcase/` 整个目录上传到服务器：
 
 ```bash
-scp -r plugins/lovart-showcase user@server:/path/to/wp-content/plugins/
+scp -r plugins/showcase user@server:/path/to/wp-content/plugins/
 ```
 
-在 WordPress 后台 **Plugins → Lovart Community Showcase → Activate**。
+在 WordPress 后台 **Plugins → Acme Community Showcase → Activate**。
 
 ### 3.2 导入 ACF 字段
 
@@ -113,12 +113,12 @@ scp -r plugins/lovart-showcase user@server:/path/to/wp-content/plugins/
 | `cover_url` | URL | 作品封面图 |
 | `view_count` | Number | 浏览次数 |
 | `like_count` | Number | 点赞次数 |
-| `lovart_url` | URL | Lovart 原始链接 |
+| `url` | URL | Acme 原始链接 |
 | `ai_workflow` | Text | AI 工作流类型 |
 
 ### 3.3 验证 CPT 注册
 
-访问 `https://blogs.lovart.ai/wp-admin/edit.php?post_type=showcase` 确认 CPT 已注册。
+访问 `https://blog.acme.example/wp-admin/edit.php?post_type=showcase` 确认 CPT 已注册。
 
 URL 结构：
 ```
@@ -159,7 +159,7 @@ URL 结构：
 ├─────────────────────────────────────────┤
 │ 相关页面（手动关联 / REST API 加载）        │
 ├─────────────────────────────────────────┤
-│ CTA 按钮 → 跳转到 Lovart 原始链接          │
+│ CTA 按钮 → 跳转到 Acme 原始链接          │
 └─────────────────────────────────────────┘
 ```
 
@@ -199,7 +199,7 @@ cp scripts/wp-auth.local.env.example scripts/wp-auth.local.env
 
 ```bash
 # 发布单篇
-python3 scripts/publish-to-wp.py --file "canva-vs-lovart-comparison.md"
+python3 scripts/publish-to-wp.py --file "canva-vs-comparison.md"
 
 # 发布全部（从 01-Drafts/）
 python3 scripts/publish-to-wp.py
@@ -223,13 +223,13 @@ python3 scripts/publish-to-wp.py --dry-run --limit 5
 
 ```bash
 # 查询总文章数
-curl -sI "https://blogs.lovart.ai/wp-json/wp/v2/posts?per_page=1" | grep X-WP-Total
+curl -sI "https://blog.acme.example/wp-json/wp/v2/posts?per_page=1" | grep X-WP-Total
 
 # 按 slug 查重
-curl -s "https://blogs.lovart.ai/wp-json/wp/v2/posts?slug=my-slug"
+curl -s "https://blog.acme.example/wp-json/wp/v2/posts?slug=my-slug"
 
 # 查看分类
-curl -s "https://blogs.lovart.ai/wp-json/wp/v2/categories?per_page=30"
+curl -s "https://blog.acme.example/wp-json/wp/v2/categories?per_page=30"
 ```
 
 ---
@@ -239,14 +239,14 @@ curl -s "https://blogs.lovart.ai/wp-json/wp/v2/categories?per_page=30"
 ### 6.1 准备工作
 
 1. 将 CSV 文件上传到服务器 WordPress 根目录
-2. 确认 `lovart-showcase` 插件已激活
+2. 确认 `showcase` 插件已激活
 3. ACF 字段已导入
 
 ### 6.2 执行导入
 
 ```bash
 cd /path/to/wordpress
-wp eval-file wp-content/plugins/lovart-showcase/import/import-showcase.php
+wp eval-file wp-content/plugins/showcase/import/import-showcase.php
 ```
 
 脚本自动完成：
@@ -277,7 +277,7 @@ define('OPENAI_API_KEY', 'sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 
 | 设置项 | 值 |
 |--------|-----|
-| Single Post Title | `%title% - Lovart Community Showcase` |
+| Single Post Title | `%title% - Acme Community Showcase` |
 | Single Post Description | `%excerpt%` |
 | Schema Type | `CreativeWork` |
 | 面包屑 | 开启 |
@@ -306,7 +306,7 @@ define('OPENAI_API_KEY', 'sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxx');
 通过 REST API 端点自动匹配：
 
 ```
-GET /wp-json/lovart/v1/showcase/related?post_id=18001&type=blog&limit=4
+GET /wp-json/acme/v1/showcase/related?post_id=18001&type=blog&limit=4
 ```
 
 按 showcase 的 category + industry + style 与博客 taxonomy 做交集匹配。
@@ -344,7 +344,7 @@ GET /wp-json/lovart/v1/showcase/related?post_id=18001&type=blog&limit=4
 | 文章类型 | 最小字数 | Category 值 |
 |---------|---------|------------|
 | 竞品对比 | **7500**（全分类统一地板） | `How-To` |
-| Lovart 101 | **7500** | `Lovart 101` |
+| Acme 101 | **7500** | `Acme 101` |
 | How-To | **7500** | `How-To` |
 | Best Practice | **7500** | `Best Practice` |
 | 行业方案 | 2800 | `Industry Solution` |

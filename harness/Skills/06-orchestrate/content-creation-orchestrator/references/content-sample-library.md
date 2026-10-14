@@ -1,6 +1,6 @@
 # Content Sample Library
 
-SSOT: `1-1 GEO Readme/文档/04-质量治理/Content-Sample-Library.md`
+SSOT: `harness/Docs/S4-质量审核/Content-Sample-Library.md`
 
 After SERP brief + Ledger plan, pull annotated pairs:
 

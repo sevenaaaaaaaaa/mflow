@@ -1,25 +1,25 @@
 ---
-name: lovart-landing-page
-description: Lovart 落地页文案生成与修复技能。Tools 走 composite-v2 + T1–T-long；Landing Page（投放向）走 7 条故事线（landing-storylines.json）；Features 等仍可用 legacy 六区块。触发：（1）生成 Tools/Landing/Features JSON；（2）修复结构；（3）重生成；（4）SEO + JSON-LD。
+name: landing-page
+description: Acme 落地页文案生成与修复技能。Tools 走 composite-v2 + T1–T-long；Landing Page（投放向）走 7 条故事线（landing-storylines.json）；Features 等仍可用 legacy 六区块。触发：（1）生成 Tools/Landing/Features JSON；（2）修复结构；（3）重生成；（4）SEO + JSON-LD。
 ---
 
 ## 路径契约
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
-| Sanity 脚本 | `dev/lovart.sanity.studio/scripts/` |
+| 文档 SSOT | `harness/Docs/` |
+| Sanity 脚本 | `dev/acme.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |
-| 本 Skill | `harness/Skills/lovart-landing-page/SKILL.md` |
+| 本 Skill | `harness/Skills/landing-page/SKILL.md` |
 
-# 落地页主技能细节（原 lovart-landing-page，2026-10-03 并入 lovart-landing-writer）
+# 落地页主技能细节（原 landing-page，2026-10-03 并入 landing-writer）
 
-> 本文件是 reference。路由/预算/自检以 lovart-landing-writer/SKILL.md 为准；文中提到旧技能名处一律读作 lovart-landing-writer。
+> 本文件是 reference。路由/预算/自检以 landing-writer/SKILL.md 为准；文中提到旧技能名处一律读作 landing-writer。
 
 ## 角色定位
 
-你是 Lovart 的全球增长负责人，同时也是资深营销与设计大师。根据给定主题或旧版代码，撰写/修复高转化、强 SEO 的落地页文案。
+你是 Acme 的全球增长负责人，同时也是资深营销与设计大师。根据给定主题或旧版代码，撰写/修复高转化、强 SEO 的落地页文案。
 
 ## 故事线为总纲（第一原则）
 
@@ -36,16 +36,16 @@ description: Lovart 落地页文案生成与修复技能。Tools 走 composite-v
 
 ## 父入口职责（必须遵守）
 
-`lovart-landing-page` 是所有落地页生成、重写、刷新、修复请求的唯一父入口。
+`landing-page` 是所有落地页生成、重写、刷新、修复请求的唯一父入口。
 
 - 用户提到 Tools / Features / Product / Scenario / Solution / Topic / Landing Page / 页面 JSON / 刷新页时，先进入本 skill。
-- `lovart-page-serp-writer` 只负责 SERP intent、页面文案、composite-v2 草稿等写作支撑，不直接接用户请求。
+- `page-serp-writer` 只负责 SERP intent、页面文案、composite-v2 草稿等写作支撑，不直接接用户请求。
 - `refresh-page-page-generator` 只负责 Refresh-Page bodyJson/type 序列支撑，不直接接用户请求。
-- 发布阶段统一交给 `lovart-sanity-publish` 父入口；不要从本 skill 直接跳到 `lovart-tools-sanity-publish` 或 `lovart-features-sanity-publish`。
+- 发布阶段统一交给 `sanity-publish` 父入口；不要从本 skill 直接跳到 `tools-sanity-publish` 或 `features-sanity-publish`。
 
 ## 与创作总控的关系
 
-新建或重写落地页前，先用 `lovart-content-creation-orchestrator` 判断 SERP intent、页面类型、竞品页面形态和 Quality Gates；再进入本文的页面类型路由、溯源、Persona / PMF 和 JSON 生成流程。需要专门写页面文案或 composite-v2 草稿时，由本 skill 内部调用 `lovart-page-serp-writer`。
+新建或重写落地页前，先用 `content-creation-orchestrator` 判断 SERP intent、页面类型、竞品页面形态和 Quality Gates；再进入本文的页面类型路由、溯源、Persona / PMF 和 JSON 生成流程。需要专门写页面文案或 composite-v2 草稿时，由本 skill 内部调用 `page-serp-writer`。
 
 ## 文案 SSOT（新增必读）
 
@@ -159,8 +159,8 @@ FAQ 至少 3 条，优先回答高意图异议：
 | 1 | 已验证图片库（references/image-library.md + references/verified-image-pool-2026-06.md） | **优先用 `references/image_pool.py` 自动选图**（`match_title()` + `get_image()`） |
 | 1.1 | 关键词映射规则（references/card-title-image-mapping.md） | 100+ 规则覆盖 8 语言，按 card title 自动选分类 |
 | 2 | 用户提供的参考 JSON 文件 | 从中提取字段结构、图片 URL |
-| 3 | 官方产品文档（lovart.ai 官网） | 提取产品参数、功能描述、定价 |
-| 4 | 网络搜索 | 搜索 Lovart 官方资料及经核实第三方来源 |
+| 3 | 官方产品文档（acme.example 官网） | 提取产品参数、功能描述、定价 |
+| 4 | 网络搜索 | 搜索 Acme 官方资料及经核实第三方来源 |
 | — | **以上均无法确认** | 标注 `[待考证]`，不跳过输出 |
 
 ### 必须溯源的信息类型
@@ -169,7 +169,7 @@ FAQ 至少 3 条，优先回答高意图异议：
 
 | 内容类型 | 示例 | 溯源要求 |
 |---------|------|---------|
-| 技术参数 | "MCoT Engine 的响应速度为 X 秒" | 必须在 lovart.ai 或官方文档中核实 |
+| 技术参数 | "MCoT Engine 的响应速度为 X 秒" | 必须在 acme.example 或官方文档中核实 |
 | 价格/订阅 | "Pro 计划每月 $29" | 必须在官网 Pricing 页面核实 |
 | 兼容平台 | "支持 Shopify TikTok Shop" | 必须在官网功能列表或联系产品确认 |
 | 第三方集成细节 | "与 Figma 插件深度集成" | 必须在官方 Changelog 或合作伙伴页面核实 |
@@ -183,7 +183,7 @@ FAQ 至少 3 条，优先回答高意图异议：
 
 ```python
 import sys
-sys.path.insert(0, "harness/Skills/lovart-landing-page/references")
+sys.path.insert(0, "harness/Skills/landing-page/references")
 from image_pool import POOL, match_title, get_image, assign_images_to_features
 
 # 场景 1: 给 bento-4 分配图片（按 card title 自动分类）
@@ -272,10 +272,10 @@ def classify_by_slug(slug):
 | 流量来源 | button_text 示例 | 优先级心理 |
 |---------|----------------|-----------|
 | Google 付费广告 | "Start Free Trial — No Credit Card" | 消除风险 |
-| SEO/内容营销 | "Try Lovart Free for 14 Days" | 价值先行 |
+| SEO/内容营销 | "Try Acme Free for 14 Days" | 价值先行 |
 | 社交媒体 | "Generate AI Images in Seconds" | 速度+效果 |
 | 邮件营销 | "Access Your Free Account" | 便捷感 |
-| 联盟/外部引用 | "Explore Lovart's AI Studio" | 好奇心 |
+| 联盟/外部引用 | "Explore Acme's AI Studio" | 好奇心 |
 
 → 直接映射到 `heroSection.button_text`、`contentSection[].button_text`、`testimonialSection.button_text`
 
@@ -321,8 +321,8 @@ def classify_by_slug(slug):
 
 | 行业 | Social Proof 示例 |
 |------|------------------|
-| 电商 | "100,000+ brands use Lovart to create product imagery" |
-| 设计 | "Lovart users have generated 5M+ commercial-ready designs" |
+| 电商 | "100,000+ brands use Acme to create product imagery" |
+| 设计 | "Acme users have generated 5M+ commercial-ready designs" |
 | 社交媒体 | "Trusted by 50,000+ creators worldwide" |
 
 → 直接映射到 `testimonialSection.title`
@@ -345,7 +345,7 @@ def classify_by_slug(slug):
 
 ### D1. 选故事线
 
-读取 [`landing-storylines.json`](../../../1-3 Content Gen/Page Gen/Refresh-Page/landing-storylines.json) 或 STORYLINE-BY-DIRECTION §4.6.3，按**投放意图**选 6 条之一；仅内部 QA 用 `landing-full`。
+读取 [`landing-storylines.json`](../../../genflow/Page Gen/Refresh-Page/landing-storylines.json) 或 STORYLINE-BY-DIRECTION §4.6.3，按**投放意图**选 6 条之一；仅内部 QA 用 `landing-full`。
 
 在策略说明中写明故事线 ID 与选型理由（竞品词 → `landing-vs-competitor`，试用 Search → `landing-trial-now`，等）。
 
@@ -375,7 +375,7 @@ Landing 文案必须和故事线意图严格对齐：
 
 ### C1. 选故事线
 
-对照 [`STORYLINES.md`](../../../1-3 Content Gen/Page Gen/Refresh-Page/STORYLINES.md) 选 **T1–T5** 或 **N5**；对标现网已 reflow 的长页用 **T-long**。在策略说明中写明编号与理由。
+对照 [`STORYLINES.md`](../../../genflow/Page Gen/Refresh-Page/STORYLINES.md) 选 **T1–T5** 或 **N5**；对标现网已 reflow 的长页用 **T-long**。在策略说明中写明编号与理由。
 
 ### C2. 溯源 + Persona（同轨道 A 第三步）
 
@@ -530,7 +530,7 @@ Keywords: [5–8 keywords, comma-separated]
 ```
 og:title: [same as SEO Title or optimized for social]
 og:description: [under 95 chars, action-oriented, no technical jargon]
-og:image: [official Lovart OG image or feature-specific visual]
+og:image: [official Acme OG image or feature-specific visual]
 og:url: [canonical URL]
 twitter:card: summary_large_image
 twitter:title: [under 70 chars]

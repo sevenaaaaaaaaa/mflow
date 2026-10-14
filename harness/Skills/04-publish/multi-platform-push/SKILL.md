@@ -9,7 +9,7 @@ description: Step 5+6 of 品牌方 Content Pipeline — 将审计通过的内容
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
+| 文档 SSOT | `harness/Docs/` |
 | Sanity 脚本 | `dev/品牌.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |
@@ -27,7 +27,7 @@ Step 5+6 of 品牌方 Content Pipeline — 将审计通过的内容写入飞书 
 
 - Step 4 审计 PASS 或 CONDITIONAL PASS
 - Sanity 已发布（博客 URL 已知：`https://www.example.com/blog/{slug}`）
-- content-distributor 引擎已部署：`~/content-distributor/`（独立于 vault）
+- content-distributor 引擎已部署：`~/content-distributor/`（独立于仓库）
 - 飞书 CLI 已登录：`lark-cli auth login --domain base`
 
 ---

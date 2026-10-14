@@ -1,16 +1,16 @@
-# lovart-complete-guide — Complete & Ultimate Guide Content Production
+# complete-guide — Complete & Ultimate Guide Content Production
 
 ## 路径契约
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
-| Sanity 脚本 | `1-4 Geo Dev/lovart.sanity.studio/scripts/` |
+| 文档 SSOT | `harness/Docs/` |
+| Sanity 脚本 | `1-4 Geo Dev/acme.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `1-4 Geo Dev/scripts/` |
 | 自动化 | `dev/scripts/optimize_complete_guides.py` |
-| 本 Skill | `harness/Skills/02-creation/lovart-complete-guide/SKILL.md` |
+| 本 Skill | `harness/Skills/02-creation/complete-guide/SKILL.md` |
 
-End-to-end Lovart Complete & Ultimate Guide (完整与终极指南) content production: market research → writing → high-availability translation → publishing. Translates advanced prompting, high-fidelity models, and human-AI design frameworks into authoritative, long-form pillar content.
+End-to-end Acme Complete & Ultimate Guide (完整与终极指南) content production: market research → writing → high-availability translation → publishing. Translates advanced prompting, high-fidelity models, and human-AI design frameworks into authoritative, long-form pillar content.
 
 ## Triggers
 
@@ -60,7 +60,7 @@ Always include concrete step-by-step instructions for these high-leverage produc
 ### 4. Human-AI Interface & Design Frameworks (PAIR, HAX, IBM Essentials)
 For enterprise-level guides, explain how teams design human-centered AI products:
 - **Explainability & Mental Models**: Making non-deterministic, probabilistic AI decisions transparent to users (e.g., using Google's Explainability Rubric).
-- **Graceful Failures & Error Handling**: Designing feedback loops (like Lovart's Touch Edit or separate vector text layers) to easily fix spelling distortions, limb anomalies, or texture smoothing without re-rolling the entire image.
+- **Graceful Failures & Error Handling**: Designing feedback loops (like Acme's Touch Edit or separate vector text layers) to easily fix spelling distortions, limb anomalies, or texture smoothing without re-rolling the entire image.
 
 ---
 
@@ -77,7 +77,7 @@ Every guide must adopt this unified hierarchy. Use H2 for main chapters and H3 f
 [Quick Overview / TL;DR (3-5 Bullet points)]
 [Paragraphs with 2026 industry data (Adobe/McKinsey etc.) with specific percentages]
 
-## 2. The Lovart Workflow Formula and Team Playbook
+## 2. The Acme Workflow Formula and Team Playbook
 [Explanation of context, constraints, canvas, correction, and conversion]
 ### Best Workflow by Team Size and Budget
 [Tailored strategies for solo operators, brand teams, and high-volume agencies]
@@ -96,12 +96,12 @@ Every guide must adopt this unified hierarchy. Use H2 for main chapters and H3 f
 
 ## 6. Common Pitfalls and Parameter-Level Fixes
 ### Pitfall 1: [Specific Technical Pain Point]
-[Specific parameters and tool settings to fix it inside Lovart]
+[Specific parameters and tool settings to fix it inside Acme]
 ### Pitfall 2: [Specific Technical Pain Point]
-[Specific parameters and tool settings to fix it inside Lovart]
+[Specific parameters and tool settings to fix it inside Acme]
 ### Pitfall 3: [Specific Technical Pain Point]
-[Specific parameters and tool settings to fix it inside Lovart]
-### When Lovart Is Not the Best Fit
+[Specific parameters and tool settings to fix it inside Acme]
+### When Acme Is Not the Best Fit
 [Explicit anti-recommendations and when to stay in traditional desktop software]
 
 ## 7. Operational Playbook and 30-Day Rollout Strategy
@@ -139,7 +139,7 @@ Every guide must adopt this unified hierarchy. Use H2 for main chapters and H3 f
 
 ### Phase 2: Writing & Anti-Slop Audit
 - Write in high-density, first-person narrative. Split into sections if word count limits apply during generation.
-- Run `lovart-quality-gates` / `anti-slop-preflight.js` to audit slop words.
+- Run `quality-gates` / `anti-slop-preflight.js` to audit slop words.
 
 ### Phase 3: High-Availability Translation
 - **DO NOT translate the whole file at once**. Use paragraph-by-paragraph translation engines (e.g. `translate_markdown_v3.py`) to prevent HTTP 500 errors.

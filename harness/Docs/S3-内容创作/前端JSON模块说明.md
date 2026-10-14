@@ -1715,9 +1715,9 @@ A: 在 `preview-data.json` 中添加示例，然后在页面中使用。
 
 ## 四、相关文档
 
-- [STORYLINE-BY-DIRECTION.md](../1-3 Content Gen/Page Gen/Refresh-Page/STORYLINE-BY-DIRECTION.md) - 权威故事线文档
-- [FEATURES-PRODUCTION.md](../1-3 Content Gen/Page Gen/Refresh-Page/FEATURES-PRODUCTION.md) - Features 页面生产指南
-- [STORYLINES.md](../1-3 Content Gen/Page Gen/Refresh-Page/STORYLINES.md) - 情景×组件组合菜谱
+- [STORYLINE-BY-DIRECTION.md](../genflow/Page Gen/Refresh-Page/STORYLINE-BY-DIRECTION.md) - 权威故事线文档
+- [FEATURES-PRODUCTION.md](../genflow/Page Gen/Refresh-Page/FEATURES-PRODUCTION.md) - Features 页面生产指南
+- [STORYLINES.md](../genflow/Page Gen/Refresh-Page/STORYLINES.md) - 情景×组件组合菜谱
 - [For-Landing-Page-制作人.md](./For-Landing-Page-制作人.md) - Landing Page 制作人操作指南
 
 ---

@@ -86,13 +86,13 @@ hub 自有内容（导语+观点+FAQ）≥300 词——纯卡片堆砌页 doorwa
 - [ ] recent 块在页尾（活页感）
 - [ ] faq-light 回答"从哪开始"（把浏览者往详情页推一步 = 拓扑 + CRO 双赢）
 - [ ] 收口软 CTA 指向核心产品入口（品牌在场的自然露出，非 hard-sell）
-- [ ] 配图走图库（Lovart: `../landing-writer/references/landing-ssot/image_pool.py` 可复用选图逻辑），禁编造
+- [ ] 配图走图库（Acme: `../landing-writer/references/landing-ssot/image_pool.py` 可复用选图逻辑），禁编造
 
 ## 输出格式
 
 - **结构定义**：按故事线 sections 输出模块序列 + 每块卡片清单（title/注解/slug/标签）——人工写 markdown 或组装 composite-v2 JSON 均可
 - **composite-v2 复用**：聚合模块直接用组件库 `tool-grid / blog-grid / canvas-wall / showcase-stacked / bento-* / cluster-block-dense`（33 组件库见 `genflow/Page Gen/Refresh-Page/README.md`）；**不要**挂 storylineTemplate=landing-*（那是转化向治理），hub 页 storylineTemplate 留空或 `hub-{type}`
-- **Sanity 适配**：发布走 `sanity-publish`；pageType 按站点 schema（Lovart topics 类型或新增 hub 类型，由发布技能判定）
+- **Sanity 适配**：发布走 `sanity-publish`；pageType 按站点 schema（Acme topics 类型或新增 hub 类型，由发布技能判定）
 - **语言**：默认 EN 主建；多语言按需扩展（聚合页翻译成本低于详情页，后置）
 
 ## 自检清单（交付前逐项）

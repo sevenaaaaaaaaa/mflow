@@ -1,12 +1,12 @@
-# lovart-stack-by-stack
+# stack-by-stack
 
 Stack × Stack 子技能，用于写 tool stack、workflow stack、A+B vs C+D 的整栈比较文章。
 
 先加载：
 
-- `lovart-core`
-- `lovart-blog`
-- `lovart-content-quality-gates`
+- `core`
+- `blog`
+- `content-quality-gates`
 
 并遵守共享治理文件：
 
@@ -34,6 +34,6 @@ Read [references/benchmark-seed-v2.md](references/benchmark-seed-v2.md) to exten
 
 Read [references/benchmark-seed-v3.md](references/benchmark-seed-v3.md) to deepen ownership, operating-model, and team-boundary comparisons in multi-tool stacks.
 
-Read [references/lovart-stack-by-stack-playbook.md](references/lovart-stack-by-stack-playbook.md) for comparison structure, tested-workflow expectations, and anti-patterns.
+Read [references/<brand>-stack-by-stack-playbook.md](references/<brand>-stack-by-stack-playbook.md) for comparison structure, tested-workflow expectations, and anti-patterns.
 
-Read [references/lovart-stack-by-stack-review-checklist.md](references/lovart-stack-by-stack-review-checklist.md) before approving a draft.
+Read [references/<brand>-stack-by-stack-review-checklist.md](references/<brand>-stack-by-stack-review-checklist.md) before approving a draft.

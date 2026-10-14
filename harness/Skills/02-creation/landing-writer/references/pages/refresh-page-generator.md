@@ -8,13 +8,13 @@ disable-model-invocation: true
 
 ## Support-Only 入口约束
 
-本 skill 只作为 `lovart-landing-page` 的内部 bodyJson/type 序列生成器，不直接响应用户请求。任何“刷新页面 / 生成页面 JSON / Product / Scenario / Solution / Topic / Landing Page”请求，都必须先进入 `lovart-landing-page` 父 skill，由父 skill 完成页面类型、故事线、质检和发布边界判断后再调用本 skill。
+本 skill 只作为 `landing-page` 的内部 bodyJson/type 序列生成器，不直接响应用户请求。任何“刷新页面 / 生成页面 JSON / Product / Scenario / Solution / Topic / Landing Page”请求，都必须先进入 `landing-page` 父 skill，由父 skill 完成页面类型、故事线、质检和发布边界判断后再调用本 skill。
 
 ## 目标
 
 把「对话需求」稳定转换成 Refresh-Page 可落地的页面草稿：
 
-**Step 0** [PAGE-BRIEF.md](../../1-3 Content Gen/Page Gen/Refresh-Page/PAGE-BRIEF.md)（立场）→ **Step 1** 选 category + 故事线 → **Step 2** 填 JSON。
+**Step 0** [PAGE-BRIEF.md](../../genflow/Page Gen/Refresh-Page/PAGE-BRIEF.md)（立场）→ **Step 1** 选 category + 故事线 → **Step 2** 填 JSON。
 
 1. 填 PAGE-BRIEF 五问（或 Product 展开见 PRODUCT-PRODUCTION.md §一）
 2. 选页面类型与故事线 ID
@@ -25,11 +25,11 @@ disable-model-invocation: true
 
 | 步骤 | 文档 |
 |------|------|
-| Step 0 | [PAGE-BRIEF.md](../../1-3 Content Gen/Page Gen/Refresh-Page/PAGE-BRIEF.md) |
-| Step 1+ | [STORYLINE-BY-DIRECTION.md](../../1-3 Content Gen/Page Gen/Refresh-Page/STORYLINE-BY-DIRECTION.md) |
-| 字段 | [README.md](../../1-3 Content Gen/Page Gen/Refresh-Page/README.md) |
-| 示例 | [preview-data.json](../../1-3 Content Gen/Page Gen/Refresh-Page/preview-data.json) |
-| Product | [PRODUCT-PRODUCTION.md](../../1-3 Content Gen/Page Gen/Refresh-Page/PRODUCT-PRODUCTION.md) + `Pages/Products/en/` 案例 |
+| Step 0 | [PAGE-BRIEF.md](../../genflow/Page Gen/Refresh-Page/PAGE-BRIEF.md) |
+| Step 1+ | [STORYLINE-BY-DIRECTION.md](../../genflow/Page Gen/Refresh-Page/STORYLINE-BY-DIRECTION.md) |
+| 字段 | [README.md](../../genflow/Page Gen/Refresh-Page/README.md) |
+| 示例 | [preview-data.json](../../genflow/Page Gen/Refresh-Page/preview-data.json) |
+| Product | [PRODUCT-PRODUCTION.md](../../genflow/Page Gen/Refresh-Page/PRODUCT-PRODUCTION.md) + `Pages/Products/en/` 案例 |
 
 勿跳过 Brief 直接从 §4 复制 type 序列。
 
@@ -69,7 +69,7 @@ Product 页额外确认：官网 SEO vs 投放、能力/特色/功能主次、�
 
 ## 发布（Product）
 
-生成后走 **`lovart-product-sanity-publish`** Skill：`preflight` → `import-page.js --dry-run` → `--import`。
+生成后走 **`product-sanity-publish`** Skill：`preflight` → `import-page.js --dry-run` → `--import`。
 
 ## 强约束
 

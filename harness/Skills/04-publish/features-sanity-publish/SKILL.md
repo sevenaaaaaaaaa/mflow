@@ -8,7 +8,7 @@ disable-model-invocation: true
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
+| 文档 SSOT | `harness/Docs/` |
 | Sanity 脚本 | `dev/品牌.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |
@@ -51,7 +51,7 @@ disable-model-invocation: true
 2. **日常**：仅新增/变更 JSON → convert / `import-page` → **`import --missing`**  
 3. `cd "dev/品牌.sanity.studio"` — `node scripts/check-sanity-auth.js`  
 4. **质量门禁**：[`content-quality-gates`](../content-quality-gates/SKILL.md) → `preflight-content.js --type features`（可选 `--sample-urls 8`）  
-5. **单篇**：`node scripts/import-page.js "../1-3 Content Gen/Page Gen/Pages/Features/en/{slug}-en.json" --dry-run`  
+5. **单篇**：`node scripts/import-page.js "../genflow/Page Gen/Pages/Features/en/{slug}-en.json" --dry-run`  
 6. **批量**：`node scripts/convert-features.js --dry-run` — 读 `~/品牌/import-features-report.json`  
 7. 用户确认后：convert / `import-page.js --import`  
 8. **import 前**：`node scripts/preflight-content.js --ndjson ~/品牌/import-features.ndjson --strict`  

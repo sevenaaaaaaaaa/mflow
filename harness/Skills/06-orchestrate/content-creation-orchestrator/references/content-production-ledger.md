@@ -1,6 +1,6 @@
 # Content Production Ledger Reference
 
-SSOT: `1-1 GEO Readme/文档/04-质量治理/Content-Production-Ledger.md`
+SSOT: `harness/Docs/S4-质量审核/Content-Production-Ledger.md`
 
 Orchestrator rule: after SERP brief, require Ledger before routing to Blog or Page writer.
 

@@ -9,7 +9,7 @@ description: 品牌方 品牌声誉舆情监测系统 — 每日自动采集多�
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
+| 文档 SSOT | `harness/Docs/` |
 | Sanity 脚本 | `dev/品牌.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |
@@ -30,7 +30,7 @@ description: 品牌方 品牌声誉舆情监测系统 — 每日自动采集多�
 ### Phase 0: 本地数据采集
 
 ```bash
-cd "1-Project/品牌方" && python3 scripts/sentinel/daily.py
+cd "品牌方" && python3 scripts/sentinel/daily.py
 ```
 
 自动采集 4 个本地源：GSC CSV / SEO周报 / 邮件复盘 / 内容产出。
@@ -110,7 +110,7 @@ cd "1-Project/品牌方" && python3 scripts/sentinel/daily.py
 ### Phase 4: 报告生成
 
 ```bash
-cd "1-Project/品牌方" && python3 scripts/sentinel/report.py --date $(date +%Y-%m-%d)
+cd "品牌方" && python3 scripts/sentinel/report.py --date $(date +%Y-%m-%d)
 ```
 
 ## 报告结构 (7板块 + 可视化方案)
@@ -154,7 +154,7 @@ cd "1-Project/品牌方" && python3 scripts/sentinel/report.py --date $(date +%Y
 ## 报告路径
 
 ```
-1-Project/
+mflow/
 ├── insight-data/ORM/        # 舆情报告产出（daily/weekly/monthly/quarterly/annual/raw）
 │   ├── daily/品牌方-Sentinel-YYYY-MM-DD-daily.md
 │   ├── weekly/品牌方-Sentinel-YYYY-MM-DD-weekly.md

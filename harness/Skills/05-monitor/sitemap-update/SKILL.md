@@ -9,7 +9,7 @@ description: Step 7 of 品牌方 Content Pipeline — 内容发布后自动重�
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
+| 文档 SSOT | `harness/Docs/` |
 | Sanity 脚本 | `dev/品牌.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |
@@ -28,7 +28,7 @@ Step 7 of 品牌方 Content Pipeline — 内容发布后自动重新生成 sitem
 ## Prerequisites
 
 - `generate-all.py` 和 `config.example.json` 存在于 Skills 目录
-- 输出目标：`1-Project/dev/Sitemap/`（已有 32 个文件）
+- 输出目标：`dev/Sitemap/`（已有 32 个文件）
 - Python 3.9+
 - 网络可用
 
@@ -48,7 +48,7 @@ ELSE:
 ### Phase 2: 执行生成
 
 ```bash
-cd "1-Project/harness/Skills"
+cd "harness/Skills"
 
 # 完整模式（新内容发布后）
 python3 generate-all.py config.example.json
@@ -79,12 +79,12 @@ diff <(sort output/all-urls.txt) <(sort output/all-urls.txt.bak) | head -20
 ### Phase 4: 同步到项目 Sitemap 目录
 
 ```bash
-# 复制到项目 Sitemap 目录（Obsidian 可见）
-cp output/sitemap-*.xml "1-Project/dev/Sitemap/"
-cp output/llms*.txt "1-Project/dev/Sitemap/"
-cp output/robots.txt "1-Project/dev/Sitemap/"
-cp output/all-urls.txt "1-Project/dev/Sitemap/"
-cp -r output/schema-snippets/ "1-Project/dev/Sitemap/schema-snippets/"
+# 复制到项目 Sitemap 目录
+cp output/sitemap-*.xml "dev/Sitemap/"
+cp output/llms*.txt "dev/Sitemap/"
+cp output/robots.txt "dev/Sitemap/"
+cp output/all-urls.txt "dev/Sitemap/"
+cp -r output/schema-snippets/ "dev/Sitemap/schema-snippets/"
 ```
 
 ### Phase 5: 部署到服务器

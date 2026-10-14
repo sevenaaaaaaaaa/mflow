@@ -75,7 +75,7 @@ Claude 打开 `harness/` 时的项目记忆。技能库见 `.claude/skills/`（C
 
 ## 路径契约（SSOT）
 
-- 文档 SSOT：`1-1 GEO Readme/`
+- 文档 SSOT：`harness/Docs/`
 - Sanity 脚本：`dev/品牌.sanity.studio/scripts/`
 - SEO/Sentinel 脚本：`dev/scripts/`
 - 自动化：`dev/automation/`

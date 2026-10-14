@@ -2,7 +2,7 @@
 type: reference
 version: 1.0
 updated: 2026-07-05
-owner: lovart-landing-page
+owner: landing-page
 scope:
   - tool
   - feature
@@ -15,7 +15,7 @@ scope:
 
 # Landing Copy Constraints SSOT
 
-> 这是 Lovart 落地页文案的人类可读 SSOT（“这页该怎么说”）。  
+> 这是 Acme 落地页文案的人类可读 SSOT（“这页该怎么说”）。  
 > **机器可读 SSOT = 故事线里的 copy 绑定**：`landing-storylines.json`（内嵌 `copy`）、`solution-storylines.json` / `scenarios-storylines.json`（`copyDefault`）、`page-copy-bindings.json`（feature/tool/product/topic）。  
 > **结构 = 故事线本身**：`STORYLINE-BY-DIRECTION.md` + 各 storyline JSON。  
 > 三者关系：结构（section 顺序）与文案绑定（intent/hero/proof/cta/faq）**同源存放在故事线里**；本文件解释绑定背后的写作意图；`COPY-PREFLIGHT` 脚本从故事线绑定**派生**校验，不再硬编码。
@@ -48,7 +48,7 @@ scope:
 6. **CTA**：下一步动作是什么，而且必须和流量阶段匹配
 7. **FAQ / objection**：至少回答 3 个高意图问题，而不是泛百科问答
 
-如果页面只讲“Lovart 很强”，但没有 input/output/edit path/proof，这页就是不合格。
+如果页面只讲“Acme 很强”，但没有 input/output/edit path/proof，这页就是不合格。
 
 ---
 
@@ -132,7 +132,7 @@ FAQ 必须回答高意图异议：
 - 是否支持某种输入/输出/编辑路径
 - 是否能和现有流程衔接
 
-FAQ 不要写成“什么是 Lovart”“为什么选择我们”这种弱问题。
+FAQ 不要写成“什么是 Acme”“为什么选择我们”这种弱问题。
 
 ### CTA 段
 
@@ -217,7 +217,7 @@ CTA 必须对应流量阶段：
 
 ### `scenario`
 
-- 核心承诺：这个角色 / 行业 / 场景怎么用 Lovart
+- 核心承诺：这个角色 / 行业 / 场景怎么用 Acme
 - 必须出现：day-in-the-life problem、workflow fit、deliverables、objections
 - 不应塞 pricing、tool-grid、trial-heavy 结构
 

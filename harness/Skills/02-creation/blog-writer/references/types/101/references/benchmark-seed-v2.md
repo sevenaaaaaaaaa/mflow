@@ -1,6 +1,6 @@
-# Lovart 101 Benchmark Seed V2
+# Acme 101 Benchmark Seed V2
 
-Purpose: broaden Lovart 101 beyond generic AI design basics into higher-intent beginner entry points.
+Purpose: broaden Acme 101 beyond generic AI design basics into higher-intent beginner entry points.
 
 ## Additional topic lanes
 

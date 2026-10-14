@@ -9,7 +9,7 @@ description: Step 1 of 品牌方 Content Pipeline — 拉取 GSC + GA4 + Bing �
 
 | 层 | 路径 |
 |----|------|
-| 文档 SSOT | `1-1 GEO Readme/` |
+| 文档 SSOT | `harness/Docs/` |
 | Sanity 脚本 | `dev/品牌.sanity.studio/scripts/` |
 | SEO/Sentinel 脚本 | `dev/scripts/` |
 | 自动化 | `dev/automation/` |
@@ -48,7 +48,7 @@ Step 1 of 品牌方 Content Pipeline — 拉取 GSC + GA4 + Bing 三源数据，
 │    └─ 失败/未配置 → 降级到本地 CSV    │
 │                                       │
 │ 3️⃣ 本地 CSV (最后兜底)               │
-│    扫描 1-6 Knowledge Base/        │
+│    扫描 insight-data/Knowledge Base/        │
 │    insight-data/Keywords Research/         │
 │    Daily Raw Data/                    │
 └─────────────────────────────────────┘
@@ -163,7 +163,7 @@ Agent 需读取以下本地文件，提取增量信号：
 | 来源 | 路径 | 提取内容 |
 |------|------|---------|
 | 邮件复盘 | `品牌方/邮件复盘.md` | 送达率、退订率、打开率趋势 |
-| 内容产出 | `1-3 Content Gen/Content Calendar/` | 14 品类待发/已发文章统计 |
+| 内容产出 | `genflow/Content Calendar/` | 14 品类待发/已发文章统计 |
 | 翻译进度 | `dev/品牌.sanity.studio/scripts/translation-progress.md` | 翻译完成度 |
 | 竞品动态 | `insight-data/ORM/raw/` | 竞品重大变化 |
 | SEO 周报 | `insight-data/Trident Insights/reports/SEO周报_*.md` | 品牌词/非品牌词趋势 |

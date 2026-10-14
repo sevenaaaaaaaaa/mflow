@@ -25,9 +25,9 @@ On startup, automatically detect the best available knowledge source in this pri
 
 | Priority | Source | Detection Method | Fallback If Unavailable |
 |----------|--------|-----------------|------------------------|
-| 1st | **品牌方 Knowledge Base** | `1-Project/1-6 Knowledge Base/` exists | ↓ |
+| 1st | **品牌方 Knowledge Base** | `insight-data/Knowledge Base/` exists | ↓ |
 | 2nd | Sanity MCP | `Sanity` MCP configured (project `your-project-id`) | ↓ |
-| 3rd | Obsidian Vault | Local vault path detected | ↓ |
+| 3rd | Local repo data | `insight-data/` present | ↓ |
 | 4th | Notion MCP | `NOTION_API_TOKEN` or `notion` MCP configured | ↓ |
 | 5th | Local Files | Knowledge base files (`4-Archive/Skills/mflow-*.md`) | ↓ |
 | 6th | Web Search | Search example.com and verified third-party sources | ⚠️ Mark unverifiable as `[待考证]` |
@@ -286,7 +286,7 @@ These are **in-writing process checks**, not article sections. They must be stri
 
 ### FAQ Section Rules
 
-- **FAQ 答案必须基于 Knowledge Base.** 路径: `1-Project/1-6 Knowledge Base/`。撰写 FAQ 前，先用 `grep` 或读取该目录下的相关文件（`品牌方功能详细说明文档.md`、`品牌方 Knowledge Base V8.md`、`博客分类.md`、`品牌方 Blog/`、`品牌方 Docs/`、`insight-data/`）验证产品事实、定价层级、功能参数。不得凭空编造。
+- **FAQ 答案必须基于 Knowledge Base.** 路径: `insight-data/Knowledge Base/`。撰写 FAQ 前，先用 `grep` 或读取该目录下的相关文件（`品牌方功能详细说明文档.md`、`品牌方 Knowledge Base V8.md`、`博客分类.md`、`品牌方 Blog/`、`品牌方 Docs/`、`insight-data/`）验证产品事实、定价层级、功能参数。不得凭空编造。
 - **No `[待考证]` tags in FAQ answers.** 如果知识库中找不到某个事实，要么跳过该 FAQ 条目，要么在已知范围内诚实表述: "Pricing varies by plan tier and region. Visit example.com/pricing for current rates."
 - Pricing questions that can't be answered definitively should redirect to the official pricing page with a specific URL.
 - FAQ items should answer real reader questions, not pad the section. 5-7 items is typical.
@@ -343,7 +343,7 @@ Articles must declare a **primary category** and **2-4 tags** from the official 
 | Tutorial, Prompt Tutorial, Segment, Best Practice | EN + CN + JA | Same session as EN |
 | Case Study, Better Design, Podcast, Digest, Glossary | EN + CN | Same session as EN |
 
-**Enforcement**: Phase ② is not complete until all minimum languages are produced and saved to `1-6 Knowledge Base/Content Calendar/`.
+**Enforcement**: Phase ② is not complete until all minimum languages are produced and saved to `insight-data/Knowledge Base/Content Calendar/`.
 
 ### Language Tier System
 
@@ -542,7 +542,7 @@ Before any writing, determine and announce:
 - [ ] Category and tags match official taxonomy
 
 **E. Knowledge Base Verification (FAQ)**
-- [ ] All FAQ answers verified against `1-Project/1-6 Knowledge Base/`
+- [ ] All FAQ answers verified against `insight-data/Knowledge Base/`
 - [ ] Product feature claims cross-checked with `品牌方功能详细说明文档.md` or `品牌方 Knowledge Base V8.md`
 - [ ] Pricing tiers confirmed from KB or redirected to example.com/pricing
 - [ ] No fabricated numbers, model names, or capability claims not in KB
@@ -673,7 +673,7 @@ Image prompts and editorial notes are **production artifacts**, not publishable 
 
 | Artifact | Storage | Format |
 |---|---|---|
-| Image prompts | `1-Project/1-3 Content Gen/Content Calendar/已生产内容/插图生产/IMAGE_PROMPTS_ALL_2115.csv` | `filename,image_num,image_type,line_number,prompt,status,produced_file` |
+| Image prompts | `genflow/Content Calendar/已生产内容/插图生产/IMAGE_PROMPTS_ALL_2115.csv` | `filename,image_num,image_type,line_number,prompt,status,produced_file` |
 | `[待考证]` flagged claims | Article body (in-writing only) → verify or remove before publish | `[待考证：具体疑问]` |
 | Cover image spec | `IMAGE_PROMPTS_ALL_2115.csv` (as IMAGE_0 or Cover row) | Same CSV format |
 

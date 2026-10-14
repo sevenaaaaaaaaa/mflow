@@ -41,7 +41,7 @@ Master orchestrator for the 品牌方 daily blog production pipeline. Calls thre
   │       ├─ 选择 Narrative Framework (11 种)
   │       ├─ 执行 Sub-Pipeline (§2-§13)
   │       ├─ SEO Meta Package + E-E-A-T Audit
-  │       └─ 输出到 1-6 Knowledge Base/Content Calendar/
+  │       └─ 输出到 insight-data/Knowledge Base/Content Calendar/
   │
   ├─ Phase ③: Sanity Publish (用户触发)
   │   └─ Schema sync → convert → preview → confirm → import
@@ -119,7 +119,7 @@ For each article in the production queue, execute the full `blog-writer（方法
 | 2 | ≥3 internal links per article with funnel-stage awareness | 0 internal links |
 | 3 | Image prompts saved to `IMAGE_PROMPTS_ALL_2115.csv`, not to article file | `### Appendix: Image Prompts` found in output |
 | 4 | E-E-A-T + Anti-AI checklists executed silently, not saved | Either checklist found in output |
-| 5 | FAQ answers verified against Knowledge Base (`1-Project/1-6 Knowledge Base/`), no fabricated facts | FAQ answer contains unverifiable claim not in KB |
+| 5 | FAQ answers verified against Knowledge Base (`insight-data/Knowledge Base/`), no fabricated facts | FAQ answer contains unverifiable claim not in KB |
 | 6 | FAQ answers contain no `[待考证]` tags | Any `[待考证]` in FAQ section |
 | 7 | Comparison type uses 3 images (Side-by-Side UI + Workflow Diagram + Brand CTA), not 4 | Wrong image count |
 | 8 | Titles generated in Step 1 include at least 5 variants covering all required formats | Fewer than 5 titles or missing required formats |
@@ -219,7 +219,7 @@ GSC 来源: P0 [keyword types] (pos [range], imp [range])
 - **终端输出也必须展示完整 URL**，不可截短或缩写
 - Add a brief summary row: type distribution, total word count, language coverage, GSC keyword origin
 - If Phase ③ was skipped (articles produced but not pushed), append `⚠️ 未发布` to each URL line
-- Save the link summary to `1-Project/dev/Output/Content Calendar/daily-link-summary-YYYY-MM-DD.md`
+- Save the link summary to `dev/Output/Content Calendar/daily-link-summary-YYYY-MM-DD.md`
 
 ### Orchestrator Output
 

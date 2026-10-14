@@ -1,6 +1,6 @@
 # 投放策略（Paid Strategy — landing-writer 内联版）
 
-> **lineage**：2026-10-04 由 lovart-media-strategist 撤编并入；黑名单文化继承影视竞品实测；UTM 沿 AD-Tracking SSOT（不重建）。
+> **lineage**：2026-10-04 由 media-strategist 撤编并入；黑名单文化继承影视竞品实测；UTM 沿 AD-Tracking SSOT（不重建）。
 > **铁律**：投放是放大器不是实验仪器——只有 CRO 审计 ≥80 的页（cro-audit.md）配拿预算。
 
 ## 四问（顺序不可颠倒）

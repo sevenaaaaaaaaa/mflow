@@ -6,12 +6,12 @@ Use this for multilingual Blog, Tools, Features, and compositePage content.
 
 | Source | Purpose |
 |---|---|
-| `1-1 GEO Readme/文档/02-模块上手/i18n-多语言.md` | i18n workflow commands, principles, supported languages. |
+| `harness/Docs/i18n-多语言.md` | i18n workflow commands, principles, supported languages. |
 | `dev/品牌.sanity.studio/scripts/i18n-workflow.js` | Studio i18n workflow: prepare, apply, verify, publish. |
 | `dev/品牌.sanity.studio/scripts/lib/i18n-manifest.js` | EN SSOT slot manifest and target languages. |
 | `dev/品牌.sanity.studio/scripts/verify-composite-v2-crosslang.js` | Cross-language structure verification. |
 | `harness/Skills/content-quality-gates/SKILL.md` | L5 i18n checks and preflight. |
-| `1-1 GEO Readme/文档/04-质量治理/Anti-Slop.md` | Language boundaries and anti-translation-slop rules. |
+| `harness/Docs/S4-质量审核/Anti-Slop.md` | Language boundaries and anti-translation-slop rules. |
 
 ## Supported Languages
 
