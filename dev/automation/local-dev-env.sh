@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Shared the brand local-dev path contract.
+# Shared MFlow local-dev path contract (no external vault: data lives in the repo's gitignored
+# insight-data/ genflow/ ops/ dirs; bulky caches/outputs live under MFLOW_LOCAL_DEV_ROOT).
 
 set -euo pipefail
 
@@ -12,7 +13,9 @@ export MFLOW_LOCAL_OUTPUT_DIR="${MFLOW_LOCAL_OUTPUT_DIR:-$MFLOW_LOCAL_DEV_ROOT/O
 export MFLOW_LOCAL_BACKUP_DIR="${MFLOW_LOCAL_BACKUP_DIR:-$MFLOW_LOCAL_DEV_ROOT/Backup}"
 export MFLOW_LOCAL_SANITY_DIR="${MFLOW_LOCAL_SANITY_DIR:-$MFLOW_LOCAL_DEV_ROOT/Sanity}"
 export MFLOW_LOCAL_WORDPRESS_DIR="${MFLOW_LOCAL_WORDPRESS_DIR:-$MFLOW_LOCAL_DEV_ROOT/WordPress}"
-export MFLOW_RESOURCE_ROOT="${MFLOW_RESOURCE_ROOT:-$(cd "${BASH_SOURCE[0]%/*}/../../../.." && pwd)}"
+export MFLOW_ROOT="${MFLOW_ROOT:-$(cd "${BASH_SOURCE[0]%/*}/../.." && pwd)}"
+# Large reusable resources (datasets, git object stores); defaults to the Local Dev root.
+export MFLOW_RESOURCE_ROOT="${MFLOW_RESOURCE_ROOT:-$MFLOW_LOCAL_DEV_ROOT}"
 export MFLOW_LOCAL_GIT_DIR="${MFLOW_LOCAL_GIT_DIR:-$MFLOW_LOCAL_DEV_ROOT/Git}"
 export MFLOW_LOCAL_LOG_DIR="${MFLOW_LOCAL_LOG_DIR:-$MFLOW_LOCAL_DEV_ROOT/Logs}"
 export MFLOW_LOCAL_TEMP_DIR="${MFLOW_LOCAL_TEMP_DIR:-$MFLOW_LOCAL_DEV_ROOT/Temp}"

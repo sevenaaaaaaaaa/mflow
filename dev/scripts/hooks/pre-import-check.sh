@@ -71,7 +71,7 @@ echo "[pre-import] id=$ID type=$TARGET_TYPE"
 # --- 1) pipeline-state readiness ---
 echo "[1/5] pipeline-state readiness"
 # Resolve PIPELINE_PY as absolute path so we never depend on shell `..` expansion.
-# $HERE = hooks/, so 3 levels up gets us to 1-Project/the brand MFlow/.
+# $HERE = hooks/, so 3 levels up gets us to the repo root.
 HERE_ABS="$(cd "$HERE/../../.." && pwd)"
 PIPELINE_PY="$HERE_ABS/harness/Skills/06-orchestrate/pipeline-state/pipeline_state.py"
 if ! STAGE_JSON="$("$PY" "$PIPELINE_PY" --state-path "$PIPELINE_STATE" get --id "$ID" --json 2>/dev/null)"; then

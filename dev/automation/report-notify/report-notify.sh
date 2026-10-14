@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Archive automation run → local vault + optional Feishu; Notion via Agent/MCP follow-up.
+# Archive automation run → local archive + optional Feishu; Notion via Agent/MCP follow-up.
 #
 # Usage:
 #   bash report-notify.sh --type seo-weekly --status ok --summary "..." \
@@ -52,7 +52,7 @@ cat > "$MANIFEST" <<EOF
 }
 EOF
 
-# Markdown digest for Obsidian + Notion paste
+# Markdown digest for local archive + Notion paste
 MD="$REPORT_DIR/${TYPE}-${STAMP}.md"
 {
   echo "# the brand Automation Report: $TYPE"

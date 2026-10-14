@@ -6,7 +6,7 @@ from pathlib import Path
 import glob
 from ._common import banner
 
-CONTENT_DIR = Path(__file__).resolve().parents[4] / "1-3 Content Gen" / "Content Calendar"
+CONTENT_DIR = Path(__file__).resolve().parents[4] / "genflow" / "Content Calendar"
 
 
 def collect() -> dict:

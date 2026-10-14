@@ -14,14 +14,14 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/sevenaaaaaaa/Obsidian/MindRe/MindRe/1-Project/the brand MFlow/harness/11-knowledge/dream/consolidate.sh</string>
+    <string>__MFLOW_ROOT__/harness/11-knowledge/dream/consolidate.sh</string>
   </array>
   <key>WorkingDirectory</key>
-  <string>/Users/sevenaaaaaaa/Obsidian/MindRe/MindRe/1-Project/the brand MFlow</string>
+  <string>__MFLOW_ROOT__</string>
   <key>EnvironmentVariables</key>
   <dict>
     <key>PATH</key>
-    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/sevenaaaaaaa/.local/bin</string>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:__HOME__/.local/bin</string>
   </dict>
   <key>StandardOutPath</key>
   <string>/tmp/com.mflow.dream.out.log</string>

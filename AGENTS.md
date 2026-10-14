@@ -14,7 +14,7 @@ Skill 实体唯一真相在 `harness/Skills/`（45 个 SKILL.md，6 分组 + 编
 bash "dev/scripts/session-init.sh"
 ```
 
-4 道门禁（pipeline-state / router / next / governance）全过才开工。调度真相：launchd 每日管线（08:00）/ 每周管线（周一 07:00）/ 记忆整理（02:30），plist 源在 `dev/automation/plists/`。
+4 道门禁（pipeline-state / router / next / governance）全过才开工。调度真相：每日 / 每周管线与记忆整理由服务器 systemd timer（`mflow-daily` / `mflow-weekly` / `mflow-dream`）执行；本机 launchd 任务已统一收敛（清单见 gitignored 的 `ops/LOCAL-JOBS.md`），`dev/automation/plists/` 只是可选的本机模板（`install.sh` 渲染加载）。
 
 ## Knowledge · Memory · Dream · Audit（所有工具必读）
 

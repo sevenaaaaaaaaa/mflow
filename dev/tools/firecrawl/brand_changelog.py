@@ -4,7 +4,7 @@ the brand Changelog -> Structured JSON, via Firecrawl /v2/scrape.
 Zero-dep stdlib only (works under Hermes venv quirks).
 
 Drops outputs into:
-  /Users/seveno/Documents/MFlow Local Dev/Output/Firecrawl/
+  $HOME/Documents/MFlow Local Dev/Output/Firecrawl/
     └── changelog-YYYY-MM-DD.json
 
 Auth: $FIRECRAWL_API_KEY (export in shell, never paste into chat).

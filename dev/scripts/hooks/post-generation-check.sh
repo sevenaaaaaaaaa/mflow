@@ -19,7 +19,6 @@
 
 set -euo pipefail
 
-VAULT="${MFLOW_RESOURCE_ROOT:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../../../../.." && pwd)}"
 FILE=""
 SCRIPT=""
 TYPE="blog"

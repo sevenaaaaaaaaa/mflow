@@ -6,7 +6,7 @@ from pathlib import Path
 _HISTORICAL = Path(__file__).resolve().parent
 _SCRIPTS = _HISTORICAL.parent
 _GEO_DEV = _SCRIPTS.parent
-PROJECT = _GEO_DEV.parent  # 1-Project
+PROJECT = _GEO_DEV.parent  # repo root
 
 GEO_DEV = PROJECT / "dev"
 OUT_DIR = GEO_DEV / "Output/Data Ingestion"

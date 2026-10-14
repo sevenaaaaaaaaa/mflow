@@ -15,14 +15,12 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MFLOW_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-VAULT_ROOT="$(cd "$SCRIPT_DIR/../../../.." && pwd)"
 HARNESS="$MFLOW_ROOT/harness"
 PIPELINE_PY="$HARNESS/Skills/06-orchestrate/pipeline-state/pipeline_state.py"
 ROUTER_PY="$HARNESS/Skills/06-orchestrate/router/router.py"
 STATE="genflow/.pipeline/pipeline-state.json"
 
 # Resolve to absolute path
-VAULT="${MFLOW_RESOURCE_ROOT:-$VAULT_ROOT}"
 STATE_ABS="$MFLOW_ROOT/$STATE"
 
 # P7-C：python 解析统一 MFLOW_PYTHON → 项目 venv → 系统 python3（服务器 py3.6 ascii 读中文会炸）

@@ -16,19 +16,19 @@
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
-    <string>/Users/sevenaaaaaaa/Obsidian/MindRe/MindRe/1-Project/the brand MFlow/dev/automation/run-weekly-pipeline.sh</string>
+    <string>__MFLOW_ROOT__/dev/automation/run-weekly-pipeline.sh</string>
   </array>
   <key>WorkingDirectory</key>
-  <string>/Users/sevenaaaaaaa/Obsidian/MindRe/MindRe/1-Project/the brand MFlow</string>
+  <string>__MFLOW_ROOT__</string>
   <key>EnvironmentVariables</key>
   <dict>
     <key>PATH</key>
-    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/sevenaaaaaaa/.local/bin</string>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:__HOME__/.local/bin</string>
   </dict>
   <key>StandardOutPath</key>
-  <string>/Users/sevenaaaaaaa/Documents/MFlow Local Dev/Logs/com.mflow.weekly-pipeline.out.log</string>
+  <string>__MFLOW_LOCAL_DEV_ROOT__/Logs/com.mflow.weekly-pipeline.out.log</string>
   <key>StandardErrorPath</key>
-  <string>/Users/sevenaaaaaaa/Documents/MFlow Local Dev/Logs/com.mflow.weekly-pipeline.err.log</string>
+  <string>__MFLOW_LOCAL_DEV_ROOT__/Logs/com.mflow.weekly-pipeline.err.log</string>
   <key>RunAtLoad</key>
   <false/>
 </dict>

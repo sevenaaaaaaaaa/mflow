@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-sync-from-notion.py — pull Notion status changes back to Obsidian.
+sync-from-notion.py — pull Notion status changes back to the local repo.
 
-Direction: Notion → Obsidian (拉)
+Direction: Notion → local repo (拉)
 Trigger: weekly cron / manual
 Logic:
   1. Query Notion databases for records with recent Status/Comment changes
-  2. Find corresponding Obsidian .md files by File Path
+  2. Find corresponding local .md files by File Path
   3. Patch frontmatter with Notion-owned fields (Status, Priority, etc.)
   4. Log to sync-pulled.jsonl
 
@@ -257,7 +257,7 @@ def log_event(event: dict):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Pull Notion → Obsidian")
+    parser = argparse.ArgumentParser(description="Pull Notion → local repo")
     parser.add_argument("--apply", action="store_true")
     args = parser.parse_args()
 
@@ -265,7 +265,7 @@ def main():
         print("[err] No Notion API key found")
         sys.exit(2)
 
-    print(f"=== Notion → Obsidian sync ===")
+    print(f"=== Notion → local sync ===")
     print(f"Mode: {'APPLY' if args.apply else 'DRY-RUN'}")
 
     total = 0

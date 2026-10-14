@@ -8,13 +8,13 @@
     <key>ProgramArguments</key>
     <array>
         <string>/opt/homebrew/bin/python3</string>
-        <string>/Users/sevenaaaaaaa/Obsidian/MindRe/MindRe/1-Project/the brand MFlow/dev/scripts/sentinel/collect.py</string>
+        <string>__MFLOW_ROOT__/dev/scripts/sentinel/collect.py</string>
         <string>--source</string>
         <string>all</string>
     </array>
 
     <key>WorkingDirectory</key>
-    <string>/Users/sevenaaaaaaa/Obsidian/MindRe/MindRe/1-Project/the brand MFlow/dev</string>
+    <string>__MFLOW_ROOT__/dev</string>
 
     <key>StartCalendarInterval</key>
     <dict>

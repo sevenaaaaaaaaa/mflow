@@ -14,8 +14,8 @@ Design (conservative, idempotent, auditable):
 Boundary: USER.md NEVER touched. We write to MEMORY.md only.
 
 Usage:
-  python3 sync-to-hermes-memory.py --root <vault>
-  python3 sync-to-hermes-memory.py --root <vault> --dry-run
+  python3 sync-to-hermes-memory.py --root $MFLOW_ROOT
+  python3 sync-to-hermes-memory.py --root $MFLOW_ROOT --dry-run
 
 Exit codes: 0 ok, 1 hard err, 2 noop
 """

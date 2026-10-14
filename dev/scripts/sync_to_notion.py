@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-sync-to-notion.py — push Obsidian content to Notion databases.
+sync-to-notion.py — push local MFlow content (insight-data/ genflow/ …) to Notion databases.
 
-Direction: Obsidian → Notion (推)
+Direction: local repo → Notion (推)
 Trigger: weekly cron / manual / after publish
 Logic:
-  1. Scan Obsidian for changed .md files (by mtime)
+  1. Scan the local repo for changed .md files (by mtime)
   2. Match against Notion records by File Path
   3. New → create in Notion
-  4. Existing + Obsidian newer → update (skip Status/Comment fields)
+  4. Existing + local newer → update (skip Status/Comment fields)
   5. Log to sync-pushed.jsonl
 
 Usage:
@@ -94,7 +94,7 @@ DATABASES = {
     },
 }
 
-# Fields to NEVER overwrite from Obsidian (Notion is SSOT for these)
+# Fields to NEVER overwrite from local files (Notion is SSOT for these)
 NOTION_OWNED_FIELDS = {"Status", "Comment", "Notes", "Conflict Flag"}
 
 SYNC_LOG = MFLOW / "dev" / "scripts" / "sync-pushed.jsonl"
@@ -236,7 +236,7 @@ def sync_database(db_name: str, config: dict, apply: bool) -> tuple[int, int]:
         rel_path = str(f.relative_to(MFLOW))
 
         if rel_path in path_to_page:
-            # Already exists — check if Obsidian is newer
+            # Already exists — check if the local file is newer
             page = path_to_page[rel_path]
             page_id = page["id"]
 
@@ -257,7 +257,7 @@ def sync_database(db_name: str, config: dict, apply: bool) -> tuple[int, int]:
                 config["name_field"]: {"title": [{"text": {"content": title}}]},
                 config["path_field"]: {"rich_text": [{"text": {"content": rel_path}}]},
                 config["synced_field"]: {"date": {"start": now_iso}},
-                config["source_field"]: {"select": {"name": "obsidian"}},
+                config["source_field"]: {"select": {"name": "obsidian"}},  # legacy Notion option name, kept for existing views
             }
 
             if apply:
@@ -277,7 +277,7 @@ def sync_database(db_name: str, config: dict, apply: bool) -> tuple[int, int]:
                 config["name_field"]: {"title": [{"text": {"content": title}}]},
                 config["path_field"]: {"rich_text": [{"text": {"content": rel_path}}]},
                 config["synced_field"]: {"date": {"start": now_iso}},
-                config["source_field"]: {"select": {"name": "obsidian"}},
+                config["source_field"]: {"select": {"name": "obsidian"}},  # legacy Notion option name, kept for existing views
             }
 
             if apply:
@@ -296,7 +296,7 @@ def sync_database(db_name: str, config: dict, apply: bool) -> tuple[int, int]:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Push Obsidian → Notion")
+    parser = argparse.ArgumentParser(description="Push local content → Notion")
     parser.add_argument("--apply", action="store_true")
     parser.add_argument("--database", help="sync only this database")
     args = parser.parse_args()
@@ -307,9 +307,9 @@ def main():
 
     if args.apply and not env_guard.require_live_write("Notion 推送"):
         args.apply = False
-    print(f"=== Obsidian → Notion sync ===")
+    print(f"=== local → Notion sync ===")
     print(f"Mode: {'APPLY' if args.apply else 'DRY-RUN'}")
-    print(f"Vault: {MFLOW}")
+    print(f"Root: {MFLOW}")
 
     total_created = 0
     total_updated = 0

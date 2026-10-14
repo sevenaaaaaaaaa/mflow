@@ -21,7 +21,7 @@
    发现问题 → 工单分流：渲染 bug 记案例库、转化走 CRO、流量信号转 blog-writer 信号表
 
 **运行规则**：②的资产驱动 ③ 的选题与页面；①的门禁全程拦截；**④的工单回流 ③修复、信号同源 blog-writer 信号表、转化问题联动 CRO**；自动化止步 ready，发布人工授权。
-**品牌接入** = 填满 ②，①③ 零改动，④ 上线后按规程启动（Moodio 一天完成接入实测；体验层待其站点上线后启用）。
+**品牌接入** = 填满 ②，①③ 零改动，④ 上线后按规程启动（Globex 一天完成接入实测；体验层待其站点上线后启用）。
 
 ---
 
@@ -42,7 +42,6 @@ bash "dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / route
 | 编号 | 目录 | 定位 | 必读 |
 |:---:|------|------|:---:|
 | **00** | `00-INDEX.md` | 本文件 — 主索引 | — |
-| **01** | `01-project/` | 项目背景、季度计划、迁移 PRD | ✅ |
 | **02** | `02-rules/` | RULES-00~60 + SESSION-ROUTING | ✅ |
 | **03** | `03-workflows/` | 部署上线方案 PRD | — |
 | **04** | `04-setup/` | 首次部署、路径契约 | ✅ |
@@ -94,7 +93,6 @@ bash "dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / route
 
 | 文件 | 内容 |
 |------|------|
-| `03-workflows/PRD-部署上线方案.md` | 部署上线方案 |
 | `../dev/automation/automation-manifest.json` | **调度自动化 SSOT**：3 primary + 4 extended + legacy 清单 |
 | `../dev/automation/run-daily-pipeline.sh` | 每日管线：GSC → Sentinel → 飞书 → harness 汇总/同步 |
 | `../dev/automation/run-weekly-pipeline.sh` | 每周管线（周一 07:00） |
@@ -107,7 +105,7 @@ bash "dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / route
 | 文件 | 内容 |
 |------|------|
 | `04-setup/README.md` | 新人自搭建指南 |
-| `04-setup/路径契约.md` | MFlow Local Dev 目录结构约定（⚠️ 2026-09-13 校准：vault 根 = `~/Obsidian/MindRe/MindRe`，Local Dev = `~/Documents/MFlow Local Dev`） |
+| `04-setup/路径契约.md` | MFlow Local Dev 目录结构约定（⚠️ 2026-09-13 校准：仓库根 = `$MFLOW_ROOT`，Local Dev = `~/Documents/MFlow Local Dev`） |
 
 > 凭证位置：`harness/Skills/01-strategy/trident-data-engine/credentials/`（GSC/GA4/飞书/service-account）+ `dev/scripts/sentinel/{gsc,ga4,bing}_credentials/` + `dev/Google Cloud Oath/`（OAuth client）。
 
@@ -119,7 +117,7 @@ bash "dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / route
 | `05-skills/skill-entrypoint-governance.md` | 入口治理：每场景唯一父入口 + support-only 规则 |
 | `Skills/` | 31 个 skill 实体（01-strategy 3 / 02-creation 5 / 03-review 3 / 04-publish 8 / 05-monitor 2 / 06-orchestrate 12 / 顶层 1；博客 12 技能并入 blog-writer，落地页 4 技能并入 landing-writer） |
 
-> Skill 真相 = 本 vault `Skills/` 目录。`~/.hermes/` 运行时由 `dev/scripts/harness_sync.py` 从 vault 重新生成（每日管线 D07 步骤）。
+> Skill 真相 = 本仓库 `Skills/` 目录。`~/.hermes/` 运行时由 `dev/scripts/harness_sync.py` 从仓库重新生成（每日管线 D07 步骤）。
 
 ## 06 — 定时任务
 
@@ -148,7 +146,7 @@ bash "dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / route
 |------|------|
 | `08-storyline/STORYLINES.md` | 7 类页面故事线速查 |
 | `08-storyline/STORYLINE-BY-DIRECTION.md` | 完整故事线体系（25 条，含 Topic 6 条） |
-| `08-storyline/FEATURES-PRODUCTION.md` | Features 生产规范（同名带 " 2" 后缀的是 iCloud 冲突副本，待清理） |
+| `08-storyline/FEATURES-PRODUCTION.md` | Features 生产规范 |
 
 ## 09 — 运维脚本
 
@@ -164,7 +162,7 @@ bash "dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / route
 |------|------|
 | `10-config/gsc-api-setup-guide.md` | GSC API 配置 |
 | `10-config/mflow-notion-config.md` | Notion 集成 |
-| `10-config/obsidian-notion-dual-track.md` | Obsidian ↔ Notion 双轨制 |
+| `10-config/local-notion-dual-track.md` | 本地仓库 ↔ Notion 双轨制 |
 | `10-config/产出路由规则.md` | 产出路由四问规范（RULES-00 配套） |
 | `10-config/README-SEO-Toolkit.md` | SEO 工具箱 |
 | `10-config/hermes-profiles.md` | Hermes Profile 说明 |
@@ -193,7 +191,7 @@ bash "dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / route
 |:---:|------|------|
 | S0 | `Docs/00-系统总览.md` | 系统架构全景 |
 | S1 | `Docs/S1-数据采集/` | GSC·GA4·Bing·Sentinel 采集 |
-| S2 | `Docs/S2-内容策略/` | 内容复盘与缺口分析 |
+| S2 | `ops/brands/<brand>/`（不入库） | 品牌内容复盘、排期与冲刺计划 |
 | S3 | `Docs/S3-内容创作/` | Blog·Features·Tools·i18n 创作 |
 | S4 | `Docs/S4-质量审核/` | Anti-Slop·Anti-Bugs·Content Quality |
 | S5 | `Docs/S5-发布部署/` | Sanity 管道·Sitemap·部署方案 |
@@ -206,7 +204,7 @@ bash "dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / route
 
 ## 快速入口（新人 5 分钟路径）
 
-1. 读 `01-project/项目背景与利益方沟通.md` — 这是什么项目
+1. 读仓库根 `README.md` — 这是什么项目
 2. 读 `11-knowledge/README.md` + `KNOWLEDGE-TREE.md` — 项目知识架构
 3. 读 `02-rules/RULES-00-iron.md` — 铁律（必须遵守）
 4. 跑 `bash "dev/scripts/session-init.sh"` — 确认管线门禁全绿
@@ -231,7 +229,7 @@ bash "dev/scripts/session-init.sh"        # 4 道门禁：pipeline-state / route
 ## 维护规则
 
 - **新增文档**：按编号体系放入对应目录，更新本索引
-- **废弃文档**：移至 `1-8 Backup/archives/`（vault 外）或 Local Dev Backup，勿留 `_old` / `_v2` 后缀文件
-- **Skill 更新**：改 vault `Skills/`（真相），运行时副本由 `harness_sync.py` 重新生成
+- **废弃文档**：移至 `ops/process/`（gitignored）或 Local Dev Backup，勿留 `_old` / `_v2` 后缀文件
+- **Skill 更新**：改 仓库 `harness/Skills/`（真相），运行时副本由 `harness_sync.py` 重新生成
 - **新脚本**：先查 `09-scripts/TOOLS-REGISTRY.md` 防重复，创建后走 `new-tool-governance` 注册
 - **路径引用**：禁止硬编码绝对路径，统一用 `$MFLOW_RESOURCE_ROOT` / `$MFLOW_LOCAL_DEV_ROOT`（定义见 `dev/automation/local-dev-env.sh`） · infra/subsites（子站机制：知识库共享 + 策略/站点/体验/GEO/编排五项【继承+勾选覆盖+独立新增】；WordPress 线已裁定移除，blogs 子站重规划中）

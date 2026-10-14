@@ -63,11 +63,11 @@
     },
     "kb-mine": {
       "description": "KB 查询：按 topic 找 KB-doc 单元（KB ground truth）",
-      "template": "KB 查询：调用 python3 insight-data/Knowledge Base/scripts/kb-mine.py --root <vault> --topic '<topic>' [--capability-mode] [--json]。用于 writer profile 在写之前拿 grounded context。"
+      "template": "KB 查询：调用 python3 insight-data/Knowledge Base/scripts/kb-mine.py --root $MFLOW_ROOT --topic '<topic>' [--capability-mode] [--json]。用于 writer profile 在写之前拿 grounded context。"
     },
     "kb-ingest": {
       "description": "KB 拓源：抓 Changelog/URL-LIST.md + Reference/URL-LIST.md 里的 URL 入库",
-      "template": "执行 KB 拓源：先读 URL-LIST 用户填的列表，调用 bash insight-data/Knowledge Base/scripts/kb-ingest.py --root <vault> [--allow-fetch] [--max-per-run N]。再跑 kb-frontmatter.py + build-index.py --write。"
+      "template": "执行 KB 拓源：先读 URL-LIST 用户填的列表，调用 bash insight-data/Knowledge Base/scripts/kb-ingest.py --root $MFLOW_ROOT [--allow-fetch] [--max-per-run N]。再跑 kb-frontmatter.py + build-index.py --write。"
     }
   }
 }

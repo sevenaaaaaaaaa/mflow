@@ -1,31 +1,30 @@
 #!/usr/bin/env bash
-# sync-local-dev.sh — bidirectional sync between MFlow Local Dev and Obsidian vault
+# sync-local-dev.sh — sync between MFlow Local Dev and the repo's gitignored data dirs
 #
-# Problem: Two folders (Obsidian vault + MFlow Local Dev) hold overlapping content.
-#          Files drift apart. No one knows which is latest.
+# Problem: MFlow Local Dev (runtime outputs) and the repo data dirs (insight-data/, genflow/)
+#          hold overlapping content; files drift apart.
 #
-# Solution: One-directional SSOT sync with clear rules:
-#   - Obsidian vault = SSOT for rules/skills/knowledge/strategies
+# Rules:
+#   - Repo (insight-data/, genflow/, harness/) = SSOT for rules/skills/knowledge/strategies
 #   - Local Dev = SSOT for runtime data (sanity dumps, API outputs, caches)
-#   - This script syncs NEW files from Local Dev → Obsidian
-#   - And archives STALE files from Obsidian → Local Dev/Backup
+#   - This script copies NEW files from Local Dev → repo data dirs
+#   - And (--archive) moves STALE repo data files → Local Dev/Backup
 #
 # Usage:
 #   bash sync-local-dev.sh              # dry-run (show what would happen)
 #   bash sync-local-dev.sh --apply      # actually move files
-#   bash sync-local-dev.sh --archive    # archive stale Obsidian files to Local Dev
+#   bash sync-local-dev.sh --archive    # archive stale repo data files to Local Dev
 #
-# Cron: weekly (Sunday 03:00) via launchd or Hermes cron
+# Schedule: optional weekly local job (see ops/LOCAL-JOBS.md)
 
 set -euo pipefail
 
 # --- Configuration ---
 LOCAL_DEV="${MFLOW_LOCAL_DEV_ROOT:-$HOME/Documents/MFlow Local Dev}"
 MFLOW="$(cd "${BASH_SOURCE[0]%/*}/../.." && pwd)"
-VAULT="${MFLOW_RESOURCE_ROOT:-$(cd "$MFLOW/.." && pwd)}"
 
-# Mapping: Local Dev path → Obsidian target path
-# Format: "local_dev_subdir:obsidian_subdir:file_pattern"
+# Mapping: Local Dev path → repo target path
+# Format: "local_dev_subdir:repo_subdir:file_pattern"
 SYNC_MAP=(
   # Root .md files → insight-data/ (strategies/reports)
   "root_md:insight-data:*.md"
@@ -62,7 +61,7 @@ for arg in "$@"; do
       echo "Usage: sync-local-dev.sh [--apply] [--archive]"
       echo "  (no args)  dry-run: show what would happen"
       echo "  --apply    actually copy/move files"
-      echo "  --archive  archive stale Obsidian files to Local Dev/Backup"
+      echo "  --archive  archive stale repo data files to Local Dev/Backup"
       exit 0
       ;;
   esac
@@ -91,7 +90,7 @@ is_skip_file() {
 # --- Main ---
 log "Mode: $MODE"
 log "Local Dev: $LOCAL_DEV"
-log "Vault: $VAULT"
+log "Repo: $MFLOW"
 log ""
 
 if [[ ! -d "$LOCAL_DEV" ]]; then
@@ -99,7 +98,7 @@ if [[ ! -d "$LOCAL_DEV" ]]; then
   exit 2
 fi
 if [[ ! -d "$MFLOW" ]]; then
-  log "ERROR: the brand MFlow not found at $MFLOW"
+  log "ERROR: MFlow repo not found at $MFLOW"
   exit 2
 fi
 
@@ -108,17 +107,17 @@ SKIPPED=0
 CONFLICTS=0
 
 if [[ "$ARCHIVE_MODE" -eq 1 ]]; then
-  # --- Archive mode: move stale Obsidian files to Local Dev/Backup ---
-  log "=== Archive mode: moving stale files from Obsidian → Local Dev/Backup ==="
+  # --- Archive mode: move stale repo data files to Local Dev/Backup ---
+  log "=== Archive mode: moving stale files from repo data dirs → Local Dev/Backup ==="
   BACKUP_DIR="$LOCAL_DEV/Backup/$(date +%Y-%m-%d)"
   mkdir -p "$BACKUP_DIR"
 
-  # Find .md files in Obsidian insight-data/ and genflow/ that are older than 30 days
+  # Find .md files in insight-data/ and genflow/ that are older than 30 days
   find "$MFLOW/insight-data" "$MFLOW/genflow" -name "*.md" -mtime +30 -type f 2>/dev/null | while read -r f; do
     rel="${f#$MFLOW/}"
     # Don't archive SSOT files (rules, skills, knowledge)
     case "$rel" in
-      1-1-Harness/*|AGENTS.md|entities.*|mempalace.*) continue ;;
+      harness/*|AGENTS.md|entities.*|mempalace.*) continue ;;
     esac
     # Don't archive files that also exist in Local Dev (they're the source)
     bn=$(basename "$f")
@@ -136,8 +135,8 @@ if [[ "$ARCHIVE_MODE" -eq 1 ]]; then
     SYNCED=$((SYNCED + 1))
   done
 else
-  # --- Sync mode: copy new files from Local Dev → Obsidian ---
-  log "=== Sync mode: copying new files from Local Dev → Obsidian ==="
+  # --- Sync mode: copy new files from Local Dev → repo data dirs ---
+  log "=== Sync mode: copying new files from Local Dev → repo data dirs ==="
 
   # 1) Root .md files → insight-data/
   log "--- Root .md → insight-data/ ---"
@@ -210,12 +209,12 @@ else
     fi
   done
 
-  # 4) Output/ subdirectories → corresponding Obsidian paths
+  # 4) Output/ subdirectories → corresponding repo data paths
   log "--- Output/ subdirectories ---"
   for subdir in "Output/SEO-Reports" "Output/Knowledge Base" "Output/blog-pipeline" "Output/Content Calendar" "Output/Page Gen"; do
     src="$LOCAL_DEV/$subdir"
     [[ -d "$src" ]] || continue
-    # Map to Obsidian target
+    # Map to repo target
     case "$subdir" in
       "Output/SEO-Reports") dst="$MFLOW/insight-data/SEO Reports" ;;
       "Output/Knowledge Base") dst="$MFLOW/insight-data/Knowledge Base" ;;

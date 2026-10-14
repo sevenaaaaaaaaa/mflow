@@ -64,10 +64,10 @@ log "  ✓ Go source uploaded"
 # ============================================================
 log "Step 4: Uploading Python scripts..."
 
-VAULT="$HOME/Knowledge/Obsidian/MindRe/1-Project/品牌方 MFlow"
+MFLOW_ROOT="${MFLOW_ROOT:-$(cd "$HERE/../.." && pwd)}"
 
 for script in pipeline_state.py router.py governance_check.py; do
-  src="$VAULT/harness/Skills/06-orchestrate"
+  src="$MFLOW_ROOT/harness/Skills/06-orchestrate"
   case "$script" in
     pipeline_state.py) src="$src/pipeline-state/$script" ;;
     router.py) src="$src/router/$script" ;;
@@ -87,7 +87,7 @@ done
 log "Step 5: Uploading hooks..."
 
 for hook in pre-write-check.sh post-write-check.sh pre-import-check.sh post-generation-check.sh; do
-  src="$VAULT/dev/scripts/hooks/$hook"
+  src="$MFLOW_ROOT/dev/scripts/hooks/$hook"
   if [[ -f "$src" ]]; then
     upload_file "$src" "hooks/$hook"
     log "  ✓ $hook"

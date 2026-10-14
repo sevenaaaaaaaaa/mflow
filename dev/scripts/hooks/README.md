@@ -55,8 +55,8 @@ bash 1-4\ Dev/scripts/hooks/pre-import-check.sh \
 ```bash
 #!/usr/bin/env bash
 # 每小时跑一次所有 hook 的 dry-run,产出问题清单
-MFLOW_HOOKS="<vault>/1-Project/品牌方 MFlow/dev/scripts/hooks"
-VAULT="<vault-root>  # 即 MFLOW_RESOURCE_ROOT，Obsidian MindRe 根目录"
+MFLOW_HOOKS="$MFLOW_ROOT/dev/scripts/hooks"
+VAULT="$MFLOW_ROOT  # 即 MFLOW_RESOURCE_ROOT，仓库根目录"
 "$MFLOW_HOOKS/pre-write-check.sh" --file "$VAULT/genflow/.pipeline/sentinel.md"
 ```
 

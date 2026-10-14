@@ -27,7 +27,7 @@
 
 ```bash
 bash "dev/scripts/session-init.sh"     # 4 道门禁全过 = 环境健康
-python3 "dev/scripts/harness_sync.py"  # 从 vault 真相同步规则到各 agent 运行时
+python3 "dev/scripts/harness_sync.py"  # 从仓库真相同步规则到各 agent 运行时
 ```
 
 **路径契约**：所有脚本按自身位置推导路径；两个可选环境变量：`MFLOW_LOCAL_DEV_ROOT`（运行时输出，默认 `~/Documents/MFlow Local Dev`）、`MFLOW_PYTHON`（数据拉取用 venv 解释器）。禁止硬编码绝对路径。
@@ -137,15 +137,17 @@ python3 ".../pipeline_state.py" next      # 我下一步该干什么
 
 ## 8. 调度与运维
 
-**macOS launchd**（当前生产）：`com.mflow.daily-pipeline`（08:00）/ `com.mflow.weekly-pipeline`（周一 07:00）/ `com.mflow.dream`（02:30）。plist 源在 `dev/automation/plists/`，安装：
+**Linux 服务器（生产）**：systemd timer `mflow-daily` / `mflow-weekly` / `mflow-dream` 执行每日 / 每周管线与记忆整理。
+
+**macOS launchd（可选，本机开发）**：`dev/automation/plists/` 提供 `com.mflow.daily-pipeline`（08:00）/ `com.mflow.weekly-pipeline`（周一 07:00）/ `com.mflow.dream`（02:30）模板，路径用占位符，安装时渲染：
 
 ```bash
-cp "dev/automation/plists/com.mflow.daily-pipeline.plist" ~/Library/LaunchAgents/ && launchctl load ~/Library/LaunchAgents/com.mflow.daily-pipeline.plist
+bash "dev/automation/plists/install.sh" com.mflow.daily-pipeline
 ```
 
 **每日管线步骤**（`run-daily-pipeline.sh`）：GSC 日拉 → Sentinel 采集+日报 → 飞书摘要（需凭据，可选）→ harness 学习报告 → 规则跨工具同步。
 
-**Linux 服务器**：systemd timer 同一张时间表；MFlow 必须独立目录（`/var/www/mflow`）+ 独立 URL/server block，与 XMP/OpenFlow 完全隔离——详见 `deploy/server.md`。部署需用户明示授权。
+**服务器部署**：MFlow 必须独立目录（`/var/www/mflow`）+ 独立 URL/server block，与 XMP/OpenFlow 完全隔离——详见 `deploy/server.md`。部署需用户明示授权。
 
 **梦境（dream）**：每夜 consolidate（事实入记忆）+ audit（六维一致性审计，A1-A6）。手动跑：`bash "harness/11-knowledge/dream/audit.sh" --no-write-today`。
 

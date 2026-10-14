@@ -1,6 +1,6 @@
 # Notion sync tail — append to every Automation prompt
 
-**策略（2026-06-08）**：Notion = Obsidian 全文备份 → 未来主库。运行报告须写 **完整 MD 正文** 到 Notion 页 body，不只 Summary 字段。详见 `1-1 GEO Readme/notion-sync/README.md`。
+**策略（2026-06-08）**：Notion = 本地内容全文备份 → 未来主库。运行报告须写 **完整 MD 正文** 到 Notion 页 body，不只 Summary 字段。详见 `harness/Docs/notion-sync/README.md`。
 
 After report-notify.sh, add row to **品牌方 Ops Reports**:
 

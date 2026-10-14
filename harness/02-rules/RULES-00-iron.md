@@ -29,9 +29,9 @@ generator: harness/11-knowledge/scripts/fm-fix.py
 ## 产出路由铁律（2026-06-29 制定）
 
 1. 写入文件前必须回答四问：谁会读 / 多久后还有用 / 是结论还是中间产物 / 出问题时需要回溯
-2. 任一答「人类/长期/结论/需回溯」→ **MindRe insight-data**（知识资产，永久保存）
+2. 任一答「人类/长期/结论/需回溯」→ **insight-data**（知识资产，永久保存）
 3. 全部答「机器/临时/中间/不需」→ **Local Dev Output**（过程缓存）
-4. `Output/SEO-Reports/` 目录已废弃，新 SEO 报告一律写入 MindRe
+4. `Output/SEO-Reports/` 目录已废弃，新 SEO 报告一律写入 insight-data
 5. 所有产出 skill 必须内置路由判断，禁止第三次路径（规范文档：`harness/10-config/产出路由规则.md`）
 
 ## 行为铁律（用户纠正 2026-06-22）
@@ -67,7 +67,7 @@ generator: harness/11-knowledge/scripts/fm-fix.py
 
 | 变量 | 值 |
 |------|-----|
-| `$MFLOW_RESOURCE_ROOT` | vault 根（Obsidian MindRe） |
+| `$MFLOW_RESOURCE_ROOT` | 大型资源根（默认 = MFLOW_LOCAL_DEV_ROOT） |
 | `$MFLOW_LOCAL_DEV_ROOT` | `~/Documents/MFlow Local Dev/` |
 | Sanity project | `your-project-id` / `production` |
 | Sanity token | `~/.config/sanity/config.json` → `/tmp/sanitytoken.txt` |

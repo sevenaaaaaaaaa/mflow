@@ -3,16 +3,14 @@
  * Build a lightweight internal-link index for the brand content planning.
  *
  * Outputs:
- *   1-3 Content Gen/CONTENT_LINK_INDEX.md
- *   1-3 Content Gen/content-link-index.csv
+ *   genflow/CONTENT_LINK_INDEX.md
+ *   genflow/content-link-index.csv
  */
 const fs = require('fs')
 const path = require('path')
 
 const PROJECT_ROOT = path.resolve(__dirname, '../..')
-const CONTENT_ROOT = fs.existsSync(path.join(PROJECT_ROOT, 'genflow'))
-  ? path.join(PROJECT_ROOT, 'genflow')
-  : path.join(PROJECT_ROOT, '1-3 Content Gen')
+const CONTENT_ROOT = path.join(PROJECT_ROOT, 'genflow')
 const BLOG_ROOT = path.join(CONTENT_ROOT, 'blog-pipeline/the brand-Blogs/03-Published')
 const PAGE_ROOT = path.join(CONTENT_ROOT, 'Page Gen/Pages')
 const REFRESH_ROOT = path.join(CONTENT_ROOT, 'Page Gen/Refresh-Page/landing-examples')
