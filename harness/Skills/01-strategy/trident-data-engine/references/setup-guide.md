@@ -50,7 +50,7 @@ python3 scripts/ga4_auth.py
 
 ### Step 3: 确认 Property ID
 
-脚本 `ga4_fetch.py` 中 `PROPERTY` 变量需指向 example.com 的 Property（默认 `properties/403618427`）。
+脚本 `ga4_fetch.py` 中 `PROPERTY` 变量需指向 example.com 的 Property（取自 `ops/site.json` 的 `ga4_property` 或 `MFLOW_GA4_PROPERTY`）。
 
 ### Step 4: 验证
 

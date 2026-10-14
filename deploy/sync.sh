@@ -171,6 +171,7 @@ SYNC_ITEMS=(
     "./dev/scripts/publish_adapters/|${REMOTE_ROOT}/dev/scripts/publish_adapters/"
     "./dev/scripts/trident/|${REMOTE_ROOT}/dev/scripts/trident/"
     "./dev/scripts/library/|${REMOTE_ROOT}/dev/scripts/library/"
+    "./dev/scripts/brand_match.py|${REMOTE_ROOT}/dev/scripts/brand_match.py"
     "./dev/tests/|${REMOTE_ROOT}/dev/tests/"
     "run/sites/|${REMOTE_ROOT}/run/sites/"
     "./harness/02-rules/|${REMOTE_ROOT}/harness/02-rules/"
@@ -204,6 +205,50 @@ for entry in "${SYNC_ITEMS[@]}"; do
     [[ -n "$ok" ]] || fail 4 "rsync $src → $dst 失败（重试 3 次仍失败）"
 done
 say "  ✓ ${#SYNC_ITEMS[@]} 组已同步"
+
+# ── 4a) site profile + brand overlays (production behaviour, NOT content: runs even with --no-content) ──
+# The public repo only holds brand-neutral files. Production keeps using the brand originals, which live in
+# gitignored ops/brands/<slug>/overlay/<repo path>. Because harness/Skills and harness/02-rules are rsynced with
+# --delete above, the overlays are re-applied right after the code sync (no --delete, local wins).
+# Also ship the runtime config the code reads: ops/site.json, ops/image_pool.json and per-brand
+# brand-profile.json / code/ (site_profile.load_brand_module) / templates/.
+say "④a 站点档案 + 品牌覆盖层 → ${REMOTE_ROOT}$([[ $DRY_RUN -eq 1 ]] && echo '（dry-run：rsync -n）')"
+rsync_retry() {  # rsync_retry <label> <rsync args...>; honours --dry-run, 3 attempts
+    local label="$1"; shift
+    local attempt
+    for attempt in 1 2 3; do
+        if [[ "$DRY_RUN" -eq 1 ]]; then
+            echo "    --- $label"
+            rsync -az -n -i "$@" 2>&1 | sed 's/^/      /' && return 0
+        elif rsync -az "$@" >/dev/null 2>&1; then
+            return 0
+        fi
+        [[ $attempt -lt 3 ]] && sleep 3
+    done
+    return 1
+}
+OVERLAY_SUMMARY="未发现 ops/（跳过）"
+if [[ -d ./ops ]]; then
+    RUNTIME_FILTER=(--include='/site.json' --include='/image_pool.json'
+                    --include='/brands/' --include='/brands/*/'
+                    --include='/brands/*/brand-profile.json'
+                    --include='/brands/*/code/***' --include='/brands/*/templates/***'
+                    --exclude='__pycache__/' --exclude='.DS_Store' --exclude='*')
+    rsync_retry "ops runtime config (site.json / image_pool.json / brands/*/{brand-profile.json,code,templates})" \
+        "${RUNTIME_FILTER[@]}" -e "ssh -p $REMOTE_PORT" ./ops/ "${REMOTE}:\"${REMOTE_ROOT}/ops/\"" \
+        || fail 4 "rsync ops 运行配置失败（重试 3 次仍失败）"
+    shopt -s nullglob; overlays=(./ops/brands/*/overlay/); shopt -u nullglob
+    ov_names=()
+    for ov in "${overlays[@]}"; do
+        slug="${ov#./ops/brands/}"; slug="${slug%%/*}"
+        rsync_retry "overlay ${slug} → ${REMOTE_ROOT}/" --exclude='.DS_Store' --exclude='__pycache__/' \
+            -e "ssh -p $REMOTE_PORT" "$ov" "${REMOTE}:\"${REMOTE_ROOT}/\"" \
+            || fail 4 "rsync overlay ${slug} 失败（重试 3 次仍失败）"
+        ov_names+=("${slug}($(find "$ov" -type f ! -name .DS_Store | wc -l | tr -d ' '))")
+    done
+    OVERLAY_SUMMARY="运行配置已同步；覆盖层 ${#overlays[@]} 个：${ov_names[*]:-无}"
+fi
+say "  ✓ ${OVERLAY_SUMMARY}"
 
 # ── 4b) gitignored 内容数据（不进 GitHub，但服务器工作台要读）──
 # 只增不删（无 --delete）+ --update（服务器上更新的文件不被本地旧版覆盖：
@@ -256,6 +301,7 @@ fi
 
 if [[ "$DRY_RUN" -eq 1 ]]; then
     say "⑤⑥⑦ [dry-run] 跳过重启 / 验证 / CF 刷新"
+    echo "[sync] 品牌覆盖层：${OVERLAY_SUMMARY}"
     echo "[sync] dry-run 结束"
     exit 0
 fi
@@ -301,4 +347,5 @@ else
     echo "     cp deploy/cf.env.example deploy/cf.env  # 填入 CF_API_TOKEN / CF_ZONE_ID"
 fi
 
+echo "[sync] 品牌覆盖层：${OVERLAY_SUMMARY}"
 say "=== 全部完成 ==="

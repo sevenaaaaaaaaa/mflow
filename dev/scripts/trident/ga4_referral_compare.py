@@ -9,6 +9,12 @@ GA4 Referral 渠道双窗口环比对比 — example.com
 输出维度：渠道总览 / 来源域名(sessionSource) / 着陆页(landingPage) / 逐日趋势
 用法: python3 ga4_referral_compare.py
 """
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(next(p for p in _Path(__file__).resolve().parents
+                             if (p / "dev" / "scripts" / "library" / "site_profile.py").exists())
+                        / "dev" / "scripts" / "library"))
+import site_profile as _site_profile  # noqa: E402  GA4 ids live in ops/site.json / MFLOW_GA4_*
 import json
 import sys
 from datetime import date, timedelta
@@ -21,8 +27,8 @@ from credential_paths import credential_file
 from trident_paths import DATA_INGESTION_DIR
 
 TOKEN_FILE = credential_file("ga4-token.json", "MFLOW_GA4_TOKEN_FILE")
-PROPERTY = "properties/403618427"
-STREAM = "10524753059"
+PROPERTY = _site_profile.get("ga4_property")
+STREAM = _site_profile.get("ga4_stream")
 SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"]
 
 CUR_START, CUR_END = "2026-08-04", "2026-08-10"

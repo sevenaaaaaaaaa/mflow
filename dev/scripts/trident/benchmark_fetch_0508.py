@@ -24,6 +24,12 @@ benchmark_fetch_0508.py — 为「品牌方 海外增长 Benchmark」补齐曝�
     python3 benchmark_fetch_0508.py --notes-only             # 只按已落盘文件重算 _RUN-NOTES.md
 依赖: google-auth google-auth-oauthlib google-api-python-client requests
 """
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(next(p for p in _Path(__file__).resolve().parents
+                             if (p / "dev" / "scripts" / "library" / "site_profile.py").exists())
+                        / "dev" / "scripts" / "library"))
+import site_profile as _site_profile  # noqa: E402  GA4 ids live in ops/site.json / MFLOW_GA4_*
 import csv, json, os, sys, time
 from pathlib import Path
 from datetime import date, timedelta
@@ -35,8 +41,8 @@ OUT.mkdir(parents=True, exist_ok=True)
 
 SITE_DOMAIN   = "example.com"                     # hostName / 属性归属的判定依据
 GSC_SITE      = "https://www.example.com/"        # 兜底；实际属性由 sites().list() 决定
-GA4_PROPERTY  = "properties/403618427"
-GA4_STREAM    = "10524753059"
+GA4_PROPERTY = _site_profile.get("ga4_property")
+GA4_STREAM = _site_profile.get("ga4_stream")
 NOTES = []                                       # 收集数据质量标记
 
 def note(msg, level="INFO"):
@@ -282,7 +288,7 @@ def ga4_services():
     return data, admin
 
 def ga4_audit(admin):
-    """账号接了多个站点时，确认 403618427 / stream / hostName 到底对应哪个站。"""
+    """账号接了多个站点时，确认 GA4 property / stream / hostName 到底对应哪个站。"""
     if admin is None:
         note("Admin API 不可用，跳过属性/数据流审计", "WARN"); return
     try:

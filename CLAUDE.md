@@ -49,7 +49,7 @@ build / lint：无独立命令（语法门禁含在 session-init.sh 中）。
 
 - 目标：服务器 `root@172.96.253.73`，SSH 端口 `28766`，目录 `/www/wwwroot/mflow`，systemd `mflow-console.service`（+ `mflow-daily/weekly/dream/status.timer`），对外 `https://nownexts.com/mflow/`（前置 Cloudflare）
 - **双轨**：GitHub（公开仓库）只放代码；内容/情报数据、知识库、运行数据、凭据由 `.gitignore` 挡在仓库外，靠 rsync 从本地工作区送到服务器
-- 唯一入口 `deploy/sync.sh`：本地测试 → gitleaks 扫描待提交改动（有泄漏即中止）→ `git add -A` + 提交 → push `main` → rsync 代码目录（原清单，`harness/Skills`、`harness/02-rules` 保持 `--delete`）→ rsync gitignored 内容（`insight-data/`、`genflow/`、`harness/11-knowledge/`、`dev/Output/`，`--update` 只增不删、不覆盖服务器上更新的文件）→ 重启 `mflow-console` → 服务端门禁 → 外部验证 → CF 缓存刷新
+- 唯一入口 `deploy/sync.sh`：本地测试 → gitleaks 扫描待提交改动（有泄漏即中止）→ `git add -A` + 提交 → push `main` → rsync 代码目录（原清单，`harness/Skills`、`harness/02-rules` 保持 `--delete`）→ 运行配置与品牌覆盖层（`ops/site.json`、`ops/image_pool.json`、`ops/brands/*/{brand-profile.json,code,templates}`，以及把 `ops/brands/*/overlay/` 原样叠回服务器原路径；生产行为，`--no-content` 时也执行）→ rsync gitignored 内容（`insight-data/`、`genflow/`、`harness/11-knowledge/`、`dev/Output/`，`--update` 只增不删、不覆盖服务器上更新的文件）→ 重启 `mflow-console` → 服务端门禁 → 外部验证 → CF 缓存刷新
 
 ```bash
 bash deploy/sync.sh                      # 全流程

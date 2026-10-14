@@ -246,7 +246,7 @@ GSC N 关键词 × 竞品 265 全量词（子串匹配）
 |------|-----|
 | 收录数 | 9,268 / 20,000 (46.34%) |
 | 竞品词库规模 | 265 全量 / 36 核心 |
-| GA4 Property | 403618427 |
+| GA4 Property | <GA4_PROPERTY_ID> |
 | GSC Site | `https://www.example.com/` |
 
 ---

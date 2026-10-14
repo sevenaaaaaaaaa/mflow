@@ -11,6 +11,12 @@ GA4 (country 含 Japan 过滤):
   - country (organic)  -> JP 占全站 organic 份额
 输出: /tmp/jp_pull/gsc_jp.json + /tmp/jp_pull/ga4_jp.json
 """
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(next(p for p in _Path(__file__).resolve().parents
+                             if (p / "dev" / "scripts" / "library" / "site_profile.py").exists())
+                        / "dev" / "scripts" / "library"))
+import site_profile as _site_profile  # noqa: E402  GA4 ids live in ops/site.json / MFLOW_GA4_*
 import json, sys, time
 from pathlib import Path
 from datetime import date
@@ -24,7 +30,7 @@ SITE = "https://www.example.com/"
 OUT = Path("/tmp/jp_pull"); OUT.mkdir(parents=True, exist_ok=True)
 SCOPES_GSC = ["https://www.googleapis.com/auth/webmasters.readonly"]
 SCOPES_GA4 = ["https://www.googleapis.com/auth/analytics.readonly"]
-PROPERTY = "properties/403618427"
+PROPERTY = _site_profile.get("ga4_property")
 MONTHS = [f"{y}-{m:02d}" for y in (2025, 2026) for m in range(1, 13)][:19]  # 2025-01 .. 2026-07
 
 

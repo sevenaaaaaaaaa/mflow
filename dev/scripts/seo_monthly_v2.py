@@ -12,6 +12,12 @@
 - OKR：跑前 Agent 须问用户是否更新（默认 2026-05 版）
 """
 from __future__ import annotations
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(next(p for p in _Path(__file__).resolve().parents
+                             if (p / "dev" / "scripts" / "library" / "site_profile.py").exists())
+                        / "dev" / "scripts" / "library"))
+import site_profile as _site_profile  # noqa: E402  GA4 ids live in ops/site.json / MFLOW_GA4_*
 import argparse, json, re, datetime, sys
 from calendar import monthrange
 from pathlib import Path
@@ -247,8 +253,8 @@ def load_ga4_from_legacy_cache(ym: str) -> dict | None:
     }
 
 SITE = "https://www.example.com/"
-PROPERTY = "properties/403618427"
-STREAM = "10524753059"
+PROPERTY = _site_profile.get("ga4_property")
+STREAM = _site_profile.get("ga4_stream")
 
 # is_brand → brand_match.py (SSOT)
 

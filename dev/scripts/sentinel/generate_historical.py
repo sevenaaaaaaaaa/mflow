@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 """全维度历史报告生成器 v3 — 收录分析 + 竞品覆盖 + 数据驱动洞察"""
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(next(p for p in _Path(__file__).resolve().parents
+                             if (p / "dev" / "scripts" / "library" / "site_profile.py").exists())
+                        / "dev" / "scripts" / "library"))
+import site_profile as _site_profile  # noqa: E402  GA4 ids live in ops/site.json / MFLOW_GA4_*
 import json, ssl, re
 from pathlib import Path
 import sys
@@ -76,11 +82,11 @@ def pull_gsc_full(start, end):
     return kw, geo, pages, sm_total, comp_hits, comp_cl
 
 def pull_ga4_full(start, end):
-    sf = {"filter":{"fieldName":"streamId","stringFilter":{"matchType":"EXACT","value":"10524753059"}}}
+    sf = {"filter":{"fieldName":"streamId","stringFilter":{"matchType":"EXACT","value":_site_profile.get("ga4_stream")}}}
     org_f = {"filter":{"fieldName":"sessionDefaultChannelGroup","stringFilter":{"matchType":"EXACT","value":"Organic Search"}}}
 
     def call(body):
-        req = urllib.request.Request("https://analyticsdata.googleapis.com/v1beta/properties/403618427:runReport",
+        req = urllib.request.Request(f"https://analyticsdata.googleapis.com/v1beta/{_site_profile.get('ga4_property')}:runReport",
             data=json.dumps(body).encode(), headers={"Authorization":f"Bearer {GA4_T}","Content-Type":"application/json"})
         with urllib.request.urlopen(req, timeout=15) as r: return json.loads(r.read())
 

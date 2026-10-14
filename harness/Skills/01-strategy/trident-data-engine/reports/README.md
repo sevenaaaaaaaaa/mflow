@@ -30,8 +30,8 @@ insight-data/Knowledge Base/Insight/Keywords Research/SEO Report/
 
 ```json
 {
-  "_property": "properties/403618427",
-  "_stream": "10524753059",
+  "_property": "properties/<GA4_PROPERTY_ID>",
+  "_stream": "<GA4_STREAM_ID>",
   "organic_daily": [{ "dims": {"date":"20260529"}, "metrics": {"sessions":"34081"} }],
   "organic_summary": { "sessions": 1623944, "users": 1014486, "avg_duration_sec": 431, ... },
   "user_segments": [{ "dims": {"newVsReturning":"returning"}, "metrics": {...} }],

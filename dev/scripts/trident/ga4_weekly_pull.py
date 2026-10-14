@@ -6,6 +6,12 @@ GA4 当日数据基本可用，用完整 7d 窗口；若 08-18 数据缺失按 6
 维度: organic 日趋势 / 渠道 / 地区 / 新老用户 / sessionSource 多搜索生态 / 页面
 输出: /tmp/ga4_windows.json
 """
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(next(p for p in _Path(__file__).resolve().parents
+                             if (p / "dev" / "scripts" / "library" / "site_profile.py").exists())
+                        / "dev" / "scripts" / "library"))
+import site_profile as _site_profile  # noqa: E402  GA4 ids live in ops/site.json / MFLOW_GA4_*
 import json
 from pathlib import Path
 from google.oauth2.credentials import Credentials
@@ -13,8 +19,8 @@ from googleapiclient.discovery import build
 
 CRED_DIR = Path(__file__).resolve().parents[3] / "harness/Skills/01-strategy/trident-data-engine/credentials"
 TOKEN = json.loads((CRED_DIR / "ga4-token.json").read_text())
-PROPERTY = "properties/403618427"
-STREAM = "10524753059"
+PROPERTY = _site_profile.get("ga4_property")
+STREAM = _site_profile.get("ga4_stream")
 SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"]
 
 WINDOWS = {

@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """品牌方 May 2026 SEO 月度复盘 — 全维度采集 + 环比 + 报告生成"""
 from __future__ import annotations
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(next(p for p in _Path(__file__).resolve().parents
+                             if (p / "dev" / "scripts" / "library" / "site_profile.py").exists())
+                        / "dev" / "scripts" / "library"))
+import site_profile as _site_profile  # noqa: E402  GA4 ids live in ops/site.json / MFLOW_GA4_*
 
 import json, re, datetime, sqlite3
 from pathlib import Path
@@ -23,8 +29,8 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 SITE = "https://www.example.com/"
 SCOPES_GSC = ["https://www.googleapis.com/auth/webmasters.readonly"]
 SCOPES_GA4 = ["https://www.googleapis.com/auth/analytics.readonly"]
-PROPERTY = "properties/403618427"
-STREAM = "10524753059"
+PROPERTY = _site_profile.get("ga4_property")
+STREAM = _site_profile.get("ga4_stream")
 
 
 COMPETITOR_NONBRAND = [

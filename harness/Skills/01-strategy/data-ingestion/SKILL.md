@@ -71,7 +71,7 @@ python3 dev/scripts/sentinel/gsc_credentials/gsc_fetch.py
 ```bash
 # GA4 API 已配置 ✅
 # 脚本: dev/scripts/sentinel/ga4_credentials/ga4_fetch.py
-# Property: properties/403618427 (example.com)
+# Property: properties/<GA4_PROPERTY_ID> (example.com)
 # 拉取范围：最近 30 天，流量渠道/着陆页/设备/国家
 python3 dev/scripts/sentinel/ga4_credentials/ga4_fetch.py
 ```

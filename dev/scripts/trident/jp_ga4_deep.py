@@ -13,6 +13,12 @@
   9. 全球对照:      date × sessions（全渠道, 全窗口）+ 全球 engagement 汇总
 输出: /tmp/jp_pull/ga4_jp_deep.json
 """
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(next(p for p in _Path(__file__).resolve().parents
+                             if (p / "dev" / "scripts" / "library" / "site_profile.py").exists())
+                        / "dev" / "scripts" / "library"))
+import site_profile as _site_profile  # noqa: E402  GA4 ids live in ops/site.json / MFLOW_GA4_*
 import json, sys, time
 from pathlib import Path
 
@@ -22,7 +28,7 @@ from googleapiclient.discovery import build
 from credential_paths import credential_file
 
 OUT = Path("/tmp/jp_pull"); OUT.mkdir(parents=True, exist_ok=True)
-PROPERTY = "properties/403618427"
+PROPERTY = _site_profile.get("ga4_property")
 SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"]
 MONTHS = [f"{y}-{m:02d}" for y in (2025, 2026) for m in range(1, 13)][:19]
 

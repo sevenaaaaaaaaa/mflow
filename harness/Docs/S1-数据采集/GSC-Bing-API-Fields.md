@@ -2,7 +2,7 @@
 
 > **用途**：品牌方 SEO 报告拉数前的字段 SSOT。  
 > **站点**：`https://www.example.com/`  
-> **GA4 Property**：`properties/403618427` · **Stream**：`10524753059`  
+> **GA4 Property**：`properties/<GA4_PROPERTY_ID>` · **Stream**：`<GA4_STREAM_ID>`  
 > **更新**：2026-06-07
 
 ---
@@ -210,7 +210,7 @@
 
 ### 1. `runReport`（主接口）
 
-**端点**：`POST https://analyticsdata.googleapis.com/v1beta/properties/403618427:runReport`
+**端点**：`POST https://analyticsdata.googleapis.com/v1beta/properties/<GA4_PROPERTY_ID>:runReport`
 
 #### 请求参数
 
@@ -229,7 +229,7 @@
 
 | 过滤器 | 字段 | 值 | 说明 |
 |--------|------|-----|------|
-| 数据流 | `streamId` | `10524753059` | 仅 example.com Web 流 |
+| 数据流 | `streamId` | `<GA4_STREAM_ID>` | 仅 example.com Web 流 |
 | 自然搜索 | `sessionDefaultChannelGroup` | `Organic Search` | 月报 §五、周报主体 |
 | 引荐 | `sessionDefaultChannelGroup` | `Referral` | 周报 OKR 估算 |
 
@@ -327,7 +327,7 @@
   "dimensionFilter": {
     "andGroup": {
       "expressions": [
-        {"filter": {"fieldName": "streamId", "stringFilter": {"matchType": "EXACT", "value": "10524753059"}}},
+        {"filter": {"fieldName": "streamId", "stringFilter": {"matchType": "EXACT", "value": "<GA4_STREAM_ID>"}}},
         {"filter": {"fieldName": "sessionDefaultChannelGroup", "stringFilter": {"matchType": "EXACT", "value": "Organic Search"}}}
       ]
     }

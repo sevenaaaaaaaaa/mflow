@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """SEO 日报：GSC 200 词 + GA4 Organic（轻量）。"""
 from __future__ import annotations
+import sys as _sys
+from pathlib import Path as _Path
+_sys.path.insert(0, str(next(p for p in _Path(__file__).resolve().parents
+                             if (p / "dev" / "scripts" / "library" / "site_profile.py").exists())
+                        / "dev" / "scripts" / "library"))
+import site_profile as _site_profile  # noqa: E402  GA4 ids live in ops/site.json / MFLOW_GA4_*
 
 import json
 import sys
@@ -19,8 +25,8 @@ from seo_monthly_v2 import country_group
 
 from path_constants import DAILY_DIR
 SITE = "https://www.example.com/"
-PROPERTY = "properties/403618427"
-STREAM = "10524753059"
+PROPERTY = _site_profile.get("ga4_property")
+STREAM = _site_profile.get("ga4_stream")
 
 
 def _clients():
