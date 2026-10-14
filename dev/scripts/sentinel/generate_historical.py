@@ -14,7 +14,7 @@ import urllib.request
 ssl._create_default_https_context = ssl._create_unverified_context
 
 SCRIPT_DIR = Path(__file__).resolve().parent  # → sentinel/
-ROOT = SCRIPT_DIR.parent.parent  # → 1-Project/
+ROOT = SCRIPT_DIR.parent.parent  # → dev/ (legacy layout)
 
 BASE = ROOT / "insight-data/Trident Insights/reports"
 OUT_M = BASE / "monthly"; OUT_Q = BASE / "quarterly"; OUT_A = BASE / "annual"; OUT_W = BASE / "weekly"

@@ -1,6 +1,6 @@
 {
   "name": "MFlow 主站内容审计·每日",
-  "description": "www.lovart.ai 主站（Sanity）EN 内容轻量审计，每日 08:15。节奏在 dev/automation/quality-cadence.json 调整。",
+  "description": "www.acme.example 主站（Sanity）EN 内容轻量审计，每日 08:15。节奏在 dev/automation/quality-cadence.json 调整。",
   "workflow": {
     "triggers": [{ "cron": { "cron": "15 8 * * *" } }],
     "actions": [],

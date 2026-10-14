@@ -1,7 +1,7 @@
 """replication CLI — 端到端复刻流水线。
 
 用法：
-  python cli.py probe --url https://www.lovart.ai/internal/composite-page-all
+  python cli.py probe --url https://www.example.com/internal/composite-page-all
   python cli.py replicate --url <源页> --base <资源基准URL> --out <输出目录> \\
       [--anchor '<正则>'] [--dark class|prefers|none] [--trim-tail '<marker>']
       产出：ir.json + sections/*.html + report.md
@@ -100,7 +100,7 @@ def cmd_to_wordpress(args):
     os.makedirs(os.path.join(args.theme_dir, "templates"), exist_ok=True)
     content = wp_blocks.ir_to_page_content(ir_doc)
     slug = args.page_slug or "composite-replica"
-    tpl = _page_template(content, slug, r)
+    tpl = _page_template(content, slug, r, args.theme_dir)
     open(os.path.join(args.theme_dir, "templates",
                       f"page-{slug}.html"), "w", encoding="utf-8").write(tpl)
     snippet = wp_blocks.dark_class_filter_snippet([slug])
@@ -113,13 +113,10 @@ def cmd_to_wordpress(args):
     return 0
 
 
-def _page_template(content, slug, blocks_result):
-    """全宽页面模板：真实 header/footer + 全宽 main + 内容占位。"""
-    W = os.path.dirname(os.path.abspath(__file__))
-    header_p = os.path.join(W, "..", "wordpress", "lovart-theme", "lovart-theme",
-                            "assets", "site-header.html")
-    footer_p = os.path.join(W, "..", "wordpress", "lovart-theme", "lovart-theme",
-                            "assets", "site-footer.html")
+def _page_template(content, slug, blocks_result, theme_dir):
+    """全宽页面模板：主题内 assets/site-header.html / site-footer.html（存在时）+ 全宽 main + 内容占位。"""
+    header_p = os.path.join(theme_dir, "assets", "site-header.html")
+    footer_p = os.path.join(theme_dir, "assets", "site-footer.html")
     header = open(header_p, encoding="utf-8").read() if os.path.exists(header_p) else "<header></header>"
     footer = open(footer_p, encoding="utf-8").read() if os.path.exists(footer_p) else "<footer></footer>"
     return (header +

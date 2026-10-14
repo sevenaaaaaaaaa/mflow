@@ -21,7 +21,7 @@ def absolutize(text, base_url):
 def extract_stylesheets(html, base_url, max_files=8, timeout=30):
     """抓取页面全部 <link stylesheet> 并合并；资源 URL 绝对化。
 
-    实战依据：lovart.ai 4 个编译 CSS 合并 364KB 后，33 组件渲染与主站一致——
+    实战依据：生产站 4 个编译 CSS 合并 364KB 后，33 组件渲染与主站一致——
     CSS 全量直带是 1:1 复刻的基石（同 HTML 同 CSS → 同视觉）。
     """
     links = []
@@ -46,7 +46,7 @@ def extract_stylesheets(html, base_url, max_files=8, timeout=30):
 
 
 def extract_tokens(css):
-    """:root CSS 变量全量提取（实战：lovart.ai 381 项）。"""
+    """:root CSS 变量全量提取（实战：生产站 381 项）。"""
     tokens = {}
     for block in re.findall(r":root[^{]*\{([^}]+)\}", css):
         for k, v in re.findall(r"(--[a-zA-Z0-9-]+)\s*:\s*([^;]+)", block):

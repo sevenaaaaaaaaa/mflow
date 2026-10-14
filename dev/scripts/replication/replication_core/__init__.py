@@ -1,6 +1,6 @@
 """replication-core v0.1 — 设计复刻引擎（平台无关核心）。
 
-从 lovart.ai composite-page-all → WordPress 复刻实战（2026-10-06 全链路验证）抽象而来。
+从 某生产站 composite-page-all → WordPress 复刻实战（2026-10-06 全链路验证）抽象而来。
 五环节 + IR 构建，平台无关；目标平台映射（Gutenberg/WebFlow/…）由各产品适配器消费 IR 完成。
 
 模块：

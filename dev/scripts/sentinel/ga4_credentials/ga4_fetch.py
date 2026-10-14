@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""GA4 全维度拉取 — lovart.ai 专属流 + 有机流量 + 国家分层"""
+"""GA4 全维度拉取 — 主站专属流 + 有机流量 + 国家分层（property/stream 取自站点档案）"""
 import json
+import sys
 from pathlib import Path
 from datetime import date, timedelta
 from google.oauth2.credentials import Credentials
@@ -8,8 +9,10 @@ from googleapiclient.discovery import build
 
 CRED_DIR = Path(__file__).resolve().parent
 TOKEN_FILE = CRED_DIR / "ga4-token.json"
-PROPERTY = "properties/403618427"
-STREAM = "10524753059"
+sys.path.insert(0, str(CRED_DIR.parents[1] / "library"))
+import site_profile  # noqa: E402
+PROPERTY = site_profile.get("ga4_property")  # ops/site.json or MFLOW_GA4_PROPERTY
+STREAM = site_profile.get("ga4_stream")      # ops/site.json or MFLOW_GA4_STREAM
 SCOPES = ["https://www.googleapis.com/auth/analytics.readonly"]
 
 def fetch():
@@ -131,8 +134,8 @@ def fetch():
     print(f"  月环比: {t_month[1]:,} vs {t_month[2]:,} → {t_month[3]:+.1f}%")
 
     # Output
-    LOVART_ROOT = CRED_DIR.parent.parent.parent
-    out = LOVART_ROOT / "Output" / "Data Ingestion"
+    DEV_ROOT = CRED_DIR.parent.parent.parent
+    out = DEV_ROOT / "Output" / "Data Ingestion"
     out.mkdir(parents=True, exist_ok=True)
     (out / "ga4-full.json").write_text(json.dumps(results, indent=2, ensure_ascii=False))
     print(f"\n📁 {out}/ga4-full.json")

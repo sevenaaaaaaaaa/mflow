@@ -8,13 +8,13 @@
 产出（全部落盘，默认不写 Sanity）：
   1) fix-plan.md            —— 修复计划（按 issue 类别计数 + 每页动作）
   2) safe-fixes.ndjson      —— 可安全机械修复的 Sanity patch（seo-fill-from-title /
-                               cover-og-fallback），等人审授权后由 lovart-sanity-publish 导入
+                               cover-og-fallback），等人审授权后由 sanity-publish 导入
   3) rewrite-queue.ndjson   —— 需 signal-writer lane 重写的队列（thin/slop/untranslated/
                                lang-garbage/seq-template），带 lane 分级
 用法：
   python3 fix-main-content.py --audit /tmp/main-audit-weekly-2026-10-09.json
   python3 fix-main-content.py --audit ... --write-patch   # 生成 NDJSON patch（仍不落库）
-禁止：本脚本绝不直接 mutate production；导入必须走 lovart-sanity-publish 人审流程。
+禁止：本脚本绝不直接 mutate production；导入必须走 sanity-publish 人审流程。
 """
 from __future__ import annotations
 import argparse
@@ -28,8 +28,11 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-PROJECT = "o11tm2qe"
-DATASET = "production"
+sys.path.insert(0, str(Path(__file__).resolve().parent / "library"))
+import site_profile  # noqa: E402
+
+PROJECT = site_profile.get("sanity_project")  # ops/site.json or MFLOW_SANITY_PROJECT
+DATASET = site_profile.get("sanity_dataset") or "production"
 API = f"https://{PROJECT}.api.sanity.io/v2024-01-01/data/query/{DATASET}"
 CADENCE = Path(__file__).resolve().parents[1] / "automation" / "quality-cadence.json"
 
@@ -258,7 +261,7 @@ def main():
     if args.write_patch and patches:
         ppath = outdir / "safe-fixes.ndjson"
         ppath.write_text("\n".join(json.dumps(x, ensure_ascii=False) for x in patches))
-        print(f"patch -> {ppath} ({len(patches)} 条，待人审导入 lovart-sanity-publish)", file=sys.stderr)
+        print(f"patch -> {ppath} ({len(patches)} 条，待人审导入 sanity-publish)", file=sys.stderr)
     print(f"DONE. 机械修复候选 {len(plan)}，重写队列 {len(queue)}，patch {len(patches) if args.write_patch else 0}。",
           file=sys.stderr)
 

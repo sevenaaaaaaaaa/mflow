@@ -2,11 +2,11 @@
 import re
 
 
-def assert_sections(rendered_html, expected_types):
+def assert_sections(rendered_html, expected_types, block_prefix="mflow"):
     """组件覆盖断言：expected_types 中每个 type 都应在渲染 HTML 中出现。"""
     found = {t for t in expected_types
              if re.search(r'data-lp-section="%s"' % re.escape(t), rendered_html)
-             or re.search(r'wp-block-lovart-' + re.escape(t), rendered_html)}
+             or re.search(r'wp-block-' + re.escape(block_prefix) + '-' + re.escape(t), rendered_html)}
     missing = [t for t in expected_types if t not in found]
     return {"pass": not missing, "found": sorted(found), "missing": missing}
 
@@ -23,6 +23,6 @@ def assert_no_scripts(rendered_html):
     return {"pass": len(scripts) == 0, "count": len(scripts)}
 
 
-def assert_css_loaded(rendered_html, marker="lovart-site"):
+def assert_css_loaded(rendered_html, marker="mflow-site"):
     """主题 CSS 已加载。"""
     return {"pass": marker in rendered_html}

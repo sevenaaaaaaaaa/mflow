@@ -1,6 +1,6 @@
 {
   "name": "MFlow 主站内容审计·每周全量",
-  "description": "www.lovart.ai 主站全语言内容审计（bug/质量/模板化/翻译垃圾/图片错配），每周一 07:30。节奏在 dev/automation/quality-cadence.json 调整。",
+  "description": "www.acme.example 主站全语言内容审计（bug/质量/模板化/翻译垃圾/图片错配），每周一 07:30。节奏在 dev/automation/quality-cadence.json 调整。",
   "workflow": {
     "triggers": [{ "cron": { "cron": "30 7 * * 1" } }],
     "actions": [],

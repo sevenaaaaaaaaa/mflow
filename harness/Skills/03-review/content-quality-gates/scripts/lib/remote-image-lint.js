@@ -4,11 +4,15 @@ const https = require('https')
 const MAX_BYTES = 65536
 const MAX_REDIRECTS = 4
 
+// Extra image-CDN host hints for a site can be supplied via MFLOW_IMAGE_HOST_RE (regex source).
+const EXTRA_IMAGE_HOST_RE = process.env.MFLOW_IMAGE_HOST_RE ? new RegExp(process.env.MFLOW_IMAGE_HOST_RE, 'i') : null
+
 function looksLikeImageUrl(url, pathHint = '') {
   return (
     /^https?:\/\//i.test(String(url || '')) &&
     (/\.(png|jpe?g|webp|gif|svg)(\?|$)/i.test(url) ||
-      /(assets-persist|cdn\.sanity|liblib|image|images|cover)/i.test(`${url} ${pathHint}`))
+      /(assets-persist|cdn\.sanity|cdn|media|image|images|cover)/i.test(`${url} ${pathHint}`) ||
+      (EXTRA_IMAGE_HOST_RE !== null && EXTRA_IMAGE_HOST_RE.test(String(url))))
   )
 }
 

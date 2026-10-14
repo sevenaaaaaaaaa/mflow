@@ -6,21 +6,24 @@ import sys
 _scripts = Path(__file__).resolve().parents[2]
 if str(_scripts) not in sys.path:
     sys.path.insert(0, str(_scripts))
-from lovart_brand_match import is_brand
+sys.path.insert(0, str(_scripts / "library"))
+from brand_match import is_brand
+import site_profile
 from datetime import date, timedelta
 from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 
 CRED_DIR = Path(__file__).resolve().parent
 TOKEN = CRED_DIR / "gsc-token.json"
-SITE = "https://www.lovart.ai/"
+SITE = site_profile.get("gsc_site")  # active site profile (ops/site.json / MFLOW_GSC_SITE)
 SCOPES = ["https://www.googleapis.com/auth/webmasters.readonly"]
 
 # === 品牌词规则 ===
 # === 竞品非品牌词库 (从知识库加载) ===
 COMPETITOR_KEYWORDS = set()
-ROOT = CRED_DIR.parent.parent.parent.parent  # → 1-Project/
-KW_LIB_PATH = ROOT / "insight-data" / "Trident Insights" / "竞品核心非品牌词" / "lovart_competitors_keywords.md"
+ROOT = CRED_DIR.parents[3]  # → repo root
+KW_LIB_PATH = ROOT / (site_profile.get("competitor_keywords_file")
+                      or "insight-data/Trident Insights/竞品核心非品牌词/competitors_keywords.md")
 try:
     lines = KW_LIB_PATH.read_text().lower().split('\n')
     for line in lines:

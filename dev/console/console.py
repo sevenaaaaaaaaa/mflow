@@ -35,6 +35,7 @@ PROJECT = Path(__file__).resolve().parents[2]
 CONSOLE_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(PROJECT / "dev" / "scripts" / "library"))
 import env_guard  # noqa: E402  dev/prod separation: development never writes production systems
+import site_profile  # noqa: E402  active site/brand values come from ops/site.json or env, never from code
 env_guard.install()
 # RUN_DIR 可被 MFLOW_RUN_DIR 覆盖——单测/预演必须指向临时目录，
 # 否则 import console 就会往生产的 run/approvals.log 写审计噪音（2026-09-20 实测污染 92 条/天）。
@@ -1257,7 +1258,7 @@ def gsc_decay_batch(limit=10, by=""):
             continue
         seen.add(slug)
         rows.append({"slug": slug, "lang": lang,
-                     "url": f"https://www.lovart.ai{u.path}",
+                     "url": f"{site_profile.main_site_url()}{u.path}",
                      "clicks": pg.get("clicks", 0), "impr": pg.get("impr", 0)})
     if not rows:
         return {"error": "GSC Top20 中暂无「高曝光低 CTR」页面（条件：曝光 ≥500 且 CTR <1.2%）"}
@@ -1617,25 +1618,43 @@ GEO_RULES = """GEO 可引用性规则（生成式引擎按块摘录，违反会�
 - 关键结论写成可直接摘录的"定义句/结论句"（主语+判断+数据）"""
 
 
+def template_dirs():
+    """Built-in templates/ first, then brand templates from gitignored ops/brands/<brand>/templates/."""
+    dirs = [TEMPLATES_DIR]
+    brands = PROJECT / "ops" / "brands"
+    if brands.is_dir():
+        dirs += sorted(d / "templates" for d in brands.iterdir() if (d / "templates").is_dir())
+    return dirs
+
+
 def get_template(tid):
     if not tid:
         return None
-    f = TEMPLATES_DIR / f"{str(tid).replace('/', '').replace('..', '')}.json"
-    if not f.exists():
-        return None
-    try:
-        return json.loads(f.read_text())
-    except Exception:
-        return None
+    name = f"{str(tid).replace('/', '').replace('..', '')}.json"
+    for d in template_dirs():
+        f = d / name
+        if f.exists():
+            try:
+                return json.loads(f.read_text())
+            except Exception:
+                return None
+    return None
 
 
 def list_templates():
-    out = []
-    if TEMPLATES_DIR.exists():
-        for f in sorted(TEMPLATES_DIR.glob("*.json")):
+    out, seen = [], set()
+    for tdir in template_dirs():
+        if not tdir.exists():
+            continue
+        for f in sorted(tdir.glob("*.json")):
+            if f.name in seen:
+                continue
+            seen.add(f.name)
             try:
                 d = json.loads(f.read_text())
             except Exception:
+                continue
+            if not isinstance(d, dict):  # presets.json / playbooks.json are lists, not templates
                 continue
             out.append({"id": d.get("id", f.stem), "name": d.get("name", f.stem),
                         "version": d.get("version", "1.0"), "author": d.get("author", ""),
@@ -7697,7 +7716,7 @@ def preset_expand(pid, opt, proj):
                 "params": {"batch_size": 10}, "note": f"扫描 {len(ids)} 篇，{len(items)} 篇有可修问题"}
 
     if pid == "main-content-rewrite-queue":
-        # 主站（www.lovart.ai）审计重写队列 → rewrite 批量任务。
+        # 主站（site_profile.main_site_url()）审计重写队列 → rewrite 批量任务。
         # 队列来源：audit-main-content.py / fix-main-content.py 产出，同步到服务器 run/main-audit/。
         qf = RUN_DIR / "main-audit" / "rewrite-queue.ndjson"
         if not qf.exists():
@@ -11254,7 +11273,7 @@ class Handler(BaseHTTPRequestHandler):
                     try:
                         _lang = str(body.get("lang", "")).strip()
                         _slug = str(body.get("slug", "")).strip() or item_id
-                        _pre = "https://www.lovart.ai" + (f"/{_lang}" if _lang and _lang != "en" else "")
+                        _pre = site_profile.main_site_url() + (f"/{_lang}" if _lang and _lang != "en" else "")
                         _tries = [f"{_pre}/{_slug}", f"{_pre}/tool/{_slug}", f"{_pre}/blog/{_slug}"]
                         _live = ""
                         for _u in _tries:

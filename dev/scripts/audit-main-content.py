@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""audit-main-content.py — www.lovart.ai 主站（Sanity production）内容质量审计。
+"""audit-main-content.py — 主站（Sanity production）内容质量审计；站点取自 site_profile（ops/site.json）。
 
 范围：blog 全部语言 + compositePage（feature/tool/topic/scenario/solution）全部语言。
 审计维度（对应用户问题清单）：
@@ -29,8 +29,11 @@ import urllib.parse
 import urllib.request
 from pathlib import Path
 
-PROJECT = "o11tm2qe"
-DATASET = "production"
+sys.path.insert(0, str(Path(__file__).resolve().parent / "library"))
+import site_profile  # noqa: E402
+
+PROJECT = site_profile.get("sanity_project")  # ops/site.json or MFLOW_SANITY_PROJECT
+DATASET = site_profile.get("sanity_dataset") or "production"
 API = f"https://{PROJECT}.api.sanity.io/v2024-01-01/data/query/{DATASET}"
 EXPORT = f"https://{PROJECT}.api.sanity.io/v1/data/export/{DATASET}"
 
@@ -428,7 +431,7 @@ def main():
     print("json ->", args.out, file=sys.stderr)
 
     # --- Markdown 摘要（无表格） ---
-    L = ["# www.lovart.ai 主站内容审计（Sanity production）", "",
+    L = [f"# {site_profile.main_site_url()} 主站内容审计（Sanity production）", "",
          f"blog {report['counts']['blog']} 篇，compositePage {report['counts']['compositePage']} 页。"]
     for kind, rows in [("blog", report["blog_issues"]), ("compositePage", report["comp_issues"])]:
         bad = [r for r in rows if r["issues"]]

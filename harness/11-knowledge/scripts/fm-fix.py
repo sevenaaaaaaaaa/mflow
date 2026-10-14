@@ -6,8 +6,8 @@ Policy by path (kept in one place so it's easy to tune):
   harness/02-rules/RULES-00-iron.md       → type: rule/iron
   harness/02-rules/RULES-{NN}-*.md        → type: rule + scope=profile-{name}
   harness/02-rules/SESSION-ROUTING.md     → type: session-routing
-  harness/06-cron/                         → type: cron + scope=lovart-management
-  harness/08-storyline/                    → type: storyline + scope=lovart-creation
+  harness/06-cron/                         → type: cron + scope=profile-management
+  harness/08-storyline/                    → type: storyline + scope=profile-creation
   harness/11-knowledge/dream/README.md     → type: dream-readme
   harness/11-knowledge/audit/              → type: audit-report
   harness/CLAUDE.md                        → type: tool-entrypoint/claude
@@ -23,8 +23,8 @@ Rules (HARD):
   - Crash on any IO error.
 
 Usage:
-  python3 fm-fix.py --root <vault>
-  python3 fm-fix.py --root <vault> --dry-run   # print plan, no write
+  python3 fm-fix.py --root $MFLOW_ROOT
+  python3 fm-fix.py --root $MFLOW_ROOT --dry-run   # print plan, no write
 """
 
 import argparse
@@ -96,13 +96,13 @@ def derive_scope(rel: str) -> str:
         if nm == "SESSION-ROUTING.md":
             return "all"
     if "06-cron" in Path(rel).parts:
-        return "profile-lovart-management"
+        return "profile-management"
     if "08-storyline" in Path(rel).parts:
-        return "profile-lovart-creation"
+        return "profile-creation"
     if "11-knowledge" in Path(rel).parts:
-        return "profile-lovart-management"
+        return "profile-management"
     if "Docs" in Path(rel).parts:
-        return "profile-lovart-creation"
+        return "profile-creation"
     if "CLAUDE.md" in Path(rel).name:
         return "tool-claude"
     return "all"
@@ -128,8 +128,6 @@ def derive_tools(rel: str) -> str:
 
 def derive_status(rel: str) -> str:
     p = Path(rel)
-    if "01-project" in p.parts:
-        return "snapshot"
     if p.name.endswith(" 2.md"):  # legacy duplicates
         return "legacy"
     if "FEATURES-PRODUCTION 2.md" == p.name:

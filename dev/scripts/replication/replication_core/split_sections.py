@@ -50,7 +50,7 @@ def split_sections(html, anchor_re=r'id="internal-section-\d+"[^>]*>'
     """按锚点正则切分组件片段。
 
     返回 [{order, type, html}]；html 为锚点起点 → 下一锚点前（原样，未修边）。
-    实战依据：lovart.ai composite-page-all 33 组件按此锚点切分全部成功。
+    实战依据：某生产站 composite-page-all 33 组件按此锚点切分全部成功。
     """
     marks = [(m.start(), m.group(1))
              for m in re.finditer(anchor_re, html)]

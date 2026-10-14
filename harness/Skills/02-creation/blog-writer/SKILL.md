@@ -22,10 +22,14 @@ description: >-
 
 ## 定位与边界
 
-本 skill 是 **Lovart 博客创作唯一入口**。2026-10-03 起以下技能已并入本 skill，不再独立存在：
-`lovart-content-writer.md`（→ references/methodology-content-writer.md）、`lovart-blog-signal-writer`（→ references/signals-and-phases.md）、8 个类型子技能（→ references/types/）、`lovart-blog-automation`（→ references/wp-publishing.md 及 references/ 规范文件）、`blog-serp-writer`（弃用，存 `02-creation/_archived-blog-skills/`）。
+本 skill 是 **博客创作唯一入口**（文中示例品牌 Acme / Globex 为虚构）。
 
-- 页面类请求（Tools/Features/Landing/Topic…）→ `landing-writer` / `landing-writer`，不在本 skill
+> **品牌覆盖层**：文中 `<brand>-*-playbook.md` / `<brand>-*-review-checklist.md` 等品牌专属参考不在公开仓库，位于 `ops/brands/<brand>/overlay/<与本仓库相同的路径>`（当前品牌见 `ops/site.json` 的 `brand_slug`）。为某品牌写作时优先读 overlay 版本；不存在时只按本仓库的通用 GUIDE 执行。
+
+2026-10-03 起以下技能已并入本 skill，不再独立存在：
+`content-writer.md`（→ references/methodology-content-writer.md）、`blog-signal-writer`（→ references/signals-and-phases.md）、8 个类型子技能（→ references/types/）、`blog-automation`（→ references/wp-publishing.md 及 references/ 规范文件）、`blog-serp-writer`（弃用，存 `02-creation/_archived-blog-skills/`）。
+
+- 页面类请求（Tools/Features/Landing/Topic…）→ `landing-writer`，不在本 skill
 - 发布前深度审计 → `03-review/content-audit`
 - 主站 Sanity 发布 → `sanity-publish`；本 skill 默认终端是子站 WordPress（见 Step 6）
 
@@ -53,7 +57,7 @@ description: >-
 GSC 过期先刷：`trident-data-engine`（`scripts/run_all.sh`）。
 
 ### Step 2 · 选题定稿
-两层去重（子站 WP API slug 查重 + `03-Published/` 本地查重）→ ICE 优先级（Impact=搜索量×商业价值 / Confidence=可排名性 / Ease=写作成本）→ category 映射（写作类型 ≠ Sanity category，按 LOVART-BLOG-LOCAL-SPEC §1.1）。
+两层去重（子站 WP API slug 查重 + `03-Published/` 本地查重）→ ICE 优先级（Impact=搜索量×商业价值 / Confidence=可排名性 / Ease=写作成本）→ category 映射（写作类型 ≠ Sanity category，按 ACME-BLOG-LOCAL-SPEC §1.1）。
 
 ### Step 3 · 方法论写作
 **全文必读 `references/methodology-content-writer.md`**，强制继承：
@@ -66,13 +70,13 @@ GSC 过期先刷：`trident-data-engine`（`scripts/run_all.sh`）。
 所选类型的专属结构/骨架查 `references/types/{type}/GUIDE.md`（101 / best-practice / better-design / complete-guide / insight-trend / review / stack-by-stack / thought-leadership）。
 
 ### Step 5 · 输出规范（生产硬要求）
-- **Frontmatter 15 字段齐全**（title/slug/date/language/category/author/description/keywords/tags/cover_url/alt_text/seo_title/seo_description/status/content_cluster），模板 `1-3 Content Gen/blog-pipeline/品牌方-Blogs/templates/frontmatter.example.yaml`
+- **Frontmatter 15 字段齐全**（title/slug/date/language/category/author/description/keywords/tags/cover_url/alt_text/seo_title/seo_description/status/content_cluster），模板 `genflow/blog-pipeline/品牌方-Blogs/templates/frontmatter.example.yaml`
 - **封面**：`python3 …/scripts/pick-cover.py {slug}`，勿编造；alt_text = `{focus_keyword} — 品牌 AI Design Agent blog cover`
 - **三段式正文**：第一性原理 → 策略 → 品牌工具实操；每大节 ≥2 子节
 - **六大必含块**：Derivative Scenarios / FAQ（按 PAA）/ E-E-A-T 表 / Internal Links 表 / Image Appendix 表 / footer cluster 行
-- **术语**：只用 system prompt「BRAND TERMINOLOGY REFERENCE」拼写（以 system prompt 术语表为准（Lovart 生产环境=MCoT/ChatCanvas/Nano Banana Pro；Moodio=KB Moodio/01 能力词））
+- **术语**：只用 system prompt「BRAND TERMINOLOGY REFERENCE」拼写（以 system prompt 术语表为准（Acme 生产环境=MCoT/ChatCanvas/Nano Banana Pro；Globex=KB Globex/01 能力词））
 - **内链**：只用 system prompt「VERIFIED INTERNAL LINKS」slug + `example.com/signup` + `example.com/pricing`，禁止编造 `/blog/` slug
-- **表格**：Portable Text 用 Lovart schema（`tableRow.cells: string[]`，非五层 tableCell）——见 `references/portable-text-table-syntax.md`，import 前 `validate_pt_body.py` BLOCK=0
+- **表格**：Portable Text 用 Acme schema（`tableRow.cells: string[]`，非五层 tableCell）——见 `references/portable-text-table-syntax.md`，import 前 `validate_pt_body.py` BLOCK=0
 - 英文 US spelling；正文无 emoji；无 `Note:`/`TODO` 标记；Markdown 兼容规则见 methodology
 
 ### Step 6 · 门禁 → ready（STOP）
@@ -87,10 +91,10 @@ blogs 子站（WordPress 现役）：`references/wp-publishing.md`（`publish-to
 ## 关键路径
 
 ```
-1-Project/
-├── insight-data/Lovart ORM/{daily,weekly,monthly}/    ← 舆情输入
+mflow/
+├── insight-data/Acme ORM/{daily,weekly,monthly}/    ← 舆情输入
 ├── insight-data/Trident Insights/reports/gsc-full.json ← GSC 输入
-└── 1-3 Content Gen/blog-pipeline/品牌方-Blogs/
+└── genflow/blog-pipeline/品牌方-Blogs/
     ├── cursor-mflow-blog-system-prompt.md  ← 人设/术语/结构/已验证内链
     ├── MFLOW-BLOG-LOCAL-SPEC.md            ← frontmatter 规范
     ├── BATCH-WORKFLOW.md                    ← 验收门禁

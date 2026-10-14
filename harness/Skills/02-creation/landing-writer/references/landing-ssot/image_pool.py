@@ -1,69 +1,31 @@
 # -*- coding: utf-8 -*-
 """
-Lovart Verified Image Pool (43 images / 7 categories)
-Last verified: 2026-06-24
-Source: production bodyJson + tools_asset_pool.json
-"""
+Verified image pool + title→category matcher for landing pages.
 
-POOL = {
-    "video": [
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/afe09b54d518aacd6b7b96c5e9e22ba282abb81a.mp4",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/7cc07d1d40c0c9d31ddc7f3951072e20e11a216e.mp4",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/0b54f9cd55c2c07388ad25eadc136e65d295cd62.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/1c9bb0c97d36b371e68100e8f884e2a29c48ab11.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/1190149f4987ff002aa16cfb3a51311d7ea9e392.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/0a5bc76a74ef8d4ab09ecf9d6a58ecbe2d5f818a.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/1f4373d295181af9b6be11fc731ea0fabb88e5c7.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/4c90f673629d0bbd5fce85ad3743522b21d8fb8b.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/8efdfd8318084a8c88bb72c706bb33dc89c9d7e0.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/6b1a28475b0c188f4a858aaf0aa852a9b8d74f0e.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d0a9be686121d00de898a2d5ce66d96ed5fe34c9.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/896ff1a090a6ab98cbbce62b58cd73f5a3b4c5e0.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/1c0cdc61d03c462eb9e8e2a5b0aa9f5a86a47c89.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/b8e9479301c56b3946bbce10cadc78eaa86a1e91.png",
-    ],
-    "avatar": [
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/cb613160648cd57fa1f2431a7b3ea5bb4f088d90.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/1f66f7b0726f0b3f59645d6b3a4716c8a8e89d8a.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/7eb9d35ed6aaf819fbe425badb3310b77bdc38a7.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d11411bc15e95312819272bf39a65a6f6c3d4e76.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/eb6f103da589f07f425f2c736237e3f7b0d4af07.png",
-        "https://assets-persist.lovart.ai/img/0ec3ec8352e24750bddb7764c24e81e1/d11411bc15e95312819272bf39a65a6f6c3d4e76.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
-    ],
-    "image_gen": [
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d14a7f30014fd72f63f9cdfbed8dd17c67012f10.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/Image-1.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/feature-2-style-consistency-1536x1024.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/feed1-new.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/feed2.jpg",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/graphic-design.jpeg",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/prompt-nb.jpg",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/text-ach.png",
-    ],
-    "design": [
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/4573c61a748407d72a79a8f1baabd7ae19b41f2c.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/6a1b14e8ddcde57b6e342560a00f494a46e13174.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/886aa37f8873e52330bf92fb790fbb8b3a0fb1ce.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/55b94439550ff0fefec6a09ca160df04a9a3b27b.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/mention-768x480.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/e0bc4cf46ad055353bad5c9e832c33cd3d296ff5.png",
-    ],
-    "edit": [
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/181ed5a5733bccb4594c29e1c15bd1ce93f8ea52.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/5d48ca781dea8ab12d0c93fc32e3ad8afa815631.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/805d2e070d4404ed0cd6ae865930375919374b97.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/98dde485f8c6789596006f5ee601a445d6606b78.png",
-    ],
-    "ecommerce": [
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/5049909fb1610fbc90ed8b25cfecc777d2c8b3da.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/79385767155d45c0a8d74c584a479ad2e5c80fa7.png",
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/1778844771540.png",
-    ],
-    "generic": [
-        "https://assets-persist.lovart.ai/img/079352d520c34315b54e3e3eb87c2674/d3e44c9edfb1a44f386973e9b3c23fcffddc8008.png",
-    ],
-}
+The image URLs themselves are site data and are not shipped in the public repo. They are loaded from
+MFLOW_IMAGE_POOL (JSON path) or <repo>/ops/image_pool.json:
+    {"video": [url, ...], "avatar": [...], "image_gen": [...], "design": [...],
+     "edit": [...], "ecommerce": [...], "generic": [...]}
+Without a pool file every category is empty and callers fall back to their own defaults.
+"""
+import json as _json
+import os as _os
+from pathlib import Path as _Path
+
+_CATEGORIES = ("video", "avatar", "image_gen", "design", "edit", "ecommerce", "generic")
+
+
+def _load_pool():
+    root = _Path(_os.environ.get("MFLOW_ROOT") or _Path(__file__).resolve().parents[6])
+    f = _Path(_os.environ.get("MFLOW_IMAGE_POOL") or (root / "ops" / "image_pool.json"))
+    try:
+        data = _json.loads(f.read_text(encoding="utf-8"))
+    except Exception:
+        data = {}
+    return {c: list(data.get(c) or []) for c in _CATEGORIES}
+
+
+POOL = _load_pool()
 
 import re
 

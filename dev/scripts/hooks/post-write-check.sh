@@ -16,9 +16,9 @@
 #   1 = BLOCK (must fix before publish)
 #   2 = engine error
 #
-# 2026-10-09 用户裁定增量（Moodio/Lovart 共用）：
+# 2026-10-09 用户裁定增量（各品牌共用）：
 #   GATE6 增补两条：开场模板轮换（6.7，openers.log 连续同型 ready 拦截）+ 证据类型多样性（6.8）
-#   前因：场景冷开场连续复用=新模板 AI 味（Lovart/Moodio 生成侧都出现过）
+#   前因：场景冷开场连续复用=新模板 AI 味（多个品牌的生成侧都出现过）
 
 set -euo pipefail
 
@@ -213,7 +213,7 @@ if [[ "$WORD_COUNT" -ge 1000 ]]; then
     fi
 fi
 
-# 6.7 开场模板轮换（2026-10-09 用户裁定：场景冷开场已成新模板 AI 味——Lovart/Moodio 都踩过，机器轮换制）
+# 6.7 开场模板轮换（2026-10-09 用户裁定：场景冷开场已成新模板 AI 味——多个品牌都踩过，机器轮换制）
 # 开场型指纹：scene-anecdote（"It was <时间>…" / "The <星期> I…" / "Last <季节>…"）
 # 机制：run/openers.log 记录 (日期|文件|开场型)；--ready 时若最近 2 篇同型 → BLOCK；草稿档仅提示。
 if [[ -n "${MFLOW_OPENERS_LOG:-}" ]]; then OPENER_LOG="$MFLOW_OPENERS_LOG"; else OPENER_LOG="openers.log"; fi
@@ -249,7 +249,9 @@ fi
 set +e
 _URLS_RAW="$(grep -oE 'https://[a-zA-Z0-9.-]+[/A-Za-z0-9?=&._-]*' "$FILE" 2>/dev/null)"
 if [[ -n "$_URLS_RAW" ]]; then
-    EXT_URLS="$(echo "$_URLS_RAW" | grep -viE 'example\.com|localhost|127\.0\.0\.1|\.mflow\.|app\.moodio' | sort -u | wc -l | tr -d ' ')"
+    # Own-site hosts (site profile own_hosts / MFLOW_OWN_HOSTS_RE) do not count as external sources
+    _OWN_RE="${MFLOW_OWN_HOSTS_RE:-$(python3 "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/../library/site_profile.py" own_hosts_regex 2>/dev/null)}"
+    EXT_URLS="$(echo "$_URLS_RAW" | grep -viE "example\.com|localhost|127\.0\.0\.1|\.mflow\.${_OWN_RE:+|$_OWN_RE}" | sort -u | wc -l | tr -d ' ')"
 else
     EXT_URLS=0
 fi

@@ -11,8 +11,8 @@ MFlow 是 GEO（生成式引擎优化）自动化内容生产系统：信号监�
 - Python 3.10+（服务器 3.12 venv），以标准库为主，依赖 `markdown`、google-auth / googleapiclient、pyyaml、requests
 - 工作台：`dev/console/console.py`（单文件 HTTP 服务，默认端口 8088）+ 静态 HTML
 - 无数据库，状态落文件（`run/`）
-- 调度：本地 launchd（`dev/automation/plists/`），服务器 systemd timer（`mflow-*`）
-- 附带：`dev/mflow-codebox/`（Go）、`dev/wordpress/docker-compose.yml`（本地 WordPress 调试）
+- 调度：服务器 systemd timer（`mflow-*`）为准；本机 launchd 为可选模板（`dev/automation/plists/`，`install.sh` 渲染）
+- 附带：`dev/mflow-codebox/`（Go）、`dev/wordpress/docker-compose.yml`（本地 WordPress 测试环境，主题目录可挂载）
 
 ## 目录结构
 
@@ -29,8 +29,6 @@ docs/               文档（deploy-guide.md、quickstart.md…）
 run/                运行时数据（大部分 gitignored）
 insight-data/ genflow/  内容/情报数据（gitignored）
 ```
-
-`1-1 Harness` / `1-2 Insight` / `1-4 Dev` 为旧路径过渡垫片（gitignored），不要在其中开发。
 
 ## 常用命令
 
@@ -82,6 +80,8 @@ MFlow 既是在开发的工具，也是每天在用的生产工具。两类产�
 - 用 MFlow 干活时新写的脚本一律放 `ops/`；`/ops/` 与根目录的 `*.py/*.sh/*.js/*.mjs/*.ts` 已 gitignore，`deploy/sync.sh` 只把它们送到服务器（`--update`，不覆盖服务器上更新的版本）。
 - 公开仓库「零品牌方」（2026-09-28 开源化 P2）：任何含品牌方 / 客户站点 / CMS 项目信息的东西都属于第二类。
 - 拿不准时按第二类处理（不进 GitHub），再问用户。
+- **站点/品牌值不写进代码**：当前实例管理的站点（主站 URL、GSC/GA4、Sanity project、区块前缀、品牌词…）由 `dev/scripts/library/site_profile.py` 解析：环境变量 → `ops/site.json` → `run/sites/main.json` → 中性默认值（`www.example.com`）。品牌专属资料放 `ops/brands/<brand>/`（`brand-profile.json`、`overlay/<仓库同路径>` 品牌版 Skill/文档、`code/` 品牌辅助模块、`templates/`、`wordpress/`），说明见 `harness/Skills/infra/gates/README.md`。公开仓库里的示例品牌一律用虚构的 Acme / Globex / Initech（`*.example`）。
+- `run/sites/` 只跟踪中性示例 `main.json`；真实站点档案是本地/服务器数据（gitignored，`deploy/sync.sh` 仍会 rsync `run/sites/`）。
 - 与其他 flow 项目（统一放 web 根之外的 `/www/ops/<project>/`）不同，MFlow 的 ops 刻意放在应用目录内 `/www/wwwroot/mflow/ops/`——服务器工作台直接就地读取，属设计如此，不要迁走。
 
 ## 开发 / 生产环境
@@ -99,9 +99,14 @@ MFlow 既是在开发的工具，也是每天在用的生产工具。两类产�
 
 本机 launchd 任务清单（含品牌相关路径与任务名）放在 gitignored 的 `ops/LOCAL-JOBS.md`，不进公开仓库。原则：MFlow 相关任务一律指向本仓库；服务器 timer 已覆盖的不在本机重复跑；需要真实外部写入的任务在 plist 里显式设 `MFLOW_ALLOW_LIVE_WRITES=1`。
 
+## 版本与发布
+
+- 版本号唯一来源：根目录 `VERSION`（纯 `X.Y.Z`，不带构建后缀）；面向用户的说明写 `CHANGELOG.md`（新在前，未发布内容放 `## Unreleased`，不写提交哈希 / Phase 等内部代号）。
+- 正式发布只有 `X.Y.0`（紧急修复才出 `X.Y.Z`）；日常构建走滚动的 Nightly 预发布，`-nightly.YYYYMMDD` 后缀只在构建时注入、绝不提交。
+
 ## 注意事项
 
-- 环境变量：`MFLOW_CONSOLE_PASSWORD`、`MFLOW_API_TOKEN`、`MFLOW_CONSOLE_PORT`、`MFLOW_PYTHON`、`MFLOW_LOCAL_DEV_ROOT`、`MFLOW_RUN_DIR`、`MFLOW_ROOT`、`MFLOW_RESOURCE_ROOT`、`MFLOW_LOOP_TOKEN_CAP`、`MFLOW_REMOTE_HOST`、`MFLOW_REMOTE_PORT`、`MFLOW_SITE_URL`（服务器经 `run/env.sh` 注入）
+- 环境变量：`MFLOW_CONSOLE_PASSWORD`、`MFLOW_API_TOKEN`、`MFLOW_CONSOLE_PORT`、`MFLOW_PYTHON`、`MFLOW_LOCAL_DEV_ROOT`、`MFLOW_RUN_DIR`、`MFLOW_ROOT`、`MFLOW_RESOURCE_ROOT`、`MFLOW_LOOP_TOKEN_CAP`、`MFLOW_REMOTE_HOST`、`MFLOW_REMOTE_PORT`、`MFLOW_SITE_URL`（工作台自身对外地址，服务器经 `run/env.sh` 注入）；站点档案覆盖：`MFLOW_MAIN_SITE_URL`、`MFLOW_BRAND_NAME`、`MFLOW_BRAND_SLUG`、`MFLOW_BLOCK_PREFIX`、`MFLOW_GSC_SITE`、`MFLOW_GA4_PROPERTY`、`MFLOW_GA4_STREAM`、`MFLOW_SANITY_PROJECT`、`MFLOW_SANITY_DATASET`
 - `deploy/cf.env`（`CF_API_TOKEN` / `CF_ZONE_ID` / `CF_DOMAIN`）与 `deploy/gh.env`（`GH_USER` / `GH_TOKEN`）为本地凭据文件，模板见 `*.env.example`，勿读勿入库
 - `deploy/sync.sh` 会 `git add -A` 自动提交所有改动（已有 .gitignore + gitleaks 兜底），运行前仍应确认工作区
 - 不存在独立的 `.claude/skills/`；技能以 `harness/Skills/` 为准，编辑器规则由 `dev/scripts/harness_sync.py` 生成
