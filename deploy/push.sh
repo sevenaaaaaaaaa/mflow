@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # push.sh — 只做 git push，凭据优先用 deploy/gh.env（给无家目录访问权的环境用）
 #
-#   bash deploy/push.sh              # 推 main（只允许在 main 分支上运行）
+#   bash deploy/push.sh              # 推当前分支到 GitHub（不碰服务器，功能分支也可推，用于开 PR）
 #   bash deploy/push.sh --dry-run    # 只预演（任意分支可跑，非 main 仅告警）
 #
 # 与 deploy/sync.sh 的区别：sync.sh 是全流程（测试→提交→推送→服务器→CF），
@@ -12,16 +12,6 @@ cd "$ROOT"
 
 DRY=""; [[ "${1:-}" == "--dry-run" ]] && DRY="--dry-run"
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
-
-# Deploy only from main (dry-run: warn only)
-if [[ "$BRANCH" != "main" ]]; then
-    if [[ -n "$DRY" ]]; then
-        echo "⚠ 当前分支 ${BRANCH}，部署只允许从 main 进行；功能分支请先合并（--dry-run 仅预演，继续）"
-    else
-        echo "✗ 当前分支 ${BRANCH}，部署只允许从 main 进行；功能分支请先合并" >&2
-        exit 1
-    fi
-fi
 
 if [[ -f "$ROOT/deploy/gh.env" ]]; then
     set +u; source "$ROOT/deploy/gh.env"; set -u

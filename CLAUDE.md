@@ -64,7 +64,7 @@ bash deploy/push.sh                      # 只推 GitHub
 ```
 
 - 分支：`main`；无 GitHub Actions；默认提交信息 `chore(sync): auto-deploy <时间>`
-- 只允许从 `main` 部署：`sync.sh`（含 `--server-only`）与 `push.sh` 在其他分支直接拒绝，`--dry-run` 仅告警
+- 只允许从 `main` 部署：`sync.sh`（含 `--server-only`）在其他分支直接拒绝，`--dry-run` 仅告警；`push.sh` 只推 GitHub，任意分支可用（功能分支开 PR）
 - 本地 `.git/hooks/pre-commit` 跑 `gitleaks git --pre-commit --staged`，任何提交含密钥都会被拦下
 - 密钥一律走环境变量或 gitignored 本地文件（变量名见 `.env.example`），如飞书 Base token：`FEISHU_BASE_TOKEN` 或 `harness/Skills/01-strategy/trident-data-engine/credentials/feishu_base_token`
 - 服务器目录**不要再 `git pull`**：大量内容已出库，pull 会删掉服务器上的同名文件；更新一律走 `deploy/sync.sh`
