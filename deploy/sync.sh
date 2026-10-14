@@ -225,7 +225,8 @@ if [[ "$DO_CONTENT" -eq 1 ]]; then
     # Ad-hoc scripts dropped in the repo root while using the tool (gitignored as /*.py etc.):
     # server-only, same --update / no-delete semantics. Only top-level files match.
     ROOT_SCRIPT_FILTER=(--include='/*.py' --include='/*.sh' --include='/*.js' --include='/*.mjs' --include='/*.ts' --exclude='*')
-    if ls ./*.py ./*.sh ./*.js ./*.mjs ./*.ts >/dev/null 2>&1; then
+    shopt -s nullglob; root_scripts=(./*.py ./*.sh ./*.js ./*.mjs ./*.ts); shopt -u nullglob
+    if (( ${#root_scripts[@]} )); then
         if [[ "$DRY_RUN" -eq 1 ]]; then
             echo "    --- ./ root scripts (content)"
             rsync -az --update $RSYNC_DRY "${ROOT_SCRIPT_FILTER[@]}" -e "ssh -p $REMOTE_PORT" ./ "${REMOTE}:\"${REMOTE_ROOT}/\"" 2>&1 | sed 's/^/      /' || true
