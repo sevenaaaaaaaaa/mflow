@@ -61,10 +61,11 @@ class TestEnvDetection(unittest.TestCase):
         self.assertEqual(G.env({"MFLOW_ENV": "development"}, "linux"), "development")
         self.assertEqual(G.env({"MFLOW_ENV": "production"}, "darwin"), "production")
         self.assertEqual(G.env({"MFLOW_ENV": "prod"}, "darwin"), "production")
-        self.assertEqual(G.env({"APP_ENV": "production"}, "darwin"), "production")
-        self.assertEqual(G.env({"APP_ENV": "dev"}, "linux"), "development")
 
-    def test_mflow_env_wins_over_app_env(self):
+    def test_generic_app_env_is_ignored(self):
+        # Another tool's APP_ENV must never flip the server out of production (or a laptop into it).
+        self.assertEqual(G.env({"APP_ENV": "dev"}, "linux"), "production")
+        self.assertEqual(G.env({"APP_ENV": "production"}, "darwin"), "development")
         self.assertEqual(G.env({"MFLOW_ENV": "dev", "APP_ENV": "production"}, "linux"), "development")
 
     def test_blank_falls_back_to_platform(self):

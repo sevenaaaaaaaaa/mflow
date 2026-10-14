@@ -3,7 +3,7 @@
 
 Environment:
   env() -> "production" | "development"
-    1) MFLOW_ENV (or APP_ENV) wins: prod/production/live -> production; anything else -> development
+    1) MFLOW_ENV wins (generic APP_ENV is ignored on purpose): prod/production/live -> production; anything else -> development
     2) otherwise by platform: Linux (the server) -> production; macOS / others -> development
 
 Opt-in for a deliberate live write from a development machine:
@@ -54,7 +54,7 @@ class LiveWriteBlocked(RuntimeError):
 
 def env(environ=None, platform=None):
     environ = os.environ if environ is None else environ
-    raw = (environ.get("MFLOW_ENV") or environ.get("APP_ENV") or "").strip().lower()
+    raw = (environ.get("MFLOW_ENV") or "").strip().lower()
     if raw:
         return "production" if raw in _PROD else "development"
     platform = sys.platform if platform is None else platform

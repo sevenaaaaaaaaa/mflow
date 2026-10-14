@@ -88,7 +88,7 @@ MFlow 既是在开发的工具，也是每天在用的生产工具。两类产�
 
 本机（Mac）= **development**，服务器（`/www/wwwroot/mflow`，Linux）= **production**。开发环境默认不允许改动外部线上系统（Sanity/Lovart 站点内容、WordPress、飞书 Base/机器人、Notion、IndexNow、Cloudflare、邮件/IM、Webhook）。实现：`dev/scripts/library/env_guard.py`（纯标准库）。
 
-- **环境判定**：`MFLOW_ENV`（或 `APP_ENV`）显式优先（`production`/`prod` → 生产，其余 → 开发）；未设置时按平台：Linux → production，macOS/其他 → development。服务器无需任何配置。
+- **环境判定**：只认 `MFLOW_ENV`（通用 `APP_ENV` 故意不认，防止别的工具把线上改成开发）（`production`/`prod` → 生产，其余 → 开发）；未设置时按平台：Linux → production，macOS/其他 → development。服务器无需任何配置。
 - **开发环境的行为**：外部写入自动降级为 dry-run——Sanity mutate 被强制改为原生 `dryRun`（照常校验、不落库），其他写请求不发出、返回带 `"skipped": "development"` 的结果，并打印中文提示；读取（GET、GROQ query、Notion query 等）不受影响。设 `MFLOW_LIVE_WRITE_STRICT=1` 则改为直接报错。
 - **本机确需真实写入**（刻意为之）：命令加 `--live`（被 env_guard 吞掉，不影响 argparse），或 `MFLOW_ALLOW_LIVE_WRITES=1`；原有的 `--yes`/`--apply`/`--submit` 仍然需要，`--live` 只是额外的环境放行。
 - **接入点**：传输层 `env_guard.install()`（urllib `OpenerDirector.open`、`requests.Session.request`、`smtplib.SMTP.sendmail`，按目标 host/路径识别线上写入）+ 带 dry_run 开关的函数用 `@env_guard.dry_run_in_development(...)`；已接入 sanity_publisher / scheduled_flip / asset_tools / apply-main-fixes / publish_adapters(webhook、wordpress) / push_to_feishu / sync_to_notion / indexnow / console.py（批量任务、回滚、Webhook、sendmail）。新写的会写线上的脚本：开头 `import env_guard; env_guard.install()`（或 `env_guard.require_live_write("动作")`）；shell 用 `python3 dev/scripts/library/env_guard.py check "动作"`（0=可写，3=跳过）。
