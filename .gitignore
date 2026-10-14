@@ -101,3 +101,7 @@ openers.log
 cloudflare.json
 secrets-local.md
 .deploy-ssh/
+
+# Pipeline runtime state and skill test outputs are data, not code
+genflow/.pipeline/
+genflow/bv-skill-v01/*-test.md
