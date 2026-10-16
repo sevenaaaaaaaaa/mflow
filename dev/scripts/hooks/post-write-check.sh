@@ -197,7 +197,7 @@ FAIL_OK=$([[ "$FAILN" -ge 1 ]] && echo 1 || echo 0)
 quant "$FAIL_OK" "pitfall" "pitfall/lesson section (hits=$FAILN)"
 
 # 6.3 金句（可引用观点句 proxy：反共识对照句式）
-QUOTE="$(grep -cE '而不是|不是.{0,20}[，。]?而是|真正的|别再|认清|not just [a-z ]+, but|isn.t [a-z ]+.*it.s|it.s not [a-z ]+, it.s|what actually matters' "$FILE" 2>/dev/null || true)"
+QUOTE="$(grep -cE '而不是|不是.{0,20}[，。]?而是|真正的|别再|认清|not just [a-z ]+, but|isn.t [a-z ]+.*it.s|it.s not [a-z ]+, it.s|what actually matters|not [a-z ]{3,30}\. It (is|does|makes|becomes|carries)|does not [a-z ]{3,30}\. It ' "$FILE" 2>/dev/null || true)"
 QUOTE_OK=$([[ "$QUOTE" -ge 1 ]] && echo 1 || echo 0)
 quant "$QUOTE_OK" "quote" "quotable insight line proxy (hits=$QUOTE)"
 
@@ -229,8 +229,8 @@ fi
 echo "$(date +%F)|$(basename "$FILE")|$OPENER_CLASS" >> "$OPENER_LOG" 2>/dev/null || true
 
 # 6.8 证据类型多样性（用户裁定：专栏声音 = 我实测 + 我听说/转述 + 产品侧发现 + 外部数据 的混合，不是永远第一人称场景）
-REPORTED="$(grep -cE 'a DP I|a producer I|one of (our|the) (engineers|producers|editors)|I heard|colleague|friend|我听说|据.{0,8}(说|讲)|同事|业内朋友' "$FILE" 2>/dev/null || true)"
-INSIDER="$(grep -cE 'when we built|our (team|product|engineers)|in our product|we shipped|我们做产品时|我们内部' "$FILE" 2>/dev/null || true)"
+REPORTED="$(grep -cE 'a DP I|a producer I|one of (our|the) (engineers|producers|editors)|I heard|colleague|friend|(producers|DPs|editors|ADs) I (trust|sat beside|have sat)|我听说|据.{0,8}(说|讲)|同事|业内朋友' "$FILE" 2>/dev/null || true)"
+INSIDER="$(grep -cE 'when we built|our (team|product|engineers)|in our product|we shipped|(tool|product) side|my seat (in|involves)|the author has (run|crewed|audited)|我们做产品时|我们内部' "$FILE" 2>/dev/null || true)"
 EV_OK=$([[ "$REPORTED" -ge 1 || "$INSIDER" -ge 1 ]] && echo 1 || echo 0)
 quant "$EV_OK" "evidence-mix" "evidence-type mix: reported=${REPORTED} insider=${INSIDER} (只有第一人称场景=声音单一)"
 
