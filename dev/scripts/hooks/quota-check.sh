@@ -43,13 +43,24 @@ QH=$(grep -cE '^#{2,3} .*[?？]$' "$FILE" || true)
 # ① 字数上限（RULES-70：Blog 1200-1800，上限 +20% → 2160；落地页 600-1000 → 1200）
 echo "[1/6] 字数预算"
 if [[ "$TYPE" == "landing" ]]; then MAXW=1200; else MAXW=2160; fi
-if [[ "$PROFILE" == "longform" ]]; then MAXW=9000; H2MAX=14; FAQMAX=8; LISTMAX=14   # 长文 skill 豁免（须显式声明）
-else H2MAX=7; FAQMAX=5; LISTMAX=12; fi
+if [[ "$PROFILE" == "longform" ]]; then H2MAX=14; FAQMAX=8; LISTMAX=14   # 长文 skill 豁免（须显式声明）
+  # Longform cap = floor x 1.2, counted the same way as the floor: body only (no frontmatter /
+  # HTML comments). EN: 7500 words -> 9000 words; ZH: 12000 Han chars -> 14400 Han chars.
+  read -r LF_WORDS LF_HAN < <("$PY3" - "$FILE" <<'PYEOF'
+import re, sys
+t = open(sys.argv[1], encoding="utf-8").read()
+t = re.sub(r"\A---\n.*?\n---\n", "", t, count=1, flags=re.S)
+t = re.sub(r"<!--.*?-->", "", t, flags=re.S)
+print(len(t.split()), len(re.findall(r"[一-鿿]", t)))
+PYEOF
+)
+  if [[ "$LANG" == en* ]]; then CHARS="$LF_WORDS"; MAXW=9000; UNIT="词"; else CHARS="$LF_HAN"; MAXW=14400; UNIT="字"; fi
+else H2MAX=7; FAQMAX=5; LISTMAX=12; UNIT=""; fi
 [[ "${MAXWORDS_OVERRIDE:-0}" -gt 0 ]] && MAXW="$MAXWORDS_OVERRIDE"
 if [[ "$CHARS" -gt "$MAXW" ]]; then
-  err "字数 $CHARS > 上限 ${MAXW}（注水嫌疑：优先删冗余，勿扩写）"
+  err "字数 $CHARS > 上限 ${MAXW}${UNIT}（注水嫌疑：优先删冗余，勿扩写）"
 else
-  ok "字数 $CHARS ≤ $MAXW"
+  ok "字数 $CHARS ≤ ${MAXW}${UNIT}"
 fi
 
 # ② H2 数

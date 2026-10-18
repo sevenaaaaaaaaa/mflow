@@ -49,6 +49,6 @@ path: harness/02-rules/RULES-70-quota.md
 21. **长文 skill（7500 词级）可豁免上限，但必须显式声明**：
     - skill 的 `SKILL.md` frontmatter 写 `budget_profile: longform`
     - 调用时显式传 `budget_profile=longform`（任务 item 或 task.params）
-    - 豁免后上限：字数 ≤9000、H2 ≤14、FAQ ≤8、连续列表项 ≤14（其余规则不变）
+    - 豁免后上限（= 下限 × 1.2，只计正文，不含 frontmatter 与 HTML 注释）：英文 ≤9,000 词 / 中文 ≤14,400 汉字、H2 ≤14、FAQ ≤8、连续列表项 ≤14（其余规则不变）
 22. **禁止默认豁免**：无显式声明一律按标准档（Blog ≤2160）；以"长文需要"为由绕过 = 违规
 23. 豁免仍需过 `quota-check.sh --profile longform` 与全部其它门禁（Anti-Slop / GEO / 语言规范）

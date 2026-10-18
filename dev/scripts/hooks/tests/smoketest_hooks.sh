@@ -205,6 +205,24 @@ Final content.
 EOF
 expect_fail "unfilled tokens blocked" bash "$HOOKS_DIR/post-write-check.sh" --file "$TMP/templated-draft.md" --target-words 50
 
+# ============== quota-check.sh (longform) ==============
+log "== quota-check.sh longform =="
+# Longform cap is floor x 1.2 in body words (frontmatter + HTML comments excluded): EN 9000 words.
+make_longform() {  # $1=file $2=body sentences (10 unique words each) $3=comment words
+  python3 - "$1" "$2" "$3" <<'PYEOF'
+import sys
+path, n, c = sys.argv[1], int(sys.argv[2]), int(sys.argv[3])
+body = [f"## Section {s}\n" + "\n\n".join(
+    " ".join(f"w{s}x{p}y{k}" for k in range(10)) + "." for p in range(n // 10)) for s in range(10)]
+open(path, "w").write("---\ntitle: t\n---\n" + "\n\n".join(body)
+                      + "\n<!--\n" + " ".join(f"c{i}" for i in range(c)) + "\n-->\n")
+PYEOF
+}
+make_longform "$TMP/longform-ok.md" 780 3000
+expect_ok "7800-word longform passes (comment words not counted)" bash "$HOOKS_DIR/quota-check.sh" --file "$TMP/longform-ok.md" --type blog --lang en --profile longform
+make_longform "$TMP/longform-over.md" 950 0
+expect_fail "9500-word longform blocked" bash "$HOOKS_DIR/quota-check.sh" --file "$TMP/longform-over.md" --type blog --lang en --profile longform
+
 # ============== pre-import-check.sh ==============
 log "== pre-import-check.sh =="
 expect_ok "ready item + clean draft passes" bash "$HOOKS_DIR/pre-import-check.sh" --id "blog-test-publish" --state-path "$STATE" --artifact "$TMP/draft.md"
