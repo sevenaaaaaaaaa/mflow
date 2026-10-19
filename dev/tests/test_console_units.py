@@ -110,6 +110,51 @@ class TestBreaker(unittest.TestCase):
         self.assertFalse(blocked)
 
 
+class TestSanityTargetGuard(unittest.TestCase):
+    """发布防护：项目绑定的站点 CMS 项目与发布器配置不一致时拒绝写入。"""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self._orig = (C.PROJECTS_DIR, C.SITES_DIR, C.SANITY_PUB)
+        C.PROJECTS_DIR, C.SITES_DIR = self.tmp / "projects", self.tmp / "sites"
+        C.SITES_DIR.mkdir(parents=True)
+        C.SANITY_PUB = types.SimpleNamespace(sanity_cfg=lambda: {"project": "acmeproj"})
+
+    def tearDown(self):
+        C.PROJECTS_DIR, C.SITES_DIR, C.SANITY_PUB = self._orig
+
+    def _project(self, name, site=None):
+        d = C.PROJECTS_DIR / name
+        d.mkdir(parents=True)
+        (d / "meta.json").write_text(json.dumps({"site": site} if site else {}))
+
+    def _site(self, name, project):
+        (C.SITES_DIR / f"{name}.json").write_text(json.dumps({"source": {"project": project}}))
+
+    def test_project_without_site_keeps_old_behaviour(self):
+        self._project("legacy")
+        self.assertEqual(C.sanity_target_guard("legacy"), (True, ""))
+
+    def test_placeholder_project_blocked(self):
+        self._project("globex", site="globex")
+        self._site("globex", "your-project-id")
+        ok, why = C.sanity_target_guard("globex")
+        self.assertFalse(ok)
+        self.assertIn("globex", why)
+
+    def test_mismatched_project_blocked(self):
+        self._project("globex", site="globex")
+        self._site("globex", "globexproj")
+        ok, why = C.sanity_target_guard("globex")
+        self.assertFalse(ok)
+        self.assertIn("acmeproj", why)
+
+    def test_matching_project_allowed(self):
+        self._project("acme", site="acme")
+        self._site("acme", "acmeproj")
+        self.assertEqual(C.sanity_target_guard("acme"), (True, ""))
+
+
 class TestQuota(unittest.TestCase):
     """配额：admin 不限、超额拦截、用量记账、80% 预警去重。"""
 

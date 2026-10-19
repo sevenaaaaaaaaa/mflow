@@ -4774,6 +4774,9 @@ def _bh_publish_sanity(item, task, proj):
     """批量发布（blog / compositePage）。composite 走 validate_sections + create/patch；记账真实写入。"""
     if not SANITY_PUB:
         raise RuntimeError("发布器未加载：CMS token 缺失或模块异常 → 到「设置」检查 CMS 配置后重试")
+    _ok, _why = sanity_target_guard(proj)
+    if not _ok:
+        raise RuntimeError(_why)
     path = item.get("path") or f"run/projects/{proj}/content/{item.get('item_id','')}.md"
     sp = safe_path(path)
     if not sp:
@@ -6146,6 +6149,26 @@ def site_of(proj=None):
         return m.get("site") or proj or DEFAULT_PROJECT
     except Exception:
         return proj or DEFAULT_PROJECT
+
+
+def sanity_target_guard(proj=None):
+    """Refuse CMS writes when the project's site points at a different CMS project than the
+    publisher's (instance-wide) config — otherwise one brand's drafts land in another brand's CMS.
+    Projects without an explicit `site` in meta.json keep the previous behaviour."""
+    proj = proj or DEFAULT_PROJECT
+    site = (read_json(PROJECTS_DIR / proj / "meta.json", {}) or {}).get("site")
+    if not site:
+        return True, ""
+    src = (read_json(SITES_DIR / f"{site}.json", {}) or {}).get("source") or {}
+    want = str(src.get("project", "")).strip()
+    if not want or want == "your-project-id":
+        return False, (f"站点 {site} 还没配置 CMS 项目（run/sites/{site}.json 的 source.project）"
+                       f"——接入前禁止发布，避免写进别的品牌的 CMS")
+    have = str((SANITY_PUB.sanity_cfg() if SANITY_PUB else {}).get("project", "")).strip()
+    if want != have:
+        return False, (f"站点 {site} 的 CMS 项目（{want}）与发布器当前连接的项目（{have or '未配置'}）不一致"
+                       f"——拒绝写入，避免发到别的品牌")
+    return True, ""
 
 
 def context_library(site, query, k=5, task_type=""):
@@ -11242,6 +11265,9 @@ class Handler(BaseHTTPRequestHandler):
                     return self._send(400, {"error": why})
                 if not SANITY_PUB:
                     return self._send(400, {"error": "发布器未加载"})
+                ok, why = sanity_target_guard(self._proj())
+                if not ok:
+                    return self._send(400, {"error": why})
                 p = safe_path(path)
                 if not p:
                     return self._send(400, {"error": "草稿路径不可读"})
