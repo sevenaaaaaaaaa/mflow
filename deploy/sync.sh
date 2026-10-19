@@ -189,15 +189,17 @@ for entry in "${SYNC_ITEMS[@]}"; do
     src="${entry%%|*}"; dst="${entry#*|}"
     # openrsync 规则：引号只能包 host: 之后的路径部分（包住 user@ 会被当非法用户名字符）
     spec="${REMOTE}:\"${dst}\""
-    DEL_FLAG=""
-    case "$dst" in *"/harness/02-rules/"*|*"/harness/Skills/"*|*"/harness/08-storyline/"*) DEL_FLAG="--delete"; esac
+    DEL_FLAG=()
+    # --delete never touches excluded paths: credentials live only on the server (gitignored), and a
+    # 2026-10-19 deploy wiped harness/Skills/**/credentials/ (GSC/GA4 tokens) before this exclude existed.
+    case "$dst" in *"/harness/02-rules/"*|*"/harness/Skills/"*|*"/harness/08-storyline/"*) DEL_FLAG=(--delete --exclude='credentials/'); esac
     # 每组重试：22 组各自建 SSH 连接，服务器抖动时随机掉一两组（2026-09-30 实测连坑三轮）
     ok=""
     for attempt in 1 2 3; do
         if [[ "$DRY_RUN" -eq 1 ]]; then
             echo "    --- $src"
-            rsync -az $RSYNC_DRY $DEL_FLAG -e "ssh -p $REMOTE_PORT" "$src" "$spec" 2>&1 | sed 's/^/      /' && { ok=1; break; }
-        elif rsync -az $DEL_FLAG -e "ssh -p $REMOTE_PORT" "$src" "$spec" >/dev/null 2>&1; then
+            rsync -az $RSYNC_DRY ${DEL_FLAG[@]+"${DEL_FLAG[@]}"} -e "ssh -p $REMOTE_PORT" "$src" "$spec" 2>&1 | sed 's/^/      /' && { ok=1; break; }
+        elif rsync -az ${DEL_FLAG[@]+"${DEL_FLAG[@]}"} -e "ssh -p $REMOTE_PORT" "$src" "$spec" >/dev/null 2>&1; then
             ok=1; break
         fi
         [[ $attempt -lt 3 ]] && sleep 3
