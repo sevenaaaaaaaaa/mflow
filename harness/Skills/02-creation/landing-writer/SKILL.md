@@ -18,6 +18,25 @@ description: >-
 - 投放承接页：——渠道→故事线→CTA 语气匹配；白名单页资格 = cro-audit ≥80
 - 黑名单词命中 → 不建页，退回词群评审
 
+## 意图路由（先于四层决策：搜索意图 → 页面类型 → 故事线）
+
+立页 / 改页前先给主词定意图，再定页面类型与故事线；意图与页面类型不匹配时，不在本页硬改文案，而是换承接页。
+
+| 搜索意图 | 判定信号（示例） | 承接页类型 | 故事线 / 结构 | 禁止 |
+|---|---|---|---|---|
+| 工具 / 交易 | generator、maker、creator、free、online、app、生成、作成、ツール、免费 | Tools / Features 工具页 | `landing-trial-now` 或 Tools T1 / T-long；**必须含 `prompt-launcher`** | 无试用入口的 9 段介绍页；让博客承接工具词 |
+| 信息 / 教程 | how to、what is、ideas、guide、とは、方法、作り方、怎么、如何、是什么 | Blog（长文）或 Topic K2 | 博客走 blog-writer | 用工具页 / 功能页承接 how-to 词 |
+| 品牌 / 导航 | 品牌名、产品名、品牌 + 新版本 | 品牌页 / Product / News | `landing-brand-trust`、Product P2；版本更新走 news | 品牌词落在 trial 工具页 |
+| 对比 / 评测 | vs、alternative、review、比較、替代、评测 | Blog 对比文或 vs 页 | `landing-vs-competitor` / Tools T4 | 打分、虚构测试 |
+| 品类合集 | "X tools"、"best X"、大全、榜单 | Hub（`hub-writer`）或 Tools T3 | `hero-cinematic → tool-grid → comparison-table` | 只有博客没有可收录的合集页 |
+| 零搜索量的概念词 | 新功能名、内部叫法 | 不单独立页 | 作为正文 H2 / FAQ 布局进相关页 | 为概念词新建落地页 |
+
+硬规则：
+- **可收录页面不得少于 12 段**；≤6 段的旧版式（如 `centeredInputSection` 开头）视为待重建。
+- **一词一主页**：同一主词在标题里出现的可收录页面 >3 个时，先指定主承接页，其余页改投子意图或设为 noIndex，再写新页。
+- **改页前确认渲染文档**：同一 URL 可能对应多个 CMS 文档，patch 前用线上 HTML 中的独有标题核对哪个文档在渲染，只改渲染的那个。
+- **投放页 noIndex**：与已有 SEO 页同意图的投放落地页设 `noIndex: true`，避免抢排名。
+
 ## 四层决策（生成任何页面前逐层过，全部留痕到"策略说明"）
 
 ### 第一层 · 分类（页面类型 → 轨道）
@@ -115,6 +134,7 @@ SEO TDK（slug / title≤60 / description≤160 / keywords 5–8）+ OG/Twitter 
 composite-v2（C/D/E）：schemaVersion · storylineTemplate 合法 · bodyJson 无 legacy type · 模块序列与故事线 sections 一致 · 10 语言齐 · media.src 来自图库或 [待考证]。
 Legacy（A/B）：6 区块齐 · hero 首位 faq 末位 · 10 语言齐 · image_url 全图库 · 无 Banned Patterns · Persona 已声明 · FAQ 含商用版权+操作门槛 · JSON-LD 逐字一致 · 分批格式正确。
 跨轨道：`genflow/Page Gen/Refresh-Page/COPY-PREFLIGHT.md`（storyline-driven）。
+意图与资源（全部类型）：主词意图 → 页面类型 → 故事线已按「意图路由」表核对 · 工具意图页含 `prompt-launcher` · 段数 ≥12 · 每个图片 / 视频 URL 上线前 ranged GET 返回 200/206（图库也会失效，不能只信 image_pool）· FAQ items 为 `{question, answer}` 对象 · patch 目标文档已确认为线上渲染文档。
 
 ## 关键路径
 

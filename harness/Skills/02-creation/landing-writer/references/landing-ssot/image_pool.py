@@ -205,8 +205,25 @@ def match_title(title):
 
 def get_image(category="generic", idx=0):
     """Get image URL from pool by category and index (round-robin)."""
-    urls = POOL.get(category, POOL["generic"])
-    return urls[idx % len(urls)]
+    urls = POOL.get(category) or POOL["generic"]
+    return urls[idx % len(urls)] if urls else ""
+
+
+def check_pool(timeout=20):
+    """Ranged GET every pool URL. Returns {category: [dead urls]}; hosted assets do expire, so run before publishing."""
+    import urllib.request
+    dead = {}
+    for cat, urls in POOL.items():
+        for u in urls:
+            req = urllib.request.Request(u, headers={"User-Agent": "Mozilla/5.0", "Range": "bytes=0-255"})
+            try:
+                with urllib.request.urlopen(req, timeout=timeout) as r:
+                    ok = r.status in (200, 206)
+            except Exception:
+                ok = False
+            if not ok:
+                dead.setdefault(cat, []).append(u)
+    return dead
 
 
 def assign_images_to_features(features, category=None):
@@ -252,6 +269,15 @@ def assert_patterns():
 
 
 if __name__ == "__main__":
+    import sys
+    if "--check" in sys.argv:
+        dead = check_pool()
+        total = sum(len(v) for v in POOL.values())
+        print(f"=== pool check: {total - sum(len(v) for v in dead.values())}/{total} reachable ===")
+        for cat, urls in dead.items():
+            for u in urls:
+                print(f"  [DEAD] {cat:10s} {u}")
+        sys.exit(1 if dead else 0)
     results = assert_patterns()
     passed = sum(1 for r in results if r[3])
     print(f"=== {passed}/{len(results)} regression tests passed ===")
