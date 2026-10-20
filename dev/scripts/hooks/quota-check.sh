@@ -43,6 +43,7 @@ QH=$(grep -cE '^#{2,3} .*[?？]$' "$FILE" || true)
 # ① 字数上限（RULES-70：Blog 1200-1800，上限 +20% → 2160；落地页 600-1000 → 1200）
 echo "[1/6] 字数预算"
 if [[ "$TYPE" == "landing" ]]; then MAXW=1200; else MAXW=2160; fi
+if [[ "$LANG" == "ja" ]]; then MAXW=$((MAXW * 18 / 10)); fi   # ja 信息密度低，同信息量约 1.8 倍字符（基准为中文 RULES-70）
 if [[ "$PROFILE" == "longform" ]]; then H2MAX=14; FAQMAX=8; LISTMAX=14   # 长文 skill 豁免（须显式声明）
   # Longform cap = floor x 1.2, counted the same way as the floor: body only (no frontmatter /
   # HTML comments). EN: 7500 words -> 9000 words; ZH: 12000 Han chars -> 14400 Han chars.

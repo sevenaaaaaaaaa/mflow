@@ -19,6 +19,7 @@ description: >-
 - **长文写法**：禁止单次灌出全文，走 RULES-20 Multi-Turn / Column-Writer Lane（`OUTLINE → DRAFT_PART* → INTEGRATE_QA`），单次输出硬顶约 3,000 词；Lane（Deep/Medium/Light）只定 effort 不降 7,500 地板；禁 script padding / 模板句灌字（RULES-20 Banned Template-Phrase Registry）
 - 字数不足时**优先删冗余**，绝不补形容词
 - 交付前必须过：`post-write-check.sh` · `geo-check.sh` · `quota-check.sh` · `lang-check.sh`（长文 `post-write-check.sh --target-words 7500`）
+- **日语（lang=ja）**：必须叠加加载 `02-creation/ja-copywriter`（Voice/消息顺序/标题/CTA/禁用表述/数据点），与门禁 ja 基准（字数 ×1.8、「体」豁免）配套
 
 ## 定位与边界
 

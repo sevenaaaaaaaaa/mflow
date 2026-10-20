@@ -11,6 +11,7 @@ description: >-
 
 落地页文案 600–1000 词 · H2 4–7 · FAQ 3–5 · 每千字 1–3 数据点 · 外部来源 2–5 条 · 列表 ≤4 不连续 · 单段 ≤300 字符 · 字数不足删冗余不补形容词。
 交付前四门禁：`post-write-check.sh` · `geo-check.sh` · `quota-check.sh` · `lang-check.sh`。
+**日语（lang=ja）**：必须叠加加载 `02-creation/ja-copywriter`（Voice/消息顺序/标题/CTA 模式/禁用表述），与门禁 ja 基准（字数 ×1.8、「体」豁免）配套。
 
 ## 第零层 · 策略对齐（先于四层决策）
 

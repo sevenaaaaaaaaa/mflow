@@ -87,7 +87,7 @@ fi
 
 # --- 2) 统计/数据点密度 ---
 echo "[2/5] statistics density (GEO: data-rich content gets cited)"
-STAT_HITS="$(grep -oE '[0-9]+(\.[0-9]+)?%|[0-9]+(\.[0-9]+)?x|\$[0-9][0-9,]*|20[0-9]{2}年?|[0-9]+/[0-9]+' "$FILE" | wc -l | tr -d ' ' || true)"
+STAT_HITS="$(grep -oE '[0-9]+(\.[0-9]+)?%|[0-9]+(\.[0-9]+)?x|\$[0-9][0-9,]*|20[0-9]{2}年?|[0-9]+/[0-9]+|％|[0-9]+円|[0-9]+倍|[0-9]+万|[0-9]+(か|ヶ)月|[0-9]+週間' "$FILE" | wc -l | tr -d ' ' || true)"
 DENSITY_K=1
 if [[ "$CHAR_COUNT" -ge 1000 ]]; then
     DENSITY="$(awk -v s="$STAT_HITS" -v c="$CHAR_COUNT" 'BEGIN { printf "%.2f", s / (c / 1000) }')"
