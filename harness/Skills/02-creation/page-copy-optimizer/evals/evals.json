@@ -1,0 +1,35 @@
+{
+  "skill_name": "page-copy-optimizer",
+  "evals": [
+    {
+      "id": "tool-hero-cta-repair",
+      "prompt": "优化一个现有英文 Tool 页。关键词是 AI background remover；当前 Hero 为“Create amazing visuals with AI”，CTA 为“Learn more”，页面没有说输入、输出或可编辑性。已验证能力：用户上传产品图，移除背景后可继续编辑。请只改 Hero、首个 proof 和 CTA，并说明配图应证明什么。",
+      "expected_output": "输出模块级 diff；Hero 包含具体用户任务、输入、输出与风险降低；CTA 是直接动作；图片说明背景分离机制；不编造格式、速度或商用权利。",
+      "files": []
+    },
+    {
+      "id": "serp-competitor-boundary",
+      "prompt": "根据一份 en-US AI logo maker SERP brief 优化现有页面。竞品都承诺 SVG/PDF 导出和数百模板；已验证的 Lovart 事实只有：用户可输入品牌 brief、生成方案、在 ChatCanvas 中继续调整。现有文案声称“Export every logo as SVG and PDF”。请诊断并重写 Hero、proof、FAQ 和 CTA。",
+      "expected_output": "识别不受支持的导出承诺并移除或标记待考证；用 brand brief→方案→ChatCanvas 调整构造差异化；不复制竞品文案；包含 SERP differentiation 和 do-not-claim。",
+      "files": []
+    },
+    {
+      "id": "image-cta-conflict",
+      "prompt": "诊断一个现有 ja Tool 页首屏。标题承诺“商品写真を背景から切り離す”，Hero 图是高细节紫蓝抽象球，CTA 写“もっと見る”。真实页面使用 hero-split：左文右 4:3 图；已验证能力为上传商品照后移除背景并继续调整。请给出 copy-only 优化包，并指出哪些问题需要图片生产或页面模块处理。",
+      "expected_output": "输出本地化友好的日文 Hero/CTA 建议或本地化 brief；指出抽象图与功能不匹配、hero-split 需要独立 4:3 图；不把 16:9 cover 当 Hero；不修改页面结构或声称已发布。",
+      "files": []
+    },
+    {
+      "id": "knowledge-base-redline",
+      "prompt": "优化一个 AI image generator 页面。SERP 竞品主打“commercially licensed 4K exports in seconds”；现有 Hero 也写了相同承诺。当前 Lovart 知识库只验证：可生成图片、可上传参考图、可在 Canvas 中组织资产；未找到商业权利、4K 导出或速度的当前证据。请输出最小 Copy Optimization Package。",
+      "expected_output": "删除或降级所有商业权利、4K、速度承诺；Fact Ledger 明确标为 unknown；Hero/CTA 只使用知识库验证的能力；SERP 只作为竞争异议参考，不能成为产品事实。",
+      "files": []
+    },
+    {
+      "id": "listing-card-experience",
+      "prompt": "审核一个英文 Tools 列表的前三张卡。卡 1 标题“AI Image Generator”，描述“Create images with AI.”；卡 2 标题“AI Photo Generator”，描述“Generate photos with AI.”；卡 3 标题“AI Art Generator”，描述“Make art with AI.”。已验证能力分别是：从 prompt 或参考图生成图片；将照片方向转为新视觉；从创意 brief 探索风格方向。请只优化列表标题和描述，并说明需要的真实列表宽度/截断信息。",
+      "expected_output": "三张卡可区分且不虚构能力；描述补足结果或适配性而非复述标题；指出没有真实卡片宽度时不能声称截断体验已通过；不改详情页结构。",
+      "files": []
+    }
+  ]
+}

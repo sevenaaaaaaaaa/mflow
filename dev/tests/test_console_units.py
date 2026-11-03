@@ -13,6 +13,7 @@ import sys
 import tempfile
 import time
 import types
+from datetime import datetime
 import unittest
 from pathlib import Path
 
@@ -607,6 +608,158 @@ class TestDigest(unittest.TestCase):
             self.assertEqual(C.digest_tokens(), 0)
         finally:
             self._restore(backup)
+
+
+class TestOpsReport(unittest.TestCase):
+    """晨晚报全貌：在跑什么、修好了什么、卡在哪里（不只是 token）。"""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self._orig = {}
+        for name in ("RUN_DIR", "BATCH_DIR", "RUNS_DIR", "PROJECTS_DIR", "PAY_DIR",
+                     "USAGE_FILE", "BUDGET_FILE", "AUTH_FILE", "EMAIL_FILE", "HOLIDAYS_FILE",
+                     "PRICES_FILE", "BREAKER_FILE", "WORKER_HB", "NOTIFY_FILE", "QUOTAS_FILE"):
+            self._orig[name] = getattr(C, name)
+        C.RUN_DIR = self.tmp
+        C.BATCH_DIR = self.tmp / "batch"
+        C.BATCH_DIR.mkdir(parents=True)
+        C.RUNS_DIR = self.tmp / "runs"
+        C.RUNS_DIR.mkdir(parents=True)
+        C.PROJECTS_DIR = self.tmp / "projects"
+        C.PROJECTS_DIR.mkdir(parents=True)
+        C.PAY_DIR = self.tmp / "pay"
+        C.PAY_DIR.mkdir(parents=True)
+        C.USAGE_FILE = self.tmp / "llm-usage.jsonl"
+        C.USAGE_FILE.write_text(
+            json.dumps({"ts": "2026-10-24T01:00:00", "model": "deepseek-chat",
+                        "total_tokens": 12345, "prompt_tokens": 10000,
+                        "completion_tokens": 2345, "profile": "default"}) + "\n",
+            encoding="utf-8")
+        C.BUDGET_FILE = self.tmp / "budget.json"
+        C.BUDGET_FILE.write_text(json.dumps({"daily_limit": 5.0}), encoding="utf-8")
+        C.AUTH_FILE = self.tmp / "auth.json"
+        C.AUTH_FILE.write_text("[]", encoding="utf-8")
+        C.EMAIL_FILE = self.tmp / "email.json"
+        C.EMAIL_FILE.write_text("{}", encoding="utf-8")
+        C.HOLIDAYS_FILE = self.tmp / "holidays.json"
+        C.HOLIDAYS_FILE.write_text("[]", encoding="utf-8")
+        C.PRICES_FILE = self.tmp / "llm-prices.json"
+        C.BREAKER_FILE = self.tmp / "breaker.json"
+        C.WORKER_HB = self.tmp / "worker-heartbeat.json"
+        C.WORKER_HB.write_text(json.dumps({"ts": time.time()}), encoding="utf-8")
+        C.NOTIFY_FILE = self.tmp / "notify.json"
+        C.QUOTAS_FILE = self.tmp / "quotas.json"
+
+    def tearDown(self):
+        for name, val in self._orig.items():
+            setattr(C, name, val)
+
+    def _batch(self, bid, btype, title, status, items=None, **kw):
+        d = {"id": bid, "type": btype, "title": title, "status": status,
+             "created": "2026-10-23 20:00", "created_by": "ja-agent", "dry_run": False,
+             "items": items or [], "stats": {"total": len(items or []), "done": 0, "failed": 0, "skipped": 0},
+             "log": []}
+        d.update(kw)
+        (C.BATCH_DIR / (bid + ".json")).write_text(json.dumps(d, ensure_ascii=False), encoding="utf-8")
+        return d
+
+    def test_report_shows_running_fixed_and_blocked(self):
+        now = datetime(2026, 10, 24, 8, 30)
+        ts = now.timestamp()
+        self._batch("batch-run", "rewrite", "夜间改稿·JP 残留", "running", items=[
+            {"i": 0, "status": "done", "attempts": 1, "item_id": "a", "result": {}},
+            {"i": 1, "status": "done", "attempts": 2, "item_id": "b", "result": {}},
+            {"i": 2, "status": "running", "attempts": 1, "item_id": "c", "result": {}},
+            {"i": 3, "status": "pending", "attempts": 0, "item_id": "d", "result": {}},
+            {"i": 4, "status": "failed", "attempts": 2, "item_id": "e", "error": "timeout after 60s"},
+        ], started="2026-10-24 00:10", started_ts=ts - 1800, heartbeat_ts=ts - 5)
+        self._batch("batch-fix", "field_patch", "A4 标题修复（2）", "done", finished="2026-10-23 23:55",
+                    items=[{"i": 0, "status": "done", "attempts": 1, "item_id": "slug-a",
+                            "result": {"set": ["title"]}},
+                           {"i": 1, "status": "done", "attempts": 1, "item_id": "slug-b",
+                            "result": {"set": ["title"]}}])
+        self._batch("batch-night", "asset_replace", "A1 封面传播 ja", "paused",
+                    items=[{"i": 0, "status": "pending", "attempts": 0, "item_id": "x"}],
+                    pause_reason="night_cutoff", pause_date="2026-10-23")
+        self._batch("batch-fail", "field_patch", "字段补齐", "failed", items=[
+            {"i": 0, "status": "failed", "attempts": 2, "item_id": "z", "error": "HTTP 402 余额不足"}])
+        run = {"id": "run-x", "title": "每日 QA 闭环", "status": "failed", "started_ts": ts - 3600,
+               "steps": [{"i": 0, "name": "扫描", "status": "done", "detail": "50 项"},
+                         {"i": 1, "name": "修复", "status": "failed", "detail": "无物料台账"}]}
+        (C.RUNS_DIR / "run-x.json").write_text(json.dumps(run, ensure_ascii=False), encoding="utf-8")
+        logs = self.tmp / "logs"
+        logs.mkdir()
+        (logs / "ops-events.jsonl").write_text(
+            json.dumps({"ts": ts - 600, "at": "2026-10-24 08:20:00", "kind": "selfheal",
+                        "text": "stuck → 已恢复 1 个卡住任务", "count": 1}) + "\n",
+            encoding="utf-8")
+
+        rep = C.build_ops_report(morning=True, now=now)
+        body = rep["body"]
+        self.assertIn("需处理 3", rep["subject"])
+        self.assertIn("在跑 1", rep["subject"])
+        self.assertIn("24h 产出 2 页", rep["subject"])
+        self.assertIn("夜间改稿·JP 残留", body)
+        self.assertIn("2/5 完成（40%）", body)
+        self.assertIn("当前：c", body)
+        self.assertIn("A4 标题修复", body)
+        self.assertIn("字段 title", body)
+        self.assertIn("已写入生产", body)
+        self.assertIn("06:00 夜间截止暂停 1 个", body)
+        self.assertIn("下个窗口 10-26（周一）00:00", body)
+        self.assertIn("调用超时", body)
+        self.assertIn("LLM 余额/配额不足", body)
+        self.assertIn("已恢复 1 个卡住任务", body)
+        html_body = rep.get("html") or ""
+        self.assertIn("<!doctype html>", html_body)
+        self.assertIn("夜间改稿·JP 残留", html_body)
+        self.assertIn("A4 标题修复", html_body)
+        self.assertIn("调用超时", html_body)
+        self.assertIn("06:00 夜间截止暂停 1", html_body)
+
+    def test_email_wrapper_passes_html(self):
+        captured = {}
+        orig = (C.admin_emails, C.email_send, C.notify_send)
+        C.admin_emails = lambda: ["ops@example.com"]
+        C.email_send = lambda to, subject, body, html_body=None: (
+            captured.update({"html": html_body, "subject": subject, "body": body}) or (True, "ok"))
+        C.notify_send = lambda *a, **k: True
+        try:
+            rep = C.ops_report_email(morning=True)
+        finally:
+            C.admin_emails, C.email_send, C.notify_send = orig
+        self.assertTrue(rep["ok"])
+        self.assertIn("<!doctype html>", captured.get("html") or "")
+        self.assertEqual(captured.get("html"), rep.get("html"))
+
+    def test_mail_message_is_multipart_with_html(self):
+        msg = C._mail_message("主题", "纯文本", "<b>HTML</b>")
+        self.assertTrue(msg.is_multipart())
+        self.assertEqual(msg.get_content_type(), "multipart/alternative")
+        plain = C._mail_message("主题", "纯文本")
+        self.assertFalse(plain.is_multipart())
+        self.assertEqual(plain.get_content_type(), "text/plain")
+
+    def test_report_explains_empty_window(self):
+        now = datetime(2026, 10, 24, 8, 30)
+        rep = C.build_ops_report(morning=True, now=now)
+        self.assertIn("当前没有正在执行的任务", rep["body"])
+        self.assertIn("窗口外批量任务不领取", rep["body"])
+        self.assertIn("下个窗口 10-26（周一）00:00", rep["body"])
+
+    def test_exec_window_open_on_workday_night(self):
+        open_now, _, text = C._exec_window(datetime(2026, 10, 21, 2, 0))
+        self.assertTrue(open_now, text)
+
+    def test_queued_task_is_not_revived_as_stuck(self):
+        t = self._batch("batch-queued", "rewrite", "等窗口", "queued",
+                        items=[{"i": 0, "status": "pending", "attempts": 0}])
+        p = C.BATCH_DIR / "batch-queued.json"
+        old = time.time() - 2000
+        os.utime(p, (old, old))
+        r = C.batch_revive_stale()
+        self.assertEqual(r["count"], 0)
+        self.assertEqual(json.loads(p.read_text(encoding="utf-8"))["status"], "queued")
 
 
 class TestRunDirIsolation(unittest.TestCase):

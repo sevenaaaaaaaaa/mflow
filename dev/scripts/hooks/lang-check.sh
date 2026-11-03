@@ -72,6 +72,13 @@ if [[ "$LANG" == "ru" ]]; then
   if [[ "$L > 40" ]]; then warn "俄语正文含拉丁字母 $L 个（检查是否未本地化的英文残留）"; else ok "拉丁残留可控"; fi
 fi
 
+# ②b frontmatter 标题简体字形（A6 页面质量门禁 2026-10-20：标题也要纯）
+echo "[2b/4] frontmatter 标题字形"
+if [[ "$LANG" == "ja" ]]; then
+  T_CN="$(grep -m1 "^title:" "$FILE" | grep -oE '(请|让|说|这|个|为|时|后|发|现|种|关|开|间|电|话|习|级|总|结|视|频|软|团|队|网|页|图|标|语|价|营|销|广|产|务)' | wc -l | tr -d ' ' || true)"
+  if [[ "$T_CN" -gt 0 ]]; then err "ja frontmatter 标题混入简体中文字形 $T_CN 处——先改标题再交付"; else ok "标题字形干净"; fi
+fi
+
 # ③ 标点规范
 echo "[3/4] 标点规范"
 if [[ "$LANG" == "zh" || "$LANG" == "zh-TW" || "$LANG" == "ja" || "$LANG" == "ko" ]]; then

@@ -144,3 +144,12 @@ genflow/Page Gen/Refresh-Page/          ← 故事线 SSOT（landing-storylines.
 dev/品牌.sanity.studio/scripts/          ← Sanity 脚本
 harness/Skills/03-review/sanity-preflight  ← 发布前结构校验
 ```
+
+<!-- pq-title-rules-v1 -->
+## 标题与描述文案规范（页面质量门禁 A6，2026-10-20）
+
+1. **title**：禁止裸关键词（如「AI Caricature Maker」）；格式=「核心功能 + 价值/差异点」（如「AI Caricature Maker — 8 种手绘风格，30 秒出图」）；title/seoTitle/description 三件套口径一致
+2. **description**：120–155 字符，说清页面提供什么+具体收益，自然带出产品名；禁止空泛宣传语
+3. **小标题（badge/节标题）**：每个 section 标题承载该节可摘取的结论或用户问句，禁止「概要/介绍/总结」
+4. **简体字形红线**：非中文语种（ja/ko/de/fr/…）的 title/节标题不得残留简体中文字形
+5. **cover**：交付时必须给出 cover 意图说明（画面主体+alt 建议），缺失即视为交付不完整

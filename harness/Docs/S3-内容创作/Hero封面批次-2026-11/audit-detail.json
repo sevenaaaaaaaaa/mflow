@@ -1,0 +1,746 @@
+[
+ {
+  "id": "S-PLA",
+  "mod": "A",
+  "lane": "L3-soft-3d",
+  "theme": "platform",
+  "ratio": "4:3",
+  "n_tokens": 57
+ },
+ {
+  "id": "S-VID",
+  "mod": "A",
+  "lane": "L2-cinematic-still",
+  "theme": "video",
+  "ratio": "4:3",
+  "n_tokens": 50
+ },
+ {
+  "id": "S-IMG",
+  "mod": "A",
+  "lane": "L1-photo-editorial",
+  "theme": "image-gen",
+  "ratio": "4:3",
+  "n_tokens": 45
+ },
+ {
+  "id": "S-SOC",
+  "mod": "A",
+  "lane": "L1-photo-editorial",
+  "theme": "social",
+  "ratio": "4:3",
+  "n_tokens": 49
+ },
+ {
+  "id": "S-ECO",
+  "mod": "A",
+  "lane": "L1-photo-editorial",
+  "theme": "ecommerce",
+  "ratio": "4:3",
+  "n_tokens": 48
+ },
+ {
+  "id": "S-LOG",
+  "mod": "A",
+  "lane": "L5-material-still-life",
+  "theme": "logo-brand",
+  "ratio": "4:3",
+  "n_tokens": 47
+ },
+ {
+  "id": "S-PRT",
+  "mod": "A",
+  "lane": "L5-material-still-life",
+  "theme": "print",
+  "ratio": "4:3",
+  "n_tokens": 45
+ },
+ {
+  "id": "S-DOC",
+  "mod": "A",
+  "lane": "L5-material-still-life",
+  "theme": "docs-deck",
+  "ratio": "4:3",
+  "n_tokens": 47
+ },
+ {
+  "id": "S-AVA",
+  "mod": "A",
+  "lane": "L1-photo-editorial",
+  "theme": "avatar",
+  "ratio": "4:3",
+  "n_tokens": 51
+ },
+ {
+  "id": "S-PED",
+  "mod": "A",
+  "lane": "L1-photo-editorial",
+  "theme": "photo-edit",
+  "ratio": "4:3",
+  "n_tokens": 45
+ },
+ {
+  "id": "S-IND",
+  "mod": "A",
+  "lane": "L1-photo-editorial",
+  "theme": "industry",
+  "ratio": "4:3",
+  "n_tokens": 46
+ },
+ {
+  "id": "S-ADS",
+  "mod": "A",
+  "lane": "L4-graphic-flat",
+  "theme": "ads",
+  "ratio": "4:3",
+  "n_tokens": 45
+ },
+ {
+  "id": "S-CRE",
+  "mod": "A",
+  "lane": "L1-photo-editorial",
+  "theme": "creator-av",
+  "ratio": "4:3",
+  "n_tokens": 51
+ },
+ {
+  "id": "S-CMP",
+  "mod": "A",
+  "lane": "L4-graphic-flat",
+  "theme": "compare",
+  "ratio": "4:3",
+  "n_tokens": 46
+ },
+ {
+  "id": "S-WEB",
+  "mod": "A",
+  "lane": "L6-paper-craft",
+  "theme": "web-ui",
+  "ratio": "4:3",
+  "n_tokens": 43
+ },
+ {
+  "id": "S-AUD",
+  "mod": "A",
+  "lane": "L5-material-still-life",
+  "theme": "audio",
+  "ratio": "4:3",
+  "n_tokens": 37
+ },
+ {
+  "id": "S-INT",
+  "mod": "A",
+  "lane": "L1-photo-editorial",
+  "theme": "interior",
+  "ratio": "4:3",
+  "n_tokens": 37
+ },
+ {
+  "id": "S-EDU",
+  "mod": "A",
+  "lane": "L6-paper-craft",
+  "theme": "education",
+  "ratio": "4:3",
+  "n_tokens": 41
+ },
+ {
+  "id": "S-3D",
+  "mod": "A",
+  "lane": "L3-soft-3d",
+  "theme": "3d",
+  "ratio": "4:3",
+  "n_tokens": 45
+ },
+ {
+  "id": "S-FAS",
+  "mod": "A",
+  "lane": "L1-photo-editorial",
+  "theme": "fashion",
+  "ratio": "4:3",
+  "n_tokens": 46
+ },
+ {
+  "id": "C-PLA",
+  "mod": "B",
+  "lane": "L3-soft-3d",
+  "theme": "platform",
+  "ratio": "16:10",
+  "n_tokens": 65
+ },
+ {
+  "id": "C-IMG",
+  "mod": "B",
+  "lane": "L1-photo-editorial",
+  "theme": "image-gen",
+  "ratio": "16:10",
+  "n_tokens": 51
+ },
+ {
+  "id": "C-ECO",
+  "mod": "B",
+  "lane": "L1-photo-editorial",
+  "theme": "ecommerce",
+  "ratio": "16:10",
+  "n_tokens": 49
+ },
+ {
+  "id": "C-LOG",
+  "mod": "B",
+  "lane": "L5-material-still-life",
+  "theme": "logo-brand",
+  "ratio": "16:10",
+  "n_tokens": 52
+ },
+ {
+  "id": "C-IND",
+  "mod": "B",
+  "lane": "L1-photo-editorial",
+  "theme": "industry",
+  "ratio": "16:10",
+  "n_tokens": 56
+ },
+ {
+  "id": "M-PLA-1",
+  "mod": "C",
+  "lane": "L3-soft-3d",
+  "theme": "platform",
+  "ratio": "4:3",
+  "n_tokens": 59
+ },
+ {
+  "id": "M-PLA-2",
+  "mod": "C",
+  "lane": "L3-soft-3d",
+  "theme": "platform",
+  "ratio": "4:3",
+  "n_tokens": 57
+ },
+ {
+  "id": "M-PLA-3",
+  "mod": "C",
+  "lane": "L3-soft-3d",
+  "theme": "platform",
+  "ratio": "4:3",
+  "n_tokens": 59
+ },
+ {
+  "id": "M-PLA-4",
+  "mod": "C",
+  "lane": "L3-soft-3d",
+  "theme": "platform",
+  "ratio": "4:3",
+  "n_tokens": 66
+ },
+ {
+  "id": "M-IND-1",
+  "mod": "C",
+  "lane": "L1-photo-editorial",
+  "theme": "industry",
+  "ratio": "4:3",
+  "n_tokens": 53
+ },
+ {
+  "id": "M-IND-2",
+  "mod": "C",
+  "lane": "L1-photo-editorial",
+  "theme": "industry",
+  "ratio": "4:3",
+  "n_tokens": 56
+ },
+ {
+  "id": "M-IND-3",
+  "mod": "C",
+  "lane": "L1-photo-editorial",
+  "theme": "industry",
+  "ratio": "4:3",
+  "n_tokens": 57
+ },
+ {
+  "id": "M-IND-4",
+  "mod": "C",
+  "lane": "L1-photo-editorial",
+  "theme": "industry",
+  "ratio": "4:3",
+  "n_tokens": 54
+ },
+ {
+  "id": "G-PRT-1",
+  "mod": "D",
+  "lane": "L5-material-still-life",
+  "theme": "print",
+  "ratio": "1:1",
+  "n_tokens": 51
+ },
+ {
+  "id": "G-PRT-2",
+  "mod": "D",
+  "lane": "L5-material-still-life",
+  "theme": "print",
+  "ratio": "1:1",
+  "n_tokens": 50
+ },
+ {
+  "id": "G-PRT-3",
+  "mod": "D",
+  "lane": "L5-material-still-life",
+  "theme": "print",
+  "ratio": "1:1",
+  "n_tokens": 49
+ },
+ {
+  "id": "G-PRT-4",
+  "mod": "D",
+  "lane": "L5-material-still-life",
+  "theme": "print",
+  "ratio": "1:1",
+  "n_tokens": 48
+ },
+ {
+  "id": "G-PRT-5",
+  "mod": "D",
+  "lane": "L5-material-still-life",
+  "theme": "print",
+  "ratio": "1:1",
+  "n_tokens": 53
+ },
+ {
+  "id": "G-PRT-6",
+  "mod": "D",
+  "lane": "L5-material-still-life",
+  "theme": "print",
+  "ratio": "1:1",
+  "n_tokens": 48
+ },
+ {
+  "id": "G-SOC-1",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "social",
+  "ratio": "1:1",
+  "n_tokens": 59
+ },
+ {
+  "id": "G-SOC-2",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "social",
+  "ratio": "1:1",
+  "n_tokens": 59
+ },
+ {
+  "id": "G-SOC-3",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "social",
+  "ratio": "1:1",
+  "n_tokens": 59
+ },
+ {
+  "id": "G-SOC-4",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "social",
+  "ratio": "1:1",
+  "n_tokens": 61
+ },
+ {
+  "id": "G-SOC-5",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "social",
+  "ratio": "1:1",
+  "n_tokens": 60
+ },
+ {
+  "id": "G-SOC-6",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "social",
+  "ratio": "1:1",
+  "n_tokens": 60
+ },
+ {
+  "id": "G-ECO-1",
+  "mod": "D",
+  "lane": "L1-photo-editorial",
+  "theme": "ecommerce",
+  "ratio": "1:1",
+  "n_tokens": 49
+ },
+ {
+  "id": "G-ECO-2",
+  "mod": "D",
+  "lane": "L1-photo-editorial",
+  "theme": "ecommerce",
+  "ratio": "1:1",
+  "n_tokens": 50
+ },
+ {
+  "id": "G-ECO-3",
+  "mod": "D",
+  "lane": "L1-photo-editorial",
+  "theme": "ecommerce",
+  "ratio": "1:1",
+  "n_tokens": 52
+ },
+ {
+  "id": "G-ECO-4",
+  "mod": "D",
+  "lane": "L1-photo-editorial",
+  "theme": "ecommerce",
+  "ratio": "1:1",
+  "n_tokens": 48
+ },
+ {
+  "id": "G-ECO-5",
+  "mod": "D",
+  "lane": "L1-photo-editorial",
+  "theme": "ecommerce",
+  "ratio": "1:1",
+  "n_tokens": 51
+ },
+ {
+  "id": "G-ECO-6",
+  "mod": "D",
+  "lane": "L1-photo-editorial",
+  "theme": "ecommerce",
+  "ratio": "1:1",
+  "n_tokens": 50
+ },
+ {
+  "id": "G-LOG-1",
+  "mod": "D",
+  "lane": "L5-material-still-life",
+  "theme": "logo-brand",
+  "ratio": "1:1",
+  "n_tokens": 52
+ },
+ {
+  "id": "G-LOG-2",
+  "mod": "D",
+  "lane": "L5-material-still-life",
+  "theme": "logo-brand",
+  "ratio": "1:1",
+  "n_tokens": 53
+ },
+ {
+  "id": "G-LOG-3",
+  "mod": "D",
+  "lane": "L5-material-still-life",
+  "theme": "logo-brand",
+  "ratio": "1:1",
+  "n_tokens": 54
+ },
+ {
+  "id": "G-LOG-4",
+  "mod": "D",
+  "lane": "L5-material-still-life",
+  "theme": "logo-brand",
+  "ratio": "1:1",
+  "n_tokens": 50
+ },
+ {
+  "id": "G-LOG-5",
+  "mod": "D",
+  "lane": "L5-material-still-life",
+  "theme": "logo-brand",
+  "ratio": "1:1",
+  "n_tokens": 53
+ },
+ {
+  "id": "G-LOG-6",
+  "mod": "D",
+  "lane": "L5-material-still-life",
+  "theme": "logo-brand",
+  "ratio": "1:1",
+  "n_tokens": 48
+ },
+ {
+  "id": "G-VID-1",
+  "mod": "D",
+  "lane": "L2-cinematic-still",
+  "theme": "video",
+  "ratio": "1:1",
+  "n_tokens": 55
+ },
+ {
+  "id": "G-VID-2",
+  "mod": "D",
+  "lane": "L2-cinematic-still",
+  "theme": "video",
+  "ratio": "1:1",
+  "n_tokens": 55
+ },
+ {
+  "id": "G-VID-3",
+  "mod": "D",
+  "lane": "L2-cinematic-still",
+  "theme": "video",
+  "ratio": "1:1",
+  "n_tokens": 54
+ },
+ {
+  "id": "G-VID-4",
+  "mod": "D",
+  "lane": "L2-cinematic-still",
+  "theme": "video",
+  "ratio": "1:1",
+  "n_tokens": 52
+ },
+ {
+  "id": "G-VID-5",
+  "mod": "D",
+  "lane": "L2-cinematic-still",
+  "theme": "video",
+  "ratio": "1:1",
+  "n_tokens": 54
+ },
+ {
+  "id": "G-VID-6",
+  "mod": "D",
+  "lane": "L2-cinematic-still",
+  "theme": "video",
+  "ratio": "1:1",
+  "n_tokens": 54
+ },
+ {
+  "id": "G-IMG-1",
+  "mod": "D",
+  "lane": "L1-photo-editorial",
+  "theme": "image-gen",
+  "ratio": "1:1",
+  "n_tokens": 51
+ },
+ {
+  "id": "G-IMG-2",
+  "mod": "D",
+  "lane": "L1-photo-editorial",
+  "theme": "image-gen",
+  "ratio": "1:1",
+  "n_tokens": 51
+ },
+ {
+  "id": "G-IMG-3",
+  "mod": "D",
+  "lane": "L1-photo-editorial",
+  "theme": "image-gen",
+  "ratio": "1:1",
+  "n_tokens": 51
+ },
+ {
+  "id": "G-IMG-4",
+  "mod": "D",
+  "lane": "L1-photo-editorial",
+  "theme": "image-gen",
+  "ratio": "1:1",
+  "n_tokens": 49
+ },
+ {
+  "id": "G-IMG-5",
+  "mod": "D",
+  "lane": "L1-photo-editorial",
+  "theme": "image-gen",
+  "ratio": "1:1",
+  "n_tokens": 53
+ },
+ {
+  "id": "G-IMG-6",
+  "mod": "D",
+  "lane": "L1-photo-editorial",
+  "theme": "image-gen",
+  "ratio": "1:1",
+  "n_tokens": 51
+ },
+ {
+  "id": "G-DOC-1",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "docs-deck",
+  "ratio": "1:1",
+  "n_tokens": 66
+ },
+ {
+  "id": "G-DOC-2",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "docs-deck",
+  "ratio": "1:1",
+  "n_tokens": 68
+ },
+ {
+  "id": "G-DOC-3",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "docs-deck",
+  "ratio": "1:1",
+  "n_tokens": 68
+ },
+ {
+  "id": "G-DOC-4",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "docs-deck",
+  "ratio": "1:1",
+  "n_tokens": 64
+ },
+ {
+  "id": "G-DOC-5",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "docs-deck",
+  "ratio": "1:1",
+  "n_tokens": 66
+ },
+ {
+  "id": "G-DOC-6",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "docs-deck",
+  "ratio": "1:1",
+  "n_tokens": 64
+ },
+ {
+  "id": "G-ADS-1",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "ads",
+  "ratio": "1:1",
+  "n_tokens": 64
+ },
+ {
+  "id": "G-ADS-2",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "ads",
+  "ratio": "1:1",
+  "n_tokens": 60
+ },
+ {
+  "id": "G-ADS-3",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "ads",
+  "ratio": "1:1",
+  "n_tokens": 62
+ },
+ {
+  "id": "G-ADS-4",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "ads",
+  "ratio": "1:1",
+  "n_tokens": 63
+ },
+ {
+  "id": "G-ADS-5",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "ads",
+  "ratio": "1:1",
+  "n_tokens": 63
+ },
+ {
+  "id": "G-ADS-6",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "ads",
+  "ratio": "1:1",
+  "n_tokens": 62
+ },
+ {
+  "id": "G-CMP-1",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "compare",
+  "ratio": "1:1",
+  "n_tokens": 67
+ },
+ {
+  "id": "G-CMP-2",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "compare",
+  "ratio": "1:1",
+  "n_tokens": 65
+ },
+ {
+  "id": "G-CMP-3",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "compare",
+  "ratio": "1:1",
+  "n_tokens": 63
+ },
+ {
+  "id": "G-CMP-4",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "compare",
+  "ratio": "1:1",
+  "n_tokens": 65
+ },
+ {
+  "id": "G-CMP-5",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "compare",
+  "ratio": "1:1",
+  "n_tokens": 65
+ },
+ {
+  "id": "G-CMP-6",
+  "mod": "D",
+  "lane": "L4-graphic-flat",
+  "theme": "compare",
+  "ratio": "1:1",
+  "n_tokens": 65
+ },
+ {
+  "id": "G-PLA-1",
+  "mod": "D",
+  "lane": "L3-soft-3d",
+  "theme": "platform",
+  "ratio": "1:1",
+  "n_tokens": 55
+ },
+ {
+  "id": "G-PLA-2",
+  "mod": "D",
+  "lane": "L3-soft-3d",
+  "theme": "platform",
+  "ratio": "1:1",
+  "n_tokens": 55
+ },
+ {
+  "id": "G-PLA-3",
+  "mod": "D",
+  "lane": "L3-soft-3d",
+  "theme": "platform",
+  "ratio": "1:1",
+  "n_tokens": 54
+ },
+ {
+  "id": "G-PLA-4",
+  "mod": "D",
+  "lane": "L3-soft-3d",
+  "theme": "platform",
+  "ratio": "1:1",
+  "n_tokens": 56
+ },
+ {
+  "id": "G-PLA-5",
+  "mod": "D",
+  "lane": "L3-soft-3d",
+  "theme": "platform",
+  "ratio": "1:1",
+  "n_tokens": 55
+ },
+ {
+  "id": "G-PLA-6",
+  "mod": "D",
+  "lane": "L3-soft-3d",
+  "theme": "platform",
+  "ratio": "1:1",
+  "n_tokens": 55
+ }
+]

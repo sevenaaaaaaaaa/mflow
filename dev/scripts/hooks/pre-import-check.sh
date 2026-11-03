@@ -175,6 +175,44 @@ elif [[ -n "$ARTIFACT" ]]; then
     warn "state.artifact_path is empty but --artifact=$ARTIFACT provided"
 fi
 
+# --- 5b) page quality gate（A6 2026-10-20）：标题字形 / title==H1 / cover ---
+echo "[5b/5] page quality (title glyphs / title==H1 / cover)"
+if [[ -n "$ARTIFACT" && -f "$ARTIFACT" ]]; then
+    PQ="$("$PY" - "$ARTIFACT" << 'PQPY'
+import re, sys
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+t = open(sys.argv[1], encoding="utf-8").read()
+fm = {}
+if t.startswith("---"):
+    parts = t.split("---", 2)
+    for line in parts[1].splitlines():
+        if ":" in line:
+            k, v = line.split(":", 1)
+            fm[k.strip()] = v.strip().strip('"').strip("'")
+title = fm.get("title", "")
+h1 = ""
+for line in parts[2].splitlines() if len(parts) > 2 else []:
+    if line.startswith("# ") and not line.startswith("##"):
+        h1 = line[2:].strip(); break
+zh = len(re.findall(r"请|让|说|这|个|为|时|后|发|现|种|关|开|间|电|话|习|级|总|结|视|频|软|团|队|网|页|图|标|语|价|营|销|广|产|务", title))
+cover = fm.get("cover_url", fm.get("coverUrl", ""))
+print("ZHC=%d;H1DUP=%d;COVEREMPTY=%d" % (zh, 1 if title.strip() and h1 and title.strip() == h1 else 0,
+                                          1 if not cover else 0))
+PQPY
+)"
+    ZHC="$(echo "$PQ" | sed -n 's/.*ZHC=\([0-9]*\).*/\1/p')"
+    H1DUP="$(echo "$PQ" | sed -n 's/.*H1DUP=\([0-9]*\).*/\1/p')"
+    COVE="$(echo "$PQ" | sed -n 's/.*COVEREMPTY=\([0-9]*\).*/\1/p')"
+    if [[ "$ZHC" -gt 0 ]]; then err "标题混入简体中文字形 $ZHC 处（A6 门禁）"; else ok "标题字形干净"; fi
+    if [[ "$H1DUP" == "1" ]]; then err "title 与 H1 完全重复（SEO 自撞，A6 门禁）"; else ok "title/H1 已差异化"; fi
+    if [[ "$COVE" == "1" ]]; then warn "frontmatter 无 cover_url——上线前需配图（A6 提醒）"; else ok "封面已配置"; fi
+else
+    warn "无 artifact，跳过页面质量检查"
+fi
+
 # --- verdict ---
 echo ""
 if [[ ${#ERRORS[@]} -gt 0 ]]; then

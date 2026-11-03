@@ -8,17 +8,17 @@ description: >-
   长文（≥7500 词）、博客类型结构、E-E-A-T、多语言博客、博客 QA。
 ---
 
-## 预算（双轨，勿混）
+## 预算（单轨，2026-11-03 短格式/改稿轨废止）
 
 | 轨道 | 口径 | 适用 |
 |---|---|---|
-| RULES-70 默认 | 1200–1800 词（绝不超 2160） | 短格式、摘要、分发稿、非 ready 中间稿 |
-| **长文生产铁律（生产铁律，全分类统一）** | **进 `status: ready` 前英文正文 ≥7,500 词**（`len(text.split())`，不计 frontmatter） | 一切要发布的博客；旧分类型字数表已废止 |
+| **长文生产铁律（Blog 唯一标准）** | **进 `status: ready` 前英文正文 ≥7,500 词**（`len(text.split())`，不计 frontmatter）；ZH ≥12,000 汉字 / JA ≥21,600 字；上限 = 下限 ×1.2 | 一切要发布的博客，全分类统一 |
+| 短预算（保留） | 落地页 600–1000 字；摘要/分发稿 ≤600 | 落地页（landing-writer）、摘要/分发稿——**不是 Blog** |
 
-- 通用硬数：H2 4–7 · FAQ 3–5 · 每千字 1–3 数据点（同数据不重复）· 外部来源 2–5 条完整 URL · 列表块 ≤4 不连续 · 单段 ≤300 字符
-- **长文写法**：禁止单次灌出全文，走 RULES-20 Multi-Turn / Column-Writer Lane（`OUTLINE → DRAFT_PART* → INTEGRATE_QA`），单次输出硬顶约 3,000 词；Lane（Deep/Medium/Light）只定 effort 不降 7,500 地板；禁 script padding / 模板句灌字（RULES-20 Banned Template-Phrase Registry）
-- 字数不足时**优先删冗余**，绝不补形容词
-- 交付前必须过：`post-write-check.sh` · `geo-check.sh` · `quota-check.sh` · `lang-check.sh`（长文 `post-write-check.sh --target-words 7500`）
+- Blog 生产：RULES-20 Multi-Turn / Column-Writer Lane（`OUTLINE → DRAFT_PART* → INTEGRATE_QA`），单次输出硬顶约 3,000 词；Lane（Deep/Medium/Light）只定 effort 不降 7,500 地板；禁 script padding / 模板句灌字（RULES-20 Banned Template-Phrase Registry）
+- 通用硬数：长文 H2 ≤14 · FAQ ≤8 · 每千字 1–3 数据点且每篇 ≥5（RULES-20 #16）· 同数据不重复 · 外部来源 2–5 条完整 URL · 列表块不连续 · 单段 ≤300 字符；落地页沿用 H2 4–7 · FAQ 3–5
+- **字数不足时优先删冗余**，绝不补形容词
+- 交付前必须过：`post-write-check.sh`（长文 `--target-words 7500`）· `geo-check.sh` · `quota-check.sh`（Blog 自动按长文档判定）· `lang-check.sh`
 - **日语（lang=ja）**：必须叠加加载 `02-creation/ja-copywriter`（Voice/消息顺序/标题/CTA/禁用表述/数据点），与门禁 ja 基准（字数 ×1.8、「体」豁免）配套
 
 ## 定位与边界
@@ -109,3 +109,12 @@ mflow/
 - 类型 GUIDE 的结构规则是**骨架参考**，与本 SKILL 冲突时以本 SKILL + RULES-20 为准
 - 不得绕过：category 标注 / publish-date 一致性 / cover 策略 / 内链路由 / FAQ 与版式完整性 / anti-slop 与 publish-ready 检查
 - 结构要求稳定：无破损层级、无重复核心节或重复 FAQ 块
+
+<!-- pq-title-rules-v1 -->
+## 标题与小标题文案规范（页面质量门禁 A6，2026-10-20）
+
+1. **title（frontmatter）**：20–40 字（中文系）/ 对应长度；价值主张式（谁的+什么收益+凭什么）；核心关键词放前半；禁止裸关键词堆砌（如「AI Caricature Maker」这种不给理由的标题）
+2. **title ≠ H1**：两者必须差异化——title 给搜索者看的承诺，H1 给读者看的展开；完全相同即 SEO 自撞，交付前必须改掉一处
+3. **H2 小标题**：禁止机械直译/模板句；每节标题要么给出该节的可摘取结论（「3 步」「5 个判断基準」），要么是用户真实提问句式；禁止空洞的「概要/总结/介绍」类标题
+4. **简体字形红线**：ja 页面的 title/H1/H2 一律不得残留简体中文字形（请让说这个为时后…清单见 lang-check）——交付前自查 title 行
+5. **description/seoTitle**：与 title 同步口径；description 120–155 字符，说清「页面提供什么+具体收益」

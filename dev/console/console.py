@@ -24,7 +24,8 @@ import threading
 import time
 import urllib.parse
 from collections import Counter
-from datetime import datetime
+from datetime import datetime, timedelta
+from html import escape as html_escape
 from http import cookies as http_cookies
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -571,76 +572,1150 @@ def ops_pulse():
             "today": {"tokens": st["tokens"], "cost": round(st["cost"], 2), "limit": lim,
                       "profiles": st["profiles"], "is_workday": is_workday()},
             "mail_to": admin_emails(),
-            "mail_tip": "每天 08:30 晨报 / 18:30 晚报自动发送（含执行、流量、转化、任务、token 消耗）",
+            "mail_tip": "每天 08:30 晨报 / 18:30 晚报自动发送（在跑什么、队列为什么没跑、修好了什么、还卡在哪里，附 token/流量/转化）",
             "hourly": sorted((st.get("hourly") or {}).items()),
             "daily": [{"date": d, **v} for d, v in daily]}
 
 
-def ops_report_email(morning=True):
-    """清晨/傍晚日报：执行、流量、转化、任务、token 消耗。"""
-    st = usage_money_stats()
-    lim = budget_limit()
-    today = datetime.now().strftime("%Y-%m-%d")
-    bl = batch_list()
-    my = [t for t in bl if (t.get("created") or "").startswith(today)]
-    done_n = sum(1 for t in my if t.get("status") == "done")
-    fail_n = sum(1 for t in my if t.get("status") == "failed")
-    running_b = [t for t in bl if t.get("status") in ("running", "queued")]
-    running_p = [r for r in run_list(40) if r.get("status") in ("running", "queued")]
-    wait = [t for t in bl if t.get("dry_run") and t.get("status") == "done"
-            and (t.get("stats") or {}).get("done") == 0 and (t.get("stats") or {}).get("skipped", 0) > 0]
+# ===================== 晨/晚报：全貌摘要 =====================
+_WEEKDAYS = ("周一", "周二", "周三", "周四", "周五", "周六", "周日")
+_BATCH_TYPE_LABELS = {
+    "gen": "生成", "rewrite": "改稿", "field_patch": "字段修复", "asset_replace": "素材替换",
+    "qa": "QA 扫描", "publish_sanity": "发布", "landing_refresh": "落地页改稿",
+    "internal_link": "内链建议", "seo_fill": "字段修复", "alt_fill": "素材补齐",
+}
+_FIX_TYPES = {"field_patch", "asset_replace", "rewrite", "landing_refresh", "internal_link"}
+
+
+def _fmt_duration(sec):
+    try:
+        sec = int(sec or 0)
+    except Exception:
+        return "—"
+    if sec < 60:
+        return f"{sec}s"
+    if sec < 3600:
+        return f"{sec // 60}m"
+    h, m = divmod(sec // 60, 60)
+    return f"{h}h{m:02d}m"
+
+
+def _fmt_ago(ts, now_ts=None):
+    try:
+        ts = float(ts or 0)
+    except Exception:
+        return "—"
+    if not ts:
+        return "—"
+    return _fmt_duration(max(0, (now_ts or time.time()) - ts)) + "前"
+
+
+def _parse_dt_ts(s):
+    """把 run/ 中的日期串解析为时间戳；只有 HH:MM:SS 的按今天处理。"""
+    s = str(s or "").strip()
+    for fmt in ("%Y-%m-%d %H:%M:%S", "%Y-%m-%d %H:%M", "%H:%M:%S"):
+        try:
+            d = datetime.strptime(s, fmt)
+            if fmt == "%H:%M:%S":
+                n = datetime.now()
+                d = n.replace(hour=d.hour, minute=d.minute, second=d.second, microsecond=0)
+            return d.timestamp()
+        except Exception:
+            continue
+    return 0.0
+
+
+def _ops_event(kind, text, count=0, extra=None):
+    """记录自愈/自动处置事件（JSONL），供晨晚报与排查使用。"""
+    try:
+        p = RUN_DIR / "logs" / "ops-events.jsonl"
+        p.parent.mkdir(parents=True, exist_ok=True)
+        rec = {"ts": time.time(), "at": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+               "kind": str(kind), "text": str(text)[:300], "count": int(count or 0)}
+        if extra:
+            rec["extra"] = extra
+        with open(p, "a", encoding="utf-8") as f:
+            f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+    except Exception as e:
+        print(f"[ops-event] {e}", file=sys.stderr)
+
+
+def _ops_events(since_ts, limit=300):
+    p = RUN_DIR / "logs" / "ops-events.jsonl"
+    if not p.exists():
+        return []
+    out = []
+    try:
+        for ln in p.read_text(errors="ignore").splitlines():
+            try:
+                r = json.loads(ln)
+            except Exception:
+                continue
+            if float(r.get("ts") or 0) >= since_ts:
+                out.append(r)
+    except Exception:
+        return []
+    return out[-limit:]
+
+
+def _ops_batches():
+    """读取全部批任务（含 items），用于统计真实进度与修复明细。"""
+    out = []
+    if not BATCH_DIR.exists():
+        return out
+    for f in BATCH_DIR.glob("batch-*.json"):
+        t = read_json(f, {})
+        if not t:
+            continue
+        try:
+            t["_mtime"] = f.stat().st_mtime
+        except Exception:
+            t["_mtime"] = 0
+        out.append(t)
+    return out
+
+
+def _batch_when_ts(t):
+    for k in ("finished", "created"):
+        ts = _parse_dt_ts(t.get(k))
+        if ts:
+            return ts
+    return float(t.get("_mtime") or 0)
+
+
+def _batch_activity_ts(t):
+    return max(float(t.get("_mtime") or 0), float(t.get("heartbeat_ts") or 0),
+               _batch_when_ts(t), _parse_dt_ts(t.get("started")))
+
+
+def _item_name(it):
+    name = (it.get("item_id") or it.get("doc_id") or it.get("slug")
+            or it.get("topic") or it.get("path") or "")
+    if not name:
+        try:
+            return "#" + str(int(it.get("i", 0)) + 1)
+        except Exception:
+            return "—"
+    return str(name).replace("\n", " ")[:72]
+
+
+def _batch_rollup(t, now_ts=None):
+    """批任务实时进度：不能只看 stats（执行中 stats 只在结束时回写）。"""
+    now_ts = now_ts or time.time()
+    items = t.get("items") or []
+    c = Counter(str(i.get("status") or "pending") for i in items)
+    total = len(items)
+    done, skipped, failed = c.get("done", 0), c.get("skipped", 0), c.get("failed", 0)
+    pending, running = c.get("pending", 0), c.get("running", 0)
+    processed = done + skipped
+    retries = sum(max(0, int(i.get("attempts") or 1) - 1) for i in items)
+    tokens = sum(int((i.get("result") or {}).get("tokens") or 0)
+                 for i in items if isinstance(i.get("result"), dict))
+    started_ts = float(t.get("started_ts") or 0) or _parse_dt_ts(t.get("started"))
+    last_ts = float(t.get("heartbeat_ts") or 0) or _batch_activity_ts(t) or now_ts
+    elapsed = max(0, (now_ts if t.get("status") == "running" else last_ts) - started_ts) if started_ts else 0
+    eta = None
+    if t.get("status") == "running" and processed and total > processed and elapsed >= 30:
+        eta = int((total - processed) * elapsed / processed)
+    return {"total": total, "done": done, "skipped": skipped, "failed": failed,
+            "pending": pending, "running": running, "processed": processed,
+            "pct": round(processed * 100.0 / total) if total else 0,
+            "retries": retries, "tokens": tokens, "elapsed": int(elapsed), "eta": eta,
+            "last_ts": last_ts, "current": [_item_name(i) for i in items if i.get("status") == "running"][:3]}
+
+
+def _batch_fields(t):
+    cnt = Counter()
+    for it in t.get("items") or []:
+        r = it.get("result") or {}
+        vals = r.get("set") or []
+        if isinstance(vals, str):
+            vals = [vals]
+        for f in vals:
+            cnt[str(f)] += 1
+        if isinstance(it.get("set"), dict):
+            for f in it["set"]:
+                cnt[str(f)] += 1
+    return [k for k, _ in cnt.most_common(4)]
+
+
+def _batch_extra(t):
+    blocked = warn = findings = 0
+    for it in t.get("items") or []:
+        r = it.get("result") or {}
+        if r.get("blocked"):
+            blocked += 1
+        if r.get("hook_rc") not in (None, 0):
+            warn += 1
+        fs = r.get("findings")
+        if isinstance(fs, list):
+            findings += len(fs)
+        elif isinstance(fs, int):
+            findings += fs
+        elif isinstance(r.get("count"), int) and t.get("type") == "qa":
+            findings += r["count"]
+    return blocked, warn, findings
+
+
+def _batch_warn_pages(t):
+    """带任一门禁/质检告警的条目数（去重，避免同一页被计两次）。"""
+    n = 0
+    for it in t.get("items") or []:
+        r = it.get("result") or {}
+        if r.get("blocked") or r.get("hook_rc") not in (None, 0):
+            n += 1
+    return n
+
+
+def _batch_line(t):
+    r = _batch_rollup(t)
+    label = _BATCH_TYPE_LABELS.get(str(t.get("type")), str(t.get("type") or "任务"))
+    parts = [f"{r['done']}/{r['total']} 完成"] if r["total"] else ["无条目"]
+    if r["skipped"]:
+        parts.append(f"跳过 {r['skipped']}")
+    if r["failed"]:
+        parts.append(f"失败 {r['failed']}")
+    if r["retries"]:
+        parts.append(f"重试 {r['retries']}")
+    blocked, warn, findings = _batch_extra(t)
+    fields = _batch_fields(t)
+    if fields:
+        parts.append("字段 " + "/".join(fields))
+    if blocked:
+        parts.append(f"门禁告警 {blocked}")
+    if warn:
+        parts.append(f"质检告警 {warn}")
+    if findings and t.get("type") == "qa":
+        parts.append(f"发现 {findings} 个问题")
+    if t.get("status") == "done":
+        if r["done"] == 0 and r["skipped"]:
+            parts.append("全部无需改动")
+        elif t.get("dry_run"):
+            parts.append("预演未写库")
+        elif r["done"]:
+            parts.append("已写入生产" if t.get("type") in ("field_patch", "asset_replace", "publish_sanity")
+                         else "已产出")
+    if t.get("status") == "tripped":
+        parts.append("已熔断")
+    when = str(t.get("finished") or t.get("created") or "")
+    when = when[5:16] if len(when) >= 16 else when
+    return (f"{when} {label} · {(t.get('title') or t.get('id') or '')} — "
+            + "，".join(parts) + f"（{t.get('id')}）")
+
+
+def _paused_label(reason):
+    return {"night_cutoff": "06:00 夜间截止暂停",
+            "budget": "日预算暂停",
+            "manual": "人工暂停"}.get(reason or "", f"暂停（{reason}）")
+
+
+def _exec_window(now):
+    """执行窗口：工作日 00:00-06:00。返回 (是否开放, 下个窗口, 人话说明)。"""
+    if is_workday(now) and 0 <= now.hour < 6:
+        return True, now, "开放中（工作日 00:00-06:00，06:00 截止）"
+    d = now.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1)
+    for _ in range(10):
+        if is_workday(d):
+            break
+        d += timedelta(days=1)
+    return False, d, f"已关闭，下个窗口 {d:%m-%d}（{_WEEKDAYS[d.weekday()]}）00:00"
+
+
+def _ops_loops():
+    """各项目里排队/运行中的 Agent Loop。"""
+    out = []
+    if not PROJECTS_DIR.exists():
+        return out
+    for f in PROJECTS_DIR.glob("*/loops.json"):
+        for x in read_json(f, []) or []:
+            if x.get("status") in ("running", "queued"):
+                y = dict(x)
+                y["proj"] = f.parent.name
+                out.append(y)
+    return out
+
+
+def _ops_runs(limit=40):
+    out = []
+    for meta in run_list(limit):
+        r = run_load(meta.get("id")) or meta
+        try:
+            r["_mtime"] = _run_path(meta.get("id")).stat().st_mtime
+        except Exception:
+            r["_mtime"] = 0
+        out.append(r)
+    return out
+
+
+def _run_when_ts(r):
+    return max(float(r.get("_mtime") or 0), float(r.get("started_ts") or 0))
+
+
+def _run_rollup(r):
+    steps = r.get("steps") or []
+    c = Counter(str(s.get("status") or "pending") for s in steps)
+    total = len(steps)
+    done = c.get("done", 0) + c.get("warn", 0) + c.get("skipped", 0)
+    cur = (next((s for s in steps if s.get("status") == "running"), None)
+           or next((s for s in steps if s.get("status") in ("failed", "blocked")), None)
+           or next((s for s in steps if s.get("status") == "pending"), None))
+    elapsed = max(0, time.time() - float(r.get("started_ts") or 0)) if r.get("started_ts") else 0
+    return {"total": total, "done": done, "failed": c.get("failed", 0), "blocked": c.get("blocked", 0),
+            "pending": c.get("pending", 0), "current": cur, "elapsed": int(elapsed)}
+
+
+_RUN_NOOP_MARKERS = ("没有满足条件", "没有可自动修复", "无有效 patch", "无 GEO 缺口", "范围内无")
+_RUN_DATA_MARKERS = ("GSC 数据", "无物料台账", "源文档缺失", "拉取失败", "配额不足")
+
+
+def _run_failure_kind(r):
+    """剧本失败分类：noop=条件不满足（非故障），data=缺数据/配额，real=真异常。"""
+    cur = _run_rollup(r)["current"] or {}
+    detail = str(cur.get("detail") or r.get("replan_reason") or "")
+    if any(k in detail for k in _RUN_NOOP_MARKERS):
+        return "noop"
+    if any(k in detail for k in _RUN_DATA_MARKERS):
+        return "data"
+    return "real"
+
+
+def _ops_action(level, title, detail, action="", meta=""):
+    return {"level": level, "title": title, "detail": detail, "action": action, "meta": meta}
+
+
+def _type_summary(tasks):
+    cnt, items = Counter(), Counter()
+    for t in tasks:
+        k = _BATCH_TYPE_LABELS.get(str(t.get("type")), str(t.get("type") or "任务"))
+        cnt[k] += 1
+        items[k] += _batch_rollup(t)["done"]
+    return " · ".join(f"{k} {n} 批/{items[k]} 项" for k, n in cnt.most_common())
+
+
+def _selfheal_events(since_ts):
+    evs = [e for e in _ops_events(since_ts)
+           if e.get("kind") in ("selfheal", "revive", "retry", "night_cutoff", "autoresume")]
+    if evs:
+        return evs
+    # 兼容旧版本：approvals.log 里只有手动「一键自愈」留痕
+    p = RUN_DIR / "approvals.log"
+    out = []
+    if p.exists():
+        for line in p.read_text(errors="ignore").splitlines()[-500:]:
+            if " SELF-HEAL " not in line:
+                continue
+            ts = _parse_dt_ts(line[:19].replace("T", " "))
+            if ts >= since_ts:
+                out.append({"ts": ts, "at": line[:19].replace("T", " "),
+                            "kind": "selfheal", "text": "手动自愈：" + line.split(" SELF-HEAL ", 1)[1][:160]})
+    return out
+
+
+def build_ops_report(morning=True, now=None):
+    """构建晨/晚报正文（纯函数，便于测试与手工预览，不发信）。"""
+    now = now or datetime.now()
+    now_ts = now.timestamp()
+    since_ts = now_ts - 24 * 3600
+    today = now.strftime("%Y-%m-%d")
+    word = "晨报" if morning else "晚报"
+    st = usage_money_stats(today)
+    lim = budget_limit(today)
+    batches = _ops_batches()
+    runs = _ops_runs()
+    loops = _ops_loops()
+
+    running_b = sorted([t for t in batches if t.get("status") == "running"],
+                       key=lambda t: float(t.get("started_ts") or 0), reverse=True)
+    queued_b = [t for t in batches if t.get("status") == "queued"]
+    paused_b = [t for t in batches if t.get("status") == "paused"]
+    tripped_b = [t for t in batches if t.get("status") == "tripped"]
+    failed_b_all = [t for t in batches if t.get("status") == "failed"] + tripped_b
+    done_b_all = [t for t in batches if t.get("status") == "done"]
+    running_r = [r for r in runs if r.get("status") == "running"]
+    queued_r = [r for r in runs if r.get("status") == "queued"]
+    failed_r_all = [r for r in runs if r.get("status") == "failed"]
+    running_loops = [x for x in loops if x.get("status") == "running"]
+    queued_loops = [x for x in loops if x.get("status") == "queued"]
+
+    recent_done = sorted([t for t in done_b_all if _batch_when_ts(t) >= since_ts],
+                         key=_batch_when_ts, reverse=True)
+    recent_failed_b = [t for t in failed_b_all if _batch_activity_ts(t) >= since_ts]
+    # 还在跑/排队/暂停、但已经出现失败条目的批：同样属于「没修好」，不能只报整任务失败
+    partial_failed_b = [t for t in batches
+                        if t.get("status") not in ("done", "failed", "tripped")
+                        and any(i.get("status") == "failed" for i in (t.get("items") or []))
+                        and _batch_activity_ts(t) >= since_ts]
+    recent_failed_r = [r for r in failed_r_all if _run_when_ts(r) >= since_ts]
+    fix_recent = [t for t in recent_done
+                  if t.get("type") in _FIX_TYPES and not t.get("dry_run") and _batch_rollup(t)["done"] > 0]
+    fix_7d = [t for t in done_b_all
+              if t.get("type") in _FIX_TYPES and not t.get("dry_run")
+              and _batch_rollup(t)["done"] > 0 and _batch_when_ts(t) >= now_ts - 7 * 86400]
+    wait_confirm = [t for t in batches
+                    if t.get("dry_run") and t.get("status") == "done"
+                    and (t.get("stats") or {}).get("done", 0) == 0
+                    and (t.get("stats") or {}).get("skipped", 0) > 0]
+
+    window_open, next_dt, window_text = _exec_window(now)
+    try:
+        worker_ok, worker_idle = worker_alive()
+    except Exception:
+        worker_ok, worker_idle = True, 0
+    idle_txt = "从未心跳" if worker_idle >= 999999 else _fmt_duration(worker_idle)
+    try:
+        blocked_now, bst = breaker_check()
+    except Exception:
+        blocked_now, bst = False, {}
+    paused_night = [t for t in paused_b if t.get("pause_reason") == "night_cutoff"]
+
+    # ── 结构化归类：产出 / 质量 / 可行动项（供文字版与 HTML 版共用）──
+    repair_recent = [t for t in recent_done
+                     if t.get("type") in ("field_patch", "asset_replace")
+                     and not t.get("dry_run") and _batch_rollup(t)["done"] > 0]
+    rewrite_recent = [t for t in recent_done
+                      if t.get("type") in ("rewrite", "landing_refresh", "internal_link")
+                      and not t.get("dry_run") and _batch_rollup(t)["done"] > 0]
+    qa_recent = [t for t in recent_done if t.get("type") == "qa"]
+    output_recent = sorted(repair_recent + rewrite_recent, key=_batch_when_ts, reverse=True)
+    output_items = sum(_batch_rollup(t)["done"] for t in output_recent)
+    quality_warn = sum(_batch_warn_pages(t) for t in rewrite_recent)
+    preview_recent = [t for t in recent_done if t.get("dry_run")]
+    recent_retried = [(t, it) for t in recent_done for it in (t.get("items") or [])
+                      if it.get("status") == "done" and int(it.get("attempts") or 1) > 1]
+    issue_b, seen_issue = [], set()
+    for t in recent_failed_b + partial_failed_b:
+        if t.get("id") not in seen_issue:
+            seen_issue.add(t.get("id"))
+            issue_b.append(t)
+    issue_b.sort(key=_batch_activity_ts, reverse=True)
+    history_r = [r for r in failed_r_all if _run_when_ts(r) < since_ts]
+    hist_kinds = Counter(_run_failure_kind(r) for r in history_r)
+
+    actions = []
+    if blocked_now:
+        actions.append(_ops_action("critical", "全局熔断中",
+                                   str((bst or {}).get("reason", ""))[:140],
+                                   "先解除熔断，再重试"))
+    if not worker_ok:
+        actions.append(_ops_action("critical", "执行器离线",
+                                   f"已 {idle_txt} 没有心跳，所有排队任务都不会动",
+                                   "重启 mflow-console"))
+    if lim and st.get("cost", 0) >= lim:
+        actions.append(_ops_action("critical", "日预算已用尽",
+                                   f"今日 ¥{st['cost']:.2f} / 预算 ¥{lim:.2f}，LLM 批任务已停领",
+                                   "加预算或等次日 00:00 自动恢复"))
+    for t in issue_b[:2]:
+        d = failure_digest(t)
+        hint = (d.get("categories") or [{}])[0].get("hint", "按任务 ID 排查")
+        actions.append(_ops_action("error", f"任务失败：{t.get('title') or t.get('id')}",
+                                   d.get("line") or "任务异常终止", hint, str(t.get("id") or "")))
+    for r in recent_failed_r:
+        kind = _run_failure_kind(r)
+        if kind == "noop":
+            continue
+        rr = _run_rollup(r)
+        cur = rr["current"] or {}
+        actions.append(_ops_action("error" if kind == "real" else "warn",
+                                   f"剧本失败：{r.get('title') or r.get('id')}",
+                                   str(cur.get("detail") or r.get("replan_reason") or "")[:140],
+                                   "补数据后重跑" if kind == "data" else "按 ID 排查",
+                                   str(r.get("id") or "")))
+    if wait_confirm:
+        titles = "；".join((t.get("title") or t.get("id") or "")[:28] for t in wait_confirm[:2])
+        actions.append(_ops_action("warn", f"{len(wait_confirm)} 个预演批等你确认",
+                                   f"{titles}；确认后才写库", "去任务中心确认"))
+    if quality_warn:
+        actions.append(_ops_action("warn", f"{quality_warn} 页带门禁告警",
+                                   f"近 24h 改稿 {len(rewrite_recent)} 批 / {output_items} 页，建议抽检",
+                                   "去任务中心看告警"))
+    actions = actions[:4]
+    action_n = len(actions)
+
+    active_n = len(running_b) + len(running_r) + len(running_loops)
+    queue_n = len(queued_b) + len(paused_b) + len(queued_r) + len(queued_loops)
+    blocked_n = (len(failed_b_all) + len(failed_r_all) + len(partial_failed_b)
+                 + len(wait_confirm) + (1 if blocked_now else 0))
+    L = [f"MFlow {word} · {now:%Y-%m-%d %H:%M}（{_WEEKDAYS[now.weekday()]}）", ""]
+    L.append("【重点】")
+    if actions:
+        for i, a in enumerate(actions[:3], 1):
+            L.append(f"  {i}. {a['title']} — {a['detail']}")
+            if a.get("action"):
+                L.append(f"     → {a['action']}")
+    else:
+        L.append("  本轮没有需要你处理的阻断项。")
+    L.append("")
+    L.append(f"概览：在跑 {active_n} · 排队 {queue_n} · 24h 产出 {output_items} 页"
+             + (f"（{quality_warn} 页带门禁告警）" if quality_warn else "")
+             + f" · 24h 修复 {len(repair_recent)} 批")
+    if not worker_ok:
+        L.append(f"⚠ 执行器已离线 {idle_txt}——排队任务不会被执行。")
+    if blocked_now:
+        L.append(f"⚠ 全局熔断中：{str((bst or {}).get('reason', ''))[:120]}。")
+
+    # ── 正在跑 ──
+    L += ["", "【正在跑】"]
+    if not (running_b or running_r or running_loops):
+        L.append("  当前没有正在执行的任务。")
+        if not window_open:
+            L.append(f"  执行窗口：{window_text}；窗口外批量任务不领取，属正常等待。")
+        elif not worker_ok:
+            L.append("  执行窗口内但执行器离线，需要重启 mflow-console。")
+        elif queue_n:
+            L.append(f"  执行窗口内且执行器在线，队列里还有 {queue_n} 个，等待领取/重试。")
+        else:
+            L.append("  执行窗口内且执行器在线，当前队列为空。")
+    for t in running_b[:6]:
+        r = _batch_rollup(t, now_ts)
+        L.append(f"  ● [批] {(t.get('title') or t.get('id') or '')}")
+        bits = [f"{r['done']}/{r['total']} 完成（{r['pct']}%）"]
+        if r["failed"]:
+            bits.append(f"失败 {r['failed']}")
+        if r["retries"]:
+            bits.append(f"重试 {r['retries']}")
+        bits.append(f"已跑 {_fmt_duration(r['elapsed'])}")
+        if r["eta"] is not None:
+            bits.append(f"预计剩 {_fmt_duration(r['eta'])}")
+        if r["tokens"]:
+            bits.append(f"{r['tokens']:,} tokens")
+        L.append("    " + " · ".join(bits))
+        meta = [_BATCH_TYPE_LABELS.get(str(t.get("type")), str(t.get("type") or "任务")),
+                "预演" if t.get("dry_run") else "真实写入",
+                f"负责人 {t.get('created_by') or '—'}",
+                f"心跳 {_fmt_ago(r['last_ts'], now_ts)}",
+                str(t.get("id") or "")]
+        L.append("    " + " · ".join(meta))
+        if r["current"]:
+            L.append("    当前：" + "、".join(r["current"]))
+    for r in running_r[:5]:
+        rr = _run_rollup(r)
+        L.append(f"  ▶ [剧本] {(r.get('title') or r.get('id') or '')}")
+        bits = [f"{rr['done']}/{rr['total']} 步", f"已跑 {_fmt_duration(rr['elapsed'])}"]
+        risk = (r.get("risk") or {}).get("level")
+        if risk:
+            bits.append(f"风险 {risk}")
+        L.append("    " + " · ".join(bits))
+        cur = rr["current"] or {}
+        if cur:
+            L.append(f"    当前：{cur.get('name') or '—'} · {str(cur.get('detail') or '')[:100]}")
+    for x in running_loops[:4]:
+        L.append(f"  ↻ [Loop] {x.get('proj')}/{x.get('item_id') or x.get('id')} — "
+                 f"第 {int(x.get('round') or 0) + 1}/{x.get('max_rounds') or 3} 轮 · "
+                 f"{int(x.get('tokens_used') or 0):,} tokens")
+    more = max(0, len(running_b) - 6) + max(0, len(running_r) - 5) + max(0, len(running_loops) - 4)
+    if more:
+        L.append(f"  …另有 {more} 个在跑，见工作台任务中心。")
+
+    # ── 队列 ──
+    L += ["", "【队列 / 为什么没跑】"]
+    L.append(f"  排队 {queue_n} 个 · 执行窗口：{window_text}")
+    if paused_b:
+        reasons = Counter(t.get("pause_reason") or "manual" for t in paused_b)
+        for reason, n in reasons.most_common():
+            L.append(f"  · {_paused_label(reason)} {n} 个")
+            samples = [(t.get("title") or t.get("id") or "") for t in paused_b
+                       if (t.get("pause_reason") or "manual") == reason][:2]
+            if samples:
+                L.append("    如：" + "；".join(x[:60] for x in samples))
+            if reason == "night_cutoff" and paused_night:
+                dates = [t.get("pause_date") for t in paused_night if t.get("pause_date")]
+                if dates:
+                    L.append(f"    最近一次截止：{max(dates)}（下个窗口自动恢复）")
+    if queued_b:
+        L.append(f"  · 等待执行器领取 {len(queued_b)} 个（执行器{'在线' if worker_ok else '离线'}）")
+        if queued_b[:2]:
+            L.append("    如：" + "；".join((t.get("title") or t.get("id") or "")[:60] for t in queued_b[:2]))
+    if queued_r or queued_loops:
+        L.append(f"  · 剧本/Loop 排队 {len(queued_r) + len(queued_loops)} 个")
+    if wait_confirm:
+        L.append(f"  · 预演完成待确认 {len(wait_confirm)} 个（确认后才写库）")
+        L.append("    如：" + "；".join((t.get("title") or t.get("id") or "")[:60] for t in wait_confirm[:2]))
+    if not (paused_b or queued_b or queued_r or queued_loops or wait_confirm):
+        L.append("  · 无排队/暂停任务")
+
+    # ── 刚完成 / 修复 ──
+    L += ["", "【刚完成 / 修复（近 24h）】"]
+    if recent_done:
+        if output_recent:
+            L.append(f"  完成 {len(output_recent)} 批 / {output_items} 页"
+                     + (f"（{quality_warn} 页带门禁告警）" if quality_warn else "") + "：")
+            for t in output_recent[:8]:
+                L.append("  · " + _batch_line(t))
+            if len(output_recent) > 8:
+                L.append(f"  …另有 {len(output_recent) - 8} 个完成批，见工作台。")
+            L.append("  结构：" + _type_summary(output_recent))
+        else:
+            L.append("  近 24h 没有改稿/修复完成。")
+        preview = [t for t in recent_done if t.get("dry_run")]
+        if preview:
+            L.append(f"  另有预演 {len(preview)} 批（未写库）：")
+            for t in preview[:4]:
+                L.append("  · " + _batch_line(t))
+    else:
+        L.append("  近 24h 没有新的完成记录。")
+        last_other = sorted([t for t in done_b_all
+                             if t.get("type") not in _FIX_TYPES and not t.get("dry_run")],
+                            key=_batch_when_ts, reverse=True)[:4]
+        if last_other:
+            L.append("  最近其他完成（供参考）：")
+            for t in last_other:
+                L.append("  · " + _batch_line(t))
+    if not fix_recent:
+        # 每种修复各取最近 2 个，避免「改稿」批把字段/素材修复挤出视野
+        by_type = {}
+        for t in done_b_all:
+            if (t.get("type") in _FIX_TYPES and not t.get("dry_run")
+                    and _batch_rollup(t)["done"] > 0):
+                by_type.setdefault(str(t.get("type")), []).append(t)
+        last_fix = []
+        for typ in ("field_patch", "asset_replace", "rewrite", "landing_refresh", "internal_link"):
+            last_fix += sorted(by_type.get(typ, []), key=_batch_when_ts, reverse=True)[:2]
+        if last_fix:
+            L.append("  最近修复完成（更早，供参考；每种取最近 2 个）：")
+            for t in last_fix:
+                L.append("  · " + _batch_line(t))
+
+    retried = []
+    for t in recent_done:
+        for it in t.get("items") or []:
+            if it.get("status") == "done" and int(it.get("attempts") or 1) > 1:
+                retried.append((t, it))
+    if retried:
+        names = "、".join(_item_name(it) for _, it in retried[:3])
+        L.append(f"  重试后修复 {len(retried)} 项：{names}" + ("…" if len(retried) > 3 else ""))
+
+    evs = _selfheal_events(since_ts)
+    if evs:
+        L.append("  自愈 / 自动处置：")
+        for e in evs[-6:]:
+            L.append(f"  · {str(e.get('at') or '')[5:16]} {str(e.get('text') or '')[:150]}")
+        if len(evs) > 6:
+            L.append(f"  …另有 {len(evs) - 6} 条，见 run/logs/ops-events.jsonl")
+    elif paused_night:
+        L.append(f"  自动处置：06:00 夜间截止暂停 {len(paused_night)} 个任务（下个窗口自动恢复）。")
+
+    # ── 未修复 / 待处理 ──
+    L += ["", "【需要处理 / 未修复】"]
+    had_issue = False
+    if blocked_now:
+        had_issue = True
+        L.append(f"  · 全局熔断：{str((bst or {}).get('reason', ''))[:140]}")
+        L.append("    处理：在工作台首页解除熔断，或修复根因后重试。")
+    if not worker_ok:
+        had_issue = True
+        L.append(f"  · 执行器离线 {idle_txt}：所有排队都不会动")
+        L.append("    处理：systemctl restart mflow-console")
+    if lim and st.get("cost", 0) >= lim:
+        had_issue = True
+        L.append(f"  · 日预算已用尽 ¥{st['cost']:.2f}/¥{lim:.2f}：LLM 批任务不会领取")
+        L.append("    处理：后台首页单日加预算，或等次日自动回调。")
+    for t in issue_b[:4]:
+        had_issue = True
+        d = failure_digest(t)
+        mark = "部分失败" if t.get("status") not in ("failed", "tripped") else "整任务失败"
+        L.append(f"  · [{mark}] {(t.get('title') or t.get('id') or '')} — "
+                 f"{d.get('line') or '任务异常终止'}")
+        cats = d.get("categories") or []
+        if cats:
+            L.append("    建议：" + "；".join(f"{c['count']} 项{c['label']}→{c['hint']}" for c in cats[:2]))
+        L.append(f"    ID：{t.get('id')}")
+    for r in recent_failed_r[:4]:
+        had_issue = True
+        rr = _run_rollup(r)
+        cur = rr["current"] or {}
+        L.append(f"  · [剧本失败] {(r.get('title') or r.get('id') or '')} — "
+                 f"{cur.get('name') or '步骤'}：{str(cur.get('detail') or r.get('replan_reason') or '')[:110]}")
+        if r.get("replan_reason") and not cur.get("detail"):
+            L.append(f"    重规划：{str(r['replan_reason'])[:120]}")
+        L.append(f"    ID：{r.get('id')}")
+    if wait_confirm:
+        had_issue = True
+        L.append(f"  · 预演待确认 {len(wait_confirm)} 个：确认后才真实写库")
+        L.append("    如：" + "；".join((t.get("title") or t.get("id") or "")[:60] for t in wait_confirm[:3]))
+    if not had_issue:
+        L.append("  本周期没有新增失败或待确认项。")
+    # 近 24h 没有新增失败时，仍把「一直挂着」的失败列出来，避免只看到数字
+    if not (recent_failed_b or recent_failed_r or partial_failed_b):
+        hist_b = sorted(failed_b_all, key=_batch_activity_ts, reverse=True)[:2]
+        hist_r = sorted(failed_r_all, key=_run_when_ts, reverse=True)[:3]
+        if hist_b or hist_r:
+            L.append("  历史未解决（近期没有变化，供排查）：")
+            for t in hist_b:
+                d = failure_digest(t)
+                L.append(f"  · [批] {(t.get('title') or t.get('id') or '')} — {d.get('line') or '任务异常终止'}")
+                L.append(f"    ID：{t.get('id')}")
+            for r in hist_r:
+                rr = _run_rollup(r)
+                cur = rr["current"] or {}
+                L.append(f"  · [剧本] {(r.get('title') or r.get('id') or '')} — "
+                         f"{cur.get('name') or '步骤'}：{str(cur.get('detail') or r.get('replan_reason') or '')[:90]}")
+                L.append(f"    ID：{r.get('id')}")
+    if failed_b_all or failed_r_all:
+        L.append(f"  未解决合计：{len(failed_b_all)} 个批 + {len(failed_r_all)} 个剧本"
+                 "（含本周期新增；可在工作台按 ID 重试，反复失败请查日志）")
+
+    # ── Token / 流量 / 转化 ──
+    L += ["", "【Token / 预算】"]
+    L.append(f"  今日 {st['tokens']:,} tokens · ¥{st['cost']:.2f} / 预算 ¥{lim:.2f}"
+             + ("（单日加额中）" if budget_cfg().get("override", {}).get("date") == today else ""))
+    for p, c in sorted((st.get("profiles") or {}).items(), key=lambda kv: -kv[1])[:5]:
+        L.append(f"  · {p}: ¥{c:.2f}")
+
     gsc = read_json(RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json", {})
     pages = ((gsc.get("pages") or {}).get("top20_pages")) or []
     g_clicks = sum((p.get("clicks") or 0) for p in pages)
     g_impr = sum((p.get("impr") or 0) for p in pages)
     top3 = sorted(pages, key=lambda p: -(p.get("clicks") or 0))[:3]
+    L += ["", f"【流量（GSC Top20 · 数据日期 {gsc.get('_date') or '—'}）】点击 {g_clicks:,} · 曝光 {g_impr:,}"]
+    gsc_age = 0.0
+    try:
+        gsc_age = (now_ts - (RUN_DIR / "local-dev/Output/Data Ingestion/gsc-full.json").stat().st_mtime) / 86400
+        if gsc_age > 7:
+            L.append(f"  ⚠ GSC 数据已 {int(gsc_age)} 天未更新，流量数字可能失真。")
+    except Exception:
+        pass
+    for p in top3:
+        L.append(f"  · {p.get('clicks', 0)} clicks · {p.get('impr', 0)} impr · {p.get('url', '')[:70]}")
+
     orders = [o for o in pay_orders() if (o.get("created") or "").startswith(today)]
     conv_n = sum(1 for o in orders if o.get("status") in ("paid", "delivered"))
     conv_amt = sum(float(o.get("amount") or 0) for o in orders if o.get("status") in ("paid", "delivered"))
-    L = [f"MFlow {'晨报' if morning else '晚报'} · {today} {datetime.now().strftime('%H:%M')}", ""]
-    L.append("【正在执行】")
-    L.append(f"批量任务 {len(running_b)} 个")
-    for t in running_b[:5]:
-        L.append("  · " + (t.get("title") or t.get("id") or ""))
-    L.append(f"剧本执行 {len(running_p)} 个")
-    for r in running_p[:5]:
-        L.append("  · " + (r.get("title") or r.get("id") or ""))
-    L.append("")
-    L.append(f"【今日任务】新建 {len(my)} 个 · 完成 {done_n} · 失败 {fail_n} · 待确认 {len(wait)} 个")
-    for t in my[:8]:
-        L.append(f"  · [{t.get('status')}] {(t.get('title') or t.get('id') or '')}")
-    for t in wait[:5]:
-        L.append(f"  · ⏳ 待确认：{(t.get('title') or t.get('id') or '')}（{((t.get('stats') or {}).get('skipped') or 0)} 项）")
-    L.append("")
-    L.append(f"【Token 消耗】今日 {st['tokens']:,} tokens · ¥{st['cost']:.2f} / 预算 ¥{lim:.2f}"
-             + (f"（单日加额中）" if budget_cfg().get("override", {}).get("date") == today else ""))
-    for p, c in sorted((st.get("profiles") or {}).items(), key=lambda kv: -kv[1]):
-        L.append(f"  · {p}: ¥{c:.2f}")
-    L.append("")
-    L.append(f"【流量（GSC Top20 · 数据日期 {gsc.get('_date') or '—'}）】点击 {g_clicks:,} · 曝光 {g_impr:,}")
-    for p in top3:
-        L.append(f"  · {p.get('clicks', 0)} clicks · {p.get('impr', 0)} impr · {p.get('url', '')[:70]}")
-    L.append("")
-    L.append(f"【转化】今日订单 {len(orders)} 笔 · 成交 {conv_n} 笔 · 金额 {conv_amt:.2f}")
+    L += ["", f"【转化】今日订单 {len(orders)} 笔 · 成交 {conv_n} 笔 · 金额 {conv_amt:.2f}"]
     for o in orders[:5]:
         L.append(f"  · [{o.get('status')}] {o.get('product_id')} ¥{o.get('amount')} @ {o.get('created', '')[:16]}")
-    if not is_workday():
-        L.append("")
-        L.append("（今日为周末/节假日，定时任务已停跑；本邮件照常发送）")
-    subject = f"[MFlow] {'晨报' if morning else '晚报'} {today} · 任务 {len(my)} · 消耗 ¥{st['cost']:.2f}"
-    body = "\n".join(L)
-    sent = []
+
+    site_url = os.environ.get("MFLOW_SITE_URL", "").strip()
+    L += ["", "— MFlow 工作台自动生成；任务明细可在任务中心按 ID 查看。"
+          + (f" {site_url}" if site_url else "")]
+
+    subject = (f"[MFlow] {word} {today} · 需处理 {action_n} · 在跑 {active_n}"
+               f" · 24h 产出 {output_items} 页")
+    ctx = {"now": now, "morning": morning, "word": word, "today": today,
+           "active_n": active_n, "queue_n": queue_n, "action_n": action_n, "actions": actions,
+           "blocked_n": blocked_n, "window_open": window_open, "window_text": window_text,
+           "worker_ok": worker_ok, "idle_txt": idle_txt, "blocked_now": blocked_now,
+           "running_b": running_b, "running_r": running_r, "running_loops": running_loops,
+           "queued_b": queued_b, "paused_b": paused_b, "queued_r": queued_r,
+           "wait_confirm": wait_confirm, "paused_night": paused_night,
+           "repair_recent": repair_recent, "rewrite_recent": rewrite_recent,
+           "qa_recent": qa_recent, "output_recent": output_recent,
+           "output_items": output_items, "quality_warn": quality_warn,
+           "preview_recent": preview_recent, "recent_retried": recent_retried,
+           "fix_7d": fix_7d, "failed_r_all": failed_r_all, "history_r": history_r,
+           "hist_kinds": hist_kinds,
+           "issue_b": issue_b, "recent_failed_r": recent_failed_r,
+           "st": st, "lim": lim, "gsc": gsc, "pages": pages,
+           "g_clicks": g_clicks, "g_impr": g_impr, "gsc_age": gsc_age,
+           "top3": top3, "orders": orders, "conv_n": conv_n, "conv_amt": conv_amt,
+           "evs": evs, "site_url": site_url}
+    html_body = _render_ops_html(ctx)
+    return {"subject": subject, "body": "\n".join(L), "html": html_body,
+            "actions": actions,
+            "counts": {"running": active_n, "queued": queue_n,
+                       "fixed_batches": len(fix_recent), "blocked": blocked_n,
+                       "action_n": action_n},
+            "window": window_text}
+
+
+
+def _render_ops_html(ctx):
+    """HTML 版晨晚报：先重点、再执行/产出、最后才是数据；兼容邮件客户端。"""
+    h = lambda x: html_escape(str(x or ""), quote=True)
+    now = ctx["now"]
+    word = ctx["word"]
+    date_s = f"{now:%Y-%m-%d}"
+    weekday = _WEEKDAYS[now.weekday()]
+    active_n, queue_n, action_n = ctx["active_n"], ctx["queue_n"], ctx["action_n"]
+    actions = ctx["actions"]
+    output_items = ctx["output_items"]
+    quality_warn = ctx["quality_warn"]
+    running_b, running_r, running_loops = ctx["running_b"], ctx["running_r"], ctx["running_loops"]
+    paused_b, queued_b, wait_confirm = ctx["paused_b"], ctx["queued_b"], ctx["wait_confirm"]
+    st, lim = ctx["st"], ctx["lim"]
+
+    INK, MUTED, LINE, SOFT = "#0f172a", "#64748b", "#e2e8f0", "#f8fafc"
+    BLUE, BLUE_BG, BLUE_LINE = "#2563eb", "#eff6ff", "#bfdbfe"
+    GREEN, GREEN_BG, GREEN_LINE = "#059669", "#ecfdf5", "#a7f3d0"
+    AMBER, AMBER_BG, AMBER_LINE = "#b45309", "#fffbeb", "#fde68a"
+    RED, RED_BG, RED_LINE = "#b91c1c", "#fef2f2", "#fecaca"
+    SLATE, SLATE_BG = "#475569", "#f1f5f9"
+
+    def pill(text, fg, bg):
+        return (f'<span style="display:inline-block;background:{bg};color:{fg};border-radius:999px;'
+                f'padding:4px 10px;font-size:11px;font-weight:700;white-space:nowrap;">{h(text)}</span>')
+
+    def kpi(label, value, sub, fg, bg, border):
+        val = f"{int(value):,}" if isinstance(value, int) else h(value)
+        return (f'<td class="kpi" width="25%" style="padding:0 5px 10px;">'
+                f'<div style="background:{bg};border:1px solid {border};border-radius:14px;padding:13px 12px;">'
+                f'<div style="font-size:11px;color:{fg};font-weight:700;letter-spacing:.5px;">{h(label)}</div>'
+                f'<div style="font-size:26px;line-height:1.2;color:{fg};font-weight:700;margin-top:4px;">{val}</div>'
+                f'<div style="font-size:11px;color:{fg};opacity:.75;margin-top:1px;">{h(sub)}</div>'
+                f'</div></td>')
+
+    def section(title, subtitle="", accent=BLUE):
+        sub = (f'<td align="right" style="font-size:12px;color:{MUTED};padding-left:10px;">{h(subtitle)}</td>'
+               if subtitle else "")
+        return (f'<tr><td class="px" style="padding:26px 32px 0;">'
+                f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
+                f'<td style="font-size:12px;color:{accent};font-weight:700;letter-spacing:1.5px;">{h(title)}</td>'
+                f'{sub}</tr></table></td></tr>')
+
+    def empty(text):
+        return (f'<tr><td class="px" style="padding:12px 32px 0;">'
+                f'<div style="background:{SOFT};border:1px dashed {LINE};border-radius:12px;'
+                f'padding:15px 16px;color:{MUTED};font-size:13px;line-height:1.7;">{text}</div></td></tr>')
+
+    def progress(pct, color, height=8):
+        pct = max(2, min(100, int(pct or 0)))
+        return (f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" '
+                f'style="background:#e2e8f0;border-radius:999px;height:{height}px;">'
+                f'<tr><td width="{pct}%" style="background:{color};height:{height}px;border-radius:999px;'
+                f'font-size:0;line-height:0;">&nbsp;</td>'
+                f'<td style="font-size:0;line-height:0;">&nbsp;</td></tr></table>')
+
+    # 顶部状态与 hero
+    if action_n:
+        status_label, status_fg, status_bg = f"{action_n} 项待处理", RED, RED_BG
+    elif active_n:
+        status_label, status_fg, status_bg = "执行中", GREEN, GREEN_BG
+    elif ctx["window_open"]:
+        status_label, status_fg, status_bg = "窗口开放", BLUE, BLUE_BG
+    else:
+        status_label, status_fg, status_bg = "等待窗口", AMBER, AMBER_BG
+
+    if actions:
+        first = actions[0]
+        hero_color = RED if first["level"] in ("critical", "error") else (AMBER if first["level"] == "warn" else BLUE)
+        hero_bg = RED_BG if hero_color == RED else (AMBER_BG if hero_color == AMBER else BLUE_BG)
+        hero_border = RED_LINE if hero_color == RED else (AMBER_LINE if hero_color == AMBER else BLUE_LINE)
+        hero_eyebrow = "本轮重点 · 需要你决定"
+        hero_title = first["title"]
+        hero_sub = first["detail"] + (f" 另有 {len(actions) - 1} 项待处理。" if len(actions) > 1 else "")
+    elif active_n:
+        hero_color, hero_bg, hero_border = GREEN, GREEN_BG, GREEN_LINE
+        hero_eyebrow = "本轮重点 · 正在推进"
+        hero_title = f"{active_n} 个任务正在执行"
+        hero_sub = f"队列里还有 {queue_n} 个；近 24h 已产出 {output_items} 页。"
+    elif output_items:
+        hero_color, hero_bg, hero_border = BLUE, BLUE_BG, BLUE_LINE
+        hero_eyebrow = "本轮重点 · 进展"
+        hero_title = f"近 24h 完成 {output_items} 页"
+        hero_sub = f"当前没有任务在跑；{h(ctx['window_text'])}。"
+    else:
+        hero_color, hero_bg, hero_border = SLATE, SLATE_BG, LINE
+        hero_eyebrow = "运行状态"
+        hero_title = "当前没有任务在跑"
+        hero_sub = f"{h(ctx['window_text'])}；队列 {queue_n} 个，属正常等待。" if queue_n else "队列为空。"
+
+    header = f"""
+<tr><td class="px" style="background:{INK};padding:30px 32px 24px;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+    <td>
+      <div style="font-size:11px;letter-spacing:2px;color:#93c5fd;font-weight:700;">MFLOW · DAILY OPERATIONS</div>
+      <div class="hdr-title" style="font-size:27px;line-height:1.25;color:#ffffff;font-weight:700;margin-top:8px;">{h(word)}
+        <span style="font-size:15px;color:#cbd5e1;font-weight:400;">{date_s} · {weekday}</span>
+      </div>
+    </td>
+    <td class="status-cell" align="right" valign="top" width="150">
+      <span style="display:inline-block;background:{status_bg};color:{status_fg};border-radius:999px;padding:8px 13px;font-size:12px;font-weight:700;white-space:nowrap;">{h(status_label)}</span>
+    </td>
+  </tr></table>
+</td></tr>
+<tr><td style="height:4px;background:{status_fg};font-size:0;line-height:0;">&nbsp;</td></tr>
+"""
+    hero = f"""
+<tr><td class="px" style="padding:24px 32px 0;">
+  <div style="background:{hero_bg};border:1px solid {hero_border};border-left:5px solid {hero_color};border-radius:14px;padding:18px 20px;">
+    <div style="font-size:11px;letter-spacing:1.5px;color:{hero_color};font-weight:700;">{h(hero_eyebrow)}</div>
+    <div style="font-size:20px;line-height:1.45;color:{INK};font-weight:700;margin-top:6px;">{h(hero_title)}</div>
+    <div style="font-size:13px;line-height:1.7;color:#475569;margin-top:6px;">{h(hero_sub)}</div>
+  </div>
+</td></tr>
+"""
+    kpi_cells = (kpi("在跑", active_n, "个任务", GREEN, GREEN_BG, GREEN_LINE)
+                 + kpi("排队", queue_n, "个等待", AMBER, AMBER_BG, AMBER_LINE)
+                 + kpi("24h 产出", output_items, "页", BLUE, BLUE_BG, BLUE_LINE)
+                 + kpi("待你处理", action_n, "项", RED if action_n else SLATE,
+                       RED_BG if action_n else SLATE_BG, RED_LINE if action_n else LINE))
+    kpis = f"""
+<tr><td class="px" style="padding:16px 27px 0;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>{kpi_cells}</tr></table>
+</td></tr>
+"""
+
+    # 行动项
+    if actions:
+        prio = []
+        for a in actions[:3]:
+            color = RED if a["level"] in ("critical", "error") else (AMBER if a["level"] == "warn" else BLUE)
+            bg = RED_BG if color == RED else (AMBER_BG if color == AMBER else BLUE_BG)
+            prio.append(
+                f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" '
+                f'style="background:#ffffff;border:1px solid {LINE};border-left:4px solid {color};'
+                f'border-radius:12px;margin-bottom:8px;"><tr><td style="padding:12px 14px;">'
+                f'<div style="font-size:14px;font-weight:700;color:{INK};line-height:1.5;">{h(a["title"])}</div>'
+                f'<div style="font-size:12px;color:#475569;line-height:1.65;margin-top:3px;">{h(a["detail"])}</div>'
+                f'<div style="font-size:11px;color:{color};font-weight:700;margin-top:6px;">{h(a.get("action") or "")} →</div>'
+                f'</td></tr></table>')
+        prio_html = "".join(prio)
+    else:
+        prio_html = (f'<div style="background:{GREEN_BG};border:1px solid {GREEN_LINE};border-radius:12px;'
+                     f'padding:14px 16px;color:{GREEN};font-size:13px;font-weight:600;">'
+                     f'✓ 本轮没有需要你处理的阻断项。</div>')
+    priorities = f"""
+<tr><td class="px" style="padding:24px 32px 0;">
+  <div style="font-size:12px;color:{MUTED};font-weight:700;letter-spacing:1.5px;margin-bottom:8px;">需要你决定</div>
+  {prio_html}
+</td></tr>
+"""
+
+    # 正在跑
+    run_cards = []
+    for t in running_b[:4]:
+        r = _batch_rollup(t, now.timestamp())
+        pct = r["pct"]
+        bits = [f'{r["done"]}/{r["total"]} 完成']
+        if r["failed"]:
+            bits.append(f'失败 {r["failed"]}')
+        if r["retries"]:
+            bits.append(f'重试 {r["retries"]}')
+        if r["eta"] is not None:
+            bits.append(f'预计剩 {_fmt_duration(r["eta"])}')
+        cur = ("当前：" + "、".join(r["current"])) if r["current"] else ""
+        run_cards.append(
+            f'<div style="border:1px solid {LINE};border-radius:14px;padding:15px 16px;margin-bottom:10px;background:#ffffff;">'
+            f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
+            f'<td><div style="font-size:14px;font-weight:700;color:{INK};">{h(t.get("title") or t.get("id"))}</div>'
+            f'<div style="font-size:11px;color:{MUTED};margin-top:3px;">{h(_BATCH_TYPE_LABELS.get(str(t.get("type")), t.get("type")))} · '
+            f'{"预演" if t.get("dry_run") else "真实写入"} · {h(t.get("created_by") or "—")}</div></td>'
+            f'<td align="right" width="70"><span style="font-size:20px;font-weight:700;color:{BLUE};">{pct}%</span></td>'
+            f'</tr></table>'
+            f'<div style="margin:10px 0 8px;">{progress(pct, BLUE)}</div>'
+            f'<div style="font-size:12px;color:#475569;">{" · ".join(bits)}</div>'
+            f'<div style="font-size:11px;color:{MUTED};margin-top:5px;">{h(cur or "")}{" · " if cur else ""}ID {h(t.get("id"))} · 心跳 {h(_fmt_ago(r["last_ts"], now.timestamp()))}</div>'
+            f'</div>')
+    for r in running_r[:3]:
+        rr = _run_rollup(r)
+        cur = rr["current"] or {}
+        run_cards.append(
+            f'<div style="border:1px solid {LINE};border-radius:14px;padding:13px 16px;margin-bottom:10px;background:#ffffff;">'
+            f'<div style="font-size:14px;font-weight:700;color:{INK};">▶ {h(r.get("title") or r.get("id"))}</div>'
+            f'<div style="font-size:12px;color:#475569;margin-top:4px;">{rr["done"]}/{rr["total"]} 步 · '
+            f'当前 {h(cur.get("name") or "—")} · 已跑 {h(_fmt_duration(rr["elapsed"]))}</div>'
+            f'<div style="font-size:11px;color:{MUTED};margin-top:3px;">{h(str(cur.get("detail") or "")[:110])}</div>'
+            f'</div>')
+    for x in running_loops[:2]:
+        run_cards.append(
+            f'<div style="border:1px solid {LINE};border-radius:14px;padding:12px 16px;margin-bottom:10px;background:#ffffff;'
+            f'font-size:13px;color:{INK};">↻ {h(x.get("proj"))}/{h(x.get("item_id") or x.get("id"))} · '
+            f'第 {int(x.get("round") or 0) + 1}/{h(x.get("max_rounds") or 3)} 轮 · {int(x.get("tokens_used") or 0):,} tokens</div>')
+    if run_cards:
+        running_html = section("正在跑", f"{active_n} 个任务", GREEN) + \
+            f'<tr><td class="px" style="padding:12px 32px 0;">{"".join(run_cards)}</td></tr>'
+    else:
+        running_html = section("正在跑", "无", GREEN) + empty(
+            f'<b style="color:{INK};">当前没有任务在跑</b><br>{h(ctx["window_text"])}；窗口外不领取，属正常等待。')
+
+    # 队列
+    reasons = Counter(str(t.get("pause_reason") or "manual") for t in paused_b)
+    chips = [f'{_paused_label(r)} {n}' for r, n in reasons.most_common()]
+    if queued_b:
+        chips.append(f"等待执行器 {len(queued_b)}")
+    if wait_confirm:
+        chips.append(f"预演待确认 {len(wait_confirm)}")
+    chips_html = "".join(
+        f'<span style="display:inline-block;background:{AMBER_BG};color:{AMBER};border:1px solid {AMBER_LINE};'
+        f'border-radius:999px;padding:5px 10px;font-size:11px;font-weight:600;margin:0 6px 6px 0;">{h(c)}</span>'
+        for c in chips)
+    queue_examples = [t.get("title") or t.get("id") or "" for t in (paused_b + queued_b)[:2]]
+    queue_html = section("队列", f"{queue_n} 个等待", AMBER) + f"""
+<tr><td class="px" style="padding:12px 32px 0;">
+  <div style="border:1px solid {LINE};border-radius:14px;padding:16px 18px;background:#ffffff;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+      <td style="font-size:34px;font-weight:700;color:{AMBER};line-height:1;">{queue_n}</td>
+      <td style="font-size:13px;color:#475569;padding-left:14px;line-height:1.6;">个任务在队列中<br>
+        <span style="color:{MUTED};font-size:12px;">{h(ctx["window_text"])}</span></td>
+    </tr></table>
+    <div style="margin-top:12px;">{chips_html or f'<span style="font-size:12px;color:{MUTED};">无暂停/排队任务</span>'}</div>
+    <div style="font-size:11px;color:{MUTED};margin-top:6px;">如：{h("；".join(x[:50] for x in queue_examples) or "—")}</div>
+  </div>
+</td></tr>
+"""
+
+    # 24h 产出
+    output_cards = []
+    for t in ctx["output_recent"][:4]:
+        r = _batch_rollup(t)
+        is_repair = t.get("type") in ("field_patch", "asset_replace")
+        label = "内容修复" if is_repair else "改稿"
+        color = GREEN if is_repair else BLUE
+        bg = GREEN_BG if is_repair else BLUE_BG
+        line = GREEN_LINE if is_repair else BLUE_LINE
+        warn_n = _batch_warn_pages(t)
+        meta = "已写入生产" if is_repair else "已产出"
+        if t.get("dry_run"):
+            meta = "预演未写库"
+        warn_badge = (f'<span style="color:{AMBER};font-weight:700;"> · {warn_n} 页门禁告警</span>'
+                      if warn_n else f'<span style="color:{GREEN};font-weight:700;"> · 无告警</span>')
+        when = str(t.get("finished") or t.get("created") or "")[5:16]
+        output_cards.append(
+            f'<td class="two" width="50%" valign="top" style="padding:0 5px 10px;">'
+            f'<div style="border:1px solid {LINE};border-top:4px solid {color};border-radius:14px;padding:14px 15px;background:#ffffff;">'
+            f'<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>'
+            f'<td><span style="display:inline-block;background:{bg};color:{color};border:1px solid {line};border-radius:999px;padding:3px 9px;font-size:10px;font-weight:700;">{h(label)}</span></td>'
+            f'<td align="right" style="font-size:10px;color:{MUTED};">{h(when)}</td>'
+            f'</tr></table>'
+            f'<div style="font-size:13px;font-weight:700;color:{INK};line-height:1.45;margin-top:8px;min-height:38px;">{h(t.get("title") or t.get("id"))}</div>'
+            f'<div style="font-size:26px;font-weight:700;color:{color};line-height:1.2;margin-top:4px;">{r["done"]}<span style="font-size:12px;font-weight:400;color:{MUTED};"> 页</span></div>'
+            f'<div style="font-size:11px;color:{MUTED};margin-top:3px;">{h(meta)}{warn_badge}</div>'
+            f'</div></td>')
+    if output_cards:
+        rows = []
+        for i in range(0, len(output_cards), 2):
+            rows.append(f'<tr>{"".join(output_cards[i:i + 2])}</tr>')
+        subtitle = f'24h 完成 {output_items} 页' + (f' · {quality_warn} 页告警' if quality_warn else '')
+        output_html = section("24h 产出", subtitle, BLUE) + \
+            f'<tr><td class="px" style="padding:12px 27px 0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">{"".join(rows)}</table></td></tr>'
+    else:
+        output_html = section("24h 产出", "无", BLUE) + empty("近 24h 没有新的改稿/修复完成。")
+
+    # 预演 / 重试 / 自动处置
+    notes = []
+    if ctx["preview_recent"]:
+        notes.append(f'另有 {len(ctx["preview_recent"])} 个预演批（未写库）')
+    if ctx["recent_retried"]:
+        notes.append(f'重试后修复 {len(ctx["recent_retried"])} 项')
+    if ctx["evs"]:
+        notes.append("自动处置：" + "；".join(str(e.get("text") or "")[:40] for e in ctx["evs"][-2:]))
+    notes_html = ""
+    if notes:
+        notes_html = (f'<tr><td class="px" style="padding:8px 32px 0;">'
+                      f'<div style="font-size:11px;color:{MUTED};line-height:1.7;">{h(" · ".join(notes))}</div></td></tr>')
+
+    # 历史失败
+    failed_r = ctx.get("history_r") or []
+    hist_html = ""
+    if failed_r:
+        hk = ctx["hist_kinds"]
+        hist_html = section("历史问题", f"{len(failed_r)} 个剧本失败", MUTED) + f"""
+<tr><td class="px" style="padding:12px 32px 0;">
+  <div style="background:{SOFT};border:1px solid {LINE};border-radius:12px;padding:13px 15px;font-size:12px;color:#475569;line-height:1.7;">
+    <b style="color:{INK};">{len(failed_r)} 个历史剧本失败</b>
+    <span style="color:{MUTED};"> · {hk.get("noop", 0)} 个条件不满足（非故障） · {hk.get("data", 0)} 个需补数据 · {hk.get("real", 0)} 个待排查</span>
+    <div style="color:{MUTED};margin-top:3px;">多数是「范围内无对象 / 无 patch」，不是执行故障；需要时可到任务中心按 ID 重跑。</div>
+  </div>
+</td></tr>
+"""
+
+    # 数据卡
+    cost = float(st.get("cost") or 0)
+    budget_pct = min(100, int(cost / lim * 100)) if lim else 0
+    budget_color = RED if lim and cost >= lim else BLUE
+    gsc_age = int(ctx.get("gsc_age") or 0)
+    data_cells = []
+    data_cells.append(
+        f'<td class="kpi" width="33.33%" valign="top" style="padding:0 5px 10px;">'
+        f'<div style="border:1px solid {LINE};border-radius:14px;padding:13px 14px;background:#ffffff;">'
+        f'<div style="font-size:11px;color:{MUTED};font-weight:700;">预算 / TOKEN</div>'
+        f'<div style="font-size:22px;font-weight:700;color:{budget_color};margin-top:4px;">¥{cost:.2f}</div>'
+        f'<div style="font-size:11px;color:{MUTED};margin-top:2px;">预算 ¥{lim:.2f} · {int(st.get("tokens") or 0):,} tokens</div>'
+        f'<div style="margin-top:8px;">{progress(budget_pct, budget_color, 6)}</div>'
+        f'</div></td>')
+    data_cells.append(
+        f'<td class="kpi" width="33.33%" valign="top" style="padding:0 5px 10px;">'
+        f'<div style="border:1px solid {LINE};border-radius:14px;padding:13px 14px;background:#ffffff;">'
+        f'<div style="font-size:11px;color:{MUTED};font-weight:700;">自然流量</div>'
+        f'<div style="font-size:22px;font-weight:700;color:{INK};margin-top:4px;">{int(ctx["g_clicks"]):,}</div>'
+        f'<div style="font-size:11px;color:{MUTED};margin-top:2px;">点击 · {int(ctx["g_impr"]):,} 曝光</div>'
+        + (f'<div style="font-size:10px;color:{AMBER};font-weight:700;margin-top:6px;">数据 {gsc_age} 天未更新</div>'
+           if gsc_age > 7 else "")
+        + f'</div></td>')
+    data_cells.append(
+        f'<td class="kpi" width="33.33%" valign="top" style="padding:0 5px 10px;">'
+        f'<div style="border:1px solid {LINE};border-radius:14px;padding:13px 14px;background:#ffffff;">'
+        f'<div style="font-size:11px;color:{MUTED};font-weight:700;">今日转化</div>'
+        f'<div style="font-size:22px;font-weight:700;color:{INK};margin-top:4px;">{ctx["conv_n"]} 单</div>'
+        f'<div style="font-size:11px;color:{MUTED};margin-top:2px;">订单 {len(ctx["orders"])} 笔 · ¥{ctx["conv_amt"]:.2f}</div>'
+        f'</div></td>')
+    data_html = section("运行数据", "次要指标", MUTED) + \
+        f'<tr><td class="px" style="padding:12px 27px 0;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>{"".join(data_cells)}</tr></table></td></tr>'
+
+    site_url = ctx.get("site_url") or ""
+    footer_link = (f'<a href="{h(site_url)}" style="color:{BLUE};text-decoration:none;font-weight:600;">打开工作台 →</a>'
+                   if site_url else "")
+    footer = f"""
+<tr><td class="px" style="padding:26px 32px 30px;">
+  <div style="border-top:1px solid {LINE};padding-top:14px;font-size:11px;color:{MUTED};line-height:1.8;text-align:center;">
+    MFlow 工作台自动生成 · 任务明细可按 ID 在任务中心查看<br>{footer_link}
+  </div>
+</td></tr>
+"""
+    preheader = f"{action_n} 项待处理 · 在跑 {active_n} · 24h 产出 {output_items} 页"
+
+    return f"""<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<title>{h(word)} {date_s}</title>
+<style>
+@media only screen and (max-width:620px) {{
+  .wrap {{ width:100% !important; }}
+  .px {{ padding-left:20px !important; padding-right:20px !important; }}
+  .hdr-title {{ font-size:22px !important; }}
+  .status-cell {{ display:block !important; width:100% !important; padding-top:12px !important; text-align:left !important; }}
+  .kpi {{ display:inline-block !important; width:50% !important; padding:0 4px 10px 4px !important; box-sizing:border-box !important; }}
+  .two {{ display:block !important; width:100% !important; padding:0 0 10px 0 !important; }}
+}}
+</style>
+</head>
+<body style="margin:0;padding:0;background:#eef2f7;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:{INK};">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent;">{h(preheader)}</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#eef2f7;">
+<tr><td align="center" style="padding:26px 10px;">
+<table role="presentation" class="wrap" width="680" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:680px;background:#ffffff;border-radius:18px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,.08);">
+{header}
+{hero}
+{kpis}
+{priorities}
+{running_html}
+{queue_html}
+{output_html}
+{notes_html}
+{hist_html}
+{data_html}
+{footer}
+</table>
+</td></tr>
+</table>
+</body>
+</html>"""
+
+
+def ops_report_email(morning=True):
+    """清晨/傍晚日报：在跑什么、修好了什么、还卡在哪里，其次才是 token/流量/转化。"""
+    rep = build_ops_report(morning=morning)
+    subject, body = rep["subject"], rep["body"]
+    sent, failed = [], []
     for to in admin_emails():
         try:
-            email_send(to, subject, body)
-            sent.append(to)
+            ok, info = email_send(to, subject, body, html_body=rep.get("html"))
+            if ok:
+                sent.append(to)
+            else:
+                failed.append(f"{to}: {info}")
         except Exception as e:
+            failed.append(f"{to}: {e}")
             print(f"[ops-report] email {to} failed: {e}", file=sys.stderr)
+    feishu_ok = False
     try:
-        notify_send(subject, body[:1500])
+        feishu_ok = bool(notify_send(subject, body[:1500]))
     except Exception:
         pass
-    return {"ok": bool(sent), "sent": sent, "subject": subject}
+    return {"ok": bool(sent), "sent": sent, "failed": failed, "feishu": feishu_ok,
+            "subject": subject, "body": body, "html": rep.get("html")}
 
 
 def _ops_report_triggers():
@@ -683,6 +1758,8 @@ def night_window_enforce():
         batch_save(t)
         stopped.append(t["id"])
     if stopped:
+        _ops_event("night_cutoff", f"06:00 夜间截止，暂停 {len(stopped)} 个非重要任务",
+                   count=len(stopped), extra={"tasks": stopped[:30]})
         try:
             notify_send("MFlow · 夜间窗口截止", "已暂停非重要任务：" + "、".join(stopped))
         except Exception:
@@ -695,6 +1772,7 @@ def _autoresume_paused():
     now = datetime.now()
     if not is_workday(now) or not (0 <= now.hour < 6):
         return
+    resumed = []
     for f2 in BATCH_DIR.glob("batch-*.json"):
         t = read_json(f2, {})
         if not t or t.get("status") != "paused":
@@ -710,6 +1788,10 @@ def _autoresume_paused():
         t["pause_reason"] = ""
         _batch_log(t, "跨日自动恢复（进入执行窗口）")
         batch_save(t)
+        resumed.append(t["id"])
+    if resumed:
+        _ops_event("autoresume", f"进入执行窗口，自动恢复 {len(resumed)} 个任务",
+                   count=len(resumed), extra={"tasks": resumed[:30]})
 
 
 def user_email(username):
@@ -731,15 +1813,27 @@ def user_online(username):
     return False
 
 
-def _sendmail_send(to, subject, body, sender="mflow@nownexts.com"):
+def _mail_message(subject, body, html_body=None):
+    """纯文本 + HTML 的 multipart/alternative；无 HTML 时保持原纯文本格式。"""
+    from email.mime.text import MIMEText
+    from email.mime.multipart import MIMEMultipart
+    from email.header import Header
+    if html_body:
+        msg = MIMEMultipart("alternative")
+        msg.attach(MIMEText(body, "plain", "utf-8"))
+        msg.attach(MIMEText(html_body, "html", "utf-8"))
+    else:
+        msg = MIMEText(body, "plain", "utf-8")
+    msg["Subject"] = Header(subject, "utf-8")
+    return msg
+
+
+def _sendmail_send(to, subject, body, sender="mflow@nownexts.com", html_body=None):
     """本机 postfix/sendmail 直发（无需凭证）。头走 RFC2047，避免 SMTPUTF8 被远端 MX 拒收。"""
     if not env_guard.require_live_write(f"sendmail 发信 → {to}"):
         return True, "开发环境：已跳过发送（dry-run）"
     try:
-        from email.mime.text import MIMEText
-        from email.header import Header
-        msg = MIMEText(body, "plain", "utf-8")
-        msg["Subject"] = Header(subject, "utf-8")
+        msg = _mail_message(subject, body, html_body)
         msg["From"] = sender
         msg["To"] = to
         pr = subprocess.run(["/usr/sbin/sendmail", "-t", "-i", "-f", sender],
@@ -751,8 +1845,8 @@ def _sendmail_send(to, subject, body, sender="mflow@nownexts.com"):
         return False, str(e)[:160]
 
 
-def email_send(to, subject, body):
-    """发送邮件：SMTP（若配置）否则本机 sendmail（无需凭证）。"""
+def email_send(to, subject, body, html_body=None):
+    """发送邮件：SMTP（若配置）否则本机 sendmail（无需凭证）；可带 HTML 版。"""
     cfg = email_cfg()
     to = to or cfg.get("default_to") or ""
     if not to:
@@ -760,15 +1854,12 @@ def email_send(to, subject, body):
     # 未配置 SMTP 时，走本机 sendmail
     if not (cfg.get("host") and cfg.get("user")):
         if os.path.exists("/usr/sbin/sendmail"):
-            return _sendmail_send(to, subject, body, cfg.get("sender") or "mflow@nownexts.com")
+            return _sendmail_send(to, subject, body, cfg.get("sender") or "mflow@nownexts.com", html_body)
         return False, "既未配置 SMTP，也无本机 sendmail"
     try:
         import smtplib
-        from email.mime.text import MIMEText
-        from email.header import Header
         sender = cfg.get("sender") or cfg.get("user")
-        msg = MIMEText(body, "plain", "utf-8")
-        msg["Subject"] = Header(subject, "utf-8")
+        msg = _mail_message(subject, body, html_body)
         msg["From"] = sender
         msg["To"] = to
         port = int(cfg.get("port") or (465 if cfg.get("tls") == "ssl" else 587))
@@ -1576,11 +2667,11 @@ GEN_TYPES = {
 }
 LANGS = ["zh", "en", "ja", "ko", "de", "fr", "pt", "ru", "it", "zh-TW"]
 
-CONTENT_BUDGET = """数量预算（RULES-70，超限即废稿）：
-- 字数：Blog 1200-1800（绝不超 2160）；落地页文案 600-1000
-- H2 章节 4-7 个；FAQ 3-5 条；不得为凑结构拆出空章节
-- 每千字 1-3 个数据点；同一数据不重复出现；外部来源 2-5 条（必须完整 URL）
-- 列表块 ≤4 处，禁止连续两个列表块；单段 ≤300 字符；禁止连续 3 段同句式开头
+CONTENT_BUDGET = """数量预算（RULES-70 v2.0，超限即废稿）：
+- 字数：Blog 一律长文铁律（正文 ≥7,500 词级，按 Lane 分节生成，单节 ≤3,000 词）；落地页文案 600-1000
+- 长文 Blog：H2 ≤14、FAQ ≤8；落地页 H2 4-7、FAQ 3-5；不得为凑结构拆出空章节
+- 数据点：每千字 1-3 个且每篇 ≥5；同一数据不重复出现；外部来源 2-5 条（必须完整 URL）
+- 列表块：全文 ≤4 处（长文连续列表项 ≤14），禁止连续两个列表块；单段 ≤300 字符；禁止连续 3 段同句式开头
 - 禁止：同义反复 / 复述式总结（综上所述）/ 模板过渡词堆砌（首先其次然后最后 ≥4 次）/ 形容词堆叠（强大而灵活）
 - 字数不足时优先删冗余，绝不补形容词；能删不扩"""
 
@@ -1878,12 +2969,12 @@ def gen_prompt(ctype, lang, topic, brief, feedback="", template=None, budget_pro
     if structure:
         spec = f"用{lang_name}写。{structure.replace('{TOPIC}', topic)}"
         if ctype == "blog":
-            spec += "\n全文 1200-1800 字。"
+            spec += "\nBlog 按长文铁律分节生成：本次调用只产出所分配的小节草稿，单节 ≤3,000 词（完整 Blog ≥7,500 词级，由 Lane 流程整合）。"
     elif ctype == "blog":
         spec = f"""用{lang_name}写一篇 Blog 文章，主题：{topic}。
 先定柱（自然呈现，不要出现"柱"字眼）：一句话立场（反共识的具体判断，不是中立综述）；一句话立场必须贯穿全文。
 结构：H1 标题（含数字或对立面）→ 导语（3-4 句，直接回答"读完你会知道/能做到什么"）→ 4-6 个 H2 章节（每章 ≥1 个具体场景、步骤或数字；章与章之间立场递进，不许平行罗列；每 2 章至少 1 处第一人称实测或踩坑细节）→ FAQ（3 条，问题来自真实搜索意图而非教科书式）→ 结尾行动建议（具体到下一步动作，可绑定场景化产品推荐，不吹捧）。
-全文 1200-1800 字。数据点必须有来源或标 [待考证]；禁止编造数字。"""
+字数按任务预算执行（长文铁律分节单节 ≤3,000 词；未指定预算的短文任务 1,200-1,800 字）。数据点必须有来源或标 [待考证]；禁止编造数字。"""
     else:
         page = ctype.split("-")[1]
         spec = f"""用{lang_name}写一个 {page.upper()} 类落地页的完整文案，主题：{topic}。
@@ -2484,12 +3575,16 @@ def batch_recover_orphans(max_idle_sec=360):
 
 
 def batch_revive_stale():
-    """把长时间无进展的 running 任务重置为 queued（未完成项回到 pending），让执行器重新接手。"""
+    """把长时间无进展的 running 任务重置为 queued（未完成项回到 pending），让执行器重新接手。
+
+    只处理 running：queued 本身就在等执行器，把它重置成 queued 是空操作；
+    以前把排队等窗口的任务也算「卡住」，导致自愈每 24 分钟重复「恢复 66 个」的噪音。
+    """
     revived = []
     for f in sorted(BATCH_DIR.glob("batch-*.json")):
         try:
             t = read_json(f, {}) or {}
-            if t.get("status") not in ("running", "queued"):
+            if t.get("status") != "running":
                 continue
             if time.time() - f.stat().st_mtime <= 900:
                 continue
@@ -2497,11 +3592,14 @@ def batch_revive_stale():
                 if it.get("status") == "running":
                     it["status"] = "pending"
             t["status"] = "queued"
-            _batch_log(t, "看板自检：检测到长时间无进展，已重置为排队（重新接手）")
+            _batch_log(t, "看板自检：检测到执行中断（>15 分钟无进展），已重置为排队（重新接手）")
             batch_save(t)
             revived.append(t["id"])
         except Exception:
             pass
+    if revived:
+        _ops_event("revive", f"恢复 {len(revived)} 个卡住任务", count=len(revived),
+                   extra={"tasks": revived[:20]})
     return {"revived": revived, "count": len(revived)}
 
 
@@ -2587,7 +3685,11 @@ def batch_retry_all(scope="task", tid="", proj=None):
             _batch_log(t, f"一键重试失败项：{n} 项")
             batch_save(t)
             done.append({"task": t["id"], "retried": n})
-    return {"ok": True, "retried": sum(x["retried"] for x in done), "tasks": done}
+    total_retried = sum(x["retried"] for x in done)
+    if total_retried:
+        _ops_event("retry", f"重试失败项 {total_retried} 项（{len(done)} 个任务）",
+                   count=total_retried, extra={"tasks": [x["task"] for x in done][:20]})
+    return {"ok": True, "retried": total_retried, "tasks": done}
 
 
 def batch_item_detail(tid, idx):
@@ -3782,23 +4884,35 @@ def _entities_index():
 # ===================== 收件箱：需要我处理的，集中一屏 =====================
 
 # ===================== 自愈：自检可安全修复项自动处理 =====================
-def _selfcheck_apply_fix(fix):
+def _selfcheck_apply_fix(fix, check_id="", source="auto"):
     """按 selfcheck 的 fix.action 执行安全修复。返回 (ok, msg)。"""
     act = str((fix or {}).get("action", ""))
     if not act.startswith("api:"):
         return False, "需人工"
     path = act.split(":", 1)[1]
+
+    def done(msg, count=1, log=True):
+        # revive/retry 由被调函数自己落事件，避免重复记账
+        if log and count:
+            _ops_event("selfheal", f"{check_id or act} → {msg}", count=count,
+                       extra={"action": act, "source": source})
+        return True, msg
+
     try:
         if path == "/api/breaker/reset":
-            breaker_reset("selfheal"); return True, "已解除熔断"
+            breaker_reset("selfheal"); return done("已解除熔断")
         if path == "/api/batch/revive_stale":
-            r = batch_revive_stale(); return True, f"已恢复 {r.get('count',0)} 个卡住任务"
+            r = batch_revive_stale()
+            n = int(r.get("count") or 0)
+            return done(f"已恢复 {n} 个卡住任务", n, log=False) if n else (False, "无卡住任务")
         if path == "/api/housekeeping/run":
-            housekeeping(dry_run=False); return True, "已运行维护"
+            housekeeping(dry_run=False); return done("已运行维护")
         if path == "/api/rag/build":
-            r = rag_build(); return True, f"已重建索引（{r.get('count')} 块）"
+            r = rag_build(); return done(f"已重建索引（{r.get('count')} 块）", int(r.get("count") or 1))
         if path == "/api/batch/retry_all":
-            r = batch_retry_all("all", "", DEFAULT_PROJECT); return True, f"已重试 {r.get('retried',0)} 项"
+            r = batch_retry_all("all", "", DEFAULT_PROJECT)
+            n = int(r.get("retried") or 0)
+            return done(f"已重试 {n} 项", n, log=False) if n else (False, "无失败项可重试")
     except Exception as e:
         return False, str(e)[:120]
     return False, "无可自动修复动作"
@@ -3813,7 +4927,7 @@ def selfcheck_autofix(proj=None, only_safe=True):
         if not str(fx.get("action", "")).startswith("api:"):
             skipped.append({"id": c["id"], "reason": "需人工处理"})
             continue
-        ok, msg = _selfcheck_apply_fix(fx)
+        ok, msg = _selfcheck_apply_fix(fx, c.get("id", ""), "manual")
         (done if ok else skipped).append({"id": c["id"], "title": c["title"], "result": msg})
     if done:
         try:
@@ -3838,7 +4952,7 @@ def selfheal_tick():
             allow = set(list(allow)) - {"/api/breaker/reset"}
         for c in safe:
             if (c.get("fix") or {}).get("action", "").split(":", 1)[1] in allow:
-                ok, msg = _selfcheck_apply_fix(c.get("fix"))
+                ok, msg = _selfcheck_apply_fix(c.get("fix"), c.get("id", ""), "auto")
                 if ok:
                     print(f"[selfheal] {c['id']} -> {msg}", file=sys.stderr)
     except Exception as e:
@@ -8162,12 +9276,12 @@ def selfcheck(proj=None):
     except Exception:
         pass
 
-    # 7) 卡住的任务
+    # 7) 卡住的任务（只看 running；queued 等执行窗口是正常状态，不算卡住）
     try:
         stale = []
         for f in BATCH_DIR.glob("batch-*.json"):
             t = read_json(f, {}) or {}
-            if t.get("status") in ("running", "queued"):
+            if t.get("status") == "running":
                 idle = time.time() - f.stat().st_mtime
                 if idle > 900:  # 15 分钟无进展
                     stale.append(t)

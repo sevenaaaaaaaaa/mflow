@@ -40,13 +40,15 @@ H2=$(grep -cE '^## ' "$FILE" || true)
 FAQ=$(grep -cE '^#{2,3} *(FAQ|常见问题|よくある)' "$FILE" || true)
 QH=$(grep -cE '^#{2,3} .*[?？]$' "$FILE" || true)
 
-# ① 字数上限（RULES-70：Blog 1200-1800，上限 +20% → 2160；落地页 600-1000 → 1200）
+# ① 字数上限（RULES-70 v2.0：Blog 已并轨长文 EN 7500→9000 词 / ZH 12000→14400 汉字 / JA ×1.8；落地页 600-1000 → 1200）
 echo "[1/6] 字数预算"
-if [[ "$TYPE" == "landing" ]]; then MAXW=1200; else MAXW=2160; fi
-if [[ "$LANG" == "ja" ]]; then MAXW=$((MAXW * 18 / 10)); fi   # ja 信息密度低，同信息量约 1.8 倍字符（基准为中文 RULES-70）
-if [[ "$PROFILE" == "longform" ]]; then H2MAX=14; FAQMAX=8; LISTMAX=14   # 长文 skill 豁免（须显式声明）
+if [[ "$TYPE" == "landing" ]]; then
+  MAXW=1200; H2MAX=7; FAQMAX=5; LISTMAX=12; UNIT=""
+else
+  # Blog 长文档（不再需要 --profile longform 显式声明）
+  H2MAX=14; FAQMAX=8; LISTMAX=14
   # Longform cap = floor x 1.2, counted the same way as the floor: body only (no frontmatter /
-  # HTML comments). EN: 7500 words -> 9000 words; ZH: 12000 Han chars -> 14400 Han chars.
+  # HTML comments). EN: 7500 words -> 9000 words; ZH: 12000 Han chars -> 14400 Han chars; JA: x1.8 -> 25920.
   read -r LF_WORDS LF_HAN < <("$PY3" - "$FILE" <<'PYEOF'
 import re, sys
 t = open(sys.argv[1], encoding="utf-8").read()
@@ -56,7 +58,8 @@ print(len(t.split()), len(re.findall(r"[一-鿿]", t)))
 PYEOF
 )
   if [[ "$LANG" == en* ]]; then CHARS="$LF_WORDS"; MAXW=9000; UNIT="词"; else CHARS="$LF_HAN"; MAXW=14400; UNIT="字"; fi
-else H2MAX=7; FAQMAX=5; LISTMAX=12; UNIT=""; fi
+  if [[ "$LANG" == ja* ]]; then CHARS=$((CHARS)); MAXW=25920; UNIT="字(ja)"; fi
+fi
 [[ "${MAXWORDS_OVERRIDE:-0}" -gt 0 ]] && MAXW="$MAXWORDS_OVERRIDE"
 if [[ "$CHARS" -gt "$MAXW" ]]; then
   err "字数 $CHARS > 上限 ${MAXW}${UNIT}（注水嫌疑：优先删冗余，勿扩写）"

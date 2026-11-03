@@ -18,7 +18,7 @@
 
 | 判据 | 默认（RULES-70） | 品牌覆盖字段 |
 |---|---|---|
-| 字数预算 | blog 1200–1800（max 2160）/ landing 600–1000 | `contentBudget.*` |
+| 字数预算 | blog 长文铁律（≥7,500 词级，上限 ×1.2）/ landing 600–1000 | `contentBudget.*` |
 | 长文铁律 | ≥7,500 词（Acme 生产线） | `contentBudget.blogLongform`（Globex=null 不启用） |
 | 语种表 | RULES-80 十语种 | `languages.*` |
 | FAQ/H2 数 | 3–5 / 4–7 | 通用（未品牌化） |
