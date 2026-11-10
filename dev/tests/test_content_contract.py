@@ -145,6 +145,19 @@ class TestMdToSections(unittest.TestCase):
         self.assertEqual(validate_sections(secs), [])
         self.assertEqual(registry_warnings(secs), [])
 
+    def test_no_60_300_truncation_and_cta_not_h1(self):
+        first = "This is a complete first paragraph. " * 16
+        h2s = "".join("## Section %d\n\nContent for section %d. \n\n" % (i, i) for i in range(1, 7))
+        body = "# A headline with markdown\n\n" + first + "\n\n" + h2s
+        secs = md_to_sections(body, title="A headline that must not become a CTA",
+                              cover_url="https://cdn.example.com/c.jpg", cover_alt="c", page_type="tool")
+        hero = secs[0]
+        cta = [s for s in secs if s["type"] == "cta-default"][0]
+        self.assertLessEqual(len(hero["highlightedText"]), 60)
+        self.assertGreater(len(hero["description"]), 200)
+        self.assertNotIn("headline that must not", cta["title"])
+        self.assertEqual(sum(1 for s in secs if s["type"] == "feature-detail"), 6)
+
 
 class TestPortableText(unittest.TestCase):
     """MD→PT：独立行图片保留为 image block；行内图片降级为链接（embed→链接 降级规则）。"""
@@ -183,7 +196,14 @@ class TestPortableText(unittest.TestCase):
 class TestBlogDocModel(unittest.TestCase):
     """PRD 内容模型：_id=(type,slug,language) 唯一键 + 三时间 + status 五态。"""
 
+    # 发布字段契约（2026-11-04 硬化）：build_blog_doc 要求 title + description ≥60；
+    # 本组只测 _id/时间/status，故在 fixture 里补齐必填字段，避免契约与用例互相干扰。
+    _CONTRACT_FM = ("title: 契约测试标题\n"
+                    "description: " + "这是用于校验发布字段契约的描述文本" * 4)
+
     def _doc(self, fm, body="## 一节\n\n正文。"):
+        if "title:" not in fm.split("\n")[0] and "\ntitle:" not in fm:
+            fm = fm + "\n" + self._CONTRACT_FM
         path = _write_md(self, fm, body)
         return build_blog_doc(path)
 
@@ -217,7 +237,7 @@ class TestBlogDocModel(unittest.TestCase):
             self.assertEqual(doc["status"], st)
 
     def test_legacy_id_param_overrides(self):
-        path = _write_md(self, "slug: legacy-x\nlanguage: en", "正文。")
+        path = _write_md(self, "slug: legacy-x\nlanguage: en\n" + self._CONTRACT_FM, "正文。")
         self.assertEqual(build_blog_doc(path, legacy_id=True)["_id"], "legacy-x")
         self.assertEqual(build_blog_doc(path, legacy_id=False)["_id"], "blog-legacy-x-en")
 

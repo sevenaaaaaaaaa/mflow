@@ -1,0 +1,202 @@
+[
+  {
+    "slug": "text-to-image-generator",
+    "id": "tools-text-to-image-generator-en",
+    "lang": "en",
+    "title": "Generate once, edit five times: a prompt is a spec, not a wish",
+    "description": "Subject, camera, light and material are the four fields a text prompt must set; after that every fix is a region edit on a locked seed.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as an art director building one hero image for a skincare launch. Turn a one-line brief into a four-field prompt spec, generate, then fix one detail without regenerating the frame.\n\nInputs [replace]: 50 ml amber jar on a plaster plinth; brand colors ink #1F1B18 and oat #E8DCCB; approved line 'Fragrance-free, 50 ml'; camera at 50 mm, f/4.\n\nDeliverable: one 3000x2000 PNG plus one 1080x1350 crop at 300 dpi, sRGB.\n\nDesign system: jar occupies 38% of frame width; horizon on the lower third; key light 45 degrees camera-left; one label color only; background within 4% of #E8DCCB.\n\nWorkflow: 1) restate the brief as subject, camera, light and material; 2) write a 45-word prompt with those four fields and a six-item negative list; 3) generate four candidates on one seed; 4) pick by label readability at 25%; 5) edit only shadow softness as a region; 6) run gates; 7) export both crops.\n\nGates: label text unchanged; jar proportions within 2%; no invented certification; 10% margin kept around the product; shadow direction stays camera-right.\n\nAudit: the four-field spec, the candidate you rejected and why, the region you edited, and whether the crop needs a redraw.\n\nDo not add ingredients or claims; do not restyle the jar; do not use a word I did not approve."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a senior art director running a three-image campaign for a fragrance brand, using one prompt system so the set survives five rounds of feedback.\n\nInputs [replace]: 4000 px studio photo of a square glass bottle; approved copy 'Eau de parfum, 50 ml'; brand palette ink #1F1B18, oat #E8DCCB, amber #B4553C; three placements (web hero, retail poster, paid social).\n\nDeliverables: three master stills at 4000x2667 and 300 dpi; nine crops at 1080x1350, 1080x1080 and 1920x1080; seed log; prompt spec sheet; names concept-ratio-version.\n\nDesign system: bottle 32-44% of frame; horizon on the lower third; key light 45 degrees camera-left with 0.6 m falloff; two colors plus one accent; negative space at least 28% for copy; grain 2% maximum.\n\nWorkflow: 1) intake the brief and list the five non-negotiables; 2) write one base spec for subject, camera, light, material, background and negatives; 3) generate three concepts on one seed with one variable each; 4) audit concepts at 25% and pick one; 5) produce the nine crops by region edit, not regeneration; 6) type the approved copy in layout; 7) run gates; 8) export with the seed log.\n\nGates: bottle geometry within 2%; label text unchanged; every crop keeps 10% margin; copy legible at 360 px; no invented size or price; color shift under 3% across crops.\n\nAudit: the base spec, the variable behind each concept, regions edited, and the crop most likely to fail print.\n\nDo not regenerate a whole frame to fix one edge; do not change the bottle; do not add props I did not list."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as an art director stress-testing a text-to-image brief when the copy is long and the reference is poor.\n\nInputs [replace]: 1200 px phone photo of a ceramic cup, tilted 4 degrees, hard window reflection across the glaze; required headline 'Hand-thrown in Jingdezhen, 220 ml'; brand colors clay #B4553C and ink #1F1B18.\n\nDeliverable: one 2400x1600 PNG, one 1080x1350 crop, a limitation note, and a seed-stability sheet with three reruns.\n\nWorkflow: 1) audit the reference for tilt, glare and missing detail; 2) split the headline into what the image must carry and what layout carries; 3) write a prompt that fixes subject and material, not the copy; 4) generate three reruns on one seed and compare drift; 5) fix tilt and glare by region; 6) run gates; 7) export with the limitation note.\n\nGates: headline spelled exactly; no generated text inside the image; horizon within 1 degree; glaze texture preserved at 100%; three reruns keep the same cup silhouette.\n\nAudit: what the model cannot hold, where reruns drift, whether the headline belongs in layout, and the input defect that needs a reshoot.\n\nDo not render the headline as pixels; do not smooth the throwing rings; do not pass a rerun off as a new variant."
+      }
+    ]
+  },
+  {
+    "slug": "ai-background-generator",
+    "id": "tools-ai-background-generator-en",
+    "lang": "en",
+    "title": "Match the light before you match the scene",
+    "description": "A background composites only when key direction, color temperature, shadow length and perspective agree; give the agent those four values first.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a product retoucher compositing a cut-out bottle into a generated set. Match the light before choosing the scene.\n\nInputs [replace]: transparent PNG of a 700 ml olive oil bottle, photographed with a softbox 45 degrees camera-left; brand colors olive #5B6B4A and cream #F2E9DA; one line 'Cold-pressed, 700 ml'.\n\nDeliverable: one 2400x3000 JPEG at 300 dpi, one 1080x1350 crop, and a light-match note.\n\nDesign system: bottle 34% of frame height; background key light 45 degrees camera-left; color temperature within 150 K; contact shadow 18% of bottle width; floor horizon at 72% frame height; one accent color only.\n\nWorkflow: 1) measure key direction, shadow length and color temperature on the cut-out; 2) choose a set that can accept that light; 3) write the background prompt with the four values; 4) generate three scene options; 5) composite, then add a contact shadow; 6) run gates; 7) export with the note.\n\nGates: shadow falls camera-right in both layers; color temperature within 150 K; bottle edge free of halos at 100%; label text unchanged; no invented set dressing with text.\n\nAudit: the four measured values, the scene you rejected, the edge that needed repair, and any mismatch you left visible.\n\nDo not relight the bottle; do not add a second light source; do not blur the bottle to hide a bad edge."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a senior retoucher building one background system for a twelve-SKU pantry range, so the eleven later composites match the first.\n\nInputs [replace]: twelve transparent PNGs of jars and tins shot with one softbox at 45 degrees camera-left; brand palette olive #5B6B4A, cream #F2E9DA, rust #B4553C; four approved scenes (kitchen counter, linen table, pantry shelf, outdoor board); copy lines per SKU.\n\nDeliverables: forty-eight composites at 2400x3000 and 300 dpi; four scene plates; a light recipe sheet with key angle, color temperature, shadow length and perspective height; contact sheet; names sku-scene-version.\n\nDesign system: product 30-38% of frame height; horizon at 70-74%; contact shadow 15-20% of product width; color temperature within 150 K of the plate; one accent per scene; background blur no heavier than f/5.6 would give; any prop edge halo under 2 px at 100%.\n\nWorkflow: 1) intake the twelve cut-outs and flag any lit from the right; 2) fix one light recipe before generating; 3) build four plates with the recipe; 4) composite one SKU per scene as a canary; 5) compare the canary against the source shadow; 6) batch the remaining eleven; 7) run gates; 8) export with the recipe sheet.\n\nGates: shadow direction identical across all forty-eight; color temperature within 150 K; product edge clean at 100%; no invented shelf labels; text on pack unchanged.\n\nAudit: per-scene drift, the SKU that needed relighting, rejected plates, and the scene that will not scale to a tall tin.\n\nDo not reuse one scene plate at two horizons; do not add props with text; do not change pack color."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a retoucher stress-testing compositing when the subject is reflective and the light is hard.\n\nInputs [replace]: transparent PNG of a chrome kettle shot under a hard window at camera-right, with a visible reflection of a room in the body; approved line '1.7 L, brushed steel'; brand colors steel #C9CDD2 and ink #1F1B18.\n\nDeliverable: two 2400x3000 composites at 300 dpi, one limitation note, one reflection report, and a 1080x1350 crop.\n\nWorkflow: 1) map every reflection and what it implies about the set; 2) list three scenes that could explain that reflection; 3) choose the scene that asks the least of the fill; 4) generate the plate and keep the reflection honest; 5) add contact shadow and a soft floor bounce; 6) run gates; 7) export with both reports.\n\nGates: no painted-over reflection at 100%; horizon consistent with reflection height; contact shadow present and soft; kettle proportions within 2%; no invented brand mark.\n\nAudit: the reflections you kept, the scene you refused, whether the plate needs a reshoot, and the maximum size this composite can ship at.\n\nDo not mirror the plate to fake a reflection; do not erase the window; do not promise a studio result from a phone capture."
+      }
+    ]
+  },
+  {
+    "slug": "ai-image-enhancer",
+    "id": "tools-ai-image-enhancer-en",
+    "lang": "en",
+    "title": "Judge the enhancement at 400%, not at 100%",
+    "description": "Upscaling is only safe when texture, edge and identity survive a 400% crop; these briefs put the zoom check before the export.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a retoucher preparing one product photo for print. Enhance it, then prove the gain survives a 400% zoom.\n\nInputs [replace]: 1200 px phone photo of a canvas sneaker on a white sweep, slight motion blur on the toe; brand colors ink #1F1B18 and gum #C8A27A; one line 'Recycled canvas, 12 sizes'.\n\nDeliverable: one 3600x3600 TIFF at 300 dpi, one 1080x1350 JPEG, and four 400% crops.\n\nDesign system: shoe 62% of frame width; background within 3% of white; sole texture resolved at 400%; shadow soft edge 40 px; no added grain above 1.5%.\n\nWorkflow: 1) audit the source for blur, noise and compression; 2) upscale 3x with texture preservation; 3) compare at 400% against the source; 4) fix only the toe, as a region; 5) keep the weave pattern continuous; 6) run gates; 7) export the TIFF, JPEG and crops.\n\nGates: no invented stitching; weave scale within 5% of source; edge halo under 1 px; text on the tongue unchanged; 400% crop shows no plastic smear.\n\nAudit: the artifact you accepted, the detail the model invented, the region you repaired, and whether this file can go to print.\n\nDo not sharpen the whole frame; do not smooth grain into plastic; do not add a logo or pattern that was not there."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a studio retoucher building a repeatable enhancement pass for twenty archival catalog scans.\n\nInputs [replace]: twenty 2400 px scans of leather bags, mixed quality, three with moire and two with JPEG blocking; approved copy per SKU; brand palette tan #B08968, ink #1F1B18.\n\nDeliverables: twenty 4800x4800 TIFFs at 300 dpi; one 2x and one 4x preview per file; a defect log with source resolution, artifact type and accepted fix; contact sheet; names sku-pass-version.\n\nDesign system: product 55-70% of frame; background within 3% of the original; leather grain resolved at 400%; edge sharpness under 1.2 px halo; no global sharpening above 40%.\n\nWorkflow: 1) intake and score each scan for blur, moire, blocking and exposure; 2) set two passes: 2x for print, 4x for detail crops; 3) run the canary on the worst scan; 4) compare 400% crops side by side; 5) reject any pass that invents stitching; 6) batch the set; 7) run gates; 8) export with the defect log.\n\nGates: no invented hardware; grain direction preserved; moire not amplified; text and logos unchanged; all twenty files at 300 dpi and the correct color space.\n\nAudit: per-file score, passes rejected, the two scans that need rescanning, and the detail that cannot be recovered at 4x.\n\nDo not claim a resolution the source cannot support; do not invent a pattern; do not crop out a defect and call it fixed."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a retoucher stress-testing enhancement on a face where identity matters.\n\nInputs [replace]: 800 px JPEG of a portrait, compression artifacts on the cheek, slight underexposure, no RAW; approved use 'team page headshot'; consent note required.\n\nDeliverable: one 3200 px retouched portrait at 300 dpi, four 400% crops (eyes, cheek, hairline, collar), a change list, and a go or no-go note.\n\nWorkflow: 1) audit the source for compression, noise and exposure; 2) define what may change (tone, texture, dust) and what may not (identity, age markers, skin tone); 3) enhance at 4x with identity lock; 4) compare eyes and hairline at 400%; 5) reduce any plastic smoothing by 50%; 6) run gates; 7) export with the change list.\n\nGates: eye shape and spacing unchanged; skin texture present at 400%; no teeth or iris invention; tone within 5% of the original; no beauty retouch beyond dust and tone.\n\nAudit: what changed, what the model invented, the crop that fails, and whether this portrait can ship at team-page size.\n\nDo not reshape the face; do not whiten teeth; do not smooth pores; do not use the image without the consent note."
+      }
+    ]
+  },
+  {
+    "slug": "ai-product-background",
+    "id": "tools-ai-product-background-en",
+    "lang": "en",
+    "title": "One recipe, fifty SKUs, zero re-lighting",
+    "description": "The catalog wins when the fifty-first product looks like the second; lock a light recipe and a plate, then batch the set.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a catalog producer placing one product into three generated scenes without changing the product or the light.\n\nInputs [replace]: transparent PNG of a 500 ml shampoo bottle, softbox at camera-left; approved line 'Sulfate-free, 500 ml'; brand palette sage #A8B5A0, ink #1F1B18.\n\nDeliverable: three 2000x2500 JPEGs at 300 dpi plus one 1080x1350 crop, a contact sheet, and a light recipe line per scene.\n\nDesign system: bottle 36% of frame height; horizon at 72%; contact shadow 16% of bottle width; color temperature within 150 K; background props at least 30 cm behind the product; one accent only.\n\nWorkflow: 1) measure the bottle's key direction and shadow length; 2) write three scene prompts around that light; 3) generate three plates; 4) composite the bottle with a contact shadow; 5) check the label at 100%; 6) run gates; 7) export with the contact sheet.\n\nGates: shadow direction identical in all three; label text unchanged; no invented ingredient badge; bottle edge clean at 100%; horizon level within 0.5 degrees.\n\nAudit: the light recipe, the scene that fought the source light, the edge you repaired, and the scene you would drop.\n\nDo not add a second light; do not change the bottle; do not invent a certification badge."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a catalog lead building one background system for a fifty-SKU personal care launch, with the 51st product as the acceptance test.\n\nInputs [replace]: fifty transparent PNGs shot in one session, softbox 45 degrees camera-left; four approved plates (bathroom shelf, linen counter, wet tile, travel pouch); approved copy per SKU; brand palette sage #A8B5A0, ink #1F1B18, clay #B4553C.\n\nDeliverables: two hundred composites at 2000x2500 and 300 dpi; four plates; one light recipe sheet; per-SKU contact sheet; a consistency report; names sku-plate-version.\n\nDesign system: product 32-40% of frame height; horizon 70-74%; contact shadow 14-18% of product width; color temperature within 150 K; prop distance at least 30 cm; background blur equivalent to f/5.6; one accent per plate.\n\nWorkflow: 1) intake fifty cut-outs and flag any lit from the right; 2) fix the light recipe and plate set before any composite; 3) canary one SKU on each plate; 4) compare shadow direction and color temperature; 5) batch the remaining SKUs; 6) audit every tenth file at 100%; 7) run gates; 8) export with the consistency report.\n\nGates: shadow direction identical across two hundred files; color temperature within 150 K; no invented label text; all files 300 dpi; product edge free of halos.\n\nAudit: per-plate drift, SKUs rejected for lighting, the plate that failed the 51st-SKU test, and the fix that would need a reshoot.\n\nDo not relight a product to fit a plate; do not reuse one shadow shape for all; do not add props with legible text."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a catalog lead stress-testing a background system when the product is transparent and the plate is busy.\n\nInputs [replace]: transparent PNG of a glass serum bottle with a pipette, hard reflection on the shoulder; one approved line '30 ml, fragrance-free'; brand palette ice #DCE6E4 and ink #1F1B18; plate options: marble counter or wet stone.\n\nDeliverable: two 2000x2500 composites at 300 dpi, one limitation note, one edge report, and a 1080x1350 crop.\n\nWorkflow: 1) audit the cut-out for refraction, reflection and missing shadow; 2) list what the plate must provide (bounce, horizon, background color); 3) choose the calmer plate and say why; 4) generate the plate at the measured horizon; 5) composite with a soft contact shadow and a caustic hint only if accurate; 6) run gates; 7) export with both notes.\n\nGates: no painted-over reflection at 100%; liquid level plausible; horizon consistent with bottle base; label text unchanged; no invented caustic light on the wrong side.\n\nAudit: what the plate could not give, the reflection you kept, whether a reshoot is cheaper than a fix, and the largest size this composite can ship.\n\nDo not fake transparency with a flat fill; do not erase the hard reflection; do not put the bottle on a busy pattern that hides the edge."
+      }
+    ]
+  },
+  {
+    "slug": "ai-image-extender",
+    "id": "tools-ai-image-extender-en",
+    "lang": "en",
+    "title": "Extend less, match more: set four axes before one pixel",
+    "description": "Light direction, color temperature, perspective and texture scale decide whether an extension is invisible; fix them before outpainting.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a retoucher extending one product photo from 1:1 to 16:9 for a billboard without changing the product.\n\nInputs [replace]: 2400x2400 photo of a leather tote on a concrete step, window light from camera-left, shallow depth of field; approved line 'Full-grain leather, 18 L'.\n\nDeliverable: one 3840x2160 extended JPEG at 300 dpi, one 1080x1350 crop, and a four-axis match note.\n\nDesign system: product stays at 30% of frame width; horizon on the lower third; light direction 40 degrees camera-left; color temperature within 150 K; texture scale on new concrete within 5%; shadow continues 25% beyond the original frame.\n\nWorkflow: 1) measure light direction, color temperature, perspective and texture scale; 2) extend 120 px as a canary; 3) inspect the seam at 200%; 4) extend to 16:9 in 400 px strips; 5) rebuild the shadow path; 6) run gates; 7) export with the note.\n\nGates: no seam at 200%; tote geometry unchanged; texture scale within 5%; shadow direction consistent; no invented props in the new area.\n\nAudit: the four measured values, the strip that drifted, the seam you repaired, and whether 16:9 needs a new capture.\n\nDo not stretch the original; do not mirror a strip to fill space; do not blur the seam."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a senior retoucher building one master extension system for a furniture brand's three formats.\n\nInputs [replace]: 4000x4000 studio photo of an oak lounge chair, key light camera-left, floor and wall meeting at 68% frame height; approved copy 'Solid oak, 78 cm seat height'; brand palette oak #C8A27A, ink #1F1B18.\n\nDeliverables: one 6000x3375 16:9 master, one 4000x5000 4:5 crop, one 1080x1920 9:16 cut; three seam reports; a four-axis match sheet; names format-version.\n\nDesign system: chair 28-34% of frame; horizon 66-70%; light direction 40 degrees camera-left; color temperature within 150 K; oak grain scale within 4%; contact shadow extends 30% beyond the original frame.\n\nWorkflow: 1) intake and measure the four axes; 2) define the safe extension budget per side; 3) canary 150 px on the left edge; 4) audit seam, grain and shadow at 200%; 5) extend in strips, alternating sides; 6) rebuild floor and wall perspective; 7) run gates; 8) export with the match sheet.\n\nGates: chair geometry unchanged; grain scale within 4%; no repeated texture pattern; horizon straight within 0.5 degrees; new floor shadow consistent; no invented furniture in frame.\n\nAudit: per-format seam scores, the axis that drifted first, strips rejected, and where a wider capture would beat the extension.\n\nDo not duplicate a slice of floor; do not change the chair; do not extend into a wall that contradicts the horizon."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a retoucher stress-testing extension on a group photo where the crop cuts a shoulder.\n\nInputs [replace]: 1600x2000 phone photo, three people, the left shoulder cropped at frame edge, mixed daylight and shade, no consent release yet; deliverable use 'internal deck only'.\n\nDeliverable: one 2400x1350 16:9 extension at 300 dpi, one 400% seam crop, a limitation note, and a consent checklist.\n\nWorkflow: 1) audit the crop, the light mismatch and the missing shoulder; 2) list what may be invented (wall, floor) and what may not (a body, a face, a logo); 3) extend only the background first; 4) check the seam at 400%; 5) stop before inventing any person; 6) run gates; 7) export with the notes.\n\nGates: no invented body part; skin tone unchanged; horizon within 1 degree; seam invisible at 200%; no third-party logo; consent checklist attached.\n\nAudit: what you refused to extend, the seam that failed, whether the image can ship beyond internal use, and the capture that would fix it.\n\nDo not generate a missing person; do not clone a face; do not crop tighter to hide the seam."
+      }
+    ]
+  },
+  {
+    "slug": "ai-object-remover",
+    "id": "tools-ai-object-remover-en",
+    "lang": "en",
+    "title": "The removal is fast; the fill is the deliverable",
+    "description": "Rebuild the gradient, the texture and the cast shadow, then verify at 100% — a clean mask is not a clean photo.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a retoucher removing three distractions from one product photo without touching the product.\n\nInputs [replace]: 2400 px photo of a ceramic vase on a wooden table; a charging cable, a coffee cup and a price tag in frame; approved line 'Stoneware, 32 cm'.\n\nDeliverable: one 2400x3000 JPEG at 100% view, one 1080x1350 crop, and a fill note per object.\n\nDesign system: vase 42% of frame height; table grain runs left to right; shadow direction camera-right; fill texture within 5% of surrounding grain; no visible mask edge at 100%.\n\nWorkflow: 1) list each object and what it occludes; 2) mask the cable first, then the cup, then the tag; 3) fill from surrounding texture, not a clone stamp; 4) rebuild the table grain; 5) restore the vase shadow; 6) run gates; 7) export with the notes.\n\nGates: no mask edge at 100%; grain direction continuous; vase shadow unbroken; label text unchanged; no invented object in the fill.\n\nAudit: the object that left the worst scar, the gradient you rebuilt, the area you would reshoot, and the fill you are least sure of.\n\nDo not erase a shadow that should stay; do not clone a repeated pattern; do not remove part of the product."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a retoucher clearing a twelve-photo set for a marketplace listing, where every removal must survive a 100% review.\n\nInputs [replace]: twelve 3000 px photos of homeware on three surfaces (wood, plaster, linen); objects to remove: cables, hands, price stickers, a window reflection; approved copy per SKU; brand palette ink #1F1B18, oat #E8DCCB.\n\nDeliverables: twelve cleaned 3000x3750 JPEGs at 300 dpi; before and after crops at 100% and 400%; a defect log by photo; names sku-clean-version.\n\nDesign system: product unchanged; fill texture within 5%; shadow direction preserved; no repeated stamp pattern in any 200 px window; color shift under 2%; background noise matched.\n\nWorkflow: 1) intake and rank each photo by removal difficulty; 2) define what may change (distractions) and what may not (product, shadow, surface); 3) canary the hardest photo; 4) review at 100% and 400%; 5) batch the rest in difficulty order; 6) rebuild gradients on large fills; 7) run gates; 8) export with the defect log.\n\nGates: no visible scar at 100%; no cloned pattern repeat; shadow integrity preserved; product edges untouched; no sticker residue or ghost text.\n\nAudit: difficulty ranking, the two worst fills, photos rejected for reshoot, and the removal that still reads at 400%.\n\nDo not remove a product detail; do not blur a scar to hide it; do not clone the same patch twice in one frame."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a retoucher stress-testing removal when the object casts a shadow on a textured floor.\n\nInputs [replace]: 2000 px photo of a person standing beside a product, the person's shadow crossing the product's base; tile floor with grout lines; approved use 'listing image'; consent on file.\n\nDeliverable: one 2000x2500 cleaned image, one 400% crop of the shadow path, a limitation note, and a rights note.\n\nWorkflow: 1) map the shadow path and the grout grid; 2) decide whether the shadow can stay as an anonymous cast; 3) remove the person; 4) rebuild grout lines and tile texture; 5) restore any shadow that belongs to the product; 6) run gates; 7) export with both notes.\n\nGates: grout lines continuous within 1 px; no invented tile pattern; product base shadow plausible; no human silhouette left; no ghost limbs at 400%.\n\nAudit: the shadow you kept, the grid you rebuilt, the tile that repeats, whether the result misleads a buyer, and if a reshoot is cheaper.\n\nDo not leave a human outline; do not clone a tile pattern across the frame; do not claim the image is unretouched."
+      }
+    ]
+  },
+  {
+    "slug": "ai-pattern-generator",
+    "id": "tools-ai-pattern-generator-en",
+    "lang": "en",
+    "title": "A pattern ships only when four edges join",
+    "description": "One tile, six colorways, a seam test on all four edges and at half-drop — the brief that turns a motif into a production file.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a surface designer producing one repeatable tile for a textile sample.\n\nInputs [replace]: motif 'hand-drawn rosemary sprigs'; palette sage #A8B5A0, cream #F2E9DA, ink #1F1B18; repeat 30x30 cm; four colorways.\n\nDeliverable: one 3600x3600 px tile at 300 dpi, four colorway PNGs, and one seam test sheet.\n\nDesign system: repeat 30x30 cm; motif density 22-28% coverage; four colorways share one line weight; half-drop repeat; no motif scaled below 8 mm; edges join on all four sides.\n\nWorkflow: 1) define motif scale and density; 2) draw the master tile; 3) offset the tile and test all four edges; 4) fix the seam; 5) derive four colorways from one master; 6) run gates; 7) export the tile set.\n\nGates: all four edges join with no break; half-drop aligns; line weight consistent; four colorways within one palette; 300 dpi and 30x30 cm exact.\n\nAudit: the edge that broke, the motif you moved, the colorway that lost contrast, and whether the tile is production-ready.\n\nDo not mirror the motif to close a seam; do not add a fifth color; do not scale below 8 mm."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a surface design lead building a wallpaper collection from one motif system.\n\nInputs [replace]: motif family 'coastal grasses'; three scales (small, medium, large); six colorways; repeat 60x60 cm; brand palette sand #D8C3A5, sea #7A9E9F, ink #1F1B18, chalk #F5F1E8.\n\nDeliverables: eighteen 7087x7087 px tiles at 300 dpi; three scale families; six colorways each; seam test sheets; a repeat map; names motif-scale-colorway-version.\n\nDesign system: repeat 60x60 cm; coverage 18-30%; three scales at 1x, 1.5x and 2x; half-drop repeat; line weight 0.6 pt at print size; no motif under 8 mm; color count five plus background.\n\nWorkflow: 1) intake the motif family and set scales; 2) build the master at medium scale; 3) offset and test all four edges plus half-drop; 4) derive small and large scales from the same geometry; 5) build six colorways from one palette; 6) run seam tests on every tile; 7) run gates; 8) export with the repeat map.\n\nGates: every tile joins on four edges; half-drop aligns; scale ratio exactly 1x, 1.5x and 2x; color count within five plus background; 300 dpi and 60x60 cm; no banding in large flats.\n\nAudit: seam scores per tile, the colorway that shifted hue, the scale that lost the motif, and the file that needs redrawing.\n\nDo not mirror a tile to fix a seam; do not add a new color per colorway; do not let coverage fall below 18%."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a surface designer stress-testing a directional motif at half-drop.\n\nInputs [replace]: motif 'diagonal reeds'; direction 45 degrees; repeat 40x40 cm; two colorways; requirement 'no visible direction change across the seam'.\n\nDeliverable: one 4724x4724 px tile at 300 dpi, two colorway files, a seam report with four edge crops, and a print note.\n\nDesign system: motif angle held at 45 degrees; repeat 40x40 cm; shape count identical in both colorways; line weight 0.6 pt at print size; no drop shadow on the motif.\n\nWorkflow: 1) map the direction angle; 2) build the tile at 45 degrees; 3) offset and test each edge separately; 4) rotate the motif, not the tile, to fix breaks; 5) rebuild the half-drop; 6) run gates; 7) export with the report.\n\nGates: direction continuous within 1 degree at every seam; half-drop aligns; no mirrored motif; line weight consistent; 300 dpi and 40x40 cm.\n\nAudit: the edge that changed direction, the rotation you applied, whether the motif can ship at this angle, and the alternative repeat that would be safer.\n\nDo not rotate the whole tile to hide a seam; do not mirror the motif; do not deliver a one-way pattern as a two-way repeat."
+      }
+    ]
+  },
+  {
+    "slug": "nano-banana-2-ai-image-generator",
+    "id": "tools-nano-banana-2-ai-image-generator-en",
+    "lang": "en",
+    "title": "Count round trips, not first drafts",
+    "description": "The base image is the cheap part; the edit loop is the product. Lock the reference, touch one region, and score each pass by what stayed the same.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a retoucher running an edit loop on one approved base image, changing one region and nothing else.\n\nInputs [replace]: 3000 px base image of a model in a denim jacket against a grey wall; target change 'jacket from indigo to ecru'; locked: face, hair, pose, wall texture, shadow; reference palette ecru #E8DCCB.\n\nDeliverable: one 3000x4000 PNG at 300 dpi, one 400% crop of the shoulder seam, and a round-trip log.\n\nDesign system: jacket area only 18% of frame; keep wall value within 2%; shadow direction unchanged; seam stitch scale within 5%; no global color shift above 1%.\n\nWorkflow: 1) mark the edit region and the locked region; 2) run one pass; 3) compare locked areas at 100%; 4) if drift appears, restore the base and retry with a tighter mask; 5) repeat to a maximum of three round trips; 6) run gates; 7) export with the log.\n\nGates: face and hair pixel-stable; stitch scale within 5%; wall value within 2%; no new folds; shadow unchanged.\n\nAudit: round trips used, what drifted first, the pass you rejected, and whether the edit needed a new base.\n\nDo not regenerate the whole frame; do not retouch the face; do not change the pose."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a senior retoucher building a three-image campaign from one reference, where every change is a measured edit rather than a new generation.\n\nInputs [replace]: 4000 px base image of a ceramic pitcher on linen; approved reference set of two more angles; change brief: glaze from sand to celadon, handle position fixed, shadow fixed, background fixed; brand palette celadon #A8C3B5; copy 'Stoneware, 1.2 L'.\n\nDeliverables: three 4000x5000 PNGs at 300 dpi; a round-trip log per image (pass number, region, drift score); 400% crops of glaze and handle; a reference-match sheet; names angle-pass-version.\n\nDesign system: pitcher 38-46% of frame; glaze value within 3% of reference; handle geometry within 2%; linen texture within 5%; shadow length within 4%; no global grade.\n\nWorkflow: 1) intake base and reference set; 2) lock identity, geometry, light and background as four check groups; 3) change glaze only, on one region; 4) score drift after each pass; 5) cap at three round trips per image; 6) rebuild any pass that breaks the handle; 7) run gates; 8) export with the logs.\n\nGates: handle geometry within 2%; glaze within 3% of reference; linen weave within 5%; shadow length within 4%; no change to background color; 300 dpi on all three.\n\nAudit: round trips per image, the region that drifted, passes rejected, and the edit you would refuse as out of scope.\n\nDo not regenerate a whole image for one color; do not change the handle to make the edit easier; do not grade the background."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a retoucher stress-testing an edit loop on a text-heavy image where every pass risks the layout.\n\nInputs [replace]: 2400 px image of a printed menu card on a table, small type at 9 pt, slight perspective; required change 'replace two dish names and one price'; locked: typeface, grid, paper texture, light, perspective; approved copy supplied verbatim.\n\nDeliverable: one 2400x3000 PNG, one 400% crop of the edited lines, a round-trip log capped at three passes, and a text-fidelity note.\n\nWorkflow: 1) read and record all visible text; 2) mark the three edit regions; 3) run one pass per region, not per image; 4) compare letterforms at 400%; 5) restore the base if spacing shifts; 6) stop at three round trips and report; 7) run gates; 8) export with the note.\n\nGates: every unchanged line identical; new lines spelled exactly; 9 pt type still legible at 400%; grid and margins within 1 px; no invented dish or price.\n\nAudit: passes used, the line that lost spacing, the text the model guessed, and whether this edit belongs in layout instead.\n\nDo not invent a dish name or price; do not reflow the grid; do not accept a pass that changes unchanged lines."
+      }
+    ]
+  }
+]

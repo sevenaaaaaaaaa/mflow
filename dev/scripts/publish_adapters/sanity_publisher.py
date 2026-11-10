@@ -212,35 +212,67 @@ def build_blog_doc(md_path, slug="", lang="", category="", title="", description
     no_index = str(fm.get("no_index", fm.get("noindex", ""))).strip().lower() in ("1", "true", "yes", "on")
     use_legacy = bool(os.environ.get("MFLOW_LEGACY_DOC_ID")) if legacy_id is None else bool(legacy_id)
     body_blocks = md_to_pt(body_md)
+    # ── 发布字段契约（2026-11-04 硬化）：缺必填字段时拒绝构建，禁止静默写出残缺文档 ──
+    final_title = (title or fm.get("title") or "").strip()
+    final_desc = (description or fm.get("description") or "").strip()
+    missing = []
+    if not final_title:
+        missing.append("title（frontmatter title 或 --title）")
+    if len(final_desc) < 60:
+        missing.append(f"description ≥60 字符（当前 {len(final_desc)}）")
+    if category not in CAT_REF:
+        missing.append(f"category ∈ {list(CAT_REF)}（当前 {category!r}）")
+    if missing:
+        raise RuntimeError("发布字段契约未满足，拒绝构建文档：" + "；".join(missing))
+    final_author = (author or fm.get("author") or "Lovart").strip()
+    final_cover = (cover_url or fm.get("cover_url") or "").strip()
+    final_alt = (fm.get("alt_text") or final_title)[:120]
     # JSON-LD datePublished 用对外显示时间（PRD C5：datePublished=displayedAt）
     structured = json.dumps({
         "@context": "https://schema.org", "@type": SCHEMA_MAP.get(category, "Article"),
-        "headline": title or fm.get("title", ""),
-        "author": {"@type": "Organization", "name": author or "品牌方"},
+        "headline": final_title[:110],
+        "author": {"@type": "Organization", "name": final_author},
         "datePublished": displayed,
     }, ensure_ascii=False)
-    return {
+    seo_title = (fm.get("seo_title") or final_title)[:70]
+    seo_desc = (fm.get("seo_description") or final_desc)[:160]
+    cover_obj = {"_type": "imageSource", "sourceType": "external",
+                 "url": final_cover, "alt": final_alt} if final_cover else None
+    seo_obj = {
+        "title": seo_title,
+        "description": seo_desc,
+        "keywords": [str(k) for k in (keywords or fm.get("keywords") or [])][:12],
+        "noIndex": no_index,
+        "structuredData": {"_type": "structuredData", "enabled": True, "json": structured},
+    }
+    if final_cover:
+        seo_obj["ogImage"] = dict(cover_obj)
+    doc = {
         "_id": slug if use_legacy else doc_id("blog", slug, lang),
         "_type": "blog",
-        "title": (title or fm.get("title") or "")[:200],
+        "title": final_title[:200],
         "slug": {"_type": "slug", "current": slug},
         "language": lang,
         "category": {"_type": "reference", "_ref": CAT_REF.get(category, CAT_REF["How-To"])},
-        "description": (description or fm.get("description") or "")[:200],
-        "keywords": keywords or fm.get("keywords") or [],
-        "seoTitle": (fm.get("seo_title") or "")[:70],
-        "seoDescription": (fm.get("seo_description") or "")[:160],
-        "coverUrl": cover_url or fm.get("cover_url") or "",
-        "altText": fm.get("alt_text", ""),
+        "description": final_desc[:200],
+        "author": final_author,
+        "cover": cover_obj,
+        "altText": final_alt,
         "status": st,
         "noIndex": no_index,
         "contentCluster": cluster or fm.get("content_cluster") or "MFlow-GEO",
         "releaseDate": now,
         "publishedAt": published,
         "displayedAt": displayed,
-        "seo": {"structuredData": {"_type": "structuredData", "enabled": True, "json": structured}},
+        "seo": seo_obj,
         "body": body_blocks,
+        # ── DEPRECATED 过渡镜像（schema 无此字段；下游 console QA/脚本仍在读）。
+        #    迁移完成（console 与脚本改读 seo.title / cover）后删除以下三行。
+        "seoTitle": seo_title,
+        "seoDescription": seo_desc,
+        "coverUrl": final_cover,
     }
+    return {k: v for k, v in doc.items() if v is not None}
 
 
 @env_guard.dry_run_in_development("Sanity upsert")
@@ -447,7 +479,41 @@ CONTENT_SECTION_TYPES = {"feature-detail", "capability-tabs", "bento-2", "bento-
                          "workflow-vertical", "review-grid-3col", "review-grid-4col"}
 
 
-def md_to_sections(md_text, title="", description="", cover_url="", cover_alt="", cta_href="https://www.example.com/canvas"):
+def _last_word_cut(text, limit):
+    """Cut at a word boundary (latin) or character boundary (CJK); never mid-token."""
+    text = re.sub(r"\s+", " ", (text or "")).strip()
+    if len(text) <= limit:
+        return text
+    cut = text[:limit]
+    if " " in cut:
+        cut = cut[:cut.rfind(" ")].rstrip(" ,;:-—")
+    return cut.rstrip(" ,;:-—")
+
+
+def _trim_sentence(text, limit):
+    """Trim to the last complete sentence inside limit; fall back to word cut."""
+    text = re.sub(r"\s+", " ", (text or "")).strip()
+    if len(text) <= limit:
+        return text
+    cut = text[:limit]
+    pos = max(cut.rfind("."), cut.rfind("。"), cut.rfind("!"), cut.rfind("？"), cut.rfind("?"))
+    if pos >= limit * 0.5:
+        return cut[:pos + 1].strip()
+    return _last_word_cut(text, limit)
+
+
+def _default_cta_title(page_type="tool"):
+    """A real CTA title, never an H1 concatenation."""
+    return {
+        "tool": "Start free — try it on your own file",
+        "feature": "See the workflow in action",
+        "topic": "Try the workflow on one brief",
+        "solution": "Talk to us about your team",
+        "product": "Start free",
+    }.get(page_type or "tool", "Start free")
+
+
+def md_to_sections(md_text, title="", description="", cover_url="", cover_alt="", cta_href="https://www.example.com/canvas", page_type="tool"):
     """把落地页草稿（md）转成 composite-v2 最小合法版块数组。
     结构：hero-split → feature-detail(按 H2 归组) → (proof-block 如有数据点) → faq → cta-default"""
     body = md_text
@@ -487,10 +553,10 @@ def md_to_sections(md_text, title="", description="", cover_url="", cover_alt=""
                         cur["a"] = s[:400]
                 else:
                     cur["desc"].append(s)
-        elif s and not s.startswith("#"):
+        elif s and not s.startswith("#") and not re.fullmatch(r"\[[A-Z][A-Z0-9 _-]*\]", s):
             plain.append(s)
-    desc_text = (description or (plain[0] if plain else ""))[:400]
-    first_sentence = re.split(r"[。.!?？]", desc_text)[0][:60] if desc_text else ""
+    desc_text = _trim_sentence(description or (plain[0] if plain else ""), 300)
+    first_sentence = _last_word_cut(re.split(r"[。.!?？]", desc_text)[0], 60) if desc_text else ""
     sections = [{
         "type": "hero-split", "badge": "", "title": title,
         "highlightedText": first_sentence,
@@ -499,11 +565,11 @@ def md_to_sections(md_text, title="", description="", cover_url="", cover_alt=""
                     {"text": "See examples", "href": cta_href, "variant": "secondary"}],
         "media": {"src": cover_url, "alt": cover_alt or title},
     }]
-    for h in h2s[:4]:
+    for h in h2s[:12]:
         d = " ".join(h["desc"]).strip()
         if d:
             sections.append({"type": "feature-detail", "title": "", "description": "",
-                             "items": [{"title": h["title"][:80], "description": d[:400],
+                             "items": [{"title": h["title"][:80], "description": _trim_sentence(d, 600),
                                         "media": {"src": cover_url, "alt": h["title"][:60] or title}}]})
     # 数字证据段：value+label 数据天然是 stats 型（曾误写成 proof-block + stats 字段错配，前端渲染为空）
     nums = [s for s in (plain + [x for h in h2s for x in h["desc"]]) if len(s) < 120 and any(c.isdigit() for c in s)][:3]
@@ -516,7 +582,7 @@ def md_to_sections(md_text, title="", description="", cover_url="", cover_alt=""
         sections.append({"type": "faq", "title": "FAQ",
                          "items": [{"question": q["q"][:120], "answer": (q["a"] or "")[:400]}
                                    for q in faq_items[:6]]})
-    sections.append({"type": "cta-default", "title": f"Ready to try {title[:50]}?" if title else "Get started",
+    sections.append({"type": "cta-default", "title": _default_cta_title(page_type),
                      "description": "Start free — no design skill required.",
                      "buttons": [{"text": "Start free", "href": cta_href, "variant": "primary"}]})
     return sections
@@ -624,7 +690,7 @@ def build_composite_doc(md_path="", slug="", lang="en", page_type="tool", title=
     cover_alt = cover_alt or fm.get("alt_text") or title
     cta_href = cta_href or fm.get("cta_href") or "https://www.example.com/canvas"
     if sections is None:
-        sections = md_to_sections(source_text, title, description, cover_url, cover_alt, cta_href)
+        sections = md_to_sections(source_text, title, description, cover_url, cover_alt, cta_href, page_type=page_type)
     now = datetime.now().strftime("%Y-%m-%dT%H:%M:%S+08:00")
     displayed = _iso(fm.get("displayed_at") or fm.get("date"), now)
     structured = json.dumps({"@context": "https://schema.org", "@type": "WebPage",
@@ -634,12 +700,12 @@ def build_composite_doc(md_path="", slug="", lang="en", page_type="tool", title=
         "_id": doc_id(page_type, slug, lang), "_type": "compositePage",
         "pageType": page_type, "category": page_type,
         "language": lang, "slug": {"_type": "slug", "current": slug},
-        "title": title[:200], "description": description[:300],
+        "title": title[:200], "description": _trim_sentence(description, 300),
         "cover": {"_type": "imageSource", "sourceType": "external", "url": cover_url, "alt": cover_alt[:200]},
         "bodyJson": json.dumps(sections, ensure_ascii=False),
         "schemaVersion": "composite-v2", "storylineTemplate": storyline_template,
         "releaseDate": now, "publishedAt": now, "displayedAt": displayed,
-        "seo": {"description": description[:160],
+        "seo": {"description": _trim_sentence(description, 160),
                 "structuredData": {"_type": "structuredData", "enabled": True, "json": structured}},
     }
 
@@ -652,6 +718,18 @@ def publish_composite(doc, dry_run=True, mode="create"):
     cfg = sanity_cfg()
     if not cfg["token"]:
         return {"ok": False, "error": "未配置 SANITY_TOKEN"}
+    # BodyJson language / placeholder gate: refuse the write before it reaches Sanity.
+    try:
+        _lib = os.path.join(os.path.dirname(__file__), "..", "library")
+        if _lib not in sys.path:
+            sys.path.insert(0, _lib)
+        from body_lang import check_body as _check_body
+    except Exception:
+        _check_body = None
+    if _check_body is not None and doc.get("bodyJson"):
+        reasons = _check_body(doc.get("language") or "en", doc["bodyJson"])
+        if reasons:
+            return {"ok": False, "error": "block:body-language:" + ",".join(reasons), "reasons": reasons}
     if mode == "patch":
         cur = find_by_slug_lang("compositePage", doc["slug"]["current"], doc.get("language", ""))
         if cur is None:

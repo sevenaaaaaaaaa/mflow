@@ -1,0 +1,77 @@
+[
+  {
+    "slug": "chat-to-image-ai-generator",
+    "id": "tools-chat-to-image-ai-generator-it",
+    "lang": "it",
+    "title": "La conversazione sostituisce il prompt: ogni turno è una modifica misurata",
+    "description": "Riscrivere il prompt da capo è il modo più lento di modificare un'immagine: qui si dichiara un delta per turno, si bloccano le zone intoccabili e si verifica la deriva.",
+    "cta": {
+      "text": "Apri il canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapido",
+        "prompt": "Agisci come art director che modifica un'immagine esistente conversando con il modello, senza riscrivere il prompt da zero.\n\nInput [da sostituire]: foto 2400×2400 di una tazza in ceramica su tavolo in legno, luce laterale 40°; tre richieste: «fondo grigio caldo», «togli la briciola a destra», «mantieni l'etichetta»; bloccati: forma della tazza, testo dell'etichetta, direzione della luce.\n\nConsegna: PNG 2400×2400, tre ritagli al 100% sulle zone modificate e un registro con un turno per richiesta.\n\nSistema: tazza sul 40–45% del fotogramma; luce a 40° invariata; bilanciamento del bianco entro 150 K; contrasto dell'etichetta almeno 4.5:1; margine di 5%.\n\nFlusso: 1) fai l'audit dell'immagine e scrivi la lista dei blocchi; 2) dichiara un solo delta per turno; 3) confronta le zone bloccate al 100%; 4) se deriva, torna all'originale e restringi l'istruzione; 5) ripeti per tre turni al massimo; 6) esegui le verifiche; 7) esporta file e registro.\n\nVerifiche: etichetta leggibile e non riscritta; ombra invariata; nessun oggetto nuovo; forma della tazza intatta; PNG a 2400×2400.\n\nReport: quale turno ha fatto derivare di più, quante iterazioni hai usato, se serve un nuovo master.\n\nNon riscrivere il prompt da zero a ogni turno; non cambiare il testo dell'etichetta; non introdurre oggetti non richiesti."
+      },
+      {
+        "label": "Produzione",
+        "prompt": "Agisci come responsabile produzione visiva che porta un set di sei immagini dalla conversazione al master approvato, con ogni turno registrato.\n\nInput [da sostituire]: sei scatti 4000×5000 di un servizio in gres (brocca, tazza, piatto), riferimenti dei tre colori di smalto, testi validati su etichetta; cambi richiesti: smalto da sabbia a verde salvia, fondo da lino a pietra, ombra più corta del 20%; bloccati: identità del prodotto, geometria del manico, prospettiva.\n\nConsegna: sei PNG 4000×5000 a 300 dpi; un registro per immagine con turno, delta, punteggio di deriva e zona; ritagli al 400% su smalto e manico; nomi prodotto-turno-versione; una scheda di corrispondenza.\n\nSistema: prodotto sul 38–46%; smalto entro 3% dal riferimento; manico entro 2%; fondo entro 5%; lunghezza ombra entro 4%; nessuna correzione globale del colore.\n\nFlusso: 1) ricevi il brief e separa delta e blocchi; 2) fai l'audit dei sei scatti e segna i rischi; 3) proponi tre direzioni, una frase di motivazione ciascuna; 4) apri la conversazione con un delta per volta; 5) misura la deriva dopo ogni turno; 6) rifai solo il turno che rompe un blocco; 7) esegui le verifiche; 8) esporta file, registro e scheda.\n\nVerifiche: manico entro 2%; smalto entro 3%; fondo entro 5%; ombra entro 4%; etichetta intatta; sei file a 300 dpi; registro completo per ogni immagine.\n\nReport: turni usati per immagine, la zona che deriva per prima, i turni rifiutati e il master che rifaresti.\n\nNon rigenerare l'intera immagine per cambiare un colore; non spostare il manico per semplificare; non toccare l'etichetta; non dichiarare finito un turno senza verifica."
+      },
+      {
+        "label": "Test limite",
+        "prompt": "Agisci come art director che mette alla prova la memoria della conversazione su un'immagine densa di testo fine.\n\nInput [da sostituire]: scena 2400×3000 di un menù stampato su tavolo, corpo 9 pt, lieve prospettiva; richieste: cambiare due nomi di piatto e un prezzo; bloccati: font, griglia, texture della carta, luce, prospettiva; testi validati forniti a parte.\n\nConsegna: PNG 2400×3000, ritaglio al 400% sulle righe modificate, registro di tre turni al massimo e nota di fedeltà del testo.\n\nSistema: griglia a 12 colonne, margine 6%; corpo 9 pt; interlinea 12 pt; colore testo #1F1B18; nessuna sfumatura sul foglio.\n\nFlusso: 1) leggi e salva tutto il testo visibile; 2) marca le tre zone di modifica; 3) fai un turno per zona, non per immagine; 4) confronta le lettere al 400%; 5) torna all'originale se l'interlinea si muove; 6) fermati dopo tre turni e riporta; 7) esegui le verifiche; 8) esporta file e nota.\n\nVerifiche: righe non modificate identiche; righe nuove senza errori; corpo 9 pt leggibile al 400%; griglia e margini entro 1 px; nessun piatto o prezzo inventato.\n\nReport: turni usati, la riga che ha perso l'interlinea, il testo che il modello ha indovinato e se la modifica deve passare in impaginazione.\n\nNon inventare un nome di piatto o un prezzo; non riorganizzare la griglia; non accettare un turno che cambia righe non modificate."
+      }
+    ]
+  },
+  {
+    "slug": "free-ai-illustration-generator",
+    "id": "tool-free-ai-illustration-generator-it",
+    "lang": "it",
+    "title": "Quattro illustrazioni, una sola grammatica visiva",
+    "description": "La prova gratuita serve a decidere se lo stile tiene su quattro pezzi diversi: la grammatica si fissa prima di generare, non dopo.",
+    "cta": {
+      "text": "Apri il canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapido",
+        "prompt": "Agisci come illustratore editoriale che deve consegnare quattro illustrazioni coerenti per un articolo, partendo da un riferimento approvato.\n\nInput [da sostituire]: articolo di 1.200 parole su «come scegliere una ceramica da forno»; quattro concetti (impasto, temperatura, crosta, conservazione); riferimento di stile con linea 3 px e due colori #B4553C e #E8DCCB; formato orizzontale.\n\nConsegna: quattro PNG 3000×2000 a 72 dpi per il web, un contact sheet 1600 px e una nota di stile con tre regole.\n\nSistema: margine di sicurezza 5%; una sola linea guida per illustrazione; massimo due colori più il bianco; tratto 3 px a 3000 px; nessuna ombra realistica.\n\nFlusso: 1) scrivi la grammatica in tre regole; 2) fai l'audit del riferimento; 3) prova il concetto più difficile; 4) confronta i quattro; 5) correggi solo l'illustrazione fuori stile; 6) esegui le verifiche; 7) esporta file, contact sheet e nota.\n\nVerifiche: tratto coerente sui quattro pezzi; palette entro le due tinte; margine 5%; nessun testo nell'immagine; 3000×2000 su tutti.\n\nReport: quale concetto perde lo stile, la regola che hai dovuto riscrivere e se i diritti consentono la somiglianza.\n\nNon copiare il tratto dell'autore di riferimento; non usare un terzo colore; non inserire testo generato."
+      },
+      {
+        "label": "Produzione",
+        "prompt": "Agisci come art director che costruisce un sistema di illustrazioni per un blog, con un master di stile riutilizzabile su dodici pezzi.\n\nInput [da sostituire]: dodici articoli, quattro famiglie di concetti, riferimento approvato, palette #B4553C, #E8DCCB, #1F1B18, logo PNG; formati 3000×2000 e 1080×1350.\n\nConsegna: dodici PNG nei due formati a 72 dpi, quattro contact sheet, un master di stile con griglia, spessori e margini, e un registro dei diritti.\n\nSistema: griglia a 12 colonne; tratto 3 px a 3000 px; margine 5%; due colori più il bianco; una sola figura per pezzo; nessuna texture fotografica.\n\nFlusso: 1) raggruppa i concetti in quattro famiglie; 2) fissa il master e le tre regole; 3) proponi tre direzioni per il master, una riga di motivazione ciascuna; 4) produci un pezzo campione per famiglia; 5) confronta i campioni; 6) estendi ai dodici; 7) correggi solo i fuori standard; 8) esegui le verifiche; 9) esporta i formati, i sheet e il registro.\n\nVerifiche: tratto 3 px identico; palette entro due tinte; margine 5%; nessun testo generato; dodici file nei due formati; registro diritti completo.\n\nReport: la famiglia che deriva di più, i pezzi rifatti, il limite del piano gratuito incontrato e cosa non può essere pubblicato.\n\nNon usare un terzo colore; non cambiare spessore per famiglia; non presentare come originali i riferimenti copiati; non dichiarare commerciale un file senza verifica dei diritti."
+      },
+      {
+        "label": "Test limite",
+        "prompt": "Agisci come illustratore che mette alla prova lo stile su un caso limite: un concetto astratto, un formato stretto e un limite di prova già raggiunto.\n\nInput [da sostituire]: un articolo su «quando l'impasto non lievita», concetto astratto (tempo), formato verticale 1080×1920, palette ridotta a #B4553C e bianco, riferimento di stile; il piano gratuito ha già esaurito due generazioni.\n\nConsegna: un PNG 1080×1920, una variante 1080×1080, tre schizzi preparatori a 600 px e una nota su cosa fare quando il limite blocca.\n\nSistema: margine 6%; tratto 4 px a 1080 px; una figura; nessuna texture; contrasto del tratto almeno 3:1 sul fondo.\n\nFlusso: 1) traduci il concetto astratto in una metafora disegnabile; 2) fai tre schizzi a 600 px; 3) scegli quello che resta leggibile a 25%; 4) genera il verticale; 5) genera la variante; 6) verifica e annota il limite; 7) esporta file e nota.\n\nVerifiche: metafora leggibile a 25%; tratto 4 px; margine 6%; palette a due tinte; nessun testo generato; nessuna promessa sui tempi di attesa del piano gratuito.\n\nReport: quale schizzo hai scartato, dove il limite ha fermato il flusso, cosa riusi senza rigenerare e quando conviene passare a un piano a pagamento.\n\nNon inventare un'illustrazione già pronta; non modificare il formato per far entrare la figura; non nascondere il limite incontrato; non usare il lavoro di un altro autore come scorciatoia."
+      }
+    ]
+  },
+  {
+    "slug": "ai-image-enhancer",
+    "id": "tools-ai-image-enhancer-it",
+    "lang": "it",
+    "title": "L'upscale si dimostra al 400%",
+    "description": "Ingrandire è sicuro solo se texture, bordi e volti tengono un ritaglio al 400%: la verifica viene prima dell'esportazione.",
+    "cta": {
+      "text": "Apri il canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapido",
+        "prompt": "Agisci come retoucher che prepara una foto prodotto per la stampa e deve dimostrare che l'upscale tiene al 400%.\n\nInput [da sostituire]: foto 1200 px di una sneaker in tela su fondo bianco, leggera sfocatura sulla punta; colori #1F1B18 e #C8A27A; riga validata «Tela riciclata, 12 taglie».\n\nConsegna: TIFF 3600×3600 a 300 dpi, JPEG 1080×1350 e quattro ritagli al 400% (punta, cucitura, suola, occhiello).\n\nSistema: scarpa sul 62% della larghezza; fondo entro 3% dal bianco; texture della suola leggibile al 400%; ombra morbida 40 px; grana massima 1,5%.\n\nFlusso: 1) fai l'audit di sfocatura, rumore e compressione; 2) ingrandisci 3× preservando la texture; 3) confronta con l'originale al 400%; 4) correggi solo la punta; 5) mantieni la trama continua; 6) esegui le verifiche; 7) esporta file e ritagli.\n\nVerifiche: nessuna cucitura inventata; scala della trama entro 5%; alone sotto 1 px; testo sul collo intatto; al 400% nessun effetto plastica.\n\nReport: quale artefatto hai accettato, quale dettaglio il modello ha inventato, quale zona hai corretto e se il file può andare in stampa.\n\nNon aumentare la nitidezza su tutta l'immagine; non trasformare la grana in plastica; non aggiungere un logo assente."
+      },
+      {
+        "label": "Produzione",
+        "prompt": "Agisci come retoucher di studio che costruisce una passata di upscale ripetibile per venti scansioni di catalogo.\n\nInput [da sostituire]: venti scansioni 2400 px di borse in pelle, qualità mista, tre con moiré e due con blocchi JPEG; righe per SKU; colori #B08968 e #1F1B18; output per stampa e per PDP.\n\nConsegna: venti TIFF 4800×4800 a 300 dpi, venti JPEG 2000 px per il web, quattro ritagli al 400% per tipologia di difetto e un registro delle correzioni.\n\nSistema: prodotto sul 55–65%; fondo entro 3%; texture della pelle entro 5%; alone sotto 1 px; grana massima 1,5%; nessuna correzione globale del colore.\n\nFlusso: 1) classifica i venti difetti; 2) fissa la ricetta di upscale; 3) proponi tre ricette e motivale in una riga; 4) trattane uno campione e confrontalo al 400%; 5) correggi la ricetta, non il singolo file; 6) applica ai venti; 7) rifai solo i file fuori tolleranza; 8) esegui le verifiche; 9) esporta stampa, web e registro.\n\nVerifiche: nessuna trama inventata; cuciture reali intatte; alone sotto 1 px; testo del marchio non riscritto; venti file a 300 dpi; registro per ogni SKU.\n\nReport: la tipologia di difetto che l'upscale peggiora, la ricetta scartata, i file rifatti e il rischio che resta in stampa.\n\nNon applicare la stessa nitidezza ai ritratti e ai prodotti; non rigenerare il fondo; non rimuovere il moiré con un filtro globale; non dichiarare stampabile un file senza ritaglio al 400%."
+      },
+      {
+        "label": "Test limite",
+        "prompt": "Agisci come retoucher che testa l'upscale su un caso limite: un volto piccolo in un'immagine di gruppo con compressione forte.\n\nInput [da sostituire]: immagine 1600×1067, volto di 90 px in un gruppo di sei persone, compressione JPEG visibile, luce mista; colori #1F1B18 e #E8DCCB; obiettivo: manifesti 60×90 cm.\n\nConsegna: TIFF 4800×3200 a 150 dpi, un ritaglio al 400% sul volto, una versione con il volto protetto dalla grana e una nota sui limiti.\n\nSistema: volto sul 3–4% del fotogramma; pelle al 400% senza levigatura; occhi e sopracciglia integri; fondo entro 5%; nessuna ricostruzione dei denti.\n\nFlusso: 1) misura il volto in pixel; 2) ingrandisci e confronta tre livelli di grana; 3) scegli quello che non sembra disegnato; 4) proteggi occhi e bocca; 5) verifica la stampa al 100%; 6) fermati e riporta il limite; 7) esporta file, ritaglio e nota.\n\nVerifiche: volto non levigato; occhi al 400% con bordi naturali; nessun dente ricostruito; fondo entro 5%; testo vicino non deformato.\n\nReport: dove l'upscale inventa, la grana che hai scelto, la zona da non stampare e la dimensione massima consigliata per quel volto.\n\nNon promettere un volto nitido dove i pixel non ci sono; non levigare la pelle per nascondere il rumore; non ricostruire denti o orecchie; non stampare senza ritaglio al 400%."
+      }
+    ]
+  }
+]

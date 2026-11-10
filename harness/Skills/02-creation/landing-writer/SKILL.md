@@ -130,6 +130,33 @@ MCoT Engine · ChatCanvas · Nano Banana Pro · Agentic Intelligence · Touch Ed
 
 SEO TDK（slug / title≤60 / description≤160 / keywords 5–8）+ OG/Twitter Card + FAQPage JSON-LD（仅英文，name/text 与 section 原文逐字一致）。
 
+### TDK 由正文生成（硬规则，2026-11-10）
+
+- 顺序：先写正文，再从正文里取 TDK；禁止先定 title/description 再拿正文凑长度。
+- 长度：title ≤60 字符、seo.title ≤60、description ≤160、seo.description ≤160。超长时按句号/词边界重写（保留一个可验证细节），禁止字符截断。
+- 一致性：description 的主词与页面主词一致；title 不必等于 H1，但必须是同一承诺的另一句表达。
+- 门禁：preflight_tdk_i18n.py 的 TDK_LEN 检查在写库前阻断；publish_composite() 同样拒写。
+
+### 标题标准（55–60 字，2026-11-10）
+
+- 长度：55–60 字符（60 为硬上限）。落地页标题常按两行排版；低于 45 字显得单薄，接近 60 才承载得起「痛点 + 场景 + 判断」。CJK 按 ≤30 字控制。
+- 结构三选一：① 失败/痛点直述（Your product images fail Merchant Center）② 反常识纠正（Slide makers are not course material）③ 数字 + 场景（Clip four / 2 seconds / Forty variants）。
+- 禁止：「主题: 承诺」两词组模具（AI Logo Generator Workflow: Move Generation First）、空泛形容词（professional、powerful、seamless）、问句开头。
+- 必备：一个具体失败点或场景（Merchant Center、clip four、thumbnail size、RSVP、field edits）+ 一个动作或判断；标题可保留冒号，但后半句必须是结论/代价，不是类别名。
+- 语言：按文档 language 原生写作，不机翻；seo.title 与 title 同值。
+- 校验：preflight_tdk_i18n.title_reasons + 55–60 长度；禁止字符截断；写库前 dry-run。
+- 示例（en）：
+  - 差：AI Product Images That Pass Merchant Center（43 字，只有主题没有痛点）
+  - 好：Your Product Images Fail Merchant Center, Not the Shoot（55 字，失败点 + 判断）
+
+### bodyJson 语种（硬规则，2026-11-10）
+
+- bodyJson 的正文语言 = 文档 language；非中文语种的正文不得出现简体中文段落。
+- 占位符（__品牌N__、双花括号模板）与内部话术（GSC 曝光、核心矩阵）一律 BLOCK。
+- 门禁：dev/scripts/library/body_lang.py 同时接入 preflight_tdk_i18n.py --body、tdk_report.py、lang-check.sh 与 publish_composite()；写前阻断，不是 WARN。
+
+SEO TDK（slug / title≤60 / description≤160 / keywords 5–8）+ OG/Twitter Card + FAQPage JSON-LD（仅英文，name/text 与 section 原文逐字一致）。
+
 ## 自检清单（交付前逐项）
 
 composite-v2（C/D/E）：schemaVersion · storylineTemplate 合法 · bodyJson 无 legacy type · 模块序列与故事线 sections 一致 · 10 语言齐 · media.src 来自图库或 [待考证]。

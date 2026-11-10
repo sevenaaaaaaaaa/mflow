@@ -105,7 +105,7 @@ PY
 )"
   CJK_P="${EN_CJK%% *}"; CJK="${EN_CJK##* }"
   if [[ "$CJK_P" -gt 0 ]]; then err "英文正文含中文标点 $CJK_P 处"; else ok "英文标点规范"; fi
-  if [[ "$CJK" -gt 20 ]]; then warn "英文正文含汉字 $CJK 个（疑似未翻译）"; else ok "无未翻译残留"; fi
+  if [[ "$CJK" -gt 20 ]]; then err "英文正文含汉字 $CJK 个（疑似未翻译）"; else ok "无未翻译残留"; fi
 fi
 
 # ④ 语言残留（CJK 文档里出现整句英文以外的常见外文虚词）
@@ -114,6 +114,12 @@ if [[ "$LANG" == "zh" || "$LANG" == "zh-TW" ]]; then
   EN_WORDS=$(printf '%s' "$BODY" | grep -oE '\b(the|and|with|your|from|that|this|for)\b' | wc -l | tr -d ' ' || true)
   if [[ "$EN_WORDS" -gt 5 ]]; then warn "中文正文含英文虚词 $EN_WORDS 处（检查未翻译片段）"; else ok "无未翻译片段"; fi
 fi
+
+# ⑤ body language (shared body_lang rule)
+echo "[5/5] body language"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+"$PY3" "$ROOT_DIR/dev/scripts/library/check_body_cli.py" "$FILE" "$LANG" || err "body language mismatch"
 
 echo ""
 if [[ ${#ERRORS[@]} -gt 0 ]]; then echo "VERDICT: BLOCK (${#ERRORS[@]} errors, ${#WARNINGS[@]} warnings)"; exit 1; fi

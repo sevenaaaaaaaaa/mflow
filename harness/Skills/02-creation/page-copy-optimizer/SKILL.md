@@ -210,3 +210,11 @@ python3 "harness/Skills/02-creation/page-copy-optimizer/scripts/select_list_copy
 - 不为配合图片而弱化页面真实承诺；图片与文案冲突时先修叙事或 slot。
 - 不把“更短”误认为“更好”；删掉的是无信息修辞，保留的是 input、output、proof 和边界。
 - **知识库红线优先于 CRO**：任何一句未被 Lovart 知识库支持的“更有转化力”的话，都不能进入 replacement copy。
+
+## 标题（TDK title）长度与结构
+
+- 长度 55–60 字符（60 为硬上限）；CJK 按 ≤30 字控制；低于 45 字的标题视为“信息量不足”，不得作为 replacement。
+- 结构三选一：失败/痛点直述、反常识纠正、数字+场景；禁止「主题: 承诺」两词组模具与空泛形容词。
+- 必须具备一个具体失败点或场景（Merchant Center、clip four、thumbnail size、RSVP）+ 一个动作或判断；seo.title 与 title 同值。
+- 详细规则与示例见 harness/Skills/02-creation/landing-writer/SKILL.md 的「标题标准（55–60 字）」。
+- 写回前用 preflight_tdk_i18n.title_reasons + 长度校验；禁止字符截断。

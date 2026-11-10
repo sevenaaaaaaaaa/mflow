@@ -6,7 +6,7 @@ from pathlib import Path
 CRED_DIR = Path(__file__).resolve().parent
 OAUTH_FILE = CRED_DIR / "oauth-client.json"
 TOKEN_FILE = CRED_DIR / "gsc-token.json"
-SCOPES = ["https://www.googleapis.com/auth/webmasters.readonly"]
+SCOPES = ["https://www.googleapis.com/auth/webmasters"]  # 2026-11-04: 提交 sitemap 需要写权限
 
 def main():
     if not OAUTH_FILE.exists():
@@ -15,7 +15,7 @@ def main():
     from google_auth_oauthlib.flow import InstalledAppFlow
 
     flow = InstalledAppFlow.from_client_secrets_file(str(OAUTH_FILE), SCOPES)
-    creds = flow.run_local_server(port=0)
+    creds = flow.run_local_server(port=0, open_browser=True, timeout_seconds=600)
 
     data = {
         "token": creds.token,

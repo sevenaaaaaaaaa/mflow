@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-11-06T18:11:14+08:00",
+  "scope": "remaining 225 docs / 373 historical rows from inline-dead-links-final.csv",
+  "docs_scanned": 225,
+  "unique_links": 406,
+  "status_counts": {
+    "200": 388,
+    "404": 5,
+    "308": 13
+  },
+  "cache_only_404": {
+    "urls": [
+      "https://www.lovart.ai/canvas",
+      "https://www.lovart.ai/r/vb528cq",
+      "https://www.lovart.ai/r/4u5daa9",
+      "https://www.lovart.ai/r/chj3she",
+      "https://www.lovart.ai/r/1f1zqly"
+    ],
+    "note": "clean 请求命中 CDN 旧 404；Cache-Control: no-cache 或随机 query 均返回 200，源站无死链"
+  },
+  "effective_dead": 0,
+  "restored_pages": [
+    "https://www.lovart.ai/blog/ai-design-vs-diy-canva-which-saves-more-time",
+    "https://www.lovart.ai/blog/best-ai-design-agent-for-day-spa-owner",
+    "https://www.lovart.ai/blog/best-ai-design-tools-for-non-designers-comparison",
+    "https://www.lovart.ai/blog/lovart-ai-community-deep-thinking-design",
+    "https://www.lovart.ai/blog/lovart-official-chinese-entry-guide",
+    "https://www.lovart.ai/blog/how-much-does-ai-design-cost-complete-breakdown",
+    "https://www.lovart.ai/blog/lovart-pro-ai-design-agent-logos-brands-video"
+  ],
+  "link_remaps": {
+    "batch4": 5,
+    "batch5": 2,
+    "total": 7,
+    "mapping": {
+      "/wiki/getting-started-2027": "/docs/getting-started/how-lovart-works",
+      "/ai-bar-menu-maker": "/features/bar-menu-design",
+      "/ai-corporate-presentation-maker": "/features/professional-corporate-presentation-design",
+      "/ja/agent/model-select": "/ja/blog/complete-guide-ai-image-model-selection-2026",
+      "/wiki/create-brand-identity-ai-2027(de)": "/de/blog/how-to-create-brand-identity-ai-design-agent",
+      "/wiki/create-brand-identity-ai-2027(fr)": "/fr/blog/how-to-create-brand-identity-ai-design-agent"
+    }
+  },
+  "note": "373 行是修复前快照；前几批已把绝大多数改掉，当前实际不可达仅 CDN 缓存假 404。"
+}

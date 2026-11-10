@@ -1,0 +1,18 @@
+== sitemap ==
+  FAIL  index 子项数 got=27 want=30
+  FAIL  features locs got=2213 want=5817
+  FAIL  tools locs got=4529 want=1158
+  FAIL  blog locs got=1548 want=1509
+  FAIL  lang-ja locs got=844 want=757
+  FAIL  scenarios 已清空 got=700 want=0
+  FAIL  draft- 残留 got=70 want=0
+== robots ==
+  FAIL  Sitemap 条数 got=27 want=1
+  FAIL  Sitemap 指向 index got=0 want=1
+  FAIL  Crawl-delay 条数 got=9 want=0
+== llms ==
+  FAIL  llms.txt 版本 got=0 want=1
+  FAIL  llms-blog 条数 got=1552 want=1510
+  FAIL  llms-full 条数 got=1373 want=15374
+
+PASS=0 FAIL=13

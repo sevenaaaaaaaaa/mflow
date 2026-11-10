@@ -1,0 +1,177 @@
+[
+  {
+    "slug": "video-generator",
+    "id": "tools-video-generator-en",
+    "lang": "en",
+    "title": "Route the shot before you write a better prompt",
+    "description": "One product still, three routes, one 10-second cut. Pick the engine that reads at 1.5 seconds, then direct the shots around it.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a video director who ships paid social for a small brand. Turn one product still into a 10-second 9:16 clip, and choose the model route before you write motion.\n\nInputs [replace]: product still 2400 px of a canvas tote on a concrete step; brand colors ink #1F1B18, oat #E8DCCB; one line 'Carries 18 kg, weighs 380 g'.\n\nDeliverable: 1080x1920 MP4, 10s, 30 fps, one caption line burned in, first-frame JPG.\n\nWorkflow: 1) restate the brief and list what the still cannot support; 2) board three routes (camera move, object motion, type-led) with one line each; 3) pick the route that reads at 1.5s; 4) build at three shots maximum; 5) run gates; 6) export.\n\nGates: tote shape and stitching unchanged; copy spelled exactly; caption readable at 360 px width; safe zones 12% top and 18% bottom; no frame where the strap fuses into the bag.\n\nAudit: route chosen, shot count, where the route struggled, and which first frame you would test.\n\nDo not invent material, capacity, price or logo; do not add music I did not supply."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a senior video director and editor for a DTC accessories brand. Build one 20-second 16:9 film and three paid cutdowns from a single still, routing each shot to the engine you judge best.\n\nInputs [replace]: 4000 px studio still of a waxed-canvas weekender bag; logo PNG; two approved lines 'Waxed canvas, 42 L' and 'Repairs free for five years'; brand palette ink #1F1B18, oat #E8DCCB, rust #B4553C; no people on camera.\n\nDeliverables: 3840x2160 master at 20s and 24 fps; 1080x1920, 1080x1350 and 1920x1080 cutdowns at 10s; SRT plus burned-in captions; first-frame JPGs; a route log naming the engine for each shot and why.\n\nDesign system: safe zones 12% top and 18% bottom; captions two lines maximum at 42 px on the vertical cut; one accent color only on the end card; bag occupies 35-55% of frame; no more than two moves per shot.\n\nWorkflow: 1) intake and copy check; 2) shot list with timecodes and a route per shot; 3) three opening boards; 4) pick the opening that reads at 1.5s; 5) build the product beat and end card; 6) cut three ratios and match the grade; 7) run gates; 8) export with the route log.\n\nGates: stitching and hardware unchanged; both lines exact; captions readable at 360 px width; grade matches across ratios; no invented spec or price; audio -14 LUFS if music is added.\n\nAudit: route per shot, rejected routes, ratio checks, and any shot you would reshoot with a real camera.\n\nDo not add a voiceover I did not approve; do not restyle the bag; do not crop the logo; do not use footage I did not supply."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a video lead stress-testing route selection. Start from a weak input and prove where the model choice stops helping.\n\nInputs [replace]: 1200 px phone photo of a glass bottle on a cluttered kitchen counter, hard window reflection on the label, horizon tilted by 4 degrees; one approved line 'Cold-pressed, 250 ml'.\n\nDeliverable: one 1080x1920 10s MP4, one 6s hook-first cut, a limitation note, first-frame JPG.\n\nWorkflow: 1) audit what the photo cannot support; 2) propose three routes that hide or use the clutter, one line each; 3) choose the safest route and state the trade-off; 4) build only the beats the input supports; 5) run gates; 6) export both cuts.\n\nGates: label text not regenerated; horizon corrected within 1 degree; caption readable at 360 px; no warped bottle geometry; no invented ingredient claim.\n\nAudit: what failed, what you hid, the maximum usable duration, and whether the input needs a reshoot.\n\nDo not upscale the photo and call it 4K; do not invent a set or a bottle; do not blur a defect to hide it. If 10s cannot hold the line, return the 6s cut and explain the trade-off."
+      }
+    ]
+  },
+  {
+    "slug": "seedance-2-ai-video-generator",
+    "id": "tools-seedance-2-ai-video-generator-en",
+    "lang": "en",
+    "title": "One photo in, a six-angle SKU rotation out",
+    "description": "Turn a single product JPEG into a catalog rotation with one locked light, so a 40-SKU drop ships without a studio day.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a product photographer and retoucher running a catalog shoot. From one JPEG, build a six-shot rotation for a single SKU without changing the product.\n\nInputs [replace]: 3000 px front photo of a matte ceramic mug on white, softbox left; glaze color sand #D8C3A5; SKU code MUG-07.\n\nDeliverable: six 1080x1350 stills and one 6s 1080x1920 clip at 24 fps; consistent shadow direction; file names sku-angle-version.\n\nWorkflow: 1) audit the photo for occluded detail and blown highlights; 2) list the six angles and what each proves; 3) lock one light direction and one shadow length; 4) generate in the order front, three-quarter, macro, in-hand, scale, packshot; 5) run gates; 6) export.\n\nGates: handle join and rim thickness identical across angles; glaze within 2% of #D8C3A5; no invented logo or capacity; shadow falls left in every frame.\n\nAudit: angles delivered, the angle that drifted most, and what the single photo could not prove.\n\nDo not redesign the mug; do not add a saucer I did not supply; do not change the glaze color per angle."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a studio lead building a repeatable SKU pipeline for a homeware catalog. Take one photo per SKU and produce a consistent six-angle set plus one ad cut, so a 40-SKU drop ships without a studio day.\n\nInputs [replace]: 4000 px front photo of a stoneware jug, softbox left, white sweep; three SKUs (jug, mug, bowl) in the same glaze; approved copy 'Dishwasher safe, 1.2 L'; brand palette sand #D8C3A5, clay #B4553C, ink #1F1B18.\n\nDeliverables: six stills per SKU at 2000x2000 and 1080x1350; one 6s 9:16 cut per SKU; a contact sheet; a lighting recipe with key and fill distances; names sku-angle-ratio-version.\n\nDesign system: key light at 45 degrees, fill at 30%; shadow length 15-20% of product height; product occupies 60-70% of frame; background white within 3% variance; no gradient backdrop.\n\nWorkflow: 1) intake the three photos and flag mismatches; 2) fix the lighting recipe before generating; 3) generate six angles per SKU in the same order; 4) compare angles side by side; 5) build the 6s cut from the strongest two angles; 6) run gates; 7) export with the contact sheet.\n\nGates: silhouette and rim match the source photo; glaze identical across SKUs; no invented hallmarks; shadow direction identical; captions readable at 360 px.\n\nAudit: per-SKU drift, rejected angles, and the SKU you would shoot again.\n\nDo not change proportions to make a SKU fit; do not reuse one SKU's texture on another; do not add props I did not list."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a retoucher stress-testing a one-photo pipeline. The input is a bad catalog photo and the brand still expects six angles.\n\nInputs [replace]: 1400 px photo of a glass tumbler shot on a wooden table, warm window light, fingerprints on the glass, base cropped out; approved line 'Hand-blown, 300 ml'.\n\nDeliverable: three usable angles, one 6s 1080x1920 clip, a defect list, first-frame JPG.\n\nWorkflow: 1) list every defect and whether generation can fix it; 2) propose three angles the photo can support; 3) choose the safest and state what will still look wrong; 4) generate only those angles; 5) run gates; 6) export with the defect list.\n\nGates: no invented bubbles or engraving; base not completed with a guess; glass edges not doubled; fingerprints not cloned into the product; caption readable at 360 px.\n\nAudit: defects accepted, angles refused, and whether the SKU needs a reshoot before it goes to the catalog. If the defect list outnumbers the usable angles, stop and return a reshoot brief instead of a set.\n\nDo not smooth the glass into plastic; do not invent a filled liquid; do not deliver six angles when three are honest."
+      }
+    ]
+  },
+  {
+    "slug": "ai-video-ad-generator-seedance",
+    "id": "tools-ai-video-ad-generator-seedance-en",
+    "lang": "en",
+    "title": "Motion per product, not one template for every SKU",
+    "description": "Each SKU gets its own physical move, pour or lid or drape, while one shared end card keeps the set reading as a campaign.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as an ad director building one 15-second product video where the motion comes from what the product does, not from a template.\n\nInputs [replace]: 3000 px photo of a stoneware pour-over dripper on white; approved claim 'Brews 500 ml in 3 minutes'; brand color clay #B4553C.\n\nDeliverable: 1080x1920 MP4, 15s, 30 fps, captions burned in, first-frame JPG.\n\nWorkflow: 1) name the one physical action this product can perform on camera; 2) write a three-beat shot list around that action; 3) reject any pan or zoom that would work for a different product; 4) build the pour, the claim and the end card; 5) run gates; 6) export.\n\nGates: ceramic thickness and glaze unchanged; the pour starts before 3s; claim exact; captions readable at 360 px; end card holds 2s minimum.\n\nAudit: the action chosen, the template move you rejected, and where physics broke.\n\nDo not make liquid appear from nowhere; do not restyle the dripper; do not use a stock hand I did not supply."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as an ad director for a three-SKU homeware drop. Build three 15-second 9:16 ads where each product gets its own motion signature, then one shared end card so the set still reads as a campaign.\n\nInputs [replace]: 4000 px photos of a pour-over dripper, a lidded pan and a serving bowl; approved claims '500 ml in 3 minutes', 'Oven safe to 260 C', 'Serves 6'; brand palette clay #B4553C, sand #D8C3A5, ink #1F1B18.\n\nDeliverables: three 1080x1920 MP4s at 15s and 30 fps; one 5s end card reused across all three; SRT plus burned-in captions; first-frame JPGs; names sku-motion-version.\n\nDesign system: action inside the first 3s; product fills 40-55% of frame; captions two lines at 42 px; end card locked for 2s; one accent color per ad; no more than two camera moves.\n\nWorkflow: 1) intake photos and claims; 2) assign one physical motion per SKU (pour, lid open, toss) and write why; 3) storyboard each ad in three beats; 4) cut the shared end card first; 5) build each ad to the same rhythm; 6) confirm no two ads share a move; 7) run gates; 8) export.\n\nGates: each ad contains a product-specific action; no identical transition across ads; claims exact; captions readable at 360 px; end card identical in all three.\n\nAudit: motion assigned per SKU, the move you cut for time, and which ad still looks templated.\n\nDo not reuse the pour shot for the pan; do not change lids or handles; do not add food styling I did not brief."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a motion lead stress-testing per-SKU motion. The product has no obvious action on camera and the client still wants 15 seconds.\n\nInputs [replace]: 3000 px photo of a linen table runner folded flat; approved claim 'Stone-washed, 2.4 m'; no people, no table setting.\n\nDeliverable: one 1080x1920 15s MP4 with an honest motion plan, one 6s fallback cut, first-frame JPG.\n\nWorkflow: 1) list the physical behaviours the runner actually has (fold, drape, edge seam, weave); 2) pick the two that read in 1.5s; 3) design a motion that does not fake a person; 4) build only those beats; 5) run gates; 6) export both cuts with the trade-off.\n\nGates: weave scale unchanged; edge seam visible; no floating fabric against gravity; claim exact; no invented texture or color.\n\nAudit: which behaviours were usable, what was dropped, and whether this SKU should run stills instead of video. If no behaviour survives the 1.5s read, return a stills-and-type treatment and say so in one line.\n\nDo not invent a hand or a table; do not make linen behave like silk; do not stretch 15s when 6s is honest."
+      }
+    ]
+  },
+  {
+    "slug": "seedance-ai-video-ads-generation",
+    "id": "tools-seedance-ai-video-ads-generation-en",
+    "lang": "en",
+    "title": "Three variants, one variable each, mapped to funnel",
+    "description": "Ship three deliberate cuts instead of thirty near-duplicates: hook, proof and offer, each with a written hypothesis.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a performance creative lead planning three ad variants for one product, each changing exactly one variable.\n\nInputs [replace]: 2400 px photo of a stainless steel water bottle; approved claim 'Keeps cold 24 hours'; offer 'Free shipping over 40'; brand palette steel #8A8F94, ink #1F1B18.\n\nDeliverable: three 1080x1920 MP4s at 10s and 30 fps; a variant sheet naming the changed variable; first-frame JPGs.\n\nWorkflow: 1) name the funnel stages (cold, warm, hot); 2) assign one variable to each variant (hook, proof, offer); 3) keep product, claim and grade identical; 4) build three cuts; 5) run gates; 6) export with the variant sheet.\n\nGates: only the named variable differs; claim exact in all three; captions readable at 360 px; safe zones 12% top and 18% bottom; no variant changes the bottle.\n\nAudit: the variable per variant, what you held constant, and which one you would kill first.\n\nDo not generate near-duplicates; do not change two variables in one cut; do not invent a discount."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a performance creative lead building a three-variant test for a paid-social campaign, with a fourth cut held out as the control.\n\nInputs [replace]: three photos of one insulated bottle (hero, in bag, on desk); approved claims 'Keeps cold 24 hours' and 'Fits a cup holder'; offer '20% off first order'; brand palette steel #8A8F94, ink #1F1B18, accent lime #C6F24E; one existing 10s control ad.\n\nDeliverables: three 1080x1920 MP4s at 10s and 30 fps; one 10s control cut re-exported clean; a matrix sheet with variable, hypothesis and metric; SRT plus burned-in captions; names variant-stage-version.\n\nDesign system: hook inside 1.5s; product 40-55% of frame; captions two lines at 42 px; safe zones 12% top and 18% bottom; grade matched across all four files; one accent color only in the offer variant.\n\nWorkflow: 1) audit the control and record its baseline metric; 2) choose three variables, one per variant; 3) write the hypothesis for each before generating; 4) build all three against the same shot list; 5) confirm the control still renders clean; 6) run gates; 7) export the matrix.\n\nGates: one variable per variant; claims exact; offer only in the offer variant; captions readable at 360 px; control unchanged; no variant differs in length.\n\nAudit: variable, hypothesis, held-constant list, and the read you expect at 10k impressions.\n\nDo not add a second offer; do not change the product or grade; do not call a variant a winner without data."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a creative strategist stress-testing a variant plan when three SKUs look almost identical.\n\nInputs [replace]: three near-identical photos of navy cotton T-shirts (crew, v-neck, long sleeve); approved claim 'Combed cotton, 180 gsm'; offer 'Buy 2, save 15%'; one 10s control ad with no captions.\n\nDeliverable: three 1080x1920 10s variants and a written test plan; one file per variable; first-frame JPGs.\n\nWorkflow: 1) list what actually differs between the three SKUs; 2) decide whether the variable is product, hook or proof; 3) design a visual device that makes the difference legible in 1.5s; 4) build the three cuts; 5) run gates; 6) export with the test plan.\n\nGates: collar and stitch count correct per SKU; claim exact; no invented fabric weight; captions readable at 360 px; no cut relies on color alone.\n\nAudit: whether the set is testable at all, the device used, and whether a single-SKU test would be cleaner. Label each variant with the single variable it tests and hold the other two constant in the sheet.\n\nDo not fake a fabric macro; do not swap SKUs between cuts; do not ship three variants when only one is truly different."
+      }
+    ]
+  },
+  {
+    "slug": "hailuo-2-3-ai-video-generator",
+    "id": "tools-hailuo-2-3-ai-video-generator-en",
+    "lang": "en",
+    "title": "Everyday motion first: hands, steam and small gestures",
+    "description": "Route realistic everyday movement to the model that holds it, and keep complex hand action out of the shot.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a lifestyle video director shooting a 6-second everyday-motion clip for a coffee brand.\n\nInputs [replace]: 2400 px photo of a ceramic cup on a wooden counter, morning window light; approved line 'Single origin, roasted weekly'; no actor, one hand only.\n\nDeliverable: 1080x1920 MP4, 6s, 24 fps, natural handheld feel, first-frame JPG.\n\nWorkflow: 1) list the small motions this scene can carry (steam, hand entering, cup lift); 2) choose one and state why it reads as real; 3) storyboard it in two beats; 4) build with one camera move maximum; 5) run gates; 6) export.\n\nGates: five fingers visible and correctly jointed in every frame; steam rises with the light direction; cup logo unchanged; no warp on the rim; safe zones 12% top and 18% bottom.\n\nAudit: the gesture chosen, the frame where the hand broke, and whether a real shot would be cheaper.\n\nDo not show a second hand; do not invent a roastery; do not add a face I did not supply."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a lifestyle video director building a 15-second everyday-motion scene for a skincare brand, where realism beats spectacle.\n\nInputs [replace]: 3000 px photo of a glass pump bottle on a bathroom shelf; approved claims 'Fragrance free' and '200 ml'; one hand-model reference still; brand palette aloe #DCE8DC, ink #1F1B18.\n\nDeliverables: one 1080x1920 MP4 at 15s and 24 fps; one 6s cut; SRT plus burned-in captions; first-frame JPG; a limit note on hand interaction.\n\nDesign system: one hand only; pump action readable in 1.5s; product 30-45% of frame; soft window light from the left; captions two lines at 42 px; safe zones 12% top and 18% bottom.\n\nWorkflow: 1) intake the still and the hand reference; 2) list the motions inside a realistic range; 3) storyboard three beats: reach, pump, settle; 4) check joint count and pump travel before generating; 5) build the 15s and the 6s cut; 6) run gates; 7) export with the limit note.\n\nGates: five fingers and one thumb per frame; pump depresses before product appears; label text unchanged; no invented dermatology claim; mist only if I asked; pump travel stays inside the bottle stroke.\n\nAudit: which beats held, the first frame the hand failed, and which beats to reshoot with a camera.\n\nDo not add a second hand or an arm; do not change the bottle; do not make the product float."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a motion lead stress-testing everyday motion at the edge of what the model can hold.\n\nInputs [replace]: 1800 px photo of a zipped leather wallet on a table; approved claim 'Full-grain leather, 8 card slots'; a brief asking for unzipping, card removal and a hand toss.\n\nDeliverable: one 1080x1920 10s MP4, a shorter 6s cut, and a written verdict on which actions are safe.\n\nWorkflow: 1) rank the three actions by difficulty; 2) mark the one most likely to break; 3) propose a camera angle that hides the weak joint; 4) build only the two safest actions; 5) run gates; 6) export with the verdict.\n\nGates: zipper teeth count stays plausible; cards do not multiply; five fingers per frame; leather grain scale unchanged; claim exact.\n\nAudit: which action broke, whether the angle hid it, and the maximum safe duration. Re-rank the three actions after generation and report whether your ranking held. Name the action you would never attempt without a reshoot.\n\nDo not fake a hand-off between shots; do not add a coin or a receipt; do not deliver the toss if it breaks geometry."
+      }
+    ]
+  },
+  {
+    "slug": "ai-motion-control",
+    "id": "tools-ai-motion-control-en",
+    "lang": "en",
+    "title": "Borrow the camera move, keep the brand subject",
+    "description": "Transfer a reference clip's path onto on-brand assets and keep the subject recognisable across three ratios.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a motion designer applying a reference camera move to a brand asset. Copy the path, not the subject.\n\nInputs [replace]: a 12-second reference clip of a slow orbit around a perfume bottle; brand asset 2400 px of a candle jar; brand palette wax #EFE6D8, ink #1F1B18.\n\nDeliverable: 1080x1920 MP4, 5s loop, 30 fps, seamless first and last frame, first-frame JPG.\n\nWorkflow: 1) describe the reference path in one sentence with timing marks; 2) map the path to the candle at the same angular speed; 3) check that the label stays readable across the orbit; 4) build the 5s loop; 5) run gates; 6) export.\n\nGates: candle geometry unchanged; label legible for 4 of 5 seconds; loop seam invisible; light direction constant; no object from the reference appears.\n\nAudit: path translation, the frame where tracking slipped, and whether the loop needs a hold frame.\n\nDo not copy the perfume bottle; do not add the reference's hand or set; do not re-time the move without saying so."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a motion designer building a reusable motion system for a brand kit: one reference clip, three products, three aspect ratios.\n\nInputs [replace]: 8s reference clip with a push-in plus a 15-degree tilt; three brand stills (candle jar, reed diffuser, matchbox) at 3000 px; brand palette wax #EFE6D8, ink #1F1B18, accent rust #B4553C; logo PNG.\n\nDeliverables: three 5s loops at 1080x1920, 1080x1080 and 1920x1080; a motion spec sheet with path, duration and easing; first-frame JPGs; names product-ratio-version.\n\nDesign system: one path per product at the same angular speed; product 50-65% of frame; label readable for 4 of 5 seconds; loop seam invisible; light from one direction; no more than two moves.\n\nWorkflow: 1) break the reference into path, speed and easing; 2) test the path on the first product; 3) lock the spec before touching the other two; 4) build all three ratios from that spec; 5) compare seams side by side; 6) run gates; 7) export with the spec sheet.\n\nGates: geometry and logo unchanged; the three products share one path; no reference object leaks in; loop seam invisible at 100% zoom; captions readable at 360 px; the 4:5 crop keeps the label inside frame.\n\nAudit: spec written, drift per product, and the ratio that lost the label.\n\nDo not restyle the products; do not let one product use a different path; do not crop the logo."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a motion lead stress-testing reference transfer when the reference itself is unusable.\n\nInputs [replace]: 6s phone clip with heavy shake, two hard cuts and a moving background; brand still 1600 px of a leather notebook; approved line 'A5, 240 pages'.\n\nDeliverable: one 1080x1920 5s loop, one 3s hold version, a verdict on the reference, first-frame JPG.\n\nWorkflow: 1) audit the clip for shake, cuts and parallax; 2) decide what can be transferred and what must be rebuilt; 3) propose a stabilised path with a shorter duration; 4) build the 5s loop and the 3s hold; 5) run gates; 6) export with the verdict.\n\nGates: no inherited shake; no cut inside the loop; notebook edges stay straight; page count plausible; label readable.\n\nAudit: what transferred, what was rebuilt, and whether the clip should be rejected outright. State the source resolution of every delivered frame and the crop percentage you refused. Name the duration you would need to keep the full frame unwarped.\n\nDo not stabilise by cropping 40% of the frame; do not invent a second cut; do not claim the reference was usable."
+      }
+    ]
+  },
+  {
+    "slug": "seedance-2-ai-video-ad-generator-high-conversion",
+    "id": "tools-seedance-2-ai-video-ad-generator-high-conversion-en",
+    "lang": "en",
+    "title": "One brief into ten testable ads, not one clever ad",
+    "description": "Build a format matrix from a single brief: hooks, product moments and proof, with claim-safe copy and a naming system.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a conversion-focused ad producer turning one product brief into a 10-variant test set.\n\nInputs [replace]: 2400 px photo of a folding camp chair; approved claims 'Holds 120 kg' and 'Folds to 8 cm'; offer 'Ships in 2 days'; brand palette moss #5B6B4A, sand #D8C3A5.\n\nDeliverable: ten 1080x1920 MP4s at 10s and 30 fps; a matrix sheet mapping hook, proof and CTA; first-frame JPGs.\n\nWorkflow: 1) restate the brief and list the approved claims; 2) write four hooks and two proof beats; 3) combine them into ten variants with one variable each; 4) build the ten cuts from one shot list; 5) run gates; 6) export the matrix.\n\nGates: every claim exact and approved; hook inside 1.5s; captions readable at 360 px; safe zones 12% top and 18% bottom; no invented price or rating.\n\nAudit: the matrix, the variants you expect to fail, and the metric you will read at 10k impressions.\n\nDo not add a review or star rating I did not supply; do not change the chair; do not ship two variants that differ only in color."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a conversion producer building a six-week test set for one product, with ten ads mapped to format and funnel stage.\n\nInputs [replace]: three photos of a folding camp chair (packed, open, in use); approved claims 'Holds 120 kg', 'Folds to 8 cm', 'Ships in 2 days'; two proof assets (a 15-second user clip, three review quotes I will supply); brand palette moss #5B6B4A, sand #D8C3A5, ink #1F1B18.\n\nDeliverables: ten 1080x1920 MP4s at 10s and 30 fps; four format cuts (9:16, 4:5, 1:1, 16:9) of the top two; a matrix sheet with hook, proof, CTA, format and metric per variant; SRT plus burned-in captions; names format-hook-version.\n\nDesign system: hook in the first 1.5s; product 40-55% of frame; captions two lines at 42 px; safe zones 12% top and 18% bottom; one accent color per variant; end card 2s; no more than two camera moves.\n\nWorkflow: 1) intake claims and proof assets; 2) build the hook bank and proof bank; 3) map ten combinations to funnel stages; 4) generate from one shared shot list; 5) check claim safety on every cut; 6) run gates; 7) export the matrix and the four formats.\n\nGates: claims exact and approved; no review quote without a source; captions readable at 360 px; aspect crops keep the product whole; no variant repeats another's hook and proof pair.\n\nAudit: matrix, claim risk per variant, and the three cuts you would spend budget on first.\n\nDo not invent a rating, discount or delivery promise; do not change the chair; do not use a proof asset I did not supply."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a conversion lead stress-testing a test set when the product is regulated and the claims are thin.\n\nInputs [replace]: 2000 px photo of a vitamin bottle; approved line 'Food supplement, 60 capsules, not a medicine'; no efficacy claim allowed; brand palette sage #A8B5A0, ink #1F1B18.\n\nDeliverable: six 1080x1920 10s variants, a compliance note, first-frame JPGs.\n\nWorkflow: 1) list what cannot be said and why; 2) replace every efficacy hook with a usage or format hook; 3) write six variants that compete on clarity, not claims; 4) build them from one shot list; 5) run gates; 6) export with the compliance note.\n\nGates: no health claim of any kind; disclaimer legible at 24 px minimum; product label text unchanged; captions readable at 360 px; no before-after framing.\n\nAudit: rejected hooks, the disclaimer placement, and whether any variant still implies a benefit. Mark every line that needs legal review and count the variants that survive it.\n\nDo not imply a cure, a result or a timeline; do not alter the label; do not hide the disclaimer in the last frame."
+      }
+    ]
+  }
+]

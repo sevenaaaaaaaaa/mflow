@@ -1,0 +1,7 @@
+# gitleaks false positives: LinkedIn client IDs in data exports under run/ (gitignored)
+run/cro/de-rebuild-d3-20261110-170846.jsonl:linkedin-client-id:6
+run/sitemap-rebuild-20261109/llms-full.txt:linkedin-client-id:5837
+run/seo-delivery-20261109/llms-full.txt:linkedin-client-id:5837
+run/seo-delivery-20261110/llms-full.txt:linkedin-client-id:5857
+run/landing-copy-audit/pages-20261109-120506.jsonl:linkedin-client-id:5810
+run/landing-copy-audit/pages-20261109-120712.jsonl:linkedin-client-id:5810

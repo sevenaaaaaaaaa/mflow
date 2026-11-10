@@ -1,0 +1,567 @@
+[
+ {
+  "id": "ai-video-generator-tools-zh",
+  "slug": "ai-video-generator-tools",
+  "lang": "zh",
+  "removed": [
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证：具体失败率数据未系统统计]",
+     "context": "最强，是选最对。按我目前的使用分工： - **Sora 2**：写实材质、光影层次。适合产品静物、真实感场景。 - **Gemini Veo 3**：流体、烟雾、布料这类连续形变。 - **Kling 2.6**：人物肢体动作、复杂姿态。 这个分工不是官方说法，是我按失败率倒推的 [待考证：具体失败率数据未系统统计]。但逻辑站得住：每个模型的训练数据分布不同，你让它做分布外的事，抽卡次数就会飙升。 真正的效率差在这里：如果你在一个工作区里能直接换模型重跑同一条提示词，切换成本接近零；如果你要开三个网页、三次登录、三次重新粘贴素材，你会本能地“凑合用当前这个”，然后花更多时间修一个本"
+    }
+   }
+  ]
+ },
+ {
+  "id": "ai-video-generator-workflow-en",
+  "slug": "ai-video-generator-workflow",
+  "lang": "en",
+  "removed": [
+   {
+    "path": "[3].items[0].description",
+    "sentence": {
+     "marker": " [待考证 — based on my own test runs, not a published benchmark]",
+     "context": "After roughly a dozen test generations across the four models, here's the split that held up [待考证 — based on my own test runs, not a published benchmark]: - **Sora 2 / Sora 2 Pro** — photoreal textures, rain, skin, reflective surfaces. Best for documentary-style B-roll. - **Veo 3.1** — tempor"
+    }
+   }
+  ]
+ },
+ {
+  "id": "ai-youtube-thumbnail-generator-it",
+  "slug": "ai-youtube-thumbnail-generator",
+  "lang": "it",
+  "removed": [
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证，来源为该频道自述]",
+     "context": "+背景），再用 Text Edit 点进去打字。** Lovart 的 Text Edit 允许你点击图上任意文字直接改内容、字体、颜色，不用整张重生成。我改一个标题从 40 秒降到 5 秒。 这里有个真实数字对照：某测评频道公开说，换用高对比风格后 CTR 从 4% 提到 9% [待考证，来源为该频道自述]。我不保证你也能翻倍，但\"先底图后文字\"这个顺序，是我 30 天里唯一确定有效的操作。"
+    }
+   }
+  ]
+ },
+ {
+  "id": "certificate-design-en",
+  "slug": "certificate-design",
+  "lang": "en",
+  "removed": [
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证 — verify against current plan limits]",
+     "context": " pairing. Describing \"formal academic diploma, serif title, navy and gold, logo top-center\" and getting a structured draft in under a minute [待考证 — verify against current plan limits] beats starting from a blank canvas. Lovart's page advertises a free"
+    }
+   },
+   {
+    "path": "[3].items[0].description",
+    "sentence": {
+     "marker": " [待考证 — depends on printer]",
+     "context": " checklist after three bad print runs: - **Bleed and margins:** confirm the export includes bleed; trim variance on premium paper eats 1–3mm [待考证 — depends on printer]. - **Font embedding:** open the PDF and check fonts are embedded, or your elegan"
+    }
+   }
+  ]
+ },
+ {
+  "id": "event-poster-maker-en",
+  "slug": "event-poster-maker",
+  "lang": "en",
+  "removed": [
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证 — confirm against your printer's spec]",
+     "context": "ate in one line. **Number 1: minimum body text size.** For print viewed at 1–3 meters, body copy below roughly 24pt at A2 becomes unreadable [待考证 — confirm against your printer's spec]. State the minimum in the brief."
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-3d-animation-pt",
+  "slug": "ai-3d-animation",
+  "lang": "pt",
+  "removed": [
+   {
+    "path": "[3].items[0].description",
+    "sentence": {
+     "marker": "[待考证：基于我手头三条文案的字符数对比，样本量小]",
+     "context": "换文本层。 我实测的顺序是：先做葡语 master 并确认结构，再复制结构、只换文案。这样两个版本的镜头运动完全一致，观众感知是\"同一支广告的不同语言版\"，而不是\"两支不同的广告\"。 一个限制要说清楚：文本层替换要求原文案长度接近，否则会撑破安全区。西语通常比葡语长 10–15%[待考证：基于我手头三条文案的字符数对比，样本量小]，所以我在 brief 阶段就预留了字符余量。 ---"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-3d-model-generator-free-pt",
+  "slug": "ai-3d-model-generator-free",
+  "lang": "pt",
+  "removed": [
+   {
+    "path": "[3].items[0].description",
+    "sentence": {
+     "marker": " [待考证：个人样本]",
+     "context": "踩完上面那些坑之后，我现在的流程固定成三步，重生成次数从平均 3.5 次降到 1 次左右 [待考证：个人样本]。 1. **2D 阶段定三件事**：整体比例、关键倒角半径、材质主色。用参考图模式（image referencing）把这三项锁在一张图上。 2. **3D 阶段只跑一次**，提示词里带上 2D 图作为参考，明确写 `match reference proportions`。"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-album-cover-generator-fr",
+  "slug": "ai-album-cover-generator",
+  "lang": "fr",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": " [待考证：基于个人操作计时，非产品官方数据]",
+     "context": "一个独立厂牌一周要出 3 张单曲封面、1 张 EP 视觉、若干社媒裁切版。用纯生成工具，常见做法是每个素材生成 8–12 张挑一张，改文案时整批重来。 我实测过一轮：同一支单曲，封面文案从「feat.」改成正式署名，纯生成流程要重新跑 6 次才有一张排版没崩的，累计约 40 分钟 [待考证：基于个人操作计时，非产品官方数据]。问题不在模型，在于每次生成都是一次全新的排版决策——字体位置、留白、logo 大小全在变。 Lovart 的做法不一样：先用 MCoT 规划阅读顺序（标题→艺人名→副信息→厂牌 logo），再在 ChatCanvas 里把方向并排比较，最后用 Brand Kit"
+    }
+   },
+   {
+    "path": "[3].items[0].description",
+    "sentence": {
+     "marker": " [待考证：具体比例按各平台规范调整]",
+     "context": "社媒裁切是专辑封面的隐形杀手。方形母版直接裁成 9:16，标题经常被切掉一半。 我的处理方式是在 brief 阶段就标注安全区：主标题放在中心 60% 区域内，副信息放边缘但留 8% 边距 [待考证：具体比例按各平台规范调整]。这样同一母版导出方形、竖版、横版三种尺寸时，核心信息都不会丢。 Lovart 的导出环节会检查安全区，但检查不等于自动修——如果 brief 阶段没留余量，导出时只能看到警告，还是得回母版调。这也是为什么我把「安全区」写进了必填字段清单，而不是留到导出再处理。"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-album-cover-generator-pt",
+  "slug": "ai-album-cover-generator",
+  "lang": "pt",
+  "removed": [
+   {
+    "path": "[3].items[0].description",
+    "sentence": {
+     "marker": " [待考证：具体输出上限以产品实际为准]",
+     "context": "交平台还会做圆形头像式裁切。我见过太多封面在原图里惊艳，缩到 64×64 的播放列表缩略图里变成一团模糊色块。 所以我在母版阶段就做一件事：**把封面缩到 200×200 看一眼**。如果这时候曲名还读得出来、主体还认得出，这个构图才算过关。Lovart 的页面提到 8K 分辨率 [待考证：具体输出上限以产品实际为准]，但高分辨率救不了糟糕的构图——放大是清晰的一团糊，缩小是模糊的一团糊。 这里的操作建议很具体：主体元素占画面不超过 40%，曲名放在缩略图仍可见的中央区域，装饰性元素全部放到边缘、接"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-animation-generator-pt",
+  "slug": "ai-animation-generator",
+  "lang": "pt",
+  "removed": [
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证：基于我个人 3 支动画的计时，非官方基准]",
+     "context": "一个具体流程，我用它把单支动画的修改时间从约 40 分钟压到 8 分钟左右 [待考证：基于我个人 3 支动画的计时，非官方基准]： 1. **Brief 阶段写死三件事**：用途（官网首屏 / 信息流 / 展会循环）、必须出现的字段（价格、日期、CTA 文案）、禁止项（竞品色、未授权的字体）。 2. **先生成 2–3 个方向，只比\"可读性\"**：哪一版在手机小屏上标题还能看清，就选哪一版。不要在这一步纠"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-app-icon-generator-pt",
+  "slug": "ai-app-icon-generator",
+  "lang": "pt",
+  "removed": [
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证：基于我个人 12 次会话记录，非产品官方数据]",
+     "context": "拉出 4 个方向（几何抽象 / 字母构成 / 具象物件 / 负空间），在 ChatCanvas 上并排放。你不需要判断\"哪个更好\"，你只需要判断\"哪个方向值得继续\"。这是完全不同的认知任务，而且快得多——我的记录是 4 个方向 6 分钟出齐，而串行试错平均要 30 分钟以上才收敛 [待考证：基于我个人 12 次会话记录，非产品官方数据]。 一个反共识的判断：**生成次数不是努力指标，是 brief 失败的指标。** 如果你第 5 次还在改 prompt，说明前 "
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-artwork-generator-pt",
+  "slug": "ai-artwork-generator",
+  "lang": "pt",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": " [待考证：未做眼动仪，仅基于小样本点击反馈]",
+     "context": "）先规划视觉的阅读路径，再决定元素摆放。这个功能听起来抽象，落到具体场景就很好懂： 一张 campaign 主视觉，用户眼睛先落在哪、第二个信息看到什么、CTA 在哪一步出现——这个顺序错了，图再美也不转化。我做过一版促销图，标题和折扣数字都很大，结果测试时用户先看到的是背景插画 [待考证：未做眼动仪，仅基于小样本点击反馈]。 可执行的做法：在 prompt 里显式写阅读顺序，比如\"先品牌名 → 再核心 claim → 最后行动信息\"，而不是只写\"高级感、留白、极简\"。前者是可验证的结构，后者是形容词。 ---"
+    }
+   },
+   {
+    "path": "[5].items[0].answer",
+    "sentence": {
+     "marker": " [待考证：样本为单人次 12+3 版对比，未做多人复现]",
+     "context": "我实测过一轮：同一个系列海报需求，让 AI Artwork Generator 一次出 12 版自由发挥，和先写死 4 条约束（标题字数、必填信息、品牌色 HEX、安全边距）再出 3 版，后者可用率明显更高 [待考证：样本为单人次 12+3 版对比，未做多人复现]。"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-asset-management-enterprise-fr",
+  "slug": "ai-asset-management-enterprise",
+  "lang": "fr",
+  "removed": [
+   {
+    "path": "[3].items[0].description",
+    "sentence": {
+     "marker": " [待考证：具体倍数需按实际项目计时]",
+     "context": "图的构图、光影、人物全变了，整页视觉一致性崩掉。 Lovart 的 Touch Edit / Text Edit 就是为这个场景准备的：只改局部文字和数字，构图不动。我在一个季度更新场景里实测过，同样是改三个数字，重生成要重排整页视觉，局部编辑只动那一块，前者花的时间是后者的数倍 [待考证：具体倍数需按实际项目计时]。 判断标准很简单：**如果错的只有数字、日期或标题文字，用局部编辑；如果错的是构图逻辑或信息层级，才值得重生成。**"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-avatar-generator-free-fr",
+  "slug": "ai-avatar-generator-free",
+  "lang": "fr",
+  "removed": [
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证，样本为本人 4 周记录]",
+     "context": "单人循环：简报 → 选方向 → 局部改，几乎不用开会。我单人跑的时候，一个头像系列从简报到导出约 25 分钟 [待考证，样本为本人 4 周记录]。"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-avatar-generator-pt",
+  "slug": "ai-avatar-generator",
+  "lang": "pt",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": " [待考证：具体供应商报价区间]",
+     "context": "我第一个项目是给一个 SaaS 客户做 6 条产品解说短视频，需要一位固定的虚拟讲解员。按传统流程，3D 角色建模加绑定报价在 $200–1000+ 区间，周期以周计 [待考证：具体供应商报价区间]。我当时的判断很简单：AI 生成头像，怎么也能压到一天。 结果第一天产出的 14 张头像，单看每一张都能用，放在一起就是 14 个人。脸型接近，但颧骨高度、发际线、眼距全在漂移。这就是\"生成\"和\"角色一致性\"之间的鸿沟：前者是秒级操作，后者才是项目能不能交付的分水岭。 Lovar"
+    }
+   },
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证：具体偏移幅度，未做量化评测]",
+     "context": "照片路径的逻辑是：你上传一张肖像，AI 提取面部特征生成数字化版本。听起来是\"复制\"，实际是\"重绘\"。 我拿自己的证件照试了 5 次。生成结果的面部结构准确度不错，但每次的皮肤质感、光影方向、年龄感都有偏移——有一次生成结果看起来比我实际年龄大 [待考证：具体偏移幅度，未做量化评测]。对个人用户这无所谓，对企业品牌虚拟人就是灾难：你的\"品牌代言人\"在每张素材里年龄都不一样，观众不会说\"这是 AI 生成的\"，观众会说\"这家公司换人了\"。 我的做法是：定稿一张基准头像后，把它当作参考图锁定，后续所有变体都从这张派生，而不是重新生成。这个动作把一致性问题的解决成本"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-discord-banner-en",
+  "slug": "ai-discord-banner",
+  "lang": "en",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": " [待考证 — confirm against current Discord developer docs]",
+     "context": "nt sizes depending on where it appears: the server invite card, the sidebar hover, the mobile header. The recommended upload size is 960×540 [待考证 — confirm against current Discord developer docs]. But the visible area in the invite embed is narrower than the ful"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-logo-generator-ru",
+  "slug": "ai-logo-generator",
+  "lang": "ru",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": " [待考证: цифра из маркетинговых материалов Lovart, независимого замера нет]",
+     "context": "**Основатели стартапов.** Логотип за часы, а не недели. Заявленная экономия против фрилансера — $500+ и две недели ожидания [待考证: цифра из маркетинговых материалов Lovart, независимого замера нет]. **Агентства и фрилансеры.** 5-6 направлений за время, которое раньше уходило на один эскиз. AI — для и"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-video-generator-no-templates-ko",
+  "slug": "ai-video-generator-no-templates",
+  "lang": "ko",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": " [待考证: 모델별 정량 벤치마크 수치는 공개 자료 없음]",
+     "context": "모델 선택은 취향이 아니라 장면 유형으로 갈립니다. 제가 세 모델을 같은 조건에서 돌려보며 정리한 기준입니다. - **Sora 2**: 물리적 움직임이 자연스러워야 하는 장면. 사람이 걷거나 물체가 떨어지는 컷에서 다른 모델 대비 덜 어색했습니다. [待考证: 모델별 정량 벤치마크 수치는 공개 자료 없음] - **Veo 3**: 조명과 질감이 중요한 클로즈업. 피부·금속·물 표면의 반사 처리에서 차이가 났습니다. - **Kling 2.6**: 이미지-투-비디오 일관성. 브랜드 로고나 제품 컷을 참조 이미지로 넣고 애니메이션화할 때 형"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-ai-video-generator-workflow-by-lovart-ko",
+  "slug": "ai-video-generator-workflow-by-lovart",
+  "lang": "ko",
+  "removed": [
+   {
+    "path": "[3].items[0].description",
+    "sentence": {
+     "marker": " [待考证: 모델별 편차는 프롬프트에 따라 달라짐]",
+     "context": " 이제 클립을 뽑습니다. 여기서 \"한 모델로 통일\"이라는 통념을 버려야 합니다. - 사실적인 물리 움직임(제품 회전, 천 흔들림)은 Veo 3 계열이 안정적입니다. - 스타일라이즈드한 캐릭터 애니메이션은 Kling 2.6이 더 잘 맞는 경우가 많습니다 [待考证: 모델별 편차는 프롬프트에 따라 달라짐]. - 짧은 루프·모션 그래픽은 Hailuo 쪽이 빠릅니다. Lovart 캔버스는 이걸 한 화면에서 처리합니다. 샷 A는 Veo 3로, 샷 B는 Kling으로 생성하고 나란히 배치하면, 내보내기 전에 톤과 연속성을 눈으로"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-food-festival-poster-design-en",
+  "slug": "food-festival-poster-design",
+  "lang": "en",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": " [待考证 — viewing-distance figure is a working estimate, not a measured study]",
+     "context": "be legible at distance. Street posters are viewed from roughly 3–10 meters, and at that range viewers process shape and contrast before text [待考证 — viewing-distance figure is a working estimate, not a measured study]. So the first decis"
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-food-social-media-design-en",
+  "slug": "food-social-media-design",
+  "lang": "en",
+  "removed": [
+   {
+    "path": "[4].items[2].answer",
+    "sentence": {
+     "marker": " [待考证 — platform-level save-rate benchmarks vary by account size and niche]",
+     "context": "ones a viewer can act on: a recipe card, a \"3 things to order\" carousel, a price-and-hours graphic. Saves correlate with utility, not beauty [待考证 — platform-level save-rate benchmarks vary by account size and niche]."
+    }
+   }
+  ]
+ },
+ {
+  "id": "features-seedance-2-ai-video-generator-agent-zh",
+  "slug": "seedance-2-ai-video-generator-agent",
+  "lang": "zh",
+  "removed": [
+   {
+    "path": "[3].items[0].description",
+    "sentence": {
+     "marker": " [待考证：具体架构细节未公开]",
+     "context": "体转个角度结构就塌。我第一版测试片里，一个手表表盘在慢镜头中齿轮直接糊成一团。 Seedance 2.0 的处理方式是在多帧之间维持结构和角色特征。同样的手表镜头重做后，齿轮咬合关系在整个运动过程中保持了稳定。官方说明这是底层架构对 3D 空间和物理世界的理解带来的，不是后期修补 [待考证：具体架构细节未公开]。 对做电商 B-roll 的人来说，这一条比任何\"电影级\"形容词都实在：白底图进去，专业摄影棚质感的动态素材出来，而且可以直接商用。"
+    }
+   }
+  ]
+ },
+ {
+  "id": "food-flyer-design-en",
+  "slug": "food-flyer-design",
+  "lang": "en",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": " [待考证 — pull current ANA/DMA response-rate report before publishing]",
+     "context": " *response* medium with a brutally short window. Direct mail response rates for restaurant promotions typically sit in the low single digits [待考证 — pull current ANA/DMA response-rate report before publishing], and most of that variance is explained by offer"
+    }
+   }
+  ]
+ },
+ {
+  "id": "seedance-batch-creative-production-zh",
+  "slug": "seedance-batch-creative-production",
+  "lang": "zh",
+  "removed": []
+ },
+ {
+  "id": "tool-ai-avatar-generator-en",
+  "slug": "ai-avatar-generator",
+  "lang": "en",
+  "removed": []
+ },
+ {
+  "id": "tools-ai-background-remover-zh",
+  "slug": "ai-background-remover",
+  "lang": "zh",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": " [待考证：不同工具表现差异明显，此处为个人实测观察]",
+     "context": "背景移除的算法逻辑是分割：识别主体、切掉其余。听起来干净，实际留下两类残骸。 第一类是**边缘**。头发丝、毛绒玩具、半透明纱质衣物、玻璃杯——这些区域的像素是主体色和背景色的混合值，硬切会留下锯齿或白边。我拿一张逆光拍摄的模特图测试，头发外轮廓在多数工具里变成了一圈灰雾 [待考证：不同工具表现差异明显，此处为个人实测观察]。 第二类是**空洞**。产品图里镂空的把手、眼镜框中间的缝隙、树枝间的天空——这些\"背景中的主体包围区\"如果被误判为主体，抠完就成了实心块。 这就是为什么我反对把背景移除当成\"点一下\"的动作。**它是一次分割判断，判断就有错判率，错判就得有人修。** ---"
+    }
+   },
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证：样本为个人测试批次]",
+     "context": "我做了一批日用品主图，流程是拍摄→去背景→合成到场景图。第一轮全部用自动工具跑，结果30张里有11张需要返工 [待考证：样本为个人测试批次]。 返工原因集中在两处：**投影丢失**和**接触面断裂**。 产品放在桌面上拍摄，原图里有一层淡淡的接触阴影。工具把阴影连同背景一起切掉后，产品像悬浮在空中。合成到新场景时，你必须手动补一层阴影，否则视觉重心是飘的。 更麻烦的是接触面。杯底和桌面的交界处，分割线一旦偏上2像素，"
+    }
+   }
+  ]
+ },
+ {
+  "id": "tools-ai-banner-maker-free-fr",
+  "slug": "ai-banner-maker-free",
+  "lang": "fr",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": " [待考证：样本为本账号 2026-07 的 6 次操作]",
+     "context": "改成 39，日期从 6 月推到 7 月。你回到那个工具，发现它只记得提示词，不记得版式，于是你重新生成四张，挑一张“差不多”的，标题层级又变了。 我在一个内容运营的账号上实测过这个循环：同一张促销 banner，改价格和日期，纯提示词重生成平均要 4 轮才能拿回一个层级正确的版本 [待考证：样本为本账号 2026-07 的 6 次操作]。这不是模型不行，是工具没给你“只改数字”的入口。 判断标准很简单：**这个免费工具能不能在不重新生成整张图的前提下，改一"
+    }
+   }
+  ]
+ },
+ {
+  "id": "tools-ai-image-extender-it",
+  "slug": "ai-image-extender",
+  "lang": "it",
+  "removed": [
+   {
+    "path": "[4].items[0].answer",
+    "sentence": {
+     "marker": " [待考证: campione interno non pubblicato]",
+     "context": "rato un controllo visivo a dimensione reale, 6 hanno mostrato artefatti di cucitura sui bordi estesi oltre il 40% della dimensione originale [待考证: campione interno non pubblicato]. Il patte"
+    }
+   }
+  ]
+ },
+ {
+  "id": "tools-ai-photo-editor-online-zh",
+  "slug": "ai-photo-editor-online",
+  "lang": "zh",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": "[待考证：单次操作计时，非严格测试环境]",
+     "context": "器 online”，真实需求是“我手上这张图/这个需求，要变成能发出去的成品”。但搜到的工具给你的是另一件事：图层、蒙版、滤镜、导出分辨率。 这两件事差多远？我实测过一次：给某餐饮客户做一张门店引流用的门挂图，先用某在线编辑器从模板改，改字体、换图、调色、导出，前后 40 多分钟[待考证：单次操作计时，非严格测试环境]。同一需求丢给 Lovart，描述“门挂尺寸、品牌色、主打菜品、留出二维码位”，几秒出多个方案，再点选微调。差距不在“快 10 倍”这种口号，而在**你是在操作软件，还是在描述结果**。 一个判断标准：如果你的下一步动作是“打开软件找功能”，你用的是编辑"
+    }
+   }
+  ]
+ },
+ {
+  "id": "tools-ai-product-background-it",
+  "slug": "ai-product-background",
+  "lang": "it",
+  "removed": [
+   {
+    "path": "[5].items[0].answer",
+    "sentence": {
+     "marker": " [待考证：具体像素与占比请以 Amazon 官方图片规范为准]",
+     "context": "先说结论：电商平台的合规背景是硬约束，不是审美偏好。以 Amazon 主图为例，行业通行要求是纯白背景（#FFFFFF）、产品占画面 85% 以上、带自然柔和阴影，常见建议尺寸 2000×2000px [待考证：具体像素与占比请以 Amazon 官方图片规范为准]。"
+    }
+   }
+  ]
+ },
+ {
+  "id": "tools-ai-twitter-header-creator-lovart-it",
+  "slug": "ai-twitter-header-creator-lovart",
+  "lang": "it",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": " [待考证：以 X 官方帮助中心当前规格为准]",
+     "context": "大多数团队把头图当成一次性设计交付物：找设计师、出两版、选一版、上传、半年不动。这个流程的问题不在质量，在节奏。 Twitter/X 头图的标准尺寸是 1500×500 像素 [待考证：以 X 官方帮助中心当前规格为准]，这个比例在移动端会被裁掉左右两侧约三分之一。也就是说，你在桌面端精心排版的 logo 和标语，在手机信息流里可能只剩中间一块。设计师交付的是静态文件，但头图真正需要的是\"每次活动、每次改简介、每次换定位都能立刻重出一版\"的能力。 这就是我把头图从设计流程里拆出来的原因：它不是品"
+    }
+   }
+  ]
+ },
+ {
+  "id": "tools-ai-video-generator-free-zh",
+  "slug": "ai-video-generator-free",
+  "lang": "zh",
+  "removed": [
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": "[待考证具体数值]",
+     "context": "15秒这个限制经常被当成缺点，但放到实际发布场景里，它反而是免费版最实用的设计。 抖音、视频号、小红书的短视频内容，15秒是完播率相对稳定的区间。我实测把同一段文案做成15秒和30秒两版发在视频号，15秒版的完播率明显更高[待考证具体数值]，因为30秒版第20秒后开始掉人。 操作步骤： 1. 用中文写15秒脚本，控制在40-50字（正常语速约每秒3字） 2. 输入 Lovart，选择写实或动画基础风格 3. 开启中文配音，选一个音色 4. 预览后导出MP4 这里有个细节：脚本超字数会导致配音被压缩或画面节奏错位。我"
+    }
+   }
+  ]
+ },
+ {
+  "id": "tools-nano-banana-free-pt",
+  "slug": "nano-banana-free",
+  "lang": "pt",
+  "removed": [
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证具体额度]",
+     "context": "。 **场景三：产品经理做概念草图。** 我拿它给一个落地页画了 8 版 hero 区概念图，全部免费，最后只挑了 1 版交给设计精修——省下的订阅费够请设计喝两轮咖啡。 反过来，**不适合**的场景也很明确：需要印刷级分辨率、需要商用授权、需要批量稳定出图（免费层有使用频率限制 [待考证具体额度]）。 ---"
+    }
+   }
+  ]
+ },
+ {
+  "id": "tools-seedance-2-ai-video-generator-en",
+  "slug": "seedance-2-ai-video-generator",
+  "lang": "en",
+  "removed": [
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证 — ranges from Lovart's own comparison table, not third-party audited]",
+     "context": "ber that matters to a brand team. Traditional product videography runs **$500–2,000+ per shoot**; 3D rendering runs **$100–500+ per render** [待考证 — ranges from Lovart's own comparison table, not third-party audited]. Either way, 50 SKUs means months of production and a five-figure line"
+    }
+   }
+  ]
+ },
+ {
+  "id": "topic-ai-logo-generator-landing-trial-now-pt",
+  "slug": "ai-logo-generator-landing-trial-now",
+  "lang": "pt",
+  "removed": [
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证：需以产品页当前说明为准]",
+     "context": "第一个锚点是导出格式。Lovart 的 AI Logo Maker 支持 SVG 矢量导出 [待考证：需以产品页当前说明为准]，这是印刷与大幅面物料的硬门槛，位图生成器在这一步就出局。 第二个锚点是编辑方式。页面原本把 Touch Edit、Text Edit、Edit Elements 分散在 capability-tabs 和 feature-detail 两段里讲，读者要拼。我把它合并成一句可摘录"
+    }
+   }
+  ]
+ },
+ {
+  "id": "topic-hailuo-ai-video-generator-landing-trial-now-ko",
+  "slug": "hailuo-ai-video-generator-landing-trial-now",
+  "lang": "ko",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": " [待考证：具体条数未记录]",
+     "context": "格丢进去，让这些信息进入生成前的判断，而不是生成后再靠人眼挑。差别在哪：前者出来的钩子自带品类语感，后者出来的是“通用好看”。 我第一次试的时候跳过了这步，直接写提示词，结果 6 条里 5 条构图都对、文案全错——它不知道我卖的是冷萃还是挂耳。补上产品页链接后重跑，可用率明显变化 [待考证：具体条数未记录]。 **Hailuo 在 Lovart 里的定位是"
+    }
+   },
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证：耗时未计时]",
+     "context": "信息流，要换结尾 CTA，要把品牌色压回去——这三件事在分散工具里是三次返工。Lovart 的做法是触摸编辑 + 文本编辑在同一张画布上改，布局不动，只改元素。我实测过一个具体动作：把成片里的价格文案从“₩4,900”改成“₩3,900”，在画布上直接点文字改，不用回生成队列重跑 [待考证：耗时未计时]。 扩展环节更被低估。同一份 brief 铺到 PDP、付费社交、邮件头图、视频钩子，四个表面四种比例。如果每换一个渠道就重开一次生成，品牌一致性必然掉。Brand Kit 的作用是把视觉规则固定"
+    }
+   }
+  ]
+ },
+ {
+  "id": "topic-talking-avatar-landing-trial-now-de",
+  "slug": "talking-avatar-landing-trial-now",
+  "lang": "de",
+  "removed": [
+   {
+    "path": "[1].items[0].description",
+    "sentence": {
+     "marker": " [待考证分辨率]",
+     "context": "这是模板组最致命的地方。图像生成页讲「多比例、多模型、变体」，说话头像页讲这些是错位的——用户要的是**口型对上、语气对、能剪进投放**。 差异化段只放三件事，每件对应一个可验证的结果： 1. **口型与台词同步**：上传 30 秒脚本，输出带口型的成片 [待考证分辨率]。 2. **UGC 风格开场**：同一头像，换语气重录，不改机位。 3. **多语言变体**：同一段脚本出 3 个语言版本，服装和构图保持一致。 每一条都要配一个「点这里，用这个模板试」的按钮，而不是配一张图。图是给人看的，按钮是给人试的。"
+    }
+   },
+   {
+    "path": "[4].stats[0].label",
+    "sentence": {
+     "marker": " [待考证分辨率]",
+     "context": "**口型与台词同步**：上传  秒脚本，输出带口型的成片 [待考证分辨率]"
+    }
+   }
+  ]
+ },
+ {
+  "id": "topic-text-to-image-landing-trial-now-pt",
+  "slug": "text-to-image-landing-trial-now",
+  "lang": "pt",
+  "removed": [
+   {
+    "path": "[2].items[0].description",
+    "sentence": {
+     "marker": " [待考证：样本为内部 A/B 观测，未做显著性检验]",
+     "context": "工作流三步 → 对比表 → FAQ → CTA。序列本身没错，错在每一页都用它，且每一页的功能段都在讲\"我们有什么\"而不是\"你这页要做什么\"。 我踩过的坑：把一个数字人落地页的 bento 段直接复用到文生图页，只改了图标和标题。上线两周，页面停留中位数从 48 秒掉到 31 秒 [待考证：样本为内部 A/B 观测，未做显著性检验]。原因不是设计，是文案在讲\"四个控制\"，而访问者是搜\"text to image\"进来的，他要看的是\"我的文字怎么变成能投的图\"。 重排后的序列应该是：hero（承诺缩小版）→ 差异化内容段（这页专属：文"
+    }
+   }
+  ]
+ }
+]

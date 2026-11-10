@@ -1,0 +1,77 @@
+[
+  {
+    "slug": "ai-flyer-generator",
+    "id": "tools-ai-flyer-generator-en",
+    "lang": "en",
+    "title": "The print shop checks bleed before it checks the design",
+    "description": "A flyer is a print file first: 3 mm bleed, 300 dpi, exact trim, and copy that survives a 1:1 check at the counter.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a print designer producing one A4 event flyer that a local print shop can run without a phone call.\n\nInputs [replace]: event 'Ceramics Workshop, Sat 10:00-16:00'; venue 'Kiln St Studio'; price 'GBP 45'; palette clay #B4553C, oat #E8DCCB, ink #1F1B18; one 3000 px photo.\n\nDeliverable: one A4 210x297 mm PDF at 300 dpi with 3 mm bleed and crop marks, one PNG proof, and a preflight note.\n\nDesign system: trim 210x297 mm; bleed 3 mm; safe margin 5 mm; headline 36-48 pt; date and price 14 pt minimum; one accent; 30 words maximum; CMYK output.\n\nWorkflow: 1) restate the event fields; 2) set up the document at trim plus bleed; 3) place the photo and type; 4) check at 100%; 5) run preflight; 6) export a print PDF with marks; 7) write the note.\n\nGates: trim exact; 3 mm bleed on all four sides; no text outside the 5 mm safe margin; price exact; image at least 300 dpi at placement; fonts embedded.\n\nAudit: the preflight warning you accepted, the field closest to the trim, and whether the photo needs a higher resolution.\n\nDo not add a sponsor or a discount; do not put the QR code in the safe margin; do not stretch the logo."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a print production lead building a four-format flyer system for a season of workshops, with one grid and one preflight standard.\n\nInputs [replace]: six workshops with dates and prices; palette clay #B4553C, oat #E8DCCB, ink #1F1B18; four formats (A4, A5, US Letter, DL); two photos.\n\nDeliverables: twenty-four PDFs at 300 dpi with 3 mm bleed (US Letter 0.125 in bleed), crop marks, a grid system sheet, and names workshop-format-version.\n\nDesign system: A4 210x297 mm; A5 148x210 mm; US Letter 8.5x11 in; DL 99x210 mm; safe margin 5 mm; headline 36-48 pt at A4, 0.71x at A5; one accent; 30 words maximum.\n\nWorkflow: 1) intake six workshops and four formats; 2) set the master grid at A4; 3) build one canary per format; 4) check trim, bleed and type at 100%; 5) batch the remaining; 6) preflight all twenty-four; 7) run gates; 8) export with the grid sheet.\n\nGates: every trim exact; bleed 3 mm or 0.125 in; all fonts embedded; no text outside safe margin; image 300 dpi at placement; prices exact.\n\nAudit: the format that broke the grid, preflight failures, and the file you would re-export.\n\nEvery file is checked at 100%. Do not scale A4 to US Letter by eye; do not reuse one crop across formats; do not add a workshop I did not list."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a print designer stress-testing a flyer when the only logo is a 400 px PNG and the photo is a phone capture.\n\nInputs [replace]: 400 px logo PNG, 1200 px phone photo, A5 flyer, 300 dpi required; palette ink #1F1B18 and clay #B4553C.\n\nDeliverable: one A5 print PDF with a limitation note, one proof at 100%, and a logo placement report.\n\nWorkflow: 1) measure the effective dpi of both assets at placement; 2) list what cannot reach 300 dpi; 3) place the logo at native size and report it; 4) keep the photo at 150 dpi or above; 5) check type and bleed; 6) run gates; 7) export with the note.\n\nGates: effective dpi reported per asset; no upscale beyond 150%; bleed 3 mm; logo not stretched; no text over the logo.\n\nAudit: the dpi you accepted, the asset that needs a vector, and whether the print shop should be warned.\n\nEffective dpi is printed on the proof. Do not upscale the logo silently; do not blur the photo to hide pixels; do not claim 300 dpi for a 1200 px photo."
+      }
+    ]
+  },
+  {
+    "slug": "ai-commercial-photography",
+    "id": "tools-ai-commercial-photography-en",
+    "lang": "en",
+    "title": "One photo, four shots, one light recipe",
+    "description": "Commercial photography from one capture only works when the light recipe, the product geometry and the shadow stay locked across all four angles.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a commercial retoucher turning one product still into four studio-grade shots without changing the product.\n\nInputs [replace]: 4000 px photo of a matte ceramic mug on white, softbox camera-left; palette sand #D8C3A5, ink #1F1B18; approved line 'Dishwasher safe, 350 ml'.\n\nDeliverable: four 4000x5000 images at 300 dpi (front, three-quarter, macro, in-hand) plus a light recipe sheet.\n\nDesign system: one key direction; one shadow length; product 40-55% of frame; glaze within 2% of #D8C3A5; macro at 1:2; no invented logo.\n\nWorkflow: 1) measure key direction and shadow; 2) write the light recipe; 3) generate the front view; 4) check handle geometry; 5) generate the other three; 6) compare colour; 7) run gates; 8) export with the recipe.\n\nGates: handle and rim identical across four; glaze within 2%; shadow direction constant; no invented capacity; 300 dpi on all four.\n\nAudit: the angle that drifted, the colour delta, and the shot you would redo with a camera.\n\nDo not change the mug; do not add a saucer; do not relight per angle."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a studio lead building a four-shot commercial set for twelve SKUs from one capture each, with a locked light recipe.\n\nInputs [replace]: twelve 4000 px product photos shot in one session, softbox 45 degrees camera-left, white sweep; palette sand #D8C3A5, clay #B4553C, ink #1F1B18; approved copy per SKU.\n\nDeliverables: forty-eight images at 4000x5000 and 300 dpi; one light recipe sheet; a per-SKU contact sheet; a consistency report; names sku-angle-version.\n\nDesign system: key 45 degrees camera-left; shadow 15-20% of product height; product 40-55%; material within 3% of source; macro at 1:2; one accent; one background value; no gradient backdrop; product centred within 2%.\n\nWorkflow: 1) intake twelve photos and flag lighting mismatches; 2) fix the light recipe before any generation; 3) canary one SKU across four angles; 4) compare geometry and shadow; 5) batch the remaining eleven; 6) audit every fourth file; 7) run gates; 8) export with the report.\n\nGates: geometry within 2% across angles; shadow direction identical; material colour within 3%; no invented hallmark; all files 300 dpi.\n\nAudit: per-SKU drift, the angle that failed, and the SKU that needs a reshoot.\n\nEach file carries a 300 dpi check and a colour patch, exported as TIFF in sRGB. All files are checked twice. Do not reuse one SKU's texture on another; do not change proportions; do not add props."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a retoucher stress-testing a commercial set when the product is glass and the capture is imperfect.\n\nInputs [replace]: 2000 px photo of a glass carafe, hard window reflection across the body, base partly cropped; approved line '1 L, hand-blown'; palette ice #DCE6E4 and ink #1F1B18.\n\nDeliverable: three usable angles, one limitation note, one reflection report, and 300 dpi files.\n\nDesign system: one light direction; one background value; 300 dpi; the reflection map is part of the handoff.\n\nWorkflow: 1) audit reflection, refraction and the cropped base; 2) list which angles the photo can support; 3) choose three and state what stays wrong; 4) generate them; 5) keep the reflection honest; 6) run gates; 7) export with both notes.\n\nGates: no invented engraving; base not guessed; glass edge not doubled; reflection not painted over; 300 dpi at 4000 px.\n\nAudit: angles refused, defects accepted, and whether the SKU needs a reshoot.\n\nNo angle ships without a defect line. Do not fake a filled carafe; do not smooth glass into plastic; do not deliver four angles when three are honest."
+      }
+    ]
+  },
+  {
+    "slug": "ai-book-cover-generator",
+    "id": "tools-ai-book-cover-generator-en",
+    "lang": "en",
+    "title": "Genre cues first, decoration second",
+    "description": "A cover sells before it is read: genre, title weight, author line and 60 px thumbnail legibility decide the four variants.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a book cover designer producing four genre-correct variants from one four-field brief.\n\nInputs [replace]: title 'The Salt Road'; author 'M. Adeyemi'; genre 'literary historical'; trim 6x9 in; palette indigo #1F2A44, sand #D8C3A5, coral #E0705A.\n\nDeliverable: four covers at 1800x2700 px and 300 dpi, one 60 px thumbnail proof, and a genre-cue note.\n\nDesign system: trim 6x9 in; title 72-96 pt; author 24-28 pt; safe margin 0.25 in; two typefaces; one accent; title readable at 60 px.\n\nWorkflow: 1) restate the four fields; 2) list three genre cues; 3) set the type hierarchy; 4) generate four variants with one variable each; 5) test at 60 px; 6) run gates; 7) export.\n\nGates: title and author exact; 6x9 trim; 300 dpi; title readable at 60 px; no invented quote or award; no stock watermark.\n\nAudit: the cue that did not read, the variant that missed genre, and the thumbnail that failed.\n\nDo not add a quote or award; do not change the author name; do not use a typeface that breaks the genre."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a cover art director building a three-book series with one template, full wrap covers and print-ready fronts.\n\nInputs [replace]: three titles in one series; author; genre; trim 6x9 in; wrap cover 12.5x9.25 in with 0.125 in bleed; palette indigo #1F2A44, sand #D8C3A5, coral #E0705A.\n\nDeliverables: three front covers at 1800x2700 px and 300 dpi; three wrap covers with spine and back; a series template; a 60 px thumbnail sheet; names book-part-version.\n\nDesign system: trim 6x9 in; spine width 0.75-1.0 in; title 72-96 pt; author 24-28 pt; safe margin 0.25 in; one series mark; title readable at 60 px.\n\nWorkflow: 1) intake three titles and the series rule; 2) build the template and spine width; 3) design book one as canary; 4) check front at 60 px and wrap at 100%; 5) produce books two and three; 6) compare as a series; 7) run gates; 8) export with the template.\n\nGates: all wraps 12.5x9.25 in with 0.125 in bleed; spine width consistent; titles exact; 300 dpi; series mark identical; no invented review.\n\nAudit: the spine that drifted, the cover that broke the series, and the file the printer will question.\n\nEvery wrap is checked at 100%, spine text inside 0.0625 in. Do not change the series mark per book; do not stretch the wrap; do not add a review quote."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a cover designer stress-testing a long title and a series mark on a small thumbnail.\n\nInputs [replace]: 12-word title, series mark that must stay, genre 'thriller', 60 px thumbnail requirement; palette ink #1F1B18 and red #B4232E.\n\nDeliverable: two covers at 1800x2700 px and 300 dpi, a 60 px proof, a legibility report, and a title-cut note.\n\nDesign system: title 72-96 pt; author 24 pt; 0.25 in safe margin; a 60 px proof is attached to the handoff.\n\nWorkflow: 1) cut the title to two options of six words; 2) test the series mark at 60 px; 3) set the type hierarchy; 4) check both at 60 px and 100%; 5) keep the option that reads; 6) run gates; 7) export with the report.\n\nGates: title readable at 60 px; series mark recognisable; 6x9 trim; 300 dpi; no invented award; author exact.\n\nAudit: the words cut, the mark that vanished, and whether the title needs a subtitle.\n\nNo title cut below six words. Do not shrink the title below 72 pt; do not drop the series mark; do not invent a quote."
+      }
+    ]
+  }
+]

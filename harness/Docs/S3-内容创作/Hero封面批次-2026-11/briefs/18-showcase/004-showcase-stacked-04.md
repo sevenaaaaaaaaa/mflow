@@ -1,0 +1,35 @@
+# showcase-stacked-04 · 品牌识别
+
+| 项 | 值 |
+|---|---|
+| ID | `showcase-stacked-04` |
+| 分组 | showcase · 前後堆叠 / 横向滚动（6 条） |
+| section type | `showcase-stacked / showcase-horizontal` |
+| 来源字段 |  |
+| 尺寸 | 1760 × 1100 · 16:10   |
+| 比例 | 1760 × 1100 · 16:10   |
+| 主题 / 品类 | 品牌识别 |
+
+## Prompt
+
+```text
+High-end commercial photograph, 85mm shallow depth of field, soft key light from the upper left with a gentle contact shadow, a brand board with a mark, a swatch row and material samples, the subject fills about 70% of frame, 16:10, edges safe for rounded-corner crop, no text, no letters, no watermark, no screens, no UI windows
+```
+
+## Alt 文案
+
+`Lovart 品牌识别 — showcase-stacked / showcase-horizontal visual`
+
+## 本模块纪律
+
+- 同页面同模块的多张图必须同会话 + 锁 seed + 同风格参考，只换对象
+- 图内零可读字符；如含排版，用抽象灰色条块表达层级
+
+## 交付
+
+| 项 | 要求 |
+|---|---|
+| 命名 | `showcase-stacked-04-v1.png` |
+| 体积 | ≤1.5MB（视频 ≤8MB） |
+| 图内文字 | 零。含可读字符即废稿 |
+| 安全区 | 四边 ≥5% 裁切余量 |

@@ -1,0 +1,202 @@
+[
+  {
+    "slug": "ai-baby-podcast-generator",
+    "id": "tools-ai-baby-podcast-generator-en",
+    "lang": "en",
+    "title": "Direct the giggle before you write the script",
+    "description": "A baby-voice segment lives or dies in the first ten seconds: script length, giggle placement and pacing decide whether it reads as a character or a demo.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as an audio producer cutting a 30-second baby-voice intro for a parenting podcast. Direct the performance before you generate a single line.\n\nInputs [replace]: host line 'Welcome back to Small Hours'; baby character 'Pip'; three approved giggle moments; delivery WAV 48 kHz, 24-bit, mono.\n\nDeliverable: one 30s WAV at 48 kHz plus one 10s hook cut, a script sheet with timecodes, and a take log.\n\nDesign system: hook line inside 3s; giggles at 6s, 17s and 26s; 250 ms pause after each giggle; one pitch register; no line longer than 12 words.\n\nWorkflow: 1) restate the script and count syllables per line; 2) cut anything that cannot fit 30s; 3) mark giggle and pause timecodes; 4) generate the voice in one register; 5) check the first 10s without video; 6) run gates; 7) export both cuts.\n\nGates: no adult phonemes in baby lines; each giggle within 200 ms of its mark; no line over 12 words; loudness -16 LUFS; total length within 0.5s of 30s.\n\nAudit: the lines you cut, the giggle that drifted, and whether the first 10s still works without the host.\n\nDo not add a sponsor or claim; do not pitch the voice up as a shortcut; do not reuse one giggle three times."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a senior audio producer building a three-minute bedtime-story segment in one baby voice, with two characters and a repeatable pacing system.\n\nInputs [replace]: story brief 'Pip and the paper boat'; 420-word script; two characters (Pip, Nan); four cues (water, paper, yawn, page turn); delivery WAV 48 kHz/24-bit plus MP3 320 kbps.\n\nDeliverables: one 3:00 master, one 60s trailer, stems per character, a timecode script, and a cue sheet; names episode-version.\n\nDesign system: 8-12 words per line; 300 ms pause at scene changes; giggle only at three marked beats; music bed -24 LUFS under voice; voice -16 LUFS; no line over 4s.\n\nWorkflow: 1) intake the script and mark scene beats; 2) cut to 3:00 and log the cuts; 3) assign lines to characters; 4) record each character in one register; 5) place cues and pauses; 6) check the first and last 10s; 7) run gates; 8) export master, trailer and stems.\n\nCue sheet lists the exact in and out timecode per cue.\n\nGates: no line over 12 words; cues within 150 ms; voice and bed at target loudness; no character drift between scenes; total 3:00 plus or minus 2s; no invented story beat.\n\nAudit: cuts, character drift, cue timing, and the beat most likely to fail on re-listen.\n\nDo not add narration I did not write; do not change the ending; do not stack two giggle samples."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as an audio producer stress-testing a baby-voice read when the script is too long for the slot.\n\nInputs [replace]: 68-word sentence for a 10-second slot; three required product-neutral phrases; one giggle mark at 4s; delivery 48 kHz WAV.\n\nDeliverable: one 10s cut, one 14s alternate, a fit report, and a clip list.\n\nDesign system: 8-11 words per line; giggle at 4s; no line over 4s; voice in one register.\n\nWorkflow: 1) count syllables and estimate read time at the target pace; 2) list what can be cut without changing meaning; 3) try the 10s cut and measure overrun; 4) if overrun exceeds 1s, deliver the 14s alternate; 5) keep the giggle mark; 6) run gates; 7) export with the fit report.\n\nGates: overrun reported in seconds; no phrase cut mid-word; giggle on the mark; no speed-up above 8%; loudness -16 LUFS.\n\nAudit: the overrun, the cut version you refused, and whether the 10s slot needs a script rewrite.\n\nDo not chipmunk the voice to fit; do not drop a required phrase silently; do not claim the 10s cut works when it overruns."
+      }
+    ]
+  },
+  {
+    "slug": "ai-thumbnail-maker",
+    "id": "tools-ai-thumbnail-maker-en",
+    "lang": "en",
+    "title": "One thumbnail brief, four sizes, one type hierarchy",
+    "description": "The same idea has to survive 1:1, 16:9, 9:16 and print: lock the crop and the type scale before generating four files.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a thumbnail art director producing one video thumbnail in four sizes from a single brief.\n\nInputs [replace]: video title 'I rebuilt a 1970s camper in 30 days'; 3000 px photo of a man beside the camper; palette rust #B4553C, cream #F2E9DA, ink #1F1B18; four-word hook '30 days. One camper.'\n\nDeliverable: four PNGs at 1280x720, 1080x1080, 1080x1920 and a 300 dpi print PDF; one type-scale sheet.\n\nDesign system: hook type at 12% of frame height; face 28-34%; safe margin 6%; three words per line maximum; one accent; no gradient behind type.\n\nWorkflow: 1) restate the idea in four words; 2) define the crop box per ratio; 3) set one type scale and one accent; 4) generate the 16:9 first; 5) crop the other three from the same master; 6) check at 20% size; 7) run gates; 8) export.\n\nGates: hook spelled exactly; face not cropped at the chin; type legible at 20%; safe margin respected; no extra text.\n\nAudit: the ratio that lost the subject, the type size you changed, and the crop that needs a reshoot.\n\nDo not add arrows or circles I did not ask for; do not stretch the face; do not add a second accent."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a thumbnail lead building a ten-video series system where every episode keeps one type hierarchy across four sizes.\n\nInputs [replace]: ten episode titles, ten subject photos, one host portrait, palette rust #B4553C, cream #F2E9DA, ink #1F1B18; delivery 1280x720, 1080x1080, 1080x1920 and 300 dpi print PDF.\n\nDeliverables: forty files, a type-scale sheet, a crop map per episode, and a naming system episode-ratio-version.\n\nDesign system: hook 10-12% of frame height; face 26-34%; safe margin 6%; two type sizes only; one accent per episode; text block never over the face. The crop map lists the exact pixel crop per ratio.\n\nWorkflow: 1) intake titles and cut each to four words; 2) lock the type scale and crop map; 3) build episode one as canary; 4) review at 20% and full size; 5) batch the remaining nine; 6) check the series wall; 7) run gates; 8) export with the crop map.\n\nGates: every hook exact; no face cropped at chin or eye line; type legible at 20%; series uses two type sizes; forty files at correct dimensions; no episode repeats another composition.\n\nAudit: the episodes that broke the scale, the crops that needed a new photo, and the pair that looks too similar.\n\nDo not rotate one composition across ten episodes; do not add stickers or emoji; do not change the host's face."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a thumbnail director stress-testing a long title and a busy source photo.\n\nInputs [replace]: 18-word title, 1600 px phone photo with a cluttered workshop behind the subject, low subject-background contrast; palette ink #1F1B18 and rust #B4553C.\n\nDeliverable: three 1280x720 options, one 1080x1920 cut, a legibility report at 20%, and a crop note.\n\nDesign system: hook 12% of frame height; safe margin 6%.\n\nWorkflow: 1) cut the title to three options of four words or fewer; 2) separate subject from background; 3) test type over the busiest area; 4) check at 20% size and at 120 px width; 5) keep only options that read at both; 6) run gates; 7) export with the report.\n\nGates: no option exceeds four words; subject edge clean at 100%; contrast at least 4.5:1 for type; no text over the face; no invented prop.\n\nAudit: the title you cut, the option that failed at 20%, and whether the photo needs a reshoot.\n\nDo not blur the background into a fake studio; do not outline every letter; do not ship an option that only reads at full size."
+      }
+    ]
+  },
+  {
+    "slug": "ai-image-generator-download",
+    "id": "tools-ai-image-generator-download-en",
+    "lang": "en",
+    "title": "Plan the export budget before the fifth image",
+    "description": "A five-file daily cap turns generation into a queue: lock the style and the aspect ratios first, so every download is a keeper.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a brand designer producing a five-image set that must be worth every download.\n\nInputs [replace]: theme 'coastal morning' for a skincare brand; palette sand #D8C3A5, sea #7A9E9F, ink #1F1B18; five subjects (bottle, texture, hands, shoreline, flat lay); export 3840x2160 PNG.\n\nDeliverable: five 4K PNGs, one contact sheet at 2400 px, and a style spec with three locked fields.\n\nDesign system: one camera height; one light direction; one grade; subject 35-55% of frame; no text inside the image; grain 1.5%.\n\nWorkflow: 1) write a five-field style spec; 2) generate one test frame and check at 100%; 3) lock seed, light and grade; 4) generate the five subjects; 5) reject any frame that breaks the spec; 6) run gates; 7) export five files and the contact sheet.\n\nGates: all five at 3840x2160; one light direction; palette within 3%; no watermark; no invented label text.\n\nAudit: frames rejected against the cap, the field that drifted, and which image you would replace first.\n\nDo not spend a download on a frame that fails the spec; do not add text; do not change grade mid-set."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as an art director planning a twenty-image campaign around a five-file daily export cap.\n\nInputs [replace]: campaign 'linen at home'; four subjects (bed, chair, table, curtain) with five crops each; palette oat #E8DCCB, clay #B4553C, ink #1F1B18; export 3840x2160 PNG plus 1080x1350 JPEG.\n\nDeliverables: twenty 4K masters and twenty 1080x1350 crops at 300 dpi across four days, a day plan, a style spec, and a contact sheet per day; names subject-crop-day.\n\nDesign system: one light direction per day; subject 30-50%; grade locked on day one; grain 1.5%; no text; crop safe margin 8%.\n\nWorkflow: 1) intake the twenty-frame list and rank by value; 2) write the style spec; 3) map frames to a four-day plan, five per day; 4) canary one frame per subject; 5) check at 100% and reject failures; 6) generate the rest on plan; 7) run gates; 8) export with the day plan.\n\nGates: exactly five exports per day; all masters 4K; one light direction per day; palette within 3%; no duplicate composition; no invented product detail.\n\nAudit: the frames you deferred, the day that hit the cap early, and the crop most likely to be replaced.\n\nDo not exceed the daily cap and then call the set complete; do not reuse one frame at two crops without saying so; do not change grade between days."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a designer stress-testing an export plan when the last download fails.\n\nInputs [replace]: four approved 4K frames, one failed export at 92% progress, a client deadline in 2 hours, one alternate crop ready; palette and grade locked.\n\nDeliverable: a recovery plan, the best four-file set, one 1920x1080 fallback marked as such, and an incident note.\n\nDesign system: grade locked; no crop below 1080 px; 300 dpi on approved files.\n\nWorkflow: 1) list what is approved, exported and missing; 2) rank remaining frames by campaign value; 3) retry once and record the failure point; 4) if it fails again, promote the alternate crop; 5) mark any fallback resolution honestly; 6) run gates; 7) export with the note.\n\nGates: no frame passed off as 4K if it is not; failure point recorded; alternate crop meets the grade; no missing file hidden; delivery list matches files.\n\nAudit: what failed, what you substituted, and whether the deadline forces a lower resolution.\n\nDo not fake a 4K file by upscaling silently; do not skip the failure note; do not deliver five files when only four exist."
+      }
+    ]
+  },
+  {
+    "slug": "ai-retail-display-generator",
+    "id": "tools-ai-retail-display-generator-en",
+    "lang": "en",
+    "title": "Design for the distance, not the canvas",
+    "description": "A window sign, a shelf talker and an end cap are read at 8 m, 1 m and 2 m; set the type size from the viewing distance before layout.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a retail graphic designer producing one promo in two display types: a window poster and a shelf talker.\n\nInputs [replace]: promo 'Summer refill week, 20% off'; store 'Marche & Co'; palette olive #5B6B4A, cream #F2E9DA, ink #1F1B18; 3000 px product photo of a refill bottle.\n\nDeliverable: one A2 window poster at 300 dpi PDF with 3 mm bleed, one A6 shelf talker at 300 dpi, and a distance test note.\n\nDesign system: window headline readable at 8 m (90 mm cap height minimum); shelf price readable at 1 m (12 mm minimum); safe margin 8 mm; two type sizes; one accent; no more than 12 words per sign.\n\nWorkflow: 1) restate promo and price; 2) set reading distances; 3) choose type sizes from distance; 4) lay out the window first; 5) adapt to the shelf talker; 6) check at 1:10 and 1:1; 7) run gates; 8) export both with bleed.\n\nGates: price spelled exactly; headline 90 mm minimum at A2; shelf price 12 mm minimum; 3 mm bleed; no unapproved claim; no text over the product.\n\nAudit: the distance you sized for, the line you cut, and the sign that needs a bigger format.\n\nDo not add a discount I did not approve; do not stretch the logo; do not put 40 words on a shelf talker."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a retail design lead building eight display types for one promotion across three store sizes.\n\nInputs [replace]: promo 'Back to school, 15% off'; three stores (flagship 12 m window, high street 6 m, mall kiosk); palette navy #1F2A44, chalk #F5F1E8, orange #D96B2B; product cut-outs and approved copy.\n\nDeliverables: eight display types (window poster, hanging banner, shelf talker, end cap, floor decal, wobbler, A-frame, counter card) as print-ready PDFs at 300 dpi with 3 mm bleed; a distance map; names display-store-version.\n\nDesign system: type sized by distance (window 90 mm+, shelf 12 mm+, end cap 40 mm+); 8 mm safe margin; two type sizes plus price; one accent; no more than 12 words per sign.\n\nWorkflow: 1) intake promo, prices and store sizes; 2) build a distance map; 3) set the type scale; 4) design the flagship window first; 5) adapt to the other seven types; 6) test all eight at 1:10; 7) run gates; 8) export with the distance map.\n\nGates: every price exact; every display 300 dpi with 3 mm bleed; type meets distance minimum; no sign over 12 words; logo unaltered; no invented offer.\n\nAudit: the display that lost readability, the store that needs a different format, and the sign you would reprint.\n\nDo not reuse the window layout at shelf size; do not add a second offer; do not change brand colors per store."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a retail designer stress-testing a price change after files are print-ready.\n\nInputs [replace]: six print-ready PDFs for '20% off', price change to '15% off' approved 30 minutes before print, one sign already printed; palette olive #5B6B4A, cream #F2E9DA.\n\nDeliverable: six revised PDFs, a change log, a reprint list, and a note on the printed sign.\n\nDesign system: price 12 mm minimum; 3 mm bleed; 300 dpi.\n\nWorkflow: 1) list every file and the text box holding the price; 2) change the number only, not the layout; 3) check every instance at 1:1; 4) mark which files need reprint; 5) flag the printed sign for sticker or reprint; 6) run gates; 7) export with the change log.\n\nGates: price exact in all six; no layout shift beyond 1 mm; no old price left visible; bleed intact; printed sign documented.\n\nAudit: files changed, files reprinted, and whether the printed sign can be patched.\n\nDo not redesign the layout to hide the change; do not leave an old price in a corner; do not say the printed sign is fixed when it is not."
+      }
+    ]
+  },
+  {
+    "slug": "ai-twitter-header-creator-lovart",
+    "id": "tools-ai-twitter-header-creator-lovart-en",
+    "lang": "en",
+    "title": "Three dead zones decide the header",
+    "description": "The 1500x500 banner is cropped by the avatar, the display name and the mobile view; place the message where none of them lands.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a social art director designing one X/Twitter header with the platform's dead zones marked first.\n\nInputs [replace]: account 'Field Notes Studio'; tagline 'Slow travel, printed monthly'; palette forest #2F4A3C, paper #F2E9DA, ink #1F1B18; 3000 px photo of a mountain road.\n\nDeliverable: one 1500x500 PNG, one mobile crop proof at 600x200, and a safe-zone overlay.\n\nDesign system: logo 90x90 px inside the left 120 px; tagline baseline at 70% height; safe area 60% of width; type 28 px minimum; avatar dead zone left 150 px; mobile crop keeps the center 600 px.\n\nWorkflow: 1) mark avatar, name and mobile dead zones; 2) place logo and tagline outside them; 3) set type at 28 px minimum; 4) generate the background; 5) check the mobile crop; 6) run gates; 7) export with the overlay.\n\nGates: logo not under the avatar; tagline visible at 600x200; no text in the top 40 px; contrast 4.5:1; exact 1500x500.\n\nAudit: the zone that ate the tagline, the crop you changed, and the element you moved.\n\nDo not center the logo; do not add a second tagline; do not use type smaller than 28 px."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a social design lead building six headers for one campaign, each with the same dead-zone system.\n\nInputs [replace]: six post titles, one host portrait, palette forest #2F4A3C, paper #F2E9DA, ink #1F1B18; delivery 1500x500 PNG and 600x200 mobile proof.\n\nDeliverables: six headers, one 1200x630 link-card crop, a dead-zone template, a mobile proof sheet at 600x200, and names post-version.\n\nDesign system: avatar zone left 150 px; name zone bottom 40 px; mobile center 600 px; logo 90 px; tagline 28 px minimum; one accent; type never over the portrait's face. A proof sheet at 1200x630 checks the same message on a link card.\n\nWorkflow: 1) intake titles and cut each to six words; 2) build the dead-zone template; 3) design header one as canary; 4) check at 600x200; 5) batch the other five; 6) review as a set; 7) run gates; 8) export with the template.\n\nGates: all six 1500x500; logo outside the avatar zone; tagline readable at 600x200; no title over six words; one accent per header; no face cropped.\n\nNo header exceeds six words.\n\nAudit: the headers that broke the template, the mobile crop that failed, and the pair that looks the same.\n\nDo not move the avatar zone per header; do not add a CTA the account cannot honor; do not crop the portrait at the eyes."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a social designer stress-testing a header with a long tagline and a logo that must stay.\n\nInputs [replace]: 14-word tagline, square logo with fine type, photo with a bright sky behind the text area; palette forest #2F4A3C and paper #F2E9DA.\n\nDeliverable: two 1500x500 options, one 600x200 mobile proof, a legibility report, and a note on the logo.\n\nDesign system: tagline 28 px minimum; safe area 60% of width.\n\nWorkflow: 1) measure available width outside the dead zones; 2) cut the tagline to two options; 3) test text on the bright sky; 4) add a scrim only if contrast fails; 5) check the logo at 90 px; 6) run gates; 7) export with the report.\n\nGates: tagline readable at 600x200; logo type not blurred at 90 px; contrast 4.5:1; no text under the avatar; exact 1500x500.\n\nAudit: the words you cut, the contrast fix, and whether the logo needs a simplified version.\n\nExact 1500x500.\n\nDo not put the tagline over the sky without a contrast fix; do not redraw the logo; do not shrink type below 24 px to fit."
+      }
+    ]
+  },
+  {
+    "slug": "ai-poster-maker-free",
+    "id": "tools-ai-poster-maker-free-en",
+    "lang": "en",
+    "title": "Five posters a day means five decisions",
+    "description": "A capped export budget rewards planning: one grid, one type scale, five poster variants, no wasted file.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a print designer planning five poster variants when only five exports are available.\n\nInputs [replace]: event 'Night Market, Fri 18:00'; venue 'East Yard'; palette terracotta #B4553C, oat #E8DCCB, ink #1F1B18; one 3000 px hero photo.\n\nDeliverable: five A3 297x420 mm PDFs at 300 dpi with 3 mm bleed, one contact sheet, and a variant log.\n\nDesign system: headline 42-64 pt; date and venue 18 pt minimum; 3 mm bleed; 5 mm safe margin; 12-column grid; one accent; 25 words maximum.\n\nWorkflow: 1) restate the event fields; 2) build one grid; 3) set three type sizes; 4) generate five variants with one variable each; 5) reject any variant that breaks the grid; 6) run gates; 7) export five files.\n\nGates: all five exact 297x420 mm; 3 mm bleed; date readable at 25%; no missing field; no watermark; one accent per poster.\n\nAudit: the variant you rejected, the field that crowded the grid, and whether five exports were enough.\n\nDo not spend an export on a variant that repeats another; do not add a sponsor; do not change the date."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a print lead building a five-poster series for one week, with the same grid and a different daily message.\n\nInputs [replace]: five daily offers, venue, palette terracotta #B4553C, oat #E8DCCB, ink #1F1B18; A3 and A2 formats; 300 dpi.\n\nDeliverables: five A3 PDFs and five A2 PDFs at 300 dpi with 3 mm bleed; five 1080x1528 social crops; a series grid; a daily copy sheet with the exact word count; names day-size-version.\n\nDesign system: headline 42-64 pt at A3, scaled 1.41x at A2; date and price 18 pt minimum; 3 mm bleed; 5 mm safe margin; one accent; 25 words maximum; same grid all week.\n\nWorkflow: 1) intake five offers and prices; 2) lock grid and type scale; 3) build day one as canary; 4) check at 25%; 5) produce days two to five; 6) compare the series; 7) run gates; 8) export both sizes.\n\nGates: all ten files 300 dpi with 3 mm bleed; prices exact; A2 scale exactly 1.41x; one accent per day; no layout drift; no poster over 25 words.\n\nEach day keeps the same 12-column grid.\n\nAudit: the day that broke the grid, the price that crowded, and the poster you would reprint.\n\nEvery file is checked at 100%. Do not change the grid mid-series; do not add a logo I did not supply; do not stretch A3 to A2."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a print designer stress-testing a sixth poster when the daily export cap is already spent.\n\nInputs [replace]: five exports used, a sixth urgent poster for tomorrow, an existing A3 file that can be adapted; palette and grid locked.\n\nDeliverable: one adapted A3 PDF at 297x420 mm from the existing file, a change list, and a cap note with the export count left.\n\nDesign system: 3 mm bleed; 5 mm safe margin; 18 pt minimum.\n\nWorkflow: 1) confirm the cap and the deadline; 2) list which existing file can carry the new message; 3) change copy only, not grid; 4) check the new date and price; 5) run gates; 6) export the adapted file; 7) write the cap note.\n\nGates: new copy exact; grid unchanged; 3 mm bleed intact; no leftover old date; no extra export used.\n\nAudit: what you adapted, what you could not change, and whether tomorrow needs a new export.\n\n18 pt date minimum.\n\nDo not claim a new design when you adapted an old one; do not leave an old price; do not exceed the cap silently."
+      }
+    ]
+  },
+  {
+    "slug": "ai-poster-generator",
+    "id": "tools-ai-poster-generator-en",
+    "lang": "en",
+    "title": "Five variants before one print run",
+    "description": "A print run is the expensive part: generate and compare five headline routes at proof size before any press is booked.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a print designer producing five A/B poster routes from one brief before a print run.\n\nInputs [replace]: event 'Open Studio, Sat 11:00-18:00'; venue 'Unit 4, Kiln St'; palette ink #1F1B18, oat #E8DCCB, terracotta #B4553C; 3000 px hero image.\n\nDeliverable: five A3 PDFs at 300 dpi with 3 mm bleed, one proof sheet, and a pick rationale.\n\nDesign system: headline 48-72 pt; date and venue 16 pt minimum; 3 mm bleed; 5 mm safe margin; one grid; one accent; 20 words maximum.\n\nWorkflow: 1) restate the fields; 2) write five headline routes; 3) set one grid and three type sizes; 4) generate the five; 5) proof at 25%; 6) pick one and say why; 7) run gates; 8) export.\n\nGates: five files exact A3; 3 mm bleed; fields exact; headline readable at 25%; one accent; no route repeats another.\n\nAudit: the routes rejected, the proof that failed at 25%, and the print risk you would flag.\n\nDo not add a sponsor or price; do not change the date; do not pick by taste without a reason."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as an art director running a poster A/B system for a season of events, where every variant is print-ready.\n\nInputs [replace]: six events with dates and venues; palette ink #1F1B18, oat #E8DCCB, terracotta #B4553C; one hero image per event; A3 and A2.\n\nDeliverables: six A3 PDFs at 300 dpi with 3 mm bleed, two A2 finals, a variant matrix listing the exact route per event, and names event-size-version.\n\nDesign system: headline 48-72 pt; secondary 16-20 pt; 3 mm bleed; 5 mm safe margin; 12-column grid; one accent; 20 words maximum; same grid all season.\n\nWorkflow: 1) intake six events; 2) lock grid and type scale; 3) write two headline routes per event; 4) build the matrix; 5) generate A3 first; 6) pick one route per event at 25%; 7) scale two winners to A2; 8) run gates; 9) export.\n\nGates: dates and venues exact; all files 300 dpi with 3 mm bleed; A2 scale 1.41x; no route over 20 words; one accent per poster; no layout drift.\n\nAudit: the route that won and why, the event that needed a different grid, and the poster most likely to fail at print.\n\nEvery file 300 dpi with a 5 mm safe margin.\n\nDo not print two routes for one event; do not stretch A3 to A2; do not add a logo I did not supply."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a print designer stress-testing a poster when the headline is long and the print shop needs CMYK.\n\nInputs [replace]: 16-word headline, A2 at 300 dpi, print shop asks for CMYK PDF with 3 mm bleed; palette ink #1F1B18, oat #E8DCCB; one 1200 px photo.\n\nDeliverable: one A2 CMYK PDF at 420x594 mm, one RGB proof, a limitation note, and a print checklist.\n\nDesign system: 3 mm bleed; 300 dpi; 5 mm safe margin.\n\nWorkflow: 1) audit headline length and photo resolution; 2) cut the headline to two options; 3) convert to CMYK and check color shift; 4) place the photo and mark its limit; 5) check bleed and safe margin; 6) run gates; 7) export with the note.\n\nGates: CMYK values recorded; bleed 3 mm; headline readable at 25%; photo not upscaled beyond 120%; no text in the safe margin.\n\nAudit: the color that shifted, the photo limit, and whether the print shop should run a proof.\n\nDo not convert without checking the black; do not upscale the photo silently; do not promise color match without a proof."
+      }
+    ]
+  },
+  {
+    "slug": "ai-podcast-cover-generator",
+    "id": "tools-ai-podcast-cover-generator-en",
+    "lang": "en",
+    "title": "Design the 3000 px master for the 60 px thumbnail",
+    "description": "The cover is judged at 60x60 in a queue: build the master so the title, the mark and the contrast survive the shrink.",
+    "cta": {
+      "text": "Open canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a cover designer producing one podcast cover that must read at 60x60 px.\n\nInputs [replace]: show 'The Long Way Home'; episode 'Ep. 12 - The ferry'; host 'Mara'; palette midnight #1B2A3A, sand #D8C3A5, coral #E0705A.\n\nDeliverable: one 3000x3000 PNG at 300 dpi, one 60x60 proof, one 1400x1400 preview, and a legibility note.\n\nDesign system: title 240-320 px cap height at master; 60x60 test keeps at least two words; mark 300 px; contrast 4.5:1; safe margin 150 px; four words maximum.\n\nWorkflow: 1) cut the title to four words; 2) set type at master size; 3) place the mark; 4) shrink to 60x60 and check; 5) fix contrast or size if it fails; 6) run gates; 7) export three files.\n\nGates: title readable at 60x60; no text in the outer 150 px; contrast 4.5:1; exact 3000x3000; no guest photo without release.\n\nAudit: the word that disappeared at 60 px, the contrast fix, and whether the title needs a shorter cut.\n\nDo not put the episode number in the cover; do not use a photo without a release; do not add a fifth word."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a cover art director building a twelve-episode season system, one master and eleven derived covers.\n\nInputs [replace]: show 'The Long Way Home'; twelve episode titles; one host portrait; palette midnight #1B2A3A, sand #D8C3A5, coral #E0705A; delivery 3000x3000 PNG at 300 dpi.\n\nDeliverables: twelve covers at 3000x3000, a template file, a 60x60 proof sheet and one 1400x1400 preview each, and names episode-version.\n\nDesign system: title 240-320 px; episode strip 120 px; mark 300 px; safe margin 150 px; four words maximum; one accent; same template all season.\n\nWorkflow: 1) intake twelve titles and cut to four words; 2) lock template and type scale; 3) build episode one as canary; 4) check at 60x60 and 1400 px; 5) produce the remaining eleven; 6) review the season wall; 7) run gates; 8) export with the template.\n\nGates: all twelve 3000x3000; title readable at 60x60; no text in the outer 150 px; one accent per cover; no episode repeats another layout; no missing title.\n\nEvery file 300 dpi, four words maximum per title, one accent only.\n\nAudit: the covers that failed at 60 px, the title that needed a shorter cut, and the pair that looks the same.\n\nEvery file is checked at 100%. Do not change the template mid-season; do not add a guest photo without a release; do not put two accents on one cover."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a cover designer stress-testing a long show title on dark artwork.\n\nInputs [replace]: 8-word show title, dark illustration with low contrast, no logo file, delivery 3000x3000 PNG.\n\nDeliverable: two cover options, one 60x60 proof each, a contrast report with the measured ratio, and a note on the missing logo.\n\nDesign system: 3000x3000 master; 150 px outer margin; no type below 600 weight.\n\nWorkflow: 1) cut the title to two options of four words; 2) test light and dark type on the artwork; 3) add a plate only if contrast fails; 4) check at 60x60; 5) keep the option that reads; 6) run gates; 7) export with the report.\n\nGates: title readable at 60x60; contrast 4.5:1; no text in the outer 150 px; exact 3000x3000; no drawn logo.\n\nAudit: the word you cut, the contrast fix, and whether the show needs a logo before launch.\n\n300 dpi export, 60x60 proof.\n\nDo not invent a logo; do not put the title on a busy area without a plate; do not use a font lighter than 600 weight at 60 px."
+      }
+    ]
+  }
+]

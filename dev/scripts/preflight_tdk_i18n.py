@@ -16,9 +16,16 @@ import argparse
 import json
 import re
 import sys
+import os
 import urllib.parse
 import urllib.request
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent / "library"))
+try:
+    from body_lang import check_body as _check_body  # noqa: E402
+except Exception:  # pragma: no cover
+    _check_body = None
 
 HAN = re.compile(r"[\u4e00-\u9fff]")
 JA = re.compile(r"[\u3040-\u30ff]")
@@ -66,6 +73,8 @@ def title_reasons(lang: str, text: str) -> list[str]:
     if not t:
         return ["empty"]
     reasons = []
+    if re.search(r"\bAI AI\b", t):
+        reasons.append("ai_ai_dup_prefix")
     if LANG_TAG.search(t):
         reasons.append("lang_tag_prefix")
     if SYNTH_SHELL.search(t):
@@ -186,6 +195,15 @@ def check_page(page: dict, strict: bool = False) -> list[dict]:
             else desc_reasons(lang, value, allow_empty=not strict)
         )
         if not reasons:
+            text = as_str(value)
+            if kind == "title" and len(text) > 60:
+                issues.append({"code": "TDK_LEN", "severity": "BLOCK", "field": field,
+                               "language": lang, "reasons": ["title_gt60"],
+                               "sample": text[:80], "id": page.get("_id") or page.get("slug")})
+            if kind == "desc" and len(text) > 160:
+                issues.append({"code": "TDK_LEN", "severity": "BLOCK", "field": field,
+                               "language": lang, "reasons": ["desc_gt160"],
+                               "sample": text[:80], "id": page.get("_id") or page.get("slug")})
             continue
         code = "TDK_I18N_TITLE" if kind == "title" else ("TDK_I18N_EMPTY" if "empty" in reasons else "TDK_I18N_DESC")
         sev = "WARN" if ("empty" in reasons and not strict) else "BLOCK"
@@ -201,6 +219,22 @@ def check_page(page: dict, strict: bool = False) -> list[dict]:
             }
         )
     return issues
+
+
+def check_body_page(page: dict) -> list[dict]:
+    """BodyJson language / placeholder gate (dev/scripts/library/body_lang.py)."""
+    if _check_body is None:
+        return []
+    body = page.get("bodyJson") or page.get("body")
+    if not body:
+        return []
+    lang = page.get("language") or "en"
+    reasons = _check_body(lang, body)
+    if not reasons:
+        return []
+    return [{"code": "TDK_I18N_BODY", "severity": "BLOCK", "field": "bodyJson",
+             "language": lang, "reasons": reasons, "sample": "",
+             "id": page.get("_id") or page.get("slug")}]
 
 
 def iter_json_files(dir_path: Path, glob_pat: str):
@@ -224,11 +258,19 @@ def sanity_scan(langs: list[str] | None, limit: int | None):
     lang_filter = f' && language in {json.dumps(langs)}' if langs else ""
     q = f'''*[_type=="compositePage" && defined(language) && !(_id in path("drafts.**")){lang_filter}]{{
       _id, language, title, description, "slug": slug.current,
-      "seo": {{"title": seo.title, "description": seo.description}}
+      "seo": {{"title": seo.title, "description": seo.description}},
+      "bodyJson": bodyJson
     }}'''
     if limit:
         q = q + f"[0...{int(limit)}]"
-    url = f"https://your-project-id.api.sanity.io/v2024-01-01/data/query/production?query={urllib.parse.quote(q)}"
+    project = os.environ.get("MFLOW_SANITY_PROJECT") or os.environ.get("SANITY_PROJECT") or ""
+    if not project:
+        site = Path(__file__).resolve().parents[2] / "ops" / "site.json"
+        if site.exists():
+            project = json.loads(site.read_text(encoding="utf-8")).get("sanity_project", "")
+    if not project:
+        raise SystemExit("no Sanity project: set MFLOW_SANITY_PROJECT or ops/site.json")
+    url = f"https://{project}.api.sanity.io/v2024-01-01/data/query/production?query={urllib.parse.quote(q)}"
     req = urllib.request.Request(url, headers={"Authorization": f"Bearer {token}"})
     with urllib.request.urlopen(req, timeout=300) as resp:
         return json.loads(resp.read().decode())["result"]
@@ -244,6 +286,8 @@ def main(argv: list[str]) -> int:
     ap.add_argument("--lang", default="", help="comma langs for --sanity")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--strict", action="store_true")
+    ap.add_argument("--body", action="store_true", help="also check bodyJson language")
+    ap.add_argument("--body-only", action="store_true", help="report body issues only")
     ap.add_argument("--report")
     args = ap.parse_args(argv)
 
@@ -276,13 +320,20 @@ def main(argv: list[str]) -> int:
                 {"code": "JSON_PARSE", "severity": "BLOCK", "message": page["_parse_error"], "ctx": ctx}
             )
             continue
-        for issue in check_page(page, strict=args.strict):
-            issue["ctx"] = ctx
-            all_issues.append(issue)
+        if not args.body_only:
+            for issue in check_page(page, strict=args.strict):
+                issue["ctx"] = ctx
+                all_issues.append(issue)
+        if args.body or args.body_only:
+            for issue in check_body_page(page):
+                issue["ctx"] = ctx
+                all_issues.append(issue)
 
     blocks = [i for i in all_issues if i.get("severity") == "BLOCK"]
     warns = [i for i in all_issues if i.get("severity") == "WARN"]
-    print(f"TDK_I18N pages={len(pages)} BLOCK={len(blocks)} WARN={len(warns)}")
+    body_blocks = [i for i in blocks if i.get("code") == "TDK_I18N_BODY"]
+    len_blocks = [i for i in blocks if i.get("code") == "TDK_LEN"]
+    print(f"TDK_I18N pages={len(pages)} BLOCK={len(blocks)} WARN={len(warns)} body={len(body_blocks)} len={len(len_blocks)}")
     for i in blocks[:30]:
         print(f"  BLOCK {i.get('code')} {i.get('ctx')} {i.get('field')} {i.get('reasons')} :: {i.get('sample','')[:60]}")
     if len(blocks) > 30:

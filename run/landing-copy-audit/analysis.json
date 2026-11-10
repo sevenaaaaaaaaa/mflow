@@ -1,0 +1,1033 @@
+{
+  "source": "/Users/seveno/MFlow Dev/mflow/run/landing-copy-audit/pages-20261109-120712.jsonl",
+  "docs": 7358,
+  "unique_pages": 1362,
+  "unique_slugs": 988,
+  "by_type": {
+    "tool": {
+      "docs": 1146,
+      "unique_pages": 451,
+      "median_sections": 12.0,
+      "median_words": 767.0,
+      "p0_docs": 103,
+      "p1_docs": 524,
+      "thin_structure": 92,
+      "no_faq": 63,
+      "very_thin": 98,
+      "lang_mismatch": 22
+    },
+    "feature": {
+      "docs": 5807,
+      "unique_pages": 713,
+      "median_sections": 14,
+      "median_words": 540.0,
+      "p0_docs": 395,
+      "p1_docs": 2816,
+      "thin_structure": 346,
+      "no_faq": 286,
+      "very_thin": 696,
+      "lang_mismatch": 50
+    },
+    "topic": {
+      "docs": 326,
+      "unique_pages": 149,
+      "median_sections": 12.0,
+      "median_words": 660.0,
+      "p0_docs": 119,
+      "p1_docs": 245,
+      "thin_structure": 86,
+      "no_faq": 87,
+      "very_thin": 110,
+      "lang_mismatch": 25
+    },
+    "solution": {
+      "docs": 67,
+      "unique_pages": 38,
+      "median_sections": 13,
+      "median_words": 683.1,
+      "p0_docs": 12,
+      "p1_docs": 41,
+      "thin_structure": 9,
+      "no_faq": 6,
+      "very_thin": 22,
+      "lang_mismatch": 4
+    },
+    "product": {
+      "docs": 1,
+      "unique_pages": 1,
+      "median_sections": 13,
+      "median_words": 651.0,
+      "p0_docs": 0,
+      "p1_docs": 1,
+      "thin_structure": 0,
+      "no_faq": 0,
+      "very_thin": 0,
+      "lang_mismatch": 0
+    },
+    "None": {
+      "docs": 11,
+      "unique_pages": 10,
+      "median_sections": 14,
+      "median_words": 1041.0,
+      "p0_docs": 0,
+      "p1_docs": 4,
+      "thin_structure": 0,
+      "no_faq": 0,
+      "very_thin": 0,
+      "lang_mismatch": 0
+    }
+  },
+  "by_lang": {
+    "en": {
+      "docs": 1020,
+      "median_word_equiv": 722.0,
+      "very_thin": 86,
+      "thin": 262,
+      "lang_mismatch": 8,
+      "no_faq": 49,
+      "no_hero": 0,
+      "thin_structure": 84
+    },
+    "de": {
+      "docs": 770,
+      "median_word_equiv": 406.0,
+      "very_thin": 51,
+      "thin": 529,
+      "lang_mismatch": 4,
+      "no_faq": 33,
+      "no_hero": 1,
+      "thin_structure": 48
+    },
+    "fr": {
+      "docs": 786,
+      "median_word_equiv": 452.5,
+      "very_thin": 45,
+      "thin": 411,
+      "lang_mismatch": 9,
+      "no_faq": 17,
+      "no_hero": 0,
+      "thin_structure": 33
+    },
+    "it": {
+      "docs": 733,
+      "median_word_equiv": 440.0,
+      "very_thin": 28,
+      "thin": 485,
+      "lang_mismatch": 10,
+      "no_faq": 16,
+      "no_hero": 2,
+      "thin_structure": 23
+    },
+    "pt": {
+      "docs": 755,
+      "median_word_equiv": 452.0,
+      "very_thin": 58,
+      "thin": 390,
+      "lang_mismatch": 43,
+      "no_faq": 25,
+      "no_hero": 0,
+      "thin_structure": 31
+    },
+    "ru": {
+      "docs": 785,
+      "median_word_equiv": 405.0,
+      "very_thin": 73,
+      "thin": 521,
+      "lang_mismatch": 4,
+      "no_faq": 55,
+      "no_hero": 1,
+      "thin_structure": 68
+    },
+    "ja": {
+      "docs": 747,
+      "median_word_equiv": 685.1,
+      "very_thin": 14,
+      "thin": 520,
+      "lang_mismatch": 1,
+      "no_faq": 195,
+      "no_hero": 0,
+      "thin_structure": 202
+    },
+    "ko": {
+      "docs": 751,
+      "median_word_equiv": 373.0,
+      "very_thin": 537,
+      "thin": 123,
+      "lang_mismatch": 8,
+      "no_faq": 18,
+      "no_hero": 0,
+      "thin_structure": 31
+    },
+    "zh": {
+      "docs": 579,
+      "median_word_equiv": 887.9,
+      "very_thin": 32,
+      "thin": 282,
+      "lang_mismatch": 4,
+      "no_faq": 32,
+      "no_hero": 2,
+      "thin_structure": 13
+    },
+    "zh-TW": {
+      "docs": 428,
+      "median_word_equiv": 1061.45,
+      "very_thin": 2,
+      "thin": 134,
+      "lang_mismatch": 10,
+      "no_faq": 2,
+      "no_hero": 0,
+      "thin_structure": 0
+    }
+  },
+  "section_buckets": {
+    "12-15": 1059,
+    "6-7": 93,
+    "16+": 8,
+    "1-5": 23,
+    "8-11": 179
+  },
+  "storyline": {
+    "T-long": 1026,
+    "(none)": 241,
+    "landing-gallery-detail": 50,
+    "landing-trial-now": 19,
+    "landing-vs-competitor": 11,
+    "features-grid-feature": 6,
+    "landing-brand-trust": 6,
+    "landing-offer-close": 3
+  },
+  "language_coverage": {
+    "1": 447,
+    "2": 25,
+    "3": 29,
+    "4": 30,
+    "5": 45,
+    "6": 60,
+    "7": 137,
+    "8": 357,
+    "9": 72,
+    "10": 156,
+    "11": 4
+  },
+  "flag_counts": [
+    [
+      "warn:proof-not-deliverable",
+      4620
+    ],
+    [
+      "warn:thin-copy",
+      3657
+    ],
+    [
+      "warn:paragraph>300",
+      3593
+    ],
+    [
+      "warn:hero-no-risk-reducer",
+      1379
+    ],
+    [
+      "warn:proof-medium-only",
+      1338
+    ],
+    [
+      "warn:desc>160",
+      959
+    ],
+    [
+      "warn:very-thin-copy",
+      926
+    ],
+    [
+      "warn:title>60",
+      866
+    ],
+    [
+      "warn:no-workflow",
+      801
+    ],
+    [
+      "warn:hero-missing-input-output",
+      788
+    ],
+    [
+      "block:thin-structure<=6",
+      533
+    ],
+    [
+      "block:no-faq",
+      442
+    ],
+    [
+      "warn:faq<3",
+      280
+    ],
+    [
+      "warn:hero-article-style",
+      275
+    ],
+    [
+      "warn:slop>=2",
+      271
+    ],
+    [
+      "warn:hero-title>80",
+      258
+    ],
+    [
+      "warn:no-edit-path",
+      206
+    ],
+    [
+      "warn:title-bare-keyword",
+      172
+    ],
+    [
+      "warn:faq-coverage-low",
+      105
+    ],
+    [
+      "block:body-language:other-script-dominant",
+      74
+    ],
+    [
+      "warn:generic-h2>=2",
+      43
+    ],
+    [
+      "block:hero-desc-faq-leak",
+      21
+    ],
+    [
+      "block:body-language:low-han",
+      14
+    ],
+    [
+      "warn:no-proof-section",
+      10
+    ],
+    [
+      "block:body-language:low-hangul",
+      8
+    ],
+    [
+      "block:no-hero",
+      6
+    ],
+    [
+      "block:no-cta",
+      6
+    ],
+    [
+      "warn:hero-desc-too-short",
+      5
+    ],
+    [
+      "block:legacy-section-type",
+      4
+    ],
+    [
+      "block:body-language:low-cyrillic",
+      4
+    ],
+    [
+      "block:empty-body",
+      2
+    ],
+    [
+      "block:body-language:latin-dominant",
+      1
+    ]
+  ],
+  "notes": [
+    [
+      "note:faq>5",
+      5634
+    ],
+    [
+      "note:title-seo-mismatch",
+      536
+    ]
+  ],
+  "p0_docs": 629,
+  "p1_docs": 3631,
+  "p2_docs": 6785,
+  "pages_with_p0": 119,
+  "pages_with_p1": 600,
+  "pages_with_p2": 1147,
+  "mismatch_docs": 101,
+  "duplicate_hash_groups": 129,
+  "duplicate_cross_lang_groups": 0,
+  "duplicate_same_lang_groups": 129,
+  "duplicate_hero_groups": 359,
+  "top_cta": [
+    [
+      "start free",
+      1183
+    ],
+    [
+      "see examples",
+      847
+    ],
+    [
+      "начать бесплатно",
+      697
+    ],
+    [
+      "commencer gratuitement",
+      671
+    ],
+    [
+      "kostenlos starten",
+      658
+    ],
+    [
+      "inizia gratis",
+      638
+    ],
+    [
+      "começar grátis",
+      626
+    ],
+    [
+      "무료로 시작",
+      591
+    ],
+    [
+      "기능 보기",
+      545
+    ],
+    [
+      "vedi funzioni",
+      521
+    ],
+    [
+      "смотреть функции",
+      503
+    ],
+    [
+      "voir les fonctions",
+      500
+    ],
+    [
+      "funktionen ansehen",
+      496
+    ],
+    [
+      "ver recursos",
+      492
+    ],
+    [
+      "캔버스 열기",
+      437
+    ],
+    [
+      "요금 보기",
+      429
+    ],
+    [
+      "vedi prezzi",
+      401
+    ],
+    [
+      "смотреть цены",
+      390
+    ],
+    [
+      "preise ansehen",
+      387
+    ],
+    [
+      "voir les prix",
+      384
+    ]
+  ],
+  "top_section_titles": [
+    [
+      "faq",
+      1211
+    ],
+    [
+      "two ways to start",
+      382
+    ],
+    [
+      "常见问题",
+      369
+    ],
+    [
+      "one brief covers social, web, print",
+      286
+    ],
+    [
+      "trusted by creative professionals worldwide",
+      229
+    ],
+    [
+      "常見問題",
+      213
+    ],
+    [
+      "часто задаваемые вопросы",
+      185
+    ],
+    [
+      "perguntas frequentes",
+      149
+    ],
+    [
+      "häufig gestellte fragen",
+      133
+    ],
+    [
+      "よくある質問",
+      127
+    ],
+    [
+      "questions fréquentes",
+      126
+    ],
+    [
+      "자주 묻는 질문",
+      123
+    ],
+    [
+      "两种启动方式",
+      121
+    ],
+    [
+      "lovart 与手工排版/通用模板工具",
+      121
+    ],
+    [
+      "자주 쓰는 시작법",
+      120
+    ],
+    [
+      "게시 가능한 버전까지 3단계",
+      120
+    ],
+    [
+      "제작량에 맞는 플랜 선택",
+      120
+    ],
+    [
+      "제작·운영 팀의 사용 방식",
+      120
+    ],
+    [
+      "lovart vs. manual / generic tools",
+      109
+    ],
+    [
+      "five workflow bottlenecks",
+      102
+    ]
+  ],
+  "top_faq": [
+    [
+      "can i edit one block only?",
+      290
+    ],
+    [
+      "how is lovart different from templates?",
+      290
+    ],
+    [
+      "will lovart change facts i did not provide?",
+      269
+    ],
+    [
+      "what export formats are available?",
+      269
+    ],
+    [
+      "can i use outputs commercially?",
+      192
+    ],
+    [
+      "do i need design experience?",
+      187
+    ],
+    [
+      "what formats can i export?",
+      184
+    ],
+    [
+      "lovart 能按计划自动执行设计任务吗？",
+      182
+    ],
+    [
+      "lovart peut-il exécuter des tâches de design selon un planning ?",
+      177
+    ],
+    [
+      "can lovart run design tasks on a schedule?",
+      172
+    ],
+    [
+      "do i need design skills?",
+      168
+    ],
+    [
+      "is there a free plan?",
+      168
+    ],
+    [
+      "can i use designs commercially?",
+      166
+    ],
+    [
+      "kann lovart designaufgaben nach zeitplan ausführen?",
+      165
+    ],
+    [
+      "lovart può eseguire attività di design secondo una programmazione?",
+      162
+    ]
+  ],
+  "examples": {
+    "title_gt_60": [
+      {
+        "slug": "ai-model-generator",
+        "pt": "tool",
+        "title": "AI Model Generator — Turn Architecture Notes into 3D-Ready Models | Lovart",
+        "len": 74
+      },
+      {
+        "slug": "ai-banner-maker-free",
+        "pt": "feature",
+        "title": "AI Free Banner Maker Free — campaign banners sized for ads | Lovart",
+        "len": 67
+      },
+      {
+        "slug": "ai-logo-generator-landing-agent-workflow",
+        "pt": "topic",
+        "title": "AI Logo Generator Workflow: Move Generation to the Front of the Pipeline",
+        "len": 72
+      },
+      {
+        "slug": "brand-video-landing-agent-workflow",
+        "pt": "topic",
+        "title": "Brand Video Landing Page: Fix the Handoffs, Not the Video Render",
+        "len": 64
+      },
+      {
+        "slug": "marketing-video-ai-landing-agent-workflow",
+        "pt": "topic",
+        "title": "Marketing Video Workflow: One Brief Produces the Ad and Its Landing Page",
+        "len": 72
+      },
+      {
+        "slug": "ai-banner-landing-agent-workflow",
+        "pt": "topic",
+        "title": "AI Banner Landing Agent Workflow — AI banner design agent | Lovart",
+        "len": 66
+      },
+      {
+        "slug": "ai-affiliate-ads-generator",
+        "pt": "feature",
+        "title": "AI Affiliate Ads Generator — Affiliate Creatives Built for Conversion | Lovart",
+        "len": 78
+      },
+      {
+        "slug": "ai-bakery-menu-maker",
+        "pt": "feature",
+        "title": "AI Bakery Menu Maker — appetizing bakery menus and price | Lovart",
+        "len": 65
+      },
+      {
+        "slug": "ai-company-logo-maker",
+        "pt": "feature",
+        "title": "Company Logo Maker: From Brief to Files That Survive Print, Web, Signage",
+        "len": 72
+      },
+      {
+        "slug": "ai-design-solution-for-startups",
+        "pt": "solution",
+        "title": "AI Design Solution for Startups — Complete AI design solution | Lovart",
+        "len": 70
+      },
+      {
+        "slug": "ai-facebook-poster-generator",
+        "pt": "feature",
+        "title": "AI Facebook Poster Generator — print-ready posters — layout | Lovart",
+        "len": 68
+      },
+      {
+        "slug": "ai-google-ads-banner-generator",
+        "pt": "feature",
+        "title": "AI Google Ads Banner Generator — Generate high-converting | Lovart",
+        "len": 66
+      }
+    ],
+    "title_bare": [
+      {
+        "slug": "ai-design-api",
+        "pt": "tool",
+        "title": "AI Design API"
+      },
+      {
+        "slug": "ai-face-swap-free",
+        "pt": "tool",
+        "title": "AI Face Swap Free"
+      },
+      {
+        "slug": "ai-video-cutter",
+        "pt": "tool",
+        "title": "AI Video Cutter"
+      },
+      {
+        "slug": "ai-virtual-try-on",
+        "pt": "tool",
+        "title": "AI Virtual Try on"
+      },
+      {
+        "slug": "image-to-3d-ai",
+        "pt": "tool",
+        "title": "Image to 3D AI"
+      },
+      {
+        "slug": "ai-face-swap-api",
+        "pt": "tool",
+        "title": "AI Face Swap Api"
+      },
+      {
+        "slug": "ai-face-enhancer",
+        "pt": "tool",
+        "title": "AI Face Enhancer"
+      },
+      {
+        "slug": "ai-video-merger",
+        "pt": "tool",
+        "title": "AI Video Merger"
+      },
+      {
+        "slug": "ai-design-app",
+        "pt": "tool",
+        "title": "AI Design App"
+      },
+      {
+        "slug": "ai-image-restorer",
+        "pt": "tool",
+        "title": "AI Image Restorer"
+      },
+      {
+        "slug": "ai-video-enhancer",
+        "pt": "tool",
+        "title": "AI Video Enhancer"
+      },
+      {
+        "slug": "ai-logo-maker-app",
+        "pt": "tool",
+        "title": "AI Logo Maker App"
+      }
+    ],
+    "desc_gt_160": [
+      {
+        "slug": "ai-design-for-fitness-wellness-hub",
+        "pt": "solution",
+        "len": 172,
+        "desc": "Produce class promos, member campaigns, transformation graphics, and social content for gyms, studios, coaches, and wellness brands. AI design agent for fitness businesses."
+      },
+      {
+        "slug": "ai-design-solution-for-agencies",
+        "pt": "solution",
+        "len": 179,
+        "desc": "Transform your agency's creative production. Multi-client Brand Kits, production automation, pitch-ready concepts. AI design agent for creative and marketing agencies. Start free."
+      },
+      {
+        "slug": "ai-design-solution-for-creators",
+        "pt": "solution",
+        "len": 170,
+        "desc": "Thumbnails, podcast art, newsletter headers, carousels, and sponsor kits for YouTubers, podcasters, and personal brands. AI design agent for content creators. Start free."
+      },
+      {
+        "slug": "ai-design-solution-forterprise",
+        "pt": "solution",
+        "len": 189,
+        "desc": "Enterprise-grade AI design with SSO, brand governance rules, SOC 2 compliance, and dedicated infrastructure. Distribute creative production across global teams without losing brand"
+      },
+      {
+        "slug": "ai-design-solution-for-freelancers",
+        "pt": "solution",
+        "len": 180,
+        "desc": "Build a freelance brand that commands premium rates. Professional brand identity, client proposals, portfolio design, and marketing materials — all generated from text. Start free."
+      },
+      {
+        "slug": "ai-design-solution-for-marketing-teams",
+        "pt": "solution",
+        "len": 195,
+        "desc": "Scale marketing creative output without scaling headcount. AI design agent for marketing teams — produce 5× more on-brand visuals with Brand Kit governance and distributed producti"
+      },
+      {
+        "slug": "ai-design-solution-for-nonprofits",
+        "pt": "solution",
+        "len": 207,
+        "desc": "Professional design for mission-driven organizations. Create fundraising visuals, impact reports, grant proposals, and donor communications — free for qualified nonprofits through "
+      },
+      {
+        "slug": "ai-design-solution-for-saas",
+        "pt": "solution",
+        "len": 161,
+        "desc": "Ship launch kits, PLG onboarding visuals, sales enablement, and lifecycle campaigns. AI design agent for B2B SaaS product marketing and growth teams. Start free."
+      },
+      {
+        "slug": "ai-design-solution-for-shopify",
+        "pt": "solution",
+        "len": 170,
+        "desc": "Turn one product brief into PDP visuals, ad creatives, landing pages, email headers, and video concepts. AI design agent for Shopify merchants and DTC brands. Start free."
+      },
+      {
+        "slug": "ai-design-solution-for-solopreneurs",
+        "pt": "solution",
+        "len": 187,
+        "desc": "Run a one-person business with the visual presence of a funded company. AI brand identity, social media graphics, client proposals, and product visuals — generated in minutes. Star"
+      },
+      {
+        "slug": "ai-design-solution-for-startups",
+        "pt": "solution",
+        "len": 202,
+        "desc": "Complete AI design solution for early-stage startups. Generate brand identity, investor pitch decks, Product Hunt launch graphics, and sales collateral — all from text, on a pre-se"
+      },
+      {
+        "slug": "ai-facebook-ad-creative-generator",
+        "pt": "feature",
+        "len": 200,
+        "desc": "Stop ad fatigue. Generate hundreds of high-converting Facebook and Instagram ad creatives in minutes with Lovart's AI Design Agent. Features batch generation, text editing, and See"
+      }
+    ],
+    "desc_short": [],
+    "hero_article": [
+      {
+        "slug": "ai-logo-generator-landing-agent-workflow",
+        "pt": "topic",
+        "hero": "The \"AI Logo Generator\" Workflow Is Backwards: 3 Fixes Before You Automate Anything"
+      },
+      {
+        "slug": "brand-video-landing-agent-workflow",
+        "pt": "topic",
+        "hero": "The Brand Video Landing Page Is Not a Video Problem: 4 Fixes That Cut Rework"
+      },
+      {
+        "slug": "marketing-video-ai-landing-agent-workflow",
+        "pt": "topic",
+        "hero": "The 3-Hour Marketing Video Workflow That Still Ships on Day 8"
+      },
+      {
+        "slug": "flora-ai-landing-agent-workflow",
+        "pt": "topic",
+        "hero": "The complete design agent,"
+      },
+      {
+        "slug": "ai-product-image-generator",
+        "pt": "feature",
+        "hero": "I Tested 4 AI Product Image Generators on 40 Google Shopping Listings: Only 2 Survived Merchant Center Review"
+      },
+      {
+        "slug": "ai-video-generator-workflow-by-lovart",
+        "pt": "feature",
+        "hero": "I Tested Lovart's AI Video Workflow for 3 Weeks: Consistency Still Breaks at Clip 4"
+      },
+      {
+        "slug": "ai-video-generator-workflow",
+        "pt": "feature",
+        "hero": "I Tested 6 AI Video Models in One Workspace: Here's the Workflow That Actually Saves Time"
+      },
+      {
+        "slug": "ai-youtube-thumbnail-generator",
+        "pt": "feature",
+        "hero": "Why One Channel Jumps From 4% to 9% CTR — and What the Thumbnails Did"
+      },
+      {
+        "slug": "blog-post-to-instagram-ai-repurposing",
+        "pt": "feature",
+        "hero": "How to Turn Blog Posts into Instagram Carousels | Lovart AI"
+      },
+      {
+        "slug": "event-poster-maker",
+        "pt": "feature",
+        "hero": "An Event Poster Maker Is Not a Template Gallery: 3 Numbers That Decide Whether Anyone Shows Up"
+      },
+      {
+        "slug": "ai-design-for-designers",
+        "pt": "feature",
+        "hero": "a creative brief and Brand Kit in → on-brand Design for Designers deliverables out"
+      },
+      {
+        "slug": "ai-design-for-filmmakers",
+        "pt": "feature",
+        "hero": "Why AI Design for Filmmakers Fails at 40% of the Finish Line (And How to Fix It)"
+      }
+    ],
+    "no_proof": [
+      {
+        "slug": "ai-design-generator-landing-agent-workflow",
+        "pt": "topic",
+        "types": [
+          "hero-split",
+          "bento-6",
+          "cta-band"
+        ]
+      },
+      {
+        "slug": "ai-banner-landing-agent-workflow",
+        "pt": "topic",
+        "types": [
+          "hero-split",
+          "bento-6",
+          "cta-band"
+        ]
+      }
+    ],
+    "slop": [
+      {
+        "slug": "ai-anime-generator",
+        "pt": "feature",
+        "hits": [
+          "transform your",
+          "in seconds"
+        ],
+        "hero": "AI Anime Generator — Create Professional Designs Instantly | Lovart"
+      },
+      {
+        "slug": "ai-cartoon-avatar",
+        "pt": "feature",
+        "hits": [
+          "transform your",
+          "in seconds"
+        ],
+        "hero": "AI Cartoon Avatar Maker | Turn Photos into Cartoons"
+      },
+      {
+        "slug": "ai-real-estate-flyer",
+        "pt": "feature",
+        "hits": [
+          "transform your",
+          "in seconds"
+        ],
+        "hero": "AI Real Estate Flyer — Create Professional Designs Instantly | Lovart"
+      },
+      {
+        "slug": "ai-restaurant-menu",
+        "pt": "feature",
+        "hits": [
+          "transform your",
+          "in seconds"
+        ],
+        "hero": "AI Restaurant Menu — Create Professional Designs Instantly | Lovart"
+      },
+      {
+        "slug": "ai-resume-builder",
+        "pt": "feature",
+        "hits": [
+          "transform your",
+          "in seconds"
+        ],
+        "hero": "AI Resume Builder — Create Professional Designs Instantly | Lovart"
+      },
+      {
+        "slug": "ai-stock-image-free",
+        "pt": "feature",
+        "hits": [
+          "transform your",
+          "in seconds"
+        ],
+        "hero": "AI Stock Image Free — Create Professional Designs Instantly | Lovart"
+      },
+      {
+        "slug": "ai-stock-photo-creator",
+        "pt": "feature",
+        "hits": [
+          "transform your",
+          "in seconds"
+        ],
+        "hero": "AI Stock Photo Creator — Create Professional Designs Instantly | Lovart"
+      },
+      {
+        "slug": "ai-style-transfer",
+        "pt": "feature",
+        "hits": [
+          "transform your",
+          "in seconds"
+        ],
+        "hero": "AI Style Transfer — Create Professional Designs Instantly | Lovart"
+      },
+      {
+        "slug": "chat-to-image-ai-generator",
+        "pt": "tool",
+        "hits": [
+          "effortless",
+          "transform your"
+        ],
+        "hero": "Chat with AI to create"
+      },
+      {
+        "slug": "flux-ai-image-generator",
+        "pt": "tool",
+        "hits": [
+          "unlock",
+          "transform your",
+          "in seconds"
+        ],
+        "hero": "Generate images with"
+      },
+      {
+        "slug": "virtual-actor-creation",
+        "pt": "tool",
+        "hits": [
+          "transform your",
+          "in seconds"
+        ],
+        "hero": "Generate realistic AI"
+      }
+    ],
+    "generic_h2": [
+      {
+        "slug": "birthday-invitation",
+        "pt": "feature",
+        "h2": [
+          "Key Features",
+          "How It Works",
+          "Frequently Asked Questions"
+        ]
+      },
+      {
+        "slug": "id-card-design",
+        "pt": "feature",
+        "h2": [
+          "Key Features",
+          "How It Works",
+          "Frequently Asked Questions"
+        ]
+      },
+      {
+        "slug": "nano-banana-product-photography",
+        "pt": "feature",
+        "h2": [
+          "Key Features",
+          "How It Works",
+          "Frequently Asked Questions"
+        ]
+      },
+      {
+        "slug": "nano-banana-social-media-graphics",
+        "pt": "feature",
+        "h2": [
+          "Key Features",
+          "How It Works",
+          "Frequently Asked Questions"
+        ]
+      },
+      {
+        "slug": "nano-banana-website-graphics",
+        "pt": "feature",
+        "h2": [
+          "Key Features",
+          "How It Works",
+          "Frequently Asked Questions"
+        ]
+      }
+    ]
+  }
+}

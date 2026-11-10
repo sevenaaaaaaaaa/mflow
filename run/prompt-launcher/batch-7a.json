@@ -1,0 +1,202 @@
+[
+  {
+    "slug": "nano-banana-free",
+    "id": "tools-nano-banana-free-fr",
+    "lang": "fr",
+    "title": "Quatre scénarios au lieu de cent essais",
+    "description": "L'accès gratuit est un essai : testez quatre scénarios, consignez les limites et décidez si une licence payante est nécessaire.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme lead production qui teste l'outil sur quatre tâches réelles, pas sur des images de démo.\n\nEntrées [à remplacer] : photo 3000×3000 d'une tasse en céramique ; quatre scénarios : retouche d'étiquette, changement de fond, changement de couleur d'émail, transfert de style depuis une référence ; ligne validée « Céramique, 350 ml ».\n\nLivrable : quatre PNG 3000×3000, un tableau comparatif et un verdict par scénario.\n\nSystème : une seule direction de lumière ; fond à 3 % près de l'original ; texture de l'émail à 100 % ; marges de 6 % ; aucun texte dans l'image.\n\nFlux : 1) figez l'original et les interdits ; 2) exécutez la retouche d'étiquette ; 3) comparez le texte caractère par caractère ; 4) exécutez les trois autres scénarios ; 5) notez chacun sur trois critères ; 6) vérifiez ; 7) exportez les fichiers et le tableau.\n\nVérifications : étiquette sans déformation ; émail à 3 % près ; fond inchangé ; aucun objet ajouté ; résolution 3000×3000.\n\nRapport : quel scénario a échoué, ce qu'il a fallu refaire, où la limite d'accès a pesé et si une licence payante est nécessaire.\n\nNe présentez pas le test comme une licence commerciale ; ne masquez pas les limites ; n'utilisez pas de références sans droits."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme responsable de production de contenu qui construit une matrice de test sur douze images et documente les droits.\n\nEntrées [à remplacer] : trois produits (tasse, assiette, pichet) ; quatre scénarios par produit ; références de style ; lignes validées ; couleurs #1F1B18, #D8C3A5, #B4553C.\n\nLivrable : douze PNG 3000×3000, une matrice « produit × scénario », un journal des droits avec les limites, et un verdict : test, licence payante ou refus.\n\nSystème : une seule lumière ; fond à 3 % près ; texture à 100 % ; marges de 6 % ; même cadrage pour tous les produits.\n\nFlux : 1) construisez la matrice et validez les lignes ; 2) traitez le premier produit sur les quatre scénarios ; 3) comparez texte et texture ; 4) répétez pour les deux autres ; 5) notez où la limite d'accès a joué ; 6) vérifiez ; 7) exportez la matrice et le journal.\n\nVérifications : les douze en 3000×3000 ; texte sans déformation ; texture à 3 % près ; aucun objet ajouté ; limites consignées fichier par fichier.\n\nRapport : le scénario le plus faible, le coût d'une itération, où la licence est requise et ce qui ne peut pas être publié.\n\nNe qualifiez pas les fichiers de test de commerciaux ; ne retirez pas les filigranes des références ; ne promettez pas de droits sans vérification."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme producteur qui vérifie où le test s'arrête et où l'usage commercial commence.\n\nEntrées [à remplacer] : un client demande quatre images pour une publicité ; sources internes ; référence externe ; limite d'accès consignée ; couleurs #1F1B18 et #E8DCCB.\n\nLivrable : trois fichiers utilisables, un fichier marqué « interdit », un journal des droits et une lettre au client de 120 mots.\n\nFlux : 1) listez les droits de chaque source ; 2) marquez ce que la limite bloque ; 3) préparez trois fichiers sûrs ; 4) marquez le quatrième ; 5) vérifiez les mentions ; 6) vérifiez ; 7) exportez les fichiers, le journal et la lettre.\n\nVérifications : aucun fichier présenté comme commercial ; aucune référence externe utilisée ; mention sur le quatrième fichier ; lettre sans promesse ; tous les fichiers en 3000×3000 à 300 dpi, vérifiés en 1080×1350.\n\nRapport : où la limite bloque précisément, ce qu'il faut acheter et le risque qui reste pour le client.\n\nNe remplacez pas la licence par « pour test » ; ne retirez pas la mention ; ne promettez pas des droits inexistants."
+      }
+    ]
+  },
+  {
+    "slug": "ai-image-enhancer",
+    "id": "tools-ai-image-enhancer-fr",
+    "lang": "fr",
+    "title": "L'upscale se prouve à 400 %",
+    "description": "Agrandir n'est sûr que si texture, bord et visage tiennent un recadrage à 400 % : la vérification passe avant l'export.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme retoucheur qui prépare une photo produit pour l'impression et prouve que l'upscale tient à 400 %.\n\nEntrées [à remplacer] : photo 1200 px d'une basket en toile sur fond blanc, léger flou sur le bout ; couleurs #1F1B18 et #C8A27A ; ligne « Toile recyclée, 12 tailles ».\n\nLivrable : TIFF 3600×3600 à 300 dpi, JPEG 1080×1350 et quatre recadrages à 400 %.\n\nSystème : basket sur 62 % de la largeur ; fond à 3 % près du blanc ; texture de semelle à 400 % ; ombre douce de 40 px ; grain maximal de 1,5 %.\n\nFlux : 1) auditez flou, bruit et compression ; 2) agrandissez 3× en préservant la texture ; 3) comparez à l'original à 400 % ; 4) corrigez uniquement le bout ; 5) gardez la trame continue ; 6) vérifiez ; 7) exportez les fichiers et les recadrages.\n\nVérifications : aucune couture inventée ; échelle de trame à 5 % près ; halo sous 1 px ; texte du col intact ; à 400 %, aucun effet plastique.\n\nRapport : quel artefact a été accepté, quel détail le modèle a inventé, quelle zone a été corrigée et si le fichier peut partir en impression.\n\nN'augmentez pas la netteté de toute l'image ; ne transformez pas le grain en plastique ; n'ajoutez pas de logo absent."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme retoucheur de studio qui crée une passe d'upscale répétable pour vingt scans de catalogue.\n\nEntrées [à remplacer] : vingt scans 2400 px de sacs en cuir, qualité mixte, trois avec moiré et deux avec blocs JPEG ; lignes par SKU ; couleurs #B08968 et #1F1B18.\n\nLivrable : vingt TIFF 4800×4800 à 300 dpi ; aperçus 2× et 4× par fichier ; journal des défauts avec résolution source, type d'artefact et correction acceptée ; planche contact ; noms sku-pass-version.\n\nSystème : produit sur 55–70 % du cadre ; fond à 3 % près de l'original ; cuir à 400 % ; halo sous 1,2 px ; netteté globale maximale de 40 %.\n\nFlux : 1) notez chaque scan selon flou, moiré, blocs et exposition ; 2) définissez deux passes : 2× pour l'impression et 4× pour le détail ; 3) commencez par le pire scan ; 4) comparez les recadrages à 400 % côte à côte ; 5) rejetez la passe qui invente une couture ; 6) traitez le lot ; 7) vérifiez ; 8) exportez le journal.\n\nVérifications : quincaillerie non inventée ; direction du grain préservée ; moiré non amplifié ; texte et logos intacts ; les vingt fichiers à 300 dpi.\n\nRapport : note par fichier, passes rejetées, les deux scans à refaire et le détail qui ne revient pas à 4×.\n\nNe promettez pas une résolution absente de la source ; n'inventez pas de motif ; ne recadrez pas le défaut en l'appelant correction."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme retoucheur qui teste l'upscale sur un portrait où l'identité compte.\n\nEntrées [à remplacer] : JPEG 800 px, artefacts de compression sur la joue, légère sous-exposition, pas de RAW ; usage validé « photo d'équipe sur le site » ; consentement requis.\n\nLivrable : portrait 3200 px à 300 dpi, quatre recadrages à 400 % (yeux, joue, ligne des cheveux, col), liste des changements et verdict « possible / impossible ».\n\nFlux : 1) auditez compression, bruit et exposition ; 2) définissez ce qui peut changer (ton, texture, poussière) et ce qui ne doit pas (identité, marques d'âge, teint) ; 3) agrandissez 4× avec verrouillage d'identité ; 4) comparez yeux et ligne des cheveux à 400 % ; 5) réduisez l'effet plastique de 50 % ; 6) vérifiez ; 7) exportez le fichier et la liste.\n\nVérifications : forme et écartement des yeux intacts ; texture de peau présente à 400 % ; dents et iris non inventés ; teint à 5 % près ; retouche limitée à la poussière et au ton.\n\nRapport : ce qui a changé, ce que le modèle a inventé, quel recadrage échoue et si le portrait peut aller sur le site à cette taille.\n\nNe changez pas la forme du visage ; ne blanchissez pas les dents ; ne lissez pas les pores ; n'utilisez pas la photo sans consentement."
+      }
+    ]
+  },
+  {
+    "slug": "ai-baby-podcast-generator",
+    "id": "tool-ai-baby-podcast-generator-fr",
+    "lang": "fr",
+    "title": "Le rire se dirige avant le script",
+    "description": "Une voix de bébé tient sur le rythme : longueur des répliques, pauses et trois marques de rire décident si c'est un personnage ou une synthèse.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme producteur audio qui enregistre une intro de 30 s en voix de bébé pour un podcast parental.\n\nEntrées [à remplacer] : réplique de l'animateur « De retour dans Small Hours » ; personnage « Pip » ; trois marques de rire ; export WAV 48 kHz, 24 bits, mono.\n\nLivrable : WAV 30 s, un hook séparé de 10 s, un script avec timecodes et un journal de prises.\n\nSystème : hook dans les 3 premières s ; rires à 6 s, 17 s et 26 s ; pause de 250 ms après chaque rire ; un seul registre de voix ; pas plus de 12 mots par réplique.\n\nFlux : 1) reformulez le script et comptez les syllabes ; 2) coupez ce qui ne tient pas en 30 s ; 3) notez les timecodes des rires et des pauses ; 4) enregistrez dans un seul registre ; 5) vérifiez les 10 premières s sans vidéo ; 6) vérifiez ; 7) exportez les deux fichiers.\n\nVérifications : pas de phonèmes adultes dans les répliques ; rire à 200 ms près de la marque ; aucune réplique de plus de 12 mots ; sonie −16 LUFS ; durée de 30 s ±0,5 s.\n\nRapport : les répliques coupées, le rire qui a dérivé et si l'intro tient sans l'animateur.\n\nN'ajoutez pas de sponsor ni de promesse ; n'accélérez pas la voix pour tenir la durée ; ne réutilisez pas le même rire trois fois."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme producteur audio senior qui assemble un passage de conte de trois minutes avec deux voix d'enfants et un système de pauses répétable.\n\nEntrées [à remplacer] : script de 420 mots « Pip et le bateau de papier » ; deux personnages (Pip, Nan) ; quatre marqueurs sonores (eau, papier, bâillement, page) ; export WAV 48 kHz et MP3 320 kbps.\n\nLivrable : master de 3:00, bande-annonce de 60 s, stems par personnage, script avec timecodes et feuille de marqueurs ; noms episode-version.\n\nSystème : 8–12 mots par réplique ; pause de 300 ms aux changements de scène ; rire seulement sur trois marques ; musique à −24 LUFS sous la voix ; voix à −16 LUFS ; réplique de 4 s maximum.\n\nFlux : 1) prenez le script et marquez les scènes ; 2) coupez à 3:00 et notez les coupes ; 3) répartissez les répliques entre personnages ; 4) enregistrez chaque personnage dans un registre ; 5) placez marqueurs et pauses ; 6) vérifiez les 10 premières et dernières s ; 7) vérifiez ; 8) exportez le master, la bande-annonce et les stems.\n\nVérifications : aucune réplique de plus de 12 mots ; marqueurs à 150 ms près ; voix et musique au niveau cible ; registre stable entre scènes ; durée de 3:00 ±2 s ; aucun détail inventé.\n\nRapport : les coupes, la dérive de registre, le timing des marqueurs et la scène qui cassera à la réécoute.\n\nN'ajoutez pas de texte absent du script ; ne changez pas la fin ; n'empilez pas deux échantillons de rire."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme producteur audio qui teste la voix de bébé sur un texte trop long et un format serré.\n\nEntrées [à remplacer] : phrase de 68 mots pour un slot de 10 s ; trois phrases obligatoires et neutres ; une marque de rire à 4 s ; export WAV 48 kHz.\n\nLivrable : version 10 s, version 14 s, rapport de calage et liste des coupes.\n\nFlux : 1) comptez les syllabes et estimez la durée au rythme cible ; 2) listez ce qui peut être retiré sans changer le sens ; 3) montez la version 10 s et mesurez le dépassement ; 4) si le dépassement dépasse 1 s, livrez la version 14 s ; 5) gardez la marque de rire ; 6) vérifiez ; 7) exportez les fichiers et le rapport.\n\nVérifications : dépassement indiqué en secondes ; aucune phrase coupée au milieu d'un mot ; rire sur la marque ; accélération sous 8 % ; sonie −16 LUFS.\n\nRapport : l'ampleur du dépassement, la version refusée et si le slot de 10 s exige un nouveau script.\n\nNe transformez pas la voix en accéléré ; ne supprimez pas une phrase obligatoire en silence ; ne présentez pas la version 10 s comme valide si elle dépasse."
+      }
+    ]
+  },
+  {
+    "slug": "text-to-image-generator",
+    "id": "tool-text-to-image-generator-fr",
+    "lang": "fr",
+    "title": "Générez une fois, éditez cinq fois",
+    "description": "Sujet, caméra, lumière et matière sont les quatre champs d'un prompt ; ensuite, chaque correction est une édition de zone avec une graine verrouillée.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme directeur artistique qui construit une image héros pour un lancement de soin et corrige un détail sans régénérer le cadre.\n\nEntrées [à remplacer] : pot ambré de 50 ml sur un socle en plâtre ; couleurs #1F1B18 et #E8DCCB ; ligne validée « Sans parfum, 50 ml » ; caméra 50 mm, f/4.\n\nLivrable : PNG 3000×2000 et recadrage 1080×1350 à 300 dpi, sRGB.\n\nSystème : pot sur 38 % de la largeur ; horizon au tiers bas ; lumière à 45° côté gauche ; une seule couleur d'étiquette ; fond à 4 % près de #E8DCCB.\n\nFlux : 1) reformulez en sujet, caméra, lumière et matière ; 2) écrivez un prompt de 45 mots avec ces quatre champs et six interdits ; 3) générez quatre candidats sur une graine ; 4) choisissez selon la lisibilité de l'étiquette à 25 % ; 5) modifiez seulement la douceur de l'ombre, par zone ; 6) vérifiez ; 7) exportez les deux cadrages.\n\nVérifications : texte d'étiquette inchangé ; proportions du pot à 2 % près ; aucune certification inventée ; marge de 10 % autour du produit ; ombre à droite.\n\nRapport : la fiche des quatre champs, le candidat rejeté et pourquoi, la zone éditée et si le recadrage doit être refait.\n\nN'ajoutez pas d'ingrédient ni d'allégation ; ne redessinez pas le pot ; n'utilisez pas un mot non validé."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme directeur artistique senior qui mène une campagne de trois images avec un seul système de prompt, capable de survivre à cinq tours de retours.\n\nEntrées [à remplacer] : photo studio 4000 px d'un flacon carré en verre ; texte validé « Eau de parfum, 50 ml » ; couleurs #1F1B18, #E8DCCB, #B4553C ; trois usages (héros web, affiche, social payant).\n\nLivrable : trois masters 4000×2667 à 300 dpi ; neuf recadrages en 1080×1350, 1080×1080 et 1920×1080 ; journal des graines ; fiche de prompt ; noms concept-ratio-version.\n\nSystème : flacon sur 32–44 % ; horizon au tiers bas ; lumière à 45° côté gauche avec 0,6 m de chute ; deux couleurs plus un accent ; espace négatif d'au moins 28 % ; grain maximal de 2 %.\n\nFlux : 1) prenez le brief et listez les cinq non-négociables ; 2) écrivez une fiche de base (sujet, caméra, lumière, matière, fond, interdits) ; 3) générez trois concepts sur une graine avec une variable chacun ; 4) auditez à 25 % et choisissez ; 5) produisez les neuf recadrages par édition de zone ; 6) composez le texte validé ; 7) vérifiez ; 8) exportez avec le journal des graines.\n\nVérifications : géométrie du flacon à 2 % près ; texte d'étiquette inchangé ; marge de 10 % sur chaque recadrage ; texte lisible à 360 px ; aucun prix ou volume inventé ; écart colorimétrique sous 3 %.\n\nRapport : la fiche de base, la variable de chaque concept, les zones éditées et le recadrage le plus susceptible d'échouer en impression.\n\nNe régénérez pas tout le cadre pour corriger un bord ; ne changez pas le flacon ; n'ajoutez pas d'accessoires non listés."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme directeur artistique qui teste un prompt quand le texte est long et la référence mauvaise.\n\nEntrées [à remplacer] : photo 1200 px d'une tasse en céramique, inclinée de 4°, reflet dur d'une fenêtre sur l'émail ; titre obligatoire « Tournée à la main, 220 ml » ; couleurs argile #B4553C et encre #1F1B18.\n\nLivrable : PNG 2400×1600, recadrage 1080×1350, note de limites et fiche de stabilité sur trois relances.\n\nFlux : 1) auditez l'inclinaison, le reflet et le détail manquant ; 2) séparez ce que l'image doit porter du texte qui revient à la mise en page ; 3) écrivez un prompt qui fixe sujet et matière, pas le texte ; 4) générez trois relances sur une graine et comparez la dérive ; 5) corrigez inclinaison et reflet par zone ; 6) vérifiez ; 7) exportez avec la note.\n\nVérifications : titre orthographié exactement ; aucun texte généré dans l'image ; horizon à 1° près ; émail préservé à 100 % ; les trois relances gardent la même silhouette.\n\nRapport : ce que le modèle ne peut pas tenir, où les relances dérivent, si le titre doit passer en mise en page et quel défaut exige une reprise photo.\n\nN'affichez pas le titre en pixels ; ne lissez pas les anneaux de tournage ; ne présentez pas une relance comme une nouvelle variante."
+      }
+    ]
+  },
+  {
+    "slug": "ai-object-remover",
+    "id": "tools-ai-object-remover-fr",
+    "lang": "fr",
+    "title": "Le retrait est rapide, le remplissage est le livrable",
+    "description": "Reconstruisez le dégradé, la texture et l'ombre portée, puis vérifiez à 100 % : un masque propre n'est pas une photo propre.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme retoucheur qui retire trois objets parasites d'une photo produit sans toucher au produit.\n\nEntrées [à remplacer] : photo 2400×3000 d'un vase en céramique sur une table en bois ; un câble, une tasse et une étiquette de prix dans le cadre ; ligne validée « Céramique, 32 cm ».\n\nLivrable : JPEG 2400×3000, recadrage 1080×1350 et une note de remplissage par objet.\n\nSystème : vase sur 42 % de la hauteur ; veines du bois de gauche à droite ; ombre portée à droite ; texture de remplissage à 5 % près du voisinage ; bord du masque invisible à 100 %.\n\nFlux : 1) listez chaque objet et ce qu'il masque ; 2) retirez le câble, puis la tasse, puis l'étiquette ; 3) remplissez avec la texture environnante, pas au tampon ; 4) reconstruisez les veines du bois ; 5) restaurez l'ombre du vase ; 6) vérifiez ; 7) exportez les fichiers et les notes.\n\nVérifications : bord du masque invisible à 100 % ; veines continues ; ombre du vase non interrompue ; texte d'étiquette inchangé ; aucun objet inventé dans le remplissage.\n\nRapport : l'objet qui laisse la pire cicatrice, le dégradé reconstruit, la zone à reprendre en photo et le remplissage le moins sûr.\n\nN'effacez pas une ombre qui doit rester ; ne clonez pas un motif répétitif ; ne retirez pas une partie du produit."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme retoucheur qui prépare douze photos pour une fiche marketplace, où chaque retrait doit tenir un contrôle à 100 %.\n\nEntrées [à remplacer] : douze photos 3000 px sur trois surfaces (bois, plâtre, lin) ; à retirer : câbles, mains, étiquettes de prix, reflet de fenêtre ; lignes validées par SKU ; couleurs #1F1B18 et #E8DCCB.\n\nLivrable : douze JPEG 3000×3750 à 300 dpi ; recadrages avant/après à 100 % et 400 % ; journal des défauts par photo ; noms sku-clean-version.\n\nSystème : produit inchangé ; texture de remplissage à 5 % près ; direction d'ombre conservée ; motif de tampon invisible dans une fenêtre de 200 px ; écart de couleur sous 2 % ; bruit de fond raccord.\n\nFlux : 1) classez chaque photo par difficulté ; 2) définissez ce qui peut changer et ce qui ne doit pas ; 3) commencez par la plus difficile ; 4) vérifiez à 100 % et 400 % ; 5) traitez le reste par difficulté croissante ; 6) reconstruisez les grands dégradés ; 7) vérifiez ; 8) exportez le journal.\n\nVérifications : cicatrice invisible à 100 % ; aucun motif cloné ; ombre préservée ; bords du produit intacts ; aucun reste d'étiquette.\n\nRapport : classement par difficulté, les deux pires remplissages, les photos à reprendre et le retrait qui se voit encore à 400 %.\n\nNe retirez pas un détail du produit ; ne floutez pas une cicatrice pour la cacher ; ne clonez pas deux fois la même zone."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme retoucheur qui teste le retrait d'une personne dont l'ombre traverse la base du produit.\n\nEntrées [à remplacer] : photo 2000×2500, une personne debout près du produit, ombre sur un sol carrelé avec joints ; usage validé « fiche produit » ; accord de la personne disponible.\n\nLivrable : image nettoyée 2000×2500, recadrage 400 % sur le trajet de l'ombre, note de limites et note de droits.\n\nFlux : 1) cartographiez le trajet de l'ombre et la grille des joints ; 2) décidez si l'ombre peut rester comme ombre anonyme ; 3) retirez la personne ; 4) reconstruisez joints et texture du carrelage ; 5) restaurez l'ombre qui appartient au produit ; 6) vérifiez ; 7) exportez les fichiers et les notes.\n\nVérifications : joints continus à 1 px près ; motif de carrelage non inventé ; ombre du produit plausible ; aucune silhouette humaine restante ; aucun membre fantôme à 400 %.\n\nRapport : l'ombre conservée, la grille reconstruite, le carreau qui se répète, si le résultat trompe l'acheteur et si une reprise coûte moins cher.\n\nNe laissez pas de contour humain ; ne clonez pas le carrelage sur toute l'image ; n'affirmez pas que la photo n'est pas retouchée."
+      }
+    ]
+  },
+  {
+    "slug": "ai-product-background",
+    "id": "tools-ai-product-background-fr",
+    "lang": "fr",
+    "title": "Une recette de lumière pour cinquante SKU",
+    "description": "Le catalogue gagne quand le cinquantième produit ressemble au deuxième : verrouillez la recette de lumière et la plaque, puis lancez le lot.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme producteur de catalogue qui place un produit dans trois décors sans changer le produit ni la lumière.\n\nEntrées [à remplacer] : PNG d'un flacon de shampoing de 500 ml sur fond transparent, boîte à lumière à gauche ; ligne validée « Sans sulfates, 500 ml » ; couleurs #A8B5A0 et #1F1B18.\n\nLivrable : trois JPEG 2000×2500 à 300 dpi, une planche contact et une ligne de recette de lumière par décor.\n\nSystème : flacon sur 36 % de la hauteur ; horizon à 72 % ; ombre de contact sur 16 % de la largeur ; température à 150 K près ; accessoires à 30 cm minimum ; un seul accent.\n\nFlux : 1) mesurez direction de lumière et longueur d'ombre ; 2) écrivez trois décors compatibles avec cette lumière ; 3) générez trois plaques ; 4) composez le flacon avec une ombre de contact ; 5) vérifiez l'étiquette à 100 % ; 6) vérifiez ; 7) exportez les fichiers et la planche.\n\nVérifications : ombre à droite sur les trois ; texte inchangé ; aucun badge inventé ; bord du flacon propre à 100 % ; horizon à 0,5° près.\n\nRapport : la recette de lumière, le décor qui contredit la source, le bord corrigé et le décor à écarter.\n\nN'ajoutez pas de seconde source ; ne changez pas le flacon ; n'inventez pas de certification."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme lead catalogue qui construit un système de fonds pour cinquante SKU et le teste sur le cinquantième produit.\n\nEntrées [à remplacer] : cinquante PNG pris en une session, boîte à lumière à 45° à gauche ; quatre plaques (étagère de salle de bain, comptoir en lin, carrelage humide, trousse de voyage) ; lignes par SKU ; couleurs #A8B5A0, #1F1B18, #B4553C.\n\nLivrable : deux cents composites 2000×2500 à 300 dpi ; quatre plaques ; une fiche de recette de lumière ; planche contact par SKU ; rapport de cohérence ; noms sku-plate-version.\n\nSystème : produit sur 32–40 % de la hauteur ; horizon à 70–74 % ; ombre de contact sur 14–18 % ; température à 150 K près ; accessoires à 30 cm ; flou équivalent à f/5.6 ; un accent par plaque.\n\nFlux : 1) prenez cinquante PNG et signalez ceux éclairés à droite ; 2) figez la recette avant toute génération ; 3) construisez quatre plaques ; 4) faites un SKU par décor ; 5) comparez ombre et température ; 6) traitez les autres ; 7) vérifiez un fichier sur dix ; 8) exportez le rapport.\n\nVérifications : ombre identique sur les deux cents fichiers ; température à 150 K près ; aucun texte inventé ; tous les fichiers à 300 dpi ; bord sans halo.\n\nRapport : dérive par plaque, SKU recalés, la plaque qui échoue au cinquantième produit et la correction qui exige une reprise photo.\n\nNe changez pas la lumière du produit pour la plaque ; ne réutilisez pas une forme d'ombre ; n'ajoutez pas d'accessoires avec du texte."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme lead catalogue qui teste le système sur un produit transparent et une plaque chargée.\n\nEntrées [à remplacer] : PNG d'un flacon en verre avec pipette, reflet dur sur l'épaule ; ligne validée « 30 ml, sans parfum » ; couleurs #DCE6E4 et #1F1B18 ; plaques possibles : marbre ou pierre mouillée.\n\nLivrable : deux composites 2000×2500, note de limites, rapport de bords et recadrage 1080×1350.\n\nFlux : 1) auditez le détourage pour réfraction, reflet et ombre manquante ; 2) listez ce que la plaque doit fournir ; 3) choisissez la plaque la plus calme et justifiez ; 4) générez la plaque à l'horizon mesuré ; 5) composez avec une ombre douce et un indice de caustique seulement s'il est juste ; 6) vérifiez ; 7) exportez les fichiers et les notes.\n\nVérifications : reflet non repeint à 100 % ; niveau de liquide plausible ; horizon cohérent avec la base ; texte inchangé ; caustique du bon côté.\n\nRapport : ce que la plaque ne peut pas donner, le reflet conservé, si une reprise coûte moins cher et jusqu'à quelle taille imprimer ce composite.\n\nNe remplacez pas la transparence par un aplat ; n'effacez pas le reflet dur ; ne posez pas le flacon sur un motif qui cache le bord."
+      }
+    ]
+  },
+  {
+    "slug": "ai-3d-model-generator",
+    "id": "tools-ai-3d-model-generator-fr",
+    "lang": "fr",
+    "title": "Un master 3D, pas une troisième révision",
+    "description": "Le coût d'un modèle 3D n'est pas la première version : c'est la troisième. Verrouillez dimensions, UV et matériau avant d'exporter.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme lead 3D qui produit un master unique à partir de trois photos de référence, sans repartir de zéro à chaque révision.\n\nEntrées [à remplacer] : trois photos 4000 px d'une chaise en bois ; dimensions réelles 78×62×80 cm ; matériau chêne ; livrable GLB plus rendu 2000×2000 ; couleurs #C8A27A et #1F1B18.\n\nLivrable : un GLB sous 45 000 triangles, un rendu 2000×2000 à 300 dpi, une fiche dimensions et un journal de révision.\n\nSystème : proportions exactes à 1 cm près ; UV sans chevauchement ; un seul matériau ; arêtes vives sous 30° ; échelle 1 unité = 1 m.\n\nFlux : 1) auditez les trois photos et listez les faces manquantes ; 2) construisez le maillage de base ; 3) vérifiez les dimensions ; 4) dépliez les UV ; 5) appliquez le matériau ; 6) vérifiez ; 7) exportez le GLB, le rendu et la fiche.\n\nVérifications : 78×62×80 cm à 1 cm près ; moins de 45 000 triangles ; UV sans chevauchement ; un seul matériau ; aucune face inventée visible au rendu.\n\nRapport : les faces déduites, l'écart de dimensions, la zone UV la plus étirée et ce qu'il faudrait photographier en plus.\n\nNe lissez pas les arêtes pour cacher un manque ; n'inventez pas une pièce absente des photos ; ne changez pas l'échelle entre les exports."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme responsable 3D qui livre six produits avec un master chacun et absorbe les révisions sans reconstruire la géométrie.\n\nEntrées [à remplacer] : six produits photographiés sous trois angles ; dimensions réelles ; palette #C8A27A, #1F1B18, #B4553C ; livrables GLB et rendus 2000×2000.\n\nLivrable : six GLB sous 60 000 triangles ; six rendus 2000×2000 à 300 dpi ; une fiche de révision par produit ; un journal des champs éditables ; noms produit-revision-version.\n\nSystème : dimensions à 1 cm près ; UV sans chevauchement ; un matériau par produit ; arêtes vives sous 30° ; champs éditables limités à trois (couleur, logo, variante).\n\nFlux : 1) auditez les six jeux de photos ; 2) construisez le master du premier produit ; 3) testez une révision (couleur) sans toucher à la géométrie ; 4) corrigez le champ qui casse le maillage ; 5) répétez pour les cinq autres ; 6) vérifiez ; 7) exportez les masters et le journal.\n\nVérifications : dimensions à 1 cm près ; moins de 60 000 triangles ; UV stables après révision ; un matériau ; révision sans nouvelle géométrie.\n\nRapport : le produit dont la révision casse le maillage, les champs réellement éditables et la photo qui manque pour fermer le modèle.\n\nNe refaites pas la géométrie pour changer une couleur ; ne fusionnez pas des pièces pour économiser des triangles ; ne changez pas le matériau en cours de série."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme lead 3D qui teste une troisième révision quand elle casse la géométrie.\n\nEntrées [à remplacer] : master existant sous 60 000 triangles ; troisième révision demandée (logo sur le dossier) ; photos d'origine incomplètes à l'arrière ; délai de 2 jours.\n\nLivrable : version corrigée sous 60 000 triangles, rendu 2000×2000, note de limites et journal des révisions.\n\nFlux : 1) identifiez le champ qui casse le maillage ; 2) isolez la zone du logo ; 3) testez la révision sur une copie ; 4) si la géométrie casse, revenez au master et plaquez le logo en texture ; 5) vérifiez les dimensions ; 6) vérifiez ; 7) exportez la version et le journal.\n\nVérifications : dimensions à 1 cm près ; moins de 60 000 triangles ; logo lisible à 400 px ; UV non chevauchants ; rendu 2000×2000 à 300 dpi ; aucune face nouvelle visible.\n\nRapport : ce qui a cassé, la solution retenue (texture ou géométrie), le rendu qui trahit la révision et la photo manquante.\n\nNe reconstruisez pas tout le maillage pour un logo ; n'augmentez pas le budget de triangles sans accord ; ne livrez pas une révision non testée."
+      }
+    ]
+  },
+  {
+    "slug": "nano-banana-2-ai-image-generator",
+    "id": "tools-nano-banana-2-ai-image-generator-fr",
+    "lang": "fr",
+    "title": "Comptez les itérations, pas le premier jet",
+    "description": "Le premier jet est la partie bon marché ; le produit, c'est la boucle d'édition : verrouillez la référence, touchez une zone et notez ce qui n'a pas bougé.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme retoucheur qui modifie une seule zone sur une image validée et compte les itérations.\n\nEntrées [à remplacer] : image 3000×4000, mannequin en veste en jean devant un mur gris ; changement « veste indigo vers écru » ; verrouillés : visage, cheveux, pose, texture du mur, ombre ; palette #E8DCCB.\n\nLivrable : PNG 3000×4000, recadrage 400 % sur la couture d'épaule et journal des itérations.\n\nSystème : veste sur 18 % du cadre ; mur à 2 % près ; direction d'ombre inchangée ; échelle de couture à 5 % près ; dérive colorimétrique globale sous 1 %.\n\nFlux : 1) marquez la zone d'édition et les zones verrouillées ; 2) faites une passe ; 3) comparez les zones verrouillées à 100 % ; 4) en cas de dérive, revenez à l'original et resserrez le masque ; 5) répétez, trois itérations maximum ; 6) vérifiez ; 7) exportez le fichier et le journal.\n\nVérifications : visage et cheveux stables ; couture à 5 % près ; mur à 2 % près ; aucun pli nouveau ; ombre inchangée.\n\nRapport : itérations utilisées, ce qui a dérivé en premier, la passe refusée et si un nouveau master est nécessaire.\n\nNe régénérez pas tout le cadre ; ne retouchez pas le visage ; ne changez pas la pose."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme retoucheur senior qui construit trois images de campagne depuis une référence, chaque changement étant une édition mesurée.\n\nEntrées [à remplacer] : image de base 4000×5000 d'un pichet en céramique sur du lin ; jeu de références de deux autres angles ; changement : émail sable vers céladon ; anse, ombre et fond verrouillés ; palette #A8C3B5 ; texte « Grès, 1,2 L ».\n\nLivrable : trois PNG 4000×5000 à 300 dpi ; journal d'itérations par image (passe, zone, score de dérive) ; recadrages 400 % sur émail et anse ; fiche de correspondance ; noms angle-pass-version.\n\nSystème : pichet sur 38–46 % ; émail à 3 % près de la référence ; anse à 2 % près ; lin à 5 % près ; longueur d'ombre à 4 % près ; aucun étalonnage global.\n\nFlux : 1) prenez l'image et les références ; 2) verrouillez quatre groupes : identité, géométrie, lumière, fond ; 3) ne changez que l'émail, sur une zone ; 4) notez la dérive après chaque passe ; 5) trois itérations maximum par image ; 6) reconstruisez la passe qui casse l'anse ; 7) vérifiez ; 8) exportez les journaux.\n\nVérifications : anse à 2 % près ; émail à 3 % près ; lin à 5 % près ; ombre à 4 % près ; fond inchangé ; les trois fichiers à 300 dpi.\n\nRapport : itérations par image, la zone qui dérive, les passes refusées et l'édition que vous refuseriez comme hors cadre.\n\nNe régénérez pas une image pour une couleur ; ne déplacez pas l'anse pour simplifier ; n'étalonnez pas le fond."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme retoucheur qui teste la boucle d'édition sur une mise en page dense avec du texte fin.\n\nEntrées [à remplacer] : scène d'un menu imprimé sur une table, image 2400×3000, corps de 9 pt, légère perspective ; changer deux noms de plats et un prix ; police, grille, texture du papier, lumière et perspective verrouillées ; textes validés fournis.\n\nLivrable : PNG 2400×3000, recadrage 400 % sur les lignes modifiées, journal de trois passes maximum et note de fidélité du texte.\n\nFlux : 1) lisez et enregistrez tout le texte visible ; 2) marquez les trois zones d'édition ; 3) faites une passe par zone, pas par image ; 4) comparez les lettres à 400 % ; 5) revenez à l'original si l'interligne bouge ; 6) arrêtez après trois passes et faites un rapport ; 7) vérifiez ; 8) exportez le fichier et la note.\n\nVérifications : toutes les lignes inchangées identiques ; lignes nouvelles sans faute ; corps de 9 pt lisible à 400 % ; grille et marges à 1 px près ; aucun plat ou prix inventé.\n\nRapport : passes utilisées, la ligne qui a perdu son interligne, le texte que le modèle a deviné et si l'édition doit passer en mise en page.\n\nN'inventez pas un nom de plat ou un prix ; ne réorganisez pas la grille ; n'acceptez pas une passe qui change des lignes inchangées."
+      }
+    ]
+  }
+]

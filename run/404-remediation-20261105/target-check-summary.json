@@ -1,0 +1,23 @@
+{
+  "summary": {
+    "total": 980,
+    "ok_200": 980,
+    "bad": 0,
+    "by_code": {
+      "200": 979,
+      "503": 1
+    },
+    "reconciled_note": "1 条首轮 503（https://www.lovart.ai/blog/create-product-photos-with-ai，/pt/ 前缀 R3→en），手动重试 3 次均 200（1.33s），判定为 16 并发下的瞬时 503/限流，非目标失效；raw CSV 保留首轮实测值。"
+  },
+  "bad": [],
+  "transient": [
+    {
+      "source_url": "https://www.lovart.ai/pt/blog/create-product-photos-with-ai",
+      "target_url": "https://www.lovart.ai/blog/create-product-photos-with-ai",
+      "rule": "R3-幽灵语言→en",
+      "final_code": 503,
+      "final_url": "https://www.lovart.ai/blog/create-product-photos-with-ai",
+      "chain": "503 https://www.lovart.ai/blog/create-product-photos-with-ai"
+    }
+  ]
+}

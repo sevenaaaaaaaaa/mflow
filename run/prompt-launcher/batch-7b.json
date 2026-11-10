@@ -1,0 +1,177 @@
+[
+  {
+    "slug": "ai-banner-creator",
+    "id": "tools-ai-banner-creator-fr",
+    "lang": "fr",
+    "title": "La hiérarchie décide avant le décor",
+    "description": "Une bannière rate rarement à cause du modèle : elle rate parce que le brief n'a jamais dit ce qui doit être lu en premier.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme directeur artistique qui produit une bannière 1200×628 avec une hiérarchie de lecture décidée avant la génération.\n\nEntrées [à remplacer] : offre « Atelier céramique, −20 % jusqu'au 30 juin » ; logo PNG ; couleurs #B4553C, #E8DCCB, #1F1B18 ; une photo 3000 px.\n\nLivrable : PNG 1200×628, version 1080×1080, zone de sécurité et note de hiérarchie.\n\nSystème : titre sur 18–24 % de la hauteur ; une seule accroche ; logo à 90 px ; marge de sécurité de 6 % ; un accent ; 12 mots maximum.\n\nFlux : 1) hiérarchisez offre, date et marque ; 2) choisissez la zone de texte ; 3) générez le fond ; 4) placez le texte ; 5) vérifiez à 25 % ; 6) vérifiez ; 7) exportez les deux formats.\n\nVérifications : date exacte ; logo non étiré ; titre lisible à 25 % ; marge de 6 % ; 12 mots maximum.\n\nRapport : ce qui a été lu en premier, le mot retiré et la zone qui manque de contraste.\n\nNe régénérez pas pour changer un mot ; ne mettez pas deux accroches ; n'ajoutez pas de prix non validé."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme lead design qui construit cinq formats de bannière pour une campagne, avec une seule hiérarchie et un seul accent.\n\nEntrées [à remplacer] : offre et dates validées ; logo PNG ; cinq formats (1200×628, 1080×1080, 1080×1350, 1920×1080, 1600×900) ; couleurs #B4553C, #E8DCCB, #1F1B18.\n\nLivrable : cinq PNG, une fiche de hiérarchie, un jeu de marges par format et des noms format-version.\n\nSystème : titre sur 18–24 % ; logo à 90 px minimum ; marge de sécurité de 6 % ; un accent ; 12 mots maximum ; même photo recadrée, pas étirée.\n\nFlux : 1) figez la hiérarchie et les trois blocs ; 2) construisez le 1200×628 ; 3) vérifiez à 25 % ; 4) dérivez les quatre autres formats ; 5) contrôlez les marges ; 6) vérifiez ; 7) exportez les cinq fichiers et la fiche.\n\nVérifications : dates exactes dans les cinq ; logo non étiré ; titre lisible à 25 % ; marges de 6 % ; aucun format étiré depuis un autre.\n\nRapport : le format qui perd la hiérarchie, le recadrage qui coupe le sujet et le fichier à refaire.\n\nNe changez pas la hiérarchie par format ; ne réutilisez pas le même cadrage ; n'ajoutez pas un second accent."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme directeur artistique qui teste une bannière avec une offre longue et un logo basse résolution.\n\nEntrées [à remplacer] : offre de 24 mots, logo 400 px, photo 1200 px, format 1200×628 ; couleurs #1F1B18 et #B4553C.\n\nLivrable : deux options 1200×628, un rapport de lisibilité et une note sur le logo.\n\nFlux : 1) réduisez l'offre à deux options de 12 mots ; 2) mesurez la zone de texte disponible selon la hiérarchie validée ; 3) testez le titre sur le fond le plus clair ; 4) vérifiez à 25 % et à 50 % ; 5) gardez l'option qui survit ; 6) vérifiez ; 7) exportez les fichiers et le rapport.\n\nVérifications : 12 mots maximum ; logo non agrandi au-delà de 100 % ; contraste de 4,5:1 ; date conservée ; 1200×628 exact.\n\nRapport : les mots coupés, l'option qui échoue à 25 % et si le logo doit être fourni en vectoriel.\n\nN'étirez pas le logo ; ne cachez pas la date ; n'utilisez pas une offre non validée."
+      }
+    ]
+  },
+  {
+    "slug": "ai-3d-animation",
+    "id": "tools-ai-3d-animation-fr",
+    "lang": "fr",
+    "title": "Une série 3D tient sur un master",
+    "description": "L'animation ne casse pas à la génération : elle casse au premier changement de chiffre, de date ou de logo. Le master absorbe la révision.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme réalisateur 3D qui produit un plan de 10 s d'un produit, avec identité et échelle verrouillées.\n\nEntrées [à remplacer] : produit céramique ; dimensions 24×24×30 cm ; palette #1F1B18 et #D8C3A5 ; fond atelier ; livrable MP4 1080×1920, 10 s, 30 fps.\n\nLivrable : MP4 1080×1920, 10 s, 30 fps ; rendu fixe 2000×2000 ; fiche identité (échelle, lumière, couleur).\n\nSystème : produit sur 40–55 % du cadre ; caméra à 35° ; une seule lumière ; durée de plan de 3 s maximum ; couleur à 3 % près ; pas de texte animé.\n\nFlux : 1) figez échelle, lumière et couleur ; 2) construisez le plan ; 3) vérifiez la silhouette ; 4) vérifiez la texture ; 5) contrôlez les 3 premières s ; 6) vérifiez ; 7) exportez la vidéo et le rendu.\n\nVérifications : dimensions à 1 cm près ; couleur à 3 % près ; 30 fps ; 10 s ±0,2 s ; aucune pièce inventée.\n\nRapport : ce qui a bougé entre le rendu et la vidéo, le plan qui casse l'identité et la donnée à verrouiller.\n\nNe changez pas l'échelle entre les plans ; n'animez pas de texte ; n'inventez pas de matériau."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme lead 3D qui livre une série de six plans pour une campagne, avec une identité stable et un master révisable.\n\nEntrées [à remplacer] : produit et dimensions ; six plans (vue, détail, usage, échelle, packshot, fin) ; palette #1F1B18, #D8C3A5, #B4553C ; livrables MP4 1080×1920 et 1920×1080.\n\nLivrable : six MP4 par format, un master de scène, une fiche identité, un journal de révision et une planche de contrôle.\n\nSystème : échelle 1 unité = 1 m ; une lumière ; couleur à 3 % près ; caméra à 35° ; plan de 3 s ; transitions coupées, sans fondu.\n\nFlux : 1) figez le master (échelle, lumière, couleur) ; 2) construisez les six plans ; 3) vérifiez l'identité sur chaque plan ; 4) testez un changement de date sans reconstruire ; 5) corrigez le champ qui casse la scène ; 6) vérifiez ; 7) exportez les fichiers et le journal.\n\nVérifications : échelle identique sur six plans ; couleur à 3 % près ; 30 fps ; six plans sans pièce nouvelle ; la révision de date ne touche pas la géométrie.\n\nRapport : le plan qui dérive, le champ réellement révisable et la donnée qui exige un nouveau master.\n\nNe refaites pas la scène pour changer une date ; ne changez pas la lumière d'un plan à l'autre ; n'ajoutez pas de plan non validé."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme lead 3D qui teste une révision après rendu : changer la date sans reconstruire la série.\n\nEntrées [à remplacer] : série rendue de six plans ; date « 30 juin » à remplacer par « 15 juillet » ; master disponible ; délai de 24 h ; palette verrouillée.\n\nLivrable : six plans corrigés, journal de révision, note de coût et planche avant/après.\n\nFlux : 1) identifiez où la date est stockée (texte, texture ou géométrie) ; 2) choisissez la voie la moins coûteuse ; 3) appliquez le changement sur le master ; 4) re-rendez uniquement les plans concernés ; 5) vérifiez la date à 100 % ; 6) vérifiez ; 7) exportez les plans et le journal.\n\nVérifications : date exacte sur les six plans ; aucune géométrie modifiée ; 30 fps en 1080×1920 ; durée de 10 s inchangée ; aucune autre donnée altérée.\n\nRapport : ce qui a dû être re-rendu, le coût évité, la date qui reste en texture et la limite du master.\n\nNe re-rendez pas les six plans si un seul contient la date ; ne reconstruisez pas la scène ; ne changez pas la typographie."
+      }
+    ]
+  },
+  {
+    "slug": "ai-image-extender",
+    "id": "tools-ai-image-extender-fr",
+    "lang": "fr",
+    "title": "Étendez moins, raccordez plus",
+    "description": "Lumière, température, perspective et échelle de texture décident si une extension est invisible : fixez-les avant le premier pixel.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme retoucheur qui étend une photo produit de 1:1 en 16:9 pour un bandeau, sans changer le produit.\n\nEntrées [à remplacer] : photo 2400×2400 d'un sac en cuir sur une marche en béton, lumière de fenêtre à gauche, faible profondeur de champ ; ligne validée « Cuir pleine fleur, 18 L ».\n\nLivrable : JPEG 3840×2160 à 300 dpi, recadrage 1080×1350 et note de raccord sur quatre axes.\n\nSystème : produit sur 30 % de la largeur ; horizon au tiers bas ; lumière à 40° à gauche ; température à 150 K près ; échelle de texture à 5 % près ; ombre prolongée de 25 % hors cadre.\n\nFlux : 1) mesurez lumière, température, perspective et texture ; 2) étendez 120 px en test ; 3) inspectez la couture à 200 % ; 4) étendez par bandes de 400 px ; 5) reconstruisez le trajet d'ombre ; 6) vérifiez ; 7) exportez le fichier et la note.\n\nVérifications : couture invisible à 200 % ; géométrie du sac inchangée ; texture à 5 % près ; ombre cohérente ; aucun accessoire inventé.\n\nRapport : les quatre valeurs mesurées, la bande qui dérive, la couture corrigée et si un nouveau cadrage est nécessaire.\n\nN'étirez pas l'original ; ne dupliquez pas une bande en miroir ; ne floutez pas la couture."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme retoucheur senior qui construit un système d'extension pour trois formats d'une marque de mobilier.\n\nEntrées [à remplacer] : photo 4000×4000 d'un fauteuil en chêne, lumière à gauche, sol et mur à 68 % de la hauteur ; ligne validée « Chêne massif, assise 78 cm » ; couleurs #C8A27A et #1F1B18.\n\nLivrable : master 6000×3375 en 16:9, recadrage 4000×5000 en 4:5, version 1080×1920 en 9:16 ; trois rapports de couture ; fiche de raccord ; noms format-version.\n\nSystème : fauteuil sur 28–34 % ; horizon à 66–70 % ; lumière à 40° à gauche ; température à 150 K près ; échelle du chêne à 4 % près ; ombre prolongée de 30 %.\n\nFlux : 1) mesurez les quatre axes ; 2) définissez le budget d'extension par côté ; 3) testez 150 px à gauche ; 4) vérifiez couture, texture et ombre à 200 % ; 5) étendez par bandes alternées ; 6) reconstruisez la perspective ; 7) vérifiez ; 8) exportez les fichiers et la fiche.\n\nVérifications : géométrie inchangée ; texture à 4 % près ; aucun motif répété ; horizon à 0,5° près ; ombre cohérente ; aucun meuble inventé.\n\nRapport : score de couture par format, l'axe qui dérive en premier, les bandes refusées et où une prise de vue plus large bat l'extension.\n\nNe dupliquez pas une bande de sol ; ne changez pas le fauteuil ; n'étendez pas vers un mur qui contredit l'horizon."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme retoucheur qui étend une photo de groupe dont le recadrage coupe une épaule.\n\nEntrées [à remplacer] : photo 1600×2000, trois personnes, épaule gauche coupée, lumière mélangée, pas encore d'accord écrit ; usage « présentation interne ».\n\nLivrable : extension 2400×1350 en 16:9, recadrage 400 % de la couture, note de limites et checklist de consentement.\n\nFlux : 1) auditez le recadrage, l'écart de lumière et l'épaule manquante ; 2) listez ce qui peut être inventé (mur, sol) et ce qui ne doit pas l'être (corps, visage, logo) ; 3) n'étendez que le fond ; 4) vérifiez la couture à 400 % ; 5) arrêtez avant d'inventer une personne ; 6) vérifiez ; 7) exportez les fichiers et les notes.\n\nVérifications : aucune partie de corps inventée ; teint inchangé ; horizon à 1° près ; couture invisible à 200 % ; aucun logo tiers ; checklist de consentement jointe.\n\nRapport : ce que vous avez refusé d'étendre, la couture qui échoue, si l'image peut sortir du cadre interne et la prise de vue qui réglerait le problème.\n\nNe générez pas une personne manquante ; ne clonez pas un visage ; ne recadrez pas plus serré pour cacher la couture."
+      }
+    ]
+  },
+  {
+    "slug": "ai-anime-generator",
+    "id": "tools-ai-anime-generator-fr",
+    "lang": "fr",
+    "title": "Le style ne décide pas la hiérarchie",
+    "description": "Un visuel anime trahit la marque quand le style prend le dessus sur la charte : ligne, palette et hiérarchie se fixent avant le personnage.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme directeur artistique qui produit un visuel anime 16:9 pour une campagne, avec une charte verrouillée avant le style.\n\nEntrées [à remplacer] : marque de thé ; personnage jeune adulte ; palette #1F1B18, #7A9E9F, #E8DCCB ; contraintes : trait de 2 px, trois couleurs, pas de dégradé ; livrable 1920×1080.\n\nLivrable : PNG 1920×1080, version 1080×1350, fiche de charte et note de hiérarchie.\n\nSystème : trait de 2 px ; trois couleurs ; personnage sur 35–45 % ; titre sur 12 % de la hauteur ; marge de 6 % ; aucun dégradé.\n\nFlux : 1) fixez les trois couleurs et le trait ; 2) hiérarchisez : personnage, produit, titre ; 3) générez le visuel ; 4) vérifiez le trait à 100 % ; 5) vérifiez ; 6) exportez les deux formats et la fiche.\n\nVérifications : trois couleurs maximum ; trait de 2 px ; titre lisible à 25 % ; marge de 6 % ; aucun dégradé.\n\nRapport : où le style a pris le dessus, la couleur ajoutée et le trait qui a dérivé.\n\nNe laissez pas le style ajouter une quatrième couleur ; ne déformez pas le personnage ; n'ajoutez pas de texte non validé."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme lead design qui construit une bible de style anime pour six épisodes et des visuels clés cohérents.\n\nEntrées [à remplacer] : six titres d'épisode ; personnage principal et secondaire ; palette #1F1B18, #7A9E9F, #E8DCCB, #B4553C ; formats 1920×1080 et 1080×1350.\n\nLivrable : six visuels clés par format, une bible de style (trait, palette, proportions, expressions), une planche de continuité et des noms episode-format-version.\n\nSystème : trait de 2 px ; quatre couleurs ; proportions du personnage fixes ; trois expressions maximum ; marge de 6 % ; pas de dégradé.\n\nFlux : 1) figez la bible (trait, palette, proportions) ; 2) produisez le visuel de l'épisode 1 ; 3) vérifiez le personnage à 100 % ; 4) enchaînez les cinq autres ; 5) comparez la planche de continuité ; 6) vérifiez ; 7) exportez les fichiers et la bible.\n\nVérifications : quatre couleurs maximum ; trait de 2 px ; proportions identiques ; titre exact ; marge de 6 % ; aucun dégradé.\n\nRapport : l'épisode qui casse la continuité, l'expression qui dérive et le fichier à refaire.\n\nNe changez pas les proportions entre épisodes ; n'ajoutez pas de couleur par épisode ; ne réutilisez pas un visage sans accord."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme lead design qui teste un changement de logo sans reconstruire le master anime.\n\nEntrées [à remplacer] : master de six visuels ; nouveau logo à intégrer ; palette verrouillée ; délai de 24 h ; formats 1920×1080 et 1080×1350.\n\nLivrable : six visuels corrigés, journal de révision, note de coût et planche avant/après.\n\nFlux : 1) localisez le logo sur chaque visuel ; 2) décidez texture ou géométrie ; 3) appliquez sur le master ; 4) ne régénérez que les zones concernées ; 5) vérifiez le logo à 100 % ; 6) vérifiez ; 7) exportez les fichiers et le journal.\n\nVérifications : logo exact sur les six ; proportions du personnage inchangées ; palette intacte ; trait de 2 px ; aucun nouveau visuel complet.\n\nRapport : ce qui a dû être régénéré, le coût évité et la limite du master.\n\nNe reconstruisez pas les six visuels pour un logo ; ne changez pas la palette ; ne redessinez pas le personnage."
+      }
+    ]
+  },
+  {
+    "slug": "ai-3d-textures",
+    "id": "tools-ai-3d-textures-fr",
+    "lang": "fr",
+    "title": "Une texture est un actif, pas un rendu",
+    "description": "Une texture 3D se jette quand elle n'est pas réutilisable : UV propres, raccord sans couture et échelle verrouillée avant le rendu.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme artiste texture qui produit une texture de bois 2K raccordable pour un asset 3D, avec une échelle fixe.\n\nEntrées [à remplacer] : essence chêne ; zone 2×2 m ; résolution 2048×2048 ; orientation des fibres verticale ; palette #C8A27A et #1F1B18.\n\nLivrable : PNG 2048×2048 raccordable, rendu de contrôle 2000×2000, fiche d'échelle et note UV.\n\nSystème : répétition 2×2 m ; fibres verticales ; échelle à 3 % près ; raccord invisible sur les quatre bords ; couleur à 3 % près de la référence.\n\nFlux : 1) fixez l'échelle et l'orientation ; 2) générez la texture ; 3) testez le raccord sur les quatre bords ; 4) corrigez la couture ; 5) rendez un contrôle 2000×2000 ; 6) vérifiez ; 7) exportez la texture, le rendu et la fiche.\n\nVérifications : raccord invisible à 400 % ; fibres verticales ; échelle à 3 % près ; aucune couture sur les bords ; 2048×2048 exact.\n\nRapport : le bord qui casse, la retouche appliquée et si la texture tient à 2×2 m.\n\nNe dupliquez pas une bande pour fermer le raccord ; ne changez pas l'orientation ; n'ajoutez pas de motif."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme lead texture qui construit un jeu de matériaux pour six assets 3D, avec UV, tiling et rendus de contrôle.\n\nEntrées [à remplacer] : six assets (chaise, table, lampe, vase, cadre, banc) ; trois matériaux (bois, céramique, métal) ; palette #C8A27A, #D8C3A5, #1F1B18 ; rendus 2000×2000.\n\nLivrable : dix-huit textures 2048×2048, six rendus 2000×2000, une fiche d'échelle par matériau, un journal UV et des noms asset-material-version.\n\nSystème : tiling 2×2 m pour le bois, 1×1 m pour la céramique, 0,5×0,5 m pour le métal ; raccord invisible ; couleur à 3 % près ; aucun motif directionnel cassé.\n\nFlux : 1) fixez échelles et orientations ; 2) produisez les trois matériaux ; 3) testez le raccord de chacun ; 4) appliquez aux six assets ; 5) rendez les six contrôles ; 6) vérifiez ; 7) exportez le jeu et le journal.\n\nVérifications : dix-huit textures en 2048×2048 ; raccord invisible à 400 % ; échelles respectées ; couleur à 3 % près ; aucun motif cassé sur un asset.\n\nRapport : le matériau qui dérive, l'asset où le tiling se voit et la texture à refaire.\n\nNe réutilisez pas une texture à une autre échelle ; ne changez pas l'orientation des fibres ; ne cachez pas une couture sous un objet."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme artiste texture qui teste le raccord sur un motif directionnel et une surface courbe.\n\nEntrées [à remplacer] : motif « roseaux diagonaux » à 45° ; zone 1×1 m ; résolution 2048×2048 ; application sur un vase courbe ; palette #7A9E9F et #1F1B18.\n\nLivrable : texture 2048×2048, rendu 2000×2000 sur le vase, rapport de raccord avec quatre bords et note de limite.\n\nFlux : 1) mesurez l'angle et l'échelle ; 2) générez la texture ; 3) testez chaque bord séparément ; 4) corrigez la dérive d'angle sans retourner la texture ; 5) appliquez au vase ; 6) vérifiez ; 7) exportez la texture, le rendu et le rapport.\n\nVérifications : angle continu à 1° près ; aucun motif en miroir ; raccord invisible à 400 % ; 2048×2048 ; échelle à 3 % près.\n\nRapport : le bord qui change d'angle, la rotation appliquée et si ce motif doit être abandonné sur une surface courbe.\n\nNe retournez pas la texture pour cacher la couture ; ne changez pas l'angle global ; ne livrez pas un motif directionnel comme raccordable."
+      }
+    ]
+  },
+  {
+    "slug": "ai-agent-platform",
+    "id": "tools-ai-agent-platform-fr",
+    "lang": "fr",
+    "title": "Un master, neuf pages, zéro reconstruction",
+    "description": "Une plateforme d'agents casse quand le premier asset n'est pas réutilisable : titres, champs obligatoires et couleurs divergent dès la deuxième déclinaison.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme lead design système qui construit un master de page pour une plateforme d'agents et le décline trois fois sans reconstruire.\n\nEntrées [à remplacer] : nom de plateforme ; trois cas d'usage ; palette #1F1B18, #E8DCCB, #B4553C ; typographie ; trois champs obligatoires (titre, preuve, CTA).\n\nLivrable : master 1440×3200, trois déclinaisons 1440×3200, fiche des champs et journal des variantes.\n\nSystème : grille de 12 colonnes ; titre à 48–64 px ; preuve à 18 px ; CTA à 16 px ; marge de 96 px ; un accent ; trois champs éditables.\n\nFlux : 1) fixez les champs obligatoires ; 2) construisez le master ; 3) vérifiez la grille ; 4) déclinez trois cas ; 5) vérifiez que seuls les champs changent ; 6) vérifiez ; 7) exportez les fichiers et la fiche.\n\nVérifications : grille identique ; titre à 48–64 px ; CTA à 16 px ; trois champs seulement modifiés ; marge de 96 px.\n\nRapport : le champ qui casse la grille, la déclinaison qui exige une exception et la règle à ajouter au master.\n\nNe reconstruisez pas la page pour un titre ; ne changez pas la grille par déclinaison ; n'ajoutez pas de champ non listé."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme lead design système qui livre neuf pages de plateforme à partir d'un master unique et de champs éditables.\n\nEntrées [à remplacer] : neuf pages (accueil, trois cas, tarifs, sécurité, intégrations, blog, contact) ; trois cas d'usage ; palette #1F1B18, #E8DCCB, #B4553C ; typographie ; champs : titre, preuve, CTA, meta.\n\nLivrable : neuf pages 1440×3200, un master, une fiche de champs, un journal de dérive et des noms page-version.\n\nSystème : grille de 12 colonnes ; titre à 48–64 px ; preuve à 18 px ; CTA à 16 px ; marge de 96 px ; un accent ; quatre champs maximum.\n\nFlux : 1) figez master et champs ; 2) construisez la page d'accueil ; 3) vérifiez la grille ; 4) dérivez les huit autres ; 5) testez un changement de titre seul ; 6) vérifiez ; 7) exportez les pages et le journal.\n\nVérifications : grille identique sur neuf pages ; seuls les quatre champs changent ; titre à 48–64 px ; CTA à 16 px ; marge de 96 px.\n\nRapport : la page qui casse le master, le champ qui déborde et la règle à documenter.\n\nNe créez pas une page hors master ; ne changez pas la marge par page ; n'ajoutez pas de cinquième champ."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme lead design système qui teste un changement de titre sur neuf pages sans reconstruire.\n\nEntrées [à remplacer] : neuf pages livrées ; titre principal à remplacer ; master disponible ; délai de 2 h ; champs verrouillés.\n\nLivrable : neuf pages corrigées, journal de révision, note de coût et planche avant/après.\n\nFlux : 1) localisez le champ titre sur chaque page ; 2) appliquez le changement sur le master ; 3) vérifiez que la grille ne bouge pas ; 4) re-exportez seulement les pages concernées ; 5) vérifiez le titre à 100 % ; 6) vérifiez ; 7) exportez les pages et le journal.\n\nVérifications : titre exact sur les neuf ; grille inchangée ; marge de 96 px ; CTA à 16 px ; aucune page reconstruite.\n\nRapport : les pages qui ont dû être re-exportées, le coût évité et la limite du master.\n\nNe reconstruisez pas une page pour un titre ; ne changez pas la grille ; ne touchez pas aux autres champs."
+      }
+    ]
+  },
+  {
+    "slug": "ai-twitter-header-creator-lovart",
+    "id": "tools-ai-twitter-header-creator-lovart-fr",
+    "lang": "fr",
+    "title": "Trois zones mortes décident de l'en-tête",
+    "description": "La bannière 1500×500 est rognée par l'avatar, le nom et la vue mobile : placez le message là où aucun ne tombe.",
+    "cta": {
+      "text": "Ouvrir le canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapide",
+        "prompt": "Agissez comme directeur artistique social qui marque les zones mortes de l'en-tête avant de placer le message.\n\nEntrées [à remplacer] : compte « Field Notes Studio » ; signature « Voyages lents, revue imprimée » ; couleurs #2F4A3C, #F2E9DA, #1F1B18 ; photo 3000 px d'une route de montagne.\n\nLivrable : PNG 1500×500, preuve mobile 600×200 et plan des zones sûres.\n\nSystème : logo 90×90 px dans les 120 premiers px ; signature à 70 % de la hauteur ; zone sûre de 60 % de la largeur ; police à partir de 28 px ; zone avatar 150 px ; recadrage mobile central de 600 px.\n\nFlux : 1) marquez les zones avatar, nom et mobile ; 2) placez logo et signature hors zones ; 3) réglez la police à 28 px minimum ; 4) générez le fond ; 5) vérifiez le recadrage mobile ; 6) vérifiez ; 7) exportez le fichier et le plan.\n\nVérifications : logo hors zone avatar ; signature lisible en 600×200 ; aucun texte dans les 40 premiers px ; contraste de 4,5:1 ; exactement 1500×500.\n\nRapport : la zone qui a mangé la signature, le recadrage modifié et l'élément déplacé.\n\nNe centrez pas le logo ; n'ajoutez pas une seconde signature ; n'utilisez pas une police sous 28 px."
+      },
+      {
+        "label": "Production",
+        "prompt": "Agissez comme lead design social qui crée six en-têtes pour une campagne avec le même système de zones mortes.\n\nEntrées [à remplacer] : six titres de post, portrait de l'animateur, couleurs #2F4A3C, #F2E9DA, #1F1B18 ; livraison PNG 1500×500 et preuve mobile 600×200.\n\nLivrable : six en-têtes, un modèle de zones mortes, une planche de preuves mobile et des noms post-version.\n\nSystème : zone avatar 150 px à gauche ; zone nom 40 px en bas ; centre mobile 600 px ; logo 90 px ; signature à partir de 28 px ; un accent ; texte jamais sur le visage.\n\nFlux : 1) recevez les titres et réduisez chacun à six mots ; 2) construisez le modèle de zones ; 3) faites le premier en-tête ; 4) vérifiez en 600×200 ; 5) produisez les cinq autres ; 6) évaluez la série ; 7) vérifiez ; 8) exportez les fichiers et le modèle.\n\nVérifications : les six en 1500×500 ; logo hors zone avatar ; signature lisible en 600×200 ; titres de six mots maximum ; un accent par en-tête ; visage non coupé.\n\nRapport : les en-têtes qui cassent le modèle, le recadrage mobile qui échoue et la paire qui se ressemble.\n\nNe déplacez pas la zone avatar à chaque en-tête ; n'ajoutez pas un CTA que le compte ne peut pas tenir ; ne coupez pas le portrait aux yeux."
+      },
+      {
+        "label": "Test de limite",
+        "prompt": "Agissez comme designer social qui teste un en-tête avec une signature longue et un logo qui ne peut pas changer.\n\nEntrées [à remplacer] : signature de 14 mots, logo carré à police fine, photo avec ciel clair derrière la zone de texte ; couleurs #2F4A3C et #F2E9DA.\n\nLivrable : deux options 1500×500, preuve mobile 600×200, rapport de lisibilité et note sur le logo.\n\nFlux : 1) mesurez la largeur disponible hors zones mortes ; 2) réduisez la signature à deux options ; 3) testez le texte sur le ciel clair ; 4) ajoutez un assombrissement seulement si le contraste échoue ; 5) vérifiez le logo à 90 px ; 6) vérifiez ; 7) exportez les fichiers et le rapport.\n\nVérifications : signature lisible en 600×200 ; police fine du logo non floue à 90 px ; contraste de 4,5:1 ; aucun texte sous l'avatar ; exactement 1500×500.\n\nRapport : les mots retirés, la correction de contraste et si le logo exige une version simplifiée.\n\nNe placez pas la signature sur le ciel sans corriger le contraste ; ne redessinez pas le logo ; ne réduisez pas la police sous 24 px."
+      }
+    ]
+  }
+]

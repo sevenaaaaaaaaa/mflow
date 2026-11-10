@@ -1,0 +1,77 @@
+[
+  {
+    "slug": "ai-image-extender",
+    "id": "tools-ai-image-extender-it",
+    "lang": "it",
+    "title": "L'estensione si misura sulla cucitura, non sul bordo",
+    "description": "Allargare un'immagine è un problema di prospettiva, luce e cucitura: ogni estensione passa da un ritaglio al 200% prima di entrare in catalogo.",
+    "cta": {
+      "text": "Apri il canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapido",
+        "prompt": "Agisci come retoucher di catalogo che estende una foto prodotto da 3:2 a 16:9 per l'hero del sito, senza rigenerare il prodotto.\n\nInput [da sostituire]: foto 3000×2000 di una lampada in ottone su fondo grigio #D9D6D0, luce frontale 45°, ombra verso destra; estensione richiesta: 900 px a sinistra e 900 px a destra; prodotto bloccato al pixel.\n\nConsegna: PNG 4800×2700, un ritaglio al 200% su ciascuna cucitura, una versione 1600×900 e una nota di prospettiva.\n\nSistema: prodotto sul 42–48% dell'altezza; orizzonte invariato; luce a 45°; lunghezza ombra entro 5%; grana entro 1,5%; nessun oggetto nuovo.\n\nFlusso: 1) misura i pixel del prodotto; 2) fissa prospettiva, luce e grana; 3) estendi un solo lato; 4) confronta la cucitura al 200%; 5) estendi l'altro lato; 6) esegui le verifiche; 7) esporta file, ritagli e nota.\n\nVerifiche: cucitura invisibile al 100%; pixel del prodotto identici; linee di fuga coerenti; fondo entro 3%; nessuna ombra duplicata.\n\nReport: quale lato ha ceduto prima, la striscia rifatta, l'oggetto inventato e se il file regge l'hero.\n\nNon rigenerare il prodotto; non aggiungere oggetti di scena; non specchiare il bordo per riempire; non cambiare il rapporto dopo l'estensione."
+      },
+      {
+        "label": "Produzione",
+        "prompt": "Agisci come responsabile produzione che estende quaranta scatti di prodotto a 16:9 per un catalogo, con una sola ricetta di luce e prospettiva.\n\nInput [da sostituire]: quaranta foto 3:2 di oggetti diversi, tre direzioni di luce, due fondi; estensione a 16:9 per hero e PDP; prodotto bloccato al pixel; colori #D9D6D0, #1F1B18.\n\nConsegna: quaranta PNG 4800×2700, un report per immagine con lato, cucitura e punteggio, ritagli al 200% sui casi dubbi, nomi SKU-lato-versione.\n\nSistema: prodotto sul 40–50%; orizzonte e punto di fuga invariati; luce coerente con la sorgente; ombra entro 5%; grana entro 1,5%; nessun oggetto nuovo.\n\nFlusso: 1) raggruppa le foto per direzione di luce; 2) fissa la ricetta; 3) proponi tre ricette e scegli quella con meno rischio di cucitura; 4) estendi un campione per gruppo; 5) confronta le cuciture al 200%; 6) applica al resto; 7) rifai solo i lati fuori tolleranza; 8) esegui le verifiche; 9) esporta file e report.\n\nVerifiche: quaranta file a 4800×2700; cuciture invisibili al 100%; pixel del prodotto identici; fondo entro 3%; nessuna ombra o riflesso duplicato.\n\nReport: il gruppo che cede di più, le strisce rifatte, gli oggetti inventati e le immagini da non pubblicare.\n\nNon rigenerare il prodotto; non specchiare i bordi; non riusare la stessa estensione su luci diverse; non dichiarare pronto un file senza ritaglio al 200%."
+      },
+      {
+        "label": "Test limite",
+        "prompt": "Agisci come retoucher che mette alla prova l'estensione su un caso limite: un prodotto che tocca il bordo, un fondo con testo e una prospettiva forte.\n\nInput [da sostituire]: foto 2400×3600 di una sedia che esce dal fotogramma a destra, fondo con scritta verticale, prospettiva dal basso; estensione a 21:9 per un banner; testo del fondo bloccato; colori #1F1B18 e #E8DCCB.\n\nConsegna: PNG 5040×2160, un ritaglio al 200% sulla cucitura destra, una versione con il testo ricostruito e una nota sui limiti.\n\nSistema: sedia sul 45% dell'altezza; punto di fuga entro 1°; grana entro 1,5%; testo ricostruito solo se leggibile; margine di sicurezza 6%.\n\nFlusso: 1) misura quanto prodotto è fuori fotogramma; 2) verifica se la forma è ricostruibile; 3) estendi senza inventare gambe o spalliera; 4) confronta la cucitura al 200%; 5) prova a ricostruire il testo o taglia; 6) fermati e riporta; 7) esporta file, ritaglio e nota.\n\nVerifiche: forma del prodotto non inventata; testo ricostruito solo se leggibile; cucitura invisibile al 100%; punto di fuga entro 1°; margine 6%.\n\nReport: quanto prodotto manca davvero, cosa non è ricostruibile, la scelta fatta sul testo e se conviene rifotografare.\n\nNon inventare gambe o spalliera; non deformare il prodotto per riempire il banner; non ricostruire un testo illeggibile; non dichiarare finito ciò che andrebbe rifotografato."
+      }
+    ]
+  },
+  {
+    "slug": "nano-banana-2-ai-image-generator",
+    "id": "tools-nano-banana-2-ai-image-generator-it",
+    "lang": "it",
+    "title": "La modifica è un delta, non una rigenerazione",
+    "description": "Nano Banana 2 parte da un'immagine che esiste: il test è se la modifica resta dentro il delta dichiarato, senza toccare identità, geometria e luce.",
+    "cta": {
+      "text": "Apri il canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapido",
+        "prompt": "Agisci come retoucher che modifica un'immagine esistente dichiarando solo il delta da applicare, senza rigenerare la scena.\n\nInput [da sostituire]: foto 3000×4000 di una giacca in denim indaco su fondo cemento, luce finestra 45°; richiesta: giacca da indaco a écru; bloccati: volto, capelli, posa, texture del fondo, ombra; palette #E8DCCB.\n\nConsegna: PNG 3000×4000, un ritaglio al 400% sulla cucitura della spalla e un registro dell'iterazione con zona e deriva.\n\nSistema: giacca sul 18% del fotogramma; fondo entro 2%; direzione dell'ombra invariata; scala della cucitura entro 5%; deriva cromatica globale sotto l'1%.\n\nFlusso: 1) marca la zona di modifica e le zone bloccate; 2) fai una passata; 3) confronta le zone bloccate al 100%; 4) in caso di deriva torna all'originale e stringi la maschera; 5) ripeti al massimo tre iterazioni; 6) esegui le verifiche; 7) esporta file e registro.\n\nVerifiche: volto e capelli stabili; cucitura entro 5%; fondo entro 2%; nessuna piega nuova; ombra invariata.\n\nReport: iterazioni usate, cosa ha derivato per primo, la passata rifiutata e se serve un nuovo master.\n\nNon rigenerare l'intero fotogramma; non ritoccare il volto; non cambiare la posa."
+      },
+      {
+        "label": "Produzione",
+        "prompt": "Agisci come retoucher senior che costruisce tre immagini di campagna partendo da un riferimento, con ogni cambiamento come modifica misurata.\n\nInput [da sostituire]: immagine base 4000×5000 di una brocca in gres su lino; riferimenti da altri due angoli; modifica: smalto sabbia verso celadon; manico, ombra e fondo bloccati; palette #A8C3B5; testo «Grès, 1,2 L».\n\nConsegna: tre PNG 4000×5000 a 300 dpi; registro per immagine con passata, zona e punteggio di deriva; ritagli al 400% su smalto e manico; scheda di corrispondenza; nomi angolo-passata-versione.\n\nSistema: brocca sul 38–46%; smalto entro 3% dal riferimento; manico entro 2%; lino entro 5%; lunghezza ombra entro 4%; nessuna correzione globale.\n\nFlusso: 1) prendi immagine e riferimenti; 2) blocca quattro gruppi: identità, geometria, luce, fondo; 3) proponi tre strategie di modifica e motivale; 4) modifica solo lo smalto, su una zona; 5) annota la deriva dopo ogni passata; 6) tre iterazioni al massimo per immagine; 7) ricostruisci la passata che rompe il manico; 8) esegui le verifiche; 9) esporta file e registri.\n\nVerifiche: manico entro 2%; smalto entro 3%; lino entro 5%; ombra entro 4%; fondo invariato; tre file a 300 dpi.\n\nReport: iterazioni per immagine, la zona che deriva, le passate rifiutate e la modifica che considereresti fuori standard.\n\nNon rigenerare un'immagine per un colore; non spostare il manico per semplificare; non correggere il fondo in globo."
+      },
+      {
+        "label": "Test limite",
+        "prompt": "Agisci come retoucher che testa la modifica a delta su una scena con testo e dettagli fini, dove ogni passata può spostare la griglia.\n\nInput [da sostituire]: scena 2400×3000 di un menù stampato su tavolo, corpo 9 pt, prospettiva leggera; modifica: due nomi di piatto e un prezzo; bloccati: font, griglia, texture della carta, luce; testi validati forniti a parte.\n\nConsegna: PNG 2400×3000, ritaglio al 400% sulle righe modificate, registro di tre passate al massimo e nota di fedeltà del testo.\n\nSistema: griglia a 12 colonne; margine 6%; corpo 9 pt; interlinea 12 pt; colore testo #1F1B18; nessuna sfumatura sul foglio.\n\nFlusso: 1) leggi e salva tutto il testo visibile; 2) marca le tre zone; 3) fai una passata per zona; 4) confronta le lettere al 400%; 5) torna all'originale se l'interlinea si muove; 6) fermati dopo tre passate; 7) esegui le verifiche; 8) esporta file e nota.\n\nVerifiche: righe non modificate identiche; righe nuove senza errori; corpo 9 pt leggibile al 400%; griglia entro 1 px; nessun piatto o prezzo inventato.\n\nReport: passate usate, la riga che ha perso l'interlinea, il testo indovinato dal modello e se la modifica deve passare in impaginazione.\n\nNon inventare un nome o un prezzo; non riorganizzare la griglia; non accettare una passata che cambia righe non modificate."
+      }
+    ]
+  },
+  {
+    "slug": "ai-object-remover",
+    "id": "tools-ai-object-remover-it",
+    "lang": "it",
+    "title": "La rimozione si giudica sulla texture, non sull'oggetto sparito",
+    "description": "Togliere un oggetto è la parte facile: il test è se riempimento, ombra e grana reggono un ritaglio al 100% senza lasciare cuciture.",
+    "cta": {
+      "text": "Apri il canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Test rapido",
+        "prompt": "Agisci come retoucher che elimina un oggetto da una foto prodotto e dimostra che il riempimento regge al 100%.\n\nInput [da sostituire]: foto 3000×2000 di una borsa in pelle con un cartellino e un cavo sul fondo; rimozioni: cartellino, cavo, una persona sfocata a destra; bloccati: borsa, cuciture, ombra portata; colori #8B5E3C e #E8DCCB.\n\nConsegna: PNG 3000×2000, tre ritagli al 100% sulle zone riempite e una nota su cosa resta visibile.\n\nSistema: borsa sul 55% della larghezza; trama della pelle entro 5%; ombra entro 4%; grana entro 1,5%; nessun oggetto sostitutivo.\n\nFlusso: 1) fotografa lo stato prima; 2) maschera un solo oggetto per passata; 3) riempi con la texture circostante; 4) confronta al 100%; 5) rifai solo le zone con cucitura; 6) esegui le verifiche; 7) esporta file e nota.\n\nVerifiche: nessuna cucitura visibile al 100%; trama entro 5%; ombra entro 4%; testo della borsa intatto; nessun oggetto inventato.\n\nReport: quale zona resta visibile, quante passate hai usato, cosa il modello ha inventato e se il file è pubblicabile.\n\nNon spostare la borsa; non ammorbidire l'intera immagine; non inventare un fondo nuovo; non nascondere la cucitura con una sfocatura."
+      },
+      {
+        "label": "Produzione",
+        "prompt": "Agisci come responsabile post-produzione che ripulisce venti scatti di catalogo da oggetti di scena, etichette e passanti, con una ricetta unica.\n\nInput [da sostituire]: venti foto 4000×5000 di borse e scarpe, tre tipi di disturbo (cartellino, cavo, persona sfocata), sfondi in due colori; colori #8B5E3C, #1F1B18; righe per SKU.\n\nConsegna: venti PNG 4000×5000 a 300 dpi, un registro per SKU con zona, passate e punteggio, quattro ritagli al 100% per tipo di disturbo, nomi SKU-zona-versione.\n\nSistema: prodotto sul 50–60%; trama entro 5%; ombra entro 4%; grana entro 1,5%; bordo del prodotto non toccato; nessuna sfocatura globale.\n\nFlusso: 1) classifica i tre tipi di disturbo; 2) fissa la ricetta di riempimento; 3) proponi tre ricette e motivale; 4) trattane uno campione per tipo; 5) confronta al 100%; 6) applica ai venti; 7) rifai solo le zone fuori tolleranza; 8) esegui le verifiche; 9) esporta file e registro.\n\nVerifiche: nessuna cucitura visibile al 100%; trama entro 5%; ombra entro 4%; bordo del prodotto intatto; venti file a 300 dpi.\n\nReport: il tipo di disturbo più difficile, le zone rifatte, gli oggetti inventati e i file da non pubblicare.\n\nNon spostare il prodotto; non usare la sfocatura per coprire la cucitura; non inventare un fondo nuovo; non dichiarare pubblicabile un file senza ritaglio al 100%."
+      },
+      {
+        "label": "Test limite",
+        "prompt": "Agisci come retoucher che rimuove un elemento su un caso limite: un oggetto che copre il prodotto, un'ombra lunga e una texture regolare.\n\nInput [da sostituire]: foto 2400×3600 di una borsa con un'etichetta che copre il manico, ombra lunga sul muro a righe, texture a scacchi; rimozione: etichetta e ombra; bloccati: manico, cuciture, scacchi; colori #1F1B18 e #E8DCCB.\n\nConsegna: PNG 2400×3600, ritaglio al 100% sul manico, una versione con la texture ricostruita e una nota sui limiti.\n\nSistema: scacchi allineati entro 1 px; ombra coerente con la luce; trama della pelle entro 5%; grana entro 1,5%; nessun manico inventato.\n\nFlusso: 1) verifica quanto prodotto è coperto; 2) ricostruisci prima la texture regolare; 3) rimuovi solo l'ombra in una passata; 4) controlla gli scacchi al 100%; 5) se il manico manca, fermati e riporta; 6) esegui le verifiche; 7) esporta file, ritaglio e nota.\n\nVerifiche: scacchi allineati entro 1 px; ombra coerente; manico non inventato; trama entro 5%; nessuna cucitura al 100%.\n\nReport: quanto prodotto manca davvero, cosa hai ricostruito, dove la texture si è rotta e se conviene rifotografare.\n\nNon inventare il manico; non deformare gli scacchi per chiudere il buco; non coprire con la grana; non dichiarare finito ciò che va rifotografato."
+      }
+    ]
+  }
+]

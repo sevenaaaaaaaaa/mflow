@@ -6865,7 +6865,8 @@ def _qa_field_rules(doc):
     did = doc.get("_id", "")
     lang = doc.get("language") or ""
     cjk = lang in ("zh", "zh-TW", "ja", "ko")
-    seo_title = (doc.get("seoTitle") or "").strip()
+    # 2026-11-04：正确字段是 seo.title；seoTitle 仅为 legacy 兼容读取
+    seo_title = ((doc.get("seo") or {}).get("title") or doc.get("seoTitle") or "").strip()
     title = (doc.get("title") or "").strip()
     desc = (doc.get("description") or "").strip()
     seo_desc = ((doc.get("seo") or {}).get("description") or "").strip()
@@ -6874,11 +6875,11 @@ def _qa_field_rules(doc):
     if not seo_title:
         sug = title[:lim_t]
         f.append(_qa_finding(did, "seoTitle.missing", "warn", f"seoTitle 缺失（title={title[:40]}）",
-                             {"type": "field_patch", "set": {"seoTitle": sug}}))
+                             {"type": "field_patch", "set": {"seo.title": sug}}))
     elif len(seo_title) > lim_t:
         sug = seo_title[:lim_t].rsplit(" ", 1)[0] if not cjk else seo_title[:lim_t]
         f.append(_qa_finding(did, "seoTitle.too_long", "warn", f"seoTitle {len(seo_title)} 字符 > {lim_t}",
-                             {"type": "field_patch", "set": {"seoTitle": sug}}))
+                             {"type": "field_patch", "set": {"seo.title": sug}}))
     if not desc and not seo_desc:
         f.append(_qa_finding(did, "description.missing", "warn", "description 与 seo.description 均缺失",
                              {"type": "field_patch", "set": {"description": title[:lim_d]}}))

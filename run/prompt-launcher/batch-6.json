@@ -1,0 +1,77 @@
+[
+  {
+    "slug": "chat-to-image-ai-generator",
+    "id": "tools-chat-to-image-ai-generator-pt",
+    "lang": "pt",
+    "title": "Ajuste com uma frase, não com um prompt novo",
+    "description": "A conversa com a imagem economiza tempo quando você muda uma zona e mantém luz, geometria e texto no lugar.",
+    "cta": {
+      "text": "Abrir canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Teste rápido",
+        "prompt": "Atue como diretor de arte que ajusta um frame aprovado por conversa, sem gerar a imagem de novo.\n\nEntradas [substitua]: frame 3000×2000 com frasco sobre pedestal, luz à esquerda, linha aprovada «Sérum, 30 ml»; cores #1F1B18 e #E8DCCB; três ajustes: fundo, sombra, rótulo.\n\nEntrega: PNG 3000×2000, corte 1080×1350 e registro dos ajustes com as frases usadas.\n\nSistema: fundo dentro de 3% de #E8DCCB; sombra para a direita; rótulo intacto; margens de 8%; uma única fonte de luz.\n\nFluxo: 1) reescreva o pedido e liste o que não pode mudar; 2) formule os três ajustes em frases separadas; 3) execute o primeiro e compare com o original; 4) registre o que ficou igual; 5) execute os outros dois; 6) verifique; 7) exporte os arquivos e o registro.\n\nVerificações: geometria do frasco dentro de 2%; texto do rótulo não regenerado; sombra à direita; fundo dentro de 3%; nenhum objeto novo.\n\nRelatório: as três frases, o que se deslocou, qual ajuste precisou repetir e por quê.\n\nNão descreva o frame inteiro outra vez; não mude o ângulo; não acrescente objetos que não existiam."
+      },
+      {
+        "label": "Produção",
+        "prompt": "Atue como diretor de arte sênior que conduz seis ajustes numa única conversa e mantém o histórico de decisões.\n\nEntradas [substitua]: frame base 4000×2667 com kit de skincare; referência de embalagem; linhas aprovadas «Kit, 3 itens» e «Vidro, 30 ml»; cores #1F1B18, #E8DCCB, #B4553C; seis ajustes: luz, fundo, sombra, rótulo, corte, acento.\n\nEntrega: seis versões 4000×2667, cortes 1080×1350 e 1080×1080, registro com número da versão e frase de cada ajuste, folha de contato.\n\nSistema: uma fonte de luz à esquerda; temperatura dentro de 150 K; sombra de 15–20% da altura do produto; margens de 7%; texto não maior que 4% da altura.\n\nFluxo: 1) fixe a versão base e as proibições; 2) execute o ajuste de luz; 3) confirme que a geometria não mudou; 4) execute os outros cinco, um por vez; 5) registre o que ficou igual após cada um; 6) monte a folha de contato; 7) verifique; 8) exporte os arquivos e o registro.\n\nVerificações: rótulo sem distorção; temperatura dentro de 150 K; sombra à esquerda do produto; margens de 7%; nenhum ajuste mudou o frame inteiro.\n\nRelatório: qual ajuste mexeu no que não devia, onde a conversa «inventou» um detalhe e qual versão você reverteria.\n\nNão peça «deixar mais bonito»; não misture dois ajustes na mesma frase; não apague o histórico de versões."
+      },
+      {
+        "label": "Teste de estresse",
+        "prompt": "Atue como diretor de arte que testa a conversa com ajustes conflitantes e pedidos vagos.\n\nEntradas [substitua]: frame 2400×2400 com dois produtos; ajustes «tire a sombra» e «mantenha a sombra do frasco»; referência de fundo sem alterações; cores #1F1B18 e #F2E9DA.\n\nEntrega: duas opções 2400×2400, lista de esclarecimentos necessários e nota de limitações.\n\nFluxo: 1) liste os pedidos conflitantes; 2) faça uma pergunta de esclarecimento para cada um; 3) execute a opção sem sombra; 4) execute a opção com sombra preservada; 5) compare as bordas do produto em 200%; 6) verifique; 7) exporte as duas opções e a nota.\n\nVerificações: bordas sem halo; sombra não duplicada; fundo dentro de 3%; geometria dentro de 2%; a nota indica qual opção é mais segura para impressão.\n\nRelatório: quais pedidos precisaram de esclarecimento, onde a conversa errou e o que você proibiria no briefing.\n\nMargens de 8%, fundo intacto. Não execute ajustes contraditórios em silêncio; não esconda os esclarecimentos; não entregue uma opção como se fossem as duas."
+      }
+    ]
+  },
+  {
+    "slug": "ai-image-enhancer",
+    "id": "tools-ai-image-enhancer-pt",
+    "lang": "pt",
+    "title": "O upscale se prova em 400%",
+    "description": "Aumentar resolução só é seguro quando textura, borda e rosto aguentam um corte de 400%: a verificação vem antes do export.",
+    "cta": {
+      "text": "Abrir canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Teste rápido",
+        "prompt": "Atue como retocador que prepara uma foto de produto para impressão e prova que o upscale aguentou 400%.\n\nEntradas [substitua]: foto 1200 px de tênis de lona sobre fundo branco, leve desfoque na ponta; cores #1F1B18 e #C8A27A; linha «Lona reciclada, 12 tamanhos».\n\nEntrega: TIFF 3600×3600 a 300 dpi, JPEG 1080×1350 e quatro cortes em 400%.\n\nSistema: tênis em 62% da largura; fundo dentro de 3% do branco; textura da sola em 400%; sombra suave de 40 px; grão máximo de 1,5%.\n\nFluxo: 1) audite desfoque, ruído e compressão; 2) amplie 3× preservando textura; 3) compare com o original em 400%; 4) corrija só a ponta; 5) mantenha a trama contínua; 6) verifique; 7) exporte os arquivos e os cortes.\n\nVerificações: nenhuma costura inventada; escala da trama dentro de 5%; halo menor que 1 px; texto no colarinho intacto; em 400% não há «plástico».\n\nRelatório: qual artefato foi aceito, qual detalhe o modelo inventou, qual zona foi corrigida e se o arquivo pode ir para impressão.\n\nNão aumente a nitidez do frame inteiro; não transforme grão em plástico; não acrescente logo que não existia."
+      },
+      {
+        "label": "Produção",
+        "prompt": "Atue como retocador de estúdio que cria um passe de upscale repetível para vinte digitalizações de catálogo.\n\nEntradas [substitua]: vinte digitalizações 2400 px de bolsas de couro, qualidade mista, três com moiré e duas com blocos JPEG; linhas por SKU; cores #B08968 e #1F1B18.\n\nEntrega: vinte TIFF 4800×4800 a 300 dpi; prévias 2× e 4× por arquivo; registro de defeitos com resolução de origem, tipo de artefato e correção aceita; folha de contato; nomes sku-pass-version.\n\nSistema: produto em 55–70% do frame; fundo dentro de 3% do original; couro em 400%; halo menor que 1,2 px; nitidez global máxima de 40%.\n\nFluxo: 1) pontue cada digitalização por desfoque, moiré, blocos e exposição; 2) defina dois passes: 2× para impressão e 4× para detalhe; 3) comece pela pior digitalização; 4) compare cortes em 400% lado a lado; 5) rejeite o passe que inventar costura; 6) processe o lote; 7) verifique; 8) exporte o registro.\n\nVerificações: ferragens não inventadas; direção do grão preservada; moiré não ampliado; texto e logos intactos; os vinte arquivos a 300 dpi.\n\nRelatório: nota por arquivo, passes rejeitados, as duas digitalizações que precisam ser refeitas e o detalhe que não volta em 4×.\n\nNão prometa resolução que a origem não tem; não invente padrão; não recorte o defeito e chame de correção."
+      },
+      {
+        "label": "Teste de estresse",
+        "prompt": "Atue como retocador que testa o upscale em um retrato onde a identidade importa.\n\nEntradas [substitua]: JPEG 800 px, artefatos de compressão na bochecha, leve subexposição, sem RAW; uso aprovado «foto da equipe no site»; consentimento necessário.\n\nEntrega: retrato 3200 px a 300 dpi, quatro cortes em 400% (olhos, bochecha, linha do cabelo, gola), lista de mudanças e veredito «pode / não pode».\n\nFluxo: 1) audite compressão, ruído e exposição; 2) defina o que pode mudar (tom, textura, poeira) e o que não pode (identidade, marcas de idade, tom de pele); 3) amplie 4× com trava de identidade; 4) compare olhos e linha do cabelo em 400%; 5) reduza o «plástico» em 50%; 6) verifique; 7) exporte o arquivo e a lista.\n\nVerificações: formato e espaçamento dos olhos intactos; textura de pele presente em 400%; dentes e íris não inventados; tom dentro de 5% do original; retoque limitado a poeira e tom.\n\nRelatório: o que mudou, o que o modelo inventou, qual corte falhou e se o retrato pode ir ao site nesse tamanho.\n\nNão mude o formato do rosto; não clareie os dentes; não suavize os poros; não use a foto sem consentimento."
+      }
+    ]
+  },
+  {
+    "slug": "ai-twitter-header-creator-lovart",
+    "id": "tools-ai-twitter-header-creator-lovart-pt",
+    "lang": "pt",
+    "title": "Três zonas mortas decidem o cabeçalho",
+    "description": "O banner 1500×500 é cortado pelo avatar, pelo nome e pela visão mobile: coloque a mensagem onde nenhum deles cai.",
+    "cta": {
+      "text": "Abrir canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Teste rápido",
+        "prompt": "Atue como diretor de arte de social media que marca as zonas mortas do cabeçalho antes de posicionar a mensagem.\n\nEntradas [substitua]: conta «Field Notes Studio»; assinatura «Viagens lentas, revista impressa»; cores #2F4A3C, #F2E9DA, #1F1B18; foto 3000 px de estrada na montanha.\n\nEntrega: PNG 1500×500, prova mobile 600×200 e mapa das zonas seguras.\n\nSistema: logo 90×90 px nos primeiros 120 px; assinatura a 70% da altura; zona segura de 60% da largura; fonte a partir de 28 px; zona do avatar 150 px; corte mobile central de 600 px.\n\nFluxo: 1) marque as zonas do avatar, do nome e do mobile; 2) posicione logo e assinatura fora delas; 3) ajuste a fonte para 28 px ou mais; 4) gere o fundo; 5) confira o corte mobile; 6) verifique; 7) exporte o arquivo e o mapa.\n\nVerificações: logo fora da zona do avatar; assinatura legível em 600×200; texto nos primeiros 40 px; contraste de 4,5:1; exatamente 1500×500.\n\nRelatório: qual zona engoliu a assinatura, qual corte você mudou e o que reposicionou.\n\nNão centralize o logo; não acrescente uma segunda assinatura; não use fonte menor que 28 px."
+      },
+      {
+        "label": "Produção",
+        "prompt": "Atue como líder de design social que cria seis cabeçalhos para uma campanha com o mesmo sistema de zonas mortas.\n\nEntradas [substitua]: seis títulos de post, retrato do apresentador, cores #2F4A3C, #F2E9DA, #1F1B18; entrega PNG 1500×500 e prova mobile 600×200.\n\nEntrega: seis cabeçalhos, template de zonas mortas, folha de provas mobile e nomes post-version.\n\nSistema: zona do avatar 150 px à esquerda; zona do nome 40 px embaixo; centro mobile 600 px; logo 90 px; assinatura a partir de 28 px; um acento; texto nunca sobre o rosto.\n\nFluxo: 1) receba os títulos e reduza cada um a seis palavras; 2) monte o template de zonas; 3) faça o primeiro cabeçalho; 4) confira em 600×200; 5) produza os outros cinco; 6) avalie a série; 7) verifique; 8) exporte os arquivos e o template.\n\nVerificações: os seis em 1500×500; logo fora da zona do avatar; assinatura legível em 600×200; títulos com no máximo seis palavras; um acento por cabeçalho; rosto não cortado.\n\nRelatório: quais cabeçalhos quebraram o template, qual corte mobile falhou e qual par parece igual.\n\nUm arquivo por vez. Não mova a zona do avatar a cada cabeçalho; não acrescente CTA que a conta não cumpre; não corte o retrato nos olhos."
+      },
+      {
+        "label": "Teste de estresse",
+        "prompt": "Atue como designer social que testa um cabeçalho com assinatura longa e um logo que não pode mudar.\n\nEntradas [substitua]: assinatura de 14 palavras, logo quadrado com fonte fina, foto com céu claro atrás da área de texto; cores #2F4A3C e #F2E9DA.\n\nEntrega: duas opções 1500×500, prova mobile 600×200, relatório de legibilidade e nota sobre o logo.\n\nFluxo: 1) meça a largura disponível fora das zonas mortas; 2) reduza a assinatura a duas opções; 3) teste o texto sobre o céu claro; 4) adicione escurecimento só se o contraste falhar; 5) confira o logo em 90 px; 6) verifique; 7) exporte os arquivos e o relatório.\n\nVerificações: assinatura legível em 600×200; fonte fina do logo não borrada em 90 px; contraste de 4,5:1; sem texto sob o avatar; exatamente 1500×500.\n\nRelatório: quais palavras saíram, como o contraste foi corrigido e se o logo precisa de versão simplificada.\n\nNão coloque a assinatura no céu sem corrigir o contraste; não redesenhe o logo; não reduza a fonte abaixo de 24 px."
+      }
+    ]
+  }
+]

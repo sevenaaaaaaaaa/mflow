@@ -1,0 +1,29 @@
+# E3 · 电商主图 · 2 行业瓦片
+
+> 张数：**2**
+> 规格：1200×1200 · 1:1
+> 行业范围：剩余 2 行业（商旅出行 / 文化创意）
+> **必须紧接同品类的 D2 批在同会话内跑完**，否则同品类会分裂成两套视觉语言
+> 命名：`hero-gallery-{cat}-{industry}-v1.png`
+
+---
+
+**G-ecommerce-main-01-rest2**　·　行业：商旅出行　·　ecommerce main image　·　`L1-photo-editorial`　·　瓦片 1
+> zh 页面 alt 用中文
+- **Prompt**
+
+```text
+High-end commercial photograph, 85mm shallow depth of field, soft key light from the upper left with a gentle contact shadow, cool slate-blue and pale stone grey palette, clean matte surfaces and soft brushed metal, precise, calm, forward-motion mood, subtle route lines and boarding-pass-like grid marks, one subject only: a single product hero image on a clean studio podium with a soft contact shadow, viewed straight on and perfectly centered, plain seamless backdrop in one flat pale stone grey tone, hero fills about 70% of frame, bottom 25% clean for label scrim, locked seed and style reference shared across all 2 tiles, 1:1, no text, no letters, no watermark
+```
+
+- **Alt**：`Lovart ecommerce main image — 商旅出行 visual style`
+
+**G-ecommerce-main-02-rest2**　·　行业：文化创意　·　ecommerce main image　·　`L1-photo-editorial`　·　瓦片 2
+> zh 页面 alt 用中文
+- **Prompt**
+
+```text
+High-end commercial photograph, 85mm shallow depth of field, soft key light from the upper left with a gentle contact shadow, muted plum with ochre and bone palette, textured art paper with layered collage edges, artistic, layered, expressive mood, hand-torn edges and overlapping planes, one subject only: a single product hero image on a clean studio podium with a soft contact shadow, seen from a slight three-quarter angle with a short throw shadow, plain seamless backdrop in one flat bone tone, hero fills about 70% of frame, bottom 25% clean for label scrim, locked seed and style reference shared across all 2 tiles, 1:1, no text, no letters, no watermark
+```
+
+- **Alt**：`Lovart ecommerce main image — 文化创意 visual style`
