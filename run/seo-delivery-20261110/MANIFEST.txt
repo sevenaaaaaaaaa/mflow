@@ -1,0 +1,29 @@
+# 文件清单 — 与线上共存文件一一对应
+
+上传本目录即可完成替换：下面每行都对应线上一个同名文件，覆盖后不会留下旧档。
+
+| 文件 | 动作 | URL 数 |
+|---|---|---|
+| sitemap-index.xml | 重建（覆盖） | 30 条子项 |
+| all-urls.txt | 重写（本次全部有效 URL） | 15374 |
+| sitemap-docs.xml | 原样覆盖（非 CMS 产物，内容不变） | 23 |
+| sitemap-homepage.xml | 原样覆盖（非 CMS 产物，内容不变） | 11 |
+| sitemap-other.xml | 原样覆盖（非 CMS 产物，内容不变） | 1 |
+| sitemap-pricing.xml | 原样覆盖（非 CMS 产物，内容不变） | 10 |
+| sitemap-profile.xml | 原样覆盖（非 CMS 产物，内容不变） | 2421 |
+| sitemap-scenarios.xml | 覆盖为空 urlset（scenario 已全部下线） | 0 |
+| sitemap.xml | 原样覆盖（非 CMS 产物，内容不变） | 19 |
+
+## 说明
+
+- 线上共 33 个 sitemap 类文件 + all-urls.txt；本目录全部覆盖，无需另行删除任何文件。
+- sitemap-scenarios.xml 覆盖为空 urlset：CMS 里 scenario 文档已归零，旧档那 700 条 draft-* 全是 404。
+- sitemap.xml 与 all-urls.txt 是历史产物，本次也一并覆盖，避免新旧并存；GSC 里的两条历史登记由内容侧删除。
+- robots.txt 只保留一条 Sitemap 指向 sitemap-index.xml，由 index 带出全部子 sitemap。
+
+## 完整性断言
+
+- 线上文件数：33；本目录：33
+- 缺失：无
+- 多出：无
+- 结论：PASS 一一对应，可直接整体上传
