@@ -1,0 +1,27 @@
+[
+  {
+    "slug": "ai-4k-resolution",
+    "id": "tools-ai-4k-resolution-pt",
+    "lang": "pt",
+    "title": "O upscale se prova em 400%",
+    "description": "Aumentar resolução só é seguro quando textura, borda e rosto aguentam o corte a 400%: a checagem vem antes do export, nunca depois.",
+    "cta": {
+      "text": "Abrir o canvas",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Teste rápido",
+        "prompt": "Atue como retocador que prepara uma foto de produto para impressão e prova que o upscale aguentou 400%.\n\nEntradas [substitua]: foto 1200 px de um tênis de lona sobre fundo branco, leve desfoque na ponta; cores #1F1B18 e #C8A27A; linha aprovada «Lona reciclada, 12 tamanhos».\n\nEntrega: TIFF 3600×3600 a 300 dpi, JPEG 1080×1350 e quatro cortes a 400%.\n\nSistema: tênis em 62% da largura; fundo a 3% do branco; textura da sola preservada a 400%; sombra suave de 40 px; grão máximo de 1,5%.\n\nFluxo: 1) audite desfoque, ruído e compressão; 2) amplie 3× preservando textura; 3) compare com o original a 400%; 4) corrija só a ponta; 5) mantenha a trama contínua; 6) verifique; 7) exporte os arquivos e os cortes.\n\nVerificações: nenhuma costura inventada; escala da trama a 5%; halo abaixo de 1 px; texto da etiqueta intacto; sem efeito plástico a 400%.\n\nRelatório: qual artefato foi aceito, qual detalhe o modelo inventou, qual zona foi corrigida e se o arquivo pode ir para impressão.\n\nNão aumente a nitidez da imagem inteira; não transforme o grão em plástico; não acrescente logo inexistente."
+      },
+      {
+        "label": "Produção",
+        "prompt": "Atue como retocador de estúdio que cria uma passada de upscale repetível para vinte scans de catálogo.\n\nEntradas [substitua]: vinte scans 2400 px de sacos de couro, qualidade mista, três com moiré e dois com blocos JPEG; linhas por SKU; cores #B08968 e #1F1B18.\n\nEntrega: vinte TIFF 7200×7200 a 300 dpi, registro por SKU com valor do upscale e razão, três relatórios de moiré e dois de JPEG, folha de contato.\n\nSistema: mesma régua de upscale por superfície (couro 2×, hardware 3×); grão preservado a 400%; halo abaixo de 1 px; nenhum detalhe inventado; nomes sku-upscale-versão.\n\nFluxo: 1) audite os vinte e classifique por defeito; 2) fixe a régua por superfície; 3) rode o lote com o valor por SKU; 4) verifique textura a 400% em cada; 5) registre moiré e JPEG separadamente; 6) verifique; 7) exporte os TIFFs, o registro e a folha.\n\nVerificações: couro com poros preservados; hardware sem halos; moiré reduzido, não pintado; blocos JPEG sem invenção de detalhe; vinte arquivos a 300 dpi.\n\nRelatório: os três moiré, os dois JPEG, o SKU com menor ganho real, a régua para o próximo lote.\n\nNão submeta moiré sem registro; não invente textura de poros; não aplique a régua de couro ao hardware."
+      },
+      {
+        "label": "Teste de estresse",
+        "prompt": "Atue como retocador que testa o upscale no limite: um scan ruim e o catálogo exige resolução máxima.\n\nEntradas [substitua]: scan 900 px de um lenço de linho, dobras marcadas, grão de scanner; linha «Lavado a pedra, 2,4 m»; saída pretendida 3600×3600.\n\nEntrega: um TIFF 3600×3600 honesto, um corte a 400% da dobra mais difícil, uma lista de limites e uma recomendação de nova digitalização.\n\nSistema: upscale máximo de 4×, uma única passada; dobras são estrutura, não ruído; grão do scanner não vira textura de tecido; sem invenção de fios.\n\nFluxo: 1) audite o scan e registre a suavidade; 2) amplie 4× de uma vez; 3) compare a dobra mais difícil a 400%; 4) marque os limites; 5) escreva a recomendação de nova digitalização; 6) verifique; 7) exporte o TIFF, o corte e a lista.\n\nVerificações: dobras preservadas como estrutura; sem fios inventados; grão de scanner não ampliado como trama; halo abaixo de 1 px; arquivo único em 3600×3600.\n\nRelatório: suavidade aceita, o que a ampliação não recuperou, a dobra mais fraca, se o SKU exige nova digitalização antes do catálogo.\n\nNão amplie duas vezes para somar 4×; não transforme o grão do scanner em linho; não entregue 3600×3600 quando 1800×1800 é honesto."
+      }
+    ]
+  }
+]

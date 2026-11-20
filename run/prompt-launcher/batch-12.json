@@ -1,0 +1,127 @@
+[
+  {
+    "slug": "ai-3d-animation",
+    "id": "tools-ai-3d-animation-de",
+    "lang": "de",
+    "title": "Erst der approved Frame, dann die Bewegung",
+    "description": "3D-Animation scheitert am Material, nicht am Modell: Licht und Material im Standbild freigeben, ein Bewegungsachse pro Clip, Kontinuität beim Schnitt.",
+    "cta": {
+      "text": "Canvas öffnen",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Schnelltest",
+        "prompt": "Handeln Sie als Senior 3D-Artist, der aus einem Produktfoto einen 4-Sekunden-Turntable-Clip produziert — erst Freigabe im Standbild, dann Bewegung.\n\nInputs [ersetzen]: Produktfoto 3000×3000 eines Keramikkrugs; Licht von links 45°; Materialangabe \"matte Glasur, Sandton\"; Brand-Farbe #B4553C als Akzent; Ausgabe 1080×1920, 30 fps, 4 s.\n\nDeliverable: MP4 1080×1920 mit 4 s und 30 fps, 12-Turntable-Kontaktboard als PNG, Erstframe-JPG, Shotalias-Liste.\n\nSystem: Objekt füllt 55–65 % der Fläche; Licht bleibt im gesamten Clip bei 45° links; Kontaktlinie am Boden sichtbar; eine Bewegungsachse (Orbit 30°/s); keine Kamerafahrten.\n\nWorkflow: 1) Brief rekapitulieren und Verbote notieren; 2) Standbild rendern und Licht/Material freigeben; 3) Turntable in 12 Frames à 30° prüfen; 4) einen Bewegungsachse festlegen; 5) 4-s-Clip rendern; 6) Frames 0, 2 und 4 s gegen das Standbild prüfen; 7) Clip und Board exportieren.\n\nGates: Krugform unverändert; Glasur matte bleibt matt; Schattenlinie am Boden; keine zweite Lichtquelle; Label unangetastet.\n\nAudit: gewählte Achse, abgelehnte Kamerabewegung, der Frame mit dem stärksten Materialfehler.\n\nVerändern Sie nicht die Silhouette zwischen den Frames; fügen Sie keine zweite Lichtquelle hinzu; rendern Sie nicht, bevor das Standbild freigegeben ist."
+      },
+      {
+        "label": "Produktion",
+        "prompt": "Handeln Sie als Senior 3D-Artist, der für eine Produktlinie von 6 SKUs eine wiederholbare Turntable-Pipeline aufsetzt und die ersten 3 SKUs liefert.\n\nInputs [ersetzen]: 6 Produktfotos à 3000×3000 (Krugglasur in drei Tönen); Lichtrezept links 45°, weiche Kante; Ziel 9:16, 30 fps, je 4 s; Farben #B4553C, #D8C3A5, #1F1B18.\n\nDeliverable: 3 MP4s à 4 s in 1080×1920; 3 Kontaktboards; Lichtrezept als 5-Zeilen-Dokument; Namensschema sku-turntable-v1.\n\nSystem: ein Lichtrezept für alle SKUs; Objekt 55–65 % der Fläche; Orbit 30°/s als einzige Achse; Schattenlinie am Boden bei jedem SKU; Hintergrund ohne Verlauf.\n\nWorkflow: 1) SKUs nach Glasur klassifizieren; 2) Lichtrezept am schwierigsten SKU festzurren; 3) je SKU Standbild freigeben; 4) Turntables je 12 Frames prüfen; 5) Clips rendern; 6) Frames übergreifend auf Materialdrift prüfen; 7) Clips, Boards und Rezept exportieren.\n\nGates: Glasurton identisch über alle Frames; Silhouette stabil; Schattenlinie konstant; keine Achsenmischung; Namensschema eingehalten.\n\nAudit: Materialdrift pro SKU, abgelehnte Achsen, das SKU mit Nachschussbedarf.\n\nÄndern Sie das Lichtrezept nicht zwischen SKUs; mischen Sie Orbit und Dolly nicht; rendern Sie das vierte SKU nicht, bevor die ersten drei freigegeben sind."
+      },
+      {
+        "label": "Stresstest",
+        "prompt": "Handeln Sie als 3D-Lead, der die Grenze des Fotos-auf-Clip-Workflows mit einem schwierigen Objekt testet und ehrlich reportet.\n\nInputs [ersetzen]: Foto 2400×3200 einer Glasflasche mit Reflexen und Fingerabdrücken, Basis abgeschnitten; Licht warmes Fensterlicht; Ziel 4 s, 9:16.\n\nDeliverable: 1 MP4 1080×1920 à 4 s mit ehrlicher Bewegungsplanung; 1 Fallback-Standbild; Defektliste; Erstframe-JPG.\n\nSystem: Reflexe dürfen wandern, aber nicht verdoppeln; Fingerabdrücke nicht in die Glasur klonen; Basis nicht raten; eine Achse maximal.\n\nWorkflow: 1) Defekte auflisten und bewerten, was Generierung retten kann; 2) drei tragfähige Bewegungen vorschlagen; 3) die sicherste wählen und Restfehler benennen; 4) nur diese Bewegung rendern; 5) Frames gegen das Foto prüfen; 6) Clip und Defektliste exportieren.\n\nGates: keine erfundenen Blasen oder Gravuren; Basis nicht erraten; Glasur nicht geglättet; Reflexe nicht verdoppelt; Bewegung bleibt eine Achse.\n\nAudit: akzeptierte Defekte, verweigerte Bewegungen, ob ein Nachschuss nötig ist. Wenn die Defektliste die nutzbaren Bewegungen übersteigt: Neuschuss-Brief statt Clip liefern.\n\nGlätten Sie das Glas nicht zu Plastik; erfinden Sie keine Füllflüssigkeit; liefern Sie nicht sechs Versprechen, wenn drei ehrlich sind."
+      }
+    ]
+  },
+  {
+    "slug": "ai-agent-platform",
+    "id": "tools-ai-agent-platform-de",
+    "lang": "de",
+    "title": "Brief rein, Master raus — der Agent führt, Sie geben frei",
+    "description": "Die Agent-Plattform ersetzt den Brief nicht: Drei Felder vorab, Routing sichtbar freigeben, Master mit vier Ableitungen — jede Entscheidung auditiert.",
+    "cta": {
+      "text": "Canvas öffnen",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Schnelltest",
+        "prompt": "Handeln Sie als Design-Ops-Lead, der einen Agenten-Workflow für eine Wochenaktion einrichtet und die erste Kampagne vom Brief bis zum Export läuft.\n\nInputs [ersetzen]: Brief mit Ziel, Format und Tonalität in drei Feldern; Produktfoto 2400×2400; Brand-Farben #1F1B18 und #E8DCCB; Formate 1080×1350 und 1080×1920.\n\nDeliverable: zwei fertige Formate, das freigegebene Routing-Protokoll, eine Feldliste mit unveränderlichen Slots.\n\nSystem: Titel oben 30 %, CTA im Safe Area unten; drei Schriftgrade (64/32/18 px); Kontrast 4,5:1; Brand-Farben ausschließlich aus dem Kit.\n\nWorkflow: 1) Brief in drei Feldern fixieren; 2) Routing-Vorschlag des Agenten prüfen und freigeben; 3) Master im großen Format bauen; 4) zweite Größe per Outpainting ableiten; 5) beide gegen die Feldliste prüfen; 6) flagged Punkte allein korrigieren; 7) exportieren und Protokoll ablegen.\n\nGates: keine erfundenen Aktionsdaten; Titel-Position unverändert; Safe Area eingehalten; Routing-Entscheidung im Protokoll.\n\nAudit: welche Modellwahl der Agent vorschlug, was Sie überschrieben, welche Slots fehlten.\n\nErsetzen Sie den Brief nicht durch einen Freitext-Prompt; lassen Sie das Routing nicht unbeaufsichtigt; verschieben Sie den CTA nicht beim Ableiten."
+      },
+      {
+        "label": "Produktion",
+        "prompt": "Handeln Sie als Design-Ops-Lead, der einen wiederverwendbaren Kampagnen-Master mit Agent-Pipeline aufsetzt: vier Ableitungen, ein Brand Kit, volles Audit.\n\nInputs [ersetzen]: Kampagnenbrief (Ziel, Tonalität, Kanäle); 6 Produktfotos à 3000×3000; Farben #1F1B18, #E8DCCB, #B4553C; Formate 4:5, 9:16, 1:1, 16:9.\n\nDeliverable: vier Ableitungen je Kanal, Master-Datei mit Slot-Dokumentation, Routing-Protokoll aller Entscheidungen, Namensschema kampagne-kanal-version.\n\nSystem: Master-Grid 12 Spalten; Titel und CTA fix; nur Bildflaeche und Ausschnitt variieren; Safe Areas je Kanal notiert; ein Akzent pro Ableitung.\n\nWorkflow: 1) Brief-Felder und Slots fixieren; 2) Routing für Bild, Layout und Text prüfen und freigeben; 3) Master im 4:5 bauen und freigeben; 4) drei Ableitungen per Crop und Outpainting erzeugen; 5) Safe-Area-Check je Kanal; 6) flagged Punkte fixen; 7) alles mit Protokoll exportieren.\n\nGates: Hierarchie identisch auf vier Kanälen; keine Slots außerhalb der Feldliste; Safe Areas erfüllt; Protokoll lückenlos.\n\nAudit: Slot-Abdeckung, Kanal mit dem größten Crop-Verlust, Routing-Entscheidungen, die Sie widerrufen würden.\n\nBauen Sie pro Kanal keinen neuen Brief; lassen Sie die Hierarchie nicht mit dem Format driften; exportieren Sie nicht, bevor der Safe-Area-Check gelaufen ist."
+      },
+      {
+        "label": "Stresstest",
+        "prompt": "Handeln Sie als Design-Ops-Auditor, der die Agent-Pipeline mit einem widersprüchlichen Brief an ihre Klargrenze testet.\n\nInputs [ersetzen]: Brief fordert \"minimalistisch\" und \"alle acht Infos sichtbar\" zugleich; Canvas 1080×1350; zwei Brand-Farben; Debug-Protokoll eingeschaltet.\n\nDeliverable: Klärungsliste (max. 3 Fragen), Minimalversion 1080×1350 mit 3 Slots bei 3 Schriftgraden, zurückgestellte Felder als Liste, Protokollauszug.\n\nSystem: ein Bild 1080×1350, 3 Slots; keine erfundenen Infos; 3 Schriftgrade (64/32/18 px); Kontrast 4,5:1; Protokoll jeder Modellentscheidung sichtbar.\n\nWorkflow: 1) Widerspruch benennen und Fragen formulieren; 2) Minimalversion nach den drei Slots bauen; 3) nicht tragbare Felder zurückstellen; 4) Selbstcheck gegen die drei Grade; 5) Protokollauszug ziehen; 6) Liste und Bild exportieren.\n\nGates: keine stillschweigende Feldstreichung; Fragen konkret beantwortbar; Protokoll zeigt jede Entscheidung; zwei Farben eingehalten.\n\nAudit: der Widerspruch, die zurückgestellten Felder, die Empfehlung zur Briefkorrektur.\n\nFüllen Sie Widersprüche nicht mit Vermutungen; streichen Sie keine Felder still; überspringen Sie die Klärung nicht."
+      }
+    ]
+  },
+  {
+    "slug": "ai-anime-generator",
+    "id": "tools-ai-anime-generator-de",
+    "lang": "de",
+    "title": "Erst der Character-Brief, dann der Stil",
+    "description": "AI-Anime scheitert am Briefing, nicht am Modell: Charakterblatt in drei Zeilen, Linienstärke fix, drei Farben — dieselbe Figur in zehn Szenen.",
+    "cta": {
+      "text": "Canvas öffnen",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Schnelltest",
+        "prompt": "Handeln Sie als Anime-Character-Designer, der aus einem dreizeiligen Charakterbrief dieselbe Figur in drei Szenen konsistent generiert.\n\nInputs [ersetzen]: Charakterbrief: \"Schulterlanges dunkelbraunes Haar, grüne Augen, Seemannskragen in Navy\"; Palette #1F1B18, #E8DCCB, #B4553C; Linienstärke 2 px; Format 3:4.\n\nDeliverable: drei PNG 1536×2048 (Klassenzimmer, Heimweg, Regen), Poses-A-und-B-Blatt, Konsistenznotiz mit drei Prüfzeilen.\n\nSystem: Augen auf oberem Drittel; Linienstärke 2 px konstant; drei Farben plus Weiß; eine Lichtquelle pro Szene; kein realistischer Schatten.\n\nWorkflow: 1) Brief in drei Zeilen fixieren; 2) Referenzblatt mit zwei Posen freigeben; 3) die schwerste Szene zuerst testen; 4) die beiden anderen Szenen generieren; 5) Augen, Haarlinie und Kragen über alle drei prüfen; 6) nur die abweichende Szene korrigieren; 7) exportieren mit Notiz.\n\nGates: identische Augenform in allen Szenen; Haarlinie stabil; Kragenfarbe Navy; Linienstärke 2 px; keine vierte Farbe.\n\nAudit: welche Szene abdriftet, welche Briefzeile fehlte, ob das Referenzblatt reicht.\n\nErfinden Sie die Haarfarbe oder Augenform nicht neu; wechseln Sie die Linienstärke zwischen Szenen nicht; fügen Sie keine vierte Farbe hinzu."
+      },
+      {
+        "label": "Produktion",
+        "prompt": "Handeln Sie als Senior Character-Designer, der eine Serie von zehn Szenen für einen Webtoon-Strip auf ein eingefrorenes Referenzblatt aufbaut.\n\nInputs [ersetzen]: Referenzblatt (zwei Posen, Front und Profil), Szenenliste mit zehn Orten; Palette #1F1B18, #E8DCCB, #B4553C; Linienstärke 2 px; Format 3:4 mit Panel-Nummerierung.\n\nDeliverable: zehn PNG 1536×2048 mit Panel-Nummern, aktualisiertes Referenzblatt (v2), Drift-Protokoll je Szene, Namensschema strip-szene-panel.\n\nSystem: identische Lichtachse über alle 10 Szenen; Palette fix (3 Farben); Linienstärke fix bei 2 px; Hintergrundvereinfachung erlaubt, Figur nicht; Panels 3:4 mit Rand 5 %.\n\nWorkflow: 1) Referenzblatt v1 freigeben; 2) Szenen nach Licht sortieren; 3) erste Szene generieren und gegen das Blatt prüfen; 4) restliche neun folgern; 5) Drift je Szene protokollieren; 6) nur abweichende Panels neu zeichnen; 7) Blatt v2 und Protokoll exportieren.\n\nGates: Gesicht in zehn Szenen identisch; Palette ohne Ausnahme; Panel-Nummern vollständig; Lichtachse konstant; keine Stilwechsel.\n\nAudit: Drift-Schwerpunkt, Briefzeilen, die gefehlt haben, Panels, die Sie neu zeichnen würden.\n\nÄndern Sie die Frisur nicht zwischen Panels; stimmen Sie die Palette nicht pro Szene ab; nummerieren Sie die Panels nicht neu."
+      },
+      {
+        "label": "Stresstest",
+        "prompt": "Handeln Sie als Character-Lead, der mit einer widersprüchlichen Szene die Grenze des Briefings testet: Rückenansicht, Gegenlicht, neues Kostümteil.\n\nInputs [ersetzen]: Referenzblatt nur Front; geforderte Szene: Rückenansicht mit Gegenlicht und zusätzlicher Jacke; Palette fix; Linienstärke 2 px.\n\nDeliverable: ein PNG 1536×2048, eine Entscheidung notiert (machbar/ablehnen mit Begründung), 400-%-Prüfung der Nahtstelle, Vorschlag für Blatt v2.\n\nSystem: Silhouette aus dem Blatt, nicht aus der Fantasie; Gegenlicht als Kante, nicht als neue Lichtquelle; Jacke nur, wenn sie die Silhouette hält; eine Nachfrage erlaubt.\n\nWorkflow: 1) prüfen, ob das Blatt die Rückenansicht trägt; 2) fehlende Ansicht im Blatt markieren; 3) Szene mit Kante statt Gegenlichtflut testen; 4) Nahtstelle bei 400 % prüfen; 5) Blatt v2 mit Rückenpose skizzieren; 6) Entscheidung exportieren.\n\nGates: keine erfundene Frisur von hinten; Kragenform erkennbar; Linienstärke gehalten; Entscheidung schriftlich.\n\nAudit: was das Blatt nicht hergab, ob die Jacke die Silhouette bricht, welche Pose ins Blatt v2 muss.\n\nErfinden Sie keine Haarpartie, die das Blatt nicht zeigt; ersetzen Sie das Gegenlicht nicht durch eine zweite Quelle; zeichnen Sie nicht, bevor die Entscheidung notiert ist."
+      }
+    ]
+  },
+  {
+    "slug": "chat-to-image-ai-generator",
+    "id": "tools-chat-to-image-ai-generator-de",
+    "lang": "de",
+    "title": "Ein Delta pro Nachricht, nicht ein neuer Prompt",
+    "description": "Chat-to-Image spart Zeit, wenn eine Nachricht eine Änderung trägt und Licht, Geometrie und Text bleiben: Zonen sperren, Drift messen, nach drei Runden berichten.",
+    "cta": {
+      "text": "Canvas öffnen",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Schnelltest",
+        "prompt": "Handeln Sie als Art Director, der einen freigegebenen Frame im Dialog korrigiert, ohne das Bild neu zu generieren.\n\nInputs [ersetzen]: Frame 2400×2400 einer Keramiktasse auf Holztisch, Licht 40° seitlich; drei Wünsche: \"Hintergrund warmgrau\", \"Krümel rechts entfernen\", \"Etikett behalten\"; gesperrt: Tassenform, Etikettentext, Lichtachse.\n\nDeliverable: PNG 2400×2400, drei 100-%-Crops der geänderten Zonen, Protokoll mit einer Nachricht je Wunsch.\n\nSystem: Tasse auf 40–45 % der Bildfläche; Lichtachse 40° unverändert; Weißabgleich ±150 K; Etikettenkontrast 4,5:1; Rand 5 %.\n\nWorkflow: 1) Bild prüfen und Sperrliste schreiben; 2) ein Delta pro Nachricht formulieren; 3) gesperrte Zonen bei 100 % vergleichen; 4) bei Drift zurücksetzen und Anweisung verengen; 5) nach drei Runden stoppen; 6) Checks fahren; 7) Datei und Protokoll exportieren.\n\nGates: Etikett nicht neu geschrieben; Schatten unverändert; keine neuen Objekte; Tassenform intakt; 2400×2400.\n\nAudit: Runde mit dem stärksten Drift, genutzte Iterationen, ob ein neuer Master nötig ist.\n\nSchreiben Sie nicht jede Runde den ganzen Prompt neu; ändern Sie nicht den Etikettentext; führen Sie keine ungewollten Objekte ein."
+      },
+      {
+        "label": "Produktion",
+        "prompt": "Handeln Sie als Produktionsleiter Visual, der sechs Motive per Dialog zum freigegebenen Master führt und jede Runde protokolliert.\n\nInputs [ersetzen]: sechs Aufnahmen 4000×5000 einer Steinzeugserie (Krug, Tasse, Teller); Glasurreferenzen in drei Tönen; freigegebene Texte; Wünsche: Glasur von Sand zu Salbeigrün, Hintergrund von Leinen zu Stein, Schatten 20 % kürzer; gesperrt: Produktidentität, Henkelgeometrie, Perspektive.\n\nDeliverable: sechs PNG 4000×5000 bei 300 dpi; Protokoll je Motiv mit Runde, Delta und Drift-Score; 400-%-Crops von Glasur und Henkel; Namen produkt-runde-version.\n\nSystem: Produkt auf 38–46 %; Glasur ±3 % zur Referenz; Henkel ±2 %; Hintergrund ±5 %; Schattenlänge ±4 %; keine globale Farbkorrektur.\n\nWorkflow: 1) Brief empfangen, Delta und Sperren trennen; 2) alle sechs Motive auditieren; 3) drei Richtungen mit je einer Begründungszeile; 4) Dialog mit einem Delta je Runde; 5) Drift nach jeder Runde messen; 6) nur die Runde neu fahren, die eine Sperre bricht; 7) Checks; 8) Dateien, Protokoll und Matchcard exportieren.\n\nGates: Henkel ±2 %; Glasur ±3 %; Hintergrund ±5 %; Schatten ±4 %; Etikett intakt; sechs Dateien bei 300 dpi; Protokoll vollständig.\n\nAudit: Runden je Motiv, die Zone mit dem frühesten Drift, verworfene Runden, der Master, den Sie neu bauen würden.\n\nRegenerieren Sie nicht das ganze Motiv für eine Farbe; verschieben Sie den Henkel nicht; rufen Sie eine Runde nicht fertig, ohne sie geprüft zu haben."
+      },
+      {
+        "label": "Stresstest",
+        "prompt": "Handeln Sie als Art Director, der das Gedächtnis des Dialogs mit feinem Text auf dichtem Layout an seine Grenze bringt.\n\nInputs [ersetzen]: Szene 2400×3000, gedrucktes Menü auf Tisch, Schriftgröße 9 pt, leichte Perspektive; Wünsche: zwei Gerichtenamen und ein Preis ändern; gesperrt: Schrift, Raster, Papiertextur, Licht, Perspektive; freigegebene Texte liegen bei.\n\nDeliverable: PNG 2400×3000, 400-%-Crop der geänderten Zeilen, Protokoll von maximal drei Runden, Texttreue-Notiz.\n\nSystem: 12-Spalten-Raster, Rand 6 %; Schriftgröße 9 pt; Zeilenabstand 12 pt; Textfarbe #1F1B18; keine Schattierung des Blattes.\n\nWorkflow: 1) allen sichtbaren Text lesen und sichern; 2) drei Änderungszonen markieren; 3) eine Runde je Zone, nicht je Bild; 4) Buchstaben bei 400 % vergleichen; 5) bei Zeilenabstandsdrift zurückrollen; 6) nach drei Runden stoppen und berichten; 7) Checks; 8) Datei und Notiz exportieren.\n\nGates: unveränderte Zeilen identisch; neue Zeilen fehlerfrei; 9 pt bei 400 % lesbar; Raster und Ränder ±1 px; kein erfundenes Gericht oder Preis.\n\nAudit: genutzte Runden, die Zeile mit Zeilenabstandsverlust, der vom Modell erratene Text, ob die Änderung ins Layout-Tool gehört.\n\nErfinden Sie keinen Gerichtenamen oder Preis; ordnen Sie das Raster nicht um; akzeptieren Sie keine Runde, die unveränderte Zeilen anfasst."
+      }
+    ]
+  },
+  {
+    "slug": "nano-banana-free",
+    "id": "tools-nano-banana-free-de",
+    "lang": "de",
+    "title": "Vier Szenarien statt hundert Versuche",
+    "description": "Der Gratis-Zugang ist eine Prüfung, kein Geschenk: vier reale Szenarien, Grenzen protokollieren, am Ende entscheiden — Lizenz nötig oder nicht.",
+    "cta": {
+      "text": "Canvas öffnen",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Schnelltest",
+        "prompt": "Handeln Sie als Produktionsleiter, der das Werkzeug an vier realen Aufgaben prüft — nicht an Demo-Bildern.\n\nInputs [ersetzen]: Foto 3000×3000 einer Keramiktasse; vier Szenarien: Etikettenretusche, Hintergrundwechsel, Glasurfarbwechsel, Stiltransfer von einer Referenz; freigegebene Zeile \"Keramik, 350 ml\".\n\nDeliverable: vier PNG 3000×3000, eine Vergleichstabelle, ein Urteil je Szenario.\n\nSystem: eine Lichtachse; Hintergrund ±3 % zum Original; Glasurtextur 100 %; Ränder 6 %; kein Text im Bild.\n\nWorkflow: 1) Original und Verbote fixieren; 2) Etikettenretusche fahren; 3) Text zeichenweise vergleichen; 4) drei übrige Szenarien fahren; 5) jedes nach drei Kriterien benoten; 6) Checks; 7) Dateien und Tabelle exportieren.\n\nGates: Etikett ohne Verzerrung; Glasur ±3 %; Hintergrund unverändert; kein neues Objekt; 3000×3000.\n\nAudit: welches Szenario scheiterte, was wiederholt werden musste, wo das Limit griff, ob eine Lizenz nötig ist.\n\nVerkaufen Sie den Test nicht als Kommerzlizenz; verstecken Sie keine Grenzen; nutzen Sie keine Referenzen ohne Rechte."
+      },
+      {
+        "label": "Produktion",
+        "prompt": "Handeln Sie als Leiter Content-Produktion, der auf zwölf Bildern eine Prüfmatrix aufbaut und Rechte sauber dokumentiert.\n\nInputs [ersetzen]: drei Produkte (Tasse, Teller, Krug); je vier Szenarien; Stilreferenzen; freigegebene Zeilen; Farben #1F1B18, #D8C3A5, #B4553C.\n\nDeliverable: zwölf PNG 3000×3000, Matrix \"Produkt × Szenario\", Rechtejournal mit Grenzen, Urteil: Test, Lizenz oder Absage.\n\nSystem: ein Licht; Hintergrund ±3 %; Textur 100 %; Ränder 6 %; identischer Crop für alle Produkte.\n\nWorkflow: 1) Matrix aufbauen und Zeilen freigeben; 2) erstes Produkt über alle Szenarien fahren; 3) Text und Textur vergleichen; 4) für die zwei übrigen wiederholen; 5) notieren, wo das Limit griff; 6) Checks; 7) Matrix und Journal exportieren.\n\nGates: alle zwölf in 3000×3000; Text ohne Verzerrung; Textur ±3 %; kein neues Objekt; Grenzen je Datei notiert.\n\nAudit: schwächstes Szenario, Kosten einer Iteration, wo die Lizenz greift, was nicht publizierbar ist.\n\nNennen Sie Testdateien nicht kommerziell; entfernen Sie keine Wasserzeichen aus Referenzen; versprechen Sie keine Rechte ohne Prüfung."
+      },
+      {
+        "label": "Stresstest",
+        "prompt": "Handeln Sie als Producer, der prüft, wo der Gratis-Zugang endet und kommerzielle Nutzung beginnt.\n\nInputs [ersetzen]: Kunde fordert vier Bilder für Werbung; eigene Quellen; eine externe Referenz; dokumentiertes ZugangsLimit; Farben #1F1B18 und #E8DCCB.\n\nDeliverable: drei nutzbare Dateien, eine Datei mit Sperrvermerk, Rechtejournal, ein 120-Wörter-Brief an den Kunden.\n\nSystem: jede Datei 3000×3000; Prüfung bei 100 % und 400 %; Grenzen ins Journal; Urteil je Szenario eine Zeile.\n\nWorkflow: 1) Rechte je Quelle auflisten; 2) markieren, wo das Limit blockiert; 3) drei sichere Dateien vorbereiten; 4) die vierte sperren; 5) Vermerke prüfen; 6) Checks; 7) Dateien, Journal und Brief exportieren.\n\nGates: keine Datei als kommerziell ausgegeben; keine externe Referenz genutzt; Sperrvermerk auf Datei vier; Brief ohne Versprechen.\n\nAudit: wo das Limit exakt blockiert, was zu lizenzieren ist, welches Risiko beim Kunden bleibt.\n\nErsetzen Sie die Lizenz nicht durch \"für Test\"; entfernen Sie den Vermerk nicht; versprechen Sie keine Rechte, die fehlen."
+      }
+    ]
+  }
+]

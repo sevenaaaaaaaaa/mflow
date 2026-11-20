@@ -1,0 +1,152 @@
+[
+  {
+    "slug": "ai-content-repurposer",
+    "id": "ffd01185-4d8f-452e-86fa-94e9213bd1c2",
+    "lang": "en",
+    "title": "One source asset, four channels, zero re-layouts",
+    "description": "Repurposing fails at the re-layout, not the resize: lock the master, re-anchor the headline per channel, derive every ratio by outpaint — and audit the safe zones before export.",
+    "cta": {
+      "text": "Open canvas free",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a content systems designer turning one approved hero asset into a four-channel kit without redrawing anything.\n\nInputs [replace]: master 1080×1350 of a ceramic pour-over set; approved claim \"Brews 500 ml in 3 minutes\"; palette #B4553C, #D8C3A5, #1F1B18; channels 4:5 feed, 9:16 story, 1:1 profile, 1200×628 display.\n\nDeliverable: four exports in the four ratios, a derivation log naming crop or outpaint per channel, safe-zone check sheet.\n\nSystem: subject stays at 55–60% of frame in every ratio; headline re-anchored per channel safe zone, never cropped; claim text identical across channels; one accent color.\n\nWorkflow: 1) map each channel safe zone before touching the canvas; 2) derive 9:16 by outpainting top and bottom; 3) derive 1:1 by center crop; 4) rebuild 1200×628 with the headline re-anchored left; 5) check every ratio at 375 px width; 6) fix only flagged channels; 7) export four files with the log.\n\nGates: claim exact in all four; subject never cropped mid-product; safe zones clear on story and display; palette unchanged; files named channel-ratio-version.\n\nAudit: which channel needed re-anchoring, which needed outpainting, the ratio that failed the 375 px check first.\n\nDo not resize by stretching; do not crop the headline into the product; do not change the claim per channel."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a content operations lead running a full repurposing sprint: one long-form source piece becomes a twelve-asset channel kit with a derivation system.\n\nInputs [replace]: source article with 3 key claims and 2 data points; approved hero image 4000×5000; palette #B4553C, #D8C3A5, #1F1B18; channels LinkedIn document (1200×1500), Instagram carousel (1080×1350 ×5 slides), YouTube thumbnail (1280×720), email header (1200×600).\n\nDeliverable: twelve assets in the four channel specs, a master-slot sheet mapping claims to channels, a rights note for the source imagery, naming schema source-channel-asset-version.\n\nSystem: one master grid governs all four channels; each channel re-anchors the headline to its own safe zone; data points appear as callouts only on carousel and document; subject scale 55–60%; two type sizes per channel maximum.\n\nWorkflow: 1) extract claims and data into the slot sheet; 2) build the 4:5 carousel master; 3) derive the five slides by moving one slot per slide; 4) re-anchor LinkedIn document and email header from the same grid; 5) build the thumbnail by outpainting to 16:9 and re-stacking three words; 6) run safe-zone and contrast checks per channel; 7) export twelve files with the slot sheet.\n\nGates: every claim traces to the source article; no channel invents a data point; safe zones respected per channel; carousel slides read in order; thumbnail headline ≤3 words; files named per schema.\n\nAudit: slots that did not fit a channel, the channel with the weakest derivation, data points that need a second look before publishing.\n\nDo not paste long-form copy into a thumbnail; do not invent a data point to fill a slot; do not skip the safe-zone check for the display channel."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a production reviewer stress-testing repurposing when the source asset is weak: a 1400 px photo and a claim the client wants changed per channel.\n\nInputs [replace]: photo 1400×1400 of a linen runner; client asks for three different headlines across channels; approved claim \"Stone-washed, 2.4 m\"; palette #B08968, #1F1B18.\n\nDeliverable: four exports with one headline per channel (the three alternates plus the approved claim), a consistency sheet showing what stayed fixed, a recommendation on which headline set to keep.\n\nSystem: headline changes per channel, everything else does not; subject scale constant; one headline per channel maximum; palette locked; upscaling capped at 2x with texture check at 400%.\n\nWorkflow: 1) audit the 1400 px source for upscale headroom; 2) upscale 2x once and inspect weave texture at 400%; 3) anchor four headlines, one per channel, same position grid; 4) derive ratios by outpaint, not crop; 5) run the 375 px legibility check on each headline; 6) mark the weakest headline; 7) export with the consistency sheet.\n\nGates: weave texture survives the upscale; claim exact where used; headline position grid identical across channels; no invented product details; files named headline-channel-version.\n\nAudit: texture verdict, the headline that failed legibility, whether the client's three headlines can share one master.\n\nDo not upscale twice to reach 3000 px; do not let each channel drift into its own layout; do not invent texture detail the source does not carry."
+      }
+    ]
+  },
+  {
+    "slug": "ai-avatar-generator",
+    "id": "tool-ai-avatar-generator-en",
+    "lang": "en",
+    "title": "Same face in twenty supports, or it is not an avatar system",
+    "description": "Avatars fail on identity drift, not style: five locked fields, one 512 px master, a twenty-support consistency test — and consent on file before any face swap.",
+    "cta": {
+      "text": "Open canvas free",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a brand designer producing a consistent avatar set from one approved portrait, five fields locked before any generation.\n\nInputs [replace]: portrait 2000×2000 with signed consent on file; framing \"head and shoulders, eyes on upper third\"; background solid #E8DCCB; palette two colors plus white; export circle crop 1:1 with 8% margin.\n\nDeliverable: master PNG 512×512, reduced exports at 256 and 128, a consistency sheet with the avatar in profile circle and list row mockups.\n\nSystem: same face across all sizes; one master reduced, never regenerated per size; background flat; chin inside the circle at 8% margin; eyes on the upper third.\n\nWorkflow: 1) record the five fields and the consent reference; 2) generate the 512 px master; 3) reduce to 256 and 128; 4) place in circle and list mockups; 5) check chin, eyes, and background at each size; 6) fix only the master if anything drifts; 7) export three sizes with the sheet.\n\nGates: identical face at all three sizes; chin fully inside the crop; consent reference logged; no scene background; palette held to two plus white.\n\nAudit: the size that failed first, whether the master or the reduction drifted, field gaps in the brief.\n\nDo not generate each size separately; do not crop the chin; do not process a portrait without a consent reference."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a content team lead building an avatar system for a podcast crew of six hosts: one master each, twenty supports, one shared palette.\n\nInputs [replace]: six portraits 2000×2000, consent on file for each; shared palette #1F1B18, #E8DCCB plus one accent per host; framing locked head-and-shoulders; supports: profile circles, episode covers 3000×3000, banner 1500×500, story frames 1080×1920.\n\nDeliverable: six masters at 512 px, twenty supports sampled across the set, a consistency matrix host × support, a consent log reference, naming schema host-support-version.\n\nSystem: one palette per host plus the shared two; eyes on the upper third everywhere; master-first reduction for small sizes; banner and story supports re-anchor the face, never reshoot it; accent color appears once per support.\n\nWorkflow: 1) log consents and lock five fields per host; 2) build six 512 px masters; 3) sample twenty supports across hosts and sizes; 4) run the matrix: same face everywhere; 5) flag any drift and fix the master, not the support; 6) check small sizes in circle and list contexts; 7) export the set with the matrix and log.\n\nGates: twenty supports, six faces, zero drift; consents logged per host; accents limited to one per support; masters reduced, not regenerated; naming schema followed.\n\nAudit: hosts whose masters drifted, supports that need a re-anchor, whether six accents stay distinguishable.\n\nDo not regenerate a face to fit a support; do not exceed one accent per host; do not ship a support without its matrix cell filled."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a production reviewer stress-testing the avatar pipeline with the worst realistic input: a low-resolution portrait and a style-change request mid-series.\n\nInputs [replace]: portrait 800×800, soft focus, consent on file; client asks for a different art style after three supports are approved; palette locked.\n\nDeliverable: one master attempt from the 800 px source, an identity-drift verdict, a style-change cost note (what changes, what holds), a recommendation on reshoot versus accept.\n\nSystem: upscale capped at 2x; identity judged at eyes, nose, mouth at 300%; style change touches rendering only, never geometry; palette unchanged.\n\nWorkflow: 1) audit the 800 px source and record softness; 2) upscale 2x once and check texture at 400%; 3) generate the master and judge identity at three points; 4) apply the style change to a copy, geometry locked; 5) compare identity between styles; 6) write the verdict and cost note; 7) export both masters with the recommendation.\n\nGates: no invented facial detail to compensate softness; identity holds across the style change or the verdict says so; consent logged; upscale single-pass.\n\nAudit: softness acceptance, identity verdict, the honest cost of the style switch, reshoot criteria.\n\nDo not sharpen the source into plastic; do not let the style change the bone structure; do not accept the master when identity fails at 300%."
+      }
+    ]
+  },
+  {
+    "slug": "ai-image-style-transfer",
+    "id": "tools-ai-image-style-transfer-en",
+    "lang": "en",
+    "title": "Identity survives the brushstrokes, at any intensity",
+    "description": "Style transfer fails when the style wins and the person disappears: face, pose, and composition locked, intensity dialed 10–90%, identity judged at 300% before export.",
+    "cta": {
+      "text": "Open canvas free",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a retoucher applying an oil-paint style to a family portrait while keeping the person recognizable, judged before export.\n\nInputs [replace]: portrait 2400×3000; style reference \"Van Gogh-like impasto, swirl direction noted\"; identity lock: eyes, nose, mouth, jawline; intensity 60%; output PNG 2400×3000.\n\nDeliverable: styled PNG at 60% intensity, a 300% crop of the eye region, an identity scorecard with three points judged, one lower-intensity alternative at 40%.\n\nSystem: face geometry unchanged; pose and composition unchanged; swirl texture strongest at edges, weakest over features; palette shifts allowed, structure not; single style reference only.\n\nWorkflow: 1) mark the identity points on the source; 2) apply the style at 60%; 3) judge eyes, nose, mouth at 300%; 4) if any point fails, re-run at 40%; 5) compare both intensities side by side; 6) pick the honest one; 7) export both with the scorecard.\n\nGates: identity points intact at the chosen intensity; no extra face invented; pose identical; swirl does not cross the eye line; file at 2400×3000.\n\nAudit: the intensity that held identity, the feature that failed first, whether the reference direction helped or hurt.\n\nDo not regenerate the face to fit the style; do not push intensity past identity; do not blend two style references."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a studio retouch lead building a repeatable style-transfer line for a twenty-image editorial series with one approved style reference.\n\nInputs [replace]: twenty portraits 2400×3000 (studio, consistent key light); one approved style reference \"flat gouache, muted earth palette\"; identity lock per image; intensity ladder 30/50/70%; palette #B4553C, #D8C3A5, #1F1B18.\n\nDeliverable: twenty styled PNGs at the chosen intensity per image, an intensity ledger, a contact sheet of all twenty, a drift report naming images that failed at 70% and settled at 50%.\n\nSystem: one style reference for the whole series; identity judged at three points per image; intensity chosen per image, ledger records why; palette shifts within the three earth tones; no second reference ever.\n\nWorkflow: 1) grade all twenty for identity risk; 2) apply 70% to the three lowest-risk first; 3) judge at 300% and record; 4) step failed images down to 50% and re-judge; 5) repeat the ladder for all twenty; 6) build the contact sheet and drift report; 7) export the ledger with the files.\n\nGates: identity intact at each shipped intensity; ledger complete for twenty images; one reference only; palette within three tones; contact sheet shows zero structural drift.\n\nAudit: the images that needed the ladder, the feature that failed most, whether the reference survives a second series.\n\nDo not switch references mid-series; do not ship an image whose ledger row is empty; do not hide a 70% failure by cropping the feature."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a retoucher stress-testing the identity lock with the hardest case: a profile portrait with motion blur and a client asking for maximum style.\n\nInputs [replace]: profile portrait 2000×2500, motion blur on the trailing edge, one eye partially closed; style \"heavy impasto\"; client wants 90% intensity; consent on file.\n\nDeliverable: styled PNG at the highest honest intensity (60–90% band), a 300% crop of the closed-eye region, a written limit note, one fallback at 50% with sharper identity.\n\nSystem: intensity capped where identity breaks, not where the client asks; motion blur treated as structure, not noise; the closed eye must stay a closed eye; one fallback mandatory.\n\nWorkflow: 1) mark the closed eye and blur edge as identity-critical; 2) run 90% and judge the eye at 300%; 3) step down through 70% and 60% until the eye holds; 4) build the 50% fallback for comparison; 5) write the limit note naming the breaking point; 6) run checks; 7) export the honest maximum and the fallback.\n\nGates: closed eye reads as closed at the shipped intensity; blur edge keeps its direction; no invented eyelid; limit note present; fallback at 50% included.\n\nAudit: the intensity where identity broke, whether blur or the eye broke first, what to tell the client about \"maximum style\".\n\nDo not open the closed eye to satisfy the style; do not smooth the blur into a clean edge; do not ship 90% because the client asked."
+      }
+    ]
+  },
+  {
+    "slug": "ai-menu-creator",
+    "id": "tools-ai-menu-creator-en",
+    "lang": "en",
+    "title": "The menu is read in nine seconds, design for the scan",
+    "description": "Menu design fails on scan order, not decoration: three price tiers, dish names never italicized, allergen line above the footer — verified at arm's length.",
+    "cta": {
+      "text": "Open canvas free",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a menu designer producing a one-page A4 menu for a neighborhood cafe, designed for a nine-second scan.\n\nInputs [replace]: 12 dishes in 3 categories; prices from the client list; brand colors #1F1B18 and #E8DCCB; paper A4 at 300 dpi with 3 mm bleed; output print PDF and a 1080×1350 social version.\n\nDeliverable: print PDF A4 with bleed, social PNG 1080×1350, a scan-order map marking where the eye lands first, second, third.\n\nSystem: dish names regular weight, never italicized; three price tiers aligned in one column; headers 24 pt, dishes 12 pt, descriptions 10 pt; allergen line above the footer; margins 12 mm.\n\nWorkflow: 1) sort dishes into three categories by price tier; 2) set the type scale and grid; 3) order categories by scan priority; 4) align prices in one column; 5) place the allergen line above the footer; 6) check at 40 cm and 375 px; 7) export with the map.\n\nGates: dish names legible at 40 cm; prices column-aligned; allergen line present above footer; no dish name below 12 pt; bleed 3 mm on print.\n\nAudit: the category that lost the scan order, the price tier with the weakest contrast, whether the social crop survives.\n\nDo not italicize dish names; do not scatter prices across columns; do not push the allergen line into the footer."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a studio design lead building a seasonal menu system for a three-location cafe chain: one master, three location variants, quarterly updates by slot only.\n\nInputs [replace]: master menu structure (3 categories, 12 dishes); three location price lists; brand palette #1F1B18, #E8DCCB, #B4553C; formats A4 print 300 dpi and 1080×1350 social; naming schema location-season-version.\n\nDeliverable: three location variants from one master, a slot sheet (dish/price/allergen per location), an update guide naming the four changeable slots, print and social exports for all three.\n\nSystem: structure identical across locations; only name, price, and location footer slots change; price tiers re-aligned per location; allergen lines per location recipe; grid 12 mm margins everywhere.\n\nWorkflow: 1) freeze the master grid and the four slots; 2) build location A fully; 3) derive B and C by slot swap only; 4) re-align price columns per location; 5) verify allergen lines against each location list; 6) run the arm's-length and 375 px checks on all three; 7) export six files with the slot sheet.\n\nGates: three variants structurally identical; slots only in the sheet; allergen lines match location lists; prices aligned; naming schema followed.\n\nAudit: slot collisions across locations, the variant with price misalignment, slots the quarterly update will stress first.\n\nDo not redesign per location; do not hand-edit prices outside the sheet; do not share an allergen line across locations."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a menu production reviewer stress-testing the system with a dense specials insert: nine specials, dual pricing (dine-in and delivery), a temporary allergen notice.\n\nInputs [replace]: nine specials with dual prices; temporary allergen notice text; A5 insert 300 dpi; brand palette locked; deadline same-day.\n\nDeliverable: A5 insert print PDF, dual-price layout map, a notice placement that survives the scan, a revert note for when the notice expires.\n\nSystem: dual prices in two aligned columns with a single header row; nine specials capped at two per category tier; notice sits above the allergen line, not in it; same-day means no new master, slots only.\n\nWorkflow: 1) split nine specials across categories by margin; 2) set the dual-price columns with one header row; 3) place the notice above the allergen line; 4) check arm's-length legibility of both price columns; 5) write the revert note (what to delete when the notice expires); 6) run checks; 7) export the PDF and the map.\n\nGates: both price columns aligned; no special below 10 pt; notice visually distinct from the allergen line; revert note present; A5 bleed 3 mm.\n\nAudit: whether nine specials survive the scan, the column pair most likely to misalign, the notice placement trade-off.\n\nDo not merge the notice into the allergen line; do not squeeze three tiers into two columns; do not skip the revert note."
+      }
+    ]
+  },
+  {
+    "slug": "ai-organizational-chart",
+    "id": "tools-ai-organizational-chart-en",
+    "lang": "en",
+    "title": "The org chart survives the third rewrite",
+    "description": "Org charts fail at the restructure, not the first draw: node slots, one connector grammar, depth capped at four levels — a 40-second single-node change proves it.",
+    "cta": {
+      "text": "Open canvas free",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a design systems lead producing a 30-person org chart that survives rewrites, built from a department list.\n\nInputs [replace]: department list (30 people, 5 managers, 4 levels); brand colors #1F1B18 and #E8DCCB; output 1920×1080 landscape; naming per node \"role-firstname\".\n\nDeliverable: chart PNG 1920×1080, a node-slot sheet (person/role/level/manager), a connector grammar note (one rule set), a change-test record.\n\nSystem: four levels maximum; one connector style throughout (elbow, 2 px); manager nodes darker fill, individual nodes light; node width fixed 220 px; depth labels on the left margin.\n\nWorkflow: 1) parse the list into the slot sheet; 2) lay out level by level, managers centered over reports; 3) draw connectors with one grammar; 4) check the 220 px width holds all names; 5) run the change test: move one person, time it; 6) restore and verify nothing shifted; 7) export chart and sheet.\n\nGates: no node exceeds four levels deep; connectors follow one grammar; every name inside its node; change test under 40 seconds; layout identical after restore.\n\nAudit: the level that cramped first, whether the connector grammar held the change test, names that needed truncation.\n\nDo not draw freehand connectors; do not exceed four levels; do not resize nodes per name length."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as an operations design lead building a quarterly org-chart update pipeline for a 120-person company with reorganizations every quarter.\n\nInputs [replace]: current 120-person roster (8 departments); Q-over-Q delta list (hires, moves, exits); palette #1F1B18, #E8DCCB, #B4553C for the delta highlights; output 3840×2160 plus A3 print 300 dpi; naming schema orgchart-quarter-version.\n\nDeliverable: updated chart in two formats, a delta sheet (moved/hired/exited with old and new positions), a print-ready A3 with legend, a validation note that headcount in chart equals roster.\n\nSystem: departments as swimlanes; delta highlights in the accent color only; exits removed without relayout if the lane holds; one connector grammar; depth cap four; legend bottom-left fixed.\n\nWorkflow: 1) reconcile roster and chart headcount; 2) apply deltas as slot edits; 3) re-center any manager whose reports changed by more than two; 4) validate connector grammar across lanes; 5) run a full-structure diff against last quarter; 6) export 3840×2160 and A3 print; 7) attach the delta sheet and validation note.\n\nGates: headcount matches roster exactly; deltas highlighted only in accent; no lane exceeds depth four; diff shows only intended changes; A3 print legible at 300 dpi.\n\nAudit: lanes that needed re-centering, delta edits that cascaded, whether the connector grammar survived the quarter.\n\nDo not redraw lanes that did not change; do not highlight exits with layout shifts; do not skip the headcount reconciliation."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a design QA reviewer stress-testing the chart with the worst quarterly delta: a manager exits with six reports reassigned across three lanes mid-quarter.\n\nInputs [replace]: exiting manager with 6 direct reports; reassignments spread over 3 departments; interim reporting lines for 2 people; chart 3840×2160 from last quarter as base.\n\nDeliverable: mid-quarter chart 3840×2160, a reassignment map (6 reports across 3 lanes, interim lines dashed), a stability report on untouched lanes, a note on the cost if interim lines become permanent.\n\nSystem: interim lines dashed 2 px and accent-colored; untouched lanes pixel-identical; recentering only in affected lanes; depth cap 4; connector width 2 px throughout.\n\nWorkflow: 1) mark the exiting manager's lane; 2) reassign six reports per the map; 3) draw two interim lines dashed; 4) verify untouched lanes unchanged by pixel diff; 5) simulate permanence: recenter and note the structural cost; 6) run checks; 7) export the version with the map and report.\n\nGates: untouched lanes identical; interim lines dashed and labeled; depth cap held; reassignment map complete; simulation note present.\n\nAudit: the lane under most strain, whether dashed lines confused the grammar, the cost of making interim permanent.\n\nDo not recenter unaffected lanes; do not let dashed lines mix with solid grammar silently; do not skip the permanence simulation."
+      }
+    ]
+  },
+  {
+    "slug": "ai-style-transfer-generator",
+    "id": "tools-ai-style-transfer-generator-en",
+    "lang": "en",
+    "title": "Match the reference, not the filter pack",
+    "description": "Fixed filter packs stop where the brand palette starts: reference-led matching with a single intensity dial, twenty images one look, texture checked at 400%.",
+    "cta": {
+      "text": "Open canvas free",
+      "href": "https://www.lovart.ai/canvas"
+    },
+    "prompts": [
+      {
+        "label": "Quick test",
+        "prompt": "Act as a colorist matching a product photo to a client's reference image instead of applying a preset filter.\n\nInputs [replace]: product photo 3000×3000 (linen runner on oak table); reference image 2400×2400 (client mood); approved claim unchanged; palette targets drawn from the reference; output PNG 3000×3000.\n\nDeliverable: matched PNG 3000×3000, a side-by-side against the reference, a match ledger (hue, contrast, grain: target vs achieved), one intensity alternative at half dial.\n\nSystem: match derived from the reference, not a named filter; single dial for intensity; grain structure preserved from source; hue shifts within the reference family; no second reference.\n\nWorkflow: 1) sample the reference for hue, contrast, and grain targets; 2) apply the match at full dial; 3) compare side by side at 100%; 4) inspect texture at 400% for plastic drift; 5) back the dial to half and compare; 6) pick the honest match; 7) export both with the ledger.\n\nGates: hue within the reference family; grain preserved at 400%; contrast target hit within 5%; subject color unchanged; ledger complete.\n\nAudit: which parameter matched easiest, where the dial had to move, whether the reference is repeatable across a set.\n\nDo not name a preset instead of a match; do not smooth grain to hit contrast; do not introduce a second reference."
+      },
+      {
+        "label": "Production",
+        "prompt": "Act as a studio colorist lead running a twenty-image catalog through one reference match with a dial ledger, proving one look across the set.\n\nInputs [replace]: twenty catalog photos 3000×3000 (mixed surfaces: linen, oak, ceramic); one approved reference; palette targets; output 3000×3000 each; naming schema sku-look-version.\n\nDeliverable: twenty matched PNGs, a dial ledger per image (value and why), a contact sheet proving one look, a drift report on the three images that resisted the match, a repeatability note for the next batch.\n\nSystem: one reference for all twenty; dial adjusted per image, recorded; grain and texture never fully flattened; hue family locked; contact sheet judged at 25% zoom.\n\nWorkflow: 1) ledger setup with reference targets; 2) match the median image first to set the dial baseline; 3) run the remaining nineteen, adjusting per surface; 4) 400% texture check per image; 5) build the contact sheet and judge at 25%; 6) write the drift report on resisters; 7) export all with ledger and note.\n\nGates: twenty images, one look at 25% zoom; ledger complete; texture survives at 400%; hue family held; resisters documented not hidden.\n\nAudit: surfaces that resisted, dial spread across the set, whether the reference needs a v2 for the next batch.\n\nDo not force resisters to match by flattening texture; do not re-derive targets per image; do not judge the look at full zoom only."
+      },
+      {
+        "label": "Edge / stress",
+        "prompt": "Act as a colorist stress-testing reference matching when the source and the reference fight: a warm-lit product against a cool reference mood.\n\nInputs [replace]: product photo 3000×3000 shot under warm tungsten; cool daylight reference 2400×2400; client wants the cool look without losing product warmth entirely; palette targets from the reference.\n\nDeliverable: matched PNG at the honest dial point, a white-balance bridge note (how warmth was kept), side-by-sides at full and half dial, a limit statement for the client.\n\nSystem: white balance bridged in two steps (global then accent); product warmth held in the product zone, cool applied to environment first; texture intact at 400%; the client's ask is tested, not obeyed.\n\nWorkflow: 1) measure the warmth gap between source and reference; 2) cool the environment at full dial; 3) pull product warmth back to a specified retention level; 4) judge at 400% for texture and at 100% for plausibility; 5) build the half-dial alternative; 6) write the limit statement; 7) export both with notes.\n\nGates: product retains declared warmth; environment matches the reference family; no plastic texture; limit statement names the trade-off; both dial points exported.\n\nAudit: the dial point where plausibility broke, whether the two-step bridge held, what to reshoot if the client insists on full cool.\n\nDo not cool the product to match the background; do not split tone per pixel instead of per zone; do not ship full cool without the plausibility check."
+      }
+    ]
+  }
+]
